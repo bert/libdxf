@@ -35,6 +35,112 @@
 #include "polyline.h"
 
 /*!
+ * \brief Write DXF output to a file for a light weight polyline entity.
+ *
+ * This entity requires AutoCAD version 2004 or higher.
+ */
+int
+dxf_write_lwpolyline
+(
+        FILE *fp,
+                /*!< file pointer to output file (or device). */
+        int id_code,
+                /*!< group code = 5. */
+        char *linetype,
+                /*!< group code = 6\n
+                 * optional, defaults to \c BYLAYER. */
+        char *layer,
+                /*!< group code = 8. */
+        double x0,
+                /*!< group code = 10\n
+                 * defaults to 0.0. */
+        double y0,
+                /*!< group code = 20\n
+                 * defaults to 0.0. */
+        double z0,
+                /*!< group code = 30\n
+                 * default elevation for vertices. */
+        double thickness,
+                /*!< group code = 39\n
+                 * optional, defaults to 0.0. */
+        double start_width,
+                /*!< group code = 40\n
+                 * optional, defaults to 0.0. */
+        double end_width,
+                /*!< group code = 41\n
+                 * optional, defaults to 0.0. */
+        int color,
+                /*!< group code = 62\n
+                 * optional, defaults to \c BYLAYER. */
+        int vertices_follow,
+                /*!< group code = 66\n
+                 * always 1. */
+        int paperspace,
+                /*!< group code = 67\n
+                 * optional, defaults to 0 (modelspace). */
+        int flag,
+                /*!< group code = 70\n
+                 * optional, defaults to 0. */
+        int polygon_mesh_M_vertex_count,
+                /*!< group code = 71\n
+                 * optional, defaults to 0. */
+        int polygon_mesh_N_vertex_count,
+                /*!< group code = 72\n
+                 * optional, defaults to 0. */
+        int smooth_M_surface_density,
+                /*!< group code = 73\n
+                 * optional, defaults to 0. */
+        int smooth_N_surface_density,
+                /*!< group code = 74\n
+                 * optional, defaults to 0. */
+        int surface_type
+                /*!< group code = 75\n
+                 * optional, defaults to 0. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_lwpolyline () function.\n", __FILE__, __LINE__);
+#endif
+        char *dxf_entity_name = strdup ("LWPOLYLINE");
+
+        if (strcmp (layer, "") == 0)
+        {
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0\n", dxf_entity_name);
+                layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        if (id_code != -1)
+        {
+                fprintf (fp, "  5\n%x\n", id_code);
+        }
+        if (strcmp (linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp, "  6\n%s\n", linetype);
+        }
+        fprintf (fp, "  8\n%s\n", layer);
+        fprintf (fp, " 10\n%f\n", x0);
+        fprintf (fp, " 20\n%f\n", y0);
+        fprintf (fp, " 30\n%f\n", z0);
+        if (thickness != 0.0)
+        {
+                fprintf (fp, " 39\n%f\n", thickness);
+        }
+        if (color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp, " 62\n%d\n", color);
+        }
+        if (paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_lwpolyline () function.\n", __FILE__, __LINE__);
+#endif
+}
+
+
+/*!
  * \brief Write DXF output to fp for a light weight polyline entity.
  *
  * This entity requires AutoCAD release 2004 or higher.
