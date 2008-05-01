@@ -1,0 +1,157 @@
+/*!
+ * \file attdef.h
+ * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \brief Definition of a DXF attribute definition entity (\c ATTDEF).
+ *
+ * <hr>
+ * <h1><b>Copyright Notices.</b></h1>\n
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by the
+ * Free Software Foundation; either version 2 of the License,
+ * or (at your option) any later version.\n\n
+ * This program is distributed in the hope that it will be useful, but
+ * <b>WITHOUT ANY WARRANTY</b>; without even the implied warranty of
+ * <b>MERCHANTABILITY</b> or <b>FITNESS FOR A PARTICULAR PURPOSE</b>.\n
+ * See the GNU General Public License for more details.\n\n
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to:\n
+ * Free Software Foundation, Inc.,\n
+ * 59 Temple Place,\n
+ * Suite 330,\n
+ * Boston,\n
+ * MA 02111 USA.\n
+ * \n
+ * Drawing eXchange Format (DXF) is a defacto industry standard for the
+ * exchange of drawing files between various Computer Aided Drafting
+ * programs.\n
+ * DXF is an industry standard designed by Autodesk(TM).\n
+ * For more details see http://www.autodesk.com.
+ * <hr>
+ */
+
+#include "global.h"
+
+/*!
+ * \brief Definition of a DXF attribute definition entity.
+ */
+typedef struct
+dxf_attdef
+{
+        int id_code;
+                /*!< Identification number for the entity.\n
+                 * this is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
+        char *default_value;
+                 /*!< Default value for the attribute.\n
+                 * Group code = 1. */
+        char *tag_value;
+                /*!< Tagname for the attribute.\n
+                 * Group code = 2. */
+        char *prompt_value;
+                /*!< Prompt text for the value to be stored in the attribute.\n
+                 * Group code = 3. */
+        char *linetype;
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
+        char *text_style;
+                /*!< The style used for the presentation of the value of the
+                 * attribute.\n
+                 * Defaults to \c STANDARD if  ommitted in the DXF file.\n
+                 * Group code = 7. */
+        char *layer;
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
+        double x0;
+                /*!< X-value of the starting point coordinate.\n
+                 * Group code = 10. */
+        double y0;
+                /*!< Y-value of the starting point coordinate.\n
+                 * Group code = 20. */
+        double z0;
+                /*!< Z-value of the starting point coordinate.\n
+                 * Group code = 30. */
+        double x1;
+                /*!< X-value of the alignment point coordinate.\n
+                 * Group code = 11. */
+        double y1;
+                /*!< Y-value of the alignment point coordinate.\n
+                 * Group code = 21. */
+        double z1;
+                /*!< Z-value of the alignment point coordinate.\n
+                 * Group code = 31. */
+        double thickness;
+                /*!< Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
+        double height;
+                /*!< Character height of the attribute value.\n
+                 * Group code = 40. */
+        double rel_x_scale;
+                /*!< Relative scale in the X-direction.\n
+                 * Defaults to 1.0 if ommitted from DXF file.\n
+                 * Group code = 41. */
+        double rot_angle;
+                /*!< Rotation angle of the attribute value.\n
+                 * Defaults to 0.0 if ommitted from DXF file.\n
+                 * Group code = 50. */
+        double obl_angle;
+                /*!< Oblique angle of the attribute value.\n
+                 * Defaults to 0.0 if ommitted from DXF file.\n
+                 * Group code = 51. */
+        int color;
+                /*!< Color of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Note that entities encapsulated in a block with the
+                 * color \c BYBLOCK are represented in the "native" color of
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
+        int paperspace;
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
+                 * \c MODELSPACE.\n
+                 * Defaults to \c MODELSPACE if ommitted in the DXF file.\n
+                 * Group code = 67. */
+        int attr_flags;
+                /*!< Attribute flags.\n
+                 * Bit coded:\n
+                 * 1 = attribute is invisible (does not display).\n
+                 * 2 = this is a constant attribute.\n
+                 * 4 = verification is required on input of this attribute.\n
+                 * 8 = attribute is preset (no prompt during insertion).\n
+                 * Group code = 70. */
+        int text_flags;
+                /*!< Text flags.\n
+                 * Bit coded:\n
+                 * 2 = text is backward (mirrored in X).\n
+                 * 4 = text is upside down (mirrored in Y).\n
+                 * Defaults to 0 if ommited from DXF file.\n
+                 * Group code = 71. */
+        int hor_align;
+                /*!< Horizontal alignment.\n
+                 * Bit coded:\n
+                 * 0 = left.\n
+                 * 1 = center.\n
+                 * 2 = right.\n
+                 * 3 = aligned, only when vert_align = 0.\n
+                 * 4 = middle, only when vert_align = 0.\n
+                 * 5 = fit, only when vert_align = 0. \n
+                 * Defaults to 0 if ommitted from DXF file.\n
+                 * Group code = 72. */
+        int field_length;
+                /*!< Field length.\n
+                 * Defaults to 0 if ommitted from DXF file.\n
+                 * Group code = 73. */
+        int vert_align;
+                /*!< Vertical alignment.\n
+                 * Bit coded:\n
+                 * 0 = baseline.\n
+                 * 1 = bottom.\n
+                 * 2 = middle.\n
+                 * 3 = top.\n
+                 * Defaults to 0 if ommitted from DXF file.\n
+                 * Group code = 74. */
+} DxfAttdef, * DxfAttdefPtr;
+
+/* EOF */
