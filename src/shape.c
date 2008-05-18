@@ -88,7 +88,6 @@ dxf_write_shape
         if (strcmp (shape_name, "") == 0)
         {
                 fprintf (stderr, "Error: %s name string is empty for the %s entity with id-code: %x\n", dxf_entity_name, dxf_entity_name, id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
@@ -144,10 +143,10 @@ dxf_write_shape
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-}
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_shape () function.\n", __FILE__, __LINE__);
 #endif
+}
 
 
 /*!
@@ -170,7 +169,6 @@ dxf_write_shape_struct
         if (strcmp (dxf_shape.shape_name, "") == 0)
         {
                 fprintf (stderr, "Error: %s name string is empty for the %s entity with id-code: %x\n", dxf_entity_name, dxf_entity_name, dxf_shape.id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_shape.layer, "") == 0)
