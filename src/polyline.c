@@ -103,13 +103,11 @@ dxf_write_polyline
         if (x0 != 0.0)
         {
                 fprintf (stderr, "Error: start point has an invalid X-value for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (y0 != 0.0)
         {
                 fprintf (stderr, "Error: start point has an invalid Y-value for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
@@ -121,7 +119,6 @@ dxf_write_polyline
         if (vertices_follow != 1)
         {
                 fprintf (stderr, "Error: vertices follow flag has an invalid value for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -190,13 +187,11 @@ dxf_write_polyline_struct
         if (dxf_polyline.x0 != 0.0)
         {
                 fprintf (stderr, "Error: start point has an invalid X-value for the %s entity with id-code: %x\n", dxf_entity_name, dxf_polyline.id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (dxf_polyline.y0 != 0.0)
         {
                 fprintf (stderr, "Error: start point has an invalid Y-value for the %s entity with id-code: %x\n", dxf_entity_name, dxf_polyline.id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_polyline.layer, "") == 0)
@@ -208,7 +203,6 @@ dxf_write_polyline_struct
         if (dxf_polyline.vertices_follow != 1)
         {
                 fprintf (stderr, "Error: vertices follow flag has an invalid value for the %s entity with id-code: %x\n", dxf_entity_name, dxf_polyline.id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
