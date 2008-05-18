@@ -87,6 +87,16 @@
         /*!< AutoCAD 2004. */
 
 /*!
+ * The maximum of parameters in a \a DxfObject
+ */
+#define DXF_MAX_PARAM 2000
+
+/*!
+ * The maximum number of dash length items in a \a DxfLType
+ */
+#define DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS 16
+
+/*!
  * The maximum string length (it is a MSDOS limit).
  */
 #define DXF_MAX_STRING_LENGTH 255
