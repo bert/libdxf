@@ -154,7 +154,7 @@ dxf_polyline
                  * 0 = no smooth surface fitted\n
                  * 5 = quadratic B-spline surface\n
                  * 6 = cubic B-spline surface\n
-                 * 8 = Bezier surface. */                       |
+                 * 8 = Bezier surface. */
 } DxfPolyline, * DxfPolylinePtr;
 
 /* EOF */
