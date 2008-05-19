@@ -135,13 +135,11 @@ dxf_write_attrib
         if (strcmp (value, "") == 0)
         {
                 fprintf (stderr, "Error: default value string is empty for the %s entity with id-code: %x.\n", dxf_entity_name, id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (tag_value, "") == 0)
         {
                 fprintf (stderr, "Error: tag value string is empty for the %s entity with id-code: %x.\n", dxf_entity_name, id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (text_style, "") == 0)
@@ -270,13 +268,11 @@ dxf_write_attrib_struct
         if (strcmp (dxf_attrib.value, "") == 0)
         {
                 fprintf (stderr, "Error: default value string is empty for the %s entity with id-code: %x.\n", dxf_entity_name, dxf_attrib.id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_attrib.tag_value, "") == 0)
         {
                 fprintf (stderr, "Error: tag value string is empty for the %s entity with id-code: %x.\n", dxf_entity_name, dxf_attrib.id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_attrib.text_style, "") == 0)
