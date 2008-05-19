@@ -104,7 +104,6 @@ dxf_write_ellipse
         if (ratio == 0.0)
         {
                 fprintf (stderr, "Error: ratio value equals 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
@@ -150,7 +149,7 @@ dxf_write_ellipse
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_ellipse () function.\n", __FILE__, __LINE__);
 #endif
-        return;
+        return (EXIT_SUCCESS);
 }
 
 /*!
@@ -174,7 +173,6 @@ dxf_write_ellipse_struct
         if (dxf_ellipse.ratio == 0.0)
         {
                 fprintf (stderr, "Error: ratio value equals 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, dxf_ellipse.id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_ellipse.layer, "") == 0)
