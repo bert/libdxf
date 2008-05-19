@@ -92,13 +92,13 @@ dxf_write_block
         {
                 fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);
-                return;
+                return (EXIT_FAILURE);
         }
         if (xref_name == "")
         {
                 fprintf (stderr, "Warning: empty xref name string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);
-                return;
+                return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
         {
@@ -107,7 +107,7 @@ dxf_write_block
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (((block_type && 4) || (block_type && 32))
+        if ((block_type && 4) || (block_type && 32))
         {
                 fprintf (fp, "  1\n%s\n", xref_name);
         }
@@ -162,13 +162,13 @@ dxf_write_block_struct
         {
                 fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_block.id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);
-                return;
+                return (EXIT_FAILURE);
         }
         if (dxf_block.xref_name == "")
         {
                 fprintf (stderr, "Warning: empty xref name string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_block.id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);
-                return;
+                return (EXIT_FAILURE);
         }
         if (strcmp (dxf_block.layer, "") == 0)
         {
@@ -177,9 +177,9 @@ dxf_write_block_struct
                 dxf_block.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (((block_type && 4) || (block_type && 32))
+        if ((dxf_block.block_type && 4) || (dxf_block.block_type && 32))
         {
-                fprintf (fp, "  1\n%s\n", xref_pathname);
+                fprintf (fp, "  1\n%s\n", dxf_block.xref_name);
         }
         if ((dxf_block.block_type && 4) || (dxf_block.block_type && 32))
         {
