@@ -76,7 +76,6 @@ dxf_write_circle
         if (radius == 0.0)
         {
                 fprintf (stderr, "Error: radius value equals 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
@@ -137,7 +136,6 @@ dxf_write_circle_struct
         if (dxf_circle.radius == 0.0)
         {
                 fprintf (stderr, "Error: radius value equals 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, dxf_circle.id_code);
-                dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_circle.layer, "") == 0)
