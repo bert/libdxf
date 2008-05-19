@@ -29,6 +29,9 @@
  * <hr>
  */
 
+#include "global.h"
+#include "section.c"
+
 /*!
  * \brief Function generates dxf output to a file for tables entities.
  */
