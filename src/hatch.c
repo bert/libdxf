@@ -165,7 +165,7 @@ dxf_write_hatch
         int pattern_def_lines,
                 /*!< group code = 78\n
                  * number of pattern definition lines. */
-        int boundary_paths,
+        int pattern_boundary_paths,
                 /*!< group code = 91\n
                  * number of boundary paths (loops). */
         int seed_points,
@@ -389,7 +389,7 @@ dxf_write_hatch_boundaries
         int hatch_boundary_objects,
                 /*!< group code = 97\n
                  * number of source boundary objects. */
-        char *hatch_boundary_objects_ref,
+        char *hatch_boundary_objects_ref
                 /*!< group code = 330\n
                  * reference to source boundary objects (multiple entries). */
 )
@@ -428,7 +428,7 @@ dxf_write_hatch_boundaries
                                 *hatch_boundary_path_polyline_x0,
                                 *hatch_boundary_path_polyline_y0,
                                 *hatch_boundary_path_polyline_bulge
-                        )
+                        );
                 }
                 else
                 {
@@ -466,7 +466,7 @@ dxf_write_hatch_boundary_polyline_vertex
 #endif
         fprintf (fp, " 10\n%f\n", x0);
         fprintf (fp, " 20\n%f\n", y0);
-        if (bulge <> 0.0) fprintf (fp, " 42\n%f\n", bulge);
+        if (bulge != 0.0) fprintf (fp, " 42\n%f\n", bulge);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch_boundary_polyline_vertex () function.\n", __FILE__, __LINE__);
 #endif
@@ -550,7 +550,7 @@ dxf_write_hatch_pattern_def_line_dashes
                 /*!< group code = 79\n
                  * array of number of hatch pattern definition line dash
                  * items. */
-        double *dash_length,
+        double *dash_length
                 /*!< group code = 49\n
                  * array of dash lengths for an array of hatch pattern
                  * definition lines. */
@@ -559,7 +559,7 @@ dxf_write_hatch_pattern_def_line_dashes
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_hatch_pattern_def_line_dashes () function.\n", __FILE__, __LINE__);
 #endif
-        if (dash_items <> 0)
+        if (dash_items != 0)
         {
                 int i;
                 for (i = 0; i < dash_items; i++)
@@ -607,7 +607,7 @@ dxf_write_hatch_pattern_data
                 /*!< group code = 79\n
                  * array of number of hatch pattern definition line dash
                  * items. */
-        double **def_line_dash_length,
+        double **def_line_dash_length
                 /*!< group code = 49\n
                  * array of dash lengths for an array of hatch pattern
                  * definition lines. */
@@ -618,20 +618,20 @@ dxf_write_hatch_pattern_data
 #endif
         int i;
         int j;
-        if (def_lines <> 0)
+        if (def_lines != 0)
         {
                 /* draw hatch pattern definition lines */
                 for (i = 0; i < def_lines; i++)
                 {
                         fprintf (fp, " 53\n%f\n", def_line_angle[i]);
                         fprintf (fp, " 43\n%f\n", def_line_x0[i]);
-                        fprintf (fp, " 44\n%f\n", dxf_line_y0[i]);
+                        fprintf (fp, " 44\n%f\n", def_line_y0[i]);
                         fprintf (fp, " 45\n%f\n", def_line_x1[i]);
                         fprintf (fp, " 46\n%f\n", def_line_y1[i]);
                         fprintf (fp, " 79\n%d\n", def_line_dash_items[i]);
                         if (!def_line_dash_items)
                         {
-                                for (j = 0; j < def_line_dashes; j++)
+                                for (j = 0; j < def_line_dash_items; j++)
                                 {
                                         dxf_write_hatch_pattern_def_line_dashes
                                         (
