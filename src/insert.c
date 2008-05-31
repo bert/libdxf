@@ -260,9 +260,9 @@ dxf_write_insert_struct
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
         fprintf (fp, "  2\n%s\n", dxf_insert.block_name);
-        if (dxf_block.id_code != -1)
+        if (dxf_insert.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_block.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_insert.id_code);
         }
         if (strcmp (dxf_insert.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
