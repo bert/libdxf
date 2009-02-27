@@ -1,5 +1,8 @@
 *.o
 *~
 *.bak
+*.dev
+*.layout
+*.win
 .deps
 .git
