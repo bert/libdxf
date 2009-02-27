@@ -1,6 +1,6 @@
 /*!
  * \file section.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008..2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF section entity (\c SECTION).
  *
  * <hr>
@@ -45,6 +45,9 @@ dxf_write_section
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_section () function.\n", __FILE__, __LINE__);
 #endif
         fprintf (fp, "  0\nSECTION\n  2\n%s\n", section_name);
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_section () function.\n", __FILE__, __LINE__);
+#endif
 }
 
 /*!
@@ -60,6 +63,9 @@ dxf_write_endsection
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_endsection () function.\n", __FILE__, __LINE__);
 #endif
         fprintf (fp, "  0\nENDSEC\n");
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_endsection () function.\n", __FILE__, __LINE__);
+#endif
 }
 
 /* EOF */
