@@ -1,6 +1,7 @@
 *.o
 *~
 *.bak
+*.geany
 *.dev
 *.layout
 *.win
