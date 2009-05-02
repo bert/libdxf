@@ -1,6 +1,6 @@
 /*!
  * \file file.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008 ... 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  * \brief Generate dxf output for a complete DXF file.
  *
  * <hr>
@@ -30,49 +30,10 @@
  */
 
 #include "global.h"
+#include "class.h"
+#include "header.h"
 #include "section.c"
-
-/*!
- * \brief Function generates dxf output to a file for tables entities.
- */
-int
-dxf_write_tables
-(
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
-        int *dxf_tables_list,
-                /*!< pointer to list of TABLES. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
-)
-{
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_tables () function.\n", __FILE__, __LINE__);
-#endif
-        char *dxf_section_name = strdup ("TABLES");
-        int dxf_tables_list_iter;
-        int dxf_tables_list_last_iter;
-
-        dxf_write_section (fp, dxf_section_name);
-        dxf_tables_list_iter = 1;
-        dxf_tables_list_last_iter = find_last_iter (dxf_tables_list);
-        while (dxf_tables_list_iter !=  dxf_tables_list_last_iter)
-        {
-                dxf_write_table
-                        (
-                        fp,
-                        *dxf_tables_list,
-                        dxf_tables_list_iter,
-                        acad_version_number
-                        );
-                dxf_tables_list_iter++;
-        }
-        dxf_write_endtab ();
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_tables () function.\n", __FILE__, __LINE__);
-#endif
-        return (EXIT_SUCCESS);
-}
+#include "table.h"
 
 
 /*!
@@ -84,9 +45,11 @@ dxf_write_file
         FILE *fp,
                 /*!< file pointer to output file (or device). */
         DxfHeader dxf_header,
+                /*!< a dxf header. */
         DxfClass dxf_classes_list,
+                /*!< pointer to a list of CLASSES. */
         DxfTable dxf_tables_list,
-                /*!< pointer to list of TABLES. */
+                /*!< pointer to a list of TABLES. */
         int acad_version_number
                 /*!< AutoCAD version number. */
 )
@@ -97,7 +60,7 @@ dxf_write_file
         dxf_init_header (*dxf_header, acad_version_number);
         dxf_write_header (*dxf_header, acad_version_number);
         dxf_write_classes (*dxf_classes_list, acad_version_number);
-        dxf_write_tables (*dxf_tables_list, acad_version_number);
+        dxf_write_tables (fp, *dxf_tables_list, acad_version_number);
         dxf_write_blocks (*dxf_blocks_list, acad_version_number);
         dxf_write_entities (*dxf_entities_list, acad_version_number);
         dxf_write_objects (*dxf_objects_list, acad_version_number);
@@ -108,5 +71,6 @@ dxf_write_file
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */
