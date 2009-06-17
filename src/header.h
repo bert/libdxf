@@ -30,6 +30,7 @@
  */
 
 #include "global.h"
+#include "point.h"
 
 typedef struct
 dxf_header
