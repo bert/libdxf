@@ -3,6 +3,9 @@
  * \author Copyright (C) 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF application identity entity (\c APPID).
  *
+ * A DXF \c APPID entity contains data concerning the application registered
+ * with the drawing involved.\n
+ * It is a table entry in the \c TABLES section of the DXF file.
  * These table entries maintain a set of names for all applications
  * registered with a drawing.
  *
