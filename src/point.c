@@ -46,6 +46,34 @@
 #include "point.h"
 
 /*!
+ * \brief Allocate memory for a \c DxfPoint.
+ *
+ * and fill the memory contents with zeros.
+ */
+DxfPoint
+dxf_malloc_point ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_point () function.\n", __FILE__, __LINE__);
+#endif
+        DxfPoint *dxf_point = NULL;
+        size_t size;
+
+        size = sizeof (struct DxfPoint);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_point = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_point()\n",__FILE__, __LINE__);
+        }
+        memset (dxf_point, 0, size);
+        return (dxf_point);
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_point () function.\n", __FILE__, __LINE__);
+#endif
+}
+
+/*!
  * \brief Write DXF output to a file for a point entity.
  */
 int
