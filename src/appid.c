@@ -3,6 +3,9 @@
  * \author Copyright (C) 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF application identity entity (\c APPID).
  *
+ * These table entries maintain a set of names for all applications
+ * registered with a drawing.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
