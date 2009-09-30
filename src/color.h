@@ -33,6 +33,7 @@
  * <hr>
  */
 
+
 /*!
  * \brief DXF color definitions mapping to standard pen widths.
  */
@@ -62,6 +63,7 @@ dxf_color
                 /*!< color of the entity follows the color definition of the
                  * layer on which it resides. */
 } DxfColor;
+
 
 /*!
  * \brief Colors according to the AutoCAD Color Index (ACI).
