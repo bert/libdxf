@@ -46,8 +46,29 @@ dxf_write_appid
 (
         FILE *fp,
                 /*!< File pointer to output file (or device). */
-        int acad_version_number
+        int acad_version_number,
                 /*!< AutoCAD version number. */
+        int id_code,
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
+        char *application_name,
+                /*!< Name of the application registered with the drawing.\n
+                 * Group code = 2. */
+        int standard_flag
+                /*!< This flag is for the benefit of AutoCAD commands;
+                 * it can be ignored by most programs that read DXF files,
+                 * and need not be set by programs that write DXF files.\n
+                 * bit coded:\n
+                 * 16 = if set, table entry is externally dependent on an
+                 *      Xref.\n
+                 * 32 = if this bit and bit 16 are both set, the externally
+                 *      dependent Xref has been successfully resolved.\n
+                 * 64 = if set, the table entry was referenced by at least
+                 *      one entity in the drawing the last time the drawing
+                 *      was edited.\n
+                 * Group code = 70. */
 )
 {
 #if DEBUG
