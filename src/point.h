@@ -29,11 +29,8 @@
  * <hr>
  */
 
-#include "global.h"
 
-DxfPoint dxf_malloc_point ();
-int dxf_write_point (FILE *fp, int, char *, double, double, double, double, int, int);
-int dxf_write_point_struct (FILE *fp, DxfPoint);
+#include "global.h"
 
 
 /*!
@@ -73,5 +70,11 @@ dxf_point
                 /*!< group code = 67.\n
                  * optional, defaults to 0 (modelspace). */
 } DxfPoint, * DxfPointPtr;
+
+
+DxfPoint dxf_malloc_point ();
+int dxf_write_point (FILE *fp, int, char *, double, double, double, double, int, int);
+int dxf_write_point_struct (FILE *fp, DxfPoint);
+
 
 /* EOF */
