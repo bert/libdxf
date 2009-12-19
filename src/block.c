@@ -150,8 +150,10 @@ dxf_write_block
 int
 dxf_write_block_struct
 (
-        FILE *fp, /*!< file pointer to output device */
-        DxfBlock dxf_block /*!< block entity */
+        FILE *fp,
+                /*!< file pointer to output device */
+        DxfBlock dxf_block
+                /*!< block entity */
 )
 {
 #if DEBUG
