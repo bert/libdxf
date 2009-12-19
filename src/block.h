@@ -98,4 +98,30 @@ dxf_block
                  * 64 = this definition is referenced. */
 } DxfBlock, * DxfBlockPtr;
 
+
+int
+dxf_write_block
+(
+        FILE *fp,
+        int id_code,
+        char *xref_name,
+        char *block_name,
+        char *linetype,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double thickness,
+        int color,
+        int paperspace,
+        int block_type
+);
+int
+dxf_write_block_struct
+(
+        FILE *fp,
+        DxfBlock dxf_block
+);
+
+
 /* EOF */
