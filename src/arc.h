@@ -29,7 +29,9 @@
  * <hr>
  */
 
+
 #include "global.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD arc entity.
@@ -99,5 +101,35 @@ dxf_arc
         int acad_version_number;
                 /*!< AutoCAD version number. */
 } DxfArc, * DxfArcPtr;
+
+
+static int
+dxf_write_arc
+(
+        FILE *fp,
+        int id_code,
+        char *linetype,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0,
+        double thickness,
+        double radius,
+        double start_angle,
+        double end_angle,
+        int color,
+        int paperspace,
+        int acad_version_number
+);
+int
+dxf_write_arc_struct
+(
+        FILE *fp,
+        DxfArc dxf_arc
+);
+
 
 /* EOF */
