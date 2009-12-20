@@ -29,12 +29,14 @@
  * <hr>
  */
 
+
 #include "global.h"
 #include "class.h"
 #include "header.h"
 #include "section.c"
 #include "table.h"
 #include "block.h"
+#include "entity.h"
 
 
 /*!

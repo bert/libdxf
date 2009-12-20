@@ -1,6 +1,6 @@
 /*!
  * \file entity.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF entity typedefinition.
  *
  * <hr>
@@ -29,37 +29,9 @@
  * <hr>
  */
 
+
 #include "global.h"
 
-/*!
- * \brief DXF entity types.
- */
-typedef enum
-dxf_entity_type
-{
-        APPID,
-        ARC,
-        ATTDEF,
-        ATTRIB,
-        BLOCK,
-        CIRCLE,
-        DIMSTYLE,
-        HEADER,
-        INSERT,
-        LAYER,
-        LINE,
-        LTYPE,
-        POINT,
-        POLYLINE,
-        SHAPE,
-        SOLID,
-        STYLE,
-        TEXT,
-        TRACE,
-        UCS,
-        VIEW,
-        VPORT
-} DxfEntityType;
 
 /*!
  * \brief Prints warning on stderr and asks for confirmation (if interactive)
@@ -94,5 +66,29 @@ dxf_skip_entity
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_skip_entity () function.\n", __FILE__, __LINE__);
 #endif
 }
+
+
+/*!
+ * \brief Write DXF output to a file for a table of entities.
+ *
+ * Appears only in \c TABLES section.\n
+ */
+int
+dxf_write_entities
+(
+        char *dxf_entities_list, 
+        int acad_version_number
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_entities () function.\n", __FILE__, __LINE__);
+#endif
+        /*! \todo Add code here. */
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_entities () function.\n", __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
 
 /* EOF */
