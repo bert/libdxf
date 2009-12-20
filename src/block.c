@@ -1,6 +1,6 @@
 /*!
  * \file block.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF block entity (\c BLOCK).
  *
  * <hr>
@@ -29,8 +29,10 @@
  * <hr>
  */
 
+
 #include "global.h"
 #include "block.h"
+
 
 /*!
  * \brief Write DXF output to a file for a block entity.
@@ -144,6 +146,7 @@ dxf_write_block
         return (EXIT_SUCCESS);
 }
 
+
 /*!
  * \brief Write DXF output to fp for a block entity.
  */
@@ -220,6 +223,7 @@ dxf_write_block_struct
         return (EXIT_SUCCESS);
 }
 
+
 /*!
  * \brief Write DXF output to a file for an end of block marker.
  *
@@ -238,5 +242,29 @@ dxf_write_endblk (FILE *fp)
 #endif
         return (EXIT_SUCCESS);
 }
+
+
+/*!
+ * \brief Write DXF output to a file for a table of blocks.
+ *
+ * Appears only in \c TABLES section.\n
+ */
+int
+dxf_write_blocks
+(
+        char *dxf_blocks_list, 
+        int acad_version_number
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_blocks () function.\n", __FILE__, __LINE__);
+#endif
+        /*! \todo Add code here. */
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_blocks () function.\n", __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
 
 /* EOF */

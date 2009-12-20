@@ -1,6 +1,6 @@
 /*!
  * \file block.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Definition of a DXF block entity (\c BLOCK).
  *
  * <hr>
@@ -99,6 +99,9 @@ dxf_block
 } DxfBlock, * DxfBlockPtr;
 
 
+char *dxf_blocks_list = NULL;
+
+
 int
 dxf_write_block
 (
@@ -121,6 +124,12 @@ dxf_write_block_struct
 (
         FILE *fp,
         DxfBlock dxf_block
+);
+int
+dxf_write_blocks
+(
+        char *dxf_blocks_list, 
+        int acad_version_number
 );
 
 
