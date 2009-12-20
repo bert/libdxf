@@ -34,6 +34,7 @@
 #include "header.h"
 #include "section.c"
 #include "table.h"
+#include "block.h"
 
 
 /*!
@@ -57,14 +58,14 @@ dxf_write_file
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_file () function.\n", __FILE__, __LINE__);
 #endif
-        dxf_init_header (*dxf_header, acad_version_number);
-        dxf_write_header (*dxf_header, acad_version_number);
-        dxf_write_classes (*dxf_classes_list, acad_version_number);
-        dxf_write_tables (fp, *dxf_tables_list, acad_version_number);
-        dxf_write_blocks (*dxf_blocks_list, acad_version_number);
-        dxf_write_entities (*dxf_entities_list, acad_version_number);
-        dxf_write_objects (*dxf_objects_list, acad_version_number);
-        dxf_write_thumbnail (*dxf_thumbnail, acad_version_number);
+        dxf_init_header (dxf_header, acad_version_number);
+        dxf_write_header (dxf_header, acad_version_number);
+        dxf_write_classes (dxf_classes_list, acad_version_number);
+        dxf_write_tables (fp, dxf_tables_list, acad_version_number);
+        dxf_write_blocks (dxf_blocks_list, acad_version_number);
+        dxf_write_entities (dxf_entities_list, acad_version_number);
+        dxf_write_objects (dxf_objects_list, acad_version_number);
+        dxf_write_thumbnail (dxf_thumbnail, acad_version_number);
         dxf_write_eof();
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_file () function.\n", __FILE__, __LINE__);
