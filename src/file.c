@@ -1,6 +1,6 @@
 /*!
  * \file file.c
- * \author Copyright (C) 2008 ... 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008, 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  * \brief Generate dxf output for a complete DXF file.
  *
  * <hr>
