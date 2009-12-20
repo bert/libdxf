@@ -30,6 +30,7 @@
  * <hr>
  */
 
+
 /* prevent following headers from being loaded a zillion times */
 #ifndef _GLOBAL_H
 #define _GLOBAL_H
@@ -46,7 +47,9 @@
 #include <math.h>
 #include <errno.h>
 
+
 #endif /* _GLOBAL_H */
+
 
 /*!
  * Debugging on/off toggle.
@@ -183,5 +186,6 @@
  * reasonably safe to assume that this is a valid text style.
  */
 #define DXF_DEFAULT_TEXTSTYLE "STANDARD"
+
 
 /* EOF */
