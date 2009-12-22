@@ -35,8 +35,9 @@
  * <hr>
  */
 
-#include "global.h"
+
 #include "appid.h"
+
 
 /*!
  * \brief Write DXF output for an \c APPID entity.
@@ -94,6 +95,7 @@ dxf_write_appid
         return (EXIT_SUCCESS);
 }
 
+
 /*!
  * \brief Write DXF output to a file for an \c APPID entity.
  */
@@ -128,5 +130,6 @@ dxf_write_appid_struct
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF*/
