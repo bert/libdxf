@@ -30,6 +30,7 @@
  */
 
 #include "global.h"
+#include "class.h"
 
 /*!
  * \brief Write DXF output to a file for a class section.
