@@ -37,6 +37,7 @@
 #include "table.h"
 #include "block.h"
 #include "entity.h"
+#include "object.h"
 
 
 /*!
