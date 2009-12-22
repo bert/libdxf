@@ -1,7 +1,7 @@
 /*!
- * \file object.h
+ * \file object.c
  * \author Copyright (C) 2008, 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Header file for a DXF object entity.
+ * \brief Functions for DXF objects.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -25,30 +25,35 @@
  * exchange of drawing files between various Computer Aided Drafting
  * programs.\n
  * DXF is an industry standard designed by Autodesk(TM).\n
- * For more details see http://www.autodesk.com .
+ * For more details see http://www.autodesk.com.\n\n
  * <hr>
  */
 
 
-#include "global.h"
-#include "param.h"
+#include "object.h"
 
 
 /*!
- * \brief DXF definition of an object.
+ * \brief Write DXF output to a file for a table of objects.
+ *
+ * Appears only in \c TABLES section.\n
  */
-typedef struct
-dxf_object
+int
+dxf_write_objects
+(
+        char *dxf_objects_list, 
+        int acad_version_number
+)
 {
-        DxfEntityType entity_type;
-                /*!< dxf entity type. */
-        DxfParam parameter[DXF_MAX_PARAM];
-                /*!< corresponding values stored in here. */
-} DxfObject;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_objects () function.\n", __FILE__, __LINE__);
+#endif
+        /*! \todo Add code here. */
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_objects () function.\n", __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
 
 
-char *dxf_objects_list = NULL;
-
-
-int dxf_write_objects (char *dxf_objects_list, int acad_version_number);
 /* EOF */
