@@ -1,7 +1,7 @@
 /*!
- * \file eof.c
+ * \file eof.h
  * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief DXF end of file marker (\c EOF).
+ * \brief Header file for DXF end of file marker (\c EOF).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -29,25 +29,18 @@
  * <hr>
  */
 
-#include "eof.h"
 
-/*!
- * \brief Write DXF output for an End Of File marker.
- */
-int
-dxf_write_eof
-(
-        FILE *fp
-                /*!< file pointer to output file (or device). */
-)
-{
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_eof () function.\n", __FILE__, __LINE__);
-#endif
-        fprintf (fp, "  0\nEOF\n");
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_eof () function.\n", __FILE__, __LINE__);
-#endif
-}
+#ifndef __EOF_H_INCLUDED__
+#define __EOF_H_INCLUDED__
+
+
+#include "global.h"
+
+
+int dxf_write_eof (FILE *fp);
+
+
+#endif /* __EOF_H_INCLUDED__ */
+
 
 /* EOF */
