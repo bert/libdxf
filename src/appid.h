@@ -35,7 +35,13 @@
  * <hr>
  */
 
+
+#ifndef __APPID_H_INCLUDED__
+#define __APPID_H_INCLUDED__
+
+
 #include "global.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD application identification.
@@ -68,5 +74,9 @@ dxf_appid
                  *      was edited.\n
                  * Group code = 70. */
 } DxfAppid, * DxfAppidPtr;
+
+
+#endif /* __APPID_H_INCLUDED__ */
+
 
 /* EOF */
