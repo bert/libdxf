@@ -1,7 +1,7 @@
 /*!
  * \file object.h
  * \author Copyright (C) 2008, 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Header file for a DXF object entity.
+ * \brief Header file for a DXF object entity functions.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -30,6 +30,10 @@
  */
 
 
+#ifndef __OBJECT_H_INCLUDED__
+#define __OBJECT_H_INCLUDED__
+
+
 #include "global.h"
 #include "param.h"
 
@@ -51,4 +55,9 @@ char *dxf_objects_list = NULL;
 
 
 int dxf_write_objects (char *dxf_objects_list, int acad_version_number);
+
+
+#endif /* __OBJECT_H_INCLUDED__ */
+
+
 /* EOF */
