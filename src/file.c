@@ -38,6 +38,7 @@
 #include "block.h"
 #include "entity.h"
 #include "object.h"
+#include "thumbnail.h"
 
 
 /*!
