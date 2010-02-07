@@ -235,6 +235,16 @@ dxf_ACI_color
         dxf_ACI_color[157] = RGBColor (63,95,127),
         dxf_ACI_color[158] = RGBColor (0,38,76),
         dxf_ACI_color[159] = RGBColor (38,57,76),
+        dxf_ACI_color[160] = RGBColor (0,63,255),
+        dxf_ACI_color[161] = RGBColor (127,159,255),
+        dxf_ACI_color[162] = RGBColor (0,51,204),
+        dxf_ACI_color[163] = RGBColor (102,127,204),
+        dxf_ACI_color[164] = RGBColor (0,38,153),
+        dxf_ACI_color[165] = RGBColor (76,95,153),
+        dxf_ACI_color[166] = RGBColor (0,31,127),
+        dxf_ACI_color[167] = RGBColor (63,79,127),
+        dxf_ACI_color[168] = RGBColor (0,19,76),
+        dxf_ACI_color[169] = RGBColor (38,47,76),
         dxf_ACI_color[255] = RGBColor (255,255,255)
 }
 DxfACIColor;
