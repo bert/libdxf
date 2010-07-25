@@ -39,6 +39,7 @@
 #include "entity.h"
 #include "object.h"
 #include "thumbnail.h"
+#include "eof.h"
 
 
 /*!
