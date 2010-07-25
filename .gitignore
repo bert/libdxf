@@ -4,6 +4,5 @@
 *.geany
 *.dev
 *.layout
-*.win
 .deps
 .git
