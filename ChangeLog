@@ -1,0 +1,675 @@
+commit b6ef800586170b056e6cf554b641ac910a0eea5e
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun Jul 25 23:08:01 2010 +0200
+
+    Added an AUTHORS file.
+
+commit f9ba9a7f83a721b19a694c6a94151cf71ff26fdc
+Author: lmatos <gass@otiliamatos.ath.cx>
+Date:   Sun Jul 25 20:33:49 2010 +0800
+
+    added the m4 directory to gitignore
+
+commit 04b97e387bcaa8726648c6bfdbbc7428d9004e3e
+Author: lmatos <gass@otiliamatos.ath.cx>
+Date:   Sun Jul 25 20:23:45 2010 +0800
+
+    updated gitignore with anjuta files
+
+commit 212f7e2cd4ac5045e70a6ab151bb43bbf7dd0c00
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sun Jul 25 22:33:23 2010 +0200
+
+    Lift the ban on Makefile.win
+
+commit e66028d5d722245f8d6983411d62a5ca12bc14c9
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sun Jul 25 22:32:55 2010 +0200
+
+    Added a makefile for compiling under Windows.
+
+commit 2c6a4904f86d0c62b1d0e111f40c6a3126d58a7e
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sun Jul 25 22:31:18 2010 +0200
+
+    Include eof.h
+
+commit 68752adb02471d2de1ff20e3dcbd3e0caf792408
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun Jul 25 21:45:03 2010 +0200
+
+    Added a BUGS file to give direction where to report.
+
+commit ccbb2cfcdfd95356bb4c886662bfcbb5abf513bb
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun Feb 7 19:00:43 2010 +0100
+
+    Added some more colors.
+
+commit fb508ecf23569d181203bc804af669afa6140d99
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sat Feb 6 16:56:41 2010 +0100
+
+    Added more color definitions.
+
+commit 9c4060519228e9a2c98574b61fc2931073a02a66
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sat Feb 6 16:32:50 2010 +0100
+
+    Added more color definitions.
+
+commit f43eff6babab3a82d37a7794df3da8c8688575af
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sat Feb 6 16:02:47 2010 +0100
+
+    Added more color definitions.
+
+commit 88c14bb360a32f18e8ca3c78f7af080abc1b037a
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Mon Jan 25 14:29:16 2010 +0100
+
+    Ignore more stuff.
+
+commit 902432c53bff343b77395af0f133803e94a883a8
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Mon Jan 25 14:23:48 2010 +0100
+
+    Include thumbnail.h
+
+commit 2630c360c20c6087ba911753e6fb19a3c59f2c24
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Mon Jan 25 14:23:28 2010 +0100
+
+    Added thumbnail.[ch]
+
+commit 1f486ca7b050ac231f27333a15572a6ee1a33494
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Mon Jan 25 14:14:52 2010 +0100
+
+    Added guards.
+
+commit 7c745c79b7276cd4186d567a090cf4e319e4ee0d
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Wed Dec 23 21:23:02 2009 +0100
+
+    Added guards.
+
+commit fa6f1de71a4be9e8852bd4ac497046e001973828
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Wed Dec 23 21:09:36 2009 +0100
+
+    Include eof.h.
+
+commit d35457cccba31d40752f2542e918e1dddef2e263
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Tue Dec 22 07:46:23 2009 +0100
+
+    Removed double invoking of global.h.
+
+commit 6acb16c8491ce374871acbc4ef815d926e743480
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Tue Dec 22 07:18:32 2009 +0100
+
+    Include object.h.
+
+commit 80444cce7d1bf72bdfe3b3db70f5c0ff59cfe60b
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Tue Dec 22 07:18:15 2009 +0100
+
+    Added object.c.
+
+commit e61f21adefb9cbee17a6153f86ccfe57dc3e1942
+Merge: 9919ba8 a37391c
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Tue Dec 22 07:12:24 2009 +0100
+
+    Merge branch 'master' of git@github.com:bert/libdxf
+
+commit a37391ccd89bedcfbd7f4c7303db6f62c05b828b
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Mon Dec 21 20:15:13 2009 +0100
+
+    Include class.h
+
+commit 9919ba84aa7f4c94ecc9b4501fe67c076f869753
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sun Dec 20 16:17:43 2009 +0100
+
+    Changed the copyright notice.
+
+commit 38cc1965005fc3446fd87a9d207c62fe8f9b6551
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sun Dec 20 15:59:17 2009 +0100
+
+    Included entity.h and dxf_write_entities function.
+
+commit 00b9caebee309be9684a791389638d490d267d9d
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sun Dec 20 15:46:22 2009 +0100
+
+    Hmm, windoze is complaining very stubbornly about CR+LF.
+
+commit aba5117fba5e369f1bc498c7b652d5587dddc380
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sun Dec 20 15:45:19 2009 +0100
+
+    Include block.h.
+
+commit 3a92067f99d4ba1f287a0531864d47e2c2c44e47
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sun Dec 20 15:44:49 2009 +0100
+
+    Include dxf_write_blocks function.
+
+commit d2e1ce0f4d12c392b5c82d04f9120fbf3e4207ff
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sun Dec 20 15:41:26 2009 +0100
+
+    Added white space.
+
+commit fe5575e304b542c5459d9aae06c3fef4f2d523e4
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sun Dec 20 00:53:12 2009 +0100
+
+    Changed doxygen comments indentation.
+
+commit 2021461d227d26ae9296f56d9a3ba95f69983c8c
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sun Dec 20 00:52:18 2009 +0100
+
+    Added forward declarations.
+
+commit 54e5a301fb73980cfbf028cd7290edf65217beb9
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sun Dec 20 00:39:00 2009 +0100
+
+    Added forward declarations.
+
+commit 7d2861dacae2997aeb1f54977ea20dec289cc50b
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sun Dec 20 00:31:20 2009 +0100
+
+    Moved struct before forward declarations.
+
+commit 5add6d119af078d8063bad84f637f9e52222a920
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu Oct 1 08:29:22 2009 +0200
+
+    Added dxf_RGB_color_name[] enum.
+
+commit c77f35dee79d47dd46ccd4bd4b374dfeb5c76b75
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Wed Sep 30 10:32:10 2009 +0200
+
+    Added missing variables in function declaration of dxf_write_appid()
+
+commit 73068b300d3a1102afab1987836f41a4210a5c9d
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Wed Sep 30 10:23:49 2009 +0200
+
+    Added whitespace for clear reading.
+
+commit 60f420d1261ecbec17cc95287a30f99591c3eb6e
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Wed Sep 30 10:19:16 2009 +0200
+
+    Bumped the year on the coyright notice.
+    
+    Reformatted the GPL notice.
+
+commit 12d567b7db0d22a57807a720be4e2f081c32234e
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Tue Sep 29 22:08:45 2009 +0200
+
+    Added forward declarations to point.h
+
+commit fe61c7c31157a88813efe2550397bc5a5a7c9eae
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Tue Sep 29 22:08:11 2009 +0200
+
+    Added dxf_malloc_point()
+
+commit 6913fb3dd915bb6251a5d63719261375cc74e096
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Tue Sep 29 22:07:40 2009 +0200
+
+    Added comments to the file header of point.c
+
+commit 3aeb023b0b5170042739eb6b607f2e3eb8cacc9b
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Tue Sep 29 21:18:18 2009 +0200
+
+    Added more comments to the file headers of attrib.[ch]
+
+commit f248b704c5d85f8f7a4414a8191af3c8f80be635
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Tue Sep 29 21:08:34 2009 +0200
+
+    Added comment in the file header of appid.c
+
+commit 49be789226205975b2ac69367bf952c1f06c231e
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Tue Sep 29 21:05:09 2009 +0200
+
+    Added appid.c
+
+commit 24d1c8fe751ecfc8d882678799d9ad9e0d1e9130
+Merge: 7ef4559 8c100ec
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Wed Jun 17 07:39:30 2009 +0200
+
+    Merge branch 'master' of git@github.com:bert/libdxf
+
+commit 7ef4559395b5b7068193b78db04b7e818006cf38
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Wed Jun 17 07:38:30 2009 +0200
+
+    Added more information.
+
+commit 8c100ece55bf267b49de22870d5ea70ae50ba883
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sat May 2 13:12:27 2009 +0200
+
+    Table code from file.c
+
+commit 45a287de81b5a4d3bf3f32a13459073c4a09cf50
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sat May 2 13:11:49 2009 +0200
+
+    Included point.h
+
+commit d35079ac512b7169560fae1b0cb52f9e3c570422
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Sat May 2 13:11:18 2009 +0200
+
+    Moved dxf_write_tables() to table.[ch]
+
+commit b7edd21ef840fe416fb5fa9b512633e83e6c5fe6
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sat Mar 7 12:03:40 2009 +0100
+
+    Added another file type to be ignored.
+
+commit 7b56d5f21f779d6b01017c1bbd323335ead01017
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Fri Feb 27 19:56:54 2009 +0100
+
+    Added files types to be ignored in the Microsoft universe.
+
+commit a53be59876ae94e3be4534787634641ddb73df35
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Fri Feb 27 19:53:23 2009 +0100
+
+    Added code for the CLASS entity.
+
+commit 76cc65ec5718e1e0ac4a9ca138e4005d2d4493a7
+Author: lambert <ljh4timm@xs4all.nl>
+Date:   Fri Feb 27 19:51:21 2009 +0100
+
+    Bumped the copyright notice to 2009 and
+    added debug information messages for leaving
+    the function.
+
+commit 22daf33d4498b33cb9e05e2526d6bcd1e5d37460
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Fri Jun 6 07:54:07 2008 +0200
+
+    Added Drawing Interchange and File Formats Release 12 information.
+
+commit 31995d1b425e92b1344f886005140989c654b36c
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sat May 31 17:41:18 2008 +0200
+
+    Fixed small bugs in insert.c
+
+commit da12c7aa5687ecb5d62ac18bd4830171259144d2
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sat May 31 17:39:02 2008 +0200
+
+    Fixed small bugs.
+
+commit 8e6dfed0aef54cfd70ab0a53af2d9d8d631662f1
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Mon May 19 08:13:29 2008 +0200
+
+    Added #include directives in file.c
+
+commit 155b7c7a9f58f4d52f7660d032cc911144b5623c
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Mon May 19 08:04:43 2008 +0200
+
+    Removed obsolete function calls in ellipse.c
+    
+    Added return value.
+
+commit 276ec1db93e517f7a6435eacc5e0d5c1243725d3
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Mon May 19 08:02:58 2008 +0200
+
+    Removed obsolete function calls in circle.c
+
+commit 466f8c6ab496b14d9b8ee1368b98080a6df3ae2c
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Mon May 19 07:56:40 2008 +0200
+
+    Squashed bugs in block.c
+    
+    Added return values.
+
+commit fd6922646f8f3ddbd025bf7faca14a09b91a508a
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Mon May 19 07:44:08 2008 +0200
+
+    Removed obsolete function calls in attrib.c
+
+commit fc4f58263084869d3cf4942838bcb8a733db566d
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Mon May 19 07:41:17 2008 +0200
+
+    Removed obsolete function calls in attdef.c
+
+commit ec4291913e34fcc5e3433951ae8676581485823d
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 22:32:15 2008 +0200
+
+    Removed obsolete function calls in polyline.c
+
+commit c2cab8295f540aeff6c711bdaf5ae1c04bed7218
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 19:52:00 2008 +0200
+
+    Removed a trailing | character in polyline.h.
+
+commit 1c756a5b742a3dfa8a5b0cca7534dd6237affc8c
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 19:47:20 2008 +0200
+
+    Bugs squashed in shape.c
+    
+    Removed obsolete function calls.
+    Replaced function end to its proper place.
+
+commit e837cc2361f1e17c25b36e22a611f9b130a370f7
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 19:37:32 2008 +0200
+
+    Added defines.
+    
+    Added the maximum of parameters in a DxfObject.
+    Added the maximum number of dash length items in a DxfLType.
+
+commit 5dfe597677ffe5cf0f810224e3b52b49905cfbd5
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 19:30:14 2008 +0200
+
+    Added vport.h
+
+commit 819d99a40f267970c0afd5d2a4a586f629d380bd
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 19:28:43 2008 +0200
+
+    Added view.h
+
+commit ac6eb19f10076777c976ee7cdaf91596b4aa0bc3
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 19:14:34 2008 +0200
+
+    Added vertex.h
+
+commit 77d49534203ca8192d4558b50d92ada7ec66cfea
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 19:14:09 2008 +0200
+
+    Added vertex.c
+
+commit 245e2fddefaa8ed768272b71f0a3f81a07faf1f8
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 19:10:58 2008 +0200
+
+    Added ucs.h
+
+commit 540fe77c3aafcdd20391f613c6c6a865a870df06
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 19:02:48 2008 +0200
+
+    Added trace.h
+
+commit 0ad6b60c5f9c4b8ad9758cc260203213a849e9ee
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 19:02:18 2008 +0200
+
+    Added trace.c
+
+commit 7b7ca5b21e5dfe4e4b84998359924cf62bc7d512
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 18:01:07 2008 +0200
+
+    Added text.h
+
+commit 28066702949be77f12e395063409ebe2ba738b27
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 18:00:40 2008 +0200
+
+    Added text.c
+
+commit 41d9e743cf405ffc9c3c5c45cc40296cd552f08a
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 17:55:24 2008 +0200
+
+    Added style.h
+
+commit bbd3eae5411f35af6870a3e4bac9e3ec3e634661
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 16:22:24 2008 +0200
+
+    Added solid.h
+
+commit 87fd9969371db195db67595384ff1e8dbd6f6943
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 16:21:55 2008 +0200
+
+    Added solid.c
+
+commit 014cd3e7abcba674c19a951156400bb45a2e659a
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 16:11:53 2008 +0200
+
+    Added doc/.gitignore
+
+commit 46c88a54e5bdc64cbb03a46607f78473a80c6853
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Sun May 18 16:11:19 2008 +0200
+
+    Added .gitignore
+
+commit a2c2c88a9e9179e842c2b92c9429bc21145d05de
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Fri May 16 10:34:53 2008 +0200
+
+    Added doc/libDXF-dox-no-call-graphs.dox and doc/libDXF-dox-with-call-graphs.dox .
+
+commit d732ffc68b5fddad38392bf4effb195c2a45bd44
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Fri May 2 06:02:43 2008 +0200
+
+    Added shape.c and shape.h
+
+commit 551368a1824406812bacc9a9fbef86d2af8cb02d
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 22:29:37 2008 +0200
+
+    Added section.c
+
+commit e528db1c64c88d3999a4e360772f0e93d8caadc3
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 22:19:06 2008 +0200
+
+    Added polyline.c and polyline.h
+
+commit 598e111225f8b296283911dfef98ce10a5835c99
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 22:18:25 2008 +0200
+
+    Added dxf_write_lwpolyline() on lwpolyline.c
+
+commit b547ae63edc5f18f1dee98e34f8843fbe3cdfafc
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 22:12:19 2008 +0200
+
+    Added point.c and point.h
+
+commit 5022f156eea5f3a66ca299cbac497d6f1e5de753
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 22:08:34 2008 +0200
+
+    Added param.h
+
+commit 52660aaf55848c46a55934d123fe233c9fe28c9a
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 22:05:48 2008 +0200
+
+    Added object.h
+
+commit 27b96f0a47547e508cb16fc48c84fbf30942a467
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 22:03:41 2008 +0200
+
+    Added lwpolyline.c
+
+commit cbffae97e0104a00eaba08849b4229236ddd7839
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 21:42:15 2008 +0200
+
+    Added ltype.c and ltype.h
+
+commit 0f890e283d4d5cf7b92b502d55a57e705629c284
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 21:39:01 2008 +0200
+
+    Added line.c and line.h
+
+commit 8baf3f9c1f9f15ed31ce6a2358297f701ee9cc56
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 21:11:19 2008 +0200
+
+    Added layer.c and layer.h
+
+commit ef228e17294f5a651a8f76fdfc2be0083cac7ae4
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 21:09:38 2008 +0200
+
+    Added insert.c and insert.h
+
+commit 7457b077fe499e6cd4657d2e5b0af21437eb3317
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 21:06:51 2008 +0200
+
+    Added header.c and header.h
+
+commit 343f0f2665de85aa653955f7bd6d0d74dfa14565
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 21:04:40 2008 +0200
+
+    Added hatch.c and hatch.h
+
+commit 32caae29c8e33645fd3e61001c1683b27bce2791
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 21:00:11 2008 +0200
+
+    Added global.h
+
+commit c4beae95566b6a927f580955ccb50fee07b28924
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 20:54:17 2008 +0200
+
+    Added file.c
+
+commit 59ecb8a10cc983a90321b6b7e6211f294597b8cf
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 20:53:09 2008 +0200
+
+    Added eof.c
+
+commit b9dbab238e5e7f22780514653cb031503243679f
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 20:52:40 2008 +0200
+
+    Added entity.c
+
+commit a2c86a474326312022f4a7bf2658f790aad9304f
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 20:50:49 2008 +0200
+
+    Added endtab.c
+
+commit c815eeb69c38a0d55842da3295a373574963661d
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 20:50:22 2008 +0200
+
+    Added endseq.c
+
+commit c2cfd14dc6c8281867d4b37062071317caee6d32
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 20:32:27 2008 +0200
+
+    Added ellipse.c and ellipse.h
+
+commit c53eeec3b46be8fb0e8f9f48f8fc34e14e6d49c1
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 20:18:03 2008 +0200
+
+    Added dim.h
+
+commit 88d9ec5e16b70d08bc61edeb658a996e184cf7ae
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 20:15:18 2008 +0200
+
+    Added comment.c
+
+commit 2acdc597cc8b837e49bd9dbe3e0781db09419599
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 20:13:25 2008 +0200
+
+    Added color.h
+
+commit d0ad9b72215bf54b31e8de13837deafc43005e8f
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 20:11:52 2008 +0200
+
+    Added circle.c and circle.h
+
+commit 8268a247e54bb6c246bc3deb6bf4d32925050456
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 20:07:31 2008 +0200
+
+    Added block.c and block.h
+
+commit 8cfb58b51c90cde1c7a964682c02c8499b2277b2
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 20:04:48 2008 +0200
+
+    Added attrib.c and attrib.h
+
+commit c0e06d9a79e49f95b70078e959036103058900ac
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 20:03:13 2008 +0200
+
+    Added attdef.c and attdef.h
+
+commit f910ab33388a73bbc7f925b1a82cdd773ab28f1f
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 19:57:46 2008 +0200
+
+    Added arc.c and arc.h
+
+commit d2812c57068b9873a6cb2efd4c14e8e18705db37
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 19:06:21 2008 +0200
+
+    Added appid.h
+
+commit 2fef2931eb1d2567f23209ad37fbced3809cf58d
+Author: Bert Timmerman <bert.timmerman@xs4all.nl>
+Date:   Thu May 1 19:02:13 2008 +0200
+
+    Initial commit
