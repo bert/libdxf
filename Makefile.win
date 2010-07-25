@@ -1,0 +1,120 @@
+# Project: libdxf
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = src/appid.o src/arc.o src/attdef.o src/attrib.o src/block.o src/circle.o src/class.o src/comment.o src/ellipse.o src/endseq.o src/endtab.o src/entity.o src/eof.o src/file.o src/hatch.o src/header.o src/insert.o src/layer.o src/line.o src/ltype.o src/lwpolyline.o src/point.o src/polyline.o src/section.o src/shape.o src/solid.o src/table.o src/text.o src/trace.o src/vertex.o src/thumbnail.o $(RES)
+LINKOBJ  = src/appid.o src/arc.o src/attdef.o src/attrib.o src/block.o src/circle.o src/class.o src/comment.o src/ellipse.o src/endseq.o src/endtab.o src/entity.o src/eof.o src/file.o src/hatch.o src/header.o src/insert.o src/layer.o src/line.o src/ltype.o src/lwpolyline.o src/point.o src/polyline.o src/section.o src/shape.o src/solid.o src/table.o src/text.o src/trace.o src/vertex.o src/thumbnail.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib"  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include" 
+BIN  = libdxf.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS)  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before libdxf.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o "libdxf.exe" $(LIBS)
+
+src/appid.o: src/appid.c
+	$(CC) -c src/appid.c -o src/appid.o $(CFLAGS)
+
+src/arc.o: src/arc.c
+	$(CC) -c src/arc.c -o src/arc.o $(CFLAGS)
+
+src/attdef.o: src/attdef.c
+	$(CC) -c src/attdef.c -o src/attdef.o $(CFLAGS)
+
+src/attrib.o: src/attrib.c
+	$(CC) -c src/attrib.c -o src/attrib.o $(CFLAGS)
+
+src/block.o: src/block.c
+	$(CC) -c src/block.c -o src/block.o $(CFLAGS)
+
+src/circle.o: src/circle.c
+	$(CC) -c src/circle.c -o src/circle.o $(CFLAGS)
+
+src/class.o: src/class.c
+	$(CC) -c src/class.c -o src/class.o $(CFLAGS)
+
+src/comment.o: src/comment.c
+	$(CC) -c src/comment.c -o src/comment.o $(CFLAGS)
+
+src/ellipse.o: src/ellipse.c
+	$(CC) -c src/ellipse.c -o src/ellipse.o $(CFLAGS)
+
+src/endseq.o: src/endseq.c
+	$(CC) -c src/endseq.c -o src/endseq.o $(CFLAGS)
+
+src/endtab.o: src/endtab.c
+	$(CC) -c src/endtab.c -o src/endtab.o $(CFLAGS)
+
+src/entity.o: src/entity.c
+	$(CC) -c src/entity.c -o src/entity.o $(CFLAGS)
+
+src/eof.o: src/eof.c
+	$(CC) -c src/eof.c -o src/eof.o $(CFLAGS)
+
+src/file.o: src/file.c
+	$(CC) -c src/file.c -o src/file.o $(CFLAGS)
+
+src/hatch.o: src/hatch.c
+	$(CC) -c src/hatch.c -o src/hatch.o $(CFLAGS)
+
+src/header.o: src/header.c
+	$(CC) -c src/header.c -o src/header.o $(CFLAGS)
+
+src/insert.o: src/insert.c
+	$(CC) -c src/insert.c -o src/insert.o $(CFLAGS)
+
+src/layer.o: src/layer.c
+	$(CC) -c src/layer.c -o src/layer.o $(CFLAGS)
+
+src/line.o: src/line.c
+	$(CC) -c src/line.c -o src/line.o $(CFLAGS)
+
+src/ltype.o: src/ltype.c
+	$(CC) -c src/ltype.c -o src/ltype.o $(CFLAGS)
+
+src/lwpolyline.o: src/lwpolyline.c
+	$(CC) -c src/lwpolyline.c -o src/lwpolyline.o $(CFLAGS)
+
+src/point.o: src/point.c
+	$(CC) -c src/point.c -o src/point.o $(CFLAGS)
+
+src/polyline.o: src/polyline.c
+	$(CC) -c src/polyline.c -o src/polyline.o $(CFLAGS)
+
+src/section.o: src/section.c
+	$(CC) -c src/section.c -o src/section.o $(CFLAGS)
+
+src/shape.o: src/shape.c
+	$(CC) -c src/shape.c -o src/shape.o $(CFLAGS)
+
+src/solid.o: src/solid.c
+	$(CC) -c src/solid.c -o src/solid.o $(CFLAGS)
+
+src/table.o: src/table.c
+	$(CC) -c src/table.c -o src/table.o $(CFLAGS)
+
+src/text.o: src/text.c
+	$(CC) -c src/text.c -o src/text.o $(CFLAGS)
+
+src/trace.o: src/trace.c
+	$(CC) -c src/trace.c -o src/trace.o $(CFLAGS)
+
+src/vertex.o: src/vertex.c
+	$(CC) -c src/vertex.c -o src/vertex.o $(CFLAGS)
+
+src/thumbnail.o: src/thumbnail.c
+	$(CC) -c src/thumbnail.c -o src/thumbnail.o $(CFLAGS)
