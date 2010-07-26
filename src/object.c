@@ -41,7 +41,7 @@
 int
 dxf_write_objects
 (
-        char *dxf_objects_list, 
+        char *dxf_objects_list2, 
         int acad_version_number
 )
 {
