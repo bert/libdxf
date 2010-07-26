@@ -71,7 +71,7 @@ dxf_write_file
         dxf_write_entities (dxf_entities_list, acad_version_number);
         dxf_write_objects (dxf_objects_list, acad_version_number);
         dxf_write_thumbnail (dxf_thumbnail, acad_version_number);
-        dxf_write_eof();
+        dxf_write_eof(fp);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_file () function.\n", __FILE__, __LINE__);
 #endif
