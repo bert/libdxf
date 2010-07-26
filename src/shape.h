@@ -1,6 +1,6 @@
 /*!
  * \file shape.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Definition of a DXF shape entity (\c SHAPE).
  *
  * <hr>
@@ -29,7 +29,13 @@
  * <hr>
  */
 
+
+#ifndef SHAPE_H
+#define SHAPE_H
+
+
 #include "global.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD shape entity.
@@ -76,5 +82,9 @@ dxf_shape
                 /*!< group code = 67\n
                  * optional, defaults to 0 (modelspace). */
 } DxfShape, * DxfShapePtr;
+
+
+#endif /* SHAPE_H */
+
 
 /* EOF */
