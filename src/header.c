@@ -1,6 +1,6 @@
 /*!
  * \file header.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  * \brief DXF header section.
  *
  * <hr>
@@ -29,8 +29,26 @@
  * <hr>
  */
 
+
 #include "global.h"
 #include "header.h"
+
+
+static char *acad_version_string (int version_number)
+{
+        switch (version_number)
+        {
+                case AC1009: return "AC1009";
+                case AC1012: return "AC1012";
+                case AC1014: return "AC1014";
+                case AC1015: return "AC1015";
+                case AC1016: return "AC1016";
+                case AC1017: return "AC1017";
+                case AC1018: return "AC1018";
+        }
+        return NULL;
+}
+
 
 /*!
  * \brief Initialize a dxf header.
@@ -354,7 +372,7 @@ dxf_init_header
                         dxf_header.ProjectName = strdup ("");
                 }
         }
-        dxf_header.AcadVer = strdup (acad_version_string);
+        dxf_header.AcadVer = strdup (acad_version_string (acad_version_number));
         dxf_header.InsBase.x0 = 0.0;
         dxf_header.InsBase.y0 = 0.0;
         dxf_header.InsBase.z0 = 0.0;
@@ -511,6 +529,7 @@ dxf_init_header
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_header () function.\n", __FILE__, __LINE__);
 #endif
 }
+
 
 /*!
  * \brief Write DXF output to a file for a metric DXF header.
@@ -714,6 +733,7 @@ dxf_write_header_metric_new
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_header_metric_new () function.\n", __FILE__, __LINE__);
 #endif
 }
+
 
 /*!
  * \brief Write DXF output to a file for a dxf header.
@@ -960,5 +980,6 @@ dxf_write_header_struct
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */
