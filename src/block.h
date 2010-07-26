@@ -29,7 +29,13 @@
  * <hr>
  */
 
+
+#ifndef BLOCK_H
+#define BLOCK_H
+
+
 #include "global.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD block entity.
@@ -99,7 +105,7 @@ dxf_block
 } DxfBlock, * DxfBlockPtr;
 
 
-char *dxf_blocks_list = NULL;
+static char *dxf_blocks_list = NULL;
 
 
 int
@@ -131,6 +137,9 @@ dxf_write_blocks
         char *dxf_blocks_list, 
         int acad_version_number
 );
+
+
+#endif /* BLOCK_H */
 
 
 /* EOF */
