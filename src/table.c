@@ -1,6 +1,6 @@
 /*!
  * \file table.c
- * \author Copyright (C) 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF table entity (\c TABLE).
  *
  * <hr>
@@ -32,7 +32,7 @@
 
 #include "global.h"
 #include "table.h"
-#include "section.c"
+#include "section.h"
 
 
 /*!
@@ -46,6 +46,12 @@ dxf_write_table
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
+        int dxf_tables_list,
+                /*!< pointer to list of TABLES. */
+        int dxf_tables_list_iter,
+        
+        int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
