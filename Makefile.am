@@ -21,4 +21,16 @@ dist-hook:
       cp -p $$specfile $(distdir); \
     fi \
   done
-  
+
+## generate API documentation with doxygen
+apidox:
+	$(MAKE) apidox-am-@LIBDXF_HAS_DOXYGEN@
+
+apidox-am-no:
+apidox-am-yes:
+	@echo "*** Creating API documentation main page"; \
+	cd doc; \
+	doxygen libDXF-dox-with-call-graphs.dox
+
+.PHONY: apidox-am-yes apidox-am-no apidox
+
