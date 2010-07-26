@@ -30,6 +30,7 @@
  */
 
 #include "global.h"
+#include "line.h"
 
 /*!
  * \brief Write DXF output to fp for a line entity.
