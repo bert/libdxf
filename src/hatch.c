@@ -1,6 +1,6 @@
 /*!
  * \file hatch.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF hatch entity (\c HATCH).
  *
  * <hr>
@@ -631,12 +631,12 @@ dxf_write_hatch_pattern_data
                         fprintf (fp, " 79\n%d\n", def_line_dash_items[i]);
                         if (!def_line_dash_items)
                         {
-                                for (j = 0; j < def_line_dash_items; j++)
+                                for (j = 0; j < *def_line_dash_items; j++)
                                 {
                                         dxf_write_hatch_pattern_def_line_dashes
                                         (
                                                 fp,
-                                                def_line_dash_items,
+                                                *def_line_dash_items,
                                                 *def_line_dash_length
                                         );
                                 }
