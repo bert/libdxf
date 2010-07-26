@@ -36,6 +36,7 @@
 
 #include "global.h"
 #include "param.h"
+#include "entity.h"
 
 
 /*!
@@ -51,7 +52,7 @@ dxf_object
 } DxfObject;
 
 
-char *dxf_objects_list = NULL;
+static char *dxf_objects_list = NULL;
 
 
 int dxf_write_objects (char *dxf_objects_list, int acad_version_number);
