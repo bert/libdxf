@@ -1,6 +1,6 @@
 /*!
  * \file thumbnail.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Header file for DXF thumbnail (\c THUMBNAIL) functions.
  *
  * <hr>
@@ -51,6 +51,12 @@ dxf_thumbnail
                 /*!< group code = 310\n
                  * multiple lines (256 characters maximum per line). */
 } DxfThumbnail;
+
+
+/*! \todo Added static DxfThumbnail *dxf_thumnail = NULL; just to
+ * compile the whole library.
+ */
+static DxfThumbnail *dxf_thumbnail = NULL;
 
 
 int dxf_write_thumbnail (DxfThumbnail *dxf_thumbnail, int acad_version_number);
