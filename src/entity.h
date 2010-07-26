@@ -30,6 +30,10 @@
  */
 
 
+#ifndef ENTITY_H
+#define ENTITY_H
+
+
 /*!
  * \brief DXF entity types.
  */
@@ -61,11 +65,14 @@ dxf_entity_type
 } DxfEntityType;
 
 
-char *dxf_entities_list = NULL;
+static char *dxf_entities_list = NULL;
 
 
 int dxf_skip_entity (char *dxf_entity_name);
 int dxf_write_entities (char *dxf_entities_list, int acad_version_number);
+
+
+#endif /* ENTITY_H */
 
 
 /* EOF */
