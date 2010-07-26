@@ -1,6 +1,6 @@
 /*!
  * \file point.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF point entity (\c POINT).
  *
  * Point entities have an optional 50 group that determines the
@@ -50,7 +50,7 @@
  *
  * and fill the memory contents with zeros.
  */
-DxfPoint
+DxfPoint *
 dxf_malloc_point ()
 {
 #if DEBUG
@@ -59,7 +59,7 @@ dxf_malloc_point ()
         DxfPoint *dxf_point = NULL;
         size_t size;
 
-        size = sizeof (struct DxfPoint);
+        size = sizeof (DxfPoint);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
         if ((dxf_point = malloc (size)) == NULL)
