@@ -1,6 +1,6 @@
 /*!
  * \file point.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Definition of a DXF point entity (\c POINT).
  *
  * <hr>
@@ -72,7 +72,7 @@ dxf_point
 } DxfPoint, * DxfPointPtr;
 
 
-DxfPoint dxf_malloc_point ();
+DxfPoint *dxf_malloc_point ();
 int dxf_write_point (FILE *fp, int, char *, double, double, double, double, int, int);
 int dxf_write_point_struct (FILE *fp, DxfPoint);
 
