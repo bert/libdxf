@@ -1,0 +1,246 @@
+=======	CODING STANDARD FOR LIBDXF =======
+
+
+Rationale on Coding Style
+-------------------------
+Here follow some notes to myself, or any other volunteer hacker who wants to 
+join the effort.
+The coding style I follow is the Allman style, named after Eric Allman.
+It is sometimes referred to as "ANSI style" for its use in the documents
+describing the ANSI C standard.
+Proponents of this style often cite its use by ANSI and in other standards as 
+justification for its adoption.
+This style is similar to the standard indentation used by the Pascal programming
+language and Transact-SQL, where the braces are equivalent to the "begin" and 
+"end" keywords.
+As I started programming in Pascal way back in the 80's of the former century, 
+this is the reason for using this coding style in my C code.
+If you choose to join in on the fun with your own style, this is not a show
+stopper for me.
+Please understand that I might reformat your contribution to my own likings as
+not to strain my eyes too much.
+
+
+File headers
+------------ 
+File headers contain Doxygen style tags for doumentation generated with Doxygen.
+A default header looks similar to the following:
+
+/*!
+ * \file default.c
+ * \author Copyright (C) 2008 by Author <author@email.address>
+ * \brief A brief description of the files use.
+ *
+ * A more elaborate description follows here, and can span several lines.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.\n
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n
+ * See the GNU General Public License for more details.\n
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to:\n
+ * the Free Software Foundation, Inc., \n
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ */
+
+
+Doxygen style comments
+----------------------
+The prefered style for a Doxygen comment for a function or any other entity is:
+/*!
+ * \brief Brief description.
+ *
+ * Followed by a more verbose description of what is to be explained about the 
+ * entity.
+ * \param Description of a parameter.
+ * \bugs Can be reported here.
+ * \exception Can be described here.
+ * \return Return value can be described here.
+ * \todo Can be described here.
+ * The more verbose statement is closed with:
+ */
+ 
+
+Comments
+--------
+/* Comments should be added at the correct level of identation. */
+
+/* More elaborate comments, which span across the 80 character limit,
+ * (described below) should have an asterisk in front on every line of the
+ * comment.
+ */
+
+
+Indentation
+-----------
+To hack in this code you need to set emacs (or whatever editor you use) to
+8 indentation steps and {} at the right places (see code).
+No tabs, just plain spaces, except in Makefiles and config stuff where tabs 
+have a meaning.
+
+My ~/.emacs are:
+(defun my-c-mode-hook ()
+  (turn-on-font-lock)
+  (setq c-basic-offset 8))
+
+(add-hook 'c-mode-hook 'my-c-mode-hook)
+
+
+Truncation
+----------
+It is prefered for lines to not extend beyond 80 characters long.
+If you need more than 40 characters to ident (5 levels) you probably should 
+write a function.
+However, I'm not very strict about this myself.
+Please do truncate a line at a convenient position, for example:
+
+        if (((very_elaborate_variable_description_1 > 0)
+        || (very_elaborate_variable_description_2 < 0))
+        && (very_elaborate_variable_description_3 > 1000))
+        {
+                blah;
+        }
+
+Improve readability by putting the operator at the start of the new line.
+
+
+Curly Braces
+------------
+if () 
+{
+        blah1 ();
+        blah2 ();
+} 
+else
+{
+        yada1 ();
+        yada2 ();
+}
+
+If there is only one statement you don't need the braces.
+
+for () 
+{
+        do_whatever1 ();
+        do_whatever2 ();
+}
+
+switch ()
+{
+        case foo:
+                blah1 ();
+                break;
+        case bar:
+                blah2 ();
+                break;
+        default:
+                break;
+}
+
+Switch should always have a default case.
+Note the whitespace before the ().
+
+
+ChangeLog
+---------
+A ChangeLog is generated from all commit message entries entered when a blob
+of code is committed with git.
+I generate the ChangeLog prior to a new release.
+
+
+About git commit messages and blobs
+-----------------------------------
+Keep commit messages as clear as possible:
+
+If a file is added or deleted mentioning "new file: blah.c" or 
+"deleted file: blah2.c" says it all.
+
+Keep blobs as granular as possible, do not commit blobs from different files in 
+a single commit. I would rather have five commits if that is what it takes.
+
+
+About git branches and merging
+------------------------------
+Use the branch and merge functionality of git for every experiment or issue
+[#ticket] to be solved.
+As I'm still learning things about git every day I find this a good practice,
+and I'm going to have to adopt to this myself.
+
+
+Functions
+---------
+The prototype should have return type on the same line as function name:
+int some_function (int par1, int par2);
+
+The function implementation should have return type on a separate line
+(including eventual pointer star).
+The function implementation should have the function name in c-comments
+at the closing brace, although I'm not strict with doing this myself (me bad).
+
+int *
+some_function (int par1, int par2)
+{
+        /* Implementation */
+} /* some_function */
+
+or 
+
+int *
+some_function
+(
+        int par1, /*!< some Doxygen comment about par1 */
+        int par2
+                /*!< some Doxygen comment about par2 which is more elaborate 
+                 * and extends the 80 character limit by far.\n
+                 * Add a \n when a new line is to be generated in the Doxygen 
+                 * documentation. 
+                 */
+)
+{
+        /* Implementation */
+} /* some_function */
+
+In a function there should be a maximum of one empty line in a row.
+Between functions there should be two empty lines.
+
+
+Log messages.
+-------------
+It is prefered to log messages similar like the following example:
+<example>
+        g_log ("", G_LOG_LEVEL_WARNING,
+                _("pin #1 position with a null pointer found in: %s.\n"),
+                fpw_filename);
+</example>
+The following criticality is (and should be) maintained:
+
+/* GLib log levels */
+G_LOG_LEVEL_ERROR             = 1 << 2, /* Always fatal, abort the application. */
+G_LOG_LEVEL_CRITICAL          = 1 << 3, /* Functionality of the operation or
+                                         * function is no longer guaranteed,
+                                         * unwanted or unexpected behaviour
+                                         * follows. */
+G_LOG_LEVEL_WARNING           = 1 << 4, /* Functionality of the operation or
+                                         * function is still guaranteed.
+                                         * The application will default to a
+                                         * safe and expected behaviour. */
+G_LOG_LEVEL_MESSAGE           = 1 << 5, /* Instructions for the user. */
+G_LOG_LEVEL_INFO              = 1 << 6, /* Information usefull for the user. */
+                                         * Requires the verbose variable to be
+                                         * set. */
+G_LOG_LEVEL_DEBUG             = 1 << 7, /* Information usefull for the developer. */
+                                         * Requires the debug variable to be
+                                         * set. */
+                                         
+
+End Of File
+-----------
+The End Of File is denoted with a comment and a blank line such as:
+
+/* EOF */
