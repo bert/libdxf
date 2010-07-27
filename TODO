@@ -1,0 +1,27 @@
+Todo List
+
+Global dxf_thumbnail
+    Added static DxfThumbnail *dxf_thumnail = NULL; just to compile the whole library. 
+
+Global dxf_write_blocks (char *dxf_blocks_list, int acad_version_number)
+    Add code here. 
+
+Global dxf_write_entities (char *dxf_entities_list, int acad_version_number)
+    Add code here. 
+
+Global dxf_write_objects (char *dxf_objects_list, int acad_version_number)
+    Add code here. 
+
+Global dxf_write_table (FILE *fp, int dxf_tables_list, int dxf_tables_list_iter, int acad_version_number)
+    Add code here 
+
+Global dxf_write_table_struct (FILE *fp, DxfTable dxf_table)
+    Add code here 
+
+Global dxf_write_thumbnail (DxfThumbnail *dxf_thumbnail, int acad_version_number)
+    Add code here 
+
+File point.c
+    Add a link to somewhere else.
+
+# EOF #
