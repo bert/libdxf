@@ -1,9 +1,9 @@
 /*!
  * \file class.h
- * \author Copyright (C) 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Defintion of a DXF class entity (\c CLASS).
  *
- * * The group codes described in this chapter are found only in DXF files.\n
+ * The group codes described in this chapter are found only in DXF files.\n
  * The CLASSES section holds the information for application-defined classes
  * whose instances appear in the BLOCKS, ENTITIES, and OBJECTS sections of
  * the database.\n
