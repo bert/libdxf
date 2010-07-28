@@ -34,6 +34,10 @@
 
 /*!
  * \brief Write DXF output to a file for a class section.
+ *
+ * Each entry in the CLASSES section contains the groups described
+ * in the following table, as stated in the documentation for
+ * AutoCAD DXF release 2000.
  */
 int
 dxf_write_class
@@ -43,12 +47,12 @@ dxf_write_class
         char *record_name,
                 /*!< group code = 1.\n
                  * Class DXF record name.\n
-                 * hese should always be unique. */
+                 * These should always be unique. */
         char *class_name,
                 /*!< group code = 2.\n
                  * C++ class name.\n
-                 * sed to bind with software that defines object class behavior.\n
-                 * hese are always unique. */  
+                 * Used to bind with software that defines object class behavior.\n
+                 * These are always unique. */  
         char *app_name,
                 /*!< group code = 3.\n
                  * Application name.\n
