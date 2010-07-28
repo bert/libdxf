@@ -3,6 +3,14 @@
  * \author Copyright (C) 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF class entity (\c CLASS).
  *
+ * The group codes described in this chapter are found only in DXF files.\n
+ * The CLASSES section holds the information for application-defined classes
+ * whose instances appear in the BLOCKS, ENTITIES, and OBJECTS sections of
+ * the database.\n
+ * It is assumed that a class definition is permanently fixed in the class
+ * hierarchy.\n
+ * All fields are required.\n
+ * \n
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
