@@ -2,6 +2,15 @@
  * \file class.h
  * \author Copyright (C) 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Defintion of a DXF class entity (\c CLASS).
+ *
+ * * The group codes described in this chapter are found only in DXF files.\n
+ * The CLASSES section holds the information for application-defined classes
+ * whose instances appear in the BLOCKS, ENTITIES, and OBJECTS sections of
+ * the database.\n
+ * It is assumed that a class definition is permanently fixed in the class
+ * hierarchy.\n
+ * All fields are required.\n
+ * \n
  * AutoCAD registers the classes listed in the following table.\n
  * (This may not be a complete list of the classes found in a DXF file.\n
  * It depends on the applications currently in use by AutoCAD.)\n
