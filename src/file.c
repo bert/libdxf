@@ -1,7 +1,7 @@
 /*!
  * \file file.c
- * \author Copyright (C) 2008, 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
- * \brief Generate dxf output for a complete DXF file.
+ * \author Copyright (C) 2008, 2009, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \brief Functions for the handling of DXF files.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -40,6 +40,28 @@
 #include "object.h"
 #include "thumbnail.h"
 #include "eof.h"
+#include "file.h"
+
+
+/*!
+ * \brief Function reads a complete DXF file.
+ */
+int
+dxf_read_file
+(
+        char *filename
+                /*!< filename of input file (or device). */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_file () function.\n", __FILE__, __LINE__);
+#endif
+        /*! \todo Add code here. */ 
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_file () function.\n", __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
 
 
 /*!
