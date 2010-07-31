@@ -44,7 +44,13 @@
 
 
 /*!
- * \brief Function reads a complete DXF file.
+ * \brief Function opens and reads a DXF file.
+ * 
+ * After opening the DXF file with the name \c filename the file is read
+ * line by line until a line containing the \c SECTION keyword is
+ * encountered.\n
+ * At this point a function which reads the \c SECTION until the
+ * \c ENDSEC keyword is encountered and the invoked fuction returns here.
  */
 int
 dxf_read_file
