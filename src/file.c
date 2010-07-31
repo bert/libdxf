@@ -53,10 +53,65 @@ dxf_read_file
                 /*!< filename of input file (or device). */
 )
 {
+        char *temp_string;
+        int line_number;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_file () function.\n", __FILE__, __LINE__);
 #endif
-        /*! \todo Add code here. */ 
+        if (!filename)
+        {
+                fprintf (stderr, "Error: filename is not initialised (NULL pointer).\n");
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (filename, "") == 0)
+        {
+                fprintf (stderr, "Error: filename contains an empty string.\n");
+                return (EXIT_FAILURE);
+        }
+        FILE *fp;
+        fp = fopen (filename, "r");
+        if (!fp)
+        {
+                fprintf (stderr, "Error: could not open file: %s for reading.\n",
+                        filename);
+                return (EXIT_FAILURE);
+        }
+        line_number = 1;
+        fscanf (fp, "%s\n", temp_string);
+        if (ferror (fp))
+        {
+                fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
+                        filename, line_number);
+                fclose (fp);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (temp_string, "  0") == 0)
+        {
+                while (!feof (fp))
+                {
+                        line_number++;
+                        fscanf (fp, "%s\n", temp_string);
+                        if (ferror (fp))
+                        {
+                                fprintf (stderr, "Error: while reading line %d from: %s.\n",
+                                        line_number, filename);
+                                fclose (fp);
+                                return (EXIT_FAILURE);
+                        }
+                        if (strcmp (temp_string, "SECTION") == 0)
+                        {
+                                /* We have found the begin of a SECTION. */
+                                /*! \todo Invoke a function for parsing a \c SECTION. */ 
+                        }
+                        
+                }
+        }
+        else
+        {
+                fprintf (stderr, "Error: unexpected string encountered while reading line %d from: %s.\n",
+                        line_number, filename);
+        }
+        fclose (fp);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_file () function.\n", __FILE__, __LINE__);
 #endif
