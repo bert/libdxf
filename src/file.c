@@ -78,7 +78,7 @@ dxf_read_file
         fp = fopen (filename, "r");
         if (!fp)
         {
-                fprintf (stderr, "Error: could not open file: %s for reading.\n",
+                fprintf (stderr, "Error: could not open file: %s for reading (NULL pointer).\n",
                         filename);
                 return (EXIT_FAILURE);
         }
