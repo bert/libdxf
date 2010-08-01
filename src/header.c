@@ -1008,5 +1008,23 @@ dxf_write_header_struct
         return (EXIT_SUCCESS);
 }
 
-
+/*!
+ * \brief Reads the header from a DXF file.
+ */
+int
+dxf_read_header_struct
+(
+        FILE *fp,  /*!< DXF file handler.\n */
+        DxfHeader dxf_header  /*!< DXF header to be initialized.\n */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_header_struct () function.\n", __FILE__, __LINE__);
+#endif
+		/* \TODO some code here */
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_header_struct () function.\n", __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
 /* EOF */
