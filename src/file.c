@@ -91,8 +91,19 @@ dxf_read_file
                 fclose (fp);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (temp_string, "  0") == 0)
+        if (strcmp (temp_string, "999") == 0)
         {
+                /* Flush dxf comments to stdout as some apps put meta
+                 * data regarding the correct loading of libraries in
+                 * front of dxf data (sections, tables, entities etc.
+                 */
+                line_number++;
+                fscanf (fp, "%s\n", temp_string);
+                fprintf (stdout, "%s\n", temp_string);
+        }
+        else if (strcmp (temp_string, "  0") == 0)
+        {
+                /* Now follows some meaningfull dxf data. */
                 while (!feof (fp))
                 {
                         line_number++;
@@ -106,15 +117,23 @@ dxf_read_file
                         }
                         if (strcmp (temp_string, "SECTION") == 0)
                         {
-                                /* We have found the begin of a SECTION. */
-                                /*! \todo Invoke a function for parsing a \c SECTION. */ 
+                                /* We have found the beginning of a
+                                 * SECTION. */
+                                dxf_read_section (filename, fp, line_number);
+                        }
+                        else
+                        {
+                                /* We were expecting a dxf SECTION and
+                                 * got something else. */
+                                fprintf (stderr, "Warning: in line %d \"SECTION\" was expected, \"%s\" was found.\n",
+                                        line_number, temp_string);
                         }
                         
                 }
         }
         else
         {
-                fprintf (stderr, "Error: unexpected string encountered while reading line %d from: %s.\n",
+                fprintf (stderr, "Warning: unexpected string encountered while reading line %d from: %s.\n",
                         line_number, filename);
         }
         fclose (fp);
