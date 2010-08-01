@@ -49,6 +49,33 @@ static char *acad_version_string (int version_number)
         return NULL;
 }
 
+/*!
+ * \brief converts a version string the version number.
+ *
+ */
+static int acad_version_from_string
+(
+        const char * version_string /*!< Pointer to the version String#include "header.h".\n */
+)
+{
+	if (strcmp ("AC1009", version_string) == 0)
+		return AC1009;
+	if (strcmp ("AC1012", version_string) == 0)
+		return AC1012;
+	if (strcmp ("AC1014", version_string) == 0)
+		return AC1014;
+	if (strcmp ("AC1015", version_string) == 0)
+		return AC1015;
+	if (strcmp ("AC1016", version_string) == 0)
+		return AC1016;
+	if (strcmp ("AC1017", version_string) == 0)
+		return AC1017;
+	if (strcmp ("AC1018", version_string) == 0)
+		return AC1018;
+	
+	/* in the case that it is an invalid version */
+	return 0;
+}
 
 /*!
  * \brief Initialize a dxf header.
