@@ -34,6 +34,7 @@
 #define SECTION_H
 
 
+int dxf_read_section (char *filename, FILE *fp, int line_number);
 int dxf_write_section (FILE *fp, char *section_name);
 int dxf_write_endsection (FILE *fp);
 

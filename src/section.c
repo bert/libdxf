@@ -1,6 +1,6 @@
 /*!
  * \file section.c
- * \author Copyright (C) 2008..2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2009, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF section entity (\c SECTION).
  *
  * <hr>
@@ -29,7 +29,104 @@
  * <hr>
  */
 
+
 #include "global.h"
+
+
+/*!
+ * \brief Function reads a SECTION in a DXF file.
+ */
+int
+dxf_read_section
+(
+        char *filename,
+                /*!< filename of input file (or device). */
+        FILE *fp,
+                /*!< filepointer to the input file (or device). */
+        int line_number
+                /*!< current line number in the input file (or device). */
+)
+{
+        char *temp_string;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_section () function.\n", __FILE__, __LINE__);
+#endif
+        if (!fp)
+        {
+                fprintf (stderr, "Error: could not open file: %s for reading (NULL pointer).\n",
+                        filename);
+                return (EXIT_FAILURE);
+        }
+        line_number++;
+        fscanf (fp, "%s\n", temp_string);
+        if (ferror (fp))
+        {
+                fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
+                        filename, line_number);
+                fclose (fp);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (temp_string, "  2") == 0)
+        {
+                while (!feof (fp))
+                {
+                        line_number++;
+                        fscanf (fp, "%s\n", temp_string);
+                        if (ferror (fp))
+                        {
+                                fprintf (stderr, "Error: while reading line %d from: %s.\n",
+                                        line_number, filename);
+                                fclose (fp);
+                                return (EXIT_FAILURE);
+                        }
+                        if (strcmp (temp_string, "HEADER") == 0)
+                        {
+                                /* We have found the begin of the HEADER section. */
+                                /*! \todo Invoke a function for parsing the \c HEADER section. */ 
+                        }
+                        else if (strcmp (temp_string, "CLASSES") == 0)
+                        {
+                                /* We have found the begin of the CLASSES sction. */
+                                /*! \todo Invoke a function for parsing the \c CLASSES section. */ 
+                        }
+                        else if (strcmp (temp_string, "TABLES") == 0)
+                        {
+                                /* We have found the begin of the TABLES sction. */
+                                /*! \todo Invoke a function for parsing the \c TABLES section. */ 
+                        }
+                        else if (strcmp (temp_string, "BLOCKS") == 0)
+                        {
+                                /* We have found the begin of the BLOCKS sction. */
+                                /*! \todo Invoke a function for parsing the \c BLOCKS section. */ 
+                        }
+                        else if (strcmp (temp_string, "ENTITIES") == 0)
+                        {
+                                /* We have found the begin of the ENTITIES sction. */
+                                /*! \todo Invoke a function for parsing the \c ENTITIES section. */ 
+                        }
+                        else if (strcmp (temp_string, "OBJECTS") == 0)
+                        {
+                                /* We have found the begin of the OBJECTS sction. */
+                                /*! \todo Invoke a function for parsing the \c OBJECTS section. */ 
+                        }
+                        else if (strcmp (temp_string, "THUMBNAIL") == 0)
+                        {
+                                /* We have found the begin of the THUMBNAIL sction. */
+                                /*! \todo Invoke a function for parsing the \c THUMBNAIL section. */ 
+                        }
+                }
+        }
+        else
+        {
+                fprintf (stderr, "Warning: unexpected string encountered while reading line %d from: %s.\n",
+                        line_number, filename);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_section () function.\n", __FILE__, __LINE__);
+#endif
+        return (line_number);
+}
+
 
 /*!
  * \brief Write DXF output to a file for a section marker.
