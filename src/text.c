@@ -31,6 +31,7 @@
 
 #include "global.h"
 #include "text.h"
+#include "entity.h"
 
 /*!
  * \brief Write DXF output to a file pointer for a text entity.
@@ -222,6 +223,7 @@ dxf_write_text
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_text () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 /*!

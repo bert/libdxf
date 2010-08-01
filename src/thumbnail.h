@@ -53,12 +53,6 @@ dxf_thumbnail
 } DxfThumbnail;
 
 
-/*! \todo Added static DxfThumbnail *dxf_thumnail = NULL; just to
- * compile the whole library.
- */
-static DxfThumbnail *dxf_thumbnail = NULL;
-
-
 int dxf_write_thumbnail (DxfThumbnail *dxf_thumbnail, int acad_version_number);
 
 

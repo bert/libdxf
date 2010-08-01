@@ -218,7 +218,7 @@ dxf_write_ellipse_struct
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_ellipse () function.\n", __FILE__, __LINE__);
 #endif
-        return;
+        return (EXIT_SUCCESS);
 }
 
 /* EOF */

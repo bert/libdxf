@@ -52,7 +52,6 @@ dxf_object
 } DxfObject;
 
 
-static char *dxf_objects_list = NULL;
 
 
 int dxf_write_objects (char *dxf_objects_list, int acad_version_number);

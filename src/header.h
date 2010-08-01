@@ -295,6 +295,8 @@ dxf_header
         char *ProjectName; /*!< */
 } DxfHeader, * DxfHeaderPtr;
 
-int dxf_read_header_struct ( FILE *fp, DxfHeader dxf_header);
+int dxf_init_header ( DxfHeader dxf_header, int acad_version_number );
+int dxf_read_header ( FILE *fp, DxfHeader dxf_header);
+int dxf_write_header ( FILE *fp, DxfHeader dxf_header, int acad_version_number);
 
 /* EOF */

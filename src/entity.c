@@ -48,7 +48,7 @@ dxf_skip_entity
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_skip_entity () function.\n", __FILE__, __LINE__);
 #endif
         char answer;
-        if (dxf_entity_name == "") return;
+        if (dxf_entity_name == NULL) return (EXIT_FAILURE);
         if (INTER_ACTIVE_PROMPT)
         {
                 fprintf (stderr, "    skip %s entity ? [Y/N]:\n", dxf_entity_name);
@@ -65,6 +65,7 @@ dxf_skip_entity
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_skip_entity () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 

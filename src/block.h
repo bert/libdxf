@@ -105,7 +105,6 @@ dxf_block
 } DxfBlock, * DxfBlockPtr;
 
 
-static char *dxf_blocks_list = NULL;
 
 
 int

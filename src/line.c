@@ -31,6 +31,7 @@
 
 #include "global.h"
 #include "line.h"
+#include "entity.h"
 
 /*!
  * \brief Write DXF output to fp for a line entity.
@@ -124,7 +125,7 @@ dxf_write_line
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_line () function.\n", __FILE__, __LINE__);
 #endif
-        return;
+        return (EXIT_SUCCESS);
 }
 
 

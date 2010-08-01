@@ -32,7 +32,7 @@
 
 #include "global.h"
 #include "header.h"
-
+#include "section.h"
 
 static char *acad_version_string (int version_number)
 {
@@ -92,7 +92,7 @@ dxf_init_header
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_header () function.\n", __FILE__, __LINE__);
 #endif
-        dxf_set_acad_version_strings (acad_version_number);
+        dxf_header.AcadVer = acad_version_string (acad_version_number);
         switch (acad_version_number)
         {
                 case AC1009: /* AutoCAD 12 */
@@ -555,6 +555,7 @@ dxf_init_header
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_header () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 
@@ -766,7 +767,7 @@ dxf_write_header_metric_new
  * \brief Write DXF output to a file for a dxf header.
  */
 int
-dxf_write_header_struct
+dxf_write_header
 (
         FILE *fp,
         DxfHeader dxf_header,
@@ -778,7 +779,7 @@ dxf_write_header_struct
 #endif
         char *dxf_entity_name = strdup ("HEADER");
 
-        dxf_write_section2 (dxf_entity_name);
+        dxf_write_section (fp, dxf_entity_name);
         fprintf (fp, "  9\n$ACADVER\n  1\n%s\n", dxf_header.AcadVer);
         if (acad_version_number >= AC1014) fprintf (fp, "  9\n$ACADMAINTVER\n 70\n%i\n", dxf_header.AcadMaintVer);
         if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DWGCODEPAGE\n  3\n%s\n", dxf_header.DWGCodePage);
@@ -1001,7 +1002,7 @@ dxf_write_header_struct
         if (acad_version_number >= AC1018) fprintf (fp, "  9\n$INTERSECTIONCOLOR\n 70\n%i\n", dxf_header.InterSectionColor);
         if (acad_version_number >= AC1018) fprintf (fp, "  9\n$DIMASSOC\n280\n%i\n", dxf_header.DimASSOC);
         if (acad_version_number >= AC1018) fprintf (fp, "  9\n$PROJECTNAME\n  1\n%s\n", dxf_header.ProjectName);
-        dxf_write_endsection2 ();
+        dxf_write_endsection (fp);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_header2 () function.\n", __FILE__, __LINE__);
 #endif
@@ -1012,7 +1013,7 @@ dxf_write_header_struct
  * \brief Reads the header from a DXF file.
  */
 int
-dxf_read_header_struct
+dxf_read_header
 (
         FILE *fp,  /*!< DXF file handler.\n */
         DxfHeader dxf_header  /*!< DXF header to be initialized.\n */

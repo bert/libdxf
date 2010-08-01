@@ -48,6 +48,7 @@ dxf_write_endtab
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_endtab () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 /* EOF */

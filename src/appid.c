@@ -112,7 +112,7 @@ dxf_write_appid_struct
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_appid_struct () function.\n", __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("APPID");
-        if (dxf_appid.application_name == "")
+        if (dxf_appid.application_name == NULL)
         {
                 fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_appid.id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);

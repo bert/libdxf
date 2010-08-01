@@ -149,6 +149,7 @@ dxf_write_solid
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_solid () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 /*!

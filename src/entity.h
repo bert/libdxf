@@ -65,7 +65,6 @@ dxf_entity_type
 } DxfEntityType;
 
 
-static char *dxf_entities_list = NULL;
 
 
 int dxf_skip_entity (char *dxf_entity_name);

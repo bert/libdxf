@@ -134,6 +134,7 @@ dxf_write_point
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
+		return (EXIT_SUCCESS);
 }
 
 

@@ -54,6 +54,7 @@ dxf_write_thumbnail
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_thumbnail () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 

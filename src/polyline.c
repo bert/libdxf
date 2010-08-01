@@ -164,6 +164,7 @@ dxf_write_polyline
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_polyline () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 

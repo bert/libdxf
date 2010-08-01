@@ -47,7 +47,7 @@ dxf_read_section
                 /*!< current line number in the input file (or device). */
 )
 {
-        char *temp_string;
+        char *temp_string = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_section () function.\n", __FILE__, __LINE__);
 #endif
@@ -145,6 +145,7 @@ dxf_write_section
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_section () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 /*!
@@ -163,6 +164,7 @@ dxf_write_endsection
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_endsection () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 /* EOF */

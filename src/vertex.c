@@ -153,6 +153,7 @@ dxf_write_vertex
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_vertex () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 /*!

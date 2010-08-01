@@ -110,7 +110,7 @@ dxf_write_shape
         {
                 fprintf (fp, "  5\n%x\n", id_code);
         }
-        if (linetype != DXF_DEFAULT_LINETYPE)
+        if (strcmp (linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp, "  6\n%s\n", linetype);
         }
@@ -146,6 +146,7 @@ dxf_write_shape
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_shape () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 
@@ -191,7 +192,7 @@ dxf_write_shape_struct
         {
                 fprintf (fp, "  5\n%x\n", dxf_shape.id_code);
         }
-        if (dxf_shape.linetype != DXF_DEFAULT_LINETYPE)
+        if (strcmp (dxf_shape.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp, "  6\n%s\n", dxf_shape.linetype);
         }

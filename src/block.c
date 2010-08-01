@@ -90,13 +90,13 @@ dxf_write_block
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_block () function.\n", __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("BLOCK");
-        if (block_name == "")
+        if (block_name == NULL)
         {
                 fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (xref_name == "")
+        if (xref_name == NULL)
         {
                 fprintf (stderr, "Warning: empty xref name string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);
@@ -163,13 +163,13 @@ dxf_write_block_struct
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_block2 () function.\n", __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("BLOCK");
-        if (dxf_block.block_name == "")
+        if (dxf_block.block_name == NULL)
         {
                 fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_block.id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_block.xref_name == "")
+        if (dxf_block.xref_name == NULL)
         {
                 fprintf (stderr, "Warning: empty xref name string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_block.id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);

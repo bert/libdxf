@@ -57,13 +57,14 @@ dxf_write_table
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_table () function.\n", __FILE__, __LINE__);
 #endif
-        char *dxf_entity_name = strdup ("TABLE");
+        //char *dxf_entity_name = strdup ("TABLE");
         
         /*! \todo Add code here */
         
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_table () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 
@@ -86,13 +87,14 @@ dxf_write_table_struct
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_table_struct () function.\n", __FILE__, __LINE__);
 #endif
-        char *dxf_entity_name = strdup ("TABLE");
+        //char *dxf_entity_name = strdup ("TABLE");
         
         /*! \todo Add code here */
         
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_table_struct () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 
@@ -115,6 +117,7 @@ dxf_write_endtable
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_endtable () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 
@@ -142,11 +145,14 @@ dxf_write_tables
 #endif
         char *dxf_section_name = strdup ("TABLES");
         int dxf_tables_list_iter;
-        int dxf_tables_list_last_iter;
+        int dxf_tables_list_last_iter = 0;
 
         dxf_write_section (fp, dxf_section_name);
         dxf_tables_list_iter = 1;
+	/* \FIXME
+	 * find_last_iter does not exist
         dxf_tables_list_last_iter = find_last_iter (dxf_tables_list);
+	*/
         while (dxf_tables_list_iter !=  dxf_tables_list_last_iter)
         {
                 dxf_write_table
@@ -158,7 +164,7 @@ dxf_write_tables
                         );
                 dxf_tables_list_iter++;
         }
-        dxf_write_endtab ();
+        dxf_write_endtable (fp);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_tables () function.\n", __FILE__, __LINE__);
 #endif

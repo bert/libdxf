@@ -250,7 +250,7 @@ dxf_write_hatch
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch () function.\n", __FILE__, __LINE__);
 #endif
-        return;
+        return (EXIT_SUCCESS);
 }
 
 /*!
@@ -413,7 +413,7 @@ dxf_write_hatch_boundaries
                                 case 4: /* spline type */
                                 default:
                                         fprintf (stderr, "Error: unsupported boundary path edge type encountered in dxf_write_hatch_boundary ().\n");
-                                        return;
+                                        return (EXIT_FAILURE);
                         }
                 }
                 else if (hatch_boundary_path_type_flag == 2)
@@ -425,20 +425,21 @@ dxf_write_hatch_boundaries
                                 hatch_boundary_path_polyline_has_bulge,
                                 hatch_boundary_path_polyline_is_closed,
                                 hatch_boundary_path_polyline_vertices,
-                                *hatch_boundary_path_polyline_x0,
-                                *hatch_boundary_path_polyline_y0,
-                                *hatch_boundary_path_polyline_bulge
+                                hatch_boundary_path_polyline_x0,
+                                hatch_boundary_path_polyline_y0,
+                                hatch_boundary_path_polyline_bulge
                         );
                 }
                 else
                 {
                         fprintf (stderr, "Error: unsupported boundary path type encountered in dxf_write_hatch_boundary ().\n");
-                        return;
+                        return (EXIT_FAILURE);
                 }
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch_boundary () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 /*!
@@ -470,7 +471,7 @@ dxf_write_hatch_boundary_polyline_vertex
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch_boundary_polyline_vertex () function.\n", __FILE__, __LINE__);
 #endif
-        return;
+        return (EXIT_SUCCESS);
 }
 
 /*!
@@ -535,7 +536,7 @@ dxf_write_hatch_boundary_path_polyline
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch_boundary_path_polyline () function.\n", __FILE__, __LINE__);
 #endif
-        return;
+        return (EXIT_SUCCESS);
 }
 
 /*!
@@ -574,7 +575,7 @@ dxf_write_hatch_pattern_def_line_dashes
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch_pattern_def_line_dashes () function.\n", __FILE__, __LINE__);
 #endif
-        return;
+        return (EXIT_SUCCESS);
 }
 
 /*!
@@ -650,7 +651,7 @@ dxf_write_hatch_pattern_data
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch_pattern_data () function.\n", __FILE__, __LINE__);
 #endif
-        return;
+        return (EXIT_SUCCESS);
 }
 
 /* EOF */

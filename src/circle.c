@@ -141,7 +141,7 @@ dxf_write_circle_struct
         if (strcmp (dxf_circle.layer, "") == 0)
         {
                 fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_circle.id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0"), dxf_entity_name;
+                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name );
                 dxf_circle.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);

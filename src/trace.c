@@ -142,6 +142,7 @@ dxf_write_trace
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_trace () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 /*!

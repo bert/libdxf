@@ -309,4 +309,12 @@ dxf_hatch
         DxfHatchSeedPoint *points;
 } DxfHatch, * DxfHatchPtr;
 
+int dxf_write_hatch_boundary_path_polyline (FILE *fp,
+                                            int has_bulge,
+                                            int is_closed,
+                                            int vertices,
+                                            double *x0,
+                                            double *y0,
+                                            double *bulge );
+
 /* EOF */

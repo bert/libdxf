@@ -109,6 +109,7 @@ dxf_write_class
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_class () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 /*!
@@ -137,6 +138,7 @@ dxf_write_class_struct
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_class_struct () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 /*!
@@ -155,6 +157,7 @@ dxf_write_endclass
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_endclass () function.\n", __FILE__, __LINE__);
 #endif
+		return (EXIT_SUCCESS);
 }
 
 /* EOF */
