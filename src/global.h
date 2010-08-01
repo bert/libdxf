@@ -66,16 +66,22 @@
 #define FALSE 0
 
 /* AutoCAD(TM) versions by name */
+#define AutoCAD_10 1006
+#define AutoCAD_11 1009
 #define AutoCAD_12 1009
 #define AutoCAD_13 1012
 #define AutoCAD_14 1014
 #define AutoCAD_2000 1015
 //#define AutoCAD_2002 101?
 #define AutoCAD_2004 1018
+#define AutoCAD_2007 1021
+#define AutoCAD_2010 1024
 #define AutoCAD_LT2 1009
 #define AutoCAD_LT95 1012
 
 /* AutoCAD(TM) versions by version string */
+#define AC1006 1006
+        /*!< AutoCAD 10. */
 #define AC1009 1009
         /*!< AutoCAD 12 == AutoCAD LT2. */
 #define AC1012 1012
@@ -88,6 +94,10 @@
 #define AC1017 1017
 #define AC1018 1018
         /*!< AutoCAD 2004. */
+#define AC1021 1021
+        /*!< AutoCAD 2007. */
+#define AC1024 1024
+        /*!< AutoCAD 2010. */
 
 /*!
  * The maximum of parameters in a \a DxfObject
