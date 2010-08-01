@@ -29,6 +29,8 @@
  * <hr>
  */
 
+#ifndef HEADER_H
+#define HEADER_H
 #include "global.h"
 #include "point.h"
 
@@ -299,4 +301,5 @@ int dxf_init_header ( DxfHeader dxf_header, int acad_version_number );
 int dxf_read_header ( FILE *fp, DxfHeader dxf_header);
 int dxf_write_header ( FILE *fp, DxfHeader dxf_header, int acad_version_number);
 
+#endif /* HEADER_H */
 /* EOF */

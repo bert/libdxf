@@ -67,6 +67,8 @@
  * <hr>
  */
 
+#ifndef CLASS_H
+#define CLASS_H
 #include "global.h"
 
 /*!
@@ -126,4 +128,5 @@ dxf_class
                  * If 0, instances may appear only in the OBJECTS section. */
 } DxfClass, * DxfClassPtr;
 
+#endif /* CLASS_H */
 /* EOF */

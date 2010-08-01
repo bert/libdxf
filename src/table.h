@@ -49,6 +49,8 @@
  * <hr>
  */
 
+#ifndef TABLE_H
+#define TABLE_H
 #include "global.h"
 
 
@@ -84,5 +86,5 @@ dxf_table_appid
                  * standard flag values. */
 } DxfTableAppid, * DxfTableAppidPtr;
 
-
+#endif /* TABLE_H */
 /* EOF */

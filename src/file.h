@@ -32,7 +32,10 @@
 
 #ifndef FILE_H
 #define FILE_H
-
+#include <stdio.h>
+#include "header.h"
+#include "class.h"
+#include "table.h"
 
 int dxf_read_file (char *filename);
 int dxf_write_file (FILE *fp, DxfHeader dxf_header, DxfClass dxf_classes_list, DxfTable dxf_tables_list, int acad_version_number);
