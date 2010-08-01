@@ -42,6 +42,10 @@
 #include "eof.h"
 #include "file.h"
 
+char *dxf_entities_list;
+char *dxf_objects_list;
+char *dxf_blocks_list;
+DxfThumbnail *dxf_thumbnail;
 
 /*!
  * \brief Function opens and reads a DXF file.
