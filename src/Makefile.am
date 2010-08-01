@@ -74,5 +74,5 @@ libdxf_la_SOURCES = \
   appid.c    \
   section.h
 
-libdbpc_la_CFLAGS =
+libdxf_la_CFLAGS =
 
