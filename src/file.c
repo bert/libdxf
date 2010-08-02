@@ -63,7 +63,7 @@ dxf_read_file
                 /*!< filename of input file (or device). */
 )
 {
-        char *temp_string = NULL;
+        char temp_string[255];
         int line_number;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_file () function.\n", __FILE__, __LINE__);
