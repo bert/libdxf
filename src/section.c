@@ -47,7 +47,7 @@ dxf_read_section
                 /*!< current line number in the input file (or device). */
 )
 {
-        char *temp_string = NULL;
+        char temp_string[255];
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_section () function.\n", __FILE__, __LINE__);
 #endif
@@ -66,7 +66,7 @@ dxf_read_section
                 fclose (fp);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (temp_string, "  2") == 0)
+        if (strcmp (temp_string, "2") == 0)
         {
                 while (!feof (fp))
                 {

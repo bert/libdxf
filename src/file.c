@@ -88,7 +88,7 @@ dxf_read_file
         }
         line_number = 1;
         fscanf (fp, "%s\n", temp_string);
-        if (ferror (fp))
+		if (ferror (fp))
         {
                 fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
                         filename, line_number);
@@ -105,13 +105,14 @@ dxf_read_file
                 fscanf (fp, "%s\n", temp_string);
                 fprintf (stdout, "%s\n", temp_string);
         }
-        else if (strcmp (temp_string, "  0") == 0)
+        else if (strcmp (temp_string, "0") == 0)
         {
                 /* Now follows some meaningfull dxf data. */
                 while (!feof (fp))
                 {
                         line_number++;
                         fscanf (fp, "%s\n", temp_string);
+					printf ("temp '%s'\n", temp_string);
                         if (ferror (fp))
                         {
                                 fprintf (stderr, "Error: while reading line %d from: %s.\n",
