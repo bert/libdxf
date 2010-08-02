@@ -38,6 +38,7 @@ static char *acad_version_string (int version_number)
 {
         switch (version_number)
         {
+				case AC1006: return "AC1006";
                 case AC1009: return "AC1009";
                 case AC1012: return "AC1012";
                 case AC1014: return "AC1014";
@@ -45,6 +46,8 @@ static char *acad_version_string (int version_number)
                 case AC1016: return "AC1016";
                 case AC1017: return "AC1017";
                 case AC1018: return "AC1018";
+				case AC1021: return "AC1021";
+				case AC1024: return "AC1024";
         }
         return NULL;
 }
@@ -58,6 +61,8 @@ static int acad_version_from_string
         const char * version_string /*!< Pointer to the version String#include "header.h".\n */
 )
 {
+	if (strcmp ("AC1006", version_string) == 0)
+		return AC1006;
 	if (strcmp ("AC1009", version_string) == 0)
 		return AC1009;
 	if (strcmp ("AC1012", version_string) == 0)
@@ -72,6 +77,10 @@ static int acad_version_from_string
 		return AC1017;
 	if (strcmp ("AC1018", version_string) == 0)
 		return AC1018;
+	if (strcmp ("AC1021", version_string) == 0)
+		return AC1021;
+	if (strcmp ("AC1024", version_string) == 0)
+		return AC1024;
 	
 	/* in the case that it is an invalid version */
 	return 0;
