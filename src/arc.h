@@ -1,6 +1,6 @@
 /*!
  * \file arc.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Definition of a DXF arc entity (\c ARC).
  *
  * <hr>
@@ -103,6 +103,14 @@ dxf_arc
 } DxfArc, * DxfArcPtr;
 
 
+static int
+dxf_read_arc_struct
+(
+        char *filename,
+        FILE *fp,
+        int line_number,
+        DxfArc *dxf_arc
+);
 static int
 dxf_write_arc
 (

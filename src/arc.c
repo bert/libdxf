@@ -1,6 +1,6 @@
 /*!
  * \file arc.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF arc entity (\c ARC).
  *
  * <hr>
@@ -31,6 +31,35 @@
 
 #include "global.h"
 #include "arc.h"
+
+
+/*!
+ * \brief Read data an \c ARC entity from a DXF file.
+ */
+static int
+dxf_read_arc_struct
+(
+        char *filename,
+                /*!< filename of input file (or device). */
+        FILE *fp,
+                /*!< filepointer to the input file (or device). */
+        int line_number,
+                /*!< current line number in the input file (or device). */
+        DxfArc *dxf_arc
+                /*!< DXF arc entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_arc_struct () function.\n", __FILE__, __LINE__);
+#endif
+        char *dxf_entity_name = strdup ("ARC");
+        /*! \todo Add more code here. */
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_arc_struct () function.\n", __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
 
 /*!
  * \brief Write DXF output for an arc entity.
