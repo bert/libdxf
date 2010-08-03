@@ -112,7 +112,6 @@ dxf_read_file
                 {
                         line_number++;
                         fscanf (fp, "%s\n", temp_string);
-					printf ("temp '%s'\n", temp_string);
                         if (ferror (fp))
                         {
                                 fprintf (stderr, "Error: while reading line %d from: %s.\n",
