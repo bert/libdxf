@@ -58,7 +58,7 @@ dxf_read_section
                 return (EXIT_FAILURE);
         }
         line_number++;
-        fscanf (fp, "%[^\n]", temp_string);
+        fscanf (fp, "%s\n", temp_string);
         if (ferror (fp))
         {
                 fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
@@ -71,7 +71,7 @@ dxf_read_section
                 while (!feof (fp))
                 {
                         line_number++;
-                        fscanf (fp, "%[^\n]", temp_string);
+                        fscanf (fp, "%s\n", temp_string);
                         if (ferror (fp))
                         {
                                 fprintf (stderr, "Error: while reading line %d from: %s.\n",
