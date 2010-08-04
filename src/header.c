@@ -38,7 +38,7 @@ static char *acad_version_string (int version_number)
 {
         switch (version_number)
         {
-				case AC1006: return "AC1006";
+                case AC1006: return "AC1006";
                 case AC1009: return "AC1009";
                 case AC1012: return "AC1012";
                 case AC1014: return "AC1014";
@@ -46,8 +46,8 @@ static char *acad_version_string (int version_number)
                 case AC1016: return "AC1016";
                 case AC1017: return "AC1017";
                 case AC1018: return "AC1018";
-				case AC1021: return "AC1021";
-				case AC1024: return "AC1024";
+                case AC1021: return "AC1021";
+                case AC1024: return "AC1024";
         }
         return NULL;
 }
