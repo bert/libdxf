@@ -1,5 +1,5 @@
 /*!
- * \file layer.
+ * \file layer.h
  * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Definition of a DXF layer entity.
  *
