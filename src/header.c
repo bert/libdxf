@@ -31,6 +31,7 @@
 
 
 #include "global.h"
+#include "file.h"
 #include "header.h"
 #include "section.h"
 
@@ -86,8 +87,8 @@ static int acad_version_from_string
         return 0;
 }
 
-/*!
- * \brief Initialize a dxf header.
+
+/*! * \brief Initialize a dxf header.
  *
  * Only initialize members which are valid for the given AutoCAD version.\n
  */
