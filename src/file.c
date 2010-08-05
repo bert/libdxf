@@ -47,6 +47,25 @@ char *dxf_objects_list;
 char *dxf_blocks_list;
 DxfThumbnail *dxf_thumbnail;
 
+
+/*!
+ * \brief A adapted fscanf for reading text lines from a DXF file.
+ * 
+ * \return char* with the scanned data.
+ */
+static char *dxf_fscanf
+(
+        FILE *fp,
+        const char * template
+)
+{
+        char temp_string[255];
+
+        fscanf (fp, template, temp_string);
+        return strdup (temp_string);
+}
+
+
 /*!
  * \brief Function opens and reads a DXF file.
  * 
