@@ -58,32 +58,32 @@ static char *acad_version_string (int version_number)
  */
 static int acad_version_from_string
 (
-        const char * version_string /*!< Pointer to the version String#include "header.h".\n */
+        const char * version_string
+                /*!< Pointer to the version string. */
 )
 {
-	if (strcmp ("AC1006", version_string) == 0)
-		return AC1006;
-	if (strcmp ("AC1009", version_string) == 0)
-		return AC1009;
-	if (strcmp ("AC1012", version_string) == 0)
-		return AC1012;
-	if (strcmp ("AC1014", version_string) == 0)
-		return AC1014;
-	if (strcmp ("AC1015", version_string) == 0)
-		return AC1015;
-	if (strcmp ("AC1016", version_string) == 0)
-		return AC1016;
-	if (strcmp ("AC1017", version_string) == 0)
-		return AC1017;
-	if (strcmp ("AC1018", version_string) == 0)
-		return AC1018;
-	if (strcmp ("AC1021", version_string) == 0)
-		return AC1021;
-	if (strcmp ("AC1024", version_string) == 0)
-		return AC1024;
-	
-	/* in the case that it is an invalid version */
-	return 0;
+        if (strcmp ("AC1006", version_string) == 0)
+                return AC1006;
+        if (strcmp ("AC1009", version_string) == 0)
+                return AC1009;
+        if (strcmp ("AC1012", version_string) == 0)
+                return AC1012;
+        if (strcmp ("AC1014", version_string) == 0)
+                return AC1014;
+        if (strcmp ("AC1015", version_string) == 0)
+                return AC1015;
+        if (strcmp ("AC1016", version_string) == 0)
+                return AC1016;
+        if (strcmp ("AC1017", version_string) == 0)
+                return AC1017;
+        if (strcmp ("AC1018", version_string) == 0)
+                return AC1018;
+        if (strcmp ("AC1021", version_string) == 0)
+                return AC1021;
+        if (strcmp ("AC1024", version_string) == 0)
+                return AC1024;
+        /* in the case that it is an invalid version */
+        return 0;
 }
 
 /*!
@@ -1031,7 +1031,7 @@ dxf_read_header
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_header_struct () function.\n", __FILE__, __LINE__);
 #endif
-		/* \TODO some code here */
+                /*! \todo Add some code here */
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_header_struct () function.\n", __FILE__, __LINE__);
 #endif
