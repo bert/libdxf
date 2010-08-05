@@ -31,6 +31,7 @@
 
 
 #include "global.h"
+#include "header.h"
 
 
 /*!
@@ -48,6 +49,7 @@ dxf_read_section
 )
 {
         char temp_string[255];
+        DxfHeader dxf_header;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_section () function.\n", __FILE__, __LINE__);
 #endif
@@ -82,7 +84,7 @@ dxf_read_section
                         if (strcmp (temp_string, "HEADER") == 0)
                         {
                                 /* We have found the begin of the HEADER section. */
-                                /*! \todo Invoke a function for parsing the \c HEADER section. */ 
+                                dxf_read_header (fp, dxf_header);
                         }
                         else if (strcmp (temp_string, "CLASSES") == 0)
                         {
