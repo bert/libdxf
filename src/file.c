@@ -122,7 +122,7 @@ dxf_read_file
                  */
                 line_number++;
                 fscanf (fp, "%s\n", temp_string);
-                fprintf (stdout, "%s\n", temp_string);
+                fprintf (stdout, "DXF comment: %s\n", temp_string);
         }
         else if (strcmp (temp_string, "0") == 0)
         {
