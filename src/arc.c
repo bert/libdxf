@@ -30,9 +30,55 @@
  */
 
 
+#include <stdlib.h>
 #include "global.h"
 #include "arc.h"
 #include "file.h"
+
+
+/*!
+ * \brief Allocate memory and initialize data fields in a \c ARC entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfArc *
+dxf_init_arc_struct
+(
+        DxfArc *dxf_arc
+                /*!< DXF arc entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_arc_struct () function.\n", __FILE__, __LINE__);
+#endif
+        dxf_arc = (DxfArc *) malloc (sizeof (DxfArc));
+        if (dxf_arc == NULL)
+        {
+              fprintf(stderr, "ERROR: could not allocate memory for a DxfArc struct.\n");
+              return (NULL);
+        }
+        dxf_arc->id_code = 0;
+        dxf_arc->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_arc->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_arc->x0 = 0.0;
+        dxf_arc->y0 = 0.0;
+        dxf_arc->z0 = 0.0;
+        dxf_arc->extr_x0 = 0.0;
+        dxf_arc->extr_y0 = 0.0;
+        dxf_arc->extr_z0 = 0.0;
+        dxf_arc->thickness = 0.0;
+        dxf_arc->radius = 0.0;
+        dxf_arc->start_angle = 0.0;
+        dxf_arc->end_angle = 0.0;
+        dxf_arc->color = DXF_COLOR_BYLAYER;
+        dxf_arc->paperspace = DXF_MODELSPACE;
+        dxf_arc->acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_arc_struct () function.\n", __FILE__, __LINE__);
+#endif
+        return (dxf_arc);
+}
 
 
 /*!

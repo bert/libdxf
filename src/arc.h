@@ -103,6 +103,10 @@ dxf_arc
 } DxfArc, * DxfArcPtr;
 
 
+DxfArc * dxf_init_arc_struct
+(
+        DxfArc *dxf_arc
+);
 static int
 dxf_read_arc_struct
 (
