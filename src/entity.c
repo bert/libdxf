@@ -1,6 +1,6 @@
 /*!
  * \file entity.c
- * \author Copyright (C) 2008, 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2009, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF entity typedefinition.
  *
  * <hr>
@@ -31,6 +31,34 @@
 
 
 #include "global.h"
+
+
+/*!
+ * \brief Read entities from a DXF file.
+ */
+int
+dxf_read_entities
+(
+        char *filename,
+                /*!< filename of input file (or device). */
+        FILE *fp,
+                /*!< filepointer to the input file (or device). */
+        int line_number,
+                /*!< current line number in the input file (or device). */
+        char *dxf_entities_list, 
+                /*!< pointer to a list of entities. */
+        int acad_version_number
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_entities () function.\n", __FILE__, __LINE__);
+#endif
+        /*! \todo Add code here. */
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_entities () function.\n", __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
 
 
 /*!
