@@ -109,7 +109,8 @@ dxf_read_arc_struct
         char *filename,
         FILE *fp,
         int line_number,
-        DxfArc *dxf_arc
+        DxfArc *dxf_arc,
+        int acad_version_number
 );
 static int
 dxf_write_arc

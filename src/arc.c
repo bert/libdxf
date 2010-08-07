@@ -29,12 +29,22 @@
  * <hr>
  */
 
+
 #include "global.h"
 #include "arc.h"
+#include "file.h"
 
 
 /*!
- * \brief Read data an \c ARC entity from a DXF file.
+ * \brief Read data from a DXF file into an \c ARC entity.
+ *
+ * The last line read from file contained the string "ARC". \n
+ * Now follows some data for the \c ARC, to be terminated with a "  0"
+ * string announcing the following entity, or the end of the \c ENTITY
+ * section marker \c ENDSEC. \n
+ *
+ * \return \c line_number when done, or 0 when an error occured while
+ * reading from file.
  */
 static int
 dxf_read_arc_struct
@@ -45,19 +55,164 @@ dxf_read_arc_struct
                 /*!< filepointer to the input file (or device). */
         int line_number,
                 /*!< current line number in the input file (or device). */
-        DxfArc *dxf_arc
+        DxfArc *dxf_arc,
                 /*!< DXF arc entity. */
+        int acad_version_number
 )
 {
+        char *temp_string = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_arc_struct () function.\n", __FILE__, __LINE__);
 #endif
-        char *dxf_entity_name = strdup ("ARC");
-        /*! \todo Add more code here. */
+        line_number++;
+        fscanf (fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp))
+                {
+                        fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
+                                filename, line_number);
+                        fclose (fp);
+                        return (0);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        line_number++;
+                        fscanf (fp, "%x\n", &dxf_arc->id_code);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        line_number++;
+                        fscanf (fp, "%s\n", dxf_arc->linetype);
+                }
+                else if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing a layer name. */
+                        line_number++;
+                        fscanf (fp, "%s\n", dxf_arc->layer);
+                }
+                else if (strcmp (temp_string, "10") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the center point. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_arc->x0);
+                }
+                else if (strcmp (temp_string, "20") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the center point. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_arc->y0);
+                }
+                else if (strcmp (temp_string, "30") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the center point. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_arc->z0);
+                }
+                else if ((acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0))
+                {
+                        /* Elevation is a pre AutoCAD R11 variable
+                         * so additional testing for the version should
+                         * probably be added.
+                         * Now follows a string containing the
+                         * elevation. */
+                        line_number++;
+                        fscanf (fp, "%s\n", temp_string);
+                }
+                else if (strcmp (temp_string, "39") == 0)
+                {
+                        /* Now follows a string containing the
+                         * thickness. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_arc->thickness);
+                }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the
+                         * radius. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_arc->radius);
+                }
+                else if (strcmp (temp_string, "50") == 0)
+                {
+                        /* Now follows a string containing the
+                         * start angle. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_arc->start_angle);
+                }
+                else if (strcmp (temp_string, "51") == 0)
+                {
+                        /* Now follows a string containing the
+                         * end angle. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_arc->end_angle);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        line_number++;
+                        fscanf (fp, "%d\n", &dxf_arc->color);
+                }
+                else if (strcmp (temp_string, "67") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        line_number++;
+                        fscanf (fp, "%d\n", &dxf_arc->paperspace);
+                }
+                else if ((acad_version_number >= AutoCAD_12)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Subclass markers are post AutoCAD R12
+                         * variable so additional testing for the
+                         * version should probably be added here.
+                         * Now follows a string containing the
+                         * subclass marker value. */
+                        line_number++;
+                        fscanf (fp, "%s\n", temp_string);
+                }
+                else if (strcmp (temp_string, "210") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the extrusion vector. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_arc->extr_x0);
+                }
+                else if (strcmp (temp_string, "220") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the extrusion vector. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_arc->extr_y0);
+                }
+                else if (strcmp (temp_string, "230") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the extrusion vector. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_arc->extr_z0);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        line_number++;
+                        fscanf (fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+        }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_arc_struct () function.\n", __FILE__, __LINE__);
 #endif
-        return (EXIT_SUCCESS);
+        return (line_number);
 }
 
 
