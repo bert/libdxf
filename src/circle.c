@@ -56,6 +56,7 @@ dxf_read_circle_struct
         DxfCircle *dxf_circle,
                 /*!< DXF circle entity. */
         int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
         char *temp_string = NULL;
@@ -236,6 +237,7 @@ dxf_write_circle
                 /*!< group code = 67\n
                  * optional, defaults to 0 (modelspace). */
         int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -296,6 +298,7 @@ dxf_write_circle_struct
         DxfCircle dxf_circle,
                 /*!< DXF circle entity. */
         int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
         char *dxf_entity_name = strdup ("CIRCLE");
