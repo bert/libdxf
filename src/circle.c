@@ -232,9 +232,10 @@ dxf_write_circle
         int color,
                 /*!< group code = 62\n
                  * optional, defaults to BYLAYER. */
-        int paperspace
+        int paperspace,
                 /*!< group code = 67\n
                  * optional, defaults to 0 (modelspace). */
+        int acad_version_number
 )
 {
 #if DEBUG
@@ -292,8 +293,9 @@ dxf_write_circle_struct
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfCircle dxf_circle
+        DxfCircle dxf_circle,
                 /*!< DXF circle entity. */
+        int acad_version_number
 )
 {
         char *dxf_entity_name = strdup ("CIRCLE");

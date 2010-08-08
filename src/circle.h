@@ -103,13 +103,15 @@ dxf_write_circle
         double thickness,
         double radius,
         int color,
-        int paperspace
+        int paperspace,
+        int acad_version_number
 );
 int
 dxf_write_circle_struct
 (
         FILE *fp,
-        DxfCircle dxf_circle
+        DxfCircle dxf_circle,
+        int acad_version_number
 );
 
 
