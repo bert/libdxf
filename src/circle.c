@@ -34,6 +34,49 @@
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c CIRCLE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfCircle *
+dxf_init_circle_struct
+(
+        DxfCircle *dxf_circle
+                /*!< DXF circle entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_circle_struct () function.\n", __FILE__, __LINE__);
+#endif
+        dxf_circle = (DxfCircle *) malloc (sizeof (DxfCircle));
+        if (dxf_circle == NULL)
+        {
+              fprintf(stderr, "ERROR: could not allocate memory for a DxfCircle struct.\n");
+              return (NULL);
+        }
+        dxf_circle->id_code = 0;
+        dxf_circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_circle->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_circle->x0 = 0.0;
+        dxf_circle->y0 = 0.0;
+        dxf_circle->z0 = 0.0;
+        dxf_circle->extr_x0 = 0.0;
+        dxf_circle->extr_y0 = 0.0;
+        dxf_circle->extr_z0 = 0.0;
+        dxf_circle->thickness = 0.0;
+        dxf_circle->radius = 0.0;
+        dxf_circle->color = DXF_COLOR_BYLAYER;
+        dxf_circle->paperspace = DXF_MODELSPACE;
+        dxf_circle->acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_circle_struct () function.\n", __FILE__, __LINE__);
+#endif
+        return (dxf_circle);
+}
+
+
+/*!
  * \brief Read data from a DXF file into an \c CIRCLE entity.
  *
  * The last line read from file contained the string "CIRCLE". \n

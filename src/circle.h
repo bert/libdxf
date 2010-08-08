@@ -83,6 +83,10 @@ dxf_circle
 } DxfCircle, * DxfCirclePtr;
 
 
+DxfCircle * dxf_init_circle_struct
+(
+        DxfCircle *dxf_circle
+);
 static int
 dxf_read_circle_struct
 (
