@@ -78,6 +78,8 @@ dxf_circle
         int paperspace;
                 /*!< group code = 67\n
                  * optional, defaults to 0 (modelspace). */
+        int acad_version_number;
+                /*!< AutoCAD version number. */
 } DxfCircle, * DxfCirclePtr;
 
 
