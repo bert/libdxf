@@ -81,6 +81,15 @@ dxf_circle
 } DxfCircle, * DxfCirclePtr;
 
 
+static int
+dxf_read_circle_struct
+(
+        char *filename,
+        FILE *fp,
+        int line_number,
+        DxfCircle *dxf_circle,
+        int acad_version_number
+);
 int
 dxf_write_circle
 (
