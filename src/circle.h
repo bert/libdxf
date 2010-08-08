@@ -29,7 +29,9 @@
  * <hr>
  */
 
+
 #include "global.h"
+
 
 /*!
  * \brief DXF definition of a circle entity.
@@ -77,5 +79,29 @@ dxf_circle
                 /*!< group code = 67\n
                  * optional, defaults to 0 (modelspace). */
 } DxfCircle, * DxfCirclePtr;
+
+
+int
+dxf_write_circle
+(
+        FILE *fp,
+        int id_code,
+        char *linetype,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double thickness,
+        double radius,
+        int color,
+        int paperspace
+);
+int
+dxf_write_circle_struct
+(
+        FILE *fp,
+        DxfCircle dxf_circle
+);
+
 
 /* EOF */
