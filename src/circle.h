@@ -1,6 +1,6 @@
 /*!
  * \file circle.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Defintion of a DXF circle entity (\c CIRCLE).
  *
  * <hr>
@@ -53,6 +53,18 @@ dxf_circle
         double z0;
                 /*!< group code = 30\n
                  * base point. */
+        double extr_x0;
+                /*!< X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 210. */
+        double extr_y0;
+                /*!< Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 220. */
+        double extr_z0;
+                /*!< Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if ommitted in the DXF file.\n
+                 * Group code = 230. */
         double thickness;
                 /*!< group code = 39\n
                  * optional, defaults to 0.0. */
