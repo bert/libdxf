@@ -30,7 +30,6 @@
  */
 
 
-#include "global.h"
 #include "circle.h"
 
 
