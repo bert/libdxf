@@ -53,7 +53,7 @@ DxfThumbnail *dxf_thumbnail;
  * 
  * \return char* with the scanned data.
  */
-static char *dxf_fscanf
+char *dxf_fscanf
 (
         FILE *fp,
         const char * template
