@@ -196,7 +196,7 @@ dxf_write_arc
         fprintf (fp, " 10\n%f\n", x0);
         fprintf (fp, " 20\n%f\n", y0);
         fprintf (fp, " 30\n%f\n", z0);
-        if (acad_version_number >= AutoCAD_14)
+        if (acad_version_number >= AutoCAD_12)
         {
                 fprintf (fp, "210\n%f\n", extr_x0);
                 fprintf (fp, "220\n%f\n", extr_y0);
@@ -303,6 +303,12 @@ dxf_write_arc_struct
         fprintf (fp, " 10\n%f\n", dxf_arc.x0);
         fprintf (fp, " 20\n%f\n", dxf_arc.y0);
         fprintf (fp, " 30\n%f\n", dxf_arc.z0);
+        if (dxf_arc.acad_version_number >= AutoCAD_12)
+        {
+                fprintf (fp, "210\n%f\n", dxf_arc.extr_x0);
+                fprintf (fp, "220\n%f\n", dxf_arc.extr_y0);
+                fprintf (fp, "230\n%f\n", dxf_arc.extr_z0);
+        }
         if (dxf_arc.thickness != 0.0)
         {
                 fprintf (fp, " 39\n%f\n", dxf_arc.thickness);
