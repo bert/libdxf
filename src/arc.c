@@ -102,6 +102,7 @@ dxf_read_arc_struct
         DxfArc *dxf_arc,
                 /*!< DXF arc entity. */
         int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
         char *temp_string = NULL;
@@ -434,8 +435,10 @@ dxf_write_arc_struct
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfArc dxf_arc
+        DxfArc dxf_arc,
                 /*!< DXF arc entity. */
+        int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG

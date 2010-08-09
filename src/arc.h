@@ -141,7 +141,8 @@ int
 dxf_write_arc_struct
 (
         FILE *fp,
-        DxfArc dxf_arc
+        DxfArc dxf_arc,
+        int acad_version_number
 );
 
 
