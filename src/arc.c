@@ -162,7 +162,8 @@ dxf_read_arc_struct
                         fscanf (fp, "%lf\n", &dxf_arc->z0);
                 }
                 else if ((acad_version_number <= AutoCAD_11)
-                        && (strcmp (temp_string, "38") == 0))
+                        && (strcmp (temp_string, "38") == 0)
+                        && (dxf_arc->z0 = 0.0))
                 {
                         /* Elevation is a pre AutoCAD R11 variable
                          * so additional testing for the version should
@@ -170,7 +171,7 @@ dxf_read_arc_struct
                          * Now follows a string containing the
                          * elevation. */
                         line_number++;
-                        fscanf (fp, "%s\n", temp_string);
+                        fscanf (fp, "%s\n", dxf_arc->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
