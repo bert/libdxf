@@ -1,6 +1,6 @@
 /*!
  * \file ellipse.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF ellipse entity (\c ELLIPSE).
  *
  * <hr>
@@ -29,8 +29,9 @@
  * <hr>
  */
 
-#include "global.h"
+
 #include "ellipse.h"
+
 
 /*!
  * \brief Write DXF output to a file for an ellipse entity (elliptic arc).
@@ -152,6 +153,7 @@ dxf_write_ellipse
         return (EXIT_SUCCESS);
 }
 
+
 /*!
  * \brief Write DXF output to a file for an ellipse entity (elliptic arc).
  *
@@ -220,5 +222,6 @@ dxf_write_ellipse_struct
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */
