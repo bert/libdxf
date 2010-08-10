@@ -103,13 +103,18 @@ dxf_arc
 } DxfArc, * DxfArcPtr;
 
 
+DxfArc * dxf_init_arc_struct
+(
+        DxfArc *dxf_arc
+);
 static int
 dxf_read_arc_struct
 (
         char *filename,
         FILE *fp,
         int line_number,
-        DxfArc *dxf_arc
+        DxfArc *dxf_arc,
+        int acad_version_number
 );
 static int
 dxf_write_arc
@@ -136,7 +141,8 @@ int
 dxf_write_arc_struct
 (
         FILE *fp,
-        DxfArc dxf_arc
+        DxfArc dxf_arc,
+        int acad_version_number
 );
 
 
