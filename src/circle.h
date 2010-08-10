@@ -1,6 +1,6 @@
 /*!
  * \file circle.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Defintion of a DXF circle entity (\c CIRCLE).
  *
  * <hr>
@@ -29,7 +29,9 @@
  * <hr>
  */
 
+
 #include "global.h"
+
 
 /*!
  * \brief DXF definition of a circle entity.
@@ -53,6 +55,18 @@ dxf_circle
         double z0;
                 /*!< group code = 30\n
                  * base point. */
+        double extr_x0;
+                /*!< X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 210. */
+        double extr_y0;
+                /*!< Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 220. */
+        double extr_z0;
+                /*!< Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if ommitted in the DXF file.\n
+                 * Group code = 230. */
         double thickness;
                 /*!< group code = 39\n
                  * optional, defaults to 0.0. */
@@ -64,6 +78,47 @@ dxf_circle
         int paperspace;
                 /*!< group code = 67\n
                  * optional, defaults to 0 (modelspace). */
+        int acad_version_number;
+                /*!< AutoCAD version number. */
 } DxfCircle, * DxfCirclePtr;
+
+
+DxfCircle * dxf_init_circle_struct
+(
+        DxfCircle *dxf_circle
+);
+static int
+dxf_read_circle_struct
+(
+        char *filename,
+        FILE *fp,
+        int line_number,
+        DxfCircle *dxf_circle,
+        int acad_version_number
+);
+int
+dxf_write_circle
+(
+        FILE *fp,
+        int id_code,
+        char *linetype,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double thickness,
+        double radius,
+        int color,
+        int paperspace,
+        int acad_version_number
+);
+int
+dxf_write_circle_struct
+(
+        FILE *fp,
+        DxfCircle dxf_circle,
+        int acad_version_number
+);
+
 
 /* EOF */
