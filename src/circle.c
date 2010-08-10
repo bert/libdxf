@@ -159,7 +159,8 @@ dxf_read_circle_struct
                         fscanf (fp, "%lf\n", &dxf_circle->z0);
                 }
                 else if ((acad_version_number <= AutoCAD_11)
-                        && (strcmp (temp_string, "38") == 0))
+                        && (strcmp (temp_string, "38") == 0)
+                        && (dxf_circle->z0 = 0.0))
                 {
                         /* Elevation is a pre AutoCAD R11 variable
                          * so additional testing for the version should
