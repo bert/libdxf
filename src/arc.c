@@ -48,7 +48,7 @@ dxf_init_arc_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_arc_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_arc_struct () function.\n", __FILE__, __LINE__);
 #endif
         dxf_arc = (DxfArc *) malloc (sizeof (DxfArc));
         if (dxf_arc == NULL)
@@ -73,7 +73,7 @@ dxf_init_arc_struct
         dxf_arc->paperspace = DXF_MODELSPACE;
         dxf_arc->acad_version_number = 0;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_arc_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_arc_struct () function.\n", __FILE__, __LINE__);
 #endif
         return (dxf_arc);
 }
