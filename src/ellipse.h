@@ -101,6 +101,11 @@ dxf_ellipse
 } DxfEllipse, * DxfEllipsePtr;
 
 
+DxfEllipse *
+dxf_init_ellipse_struct
+(
+        DxfEllipse *dxf_ellipse
+);
 static int
 dxf_read_ellipse_struct
 (

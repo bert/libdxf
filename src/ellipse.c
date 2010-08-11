@@ -34,6 +34,54 @@
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in an \c ELLIPSE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfEllipse *
+dxf_init_ellipse_struct
+(
+        DxfEllipse *dxf_ellipse
+                /*!< DXF ellipse entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init ellipse_struct () function.\n", __FILE__, __LINE__);
+#endif
+        dxf_ellipse = (DxfEllipse *) malloc (sizeof (DxfEllipse));
+        if (dxf_ellipse == NULL)
+        {
+              fprintf(stderr, "ERROR: could not allocate memory for a DxfEllipse struct.\n");
+              return (NULL);
+        }
+        dxf_ellipse->id_code = 0;
+        dxf_ellipse->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_ellipse->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_ellipse->x0 = 0.0;
+        dxf_ellipse->y0 = 0.0;
+        dxf_ellipse->z0 = 0.0;
+        dxf_ellipse->x1 = 0.0;
+        dxf_ellipse->y1 = 0.0;
+        dxf_ellipse->z1 = 0.0;
+        dxf_ellipse->extr_x0 = 0.0;
+        dxf_ellipse->extr_y0 = 0.0;
+        dxf_ellipse->extr_z0 = 0.0;
+        dxf_ellipse->thickness = 0.0;
+        dxf_ellipse->ratio = 0.0;
+        dxf_ellipse->start_angle = 0.0;
+        dxf_ellipse->end_angle = 0.0;
+        dxf_ellipse->color = DXF_COLOR_BYLAYER;
+        dxf_ellipse->paperspace = DXF_MODELSPACE;
+        dxf_ellipse->acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_ellipse_struct () function.\n", __FILE__, __LINE__);
+#endif
+        return (dxf_ellipse);
+}
+
+
+/*!
  * \brief Read data from a DXF file into an \c ELLIPSE entity.
  *
  * The last line read from file contained the string "ELLIPSE". \n
