@@ -101,6 +101,15 @@ dxf_ellipse
 } DxfEllipse, * DxfEllipsePtr;
 
 
+static int
+dxf_read_ellipse_struct
+(
+        char *filename,
+        FILE *fp,
+        int line_number,
+        DxfEllipse *dxf_ellipse,
+        int acad_version_number
+);
 int
 dxf_write_ellipse
 (
