@@ -171,7 +171,7 @@ dxf_read_arc_struct
                          * Now follows a string containing the
                          * elevation. */
                         line_number++;
-                        fscanf (fp, "%s\n", dxf_arc->z0);
+                        fscanf (fp, "%lf\n", &dxf_arc->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
