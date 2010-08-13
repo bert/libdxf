@@ -188,10 +188,10 @@ dxf_write_file
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_file () function.\n", __FILE__, __LINE__);
 #endif
-		extern char *dxf_entities_list;
-		extern char *dxf_objects_list;
-		extern char *dxf_blocks_list;
-		extern DxfThumbnail *dxf_thumbnail;
+        extern char *dxf_entities_list;
+        extern char *dxf_objects_list;
+        extern char *dxf_blocks_list;
+        extern DxfThumbnail *dxf_thumbnail;
         dxf_init_header (dxf_header, acad_version_number);
         dxf_write_header (fp, dxf_header, acad_version_number);
         //dxf_write_classes (fp, dxf_classes_list, acad_version_number);
