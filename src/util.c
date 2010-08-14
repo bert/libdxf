@@ -28,3 +28,11 @@
  * For more details see http://www.autodesk.com.
  * <hr>
  */
+
+int dxf_is_double (int type)
+{
+	if ( type >=10 && type < 60)
+		return TRUE;
+	else
+		return FALSE;
+}

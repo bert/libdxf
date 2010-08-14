@@ -48,4 +48,6 @@ enum return_state { FAIL = 0, SUCCESS, FOUND };
 		break; \
 	}
 
+int dxf_is_double (int type);
+
 #endif /* UTIL_H */
