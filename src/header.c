@@ -1127,8 +1127,9 @@ dxf_read_header_parse_n_double
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_header_parse_n_double () function.\n", __FILE__, __LINE__);
 #endif
 		char tstring[255];
-		int i, ret = SUCCESS;
+		int f, n, i, ret = SUCCESS;
 		double *dvar;
+		double tvar;
 		va_list dlist;
 
 		/* test for header_var and version number. -3 makes it version agnostic */
@@ -1143,7 +1144,12 @@ dxf_read_header_parse_n_double
 				dvar = va_arg(dlist, double *);
 				/* prepare the string to read all vars */
 				snprintf (tstring, 255, " %d0\n\%%'lf\n", i);
-				if (fscanf (fp, tstring, dvar) == 0)
+				f = fscanf (fp, " %d\n%'lf\n", &n, &tvar);
+				if (f > 0 && n >=10 && n <= 59)
+				{
+					*dvar = tvar;
+				}
+				else
 				{
 					ret = FALSE;
 					break;
