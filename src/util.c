@@ -36,3 +36,11 @@ int dxf_is_double (int type)
 	else
 		return FALSE;
 }
+
+int dxf_is_int (int type)
+{
+	if ( type >= 60 && type < 80)
+		return TRUE;
+	else
+		return FALSE;
+}

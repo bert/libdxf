@@ -49,5 +49,5 @@ enum return_state { FAIL = 0, SUCCESS, FOUND };
 	}
 
 int dxf_is_double (int type);
-
+int dxf_is_int (int type);
 #endif /* UTIL_H */
