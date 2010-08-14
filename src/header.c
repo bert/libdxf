@@ -1020,23 +1020,6 @@ dxf_write_header
         return (EXIT_SUCCESS);
 }
 
-int
-dxf_test_version
-
-(
-		int acad_version_number,
- 		int valid_acad_version
-)
-{
-	if (acad_version_number == valid_acad_version)
-		return 0;
-	if (acad_version_number > valid_acad_version)
-		return 1;
-	if (acad_version_number < valid_acad_version)
-		return -1;
-	/* impossible to reach */
-	return -3;
-}
 static int
 dxf_read_header_parse_string
 (
@@ -1044,9 +1027,7 @@ dxf_read_header_parse_string
  		const char *temp_string,
  		const char *header_var,
  		char **value_string,
- 		int acad_version_number,
- 		int valid_acad_version,
- 		int version_cmp
+ 		int version_expression
 )
 {
 #if DEBUG
@@ -1054,9 +1035,7 @@ dxf_read_header_parse_string
 #endif
 		char tstring[255];
 		int n, ret = SUCCESS;
-		if (strcmp (temp_string, header_var) == 0 &&
-		    (dxf_test_version (acad_version_number, valid_acad_version) == version_cmp ||
-		     valid_acad_version == 0))
+		if (strcmp (temp_string, header_var) == 0 && version_expression)
 		{
 			ret = FOUND;
 			fscanf (fp, "%i\n%s\n", &n, tstring);
@@ -1083,9 +1062,7 @@ dxf_read_header_parse_int
  		const char *temp_string,
 		const char *header_var,
  		int *value,
-		int acad_version_number,
- 		int valid_acad_version,
- 		int version_cmp
+		int version_expression
 )
 {
 #if DEBUG
@@ -1093,9 +1070,7 @@ dxf_read_header_parse_int
 #endif
 		int f, tvar, n, ret = SUCCESS;
 		/* test for header_var and version number. -3 makes it version agnostic */
-		if (strcmp (temp_string, header_var) == 0  &&
-		    (dxf_test_version (acad_version_number, valid_acad_version) == version_cmp ||
-		     valid_acad_version == 0))
+		if (strcmp (temp_string, header_var) == 0  && version_expression)
 		{
 			f = fscanf (fp, "%i\n%i\n", &n, &tvar);
 			if (f > 0 && dxf_is_int(n))
@@ -1121,9 +1096,7 @@ dxf_read_header_parse_n_double
         FILE *fp,  /*!< DXF file handler.\n */
 		const char *temp_string,
  		const char *header_var,
-		int acad_version_number,
- 		int valid_acad_version,
- 		int version_cmp,
+		int version_expression,
  		int quant,
  		...
 )
@@ -1137,9 +1110,7 @@ dxf_read_header_parse_n_double
 		va_list dlist;
 
 		/* test for header_var and version number. -3 makes it version agnostic */
-		if (strcmp (temp_string, header_var) == 0  &&
-		    (dxf_test_version (acad_version_number, valid_acad_version) == version_cmp ||
-		     valid_acad_version == 0))
+		if (strcmp (temp_string, header_var) == 0  && version_expression)
 		{
 			ret = FOUND;
 			va_start (dlist, quant);
@@ -1191,24 +1162,21 @@ dxf_read_header_parser
  		*/
 		ret = dxf_read_header_parse_int (fp, temp_string, "$ACADMAINTVER",
 		                                 &dxf_header.AcadMaintVer,
-		                                 acad_version_number, AC1014, 1);
+		                                 acad_version_number > AC1014);
 		dxf_return(ret);
 		
 		ret = dxf_read_header_parse_string (fp, temp_string, "$DWGCODEPAGE",
 		                                    &dxf_header.DWGCodePage,
-		                                    acad_version_number, AC1012, 1);
+		                                    acad_version_number >= AC1012);
 		dxf_return(ret);
 	
 		ret = dxf_read_header_parse_n_double (fp, temp_string, "$INSBASE",
-		                                      acad_version_number, 0, 0,
+		                                      TRUE,
 		                                      3,
 		                                      &dxf_header.InsBase.x0,
 		                                      &dxf_header.InsBase.y0,
 		                                      &dxf_header.InsBase.z0);
-	printf ("%f, %f, %f \n",
-	        dxf_header.InsBase.x0,
-	        dxf_header.InsBase.y0,
-	        dxf_header.InsBase.z0);
+
 		dxf_return(ret);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving read_header_parser () function.\n", __FILE__, __LINE__);
@@ -1236,8 +1204,8 @@ dxf_read_header
 		fscanf (fp, "%i\n%s\n", &n, temp_string);
 		ret = dxf_read_header_parse_string (fp, temp_string, 
 		                                    "$ACADVER", &dxf_header.AcadVer,
-		                                    0, 0, 0);
-		dxf_return_val_if_fail (ret, FALSE);
+		                                    TRUE);
+	dxf_return_val_if_fail (ret, FALSE);
 		/* turn the acad_version into an integer */
 		acad_version_number= acad_version_from_string (dxf_header.AcadVer);
 
