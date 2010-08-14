@@ -1213,7 +1213,6 @@ dxf_read_header
         {
                 /* reads the next header content */
                 fscanf (fp, "%i\n%s\n", &n, temp_string);
-                printf ("string temp: %s\n", temp_string);
                 /* if it is a valid line */
                 if (n==9)
                 {
