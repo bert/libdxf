@@ -566,7 +566,7 @@ dxf_init_header
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_header () function.\n", __FILE__, __LINE__);
 #endif
-		return (EXIT_SUCCESS);
+                return (EXIT_SUCCESS);
 }
 
 
@@ -1024,31 +1024,31 @@ static int
 dxf_read_header_parse_string
 (
         FILE *fp,  /*!< DXF file handler.\n */
- 		const char *temp_string,
- 		const char *header_var,
- 		char **value_string,
- 		int version_expression
+        const char *temp_string,
+        const char *header_var,
+        char **value_string,
+        int version_expression
 )
 {
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_header_parse_string () function.\n", __FILE__, __LINE__);
 #endif
-		char tstring[255];
-		int n, ret = SUCCESS;
-		if (strcmp (temp_string, header_var) == 0 && version_expression)
-		{
-			ret = FOUND;
-			fscanf (fp, "%i\n%s\n", &n, tstring);
-			if (n==1 || n==3)
-			{
-				*value_string = strdup(tstring);
-			}
-			else
-				ret = FAIL;
-		}
-		else
-			ret = SUCCESS;
-		
+        char tstring[255];
+        int n, ret = SUCCESS;
+        if (strcmp (temp_string, header_var) == 0 && version_expression)
+        {
+                ret = FOUND;
+                fscanf (fp, "%i\n%s\n", &n, tstring);
+                if (n==1 || n==3)
+                {
+                        *value_string = strdup(tstring);
+                }
+                else
+                        ret = FAIL;
+        }
+        else
+                ret = SUCCESS;
+                
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_header_parse_string () function.\n", __FILE__, __LINE__);
 #endif
@@ -1059,30 +1059,30 @@ static int
 dxf_read_header_parse_int
 (
         FILE *fp,  /*!< DXF file handler.\n */
- 		const char *temp_string,
-		const char *header_var,
- 		int *value,
-		int version_expression
+        const char *temp_string,
+        const char *header_var,
+        int *value,
+        int version_expression
 )
 {
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_header_parse_int () function.\n", __FILE__, __LINE__);
 #endif
-		int f, tvar, n, ret = SUCCESS;
-		/* test for header_var and version number. -3 makes it version agnostic */
-		if (strcmp (temp_string, header_var) == 0  && version_expression)
-		{
-			f = fscanf (fp, "%i\n%i\n", &n, &tvar);
-			if (f > 0 && dxf_is_int(n))
-			{
-				*value = tvar;
-				ret = FOUND;				
-			}
-			else
-				ret = FAIL;
-		}
-		else
-			ret = SUCCESS;
+        int f, tvar, n, ret = SUCCESS;
+        /* test for header_var and version number. -3 makes it version agnostic */
+        if (strcmp (temp_string, header_var) == 0  && version_expression)
+        {
+                f = fscanf (fp, "%i\n%i\n", &n, &tvar);
+                if (f > 0 && dxf_is_int(n))
+                {
+                        *value = tvar;
+                        ret = FOUND;                                
+                }
+                else
+                        ret = FAIL;
+        }
+        else
+                ret = SUCCESS;
 
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_header_parse_int () function.\n", __FILE__, __LINE__);
@@ -1094,45 +1094,45 @@ static int
 dxf_read_header_parse_n_double
 (
         FILE *fp,  /*!< DXF file handler.\n */
-		const char *temp_string,
- 		const char *header_var,
-		int version_expression,
- 		int quant,
- 		...
+        const char *temp_string,
+        const char *header_var,
+        int version_expression,
+        int quant,
+        ...
 )
 {
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_header_parse_n_double () function.\n", __FILE__, __LINE__);
 #endif
-		int f, n, i, ret = SUCCESS;
-		double *dvar;
-		double tvar;
-		va_list dlist;
+        int f, n, i, ret = SUCCESS;
+        double *dvar;
+        double tvar;
+        va_list dlist;
 
-		/* test for header_var and version number. -3 makes it version agnostic */
-		if (strcmp (temp_string, header_var) == 0  && version_expression)
-		{
-			ret = FOUND;
-			va_start (dlist, quant);
-			for (i = 1; i <= quant; i++)
-			{
-				dvar = va_arg(dlist, double *);
-				/* prepare the string to read all vars */
-				f = fscanf (fp, "%d\n%'lf\n", &n, &tvar);
-				if (f > 0 && dxf_is_double (n))
-				{
-					*dvar = tvar;
-				}
-				else
-				{
-					ret = FALSE;
-					break;
-				}
-			}
-			va_end(dlist);
-		}
-		else
-			ret = SUCCESS;
+        /* test for header_var and version number. -3 makes it version agnostic */
+        if (strcmp (temp_string, header_var) == 0  && version_expression)
+        {
+                ret = FOUND;
+                va_start (dlist, quant);
+                for (i = 1; i <= quant; i++)
+                {
+                        dvar = va_arg(dlist, double *);
+                        /* prepare the string to read all vars */
+                        f = fscanf (fp, "%d\n%'lf\n", &n, &tvar);
+                        if (f > 0 && dxf_is_double (n))
+                        {
+                                *dvar = tvar;
+                        }
+                        else
+                        {
+                                ret = FALSE;
+                                break;
+                        }
+                }
+                va_end(dlist);
+        }
+        else
+                ret = SUCCESS;
 
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_header_parse_n_double () function.\n", __FILE__, __LINE__);
@@ -1148,36 +1148,35 @@ dxf_read_header_parser
 (
         FILE *fp,  /*!< DXF file handler.\n */
         DxfHeader dxf_header,  /*!< DXF header to be initialized.\n */
- 		char * temp_string,
- 		int acad_version_number
+        char * temp_string,
+        int acad_version_number
 )
 {
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering read_header_parser () function.\n", __FILE__, __LINE__);
 #endif
-		int ret;
-		/*!
- 		* \todo: add some kind of control to what we have already read and check
-		 if we read all header data.
- 		*/
-		ret = dxf_read_header_parse_int (fp, temp_string, "$ACADMAINTVER",
-		                                 &dxf_header.AcadMaintVer,
-		                                 acad_version_number > AC1014);
-		dxf_return(ret);
-		
-		ret = dxf_read_header_parse_string (fp, temp_string, "$DWGCODEPAGE",
-		                                    &dxf_header.DWGCodePage,
-		                                    acad_version_number >= AC1012);
-		dxf_return(ret);
-	
-		ret = dxf_read_header_parse_n_double (fp, temp_string, "$INSBASE",
-		                                      TRUE,
-		                                      3,
-		                                      &dxf_header.InsBase.x0,
-		                                      &dxf_header.InsBase.y0,
-		                                      &dxf_header.InsBase.z0);
-
-		dxf_return(ret);
+        int ret;
+        /*!
+        * \todo: add some kind of control to what we have already read and check
+        if we read all header data.
+        */
+        ret = dxf_read_header_parse_int (fp, temp_string, "$ACADMAINTVER",
+                                         &dxf_header.AcadMaintVer,
+                                         acad_version_number > AC1014);
+        dxf_return(ret);
+                
+        ret = dxf_read_header_parse_string (fp, temp_string, "$DWGCODEPAGE",
+                                            &dxf_header.DWGCodePage,
+                                            acad_version_number >= AC1012);
+        dxf_return(ret);
+        
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$INSBASE",
+                                              TRUE,
+                                              3,
+                                              &dxf_header.InsBase.x0,
+                                              &dxf_header.InsBase.y0,
+                                              &dxf_header.InsBase.z0);
+        dxf_return(ret);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving read_header_parser () function.\n", __FILE__, __LINE__);
 #endif
@@ -1197,46 +1196,45 @@ dxf_read_header
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_header_struct () function.\n", __FILE__, __LINE__);
 #endif
-		char temp_string[255];
-		int n, acad_version_number, ret;
+        char temp_string[255];
+        int n, acad_version_number, ret;
 
-		/* first of all we MUST read the version number */
-		fscanf (fp, "%i\n%s\n", &n, temp_string);
-		ret = dxf_read_header_parse_string (fp, temp_string, 
-		                                    "$ACADVER", &dxf_header.AcadVer,
-		                                    TRUE);
-	dxf_return_val_if_fail (ret, FALSE);
-		/* turn the acad_version into an integer */
-		acad_version_number= acad_version_from_string (dxf_header.AcadVer);
+        /* first of all we MUST read the version number */
+        fscanf (fp, "%i\n%s\n", &n, temp_string);
+        ret = dxf_read_header_parse_string (fp, temp_string,
+                                            "$ACADVER", &dxf_header.AcadVer,
+                                            TRUE);
+        dxf_return_val_if_fail (ret, FALSE);
+        /* turn the acad_version into an integer */
+        acad_version_number= acad_version_from_string (dxf_header.AcadVer);
 
-		/* a loop to read all the header with no particulary order */
-		while (!feof(fp))
-		{
-			/* reads the next header content */
-			fscanf (fp, "%i\n%s\n", &n, temp_string);
-			printf ("string temp: %s\n", temp_string);
-			/* if it is a valid line */
-			if (n==9)
-			{
-				/* parses the header content and extract info to the header struct */
-				ret = dxf_read_header_parser(fp, dxf_header, 
-				                             temp_string,
-				                             acad_version_number);
-				printf ("foundd %d\n", ret);
-				dxf_return_val_if_fail(ret, FALSE);
-				if (ret != FOUND)
-					return FALSE;
-			}
-			/* or it can be the end of the section */
-			else if (n==0 && strcmp(temp_string, "ENDSEC"))
-			{
-				return TRUE;
-			}	
-			else
-			{
-				return FALSE;
-			}
-		}
+        /* a loop to read all the header with no particulary order */
+        while (!feof(fp))
+        {
+                /* reads the next header content */
+                fscanf (fp, "%i\n%s\n", &n, temp_string);
+                printf ("string temp: %s\n", temp_string);
+                /* if it is a valid line */
+                if (n==9)
+                {
+                        /* parses the header content and extract info to the header struct */
+                        ret = dxf_read_header_parser(fp, dxf_header,
+                                                     temp_string,
+                                                     acad_version_number);
+                        dxf_return_val_if_fail(ret, FALSE);
+                        if (ret != FOUND)
+                                return FALSE;
+                }
+                /* or it can be the end of the section */
+                else if (n==0 && strcmp(temp_string, "ENDSEC"))
+                {
+                        return TRUE;
+                }        
+                else
+                {
+                        return FALSE;
+                }
+        }
 
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_header_struct () function.\n", __FILE__, __LINE__);
