@@ -72,7 +72,9 @@ libdxf_la_SOURCES = \
   arc.c     \
   appid.h     \
   appid.c    \
-  section.h
+  section.h    \
+  util.h    \
+  util.c
 
 libdxf_la_CFLAGS = -Wall
 
