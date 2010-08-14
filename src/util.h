@@ -41,10 +41,10 @@ enum return_state { FAIL = 0, SUCCESS, FOUND };
 #define dxf_return(expr) switch(expr) \
 	{ \
 	case FAIL: \
-		return FALSE; \
+		return FAIL; \
 		break; \
 	case FOUND: \
-		return TRUE; \
+		return FOUND; \
 		break; \
 	}
 
