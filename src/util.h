@@ -35,4 +35,17 @@
 /* macro to return if the expression is false */
 #define dxf_return_val_if_fail(expr, val) if (!expr) return val;
 
+/* macro to return according to the expression */
+enum return_state { FAIL = 0, SUCCESS, FOUND };
+
+#define dxf_return(expr) switch(expr) \
+	{ \
+	case FAIL: \
+		return FALSE; \
+		break; \
+	case FOUND: \
+		return TRUE; \
+		break; \
+	}
+
 #endif /* UTIL_H */
