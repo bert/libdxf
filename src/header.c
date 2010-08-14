@@ -1143,7 +1143,7 @@ dxf_read_header_parse_n_double
 				dvar = va_arg(dlist, double *);
 				/* prepare the string to read all vars */
 				f = fscanf (fp, "%d\n%'lf\n", &n, &tvar);
-				if (f > 0 && n >=10 && n <= 59)
+				if (f > 0 && dxf_is_double (n))
 				{
 					*dvar = tvar;
 				}
