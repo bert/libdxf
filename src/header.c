@@ -1091,14 +1091,19 @@ dxf_read_header_parse_int
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_header_parse_int () function.\n", __FILE__, __LINE__);
 #endif
-		int n, ret = SUCCESS;
+		int f, tvar, n, ret = SUCCESS;
 		/* test for header_var and version number. -3 makes it version agnostic */
 		if (strcmp (temp_string, header_var) == 0  &&
 		    (dxf_test_version (acad_version_number, valid_acad_version) == version_cmp ||
 		     valid_acad_version == 0))
 		{
-			ret = FOUND;
-			if ( fscanf (fp, "%i\n%i\n", &n, value) <= 0)
+			f = fscanf (fp, "%i\n%i\n", &n, &tvar);
+			if (f > 0 && dxf_is_int(n))
+			{
+				*value = tvar;
+				ret = FOUND;				
+			}
+			else
 				ret = FAIL;
 		}
 		else
