@@ -1286,6 +1286,329 @@ dxf_read_header_parser
                                          TRUE);
         dxf_return(ret);
 
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$CELTSCALE",
+                                              acad_version_number >= AC1012,
+                                              1,
+                                              &dxf_header.CELTScale);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_int (fp, temp_string, "$DELOBJ",
+                                         &dxf_header.DelObj,
+                                         (acad_version_number == AC1012)
+                                         || (acad_version_number == AC1014));
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_int (fp, temp_string, "$DISPSILH",
+                                         &dxf_header.DispSilH,
+                                         acad_version_number <= AC1012);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMSCALE",
+                                              TRUE,
+                                              1,
+                                              &dxf_header.DimSCALE);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMASZ",
+                                              TRUE,
+                                              1,
+                                              &dxf_header.DimASZ);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMEXO",
+                                              TRUE,
+                                              1,
+                                              &dxf_header.DimEXO);
+        dxf_return(ret);
+
+        /*
+        fprintf (fp, "  9\n$DIMDLI\n 40\n%f\n", dxf_header.DimDLI);
+        fprintf (fp, "  9\n$DIMRND\n 40\n%f\n", dxf_header.DimRND);
+        fprintf (fp, "  9\n$DIMDLE\n 40\n%f\n", dxf_header.DimDLE);
+        */
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMEXE",
+                                              TRUE,
+                                              1,
+                                              &dxf_header.DimEXE);
+        dxf_return(ret);
+        /*
+        fprintf (fp, "  9\n$DIMTP\n 40\n%f\n", dxf_header.DimTP);
+        fprintf (fp, "  9\n$DIMTM\n 40\n%f\n", dxf_header.DimTM);
+        */
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMTXT",
+                                              TRUE,
+                                              1,
+                                              &dxf_header.DimTXT);
+        dxf_return(ret);
+        /*
+        fprintf (fp, "  9\n$DIMCEN\n 40\n%f\n", dxf_header.DimCEN);
+        fprintf (fp, "  9\n$DIMTSZ\n 40\n%f\n", dxf_header.DimTSZ);
+        fprintf (fp, "  9\n$DIMTOL\n 70\n%i\n", dxf_header.DimTOL);
+        fprintf (fp, "  9\n$DIMLIM\n 70\n%i\n", dxf_header.DimLIM);
+        fprintf (fp, "  9\n$DIMTIH\n 70\n%i\n", dxf_header.DimTIH);
+        fprintf (fp, "  9\n$DIMTOH\n 70\n%i\n", dxf_header.DimTOH);
+        fprintf (fp, "  9\n$DIMSE1\n 70\n%i\n", dxf_header.DimSE1);
+        fprintf (fp, "  9\n$DIMSE2\n 70\n%i\n", dxf_header.DimSE2);
+        fprintf (fp, "  9\n$DIMTAD\n 70\n%i\n", dxf_header.DimTAD);
+        fprintf (fp, "  9\n$DIMZIN\n 70\n%i\n", dxf_header.DimZIN);
+        fprintf (fp, "  9\n$DIMBLK\n  1\n%s\n", dxf_header.DimBLK);
+        fprintf (fp, "  9\n$DIMASO\n 70\n%i\n", dxf_header.DimASO);
+        fprintf (fp, "  9\n$DIMSHO\n 70\n%i\n", dxf_header.DimSHO);
+        fprintf (fp, "  9\n$DIMPOST\n  1\n%s\n", dxf_header.DimPOST);
+        fprintf (fp, "  9\n$DIMAPOST\n  1\n%s\n", dxf_header.DimAPOST);
+        fprintf (fp, "  9\n$DIMALT\n 70\n%i\n", dxf_header.DimALT);
+        fprintf (fp, "  9\n$DIMALTD\n 70\n%i\n", dxf_header.DimALTD);
+        fprintf (fp, "  9\n$DIMALTF\n 40\n%f\n", dxf_header.DimALTF);
+        fprintf (fp, "  9\n$DIMLFAC\n 40\n%f\n", dxf_header.DimLFAC);
+        fprintf (fp, "  9\n$DIMTOFL\n 70\n%i\n", dxf_header.DimTOFL);
+        fprintf (fp, "  9\n$DIMTVP\n 40\n%f\n", dxf_header.DimTVP);
+        fprintf (fp, "  9\n$DIMTIX\n 70\n%i\n", dxf_header.DimTIX);
+        fprintf (fp, "  9\n$DIMSOXD\n 70\n%i\n", dxf_header.DimSOXD);
+        fprintf (fp, "  9\n$DIMSAH\n 70\n%i\n", dxf_header.DimSAH);
+        fprintf (fp, "  9\n$DIMBLK1\n  1\n%s\n", dxf_header.DimBLK1);
+        fprintf (fp, "  9\n$DIMBLK2\n  1\n%s\n", dxf_header.DimBLK2);
+        */
+        ret = dxf_read_header_parse_string (fp, temp_string, "$DIMSTYLE",
+                                            &dxf_header.DimSTYLE,
+                                            TRUE);
+        dxf_return(ret);
+        /*
+        fprintf (fp, "  9\n$DIMCLRD\n 70\n%i\n", dxf_header.DimCLRD);
+        fprintf (fp, "  9\n$DIMCLRE\n 70\n%i\n", dxf_header.DimCLRE);
+        fprintf (fp, "  9\n$DIMCLRT\n 70\n%i\n", dxf_header.DimCLRT);
+        fprintf (fp, "  9\n$DIMTFAC\n 40\n%f\n", dxf_header.DimTFAC);
+        */
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMGAP",
+                                              TRUE,
+                                              1,
+                                              &dxf_header.DimGAP);
+        dxf_return(ret);
+        /*
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMJUST\n 70\n%i\n", dxf_header.DimJUST);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMSD1\n 70\n%i\n", dxf_header.DimSD1);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMSD2\n 70\n%i\n", dxf_header.DimSD2);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMTOLJ\n 70\n%i\n", dxf_header.DimTOLJ);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMTZIN\n 70\n%i\n", dxf_header.DimTZIN);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMALTZ\n 70\n%i\n", dxf_header.DimALTZ);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMALTTZ\n 70\n%i\n", dxf_header.DimALTTZ);
+        if ((acad_version_number == AC1012) || (acad_version_number == AC1014)) fprintf (fp, "  9\n$DIMFIT\n 70\n%i\n", dxf_header.DimFIT);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMUPT\n 70\n%i\n", dxf_header.DimUPT);
+        if ((acad_version_number == AC1012) || (acad_version_number == AC1014)) fprintf (fp, "  9\n$DIMUNIT\n 70\n%i\n", dxf_header.DimUNIT);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMDEC\n 70\n%i\n", dxf_header.DimDEC);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMTDEC\n 70\n%i\n", dxf_header.DimTDEC);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMALTU\n 70\n%i\n", dxf_header.DimALTU);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMALTTD\n 70\n%i\n", dxf_header.DimALTTD);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMTXSTY\n  7\n%s\n", dxf_header.DimTXSTY);
+        */
+        ret = dxf_read_header_parse_int (fp, temp_string, "$DIMAUNIT",
+                                         &dxf_header.DimAUNIT,
+                                         acad_version_number >= AC1012);
+        dxf_return(ret);
+    
+        ret = dxf_read_header_parse_int (fp, temp_string, "$DIMADEC",
+                                         &dxf_header.DimADEC,
+                                         acad_version_number >= AC1015);
+        dxf_return(ret);
+        /*
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMALTRND\n 40\n%f\n", dxf_header.DimALTRND);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMAZIN\n 70\n%i\n", dxf_header.DimAZIN);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMDSEP\n 70\n%i\n", dxf_header.DimDSEP);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMATFIT\n 70\n%i\n", dxf_header.DimATFIT);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMFRAC\n 70\n%i\n", dxf_header.DimFRAC);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMLDRBLK\n  1\n%s\n", dxf_header.DimLDRBLK);
+        */
+        ret = dxf_read_header_parse_int (fp, temp_string, "$DIMLUNIT",
+                                         &dxf_header.DimLUNIT,
+                                         acad_version_number >= AC1015);
+        dxf_return(ret);
+        /*
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMLWD\n 70\n%i\n", dxf_header.DimLWD);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMLWE\n 70\n%i\n", dxf_header.DimLWE);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMTMOVE\n 70\n%i\n", dxf_header.DimTMOVE);
+        */
+        ret = dxf_read_header_parse_int (fp, temp_string, "$LUNITS",
+                                         &dxf_header.LUnits,
+                                         TRUE);
+        dxf_return(ret);
+        
+        ret = dxf_read_header_parse_int (fp, temp_string, "$LUPREC",
+                                         &dxf_header.LUPrec,
+                                         TRUE);
+        dxf_return(ret);
+        /*
+        fprintf (fp, "  9\n$SKETCHINC\n 40\n%f\n", dxf_header.Sketchinc);
+        fprintf (fp, "  9\n$FILLETRAD\n 40\n%f\n", dxf_header.FilletRad);
+        */
+        ret = dxf_read_header_parse_int (fp, temp_string, "$AUNITS",
+                                         &dxf_header.AUnits,
+                                         TRUE);
+        dxf_return(ret);
+    
+        ret = dxf_read_header_parse_int (fp, temp_string, "$AUPREC",
+                                         &dxf_header.AUPrec,
+                                         TRUE);
+        dxf_return(ret);
+        /*
+        fprintf (fp, "  9\n$MENU\n  1\n%s\n", dxf_header.Menu);
+        fprintf (fp, "  9\n$ELEVATION\n 40\n%f\n", dxf_header.Elevation);
+        fprintf (fp, "  9\n$PELEVATION\n 40\n%f\n", dxf_header.PElevation);
+        fprintf (fp, "  9\n$THICKNESS\n 40\n%f\n", dxf_header.Thickness);
+        fprintf (fp, "  9\n$LIMCHECK\n 70\n%i\n", dxf_header.LimCheck);
+        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$BLIPMODE\n 70\n%i\n", dxf_header.BlipMode);
+        fprintf (fp, "  9\n$CHAMFERA\n 40\n%f\n", dxf_header.ChamferA);
+        fprintf (fp, "  9\n$CHAMFERB\n 40\n%f\n", dxf_header.ChamferB);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CHAMFERC\n 40\n%f\n", dxf_header.ChamferC);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CHAMFERD\n 40\n%f\n", dxf_header.ChamferD);
+        fprintf (fp, "  9\n$SKPOLY\n 70\n%i\n", dxf_header.SKPoly);
+        fprintf (fp, "  9\n$TDCREATE\n 40\n%f\n", dxf_header.TDCreate);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$TDUCREATE\n 40\n%f\n", dxf_header.TDUCreate);
+        fprintf (fp, "  9\n$TDUPDATE\n 40\n%f\n", dxf_header.TDUpdate);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$TDUUPDATE\n 40\n%f\n", dxf_header.TDUUpdate);
+        fprintf (fp, "  9\n$TDINDWG\n 40\n%f\n", dxf_header.TDInDWG);
+        fprintf (fp, "  9\n$TDUSRTIMER\n 40\n%f\n", dxf_header.TDUSRTimer);
+        fprintf (fp, "  9\n$USRTIMER\n 70\n%i\n", dxf_header.USRTimer);
+        fprintf (fp, "  9\n$ANGBASE\n 50\n%f\n", dxf_header.AngBase);
+        fprintf (fp, "  9\n$ANGDIR\n 70\n%i\n", dxf_header.AngDir);
+        fprintf (fp, "  9\n$PDMODE\n 70\n%i\n", dxf_header.PDMode);
+        fprintf (fp, "  9\n$PDSIZE\n 40\n%f\n", dxf_header.PDSize);
+        fprintf (fp, "  9\n$PLINEWID\n 40\n%f\n", dxf_header.PLineWid);
+        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$COORDS\n 70\n%i\n", dxf_header.Coords);
+        fprintf (fp, "  9\n$SPLFRAME\n 70\n%i\n", dxf_header.SPLFrame);
+        fprintf (fp, "  9\n$SPLINETYPE\n 70\n%i\n", dxf_header.SPLineType);
+        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$ATTDIA\n 70\n%i\n", dxf_header.AttDia);
+        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$ATTREQ\n 70\n%i\n", dxf_header.AttReq);
+        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$HANDLING\n 70\n%i\n", dxf_header.Handling);
+        */
+        ret = dxf_read_header_parse_int (fp, temp_string, "$SPLINESEGS",
+                                         &dxf_header.SPLineSegs,
+                                         TRUE);
+        dxf_return(ret);
+        
+        ret = dxf_read_header_parse_string (fp, temp_string, "$HANDSEED",
+                                            &dxf_header.HandSeed,
+                                            TRUE);
+        dxf_return(ret);
+    /*
+        fprintf (fp, "  9\n$SURFTAB1\n 70\n%i\n", dxf_header.SurfTab1);
+        fprintf (fp, "  9\n$SURFTAB2\n 70\n%i\n", dxf_header.SurfTab2);
+        fprintf (fp, "  9\n$SURFTYPE\n 70\n%i\n", dxf_header.SurfType);
+        fprintf (fp, "  9\n$SURFU\n 70\n%i\n", dxf_header.SurfU);
+        fprintf (fp, "  9\n$SURFV\n 70\n%i\n", dxf_header.SurfV);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSBASE\n  2\n%s\n", dxf_header.UCSBase);
+        fprintf (fp, "  9\n$UCSNAME\n  2\n%s\n", dxf_header.UCSName);
+        fprintf (fp, "  9\n$UCSORG\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrg.x0, dxf_header.UCSOrg.y0, dxf_header.UCSOrg.z0);
+        fprintf (fp, "  9\n$UCSXDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSXDir.x0, dxf_header.UCSXDir.y0, dxf_header.UCSXDir.z0);
+        fprintf (fp, "  9\n$UCSYDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSYDir.x0, dxf_header.UCSYDir.y0, dxf_header.UCSYDir.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORTHOREF\n  2\n%s\n", dxf_header.UCSOrthoRef);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORTHOVIEW\n 70\n%i\n", dxf_header.UCSOrthoView);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGTOP\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgTop.x0, dxf_header.UCSOrgTop.y0, dxf_header.UCSOrgTop.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGBOTTOM\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgBottom.x0, dxf_header.UCSOrgBottom.y0, dxf_header.UCSOrgBottom.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGLEFT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgLeft.x0, dxf_header.UCSOrgLeft.y0, dxf_header.UCSOrgLeft.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGRIGHT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgRight.x0, dxf_header.UCSOrgRight.y0, dxf_header.UCSOrgRight.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGFRONT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgFront.x0, dxf_header.UCSOrgFront.y0, dxf_header.UCSOrgFront.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGBACK\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgBack.x0, dxf_header.UCSOrgBack.y0, dxf_header.UCSOrgBack.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSBASE\n  2\n%s\n", dxf_header.PUCSBase);
+        fprintf (fp, "  9\n$PUCSNAME\n  2\n%s\n", dxf_header.PUCSName);
+        fprintf (fp, "  9\n$PUCSORG\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrg.x0, dxf_header.PUCSOrg.y0, dxf_header.PUCSOrg.z0);
+        fprintf (fp, "  9\n$PUCSXDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSXDir.x0, dxf_header.PUCSXDir.y0, dxf_header.PUCSXDir.z0);
+        fprintf (fp, "  9\n$PUCSYDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSYDir.x0, dxf_header.PUCSYDir.y0, dxf_header.PUCSYDir.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORTHOREF\n  2\n%s\n", dxf_header.PUCSOrthoRef);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORTHOVIEW\n 70\n%i\n", dxf_header.PUCSOrthoView);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGTOP\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgTop.x0, dxf_header.PUCSOrgTop.y0, dxf_header.PUCSOrgTop.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGBOTTOM\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgBottom.x0, dxf_header.PUCSOrgBottom.y0, dxf_header.PUCSOrgBottom.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGLEFT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgLeft.x0, dxf_header.PUCSOrgLeft.y0, dxf_header.PUCSOrgLeft.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGRIGHT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgRight.x0, dxf_header.PUCSOrgRight.y0, dxf_header.PUCSOrgRight.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGFRONT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgFront.x0, dxf_header.PUCSOrgFront.y0, dxf_header.PUCSOrgFront.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGBACK\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgBack.x0, dxf_header.PUCSOrgBack.y0, dxf_header.PUCSOrgBack.z0);
+        fprintf (fp, "  9\n$USERI1\n 70\n%i\n", dxf_header.UserI1);
+        fprintf (fp, "  9\n$USERI2\n 70\n%i\n", dxf_header.UserI2);
+        fprintf (fp, "  9\n$USERI3\n 70\n%i\n", dxf_header.UserI3);
+        fprintf (fp, "  9\n$USERI4\n 70\n%i\n", dxf_header.UserI4);
+        fprintf (fp, "  9\n$USERI5\n 70\n%i\n", dxf_header.UserI5);
+        fprintf (fp, "  9\n$USERR1\n 40\n%f\n", dxf_header.UserR1);
+        fprintf (fp, "  9\n$USERR2\n 40\n%f\n", dxf_header.UserR2);
+        fprintf (fp, "  9\n$USERR3\n 40\n%f\n", dxf_header.UserR3);
+        fprintf (fp, "  9\n$USERR4\n 40\n%f\n", dxf_header.UserR4);
+        fprintf (fp, "  9\n$USERR5\n 40\n%f\n", dxf_header.UserR5);
+        fprintf (fp, "  9\n$WORLDVIEW\n 70\n%i\n", dxf_header.WorldView);
+        fprintf (fp, "  9\n$SHADEDGE\n 70\n%i\n", dxf_header.ShadEdge);
+        fprintf (fp, "  9\n$SHADEDIF\n 70\n%i\n", dxf_header.ShadeDif);
+        fprintf (fp, "  9\n$TILEMODE\n 70\n%i\n", dxf_header.TileMode);
+        fprintf (fp, "  9\n$MAXACTVP\n 70\n%i\n", dxf_header.MaxActVP);
+        fprintf (fp, "  9\n$PINSBASE\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PInsBase.x0, dxf_header.PInsBase.y0, dxf_header.PInsBase.z0);
+        fprintf (fp, "  9\n$PLIMCHECK\n 70\n%i\n", dxf_header.PLimCheck);
+        fprintf (fp, "  9\n$PEXTMIN\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PExtMin.x0, dxf_header.PExtMin.y0, dxf_header.PExtMin.z0);
+        fprintf (fp, "  9\n$PEXTMAX\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PExtMax.x0, dxf_header.PExtMax.y0, dxf_header.PExtMax.z0);
+        */
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$PLIMMIN",
+                                              TRUE,
+                                              2,
+                                              &dxf_header.PLimMin.x0,
+                                              dxf_header.PLimMin.y0);
+        dxf_return(ret);
+    
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$PLIMMAX",
+                                              TRUE,
+                                              2,
+                                              &dxf_header.PLimMax.x0,
+                                              dxf_header.PLimMax.y0);
+        dxf_return(ret);
+        /*
+        fprintf (fp, "  9\n$UNITMODE\n 70\n%i\n", dxf_header.UnitMode);
+        fprintf (fp, "  9\n$VISRETAIN\n 70\n%i\n", dxf_header.VisRetain);
+        fprintf (fp, "  9\n$PLINEGEN\n 70\n%i\n", dxf_header.PLineGen);
+        fprintf (fp, "  9\n$PSLTSCALE\n 70\n%i\n", dxf_header.PSLTScale);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$TREEDEPTH\n 70\n%i\n", dxf_header.TreeDepth);
+        if ((acad_version_number == AC1012) || (acad_version_number == AC1014)) fprintf (fp, "  9\n$PICKSTYLE\n 70\n%i\n", dxf_header.PickStyle);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CMLSTYLE\n  2\n%s\n", dxf_header.CMLStyle);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CMLJUST\n 70\n%i\n", dxf_header.CMLJust);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CMLSCALE\n 40\n%f\n", dxf_header.CMLScale);
+        if (acad_version_number >= AC1014) fprintf (fp, "  9\n$PROXYGRAPHICS\n 70\n%i\n", dxf_header.ProxyGraphics);
+        if (acad_version_number >= AC1014) fprintf (fp, "  9\n$MEASUREMENT\n 70\n%i\n", dxf_header.Measurement);
+        if (acad_version_number == AC1012) fprintf (fp, "  9\n$SAVEIMAGES\n 70\n%i\n", dxf_header.SaveImages);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$CELWEIGHT\n370\n%i\n", dxf_header.CELWeight);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$ENDCAPS\n280\n%i\n", dxf_header.EndCaps);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$JOINSTYLE\n280\n%i\n", dxf_header.JoinStyle);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$LWDISPLAY\n290\n%i\n", dxf_header.LWDisplay);
+        */
+        ret = dxf_read_header_parse_int (fp, temp_string, "$INSUNITS",
+                                         &dxf_header.InsUnits,
+                                         acad_version_number >= AC1015);
+        dxf_return(ret);
+        /*
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$HYPERLINKBASE\n  1\n%s\n", dxf_header.HyperLinkBase);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$STYLESHEET\n  1\n%s\n", dxf_header.StyleSheet);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$XEDIT\n290\n%i\n", dxf_header.XEdit);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$CEPSNTYPE\n380\n%i\n", dxf_header.CEPSNType);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PSTYLEMODE\n290\n%i\n", dxf_header.PStyleMode);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$FINGERPRINTGUID\n  2\n%s\n", dxf_header.FingerPrintGUID);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$VERSIONGUID\n  2\n%s\n", dxf_header.VersionGUID);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$EXTNAMES\n290\n%i\n", dxf_header.ExtNames);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PSVPSCALE\n 40\n%f\n", dxf_header.PSVPScale);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$OLESTARTUP\n290\n%i\n", dxf_header.OLEStartUp);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$SORTENTS\n280\n%i\n", dxf_header.SortEnts);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$INDEXCTL\n280\n%i\n", dxf_header.IndexCtl);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$HIDETEXT\n280\n%i\n", dxf_header.HideText);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$XCLIPFRAME\n290\n%i\n", dxf_header.XClipFrame);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$HALOGAP\n280\n%i\n", dxf_header.HaloGap);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$OBSCOLOR\n 70\n%i\n", dxf_header.ObsColor);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$OBSLTYPE\n280\n%i\n", dxf_header.ObsLType);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$INTERSECTIONDISPLAY\n280\n%i\n", dxf_header.InterSectionDisplay);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$INTERSECTIONCOLOR\n 70\n%i\n", dxf_header.InterSectionColor);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$DIMASSOC\n280\n%i\n", dxf_header.DimASSOC);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$PROJECTNAME\n  1\n%s\n", dxf_header.ProjectName);        
+*/
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$GRIDUNIT",
+                                              acad_version_number >= AC1009,
+                                              2,
+                                              &dxf_header.GridUnit.x0,
+                                              &dxf_header.GridUnit.y0);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_int (fp, temp_string, "$GRIDMODE",
+                                         &dxf_header.GridMode,
+                                         acad_version_number >= AC1009);
+        dxf_return(ret);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving read_header_parser () function.\n", __FILE__, __LINE__);
 #endif
@@ -1323,7 +1646,7 @@ dxf_read_header
                 /* reads the next header content */
                 fscanf (fp, "%i\n%s\n", &n, temp_string);
                 /* if it is a valid line */
-                if (n==9)
+                if (n == 9)
                 {
                         /* parses the header content and extract info to the header struct */
                         ret = dxf_read_header_parser(fp, dxf_header,
@@ -1334,8 +1657,13 @@ dxf_read_header
                                 return FALSE;
                 }
                 /* or it can be the end of the section */
-                else if (n==0 && strcmp(temp_string, "ENDSEC"))
+                else if (n == 0 && strcmp(temp_string, "ENDSEC") == 0)
                 {
+#if DEBUG
+                        fprintf (stderr,
+                                 "[File: %s: line: %d] read_header :: Section Ended.\n",
+                                 __FILE__, __LINE__);
+#endif
                         return TRUE;
                 }        
                 else
