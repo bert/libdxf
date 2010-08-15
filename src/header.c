@@ -1232,6 +1232,11 @@ dxf_read_header_parser
                                          &dxf_header.MirrText,
                                          TRUE);
         dxf_return(ret);
+
+        ret = dxf_read_header_parse_int (fp, temp_string, "$DRAGMODE",
+                                         &dxf_header.MirrText,
+                                         acad_version_number < AC1015);
+        dxf_return(ret);
     
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving read_header_parser () function.\n", __FILE__, __LINE__);
