@@ -1,6 +1,6 @@
 /*!
  * \file line.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF line entity (\c LINE).
  *
  * <hr>
@@ -133,7 +133,7 @@ dxf_write_line
  * \brief Write DXF output to fp for a line entity.
  */
 int
-dxf_write_line2
+dxf_write_line_struct
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -142,52 +142,56 @@ dxf_write_line2
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_line2 () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_line_struct () function.\n", __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("LINE");
 
-        if ((dxf_line.x0 == dxf_line.x1) && (dxf_line.y0 == dxf_line.y1) && (dxf_line.z0 == dxf_line.z1))
+        if ((dxf_line.x0 == dxf_line.x1)
+                && (dxf_line.y0 == dxf_line.y1)
+                && (dxf_line.z0 == dxf_line.z1))
         {
-                fprintf (stderr, "Error: start point and end point are identical for the %s entity with id-code: %x\n", dxf_entity_name, dxf_line.id_code);
+                fprintf (stderr, "Error: start point and end point are identical for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_line.common.id_code);
                 dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_line.layer, "") == 0)
+        if (strcmp (dxf_line.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_line.id_code);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_line.common.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0\n", dxf_entity_name);
-                dxf_line.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_line.common.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_line.id_code != -1)
+        if (dxf_line.common.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_line.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_line.common.id_code);
         }
-        if (strcmp (dxf_line.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_line.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_line.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_line.common.linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_line.layer);
+        fprintf (fp, "  8\n%s\n", dxf_line.common.layer);
         fprintf (fp, " 10\n%f\n", dxf_line.x0);
         fprintf (fp, " 20\n%f\n", dxf_line.y0);
         fprintf (fp, " 30\n%f\n", dxf_line.z0);
         fprintf (fp, " 11\n%f\n", dxf_line.x1);
         fprintf (fp, " 21\n%f\n", dxf_line.y1);
         fprintf (fp, " 31\n%f\n", dxf_line.z1);
-        if (dxf_line.thickness != 0.0)
+        if (dxf_line.common.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_line.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_line.common.thickness);
         }
-        if (dxf_line.color != DXF_COLOR_BYLAYER)
+        if (dxf_line.common.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_line.color);
+                fprintf (fp, " 62\n%d\n", dxf_line.common.color);
         }
-        if (dxf_line.paperspace == DXF_PAPERSPACE)
+        if (dxf_line.common.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_line2 () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_line_struct () function.\n", __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }

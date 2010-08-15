@@ -1,6 +1,6 @@
 /*!
  * \file line.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Definition of a DXF line entity (\c LINE).
  *
  * <hr>
@@ -29,7 +29,10 @@
  * <hr>
  */
 
+
 #include "global.h"
+#include "entity.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD line entity.
@@ -37,13 +40,8 @@
 typedef struct
 dxf_line
 {
-        int id_code;
-                /*!< group code = 5. */
-        char *linetype;
-                /*!< group code = 6\n
-                 * optional, defaults to BYLAYER. */
-        char *layer;
-                /*!< group code = 8. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         double x0;
                 /*!< group code = 10\n
                  * start point. */
@@ -62,16 +60,32 @@ dxf_line
         double z1;
                 /*!< group code = 31\n
                  * end point. */
-        double thickness;
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
-        int color;
-                /*!< group code = 62\n
-                 * optional, defaults to BYLAYER. */
-        int paperspace;
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
 } DxfLine, * DxfLinePtr;
 
-/* EOF */
 
+int
+dxf_write_line
+(
+        FILE *fp,
+        int id_code,
+        char *linetype,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double x1,
+        double y1,
+        double z1,
+        double thickness,
+        int color,
+        int paperspace
+);
+int
+dxf_write_line_struct
+(
+        FILE *fp,
+        DxfLine dxf_line
+);
+
+
+/* EOF */
