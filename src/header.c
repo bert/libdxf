@@ -1177,6 +1177,62 @@ dxf_read_header_parser
                                               &dxf_header.InsBase.y0,
                                               &dxf_header.InsBase.z0);
         dxf_return(ret);
+
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$EXTMIN",
+                                              TRUE,
+                                              3,
+                                              &dxf_header.ExtMin.x0,
+                                              &dxf_header.ExtMin.y0,
+                                              &dxf_header.ExtMin.z0);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$EXTMAX",
+                                              TRUE,
+                                              3,
+                                              &dxf_header.ExtMax.x0,
+                                              &dxf_header.ExtMax.y0,
+                                              &dxf_header.ExtMax.z0);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$LIMMIN",
+                                              TRUE,
+                                              2,
+                                              &dxf_header.LimMin.x0,
+                                              &dxf_header.LimMin.y0);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$LIMMAX",
+                                              TRUE,
+                                              2,
+                                              &dxf_header.LimMax.x0,
+                                              &dxf_header.LimMax.y0);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_int (fp, temp_string, "$ORTHOMODE",
+                                         &dxf_header.OrthoMode,
+                                         TRUE);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_int (fp, temp_string, "$REGENMODE",
+                                         &dxf_header.RegenMode,
+                                         TRUE);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_int (fp, temp_string, "$FILLMODE",
+                                         &dxf_header.FillMode,
+                                         TRUE);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_int (fp, temp_string, "$QTEXTMODE",
+                                         &dxf_header.QTextMode,
+                                         TRUE);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_int (fp, temp_string, "$MIRRTEXT",
+                                         &dxf_header.MirrText,
+                                         TRUE);
+        dxf_return(ret);
+    
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving read_header_parser () function.\n", __FILE__, __LINE__);
 #endif
