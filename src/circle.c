@@ -55,20 +55,20 @@ dxf_init_circle_struct
               fprintf(stderr, "ERROR: could not allocate memory for a DxfCircle struct.\n");
               return (NULL);
         }
-        dxf_circle->id_code = 0;
-        dxf_circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_circle->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_circle->common.id_code = 0;
+        dxf_circle->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_circle->common.layer = strdup (DXF_DEFAULT_LAYER);
         dxf_circle->x0 = 0.0;
         dxf_circle->y0 = 0.0;
         dxf_circle->z0 = 0.0;
         dxf_circle->extr_x0 = 0.0;
         dxf_circle->extr_y0 = 0.0;
         dxf_circle->extr_z0 = 0.0;
-        dxf_circle->thickness = 0.0;
+        dxf_circle->common.thickness = 0.0;
         dxf_circle->radius = 0.0;
-        dxf_circle->color = DXF_COLOR_BYLAYER;
-        dxf_circle->paperspace = DXF_MODELSPACE;
-        dxf_circle->acad_version_number = 0;
+        dxf_circle->common.color = DXF_COLOR_BYLAYER;
+        dxf_circle->common.paperspace = DXF_MODELSPACE;
+        dxf_circle->common.acad_version_number = 0;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_circle_struct () function.\n", __FILE__, __LINE__);
 #endif
@@ -122,20 +122,20 @@ dxf_read_circle_struct
                         /* Now follows a string containing a sequential
                          * id number. */
                         line_number++;
-                        fscanf (fp, "%x\n", &dxf_circle->id_code);
+                        fscanf (fp, "%x\n", &dxf_circle->common.id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         line_number++;
-                        fscanf (fp, "%s\n", dxf_circle->linetype);
+                        fscanf (fp, "%s\n", dxf_circle->common.linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         line_number++;
-                        fscanf (fp, "%s\n", dxf_circle->layer);
+                        fscanf (fp, "%s\n", dxf_circle->common.layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -175,7 +175,7 @@ dxf_read_circle_struct
                         /* Now follows a string containing the
                          * thickness. */
                         line_number++;
-                        fscanf (fp, "%lf\n", &dxf_circle->thickness);
+                        fscanf (fp, "%lf\n", &dxf_circle->common.thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
@@ -189,14 +189,14 @@ dxf_read_circle_struct
                         /* Now follows a string containing the
                          * color value. */
                         line_number++;
-                        fscanf (fp, "%d\n", &dxf_circle->color);
+                        fscanf (fp, "%d\n", &dxf_circle->common.color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         line_number++;
-                        fscanf (fp, "%d\n", &dxf_circle->paperspace);
+                        fscanf (fp, "%d\n", &dxf_circle->common.paperspace);
                 }
                 else if ((acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
@@ -352,38 +352,42 @@ dxf_write_circle_struct
 #endif
         if (dxf_circle.radius == 0.0)
         {
-                fprintf (stderr, "Error: radius value equals 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, dxf_circle.id_code);
+                fprintf (stderr, "Error: radius value equals 0.0 for the %s entity with id-code: %x\n",
+                        dxf_entity_name,
+                        dxf_circle.common.id_code);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_circle.layer, "") == 0)
+        if (strcmp (dxf_circle.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_circle.id_code);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name,
+                        dxf_circle.common.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name );
-                dxf_circle.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_circle.common.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_circle.id_code != -1)
+        if (dxf_circle.common.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_circle.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_circle.common.id_code);
         }
-        if (strcmp (dxf_circle.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_circle.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_circle.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_circle.common.linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_circle.layer);
+        fprintf (fp, "  8\n%s\n", dxf_circle.common.layer);
         fprintf (fp, " 10\n%f\n", dxf_circle.x0);
         fprintf (fp, " 20\n%f\n", dxf_circle.y0);
         fprintf (fp, " 30\n%f\n", dxf_circle.z0);
-        if (dxf_circle.thickness != 0.0)
+        if (dxf_circle.common.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_circle.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_circle.common.thickness);
         }
         fprintf (fp, " 40\n%f\n", dxf_circle.radius);
-        if (dxf_circle.color != DXF_COLOR_BYLAYER)
+        if (dxf_circle.common.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_circle.color);
+                fprintf (fp, " 62\n%d\n", dxf_circle.common.color);
         }
-        if (dxf_circle.paperspace == DXF_PAPERSPACE)
+        if (dxf_circle.common.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
