@@ -1298,9 +1298,10 @@ dxf_read_header_parser
                                          || (acad_version_number == AC1014));
         dxf_return(ret);
 
+        /* FIXME: changed from AC1012 to AC1015 */
         ret = dxf_read_header_parse_int (fp, temp_string, "$DISPSILH",
                                          &dxf_header.DispSilH,
-                                         acad_version_number <= AC1012);
+                                         acad_version_number <= AC1015);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMSCALE",
