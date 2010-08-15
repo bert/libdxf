@@ -41,8 +41,6 @@
 typedef struct
 dxf_ellipse
 {
-        FILE *fp;
-                /*!< file pointer to output file (or device). */
         int id_code;
                 /*!< group code = 5. */
         char *linetype;
