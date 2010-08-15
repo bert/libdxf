@@ -1237,7 +1237,55 @@ dxf_read_header_parser
                                          &dxf_header.MirrText,
                                          acad_version_number < AC1015);
         dxf_return(ret);
+
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$LTSCALE",
+                                              TRUE,
+                                              1,
+                                              &dxf_header.LTScale);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_int (fp, temp_string, "$OSMODE",
+                                         &dxf_header.OSMode,
+                                         acad_version_number <= AC1014);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_int (fp, temp_string, "$ATTMODE",
+                                         &dxf_header.AttMode,
+                                         TRUE);
+        dxf_return(ret);
     
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$TEXTSIZE",
+                                              TRUE,
+                                              1,
+                                              &dxf_header.TextSize);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_n_double (fp, temp_string, "$TRACEWID",
+                                              TRUE,
+                                              1,
+                                              &dxf_header.TraceWid);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_string (fp, temp_string, "$TEXTSTYLE",
+                                            &dxf_header.TextStyle,
+                                            TRUE);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_string (fp, temp_string, "$CLAYER",
+                                            &dxf_header.CLayer,
+                                            TRUE);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_string (fp, temp_string, "$CELTYPE",
+                                            &dxf_header.CELType,
+                                            TRUE);
+        dxf_return(ret);
+
+        ret = dxf_read_header_parse_int (fp, temp_string, "$CECOLOR",
+                                         &dxf_header.CEColor,
+                                         TRUE);
+        dxf_return(ret);
+
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving read_header_parser () function.\n", __FILE__, __LINE__);
 #endif
