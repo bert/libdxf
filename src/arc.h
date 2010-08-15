@@ -41,6 +41,7 @@ typedef struct
 dxf_arc
 {
         DxfEntity common;
+                /*!< common properties for DXF entities. */
         double x0;
                 /*!< X-value of the starting point coordinate.\n
                  * Group code = 10. */
