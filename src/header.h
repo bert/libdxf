@@ -297,6 +297,7 @@ dxf_header
         char *ProjectName; /*!< */
 
         DxfPoint GridUnit; /*!< Grid X and Y spacing  */
+        int GridMode; /*!< Grid mode on if nonzero */
         
 } DxfHeader, * DxfHeaderPtr;
 
