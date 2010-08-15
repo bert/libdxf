@@ -295,6 +295,9 @@ dxf_header
         int InterSectionColor; /*!< */
         int DimASSOC; /*!< */
         char *ProjectName; /*!< */
+
+        DxfPoint GridUnit; /*!< Grid X and Y spacing  */
+        
 } DxfHeader, * DxfHeaderPtr;
 
 int dxf_init_header ( DxfHeader dxf_header, int acad_version_number );
