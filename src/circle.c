@@ -348,7 +348,7 @@ dxf_write_circle_struct
         char *dxf_entity_name = strdup ("CIRCLE");
 
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_circle2 () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_circle_struct () function.\n", __FILE__, __LINE__);
 #endif
         if (dxf_circle.radius == 0.0)
         {
@@ -388,7 +388,7 @@ dxf_write_circle_struct
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_circle2 () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_circle_struct () function.\n", __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
