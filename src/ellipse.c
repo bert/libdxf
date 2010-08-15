@@ -55,9 +55,9 @@ dxf_init_ellipse_struct
               fprintf(stderr, "ERROR: could not allocate memory for a DxfEllipse struct.\n");
               return (NULL);
         }
-        dxf_ellipse->id_code = 0;
-        dxf_ellipse->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_ellipse->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_ellipse->common.id_code = 0;
+        dxf_ellipse->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_ellipse->common.layer = strdup (DXF_DEFAULT_LAYER);
         dxf_ellipse->x0 = 0.0;
         dxf_ellipse->y0 = 0.0;
         dxf_ellipse->z0 = 0.0;
@@ -67,13 +67,13 @@ dxf_init_ellipse_struct
         dxf_ellipse->extr_x0 = 0.0;
         dxf_ellipse->extr_y0 = 0.0;
         dxf_ellipse->extr_z0 = 0.0;
-        dxf_ellipse->thickness = 0.0;
+        dxf_ellipse->common.thickness = 0.0;
         dxf_ellipse->ratio = 0.0;
         dxf_ellipse->start_angle = 0.0;
         dxf_ellipse->end_angle = 0.0;
-        dxf_ellipse->color = DXF_COLOR_BYLAYER;
-        dxf_ellipse->paperspace = DXF_MODELSPACE;
-        dxf_ellipse->acad_version_number = 0;
+        dxf_ellipse->common.color = DXF_COLOR_BYLAYER;
+        dxf_ellipse->common.paperspace = DXF_MODELSPACE;
+        dxf_ellipse->common.acad_version_number = 0;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_ellipse_struct () function.\n", __FILE__, __LINE__);
 #endif
@@ -127,20 +127,20 @@ dxf_read_ellipse_struct
                         /* Now follows a string containing a sequential
                          * id number. */
                         line_number++;
-                        fscanf (fp, "%x\n", &dxf_ellipse->id_code);
+                        fscanf (fp, "%x\n", &dxf_ellipse->common.id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         line_number++;
-                        fscanf (fp, "%s\n", dxf_ellipse->linetype);
+                        fscanf (fp, "%s\n", dxf_ellipse->common.linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         line_number++;
-                        fscanf (fp, "%s\n", dxf_ellipse->layer);
+                        fscanf (fp, "%s\n", dxf_ellipse->common.layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -201,7 +201,7 @@ dxf_read_ellipse_struct
                         /* Now follows a string containing the
                          * thickness. */
                         line_number++;
-                        fscanf (fp, "%lf\n", &dxf_ellipse->thickness);
+                        fscanf (fp, "%lf\n", &dxf_ellipse->common.thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
@@ -229,14 +229,14 @@ dxf_read_ellipse_struct
                         /* Now follows a string containing the
                          * color value. */
                         line_number++;
-                        fscanf (fp, "%d\n", &dxf_ellipse->color);
+                        fscanf (fp, "%d\n", &dxf_ellipse->common.color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         line_number++;
-                        fscanf (fp, "%d\n", &dxf_ellipse->paperspace);
+                        fscanf (fp, "%d\n", &dxf_ellipse->common.paperspace);
                 }
                 else if ((acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
@@ -430,25 +430,27 @@ dxf_write_ellipse_struct
         char *dxf_entity_name = strdup ("ELLIPSE");
         if (dxf_ellipse.ratio == 0.0)
         {
-                fprintf (stderr, "Error: ratio value equals 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, dxf_ellipse.id_code);
+                fprintf (stderr, "Error: ratio value equals 0.0 for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_ellipse.common.id_code);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_ellipse.layer, "") == 0)
+        if (strcmp (dxf_ellipse.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_ellipse.id_code);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_ellipse.common.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
-                dxf_ellipse.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_ellipse.common.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_ellipse.id_code != -1)
+        if (dxf_ellipse.common.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_ellipse.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_ellipse.common.id_code);
         }
-        if (strcmp (dxf_ellipse.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_ellipse.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_ellipse.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_ellipse.common.linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_ellipse.layer);
+        fprintf (fp, "  8\n%s\n", dxf_ellipse.common.layer);
         fprintf (fp, " 10\n%f\n", dxf_ellipse.x0);
         fprintf (fp, " 20\n%f\n", dxf_ellipse.y0);
         fprintf (fp, " 30\n%f\n", dxf_ellipse.z0);
@@ -458,18 +460,18 @@ dxf_write_ellipse_struct
         fprintf (fp, " 210\n%f\n", dxf_ellipse.extr_x0);
         fprintf (fp, " 220\n%f\n", dxf_ellipse.extr_y0);
         fprintf (fp, " 230\n%f\n", dxf_ellipse.extr_z0);
-        if (dxf_ellipse.thickness != 0.0)
+        if (dxf_ellipse.common.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_ellipse.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_ellipse.common.thickness);
         }
         fprintf (fp, " 40\n%f\n", dxf_ellipse.ratio);
         fprintf (fp, " 41\n%f\n", dxf_ellipse.start_angle);
         fprintf (fp, " 42\n%f\n", dxf_ellipse.end_angle);
-        if (dxf_ellipse.color != DXF_COLOR_BYLAYER)
+        if (dxf_ellipse.common.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_ellipse.color);
+                fprintf (fp, " 62\n%d\n", dxf_ellipse.common.color);
         }
-        if (dxf_ellipse.paperspace == DXF_PAPERSPACE)
+        if (dxf_ellipse.common.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
