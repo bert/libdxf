@@ -29,18 +29,24 @@
  * <hr>
  */
 
-int dxf_is_double (int type)
+
+int
+dxf_is_double (int type)
 {
-	if ( type >=10 && type < 60)
-		return TRUE;
-	else
-		return FALSE;
+        if (type >=10 && type < 60)
+                return TRUE;
+        else
+                return FALSE;
 }
 
-int dxf_is_int (int type)
+int
+dxf_is_int (int type)
 {
-	if ( type >= 60 && type < 80)
-		return TRUE;
-	else
-		return FALSE;
+        if (type >= 60 && type < 80)
+                return TRUE;
+        else
+                return FALSE;
 }
+
+
+/* EOF */
