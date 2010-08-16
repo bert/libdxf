@@ -158,30 +158,33 @@ dxf_write_point_struct
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_point_struct () function.\n", __FILE__, __LINE__);
 #endif
-        if (strcmp (dxf_point.layer, "") == 0)
+        if (strcmp (dxf_point.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_point.id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
-                dxf_point.layer = strdup (DXF_DEFAULT_LAYER);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name,
+                        dxf_point.common.id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
+                dxf_point.common.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_point.id_code != -1)
+        if (dxf_point.common.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_point.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_point.common.id_code);
         }
-        fprintf (fp, "  8\n%s\n", dxf_point.layer);
+        fprintf (fp, "  8\n%s\n", dxf_point.common.layer);
         fprintf (fp, " 10\n%f\n", dxf_point.x0);
         fprintf (fp, " 20\n%f\n", dxf_point.y0);
         fprintf (fp, " 30\n%f\n", dxf_point.z0);
-        if (dxf_point.thickness != 0.0)
+        if (dxf_point.common.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_point.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_point.common.thickness);
         }
-        if (dxf_point.color != DXF_COLOR_BYLAYER)
+        if (dxf_point.common.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_point.color);
+                fprintf (fp, " 62\n%d\n", dxf_point.common.color);
         }
-        if (dxf_point.paperspace == DXF_PAPERSPACE)
+        if (dxf_point.common.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }

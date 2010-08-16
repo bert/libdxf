@@ -34,6 +34,7 @@
 
 
 #include "global.h"
+#include "entity.h"
 
 
 /*!
@@ -53,25 +54,14 @@
 typedef struct
 dxf_point
 {
-        int id_code;
-                /*!< group code = 5. */
-        char *layer;
-                /*!< group code = 8. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         double x0;
                 /*!< group code = 10. */
         double y0;
                 /*!< group code = 20. */
         double z0;
                 /*!< group code = 30. */
-        double thickness;
-                /*!< group code = 39.\n
-                 * optional, defaults to 0.0. */
-        int color;
-                /*!< group code = 62.\n
-                 * optional, defaults to BYLAYER. */
-        int paperspace;
-                /*!< group code = 67.\n
-                 * optional, defaults to 0 (modelspace). */
 } DxfPoint, * DxfPointPtr;
 
 
