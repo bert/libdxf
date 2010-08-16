@@ -1073,7 +1073,7 @@ dxf_read_header_parse_int
         if (strcmp (temp_string, header_var) == 0  && version_expression)
         {
                 f = fscanf (fp, "%i\n%i\n", &n, &tvar);
-                if (f > 0 && dxf_is_int(n))
+                if (f > 0 && dxf_read_is_int(n))
                 {
                         *value = tvar;
                         ret = FOUND;                                
@@ -1119,7 +1119,7 @@ dxf_read_header_parse_n_double
                         dvar = va_arg(dlist, double *);
                         /* prepare the string to read all vars */
                         f = fscanf (fp, "%d\n%'lf\n", &n, &tvar);
-                        if (f > 0 && dxf_is_double (n))
+                        if (f > 0 && dxf_read_is_double (n))
                         {
                                 *dvar = tvar;
                         }

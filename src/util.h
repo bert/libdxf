@@ -29,8 +29,10 @@
  * <hr>
  */
 
+
 #ifndef UTIL_H
 #define UTIL_H
+
 
 /* macro to return if the expression is false */
 #define dxf_return_val_if_fail(expr, val) if (!expr) return val;
@@ -48,6 +50,11 @@ enum return_state { FAIL = 0, SUCCESS, FOUND };
 		break; \
 	}
 
-int dxf_is_double (int type);
-int dxf_is_int (int type);
+int dxf_read_is_double (int type);
+int dxf_raed_is_int (int type);
+
+
 #endif /* UTIL_H */
+
+
+/* EOF */
