@@ -31,6 +31,8 @@
 
 #ifndef POINT_H
 #define POINT_H
+
+
 #include "global.h"
 
 
@@ -77,5 +79,8 @@ DxfPoint *dxf_malloc_point ();
 int dxf_write_point (FILE *fp, int, char *, double, double, double, double, int, int);
 int dxf_write_point_struct (FILE *fp, DxfPoint);
 
+
 #endif /* POINT_H */
+
+
 /* EOF */
