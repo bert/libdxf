@@ -42,8 +42,10 @@
  * <hr>
  */
 
+
 #include "global.h"
 #include "point.h"
+
 
 /*!
  * \brief Allocate memory for a \c DxfPoint.
@@ -72,6 +74,7 @@ dxf_malloc_point ()
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_point () function.\n", __FILE__, __LINE__);
 #endif
 }
+
 
 /*!
  * \brief Write DXF output to a file for a point entity.
@@ -134,7 +137,7 @@ dxf_write_point
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-		return (EXIT_SUCCESS);
+        return (EXIT_SUCCESS);
 }
 
 
@@ -184,5 +187,6 @@ dxf_write_point_struct
         }
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */
