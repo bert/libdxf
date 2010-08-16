@@ -30,6 +30,9 @@
  */
 
 
+#include "util.h"
+
+
 int
 dxf_read_is_double (int type)
 {

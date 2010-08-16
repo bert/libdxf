@@ -34,6 +34,9 @@
 #define UTIL_H
 
 
+#include "global.h"
+
+
 /* macro to return if the expression is false */
 #define dxf_return_val_if_fail(expr, val) if (!expr) return val;
 
