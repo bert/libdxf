@@ -39,10 +39,21 @@ dxf_read_is_double (int type)
                 return FALSE;
 }
 
+
 int
 dxf_read_is_int (int type)
 {
         if (type >= 60 && type < 80)
+                return TRUE;
+        else
+                return FALSE;
+}
+
+
+int
+dxf_read_is_string (int type)
+{
+        if (type >= 0 && type < 9)
                 return TRUE;
         else
                 return FALSE;
