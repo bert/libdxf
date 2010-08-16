@@ -1131,7 +1131,6 @@ dxf_read_header_parse_n_double
 		double *dvar;
 		va_list dlist;
 
-	printf ("s1: %s\ns2: %s\n", temp_string, header_var);
 		/* test for header_var and version number. -3 makes it version agnostic */
 		if (strcmp (temp_string, header_var) == 0  &&
 		    (dxf_test_version (acad_version_number, valid_acad_version) == version_cmp ||
