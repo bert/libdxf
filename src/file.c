@@ -106,58 +106,59 @@ dxf_read_file
                 return (EXIT_FAILURE);
         }
         line_number = 1;
-        fscanf (fp, "%s\n", temp_string);
-		if (ferror (fp))
+        while (!ferror (fp))
         {
-                fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
-                        filename, line_number);
-                fclose (fp);
-                return (EXIT_FAILURE);
-        }
-        if (strcmp (temp_string, "999") == 0)
-        {
-                /* Flush dxf comments to stdout as some apps put meta
-                 * data regarding the correct loading of libraries in
-                 * front of dxf data (sections, tables, entities etc.
-                 */
-                line_number++;
-                fscanf (fp, "%s\n", temp_string);
-                fprintf (stdout, "DXF comment: %s\n", temp_string);
-        }
-        else if (strcmp (temp_string, "0") == 0)
-        {
-                /* Now follows some meaningfull dxf data. */
-                while (!feof (fp))
+                if (ferror (fp))
                 {
+                        fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
+                                filename, line_number);
+                        fclose (fp);
+                        return (EXIT_FAILURE);
+                }
+                if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Flush dxf comments to stdout as some apps put meta
+                         * data regarding the correct loading of libraries in
+                         * front of dxf data (sections, tables, entities etc.
+                         */
                         line_number++;
                         fscanf (fp, "%s\n", temp_string);
-                        if (ferror (fp))
-                        {
-                                fprintf (stderr, "Error: while reading line %d from: %s.\n",
-                                        line_number, filename);
-                                fclose (fp);
-                                return (EXIT_FAILURE);
-                        }
-                        if (strcmp (temp_string, "SECTION") == 0)
-                        {
-                                /* We have found the beginning of a
-                                 * SECTION. */
-                                dxf_read_section (filename, fp, line_number);
-                        }
-                        else
-                        {
-                                /* We were expecting a dxf SECTION and
-                                 * got something else. */
-                                fprintf (stderr, "Warning: in line %d \"SECTION\" was expected, \"%s\" was found.\n",
-                                        line_number, temp_string);
-                        }
-                        
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
-        }
-        else
-        {
-                fprintf (stderr, "Warning: unexpected string encountered while reading line %d from: %s.\n",
-                        line_number, filename);
+                else if (strcmp (temp_string, "0") == 0)
+                {
+                /* Now follows some meaningfull dxf data. */
+                        while (!feof (fp))
+                        {
+                                line_number++;
+                                fscanf (fp, "%s\n", temp_string);
+                                if (ferror (fp))
+                                {
+                                        fprintf (stderr, "Error: while reading line %d from: %s.\n",
+                                                line_number, filename);
+                                        fclose (fp);
+                                        return (EXIT_FAILURE);
+                                }
+                                if (strcmp (temp_string, "SECTION") == 0)
+                                {
+                                         /* We have found the beginning of a
+                                          * SECTION. */
+                                        dxf_read_section (filename, fp, line_number);
+                                }
+                                else
+                                {
+                                         /* We were expecting a dxf SECTION and
+                                          * got something else. */
+                                        fprintf (stderr, "Warning: in line %d \"SECTION\" was expected, \"%s\" was found.\n",
+                                                line_number, temp_string);
+                                }
+                        }
+                }
+                else
+                {
+                        fprintf (stderr, "Warning: unexpected string encountered while reading line %d from: %s.\n",
+                                line_number, filename);
+                }
         }
         fclose (fp);
 #if DEBUG
