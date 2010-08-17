@@ -84,6 +84,7 @@ dxf_ellipse
 } DxfEllipse, * DxfEllipsePtr;
 
 
+DxfEllipse * dxf_malloc_ellipse ();
 DxfEllipse *
 dxf_init_ellipse_struct
 (
