@@ -75,6 +75,15 @@ dxf_line
 } DxfLine, * DxfLinePtr;
 
 
+static int
+dxf_read_line_struct
+(
+        char *filename,
+        FILE *fp,
+        int line_number,
+        DxfLine *dxf_line,
+        int acad_version_number
+);
 int
 dxf_write_line
 (
