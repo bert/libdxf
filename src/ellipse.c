@@ -34,6 +34,36 @@
 
 
 /*!
+ * \brief Allocate memory for a \c DxfEllipse.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfEllipse *
+dxf_malloc_ellipse ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_ellipse () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfEllipse *dxf_ellipse = NULL;
+        size_t size;
+
+        size = sizeof (DxfEllipse);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_ellipse = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_ellipse ()\n",__FILE__, __LINE__);
+        }
+        memset (dxf_ellipse, 0, size);
+        return (dxf_ellipse);
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_ellipse () function.\n", __FILE__, __LINE__);
+#endif
+}
+
+
+/*!
  * \brief Allocate memory and initialize data fields in an \c ELLIPSE entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
