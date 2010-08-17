@@ -79,7 +79,7 @@ dxf_init_ellipse_struct
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_init ellipse_struct () function.\n", __FILE__, __LINE__);
 #endif
-        dxf_ellipse = (DxfEllipse *) malloc (sizeof (DxfEllipse));
+        dxf_ellipse = dxf_malloc_ellipse ();
         if (dxf_ellipse == NULL)
         {
               fprintf(stderr, "ERROR: could not allocate memory for a DxfEllipse struct.\n");
