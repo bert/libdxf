@@ -79,7 +79,7 @@ dxf_init_circle_struct
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_circle_struct () function.\n", __FILE__, __LINE__);
 #endif
-        dxf_circle = (DxfCircle *) malloc (sizeof (DxfCircle));
+        dxf_circle = dxf_malloc_circle ();
         if (dxf_circle == NULL)
         {
               fprintf(stderr, "ERROR: could not allocate memory for a DxfCircle struct.\n");
