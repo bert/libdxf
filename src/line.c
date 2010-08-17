@@ -149,6 +149,10 @@ dxf_read_line_struct
                          * elevation. */
                         line_number++;
                         fscanf (fp, "%lf\n", &dxf_line->z0);
+                        /*! \todo Consider to add 
+                         * dxf_line->z1 = dxf_line.z0;
+                         * for the elevation could affect both
+                         * Z-coordinates. */
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
