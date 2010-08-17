@@ -34,6 +34,36 @@
 
 
 /*!
+ * \brief Allocate memory for a \c DxfCircle.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfCircle *
+dxf_malloc_circle ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_circle () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfCircle *dxf_circle = NULL;
+        size_t size;
+
+        size = sizeof (DxfCircle);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_circle = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_circle ()\n",__FILE__, __LINE__);
+        }
+        memset (dxf_circle, 0, size);
+        return (dxf_circle);
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_circle () function.\n", __FILE__, __LINE__);
+#endif
+}
+
+
+/*!
  * \brief Allocate memory and initialize data fields in a \c CIRCLE entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
