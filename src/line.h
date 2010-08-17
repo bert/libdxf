@@ -75,6 +75,11 @@ dxf_line
 } DxfLine, * DxfLinePtr;
 
 
+DxfLine *
+dxf_init_line_struct
+(
+        DxfLine *dxf_line
+);
 static int
 dxf_read_line_struct
 (
