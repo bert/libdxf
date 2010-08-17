@@ -35,6 +35,53 @@
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in an \c LINE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfLine *
+dxf_init_line_struct
+(
+        DxfLine *dxf_line
+                /*!< DXF line entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init line_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_line = (DxfLine *) malloc (sizeof (DxfLine));
+        if (dxf_line == NULL)
+        {
+              fprintf(stderr, "ERROR: could not allocate memory for a DxfLine struct.\n");
+              return (NULL);
+        }
+        dxf_line->common.id_code = 0;
+        dxf_line->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_line->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_line->x0 = 0.0;
+        dxf_line->y0 = 0.0;
+        dxf_line->z0 = 0.0;
+        dxf_line->x1 = 0.0;
+        dxf_line->y1 = 0.0;
+        dxf_line->z1 = 0.0;
+        dxf_line->extr_x0 = 0.0;
+        dxf_line->extr_y0 = 0.0;
+        dxf_line->extr_z0 = 0.0;
+        dxf_line->common.thickness = 0.0;
+        dxf_line->common.color = DXF_COLOR_BYLAYER;
+        dxf_line->common.paperspace = DXF_MODELSPACE;
+        dxf_line->common.acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_line_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_line);
+}
+
+
+/*!
  * \brief Read data from a DXF file into an \c LINE entity.
  *
  * The last line read from file contained the string "LINE". \n
