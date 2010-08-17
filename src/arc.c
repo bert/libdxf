@@ -80,7 +80,7 @@ dxf_init_arc_struct
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_arc_struct () function.\n", __FILE__, __LINE__);
 #endif
-        dxf_arc = (DxfArc *) malloc (sizeof (DxfArc));
+        dxf_arc = dxf_malloc_arc ();
         if (dxf_arc == NULL)
         {
               fprintf(stderr, "ERROR: could not allocate memory for a DxfArc struct.\n");
