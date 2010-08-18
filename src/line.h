@@ -76,6 +76,8 @@ dxf_line
 
 
 DxfLine *
+dxf_malloc_line ();
+DxfLine *
 dxf_init_line_struct
 (
         DxfLine *dxf_line
