@@ -35,6 +35,38 @@
 
 
 /*!
+ * \brief Allocate memory for a \c DxfLine.
+ *
+ * and fill the memory contents with zeros.
+ */
+DxfLine *
+dxf_malloc_line ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_line () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfLine *dxf_line = NULL;
+        size_t size;
+
+        size = sizeof (DxfLine);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_line = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_line ()\n",
+                        __FILE__, __LINE__);
+        }
+        memset (dxf_line, 0, size);
+        return (dxf_line);
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_line () function.\n",
+                __FILE__, __LINE__);
+#endif
+}
+
+
+/*!
  * \brief Allocate memory and initialize data fields in an \c LINE entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
