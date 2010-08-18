@@ -263,7 +263,8 @@ dxf_read_line_struct
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_line_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_line_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (line_number);
 }
@@ -314,20 +315,24 @@ dxf_write_line
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_line () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_line () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("LINE");
 
         if ((x0 == x1) && (y0 == y1) && (z0 == z1))
         {
-                fprintf (stderr, "Error: start point and end point are identical for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
+                fprintf (stderr, "Error: start point and end point are identical for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
                 dxf_skip_entity (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0\n", dxf_entity_name);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0\n",
+                        dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -359,7 +364,8 @@ dxf_write_line
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_line () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_line () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -378,7 +384,8 @@ dxf_write_line_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_line_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_line_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("LINE");
 
@@ -395,7 +402,8 @@ dxf_write_line_struct
         {
                 fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name, dxf_line.common.id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0\n", dxf_entity_name);
+                fprintf (stderr, "    %s entity is relocated to layer 0\n",
+                        dxf_entity_name);
                 dxf_line.common.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -427,7 +435,8 @@ dxf_write_line_struct
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_line_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_line_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }

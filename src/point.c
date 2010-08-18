@@ -56,7 +56,8 @@ DxfPoint *
 dxf_malloc_point ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_point () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_point () function.\n",
+                __FILE__, __LINE__);
 #endif
         DxfPoint *dxf_point = NULL;
         size_t size;
@@ -66,12 +67,14 @@ dxf_malloc_point ()
         if (size == 0) size = 1;
         if ((dxf_point = malloc (size)) == NULL)
         {
-                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_point()\n",__FILE__, __LINE__);
+                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_point()\n",
+                        __FILE__, __LINE__);
         }
         memset (dxf_point, 0, size);
         return (dxf_point);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_point () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_point () function.\n",
+                __FILE__, __LINE__);
 #endif
 }
 
@@ -108,12 +111,15 @@ dxf_write_point
         char *dxf_entity_name = strdup ("POINT");
 
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_point () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_point () function.\n",
+                __FILE__, __LINE__);
 #endif
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -156,7 +162,8 @@ dxf_write_point_struct
         char *dxf_entity_name = strdup ("POINT");
 
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_point_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_point_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         if (strcmp (dxf_point.common.layer, "") == 0)
         {

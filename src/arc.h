@@ -75,8 +75,10 @@ dxf_arc
 } DxfArc, * DxfArcPtr;
 
 
-DxfArc * dxf_malloc_arc ();
-DxfArc * dxf_init_arc_struct
+DxfArc *
+dxf_malloc_arc ();
+DxfArc *
+dxf_init_arc_struct
 (
         DxfArc *dxf_arc
 );

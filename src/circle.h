@@ -68,8 +68,10 @@ dxf_circle
 } DxfCircle, * DxfCirclePtr;
 
 
-DxfCircle * dxf_malloc_circle ();
-DxfCircle * dxf_init_circle_struct
+DxfCircle *
+dxf_malloc_circle ();
+DxfCircle *
+dxf_init_circle_struct
 (
         DxfCircle *dxf_circle
 );

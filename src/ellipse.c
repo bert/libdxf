@@ -53,12 +53,14 @@ dxf_malloc_ellipse ()
         if (size == 0) size = 1;
         if ((dxf_ellipse = malloc (size)) == NULL)
         {
-                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_ellipse ()\n",__FILE__, __LINE__);
+                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_ellipse ()\n",
+                        __FILE__, __LINE__);
         }
         memset (dxf_ellipse, 0, size);
         return (dxf_ellipse);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_ellipse () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_ellipse () function.\n",
+                __FILE__, __LINE__);
 #endif
 }
 
@@ -77,7 +79,8 @@ dxf_init_ellipse_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init ellipse_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init ellipse_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         dxf_ellipse = dxf_malloc_ellipse ();
         if (dxf_ellipse == NULL)
@@ -105,7 +108,8 @@ dxf_init_ellipse_struct
         dxf_ellipse->common.paperspace = DXF_MODELSPACE;
         dxf_ellipse->common.acad_version_number = 0;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_ellipse_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_ellipse_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (dxf_ellipse);
 }
@@ -139,7 +143,8 @@ dxf_read_ellipse_struct
 {
         char *temp_string = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_ellipse_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_ellipse_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         line_number++;
         fscanf (fp, "%[^\n]", temp_string);
@@ -309,7 +314,8 @@ dxf_read_ellipse_struct
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_ellipse_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_ellipse_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (line_number);
 }
@@ -383,18 +389,22 @@ dxf_write_ellipse
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_ellipse () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_ellipse () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("ELLIPSE");
         if (ratio == 0.0)
         {
-                fprintf (stderr, "Error: ratio value equals 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
+                fprintf (stderr, "Error: ratio value equals 0.0 for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -432,7 +442,8 @@ dxf_write_ellipse
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_ellipse () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_ellipse () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -455,7 +466,8 @@ dxf_write_ellipse_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_ellipse () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_ellipse () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("ELLIPSE");
         if (dxf_ellipse.ratio == 0.0)
@@ -468,7 +480,8 @@ dxf_write_ellipse_struct
         {
                 fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name, dxf_ellipse.common.id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
                 dxf_ellipse.common.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -506,7 +519,8 @@ dxf_write_ellipse_struct
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_ellipse () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_ellipse () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }

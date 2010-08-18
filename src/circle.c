@@ -53,12 +53,14 @@ dxf_malloc_circle ()
         if (size == 0) size = 1;
         if ((dxf_circle = malloc (size)) == NULL)
         {
-                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_circle ()\n",__FILE__, __LINE__);
+                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_circle ()\n",
+                        __FILE__, __LINE__);
         }
         memset (dxf_circle, 0, size);
         return (dxf_circle);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_circle () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_circle () function.\n",
+                __FILE__, __LINE__);
 #endif
 }
 
@@ -77,7 +79,8 @@ dxf_init_circle_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_circle_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_circle_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         dxf_circle = dxf_malloc_circle ();
         if (dxf_circle == NULL)
@@ -100,7 +103,8 @@ dxf_init_circle_struct
         dxf_circle->common.paperspace = DXF_MODELSPACE;
         dxf_circle->common.acad_version_number = 0;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_circle_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_circle_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (dxf_circle);
 }
@@ -134,7 +138,8 @@ dxf_read_circle_struct
 {
         char *temp_string = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_circle_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_circle_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         line_number++;
         fscanf (fp, "%[^\n]", temp_string);
@@ -269,7 +274,8 @@ dxf_read_circle_struct
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_circle_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_circle_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (line_number);
 }
@@ -315,7 +321,8 @@ dxf_write_circle
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_circle () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_circle () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("CIRCLE");
         if (radius == 0.0)
@@ -325,8 +332,10 @@ dxf_write_circle
         }
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -356,7 +365,8 @@ dxf_write_circle
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_circle () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_circle () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -378,7 +388,8 @@ dxf_write_circle_struct
         char *dxf_entity_name = strdup ("CIRCLE");
 
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_circle2 () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_circle2 () function.\n",
+                __FILE__, __LINE__);
 #endif
         if (dxf_circle.radius == 0.0)
         {
@@ -392,7 +403,8 @@ dxf_write_circle_struct
                 fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name,
                         dxf_circle.common.id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name );
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name );
                 dxf_circle.common.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -422,7 +434,8 @@ dxf_write_circle_struct
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_circle2 () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_circle2 () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
