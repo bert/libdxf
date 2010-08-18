@@ -83,7 +83,7 @@ dxf_init_line_struct
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_init line_struct () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_line = (DxfLine *) malloc (sizeof (DxfLine));
+        dxf_line = dxf_malloc_line ();
         if (dxf_line == NULL)
         {
               fprintf(stderr, "ERROR: could not allocate memory for a DxfLine struct.\n");
