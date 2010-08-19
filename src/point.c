@@ -80,6 +80,50 @@ dxf_malloc_point ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in an \c POINT entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfPoint *
+dxf_init_point_struct
+(
+        DxfPoint *dxf_point
+                /*!< DXF point entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_point_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_point = dxf_malloc_point ();
+        if (dxf_point == NULL)
+        {
+              fprintf(stderr, "ERROR: could not allocate memory for a DxfPoint struct.\n");
+              return (NULL);
+        }
+        dxf_point->common.id_code = 0;
+        dxf_point->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_point->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_point->x0 = 0.0;
+        dxf_point->y0 = 0.0;
+        dxf_point->z0 = 0.0;
+        dxf_point->extr_x0 = 0.0;
+        dxf_point->extr_y0 = 0.0;
+        dxf_point->extr_z0 = 0.0;
+        dxf_point->common.thickness = 0.0;
+        dxf_point->common.color = DXF_COLOR_BYLAYER;
+        dxf_point->common.paperspace = DXF_MODELSPACE;
+        dxf_point->common.acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_point_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_point);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a point entity.
  */
 int
