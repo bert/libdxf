@@ -62,6 +62,18 @@ dxf_point
                 /*!< group code = 20. */
         double z0;
                 /*!< group code = 30. */
+        double extr_x0;
+                /*!< group code = 210\n
+                 * extrusion direction\n
+                 * optional, if ommited defaults to 0.0. */
+        double extr_y0;
+                /*!< group code = 220\n
+                 * extrusion direction\n
+                 * optional, if ommited defaults to 0.0. */
+        double extr_z0;
+                /*!< group code = 230\n
+                 * extrusion direction\n
+                 * optional, if ommited defaults to 1.0. */
 } DxfPoint, * DxfPointPtr;
 
 
