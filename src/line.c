@@ -58,11 +58,11 @@ dxf_malloc_line ()
                         __FILE__, __LINE__);
         }
         memset (dxf_line, 0, size);
-        return (dxf_line);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_line () function.\n",
                 __FILE__, __LINE__);
 #endif
+        return (dxf_line);
 }
 
 
