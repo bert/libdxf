@@ -55,8 +55,12 @@ dxf_malloc_circle ()
         {
                 fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_circle ()\n",
                         __FILE__, __LINE__);
+                dxf_circle = NULL;
         }
-        memset (dxf_circle, 0, size);
+        else
+        {
+                memset (dxf_circle, 0, size);
+        }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_circle () function.\n",
                 __FILE__, __LINE__);
