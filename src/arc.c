@@ -493,7 +493,7 @@ dxf_write_arc_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_arc2 () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_arc_struct () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("ARC");
@@ -614,7 +614,7 @@ dxf_write_arc_struct
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_arc2 () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_arc_struct () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
