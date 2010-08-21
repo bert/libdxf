@@ -80,7 +80,7 @@ dxf_init_line_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init line_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_line_struct () function.\n",
                 __FILE__, __LINE__);
 #endif
         dxf_line = dxf_malloc_line ();
