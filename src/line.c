@@ -56,8 +56,12 @@ dxf_malloc_line ()
         {
                 fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_line ()\n",
                         __FILE__, __LINE__);
+                dxf_line = NULL;
         }
-        memset (dxf_line, 0, size);
+        else
+        {
+                memset (dxf_line, 0, size);
+        }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_line () function.\n",
                 __FILE__, __LINE__);
