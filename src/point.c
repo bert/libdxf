@@ -187,6 +187,10 @@ dxf_write_point
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_point () function.\n",
+                __FILE__, __LINE__);
+#endif
         return (EXIT_SUCCESS);
 }
 
