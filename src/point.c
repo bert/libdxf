@@ -71,11 +71,11 @@ dxf_malloc_point ()
                         __FILE__, __LINE__);
         }
         memset (dxf_point, 0, size);
-        return (dxf_point);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_point () function.\n",
                 __FILE__, __LINE__);
 #endif
+        return (dxf_point);
 }
 
 
