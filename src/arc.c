@@ -58,11 +58,11 @@ dxf_malloc_arc ()
                         __FILE__, __LINE__);
         }
         memset (dxf_arc, 0, size);
-        return (dxf_arc);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_arc () function.\n",
                 __FILE__, __LINE__);
 #endif
+        return (dxf_arc);
 }
 
 
