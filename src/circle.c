@@ -57,11 +57,11 @@ dxf_malloc_circle ()
                         __FILE__, __LINE__);
         }
         memset (dxf_circle, 0, size);
-        return (dxf_circle);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_circle () function.\n",
                 __FILE__, __LINE__);
 #endif
+        return (dxf_circle);
 }
 
 
