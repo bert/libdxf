@@ -56,8 +56,12 @@ dxf_malloc_arc ()
         {
                 fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_arc ()\n",
                         __FILE__, __LINE__);
+                dxf_arc = NULL;
         }
-        memset (dxf_arc, 0, size);
+        else
+        {
+                memset (dxf_arc, 0, size);
+        }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_arc () function.\n",
                 __FILE__, __LINE__);
