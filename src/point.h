@@ -79,6 +79,11 @@ dxf_point
 
 DxfPoint *
 dxf_malloc_point ();
+DxfPoint *
+dxf_init_point_struct
+(
+        DxfPoint *dxf_point
+);
 int
 dxf_write_point
 (
