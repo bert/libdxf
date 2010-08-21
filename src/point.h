@@ -84,6 +84,15 @@ dxf_init_point_struct
 (
         DxfPoint *dxf_point
 );
+static int
+dxf_read_point_struct
+(
+        char *filename,
+        FILE *fp,
+        int line_number,
+        DxfPoint *dxf_point,
+        int acad_version_number
+);
 int
 dxf_write_point
 (
