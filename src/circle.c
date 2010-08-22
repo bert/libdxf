@@ -140,11 +140,12 @@ dxf_read_circle_struct
                 /*!< AutoCAD version number. */
 )
 {
-        char *temp_string = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_circle_struct () function.\n",
                 __FILE__, __LINE__);
 #endif
+        char *temp_string = NULL;
+
         line_number++;
         fscanf (fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -329,6 +330,7 @@ dxf_write_circle
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("CIRCLE");
+
         if (radius == 0.0)
         {
                 fprintf (stderr, "Error: radius value equals 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
@@ -389,12 +391,12 @@ dxf_write_circle_struct
                 /*!< AutoCAD version number. */
 )
 {
-        char *dxf_entity_name = strdup ("CIRCLE");
-
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_circle2 () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_circle_struct () function.\n",
                 __FILE__, __LINE__);
 #endif
+        char *dxf_entity_name = strdup ("CIRCLE");
+
         if (dxf_circle.radius == 0.0)
         {
                 fprintf (stderr, "Error: radius value equals 0.0 for the %s entity with id-code: %x\n",
@@ -438,7 +440,7 @@ dxf_write_circle_struct
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_circle2 () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_circle_struct () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
