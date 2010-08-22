@@ -143,11 +143,12 @@ dxf_read_arc_struct
                 /*!< AutoCAD version number. */
 )
 {
-        char *temp_string = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_arc_struct () function.\n",
                 __FILE__, __LINE__);
 #endif
+        char *temp_string = NULL;
+
         line_number++;
         fscanf (fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
