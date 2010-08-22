@@ -145,11 +145,12 @@ dxf_read_ellipse_struct
                 /*!< AutoCAD version number. */
 )
 {
-        char *temp_string = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_ellipse_struct () function.\n",
                 __FILE__, __LINE__);
 #endif
+        char *temp_string = NULL;
+
         line_number++;
         fscanf (fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -397,6 +398,7 @@ dxf_write_ellipse
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("ELLIPSE");
+
         if (ratio == 0.0)
         {
                 fprintf (stderr, "Error: ratio value equals 0.0 for the %s entity with id-code: %x\n",
@@ -474,6 +476,7 @@ dxf_write_ellipse_struct
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("ELLIPSE");
+
         if (dxf_ellipse.ratio == 0.0)
         {
                 fprintf (stderr, "Error: ratio value equals 0.0 for the %s entity with id-code: %x\n",
