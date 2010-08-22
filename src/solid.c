@@ -167,26 +167,29 @@ dxf_write_solid_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_solid_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_solid_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("SOLID");
 
-        if (strcmp (dxf_solid.layer, "") == 0)
+        if (strcmp (dxf_solid.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_solid.id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
-                dxf_solid.layer = strdup (DXF_DEFAULT_LAYER);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_solid.common.id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
+                dxf_solid.common.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_solid.id_code != -1)
+        if (dxf_solid.common.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_solid.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_solid.common.id_code);
         }
-        if (strcmp (dxf_solid.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_solid.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_solid.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_solid.common.linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_solid.layer);
+        fprintf (fp, "  8\n%s\n", dxf_solid.common.layer);
         fprintf (fp, " 10\n%f\n", dxf_solid.x0);
         fprintf (fp, " 20\n%f\n", dxf_solid.y0);
         fprintf (fp, " 30\n%f\n", dxf_solid.z0);
@@ -199,20 +202,21 @@ dxf_write_solid_struct
         fprintf (fp, " 13\n%f\n", dxf_solid.x3);
         fprintf (fp, " 23\n%f\n", dxf_solid.y3);
         fprintf (fp, " 33\n%f\n", dxf_solid.z3);
-        if (dxf_solid.thickness != 0.0)
+        if (dxf_solid.common.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_solid.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_solid.common.thickness);
         }
-        if (dxf_solid.color != DXF_COLOR_BYLAYER)
+        if (dxf_solid.common.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_solid.color);
+                fprintf (fp, " 62\n%d\n", dxf_solid.common.color);
         }
-        if (dxf_solid.paperspace == DXF_PAPERSPACE)
+        if (dxf_solid.common.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_solid_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_solid_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }

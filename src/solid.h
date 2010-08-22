@@ -42,6 +42,7 @@
 
 
 #include "global.h"
+#include "entity.h"
 
 
 /*!
@@ -53,13 +54,8 @@
 typedef struct
 dxf_solid
 {
-        int id_code;
-                /*!< group code = 5. */
-        char *linetype;
-                /*!< group code = 6\n
-                 * optional, defaults to \c BYLAYER. */
-        char *layer;
-                /*!< group code = 8. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         double x0;
                 /*!< group code = 10\n
                  * base point. */
@@ -96,15 +92,6 @@ dxf_solid
         double z3;
                 /*!< group code = 33\n
                  * alignment point. */
-        double thickness;
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
-        int color;
-                /*!< group code = 62\n
-                 * optional, defaults to \c BYLAYER. */
-        int paperspace;
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
 } DxfSolid, * DxfSolidPtr;
 
 
