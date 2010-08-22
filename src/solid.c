@@ -41,6 +41,42 @@
 
 
 /*!
+ * \brief Allocate memory for a \c DxfSolid.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfSolid *
+dxf_malloc_solid ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_solid () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfSolid *dxf_solid = NULL;
+        size_t size;
+
+        size = sizeof (DxfSolid);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_solid = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_solid ()\n",
+                        __FILE__, __LINE__);
+                dxf_solid = NULL;
+        }
+        else
+        {
+                memset (dxf_solid, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_solid () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_solid);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a solid entity.
  */
 int

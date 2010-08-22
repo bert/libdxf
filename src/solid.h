@@ -95,6 +95,10 @@ dxf_solid
 } DxfSolid, * DxfSolidPtr;
 
 
+DxfSolid *
+dxf_malloc_solid ();
+
+
 #endif /* _SOLID_H */
 
 
