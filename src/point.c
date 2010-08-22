@@ -43,7 +43,6 @@
  */
 
 
-#include "global.h"
 #include "point.h"
 
 
