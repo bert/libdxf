@@ -105,9 +105,26 @@ dxf_entity_type
 } DxfEntityType;
 
 
-int dxf_read_entities (char *filename, FILE *fp, int line_number, char *dxf_entities_list, int acad_version_number);
-int dxf_skip_entity (char *dxf_entity_name);
-int dxf_write_entities (char *dxf_entities_list, int acad_version_number);
+int
+dxf_read_entities
+(
+       char *filename,
+       FILE *fp,
+       int line_number,
+       char *dxf_entities_list,
+       int acad_version_number
+);
+int
+dxf_skip_entity
+(
+        char *dxf_entity_name
+);
+int
+dxf_write_entities
+(
+        char *dxf_entities_list,
+        int acad_version_number
+);
 
 
 #endif /* ENTITY_H */

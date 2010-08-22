@@ -31,6 +31,7 @@
 
 
 #include "global.h"
+#include "entity.h"
 
 
 /*!
@@ -41,13 +42,8 @@
 typedef struct
 dxf_ellipse
 {
-        int id_code;
-                /*!< group code = 5. */
-        char *linetype;
-                /*!< group code = 6\n
-                 * optional, defaults to BYLAYER. */
-        char *layer;
-                /*!< group code = 8.*/
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         double x0;
                 /*!< group code = 10\n
                  * base point. */
@@ -78,9 +74,6 @@ dxf_ellipse
                 /*!< group code = 230\n
                  * extrusion direction\n
                  * optional, if ommited defaults to 1.0. */
-        double thickness;
-                /*!< group code = 39\n
-                 *  optional, defaults to 0.0. */
         double ratio;
                 /*!< group code = 40\n
                  * ratio of minor axis to major axis. */
@@ -88,17 +81,11 @@ dxf_ellipse
                 /*!< group code = 41. */
         double end_angle;
                 /*!< group code = 42. */
-        int color;
-                /*!< group code = 62\n
-                 * optional, defaults to BYLAYER. */
-        int paperspace;
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
 } DxfEllipse, * DxfEllipsePtr;
 
 
+DxfEllipse *
+dxf_malloc_ellipse ();
 DxfEllipse *
 dxf_init_ellipse_struct
 (

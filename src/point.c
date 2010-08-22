@@ -42,8 +42,9 @@
  * <hr>
  */
 
-#include "global.h"
+
 #include "point.h"
+
 
 /*!
  * \brief Allocate memory for a \c DxfPoint.
@@ -54,7 +55,8 @@ DxfPoint *
 dxf_malloc_point ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_point () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_point () function.\n",
+                __FILE__, __LINE__);
 #endif
         DxfPoint *dxf_point = NULL;
         size_t size;
@@ -64,14 +66,234 @@ dxf_malloc_point ()
         if (size == 0) size = 1;
         if ((dxf_point = malloc (size)) == NULL)
         {
-                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_point()\n",__FILE__, __LINE__);
+                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_point()\n",
+                        __FILE__, __LINE__);
+                dxf_point = NULL;
         }
-        memset (dxf_point, 0, size);
-        return (dxf_point);
+        else
+        {
+                memset (dxf_point, 0, size);
+        }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_point () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_point () function.\n",
+                __FILE__, __LINE__);
 #endif
+        return (dxf_point);
 }
+
+
+/*!
+ * \brief Allocate memory and initialize data fields in an \c POINT entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfPoint *
+dxf_init_point_struct
+(
+        DxfPoint *dxf_point
+                /*!< DXF point entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_point_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_point = dxf_malloc_point ();
+        if (dxf_point == NULL)
+        {
+              fprintf(stderr, "ERROR: could not allocate memory for a DxfPoint struct.\n");
+              return (NULL);
+        }
+        dxf_point->common.id_code = 0;
+        dxf_point->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_point->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_point->x0 = 0.0;
+        dxf_point->y0 = 0.0;
+        dxf_point->z0 = 0.0;
+        dxf_point->extr_x0 = 0.0;
+        dxf_point->extr_y0 = 0.0;
+        dxf_point->extr_z0 = 0.0;
+        dxf_point->common.thickness = 0.0;
+        dxf_point->common.color = DXF_COLOR_BYLAYER;
+        dxf_point->common.paperspace = DXF_MODELSPACE;
+        dxf_point->common.acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_point_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_point);
+}
+
+
+/*!
+ * \brief Read data from a DXF file into an \c LINE entity.
+ *
+ * The last line read from file contained the string "LINE". \n
+ * Now follows some data for the \c LINE, to be terminated with a
+ * "  0" string announcing the following entity, or the end of the
+ * \c ENTITY section marker \c ENDSEC. \n
+ *
+ * \return \c line_number when done, or 0 when an error occured while
+ * reading from file.
+ */
+static int
+dxf_read_point_struct
+(
+        char *filename,
+                /*!< filename of input file (or device). */
+        FILE *fp,
+                /*!< filepointer to the input file (or device). */
+        int line_number,
+                /*!< current line number in the input file (or device). */
+        DxfPoint *dxf_point,
+                /*!< DXF ellipse entity. */
+        int acad_version_number
+                /*!< AutoCAD version number. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_point_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *temp_string = NULL;
+
+        line_number++;
+        fscanf (fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp))
+                {
+                        fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
+                                filename, line_number);
+                        fclose (fp);
+                        return (0);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        line_number++;
+                        fscanf (fp, "%x\n", &dxf_point->common.id_code);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        line_number++;
+                        fscanf (fp, "%s\n", dxf_point->common.linetype);
+                }
+                else if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing a layer name. */
+                        line_number++;
+                        fscanf (fp, "%s\n", dxf_point->common.layer);
+                }
+                else if (strcmp (temp_string, "10") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the center point. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_point->x0);
+                }
+                else if (strcmp (temp_string, "20") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the center point. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_point->y0);
+                }
+                else if (strcmp (temp_string, "30") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the center point. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_point->z0);
+                }
+                else if ((acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0)
+                        && (dxf_point->z0 = 0.0))
+                {
+                        /* Elevation is a pre AutoCAD R11 variable
+                         * so additional testing for the version should
+                         * probably be added.
+                         * Now follows a string containing the
+                         * elevation. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_point->z0);
+                        /*! \todo Consider to add 
+                         * dxf_line->z1 = dxf_line.z0;
+                         * for the elevation could affect both
+                         * Z-coordinates. */
+                }
+                else if (strcmp (temp_string, "39") == 0)
+                {
+                        /* Now follows a string containing the
+                         * thickness. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_point->common.thickness);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        line_number++;
+                        fscanf (fp, "%d\n", &dxf_point->common.color);
+                }
+                else if (strcmp (temp_string, "67") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        line_number++;
+                        fscanf (fp, "%d\n", &dxf_point->common.paperspace);
+                }
+                else if ((acad_version_number >= AutoCAD_12)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Subclass markers are post AutoCAD R12
+                         * variable so additional testing for the
+                         * version should probably be added here.
+                         * Now follows a string containing the
+                         * subclass marker value. */
+                        line_number++;
+                        fscanf (fp, "%s\n", temp_string);
+                }
+                else if (strcmp (temp_string, "210") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the extrusion vector. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_point->extr_x0);
+                }
+                else if (strcmp (temp_string, "220") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the extrusion vector. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_point->extr_y0);
+                }
+                else if (strcmp (temp_string, "230") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the extrusion vector. */
+                        line_number++;
+                        fscanf (fp, "%lf\n", &dxf_point->extr_z0);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        line_number++;
+                        fscanf (fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_point_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (line_number);
+}
+
 
 /*!
  * \brief Write DXF output to a file for a point entity.
@@ -102,15 +324,18 @@ dxf_write_point
                  * optional, defaults to 0 (modelspace). */
 )
 {
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_point () function.\n",
+                __FILE__, __LINE__);
+#endif
         char *dxf_entity_name = strdup ("POINT");
 
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_point () function.\n", __FILE__, __LINE__);
-#endif
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -134,7 +359,11 @@ dxf_write_point
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-		return (EXIT_SUCCESS);
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_point () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
 }
 
 
@@ -150,39 +379,48 @@ dxf_write_point_struct
                 /*!< DXF point entity. */
 )
 {
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_point_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
         char *dxf_entity_name = strdup ("POINT");
 
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_point_struct () function.\n", __FILE__, __LINE__);
-#endif
-        if (strcmp (dxf_point.layer, "") == 0)
+        if (strcmp (dxf_point.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_point.id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
-                dxf_point.layer = strdup (DXF_DEFAULT_LAYER);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name,
+                        dxf_point.common.id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
+                dxf_point.common.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_point.id_code != -1)
+        if (dxf_point.common.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_point.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_point.common.id_code);
         }
-        fprintf (fp, "  8\n%s\n", dxf_point.layer);
+        fprintf (fp, "  8\n%s\n", dxf_point.common.layer);
         fprintf (fp, " 10\n%f\n", dxf_point.x0);
         fprintf (fp, " 20\n%f\n", dxf_point.y0);
         fprintf (fp, " 30\n%f\n", dxf_point.z0);
-        if (dxf_point.thickness != 0.0)
+        if (dxf_point.common.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_point.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_point.common.thickness);
         }
-        if (dxf_point.color != DXF_COLOR_BYLAYER)
+        if (dxf_point.common.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_point.color);
+                fprintf (fp, " 62\n%d\n", dxf_point.common.color);
         }
-        if (dxf_point.paperspace == DXF_PAPERSPACE)
+        if (dxf_point.common.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_point_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */

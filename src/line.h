@@ -1,6 +1,6 @@
 /*!
  * \file line.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Definition of a DXF line entity (\c LINE).
  *
  * <hr>
@@ -29,7 +29,10 @@
  * <hr>
  */
 
+
 #include "global.h"
+#include "entity.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD line entity.
@@ -37,13 +40,8 @@
 typedef struct
 dxf_line
 {
-        int id_code;
-                /*!< group code = 5. */
-        char *linetype;
-                /*!< group code = 6\n
-                 * optional, defaults to BYLAYER. */
-        char *layer;
-                /*!< group code = 8. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         double x0;
                 /*!< group code = 10\n
                  * start point. */
@@ -62,16 +60,60 @@ dxf_line
         double z1;
                 /*!< group code = 31\n
                  * end point. */
-        double thickness;
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
-        int color;
-                /*!< group code = 62\n
-                 * optional, defaults to BYLAYER. */
-        int paperspace;
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
+        double extr_x0;
+                /*!< group code = 210\n
+                 * extrusion direction\n
+                 * optional, if ommited defaults to 0.0. */
+        double extr_y0;
+                /*!< group code = 220\n
+                 * extrusion direction\n
+                 * optional, if ommited defaults to 0.0. */
+        double extr_z0;
+                /*!< group code = 230\n
+                 * extrusion direction\n
+                 * optional, if ommited defaults to 1.0. */
 } DxfLine, * DxfLinePtr;
 
-/* EOF */
 
+DxfLine *
+dxf_malloc_line ();
+DxfLine *
+dxf_init_line_struct
+(
+        DxfLine *dxf_line
+);
+static int
+dxf_read_line_struct
+(
+        char *filename,
+        FILE *fp,
+        int line_number,
+        DxfLine *dxf_line,
+        int acad_version_number
+);
+int
+dxf_write_line
+(
+        FILE *fp,
+        int id_code,
+        char *linetype,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double x1,
+        double y1,
+        double z1,
+        double thickness,
+        int color,
+        int paperspace
+);
+int
+dxf_write_line_struct
+(
+        FILE *fp,
+        DxfLine dxf_line
+);
+
+
+/* EOF */

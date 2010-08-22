@@ -31,7 +31,10 @@
 
 #ifndef POINT_H
 #define POINT_H
+
+
 #include "global.h"
+#include "entity.h"
 
 
 /*!
@@ -51,31 +54,67 @@
 typedef struct
 dxf_point
 {
-        int id_code;
-                /*!< group code = 5. */
-        char *layer;
-                /*!< group code = 8. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         double x0;
                 /*!< group code = 10. */
         double y0;
                 /*!< group code = 20. */
         double z0;
                 /*!< group code = 30. */
-        double thickness;
-                /*!< group code = 39.\n
-                 * optional, defaults to 0.0. */
-        int color;
-                /*!< group code = 62.\n
-                 * optional, defaults to BYLAYER. */
-        int paperspace;
-                /*!< group code = 67.\n
-                 * optional, defaults to 0 (modelspace). */
+        double extr_x0;
+                /*!< group code = 210\n
+                 * extrusion direction\n
+                 * optional, if ommited defaults to 0.0. */
+        double extr_y0;
+                /*!< group code = 220\n
+                 * extrusion direction\n
+                 * optional, if ommited defaults to 0.0. */
+        double extr_z0;
+                /*!< group code = 230\n
+                 * extrusion direction\n
+                 * optional, if ommited defaults to 1.0. */
 } DxfPoint, * DxfPointPtr;
 
 
-DxfPoint *dxf_malloc_point ();
-int dxf_write_point (FILE *fp, int, char *, double, double, double, double, int, int);
-int dxf_write_point_struct (FILE *fp, DxfPoint);
+DxfPoint *
+dxf_malloc_point ();
+DxfPoint *
+dxf_init_point_struct
+(
+        DxfPoint *dxf_point
+);
+static int
+dxf_read_point_struct
+(
+        char *filename,
+        FILE *fp,
+        int line_number,
+        DxfPoint *dxf_point,
+        int acad_version_number
+);
+int
+dxf_write_point
+(
+        FILE *fp,
+        int id_code,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double thickness,
+        int color,
+        int paperspace
+);
+int
+dxf_write_point_struct
+(
+        FILE *fp,
+        DxfPoint dxf_point
+);
+
 
 #endif /* POINT_H */
+
+
 /* EOF */
