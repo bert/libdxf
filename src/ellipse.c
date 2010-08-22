@@ -57,11 +57,11 @@ dxf_malloc_ellipse ()
                         __FILE__, __LINE__);
         }
         memset (dxf_ellipse, 0, size);
-        return (dxf_ellipse);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_ellipse () function.\n",
                 __FILE__, __LINE__);
 #endif
+        return (dxf_ellipse);
 }
 
 
