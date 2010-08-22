@@ -1,6 +1,6 @@
 /*!
  * \file solid.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF solid entity (\c SOLID).
  *
  * A DXF \c SOLID entity is a filled shape made with up to four point
@@ -36,8 +36,9 @@
  * <hr>
  */
 
-#include "global.h"
+
 #include "solid.h"
+
 
 /*!
  * \brief Write DXF output to a file for a solid entity.
@@ -152,6 +153,7 @@ dxf_write_solid
 		return (EXIT_SUCCESS);
 }
 
+
 /*!
  * \brief Write DXF output to fp for a solid entity.
  */
@@ -214,5 +216,6 @@ dxf_write_solid_struct
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */
