@@ -55,8 +55,12 @@ dxf_malloc_ellipse ()
         {
                 fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_ellipse ()\n",
                         __FILE__, __LINE__);
+                dxf_ellipse = NULL;
         }
-        memset (dxf_ellipse, 0, size);
+        else
+        {
+                memset (dxf_ellipse, 0, size);
+        }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_ellipse () function.\n",
                 __FILE__, __LINE__);
