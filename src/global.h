@@ -48,9 +48,6 @@
 #include <errno.h>
 
 
-#endif /* _GLOBAL_H */
-
-
 /*!
  * Debugging on/off toggle.
  */
@@ -196,6 +193,9 @@
  * reasonably safe to assume that this is a valid text style.
  */
 #define DXF_DEFAULT_TEXTSTYLE "STANDARD"
+
+
+#endif /* _GLOBAL_H */
 
 
 /* EOF */
