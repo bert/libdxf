@@ -324,12 +324,12 @@ dxf_write_point
                  * optional, defaults to 0 (modelspace). */
 )
 {
-        char *dxf_entity_name = strdup ("POINT");
-
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_point () function.\n",
                 __FILE__, __LINE__);
 #endif
+        char *dxf_entity_name = strdup ("POINT");
+
         if (strcmp (layer, "") == 0)
         {
                 fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
@@ -379,12 +379,12 @@ dxf_write_point_struct
                 /*!< DXF point entity. */
 )
 {
-        char *dxf_entity_name = strdup ("POINT");
-
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_point_struct () function.\n",
                 __FILE__, __LINE__);
 #endif
+        char *dxf_entity_name = strdup ("POINT");
+
         if (strcmp (dxf_point.common.layer, "") == 0)
         {
                 fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
