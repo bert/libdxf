@@ -97,6 +97,35 @@ dxf_solid
 
 DxfSolid *
 dxf_malloc_solid ();
+int
+dxf_write_solid
+(
+        FILE *fp,
+        int id_code,
+        char *linetype,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double x1,
+        double y1,
+        double z1,
+        double x2,
+        double y2,
+        double z2,
+        double x3,
+        double y3,
+        double z3,
+        double thickness,
+        int color,
+        int paperspace
+);
+int
+dxf_write_solid_struct
+(
+        FILE *fp,
+        DxfSolid dxf_solid
+);
 
 
 #endif /* _SOLID_H */
