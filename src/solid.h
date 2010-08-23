@@ -109,6 +109,11 @@ dxf_solid
 
 DxfSolid *
 dxf_malloc_solid ();
+DxfSolid *
+dxf_init_solid_struct
+(
+        DxfSolid *dxf_solid
+);
 int
 dxf_write_solid
 (

@@ -77,6 +77,59 @@ dxf_malloc_solid ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c SOLID entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfSolid *
+dxf_init_solid_struct
+(
+        DxfSolid *dxf_solid
+                /*!< DXF solid entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_solid_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_solid = dxf_malloc_solid ();
+        if (dxf_solid == NULL)
+        {
+              fprintf(stderr, "ERROR: could not allocate memory for a DxfSolid struct.\n");
+              return (NULL);
+        }
+        dxf_solid->common.id_code = 0;
+        dxf_solid->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_solid->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_solid->x0 = 0.0;
+        dxf_solid->y0 = 0.0;
+        dxf_solid->z0 = 0.0;
+        dxf_solid->x1 = 0.0;
+        dxf_solid->y1 = 0.0;
+        dxf_solid->z1 = 0.0;
+        dxf_solid->x2 = 0.0;
+        dxf_solid->y2 = 0.0;
+        dxf_solid->z2 = 0.0;
+        dxf_solid->x3 = 0.0;
+        dxf_solid->y3 = 0.0;
+        dxf_solid->z3 = 0.0;
+        dxf_solid->extr_x0 = 0.0;
+        dxf_solid->extr_y0 = 0.0;
+        dxf_solid->extr_z0 = 0.0;
+        dxf_solid->common.thickness = 0.0;
+        dxf_solid->common.color = DXF_COLOR_BYLAYER;
+        dxf_solid->common.paperspace = DXF_MODELSPACE;
+        dxf_solid->common.acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_solid_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_solid);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a solid entity.
  */
 int
