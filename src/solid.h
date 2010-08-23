@@ -114,6 +114,15 @@ dxf_init_solid_struct
 (
         DxfSolid *dxf_solid
 );
+static int
+dxf_read_solid_struct
+(
+        char *filename,
+        FILE *fp,
+        int line_number,
+        DxfSolid *dxf_solid,
+        int acad_version_number
+);
 int
 dxf_write_solid
 (
