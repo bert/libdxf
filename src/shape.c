@@ -1,6 +1,6 @@
 /*!
  * \file shape.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF shape entity (\c SHAPE).
  *
  * <hr>
@@ -29,8 +29,10 @@
  * <hr>
  */
 
+
 #include "global.h"
 #include "shape.h"
+
 
 /*!
  * \brief Write DXF output to a file for a shape entity.
@@ -163,46 +165,52 @@ dxf_write_shape_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_shape_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_shape_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("SHAPE");
 
         if (strcmp (dxf_shape.shape_name, "") == 0)
         {
-                fprintf (stderr, "Error: %s name string is empty for the %s entity with id-code: %x\n", dxf_entity_name, dxf_entity_name, dxf_shape.id_code);
+                fprintf (stderr, "Error: %s name string is empty for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_entity_name, dxf_shape.common.id_code);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_shape.layer, "") == 0)
+        if (strcmp (dxf_shape.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_shape.id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
-                dxf_shape.layer = strdup (DXF_DEFAULT_LAYER);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_shape.common.id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
+                dxf_shape.common.layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (dxf_shape.size == 0.0)
         {
-                fprintf (stderr, "Warning: size has a value of 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, dxf_shape.id_code);
+                fprintf (stderr, "Warning: size has a value of 0.0 for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_shape.common.id_code);
         }
         if (dxf_shape.rel_x_scale == 0.0)
         {
-                fprintf (stderr, "Warning: relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, dxf_shape.id_code);
+                fprintf (stderr, "Warning: relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_shape.common.id_code);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
         fprintf (fp, "  2\n%s\n", dxf_shape.shape_name);
-        if (dxf_shape.id_code != -1)
+        if (dxf_shape.common.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_shape.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_shape.common.id_code);
         }
-        if (strcmp (dxf_shape.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_shape.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_shape.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_shape.common.linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_shape.layer);
+        fprintf (fp, "  8\n%s\n", dxf_shape.common.layer);
         fprintf (fp, " 10\n%f\n", dxf_shape.x0);
         fprintf (fp, " 20\n%f\n", dxf_shape.y0);
         fprintf (fp, " 30\n%f\n", dxf_shape.z0);
-        if (dxf_shape.thickness != 0.0)
+        if (dxf_shape.common.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_shape.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_shape.common.thickness);
         }
         fprintf (fp, " 40\n%f\n", dxf_shape.size);
         if (dxf_shape.rel_x_scale != 1.0)
@@ -217,18 +225,20 @@ dxf_write_shape_struct
         {
                 fprintf (fp, " 51\n%f\n", dxf_shape.obl_angle);
         }
-        if (dxf_shape.color != DXF_COLOR_BYLAYER)
+        if (dxf_shape.common.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_shape.color);
+                fprintf (fp, " 62\n%d\n", dxf_shape.common.color);
         }
-        if (dxf_shape.paperspace == DXF_PAPERSPACE)
+        if (dxf_shape.common.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_shape_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_shape_struct () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */
