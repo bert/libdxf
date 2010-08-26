@@ -34,6 +34,42 @@
 
 
 /*!
+ * \brief Allocate memory for a \c DxfShape.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfShape *
+dxf_malloc_shape ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_shape () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfShape *dxf_shape = NULL;
+        size_t size;
+
+        size = sizeof (DxfShape);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_shape = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_shape ()\n",
+                        __FILE__, __LINE__);
+                dxf_shape = NULL;
+        }
+        else
+        {
+                memset (dxf_shape, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_shape () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_shape);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a shape entity.
  */
 int

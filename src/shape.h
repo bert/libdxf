@@ -83,6 +83,8 @@ dxf_shape
 } DxfShape, * DxfShapePtr;
 
 
+DxfShape *
+dxf_malloc_shape ();
 int
 dxf_write_shape
 (
