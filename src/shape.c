@@ -70,6 +70,53 @@ dxf_malloc_shape ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c SHAPE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfShape *
+dxf_init_shape_struct
+(
+        DxfShape *dxf_shape
+                /*!< DXF shape entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_shape_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_shape = dxf_malloc_shape ();
+        if (dxf_shape == NULL)
+        {
+              fprintf(stderr, "ERROR: could not allocate memory for a DxfShape struct.\n");
+              return (NULL);
+        }
+        dxf_shape->common.id_code = 0;
+        dxf_shape->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_shape->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_shape->x0 = 0.0;
+        dxf_shape->y0 = 0.0;
+        dxf_shape->z0 = 0.0;
+        dxf_shape->extr_x0 = 0.0;
+        dxf_shape->extr_y0 = 0.0;
+        dxf_shape->extr_z0 = 0.0;
+        dxf_shape->size = 0.0;
+        dxf_shape->rel_x_scale = 0.0;
+        dxf_shape->rot_angle = 0.0;
+        dxf_shape->obl_angle = 0.0;
+        dxf_shape->common.color = DXF_COLOR_BYLAYER;
+        dxf_shape->common.paperspace = DXF_MODELSPACE;
+        dxf_shape->common.acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_shape_struct () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_shape);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a shape entity.
  */
 int

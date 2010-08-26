@@ -85,6 +85,11 @@ dxf_shape
 
 DxfShape *
 dxf_malloc_shape ();
+DxfShape *
+dxf_init_shape_struct
+(
+        DxfShape *dxf_shape
+);
 int
 dxf_write_shape
 (
