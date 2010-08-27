@@ -90,6 +90,15 @@ dxf_init_shape_struct
 (
         DxfShape *dxf_shape
 );
+static int
+dxf_read_shape_struct
+(
+        char *filename,
+        FILE *fp,
+        int line_number,
+        DxfShape *dxf_shape,
+        int acad_version_number
+);
 int
 dxf_write_shape
 (
