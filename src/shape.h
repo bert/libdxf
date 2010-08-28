@@ -90,7 +90,7 @@ dxf_shape_init
 (
         DxfShape *dxf_shape
 );
-static int
+int
 dxf_shape_shape
 (
         char *filename,
