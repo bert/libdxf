@@ -187,21 +187,21 @@ dxf_shape_read
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
-                         * X-coordinate of the center point. */
+                         * X-coordinate of the insertion point. */
                         line_number++;
                         fscanf (fp, "%lf\n", &dxf_shape->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
-                         * Y-coordinate of the center point. */
+                         * Y-coordinate of the insertion point. */
                         line_number++;
                         fscanf (fp, "%lf\n", &dxf_shape->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
-                         * Z-coordinate of the center point. */
+                         * Z-coordinate of the insertion point. */
                         line_number++;
                         fscanf (fp, "%lf\n", &dxf_shape->z0);
                 }
