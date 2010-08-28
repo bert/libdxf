@@ -124,17 +124,17 @@ dxf_arc_init
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
  *
- * \return \c line_number when done, or 0 when an error occured while
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error occured while
  * reading from file.
  */
-static int
+int
 dxf_arc_read
 (
         char *filename,
                 /*!< filename of input file (or device). */
         FILE *fp,
                 /*!< filepointer to the input file (or device). */
-        int line_number,
+        int *line_number,
                 /*!< current line number in the input file (or device). */
         DxfArc *dxf_arc,
                 /*!< DXF arc entity. */
@@ -159,9 +159,9 @@ dxf_arc_read
                 if (ferror (fp))
                 {
                         fprintf (stderr, "Error: in dxf_arc_read () while reading from: %s in line: %d.\n",
-                                filename, line_number);
+                                filename, *line_number);
                         fclose (fp);
-                        return (0);
+                        return (EXIT_FAILURE);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -302,7 +302,7 @@ dxf_arc_read
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_read () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (line_number);
+        return (EXIT_SUCCESS);
 }
 
 

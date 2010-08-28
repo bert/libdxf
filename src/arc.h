@@ -83,12 +83,12 @@ dxf_arc_init
 (
         DxfArc *dxf_arc
 );
-static int
+int
 dxf_arc_read
 (
         char *filename,
         FILE *fp,
-        int line_number,
+        int *line_number,
         DxfArc *dxf_arc,
         int acad_version_number
 );
