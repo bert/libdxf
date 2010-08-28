@@ -507,6 +507,11 @@ dxf_arc_write
 #endif
         char *dxf_entity_name = strdup ("ARC");
 
+        if (&dxf_arc == NULL)
+        {
+                return (EXIT_FAILURE);
+                fprintf (stderr, "Error: in dxf_arc_write () a NULL pointer was passed.\n");
+        }
         if (dxf_arc.start_angle == dxf_arc.end_angle)
         {
                 fprintf (stderr, "[File: %s: line: %d] Error: in dxf_arc_write () start angle and end angle are identical for the %s entity with id-code: %x.\n",
