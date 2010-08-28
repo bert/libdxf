@@ -297,6 +297,11 @@ dxf_arc_read
                         fscanf (fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
+                else
+                {
+                        fprintf (stderr, "Warning: in dxf_arc_read () unknown string tag found while reading from: %s in line: %d.\n",
+                                filename, *line_number);
+                }
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_read () function.\n",
