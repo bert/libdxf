@@ -70,7 +70,8 @@ dxf_shape_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in a \c SHAPE entity.
+ * \brief Allocate memory and initialize data fields in a \c SHAPE 
+ * entity to default values.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
@@ -117,12 +118,12 @@ dxf_shape_init
 
 
 /*!
- * \brief Read data from a DXF file into an \c SHAPE entity.
+ * \brief Read data from a DXF file into a \c SHAPE entity.
  *
  * The last line read from file contained the string "SHAPE". \n
- * Now follows some data for the \c SHAPE, to be terminated with a "  0"
- * string announcing the following entity, or the end of the \c ENTITY
- * section marker \c ENDSEC. \n
+ * Hereafter follows some data for the \c SHAPE, to be terminated with
+ * a "  0" string announcing the following entity, or the end of the
+ * \c ENTITY section marker \c ENDSEC. \n
  *
  * \return \c EXIT_SUCCESS when done, or \cEXIT_FAILURE when an error
  * occurred while reading from the input file.
@@ -299,6 +300,11 @@ dxf_shape_read
                         line_number++;
                         fscanf (fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr, "Warning: unknown string tag found while reading from: %s in line: %d.\n",
+                                filename, line_number);
                 }
         }
 #if DEBUG
