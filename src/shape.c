@@ -149,6 +149,7 @@ dxf_shape_read
 #endif
         char *temp_string = NULL;
 
+        if (!dxf_shape) dxf_shape_new (); 
         line_number++;
         fscanf (fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
