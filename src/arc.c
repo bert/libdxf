@@ -86,7 +86,7 @@ dxf_arc_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_arc = dxf_malloc_arc ();
+        dxf_arc = dxf_arc_new ();
         if (dxf_arc == NULL)
         {
               fprintf(stderr, "ERROR: in dxf_arc_init () could not allocate memory for a DxfArc struct.\n");
@@ -148,6 +148,10 @@ dxf_arc_read
 #endif
         char *temp_string = NULL;
 
+        if (!dxf_arc)
+        {
+                dxf_arc = dxf_arc_new ();
+        }
         line_number++;
         fscanf (fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
