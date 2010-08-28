@@ -45,7 +45,7 @@ typedef struct
 dxf_shape
 {
         DxfEntity common;
-                /*!< common properties for DXF entities. */
+                /*!< common properties for DXF drawing entities. */
         char *shape_name;
                 /*!< group code = 2. */
         double x0;
