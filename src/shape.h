@@ -91,11 +91,11 @@ dxf_shape_init
         DxfShape *dxf_shape
 );
 int
-dxf_shape_shape
+dxf_shape_read
 (
         char *filename,
         FILE *fp,
-        int line_number,
+        int *line_number,
         DxfShape *dxf_shape,
         int acad_version_number
 );
