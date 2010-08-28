@@ -42,7 +42,7 @@ DxfShape *
 dxf_shape_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_shape () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_shape_new () function.\n",
                 __FILE__, __LINE__);
 #endif
         DxfShape *dxf_shape = NULL;
@@ -53,7 +53,7 @@ dxf_shape_new ()
         if (size == 0) size = 1;
         if ((dxf_shape = malloc (size)) == NULL)
         {
-                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_shape ()\n",
+                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_shape_new ()\n",
                         __FILE__, __LINE__);
                 dxf_shape = NULL;
         }
@@ -62,7 +62,7 @@ dxf_shape_new ()
                 memset (dxf_shape, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_shape () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_shape_new () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (dxf_shape);
@@ -84,10 +84,10 @@ dxf_shape_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_shape_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_shape_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_shape = dxf_malloc_shape ();
+        dxf_shape = dxf_shape_new ();
         if (dxf_shape == NULL)
         {
               fprintf(stderr, "ERROR: could not allocate memory for a DxfShape struct.\n");
@@ -110,7 +110,7 @@ dxf_shape_init
         dxf_shape->common.paperspace = DXF_MODELSPACE;
         dxf_shape->common.acad_version_number = 0;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_shape_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_shape_init () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (dxf_shape);
@@ -144,7 +144,7 @@ dxf_shape_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_shape_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_shape_read () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *temp_string = NULL;
@@ -156,8 +156,8 @@ dxf_shape_read
         {
                 if (ferror (fp))
                 {
-                        fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
-                                filename, line_number);
+                        fprintf (stderr, "Error: in dxf_shape_read () while reading from: %s in line: %d.\n",
+                                filename, *line_number);
                         fclose (fp);
                         return (EXIT_FAILURE);
                 }
@@ -304,12 +304,12 @@ dxf_shape_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: unknown string tag found while reading from: %s in line: %d.\n",
-                                filename, line_number);
+                        fprintf (stderr, "Warning: in dxf_shape_read () unknown string tag found while reading from: %s in line: %d.\n",
+                                filename, *line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_shape_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_shape_read () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
@@ -365,7 +365,7 @@ dxf_shape_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_shape () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_shape_write_lowlevel () function.\n", __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("SHAPE");
 
@@ -376,17 +376,17 @@ dxf_shape_write_lowlevel
         }
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
+                fprintf (stderr, "Warning: in dxf_shape_write_lowlevel () empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (size == 0.0)
         {
-                fprintf (stderr, "Warning: size has a value of 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
+                fprintf (stderr, "Warning: in dxf_shape_write_lowlevel () size has a value of 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
         }
         if (rel_x_scale == 0.0)
         {
-                fprintf (stderr, "Warning: relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
+                fprintf (stderr, "Warning: in dxf_shape_write_lowlevel () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
         fprintf (fp, "  2\n%s\n", shape_name);
@@ -428,7 +428,7 @@ dxf_shape_write_lowlevel
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_shape () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_shape_write_lowlevel () function.\n", __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -447,20 +447,25 @@ dxf_shape_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_shape_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_shape_write () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("SHAPE");
 
-        if (strcmp (dxf_shape.shape_name, "") == 0)
+        if (&dxf_shape == NULL)
         {
-                fprintf (stderr, "Error: %s name string is empty for the %s entity with id-code: %x\n",
+                return (EXIT_FAILURE);
+                fprintf (stderr, "Error: in dxf_shape_write () NULL pointer passed to dxf_shape_write ().\n");
+        }
+                if (strcmp (dxf_shape.shape_name, "") == 0)
+        {
+                fprintf (stderr, "Error: in dxf_shape_write () %s name string is empty for the %s entity with id-code: %x\n",
                         dxf_entity_name, dxf_entity_name, dxf_shape.common.id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_shape.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Warning: in dxf_shape_write () empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name, dxf_shape.common.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
@@ -468,12 +473,12 @@ dxf_shape_write
         }
         if (dxf_shape.size == 0.0)
         {
-                fprintf (stderr, "Warning: size has a value of 0.0 for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Warning: in dxf_shape_write () size has a value of 0.0 for the %s entity with id-code: %x\n",
                         dxf_entity_name, dxf_shape.common.id_code);
         }
         if (dxf_shape.rel_x_scale == 0.0)
         {
-                fprintf (stderr, "Warning: relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Warning: in dxf_shape_write () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
                         dxf_entity_name, dxf_shape.common.id_code);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -516,7 +521,7 @@ dxf_shape_write
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_shape_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_shape_write () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
