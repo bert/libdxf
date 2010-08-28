@@ -1,7 +1,7 @@
 /*!
  * \file arc.h
  * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Definition of a DXF arc entity (\c ARC).
+ * \brief Header file for a DXF arc entity (\c ARC).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
