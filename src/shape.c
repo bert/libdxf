@@ -1,7 +1,7 @@
 /*!
  * \file shape.c
  * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief DXF shape entity (\c SHAPE).
+ * \brief Functions for a DXF shape entity (\c SHAPE).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -39,7 +39,7 @@
  * Fill the memory contents with zeros.
  */
 DxfShape *
-dxf_malloc_shape ()
+dxf_shape_new ()
 {
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_shape () function.\n",
@@ -76,7 +76,7 @@ dxf_malloc_shape ()
  * allocated memory when succesful.
  */
 DxfShape *
-dxf_init_shape_struct
+dxf_shape_init
 (
         DxfShape *dxf_shape
                 /*!< DXF shape entity. */
@@ -128,7 +128,7 @@ dxf_init_shape_struct
  * reading from file.
  */
 static int
-dxf_read_shape_struct
+dxf_shape_read
 (
         char *filename,
                 /*!< filename of input file (or device). */
@@ -313,7 +313,7 @@ dxf_read_shape_struct
  * \brief Write DXF output to a file for a shape entity.
  */
 int
-dxf_write_shape
+dxf_shape_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -431,7 +431,7 @@ dxf_write_shape
  * \brief Write DXF output to fp for a shape entity.
  */
 int
-dxf_write_shape_struct
+dxf_shape_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */

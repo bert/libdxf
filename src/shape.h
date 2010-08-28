@@ -1,7 +1,7 @@
 /*!
  * \file shape.h
  * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Definition of a DXF shape entity (\c SHAPE).
+ * \brief Header file for a DXF shape entity (\c SHAPE).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -84,14 +84,14 @@ dxf_shape
 
 
 DxfShape *
-dxf_malloc_shape ();
+dxf_shape_new ();
 DxfShape *
-dxf_init_shape_struct
+dxf_shape_init
 (
         DxfShape *dxf_shape
 );
 static int
-dxf_read_shape_struct
+dxf_shape_shape
 (
         char *filename,
         FILE *fp,
@@ -100,7 +100,7 @@ dxf_read_shape_struct
         int acad_version_number
 );
 int
-dxf_write_shape
+dxf_shape_write_lowlevel
 (
         FILE *fp,
         int id_code,
@@ -119,7 +119,7 @@ dxf_write_shape
         int paperspace
 );
 int
-dxf_write_shape_struct
+dxf_shape_write
 (
         FILE *fp,
         DxfShape dxf_shape
