@@ -125,7 +125,7 @@ dxf_shape_init
  * a "  0" string announcing the following entity, or the end of the
  * \c ENTITY section marker \c ENDSEC. \n
  *
- * \return \c EXIT_SUCCESS when done, or \cEXIT_FAILURE when an error
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred while reading from the input file.
  */
 int
