@@ -76,14 +76,14 @@ dxf_arc
 
 
 DxfArc *
-dxf_malloc_arc ();
+dxf_arc_new ();
 DxfArc *
-dxf_init_arc_struct
+dxf_arc_init
 (
         DxfArc *dxf_arc
 );
 static int
-dxf_read_arc_struct
+dxf_arc_read
 (
         char *filename,
         FILE *fp,
@@ -92,7 +92,7 @@ dxf_read_arc_struct
         int acad_version_number
 );
 static int
-dxf_write_arc
+dxf_arc_write_lowlevel
 (
         FILE *fp,
         int id_code,
@@ -113,7 +113,7 @@ dxf_write_arc
         int acad_version_number
 );
 int
-dxf_write_arc_struct
+dxf_arc_write
 (
         FILE *fp,
         DxfArc dxf_arc,
