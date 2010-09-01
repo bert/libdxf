@@ -1,7 +1,7 @@
 /*!
  * \file circle.c
  * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief DXF circle entity (\c CIRCLE).
+ * \brief Functions for a DXF circle entity (\c CIRCLE).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
