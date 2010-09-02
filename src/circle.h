@@ -69,14 +69,14 @@ dxf_circle
 
 
 DxfCircle *
-dxf_malloc_circle ();
+dxf_circle_new ();
 DxfCircle *
-dxf_init_circle_struct
+dxf_circle_init
 (
         DxfCircle *dxf_circle
 );
 static int
-dxf_read_circle_struct
+dxf_circle_read
 (
         char *filename,
         FILE *fp,
@@ -85,7 +85,7 @@ dxf_read_circle_struct
         int acad_version_number
 );
 int
-dxf_write_circle
+dxf_circle_write_lowlevel
 (
         FILE *fp,
         int id_code,
@@ -101,7 +101,7 @@ dxf_write_circle
         int acad_version_number
 );
 int
-dxf_write_circle_struct
+dxf_circle_write
 (
         FILE *fp,
         DxfCircle dxf_circle,

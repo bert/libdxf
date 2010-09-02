@@ -39,7 +39,7 @@
  * Fill the memory contents with zeros.
  */
 DxfCircle *
-dxf_malloc_circle ()
+dxf_circle_new ()
 {
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_circle () function.\n",
@@ -76,7 +76,7 @@ dxf_malloc_circle ()
  * allocated memory when succesful.
  */
 DxfCircle *
-dxf_init_circle_struct
+dxf_circle_init
 (
         DxfCircle *dxf_circle
                 /*!< DXF circle entity. */
@@ -86,7 +86,7 @@ dxf_init_circle_struct
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_circle_struct () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_circle = dxf_malloc_circle ();
+        dxf_circle = dxf_circle_new ();
         if (dxf_circle == NULL)
         {
               fprintf(stderr, "ERROR: could not allocate memory for a DxfCircle struct.\n");
@@ -126,7 +126,7 @@ dxf_init_circle_struct
  * reading from file.
  */
 static int
-dxf_read_circle_struct
+dxf_circle_read
 (
         char *filename,
                 /*!< filename of input file (or device). */
@@ -290,7 +290,7 @@ dxf_read_circle_struct
  * \brief Write DXF output to a file for a circle entity.
  */
 int
-dxf_write_circle
+dxf_circle_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -381,7 +381,7 @@ dxf_write_circle
  * \brief Write DXF output to fp for a circle entity.
  */
 int
-dxf_write_circle_struct
+dxf_circle_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
