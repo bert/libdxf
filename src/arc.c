@@ -53,8 +53,7 @@ dxf_arc_new ()
         if (size == 0) size = 1;
         if ((dxf_arc = malloc (size)) == NULL)
         {
-                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_arc_new ()\n",
-                        __FILE__, __LINE__);
+                fprintf(stderr, "ERROR in dxf_arc_new () could not allocate memory for a DxfArc struct.\n");
                 dxf_arc = NULL;
         }
         else
@@ -89,7 +88,7 @@ dxf_arc_init
         dxf_arc = dxf_arc_new ();
         if (dxf_arc == NULL)
         {
-              fprintf(stderr, "ERROR: in dxf_arc_init () could not allocate memory for a DxfArc struct.\n");
+              fprintf(stderr, "ERROR in dxf_arc_init () could not allocate memory for a DxfArc struct.\n");
               return (NULL);
         }
         dxf_arc->common.id_code = 0;
@@ -158,7 +157,7 @@ dxf_arc_read
         {
                 if (ferror (fp))
                 {
-                        fprintf (stderr, "Error: in dxf_arc_read () while reading from: %s in line: %d.\n",
+                        fprintf (stderr, "Error in dxf_arc_read () while reading from: %s in line: %d.\n",
                                 filename, *line_number);
                         fclose (fp);
                         return (EXIT_FAILURE);
@@ -390,50 +389,50 @@ dxf_arc_write_lowlevel
 
         if (start_angle == end_angle)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: in dxf_arc_write_lowlevel () start angle and end angle are identical for the %s entity with id-code: %x.\n",
-                        __FILE__, __LINE__, dxf_entity_name, id_code);
+                fprintf (stderr, "Error in dxf_arc_write_lowlevel () start angle and end angle are identical for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, id_code);
                 fprintf (stderr, "    skipping %s entity.\n", dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (start_angle > 360.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: in dxf_arc_write_lowlevel () start angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
-                        __FILE__, __LINE__, dxf_entity_name, id_code);
+                fprintf (stderr, "Error in dxf_arc_write_lowlevel () start angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, id_code);
                 fprintf (stderr, "    skipping %s entity.\n", dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (start_angle < 0.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: in dxf_arc_write_lowlevel () start angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
-                        __FILE__, __LINE__, dxf_entity_name, id_code);
+                fprintf (stderr, "Error in dxf_arc_write_lowlevel () start angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, id_code);
                 fprintf (stderr, "    skipping %s entity.\n", dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (end_angle > 360.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: in dxf_arc_write_lowlevel () end angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
-                        __FILE__, __LINE__, dxf_entity_name, id_code);
+                fprintf (stderr, "Error in dxf_arc_write_lowlevel () end angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, id_code);
                 fprintf (stderr, "    skipping %s entity.\n", dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (end_angle < 0.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: in dxf_arc_write_lowlevel () end angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
-                        __FILE__, __LINE__, dxf_entity_name, id_code);
+                fprintf (stderr, "Error in dxf_arc_write_lowlevel () end angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, id_code);
                 fprintf (stderr, "    skipping %s entity.\n", dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (radius == 0.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: in dxf_arc_write_lowlevel () radius value equals 0.0 for the %s entity with id-code: %x.\n",
-                        __FILE__, __LINE__, dxf_entity_name, id_code);
+                fprintf (stderr, "Error in dxf_arc_write_lowlevel () radius value equals 0.0 for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, id_code);
                 fprintf (stderr, "    skipping %s entity.\n", dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Warning: in dxf_arc_write_lowlevel () empty layer string for the %s entity with id-code: %x.\n",
-                        __FILE__, __LINE__, dxf_entity_name, id_code);
+                fprintf (stderr, "Warning in dxf_arc_write_lowlevel () empty layer string for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, id_code);
                 fprintf (stderr, "    %s entity is relocated to default layer.\n",
                         dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
@@ -510,81 +509,60 @@ dxf_arc_write
         if (&dxf_arc == NULL)
         {
                 return (EXIT_FAILURE);
-                fprintf (stderr, "Error: in dxf_arc_write () a NULL pointer was passed.\n");
+                fprintf (stderr, "Error in dxf_arc_write () a NULL pointer was passed.\n");
         }
         if (dxf_arc.start_angle == dxf_arc.end_angle)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: in dxf_arc_write () start angle and end angle are identical for the %s entity with id-code: %x.\n",
-                        __FILE__,
-                        __LINE__,
-                        dxf_entity_name,
-                        dxf_arc.common.id_code);
+                fprintf (stderr, "Error in dxf_arc_write () start angle and end angle are identical for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_arc.common.id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (dxf_arc.start_angle > 360.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: in dxf_arc_write () start angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
-                        __FILE__,
-                        __LINE__,
-                        dxf_entity_name,
-                        dxf_arc.common.id_code);
+                fprintf (stderr, "Error in dxf_arc_write () start angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_arc.common.id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (dxf_arc.start_angle < 0.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: in dxf_arc_write () start angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
-                        __FILE__,
-                        __LINE__,
-                        dxf_entity_name,
-                        dxf_arc.common.id_code);
+                fprintf (stderr, "Error in dxf_arc_write () start angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_arc.common.id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (dxf_arc.end_angle > 360.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: in dxf_arc_write () end angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
-                        __FILE__,
-                        __LINE__,
-                        dxf_entity_name,
-                        dxf_arc.common.id_code);
+                fprintf (stderr, "Error in dxf_arc_write () end angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_arc.common.id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (dxf_arc.end_angle < 0.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: in dxf_arc_write () end angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
-                        __FILE__,
-                        __LINE__,
-                        dxf_entity_name,
-                        dxf_arc.common.id_code);
+                fprintf (stderr, "Error in dxf_arc_write () end angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_arc.common.id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (dxf_arc.radius == 0.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: in dxf_arc_write () radius value equals 0.0 for the %s entity with id-code: %x.\n",
-                        __FILE__,
-                        __LINE__,
-                        dxf_entity_name,
-                        dxf_arc.common.id_code);
+                fprintf (stderr, "Error in dxf_arc_write () radius value equals 0.0 for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_arc.common.id_code);
                 fprintf (stderr, "    skipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_arc.common.layer, "") == 0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Warning: in dxf_arc_write () empty layer string for the %s entity with id-code: %x.\n",
-                        __FILE__,
-                        __LINE__,
-                        dxf_entity_name,
-                        dxf_arc.common.id_code);
+                fprintf (stderr, "Warning in dxf_arc_write () empty layer string for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_arc.common.id_code);
                 fprintf (stderr, "\t%s entity is relocated to default layer.\n",
                         dxf_entity_name);
                 dxf_arc.common.layer = DXF_DEFAULT_LAYER;
