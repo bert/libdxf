@@ -53,7 +53,7 @@ dxf_circle_new ()
         if (size == 0) size = 1;
         if ((dxf_circle = malloc (size)) == NULL)
         {
-                fprintf (stderr, "Error in dxf_circle_new () out of memory in dxf_circle-new ()\n");
+                fprintf (stderr, "ERROR in dxf_circle_new () could not allocate memory for a DxfCircle struct.\n");
                 dxf_circle = NULL;
         }
         else
@@ -88,7 +88,7 @@ dxf_circle_init
         dxf_circle = dxf_circle_new ();
         if (dxf_circle == NULL)
         {
-              fprintf(stderr, "ERROR: in dxf_circle_init () could not allocate memory for a DxfCircle struct.\n");
+              fprintf(stderr, "ERROR in dxf_circle_init () could not allocate memory for a DxfCircle struct.\n");
               return (NULL);
         }
         dxf_circle->common.id_code = 0;
@@ -151,7 +151,7 @@ dxf_circle_read
         {
                 if (ferror (fp))
                 {
-                        fprintf (stderr, "Error: in dxf_circle_read () while reading from: %s in line: %d.\n",
+                        fprintf (stderr, "Error in dxf_circle_read () while reading from: %s in line: %d.\n",
                                 filename, line_number);
                         fclose (fp);
                         return (0);
@@ -337,7 +337,7 @@ dxf_circle_write_lowlevel
         }
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: in dxf_circle_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Warning in dxf_circle_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name, id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
@@ -398,14 +398,14 @@ dxf_circle_write
 
         if (dxf_circle.radius == 0.0)
         {
-                fprintf (stderr, "Error: in dxf_circle_write () radius value equals 0.0 for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Error in dxf_circle_write () radius value equals 0.0 for the %s entity with id-code: %x\n",
                         dxf_entity_name,
                         dxf_circle.common.id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_circle.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: in dxf_circle_write ()empty layer string for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Warning in dxf_circle_write () empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name,
                         dxf_circle.common.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
