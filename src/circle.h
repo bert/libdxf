@@ -75,12 +75,12 @@ dxf_circle_init
 (
         DxfCircle *dxf_circle
 );
-static int
+int
 dxf_circle_read
 (
         char *filename,
         FILE *fp,
-        int line_number,
+        int *line_number,
         DxfCircle *dxf_circle,
         int acad_version_number
 );

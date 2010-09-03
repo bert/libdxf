@@ -124,14 +124,14 @@ dxf_circle_init
  * \return \c line_number when done, or 0 when an error occured while
  * reading from file.
  */
-static int
+int
 dxf_circle_read
 (
         char *filename,
                 /*!< filename of input file (or device). */
         FILE *fp,
                 /*!< filepointer to the input file (or device). */
-        int line_number,
+        int *line_number,
                 /*!< current line number in the input file (or device). */
         DxfCircle *dxf_circle,
                 /*!< DXF circle entity. */
@@ -152,7 +152,7 @@ dxf_circle_read
                 if (ferror (fp))
                 {
                         fprintf (stderr, "Error in dxf_circle_read () while reading from: %s in line: %d.\n",
-                                filename, line_number);
+                                filename, *line_number);
                         fclose (fp);
                         return (0);
                 }
@@ -281,7 +281,7 @@ dxf_circle_read
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_circle_read () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (line_number);
+        return (EXIT_SUCCESS);
 }
 
 
