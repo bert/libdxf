@@ -76,23 +76,23 @@ dxf_line
 
 
 DxfLine *
-dxf_malloc_line ();
+dxf_line_new ();
 DxfLine *
-dxf_init_line_struct
+dxf_line_init
 (
         DxfLine *dxf_line
 );
-static int
-dxf_read_line_struct
+int
+dxf_line_read
 (
         char *filename,
         FILE *fp,
-        int line_number,
+        int *line_number,
         DxfLine *dxf_line,
         int acad_version_number
 );
 int
-dxf_write_line
+dxf_line_write_lowlevel
 (
         FILE *fp,
         int id_code,
@@ -109,7 +109,7 @@ dxf_write_line
         int paperspace
 );
 int
-dxf_write_line_struct
+dxf_line_write
 (
         FILE *fp,
         DxfLine dxf_line
