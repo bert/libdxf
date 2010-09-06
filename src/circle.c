@@ -120,9 +120,10 @@ dxf_circle_init
  * Now follows some data for the \c CIRCLE, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c dxf_circle. \n
  *
- * \return \c line_number when done, or 0 when an error occured while
- * reading from file.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_circle_read
