@@ -315,8 +315,7 @@ dxf_arc_read
  * \brief Write DXF output for an arc entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occured.
- */
+ * occurred.
  */
 static int
 dxf_arc_write_lowlevel
@@ -495,8 +494,7 @@ dxf_arc_write_lowlevel
  * \brief Write DXF output to a file for an arc entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occured.
- */
+ * occurred.
  */
 int
 dxf_arc_write
