@@ -122,9 +122,10 @@ dxf_arc_init
  * Now follows some data for the \c ARC, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c dxf_arc. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error occured while
- * reading from file.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occured.
  */
 int
 dxf_arc_read
@@ -312,6 +313,10 @@ dxf_arc_read
 
 /*!
  * \brief Write DXF output for an arc entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occured.
+ */
  */
 static int
 dxf_arc_write_lowlevel
@@ -488,6 +493,10 @@ dxf_arc_write_lowlevel
 
 /*!
  * \brief Write DXF output to a file for an arc entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occured.
+ */
  */
 int
 dxf_arc_write
@@ -611,5 +620,6 @@ dxf_arc_write
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF*/
