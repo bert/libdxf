@@ -125,7 +125,7 @@ dxf_arc_init
  * While parsing the DXF file store data in \c dxf_arc. \n
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occured.
+ * occurred.
  */
 int
 dxf_arc_read
