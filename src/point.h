@@ -78,23 +78,23 @@ dxf_point
 
 
 DxfPoint *
-dxf_malloc_point ();
+dxf_point_new ();
 DxfPoint *
-dxf_init_point_struct
+dxf_point_init
 (
         DxfPoint *dxf_point
 );
-static int
-dxf_read_point_struct
+int
+dxf_point_read
 (
         char *filename,
         FILE *fp,
-        int line_number,
+        int *line_number,
         DxfPoint *dxf_point,
         int acad_version_number
 );
 int
-dxf_write_point
+dxf_point_write_lowlevel
 (
         FILE *fp,
         int id_code,
@@ -107,7 +107,7 @@ dxf_write_point
         int paperspace
 );
 int
-dxf_write_point_struct
+dxf_point_write
 (
         FILE *fp,
         DxfPoint dxf_point

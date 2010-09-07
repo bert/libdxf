@@ -49,13 +49,13 @@
 /*!
  * \brief Allocate memory for a \c DxfPoint.
  *
- * and fill the memory contents with zeros.
+ * Fill the memory contents with zeros.
  */
 DxfPoint *
-dxf_malloc_point ()
+dxf_point_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_point () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_point_new () function.\n",
                 __FILE__, __LINE__);
 #endif
         DxfPoint *dxf_point = NULL;
@@ -66,8 +66,7 @@ dxf_malloc_point ()
         if (size == 0) size = 1;
         if ((dxf_point = malloc (size)) == NULL)
         {
-                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_point()\n",
-                        __FILE__, __LINE__);
+                fprintf(stderr, "ERROR in dxf_point_new () could not allocate memory for a DxfPoint struct.\n");
                 dxf_point = NULL;
         }
         else
@@ -75,7 +74,7 @@ dxf_malloc_point ()
                 memset (dxf_point, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_point () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_point_new () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (dxf_point);
@@ -83,26 +82,26 @@ dxf_malloc_point ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in an \c POINT entity.
+ * \brief Allocate memory and initialize data fields in a \c POINT entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  */
 DxfPoint *
-dxf_init_point_struct
+dxf_point_init
 (
         DxfPoint *dxf_point
                 /*!< DXF point entity. */
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_point_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_point_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_point = dxf_malloc_point ();
+        dxf_point = dxf_point_new ();
         if (dxf_point == NULL)
         {
-              fprintf(stderr, "ERROR: could not allocate memory for a DxfPoint struct.\n");
+              fprintf(stderr, "ERROR in dxf_point_init () could not allocate memory for a DxfPoint struct.\n");
               return (NULL);
         }
         dxf_point->common.id_code = 0;
@@ -119,7 +118,7 @@ dxf_init_point_struct
         dxf_point->common.paperspace = DXF_MODELSPACE;
         dxf_point->common.acad_version_number = 0;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_point_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_point_init () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (dxf_point);
@@ -133,18 +132,19 @@ dxf_init_point_struct
  * Now follows some data for the \c LINE, to be terminated with a
  * "  0" string announcing the following entity, or the end of the
  * \c ENTITY section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c dxf_arc. \n
  *
- * \return \c line_number when done, or 0 when an error occured while
- * reading from file.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-static int
-dxf_read_point_struct
+int
+dxf_point_read
 (
         char *filename,
                 /*!< filename of input file (or device). */
         FILE *fp,
                 /*!< filepointer to the input file (or device). */
-        int line_number,
+        int *line_number,
                 /*!< current line number in the input file (or device). */
         DxfPoint *dxf_point,
                 /*!< DXF ellipse entity. */
@@ -153,7 +153,7 @@ dxf_read_point_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_point_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_point_read () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *temp_string = NULL;
@@ -164,8 +164,8 @@ dxf_read_point_struct
         {
                 if (ferror (fp))
                 {
-                        fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
-                                filename, line_number);
+                        fprintf (stderr, "Error in dxf_point_read () while reading from: %s in line: %d.\n",
+                                filename, *line_number);
                         fclose (fp);
                         return (0);
                 }
@@ -286,20 +286,28 @@ dxf_read_point_struct
                         fscanf (fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
+                else
+                {
+                        fprintf (stderr, "Warning: in dxf_point_read () unknown string tag found while reading from: %s in line: %d.\n",
+                                filename, *line_number);
+                }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_point_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_point_read () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (line_number);
+        return (EXIT_SUCCESS);
 }
 
 
 /*!
  * \brief Write DXF output to a file for a point entity.
+ * 
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
-dxf_write_point
+dxf_point_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -325,14 +333,14 @@ dxf_write_point
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_point () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_point_write_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("POINT");
 
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Warning in dxf_point_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name, id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
@@ -360,7 +368,7 @@ dxf_write_point
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_point () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_point_write_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
@@ -369,9 +377,12 @@ dxf_write_point
 
 /*!
  * \brief Write DXF output to fp for a point entity.
+ * 
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
-dxf_write_point_struct
+dxf_point_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -380,14 +391,14 @@ dxf_write_point_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_point_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_point_write () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("POINT");
 
         if (strcmp (dxf_point.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Warning in dxf_point_write () empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name,
                         dxf_point.common.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
@@ -416,7 +427,7 @@ dxf_write_point_struct
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_point_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_point_write () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
