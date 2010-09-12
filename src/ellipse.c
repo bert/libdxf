@@ -37,12 +37,15 @@
  * \brief Allocate memory for a \c DxfEllipse.
  *
  * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
  */
 DxfEllipse *
-dxf_malloc_ellipse ()
+dxf_ellipse_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_ellipse () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ellipse_new () function.\n",
                 __FILE__, __LINE__);
 #endif
         DxfEllipse *dxf_ellipse = NULL;
@@ -53,8 +56,7 @@ dxf_malloc_ellipse ()
         if (size == 0) size = 1;
         if ((dxf_ellipse = malloc (size)) == NULL)
         {
-                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_ellipse ()\n",
-                        __FILE__, __LINE__);
+                fprintf(stderr, "ERROR in dxf_ellipse_new () could not allocate memory for a DxfEllipse struct.\n");
                 dxf_ellipse = NULL;
         }
         else
@@ -62,7 +64,7 @@ dxf_malloc_ellipse ()
                 memset (dxf_ellipse, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_ellipse () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ellipse_new () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (dxf_ellipse);
@@ -76,20 +78,20 @@ dxf_malloc_ellipse ()
  * allocated memory when succesful.
  */
 DxfEllipse *
-dxf_init_ellipse_struct
+dxf_ellipse_init
 (
         DxfEllipse *dxf_ellipse
                 /*!< DXF ellipse entity. */
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init ellipse_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ellipse_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_ellipse = dxf_malloc_ellipse ();
+        dxf_ellipse = dxf_ellipse_new ();
         if (dxf_ellipse == NULL)
         {
-              fprintf(stderr, "ERROR: could not allocate memory for a DxfEllipse struct.\n");
+              fprintf(stderr, "ERROR in dxf_ellipse_init () could not allocate memory for a DxfEllipse struct.\n");
               return (NULL);
         }
         dxf_ellipse->common.id_code = 0;
@@ -112,7 +114,7 @@ dxf_init_ellipse_struct
         dxf_ellipse->common.paperspace = DXF_MODELSPACE;
         dxf_ellipse->common.acad_version_number = 0;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_ellipse_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ellipse_init () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (dxf_ellipse);
@@ -126,18 +128,19 @@ dxf_init_ellipse_struct
  * Now follows some data for the \c ELLIPSE, to be terminated with a
  * "  0" string announcing the following entity, or the end of the
  * \c ENTITY section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c dxf_ellipse. \n
  *
- * \return \c line_number when done, or 0 when an error occured while
- * reading from file.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-static int
-dxf_read_ellipse_struct
+int
+dxf_ellipse_read
 (
         char *filename,
                 /*!< filename of input file (or device). */
         FILE *fp,
                 /*!< filepointer to the input file (or device). */
-        int line_number,
+        int *line_number,
                 /*!< current line number in the input file (or device). */
         DxfEllipse *dxf_ellipse,
                 /*!< DXF ellipse entity. */
@@ -146,7 +149,7 @@ dxf_read_ellipse_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_ellipse_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ellipse_read () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *temp_string = NULL;
@@ -157,8 +160,8 @@ dxf_read_ellipse_struct
         {
                 if (ferror (fp))
                 {
-                        fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
-                                filename, line_number);
+                        fprintf (stderr, "Error in dxf_ellipse_read () while reading from: %s in line: %d.\n",
+                                filename, *line_number);
                         fclose (fp);
                         return (0);
                 }
@@ -166,62 +169,62 @@ dxf_read_ellipse_struct
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%x\n", &dxf_ellipse->common.id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", dxf_ellipse->common.linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", dxf_ellipse->common.layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->x1);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->y1);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->z1);
                 }
                 else if ((acad_version_number <= AutoCAD_11)
@@ -233,49 +236,49 @@ dxf_read_ellipse_struct
                          * probably be added.
                          * Now follows a string containing the
                          * elevation. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->common.thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
                          * radius. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->ratio);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a string containing the
                          * start angle. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->start_angle);
                 }
                 else if (strcmp (temp_string, "42") == 0)
                 {
                         /* Now follows a string containing the
                          * end angle. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->end_angle);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_ellipse->common.color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_ellipse->common.paperspace);
                 }
                 else if ((acad_version_number >= AutoCAD_12)
@@ -286,43 +289,48 @@ dxf_read_ellipse_struct
                          * version should probably be added here.
                          * Now follows a string containing the
                          * subclass marker value. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_ellipse->extr_z0);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
+                else
+                {
+                        fprintf (stderr, "Warning: in dxf_ellipse_read () unknown string tag found while reading from: %s in line: %d.\n",
+                                filename, *line_number);
+                }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_ellipse_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ellipse_read () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (line_number);
+        return (EXIT_SUCCESS);
 }
 
 
@@ -330,9 +338,12 @@ dxf_read_ellipse_struct
  * \brief Write DXF output to a file for an ellipse entity (elliptic arc).
  *
  * This entity requires AutoCAD version R14 or higher.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
-dxf_write_ellipse
+dxf_ellipse_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -394,20 +405,26 @@ dxf_write_ellipse
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_ellipse () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ellipse_write_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("ELLIPSE");
 
+        if (acad_version_number < AC1014) /* AutoCAD 14 */
+        {
+                fprintf (stderr, "Error in dxf_ellipse_write_lowlevel () too old an AutoCAD version used for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
+                return (EXIT_FAILURE);
+        }
         if (ratio == 0.0)
         {
-                fprintf (stderr, "Error: ratio value equals 0.0 for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Error in dxf_ellipse_write_lowlevel () ratio value equals 0.0 for the %s entity with id-code: %x\n",
                         dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Warning in dxf_ellipse_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name, id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
@@ -448,7 +465,7 @@ dxf_write_ellipse
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_ellipse () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ellipse_write_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
@@ -459,9 +476,12 @@ dxf_write_ellipse
  * \brief Write DXF output to a file for an ellipse entity (elliptic arc).
  *
  * This entity requires AutoCAD version R14 or higher.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
-dxf_write_ellipse_struct
+dxf_ellipse_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -472,20 +492,26 @@ dxf_write_ellipse_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_ellipse () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ellipse_write () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("ELLIPSE");
 
+        if (acad_version_number < AC1014) /* AutoCAD 14 */
+        {
+                fprintf (stderr, "Error in dxf_ellipse_write_lowlevel () too old an AutoCAD version used for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_ellipse.common.id_code);
+                return (EXIT_FAILURE);
+        }
         if (dxf_ellipse.ratio == 0.0)
         {
-                fprintf (stderr, "Error: ratio value equals 0.0 for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Error in dxf_ellipse_write () ratio value equals 0.0 for the %s entity with id-code: %x\n",
                         dxf_entity_name, dxf_ellipse.common.id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_ellipse.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Warning in dxf_ellipse_write () empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name, dxf_ellipse.common.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
@@ -526,7 +552,7 @@ dxf_write_ellipse_struct
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_ellipse () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ellipse_write () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);

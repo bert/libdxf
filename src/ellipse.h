@@ -85,23 +85,23 @@ dxf_ellipse
 
 
 DxfEllipse *
-dxf_malloc_ellipse ();
+dxf_ellipse_new ();
 DxfEllipse *
-dxf_init_ellipse_struct
+dxf_ellipse_init
 (
         DxfEllipse *dxf_ellipse
 );
-static int
-dxf_read_ellipse_struct
+int
+dxf_ellipse_read
 (
         char *filename,
         FILE *fp,
-        int line_number,
+        int *line_number,
         DxfEllipse *dxf_ellipse,
         int acad_version_number
 );
 int
-dxf_write_ellipse
+dxf_ellipse_write_lowlevel
 (
         FILE *fp,
         int id_code,
@@ -125,7 +125,7 @@ dxf_write_ellipse
         int acad_version_number
 );
 int
-dxf_write_ellipse_struct
+dxf_ellipse_write
 (
         FILE *fp,
         DxfEllipse dxf_ellipse,
