@@ -126,13 +126,13 @@ dxf_point_init
 
 
 /*!
- * \brief Read data from a DXF file into an \c LINE entity.
+ * \brief Read data from a DXF file into a \c POINT entity.
  *
- * The last line read from file contained the string "LINE". \n
- * Now follows some data for the \c LINE, to be terminated with a
+ * The last line read from file contained the string "POINT". \n
+ * Now follows some data for the \c POINT, to be terminated with a
  * "  0" string announcing the following entity, or the end of the
  * \c ENTITY section marker \c ENDSEC. \n
- * While parsing the DXF file store data in \c dxf_arc. \n
+ * While parsing the DXF file store data in \c dxf_point. \n
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -173,41 +173,41 @@ dxf_point_read
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%x\n", &dxf_point->common.id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", dxf_point->common.linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", dxf_point->common.layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_point->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_point->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_point->z0);
                 }
                 else if ((acad_version_number <= AutoCAD_11)
@@ -219,7 +219,7 @@ dxf_point_read
                          * probably be added.
                          * Now follows a string containing the
                          * elevation. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_point->z0);
                         /*! \todo Consider to add 
                          * dxf_line->z1 = dxf_line.z0;
@@ -230,21 +230,21 @@ dxf_point_read
                 {
                         /* Now follows a string containing the
                          * thickness. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_point->common.thickness);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_point->common.color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_point->common.paperspace);
                 }
                 else if ((acad_version_number >= AutoCAD_12)
@@ -255,34 +255,34 @@ dxf_point_read
                          * version should probably be added here.
                          * Now follows a string containing the
                          * subclass marker value. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_point->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_point->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_point->extr_z0);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
