@@ -167,41 +167,41 @@ dxf_arc_read
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%x\n", &dxf_arc->common.id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", dxf_arc->common.linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", dxf_arc->common.layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_arc->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_arc->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_arc->z0);
                 }
                 else if ((acad_version_number <= AutoCAD_11)
@@ -213,49 +213,49 @@ dxf_arc_read
                          * probably be added.
                          * Now follows a string containing the
                          * elevation. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_arc->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_arc->common.thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
                          * radius. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_arc->radius);
                 }
                 else if (strcmp (temp_string, "50") == 0)
                 {
                         /* Now follows a string containing the
                          * start angle. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_arc->start_angle);
                 }
                 else if (strcmp (temp_string, "51") == 0)
                 {
                         /* Now follows a string containing the
                          * end angle. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_arc->end_angle);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_arc->common.color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_arc->common.paperspace);
                 }
                 else if ((acad_version_number >= AutoCAD_12)
@@ -266,34 +266,34 @@ dxf_arc_read
                          * version should probably be added here.
                          * Now follows a string containing the
                          * subclass marker value. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_arc->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_arc->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_arc->extr_z0);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
