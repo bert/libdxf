@@ -152,7 +152,7 @@ dxf_arc_read
         {
                 dxf_arc = dxf_arc_new ();
         }
-        line_number++;
+        (*line_number)++;
         fscanf (fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
