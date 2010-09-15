@@ -53,8 +53,7 @@ dxf_shape_new ()
         if (size == 0) size = 1;
         if ((dxf_shape = malloc (size)) == NULL)
         {
-                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_shape_new ()\n",
-                        __FILE__, __LINE__);
+                fprintf(stderr, "ERROR in dxf_shape_new () could not allocate memory for a DxfShape struct.\n");
                 dxf_shape = NULL;
         }
         else
@@ -90,7 +89,7 @@ dxf_shape_init
         dxf_shape = dxf_shape_new ();
         if (dxf_shape == NULL)
         {
-              fprintf(stderr, "ERROR: could not allocate memory for a DxfShape struct.\n");
+              fprintf(stderr, "ERROR in dxf_shape_init () could not allocate memory for a DxfShape struct.\n");
               return (NULL);
         }
         dxf_shape->common.id_code = 0;
@@ -159,7 +158,7 @@ dxf_shape_read
         {
                 if (ferror (fp))
                 {
-                        fprintf (stderr, "Error: in dxf_shape_read () while reading from: %s in line: %d.\n",
+                        fprintf (stderr, "Error in dxf_shape_read () while reading from: %s in line: %d.\n",
                                 filename, *line_number);
                         fclose (fp);
                         return (EXIT_FAILURE);
@@ -307,7 +306,7 @@ dxf_shape_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_shape_read () unknown string tag found while reading from: %s in line: %d.\n",
+                        fprintf (stderr, "Warning in dxf_shape_read () unknown string tag found while reading from: %s in line: %d.\n",
                                 filename, *line_number);
                 }
         }
@@ -374,22 +373,27 @@ dxf_shape_write_lowlevel
 
         if (strcmp (shape_name, "") == 0)
         {
-                fprintf (stderr, "Error: %s name string is empty for the %s entity with id-code: %x\n", dxf_entity_name, dxf_entity_name, id_code);
+                fprintf (stderr, "Error in dxf_shape_write_lowlevel () empty name string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: in dxf_shape_write_lowlevel () empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_shape_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (size == 0.0)
         {
-                fprintf (stderr, "Warning: in dxf_shape_write_lowlevel () size has a value of 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
+                fprintf (stderr, "Warning in dxf_shape_write_lowlevel () size has a value of 0.0 for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
         }
         if (rel_x_scale == 0.0)
         {
-                fprintf (stderr, "Warning: in dxf_shape_write_lowlevel () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
+                fprintf (stderr, "Warning in dxf_shape_write_lowlevel () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
         fprintf (fp, "  2\n%s\n", shape_name);
@@ -458,17 +462,17 @@ dxf_shape_write
         if (&dxf_shape == NULL)
         {
                 return (EXIT_FAILURE);
-                fprintf (stderr, "Error: in dxf_shape_write () NULL pointer passed to dxf_shape_write ().\n");
+                fprintf (stderr, "Error in dxf_shape_write () NULL pointer passed to dxf_shape_write ().\n");
         }
                 if (strcmp (dxf_shape.shape_name, "") == 0)
         {
-                fprintf (stderr, "Error: in dxf_shape_write () %s name string is empty for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_entity_name, dxf_shape.common.id_code);
+                fprintf (stderr, "Error in dxf_shape_write () empty name string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_shape.common.id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_shape.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: in dxf_shape_write () empty layer string for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Warning in dxf_shape_write () empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name, dxf_shape.common.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
@@ -476,7 +480,7 @@ dxf_shape_write
         }
         if (dxf_shape.size == 0.0)
         {
-                fprintf (stderr, "Warning: in dxf_shape_write () size has a value of 0.0 for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Warning in dxf_shape_write () size has a value of 0.0 for the %s entity with id-code: %x\n",
                         dxf_entity_name, dxf_shape.common.id_code);
         }
         if (dxf_shape.rel_x_scale == 0.0)
