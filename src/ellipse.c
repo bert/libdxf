@@ -154,7 +154,7 @@ dxf_ellipse_read
 #endif
         char *temp_string = NULL;
 
-        line_number++;
+        (*line_number)++;
         fscanf (fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
