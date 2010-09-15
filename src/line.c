@@ -155,7 +155,7 @@ dxf_line_read
         {
                 dxf_line = dxf_line_new ();
         }
-        line_number++;
+        (*line_number)++;
         fscanf (fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
