@@ -138,7 +138,7 @@ dxf_shape_read
         int *line_number,
                 /*!< current line number in the input file (or device). */
         DxfShape *dxf_shape,
-                /*!< DXF arc entity. */
+                /*!< DXF shape entity. */
         int acad_version_number
                 /*!< AutoCAD version number. */
 )
