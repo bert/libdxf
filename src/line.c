@@ -56,7 +56,7 @@ dxf_line_new ()
         if (size == 0) size = 1;
         if ((dxf_line = malloc (size)) == NULL)
         {
-                fprintf(stderr, "ERROR in dxf_line_new () could not allocate memory for a DxfLine struct.\n");
+                fprintf (stderr, "ERROR in dxf_line_new () could not allocate memory for a DxfLine struct.\n");
                 dxf_line = NULL;
         }
         else
@@ -91,7 +91,7 @@ dxf_line_init
         dxf_line = dxf_line_new ();
         if (dxf_line == NULL)
         {
-              fprintf(stderr, "ERROR in dxf_line_init () could not allocate memory for a DxfLine struct.\n");
+              fprintf (stderr, "ERROR in dxf_line_init () could not allocate memory for a DxfLine struct.\n");
               return (NULL);
         }
         dxf_line->common.id_code = 0;

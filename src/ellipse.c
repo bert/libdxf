@@ -56,7 +56,7 @@ dxf_ellipse_new ()
         if (size == 0) size = 1;
         if ((dxf_ellipse = malloc (size)) == NULL)
         {
-                fprintf(stderr, "ERROR in dxf_ellipse_new () could not allocate memory for a DxfEllipse struct.\n");
+                fprintf (stderr, "ERROR in dxf_ellipse_new () could not allocate memory for a DxfEllipse struct.\n");
                 dxf_ellipse = NULL;
         }
         else
@@ -91,7 +91,7 @@ dxf_ellipse_init
         dxf_ellipse = dxf_ellipse_new ();
         if (dxf_ellipse == NULL)
         {
-              fprintf(stderr, "ERROR in dxf_ellipse_init () could not allocate memory for a DxfEllipse struct.\n");
+              fprintf (stderr, "ERROR in dxf_ellipse_init () could not allocate memory for a DxfEllipse struct.\n");
               return (NULL);
         }
         dxf_ellipse->common.id_code = 0;

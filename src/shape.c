@@ -53,7 +53,7 @@ dxf_shape_new ()
         if (size == 0) size = 1;
         if ((dxf_shape = malloc (size)) == NULL)
         {
-                fprintf(stderr, "ERROR in dxf_shape_new () could not allocate memory for a DxfShape struct.\n");
+                fprintf (stderr, "ERROR in dxf_shape_new () could not allocate memory for a DxfShape struct.\n");
                 dxf_shape = NULL;
         }
         else
@@ -89,7 +89,7 @@ dxf_shape_init
         dxf_shape = dxf_shape_new ();
         if (dxf_shape == NULL)
         {
-              fprintf(stderr, "ERROR in dxf_shape_init () could not allocate memory for a DxfShape struct.\n");
+              fprintf (stderr, "ERROR in dxf_shape_init () could not allocate memory for a DxfShape struct.\n");
               return (NULL);
         }
         dxf_shape->common.id_code = 0;

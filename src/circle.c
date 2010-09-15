@@ -88,7 +88,7 @@ dxf_circle_init
         dxf_circle = dxf_circle_new ();
         if (dxf_circle == NULL)
         {
-              fprintf(stderr, "ERROR in dxf_circle_init () could not allocate memory for a DxfCircle struct.\n");
+              fprintf (stderr, "ERROR in dxf_circle_init () could not allocate memory for a DxfCircle struct.\n");
               return (NULL);
         }
         dxf_circle->common.id_code = 0;

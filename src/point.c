@@ -66,7 +66,7 @@ dxf_point_new ()
         if (size == 0) size = 1;
         if ((dxf_point = malloc (size)) == NULL)
         {
-                fprintf(stderr, "ERROR in dxf_point_new () could not allocate memory for a DxfPoint struct.\n");
+                fprintf (stderr, "ERROR in dxf_point_new () could not allocate memory for a DxfPoint struct.\n");
                 dxf_point = NULL;
         }
         else
@@ -101,7 +101,7 @@ dxf_point_init
         dxf_point = dxf_point_new ();
         if (dxf_point == NULL)
         {
-              fprintf(stderr, "ERROR in dxf_point_init () could not allocate memory for a DxfPoint struct.\n");
+              fprintf (stderr, "ERROR in dxf_point_init () could not allocate memory for a DxfPoint struct.\n");
               return (NULL);
         }
         dxf_point->common.id_code = 0;

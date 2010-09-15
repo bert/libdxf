@@ -53,7 +53,7 @@ dxf_arc_new ()
         if (size == 0) size = 1;
         if ((dxf_arc = malloc (size)) == NULL)
         {
-                fprintf(stderr, "ERROR in dxf_arc_new () could not allocate memory for a DxfArc struct.\n");
+                fprintf (stderr, "ERROR in dxf_arc_new () could not allocate memory for a DxfArc struct.\n");
                 dxf_arc = NULL;
         }
         else
@@ -88,7 +88,7 @@ dxf_arc_init
         dxf_arc = dxf_arc_new ();
         if (dxf_arc == NULL)
         {
-              fprintf(stderr, "ERROR in dxf_arc_init () could not allocate memory for a DxfArc struct.\n");
+              fprintf (stderr, "ERROR in dxf_arc_init () could not allocate memory for a DxfArc struct.\n");
               return (NULL);
         }
         dxf_arc->common.id_code = 0;
