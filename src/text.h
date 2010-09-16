@@ -1,6 +1,6 @@
 /*!
  * \file text.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Definition of a DXF text entity (\c TEXT).
  *
  * <hr>
@@ -29,7 +29,10 @@
  * <hr>
  */
 
+
 #include "global.h"
+#include "entity.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD text entity.
@@ -122,5 +125,40 @@ dxf_text
                  * 2 = middle\n
                  * 3 = top. */
 } DxfText, * DxfTextPtr;
+
+
+int
+dxf_text_write_lowlevel
+(
+        FILE *fp,
+        int id_code,
+        char *text_value,
+        char *linetype,
+        char *text_style,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double x1,
+        double y1,
+        double z1,
+        double thickness,
+        double height,
+        double rel_x_scale,
+        double rot_angle,
+        double obl_angle,
+        int color,
+        int paperspace,
+        int text_flags,
+        int hor_align,
+        int vert_align
+);
+int
+dxf_text_write
+(
+        FILE *fp,
+        DxfText dxf_text
+);
+
 
 /* EOF */
