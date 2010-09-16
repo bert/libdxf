@@ -108,23 +108,23 @@ dxf_solid
 
 
 DxfSolid *
-dxf_malloc_solid ();
+dxf_solid_new ();
 DxfSolid *
-dxf_init_solid_struct
+dxf_solid_init
 (
         DxfSolid *dxf_solid
 );
-static int
-dxf_read_solid_struct
+int
+dxf_solid_read
 (
         char *filename,
         FILE *fp,
-        int line_number,
+        int *line_number,
         DxfSolid *dxf_solid,
         int acad_version_number
 );
 int
-dxf_write_solid
+dxf_solid_write_lowlevel
 (
         FILE *fp,
         int id_code,
@@ -147,7 +147,7 @@ dxf_write_solid
         int paperspace
 );
 int
-dxf_write_solid_struct
+dxf_solid_write
 (
         FILE *fp,
         DxfSolid dxf_solid

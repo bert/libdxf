@@ -46,10 +46,10 @@
  * Fill the memory contents with zeros.
  */
 DxfSolid *
-dxf_malloc_solid ()
+dxf_solid_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_malloc_solid () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_solid_new () function.\n",
                 __FILE__, __LINE__);
 #endif
         DxfSolid *dxf_solid = NULL;
@@ -60,8 +60,7 @@ dxf_malloc_solid ()
         if (size == 0) size = 1;
         if ((dxf_solid = malloc (size)) == NULL)
         {
-                fprintf (stderr, "[File: %s: line: %d] Out of memory in dxf_malloc_solid ()\n",
-                        __FILE__, __LINE__);
+                fprintf (stderr, "ERROR in dxf_solid_new () could not allocate memory for a DxfSolid struct.\n");
                 dxf_solid = NULL;
         }
         else
@@ -69,7 +68,7 @@ dxf_malloc_solid ()
                 memset (dxf_solid, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_malloc_solid () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_solid_new () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (dxf_solid);
@@ -83,20 +82,20 @@ dxf_malloc_solid ()
  * allocated memory when succesful.
  */
 DxfSolid *
-dxf_init_solid_struct
+dxf_solid_init
 (
         DxfSolid *dxf_solid
                 /*!< DXF solid entity. */
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_init_solid_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_solid_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_solid = dxf_malloc_solid ();
+        dxf_solid = dxf_solid_new ();
         if (dxf_solid == NULL)
         {
-              fprintf(stderr, "ERROR: could not allocate memory for a DxfSolid struct.\n");
+              fprintf (stderr, "ERROR in dxf_solid_init () could not allocate memory for a DxfSolid struct.\n");
               return (NULL);
         }
         dxf_solid->common.id_code = 0;
@@ -122,7 +121,7 @@ dxf_init_solid_struct
         dxf_solid->common.paperspace = DXF_MODELSPACE;
         dxf_solid->common.acad_version_number = 0;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_init_solid_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_solid_init () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (dxf_solid);
@@ -137,17 +136,17 @@ dxf_init_solid_struct
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
  *
- * \return \c line_number when done, or 0 when an error occured while
- * reading from file.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred while reading from the input file.
  */
-static int
-dxf_read_solid_struct
+int
+dxf_solid_read
 (
         char *filename,
                 /*!< filename of input file (or device). */
         FILE *fp,
                 /*!< filepointer to the input file (or device). */
-        int line_number,
+        int *line_number,
                 /*!< current line number in the input file (or device). */
         DxfSolid *dxf_solid,
                 /*!< DXF arc entity. */
@@ -156,19 +155,19 @@ dxf_read_solid_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_solid_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_solid_read () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *temp_string = NULL;
 
-        line_number++;
+        (*line_number)++;
         fscanf (fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
                 if (ferror (fp))
                 {
-                        fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
-                                filename, line_number);
+                        fprintf (stderr, "Error in dxf_solid_read () while reading from: %s in line: %d.\n",
+                                filename, *line_number);
                         fclose (fp);
                         return (0);
                 }
@@ -176,104 +175,104 @@ dxf_read_solid_struct
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%x\n", &dxf_solid->common.id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", dxf_solid->common.linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", dxf_solid->common.layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->x1);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->y1);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->z1);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->x2);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->y2);
                 }
                 else if (strcmp (temp_string, "32") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->z2);
                 }
                 else if (strcmp (temp_string, "13") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->x3);
                 }
                 else if (strcmp (temp_string, "23") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->y3);
                 }
                 else if (strcmp (temp_string, "33") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the point. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->z3);
                 }
                 else if ((acad_version_number <= AutoCAD_11)
@@ -285,28 +284,28 @@ dxf_read_solid_struct
                          * probably be added.
                          * Now follows a string containing the
                          * elevation. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->common.thickness);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_solid->common.color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_solid->common.paperspace);
                 }
                 else if ((acad_version_number >= AutoCAD_12)
@@ -317,51 +316,59 @@ dxf_read_solid_struct
                          * version should probably be added here.
                          * Now follows a string containing the
                          * subclass marker value. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->extr_z0);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        line_number++;
+                        (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
+                else
+                {
+                        fprintf (stderr, "Warning in dxf_solid_read () unknown string tag found while reading from: %s in line: %d.\n",
+                                filename, *line_number);
+                }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_solid_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_solid_read () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (line_number);
+        return (EXIT_SUCCESS);
 }
 
 
 /*!
  * \brief Write DXF output to a file for a solid entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred while reading from the input file.
  */
 int
-dxf_write_solid
+dxf_solid_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -420,14 +427,16 @@ dxf_write_solid
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_solid () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_solid_write_lowlevel () function.\n", __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("SOLID");
 
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_solid_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -465,7 +474,7 @@ dxf_write_solid
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_solid () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_solid_write_lowlevel () function.\n", __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -473,9 +482,12 @@ dxf_write_solid
 
 /*!
  * \brief Write DXF output to fp for a solid entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred while reading from the input file.
  */
 int
-dxf_write_solid_struct
+dxf_solid_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -484,14 +496,14 @@ dxf_write_solid_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_solid_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_solid_write () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("SOLID");
 
         if (strcmp (dxf_solid.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Warning in dxf_solid_write () empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name, dxf_solid.common.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
@@ -532,7 +544,7 @@ dxf_write_solid_struct
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_solid_struct () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_solid_write () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
