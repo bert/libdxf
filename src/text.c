@@ -29,7 +29,44 @@
  * <hr>
  */
 
+
 #include "text.h"
+
+
+/*!
+ * \brief Allocate memory for a \c DxfText.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfText *
+dxf_text_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_text_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfText *dxf_text = NULL;
+        size_t size;
+
+        size = sizeof (DxfText);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_text = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_text_new () could not allocate memory for a DxfSolid struct.\n");
+                dxf_text = NULL;
+        }
+        else
+        {
+                memset (dxf_text, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_text_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_text);
+}
+
 
 /*!
  * \brief Write DXF output to a file pointer for a text entity.

@@ -127,6 +127,8 @@ dxf_text
 } DxfText, * DxfTextPtr;
 
 
+DxfText *
+dxf_text_new ();
 int
 dxf_text_write_lowlevel
 (
