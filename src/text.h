@@ -47,18 +47,13 @@
 typedef struct
 dxf_text
 {
-        int id_code;
-                /*!< group code = 5. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         char *text_value;
                 /*!< group code = 1. */
-        char *linetype;
-                /*!< group code = 6\n
-                 * optional, defaults to \c BYLAYER. */
         char *text_style;
                 /*!< group code = 7\n
                  * optional, defaults to \c STANDARD. */
-        char *layer;
-                /*!< group code = 8*/
         double x0;
                 /*!< group code = 10\n
                  * start point. */
@@ -80,9 +75,6 @@ dxf_text
                 /*!< group code = 31\n
                  * alignment point, appears only if 72 or 73 group code is
                  * present and nonzero. */
-        double thickness;
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
         double height;
                 /*!< group code = 40. */
         double rel_x_scale;
@@ -94,12 +86,6 @@ dxf_text
         double obl_angle;
                 /*!< group code = 51\n
                  * optional, defaults to 0.0. */
-        int color;
-                /*!< group code = 62\n
-                 * optional, defaults to \c BYLAYER. */
-        int paperspace;
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
         int text_flags;
                 /*!< group code = 71\n
                  * optional, defaults to 0\n
