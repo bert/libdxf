@@ -69,6 +69,59 @@ dxf_text_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c TEXT entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfText *
+dxf_text_init
+(
+        DxfText *dxf_text
+                /*!< DXF text entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_text_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_text = dxf_text_new ();
+        if (dxf_text == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_text_init () could not allocate memory for a DxfText struct.\n");
+              return (NULL);
+        }
+        dxf_text->common.id_code = 0;
+        dxf_text->text_value = strdup ("");
+        dxf_text->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_text->text_style = strdup ("");
+        dxf_text->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_text->x0 = 0.0;
+        dxf_text->y0 = 0.0;
+        dxf_text->z0 = 0.0;
+        dxf_text->x1 = 0.0;
+        dxf_text->y1 = 0.0;
+        dxf_text->z1 = 0.0;
+        dxf_text->common.thickness = 0.0;
+        dxf_text->height = 0.0;
+        dxf_text->rel_x_scale = 0.0;
+        dxf_text->rot_angle = 0.0;
+        dxf_text->obl_angle = 0.0;
+        dxf_text->common.color = DXF_COLOR_BYLAYER;
+        dxf_text->common.paperspace = DXF_MODELSPACE;
+        dxf_text->text_flags = 0;
+        dxf_text->hor_align = 0;
+        dxf_text->vert_align = 0;
+        dxf_text->common.acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_text_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_text);
+}
+
+
+/*!
  * \brief Write DXF output to a file pointer for a text entity.
  */
 int
