@@ -93,6 +93,7 @@ dxf_shape_init
               return (NULL);
         }
         dxf_shape->common.id_code = 0;
+        dxf_shape->shape_name = strdup ("");
         dxf_shape->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_shape->common.layer = strdup (DXF_DEFAULT_LAYER);
         dxf_shape->x0 = 0.0;
