@@ -34,6 +34,41 @@
 
 
 /*!
+ * \brief Allocate memory for a \c DxfBlock.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfBlock *
+dxf_block_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfBlock *dxf_block = NULL;
+        size_t size;
+
+        size = sizeof (DxfBlock);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_block = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_block_new () could not allocate memory for a DxfBlock struct.\n");
+                dxf_block = NULL;
+        }
+        else
+        {
+                memset (dxf_block, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_block);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a block entity.
  */
 int
