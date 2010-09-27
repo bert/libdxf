@@ -109,7 +109,7 @@ dxf_block
 
 
 int
-dxf_write_block
+dxf_block_write_lowlevel
 (
         FILE *fp,
         int id_code,
@@ -126,13 +126,15 @@ dxf_write_block
         int block_type
 );
 int
-dxf_write_block_struct
+dxf_blocks_write
 (
         FILE *fp,
         DxfBlock dxf_block
 );
 int
-dxf_write_blocks
+dxf_block_write_endblk (FILE *fp);
+int
+dxf_block_write_table
 (
         char *dxf_blocks_list, 
         int acad_version_number

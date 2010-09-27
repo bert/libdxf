@@ -37,7 +37,7 @@
  * \brief Write DXF output to a file for a block entity.
  */
 int
-dxf_write_block
+dxf_block_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -150,7 +150,7 @@ dxf_write_block
  * \brief Write DXF output to fp for a block entity.
  */
 int
-dxf_write_block_struct
+dxf_block_write
 (
         FILE *fp,
                 /*!< file pointer to output device */
@@ -230,7 +230,7 @@ dxf_write_block_struct
  * Contains no other group codes than "0".
  */
 int
-dxf_write_endblk (FILE *fp)
+dxf_block_write_endblk (FILE *fp)
 {
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_endblk () function.\n", __FILE__, __LINE__);
@@ -249,7 +249,7 @@ dxf_write_endblk (FILE *fp)
  * Appears only in \c TABLES section.\n
  */
 int
-dxf_write_blocks
+dxf_blocks_write_table
 (
         char *dxf_blocks_list, 
         int acad_version_number
