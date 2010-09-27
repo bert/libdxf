@@ -198,7 +198,7 @@ dxf_write_file
         dxf_write_header (fp, dxf_header, acad_version_number);
         //dxf_write_classes (fp, dxf_classes_list, acad_version_number);
         //dxf_write_tables (fp, dxf_tables_list, acad_version_number);
-        dxf_write_blocks (dxf_blocks_list, acad_version_number);
+        dxf_block_write_table (dxf_blocks_list, acad_version_number);
         dxf_write_entities (dxf_entities_list, acad_version_number);
         dxf_write_objects (dxf_objects_list, acad_version_number);
         dxf_write_thumbnail (dxf_thumbnail, acad_version_number);
