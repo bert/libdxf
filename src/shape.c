@@ -164,6 +164,13 @@ dxf_shape_read
                         fclose (fp);
                         return (EXIT_FAILURE);
                 }
+                if (strcmp (temp_string, "2") == 0)
+                {
+                        /* Now follows a string containing a shape
+                         * name. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", &dxf_shape->shape_name);
+                }
                 if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
