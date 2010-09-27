@@ -192,6 +192,13 @@ dxf_text_read
                         (*line_number)++;
                         fscanf (fp, "%s\n", dxf_text->common.linetype);
                 }
+                else if (strcmp (temp_string, "7") == 0)
+                {
+                        /* Now follows a string containing a text style
+                         * name. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", dxf_text->text_style);
+                }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
