@@ -292,7 +292,7 @@ dxf_block_write_endblk (FILE *fp)
  * Appears only in \c TABLES section.\n
  */
 int
-dxf_blocks_write_table
+dxf_block_write_table
 (
         char *dxf_blocks_list, 
         int acad_version_number
