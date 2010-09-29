@@ -194,26 +194,33 @@ dxf_block_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_block2 () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_block2 () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("BLOCK");
         if (dxf_block.block_name == NULL)
         {
-                fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_block.id_code);
-                fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);
+                fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_block.common.id_code);
+                fprintf (stderr, "         %s entity is discarded from output.\n",
+                        dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (dxf_block.xref_name == NULL)
         {
-                fprintf (stderr, "Warning: empty xref name string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_block.id_code);
-                fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);
+                fprintf (stderr, "Warning: empty xref name string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_block.common.id_code);
+                fprintf (stderr, "         %s entity is discarded from output.\n",
+                        dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_block.layer, "") == 0)
+        if (strcmp (dxf_block.common.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_block.id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0.\n", dxf_entity_name);
-                dxf_block.layer = strdup (DXF_DEFAULT_LAYER);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_block.common.id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0.\n",
+                        dxf_entity_name);
+                dxf_block.common.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
         if ((dxf_block.block_type && 4) || (dxf_block.block_type && 32))
@@ -226,33 +233,34 @@ dxf_block_write
         }
         fprintf (fp, "  2\n%s\n", dxf_block.block_name);
         fprintf (fp, "  3\n%s\n", dxf_block.block_name);
-        if (dxf_block.id_code != -1)
+        if (dxf_block.common.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_block.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_block.common.id_code);
         }
-        if (strcmp (dxf_block.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_block.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_block.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_block.common.linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_block.layer);
+        fprintf (fp, "  8\n%s\n", dxf_block.common.layer);
         fprintf (fp, " 10\n%f\n", dxf_block.x0);
         fprintf (fp, " 20\n%f\n", dxf_block.y0);
         fprintf (fp, " 30\n%f\n", dxf_block.z0);
-        if (dxf_block.thickness != 0.0)
+        if (dxf_block.common.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_block.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_block.common.thickness);
         }
-        if (dxf_block.color != DXF_COLOR_BYLAYER)
+        if (dxf_block.common.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_block.color);
+                fprintf (fp, " 62\n%d\n", dxf_block.common.color);
         }
-        if (dxf_block.paperspace == DXF_PAPERSPACE)
+        if (dxf_block.common.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
         fprintf (fp, " 70\n%d\n", dxf_block.block_type);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_block2 () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_block2 () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }

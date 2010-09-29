@@ -61,17 +61,12 @@
 typedef struct
 dxf_block
 {
-        int id_code;
-                /*!< group code = 5. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         char *xref_name;
                 /*!< group code = 1. */
         char *block_name;
                 /*!< group code = 2 and 3. */
-        char *linetype;
-                /*!< group code = 6\n
-                 * optional, defaults to BYLAYER. */
-        char *layer;
-                /*!< group code = 8. */
         double x0;
                 /*!< group code = 10\n
                  * base point. */
@@ -81,15 +76,6 @@ dxf_block
         double z0;
                 /*!< group code = 30\n
                  * base point. */
-        double thickness;
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
-        int color;
-                /*!< group code = 62\n
-                 * optional, defaults to BYLAYER. */
-        int paperspace;
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
         int block_type;
                 /*!< group code = 70\n
                  * bit coded:\n
