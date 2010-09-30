@@ -69,6 +69,50 @@ dxf_block_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c BLOCK entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfBlock *
+dxf_block_init
+(
+        DxfBlock *dxf_block
+                /*!< DXF block entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_block = dxf_block_new ();
+        if (dxf_block == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_block_init () could not allocate memory for a DxfBlock struct.\n");
+              return (NULL);
+        }
+        dxf_block->xref_name = strdup ("");
+        dxf_block->block_name = strdup ("");
+        dxf_block->common.id_code = 0;
+        dxf_block->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_block->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_block->x0 = 0.0;
+        dxf_block->y0 = 0.0;
+        dxf_block->z0 = 0.0;
+        dxf_block->common.thickness = 0.0;
+        dxf_block->common.color = DXF_COLOR_BYLAYER;
+        dxf_block->common.paperspace = DXF_MODELSPACE;
+        dxf_block->common.acad_version_number = 0;
+        dxf_block->block_type = 0; /* 0 = invalid type */
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_block);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a block entity.
  */
 int

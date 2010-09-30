@@ -94,6 +94,11 @@ dxf_block
 
 DxfBlock *
 dxf_block_new ();
+DxfBlock *
+dxf_block_init
+(
+        DxfBlock *dxf_block
+);
 int
 dxf_block_write_lowlevel
 (
