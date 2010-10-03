@@ -1,7 +1,7 @@
 /*!
  * \file block.h
  * \author Copyright (C) 2008, 2009, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Definition of a DXF block entity (\c BLOCK).
+ * \brief Header file for a DXF block entity (\c BLOCK).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
