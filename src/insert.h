@@ -39,6 +39,7 @@
 
 
 #include "global.h"
+#include "entity.h"
 
 
 /*!
@@ -48,15 +49,10 @@
 typedef struct
 dxf_insert
 {
-        int id_code;
-                /*!< group code = 5. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         char *block_name;
                 /*!< group code = 2. */
-        char *linetype;
-                /*!< group code = 6\n
-                 * optional, defaults to BYLAYER. */
-        char *layer;
-                /*!< group code = 8. */
         double x0;
                 /*!< group code = 10\n
                  * base point. */
@@ -66,9 +62,6 @@ dxf_insert
         double z0;
                 /*!< group code = 30\n
                  * base point. */
-        double thickness;
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
         double rel_x_scale;
                 /*!< group code = 41\n
                  * optional, defaults to 1.0. */
@@ -87,9 +80,6 @@ dxf_insert
         double rot_angle;
                 /*!< group code = 50\n
                  * optional, defaults to 0.0. */
-        int color;
-                /*!< group code = 62\n
-                 * optional, defaults to BYLAYER. */
         int attribute_follows;
                 /*!< group code = 66\n
                  * optional, defaults to 0\n
@@ -97,15 +87,24 @@ dxf_insert
                  * a series of Attribute (Attrib) entities is expected to
                  * follow the Insert, terminated by a sequence end (Seqend)
                  * entity. */
-        int paperspace;
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
         int columns;
                 /*!< group code = 70\n
                  * optional, defaults to 1. */
         int rows;
                 /*!< group code = 71\n
                  * optional, defaults to 1. */
+        double extr_x0;
+                /*!< X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 210. */
+        double extr_y0;
+                /*!< Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 220. */
+        double extr_z0;
+                /*!< Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if ommitted in the DXF file.\n
+                 * Group code = 230. */
 } DxfInsert, * DxfInsertPtr;
 
 
