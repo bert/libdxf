@@ -38,7 +38,7 @@
 
 
 /*!
- * \brief Allocate memory for a \c DxfArc.
+ * \brief Allocate memory for a \c DxfInsert.
  *
  * Fill the memory contents with zeros.
  */
