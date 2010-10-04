@@ -110,6 +110,11 @@ dxf_insert
 
 DxfInsert *
 dxf_insert_new ();
+DxfInsert *
+dxf_insert_init
+(
+        DxfInsert *dxf_insert
+);
 int
 dxf_insert_write_lowlevel
 (

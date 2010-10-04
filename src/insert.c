@@ -73,6 +73,60 @@ dxf_insert_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c INSERT entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfInsert *
+dxf_insert_init
+(
+        DxfInsert *dxf_insert
+                /*!< DXF insert entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_insert_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_insert = dxf_insert_new ();
+        if (dxf_insert == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_insert_init () could not allocate memory for a DxfInsert struct.\n");
+              return (NULL);
+        }
+        dxf_insert->block_name = strdup ("");
+        dxf_insert->common.id_code = 0;
+        dxf_insert->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_insert->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_insert->x0 = 0.0;
+        dxf_insert->y0 = 0.0;
+        dxf_insert->z0 = 0.0;
+        dxf_insert->common.thickness = 0.0;
+        dxf_insert->rel_x_scale = 0.0;
+        dxf_insert->rel_y_scale = 0.0;
+        dxf_insert->rel_z_scale = 0.0;
+        dxf_insert->column_spacing = 0.0;
+        dxf_insert->row_spacing = 0.0;
+        dxf_insert->rot_angle = 0.0;
+        dxf_insert->common.color = DXF_COLOR_BYLAYER;
+        dxf_insert->common.paperspace = DXF_MODELSPACE;
+        dxf_insert->attribute_follows = 0;
+        dxf_insert->common.acad_version_number = 0;
+        dxf_insert->columns = 0;
+        dxf_insert->rows = 0;
+        dxf_insert->extr_x0 = 0.0;
+        dxf_insert->extr_y0 = 0.0;
+        dxf_insert->extr_z0 = 0.0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_insert_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_insert);
+}
+
+
+/*!
  * \brief Write DXF output to fp for an insert entity.
  */
 int
