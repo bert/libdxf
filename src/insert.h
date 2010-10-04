@@ -1,7 +1,7 @@
 /*!
  * \file insert.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Definition of a DXF insert entity (\c INSERT).
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \brief Header file for a DXF insert entity (\c INSERT).
  *
  * A DXF \c INSERT entity is an insertion for a (external) \c BLOCK entity.\n
  * Whilst a \c BLOCK only resides in the block table only once as a
@@ -33,7 +33,13 @@
  * <hr>
  */
 
+
+#ifndef _INSERT_H
+#define _INSERT_H
+
+
 #include "global.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD block or external reference insert
@@ -101,5 +107,41 @@ dxf_insert
                 /*!< group code = 71\n
                  * optional, defaults to 1. */
 } DxfInsert, * DxfInsertPtr;
+
+
+int
+dxf_insert_write_lowlevel
+(
+        FILE *fp,
+        int id_code,
+        char *block_name,
+        char *linetype,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double thickness,
+        double rel_x_scale,
+        double rel_y_scale,
+        double rel_z_scale,
+        double column_spacing,
+        double row_spacing,
+        double rot_angle,
+        int color,
+        int attribute_follows,
+        int paperspace,
+        int columns,
+        int rows
+);
+int
+dxf_insert_write
+(
+        FILE *fp,
+        DxfInsert dxf_insert
+);
+
+
+#endif /* _INSERT_H */
+
 
 /* EOF */
