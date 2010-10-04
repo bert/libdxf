@@ -33,7 +33,44 @@
  * <hr>
  */
 
+
 #include "insert.h"
+
+
+/*!
+ * \brief Allocate memory for a \c DxfArc.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfInsert *
+dxf_insert_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_insert_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfInsert *dxf_insert = NULL;
+        size_t size;
+
+        size = sizeof (DxfInsert);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_insert = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_insert_new () could not allocate memory for a DxfInsert struct.\n");
+                dxf_insert = NULL;
+        }
+        else
+        {
+                memset (dxf_insert, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_insert_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_insert);
+}
+
 
 /*!
  * \brief Write DXF output to fp for an insert entity.

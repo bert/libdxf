@@ -109,6 +109,8 @@ dxf_insert
 } DxfInsert, * DxfInsertPtr;
 
 
+DxfInsert *
+dxf_insert_new ();
 int
 dxf_insert_write_lowlevel
 (
