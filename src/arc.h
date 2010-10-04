@@ -30,6 +30,10 @@
  */
 
 
+#ifndef _ARC_H
+#define _ARC_H
+
+
 #include "global.h"
 #include "entity.h"
 #include "file.h"
@@ -120,6 +124,9 @@ dxf_arc_write
         DxfArc dxf_arc,
         int acad_version_number
 );
+
+
+#endif /* _ARC_H */
 
 
 /* EOF */
