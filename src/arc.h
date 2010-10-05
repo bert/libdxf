@@ -96,7 +96,7 @@ dxf_arc_read
         DxfArc *dxf_arc,
         int acad_version_number
 );
-static int
+int
 dxf_arc_write_lowlevel
 (
         FILE *fp,
@@ -121,9 +121,7 @@ int
 dxf_arc_write
 (
         FILE *fp,
-        DxfArc dxf_arc,
-        int acad_version_number
-);
+        DxfArc dxf_arc);
 
 
 #endif /* _ARC_H */

@@ -317,7 +317,7 @@ dxf_arc_read
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
-static int
+int
 dxf_arc_write_lowlevel
 (
         FILE *fp,
@@ -501,10 +501,8 @@ dxf_arc_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfArc dxf_arc,
+        DxfArc dxf_arc
                 /*!< DXF arc entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
