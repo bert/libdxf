@@ -147,6 +147,8 @@ dxf_attdef
 } DxfAttdef, * DxfAttdefPtr;
 
 
+DxfAttdef *
+dxf_attdef_new ();
 int
 dxf_attdef_write_lowlevel
 (

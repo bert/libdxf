@@ -34,6 +34,41 @@
 
 
 /*!
+ * \brief Allocate memory for a \c DxfAttdef.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfAttdef *
+dxf_attdef_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_attdef_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfAttdef *dxf_attdef = NULL;
+        size_t size;
+
+        size = sizeof (DxfAttdef);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_attdef = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_attdef_new () could not allocate memory for a DxfAttdef struct.\n");
+                dxf_attdef = NULL;
+        }
+        else
+        {
+                memset (dxf_attdef, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attdef_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_attdef);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a attribute definition entity.
  */
 int
