@@ -86,6 +86,18 @@ dxf_attdef_write_lowlevel
         double z1,
                 /*!< Z-value of the alignment point coordinate.\n
                  * Group code = 31. */
+        double extr_x0,
+                /*!< X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 210. */
+        double extr_y0,
+                /*!< Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 220. */
+        double extr_z0,
+                /*!< Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if ommitted in the DXF file.\n
+                 * Group code = 230. */
         double thickness,
                 /*!< Thickness of the arc in the local Z-direction.\n
                  * Defaults to 0.0 if ommitted in the DXF file.\n
@@ -147,7 +159,7 @@ dxf_attdef_write_lowlevel
                 /*!< Field length.\n
                  * Defaults to 0 if ommitted from DXF file.\n
                  * Group code = 73. */
-        int vert_align
+        int vert_align,
                 /*!< Vertical alignment.\n
                  * Bit coded:\n
                  * 0 = baseline.\n
@@ -156,6 +168,8 @@ dxf_attdef_write_lowlevel
                  * 3 = top.\n
                  * Defaults to 0 if ommitted from DXF file.\n
                  * Group code = 74. */
+        int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -238,6 +252,12 @@ dxf_attdef_write_lowlevel
                         fprintf (fp, " 21\n%f\n", y1);
                         fprintf (fp, " 31\n%f\n", z1);
                 }
+        }
+        if (acad_version_number >= AutoCAD_12)
+        {
+                fprintf (fp, "210\n%f\n", extr_x0);
+                fprintf (fp, "220\n%f\n", extr_y0);
+                fprintf (fp, "230\n%f\n", extr_z0);
         }
         if (thickness != 0.0)
         {
@@ -381,6 +401,12 @@ dxf_attdef_write
                         fprintf (fp, " 21\n%f\n", dxf_attdef.y1);
                         fprintf (fp, " 31\n%f\n", dxf_attdef.z1);
                 }
+        }
+        if (dxf_attdef.common.acad_version_number >= AutoCAD_12)
+        {
+                fprintf (fp, "210\n%f\n", dxf_attdef.extr_x0);
+                fprintf (fp, "220\n%f\n", dxf_attdef.extr_y0);
+                fprintf (fp, "230\n%f\n", dxf_attdef.extr_z0);
         }
         if (dxf_attdef.common.thickness != 0.0)
         {

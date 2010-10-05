@@ -132,6 +132,18 @@ dxf_attdef
                  * 3 = top.\n
                  * Defaults to 0 if ommitted from DXF file.\n
                  * Group code = 74. */
+        double extr_x0;
+                /*!< X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 210. */
+        double extr_y0;
+                /*!< Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 220. */
+        double extr_z0;
+                /*!< Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if ommitted in the DXF file.\n
+                 * Group code = 230. */
 } DxfAttdef, * DxfAttdefPtr;
 
 
@@ -152,6 +164,9 @@ dxf_attdef_write_lowlevel
         double x1,
         double y1,
         double z1,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0,
         double thickness,
         double height,
         double rel_x_scale,
@@ -163,7 +178,9 @@ dxf_attdef_write_lowlevel
         int text_flags,
         int hor_align,
         int field_length,
-        int vert_align
+        int vert_align,
+        int acad_version_number
+
 );
 int
 dxf_attdef_write
