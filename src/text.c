@@ -176,9 +176,9 @@ dxf_text_read
                 {
                         /* Now follows a string containing a text value. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", &dxf_text->text_value);
+                        fscanf (fp, "%s\n", dxf_text->text_value);
                 }
-                if (strcmp (temp_string, "5") == 0)
+                else if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
