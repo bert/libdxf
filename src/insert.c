@@ -111,7 +111,7 @@ dxf_insert_init
         dxf_insert->rot_angle = 0.0;
         dxf_insert->common.color = DXF_COLOR_BYLAYER;
         dxf_insert->common.paperspace = DXF_MODELSPACE;
-        dxf_insert->attribute_follows = 0;
+        dxf_insert->attributes_follow = 0;
         dxf_insert->common.acad_version_number = 0;
         dxf_insert->columns = 0;
         dxf_insert->rows = 0;
@@ -295,7 +295,7 @@ dxf_insert_read
                         /* Now follows a string containing the
                          * attributes follow flag. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_insert->attribute_follows);
+                        fscanf (fp, "%d\n", &dxf_insert->attributes_follow);
                         /*! \todo After a set attributes_follow flag is
                          * detected, parsing of following entities should
                          * be implemented until the end of sequence
@@ -425,7 +425,7 @@ dxf_insert_write_lowlevel
         int color,
                 /*!< group code = 62\n
                  * optional, if omitted defaults to BYLAYER. */
-        int attribute_follows,
+        int attributes_follow,
                 /*!< group code = 66\n
                  * optional, if omitted defaults to 0. */
         int paperspace,
@@ -539,9 +539,9 @@ dxf_insert_write_lowlevel
         {
                 fprintf (fp, " 62\n%d\n", color);
         }
-        if (attribute_follows != 0)
+        if (attributes_follow != 0)
         {
-                fprintf (fp, " 66\n%d\n", attribute_follows);
+                fprintf (fp, " 66\n%d\n", attributes_follow);
         }
         if (paperspace == DXF_PAPERSPACE)
         {
@@ -674,9 +674,9 @@ dxf_insert_write
         {
                 fprintf (fp, " 62\n%d\n", dxf_insert.common.color);
         }
-        if (dxf_insert.attribute_follows != 0)
+        if (dxf_insert.attributes_follow != 0)
         {
-                fprintf (fp, " 66\n%d\n", dxf_insert.attribute_follows);
+                fprintf (fp, " 66\n%d\n", dxf_insert.attributes_follow);
         }
         if (dxf_insert.common.paperspace == DXF_PAPERSPACE)
         {
@@ -696,5 +696,6 @@ dxf_insert_write
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */

@@ -80,7 +80,7 @@ dxf_insert
         double rot_angle;
                 /*!< group code = 50\n
                  * optional, defaults to 0.0. */
-        int attribute_follows;
+        int attributes_follow;
                 /*!< group code = 66\n
                  * optional, defaults to 0\n
                  * If the value of the "Attributes follow" flag is 1,
