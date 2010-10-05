@@ -116,6 +116,15 @@ dxf_insert_init
         DxfInsert *dxf_insert
 );
 int
+dxf_insert_read
+(
+        char *filename,
+        FILE *fp,
+        int *line_number,
+        DxfInsert *dxf_insert,
+        int acad_version_number
+);
+int
 dxf_insert_write_lowlevel
 (
         FILE *fp,
