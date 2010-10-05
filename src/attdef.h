@@ -31,6 +31,7 @@
 
 
 #include "global.h"
+#include "entity.h"
 
 
 #ifndef _ATTDEF_H
@@ -43,11 +44,8 @@
 typedef struct
 dxf_attdef
 {
-        int id_code;
-                /*!< Identification number for the entity.\n
-                 * this is to be an unique (sequential) number in the DXF
-                 * file.\n
-                 * Group code = 5. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         char *default_value;
                  /*!< Default value for the attribute.\n
                  * Group code = 1. */
@@ -57,19 +55,11 @@ dxf_attdef
         char *prompt_value;
                 /*!< Prompt text for the value to be stored in the attribute.\n
                  * Group code = 3. */
-        char *linetype;
-                /*!< The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
-                 * Group code = 6. */
         char *text_style;
                 /*!< The style used for the presentation of the value of the
                  * attribute.\n
                  * Defaults to \c STANDARD if  ommitted in the DXF file.\n
                  * Group code = 7. */
-        char *layer;
-                /*!< Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given.\n
-                 * Group code = 8. */
         double x0;
                 /*!< X-value of the starting point coordinate.\n
                  * Group code = 10. */
@@ -88,10 +78,6 @@ dxf_attdef
         double z1;
                 /*!< Z-value of the alignment point coordinate.\n
                  * Group code = 31. */
-        double thickness;
-                /*!< Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file.\n
-                 * Group code = 39. */
         double height;
                 /*!< Character height of the attribute value.\n
                  * Group code = 40. */
@@ -107,18 +93,6 @@ dxf_attdef
                 /*!< Oblique angle of the attribute value.\n
                  * Defaults to 0.0 if ommitted from DXF file.\n
                  * Group code = 51. */
-        int color;
-                /*!< Color of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
-                 * Note that entities encapsulated in a block with the
-                 * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity.\n
-                 * Group code = 62. */
-        int paperspace;
-                /*!< Entities are to be drawn on either \c PAPERSPACE or
-                 * \c MODELSPACE.\n
-                 * Defaults to \c MODELSPACE if ommitted in the DXF file.\n
-                 * Group code = 67. */
         int attr_flags;
                 /*!< Attribute flags.\n
                  * Bit coded:\n
