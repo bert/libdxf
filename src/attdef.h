@@ -1,7 +1,7 @@
 /*!
  * \file attdef.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Definition of a DXF attribute definition entity (\c ATTDEF).
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \brief Header file for a DXF attribute definition entity (\c ATTDEF).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -29,7 +29,13 @@
  * <hr>
  */
 
+
 #include "global.h"
+
+
+#ifndef _ATTDEF_H
+#define _ATTDEF_H
+
 
 /*!
  * \brief Definition of a DXF attribute definition entity.
@@ -153,5 +159,47 @@ dxf_attdef
                  * Defaults to 0 if ommitted from DXF file.\n
                  * Group code = 74. */
 } DxfAttdef, * DxfAttdefPtr;
+
+
+int
+dxf_attdef_write_lowlevel
+(
+        FILE *fp,
+        int id_code,
+        char *default_value,
+        char *tag_value,
+        char *prompt_value,
+        char *linetype,
+        char *text_style,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double x1,
+        double y1,
+        double z1,
+        double thickness,
+        double height,
+        double rel_x_scale,
+        double rot_angle,
+        double obl_angle,
+        int color,
+        int paperspace,
+        int attr_flags,
+        int text_flags,
+        int hor_align,
+        int field_length,
+        int vert_align
+);
+int
+dxf_attdef_write
+(
+        FILE *fp,
+        DxfAttdef dxf_attdef
+);
+
+
+#endif /* _ATTDEF_H */
+
 
 /* EOF */

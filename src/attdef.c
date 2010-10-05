@@ -1,7 +1,7 @@
 /*!
  * \file attdef.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief DXF attribute definition entity (\c ATTDEF).
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \brief Functions for a DXF attribute definition entity (\c ATTDEF).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -29,14 +29,15 @@
  * <hr>
  */
 
-#include "global.h"
+
 #include "attdef.h"
+
 
 /*!
  * \brief Write DXF output to a file for a attribute definition entity.
  */
 int
-dxf_write_attdef
+dxf_attdef_write_lowlevel
 (
         FILE *fp,
                 /*!< File pointer to output file (or device). */
@@ -158,36 +159,46 @@ dxf_write_attdef
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_attdef () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_attdef_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("ATTDEF");
         if (strcmp (tag_value, "") == 0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: default value string is empty for the %s entity with id-code: %x.\n", __FILE__, __LINE__, dxf_entity_name, id_code);
+                fprintf (stderr, "Error in dxf_attdef_write_lowlevel () default value string is empty for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (text_style, "") == 0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Warning: text style string is empty for the %s entity with id-code: %x.\n", __FILE__, __LINE__, dxf_entity_name, id_code);
-                fprintf (stderr, "    default text style STANDARD applied to %s entity.\n", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_attdef_write_lowlevel () text style string is empty for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    default text style STANDARD applied to %s entity.\n",
+                        dxf_entity_name);
                 text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
         }
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Warning: empty layer string for the %s entity with id-code: %x.\n", __FILE__, __LINE__, dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to default layer.\n", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_attdef_write_lowlevel () empty layer string for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    %s entity is relocated to default layer.\n",
+                        dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (height == 0.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Warning: height has a value of 0.0 for the %s entity with id-code: %x.\n", __FILE__, __LINE__, dxf_entity_name, id_code);
-                fprintf (stderr, "    default height of 1.0 applied to %s entity.\n", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_attdef_write_lowlevel () height has a value of 0.0 for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    default height of 1.0 applied to %s entity.\n",
+                        dxf_entity_name);
                 height = 1.0;
         }
         if (rel_x_scale == 0.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Warning: relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x.\n", __FILE__, __LINE__, dxf_entity_name, id_code);
-                fprintf (stderr, "    default relative X-scale of 1.0 applied to %s entity.\n", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_attdef_write_lowlevel () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    default relative X-scale of 1.0 applied to %s entity.\n",
+                        dxf_entity_name);
                 rel_x_scale = 1.0;
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -214,8 +225,10 @@ dxf_write_attdef
         {
                 if ((x0 == x1) && (y0 == y1) && (z0 == z1))
                 {
-                        fprintf (stderr, "[File: %s: line: %d] Warning: insertion point and alignment point are identical for the attdef entity with id-code: %x\n", __FILE__, __LINE__, id_code);
-                        fprintf (stderr, "    default justification applied to %s entity.\n", dxf_entity_name);
+                        fprintf (stderr, "Warning in dxf_attdef_write_lowlevel () insertion point and alignment point are identical for the attdef entity with id-code: %x\n",
+                                id_code);
+                        fprintf (stderr, "    default justification applied to %s entity.\n",
+                                dxf_entity_name);
                         hor_align = 0;
                         vert_align = 0;
                 }
@@ -269,16 +282,18 @@ dxf_write_attdef
                 fprintf (fp, " 74\n%d\n", vert_align);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_attdef () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "Leaving dxf_attdef_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /*!
  * \brief Write DXF output to fp for a attribute definition entity.
  */
 int
-dxf_write_attdef_struct
+dxf_attdef_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -287,36 +302,46 @@ dxf_write_attdef_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_attdef2 () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_attdef_write () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("ATTDEF");
         if (strcmp (dxf_attdef.tag_value, "") == 0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Error: default value string is empty for the %s entity with id-code: %x.\n", __FILE__, __LINE__, dxf_entity_name, dxf_attdef.id_code);
+                fprintf (stderr, "Error in dxf_attdef_write () default value string is empty for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_attdef.id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_attdef.text_style, "") == 0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Warning: text style string is empty for the %s entity with id-code: %x.\n", __FILE__, __LINE__, dxf_entity_name, dxf_attdef.id_code);
-                fprintf (stderr, "    default text style STANDARD applied to %s entity.\n", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_attdef_write () text style string is empty for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_attdef.id_code);
+                fprintf (stderr, "    default text style STANDARD applied to %s entity.\n",
+                        dxf_entity_name);
                 dxf_attdef.text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
         }
         if (strcmp (dxf_attdef.layer, "") == 0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Warning: empty layer string for the %s entity with id-code: %x.\n", __FILE__, __LINE__, dxf_entity_name, dxf_attdef.id_code);
-                fprintf (stderr, "    %s entity is relocated to the default layer.\n", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_attdef_write () empty layer string for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_attdef.id_code);
+                fprintf (stderr, "    %s entity is relocated to the default layer.\n",
+                        dxf_entity_name);
                 dxf_attdef.layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (dxf_attdef.height == 0.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Warning: height has a value of 0.0 for the %s entity with id-code: %x.\n", __FILE__, __LINE__, dxf_entity_name, dxf_attdef.id_code);
-                fprintf (stderr, "    default height of 1.0 applied to %s entity.\n", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_attdef_write () height has a value of 0.0 for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_attdef.id_code);
+                fprintf (stderr, "    default height of 1.0 applied to %s entity.\n",
+                        dxf_entity_name);
                 dxf_attdef.height = 1.0;
         }
         if (dxf_attdef.rel_x_scale == 0.0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Warning: relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x.\n", __FILE__, __LINE__, dxf_entity_name, dxf_attdef.id_code);
-                fprintf (stderr, "    default relative X-scale of 1.0 applied to %s entity.\n", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_attdef_write () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_attdef.id_code);
+                fprintf (stderr, "    default relative X-scale of 1.0 applied to %s entity.\n",
+                        dxf_entity_name);
                 dxf_attdef.rel_x_scale = 1.0;
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -343,8 +368,10 @@ dxf_write_attdef_struct
         {
                 if ((dxf_attdef.x0 == dxf_attdef.x1) && (dxf_attdef.y0 == dxf_attdef.y1) && (dxf_attdef.z0 == dxf_attdef.z1))
                 {
-                        fprintf (stderr, "[File: %s: line: %d] Warning: insertion point and alignment point are identical for the %s entity with id-code: %x.\n", __FILE__, __LINE__, dxf_entity_name, dxf_attdef.id_code);
-                        fprintf (stderr, "    default justification applied to %s entity.\n", dxf_entity_name);
+                        fprintf (stderr, "Warning in dxf_attdef_write () insertion point and alignment point are identical for the %s entity with id-code: %x.\n",
+                                dxf_entity_name, dxf_attdef.id_code);
+                        fprintf (stderr, "    default justification applied to %s entity.\n",
+                                dxf_entity_name);
                         dxf_attdef.hor_align = 0;
                         dxf_attdef.vert_align = 0;
                 }
@@ -398,9 +425,11 @@ dxf_write_attdef_struct
                 fprintf (fp, " 74\n%d\n", dxf_attdef.vert_align);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_attdef2 () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attdef_write () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */
