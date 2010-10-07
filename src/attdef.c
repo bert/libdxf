@@ -112,6 +112,7 @@ dxf_attdef_init
         dxf_attdef->common.color = DXF_COLOR_BYLAYER;
         dxf_attdef->common.paperspace = DXF_MODELSPACE;
         dxf_attdef->attr_flags = 0;
+        dxf_attdef->text_flags = 0;
         dxf_attdef->hor_align = 0;
         dxf_attdef->field_length = 0;
         dxf_attdef->vert_align = 0;
