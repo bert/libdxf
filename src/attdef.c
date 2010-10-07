@@ -69,6 +69,65 @@ dxf_attdef_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c ATTDEF entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfAttdef *
+dxf_attdef_init
+(
+        DxfAttdef *dxf_attdef
+                /*!< DXF attdef entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_attdef_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_attdef = dxf_attdef_new ();
+        if (dxf_attdef == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_attdef_init () could not allocate memory for a DxfAttdef struct.\n");
+              return (NULL);
+        }
+        dxf_attdef->default_value = strdup ("");
+        dxf_attdef->tag_value = strdup ("");
+        dxf_attdef->prompt_value = strdup ("");
+        dxf_attdef->common.id_code = 0;
+        dxf_attdef->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_attdef->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
+        dxf_attdef->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_attdef->x0 = 0.0;
+        dxf_attdef->y0 = 0.0;
+        dxf_attdef->z0 = 0.0;
+        dxf_attdef->x1 = 0.0;
+        dxf_attdef->y1 = 0.0;
+        dxf_attdef->z1 = 0.0;
+        dxf_attdef->height = 0.0;
+        dxf_attdef->rel_x_scale = 0.0;
+        dxf_attdef->rot_angle = 0.0;
+        dxf_attdef->obl_angle = 0.0;
+        dxf_attdef->common.thickness = 0.0;
+        dxf_attdef->common.color = DXF_COLOR_BYLAYER;
+        dxf_attdef->common.paperspace = DXF_MODELSPACE;
+        dxf_attdef->attr_flags = 0;
+        dxf_attdef->hor_align = 0;
+        dxf_attdef->field_length = 0;
+        dxf_attdef->vert_align = 0;
+        dxf_attdef->extr_x0 = 0.0;
+        dxf_attdef->extr_y0 = 0.0;
+        dxf_attdef->extr_z0 = 0.0;
+        dxf_attdef->common.acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attdef_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_attdef);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a attribute definition entity.
  */
 int
