@@ -169,9 +169,9 @@ dxf_shape_read
                         /* Now follows a string containing a shape
                          * name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", &dxf_shape->shape_name);
+                        fscanf (fp, "%s\n", dxf_shape->shape_name);
                 }
-                if (strcmp (temp_string, "5") == 0)
+                else if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
