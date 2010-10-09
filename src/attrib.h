@@ -1,6 +1,6 @@
 /*!
  * \file attrib.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Definition of a DXF attribute entity (\c ATTRIB).
  *
  * <hr>
@@ -29,7 +29,14 @@
  * <hr>
  */
 
+
 #include "global.h"
+#include "entity.h"
+
+
+#ifndef _ATTRIB_H
+#define _ATTRIB_H
+
 
 /*!
  * \brief DXF definition of an AutoCAD attribute entity.
@@ -37,20 +44,15 @@
 typedef struct
 dxf_attrib
 {
-        int id_code;
-                /*!< group code = 5. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         char *value;
                 /*!< group code = 1. */
         char *tag_value;
                 /*!< group code = 2. */
-        char *linetype;
-                /*!< group code = 6\n
-                 * optional, defaults to BYLAYER. */
         char *text_style;
                 /*!< group code = 7\n
                  * optional, defaults to STANDARD. */
-        char *layer;
-                /*!< group code = 8. */
         double x0;
                 /*!< group code = 10\n
                  * start point. */
@@ -69,9 +71,6 @@ dxf_attrib
         double z1;
                 /*!< group code = 31\n
                  * alignment point. */
-        double thickness;
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
         double height;
                 /*!< group code = 40. */
         double rel_x_scale;
@@ -83,12 +82,6 @@ dxf_attrib
         double obl_angle;
                 /*!< group code = 51\n
                  * optional, defaults to 0.0. */
-        int color;
-                /*!< group code = 62\n
-                 * optional, defaults to BYLAYER. */
-        int paperspace;
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
         int attr_flags;
                 /*!< group code = 70\n
                  * bit coded:\n
@@ -124,5 +117,46 @@ dxf_attrib
                  * 2 = middle\n
                  * 3 = top. */
 } DxfAttrib, * DxfAttribPtr;
+
+
+int
+dxf_attrib_write_lowlevel
+(
+        FILE *fp,
+        int id_code,
+        char *value,
+        char *tag_value,
+        char *linetype,
+        char *text_style,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double x1,
+        double y1,
+        double z1,
+        double thickness,
+        double height,
+        double rel_x_scale,
+        double rot_angle,
+        double obl_angle,
+        int color,
+        int paperspace,
+        int attr_flags,
+        int text_flags,
+        int hor_align,
+        int field_length,
+        int vert_align
+);
+int
+dxf_attrib_write
+(
+        FILE *fp,
+        DxfAttrib dxf_attrib
+);
+
+
+#endif /* _ATTRIB_H */
+
 
 /* EOF */
