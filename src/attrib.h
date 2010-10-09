@@ -119,6 +119,8 @@ dxf_attrib
 } DxfAttrib, * DxfAttribPtr;
 
 
+DxfAttrib *
+dxf_attrib_new ();
 int
 dxf_attrib_write_lowlevel
 (
