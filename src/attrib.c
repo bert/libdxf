@@ -69,6 +69,65 @@ dxf_attrib_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c ATTRIB entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfAttrib *
+dxf_attrib_init
+(
+        DxfAttrib *dxf_attrib
+                /*!< DXF attrib entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_attrib_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_attrib = dxf_attrib_new ();
+        if (dxf_attrib == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_attrib_init () could not allocate memory for a DxfAttrib struct.\n");
+              return (NULL);
+        }
+        dxf_attrib->value = strdup ("");
+        dxf_attrib->tag_value = strdup ("");
+        dxf_attrib->common.id_code = 0;
+        dxf_attrib->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_attrib->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
+        dxf_attrib->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_attrib->x0 = 0.0;
+        dxf_attrib->y0 = 0.0;
+        dxf_attrib->z0 = 0.0;
+        dxf_attrib->x1 = 0.0;
+        dxf_attrib->y1 = 0.0;
+        dxf_attrib->z1 = 0.0;
+        dxf_attrib->height = 0.0;
+        dxf_attrib->rel_x_scale = 0.0;
+        dxf_attrib->rot_angle = 0.0;
+        dxf_attrib->obl_angle = 0.0;
+        dxf_attrib->common.thickness = 0.0;
+        dxf_attrib->common.color = DXF_COLOR_BYLAYER;
+        dxf_attrib->common.paperspace = DXF_MODELSPACE;
+        dxf_attrib->attr_flags = 0;
+        dxf_attrib->text_flags = 0;
+        dxf_attrib->hor_align = 0;
+        dxf_attrib->field_length = 0;
+        dxf_attrib->vert_align = 0;
+        dxf_attrib->extr_x0 = 0.0;
+        dxf_attrib->extr_y0 = 0.0;
+        dxf_attrib->extr_z0 = 0.0;
+        dxf_attrib->common.acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attrib_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_attrib);
+}
+
+
+/*!
  * \brief Write DXF output to a file for an attribute entity.
  */
 int
