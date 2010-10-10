@@ -176,7 +176,27 @@ dxf_attdef_read
                         fclose (fp);
                         return (EXIT_FAILURE);
                 }
-                if (strcmp (temp_string, "5") == 0)
+                if (strcmp (temp_string, "1") == 0)
+                {
+                        /* Now follows a string containing the attribute
+                         * default value. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", dxf_attdef->default_value);
+                }
+                else if (strcmp (temp_string, "2") == 0)
+                {
+                        /* Now follows a string containing a tag value. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", dxf_attdef->tag_value);
+                }
+                else if (strcmp (temp_string, "3") == 0)
+                {
+                        /* Now follows a string containing a prompt
+                         * value. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", dxf_attdef->prompt_value);
+                }
+                else if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
@@ -189,6 +209,12 @@ dxf_attdef_read
                          * name. */
                         (*line_number)++;
                         fscanf (fp, "%s\n", dxf_attdef->common.linetype);
+                }
+                else if (strcmp (temp_string, "7") == 0)
+                {
+                        /* Now follows a string containing a text style. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", dxf_attdef->text_style);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
@@ -216,6 +242,27 @@ dxf_attdef_read
                          * Z-coordinate of the center point. */
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_attdef->z0);
+                }
+                else if (strcmp (temp_string, "11") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the align point. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_attdef->x1);
+                }
+                else if (strcmp (temp_string, "21") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the align point. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_attdef->y1);
+                }
+                else if (strcmp (temp_string, "31") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the align point. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_attdef->z1);
                 }
                 else if ((acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
