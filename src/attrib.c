@@ -186,7 +186,7 @@ dxf_attrib_read
                 {
                         /* Now follows a string containing a tag value. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_attrib->common.linetype);
+                        fscanf (fp, "%s\n", dxf_attrib->tag_value);
                 }
                 else if (strcmp (temp_string, "5") == 0)
                 {
