@@ -29,14 +29,15 @@
  * <hr>
  */
 
-#include "global.h"
+
 #include "polyline.h"
+
 
 /*!
  * \brief Write DXF output to a file for a polyline entity.
  */
 int
-dxf_write_polyline
+dxf_polyline_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -96,29 +97,35 @@ dxf_write_polyline
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_polyline () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_polyline_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("POLYLINE");
 
         if (x0 != 0.0)
         {
-                fprintf (stderr, "Error: start point has an invalid X-value for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
+                fprintf (stderr, "Error in dxf_polyline_write_lowlevel () start point has an invalid X-value for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         if (y0 != 0.0)
         {
-                fprintf (stderr, "Error: start point has an invalid Y-value for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
+                fprintf (stderr, "Error in dxf_polyline_write_lowlevel () start point has an invalid Y-value for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0\n", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_polyline_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0\n",
+                        dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (vertices_follow != 1)
         {
-                fprintf (stderr, "Error: vertices follow flag has an invalid value for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
+                fprintf (stderr, "Error in dxf_polyline_write_lowlevel () vertices follow flag has an invalid value for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -162,9 +169,10 @@ dxf_write_polyline
         fprintf (fp, " 74\n%d\n", smooth_N_surface_density);
         fprintf (fp, " 75\n%d\n", surface_type);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_polyline () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_polyline_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
 #endif
-		return (EXIT_SUCCESS);
+        return (EXIT_SUCCESS);
 }
 
 
@@ -172,7 +180,7 @@ dxf_write_polyline
  * \brief Write DXF output to fp for a polyline entity.
  */
 int
-dxf_write_polyline_struct
+dxf_polyline_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -181,29 +189,35 @@ dxf_write_polyline_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_polyline2 () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_polyline_write () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("POLYLINE");
 
         if (dxf_polyline.x0 != 0.0)
         {
-                fprintf (stderr, "Error: start point has an invalid X-value for the %s entity with id-code: %x\n", dxf_entity_name, dxf_polyline.id_code);
+                fprintf (stderr, "Error in dxf_polyline_write () start point has an invalid X-value for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_polyline.id_code);
                 return (EXIT_FAILURE);
         }
         if (dxf_polyline.y0 != 0.0)
         {
-                fprintf (stderr, "Error: start point has an invalid Y-value for the %s entity with id-code: %x\n", dxf_entity_name, dxf_polyline.id_code);
+                fprintf (stderr, "Error in dxf_polyline_write () start point has an invalid Y-value for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_polyline.id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_polyline.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_polyline.id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0\n", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_polyline_write () empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_polyline.id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0\n",
+                        dxf_entity_name);
                 dxf_polyline.layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (dxf_polyline.vertices_follow != 1)
         {
-                fprintf (stderr, "Error: vertices follow flag has an invalid value for the %s entity with id-code: %x\n", dxf_entity_name, dxf_polyline.id_code);
+                fprintf (stderr, "Error in dxf_polyline_write () vertices follow flag has an invalid value for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_polyline.id_code);
                 return (EXIT_FAILURE);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -247,9 +261,11 @@ dxf_write_polyline_struct
         fprintf (fp, " 74\n%d\n", dxf_polyline.smooth_N_surface_density);
         fprintf (fp, " 75\n%d\n", dxf_polyline.surface_type);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_polyline2 () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_polyline_write () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */

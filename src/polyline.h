@@ -1,6 +1,6 @@
 /*!
  * \file polyline.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Definition of a DXF polyline entity (\c PLINE).
  *
  * <hr>
@@ -29,7 +29,13 @@
  * <hr>
  */
 
+
+#ifndef _POLYLINE_H
+#define _POLYLINE_H
+
+
 #include "global.h"
+
 
 /*!
  * \brief Definition of a DXF polyline entity.
@@ -156,5 +162,9 @@ dxf_polyline
                  * 6 = cubic B-spline surface\n
                  * 8 = Bezier surface. */
 } DxfPolyline, * DxfPolylinePtr;
+
+
+#endif /* _POLYLINE_H */
+
 
 /* EOF */
