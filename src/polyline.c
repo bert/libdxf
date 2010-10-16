@@ -34,6 +34,41 @@
 
 
 /*!
+ * \brief Allocate memory for a \c DxfPolyline.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfPolyline *
+dxf_polyline_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_polyline_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfPolyline *dxf_polyline = NULL;
+        size_t size;
+
+        size = sizeof (DxfPolyline);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_polyline = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_polyline_new () could not allocate memory for a DxfArc struct.\n");
+                dxf_polyline = NULL;
+        }
+        else
+        {
+                memset (dxf_polyline, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_polyline_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_polyline);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a polyline entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
