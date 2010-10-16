@@ -120,7 +120,7 @@ dxf_lwpolyline
                  * supply widths.\n */
         double constant_width;
                 /*!< group code = 43\n
-                 * optional, defaults to 0\n
+                 * optional, defaults to 0.0\n
                  * Not used if variable width (codes 40 and/or 41) is
                  * set the default widths apply to any vertex that
                  * doesn't supply widths.\n */

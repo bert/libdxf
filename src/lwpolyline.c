@@ -93,9 +93,11 @@ dxf_lwpolyline_write_lowlevel
         double extr_y0,
                 /*!< group code = 220
                  * DXF: Y value of extrusion direction (optional). */
-        double extr_z0
+        double extr_z0,
                 /*!< group code = 230
                  * DXF: Z value of extrusion direction (optional). */
+        int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -128,6 +130,15 @@ dxf_lwpolyline_write_lowlevel
         {
                 fprintf (fp, " 39\n%f\n", thickness);
         }
+        if ((constant_width = 0.0) && (start_width != end_width))
+        {
+                fprintf (fp, " 40\n%f\n", start_width);
+                fprintf (fp, " 41\n%f\n", end_width);
+        }
+        else
+        {
+                fprintf (fp, " 43\n%f\n", constant_width);
+        }
         if (color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp, " 62\n%d\n", color);
@@ -135,6 +146,14 @@ dxf_lwpolyline_write_lowlevel
         if (paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp, " 70\n%d\n", flag);
+        fprintf (fp, " 90\n%d\n", number_vertices);
+        if (acad_version_number >= AutoCAD_12)
+        {
+                fprintf (fp, "210\n%f\n", extr_x0);
+                fprintf (fp, "220\n%f\n", extr_y0);
+                fprintf (fp, "230\n%f\n", extr_z0);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_lwpolyline_write_lowlevel () function.\n",
@@ -157,8 +176,10 @@ dxf_lwpolyline_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfLWPolyline dxf_lwpolyline
+        DxfLWPolyline dxf_lwpolyline,
                 /*!< DXF polyline entity. */
+        int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -191,6 +212,16 @@ dxf_lwpolyline_write
         {
                 fprintf (fp, " 39\n%f\n", dxf_lwpolyline.thickness);
         }
+        if ((dxf_lwpolyline.constant_width = 0.0)
+                && (dxf_lwpolyline.start_width != dxf_lwpolyline.end_width))
+        {
+                fprintf (fp, " 40\n%f\n", dxf_lwpolyline.start_width);
+                fprintf (fp, " 41\n%f\n", dxf_lwpolyline.end_width);
+        }
+        else
+        {
+                fprintf (fp, " 43\n%f\n", dxf_lwpolyline.constant_width);
+        }
         if (dxf_lwpolyline.color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp, " 62\n%d\n", dxf_lwpolyline.color);
@@ -198,6 +229,14 @@ dxf_lwpolyline_write
         if (dxf_lwpolyline.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp, " 70\n%d\n", dxf_lwpolyline.flag);
+        fprintf (fp, " 90\n%d\n", dxf_lwpolyline.number_vertices);
+        if (acad_version_number >= AutoCAD_12)
+        {
+                fprintf (fp, "210\n%f\n", dxf_lwpolyline.extr_x0);
+                fprintf (fp, "220\n%f\n", dxf_lwpolyline.extr_y0);
+                fprintf (fp, "230\n%f\n", dxf_lwpolyline.extr_z0);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_lwpolyline_write () function.\n",
