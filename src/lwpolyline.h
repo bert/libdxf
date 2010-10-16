@@ -153,6 +153,37 @@ dxf_lwpolyline
 } DxfLWPolyline, * DxfLWPolylinePtr;
 
 
+int
+dxf_lwpolyline_write_lowlevel
+(
+        FILE *fp,
+        int id_code,
+        char *linetype,
+        char *layer,
+        double x0,
+        double y0,
+        double thickness,
+        double start_width,
+        double end_width,
+        double constant_width,
+        int color,
+        int paperspace,
+        int flag,
+        int number_vertices,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0,
+        int acad_version_number
+);
+int
+dxf_lwpolyline_write
+(
+        FILE *fp,
+        DxfLWPolyline dxf_lwpolyline,
+        int acad_version_number
+);
+
+
 #endif /* _LWPOLYLINE_H */
 
 
