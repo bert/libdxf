@@ -35,6 +35,9 @@
 
 /*!
  * \brief Write DXF output to a file for a polyline entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_polyline_write_lowlevel
@@ -178,6 +181,9 @@ dxf_polyline_write_lowlevel
 
 /*!
  * \brief Write DXF output to fp for a polyline entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_polyline_write

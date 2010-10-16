@@ -36,7 +36,10 @@
 /*!
  * \brief Write DXF output to a file for a light weight polyline entity.
  *
- * This entity requires AutoCAD version 2004 or higher.
+ * \warning This entity requires AutoCAD version 2004 or higher.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_lwpolyline_write_lowlevel
@@ -147,7 +150,10 @@ dxf_lwpolyline_write_lowlevel
 /*!
  * \brief Write DXF output to fp for a light weight polyline entity.
  *
- * This entity requires AutoCAD release 2004 or higher.
+ * \warning This entity requires AutoCAD version 2004 or higher.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_lwpolyline_write
