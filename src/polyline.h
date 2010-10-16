@@ -1,7 +1,7 @@
 /*!
  * \file polyline.h
  * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Definition of a DXF polyline entity (\c PLINE).
+ * \brief Header file for a DXF polyline entity (\c PLINE).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n

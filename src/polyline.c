@@ -1,7 +1,7 @@
 /*!
  * \file polyline.c
  * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief DXF polyline entity (\c POLYLINE).
+ * \brief Functions for a DXF polyline entity (\c POLYLINE).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
