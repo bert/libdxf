@@ -153,6 +153,8 @@ dxf_lwpolyline
 } DxfLWPolyline, * DxfLWPolylinePtr;
 
 
+DxfLWPolyline *
+dxf_lwpolyline_new ();
 int
 dxf_lwpolyline_write_lowlevel
 (

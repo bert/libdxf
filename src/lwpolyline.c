@@ -36,6 +36,41 @@
 
 
 /*!
+ * \brief Allocate memory for a \c DxfLWPolyline.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfLWPolyline *
+dxf_lwpolyline_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_lwpolyline_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfLWPolyline *dxf_lwpolyline = NULL;
+        size_t size;
+
+        size = sizeof (DxfLWPolyline);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_lwpolyline = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_lwpolyline_new () could not allocate memory for a DxfArc struct.\n");
+                dxf_lwpolyline = NULL;
+        }
+        else
+        {
+                memset (dxf_lwpolyline, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_lwpolyline_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_lwpolyline);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a light weight polyline entity.
  *
  * \warning This entity requires AutoCAD version 2004 or higher.
