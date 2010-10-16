@@ -37,6 +37,7 @@
 
 
 #include "global.h"
+#include "entity.h"
 
 
 /*!
@@ -88,13 +89,8 @@
 typedef struct
 dxf_lwpolyline
 {
-        int id_code;
-                /*!< group code = 5. */
-        char *linetype;
-                /*!< group code = 6\n
-                 * optional, defaults to \c BYLAYER. */
-        char *layer;
-                /*!< group code = 8. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         double x0;
                 /*!< group code = 10\n
                  * Vertex coordinates (in OCS), multiple entries;\n
@@ -105,9 +101,6 @@ dxf_lwpolyline
                 /*!< group code = 20\n
                  * DXF: Y value of vertex coordinates (in OCS),
                  * multiple entries; one entry for each vertex. */
-        double thickness;
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
         double start_width;
                 /*!< group code = 40\n
                  * optional, defaults to 0.0\n
@@ -124,12 +117,6 @@ dxf_lwpolyline
                  * Not used if variable width (codes 40 and/or 41) is
                  * set the default widths apply to any vertex that
                  * doesn't supply widths.\n */
-        int color;
-                /*!< group code = 62\n
-                 * optional, defaults to \c BYLAYER. */
-        int paperspace;
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
         int flag;
                 /*!< group code = 70\n
                  * optional, defaults to 0\n
