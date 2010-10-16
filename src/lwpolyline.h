@@ -142,6 +142,11 @@ dxf_lwpolyline
 
 DxfLWPolyline *
 dxf_lwpolyline_new ();
+DxfLWPolyline *
+dxf_lwpolyline_init
+(
+        DxfLWPolyline *dxf_lwpolyline
+);
 int
 dxf_lwpolyline_write_lowlevel
 (

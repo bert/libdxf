@@ -71,6 +71,54 @@ dxf_lwpolyline_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c LWPOLYLINE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfLWPolyline *
+dxf_lwpolyline_init
+(
+        DxfLWPolyline *dxf_lwpolyline
+                /*!< DXF light weight polyline entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_lwpolyline_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_lwpolyline = dxf_lwpolyline_new ();
+        if (dxf_lwpolyline == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_lwpolyline_init () could not allocate memory for a DxfLWPolyline struct.\n");
+              return (NULL);
+        }
+        dxf_lwpolyline->common.id_code = 0;
+        dxf_lwpolyline->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_lwpolyline->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_lwpolyline->x0 = 0.0;
+        dxf_lwpolyline->y0 = 0.0;
+        dxf_lwpolyline->common.thickness = 0.0;
+        dxf_lwpolyline->start_width = 0.0;
+        dxf_lwpolyline->end_width = 0.0;
+        dxf_lwpolyline->constant_width = 0.0;
+        dxf_lwpolyline->common.color = DXF_COLOR_BYLAYER;
+        dxf_lwpolyline->common.paperspace = DXF_MODELSPACE;
+        dxf_lwpolyline->flag = 0;
+        dxf_lwpolyline->number_vertices = 0;
+        dxf_lwpolyline->extr_x0 = 0.0;
+        dxf_lwpolyline->extr_y0 = 0.0;
+        dxf_lwpolyline->extr_z0 = 0.0;
+        dxf_lwpolyline->common.acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_lwpolyline_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_lwpolyline);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a light weight polyline entity.
  *
  * \warning This entity requires AutoCAD version 2004 or higher.
