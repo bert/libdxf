@@ -1,7 +1,9 @@
 /*!
  * \file lwpolyline.c
  * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief DXF light weight polyline entity (\c LWPOLYLINE).
+ * \brief Functions for a DXF light weight polyline entity (\c LWPOLYLINE).
+ *
+ * \warning This entity requires AutoCAD version 2004 or higher.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -30,7 +32,7 @@
  */
 
 
-#include "polyline.h"
+#include "lwpolyline.h"
 
 
 /*!
@@ -59,9 +61,6 @@ dxf_lwpolyline_write_lowlevel
         double y0,
                 /*!< group code = 20\n
                  * defaults to 0.0. */
-        double z0,
-                /*!< group code = 30\n
-                 * default elevation for vertices. */
         double thickness,
                 /*!< group code = 39\n
                  * optional, defaults to 0.0. */
@@ -71,33 +70,32 @@ dxf_lwpolyline_write_lowlevel
         double end_width,
                 /*!< group code = 41\n
                  * optional, defaults to 0.0. */
+        double constant_width,
+                /*!< group code = 43\n
+                 * optional, defaults to 0.0. */
         int color,
                 /*!< group code = 62\n
                  * optional, defaults to \c BYLAYER. */
-        int vertices_follow,
-                /*!< group code = 66\n
-                 * always 1. */
         int paperspace,
                 /*!< group code = 67\n
                  * optional, defaults to 0 (modelspace). */
         int flag,
                 /*!< group code = 70\n
                  * optional, defaults to 0. */
-        int polygon_mesh_M_vertex_count,
-                /*!< group code = 71\n
-                 * optional, defaults to 0. */
-        int polygon_mesh_N_vertex_count,
-                /*!< group code = 72\n
-                 * optional, defaults to 0. */
-        int smooth_M_surface_density,
-                /*!< group code = 73\n
-                 * optional, defaults to 0. */
-        int smooth_N_surface_density,
-                /*!< group code = 74\n
-                 * optional, defaults to 0. */
-        int surface_type
-                /*!< group code = 75\n
-                 * optional, defaults to 0. */
+        int number_vertices,
+                /*!< group code = 90. */
+        double extr_x0,
+                /*!< group code = 210\n
+                 * Extrusion direction (optional; default = 0, 0, 1)\n
+                 * DXF: X value;\n
+                 * APP: 3D vector\n
+                 * Defaults to 0.0 if ommitted in the DXF file. */
+        double extr_y0,
+                /*!< group code = 220
+                 * DXF: Y value of extrusion direction (optional). */
+        double extr_z0
+                /*!< group code = 230
+                 * DXF: Z value of extrusion direction (optional). */
 )
 {
 #if DEBUG
@@ -126,7 +124,6 @@ dxf_lwpolyline_write_lowlevel
         fprintf (fp, "  8\n%s\n", layer);
         fprintf (fp, " 10\n%f\n", x0);
         fprintf (fp, " 20\n%f\n", y0);
-        fprintf (fp, " 30\n%f\n", z0);
         if (thickness != 0.0)
         {
                 fprintf (fp, " 39\n%f\n", thickness);
@@ -160,7 +157,7 @@ dxf_lwpolyline_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfPolyline dxf_polyline
+        DxfLWPolyline dxf_lwpolyline
                 /*!< DXF polyline entity. */
 )
 {
@@ -170,36 +167,35 @@ dxf_lwpolyline_write
 #endif
         char *dxf_entity_name = strdup ("LWPOLYLINE");
 
-        if (strcmp (dxf_polyline.layer, "") == 0)
+        if (strcmp (dxf_lwpolyline.layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_lwpolyline_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_polyline.id_code);
+                        dxf_entity_name, dxf_lwpolyline.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0\n",
                         dxf_entity_name);
-                dxf_polyline.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_lwpolyline.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_polyline.id_code != -1)
+        if (dxf_lwpolyline.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_polyline.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_lwpolyline.id_code);
         }
-        if (strcmp (dxf_polyline.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_lwpolyline.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_polyline.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_lwpolyline.linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_polyline.layer);
-        fprintf (fp, " 10\n%f\n", dxf_polyline.x0);
-        fprintf (fp, " 20\n%f\n", dxf_polyline.y0);
-        fprintf (fp, " 30\n%f\n", dxf_polyline.z0);
-        if (dxf_polyline.thickness != 0.0)
+        fprintf (fp, "  8\n%s\n", dxf_lwpolyline.layer);
+        fprintf (fp, " 10\n%f\n", dxf_lwpolyline.x0);
+        fprintf (fp, " 20\n%f\n", dxf_lwpolyline.y0);
+        if (dxf_lwpolyline.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_polyline.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_lwpolyline.thickness);
         }
-        if (dxf_polyline.color != DXF_COLOR_BYLAYER)
+        if (dxf_lwpolyline.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_polyline.color);
+                fprintf (fp, " 62\n%d\n", dxf_lwpolyline.color);
         }
-        if (dxf_polyline.paperspace == DXF_PAPERSPACE)
+        if (dxf_lwpolyline.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
