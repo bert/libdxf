@@ -163,6 +163,13 @@ dxf_polyline
 } DxfPolyline, * DxfPolylinePtr;
 
 
+DxfPolyline *
+dxf_polyline_init
+(
+        DxfPolyline *dxf_polyline
+);
+
+
 #endif /* _POLYLINE_H */
 
 
