@@ -171,6 +171,15 @@ dxf_polyline_init
         DxfPolyline *dxf_polyline
 );
 int
+dxf_polyline_read
+(
+        char *filename,
+        FILE *fp,
+        int *line_number,
+        DxfPolyline *dxf_polyline,
+        int acad_version_number
+);
+int
 dxf_polyline_write_lowlevel
 (
         FILE *fp,
