@@ -1,7 +1,7 @@
 /*!
  * \file vertex.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Definition of a DXF vertex entity (\c VERTEX).
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \brief Header file for a DXF vertex entity (\c VERTEX).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -29,7 +29,9 @@
  * <hr>
  */
 
+
 #include "global.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD vertex entity.
@@ -111,5 +113,33 @@ dxf_vertex
                  * 64 = 3D polygon mesh vertex
                  * 128 = polyface mesh vertex.\n */
 } DxfVertex, * DxfVertexPtr;
+
+
+int
+dxf_vertex_write_lowlevel
+(
+        FILE *fp,
+        int id_code,
+        char *linetype,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double thickness,
+        double start_width,
+        double end_width,
+        double bulge,
+        double curve_fit_tangent_direction,
+        int color,
+        int paperspace,
+        int flag
+);
+int
+dxf_vertex_write
+(
+        FILE *fp,
+        DxfVertex dxf_vertex
+);
+
 
 /* EOF */

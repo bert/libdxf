@@ -1,7 +1,7 @@
 /*!
  * \file vertex.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief DXF vertex entity (\c VERTEX).
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \brief Functions for a DXF vertex entity (\c VERTEX).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -29,14 +29,15 @@
  * <hr>
  */
 
-#include "global.h"
+
 #include "vertex.h"
+
 
 /*!
  * \brief Write DXF output to a file for a vertex entity.
  */
 int
-dxf_write_vertex
+dxf_vertex_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -97,14 +98,17 @@ dxf_write_vertex
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_vertex () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_vertex_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("VERTEX");
 
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_vertex_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
 
@@ -151,16 +155,18 @@ dxf_write_vertex
         }
         fprintf (fp, " 70\n%d\n", flag);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_vertex () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
 #endif
-		return (EXIT_SUCCESS);
+        return (EXIT_SUCCESS);
 }
+
 
 /*!
  * \brief Write DXF output to fp for a vertex entity.
  */
 int
-dxf_write_vertex_struct
+dxf_vertex_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -169,14 +175,17 @@ dxf_write_vertex_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_vertex_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_vertex_write () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("VERTEX");
 
         if (strcmp (dxf_vertex.layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_vertex.id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
+                fprintf (stderr, "Warning in dxf_vertex_write () empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_vertex.id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
                 dxf_vertex.layer = strdup (DXF_DEFAULT_LAYER);
         }
 
@@ -223,9 +232,11 @@ dxf_write_vertex_struct
         }
         fprintf (fp, " 70\n%d\n", dxf_vertex.flag);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_vertex_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_write () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */
