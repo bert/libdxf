@@ -30,6 +30,10 @@
  */
 
 
+#ifndef _VERTEX_H
+#define _VERTEX_H
+
+
 #include "global.h"
 
 
@@ -142,6 +146,9 @@ dxf_vertex_write
         FILE *fp,
         DxfVertex dxf_vertex
 );
+
+
+#endif /* _VERTEX_H */
 
 
 /* EOF */
