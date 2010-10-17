@@ -1,6 +1,6 @@
 /*!
  * \file polyline.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Functions for a DXF polyline entity (\c POLYLINE).
  *
  * <hr>
@@ -238,45 +238,45 @@ dxf_polyline_write
         if (dxf_polyline.x0 != 0.0)
         {
                 fprintf (stderr, "Error in dxf_polyline_write () start point has an invalid X-value for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_polyline.id_code);
+                        dxf_entity_name, dxf_polyline.common.id_code);
                 return (EXIT_FAILURE);
         }
         if (dxf_polyline.y0 != 0.0)
         {
                 fprintf (stderr, "Error in dxf_polyline_write () start point has an invalid Y-value for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_polyline.id_code);
+                        dxf_entity_name, dxf_polyline.common.id_code);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_polyline.layer, "") == 0)
+        if (strcmp (dxf_polyline.common.layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_polyline_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_polyline.id_code);
+                        dxf_entity_name, dxf_polyline.common.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0\n",
                         dxf_entity_name);
-                dxf_polyline.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_polyline.common.layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (dxf_polyline.vertices_follow != 1)
         {
                 fprintf (stderr, "Error in dxf_polyline_write () vertices follow flag has an invalid value for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_polyline.id_code);
+                        dxf_entity_name, dxf_polyline.common.id_code);
                 return (EXIT_FAILURE);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_polyline.id_code != -1)
+        if (dxf_polyline.common.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_polyline.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_polyline.common.id_code);
         }
-        if (strcmp (dxf_polyline.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_polyline.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_polyline.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_polyline.common.linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_polyline.layer);
+        fprintf (fp, "  8\n%s\n", dxf_polyline.common.layer);
         fprintf (fp, " 10\n%f\n", dxf_polyline.x0);
         fprintf (fp, " 20\n%f\n", dxf_polyline.y0);
         fprintf (fp, " 30\n%f\n", dxf_polyline.z0);
-        if (dxf_polyline.thickness != 0.0)
+        if (dxf_polyline.common.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_polyline.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_polyline.common.thickness);
         }
         if (dxf_polyline.start_width != 0.0)
         {
@@ -286,12 +286,12 @@ dxf_polyline_write
         {
                 fprintf (fp, " 41\n%f\n", dxf_polyline.end_width);
         }
-        if (dxf_polyline.color != DXF_COLOR_BYLAYER)
+        if (dxf_polyline.common.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_polyline.color);
+                fprintf (fp, " 62\n%d\n", dxf_polyline.common.color);
         }
         fprintf (fp, " 66\n%d\n", dxf_polyline.vertices_follow);
-        if (dxf_polyline.paperspace == DXF_PAPERSPACE)
+        if (dxf_polyline.common.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }

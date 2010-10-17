@@ -35,6 +35,7 @@
 
 
 #include "global.h"
+#include "entity.h"
 
 
 /*!
@@ -86,13 +87,8 @@
 typedef struct
 dxf_polyline
 {
-        int id_code;
-                /*!< group code = 5. */
-        char *linetype;
-                /*!< group code = 6\n
-                 * optional, defaults to \c BYLAYER. */
-        char *layer;
-                /*!< group code = 8. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         double x0;
                 /*!< group code = 10\n
                  * defaults to 0.0. */
@@ -102,9 +98,6 @@ dxf_polyline
         double z0;
                 /*!< group code = 30\n
                  * default elevation for vertices. */
-        double thickness;
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
         double start_width;
                 /*!< group code = 40\n
                  * optional, defaults to 0.0\n
@@ -115,18 +108,12 @@ dxf_polyline
                  * optional, defaults to 0.0\n
                  * the default widths apply to any vertex that doesn't supply
                  * widths.\n */
-        int color;
-                /*!< group code = 62\n
-                 * optional, defaults to \c BYLAYER. */
         int vertices_follow;
                 /*!< group code = 66\n
                  * always 1\n
                  * The "vertices follow" flag is always 1, indicating that a
                  * series of Vertex entities is expected to follow the
                  * \c Polyline, terminated by a "sequence end" entity. */
-        int paperspace;
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
         int flag;
                 /*!< group code = 70\n
                  * optional, defaults to 0\n
