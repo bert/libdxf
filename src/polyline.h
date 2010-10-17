@@ -148,6 +148,18 @@ dxf_polyline
                  * 5 = quadratic B-spline surface\n
                  * 6 = cubic B-spline surface\n
                  * 8 = Bezier surface. */
+        double extr_x0;
+                /*!< group code = 210\n
+                 * Extrusion direction (optional; default = 0, 0, 1)\n
+                 * DXF: X value;\n
+                 * APP: 3D vector\n
+                 * Defaults to 0.0 if ommitted in the DXF file. */
+        double extr_y0;
+                /*!< group code = 220
+                 * DXF: Y value of extrusion direction (optional). */
+        double extr_z0;
+                /*!< group code = 230
+                 * DXF: Z value of extrusion direction (optional). */
 } DxfPolyline, * DxfPolylinePtr;
 
 
