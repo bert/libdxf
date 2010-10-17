@@ -34,6 +34,41 @@
 
 
 /*!
+ * \brief Allocate memory for a \c DxfVertex.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfVertex *
+dxf_vertex_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_vertex_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfVertex *dxf_vertex = NULL;
+        size_t size;
+
+        size = sizeof (DxfVertex);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_vertex = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_vertex_new () could not allocate memory for a DxfVertex struct.\n");
+                dxf_vertex = NULL;
+        }
+        else
+        {
+                memset (dxf_vertex, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_vertex);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a vertex entity.
  */
 int

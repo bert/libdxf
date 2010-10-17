@@ -115,6 +115,8 @@ dxf_vertex
 } DxfVertex, * DxfVertexPtr;
 
 
+DxfVertex *
+dxf_vertex_new ();
 int
 dxf_vertex_write_lowlevel
 (
