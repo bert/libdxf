@@ -108,6 +108,11 @@ dxf_vertex
 
 DxfVertex *
 dxf_vertex_new ();
+DxfVertex *
+dxf_vertex_init
+(
+        DxfVertex *dxf_vertex
+);
 int
 dxf_vertex_write_lowlevel
 (

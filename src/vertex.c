@@ -69,6 +69,52 @@ dxf_vertex_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c VERTEX entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfVertex *
+dxf_vertex_init
+(
+        DxfVertex *dxf_vertex
+                /*!< DXF vertex entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_vertex_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_vertex = dxf_vertex_new ();
+        if (dxf_vertex == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_vertex_init () could not allocate memory for a DxfVertex struct.\n");
+              return (NULL);
+        }
+        dxf_vertex->common.id_code = 0;
+        dxf_vertex->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_vertex->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_vertex->x0 = 0.0;
+        dxf_vertex->y0 = 0.0;
+        dxf_vertex->z0 = 0.0;
+        dxf_vertex->common.thickness = 0.0;
+        dxf_vertex->start_width = 0.0;
+        dxf_vertex->end_width = 0.0;
+        dxf_vertex->bulge = 0.0;
+        dxf_vertex->curve_fit_tangent_direction = 0.0;
+        dxf_vertex->common.color = DXF_COLOR_BYLAYER;
+        dxf_vertex->common.paperspace = DXF_MODELSPACE;
+        dxf_vertex->flag = 0;
+        dxf_vertex->common.acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_vertex);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a vertex entity.
  */
 int
