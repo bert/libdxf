@@ -115,6 +115,181 @@ dxf_vertex_init
 
 
 /*!
+ * \brief Read data from a DXF file into an \c VERTEX entity.
+ *
+ * The last line read from file contained the string "VERTEX". \n
+ * Now follows some data for the \c VERTEX, to be terminated with a "  0"
+ * string announcing the following entity, or the end of the \c ENTITY
+ * section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c dxf_vertex. \n
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_vertex_read
+(
+        char *filename,
+                /*!< filename of input file (or device). */
+        FILE *fp,
+                /*!< filepointer to the input file (or device). */
+        int *line_number,
+                /*!< current line number in the input file (or device). */
+        DxfVertex *dxf_vertex,
+                /*!< DXF vertex entity. */
+        int acad_version_number
+                /*!< AutoCAD version number. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *temp_string = NULL;
+
+        if (!dxf_vertex)
+        {
+                dxf_vertex = dxf_vertex_new ();
+        }
+        (*line_number)++;
+        fscanf (fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp))
+                {
+                        fprintf (stderr, "Error in dxf_vertex_read () while reading from: %s in line: %d.\n",
+                                filename, *line_number);
+                        fclose (fp);
+                        return (EXIT_FAILURE);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (*line_number)++;
+                        fscanf (fp, "%x\n", &dxf_vertex->common.id_code);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", dxf_vertex->common.linetype);
+                }
+                else if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing a layer name. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", dxf_vertex->common.layer);
+                }
+                else if (strcmp (temp_string, "10") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the point. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_vertex->x0);
+                }
+                else if (strcmp (temp_string, "20") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the point. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_vertex->y0);
+                }
+                else if (strcmp (temp_string, "30") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the point. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_vertex->z0);
+                }
+                else if ((acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0)
+                        && (dxf_vertex->z0 = 0.0))
+                {
+                        /* Elevation is a pre AutoCAD R11 variable
+                         * so additional testing for the version should
+                         * probably be added.
+                         * Now follows a string containing the
+                         * elevation. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_vertex->z0);
+                }
+                else if (strcmp (temp_string, "39") == 0)
+                {
+                        /* Now follows a string containing the
+                         * thickness. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_vertex->common.thickness);
+                }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the
+                         * start width. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_vertex->start_width);
+                }
+                else if (strcmp (temp_string, "41") == 0)
+                {
+                        /* Now follows a string containing the
+                         * end width. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_vertex->end_width);
+                }
+                else if (strcmp (temp_string, "42") == 0)
+                {
+                        /* Now follows a string containing the
+                         * bulge. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_vertex->bulge);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        (*line_number)++;
+                        fscanf (fp, "%d\n", &dxf_vertex->common.color);
+                }
+                else if (strcmp (temp_string, "67") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        (*line_number)++;
+                        fscanf (fp, "%d\n", &dxf_vertex->common.paperspace);
+                }
+                else if ((acad_version_number >= AutoCAD_12)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Subclass markers are post AutoCAD R12
+                         * variable so additional testing for the
+                         * version should probably be added here.
+                         * Now follows a string containing the
+                         * subclass marker value. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", temp_string);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr, "Warning: in dxf_vertex_read () unknown string tag found while reading from: %s in line: %d.\n",
+                                filename, *line_number);
+                }
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a vertex entity.
  */
 int
