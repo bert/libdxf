@@ -35,6 +35,7 @@
 
 
 #include "global.h"
+#include "entity.h"
 
 
 /*!
@@ -64,22 +65,14 @@
 typedef struct
 dxf_vertex
 {
-        int id_code;
-                /*!< group code = 5. */
-        char *linetype;
-                /*!< group code = 6\n
-                 * optional, defaults to \c BYLAYER. */
-        char *layer;
-                /*!< group code = 8. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         double x0;
                 /*!< group code = 10. */
         double y0;
                 /*!< group code = 20. */
         double z0;
                 /*!< group code = 30. */
-        double thickness;
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
         double start_width;
                 /*!< group code = 40\n
                  * optional, defaults to 0.0. */
@@ -96,12 +89,6 @@ dxf_vertex
         double curve_fit_tangent_direction;
                 /*!< group code = 50\n
                  * optional. */
-        int color;
-                /*!< group code = 62\n
-                 * optional, defaults to \c BYLAYER. */
-        int paperspace;
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
         int flag;
                 /*!< group code = 70\n
                  * optional, defaults to 0\n

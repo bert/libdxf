@@ -215,31 +215,31 @@ dxf_vertex_write
 #endif
         char *dxf_entity_name = strdup ("VERTEX");
 
-        if (strcmp (dxf_vertex.layer, "") == 0)
+        if (strcmp (dxf_vertex.common.layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_vertex_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_vertex.id_code);
+                        dxf_entity_name, dxf_vertex.common.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
-                dxf_vertex.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_vertex.common.layer = strdup (DXF_DEFAULT_LAYER);
         }
 
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_vertex.id_code != -1)
+        if (dxf_vertex.common.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_vertex.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_vertex.common.id_code);
         }
-        if (strcmp (dxf_vertex.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_vertex.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_vertex.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_vertex.common.linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_vertex.layer);
+        fprintf (fp, "  8\n%s\n", dxf_vertex.common.layer);
         fprintf (fp, " 10\n%f\n", dxf_vertex.x0);
         fprintf (fp, " 20\n%f\n", dxf_vertex.y0);
         fprintf (fp, " 30\n%f\n", dxf_vertex.z0);
-        if (dxf_vertex.thickness != 0.0)
+        if (dxf_vertex.common.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_vertex.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_vertex.common.thickness);
         }
         if (dxf_vertex.start_width != 0.0)
         {
@@ -257,11 +257,11 @@ dxf_vertex_write
         {
                 fprintf (fp, " 50\n%f\n", dxf_vertex.curve_fit_tangent_direction);
         }
-        if (dxf_vertex.color != DXF_COLOR_BYLAYER)
+        if (dxf_vertex.common.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_vertex.color);
+                fprintf (fp, " 62\n%d\n", dxf_vertex.common.color);
         }
-        if (dxf_vertex.paperspace == DXF_PAPERSPACE)
+        if (dxf_vertex.common.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
