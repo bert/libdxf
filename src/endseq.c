@@ -1,6 +1,6 @@
 /*!
- * \file endseq.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \file seqend.c
+ * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF end of sequence marker (\c ENDSEQ).
  *
  * <hr>
@@ -29,32 +29,37 @@
  * <hr>
  */
 
+
 #include "global.h"
 
+
 /*!
- * \brief Write DXF output to a file for an end of sequence marker.
+ * \brief Write DXF output to a file for an end of sequence marker
+ * (\c SEQEND).
  *
  * No fields.\n
- * This entity marks the end of vertices (Vertex type name) for a Polyline,
- * or the end of Attribute entities (Attrib type name) for an Insert entity
- * that has Attributes (indicated by 66 group present and nonzero in Insert
- * entity).
+ * This entity marks the end of vertices (Vertex type name) for a 
+ * Polyline (\c POLYLINE), a Light Wight Polyline (\c LWPOLYLINE)
+ * or the end of Attribute entities (Attrib type name) for an Insert
+ * entity (\c INSERT) that has Attributes (indicated by 66 group present
+ * and nonzero).
  */
 int
-dxf_write_endseq
+dxf_seqend_write
 (
         FILE *fp
                 /*!< file pointer to output file (or device). */
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_endseq () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_seqend_write () function.\n", __FILE__, __LINE__);
 #endif
-        fprintf (fp, "  0\nENDSEQ\n");
+        fprintf (fp, "  0\nSEQEND\n");
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_endseq () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_seqend_write () function.\n", __FILE__, __LINE__);
 #endif
-		return (EXIT_SUCCESS);
+        return (EXIT_SUCCESS);
 }
+
 
 /* EOF */
