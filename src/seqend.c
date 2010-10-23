@@ -43,6 +43,9 @@
  * or the end of Attribute entities (Attrib type name) for an Insert
  * entity (\c INSERT) that has Attributes (indicated by 66 group present
  * and nonzero).
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_seqend_write
