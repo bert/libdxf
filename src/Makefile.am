@@ -10,6 +10,8 @@ libdxf_la_SOURCES = \
   view.h     \
   vertex.h     \
   vertex.c     \
+  util.h    \
+  util.c	\
   ucs.h     \
   trace.h     \
   trace.c     \
@@ -26,6 +28,7 @@ libdxf_la_SOURCES = \
   shape.c     \
   seqend.c     \
   seqend.h     \
+  section.h     \
   section.c     \
   polyline.h     \
   polyline.c     \
@@ -34,6 +37,7 @@ libdxf_la_SOURCES = \
   param.h     \
   object.h     \
   object.c     \
+  lwpolyline.h     \
   lwpolyline.c     \
   ltype.h     \
   ltype.c     \
@@ -48,6 +52,7 @@ libdxf_la_SOURCES = \
   hatch.h     \
   hatch.c     \
   global.h     \
+  file.h     \
   file.c     \
   eof.h     \
   eof.c     \
@@ -72,10 +77,7 @@ libdxf_la_SOURCES = \
   arc.h     \
   arc.c     \
   appid.h     \
-  appid.c    \
-  section.h    \
-  util.h    \
-  util.c
+  appid.c
 
 libdxf_la_CFLAGS = -Wall
 
