@@ -24,6 +24,8 @@ libdxf_la_SOURCES = \
   solid.c     \
   shape.h     \
   shape.c     \
+  seqend.c     \
+  seqend.h     \
   section.c     \
   polyline.h     \
   polyline.c     \
@@ -52,7 +54,6 @@ libdxf_la_SOURCES = \
   entity.h     \
   entity.c     \
   endtab.c     \
-  endseq.c     \
   ellipse.h     \
   ellipse.c     \
   dim.h     \
