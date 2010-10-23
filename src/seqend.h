@@ -1,7 +1,7 @@
 /*!
  * \file seqend.h
  * \author Copyright (C) 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Header file for a DXF end of sequence marker (\c ENDSEQ).
+ * \brief Header file for a DXF end of sequence marker (\c SEQEND).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -54,6 +54,13 @@ dxf_seqend
                  * This code is not saved in a DXF file.\n
                  * Group code = 2. */
 } DxfSeqend, * DxfSeqendPtr;
+
+
+int
+dxf_seqend_write
+(
+        FILE *fp
+);
 
 
 #endif /* _SEQEND_H */

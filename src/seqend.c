@@ -1,7 +1,7 @@
 /*!
  * \file seqend.c
  * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief DXF end of sequence marker (\c ENDSEQ).
+ * \brief DXF end of sequence marker (\c SEQEND).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -30,7 +30,7 @@
  */
 
 
-#include "global.h"
+#include "seqend.h"
 
 
 /*!
