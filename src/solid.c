@@ -160,6 +160,10 @@ dxf_solid_read
 #endif
         char *temp_string = NULL;
 
+        if (!dxf_solid)
+        {
+                dxf_solid = dxf_solid_new ();
+        }
         (*line_number)++;
         fscanf (fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
