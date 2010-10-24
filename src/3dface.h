@@ -93,6 +93,8 @@ dxf_3dface
 } Dxf3dface, * Dxf3dfacePtr;
 
 
+Dxf3dface *
+dxf_3dface_new ();
 int
 dxf_3dface_write
 (

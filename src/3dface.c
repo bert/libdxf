@@ -34,6 +34,41 @@
 
 
 /*!
+ * \brief Allocate memory for a \c Dxf3dface.
+ *
+ * Fill the memory contents with zeros.
+ */
+Dxf3dface *
+dxf_3dface_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dface_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        Dxf3dface *dxf_3dface = NULL;
+        size_t size;
+
+        size = sizeof (Dxf3dface);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_3dface = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_3dface_new () could not allocate memory for a Dxf3dface struct.\n");
+                dxf_3dface = NULL;
+        }
+        else
+        {
+                memset (dxf_3dface, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_3dface);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a 3D face entity (\c 3DFACE).
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
