@@ -240,10 +240,10 @@ dxf_solid_read
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->x2);
                 }
-                else if (strcmp (temp_string, "20") == 0)
+                else if (strcmp (temp_string, "22") == 0)
                 {
                         /* Now follows a string containing the
-                         * Y-coordinate of the center point. */
+                         * Y-coordinate of the point. */
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->y2);
                 }
