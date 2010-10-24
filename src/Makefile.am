@@ -77,7 +77,9 @@ libdxf_la_SOURCES = \
   arc.h     \
   arc.c     \
   appid.h     \
-  appid.c
+  appid.c	\
+  3dface.h	\
+  3dface.c
 
 libdxf_la_CFLAGS = -Wall
 
