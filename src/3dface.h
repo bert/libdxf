@@ -95,6 +95,11 @@ dxf_3dface
 
 Dxf3dface *
 dxf_3dface_new ();
+Dxf3dface *
+dxf_3dface_init
+(
+        Dxf3dface *dxf_3dface
+);
 int
 dxf_3dface_write
 (

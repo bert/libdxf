@@ -69,6 +69,57 @@ dxf_3dface_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c 3DFACE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+Dxf3dface *
+dxf_3dface_init
+(
+        Dxf3dface *dxf_3dface
+                /*!< DXF 3dface entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dface_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_3dface = dxf_3dface_new ();
+        if (dxf_3dface == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_3dface_init () could not allocate memory for a Dxf3dface struct.\n");
+              return (NULL);
+        }
+        dxf_3dface->common.id_code = 0;
+        dxf_3dface->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_3dface->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_3dface->x0 = 0.0;
+        dxf_3dface->y0 = 0.0;
+        dxf_3dface->z0 = 0.0;
+        dxf_3dface->x1 = 0.0;
+        dxf_3dface->y1 = 0.0;
+        dxf_3dface->z1 = 0.0;
+        dxf_3dface->x2 = 0.0;
+        dxf_3dface->y2 = 0.0;
+        dxf_3dface->z2 = 0.0;
+        dxf_3dface->x3 = 0.0;
+        dxf_3dface->y3 = 0.0;
+        dxf_3dface->z3 = 0.0;
+        dxf_3dface->common.thickness = 0.0;
+        dxf_3dface->common.color = DXF_COLOR_BYLAYER;
+        dxf_3dface->common.paperspace = DXF_MODELSPACE;
+        dxf_3dface->flag = 0;
+        dxf_3dface->common.acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_3dface);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a 3D face entity (\c 3DFACE).
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
