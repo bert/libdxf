@@ -1514,7 +1514,7 @@ SEQEND    No fields. This entity marks the end of vertices (Vertex
 
 3DFACE    Four points defining the corners of the face: (10, 20, 
           30), (11, 21, 31), (12, 22, 32), and (13, 23, 33). 70 
-          (invisible           edge flags -optional 0). If only 
+          (invisible edge flags -optional 0). If only 
           three points are entered (forming a triangular face), the 
           third and fourth points will be the same. The meanings of 
           the bit-coded "invisible edge flags" are shown in the 
