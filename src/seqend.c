@@ -55,11 +55,13 @@ dxf_seqend_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_seqend_write () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_seqend_write () function.\n",
+                __FILE__, __LINE__);
 #endif
         fprintf (fp, "  0\nSEQEND\n");
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_seqend_write () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_seqend_write () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
