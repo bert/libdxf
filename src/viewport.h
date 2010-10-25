@@ -199,6 +199,10 @@ dxf_viewport
 } DxfViewport, * DxfViewportPtr;
 
 
+DxfViewport *
+dxf_viewport_new ();
+
+
 #endif /* _VIEWPORT_H */
 
 

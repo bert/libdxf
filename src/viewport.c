@@ -33,4 +33,39 @@
 #include "viewport.h"
 
 
+/*!
+ * \brief Allocate memory for a \c DxfViewport.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfViewport *
+dxf_viewport_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_viewport_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfViewport *dxf_viewport = NULL;
+        size_t size;
+
+        size = sizeof (DxfViewport);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_viewport = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_viewport_new () could not allocate memory for a DxfViewport struct.\n");
+                dxf_viewport = NULL;
+        }
+        else
+        {
+                memset (dxf_viewport, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_viewport_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_viewport);
+}
+
+
 /* EOF */
