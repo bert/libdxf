@@ -211,6 +211,11 @@
  */
 #define DXF_DEFAULT_TEXTSTYLE "STANDARD"
 
+/*!
+ * \brief The maximum number of layers in a dxf drawing file.
+ */
+#define DXF_MAX_LAYERS 2048
+
 
 #endif /* _GLOBAL_H */
 

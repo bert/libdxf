@@ -7,6 +7,8 @@ lib_LTLIBRARIES = \
 
 libdxf_la_SOURCES = \
   vport.h     \
+  viewport.h	\
+  viewport.c	\
   view.h     \
   vertex.h     \
   vertex.c     \
