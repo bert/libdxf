@@ -70,7 +70,7 @@ dxf_viewport
         double height;
                 /*!< Height of the viewport in paper space units.\n
                  * Group code = 41. */
-        int status_field;
+        int status;
                 /*!< Viewport status field.\n
                  * The value of the viewport status field is interpreted
                  * as follows:\n
@@ -93,12 +93,12 @@ dxf_viewport
                 /*!< Application name.\n
                  * This field will always be the string "ACAD".\n
                  * Group code = 1001. */
-        char *viewport_data_begin;
+        char *viewport_data;
                 /*!< Begin viewport data.\n
                  * This field will always be the string "MVIEW".\n
                  * Other data groups may appear in the future.\n
                  * Group code = 1000. */
-        char *begin_window_descriptor;
+        char *window_descriptor_begin;
                 /*!< Begin window descriptor data.\n
                  * This field will always be the string "{".\n
                  * Group code 1002. */
@@ -192,7 +192,7 @@ dxf_viewport
                 /*!< End frozen layer list.\n
                  * This field will always be the string "}".\n
                  * Group code = 1002. */
-        char *viewport_data_end;
+        char *window_descriptor_end;
                 /*!< End viewport data.\n
                  * This field will always be the string "}".\n
                  * Group code = 1002. */
@@ -201,6 +201,11 @@ dxf_viewport
 
 DxfViewport *
 dxf_viewport_new ();
+DxfViewport *
+dxf_viewport_init
+(
+        DxfViewport *dxf_viewport
+);
 
 
 #endif /* _VIEWPORT_H */
