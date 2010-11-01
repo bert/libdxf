@@ -187,7 +187,16 @@ dxf_viewport
                 /*!< The names of layers frozen in this viewport.\n
                  * This list may include Xref-dependent layers.\n
                  * Any number of 1003 groups may appear here.\n
-                 * Group code = 1003. */
+                 * Group code = 1003.\n
+                 * \todo Implement the number of layers in a more
+                 * efficient way.\n
+                 * A lot of memory is consumed by reserving for
+                 * DXF_MAX_LAYERS instead of the actual existing number
+                 * of layers.\n
+                 * Maybe this can be solved by dynamically allocating a
+                 * reasonable number of layers during compile time, and
+                 * (re-allocating) shrinking when the actual number of
+                 * layers is known during run time. */
         char *frozen_layer_list_end;
                 /*!< End frozen layer list.\n
                  * This field will always be the string "}".\n
