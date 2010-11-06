@@ -215,6 +215,15 @@ dxf_viewport_init
 (
         DxfViewport *dxf_viewport
 );
+int
+dxf_viewport_read
+(
+        char *filename,
+        FILE *fp,
+        int *line_number,
+        DxfViewport *dxf_viewport,
+        int acad_version_number
+);
 
 
 #endif /* _VIEWPORT_H */
