@@ -777,11 +777,39 @@ dxf_viewport_read
                                         filename, *line_number);
                                 fprintf (stderr, "    unexpected content in string.\n");
                         }
-                        /*! \todo Implement the list of frozen layers
-                         * here (in a proper way). */
-                        /* Now follows a string containing a group code. */
+                        /* Now follows a string containing a group code
+                         * value of "1003". */
                         (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
+                        if (strcmp (temp_string, "1003") == 0)
+                        {
+                                /* Start a loop reading all frozen layer
+                                 * names and bail out when a group code
+                                 * with a value of "1002" is encountered
+                                 * or DXF_MAX_LAYERS is reached.*/
+                                int j = 0;
+                                do
+                                {
+                                        (*line_number)++;
+                                        fscanf (fp, "%s\n", dxf_viewport->frozen_layers[j]);
+                                        j++;
+                                        /* Now follows a string containing a group code. */
+                                        (*line_number)++;
+                                        fscanf (fp, "%s\n", temp_string);
+                                }
+                                while ((strcmp (temp_string, "1003") == 0)
+                                        || (j < DXF_MAX_LAYERS));
+                        }
+                        else
+                        {
+                                /* Either we found an empty list or we
+                                 * have found an exception. */
+                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
+                                        filename, *line_number);
+                                fprintf (stderr, "    unexpected end of frozen layer list found.\n");
+                        }
+                        /* Now we are expecting temp_string to contain a
+                         * group code value of "1002". */
                         if (strcmp (temp_string, "1002") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
