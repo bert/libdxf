@@ -38,14 +38,6 @@
 #include "entity.h"
 
 
-#define DXF_VIEWPORT_APP_NAME "ACAD"
-#define DXF_VIEWPORT_DATA "MVIEW"
-#define DXF_VIEWPORT_WINDOW_BEGIN "{"
-#define DXF_VIEWPORT_WINDOW_END "}"
-#define DXF_VIEWPORT_FROZEN_LAYER_LIST_BEGIN "{"
-#define DXF_VIEWPORT_FROZEN_LAYER_LIST_END "}"
-
-
 /*!
  * \brief DXF definition of an AutoCAD viewport entity (\c VIEWPORT).
  *

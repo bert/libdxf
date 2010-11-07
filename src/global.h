@@ -216,6 +216,42 @@
  */
 #define DXF_MAX_LAYERS 2048
 
+/*!
+ * \brief Application name.\n
+ * This field will always be the string "ACAD".
+ */
+#define DXF_VIEWPORT_APP_NAME "ACAD"
+
+/*!
+ * \brief Begin viewport data.\n
+ * This field will always be the string "MVIEW".\n
+ */
+#define DXF_VIEWPORT_DATA "MVIEW"
+
+/*!
+ * \brief Begin window data descriptor token.\n
+ * This field will always be the string "{".
+ */
+#define DXF_VIEWPORT_WINDOW_BEGIN "{"
+
+/*!
+ * \brief End window data descriptor token.\n
+ * This field will always be the string "}".
+ */
+#define DXF_VIEWPORT_WINDOW_END "}"
+
+/*!
+ * \brief Begin token of the frozen layer list.\n
+ * This field will always be the string "{".
+ */
+#define DXF_VIEWPORT_FROZEN_LAYER_LIST_BEGIN "{"
+
+/*!
+ * \brief End token of the frozen layer list.\n
+ * This field will always be the string "}".
+ */
+#define DXF_VIEWPORT_FROZEN_LAYER_LIST_END "}"
+
 
 #endif /* _GLOBAL_H */
 
