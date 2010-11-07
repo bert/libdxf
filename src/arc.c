@@ -490,6 +490,7 @@ dxf_arc_write_lowlevel
         return (EXIT_SUCCESS);
 }
 
+
 /*!
  * \brief Write DXF output to a file for an arc entity.
  *
