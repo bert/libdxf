@@ -851,12 +851,12 @@ dxf_viewport_read
                 /* End of sequential ordered data fields. */
                 else 
                 {
-                        fprintf (stderr, "Warning: in dxf_arc_read () unknown string tag found while reading from: %s in line: %d.\n",
+                        fprintf (stderr, "Warning: in dxf_viewport_read () unknown string tag found while reading from: %s in line: %d.\n",
                                 filename, *line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_read () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_viewport_read () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
