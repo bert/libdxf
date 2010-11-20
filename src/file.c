@@ -159,6 +159,7 @@ dxf_read_file
                 {
                         fprintf (stderr, "Warning: unexpected string encountered while reading line %d from: %s.\n",
                                 line_number, filename);
+                        return (EXIT_FAILURE);
                 }
         }
         fclose (fp);
