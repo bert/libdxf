@@ -74,7 +74,7 @@ dxf_read_section
                 while (!feof (fp))
                 {
                         line_number++;
-                        fscanf (fp, "%s\n", temp_string);
+                        dxf_read_line (temp_string, fp);
                         if (ferror (fp))
                         {
                                 fprintf (stderr, "Error: while reading line %d from: %s.\n",
