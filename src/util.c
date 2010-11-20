@@ -83,34 +83,45 @@ dxf_read_init(void)
 int
 dxf_read_line (char * temp_string, FILE *fp)
 {
-    line_number++;
-    return fscanf (fp, "%[^\n]\n", temp_string); 
+    int ret;
+    
+    ret = fscanf (fp, "%[^\n]\n", temp_string); 
+    if (ret)
+    {
+        line_number++;
+    }
+    return ret;
 }
-/* EOF */
 
+/*!
+ * \brief Uses of fscanf with other features.
+ * 
+ * Uses fscanf for file parsing, but also tracks the lines it reads;
+ * 
+ */
 int
 dxf_read_scanf (FILE *fp, const char *template, ...)
 {
     int ret;
     char * search_result;
-
     va_list lst;
     va_start (lst, template);
     ret = vfscanf (fp, template, lst);
     va_end(lst);
-    if (ret > 0)
+    if (ret)
     {
         /*
         * we have to find each \n from the template to know how many lines will we read;
         */
         search_result = (char *)template;
+        
         while (TRUE)
         {
             search_result = strstr(search_result, "\n");
             if (search_result == NULL)
                 break;
             line_number++;
-            *search_result++;
+            *++search_result;
         }
     }
 
@@ -128,3 +139,4 @@ dxf_read_get_line_count(void)
 {
     return line_number;
 }
+/* EOF */
