@@ -56,7 +56,7 @@ dxf_read_is_int (int type)
 int
 dxf_read_is_string (int type)
 {
-        if (type >= 0 && type < 9)
+        if (type >= 0 && type <= 9)
                 return TRUE;
         else
                 return FALSE;
