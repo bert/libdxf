@@ -1039,7 +1039,7 @@ dxf_read_header_parse_string
         {
                 ret = FOUND;
                 fscanf (fp, "%i\n%s\n", &n, tstring);
-                if (n==1 || n==3)
+                if (dxf_read_is_string(n))
                 {
                         *value_string = strdup(tstring);
                 }
@@ -1640,7 +1640,7 @@ dxf_read_header
         dxf_return_val_if_fail (ret, FALSE);
         /* turn the acad_version into an integer */
         acad_version_number= acad_version_from_string (dxf_header.AcadVer);
-
+    
         /* a loop to read all the header with no particulary order */
         while (!feof(fp))
         {
