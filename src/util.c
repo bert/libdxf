@@ -32,6 +32,7 @@
 #include <stdarg.h>
 #include "util.h"
 
+static int line_number;
 
 int
 dxf_read_is_double (int type)
@@ -63,6 +64,17 @@ dxf_read_is_string (int type)
 }
 
 /*!
+ * \brief Inits the line number counter.
+ * 
+ * Sets the line counting as 0.
+ * 
+ */
+void
+dxf_read_init(void)
+{
+        line_number = 0;
+}
+/*!
  * \brief Reads a line from a file.
  * 
  * Reads the next line from \c fp file and stores it into the temp_string.
@@ -71,6 +83,7 @@ dxf_read_is_string (int type)
 int
 dxf_read_line (char * temp_string, FILE *fp)
 {
+    line_number++;
     return fscanf (fp, "%[^\n]\n", temp_string); 
 }
 /* EOF */
@@ -79,9 +92,39 @@ int
 dxf_read_scanf (FILE *fp, const char *template, ...)
 {
     int ret;
+    char * search_result;
+
     va_list lst;
     va_start (lst, template);
     ret = vfscanf (fp, template, lst);
     va_end(lst);
+    if (ret > 0)
+    {
+        /*
+        * we have to find each \n from the template to know how many lines will we read;
+        */
+        search_result = (char *)template;
+        while (TRUE)
+        {
+            search_result = strstr(search_result, "\n");
+            if (search_result == NULL)
+                break;
+            line_number++;
+            *search_result++;
+        }
+    }
+
+    return ret;
 }
 
+/*!
+ * \brief Returns the number of lines read;
+ * 
+ * Returns the number of lines read;
+ * 
+ */
+int
+dxf_read_get_line_count(void)
+{
+    return line_number;
+}
