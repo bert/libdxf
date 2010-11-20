@@ -1,6 +1,7 @@
 
 SUBDIRS = \
-	src
+	src\
+	tests
 	
 libdxfdocdir = ${prefix}/doc
 
