@@ -143,7 +143,7 @@ dxf_read_file
                                 {
                                          /* We have found the beginning of a
                                           * SECTION. */
-                                        dxf_read_section (filename, fp, __DXF_LINE_READ__);
+                                        dxf_read_section (filename, fp);
                                 }
                                 else
                                 {

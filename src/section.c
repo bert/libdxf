@@ -43,10 +43,8 @@ dxf_read_section
 (
         char *filename,
                 /*!< filename of input file (or device). */
-        FILE *fp,
+        FILE *fp
                 /*!< filepointer to the input file (or device). */
-        int line_number
-                /*!< current line number in the input file (or device). */
 )
 {
         char temp_string[255];
@@ -60,12 +58,11 @@ dxf_read_section
                         filename);
                 return (EXIT_FAILURE);
         }
-        line_number++;
         dxf_read_line (temp_string, fp);
         if (ferror (fp))
         {
                 fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
-                        filename, line_number);
+                        filename, __DXF_LINE_READ__);
                 fclose (fp);
                 return (EXIT_FAILURE);
         }
@@ -73,12 +70,11 @@ dxf_read_section
         {
                 while (!feof (fp))
                 {
-                        line_number++;
                         dxf_read_line (temp_string, fp);
                         if (ferror (fp))
                         {
                                 fprintf (stderr, "Error: while reading line %d from: %s.\n",
-                                        line_number, filename);
+                                        __DXF_LINE_READ__, filename);
                                 fclose (fp);
                                 return (EXIT_FAILURE);
                         }
@@ -122,12 +118,12 @@ dxf_read_section
         else
         {
                 fprintf (stderr, "Warning: unexpected string encountered while reading line %d from: %s.\n",
-                        line_number, filename);
+                        __DXF_LINE_READ__, filename);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_section () function.\n", __FILE__, __LINE__);
 #endif
-        return (line_number);
+        return EXIT_SUCCESS;
 }
 
 
