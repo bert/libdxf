@@ -41,6 +41,7 @@
 #include "thumbnail.h"
 #include "eof.h"
 #include "file.h"
+#include "util.h"
 
 
 char *dxf_entities_list;
@@ -109,7 +110,7 @@ dxf_read_file
         line_number = 1;
         while (!ferror (fp))
         {
-                fscanf (fp, "%s\n", temp_string);
+                dxf_read_line (temp_string, fp);
                 if (ferror (fp))
                 {
                         fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
@@ -124,7 +125,7 @@ dxf_read_file
                          * front of dxf data (sections, tables, entities etc.
                          */
                         line_number++;
-                        fscanf (fp, "%s\n", temp_string);
+                        dxf_read_line (temp_string, fp);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else if (strcmp (temp_string, "0") == 0)
@@ -133,7 +134,7 @@ dxf_read_file
                         while (!feof (fp))
                         {
                                 line_number++;
-                                fscanf (fp, "%s\n", temp_string);
+                                dxf_read_line (temp_string, fp);
                                 if (ferror (fp))
                                 {
                                         fprintf (stderr, "Error: while reading line %d from: %s.\n",

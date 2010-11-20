@@ -62,5 +62,15 @@ dxf_read_is_string (int type)
                 return FALSE;
 }
 
-
+/*!
+ * \brief Reads a line from a file.
+ * 
+ * Reads the next line from \c fp file and stores it into the temp_string.
+ * 
+ */
+int
+dxf_read_line (char * temp_string, FILE *fp)
+{
+    return fscanf (fp, "%[A-Za-z0-9. ]\n", temp_string); 
+}
 /* EOF */

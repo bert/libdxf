@@ -32,6 +32,7 @@
 
 #include "global.h"
 #include "header.h"
+#include "util.h"
 
 
 /*!
@@ -60,7 +61,7 @@ dxf_read_section
                 return (EXIT_FAILURE);
         }
         line_number++;
-        fscanf (fp, "%s\n", temp_string);
+        dxf_read_line (temp_string, fp);
         if (ferror (fp))
         {
                 fprintf (stderr, "Error: while reading from: %s in line: %d.\n",

@@ -56,7 +56,7 @@ enum return_state { FAIL = 0, SUCCESS, FOUND };
 int dxf_read_is_double (int type);
 int dxf_raed_is_int (int type);
 int dxf_read_is_string (int type);
-
+int dxf_read_line (char * temp_string, FILE *fp);
 
 #endif /* UTIL_H */
 
