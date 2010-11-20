@@ -33,7 +33,7 @@
 #ifndef UTIL_H
 #define UTIL_H
 
-
+#include <stdarg.h>
 #include "global.h"
 
 
@@ -57,7 +57,7 @@ int dxf_read_is_double (int type);
 int dxf_raed_is_int (int type);
 int dxf_read_is_string (int type);
 int dxf_read_line (char * temp_string, FILE *fp);
-
+int dxf_read_scanf (FILE *fp, const char *template, ...);
 #endif /* UTIL_H */
 
 

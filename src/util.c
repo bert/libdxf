@@ -29,7 +29,7 @@
  * <hr>
  */
 
-
+#include <stdarg.h>
 #include "util.h"
 
 
@@ -74,3 +74,14 @@ dxf_read_line (char * temp_string, FILE *fp)
     return fscanf (fp, "%[^\n]\n", temp_string); 
 }
 /* EOF */
+
+int
+dxf_read_scanf (FILE *fp, const char *template, ...)
+{
+    int ret;
+    va_list lst;
+    va_start (lst, template);
+    ret = vfscanf (fp, template, lst);
+    va_end(lst);
+}
+
