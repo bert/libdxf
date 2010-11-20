@@ -71,6 +71,6 @@ dxf_read_is_string (int type)
 int
 dxf_read_line (char * temp_string, FILE *fp)
 {
-    return fscanf (fp, "%[A-Za-z0-9. ]\n", temp_string); 
+    return fscanf (fp, "%[^\n]\n", temp_string); 
 }
 /* EOF */
