@@ -1038,7 +1038,7 @@ dxf_read_header_parse_string
         if (strcmp (temp_string, header_var) == 0 && version_expression)
         {
                 ret = FOUND;
-                fscanf (fp, "%i\n%s\n", &n, tstring);
+                dxf_read_scanf (fp, "%i\n%s\n", &n, tstring);
                 if (dxf_read_is_string(n))
                 {
                         *value_string = strdup(tstring);
@@ -1072,7 +1072,7 @@ dxf_read_header_parse_int
         /* test for header_var and version number. -3 makes it version agnostic */
         if (strcmp (temp_string, header_var) == 0  && version_expression)
         {
-                f = fscanf (fp, "%i\n%i\n", &n, &tvar);
+                f = dxf_read_scanf (fp, "%i\n%i\n", &n, &tvar);
                 if (f > 0 && dxf_read_is_int(n))
                 {
                         *value = tvar;
@@ -1118,7 +1118,7 @@ dxf_read_header_parse_n_double
                 {
                         dvar = va_arg(dlist, double *);
                         /* prepare the string to read all vars */
-                        f = fscanf (fp, "%d\n%'lf\n", &n, &tvar);
+                        f = dxf_read_scanf (fp, "%d\n%'lf\n", &n, &tvar);
                         if (f > 0 && dxf_read_is_double (n))
                         {
                                 *dvar = tvar;
@@ -1633,7 +1633,7 @@ dxf_read_header
         int n, acad_version_number, ret;
 
         /* first of all we MUST read the version number */
-        fscanf (fp, "%i\n%s\n", &n, temp_string);
+        dxf_read_scanf (fp, "%i\n%s\n", &n, temp_string);
         ret = dxf_read_header_parse_string (fp, temp_string,
                                             "$ACADVER", &dxf_header.AcadVer,
                                             TRUE);
@@ -1645,7 +1645,7 @@ dxf_read_header
         while (!feof(fp))
         {
                 /* reads the next header content */
-                fscanf (fp, "%i\n%s\n", &n, temp_string);
+                dxf_read_scanf (fp, "%i\n%s\n", &n, temp_string);
                 /* if it is a valid line */
                 if (n == 9)
                 {
