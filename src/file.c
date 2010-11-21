@@ -61,7 +61,7 @@ char *dxf_fscanf
         const char * template
 )
 {
-        char temp_string[255];
+        char temp_string[DXF_MAX_STRING_LENGTH];
 
         fscanf (fp, template, temp_string);
         return strdup (temp_string);
@@ -84,7 +84,7 @@ dxf_read_file
                 /*!< filename of input file (or device). */
 )
 {
-        char temp_string[255];
+        char temp_string[DXF_MAX_STRING_LENGTH];
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_file () function.\n", __FILE__, __LINE__);
 #endif
