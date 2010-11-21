@@ -41,6 +41,8 @@ dxf_header
                 /*!< group code = 5. */
         char *AcadVer;
                 /*!< */
+        int _AcadVer;
+                /*!< */
         int AcadMaintVer;
                 /*!< */
         char *DWGCodePage;

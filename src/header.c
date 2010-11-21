@@ -1641,6 +1641,9 @@ dxf_read_header
         /* turn the acad_version into an integer */
         acad_version_number= acad_version_from_string (dxf_header.AcadVer);
     
+        /* \FIXME: stores the autocad version as int */
+        dxf_header._AcadVer = acad_version_number;
+    
         /* a loop to read all the header with no particulary order */
         while (!feof(fp))
         {
