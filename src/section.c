@@ -48,7 +48,7 @@ dxf_read_section
                 /*!< filepointer to the input file (or device). */
 )
 {
-        char temp_string[255];
+        char temp_string[DXF_MAX_STRING_LENGTH];
         DxfHeader dxf_header;
         DxfBlock dxf_block;
 #if DEBUG
