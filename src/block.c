@@ -131,8 +131,6 @@ dxf_block_read
         char *filename,
                 /*!< filename of input file (or device). */
         FILE *fp,
-                /*!< filepointer to the input file (or device). */
-        int *line_number,
                 /*!< current line number in the input file (or device). */
         DxfBlock *dxf_block,
                 /*!< DXF block entity. */
@@ -174,7 +172,6 @@ dxf_block_read
                 if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing a block name. */
-                        (*line_number)++;
                         dxf_read_scanf (fp, "%s\n", dxf_block->block_name);
                 }
                 else if (strcmp (temp_string, "5") == 0)

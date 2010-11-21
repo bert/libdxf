@@ -98,9 +98,9 @@ dxf_read_section
                         else if (strcmp (temp_string, "BLOCKS") == 0)
                         {
                                 /* We have found the begin of the BLOCKS sction. */
-                                int line_number = 0;
+
                                 /* FIXME experimental usage of block_read */
-                                dxf_block_read ( filename, fp, &line_number,
+                                dxf_block_read ( filename, fp,
                                                 &dxf_block,
                                                 dxf_header._AcadVer);
                         }
