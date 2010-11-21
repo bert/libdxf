@@ -42,8 +42,6 @@
 int
 dxf_read_section
 (
-        char *filename,
-                /*!< filename of input file (or device). */
         DxfFile *fp
                 /*!< DXF file handle of input file (or device). */
 )
@@ -80,7 +78,7 @@ dxf_read_section
                                 /* We have found the begin of the BLOCKS sction. */
 
                                 /* FIXME experimental usage of block_read */
-                                dxf_block_read ( filename, fp->fp,
+                                dxf_block_read (fp->fp,
                                                 &dxf_block,
                                                 dxf_header._AcadVer);
                         }
@@ -104,7 +102,7 @@ dxf_read_section
         else
         {
                 fprintf (stderr, "Warning: unexpected string encountered while reading line %d from: %s.\n",
-                        fp->line_number, filename);
+                        fp->line_number, fp->filename);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_section () function.\n", __FILE__, __LINE__);

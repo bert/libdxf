@@ -95,7 +95,7 @@ dxf_read_file
                                 {
                                          /* We have found the beginning of a
                                           * SECTION. */
-                                        dxf_read_section (filename, fp);
+                                        dxf_read_section (fp);
                                 }
                                 else
                                 {
@@ -109,7 +109,7 @@ dxf_read_file
                 else
                 {
                         fprintf (stderr, "Warning: unexpected string encountered while reading line %d from: %s.\n",
-                                fp->line_number , filename);
+                                fp->line_number , fp->filename);
                         return (EXIT_FAILURE);
                 }
         }

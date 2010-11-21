@@ -128,8 +128,6 @@ dxf_block_init
 int
 dxf_block_read
 (
-        char *filename,
-                /*!< filename of input file (or device). */
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
         DxfBlock *dxf_block,
@@ -274,7 +272,7 @@ dxf_block_read
                 else
                 {
                         fprintf (stderr, "Warning: in dxf_block_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                filename, fp->line_number);
+                                fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
