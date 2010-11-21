@@ -115,7 +115,7 @@ int
 dxf_block_read
 (
         char *filename,
-        FILE *fp,
+        DxfFile *fp,
         DxfBlock *dxf_block,
         int acad_version_number
 );

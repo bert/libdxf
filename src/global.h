@@ -62,6 +62,19 @@
 
 #define FALSE 0
 
+
+/*!
+ * \brief DXF definition of a DXF file.
+ */
+typedef struct
+dxf_file
+{
+    FILE *fp; /*!< File handle */
+    char *filename; /*!< Dxf filename */
+    int line_number; /*!< Last line read */
+} DxfFile, * DxfFilePtr;
+
+
 /* AutoCAD(TM) versions by name */
 #define AutoCAD_10 1006
 #define AutoCAD_11 1009

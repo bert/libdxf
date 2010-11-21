@@ -29,10 +29,10 @@
  * <hr>
  */
 
+
 #include <stdarg.h>
 #include "util.h"
 
-static int line_number;
 
 int
 dxf_read_is_double (int type)
@@ -64,16 +64,60 @@ dxf_read_is_string (int type)
 }
 
 /*!
- * \brief Inits the line number counter.
+ * \brief Opens a DxfFile, does error checking and resets the line number
+ * counter.
  * 
- * Sets the line counting as 0.
+ * Reset the line counting to 0.
  * 
  */
-void
-dxf_read_init(void)
+DxfFile *
+dxf_read_init (const char *filename)
 {
-        line_number = 0;
+        DxfFile * dxf_file = NULL;
+        FILE *fp;
+        if (!filename)
+        {
+                fprintf (stderr, "Error: filename is not initialised (NULL pointer).\n");
+                return (NULL);
+        }
+        if (strcmp (filename, "") == 0)
+        {
+                fprintf (stderr, "Error: filename contains an empty string.\n");
+                return (NULL);
+        }
+        fp = fopen (filename, "r");
+        if (!fp)
+        {
+                fprintf (stderr, "Error: could not open file: %s for reading (NULL pointer).\n",
+                        filename);
+                return (NULL);
+        }
+        dxf_file = malloc (sizeof(DxfFile));
+        dxf_file->fp = fp;
+        dxf_file->filename = strdup(filename);
+        dxf_file->line_number = 0;
+        /*! \todo FIXME: dxf header and blocks need initialized ?
+        dxf_header_init (dxf_file->dxf_header);
+        dxf_block_init (dxf_file->dxf_block);
+        */
+        return dxf_file;
 }
+
+
+void
+dxf_read_close (DxfFile *dxf_file)
+{
+        /*! \todo FIXME: how to free other sub structures */
+        if (dxf_file != NULL)
+        {
+                fclose (dxf_file->fp);
+                free (dxf_file->filename);
+                free (dxf_file);
+                dxf_file = NULL;
+        }
+}
+
+
 /*!
  * \brief Reads a line from a file.
  * 
@@ -81,16 +125,22 @@ dxf_read_init(void)
  * 
  */
 int
-dxf_read_line (char * temp_string, FILE *fp)
+dxf_read_line (char * temp_string, DxfFile *fp)
 {
-    int ret;
-    
-    ret = fscanf (fp, "%[^\n]\n", temp_string); 
-    if (ret)
-    {
-        line_number++;
-    }
-    return ret;
+        int ret;
+
+        ret = fscanf (fp->fp, "%[^\n]\n", temp_string);
+        if (ferror (fp->fp))
+        {
+                fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
+                        fp->filename, fp->line_number);
+                return (EXIT_FAILURE);
+        }
+        if (ret)
+        {
+                fp->line_number++;
+        }
+        return ret;
 }
 
 /*!
@@ -100,43 +150,37 @@ dxf_read_line (char * temp_string, FILE *fp)
  * 
  */
 int
-dxf_read_scanf (FILE *fp, const char *template, ...)
+dxf_read_scanf (DxfFile *fp, const char *template, ...)
 {
-    int ret;
-    char * search_result;
-    va_list lst;
-    va_start (lst, template);
-    ret = vfscanf (fp, template, lst);
-    va_end(lst);
-    if (ret)
-    {
-        /*
-        * we have to find each \n from the template to know how many lines will we read;
-        */
-        search_result = (char *)template;
-        
-        while (TRUE)
+        int ret;
+        char * search_result;
+        va_list lst;
+        va_start (lst, template);
+        ret = vfscanf (fp->fp, template, lst);
+        if (ferror (fp->fp))
         {
-            search_result = strstr(search_result, "\n");
-            if (search_result == NULL)
-                break;
-            line_number++;
-            *++search_result;
+                fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
+                        fp->filename, fp->line_number);
+                return (EXIT_FAILURE);
         }
-    }
-
-    return ret;
+        va_end (lst);
+        if (ret)
+        {
+                /*
+                 * we have to find each \n from the template to know how many lines will we read;
+                 */
+                search_result = (char *) template;
+                while (TRUE)
+                {
+                        search_result = strstr (search_result, "\n");
+                        if (search_result == NULL)
+                                break;
+                        fp->line_number++;
+                        *++search_result;
+                }
+        }
+        return ret;
 }
 
-/*!
- * \brief Returns the number of lines read;
- * 
- * Returns the number of lines read;
- * 
- */
-int
-dxf_read_get_line_count(void)
-{
-    return line_number;
-}
+
 /* EOF */

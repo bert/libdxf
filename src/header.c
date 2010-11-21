@@ -781,7 +781,9 @@ int
 dxf_write_header
 (
         FILE *fp,
+                /*!< DXF file handle of input file (or device). */
         DxfHeader dxf_header,
+                /*!< DXF header entity. */
         int acad_version_number
 )
 {
@@ -1023,7 +1025,8 @@ dxf_write_header
 static int
 dxf_read_header_parse_string
 (
-        FILE *fp,  /*!< DXF file handler.\n */
+        DxfFile *fp,
+                /*!< DXF file handle of input file (or device). */
         const char *temp_string,
         const char *header_var,
         char **value_string,
@@ -1058,7 +1061,8 @@ dxf_read_header_parse_string
 static int
 dxf_read_header_parse_int
 (
-        FILE *fp,  /*!< DXF file handler.\n */
+        DxfFile *fp,
+                /*!< DXF file handle of input file (or device). */
         const char *temp_string,
         const char *header_var,
         int *value,
@@ -1093,7 +1097,8 @@ dxf_read_header_parse_int
 static int
 dxf_read_header_parse_n_double
 (
-        FILE *fp,  /*!< DXF file handler.\n */
+        DxfFile *fp,
+                /*!< DXF file handle of input file (or device). */
         const char *temp_string,
         const char *header_var,
         int version_expression,
@@ -1146,8 +1151,10 @@ dxf_read_header_parse_n_double
 static int
 dxf_read_header_parser
 (
-        FILE *fp,  /*!< DXF file handler.\n */
-        DxfHeader dxf_header,  /*!< DXF header to be initialized.\n */
+        DxfFile *fp,
+                /*!< DXF file handle of input file (or device). */
+        DxfHeader dxf_header,
+                /*!< DXF header to be initialized.\n */
         char * temp_string,
         int acad_version_number
 )
@@ -1157,8 +1164,8 @@ dxf_read_header_parser
 #endif
         int ret;
         /*!
-        * \todo: add some kind of control to what we have already read and check
-        if we read all header data.
+        * \todo: add some kind of control to what we have already read
+        * and check if we read all header data.
         */
         ret = dxf_read_header_parse_int (fp, temp_string, "$ACADMAINTVER",
                                          &dxf_header.AcadMaintVer,
@@ -1298,7 +1305,7 @@ dxf_read_header_parser
                                          || (acad_version_number == AC1014));
         dxf_return(ret);
 
-        /* FIXME: changed from AC1012 to AC1015 */
+        /*! \todo FIXME: changed from AC1012 to AC1015 */
         ret = dxf_read_header_parse_int (fp, temp_string, "$DISPSILH",
                                          &dxf_header.DispSilH,
                                          acad_version_number <= AC1015);
@@ -1622,8 +1629,10 @@ dxf_read_header_parser
 int
 dxf_read_header
 (
-        FILE *fp,  /*!< DXF file handler.\n */
-        DxfHeader dxf_header  /*!< DXF header to be initialized.\n */
+        DxfFile *fp,
+                /*!< DXF file handle of input file (or device). */
+        DxfHeader dxf_header
+                /*!< DXF header to be initialized.\n */
 )
 {
 #if DEBUG
@@ -1645,7 +1654,7 @@ dxf_read_header
         dxf_header._AcadVer = acad_version_number;
     
         /* a loop to read all the header with no particulary order */
-        while (!feof(fp))
+        while (!feof(fp->fp))
         {
                 /* reads the next header content */
                 dxf_read_scanf (fp, "%i\n%s\n", &n, temp_string);
