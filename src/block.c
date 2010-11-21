@@ -150,7 +150,7 @@ dxf_block_read
                 dxf_block = dxf_block_new ();
         }
         (*line_number)++;
-        fscanf (fp, "%[^\n]", temp_string);
+        fscanf (fp, "%[^\n]\n", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
                 if (ferror (fp))
