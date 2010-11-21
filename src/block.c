@@ -143,7 +143,7 @@ dxf_block_read
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_read () function.\n",
                 __FILE__, __LINE__);
 #endif
-        char *temp_string = NULL;
+        char temp_string[255];
 
         if (!dxf_block)
         {
