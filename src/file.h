@@ -40,7 +40,6 @@
 #include "table.h"
 
 
-char *dxf_fscanf (FILE *fp, const char * template);
 int dxf_read_file (char *filename);
 int dxf_write_file (FILE *fp, DxfHeader dxf_header, DxfClass dxf_classes_list, DxfTable dxf_tables_list, int acad_version_number);
 
