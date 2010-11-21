@@ -33,6 +33,7 @@
 #include "global.h"
 #include "header.h"
 #include "util.h"
+#include "block.h"
 
 
 /*!
@@ -49,6 +50,7 @@ dxf_read_section
 {
         char temp_string[255];
         DxfHeader dxf_header;
+        DxfBlock dxf_block;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_section () function.\n", __FILE__, __LINE__);
 #endif
@@ -96,7 +98,11 @@ dxf_read_section
                         else if (strcmp (temp_string, "BLOCKS") == 0)
                         {
                                 /* We have found the begin of the BLOCKS sction. */
-                                /*! \todo Invoke a function for parsing the \c BLOCKS section. */ 
+                                int line_number = 0;
+                                /* FIXME experimental usage of block_read */
+                                dxf_block_read ( filename, fp, &line_number,
+                                                &dxf_block,
+                                                dxf_header._AcadVer);
                         }
                         else if (strcmp (temp_string, "ENTITIES") == 0)
                         {
