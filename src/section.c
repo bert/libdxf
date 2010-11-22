@@ -79,9 +79,12 @@ dxf_read_section
                                 /* We have found the begin of the BLOCKS sction. */
 
                                 /* FIXME experimental usage of block_read */
-                                dxf_block_read (fp->fp,
-                                                &dxf_block,
-                                                dxf_header._AcadVer);
+//                                dxf_read_blocks
+//                                (
+//                                        fp->fp,
+//                                        &dxf_blocks_list,
+//                                        dxf_header._AcadVer
+//                                );
                         }
                         else if (strcmp (temp_string, "ENTITIES") == 0)
                         {
