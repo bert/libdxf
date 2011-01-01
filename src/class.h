@@ -69,6 +69,8 @@
 
 #ifndef CLASS_H
 #define CLASS_H
+
+
 #include "global.h"
 
 /*!
@@ -154,4 +156,6 @@ dxf_class_write_endclass
 
 
 #endif /* CLASS_H */
+
+
 /* EOF */
