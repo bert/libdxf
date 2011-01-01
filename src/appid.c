@@ -40,6 +40,41 @@
 
 
 /*!
+ * \brief Allocate memory for a \c DxfAppid.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfAppid *
+dxf_appid_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_appid_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfAppid *dxf_appid = NULL;
+        size_t size;
+
+        size = sizeof (DxfAppid);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_appid = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_appid_new () could not allocate memory for a DxfAppid struct.\n");
+                dxf_appid = NULL;
+        }
+        else
+        {
+                memset (dxf_appid, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_appid);
+}
+
+
+/*!
  * \brief Write DXF output for an \c APPID entity.
  */
 static int
