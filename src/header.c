@@ -1015,7 +1015,7 @@ dxf_write_header
         if (acad_version_number >= AC1018) fprintf (fp, "  9\n$INTERSECTIONCOLOR\n 70\n%i\n", dxf_header.InterSectionColor);
         if (acad_version_number >= AC1018) fprintf (fp, "  9\n$DIMASSOC\n280\n%i\n", dxf_header.DimASSOC);
         if (acad_version_number >= AC1018) fprintf (fp, "  9\n$PROJECTNAME\n  1\n%s\n", dxf_header.ProjectName);
-        dxf_write_endsection (fp);
+        dxf_section_write_endsection (fp);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_header2 () function.\n", __FILE__, __LINE__);
 #endif

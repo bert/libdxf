@@ -138,11 +138,12 @@ dxf_section_write
         return (EXIT_SUCCESS);
 }
 
+
 /*!
  * \brief Write DXF output to a file for an end of section marker.
  */
 int
-dxf_write_endsection
+dxf_section_write_endsection
 (
         FILE *fp
 )
@@ -154,7 +155,7 @@ dxf_write_endsection
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_endsection () function.\n", __FILE__, __LINE__);
 #endif
-		return (EXIT_SUCCESS);
+        return (EXIT_SUCCESS);
 }
 
 /* EOF */
