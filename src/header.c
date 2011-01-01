@@ -1,6 +1,6 @@
 /*!
  * \file header.c
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  * \brief DXF header section.
  *
  * <hr>
@@ -792,7 +792,7 @@ dxf_write_header
 #endif
         char *dxf_entity_name = strdup ("HEADER");
 
-        dxf_write_section (fp, dxf_entity_name);
+        dxf_section_write (fp, dxf_entity_name);
         fprintf (fp, "  9\n$ACADVER\n  1\n%s\n", dxf_header.AcadVer);
         if (acad_version_number >= AC1014) fprintf (fp, "  9\n$ACADMAINTVER\n 70\n%i\n", dxf_header.AcadMaintVer);
         if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DWGCODEPAGE\n  3\n%s\n", dxf_header.DWGCodePage);

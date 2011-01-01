@@ -1,6 +1,6 @@
 /*!
  * \file table.c
- * \author Copyright (C) 2009, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF table entity (\c TABLE).
  *
  * <hr>
@@ -147,12 +147,12 @@ dxf_write_tables
         int dxf_tables_list_iter;
         int dxf_tables_list_last_iter = 0;
 
-        dxf_write_section (fp, dxf_section_name);
+        dxf_section_write (fp, dxf_section_name);
         dxf_tables_list_iter = 1;
-	/* \FIXME
-	 * find_last_iter does not exist
+        /* \FIXME
+         * find_last_iter does not exist
         dxf_tables_list_last_iter = find_last_iter (dxf_tables_list);
-	*/
+         */
         while (dxf_tables_list_iter !=  dxf_tables_list_last_iter)
         {
                 dxf_write_table

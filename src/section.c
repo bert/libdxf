@@ -122,20 +122,20 @@ dxf_section_read
  * \brief Write DXF output to a file for a section marker.
  */
 int
-dxf_write_section
+dxf_section_write
 (
         FILE *fp,
         char *section_name
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_section () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_section_write () function.\n", __FILE__, __LINE__);
 #endif
         fprintf (fp, "  0\nSECTION\n  2\n%s\n", section_name);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_section () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_section_write () function.\n", __FILE__, __LINE__);
 #endif
-		return (EXIT_SUCCESS);
+        return (EXIT_SUCCESS);
 }
 
 /*!

@@ -1,6 +1,6 @@
 /*!
  * \file section.h
- * \author Copyright (C) 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Definition of a DXF section entity (\c SECTION).
  *
  * <hr>
@@ -35,7 +35,7 @@
 
 
 int dxf_section_read (DxfFile *fp);
-int dxf_write_section (FILE *fp, char *section_name);
+int dxf_section_write (FILE *fp, char *section_name);
 int dxf_write_endsection (FILE *fp);
 
 
