@@ -1,6 +1,6 @@
 /*!
  * \file section.c
- * \author Copyright (C) 2008, 2009, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2009, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF section entity (\c SECTION).
  *
  * <hr>
@@ -40,7 +40,7 @@
  * \brief Function reads a SECTION in a DXF file.
  */
 int
-dxf_read_section
+dxf_section_read
 (
         DxfFile *fp
                 /*!< DXF file handle of input file (or device). */
@@ -51,7 +51,7 @@ dxf_read_section
         DxfBlock dxf_block;
         char *dxf_entities_list = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_section () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_section_read () function.\n", __FILE__, __LINE__);
 #endif
         dxf_read_line (temp_string, fp);
         if (strcmp (temp_string, "2") == 0)
@@ -112,7 +112,7 @@ dxf_read_section
                         fp->line_number, fp->filename);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_section () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_section_read () function.\n", __FILE__, __LINE__);
 #endif
         return EXIT_SUCCESS;
 }

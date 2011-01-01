@@ -95,7 +95,7 @@ dxf_read_file
                                 {
                                          /* We have found the beginning of a
                                           * SECTION. */
-                                        dxf_read_section (fp);
+                                        dxf_section_read (fp);
                                 }
                                 else
                                 {
