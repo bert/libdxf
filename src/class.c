@@ -37,8 +37,45 @@
  * <hr>
  */
 
+
 #include "global.h"
 #include "class.h"
+
+
+/*!
+ * \brief Allocate memory for a \c DxfClass.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfClass *
+dxf_class_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_class_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfClass *dxf_class = NULL;
+        size_t size;
+
+        size = sizeof (DxfClass);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_class = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_class_new () could not allocate memory for a DxfClass struct.\n");
+                dxf_class = NULL;
+        }
+        else
+        {
+                memset (dxf_class, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_class_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_class);
+}
+
 
 /*!
  * \brief Write DXF output to a file for a class section.
@@ -114,6 +151,7 @@ dxf_class_write_lowlevel
         return (EXIT_SUCCESS);
 }
 
+
 /*!
  * \brief Write DXF output to a file for a class section.
  */
@@ -145,6 +183,7 @@ dxf_class_write
         return (EXIT_SUCCESS);
 }
 
+
 /*!
  * \brief Write DXF output to a file for an end of class section marker.
  */
@@ -163,5 +202,6 @@ dxf_class_write_endclass
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */
