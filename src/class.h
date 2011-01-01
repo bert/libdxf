@@ -140,6 +140,12 @@ dxf_class_write_lowlevel
         int was_a_proxy_flag,
         int is_an_entity_flag
 );
+int
+dxf_class_write
+(
+        FILE *fp,
+        DxfClass dxf_class
+);
 
 
 #endif /* CLASS_H */

@@ -118,7 +118,7 @@ dxf_class_write_lowlevel
  * \brief Write DXF output to a file for a class section.
  */
 int
-dxf_write_class_struct
+dxf_class_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -127,7 +127,8 @@ dxf_write_class_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_class_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_class_write () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("CLASS");
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -138,9 +139,10 @@ dxf_write_class_struct
         fprintf (fp, "280\n%d\n", dxf_class.was_a_proxy_flag);
         fprintf (fp, "281\n%d\n", dxf_class.is_an_entity_flag);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_class_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_class_write () function.\n",
+                __FILE__, __LINE__);
 #endif
-		return (EXIT_SUCCESS);
+        return (EXIT_SUCCESS);
 }
 
 /*!
