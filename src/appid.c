@@ -110,6 +110,96 @@ dxf_appid_init
 
 
 /*!
+ * \brief Read data from a DXF file into an \c APPID entity.
+ *
+ * The last line read from file contained the string "APPID". \n
+ * Now follows some data for the \c ARC, to be terminated with a "  0"
+ * string announcing the following entity, or the end of the \c ENTITY
+ * section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c dxf_appid. \n
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_appid_read
+(
+        char *filename,
+                /*!< filename of input file (or device). */
+        FILE *fp,
+                /*!< filepointer to the input file (or device). */
+        int *line_number,
+                /*!< current line number in the input file (or device). */
+        DxfAppid *dxf_appid,
+                /*!< DXF appid entity. */
+        int acad_version_number
+                /*!< AutoCAD version number. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_appid_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *temp_string = NULL;
+
+        if (!dxf_appid)
+        {
+                dxf_appid = dxf_appid_new ();
+        }
+        (*line_number)++;
+        fscanf (fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp))
+                {
+                        fprintf (stderr, "Error in dxf_appid_read () while reading from: %s in line: %d.\n",
+                                filename, *line_number);
+                        fclose (fp);
+                        return (EXIT_FAILURE);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (*line_number)++;
+                        fscanf (fp, "%x\n", &dxf_appid->id_code);
+                }
+                else if (strcmp (temp_string, "2") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", dxf_appid->application_name);
+                }
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing the
+                         * standard flag value. */
+                        (*line_number)++;
+                        fscanf (fp, "%d\n", &dxf_appid->standard_flag);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr, "Warning: in dxf_appid_read () unknown string tag found while reading from: %s in line: %d.\n",
+                                filename, *line_number);
+                }
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Write DXF output for an \c APPID entity.
  */
 static int

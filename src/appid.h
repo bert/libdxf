@@ -83,6 +83,15 @@ dxf_appid_init
 (
         DxfAppid *dxf_appid
 );
+int
+dxf_appid_read
+(
+        char *filename,
+        FILE *fp,
+        int *line_number,
+        DxfAppid *dxf_appid,
+        int acad_version_number
+);
 static int
 dxf_appid_write_lowlevel
 (
