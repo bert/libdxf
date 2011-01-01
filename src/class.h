@@ -146,6 +146,11 @@ dxf_class_write
         FILE *fp,
         DxfClass dxf_class
 );
+int
+dxf_class_write_endclass
+(
+        FILE *fp
+);
 
 
 #endif /* CLASS_H */

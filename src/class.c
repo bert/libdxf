@@ -146,22 +146,22 @@ dxf_class_write
 }
 
 /*!
- * \brief Write DXF output to a file for an end of class section.
+ * \brief Write DXF output to a file for an end of class section marker.
  */
 int
-dxf_write_endclass
+dxf_class_write_endclass
 (
         FILE *fp
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_endclass () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_class_write_endclass () function.\n", __FILE__, __LINE__);
 #endif
         fprintf (fp, "  0\nENDSEC\n");
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_endclass () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_class_write_endclass () function.\n", __FILE__, __LINE__);
 #endif
-		return (EXIT_SUCCESS);
+        return (EXIT_SUCCESS);
 }
 
 /* EOF */
