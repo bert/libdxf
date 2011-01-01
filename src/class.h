@@ -1,7 +1,7 @@
 /*!
  * \file class.h
- * \author Copyright (C) 2009, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Defintion of a DXF class entity (\c CLASS).
+ * \author Copyright (C) 2009, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \brief Header file for a DXF class entity (\c CLASS).
  *
  * The group codes described in this chapter are found only in DXF files.\n
  * The CLASSES section holds the information for application-defined classes
@@ -127,6 +127,20 @@ dxf_class
                  * can reside in the BLOCKS or ENTITIES section.\n
                  * If 0, instances may appear only in the OBJECTS section. */
 } DxfClass, * DxfClassPtr;
+
+
+int
+dxf_class_write_lowlevel
+(
+        FILE *fp,
+        char *record_name,
+        char *class_name,
+        char *app_name,
+        int proxy_cap_flag,
+        int was_a_proxy_flag,
+        int is_an_entity_flag
+);
+
 
 #endif /* CLASS_H */
 /* EOF */

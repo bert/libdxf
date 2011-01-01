@@ -1,7 +1,7 @@
 /*!
  * \file class.c
- * \author Copyright (C) 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief DXF class entity (\c CLASS).
+ * \author Copyright (C) 2009, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \brief Functions for a DXF class entity (\c CLASS).
  *
  * The group codes described in this chapter are found only in DXF files.\n
  * The CLASSES section holds the information for application-defined classes
@@ -48,7 +48,7 @@
  * AutoCAD DXF release 2000.
  */
 int
-dxf_write_class
+dxf_class_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -96,7 +96,8 @@ dxf_write_class
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_class () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_class_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("CLASS");
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -107,9 +108,10 @@ dxf_write_class
         fprintf (fp, "280\n%d\n", was_a_proxy_flag);
         fprintf (fp, "281\n%d\n", is_an_entity_flag);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_class () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_class_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
 #endif
-		return (EXIT_SUCCESS);
+        return (EXIT_SUCCESS);
 }
 
 /*!
