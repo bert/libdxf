@@ -1,7 +1,7 @@
 /*!
  * \file appid.c
- * \author Copyright (C) 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief DXF application identity entity (\c APPID).
+ * \author Copyright (C) 2009, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \brief Functions for a DXF application identity entity (\c APPID).
  *
  * A DXF \c APPID entity contains data concerning the application registered
  * with the drawing involved.\n
@@ -43,7 +43,7 @@
  * \brief Write DXF output for an \c APPID entity.
  */
 static int
-dxf_write_appid
+dxf_appid_write_lowlevel
 (
         FILE *fp,
                 /*!< File pointer to output file (or device). */
@@ -73,14 +73,17 @@ dxf_write_appid
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_appid () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_appid_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("APPID");
 
         if (strcmp (application_name, "") == 0)
         {
-                fprintf (stderr, "[File: %s: line: %d] Warning: empty application_name string for the %s entity with id-code: %x.\n", __FILE__, __LINE__, dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to default layer.\n", dxf_entity_name);
+                fprintf (stderr, "[Error in dxf_appid_write_lowlevel () empty application_name string for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    %s entity is relocated to default layer.\n",
+                        dxf_entity_name);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
         if (id_code != -1)
@@ -90,7 +93,8 @@ dxf_write_appid
         fprintf (fp, "  2\n%s\n", application_name);
         fprintf (fp, " 70\n%d\n", standard_flag);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_appid () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }

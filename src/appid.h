@@ -1,7 +1,7 @@
 /*!
  * \file appid.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Definition of a DXF application identity entity (\c APPID).
+ * \author Copyright (C) 2008, 2009, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \brief Header file for a DXF application identity entity (\c APPID).
  *
  * A DXF \c APPID entity contains data concerning the application registered
  * with the drawing involved.\n
@@ -74,6 +74,17 @@ dxf_appid
                  *      was edited.\n
                  * Group code = 70. */
 } DxfAppid, * DxfAppidPtr;
+
+
+static int
+dxf_appid_write_lowlevel
+(
+        FILE *fp,
+        int acad_version_number,
+        int id_code,
+        char *application_name,
+        int standard_flag
+);
 
 
 #endif /* __APPID_H_INCLUDED__ */
