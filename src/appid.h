@@ -85,6 +85,12 @@ dxf_appid_write_lowlevel
         char *application_name,
         int standard_flag
 );
+int
+dxf_appid_write
+(
+        FILE *fp,
+        DxfAppid dxf_appid
+);
 
 
 #endif /* __APPID_H_INCLUDED__ */

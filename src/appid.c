@@ -80,7 +80,7 @@ dxf_appid_write_lowlevel
 
         if (strcmp (application_name, "") == 0)
         {
-                fprintf (stderr, "[Error in dxf_appid_write_lowlevel () empty application_name string for the %s entity with id-code: %x.\n",
+                fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n",
                         dxf_entity_name, id_code);
                 fprintf (stderr, "    %s entity is relocated to default layer.\n",
                         dxf_entity_name);
@@ -104,7 +104,7 @@ dxf_appid_write_lowlevel
  * \brief Write DXF output to a file for an \c APPID entity.
  */
 int
-dxf_write_appid_struct
+dxf_appid_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -113,13 +113,16 @@ dxf_write_appid_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_appid_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_appid_write () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("APPID");
         if (dxf_appid.application_name == NULL)
         {
-                fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_appid.id_code);
-                fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);
+                fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_appid.id_code);
+                fprintf (stderr, "         %s entity is discarded from output.\n",
+                        dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -130,7 +133,8 @@ dxf_write_appid_struct
         fprintf (fp, "  2\n%s\n", dxf_appid.application_name);
         fprintf (fp, " 70\n%d\n", dxf_appid.standard_flag);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_appid_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_write () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
