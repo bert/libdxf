@@ -75,6 +75,41 @@ dxf_appid_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c APPID
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfAppid *
+dxf_appid_init
+(
+        DxfAppid *dxf_appid
+                /*!< DXF application id entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_appid_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_appid = dxf_appid_new ();
+        if (dxf_appid == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_appid_init () could not allocate memory for a DxfAppid struct.\n");
+              return (NULL);
+        }
+        dxf_appid->id_code = 0;
+        dxf_appid->application_name = strdup ("");
+        dxf_appid->standard_flag = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_appid);
+}
+
+
+/*!
  * \brief Write DXF output for an \c APPID entity.
  */
 static int

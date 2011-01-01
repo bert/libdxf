@@ -78,6 +78,11 @@ dxf_appid
 
 DxfAppid *
 dxf_appid_new ();
+DxfAppid *
+dxf_appid_init
+(
+        DxfAppid *dxf_appid
+);
 static int
 dxf_appid_write_lowlevel
 (
