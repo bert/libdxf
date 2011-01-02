@@ -1,7 +1,7 @@
 /*!
  * \file ellipse.h
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Definition of a DXF ellipse entity (\c ELLIPSE).
+ * \author Copyright (C) 2008, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \brief Header file for a DXF ellipse entity (\c ELLIPSE).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
