@@ -78,6 +78,44 @@ dxf_class_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c CLASS entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfClass *
+dxf_class_init
+(
+        DxfClass *dxf_class
+                /*!< DXF class entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_class_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_class = dxf_class_new ();
+        if (dxf_class == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_class_init () could not allocate memory for a DxfClass struct.\n");
+              return (NULL);
+        }
+        dxf_class->record_type = strdup ("");
+        dxf_class->record_name = strdup ("");
+        dxf_class->class_name = strdup ("");
+        dxf_class->app_name = strdup ("");
+        dxf_class->proxy_cap_flag = 0;
+        dxf_class->was_a_proxy_flag = 0;
+        dxf_class->is_an_entity_flag = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_class_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_class);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a class section.
  *
  * Each entry in the CLASSES section contains the groups described

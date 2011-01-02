@@ -133,6 +133,11 @@ dxf_class
 
 DxfClass *
 dxf_class_new ();
+DxfClass *
+dxf_class_init
+(
+        DxfClass *dxf_class
+);
 int
 dxf_class_write_lowlevel
 (
