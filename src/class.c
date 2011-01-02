@@ -116,6 +116,129 @@ dxf_class_init
 
 
 /*!
+ * \brief Read data from a DXF file into an \c CLASS entity.
+ *
+ * The last line read from file contained the string "CLASS". \n
+ * Now follows some data for the \c CLASS, to be terminated with a "  0"
+ * string announcing the following entity, or the end of the \c ENTITY
+ * section marker \c ENDCLASS. \n
+ * While parsing the DXF file store data in \c dxf_class. \n
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_class_read
+(
+        char *filename,
+                /*!< filename of input file (or device). */
+        FILE *fp,
+                /*!< filepointer to the input file (or device). */
+        int *line_number,
+                /*!< current line number in the input file (or device). */
+        DxfClass *dxf_class,
+                /*!< DXF class entity. */
+        int acad_version_number
+                /*!< AutoCAD version number. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_class_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *temp_string = NULL;
+
+        if (!dxf_class)
+        {
+                dxf_class = dxf_class_new ();
+        }
+        (*line_number)++;
+        fscanf (fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp))
+                {
+                        fprintf (stderr, "Error in dxf_class_read () while reading from: %s in line: %d.\n",
+                                filename, *line_number);
+                        fclose (fp);
+                        return (EXIT_FAILURE);
+                }
+                if (strcmp (temp_string, "0") == 0)
+                {
+                        /* Now follows a string containing a record type
+                         * number. */
+                        /*! \bug \c record_type has group code 0 which
+                         * will cause a parsing error and \c record_type
+                         * and other \c class variables  will not be
+                         * read. See the while condition above.
+                         */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", &dxf_class->record_type);
+                }
+                else if (strcmp (temp_string, "1") == 0)
+                {
+                        /* Now follows a string containing a record
+                         * name. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", dxf_class->record_name);
+                }
+                else if (strcmp (temp_string, "2") == 0)
+                {
+                        /* Now follows a string containing a class name.
+                         */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", dxf_class->class_name);
+                }
+                else if (strcmp (temp_string, "3") == 0)
+                {
+                        /* Now follows a string containing the
+                         * application name. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", &dxf_class->app_name);
+                }
+                else if (strcmp (temp_string, "90") == 0)
+                {
+                        /* Now follows a string containing the
+                         * proxy cap flag value. */
+                        (*line_number)++;
+                        fscanf (fp, "%d\n", &dxf_class->proxy_cap_flag);
+                }
+                else if (strcmp (temp_string, "280") == 0)
+                {
+                        /* Now follows a string containing the
+                         * was a proxy flag value. */
+                        (*line_number)++;
+                        fscanf (fp, "%d\n", &dxf_class->was_a_proxy_flag);
+                }
+                else if (strcmp (temp_string, "281") == 0)
+                {
+                        /* Now follows a string containing the
+                         * is an entity flag value. */
+                        (*line_number)++;
+                        fscanf (fp, "%d\n", &dxf_class->is_an_entity_flag);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr, "Warning: in dxf_class_read () unknown string tag found while reading from: %s in line: %d.\n",
+                                filename, *line_number);
+                }
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_class_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a class section.
  *
  * Each entry in the CLASSES section contains the groups described

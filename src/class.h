@@ -139,6 +139,15 @@ dxf_class_init
         DxfClass *dxf_class
 );
 int
+dxf_class_read
+(
+        char *filename,
+        FILE *fp,
+        int *line_number,
+        DxfClass *dxf_class,
+        int acad_version_number
+);
+int
 dxf_class_write_lowlevel
 (
         FILE *fp,
