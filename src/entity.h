@@ -1,7 +1,7 @@
 /*!
  * \file entity.h
- * \author Copyright (C) 2008, 2009, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Header file for DXF entity functions.
+ * \author Copyright (C) 2008, 2009, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \brief Header file for DXF entities.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
