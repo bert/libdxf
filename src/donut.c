@@ -86,6 +86,7 @@ dxf_donut_write_lowlevel
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_draw_donut () function.\n",
                 __FILE__, __LINE__);
 #endif
+        char *dxf_entity_name = strdup ("POLYLINE");
         double start_width;
         double end_width;
 
@@ -105,12 +106,6 @@ dxf_donut_write_lowlevel
                         dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (vertices_follow != 1)
-        {
-                fprintf (stderr, "Error in dxf_polyline_write_lowlevel () vertices follow flag has an invalid value for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                return (EXIT_FAILURE);
-        }
         /* Draw a polyline primitive. */
         dxf_polyline_write_lowlevel
         (
@@ -121,13 +116,10 @@ dxf_donut_write_lowlevel
                 x0,
                 y0,
                 z0,
-                extr_x0,
-                extr_y0,
-                extr_z0,
                 thickness,
                 0.5 * start_width,
                 0.5 * end_width,
-                color, */
+                color,
                 1, /* vertices_follow, */
                 paperspace,
                 1, /* flag, */
