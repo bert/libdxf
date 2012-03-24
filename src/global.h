@@ -91,6 +91,7 @@ dxf_file
 #define AutoCAD_2009 1023
 #define AutoCAD_2010 1024
 #define AutoCAD_2011 1025
+#define AutoCAD_2012 1026
 #define AutoCAD_LT2 1009
 #define AutoCAD_LT95 1012
 
@@ -125,6 +126,8 @@ dxf_file
         /*!< AutoCAD 2010. */
 #define AC1025 1025
         /*!< AutoCAD 2011. */
+#define AC1026 1026
+        /*!< AutoCAD 2012. */
 
 /*!
  * The maximum of parameters in a \a DxfObject
