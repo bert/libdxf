@@ -1,11 +1,11 @@
 ======= ISSUES WITH LIBDXF =======
 
-All issues, bug reports and feature requests should go into the Lighthouse
-ticket application.
+All issues, bug reports and feature requests should go into the Launchpad 
+bug tracker.
 
-Lighthouse is to be found at:
+The Launchpad bug tracker is to be found at:
 
-http://pcb-fpw.lighthouseapp.com/projects/56840-libdxf/tickets?q=all
+https://bugs.launchpad.net/libdxf
 
 ======= STATISTICS =======
 
