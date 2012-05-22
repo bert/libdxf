@@ -82,7 +82,8 @@ dxf_file
 #define AutoCAD_13 1012
 #define AutoCAD_14 1014
 #define AutoCAD_2000 1015
-#define AutoCAD_2002 1016
+#define AutoCAD_2000i 1016
+#define AutoCAD_2002 1017
 #define AutoCAD_2004 1018
 #define AutoCAD_2005 1019
 #define AutoCAD_2006 1020
@@ -107,9 +108,9 @@ dxf_file
 #define AC1015 1015
         /*!< AutoCAD 2000. */
 #define AC1016 1016
-        /*!< AutoCAD 2002. */
+        /*!< AutoCAD 2000i. */
 #define AC1017 1017
-        /*!< AutoCAD version ?. */
+        /*!< AutoCAD version 2002. */
 #define AC1018 1018
         /*!< AutoCAD 2004. */
 #define AC1019 1019
