@@ -1,6 +1,6 @@
 /*!
  * \file block.c
- * \author Copyright (C) 2008, 2009, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Functions for a DXF block entity (\c BLOCK).
  *
  * <hr>
@@ -336,7 +336,7 @@ dxf_block_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_block () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_write_lowlevel () function.\n", __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("BLOCK");
         if (block_name == NULL)
@@ -390,7 +390,7 @@ dxf_block_write_lowlevel
         }
         fprintf (fp, " 70\n%d\n", block_type);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_block () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write_lowlevel () function.\n", __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -409,7 +409,7 @@ dxf_block_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_block2 () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_write () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("BLOCK");
@@ -474,7 +474,7 @@ dxf_block_write
         }
         fprintf (fp, " 70\n%d\n", dxf_block.block_type);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_block2 () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
@@ -491,11 +491,11 @@ int
 dxf_block_write_endblk (FILE *fp)
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_endblk () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_write_endblk () function.\n", __FILE__, __LINE__);
 #endif
         fprintf (fp, "  0\nENDBLK\n");
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_endblk () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write_endblk () function.\n", __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -514,11 +514,11 @@ dxf_block_write_table
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_blocks () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_write_table () function.\n", __FILE__, __LINE__);
 #endif
         /*! \todo Add code here. */
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_blocks () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write_table () function.\n", __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
