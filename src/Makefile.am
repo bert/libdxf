@@ -60,7 +60,6 @@ libdxf_la_SOURCES = \
   eof.c     \
   entity.h     \
   entity.c     \
-  endtab.c     \
   ellipse.h     \
   ellipse.c     \
   donut.c	\

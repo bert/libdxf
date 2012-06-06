@@ -1,6 +1,6 @@
 /*!
  * \file table.h
- * \author Copyright (C) 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Defintion of a DXF table entity (\c TABLE).
  *
  * The TABLES section contains several tables, each of which contain a
@@ -51,6 +51,8 @@
 
 #ifndef TABLE_H
 #define TABLE_H
+
+
 #include "global.h"
 
 
@@ -86,5 +88,18 @@ dxf_table_appid
                  * standard flag values. */
 } DxfTableAppid, * DxfTableAppidPtr;
 
+
+int
+dxf_table_write (FILE *fp, DxfTable dxf_table);
+int
+dxf_table_write_endtable (FILE *fp);
+int
+dxf_table_write_lowlevel (FILE *fp, int dxf_tables_list, int dxf_tables_list_iter, int acad_version_number);
+int
+dxf_table_write_tables (FILE *fp, int *dxf_tables_list, int acad_version_number);
+
+
 #endif /* TABLE_H */
+
+
 /* EOF */

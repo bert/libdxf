@@ -1,6 +1,6 @@
 /*!
  * \file table.c
- * \author Copyright (C) 2009, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief DXF table entity (\c TABLE).
  *
  * <hr>
@@ -37,46 +37,13 @@
 
 /*!
  * \brief Write DXF output to a file for a table section.
- *
- * \param [FILE *fp]: the file pointer to write to.
- * \return none.
- */
-int
-dxf_write_table
-(
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
-        int dxf_tables_list,
-                /*!< pointer to list of TABLES. */
-        int dxf_tables_list_iter,
-        
-        int acad_version_number
-                /*!< AutoCAD version number. */
-)
-{
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_table () function.\n", __FILE__, __LINE__);
-#endif
-        //char *dxf_entity_name = strdup ("TABLE");
-        
-        /*! \todo Add code here */
-        
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_table () function.\n", __FILE__, __LINE__);
-#endif
-		return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Write DXF output to a file for a table section.
  * 
  * \param [FILE *fp]: the file pointer to write to.
  * \param [DxfTable dxf_table]: the table to write to file.
  * \return none.
  */
 int
-dxf_write_table_struct
+dxf_table_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -85,16 +52,16 @@ dxf_write_table_struct
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_table_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_table_write () function.\n", __FILE__, __LINE__);
 #endif
         //char *dxf_entity_name = strdup ("TABLE");
         
         /*! \todo Add code here */
         
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_table_struct () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_table_write () function.\n", __FILE__, __LINE__);
 #endif
-		return (EXIT_SUCCESS);
+        return (EXIT_SUCCESS);
 }
 
 
@@ -105,24 +72,57 @@ dxf_write_table_struct
  * \return none.
  */
 int
-dxf_write_endtable
+dxf_table_write_endtable
 (
         FILE *fp
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_endtable () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_table_write_endtable () function.\n", __FILE__, __LINE__);
 #endif
         fprintf (fp, "  0\nENDTAB\n");
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_endtable () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_table_write_endtable () function.\n", __FILE__, __LINE__);
 #endif
-		return (EXIT_SUCCESS);
+        return (EXIT_SUCCESS);
 }
 
 
 /*!
- * \brief Function generates dxf output to a file for tables entities.
+ * \brief Write DXF output to a file for a table section.
+ *
+ * \param [FILE *fp]: the file pointer to write to.
+ * \return none.
+ */
+int
+dxf_table_write_lowlevel
+(
+        FILE *fp,
+                /*!< file pointer to output file (or device). */
+        int dxf_tables_list,
+                /*!< pointer to list of TABLES. */
+        int dxf_tables_list_iter,
+                /*!< . */
+        int acad_version_number
+                /*!< AutoCAD version number. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_table_write_lowlevel () function.\n", __FILE__, __LINE__);
+#endif
+        //char *dxf_entity_name = strdup ("TABLE");
+        
+        /*! \todo Add code here */
+        
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_table_write_lowlevel () function.\n", __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Function generates dxf output to a file for all tables entities.
  * 
  * \param [FILE *fp]: the file pointer to write to.
  * \param [int *dxf_tables_list]: pointer to a list of dxf tables.
@@ -130,7 +130,7 @@ dxf_write_endtable
  * \return none.
  */
 int
-dxf_write_tables
+dxf_table_write_tables
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -155,7 +155,7 @@ dxf_write_tables
          */
         while (dxf_tables_list_iter !=  dxf_tables_list_last_iter)
         {
-                dxf_write_table
+                dxf_table_write_lowlevel
                         (
                         fp,
                         *dxf_tables_list,
@@ -164,7 +164,7 @@ dxf_write_tables
                         );
                 dxf_tables_list_iter++;
         }
-        dxf_write_endtable (fp);
+        dxf_table_write_endtable (fp);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_tables () function.\n", __FILE__, __LINE__);
 #endif
