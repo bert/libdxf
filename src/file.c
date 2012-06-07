@@ -1,6 +1,6 @@
 /*!
  * \file file.c
- * \author Copyright (C) 2008, 2009, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  * \brief Functions for the handling of DXF files.
  *
  * <hr>
@@ -30,18 +30,7 @@
  */
 
 
-#include "global.h"
-#include "class.h"
-#include "header.h"
-#include "section.h"
-#include "table.h"
-#include "block.h"
-#include "entity.h"
-#include "object.h"
-#include "thumbnail.h"
-#include "eof.h"
 #include "file.h"
-#include "util.h"
 
 
 char *dxf_entities_list;
@@ -60,7 +49,7 @@ DxfThumbnail *dxf_thumbnail;
  * \c ENDSEC keyword is encountered and the invoked fuction returns here.
  */
 int
-dxf_read_file
+dxf_file_read
 (
         char *filename
                 /*!< filename of input file (or device). */
@@ -69,7 +58,7 @@ dxf_read_file
         char temp_string[DXF_MAX_STRING_LENGTH];
         DxfFile *fp;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_read_file () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_file_read () function.\n", __FILE__, __LINE__);
 #endif
         /* open the file */
         fp = dxf_read_init (filename);
@@ -115,7 +104,7 @@ dxf_read_file
         }
         dxf_read_close (fp);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_read_file () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_file_read () function.\n", __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -125,7 +114,7 @@ dxf_read_file
  * \brief Function generates dxf output to a file for a complete DXF file.
  */
 int
-dxf_write_file
+dxf_file_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -140,7 +129,7 @@ dxf_write_file
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_file () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_file_write () function.\n", __FILE__, __LINE__);
 #endif
         extern char *dxf_entities_list;
         extern char *dxf_objects_list;
@@ -154,9 +143,30 @@ dxf_write_file
         dxf_write_entities (dxf_entities_list, acad_version_number);
         dxf_write_objects (dxf_objects_list, acad_version_number);
         dxf_write_thumbnail (dxf_thumbnail, acad_version_number);
-        dxf_write_eof(fp);
+        dxf_file_write_eof(fp);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_file () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_file_write () function.\n", __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Write DXF output for an End Of File marker.
+ */
+int
+dxf_file_write_eof
+(
+        FILE *fp
+                /*!< file pointer to output file (or device). */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_file_write_eof () function.\n", __FILE__, __LINE__);
+#endif
+        fprintf (fp, "  0\nEOF\n");
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_file_write_eof () function.\n", __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }

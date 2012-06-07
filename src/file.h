@@ -1,6 +1,6 @@
 /*!
  * \file file.h
- * \author Copyright (C) 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2010 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  * \brief Header for the handling of DXF files.
  *
  * <hr>
@@ -35,13 +35,24 @@
 
 
 #include <stdio.h>
-#include "header.h"
+#include "block.h"
+#include "global.h"
 #include "class.h"
+#include "entity.h"
+#include "header.h"
+#include "object.h"
+#include "section.h"
 #include "table.h"
+#include "thumbnail.h"
+#include "util.h"
 
 
-int dxf_read_file (char *filename);
-int dxf_write_file (FILE *fp, DxfHeader dxf_header, DxfClass dxf_classes_list, DxfTable dxf_tables_list, int acad_version_number);
+int
+dxf_file_read (char *filename);
+int
+dxf_file_write (FILE *fp, DxfHeader dxf_header, DxfClass dxf_classes_list, DxfTable dxf_tables_list, int acad_version_number);
+int
+dxf_file_write_eof (FILE *fp);
 
 
 #endif /* FILE_H */

@@ -56,8 +56,6 @@ libdxf_la_SOURCES = \
   global.h     \
   file.h     \
   file.c     \
-  eof.h     \
-  eof.c     \
   entity.h     \
   entity.c     \
   ellipse.h     \

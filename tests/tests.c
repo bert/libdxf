@@ -38,7 +38,7 @@ int main (void)
      * Reads a dxf file using libdxf form examples dir.
      */
     /* Version 2000 */
-    if (dxf_read_file ("../examples/qcad-example_R2000.dxf"))
+    if (dxf_file_read ("../examples/qcad-example_R2000.dxf"))
         fprintf (stdout, "TESTS: R2000 exited with error\n");
     else
         fprintf (stdout, "TESTS: R2000 exited with no error\n");
