@@ -1,6 +1,8 @@
 /*!
  * \file text.h
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF text entity (\c TEXT).
  *
  * <hr>
@@ -28,6 +30,10 @@
  * For more details see http://www.autodesk.com .
  * <hr>
  */
+
+
+#ifndef _TEXT_H
+#define _TEXT_H
 
 
 #include "global.h"
@@ -173,6 +179,9 @@ dxf_text_write
         FILE *fp,
         DxfText dxf_text
 );
+
+
+#endif /* _ARC_H */
 
 
 /* EOF */
