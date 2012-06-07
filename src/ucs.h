@@ -1,6 +1,8 @@
 /*!
  * \file ucs.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF User Coordinate System entity (\c UCS).
  *
  * <hr>
@@ -29,7 +31,14 @@
  * <hr>
  */
 
+
+#ifndef _UCS_H
+#define _UCS_H
+
+
 #include "global.h"
+#include "entity.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD User Coordinate System entity.
@@ -82,5 +91,9 @@ dxf_ucs
                  *         read DXF files, and need not be set by programs that
                  *         write DXF files.\n */
 } DxfUcs, * DxfUcsPtr;
+
+
+#endif /* _UCS_H */
+
 
 /* EOF */
