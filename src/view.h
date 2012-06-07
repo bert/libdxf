@@ -1,6 +1,8 @@
 /*!
  * \file view.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF view entity (\c VIEW).
  *
  * <hr>
@@ -29,7 +31,13 @@
  * <hr>
  */
 
+#ifndef _VIEW_H
+#define _VIEW_H
+
+
 #include "global.h"
+#include "entity.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD view entity.
@@ -101,5 +109,9 @@ dxf_view
         int view_mode;
                 /*!< group code = 71. */
 } DxfView, * DxfViewPtr;
+
+
+#endif /* _VIEW_H */
+
 
 /* EOF */
