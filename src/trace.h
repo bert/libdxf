@@ -1,6 +1,6 @@
 /*!
  * \file trace.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Definition of a DXF trace entity (\c TRACE).
  *
  * <hr>
@@ -29,7 +29,14 @@
  * <hr>
  */
 
+
+#ifndef _TRACE_H
+#define _TRACE_H
+
+
 #include "global.h"
+#include "entity.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD trace entity.
@@ -90,5 +97,15 @@ dxf_trace
                 /*!< group code = 67\n
                  * optional, defaults to 0 (modelspace). */
 } DxfTrace, * DxfTracePtr;
+
+
+int
+dxf_trace_write (FILE *fp, DxfTrace dxf_trace);
+int
+dxf_trace_write_lowlevel (FILE *fp, int id_code, char *linetype, char *layer, double x0, double y0, double z0, double x1, double y1, double z1, double x2, double y2, double z2, double x3, double y3, double z3, double thickness, int color, int paperspace);
+
+
+#endif /* _TRACE_H */
+
 
 /* EOF */
