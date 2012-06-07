@@ -1,6 +1,8 @@
 /*!
  * \file file.c
+ *
  * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ *
  * \brief Functions for the handling of DXF files.
  *
  * <hr>
@@ -142,7 +144,7 @@ dxf_file_write
         dxf_block_write_table (dxf_blocks_list, acad_version_number);
         dxf_write_entities (dxf_entities_list, acad_version_number);
         dxf_write_objects (dxf_objects_list, acad_version_number);
-        dxf_write_thumbnail (dxf_thumbnail, acad_version_number);
+        dxf_thumbnail_write (dxf_thumbnail, acad_version_number);
         dxf_file_write_eof(fp);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_file_write () function.\n", __FILE__, __LINE__);

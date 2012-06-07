@@ -1,6 +1,8 @@
 /*!
  * \file thumbnail.c
- * \author Copyright (C) 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2009 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Functions for a DXF thumbnail.
  *
  * <hr>
@@ -37,7 +39,7 @@
  * \brief Write a thumbnail to a DXF file.
  */
 int
-dxf_write_thumbnail
+dxf_thumbnail_write
 (
         DxfThumbnail *dxf_thumbnail,
                 /*!< the thumbnail to write to the output file. */
@@ -46,15 +48,15 @@ dxf_write_thumbnail
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_thumbnail () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_thumbnail_write () function.\n", __FILE__, __LINE__);
 #endif
         /*!
          * \todo Add code here
          */
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_thumbnail () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_thumbnail_write () function.\n", __FILE__, __LINE__);
 #endif
-		return (EXIT_SUCCESS);
+        return (EXIT_SUCCESS);
 }
 
 

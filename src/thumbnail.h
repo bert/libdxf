@@ -1,6 +1,8 @@
 /*!
  * \file thumbnail.h
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Header file for DXF thumbnail (\c THUMBNAIL) functions.
  *
  * <hr>
@@ -30,8 +32,8 @@
  */
 
 
-#ifndef __THUMBNAIL_H_INCLUDED__
-#define __THUMBNAIL_H_INCLUDED__
+#ifndef _THUMBNAIL_H
+#define _THUMBNAIL_H
 
 
 #include "global.h"
@@ -53,10 +55,11 @@ dxf_thumbnail
 } DxfThumbnail;
 
 
-int dxf_write_thumbnail (DxfThumbnail *dxf_thumbnail, int acad_version_number);
+int
+dxf_thumbnail_write (DxfThumbnail *dxf_thumbnail, int acad_version_number);
 
 
-#endif /* __THUMBNAIL_H_INCLUDED__ */
+#endif /* _THUMBNAIL_H */
 
 
 /* EOF */
