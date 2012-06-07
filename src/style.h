@@ -1,6 +1,8 @@
 /*!
  * \file style.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF (text) style entity \c STYLE.
  *
  * <hr>
@@ -29,7 +31,15 @@
  * <hr>
  */
 
+
+#ifndef _STYLE_H
+#define _STYLE_H
+
+
 #include "global.h"
+#include "entity.h"
+#include "file.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD (text) style.
@@ -82,5 +92,9 @@ dxf_style
                  * 2 = text is backward (mirrored in X)\n
                  * 4 = text is upside down (mirrored in Y). */
 } DxfStyle, * DxfStylePtr;
+
+
+#endif /* _STYLE_H */
+
 
 /* EOF */
