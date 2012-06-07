@@ -1,6 +1,8 @@
 /*!
  * \file section.c
- * \author Copyright (C) 2008, 2009, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief DXF section entity (\c SECTION).
  *
  * <hr>
@@ -30,10 +32,7 @@
  */
 
 
-#include "global.h"
-#include "header.h"
-#include "util.h"
-#include "block.h"
+#include "section.h"
 
 
 /*!

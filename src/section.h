@@ -1,6 +1,8 @@
 /*!
  * \file section.h
- * \author Copyright (C) 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2010 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF section entity (\c SECTION).
  *
  * <hr>
@@ -32,6 +34,12 @@
 
 #ifndef SECTION_H
 #define SECTION_H
+
+
+#include "global.h"
+#include "header.h"
+#include "util.h"
+#include "block.h"
 
 
 int dxf_section_read (DxfFile *fp);
