@@ -1,6 +1,8 @@
 /*!
  * \file vport.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF viewport entity (\c VPORT).
  *
  * <hr>
@@ -29,7 +31,14 @@
  * <hr>
  */
 
+
+#ifndef _VPORT_H
+#define _VPORT_H
+
+
 #include "global.h"
+#include "entity.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD viewport entity.
@@ -151,5 +160,9 @@ dxf_vport
                 /*!< AutoCAD version number. */
 
 } DxfVPort, * DxfVPortPtr;
+
+
+#endif /* _VPORT_H */
+
 
 /* EOF */
