@@ -1,6 +1,8 @@
 /*!
  * \file param.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF parameter entity.
  *
  * <hr>
@@ -29,7 +31,13 @@
  * <hr>
  */
 
+
+#ifndef _PARAM_H
+#define _PARAM_H
+
+
 #include "global.h"
+
 
 /*!
  * \brief DXF parameter definition.
@@ -46,5 +54,9 @@ dxf_param
         char S[DXF_MAX_STRING_LENGTH];
                 /*!< string value. */
 } DxfParam;
+
+
+#endif /* _PARAM_H */
+
 
 /* EOF */
