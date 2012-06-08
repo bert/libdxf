@@ -1,6 +1,8 @@
 /*!
  * \file ltype.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF ltype entity.
  *
  * <hr>
@@ -72,6 +74,10 @@ dxf_ltype
         int number_of_dash_length_items;
                 /*!< group code = 73. */
 } DxfLType, * DxfLTypePtr;
+
+
+DxfLType *
+dxf_ltype_new ();
 
 
 #endif /* _LTYPE_H */

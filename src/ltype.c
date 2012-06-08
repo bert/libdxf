@@ -1,6 +1,8 @@
 /*!
  * \file ltype.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief DXF ltype entity.
  *
  * <hr>
@@ -29,7 +31,42 @@
  * <hr>
  */
 
-#include "global.h"
+#include "ltype.h"
+
+
+/*!
+ * \brief Allocate memory for a \c DxfLType.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfLType *
+dxf_ltype_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ltype_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfLType *dxf_ltype = NULL;
+        size_t size;
+
+        size = sizeof (DxfLType);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_ltype = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_ltype_new () could not allocate memory for a DxfArc struct.\n");
+                dxf_ltype = NULL;
+        }
+        else
+        {
+                memset (dxf_ltype, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ltype_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_ltype);
+}
 
 
 /* EOF */
