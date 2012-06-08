@@ -29,7 +29,13 @@
  * <hr>
  */
 
+
+#ifndef _LTYPE_H
+#define _LTYPE_H
+
+
 #include "global.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD linetype.
@@ -66,5 +72,9 @@ dxf_ltype
         int number_of_dash_length_items;
                 /*!< group code = 73. */
 } DxfLType, * DxfLTypePtr;
+
+
+#endif /* _LTYPE_H */
+
 
 /* EOF */
