@@ -1,6 +1,8 @@
 /*!
  * \file object.c
- * \author Copyright (C) 2008, 2009 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Functions for DXF objects.
  *
  * <hr>
@@ -39,18 +41,18 @@
  * Appears only in \c TABLES section.\n
  */
 int
-dxf_write_objects
+dxf_object_write_objects
 (
         char *dxf_objects_list2, 
         int acad_version_number
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_objects () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_object_write_objects () function.\n", __FILE__, __LINE__);
 #endif
         /*! \todo Add code here. */
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_objects () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_object_write_objects () function.\n", __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }

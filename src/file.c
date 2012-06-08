@@ -143,7 +143,7 @@ dxf_file_write
         //dxf_write_tables (fp, dxf_tables_list, acad_version_number);
         dxf_block_write_table (dxf_blocks_list, acad_version_number);
         dxf_write_entities (dxf_entities_list, acad_version_number);
-        dxf_write_objects (dxf_objects_list, acad_version_number);
+        dxf_object_write_objects (dxf_objects_list, acad_version_number);
         dxf_thumbnail_write (dxf_thumbnail, acad_version_number);
         dxf_file_write_eof(fp);
 #if DEBUG
