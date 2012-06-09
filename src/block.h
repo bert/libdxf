@@ -1,6 +1,8 @@
 /*!
  * \file block.h
- * \author Copyright (C) 2008, 2009, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Header file for a DXF block entity (\c BLOCK).
  *
  * <hr>
@@ -35,6 +37,7 @@
 
 
 #include "global.h"
+#include "util.h"
 #include "entity.h"
 
 

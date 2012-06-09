@@ -1,6 +1,8 @@
 /*!
  * \file block.c
+ *
  * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Functions for a DXF block entity (\c BLOCK).
  *
  * <hr>
@@ -31,7 +33,6 @@
 
 
 #include "block.h"
-#include "util.h"
 
 
 /*!
