@@ -240,10 +240,11 @@ dxf_appid_write_lowlevel
 
         if (strcmp (application_name, "") == 0)
         {
-                fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n",
+                fprintf (stderr, "Warning: empty application name string for the %s entity with id-code: %x\n",
                         dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to default layer.\n",
+                fprintf (stderr, "    %s entity is discarded from output.\n",
                         dxf_entity_name);
+                return (EXIT_FAILURE);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
         if (id_code != -1)
