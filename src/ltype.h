@@ -73,11 +73,18 @@ dxf_ltype
                  * always 65; ASCII code for 'A'. */
         int number_of_dash_length_items;
                 /*!< group code = 73. */
+        int acad_version_number;
+                /*!< AutoCAD version number. */
 } DxfLType, * DxfLTypePtr;
 
 
 DxfLType *
 dxf_ltype_new ();
+DxfLType *
+dxf_ltype_init
+(
+        DxfLType *dxf_ltype
+);
 
 
 #endif /* _LTYPE_H */

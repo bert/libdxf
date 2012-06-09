@@ -31,6 +31,7 @@
  * <hr>
  */
 
+
 #include "ltype.h"
 
 
@@ -63,6 +64,52 @@ dxf_ltype_new ()
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ltype_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_ltype);
+}
+
+
+/*!
+ * \brief Allocate memory and initialize data fields in a \c LTYPE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfLType *
+dxf_ltype_init
+(
+        DxfLType *dxf_ltype
+                /*!< DXF LType entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ltype_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int i;
+
+        dxf_ltype = dxf_ltype_new ();
+        if (dxf_ltype == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_ltype_init () could not allocate memory for a DxfLType struct.\n");
+              return (NULL);
+        }
+        dxf_ltype->id_code = 0;
+        dxf_ltype->linetype_name = strdup ("");
+        dxf_ltype->description = strdup ("");
+        dxf_ltype->total_pattern_length = 0.0;
+        dxf_ltype->number_of_dash_length_items = 1;
+        for ((i = 1); (i <= dxf_ltype->number_of_dash_length_items); i++)
+        {
+                dxf_ltype->dash_length[i] = 0.0;
+        }
+        dxf_ltype->flag = 0;
+        dxf_ltype->alignment = 65;
+        dxf_ltype->number_of_dash_length_items = 1;
+        dxf_ltype->acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_init () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (dxf_ltype);
