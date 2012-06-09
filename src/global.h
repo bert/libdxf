@@ -35,6 +35,7 @@
 #ifndef _GLOBAL_H
 #define _GLOBAL_H
 
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
