@@ -69,7 +69,7 @@ dxf_ltype
                  * Multiple entries can exist. */
         double complex_scale[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
                 /*!< group code = 46.\n
-                 * S = Scale value (optional).\n
+                 * Scale value (optional).\n
                  * Multiple entries can exist. */
         double dash_length[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
                 /*!< group code = 49.\n
@@ -107,7 +107,14 @@ dxf_ltype
                  *     rotation; if not set, group code 50 specifies a
                  *     relative rotation.\n
                  * 2 = Embedded element is a text string.\n
-                 * 4 = Embedded element is a shape.\n*/
+                 * 4 = Embedded element is a shape. */
+        int complex_shape_number[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+                /*!< group code = 75.\n
+                 * Shape number (one per element) if code 74 specifies
+                 * an embedded shape.\n
+                 * If code 74 specifies an embedded text string, this
+                 * value is set to 0.\n
+                 * If code 74 is set to 0, code 75 is omitted. */
         char *complex_style_pointer[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
                 /*!< group code = 340.\n
                  * Pointer to \c STYLE object.\n
