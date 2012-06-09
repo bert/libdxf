@@ -46,15 +46,40 @@ typedef struct
 dxf_ltype
 {
         int id_code;
-                /*!< group code = 5. */
+                /*!< group code = 5.\n
+                 * Entity handle; text string of up to 16 hexadecimal
+                 * digits (fixed) */
         char *linetype_name;
                 /*!< group code = 2. */
         char *description;
-                /*!< group code = 3. */
+                /*!< group code = 3.\n
+                 * Descriptive text for linetype. */
+        char *complex_text_string[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+                /*!< group code = 9.\n
+                 * Text string (one per element if code 74 = 2). */
         double total_pattern_length;
                 /*!< group code = 40. */
+        double complex_x_offset[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+                /*!< group code = 44.\n
+                 * X offset value (optional).\n
+                 * Multiple entries can exist. */
+        double complex_y_offset[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+                /*!< group code = 45.\n
+                 * Y offset value (optional).\n
+                 * Multiple entries can exist. */
+        double complex_scale[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+                /*!< group code = 46.\n
+                 * S = Scale value (optional).\n
+                 * Multiple entries can exist. */
         double dash_length[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
-                /*!< group code = 49. */
+                /*!< group code = 49.\n
+                 * Dash, dot or space length (one entry per element). */
+        double complex_rotation[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+                /*!< group code = 50.\n
+                 * R = (relative) or A = (absolute) rotation value in radians
+                 * of embedded shape or text.\n
+                 * One per element if code 74 specifies an embedded shape
+                 * or text string. */
         int flag;
                 /*!< group code = 70\n
                  * bit coded:\n
@@ -73,6 +98,20 @@ dxf_ltype
                  * always 65; ASCII code for 'A'. */
         int number_of_dash_length_items;
                 /*!< group code = 73. */
+        int complex_element[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+                /*!< group code = 74.\n
+                 * Complex linetype element type (one per element).\n
+                 * Default is 0 (no embedded shape/text).\n
+                 * The following codes are bit values:\n
+                 * 1 = If set, group code 50 specifies an absolute
+                 *     rotation; if not set, group code 50 specifies a
+                 *     relative rotation.\n
+                 * 2 = Embedded element is a text string.\n
+                 * 4 = Embedded element is a shape.\n*/
+        char *complex_style_pointer[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
+                /*!< group code = 340.\n
+                 * Pointer to \c STYLE object.\n
+                 * One per element if group code 74 > 0. */
         int acad_version_number;
                 /*!< AutoCAD version number. */
 } DxfLType, * DxfLTypePtr;
