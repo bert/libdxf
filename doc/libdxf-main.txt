@@ -1,0 +1,5 @@
+/*! \mainpage libDXF - libDXF is a C-library with DXF related functions.
+\image html dxf-96.png
+\section libDXF-intro libDXF Introduction
+    \htmlinclude what-is-libDXF.html
+*/
