@@ -116,4 +116,135 @@ dxf_ltype_init
 }
 
 
+/*!
+ * \brief Write DXF output to a file for a \c LTYPE entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_ltype_write
+(
+        FILE *fp,
+                /*!< file pointer to output file (or device). */
+        DxfLType dxf_ltype
+                /*!< DXF ltype entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ltype_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *dxf_entity_name = strdup ("LTYPE");
+        int i;
+
+        /* Test for spoilers. */
+        if (strcmp (dxf_ltype.linetype_name, "") == 0)
+        {
+                fprintf (stderr, "Warning: empty linetype name string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_ltype.id_code);
+                fprintf (stderr, "    %s entity is discarded from output.\n",
+                        dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        /* No spoilers found, write available data to file. */
+        fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        if (dxf_ltype.id_code != -1)
+        {
+                fprintf (fp, "  5\n%x\n", dxf_ltype.id_code);
+        }
+        if (dxf_ltype.acad_version_number >= AutoCAD_14)
+        {
+                fprintf (fp, "100\nAcDbSymbolTableRecord\n");
+                fprintf (fp, "100\nAcDbLinetypeTableRecord\n");
+        }
+        fprintf (fp, "  2\n%s\n", dxf_ltype.linetype_name);
+        fprintf (fp, " 70\n%d\n", dxf_ltype.flag);
+        if (dxf_ltype.description)
+        {
+                fprintf (fp, "  3\n%s\n", dxf_ltype.description);
+        }
+        else
+        {
+                fprintf (fp, "  3\n\n");
+        }
+        fprintf (fp, " 72\n%d\n", dxf_ltype.alignment);
+        fprintf (fp, " 73\n%d\n", dxf_ltype.number_of_dash_length_items);
+        fprintf (fp, " 40\n%f\n", dxf_ltype.total_pattern_length);
+        for ((i = 1); (i <= dxf_ltype.number_of_dash_length_items); i++)
+        {
+                fprintf (fp, " 49\n%f\n", dxf_ltype.dash_length[i]);
+                fprintf (fp, " 74\n%d\n", dxf_ltype.complex_element[i]);
+                switch (dxf_ltype.complex_element[i])
+                {
+                        case 0:
+                                /* No embedded shape/text. */
+                                break;
+                        case 1:
+                                /* Specify an absolute rotation. */
+                                break;
+                        case 2:
+                                /*
+                                 * The complex is a text string.
+                                 * Use a relative rotation angle.
+                                 */
+                                fprintf (fp, "  9\n%s\n", dxf_ltype.complex_text_string[i]);
+                                fprintf (fp, " 44\n%f\n", dxf_ltype.complex_x_offset[i]);
+                                fprintf (fp, " 45\n%f\n", dxf_ltype.complex_y_offset[i]);
+                                fprintf (fp, " 46\n%f\n", dxf_ltype.complex_scale[i]);
+                                fprintf (fp, " 50\n%f\n", dxf_ltype.complex_rotation[i]);
+                                fprintf (fp, " 75\n0\n");
+                                fprintf (fp, "340\n%s\n", dxf_ltype.complex_style_pointer[i]);
+                                break;
+                        case 3:
+                                /*
+                                 * The complex is a text string.
+                                 * Use an absolute rotation angle.
+                                 */
+                                fprintf (fp, "  9\n%s\n", dxf_ltype.complex_text_string[i]);
+                                fprintf (fp, " 44\n%f\n", dxf_ltype.complex_x_offset[i]);
+                                fprintf (fp, " 45\n%f\n", dxf_ltype.complex_y_offset[i]);
+                                fprintf (fp, " 46\n%f\n", dxf_ltype.complex_scale[i]);
+                                fprintf (fp, " 50\n%f\n", dxf_ltype.complex_rotation[i]);
+                                fprintf (fp, " 75\n0\n");
+                                fprintf (fp, "340\n%s\n", dxf_ltype.complex_style_pointer[i]);
+                                break;
+                        case 4:
+                                /*
+                                 * The complex is a shape.
+                                 * Use a relative rotation angle.
+                                 */
+                                fprintf (fp, " 44\n%f\n", dxf_ltype.complex_x_offset[i]);
+                                fprintf (fp, " 45\n%f\n", dxf_ltype.complex_y_offset[i]);
+                                fprintf (fp, " 46\n%f\n", dxf_ltype.complex_scale[i]);
+                                fprintf (fp, " 50\n%f\n", dxf_ltype.complex_rotation[i]);
+                                fprintf (fp, " 75\n%d\n", dxf_ltype.complex_shape_number[i]);
+                                fprintf (fp, "340\n%s\n", dxf_ltype.complex_style_pointer[i]);
+                                break;
+                        case 5:
+                                /*
+                                 * The complex is a shape.
+                                 * Use an absolute rotation angle.
+                                 */
+                                fprintf (fp, " 44\n%f\n", dxf_ltype.complex_x_offset[i]);
+                                fprintf (fp, " 45\n%f\n", dxf_ltype.complex_y_offset[i]);
+                                fprintf (fp, " 46\n%f\n", dxf_ltype.complex_scale[i]);
+                                fprintf (fp, " 50\n%f\n", dxf_ltype.complex_rotation[i]);
+                                fprintf (fp, " 75\n%d\n", dxf_ltype.complex_shape_number[i]);
+                                fprintf (fp, "340\n%s\n", dxf_ltype.complex_style_pointer[i]);
+                                break;
+                        default:
+                                fprintf (stderr, "Warning: unknown complex element code for the %s entity with id-code: %x\n",
+                                        dxf_entity_name, dxf_ltype.id_code);
+                                break;
+                }
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ltype_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
