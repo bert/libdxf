@@ -1,5 +1,25 @@
-/*! \mainpage libDXF - libDXF is a C-library with DXF related functions.
-\image html dxf-96.png
-\section libDXF-intro libDXF Introduction
-    \htmlinclude what-is-libDXF.html
+/*!
+\mainpage libDXF - a library with DXF related functions.
+The Drawing eXchange Format (DXF) is a defacto industry standard for the
+exchange of drawing files between various Computer Aided Drafting
+programs.<br>
+<p>
+DXF is an industry standard designed by Autodesk(TM).<br>
+<p>
+For more details about DXF see
+<a href="http://usa.autodesk.com/adsk/servlet/item?siteID=123112&id=12272454&linkID=10809853">
+www.autodesk.com</a>.<br>
+<p>
+Currently this project has a “Work in progress” status.<br>
+<p>
+The code base is still incomplete and is not debugged to an acceptable
+level.<br>
+<p>
+You are always welcome to help with patches or bug reports :-)<br>
+<p>
+For more information see the libDXF repository on
+<a href="https://github.com/bert/libdxf">Github</a> or the project
+page on <a href="https://launchpad.net/libdxf">Launchpad</a>.<br>
+<p>
+For statistics see <a href="http://www.ohloh.net/p/libdxf/">Ohloh</a>.<br>
 */
