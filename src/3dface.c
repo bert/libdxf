@@ -1,6 +1,8 @@
 /*!
  * \file 3dface.c
- * \author Copyright (C) 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2010 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Functions for a DXF 3D face entity (\c 3DFACE).
  *
  * <hr>
@@ -313,6 +315,11 @@ dxf_3dface_read
                          * subclass marker value. */
                         (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
+                        if (strcmp (temp_string, "AcDbFace") != 0)
+                        {
+                                fprintf (stderr, "Error in dxf_3dface_read () found a bad subclass marker in: %s in line: %d.\n",
+                                        filename, *line_number);
+                        }
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
