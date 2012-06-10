@@ -929,7 +929,7 @@ dxf_viewport_write_lowlevel
                  * viewports not active because the $MAXACTVP count is
                  * currently being exceeded.\n
                  * 0 = Off.\n
-                 * <positive value> = On, active and the value indicates
+                 * any positive value = On, active and the value indicates
                  * the order of "stacking" for the viewports, with 1
                  * applying to the active viewport, which is also the
                  * highest, 2 applying to the next viewport in the
