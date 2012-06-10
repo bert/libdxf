@@ -129,8 +129,12 @@ dxf_block_init
 int
 dxf_block_read
 (
+        char *filename,
+                /*!< filename of input file (or device). */
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
+        int *line_number,
+                /*!< current line number in the input file (or device). */
         DxfBlock *dxf_block,
                 /*!< DXF block entity. */
         int acad_version_number
@@ -245,6 +249,12 @@ dxf_block_read
                          * Now follows a string containing the
                          * subclass marker value. */
                         dxf_read_scanf (fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && ((strcmp (temp_string, "AcDbBlockBegin") != 0)))
+                        {
+                                fprintf (stderr, "Error in dxf_block_read () found a bad subclass marker in: %s in line: %d.\n",
+                                        filename, *line_number);
+                        }
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
