@@ -315,7 +315,8 @@ dxf_3dface_read
                          * subclass marker value. */
                         (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
-                        if (strcmp (temp_string, "AcDbFace") != 0)
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && ((strcmp (temp_string, "AcDbFace") != 0)))
                         {
                                 fprintf (stderr, "Error in dxf_3dface_read () found a bad subclass marker in: %s in line: %d.\n",
                                         filename, *line_number);
