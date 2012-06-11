@@ -1,6 +1,8 @@
 /*!
  * \file line.c
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief DXF line entity (\c LINE).
  *
  * <hr>
@@ -275,6 +277,12 @@ dxf_line_read
                          * subclass marker value. */
                         (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && ((strcmp (temp_string, "AcDbLine") != 0)))
+                        {
+                                fprintf (stderr, "Error in dxf_line_read () found a bad subclass marker in: %s in line: %d.\n",
+                                        filename, *line_number);
+                        }
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
