@@ -270,7 +270,8 @@ dxf_arc_read
                          * subclass marker value. */
                         (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
-                        if (strcmp (temp_string, "AcDbCircle") != 0)
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && ((strcmp (temp_string, "AcDbCircle") != 0)))
                         {
                                 fprintf (stderr, "Error in dxf_arc_read () found a bad subclass marker in: %s in line: %d.\n",
                                         filename, *line_number);
