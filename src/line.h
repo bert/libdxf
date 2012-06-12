@@ -1,6 +1,8 @@
 /*!
  * \file line.h
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF line entity (\c LINE).
  *
  * <hr>
@@ -28,6 +30,10 @@
  * For more details see http://www.autodesk.com .
  * <hr>
  */
+
+
+#ifndef _LINE_H
+#define _LINE_H
 
 
 #include "global.h"
@@ -114,6 +120,9 @@ dxf_line_write
         FILE *fp,
         DxfLine dxf_line
 );
+
+
+#endif /* _LINE_H */
 
 
 /* EOF */
