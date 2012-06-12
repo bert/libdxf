@@ -1,6 +1,8 @@
 /*!
  * \file class.c
- * \author Copyright (C) 2009, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2009 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Functions for a DXF class entity (\c CLASS).
  *
  * The group codes described in this chapter are found only in DXF files.\n
@@ -173,7 +175,7 @@ dxf_class_read
                          * read. See the while condition above.
                          */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", &dxf_class->record_type);
+                        fscanf (fp, "%s\n", dxf_class->record_type);
                 }
                 else if (strcmp (temp_string, "1") == 0)
                 {
@@ -194,7 +196,7 @@ dxf_class_read
                         /* Now follows a string containing the
                          * application name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", &dxf_class->app_name);
+                        fscanf (fp, "%s\n", dxf_class->app_name);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
