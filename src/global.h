@@ -48,6 +48,32 @@
 #include <math.h>
 #include <errno.h>
 
+/*
+ * MS DOS - compilers
+ *
+ * Microsoft C auto-defines MSDOS
+ * Borland C   auto-defines __MSDOS__
+ * DJGPP       auto-defines MSDOS
+ */
+
+/* #define MSDOS */
+/* use if not defined by compiler or cases below */
+
+/* for Borland C */
+#ifdef __MSDOS__
+#  ifndef MSDOS
+#    define MSDOS
+#  endif
+#endif
+
+/* increase Borland C compatibility in libraries */
+#ifdef __TURBOC__
+#  define __MSC
+#endif
+
+#ifdef MSDOS
+#  undef UNIX
+#endif
 
 /*!
  * Debugging on/off toggle.
@@ -142,9 +168,15 @@ dxf_file
 #define DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS 16
 
 /*!
- * The maximum string length (it is a MSDOS limit).
+ * The maximum string length is 255 for DXF versions prior to DXF
+ * release 2000 (also a MSDOS limit).\n
+ * The maximum extended string length is 2049, as per DXF release 2000.
  */
-#define DXF_MAX_STRING_LENGTH 255
+#ifdef MSDOS
+#  define DXF_MAX_STRING_LENGTH 255
+#else
+#  define DXF_MAX_STRING_LENGTH 2049
+#endif
 
 /*!
  * \brief DXF color definition, entities with this color follow the color
@@ -242,7 +274,7 @@ dxf_file
 
 /*!
  * \brief Begin viewport data.\n
- * This field will always be the string "MVIEW".\n
+ * This field will always be the string "MVIEW".
  */
 #define DXF_VIEWPORT_DATA "MVIEW"
 
