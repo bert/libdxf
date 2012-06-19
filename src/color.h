@@ -36,37 +36,6 @@
  */
 
 
-/*!
- * \brief DXF color definitions mapping to standard pen widths.
- */
-typedef enum
-dxf_color
-{
-        DXF_COLOR_BYBLOCK = 0,
-                /*!< color of the entity follows the color definition of the
-                 * block in which it resides. */
-        DXF_COLOR_RED = 1,
-                /*!< 0.18 mm pen width. */
-        DXF_COLOR_YELLOW = 2,
-                /*!< 0.35 mm pen width. */
-        DXF_COLOR_GREEN = 3,
-                /*!< 0.50 mm pen width. */
-        DXF_COLOR_CYAN = 4,
-                /*!< 0.70 mm pen width. */
-        DXF_COLOR_BLUE = 5,
-                /*!< 1.00 mm pen width. */
-        DXF_COLOR_MAGENTA = 6,
-                /*!< 0.18 mm pen width. */
-        DXF_COLOR_WHITE = 7,
-                /*!< 0.25 mm pen width. */
-        DXF_COLOR_GREY = 8,
-                /*!< 0.15 mm pen width. */
-        DXF_COLOR_BYLAYER = 256
-                /*!< color of the entity follows the color definition of the
-                 * layer on which it resides. */
-} DxfColor;
-
-
 /*
  * Googled and found a macro...
  *
