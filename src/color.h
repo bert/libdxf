@@ -36,69 +36,20 @@
  */
 
 
-/*
- * Googled and found a macro...
- *
+#include <inttypes.h>
 
-#define RGB(R,G,B) {(R<<16)|(G<<8)|B,(R*65535)/255,(G*65535)/255,(B*65535)/255}
 
- *
- * I have tried it with a handful of rgb values and it works
- * (used gtk_widget_modify_bg to change the surface colour of some
- * dialogs), like:
-
-GdkColor col = RGB(0,0,255);
-gtk_widget_modify_bg (dlg , GTK_STATE_NORMAL, &col);
-
- * A few changes were needed to my api.
- * For example, on Windows I returned colorrefs as int function values.
- * That is not possible for GdkColor structs, so I changed the api to
- * return a COLORREF parameter instead with:
-
-typedef GdkColor COLORREF; // for Gtk
-typedef int COLORREF; // for Windows
-
- * It works, but I still don't understand colours...
- *
- * Q1. the pixel component of the GdkColor struct is (R<<16)|(G<<8)|B,
- * but is the other way around in the Windows RGB macro R|(G<<16)|(B<<16).
- * I am puzzled by this.
- * I am also puzzled by the pixel value being 32 bits (r,g,b,alpha)
- * while the combined size of the r,g,b intensities is 48.
- * Why is this?
- *
- * Q2. while googling I came across this for GdkColor:
- * 'the programmer provides the r,g and b intensities and GDK fills in
- * the pixel component.'
- * When does GDK do this ?
- * By what functions ?
- *
- * Q3. I have tried reading about Colormaps and Colors in the GDK
- * reference manual, but I am getting stuck on the basics.
- * For example in the Description what does this mean:
- * 'A colormap is an object that contains the mapping between the color
- * values stored in memory and the RGB values that are used to display
- * color values.
- * In general, colormaps only contain significant information for
- * pseudo-color visuals, but even for other visual types, a colormap
- * object is required in some circumstances.'
- * Does it mean 'a colormap is a list of GdkColors like a palette' ?
- * Is the RGB value mentioned in the description the pixel component in
- * the GdkColor ?
- *
- * Q4. For GdkColor the manual says 'the GdkColor structure is used to
- * describe an allocated or unallocated color'.
- * What does allocated and unallocated color mean?
- *
- * Q5. The Colormaps and Colors Reference contains several functions,
- * but I did not use any of them.
- * It still worked with the colours coming out the way I expected.
- * When are these functions used/needed ?
- * Or are they becoming obsolete ?
- * 
- *
- * by Ken Resander [kresander@yahoo.com] 
+/*!
+ * \brief Definition of a color.
  */
+typedef struct
+{
+        uint8_t r;
+        uint8_t g;
+        uint8_t b;
+        uint8_t unused;
+} DxfRGBColor;
+
 
 /*!
  * \brief Colors according to the AutoCAD Color Index (ACI).
@@ -108,7 +59,6 @@ typedef int COLORREF; // for Windows
  * RGBColor (as in red value, green value, blue value) and contain no
  * alpha value (http://www.isctex.com/acadcolors.php).
  * 
- */
 typedef enum
 dxf_ACI_color
 {
@@ -370,6 +320,7 @@ dxf_ACI_color
         dxf_ACI_color[255] = RGBColor (255,255,255)
 }
 DxfACIColor;
+ */
 
 
 /*!
@@ -381,7 +332,6 @@ DxfACIColor;
  * \c dxf_RGB_color_name[hex_triplet], where \c hex_triplet are the
  * hexadecimal values as in red value, green value, blue value
  * (0xRRGGBB) and this index contains no alpha values.
- */
 typedef enum
 dxf_RGB_color_name
 {
@@ -715,6 +665,7 @@ dxf_RGB_color_name
         dxf_RGB_color_name[0x9ACD32] = "Yellow-green"
 }
 DxfRGBColorName;
+ */
 
 
 /* EOF */
