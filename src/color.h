@@ -79,7 +79,7 @@ dxf_color
  * dialogs), like:
 
 GdkColor col = RGB(0,0,255);
-gtk_widget_modify_bg ( dlg , GTK_STATE_NORMAL , &col );
+gtk_widget_modify_bg (dlg , GTK_STATE_NORMAL, &col);
 
  * A few changes were needed to my api.
  * For example, on Windows I returned colorrefs as int function values.
