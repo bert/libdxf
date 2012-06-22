@@ -179,6 +179,11 @@ dxf_file
 #endif
 
 /*!
+ * The maximum number of colors in a \c DxfColorIndex.
+ */
+#define DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS 256
+
+/*!
  * \brief DXF color definition, entities with this color follow the color
  * definition of the block in which it lives.
  */
