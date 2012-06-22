@@ -36,6 +36,10 @@
  */
 
 
+#ifndef _COLOR_H
+#define _COLOR_H
+
+
 #include <inttypes.h>
 #include "global.h"
 
@@ -671,6 +675,9 @@ dxf_RGB_color_name
 }
 DxfRGBColorName;
  */
+
+
+#endif /* _COLOR_H */
 
 
 /* EOF */
