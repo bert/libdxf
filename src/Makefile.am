@@ -64,6 +64,7 @@ libdxf_la_SOURCES = \
   dim.h     \
   comment.c     \
   color.h     \
+  color.c	\
   class.h     \
   class.c     \
   circle.h     \
