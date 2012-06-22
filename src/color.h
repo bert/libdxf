@@ -37,6 +37,7 @@
 
 
 #include <inttypes.h>
+#include "global.h"
 
 
 /*!
@@ -49,6 +50,10 @@ typedef struct
         uint8_t b;
         uint8_t unused;
 } DxfRGBColor;
+
+
+DxfRGBColor *
+dxf_RGB_color_new ();
 
 
 /*!
