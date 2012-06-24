@@ -414,6 +414,61 @@ dxf_ACI_init
 
 
 /*!
+ * \brief Convert the passed integer values to a hexadecimal triplet.
+ */
+int
+dxf_RGB_to_triplet
+(
+        int red,
+                /*!< Red value for the color. */
+        int green,
+                /*!< Green value for the color. */
+        int blue
+                /*!< Blue value for the color. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_RGB_to_triplet () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int triplet;
+
+        if ((red <= 255) || (red >= 0))
+        {
+                triplet = red * 65536;
+        }
+        else
+        {
+                fprintf (stderr, "ERROR red color value in dxf_RGB_to_triplet () out of range.\n");
+                return (-1);
+        }
+        if ((green <= 255) || (green >= 0))
+        {
+                triplet += green * 256;
+        }
+        else
+        {
+                fprintf (stderr, "ERROR green color value in dxf_RGB_to_triplet () out of range.\n");
+                return (-2);
+        }
+        if ((blue <= 255) || (blue >= 0))
+        {
+                triplet += blue;
+        }
+        else
+        {
+                fprintf (stderr, "ERROR blue color value in dxf_RGB_to_triplet () out of range.\n");
+                return (-3);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_RGB_to_triplet () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (triplet);
+}
+
+
+/*!
  * \brief Color names according to the Wikipedia List of Colors.
  *
  * These color names are defined by Wikipedia's

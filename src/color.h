@@ -70,6 +70,13 @@ dxf_ACI_init
 (
         DxfRGBColor *dxf_ACI[DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS]
 );
+int
+dxf_RGB_to_triplet
+(
+        int red,
+        int green,
+        int blue
+);
 
 
 #endif /* _COLOR_H */
