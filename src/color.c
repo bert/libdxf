@@ -139,6 +139,10 @@ dxf_ACI_init
         DxfRGBColor *dxf_ACI[DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS]
 )
 {
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ACI_init () function.\n",
+                __FILE__, __LINE__);
+#endif
         size_t size;
 
         size = sizeof (DxfRGBColor);
@@ -409,6 +413,10 @@ dxf_ACI_init
                 dxf_ACI[254] = dxf_RGB_color_set (190,190,190);
                 dxf_ACI[255] = dxf_RGB_color_set (255,255,255);
         }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ACI_init () function.\n",
+                __FILE__, __LINE__);
+#endif
         return (EXIT_SUCCESS);
 }
 
