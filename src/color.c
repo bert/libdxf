@@ -96,7 +96,7 @@ dxf_RGB_color_set
         }
         else
         {
-                fprintf (stderr, "ERROR color value in dxf_RGB_color_set () out of range.\n");
+                fprintf (stderr, "ERROR red color value in dxf_RGB_color_set () out of range.\n");
                 return (NULL);
         }
         if ((green <= 255) || (green >= 0))
@@ -105,7 +105,7 @@ dxf_RGB_color_set
         }
         else
         {
-                fprintf (stderr, "ERROR color value in dxf_RGB_color_set () out of range.\n");
+                fprintf (stderr, "ERROR green color value in dxf_RGB_color_set () out of range.\n");
                 return (NULL);
         }
         if ((blue <= 255) || (blue >= 0))
@@ -114,7 +114,7 @@ dxf_RGB_color_set
         }
         else
         {
-                fprintf (stderr, "ERROR color value in dxf_RGB_color_set () out of range.\n");
+                fprintf (stderr, "ERROR blue color value in dxf_RGB_color_set () out of range.\n");
                 return (NULL);
         }
 
