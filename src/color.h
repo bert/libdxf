@@ -56,6 +56,11 @@ typedef struct
 } DxfRGBColor;
 
 
+char *
+dxf_RGB_color_get_name
+(
+        int RGB_color_hex_triplet
+);
 DxfRGBColor *
 dxf_RGB_color_new ();
 DxfRGBColor *
