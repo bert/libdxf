@@ -1,6 +1,8 @@
 /*!
  * \file insert.h
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Header file for a DXF insert entity (\c INSERT).
  *
  * A DXF \c INSERT entity is an insertion for a (external) \c BLOCK entity.\n
@@ -146,7 +148,8 @@ dxf_insert_write_lowlevel
         int attribute_follows,
         int paperspace,
         int columns,
-        int rows
+        int rows,
+        int acad_version_number
 );
 int
 dxf_insert_write

@@ -1,6 +1,8 @@
 /*!
  * \file insert.c
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Functions for a DXF insert entity (\c INSERT).
  *
  * A DXF \c INSERT entity is an insertion for a (external) \c BLOCK entity.\n
@@ -434,9 +436,11 @@ dxf_insert_write_lowlevel
         int columns,
                 /*!< group code = 70\n
                  * optional, if omitted defaults to 1. */
-        int rows
+        int rows,
                 /*!< group code = 71\n
                  * optional, if omitted defaults to 1. */
+        int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -494,6 +498,10 @@ dxf_insert_write_lowlevel
                 rows = 1;
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        if (acad_version_number >= AutoCAD_14)
+        {
+                fprintf (fp, "100\nAcDbBlockReference\n");
+        }
         fprintf (fp, "  2\n%s\n", block_name);
         if (id_code != -1)
         {
@@ -629,6 +637,10 @@ dxf_insert_write
                 dxf_insert.rows = 1;
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        if (dxf_insert.common.acad_version_number >= AutoCAD_14)
+        {
+                fprintf (fp, "100\nAcDbBlockReference\n");
+        }
         fprintf (fp, "  2\n%s\n", dxf_insert.block_name);
         if (dxf_insert.common.id_code != -1)
         {
