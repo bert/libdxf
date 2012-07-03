@@ -50,9 +50,15 @@
 typedef struct
 {
         uint8_t r;
+                /*!< Red value for the color. */
         uint8_t g;
+                /*!< Green value for the color. */
         uint8_t b;
+                /*!< Blue value for the color. */
         uint8_t unused;
+                /*!< Unused, could be used for the alpha value (future). */
+        char *name;
+                /*!< Name of the color. */
 } DxfRGBColor;
 
 
