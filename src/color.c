@@ -88,6 +88,8 @@ dxf_RGB_color_set
                 __FILE__, __LINE__);
 #endif
         DxfRGBColor *dxf_RGB_color;
+        int triplet;
+        char *name = NULL;
 
         dxf_RGB_color = dxf_RGB_color_new ();
         if ((red <= 255) || (red >= 0))
@@ -117,7 +119,17 @@ dxf_RGB_color_set
                 fprintf (stderr, "ERROR blue color value in dxf_RGB_color_set () out of range.\n");
                 return (NULL);
         }
-
+        triplet = dxf_RGB_to_triplet (red, green, blue);
+        name = dxf_RGB_color_get_name (triplet);
+        if (name != NULL)
+        {
+                dxf_RGB_color->name = name;
+        }
+        else
+        {
+                fprintf (stderr, "ERROR name value in dxf_RGB_color_set () contains a NULL pointer.\n");
+                return (NULL);
+        }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_RGB_color_set () function.\n",
                 __FILE__, __LINE__);
