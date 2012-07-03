@@ -123,7 +123,8 @@ dxf_RGB_color_set
         name = dxf_RGB_color_get_name (triplet);
         if (name != NULL)
         {
-                dxf_RGB_color->name = name;
+                dxf_RGB_color->name = strdup (name);
+                free (name);
         }
         else
         {
