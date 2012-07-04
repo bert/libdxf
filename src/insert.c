@@ -403,6 +403,18 @@ dxf_insert_write_lowlevel
         double z0,
                 /*!< group code = 30\n
                  * base point. */
+        double extr_x0,
+                /*!< X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 210. */
+        double extr_y0,
+                /*!< Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 220. */
+        double extr_z0,
+                /*!< Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if ommitted in the DXF file.\n
+                 * Group code = 230. */
         double thickness,
                 /*!< group code = 39\n
                  * optional, if omitted defaults to 0.0. */
@@ -515,6 +527,12 @@ dxf_insert_write_lowlevel
         fprintf (fp, " 10\n%f\n", x0);
         fprintf (fp, " 20\n%f\n", y0);
         fprintf (fp, " 30\n%f\n", z0);
+        if (acad_version_number >= AutoCAD_12)
+        {
+                fprintf (fp, "210\n%f\n", extr_x0);
+                fprintf (fp, "220\n%f\n", extr_y0);
+                fprintf (fp, "230\n%f\n", extr_z0);
+        }
         if (thickness != 0.0)
         {
                 fprintf (fp, " 39\n%f\n", thickness);
@@ -654,6 +672,12 @@ dxf_insert_write
         fprintf (fp, " 10\n%f\n", dxf_insert.x0);
         fprintf (fp, " 20\n%f\n", dxf_insert.y0);
         fprintf (fp, " 30\n%f\n", dxf_insert.z0);
+        if (dxf_insert.common.acad_version_number >= AutoCAD_12)
+        {
+                fprintf (fp, "210\n%f\n", dxf_insert.extr_x0);
+                fprintf (fp, "220\n%f\n", dxf_insert.extr_y0);
+                fprintf (fp, "230\n%f\n", dxf_insert.extr_z0);
+        }
         if (dxf_insert.common.thickness != 0.0)
         {
                 fprintf (fp, " 39\n%f\n", dxf_insert.common.thickness);
