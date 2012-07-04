@@ -298,7 +298,8 @@ dxf_insert_read
                          * attributes follow flag. */
                         (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_insert->attributes_follow);
-                        /*! \todo After a set attributes_follow flag is
+                        /*!
+                         * \todo After a set attributes_follow flag is
                          * detected, parsing of following entities should
                          * be implemented until the end of sequence
                          * marker (\c SEQEND) is encountered. */
@@ -327,10 +328,11 @@ dxf_insert_read
                 else if ((acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
-                        /* Subclass markers are post AutoCAD R12
+                        /*!
+                         * \todo Subclass markers are a post AutoCAD R12
                          * variable so additional testing for the
-                         * version should probably be added here.
-                         * Now follows a string containing the
+                         * version should probably be added here. */
+                        /* Now follows a string containing the
                          * subclass marker value. */
                         (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
