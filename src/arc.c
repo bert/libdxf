@@ -210,10 +210,7 @@ dxf_arc_read
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_arc->z0 = 0.0))
                 {
-                        /* Elevation is a pre AutoCAD R11 variable
-                         * so additional testing for the version should
-                         * probably be added.
-                         * Now follows a string containing the
+                        /* Now follows a string containing the
                          * elevation. */
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_arc->z0);
@@ -263,10 +260,11 @@ dxf_arc_read
                 else if ((acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
-                        /* Subclass markers are post AutoCAD R12
+                        /*!
+                         * \todo Subclass markers are a post AutoCAD R12
                          * variable so additional testing for the
-                         * version should probably be added here.
-                         * Now follows a string containing the
+                         * version should probably be added here. */
+                        /* Now follows a string containing the
                          * subclass marker value. */
                         (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
