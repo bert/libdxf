@@ -336,6 +336,11 @@ dxf_insert_read
                          * subclass marker value. */
                         (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
+                        if (strcmp (temp_string, "AcDbBlockReference") != 0)
+                        {
+                                fprintf (stderr, "Error in dxf_insert_read () found a bad subclass marker in: %s in line: %d.\n",
+                                        filename, *line_number);
+                        }
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
