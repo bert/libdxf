@@ -40,7 +40,7 @@
 
 
 /*!
- * \brief Allocate memory for a \c DxfAppid.
+ * \brief Allocate memory for a DXF \c APPID entity.
  *
  * Fill the memory contents with zeros.
  */
@@ -75,7 +75,7 @@ dxf_appid_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in a \c APPID
+ * \brief Allocate memory and initialize data fields in a DXF \c APPID
  * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
@@ -110,7 +110,7 @@ dxf_appid_init
 
 
 /*!
- * \brief Read data from a DXF file into an \c APPID entity.
+ * \brief Read data from a DXF file into a DXF \c APPID entity.
  *
  * The last line read from file contained the string "APPID". \n
  * Now follows some data for the \c ARC, to be terminated with a "  0"
@@ -200,7 +200,7 @@ dxf_appid_read
 
 
 /*!
- * \brief Write DXF output for an \c APPID entity.
+ * \brief Write DXF output for a DXF \c APPID entity.
  */
 static int
 dxf_appid_write_lowlevel
@@ -262,7 +262,7 @@ dxf_appid_write_lowlevel
 
 
 /*!
- * \brief Write DXF output to a file for an \c APPID entity.
+ * \brief Write DXF output to a file for a DXF \c APPID entity.
  */
 int
 dxf_appid_write
