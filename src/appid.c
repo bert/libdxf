@@ -1,6 +1,6 @@
 /*!
  * \file appid.c
- * \author Copyright (C) 2009, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Functions for a DXF application identity entity (\c APPID).
  *
  * A DXF \c APPID entity contains data concerning the application registered
@@ -295,6 +295,32 @@ dxf_appid_write
         fprintf (fp, " 70\n%d\n", dxf_appid.standard_flag);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocate memory for a DXF \c APPID and all it's
+ * members.
+ */
+int
+dxf_appid_free
+(
+        DxfAppid *dxf_appid
+                /*!< DXF \c APPID entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_appid_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        free (dxf_appid->application_name);
+        free (dxf_appid);
+        dxf_appid = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_free () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
