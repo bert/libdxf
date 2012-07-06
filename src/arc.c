@@ -625,4 +625,31 @@ dxf_arc_write
 }
 
 
+/*!
+ * \brief Free the allocate memory for a DXF \c ARC and all it's
+ * members.
+ */
+int
+dxf_arc_free
+(
+        DxfArc *dxf_arc
+                /*!< DXF \c ARC entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        free (dxf_arc->common.linetype);
+        free (dxf_arc->common.layer);
+        free (dxf_arc);
+        dxf_arc = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
