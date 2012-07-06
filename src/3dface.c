@@ -551,4 +551,31 @@ dxf_3dface_write
 }
 
 
+/*!
+ * \brief Free the allocate memory for a \c Dxf3dface and all it's
+ * members.
+ */
+int
+dxf_3dface_free
+(
+        Dxf3dface *dxf_3dface
+                /*!< DXF 3dface entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dface_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        free (dxf_3dface->common.linetype);
+        free (dxf_3dface->common.layer);
+        free (dxf_3dface);
+        dxf_3dface = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

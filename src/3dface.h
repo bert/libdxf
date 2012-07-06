@@ -1,6 +1,6 @@
 /*!
  * \file 3dface.h
- * \author Copyright (C) 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \brief Header file for a DXF 3D face entity (\c 3DFACE).
  *
  * <hr>
@@ -138,6 +138,11 @@ dxf_3dface_write
 (
         FILE *fp,
         Dxf3dface dxf_3dface
+);
+int
+dxf_3dface_free
+(
+        Dxf3dface *dxf_3dface
 );
 
 
