@@ -65,6 +65,11 @@ dxf_3dsolid
 
 Dxf3dsolid *
 dxf_3dsolid_new ();
+Dxf3dsolid *
+dxf_3dsolid_init
+(
+        Dxf3dsolid *dxf_3dsolid
+);
 
 
 #endif /* _3DSOLID_H */

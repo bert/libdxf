@@ -62,8 +62,74 @@ dxf_3dsolid_new ()
         {
                 memset (dxf_3dsolid, 0, size);
         }
+/*!
+ * \todo Allocate memory for members and fill with NULL pointers ?
+ * <pre>
+        if ((dxf_3dsolid->proprietary_data = malloc (DXF_MAX_STRING_LENGTH * DXF_MAX_PARAM)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_3dsolid_init () could not allocate memory for a Dxf3dsolid struct.\n");
+                dxf_3dsolid = NULL;
+        }
+        if ((dxf_3dsolid->additional_proprietary_data = malloc (DXF_MAX_STRING_LENGTH * DXF_MAX_PARAM)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_3dsolid_init () could not allocate memory for a Dxf3dsolid struct.\n");
+                dxf_3dsolid = NULL;
+        }
+        for (i = 0; i <= DXF_MAX_STRING_LENGTH; i++)
+        {
+                for (j = 0; j <= DXF_MAX_PARAM; j++)
+                {
+                        dxf_3dsolid->proprietary_data[i][j] = NULL;
+                        dxf_3dsolid->additional_proprietary_data[i][j] = NULL;
+                }
+        }
+ * </pre>
+ */
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_3dsolid);
+}
+
+
+/*!
+ * \brief Allocate memory and initialize data fields in a \c 3DSOLID
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+Dxf3dsolid *
+dxf_3dsolid_init
+(
+        Dxf3dsolid *dxf_3dsolid
+                /*!< DXF \c 3DSOLID entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int i;
+        int j;
+
+        dxf_3dsolid = dxf_3dsolid_new ();
+        if (dxf_3dsolid == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_3dsolid_init () could not allocate memory for a Dxf3dsolid struct.\n");
+              return (NULL);
+        }
+        dxf_3dsolid->modeler_format_version_number = 0;
+        dxf_3dsolid->common.id_code = 0;
+        dxf_3dsolid->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_3dsolid->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_3dsolid->common.thickness = 0.0;
+        dxf_3dsolid->common.color = DXF_COLOR_BYLAYER;
+        dxf_3dsolid->common.paperspace = DXF_MODELSPACE;
+        dxf_3dsolid->common.acad_version_number = 0;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_init () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (dxf_3dsolid);
