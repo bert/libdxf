@@ -136,4 +136,32 @@ dxf_3dsolid_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c 3DSOLID and all it's
+ * data fields.
+ */
+int
+dxf_3dsolid_free
+(
+        Dxf3dsolid *dxf_3dsolid
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c 3DSOLID entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        free (dxf_3dsolid->common.linetype);
+        free (dxf_3dsolid->common.layer);
+        free (dxf_3dsolid);
+        dxf_3dsolid = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
