@@ -1,6 +1,8 @@
 /*!
  * \file 3dface.h
+ *
  * \author Copyright (C) 2010 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Header file for a DXF 3D face entity (\c 3DFACE).
  *
  * <hr>
