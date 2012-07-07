@@ -65,6 +65,9 @@ dxf_3dsolid_new ()
 /*!
  * \todo Allocate memory for members and fill with NULL pointers ?
  * <pre>
+        int i;
+        int j;
+
         if ((dxf_3dsolid->proprietary_data = malloc (DXF_MAX_STRING_LENGTH * DXF_MAX_PARAM)) == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_3dsolid_init () could not allocate memory for a Dxf3dsolid struct.\n");
@@ -111,9 +114,6 @@ dxf_3dsolid_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        int i;
-        int j;
-
         dxf_3dsolid = dxf_3dsolid_new ();
         if (dxf_3dsolid == NULL)
         {
