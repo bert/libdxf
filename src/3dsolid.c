@@ -63,7 +63,7 @@ dxf_3dsolid_new ()
                 memset (dxf_3dsolid, 0, size);
         }
 /*!
- * \todo Allocate memory for members and fill with NULL pointers ?
+ * \todo Allocate memory for data fields and fill with NULL pointers ?
  * <pre>
         int i;
         int j;
