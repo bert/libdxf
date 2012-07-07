@@ -36,7 +36,7 @@
 
 
 /*!
- * \brief Allocate memory for a \c Dxf3dface.
+ * \brief Allocate memory for a DXF \c 3DFACE.
  *
  * Fill the memory contents with zeros.
  */
@@ -71,7 +71,8 @@ dxf_3dface_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in a \c 3DFACE entity.
+ * \brief Allocate memory and initialize data fields in a DXF \c 3DFACE
+ * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
@@ -122,7 +123,7 @@ dxf_3dface_init
 
 
 /*!
- * \brief Read data from a DXF file into an \c 3DFACE entity.
+ * \brief Read data from a DXF file into a DXF \c 3DFACE entity.
  *
  * The last line read from file contained the string "3DFACE". \n
  * Now follows some data for the \c 3DFACE, to be terminated with a "  0"
@@ -276,10 +277,11 @@ dxf_3dface_read
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_3dface->z0 = 0.0))
                 {
-                        /* Elevation is a pre AutoCAD R11 variable
+                        /*!
+                         * \todo Elevation is a pre AutoCAD R11 variable
                          * so additional testing for the version should
-                         * probably be added.
-                         * Now follows a string containing the
+                         * probably be added. */
+                        /* Now follows a string containing the
                          * elevation. */
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_3dface->z0);
@@ -308,10 +310,11 @@ dxf_3dface_read
                 else if ((acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
-                        /* Subclass markers are post AutoCAD R12
+                        /*!
+                         * \todo Subclass markers are post AutoCAD R12
                          * variable so additional testing for the
-                         * version should probably be added here.
-                         * Now follows a string containing the
+                         * version should probably be added here. */
+                        /* Now follows a string containing the
                          * subclass marker value. */
                         (*line_number)++;
                         fscanf (fp, "%s\n", temp_string);
@@ -481,7 +484,7 @@ dxf_3dface_write_lowlevel
 
 
 /*!
- * \brief Write DXF output to a file for a 3D face entity (\c 3DFACE).
+ * \brief Write DXF output to a file for a DXF \c 3DFACE entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -552,14 +555,15 @@ dxf_3dface_write
 
 
 /*!
- * \brief Free the allocate memory for a \c Dxf3dface and all it's
- * members.
+ * \brief Free the allocated memory for a DXF \c 3DFACE and all it's
+ * data fields.
  */
 int
 dxf_3dface_free
 (
         Dxf3dface *dxf_3dface
-                /*!< DXF 3dface entity. */
+                /*!< Pointer to the memory occupied by the DXF \c 3DFACE
+                 * entity. */
 )
 {
 #if DEBUG
