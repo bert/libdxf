@@ -630,7 +630,7 @@ dxf_arc_write
 
 
 /*!
- * \brief Free the allocate memory for a DXF \c ARC and all it's
+ * \brief Free the allocated memory for a DXF \c ARC and all it's
  * data fields.
  * 
  * \return \c EXIT_SUCCESS when done.
