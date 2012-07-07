@@ -36,9 +36,12 @@
 
 
 /*!
- * \brief Allocate memory for a \c DxfArc.
+ * \brief Allocate memory for a DXF \c ARC.
  *
  * Fill the memory contents with zeros.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
  */
 DxfArc *
 dxf_arc_new ()
@@ -71,7 +74,8 @@ dxf_arc_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in a \c ARC entity.
+ * \brief Allocate memory and initialize data fields in a DXF \c ARC
+ * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
@@ -118,7 +122,7 @@ dxf_arc_init
 
 
 /*!
- * \brief Read data from a DXF file into an \c ARC entity.
+ * \brief Read data from a DXF file into a DXF \c ARC entity.
  *
  * The last line read from file contained the string "ARC". \n
  * Now follows some data for the \c ARC, to be terminated with a "  0"
@@ -139,7 +143,7 @@ dxf_arc_read
         int *line_number,
                 /*!< current line number in the input file (or device). */
         DxfArc *dxf_arc,
-                /*!< DXF arc entity. */
+                /*!< DXF \c ARC entity. */
         int acad_version_number
                 /*!< AutoCAD version number. */
 )
@@ -318,7 +322,7 @@ dxf_arc_read
 
 
 /*!
- * \brief Write DXF output for an arc entity.
+ * \brief Write DXF output for a DXF \c ARC entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -498,7 +502,7 @@ dxf_arc_write_lowlevel
 
 
 /*!
- * \brief Write DXF output to a file for an arc entity.
+ * \brief Write DXF output to a file for a DXF \c ARC entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -509,7 +513,7 @@ dxf_arc_write
         FILE *fp,
                 /*!< file pointer to output file (or device). */
         DxfArc dxf_arc
-                /*!< DXF arc entity. */
+                /*!< DXF \c ARC entity. */
 )
 {
 #if DEBUG
@@ -627,13 +631,16 @@ dxf_arc_write
 
 /*!
  * \brief Free the allocate memory for a DXF \c ARC and all it's
- * members.
+ * data fields.
+ * 
+ * \return \c EXIT_SUCCESS when done.
  */
 int
 dxf_arc_free
 (
         DxfArc *dxf_arc
-                /*!< DXF \c ARC entity. */
+                /*!< Pointer to the memory occupied by the DXF \c ARC
+                 * entity. */
 )
 {
 #if DEBUG

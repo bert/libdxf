@@ -41,7 +41,7 @@
 
 
 /*!
- * \brief DXF definition of an AutoCAD arc entity.
+ * \brief Definition of an AutoCAD DXF \c ARC entity.
  */
 typedef struct
 dxf_arc
