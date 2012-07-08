@@ -793,4 +793,34 @@ dxf_attrib_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c ATTRIB and all it's
+ * data fields.
+ */
+int
+dxf_attrib_free
+(
+        DxfAttrib *dxf_attrib
+                /*!< DXF \c ATTRIB entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_attrib_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        free (dxf_attrib->common.linetype);
+        free (dxf_attrib->common.layer);
+        free (dxf_attrib->value);
+        free (dxf_attrib->tag_value);
+        free (dxf_attrib->text_style);
+        free (dxf_attrib);
+        dxf_attrib = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attrib_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

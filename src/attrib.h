@@ -1,6 +1,8 @@
 /*!
  * \file attrib.h
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF attribute entity (\c ATTRIB).
  *
  * <hr>
@@ -39,7 +41,7 @@
 
 
 /*!
- * \brief DXF definition of an AutoCAD attribute entity.
+ * \brief Definition of an AutoCAD attribute entity (\c ATTRIB).
  */
 typedef struct
 dxf_attrib
@@ -181,6 +183,11 @@ dxf_attrib_write
 (
         FILE *fp,
         DxfAttrib dxf_attrib
+);
+int
+dxf_attrib_free
+(
+        DxfAttrib *dxf_attrib
 );
 
 
