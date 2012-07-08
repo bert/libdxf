@@ -502,7 +502,7 @@ dxf_arc_write_lowlevel
 
 
 /*!
- * \brief Write DXF output to a file for a DXF \c ARC entity.
+ * \brief Write DXF output for a DXF \c ARC entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
