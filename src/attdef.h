@@ -1,6 +1,8 @@
 /*!
  * \file attdef.h
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Header file for a DXF attribute definition entity (\c ATTDEF).
  *
  * <hr>
@@ -204,6 +206,11 @@ dxf_attdef_write
 (
         FILE *fp,
         DxfAttdef dxf_attdef
+);
+int
+dxf_attdef_free
+(
+        DxfAttdef *dxf_attdef
 );
 
 

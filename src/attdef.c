@@ -846,4 +846,35 @@ dxf_attdef_write
 }
 
 
+/*!
+ * \brief Free the allocate memory for a DXF \c ATTDEF and all it's
+ * data fields.
+ */
+int
+dxf_attdef_free
+(
+        DxfAttdef *dxf_attdef
+                /*!< DXF \c ATTDEF entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_attdef_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        free (dxf_attdef->common.linetype);
+        free (dxf_attdef->common.layer);
+        free (dxf_attdef->default_value);
+        free (dxf_attdef->tag_value);
+        free (dxf_attdef->prompt_value);
+        free (dxf_attdef->text_style);
+        free (dxf_attdef);
+        dxf_attdef = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attdef_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
