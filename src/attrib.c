@@ -36,7 +36,7 @@
 
 
 /*!
- * \brief Allocate memory for a \c DxfAttrib.
+ * \brief Allocate memory for a DXF \c ATTRIB.
  *
  * Fill the memory contents with zeros.
  */
@@ -414,7 +414,7 @@ dxf_attrib_read
 
 
 /*!
- * \brief Write DXF output to a file for an attribute entity.
+ * \brief Write DXF output for a DXF \c ATTRIB entity.
  */
 int
 dxf_attrib_write_lowlevel
@@ -645,7 +645,7 @@ dxf_attrib_write_lowlevel
 
 
 /*!
- * \brief Write DXF output to fp for an attribute entity.
+ * \brief Write DXF output for a DXF \c ATTRIB entity.
  */
 int
 dxf_attrib_write
