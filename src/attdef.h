@@ -39,7 +39,8 @@
 
 
 /*!
- * \brief Definition of a DXF attribute definition entity.
+ * \brief Definition of an AutoCAD attribute definition entity
+ * (\c ATTDEF).
  */
 typedef struct
 dxf_attdef
