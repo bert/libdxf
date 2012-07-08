@@ -1,6 +1,8 @@
 /*!
  * \file appid.h
+ *
  * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Header file for a DXF application identity entity (\c APPID).
  *
  * A DXF \c APPID entity contains data concerning the application registered
@@ -44,7 +46,8 @@
 
 
 /*!
- * \brief DXF definition of an AutoCAD application identification.
+ * \brief DXF definition of an AutoCAD application identification
+ * (\c APPID).
  *
  * This table entry contains a name for an application
  * registered with a drawing.
