@@ -1,6 +1,8 @@
 /*!
  * \file circle.h
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Header file for a DXF circle entity (\c CIRCLE).
  *
  * <hr>
@@ -109,6 +111,11 @@ dxf_circle_write
         FILE *fp,
         DxfCircle dxf_circle,
         int acad_version_number
+);
+int
+dxf_circle_free
+(
+        DxfCircle *dxf_circle
 );
 
 

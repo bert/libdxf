@@ -460,4 +460,33 @@ dxf_circle_write
         return (EXIT_SUCCESS);
 }
 
+
+/*!
+ * \brief Free the allocated memory for a DXF \c CIRCLE and all it's
+ * data fields.
+ */
+int
+dxf_circle_free
+(
+        DxfCircle *dxf_circle
+                /*!< Pointer to the memory occupied by the DXF \c CIRCLE
+                 * entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_circle_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        free (dxf_circle->common.linetype);
+        free (dxf_circle->common.layer);
+        free (dxf_circle);
+        dxf_circle = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_circle_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
