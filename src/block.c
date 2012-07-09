@@ -36,7 +36,8 @@
 
 
 /*!
- * \brief Allocate memory for a \c DxfBlock.
+ * \brief Allocate memory for a \c DxfBlock
+ * (a DXF \c BLOCK entity).
  *
  * Fill the memory contents with zeros.
  */
@@ -71,7 +72,8 @@ dxf_block_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in a \c BLOCK entity.
+ * \brief Allocate memory and initialize data fields in a \c DxfBlock
+ * (a DXF \c BLOCK entity).
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
@@ -115,7 +117,8 @@ dxf_block_init
 
 
 /*!
- * \brief Read data from a DXF file into an \c BLOCK entity.
+ * \brief Read data from a DXF file into a \c DxfBlock
+ * (a DXF \c BLOCK entity).
  *
  * The last line read from file contained the string "BLOCK". \n
  * Now follows some data for the \c BLOCK, to be terminated with a "  0"
@@ -295,7 +298,8 @@ dxf_block_read
 
 
 /*!
- * \brief Write DXF output to a file for a block entity.
+ * \brief Write DXF output to a file for a DxfBlock
+ * (a DXF \c BLOCK entity).
  */
 int
 dxf_block_write_lowlevel
@@ -408,7 +412,8 @@ dxf_block_write_lowlevel
 
 
 /*!
- * \brief Write DXF output to fp for a block entity.
+ * \brief Write DXF output to fp for a DxfBlock
+ * ( a \c BLOCK entity).
  */
 int
 dxf_block_write
@@ -493,7 +498,8 @@ dxf_block_write
 
 
 /*!
- * \brief Write DXF output to a file for an end of block marker.
+ * \brief Write DXF output to a file for an end of block marker
+ * (a \c ENDBLK entity).
  *
  * Appears only in \c BLOCKS section.\n
  * Contains no other group codes than "0".
@@ -536,8 +542,8 @@ dxf_block_write_table
 
 
 /*!
- * \brief Free the allocated memory for a DXF \c BLOCK and all it's
- * data fields.
+ * \brief Free the allocated memory for a DxfBlock (a \c BLOCK entity)
+ * and all it's data fields.
  */
 int
 dxf_block_free
