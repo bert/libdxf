@@ -535,4 +535,34 @@ dxf_block_write_table
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c BLOCK and all it's
+ * data fields.
+ */
+int
+dxf_block_free
+(
+        DxfBlock *dxf_block
+                /*!< Pointer to the memory occupied by the DXF \c BLOCK
+                 * entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        free (dxf_block->common.linetype);
+        free (dxf_block->common.layer);
+        free (dxf_block->xref_name);
+        free (dxf_block->block_name);
+        free (dxf_block);
+        dxf_block = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

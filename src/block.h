@@ -154,6 +154,11 @@ dxf_block_write_table
         char *dxf_blocks_list, 
         int acad_version_number
 );
+int
+dxf_block_free
+(
+        DxfBlock *dxf_block
+);
 
 
 #endif /* BLOCK_H */
