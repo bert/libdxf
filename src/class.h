@@ -128,6 +128,9 @@ dxf_class
                  * Set to 1 if class was derived from the AcDbEntity class and
                  * can reside in the BLOCKS or ENTITIES section.\n
                  * If 0, instances may appear only in the OBJECTS section. */
+        struct DxfClass *next;
+                /*!< pointer to the next DxfClass.\n
+                 * \c NULL in the last DxfClass. */
 } DxfClass, * DxfClassPtr;
 
 

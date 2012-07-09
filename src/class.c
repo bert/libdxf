@@ -109,6 +109,7 @@ dxf_class_init
         dxf_class->proxy_cap_flag = 0;
         dxf_class->was_a_proxy_flag = 0;
         dxf_class->is_an_entity_flag = 0;
+        dxf_class->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_class_init () function.\n",
                 __FILE__, __LINE__);
