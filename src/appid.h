@@ -76,6 +76,9 @@ dxf_appid
                  *      one entity in the drawing the last time the drawing
                  *      was edited.\n
                  * Group code = 70. */
+        struct DxfAppid *next;
+                /*!< pointer to the next DxfAppid.\n
+                 * \c NULL in the last DxfAppid. */
 } DxfAppid, * DxfAppidPtr;
 
 

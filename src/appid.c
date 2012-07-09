@@ -101,6 +101,7 @@ dxf_appid_init
         dxf_appid->id_code = 0;
         dxf_appid->application_name = strdup ("");
         dxf_appid->standard_flag = 0;
+        dxf_appid->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_init () function.\n",
                 __FILE__, __LINE__);
