@@ -78,6 +78,9 @@ dxf_arc
         double end_angle;
                 /*!< End angle of the arc.\n
                  * Group code = 51. */
+        struct DxfArc *next;
+                /*!< pointer to the next DxfArc.\n
+                 * \c NULL in the last DxfArc. */
 } DxfArc, * DxfArcPtr;
 
 

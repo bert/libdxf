@@ -113,6 +113,7 @@ dxf_arc_init
         dxf_arc->common.color = DXF_COLOR_BYLAYER;
         dxf_arc->common.paperspace = DXF_MODELSPACE;
         dxf_arc->common.acad_version_number = 0;
+        dxf_arc->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_init () function.\n",
                 __FILE__, __LINE__);
