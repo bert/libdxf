@@ -65,6 +65,9 @@ dxf_circle
                  * Group code = 230. */
         double radius;
                 /*!< group code = 40. */
+        struct DxfCircle *next;
+                /*!< pointer to the next DxfCircle.\n
+                 * \c NULL in the last DxfCircle. */
 } DxfCircle, * DxfCirclePtr;
 
 

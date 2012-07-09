@@ -107,6 +107,7 @@ dxf_circle_init
         dxf_circle->common.color = DXF_COLOR_BYLAYER;
         dxf_circle->common.paperspace = DXF_MODELSPACE;
         dxf_circle->common.acad_version_number = 0;
+        dxf_circle->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_circle_init () function.\n",
                 __FILE__, __LINE__);
