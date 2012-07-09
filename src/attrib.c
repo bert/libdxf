@@ -121,6 +121,7 @@ dxf_attrib_init
         dxf_attrib->extr_y0 = 0.0;
         dxf_attrib->extr_z0 = 0.0;
         dxf_attrib->common.acad_version_number = 0;
+        dxf_attrib->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attrib_init () function.\n",
                 __FILE__, __LINE__);

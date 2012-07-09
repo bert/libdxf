@@ -130,6 +130,9 @@ dxf_attrib
                 /*!< Z-value of the extrusion vector.\n
                  * Defaults to 1.0 if ommitted in the DXF file.\n
                  * Group code = 230. */
+        struct DxfAttrib *next;
+                /*!< pointer to the next DxfAttrib.\n
+                 * \c NULL in the last DxfAttrib. */
 } DxfAttrib, * DxfAttribPtr;
 
 
