@@ -128,6 +128,7 @@ dxf_3dsolid_init
         dxf_3dsolid->common.color = DXF_COLOR_BYLAYER;
         dxf_3dsolid->common.paperspace = DXF_MODELSPACE;
         dxf_3dsolid->common.acad_version_number = 0;
+        dxf_3dsolid->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_init () function.\n",
                 __FILE__, __LINE__);

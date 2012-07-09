@@ -60,6 +60,9 @@ dxf_3dsolid
         int modeler_format_version_number;
                 /*!< group code = 70\n
                  * Modeler format version number (currently = 1).\n */
+        struct Dxf3dsolid *next;
+                /*!< pointer to the next Dxf3dsolid.\n
+                 * \c NULL in the last Dxf3dsolid. */
 } Dxf3dsolid, * Dxf3dsolidPtr;
 
 
