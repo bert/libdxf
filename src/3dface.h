@@ -92,6 +92,9 @@ dxf_3dface
                  * 2 = Second edge is invisible\n
                  * 4 = Third edge is invisible\n
                  * 8 = Fourth edge is invisible\n */
+        struct Dxf3dface *next;
+                /*!< pointer to the next Dxf3dface.\n
+                 * \c NULL in the last Dxf3dface. */
 } Dxf3dface, * Dxf3dfacePtr;
 
 

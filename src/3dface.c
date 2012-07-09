@@ -114,6 +114,7 @@ dxf_3dface_init
         dxf_3dface->common.paperspace = DXF_MODELSPACE;
         dxf_3dface->flag = 0;
         dxf_3dface->common.acad_version_number = 0;
+        dxf_3dface->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_init () function.\n",
                 __FILE__, __LINE__);
