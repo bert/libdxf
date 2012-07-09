@@ -104,6 +104,10 @@ dxf_block
                  * 32 = this is a resolved external reference, or dependent
                  *      of an external reference\n
                  * 64 = this definition is referenced. */
+        struct DxfBlock *next;
+                /*!< pointer to the next DxfBlock.\n
+                 * \c NULL in the last DxfBlock. */
+        
 } DxfBlock, * DxfBlockPtr;
 
 

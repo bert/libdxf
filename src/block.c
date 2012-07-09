@@ -108,6 +108,7 @@ dxf_block_init
         dxf_block->common.paperspace = DXF_MODELSPACE;
         dxf_block->common.acad_version_number = 0;
         dxf_block->block_type = 0; /* 0 = invalid type */
+        dxf_block->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_init () function.\n",
                 __FILE__, __LINE__);
