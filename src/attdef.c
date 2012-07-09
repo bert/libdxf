@@ -122,6 +122,7 @@ dxf_attdef_init
         dxf_attdef->extr_y0 = 0.0;
         dxf_attdef->extr_z0 = 0.0;
         dxf_attdef->common.acad_version_number = 0;
+        dxf_attdef->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attdef_init () function.\n",
                 __FILE__, __LINE__);

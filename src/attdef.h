@@ -147,6 +147,9 @@ dxf_attdef
                 /*!< Z-value of the extrusion vector.\n
                  * Defaults to 1.0 if ommitted in the DXF file.\n
                  * Group code = 230. */
+        struct DxfAttdef *next;
+                /*!< pointer to the next DxfAttdef.\n
+                 * \c NULL in the last DxfAttdef. */
 } DxfAttdef, * DxfAttdefPtr;
 
 
