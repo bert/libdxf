@@ -36,7 +36,7 @@
 
 
 /*!
- * \brief Allocate memory for a \c DxfCircle.
+ * \brief Allocate memory for a DXF \c CIRCLE.
  *
  * Fill the memory contents with zeros.
  */
@@ -71,7 +71,8 @@ dxf_circle_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in a \c CIRCLE entity.
+ * \brief Allocate memory and initialize data fields in a \c CIRCLE
+ * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
@@ -117,7 +118,7 @@ dxf_circle_init
 
 
 /*!
- * \brief Read data from a DXF file into an \c CIRCLE entity.
+ * \brief Read data from a DXF file into a DXF \c CIRCLE entity.
  *
  * The last line read from file contained the string "CIRCLE". \n
  * Now follows some data for the \c CIRCLE, to be terminated with a "  0"
@@ -301,7 +302,7 @@ dxf_circle_read
 
 
 /*!
- * \brief Write DXF output to a file for a circle entity.
+ * \brief Write DXF output to a file for a DXF \c CIRCLE entity.
  */
 int
 dxf_circle_write_lowlevel
@@ -392,7 +393,7 @@ dxf_circle_write_lowlevel
 }
 
 /*!
- * \brief Write DXF output to fp for a circle entity.
+ * \brief Write DXF output to file for a DXF \c CIRCLE entity.
  */
 int
 dxf_circle_write

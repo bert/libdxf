@@ -37,7 +37,7 @@
 
 
 /*!
- * \brief DXF definition of a circle entity.
+ * \brief DXF definition of a circle entity (\c CIRCLE).
  */
 typedef struct
 dxf_circle
