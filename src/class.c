@@ -45,7 +45,7 @@
 
 
 /*!
- * \brief Allocate memory for a \c DxfClass.
+ * \brief Allocate memory for a DXF \c CLASS entity.
  *
  * Fill the memory contents with zeros.
  */
@@ -80,7 +80,8 @@ dxf_class_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in a \c CLASS entity.
+ * \brief Allocate memory and initialize data fields in a DXF \c CLASS
+ * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
@@ -119,7 +120,7 @@ dxf_class_init
 
 
 /*!
- * \brief Read data from a DXF file into an \c CLASS entity.
+ * \brief Read data from a DXF file into a DXF \c CLASS entity.
  *
  * The last line read from file contained the string "CLASS". \n
  * Now follows some data for the \c CLASS, to be terminated with a "  0"
@@ -242,7 +243,7 @@ dxf_class_read
 
 
 /*!
- * \brief Write DXF output to a file for a class section.
+ * \brief Write DXF output to a file for a DXF \c CLASS entity.
  *
  * Each entry in the CLASSES section contains the groups described
  * in the following table, as stated in the documentation for
@@ -317,7 +318,7 @@ dxf_class_write_lowlevel
 
 
 /*!
- * \brief Write DXF output to a file for a class section.
+ * \brief Write DXF output to a file for a DXF \c CLASS entity.
  */
 int
 dxf_class_write
@@ -349,7 +350,8 @@ dxf_class_write
 
 
 /*!
- * \brief Write DXF output to a file for an end of class section marker.
+ * \brief Write DXF output to a file for an end of \c CLASSES section
+ * marker.
  */
 int
 dxf_class_write_endclass
