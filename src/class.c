@@ -368,4 +368,34 @@ dxf_class_write_endclass
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c CLASS and all it's
+ * data fields.
+ */
+int
+dxf_class_free
+(
+        DxfClass *dxf_class
+                /*!< Pointer to the memory occupied by the DXF \c CLASS
+                 * entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_class_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        free (dxf_class->record_type);
+        free (dxf_class->record_name);
+        free (dxf_class->class_name);
+        free (dxf_class->app_name);
+        free (dxf_class);
+        dxf_class = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_class_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

@@ -1,6 +1,8 @@
 /*!
  * \file class.h
- * \author Copyright (C) 2009, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2009 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Header file for a DXF class entity (\c CLASS).
  *
  * The group codes described in this chapter are found only in DXF files.\n
@@ -74,7 +76,7 @@
 #include "global.h"
 
 /*!
- * \brief DXF definition of a class entity.
+ * \brief DXF definition of a class entity (\c CLASS).
  *
  * Each entry in the CLASSES section contains the groups described
  * in the following table, as stated in the documentation for
@@ -171,6 +173,11 @@ int
 dxf_class_write_endclass
 (
         FILE *fp
+);
+int
+dxf_class_free
+(
+        DxfClass *dxf_class
 );
 
 
