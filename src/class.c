@@ -40,7 +40,6 @@
  */
 
 
-#include "global.h"
 #include "class.h"
 
 
