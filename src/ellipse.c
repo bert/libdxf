@@ -36,7 +36,7 @@
 
 
 /*!
- * \brief Allocate memory for a \c DxfEllipse.
+ * \brief Allocate memory for a DXF \c ELLIPSE.
  *
  * Fill the memory contents with zeros.
  *
@@ -74,7 +74,8 @@ dxf_ellipse_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in an \c ELLIPSE entity.
+ * \brief Allocate memory and initialize data fields in a DXF \c ELLIPSE
+ * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
@@ -125,7 +126,7 @@ dxf_ellipse_init
 
 
 /*!
- * \brief Read data from a DXF file into an \c ELLIPSE entity.
+ * \brief Read data from a DXF file into a DXF \c ELLIPSE entity.
  *
  * The last line read from file contained the string "ELLIPSE". \n
  * Now follows some data for the \c ELLIPSE, to be terminated with a
@@ -344,9 +345,10 @@ dxf_ellipse_read
 
 
 /*!
- * \brief Write DXF output to a file for an ellipse entity (elliptic arc).
+ * \brief Write DXF output to a file for a DXF \c ELLIPSE entity.
  *
- * This entity requires AutoCAD version R14 or higher.
+ * The ellipse entity  (elliptic arc) requires AutoCAD version R14 or
+ * higher.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -482,9 +484,10 @@ dxf_ellipse_write_lowlevel
 
 
 /*!
- * \brief Write DXF output to a file for an ellipse entity (elliptic arc).
+ * \brief Write DXF output to a file for a DXF \c ELLIPSE entity.
  *
- * This entity requires AutoCAD version R14 or higher.
+ * The ellipse entity (elliptic arc) requires AutoCAD version R14 or
+ * higher.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
