@@ -140,6 +140,11 @@ dxf_ellipse_write
         DxfEllipse dxf_ellipse,
         int acad_version_number
 );
+int
+dxf_ellipse_free
+(
+        DxfEllipse *dxf_ellipse
+);
 
 
 #endif /* _ELLIPSE_H */

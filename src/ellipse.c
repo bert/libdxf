@@ -571,4 +571,32 @@ dxf_ellipse_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c ELLIPSE and all it's
+ * data fields.
+ */
+int
+dxf_ellipse_free
+(
+        DxfEllipse *dxf_ellipse
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c ELLIPSE entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ellipse_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        free (dxf_ellipse->common.linetype);
+        free (dxf_ellipse->common.layer);
+        free (dxf_ellipse);
+        dxf_ellipse = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ellopse_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
