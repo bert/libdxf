@@ -87,6 +87,9 @@ dxf_ellipse
                 /*!< group code = 41. */
         double end_angle;
                 /*!< group code = 42. */
+        struct DxfEllipse *next;
+                /*!< pointer to the next DxfEllipse.\n
+                 * \c NULL in the last DxfEllipse. */
 } DxfEllipse, * DxfEllipsePtr;
 
 

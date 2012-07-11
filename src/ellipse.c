@@ -115,6 +115,7 @@ dxf_ellipse_init
         dxf_ellipse->common.color = DXF_COLOR_BYLAYER;
         dxf_ellipse->common.paperspace = DXF_MODELSPACE;
         dxf_ellipse->common.acad_version_number = 0;
+        dxf_ellipse->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ellipse_init () function.\n",
                 __FILE__, __LINE__);
