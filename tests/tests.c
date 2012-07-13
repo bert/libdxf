@@ -30,7 +30,7 @@
  */
 
 #include <string.h>
-#include "../src/file.h"
+#include "includes.h"
 
 int main (void)
 {
