@@ -1,6 +1,8 @@
 /*!
  * \file entity.h
- * \author Copyright (C) 2008, 2009, 2010, 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Header file for DXF entities.
  *
  * <hr>
@@ -106,24 +108,9 @@ dxf_entity_type
 
 
 int
-dxf_read_entities
-(
-       char *filename,
-       FILE *fp,
-       int line_number,
-       char *dxf_entities_list,
-       int acad_version_number
-);
-int
 dxf_skip_entity
 (
         char *dxf_entity_name
-);
-int
-dxf_write_entities
-(
-        char *dxf_entities_list,
-        int acad_version_number
 );
 
 
