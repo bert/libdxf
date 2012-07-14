@@ -58,6 +58,8 @@ libdxf_la_SOURCES = \
   file.c     \
   entity.h     \
   entity.c     \
+  entities.h     \
+  entities.c     \
   ellipse.h     \
   ellipse.c     \
   donut.c	\
