@@ -1,6 +1,8 @@
 /*!
  * \file text.c
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief DXF text entity (\c TEXT).
  *
  * <hr>
@@ -458,7 +460,7 @@ dxf_text_write_lowlevel
         {
                 fprintf (stderr, "Error in dxf_text_write_lowlevel () text value string is empty for the %s entity with id-code: %x\n",
                         dxf_entity_name, id_code);
-                dxf_skip_entity (dxf_entity_name);
+                dxf_entity_skip (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (text_style, "") == 0)
@@ -588,7 +590,7 @@ dxf_text_write
         {
                 fprintf (stderr, "Error in dxf_text_write () text value string is empty for the %s entity with id-code: %x\n",
                         dxf_entity_name, dxf_text.common.id_code);
-                dxf_skip_entity (dxf_entity_name);
+                dxf_entity_skip (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_text.text_style, "") == 0)

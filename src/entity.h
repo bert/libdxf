@@ -108,7 +108,7 @@ dxf_entity_type
 
 
 int
-dxf_skip_entity
+dxf_entity_skip
 (
         char *dxf_entity_name
 );

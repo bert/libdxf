@@ -40,7 +40,7 @@
  * on skipping output for an entity to a file (or device).
  */
 int
-dxf_skip_entity
+dxf_entity_skip
 (
         char *dxf_entity_name
                 /*!< Type of the entity skipped from output. */

@@ -383,7 +383,7 @@ dxf_line_write_lowlevel
         {
                 fprintf (stderr, "Error in dxf_line_write_lowlevel () start point and end point are identical for the %s entity with id-code: %x\n",
                         dxf_entity_name, id_code);
-                dxf_skip_entity (dxf_entity_name);
+                dxf_entity_skip (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
@@ -457,7 +457,7 @@ dxf_line_write
         {
                 fprintf (stderr, "Error in dxf_line_write () start point and end point are identical for the %s entity with id-code: %x\n",
                         dxf_entity_name, dxf_line.common.id_code);
-                dxf_skip_entity (dxf_entity_name);
+                dxf_entity_skip (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_line.common.layer, "") == 0)
