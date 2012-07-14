@@ -37,6 +37,7 @@
 
 
 #include "global.h"
+#include "entities.h"
 #include "header.h"
 #include "util.h"
 #include "block.h"

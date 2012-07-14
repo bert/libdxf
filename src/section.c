@@ -88,7 +88,7 @@ dxf_section_read
                         else if (strcmp (temp_string, "ENTITIES") == 0)
                         {
                                 /* We have found the begin of the ENTITIES sction. */
-                                dxf_read_entities (fp->filename,
+                                dxf_entities_read_table (fp->filename,
                                                    fp->fp,
                                                    fp->line_number,
                                                    dxf_entities_list,
