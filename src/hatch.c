@@ -36,59 +36,66 @@
  * \brief Write DXF output to a file for a hatch entity.
  *
  * This entity requires AutoCAD version R14 or higher.\n
- * A hatch entity is a rather complex and intricate object to write to a DXF
- * file, nevertheless, we'll have to try.\n
- * First a header and common values for the hatch is written to file, then
- * follows the hatch boundary data and the hatch pattern data.\n\n
- * dxf_write_hatch (): write hatch header and common values.\n
+ * A hatch entity is a rather complex and intricate object to write to a
+ * DXF file, nevertheless, we'll have to try.\n
+ * First a header and common values for the hatch is written to file,
+ * then follows the hatch boundary data and the hatch pattern data.\n
+ * \n
+ * dxf_hatch_write (): write hatch header and common values.\n
  * Now follows the hatch boundary path data and the hatch pattern data:\n
  * <ul>
- *   <li>dxf_write_hatch_boundaries (): write boundary data which consists of
- *   one or more of either:\n
+ *   <li>dxf_hatch_write_boundaries (): write boundary data which
+ *       consists of one or more of either:\n
  *   <ul>
-       <li>dxf_write_hatch_boundary_path_edges (): write the edges of one or
- *     more boundary paths, edges consisting of either:\n
+ *     <li>dxf_hatch_write_boundary_path_edges (): write the edges of
+ *         one or more boundary paths, edges consisting of either:\n
  *     <ul>
- *       <li>boundary_path_edge_line (): write a line entity.\n
- *       <li>boundary_path_edge_arc (): write an arc entity.\n
- *       <li>boundary_path_edge_ellipse (): write an ellipse entity.\n
- *       <li>boundary_path_edge_spline (): write a spline entity.\n
+ *       <li>dxf_hatch_write_boundary_path_edge_line (): write a line
+ *           entity.\n
+ *       <li>dxf_hatch_write_boundary_path_edge_arc (): write an arc
+ *           entity.\n
+ *       <li>dxf_hatch_write_boundary_path_edge_ellipse (): write an
+ *           ellipse entity.\n
+ *       <li>dxf_hatch_write_boundary_path_edge_spline (): write a
+ *           spline entity.\n
  *     </ul>
- *     The edge entities making a boundary path should form a closed loop, for
- *     else the hatch pattern will "escape" from this area through the "gaps"
- *     in the boundary path.\n
- *     In case a very dense hatch pattern is chosen, it may take very long for
- *     AutoCAD (or any other CAD application using the DXF file) to load the
- *     hatch entity, for it will try to apply the hatch pattern to it's entire
- *     universe ;-(\n
+ *     The edge entities making a boundary path should form a closed
+ *     loop, for else the hatch pattern will "escape" from this area
+ *     through the "gaps" in the boundary path.\n
+ *     In case a very dense hatch pattern is chosen, it may take very
+ *     long for AutoCAD (or any other CAD application using the DXF
+ *     file) to load the hatch entity, for it will try to apply the
+ *     hatch pattern to it's entire universe ;-(\n
  *     It is for this reason that applying a very dense hatch pattern is
- *     considered a Bad Thing (TM); better use the SOLID hatch pattern to
- *     obtain a similar result.\n
- *     <li>dxf_write_hatch_boundary_path_polyline (): write a polyline entity
- *     and vertices.\n
+ *     considered a Bad Thing (TM); better use the SOLID hatch pattern
+ *     to obtain a similar result.\n
+ *     <li>dxf_hatch_write_boundary_path_polyline (): write a polyline
+ *         entity and vertices.\n
  *     <ul>
- *       <li>dxf_write_hatch_boundary_polyline_vertex (): write a vertex\n
+ *       <li>dxf_hatch_write_boundary_polyline_vertex (): write a
+ *           vertex.\n
  *     </ul>
- *     The polyline making a boundary path should form a closed loop, for else
- *     the hatch pattern will "escape" from this area through the "gaps" in the
- *     boundary path.\n
- *     In case a very dense hatch pattern is chosen, it may take very long for
- *     AutoCAD (or any other CAD application using the DXF file) to load the
- *     hatch entity, for it will try to apply the hatch pattern to it's entire
- *     universe ;-(\n
+ *     The polyline making a boundary path should form a closed loop,
+ *     for else the hatch pattern will "escape" from this area through
+ *     the "gaps" in the boundary path.\n
+ *     In case a very dense hatch pattern is chosen, it may take very
+ *     long for AutoCAD (or any other CAD application using the DXF
+ *     file) to load the hatch entity, for it will try to apply the
+ *     hatch pattern to it's entire universe ;-(\n
  *     It is for this reason that applying a very dense hatch pattern is
- *     considered a Bad Thing (TM); better use the SOLID hatch pattern to
- *     obtain a similar result.\n
+ *     considered a Bad Thing (TM); better use the SOLID hatch pattern
+ *     to obtain a similar result.\n
  *   </ul>
- *     <li>dxf_write_hatch_pattern_data (): write one or more pattern definition
- *     lines which are either continous or dashed.\n
+ *     <li>dxf_hatch_write_hatch_pattern_data (): write one or more
+ *         pattern definition lines which are either continous or
+ *         dashed.\n
  *   <ul>
- *     <li>dxf_write_hatch_pattern_def_line_dashes\n
+ *     <li>dxf_hatch_write_pattern_def_line_dashes\n
  *   </ul>
  * </ul>
  */
 int
-dxf_write_hatch
+dxf_hatch_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -180,14 +187,17 @@ dxf_write_hatch
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_hatch () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write () function.\n",
+                __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("HATCH");
         int i;
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -248,7 +258,8 @@ dxf_write_hatch
         }
         fprintf (fp, " 91\n%d\n", pattern_boundary_paths);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -259,7 +270,7 @@ dxf_write_hatch
 Requires AutoCAD version R14 or higher.
 */
 int
-dxf_write_hatch_boundaries
+dxf_hatch_write_boundaries
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -395,7 +406,8 @@ dxf_write_hatch_boundaries
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_hatch_boundary () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_boundary () function.\n",
+                __FILE__, __LINE__);
 #endif
         int i;
         int j;
@@ -412,14 +424,14 @@ dxf_write_hatch_boundaries
                                 case 3: /* elliptic arc type */
                                 case 4: /* spline type */
                                 default:
-                                        fprintf (stderr, "Error: unsupported boundary path edge type encountered in dxf_write_hatch_boundary ().\n");
+                                        fprintf (stderr, "Error: unsupported boundary path edge type encountered in dxf_hatch_write_boundary ().\n");
                                         return (EXIT_FAILURE);
                         }
                 }
                 else if (hatch_boundary_path_type_flag == 2)
                 {
                         /* a polyline boundary */
-                        dxf_write_hatch_boundary_path_polyline
+                        dxf_hatch_write_boundary_path_polyline
                         (
                                 fp,
                                 hatch_boundary_path_polyline_has_bulge,
@@ -432,21 +444,22 @@ dxf_write_hatch_boundaries
                 }
                 else
                 {
-                        fprintf (stderr, "Error: unsupported boundary path type encountered in dxf_write_hatch_boundary ().\n");
+                        fprintf (stderr, "Error: unsupported boundary path type encountered in dxf_hatch_write_boundary ().\n");
                         return (EXIT_FAILURE);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch_boundary () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_boundary () function.\n",
+                __FILE__, __LINE__);
 #endif
-		return (EXIT_SUCCESS);
+        return (EXIT_SUCCESS);
 }
 
 /*!
 \brief Write DXF output to a file for a hatch boundary polyline vertex.
 */
 int
-dxf_write_hatch_boundary_polyline_vertex
+dxf_hatch_write_boundary_path_polyline_vertex
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -463,13 +476,15 @@ dxf_write_hatch_boundary_polyline_vertex
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_hatch_boundary_polyline_vertex () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_boundary_polyline_vertex () function.\n",
+                __FILE__, __LINE__);
 #endif
         fprintf (fp, " 10\n%f\n", x0);
         fprintf (fp, " 20\n%f\n", y0);
         if (bulge != 0.0) fprintf (fp, " 42\n%f\n", bulge);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch_boundary_polyline_vertex () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_boundary_polyline_vertex () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -478,7 +493,7 @@ dxf_write_hatch_boundary_polyline_vertex
 \brief Write DXF output to a file for a hatch boundary path polyline.
 */
 int
-dxf_write_hatch_boundary_path_polyline
+dxf_hatch_write_boundary_path_polyline
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -503,7 +518,8 @@ dxf_write_hatch_boundary_path_polyline
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_hatch_boundary_path_polyline () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_boundary_path_polyline () function.\n",
+                __FILE__, __LINE__);
 #endif
         int i;
         fprintf (fp, " 72\n%d\n", has_bulge);
@@ -513,7 +529,7 @@ dxf_write_hatch_boundary_path_polyline
         for (i = 0; i < vertices; i++)
         {
                 if (!has_bulge) bulge[i] = 0.0;
-                dxf_write_hatch_boundary_polyline_vertex
+                dxf_hatch_write_boundary_path_polyline_vertex
                 (
                         fp,
                         x0[i],
@@ -524,7 +540,7 @@ dxf_write_hatch_boundary_path_polyline
                 if (is_closed)
                 {
                         if (!has_bulge) bulge[0] = 0.0;
-                        dxf_write_hatch_boundary_polyline_vertex
+                        dxf_hatch_write_boundary_path_polyline_vertex
                         (
                                 fp,
                                 x0[0],
@@ -534,7 +550,8 @@ dxf_write_hatch_boundary_path_polyline
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch_boundary_path_polyline () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_boundary_path_polyline () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -543,7 +560,7 @@ dxf_write_hatch_boundary_path_polyline
 \brief Write DXF output to a file for a hatch pattern definition line dash items.
 */
 int
-dxf_write_hatch_pattern_def_line_dashes
+dxf_hatch_write_pattern_def_line_dashes
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -582,7 +599,7 @@ dxf_write_hatch_pattern_def_line_dashes
 \brief Write DXF output to a file for a hatch pattern data.
 */
 int
-dxf_write_hatch_pattern_data
+dxf_hatch_write_pattern_data
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -615,7 +632,8 @@ dxf_write_hatch_pattern_data
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_hatch_pattern_data () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_pattern_data () function.\n",
+                __FILE__, __LINE__);
 #endif
         int i;
         int j;
@@ -634,7 +652,7 @@ dxf_write_hatch_pattern_data
                         {
                                 for (j = 0; j < *def_line_dash_items; j++)
                                 {
-                                        dxf_write_hatch_pattern_def_line_dashes
+                                        dxf_hatch_write_pattern_def_line_dashes
                                         (
                                                 fp,
                                                 *def_line_dash_items,
@@ -646,12 +664,14 @@ dxf_write_hatch_pattern_data
         }
         else
         {
-                fprintf (stderr, "Warning: no definition lines found in dxf_write_hatch_pattern_data () function.\n");
+                fprintf (stderr, "Warning: no definition lines found in dxf_hatch_write_pattern_data () function.\n");
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch_pattern_data () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_pattern_data () function.\n",
+                __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */

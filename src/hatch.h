@@ -31,9 +31,12 @@
  * <hr>
  */
 
+
 #include "global.h"
 
+
 #define DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS 16
+
 
 /*!
  * \brief DXF definition of an AutoCAD hatch boundary path edge arc.
@@ -62,6 +65,7 @@ dxf_hatch_boundary_path_edge_arc
                 /*!< pointer to the next DxfHatchBoundaryPathEdgeArc.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeArc. */
 } DxfHatchBoundaryPathEdgeArc, * DxfHatchBoundaryPathEdgeArcPtr;
+
 
 /*!
  * \brief DXF definition of an AutoCAD hatch boundary path edge ellipse.
@@ -100,6 +104,7 @@ dxf_hatch_boundary_path_edge_ellipse
                  * \c NULL if the last DxfHatchBoundaryPathEdgeEllipse. */
 } DxfHatchBoundaryPathEdgeEllipse, * DxfHatchBoundaryPathEdgeEllipsePtr;
 
+
 /*!
  * \brief DXF definition of an AutoCAD hatch boundary path edge line.
  */
@@ -124,6 +129,7 @@ dxf_hatch_boundary_path_edge_line
                 /*!< pointer to the next DxfHatchBoundaryPathEdgeLine.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeLine. */
 } DxfHatchBoundaryPathEdgeLine, * DxfHatchBoundaryPathEdgeLinePtr;
+
 
 /*!
  * \brief DXF definition of an AutoCAD hatch boundary path edge spline.
@@ -150,6 +156,7 @@ dxf_hatch_boundary_path_edge_spline
                  * \c NULL if the last DxfHatchBoundaryPathEdgeSpline. */
 } DxfHatchBoundaryPathEdgeSpline, * DxfHatchBoundaryPathEdgeSplinePtr;
 
+
 /*!
  * \brief DXF definition of an AutoCAD hatch boundary path edge spline
  * control point.
@@ -170,6 +177,7 @@ dxf_hatch_boundary_path_edge_spline_cp
                 /*!< pointer to the next DxfHatchBoundaryPathEdgeSplineCp.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeSplineCp. */
 } DxfHatchBoundaryPathEdgeSplineCp, * DxfHatchBoundaryPathEdgeSplineCpPtr;
+
 
 /*!
  * \brief DXF definition of an AutoCAD hatch pattern definition line.
@@ -206,6 +214,7 @@ dxf_hatch_pattern_def_line
                  * \c NULL if the last DxfHatchPatternDefLine. */
 } DxfHatchPatternDefLine, * DxfHatchPatternDefLinePtr;
 
+
 /*!
  * \brief DXF definition of an AutoCAD hatch pattern.
  */
@@ -228,6 +237,7 @@ dxf_hatch_pattern
                  * \c NULL if the last DxfHatchPattern. */
 } DxfHatchPattern, * DxfHatchPatternPtr;
 
+
 /*!
  * \brief DXF definition of an AutoCAD hatch seed point.
  */
@@ -246,6 +256,7 @@ dxf_hatch_seed_point
                 /*!< pointer to the next DxfHatchSeedPoint.\n
                  * \c NULL if the last DxfHatchSeedPoint. */
 } DxfHatchSeedPoint, * DxfHatchSeedPointPtr;
+
 
 /*!
  * \brief DXF definition of an AutoCAD hatch entity.
@@ -339,12 +350,111 @@ dxf_hatch
                  * \c NULL if the last DxfHatch. */
 } DxfHatch, * DxfHatchPtr;
 
-int dxf_write_hatch_boundary_path_polyline (FILE *fp,
+
+int
+dxf_hatch_write
+(
+        FILE *fp,
+        char *pattern_name,
+        int id_code,
+        char *linetype,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0,
+        double thickness,
+        double pattern_scale,
+        double pixel_size,
+        double pattern_angle,
+        int color,
+        int paperspace,
+        int solid_fill,
+        int associative,
+        int style,
+        int pattern_style,
+        int pattern_double,
+        int pattern_def_lines,
+        int pattern_boundary_paths,
+        int seed_points,
+                double *seed_x0,
+                double *seed_y0
+);
+int
+dxf_hatch_write_boundaries
+(
+        FILE *fp,
+        int hatch_boundary_paths,
+        int hatch_boundary_path_type_flag,
+                int hatch_boundary_path_edges,
+                int hatch_boundary_path_edge_type,
+                        double hatch_boundary_path_edge_line_x0,
+                        double hatch_boundary_path_edge_line_y0,
+                        double hatch_boundary_path_edge_line_x1,
+                        double hatch_boundary_path_edge_line_y1,
+                        double hatch_boundary_path_edge_arc_x0,
+                        double hatch_boundary_path_edge_arc_y0,
+                        double hatch_boundary_path_edge_arc_radius,
+                        double hatch_boundary_path_edge_arc_start_angle,
+                        double hatch_boundary_path_edge_arc_end_angle,
+                        int hatch_boundary_path_edge_arc_is_ccw,
+                        double hatch_boundary_path_edge_ellipse_x0,
+                        double hatch_boundary_path_edge_ellipse_y0,
+                        double hatch_boundary_path_edge_ellipse_x1,
+                        double hatch_boundary_path_edge_ellipse_y1,
+                        double boundary_path_edge_ellipse_minor_axis,
+                        double hatch_boundary_path_edge_ellipse_start_angle,
+                        double hatch_boundary_path_edge_ellipse_end_angle,
+                        int hatch_boundary_path_edge_ellipse_is_ccw,
+                        int hatch_boundary_path_edge_spline_degree,
+                        int hatch_boundary_path_edge_spline_rational,
+                        int hatch_boundary_path_edge_spline_periodic,
+                        int hatch_boundary_path_edge_spline_knots,
+                        int hatch_boundary_path_edge_spline_control_points,
+                                int *hatch_boundary_path_edge_spline_knot_value,
+                                double *hatch_boundary_path_edge_spline_cp_x0,
+                                double *hatch_boundary_path_edge_spline_cp_y0,
+                                double *hatch_boundary_path_edge_spline_cp_weight,
+                int hatch_boundary_path_polyline_has_bulge,
+                int hatch_boundary_path_polyline_is_closed,
+                int hatch_boundary_path_polyline_vertices,
+                        double *hatch_boundary_path_polyline_x0,
+                        double *hatch_boundary_path_polyline_y0,
+                        double *hatch_boundary_path_polyline_bulge,
+        int hatch_boundary_objects,
+        char *hatch_boundary_objects_ref
+);
+int
+dxf_hatch_write_boundary_path_polyline (FILE *fp,
                                             int has_bulge,
                                             int is_closed,
                                             int vertices,
                                             double *x0,
                                             double *y0,
                                             double *bulge );
+int
+dxf_hatch_write_boundary_path_polyline_vertex
+(
+        FILE *fp,
+        double x0,
+        double y0,
+        double bulge
+);
+int
+dxf_hatch_write_pattern_data
+(
+        FILE *fp,
+        int def_lines,
+        double *def_line_angle,
+        double *def_line_x0,
+        double *def_line_y0,
+        double *def_line_x1,
+        double *def_line_y1,
+        int *def_line_dash_items,
+        double **def_line_dash_length
+);
+
 
 /* EOF */
