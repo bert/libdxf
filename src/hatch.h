@@ -1,6 +1,8 @@
 /*!
  * \file hatch.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF hatch entity (\c HATCH).
  *
  * <hr>
@@ -56,6 +58,9 @@ dxf_hatch_boundary_path_edge_arc
         int is_ccw;
                 /*!< group code = 73\n
                  * arc is counterclockwise flag. */
+        struct DxfHatchBoundaryPathEdgeArc *next;
+                /*!< pointer to the next DxfHatchBoundaryPathEdgeArc.\n
+                 * \c NULL if the last DxfHatchBoundaryPathEdgeArc. */
 } DxfHatchBoundaryPathEdgeArc, * DxfHatchBoundaryPathEdgeArcPtr;
 
 /*!
@@ -90,6 +95,9 @@ dxf_hatch_boundary_path_edge_ellipse
         int is_ccw;
                 /*!< group code = 73\n
                  * ellipse is counterclockwise flag. */
+        struct DxfHatchBoundaryPathEdgeEllipse *next;
+                /*!< pointer to the next DxfHatchBoundaryPathEdgeEllipse.\n
+                 * \c NULL if the last DxfHatchBoundaryPathEdgeEllipse. */
 } DxfHatchBoundaryPathEdgeEllipse, * DxfHatchBoundaryPathEdgeEllipsePtr;
 
 /*!
@@ -112,6 +120,9 @@ dxf_hatch_boundary_path_edge_line
         double y1;
                 /*!< group code = 21\n
                  * end point Y-value. */
+        struct DxfHatchBoundaryPathEdgeLine *next;
+                /*!< pointer to the next DxfHatchBoundaryPathEdgeLine.\n
+                 * \c NULL if the last DxfHatchBoundaryPathEdgeLine. */
 } DxfHatchBoundaryPathEdgeLine, * DxfHatchBoundaryPathEdgeLinePtr;
 
 /*!
@@ -134,6 +145,9 @@ dxf_hatch_boundary_path_edge_spline
         int control_points;
                 /*!< group code = 96\n
                  * number of control points. */
+        struct DxfHatchBoundaryPathEdgeSpline *next;
+                /*!< pointer to the next DxfHatchBoundaryPathEdgeSpline.\n
+                 * \c NULL if the last DxfHatchBoundaryPathEdgeSpline. */
 } DxfHatchBoundaryPathEdgeSpline, * DxfHatchBoundaryPathEdgeSplinePtr;
 
 /*!
@@ -152,6 +166,9 @@ dxf_hatch_boundary_path_edge_spline_cp
         double weight;
                 /*!< group code = 42\n
                  * optional, defaults to 1.0. */
+        struct DxfHatchBoundaryPathEdgeSplineCp *next;
+                /*!< pointer to the next DxfHatchBoundaryPathEdgeSplineCp.\n
+                 * \c NULL if the last DxfHatchBoundaryPathEdgeSplineCp. */
 } DxfHatchBoundaryPathEdgeSplineCp, * DxfHatchBoundaryPathEdgeSplineCpPtr;
 
 /*!
@@ -184,6 +201,9 @@ dxf_hatch_pattern_def_line
                 /*!< group code = 49\n
                  * array of dash lengths for an array of hatch pattern
                  * definition lines. */
+        struct DxfHatchPatternDefLine *next;
+                /*!< pointer to the next DxfHatchPatternDefLine.\n
+                 * \c NULL if the last DxfHatchPatternDefLine. */
 } DxfHatchPatternDefLine, * DxfHatchPatternDefLinePtr;
 
 /*!
@@ -197,12 +217,15 @@ dxf_hatch_pattern
         int def_lines;
                 /*!< group code = 78\n
                  * number of hatch pattern definition lines. */
-        DxfHatchPatternDefLine *lines;
+        struct DxfHatchPatternDefLine *lines;
                 /*!< pointer to array of hatch pattern definition lines. */
         double **length;
                 /*!< group code = 49\n
                  * array of dash lengths for an array of hatch pattern
                  * definition lines. */
+        struct DxfHatchPattern *next;
+                /*!< pointer to the next DxfHatchPattern.\n
+                 * \c NULL if the last DxfHatchPattern. */
 } DxfHatchPattern, * DxfHatchPatternPtr;
 
 /*!
@@ -219,6 +242,9 @@ dxf_hatch_seed_point
         double y0;
                 /*!< group code = 20\n
                  * seed point Y-value. */
+        struct DxfHatchSeedPoint *next;
+                /*!< pointer to the next DxfHatchSeedPoint.\n
+                 * \c NULL if the last DxfHatchSeedPoint. */
 } DxfHatchSeedPoint, * DxfHatchSeedPointPtr;
 
 /*!
@@ -306,7 +332,11 @@ dxf_hatch
         int seed_points;
                 /*!< group code = 98\n
                  * number of seed points. */
-        DxfHatchSeedPoint *points;
+        struct DxfHatchSeedPoint *points;
+                /*!< pointer to the  DxfHatchSeedPoints. */
+        struct DxfHatch *next;
+                /*!< pointer to the next DxfHatch.\n
+                 * \c NULL if the last DxfHatch. */
 } DxfHatch, * DxfHatchPtr;
 
 int dxf_write_hatch_boundary_path_polyline (FILE *fp,
