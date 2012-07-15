@@ -35,8 +35,9 @@
  * <hr>
  */
 
-#include "global.h"
+
 #include "hatch.h"
+
 
 /*!
  * \brief Write DXF output to a file for a hatch entity (\c HATCH).
@@ -210,6 +211,7 @@ dxf_hatch_write
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /*!
 \brief Write DXF output to a file for hatch boundary entities.
@@ -402,6 +404,7 @@ dxf_hatch_write_boundaries
         return (EXIT_SUCCESS);
 }
 
+
 /*!
 \brief Write DXF output to a file for a hatch boundary polyline vertex.
 */
@@ -435,6 +438,7 @@ dxf_hatch_write_boundary_path_polyline_vertex
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /*!
 \brief Write DXF output to a file for a hatch boundary path polyline.
@@ -503,6 +507,7 @@ dxf_hatch_write_boundary_path_polyline
         return (EXIT_SUCCESS);
 }
 
+
 /*!
 \brief Write DXF output to a file for a hatch pattern definition line dash items.
 */
@@ -541,6 +546,7 @@ dxf_hatch_write_pattern_def_line_dashes
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /*!
 \brief Write DXF output to a file for a hatch pattern data.
