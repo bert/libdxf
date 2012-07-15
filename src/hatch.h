@@ -423,7 +423,7 @@ dxf_hatch
                 /*!< group code = 71\n
                  * 0 = non-associative\n
                  * 1 = associative. */
-        int style;
+        int hatch_style;
                 /*!< group code = 75\n
                  * 0 = hatch "odd parity" area (Normal style)\n
                  * 1 = hatch outermost area only (Outer style)\n
