@@ -476,6 +476,8 @@ dxf_hatch
 } DxfHatch, * DxfHatchPtr;
 
 
+DxfHatch *
+dxf_hatch_new ();
 int
 dxf_hatch_write
 (
