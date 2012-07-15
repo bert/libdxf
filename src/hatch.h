@@ -217,6 +217,27 @@ dxf_hatch_boundary_path_edge
 
 
 /*!
+ * \brief DXF definition of an AutoCAD hatch boundary path (or loop)
+ * (composite of a closed series of edges, and/or a polyline).
+ */
+typedef struct
+dxf_hatch_boundary_path
+{
+        int id_code;
+                /*!< group code = 5.\n
+                 * Treat the boundary path as if it were a single
+                 * (composite) entity. */
+        struct DxfHatchBoundaryPathEdge *edges;
+                /*!< pointer to the first DxfHatchBoundaryPathEdge.\n
+                 * \c NULL if there is no DxfHatchBoundaryPathEdge in
+                 * the DxfHatchBoundaryPath. */
+        struct DxfHatchBoundaryPath *next;
+                /*!< pointer to the next DxfHatchBoundaryPath.\n
+                 * \c NULL if the last DxfHatchBoundaryPath. */
+} DxfHatchBoundaryPath, * DxfHatchBoundaryPathPtr;
+
+
+/*!
  * \brief DXF definition of an AutoCAD hatch pattern definition line.
  */
 typedef struct
