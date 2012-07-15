@@ -5,6 +5,10 @@
  *
  * \brief Definition of a DXF hatch entity (\c HATCH).
  *
+ * \warning The hatch entity requires AutoCAD version R14 or higher.\n
+ *
+ * \htmlinclude "../doc/hatch.html"
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify

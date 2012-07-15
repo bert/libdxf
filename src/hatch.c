@@ -1,7 +1,13 @@
 /*!
  * \file hatch.c
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief DXF hatch entity (\c HATCH).
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \brief Functions for a DXF hatch entity (\c HATCH).
+ *
+ * \warning The hatch entity requires AutoCAD version R14 or higher.\n
+ *
+ * \htmlinclude "../doc/hatch.html"
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -33,66 +39,7 @@
 #include "hatch.h"
 
 /*!
- * \brief Write DXF output to a file for a hatch entity.
- *
- * This entity requires AutoCAD version R14 or higher.\n
- * A hatch entity is a rather complex and intricate object to write to a
- * DXF file, nevertheless, we'll have to try.\n
- * First a header and common values for the hatch is written to file,
- * then follows the hatch boundary data and the hatch pattern data.\n
- * \n
- * dxf_hatch_write (): write hatch header and common values.\n
- * Now follows the hatch boundary path data and the hatch pattern data:\n
- * <ul>
- *   <li>dxf_hatch_write_boundaries (): write boundary data which
- *       consists of one or more of either:\n
- *   <ul>
- *     <li>dxf_hatch_write_boundary_path_edges (): write the edges of
- *         one or more boundary paths, edges consisting of either:\n
- *     <ul>
- *       <li>dxf_hatch_write_boundary_path_edge_line (): write a line
- *           entity.\n
- *       <li>dxf_hatch_write_boundary_path_edge_arc (): write an arc
- *           entity.\n
- *       <li>dxf_hatch_write_boundary_path_edge_ellipse (): write an
- *           ellipse entity.\n
- *       <li>dxf_hatch_write_boundary_path_edge_spline (): write a
- *           spline entity.\n
- *     </ul>
- *     The edge entities making a boundary path should form a closed
- *     loop, for else the hatch pattern will "escape" from this area
- *     through the "gaps" in the boundary path.\n
- *     In case a very dense hatch pattern is chosen, it may take very
- *     long for AutoCAD (or any other CAD application using the DXF
- *     file) to load the hatch entity, for it will try to apply the
- *     hatch pattern to it's entire universe ;-(\n
- *     It is for this reason that applying a very dense hatch pattern is
- *     considered a Bad Thing (TM); better use the SOLID hatch pattern
- *     to obtain a similar result.\n
- *     <li>dxf_hatch_write_boundary_path_polyline (): write a polyline
- *         entity and vertices.\n
- *     <ul>
- *       <li>dxf_hatch_write_boundary_polyline_vertex (): write a
- *           vertex.\n
- *     </ul>
- *     The polyline making a boundary path should form a closed loop,
- *     for else the hatch pattern will "escape" from this area through
- *     the "gaps" in the boundary path.\n
- *     In case a very dense hatch pattern is chosen, it may take very
- *     long for AutoCAD (or any other CAD application using the DXF
- *     file) to load the hatch entity, for it will try to apply the
- *     hatch pattern to it's entire universe ;-(\n
- *     It is for this reason that applying a very dense hatch pattern is
- *     considered a Bad Thing (TM); better use the SOLID hatch pattern
- *     to obtain a similar result.\n
- *   </ul>
- *     <li>dxf_hatch_write_hatch_pattern_data (): write one or more
- *         pattern definition lines which are either continous or
- *         dashed.\n
- *   <ul>
- *     <li>dxf_hatch_write_pattern_def_line_dashes\n
- *   </ul>
- * </ul>
+ * \brief Write DXF output to a file for a hatch entity (\c HATCH).
  */
 int
 dxf_hatch_write
