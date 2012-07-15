@@ -6,30 +6,30 @@ First a header and common values for the hatch is written to file,
 then follows the hatch boundary data and the hatch pattern data.<br>
 <br>
 <ol type="A">
-  <li>dxf_hatch_write ():<br>
+  <li>dxf_hatch_write_lowlevel ():<br>
     write hatch header and common values.<br>
   <br>
   Now follows the hatch boundary path data and the hatch pattern data:<br>
   <br>
-  <li>dxf_hatch_write_boundaries ():<br>
+  <li>dxf_hatch_write_boundaries_lowlevel ():<br>
     write boundary data which consists of one or more of either:<br>
   <br>
   <ol type="1">
-    <li>dxf_hatch_write_boundary_path_edges ():<br>
+    <li>dxf_hatch_write_boundary_path_edges_lowlevel ():<br>
       write the edges of one or more boundary paths, edges consisting of
       either:<br>
       <br>
     <ol type="a">
-      <li>dxf_hatch_write_boundary_path_edge_line ():<br>
+      <li>dxf_hatch_write_boundary_path_edge_line_lowlevel ():<br>
         write a line entity.<br>
         <br>
-      <li>dxf_hatch_write_boundary_path_edge_arc ():<br>
+      <li>dxf_hatch_write_boundary_path_edge_arc_lowlevel ():<br>
         write an arc entity.<br>
         <br>
-      <li>dxf_hatch_write_boundary_path_edge_ellipse ():<br>
+      <li>dxf_hatch_write_boundary_path_edge_ellipse_lowlevel ():<br>
         write an ellipse entity.<br>
         <br>
-      <li>dxf_hatch_write_boundary_path_edge_spline ():<br>
+      <li>dxf_hatch_write_boundary_path_edge_spline_lowlevel ():<br>
         write a spline entity.<br>
         <br>
     </ol>
@@ -46,11 +46,11 @@ then follows the hatch boundary data and the hatch pattern data.<br>
     considered a Bad Thing (TM); better use the SOLID hatch pattern
     to obtain a similar result.<br>
     <br>
-    <li>dxf_hatch_write_boundary_path_polyline ():<br>
+    <li>dxf_hatch_write_boundary_path_polyline_lowlevel ():<br>
       write a polyline entity and vertices.<br>
       <br>
     <ol type = "a">
-      <li>dxf_hatch_write_boundary_polyline_vertex ():<br>
+      <li>dxf_hatch_write_boundary_polyline_vertex_lowlevel ():<br>
         write a series of vertices (minimum should be 3).<br>
         <br>
     </ol>
@@ -68,12 +68,12 @@ then follows the hatch boundary data and the hatch pattern data.<br>
     to obtain a similar result.<br>
     <br>
   </ol>
-    <li>dxf_hatch_write_hatch_pattern_data ():<br>
+    <li>dxf_hatch_write_hatch_pattern_data_lowlevel ():<br>
       write one or more pattern definition lines which are either
       continous or dashed.<br>
       <br>
   <ol type = "1">
-    <li>dxf_hatch_write_pattern_def_line_dashes ();<br>
+    <li>dxf_hatch_write_pattern_def_line_dashes_lowlevel ();<br>
       <br>
   </ol>
 </ol>
