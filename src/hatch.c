@@ -43,7 +43,7 @@
  * \brief Write DXF output to a file for a hatch entity (\c HATCH).
  */
 int
-dxf_hatch_write
+dxf_hatch_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -135,7 +135,7 @@ dxf_hatch_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("HATCH");
@@ -206,7 +206,7 @@ dxf_hatch_write
         }
         fprintf (fp, " 91\n%d\n", pattern_boundary_paths);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
@@ -219,7 +219,7 @@ dxf_hatch_write
 Requires AutoCAD version R14 or higher.
 */
 int
-dxf_hatch_write_boundaries
+dxf_hatch_write_boundaries_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -355,7 +355,7 @@ dxf_hatch_write_boundaries
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_boundary () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_boundary_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         int i;
@@ -380,7 +380,7 @@ dxf_hatch_write_boundaries
                 else if (hatch_boundary_path_type_flag == 2)
                 {
                         /* a polyline boundary */
-                        dxf_hatch_write_boundary_path_polyline
+                        dxf_hatch_write_boundary_path_polyline_lowlevel
                         (
                                 fp,
                                 hatch_boundary_path_polyline_has_bulge,
@@ -393,12 +393,12 @@ dxf_hatch_write_boundaries
                 }
                 else
                 {
-                        fprintf (stderr, "Error: unsupported boundary path type encountered in dxf_hatch_write_boundary ().\n");
+                        fprintf (stderr, "Error: unsupported boundary path type encountered in dxf_hatch_write_boundary_lowlevel ().\n");
                         return (EXIT_FAILURE);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_boundary () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_boundary_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
@@ -409,7 +409,7 @@ dxf_hatch_write_boundaries
 \brief Write DXF output to a file for a hatch boundary polyline vertex.
 */
 int
-dxf_hatch_write_boundary_path_polyline_vertex
+dxf_hatch_write_boundary_path_polyline_vertex_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -426,14 +426,14 @@ dxf_hatch_write_boundary_path_polyline_vertex
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_boundary_polyline_vertex () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_boundary_polyline_vertex_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         fprintf (fp, " 10\n%f\n", x0);
         fprintf (fp, " 20\n%f\n", y0);
         if (bulge != 0.0) fprintf (fp, " 42\n%f\n", bulge);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_boundary_polyline_vertex () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_boundary_polyline_vertex_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
@@ -444,7 +444,7 @@ dxf_hatch_write_boundary_path_polyline_vertex
 \brief Write DXF output to a file for a hatch boundary path polyline.
 */
 int
-dxf_hatch_write_boundary_path_polyline
+dxf_hatch_write_boundary_path_polyline_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -469,7 +469,7 @@ dxf_hatch_write_boundary_path_polyline
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_boundary_path_polyline () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_boundary_path_polyline_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         int i;
@@ -480,7 +480,7 @@ dxf_hatch_write_boundary_path_polyline
         for (i = 0; i < vertices; i++)
         {
                 if (!has_bulge) bulge[i] = 0.0;
-                dxf_hatch_write_boundary_path_polyline_vertex
+                dxf_hatch_write_boundary_path_polyline_vertex_lowlevel
                 (
                         fp,
                         x0[i],
@@ -491,7 +491,7 @@ dxf_hatch_write_boundary_path_polyline
                 if (is_closed)
                 {
                         if (!has_bulge) bulge[0] = 0.0;
-                        dxf_hatch_write_boundary_path_polyline_vertex
+                        dxf_hatch_write_boundary_path_polyline_vertex_lowlevel
                         (
                                 fp,
                                 x0[0],
@@ -501,7 +501,7 @@ dxf_hatch_write_boundary_path_polyline
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_boundary_path_polyline () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_boundary_path_polyline_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
@@ -512,7 +512,7 @@ dxf_hatch_write_boundary_path_polyline
 \brief Write DXF output to a file for a hatch pattern definition line dash items.
 */
 int
-dxf_hatch_write_pattern_def_line_dashes
+dxf_hatch_write_pattern_def_line_dashes_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -527,7 +527,7 @@ dxf_hatch_write_pattern_def_line_dashes
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_hatch_pattern_def_line_dashes () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_hatch_pattern_def_line_dashes_lowlevel () function.\n", __FILE__, __LINE__);
 #endif
         if (dash_items != 0)
         {
@@ -539,10 +539,10 @@ dxf_hatch_write_pattern_def_line_dashes
         }
         else
         {
-                fprintf (stderr, "Warning: no definition line dash items found in dxf_write_hatch_pattern_def_line_dashes () function.\n");
+                fprintf (stderr, "Warning: no definition line dash items found in dxf_hatch_write_pattern_def_line_dashes_lowlevel () function.\n");
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch_pattern_def_line_dashes () function.\n", __FILE__, __LINE__);
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch_pattern_def_line_dashes_lowlevel () function.\n", __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -552,7 +552,7 @@ dxf_hatch_write_pattern_def_line_dashes
 \brief Write DXF output to a file for a hatch pattern data.
 */
 int
-dxf_hatch_write_pattern_data
+dxf_hatch_write_pattern_data_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -585,7 +585,7 @@ dxf_hatch_write_pattern_data
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_pattern_data () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_pattern_data_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         int i;
@@ -605,7 +605,7 @@ dxf_hatch_write_pattern_data
                         {
                                 for (j = 0; j < *def_line_dash_items; j++)
                                 {
-                                        dxf_hatch_write_pattern_def_line_dashes
+                                        dxf_hatch_write_pattern_def_line_dashes_lowlevel
                                         (
                                                 fp,
                                                 *def_line_dash_items,
@@ -617,10 +617,10 @@ dxf_hatch_write_pattern_data
         }
         else
         {
-                fprintf (stderr, "Warning: no definition lines found in dxf_hatch_write_pattern_data () function.\n");
+                fprintf (stderr, "Warning: no definition lines found in dxf_hatch_write_pattern_data_lowlevel () function.\n");
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_pattern_data () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_pattern_data_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
