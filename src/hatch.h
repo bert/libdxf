@@ -471,7 +471,7 @@ dxf_hatch_init
         DxfHatch *dxf_hatch
 );
 int
-dxf_hatch_write
+dxf_hatch_write_lowlevel
 (
         FILE *fp,
         char *pattern_name,
@@ -498,63 +498,65 @@ dxf_hatch_write
         int pattern_def_lines,
         int pattern_boundary_paths,
         int seed_points,
-                double *seed_x0,
-                double *seed_y0
+        double *seed_x0,
+        double *seed_y0
 );
 int
-dxf_hatch_write_boundaries
+dxf_hatch_write_boundaries_lowlevel
 (
         FILE *fp,
         int hatch_boundary_paths,
         int hatch_boundary_path_type_flag,
-                int hatch_boundary_path_edges,
-                int hatch_boundary_path_edge_type,
-                        double hatch_boundary_path_edge_line_x0,
-                        double hatch_boundary_path_edge_line_y0,
-                        double hatch_boundary_path_edge_line_x1,
-                        double hatch_boundary_path_edge_line_y1,
-                        double hatch_boundary_path_edge_arc_x0,
-                        double hatch_boundary_path_edge_arc_y0,
-                        double hatch_boundary_path_edge_arc_radius,
-                        double hatch_boundary_path_edge_arc_start_angle,
-                        double hatch_boundary_path_edge_arc_end_angle,
-                        int hatch_boundary_path_edge_arc_is_ccw,
-                        double hatch_boundary_path_edge_ellipse_x0,
-                        double hatch_boundary_path_edge_ellipse_y0,
-                        double hatch_boundary_path_edge_ellipse_x1,
-                        double hatch_boundary_path_edge_ellipse_y1,
-                        double boundary_path_edge_ellipse_minor_axis,
-                        double hatch_boundary_path_edge_ellipse_start_angle,
-                        double hatch_boundary_path_edge_ellipse_end_angle,
-                        int hatch_boundary_path_edge_ellipse_is_ccw,
-                        int hatch_boundary_path_edge_spline_degree,
-                        int hatch_boundary_path_edge_spline_rational,
-                        int hatch_boundary_path_edge_spline_periodic,
-                        int hatch_boundary_path_edge_spline_knots,
-                        int hatch_boundary_path_edge_spline_control_points,
-                                int *hatch_boundary_path_edge_spline_knot_value,
-                                double *hatch_boundary_path_edge_spline_cp_x0,
-                                double *hatch_boundary_path_edge_spline_cp_y0,
-                                double *hatch_boundary_path_edge_spline_cp_weight,
-                int hatch_boundary_path_polyline_has_bulge,
-                int hatch_boundary_path_polyline_is_closed,
-                int hatch_boundary_path_polyline_vertices,
-                        double *hatch_boundary_path_polyline_x0,
-                        double *hatch_boundary_path_polyline_y0,
-                        double *hatch_boundary_path_polyline_bulge,
+        int hatch_boundary_path_edges,
+        int hatch_boundary_path_edge_type,
+        double hatch_boundary_path_edge_line_x0,
+        double hatch_boundary_path_edge_line_y0,
+        double hatch_boundary_path_edge_line_x1,
+        double hatch_boundary_path_edge_line_y1,
+        double hatch_boundary_path_edge_arc_x0,
+        double hatch_boundary_path_edge_arc_y0,
+        double hatch_boundary_path_edge_arc_radius,
+        double hatch_boundary_path_edge_arc_start_angle,
+        double hatch_boundary_path_edge_arc_end_angle,
+        int hatch_boundary_path_edge_arc_is_ccw,
+        double hatch_boundary_path_edge_ellipse_x0,
+        double hatch_boundary_path_edge_ellipse_y0,
+        double hatch_boundary_path_edge_ellipse_x1,
+        double hatch_boundary_path_edge_ellipse_y1,
+        double boundary_path_edge_ellipse_minor_axis,
+        double hatch_boundary_path_edge_ellipse_start_angle,
+        double hatch_boundary_path_edge_ellipse_end_angle,
+        int hatch_boundary_path_edge_ellipse_is_ccw,
+        int hatch_boundary_path_edge_spline_degree,
+        int hatch_boundary_path_edge_spline_rational,
+        int hatch_boundary_path_edge_spline_periodic,
+        int hatch_boundary_path_edge_spline_knots,
+        int hatch_boundary_path_edge_spline_control_points,
+        int *hatch_boundary_path_edge_spline_knot_value,
+        double *hatch_boundary_path_edge_spline_cp_x0,
+        double *hatch_boundary_path_edge_spline_cp_y0,
+        double *hatch_boundary_path_edge_spline_cp_weight,
+        int hatch_boundary_path_polyline_has_bulge,
+        int hatch_boundary_path_polyline_is_closed,
+        int hatch_boundary_path_polyline_vertices,
+        double *hatch_boundary_path_polyline_x0,
+        double *hatch_boundary_path_polyline_y0,
+        double *hatch_boundary_path_polyline_bulge,
         int hatch_boundary_objects,
         char *hatch_boundary_objects_ref
 );
 int
-dxf_hatch_write_boundary_path_polyline (FILE *fp,
-                                            int has_bulge,
-                                            int is_closed,
-                                            int vertices,
-                                            double *x0,
-                                            double *y0,
-                                            double *bulge );
+dxf_hatch_write_boundary_path_polyline_lowlevel
+(
+        FILE *fp,
+        int has_bulge,
+        int is_closed,
+        int vertices,
+        double *x0,
+        double *y0,
+        double *bulge );
 int
-dxf_hatch_write_boundary_path_polyline_vertex
+dxf_hatch_write_boundary_path_polyline_vertex_lowlevel
 (
         FILE *fp,
         double x0,
@@ -562,7 +564,7 @@ dxf_hatch_write_boundary_path_polyline_vertex
         double bulge
 );
 int
-dxf_hatch_write_pattern_data
+dxf_hatch_write_pattern_data_lowlevel
 (
         FILE *fp,
         int def_lines,
