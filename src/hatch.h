@@ -395,14 +395,22 @@ dxf_hatch
         int number_of_pattern_def_lines;
                 /*!< group code = 78\n
                  * number of pattern definition lines. */
+        struct DxfHatchPatternDefLine *def_lines;
+                /*!< pointer to the first DxfHatchPatternDefLine.\n
+                 * \c NULL if there is no DxfHatchPatternDefLine in the
+                 * DxfHatch. */
         int number_of_boundary_paths;
                 /*!< group code = 91\n
                  * number of boundary paths (loops). */
+        struct DxfHatchBoundaryPath *paths;
+                /*!< pointer to the first DxfHatchBoundaryPath.\n
+                 * \c NULL if there is no DxfHatchBoundaryPath in the
+                 * DxfHatch. */
         int number_of_seed_points;
                 /*!< group code = 98\n
                  * number of seed points. */
         struct DxfHatchSeedPoint *seed_points;
-                /*!< pointer to the  DxfHatchSeedPoints. */
+                /*!< pointer to the first DxfHatchSeedPoint. */
         struct DxfHatch *next;
                 /*!< pointer to the next DxfHatch.\n
                  * \c NULL if the last DxfHatch. */
