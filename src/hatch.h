@@ -392,16 +392,16 @@ dxf_hatch
                  * pattern fill only\n
                  * 0 = not double\n
                  * 1 = double. */
-        int pattern_def_lines;
+        int number_of_pattern_def_lines;
                 /*!< group code = 78\n
                  * number of pattern definition lines. */
-        int boundary_paths;
+        int number_of_boundary_paths;
                 /*!< group code = 91\n
                  * number of boundary paths (loops). */
-        int seed_points;
+        int number_of_seed_points;
                 /*!< group code = 98\n
                  * number of seed points. */
-        struct DxfHatchSeedPoint *points;
+        struct DxfHatchSeedPoint *seed_points;
                 /*!< pointer to the  DxfHatchSeedPoints. */
         struct DxfHatch *next;
                 /*!< pointer to the next DxfHatch.\n
