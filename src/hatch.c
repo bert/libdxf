@@ -722,4 +722,44 @@ dxf_hatch_write_pattern_data_lowlevel
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c HATCH and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_free
+(
+        DxfHatch *dxf_hatch
+                /*!< Pointer to the memory occupied by the DXF \c HATCH
+                 * entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        if (dxf_hatch->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_free () pointer to next DxfHatch was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
+        free (dxf_hatch->pattern_name);
+        free (dxf_hatch->common.linetype);
+        free (dxf_hatch->common.layer);
+        free (dxf_hatch->def_lines);
+        free (dxf_hatch->paths);
+        free (dxf_hatch->seed_points);
+        free (dxf_hatch);
+        dxf_hatch = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
