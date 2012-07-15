@@ -217,6 +217,56 @@ dxf_hatch_boundary_path_edge
 
 
 /*!
+ * \brief DXF definition of an AutoCAD hatch boundary path polyline
+ * vertex.
+ */
+typedef struct
+dxf_hatch_boundary_path_polyline_vertex
+{
+        int id_code;
+                /*!< group code = 5.*/
+        double x0;
+                /*!< group code = 10. */
+        double y0;
+                /*!< group code = 20. */
+        struct DxfHatchBoundaryPathPolylineVertex *next;
+                /*!< pointer to the next DxfHatchBoundaryPathPolylineVertex.\n
+                 * \c NULL if the last DxfHatchBoundaryPathPolylineVertex. */
+} DxfHatchBoundaryPathPolylineVertex, * DxfHatchBoundaryPathPolylineVertexPtr;
+
+
+/*!
+ * \brief DXF definition of an AutoCAD hatch boundary path polyline.
+ */
+typedef struct
+dxf_hatch_boundary_path_polyline
+{
+        int id_code;
+                /*!< group code = 5. */
+        double bulge;
+                /*!< group code = 42.\n
+                 * optional, default = 0. */
+        int has_bulge;
+                /*!< group code = 72. */
+        int is_closed;
+                /*!< group code = 73. */
+        int number_of_vertices;
+                /*!< group code = 93\n
+                 * number of polyline vertices in
+                 * DxfHatchBoundaryPathPolyline. */
+        struct DxfHatchBoundaryPathPolylineVertex *vertices;
+                /*!< pointer to the first
+                 * DxfHatchBoundaryPathPolylineVertex.\n
+                 * \c NULL if there is no
+                 * DxfHatchBoundaryPathPolylineVertex in the
+                 * DxfHatchBoundaryPathPolyline. */
+        struct DxfHatchBoundaryPathPolyline *next;
+                /*!< pointer to the next DxfHatchBoundaryPathPolyline.\n
+                 * \c NULL if the last DxfHatchBoundaryPathPolyline. */
+} DxfHatchBoundaryPathPolyline, * DxfHatchBoundaryPathPolylinePtr;
+
+
+/*!
  * \brief DXF definition of an AutoCAD hatch boundary path (or loop)
  * (composite of a closed series of edges, and/or a polyline).
  */
@@ -231,6 +281,10 @@ dxf_hatch_boundary_path
                 /*!< pointer to the first DxfHatchBoundaryPathEdge.\n
                  * \c NULL if there is no DxfHatchBoundaryPathEdge in
                  * the DxfHatchBoundaryPath. */
+        struct DxfHatchBoundaryPathPolyline *polylines;
+                /*!< pointer to the first DxfHatchBoundaryPathPolyline.\n
+                 * \c NULL if there is no DxfHatchBoundaryPathPolyline
+                 * in the DxfHatchBoundaryPath. */
         struct DxfHatchBoundaryPath *next;
                 /*!< pointer to the next DxfHatchBoundaryPath.\n
                  * \c NULL if the last DxfHatchBoundaryPath. */
@@ -274,6 +328,26 @@ dxf_hatch_pattern_def_line
 
 
 /*!
+ * \brief DXF definition of an AutoCAD hatch seed point.
+ */
+typedef struct
+dxf_hatch_pattern_seed_point
+{
+        int id_code;
+                /*!< group code = 5. */
+        double x0;
+                /*!< group code = 10\n
+                 * seed point X-value. */
+        double y0;
+                /*!< group code = 20\n
+                 * seed point Y-value. */
+        struct DxfHatchPatternSeedPoint *next;
+                /*!< pointer to the next DxfHatchSeedPoint.\n
+                 * \c NULL if the last DxfHatchSeedPoint. */
+} DxfHatchPatternSeedPoint, * DxfHatchPatternSeedPointPtr;
+
+
+/*!
  * \brief DXF definition of an AutoCAD hatch pattern.
  */
 typedef struct
@@ -290,30 +364,15 @@ dxf_hatch_pattern
                 /*!< group code = 49\n
                  * array of dash lengths for an array of hatch pattern
                  * definition lines. */
+        int number_of_seed_points;
+                /*!< group code = 98\n
+                 * number of seed points. */
+        struct DxfHatchPatternSeedPoint *seed_points;
+                /*!< pointer to the first DxfHatchSeedPoint. */
         struct DxfHatchPattern *next;
                 /*!< pointer to the next DxfHatchPattern.\n
                  * \c NULL if the last DxfHatchPattern. */
 } DxfHatchPattern, * DxfHatchPatternPtr;
-
-
-/*!
- * \brief DXF definition of an AutoCAD hatch seed point.
- */
-typedef struct
-dxf_hatch_seed_point
-{
-        int id_code;
-                /*!< group code = 5. */
-        double x0;
-                /*!< group code = 10\n
-                 * seed point X-value. */
-        double y0;
-                /*!< group code = 20\n
-                 * seed point Y-value. */
-        struct DxfHatchSeedPoint *next;
-                /*!< pointer to the next DxfHatchSeedPoint.\n
-                 * \c NULL if the last DxfHatchSeedPoint. */
-} DxfHatchSeedPoint, * DxfHatchSeedPointPtr;
 
 
 /*!
@@ -355,12 +414,12 @@ dxf_hatch
         double thickness;
                 /*!< group code = 39\n
                  * optional, defaults to 0.0. */
-        double hatch_pattern_scale;
+        double pattern_scale;
                 /*!< group code 41\n
                  * pattern fill only. */
         double pixel_size;
                 /*!< group code 47 */
-        double hatch_pattern_angle;
+        double pattern_angle;
                 /*!< group code 52\n
                  * pattern fill only. */
         int color;
@@ -409,7 +468,7 @@ dxf_hatch
         int number_of_seed_points;
                 /*!< group code = 98\n
                  * number of seed points. */
-        struct DxfHatchSeedPoint *seed_points;
+        struct DxfHatchPatternSeedPoint *seed_points;
                 /*!< pointer to the first DxfHatchSeedPoint. */
         struct DxfHatch *next;
                 /*!< pointer to the next DxfHatch.\n
