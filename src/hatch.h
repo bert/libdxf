@@ -184,6 +184,39 @@ dxf_hatch_boundary_path_edge_spline_cp
 
 
 /*!
+ * \brief DXF definition of an AutoCAD hatch boundary path edge
+ * (composite of arcs, ellipses, lines or splines).
+ */
+typedef struct
+dxf_hatch_boundary_path_edge
+{
+        int id_code;
+                /*!< group code = 5.\n
+                 * Treat the boundary path edge as if it were a single
+                 * (composite) entity. */
+        struct DxfHatchBoundaryPathEdgeArc *arcs;
+                /*!< pointer to the first DxfHatchBoundaryPathEdgeArc.\n
+                 * \c NULL if there is no DxfHatchBoundaryPathEdgeArc in
+                 * the DxfHatchBoundaryPathEdge. */
+        struct DxfHatchBoundaryPathEdgeEllipse *ellipses;
+                /*!< pointer to the first DxfHatchBoundaryPathEdgeEllipse.\n
+                 * \c NULL if there is no DxfHatchBoundaryPathEdgeEllipse
+                 * in the DxfHatchBoundaryPathEdge. */
+        struct DxfHatchBoundaryPathEdgeLine * lines;
+                /*!< pointer to the first DxfHatchBoundaryPathEdgeLine.\n
+                 * \c NULL if there is no DxfHatchBoundaryPathEdgeLine
+                 * in the DxfHatchBoundaryPathEdge. */
+        struct DxfHatchBoundaryPathEdgeSpline *splines;
+                /*!< pointer to the first DxfHatchBoundaryPathEdgeSpline.\n
+                 * \c NULL if there is no DxfHatchBoundaryPathEdgeSpline
+                 * in the DxfHatchBoundaryPathEdge. */
+        struct DxfHatchBoundaryPathEdge *next;
+                /*!< pointer to the next DxfHatchBoundaryPathEdge.\n
+                 * \c NULL if the last DxfHatchBoundaryPathEdge. */
+} DxfHatchBoundaryPathEdge, * DxfHatchBoundaryPathEdgePtr;
+
+
+/*!
  * \brief DXF definition of an AutoCAD hatch pattern definition line.
  */
 typedef struct
