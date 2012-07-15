@@ -37,6 +37,7 @@
 
 
 #include "global.h"
+#include "entity.h"
 
 
 #define DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS 16
@@ -383,13 +384,8 @@ dxf_hatch
 {
         char *pattern_name;
                 /*!< group code = 2. */
-        int id_code;
-                /*!< group code = 5. */
-        char *linetype;
-                /*!< group code = 6\n
-                 * optional, defaults to BYLAYER. */
-        char *layer;
-                /*!< group code = 8. */
+        DxfEntity common;
+                /*!< common properties for DXF entities. */
         double x0;
                 /*!< group code = 10\n
                  * base point. */
@@ -411,9 +407,6 @@ dxf_hatch
                 /*!< group code = 230\n
                  * extrusion direction\n
                  * optional, if ommited defaults to 1.0. */
-        double thickness;
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
         double pattern_scale;
                 /*!< group code 41\n
                  * pattern fill only. */
@@ -422,12 +415,6 @@ dxf_hatch
         double pattern_angle;
                 /*!< group code 52\n
                  * pattern fill only. */
-        int color;
-                /*!< group code = 62\n
-                 * optional, defaults to BYLAYER. */
-        int paperspace;
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
         int solid_fill;
                 /*!< group code = 70\n
                  * 0 = pattern fill\n
