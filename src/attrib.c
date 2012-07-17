@@ -797,6 +797,9 @@ dxf_attrib_write
 /*!
  * \brief Free the allocated memory for a DXF \c ATTRIB and all it's
  * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_attrib_free
@@ -809,6 +812,11 @@ dxf_attrib_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_attrib_free () function.\n",
                 __FILE__, __LINE__);
 #endif
+        if (dxf_attrib->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_attrib_free () pointer to next DxfAttrib was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
         free (dxf_attrib->common.linetype);
         free (dxf_attrib->common.layer);
         free (dxf_attrib->value);
