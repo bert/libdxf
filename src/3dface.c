@@ -560,6 +560,9 @@ dxf_3dface_write
 /*!
  * \brief Free the allocated memory for a DXF \c 3DFACE and all it's
  * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_3dface_free
@@ -573,6 +576,11 @@ dxf_3dface_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dface_free () function.\n",
                 __FILE__, __LINE__);
 #endif
+        if (dxf_3dface->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_3dface_free () pointer to next Dxf3dface was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
         free (dxf_3dface->common.linetype);
         free (dxf_3dface->common.layer);
         free (dxf_3dface);
