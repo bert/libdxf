@@ -140,6 +140,9 @@ dxf_3dsolid_init
 /*!
  * \brief Free the allocated memory for a DXF \c 3DSOLID and all it's
  * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_3dsolid_free
@@ -153,6 +156,11 @@ dxf_3dsolid_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_free () function.\n",
                 __FILE__, __LINE__);
 #endif
+        if (dxf_3dsolid->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_3dsolid_free () pointer to next Dxf3dsolid was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
         free (dxf_3dsolid->common.linetype);
         free (dxf_3dsolid->common.layer);
         free (dxf_3dsolid);
