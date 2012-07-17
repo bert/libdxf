@@ -633,8 +633,9 @@ dxf_arc_write
 /*!
  * \brief Free the allocated memory for a DXF \c ARC and all it's
  * data fields.
- * 
- * \return \c EXIT_SUCCESS when done.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_arc_free
@@ -648,6 +649,11 @@ dxf_arc_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_free () function.\n",
                 __FILE__, __LINE__);
 #endif
+        if (dxf_arc->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_arc_free () pointer to next DxfArc was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
         free (dxf_arc->common.linetype);
         free (dxf_arc->common.layer);
         free (dxf_arc);
