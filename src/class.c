@@ -415,6 +415,11 @@ dxf_class_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_class_free () function.\n",
                 __FILE__, __LINE__);
 #endif
+        if (dxf_class->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_class_free () pointer to next DxfClass was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
         free (dxf_class->record_type);
         free (dxf_class->record_name);
         free (dxf_class->class_name);
