@@ -465,6 +465,8 @@ dxf_hatch
 
 DxfHatch *
 dxf_hatch_new ();
+DxfHatchPattern *
+dxf_hatch_pattern_new ();
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_new ();
 DxfHatch *

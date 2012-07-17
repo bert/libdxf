@@ -75,6 +75,41 @@ dxf_hatch_new ()
 
 
 /*!
+ * \brief Allocate memory for a DXF \c HATCH pattern.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfHatchPattern *
+dxf_hatch_pattern_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_pattern_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfHatchPattern *dxf_hatch_pattern = NULL;
+        size_t size;
+
+        size = sizeof (DxfHatchPattern);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_hatch_pattern = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_hatch_pattern_new () could not allocate memory for a DxfHatchPatternSeedpoint struct.\n");
+                dxf_hatch_pattern = NULL;
+        }
+        else
+        {
+                memset (dxf_hatch_pattern, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_pattern_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_hatch_pattern);
+}
+
+
+/*!
  * \brief Allocate memory for a DXF \c HATCH seedpoint.
  *
  * Fill the memory contents with zeros.
