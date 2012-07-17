@@ -545,6 +545,9 @@ dxf_block_write_table
 /*!
  * \brief Free the allocated memory for a DxfBlock (a \c BLOCK entity)
  * and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_block_free
@@ -558,6 +561,11 @@ dxf_block_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_free () function.\n",
                 __FILE__, __LINE__);
 #endif
+        if (dxf_block->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_block_free () pointer to next DxfBlock was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
         free (dxf_block->common.linetype);
         free (dxf_block->common.layer);
         free (dxf_block->xref_name);
