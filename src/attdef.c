@@ -850,6 +850,9 @@ dxf_attdef_write
 /*!
  * \brief Free the allocate memory for a DXF \c ATTDEF and all it's
  * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_attdef_free
@@ -862,6 +865,11 @@ dxf_attdef_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_attdef_free () function.\n",
                 __FILE__, __LINE__);
 #endif
+        if (dxf_attdef->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_attdef_free () pointer to next DxfAttdef was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
         free (dxf_attdef->common.linetype);
         free (dxf_attdef->common.layer);
         free (dxf_attdef->default_value);
