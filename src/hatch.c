@@ -59,7 +59,7 @@ dxf_hatch_new ()
         if (size == 0) size = 1;
         if ((dxf_hatch = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_hatch_new () could not allocate memory for a Dxf3dface struct.\n");
+                fprintf (stderr, "ERROR in dxf_hatch_new () could not allocate memory for a DxfHatch struct.\n");
                 dxf_hatch = NULL;
         }
         else
