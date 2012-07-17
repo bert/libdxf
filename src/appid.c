@@ -1,6 +1,8 @@
 /*!
  * \file appid.c
+ *
  * \author Copyright (C) 2009 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Functions for a DXF application identity entity (\c APPID).
  *
  * A DXF \c APPID entity contains data concerning the application registered
@@ -304,7 +306,10 @@ dxf_appid_write
 
 /*!
  * \brief Free the allocate memory for a DXF \c APPID and all it's
- * members.
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_appid_free
@@ -317,6 +322,11 @@ dxf_appid_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_appid_free () function.\n",
                 __FILE__, __LINE__);
 #endif
+        if (dxf_appid->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_appid_free () pointer to next DxfAppid was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
         free (dxf_appid->application_name);
         free (dxf_appid);
         dxf_appid = NULL;
