@@ -193,7 +193,7 @@ dxf_hatch_init
         dxf_hatch->number_of_boundary_paths = 0;
         dxf_hatch->paths = NULL;
         dxf_hatch->number_of_seed_points = 0;
-        dxf_hatch->seed_points = NULL;
+        dxf_hatch->seed_points = dxf_hatch_pattern_seedpoint_new ();
         dxf_hatch->common.acad_version_number = 0;
         dxf_hatch->next = NULL;
 #if DEBUG
