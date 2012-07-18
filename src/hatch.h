@@ -332,7 +332,7 @@ dxf_hatch_pattern_def_line
  * \brief DXF definition of an AutoCAD hatch seed point.
  */
 typedef struct
-dxf_hatch_pattern_seed_point
+dxf_hatch_pattern_seedpoint
 {
         int id_code;
                 /*!< group code = 5. */
