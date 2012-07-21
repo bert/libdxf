@@ -110,6 +110,41 @@ dxf_hatch_pattern_new ()
 
 
 /*!
+ * \brief Allocate memory for a DXF \c HATCH pattern definition line.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfHatchPatternDefLine *
+dxf_hatch_pattern_def_line_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_pattern_def_line_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line = NULL;
+        size_t size;
+
+        size = sizeof (DxfHatchPatternDefLine);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_hatch_pattern_def_line = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_hatch_pattern_def_line_new () could not allocate memory for a DxfHatchPatternDefLine struct.\n");
+                dxf_hatch_pattern_def_line = NULL;
+        }
+        else
+        {
+                memset (dxf_hatch_pattern_def_line, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_pattern_def_line_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_hatch_pattern_def_line);
+}
+
+
+/*!
  * \brief Allocate memory for a DXF \c HATCH pattern seedpoint.
  *
  * Fill the memory contents with zeros.
