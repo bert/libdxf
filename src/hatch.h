@@ -467,17 +467,17 @@ DxfHatch *
 dxf_hatch_new ();
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
-DxfHatchPattern *
-dxf_hatch_pattern_init
-(
-        DxfHatchPattern *dxf_hatch_pattern
-);
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_new ();
 DxfHatch *
 dxf_hatch_init
 (
         DxfHatch *dxf_hatch
+);
+DxfHatchPattern *
+dxf_hatch_pattern_init
+(
+        DxfHatchPattern *dxf_hatch_pattern
 );
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_init
@@ -591,14 +591,14 @@ dxf_hatch_write_pattern_data_lowlevel
         double **def_line_dash_length
 );
 int
-dxf_hatch_pattern_free
-(
-        DxfHatchPattern *dxf_hatch_pattern
-);
-int
 dxf_hatch_free
 (
         DxfHatch *dxf_hatch
+);
+int
+dxf_hatch_pattern_free
+(
+        DxfHatchPattern *dxf_hatch_pattern
 );
 
 
