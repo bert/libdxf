@@ -591,6 +591,11 @@ dxf_hatch_write_pattern_data_lowlevel
         double **def_line_dash_length
 );
 int
+dxf_hatch_pattern_free
+(
+        DxfHatchPattern *dxf_hatch_pattern
+);
+int
 dxf_hatch_free
 (
         DxfHatch *dxf_hatch
