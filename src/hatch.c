@@ -469,6 +469,45 @@ dxf_hatch_boundary_path_init
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * boundary path polyline entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_polyline_init
+(
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline
+                /*!< DXF hatch boundary path polyline entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_polyline_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_hatch_boundary_path_polyline = dxf_hatch_boundary_path_polyline_new ();
+        if (dxf_hatch_boundary_path_polyline == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_polyline_init () could not allocate memory for a DxfHatchBoundaryPathPolyline struct.\n");
+              return (NULL);
+        }
+        dxf_hatch_boundary_path_polyline->id_code = 0;
+        dxf_hatch_boundary_path_polyline->bulge = 0.0;
+        dxf_hatch_boundary_path_polyline->has_bulge = 0;
+        dxf_hatch_boundary_path_polyline->is_closed = 0;
+        dxf_hatch_boundary_path_polyline->number_of_vertices = 0;
+        dxf_hatch_boundary_path_polyline->vertices = NULL;
+        dxf_hatch_boundary_path_polyline->next = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_polyline_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_hatch_boundary_path_polyline);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a hatch entity (\c HATCH).
  */
 int
