@@ -215,6 +215,41 @@ dxf_hatch_boundary_path_new ()
 
 
 /*!
+ * \brief Allocate memory for a DXF \c HATCH boundary path polyline.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_polyline_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_polyline_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline = NULL;
+        size_t size;
+
+        size = sizeof (DxfHatchBoundaryPathPolyline);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_hatch_boundary_path_polyline = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_polyline_new () could not allocate memory for a DxfHatchBoundaryPathPolyline struct.\n");
+                dxf_hatch_boundary_path_polyline = NULL;
+        }
+        else
+        {
+                memset (dxf_hatch_boundary_path_polyline, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_polyline_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_hatch_boundary_path_polyline);
+}
+
+
+/*!
  * \brief Allocate memory and initialize data fields in a DXF \c HATCH
  * entity.
  * 
