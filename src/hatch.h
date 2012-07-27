@@ -493,6 +493,11 @@ dxf_hatch_pattern_seedpoint_init
 (
         DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint
 );
+DxfHatchBoundaryPath *
+dxf_hatch_boundary_path_init
+(
+        DxfHatchBoundaryPath *dxf_hatch_boundary_path
+);
 int
 dxf_hatch_write_lowlevel
 (

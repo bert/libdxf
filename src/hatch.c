@@ -398,6 +398,42 @@ dxf_hatch_pattern_seedpoint_init
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * boundary path entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatchBoundaryPath *
+dxf_hatch_boundary_path_init
+(
+        DxfHatchBoundaryPath *dxf_hatch_boundary_path
+                /*!< DXF hatch boundary path entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_hatch_boundary_path = dxf_hatch_boundary_path_new ();
+        if (dxf_hatch_boundary_path == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_init () could not allocate memory for a DxfHatchBoundaryPath struct.\n");
+              return (NULL);
+        }
+        dxf_hatch_boundary_path->id_code = 0;
+        dxf_hatch_boundary_path->edges = NULL;
+        dxf_hatch_boundary_path->polylines = NULL;
+        dxf_hatch_boundary_path->next = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_hatch_boundary_path);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a hatch entity (\c HATCH).
  */
 int
