@@ -1275,4 +1275,39 @@ dxf_hatch_boundary_path_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c HATCH boundary path
+ * polyline and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_polyline_free
+(
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline
+                /*!< Pointer to the memory occupied by the DXF \c HATCH
+                 * boundary path polyline entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_polyline_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        if (dxf_hatch_boundary_path_polyline->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_polyline_free () pointer to next DxfHatchBoundaryPathPolyline was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
+        free (dxf_hatch_boundary_path_polyline->vertices);
+        free (dxf_hatch_boundary_path_polyline);
+        dxf_hatch_boundary_path_polyline = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_polyline_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

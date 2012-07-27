@@ -636,6 +636,11 @@ dxf_hatch_boundary_path_free
 (
         DxfHatchBoundaryPath *dxf_hatch_boundary_path
 );
+int
+dxf_hatch_boundary_path_polyline_free
+(
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline
+);
 
 
 /* EOF */
