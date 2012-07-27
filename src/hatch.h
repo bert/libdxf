@@ -471,6 +471,8 @@ DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_new ();
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_new ();
+DxfHatchBoundaryPath *
+dxf_hatch_boundary_path_new ();
 DxfHatch *
 dxf_hatch_init
 (

@@ -180,6 +180,41 @@ dxf_hatch_pattern_seedpoint_new ()
 
 
 /*!
+ * \brief Allocate memory for a DXF \c HATCH boundary path.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfHatchBoundaryPath *
+dxf_hatch_boundary_path_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfHatchBoundaryPath *dxf_hatch_boundary_path = NULL;
+        size_t size;
+
+        size = sizeof (DxfHatchBoundaryPath);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_hatch_boundary_path = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_new () could not allocate memory for a DxfHatch struct.\n");
+                dxf_hatch_boundary_path = NULL;
+        }
+        else
+        {
+                memset (dxf_hatch_boundary_path, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_hatch_boundary_path);
+}
+
+
+/*!
  * \brief Allocate memory and initialize data fields in a DXF \c HATCH
  * entity.
  * 
