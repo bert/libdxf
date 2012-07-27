@@ -614,6 +614,11 @@ dxf_hatch_pattern_seedpoint_free
 (
         DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint
 );
+int
+dxf_hatch_pattern_def_line_free
+(
+        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
+);
 
 
 /* EOF */

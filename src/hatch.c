@@ -1095,4 +1095,38 @@ dxf_hatch_pattern_seedpoint_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c HATCH pattern
+ * definition line and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_pattern_def_line_free
+(
+        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
+                /*!< Pointer to the memory occupied by the DXF \c HATCH
+                 * pattern definition line entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_pattern_def_line_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        if (dxf_hatch_pattern_def_line->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_pattern_def_line_free () pointer to next DxfHatchPatternDefLine was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
+        free (dxf_hatch_pattern_def_line);
+        dxf_hatch_pattern_def_line = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_pattern_def_line_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
