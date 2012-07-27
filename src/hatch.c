@@ -199,7 +199,7 @@ dxf_hatch_boundary_path_new ()
         if (size == 0) size = 1;
         if ((dxf_hatch_boundary_path = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_new () could not allocate memory for a DxfHatch struct.\n");
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_new () could not allocate memory for a DxfHatchBoundaryPath struct.\n");
                 dxf_hatch_boundary_path = NULL;
         }
         else
