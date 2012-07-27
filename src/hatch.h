@@ -624,6 +624,11 @@ dxf_hatch_pattern_def_line_free
 (
         DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
 );
+int
+dxf_hatch_boundary_path_free
+(
+        DxfHatchBoundaryPath *dxf_hatch_boundary_path
+);
 
 
 /* EOF */
