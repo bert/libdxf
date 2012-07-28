@@ -514,6 +514,11 @@ dxf_hatch_boundary_path_polyline_vertex_init
 (
         DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex
 );
+DxfHatchBoundaryPathEdge *
+dxf_hatch_boundary_path_edge_init
+(
+        DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge
+);
 int
 dxf_hatch_write_lowlevel
 (
