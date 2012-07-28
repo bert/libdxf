@@ -672,6 +672,11 @@ dxf_hatch_boundary_path_edge_free
 (
         DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge
 );
+int
+dxf_hatch_boundary_path_edge_arc_free
+(
+        DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc
+);
 
 
 /* EOF */
