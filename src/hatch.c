@@ -321,6 +321,41 @@ dxf_hatch_boundary_path_edge_new ()
 
 
 /*!
+ * \brief Allocate memory for a DXF \c HATCH boundary path edge arc.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_arc_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc = NULL;
+        size_t size;
+
+        size = sizeof (DxfHatchBoundaryPathEdgeArc);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_hatch_boundary_path_edge_arc = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_arc_new () could not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n");
+                dxf_hatch_boundary_path_edge_arc = NULL;
+        }
+        else
+        {
+                memset (dxf_hatch_boundary_path_edge_arc, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_arc_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_hatch_boundary_path_edge_arc);
+}
+
+
+/*!
  * \brief Allocate memory and initialize data fields in a DXF \c HATCH
  * entity.
  * 
