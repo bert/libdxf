@@ -763,6 +763,48 @@ dxf_hatch_boundary_path_edge_arc_init
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * boundary path edge ellipse entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatchBoundaryPathEdgeEllipse *
+dxf_hatch_boundary_path_edge_ellipse_init
+(
+        DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse
+                /*!< DXF hatch boundary path edge ellipse entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_ellipse_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_hatch_boundary_path_edge_ellipse = dxf_hatch_boundary_path_edge_ellipse_new ();
+        if (dxf_hatch_boundary_path_edge_ellipse == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_ellipse_init () could not allocate memory for a DxfHatchBoundaryPathEdgeEllipse struct.\n");
+              return (NULL);
+        }
+        dxf_hatch_boundary_path_edge_ellipse->id_code = 0;
+        dxf_hatch_boundary_path_edge_ellipse->x0 = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->y0 = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->x1 = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->y1 = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->minor_axis = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->start_angle = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->end_angle = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->is_ccw = 0;
+        dxf_hatch_boundary_path_edge_ellipse->next = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_ellipse_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_hatch_boundary_path_edge_ellipse);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a hatch entity (\c HATCH).
  */
 int
