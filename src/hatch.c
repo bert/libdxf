@@ -286,6 +286,41 @@ dxf_hatch_boundary_path_polyline_vertex_new ()
 
 
 /*!
+ * \brief Allocate memory for a DXF \c HATCH boundary path edge.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfHatchBoundaryPathEdge *
+dxf_hatch_boundary_path_edge_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge = NULL;
+        size_t size;
+
+        size = sizeof (DxfHatchBoundaryPathEdge);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_hatch_boundary_path_edge = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_new () could not allocate memory for a DxfHatchBoundaryPathEdge struct.\n");
+                dxf_hatch_boundary_path_edge = NULL;
+        }
+        else
+        {
+                memset (dxf_hatch_boundary_path_edge, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_hatch_boundary_path_edge);
+}
+
+
+/*!
  * \brief Allocate memory and initialize data fields in a DXF \c HATCH
  * entity.
  * 
