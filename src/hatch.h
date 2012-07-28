@@ -660,6 +660,11 @@ dxf_hatch_boundary_path_polyline_vertex_free
 (
         DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex
 );
+int
+dxf_hatch_boundary_path_edge_free
+(
+        DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge
+);
 
 
 /* EOF */
