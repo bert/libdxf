@@ -521,6 +521,11 @@ dxf_hatch_boundary_path_edge_init
 (
         DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge
 );
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_init
+(
+        DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc
+);
 int
 dxf_hatch_write_lowlevel
 (

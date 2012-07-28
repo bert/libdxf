@@ -688,6 +688,46 @@ dxf_hatch_boundary_path_edge_init
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * boundary path edge arc entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_init
+(
+        DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc
+                /*!< DXF hatch boundary path edge arc entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_arc_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_hatch_boundary_path_edge_arc = dxf_hatch_boundary_path_edge_arc_new ();
+        if (dxf_hatch_boundary_path_edge_arc == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_arc_init () could not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n");
+              return (NULL);
+        }
+        dxf_hatch_boundary_path_edge_arc->id_code = 0;
+        dxf_hatch_boundary_path_edge_arc->x0 = 0.0;
+        dxf_hatch_boundary_path_edge_arc->y0 = 0.0;
+        dxf_hatch_boundary_path_edge_arc->radius = 0.0;
+        dxf_hatch_boundary_path_edge_arc->start_angle = 0.0;
+        dxf_hatch_boundary_path_edge_arc->end_angle = 0.0;
+        dxf_hatch_boundary_path_edge_arc->is_ccw = 0;
+        dxf_hatch_boundary_path_edge_arc->next = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_arc_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_hatch_boundary_path_edge_arc);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a hatch entity (\c HATCH).
  */
 int
