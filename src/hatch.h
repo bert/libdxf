@@ -36,6 +36,10 @@
  */
 
 
+#ifndef HATCH_H
+#define HATCH_H
+
+
 #include "global.h"
 #include "entity.h"
 
@@ -733,6 +737,9 @@ dxf_hatch_boundary_path_edge_spline_cp_free
 (
         DxfHatchBoundaryPathEdgeSplineCp *dxf_hatch_boundary_path_edge_spline_cp
 );
+
+
+#endif /* HATCH_H */
 
 
 /* EOF */
