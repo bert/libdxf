@@ -1084,6 +1084,56 @@ dxf_hatch_boundary_path_edge_spline_append_knot_value
 
 
 /*!
+ * \brief Prepend a knot value to a \HATCH boundary path edge spline
+ * entity.
+ *
+ * After testing for a possible array pointer overflow, all the
+ * \c knots[] values are shifted one position, the knot value is
+ * prepended and the \c number_of_knots is increased by 1.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_prepend_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+                /*!< DXF \c HATCH boundary path edge spline entity. */
+        double knot_value
+                /*!< knot value. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_prepend_knot_value () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int i;
+
+        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_prepend_knot_value () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
+              return (EXIT_FAILURE);
+        }
+        if ((dxf_hatch_boundary_path_edge_spline->number_of_knots + 1) > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_prepend_knot_value () resulted in a array pointer overflow.\n");
+              return (EXIT_FAILURE);
+        }
+        for (i = dxf_hatch_boundary_path_edge_spline->number_of_knots; i <= 0; i--)
+        {
+                dxf_hatch_boundary_path_edge_spline->knots[i + 1] = dxf_hatch_boundary_path_edge_spline->knots[i];
+        }
+        dxf_hatch_boundary_path_edge_spline->knots[0] = knot_value;
+        dxf_hatch_boundary_path_edge_spline->number_of_knots++;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_prepend_knot_value () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Get a knot value to a \HATCH boundary path edge spline entity.
  *
  * \return the knot value.
