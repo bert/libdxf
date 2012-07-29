@@ -1155,7 +1155,6 @@ dxf_hatch_boundary_path_edge_spline_get_knot_value
               fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_get_knot_value () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n");
               return (EXIT_FAILURE);
         }
-
         knot_value = dxf_hatch_boundary_path_edge_spline->knots[position];
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_get_knot_value () function.\n",
