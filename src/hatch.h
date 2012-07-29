@@ -546,6 +546,11 @@ dxf_hatch_boundary_path_edge_line_init
 (
         DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line
 );
+DxfHatchBoundaryPathEdgeSpline *
+dxf_hatch_boundary_path_edge_spline_init
+(
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline
+);
 int
 dxf_hatch_write_lowlevel
 (

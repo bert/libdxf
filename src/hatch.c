@@ -913,6 +913,46 @@ dxf_hatch_boundary_path_edge_line_init
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * boundary path edge spline entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatchBoundaryPathEdgeSpline *
+dxf_hatch_boundary_path_edge_spline_init
+(
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline
+                /*!< DXF hatch boundary path edge spline entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_hatch_boundary_path_edge_spline = dxf_hatch_boundary_path_edge_spline_new ();
+        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_init () could not allocate memory for a DxfHatchBoundaryPathEdgeSpline struct.\n");
+              return (NULL);
+        }
+        dxf_hatch_boundary_path_edge_spline->id_code = 0;
+        dxf_hatch_boundary_path_edge_spline->degree = 0;
+        dxf_hatch_boundary_path_edge_spline->rational = 0;
+        dxf_hatch_boundary_path_edge_spline->periodic = 0;
+        dxf_hatch_boundary_path_edge_spline->knots = 0;
+        dxf_hatch_boundary_path_edge_spline->number_of_control_points = 0;
+        dxf_hatch_boundary_path_edge_spline->control_points = NULL;
+        dxf_hatch_boundary_path_edge_spline->next = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_hatch_boundary_path_edge_spline);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a hatch entity (\c HATCH).
  */
 int
