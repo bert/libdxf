@@ -696,6 +696,11 @@ dxf_hatch_boundary_path_edge_ellipse_free
 (
         DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse
 );
+int
+dxf_hatch_boundary_path_edge_line_free
+(
+        DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line
+);
 
 
 /* EOF */
