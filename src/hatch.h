@@ -712,6 +712,11 @@ dxf_hatch_boundary_path_edge_line_free
 (
         DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line
 );
+int
+dxf_hatch_boundary_path_edge_spline_free
+(
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline
+);
 
 
 /* EOF */
