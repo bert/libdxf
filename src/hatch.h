@@ -728,6 +728,11 @@ dxf_hatch_boundary_path_edge_spline_free
 (
         DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline
 );
+int
+dxf_hatch_boundary_path_edge_spline_cp_free
+(
+        DxfHatchBoundaryPathEdgeSplineCp *dxf_hatch_boundary_path_edge_spline_cp
+);
 
 
 /* EOF */
