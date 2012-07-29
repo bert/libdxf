@@ -535,6 +535,11 @@ dxf_hatch_boundary_path_edge_ellipse_init
 (
         DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse
 );
+DxfHatchBoundaryPathEdgeLine *
+dxf_hatch_boundary_path_edge_line_init
+(
+        DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line
+);
 int
 dxf_hatch_write_lowlevel
 (

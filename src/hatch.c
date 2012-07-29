@@ -840,6 +840,44 @@ dxf_hatch_boundary_path_edge_ellipse_init
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * boundary path edge line entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatchBoundaryPathEdgeLine *
+dxf_hatch_boundary_path_edge_line_init
+(
+        DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line
+                /*!< DXF hatch boundary path edge line entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_line_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_hatch_boundary_path_edge_line = dxf_hatch_boundary_path_edge_line_new ();
+        if (dxf_hatch_boundary_path_edge_line == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_line_init () could not allocate memory for a DxfHatchBoundaryPathEdgeLine struct.\n");
+              return (NULL);
+        }
+        dxf_hatch_boundary_path_edge_line->id_code = 0;
+        dxf_hatch_boundary_path_edge_line->x0 = 0.0;
+        dxf_hatch_boundary_path_edge_line->y0 = 0.0;
+        dxf_hatch_boundary_path_edge_line->x1 = 0.0;
+        dxf_hatch_boundary_path_edge_line->y1 = 0.0;
+        dxf_hatch_boundary_path_edge_line->next = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_line_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_hatch_boundary_path_edge_line);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a hatch entity (\c HATCH).
  */
 int
