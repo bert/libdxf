@@ -36,6 +36,8 @@ intltool-extract*
 intltool-merge*
 intltool-modules*
 intltool-update*
+libdxf.h
+libdxf.h.in
 libtool
 prepare.sh
 stamp-h*
