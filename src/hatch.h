@@ -137,32 +137,6 @@ dxf_hatch_boundary_path_edge_line
 
 
 /*!
- * \brief DXF definition of an AutoCAD hatch boundary path edge spline.
- */
-typedef struct
-dxf_hatch_boundary_path_edge_spline
-{
-        int id_code;
-                /*!< group code = 5. */
-        int degree;
-                /*!< group code = 94. */
-        int rational;
-                /*!< group code = 73. */
-        int periodic;
-                /*!< group code = 74. */
-        int knots;
-                /*!< group code = 95\n
-                 * number of knots. */
-        int control_points;
-                /*!< group code = 96\n
-                 * number of control points. */
-        struct DxfHatchBoundaryPathEdgeSpline *next;
-                /*!< pointer to the next DxfHatchBoundaryPathEdgeSpline.\n
-                 * \c NULL if the last DxfHatchBoundaryPathEdgeSpline. */
-} DxfHatchBoundaryPathEdgeSpline, * DxfHatchBoundaryPathEdgeSplinePtr;
-
-
-/*!
  * \brief DXF definition of an AutoCAD hatch boundary path edge spline
  * control point.
  */
@@ -182,6 +156,36 @@ dxf_hatch_boundary_path_edge_spline_cp
                 /*!< pointer to the next DxfHatchBoundaryPathEdgeSplineCp.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeSplineCp. */
 } DxfHatchBoundaryPathEdgeSplineCp, * DxfHatchBoundaryPathEdgeSplineCpPtr;
+
+
+/*!
+ * \brief DXF definition of an AutoCAD hatch boundary path edge spline.
+ */
+typedef struct
+dxf_hatch_boundary_path_edge_spline
+{
+        int id_code;
+                /*!< group code = 5. */
+        int degree;
+                /*!< group code = 94. */
+        int rational;
+                /*!< group code = 73. */
+        int periodic;
+                /*!< group code = 74. */
+        int knots;
+                /*!< group code = 95\n
+                 * number of knots. */
+        int number_of_control_points;
+                /*!< group code = 96\n
+                 * number of control points. */
+        struct DxfHatchBoundaryPathEdgeSplineCp *control_points;
+                /*!< pointer to the first DxfHatchBoundaryPathEdgeSplineCp.\n
+                 * \c NULL if there is no DxfHatchBoundaryPathEdgeSplineCp
+                 * in the DxfHatchBoundaryPathEdgeSpline. */
+        struct DxfHatchBoundaryPathEdgeSpline *next;
+                /*!< pointer to the next DxfHatchBoundaryPathEdgeSpline.\n
+                 * \c NULL if the last DxfHatchBoundaryPathEdgeSpline. */
+} DxfHatchBoundaryPathEdgeSpline, * DxfHatchBoundaryPathEdgeSplinePtr;
 
 
 /*!
