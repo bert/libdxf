@@ -930,6 +930,8 @@ dxf_hatch_boundary_path_edge_spline_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_init () function.\n",
                 __FILE__, __LINE__);
 #endif
+        int i;
+
         dxf_hatch_boundary_path_edge_spline = dxf_hatch_boundary_path_edge_spline_new ();
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
@@ -940,7 +942,11 @@ dxf_hatch_boundary_path_edge_spline_init
         dxf_hatch_boundary_path_edge_spline->degree = 0;
         dxf_hatch_boundary_path_edge_spline->rational = 0;
         dxf_hatch_boundary_path_edge_spline->periodic = 0;
-        dxf_hatch_boundary_path_edge_spline->knots = 0;
+        dxf_hatch_boundary_path_edge_spline->number_of_knots = 0;
+        for (i = 0; i >= DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS; i++)
+        {
+                dxf_hatch_boundary_path_edge_spline->knots[i] = 0.0;
+        }
         dxf_hatch_boundary_path_edge_spline->number_of_control_points = 0;
         dxf_hatch_boundary_path_edge_spline->control_points = NULL;
         dxf_hatch_boundary_path_edge_spline->next = NULL;

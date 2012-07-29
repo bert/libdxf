@@ -41,6 +41,7 @@
 
 
 #define DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS 16
+#define DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS 64
 
 
 /*!
@@ -172,9 +173,12 @@ dxf_hatch_boundary_path_edge_spline
                 /*!< group code = 73. */
         int periodic;
                 /*!< group code = 74. */
-        int knots;
+        int number_of_knots;
                 /*!< group code = 95\n
                  * number of knots. */
+        double knots[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS];
+                /*!< group code = 40\n
+                 * knot values. */
         int number_of_control_points;
                 /*!< group code = 96\n
                  * number of control points. */
