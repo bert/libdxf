@@ -1034,6 +1034,46 @@ dxf_hatch_boundary_path_edge_spline_cp_init
 
 
 /*!
+ * \brief Set a knot value to a \HATCH boundary path edge spline entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_set_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+                /*!< DXF \c HATCH boundary path edge spline entity. */
+        int position,
+                /*!< position in the array of knot values [0 .. DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]. */
+        double knot_value
+                /*!< knot value. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_set_knot_value () function.\n",
+                __FILE__, __LINE__);
+#endif
+        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_set_knot_value () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
+              return (EXIT_FAILURE);
+        }
+        if (position > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_set_knot_value () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n");
+              return (EXIT_FAILURE);
+        }
+        dxf_hatch_boundary_path_edge_spline->knots[position] = knot_value;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_set_knot_value () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a hatch entity (\c HATCH).
  */
 int
