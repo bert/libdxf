@@ -1012,8 +1012,6 @@ dxf_hatch_boundary_path_edge_spline_cp_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_cp_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        int i;
-
         dxf_hatch_boundary_path_edge_spline_cp = dxf_hatch_boundary_path_edge_spline_cp_new ();
         if (dxf_hatch_boundary_path_edge_spline_cp == NULL)
         {
