@@ -606,6 +606,12 @@ dxf_hatch_boundary_path_edge_spline_remove_knot_value
         double knot_value
 );
 int
+dxf_hatch_boundary_path_edge_spline_copy_knot_values
+(
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+        double *knot_values[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
+);
+int
 dxf_hatch_write_lowlevel
 (
         FILE *fp,

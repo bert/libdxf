@@ -1322,6 +1322,48 @@ dxf_hatch_boundary_path_edge_spline_remove_knot_value
 
 
 /*!
+ * \brief Copy knot values from a \HATCH boundary path edge spline
+ * entity into an array.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_copy_knot_values
+(
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+                /*!< DXF \c HATCH boundary path edge spline entity (source). */
+        double *knot_values[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
+                /*!< Array of knot values (destination). \n
+                 * \warning Make sure enough memory is allocated. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_remove_knot_value () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int i;
+
+        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_remove_knot_value () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
+              return (EXIT_FAILURE);
+        }
+        if (dxf_hatch_boundary_path_edge_spline->number_of_knots > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_remove_knot_value () resulted in a array pointer overflow.\n");
+              return (EXIT_FAILURE);
+        }
+        for (i = 0; i < dxf_hatch_boundary_path_edge_spline->number_of_knots; i++)
+        {
+                *knot_values[i] = dxf_hatch_boundary_path_edge_spline->knots[i];
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_remove_knot_value () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a hatch entity (\c HATCH).
  */
 int
