@@ -1338,6 +1338,9 @@ dxf_hatch_boundary_path_edge_spline_remove_knot_value
  * the knot values from the \c dxf_hatch_boundary_path_edge_spline
  * (source) are copied into an array (destination).
  *
+ * \warning Make sure enough memory is allocated for the destination
+ * array.
+ *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
@@ -1347,8 +1350,7 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
         DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
                 /*!< DXF \c HATCH boundary path edge spline entity (source). */
         double *knot_values[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
-                /*!< Array of knot values (destination). \n
-                 * \warning Make sure enough memory is allocated. */
+                /*!< Array of knot values (destination). */
 )
 {
 #if DEBUG

@@ -182,7 +182,8 @@ dxf_hatch_boundary_path_edge_spline
                  * number of knots. */
         double knots[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS];
                 /*!< group code = 40\n
-                 * knot values. */
+                 * knot values control the shape of the curve as it
+                 * passes through the control points. */
         int number_of_control_points;
                 /*!< group code = 96\n
                  * number of control points. */
