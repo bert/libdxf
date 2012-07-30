@@ -1111,7 +1111,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_knot_value
               fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_prepend_knot_value () resulted in a array pointer overflow.\n");
               return (EXIT_FAILURE);
         }
-        for (i = dxf_hatch_boundary_path_edge_spline->number_of_knots; i <= 0; i--)
+        for (i = dxf_hatch_boundary_path_edge_spline->number_of_knots; i > 0; i--)
         {
                 dxf_hatch_boundary_path_edge_spline->knots[i + 1] = dxf_hatch_boundary_path_edge_spline->knots[i];
         }
