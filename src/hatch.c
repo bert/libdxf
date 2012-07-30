@@ -1035,9 +1035,9 @@ dxf_hatch_boundary_path_edge_spline_cp_init
  * \brief Append a knot value to a \HATCH boundary path edge spline
  * entity.
  *
- * After testing for a possible array pointer overflow, both the
- * \c knots[\c position] value is appended and the \c number_of_knots
- * is increased by 1.
+ * After testing for a \c NULL pointer or an array pointer overflow,
+ * both the knot value is appended and the \c number_of_knots is
+ * increased by 1.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -1079,8 +1079,8 @@ dxf_hatch_boundary_path_edge_spline_append_knot_value
  * \brief Prepend a knot value to a \HATCH boundary path edge spline
  * entity.
  *
- * After testing for a possible array pointer overflow, all the
- * \c knots[] values are shifted one position, the knot value is
+ * After testing for a \c NULL pointer or an array pointer overflow, all
+ * the \c knots[] values are shifted one position up, the knot value is
  * prepended and the \c number_of_knots is increased by 1.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
@@ -1126,7 +1126,11 @@ dxf_hatch_boundary_path_edge_spline_prepend_knot_value
 
 
 /*!
- * \brief Get a knot value to a \HATCH boundary path edge spline entity.
+ * \brief Get a knot value from a \HATCH boundary path edge spline
+ * entity.
+ *
+ * After testing for a \c NULL pointer or an array pointer overflow, the
+ * desired knot value at \c position is returned.
  *
  * \return the knot value.
  */
@@ -1167,6 +1171,9 @@ dxf_hatch_boundary_path_edge_spline_get_knot_value
 /*!
  * \brief Set a knot value to a \HATCH boundary path edge spline entity.
  *
+ * After testing for a \c NULL pointer or an array pointer overflow, the
+ * desired knot value at \c position is set.
+ *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
@@ -1205,12 +1212,13 @@ dxf_hatch_boundary_path_edge_spline_set_knot_value
 
 
 /*!
- * \brief Insert a knot value to a \HATCH boundary path edge spline entity.
+ * \brief Insert a knot value into a \HATCH boundary path edge spline
+ * entity.
  *
- * After testing for a possible array pointer overflow, all the
- * values upwards of \c knots[\c position] are shifted one position,
- * the knot value is inserted at \c knots[\c position] and the 
- * \c number_of_knots is increased by 1.
+ * After testing for a \c NULL pointer or an array pointer overflow, all
+ * the knot values upwards of \c knots[\c position] are shifted one
+ * position,  the knot value is inserted at \c knots[\c position] and
+ * the  \c number_of_knots is increased by 1.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -1262,11 +1270,12 @@ dxf_hatch_boundary_path_edge_spline_insert_knot_value
 
 
 /*!
- * \brief Remove a knot value from a \HATCH boundary path edge spline entity.
+ * \brief Remove a knot value from a \HATCH boundary path edge spline
+ * entity.
  *
- * After testing for a possible array pointer overflow, all the
- * values upwards of \c knots[\c position] are shifted one position down,
- * and the \c number_of_knots is decreased by 1.
+ * After testing for a \c NULL pointer or an array pointer overflow, all
+ * the knot values upwards of \c knots[\c position] are shifted one
+ * position down, and the \c number_of_knots is decreased by 1.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -1324,6 +1333,13 @@ dxf_hatch_boundary_path_edge_spline_remove_knot_value
 /*!
  * \brief Copy knot values from a \HATCH boundary path edge spline
  * entity into an array.
+ *
+ * After testing for a \c NULL pointer or an array pointer overflow, all
+ * the knot values from the \c dxf_hatch_boundary_path_edge_spline
+ * (source) are copied into an array (destination).
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_hatch_boundary_path_edge_spline_copy_knot_values
