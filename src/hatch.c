@@ -1068,6 +1068,10 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
               fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_append_control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline_cp.\n");
               return (EXIT_FAILURE);
         }
+        if (sizeof (dxf_hatch_boundary_path_edge_spline) < sizeof (DxfHatchBoundaryPathEdgeSpline))
+        {
+                dxf_hatch_boundary_path_edge_spline = realloc (dxf_hatch_boundary_path_edge_spline, sizeof (DxfHatchBoundaryPathEdgeSpline));
+        }
         if (dxf_hatch_boundary_path_edge_spline->control_points == NULL)
         {
                 /* the first control point. */
@@ -1082,10 +1086,6 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
                  * points until the pointer to the last control point
                  * containing a NULL ponter in it's "next" member is
                  * found. */
-                if (sizeof (dxf_hatch_boundary_path_edge_spline) < sizeof (DxfHatchBoundaryPathEdgeSpline))
-                {
-                        dxf_hatch_boundary_path_edge_spline = realloc (dxf_hatch_boundary_path_edge_spline, sizeof (DxfHatchBoundaryPathEdgeSpline));
-                }
                 iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
                 next = dxf_hatch_boundary_path_edge_spline_cp_new ();
                 iter = (DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline->control_points;
