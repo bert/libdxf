@@ -1186,7 +1186,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
 
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_prepend__control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_prepend_control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
               return (EXIT_FAILURE);
         }
         if (dxf_hatch_boundary_path_edge_spline_cp == NULL)
