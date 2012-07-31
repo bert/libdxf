@@ -1032,6 +1032,89 @@ dxf_hatch_boundary_path_edge_spline_cp_init
 
 
 /*!
+ * \brief Append a control point to a \HATCH boundary path edge spline
+ * entity.
+ *
+ * After testing for \c NULL pointers both the control point is
+ * appended and the \c number_of_control_points is increased by 1.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_append_control_point
+(
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+                /*!< DXF \c HATCH boundary path edge spline entity. */
+        DxfHatchBoundaryPathEdgeSplineCp * dxf_hatch_boundary_path_edge_spline_cp
+                /*!< DXF \c HATCH boundary path edge spline control point
+                 * entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_append_control_point () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
+        DxfHatchBoundaryPathEdgeSplineCp *next = NULL;
+
+        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_append__control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
+              return (EXIT_FAILURE);
+        }
+        if (dxf_hatch_boundary_path_edge_spline_cp == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_append_control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline_cp.\n");
+              return (EXIT_FAILURE);
+        }
+        if (dxf_hatch_boundary_path_edge_spline->control_points == NULL)
+        {
+                /* the first control point. */
+                /*! \todo warning: assignment from incompatible pointer type. */
+                /*! \todo check if enough memory is allocated, and
+                 * reallocate if neccessary. */
+                dxf_hatch_boundary_path_edge_spline->control_points = dxf_hatch_boundary_path_edge_spline_cp;
+        }
+        else
+        {
+                /* iterate through all existing pointers to control
+                 * points until the pointer to the last control point
+                 * containing a NULL ponter in it's "next" member is
+                 * found. */
+                if (sizeof (dxf_hatch_boundary_path_edge_spline) < sizeof (DxfHatchBoundaryPathEdgeSpline))
+                {
+                        dxf_hatch_boundary_path_edge_spline = realloc (dxf_hatch_boundary_path_edge_spline, sizeof (DxfHatchBoundaryPathEdgeSpline));
+                }
+                iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                next = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                iter = (DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline->control_points;
+                for (;;)
+                {
+                        next = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+                        if (next == NULL)
+                        {
+                                break;
+                        }
+                }
+                /* iter now contains the pointer to the last known
+                 * control point, now we can write the pointer to the
+                 * control point tha has to be appended. */
+                /*! \todo warning: assignment from incompatible pointer type. */
+                iter->next = dxf_hatch_boundary_path_edge_spline_cp;
+        }
+        dxf_hatch_boundary_path_edge_spline->number_of_control_points++;
+        dxf_hatch_boundary_path_edge_spline_cp_free (iter);
+        dxf_hatch_boundary_path_edge_spline_cp_free (next);
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_append_control_point () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Append a knot value to a \HATCH boundary path edge spline
  * entity.
  *
