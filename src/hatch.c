@@ -1385,6 +1385,83 @@ dxf_hatch_boundary_path_edge_spline_get_knot_value
 
 
 /*!
+ * \brief Set a control point to a \HATCH boundary path edge spline
+ * entity.
+ *
+ * After testing for \c NULL pointers, a pointer for the control
+ * point is inserted at the requested position.
+ *
+ * \return set pointer for the designated control point.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_set_control_point
+(
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+                /*!< DXF \c HATCH boundary path edge spline entity. */
+        int position,
+                /*!< position of the DXF \c HATCH boundary path edge
+                 * spline control point entity. */
+        DxfHatchBoundaryPathEdgeSplineCp *control_point
+                /*!< control point. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_set_control_point () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
+        DxfHatchBoundaryPathEdgeSplineCp *next = NULL;
+        int i;
+
+        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_set_control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
+              return (EXIT_FAILURE);
+        }
+        if (control_point == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_set_control_point () received a NULL pointer value in control_point.\n");
+              return (EXIT_FAILURE);
+        }
+        if (sizeof (dxf_hatch_boundary_path_edge_spline) < sizeof (DxfHatchBoundaryPathEdgeSpline))
+        {
+                dxf_hatch_boundary_path_edge_spline = realloc (dxf_hatch_boundary_path_edge_spline, sizeof (DxfHatchBoundaryPathEdgeSpline));
+        }
+        if (dxf_hatch_boundary_path_edge_spline->number_of_control_points <= position)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_set_control_point () position is greater than the number of control points.\n");
+              return (EXIT_FAILURE);
+        }
+        else
+        {
+                /* iterate through existing pointers to control points
+                 * until the pointer to the requested control point is
+                 * reached. */
+                control_point = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                next = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                iter = (DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline->control_points;
+                for (i = 0; i <= position; i++)
+                {
+                        next = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+                }
+                /* "iter" now contains a pointer in "iter->next" to the
+                 * requested control point, now we can write the pointer
+                 * to control_point and return the pointer value. */
+                /*! \todo warning: assignment from incompatible pointer type. */
+                iter->next =  &control_point;
+        }
+        dxf_hatch_boundary_path_edge_spline_cp_free (iter);
+        dxf_hatch_boundary_path_edge_spline_cp_free (next);
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_set_control_point () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Set a knot value to a \HATCH boundary path edge spline entity.
  *
  * After testing for a \c NULL pointer or an array pointer overflow, the
