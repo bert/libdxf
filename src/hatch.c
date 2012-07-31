@@ -1272,6 +1272,76 @@ dxf_hatch_boundary_path_edge_spline_prepend_knot_value
 
 
 /*!
+ * \brief Get a control point to a \HATCH boundary path edge spline
+ * entity.
+ *
+ * After testing for \c NULL pointers a pointer to the requested control
+ * point is returned.
+ *
+ * \return a pointer to the requested control point.
+ */
+DxfHatchBoundaryPathEdgeSplineCp *
+dxf_hatch_boundary_path_edge_spline_get_control_point
+(
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+                /*!< DXF \c HATCH boundary path edge spline entity. */
+        int position
+                /*!< position of the DXF \c HATCH boundary path edge
+                 * spline control point entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_get_control_point () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
+        DxfHatchBoundaryPathEdgeSplineCp *next = NULL;
+        DxfHatchBoundaryPathEdgeSplineCp *control_point = NULL;
+        int i;
+
+        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_get_control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
+              return (NULL);
+        }
+        if (sizeof (dxf_hatch_boundary_path_edge_spline) < sizeof (DxfHatchBoundaryPathEdgeSpline))
+        {
+                dxf_hatch_boundary_path_edge_spline = realloc (dxf_hatch_boundary_path_edge_spline, sizeof (DxfHatchBoundaryPathEdgeSpline));
+        }
+        if (dxf_hatch_boundary_path_edge_spline->number_of_control_points <= position)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_get_control_point () position is greater than the number of control points.\n");
+              return (NULL);
+        }
+        else
+        {
+                /* iterate through existing pointers to control points
+                 * until the pointer to the requested control point is
+                 * reached. */
+                control_point = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                next = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                iter = (DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline->control_points;
+                for (i = 0; i <= position; i++)
+                {
+                        next = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+                }
+                /* "iter" now contains a pointer in "iter->next" to the
+                 * requested control point, now we can write the pointer
+                 * to control_point and return the pointer value. */
+                control_point =  (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+        }
+        dxf_hatch_boundary_path_edge_spline_cp_free (iter);
+        dxf_hatch_boundary_path_edge_spline_cp_free (next);
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_get_control_point () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (control_point);
+}
+
+
+/*!
  * \brief Get a knot value from a \HATCH boundary path edge spline
  * entity.
  *
