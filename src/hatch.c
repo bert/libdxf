@@ -1076,8 +1076,6 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
         {
                 /* the first control point. */
                 /*! \todo warning: assignment from incompatible pointer type. */
-                /*! \todo check if enough memory is allocated, and
-                 * reallocate if neccessary. */
                 dxf_hatch_boundary_path_edge_spline->control_points = dxf_hatch_boundary_path_edge_spline_cp;
         }
         else
@@ -1097,9 +1095,10 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
                                 break;
                         }
                 }
-                /* iter now contains the pointer to the last known
+                /* "iter" now contains the pointer to the last known
                  * control point, now we can write the pointer to the
-                 * control point tha has to be appended. */
+                 * control point that has to be appended in the "next"
+                 * member. */
                 /*! \todo warning: assignment from incompatible pointer type. */
                 iter->next = dxf_hatch_boundary_path_edge_spline_cp;
         }
