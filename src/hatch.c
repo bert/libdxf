@@ -1512,6 +1512,101 @@ dxf_hatch_boundary_path_edge_spline_set_knot_value
 
 
 /*!
+ * \brief Insert a control point to a \HATCH boundary path edge spline
+ * entity.
+ *
+ * After testing for \c NULL pointers a pointer to the requested control
+ * point.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_insert_control_point
+(
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+                /*!< DXF \c HATCH boundary path edge spline entity. */
+        int position,
+                /*!< position of the DXF \c HATCH boundary path edge
+                 * spline control point entity. */
+        DxfHatchBoundaryPathEdgeSplineCp *control_point
+                /*!< control point. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_insert_control_point () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int i;
+
+        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_insert_control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
+              return (EXIT_FAILURE);
+        }
+        if (control_point == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_insert_control_point () received a NULL pointer value in control_point.\n");
+              return (EXIT_FAILURE);
+        }
+        if (dxf_hatch_boundary_path_edge_spline->number_of_control_points <= position)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_insert_control_point () position is greater than the number of control points.\n");
+              return (EXIT_FAILURE);
+        }
+        if (sizeof (dxf_hatch_boundary_path_edge_spline) < sizeof (DxfHatchBoundaryPathEdgeSpline))
+        {
+                dxf_hatch_boundary_path_edge_spline = realloc (dxf_hatch_boundary_path_edge_spline, sizeof (DxfHatchBoundaryPathEdgeSpline));
+        }
+        if (dxf_hatch_boundary_path_edge_spline->control_points == NULL)
+        {
+                /* no control points yet, so insert at the first control
+                 * point pointer. */
+                /*! \todo warning: assignment from incompatible pointer type. */
+                dxf_hatch_boundary_path_edge_spline->control_points = control_point;
+        }
+        else
+        {
+                DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
+                DxfHatchBoundaryPathEdgeSplineCp *next = NULL;
+                DxfHatchBoundaryPathEdgeSplineCp *temp = NULL;
+                iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                next = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                temp = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                /* iterate through existing pointers to control points
+                 * until the pointer to the requested control point is
+                 * reached. */
+                iter = (DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline->control_points;
+                for (i = 0; i <= position; i++)
+                {
+                        iter = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+                }
+                /* "iter" now contains a pointer (in "iter->next") to
+                 * the control point with the requested position.
+                 * first we have to get a pointer to the next control
+                 * point "downward" (if any) of the position of the
+                 * requested control point and store this one in a
+                 * temporary variable. */
+                temp = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+                /* the next step is to connect the "downward chain" to
+                 * the to be inserted "control_point->next". */
+                control_point->next = temp->next;
+                /* the final step is to connect the "upward chain" to
+                 * the to be inserted control point. */
+                temp =  control_point;
+                /* clean up. */
+                dxf_hatch_boundary_path_edge_spline_cp_free (iter);
+                dxf_hatch_boundary_path_edge_spline_cp_free (next);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_insert_control_point () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Insert a knot value into a \HATCH boundary path edge spline
  * entity.
  *
