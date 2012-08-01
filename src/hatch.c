@@ -1324,7 +1324,7 @@ dxf_hatch_boundary_path_edge_spline_get_control_point
                 iter = (DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline->control_points;
                 for (i = 0; i <= position; i++)
                 {
-                        next = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+                        iter = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
                 }
                 /* "iter" now contains a pointer in "iter->next" to the
                  * requested control point, now we can write the pointer
