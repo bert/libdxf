@@ -103,6 +103,19 @@ dxf_file
 
 
 /* AutoCAD(TM) versions by name */
+#define AutoCAD_1_0 0
+#define AutoCAD_1_2 120
+#define AutoCAD_1_40 140
+#define AutoCAD_1_50 150
+#define AutoCAD_2_10 210
+#define AutoCAD_2_21 221
+/* 
+#define AutoCAD_2_22 222
+ */
+#define AutoCAD_2_22 1001
+#define AutoCAD_2_50 1002
+#define AutoCAD_2_60 1003
+#define AutoCAD_9 1004
 #define AutoCAD_10 1006
 #define AutoCAD_11 1009
 #define AutoCAD_12 1009
@@ -120,24 +133,50 @@ dxf_file
 #define AutoCAD_2010 1024
 #define AutoCAD_2011 1025
 #define AutoCAD_2012 1026
+#define AutoCAD_2013 1027
 #define AutoCAD_LT2 1009
 #define AutoCAD_LT95 1012
+#define AutoCAD_LT97 1014
+#define AutoCAD_LT98 1014
 
 /* AutoCAD(TM) versions by version string */
+#define MC0_0 0
+        /*!< AutoCAD Version 1.0. */
+#define AC1_2 120
+        /*!< AutoCAD Version 1.2. */
+#define AC1_40 140
+        /*!< AutoCAD Version 1.40. */
+#define AC1_50 150
+        /*!< AutoCAD Version 2.05. */
+#define AC2_10 210 
+        /*!< AutoCAD Version 2.10. */
+#define AC2_21 221
+        /*!< AutoCAD Version 2.21. */
+#define AC2_22 222
+        /*!< AutoCAD Version 2.22. \n
+         * AC2_22 is an ignored tag. */
+#define AC1001 1001 
+        /*!< AutoCAD Version 2.22. */
+#define AC1002 1002
+        /*!< AutoCAD Version 2.50. */
+#define AC1003 1003
+        /*!< AutoCAD Version 2.60. */
+#define AC1004 1004
+        /*!< AutoCAD Release 9. */
 #define AC1006 1006
         /*!< AutoCAD 10. */
 #define AC1009 1009
-        /*!< AutoCAD 12 == AutoCAD LT2. */
+        /*!< AutoCAD 11 & AutoCAD 12 == AutoCAD LT2. */
 #define AC1012 1012
         /*!< AutoCAD 13 == AutoCAD LT95. */
 #define AC1014 1014
-        /*!< AutoCAD 14. */
+        /*!< AutoCAD 14 == AutoCAD LT97 & LT98. */
 #define AC1015 1015
         /*!< AutoCAD 2000. */
 #define AC1016 1016
         /*!< AutoCAD 2000i. */
 #define AC1017 1017
-        /*!< AutoCAD version 2002. */
+        /*!< AutoCAD 2002. */
 #define AC1018 1018
         /*!< AutoCAD 2004. */
 #define AC1019 1019
@@ -156,6 +195,9 @@ dxf_file
         /*!< AutoCAD 2011. */
 #define AC1026 1026
         /*!< AutoCAD 2012. */
+#define AC1027 1027
+        /*!< AutoCAD 2013. */
+
 
 /*!
  * The maximum of parameters in a \a DxfObject
