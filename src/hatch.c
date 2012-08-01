@@ -1815,6 +1815,96 @@ dxf_hatch_boundary_path_edge_spline_remove_knot_value
 
 
 /*!
+ * \brief Copy control points from a \HATCH boundary path edge spline
+ * entity into a new chain of control points.
+ *
+ * After testing for \c NULL pointers, a new chain of control points
+ * (destination) is setup by copying the member values from the control
+ * points from the spline (source).
+ * For each control point in the destination chain new memory is
+ * allocated.
+ *
+ * \return a pointer to the first of the requested control points.
+ */
+DxfHatchBoundaryPathEdgeSplineCp *
+dxf_hatch_boundary_path_edge_spline_copy_control_points
+(
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+                /*!< DXF \c HATCH boundary path edge spline entity
+                 * (source). */
+        DxfHatchBoundaryPathEdgeSplineCp *control_points
+                /*!< DXF \c HATCH boundary path edge spline control
+                 * point entity (destination). */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_copy_control_points () function.\n",
+                __FILE__, __LINE__);
+#endif
+        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_copy_control_points () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
+                return (NULL);
+        }
+        if (control_points == NULL)
+        {
+                fprintf (stderr, "WARNING in dxf_hatch_boundary_path_edge_spline_copy_control_points () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline_cp.\n");
+                fprintf (stderr, "\tAllocating memory.\n");
+                control_points = dxf_hatch_boundary_path_edge_spline_cp_new ();
+        }
+        if (sizeof (dxf_hatch_boundary_path_edge_spline) < sizeof (DxfHatchBoundaryPathEdgeSpline))
+        {
+                dxf_hatch_boundary_path_edge_spline = realloc (dxf_hatch_boundary_path_edge_spline, sizeof (DxfHatchBoundaryPathEdgeSpline));
+        }
+        if (dxf_hatch_boundary_path_edge_spline->control_points == NULL)
+        {
+                /* no control points yet, so there is no control point
+                 * to copy. */
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_copy_control_points () spline contins no control points.\n");
+                return (NULL);
+        }
+        else
+        {
+                /* iterate through all existing pointers to control
+                 * points until the pointer to the last control point
+                 * containing a NULL ponter in it's "next" member is
+                 * found. */
+                DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
+                DxfHatchBoundaryPathEdgeSplineCp *next = NULL;
+                iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                next = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                iter = (DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline->control_points;
+                for (;;)
+                {
+                        control_points->id_code = iter->id_code;
+                        control_points->x0 = iter->x0;
+                        control_points->y0 = iter->y0;
+                        control_points->weight = iter->weight;
+                        if (iter->next == NULL)
+                        {
+                                control_points->next = NULL;
+                                break;
+                        }
+                        else
+                        {
+                                /*! \todo warning: assignment from incompatible pointer type. */
+                                control_points->next = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                                iter = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+                        }
+                }
+                /* clean up. */
+                dxf_hatch_boundary_path_edge_spline_cp_free (iter);
+                dxf_hatch_boundary_path_edge_spline_cp_free (next);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_copy_control_points () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (control_points);
+}
+
+
+/*!
  * \brief Copy knot values from a \HATCH boundary path edge spline
  * entity into an array.
  *
