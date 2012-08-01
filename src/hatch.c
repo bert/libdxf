@@ -1432,6 +1432,13 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
               fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_set_control_point () position is greater than the number of control points.\n");
               return (EXIT_FAILURE);
         }
+        if (dxf_hatch_boundary_path_edge_spline->control_points == NULL)
+        {
+                /* no control points yet, so set at the first control
+                 * point pointer. */
+                /*! \todo warning: assignment from incompatible pointer type. */
+                dxf_hatch_boundary_path_edge_spline->control_points = control_point;
+        }
         else
         {
                 /* iterate through existing pointers to control points
@@ -1443,13 +1450,13 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
                 iter = (DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline->control_points;
                 for (i = 0; i <= position; i++)
                 {
-                        next = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+                        iter = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
                 }
                 /* "iter" now contains a pointer in "iter->next" to the
                  * requested control point, now we can write the pointer
                  * to control_point and return the pointer value. */
                 /*! \todo warning: assignment from incompatible pointer type. */
-                iter->next =  &control_point;
+                iter->next = control_point;
         }
         dxf_hatch_boundary_path_edge_spline_cp_free (iter);
         dxf_hatch_boundary_path_edge_spline_cp_free (next);
