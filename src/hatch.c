@@ -1089,8 +1089,8 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
                 iter = (DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline->control_points;
                 for (;;)
                 {
-                        next = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
-                        if (next == NULL)
+                        iter = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+                        if (iter->next == NULL)
                         {
                                 break;
                         }
