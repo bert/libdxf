@@ -1515,8 +1515,8 @@ dxf_hatch_boundary_path_edge_spline_set_knot_value
  * \brief Insert a control point to a \HATCH boundary path edge spline
  * entity.
  *
- * After testing for \c NULL pointers a pointer to the requested control
- * point.
+ * After testing for \c NULL pointers, insert the requested control
+ * point at the requested position.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
