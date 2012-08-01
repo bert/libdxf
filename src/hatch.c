@@ -1665,6 +1665,95 @@ dxf_hatch_boundary_path_edge_spline_insert_knot_value
 
 
 /*!
+ * \brief Remove a control point from a \HATCH boundary path edge spline
+ * entity.
+ *
+ * After testing for \c NULL pointers remove the requested control
+ * point.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_remove_control_point
+(
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+                /*!< DXF \c HATCH boundary path edge spline entity. */
+        int position
+                /*!< position of the DXF \c HATCH boundary path edge
+                 * spline control point entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_remove_control_point () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int i;
+
+        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_remove_control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
+              return (EXIT_FAILURE);
+        }
+        if (dxf_hatch_boundary_path_edge_spline->number_of_control_points <= position)
+        {
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_remove_control_point () position is greater than the number of control points.\n");
+              return (EXIT_FAILURE);
+        }
+        if (sizeof (dxf_hatch_boundary_path_edge_spline) < sizeof (DxfHatchBoundaryPathEdgeSpline))
+        {
+                dxf_hatch_boundary_path_edge_spline = realloc (dxf_hatch_boundary_path_edge_spline, sizeof (DxfHatchBoundaryPathEdgeSpline));
+        }
+        if (dxf_hatch_boundary_path_edge_spline->control_points == NULL)
+        {
+                /* no control points yet, so there is no control point to
+                 * remove. */
+              fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_remove_control_point () spline contins no control points.\n");
+              return (EXIT_FAILURE);
+        }
+        else
+        {
+                DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
+                DxfHatchBoundaryPathEdgeSplineCp *next = NULL;
+                DxfHatchBoundaryPathEdgeSplineCp *temp = NULL;
+                iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                next = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                temp = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                /* iterate through existing pointers to control points
+                 * until the pointer to the requested control point is
+                 * reached. */
+                iter = (DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline->control_points;
+                for (i = 0; i <= (position - 1); i++)
+                {
+                        iter = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+                        /* "iter" now contains a pointer to the control point
+                         * prior to the requested position (the requested
+                         * pointer is in "iter->next"). */
+                }
+                /* first we have to get a pointer to the next control
+                 * point in the "downward chain" after the  position
+                 * of the requested control point and store this one in
+                 * a temporary variable. */
+                temp = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+                /* the next step is to connect the "downward chain" to
+                 * the the contol point before the requested control
+                 * point (the pointer to the last control point in the
+                 * "upward chain" is in "iter"). */
+                iter = (DxfHatchBoundaryPathEdgeSplineCp *) temp->next;
+                /* clean up. */
+                dxf_hatch_boundary_path_edge_spline_cp_free (iter);
+                dxf_hatch_boundary_path_edge_spline_cp_free (iter);
+                dxf_hatch_boundary_path_edge_spline_cp_free (next);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_remove_control_point () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Remove a knot value from a \HATCH boundary path edge spline
  * entity.
  *
