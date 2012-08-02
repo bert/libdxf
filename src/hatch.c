@@ -1038,6 +1038,9 @@ dxf_hatch_boundary_path_edge_spline_cp_init
  * After testing for \c NULL pointers both the control point is
  * appended and the \c number_of_control_points is increased by 1.
  *
+ * \warning The pointer to the control point is re-used, so do not free
+ * this pointer after returning.
+ *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
