@@ -1222,8 +1222,56 @@ dxf_hatch_boundary_path_edge_spline_append_knot_value
  * entity.
  *
  * After testing for \c NULL pointers the new control point is
- * prepended and the \c number_of_control_points is increased by 1.
- *
+ * prepended and the \c number_of_control_points is increased by 1.\n
+ * \n
+ * <h3>Example:</h3>
+ * Start situation: a spline with 4 control points, and the control
+ * point \c cp that is to be prepended.\n
+ * \n
+\dot
+digraph start
+{
+  nodesep=.05;
+  size = "7.5,7.5";
+  rankdir=LR;
+  node [shape=record,width=.05,height=.05];
+  spline [shape=record,label="<fo>spline\n|{id_code}|{degree}|{rational}|{periodic}|{number_of_knots}|{knots\[\]}|{number_of_control_points}|{<f1>control_points}"];
+  cp [shape=record,label="<f0>cp|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  cp1 [shape=record, label="<f0>cp1|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  cp2 [shape=record,label="<f0>cp2|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  cp3 [shape=record,label="<f0>cp3|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  cp4 [shape=record,label="<f0>cp4|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  spline:f1 -> cp1:f0 [arrowhead="open",style="dashed",color="purple"];
+  cp1:f1 -> cp2:f0 [arrowhead="open",style="dashed",color="purple"];
+  cp2:f1 -> cp3:f0 [arrowhead="open",style="dashed",color="purple"];
+  cp3:f1 -> cp4:f0 [arrowhead="open",style="dashed",color="purple"];
+}
+\enddot
+ * \n
+ * Finished situation: a spline with the prepended control point
+ * totalling 5 control points, the memory for control point \c cp is
+ * free'd and set to \c NULL.\n
+ * \n
+\dot
+digraph finish
+{
+  nodesep=.05;
+  size = "7.5,7.5";
+  rankdir=LR;
+  node [shape=record,width=.05,height=.05];
+  spline [shape=record,label="<fo>spline\n|{id_code}|{degree}|{rational}|{periodic}|{number_of_knots}|{knots\[\]}|{number_of_control_points}|{<f1>control_points}"];
+  cp1 [shape=record, label="<f0>cp1|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  cp2 [shape=record,label="<f0>cp2|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  cp3 [shape=record,label="<f0>cp3|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  cp4 [shape=record,label="<f0>cp4|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  prepended [shape=record,label="<f0>prepended|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  spline:f1 -> prepended:f0 [arrowhead="open",style="dashed",color="purple"];
+  prepended:f1 -> cp1:f0 [arrowhead="open",style="dashed",color="purple"];
+  cp1:f1 -> cp2:f0 [arrowhead="open",style="dashed",color="purple"];
+  cp2:f1 -> cp3:f0 [arrowhead="open",style="dashed",color="purple"];
+  cp3:f1 -> cp4:f0 [arrowhead="open",style="dashed",color="purple"];
+}
+\enddot
  * \warning The pointer to the control point \c cp is free'd and set to NULL.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
