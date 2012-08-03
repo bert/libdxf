@@ -1176,15 +1176,17 @@ dxf_hatch_boundary_path_edge_spline_append_knot_value
  * After testing for \c NULL pointers the new control point is
  * prepended and the \c number_of_control_points is increased by 1.
  *
+ * \warning The pointer to the control point is set to NULL.
+ *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
 int
 dxf_hatch_boundary_path_edge_spline_prepend_control_point
 (
-        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+        DxfHatchBoundaryPathEdgeSpline *spline,
                 /*!< DXF \c HATCH boundary path edge spline entity. */
-        DxfHatchBoundaryPathEdgeSplineCp * dxf_hatch_boundary_path_edge_spline_cp
+        DxfHatchBoundaryPathEdgeSplineCp *cp
                 /*!< DXF \c HATCH boundary path edge spline control point
                  * entity. */
 )
@@ -1193,38 +1195,34 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_prepend_control_point () function.\n",
                 __FILE__, __LINE__);
 #endif
-        DxfHatchBoundaryPathEdgeSplineCp *temp = NULL;
-
-        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        if (spline == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_prepend_control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
                 return (EXIT_FAILURE);
         }
-        if (dxf_hatch_boundary_path_edge_spline_cp == NULL)
+        if (cp == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_prepend_control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline_cp.\n");
                 return (EXIT_FAILURE);
         }
-        if (sizeof (dxf_hatch_boundary_path_edge_spline) < sizeof (DxfHatchBoundaryPathEdgeSpline))
+        if (sizeof (spline) < sizeof (DxfHatchBoundaryPathEdgeSpline))
         {
-                dxf_hatch_boundary_path_edge_spline = realloc (dxf_hatch_boundary_path_edge_spline, sizeof (DxfHatchBoundaryPathEdgeSpline));
+                spline = realloc (spline, sizeof (DxfHatchBoundaryPathEdgeSpline));
         }
-        if (dxf_hatch_boundary_path_edge_spline->control_points == NULL)
+        if (spline->control_points == NULL)
         {
-                /* the first control point. */
+                /* no control points yet, so prepend the first control
+                 * point. */
                 /*! \todo warning: assignment from incompatible pointer type. */
-                dxf_hatch_boundary_path_edge_spline->control_points = dxf_hatch_boundary_path_edge_spline_cp;
+                spline->control_points = cp;
         }
         else
         {
-                temp = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                cp->next = spline->control_points;
                 /*! \todo warning: assignment from incompatible pointer type. */
-                temp->next = dxf_hatch_boundary_path_edge_spline->next;
-                /*! \todo warning: assignment from incompatible pointer type. */
-                dxf_hatch_boundary_path_edge_spline->control_points = temp;
+                spline->control_points = (DxfHatchBoundaryPathEdgeSplineCp *) cp;
         }
-        dxf_hatch_boundary_path_edge_spline->number_of_control_points++;
-        dxf_hatch_boundary_path_edge_spline_cp_free (temp);
+        spline->number_of_control_points++;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_prepend_control_point () function.\n",
                 __FILE__, __LINE__);
