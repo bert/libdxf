@@ -1397,7 +1397,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_knot_value
  * \brief Get a control point to a \HATCH boundary path edge spline
  * entity.
  *
- * After testing for \c NULL pointers a pointer to the requested control
+ * After testing for \c NULL pointers, a pointer to the requested control
  * point is returned.
  *
  * \return a pointer to the requested control point.
@@ -1405,7 +1405,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_knot_value
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_get_control_point
 (
-        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+        DxfHatchBoundaryPathEdgeSpline *spline,
                 /*!< DXF \c HATCH boundary path edge spline entity. */
         int position
                 /*!< position of the DXF \c HATCH boundary path edge
@@ -1416,21 +1416,19 @@ dxf_hatch_boundary_path_edge_spline_get_control_point
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_get_control_point () function.\n",
                 __FILE__, __LINE__);
 #endif
-        DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
-        DxfHatchBoundaryPathEdgeSplineCp *next = NULL;
         DxfHatchBoundaryPathEdgeSplineCp *control_point = NULL;
         int i;
 
-        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        if (spline == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_get_control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
                 return (NULL);
         }
-        if (sizeof (dxf_hatch_boundary_path_edge_spline) < sizeof (DxfHatchBoundaryPathEdgeSpline))
+        if (sizeof (spline) < sizeof (DxfHatchBoundaryPathEdgeSpline))
         {
-                dxf_hatch_boundary_path_edge_spline = realloc (dxf_hatch_boundary_path_edge_spline, sizeof (DxfHatchBoundaryPathEdgeSpline));
+                spline = realloc (spline, sizeof (DxfHatchBoundaryPathEdgeSpline));
         }
-        if (dxf_hatch_boundary_path_edge_spline->number_of_control_points <= position)
+        if (spline->number_of_control_points <= position)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_get_control_point () position is greater than the number of control points.\n");
                 return (NULL);
@@ -1440,11 +1438,13 @@ dxf_hatch_boundary_path_edge_spline_get_control_point
                 /* iterate through existing pointers to control points
                  * until the pointer to the requested control point is
                  * reached. */
+                DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
+                DxfHatchBoundaryPathEdgeSplineCp *next = NULL;
                 control_point = dxf_hatch_boundary_path_edge_spline_cp_new ();
                 iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
                 next = dxf_hatch_boundary_path_edge_spline_cp_new ();
-                iter = (DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline->control_points;
-                for (i = 0; i <= position; i++)
+                iter = (DxfHatchBoundaryPathEdgeSplineCp *) spline->control_points;
+                for (i = 1; i <= position; i++)
                 {
                         iter = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
                 }
@@ -1452,9 +1452,10 @@ dxf_hatch_boundary_path_edge_spline_get_control_point
                  * requested control point, now we can write the pointer
                  * to control_point and return the pointer value. */
                 control_point =  (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+                /* clean up. */
+                dxf_hatch_boundary_path_edge_spline_cp_free (iter);
+                dxf_hatch_boundary_path_edge_spline_cp_free (next);
         }
-        dxf_hatch_boundary_path_edge_spline_cp_free (iter);
-        dxf_hatch_boundary_path_edge_spline_cp_free (next);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_get_control_point () function.\n",
                 __FILE__, __LINE__);
