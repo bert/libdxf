@@ -1224,7 +1224,7 @@ dxf_hatch_boundary_path_edge_spline_append_knot_value
  * After testing for \c NULL pointers the new control point is
  * prepended and the \c number_of_control_points is increased by 1.
  *
- * \warning The pointer to the control point is set to NULL.
+ * \warning The pointer to the control point \c cp is free'd and set to NULL.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -1261,16 +1261,32 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
         {
                 /* no control points yet, so prepend the first control
                  * point. */
+                DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
+                new = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                new->id_code = cp->id_code;
+                new->x0 = cp->x0;
+                new->y0 = cp->y0;
+                new->weight = cp->weight;
+                new->next = NULL;
                 /*! \todo warning: assignment from incompatible pointer type. */
-                spline->control_points = cp;
+                spline->control_points = new;
         }
         else
         {
-                cp->next = spline->control_points;
+                DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
+                new = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                new->id_code = cp->id_code;
+                new->x0 = cp->x0;
+                new->y0 = cp->y0;
+                new->weight = cp->weight;
+                new->next = spline->control_points;
                 /*! \todo warning: assignment from incompatible pointer type. */
-                spline->control_points = (DxfHatchBoundaryPathEdgeSplineCp *) cp;
+                spline->control_points = (DxfHatchBoundaryPathEdgeSplineCp *) new;
         }
         spline->number_of_control_points++;
+        /* clean up. */
+        dxf_hatch_boundary_path_edge_spline_cp_free (cp);
+        cp = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_prepend_control_point () function.\n",
                 __FILE__, __LINE__);
