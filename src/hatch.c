@@ -1063,7 +1063,7 @@ digraph start
 \enddot
  * \n
  * Finished situation: a spline with the appended fifth control point,
- * the memory for control point \c cp is free'd and set to \c NULL.\n
+ * the memory for control point \c cp is freed and set to \c NULL.\n
  * \n
 \dot
 digraph finish
@@ -1086,7 +1086,7 @@ digraph finish
 }
 \enddot
  *
- * \warning The pointer to the control point \c cp is free'd and set to NULL.
+ * \warning The pointer to the control point \c cp is freed and set to NULL.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -1250,7 +1250,7 @@ digraph start
  * \n
  * Finished situation: a spline with the prepended control point
  * totalling 5 control points, the memory for control point \c cp is
- * free'd and set to \c NULL.\n
+ * freed and set to \c NULL.\n
  * \n
 \dot
 digraph finish
@@ -1272,7 +1272,7 @@ digraph finish
   cp3:f1 -> cp4:f0 [arrowhead="open",style="dashed",color="purple"];
 }
 \enddot
- * \warning The pointer to the control point \c cp is free'd and set to NULL.
+ * \warning The pointer to the control point \c cp is freed and set to NULL.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
