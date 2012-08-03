@@ -613,7 +613,7 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
 int
 dxf_hatch_boundary_path_edge_spline_set_knot_value
 (
-        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+        DxfHatchBoundaryPathEdgeSpline *spline,
         int position,
         double knot_value
 );
