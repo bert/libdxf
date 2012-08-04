@@ -1032,7 +1032,7 @@ dxf_hatch_boundary_path_edge_spline_cp_init
 
 
 /*!
- * \brief Append a control point to a \HATCH boundary path edge spline
+ * \brief Append a control point to a \c HATCH boundary path edge spline
  * entity.
  *
  * After testing for \c NULL pointers, both the control point is
@@ -1176,7 +1176,7 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
 
 
 /*!
- * \brief Append a knot value to a \HATCH boundary path edge spline
+ * \brief Append a knot value to a \c HATCH boundary path edge spline
  * entity.
  *
  * After testing for a \c NULL pointer or an array pointer overflow,
@@ -1220,7 +1220,7 @@ dxf_hatch_boundary_path_edge_spline_append_knot_value
 
 
 /*!
- * \brief Prepend a control point to a \HATCH boundary path edge spline
+ * \brief Prepend a control point to a \c HATCH boundary path edge spline
  * entity.
  *
  * After testing for \c NULL pointers the new control point is
@@ -1347,7 +1347,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
 
 
 /*!
- * \brief Prepend a knot value to a \HATCH boundary path edge spline
+ * \brief Prepend a knot value to a \c HATCH boundary path edge spline
  * entity.
  *
  * After testing for a \c NULL pointer or an array pointer overflow, all
@@ -1397,7 +1397,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_knot_value
 
 
 /*!
- * \brief Get a control point to a \HATCH boundary path edge spline
+ * \brief Get a control point to a \c HATCH boundary path edge spline
  * entity.
  *
  * After testing for \c NULL pointers, a pointer to the requested control
@@ -1468,7 +1468,7 @@ dxf_hatch_boundary_path_edge_spline_get_control_point
 
 
 /*!
- * \brief Get a knot value from a \HATCH boundary path edge spline
+ * \brief Get a knot value from a \c HATCH boundary path edge spline
  * entity.
  *
  * After testing for a \c NULL pointer or an array pointer overflow, the
@@ -1511,7 +1511,7 @@ dxf_hatch_boundary_path_edge_spline_get_knot_value
 
 
 /*!
- * \brief Set a control point to a \HATCH boundary path edge spline
+ * \brief Set a control point to a \c HATCH boundary path edge spline
  * entity.
  *
  * After testing for \c NULL pointers, the control point is set at the
@@ -1614,7 +1614,7 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
 
 
 /*!
- * \brief Set a knot value to a \HATCH boundary path edge spline entity.
+ * \brief Set a knot value to a \c HATCH boundary path edge spline entity.
  *
  * After testing for a \c NULL pointer or an array pointer overflow, the
  * desired knot value at \c position is set.
@@ -1657,7 +1657,7 @@ dxf_hatch_boundary_path_edge_spline_set_knot_value
 
 
 /*!
- * \brief Insert a control point to a \HATCH boundary path edge spline
+ * \brief Insert a control point to a \c HATCH boundary path edge spline
  * entity.
  *
  * After testing for \c NULL pointers, insert the requested control
@@ -1842,7 +1842,7 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
 
 
 /*!
- * \brief Insert a knot value into a \HATCH boundary path edge spline
+ * \brief Insert a knot value into a \c HATCH boundary path edge spline
  * entity.
  *
  * After testing for a \c NULL pointer or an array pointer overflow, all
@@ -1900,7 +1900,7 @@ dxf_hatch_boundary_path_edge_spline_insert_knot_value
 
 
 /*!
- * \brief Remove a control point from a \HATCH boundary path edge spline
+ * \brief Remove a control point from a \c HATCH boundary path edge spline
  * entity.
  *
  * After testing for \c NULL pointers remove the requested control
@@ -1989,7 +1989,7 @@ dxf_hatch_boundary_path_edge_spline_remove_control_point
 
 
 /*!
- * \brief Remove a knot value from a \HATCH boundary path edge spline
+ * \brief Remove a knot value from a \c HATCH boundary path edge spline
  * entity.
  *
  * After testing for a \c NULL pointer or an array pointer overflow, all
@@ -2050,7 +2050,7 @@ dxf_hatch_boundary_path_edge_spline_remove_knot_value
 
 
 /*!
- * \brief Copy control points from a \HATCH boundary path edge spline
+ * \brief Copy control points from a \c HATCH boundary path edge spline
  * entity into a new chain of control points.
  *
  * After testing for \c NULL pointers, a new chain of control points
@@ -2140,7 +2140,7 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
 
 
 /*!
- * \brief Copy knot values from a \HATCH boundary path edge spline
+ * \brief Copy knot values from a \c HATCH boundary path edge spline
  * entity into an array.
  *
  * After testing for a \c NULL pointer or an array pointer overflow, all
