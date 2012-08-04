@@ -1530,7 +1530,7 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
         int position,
                 /*!< position of the DXF \c HATCH boundary path edge
                  * spline control point entity. */
-        DxfHatchBoundaryPathEdgeSplineCp *cp
+        DxfHatchBoundaryPathEdgeSplineCp *control_point
                 /*!< control point. */
 )
 {
@@ -1545,7 +1545,7 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_set_control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
                 return (EXIT_FAILURE);
         }
-        if (cp == NULL)
+        if (control_point == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_set_control_point () received a NULL pointer value in control_point.\n");
                 return (EXIT_FAILURE);
@@ -1565,10 +1565,10 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
                  * point pointer. */
                 DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
                 new = dxf_hatch_boundary_path_edge_spline_cp_new ();
-                new->id_code = cp->id_code;
-                new->x0 = cp->x0;
-                new->y0 = cp->y0;
-                new->weight = cp->weight;
+                new->id_code = control_point->id_code;
+                new->x0 = control_point->x0;
+                new->y0 = control_point->y0;
+                new->weight = control_point->weight;
                 new->next = NULL;
                 /*! \todo warning: assignment from incompatible pointer type. */
                 spline->control_points = new;
@@ -1592,18 +1592,18 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
                  * to control_point and return the pointer value. */
                 DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
                 new = dxf_hatch_boundary_path_edge_spline_cp_new ();
-                new->id_code = cp->id_code;
-                new->x0 = cp->x0;
-                new->y0 = cp->y0;
-                new->weight = cp->weight;
+                new->id_code = control_point->id_code;
+                new->x0 = control_point->x0;
+                new->y0 = control_point->y0;
+                new->weight = control_point->weight;
                 new->next = NULL;
                 /*! \todo warning: assignment from incompatible pointer type. */
                 iter->next = new;
                 /* clean up. */
                 dxf_hatch_boundary_path_edge_spline_cp_free (iter);
                 dxf_hatch_boundary_path_edge_spline_cp_free (next);
-                dxf_hatch_boundary_path_edge_spline_cp_free (cp);
-                cp = NULL;
+                dxf_hatch_boundary_path_edge_spline_cp_free (control_point);
+                control_point = NULL;
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_set_control_point () function.\n",
