@@ -505,7 +505,7 @@ dxf_hatch_boundary_path_edge_spline_cp_new ();
 DxfHatch *
 dxf_hatch_init
 (
-        DxfHatch *dxf_hatch
+        DxfHatch *hatch
 );
 DxfHatchPattern *
 dxf_hatch_pattern_init

@@ -506,7 +506,7 @@ dxf_hatch_boundary_path_edge_spline_cp_new ()
 DxfHatch *
 dxf_hatch_init
 (
-        DxfHatch *dxf_hatch
+        DxfHatch *hatch
                 /*!< DXF hatch entity. */
 )
 {
@@ -514,45 +514,45 @@ dxf_hatch_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_hatch = dxf_hatch_new ();
-        if (dxf_hatch == NULL)
+        hatch = dxf_hatch_new ();
+        if (hatch == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_init () could not allocate memory for a DxfHatch struct.\n");
                 return (NULL);
         }
-        dxf_hatch->common.id_code = 0;
-        dxf_hatch->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_hatch->common.layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_hatch->x0 = 0.0;
-        dxf_hatch->y0 = 0.0;
-        dxf_hatch->z0 = 0.0;
-        dxf_hatch->extr_x0 = 0.0;
-        dxf_hatch->extr_y0 = 0.0;
-        dxf_hatch->extr_z0 = 0.0;
-        dxf_hatch->common.thickness = 0.0;
-        dxf_hatch->pattern_scale = 1.0;
-        dxf_hatch->pixel_size = 1.0;
-        dxf_hatch->pattern_angle = 0.0;
-        dxf_hatch->common.color = DXF_COLOR_BYLAYER;
-        dxf_hatch->common.paperspace = DXF_MODELSPACE;
-        dxf_hatch->solid_fill = 0;
-        dxf_hatch->associative = 1;
-        dxf_hatch->hatch_style = 0;
-        dxf_hatch->pattern_style = 0;
-        dxf_hatch->pattern_double = 0;
-        dxf_hatch->number_of_pattern_def_lines = 0;
-        dxf_hatch->def_lines = NULL;
-        dxf_hatch->number_of_boundary_paths = 0;
-        dxf_hatch->paths = NULL;
-        dxf_hatch->number_of_seed_points = 0;
-        dxf_hatch->seed_points = NULL;
-        dxf_hatch->common.acad_version_number = 0;
-        dxf_hatch->next = NULL;
+        hatch->common.id_code = 0;
+        hatch->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        hatch->common.layer = strdup (DXF_DEFAULT_LAYER);
+        hatch->x0 = 0.0;
+        hatch->y0 = 0.0;
+        hatch->z0 = 0.0;
+        hatch->extr_x0 = 0.0;
+        hatch->extr_y0 = 0.0;
+        hatch->extr_z0 = 0.0;
+        hatch->common.thickness = 0.0;
+        hatch->pattern_scale = 1.0;
+        hatch->pixel_size = 1.0;
+        hatch->pattern_angle = 0.0;
+        hatch->common.color = DXF_COLOR_BYLAYER;
+        hatch->common.paperspace = DXF_MODELSPACE;
+        hatch->solid_fill = 0;
+        hatch->associative = 1;
+        hatch->hatch_style = 0;
+        hatch->pattern_style = 0;
+        hatch->pattern_double = 0;
+        hatch->number_of_pattern_def_lines = 0;
+        hatch->def_lines = NULL;
+        hatch->number_of_boundary_paths = 0;
+        hatch->paths = NULL;
+        hatch->number_of_seed_points = 0;
+        hatch->seed_points = NULL;
+        hatch->common.acad_version_number = 0;
+        hatch->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch);
+        return (hatch);
 }
 
 
