@@ -2003,12 +2003,10 @@ dxf_hatch_boundary_path_edge_spline_remove_control_point
 int
 dxf_hatch_boundary_path_edge_spline_remove_knot_value
 (
-        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+        DxfHatchBoundaryPathEdgeSpline *spline,
                 /*!< DXF \c HATCH boundary path edge spline entity. */
-        int position,
+        int position
                 /*!< position in the array of knot values [0 .. DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]. */
-        double knot_value
-                /*!< knot value. */
 )
 {
 #if DEBUG
@@ -2017,17 +2015,17 @@ dxf_hatch_boundary_path_edge_spline_remove_knot_value
 #endif
         int i;
 
-        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        if (spline == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_remove_knot_value () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
                 return (EXIT_FAILURE);
         }
-        if (dxf_hatch_boundary_path_edge_spline->number_of_knots > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        if (spline->number_of_knots > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_remove_knot_value () resulted in a array pointer overflow.\n");
                 return (EXIT_FAILURE);
         }
-        if ((dxf_hatch_boundary_path_edge_spline->number_of_knots - 1) < 0)
+        if ((spline->number_of_knots - 1) < 0)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_remove_knot_value () resulted in a array pointer underflow.\n");
                 return (EXIT_FAILURE);
@@ -2037,11 +2035,11 @@ dxf_hatch_boundary_path_edge_spline_remove_knot_value
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_remove_knot_value () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n");
                 return (EXIT_FAILURE);
         }
-        for (i = position; i >= dxf_hatch_boundary_path_edge_spline->number_of_knots; i++)
+        for (i = position; i >= spline->number_of_knots; i++)
         {
-                dxf_hatch_boundary_path_edge_spline->knots[i] = dxf_hatch_boundary_path_edge_spline->knots[i + 1];
+                spline->knots[i] = spline->knots[i + 1];
         }
-        dxf_hatch_boundary_path_edge_spline->number_of_knots--;
+        spline->number_of_knots--;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_remove_knot_value () function.\n",
                 __FILE__, __LINE__);
