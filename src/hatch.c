@@ -1665,7 +1665,7 @@ dxf_hatch_boundary_path_edge_spline_set_knot_value
  * \n
  * <h3>Example:</h3>
  * Start situation: a spline with 4 control points, and the control
- * point \c cp that is to be inserted.\n
+ * point \c control_point that is to be inserted.\n
  * \n
  *
 \dot
@@ -1676,7 +1676,7 @@ digraph start
   rankdir=LR;
   node [shape=record,width=.05,height=.05];
   spline [shape=record,label="<fo>spline\n|{id_code}|{degree}|{rational}|{periodic}|{number_of_knots}|{knots\[\]}|{number_of_control_points}|{<f1>control_points}"];
-  cp [shape=record,label="<f0>cp|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  control_point [shape=record,label="<f0>control_point|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
   cp1 [shape=record, label="<f0>cp1|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
   cp2 [shape=record,label="<f0>cp2|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
   cp3 [shape=record,label="<f0>cp3|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
@@ -1690,7 +1690,7 @@ digraph start
  * \n
  * Finished situation: a spline with the inserted control point between
  * control points cp2 and cp3, totalling 5 control points, the memory
- * for control point \c cp is freed and set to \c NULL.\n
+ * for control point \c control_point is freed and set to \c NULL.\n
  * \n
 \dot
 digraph finish
@@ -1719,7 +1719,8 @@ digraph finish
  * Both these cases are addressed in this function (see comments in the
  * source code).
  *
- * \warning The pointer to the control point \c cp is freed and set to NULL.
+ * \warning The pointer to the control point \c control_point is freed
+ * and set to NULL.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -1732,7 +1733,7 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
         int position,
                 /*!< position of the DXF \c HATCH boundary path edge
                  * spline control point entity. */
-        DxfHatchBoundaryPathEdgeSplineCp *cp
+        DxfHatchBoundaryPathEdgeSplineCp *control_point
                 /*!< control point. */
 )
 {
@@ -1747,7 +1748,7 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_insert_control_point () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n");
                 return (EXIT_FAILURE);
         }
-        if (cp == NULL)
+        if (control_point == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_insert_control_point () received a NULL pointer value in control_point.\n");
                 return (EXIT_FAILURE);
@@ -1767,10 +1768,10 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                  * the first control point pointer. */
                 DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
                 new = dxf_hatch_boundary_path_edge_spline_cp_new ();
-                new->id_code = cp->id_code;
-                new->x0 = cp->x0;
-                new->y0 = cp->y0;
-                new->weight = cp->weight;
+                new->id_code = control_point->id_code;
+                new->x0 = control_point->x0;
+                new->y0 = control_point->y0;
+                new->weight = control_point->weight;
                 new->next = NULL;
                 /*! \todo warning: assignment from incompatible pointer type. */
                 spline->control_points = new;
@@ -1804,10 +1805,10 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                          * append a copy of "cp". */
                         DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
                         new = dxf_hatch_boundary_path_edge_spline_cp_new ();
-                        new->id_code = cp->id_code;
-                        new->x0 = cp->x0;
-                        new->y0 = cp->y0;
-                        new->weight = cp->weight;
+                        new->id_code = control_point->id_code;
+                        new->x0 = control_point->x0;
+                        new->y0 = control_point->y0;
+                        new->weight = control_point->weight;
                         new->next = NULL;
                         /*! \todo warning: assignment from incompatible pointer type. */
                         iter->next = new;
@@ -1816,10 +1817,10 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                 {
                         DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
                         new = dxf_hatch_boundary_path_edge_spline_cp_new ();
-                        new->id_code = cp->id_code;
-                        new->x0 = cp->x0;
-                        new->y0 = cp->y0;
-                        new->weight = cp->weight;
+                        new->id_code = control_point->id_code;
+                        new->x0 = control_point->x0;
+                        new->y0 = control_point->y0;
+                        new->weight = control_point->weight;
                         /* the next step is to connect the "downward chain" to
                          * the to be inserted "control_point->next". */
                         new->next = temp->next;
@@ -1828,8 +1829,8 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                         temp =  new;
                 }
                 /* clean up. */
-                dxf_hatch_boundary_path_edge_spline_cp_free (cp);
-                cp = NULL;
+                dxf_hatch_boundary_path_edge_spline_cp_free (control_point);
+                control_point = NULL;
                 dxf_hatch_boundary_path_edge_spline_cp_free (iter);
                 dxf_hatch_boundary_path_edge_spline_cp_free (next);
         }
