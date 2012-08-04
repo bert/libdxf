@@ -560,7 +560,7 @@ dxf_hatch_boundary_path_edge_line_init
 DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_init
 (
-        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline
+        DxfHatchBoundaryPathEdgeSpline *spline
 );
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_cp_init

@@ -958,7 +958,7 @@ dxf_hatch_boundary_path_edge_line_init
 DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_init
 (
-        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline
+        DxfHatchBoundaryPathEdgeSpline *spline
                 /*!< DXF hatch boundary path edge spline entity. */
 )
 {
@@ -968,29 +968,29 @@ dxf_hatch_boundary_path_edge_spline_init
 #endif
         int i;
 
-        dxf_hatch_boundary_path_edge_spline = dxf_hatch_boundary_path_edge_spline_new ();
-        if (dxf_hatch_boundary_path_edge_spline == NULL)
+        spline = dxf_hatch_boundary_path_edge_spline_new ();
+        if (spline == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_init () could not allocate memory for a DxfHatchBoundaryPathEdgeSpline struct.\n");
                 return (NULL);
         }
-        dxf_hatch_boundary_path_edge_spline->id_code = 0;
-        dxf_hatch_boundary_path_edge_spline->degree = 0;
-        dxf_hatch_boundary_path_edge_spline->rational = 0;
-        dxf_hatch_boundary_path_edge_spline->periodic = 0;
-        dxf_hatch_boundary_path_edge_spline->number_of_knots = 0;
+        spline->id_code = 0;
+        spline->degree = 0;
+        spline->rational = 0;
+        spline->periodic = 0;
+        spline->number_of_knots = 0;
         for (i = 0; i >= DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS; i++)
         {
-                dxf_hatch_boundary_path_edge_spline->knots[i] = 0.0;
+                spline->knots[i] = 0.0;
         }
-        dxf_hatch_boundary_path_edge_spline->number_of_control_points = 0;
-        dxf_hatch_boundary_path_edge_spline->control_points = NULL;
-        dxf_hatch_boundary_path_edge_spline->next = NULL;
+        spline->number_of_control_points = 0;
+        spline->control_points = NULL;
+        spline->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_boundary_path_edge_spline);
+        return (spline);
 }
 
 
