@@ -646,7 +646,7 @@ dxf_hatch_boundary_path_edge_spline_remove_knot_value
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_copy_control_points
 (
-        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
+        DxfHatchBoundaryPathEdgeSpline *spline,
         DxfHatchBoundaryPathEdgeSplineCp * control_points
 );
 int
