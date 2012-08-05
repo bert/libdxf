@@ -520,7 +520,7 @@ dxf_hatch_pattern_def_line_init
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_init
 (
-        DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint
+        DxfHatchPatternSeedPoint *seedpoint
 );
 DxfHatchBoundaryPath *
 dxf_hatch_boundary_path_init

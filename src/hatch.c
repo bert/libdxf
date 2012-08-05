@@ -653,7 +653,7 @@ dxf_hatch_pattern_def_line_init
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_init
 (
-        DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint
+        DxfHatchPatternSeedPoint *seedpoint
                 /*!< DXF hatch pattern seedpoint entity. */
 )
 {
@@ -661,21 +661,21 @@ dxf_hatch_pattern_seedpoint_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_pattern_seedpoint_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_hatch_pattern_seedpoint = dxf_hatch_pattern_seedpoint_new ();
-        if (dxf_hatch_pattern_seedpoint == NULL)
+        seedpoint = dxf_hatch_pattern_seedpoint_new ();
+        if (seedpoint == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_pattern_seedpoint_init () could not allocate memory for a DxfHatchPatternSeedPoint struct.\n");
                 return (NULL);
         }
-        dxf_hatch_pattern_seedpoint->id_code = 0;
-        dxf_hatch_pattern_seedpoint->x0 = 0.0;
-        dxf_hatch_pattern_seedpoint->y0 = 0.0;
-        dxf_hatch_pattern_seedpoint->next = NULL;
+        seedpoint->id_code = 0;
+        seedpoint->x0 = 0.0;
+        seedpoint->y0 = 0.0;
+        seedpoint->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_pattern_seedpoint_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_pattern_seedpoint);
+        return (seedpoint);
 }
 
 
