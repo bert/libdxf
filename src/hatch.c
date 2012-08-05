@@ -332,26 +332,26 @@ dxf_hatch_boundary_path_edge_arc_new ()
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_arc_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc = NULL;
+        DxfHatchBoundaryPathEdgeArc *arc = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPathEdgeArc);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_hatch_boundary_path_edge_arc = malloc (size)) == NULL)
+        if ((arc = malloc (size)) == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_arc_new () could not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n");
-                dxf_hatch_boundary_path_edge_arc = NULL;
+                arc = NULL;
         }
         else
         {
-                memset (dxf_hatch_boundary_path_edge_arc, 0, size);
+                memset (arc, 0, size);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_arc_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_boundary_path_edge_arc);
+        return (arc);
 }
 
 
