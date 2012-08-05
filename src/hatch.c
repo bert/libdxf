@@ -402,26 +402,26 @@ dxf_hatch_boundary_path_edge_line_new ()
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_line_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line = NULL;
+        DxfHatchBoundaryPathEdgeLine *line = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPathEdgeLine);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_hatch_boundary_path_edge_line = malloc (size)) == NULL)
+        if ((line = malloc (size)) == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_line_new () could not allocate memory for a DxfHatchBoundaryPathEdgeLine struct.\n");
-                dxf_hatch_boundary_path_edge_line = NULL;
+                line = NULL;
         }
         else
         {
-                memset (dxf_hatch_boundary_path_edge_line, 0, size);
+                memset (line, 0, size);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_line_edge_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_boundary_path_edge_line);
+        return (line);
 }
 
 
