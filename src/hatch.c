@@ -191,26 +191,26 @@ dxf_hatch_boundary_path_new ()
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        DxfHatchBoundaryPath *dxf_hatch_boundary_path = NULL;
+        DxfHatchBoundaryPath *path = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPath);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_hatch_boundary_path = malloc (size)) == NULL)
+        if ((path = malloc (size)) == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_new () could not allocate memory for a DxfHatchBoundaryPath struct.\n");
-                dxf_hatch_boundary_path = NULL;
+                path = NULL;
         }
         else
         {
-                memset (dxf_hatch_boundary_path, 0, size);
+                memset (path, 0, size);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_boundary_path);
+        return (path);
 }
 
 
