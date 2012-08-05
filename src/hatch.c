@@ -473,26 +473,26 @@ dxf_hatch_boundary_path_edge_spline_cp_new ()
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_cp_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        DxfHatchBoundaryPathEdgeSplineCp *dxf_hatch_boundary_path_edge_spline_cp = NULL;
+        DxfHatchBoundaryPathEdgeSplineCp *control_point = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPathEdgeSplineCp);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_hatch_boundary_path_edge_spline_cp = malloc (size)) == NULL)
+        if ((control_point = malloc (size)) == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_cp_new () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n");
-                dxf_hatch_boundary_path_edge_spline_cp = NULL;
+                control_point = NULL;
         }
         else
         {
-                memset (dxf_hatch_boundary_path_edge_spline_cp, 0, size);
+                memset (control_point, 0, size);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_cp_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_boundary_path_edge_spline_cp);
+        return (control_point);
 }
 
 
