@@ -156,26 +156,26 @@ dxf_hatch_pattern_seedpoint_new ()
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_pattern_seedpoint_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint = NULL;
+        DxfHatchPatternSeedPoint *seedpoint = NULL;
         size_t size;
 
         size = sizeof (DxfHatchPatternSeedPoint);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_hatch_pattern_seedpoint = malloc (size)) == NULL)
+        if ((seedpoint = malloc (size)) == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_pattern_seedpoint_new () could not allocate memory for a DxfHatchPatternSeedpoint struct.\n");
-                dxf_hatch_pattern_seedpoint = NULL;
+                seedpoint = NULL;
         }
         else
         {
-                memset (dxf_hatch_pattern_seedpoint, 0, size);
+                memset (seedpoint, 0, size);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_pattern_seedpoint_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_pattern_seedpoint);
+        return (seedpoint);
 }
 
 
