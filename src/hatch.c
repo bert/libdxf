@@ -367,26 +367,26 @@ dxf_hatch_boundary_path_edge_ellipse_new ()
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_ellipse_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse = NULL;
+        DxfHatchBoundaryPathEdgeEllipse *ellipse = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPathEdgeEllipse);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_hatch_boundary_path_edge_ellipse = malloc (size)) == NULL)
+        if ((ellipse = malloc (size)) == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_ellipse_new () could not allocate memory for a DxfHatchBoundaryPathEdgeEllipse struct.\n");
-                dxf_hatch_boundary_path_edge_ellipse = NULL;
+                ellipse = NULL;
         }
         else
         {
-                memset (dxf_hatch_boundary_path_edge_ellipse, 0, size);
+                memset (ellipse, 0, size);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_ellipse_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_boundary_path_edge_ellipse);
+        return (ellipse);
 }
 
 
