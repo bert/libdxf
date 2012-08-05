@@ -525,7 +525,7 @@ dxf_hatch_pattern_seedpoint_init
 DxfHatchBoundaryPath *
 dxf_hatch_boundary_path_init
 (
-        DxfHatchBoundaryPath *dxf_hatch_boundary_path
+        DxfHatchBoundaryPath *path
 );
 DxfHatchBoundaryPathPolyline *
 dxf_hatch_boundary_path_polyline_init
