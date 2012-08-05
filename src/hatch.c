@@ -51,26 +51,26 @@ dxf_hatch_new ()
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        DxfHatch *dxf_hatch = NULL;
+        DxfHatch *hatch = NULL;
         size_t size;
 
         size = sizeof (DxfHatch);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_hatch = malloc (size)) == NULL)
+        if ((hatch = malloc (size)) == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_new () could not allocate memory for a DxfHatch struct.\n");
-                dxf_hatch = NULL;
+                hatch = NULL;
         }
         else
         {
-                memset (dxf_hatch, 0, size);
+                memset (hatch, 0, size);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_new () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch);
+        return (hatch);
 }
 
 
