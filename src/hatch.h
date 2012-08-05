@@ -510,7 +510,7 @@ dxf_hatch_init
 DxfHatchPattern *
 dxf_hatch_pattern_init
 (
-        DxfHatchPattern *dxf_hatch_pattern
+        DxfHatchPattern *pattern
 );
 DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_init

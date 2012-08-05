@@ -566,7 +566,7 @@ dxf_hatch_init
 DxfHatchPattern *
 dxf_hatch_pattern_init
 (
-        DxfHatchPattern *dxf_hatch_pattern
+        DxfHatchPattern *pattern
                 /*!< DXF hatch pattern entity. */
 )
 {
@@ -574,26 +574,26 @@ dxf_hatch_pattern_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_pattern_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_hatch_pattern = dxf_hatch_pattern_new ();
-        if (dxf_hatch_pattern == NULL)
+        pattern = dxf_hatch_pattern_new ();
+        if (pattern == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_pattern_init () could not allocate memory for a DxfHatchPattern struct.\n");
                 return (NULL);
         }
-        dxf_hatch_pattern->id_code = 0;
-        dxf_hatch_pattern->def_lines = 0;
-        dxf_hatch_pattern->lines = NULL;
+        pattern->id_code = 0;
+        pattern->def_lines = 0;
+        pattern->lines = NULL;
 /*! \todo correction in:
-        dxf_hatch_pattern->length = 0.0;
+        pattern->length = 0.0;
 */
-        dxf_hatch_pattern->number_of_seed_points = 0;
-        dxf_hatch_pattern->seed_points = NULL;
-        dxf_hatch_pattern->next = NULL;
+        pattern->number_of_seed_points = 0;
+        pattern->seed_points = NULL;
+        pattern->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_pattern_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_pattern);
+        return (pattern);
 }
 
 
