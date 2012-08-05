@@ -515,7 +515,7 @@ dxf_hatch_pattern_init
 DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_init
 (
-        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
+        DxfHatchPatternDefLine *line
 );
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_init

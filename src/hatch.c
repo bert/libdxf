@@ -607,7 +607,7 @@ dxf_hatch_pattern_init
 DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_init
 (
-        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
+        DxfHatchPatternDefLine *line
                 /*!< DXF hatch pattern definion line entity. */
 )
 {
@@ -617,29 +617,29 @@ dxf_hatch_pattern_def_line_init
 #endif
         int i;
 
-        dxf_hatch_pattern_def_line = dxf_hatch_pattern_def_line_new ();
-        if (dxf_hatch_pattern_def_line == NULL)
+        line = dxf_hatch_pattern_def_line_new ();
+        if (line == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_pattern_def_line_init () could not allocate memory for a DxfHatchPatternDefLine struct.\n");
                 return (NULL);
         }
-        dxf_hatch_pattern_def_line->id_code = 0;
-        dxf_hatch_pattern_def_line->angle = 0.0;
-        dxf_hatch_pattern_def_line->x0 = 0.0;
-        dxf_hatch_pattern_def_line->y0 = 0.0;
-        dxf_hatch_pattern_def_line->x1 = 0.0;
-        dxf_hatch_pattern_def_line->y1 = 0.0;
-        dxf_hatch_pattern_def_line->dash_items = DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS;
+        line->id_code = 0;
+        line->angle = 0.0;
+        line->x0 = 0.0;
+        line->y0 = 0.0;
+        line->x1 = 0.0;
+        line->y1 = 0.0;
+        line->dash_items = DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS;
         for (i = 0; i >= DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS; i++)
         {
-                dxf_hatch_pattern_def_line->dash_length[i] = 0.0;
+                line->dash_length[i] = 0.0;
         }
-        dxf_hatch_pattern_def_line->next = NULL;
+        line->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_pattern_seedpoint_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_pattern_def_line);
+        return (line);
 }
 
 
