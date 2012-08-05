@@ -608,7 +608,7 @@ DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_init
 (
         DxfHatchPatternDefLine *line
-                /*!< DXF hatch pattern definion line entity. */
+                /*!< DXF hatch pattern definition line entity. */
 )
 {
 #if DEBUG
