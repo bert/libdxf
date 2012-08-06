@@ -545,7 +545,7 @@ dxf_hatch_boundary_path_edge_init
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_init
 (
-        DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc
+        DxfHatchBoundaryPathEdgeArc *arc
 );
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_init

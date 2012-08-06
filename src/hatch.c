@@ -838,7 +838,7 @@ dxf_hatch_boundary_path_edge_init
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_init
 (
-        DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc
+        DxfHatchBoundaryPathEdgeArc *arc
                 /*!< DXF hatch boundary path edge arc entity. */
 )
 {
@@ -846,25 +846,25 @@ dxf_hatch_boundary_path_edge_arc_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_arc_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_hatch_boundary_path_edge_arc = dxf_hatch_boundary_path_edge_arc_new ();
-        if (dxf_hatch_boundary_path_edge_arc == NULL)
+        arc = dxf_hatch_boundary_path_edge_arc_new ();
+        if (arc == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_arc_init () could not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n");
                 return (NULL);
         }
-        dxf_hatch_boundary_path_edge_arc->id_code = 0;
-        dxf_hatch_boundary_path_edge_arc->x0 = 0.0;
-        dxf_hatch_boundary_path_edge_arc->y0 = 0.0;
-        dxf_hatch_boundary_path_edge_arc->radius = 0.0;
-        dxf_hatch_boundary_path_edge_arc->start_angle = 0.0;
-        dxf_hatch_boundary_path_edge_arc->end_angle = 0.0;
-        dxf_hatch_boundary_path_edge_arc->is_ccw = 0;
-        dxf_hatch_boundary_path_edge_arc->next = NULL;
+        arc->id_code = 0;
+        arc->x0 = 0.0;
+        arc->y0 = 0.0;
+        arc->radius = 0.0;
+        arc->start_angle = 0.0;
+        arc->end_angle = 0.0;
+        arc->is_ccw = 0;
+        arc->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_arc_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_boundary_path_edge_arc);
+        return (arc);
 }
 
 
