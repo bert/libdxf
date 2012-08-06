@@ -2863,7 +2863,7 @@ dxf_hatch_pattern_free
 int
 dxf_hatch_pattern_seedpoint_free
 (
-        DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint
+        DxfHatchPatternSeedPoint *seedpoint
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * pattern seedpoint entity. */
 )
@@ -2872,13 +2872,13 @@ dxf_hatch_pattern_seedpoint_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_pattern_seedpoint_free () function.\n",
                 __FILE__, __LINE__);
 #endif
-        if (dxf_hatch_pattern_seedpoint->next != NULL)
+        if (seedpoint->next != NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_pattern_seedpoint_free () pointer to next DxfHatchPattern was not NULL.\n");
                 return (EXIT_FAILURE);
         }
-        free (dxf_hatch_pattern_seedpoint);
-        dxf_hatch_pattern_seedpoint = NULL;
+        free (seedpoint);
+        seedpoint = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_pattern_seedpoint_free () function.\n",
                 __FILE__, __LINE__);
