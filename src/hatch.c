@@ -2827,7 +2827,7 @@ dxf_hatch_free
 int
 dxf_hatch_pattern_free
 (
-        DxfHatchPattern *dxf_hatch_pattern
+        DxfHatchPattern *pattern
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * pattern entity. */
 )
@@ -2836,15 +2836,15 @@ dxf_hatch_pattern_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_pattern_free () function.\n",
                 __FILE__, __LINE__);
 #endif
-        if (dxf_hatch_pattern->next != NULL)
+        if (pattern->next != NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_pattern_free () pointer to next DxfHatchPattern was not NULL.\n");
                 return (EXIT_FAILURE);
         }
-        free (dxf_hatch_pattern->lines);
-        free (dxf_hatch_pattern->seed_points);
-        free (dxf_hatch_pattern);
-        dxf_hatch_pattern = NULL;
+        free (pattern->lines);
+        free (pattern->seed_points);
+        free (pattern);
+        pattern = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_pattern_free () function.\n",
                 __FILE__, __LINE__);

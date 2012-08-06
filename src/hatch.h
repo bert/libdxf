@@ -769,7 +769,7 @@ dxf_hatch_free
 int
 dxf_hatch_pattern_free
 (
-        DxfHatchPattern *dxf_hatch_pattern
+        DxfHatchPattern *pattern
 );
 int
 dxf_hatch_pattern_seedpoint_free
