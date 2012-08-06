@@ -878,7 +878,7 @@ dxf_hatch_boundary_path_edge_arc_init
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_init
 (
-        DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse
+        DxfHatchBoundaryPathEdgeEllipse *ellipse
                 /*!< DXF hatch boundary path edge ellipse entity. */
 )
 {
@@ -886,27 +886,27 @@ dxf_hatch_boundary_path_edge_ellipse_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_ellipse_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_hatch_boundary_path_edge_ellipse = dxf_hatch_boundary_path_edge_ellipse_new ();
-        if (dxf_hatch_boundary_path_edge_ellipse == NULL)
+        ellipse = dxf_hatch_boundary_path_edge_ellipse_new ();
+        if (ellipse == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_ellipse_init () could not allocate memory for a DxfHatchBoundaryPathEdgeEllipse struct.\n");
                 return (NULL);
         }
-        dxf_hatch_boundary_path_edge_ellipse->id_code = 0;
-        dxf_hatch_boundary_path_edge_ellipse->x0 = 0.0;
-        dxf_hatch_boundary_path_edge_ellipse->y0 = 0.0;
-        dxf_hatch_boundary_path_edge_ellipse->x1 = 0.0;
-        dxf_hatch_boundary_path_edge_ellipse->y1 = 0.0;
-        dxf_hatch_boundary_path_edge_ellipse->minor_axis = 0.0;
-        dxf_hatch_boundary_path_edge_ellipse->start_angle = 0.0;
-        dxf_hatch_boundary_path_edge_ellipse->end_angle = 0.0;
-        dxf_hatch_boundary_path_edge_ellipse->is_ccw = 0;
-        dxf_hatch_boundary_path_edge_ellipse->next = NULL;
+        ellipse->id_code = 0;
+        ellipse->x0 = 0.0;
+        ellipse->y0 = 0.0;
+        ellipse->x1 = 0.0;
+        ellipse->y1 = 0.0;
+        ellipse->minor_axis = 0.0;
+        ellipse->start_angle = 0.0;
+        ellipse->end_angle = 0.0;
+        ellipse->is_ccw = 0;
+        ellipse->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_ellipse_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_boundary_path_edge_ellipse);
+        return (ellipse);
 }
 
 
