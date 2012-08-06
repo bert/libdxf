@@ -3036,7 +3036,7 @@ dxf_hatch_boundary_path_polyline_vertex_free
 int
 dxf_hatch_boundary_path_edge_free
 (
-        DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge
+        DxfHatchBoundaryPathEdge *edge
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path edge entity. */
 )
@@ -3045,17 +3045,17 @@ dxf_hatch_boundary_path_edge_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_free () function.\n",
                 __FILE__, __LINE__);
 #endif
-        if (dxf_hatch_boundary_path_edge->next != NULL)
+        if (edge->next != NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_free () pointer to next DxfHatchBoundaryPathEdge was not NULL.\n");
                 return (EXIT_FAILURE);
         }
-        free (dxf_hatch_boundary_path_edge->arcs);
-        free (dxf_hatch_boundary_path_edge->ellipses);
-        free (dxf_hatch_boundary_path_edge->lines);
-        free (dxf_hatch_boundary_path_edge->splines);
-        free (dxf_hatch_boundary_path_edge);
-        dxf_hatch_boundary_path_edge = NULL;
+        free (edge->arcs);
+        free (edge->ellipses);
+        free (edge->lines);
+        free (edge->splines);
+        free (edge);
+        edge = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_free () function.\n",
                 __FILE__, __LINE__);
