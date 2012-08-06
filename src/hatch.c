@@ -2931,7 +2931,7 @@ dxf_hatch_pattern_def_line_free
 int
 dxf_hatch_boundary_path_free
 (
-        DxfHatchBoundaryPath *dxf_hatch_boundary_path
+        DxfHatchBoundaryPath *path
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path entity. */
 )
@@ -2940,15 +2940,15 @@ dxf_hatch_boundary_path_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_free () function.\n",
                 __FILE__, __LINE__);
 #endif
-        if (dxf_hatch_boundary_path->next != NULL)
+        if (path->next != NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_free () pointer to next DxfHatchBoundaryPath was not NULL.\n");
                 return (EXIT_FAILURE);
         }
-        free (dxf_hatch_boundary_path->edges);
-        free (dxf_hatch_boundary_path->polylines);
-        free (dxf_hatch_boundary_path);
-        dxf_hatch_boundary_path = NULL;
+        free (path->edges);
+        free (path->polylines);
+        free (path);
+        path = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_free () function.\n",
                 __FILE__, __LINE__);
