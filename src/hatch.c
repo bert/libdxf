@@ -800,7 +800,7 @@ dxf_hatch_boundary_path_polyline_vertex_init
 DxfHatchBoundaryPathEdge *
 dxf_hatch_boundary_path_edge_init
 (
-        DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge
+        DxfHatchBoundaryPathEdge *edge
                 /*!< DXF hatch boundary path edge entity. */
 )
 {
@@ -808,23 +808,23 @@ dxf_hatch_boundary_path_edge_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_hatch_boundary_path_edge = dxf_hatch_boundary_path_edge_new ();
-        if (dxf_hatch_boundary_path_edge == NULL)
+        edge = dxf_hatch_boundary_path_edge_new ();
+        if (edge == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_init () could not allocate memory for a DxfHatchBoundaryPathEdge struct.\n");
                 return (NULL);
         }
-        dxf_hatch_boundary_path_edge->id_code = 0;
-        dxf_hatch_boundary_path_edge->arcs = NULL;
-        dxf_hatch_boundary_path_edge->ellipses = NULL;
-        dxf_hatch_boundary_path_edge->lines = NULL;
-        dxf_hatch_boundary_path_edge->splines = NULL;
-        dxf_hatch_boundary_path_edge->next = NULL;
+        edge->id_code = 0;
+        edge->arcs = NULL;
+        edge->ellipses = NULL;
+        edge->lines = NULL;
+        edge->splines = NULL;
+        edge->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_boundary_path_edge);
+        return (edge);
 }
 
 

@@ -540,7 +540,7 @@ dxf_hatch_boundary_path_polyline_vertex_init
 DxfHatchBoundaryPathEdge *
 dxf_hatch_boundary_path_edge_init
 (
-        DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge
+        DxfHatchBoundaryPathEdge *edge
 );
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_init
