@@ -3074,7 +3074,7 @@ dxf_hatch_boundary_path_edge_free
 int
 dxf_hatch_boundary_path_edge_arc_free
 (
-        DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc
+        DxfHatchBoundaryPathEdgeArc *arc
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path edge arc entity. */
 )
@@ -3083,13 +3083,13 @@ dxf_hatch_boundary_path_edge_arc_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_arc_free () function.\n",
                 __FILE__, __LINE__);
 #endif
-        if (dxf_hatch_boundary_path_edge_arc->next != NULL)
+        if (arc->next != NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_arc_free () pointer to next DxfHatchBoundaryPathEdgeArc was not NULL.\n");
                 return (EXIT_FAILURE);
         }
-        free (dxf_hatch_boundary_path_edge_arc);
-        dxf_hatch_boundary_path_edge_arc = NULL;
+        free (arc);
+        arc = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_arc_free () function.\n",
                 __FILE__, __LINE__);
