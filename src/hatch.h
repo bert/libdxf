@@ -535,7 +535,7 @@ dxf_hatch_boundary_path_polyline_init
 DxfHatchBoundaryPathPolylineVertex *
 dxf_hatch_boundary_path_polyline_vertex_init
 (
-        DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex
+        DxfHatchBoundaryPathPolylineVertex *vertex
 );
 DxfHatchBoundaryPathEdge *
 dxf_hatch_boundary_path_edge_init
