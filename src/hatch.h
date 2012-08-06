@@ -809,7 +809,7 @@ dxf_hatch_boundary_path_edge_arc_free
 int
 dxf_hatch_boundary_path_edge_ellipse_free
 (
-        DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse
+        DxfHatchBoundaryPathEdgeEllipse *ellipse
 );
 int
 dxf_hatch_boundary_path_edge_line_free
