@@ -3002,7 +3002,7 @@ dxf_hatch_boundary_path_polyline_free
 int
 dxf_hatch_boundary_path_polyline_vertex_free
 (
-        DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex
+        DxfHatchBoundaryPathPolylineVertex *vertex
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path polyline vertex entity. */
 )
@@ -3011,13 +3011,13 @@ dxf_hatch_boundary_path_polyline_vertex_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_polyline_vertex_free () function.\n",
                 __FILE__, __LINE__);
 #endif
-        if (dxf_hatch_boundary_path_polyline_vertex->next != NULL)
+        if (vertex->next != NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_polyline_vertex_free () pointer to next DxfHatchBoundaryPathPolylineVertex was not NULL.\n");
                 return (EXIT_FAILURE);
         }
-        free (dxf_hatch_boundary_path_polyline_vertex);
-        dxf_hatch_boundary_path_polyline_vertex = NULL;
+        free (vertex);
+        vertex = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_polyline_vertex_free () function.\n",
                 __FILE__, __LINE__);
