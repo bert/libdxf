@@ -2787,7 +2787,7 @@ dxf_hatch_write_pattern_data_lowlevel
 int
 dxf_hatch_free
 (
-        DxfHatch *dxf_hatch
+        DxfHatch *hatch
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * entity. */
 )
@@ -2796,19 +2796,19 @@ dxf_hatch_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_free () function.\n",
                 __FILE__, __LINE__);
 #endif
-        if (dxf_hatch->next != NULL)
+        if (hatch->next != NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_free () pointer to next DxfHatch was not NULL.\n");
                 return (EXIT_FAILURE);
         }
-        free (dxf_hatch->pattern_name);
-        free (dxf_hatch->common.linetype);
-        free (dxf_hatch->common.layer);
-        free (dxf_hatch->def_lines);
-        free (dxf_hatch->paths);
-        free (dxf_hatch->seed_points);
-        free (dxf_hatch);
-        dxf_hatch = NULL;
+        free (hatch->pattern_name);
+        free (hatch->common.linetype);
+        free (hatch->common.layer);
+        free (hatch->def_lines);
+        free (hatch->paths);
+        free (hatch->seed_points);
+        free (hatch);
+        hatch = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_free () function.\n",
                 __FILE__, __LINE__);

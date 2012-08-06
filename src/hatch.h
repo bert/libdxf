@@ -764,7 +764,7 @@ dxf_hatch_write_pattern_data_lowlevel
 int
 dxf_hatch_free
 (
-        DxfHatch *dxf_hatch
+        DxfHatch *hatch
 );
 int
 dxf_hatch_pattern_free
