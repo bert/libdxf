@@ -725,7 +725,7 @@ dxf_hatch_boundary_path_init
 DxfHatchBoundaryPathPolyline *
 dxf_hatch_boundary_path_polyline_init
 (
-        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline
+        DxfHatchBoundaryPathPolyline *polyline
                 /*!< DXF hatch boundary path polyline entity. */
 )
 {
@@ -733,24 +733,24 @@ dxf_hatch_boundary_path_polyline_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_polyline_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        dxf_hatch_boundary_path_polyline = dxf_hatch_boundary_path_polyline_new ();
-        if (dxf_hatch_boundary_path_polyline == NULL)
+        polyline = dxf_hatch_boundary_path_polyline_new ();
+        if (polyline == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_polyline_init () could not allocate memory for a DxfHatchBoundaryPathPolyline struct.\n");
                 return (NULL);
         }
-        dxf_hatch_boundary_path_polyline->id_code = 0;
-        dxf_hatch_boundary_path_polyline->bulge = 0.0;
-        dxf_hatch_boundary_path_polyline->has_bulge = 0;
-        dxf_hatch_boundary_path_polyline->is_closed = 0;
-        dxf_hatch_boundary_path_polyline->number_of_vertices = 0;
-        dxf_hatch_boundary_path_polyline->vertices = NULL;
-        dxf_hatch_boundary_path_polyline->next = NULL;
+        polyline->id_code = 0;
+        polyline->bulge = 0.0;
+        polyline->has_bulge = 0;
+        polyline->is_closed = 0;
+        polyline->number_of_vertices = 0;
+        polyline->vertices = NULL;
+        polyline->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_polyline_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (dxf_hatch_boundary_path_polyline);
+        return (polyline);
 }
 
 
