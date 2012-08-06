@@ -3176,7 +3176,7 @@ dxf_hatch_boundary_path_edge_line_free
 int
 dxf_hatch_boundary_path_edge_spline_free
 (
-        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline
+        DxfHatchBoundaryPathEdgeSpline *spline
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path edge spline entity. */
 )
@@ -3185,14 +3185,14 @@ dxf_hatch_boundary_path_edge_spline_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_free () function.\n",
                 __FILE__, __LINE__);
 #endif
-        if (dxf_hatch_boundary_path_edge_spline->next != NULL)
+        if (spline->next != NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_free () pointer to next DxfHatchBoundaryPathEdgeSpline was not NULL.\n");
                 return (EXIT_FAILURE);
         }
-        free (dxf_hatch_boundary_path_edge_spline->control_points);
-        free (dxf_hatch_boundary_path_edge_spline);
-        dxf_hatch_boundary_path_edge_spline = NULL;
+        free (spline->control_points);
+        free (spline);
+        spline = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_free () function.\n",
                 __FILE__, __LINE__);
