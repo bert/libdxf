@@ -3142,7 +3142,7 @@ dxf_hatch_boundary_path_edge_ellipse_free
 int
 dxf_hatch_boundary_path_edge_line_free
 (
-        DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line
+        DxfHatchBoundaryPathEdgeLine *line
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path edge line entity. */
 )
@@ -3151,13 +3151,13 @@ dxf_hatch_boundary_path_edge_line_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_line_free () function.\n",
                 __FILE__, __LINE__);
 #endif
-        if (dxf_hatch_boundary_path_edge_line->next != NULL)
+        if (line->next != NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_line_free () pointer to next DxfHatchBoundaryPathEdgeLine was not NULL.\n");
                 return (EXIT_FAILURE);
         }
-        free (dxf_hatch_boundary_path_edge_line);
-        dxf_hatch_boundary_path_edge_line = NULL;
+        free (line);
+        line = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_line_free () function.\n",
                 __FILE__, __LINE__);
