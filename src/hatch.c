@@ -1160,9 +1160,9 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
                 iter->next = new;
                 spline->number_of_control_points++;
                 /* clean up. */
-                dxf_hatch_boundary_path_edge_spline_cp_free (control_point);
+                dxf_hatch_boundary_path_edge_spline_control_point_free (control_point);
                 control_point = NULL;
-                dxf_hatch_boundary_path_edge_spline_cp_free (iter);
+                dxf_hatch_boundary_path_edge_spline_control_point_free (iter);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_append_control_point () function.\n",
@@ -1333,7 +1333,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
         }
         spline->number_of_control_points++;
         /* clean up. */
-        dxf_hatch_boundary_path_edge_spline_cp_free (control_point);
+        dxf_hatch_boundary_path_edge_spline_control_point_free (control_point);
         control_point = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_prepend_control_point () function.\n",
@@ -1451,7 +1451,7 @@ dxf_hatch_boundary_path_edge_spline_get_control_point
                  * to control_point and return the pointer value. */
                 control_point =  (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
                 /* clean up. */
-                dxf_hatch_boundary_path_edge_spline_cp_free (iter);
+                dxf_hatch_boundary_path_edge_spline_control_point_free (iter);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_get_control_point () function.\n",
@@ -1592,8 +1592,8 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
                 /*! \todo warning: assignment from incompatible pointer type. */
                 iter->next = new;
                 /* clean up. */
-                dxf_hatch_boundary_path_edge_spline_cp_free (iter);
-                dxf_hatch_boundary_path_edge_spline_cp_free (control_point);
+                dxf_hatch_boundary_path_edge_spline_control_point_free (iter);
+                dxf_hatch_boundary_path_edge_spline_control_point_free (control_point);
                 control_point = NULL;
         }
 #if DEBUG
@@ -1818,9 +1818,9 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                         temp =  new;
                 }
                 /* clean up. */
-                dxf_hatch_boundary_path_edge_spline_cp_free (control_point);
+                dxf_hatch_boundary_path_edge_spline_control_point_free (control_point);
                 control_point = NULL;
-                dxf_hatch_boundary_path_edge_spline_cp_free (iter);
+                dxf_hatch_boundary_path_edge_spline_control_point_free (iter);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_insert_control_point () function.\n",
@@ -1963,7 +1963,7 @@ dxf_hatch_boundary_path_edge_spline_remove_control_point
                  * "upward chain" is in "iter"). */
                 iter = (DxfHatchBoundaryPathEdgeSplineCp *) temp->next;
                 /* clean up. */
-                dxf_hatch_boundary_path_edge_spline_cp_free (iter);
+                dxf_hatch_boundary_path_edge_spline_control_point_free (iter);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_remove_control_point () function.\n",
@@ -3274,7 +3274,7 @@ dxf_hatch_boundary_path_edge_spline_free
  * occurred.
  */
 int
-dxf_hatch_boundary_path_edge_spline_cp_free
+dxf_hatch_boundary_path_edge_spline_control_point_free
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
@@ -3282,18 +3282,18 @@ dxf_hatch_boundary_path_edge_spline_cp_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_cp_free () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_control_point_free () function.\n",
                 __FILE__, __LINE__);
 #endif
         if (control_point->next != NULL)
         {
-                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_cp_free () pointer to next DxfHatchBoundaryPathEdgeSplineCp was not NULL.\n");
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_control_point_free () pointer to next DxfHatchBoundaryPathEdgeSplineCp was not NULL.\n");
                 return (EXIT_FAILURE);
         }
         free (control_point);
         control_point = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_cp_free () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_control_point_free () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);

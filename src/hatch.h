@@ -822,7 +822,7 @@ dxf_hatch_boundary_path_edge_spline_free
         DxfHatchBoundaryPathEdgeSpline *spline
 );
 int
-dxf_hatch_boundary_path_edge_spline_cp_free
+dxf_hatch_boundary_path_edge_spline_control_point_free
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point
 );
