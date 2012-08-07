@@ -2727,7 +2727,7 @@ dxf_hatch_boundary_path_polyline_write_lowlevel
 \brief Write DXF output to a file for a hatch pattern definition line dash items.
 */
 int
-dxf_hatch_write_pattern_def_line_dashes_lowlevel
+dxf_hatch_pattern_def_line_dashes_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -2754,7 +2754,7 @@ dxf_hatch_write_pattern_def_line_dashes_lowlevel
         }
         else
         {
-                fprintf (stderr, "Warning: no definition line dash items found in dxf_hatch_write_pattern_def_line_dashes_lowlevel () function.\n");
+                fprintf (stderr, "Warning: no definition line dash items found in dxf_hatch_pattern_def_line_dashes_write_lowlevel () function.\n");
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_hatch_pattern_def_line_dashes_lowlevel () function.\n", __FILE__, __LINE__);
@@ -2820,7 +2820,7 @@ dxf_hatch_write_pattern_data_lowlevel
                         {
                                 for (j = 0; j < *def_line_dash_items; j++)
                                 {
-                                        dxf_hatch_write_pattern_def_line_dashes_lowlevel
+                                        dxf_hatch_pattern_def_line_dashes_write_lowlevel
                                         (
                                                 fp,
                                                 *def_line_dash_items,

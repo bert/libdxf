@@ -749,6 +749,13 @@ dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
         double bulge
 );
 int
+dxf_hatch_pattern_def_line_dashes_write_lowlevel
+(
+        FILE *fp,
+        int dash_items,
+        double *dash_length
+);
+int
 dxf_hatch_write_pattern_data_lowlevel
 (
         FILE *fp,
