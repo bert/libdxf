@@ -2624,6 +2624,32 @@ dxf_hatch_boundaries_write_lowlevel
 \brief Write DXF output to a file for a hatch boundary polyline vertex.
 */
 int
+dxf_hatch_boundary_path_polyline_vertex_write
+(
+        FILE *fp,
+                /*!< file pointer to output file (or device). */
+        DxfHatchBoundaryPathPolylineVertex *vertex
+                /*!< DXF hatch boundary path polyline vertex entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_polyline_vertex_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        fprintf (fp, " 10\n%f\n", vertex->x0);
+        fprintf (fp, " 20\n%f\n", vertex->y0);
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_polyline_vertex_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+\brief Write DXF output to a file for a hatch boundary polyline vertex.
+*/
+int
 dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
 (
         FILE *fp,
