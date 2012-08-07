@@ -1135,9 +1135,7 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
                  * containing a NULL ponter in it's "next" member is
                  * found. */
                 DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
-                DxfHatchBoundaryPathEdgeSplineCp *next = NULL;
                 iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
-                next = dxf_hatch_boundary_path_edge_spline_cp_new ();
                 iter = (DxfHatchBoundaryPathEdgeSplineCp *) spline->control_points;
                 for (;;)
                 {
@@ -1165,7 +1163,6 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
                 dxf_hatch_boundary_path_edge_spline_cp_free (control_point);
                 control_point = NULL;
                 dxf_hatch_boundary_path_edge_spline_cp_free (iter);
-                dxf_hatch_boundary_path_edge_spline_cp_free (next);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_append_control_point () function.\n",
