@@ -741,7 +741,7 @@ dxf_hatch_boundary_path_polyline_write_lowlevel
         double *y0,
         double *bulge );
 int
-dxf_hatch_write_boundary_path_polyline_vertex_lowlevel
+dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
 (
         FILE *fp,
         double x0,
