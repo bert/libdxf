@@ -2680,6 +2680,60 @@ dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
 \brief Write DXF output to a file for a hatch boundary path polyline.
 */
 int
+dxf_hatch_boundary_path_polyline_write
+(
+        FILE *fp,
+                /*!< file pointer to output file (or device). */
+        DxfHatchBoundaryPathPolyline *polyline
+                /*!< DXF hatch boundary path polyline entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_polyline_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfHatchBoundaryPathPolylineVertex *iter;
+
+        fprintf (fp, " 72\n%d\n", polyline->has_bulge);
+        fprintf (fp, " 73\n%d\n", polyline->is_closed);
+        fprintf (fp, " 93\n%d\n", polyline->number_of_vertices);
+        if (polyline->bulge != 0.0) fprintf (fp, " 42\n%f\n", polyline->bulge);
+        /* draw hatch boundary vertices. */
+        iter = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+        for (;;)
+        {
+                dxf_hatch_boundary_path_polyline_vertex_write
+                (
+                        fp,
+                        iter
+                );
+                iter = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+                if (iter == NULL)
+                {
+                        break;
+                }
+        }
+        /* test for closed polyline: close with first vertex. */
+        if (polyline->is_closed)
+        {
+                dxf_hatch_boundary_path_polyline_vertex_write
+                (
+                        fp,
+                        (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices
+                );
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_polyline_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+\brief Write DXF output to a file for a hatch boundary path polyline.
+*/
+int
 dxf_hatch_boundary_path_polyline_write_lowlevel
 (
         FILE *fp,

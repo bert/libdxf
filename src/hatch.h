@@ -731,6 +731,12 @@ dxf_hatch_boundaries_write_lowlevel
         char *hatch_boundary_objects_ref
 );
 int
+dxf_hatch_boundary_path_polyline_write
+(
+        FILE *fp,
+        DxfHatchBoundaryPathPolyline *polyline
+);
+int
 dxf_hatch_boundary_path_polyline_write_lowlevel
 (
         FILE *fp,
