@@ -2595,7 +2595,7 @@ dxf_hatch_write_boundaries_lowlevel
                 else if (hatch_boundary_path_type_flag == 2)
                 {
                         /* a polyline boundary */
-                        dxf_hatch_write_boundary_path_polyline_lowlevel
+                        dxf_hatch_boundary_path_polyline_write_lowlevel
                         (
                                 fp,
                                 hatch_boundary_path_polyline_has_bulge,
@@ -2659,7 +2659,7 @@ dxf_hatch_write_boundary_path_polyline_vertex_lowlevel
 \brief Write DXF output to a file for a hatch boundary path polyline.
 */
 int
-dxf_hatch_write_boundary_path_polyline_lowlevel
+dxf_hatch_boundary_path_polyline_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
@@ -2684,7 +2684,7 @@ dxf_hatch_write_boundary_path_polyline_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write_boundary_path_polyline_lowlevel () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_polyline_write_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         int i;
@@ -2716,7 +2716,7 @@ dxf_hatch_write_boundary_path_polyline_lowlevel
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write_boundary_path_polyline_lowlevel () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_polyline_write_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);

@@ -731,7 +731,7 @@ dxf_hatch_write_boundaries_lowlevel
         char *hatch_boundary_objects_ref
 );
 int
-dxf_hatch_write_boundary_path_polyline_lowlevel
+dxf_hatch_boundary_path_polyline_write_lowlevel
 (
         FILE *fp,
         int has_bulge,
