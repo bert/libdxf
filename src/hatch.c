@@ -2052,12 +2052,88 @@ dxf_hatch_boundary_path_edge_spline_remove_knot_value
  * \brief Copy control points from a \c HATCH boundary path edge spline
  * entity into a new chain of control points.
  *
- * After testing for \c NULL pointers, a new chain of control points
- * (destination) is setup by copying the member values from the control
- * points from the spline (source).
+ * After testing for \c NULL pointers and size of the allocated memory,
+ * a new chain of control points (destination) is setup by copying the
+ * member values from the control points from the spline (source).\n
  * For each control point in the destination chain new memory is
- * allocated.
- *
+ * allocated.\n
+ * \n
+ * <h3>Example:</h3>
+ * Start situation: a spline with 4 control points, and the control
+ * point \c control_points.\n
+ * \n
+
+\dot
+digraph dxf_hatch_boundary_path_edge_spline_copy_control_points__spline_start
+{
+  nodesep=.05;
+  size = "7.5,7.5";
+  rankdir=LR;
+  node [shape=record,width=.05,height=.05];
+  spline [shape=record,label="<fo>spline\n|{id_code}|{degree}|{rational}|{periodic}|{number_of_knots}|{knots\[\]}|{number_of_control_points}|{<f1>control_points}"];
+  cp1 [shape=record, label="<f0>cp1|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  cp2 [shape=record,label="<f0>cp2|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  cp3 [shape=record,label="<f0>cp3|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  cp4 [shape=record,label="<f0>cp4|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  spline:f1 -> cp1:f0 [arrowhead="open",style="dashed",color="purple"];
+  cp1:f1 -> cp2:f0 [arrowhead="open",style="dashed",color="purple"];
+  cp2:f1 -> cp3:f0 [arrowhead="open",style="dashed",color="purple"];
+  cp3:f1 -> cp4:f0 [arrowhead="open",style="dashed",color="purple"];
+}
+\enddot
+
+\dot
+digraph dxf_hatch_boundary_path_edge_spline_copy_control_points__control_points_start
+{
+  nodesep=.05;
+  size = "7.5,7.5";
+  rankdir=LR;
+  node [shape=record,width=.05,height=.05];
+  control_points [shape=record,label="<f0>control_points|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+}
+\enddot
+
+ * \n
+ * Finished situation: the unchanged \c spline with 4 control points,
+ * and a chain of control points starting at \c control_points.\n
+ * \n
+
+\dot
+digraph dxf_hatch_boundary_path_edge_spline_copy_control_points__spline_finish
+{
+  nodesep=.05;
+  size = "7.5,7.5";
+  rankdir=LR;
+  node [shape=record,width=.05,height=.05];
+  spline [shape=record,label="<fo>spline\n|{id_code}|{degree}|{rational}|{periodic}|{number_of_knots}|{knots\[\]}|{number_of_control_points}|{<f1>control_points}"];
+  cp1 [shape=record, label="<f0>cp1|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  cp2 [shape=record,label="<f0>cp2|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  cp3 [shape=record,label="<f0>cp3|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  cp4 [shape=record,label="<f0>cp4|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  spline:f1 -> cp1:f0 [arrowhead="open",style="dashed",color="purple"];
+  cp1:f1 -> cp2:f0 [arrowhead="open",style="dashed",color="purple"];
+  cp2:f1 -> cp3:f0 [arrowhead="open",style="dashed",color="purple"];
+  cp3:f1 -> cp4:f0 [arrowhead="open",style="dashed",color="purple"];
+}
+\enddot
+
+\dot
+digraph dxf_hatch_boundary_path_edge_spline_copy_control_points__controlpoints_finish
+{
+  nodesep=.05;
+  size = "7.5,7.5";
+  rankdir=LR;
+  node [shape=record,width=.05,height=.05];
+  control_points [shape=record,label="<f0>control_points=new_cp1|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  new_cp2 [shape=record,label="<f0>new_cp2|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  new_cp3 [shape=record,label="<f0>new_cp3|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  new_cp4 [shape=record,label="<f0>new_cp4|{id_code}|{x0}|{y0}|{weight}|{<f1>next}"];
+  control_points:f1 -> new_cp2:f0 [arrowhead="open",style="dashed",color="purple"];
+  new_cp2:f1 -> new_cp3:f0 [arrowhead="open",style="dashed",color="purple"];
+  new_cp3:f1 -> new_cp4:f0 [arrowhead="open",style="dashed",color="purple"];
+}
+\enddot
+
  * \return a pointer to the first of the requested control points.
  */
 DxfHatchBoundaryPathEdgeSplineCp *
