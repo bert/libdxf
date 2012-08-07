@@ -687,7 +687,7 @@ dxf_hatch_write_lowlevel
         double *seed_y0
 );
 int
-dxf_hatch_write_boundaries_lowlevel
+dxf_hatch_boundaries_write_lowlevel
 (
         FILE *fp,
         int hatch_boundary_paths,

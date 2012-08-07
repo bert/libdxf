@@ -2434,7 +2434,7 @@ dxf_hatch_write_lowlevel
 Requires AutoCAD version R14 or higher.
 */
 int
-dxf_hatch_write_boundaries_lowlevel
+dxf_hatch_boundaries_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
