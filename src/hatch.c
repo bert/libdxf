@@ -2555,12 +2555,12 @@ dxf_hatch_boundaries_write_lowlevel
                 int hatch_boundary_path_polyline_vertices,
                         /*!< group code = 93\n
                          * number of polyline vertices to follow. */
+                double hatch_boundary_path_polyline_bulge,
+                        /*!< group code = 42. */
                         double *hatch_boundary_path_polyline_x0,
                                 /*!< group code = 10. */
                         double *hatch_boundary_path_polyline_y0,
                                 /*!< group code = 20. */
-                        double *hatch_boundary_path_polyline_bulge,
-                                /*!< group code = 42. */
         int hatch_boundary_objects,
                 /*!< group code = 97\n
                  * number of source boundary objects. */
@@ -2657,13 +2657,9 @@ dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
         double x0,
                 /*!< group code = 10\n
                  * X-value of vertex point. */
-        double y0,
+        double y0
                 /*!< group code = 20\n
                  * Y-value of vertex point. */
-        double bulge
-                /*!< group code 42\n
-                 * bulge of polyline vertex\n
-                 * optional, defaults to 0.0. */
 )
 {
 #if DEBUG
@@ -2672,7 +2668,6 @@ dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
 #endif
         fprintf (fp, " 10\n%f\n", x0);
         fprintf (fp, " 20\n%f\n", y0);
-        if (bulge != 0.0) fprintf (fp, " 42\n%f\n", bulge);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_polyline_vertex_write_lowlevel () function.\n",
                 __FILE__, __LINE__);
@@ -2704,7 +2699,7 @@ dxf_hatch_boundary_path_polyline_write_lowlevel
         double *y0,
                 /*!< group code = 20\n
                  * pointer to array of [vertices] Y-values. */
-        double *bulge
+        double bulge
                 /*!< group code = 42\n
                  * pointer to array of [vertices] bulge values. */
 )
@@ -2717,27 +2712,24 @@ dxf_hatch_boundary_path_polyline_write_lowlevel
         fprintf (fp, " 72\n%d\n", has_bulge);
         fprintf (fp, " 73\n%d\n", is_closed);
         fprintf (fp, " 93\n%d\n", vertices);
+        if (bulge != 0.0) fprintf (fp, " 42\n%f\n", bulge);
         /* draw hatch boundary, write (n_coords) XY-coordinate pairs */
         for (i = 0; i < vertices; i++)
         {
-                if (!has_bulge) bulge[i] = 0.0;
                 dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
                 (
                         fp,
                         x0[i],
-                        y0[i],
-                        bulge[i]
+                        y0[i]
                 );
                 /* close polyline with first coordinate XY-pair */
                 if (is_closed)
                 {
-                        if (!has_bulge) bulge[0] = 0.0;
                         dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
                         (
                                 fp,
                                 x0[0],
-                                y0[0],
-                                bulge[0]
+                                y0[0]
                         );
                 }
         }

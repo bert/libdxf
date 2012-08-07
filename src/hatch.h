@@ -724,9 +724,9 @@ dxf_hatch_boundaries_write_lowlevel
         int hatch_boundary_path_polyline_has_bulge,
         int hatch_boundary_path_polyline_is_closed,
         int hatch_boundary_path_polyline_vertices,
-        double *hatch_boundary_path_polyline_x0,
-        double *hatch_boundary_path_polyline_y0,
-        double *hatch_boundary_path_polyline_bulge,
+        double hatch_boundary_path_polyline_bulge,
+                double *hatch_boundary_path_polyline_x0,
+                double *hatch_boundary_path_polyline_y0,
         int hatch_boundary_objects,
         char *hatch_boundary_objects_ref
 );
@@ -739,7 +739,7 @@ dxf_hatch_boundary_path_polyline_write_lowlevel
         int vertices,
         double *x0,
         double *y0,
-        double *bulge );
+        double bulge );
 int
 dxf_hatch_boundary_path_polyline_vertex_write
 (
@@ -751,8 +751,7 @@ dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
 (
         FILE *fp,
         double x0,
-        double y0,
-        double bulge
+        double y0
 );
 int
 dxf_hatch_pattern_def_line_dashes_write_lowlevel
