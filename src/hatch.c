@@ -2677,8 +2677,11 @@ dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
 
 
 /*!
-\brief Write DXF output to a file for a hatch boundary path polyline.
-*/
+ * \brief Write DXF output to a file for a hatch boundary path polyline.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
 int
 dxf_hatch_boundary_path_polyline_write
 (
@@ -2694,11 +2697,22 @@ dxf_hatch_boundary_path_polyline_write
 #endif
         DxfHatchBoundaryPathPolylineVertex *iter;
 
+        if (fp == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_polyline_write () received an invalid file pointer (NULL).\n");
+                return (EXIT_FAILURE);
+        }
+        if (polyline == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_polyline_write () received an invalid pointer to a polyline (NULL).\n");
+                return (EXIT_FAILURE);
+        }
         fprintf (fp, " 72\n%d\n", polyline->has_bulge);
         fprintf (fp, " 73\n%d\n", polyline->is_closed);
         fprintf (fp, " 93\n%d\n", polyline->number_of_vertices);
         if (polyline->bulge != 0.0) fprintf (fp, " 42\n%f\n", polyline->bulge);
         /* draw hatch boundary vertices. */
+        iter = dxf_hatch_boundary_path_polyline_new ();
         iter = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
         for (;;)
         {
