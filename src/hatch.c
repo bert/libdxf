@@ -467,10 +467,10 @@ dxf_hatch_boundary_path_edge_spline_new ()
  * Fill the memory contents with zeros.
  */
 DxfHatchBoundaryPathEdgeSplineCp *
-dxf_hatch_boundary_path_edge_spline_cp_new ()
+dxf_hatch_boundary_path_edge_spline_control_point_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_cp_new () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_control_point_new () function.\n",
                 __FILE__, __LINE__);
 #endif
         DxfHatchBoundaryPathEdgeSplineCp *control_point = NULL;
@@ -481,7 +481,7 @@ dxf_hatch_boundary_path_edge_spline_cp_new ()
         if (size == 0) size = 1;
         if ((control_point = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_cp_new () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n");
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_control_point_new () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n");
                 control_point = NULL;
         }
         else
@@ -489,7 +489,7 @@ dxf_hatch_boundary_path_edge_spline_cp_new ()
                 memset (control_point, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_cp_new () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_control_point_new () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (control_point);
@@ -1012,7 +1012,7 @@ dxf_hatch_boundary_path_edge_spline_cp_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_cp_init () function.\n",
                 __FILE__, __LINE__);
 #endif
-        control_point = dxf_hatch_boundary_path_edge_spline_cp_new ();
+        control_point = dxf_hatch_boundary_path_edge_spline_control_point_new ();
         if (control_point == NULL)
         {
                 fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_cp_init () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n");
@@ -1135,7 +1135,7 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
                  * containing a NULL ponter in it's "next" member is
                  * found. */
                 DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
-                iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                iter = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                 iter = (DxfHatchBoundaryPathEdgeSplineCp *) spline->control_points;
                 for (;;)
                 {
@@ -1150,7 +1150,7 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
                  * control point that has to be appended in the "next"
                  * member. */
                 DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
-                new = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                new = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                 new->id_code = control_point->id_code;
                 new->x0 = control_point->x0;
                 new->y0 = control_point->y0;
@@ -1310,7 +1310,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
                 /* no control points yet, so prepend the first control
                  * point. */
                 DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
-                new = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                new = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                 new->id_code = control_point->id_code;
                 new->x0 = control_point->x0;
                 new->y0 = control_point->y0;
@@ -1322,7 +1322,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
         else
         {
                 DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
-                new = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                new = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                 new->id_code = control_point->id_code;
                 new->x0 = control_point->x0;
                 new->y0 = control_point->y0;
@@ -1439,8 +1439,8 @@ dxf_hatch_boundary_path_edge_spline_get_control_point
                  * until the pointer to the requested control point is
                  * reached. */
                 DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
-                control_point = dxf_hatch_boundary_path_edge_spline_cp_new ();
-                iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                control_point = dxf_hatch_boundary_path_edge_spline_control_point_new ();
+                iter = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                 iter = (DxfHatchBoundaryPathEdgeSplineCp *) spline->control_points;
                 for (i = 1; i <= position; i++)
                 {
@@ -1558,7 +1558,7 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
                 /* no control points yet, so set at the first control
                  * point pointer. */
                 DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
-                new = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                new = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                 new->id_code = control_point->id_code;
                 new->x0 = control_point->x0;
                 new->y0 = control_point->y0;
@@ -1573,7 +1573,7 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
                  * until the pointer to the requested control point is
                  * reached. */
                 DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
-                iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                iter = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                 iter = (DxfHatchBoundaryPathEdgeSplineCp *) spline->control_points;
                 for (i = 1; i <= position; i++)
                 {
@@ -1583,7 +1583,7 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
                  * requested control point, now we can write the pointer
                  * to control_point and return the pointer value. */
                 DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
-                new = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                new = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                 new->id_code = control_point->id_code;
                 new->x0 = control_point->x0;
                 new->y0 = control_point->y0;
@@ -1758,7 +1758,7 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                 /* no control points yet, so insert a copy of "cp" at
                  * the first control point pointer. */
                 DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
-                new = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                new = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                 new->id_code = control_point->id_code;
                 new->x0 = control_point->x0;
                 new->y0 = control_point->y0;
@@ -1771,8 +1771,8 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
         {
                 DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
                 DxfHatchBoundaryPathEdgeSplineCp *temp = NULL;
-                iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
-                temp = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                iter = dxf_hatch_boundary_path_edge_spline_control_point_new ();
+                temp = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                 /* iterate through existing pointers to control points
                  * until the pointer to the requested control point is
                  * reached. */
@@ -1793,7 +1793,7 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                         /* "iter" points to the last control point, just
                          * append a copy of "cp". */
                         DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
-                        new = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                        new = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                         new->id_code = control_point->id_code;
                         new->x0 = control_point->x0;
                         new->y0 = control_point->y0;
@@ -1805,7 +1805,7 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                 else
                 {
                         DxfHatchBoundaryPathEdgeSplineCp *new = NULL;
-                        new = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                        new = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                         new->id_code = control_point->id_code;
                         new->x0 = control_point->x0;
                         new->y0 = control_point->y0;
@@ -1939,8 +1939,8 @@ dxf_hatch_boundary_path_edge_spline_remove_control_point
         {
                 DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
                 DxfHatchBoundaryPathEdgeSplineCp *temp = NULL;
-                iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
-                temp = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                iter = dxf_hatch_boundary_path_edge_spline_control_point_new ();
+                temp = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                 /* iterate through existing pointers to control points
                  * until the pointer to the requested control point is
                  * reached. */
@@ -2144,7 +2144,7 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
         {
                 fprintf (stderr, "WARNING in dxf_hatch_boundary_path_edge_spline_copy_control_points () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline_cp.\n");
                 fprintf (stderr, "\tAllocating memory.\n");
-                control_points = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                control_points = dxf_hatch_boundary_path_edge_spline_control_point_new ();
         }
         if (sizeof (spline) < sizeof (DxfHatchBoundaryPathEdgeSpline))
         {
@@ -2165,9 +2165,9 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
                  * found. */
                 DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
                 DxfHatchBoundaryPathEdgeSplineCp *iter_new = NULL;
-                iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                iter = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                 iter = (DxfHatchBoundaryPathEdgeSplineCp *) spline->control_points;
-                iter_new = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                iter_new = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                 control_points = iter_new;
                 for (;;)
                 {
@@ -2187,7 +2187,7 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
                         {
                                 /* create a new contol point in the chain. */
                                 /*! \todo warning: assignment from incompatible pointer type. */
-                                iter_new->next = dxf_hatch_boundary_path_edge_spline_cp_new ();
+                                iter_new->next = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                         }
                         /* set both iterators to the next control point
                          * in their chain. */
