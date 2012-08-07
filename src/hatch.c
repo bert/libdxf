@@ -1002,20 +1002,20 @@ dxf_hatch_boundary_path_edge_spline_init
  * allocated memory when succesful.
  */
 DxfHatchBoundaryPathEdgeSplineCp *
-dxf_hatch_boundary_path_edge_spline_cp_init
+dxf_hatch_boundary_path_edge_spline_control_point_init
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point
                 /*!< DXF hatch boundary path edge spline control point entity. */
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_cp_init () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_control_point_init () function.\n",
                 __FILE__, __LINE__);
 #endif
         control_point = dxf_hatch_boundary_path_edge_spline_control_point_new ();
         if (control_point == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_cp_init () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n");
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_edge_spline_control_point_init () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n");
                 return (NULL);
         }
         control_point->id_code = 0;
@@ -1024,7 +1024,7 @@ dxf_hatch_boundary_path_edge_spline_cp_init
         control_point->weight = 0.0;
         control_point->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_cp_init () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_control_point_init () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (control_point);
