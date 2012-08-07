@@ -2767,7 +2767,7 @@ dxf_hatch_boundary_path_polyline_write_lowlevel
         fprintf (fp, " 73\n%d\n", is_closed);
         fprintf (fp, " 93\n%d\n", vertices);
         if (bulge != 0.0) fprintf (fp, " 42\n%f\n", bulge);
-        /* draw hatch boundary, write (n_coords) XY-coordinate pairs */
+        /* draw hatch boundary vertices. */
         for (i = 0; i < vertices; i++)
         {
                 dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
@@ -2776,16 +2776,16 @@ dxf_hatch_boundary_path_polyline_write_lowlevel
                         x0[i],
                         y0[i]
                 );
-                /* close polyline with first coordinate XY-pair */
-                if (is_closed)
-                {
-                        dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
-                        (
-                                fp,
-                                x0[0],
-                                y0[0]
-                        );
-                }
+        }
+        /* test for closed polyline: close with first vertex. */
+        if (is_closed)
+        {
+                dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
+                (
+                        fp,
+                        x0[0],
+                        y0[0]
+                );
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_polyline_write_lowlevel () function.\n",
