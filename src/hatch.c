@@ -1779,10 +1779,8 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
         else
         {
                 DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
-                DxfHatchBoundaryPathEdgeSplineCp *next = NULL;
                 DxfHatchBoundaryPathEdgeSplineCp *temp = NULL;
                 iter = dxf_hatch_boundary_path_edge_spline_cp_new ();
-                next = dxf_hatch_boundary_path_edge_spline_cp_new ();
                 temp = dxf_hatch_boundary_path_edge_spline_cp_new ();
                 /* iterate through existing pointers to control points
                  * until the pointer to the requested control point is
@@ -1832,7 +1830,6 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                 dxf_hatch_boundary_path_edge_spline_cp_free (control_point);
                 control_point = NULL;
                 dxf_hatch_boundary_path_edge_spline_cp_free (iter);
-                dxf_hatch_boundary_path_edge_spline_cp_free (next);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_edge_spline_insert_control_point () function.\n",
