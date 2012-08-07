@@ -2764,36 +2764,37 @@ dxf_hatch_pattern_def_line_dashes_write_lowlevel
 
 
 /*!
-\brief Write DXF output to a file for a hatch pattern data.
-*/
+ * brief Write DXF output to a file for a DXF \C HATCH pattern definition
+ * lines.
+ */
 int
-dxf_hatch_write_pattern_data_lowlevel
+dxf_hatch_pattern_def_lines_write_lowlevel
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
         int def_lines,
                 /*!< group code = 78\n
                  * number of hatch pattern definition lines. */
-        double *def_line_angle,
+        double *angle,
                 /*!< group code = 53\n
                  * array of hatch pattern definition line angles. */
-        double *def_line_x0,
+        double *x0,
                 /*!< group code = 43\n
                  * array of hatch pattern line base point X-values. */
-        double *def_line_y0,
+        double *y0,
                 /*!< group code = 44\n
                  * array of hatch pattern line base point Y-values. */
-        double *def_line_x1,
+        double *x1,
                 /*!< group code = 45\n
                  * array of hatch pattern line offset point X-values. */
-        double *def_line_y1,
+        double *y1,
                 /*!< group code = 46\n
                  * array of hatch pattern line offset point Y-values. */
-        int *def_line_dash_items,
+        int *dash_items,
                 /*!< group code = 79\n
                  * array of number of hatch pattern definition line dash
                  * items. */
-        double **def_line_dash_length
+        double **dash_length
                 /*!< group code = 49\n
                  * array of dash lengths for an array of hatch pattern
                  * definition lines. */
@@ -2810,21 +2811,21 @@ dxf_hatch_write_pattern_data_lowlevel
                 /* draw hatch pattern definition lines */
                 for (i = 0; i < def_lines; i++)
                 {
-                        fprintf (fp, " 53\n%f\n", def_line_angle[i]);
-                        fprintf (fp, " 43\n%f\n", def_line_x0[i]);
-                        fprintf (fp, " 44\n%f\n", def_line_y0[i]);
-                        fprintf (fp, " 45\n%f\n", def_line_x1[i]);
-                        fprintf (fp, " 46\n%f\n", def_line_y1[i]);
-                        fprintf (fp, " 79\n%d\n", def_line_dash_items[i]);
-                        if (!def_line_dash_items)
+                        fprintf (fp, " 53\n%f\n", angle[i]);
+                        fprintf (fp, " 43\n%f\n", x0[i]);
+                        fprintf (fp, " 44\n%f\n", y0[i]);
+                        fprintf (fp, " 45\n%f\n", x1[i]);
+                        fprintf (fp, " 46\n%f\n", y1[i]);
+                        fprintf (fp, " 79\n%d\n", dash_items[i]);
+                        if (!dash_items)
                         {
-                                for (j = 0; j < *def_line_dash_items; j++)
+                                for (j = 0; j < *dash_items; j++)
                                 {
                                         dxf_hatch_pattern_def_line_dashes_write_lowlevel
                                         (
                                                 fp,
-                                                *def_line_dash_items,
-                                                *def_line_dash_length
+                                                *dash_items,
+                                                *dash_length
                                         );
                                 }
                         }

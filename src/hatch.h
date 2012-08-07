@@ -756,17 +756,17 @@ dxf_hatch_pattern_def_line_dashes_write_lowlevel
         double *dash_length
 );
 int
-dxf_hatch_write_pattern_data_lowlevel
+dxf_hatch_pattern_def_lines_write_lowlevel
 (
         FILE *fp,
         int def_lines,
-        double *def_line_angle,
-        double *def_line_x0,
-        double *def_line_y0,
-        double *def_line_x1,
-        double *def_line_y1,
-        int *def_line_dash_items,
-        double **def_line_dash_length
+        double *angle,
+        double *x0,
+        double *y0,
+        double *x1,
+        double *y1,
+        int *dash_items,
+        double **dash_length
 );
 int
 dxf_hatch_free
