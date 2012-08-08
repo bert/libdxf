@@ -2754,7 +2754,7 @@ dxf_hatch_boundary_path_polyline_write
         fprintf (fp, " 93\n%d\n", polyline->number_of_vertices);
         if (polyline->bulge != 0.0) fprintf (fp, " 42\n%f\n", polyline->bulge);
         /* draw hatch boundary vertices. */
-        iter = dxf_hatch_boundary_path_polyline_new ();
+        iter = dxf_hatch_boundary_path_polyline_vertex_new ();
         iter = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
         for (;;)
         {
