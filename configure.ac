@@ -15,6 +15,9 @@ AC_HEADER_STDC
 
 AM_PROG_LIBTOOL
 
+# Checks for libraries.
+AC_CHECK_LIB(m, atan2)
+
 AC_OUTPUT([
 Makefile
 src/Makefile

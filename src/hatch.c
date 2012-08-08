@@ -2621,6 +2621,48 @@ dxf_hatch_boundaries_write_lowlevel
 
 
 /*!
+ * \brief Return the angle between two vertices on a plane (2D).
+ *
+ * The angle is from \c vertex_0 to \c vertex_1, positive is
+ * counterclockwise (CCW).
+ *
+ * \return The angle value is in the range (\f$ -\pi .. \pi \f$) in
+ * radians.
+ */
+double
+dxf_hatch_boundary_path_polyline_vertex_angle
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex_0,
+                /*!< The first vertex (of the pair). */
+        DxfHatchBoundaryPathPolylineVertex *vertex_1
+                /*!< The second vertex (of the pair). */
+)
+{
+        double x0;
+        double y0;
+        double x1;
+        double y1;
+        double dtheta;
+        double theta0;
+        double theta1;
+
+        x0 = vertex_0->x0;
+        y0 = vertex_0->y0;
+        x1 = vertex_1->x0;
+        y1 = vertex_1->y0;
+        theta0 = atan2 (y0, x0);
+        theta1 = atan2 (y1, x1);
+        dtheta = theta1 - theta0;
+        while (dtheta > M_PI)
+                dtheta -= 2 * M_PI;
+        while (dtheta < -M_PI)
+        dtheta += 2 * M_PI;
+
+        return (dtheta);
+}
+
+
+/*!
 \brief Write DXF output to a file for a hatch boundary polyline vertex.
 */
 int

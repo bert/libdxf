@@ -40,6 +40,8 @@
 #define HATCH_H
 
 
+#include <math.h>
+
 #include "global.h"
 #include "entity.h"
 
@@ -808,6 +810,12 @@ int
 dxf_hatch_boundary_path_polyline_free
 (
         DxfHatchBoundaryPathPolyline *polyline
+);
+double
+dxf_hatch_boundary_path_polyline_vertex_angle
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex_0,
+        DxfHatchBoundaryPathPolylineVertex *vertex_1
 );
 int
 dxf_hatch_boundary_path_polyline_vertex_free
