@@ -44,6 +44,7 @@
 
 #include "global.h"
 #include "entity.h"
+#include "point.h"
 
 
 #define DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS 16
@@ -731,6 +732,13 @@ dxf_hatch_boundaries_write_lowlevel
                 double *hatch_boundary_path_polyline_y0,
         int hatch_boundary_objects,
         char *hatch_boundary_objects_ref
+);
+int
+dxf_hatch_boundary_path_polyline_point_inside_polyline
+(
+        DxfHatchBoundaryPathPolyline *polyline,
+        DxfPoint *point,
+        int *result
 );
 int
 dxf_hatch_boundary_path_polyline_write

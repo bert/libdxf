@@ -2719,6 +2719,111 @@ dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
 
 
 /*!
+ * \brief Compute if the coordinates of a point \c p lie inside or
+ * outside a DXF hatch boundary path polyline \c polyline entity.
+ *
+ * \author Paul Bourke <http://www.paulbourke.net/geometry/insidepoly/>\n
+ * Adapted for libDXF by Bert Timmerman <bert.timmerman@xs4all.nl>
+ *
+ * A solution by Philippe Reverdy is to compute the sum of the angles
+ * made between the test point and each pair of points making up the
+ * polygon.\n
+ * If this sum is (\f$ 2 * \pi \f$) then the point is an interior point,
+ * if 0 then the point is an exterior point.\n
+ * This also works for polygons with holes given the polygon is defined
+ * with a path made up of coincident edges into and out of the hole as
+ * is common practice in many CAD packages.\n
+ *
+ * \note For most of the "point-in-polygon" algorithms there is a
+ * pathological case if the point being queries lies exactly on a
+ * vertex.\n
+ * The easiest way to cope with this is to test that as a separate
+ * process and make your own decision as to whether you want to consider
+ * them inside or outside.
+ *
+ * \note It is assumed that the polygon is simple (does not intersect
+ * itself).
+ *
+ * \return \c result is \c TRUE if an interior point, and \c FALSE if an
+ * exterior point.
+ */
+int
+dxf_hatch_boundary_path_polyline_point_inside_polyline
+(
+        DxfHatchBoundaryPathPolyline *polyline,
+                /*!< DXF hatch boundary path polyline entity. */
+        DxfPoint *point,
+                /*!< The point to be tested for. */
+        int *result
+                /*!< Result of the test. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_polyline_point_inside_polyline () function.\n",
+                __FILE__, __LINE__);
+#endif
+        if (polyline == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_polyline_point_inside_polyline () invalid pointer to polyline (NULL).\n");
+                return (EXIT_FAILURE);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_polyline_point_inside_polyline () invalid pointer to point (NULL).\n");
+                return (EXIT_FAILURE);
+        }
+        if (polyline->is_closed != 1)
+        {
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_polyline_point_inside_polyline () polyline is not a closed polygon.\n");
+                return (EXIT_FAILURE);
+        }
+
+        DxfHatchBoundaryPathPolylineVertex *p0;
+        DxfHatchBoundaryPathPolylineVertex *p1;
+        DxfHatchBoundaryPathPolylineVertex *iter;
+        DxfHatchBoundaryPathPolylineVertex *next;
+        double angle;
+        p0 = dxf_hatch_boundary_path_polyline_vertex_new ();
+        p1 = dxf_hatch_boundary_path_polyline_vertex_new ();
+        iter = dxf_hatch_boundary_path_polyline_vertex_new ();
+        next = dxf_hatch_boundary_path_polyline_vertex_new ();
+        iter = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+        next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+        angle = 0;
+        for (;;)
+        {
+                if (next == NULL)
+                {
+                        /* iter is the last vertex, no use to continue. */
+                        break;
+                }
+                next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+                p0->x0 = iter->x0 - point->x0;
+                p0->y0 = iter->y0 - point->y0;
+                p1->x0 = next->x0 - point->x0;
+                p1->y0 = next->y0 - point->y0;
+                angle += dxf_hatch_boundary_path_polyline_vertex_angle (iter, next);
+                iter = next;
+        }
+
+        /* clean up. */
+        dxf_hatch_boundary_path_polyline_vertex_free (p0);
+        dxf_hatch_boundary_path_polyline_vertex_free (p1);
+
+        if (abs (angle) < M_PI)
+                result = FALSE;
+        else
+                /*! \todo warning: assignment makes pointer from integer without a cast. */
+                result = TRUE;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_polyline_point_inside_polyline () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a hatch boundary path polyline.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
