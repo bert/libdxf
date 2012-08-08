@@ -2638,6 +2638,10 @@ dxf_hatch_boundary_path_polyline_vertex_angle
                 /*!< The second vertex (of the pair). */
 )
 {
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_polyline_vertex_angle () function.\n",
+                __FILE__, __LINE__);
+#endif
         double x0;
         double y0;
         double x1;
@@ -2657,7 +2661,10 @@ dxf_hatch_boundary_path_polyline_vertex_angle
                 dtheta -= 2 * M_PI;
         while (dtheta < -M_PI)
         dtheta += 2 * M_PI;
-
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_polyline_vertex_angle () function.\n",
+                __FILE__, __LINE__);
+#endif
         return (dtheta);
 }
 
