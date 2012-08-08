@@ -2626,7 +2626,7 @@ dxf_hatch_boundaries_write_lowlevel
  * The angle is from \c vertex_0 to \c vertex_1, positive is
  * counterclockwise (CCW).
  *
- * \return The angle value is in the range (\f$ -\pi .. \pi \f$) in
+ * \return The angle value is in the range (\f$ -\pi \cdots \pi \f$) in
  * radians.
  */
 double
@@ -2728,7 +2728,7 @@ dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
  * A solution by Philippe Reverdy is to compute the sum of the angles
  * made between the test point and each pair of points making up the
  * polygon.\n
- * If this sum is (\f$ 2 * \pi \f$) then the point is an interior point,
+ * If this sum is (\f$ 2\pi \f$) then the point is an interior point,
  * if 0 then the point is an exterior point.\n
  * This also works for polygons with holes given the polygon is defined
  * with a path made up of coincident edges into and out of the hole as
