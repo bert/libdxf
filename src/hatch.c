@@ -2726,6 +2726,113 @@ dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
 
 
 /*!
+ * \brief Test if a hatch boundary polyline is closed and add the missing
+ * vertex.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_polyline_close_polyline
+(
+        DxfHatchBoundaryPathPolyline *polyline
+                /*!< DXF hatch boundary path polyline entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_polyline_close_polyline () function.\n",
+                __FILE__, __LINE__);
+#endif
+        if (polyline == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_hatch_boundary_path_polyline_close_polyline () invalid pointer to polyline (NULL).\n");
+                return (EXIT_FAILURE);
+        }
+        if (polyline->is_closed == 0)
+        {
+                /* iterate over all vertices until the last vertex,
+                 * append a new vertex with values of the first vertex,
+                 * and set the "is_closed" member to 1. */
+                DxfHatchBoundaryPathPolylineVertex *first;
+                DxfHatchBoundaryPathPolylineVertex *iter;
+                DxfHatchBoundaryPathPolylineVertex *next;
+                first = dxf_hatch_boundary_path_polyline_vertex_new ();
+                iter = dxf_hatch_boundary_path_polyline_vertex_new ();
+                next = dxf_hatch_boundary_path_polyline_vertex_new ();
+                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+                iter = first;
+                for (;;)
+                {
+                        if (iter->next == NULL)
+                        {
+                                next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+                                break;
+                        }
+                        iter = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+                }
+                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+                 /*! \todo How do we know what's the last id_code ?
+                  * This should be taken from a global id_code counter. */
+                next->id_code = iter->id_code + 1;
+                next->x0 = first->x0;
+                next->y0 = first->y0;
+                next->next = NULL;
+                /*! \todo warning: assignment from incompatible pointer type. */
+                iter->next = (DxfHatchBoundaryPathPolylineVertex *) next;
+                polyline->is_closed = 1;
+        }
+        else
+        {
+                /* iterate over all vertices until the last vertex,
+                 * test if the values of the last are identical with the
+                 * first vertex, if not: append a vertex with values of
+                 * the first vertex. */
+                DxfHatchBoundaryPathPolylineVertex *first;
+                DxfHatchBoundaryPathPolylineVertex *iter;
+                DxfHatchBoundaryPathPolylineVertex *next;
+                first = dxf_hatch_boundary_path_polyline_vertex_new ();
+                iter = dxf_hatch_boundary_path_polyline_vertex_new ();
+                next = dxf_hatch_boundary_path_polyline_vertex_new ();
+                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+                iter = first;
+                for (;;)
+                {
+                        if (iter->next == NULL)
+                        {
+                                next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+                                break;
+                        }
+                        iter = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+                }
+                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+                if (iter->x0 != first->x0 && iter->y0 != first->y0)
+                {
+                        /* the first vertex coordinates are identical to
+                         * the last vertex coordinates: do nothing and
+                         * leave. */
+                }
+                else
+                {
+                        /*! \todo How do we know what's the last id_code ?
+                         * This should be taken from a global id_code counter. */
+                        next->id_code = iter->id_code + 1;
+                        next->x0 = (double) first->x0;
+                        next->y0 = first->y0;
+                        next->next = NULL;
+                        /*! \todo warning: assignment from incompatible pointer type. */
+                        iter->next = (DxfHatchBoundaryPathPolylineVertex *) next;
+                }
+                /*! \todo add code here ! */
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_boundary_path_polyline_close_polyline () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Compute if the coordinates of a point \c p lie inside or
  * outside a DXF hatch boundary path polyline \c polyline entity.
  *
