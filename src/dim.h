@@ -175,4 +175,7 @@ dxf_dimstyle
                  * dimension text color. */
 } DxfDimStyle, * DxfDimStylePtr;
 
+DxfDimStyle *dxf_dimstyle_new ();
+
+
 /* EOF */
