@@ -1,5 +1,5 @@
 /*!
- * \file text.c
+ * \file mtext.c
  *
  * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * \author Copiright (C) 2012 by Paolo Caroni
@@ -96,7 +96,7 @@ dxf_mtext_init
         },
         dxf_mtext->common.id_code = 0;
         dxf_mtext->text_value = strdup ("");
-        dxf_mtext->*text_additional_value[number_additional] = strdup ("");
+        //dxf_mtext->*text_additional_value[number_additional] = strdup ("");
         /*!< I'm not sure this number_additional is correct. */
         dxf_mtext->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_mtext->text_style = strdup ("");
@@ -203,8 +203,8 @@ dxf_mtext_read
                 {
                         /* Now follows a string containing a text value. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_mtext->text_additional_value[number_additional]);
-                        number_additional++;
+                        //fscanf (fp, "%s\n", dxf_mtext->text_additional_value[number_additional]);
+                        //number_additional++;
                 }
                 /*!< I'm not sure this number_additional is correct.*/
                 else if (strcmp (temp_string, "5") == 0)
