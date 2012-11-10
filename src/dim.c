@@ -263,4 +263,44 @@ dxf_dimstyle_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c DIMSTYLE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_dimstyle_free
+(
+        DxfDimStyle *dxf_dimstyle
+                /*!< Pointer to the memory occupied by the DXF \c
+                 * DIMSTYLE entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_dimstyle_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        if (dxf_dimstyle->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_dimstyle_free () pointer to next DxfDimStyle was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
+        free (dxf_dimstyle->dimstyle_name);
+        free (dxf_dimstyle->dimpost);
+        free (dxf_dimstyle->dimapost);
+        free (dxf_dimstyle->dimblk);
+        free (dxf_dimstyle->dimblk1);
+        free (dxf_dimstyle->dimblk2);
+        free (dxf_dimstyle);
+        dxf_dimstyle = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_dimstyle_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
