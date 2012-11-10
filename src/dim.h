@@ -182,6 +182,7 @@ dxf_dimstyle
 
 
 DxfDimStyle *dxf_dimstyle_new ();
+DxfDimStyle *dxf_dimstyle_init (DxfDimStyle *dxf_dimstyle);
 
 
 /* EOF */

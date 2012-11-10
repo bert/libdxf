@@ -31,7 +31,9 @@
  * <hr>
  */
 
+
 #include "dim.h"
+
 
 /*!
  * \brief Allocate memory for a DXF \c DIMSTYLE.
@@ -69,5 +71,80 @@ dxf_dimstyle_new ()
 #endif
         return (dxf_dimstyle);
 }
+
+
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c
+ * DIMSTYLE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfDimStyle *
+dxf_dimstyle_init
+(
+        DxfDimStyle *dxf_dimstyle
+                /*!< DXF dimstyle entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_dimstyle_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_dimstyle = dxf_dimstyle_new ();
+        if (dxf_dimstyle == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_dimstyle_init () could not allocate memory for a DxfDimStyle struct.\n");
+              return (NULL);
+        }
+        dxf_dimstyle->dimstyle_name = strdup ("");
+        dxf_dimstyle->dimpost = strdup ("");
+        dxf_dimstyle->dimapost = strdup ("");
+        dxf_dimstyle->dimblk = strdup ("");
+        dxf_dimstyle->dimblk1 = strdup ("");
+        dxf_dimstyle->dimblk2 = strdup ("");
+        dxf_dimstyle->dimscale = 0.0;
+        dxf_dimstyle->dimasz = 0.0;
+        dxf_dimstyle->dimexo = 0.0;
+        dxf_dimstyle->dimdli = 0.0;
+        dxf_dimstyle->dimexe = 0.0;
+        dxf_dimstyle->dimrnd = 0.0;
+        dxf_dimstyle->dimdle = 0.0;
+        dxf_dimstyle->dimtp = 0.0;
+        dxf_dimstyle->dimtm = 0.0;
+        dxf_dimstyle->flag = 0;
+        dxf_dimstyle->dimtol = 0;
+        dxf_dimstyle->dimlim = 0;
+        dxf_dimstyle->dimtih = 0;
+        dxf_dimstyle->dimtoh = 0;
+        dxf_dimstyle->dimse1 = 0;
+        dxf_dimstyle->dimse2 = 0;
+        dxf_dimstyle->dimtad = 0;
+        dxf_dimstyle->dimzin = 0;
+        dxf_dimstyle->dimtxt = 0.0;
+        dxf_dimstyle->dimcen = 0.0;
+        dxf_dimstyle->dimtsz = 0.0;
+        dxf_dimstyle->dimaltf = 0.0;
+        dxf_dimstyle->dimlfac = 0.0;
+        dxf_dimstyle->dimtvp = 0.0;
+        dxf_dimstyle->dimtfac = 0.0;
+        dxf_dimstyle->dimgap = 0.0;
+        dxf_dimstyle->dimalt = 0;
+        dxf_dimstyle->dimaltd = 0;
+        dxf_dimstyle->dimtofl = 0;
+        dxf_dimstyle->dimsah = 0;
+        dxf_dimstyle->dimtix = 0;
+        dxf_dimstyle->dimsoxd = 0;
+        dxf_dimstyle->dimclrd = DXF_COLOR_BYLAYER;
+        dxf_dimstyle->dimclre = DXF_COLOR_BYLAYER;
+        dxf_dimstyle->dimclrt = DXF_COLOR_BYLAYER;
+        dxf_dimstyle->next = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_dimstyle_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_dimstyle);
+}
+
 
 /* EOF */
