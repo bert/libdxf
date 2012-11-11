@@ -94,9 +94,9 @@ dxf_3dface_init
               fprintf (stderr, "ERROR in dxf_3dface_init () could not allocate memory for a Dxf3dface struct.\n");
               return (NULL);
         }
-        dxf_3dface->common.id_code = 0;
-        dxf_3dface->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_3dface->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_3dface->id_code = 0;
+        dxf_3dface->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_3dface->layer = strdup (DXF_DEFAULT_LAYER);
         dxf_3dface->x0 = 0.0;
         dxf_3dface->y0 = 0.0;
         dxf_3dface->z0 = 0.0;
@@ -109,11 +109,11 @@ dxf_3dface_init
         dxf_3dface->x3 = 0.0;
         dxf_3dface->y3 = 0.0;
         dxf_3dface->z3 = 0.0;
-        dxf_3dface->common.thickness = 0.0;
-        dxf_3dface->common.color = DXF_COLOR_BYLAYER;
-        dxf_3dface->common.paperspace = DXF_MODELSPACE;
+        dxf_3dface->thickness = 0.0;
+        dxf_3dface->color = DXF_COLOR_BYLAYER;
+        dxf_3dface->paperspace = DXF_MODELSPACE;
         dxf_3dface->flag = 0;
-        dxf_3dface->common.acad_version_number = 0;
+        dxf_3dface->acad_version_number = 0;
         dxf_3dface->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_init () function.\n",
@@ -175,20 +175,20 @@ dxf_3dface_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_3dface->common.id_code);
+                        fscanf (fp, "%x\n", &dxf_3dface->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_3dface->common.linetype);
+                        fscanf (fp, "%s\n", dxf_3dface->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_3dface->common.layer);
+                        fscanf (fp, "%s\n", dxf_3dface->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -292,21 +292,21 @@ dxf_3dface_read
                         /* Now follows a string containing the
                          * thickness. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->common.thickness);
+                        fscanf (fp, "%lf\n", &dxf_3dface->thickness);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_3dface->common.color);
+                        fscanf (fp, "%d\n", &dxf_3dface->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_3dface->common.paperspace);
+                        fscanf (fp, "%d\n", &dxf_3dface->paperspace);
                 }
                 else if ((acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
@@ -507,24 +507,24 @@ dxf_3dface_write
 #endif
         char *dxf_entity_name = strdup ("3DFACE");
 
-        if (strcmp (dxf_3dface.common.layer, "") == 0)
+        if (strcmp (dxf_3dface.layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_3dface_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_3dface.common.id_code);
+                        dxf_entity_name, dxf_3dface.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
-                dxf_3dface.common.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_3dface.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_3dface.common.id_code != -1)
+        if (dxf_3dface.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_3dface.common.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_3dface.id_code);
         }
-        if (strcmp (dxf_3dface.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_3dface.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_3dface.common.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_3dface.linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_3dface.common.layer);
+        fprintf (fp, "  8\n%s\n", dxf_3dface.layer);
         fprintf (fp, " 10\n%f\n", dxf_3dface.x0);
         fprintf (fp, " 20\n%f\n", dxf_3dface.y0);
         fprintf (fp, " 30\n%f\n", dxf_3dface.z0);
@@ -537,15 +537,15 @@ dxf_3dface_write
         fprintf (fp, " 13\n%f\n", dxf_3dface.x3);
         fprintf (fp, " 23\n%f\n", dxf_3dface.y3);
         fprintf (fp, " 33\n%f\n", dxf_3dface.z3);
-        if (dxf_3dface.common.thickness != 0.0)
+        if (dxf_3dface.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_3dface.common.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_3dface.thickness);
         }
-        if (dxf_3dface.common.color != DXF_COLOR_BYLAYER)
+        if (dxf_3dface.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_3dface.common.color);
+                fprintf (fp, " 62\n%d\n", dxf_3dface.color);
         }
-        if (dxf_3dface.common.paperspace == DXF_PAPERSPACE)
+        if (dxf_3dface.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
@@ -581,8 +581,8 @@ dxf_3dface_free
               fprintf (stderr, "ERROR in dxf_3dface_free () pointer to next Dxf3dface was not NULL.\n");
               return (EXIT_FAILURE);
         }
-        free (dxf_3dface->common.linetype);
-        free (dxf_3dface->common.layer);
+        free (dxf_3dface->linetype);
+        free (dxf_3dface->layer);
         free (dxf_3dface);
         dxf_3dface = NULL;
 #if DEBUG
