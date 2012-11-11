@@ -46,8 +46,39 @@
 typedef struct
 dxf_arc
 {
-        DxfEntity common;
-                /*!< common properties for DXF entities. */
+        /* Members common for all DXF drawable entities. */
+        int id_code;
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
+        char *linetype;
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
+        char *layer;
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
+        double thickness;
+                /*!< Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
+        int color;
+                /*!< Color of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Note that entities encapsulated in a block with the
+                 * color \c BYBLOCK are represented in the "native" color of
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
+        int paperspace;
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
+                 * \c MODELSPACE.\n
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
+        int acad_version_number;
+                /*!< AutoCAD version number. */
+        /* Specific members for a DXF arc. */
         double x0;
                 /*!< X-value of the starting point coordinate.\n
                  * Group code = 10. */
