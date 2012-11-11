@@ -2,7 +2,6 @@
  * \file mtext.h
  *
  * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \author Copiright (C) 2012 by Paolo Caroni
  *
  * \brief Definition of a DXF mtext entity (\c MTEXT).
  *
@@ -51,9 +50,9 @@ dxf_mtext
                  * text string. If the text string is less than 250 characters, all characters appear in group 1. If the
                  * text string is greater than 250 characters, the string is divided into 250-character chunks, which
                  * appear in one or more group 3 codes. If group 3 codes are used, the last group is a group 1
-                 * and has fewer than 250 characters*/
-        char *text_additional_value;
-                /*!< group code = 3.
+                 * and has fewer than 250 characters.*/
+        char *text_additional_value[int number_additional];
+                /*!< group code = 3\n
                      optional, only if the text string in group 1 is greater than 250 characters. */
         char *text_style;
                 /*!< group code = 7\n
@@ -80,7 +79,7 @@ dxf_mtext
                 /*!< group code = 31\n
                  * X-axis direction vector, expressed in World Coordinate System (WCS). */
         double height;
-                /*!< group code = 40. 
+                /*!< group code = 40\n 
                  * nominal (initial) text height. */
         double rectangle_width;
                 /*!< group code = 41\n
@@ -113,11 +112,11 @@ dxf_mtext
         double rot_angle;
                 /*!< group code = 50\n
                  * rotation angle in radians. */
-        double background_color;
+        short int background_color;
                 /*!< group code = 63\n
                  * optional, background fill color:\n
                  * Color to use for background fill when group code 90 is 1. */
-        int attachment_point;
+        short int attachment_point;
                 /*!< group code = 71\n
   	         * attachment point:\n
                  * 1 = Top left\n
@@ -129,47 +128,59 @@ dxf_mtext
                  * 7 = Bottom left\n
                  * 8 = Bottom center\n
                  * 9 = Bottom right. */
-        int drawing_direction;
+        short int drawing_direction;
                 /*!< group code = 72\n
   	         * drawing direction:\n
   	         * 1 = Left to right\n
   	         * 3 = Top to bottom\n
   	         * 5 = By style (the flow direction is inherited from the associated text style). */
-        int spacing_style;
+        short int spacing_style;
                 /*!< group code = 73\n
                  * optional, mtext line spacing style:\n
                  * 1 = At least (taller characters will override)\n
                  * 2 = Exact (taller characters will not override). */
-        double column_type;
+        short int column_type;
                 /*!< group code = 75\n
                  * column type. */
-        double column_count;
+        short int column_count;
                 /*!< group code = 76\n
                  * column count. */
-        double column_flow;
+        short int column_flow;
                 /*!< group code = 78\n
                  * column flow reversed. */
-        double column_autoheight;
+        short int column_autoheight;
                 /*!< group code = 79\n
                  * column autoheight. */
+        int background_fill;
+                /*!< group code = 90\n
+                 * Background fill setting:\n
+                 * 0 = Background fill off\n
+                 * 1 = Use background fill color\n
+                 * 2 = Use drawing window color as background fill color. */
         double extr_x0;
-                /*!< group code = 210.\n
+                /*!< group code = 210\n
                  * optional, defaults to 0.0\n
                  * X-value of the extrusion direction. */
         double extr_y0;
-                /*!< group code = 220.\n
+                /*!< group code = 220\n
                  * optional, defaults to 0.0\n
                  * Y-value of the extrusion direction. */
         double extr_z0;
-                /*!< group code = 230.\n
+                /*!< group code = 230\n
                  * optional, defaults to 1.0\n
                  * Z-value of the extrusion direction. */
-      //double background_color_rgb;
-                /*!< group code = 420-429.\n
-                 * background color (if RGB color). */
+      //int background_color_rgb;
+                /*!< group code = 420-429\n
+                 * background color (if RGB color).\n
+                 * I don't know how is it... */
       //char background_color_name;
-                /*!< group code = 430-439.\n
-                 * background color (if color name). */
+                /*!< group code = 430-439\n
+                 * background color (if color name).\n
+                 * I don't know how is it... */
+      //int bacground_transparency;
+                /*!< group code = 441\n
+                 * transparency of background fill color.\n
+                 * (not implemented in AutoCAD). */
 } DxfMtext, * DxfMtextPtr;
 
 
@@ -195,7 +206,7 @@ dxf_mtext_write_lowlevel
         FILE *fp,
         int id_code,
         char *text_value;
-        char *text_additional_value;
+        char *text_additional_value[int number_additional];
         char *text_style;
         char *layer,
         double x0;
@@ -215,20 +226,22 @@ dxf_mtext_write_lowlevel
         double column_heights;
         double rot_angle;
         int color,
-        double background_color;
+        short int background_color;
         int paperspace,
-        int attachment_point;
-        int drawing_direction;
-        int spacing_style;
-        double column_type;
-        double column_count;
-        double column_flow;
-        double column_autoheight;
+        short int attachment_point;
+        short int drawing_direction;
+        short int spacing_style;
+        short int column_type;
+        short int column_count;
+        short int column_flow;
+        short int column_autoheight;
+        int background_fill;
         double extr_x0;
         double extr_y0;
         double extr_z0;
       //double background_color_rgb;
       //char background_color_name;
+      //int bacground_transparency;
 );
 int
 dxf_mtext_write
@@ -238,7 +251,7 @@ dxf_mtext_write
 );
 
 
-#endif /* _ARC_H */
+#endif /* _MTEXT_H */
 
 
 /* EOF */
