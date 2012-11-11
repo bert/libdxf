@@ -2,7 +2,6 @@
  * \file mtext.c
  *
  * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \author Copiright (C) 2012 by Paolo Caroni
  *
  * \brief Definition of a DXF mtext entity (\c MTEXT).
  *
@@ -56,7 +55,7 @@ dxf_mtext_new ()
         if (size == 0) size = 1;
         if ((dxf_mtext = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_mtext_new () could not allocate memory for a DxfSolid struct.\n");
+                fprintf (stderr, "ERROR in dxf_mtext_new () could not allocate memory for a DxfMtext struct.\n");
                 dxf_mtext = NULL;
         }
         else
