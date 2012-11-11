@@ -33,6 +33,7 @@
 
 
 #include "global.h"
+#include "entity.h"
 
 
 /*!
@@ -179,6 +180,215 @@ dxf_dimstyle
                 /*!< pointer to the next DxfDimStyle.\n
                  * \c NULL in the last DxfDimStyle. */
 } DxfDimStyle, * DxfDimStylePtr;
+
+
+/*!
+ * \brief DXF definition of an AutoCAD dimension.
+ */
+typedef struct
+dxf_dimension
+{
+        DxfEntity common;
+                /*!< Common properties for DXF entities. */
+        char *dim_text;
+                /*!< Dimension text explicitly entered by the user.\n
+                 * If null or "<>", the dimension measurement is drawn
+                 * as the text, if " " [one blank space], the text is
+                 * suppressed.\n
+                 * Anything else is drawn as the text.\n
+                 * Group code = 1. */
+        char *dimblock_name;
+                /*!< Name of pseudo-Block containing the current
+                 * dimension entity geometry.\n
+                 * Group code = 2. */
+        char *dimstyle_name;
+                /*!< Dimension style name.\n
+                 * Group code = 3.  */
+        double x0;
+                /*!< X-value of the definition point for all dimension
+                 * types.\n
+                 * Group code = 10. */
+        double y0;
+                /*!< Y-value of the definition point for all dimension
+                 * types.\n
+                 * Group code = 20. */
+        double z0;
+                /*!< Z-value of the definition point for all dimension
+                 * types.\n
+                 * Group code = 30. */
+        double x1;
+                /*!< X-value of the middle point of dimension text.\n
+                 * Group code = 11. */
+        double y1;
+                /*!< Y-value of the middle point of dimension text.\n
+                 * Group code = 21. */
+        double z1;
+                /*!< Z-value of the middle point of dimension text.\n
+                 * Group code = 31. */
+        double x2;
+                /*!< X-value of the dimension block translation vector.\n
+                 * Group code = 12. */
+        double y2;
+                /*!< Y-value of the dimension block translation vector.\n
+                 * Group code = 22. */
+        double z2;
+                /*!< Z-value of the dimension block translation vector.\n
+                 * Group code = 32. */
+        double x3;
+                /*!< X-value of the definition point for linear and
+                 * angular dimensions.\n
+                 * Group code = 13. */
+        double y3;
+                /*!< Y-value of the definition point for linear and
+                 * angular dimensions.\n
+                 * Group code = 23. */
+        double z3;
+                /*!< Z-value of the definition point for linear and
+                 * angular dimensions.\n
+                 * Group code = 33. */
+        double x4;
+                /*!< X-value of the definition point for linear and
+                 * angular dimensions.\n
+                 * Group code = 14. */
+        double y4;
+                /*!< Y-value of the definition point for linear and
+                 * angular dimensions.\n
+                 * Group code = 24. */
+        double z4;
+                /*!< Z-value of the definition point for linear and
+                 * angular dimensions.\n
+                 * Group code = 34. */
+        double x5;
+                /*!< X-value of the definition point for diameter,
+                 * radius, and angular dimensions.\n
+                 * Group code = 15. */
+        double y5;
+                /*!< Y-value of the definition point for diameter,
+                 * radius, and angular dimensions.\n
+                 * Group code = 25. */
+        double z5;
+                /*!< Z-value of the definition point for diameter,
+                 * radius, and angular dimensions.\n
+                 * Group code = 35. */
+        double x6;
+                /*!< X-value of the point defining dimension arc for
+                 * angular dimensions.\n
+                 * Group code = 16. */
+        double y6;
+                /*!< Y-value of the point defining dimension arc for
+                 * angular dimensions.\n
+                 * Group code = 26. */
+        double z6;
+                /*!< Z-value of the point defining dimension arc for
+                 * angular dimensions.\n
+                 * Group code = 36. */
+        double leader_length;
+                /*!< Leader length for radius and diameter dimensions.\n
+                 * Group code = 40. */
+        double text_line_spacing_factor;
+                /*!< Dimension text line spacing factor (optional):\n
+                 * Percentage of default (3-on-5) line spacing to be
+                 * applied.\n
+                 * Valid values range from 0.25 to 4.00.\n
+                 * Group code = 41. */
+        double actual_measurement;
+                /*!< Actual measurement (optional; read-only value).\n
+                 * Group code = 42. */
+        double angle;
+                /*!< Angle of rotated, horizontal, or vertical linear
+                 * dimensions.\n
+                 * Group code = 50. */
+        double hor_dir;
+                /*!< In addition, all dimension types have an optional
+                 * group (group code 51) that indicates the horizontal
+                 * direction for the Dimension entity.\n
+                 * This determines the orientation of dimension text and
+                 * dimension lines for horizontal, vertical, and rotated
+                 * linear dimensions.\n
+                 * The group value is the negative of the Entity
+                 * Coordinate Systems (ECS) angle of the UCS X axis in
+                 * effect when the Dimension was drawn.\n
+                 * The X axis of the UCS in effect when the Dimension
+                 * was drawn is always parallel to the XY plane for the
+                 * Dimension's ECS, and the angle between the UCS X axis
+                 * and the ECS X axis is a single 2D angle.\n
+                 * The value in group code 51 is the angle from
+                 * horizontal (the effective X axis) to the ECS X axis.\n
+                 * Entity Coordinate Systems (ECS) are described
+                 * elsewhere in this documentation.\n
+                 * Group code = 51. */
+        double obl_angle;
+                /*!< Linear dimension types with an oblique angle have
+                 * an optional group (group code 52).\n
+                 * When added to the rotation angle of the linear
+                 * dimension (group code 50) this gives the angle of the
+                 * extension lines.\n
+                 * Group code = 52. */
+        double text_angle;
+                /*!< The optional group code 53 is the rotation angle of
+                 * the dimension text away from its default orientation
+                 * (the direction of the dimension line).\n
+                 * Group code = 53. */
+        int flag;
+                /*!< Dimension type.\n
+                 * Values 0–6 are integer values that represent the
+                 * dimension type.\n
+                 * Values 32, 64, and 128 are bit values, which are
+                 * added to the integer values (value 32 is always set
+                 * in R13 and later releases).\n
+                 * 0 = Rotated, horizontal, or vertical.\n
+                 * 1 = Aligned.\n
+                 * 2 = Angular.\n
+                 * 3 = Diameter.\n
+                 * 4 = Radius.\n
+                 * 5 = Angular 3-point.\n
+                 * 6 = Ordinate.\n
+                 * 32 = Indicates that the block reference (group code
+                 *      2) is referenced by this dimension only.\n
+                 * 64 = Ordinate type.\n
+                 *      This is a bit value (bit 7) used only with
+                 *      integer value 6.\n
+                 *      If set, ordinate is X-type; if not set, ordinate
+                 *      is Y-type.\n
+                 * 128 = This is a bit value (bit 8) added to the other
+                 *       group 70 values if the dimension text has been
+                 *       positioned at a user-defined location rather
+                 *       than at the default location.\n
+                 * Group code = 70. */
+        int attachment_point;
+                /*!< Attachment point:\n
+                 * 1 = Top left;\n
+                 * 2 = Top center;\n
+                 * 3 = Top right;\n
+                 * 4 = Middle left;\n
+                 * 5 = Middle center;\n
+                 * 6 = Middle right;\n
+                 * 7 = Bottom left;\n
+                 * 8 = Bottom center;\n
+                 * 9 = Bottom right.\n
+                 * Group code = 71. */
+        int text_line_spacing;
+                /*!< Dimension text line spacing style (optional):\n
+                 * 1 (or missing) = At least (taller characters will
+                 *   override);\n
+                 * 2 = Exact (taller characters will not override).\n
+                 * Group code = 72. */
+        double extr_x0;
+                /*!< X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 210. */
+        double extr_y0;
+                /*!< Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 220. */
+        double extr_z0;
+                /*!< Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if ommitted in the DXF file.\n
+                 * Group code = 230. */
+        struct DxfDimension *next;
+                /*!< pointer to the next DxfDimension.\n
+                 * \c NULL in the last DxfDimension. */
+} DxfDimension, * DxfDimensionPtr;
 
 
 DxfDimStyle *dxf_dimstyle_new ();
