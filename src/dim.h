@@ -1,6 +1,8 @@
 /*!
  * \file dim.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008, 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF dimension entity (\c DIM).
  *
  * <hr>
@@ -29,7 +31,9 @@
  * <hr>
  */
 
+
 #include "global.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD dimensioning style.
@@ -37,8 +41,6 @@
 typedef struct
 dxf_dimstyle
 {
-        int id_code;
-                /*!< group code = 5. */
         char *dimstyle_name;
                 /*!< group code = 2\n
                  * dimension style name. */
@@ -173,6 +175,16 @@ dxf_dimstyle
         int dimclrt;
                 /*!< group code = 178\n
                  * dimension text color. */
+        struct DxfDimStyle *next;
+                /*!< pointer to the next DxfDimStyle.\n
+                 * \c NULL in the last DxfDimStyle. */
 } DxfDimStyle, * DxfDimStylePtr;
+
+
+DxfDimStyle *dxf_dimstyle_new ();
+DxfDimStyle *dxf_dimstyle_init (DxfDimStyle *dxf_dimstyle);
+int dxf_dimstyle_write (FILE *fp, DxfDimStyle dxf_dimstyle);
+int dxf_dimstyle_free (DxfDimStyle *dxf_dimstyle);
+
 
 /* EOF */
