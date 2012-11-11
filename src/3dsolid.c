@@ -121,13 +121,13 @@ dxf_3dsolid_init
               return (NULL);
         }
         dxf_3dsolid->modeler_format_version_number = 0;
-        dxf_3dsolid->common.id_code = 0;
-        dxf_3dsolid->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_3dsolid->common.layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_3dsolid->common.thickness = 0.0;
-        dxf_3dsolid->common.color = DXF_COLOR_BYLAYER;
-        dxf_3dsolid->common.paperspace = DXF_MODELSPACE;
-        dxf_3dsolid->common.acad_version_number = 0;
+        dxf_3dsolid->id_code = 0;
+        dxf_3dsolid->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_3dsolid->thickness = 0.0;
+        dxf_3dsolid->color = DXF_COLOR_BYLAYER;
+        dxf_3dsolid->paperspace = DXF_MODELSPACE;
+        dxf_3dsolid->acad_version_number = 0;
         dxf_3dsolid->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_init () function.\n",
@@ -161,8 +161,8 @@ dxf_3dsolid_free
               fprintf (stderr, "ERROR in dxf_3dsolid_free () pointer to next Dxf3dsolid was not NULL.\n");
               return (EXIT_FAILURE);
         }
-        free (dxf_3dsolid->common.linetype);
-        free (dxf_3dsolid->common.layer);
+        free (dxf_3dsolid->linetype);
+        free (dxf_3dsolid->layer);
         free (dxf_3dsolid);
         dxf_3dsolid = NULL;
 #if DEBUG
