@@ -76,6 +76,12 @@ dxf_appid
                  *      one entity in the drawing the last time the drawing
                  *      was edited.\n
                  * Group code = 70. */
+        char *soft_owner_object;
+                /*!< Soft-pointer ID/handle to owner object.\n
+                 * Group code = 330. */
+        char *hard_owner_object;
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
         struct DxfAppid *next;
                 /*!< pointer to the next DxfAppid.\n
                  * \c NULL in the last DxfAppid. */
@@ -105,7 +111,9 @@ dxf_appid_write_lowlevel
         int acad_version_number,
         int id_code,
         char *application_name,
-        int standard_flag
+        int standard_flag,
+        char *soft_owner_object,
+        char *hard_owner_object
 );
 int
 dxf_appid_write

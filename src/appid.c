@@ -103,6 +103,8 @@ dxf_appid_init
         dxf_appid->id_code = 0;
         dxf_appid->application_name = strdup ("");
         dxf_appid->standard_flag = 0;
+        dxf_appid->soft_owner_object = strdup ("");
+        dxf_appid->hard_owner_object = strdup ("");
         dxf_appid->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_init () function.\n",
@@ -181,6 +183,18 @@ dxf_appid_read
                         (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_appid->standard_flag);
                 }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner object. */
+                        dxf_read_scanf (fp, "%s\n", &dxf_appid->soft_owner_object);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        dxf_read_scanf (fp, "%s\n", &dxf_appid->hard_owner_object);
+                }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
@@ -220,7 +234,7 @@ dxf_appid_write_lowlevel
         char *application_name,
                 /*!< Name of the application registered with the drawing.\n
                  * Group code = 2. */
-        int standard_flag
+        int standard_flag,
                 /*!< This flag is for the benefit of AutoCAD commands;
                  * it can be ignored by most programs that read DXF files,
                  * and need not be set by programs that write DXF files.\n
@@ -233,6 +247,13 @@ dxf_appid_write_lowlevel
                  *      one entity in the drawing the last time the drawing
                  *      was edited.\n
                  * Group code = 70. */
+        char *soft_owner_object,
+                /*!< Soft-pointer ID/handle to owner object.\n
+                 * Group code = 330. */
+        char *hard_owner_object
+                /*!< Hard owner ID/handle to owner dictionary
+                 * (optional).\n
+                 * Group code = 360. */
 )
 {
 #if DEBUG
@@ -256,6 +277,14 @@ dxf_appid_write_lowlevel
         }
         fprintf (fp, "  2\n%s\n", application_name);
         fprintf (fp, " 70\n%d\n", standard_flag);
+        if (strcmp (soft_owner_object, "") != 0)
+        {
+                fprintf (fp, "330\n%s\n", soft_owner_object);
+        }
+        if (strcmp (hard_owner_object, "") != 0)
+        {
+                fprintf (fp, "360\n%s\n", hard_owner_object);
+        }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_write_lowlevel () function.\n",
                 __FILE__, __LINE__);
@@ -296,6 +325,14 @@ dxf_appid_write
         }
         fprintf (fp, "  2\n%s\n", dxf_appid.application_name);
         fprintf (fp, " 70\n%d\n", dxf_appid.standard_flag);
+        if (strcmp (dxf_appid.soft_owner_object, "") != 0)
+        {
+                fprintf (fp, "330\n%s\n", dxf_appid.soft_owner_object);
+        }
+        if (strcmp (dxf_appid.hard_owner_object, "") != 0)
+        {
+                fprintf (fp, "360\n%s\n", dxf_appid.hard_owner_object);
+        }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_write () function.\n",
                 __FILE__, __LINE__);
@@ -328,6 +365,8 @@ dxf_appid_free
               return (EXIT_FAILURE);
         }
         free (dxf_appid->application_name);
+        free (dxf_appid->soft_owner_object);
+        free (dxf_appid->hard_owner_object);
         free (dxf_appid);
         dxf_appid = NULL;
 #if DEBUG
