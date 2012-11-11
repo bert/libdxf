@@ -181,7 +181,7 @@ dxf_text_write
 );
 
 
-#endif /* _ARC_H */
+#endif /* _TEXT_H */
 
 
 /* EOF */
