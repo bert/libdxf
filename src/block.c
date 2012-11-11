@@ -97,17 +97,16 @@ dxf_block_init
         }
         dxf_block->xref_name = strdup ("");
         dxf_block->block_name = strdup ("");
-        dxf_block->common.id_code = 0;
-        dxf_block->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_block->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_block->id_code = 0;
+        dxf_block->description = strdup ("");
+        dxf_block->layer = strdup (DXF_DEFAULT_LAYER);
         dxf_block->x0 = 0.0;
         dxf_block->y0 = 0.0;
         dxf_block->z0 = 0.0;
-        dxf_block->common.thickness = 0.0;
-        dxf_block->common.color = DXF_COLOR_BYLAYER;
-        dxf_block->common.paperspace = DXF_MODELSPACE;
-        dxf_block->common.acad_version_number = 0;
+        dxf_block->acad_version_number = 0;
         dxf_block->block_type = 0; /* 0 = invalid type */
+        dxf_block->soft_owner_object = strdup ("");
+        dxf_block->hard_owner_object = strdup ("");
         dxf_block->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_init () function.\n",
@@ -162,34 +161,33 @@ dxf_block_read
                 {
                         /* Now follows a string containing a external
                          * reference name. */
-                        dxf_read_scanf (fp, "%s\n", dxf_block->xref_name);
+                        dxf_read_scanf (fp, "%s\n", &dxf_block->xref_name);
                 }
-                if (strcmp (temp_string, "2") == 0)
+                else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a block name. */
-                        dxf_read_scanf (fp, "%s\n", dxf_block->block_name);
+                        dxf_read_scanf (fp, "%s\n", &dxf_block->block_name);
                 }
-                if (strcmp (temp_string, "3") == 0)
+                else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing a block name. */
-                        dxf_read_scanf (fp, "%s\n", dxf_block->block_name);
+                        dxf_read_scanf (fp, "%s\n", &dxf_block->block_name);
+                }
+                else if (strcmp (temp_string, "4") == 0)
+                {
+                        /* Now follows a string containing a description. */
+                        dxf_read_scanf (fp, "%s\n", &dxf_block->description);
                 }
                 else if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        dxf_read_scanf (fp, "%x\n", &dxf_block->common.id_code);
-                }
-                else if (strcmp (temp_string, "6") == 0)
-                {
-                        /* Now follows a string containing a linetype
-                         * name. */
-                        dxf_read_scanf (fp, "%s\n", dxf_block->common.linetype);
+                        dxf_read_scanf (fp, "%x\n", &dxf_block->id_code);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        dxf_read_scanf (fp, "%s\n", dxf_block->common.layer);
+                        dxf_read_scanf (fp, "%s\n", dxf_block->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -219,24 +217,6 @@ dxf_block_read
                          * Now follows a string containing the
                          * elevation. */
                         dxf_read_scanf (fp, "%lf\n", &dxf_block->z0);
-                }
-                else if (strcmp (temp_string, "39") == 0)
-                {
-                        /* Now follows a string containing the
-                         * thickness. */
-                        dxf_read_scanf (fp, "%lf\n", &dxf_block->common.thickness);
-                }
-                else if (strcmp (temp_string, "62") == 0)
-                {
-                        /* Now follows a string containing the
-                         * color value. */
-                        dxf_read_scanf (fp, "%d\n", &dxf_block->common.color);
-                }
-                else if (strcmp (temp_string, "67") == 0)
-                {
-                        /* Now follows a string containing the
-                         * paperspace value. */
-                        dxf_read_scanf (fp, "%d\n", &dxf_block->common.paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
@@ -278,6 +258,18 @@ dxf_block_read
                          * Z-value of the extrusion vector. */
                         dxf_read_scanf (fp, "%lf\n", &dxf_block->extr_z0);
                 }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner object. */
+                        dxf_read_scanf (fp, "%s\n", &dxf_block->soft_owner_object);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        dxf_read_scanf (fp, "%s\n", &dxf_block->hard_owner_object);
+                }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
@@ -313,9 +305,9 @@ dxf_block_write_lowlevel
                 /*!< group code = 1. */
         char *block_name,
                 /*!< group code = 2 and 3. */
-        char *linetype,
-                /*!< group code = 6\n
-                 * optional, if omitted defaults to BYLAYER. */
+        char *description,
+                /*!< Block description (optional).\n
+                 * Group code = 4. */
         char *layer,
                 /*!< group code = 8. */
         double x0,
@@ -327,16 +319,7 @@ dxf_block_write_lowlevel
         double z0,
                 /*!< group code = 30\n
                  * base point. */
-        double thickness,
-                /*!< group code = 39\n
-                 * optional, if omitted defaults to 0.0. */
-        int color,
-                /*!< group code = 62\n
-                 * optional, if omitted defaults to BYLAYER. */
-        int paperspace,
-                /*!< group code = 67\n
-                 * optional, if omitted defaults to 0 (modelspace). */
-        int block_type
+        int block_type,
                 /*!< group code = 70\n
                  * bit codes:\n
                  * 1 = this is an anonymous Block generated by hatching,
@@ -349,6 +332,25 @@ dxf_block_write_lowlevel
                  * 32 = this is a resolved external reference, or dependent
                  *      of an external reference\n
                  * 64 = this definition is referenced. */
+        double extr_x0,
+                /*!< X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 210. */
+        double extr_y0,
+                /*!< Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 220. */
+        double extr_z0,
+                /*!< Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if ommitted in the DXF file.\n
+                 * Group code = 230. */
+        char *soft_owner_object,
+                /*!< Soft-pointer ID/handle to owner object.\n
+                 * Group code = 330. */
+        char *hard_owner_object
+                /*!< Hard owner ID/handle to owner dictionary
+                 * (optional).\n
+                 * Group code = 360. */
 )
 {
 #if DEBUG
@@ -380,31 +382,27 @@ dxf_block_write_lowlevel
         }
         fprintf (fp, "  2\n%s\n", block_name);
         fprintf (fp, "  3\n%s\n", block_name);
+        if (strcmp (description, "") != 0)
+        {
+                fprintf (fp, "  4\n%s\n", description);
+        }
         if (id_code != -1)
         {
                 fprintf (fp, "  5\n%x\n", id_code);
-        }
-        if (strcmp (linetype, DXF_DEFAULT_LINETYPE) != 0)
-        {
-                fprintf (fp, "  6\n%s\n", linetype);
         }
         fprintf (fp, "  8\n%s\n", layer);
         fprintf (fp, " 10\n%f\n", x0);
         fprintf (fp, " 20\n%f\n", y0);
         fprintf (fp, " 30\n%f\n", z0);
-        if (thickness != 0.0)
-        {
-                fprintf (fp, " 39\n%f\n", thickness);
-        }
-        if (color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp, " 62\n%d\n", color);
-        }
-        if (paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
         fprintf (fp, " 70\n%d\n", block_type);
+        if (strcmp (soft_owner_object, "") != 0)
+        {
+                fprintf (fp, "330\n%s\n", soft_owner_object);
+        }
+        if (strcmp (hard_owner_object, "") != 0)
+        {
+                fprintf (fp, "360\n%s\n", hard_owner_object);
+        }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write_lowlevel () function.\n", __FILE__, __LINE__);
 #endif
@@ -433,7 +431,7 @@ dxf_block_write
         if (dxf_block.block_name == NULL)
         {
                 fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_block.common.id_code);
+                        dxf_entity_name, dxf_block.id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
@@ -441,55 +439,59 @@ dxf_block_write
         if (dxf_block.xref_name == NULL)
         {
                 fprintf (stderr, "Warning: empty xref name string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_block.common.id_code);
+                        dxf_entity_name, dxf_block.id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_block.common.layer, "") == 0)
+        if (dxf_block.description == NULL)
+        {
+                fprintf (stderr, "Warning: NULL pointer to description string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_block.id_code);
+                dxf_block.description = strdup ("");
+        }
+        if (strcmp (dxf_block.layer, "") == 0)
         {
                 fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_block.common.id_code);
+                        dxf_entity_name, dxf_block.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0.\n",
                         dxf_entity_name);
-                dxf_block.common.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_block.layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        if (dxf_block.soft_owner_object == NULL)
+        {
+                fprintf (stderr, "Warning: NULL pointer to soft owner object string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_block.id_code);
+                dxf_block.soft_owner_object = strdup ("");
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
         if ((dxf_block.block_type && 4) || (dxf_block.block_type && 32))
         {
                 fprintf (fp, "  1\n%s\n", dxf_block.xref_name);
         }
-        if ((dxf_block.block_type && 4) || (dxf_block.block_type && 32))
-        {
-                fprintf (fp, "  1\n%s\n", dxf_block.xref_name);
-        }
         fprintf (fp, "  2\n%s\n", dxf_block.block_name);
         fprintf (fp, "  3\n%s\n", dxf_block.block_name);
-        if (dxf_block.common.id_code != -1)
+        if (strcmp (dxf_block.description, "") != 0)
         {
-                fprintf (fp, "  5\n%x\n", dxf_block.common.id_code);
+                fprintf (fp, "  4\n%s\n", dxf_block.description);
         }
-        if (strcmp (dxf_block.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (dxf_block.id_code != -1)
         {
-                fprintf (fp, "  6\n%s\n", dxf_block.common.linetype);
+                fprintf (fp, "  5\n%x\n", dxf_block.id_code);
         }
-        fprintf (fp, "  8\n%s\n", dxf_block.common.layer);
+        fprintf (fp, "  8\n%s\n", dxf_block.layer);
         fprintf (fp, " 10\n%f\n", dxf_block.x0);
         fprintf (fp, " 20\n%f\n", dxf_block.y0);
         fprintf (fp, " 30\n%f\n", dxf_block.z0);
-        if (dxf_block.common.thickness != 0.0)
-        {
-                fprintf (fp, " 39\n%f\n", dxf_block.common.thickness);
-        }
-        if (dxf_block.common.color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp, " 62\n%d\n", dxf_block.common.color);
-        }
-        if (dxf_block.common.paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
         fprintf (fp, " 70\n%d\n", dxf_block.block_type);
+        if (strcmp (dxf_block.soft_owner_object, "") != 0)
+        {
+                fprintf (fp, "330\n%s\n", dxf_block.soft_owner_object);
+        }
+        if (strcmp (dxf_block.hard_owner_object, "") != 0)
+        {
+                fprintf (fp, "360\n%s\n", dxf_block.hard_owner_object);
+        }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write () function.\n",
                 __FILE__, __LINE__);
@@ -566,10 +568,12 @@ dxf_block_free
               fprintf (stderr, "ERROR in dxf_block_free () pointer to next DxfBlock was not NULL.\n");
               return (EXIT_FAILURE);
         }
-        free (dxf_block->common.linetype);
-        free (dxf_block->common.layer);
         free (dxf_block->xref_name);
         free (dxf_block->block_name);
+        free (dxf_block->description);
+        free (dxf_block->layer);
+        free (dxf_block->soft_owner_object);
+        free (dxf_block->hard_owner_object);
         free (dxf_block);
         dxf_block = NULL;
 #if DEBUG

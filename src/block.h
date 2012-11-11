@@ -64,33 +64,33 @@
 typedef struct
 dxf_block
 {
-        DxfEntity common;
-                /*!< common properties for DXF entities. */
         char *xref_name;
-                /*!< group code = 1. */
+                /*!< Xref path name.\n
+                 * Group code = 1. */
         char *block_name;
-                /*!< group code = 2 and 3. */
+                /*!< Block name.\n
+                 * Group code = 2 and 3. */
+        char *description;
+                /*!< Block description (optional).\n
+                 * Group code = 4. */
+        int id_code;
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
+        char *layer;
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
         double x0;
-                /*!< group code = 10\n
-                 * base point. */
+                /*!< Base point, X-value.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * base point. */
+                /*!< Base point, Y-value.\n
+                 * Group code = 20. */
         double z0;
-                /*!< group code = 30\n
-                 * base point. */
-        double extr_x0;
-                /*!< X-value of the extrusion vector.\n
-                 * Defaults to 0.0 if ommitted in the DXF file.\n
-                 * Group code = 210. */
-        double extr_y0;
-                /*!< Y-value of the extrusion vector.\n
-                 * Defaults to 0.0 if ommitted in the DXF file.\n
-                 * Group code = 220. */
-        double extr_z0;
-                /*!< Z-value of the extrusion vector.\n
-                 * Defaults to 1.0 if ommitted in the DXF file.\n
-                 * Group code = 230. */
+                /*!< Base point, Z-value.\n
+                 * Group code = 30. */
         int block_type;
                 /*!< group code = 70\n
                  * bit coded:\n
@@ -104,6 +104,26 @@ dxf_block
                  * 32 = this is a resolved external reference, or dependent
                  *      of an external reference\n
                  * 64 = this definition is referenced. */
+        double extr_x0;
+                /*!< X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 210. */
+        double extr_y0;
+                /*!< Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 220. */
+        double extr_z0;
+                /*!< Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if ommitted in the DXF file.\n
+                 * Group code = 230. */
+        char *soft_owner_object;
+                /*!< Soft-pointer ID/handle to owner object.\n
+                 * Group code = 330. */
+        char *hard_owner_object;
+                /*!< Soft-pointer ID/handle to owner object.\n
+                 * Group code = 360. */
+        int acad_version_number;
+                /*!< AutoCAD version number. */
         struct DxfBlock *next;
                 /*!< pointer to the next DxfBlock.\n
                  * \c NULL in the last DxfBlock. */
@@ -111,15 +131,9 @@ dxf_block
 } DxfBlock, * DxfBlockPtr;
 
 
-DxfBlock *
-dxf_block_new ();
-DxfBlock *
-dxf_block_init
-(
-        DxfBlock *dxf_block
-);
-int
-dxf_block_read
+DxfBlock *dxf_block_new ();
+DxfBlock *dxf_block_init (DxfBlock *dxf_block);
+int dxf_block_read
 (
         char *filename,
         DxfFile *fp,
@@ -127,42 +141,28 @@ dxf_block_read
         DxfBlock *dxf_block,
         int acad_version_number
 );
-int
-dxf_block_write_lowlevel
+int dxf_block_write_lowlevel
 (
         FILE *fp,
         int id_code,
         char *xref_name,
         char *block_name,
-        char *linetype,
+        char *description,
         char *layer,
         double x0,
         double y0,
         double z0,
-        double thickness,
-        int color,
-        int paperspace,
-        int block_type
+        int block_type,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0,
+        char *soft_owner_object,
+        char *hard_owner_object
 );
-int
-dxf_blocks_write
-(
-        FILE *fp,
-        DxfBlock dxf_block
-);
-int
-dxf_block_write_endblk (FILE *fp);
-int
-dxf_block_write_table
-(
-        char *dxf_blocks_list, 
-        int acad_version_number
-);
-int
-dxf_block_free
-(
-        DxfBlock *dxf_block
-);
+int dxf_blocks_write (FILE *fp, DxfBlock dxf_block);
+int dxf_block_write_endblk (FILE *fp);
+int dxf_block_write_table (char *dxf_blocks_list, int acad_version_number);
+int dxf_block_free (DxfBlock *dxf_block);
 
 
 #endif /* BLOCK_H */
