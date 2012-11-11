@@ -33,7 +33,7 @@ apidox-am-no:
 apidox-am-yes:
 	@echo "*** Creating API documentation main page"; \
 	cd doc; \
-	doxygen libDXF-dox-with-call-graphs.dox
+	doxygen libDXF.dox
 
 .PHONY: apidox-am-yes apidox-am-no apidox
 
