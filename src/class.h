@@ -5,43 +5,7 @@
  *
  * \brief Header file for a DXF class entity (\c CLASS).
  *
- * The group codes described in this chapter are found only in DXF files.\n
- * The CLASSES section holds the information for application-defined classes
- * whose instances appear in the BLOCKS, ENTITIES, and OBJECTS sections of
- * the database.\n
- * It is assumed that a class definition is permanently fixed in the class
- * hierarchy.\n
- * All fields are required.\n
- * \n
- * AutoCAD registers the classes listed in the following table.\n
- * (This may not be a complete list of the classes found in a DXF file.\n
- * It depends on the applications currently in use by AutoCAD.)\n
- * \n
- * Default class values:\n
- * DXF Record Name      C++ Class Name             Code  Code  Code \n
- * Code 1               Code 2                     90    280   281 \n
- * ACDBDICTIONARYWDFLT  AcDbDictionaryWithDefault  0     0     0 \n
- * ACDBPLACEHOLDER      AcDbPlaceHolder            0     0     0 \n
- * ARCALIGNEDTEXT       AcDbArcAlignedText         0     0     1 \n
- * DICTIONARYVAR        AcDbDictionaryVar          0     0     0 \n
- * HATCH                AcDbHatch                  0     0     1 \n
- * IDBUFFER             AcDbIdBuffer               0     0     0 \n
- * IMAGE                AcDbRasterImage            127   0     1 \n
- * IMAGEDEF             AcDbRasterImageDef         0     0     0 \n
- * IMAGEDEF_REACTOR     AcDbRasterImageDefReactor  1     0     0 \n
- * LAYER_INDEX          AcDbLayerIndex             0     0     0 \n
- * LAYOUT               AcDbLayout                 0     0     0 \n
- * LWPOLYLINE           AcDbPolyline               0     0     1 \n
- * OBJECT_PTR           CAseDLPNTableRecord        1     0     0 \n
- * OLE2FRAME            AcDbOle2Frame              0     0     1 \n
- * RASTERVARIABLES      AcDbRasterVariables        0     0     0 \n
- * RTEXT                RText                      0     0     1 \n
- * SORTENTSTABLE        AcDbSortentsTable          0     0     0 \n
- * SPATIAL_INDEX        AcDbSpatialIndex           0     0     0 \n
- * SPATIAL_FILTER       AcDbSpatialFilter          0     0     0 \n
- * WIPEOUT              AcDbWipeout                127   0     1 \n
- * WIPEOUTVARIABLES     AcDbWipeoutVariables       0     0     0 \n
- * \n
+ * \htmlinclude "../doc/class.html"
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
