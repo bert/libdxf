@@ -39,6 +39,8 @@ libdxf_la_SOURCES = \
   param.h     \
   object.h     \
   object.c     \
+  mtext.h	\
+  mtext.c	\
   lwpolyline.h     \
   lwpolyline.c     \
   ltype.h     \
