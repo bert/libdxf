@@ -295,6 +295,20 @@ dxf_mtext_read
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_mtext->box_scale);
                 }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the
+                         * column width. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->column_width);
+                }
+                else if (strcmp (temp_string, "49") == 0)
+                {
+                        /* Now follows a string containing the
+                         * column gutter. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->column_gutter);
+                }
                 else if ((acad_version_number <= AutoCAD_2006)
                         && (strcmp (temp_string, "50") == 0))
                 {
@@ -303,7 +317,117 @@ dxf_mtext_read
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_mtext->rot_angle);
                 }
+                else if ((acad_version_number >= AutoCAD_2007)
+                        && (strcmp (temp_string, "50") == 0))
+                {
+                        /* Can follows a string containing the
+                         * rotation angle or column heights. */
+                        (*line_number)++;
                 /*!< Add more code here, I'm stop because the double use of group code 50*/
+                }
+                else if (strcmp (temp_string, "63") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color to use for background fill. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->background_color);
+                }
+                else if (strcmp (temp_string, "71") == 0)
+                {
+                        /* Now follows a string containing the
+                         * attachment point. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->attachment_point);
+                }
+                else if (strcmp (temp_string, "72") == 0)
+                {
+                        /* Now follows a string containing the
+                         * drawing direction. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->drawing_direction);
+                }
+                else if (strcmp (temp_string, "73") == 0)
+                {
+                        /* Now follows a string containing the
+                         * mtext line spacing style. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->spacing_style);
+                }
+                else if (strcmp (temp_string, "75") == 0)
+                {
+                        /* Now follows a string containing the
+                         * column type. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->column_type);
+                }
+                else if (strcmp (temp_string, "76") == 0)
+                {
+                        /* Now follows a string containing the
+                         * column count. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->column_count);
+                }
+                else if (strcmp (temp_string, "78") == 0)
+                {
+                        /* Now follows a string containing the
+                         * column flow reverse. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->column_flow);
+                }
+                else if (strcmp (temp_string, "79") == 0)
+                {
+                        /* Now follows a string containing the
+                         * column autoheight. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->column_autoheight);
+                }
+                else if (strcmp (temp_string, "90") == 0)
+                {
+                        /* Now follows a string containing the
+                         * background fill setting. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->background_fill);
+                }
+                else if ((acad_version_number >= AutoCAD_12)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Subclass markers are post AutoCAD R12
+                         * variable so additional testing for the
+                         * version should probably be added here.
+                         * Now follows a string containing the
+                         * subclass marker value. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", temp_string);
+                }
+                else if (strcmp (temp_string, "210") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the extrusion vector. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->extr_x0);
+                }
+                else if (strcmp (temp_string, "220") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the extrusion vector. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->extr_y0);
+                }
+                else if (strcmp (temp_string, "230") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the extrusion vector. */
+                        (*line_number)++;
+                        fscanf (fp, "%lf\n", &dxf_mtext->extr_z0);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (*line_number)++;
+                        fscanf (fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+
                 else
                 {
                         fprintf (stderr, "Warning: in dxf_mtext_read () unknown string tag found while reading from: %s in line: %d.\n",
