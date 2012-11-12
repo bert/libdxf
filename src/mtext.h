@@ -40,6 +40,9 @@
 #include "entity.h"
 
 
+#define MAX_NUMBER_ADDITIONAL 1024
+
+
 typedef struct
 dxf_mtext
 {
@@ -51,7 +54,7 @@ dxf_mtext
                  * text string is greater than 250 characters, the string is divided into 250-character chunks, which
                  * appear in one or more group 3 codes. If group 3 codes are used, the last group is a group 1
                  * and has fewer than 250 characters.*/
-        char *text_additional_value[int number_additional];
+        char *text_additional_value[MAX_NUMBER_ADDITIONAL];
                 /*!< group code = 3\n
                      optional, only if the text string in group 1 is greater than 250 characters. */
         char *text_style;
@@ -116,14 +119,14 @@ dxf_mtext
         double rot_angle;
                 /*!< group code = 50\n
                  * rotation angle in radians. */
-        short int background_color;
+        int background_color;
                 /*!< group code = 63\n
                  * added on DXF 2007 and later\n
                  * optional, background fill color:\n
                  * Color to use for background fill when group code 90 is 1. */
-        short int attachment_point;
+        int attachment_point;
                 /*!< group code = 71\n
-  	         * attachment point:\n
+                 * attachment point:\n
                  * 1 = Top left\n
                  * 2 = Top center\n
                  * 3 = Top right\n
@@ -133,30 +136,30 @@ dxf_mtext
                  * 7 = Bottom left\n
                  * 8 = Bottom center\n
                  * 9 = Bottom right. */
-        short int drawing_direction;
+        int drawing_direction;
                 /*!< group code = 72\n
-  	         * drawing direction:\n
-  	         * 1 = Left to right\n
-  	         * 3 = Top to bottom\n
-  	         * 5 = By style (the flow direction is inherited from the associated text style). */
-        short int spacing_style;
+                 * drawing direction:\n
+                 * 1 = Left to right\n
+                 * 3 = Top to bottom\n
+                 * 5 = By style (the flow direction is inherited from the associated text style). */
+        int spacing_style;
                 /*!< group code = 73\n
                  * optional, mtext line spacing style:\n
                  * 1 = At least (taller characters will override)\n
                  * 2 = Exact (taller characters will not override). */
-        short int column_type;
+        int column_type;
                 /*!< group code = 75\n
                  * added on DXF 2007 and later\n
                  * column type. */
-        short int column_count;
+        int column_count;
                 /*!< group code = 76\n
                  * added on DXF 2007 and later\n
                  * column count. */
-        short int column_flow;
+        int column_flow;
                 /*!< group code = 78\n
                  * added on DXF 2007 and later\n
                  * column flow reversed. */
-        short int column_autoheight;
+        int column_autoheight;
                 /*!< group code = 79\n
                  * added on DXF 2007 and later\n
                  * column autoheight. */
@@ -219,7 +222,7 @@ dxf_mtext_write_lowlevel
         FILE *fp,
         int id_code,
         char *text_value;
-        char *text_additional_value[int number_additional];
+        char *text_additional_value[MAX_NUMBER_ADDITIONAL];
         char *text_style;
         char *layer,
         double x0;

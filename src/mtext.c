@@ -87,16 +87,20 @@ dxf_mtext_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_mtext_init () function.\n",
                 __FILE__, __LINE__);
 #endif
+        int i;
+
         dxf_mtext = dxf_mtext_new ();
         if (dxf_mtext == NULL)
         {
               fprintf (stderr, "ERROR in dxf_mtext_init () could not allocate memory for a DxfMtext struct.\n");
               return (NULL);
-        },
+        }
         dxf_mtext->common.id_code = 0;
         dxf_mtext->text_value = strdup ("");
-        //dxf_mtext->*text_additional_value[number_additional] = strdup ("");
-        /*!< I'm not sure this number_additional is correct. */
+        for (i = 1; i < MAX_NUMBER_ADDITIONAL; i++)
+        {
+                dxf_mtext->text_additional_value[i] = strdup ("");
+        }
         dxf_mtext->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_mtext->text_style = strdup ("");
         dxf_mtext->common.layer = strdup (DXF_DEFAULT_LAYER);
@@ -107,7 +111,6 @@ dxf_mtext_init
         dxf_mtext->y1 = 0.0;
         dxf_mtext->z1 = 0.0;
         dxf_mtext->height = 0.0;
-        dxf_mtext->rel_x_scale = 0.0;
         dxf_mtext->rectangle_width = 0.0;
         dxf_mtext->horizontal_width = 0.0;
         dxf_mtext->rectangle_height = 0.0;
@@ -127,7 +130,7 @@ dxf_mtext_init
         dxf_mtext->column_count = 0;
         dxf_mtext->column_flow = 0;
         dxf_mtext->column_autoheight = 0;
-        dxf_mtext->background_fill;
+        dxf_mtext->background_fill = 0;
         dxf_mtext->common.acad_version_number = 0;
         dxf_mtext->extr_x0 = 0.0;
         dxf_mtext->extr_y0 = 0.0;
@@ -330,63 +333,63 @@ dxf_mtext_read
                         /* Now follows a string containing the
                          * color to use for background fill. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->background_color);
+                        fscanf (fp, "%d\n", &dxf_mtext->background_color);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a string containing the
                          * attachment point. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->attachment_point);
+                        fscanf (fp, "%d\n", &dxf_mtext->attachment_point);
                 }
                 else if (strcmp (temp_string, "72") == 0)
                 {
                         /* Now follows a string containing the
                          * drawing direction. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->drawing_direction);
+                        fscanf (fp, "%d\n", &dxf_mtext->drawing_direction);
                 }
                 else if (strcmp (temp_string, "73") == 0)
                 {
                         /* Now follows a string containing the
                          * mtext line spacing style. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->spacing_style);
+                        fscanf (fp, "%d\n", &dxf_mtext->spacing_style);
                 }
                 else if (strcmp (temp_string, "75") == 0)
                 {
                         /* Now follows a string containing the
                          * column type. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->column_type);
+                        fscanf (fp, "%d\n", &dxf_mtext->column_type);
                 }
                 else if (strcmp (temp_string, "76") == 0)
                 {
                         /* Now follows a string containing the
                          * column count. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->column_count);
+                        fscanf (fp, "%d\n", &dxf_mtext->column_count);
                 }
                 else if (strcmp (temp_string, "78") == 0)
                 {
                         /* Now follows a string containing the
                          * column flow reverse. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->column_flow);
+                        fscanf (fp, "%d\n", &dxf_mtext->column_flow);
                 }
                 else if (strcmp (temp_string, "79") == 0)
                 {
                         /* Now follows a string containing the
                          * column autoheight. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->column_autoheight);
+                        fscanf (fp, "%d\n", &dxf_mtext->column_autoheight);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
                         /* Now follows a string containing the
                          * background fill setting. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->background_fill);
+                        fscanf (fp, "%d\n", &dxf_mtext->background_fill);
                 }
                 else if ((acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
