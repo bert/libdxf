@@ -143,10 +143,8 @@ dxf_arc_read
                 /*!< filepointer to the input file (or device). */
         int *line_number,
                 /*!< current line number in the input file (or device). */
-        DxfArc *dxf_arc,
+        DxfArc *dxf_arc
                 /*!< DXF \c ARC entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -211,7 +209,7 @@ dxf_arc_read
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_arc->z0);
                 }
-                else if ((acad_version_number <= AutoCAD_11)
+                else if ((dxf_arc->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_arc->z0 = 0.0))
                 {
@@ -262,7 +260,7 @@ dxf_arc_read
                         (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_arc->paperspace);
                 }
-                else if ((acad_version_number >= AutoCAD_12)
+                else if ((dxf_arc->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /*!

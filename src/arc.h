@@ -115,21 +115,15 @@ dxf_arc
 } DxfArc, * DxfArcPtr;
 
 
-DxfArc *
-dxf_arc_new ();
-DxfArc *
-dxf_arc_init
-(
-        DxfArc *dxf_arc
-);
+DxfArc *dxf_arc_new ();
+DxfArc *dxf_arc_init (DxfArc *dxf_arc);
 int
 dxf_arc_read
 (
         char *filename,
         FILE *fp,
         int *line_number,
-        DxfArc *dxf_arc,
-        int acad_version_number
+        DxfArc *dxf_arc
 );
 int
 dxf_arc_write_lowlevel
@@ -152,17 +146,8 @@ dxf_arc_write_lowlevel
         int paperspace,
         int acad_version_number
 );
-int
-dxf_arc_write
-(
-        FILE *fp,
-        DxfArc dxf_arc
-);
-int
-dxf_arc_free
-(
-        DxfArc *dxf_arc
-);
+int dxf_arc_write (FILE *fp, DxfArc dxf_arc);
+int dxf_arc_free (DxfArc *dxf_arc);
 
 
 #endif /* _ARC_H */
