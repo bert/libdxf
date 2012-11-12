@@ -97,16 +97,20 @@ dxf_mtext
                    Percentage of default (3-on-5) line spacing to be applied. Valid values range from 0.25 to 4.00. */
         double box_scale;
                 /*!< group code = 45\n
+                 * added on DXF 2007 and later\n
                  * optional, fill box scale:\n
                  * Determines how much border is around the text.  */
         double column_width;
                 /*!< group code = 48\n
+                 * added on DXF 2007 and later\n
                  * column width. */
         double column_gutter;
                 /*!< group code = 49\n
+                 * added on DXF 2007 and later\n
                  * column gutter. */
         double column_heights;
                 /*!< group code = 50\n
+                 * added on DXF 2007 and later\n
                  * column heights this code is followed by a column count (Int16), and then the number of
                  * column heights. */
         double rot_angle;
@@ -114,6 +118,7 @@ dxf_mtext
                  * rotation angle in radians. */
         short int background_color;
                 /*!< group code = 63\n
+                 * added on DXF 2007 and later\n
                  * optional, background fill color:\n
                  * Color to use for background fill when group code 90 is 1. */
         short int attachment_point;
@@ -141,18 +146,23 @@ dxf_mtext
                  * 2 = Exact (taller characters will not override). */
         short int column_type;
                 /*!< group code = 75\n
+                 * added on DXF 2007 and later\n
                  * column type. */
         short int column_count;
                 /*!< group code = 76\n
+                 * added on DXF 2007 and later\n
                  * column count. */
         short int column_flow;
                 /*!< group code = 78\n
+                 * added on DXF 2007 and later\n
                  * column flow reversed. */
         short int column_autoheight;
                 /*!< group code = 79\n
+                 * added on DXF 2007 and later\n
                  * column autoheight. */
         int background_fill;
                 /*!< group code = 90\n
+                 * added on DXF 2007 and later\n
                  * Background fill setting:\n
                  * 0 = Background fill off\n
                  * 1 = Use background fill color\n
@@ -171,14 +181,17 @@ dxf_mtext
                  * Z-value of the extrusion direction. */
       //int background_color_rgb;
                 /*!< group code = 420-429\n
+                 * added on DXF 2007 and later\n
                  * background color (if RGB color).\n
                  * I don't know how is it... */
       //char background_color_name;
                 /*!< group code = 430-439\n
+                 * added on DXF 2007 and later\n
                  * background color (if color name).\n
                  * I don't know how is it... */
       //int bacground_transparency;
                 /*!< group code = 441\n
+                 * added on DXF 2007 and later\n
                  * transparency of background fill color.\n
                  * (not implemented in AutoCAD). */
 } DxfMtext, * DxfMtextPtr;
