@@ -106,7 +106,6 @@ dxf_mtext_init
         dxf_mtext->x1 = 0.0;
         dxf_mtext->y1 = 0.0;
         dxf_mtext->z1 = 0.0;
-        dxf_mtext->common.thickness = 0.0;
         dxf_mtext->height = 0.0;
         dxf_mtext->rel_x_scale = 0.0;
         dxf_mtext->rectangle_width = 0.0;
@@ -253,13 +252,6 @@ dxf_mtext_read
                          * Z-coordinate of the insertion point. */
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_mtext->z0);
-                }
-                else if (strcmp (temp_string, "39") == 0)
-                {
-                        /* Now follows a string containing the
-                         * thickness. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->common.thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
