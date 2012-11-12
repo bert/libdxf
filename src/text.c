@@ -55,7 +55,7 @@ dxf_text_new ()
         if (size == 0) size = 1;
         if ((dxf_text = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_text_new () could not allocate memory for a DxfSolid struct.\n");
+                fprintf (stderr, "ERROR in dxf_text_new () could not allocate memory for a DxfText struct.\n");
                 dxf_text = NULL;
         }
         else
