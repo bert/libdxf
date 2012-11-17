@@ -119,12 +119,12 @@ dxf_mtext
         double rot_angle;
                 /*!< group code = 50\n
                  * rotation angle in radians. */
-        int background_color;
+        short int background_color;
                 /*!< group code = 63\n
                  * added on DXF 2007 and later\n
                  * optional, background fill color:\n
                  * Color to use for background fill when group code 90 is 1. */
-        int attachment_point;
+        short int attachment_point;
                 /*!< group code = 71\n
                  * attachment point:\n
                  * 1 = Top left\n
@@ -136,30 +136,30 @@ dxf_mtext
                  * 7 = Bottom left\n
                  * 8 = Bottom center\n
                  * 9 = Bottom right. */
-        int drawing_direction;
+        short int drawing_direction;
                 /*!< group code = 72\n
                  * drawing direction:\n
                  * 1 = Left to right\n
                  * 3 = Top to bottom\n
                  * 5 = By style (the flow direction is inherited from the associated text style). */
-        int spacing_style;
+        short int spacing_style;
                 /*!< group code = 73\n
                  * optional, mtext line spacing style:\n
                  * 1 = At least (taller characters will override)\n
                  * 2 = Exact (taller characters will not override). */
-        int column_type;
+        short int column_type;
                 /*!< group code = 75\n
                  * added on DXF 2007 and later\n
                  * column type. */
-        int column_count;
+        short int column_count;
                 /*!< group code = 76\n
                  * added on DXF 2007 and later\n
                  * column count. */
-        int column_flow;
+        short int column_flow;
                 /*!< group code = 78\n
                  * added on DXF 2007 and later\n
                  * column flow reversed. */
-        int column_autoheight;
+        short int column_autoheight;
                 /*!< group code = 79\n
                  * added on DXF 2007 and later\n
                  * column autoheight. */
