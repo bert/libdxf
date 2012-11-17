@@ -96,8 +96,9 @@ dxf_mtext
                  * vertical height of the mtext entity (read-only, ignored if supplied). */
         double spacing_factor;
                 /*!< group code = 44\n
+                 * added on DXF 2000 and later\n
                  * text line spacing factor (optional):\n
-                   Percentage of default (3-on-5) line spacing to be applied. Valid values range from 0.25 to 4.00. */
+                 * Percentage of default (3-on-5) line spacing to be applied. Valid values range from 0.25 to 4.00. */
         double box_scale;
                 /*!< group code = 45\n
                  * added on DXF 2007 and later\n
@@ -119,12 +120,12 @@ dxf_mtext
         double rot_angle;
                 /*!< group code = 50\n
                  * rotation angle in radians. */
-        short int background_color;
+        int background_color;
                 /*!< group code = 63\n
                  * added on DXF 2007 and later\n
                  * optional, background fill color:\n
                  * Color to use for background fill when group code 90 is 1. */
-        short int attachment_point;
+        int attachment_point;
                 /*!< group code = 71\n
                  * attachment point:\n
                  * 1 = Top left\n
@@ -136,30 +137,31 @@ dxf_mtext
                  * 7 = Bottom left\n
                  * 8 = Bottom center\n
                  * 9 = Bottom right. */
-        short int drawing_direction;
+        int drawing_direction;
                 /*!< group code = 72\n
                  * drawing direction:\n
                  * 1 = Left to right\n
                  * 3 = Top to bottom\n
                  * 5 = By style (the flow direction is inherited from the associated text style). */
-        short int spacing_style;
+        int spacing_style;
                 /*!< group code = 73\n
+                 * added on DXF 2000 and later\n
                  * optional, mtext line spacing style:\n
                  * 1 = At least (taller characters will override)\n
                  * 2 = Exact (taller characters will not override). */
-        short int column_type;
+        int column_type;
                 /*!< group code = 75\n
                  * added on DXF 2007 and later\n
                  * column type. */
-        short int column_count;
+        int column_count;
                 /*!< group code = 76\n
                  * added on DXF 2007 and later\n
                  * column count. */
-        short int column_flow;
+        int column_flow;
                 /*!< group code = 78\n
                  * added on DXF 2007 and later\n
                  * column flow reversed. */
-        short int column_autoheight;
+        int column_autoheight;
                 /*!< group code = 79\n
                  * added on DXF 2007 and later\n
                  * column autoheight. */
