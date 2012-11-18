@@ -424,7 +424,7 @@ dxf_dimension
 
 DxfDimStyle *dxf_dimstyle_new ();
 DxfDimStyle *dxf_dimstyle_init (DxfDimStyle *dxf_dimstyle);
-int dxf_dimstyle_write (FILE *fp, DxfDimStyle dxf_dimstyle);
+int dxf_dimstyle_write (FILE *fp, DxfDimStyle *dxf_dimstyle);
 int dxf_dimstyle_free (DxfDimStyle *dxf_dimstyle);
 
 
