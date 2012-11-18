@@ -419,8 +419,8 @@ dxf_block_write
 (
         FILE *fp,
                 /*!< file pointer to output device */
-        DxfBlock dxf_block
-                /*!< block entity */
+        DxfBlock *dxf_block
+                /*!< DXF block entity */
 )
 {
 #if DEBUG
@@ -428,69 +428,74 @@ dxf_block_write
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("BLOCK");
-        if (dxf_block.block_name == NULL)
+        if (dxf_block == NULL)
+        {
+                return (EXIT_FAILURE);
+                fprintf (stderr, "Error in dxf_block_write () a NULL pointer was passed.\n");
+        }
+        if (dxf_block->block_name == NULL)
         {
                 fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_block.id_code);
+                        dxf_entity_name, dxf_block->id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_block.xref_name == NULL)
+        if (dxf_block->xref_name == NULL)
         {
                 fprintf (stderr, "Warning: empty xref name string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_block.id_code);
+                        dxf_entity_name, dxf_block->id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_block.description == NULL)
+        if (dxf_block->description == NULL)
         {
                 fprintf (stderr, "Warning: NULL pointer to description string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_block.id_code);
-                dxf_block.description = strdup ("");
+                        dxf_entity_name, dxf_block->id_code);
+                dxf_block->description = strdup ("");
         }
-        if (strcmp (dxf_block.layer, "") == 0)
+        if (strcmp (dxf_block->layer, "") == 0)
         {
                 fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_block.id_code);
+                        dxf_entity_name, dxf_block->id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0.\n",
                         dxf_entity_name);
-                dxf_block.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_block->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_block.soft_owner_object == NULL)
+        if (dxf_block->soft_owner_object == NULL)
         {
                 fprintf (stderr, "Warning: NULL pointer to soft owner object string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_block.id_code);
-                dxf_block.soft_owner_object = strdup ("");
+                        dxf_entity_name, dxf_block->id_code);
+                dxf_block->soft_owner_object = strdup ("");
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if ((dxf_block.block_type && 4) || (dxf_block.block_type && 32))
+        if ((dxf_block->block_type && 4) || (dxf_block->block_type && 32))
         {
-                fprintf (fp, "  1\n%s\n", dxf_block.xref_name);
+                fprintf (fp, "  1\n%s\n", dxf_block->xref_name);
         }
-        fprintf (fp, "  2\n%s\n", dxf_block.block_name);
-        fprintf (fp, "  3\n%s\n", dxf_block.block_name);
-        if (strcmp (dxf_block.description, "") != 0)
+        fprintf (fp, "  2\n%s\n", dxf_block->block_name);
+        fprintf (fp, "  3\n%s\n", dxf_block->block_name);
+        if (strcmp (dxf_block->description, "") != 0)
         {
-                fprintf (fp, "  4\n%s\n", dxf_block.description);
+                fprintf (fp, "  4\n%s\n", dxf_block->description);
         }
-        if (dxf_block.id_code != -1)
+        if (dxf_block->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_block.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_block->id_code);
         }
-        fprintf (fp, "  8\n%s\n", dxf_block.layer);
-        fprintf (fp, " 10\n%f\n", dxf_block.x0);
-        fprintf (fp, " 20\n%f\n", dxf_block.y0);
-        fprintf (fp, " 30\n%f\n", dxf_block.z0);
-        fprintf (fp, " 70\n%d\n", dxf_block.block_type);
-        if (strcmp (dxf_block.soft_owner_object, "") != 0)
+        fprintf (fp, "  8\n%s\n", dxf_block->layer);
+        fprintf (fp, " 10\n%f\n", dxf_block->x0);
+        fprintf (fp, " 20\n%f\n", dxf_block->y0);
+        fprintf (fp, " 30\n%f\n", dxf_block->z0);
+        fprintf (fp, " 70\n%d\n", dxf_block->block_type);
+        if (strcmp (dxf_block->soft_owner_object, "") != 0)
         {
-                fprintf (fp, "330\n%s\n", dxf_block.soft_owner_object);
+                fprintf (fp, "330\n%s\n", dxf_block->soft_owner_object);
         }
-        if (strcmp (dxf_block.hard_owner_object, "") != 0)
+        if (strcmp (dxf_block->hard_owner_object, "") != 0)
         {
-                fprintf (fp, "360\n%s\n", dxf_block.hard_owner_object);
+                fprintf (fp, "360\n%s\n", dxf_block->hard_owner_object);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write () function.\n",

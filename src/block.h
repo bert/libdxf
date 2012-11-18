@@ -159,7 +159,7 @@ int dxf_block_write_lowlevel
         char *soft_owner_object,
         char *hard_owner_object
 );
-int dxf_blocks_write (FILE *fp, DxfBlock dxf_block);
+int dxf_blocks_write (FILE *fp, DxfBlock *dxf_block);
 int dxf_block_write_endblk (FILE *fp);
 int dxf_block_write_table (char *dxf_blocks_list, int acad_version_number);
 int dxf_block_free (DxfBlock *dxf_block);
