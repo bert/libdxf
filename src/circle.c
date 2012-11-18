@@ -398,7 +398,7 @@ dxf_circle_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfCircle dxf_circle
+        DxfCircle *dxf_circle
                 /*!< DXF circle entity. */
 )
 {
@@ -408,45 +408,50 @@ dxf_circle_write
 #endif
         char *dxf_entity_name = strdup ("CIRCLE");
 
-        if (dxf_circle.radius == 0.0)
+        if (dxf_circle == NULL)
+        {
+                return (EXIT_FAILURE);
+                fprintf (stderr, "Error in dxf_circle_write () a NULL pointer was passed.\n");
+        }
+        if (dxf_circle->radius == 0.0)
         {
                 fprintf (stderr, "Error in dxf_circle_write () radius value equals 0.0 for the %s entity with id-code: %x\n",
                         dxf_entity_name,
-                        dxf_circle.id_code);
+                        dxf_circle->id_code);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_circle.layer, "") == 0)
+        if (strcmp (dxf_circle->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_circle_write () empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name,
-                        dxf_circle.id_code);
+                        dxf_circle->id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name );
-                dxf_circle.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_circle->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_circle.id_code != -1)
+        if (dxf_circle->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_circle.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_circle->id_code);
         }
-        if (strcmp (dxf_circle.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_circle->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_circle.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_circle->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_circle.layer);
-        fprintf (fp, " 10\n%f\n", dxf_circle.x0);
-        fprintf (fp, " 20\n%f\n", dxf_circle.y0);
-        fprintf (fp, " 30\n%f\n", dxf_circle.z0);
-        if (dxf_circle.thickness != 0.0)
+        fprintf (fp, "  8\n%s\n", dxf_circle->layer);
+        fprintf (fp, " 10\n%f\n", dxf_circle->x0);
+        fprintf (fp, " 20\n%f\n", dxf_circle->y0);
+        fprintf (fp, " 30\n%f\n", dxf_circle->z0);
+        if (dxf_circle->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_circle.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_circle->thickness);
         }
-        fprintf (fp, " 40\n%f\n", dxf_circle.radius);
-        if (dxf_circle.color != DXF_COLOR_BYLAYER)
+        fprintf (fp, " 40\n%f\n", dxf_circle->radius);
+        if (dxf_circle->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_circle.color);
+                fprintf (fp, " 62\n%d\n", dxf_circle->color);
         }
-        if (dxf_circle.paperspace == DXF_PAPERSPACE)
+        if (dxf_circle->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }

@@ -130,7 +130,7 @@ dxf_circle_write_lowlevel
         int paperspace,
         int acad_version_number
 );
-int dxf_circle_write (FILE *fp, DxfCircle dxf_circle);
+int dxf_circle_write (FILE *fp, DxfCircle *dxf_circle);
 int dxf_circle_free (DxfCircle *dxf_circle);
 
 
