@@ -173,7 +173,7 @@ int
 dxf_3dface_write
 (
         FILE *fp,
-        Dxf3dface dxf_3dface,
+        Dxf3dface *dxf_3dface,
         int acad_version_number
 );
 int

@@ -495,7 +495,7 @@ dxf_3dface_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        Dxf3dface dxf_3dface,
+        Dxf3dface *dxf_3dface,
                 /*!< DXF 3D face entity. */
         int acad_version_number
                 /*!< AutoCAD version number. */
@@ -507,45 +507,50 @@ dxf_3dface_write
 #endif
         char *dxf_entity_name = strdup ("3DFACE");
 
-        if (strcmp (dxf_3dface.layer, "") == 0)
+        if (dxf_3dface == NULL)
+        {
+                return (EXIT_FAILURE);
+                fprintf (stderr, "Error in dxf_3dface_write () a NULL pointer was passed.\n");
+        }
+        if (strcmp (dxf_3dface->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_3dface_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_3dface.id_code);
+                        dxf_entity_name, dxf_3dface->id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
-                dxf_3dface.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_3dface->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_3dface.id_code != -1)
+        if (dxf_3dface->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_3dface.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_3dface->id_code);
         }
-        if (strcmp (dxf_3dface.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_3dface->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_3dface.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_3dface->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_3dface.layer);
-        fprintf (fp, " 10\n%f\n", dxf_3dface.x0);
-        fprintf (fp, " 20\n%f\n", dxf_3dface.y0);
-        fprintf (fp, " 30\n%f\n", dxf_3dface.z0);
-        fprintf (fp, " 11\n%f\n", dxf_3dface.x1);
-        fprintf (fp, " 21\n%f\n", dxf_3dface.y1);
-        fprintf (fp, " 31\n%f\n", dxf_3dface.z1);
-        fprintf (fp, " 12\n%f\n", dxf_3dface.x2);
-        fprintf (fp, " 22\n%f\n", dxf_3dface.y2);
-        fprintf (fp, " 32\n%f\n", dxf_3dface.z2);
-        fprintf (fp, " 13\n%f\n", dxf_3dface.x3);
-        fprintf (fp, " 23\n%f\n", dxf_3dface.y3);
-        fprintf (fp, " 33\n%f\n", dxf_3dface.z3);
-        if (dxf_3dface.thickness != 0.0)
+        fprintf (fp, "  8\n%s\n", dxf_3dface->layer);
+        fprintf (fp, " 10\n%f\n", dxf_3dface->x0);
+        fprintf (fp, " 20\n%f\n", dxf_3dface->y0);
+        fprintf (fp, " 30\n%f\n", dxf_3dface->z0);
+        fprintf (fp, " 11\n%f\n", dxf_3dface->x1);
+        fprintf (fp, " 21\n%f\n", dxf_3dface->y1);
+        fprintf (fp, " 31\n%f\n", dxf_3dface->z1);
+        fprintf (fp, " 12\n%f\n", dxf_3dface->x2);
+        fprintf (fp, " 22\n%f\n", dxf_3dface->y2);
+        fprintf (fp, " 32\n%f\n", dxf_3dface->z2);
+        fprintf (fp, " 13\n%f\n", dxf_3dface->x3);
+        fprintf (fp, " 23\n%f\n", dxf_3dface->y3);
+        fprintf (fp, " 33\n%f\n", dxf_3dface->z3);
+        if (dxf_3dface->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_3dface.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_3dface->thickness);
         }
-        if (dxf_3dface.color != DXF_COLOR_BYLAYER)
+        if (dxf_3dface->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_3dface.color);
+                fprintf (fp, " 62\n%d\n", dxf_3dface->color);
         }
-        if (dxf_3dface.paperspace == DXF_PAPERSPACE)
+        if (dxf_3dface->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
