@@ -318,7 +318,7 @@ dxf_class_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfClass dxf_class
+        DxfClass *dxf_class
                 /*!< DXF class section. */
 )
 {
@@ -327,13 +327,42 @@ dxf_class_write
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("CLASS");
+
+        if (dxf_class == NULL)
+        {
+                return (EXIT_FAILURE);
+                fprintf (stderr, "Error in dxf_class_write () a NULL pointer was passed.\n");
+        }
+        if (!dxf_class->class_name
+                || (strcmp (dxf_class->class_name, "") == 0))
+        {
+                fprintf (stderr, "Error in dxf_class_write () empty class_name string for the %s entity\n",
+                        dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (!dxf_class->record_name)
+        {
+                fprintf (stderr, "Warning in dxf_class_write () empty record_name string for the %s entity\n",
+                        dxf_entity_name);
+                fprintf (stderr, "    record_name of %s entity is reset to \"\"",
+                        dxf_entity_name );
+                dxf_class->record_name = strdup ("");
+        }
+        if (!dxf_class->app_name)
+        {
+                fprintf (stderr, "Warning in dxf_class_write () empty app_name string for the %s entity\n",
+                        dxf_entity_name);
+                fprintf (stderr, "    app_name of %s entity is reset to \"\"",
+                        dxf_entity_name );
+                dxf_class->app_name = strdup ("");
+        }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp, "  1\n%s\n", dxf_class.record_name);
-        fprintf (fp, "  2\n%s\n", dxf_class.class_name);
-        fprintf (fp, "  3\n%s\n", dxf_class.app_name);
-        fprintf (fp, " 90\n%d\n", dxf_class.proxy_cap_flag);
-        fprintf (fp, "280\n%d\n", dxf_class.was_a_proxy_flag);
-        fprintf (fp, "281\n%d\n", dxf_class.is_an_entity_flag);
+        fprintf (fp, "  1\n%s\n", dxf_class->record_name);
+        fprintf (fp, "  2\n%s\n", dxf_class->class_name);
+        fprintf (fp, "  3\n%s\n", dxf_class->app_name);
+        fprintf (fp, " 90\n%d\n", dxf_class->proxy_cap_flag);
+        fprintf (fp, "280\n%d\n", dxf_class->was_a_proxy_flag);
+        fprintf (fp, "281\n%d\n", dxf_class->is_an_entity_flag);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_class_write () function.\n",
                 __FILE__, __LINE__);
