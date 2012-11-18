@@ -201,17 +201,17 @@ dxf_mtext
                 /*!< group code = 230\n
                  * Optional, defaults to 1.0.\n
                  * Z-value of the extrusion direction. */
-      //int background_color_rgb;
+        int32_t background_color_rgb;
                 /*!< group code = 420-429\n
                  * added on DXF 2007 and later\n
                  * background color (if RGB color).\n
                  * I don't know how is it... */
-      //char background_color_name;
+        char *background_color_name;
                 /*!< group code = 430-439\n
                  * added on DXF 2007 and later\n
                  * background color (if color name).\n
                  * I don't know how is it... */
-      //int bacground_transparency;
+        int32_t background_transparency;
                 /*!< group code = 441\n
                  * added on DXF 2007 and later\n
                  * transparency of background fill color.\n

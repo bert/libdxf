@@ -135,9 +135,9 @@ dxf_mtext_init
         dxf_mtext->extr_x0 = 0.0;
         dxf_mtext->extr_y0 = 0.0;
         dxf_mtext->extr_z0 = 0.0;
-      //dxf_mtext->background_color_rgb = 0;
-      //dxf_mtext->background_color_name = strdup ("");
-      //dxf_mtext->bacground_transparency = 0;
+        dxf_mtext->background_color_rgb = 0;
+        dxf_mtext->background_color_name = strdup ("");
+        dxf_mtext->background_transparency = 0;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_mtext_init () function.\n",
                 __FILE__, __LINE__);
