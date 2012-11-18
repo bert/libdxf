@@ -715,6 +715,11 @@ dxf_attdef_write
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("ATTDEF");
+        if (dxf_attdef == NULL)
+        {
+                return (EXIT_FAILURE);
+                fprintf (stderr, "Error in dxf_attdef_write () a NULL pointer was passed.\n");
+        }
         if (strcmp (dxf_attdef->tag_value, "") == 0)
         {
                 fprintf (stderr, "Error in dxf_attdef_write () default value string is empty for the %s entity with id-code: %x.\n",
