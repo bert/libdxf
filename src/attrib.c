@@ -653,7 +653,7 @@ dxf_attrib_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfAttrib dxf_attrib
+        DxfAttrib *dxf_attrib
                 /*!< DXF attribute entity */
 )
 {
@@ -662,129 +662,134 @@ dxf_attrib_write
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("ATTRIB");
-        if (strcmp (dxf_attrib.value, "") == 0)
+        if (dxf_attrib == NULL)
+        {
+                return (EXIT_FAILURE);
+                fprintf (stderr, "Error in dxf_attrib_write () a NULL pointer was passed.\n");
+        }
+        if (strcmp (dxf_attrib->value, "") == 0)
         {
                 fprintf (stderr, "Error in dxf_attrib_write () default value string is empty for the %s entity with id-code: %x.\n",
-                         dxf_entity_name, dxf_attrib.id_code);
+                         dxf_entity_name, dxf_attrib->id_code);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_attrib.tag_value, "") == 0)
+        if (strcmp (dxf_attrib->tag_value, "") == 0)
         {
                 fprintf (stderr, "Error in dxf_attrib_write () tag value string is empty for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_attrib.id_code);
+                        dxf_entity_name, dxf_attrib->id_code);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_attrib.text_style, "") == 0)
+        if (strcmp (dxf_attrib->text_style, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_attrib_write () text style string is empty for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_attrib.id_code);
+                        dxf_entity_name, dxf_attrib->id_code);
                 fprintf (stderr, "    default text style STANDARD applied to %s entity.\n",
                         dxf_entity_name);
-                dxf_attrib.text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
+                dxf_attrib->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
         }
-        if (strcmp (dxf_attrib.layer, "") == 0)
+        if (strcmp (dxf_attrib->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_attrib_write () empty layer string for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_attrib.id_code);
+                        dxf_entity_name, dxf_attrib->id_code);
                 fprintf (stderr, "    %s entity is relocated to the default layer.\n",
                         dxf_entity_name);
-                dxf_attrib.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_attrib->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_attrib.height == 0.0)
+        if (dxf_attrib->height == 0.0)
         {
                 fprintf (stderr, "Warning in dxf_attrib_write () height has a value of 0.0 for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_attrib.id_code);
+                        dxf_entity_name, dxf_attrib->id_code);
                 fprintf (stderr, "    default height of 1.0 applied to %s entity.\n",
                         dxf_entity_name);
-                dxf_attrib.height = 1.0;
+                dxf_attrib->height = 1.0;
         }
-        if (dxf_attrib.rel_x_scale == 0.0)
+        if (dxf_attrib->rel_x_scale == 0.0)
         {
                 fprintf (stderr, "Warning in dxf_attrib_write () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_attrib.id_code);
+                        dxf_entity_name, dxf_attrib->id_code);
                 fprintf (stderr, "    default relative X-scale of 1.0 applied to %s entity.\n", dxf_entity_name);
-                dxf_attrib.rel_x_scale = 1.0;
+                dxf_attrib->rel_x_scale = 1.0;
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp, "  1\n%s\n", dxf_attrib.value);
-        fprintf (fp, "  2\n%s\n", dxf_attrib.tag_value);
-        if (dxf_attrib.id_code != -1)
+        fprintf (fp, "  1\n%s\n", dxf_attrib->value);
+        fprintf (fp, "  2\n%s\n", dxf_attrib->tag_value);
+        if (dxf_attrib->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_attrib.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_attrib->id_code);
         }
-        if (strcmp (dxf_attrib.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_attrib->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_attrib.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_attrib->linetype);
         }
-        if (strcmp (dxf_attrib.text_style, "STANDARD") != 0)
+        if (strcmp (dxf_attrib->text_style, "STANDARD") != 0)
         {
-                fprintf (fp, "  7\n%s\n", dxf_attrib.text_style);
+                fprintf (fp, "  7\n%s\n", dxf_attrib->text_style);
         }
-        fprintf (fp, "  8\n%s\n", dxf_attrib.layer);
-        fprintf (fp, " 10\n%f\n", dxf_attrib.x0);
-        fprintf (fp, " 20\n%f\n", dxf_attrib.y0);
-        fprintf (fp, " 30\n%f\n", dxf_attrib.z0);
-        if ((dxf_attrib.hor_align != 0) || (dxf_attrib.vert_align != 0))
+        fprintf (fp, "  8\n%s\n", dxf_attrib->layer);
+        fprintf (fp, " 10\n%f\n", dxf_attrib->x0);
+        fprintf (fp, " 20\n%f\n", dxf_attrib->y0);
+        fprintf (fp, " 30\n%f\n", dxf_attrib->z0);
+        if ((dxf_attrib->hor_align != 0) || (dxf_attrib->vert_align != 0))
         {
-                if ((dxf_attrib.x0 == dxf_attrib.x1)
-                        && (dxf_attrib.y0 == dxf_attrib.y1)
-                        && (dxf_attrib.z0 == dxf_attrib.z1))
+                if ((dxf_attrib->x0 == dxf_attrib->x1)
+                        && (dxf_attrib->y0 == dxf_attrib->y1)
+                        && (dxf_attrib->z0 == dxf_attrib->z1))
                 {
                         fprintf (stderr, "Warning in dxf_attrib_write () insertion point and alignment point are identical for the %s entity with id-code: %x.\n",
-                                dxf_entity_name, dxf_attrib.id_code);
+                                dxf_entity_name, dxf_attrib->id_code);
                         fprintf (stderr, "    default justification applied to %s entity\n",
                                 dxf_entity_name);
-                        dxf_attrib.hor_align = 0;
-                        dxf_attrib.vert_align = 0;
+                        dxf_attrib->hor_align = 0;
+                        dxf_attrib->vert_align = 0;
                 }
                 else
                 {
-                        fprintf (fp, " 11\n%f\n", dxf_attrib.x1);
-                        fprintf (fp, " 21\n%f\n", dxf_attrib.y1);
-                        fprintf (fp, " 31\n%f\n", dxf_attrib.z1);
+                        fprintf (fp, " 11\n%f\n", dxf_attrib->x1);
+                        fprintf (fp, " 21\n%f\n", dxf_attrib->y1);
+                        fprintf (fp, " 31\n%f\n", dxf_attrib->z1);
                 }
         }
-        if (dxf_attrib.thickness != 0.0)
+        if (dxf_attrib->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_attrib.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_attrib->thickness);
         }
-        fprintf (fp, " 40\n%f\n", dxf_attrib.height);
-        if (dxf_attrib.rel_x_scale != 1.0)
+        fprintf (fp, " 40\n%f\n", dxf_attrib->height);
+        if (dxf_attrib->rel_x_scale != 1.0)
         {
-                fprintf (fp, " 41\n%f\n", dxf_attrib.rel_x_scale);
+                fprintf (fp, " 41\n%f\n", dxf_attrib->rel_x_scale);
         }
-        if (dxf_attrib.rot_angle != 0.0)
+        if (dxf_attrib->rot_angle != 0.0)
         {
-                fprintf (fp, " 50\n%f\n", dxf_attrib.rot_angle);
+                fprintf (fp, " 50\n%f\n", dxf_attrib->rot_angle);
         }
-        if (dxf_attrib.obl_angle != 0.0)
+        if (dxf_attrib->obl_angle != 0.0)
         {
-                fprintf (fp, " 51\n%f\n", dxf_attrib.obl_angle);
+                fprintf (fp, " 51\n%f\n", dxf_attrib->obl_angle);
         }
-        if (dxf_attrib.color != DXF_COLOR_BYLAYER)
+        if (dxf_attrib->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_attrib.color);
+                fprintf (fp, " 62\n%d\n", dxf_attrib->color);
         }
-        if (dxf_attrib.paperspace == DXF_PAPERSPACE)
+        if (dxf_attrib->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp, " 70\n%d\n", dxf_attrib.attr_flags);
-        if (dxf_attrib.text_flags != 0)
+        fprintf (fp, " 70\n%d\n", dxf_attrib->attr_flags);
+        if (dxf_attrib->text_flags != 0)
         {
-                fprintf (fp, " 71\n%d\n", dxf_attrib.text_flags);
+                fprintf (fp, " 71\n%d\n", dxf_attrib->text_flags);
         }
-        if (dxf_attrib.hor_align != 0)
+        if (dxf_attrib->hor_align != 0)
         {
-                fprintf (fp, " 72\n%d\n", dxf_attrib.hor_align);
+                fprintf (fp, " 72\n%d\n", dxf_attrib->hor_align);
         }
-        if (dxf_attrib.field_length != 0)
+        if (dxf_attrib->field_length != 0)
         {
-                fprintf (fp, " 73\n%d\n", dxf_attrib.field_length);
+                fprintf (fp, " 73\n%d\n", dxf_attrib->field_length);
         }
-        if (dxf_attrib.vert_align != 0)
+        if (dxf_attrib->vert_align != 0)
         {
-                fprintf (fp, " 74\n%d\n", dxf_attrib.vert_align);
+                fprintf (fp, " 74\n%d\n", dxf_attrib->vert_align);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attrib_write () function.\n",

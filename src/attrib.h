@@ -217,7 +217,7 @@ int
 dxf_attrib_write
 (
         FILE *fp,
-        DxfAttrib dxf_attrib
+        DxfAttrib *dxf_attrib
 );
 int
 dxf_attrib_free
