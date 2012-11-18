@@ -111,6 +111,7 @@ dxf_mtext
                  * ignored if supplied). */
         double spacing_factor;
                 /*!< group code = 44\n
+                 * Added in DXF 2000 and later.\n
                  * Text line spacing factor (optional):\n
                  * Percentage of default (3-on-5) line spacing to be
                  * applied.\n
@@ -274,15 +275,15 @@ dxf_mtext_write_lowlevel
         double extr_x0;
         double extr_y0;
         double extr_z0;
-      //double background_color_rgb;
-      //char background_color_name;
-      //int bacground_transparency;
+        int32_t background_color_rgb;
+        char background_color_name;
+        int32_t background_transparency;
 );
 int
 dxf_mtext_write
 (
         FILE *fp,
-        DxfMtext dxf_mtext
+        DxfMtext *dxf_mtext
 );
 
 
