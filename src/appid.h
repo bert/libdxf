@@ -119,7 +119,7 @@ int
 dxf_appid_write
 (
         FILE *fp,
-        DxfAppid dxf_appid
+        DxfAppid* dxf_appid
 );
 int
 dxf_appid_free

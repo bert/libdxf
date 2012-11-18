@@ -301,7 +301,7 @@ dxf_appid_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfAppid dxf_appid
+        DxfAppid *dxf_appid
                 /*!< DXF appid entity. */
 )
 {
@@ -310,28 +310,28 @@ dxf_appid_write
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("APPID");
-        if (dxf_appid.application_name == NULL)
+        if (dxf_appid->application_name == NULL)
         {
                 fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_appid.id_code);
+                        dxf_entity_name, dxf_appid->id_code);
                 fprintf (stderr, "         %s entity is discarded from output.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_appid.id_code != -1)
+        if (dxf_appid->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_appid.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_appid->id_code);
         }
-        fprintf (fp, "  2\n%s\n", dxf_appid.application_name);
-        fprintf (fp, " 70\n%d\n", dxf_appid.standard_flag);
-        if (strcmp (dxf_appid.soft_owner_object, "") != 0)
+        fprintf (fp, "  2\n%s\n", dxf_appid->application_name);
+        fprintf (fp, " 70\n%d\n", dxf_appid->standard_flag);
+        if (strcmp (dxf_appid->soft_owner_object, "") != 0)
         {
-                fprintf (fp, "330\n%s\n", dxf_appid.soft_owner_object);
+                fprintf (fp, "330\n%s\n", dxf_appid->soft_owner_object);
         }
-        if (strcmp (dxf_appid.hard_owner_object, "") != 0)
+        if (strcmp (dxf_appid->hard_owner_object, "") != 0)
         {
-                fprintf (fp, "360\n%s\n", dxf_appid.hard_owner_object);
+                fprintf (fp, "360\n%s\n", dxf_appid->hard_owner_object);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_write () function.\n",
