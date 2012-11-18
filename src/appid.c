@@ -310,6 +310,11 @@ dxf_appid_write
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("APPID");
+        if (dxf_appid == NULL)
+        {
+                return (EXIT_FAILURE);
+                fprintf (stderr, "Error in dxf_appid_write () a NULL pointer was passed.\n");
+        }
         if (dxf_appid->application_name == NULL)
         {
                 fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n",
