@@ -110,6 +110,7 @@ dxf_text
                  * 5 = fit, only when vert_align = 0. */
         int vert_align;
                 /*!< group code = 73\n
+                 * added on DXF R12 and later\n
                  * optional, defaults to 0\n
                  * not bit coded:\n
                  * 0 = baseline\n
