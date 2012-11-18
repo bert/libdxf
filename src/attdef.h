@@ -127,14 +127,15 @@ dxf_attdef
                  * Defaults to 0 if ommitted from DXF file.\n
                  * Group code = 73. */
         int vert_align;
-                /*!< Vertical alignment.\n
+                /*!< group code = 74\n
+                 * added on DXF R12 and later\n
+                 * Vertical alignment.\n
                  * Bit coded:\n
                  * 0 = baseline.\n
                  * 1 = bottom.\n
                  * 2 = middle.\n
                  * 3 = top.\n
-                 * Defaults to 0 if ommitted from DXF file.\n
-                 * Group code = 74. */
+                 * Defaults to 0 if ommitted from DXF file. */
         double extr_x0;
                 /*!< X-value of the extrusion vector.\n
                  * Defaults to 0.0 if ommitted in the DXF file.\n
