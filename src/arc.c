@@ -511,7 +511,7 @@ dxf_arc_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfArc dxf_arc
+        DxfArc *dxf_arc
                 /*!< DXF \c ARC entity. */
 )
 {
@@ -521,102 +521,102 @@ dxf_arc_write
 #endif
         char *dxf_entity_name = strdup ("ARC");
 
-        if (&dxf_arc == NULL)
+        if (dxf_arc == NULL)
         {
                 return (EXIT_FAILURE);
                 fprintf (stderr, "Error in dxf_arc_write () a NULL pointer was passed.\n");
         }
-        if (dxf_arc.start_angle == dxf_arc.end_angle)
+        if (dxf_arc->start_angle == dxf_arc->end_angle)
         {
                 fprintf (stderr, "Error in dxf_arc_write () start angle and end angle are identical for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_arc.id_code);
+                        dxf_entity_name, dxf_arc->id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_arc.start_angle > 360.0)
+        if (dxf_arc->start_angle > 360.0)
         {
                 fprintf (stderr, "Error in dxf_arc_write () start angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_arc.id_code);
+                        dxf_entity_name, dxf_arc->id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_arc.start_angle < 0.0)
+        if (dxf_arc->start_angle < 0.0)
         {
                 fprintf (stderr, "Error in dxf_arc_write () start angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_arc.id_code);
+                        dxf_entity_name, dxf_arc->id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_arc.end_angle > 360.0)
+        if (dxf_arc->end_angle > 360.0)
         {
                 fprintf (stderr, "Error in dxf_arc_write () end angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_arc.id_code);
+                        dxf_entity_name, dxf_arc->id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_arc.end_angle < 0.0)
+        if (dxf_arc->end_angle < 0.0)
         {
                 fprintf (stderr, "Error in dxf_arc_write () end angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_arc.id_code);
+                        dxf_entity_name, dxf_arc->id_code);
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_arc.radius == 0.0)
+        if (dxf_arc->radius == 0.0)
         {
                 fprintf (stderr, "Error in dxf_arc_write () radius value equals 0.0 for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_arc.id_code);
+                        dxf_entity_name, dxf_arc->id_code);
                 fprintf (stderr, "    skipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_arc.layer, "") == 0)
+        if (strcmp (dxf_arc->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_arc_write () empty layer string for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_arc.id_code);
+                        dxf_entity_name, dxf_arc->id_code);
                 fprintf (stderr, "\t%s entity is relocated to default layer.\n",
                         dxf_entity_name);
-                dxf_arc.layer = DXF_DEFAULT_LAYER;
+                dxf_arc->layer = DXF_DEFAULT_LAYER;
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_arc.acad_version_number >= AutoCAD_14)
+        if (dxf_arc->acad_version_number >= AutoCAD_14)
         {
                 fprintf (fp, "100\nAcDbArc\n");
         }
-        if (dxf_arc.id_code != -1)
+        if (dxf_arc->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_arc.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_arc->id_code);
         }
-        if (strcmp (dxf_arc.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_arc->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_arc.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_arc->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_arc.layer);
-        fprintf (fp, " 10\n%f\n", dxf_arc.x0);
-        fprintf (fp, " 20\n%f\n", dxf_arc.y0);
-        fprintf (fp, " 30\n%f\n", dxf_arc.z0);
-        if (dxf_arc.acad_version_number >= AutoCAD_12)
+        fprintf (fp, "  8\n%s\n", dxf_arc->layer);
+        fprintf (fp, " 10\n%f\n", dxf_arc->x0);
+        fprintf (fp, " 20\n%f\n", dxf_arc->y0);
+        fprintf (fp, " 30\n%f\n", dxf_arc->z0);
+        if (dxf_arc->acad_version_number >= AutoCAD_12)
         {
-                fprintf (fp, "210\n%f\n", dxf_arc.extr_x0);
-                fprintf (fp, "220\n%f\n", dxf_arc.extr_y0);
-                fprintf (fp, "230\n%f\n", dxf_arc.extr_z0);
+                fprintf (fp, "210\n%f\n", dxf_arc->extr_x0);
+                fprintf (fp, "220\n%f\n", dxf_arc->extr_y0);
+                fprintf (fp, "230\n%f\n", dxf_arc->extr_z0);
         }
-        if (dxf_arc.thickness != 0.0)
+        if (dxf_arc->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_arc.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_arc->thickness);
         }
-        fprintf (fp, " 40\n%f\n", dxf_arc.radius);
-        fprintf (fp, " 50\n%f\n", dxf_arc.start_angle);
-        fprintf (fp, " 51\n%f\n", dxf_arc.end_angle);
-        if (dxf_arc.color != DXF_COLOR_BYLAYER)
+        fprintf (fp, " 40\n%f\n", dxf_arc->radius);
+        fprintf (fp, " 50\n%f\n", dxf_arc->start_angle);
+        fprintf (fp, " 51\n%f\n", dxf_arc->end_angle);
+        if (dxf_arc->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_arc.color);
+                fprintf (fp, " 62\n%d\n", dxf_arc->color);
         }
-        if (dxf_arc.paperspace == DXF_PAPERSPACE)
+        if (dxf_arc->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }

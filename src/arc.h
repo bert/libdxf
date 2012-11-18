@@ -146,7 +146,7 @@ dxf_arc_write_lowlevel
         int paperspace,
         int acad_version_number
 );
-int dxf_arc_write (FILE *fp, DxfArc dxf_arc);
+int dxf_arc_write (FILE *fp, DxfArc *dxf_arc);
 int dxf_arc_free (DxfArc *dxf_arc);
 
 
