@@ -240,7 +240,7 @@ int
 dxf_attdef_write
 (
         FILE *fp,
-        DxfAttdef dxf_attdef
+        DxfAttdef *dxf_attdef
 );
 int
 dxf_attdef_free
