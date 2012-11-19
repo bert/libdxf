@@ -139,9 +139,13 @@ dxf_mtext
                  * 9 = Bottom right. */
         int drawing_direction;
                 /*!< group code = 72\n
+                 * 2 and 4 removed on DXF R14 and later\n
+                 * 5 added on DXF R14 and later\n
                  * drawing direction:\n
                  * 1 = Left to right\n
+                 * 2 = (removed)\n
                  * 3 = Top to bottom\n
+                 * 4 = (removed)\n
                  * 5 = By style (the flow direction is inherited from the associated text style). */
         int spacing_style;
                 /*!< group code = 73\n
