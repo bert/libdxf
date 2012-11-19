@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="128"
+   height="128"
+   viewBox="0 0 128 128"
+   id="svg2"
+   xml:space="preserve"
+   style="overflow:visible"><defs
+   id="defs85" />
+	
+	
+	
+	<linearGradient
+   x1="74.5"
+   y1="5.0482998"
+   x2="74.5"
+   y2="124.2407"
+   id="XMLID_6_"
+   gradientUnits="userSpaceOnUse">
+		<stop
+   id="stop11"
+   style="stop-color:#ffffff;stop-opacity:1"
+   offset="0" />
+		<stop
+   id="stop13"
+   style="stop-color:#e1e1df;stop-opacity:1"
+   offset="1" />
+	</linearGradient>
+	
+	<linearGradient
+   x1="74.5"
+   y1="11.0815"
+   x2="74.5"
+   y2="121.4677"
+   id="XMLID_7_"
+   gradientUnits="userSpaceOnUse">
+		<stop
+   id="stop18"
+   style="stop-color:#fdfdfd;stop-opacity:1"
+   offset="0" />
+		<stop
+   id="stop20"
+   style="stop-color:#f3f2f2;stop-opacity:1"
+   offset="0.2985" />
+		<stop
+   id="stop22"
+   style="stop-color:#d7d6d6;stop-opacity:1"
+   offset="0.81739998" />
+		<stop
+   id="stop24"
+   style="stop-color:#cccbca;stop-opacity:1"
+   offset="1" />
+	</linearGradient>
+	
+	<radialGradient
+   cx="110"
+   cy="32.869598"
+   r="15.596"
+   id="XMLID_8_"
+   gradientUnits="userSpaceOnUse">
+		<stop
+   id="stop29"
+   style="stop-color:#8e8e8f;stop-opacity:1"
+   offset="0.21349999" />
+		<stop
+   id="stop31"
+   style="stop-color:#eeeeee;stop-opacity:1"
+   offset="0.92699999" />
+	</radialGradient>
+	
+	
+	<linearGradient
+   x1="92.023399"
+   y1="9.9473"
+   x2="104.2735"
+   y2="32.947201"
+   id="XMLID_9_"
+   gradientUnits="userSpaceOnUse">
+		<stop
+   id="stop38"
+   style="stop-color:#fffefe;stop-opacity:1"
+   offset="0" />
+		<stop
+   id="stop40"
+   style="stop-color:#cfd0d0;stop-opacity:1"
+   offset="1" />
+	</linearGradient>
+	
+	<linearGradient
+   x1="99.530296"
+   y1="5.1816001"
+   x2="105.9051"
+   y2="31.931"
+   id="XMLID_10_"
+   gradientUnits="userSpaceOnUse">
+		<stop
+   id="stop45"
+   style="stop-color:#fcfdfd;stop-opacity:1"
+   offset="0" />
+		<stop
+   id="stop47"
+   style="stop-color:#eeeeee;stop-opacity:1"
+   offset="1" />
+	</linearGradient>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<rect
+   width="88.95433"
+   height="0.65528899"
+   x="36.251019"
+   y="18.741499"
+   transform="matrix(0.89381782,0.44843028,-0.4846067,0.87473216,0,0)"
+   id="rect2850"
+   style="fill:#000000;stroke:#000000;stroke-width:0.61261135;stroke-opacity:1" /><rect
+   width="6"
+   height="6"
+   x="99.293709"
+   y="68.728523"
+   id="rect77"
+   style="fill:#0000ff" />
+	
+	<rect
+   width="6"
+   height="6"
+   x="21.551666"
+   y="31.576792"
+   id="rect81"
+   style="fill:#0000ff" />
+<text
+   x="9.7997379"
+   y="116.62731"
+   transform="scale(0.99907335,1.0009275)"
+   id="text2895"
+   xml:space="preserve"
+   style="font-size:34.38185883px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"><tspan
+     x="9.7997379"
+     y="116.62731"
+     id="tspan2897">libDXF</tspan></text>
+
+
+
+
+</svg>
