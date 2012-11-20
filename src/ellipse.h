@@ -167,8 +167,7 @@ int
 dxf_ellipse_write
 (
         FILE *fp,
-        DxfEllipse dxf_ellipse,
-        int acad_version_number
+        DxfEllipse *dxf_ellipse
 );
 int
 dxf_ellipse_free
