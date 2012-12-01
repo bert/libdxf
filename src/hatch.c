@@ -520,21 +520,21 @@ dxf_hatch_init
                 fprintf (stderr, "ERROR in dxf_hatch_init () could not allocate memory for a DxfHatch struct.\n");
                 return (NULL);
         }
-        hatch->common.id_code = 0;
-        hatch->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
-        hatch->common.layer = strdup (DXF_DEFAULT_LAYER);
+        hatch->id_code = 0;
+        hatch->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        hatch->layer = strdup (DXF_DEFAULT_LAYER);
         hatch->x0 = 0.0;
         hatch->y0 = 0.0;
         hatch->z0 = 0.0;
         hatch->extr_x0 = 0.0;
         hatch->extr_y0 = 0.0;
         hatch->extr_z0 = 0.0;
-        hatch->common.thickness = 0.0;
+        hatch->thickness = 0.0;
         hatch->pattern_scale = 1.0;
         hatch->pixel_size = 1.0;
         hatch->pattern_angle = 0.0;
-        hatch->common.color = DXF_COLOR_BYLAYER;
-        hatch->common.paperspace = DXF_MODELSPACE;
+        hatch->color = DXF_COLOR_BYLAYER;
+        hatch->paperspace = DXF_MODELSPACE;
         hatch->solid_fill = 0;
         hatch->associative = 1;
         hatch->hatch_style = 0;
@@ -546,7 +546,7 @@ dxf_hatch_init
         hatch->paths = NULL;
         hatch->number_of_seed_points = 0;
         hatch->seed_points = NULL;
-        hatch->common.acad_version_number = 0;
+        hatch->acad_version_number = 0;
         hatch->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_init () function.\n",
@@ -3215,8 +3215,8 @@ dxf_hatch_free
                 return (EXIT_FAILURE);
         }
         free (hatch->pattern_name);
-        free (hatch->common.linetype);
-        free (hatch->common.layer);
+        free (hatch->linetype);
+        free (hatch->layer);
         free (hatch->def_lines);
         free (hatch->paths);
         free (hatch->seed_points);
