@@ -98,28 +98,29 @@ dxf_insert_init
               return (NULL);
         }
         dxf_insert->block_name = strdup ("");
-        dxf_insert->common.id_code = 0;
-        dxf_insert->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_insert->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_insert->id_code = 0;
+        dxf_insert->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_insert->layer = strdup (DXF_DEFAULT_LAYER);
         dxf_insert->x0 = 0.0;
         dxf_insert->y0 = 0.0;
         dxf_insert->z0 = 0.0;
-        dxf_insert->common.thickness = 0.0;
+        dxf_insert->thickness = 0.0;
         dxf_insert->rel_x_scale = 0.0;
         dxf_insert->rel_y_scale = 0.0;
         dxf_insert->rel_z_scale = 0.0;
         dxf_insert->column_spacing = 0.0;
         dxf_insert->row_spacing = 0.0;
         dxf_insert->rot_angle = 0.0;
-        dxf_insert->common.color = DXF_COLOR_BYLAYER;
-        dxf_insert->common.paperspace = DXF_MODELSPACE;
+        dxf_insert->color = DXF_COLOR_BYLAYER;
+        dxf_insert->paperspace = DXF_MODELSPACE;
         dxf_insert->attributes_follow = 0;
-        dxf_insert->common.acad_version_number = 0;
+        dxf_insert->acad_version_number = 0;
         dxf_insert->columns = 0;
         dxf_insert->rows = 0;
         dxf_insert->extr_x0 = 0.0;
         dxf_insert->extr_y0 = 0.0;
         dxf_insert->extr_z0 = 0.0;
+        dxf_insert->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_insert_init () function.\n",
                 __FILE__, __LINE__);
@@ -188,20 +189,20 @@ dxf_insert_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_insert->common.id_code);
+                        fscanf (fp, "%x\n", &dxf_insert->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_insert->common.linetype);
+                        fscanf (fp, "%s\n", dxf_insert->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_insert->common.layer);
+                        fscanf (fp, "%s\n", dxf_insert->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -241,7 +242,7 @@ dxf_insert_read
                         /* Now follows a string containing the
                          * thickness. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->common.thickness);
+                        fscanf (fp, "%lf\n", &dxf_insert->thickness);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
@@ -290,7 +291,7 @@ dxf_insert_read
                         /* Now follows a string containing the
                          * color value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_insert->common.color);
+                        fscanf (fp, "%d\n", &dxf_insert->color);
                 }
                 else if (strcmp (temp_string, "66") == 0)
                 {
@@ -309,7 +310,7 @@ dxf_insert_read
                         /* Now follows a string containing the
                          * paperspace value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_insert->common.paperspace);
+                        fscanf (fp, "%d\n", &dxf_insert->paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
@@ -603,7 +604,7 @@ dxf_insert_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfInsert dxf_insert
+        DxfInsert *dxf_insert
                 /*!< DXF insert entity. */
 )
 {
@@ -613,125 +614,125 @@ dxf_insert_write
 #endif
         char *dxf_entity_name = strdup ("INSERT");
 
-        if (strcmp (dxf_insert.common.layer, "") == 0)
+        if (strcmp (dxf_insert->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_insert_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_insert.common.id_code);
+                        dxf_entity_name, dxf_insert->id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0.\n",
                         dxf_entity_name);
-                dxf_insert.common.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_insert->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_insert.rel_x_scale == 0.0)
+        if (dxf_insert->rel_x_scale == 0.0)
         {
                 fprintf (stderr, "Warning in dxf_insert_write () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_insert.common.id_code);
+                        dxf_entity_name, dxf_insert->id_code);
                 fprintf (stderr, "    default relative X-scale of 1.0 applied to %s entity.\n",
                         dxf_entity_name);
-                dxf_insert.rel_x_scale = 1.0;
+                dxf_insert->rel_x_scale = 1.0;
         }
-        if (dxf_insert.rel_y_scale == 0.0)
+        if (dxf_insert->rel_y_scale == 0.0)
         {
                 fprintf (stderr, "Warning in dxf_insert_write () relative Y-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_insert.common.id_code);
+                        dxf_entity_name, dxf_insert->id_code);
                 fprintf (stderr, "    default relative Y-scale of 1.0 applied to %s entity.\n",
                         dxf_entity_name);
-                dxf_insert.rel_y_scale = 1.0;
+                dxf_insert->rel_y_scale = 1.0;
         }
-        if (dxf_insert.rel_z_scale == 0.0)
+        if (dxf_insert->rel_z_scale == 0.0)
         {
                 fprintf (stderr, "Warning in dxf_insert_write () relative Z-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_insert.common.id_code);
+                        dxf_entity_name, dxf_insert->id_code);
                 fprintf (stderr, "    default relative Z-scale of 1.0 applied to %s entity.\n",
                         dxf_entity_name);
-                dxf_insert.rel_z_scale = 1.0;
+                dxf_insert->rel_z_scale = 1.0;
         }
-        if ((dxf_insert.columns > 1) && (dxf_insert.column_spacing == 0.0))
+        if ((dxf_insert->columns > 1) && (dxf_insert->column_spacing == 0.0))
         {
                 fprintf (stderr, "Warning in dxf_insert_write () number of columns is greater than 1 and the column spacing has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_insert.common.id_code);
+                        dxf_entity_name, dxf_insert->id_code);
                 fprintf (stderr, "    default number of columns value of 1 applied to %s entity.\n",
                         dxf_entity_name);
-                dxf_insert.columns = 1;
+                dxf_insert->columns = 1;
         }
-        if ((dxf_insert.rows > 1) && (dxf_insert.row_spacing == 0.0))
+        if ((dxf_insert->rows > 1) && (dxf_insert->row_spacing == 0.0))
         {
                 fprintf (stderr, "Warning in dxf_insert_write () number of rows is greater than 1 and the row spacing has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_insert.common.id_code);
+                        dxf_entity_name, dxf_insert->id_code);
                 fprintf (stderr, "    default number of rows value of 1 applied to %s entity.\n",
                         dxf_entity_name);
-                dxf_insert.rows = 1;
+                dxf_insert->rows = 1;
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_insert.common.acad_version_number >= AutoCAD_14)
+        if (dxf_insert->acad_version_number >= AutoCAD_14)
         {
                 fprintf (fp, "100\nAcDbBlockReference\n");
         }
-        fprintf (fp, "  2\n%s\n", dxf_insert.block_name);
-        if (dxf_insert.common.id_code != -1)
+        fprintf (fp, "  2\n%s\n", dxf_insert->block_name);
+        if (dxf_insert->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_insert.common.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_insert->id_code);
         }
-        if (strcmp (dxf_insert.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_insert->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_insert.common.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_insert->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_insert.common.layer);
-        fprintf (fp, " 10\n%f\n", dxf_insert.x0);
-        fprintf (fp, " 20\n%f\n", dxf_insert.y0);
-        fprintf (fp, " 30\n%f\n", dxf_insert.z0);
-        if (dxf_insert.common.acad_version_number >= AutoCAD_12)
+        fprintf (fp, "  8\n%s\n", dxf_insert->layer);
+        fprintf (fp, " 10\n%f\n", dxf_insert->x0);
+        fprintf (fp, " 20\n%f\n", dxf_insert->y0);
+        fprintf (fp, " 30\n%f\n", dxf_insert->z0);
+        if (dxf_insert->acad_version_number >= AutoCAD_12)
         {
-                fprintf (fp, "210\n%f\n", dxf_insert.extr_x0);
-                fprintf (fp, "220\n%f\n", dxf_insert.extr_y0);
-                fprintf (fp, "230\n%f\n", dxf_insert.extr_z0);
+                fprintf (fp, "210\n%f\n", dxf_insert->extr_x0);
+                fprintf (fp, "220\n%f\n", dxf_insert->extr_y0);
+                fprintf (fp, "230\n%f\n", dxf_insert->extr_z0);
         }
-        if (dxf_insert.common.thickness != 0.0)
+        if (dxf_insert->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_insert.common.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_insert->thickness);
         }
-        if (dxf_insert.rel_x_scale != 1.0)
+        if (dxf_insert->rel_x_scale != 1.0)
         {
-                fprintf (fp, " 41\n%f\n", dxf_insert.rel_x_scale);
+                fprintf (fp, " 41\n%f\n", dxf_insert->rel_x_scale);
         }
-        if (dxf_insert.rel_y_scale != 1.0)
+        if (dxf_insert->rel_y_scale != 1.0)
         {
-                fprintf (fp, " 42\n%f\n", dxf_insert.rel_y_scale);
+                fprintf (fp, " 42\n%f\n", dxf_insert->rel_y_scale);
         }
-        if (dxf_insert.rel_z_scale != 1.0)
+        if (dxf_insert->rel_z_scale != 1.0)
         {
-                fprintf (fp, " 43\n%f\n", dxf_insert.rel_z_scale);
+                fprintf (fp, " 43\n%f\n", dxf_insert->rel_z_scale);
         }
-        if ((dxf_insert.columns > 1) && (dxf_insert.column_spacing > 0.0))
+        if ((dxf_insert->columns > 1) && (dxf_insert->column_spacing > 0.0))
         {
-                fprintf (fp, " 44\n%f\n", dxf_insert.column_spacing);
+                fprintf (fp, " 44\n%f\n", dxf_insert->column_spacing);
         }
-        if ((dxf_insert.rows > 1) && (dxf_insert.row_spacing > 0.0))
+        if ((dxf_insert->rows > 1) && (dxf_insert->row_spacing > 0.0))
         {
-                fprintf (fp, " 45\n%f\n", dxf_insert.row_spacing);
+                fprintf (fp, " 45\n%f\n", dxf_insert->row_spacing);
         }
-        if (dxf_insert.rot_angle != 0.0)
+        if (dxf_insert->rot_angle != 0.0)
         {
-                fprintf (fp, " 50\n%f\n", dxf_insert.rot_angle);
+                fprintf (fp, " 50\n%f\n", dxf_insert->rot_angle);
         }
-        if (dxf_insert.common.color != DXF_COLOR_BYLAYER)
+        if (dxf_insert->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_insert.common.color);
+                fprintf (fp, " 62\n%d\n", dxf_insert->color);
         }
-        if (dxf_insert.attributes_follow != 0)
+        if (dxf_insert->attributes_follow != 0)
         {
-                fprintf (fp, " 66\n%d\n", dxf_insert.attributes_follow);
+                fprintf (fp, " 66\n%d\n", dxf_insert->attributes_follow);
         }
-        if (dxf_insert.common.paperspace == DXF_PAPERSPACE)
+        if (dxf_insert->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        if (dxf_insert.columns > 1)
+        if (dxf_insert->columns > 1)
         {
-                fprintf (fp, " 70\n%d\n", dxf_insert.columns);
+                fprintf (fp, " 70\n%d\n", dxf_insert->columns);
         }
-        if (dxf_insert.rows > 1)
+        if (dxf_insert->rows > 1)
         {
-                fprintf (fp, " 71\n%d\n", dxf_insert.rows);
+                fprintf (fp, " 71\n%d\n", dxf_insert->rows);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_insert_write () function.\n",
