@@ -452,7 +452,7 @@ dxf_lwpolyline_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfLWPolyline dxf_lwpolyline,
+        DxfLWPolyline *dxf_lwpolyline,
                 /*!< DXF polyline entity. */
         int acad_version_number
                 /*!< AutoCAD version number. */
@@ -464,55 +464,55 @@ dxf_lwpolyline_write
 #endif
         char *dxf_entity_name = strdup ("LWPOLYLINE");
 
-        if (strcmp (dxf_lwpolyline.layer, "") == 0)
+        if (strcmp (dxf_lwpolyline->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_lwpolyline_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_lwpolyline.id_code);
+                        dxf_entity_name, dxf_lwpolyline->id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0\n",
                         dxf_entity_name);
-                dxf_lwpolyline.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_lwpolyline->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_lwpolyline.id_code != -1)
+        if (dxf_lwpolyline->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_lwpolyline.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_lwpolyline->id_code);
         }
-        if (strcmp (dxf_lwpolyline.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_lwpolyline->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_lwpolyline.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_lwpolyline->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_lwpolyline.layer);
-        fprintf (fp, " 10\n%f\n", dxf_lwpolyline.x0);
-        fprintf (fp, " 20\n%f\n", dxf_lwpolyline.y0);
-        if (dxf_lwpolyline.thickness != 0.0)
+        fprintf (fp, "  8\n%s\n", dxf_lwpolyline->layer);
+        fprintf (fp, " 10\n%f\n", dxf_lwpolyline->x0);
+        fprintf (fp, " 20\n%f\n", dxf_lwpolyline->y0);
+        if (dxf_lwpolyline->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_lwpolyline.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_lwpolyline->thickness);
         }
-        if ((dxf_lwpolyline.constant_width = 0.0)
-                && (dxf_lwpolyline.start_width != dxf_lwpolyline.end_width))
+        if ((dxf_lwpolyline->constant_width = 0.0)
+                && (dxf_lwpolyline->start_width != dxf_lwpolyline->end_width))
         {
-                fprintf (fp, " 40\n%f\n", dxf_lwpolyline.start_width);
-                fprintf (fp, " 41\n%f\n", dxf_lwpolyline.end_width);
+                fprintf (fp, " 40\n%f\n", dxf_lwpolyline->start_width);
+                fprintf (fp, " 41\n%f\n", dxf_lwpolyline->end_width);
         }
         else
         {
-                fprintf (fp, " 43\n%f\n", dxf_lwpolyline.constant_width);
+                fprintf (fp, " 43\n%f\n", dxf_lwpolyline->constant_width);
         }
-        if (dxf_lwpolyline.color != DXF_COLOR_BYLAYER)
+        if (dxf_lwpolyline->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_lwpolyline.color);
+                fprintf (fp, " 62\n%d\n", dxf_lwpolyline->color);
         }
-        if (dxf_lwpolyline.paperspace == DXF_PAPERSPACE)
+        if (dxf_lwpolyline->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp, " 70\n%d\n", dxf_lwpolyline.flag);
-        fprintf (fp, " 90\n%d\n", dxf_lwpolyline.number_vertices);
-        if (dxf_lwpolyline.acad_version_number >= AutoCAD_12)
+        fprintf (fp, " 70\n%d\n", dxf_lwpolyline->flag);
+        fprintf (fp, " 90\n%d\n", dxf_lwpolyline->number_vertices);
+        if (dxf_lwpolyline->acad_version_number >= AutoCAD_12)
         {
-                fprintf (fp, "210\n%f\n", dxf_lwpolyline.extr_x0);
-                fprintf (fp, "220\n%f\n", dxf_lwpolyline.extr_y0);
-                fprintf (fp, "230\n%f\n", dxf_lwpolyline.extr_z0);
+                fprintf (fp, "210\n%f\n", dxf_lwpolyline->extr_x0);
+                fprintf (fp, "220\n%f\n", dxf_lwpolyline->extr_y0);
+                fprintf (fp, "230\n%f\n", dxf_lwpolyline->extr_z0);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_lwpolyline_write () function.\n",

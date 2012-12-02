@@ -172,7 +172,7 @@ int
 dxf_lwpolyline_write
 (
         FILE *fp,
-        DxfLWPolyline dxf_lwpolyline,
+        DxfLWPolyline *dxf_lwpolyline,
         int acad_version_number
 );
 
