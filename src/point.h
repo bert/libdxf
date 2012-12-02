@@ -106,6 +106,9 @@ dxf_point
                 /*!< group code = 230\n
                  * extrusion direction\n
                  * optional, if ommited defaults to 1.0. */
+        struct DxfPoint *next;
+                /*!< pointer to the next DxfPoint.\n
+                 * \c NULL in the last DxfPoint. */
 } DxfPoint, * DxfPointPtr;
 
 

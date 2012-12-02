@@ -119,6 +119,7 @@ dxf_point_init
         dxf_point->color = DXF_COLOR_BYLAYER;
         dxf_point->paperspace = DXF_MODELSPACE;
         dxf_point->acad_version_number = 0;
+        dxf_point->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_point_init () function.\n",
                 __FILE__, __LINE__);
