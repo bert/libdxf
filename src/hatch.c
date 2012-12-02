@@ -2535,10 +2535,10 @@ dxf_hatch_write_lowlevel
 
 
 /*!
-\brief Write DXF output to a file for hatch boundary entities.
-
-Requires AutoCAD version R14 or higher.
-*/
+ * \brief Write DXF output to a file for hatch boundary entities.
+ *
+ * Requires AutoCAD version R14 or higher.
+ */
 int
 dxf_hatch_boundaries_write_lowlevel
 (
@@ -2776,8 +2776,9 @@ dxf_hatch_boundary_path_polyline_vertex_angle
 
 
 /*!
-\brief Write DXF output to a file for a hatch boundary polyline vertex.
-*/
+ * \brief Write DXF output to a file for a hatch boundary polyline
+ * vertex.
+ */
 int
 dxf_hatch_boundary_path_polyline_vertex_write
 (
@@ -2802,8 +2803,9 @@ dxf_hatch_boundary_path_polyline_vertex_write
 
 
 /*!
-\brief Write DXF output to a file for a hatch boundary polyline vertex.
-*/
+ * \brief Write DXF output to a file for a hatch boundary polyline
+ * vertex.
+ */
 int
 dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
 (
@@ -3112,8 +3114,8 @@ dxf_hatch_boundary_path_polyline_write
 
 
 /*!
-\brief Write DXF output to a file for a hatch boundary path polyline.
-*/
+ * \brief Write DXF output to a file for a hatch boundary path polyline.
+ */
 int
 dxf_hatch_boundary_path_polyline_write_lowlevel
 (
@@ -3177,8 +3179,9 @@ dxf_hatch_boundary_path_polyline_write_lowlevel
 
 
 /*!
-\brief Write DXF output to a file for a hatch pattern definition line dash items.
-*/
+ * \brief Write DXF output to a file for a hatch pattern definition line
+ * dash items.
+ */
 int
 dxf_hatch_pattern_def_line_dashes_write_lowlevel
 (
@@ -3217,7 +3220,7 @@ dxf_hatch_pattern_def_line_dashes_write_lowlevel
 
 
 /*!
- * brief Write DXF output to a file for a DXF \C HATCH pattern definition
+ * \brief Write DXF output to a file for a DXF \C HATCH pattern definition
  * lines.
  */
 int
