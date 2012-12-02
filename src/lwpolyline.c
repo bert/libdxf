@@ -1,6 +1,8 @@
 /*!
  * \file lwpolyline.c
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Functions for a DXF light weight polyline entity (\c LWPOLYLINE).
  *
  * \warning This entity requires AutoCAD version 2004 or higher.
@@ -93,23 +95,23 @@ dxf_lwpolyline_init
               fprintf (stderr, "ERROR in dxf_lwpolyline_init () could not allocate memory for a DxfLWPolyline struct.\n");
               return (NULL);
         }
-        dxf_lwpolyline->common.id_code = 0;
-        dxf_lwpolyline->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_lwpolyline->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_lwpolyline->id_code = 0;
+        dxf_lwpolyline->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_lwpolyline->layer = strdup (DXF_DEFAULT_LAYER);
         dxf_lwpolyline->x0 = 0.0;
         dxf_lwpolyline->y0 = 0.0;
-        dxf_lwpolyline->common.thickness = 0.0;
+        dxf_lwpolyline->thickness = 0.0;
         dxf_lwpolyline->start_width = 0.0;
         dxf_lwpolyline->end_width = 0.0;
         dxf_lwpolyline->constant_width = 0.0;
-        dxf_lwpolyline->common.color = DXF_COLOR_BYLAYER;
-        dxf_lwpolyline->common.paperspace = DXF_MODELSPACE;
+        dxf_lwpolyline->color = DXF_COLOR_BYLAYER;
+        dxf_lwpolyline->paperspace = DXF_MODELSPACE;
         dxf_lwpolyline->flag = 0;
         dxf_lwpolyline->number_vertices = 0;
         dxf_lwpolyline->extr_x0 = 0.0;
         dxf_lwpolyline->extr_y0 = 0.0;
         dxf_lwpolyline->extr_z0 = 0.0;
-        dxf_lwpolyline->common.acad_version_number = 0;
+        dxf_lwpolyline->acad_version_number = 0;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_lwpolyline_init () function.\n",
                 __FILE__, __LINE__);
@@ -171,20 +173,20 @@ dxf_lwpolyline_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_lwpolyline->common.id_code);
+                        fscanf (fp, "%x\n", &dxf_lwpolyline->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_lwpolyline->common.linetype);
+                        fscanf (fp, "%s\n", dxf_lwpolyline->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_lwpolyline->common.layer);
+                        fscanf (fp, "%s\n", dxf_lwpolyline->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -205,7 +207,7 @@ dxf_lwpolyline_read
                         /* Now follows a string containing the
                          * thickness. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_lwpolyline->common.thickness);
+                        fscanf (fp, "%lf\n", &dxf_lwpolyline->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
@@ -233,14 +235,14 @@ dxf_lwpolyline_read
                         /* Now follows a string containing the
                          * color value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_lwpolyline->common.color);
+                        fscanf (fp, "%d\n", &dxf_lwpolyline->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_lwpolyline->common.paperspace);
+                        fscanf (fp, "%d\n", &dxf_lwpolyline->paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
@@ -462,29 +464,29 @@ dxf_lwpolyline_write
 #endif
         char *dxf_entity_name = strdup ("LWPOLYLINE");
 
-        if (strcmp (dxf_lwpolyline.common.layer, "") == 0)
+        if (strcmp (dxf_lwpolyline.layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_lwpolyline_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_lwpolyline.common.id_code);
+                        dxf_entity_name, dxf_lwpolyline.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0\n",
                         dxf_entity_name);
-                dxf_lwpolyline.common.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_lwpolyline.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_lwpolyline.common.id_code != -1)
+        if (dxf_lwpolyline.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_lwpolyline.common.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_lwpolyline.id_code);
         }
-        if (strcmp (dxf_lwpolyline.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_lwpolyline.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_lwpolyline.common.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_lwpolyline.linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_lwpolyline.common.layer);
+        fprintf (fp, "  8\n%s\n", dxf_lwpolyline.layer);
         fprintf (fp, " 10\n%f\n", dxf_lwpolyline.x0);
         fprintf (fp, " 20\n%f\n", dxf_lwpolyline.y0);
-        if (dxf_lwpolyline.common.thickness != 0.0)
+        if (dxf_lwpolyline.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_lwpolyline.common.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_lwpolyline.thickness);
         }
         if ((dxf_lwpolyline.constant_width = 0.0)
                 && (dxf_lwpolyline.start_width != dxf_lwpolyline.end_width))
@@ -496,17 +498,17 @@ dxf_lwpolyline_write
         {
                 fprintf (fp, " 43\n%f\n", dxf_lwpolyline.constant_width);
         }
-        if (dxf_lwpolyline.common.color != DXF_COLOR_BYLAYER)
+        if (dxf_lwpolyline.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_lwpolyline.common.color);
+                fprintf (fp, " 62\n%d\n", dxf_lwpolyline.color);
         }
-        if (dxf_lwpolyline.common.paperspace == DXF_PAPERSPACE)
+        if (dxf_lwpolyline.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
         fprintf (fp, " 70\n%d\n", dxf_lwpolyline.flag);
         fprintf (fp, " 90\n%d\n", dxf_lwpolyline.number_vertices);
-        if (acad_version_number >= AutoCAD_12)
+        if (dxf_lwpolyline.acad_version_number >= AutoCAD_12)
         {
                 fprintf (fp, "210\n%f\n", dxf_lwpolyline.extr_x0);
                 fprintf (fp, "220\n%f\n", dxf_lwpolyline.extr_y0);
