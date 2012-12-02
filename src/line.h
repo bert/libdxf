@@ -125,8 +125,7 @@ dxf_line_read
         char *filename,
         FILE *fp,
         int *line_number,
-        DxfLine *dxf_line,
-        int acad_version_number
+        DxfLine *dxf_line
 );
 int
 dxf_line_write_lowlevel
