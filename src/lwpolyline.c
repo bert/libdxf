@@ -141,10 +141,8 @@ dxf_lwpolyline_read
                 /*!< filepointer to the input file (or device). */
         int *line_number,
                 /*!< current line number in the input file (or device). */
-        DxfLWPolyline *dxf_lwpolyline,
+        DxfLWPolyline *dxf_lwpolyline
                 /*!< DXF light weight polyline entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -258,7 +256,7 @@ dxf_lwpolyline_read
                         (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_lwpolyline->number_vertices);
                 }
-                else if ((acad_version_number >= AutoCAD_12)
+                else if ((dxf_lwpolyline->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Subclass markers are post AutoCAD R12
@@ -452,10 +450,8 @@ dxf_lwpolyline_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfLWPolyline *dxf_lwpolyline,
+        DxfLWPolyline *dxf_lwpolyline
                 /*!< DXF polyline entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
