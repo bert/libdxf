@@ -127,6 +127,9 @@ dxf_lwpolyline
         double extr_z0;
                 /*!< group code = 230
                  * DXF: Z value of extrusion direction (optional). */
+        struct DxfLWPolyline *next;
+                /*!< pointer to the next DxfLWPolyline.\n
+                 * \c NULL in the last DxfLWPolyline. */
 } DxfLWPolyline, * DxfLWPolylinePtr;
 
 

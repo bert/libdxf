@@ -112,6 +112,7 @@ dxf_lwpolyline_init
         dxf_lwpolyline->extr_y0 = 0.0;
         dxf_lwpolyline->extr_z0 = 0.0;
         dxf_lwpolyline->acad_version_number = 0;
+        dxf_lwpolyline->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_lwpolyline_init () function.\n",
                 __FILE__, __LINE__);
