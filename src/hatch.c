@@ -2258,6 +2258,112 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
  * \brief Write DXF output to a file for a hatch entity (\c HATCH).
  */
 int
+dxf_hatch_write
+(
+        FILE *fp,
+                /*!< file pointer to output file (or device). */
+        DxfHatch *dxf_hatch
+                /*!< DXF hatch entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *dxf_entity_name = strdup ("HATCH");
+        int i;
+        struct DxfHatchPatternSeedPoint *seed_points = NULL;
+
+        if (dxf_hatch == NULL)
+        {
+                return (EXIT_FAILURE);
+                fprintf (stderr, "Error in dxf_hatch_write () a NULL pointer was passed.\n");
+        }
+        if (strcmp (dxf_hatch->layer, "") == 0)
+        {
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_hatch->id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
+                dxf_hatch->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        fprintf (fp, "100\nAcDbHatch\n");
+        fprintf (fp, "  2\n%s\n", dxf_hatch->pattern_name);
+        if (dxf_hatch->id_code != -1)
+        {
+                fprintf (fp, "  5\n%x\n", dxf_hatch->id_code);
+        }
+        if (strcmp (dxf_hatch->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp, "  6\n%s\n", dxf_hatch->linetype);
+        }
+        fprintf (fp, "  8\n%s\n", dxf_hatch->layer);
+        fprintf (fp, " 10\n%f\n", dxf_hatch->x0);
+        fprintf (fp, " 20\n%f\n", dxf_hatch->y0);
+        fprintf (fp, " 30\n%f\n", dxf_hatch->z0);
+        fprintf (fp, "210\n%f\n", dxf_hatch->extr_x0);
+        fprintf (fp, "220\n%f\n", dxf_hatch->extr_y0);
+        fprintf (fp, "230\n%f\n", dxf_hatch->extr_z0);
+        if (dxf_hatch->thickness != 0.0)
+        {
+                fprintf (fp, " 39\n%f\n", dxf_hatch->thickness);
+        }
+        if (!dxf_hatch->solid_fill)
+        {
+                fprintf (fp, " 42\n%f\n", dxf_hatch->pattern_scale);
+        }
+        fprintf (fp, " 47\n%f\n", dxf_hatch->pixel_size);
+        if (!dxf_hatch->solid_fill)
+        {
+                fprintf (fp, " 52\n%f\n", dxf_hatch->pattern_angle);
+        }
+        if (dxf_hatch->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp, " 62\n%d\n", dxf_hatch->color);
+        }
+        if (dxf_hatch->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp, " 70\n%d\n", dxf_hatch->solid_fill);
+        fprintf (fp, " 71\n%d\n", dxf_hatch->associative);
+        fprintf (fp, " 75\n%d\n", dxf_hatch->pattern_style);
+        if (!dxf_hatch->solid_fill)
+        {
+                fprintf (fp, " 77\n%d\n", dxf_hatch->pattern_double);
+        }
+        fprintf (fp, " 78\n%d\n", dxf_hatch->number_of_pattern_def_lines);
+        fprintf (fp, " 98\n%d\n", dxf_hatch->number_of_seed_points);
+        if (dxf_hatch->number_of_seed_points > 0)
+        {
+                seed_points = (DxfHatchPatternSeedPoint *) dxf_hatch->seed_points;
+                while (seed_points != NULL);
+                {
+/*! \todo error: dereferencing pointer to incomplete type in:\n
+                        fprintf (fp, " 10\n%f\n", (double) seed_points->x0);
+ */
+/*! \todo error: dereferencing pointer to incomplete type in:\n
+                        fprintf (fp, " 20\n%f\n", (double) seed_points->y0);
+ */
+/*! \todo error: dereferencing pointer to incomplete type in:\n
+                        seed_points = (DxfHatchPatternSeedPoint *) seed_points->next;
+ */
+                }
+        }
+        fprintf (fp, " 91\n%d\n", dxf_hatch->number_of_boundary_paths);
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_hatch_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Write DXF output to a file for a hatch entity (\c HATCH).
+ */
+int
 dxf_hatch_write_lowlevel
 (
         FILE *fp,

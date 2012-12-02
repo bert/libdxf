@@ -720,6 +720,12 @@ dxf_hatch_write_lowlevel
         double *seed_y0
 );
 int
+dxf_hatch_write
+(
+        FILE *fp,
+        DxfHatch *dxf_hatch
+);
+int
 dxf_hatch_boundaries_write_lowlevel
 (
         FILE *fp,
