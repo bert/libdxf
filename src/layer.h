@@ -59,6 +59,21 @@ dxf_layer
                  * 4 = if set, layer is locked\n
                  * 8 = unused\n
                  * 128 = unused. */
+        int plotting_flag;
+                /*!< group code = 290\n
+                 * Boolean, if set to 0, do not plot this layer. */
+        char *material;
+                /*!< group code = 347\n
+                 * Hard-pointer ID / handle to Material object */
+        int16_t lineweight;
+                /*!< group code = 370\n
+                 * Lineweight enum value. */
+        char *plot_style_name;
+                /*!< group code = 390\n
+                 * Hard pointer ID / handle of PlotStyleName object. */
+        struct DxfLayer *next;
+                /*!< pointer to the next DxfLayer.\n
+                 * \c NULL in the last DxfLayer. */
 } DxfLayer, * DxfLayerPtr;
 
 /* EOF */
