@@ -51,6 +51,9 @@ dxf_object
                 /*!< dxf entity type. */
         DxfParam parameter[DXF_MAX_PARAM];
                 /*!< corresponding values stored in here. */
+        struct DxfObject *next;
+                /*!< pointer to the next DxfObject.\n
+                 * \c NULL in the last DxfObject. */
 } DxfObject;
 
 
