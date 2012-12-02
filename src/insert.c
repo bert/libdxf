@@ -150,10 +150,8 @@ dxf_insert_read
                 /*!< filepointer to the input file (or device). */
         int *line_number,
                 /*!< current line number in the input file (or device). */
-        DxfInsert *dxf_insert,
+        DxfInsert *dxf_insert
                 /*!< DXF insert entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -225,7 +223,7 @@ dxf_insert_read
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_insert->z0);
                 }
-                else if ((acad_version_number <= AutoCAD_11)
+                else if ((dxf_insert->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_insert->z0 = 0.0))
                 {
@@ -326,7 +324,7 @@ dxf_insert_read
                         (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_insert->rows);
                 }
-                else if ((acad_version_number >= AutoCAD_12)
+                else if ((dxf_insert->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /*!
