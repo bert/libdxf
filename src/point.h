@@ -142,7 +142,7 @@ int
 dxf_point_write
 (
         FILE *fp,
-        DxfPoint dxf_point
+        DxfPoint *dxf_point
 );
 
 

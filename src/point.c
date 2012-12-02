@@ -388,7 +388,7 @@ dxf_point_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfPoint dxf_point
+        DxfPoint *dxf_point
                 /*!< DXF point entity. */
 )
 {
@@ -398,33 +398,33 @@ dxf_point_write
 #endif
         char *dxf_entity_name = strdup ("POINT");
 
-        if (strcmp (dxf_point.layer, "") == 0)
+        if (strcmp (dxf_point->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_point_write () empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name,
-                        dxf_point.id_code);
+                        dxf_point->id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
-                dxf_point.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_point->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_point.id_code != -1)
+        if (dxf_point->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_point.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_point->id_code);
         }
-        fprintf (fp, "  8\n%s\n", dxf_point.layer);
-        fprintf (fp, " 10\n%f\n", dxf_point.x0);
-        fprintf (fp, " 20\n%f\n", dxf_point.y0);
-        fprintf (fp, " 30\n%f\n", dxf_point.z0);
-        if (dxf_point.thickness != 0.0)
+        fprintf (fp, "  8\n%s\n", dxf_point->layer);
+        fprintf (fp, " 10\n%f\n", dxf_point->x0);
+        fprintf (fp, " 20\n%f\n", dxf_point->y0);
+        fprintf (fp, " 30\n%f\n", dxf_point->z0);
+        if (dxf_point->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_point.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_point->thickness);
         }
-        if (dxf_point.color != DXF_COLOR_BYLAYER)
+        if (dxf_point->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_point.color);
+                fprintf (fp, " 62\n%d\n", dxf_point->color);
         }
-        if (dxf_point.paperspace == DXF_PAPERSPACE)
+        if (dxf_point->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
