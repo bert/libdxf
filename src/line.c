@@ -441,7 +441,7 @@ dxf_line_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfLine dxf_line
+        DxfLine *dxf_line
                 /*!< DXF line entity. */
 )
 {
@@ -451,48 +451,48 @@ dxf_line_write
 #endif
         char *dxf_entity_name = strdup ("LINE");
 
-        if ((dxf_line.x0 == dxf_line.x1)
-                && (dxf_line.y0 == dxf_line.y1)
-                && (dxf_line.z0 == dxf_line.z1))
+        if ((dxf_line->x0 == dxf_line->x1)
+                && (dxf_line->y0 == dxf_line->y1)
+                && (dxf_line->z0 == dxf_line->z1))
         {
                 fprintf (stderr, "Error in dxf_line_write () start point and end point are identical for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_line.id_code);
+                        dxf_entity_name, dxf_line->id_code);
                 dxf_entity_skip (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_line.layer, "") == 0)
+        if (strcmp (dxf_line->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_line_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_line.id_code);
+                        dxf_entity_name, dxf_line->id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0\n",
                         dxf_entity_name);
-                dxf_line.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_line->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_line.id_code != -1)
+        if (dxf_line->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_line.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_line->id_code);
         }
-        if (strcmp (dxf_line.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_line->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_line.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_line->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_line.layer);
-        fprintf (fp, " 10\n%f\n", dxf_line.x0);
-        fprintf (fp, " 20\n%f\n", dxf_line.y0);
-        fprintf (fp, " 30\n%f\n", dxf_line.z0);
-        fprintf (fp, " 11\n%f\n", dxf_line.x1);
-        fprintf (fp, " 21\n%f\n", dxf_line.y1);
-        fprintf (fp, " 31\n%f\n", dxf_line.z1);
-        if (dxf_line.thickness != 0.0)
+        fprintf (fp, "  8\n%s\n", dxf_line->layer);
+        fprintf (fp, " 10\n%f\n", dxf_line->x0);
+        fprintf (fp, " 20\n%f\n", dxf_line->y0);
+        fprintf (fp, " 30\n%f\n", dxf_line->z0);
+        fprintf (fp, " 11\n%f\n", dxf_line->x1);
+        fprintf (fp, " 21\n%f\n", dxf_line->y1);
+        fprintf (fp, " 31\n%f\n", dxf_line->z1);
+        if (dxf_line->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_line.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_line->thickness);
         }
-        if (dxf_line.color != DXF_COLOR_BYLAYER)
+        if (dxf_line->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_line.color);
+                fprintf (fp, " 62\n%d\n", dxf_line->color);
         }
-        if (dxf_line.paperspace == DXF_PAPERSPACE)
+        if (dxf_line->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }

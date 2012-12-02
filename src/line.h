@@ -149,7 +149,7 @@ int
 dxf_line_write
 (
         FILE *fp,
-        DxfLine dxf_line
+        DxfLine *dxf_line
 );
 
 
