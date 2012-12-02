@@ -241,7 +241,7 @@ int
 dxf_polyline_write
 (
         FILE *fp,
-        DxfPolyline dxf_polyline
+        DxfPolyline *dxf_polyline
 );
 
 

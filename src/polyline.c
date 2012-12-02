@@ -506,7 +506,7 @@ dxf_polyline_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfPolyline dxf_polyline
+        DxfPolyline *dxf_polyline
                 /*!< DXF polyline entity. */
 )
 {
@@ -516,72 +516,72 @@ dxf_polyline_write
 #endif
         char *dxf_entity_name = strdup ("POLYLINE");
 
-        if (dxf_polyline.x0 != 0.0)
+        if (dxf_polyline->x0 != 0.0)
         {
                 fprintf (stderr, "Error in dxf_polyline_write () start point has an invalid X-value for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_polyline.id_code);
+                        dxf_entity_name, dxf_polyline->id_code);
                 return (EXIT_FAILURE);
         }
-        if (dxf_polyline.y0 != 0.0)
+        if (dxf_polyline->y0 != 0.0)
         {
                 fprintf (stderr, "Error in dxf_polyline_write () start point has an invalid Y-value for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_polyline.id_code);
+                        dxf_entity_name, dxf_polyline->id_code);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_polyline.layer, "") == 0)
+        if (strcmp (dxf_polyline->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_polyline_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_polyline.id_code);
+                        dxf_entity_name, dxf_polyline->id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0\n",
                         dxf_entity_name);
-                dxf_polyline.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_polyline->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_polyline.vertices_follow != 1)
+        if (dxf_polyline->vertices_follow != 1)
         {
                 fprintf (stderr, "Error in dxf_polyline_write () vertices follow flag has an invalid value for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_polyline.id_code);
+                        dxf_entity_name, dxf_polyline->id_code);
                 return (EXIT_FAILURE);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_polyline.id_code != -1)
+        if (dxf_polyline->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_polyline.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_polyline->id_code);
         }
-        if (strcmp (dxf_polyline.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_polyline->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_polyline.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_polyline->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_polyline.layer);
-        fprintf (fp, " 10\n%f\n", dxf_polyline.x0);
-        fprintf (fp, " 20\n%f\n", dxf_polyline.y0);
-        fprintf (fp, " 30\n%f\n", dxf_polyline.z0);
-        if (dxf_polyline.thickness != 0.0)
+        fprintf (fp, "  8\n%s\n", dxf_polyline->layer);
+        fprintf (fp, " 10\n%f\n", dxf_polyline->x0);
+        fprintf (fp, " 20\n%f\n", dxf_polyline->y0);
+        fprintf (fp, " 30\n%f\n", dxf_polyline->z0);
+        if (dxf_polyline->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_polyline.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_polyline->thickness);
         }
-        if (dxf_polyline.start_width != 0.0)
+        if (dxf_polyline->start_width != 0.0)
         {
-                fprintf (fp, " 40\n%f\n", dxf_polyline.start_width);
+                fprintf (fp, " 40\n%f\n", dxf_polyline->start_width);
         }
-        if (dxf_polyline.end_width != 0.0)
+        if (dxf_polyline->end_width != 0.0)
         {
-                fprintf (fp, " 41\n%f\n", dxf_polyline.end_width);
+                fprintf (fp, " 41\n%f\n", dxf_polyline->end_width);
         }
-        if (dxf_polyline.color != DXF_COLOR_BYLAYER)
+        if (dxf_polyline->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_polyline.color);
+                fprintf (fp, " 62\n%d\n", dxf_polyline->color);
         }
-        fprintf (fp, " 66\n%d\n", dxf_polyline.vertices_follow);
-        if (dxf_polyline.paperspace == DXF_PAPERSPACE)
+        fprintf (fp, " 66\n%d\n", dxf_polyline->vertices_follow);
+        if (dxf_polyline->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp, " 70\n%d\n", dxf_polyline.flag);
-        fprintf (fp, " 71\n%d\n", dxf_polyline.polygon_mesh_M_vertex_count);
-        fprintf (fp, " 72\n%d\n", dxf_polyline.polygon_mesh_N_vertex_count);
-        fprintf (fp, " 73\n%d\n", dxf_polyline.smooth_M_surface_density);
-        fprintf (fp, " 74\n%d\n", dxf_polyline.smooth_N_surface_density);
-        fprintf (fp, " 75\n%d\n", dxf_polyline.surface_type);
+        fprintf (fp, " 70\n%d\n", dxf_polyline->flag);
+        fprintf (fp, " 71\n%d\n", dxf_polyline->polygon_mesh_M_vertex_count);
+        fprintf (fp, " 72\n%d\n", dxf_polyline->polygon_mesh_N_vertex_count);
+        fprintf (fp, " 73\n%d\n", dxf_polyline->smooth_M_surface_density);
+        fprintf (fp, " 74\n%d\n", dxf_polyline->smooth_N_surface_density);
+        fprintf (fp, " 75\n%d\n", dxf_polyline->surface_type);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_polyline_write () function.\n",
                 __FILE__, __LINE__);
