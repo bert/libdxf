@@ -1,6 +1,8 @@
 /*!
  * \file point.c
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief DXF point entity (\c POINT).
  *
  * Point entities have an optional 50 group that determines the
@@ -104,19 +106,19 @@ dxf_point_init
               fprintf (stderr, "ERROR in dxf_point_init () could not allocate memory for a DxfPoint struct.\n");
               return (NULL);
         }
-        dxf_point->common.id_code = 0;
-        dxf_point->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_point->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_point->id_code = 0;
+        dxf_point->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_point->layer = strdup (DXF_DEFAULT_LAYER);
         dxf_point->x0 = 0.0;
         dxf_point->y0 = 0.0;
         dxf_point->z0 = 0.0;
         dxf_point->extr_x0 = 0.0;
         dxf_point->extr_y0 = 0.0;
         dxf_point->extr_z0 = 0.0;
-        dxf_point->common.thickness = 0.0;
-        dxf_point->common.color = DXF_COLOR_BYLAYER;
-        dxf_point->common.paperspace = DXF_MODELSPACE;
-        dxf_point->common.acad_version_number = 0;
+        dxf_point->thickness = 0.0;
+        dxf_point->color = DXF_COLOR_BYLAYER;
+        dxf_point->paperspace = DXF_MODELSPACE;
+        dxf_point->acad_version_number = 0;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_point_init () function.\n",
                 __FILE__, __LINE__);
@@ -174,20 +176,20 @@ dxf_point_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_point->common.id_code);
+                        fscanf (fp, "%x\n", &dxf_point->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_point->common.linetype);
+                        fscanf (fp, "%s\n", dxf_point->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_point->common.layer);
+                        fscanf (fp, "%s\n", dxf_point->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -210,7 +212,7 @@ dxf_point_read
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_point->z0);
                 }
-                else if ((acad_version_number <= AutoCAD_11)
+                else if ((dxf_point->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_point->z0 = 0.0))
                 {
@@ -222,7 +224,7 @@ dxf_point_read
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_point->z0);
                         /*! \todo Consider to add 
-                         * dxf_line->z1 = dxf_line.z0;
+                         * dxf_line->z1 = dxf_line->z0;
                          * for the elevation could affect both
                          * Z-coordinates. */
                 }
@@ -231,23 +233,23 @@ dxf_point_read
                         /* Now follows a string containing the
                          * thickness. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_point->common.thickness);
+                        fscanf (fp, "%lf\n", &dxf_point->thickness);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_point->common.color);
+                        fscanf (fp, "%d\n", &dxf_point->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_point->common.paperspace);
+                        fscanf (fp, "%d\n", &dxf_point->paperspace);
                 }
-                else if ((acad_version_number >= AutoCAD_12)
+                else if ((dxf_point->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Subclass markers are post AutoCAD R12
@@ -396,33 +398,33 @@ dxf_point_write
 #endif
         char *dxf_entity_name = strdup ("POINT");
 
-        if (strcmp (dxf_point.common.layer, "") == 0)
+        if (strcmp (dxf_point.layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_point_write () empty layer string for the %s entity with id-code: %x\n",
                         dxf_entity_name,
-                        dxf_point.common.id_code);
+                        dxf_point.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
-                dxf_point.common.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_point.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_point.common.id_code != -1)
+        if (dxf_point.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_point.common.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_point.id_code);
         }
-        fprintf (fp, "  8\n%s\n", dxf_point.common.layer);
+        fprintf (fp, "  8\n%s\n", dxf_point.layer);
         fprintf (fp, " 10\n%f\n", dxf_point.x0);
         fprintf (fp, " 20\n%f\n", dxf_point.y0);
         fprintf (fp, " 30\n%f\n", dxf_point.z0);
-        if (dxf_point.common.thickness != 0.0)
+        if (dxf_point.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_point.common.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_point.thickness);
         }
-        if (dxf_point.common.color != DXF_COLOR_BYLAYER)
+        if (dxf_point.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_point.common.color);
+                fprintf (fp, " 62\n%d\n", dxf_point.color);
         }
-        if (dxf_point.common.paperspace == DXF_PAPERSPACE)
+        if (dxf_point.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
