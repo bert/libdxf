@@ -112,6 +112,7 @@ dxf_line_init
         dxf_line->color = DXF_COLOR_BYLAYER;
         dxf_line->paperspace = DXF_MODELSPACE;
         dxf_line->acad_version_number = 0;
+        dxf_line->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_line_init () function.\n",
                 __FILE__, __LINE__);

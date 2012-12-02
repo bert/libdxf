@@ -109,6 +109,9 @@ dxf_line
                 /*!< group code = 230\n
                  * extrusion direction\n
                  * optional, if ommited defaults to 1.0. */
+        struct DxfLine *next;
+                /*!< pointer to the next DxfLine.\n
+                 * \c NULL in the last DxfLine. */
 } DxfLine, * DxfLinePtr;
 
 
