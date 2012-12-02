@@ -115,6 +115,7 @@ dxf_polyline_init
         dxf_polyline->extr_y0 = 0.0;
         dxf_polyline->extr_z0 = 0.0;
         dxf_polyline->acad_version_number = 0;
+        dxf_polyline->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_polyline_init () function.\n",
                 __FILE__, __LINE__);

@@ -193,6 +193,9 @@ dxf_polyline
         double extr_z0;
                 /*!< group code = 230
                  * DXF: Z value of extrusion direction (optional). */
+        struct DxfPolyline *next;
+                /*!< pointer to the next DxfPolyline.\n
+                 * \c NULL in the last DxfPolyline. */
 } DxfPolyline, * DxfPolylinePtr;
 
 
