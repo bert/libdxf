@@ -112,6 +112,7 @@ dxf_attrib
                  * optional, defaults to 0. */
         int vert_align;
                 /*!< group code = 74\n
+                 * added on DXF R12 and later\n
                  * optional, defaults to 0\n
                  * not bit coded:\n
                  * 0 = baseline\n
