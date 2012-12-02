@@ -36,6 +36,41 @@
 
 
 /*!
+ * \brief Allocate memory for a DXF \c object.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfObject *
+dxf_object_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_object_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfObject *dxf_object = NULL;
+        size_t size;
+
+        size = sizeof (DxfObject);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_object = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_object_new () could not allocate memory for a DxfObject struct.\n");
+                dxf_object = NULL;
+        }
+        else
+        {
+                memset (dxf_object, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_object_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_object);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a table of objects.
  *
  * Appears only in \c TABLES section.\n

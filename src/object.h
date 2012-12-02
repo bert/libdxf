@@ -57,6 +57,7 @@ dxf_object
 } DxfObject;
 
 
+DxfObject *dxf_object_new ();
 int
 dxf_object_write_objects
 (
