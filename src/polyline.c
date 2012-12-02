@@ -145,10 +145,8 @@ dxf_polyline_read
                 /*!< filepointer to the input file (or device). */
         int *line_number,
                 /*!< current line number in the input file (or device). */
-        DxfPolyline *dxf_polyline,
+        DxfPolyline *dxf_polyline
                 /*!< DXF polyline entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -297,7 +295,7 @@ dxf_polyline_read
                         (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_polyline->surface_type);
                 }
-                else if ((acad_version_number >= AutoCAD_12)
+                else if ((dxf_polyline->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Subclass markers are post AutoCAD R12
