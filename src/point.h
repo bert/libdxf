@@ -122,8 +122,7 @@ dxf_point_read
         char *filename,
         FILE *fp,
         int *line_number,
-        DxfPoint *dxf_point,
-        int acad_version_number
+        DxfPoint *dxf_point
 );
 int
 dxf_point_write_lowlevel

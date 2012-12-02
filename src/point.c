@@ -148,10 +148,8 @@ dxf_point_read
                 /*!< filepointer to the input file (or device). */
         int *line_number,
                 /*!< current line number in the input file (or device). */
-        DxfPoint *dxf_point,
+        DxfPoint *dxf_point
                 /*!< DXF ellipse entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
