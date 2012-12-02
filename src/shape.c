@@ -139,10 +139,8 @@ dxf_shape_read
                 /*!< filepointer to the input file (or device). */
         int *line_number,
                 /*!< current line number in the input file (or device). */
-        DxfShape *dxf_shape,
+        DxfShape *dxf_shape
                 /*!< DXF shape entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -214,7 +212,7 @@ dxf_shape_read
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_shape->z0);
                 }
-                else if ((acad_version_number <= AutoCAD_11)
+                else if ((dxf_shape->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_shape->z0 = 0.0))
                 {
@@ -275,7 +273,7 @@ dxf_shape_read
                         (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_shape->paperspace);
                 }
-                else if ((acad_version_number >= AutoCAD_12)
+                else if ((dxf_shape->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Subclass markers are post AutoCAD R12
