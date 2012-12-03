@@ -215,7 +215,7 @@ dxf_appid_read
 /*!
  * \brief Write DXF output for a DXF \c APPID entity.
  */
-static int
+int
 dxf_appid_write_lowlevel
 (
         FILE *fp,

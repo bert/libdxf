@@ -103,7 +103,7 @@ dxf_appid_read
         DxfFile *fp,
         DxfAppid *dxf_appid
 );
-static int
+int
 dxf_appid_write_lowlevel
 (
         FILE *fp,
