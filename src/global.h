@@ -1,6 +1,8 @@
 /*!
  * \file global.h
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ *
  * \brief  This is a global header file for a library with functions to
  * generate a dxf file.
  *
