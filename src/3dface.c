@@ -415,10 +415,12 @@ dxf_3dface_write_lowlevel
                 /*!< group code = 70\n
                  * optional, defaults to 0\n
                  * bit coded:\n
-                 * 1 = First edge is invisible\n
-                 * 2 = Second edge is invisible\n
-                 * 4 = Third edge is invisible\n
-                 * 8 = Fourth edge is invisible\n */
+                 * <ol>
+                 * <li value = "1"> First edge is invisible.</li>
+                 * <li value = "2"> Second edge is invisible.</li>
+                 * <li value = "4"> Third edge is invisible.</li>
+                 * <li value = "8"> Fourth edge is invisible.</li>
+                 * </ol> */
 )
 {
 #if DEBUG
