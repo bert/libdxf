@@ -112,6 +112,9 @@ dxf_shape
         double obl_angle;
                 /*!< group code = 51\n
                  * optional, defaults to 0.0. */
+        struct DxfShape *next;
+                /*!< pointer to the next DxfShape.\n
+                 * \c NULL in the last DxfShape. */
 } DxfShape, * DxfShapePtr;
 
 
