@@ -147,10 +147,8 @@ dxf_text_read
                 /*!< filepointer to the input file (or device). */
         int *line_number,
                 /*!< current line number in the input file (or device). */
-        DxfText *dxf_text,
+        DxfText *dxf_text
                 /*!< DXF text entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
