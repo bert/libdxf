@@ -156,7 +156,7 @@ int
 dxf_shape_write
 (
         FILE *fp,
-        DxfShape dxf_shape
+        DxfShape *dxf_shape
 );
 
 

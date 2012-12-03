@@ -458,7 +458,7 @@ dxf_shape_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfShape dxf_shape
+        DxfShape *dxf_shape
                 /*!< DXF shape entity. */
 )
 {
@@ -473,66 +473,66 @@ dxf_shape_write
                 return (EXIT_FAILURE);
                 fprintf (stderr, "Error in dxf_shape_write () NULL pointer passed to dxf_shape_write ().\n");
         }
-                if (strcmp (dxf_shape.shape_name, "") == 0)
+                if (strcmp (dxf_shape->shape_name, "") == 0)
         {
                 fprintf (stderr, "Error in dxf_shape_write () empty name string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_shape.id_code);
+                        dxf_entity_name, dxf_shape->id_code);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_shape.layer, "") == 0)
+        if (strcmp (dxf_shape->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_shape_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_shape.id_code);
+                        dxf_entity_name, dxf_shape->id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
-                dxf_shape.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_shape->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_shape.size == 0.0)
+        if (dxf_shape->size == 0.0)
         {
                 fprintf (stderr, "Warning in dxf_shape_write () size has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_shape.id_code);
+                        dxf_entity_name, dxf_shape->id_code);
         }
-        if (dxf_shape.rel_x_scale == 0.0)
+        if (dxf_shape->rel_x_scale == 0.0)
         {
                 fprintf (stderr, "Warning: in dxf_shape_write () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_shape.id_code);
+                        dxf_entity_name, dxf_shape->id_code);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp, "  2\n%s\n", dxf_shape.shape_name);
-        if (dxf_shape.id_code != -1)
+        fprintf (fp, "  2\n%s\n", dxf_shape->shape_name);
+        if (dxf_shape->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_shape.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_shape->id_code);
         }
-        if (strcmp (dxf_shape.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_shape->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_shape.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_shape->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_shape.layer);
-        fprintf (fp, " 10\n%f\n", dxf_shape.x0);
-        fprintf (fp, " 20\n%f\n", dxf_shape.y0);
-        fprintf (fp, " 30\n%f\n", dxf_shape.z0);
-        if (dxf_shape.thickness != 0.0)
+        fprintf (fp, "  8\n%s\n", dxf_shape->layer);
+        fprintf (fp, " 10\n%f\n", dxf_shape->x0);
+        fprintf (fp, " 20\n%f\n", dxf_shape->y0);
+        fprintf (fp, " 30\n%f\n", dxf_shape->z0);
+        if (dxf_shape->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_shape.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_shape->thickness);
         }
-        fprintf (fp, " 40\n%f\n", dxf_shape.size);
-        if (dxf_shape.rel_x_scale != 1.0)
+        fprintf (fp, " 40\n%f\n", dxf_shape->size);
+        if (dxf_shape->rel_x_scale != 1.0)
         {
-                fprintf (fp, " 41\n%f\n", dxf_shape.rel_x_scale);
+                fprintf (fp, " 41\n%f\n", dxf_shape->rel_x_scale);
         }
-        if (dxf_shape.rot_angle != 0.0)
+        if (dxf_shape->rot_angle != 0.0)
         {
-                fprintf (fp, " 50\n%f\n", dxf_shape.rot_angle);
+                fprintf (fp, " 50\n%f\n", dxf_shape->rot_angle);
         }
-        if (dxf_shape.obl_angle != 0.0)
+        if (dxf_shape->obl_angle != 0.0)
         {
-                fprintf (fp, " 51\n%f\n", dxf_shape.obl_angle);
+                fprintf (fp, " 51\n%f\n", dxf_shape->obl_angle);
         }
-        if (dxf_shape.color != DXF_COLOR_BYLAYER)
+        if (dxf_shape->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_shape.color);
+                fprintf (fp, " 62\n%d\n", dxf_shape->color);
         }
-        if (dxf_shape.paperspace == DXF_PAPERSPACE)
+        if (dxf_shape->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
