@@ -155,8 +155,7 @@ dxf_vertex_read
         char *filename,
         FILE *fp,
         int *line_number,
-        DxfVertex *dxf_vertex,
-        int acad_version_number
+        DxfVertex *dxf_vertex
 );
 int
 dxf_vertex_write_lowlevel

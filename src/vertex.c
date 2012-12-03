@@ -138,10 +138,8 @@ dxf_vertex_read
                 /*!< filepointer to the input file (or device). */
         int *line_number,
                 /*!< current line number in the input file (or device). */
-        DxfVertex *dxf_vertex,
+        DxfVertex *dxf_vertex
                 /*!< DXF vertex entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
