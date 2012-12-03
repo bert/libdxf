@@ -111,6 +111,20 @@ dxf_3dsolid_read
         Dxf3dsolid *dxf_3dsolid
 );
 int
+dxf_3dsolid_write_lowlevel
+(
+        FILE *fp,
+        int id_code,
+        char *linetype,
+        char *layer,
+        double thickness,
+        int color,
+        int paperspace,
+        char *proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM],
+        char *additional_proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM],
+        int modeler_format_version_number
+);
+int
 dxf_3dsolid_free
 (
         Dxf3dsolid *dxf_3dsolid
