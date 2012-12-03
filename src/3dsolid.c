@@ -159,7 +159,7 @@ dxf_3dsolid_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_read () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_read () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *temp_string = NULL;
@@ -174,7 +174,7 @@ dxf_3dsolid_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_arc_read () while reading from: %s in line: %d.\n",
+                        fprintf (stderr, "Error in dxf_3dsolid_read () while reading from: %s in line: %d.\n",
                                 fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
@@ -247,12 +247,12 @@ dxf_3dsolid_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_arc_read () unknown string tag found while reading from: %s in line: %d.\n",
+                        fprintf (stderr, "Warning: in dxf_3dsolid_read () unknown string tag found while reading from: %s in line: %d.\n",
                                 fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_read () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_read () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
