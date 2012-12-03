@@ -82,6 +82,8 @@ dxf_appid
         char *hard_owner_object;
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360. */
+        int acad_version_number;
+                /*!< AutoCAD version number. */
         struct DxfAppid *next;
                 /*!< pointer to the next DxfAppid.\n
                  * \c NULL in the last DxfAppid. */
@@ -101,8 +103,7 @@ dxf_appid_read
         char *filename,
         FILE *fp,
         int *line_number,
-        DxfAppid *dxf_appid,
-        int acad_version_number
+        DxfAppid *dxf_appid
 );
 static int
 dxf_appid_write_lowlevel

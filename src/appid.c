@@ -135,10 +135,8 @@ dxf_appid_read
                 /*!< filepointer to the input file (or device). */
         int *line_number,
                 /*!< current line number in the input file (or device). */
-        DxfAppid *dxf_appid,
+        DxfAppid *dxf_appid
                 /*!< DXF appid entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
