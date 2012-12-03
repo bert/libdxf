@@ -495,10 +495,8 @@ dxf_3dface_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        Dxf3dface *dxf_3dface,
+        Dxf3dface *dxf_3dface
                 /*!< DXF 3D face entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
