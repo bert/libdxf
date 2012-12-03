@@ -411,7 +411,7 @@ dxf_3dface_write_lowlevel
         int paperspace,
                 /*!< group code = 67\n
                  * optional, defaults to 0 (modelspace). */
-        int flag
+        int flag,
                 /*!< group code = 70\n
                  * optional, defaults to 0\n
                  * bit coded:\n
@@ -421,6 +421,8 @@ dxf_3dface_write_lowlevel
                  * <li value = "4"> Third edge is invisible.</li>
                  * <li value = "8"> Fourth edge is invisible.</li>
                  * </ol> */
+        int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -441,6 +443,11 @@ dxf_3dface_write_lowlevel
         if (id_code != -1)
         {
                 fprintf (fp, "  5\n%x\n", id_code);
+        }
+        if (acad_version_number >= AutoCAD_14)
+        {
+                fprintf (fp, "100\nAcDbEntity\n");
+                fprintf (fp, "100\nAcDbFace\n");
         }
         if (strcmp (linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
@@ -518,6 +525,11 @@ dxf_3dface_write
         if (dxf_3dface->id_code != -1)
         {
                 fprintf (fp, "  5\n%x\n", dxf_3dface->id_code);
+        }
+        if (dxf_3dface->acad_version_number >= AutoCAD_14)
+        {
+                fprintf (fp, "100\nAcDbEntity\n");
+                fprintf (fp, "100\nAcDbFace\n");
         }
         if (strcmp (dxf_3dface->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {

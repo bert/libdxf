@@ -165,7 +165,8 @@ dxf_3dface_write_lowlevel
         double thickness,
         int color,
         int paperspace,
-        int flag
+        int flag,
+        int acad_version_number
 );
 int
 dxf_3dface_write
