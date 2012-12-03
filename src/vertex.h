@@ -125,16 +125,20 @@ dxf_vertex
                 /*!< group code = 70\n
                  * optional, defaults to 0\n
                  * bit coded:\n
-                 * 1 = extra vertex created by curve-fitting
+                 * 1 = extra vertex created by curve-fitting.\n
                  * 2 = curve-fit tangent defined for this vertex.
-                 *     A curve-fit tangent direction of 0 may be omitted from
-                 *     the DXF output, but is significant if this bit is set\n
-                 * 4 = unused (never set in DXF files)
-                 * 8 = spline vertex created by spline-fitting
-                 * 16 = spline frame control point
-                 * 32 = 3D Polyline vertex
-                 * 64 = 3D polygon mesh vertex
-                 * 128 = polyface mesh vertex.\n */
+                 *     A curve-fit tangent direction of 0 may be omitted
+                 *     from the DXF output, but is significant if this
+                 *     bit is set\n
+                 * 4 = unused (never set in DXF files).\n
+                 * 8 = spline vertex created by spline-fitting.\n
+                 * 16 = spline frame control point.\n
+                 * 32 = 3D Polyline vertex.\n
+                 * 64 = 3D polygon mesh vertex.\n
+                 * 128 = polyface mesh vertex. */
+        struct DxfVertex *next;
+                /*!< pointer to the next DxfVertex.\n
+                 * \c NULL in the last DxfVertex. */
 } DxfVertex, * DxfVertexPtr;
 
 

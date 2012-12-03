@@ -108,6 +108,7 @@ dxf_vertex_init
         dxf_vertex->paperspace = DXF_MODELSPACE;
         dxf_vertex->flag = 0;
         dxf_vertex->acad_version_number = 0;
+        dxf_vertex->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_init () function.\n",
                 __FILE__, __LINE__);
