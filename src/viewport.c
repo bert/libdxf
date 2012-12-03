@@ -1237,4 +1237,55 @@ dxf_viewport_write_lowlevel
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c VIEWPORT and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_viewport_free
+(
+        DxfViewport *dxf_viewport
+                /*!< Pointer to the memory occupied by the DXF \c VIEWPORT
+                 * entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_viewport_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int i;
+
+        if (dxf_viewport->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_viewport_free () pointer to next DxfViewport was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
+        free (dxf_viewport->linetype);
+        free (dxf_viewport->layer);
+        free (dxf_viewport->app_name);
+        free (dxf_viewport->viewport_data);
+        free (dxf_viewport->window_descriptor_begin);
+        free (dxf_viewport->frozen_layer_list_begin);
+        for (i = 0; i == DXF_MAX_LAYERS; i++)
+        {
+                if (strcmp (dxf_viewport->frozen_layers[i], "") != 0)
+                {
+                        free (dxf_viewport->frozen_layers[i]);
+                }
+        }
+        free (dxf_viewport->frozen_layer_list_end);
+        free (dxf_viewport->window_descriptor_end);
+        free (dxf_viewport);
+        dxf_viewport = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_viewport_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

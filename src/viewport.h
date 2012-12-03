@@ -314,6 +314,11 @@ dxf_viewport_write_lowlevel
         char *frozen_layers[DXF_MAX_LAYERS],
         int acad_version_number
 );
+int
+dxf_viewport_free
+(
+        DxfViewport *dxf_viewport
+);
 
 
 #endif /* _VIEWPORT_H */
