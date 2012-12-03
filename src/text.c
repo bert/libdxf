@@ -118,6 +118,7 @@ dxf_text_init
         dxf_text->extr_x0 = 0.0;
         dxf_text->extr_y0 = 0.0;
         dxf_text->extr_z0 = 0.0;
+        dxf_text->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_text_init () function.\n",
                 __FILE__, __LINE__);
