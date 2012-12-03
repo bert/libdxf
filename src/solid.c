@@ -1,6 +1,8 @@
 /*!
  * \file solid.c
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief DXF solid entity (\c SOLID).
  *
  * A DXF \c SOLID entity is a filled shape made with up to four point
@@ -98,9 +100,9 @@ dxf_solid_init
               fprintf (stderr, "ERROR in dxf_solid_init () could not allocate memory for a DxfSolid struct.\n");
               return (NULL);
         }
-        dxf_solid->common.id_code = 0;
-        dxf_solid->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_solid->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_solid->id_code = 0;
+        dxf_solid->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_solid->layer = strdup (DXF_DEFAULT_LAYER);
         dxf_solid->x0 = 0.0;
         dxf_solid->y0 = 0.0;
         dxf_solid->z0 = 0.0;
@@ -116,10 +118,10 @@ dxf_solid_init
         dxf_solid->extr_x0 = 0.0;
         dxf_solid->extr_y0 = 0.0;
         dxf_solid->extr_z0 = 0.0;
-        dxf_solid->common.thickness = 0.0;
-        dxf_solid->common.color = DXF_COLOR_BYLAYER;
-        dxf_solid->common.paperspace = DXF_MODELSPACE;
-        dxf_solid->common.acad_version_number = 0;
+        dxf_solid->thickness = 0.0;
+        dxf_solid->color = DXF_COLOR_BYLAYER;
+        dxf_solid->paperspace = DXF_MODELSPACE;
+        dxf_solid->acad_version_number = 0;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_solid_init () function.\n",
                 __FILE__, __LINE__);
@@ -180,20 +182,20 @@ dxf_solid_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_solid->common.id_code);
+                        fscanf (fp, "%x\n", &dxf_solid->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_solid->common.linetype);
+                        fscanf (fp, "%s\n", dxf_solid->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_solid->common.layer);
+                        fscanf (fp, "%s\n", dxf_solid->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -279,7 +281,7 @@ dxf_solid_read
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_solid->z3);
                 }
-                else if ((acad_version_number <= AutoCAD_11)
+                else if ((dxf_solid->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_solid->z0 = 0.0))
                 {
@@ -296,23 +298,23 @@ dxf_solid_read
                         /* Now follows a string containing the
                          * thickness. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->common.thickness);
+                        fscanf (fp, "%lf\n", &dxf_solid->thickness);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_solid->common.color);
+                        fscanf (fp, "%d\n", &dxf_solid->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_solid->common.paperspace);
+                        fscanf (fp, "%d\n", &dxf_solid->paperspace);
                 }
-                else if ((acad_version_number >= AutoCAD_12)
+                else if ((dxf_solid->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Subclass markers are post AutoCAD R12
@@ -507,24 +509,24 @@ dxf_solid_write
 #endif
         char *dxf_entity_name = strdup ("SOLID");
 
-        if (strcmp (dxf_solid.common.layer, "") == 0)
+        if (strcmp (dxf_solid.layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_solid_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_solid.common.id_code);
+                        dxf_entity_name, dxf_solid.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
-                dxf_solid.common.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_solid.layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_solid.common.id_code != -1)
+        if (dxf_solid.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_solid.common.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_solid.id_code);
         }
-        if (strcmp (dxf_solid.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_solid.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_solid.common.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_solid.linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_solid.common.layer);
+        fprintf (fp, "  8\n%s\n", dxf_solid.layer);
         fprintf (fp, " 10\n%f\n", dxf_solid.x0);
         fprintf (fp, " 20\n%f\n", dxf_solid.y0);
         fprintf (fp, " 30\n%f\n", dxf_solid.z0);
@@ -537,15 +539,15 @@ dxf_solid_write
         fprintf (fp, " 13\n%f\n", dxf_solid.x3);
         fprintf (fp, " 23\n%f\n", dxf_solid.y3);
         fprintf (fp, " 33\n%f\n", dxf_solid.z3);
-        if (dxf_solid.common.thickness != 0.0)
+        if (dxf_solid.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_solid.common.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_solid.thickness);
         }
-        if (dxf_solid.common.color != DXF_COLOR_BYLAYER)
+        if (dxf_solid.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_solid.common.color);
+                fprintf (fp, " 62\n%d\n", dxf_solid.color);
         }
-        if (dxf_solid.common.paperspace == DXF_PAPERSPACE)
+        if (dxf_solid.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
