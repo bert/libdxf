@@ -93,28 +93,28 @@ dxf_text_init
               fprintf (stderr, "ERROR in dxf_text_init () could not allocate memory for a DxfText struct.\n");
               return (NULL);
         }
-        dxf_text->common.id_code = 0;
+        dxf_text->id_code = 0;
         dxf_text->text_value = strdup ("");
-        dxf_text->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_text->linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_text->text_style = strdup ("");
-        dxf_text->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_text->layer = strdup (DXF_DEFAULT_LAYER);
         dxf_text->x0 = 0.0;
         dxf_text->y0 = 0.0;
         dxf_text->z0 = 0.0;
         dxf_text->x1 = 0.0;
         dxf_text->y1 = 0.0;
         dxf_text->z1 = 0.0;
-        dxf_text->common.thickness = 0.0;
+        dxf_text->thickness = 0.0;
         dxf_text->height = 0.0;
         dxf_text->rel_x_scale = 0.0;
         dxf_text->rot_angle = 0.0;
         dxf_text->obl_angle = 0.0;
-        dxf_text->common.color = DXF_COLOR_BYLAYER;
-        dxf_text->common.paperspace = DXF_MODELSPACE;
+        dxf_text->color = DXF_COLOR_BYLAYER;
+        dxf_text->paperspace = DXF_MODELSPACE;
         dxf_text->text_flags = 0;
         dxf_text->hor_align = 0;
         dxf_text->vert_align = 0;
-        dxf_text->common.acad_version_number = 0;
+        dxf_text->acad_version_number = 0;
         dxf_text->extr_x0 = 0.0;
         dxf_text->extr_y0 = 0.0;
         dxf_text->extr_z0 = 0.0;
@@ -185,14 +185,14 @@ dxf_text_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_text->common.id_code);
+                        fscanf (fp, "%x\n", &dxf_text->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_text->common.linetype);
+                        fscanf (fp, "%s\n", dxf_text->linetype);
                 }
                 else if (strcmp (temp_string, "7") == 0)
                 {
@@ -205,7 +205,7 @@ dxf_text_read
                 {
                         /* Now follows a string containing a layer name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_text->common.layer);
+                        fscanf (fp, "%s\n", dxf_text->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -228,7 +228,7 @@ dxf_text_read
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_text->z0);
                 }
-                else if ((acad_version_number <= AutoCAD_11)
+                else if ((dxf_text->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_text->z0 = 0.0))
                 {
@@ -245,7 +245,7 @@ dxf_text_read
                         /* Now follows a string containing the
                          * thickness. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_text->common.thickness);
+                        fscanf (fp, "%lf\n", &dxf_text->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
@@ -280,14 +280,14 @@ dxf_text_read
                         /* Now follows a string containing the
                          * color value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_text->common.color);
+                        fscanf (fp, "%d\n", &dxf_text->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_text->common.paperspace);
+                        fscanf (fp, "%d\n", &dxf_text->paperspace);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
@@ -310,7 +310,7 @@ dxf_text_read
                         (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_text->vert_align);
                 }
-                else if ((acad_version_number >= AutoCAD_12)
+                else if ((dxf_text->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Subclass markers are post AutoCAD R12
@@ -589,48 +589,48 @@ dxf_text_write
         if (strcmp (dxf_text.text_value, "") == 0)
         {
                 fprintf (stderr, "Error in dxf_text_write () text value string is empty for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_text.common.id_code);
+                        dxf_entity_name, dxf_text.id_code);
                 dxf_entity_skip (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_text.text_style, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_text_write () text style string is empty for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_text.common.id_code);
+                        dxf_entity_name, dxf_text.id_code);
                 dxf_text.text_style = strdup (DXF_DEFAULT_TEXTSTYLE);        }
-        if (strcmp (dxf_text.common.layer, "") == 0)
+        if (strcmp (dxf_text.layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_text_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_text.common.id_code);
+                        dxf_entity_name, dxf_text.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
-                dxf_text.common.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_text.layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (dxf_text.height == 0.0)
         {
                 fprintf (stderr, "Warning in dxf_text_write () height has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_text.common.id_code);
+                        dxf_entity_name, dxf_text.id_code);
         }
         if (dxf_text.rel_x_scale == 0.0)
         {
                 fprintf (stderr, "Warning in dxf_text_write () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_text.common.id_code);
+                        dxf_entity_name, dxf_text.id_code);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
         fprintf (fp, "  1\n%s\n", dxf_text.text_value);
-        if (dxf_text.common.id_code != -1)
+        if (dxf_text.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_text.common.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_text.id_code);
         }
-        if (strcmp (dxf_text.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_text.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_text.common.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_text.linetype);
         }
         if (strcmp (dxf_text.text_style, DXF_DEFAULT_TEXTSTYLE) != 0)
         {
                 fprintf (fp, "  7\n%s\n", dxf_text.text_style);
         }
-        fprintf (fp, "  8\n%s\n", dxf_text.common.layer);
+        fprintf (fp, "  8\n%s\n", dxf_text.layer);
         fprintf (fp, " 10\n%f\n", dxf_text.x0);
         fprintf (fp, " 20\n%f\n", dxf_text.y0);
         fprintf (fp, " 30\n%f\n", dxf_text.z0);
@@ -639,7 +639,7 @@ dxf_text_write
                 if ((dxf_text.x0 == dxf_text.x1) && (dxf_text.y0 == dxf_text.y1) && (dxf_text.z0 == dxf_text.z1))
                 {
                         fprintf (stderr, "Warningin dxf_text_write () insertion point and alignment point are identical for the %s entity with id-code: %x\n",
-                                dxf_entity_name, dxf_text.common.id_code);
+                                dxf_entity_name, dxf_text.id_code);
                         fprintf (stderr, "    default justification applied to %s entity\n",
                                 dxf_entity_name);
                         dxf_text.hor_align = 0;
@@ -652,9 +652,9 @@ dxf_text_write
                         fprintf (fp, " 31\n%f\n", dxf_text.z1);
                 }
         }
-        if (dxf_text.common.thickness != 0.0)
+        if (dxf_text.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_text.common.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_text.thickness);
         }
         fprintf (fp, " 40\n%f\n", dxf_text.height);
         if (dxf_text.rel_x_scale != 1.0)
@@ -669,13 +669,13 @@ dxf_text_write
         {
                 fprintf (fp, " 51\n%f\n", dxf_text.obl_angle);
         }
-        if (dxf_text.common.color != DXF_COLOR_BYLAYER)
+        if (dxf_text.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_text.common.color);
+                fprintf (fp, " 62\n%d\n", dxf_text.color);
         }
-        if (dxf_text.common.paperspace == 1)
+        if (dxf_text.paperspace == 1)
         {
-                fprintf (fp, " 67\n%d\n", dxf_text.common.paperspace);
+                fprintf (fp, " 67\n%d\n", dxf_text.paperspace);
         }
         if (dxf_text.text_flags != 0)
         {
