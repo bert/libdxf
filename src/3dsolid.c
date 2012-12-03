@@ -127,6 +127,8 @@ dxf_3dsolid_init
         dxf_3dsolid->thickness = 0.0;
         dxf_3dsolid->color = DXF_COLOR_BYLAYER;
         dxf_3dsolid->paperspace = DXF_MODELSPACE;
+        dxf_3dsolid->modeler_format_version_number = 1;
+        dxf_3dsolid->history = strdup ("");
         dxf_3dsolid->acad_version_number = 0;
         dxf_3dsolid->next = NULL;
 #if DEBUG
@@ -221,6 +223,14 @@ dxf_3dsolid_read
                         fscanf (fp->fp, "%d\n", &dxf_3dsolid->paperspace);
                 }
                 else if ((dxf_3dsolid->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "70") == 0))
+                {
+                        /* Now follows a string containing the modeler
+                         * format version number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_3dsolid->modeler_format_version_number);
+                }
+                else if ((dxf_3dsolid->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Now follows a string containing the
@@ -245,6 +255,14 @@ dxf_3dsolid_read
                                 fprintf (stderr, "Error in dxf_3dsolid_read () found a bad subclass marker in: %s in line: %d.\n",
                                         fp->filename, fp->line_number);
                         }
+                }
+                else if ((dxf_3dsolid->acad_version_number >= AutoCAD_2008)
+                        && (strcmp (temp_string, "350") == 0))
+                {
+                        /* Now follows a string containing a handle to a
+                         * history object. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_3dsolid->history);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -306,6 +324,9 @@ dxf_3dsolid_write_lowlevel
         int modeler_format_version_number,
                 /*!< group code = 70\n
                  * Modeler format version number (currently = 1).\n */
+        char *history,
+                /*!< group code = 350\n
+                 * Soft-owner ID / handle to history object. */
         int acad_version_number
                 /*!< AutoCAD version number. */
 )
@@ -355,7 +376,10 @@ dxf_3dsolid_write_lowlevel
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp, " 70\n%d\n", modeler_format_version_number);
+        if (acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp, " 70\n%d\n", modeler_format_version_number);
+        }
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 if (strcmp (proprietary_data[DXF_MAX_STRING_LENGTH][i], "") == 0)
@@ -377,6 +401,10 @@ dxf_3dsolid_write_lowlevel
                 {
                         fprintf (fp, "  3\n%s\n", additional_proprietary_data[DXF_MAX_STRING_LENGTH][i]);
                 }
+        }
+        if (acad_version_number >= AutoCAD_2008)
+        {
+                fprintf (fp, "350\n%s\n", history);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_write_lowlevel () function.\n",
@@ -446,7 +474,10 @@ dxf_3dsolid_write
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp, " 70\n%d\n", dxf_3dsolid->modeler_format_version_number);
+        if (dxf_3dsolid->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp, " 70\n%d\n", dxf_3dsolid->modeler_format_version_number);
+        }
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 if (strcmp (dxf_3dsolid->proprietary_data[DXF_MAX_STRING_LENGTH][i], "") == 0)
@@ -470,6 +501,10 @@ dxf_3dsolid_write
                 {
                         fprintf (fp, "  3\n%s\n", dxf_3dsolid->additional_proprietary_data[DXF_MAX_STRING_LENGTH][i]);
                 }
+        }
+        if (dxf_3dsolid->acad_version_number >= AutoCAD_2008)
+        {
+                fprintf (fp, "350\n%s\n", dxf_3dsolid->history);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_write_lowlevel () function.\n",

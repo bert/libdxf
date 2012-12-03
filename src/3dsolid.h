@@ -91,6 +91,9 @@ dxf_3dsolid
         int modeler_format_version_number;
                 /*!< group code = 70\n
                  * Modeler format version number (currently = 1).\n */
+        char *history;
+                /*!< group code = 350\n
+                 * Soft-owner ID / handle to history object. */
         struct Dxf3dsolid *next;
                 /*!< pointer to the next Dxf3dsolid.\n
                  * \c NULL in the last Dxf3dsolid. */
@@ -123,6 +126,7 @@ dxf_3dsolid_write_lowlevel
         char *proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM],
         char *additional_proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM],
         int modeler_format_version_number,
+        char *history,
         int acad_version_number
 );
 int
