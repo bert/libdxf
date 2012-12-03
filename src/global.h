@@ -48,6 +48,8 @@
 #include <math.h>
 #include <errno.h>
 
+#include "entity.h"
+
 /*
  * MS DOS - compilers
  *
