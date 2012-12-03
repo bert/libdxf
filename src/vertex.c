@@ -1,6 +1,8 @@
 /*!
  * \file vertex.c
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Functions for a DXF vertex entity (\c VERTEX).
  *
  * <hr>
@@ -91,21 +93,21 @@ dxf_vertex_init
               fprintf (stderr, "ERROR in dxf_vertex_init () could not allocate memory for a DxfVertex struct.\n");
               return (NULL);
         }
-        dxf_vertex->common.id_code = 0;
-        dxf_vertex->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_vertex->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_vertex->id_code = 0;
+        dxf_vertex->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_vertex->layer = strdup (DXF_DEFAULT_LAYER);
         dxf_vertex->x0 = 0.0;
         dxf_vertex->y0 = 0.0;
         dxf_vertex->z0 = 0.0;
-        dxf_vertex->common.thickness = 0.0;
+        dxf_vertex->thickness = 0.0;
         dxf_vertex->start_width = 0.0;
         dxf_vertex->end_width = 0.0;
         dxf_vertex->bulge = 0.0;
         dxf_vertex->curve_fit_tangent_direction = 0.0;
-        dxf_vertex->common.color = DXF_COLOR_BYLAYER;
-        dxf_vertex->common.paperspace = DXF_MODELSPACE;
+        dxf_vertex->color = DXF_COLOR_BYLAYER;
+        dxf_vertex->paperspace = DXF_MODELSPACE;
         dxf_vertex->flag = 0;
-        dxf_vertex->common.acad_version_number = 0;
+        dxf_vertex->acad_version_number = 0;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_init () function.\n",
                 __FILE__, __LINE__);
@@ -167,20 +169,20 @@ dxf_vertex_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_vertex->common.id_code);
+                        fscanf (fp, "%x\n", &dxf_vertex->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_vertex->common.linetype);
+                        fscanf (fp, "%s\n", dxf_vertex->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_vertex->common.layer);
+                        fscanf (fp, "%s\n", dxf_vertex->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -203,7 +205,7 @@ dxf_vertex_read
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_vertex->z0);
                 }
-                else if ((acad_version_number <= AutoCAD_11)
+                else if ((dxf_vertex->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_vertex->z0 = 0.0))
                 {
@@ -220,7 +222,7 @@ dxf_vertex_read
                         /* Now follows a string containing the
                          * thickness. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_vertex->common.thickness);
+                        fscanf (fp, "%lf\n", &dxf_vertex->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
@@ -248,16 +250,16 @@ dxf_vertex_read
                         /* Now follows a string containing the
                          * color value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_vertex->common.color);
+                        fscanf (fp, "%d\n", &dxf_vertex->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_vertex->common.paperspace);
+                        fscanf (fp, "%d\n", &dxf_vertex->paperspace);
                 }
-                else if ((acad_version_number >= AutoCAD_12)
+                else if ((dxf_vertex->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Subclass markers are post AutoCAD R12
@@ -436,31 +438,31 @@ dxf_vertex_write
 #endif
         char *dxf_entity_name = strdup ("VERTEX");
 
-        if (strcmp (dxf_vertex.common.layer, "") == 0)
+        if (strcmp (dxf_vertex.layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_vertex_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_vertex.common.id_code);
+                        dxf_entity_name, dxf_vertex.id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
-                dxf_vertex.common.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_vertex.layer = strdup (DXF_DEFAULT_LAYER);
         }
 
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_vertex.common.id_code != -1)
+        if (dxf_vertex.id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_vertex.common.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_vertex.id_code);
         }
-        if (strcmp (dxf_vertex.common.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_vertex.linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_vertex.common.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_vertex.linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_vertex.common.layer);
+        fprintf (fp, "  8\n%s\n", dxf_vertex.layer);
         fprintf (fp, " 10\n%f\n", dxf_vertex.x0);
         fprintf (fp, " 20\n%f\n", dxf_vertex.y0);
         fprintf (fp, " 30\n%f\n", dxf_vertex.z0);
-        if (dxf_vertex.common.thickness != 0.0)
+        if (dxf_vertex.thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_vertex.common.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_vertex.thickness);
         }
         if (dxf_vertex.start_width != 0.0)
         {
@@ -478,11 +480,11 @@ dxf_vertex_write
         {
                 fprintf (fp, " 50\n%f\n", dxf_vertex.curve_fit_tangent_direction);
         }
-        if (dxf_vertex.common.color != DXF_COLOR_BYLAYER)
+        if (dxf_vertex.color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_vertex.common.color);
+                fprintf (fp, " 62\n%d\n", dxf_vertex.color);
         }
-        if (dxf_vertex.common.paperspace == DXF_PAPERSPACE)
+        if (dxf_vertex.paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
