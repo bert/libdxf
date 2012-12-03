@@ -153,8 +153,7 @@ dxf_solid_read
         char *filename,
         FILE *fp,
         int *line_number,
-        DxfSolid *dxf_solid,
-        int acad_version_number
+        DxfSolid *dxf_solid
 );
 int
 dxf_solid_write_lowlevel

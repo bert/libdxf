@@ -150,10 +150,8 @@ dxf_solid_read
                 /*!< filepointer to the input file (or device). */
         int *line_number,
                 /*!< current line number in the input file (or device). */
-        DxfSolid *dxf_solid,
+        DxfSolid *dxf_solid
                 /*!< DXF solid entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
