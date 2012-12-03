@@ -137,12 +137,8 @@ dxf_3dface_init
 int
 dxf_3dface_read
 (
-        char *filename,
-                /*!< filename of input file (or device). */
-        FILE *fp,
-                /*!< filepointer to the input file (or device). */
-        int *line_number,
-                /*!< current line number in the input file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
         Dxf3dface *dxf_3dface
                 /*!< DXF 3dface entity. */
 )
@@ -157,120 +153,120 @@ dxf_3dface_read
         {
                 dxf_3dface = dxf_3dface_new ();
         }
-        (*line_number)++;
-        fscanf (fp, "%[^\n]", temp_string);
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
-                if (ferror (fp))
+                if (ferror (fp->fp))
                 {
                         fprintf (stderr, "Error in dxf_3dface_read () while reading from: %s in line: %d.\n",
-                                filename, *line_number);
-                        fclose (fp);
+                                fp->filename, fp->line_number);
+                        fclose (fp->fp);
                         return (0);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_3dface->id_code);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_3dface->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_3dface->linetype);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_3dface->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_3dface->layer);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_3dface->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the first point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the first point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of first the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the second point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->x1);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->x1);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the second point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->y1);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->y1);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the second point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->z1);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->z1);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the third point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->x2);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->x2);
                 }
                 else if (strcmp (temp_string, "22") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the third point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->y2);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->y2);
                 }
                 else if (strcmp (temp_string, "32") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the third point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->z2);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->z2);
                 }
                 else if (strcmp (temp_string, "13") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->x3);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->x3);
                 }
                 else if (strcmp (temp_string, "23") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the fourth point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->y3);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->y3);
                 }
                 else if (strcmp (temp_string, "33") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the fourth point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->z3);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->z3);
                 }
                 else if ((dxf_3dface->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
@@ -282,29 +278,29 @@ dxf_3dface_read
                          * probably be added. */
                         /* Now follows a string containing the
                          * elevation. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_3dface->thickness);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->thickness);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_3dface->color);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_3dface->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_3dface->paperspace);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_3dface->paperspace);
                 }
                 else if ((dxf_3dface->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
@@ -315,33 +311,33 @@ dxf_3dface_read
                          * version should probably be added here. */
                         /* Now follows a string containing the
                          * subclass marker value. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbFace") != 0)))
                         {
                                 fprintf (stderr, "Error in dxf_3dface_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * value of edge visibility flag. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_3dface->flag);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_3dface->flag);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
                 {
                         fprintf (stderr, "Warning in dxf_3dface_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                filename, *line_number);
+                                fp->filename, fp->line_number);
                 }
         }
 #if DEBUG

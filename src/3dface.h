@@ -139,9 +139,7 @@ dxf_3dface_init
 int
 dxf_3dface_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         Dxf3dface *dxf_3dface
 );
 int
