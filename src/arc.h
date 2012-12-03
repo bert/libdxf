@@ -120,9 +120,7 @@ DxfArc *dxf_arc_init (DxfArc *dxf_arc);
 int
 dxf_arc_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfArc *dxf_arc
 );
 int
