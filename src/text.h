@@ -210,7 +210,7 @@ int
 dxf_text_write
 (
         FILE *fp,
-        DxfText dxf_text
+        DxfText *dxf_text
 );
 
 

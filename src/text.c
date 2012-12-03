@@ -575,7 +575,7 @@ dxf_text_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfText dxf_text
+        DxfText *dxf_text
                 /*!< DXF text entity. */
 )
 {
@@ -585,108 +585,108 @@ dxf_text_write
 #endif
         char *dxf_entity_name = strdup ("TEXT");
 
-        if (strcmp (dxf_text.text_value, "") == 0)
+        if (strcmp (dxf_text->text_value, "") == 0)
         {
                 fprintf (stderr, "Error in dxf_text_write () text value string is empty for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_text.id_code);
+                        dxf_entity_name, dxf_text->id_code);
                 dxf_entity_skip (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_text.text_style, "") == 0)
+        if (strcmp (dxf_text->text_style, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_text_write () text style string is empty for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_text.id_code);
-                dxf_text.text_style = strdup (DXF_DEFAULT_TEXTSTYLE);        }
-        if (strcmp (dxf_text.layer, "") == 0)
+                        dxf_entity_name, dxf_text->id_code);
+                dxf_text->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);        }
+        if (strcmp (dxf_text->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_text_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_text.id_code);
+                        dxf_entity_name, dxf_text->id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
-                dxf_text.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_text->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_text.height == 0.0)
+        if (dxf_text->height == 0.0)
         {
                 fprintf (stderr, "Warning in dxf_text_write () height has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_text.id_code);
+                        dxf_entity_name, dxf_text->id_code);
         }
-        if (dxf_text.rel_x_scale == 0.0)
+        if (dxf_text->rel_x_scale == 0.0)
         {
                 fprintf (stderr, "Warning in dxf_text_write () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_text.id_code);
+                        dxf_entity_name, dxf_text->id_code);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp, "  1\n%s\n", dxf_text.text_value);
-        if (dxf_text.id_code != -1)
+        fprintf (fp, "  1\n%s\n", dxf_text->text_value);
+        if (dxf_text->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_text.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_text->id_code);
         }
-        if (strcmp (dxf_text.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_text->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_text.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_text->linetype);
         }
-        if (strcmp (dxf_text.text_style, DXF_DEFAULT_TEXTSTYLE) != 0)
+        if (strcmp (dxf_text->text_style, DXF_DEFAULT_TEXTSTYLE) != 0)
         {
-                fprintf (fp, "  7\n%s\n", dxf_text.text_style);
+                fprintf (fp, "  7\n%s\n", dxf_text->text_style);
         }
-        fprintf (fp, "  8\n%s\n", dxf_text.layer);
-        fprintf (fp, " 10\n%f\n", dxf_text.x0);
-        fprintf (fp, " 20\n%f\n", dxf_text.y0);
-        fprintf (fp, " 30\n%f\n", dxf_text.z0);
-        if ((dxf_text.hor_align != 0) || (dxf_text.vert_align != 0))
+        fprintf (fp, "  8\n%s\n", dxf_text->layer);
+        fprintf (fp, " 10\n%f\n", dxf_text->x0);
+        fprintf (fp, " 20\n%f\n", dxf_text->y0);
+        fprintf (fp, " 30\n%f\n", dxf_text->z0);
+        if ((dxf_text->hor_align != 0) || (dxf_text->vert_align != 0))
         {
-                if ((dxf_text.x0 == dxf_text.x1) && (dxf_text.y0 == dxf_text.y1) && (dxf_text.z0 == dxf_text.z1))
+                if ((dxf_text->x0 == dxf_text->x1) && (dxf_text->y0 == dxf_text->y1) && (dxf_text->z0 == dxf_text->z1))
                 {
                         fprintf (stderr, "Warningin dxf_text_write () insertion point and alignment point are identical for the %s entity with id-code: %x\n",
-                                dxf_entity_name, dxf_text.id_code);
+                                dxf_entity_name, dxf_text->id_code);
                         fprintf (stderr, "    default justification applied to %s entity\n",
                                 dxf_entity_name);
-                        dxf_text.hor_align = 0;
-                        dxf_text.vert_align = 0;
+                        dxf_text->hor_align = 0;
+                        dxf_text->vert_align = 0;
                 }
                 else
                 {
-                        fprintf (fp, " 11\n%f\n", dxf_text.x1);
-                        fprintf (fp, " 21\n%f\n", dxf_text.y1);
-                        fprintf (fp, " 31\n%f\n", dxf_text.z1);
+                        fprintf (fp, " 11\n%f\n", dxf_text->x1);
+                        fprintf (fp, " 21\n%f\n", dxf_text->y1);
+                        fprintf (fp, " 31\n%f\n", dxf_text->z1);
                 }
         }
-        if (dxf_text.thickness != 0.0)
+        if (dxf_text->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_text.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_text->thickness);
         }
-        fprintf (fp, " 40\n%f\n", dxf_text.height);
-        if (dxf_text.rel_x_scale != 1.0)
+        fprintf (fp, " 40\n%f\n", dxf_text->height);
+        if (dxf_text->rel_x_scale != 1.0)
         {
-                fprintf (fp, " 41\n%f\n", dxf_text.rel_x_scale);
+                fprintf (fp, " 41\n%f\n", dxf_text->rel_x_scale);
         }
-        if (dxf_text.rot_angle != 0.0)
+        if (dxf_text->rot_angle != 0.0)
         {
-                fprintf (fp, " 50\n%f\n", dxf_text.rot_angle);
+                fprintf (fp, " 50\n%f\n", dxf_text->rot_angle);
         }
-        if (dxf_text.obl_angle != 0.0)
+        if (dxf_text->obl_angle != 0.0)
         {
-                fprintf (fp, " 51\n%f\n", dxf_text.obl_angle);
+                fprintf (fp, " 51\n%f\n", dxf_text->obl_angle);
         }
-        if (dxf_text.color != DXF_COLOR_BYLAYER)
+        if (dxf_text->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_text.color);
+                fprintf (fp, " 62\n%d\n", dxf_text->color);
         }
-        if (dxf_text.paperspace == 1)
+        if (dxf_text->paperspace == 1)
         {
-                fprintf (fp, " 67\n%d\n", dxf_text.paperspace);
+                fprintf (fp, " 67\n%d\n", dxf_text->paperspace);
         }
-        if (dxf_text.text_flags != 0)
+        if (dxf_text->text_flags != 0)
         {
-                fprintf (fp, " 71\n%d\n", dxf_text.text_flags);
+                fprintf (fp, " 71\n%d\n", dxf_text->text_flags);
         }
-        if (dxf_text.hor_align != 0)
+        if (dxf_text->hor_align != 0)
         {
-                fprintf (fp, " 72\n%d\n", dxf_text.hor_align);
+                fprintf (fp, " 72\n%d\n", dxf_text->hor_align);
         }
-        if (dxf_text.vert_align != 0)
+        if (dxf_text->vert_align != 0)
         {
-                fprintf (fp, " 73\n%d\n", dxf_text.vert_align);
+                fprintf (fp, " 73\n%d\n", dxf_text->vert_align);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_text_write () function.\n",
