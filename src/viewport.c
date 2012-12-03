@@ -1,6 +1,8 @@
 /*!
  * \file viewport.c
- * \author Copyright (C) 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2010 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Functions for a DXF viewport entity (\c VIEWPORT).
  *
  * <hr>
@@ -93,19 +95,19 @@ dxf_viewport_init
               fprintf (stderr, "ERROR in dxf_viewport_init () could not allocate memory for a DxfViewport struct.\n");
               return (NULL);
         }
-        dxf_viewport->common.id_code = 0;
-        dxf_viewport->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_viewport->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_viewport->id_code = 0;
+        dxf_viewport->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_viewport->layer = strdup (DXF_DEFAULT_LAYER);
         dxf_viewport->x0 = 0.0;
         dxf_viewport->y0 = 0.0;
         dxf_viewport->z0 = 0.0;
-        dxf_viewport->common.thickness = 0.0;
+        dxf_viewport->thickness = 0.0;
         dxf_viewport->width = 0.0;
         dxf_viewport->height = 0.0;
         dxf_viewport->status = 0;
         dxf_viewport->id = 1; /* Always 1. */
-        dxf_viewport->common.color = DXF_COLOR_BYLAYER;
-        dxf_viewport->common.paperspace = DXF_PAPERSPACE; /* Always on PAPERSPACE. */
+        dxf_viewport->color = DXF_COLOR_BYLAYER;
+        dxf_viewport->paperspace = DXF_PAPERSPACE; /* Always on PAPERSPACE. */
         dxf_viewport->app_name = strdup ("ACAD"); /* Always "ACAD". */
         dxf_viewport->viewport_data = strdup ("MVIEW"); /* Always "MVIEW". */
         dxf_viewport->window_descriptor_begin = strdup ("{"); /* Always "{". */
@@ -153,7 +155,7 @@ dxf_viewport_init
         }
         dxf_viewport->frozen_layer_list_end = strdup ("}"); /* Always "}". */
         dxf_viewport->window_descriptor_end = strdup ("}"); /* Always "}". */
-        dxf_viewport->common.acad_version_number = AutoCAD_12; /* Minimum required version is AutoCAD R12*/
+        dxf_viewport->acad_version_number = AutoCAD_12; /* Minimum required version is AutoCAD R12*/
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_viewport_init () function.\n",
                 __FILE__, __LINE__);
@@ -215,20 +217,20 @@ dxf_viewport_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_viewport->common.id_code);
+                        fscanf (fp, "%x\n", &dxf_viewport->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_viewport->common.linetype);
+                        fscanf (fp, "%s\n", dxf_viewport->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_viewport->common.layer);
+                        fscanf (fp, "%s\n", dxf_viewport->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
@@ -251,7 +253,7 @@ dxf_viewport_read
                         (*line_number)++;
                         fscanf (fp, "%lf\n", &dxf_viewport->z0);
                 }
-                else if ((acad_version_number <= AutoCAD_11)
+                else if ((dxf_viewport->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_viewport->z0 = 0.0))
                 {
@@ -268,7 +270,7 @@ dxf_viewport_read
                         /* Now follows a string containing the
                          * thickness. */
                         (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->common.thickness);
+                        fscanf (fp, "%lf\n", &dxf_viewport->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
@@ -289,14 +291,14 @@ dxf_viewport_read
                         /* Now follows a string containing the
                          * color value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->common.color);
+                        fscanf (fp, "%d\n", &dxf_viewport->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->common.paperspace);
+                        fscanf (fp, "%d\n", &dxf_viewport->paperspace);
                 }
                 else if (strcmp (temp_string, "68") == 0)
                 {
