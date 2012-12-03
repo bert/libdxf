@@ -105,6 +105,12 @@ dxf_3dsolid_init
         Dxf3dsolid *dxf_3dsolid
 );
 int
+dxf_3dsolid_read
+(
+        DxfFile *fp,
+        Dxf3dsolid *dxf_3dsolid
+);
+int
 dxf_3dsolid_free
 (
         Dxf3dsolid *dxf_3dsolid

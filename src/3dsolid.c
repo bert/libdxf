@@ -138,6 +138,128 @@ dxf_3dsolid_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF \c 3DSOLID entity.
+ *
+ * The last line read from file contained the string "3DSOLID". \n
+ * Now follows some data for the \c 3DSOLID, to be terminated with a "  0"
+ * string announcing the following entity, or the end of the \c ENTITY
+ * section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c dxf_3dsolid. \n
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_3dsolid_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to input file (or device). */
+        Dxf3dsolid *dxf_3dsolid
+                /*!< DXF \c 3DSOLID entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *temp_string = NULL;
+
+        if (!dxf_3dsolid)
+        {
+                dxf_3dsolid = dxf_3dsolid_new ();
+        }
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr, "Error in dxf_arc_read () while reading from: %s in line: %d.\n",
+                                fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        return (EXIT_FAILURE);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_3dsolid->id_code);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_3dsolid->linetype);
+                }
+                else if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing a layer name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_3dsolid->layer);
+                }
+                else if (strcmp (temp_string, "39") == 0)
+                {
+                        /* Now follows a string containing the
+                         * thickness. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dsolid->thickness);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_3dsolid->color);
+                }
+                else if (strcmp (temp_string, "67") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_3dsolid->paperspace);
+                }
+                else if ((dxf_3dsolid->acad_version_number >= AutoCAD_12)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /*!
+                         * \todo Subclass markers are a post AutoCAD R12
+                         * variable so additional testing for the
+                         * version should probably be added here. */
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && ((strcmp (temp_string, "AcDbCircle") != 0)))
+                        {
+                                fprintf (stderr, "Error in dxf_arc_read () found a bad subclass marker in: %s in line: %d.\n",
+                                        fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr, "Warning: in dxf_arc_read () unknown string tag found while reading from: %s in line: %d.\n",
+                                fp->filename, fp->line_number);
+                }
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c 3DSOLID and all it's
  * data fields.
  *
