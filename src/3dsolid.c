@@ -220,21 +220,29 @@ dxf_3dsolid_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_3dsolid->paperspace);
                 }
-                else if ((dxf_3dsolid->acad_version_number >= AutoCAD_12)
+                else if ((dxf_3dsolid->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
-                        /*!
-                         * \todo Subclass markers are a post AutoCAD R12
-                         * variable so additional testing for the
-                         * version should probably be added here. */
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
-                        if ((strcmp (temp_string, "AcDbEntity") != 0)
-                        && ((strcmp (temp_string, "AcDbCircle") != 0)))
+                        if (strcmp (temp_string, "AcDbModelerGeometry") != 0)
                         {
-                                fprintf (stderr, "Error in dxf_arc_read () found a bad subclass marker in: %s in line: %d.\n",
+                                fprintf (stderr, "Error in dxf_3dsolid_read () found a bad subclass marker in: %s in line: %d.\n",
+                                        fp->filename, fp->line_number);
+                        }
+                }
+                else if ((dxf_3dsolid->acad_version_number >= AutoCAD_2008)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if (strcmp (temp_string, "AcDb3dSolid") != 0)
+                        {
+                                fprintf (stderr, "Error in dxf_3dsolid_read () found a bad subclass marker in: %s in line: %d.\n",
                                         fp->filename, fp->line_number);
                         }
                 }
@@ -322,9 +330,12 @@ dxf_3dsolid_write_lowlevel
         {
                 fprintf (fp, "  5\n%x\n", id_code);
         }
-        if (acad_version_number >= AutoCAD_14)
+        if (acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp, "100\nAcDbModelerGeometry\n");
+        }
+        if (acad_version_number >= AutoCAD_2008)
+        {
                 fprintf (fp, "100\nAcDb3dSolid\n");
         }
         if (strcmp (linetype, DXF_DEFAULT_LINETYPE) != 0)
@@ -410,9 +421,12 @@ dxf_3dsolid_write
         {
                 fprintf (fp, "  5\n%x\n", dxf_3dsolid->id_code);
         }
-        if (dxf_3dsolid->acad_version_number >= AutoCAD_14)
+        if (dxf_3dsolid->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp, "100\nAcDbModelerGeometry\n");
+        }
+        if (dxf_3dsolid->acad_version_number >= AutoCAD_2008)
+        {
                 fprintf (fp, "100\nAcDb3dSolid\n");
         }
         if (strcmp (dxf_3dsolid->linetype, DXF_DEFAULT_LINETYPE) != 0)
