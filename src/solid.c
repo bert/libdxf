@@ -122,6 +122,7 @@ dxf_solid_init
         dxf_solid->color = DXF_COLOR_BYLAYER;
         dxf_solid->paperspace = DXF_MODELSPACE;
         dxf_solid->acad_version_number = 0;
+        dxf_solid->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_solid_init () function.\n",
                 __FILE__, __LINE__);
