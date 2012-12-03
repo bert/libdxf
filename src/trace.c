@@ -1,6 +1,8 @@
 /*!
  * \file trace.c
+ *
  * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief DXF trace entity (\c TRACE).
  *
  * <hr>

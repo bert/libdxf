@@ -1,6 +1,8 @@
 /*!
  * \file trace.h
+ *
  * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF trace entity (\c TRACE).
  *
  * <hr>
@@ -35,7 +37,6 @@
 
 
 #include "global.h"
-#include "entity.h"
 
 
 /*!
@@ -44,13 +45,39 @@
 typedef struct
 dxf_trace
 {
+        /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< group code = 5. */
+                /*!< group code = 5\n
+                 * Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n */
         char *linetype;
                 /*!< group code = 6\n
-                 * optional, defaults to \c BYLAYER. */
+                 * The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n */
         char *layer;
-                /*!< group code = 8. */
+                /*!< group code = 8\n
+                 * Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n */
+        double thickness;
+                /*!< group code = 39\n
+                 * Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n */
+        int color;
+                /*!< group code = 62\n
+                 * Color of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Note that entities encapsulated in a block with the
+                 * color \c BYBLOCK are represented in the "native" color of
+                 * the \c BLOCK entity.\n */
+        int paperspace;
+                /*!< group code = 67\n
+                 * Entities are to be drawn on either \c PAPERSPACE or
+                 * \c MODELSPACE.\n
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n */
+        int acad_version_number;
+                /*!< AutoCAD version number. */
+        /* Specific members for a DXF trace. */
         double x0;
                 /*!< group code = 10\n
                  * base point. */
@@ -87,15 +114,6 @@ dxf_trace
         double z3;
                 /*!< group code = 33\n
                  * alignment point. */
-        double thickness;
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
-        int color;
-                /*!< group code = 62\n
-                 * optional, defaults to \c BYLAYER. */
-        int paperspace;
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
 } DxfTrace, * DxfTracePtr;
 
 
