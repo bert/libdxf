@@ -117,10 +117,29 @@ dxf_trace
 } DxfTrace, * DxfTracePtr;
 
 
-int
-dxf_trace_write (FILE *fp, DxfTrace dxf_trace);
-int
-dxf_trace_write_lowlevel (FILE *fp, int id_code, char *linetype, char *layer, double x0, double y0, double z0, double x1, double y1, double z1, double x2, double y2, double z2, double x3, double y3, double z3, double thickness, int color, int paperspace);
+int dxf_trace_write (FILE *fp, DxfTrace *dxf_trace);
+int dxf_trace_write_lowlevel
+(
+        FILE *fp,
+        int id_code,
+        char *linetype,
+        char *layer,
+        double x0,
+        double y0,
+        double z0,
+        double x1,
+        double y1,
+        double z1,
+        double x2,
+        double y2,
+        double z2,
+        double x3,
+        double y3,
+        double z3,
+        double thickness,
+        int color,
+        int paperspace
+);
 
 
 #endif /* _TRACE_H */

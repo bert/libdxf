@@ -43,7 +43,7 @@ dxf_trace_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfTrace dxf_trace
+        DxfTrace *dxf_trace
                 /*!< DXF trace entity. */
 )
 {
@@ -52,43 +52,43 @@ dxf_trace_write
 #endif
         char *dxf_entity_name = strdup ("TRACE");
 
-        if (strcmp (dxf_trace.layer, "") == 0)
+        if (strcmp (dxf_trace->layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_trace.id_code);
+                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_trace->id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
-                dxf_trace.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_trace->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_trace.id_code != -1)
+        if (dxf_trace->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_trace.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_trace->id_code);
         }
-        if (strcmp (dxf_trace.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_trace->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_trace.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_trace->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_trace.layer);
-        fprintf (fp, " 10\n%f\n", dxf_trace.x0);
-        fprintf (fp, " 20\n%f\n", dxf_trace.y0);
-        fprintf (fp, " 30\n%f\n", dxf_trace.z0);
-        fprintf (fp, " 11\n%f\n", dxf_trace.x1);
-        fprintf (fp, " 21\n%f\n", dxf_trace.y1);
-        fprintf (fp, " 31\n%f\n", dxf_trace.z1);
-        fprintf (fp, " 12\n%f\n", dxf_trace.x2);
-        fprintf (fp, " 22\n%f\n", dxf_trace.y2);
-        fprintf (fp, " 32\n%f\n", dxf_trace.z2);
-        fprintf (fp, " 13\n%f\n", dxf_trace.x3);
-        fprintf (fp, " 23\n%f\n", dxf_trace.y3);
-        fprintf (fp, " 33\n%f\n", dxf_trace.z3);
-        if (dxf_trace.thickness != 0.0)
+        fprintf (fp, "  8\n%s\n", dxf_trace->layer);
+        fprintf (fp, " 10\n%f\n", dxf_trace->x0);
+        fprintf (fp, " 20\n%f\n", dxf_trace->y0);
+        fprintf (fp, " 30\n%f\n", dxf_trace->z0);
+        fprintf (fp, " 11\n%f\n", dxf_trace->x1);
+        fprintf (fp, " 21\n%f\n", dxf_trace->y1);
+        fprintf (fp, " 31\n%f\n", dxf_trace->z1);
+        fprintf (fp, " 12\n%f\n", dxf_trace->x2);
+        fprintf (fp, " 22\n%f\n", dxf_trace->y2);
+        fprintf (fp, " 32\n%f\n", dxf_trace->z2);
+        fprintf (fp, " 13\n%f\n", dxf_trace->x3);
+        fprintf (fp, " 23\n%f\n", dxf_trace->y3);
+        fprintf (fp, " 33\n%f\n", dxf_trace->z3);
+        if (dxf_trace->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_trace.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_trace->thickness);
         }
-        if (dxf_trace.color != DXF_COLOR_BYLAYER)
+        if (dxf_trace->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_trace.color);
+                fprintf (fp, " 62\n%d\n", dxf_trace->color);
         }
-        if (dxf_trace.paperspace == DXF_PAPERSPACE)
+        if (dxf_trace->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
