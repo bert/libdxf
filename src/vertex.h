@@ -180,7 +180,7 @@ int
 dxf_vertex_write
 (
         FILE *fp,
-        DxfVertex dxf_vertex
+        DxfVertex *dxf_vertex
 );
 
 

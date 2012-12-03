@@ -427,7 +427,7 @@ dxf_vertex_write
 (
         FILE *fp,
                 /*!< file pointer to output file (or device). */
-        DxfVertex dxf_vertex
+        DxfVertex *dxf_vertex
                 /*!< DXF vertex entity. */
 )
 {
@@ -437,57 +437,57 @@ dxf_vertex_write
 #endif
         char *dxf_entity_name = strdup ("VERTEX");
 
-        if (strcmp (dxf_vertex.layer, "") == 0)
+        if (strcmp (dxf_vertex->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_vertex_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_vertex.id_code);
+                        dxf_entity_name, dxf_vertex->id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
-                dxf_vertex.layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_vertex->layer = strdup (DXF_DEFAULT_LAYER);
         }
 
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_vertex.id_code != -1)
+        if (dxf_vertex->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_vertex.id_code);
+                fprintf (fp, "  5\n%x\n", dxf_vertex->id_code);
         }
-        if (strcmp (dxf_vertex.linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (strcmp (dxf_vertex->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_vertex.linetype);
+                fprintf (fp, "  6\n%s\n", dxf_vertex->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_vertex.layer);
-        fprintf (fp, " 10\n%f\n", dxf_vertex.x0);
-        fprintf (fp, " 20\n%f\n", dxf_vertex.y0);
-        fprintf (fp, " 30\n%f\n", dxf_vertex.z0);
-        if (dxf_vertex.thickness != 0.0)
+        fprintf (fp, "  8\n%s\n", dxf_vertex->layer);
+        fprintf (fp, " 10\n%f\n", dxf_vertex->x0);
+        fprintf (fp, " 20\n%f\n", dxf_vertex->y0);
+        fprintf (fp, " 30\n%f\n", dxf_vertex->z0);
+        if (dxf_vertex->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_vertex.thickness);
+                fprintf (fp, " 39\n%f\n", dxf_vertex->thickness);
         }
-        if (dxf_vertex.start_width != 0.0)
+        if (dxf_vertex->start_width != 0.0)
         {
-                fprintf (fp, " 40\n%f\n", dxf_vertex.start_width);
+                fprintf (fp, " 40\n%f\n", dxf_vertex->start_width);
         }
-        if (dxf_vertex.end_width != 0.0)
+        if (dxf_vertex->end_width != 0.0)
         {
-                fprintf (fp, " 41\n%f\n", dxf_vertex.end_width);
+                fprintf (fp, " 41\n%f\n", dxf_vertex->end_width);
         }
-        if (dxf_vertex.bulge != 0.0)
+        if (dxf_vertex->bulge != 0.0)
         {
-                fprintf (fp, " 42\n%f\n", dxf_vertex.bulge);
+                fprintf (fp, " 42\n%f\n", dxf_vertex->bulge);
         }
-        if (dxf_vertex.curve_fit_tangent_direction != 0.0)
+        if (dxf_vertex->curve_fit_tangent_direction != 0.0)
         {
-                fprintf (fp, " 50\n%f\n", dxf_vertex.curve_fit_tangent_direction);
+                fprintf (fp, " 50\n%f\n", dxf_vertex->curve_fit_tangent_direction);
         }
-        if (dxf_vertex.color != DXF_COLOR_BYLAYER)
+        if (dxf_vertex->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_vertex.color);
+                fprintf (fp, " 62\n%d\n", dxf_vertex->color);
         }
-        if (dxf_vertex.paperspace == DXF_PAPERSPACE)
+        if (dxf_vertex->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp, " 70\n%d\n", dxf_vertex.flag);
+        fprintf (fp, " 70\n%d\n", dxf_vertex->flag);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_write () function.\n",
                 __FILE__, __LINE__);
