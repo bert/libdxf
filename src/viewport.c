@@ -880,7 +880,7 @@ dxf_viewport_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_write_lowlevel () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_viewport_write () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("VIEWPORT");
@@ -965,7 +965,7 @@ dxf_viewport_write
         fprintf (fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_END);
         fprintf (fp, "1002\n%s\n", DXF_VIEWPORT_WINDOW_END);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_viewport_write_lowlevel () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_viewport_write () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
@@ -1145,7 +1145,7 @@ dxf_viewport_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_write_lowlevel () function.\n",
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_viewport_write_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("VIEWPORT");
