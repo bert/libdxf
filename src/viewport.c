@@ -156,6 +156,7 @@ dxf_viewport_init
         dxf_viewport->frozen_layer_list_end = strdup ("}"); /* Always "}". */
         dxf_viewport->window_descriptor_end = strdup ("}"); /* Always "}". */
         dxf_viewport->acad_version_number = AutoCAD_12; /* Minimum required version is AutoCAD R12*/
+        dxf_viewport->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_viewport_init () function.\n",
                 __FILE__, __LINE__);

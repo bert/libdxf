@@ -237,6 +237,9 @@ dxf_viewport
                 /*!< End viewport data.\n
                  * This field will always be the string "}".\n
                  * Group code = 1002. */
+        struct DxfViewport *next;
+                /*!< pointer to the next DxfViewport.\n
+                 * \c NULL in the last DxfViewport. */
 } DxfViewport, * DxfViewportPtr;
 
 
