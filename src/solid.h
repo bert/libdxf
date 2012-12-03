@@ -186,7 +186,7 @@ int
 dxf_solid_write
 (
         FILE *fp,
-        DxfSolid dxf_solid
+        DxfSolid *dxf_solid
 );
 
 
