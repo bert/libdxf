@@ -186,10 +186,8 @@ dxf_viewport_read
                 /*!< filepointer to the input file (or device). */
         int *line_number,
                 /*!< current line number in the input file (or device). */
-        DxfViewport *dxf_viewport,
+        DxfViewport *dxf_viewport
                 /*!< DXF viewport entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
