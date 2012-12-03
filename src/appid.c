@@ -7,7 +7,7 @@
  *
  * A DXF \c APPID entity contains data concerning the application registered
  * with the drawing involved.\n
- * It is a table entry in the \c TABLES section of the DXF file.
+ * It is a table entry in the \c TABLES section of the DXF file.\n
  * These table entries maintain a set of names for all applications
  * registered with a drawing.
  *
