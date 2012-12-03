@@ -295,9 +295,11 @@ dxf_3dsolid_write_lowlevel
                  * Additional lines of proprietary data if previous
                  * group 1 string is greater than 255 characters
                  * (optional).*/
-        int modeler_format_version_number
+        int modeler_format_version_number,
                 /*!< group code = 70\n
                  * Modeler format version number (currently = 1).\n */
+        int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -319,6 +321,11 @@ dxf_3dsolid_write_lowlevel
         if (id_code != -1)
         {
                 fprintf (fp, "  5\n%x\n", id_code);
+        }
+        if (acad_version_number >= AutoCAD_14)
+        {
+                fprintf (fp, "100\nAcDbModelerGeometry\n");
+                fprintf (fp, "100\nAcDb3dSolid\n");
         }
         if (strcmp (linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
@@ -402,6 +409,11 @@ dxf_3dsolid_write
         if (dxf_3dsolid->id_code != -1)
         {
                 fprintf (fp, "  5\n%x\n", dxf_3dsolid->id_code);
+        }
+        if (dxf_3dsolid->acad_version_number >= AutoCAD_14)
+        {
+                fprintf (fp, "100\nAcDbModelerGeometry\n");
+                fprintf (fp, "100\nAcDb3dSolid\n");
         }
         if (strcmp (dxf_3dsolid->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {

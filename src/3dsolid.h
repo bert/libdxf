@@ -122,7 +122,8 @@ dxf_3dsolid_write_lowlevel
         int paperspace,
         char *proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM],
         char *additional_proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM],
-        int modeler_format_version_number
+        int modeler_format_version_number,
+        int acad_version_number
 );
 int
 dxf_3dsolid_write
