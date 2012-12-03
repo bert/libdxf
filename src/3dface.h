@@ -142,8 +142,7 @@ dxf_3dface_read
         char *filename,
         FILE *fp,
         int *line_number,
-        Dxf3dface *dxf_3dface,
-        int acad_version_number
+        Dxf3dface *dxf_3dface
 );
 int
 dxf_3dface_write_lowlevel
