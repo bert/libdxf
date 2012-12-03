@@ -302,13 +302,9 @@ dxf_3dface_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_3dface->paperspace);
                 }
-                else if ((dxf_3dface->acad_version_number >= AutoCAD_12)
+                else if ((dxf_3dface->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
-                        /*!
-                         * \todo Subclass markers are post AutoCAD R12
-                         * variable so additional testing for the
-                         * version should probably be added here. */
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
@@ -444,7 +440,7 @@ dxf_3dface_write_lowlevel
         {
                 fprintf (fp, "  5\n%x\n", id_code);
         }
-        if (acad_version_number >= AutoCAD_14)
+        if (acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp, "100\nAcDbEntity\n");
                 fprintf (fp, "100\nAcDbFace\n");
@@ -526,7 +522,7 @@ dxf_3dface_write
         {
                 fprintf (fp, "  5\n%x\n", dxf_3dface->id_code);
         }
-        if (dxf_3dface->acad_version_number >= AutoCAD_14)
+        if (dxf_3dface->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp, "100\nAcDbEntity\n");
                 fprintf (fp, "100\nAcDbFace\n");
