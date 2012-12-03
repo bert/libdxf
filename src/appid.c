@@ -129,12 +129,8 @@ dxf_appid_init
 int
 dxf_appid_read
 (
-        char *filename,
-                /*!< filename of input file (or device). */
-        FILE *fp,
-                /*!< filepointer to the input file (or device). */
-        int *line_number,
-                /*!< current line number in the input file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
         DxfAppid *dxf_appid
                 /*!< DXF appid entity. */
 )
@@ -149,61 +145,63 @@ dxf_appid_read
         {
                 dxf_appid = dxf_appid_new ();
         }
-        (*line_number)++;
-        fscanf (fp, "%[^\n]", temp_string);
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
-                if (ferror (fp))
+                if (ferror (fp->fp))
                 {
                         fprintf (stderr, "Error in dxf_appid_read () while reading from: %s in line: %d.\n",
-                                filename, *line_number);
-                        fclose (fp);
+                                fp->filename, fp->line_number);
+                        fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_appid->id_code);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_appid->id_code);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_appid->application_name);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_appid->application_name);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * standard flag value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_appid->standard_flag);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_appid->standard_flag);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner object. */
-                        dxf_read_scanf (fp, "%s\n", &dxf_appid->soft_owner_object);
+                        (fp->line_number)++;
+                        dxf_read_scanf (fp->fp, "%s\n", &dxf_appid->soft_owner_object);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
-                        dxf_read_scanf (fp, "%s\n", &dxf_appid->hard_owner_object);
+                        (fp->line_number)++;
+                        dxf_read_scanf (fp->fp, "%s\n", &dxf_appid->hard_owner_object);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
                 {
                         fprintf (stderr, "Warning: in dxf_appid_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                filename, *line_number);
+                                fp->filename, fp->line_number);
                 }
         }
 #if DEBUG

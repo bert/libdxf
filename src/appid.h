@@ -100,9 +100,7 @@ dxf_appid_init
 int
 dxf_appid_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfAppid *dxf_appid
 );
 static int
