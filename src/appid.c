@@ -182,14 +182,14 @@ dxf_appid_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner object. */
                         (fp->line_number)++;
-                        dxf_read_scanf (fp->fp, "%s\n", &dxf_appid->soft_owner_object);
+                        fscanf (fp->fp, "%s\n", dxf_appid->soft_owner_object);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        dxf_read_scanf (fp->fp, "%s\n", &dxf_appid->hard_owner_object);
+                        fscanf (fp->fp, "%s\n", dxf_appid->hard_owner_object);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -271,6 +271,11 @@ dxf_appid_write_lowlevel
         {
                 fprintf (fp, "  5\n%x\n", id_code);
         }
+        if (acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp, "100\nAcDbSymbolTableRecord\n");
+                fprintf (fp, "100\nAcDbRegAppTableRecord\n");
+        }
         fprintf (fp, "  2\n%s\n", application_name);
         fprintf (fp, " 70\n%d\n", standard_flag);
         if (strcmp (soft_owner_object, "") != 0)
@@ -323,6 +328,11 @@ dxf_appid_write
         if (dxf_appid->id_code != -1)
         {
                 fprintf (fp, "  5\n%x\n", dxf_appid->id_code);
+        }
+        if (dxf_appid->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp, "100\nAcDbSymbolTableRecord\n");
+                fprintf (fp, "100\nAcDbRegAppTableRecord\n");
         }
         fprintf (fp, "  2\n%s\n", dxf_appid->application_name);
         fprintf (fp, " 70\n%d\n", dxf_appid->standard_flag);
