@@ -259,6 +259,12 @@ dxf_viewport_read
         DxfViewport *dxf_viewport
 );
 int
+dxf_viewport_write
+(
+        FILE *fp,
+        DxfViewport *dxf_viewport
+);
+int
 dxf_viewport_write_lowlevel
 (
         FILE *fp,
