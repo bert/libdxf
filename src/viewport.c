@@ -180,12 +180,8 @@ dxf_viewport_init
 int
 dxf_viewport_read
 (
-        char *filename,
-                /*!< filename of input file (or device). */
-        FILE *fp,
-                /*!< filepointer to the input file (or device). */
-        int *line_number,
-                /*!< current line number in the input file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
         DxfViewport *dxf_viewport
                 /*!< DXF viewport entity. */
 )
@@ -200,57 +196,57 @@ dxf_viewport_read
         {
                 dxf_viewport = dxf_viewport_new ();
         }
-        (*line_number)++;
-        fscanf (fp, "%[^\n]", temp_string);
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
-                if (ferror (fp))
+                if (ferror (fp->fp))
                 {
                         fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                filename, *line_number);
-                        fclose (fp);
+                                fp->filename, fp->line_number);
+                        fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_viewport->id_code);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_viewport->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_viewport->linetype);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_viewport->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_viewport->layer);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_viewport->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->z0);
                 }
                 else if ((dxf_viewport->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
@@ -261,63 +257,63 @@ dxf_viewport_read
                          * probably be added.
                          * Now follows a string containing the
                          * elevation. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->thickness);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
                          * width. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->width);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->width);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a string containing the
                          * height. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->height);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->height);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->color);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->paperspace);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->paperspace);
                 }
                 else if (strcmp (temp_string, "68") == 0)
                 {
                         /* Now follows a string containing the
                          * status value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->status);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->status);
                 }
                 else if (strcmp (temp_string, "69") == 0)
                 {
                         /* Now follows a string containing the
                          * id. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->id);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->id);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else if (strcmp (temp_string, "1001") == 0)
@@ -325,463 +321,463 @@ dxf_viewport_read
                         /* Now follows a sequence of ordered data fields. */
                         /* Now follows a string containing the appname,
                          * always "ACAD". */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_viewport->app_name);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_viewport->app_name);
                         if (strcmp (dxf_viewport->app_name, "ACAD") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string followed after group code 1001.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1000") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the viewport
                          * data, always "MVIEW". */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_viewport->viewport_data);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_viewport->viewport_data);
                         if (strcmp (dxf_viewport->viewport_data, "MVIEW") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string.\n");
                         }
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1002") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the window
                          * begin descriptor, always "{". */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_viewport->window_descriptor_begin);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_viewport->window_descriptor_begin);
                         if (strcmp (dxf_viewport->window_descriptor_begin, "{") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string.\n");
                         }
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the extended
                          * entity data version number. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->extended_entity_data_version);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->extended_entity_data_version);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1010") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the X-target. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->x_target);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->x_target);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1020") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the Y-target. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->y_target);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->y_target);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1030") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the Z-target. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->z_target);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->z_target);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1010") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the X-direction. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->x_direction);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->x_direction);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1020") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the Y-direction. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->y_direction);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->y_direction);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1030") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the Z-direction. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->z_direction);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->z_direction);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the view
                          * twist angle. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->view_twist_angle);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->view_twist_angle);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the view
                          * height. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->view_height);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->view_height);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the
                          * X-coordinate of the view center point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->x_center);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->x_center);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the
                          * Y-coordinate of the view center point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->y_center);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->y_center);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the
                          * perspective lens length. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->perspective_lens_length);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->perspective_lens_length);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the front
                          * clipping plane offset. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->front_plane_offset);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->front_plane_offset);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the back
                          * clipping plane offset. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->back_plane_offset);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->back_plane_offset);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the view mode. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->view_mode);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->view_mode);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the circle
                          * zoom percent. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->circle_zoom_percent);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->circle_zoom_percent);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the fast zoom
                          * setting. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->fast_zoom_setting);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->fast_zoom_setting);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the ICS ICON
                          * setting. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->UCSICON_setting);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->UCSICON_setting);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the snap on
                          * setting. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->snap_on);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->snap_on);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the grid on
                          * setting. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->grid_on);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->grid_on);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the snap
                          * style setting. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->snap_style);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->snap_style);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the snap
                          * isopair setting. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->snap_isopair);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->snap_isopair);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the snap
                          * rotation angle. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->snap_rotation_angle);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->snap_rotation_angle);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the X snap
                          * base. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->x_snap_base);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->x_snap_base);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the Y snap
                          * base. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->y_snap_base);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->y_snap_base);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the X snap
                          * spacing. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->x_snap_spacing);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->x_snap_spacing);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the Y snap
                          * spacing. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_viewport->y_snap_spacing);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->y_snap_spacing);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the plot flag. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_viewport->plot_flag);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_viewport->plot_flag);
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1002") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the frozen
                          * layer list begin descriptor, always "{". */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_viewport->frozen_layer_list_begin);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_viewport->frozen_layer_list_begin);
                         if (strcmp (dxf_viewport->frozen_layer_list_begin, "{") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string.\n");
                         }
                         /* Now follows a string containing a group code
                          * value of "1003". */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1003") == 0)
                         {
                                 /* Start a loop reading all frozen layer
@@ -791,12 +787,12 @@ dxf_viewport_read
                                 int j = 0;
                                 do
                                 {
-                                        (*line_number)++;
-                                        fscanf (fp, "%s\n", dxf_viewport->frozen_layers[j]);
+                                        (fp->line_number)++;
+                                        fscanf (fp->fp, "%s\n", dxf_viewport->frozen_layers[j]);
                                         j++;
                                         /* Now follows a string containing a group code. */
-                                        (*line_number)++;
-                                        fscanf (fp, "%s\n", temp_string);
+                                        (fp->line_number)++;
+                                        fscanf (fp->fp, "%s\n", temp_string);
                                 }
                                 while ((strcmp (temp_string, "1003") == 0)
                                         || (j < DXF_MAX_LAYERS));
@@ -806,7 +802,7 @@ dxf_viewport_read
                                 /* Either we found an empty list or we
                                  * have found an exception. */
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected end of frozen layer list found.\n");
                         }
                         /* Now we are expecting temp_string to contain a
@@ -814,38 +810,38 @@ dxf_viewport_read
                         if (strcmp (temp_string, "1002") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the frozen
                          * layer list end descriptor, always "}". */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_viewport->frozen_layer_list_end);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_viewport->frozen_layer_list_end);
                         if (strcmp (dxf_viewport->frozen_layer_list_end, "}") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string.\n");
                         }
                         /* Now follows a string containing a group code. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1002") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string sequence found.\n");
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the window
                          * end descriptor, always "}". */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_viewport->window_descriptor_end);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_viewport->window_descriptor_end);
                         if (strcmp (dxf_viewport->window_descriptor_end, "}") == 1)
                         {
                                 fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string.\n");
                         }
                 }
@@ -853,7 +849,7 @@ dxf_viewport_read
                 else 
                 {
                         fprintf (stderr, "Warning: in dxf_viewport_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                filename, *line_number);
+                                fp->filename, fp->line_number);
                 }
         }
 #if DEBUG

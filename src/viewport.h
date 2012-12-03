@@ -253,9 +253,7 @@ dxf_viewport_init
 int
 dxf_viewport_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfViewport *dxf_viewport
 );
 int
