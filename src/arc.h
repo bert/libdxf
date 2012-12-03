@@ -48,67 +48,67 @@ dxf_arc
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< Identification number for the entity.\n
+                /*!< group code = 5\n
+                 * Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file.\n
-                 * Group code = 5. */
+                 * file. */
         char *linetype;
-                /*!< The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
-                 * Group code = 6. */
+                /*!< group code = 6\n
+                 * The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
         char *layer;
-                /*!< Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given.\n
-                 * Group code = 8. */
+                /*!< group code = 8\n
+                 * Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given. */
         double thickness;
-                /*!< Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file.\n
-                 * Group code = 39. */
+                /*!< group code = 39\n
+                 * Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file. */
         int color;
-                /*!< Color of the entity.\n
+                /*!< group code = 62\n
+                 * Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity.\n
-                 * Group code = 62. */
+                 * the \c BLOCK entity. */
         int paperspace;
-                /*!< Entities are to be drawn on either \c PAPERSPACE or
+                /*!< group code = 67\n
+                 * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
-                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
-                 * Group code = 67. */
+                 * Optional, defaults to \c DXF_MODELSPACE (0). */
         int acad_version_number;
                 /*!< AutoCAD version number. */
         /* Specific members for a DXF arc. */
         double x0;
-                /*!< X-value of the starting point coordinate.\n
-                 * Group code = 10. */
+                /*!< group code = 10\n
+                 * X-value of the starting point coordinate. */
         double y0;
-                /*!< Y-value of the starting point coordinate.\n
-                 * Group code = 20. */
+                /*!< group code = 20\n
+                 * Y-value of the starting point coordinate. */
         double z0;
-                /*!< Z-value of the starting point coordinate.\n
-                 * Group code = 30. */
+                /*!< group code = 30\n
+                 * Z-value of the starting point coordinate. */
         double extr_x0;
-                /*!< X-value of the extrusion vector.\n
-                 * Defaults to 0.0 if ommitted in the DXF file.\n
-                 * Group code = 210. */
+                /*!< group code = 210\n
+                 * X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file. */
         double extr_y0;
-                /*!< Y-value of the extrusion vector.\n
-                 * Defaults to 0.0 if ommitted in the DXF file.\n
-                 * Group code = 220. */
+                /*!< group code = 220\n
+                 * Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if ommitted in the DXF file. */
         double extr_z0;
-                /*!< Z-value of the extrusion vector.\n
-                 * Defaults to 1.0 if ommitted in the DXF file.\n
-                 * Group code = 230. */
+                /*!< group code = 230\n
+                 * Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if ommitted in the DXF file. */
         double radius;
-                /*!< Radius of the arc.\n
-                 * Group code = 40. */
+                /*!< group code = 40\n
+                 * Radius of the arc. */
         double start_angle;
-                /*!< Start angle of the arc.\n
-                 * Group code = 50. */
+                /*!< group code = 50\n
+                 * Start angle of the arc. */
         double end_angle;
-                /*!< End angle of the arc.\n
-                 * Group code = 51. */
+                /*!< group code = 51\n
+                 * End angle of the arc. */
         struct DxfArc *next;
                 /*!< pointer to the next DxfArc.\n
                  * \c NULL in the last DxfArc. */

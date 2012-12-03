@@ -59,7 +59,7 @@ dxf_ellipse
                  * The linetype of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file. */
         char *layer;
-                /*!< groupe code = 8\n
+                /*!< group code = 8\n
                  * Layer on which the entity is drawn.\n
                  * Defaults to layer "0" if no valid layername is given. */
         double thickness;
