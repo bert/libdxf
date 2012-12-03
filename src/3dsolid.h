@@ -125,6 +125,12 @@ dxf_3dsolid_write_lowlevel
         int modeler_format_version_number
 );
 int
+dxf_3dsolid_write
+(
+        FILE *fp,
+        Dxf3dsolid *dxf_3dsolid
+);
+int
 dxf_3dsolid_free
 (
         Dxf3dsolid *dxf_3dsolid

@@ -369,6 +369,91 @@ dxf_3dsolid_write_lowlevel
 
 
 /*!
+ * \brief Write DXF output to a file for a DXF \c 3DSOLID entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred while reading from the input file.
+ */
+int
+dxf_3dsolid_write
+(
+        FILE *fp,
+                /*!< file pointer to output file (or device). */
+        Dxf3dsolid *dxf_3dsolid
+                /*!< DXF \c 3DSOLID entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int i;
+        char *dxf_entity_name = strdup ("3DSOLID");
+
+        if (strcmp (dxf_3dsolid->layer, "") == 0)
+        {
+                fprintf (stderr, "Warning in dxf_3dsolid_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_3dsolid->id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
+                dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        if (dxf_3dsolid->id_code != -1)
+        {
+                fprintf (fp, "  5\n%x\n", dxf_3dsolid->id_code);
+        }
+        if (strcmp (dxf_3dsolid->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp, "  6\n%s\n", dxf_3dsolid->linetype);
+        }
+        fprintf (fp, "  8\n%s\n", dxf_3dsolid->layer);
+        if (dxf_3dsolid->thickness != 0.0)
+        {
+                fprintf (fp, " 39\n%f\n", dxf_3dsolid->thickness);
+        }
+        if (dxf_3dsolid->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp, " 62\n%d\n", dxf_3dsolid->color);
+        }
+        if (dxf_3dsolid->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp, " 70\n%d\n", dxf_3dsolid->modeler_format_version_number);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                if (strcmp (dxf_3dsolid->proprietary_data[DXF_MAX_STRING_LENGTH][i], "") == 0)
+                /*! \todo warning: array subscript is above array bounds.*/
+                {
+                        break;
+                }
+                else
+                {
+                        fprintf (fp, "  1\n%s\n", dxf_3dsolid->proprietary_data[DXF_MAX_STRING_LENGTH][i]);
+                }
+        }
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                if (strcmp (dxf_3dsolid->additional_proprietary_data[DXF_MAX_STRING_LENGTH][i], "") == 0)
+                /*! \todo warning: array subscript is above array bounds.*/
+                {
+                        break;
+                }
+                else
+                {
+                        fprintf (fp, "  3\n%s\n", dxf_3dsolid->additional_proprietary_data[DXF_MAX_STRING_LENGTH][i]);
+                }
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_write_lowlevel () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c 3DSOLID and all it's
  * data fields.
  *
