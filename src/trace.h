@@ -114,6 +114,9 @@ dxf_trace
         double z3;
                 /*!< group code = 33\n
                  * alignment point. */
+        struct DxfTrace *next;
+                /*!< pointer to the next DxfTrace.\n
+                 * \c NULL in the last DxfTrace. */
 } DxfTrace, * DxfTracePtr;
 
 
