@@ -98,9 +98,12 @@
 typedef struct
 dxf_file
 {
-    FILE *fp; /*!< File handle */
-    char *filename; /*!< Dxf filename */
-    int line_number; /*!< Last line read */
+    FILE *fp;
+        /*!< File handle. */
+    char *filename;
+        /*!< Dxf filename. */
+    int line_number;
+        /*!< Last line read. */
 } DxfFile, * DxfFilePtr;
 
 
