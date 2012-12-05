@@ -607,6 +607,12 @@ dxf_attdef_write_lowlevel
         {
                 fprintf (fp, "  5\n%x\n", id_code);
         }
+        if (acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp, "100\nAcDbEntity\n");
+                fprintf (fp, "100\nAcDbText\n");
+                fprintf (fp, "100\nAcDbAttributeDefinition\n");
+        }
         if (strcmp (linetype, "BYLAYER") != 0)
         {
                 fprintf (fp, "  6\n%s\n", linetype);
@@ -760,6 +766,12 @@ dxf_attdef_write
         if (dxf_attdef->id_code != -1)
         {
                 fprintf (fp, "  5\n%x\n", dxf_attdef->id_code);
+        }
+        if (dxf_attdef->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp, "100\nAcDbEntity\n");
+                fprintf (fp, "100\nAcDbText\n");
+                fprintf (fp, "100\nAcDbAttributeDefinition\n");
         }
         if (strcmp (dxf_attdef->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
