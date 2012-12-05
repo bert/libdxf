@@ -195,11 +195,8 @@ dxf_attdef_init
 int
 dxf_attdef_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
-        DxfAttdef *dxf_attdef,
-        int acad_version_number
+        DxfFile *fp,
+        DxfAttdef *dxf_attdef
 );
 int
 dxf_attdef_write_lowlevel
