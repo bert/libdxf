@@ -357,7 +357,7 @@ dxf_attdef_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_attdef->vert_align);
                 }
-                else if ((dxf_attdef->acad_version_number >= AutoCAD_12)
+                else if ((dxf_attdef->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Subclass markers are post AutoCAD R12
@@ -368,7 +368,8 @@ dxf_attdef_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
-                        && ((strcmp (temp_string, "AcDbText") != 0)))
+                        && ((strcmp (temp_string, "AcDbText") != 0))
+                        && ((strcmp (temp_string, "AcDbAttributeDefinition") != 0)))
                         {
                                 fprintf (stderr, "Error in dxf_attdef_read () found a bad subclass marker in: %s in line: %d.\n",
                                         fp->filename, fp->line_number);
