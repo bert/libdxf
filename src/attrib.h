@@ -178,11 +178,8 @@ dxf_attrib_init
 int
 dxf_attrib_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
-        DxfAttrib *dxf_attrib,
-        int acad_version_number
+        DxfFile *fp,
+        DxfAttrib *dxf_attrib
 );
 int
 dxf_attrib_write_lowlevel
