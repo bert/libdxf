@@ -328,9 +328,11 @@ dxf_block_write_lowlevel
                 /*!< Z-value of the extrusion vector.\n
                  * Defaults to 1.0 if ommitted in the DXF file.\n
                  * Group code = 230. */
-        char *soft_owner_object
+        char *soft_owner_object,
                 /*!< Soft-pointer ID/handle to owner object.\n
                  * Group code = 330. */
+        int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -356,6 +358,11 @@ dxf_block_write_lowlevel
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        if (acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp, "100\nAcDbEntity\n");
+                fprintf (fp, "100\nAcDbBlockBegin\n");
+        }
         if ((block_type && 4) || (block_type && 32))
         {
                 fprintf (fp, "  1\n%s\n", xref_name);
@@ -446,6 +453,11 @@ dxf_block_write
                 dxf_block->soft_owner_object = strdup ("");
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        if (dxf_block->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp, "100\nAcDbEntity\n");
+                fprintf (fp, "100\nAcDbBlockBegin\n");
+        }
         if ((dxf_block->block_type && 4) || (dxf_block->block_type && 32))
         {
                 fprintf (fp, "  1\n%s\n", dxf_block->xref_name);
