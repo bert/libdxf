@@ -132,16 +132,10 @@ dxf_block_init
 int
 dxf_block_read
 (
-        char *filename,
-                /*!< filename of input file (or device). */
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
-        int *line_number,
-                /*!< current line number in the input file (or device). */
-        DxfBlock *dxf_block,
+        DxfBlock *dxf_block
                 /*!< DXF block entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -154,60 +148,60 @@ dxf_block_read
         {
                 dxf_block = dxf_block_new ();
         }
-        dxf_read_line (temp_string, fp);
+        fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
                 if (strcmp (temp_string, "1") == 0)
                 {
                         /* Now follows a string containing a external
                          * reference name. */
-                        dxf_read_scanf (fp, "%s\n", &dxf_block->xref_name);
+                        fscanf (fp->fp, "%s\n", dxf_block->xref_name);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a block name. */
-                        dxf_read_scanf (fp, "%s\n", &dxf_block->block_name);
+                        fscanf (fp->fp, "%s\n", dxf_block->block_name);
                 }
                 else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing a block name. */
-                        dxf_read_scanf (fp, "%s\n", &dxf_block->block_name);
+                        fscanf (fp->fp, "%s\n", dxf_block->block_name);
                 }
                 else if (strcmp (temp_string, "4") == 0)
                 {
                         /* Now follows a string containing a description. */
-                        dxf_read_scanf (fp, "%s\n", &dxf_block->description);
+                        fscanf (fp->fp, "%s\n", dxf_block->description);
                 }
                 else if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        dxf_read_scanf (fp, "%x\n", &dxf_block->id_code);
+                        fscanf (fp->fp, "%x\n", &dxf_block->id_code);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        dxf_read_scanf (fp, "%s\n", dxf_block->layer);
+                        fscanf (fp->fp, "%s\n", dxf_block->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
-                        dxf_read_scanf (fp, "%lf\n", &dxf_block->x0);
+                        fscanf (fp->fp, "%lf\n", &dxf_block->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
-                        dxf_read_scanf (fp, "%lf\n", &dxf_block->y0);
+                        fscanf (fp->fp, "%lf\n", &dxf_block->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
-                        dxf_read_scanf (fp, "%lf\n", &dxf_block->z0);
+                        fscanf (fp->fp, "%lf\n", &dxf_block->z0);
                 }
-                else if ((acad_version_number <= AutoCAD_11)
+                else if ((dxf_block->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_block->z0 = 0.0))
                 {
@@ -216,15 +210,15 @@ dxf_block_read
                          * probably be added.
                          * Now follows a string containing the
                          * elevation. */
-                        dxf_read_scanf (fp, "%lf\n", &dxf_block->z0);
+                        fscanf (fp->fp, "%lf\n", &dxf_block->z0);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the block
                          * type value. */
-                        dxf_read_scanf (fp, "%d\n", &dxf_block->block_type);
+                        fscanf (fp->fp, "%d\n", &dxf_block->block_type);
                 }
-                else if ((acad_version_number >= AutoCAD_12)
+                else if ((dxf_block->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Subclass markers are post AutoCAD R12
@@ -232,48 +226,48 @@ dxf_block_read
                          * version should probably be added here.
                          * Now follows a string containing the
                          * subclass marker value. */
-                        dxf_read_scanf (fp, "%s\n", temp_string);
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbBlockBegin") != 0)))
                         {
                                 fprintf (stderr, "Error in dxf_block_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
-                        dxf_read_scanf (fp, "%lf\n", &dxf_block->extr_x0);
+                        fscanf (fp->fp, "%lf\n", &dxf_block->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
-                        dxf_read_scanf (fp, "%lf\n", &dxf_block->extr_y0);
+                        fscanf (fp->fp, "%lf\n", &dxf_block->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
-                        dxf_read_scanf (fp, "%lf\n", &dxf_block->extr_z0);
+                        fscanf (fp->fp, "%lf\n", &dxf_block->extr_z0);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner object. */
-                        dxf_read_scanf (fp, "%s\n", &dxf_block->soft_owner_object);
+                        fscanf (fp->fp, "%s\n", dxf_block->soft_owner_object);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
-                        dxf_read_scanf (fp, "%s\n", &dxf_block->hard_owner_object);
+                        fscanf (fp->fp, "%s\n", dxf_block->hard_owner_object);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        dxf_read_scanf (fp, "%s\n", temp_string);
+                        fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else

@@ -135,11 +135,8 @@ DxfBlock *dxf_block_new ();
 DxfBlock *dxf_block_init (DxfBlock *dxf_block);
 int dxf_block_read
 (
-        char *filename,
         DxfFile *fp,
-        int *line_number,
-        DxfBlock *dxf_block,
-        int acad_version_number
+        DxfBlock *dxf_block
 );
 int dxf_block_write_lowlevel
 (
