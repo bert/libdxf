@@ -360,7 +360,8 @@ dxf_attrib_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
-                        && ((strcmp (temp_string, "AcDbText") != 0)))
+                        && (strcmp (temp_string, "AcDbText") != 0)
+                        && (strcmp (temp_string, "AcDbAttribute") != 0))
                         {
                                 fprintf (stderr, "Error in dxf_attrib_read () found a bad subclass marker in: %s in line: %d.\n",
                                         fp->filename, fp->line_number);
