@@ -106,7 +106,6 @@ dxf_block_init
         dxf_block->acad_version_number = 0;
         dxf_block->block_type = 0; /* 0 = invalid type */
         dxf_block->soft_owner_object = strdup ("");
-        dxf_block->hard_owner_object = strdup ("");
         dxf_block->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_init () function.\n",
@@ -255,12 +254,6 @@ dxf_block_read
                          * ID/handle to owner object. */
                         fscanf (fp->fp, "%s\n", dxf_block->soft_owner_object);
                 }
-                else if (strcmp (temp_string, "360") == 0)
-                {
-                        /* Now follows a string containing Hard owner
-                         * ID/handle to owner dictionary. */
-                        fscanf (fp->fp, "%s\n", dxf_block->hard_owner_object);
-                }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
@@ -335,13 +328,9 @@ dxf_block_write_lowlevel
                 /*!< Z-value of the extrusion vector.\n
                  * Defaults to 1.0 if ommitted in the DXF file.\n
                  * Group code = 230. */
-        char *soft_owner_object,
+        char *soft_owner_object
                 /*!< Soft-pointer ID/handle to owner object.\n
                  * Group code = 330. */
-        char *hard_owner_object
-                /*!< Hard owner ID/handle to owner dictionary
-                 * (optional).\n
-                 * Group code = 360. */
 )
 {
 #if DEBUG
@@ -389,10 +378,6 @@ dxf_block_write_lowlevel
         if (strcmp (soft_owner_object, "") != 0)
         {
                 fprintf (fp, "330\n%s\n", soft_owner_object);
-        }
-        if (strcmp (hard_owner_object, "") != 0)
-        {
-                fprintf (fp, "360\n%s\n", hard_owner_object);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write_lowlevel () function.\n", __FILE__, __LINE__);
@@ -484,10 +469,6 @@ dxf_block_write
         {
                 fprintf (fp, "330\n%s\n", dxf_block->soft_owner_object);
         }
-        if (strcmp (dxf_block->hard_owner_object, "") != 0)
-        {
-                fprintf (fp, "360\n%s\n", dxf_block->hard_owner_object);
-        }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write () function.\n",
                 __FILE__, __LINE__);
@@ -569,7 +550,6 @@ dxf_block_free
         free (dxf_block->description);
         free (dxf_block->layer);
         free (dxf_block->soft_owner_object);
-        free (dxf_block->hard_owner_object);
         free (dxf_block);
         dxf_block = NULL;
 #if DEBUG

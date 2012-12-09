@@ -119,9 +119,6 @@ dxf_block
         char *soft_owner_object;
                 /*!< Soft-pointer ID/handle to owner object.\n
                  * Group code = 330. */
-        char *hard_owner_object;
-                /*!< Soft-pointer ID/handle to owner object.\n
-                 * Group code = 360. */
         int acad_version_number;
                 /*!< AutoCAD version number. */
         struct DxfBlock *next;
@@ -153,8 +150,7 @@ int dxf_block_write_lowlevel
         double extr_x0,
         double extr_y0,
         double extr_z0,
-        char *soft_owner_object,
-        char *hard_owner_object
+        char *soft_owner_object
 );
 int dxf_blocks_write (FILE *fp, DxfBlock *dxf_block);
 int dxf_block_write_endblk (FILE *fp);
