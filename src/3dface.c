@@ -436,14 +436,14 @@ dxf_3dface_write_lowlevel
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (id_code != -1)
-        {
-                fprintf (fp, "  5\n%x\n", id_code);
-        }
         if (acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp, "100\nAcDbEntity\n");
                 fprintf (fp, "100\nAcDbFace\n");
+        }
+        if (id_code != -1)
+        {
+                fprintf (fp, "  5\n%x\n", id_code);
         }
         if (strcmp (linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
@@ -518,14 +518,14 @@ dxf_3dface_write
                 dxf_3dface->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_3dface->id_code != -1)
-        {
-                fprintf (fp, "  5\n%x\n", dxf_3dface->id_code);
-        }
         if (dxf_3dface->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp, "100\nAcDbEntity\n");
                 fprintf (fp, "100\nAcDbFace\n");
+        }
+        if (dxf_3dface->id_code != -1)
+        {
+                fprintf (fp, "  5\n%x\n", dxf_3dface->id_code);
         }
         if (strcmp (dxf_3dface->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
