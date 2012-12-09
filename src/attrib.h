@@ -208,7 +208,8 @@ dxf_attrib_write_lowlevel
         int text_flags,
         int hor_align,
         int field_length,
-        int vert_align
+        int vert_align,
+        int acad_version_number
 );
 int
 dxf_attrib_write

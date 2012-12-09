@@ -495,7 +495,7 @@ dxf_attrib_write_lowlevel
         int field_length,
                 /*!< group code = 73\n
                  * optional, defaults to 0. */
-        int vert_align
+        int vert_align,
                 /*!< group code = 74\n
                  * optional, defaults to 0\n
                  * codes:\n
@@ -503,6 +503,8 @@ dxf_attrib_write_lowlevel
                  * 1 = bottom\n
                  * 2 = middle\n
                  * 3 = top. */
+        int acad_version_number
+                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -559,6 +561,12 @@ dxf_attrib_write_lowlevel
         if (id_code != -1)
         {
                 fprintf (fp, "  5\n%x\n", id_code);
+        }
+        if (acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp, "100\nAcDbEntity\n");
+                fprintf (fp, "100\nAcDbText\n");
+                fprintf (fp, "100\nAcDbAttributeDefinition\n");
         }
         if (strcmp (linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
@@ -711,6 +719,12 @@ dxf_attrib_write
         if (dxf_attrib->id_code != -1)
         {
                 fprintf (fp, "  5\n%x\n", dxf_attrib->id_code);
+        }
+        if (dxf_attrib->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp, "100\nAcDbEntity\n");
+                fprintf (fp, "100\nAcDbText\n");
+                fprintf (fp, "100\nAcDbAttribute\n");
         }
         if (strcmp (dxf_attrib->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
