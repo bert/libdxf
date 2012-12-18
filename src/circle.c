@@ -355,6 +355,11 @@ dxf_circle_write_lowlevel
         {
                 fprintf (fp, "  5\n%x\n", id_code);
         }
+        if (acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp, "100\nAcDbEntity\n");
+                fprintf (fp, "100\nAcDbCircle\n");
+        }
         if (strcmp (linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp, "  6\n%s\n", linetype);
@@ -426,6 +431,11 @@ dxf_circle_write
         if (dxf_circle->id_code != -1)
         {
                 fprintf (fp, "  5\n%x\n", dxf_circle->id_code);
+        }
+        if (dxf_circle->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp, "100\nAcDbEntity\n");
+                fprintf (fp, "100\nAcDbCircle\n");
         }
         if (strcmp (dxf_circle->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
