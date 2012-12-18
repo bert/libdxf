@@ -132,12 +132,8 @@ dxf_circle_init
 int
 dxf_circle_read
 (
-        char *filename,
-                /*!< filename of input file (or device). */
-        FILE *fp,
-                /*!< filepointer to the input file (or device). */
-        int *line_number,
-                /*!< current line number in the input file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
         DxfCircle *dxf_circle
                 /*!< DXF circle entity. */
 )
@@ -148,57 +144,57 @@ dxf_circle_read
 #endif
         char *temp_string = NULL;
 
-        (*line_number)++;
-        fscanf (fp, "%[^\n]", temp_string);
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
-                if (ferror (fp))
+                if (ferror (fp->fp))
                 {
                         fprintf (stderr, "Error in dxf_circle_read () while reading from: %s in line: %d.\n",
-                                filename, *line_number);
-                        fclose (fp);
+                                fp->filename, fp->line_number);
+                        fclose (fp->fp);
                         return (0);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_circle->id_code);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_circle->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_circle->linetype);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_circle->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_circle->layer);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_circle->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_circle->x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_circle->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_circle->y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_circle->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_circle->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_circle->z0);
                 }
                 else if ((dxf_circle->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
@@ -209,36 +205,36 @@ dxf_circle_read
                          * probably be added.
                          * Now follows a string containing the
                          * elevation. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_circle->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_circle->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_circle->thickness);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_circle->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
                          * radius. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_circle->radius);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_circle->radius);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_circle->color);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_circle->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_circle->paperspace);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_circle->paperspace);
                 }
                 else if ((dxf_circle->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
@@ -248,47 +244,47 @@ dxf_circle_read
                          * version should probably be added here.
                          * Now follows a string containing the
                          * subclass marker value. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbCircle") != 0)))
                         {
                                 fprintf (stderr, "Error in dxf_arc_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_circle->extr_x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_circle->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_circle->extr_y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_circle->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_circle->extr_z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_circle->extr_z0);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
                 {
                         fprintf (stderr, "Warning: in dxf_circle_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                filename, *line_number);
+                                fp->filename, fp->line_number);
                 }
         }
 #if DEBUG

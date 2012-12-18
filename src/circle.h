@@ -109,9 +109,7 @@ DxfCircle *dxf_circle_init (DxfCircle *dxf_circle);
 int
 dxf_circle_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfCircle *dxf_circle
 );
 int
