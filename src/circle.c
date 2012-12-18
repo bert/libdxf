@@ -246,7 +246,7 @@ dxf_circle_read
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbCircle") != 0)))
                         {
-                                fprintf (stderr, "Error in dxf_arc_read () found a bad subclass marker in: %s in line: %d.\n",
+                                fprintf (stderr, "Error in dxf_circle_read () found a bad subclass marker in: %s in line: %d.\n",
                                         fp->filename, fp->line_number);
                         }
                 }
