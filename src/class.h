@@ -94,6 +94,8 @@ dxf_class
                  * Set to 1 if class was derived from the AcDbEntity class and
                  * can reside in the BLOCKS or ENTITIES section.\n
                  * If 0, instances may appear only in the OBJECTS section. */
+        int acad_version_number;
+                /*!< AutoCAD version number. */
         struct DxfClass *next;
                 /*!< pointer to the next DxfClass.\n
                  * \c NULL in the last DxfClass. */
@@ -110,11 +112,8 @@ dxf_class_init
 int
 dxf_class_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
-        DxfClass *dxf_class,
-        int acad_version_number
+        DxfFile *fp,
+        DxfClass *dxf_class
 );
 int
 dxf_class_write_lowlevel
