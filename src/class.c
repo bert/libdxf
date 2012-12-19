@@ -259,17 +259,27 @@ dxf_class_write_lowlevel
                 /*!< group code = 90.\n
                  * Proxy capabilities flag.\n
                  * Bit coded value that indicates the capabilities of this object as a proxy.\n
-                 * 0 = No operations allowed (0)\n
-                 * 1 = Erase allowed (0x1)\n
-                 * 2 = Transform allowed (0x2)\n
-                 * 4 = Color change allowed (0x4)\n
-                 * 8 = Layer change allowed (0x8)\n
-                 * 16 = Linetype change allowed (0x10)\n
-                 * 32 = Linetype scale change allowed (0x20)\n
-                 * 64 = Visibility change allowed (0x40)\n
-                 * 127 = All operations except cloning allowed (0x7F)\n
-                 * 128 = Cloning allowed (0x80)\n
-                 * 255 = All operations allowed (0xFF)\n
+                 * 0 = No operations allowed (0).\n
+                 * 1 = Erase allowed (0x1).\n
+                 * 2 = Transform allowed (0x2).\n
+                 * 4 = Color change allowed (0x4).\n
+                 * 8 = Layer change allowed (0x8).\n
+                 * 16 = Linetype change allowed (0x10).\n
+                 * 32 = Linetype scale change allowed (0x20).\n
+                 * 64 = Visibility change allowed (0x40).\n
+                 * 127 = All operations except cloning allowed (0x7F),
+                 *       until R2000.\n
+                 * 128 = Cloning allowed (0x80).\n
+                 * 255 = All operations allowed (0xFF),
+                 *       until R2000.\n
+                 * 256 = Lineweight change allowed (0x100),
+                 *       introduced in R2002.\n
+                 * 512 = Plot Style Name change allowed (0x200),
+                 *       introduced in R2002.\n
+                 * 895 = All operations except cloning allowed (0x37F),
+                 *       introduced in R2002.\n
+                 * 1023 = All operations allowed (0x3FF),
+                 *        introduced in R2002.\n
                  * 32768 = R13 format proxy (0x8000). */
         int was_a_proxy_flag,
                 /*!< group code = 280.\n
