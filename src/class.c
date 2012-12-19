@@ -310,8 +310,8 @@ dxf_class_write_lowlevel
 int
 dxf_class_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfClass *dxf_class
                 /*!< DXF class section. */
 )
@@ -350,13 +350,13 @@ dxf_class_write
                         dxf_entity_name );
                 dxf_class->app_name = strdup ("");
         }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp, "  1\n%s\n", dxf_class->record_name);
-        fprintf (fp, "  2\n%s\n", dxf_class->class_name);
-        fprintf (fp, "  3\n%s\n", dxf_class->app_name);
-        fprintf (fp, " 90\n%d\n", dxf_class->proxy_cap_flag);
-        fprintf (fp, "280\n%d\n", dxf_class->was_a_proxy_flag);
-        fprintf (fp, "281\n%d\n", dxf_class->is_an_entity_flag);
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        fprintf (fp->fp, "  1\n%s\n", dxf_class->record_name);
+        fprintf (fp->fp, "  2\n%s\n", dxf_class->class_name);
+        fprintf (fp->fp, "  3\n%s\n", dxf_class->app_name);
+        fprintf (fp->fp, " 90\n%d\n", dxf_class->proxy_cap_flag);
+        fprintf (fp->fp, "280\n%d\n", dxf_class->was_a_proxy_flag);
+        fprintf (fp->fp, "281\n%d\n", dxf_class->is_an_entity_flag);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_class_write () function.\n",
                 __FILE__, __LINE__);
