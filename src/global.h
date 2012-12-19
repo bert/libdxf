@@ -106,6 +106,8 @@ dxf_file
         /*!< Dxf filename. */
     int line_number;
         /*!< Last line read. */
+    int acad_version_number;
+        /*!< AutoCAD version number. */
 } DxfFile, * DxfFilePtr;
 
 
