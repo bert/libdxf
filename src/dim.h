@@ -218,8 +218,6 @@ dxf_dimension
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
         /* Specific members for a DXF dimension. */
         char *dim_text;
                 /*!< Dimension text explicitly entered by the user.\n
@@ -424,7 +422,11 @@ dxf_dimension
 
 DxfDimStyle *dxf_dimstyle_new ();
 DxfDimStyle *dxf_dimstyle_init (DxfDimStyle *dxf_dimstyle);
-int dxf_dimstyle_write (FILE *fp, DxfDimStyle *dxf_dimstyle);
+int dxf_dimstyle_write
+(
+        DxfFile *fp,
+        DxfDimStyle *dxf_dimstyle
+);
 int dxf_dimstyle_free (DxfDimStyle *dxf_dimstyle);
 
 

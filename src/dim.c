@@ -156,8 +156,8 @@ dxf_dimstyle_init
 int
 dxf_dimstyle_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfDimStyle *dxf_dimstyle
                 /*!< DXF \c DIMSTYLE entity. */
 )
@@ -193,68 +193,68 @@ dxf_dimstyle_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp, "  2\n%s\n", dxf_dimstyle->dimstyle_name);
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        fprintf (fp->fp, "  2\n%s\n", dxf_dimstyle->dimstyle_name);
         if (!dxf_dimstyle->dimpost)
         {
                 dxf_dimstyle->dimpost = strdup ("");
         }
-        fprintf (fp, "  3\n%s\n", dxf_dimstyle->dimpost);
+        fprintf (fp->fp, "  3\n%s\n", dxf_dimstyle->dimpost);
         if (!dxf_dimstyle->dimapost)
         {
                 dxf_dimstyle->dimapost = strdup ("");
         }
-        fprintf (fp, "  4\n%s\n", dxf_dimstyle->dimapost);
+        fprintf (fp->fp, "  4\n%s\n", dxf_dimstyle->dimapost);
         if (!dxf_dimstyle->dimblk)
         {
                 dxf_dimstyle->dimblk = strdup ("");
         }
-        fprintf (fp, "  5\n%s\n", dxf_dimstyle->dimblk);
+        fprintf (fp->fp, "  5\n%s\n", dxf_dimstyle->dimblk);
         if (!dxf_dimstyle->dimblk1)
         {
                 dxf_dimstyle->dimblk1 = strdup ("");
         }
-        fprintf (fp, "  6\n%s\n", dxf_dimstyle->dimblk1);
+        fprintf (fp->fp, "  6\n%s\n", dxf_dimstyle->dimblk1);
         if (!dxf_dimstyle->dimblk2)
         {
                 dxf_dimstyle->dimblk2 = strdup ("");
         }
-        fprintf (fp, "  7\n%s\n", dxf_dimstyle->dimblk2);
-        fprintf (fp, " 40\n%f\n", dxf_dimstyle->dimscale);
-        fprintf (fp, " 41\n%f\n", dxf_dimstyle->dimasz);
-        fprintf (fp, " 42\n%f\n", dxf_dimstyle->dimexo);
-        fprintf (fp, " 43\n%f\n", dxf_dimstyle->dimdli);
-        fprintf (fp, " 44\n%f\n", dxf_dimstyle->dimexe);
-        fprintf (fp, " 45\n%f\n", dxf_dimstyle->dimrnd);
-        fprintf (fp, " 46\n%f\n", dxf_dimstyle->dimdle);
-        fprintf (fp, " 47\n%f\n", dxf_dimstyle->dimtp);
-        fprintf (fp, " 48\n%f\n", dxf_dimstyle->dimtm);
-        fprintf (fp, " 70\n%d\n", dxf_dimstyle->flag);
-        fprintf (fp, " 71\n%d\n", dxf_dimstyle->dimtol);
-        fprintf (fp, " 72\n%d\n", dxf_dimstyle->dimlim);
-        fprintf (fp, " 73\n%d\n", dxf_dimstyle->dimtih);
-        fprintf (fp, " 74\n%d\n", dxf_dimstyle->dimtoh);
-        fprintf (fp, " 75\n%d\n", dxf_dimstyle->dimse1);
-        fprintf (fp, " 76\n%d\n", dxf_dimstyle->dimse2);
-        fprintf (fp, " 77\n%d\n", dxf_dimstyle->dimtad);
-        fprintf (fp, " 78\n%d\n", dxf_dimstyle->dimzin);
-        fprintf (fp, "140\n%f\n", dxf_dimstyle->dimtxt);
-        fprintf (fp, "141\n%f\n", dxf_dimstyle->dimcen);
-        fprintf (fp, "142\n%f\n", dxf_dimstyle->dimtsz);
-        fprintf (fp, "143\n%f\n", dxf_dimstyle->dimaltf);
-        fprintf (fp, "144\n%f\n", dxf_dimstyle->dimlfac);
-        fprintf (fp, "145\n%f\n", dxf_dimstyle->dimtvp);
-        fprintf (fp, "146\n%f\n", dxf_dimstyle->dimtfac);
-        fprintf (fp, "147\n%f\n", dxf_dimstyle->dimgap);
-        fprintf (fp, "170\n%d\n", dxf_dimstyle->dimalt);
-        fprintf (fp, "171\n%d\n", dxf_dimstyle->dimaltd);
-        fprintf (fp, "172\n%d\n", dxf_dimstyle->dimtofl);
-        fprintf (fp, "173\n%d\n", dxf_dimstyle->dimsah);
-        fprintf (fp, "174\n%d\n", dxf_dimstyle->dimtix);
-        fprintf (fp, "175\n%d\n", dxf_dimstyle->dimsoxd);
-        fprintf (fp, "176\n%d\n", dxf_dimstyle->dimclrd);
-        fprintf (fp, "177\n%d\n", dxf_dimstyle->dimclre);
-        fprintf (fp, "178\n%d\n", dxf_dimstyle->dimclrt);
+        fprintf (fp->fp, "  7\n%s\n", dxf_dimstyle->dimblk2);
+        fprintf (fp->fp, " 40\n%f\n", dxf_dimstyle->dimscale);
+        fprintf (fp->fp, " 41\n%f\n", dxf_dimstyle->dimasz);
+        fprintf (fp->fp, " 42\n%f\n", dxf_dimstyle->dimexo);
+        fprintf (fp->fp, " 43\n%f\n", dxf_dimstyle->dimdli);
+        fprintf (fp->fp, " 44\n%f\n", dxf_dimstyle->dimexe);
+        fprintf (fp->fp, " 45\n%f\n", dxf_dimstyle->dimrnd);
+        fprintf (fp->fp, " 46\n%f\n", dxf_dimstyle->dimdle);
+        fprintf (fp->fp, " 47\n%f\n", dxf_dimstyle->dimtp);
+        fprintf (fp->fp, " 48\n%f\n", dxf_dimstyle->dimtm);
+        fprintf (fp->fp, " 70\n%d\n", dxf_dimstyle->flag);
+        fprintf (fp->fp, " 71\n%d\n", dxf_dimstyle->dimtol);
+        fprintf (fp->fp, " 72\n%d\n", dxf_dimstyle->dimlim);
+        fprintf (fp->fp, " 73\n%d\n", dxf_dimstyle->dimtih);
+        fprintf (fp->fp, " 74\n%d\n", dxf_dimstyle->dimtoh);
+        fprintf (fp->fp, " 75\n%d\n", dxf_dimstyle->dimse1);
+        fprintf (fp->fp, " 76\n%d\n", dxf_dimstyle->dimse2);
+        fprintf (fp->fp, " 77\n%d\n", dxf_dimstyle->dimtad);
+        fprintf (fp->fp, " 78\n%d\n", dxf_dimstyle->dimzin);
+        fprintf (fp->fp, "140\n%f\n", dxf_dimstyle->dimtxt);
+        fprintf (fp->fp, "141\n%f\n", dxf_dimstyle->dimcen);
+        fprintf (fp->fp, "142\n%f\n", dxf_dimstyle->dimtsz);
+        fprintf (fp->fp, "143\n%f\n", dxf_dimstyle->dimaltf);
+        fprintf (fp->fp, "144\n%f\n", dxf_dimstyle->dimlfac);
+        fprintf (fp->fp, "145\n%f\n", dxf_dimstyle->dimtvp);
+        fprintf (fp->fp, "146\n%f\n", dxf_dimstyle->dimtfac);
+        fprintf (fp->fp, "147\n%f\n", dxf_dimstyle->dimgap);
+        fprintf (fp->fp, "170\n%d\n", dxf_dimstyle->dimalt);
+        fprintf (fp->fp, "171\n%d\n", dxf_dimstyle->dimaltd);
+        fprintf (fp->fp, "172\n%d\n", dxf_dimstyle->dimtofl);
+        fprintf (fp->fp, "173\n%d\n", dxf_dimstyle->dimsah);
+        fprintf (fp->fp, "174\n%d\n", dxf_dimstyle->dimtix);
+        fprintf (fp->fp, "175\n%d\n", dxf_dimstyle->dimsoxd);
+        fprintf (fp->fp, "176\n%d\n", dxf_dimstyle->dimclrd);
+        fprintf (fp->fp, "177\n%d\n", dxf_dimstyle->dimclre);
+        fprintf (fp->fp, "178\n%d\n", dxf_dimstyle->dimclrt);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_dimstyle_write () function.\n",
                 __FILE__, __LINE__);
