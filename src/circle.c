@@ -107,7 +107,6 @@ dxf_circle_init
         dxf_circle->radius = 0.0;
         dxf_circle->color = DXF_COLOR_BYLAYER;
         dxf_circle->paperspace = DXF_MODELSPACE;
-        dxf_circle->acad_version_number = 0;
         dxf_circle->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_circle_init () function.\n",
@@ -196,7 +195,7 @@ dxf_circle_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_circle->z0);
                 }
-                else if ((dxf_circle->acad_version_number <= AutoCAD_11)
+                else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_circle->z0 = 0.0))
                 {
@@ -236,7 +235,7 @@ dxf_circle_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_circle->paperspace);
                 }
-                else if ((dxf_circle->acad_version_number >= AutoCAD_13)
+                else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Now follows a string containing the
@@ -394,8 +393,8 @@ dxf_circle_write_lowlevel
 int
 dxf_circle_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfCircle *dxf_circle
                 /*!< DXF circle entity. */
 )
@@ -427,36 +426,36 @@ dxf_circle_write
                         dxf_entity_name );
                 dxf_circle->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_circle->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_circle->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_circle->id_code);
         }
-        if (dxf_circle->acad_version_number >= AutoCAD_13)
+        if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp, "100\nAcDbEntity\n");
-                fprintf (fp, "100\nAcDbCircle\n");
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+                fprintf (fp->fp, "100\nAcDbCircle\n");
         }
         if (strcmp (dxf_circle->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_circle->linetype);
+                fprintf (fp->fp, "  6\n%s\n", dxf_circle->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_circle->layer);
-        fprintf (fp, " 10\n%f\n", dxf_circle->x0);
-        fprintf (fp, " 20\n%f\n", dxf_circle->y0);
-        fprintf (fp, " 30\n%f\n", dxf_circle->z0);
+        fprintf (fp->fp, "  8\n%s\n", dxf_circle->layer);
+        fprintf (fp->fp, " 10\n%f\n", dxf_circle->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_circle->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_circle->z0);
         if (dxf_circle->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_circle->thickness);
+                fprintf (fp->fp, " 39\n%f\n", dxf_circle->thickness);
         }
-        fprintf (fp, " 40\n%f\n", dxf_circle->radius);
+        fprintf (fp->fp, " 40\n%f\n", dxf_circle->radius);
         if (dxf_circle->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_circle->color);
+                fprintf (fp->fp, " 62\n%d\n", dxf_circle->color);
         }
         if (dxf_circle->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_circle_write () function.\n",
