@@ -76,8 +76,6 @@ dxf_3dsolid
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
         /* Specific members for a DXF 3D solid. */
         char *proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM];
                 /*!< group code = 1\n
@@ -132,7 +130,7 @@ dxf_3dsolid_write_lowlevel
 int
 dxf_3dsolid_write
 (
-        FILE *fp,
+        DxfFile *fp,
         Dxf3dsolid *dxf_3dsolid
 );
 int
