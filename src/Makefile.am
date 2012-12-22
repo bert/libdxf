@@ -1,7 +1,5 @@
 ## Process this file with automake to produce Makefile.in
 
-## File created by the gnome-build tools
-
 lib_LTLIBRARIES = \
   libdxf.la
 
@@ -94,3 +92,4 @@ libdxf_la_SOURCES = \
 
 libdxf_la_CFLAGS = -Wall
 
+EXTRA_DIST= dxf.h
