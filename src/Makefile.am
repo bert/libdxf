@@ -65,6 +65,8 @@ libdxf_la_SOURCES = \
   ellipse.h \
   ellipse.c \
   donut.c \
+  dimstyle.h \
+  dimstyle.c \
   dim.h \
   dim.c \
   comment.c \
