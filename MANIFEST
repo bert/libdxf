@@ -1,9 +1,10 @@
+.gitattributes
 .gitignore
 AUTHORS
 BUGS
+CONTRIBUTING
 COPYING
 ChangeLog
-HACKING
 INSTALL
 ISSUES
 LICENSE
@@ -18,9 +19,34 @@ configure.ac
 
 doc/.gitignore
 doc/Drawing_Interchange_and_File_Formats_Release_12.txt
-doc/libDXF-dox-no-call-graphs.dox
-doc/libDXF-dox-with-call-graphs.dox
+doc/class.html
+doc/dxf-96.png
+doc/fdl-1.3.txt
+doc/hatch.html
+doc/index.html
+doc/libDXF-logo.ico
+doc/libDXF-logo.jpg
+doc/libDXF-logo.svg
+doc/libDXF-logo2.svg
+doc/libDXF-logo3.svg
+doc/libDXF.dox
+doc/libdxf-main.txt
+doc/libdxf_blocks.html
+doc/libdxf_classes.html
+doc/libdxf_entities.html
+doc/libdxf_info.html
+doc/libdxf_list.html
+doc/libdxf_tables.html
+doc/libdxf_thumbnailimage.html
 
+examples/blender-monkey_head_example_R12.dxf
+examples/qcad-example_R12.dxf
+examples/qcad-example_R2000.dxf
+
+src/3dface.c
+src/3dface.h
+src/3dsolid.c
+src/3dsolid.h
 src/Makefile.am
 src/appid.c
 src/appid.h
@@ -36,17 +62,23 @@ src/circle.c
 src/circle.h
 src/class.c
 src/class.h
+src/color.c
 src/color.h
 src/comment.c
+src/comment.h
+src/dim.c
 src/dim.h
+src/dimstyle.c
+src/dimstyle.h
+src/donut.c
+src/donut.h
+src/dxf.h
 src/ellipse.c
 src/ellipse.h
-src/endseq.c
-src/endtab.c
+src/entities.c
+src/entities.h
 src/entity.c
 src/entity.h
-src/eof.c
-src/eof.h
 src/file.c
 src/file.h
 src/global.h
@@ -63,6 +95,9 @@ src/line.h
 src/ltype.c
 src/ltype.h
 src/lwpolyline.c
+src/lwpolyline.h
+src/mtext.c
+src/mtext.h
 src/object.c
 src/object.h
 src/param.h
@@ -72,6 +107,8 @@ src/polyline.c
 src/polyline.h
 src/section.c
 src/section.h
+src/seqend.c
+src/seqend.h
 src/shape.c
 src/shape.h
 src/solid.c
@@ -91,7 +128,14 @@ src/util.h
 src/vertex.c
 src/vertex.h
 src/view.h
+src/viewport.c
+src/viewport.h
 src/vport.h
 
-# EOF #
+tests/.gitignore
+tests/Makefile.am
+tests/includes.h
+tests/tests.c
+
+# EOF
 
