@@ -32,9 +32,7 @@
  */
 
 
-#include "polyline.h"
-#include "vertex.h"
-#include "seqend.h"
+#include "donut.h"
 
 
 /*!
