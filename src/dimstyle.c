@@ -196,6 +196,11 @@ dxf_dimstyle_write
                 return (EXIT_FAILURE);
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
+                fprintf (fp->fp, "100\nAcDbDimStyleTableRecord\n");
+        }
         fprintf (fp->fp, "  2\n%s\n", dxf_dimstyle->dimstyle_name);
         if (!dxf_dimstyle->dimpost)
         {
@@ -211,17 +216,26 @@ dxf_dimstyle_write
         {
                 dxf_dimstyle->dimblk = strdup ("");
         }
-        fprintf (fp->fp, "  5\n%s\n", dxf_dimstyle->dimblk);
+        if (fp->acad_version_number < AutoCAD_2000)
+        {
+                fprintf (fp->fp, "  5\n%s\n", dxf_dimstyle->dimblk);
+        }
         if (!dxf_dimstyle->dimblk1)
         {
                 dxf_dimstyle->dimblk1 = strdup ("");
         }
-        fprintf (fp->fp, "  6\n%s\n", dxf_dimstyle->dimblk1);
+        if (fp->acad_version_number < AutoCAD_2000)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_dimstyle->dimblk1);
+        }
         if (!dxf_dimstyle->dimblk2)
         {
                 dxf_dimstyle->dimblk2 = strdup ("");
         }
-        fprintf (fp->fp, "  7\n%s\n", dxf_dimstyle->dimblk2);
+        if (fp->acad_version_number < AutoCAD_2000)
+        {
+                fprintf (fp->fp, "  7\n%s\n", dxf_dimstyle->dimblk2);
+        }
         fprintf (fp->fp, " 40\n%f\n", dxf_dimstyle->dimscale);
         fprintf (fp->fp, " 41\n%f\n", dxf_dimstyle->dimasz);
         fprintf (fp->fp, " 42\n%f\n", dxf_dimstyle->dimexo);
