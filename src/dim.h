@@ -51,15 +51,20 @@ dxf_dimstyle
         char *dimapost;
                 /*!< group code = 4\n
                  * alternate dimensioning suffix. */
+        int id_code;
+                /*!< group code = 5, 6 and 7\n
+                 * Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the
+                 * DXF file, introduced in R2000. */
         char *dimblk;
                 /*!< group code = 5\n
-                 * arrow block name. */
+                 * arrow block name, until R2000. */
         char *dimblk1;
                 /*!< group code = 6\n
-                 * first arrow block name. */
+                 * first arrow block name, until R2000. */
         char *dimblk2;
                 /*!< group code = 7\n
-                 * second arrow block name. */
+                 * second arrow block name, until R2000. */
         double dimscale;
                 /*!< group code = 40\n
                  * overall dimensioning scale factor. */
@@ -423,6 +428,11 @@ dxf_dimension
 DxfDimStyle *dxf_dimstyle_new ();
 DxfDimStyle *dxf_dimstyle_init (DxfDimStyle *dxf_dimstyle);
 int dxf_dimstyle_write
+(
+        DxfFile *fp,
+        DxfDimStyle *dxf_dimstyle
+);
+int dxf_dimstyle_read
 (
         DxfFile *fp,
         DxfDimStyle *dxf_dimstyle
