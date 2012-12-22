@@ -191,7 +191,10 @@ dxf_dimstyle
 
 
 DxfDimStyle *dxf_dimstyle_new ();
-DxfDimStyle *dxf_dimstyle_init (DxfDimStyle *dxf_dimstyle);
+DxfDimStyle *dxf_dimstyle_init
+(
+        DxfDimStyle *dxf_dimstyle
+);
 int dxf_dimstyle_write
 (
         DxfFile *fp,
@@ -202,7 +205,10 @@ int dxf_dimstyle_read
         DxfFile *fp,
         DxfDimStyle *dxf_dimstyle
 );
-int dxf_dimstyle_free (DxfDimStyle *dxf_dimstyle);
+int dxf_dimstyle_free
+(
+        DxfDimStyle *dxf_dimstyle
+);
 
 
 #endif /* _DIMSTYLE_H */

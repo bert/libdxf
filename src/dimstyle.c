@@ -84,7 +84,8 @@ DxfDimStyle *
 dxf_dimstyle_init
 (
         DxfDimStyle *dxf_dimstyle
-                /*!< DXF dimstyle entity. */
+                /*!< Pointer to the memory occupied by the DXF \c
+                 * DIMSTYLE table. */
 )
 {
 #if DEBUG
@@ -159,7 +160,8 @@ dxf_dimstyle_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfDimStyle *dxf_dimstyle
-                /*!< DXF \c DIMSTYLE entity. */
+                /*!< Pointer to the memory occupied by the DXF \c
+                 * DIMSTYLE table. */
 )
 {
 #if DEBUG
@@ -280,7 +282,8 @@ dxf_dimstyle_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfDimStyle *dxf_dimstyle
-                /*!< DXF dimstyle table. */
+                /*!< Pointer to the memory occupied by the DXF \c
+                 * DIMSTYLE table. */
 )
 {
 #if DEBUG
@@ -665,7 +668,7 @@ dxf_dimstyle_free
 (
         DxfDimStyle *dxf_dimstyle
                 /*!< Pointer to the memory occupied by the DXF \c
-                 * DIMSTYLE entity. */
+                 * DIMSTYLE table. */
 )
 {
 #if DEBUG
