@@ -35,7 +35,42 @@
 #include "dim.h"
 
 
-/*! \todo Add code here. */
+/*!
+ * \brief Allocate memory for a DXF \c DIMENSION.
+ *
+ * Fill the memory contents with zeros.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfDimension *
+dxf_dimension_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_dimension_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfDimension *dxf_dimension = NULL;
+        size_t size;
+
+        size = sizeof (DxfDimension);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_dimension = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_dimension_new () could not allocate memory for a DxfArc struct.\n");
+                dxf_dimension = NULL;
+        }
+        else
+        {
+                memset (dxf_dimension, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_dimension_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_dimension);
+}
 
 
 /* EOF */

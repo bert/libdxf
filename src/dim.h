@@ -277,6 +277,9 @@ dxf_dimension
 } DxfDimension, * DxfDimensionPtr;
 
 
+DxfDimension *dxf_dimension_new ();
+
+
 #endif /* _DIM_H */
 
 
