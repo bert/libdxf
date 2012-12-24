@@ -149,7 +149,7 @@ dxf_dimstyle_init
 
 
 /*!
- * \brief Write DXF output for a DXF \c DIMSTYLE entity.
+ * \brief Write DXF output for a DXF \c DIMSTYLE table.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -179,7 +179,7 @@ dxf_dimstyle_write
         {
                 fprintf (stderr, "Error in dxf_dimstyle_write () dimstyle_name value is empty for the %s entity.\n",
                         dxf_entity_name);
-                fprintf (stderr, "    skipping %s entity.\n",
+                fprintf (stderr, "    skipping %s table.\n",
                         dxf_entity_name);
                 /* Clean up. */
                 free (dxf_entity_name);
@@ -189,7 +189,7 @@ dxf_dimstyle_write
         {
                 fprintf (stderr, "Error in dxf_dimstyle_write () dimstyle_name value is NULL for the %s entity.\n",
                         dxf_entity_name);
-                fprintf (stderr, "    skipping %s entity.\n",
+                fprintf (stderr, "    skipping %s table.\n",
                         dxf_entity_name);
                 /* Clean up. */
                 free (dxf_entity_name);
