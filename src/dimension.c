@@ -150,4 +150,43 @@ dxf_dimension_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c DIMENSION and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_dimension_free
+(
+        DxfDimension *dxf_dimension
+                /*!< Pointer to the memory occupied by the DXF \c
+                 * DIMENSION entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_dimension_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        if (dxf_dimension->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_dimension_free () pointer to next DxfDimension was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
+        free (dxf_dimension->linetype);
+        free (dxf_dimension->layer);
+        free (dxf_dimension->dim_text);
+        free (dxf_dimension->dimblock_name);
+        free (dxf_dimension->dimstyle_name);
+        free (dxf_dimension);
+        dxf_dimension = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_dimension_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

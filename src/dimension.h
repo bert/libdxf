@@ -283,6 +283,11 @@ dxf_dimension_init
 (
         DxfDimension *dxf_dimension
 );
+int
+dxf_dimension_free
+(
+        DxfDimension *dxf_dimension
+);
 
 
 #endif /* _DIMENSION_H */
