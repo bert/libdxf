@@ -112,7 +112,6 @@ dxf_arc_init
         dxf_arc->end_angle = 0.0;
         dxf_arc->color = DXF_COLOR_BYLAYER;
         dxf_arc->paperspace = DXF_MODELSPACE;
-        dxf_arc->acad_version_number = 0;
         dxf_arc->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_init () function.\n",
@@ -205,7 +204,7 @@ dxf_arc_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_arc->z0);
                 }
-                else if ((dxf_arc->acad_version_number <= AutoCAD_11)
+                else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_arc->z0 = 0.0))
                 {
@@ -256,7 +255,7 @@ dxf_arc_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_arc->paperspace);
                 }
-                else if ((dxf_arc->acad_version_number >= AutoCAD_12)
+                else if ((fp->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /*!
@@ -505,8 +504,8 @@ dxf_arc_write_lowlevel
 int
 dxf_arc_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfArc *dxf_arc
                 /*!< DXF \c ARC entity. */
 )
@@ -578,43 +577,43 @@ dxf_arc_write
                         dxf_entity_name);
                 dxf_arc->layer = DXF_DEFAULT_LAYER;
         }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_arc->acad_version_number >= AutoCAD_14)
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (fp->acad_version_number >= AutoCAD_14)
         {
-                fprintf (fp, "100\nAcDbArc\n");
+                fprintf (fp->fp, "100\nAcDbArc\n");
         }
         if (dxf_arc->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_arc->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_arc->id_code);
         }
         if (strcmp (dxf_arc->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_arc->linetype);
+                fprintf (fp->fp, "  6\n%s\n", dxf_arc->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_arc->layer);
-        fprintf (fp, " 10\n%f\n", dxf_arc->x0);
-        fprintf (fp, " 20\n%f\n", dxf_arc->y0);
-        fprintf (fp, " 30\n%f\n", dxf_arc->z0);
-        if (dxf_arc->acad_version_number >= AutoCAD_12)
+        fprintf (fp->fp, "  8\n%s\n", dxf_arc->layer);
+        fprintf (fp->fp, " 10\n%f\n", dxf_arc->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_arc->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_arc->z0);
+        if (fp->acad_version_number >= AutoCAD_12)
         {
-                fprintf (fp, "210\n%f\n", dxf_arc->extr_x0);
-                fprintf (fp, "220\n%f\n", dxf_arc->extr_y0);
-                fprintf (fp, "230\n%f\n", dxf_arc->extr_z0);
+                fprintf (fp->fp, "210\n%f\n", dxf_arc->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", dxf_arc->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", dxf_arc->extr_z0);
         }
         if (dxf_arc->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_arc->thickness);
+                fprintf (fp->fp, " 39\n%f\n", dxf_arc->thickness);
         }
-        fprintf (fp, " 40\n%f\n", dxf_arc->radius);
-        fprintf (fp, " 50\n%f\n", dxf_arc->start_angle);
-        fprintf (fp, " 51\n%f\n", dxf_arc->end_angle);
+        fprintf (fp->fp, " 40\n%f\n", dxf_arc->radius);
+        fprintf (fp->fp, " 50\n%f\n", dxf_arc->start_angle);
+        fprintf (fp->fp, " 51\n%f\n", dxf_arc->end_angle);
         if (dxf_arc->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_arc->color);
+                fprintf (fp->fp, " 62\n%d\n", dxf_arc->color);
         }
         if (dxf_arc->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_write () function.\n",

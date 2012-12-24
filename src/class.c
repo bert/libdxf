@@ -127,16 +127,10 @@ dxf_class_init
 int
 dxf_class_read
 (
-        char *filename,
-                /*!< filename of input file (or device). */
-        FILE *fp,
-                /*!< filepointer to the input file (or device). */
-        int *line_number,
-                /*!< current line number in the input file (or device). */
-        DxfClass *dxf_class,
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfClass *dxf_class
                 /*!< DXF class entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -149,15 +143,15 @@ dxf_class_read
         {
                 dxf_class = dxf_class_new ();
         }
-        (*line_number)++;
-        fscanf (fp, "%[^\n]", temp_string);
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
-                if (ferror (fp))
+                if (ferror (fp->fp))
                 {
                         fprintf (stderr, "Error in dxf_class_read () while reading from: %s in line: %d.\n",
-                                filename, *line_number);
-                        fclose (fp);
+                                fp->filename, fp->line_number);
+                        fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
                 if (strcmp (temp_string, "0") == 0)
@@ -169,62 +163,62 @@ dxf_class_read
                          * and other \c class variables  will not be
                          * read. See the while condition above.
                          */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_class->record_type);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_class->record_type);
                 }
                 else if (strcmp (temp_string, "1") == 0)
                 {
                         /* Now follows a string containing a record
                          * name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_class->record_name);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_class->record_name);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a class name.
                          */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_class->class_name);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_class->class_name);
                 }
                 else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing the
                          * application name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_class->app_name);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_class->app_name);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
                         /* Now follows a string containing the
                          * proxy cap flag value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_class->proxy_cap_flag);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_class->proxy_cap_flag);
                 }
                 else if (strcmp (temp_string, "280") == 0)
                 {
                         /* Now follows a string containing the
                          * was a proxy flag value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_class->was_a_proxy_flag);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_class->was_a_proxy_flag);
                 }
                 else if (strcmp (temp_string, "281") == 0)
                 {
                         /* Now follows a string containing the
                          * is an entity flag value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_class->is_an_entity_flag);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_class->is_an_entity_flag);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
                 {
                         fprintf (stderr, "Warning: in dxf_class_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                filename, *line_number);
+                                fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -265,17 +259,27 @@ dxf_class_write_lowlevel
                 /*!< group code = 90.\n
                  * Proxy capabilities flag.\n
                  * Bit coded value that indicates the capabilities of this object as a proxy.\n
-                 * 0 = No operations allowed (0)\n
-                 * 1 = Erase allowed (0x1)\n
-                 * 2 = Transform allowed (0x2)\n
-                 * 4 = Color change allowed (0x4)\n
-                 * 8 = Layer change allowed (0x8)\n
-                 * 16 = Linetype change allowed (0x10)\n
-                 * 32 = Linetype scale change allowed (0x20)\n
-                 * 64 = Visibility change allowed (0x40)\n
-                 * 127 = All operations except cloning allowed (0x7F)\n
-                 * 128 = Cloning allowed (0x80)\n
-                 * 255 = All operations allowed (0xFF)\n
+                 * 0 = No operations allowed (0).\n
+                 * 1 = Erase allowed (0x1).\n
+                 * 2 = Transform allowed (0x2).\n
+                 * 4 = Color change allowed (0x4).\n
+                 * 8 = Layer change allowed (0x8).\n
+                 * 16 = Linetype change allowed (0x10).\n
+                 * 32 = Linetype scale change allowed (0x20).\n
+                 * 64 = Visibility change allowed (0x40).\n
+                 * 127 = All operations except cloning allowed (0x7F),
+                 *       until R2000.\n
+                 * 128 = Cloning allowed (0x80).\n
+                 * 255 = All operations allowed (0xFF),
+                 *       until R2000.\n
+                 * 256 = Lineweight change allowed (0x100),
+                 *       introduced in R2002.\n
+                 * 512 = Plot Style Name change allowed (0x200),
+                 *       introduced in R2002.\n
+                 * 895 = All operations except cloning allowed (0x37F),
+                 *       introduced in R2002.\n
+                 * 1023 = All operations allowed (0x3FF),
+                 *        introduced in R2002.\n
                  * 32768 = R13 format proxy (0x8000). */
         int was_a_proxy_flag,
                 /*!< group code = 280.\n
@@ -316,8 +320,8 @@ dxf_class_write_lowlevel
 int
 dxf_class_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfClass *dxf_class
                 /*!< DXF class section. */
 )
@@ -356,13 +360,13 @@ dxf_class_write
                         dxf_entity_name );
                 dxf_class->app_name = strdup ("");
         }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp, "  1\n%s\n", dxf_class->record_name);
-        fprintf (fp, "  2\n%s\n", dxf_class->class_name);
-        fprintf (fp, "  3\n%s\n", dxf_class->app_name);
-        fprintf (fp, " 90\n%d\n", dxf_class->proxy_cap_flag);
-        fprintf (fp, "280\n%d\n", dxf_class->was_a_proxy_flag);
-        fprintf (fp, "281\n%d\n", dxf_class->is_an_entity_flag);
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        fprintf (fp->fp, "  1\n%s\n", dxf_class->record_name);
+        fprintf (fp->fp, "  2\n%s\n", dxf_class->class_name);
+        fprintf (fp->fp, "  3\n%s\n", dxf_class->app_name);
+        fprintf (fp->fp, " 90\n%d\n", dxf_class->proxy_cap_flag);
+        fprintf (fp->fp, "280\n%d\n", dxf_class->was_a_proxy_flag);
+        fprintf (fp->fp, "281\n%d\n", dxf_class->is_an_entity_flag);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_class_write () function.\n",
                 __FILE__, __LINE__);

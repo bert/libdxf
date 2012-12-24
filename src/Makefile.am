@@ -1,7 +1,5 @@
 ## Process this file with automake to produce Makefile.in
 
-## File created by the gnome-build tools
-
 lib_LTLIBRARIES = \
   libdxf.la
 
@@ -64,9 +62,12 @@ libdxf_la_SOURCES = \
   entities.c \
   ellipse.h \
   ellipse.c \
+  donut.h \
   donut.c \
-  dim.h \
-  dim.c \
+  dimstyle.h \
+  dimstyle.c \
+  dimension.h \
+  dimension.c \
   comment.c \
   color.h \
   color.c \
@@ -91,3 +92,4 @@ libdxf_la_SOURCES = \
 
 libdxf_la_CFLAGS = -Wall
 
+EXTRA_DIST= dxf.h

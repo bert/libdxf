@@ -1,9 +1,9 @@
 /*!
- * \file donut.h
+ * \file dxf.h
  *
- * \author Copyright (C) 2008 ... 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Header file for a DXF donut entity (\c DONUT).
+ * \brief List of all dxf header files for convenient inclusion.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -27,42 +27,64 @@
  * exchange of drawing files between various Computer Aided Drafting
  * programs.\n
  * DXF is an industry standard designed by Autodesk(TM).\n
- * For more details see http://www.autodesk.com .
+ * For more details see http://www.autodesk.com.
  * <hr>
  */
 
 
-#ifndef _DONUT_H
-#define _DONUT_H
+#ifndef DXF_H
+#define DXF_H
 
 
-#include "global.h"
+#include "3dface.h"
+#include "3dsolid.h"
+#include "appid.h"
+#include "arc.h"
+#include "attdef.h"
+#include "attrib.h"
+#include "block.h"
+#include "circle.h"
+#include "class.h"
+#include "color.h"
+#include "comment.h"
+#include "dimension.h"
+#include "dimstyle.h"
+#include "donut.h"
+#include "ellipse.h"
+#include "entities.h"
 #include "entity.h"
+#include "file.h"
+#include "global.h"
+#include "hatch.h"
+#include "header.h"
+#include "insert.h"
+#include "layer.h"
+#include "line.h"
+#include "ltype.h"
+#include "lwpolyline.h"
+#include "mtext.h"
+#include "object.h"
+#include "param.h"
+#include "point.h"
 #include "polyline.h"
-#include "vertex.h"
+#include "section.h"
 #include "seqend.h"
+#include "shape.h"
+#include "solid.h"
+#include "style.h"
+#include "table.h"
+#include "text.h"
+#include "thumbnail.h"
+#include "trace.h"
+#include "ucs.h"
+#include "util.h"
+#include "vertex.h"
+#include "view.h"
+#include "viewport.h"
+#include "vport.h"
 
 
-int
-dxf_donut_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *linetype,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double thickness,
-        double outside_diameter,
-        double inside_diameter,
-        int color,
-        int paperspace
-);
-
-
-#endif /* _DONUT_H */
+#endif /* DXF_H */
 
 
 /* EOF */
-

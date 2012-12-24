@@ -72,8 +72,6 @@ dxf_circle
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
         /* Specific members for a DXF circle. */
         double x0;
                 /*!< group code = 10\n
@@ -109,9 +107,7 @@ DxfCircle *dxf_circle_init (DxfCircle *dxf_circle);
 int
 dxf_circle_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfCircle *dxf_circle
 );
 int
@@ -130,7 +126,11 @@ dxf_circle_write_lowlevel
         int paperspace,
         int acad_version_number
 );
-int dxf_circle_write (FILE *fp, DxfCircle *dxf_circle);
+int dxf_circle_write
+(
+        DxfFile *fp,
+        DxfCircle *dxf_circle
+);
 int dxf_circle_free (DxfCircle *dxf_circle);
 
 

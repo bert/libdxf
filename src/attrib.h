@@ -76,8 +76,6 @@ dxf_attrib
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
         /* Specific members for a DXF attrib. */
         char *value;
                 /*!< group code = 1. */
@@ -214,7 +212,7 @@ dxf_attrib_write_lowlevel
 int
 dxf_attrib_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfAttrib *dxf_attrib
 );
 int

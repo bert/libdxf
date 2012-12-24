@@ -49,7 +49,7 @@
 #include "../src/class.h"
 #include "../src/color.h"
 #include "../src/comment.h"
-#include "../src/dim.h"
+#include "../src/dimension.h"
 #include "../src/donut.h"
 #include "../src/ellipse.h"
 #include "../src/entities.h"

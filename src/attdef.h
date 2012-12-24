@@ -77,8 +77,6 @@ dxf_attdef
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
         /* Specific members for a DXF attdef. */
         char *default_value;
                 /*!< group code = 1\n
@@ -236,7 +234,7 @@ dxf_attdef_write_lowlevel
 int
 dxf_attdef_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfAttdef *dxf_attdef
 );
 int

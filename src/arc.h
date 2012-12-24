@@ -76,8 +76,6 @@ dxf_arc
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
         /* Specific members for a DXF arc. */
         double x0;
                 /*!< group code = 10\n
@@ -144,7 +142,11 @@ dxf_arc_write_lowlevel
         int paperspace,
         int acad_version_number
 );
-int dxf_arc_write (FILE *fp, DxfArc *dxf_arc);
+int dxf_arc_write
+(
+        DxfFile *fp,
+        DxfArc *dxf_arc
+);
 int dxf_arc_free (DxfArc *dxf_arc);
 
 

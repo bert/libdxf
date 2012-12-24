@@ -103,7 +103,6 @@ dxf_block_init
         dxf_block->x0 = 0.0;
         dxf_block->y0 = 0.0;
         dxf_block->z0 = 0.0;
-        dxf_block->acad_version_number = 0;
         dxf_block->block_type = 0; /* 0 = invalid type */
         dxf_block->soft_owner_object = strdup ("");
         dxf_block->next = NULL;
@@ -200,7 +199,7 @@ dxf_block_read
                          * Z-coordinate of the center point. */
                         fscanf (fp->fp, "%lf\n", &dxf_block->z0);
                 }
-                else if ((dxf_block->acad_version_number <= AutoCAD_11)
+                else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_block->z0 = 0.0))
                 {
@@ -217,7 +216,7 @@ dxf_block_read
                          * type value. */
                         fscanf (fp->fp, "%d\n", &dxf_block->block_type);
                 }
-                else if ((dxf_block->acad_version_number >= AutoCAD_13)
+                else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Now follows a string containing the
@@ -400,8 +399,8 @@ dxf_block_write_lowlevel
 int
 dxf_block_write
 (
-        FILE *fp,
-                /*!< file pointer to output device */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfBlock *dxf_block
                 /*!< DXF block entity */
 )
@@ -452,34 +451,34 @@ dxf_block_write
                         dxf_entity_name, dxf_block->id_code);
                 dxf_block->soft_owner_object = strdup ("");
         }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_block->acad_version_number >= AutoCAD_13)
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp, "100\nAcDbEntity\n");
-                fprintf (fp, "100\nAcDbBlockBegin\n");
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+                fprintf (fp->fp, "100\nAcDbBlockBegin\n");
         }
         if ((dxf_block->block_type && 4) || (dxf_block->block_type && 32))
         {
-                fprintf (fp, "  1\n%s\n", dxf_block->xref_name);
+                fprintf (fp->fp, "  1\n%s\n", dxf_block->xref_name);
         }
-        fprintf (fp, "  2\n%s\n", dxf_block->block_name);
-        fprintf (fp, "  3\n%s\n", dxf_block->block_name);
+        fprintf (fp->fp, "  2\n%s\n", dxf_block->block_name);
+        fprintf (fp->fp, "  3\n%s\n", dxf_block->block_name);
         if (strcmp (dxf_block->description, "") != 0)
         {
-                fprintf (fp, "  4\n%s\n", dxf_block->description);
+                fprintf (fp->fp, "  4\n%s\n", dxf_block->description);
         }
         if (dxf_block->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_block->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_block->id_code);
         }
-        fprintf (fp, "  8\n%s\n", dxf_block->layer);
-        fprintf (fp, " 10\n%f\n", dxf_block->x0);
-        fprintf (fp, " 20\n%f\n", dxf_block->y0);
-        fprintf (fp, " 30\n%f\n", dxf_block->z0);
-        fprintf (fp, " 70\n%d\n", dxf_block->block_type);
+        fprintf (fp->fp, "  8\n%s\n", dxf_block->layer);
+        fprintf (fp->fp, " 10\n%f\n", dxf_block->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_block->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_block->z0);
+        fprintf (fp->fp, " 70\n%d\n", dxf_block->block_type);
         if (strcmp (dxf_block->soft_owner_object, "") != 0)
         {
-                fprintf (fp, "330\n%s\n", dxf_block->soft_owner_object);
+                fprintf (fp->fp, "330\n%s\n", dxf_block->soft_owner_object);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write () function.\n",
@@ -497,12 +496,16 @@ dxf_block_write
  * Contains no other group codes than "0".
  */
 int
-dxf_block_write_endblk (FILE *fp)
+dxf_block_write_endblk
+(
+        DxfFile *fp
+                /*!< DXF file pointer to an output file (or device). */
+)
 {
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_write_endblk () function.\n", __FILE__, __LINE__);
 #endif
-        fprintf (fp, "  0\nENDBLK\n");
+        fprintf (fp->fp, "  0\nENDBLK\n");
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write_endblk () function.\n", __FILE__, __LINE__);
 #endif
