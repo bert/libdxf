@@ -73,4 +73,81 @@ dxf_dimension_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c
+ * DIMENSION entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfDimension *
+dxf_dimension_init
+(
+        DxfDimension *dxf_dimension
+                /*!< Pointer to the memory occupied by the DXF \c
+                 * DIMENSION entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_dimension_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_dimension = dxf_dimension_new ();
+        if (dxf_dimension == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_dimension_init () could not allocate memory for a DxfDimension struct.\n");
+              return (NULL);
+        }
+        dxf_dimension->id_code = 0;
+        dxf_dimension->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_dimension->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_dimension->thickness = 0.0;
+        dxf_dimension->color = DXF_COLOR_BYLAYER;
+        dxf_dimension->paperspace = DXF_PAPERSPACE;
+        dxf_dimension->dim_text = strdup ("");
+        dxf_dimension->dimblock_name = strdup ("");
+        dxf_dimension->dimstyle_name = strdup ("");
+        dxf_dimension->x0 = 0.0;
+        dxf_dimension->y0 = 0.0;
+        dxf_dimension->z0 = 0.0;
+        dxf_dimension->x1 = 0.0;
+        dxf_dimension->y1 = 0.0;
+        dxf_dimension->z1 = 0.0;
+        dxf_dimension->x2 = 0.0;
+        dxf_dimension->y2 = 0.0;
+        dxf_dimension->z2 = 0.0;
+        dxf_dimension->x3 = 0.0;
+        dxf_dimension->y3 = 0.0;
+        dxf_dimension->z3 = 0.0;
+        dxf_dimension->x4 = 0.0;
+        dxf_dimension->y4 = 0.0;
+        dxf_dimension->z4 = 0.0;
+        dxf_dimension->x5 = 0.0;
+        dxf_dimension->y5 = 0.0;
+        dxf_dimension->z5 = 0.0;
+        dxf_dimension->x6 = 0.0;
+        dxf_dimension->y6 = 0.0;
+        dxf_dimension->z6 = 0.0;
+        dxf_dimension->leader_length = 0.0;
+        dxf_dimension->text_line_spacing_factor = 0.0;
+        dxf_dimension->actual_measurement = 0.0;
+        dxf_dimension->angle = 0.0;
+        dxf_dimension->hor_dir = 0.0;
+        dxf_dimension->obl_angle = 0.0;
+        dxf_dimension->text_angle = 0.0;
+        dxf_dimension->flag = 0;
+        dxf_dimension->attachment_point = 0;
+        dxf_dimension->text_line_spacing = 0;
+        dxf_dimension->extr_x0 = 0.0;
+        dxf_dimension->extr_y0 = 0.0;
+        dxf_dimension->extr_z0 = 0.0;
+        dxf_dimension->next = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_dimension_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_dimension);
+}
+
+
 /* EOF */

@@ -278,6 +278,11 @@ dxf_dimension
 
 
 DxfDimension *dxf_dimension_new ();
+DxfDimension *
+dxf_dimension_init
+(
+        DxfDimension *dxf_dimension
+);
 
 
 #endif /* _DIMENSION_H */
