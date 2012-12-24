@@ -66,8 +66,8 @@ libdxf_la_SOURCES = \
   donut.c \
   dimstyle.h \
   dimstyle.c \
-  dim.h \
-  dim.c \
+  dimension.h \
+  dimension.c \
   comment.c \
   color.h \
   color.c \

@@ -1,9 +1,9 @@
 /*!
- * \file dim.h
+ * \file dimemsion.h
  *
  * \author Copyright (C) 2008, 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Definition of a DXF dimension entity (\c DIM).
+ * \brief Definition of a DXF dimension entity (\c DIMENSION).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _DIM_H
-#define _DIM_H
+#ifndef _DIMENSION_H
+#define _DIMENSION_H
 
 
 #include "global.h"
@@ -280,7 +280,7 @@ dxf_dimension
 DxfDimension *dxf_dimension_new ();
 
 
-#endif /* _DIM_H */
+#endif /* _DIMENSION_H */
 
 
 /* EOF */

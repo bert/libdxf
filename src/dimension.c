@@ -1,9 +1,9 @@
 /*!
- * \file dim.c
+ * \file dimension.c
  *
  * \author Copyright (C) 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Functions for a DXF dimension entity (\c DIM).
+ * \brief Functions for a DXF dimension entity (\c DIMENSION).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -32,7 +32,7 @@
  */
 
 
-#include "dim.h"
+#include "dimension.h"
 
 
 /*!

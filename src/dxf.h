@@ -47,7 +47,7 @@
 #include "class.h"
 #include "color.h"
 #include "comment.h"
-#include "dim.h"
+#include "dimension.h"
 #include "dimstyle.h"
 #include "donut.h"
 #include "ellipse.h"

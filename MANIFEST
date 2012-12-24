@@ -66,8 +66,8 @@ src/color.c
 src/color.h
 src/comment.c
 src/comment.h
-src/dim.c
-src/dim.h
+src/dimension.c
+src/dimension.h
 src/dimstyle.c
 src/dimstyle.h
 src/donut.c
