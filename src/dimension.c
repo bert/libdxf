@@ -151,6 +151,172 @@ dxf_dimension_init
 
 
 /*!
+ * \brief Write DXF output for a DXF \c DIMENSION entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_dimension_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfDimension *dxf_dimension
+                /*!< Pointer to the memory occupied by the DXF \c
+                 * DIMENSION entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_dimension_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *dxf_entity_name = strdup ("DIMENSION");
+
+        if (dxf_dimension == NULL)
+        {
+                return (EXIT_FAILURE);
+                fprintf (stderr, "Error in dxf_dimension_write () a NULL pointer was passed.\n");
+        }
+        if (strcmp (dxf_dimension->layer, "") == 0)
+        {
+                fprintf (stderr, "Warning in dxf_dimension_write () empty layer string for the %s entity with id-code: %x\n",
+                        dxf_entity_name, dxf_dimension->id_code);
+                fprintf (stderr, "    %s entity is relocated to layer 0",
+                        dxf_entity_name);
+                dxf_dimension->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+                fprintf (fp->fp, "100\nAcDbDimension\n");
+        }
+        fprintf (fp->fp, "  1\n%s\n", dxf_dimension->dim_text);
+        fprintf (fp->fp, "  2\n%s\n", dxf_dimension->dimblock_name);
+        fprintf (fp->fp, "  3\n%s\n", dxf_dimension->dimstyle_name);
+        if (dxf_dimension->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", dxf_dimension->id_code);
+        }
+        if (strcmp (dxf_dimension->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_dimension->linetype);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_dimension->layer);
+        fprintf (fp->fp, " 10\n%f\n", dxf_dimension->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_dimension->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_dimension->z0);
+        fprintf (fp->fp, " 11\n%f\n", dxf_dimension->x1);
+        fprintf (fp->fp, " 21\n%f\n", dxf_dimension->y1);
+        fprintf (fp->fp, " 31\n%f\n", dxf_dimension->z1);
+        fprintf (fp->fp, " 12\n%f\n", dxf_dimension->x2);
+        fprintf (fp->fp, " 22\n%f\n", dxf_dimension->y2);
+        fprintf (fp->fp, " 32\n%f\n", dxf_dimension->z2);
+        /* Rotated, horizontal, or vertical dimension. */
+        if (dxf_dimension->flag == 0)
+        {
+                fprintf (fp->fp, " 13\n%f\n", dxf_dimension->x3);
+                fprintf (fp->fp, " 23\n%f\n", dxf_dimension->y3);
+                fprintf (fp->fp, " 33\n%f\n", dxf_dimension->z3);
+                fprintf (fp->fp, " 14\n%f\n", dxf_dimension->x4);
+                fprintf (fp->fp, " 24\n%f\n", dxf_dimension->y4);
+                fprintf (fp->fp, " 34\n%f\n", dxf_dimension->z4);
+                fprintf (fp->fp, " 50\n%f\n", dxf_dimension->angle);
+                fprintf (fp->fp, " 52\n%f\n", dxf_dimension->obl_angle);
+        }
+        /* Aligned dimension. */
+        if (dxf_dimension->flag == 1)
+        {
+                fprintf (fp->fp, " 13\n%f\n", dxf_dimension->x3);
+                fprintf (fp->fp, " 23\n%f\n", dxf_dimension->y3);
+                fprintf (fp->fp, " 33\n%f\n", dxf_dimension->z3);
+                fprintf (fp->fp, " 14\n%f\n", dxf_dimension->x4);
+                fprintf (fp->fp, " 24\n%f\n", dxf_dimension->y4);
+                fprintf (fp->fp, " 34\n%f\n", dxf_dimension->z4);
+                fprintf (fp->fp, " 50\n%f\n", dxf_dimension->angle);
+        }
+        /* Angular dimension. */
+        if (dxf_dimension->flag == 2)
+        {
+                fprintf (fp->fp, " 13\n%f\n", dxf_dimension->x3);
+                fprintf (fp->fp, " 23\n%f\n", dxf_dimension->y3);
+                fprintf (fp->fp, " 33\n%f\n", dxf_dimension->z3);
+                fprintf (fp->fp, " 14\n%f\n", dxf_dimension->x4);
+                fprintf (fp->fp, " 24\n%f\n", dxf_dimension->y4);
+                fprintf (fp->fp, " 34\n%f\n", dxf_dimension->z4);
+                fprintf (fp->fp, " 15\n%f\n", dxf_dimension->x5);
+                fprintf (fp->fp, " 25\n%f\n", dxf_dimension->y5);
+                fprintf (fp->fp, " 35\n%f\n", dxf_dimension->z5);
+                fprintf (fp->fp, " 16\n%f\n", dxf_dimension->x6);
+                fprintf (fp->fp, " 26\n%f\n", dxf_dimension->y6);
+                fprintf (fp->fp, " 36\n%f\n", dxf_dimension->z6);
+        }
+        /* Diameter dimension. */
+        if (dxf_dimension->flag == 3)
+        {
+                fprintf (fp->fp, " 15\n%f\n", dxf_dimension->x5);
+                fprintf (fp->fp, " 25\n%f\n", dxf_dimension->y5);
+                fprintf (fp->fp, " 35\n%f\n", dxf_dimension->z5);
+        }
+        /* Radius dimension. */
+        if (dxf_dimension->flag == 4)
+        {
+                fprintf (fp->fp, " 15\n%f\n", dxf_dimension->x5);
+                fprintf (fp->fp, " 25\n%f\n", dxf_dimension->y5);
+                fprintf (fp->fp, " 35\n%f\n", dxf_dimension->z5);
+        }
+        /* Angular 3-point dimension. */
+        if (dxf_dimension->flag == 5)
+        {
+                fprintf (fp->fp, " 15\n%f\n", dxf_dimension->x5);
+                fprintf (fp->fp, " 25\n%f\n", dxf_dimension->y5);
+                fprintf (fp->fp, " 35\n%f\n", dxf_dimension->z5);
+                fprintf (fp->fp, " 16\n%f\n", dxf_dimension->x6);
+                fprintf (fp->fp, " 26\n%f\n", dxf_dimension->y6);
+                fprintf (fp->fp, " 36\n%f\n", dxf_dimension->z6);
+        }
+        /* Ordinate dimension. */
+        if (dxf_dimension->flag == 6)
+        {
+                fprintf (fp->fp, " 13\n%f\n", dxf_dimension->x3);
+                fprintf (fp->fp, " 23\n%f\n", dxf_dimension->y3);
+                fprintf (fp->fp, " 33\n%f\n", dxf_dimension->z3);
+                fprintf (fp->fp, " 14\n%f\n", dxf_dimension->x4);
+                fprintf (fp->fp, " 24\n%f\n", dxf_dimension->y4);
+                fprintf (fp->fp, " 34\n%f\n", dxf_dimension->z4);
+        }
+        if (dxf_dimension->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_dimension->thickness);
+        }
+        fprintf (fp->fp, " 40\n%f\n", dxf_dimension->leader_length);
+        fprintf (fp->fp, " 41\n%f\n", dxf_dimension->text_line_spacing_factor);
+        fprintf (fp->fp, " 42\n%f\n", dxf_dimension->actual_measurement);
+        fprintf (fp->fp, " 51\n%f\n", dxf_dimension->hor_dir);
+        fprintf (fp->fp, " 53\n%f\n", dxf_dimension->text_angle);
+        if (dxf_dimension->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_dimension->color);
+        }
+        if (dxf_dimension->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, " 70\n%d\n", dxf_dimension->flag);
+        fprintf (fp->fp, " 71\n%d\n", dxf_dimension->attachment_point);
+        fprintf (fp->fp, " 72\n%d\n", dxf_dimension->text_line_spacing);
+        fprintf (fp->fp, "210\n%fn", dxf_dimension->extr_x0);
+        fprintf (fp->fp, "220\n%fn", dxf_dimension->extr_y0);
+        fprintf (fp->fp, "230\n%fn", dxf_dimension->extr_z0);
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_dimension_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c DIMENSION and all it's
  * data fields.
  *
