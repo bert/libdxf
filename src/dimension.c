@@ -151,6 +151,410 @@ dxf_dimension_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF \c DIMENSION entity.
+ *
+ * The last line read from file contained the string "DIMENSION". \n
+ * Now follows some data for the \c DIMENSION, to be terminated with a
+ * "  0" string announcing the following entity, or the end of the
+ * \c ENTITY section marker \c ENDSEC. \n
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred while reading from the input file.
+ */
+int
+dxf_dimension_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfDimension *dxf_dimension
+                /*!< DXF \c DIMENSION entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_dimension_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *temp_string = NULL;
+
+        if (!dxf_dimension)
+        {
+                dxf_dimension = dxf_dimension_new ();
+        }
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr, "Error in dxf_dimension_read () while reading from: %s in line: %d.\n",
+                                fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        return (0);
+                }
+                if (strcmp (temp_string, "1") == 0)
+                {
+                        /* Now follows a string containing a dimension
+                         * text string. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_dimension->dim_text);
+                }
+                if (strcmp (temp_string, "2") == 0)
+                {
+                        /* Now follows a string containing a dimension
+                         * block name string. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_dimension->dimblock_name);
+                }
+                if (strcmp (temp_string, "3") == 0)
+                {
+                        /* Now follows a string containing a dimension
+                         * style name string. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_dimension->dimstyle_name);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_dimension->id_code);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_dimension->linetype);
+                }
+                else if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing a layer name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_dimension->layer);
+                }
+                else if (strcmp (temp_string, "10") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the definition point for all
+                         * dimension types. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->x0);
+                }
+                else if (strcmp (temp_string, "20") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the definition point for all
+                         * dimension types. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->y0);
+                }
+                else if (strcmp (temp_string, "30") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the definition point for all
+                         * dimension types. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->z0);
+                }
+                else if (strcmp (temp_string, "11") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the middle point of dimension text. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->x1);
+                }
+                else if (strcmp (temp_string, "21") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the middle point of dimension text. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->y1);
+                }
+                else if (strcmp (temp_string, "31") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the middle point of dimension text. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->z1);
+                }
+                else if (strcmp (temp_string, "12") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the dimension block translation
+                         * vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->x2);
+                }
+                else if (strcmp (temp_string, "22") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the dimension block translation
+                         * vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->y2);
+                }
+                else if (strcmp (temp_string, "32") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the dimension block translation
+                         * vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->z2);
+                }
+                else if (strcmp (temp_string, "13") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the definition point for linear and
+                         * angular dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->x3);
+                }
+                else if (strcmp (temp_string, "23") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the definition point for linear and
+                         * angular dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->y3);
+                }
+                else if (strcmp (temp_string, "33") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the definition point for linear and
+                         * angular dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->z3);
+                }
+                else if (strcmp (temp_string, "14") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the definition point for linear and
+                         * angular dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->x4);
+                }
+                else if (strcmp (temp_string, "24") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the definition point for linear and
+                         * angular dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->y4);
+                }
+                else if (strcmp (temp_string, "34") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the definition point for linear and
+                         * angular dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->z4);
+                }
+                else if (strcmp (temp_string, "15") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the definition point for diameter,
+                         * radius, and angular dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->x5);
+                }
+                else if (strcmp (temp_string, "25") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the definition point for diameter,
+                         * radius, and angular dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->y5);
+                }
+                else if (strcmp (temp_string, "35") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the definition point for diameter,
+                         * radius, and angular dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->z5);
+                }
+                else if (strcmp (temp_string, "16") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the point defining dimension arc for
+                         * angular dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->x6);
+                }
+                else if (strcmp (temp_string, "26") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the point defining dimension arc for
+                         * angular dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->y6);
+                }
+                else if (strcmp (temp_string, "36") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the point defining dimension arc for
+                         * angular dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->z5);
+                }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0)
+                        && (dxf_dimension->z0 = 0.0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->z0);
+                }
+                else if (strcmp (temp_string, "39") == 0)
+                {
+                        /* Now follows a string containing the
+                         * thickness. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->thickness);
+                }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the leader
+                         * length. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->leader_length);
+                }
+                else if (strcmp (temp_string, "41") == 0)
+                {
+                        /* Now follows a string containing the text line
+                         * spacing factor. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->text_line_spacing_factor);
+                }
+                else if (strcmp (temp_string, "42") == 0)
+                {
+                        /* Now follows a string containing the actual
+                         * measurement. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->actual_measurement);
+                }
+                else if (strcmp (temp_string, "50") == 0)
+                {
+                        /* Now follows a string containing the angle of
+                         * rotated, horizontal, or vertical linear
+                         * dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->angle);
+                }
+                else if (strcmp (temp_string, "51") == 0)
+                {
+                        /* Now follows a string containing the horizontal
+                         * direction. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->hor_dir);
+                }
+                else if (strcmp (temp_string, "52") == 0)
+                {
+                        /* Now follows a string containing the oblique
+                         * angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->obl_angle);
+                }
+                else if (strcmp (temp_string, "53") == 0)
+                {
+                        /* Now follows a string containing the text
+                         * angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->text_angle);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimension->color);
+                }
+                else if (strcmp (temp_string, "67") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimension->paperspace);
+                }
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing a flag
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimension->flag);
+                }
+                else if (strcmp (temp_string, "71") == 0)
+                {
+                        /* Now follows a string containing the attachment
+                         * point value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimension->attachment_point);
+                }
+                else if (strcmp (temp_string, "72") == 0)
+                {
+                        /* Now follows a string containing the text line
+                         * spacing value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimension->text_line_spacing);
+                }
+                else if ((fp->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && (strcmp (temp_string, "AcDbDimension") != 0))
+                        {
+                                fprintf (stderr, "Error in dxf_dimension_read () found a bad subclass marker in: %s in line: %d.\n",
+                                        fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "210") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the extrusion vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->extr_x0);
+                }
+                else if (strcmp (temp_string, "220") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the extrusion vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->extr_y0);
+                }
+                else if (strcmp (temp_string, "230") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the extrusion vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_dimension->extr_z0);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr, "Warning in dxf_3dface_read () unknown string tag found while reading from: %s in line: %d.\n",
+                                fp->filename, fp->line_number);
+                }
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Write DXF output for a DXF \c DIMENSION entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error

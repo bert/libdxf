@@ -284,6 +284,12 @@ dxf_dimension_init
         DxfDimension *dxf_dimension
 );
 int
+dxf_dimension_read
+(
+        DxfFile *fp,
+        DxfDimension *dxf_dimension
+);
+int
 dxf_dimension_write
 (
         DxfFile *fp,
