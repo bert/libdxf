@@ -330,7 +330,8 @@ dxf_insert_read
                          * subclass marker value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
-                        if (strcmp (temp_string, "AcDbBlockReference") != 0)
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && (strcmp (temp_string, "AcDbBlockReference") != 0))
                         {
                                 fprintf (stderr, "Error in dxf_insert_read () found a bad subclass marker in: %s in line: %d.\n",
                                         fp->filename, fp->line_number);
@@ -513,6 +514,7 @@ dxf_insert_write_lowlevel
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
         if (acad_version_number >= AutoCAD_14)
         {
+                fprintf (fp, "100\nAcDbEntity\n");
                 fprintf (fp, "100\nAcDbBlockReference\n");
         }
         fprintf (fp, "  2\n%s\n", block_name);
@@ -658,6 +660,7 @@ dxf_insert_write
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (fp->acad_version_number >= AutoCAD_14)
         {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
                 fprintf (fp->fp, "100\nAcDbBlockReference\n");
         }
         fprintf (fp->fp, "  2\n%s\n", dxf_insert->block_name);
