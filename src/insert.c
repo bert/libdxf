@@ -114,7 +114,6 @@ dxf_insert_init
         dxf_insert->color = DXF_COLOR_BYLAYER;
         dxf_insert->paperspace = DXF_MODELSPACE;
         dxf_insert->attributes_follow = 0;
-        dxf_insert->acad_version_number = 0;
         dxf_insert->columns = 0;
         dxf_insert->rows = 0;
         dxf_insert->extr_x0 = 0.0;
@@ -144,12 +143,8 @@ dxf_insert_init
 int
 dxf_insert_read
 (
-        char *filename,
-                /*!< filename of input file (or device). */
-        FILE *fp,
-                /*!< filepointer to the input file (or device). */
-        int *line_number,
-                /*!< current line number in the input file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
         DxfInsert *dxf_insert
                 /*!< DXF insert entity. */
 )
@@ -164,66 +159,66 @@ dxf_insert_read
         {
                 dxf_insert = dxf_insert_new ();
         }
-        (*line_number)++;
-        fscanf (fp, "%[^\n]", temp_string);
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
-                if (ferror (fp))
+                if (ferror (fp->fp))
                 {
                         fprintf (stderr, "Error in dxf_insert_read () while reading from: %s in line: %d.\n",
-                                filename, *line_number);
-                        fclose (fp);
+                                fp->filename, fp->line_number);
+                        fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
                 if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a block name
                          * value. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_insert->block_name);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_insert->block_name);
                 }
                 else if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_insert->id_code);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_insert->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_insert->linetype);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_insert->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_insert->layer);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_insert->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->z0);
                 }
-                else if ((dxf_insert->acad_version_number <= AutoCAD_11)
+                else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_insert->z0 = 0.0))
                 {
@@ -232,71 +227,71 @@ dxf_insert_read
                          * probably be added.
                          * Now follows a string containing the
                          * elevation. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->thickness);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->thickness);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a string containing the
                          * relative X-scale. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->rel_x_scale);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->rel_x_scale);
                 }
                 else if (strcmp (temp_string, "42") == 0)
                 {
                         /* Now follows a string containing the
                          * relative Y-scale. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->rel_y_scale);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->rel_y_scale);
                 }
                 else if (strcmp (temp_string, "43") == 0)
                 {
                         /* Now follows a string containing the
                          * relative Z-scale. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->rel_z_scale);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->rel_z_scale);
                 }
                 else if (strcmp (temp_string, "44") == 0)
                 {
                         /* Now follows a string containing the
                          * column spacing. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->column_spacing);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->column_spacing);
                 }
                 else if (strcmp (temp_string, "45") == 0)
                 {
                         /* Now follows a string containing the
                          * row spacing. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->row_spacing);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->row_spacing);
                 }
                 else if (strcmp (temp_string, "50") == 0)
                 {
                         /* Now follows a string containing the
                          * rotation angle. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->rot_angle);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->rot_angle);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_insert->color);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_insert->color);
                 }
                 else if (strcmp (temp_string, "66") == 0)
                 {
                         /* Now follows a string containing the
                          * attributes follow flag. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_insert->attributes_follow);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_insert->attributes_follow);
                         /*!
                          * \todo After a set attributes_follow flag is
                          * detected, parsing of following entities should
@@ -307,24 +302,24 @@ dxf_insert_read
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_insert->paperspace);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_insert->paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * number of columns. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_insert->columns);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_insert->columns);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a string containing the
                          * number of rows. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_insert->rows);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_insert->rows);
                 }
-                else if ((dxf_insert->acad_version_number >= AutoCAD_12)
+                else if ((fp->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /*!
@@ -333,46 +328,46 @@ dxf_insert_read
                          * version should probably be added here. */
                         /* Now follows a string containing the
                          * subclass marker value. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "AcDbBlockReference") != 0)
                         {
                                 fprintf (stderr, "Error in dxf_insert_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        filename, *line_number);
+                                        fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->extr_x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->extr_y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_insert->extr_z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->extr_z0);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
                 {
                         fprintf (stderr, "Warning: in dxf_insert_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                filename, *line_number);
+                                fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -600,8 +595,8 @@ dxf_insert_write_lowlevel
 int
 dxf_insert_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfInsert *dxf_insert
                 /*!< DXF insert entity. */
 )
@@ -660,77 +655,77 @@ dxf_insert_write
                         dxf_entity_name);
                 dxf_insert->rows = 1;
         }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_insert->acad_version_number >= AutoCAD_14)
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (fp->acad_version_number >= AutoCAD_14)
         {
-                fprintf (fp, "100\nAcDbBlockReference\n");
+                fprintf (fp->fp, "100\nAcDbBlockReference\n");
         }
-        fprintf (fp, "  2\n%s\n", dxf_insert->block_name);
+        fprintf (fp->fp, "  2\n%s\n", dxf_insert->block_name);
         if (dxf_insert->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_insert->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_insert->id_code);
         }
         if (strcmp (dxf_insert->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_insert->linetype);
+                fprintf (fp->fp, "  6\n%s\n", dxf_insert->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_insert->layer);
-        fprintf (fp, " 10\n%f\n", dxf_insert->x0);
-        fprintf (fp, " 20\n%f\n", dxf_insert->y0);
-        fprintf (fp, " 30\n%f\n", dxf_insert->z0);
-        if (dxf_insert->acad_version_number >= AutoCAD_12)
+        fprintf (fp->fp, "  8\n%s\n", dxf_insert->layer);
+        fprintf (fp->fp, " 10\n%f\n", dxf_insert->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_insert->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_insert->z0);
+        if (fp->acad_version_number >= AutoCAD_12)
         {
-                fprintf (fp, "210\n%f\n", dxf_insert->extr_x0);
-                fprintf (fp, "220\n%f\n", dxf_insert->extr_y0);
-                fprintf (fp, "230\n%f\n", dxf_insert->extr_z0);
+                fprintf (fp->fp, "210\n%f\n", dxf_insert->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", dxf_insert->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", dxf_insert->extr_z0);
         }
         if (dxf_insert->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_insert->thickness);
+                fprintf (fp->fp, " 39\n%f\n", dxf_insert->thickness);
         }
         if (dxf_insert->rel_x_scale != 1.0)
         {
-                fprintf (fp, " 41\n%f\n", dxf_insert->rel_x_scale);
+                fprintf (fp->fp, " 41\n%f\n", dxf_insert->rel_x_scale);
         }
         if (dxf_insert->rel_y_scale != 1.0)
         {
-                fprintf (fp, " 42\n%f\n", dxf_insert->rel_y_scale);
+                fprintf (fp->fp, " 42\n%f\n", dxf_insert->rel_y_scale);
         }
         if (dxf_insert->rel_z_scale != 1.0)
         {
-                fprintf (fp, " 43\n%f\n", dxf_insert->rel_z_scale);
+                fprintf (fp->fp, " 43\n%f\n", dxf_insert->rel_z_scale);
         }
         if ((dxf_insert->columns > 1) && (dxf_insert->column_spacing > 0.0))
         {
-                fprintf (fp, " 44\n%f\n", dxf_insert->column_spacing);
+                fprintf (fp->fp, " 44\n%f\n", dxf_insert->column_spacing);
         }
         if ((dxf_insert->rows > 1) && (dxf_insert->row_spacing > 0.0))
         {
-                fprintf (fp, " 45\n%f\n", dxf_insert->row_spacing);
+                fprintf (fp->fp, " 45\n%f\n", dxf_insert->row_spacing);
         }
         if (dxf_insert->rot_angle != 0.0)
         {
-                fprintf (fp, " 50\n%f\n", dxf_insert->rot_angle);
+                fprintf (fp->fp, " 50\n%f\n", dxf_insert->rot_angle);
         }
         if (dxf_insert->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_insert->color);
+                fprintf (fp->fp, " 62\n%d\n", dxf_insert->color);
         }
         if (dxf_insert->attributes_follow != 0)
         {
-                fprintf (fp, " 66\n%d\n", dxf_insert->attributes_follow);
+                fprintf (fp->fp, " 66\n%d\n", dxf_insert->attributes_follow);
         }
         if (dxf_insert->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
         if (dxf_insert->columns > 1)
         {
-                fprintf (fp, " 70\n%d\n", dxf_insert->columns);
+                fprintf (fp->fp, " 70\n%d\n", dxf_insert->columns);
         }
         if (dxf_insert->rows > 1)
         {
-                fprintf (fp, " 71\n%d\n", dxf_insert->rows);
+                fprintf (fp->fp, " 71\n%d\n", dxf_insert->rows);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_insert_write () function.\n",
