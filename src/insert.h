@@ -189,6 +189,11 @@ dxf_insert_write
         DxfFile *fp,
         DxfInsert *dxf_insert
 );
+int
+dxf_insert_free
+(
+        DxfInsert *dxf_insert
+);
 
 
 #endif /* _INSERT_H */

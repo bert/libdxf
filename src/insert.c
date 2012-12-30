@@ -735,4 +735,41 @@ dxf_insert_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c INSERT and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_insert_free
+(
+        DxfInsert *dxf_insert
+                /*!< Pointer to the memory occupied by the DXF \c INSERT
+                 * entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_insert_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        if (dxf_insert->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_insert_free () pointer to next DxfInsert was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
+        free (dxf_insert->linetype);
+        free (dxf_insert->layer);
+        free (dxf_insert->block_name);
+        free (dxf_insert);
+        dxf_insert = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_insert_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
