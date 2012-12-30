@@ -319,13 +319,9 @@ dxf_insert_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_insert->rows);
                 }
-                else if ((fp->acad_version_number >= AutoCAD_12)
+                else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
-                        /*!
-                         * \todo Subclass markers are a post AutoCAD R12
-                         * variable so additional testing for the
-                         * version should probably be added here. */
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
@@ -512,7 +508,7 @@ dxf_insert_write_lowlevel
                 rows = 1;
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (acad_version_number >= AutoCAD_14)
+        if (acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp, "100\nAcDbEntity\n");
                 fprintf (fp, "100\nAcDbBlockReference\n");
