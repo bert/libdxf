@@ -39,6 +39,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdint.h> /* not part of the C++ standard */
 #include <stdlib.h>
 #include <ctype.h>
 #include <sys/types.h>
