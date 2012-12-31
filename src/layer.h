@@ -85,6 +85,9 @@ dxf_layer
 } DxfLayer, * DxfLayerPtr;
 
 
+DxfLayer *dxf_layer_new ();
+
+
 #endif /* _LAYER_H */
 
 

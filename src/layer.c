@@ -35,4 +35,42 @@
 #include "layer.h"
 
 
+/*!
+ * \brief Allocate memory for a DXF \c LAYER.
+ *
+ * Fill the memory contents with zeros.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfLayer *
+dxf_layer_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_layer_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfLayer *dxf_layer = NULL;
+        size_t size;
+
+        size = sizeof (DxfLayer);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_layer = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_layer_new () could not allocate memory for a DxfLayer struct.\n");
+                dxf_layer = NULL;
+        }
+        else
+        {
+                memset (dxf_layer, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_layer);
+}
+
+
 /* EOF */
