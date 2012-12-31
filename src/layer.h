@@ -84,8 +84,11 @@ dxf_layer
 
 
 DxfLayer *dxf_layer_new ();
-DxfLayer *
-dxf_layer_init
+DxfLayer *dxf_layer_init
+(
+        DxfLayer *dxf_layer
+);
+int dxf_layer_free
 (
         DxfLayer *dxf_layer
 );

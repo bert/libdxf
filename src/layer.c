@@ -114,4 +114,42 @@ dxf_layer_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c LAYER and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_layer_free
+(
+        DxfLayer *dxf_layer
+                /*!< Pointer to the memory occupied by the DXF \c LAYER
+                 * table. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_layer_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        if (dxf_layer->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_layer_free () pointer to next DxfLayer was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
+        free (dxf_layer->layer_name);
+        free (dxf_layer->linetype);
+        free (dxf_layer->material);
+        free (dxf_layer->plot_style_name);
+        free (dxf_layer);
+        dxf_layer = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_layer_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
