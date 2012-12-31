@@ -1,6 +1,8 @@
 /*!
  * \file layer.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief DXF layer entity.
  *
  * <hr>
@@ -29,7 +31,7 @@
  * <hr>
  */
 
-#include "global.h"
+
 #include "layer.h"
 
 

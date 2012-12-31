@@ -1,6 +1,8 @@
 /*!
  * \file layer.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF layer entity.
  *
  * <hr>
@@ -29,7 +31,13 @@
  * <hr>
  */
 
+
+#ifndef _LAYER_H
+#define _LAYER_H
+
+
 #include "global.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD layer entity.
@@ -75,5 +83,9 @@ dxf_layer
                 /*!< pointer to the next DxfLayer.\n
                  * \c NULL in the last DxfLayer. */
 } DxfLayer, * DxfLayerPtr;
+
+
+#endif /* _LAYER_H */
+
 
 /* EOF */
