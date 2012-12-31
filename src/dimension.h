@@ -1,5 +1,5 @@
 /*!
- * \file dimemsion.h
+ * \file dimension.h
  *
  * \author Copyright (C) 2008, 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
