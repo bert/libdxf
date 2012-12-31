@@ -73,4 +73,45 @@ dxf_layer_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c LAYER
+ * table.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfLayer *
+dxf_layer_init
+(
+        DxfLayer *dxf_layer
+                /*!< DXF LAYER table. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_layer_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_layer = dxf_layer_new ();
+        if (dxf_layer == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_layer_init () could not allocate memory for a DxfLayer struct.\n");
+              return (NULL);
+        }
+        dxf_layer->layer_name = strdup ("");
+        dxf_layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_layer->color = DXF_COLOR_BYLAYER;
+        dxf_layer->flag = 0;
+        dxf_layer->plotting_flag = 0;
+        dxf_layer->material = strdup ("");
+        dxf_layer->lineweight = 0;
+        dxf_layer->plot_style_name = strdup ("");
+        dxf_layer->next = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_layer);
+}
+
+
 /* EOF */

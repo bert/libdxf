@@ -47,8 +47,6 @@
 typedef struct
 dxf_layer
 {
-        int id_code;
-                /*!< group code = 5. */
         char *layer_name;
                 /*!< group code = 2. */
         char *linetype;
@@ -86,6 +84,11 @@ dxf_layer
 
 
 DxfLayer *dxf_layer_new ();
+DxfLayer *
+dxf_layer_init
+(
+        DxfLayer *dxf_layer
+);
 
 
 #endif /* _LAYER_H */
