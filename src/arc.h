@@ -113,8 +113,13 @@ dxf_arc
 } DxfArc, * DxfArcPtr;
 
 
-DxfArc *dxf_arc_new ();
-DxfArc *dxf_arc_init (DxfArc *dxf_arc);
+DxfArc *
+dxf_arc_new ();
+DxfArc *
+dxf_arc_init
+(
+        DxfArc *dxf_arc
+);
 int
 dxf_arc_read
 (
