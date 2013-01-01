@@ -442,8 +442,9 @@ dxf_arc_write_lowlevel
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (acad_version_number >= AutoCAD_14)
+        if (acad_version_number >= AutoCAD_13)
         {
+                fprintf (fp, "100\nAcDbEntity\n");
                 fprintf (fp, "100\nAcDbCircle\n");
         }
         if (id_code != -1)
@@ -514,8 +515,8 @@ dxf_arc_write
 
         if (dxf_arc == NULL)
         {
-                return (EXIT_FAILURE);
                 fprintf (stderr, "Error in dxf_arc_write () a NULL pointer was passed.\n");
+                return (EXIT_FAILURE);
         }
         if (dxf_arc->start_angle == dxf_arc->end_angle)
         {
@@ -574,8 +575,9 @@ dxf_arc_write
                 dxf_arc->layer = DXF_DEFAULT_LAYER;
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (fp->acad_version_number >= AutoCAD_14)
+        if (fp->acad_version_number >= AutoCAD_13)
         {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
                 fprintf (fp->fp, "100\nAcDbArc\n");
         }
         if (dxf_arc->id_code != -1)
