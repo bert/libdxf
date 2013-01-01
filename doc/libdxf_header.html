@@ -5,6 +5,7 @@ Table: HEADER variables.<br>
 <br>
 <table noborder>
 <tr><th>Variable</th><th>Group code</th><th>Since<br>version</th><th>Modified</th></tr>
+<tr><td>$ACADMAINTVER</td><td>70</td><td>DXF R14</td></tr>
 <tr><td>$ACADVER</td><td>1</td><td>DXF R10</td><td>MODIFIED in all DXF versions</td></tr>
 <tr><td>$ANGBASE</td><td>50</td><td>DXF R10</td></tr>
 <tr><td>$ANGDIR</td><td>70</td><td>DXF R10</td></tr>
@@ -21,10 +22,12 @@ Table: HEADER variables.<br>
 <tr><td>$CELTYPE</td><td>6</td><td>DXF R10</td></tr>
 <tr><td>$CHAMFERA</td><td>40</td><td>DXF R10</td></tr>
 <tr><td>$CHAMFERB</td><td>40</td><td>DXF R10</td></tr>
+<tr><td>$CHAMFERC</td><td>40</td><td>DXF R14</td></tr>
+<tr><td>$CHAMFERD</td><td>40</td><td>DXF R14</td></tr>
 <tr><td>$CLAYER</td><td>8</td><td>DXF R10</td></tr>
 <tr><td>$CMLJUST</td><td>70</td><td>DXF R13</td></tr>
 <tr><td>$CMLSCALE</td><td>40</td><td>DXF R13</td></tr>
-<tr><td>$CMLSTYLE</td><td>7</td><td>DXF R13</td></tr>
+<tr><td>$CMLSTYLE</td><td>7 (R13)<br>2 (R14)</td><td>DXF R13</td><td>DXF R14</td></tr>
 <tr><td>$COORDS</td><td>70</td><td>DXF R10</td></tr>
 <tr><td>$DELOBJ</td><td>70</td><td>DXF R13</td></tr>
 <tr><td>$DIMALT</td><td>70</td><td>DXF R10</td></tr>
@@ -38,7 +41,7 @@ Table: HEADER variables.<br>
 <tr><td>$DIMASO</td><td>70</td><td>DXF R10</td></tr>
 <tr><td>$DIMASZ</td><td>40</td><td>DXF R10</td></tr>
 <tr><td>$DIMAUNIT</td><td>70</td><td>DXF R13</td></tr>
-<tr><td>$DIMBLK</td><td>2</td><td>DXF R10</td></tr>
+<tr><td>$DIMBLK</td><td>2 (R10)<br>1 (R14)</td><td>DXF R10</td><td>DXF R14</td></tr>
 <tr><td>$DIMBLK1</td><td>1</td><td>DXF R10</td></tr>
 <tr><td>$DIMBLK2</td><td>1</td><td>DXF R10</td></tr>
 <tr><td>$DIMCEN</td><td>40</td><td>DXF R10</td></tr>
@@ -79,7 +82,7 @@ Table: HEADER variables.<br>
 <tr><td>$DIMTP</td><td>40</td><td>DXF R10</td></tr>
 <tr><td>$DIMTSZ</td><td>40</td><td>DXF R10</td></tr>
 <tr><td>$DIMTVP</td><td>40</td><td>DXF R10</td></tr>
-<tr><td>$DIMTXSTY</td><td>70</td><td>DXF R13</td></tr>
+<tr><td>$DIMTXSTY</td><td>70 (R13)<br>7 (R14)</td><td>DXF R13</td><td>DXF R14</td></tr>
 <tr><td>$DIMTXT</td><td>40</td><td>DXF R10</td></tr>
 <tr><td>$DIMTZIN</td><td>70</td><td>DXF R13</td></tr>
 <tr><td>$DIMUNIT</td><td>70</td><td>DXF R13</td></tr>
@@ -93,6 +96,7 @@ Table: HEADER variables.<br>
 <tr><td>$EXTMIN</td><td>10,20,30</td><td>DXF R10</td></tr>
 <tr><td>$FILLETRAD</td><td>40</td><td>DXF R10</td></tr>
 <tr><td>$FILLMODE</td><td>70</td><td>DXF R10</td></tr>
+<tr><td>$HANDLING</td><td>70</td><td>DXF R14</td></tr>
 <tr><td>$FLATLAND</td><td>70</td><td>DXF R10</td><td>REMOVED in DXF R12</td></tr>
 <tr><td>$HANDLING</td><td>70</td><td>DXF R10</td><td>REMOVED in DXF R13</td></tr>
 <tr><td>$HANDSEED</td><td>5</td><td>DXF R10</td></tr>
@@ -104,6 +108,7 @@ Table: HEADER variables.<br>
 <tr><td>$LUNITS</td><td>70</td><td>DXF R10</td></tr>
 <tr><td>$LUPREC</td><td>70</td><td>DXF R10</td></tr>
 <tr><td>$MAXACTVP</td><td>70</td><td>DXF R12</td></tr>
+<tr><td>$MEASUREMENT</td><td>70</td><td>DXF R14</td></tr>
 <tr><td>$MENU</td><td>1</td><td>DXF R10</td></tr>
 <tr><td>$MIRRTEXT</td><td>70</td><td>DXF R10</td></tr>
 <tr><td>$ORTHOMODE</td><td>70</td><td>DXF R10</td></tr>
@@ -113,12 +118,14 @@ Table: HEADER variables.<br>
 <tr><td>$PELEVATION</td><td>40</td><td>DXF R12</td></tr>
 <tr><td>$PEXTMAX</td><td>10,20,30</td><td>DXF R12</td></tr>
 <tr><td>$PEXTMIN</td><td>10,20,30</td><td>DXF R12</td></tr>
+<tr><td>$PICKSTYLE</td><td>70</td><td>DXF R13</td></tr>
+<tr><td>$PINSBASE</td><td>10,20,30</td><td>DXF R14</td></tr>
 <tr><td>$PLIMCHECK</td><td>70</td><td>DXF R12</td></tr>
 <tr><td>$PLIMMAX</td><td>10,20</td><td>DXF R12</td></tr>
 <tr><td>$PLIMMIN</td><td>10,20</td><td>DXF R12</td></tr>
-<tr><td>$PICKSTYLE</td><td>70</td><td>DXF R13</td></tr>
 <tr><td>$PLINEGEN</td><td>70</td><td>DXF R12</td></tr>
 <tr><td>$PLINEWID</td><td>40</td><td>DXF R10</td></tr>
+<tr><td>$PROXYGRAPHICS</td><td>70</td><td>DXF R14</td></tr>
 <tr><td>$PSLTSCALE</td><td>70</td><td>DXF R12</td></tr>
 <tr><td>$PUCSNAME</td><td>2</td><td>DXF R12</td></tr>
 <tr><td>$PUCSORG</td><td>10,20,30</td><td>DXF R12</td></tr>
@@ -147,13 +154,14 @@ Table: HEADER variables.<br>
 <tr><td>$THICKNESS</td><td>40</td><td>DXF R10</td></tr>
 <tr><td>$TILEMODE</td><td>70</td><td>DXF R12</td></tr>
 <tr><td>$TRACEWID</td><td>40</td><td>DXF R10</td></tr>
+<tr><td>$TREEDEPTH</td><td>70</td><td>DXF R14</td></tr>
 <tr><td>$UCSNAME</td><td>1 (R10)<br>2 (R12)</td><td>DXF R10</td><td>DXF R12</td></tr>
 <tr><td>$UCSORG</td><td>10,20,30</td><td>DXF R10</td></tr>
 <tr><td>$UCSXDIR</td><td>10,20,30</td><td>DXF R10</td></tr>
 <tr><td>$UCSYDIR</td><td>10,20,30</td><td>DXF R10</td></tr>
 <tr><td>$UNITMODE</td><td>70</td><td>DXF R12</td></tr>
-<tr><td>$USERI1-5</td><td>70</td><td>DXF R10</td></tr>
-<tr><td>$USERR1-5</td><td>40</td><td>DXF R10</td></tr>
+<tr><td>$USERI1 - 5</td><td>70</td><td>DXF R10</td></tr>
+<tr><td>$USERR1 - 5</td><td>40</td><td>DXF R10</td></tr>
 <tr><td>$USRTIMER</td><td>70</td><td>DXF R10</td></tr>
 <tr><td>$VISRETAIN</td><td>70</td><td>DXF R12</td></tr>
 <tr><td>$WORLDVIEW</td><td>70</td><td>DXF R10</td></tr>
