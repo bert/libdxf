@@ -1,0 +1,33 @@
+<h1>Introduction.</h1>
+This is a collection of group code that can appear  in all DXF OBJECTS entity,<br>
+for convenience have been collected in a single list.<br>
+<br>
+Table: Common Object Group Codes.<br>
+<br>
+<table noborder>
+<tr><th>Group code</th><th>Description</th><th>if omitted,<br>defaults to</th><th>Since<br>version</th></tr>
+<tr><td>0</td><td>Entity type</td><td>Not omitted</td><td>DXF R10</td></tr>
+<tr><td>5</td><td>Handle</td><td>Not omitted</td><td>DXF R10</td></tr>
+<tr><td>102</td><td>Start pint for application "{application_name"<br>watch in the down tables for see the attached possible</td><td>no default</td><td>DXF R14</td></tr>
+<tr><td>application<br>dependent</td><td>After the start point until end point depends on the application<br>watch in the down tables for see the possibility</td><td>no default</td><td>DXF R14</td></tr>
+<tr><td>102</td><td>End point, "}"</td><td>no default</td><td>DXF R14</td></tr>
+<tr><td>330</td><td>Soft-pointer ID/handle to owner object</td><td>Not omitted</td><td>DXF R15/2000</td></tr>
+</table>
+<br><br><br><br><br>
+Table: Attached (persistent reactors).<br>
+<br>
+<table noborder>
+<tr><th>Group code</th><th>Description</th><th>Since<br>version</th></tr>
+<tr><td>102</td><td>"{ACAD_REACTORS" indicates the start point</td><td>DXF R14</td></tr>
+<tr><td>330</td><td>Soft pointer ID/handle to owner dictionary</td><td>DXF R14</td></tr>
+<tr><td>102</td><td>End point, "}"</td><td>DXF R14</td></tr>
+</table>
+<br><br><br><br><br>
+Table: Attached (extension dictionary). <br>
+<br>
+<table noborder>
+<tr><th>Group code</th><th>Description</th><th>Since<br>version</th></tr>
+<tr><td>102</td><td>"{ACAD_XDICTIONARY" indicates the start point</td><td>DXF R14</td></tr>
+<tr><td>360</td><td>Hard owner ID/handle to owner dictionary</td><td>DXF R14</td></tr>
+<tr><td>102</td><td>End point, "}"</td><td>DXF R14</td></tr>
+</table>
