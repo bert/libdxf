@@ -255,13 +255,9 @@ dxf_arc_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_arc->paperspace);
                 }
-                else if ((fp->acad_version_number >= AutoCAD_12)
+                else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
-                        /*!
-                         * \todo Subclass markers are a post AutoCAD R12
-                         * variable so additional testing for the
-                         * version should probably be added here. */
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;

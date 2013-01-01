@@ -1,5 +1,5 @@
 /*!
- * \file dimemsion.h
+ * \file dimension.h
  *
  * \author Copyright (C) 2008, 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
@@ -281,6 +281,18 @@ DxfDimension *dxf_dimension_new ();
 DxfDimension *
 dxf_dimension_init
 (
+        DxfDimension *dxf_dimension
+);
+int
+dxf_dimension_read
+(
+        DxfFile *fp,
+        DxfDimension *dxf_dimension
+);
+int
+dxf_dimension_write
+(
+        DxfFile *fp,
         DxfDimension *dxf_dimension
 );
 int

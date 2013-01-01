@@ -78,8 +78,6 @@ dxf_ellipse
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
         /* Specific members for a DXF ellipse. */
         double x0;
                 /*!< group code = 10\n
@@ -134,9 +132,7 @@ dxf_ellipse_init
 int
 dxf_ellipse_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfEllipse *dxf_ellipse
 );
 int
@@ -166,7 +162,7 @@ dxf_ellipse_write_lowlevel
 int
 dxf_ellipse_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfEllipse *dxf_ellipse
 );
 int

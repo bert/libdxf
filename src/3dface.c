@@ -249,7 +249,7 @@ dxf_3dface_read
                 else if (strcmp (temp_string, "13") == 0)
                 {
                         /* Now follows a string containing the
-                         * X-coordinate of the point. */
+                         * X-coordinate of the fourth point. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_3dface->x3);
                 }

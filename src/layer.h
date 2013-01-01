@@ -1,6 +1,8 @@
 /*!
  * \file layer.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Definition of a DXF layer entity.
  *
  * <hr>
@@ -29,7 +31,13 @@
  * <hr>
  */
 
+
+#ifndef _LAYER_H
+#define _LAYER_H
+
+
 #include "global.h"
+
 
 /*!
  * \brief DXF definition of an AutoCAD layer entity.
@@ -39,8 +47,6 @@
 typedef struct
 dxf_layer
 {
-        int id_code;
-                /*!< group code = 5. */
         char *layer_name;
                 /*!< group code = 2. */
         char *linetype;
@@ -75,5 +81,29 @@ dxf_layer
                 /*!< pointer to the next DxfLayer.\n
                  * \c NULL in the last DxfLayer. */
 } DxfLayer, * DxfLayerPtr;
+
+
+DxfLayer *
+dxf_layer_new ();
+DxfLayer *
+dxf_layer_init
+(
+        DxfLayer *dxf_layer
+);
+int
+dxf_layer_read
+(
+        DxfFile *fp,
+        DxfLayer *dxf_layer
+);
+int
+dxf_layer_free
+(
+        DxfLayer *dxf_layer
+);
+
+
+#endif /* _LAYER_H */
+
 
 /* EOF */

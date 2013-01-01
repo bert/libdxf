@@ -1,6 +1,8 @@
 /*!
  * \file layer.c
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief DXF layer entity.
  *
  * <hr>
@@ -29,8 +31,257 @@
  * <hr>
  */
 
-#include "global.h"
+
 #include "layer.h"
+
+
+/*!
+ * \brief Allocate memory for a DXF \c LAYER.
+ *
+ * Fill the memory contents with zeros.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfLayer *
+dxf_layer_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_layer_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfLayer *dxf_layer = NULL;
+        size_t size;
+
+        size = sizeof (DxfLayer);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_layer = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_layer_new () could not allocate memory for a DxfLayer struct.\n");
+                dxf_layer = NULL;
+        }
+        else
+        {
+                memset (dxf_layer, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_layer);
+}
+
+
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c LAYER
+ * table.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfLayer *
+dxf_layer_init
+(
+        DxfLayer *dxf_layer
+                /*!< DXF LAYER table. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_layer_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_layer = dxf_layer_new ();
+        if (dxf_layer == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_layer_init () could not allocate memory for a DxfLayer struct.\n");
+              return (NULL);
+        }
+        dxf_layer->layer_name = strdup ("");
+        dxf_layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_layer->color = DXF_COLOR_BYLAYER;
+        dxf_layer->flag = 0;
+        dxf_layer->plotting_flag = 0;
+        dxf_layer->material = strdup ("");
+        dxf_layer->lineweight = 0;
+        dxf_layer->plot_style_name = strdup ("");
+        dxf_layer->next = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_layer);
+}
+
+
+/*!
+ * \brief Read data from a DXF file into a DXF \c LAYER table.
+ *
+ * The last line read from file contained the string "LAYER". \n
+ * Now follows some data for the \c LAYER, to be terminated with a "  0"
+ * string announcing the following entity, or the end of the \c TABLE
+ * section marker \c ENDTAB. \n
+ * While parsing the DXF file store data in \c dxf_layer. \n
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_layer_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfLayer *dxf_layer
+                /*!< DXF LAYER table. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_layer_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *temp_string = NULL;
+
+        if (!dxf_layer)
+        {
+                dxf_layer = dxf_layer_new ();
+        }
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr, "Error in dxf_layer_read () while reading from: %s in line: %d.\n",
+                                fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        return (EXIT_FAILURE);
+                }
+                if (strcmp (temp_string, "2") == 0)
+                {
+                        /* Now follows a string containing the layer
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_layer->layer_name);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_layer->linetype);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_layer->color);
+                }
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing the
+                         * flag value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_layer->flag);
+                }
+                else if ((fp->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbSymbolTable") != 0)
+                        && ((strcmp (temp_string, "AcDbLayerTableRecord") != 0)))
+                        {
+                                fprintf (stderr, "Error in dxf_layer_read () found a bad subclass marker in: %s in line: %d.\n",
+                                        fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "290") == 0)
+                {
+                        /* Now follows a string containing the plotting
+                         * flag value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_layer->plotting_flag);
+                }
+                else if (strcmp (temp_string, "347") == 0)
+                {
+                        /* Now follows a string containing the material. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_layer->material);
+                }
+                else if (strcmp (temp_string, "370") == 0)
+                {
+                        /* Now follows a string containing the
+                         * lineweight. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_layer->lineweight);
+                }
+                else if (strcmp (temp_string, "390") == 0)
+                {
+                        /* Now follows a string containing the plot style
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_layer->plot_style_name);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr, "Warning: in dxf_arc_read () unknown string tag found while reading from: %s in line: %d.\n",
+                                fp->filename, fp->line_number);
+                }
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a DXF \c LAYER and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_layer_free
+(
+        DxfLayer *dxf_layer
+                /*!< Pointer to the memory occupied by the DXF \c LAYER
+                 * table. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_layer_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        if (dxf_layer->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_layer_free () pointer to next DxfLayer was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
+        free (dxf_layer->layer_name);
+        free (dxf_layer->linetype);
+        free (dxf_layer->material);
+        free (dxf_layer->plot_style_name);
+        free (dxf_layer);
+        dxf_layer = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_layer_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
 
 
 /* EOF */

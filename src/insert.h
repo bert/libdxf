@@ -81,8 +81,6 @@ dxf_insert
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
         /* Specific members for a DXF insert. */
         char *block_name;
                 /*!< group code = 2. */
@@ -154,9 +152,7 @@ dxf_insert_init
 int
 dxf_insert_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfInsert *dxf_insert
 );
 int
@@ -190,7 +186,12 @@ dxf_insert_write_lowlevel
 int
 dxf_insert_write
 (
-        FILE *fp,
+        DxfFile *fp,
+        DxfInsert *dxf_insert
+);
+int
+dxf_insert_free
+(
         DxfInsert *dxf_insert
 );
 
