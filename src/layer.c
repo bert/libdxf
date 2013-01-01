@@ -247,6 +247,66 @@ dxf_layer_read
 
 
 /*!
+ * \brief Write DXF output for a DXF \c LAYER table.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_layer_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfLayer *dxf_layer
+                /*!< DXF \c LAYER table. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_layer_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *dxf_entity_name = strdup ("LAYER");
+
+        if (dxf_layer == NULL)
+        {
+                fprintf (stderr, "Error in dxf_layer_write () a NULL pointer was passed.\n");
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_layer->layer_name, "") == 0)
+        {
+                fprintf (stderr, "Error in dxf_layer_write () empty layer string for the %s table.\n",
+                        dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (fp->acad_version_number >= AutoCAD_14)
+        {
+                fprintf (fp->fp, "100\nAcDbSymbolTable\n");
+                fprintf (fp->fp, "100\nAcDbLayerTableRecord\n");
+        }
+        fprintf (fp->fp, "  2\n%s\n", dxf_layer->layer_name);
+        fprintf (fp->fp, "  6\n%s\n", dxf_layer->linetype);
+        fprintf (fp->fp, " 62\n%d\n", dxf_layer->color);
+        fprintf (fp->fp, " 70\n%d\n", dxf_layer->flag);
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+                fprintf (fp->fp, "290\n%d\n", dxf_layer->plotting_flag);
+                fprintf (fp->fp, "370\n%hd\n", dxf_layer->lineweight);
+                fprintf (fp->fp, "390\n%s\n", dxf_layer->plot_style_name);
+        }
+        if (fp->acad_version_number >= AutoCAD_2007)
+        {
+                fprintf (fp->fp, "347\n%s\n", dxf_layer->material);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_layer_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c LAYER and all it's
  * data fields.
  *

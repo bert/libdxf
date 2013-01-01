@@ -97,6 +97,12 @@ dxf_layer_read
         DxfLayer *dxf_layer
 );
 int
+dxf_layer_write
+(
+        DxfFile *fp,
+        DxfLayer *dxf_layer
+);
+int
 dxf_layer_free
 (
         DxfLayer *dxf_layer
