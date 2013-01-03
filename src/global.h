@@ -1,7 +1,7 @@
 /*!
  * \file global.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  *
  * \brief  This is a global header file for a library with functions to
  * generate a dxf file.
@@ -311,6 +311,16 @@ dxf_file
  * reasonably safe to assume that this is a valid linetype.
  */
 #define DXF_DEFAULT_LINETYPE "BYLAYER"
+
+/*!
+ * \brief The default linetype scale.
+ */
+#define DXF_DEFAULT_LINETYPE_SCALE 1.0
+
+/*!
+ * \brief The default proxy entity class id.
+ */
+#define DXF_DEFAULT_PROXY_ENTITY_ID 498
 
 /*!
  * \brief There is <b>always</b> a textstyle "STANDARD" defined, it's
