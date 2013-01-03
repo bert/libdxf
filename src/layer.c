@@ -1,9 +1,9 @@
 /*!
  * \file layer.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief DXF layer entity.
+ * \brief DXF layer table.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -119,7 +119,7 @@ dxf_layer_init
  *
  * The last line read from file contained the string "LAYER". \n
  * Now follows some data for the \c LAYER, to be terminated with a "  0"
- * string announcing the following entity, or the end of the \c TABLE
+ * string announcing the following table, or the end of the \c TABLE
  * section marker \c ENDTAB. \n
  * While parsing the DXF file store data in \c dxf_layer. \n
  *

@@ -1,9 +1,9 @@
 /*!
  * \file layer.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Definition of a DXF layer entity.
+ * \brief Definition of a DXF layer table.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
