@@ -73,4 +73,55 @@ dxf_acad_proxy_entity_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c ACAD_PROXY_ENTITY
+ * table.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_init
+(
+        DxfAcadProxyEntity *dxf_acad_proxy_entity
+                /*!< DXF ACAD_PROXY_ENTITY table. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_acad_proxy_entity_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        dxf_acad_proxy_entity = dxf_acad_proxy_entity_new ();
+        if (dxf_acad_proxy_entity == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_acad_proxy_entity_init () could not allocate memory for a DxfAcadProxyEntity struct.\n");
+              return (NULL);
+        }
+        dxf_acad_proxy_entity->id_code = 0;
+        dxf_acad_proxy_entity->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_acad_proxy_entity->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_acad_proxy_entity->color = DXF_COLOR_BYLAYER;
+        dxf_acad_proxy_entity->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_acad_proxy_entity->object_visability = 0;
+        dxf_acad_proxy_entity->proxy_entity_class_id = DXF_DEFAULT_PROXY_ENTITY_ID;
+        dxf_acad_proxy_entity->application_entity_class_id = 0;
+        dxf_acad_proxy_entity->graphics_data_size = 0;
+/*! \todo Initialize binary_graphics_data array and object_id.\n
+
+        int i;
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                dxf_acad_proxy_entity->binary_graphics_data[DXF_MAX_STRING_LENGTH][i] = strdup ("");
+                dxf_acad_proxy_entity->object_id[DXF_MAX_STRING_LENGTH][i] = strdup ("");
+        }
+ */
+        dxf_acad_proxy_entity->next = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_acad_proxy_entity);
+}
+
+
 /* EOF */

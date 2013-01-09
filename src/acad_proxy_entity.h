@@ -113,6 +113,11 @@ dxf_acad_proxy_entity
 
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_new ();
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_init
+(
+        DxfAcadProxyEntity *dxf_acad_proxy_entity
+);
 
 
 #endif /* _ACAD_PROXY_ENTITY_H */
