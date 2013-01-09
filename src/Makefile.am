@@ -85,6 +85,8 @@ libdxf_la_SOURCES = \
   arc.c \
   appid.h \
   appid.c \
+  acad_proxy_entity.h \
+  acad_proxy_entity.c \
   3dsolid.h \
   3dsolid.c \
   3dface.h \

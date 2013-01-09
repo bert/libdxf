@@ -48,6 +48,8 @@ src/3dface.h
 src/3dsolid.c
 src/3dsolid.h
 src/Makefile.am
+src/acad_proxy_entity.c
+src/acad_proxy_entity.h
 src/appid.c
 src/appid.h
 src/arc.c

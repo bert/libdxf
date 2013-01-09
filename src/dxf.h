@@ -1,7 +1,7 @@
 /*!
  * \file dxf.h
  *
- * \author Copyright (C) 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief List of all dxf header files for convenient inclusion.
  *
@@ -38,6 +38,7 @@
 
 #include "3dface.h"
 #include "3dsolid.h"
+#include "acad_proxy_entity.h"
 #include "appid.h"
 #include "arc.h"
 #include "attdef.h"
