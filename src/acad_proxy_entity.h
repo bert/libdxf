@@ -98,11 +98,11 @@ dxf_acad_proxy_entity
         int entity_data_size;
                 /*!< group code = 93\n
                  * Size of entity data in bits. */
-        char *binary_graphics_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM];
+        char *binary_graphics_data[DXF_MAX_PARAM];
                 /*!< group code = 310\n
                  * Binary graphics data (multiple entries can appear)
                  * (optional). */
-        char *object_id[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM];
+        char *object_id[DXF_MAX_PARAM];
                 /*!< group code = 330 or 340 or 350 or 360\n
                  * An object ID (multiple entries can appear). */
         struct DxfAcadProxyEntity *next;
@@ -116,6 +116,12 @@ dxf_acad_proxy_entity_new ();
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_init
 (
+        DxfAcadProxyEntity *dxf_acad_proxy_entity
+);
+int
+dxf_acad_proxy_entity_read
+(
+        DxfFile *fp,
         DxfAcadProxyEntity *dxf_acad_proxy_entity
 );
 

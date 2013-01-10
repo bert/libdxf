@@ -106,21 +106,198 @@ dxf_acad_proxy_entity_init
         dxf_acad_proxy_entity->proxy_entity_class_id = DXF_DEFAULT_PROXY_ENTITY_ID;
         dxf_acad_proxy_entity->application_entity_class_id = 0;
         dxf_acad_proxy_entity->graphics_data_size = 0;
-/*! \todo Initialize binary_graphics_data array and object_id.\n
-
         int i;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                dxf_acad_proxy_entity->binary_graphics_data[DXF_MAX_STRING_LENGTH][i] = strdup ("");
-                dxf_acad_proxy_entity->object_id[DXF_MAX_STRING_LENGTH][i] = strdup ("");
+                dxf_acad_proxy_entity->binary_graphics_data[i] = strdup ("");
+                dxf_acad_proxy_entity->object_id[i] = strdup ("");
         }
- */
         dxf_acad_proxy_entity->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_init () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (dxf_acad_proxy_entity);
+}
+
+
+/*!
+ * \brief Read data from a DXF file into a DXF \c ACAD_PROXY_ENTITY
+ * entity.
+ *
+ * The last line read from file contained the string "ACAD_PROXY_ENTITY". \n
+ * Now follows some data for the \c ACAD_PROXY_ENTITY, to be terminated
+ * with a "  0" string announcing the following entity, or the end of
+ * the \c ENTITY section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c dxf_acad_proxy_entity. \n
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_acad_proxy_entity_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfAcadProxyEntity *dxf_acad_proxy_entity
+                /*!< DXF ACAD_PROXY_ENTITY entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_acad_proxy_entity_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *temp_string = NULL;
+        int i;
+        int j;
+
+        if (!dxf_acad_proxy_entity)
+        {
+                dxf_acad_proxy_entity = dxf_acad_proxy_entity_new ();
+        }
+        i = 1;
+        j = 1;
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr, "Error in dxf_acad_proxy_entity_read () while reading from: %s in line: %d.\n",
+                                fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        return (EXIT_FAILURE);
+                }
+                else if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_acad_proxy_entity->id_code);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_acad_proxy_entity->linetype);
+                }
+                else if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing the layer
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_acad_proxy_entity->layer);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_acad_proxy_entity->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the object
+                         * visability value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->object_visability);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->color);
+                }
+                else if (strcmp (temp_string, "90") == 0)
+                {
+                        /* Now follows a string containing the proxy
+                         * entity ID value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->proxy_entity_class_id);
+                        if (dxf_acad_proxy_entity->proxy_entity_class_id != DXF_DEFAULT_PROXY_ENTITY_ID)
+                        {
+                                fprintf (stderr, "Error in dxf_acad_proxy_entity_read () found a bad proxy entity class ID in: %s in line: %d.\n",
+                                        fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "91") == 0)
+                {
+                        /* Now follows a string containing the application
+                         * entity ID value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->application_entity_class_id);
+                        if (dxf_acad_proxy_entity->application_entity_class_id < 500)
+                        {
+                                fprintf (stderr, "Error in dxf_acad_proxy_entity_read () found a bad value in application entity class ID in: %s in line: %d.\n",
+                                        fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "92") == 0)
+                {
+                        /* Now follows a string containing the graphics
+                         * data size value (bytes). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->graphics_data_size);
+                }
+                else if (strcmp (temp_string, "93") == 0)
+                {
+                        /* Now follows a string containing the entity
+                         * data size value (bits). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->graphics_data_size);
+                }
+                else if ((fp->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && ((strcmp (temp_string, "AcDbProxyEntity") != 0)))
+                        {
+                                fprintf (stderr, "Error in dxf_acad_proxy_entity_read () found a bad subclass marker in: %s in line: %d.\n",
+                                        fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /* Now follows a string containing binary
+                         * graphics data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_acad_proxy_entity->binary_graphics_data[i]);
+                        i++;
+                }
+                else if ((strcmp (temp_string, "330") == 0)
+                || (strcmp (temp_string, "340") == 0)
+                || (strcmp (temp_string, "350") == 0)
+                || (strcmp (temp_string, "360") == 0))
+                {
+                        /* Now follows a string containing an object id. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_acad_proxy_entity->object_id[j]);
+                        j++;
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr, "Warning: in dxf_arc_read () unknown string tag found while reading from: %s in line: %d.\n",
+                                fp->filename, fp->line_number);
+                }
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
 }
 
 
