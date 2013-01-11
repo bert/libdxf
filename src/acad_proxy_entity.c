@@ -301,4 +301,47 @@ dxf_acad_proxy_entity_read
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c ACAD_PROXY_ENTITY and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_acad_proxy_entity_free
+(
+        DxfAcadProxyEntity *dxf_acad_proxy_entity
+                /*!< Pointer to the memory occupied by the DXF \c ACAD_PROXY_ENTITY
+                 * table. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_acad_proxy_entity_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int i;
+
+        if (dxf_acad_proxy_entity->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_acad_proxy_entity_free () pointer to next DxfAcadProxyEntity was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
+        free (dxf_acad_proxy_entity->linetype);
+        free (dxf_acad_proxy_entity->layer);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (dxf_acad_proxy_entity->binary_graphics_data[i]);
+                free (dxf_acad_proxy_entity->object_id[i]);
+        }
+        free (dxf_acad_proxy_entity);
+        dxf_acad_proxy_entity = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_acad_proxy_entity_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
