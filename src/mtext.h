@@ -237,8 +237,7 @@ dxf_mtext_read
         char *filename,
         FILE *fp,
         int *line_number,
-        DxfMtext *dxf_mtext,
-        int acad_version_number
+        DxfMtext *dxf_mtext
 );
 int
 dxf_mtext_write_lowlevel
