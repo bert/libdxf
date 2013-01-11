@@ -95,15 +95,15 @@ dxf_mtext_init
               fprintf (stderr, "ERROR in dxf_mtext_init () could not allocate memory for a DxfMtext struct.\n");
               return (NULL);
         }
-        dxf_mtext->common.id_code = 0;
+        dxf_mtext->id_code = 0;
         dxf_mtext->text_value = strdup ("");
         for (i = 1; i < MAX_NUMBER_ADDITIONAL; i++)
         {
                 dxf_mtext->text_additional_value[i] = strdup ("");
         }
-        dxf_mtext->common.linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_mtext->linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_mtext->text_style = strdup ("");
-        dxf_mtext->common.layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_mtext->layer = strdup (DXF_DEFAULT_LAYER);
         dxf_mtext->x0 = 0.0;
         dxf_mtext->y0 = 0.0;
         dxf_mtext->z0 = 0.0;
@@ -120,9 +120,9 @@ dxf_mtext_init
         dxf_mtext->column_gutter = 0.0;
         dxf_mtext->column_heights = 0.0;
         dxf_mtext->rot_angle = 0.0;
-        dxf_mtext->common.color = DXF_COLOR_BYLAYER;
+        dxf_mtext->color = DXF_COLOR_BYLAYER;
         dxf_mtext->background_color = 0;
-        dxf_mtext->common.paperspace = DXF_MODELSPACE;
+        dxf_mtext->paperspace = DXF_MODELSPACE;
         dxf_mtext->attachment_point = 0;
         dxf_mtext->drawing_direction = 0;
         dxf_mtext->spacing_style = 0;
@@ -131,7 +131,7 @@ dxf_mtext_init
         dxf_mtext->column_flow = 0;
         dxf_mtext->column_autoheight = 0;
         dxf_mtext->background_fill = 0;
-        dxf_mtext->common.acad_version_number = 0;
+        dxf_mtext->acad_version_number = 0;
         dxf_mtext->extr_x0 = 0.0;
         dxf_mtext->extr_y0 = 0.0;
         dxf_mtext->extr_z0 = 0.0;
@@ -211,14 +211,14 @@ dxf_mtext_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_mtext->common.id_code);
+                        fscanf (fp, "%x\n", &dxf_mtext->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_mtext->common.linetype);
+                        fscanf (fp, "%s\n", dxf_mtext->linetype);
                 }
                 else if (strcmp (temp_string, "7") == 0)
                 {
@@ -231,7 +231,7 @@ dxf_mtext_read
                 {
                         /* Now follows a string containing a layer name. */
                         (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_mtext->common.layer);
+                        fscanf (fp, "%s\n", dxf_mtext->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
