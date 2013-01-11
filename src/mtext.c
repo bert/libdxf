@@ -167,10 +167,8 @@ dxf_mtext_read
                 /*!< filepointer to the input file (or device). */
         int *line_number,
                 /*!< current line number in the input file (or device). */
-        DxfMtext *dxf_mtext,
+        DxfMtext *dxf_mtext
                 /*!< DXF mtext entity. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -391,16 +389,19 @@ dxf_mtext_read
                         (*line_number)++;
                         fscanf (fp, "%d\n", &dxf_mtext->background_fill);
                 }
-                else if ((acad_version_number >= AutoCAD_12)
+                else if ((acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
-                        /* Subclass markers are post AutoCAD R12
-                         * variable so additional testing for the
-                         * version should probably be added here.
-                         * Now follows a string containing the
+                        /* Now follows a string containing the
                          * subclass marker value. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && ((strcmp (temp_string, "AcDbMText") != 0)))
+                        {
+                                fprintf (stderr, "Error in dxf_mtext_read () found a bad subclass marker in: %s in line: %d.\n",
+                                        fp->filename, fp->line_number);
+                        }
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
