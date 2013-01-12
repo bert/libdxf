@@ -125,6 +125,12 @@ dxf_acad_proxy_entity_read
         DxfAcadProxyEntity *dxf_acad_proxy_entity
 );
 int
+dxf_acad_proxy_entity_write
+(
+        DxfFile *fp,
+        DxfAcadProxyEntity *dxf_acad_proxy_entity
+);
+int
 dxf_acad_proxy_entity_free
 (
         DxfAcadProxyEntity *dxf_acad_proxy_entity

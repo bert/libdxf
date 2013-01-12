@@ -302,6 +302,86 @@ dxf_acad_proxy_entity_read
 
 
 /*!
+ * \brief Write DXF output for a DXF \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_acad_proxy_entity_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfAcadProxyEntity *dxf_acad_proxy_entity
+                /*!< DXF \c ACAD_PROXY_ENTITY entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_acad_proxy_entity_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *dxf_entity_name = strdup ("ACAD_PROXY_ENTITY");
+        int i;
+
+        if (dxf_acad_proxy_entity == NULL)
+        {
+                fprintf (stderr, "Error in dxf_acad_proxy_entity_write () a NULL pointer was passed.\n");
+                return (EXIT_FAILURE);
+        }
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (fp->acad_version_number >= AutoCAD_14)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+                fprintf (fp->fp, "100\nAcDbProxyEntity\n");
+        }
+        if (dxf_acad_proxy_entity->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", dxf_acad_proxy_entity->id_code);
+        }
+        if (strcmp (dxf_acad_proxy_entity->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_acad_proxy_entity->linetype);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_acad_proxy_entity->layer);
+        if (dxf_acad_proxy_entity->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_acad_proxy_entity->thickness);
+        }
+        fprintf (fp->fp, " 48\n%f\n", dxf_acad_proxy_entity->linetype_scale);
+        fprintf (fp->fp, " 60\n%d\n", dxf_acad_proxy_entity->object_visability);
+        if (dxf_acad_proxy_entity->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_acad_proxy_entity->color);
+        }
+        if (dxf_acad_proxy_entity->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, " 90\n%d\n", dxf_acad_proxy_entity->proxy_entity_class_id);
+        fprintf (fp->fp, " 91\n%d\n", dxf_acad_proxy_entity->application_entity_class_id);
+        fprintf (fp->fp, " 92\n%d\n", dxf_acad_proxy_entity->graphics_data_size);
+        fprintf (fp->fp, " 93\n%d\n", dxf_acad_proxy_entity->entity_data_size);
+        i = 1;
+        while (strlen (dxf_acad_proxy_entity->binary_graphics_data[i]) > 1)
+        {
+                fprintf (fp->fp, "310\n%s\n", dxf_acad_proxy_entity->binary_graphics_data[i]);
+                i++;
+        }
+        i = 1;
+        while (strlen (dxf_acad_proxy_entity->object_id[i]) > 1)
+        {
+                fprintf (fp->fp, "330\n%s\n", dxf_acad_proxy_entity->object_id[i]);
+                i++;
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_acad_proxy_entity_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c ACAD_PROXY_ENTITY and all it's
  * data fields.
  *
