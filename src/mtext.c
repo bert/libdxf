@@ -131,7 +131,6 @@ dxf_mtext_init
         dxf_mtext->column_flow = 0;
         dxf_mtext->column_autoheight = 0;
         dxf_mtext->background_fill = 0;
-        dxf_mtext->acad_version_number = 0;
         dxf_mtext->extr_x0 = 0.0;
         dxf_mtext->extr_y0 = 0.0;
         dxf_mtext->extr_z0 = 0.0;
@@ -163,8 +162,8 @@ dxf_mtext_read
 (
         char *filename,
                 /*!< filename of input file (or device). */
-        FILE *fp,
-                /*!< filepointer to the input file (or device). */
+        DxfFile *fp,
+                /*!< DXF filepointer to the input file (or device). */
         int *line_number,
                 /*!< current line number in the input file (or device). */
         DxfMtext *dxf_mtext
@@ -310,7 +309,7 @@ dxf_mtext_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_mtext->column_gutter);
                 }
-                else if ((acad_version_number <= AutoCAD_2006)
+                else if ((fp->acad_version_number <= AutoCAD_2006)
                         && (strcmp (temp_string, "50") == 0))
                 {
                         /* Now follows a string containing the
@@ -318,7 +317,7 @@ dxf_mtext_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_mtext->rot_angle);
                 }
-                else if ((acad_version_number >= AutoCAD_2007)
+                else if ((fp->acad_version_number >= AutoCAD_2007)
                         && (strcmp (temp_string, "50") == 0))
                 {
                         /* Can follows a string containing the
@@ -389,7 +388,7 @@ dxf_mtext_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_mtext->background_fill);
                 }
-                else if ((acad_version_number >= AutoCAD_13)
+                else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Now follows a string containing the
