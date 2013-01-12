@@ -181,28 +181,28 @@ dxf_mtext_read
         {
                 dxf_mtext = dxf_mtext_new ();
         }
-        (*line_number)++;
-        fscanf (fp, "%[^\n]", temp_string);
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
-                if (ferror (fp))
+                if (ferror (fp->fp))
                 {
                         fprintf (stderr, "Error in dxf_mtext_read () while reading from: %s in line: %d.\n",
                                 filename, *line_number);
-                        fclose (fp);
+                        fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
                 if (strcmp (temp_string, "1") == 0)
                 {
                         /* Now follows a string containing a text value. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_mtext->text_value);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_mtext->text_value);
                 }
                 else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing a text value. */
-                        (*line_number)++;
-                        //fscanf (fp, "%s\n", dxf_mtext->text_additional_value[number_additional]);
+                        (fp->line_number)++;
+                        //fscanf (fp->fp, "%s\n", dxf_mtext->text_additional_value[number_additional]);
                         //number_additional++;
                 }
                 /*!< I'm not sure this number_additional is correct.*/
@@ -210,184 +210,184 @@ dxf_mtext_read
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_mtext->id_code);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_mtext->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_mtext->linetype);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_mtext->linetype);
                 }
                 else if (strcmp (temp_string, "7") == 0)
                 {
                         /* Now follows a string containing a text style
                          * name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_mtext->text_style);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_mtext->text_style);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_mtext->layer);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_mtext->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the insertion point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the insertion point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the insertion point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->z0);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
                          * height. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->height);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->height);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a string containing the
                          * reference rectangle width. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->rectangle_width);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->rectangle_width);
                 }
                 else if (strcmp (temp_string, "42") == 0)
                 {
                         /* Now follows a string containing the
                          * horizontal width of the characters. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->horizontal_width);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->horizontal_width);
                 }
                 else if (strcmp (temp_string, "43") == 0)
                 {
                         /* Now follows a string containing the
                          * vertical rectangle height. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->rectangle_height);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->rectangle_height);
                 }
                 else if (strcmp (temp_string, "44") == 0)
                 {
                         /* Now follows a string containing the
                          * text line spacing factor. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->spacing_factor);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->spacing_factor);
                 }
                 else if (strcmp (temp_string, "45") == 0)
                 {
                         /* Now follows a string containing the
                          * fill box scale (border around text). */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->box_scale);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->box_scale);
                 }
                 else if (strcmp (temp_string, "48") == 0)
                 {
                         /* Now follows a string containing the
                          * column width. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->column_width);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->column_width);
                 }
                 else if (strcmp (temp_string, "49") == 0)
                 {
                         /* Now follows a string containing the
                          * column gutter. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->column_gutter);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->column_gutter);
                 }
                 else if ((acad_version_number <= AutoCAD_2006)
                         && (strcmp (temp_string, "50") == 0))
                 {
                         /* Now follows a string containing the
                          * rotation angle. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->rot_angle);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->rot_angle);
                 }
                 else if ((acad_version_number >= AutoCAD_2007)
                         && (strcmp (temp_string, "50") == 0))
                 {
                         /* Can follows a string containing the
                          * rotation angle or column heights. */
-                        (*line_number)++;
+                        (fp->line_number)++;
                 /*!< Add more code here, I'm stop because the double use of group code 50*/
                 }
                 else if (strcmp (temp_string, "63") == 0)
                 {
                         /* Now follows a string containing the
                          * color to use for background fill. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_mtext->background_color);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_mtext->background_color);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a string containing the
                          * attachment point. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_mtext->attachment_point);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_mtext->attachment_point);
                 }
                 else if (strcmp (temp_string, "72") == 0)
                 {
                         /* Now follows a string containing the
                          * drawing direction. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_mtext->drawing_direction);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_mtext->drawing_direction);
                 }
                 else if (strcmp (temp_string, "73") == 0)
                 {
                         /* Now follows a string containing the
                          * mtext line spacing style. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_mtext->spacing_style);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_mtext->spacing_style);
                 }
                 else if (strcmp (temp_string, "75") == 0)
                 {
                         /* Now follows a string containing the
                          * column type. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_mtext->column_type);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_mtext->column_type);
                 }
                 else if (strcmp (temp_string, "76") == 0)
                 {
                         /* Now follows a string containing the
                          * column count. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_mtext->column_count);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_mtext->column_count);
                 }
                 else if (strcmp (temp_string, "78") == 0)
                 {
                         /* Now follows a string containing the
                          * column flow reverse. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_mtext->column_flow);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_mtext->column_flow);
                 }
                 else if (strcmp (temp_string, "79") == 0)
                 {
                         /* Now follows a string containing the
                          * column autoheight. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_mtext->column_autoheight);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_mtext->column_autoheight);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
                         /* Now follows a string containing the
                          * background fill setting. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_mtext->background_fill);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_mtext->background_fill);
                 }
                 else if ((acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -407,35 +407,35 @@ dxf_mtext_read
                 {
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->extr_x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->extr_y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_mtext->extr_z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_mtext->extr_z0);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
 
                 else
                 {
                         fprintf (stderr, "Warning: in dxf_mtext_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                filename, *line_number);
+                                fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
