@@ -75,9 +75,6 @@ dxf_mtext
          * \c MODELSPACE.\n
          * Optional, defaults to \c DXF_MODELSPACE (0).\n
          * Group code = 67. */
-        int acad_version_number;
-        /*!< AutoCAD version number. */
-        /* Specific members for a DXF mtext. */
         char *text_value;
                 /*!< group code = 1\n
                  * Text string.\n
@@ -265,7 +262,7 @@ int
 dxf_mtext_read
 (
         char *filename,
-        FILE *fp,
+        DxfFile *fp,
         int *line_number,
         DxfMtext *dxf_mtext
 );
@@ -315,7 +312,12 @@ dxf_mtext_write_lowlevel
 int
 dxf_mtext_write
 (
-        FILE *fp,
+        DxfFile *fp,
+        DxfMtext *dxf_mtext
+);
+int
+dxf_mtext_free
+(
         DxfMtext *dxf_mtext
 );
 
