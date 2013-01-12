@@ -46,10 +46,10 @@ typedef struct
 dxf_mtext
 {
         /* Members common for all DXF drawable entities. */
-        char *id_code;
+        int id_code;
         /*!< Identification code for the entity.\n
-         * This is to be an unique (sequential) code in the DXF
-         * file (can be numbers with letters).\n
+         * This is to be an unique sequential code in the DXF
+         * file (the number can be hexadecimal).\n
          * Group code = 5. */
         char *linetype;
         /*!< The linetype of the entity.\n
