@@ -328,6 +328,11 @@ dxf_acad_proxy_entity_write
                 fprintf (stderr, "Error in dxf_acad_proxy_entity_write () a NULL pointer was passed.\n");
                 return (EXIT_FAILURE);
         }
+        if (fp->acad_version_number < AutoCAD_14)
+        {
+                fprintf (stderr, "Error in dxf_acad_proxy_entity_write () using DXF version before AutoCAD R14.\n");
+                return (EXIT_FAILURE);
+        }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (fp->acad_version_number >= AutoCAD_14)
         {
