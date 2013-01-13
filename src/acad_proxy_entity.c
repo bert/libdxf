@@ -378,6 +378,7 @@ dxf_acad_proxy_entity_write
                 fprintf (fp->fp, "330\n%s\n", dxf_acad_proxy_entity->object_id[i]);
                 i++;
         }
+        fprintf (fp->fp, " 94\n  0\n");
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_acad_proxy_entity_write () function.\n",
                 __FILE__, __LINE__);
