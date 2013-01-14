@@ -83,6 +83,12 @@ dxf_acad_proxy_entity
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
         /* Specific members for a DXF acad_proxy_entity. */
+        int original_custom_object_data_format;
+                /*!< group code = 70\n
+                 * Original custom object data format:\n
+                 * 0 = DWG format\n
+                 * 1 = DXF format.
+                 * Added in AutoCAD release 2000. */
         int proxy_entity_class_id;
                 /*!< group code = 90\n
                  * Always 498. */
@@ -98,6 +104,13 @@ dxf_acad_proxy_entity
         int entity_data_size;
                 /*!< group code = 93\n
                  * Size of entity data in bits. */
+        ulong object_drawing_format;
+                /*!< group code = 95\n
+                 * Object drawing format when it becomes a proxy
+                 * (a 32-bit unsigned integer):\n
+                 * Low word is AcDbDwgVersion.\n
+                 * High word is MaintenanceReleaseVersion.
+                 * Added in AutoCAD release 2000. */
         char *binary_graphics_data[DXF_MAX_PARAM];
                 /*!< group code = 310\n
                  * Binary graphics data (multiple entries can appear)

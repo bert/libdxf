@@ -103,9 +103,11 @@ dxf_acad_proxy_entity_init
         dxf_acad_proxy_entity->color = DXF_COLOR_BYLAYER;
         dxf_acad_proxy_entity->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
         dxf_acad_proxy_entity->object_visability = 0;
+        dxf_acad_proxy_entity->original_custom_object_data_format = 1;
         dxf_acad_proxy_entity->proxy_entity_class_id = DXF_DEFAULT_PROXY_ENTITY_ID;
         dxf_acad_proxy_entity->application_entity_class_id = 0;
         dxf_acad_proxy_entity->graphics_data_size = 0;
+        dxf_acad_proxy_entity->object_drawing_format = 0;
         int i;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
@@ -210,6 +212,19 @@ dxf_acad_proxy_entity_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->color);
                 }
+                else if ((fp->acad_version_number >= AutoCAD_2000)
+                && (strcmp (temp_string, "70") == 0))
+                {
+                        /* Now follows a string containing the original
+                         * custom object data format value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->original_custom_object_data_format);
+                        if (dxf_acad_proxy_entity->original_custom_object_data_format != 1)
+                        {
+                                fprintf (stderr, "Error in dxf_acad_proxy_entity_read () found a bad original custom object data format value in: %s in line: %d.\n",
+                                        fp->filename, fp->line_number);
+                        }
+                }
                 else if (strcmp (temp_string, "90") == 0)
                 {
                         /* Now follows a string containing the proxy
@@ -247,6 +262,14 @@ dxf_acad_proxy_entity_read
                          * data size value (bits). */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->graphics_data_size);
+                }
+                else if ((fp->acad_version_number >= AutoCAD_2000)
+                && (strcmp (temp_string, "95") == 0))
+                {
+                        /* Now follows a string containing the object
+                         * drawing format value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &dxf_acad_proxy_entity->object_drawing_format);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -362,10 +385,18 @@ dxf_acad_proxy_entity_write
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+                fprintf (fp->fp, " 70\n%d\n", dxf_acad_proxy_entity->original_custom_object_data_format);
+        }
         fprintf (fp->fp, " 90\n%d\n", dxf_acad_proxy_entity->proxy_entity_class_id);
         fprintf (fp->fp, " 91\n%d\n", dxf_acad_proxy_entity->application_entity_class_id);
         fprintf (fp->fp, " 92\n%d\n", dxf_acad_proxy_entity->graphics_data_size);
         fprintf (fp->fp, " 93\n%d\n", dxf_acad_proxy_entity->entity_data_size);
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+                fprintf (fp->fp, " 95\n%ld\n", dxf_acad_proxy_entity->object_drawing_format);
+        }
         i = 1;
         while (strlen (dxf_acad_proxy_entity->binary_graphics_data[i]) > 1)
         {
