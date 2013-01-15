@@ -77,11 +77,11 @@ dxf_3dsolid
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
         /* Specific members for a DXF 3D solid. */
-        char *proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM];
+        char *proprietary_data[DXF_MAX_PARAM];
                 /*!< group code = 1\n
                  * Proprietary data (multiple lines < 255 characters
                  * each).*/
-        char *additional_proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM];
+        char *additional_proprietary_data[DXF_MAX_PARAM];
                 /*!< group code = 3\n
                  * Additional lines of proprietary data if previous
                  * group 1 string is greater than 255 characters

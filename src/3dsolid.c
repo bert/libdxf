@@ -164,11 +164,15 @@ dxf_3dsolid_read
                 __FILE__, __LINE__);
 #endif
         char *temp_string = NULL;
+        int i;
+        int j;
 
         if (!dxf_3dsolid)
         {
                 dxf_3dsolid = dxf_3dsolid_new ();
         }
+        i = 0;
+        j = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -179,6 +183,22 @@ dxf_3dsolid_read
                                 fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
+                }
+                else if (strcmp (temp_string, "  1") == 0)
+                {
+                        /* Now follows a string containing proprietary
+                         * data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_3dsolid->proprietary_data[i]);
+                        i++;
+                }
+                else if (strcmp (temp_string, "  3") == 0)
+                {
+                        /* Now follows a string containing additional
+                         * proprietary data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_3dsolid->additional_proprietary_data[j]);
+                        i++;
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -432,8 +452,8 @@ dxf_3dsolid_write
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_write_lowlevel () function.\n",
                 __FILE__, __LINE__);
 #endif
-        int i;
         char *dxf_entity_name = strdup ("3DSOLID");
+        int i;
 
         if (strcmp (dxf_3dsolid->layer, "") == 0)
         {
@@ -477,29 +497,17 @@ dxf_3dsolid_write
         {
                 fprintf (fp->fp, " 70\n%d\n", dxf_3dsolid->modeler_format_version_number);
         }
-        for (i = 0; i < DXF_MAX_PARAM; i++)
+        i = 0;
+        while (strlen (dxf_3dsolid->proprietary_data[i]) > 0)
         {
-                if (strcmp (dxf_3dsolid->proprietary_data[DXF_MAX_STRING_LENGTH][i], "") == 0)
-                /*! \todo warning: array subscript is above array bounds.*/
-                {
-                        break;
-                }
-                else
-                {
-                        fprintf (fp->fp, "  1\n%s\n", dxf_3dsolid->proprietary_data[DXF_MAX_STRING_LENGTH][i]);
-                }
+                fprintf (fp->fp, "  1\n%s\n", dxf_3dsolid->proprietary_data[i]);
+                i++;
         }
-        for (i = 0; i < DXF_MAX_PARAM; i++)
+        i = 0;
+        while (strlen (dxf_3dsolid->additional_proprietary_data[i]) > 0)
         {
-                if (strcmp (dxf_3dsolid->additional_proprietary_data[DXF_MAX_STRING_LENGTH][i], "") == 0)
-                /*! \todo warning: array subscript is above array bounds.*/
-                {
-                        break;
-                }
-                else
-                {
-                        fprintf (fp->fp, "  3\n%s\n", dxf_3dsolid->additional_proprietary_data[DXF_MAX_STRING_LENGTH][i]);
-                }
+                fprintf (fp->fp, "  3\n%s\n", dxf_3dsolid->additional_proprietary_data[i]);
+                i++;
         }
         if (fp->acad_version_number >= AutoCAD_2008)
         {
