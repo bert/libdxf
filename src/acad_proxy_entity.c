@@ -398,13 +398,13 @@ dxf_acad_proxy_entity_write
                 fprintf (fp->fp, " 95\n%ld\n", dxf_acad_proxy_entity->object_drawing_format);
         }
         i = 1;
-        while (strlen (dxf_acad_proxy_entity->binary_graphics_data[i]) > 1)
+        while (strlen (dxf_acad_proxy_entity->binary_graphics_data[i]) > 0)
         {
                 fprintf (fp->fp, "310\n%s\n", dxf_acad_proxy_entity->binary_graphics_data[i]);
                 i++;
         }
         i = 1;
-        while (strlen (dxf_acad_proxy_entity->object_id[i]) > 1)
+        while (strlen (dxf_acad_proxy_entity->object_id[i]) > 0)
         {
                 fprintf (fp->fp, "330\n%s\n", dxf_acad_proxy_entity->object_id[i]);
                 i++;
