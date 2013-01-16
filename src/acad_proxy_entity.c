@@ -343,7 +343,7 @@ dxf_acad_proxy_entity_write
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_acad_proxy_entity_write () function.\n",
                 __FILE__, __LINE__);
 #endif
-        char *dxf_entity_name = strdup ("ACAD_PROXY_ENTITY");
+        char *dxf_entity_name = NULL;
         int i;
 
         if (dxf_acad_proxy_entity == NULL)
@@ -351,10 +351,18 @@ dxf_acad_proxy_entity_write
                 fprintf (stderr, "Error in dxf_acad_proxy_entity_write () a NULL pointer was passed.\n");
                 return (EXIT_FAILURE);
         }
-        if (fp->acad_version_number < AutoCAD_14)
+        if (fp->acad_version_number < AutoCAD_13)
         {
-                fprintf (stderr, "Error in dxf_acad_proxy_entity_write () using DXF version before AutoCAD R14.\n");
+                fprintf (stderr, "Error in dxf_acad_proxy_entity_write () using DXF version before AutoCAD R13.\n");
                 return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number == AutoCAD_13)
+        {
+                dxf_entity_name = strdup ("ACAD_ZOMBIE_ENTITY");
+        }
+        else
+        {
+                dxf_entity_name = strdup ("ACAD_PROXY_ENTITY");
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (fp->acad_version_number >= AutoCAD_14)
