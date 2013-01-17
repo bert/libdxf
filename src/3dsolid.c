@@ -521,6 +521,8 @@ dxf_3dsolid_free
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_free () function.\n",
                 __FILE__, __LINE__);
 #endif
+        int i;
+
         if (dxf_3dsolid->next != NULL)
         {
               fprintf (stderr, "ERROR in dxf_3dsolid_free () pointer to next Dxf3dsolid was not NULL.\n");
@@ -528,6 +530,11 @@ dxf_3dsolid_free
         }
         free (dxf_3dsolid->linetype);
         free (dxf_3dsolid->layer);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (dxf_3dsolid->proprietary_data[i]);
+                free (dxf_3dsolid->additional_proprietary_data[i]);
+        }
         free (dxf_3dsolid);
         dxf_3dsolid = NULL;
 #if DEBUG
