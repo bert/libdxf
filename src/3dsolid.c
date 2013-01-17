@@ -62,32 +62,6 @@ dxf_3dsolid_new ()
         {
                 memset (dxf_3dsolid, 0, size);
         }
-/*!
- * \todo Allocate memory for data fields and fill with NULL pointers ?
- * <pre>
-        int i;
-        int j;
-
-        if ((dxf_3dsolid->proprietary_data = malloc (DXF_MAX_STRING_LENGTH * DXF_MAX_PARAM)) == NULL)
-        {
-                fprintf (stderr, "ERROR in dxf_3dsolid_init () could not allocate memory for a Dxf3dsolid struct.\n");
-                dxf_3dsolid = NULL;
-        }
-        if ((dxf_3dsolid->additional_proprietary_data = malloc (DXF_MAX_STRING_LENGTH * DXF_MAX_PARAM)) == NULL)
-        {
-                fprintf (stderr, "ERROR in dxf_3dsolid_init () could not allocate memory for a Dxf3dsolid struct.\n");
-                dxf_3dsolid = NULL;
-        }
-        for (i = 0; i <= DXF_MAX_STRING_LENGTH; i++)
-        {
-                for (j = 0; j <= DXF_MAX_PARAM; j++)
-                {
-                        dxf_3dsolid->proprietary_data[i][j] = NULL;
-                        dxf_3dsolid->additional_proprietary_data[i][j] = NULL;
-                }
-        }
- * </pre>
- */
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_new () function.\n",
                 __FILE__, __LINE__);
@@ -114,6 +88,8 @@ dxf_3dsolid_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_init () function.\n",
                 __FILE__, __LINE__);
 #endif
+        int i;
+
         dxf_3dsolid = dxf_3dsolid_new ();
         if (dxf_3dsolid == NULL)
         {
@@ -129,6 +105,11 @@ dxf_3dsolid_init
         dxf_3dsolid->paperspace = DXF_MODELSPACE;
         dxf_3dsolid->modeler_format_version_number = 1;
         dxf_3dsolid->history = strdup ("");
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                dxf_3dsolid->proprietary_data[i] = strdup ("");
+                dxf_3dsolid->additional_proprietary_data[i] = strdup ("");
+        }
         dxf_3dsolid->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_init () function.\n",
