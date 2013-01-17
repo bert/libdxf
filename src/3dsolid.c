@@ -179,7 +179,7 @@ dxf_3dsolid_read
                          * proprietary data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", dxf_3dsolid->additional_proprietary_data[j]);
-                        i++;
+                        j++;
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
