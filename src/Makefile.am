@@ -77,6 +77,8 @@ libdxf_la_SOURCES = \
   circle.c \
   block.h \
   block.c \
+  body.h \
+  body.c \
   attrib.h \
   attrib.c \
   attdef.h \

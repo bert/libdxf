@@ -58,6 +58,8 @@ src/attdef.c
 src/attdef.h
 src/attrib.c
 src/attrib.h
+src/body.c
+src/body.h
 src/block.c
 src/block.h
 src/circle.c
