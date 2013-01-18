@@ -91,6 +91,8 @@ dxf_acad_proxy_entity_init
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_acad_proxy_entity_init () function.\n",
                 __FILE__, __LINE__);
 #endif
+        int i;
+
         dxf_acad_proxy_entity = dxf_acad_proxy_entity_new ();
         if (dxf_acad_proxy_entity == NULL)
         {
@@ -108,7 +110,6 @@ dxf_acad_proxy_entity_init
         dxf_acad_proxy_entity->application_entity_class_id = 0;
         dxf_acad_proxy_entity->graphics_data_size = 0;
         dxf_acad_proxy_entity->object_drawing_format = 0;
-        int i;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 dxf_acad_proxy_entity->binary_graphics_data[i] = strdup ("");
