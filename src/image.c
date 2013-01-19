@@ -74,6 +74,73 @@ dxf_image_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c IMAGE
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfImage *
+dxf_image_init
+(
+        DxfImage *dxf_image
+                /*!< DXF image entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_image_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int i;
+
+        dxf_image = dxf_image_new ();
+        if (dxf_image == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_image_init () could not allocate memory for a DxfImage struct.\n");
+              return (NULL);
+        }
+        dxf_image->id_code = 0;
+        dxf_image->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_image->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_image->thickness = 0.0;
+        dxf_image->color = DXF_COLOR_BYLAYER;
+        dxf_image->paperspace = DXF_MODELSPACE;
+        dxf_image->x0 = 0.0;
+        dxf_image->y0 = 0.0;
+        dxf_image->z0 = 0.0;
+        dxf_image->x1 = 0.0;
+        dxf_image->y1 = 0.0;
+        dxf_image->z1 = 0.0;
+        dxf_image->x2 = 0.0;
+        dxf_image->y2 = 0.0;
+        dxf_image->z2 = 0.0;
+        dxf_image->x3 = 0.0;
+        dxf_image->y3 = 0.0;
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                dxf_image->x4[i] = 0.0;
+                dxf_image->y4[i] = 0.0;
+        }
+        dxf_image->image_display_properties = 0;
+        dxf_image->clipping_boundary_type = 0;
+        dxf_image->class_version = 0;
+        dxf_image->number_of_clip_boundary_vertices = 0;
+        dxf_image->clipping_state = 0;
+        dxf_image->brightness = 50;
+        dxf_image->contrast = 50;
+        dxf_image->fade = 50;
+        dxf_image->imagedef_object = strdup ("");
+        dxf_image->imagedef_reactor_object = strdup ("");
+        dxf_image->next = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_image_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_image);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c IMAGE and all it's
  * data fields.
  *

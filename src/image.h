@@ -122,7 +122,7 @@ dxf_image
         double y3;
                 /*!< group code = 23\n
                  * V-value of image size in pixels. */
-        double *x4[DXF_MAX_PARAM];
+        double x4[DXF_MAX_PARAM];
                 /*!< group code = 14\n
                  * X-value of clip boundary vertex (in OCS) (multiple
                  * entries).\n
@@ -197,6 +197,11 @@ dxf_image
 
 DxfImage *
 dxf_image_new ();
+DxfImage *
+dxf_image_init
+(
+        DxfImage *dxf_image
+);
 int
 dxf_image_free
 (
