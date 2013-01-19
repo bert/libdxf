@@ -49,6 +49,8 @@ libdxf_la_SOURCES = \
   layer.c \
   insert.h \
   insert.c \
+  image.h \
+  image.c \
   header.h \
   header.c \
   hatch.h \
