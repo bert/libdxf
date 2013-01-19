@@ -197,6 +197,11 @@ dxf_image
 
 DxfImage *
 dxf_image_new ();
+int
+dxf_image_free
+(
+        DxfImage *dxf_image
+);
 
 
 #endif /* _IMAGE_H */

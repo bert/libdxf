@@ -73,4 +73,42 @@ dxf_image_new ()
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c IMAGE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_image_free
+(
+        DxfImage *dxf_image
+                /*!< Pointer to the memory occupied by the DXF \c IMAGE
+                 * entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_image_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        if (dxf_image->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_image_free () pointer to next DxfImage was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
+        free (dxf_image->linetype);
+        free (dxf_image->layer);
+        free (dxf_image->imagedef_object);
+        free (dxf_image->imagedef_reactor_object);
+        free (dxf_image);
+        dxf_image = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_image_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
