@@ -165,7 +165,10 @@ dxf_image
                  * <li value = "1"> Rectangular.</li>
                  * <li value = "2"> Polygonal.</li>
                  * </ol> */
-        int number_of_clip_boundary_vertices;
+        long class_version;
+                /*!< group code = 90\n
+                 * Class version.\n */
+        long number_of_clip_boundary_vertices;
                 /*!< group code = 91\n
                  * Number of clip boundary vertices that follow.\n */
         int clipping_state;
