@@ -35,4 +35,42 @@
 #include "image.h"
 
 
+/*!
+ * \brief Allocate memory for a DXF \c IMAGE.
+ *
+ * Fill the memory contents with zeros.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfImage *
+dxf_image_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_image_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfImage *dxf_image = NULL;
+        size_t size;
+
+        size = sizeof (DxfImage);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_image = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_image_new () could not allocate memory for a DxfImage struct.\n");
+                dxf_image = NULL;
+        }
+        else
+        {
+                memset (dxf_image, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_image_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_image);
+}
+
+
 /* EOF*/

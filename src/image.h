@@ -195,6 +195,10 @@ dxf_image
 } DxfImage, * DxfImagePtr;
 
 
+DxfImage *
+dxf_image_new ();
+
+
 #endif /* _IMAGE_H */
 
 
