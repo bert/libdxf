@@ -79,13 +79,13 @@ dxf_image
         /* Specific members for a DXF image. */
         double x0;
                 /*!< group code = 10\n
-                 * X-value of the starting point coordinate. */
+                 * X-value of the insertion point coordinate. */
         double y0;
                 /*!< group code = 20\n
-                 * Y-value of the starting point coordinate. */
+                 * Y-value of the insertion point coordinate. */
         double z0;
                 /*!< group code = 30\n
-                 * Z-value of the starting point coordinate. */
+                 * Z-value of the insertion point coordinate. */
         double x1;
                 /*!< group code = 11\n
                  * X-value of the U-vector of a single pixel (points
@@ -200,6 +200,12 @@ dxf_image_new ();
 DxfImage *
 dxf_image_init
 (
+        DxfImage *dxf_image
+);
+int
+dxf_image_read
+(
+        DxfFile *fp,
         DxfImage *dxf_image
 );
 int
