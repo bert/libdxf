@@ -30,6 +30,8 @@ libdxf_la_SOURCES = \
   seqend.h \
   section.h \
   section.c \
+  ray.h \
+  ray.c \
   polyline.h \
   polyline.c \
   point.h \

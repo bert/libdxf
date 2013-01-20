@@ -111,6 +111,8 @@ src/point.c
 src/point.h
 src/polyline.c
 src/polyline.h
+src/ray.c
+src/ray.h
 src/section.c
 src/section.h
 src/seqend.c
