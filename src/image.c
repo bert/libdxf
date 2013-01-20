@@ -426,6 +426,102 @@ dxf_image_read
 
 
 /*!
+ * \brief Write DXF output for a DXF \c IMAGE entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_image_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfImage *dxf_image
+                /*!< DXF \c IMAGE entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_image_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *dxf_entity_name = strdup ("IMAGE");
+        int i;
+
+        if (dxf_image == NULL)
+        {
+                fprintf (stderr, "Error in dxf_image_write () a NULL pointer was passed.\n");
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_image->layer, "") == 0)
+        {
+                fprintf (stderr, "Warning in dxf_image_write () empty layer string for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_image->id_code);
+                fprintf (stderr, "\t%s entity is relocated to default layer.\n",
+                        dxf_entity_name);
+                dxf_image->layer = DXF_DEFAULT_LAYER;
+        }
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+                fprintf (fp->fp, "100\nAcDbRasterImage\n");
+        }
+        if (dxf_image->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", dxf_image->id_code);
+        }
+        if (strcmp (dxf_image->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_image->linetype);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_image->layer);
+        fprintf (fp->fp, " 10\n%f\n", dxf_image->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_image->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_image->z0);
+        fprintf (fp->fp, " 11\n%f\n", dxf_image->x1);
+        fprintf (fp->fp, " 21\n%f\n", dxf_image->y1);
+        fprintf (fp->fp, " 31\n%f\n", dxf_image->z1);
+        fprintf (fp->fp, " 12\n%f\n", dxf_image->x2);
+        fprintf (fp->fp, " 22\n%f\n", dxf_image->y2);
+        fprintf (fp->fp, " 32\n%f\n", dxf_image->z2);
+        fprintf (fp->fp, " 13\n%f\n", dxf_image->x3);
+        fprintf (fp->fp, " 23\n%f\n", dxf_image->y3);
+        for (i = 0; i < dxf_image->number_of_clip_boundary_vertices; i++)
+        {
+                fprintf (fp->fp, " 14\n%f\n", dxf_image->x4[i]);
+                fprintf (fp->fp, " 24\n%f\n", dxf_image->y4[i]);
+        }
+        if (dxf_image->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_image->thickness);
+        }
+        if (dxf_image->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_image->color);
+        }
+        if (dxf_image->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, " 70\n%d\n", dxf_image->image_display_properties);
+        fprintf (fp->fp, " 71\n%d\n", dxf_image->clipping_boundary_type);
+        fprintf (fp->fp, " 90\n%ld\n", dxf_image->class_version);
+        fprintf (fp->fp, " 91\n%ld\n", dxf_image->number_of_clip_boundary_vertices);
+        fprintf (fp->fp, "280\n%d\n", dxf_image->clipping_state);
+        fprintf (fp->fp, "281\n%d\n", dxf_image->brightness);
+        fprintf (fp->fp, "282\n%d\n", dxf_image->contrast);
+        fprintf (fp->fp, "283\n%d\n", dxf_image->fade);
+        fprintf (fp->fp, "340\n%s\n", dxf_image->imagedef_object);
+        fprintf (fp->fp, "360\n%s\n", dxf_image->imagedef_reactor_object);
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_image_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c IMAGE and all it's
  * data fields.
  *

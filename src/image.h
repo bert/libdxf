@@ -209,6 +209,12 @@ dxf_image_read
         DxfImage *dxf_image
 );
 int
+dxf_image_write
+(
+        DxfFile *fp,
+        DxfImage *dxf_image
+);
+int
 dxf_image_free
 (
         DxfImage *dxf_image
