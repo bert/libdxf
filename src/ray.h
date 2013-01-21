@@ -3,7 +3,9 @@
  *
  * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Definition of a DXF ray entity (\c RAY).
+ * \brief Header file for a DXF ray entity (\c RAY).
+ *
+ * \warning The ray entity requires AutoCAD version R13 or higher.\n
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
