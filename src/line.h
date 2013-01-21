@@ -1,9 +1,9 @@
 /*!
  * \file line.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Definition of a DXF line entity (\c LINE).
+ * \brief Header file for a DXF line entity (\c LINE).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -76,8 +76,6 @@ dxf_line
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67. */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
         /* Specific members for a DXF line. */
         double x0;
                 /*!< group code = 10\n
@@ -125,9 +123,7 @@ dxf_line_init
 int
 dxf_line_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfLine *dxf_line
 );
 int
@@ -150,7 +146,7 @@ dxf_line_write_lowlevel
 int
 dxf_line_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfLine *dxf_line
 );
 
