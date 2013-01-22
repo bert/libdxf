@@ -106,6 +106,8 @@ src/mtext.c
 src/mtext.h
 src/object.c
 src/object.h
+src/oleframe.c
+src/oleframe.h
 src/param.h
 src/point.c
 src/point.h

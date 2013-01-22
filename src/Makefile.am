@@ -37,6 +37,8 @@ libdxf_la_SOURCES = \
   point.h \
   point.c \
   param.h \
+  oleframe.h \
+  oleframe.c \
   object.h \
   object.c \
   mtext.h \
