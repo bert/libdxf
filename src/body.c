@@ -309,6 +309,7 @@ dxf_body_write
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
                 fprintf (fp->fp, "100\nAcDbModelerGeometry\n");
         }
         if (strcmp (dxf_body->linetype, DXF_DEFAULT_LINETYPE) != 0)
