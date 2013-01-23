@@ -104,7 +104,6 @@ dxf_body_init
         dxf_body->color = DXF_COLOR_BYLAYER;
         dxf_body->paperspace = DXF_MODELSPACE;
         dxf_body->modeler_format_version_number = 1;
-        dxf_body->history = strdup ("");
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 dxf_body->proprietary_data[i] = strdup ("");
@@ -243,14 +242,6 @@ dxf_body_read
                                         fp->filename, fp->line_number);
                         }
                 }
-                else if ((fp->acad_version_number >= AutoCAD_2008)
-                        && (strcmp (temp_string, "350") == 0))
-                {
-                        /* Now follows a string containing a handle to a
-                         * history object. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_body->history);
-                }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
@@ -344,10 +335,6 @@ dxf_body_write
         {
                 fprintf (fp->fp, "  3\n%s\n", dxf_body->additional_proprietary_data[i]);
                 i++;
-        }
-        if (fp->acad_version_number >= AutoCAD_2008)
-        {
-                fprintf (fp->fp, "350\n%s\n", dxf_body->history);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_body_write_lowlevel () function.\n",

@@ -89,9 +89,6 @@ dxf_body
         int modeler_format_version_number;
                 /*!< group code = 70\n
                  * Modeler format version number (currently = 1).\n */
-        char *history;
-                /*!< group code = 350\n
-                 * Soft-owner ID / handle to history object. */
         struct DxfBody *next;
                 /*!< pointer to the next DxfBody.\n
                  * \c NULL in the last DxfBody. */
