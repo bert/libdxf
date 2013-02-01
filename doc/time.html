@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>date and time in header</title>
+<meta name="author" CONTENT="Paolo Caroni">
+<meta name="license" CONTENT="GNU FDL 1.3 or any later versions">
+</head>
+<body bgcolor=#ffffff>
+<h1>Introduction.</h1>
+<p>
+The variables of the date and time is in the HEADER section.<br>
+<br>
+$TDCREATE, $TDUCREATE, $TDUPDATE, and $TDUUPDATE variables was written in the form:<br>
+"Julian date"."Fraction of day"<br>
+<br>
+$TDCREATE and $TDUPDATE are based on the local date and time, $TDUCREATE and $TDUUPDATE are based on universal date and time(UTC).<br>
+<br>
+An example C source code for local date and time translation:
+<td class="source"><pre><code>
+<cite>/* Julian date + Fraction of day example,
+Author: Copyright (C) 2013 by Paolo Caroni
+License: GPLv2 or any later versions*/</cite>
+
+<dfn>#include &lt;stdio.h&gt;</dfn>
+<dfn>#include &lt;time.h&gt;</dfn>
+
+<var>int</var> main(void)
+{
+   <var>int</var> JD;
+   <var>float</var> fraction_day;
+   time_t now;
+   if (time(&now) != (time_t)(-1))
+   {
+      struct tm *current_time = localtime(&now);
+
+      JD=current_time->tm_mday-32075+1461*(current_time->tm_year+6700+(current_time->tm_mon-13)/12)/4+367*(current_time->tm_mon-1-(current_time->tm_mon-13)/12*12)/12-3*((current_time->tm_year+6800+(current_time->tm_mon-13)/12)/100)/4;
+      <cite>/* Transforms the current local gregorian date in a julian date.*/</cite>
+
+      fraction_day=(current_time->tm_hour+(current_time->tm_min/60.0)+(current_time->tm_sec/3600.0))/24.0;
+      <cite>/* Transforms the current local clock time in fraction of day.*/</cite>
+
+      printf(<kbd>"local Julian date.Fraction of day\n%7.9f\n"</kbd>, JD+fraction_day);
+   }
+   <var>return</var> 0;
+}
+</code></pre></td></tr></table></div>
+
+<br>
+<br>
+$TDINDWG and $TDUSRTIMER variables was written in the form:<br>
+"Number of days"."Fraction of day"<br>
+</p>
+</body>
+</html>
