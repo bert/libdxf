@@ -30,6 +30,7 @@
  */
 
 #include <stdarg.h>
+#include <time.h>
 #include "global.h"
 #include "file.h"
 #include "header.h"
@@ -601,6 +602,8 @@ dxf_write_header_metric_new
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_header_metric_new () function.\n", __FILE__, __LINE__);
 #endif
+        int JD;
+        float fraction_day;
         fprintf (fp, "  0\nSECTION\n");
         fprintf (fp, "  2\nHEADER\n");
         fprintf (fp, "  9\n$ACADVER\n  1\nAC1014\n");
@@ -704,8 +707,20 @@ dxf_write_header_metric_new
         fprintf (fp, "  9\n$CHAMFERC\n 40\n0.0\n");
         fprintf (fp, "  9\n$CHAMFERD\n 40\n0.0\n");
         fprintf (fp, "  9\n$SKPOLY\n 70\n     0\n");
-        fprintf (fp, "  9\n$TDCREATE\n 40\n2452949.844398842\n");
-        fprintf (fp, "  9\n$TDUPDATE\n 40\n2453105.563639282\n");
+        time_t now;
+        if (time(&now) != (time_t)(-1))
+        {
+            struct tm *current_time = localtime(&now);
+
+            JD=current_time->tm_mday-32075+1461*(current_time->tm_year+6700+(current_time->tm_mon-13)/12)/4+367*(current_time->tm_mon-1-(current_time->tm_mon-13)/12*12)/12-3*((current_time->tm_year+6800+(current_time->tm_mon-13)/12)/100)/4;
+            /* Transforms the current local gregorian date in a julian date.*/
+
+            fraction_day=(current_time->tm_hour+(current_time->tm_min/60.0)+(current_time->tm_sec/3600.0))/24.0;
+            /* Transforms the current local clock time in fraction of day.*/
+
+            fprintf (fp, "  9\n$TDCREATE\n 40\n%7.9f\n", JD+fraction_day);
+            fprintf (fp, "  9\n$TDUPDATE\n 40\n%7.9f\n", JD+fraction_day);
+        }
         fprintf (fp, "  9\n$TDINDWG\n 40\n0.0994079282\n");
         fprintf (fp, "  9\n$TDUSRTIMER\n 40\n0.0994079282\n");
         fprintf (fp, "  9\n$USRTIMER\n 70\n     1\n");
