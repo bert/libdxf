@@ -64,6 +64,12 @@ dxf_helix
                 /*!< group code = 39\n
                  * Thickness of the arc in the local Z-direction.\n
                  * Defaults to 0.0 if ommitted in the DXF file. */
+        double linetype_scale;
+                /*!< group code = 48\n
+                 * Linetype scale (optional). */
+        int16_t visibility;
+                /*!< group code = 60\n
+                 * Object visibility (optional): 0 = Visible; 1 = Invisible. */
         int color;
                 /*!< group code = 62\n
                  * Color of the entity.\n
@@ -76,6 +82,67 @@ dxf_helix
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
+        int graphics_data_size;
+                /*!< group code = 92\n
+                 * Number of bytes in the proxy entity graphics
+                 * represented in the sub-sequent 310 groups, which are
+                 * binary chunk records (optional). */
+        int16_t shadow_mode;
+                /*!< group code = 284\n
+                 * Shadow mode:\n
+                 * <ol>
+                 * <li value = "0"> Casts and receives shadows.</li>
+                 * <li value = "1"> Casts shadows.</li>
+                 * <li value = "2"> Receives shadows.</li>
+                 * <li value = "3"> Ignores shadows.</li>
+                 * </ol> */
+        char *binary_graphics_data[DXF_MAX_PARAM];
+                /*!< group code = 310\n
+                 * Proxy entity graphics data.\n
+                 * Multiple lines of 256 characters maximum per line
+                 * (optional). */
+        char *dictionary_owner_soft;
+                /*!< group code = 330\n
+                 * Soft-pointer ID/handle to owner dictionary (optional). */
+        char *material;
+                /*!< group code = 347\n
+                 * Hard-pointer ID/handle to material object (present if
+                 * not BYLAYER). */
+        char *dictionary_owner_hard;
+                /*!< group code = 360\n
+                 * Hard-owner ID/handle to owner dictionary (optional). */
+        int16_t lineweight;
+                /*!< group code = 370\n
+                 * Lineweight enum value.\n
+                 * Stored and moved around as a 16-bit integer. */
+        char *plot_style_name;
+                /*!< group code = 390\n
+                 * Hard pointer ID / handle of PlotStyleName object. */
+        long color_value;
+                /*!< group code = 420\n
+                 * A 24-bit color value that should be dealt with in
+                 * terms of bytes with values of 0 to 255.\n
+                 * The lowest byte is the blue value, the middle byte is
+                 * the green value, and the third byte is the red value.\n
+                 * The top byte is always 0.\n
+                 * The group code cannot be used by custom entities for
+                 * their own data because the group code is reserved for
+                 * AcDbEntity, class-level color data and AcDbEntity,
+                 * class-level transparency data. */
+        char *color_name;
+                /*!< group code = 430\n
+                 * Color name.\n
+                 * The group code cannot be used by custom entities for
+                 * their own data because the group code is reserved for
+                 * AcDbEntity, class-level color data and AcDbEntity,
+                 * class-level transparency data. */
+        long transparency;
+                /*!< group code = 440\n
+                 * Transparency value.\n
+                 * The group code cannot be used by custom entities for
+                 * their own data because the group code is reserved for
+                 * AcDbEntity, class-level color data and AcDbEntity,
+                 * class-level transparency data. */
         /* Specific members for a DXF helix. */
         double x0;
                 /*!< group code = 10\n
