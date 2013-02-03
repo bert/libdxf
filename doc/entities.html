@@ -1,8 +1,14 @@
 <html>
 <head>
 <title>Common ENTITIES</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="author" CONTENT="Paolo Caroni">
 <meta name="license" CONTENT="GNU FDL 1.3 or any later versions">
+	<style>
+		<!-- 
+		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Liberation Sans"; font-size:16 }
+		 -->
+	</style>
 </head>
 <body bgcolor=#ffffff>
 <h1>Introduction.</h1>
@@ -11,50 +17,50 @@ for convenience have been collected in a single list.<br>
 <br>
 Table: Common Entity Group Codes.<br>
 <br>
-<table noborder>
-<tr><th>Group code</th><th>Description</th><th>if omitted,<br>defaults to</th><th>Since<br>version</th></tr>
-<tr><td>-1</td><td>Application only: entity name (changes each time you open the drawing)</td><td>Not omitted</td><td>DXF R13</td></tr>
-<tr><td>0</td><td>Entity type</td><td>Not omitted</td><td>DXF R10</td></tr>
-<tr><td>5</td><td>Handle</td><td>Not omitted</td><td>DXF R10</td></tr>
-<tr><td>102</td><td>Start pint for application "{application_name"<br>watch in the down tables for see the attached possible</td><td>no default</td><td>DXF R14</td></tr>
-<tr><td>application<br>dependent</td><td>After the start point until end point depends on the application<br>watch in the down tables for see the possibility</td><td>no default</td><td>DXF R14</td></tr>
-<tr><td>102</td><td>End point, "}"</td><td>no default</td><td>DXF R14</td></tr>
-<tr><td>330</td><td>Soft-pointer ID / handle BLOCK_RECORD placed in the TABLES section</td><td>Not omitted</td><td>DXF R15/2000</td></tr>
-<tr><td>100</td><td>Classic subclass marker (AcDbEntity),<br>each entity has still another marker subclass</td><td>Not omitted</td><td>DXF R13</td></tr>
-<tr><td>67</td><td>If there isn't or is 0 the entity is in model space.<br>Else if is 1 the entity is in paper space.<br>all other values are actually unused (optional)</td><td>0</td><td>DXF R13</td></tr>
-<tr><td>410</td><td>Application only: layout tab name</td><td>Not omitted</td><td>DXF R15/2000</td></tr>
-<tr><td>8</td><td>Layer name</td><td>Not omitted</td><td>DXF R10</td></tr>
-<tr><td>6</td><td>Linetype name (if isn't BYLAYER)<br>BYBLOCK is a floating linetype (optional)</td><td>BYLAYER</td><td>DXF R10</td></tr>
-<tr><td>38</td><td>Elevation (if nonzero). Removed since DXF R12</td><td>0</td><td>DXF R10</td><th>REMOVED</th></tr>
-<tr><td>347</td><td>Hard-pointer ID/handle to material object (if isn't BYLAYER)</td><td>BYLAYER</td><td>DXF 2007</td></tr>
-<tr><td>62</td><td>Color number (if isn't BYLAYER)<br>0 is the BYBLOCK color.<br>256 is the BYLAYER color (optional)</td><td>BYLAYER</td><td>DXF R10</td></tr>
-<tr><td>370</td><td>Lineweight enumeration value<br>Is a 16-bit integer</td><td>Not omitted</td><td>DXF 2002</td></tr>
-<tr><td>48</td><td>Linetype scale (optional)</td><td>1.0</td><td>DXF R13</td></tr>
-<tr><td>60</td><td>Visibility: 0 = visible or 1 = invisible (optional)</td><td>0</td><td>DXF R13</td></tr>
-<tr><td>92</td><td>The number of bytes in the picture (and subsequent binary chunk records) (optional)</td><td>no default</td><td>DXF R15/2000</td></tr>
-<tr><td>310</td><td>Preview image (can be multiple lines, each line must have a maximum of 256 characters) (optional)</td><td>no default</td><td>DXF R15/2000</td></tr>
-<tr><td>420</td><td>A 24-bit color values from 0 (highest) to 255 (bottom)<br>The lowest byte is the value of blue, the byte middle is the green value, and the third byte is the red value</td><td>no default</td><td>DXF 2004</td></tr>
-<tr><td>430</td><td>Color nam</td><td>no default</td><td>DXF 2004</td></tr>
-<tr><td>440</td><td>Rransparency value</td><td>no default</td><td>DXF 2004</td></tr>
-<tr><td>390</td><td>Hard pointer ID/handle to the plot style object</td><td>no default</td><td>DXF 2007</td></tr>
-<tr><td>284</td><td>Shadow mode</td><td>no default</td><td>DXF 2007</td></tr>
+<table style="border:2px solid black;border-collapse:collapse">
+<tr><th style="border:2px solid black" bgcolor="#C0C0C0">Group code</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">if omitted,<br>defaults to</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th><th style="border:2px solid black" bgcolor="#C0C0C0">Modified in</th></tr>
+<tr><td style="border:2px solid black">-1</td><td style="border:2px solid black">Application only: entity name (changes each time you open the drawing)</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R13</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">0</td><td style="border:2px solid black">Entity type</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R10</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">5</td><td style="border:2px solid black">Handle</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R10</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">Start pint for application "{application_name"<br>watch in the down tables for see the attached possible</td><td style="border:2px solid black">no default</td><td style="border:2px solid black" align="CENTER">DXF R14<td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">application<br>dependent</td><td style="border:2px solid black">After the start point until end point depends on the application<br>watch in the down tables for see the possibility</td><td style="border:2px solid black">no default</td><td style="border:2px solid black" align="CENTER">DXF R14</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">End point, "}"</td><td style="border:2px solid black">no default</td><td style="border:2px solid black" align="CENTER">DXF R14</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">330</td><td style="border:2px solid black">Soft-pointer ID / handle BLOCK_RECORD placed in the TABLES section</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R15/2000</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">100</td><td style="border:2px solid black">Classic subclass marker (AcDbEntity),<br>each entity has still another marker subclass</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R13</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">67</td><td style="border:2px solid black">If there isn't or is 0 the entity is in model space.<br>Else if is 1 the entity is in paper space.<br>all other values are actually unused (optional)</td><td style="border:2px solid black">0</td><td style="border:2px solid black" align="CENTER">DXF R13</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">410</td><td style="border:2px solid black">Application only: layout tab name</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R15/2000</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">8</td><td style="border:2px solid black">Layer name</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R10</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">6</td><td style="border:2px solid black">Linetype name (if isn't BYLAYER)<br>BYBLOCK is a floating linetype (optional)</td><td style="border:2px solid black">BYLAYER</td><td style="border:2px solid black" align="CENTER">DXF R10</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">38</td><td style="border:2px solid black">Elevation (if nonzero). Removed since DXF R12</td><td style="border:2px solid black">0</td><td style="border:2px solid black" align="CENTER">DXF R10</td><td style="border:2px solid black" align="CENTER" bgcolor="#FF0000">Removed</td></tr>
+<tr><td style="border:2px solid black">347</td><td style="border:2px solid black">Hard-pointer ID/handle to material object (if isn't BYLAYER)</td><td style="border:2px solid black">BYLAYER</td><td style="border:2px solid black" align="CENTER">DXF 2007</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">62</td><td style="border:2px solid black">Color number (if isn't BYLAYER)<br>0 is the BYBLOCK color.<br>256 is the BYLAYER color (optional)</td><td style="border:2px solid black">BYLAYER</td><td style="border:2px solid black" align="CENTER">DXF R10<td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">370</td><td style="border:2px solid black">Lineweight enumeration value<br>Is a 16-bit integer</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF 2002</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">48</td><td style="border:2px solid black">Linetype scale (optional)</td><td style="border:2px solid black">1.0</td><td style="border:2px solid black" align="CENTER">DXF R13</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">60</td><td style="border:2px solid black">Visibility: 0 = visible or 1 = invisible (optional)</td><td style="border:2px solid black">0</td><td style="border:2px solid black" align="CENTER">DXF R13</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">92</td><td style="border:2px solid black">The number of bytes in the picture (and subsequent binary chunk records) (optional)</td><td style="border:2px solid black">no default</td><td style="border:2px solid black" align="CENTER">DXF R15/2000</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">310</td><td style="border:2px solid black">Preview image (can be multiple lines, each line must have a maximum of 256 characters) (optional)</td><td style="border:2px solid black">no default</td><td style="border:2px solid black" align="CENTER">DXF R15/2000</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">420</td><td style="border:2px solid black">A 24-bit color values from 0 (highest) to 255 (bottom)<br>The lowest byte is the value of blue, the byte middle is the green value, and the third byte is the red value</td><td style="border:2px solid black">no default</td><td style="border:2px solid black" align="CENTER">DXF 2004</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">430</td><td style="border:2px solid black">Color nam</td><td style="border:2px solid black">no default</td><td style="border:2px solid black" align="CENTER">DXF 2004</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">440</td><td style="border:2px solid black">Rransparency value</td><td style="border:2px solid black">no default</td><td style="border:2px solid black" align="CENTER">DXF 2004</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">390</td><td style="border:2px solid black">Hard pointer ID/handle to the plot style object</td><td style="border:2px solid black">no default</td><td style="border:2px solid black" align="CENTER">DXF 2007</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
+<tr><td style="border:2px solid black">284</td><td style="border:2px solid black">Shadow mode</td><td style="border:2px solid black">no default</td><td style="border:2px solid black" align="CENTER">DXF 2007</td><td style="border:2px solid black" align="CENTER" bgcolor="#23FF23">Never</td></tr>
 </table>
 <br><br><br><br><br>
 Table: Attached (persistent reactors).<br>
 <br>
-<table noborder>
-<tr><th>Group code</th><th>Description</th><th>Since<br>version</th></tr>
-<tr><td>102</td><td>"{ACAD_REACTORS" indicates the start point</td><td>DXF R14</td></tr>
-<tr><td>330</td><td>Soft pointer ID/handle to owner dictionary</td><td>DXF R14</td></tr>
-<tr><td>102</td><td>End point, "}"</td><td>DXF R14</td></tr>
+<table style="border:2px solid black;border-collapse:collapse">
+<tr><th style="border:2px solid black" bgcolor="#C0C0C0">Group code</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th></tr>
+<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">"{ACAD_REACTORS" indicates the start point</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
+<tr><td style="border:2px solid black">330</td><td style="border:2px solid black">Soft pointer ID/handle to owner dictionary</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
+<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">End point, "}"</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
 </table>
 <br><br><br><br><br>
 Table: Attached (extension dictionary). <br>
 <br>
-<table noborder>
-<tr><th>Group code</th><th>Description</th><th>Since<br>version</th></tr>
-<tr><td>102</td><td>"{ACAD_XDICTIONARY" indicates the start point</td><td>DXF R14</td></tr>
-<tr><td>360</td><td>Hard owner ID/handle to owner dictionary</td><td>DXF R14</td></tr>
-<tr><td>102</td><td>End point, "}"</td><td>DXF R14</td></tr>
+<table style="border:2px solid black;border-collapse:collapse">
+<tr><th style="border:2px solid black" bgcolor="#C0C0C0">Group code</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th></tr>
+<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">"{ACAD_XDICTIONARY" indicates the start point</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
+<tr><td style="border:2px solid black">360</td><td style="border:2px solid black">Hard owner ID/handle to owner dictionary</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
+<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">End point, "}"</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
 </table>
 </html>
