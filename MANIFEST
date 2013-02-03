@@ -90,6 +90,8 @@ src/hatch.c
 src/hatch.h
 src/header.c
 src/header.h
+src/helix.c
+src/helix.h
 src/image.c
 src/image.h
 src/insert.c
