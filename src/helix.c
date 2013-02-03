@@ -73,4 +73,77 @@ dxf_helix_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HELIX
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHelix *
+dxf_helix_init
+(
+        DxfHelix *dxf_helix
+                /*!< DXF helix entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_helix_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int i;
+
+        dxf_helix = dxf_helix_new ();
+        if (dxf_helix == NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_helix_init () could not allocate memory for a DxfHelix struct.\n");
+              return (NULL);
+        }
+        dxf_helix->id_code = 0;
+        dxf_helix->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_helix->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_helix->x0 = 0.0;
+        dxf_helix->y0 = 0.0;
+        dxf_helix->z0 = 0.0;
+        dxf_helix->x1 = 0.0;
+        dxf_helix->y1 = 0.0;
+        dxf_helix->z1 = 0.0;
+        dxf_helix->x2 = 0.0;
+        dxf_helix->y2 = 0.0;
+        dxf_helix->z2 = 0.0;
+        dxf_helix->thickness = 0.0;
+        dxf_helix->radius = 0.0;
+        dxf_helix->number_of_turns = 0.0;
+        dxf_helix->turn_height = 0.0;
+        dxf_helix->linetype_scale = 0.0;
+        dxf_helix->visibility = 0;
+        dxf_helix->color = DXF_COLOR_BYLAYER;
+        dxf_helix->paperspace = DXF_MODELSPACE;
+        dxf_helix->major_release_number = 0;
+        dxf_helix->maintainance_release_number = 0;
+        dxf_helix->graphics_data_size = 0;
+        dxf_helix->constraint_type = 0;
+        dxf_helix->shadow_mode = 0;
+        dxf_helix->handedness = 0;
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                dxf_helix->binary_graphics_data[i] = strdup ("");
+        }
+        dxf_helix->dictionary_owner_hard = strdup ("");
+        dxf_helix->material = strdup ("");
+        dxf_helix->dictionary_owner_soft = strdup ("");
+        dxf_helix->lineweight = 0;
+        dxf_helix->plot_style_name = strdup ("");
+        dxf_helix->color_value = 0;
+        dxf_helix->color_name = strdup ("");
+        dxf_helix->transparency = 0;
+        dxf_helix->next = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_helix_init () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_helix);
+}
+
+
 /* EOF*/

@@ -203,6 +203,11 @@ dxf_helix
 
 DxfHelix *
 dxf_helix_new ();
+DxfHelix *
+dxf_helix_init
+(
+        DxfHelix *dxf_helix
+);
 
 
 #endif /* _HELIX_H */
