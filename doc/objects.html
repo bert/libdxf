@@ -1,8 +1,14 @@
 <html>
 <head>
 <title>Common OBJECTS</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="author" CONTENT="Paolo Caroni">
 <meta name="license" CONTENT="GNU FDL 1.3 or any later versions">
+	<style>
+		<!-- 
+		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Liberation Sans"; font-size:16 }
+		 -->
+	</style>
 </head>
 <body bgcolor=#ffffff>
 <h1>Introduction.</h1>
@@ -11,31 +17,32 @@ for convenience have been collected in a single list.<br>
 <br>
 Table: Common Object Group Codes.<br>
 <br>
-<table noborder>
-<tr><th>Group code</th><th>Description</th><th>if omitted,<br>defaults to</th><th>Since<br>version</th></tr>
-<tr><td>0</td><td>Entity type</td><td>Not omitted</td><td>DXF R10</td></tr>
-<tr><td>5</td><td>Handle</td><td>Not omitted</td><td>DXF R10</td></tr>
-<tr><td>102</td><td>Start pint for application "{application_name"<br>watch in the down tables for see the attached possible</td><td>no default</td><td>DXF R14</td></tr>
-<tr><td>application<br>dependent</td><td>After the start point until end point depends on the application<br>watch in the down tables for see the possibility</td><td>no default</td><td>DXF R14</td></tr>
-<tr><td>102</td><td>End point, "}"</td><td>no default</td><td>DXF R14</td></tr>
-<tr><td>330</td><td>Soft-pointer ID/handle to owner object</td><td>Not omitted</td><td>DXF R15/2000</td></tr>
+<table style="border:2px solid black;border-collapse:collapse">
+<tr><th style="border:2px solid black" bgcolor="#C0C0C0">Group code</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">if omitted,<br>defaults to</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th></tr>
+<tr><td style="border:2px solid black">0</td><td style="border:2px solid black">Entity type</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R10</td></tr>
+<tr><td style="border:2px solid black">5</td><td style="border:2px solid black">Handle</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R10</td></tr>
+<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">Start pint for application "{application_name"<br>watch in the down tables for see the attached possible</td><td style="border:2px solid black">no default</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
+<tr><td style="border:2px solid black">application<br>dependent</td><td style="border:2px solid black">After the start point until end point depends on the application<br>watch in the down tables for see the possibility</td><td style="border:2px solid black">no default</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
+<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">End point, "}"</td><td style="border:2px solid black">no default</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
+<tr><td style="border:2px solid black">330</td><td style="border:2px solid black">Soft-pointer ID/handle to owner object</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R15/2000</td></tr>
 </table>
 <br><br><br><br><br>
 Table: Attached (persistent reactors).<br>
 <br>
-<table noborder>
-<tr><th>Group code</th><th>Description</th><th>Since<br>version</th></tr>
-<tr><td>102</td><td>"{ACAD_REACTORS" indicates the start point</td><td>DXF R14</td></tr>
-<tr><td>330</td><td>Soft pointer ID/handle to owner dictionary</td><td>DXF R14</td></tr>
-<tr><td>102</td><td>End point, "}"</td><td>DXF R14</td></tr>
+<table style="border:2px solid black;border-collapse:collapse">
+<tr><th style="border:2px solid black" bgcolor="#C0C0C0">Group code</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th></tr>
+<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">"{ACAD_REACTORS" indicates the start point</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
+<tr><td style="border:2px solid black">330</td><td style="border:2px solid black">Soft pointer ID/handle to owner dictionary</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
+<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">End point, "}"</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
 </table>
 <br><br><br><br><br>
 Table: Attached (extension dictionary). <br>
 <br>
-<table noborder>
-<tr><th>Group code</th><th>Description</th><th>Since<br>version</th></tr>
-<tr><td>102</td><td>"{ACAD_XDICTIONARY" indicates the start point</td><td>DXF R14</td></tr>
-<tr><td>360</td><td>Hard owner ID/handle to owner dictionary</td><td>DXF R14</td></tr>
-<tr><td>102</td><td>End point, "}"</td><td>DXF R14</td></tr>
+<table style="border:2px solid black;border-collapse:collapse">
+<tr><th style="border:2px solid black" bgcolor="#C0C0C0">Group code</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th></tr>
+<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">"{ACAD_XDICTIONARY" indicates the start point</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
+<tr><td style="border:2px solid black">360</td><td style="border:2px solid black">Hard owner ID/handle to owner dictionary</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
+<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">End point, "}"</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
 </table>
+</body>
 </html>
