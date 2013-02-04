@@ -146,4 +146,51 @@ dxf_helix_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c HELIX and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_helix_free
+(
+        DxfHelix *dxf_helix
+                /*!< Pointer to the memory occupied by the DXF \c HELIX
+                 * entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_helix_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int i;
+
+        if (dxf_helix->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_helix_free () pointer to next DxfHelix was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
+        free (dxf_helix->linetype);
+        free (dxf_helix->layer);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (dxf_helix->binary_graphics_data[i]);
+        }
+        free (dxf_helix->dictionary_owner_hard);
+        free (dxf_helix->material);
+        free (dxf_helix->dictionary_owner_soft);
+        free (dxf_helix->plot_style_name);
+        free (dxf_helix->color_name);
+        free (dxf_helix);
+        dxf_helix = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_helix_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/

@@ -214,6 +214,11 @@ dxf_helix_init
 (
         DxfHelix *dxf_helix
 );
+int
+dxf_helix_free
+(
+        DxfHelix *dxf_helix
+);
 
 
 #endif /* _HELIX_H */
