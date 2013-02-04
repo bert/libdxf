@@ -18,17 +18,72 @@ is followed by <a href="table_entries.html">Common Group Codes for Symbol Table 
 Table: Common Group Codes for Symbol Table Entries.<br>
 <br>
 <table style="border:2px solid black;border-collapse:collapse">
-<tr><th style="border:2px solid black" bgcolor="#C0C0C0">Group<br>code</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">if omitted,<br>defaults to</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th></tr>
-<tr><td style="border:2px solid black">-1</td><td style="border:2px solid black">Application only: entity name (changes each time you open the drawing)</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R13</td></tr>
-<tr><td style="border:2px solid black">0</td><td style="border:2px solid black">Entity type</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R10</td></tr>
-<tr><td style="border:2px solid black">2</td><td style="border:2px solid black">Name of the table</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R10</td></tr>
-<tr><td style="border:2px solid black">5</td><td style="border:2px solid black">Handle</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R10</td></tr>
-<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">"{ACAD_XDICTIONARY" indicates the start point</td><td style="border:2px solid black">No default</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
-<tr><td style="border:2px solid black">360</td><td style="border:2px solid black">Hard owner ID/handle to owner dictionary</td><td style="border:2px solid black">No default</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
-<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">End point, "}"</td><td style="border:2px solid black">No default</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
-<tr><td style="border:2px solid black">330</td><td style="border:2px solid black">Soft-pointer ID/handle to owner object</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R15/2000</td></tr>
-<tr><td style="border:2px solid black">100</td><td style="border:2px solid black">Subclass marker (AcDbSymbolTable)</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R13</td></tr>
-<tr><td style="border:2px solid black">70</td><td style="border:2px solid black">Max number of antries in this table</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R10</td></tr>
+<tr>
+<th style="border:2px solid black" bgcolor="#C0C0C0">Group<br>code</th>
+<th style="border:2px solid black" bgcolor="#C0C0C0">Description</th>
+<th style="border:2px solid black" bgcolor="#C0C0C0">if omitted,<br>defaults to</th>
+<th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th>
+</tr>
+<tr>
+<td style="border:2px solid black">-1</td>
+<td style="border:2px solid black">Application only: entity name (changes each time you open the drawing)</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R13</td>
+</tr>
+<tr>
+<td style="border:2px solid black">0</td>
+<td style="border:2px solid black">Entity type</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R10</td>
+</tr>
+<tr>
+<td style="border:2px solid black">2</td>
+<td style="border:2px solid black">Name of the table</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R10</td>
+</tr>
+<tr>
+<td style="border:2px solid black">5</td>
+<td style="border:2px solid black">Handle</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R10</td>
+</tr>
+<tr>
+<td style="border:2px solid black">102</td>
+<td style="border:2px solid black">"{ACAD_XDICTIONARY" indicates the start point</td>
+<td style="border:2px solid black">No default</td>
+<td style="border:2px solid black" align="CENTER">DXF R14</td>
+</tr>
+<tr>
+<td style="border:2px solid black">360</td>
+<td style="border:2px solid black">Hard owner ID/handle to owner dictionary</td>
+<td style="border:2px solid black">No default</td>
+<td style="border:2px solid black" align="CENTER">DXF R14</td>
+</tr>
+<tr>
+<td style="border:2px solid black">102</td>
+<td style="border:2px solid black">End point, "}"</td>
+<td style="border:2px solid black">No default</td>
+<td style="border:2px solid black" align="CENTER">DXF R14</td>
+</tr>
+<tr>
+<td style="border:2px solid black">330</td>
+<td style="border:2px solid black">Soft-pointer ID/handle to owner object</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R15/2000</td>
+</tr>
+<tr>
+<td style="border:2px solid black">100</td>
+<td style="border:2px solid black">Subclass marker (AcDbSymbolTable)</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R13</td>
+</tr>
+<tr>
+<td style="border:2px solid black">70</td>
+<td style="border:2px solid black">Max number of antries in this table</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R10</td>
+</tr>
 </table>
 </body>
 </html>

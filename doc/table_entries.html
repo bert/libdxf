@@ -18,45 +18,144 @@ for convenience have been collected in a single list.<br>
 Table: Common Group Codes for Symbol Table Entries.<br>
 <br>
 <table style="border:2px solid black;border-collapse:collapse">
-<tr><th style="border:2px solid black" bgcolor="#C0C0C0">Group code</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">if omitted,<br>defaults to</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th></tr>
-<tr><td style="border:2px solid black">-1</td><td style="border:2px solid black">Application only: entity name (changes each time you open the drawing)</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R13</td></tr>
-<tr><td style="border:2px solid black">0</td><td style="border:2px solid black">Entity type</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R10</td></tr>
-<tr><td style="border:2px solid black">5</td><td style="border:2px solid black">Handle (except for DIMSTYLE)</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R10</td></tr>
-<tr><td style="border:2px solid black">70</td><td style="border:2px solid black">Flags relevant (except BLOCK_RECORD)</td><td style="border:2px solid black">No default? (I'm not sure)</td><td style="border:2px solid black" align="CENTER">DXF R10</td></tr>
-<tr><td style="border:2px solid black">105</td><td style="border:2px solid black">Handle (only for DIMSTYLE)</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R12</td></tr>
-<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">Start pint for application "{application_name"<br>watch in the down tables for see the attached possible</td><td style="border:2px solid black">No default</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
-<tr><td style="border:2px solid black">application<br>dependent</td><td style="border:2px solid black">After the start point until end point depends on the application<br>watch in the down tables for see the possibility</td><td style="border:2px solid black">No default</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
-<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">End point, "}"</td><td style="border:2px solid black">No default</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
-<tr><td style="border:2px solid black">330</td><td style="border:2px solid black">Soft-pointer ID/handle to owner object</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R15/2000</td></tr>
-<tr><td style="border:2px solid black">100</td><td style="border:2px solid black">Subclass marker (AcDbSymbolTableRecord)</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R13</td></tr>
-<tr><td style="border:2px solid black">0</td><td style="border:2px solid black">End of tha table, "ENDTAB"</td><td style="border:2px solid black">Not omitted</td><td style="border:2px solid black" align="CENTER">DXF R10</td></tr>
+<tr>
+<th style="border:2px solid black" bgcolor="#C0C0C0">Group code</th>
+<th style="border:2px solid black" bgcolor="#C0C0C0">Description</th>
+<th style="border:2px solid black" bgcolor="#C0C0C0">if omitted,<br>defaults to</th>
+<th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th>
+</tr>
+<tr>
+<td style="border:2px solid black">-1</td>
+<td style="border:2px solid black">Application only: entity name (changes each time you open the drawing)</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R13</td>
+</tr>
+<tr>
+<td style="border:2px solid black">0</td>
+<td style="border:2px solid black">Entity type</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R10</td>
+</tr>
+<tr>
+<td style="border:2px solid black">5</td>
+<td style="border:2px solid black">Handle (except for DIMSTYLE)</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R10</td>
+</tr>
+<tr>
+<td style="border:2px solid black">70</td>
+<td style="border:2px solid black">Flags relevant (except BLOCK_RECORD)</td>
+<td style="border:2px solid black">No default? (I'm not sure)</td>
+<td style="border:2px solid black" align="CENTER">DXF R10</td>
+</tr>
+<tr>
+<td style="border:2px solid black">105</td>
+<td style="border:2px solid black">Handle (only for DIMSTYLE)</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R12</td>
+</tr>
+<tr>
+<td style="border:2px solid black">102</td>
+<td style="border:2px solid black">Start pint for application "{application_name"<br>watch in the down tables for see the attached possible</td>
+<td style="border:2px solid black">No default</td>
+<td style="border:2px solid black" align="CENTER">DXF R14</td>
+</tr>
+<tr>
+<td style="border:2px solid black">application<br>dependent</td>
+<td style="border:2px solid black">After the start point until end point depends on the application<br>watch in the down tables for see the possibility</td>
+<td style="border:2px solid black">No default</td>
+<td style="border:2px solid black" align="CENTER">DXF R14</td>
+</tr>
+<tr>
+<td style="border:2px solid black">102</td>
+<td style="border:2px solid black">End point, "}"</td>
+<td style="border:2px solid black">No default</td>
+<td style="border:2px solid black" align="CENTER">DXF R14</td>
+</tr>
+<tr>
+<td style="border:2px solid black">330</td>
+<td style="border:2px solid black">Soft-pointer ID/handle to owner object</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R15/2000</td>
+</tr>
+<tr>
+<td style="border:2px solid black">100</td>
+<td style="border:2px solid black">Subclass marker (AcDbSymbolTableRecord)</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R13</td>
+</tr>
+<tr>
+<td style="border:2px solid black">0</td>
+<td style="border:2px solid black">End of tha table, "ENDTAB"</td>
+<td style="border:2px solid black">Not omitted</td>
+<td style="border:2px solid black" align="CENTER">DXF R10</td>
+</tr>
 </table>
 <br><br><br><br><br>
 Table: Attached (persistent reactors).<br>
 <br>
 <table style="border:2px solid black;border-collapse:collapse">
-<tr><th style="border:2px solid black" bgcolor="#C0C0C0">Group code</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th></tr>
-<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">"{ACAD_REACTORS" indicates the start point</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
-<tr><td style="border:2px solid black">330</td><td style="border:2px solid black">Soft pointer ID/handle to owner dictionary</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
-<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">End point, "}"</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
+<tr>
+<th style="border:2px solid black" bgcolor="#C0C0C0">Group code</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th></tr>
+<tr>
+<td style="border:2px solid black">102</td>
+<td style="border:2px solid black">"{ACAD_REACTORS" indicates the start point</td>
+<td style="border:2px solid black" align="CENTER">DXF R14</td>
+</tr>
+<tr>
+<td style="border:2px solid black">330</td>
+<td style="border:2px solid black">Soft pointer ID/handle to owner dictionary</td>
+<td style="border:2px solid black" align="CENTER">DXF R14</td>
+</tr>
+<tr>
+<td style="border:2px solid black">102</td>
+<td style="border:2px solid black">End point, "}"</td>
+<td style="border:2px solid black" align="CENTER">DXF R14</td>
+</tr>
 </table>
 <br><br><br><br><br>
 Table: Attached (extension dictionary).<br>
 <br>
 <table style="border:2px solid black;border-collapse:collapse">
-<tr><th style="border:2px solid black" bgcolor="#C0C0C0">Group code</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th></tr>
-<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">"{ACAD_XDICTIONARY" indicates the start point</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
-<tr><td style="border:2px solid black">360</td><td style="border:2px solid black">Hard owner ID/handle to owner dictionary</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
-<tr><td style="border:2px solid black">102</td><td style="border:2px solid black">End point, "}"</td><td style="border:2px solid black" align="CENTER">DXF R14</td></tr>
+<tr>
+<th style="border:2px solid black" bgcolor="#C0C0C0">Group code</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th></tr>
+<tr>
+<td style="border:2px solid black">102</td>
+<td style="border:2px solid black">"{ACAD_XDICTIONARY" indicates the start point</td>
+<td style="border:2px solid black" align="CENTER">DXF R14</td>
+</tr>
+<tr>
+<td style="border:2px solid black">360</td>
+<td style="border:2px solid black">Hard owner ID/handle to owner dictionary</td>
+<td style="border:2px solid black" align="CENTER">DXF R14</td>
+</tr>
+<tr>
+<td style="border:2px solid black">102</td>
+<td style="border:2px solid black">End point, "}"</td>
+<td style="border:2px solid black" align="CENTER">DXF R14</td>
+</tr>
 </table>
 <br><br><br><br><br>
 Table: Common flag bit value for group code 70 (only the common ones, there can be others).<br>
 <br>
 <table style="border:2px solid black;border-collapse:collapse">
-<tr><th style="border:2px solid black" bgcolor="#C0C0C0">Flags</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th></tr>
-<tr><td style="border:2px solid black">16</td><td style="border:2px solid black">Xref dependent</td><td style="border:2px solid black" align="CENTER">DXF R10</td></tr>
-<tr><td style="border:2px solid black">32</td><td style="border:2px solid black">If is set with bit 16, the Xref dependecy has been resolved</td><td style="border:2px solid black" align="CENTER">DXF R10</td></tr>
-<tr><td style="border:2px solid black">64</td><td style="border:2px solid black">This flag is only for internal  functionality of AutoCAD, we can ignore it</td><td style="border:2px solid black" align="CENTER">DXF R10</td></tr>
+<tr>
+<th style="border:2px solid black" bgcolor="#C0C0C0">Flags</th><th style="border:2px solid black" bgcolor="#C0C0C0">Description</th><th style="border:2px solid black" bgcolor="#C0C0C0">Version<br>introduction</th></tr>
+<tr>
+<td style="border:2px solid black">16</td>
+<td style="border:2px solid black">Xref dependent</td>
+<td style="border:2px solid black" align="CENTER">DXF R10</td>
+</tr>
+<tr>
+<td style="border:2px solid black">32</td>
+<td style="border:2px solid black">If is set with bit 16, the Xref dependecy has been resolved</td>
+<td style="border:2px solid black" align="CENTER">DXF R10</td>
+</tr>
+<tr>
+<td style="border:2px solid black">64</td>
+<td style="border:2px solid black">This flag is only for internal  functionality of AutoCAD, we can ignore it</td>
+<td style="border:2px solid black" align="CENTER">DXF R10</td>
+</tr>
 </table>
 </body>
 </html>
