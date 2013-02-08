@@ -215,6 +215,12 @@ dxf_helix_init
         DxfHelix *dxf_helix
 );
 int
+dxf_helix_read
+(
+        DxfFile *fp,
+        DxfHelix *dxf_helix
+);
+int
 dxf_helix_free
 (
         DxfHelix *dxf_helix
