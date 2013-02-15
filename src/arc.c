@@ -578,7 +578,6 @@ dxf_arc_write
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
-                fprintf (fp->fp, "100\nAcDbArc\n");
         }
         if (dxf_arc->id_code != -1)
         {
@@ -589,6 +588,10 @@ dxf_arc_write
                 fprintf (fp->fp, "  6\n%s\n", dxf_arc->linetype);
         }
         fprintf (fp->fp, "  8\n%s\n", dxf_arc->layer);
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbCircle\n");
+        }
         fprintf (fp->fp, " 10\n%f\n", dxf_arc->x0);
         fprintf (fp->fp, " 20\n%f\n", dxf_arc->y0);
         fprintf (fp->fp, " 30\n%f\n", dxf_arc->z0);
@@ -603,6 +606,10 @@ dxf_arc_write
                 fprintf (fp->fp, " 39\n%f\n", dxf_arc->thickness);
         }
         fprintf (fp->fp, " 40\n%f\n", dxf_arc->radius);
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbArc\n");
+        }
         fprintf (fp->fp, " 50\n%f\n", dxf_arc->start_angle);
         fprintf (fp->fp, " 51\n%f\n", dxf_arc->end_angle);
         if (dxf_arc->color != DXF_COLOR_BYLAYER)
