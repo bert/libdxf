@@ -575,19 +575,27 @@ dxf_arc_write
                 dxf_arc->layer = DXF_DEFAULT_LAYER;
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (fp->acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp->fp, "100\nAcDbEntity\n");
-        }
         if (dxf_arc->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_arc->id_code);
         }
+        if (fp->acad_version_number >= AutoCAD_14)
+        {
+                fprintf (fp->fp, "330\n%s\n", dxf_arc->dictionary_owner_soft);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_arc->layer);
         if (strcmp (dxf_arc->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_arc->linetype);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_arc->layer);
+        if (dxf_arc->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_arc->color);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbCircle\n");
@@ -595,7 +603,10 @@ dxf_arc_write
         fprintf (fp->fp, " 10\n%f\n", dxf_arc->x0);
         fprintf (fp->fp, " 20\n%f\n", dxf_arc->y0);
         fprintf (fp->fp, " 30\n%f\n", dxf_arc->z0);
-        if (fp->acad_version_number >= AutoCAD_12)
+        if ((fp->acad_version_number >= AutoCAD_12)
+                && (dxf_arc->extr_x0 != 0.0)
+                && (dxf_arc->extr_y0 != 0.0)
+                && (dxf_arc->extr_z0 != 1.0))
         {
                 fprintf (fp->fp, "210\n%f\n", dxf_arc->extr_x0);
                 fprintf (fp->fp, "220\n%f\n", dxf_arc->extr_y0);
@@ -612,10 +623,6 @@ dxf_arc_write
         }
         fprintf (fp->fp, " 50\n%f\n", dxf_arc->start_angle);
         fprintf (fp->fp, " 51\n%f\n", dxf_arc->end_angle);
-        if (dxf_arc->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_arc->color);
-        }
         if (dxf_arc->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);

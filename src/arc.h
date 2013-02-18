@@ -76,6 +76,9 @@ dxf_arc
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
+        char *dictionary_owner_soft;
+                /*!< group code = 330\n
+                 * Soft-pointer ID/handle to owner dictionary (optional). */
         /* Specific members for a DXF arc. */
         double x0;
                 /*!< group code = 10\n
