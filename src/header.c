@@ -721,8 +721,9 @@ dxf_write_header_metric_new
             fprintf (fp, "  9\n$TDCREATE\n 40\n%7.9f\n", JD+fraction_day);
             fprintf (fp, "  9\n$TDUPDATE\n 40\n%7.9f\n", JD+fraction_day);
         }
-        fprintf (fp, "  9\n$TDINDWG\n 40\n0.0994079282\n");
-        fprintf (fp, "  9\n$TDUSRTIMER\n 40\n0.0994079282\n");
+        fprintf (fp, "  9\n$TDINDWG\n 40\n0.0000000000\n");
+        fprintf (fp, "  9\n$TDUSRTIMER\n 40\n0.0000000000\n");
+        /* In a new DXF file, $TDINDWG and $TDUSERTIMER are always 0, can change the decimal precision in according to the DXF version.*/
         fprintf (fp, "  9\n$USRTIMER\n 70\n     1\n");
         fprintf (fp, "  9\n$ANGBASE\n 50\n0.0\n");
         fprintf (fp, "  9\n$ANGDIR\n 70\n     0\n");
