@@ -188,13 +188,19 @@ dxf_helix
                  * Maintainance release number. */
         int constraint_type;
                 /*!< group code = 280\n
-                 * Constrain type\n
-                 * 0 = Constrain turn height.\n
-                 * 1 = Constrain turns.\n
-                 * 2 = Constrain height. */
+                 * Constrain type:\n
+                 * <ol>
+                 * <li value = "0"> Constrain turn height.</li>
+                 * <li value = "1"> Constrain turns.</li>
+                 * <li value = "2"> Constrain height.</li>
+                 * </ol> */
         int handedness;
                 /*!< group code = 290\n
-                 * Handedness; 0 = left, 1 = right. */
+                 * Handedness:
+                 * <ol>
+                 * <li value = "0"> Left.</li>
+                 * <li value = "1"> Right</li>
+                 * </ol> */
         struct DxfHelix *next;
                 /*!< pointer to the next DxfHelix.\n
                  * \c NULL in the last DxfHelix. */
@@ -203,6 +209,22 @@ dxf_helix
 
 DxfHelix *
 dxf_helix_new ();
+DxfHelix *
+dxf_helix_init
+(
+        DxfHelix *dxf_helix
+);
+int
+dxf_helix_read
+(
+        DxfFile *fp,
+        DxfHelix *dxf_helix
+);
+int
+dxf_helix_free
+(
+        DxfHelix *dxf_helix
+);
 
 
 #endif /* _HELIX_H */
