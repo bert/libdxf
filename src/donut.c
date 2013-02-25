@@ -1,7 +1,7 @@
 /*!
  * \file donut.c
  * 
- * \author Copyright (C) 2008 ... 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * 
  * \brief Functions for a DXF donut entity (\c DONUT).
  *
@@ -47,8 +47,8 @@
 int
 dxf_donut_write_lowlevel
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         int id_code,
                 /*!< group code = 5. */
         char *linetype,
@@ -107,7 +107,7 @@ dxf_donut_write_lowlevel
         /* Draw a polyline primitive. */
         dxf_polyline_write_lowlevel
         (
-                fp,
+                fp->fp,
                 id_code,
                 linetype,
                 layer,
@@ -131,7 +131,7 @@ dxf_donut_write_lowlevel
         /* Write first XY-coordinate. */
         dxf_vertex_write_lowlevel
         (
-                fp,
+                fp->fp,
                 id_code,
                 linetype,
                 layer,
@@ -151,7 +151,7 @@ dxf_donut_write_lowlevel
         /* Write second XY-coordinate. */
         dxf_vertex_write_lowlevel
         (
-                fp,
+                fp->fp,
                 id_code,
                 linetype,
                 layer,
@@ -169,7 +169,9 @@ dxf_donut_write_lowlevel
         );
         id_code++;
         /* Write the end of polyline sequence marker. */
-        dxf_seqend_write (fp);
+        /*! \todo FIX ME.
+        dxf_seqend_write (fp, dxf_seqend);
+        */
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_draw_donut () function.\n",
                 __FILE__, __LINE__);

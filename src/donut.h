@@ -1,7 +1,7 @@
 /*!
  * \file donut.h
  *
- * \author Copyright (C) 2008 ... 2011 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF donut entity (\c DONUT).
  *
@@ -46,7 +46,7 @@
 int
 dxf_donut_write_lowlevel
 (
-        FILE *fp,
+        DxfFile *fp,
         int id_code,
         char *linetype,
         char *layer,

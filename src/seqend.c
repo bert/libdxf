@@ -1,6 +1,8 @@
 /*!
  * \file seqend.c
- * \author Copyright (C) 2008, 2010 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief DXF end of sequence marker (\c SEQEND).
  *
  * <hr>
@@ -50,15 +52,30 @@
 int
 dxf_seqend_write
 (
-        FILE *fp
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfSeqend *dxf_seqend
+                /*!< DXF \c SEQEND entity. */
 )
 {
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Entering dxf_seqend_write () function.\n",
                 __FILE__, __LINE__);
 #endif
-        fprintf (fp, "  0\nSEQEND\n");
+        fprintf (fp->fp, "  0\nSEQEND\n");
+        if (dxf_seqend->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", dxf_seqend->id_code);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_seqend->layer);
+        if (strcmp (dxf_seqend->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_seqend->linetype);
+        }
+        if (dxf_seqend->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_seqend->color);
+        }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_seqend_write () function.\n",
                 __FILE__, __LINE__);
