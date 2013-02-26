@@ -22,6 +22,8 @@ libdxf_la_SOURCES = \
   table.h \
   table.c \
   style.h \
+  spline.h \
+  spline.c \
   solid.h \
   solid.c \
   shape.h \
