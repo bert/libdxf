@@ -241,6 +241,10 @@ dxf_spline
 } DxfSpline, * DxfSplinePtr;
 
 
+DxfSpline *
+dxf_spline_new ();
+
+
 #endif /* _SPLINE_H */
 
 

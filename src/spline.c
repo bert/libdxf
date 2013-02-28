@@ -35,4 +35,42 @@
 #include "spline.h"
 
 
+/*!
+ * \brief Allocate memory for a DXF \c SPLINE.
+ *
+ * Fill the memory contents with zeros.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfSpline *
+dxf_spline_new ()
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_spline_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        DxfSpline *dxf_spline = NULL;
+        size_t size;
+
+        size = sizeof (DxfSpline);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_spline = malloc (size)) == NULL)
+        {
+                fprintf (stderr, "ERROR in dxf_spline_new () could not allocate memory for a DxfSpline struct.\n");
+                dxf_spline = NULL;
+        }
+        else
+        {
+                memset (dxf_spline, 0, size);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_spline_new () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (dxf_spline);
+}
+
+
 /* EOF */
