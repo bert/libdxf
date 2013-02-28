@@ -155,4 +155,51 @@ dxf_spline_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c SPLINE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_spline_free
+(
+        DxfSpline *dxf_spline
+                /*!< Pointer to the memory occupied by the DXF \c SPLINE
+                 * entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_spline_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        int i;
+
+        if (dxf_spline->next != NULL)
+        {
+              fprintf (stderr, "ERROR in dxf_spline_free () pointer to next DxfSpline was not NULL.\n");
+              return (EXIT_FAILURE);
+        }
+        free (dxf_spline->linetype);
+        free (dxf_spline->layer);
+        free (dxf_spline->dictionary_owner_soft);
+        free (dxf_spline->material);
+        free (dxf_spline->dictionary_owner_hard);
+        free (dxf_spline->plot_style_name);
+        free (dxf_spline->color_name);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (dxf_spline->binary_graphics_data[i]);
+        }
+        free (dxf_spline);
+        dxf_spline = NULL;
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_spline_free () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
