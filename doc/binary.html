@@ -18,7 +18,7 @@ Not all software can read or write the binary format of DXF.<br>
 Unlike the ASCII DXF, in the binary format is impossible write a comment (group code 999).<br>
 The first writable binary form is the DXF R10, first of this exist only the ASCII form.<br>
 <br>
-The file start olways with:<br>
+The file start olways with a header of 22 Bytes:<br>
 <code>
 AutoCAD Binary DXF&lt;CR&gt;&lt;LF&gt;&lt;SUB&gt;&lt;NULL&gt;
 </code>
