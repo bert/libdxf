@@ -5,6 +5,198 @@
  * 
  * \brief Functions for a DXF spline entity (\c SPLINE).
  *
+ * A spline is a smooth curve that passes through or near a given set of
+ * points.\n
+ * You can control how closely the curve fits the points.\n
+ * The SPLINE creates a particular type of spline known as a nonuniform
+ * rational B-spline (NURBS) curve.\n
+ * A NURBS curve produces a smooth curve between control points.\n
+ * You create splines by specifying points.\n
+ * You can close the spline so that the start and endpoints are
+ * coincident and tangent.\n
+ * Tolerance describes how closely the spline fits the set of fit points
+ * you specify.\n
+ * The lower the tolerance, the more closely the spline fits the points.\n
+ * At zero tolerance, the spline passes through the points.\n
+ *
+ * <b>Order.</b>\n
+ * The order of a NURBS curve defines the number of nearby control
+ * points that influence any given point on the curve.\n
+ * The curve is represented mathematically by a polynomial of degree one
+ * less than the order of the curve.\n
+ * Hence, second-order curves (which are represented by linear
+ * polynomials) are called linear curves, third-order curves are called
+ * quadratic curves, and fourth-order curves are called cubic curves.\n
+ * The number of control points must be greater than or equal to the
+ * order of the curve.\n
+ * \n
+ * In practice, cubic curves are the ones most commonly used.\n
+ * Fifth- and sixth-order curves are sometimes useful, especially for
+ * obtaining continuous higher order derivatives, but curves of higher
+ * orders are practically never used because they lead to internal
+ * numerical problems and tend to require disproportionately large
+ * calculation times.\n
+ *
+ * <b>Control points.</b>\n
+ * The control points determine the shape of the curve.\n
+ * Typically, each point of the curve is computed by taking a weighted
+ * sum of a number of control points.\n
+ * The weight of each point varies according to the governing parameter.\n
+ * For a curve of degree d, the weight of any control point is only
+ * nonzero in d+1 intervals of the parameter space.\n
+ * Within those intervals, the weight changes according to a polynomial
+ * function (basis functions) of degree d.\n
+ * At the boundaries of the intervals, the basis functions go smoothly
+ * to zero, the smoothness being determined by the degree of the
+ * polynomial.\n
+ * \n
+ * As an example, the basis function of degree one is a triangle
+ * function.\n
+ * It rises from zero to one, then falls to zero again.\n
+ * While it rises, the basis function of the previous control point
+ * falls.\n
+ * In that way, the curve interpolates between the two points, and the
+ * resulting curve is a polygon, which is continuous, but not
+ * differentiable at the interval boundaries, or knots.\n
+ * Higher degree polynomials have correspondingly more continuous
+ * derivatives.\n
+ * Note that within the interval the polynomial nature of the basis
+ * functions and the linearity of the construction make the curve
+ * perfectly smooth, so it is only at the knots that discontinuity can
+ * arise.\n
+ * \n
+ * The fact that a single control point only influences those intervals
+ * where it is active is a highly desirable property, known as local
+ * support.\n
+ * In modeling, it allows the changing of one part of a surface while
+ * keeping other parts equal.\n
+ * \n
+ * Adding more control points allows better approximation to a given
+ * curve, although only a certain class of curves can be represented
+ * exactly with a finite number of control points.\n
+ * NURBS curves also feature a scalar weight for each control point.\n
+ * This allows for more control over the shape of the curve without
+ * unduly raising the number of control points.\n
+ * In particular, it adds conic sections like circles and ellipses to
+ * the set of curves that can be represented exactly.\n
+ * The term rational in NURBS refers to these weights.\n
+ * \n
+ * The control points can have any dimensionality.\n
+ * One-dimensional points just define a scalar function of the
+ * parameter.\n
+ * These are typically used in image processing programs to tune the
+ * brightness and color curves.\n
+ * Three-dimensional control points are used abundantly in 3D modeling,
+ * where they are used in the everyday meaning of the word 'point', a
+ * location in 3D space.\n
+ * Multi-dimensional points might be used to control sets of time-driven
+ * values, e.g. the different positional and rotational settings of a
+ * robot arm.\n
+ * NURBS surfaces are just an application of this.\n
+ * Each control 'point' is actually a full vector of control points,
+ * defining a curve.\n
+ * These curves share their degree and the number of control points, and
+ * span one dimension of the parameter space.\n
+ * By interpolating these control vectors over the other dimension of
+ * the parameter space, a continuous set of curves is obtained, defining
+ * the surface.\n
+ *
+ * <b>The knot vector.</b>\n
+ * The knot vector is a sequence of parameter values that determines
+ * where and how the control points affect the NURBS curve.\n
+ * The number of knots is always equal to the number of control points
+ * plus curve degree plus one (i.e. number of control points plus curve
+ * order).\n
+ * The knot vector divides the parametric space in the intervals
+ * mentioned before, usually referred to as knot spans.\n
+ * Each time the parameter value enters a new knot span, a new control
+ * point becomes active, while an old control point is discarded.\n
+ * It follows that the values in the knot vector should be in
+ * nondecreasing order, so (0, 0, 1, 2, 3, 3) is valid while (0, 0, 2,
+ * 1, 3, 3) is not.\n
+ * \n
+ * Consecutive knots can have the same value.\n
+ * This then defines a knot span of zero length, which implies that two
+ * control points are activated at the same time (and of course two
+ * control points become deactivated).\n
+ * This has impact on continuity of the resulting curve or its higher
+ * derivatives; for instance, it allows the creation of corners in an
+ * otherwise smooth NURBS curve.\n
+ * A number of coinciding knots is sometimes referred to as a knot with
+ * a certain multiplicity.\n
+ * Knots with multiplicity two or three are known as double or triple
+ * knots.\n
+ * The multiplicity of a knot is limited to the degree of the curve;
+ * since a higher multiplicity would split the curve into disjoint parts
+ * and it would leave control points unused.\n
+ * For first-degree NURBS, each knot is paired with a control point.\n
+ * \n
+ * The knot vector usually starts with a knot that has multiplicity
+ * equal to the order.\n
+ * This makes sense, since this activates the control points that have
+ * influence on the first knot span.\n
+ * Similarly, the knot vector usually ends with a knot of that
+ * multiplicity.\n
+ * Curves with such knot vectors start and end in a control point.\n
+ * \n
+ * The individual knot values are not meaningful by themselves; only the
+ * ratios of the difference between the knot values matter.\n
+ * Hence, the knot vectors (0, 0, 1, 2, 3, 3) and (0, 0, 2, 4, 6, 6)
+ * produce the same curve.\n
+ * The positions of the knot values influences the mapping of parameter
+ * space to curve space.\n
+ * Rendering a NURBS curve is usually done by stepping with a fixed
+ * stride through the parameter range.\n
+ * By changing the knot span lengths, more sample points can be used in
+ * regions where the curvature is high.\n
+ * Another use is in situations where the parameter value has some
+ * physical significance, for instance if the parameter is time and the
+ * curve describes the motion of a robot arm.\n
+ * The knot span lengths then translate into velocity and acceleration,
+ * which are essential to get right to prevent damage to the robot arm
+ * or its environment.\n
+ * This flexibility in the mapping is what the phrase non uniform in
+ * NURBS refers to.\n
+ * \n
+ * Necessary only for internal calculations, knots are usually not
+ * helpful to the users of modeling software.\n
+ * Therefore, many modeling applications do not make the knots editable
+ * or even visible.\n
+ * It's usually possible to establish reasonable knot vectors by looking
+ * at the variation in the control points.\n
+ * More recent versions of NURBS software (e.g., Autodesk Maya and
+ * Rhinoceros 3D) allow for interactive editing of knot positions, but
+ * this is significantly less intuitive than the editing of control
+ * points.\n
+ *
+ * <b>Fit Tolerance.</b>\n
+ * Changes the tolerance for fitting of the current spline curve.\n
+ * The spline curve is redefined so that it fits through the existing
+ * points according to the new tolerance.\n
+ * You can repeatedly change the fit tolerance, but doing so changes the
+ * fit tolerance for all the control points regardless of the control
+ * point that is selected.\n
+ * If you set the tolerance to 0, the spline curve passes through the
+ * fit points.\n
+ * Entering a tolerance greater than 0 allows the spline curve to pass
+ * through the fit points within the specified tolerance.
+ *
+ * \image html dxf_spline_tolerance.png
+ *
+ * <b>Tangents.</b>\n
+ * Defines the tangency for the first and last points of the spline
+ * curve.\n
+ * The Start Tangent specifies the tangency of the spline curve at the
+ * first point.\n
+ *
+ * \image html dxf_spline_first_tangent_point.png
+ *
+ * The End Tangent specifies the tangency of the spline curve at the
+ * last point.\n
+ *
+ * \image html dxf_spline_last_tangent_point.png
+ *
+ * 
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
