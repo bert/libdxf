@@ -638,7 +638,6 @@ dxf_helix_write
         {
                 fprintf (fp->fp, " 62\n%d\n", dxf_helix->color);
         }
-        /*! \todo Check if we really need the thickness parameter. */
         if (dxf_helix->thickness != 0.0)
         {
                 fprintf (fp->fp, " 39\n%f\n", dxf_helix->thickness);
@@ -664,11 +663,37 @@ dxf_helix_write
         fprintf (fp->fp, " 72\n%d\n", dxf_helix->spline.number_of_knots);
         fprintf (fp->fp, " 73\n%d\n", dxf_helix->spline.number_of_control_points);
         fprintf (fp->fp, " 74\n%d\n", dxf_helix->spline.number_of_fit_points);
+        fprintf (fp->fp, " 42\n%f\n", dxf_helix->spline.knot_tolerance);
+        fprintf (fp->fp, " 43\n%f\n", dxf_helix->spline.control_point_tolerance);
+        fprintf (fp->fp, " 12\n%f\n", dxf_helix->spline.x2);
+        fprintf (fp->fp, " 22\n%f\n", dxf_helix->spline.y2);
+        fprintf (fp->fp, " 32\n%f\n", dxf_helix->spline.z2);
+        fprintf (fp->fp, " 13\n%f\n", dxf_helix->spline.x3);
+        fprintf (fp->fp, " 23\n%f\n", dxf_helix->spline.y3);
+        fprintf (fp->fp, " 33\n%f\n", dxf_helix->spline.z3);
         for (i = 0; i < dxf_helix->spline.number_of_knots; i++)
         {
                 fprintf (fp->fp, " 40\n%f\n", dxf_helix->spline.knot_value[i]);
         }
-        dxf_spline_free (&dxf_helix->spline);
+        if (dxf_helix->spline.number_of_fit_points != 0)
+        {
+        for (i = 0; i < dxf_helix->spline.number_of_fit_points; i++)
+                {
+                        fprintf (fp->fp, " 41\n%f\n", dxf_helix->spline.weight_value[i]);
+                }
+        }
+        for (i = 0; i < dxf_helix->spline.number_of_control_points; i++)
+        {
+                fprintf (fp->fp, " 10\n%f\n", dxf_helix->spline.x0[i]);
+                fprintf (fp->fp, " 20\n%f\n", dxf_helix->spline.y0[i]);
+                fprintf (fp->fp, " 30\n%f\n", dxf_helix->spline.z0[i]);
+        }
+        for (i = 0; i < dxf_helix->spline.number_of_fit_points; i++)
+        {
+                fprintf (fp->fp, " 11\n%f\n", dxf_helix->spline.x1[i]);
+                fprintf (fp->fp, " 21\n%f\n", dxf_helix->spline.y1[i]);
+                fprintf (fp->fp, " 31\n%f\n", dxf_helix->spline.z1[i]);
+        }
         /* Continue writing helix entity parameters. */
         fprintf (fp->fp, "100\nAcDbHelix\n");
         fprintf (fp->fp, " 90\n%ld\n", dxf_helix->major_release_number);
