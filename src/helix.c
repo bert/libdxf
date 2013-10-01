@@ -137,6 +137,7 @@ dxf_helix_init
         dxf_helix->color_value = 0;
         dxf_helix->color_name = strdup ("");
         dxf_helix->transparency = 0;
+        dxf_spline_init (&dxf_helix->spline);
         dxf_helix->next = NULL;
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_helix_init () function.\n",
@@ -173,10 +174,18 @@ dxf_helix_read
 #endif
         char *temp_string = NULL;
         int i;
+        int i_x0;
+        int i_y0;
+        int i_z0;
+        int i_x1;
+        int i_y1;
+        int i_z1;
+        int i_knot_value;
+        int i_weight_value;
 
         if (!dxf_helix)
         {
-                dxf_helix = dxf_helix_new ();
+                dxf_helix_init (dxf_helix);
         }
         i = 0;
         (fp->line_number)++;
@@ -356,8 +365,110 @@ dxf_helix_read
                          * subclass marker value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
-                        if ((strcmp (temp_string, "AcDbEntity") != 0)
-                        && ((strcmp (temp_string, "AcDbHelix") != 0)))
+                        if ((strcmp (temp_string, "AcDbSpline") == 0))
+                        {
+                                /*! \todo Parse the helix spline. */
+                                i_x0 = 0;
+                                i_y0 = 0;
+                                i_z0 = 0;
+                                i_x1 = 0;
+                                i_y1 = 0;
+                                i_z1 = 0;
+                                i_knot_value = 0;
+                                i_weight_value = 0;
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%[^\n]", temp_string);
+                                while (strcmp (temp_string, "0") != 0)
+                                {
+                                        if (strcmp (temp_string, "6") == 0)
+                                        {
+                                                /* Now follows a string containing a linetype
+                                                 * name. */
+                                                (fp->line_number)++;
+                                                fscanf (fp->fp, "%s\n", dxf_helix->spline.linetype);
+                                        }
+                                        else if (strcmp (temp_string, "8") == 0)
+                                        {
+                                                /* Now follows a string containing a layer name. */
+                                                (fp->line_number)++;
+                                                fscanf (fp->fp, "%s\n", dxf_helix->spline.layer);
+                                        }
+                                        else if (strcmp (temp_string, "10") == 0)
+                                        {
+                                                /* Now follows a string containing the
+                                                 * X-value of the control point coordinate
+                                                 * (multiple entries). */
+                                                (fp->line_number)++;
+                                                fscanf (fp->fp, "%lf\n", &dxf_helix->spline.x0[i_x0]);
+                                                i_x0++;
+                                        }
+                                        else if (strcmp (temp_string, "20") == 0)
+                                        {
+                                                /* Now follows a string containing the
+                                                 * Y-coordinate of control point coordinate
+                                                 * (multiple entries). */
+                                                (fp->line_number)++;
+                                                fscanf (fp->fp, "%lf\n", &dxf_helix->spline.y0[i_y0]);
+                                                i_y0++;
+                                        }
+                                        else if (strcmp (temp_string, "30") == 0)
+                                        {
+                                                /* Now follows a string containing the
+                                                 * Z-coordinate of the control point coordinate
+                                                 * (multiple entries). */
+                                                (fp->line_number)++;
+                                                fscanf (fp->fp, "%lf\n", &dxf_helix->spline.z0[i_z0]);
+                                                i_z0++;
+                                        }
+                                        else if (strcmp (temp_string, "40") == 0)
+                                        {
+                                                /* Now follows a knot value (one entry per knot, multiple entries). */
+                                                (fp->line_number)++;
+                                                fscanf (fp->fp, "%lf\n", &dxf_helix->spline.knot_value[i_knot_value]);
+                                                i_knot_value++;
+                                        }
+                                        else if (strcmp (temp_string, "41") == 0)
+                                        {
+                                                /* Now follows a weight value (one entry per knot, multiple entries). */
+                                                (fp->line_number)++;
+                                                fscanf (fp->fp, "%lf\n", &dxf_helix->spline.weight_value[i_weight_value]);
+                                                i_weight_value++;
+                }
+                                        else if (strcmp (temp_string, "42") == 0)
+                                        {
+                                                /* Now follows a knot tolerance value. */
+                                                (fp->line_number)++;
+                                                fscanf (fp->fp, "%lf\n", &dxf_helix->spline.knot_tolerance);
+                                                i_knot_value++;
+                                        }
+                                        else if (strcmp (temp_string, "43") == 0)
+                                        {
+                                                /* Now follows a control point tolerance value. */
+                                                (fp->line_number)++;
+                                                fscanf (fp->fp, "%lf\n", &dxf_helix->spline.control_point_tolerance);
+                                        }
+                                        else if (strcmp (temp_string, "44") == 0)
+                                        {
+                                                /* Now follows a fit point tolerance value. */
+                                                (fp->line_number)++;
+                                                fscanf (fp->fp, "%lf\n", &dxf_helix->spline.fit_tolerance);
+                                        }
+                                        else if (strcmp (temp_string, "999") == 0)
+                                        {
+                                                /* Now follows a string containing a comment. */
+                                                (fp->line_number)++;
+                                                fscanf (fp->fp, "%s\n", temp_string);
+                                                fprintf (stdout, "DXF comment: %s\n", temp_string);
+                                        }
+                                        else
+                                        {
+                                                fprintf (stderr, "Warning: in dxf_spline_read () unknown string tag found while reading from: %s in line: %d.\n",
+                                                        fp->filename, fp->line_number);
+                                        }
+                                }
+                        }
+                        else if ((strcmp (temp_string, "AcDbEntity") != 0)
+                                && ((strcmp (temp_string, "AcDbHelix") != 0)))
                         {
                                 fprintf (stderr, "Error in dxf_helix_read () found a bad subclass marker in: %s in line: %d.\n",
                                         fp->filename, fp->line_number);
@@ -462,6 +573,124 @@ dxf_helix_read
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_helix_read () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Write DXF output for a DXF \c HELIX entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_helix_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfHelix *dxf_helix
+                /*!< DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_helix_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *dxf_entity_name = strdup ("HELIX");
+        int i;
+
+        if (dxf_helix == NULL)
+        {
+                fprintf (stderr, "Error in dxf_helix_write () a NULL pointer was passed.\n");
+                return (EXIT_FAILURE);
+        }
+        if (dxf_helix->radius == 0.0)
+        {
+                fprintf (stderr, "Error in dxf_helix_write () radius value equals 0.0 for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_helix->id_code);
+                fprintf (stderr, "    skipping %s entity.\n",
+                        dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_helix->layer, "") == 0)
+        {
+                fprintf (stderr, "Warning in dxf_helix_write () empty layer string for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_helix->id_code);
+                fprintf (stderr, "\t%s entity is relocated to default layer.\n",
+                        dxf_entity_name);
+                dxf_helix->layer = DXF_DEFAULT_LAYER;
+        }
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (dxf_helix->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", dxf_helix->id_code);
+        }
+        fprintf (fp->fp, "330\n%s\n", dxf_helix->dictionary_owner_soft);
+        fprintf (fp->fp, "100\nAcDbEntity\n");
+        fprintf (fp->fp, "  8\n%s\n", dxf_helix->layer);
+        if (strcmp (dxf_helix->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_helix->linetype);
+        }
+        if (dxf_helix->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_helix->color);
+        }
+        /*! \todo Check if we really need the thickness parameter. */
+        if (dxf_helix->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_helix->thickness);
+        }
+        fprintf (fp->fp, " 48\n%f\n", dxf_helix->linetype_scale);
+        fprintf (fp->fp, " 92\n%d\n", dxf_helix->graphics_data_size);
+        i = 0;
+        while (strlen (dxf_helix->binary_graphics_data[i]) > 0)
+        {
+                fprintf (fp->fp, "310\n%s\n", dxf_helix->binary_graphics_data[i]);
+                i++;
+        }
+        fprintf (fp->fp, "370\n%d\n", dxf_helix->lineweight);
+        /* Create a helix shaped spline and write to a DxfFile. */
+        /*! \todo Add code for creating a helix shaped spline. */
+        dxf_spline_init (&dxf_helix->spline);
+        dxf_helix->spline.flag = 0;
+        dxf_helix->spline.degree = 3;
+        /*! \todo Add code for writing a helix shaped spline to a DxfFile. */
+        fprintf (fp->fp, "100\nAcDbSpline\n");
+        fprintf (fp->fp, " 70\n%d\n", dxf_helix->spline.flag);
+        fprintf (fp->fp, " 71\n%d\n", dxf_helix->spline.degree);
+        fprintf (fp->fp, " 72\n%d\n", dxf_helix->spline.number_of_knots);
+        fprintf (fp->fp, " 73\n%d\n", dxf_helix->spline.number_of_control_points);
+        fprintf (fp->fp, " 74\n%d\n", dxf_helix->spline.number_of_fit_points);
+        for (i = 0; i < dxf_helix->spline.number_of_knots; i++)
+        {
+                fprintf (fp->fp, " 40\n%f\n", dxf_helix->spline.knot_value[i]);
+        }
+        dxf_spline_free (&dxf_helix->spline);
+        /* Continue writing helix entity parameters. */
+        fprintf (fp->fp, "100\nAcDbHelix\n");
+        fprintf (fp->fp, " 90\n%ld\n", dxf_helix->major_release_number);
+        fprintf (fp->fp, " 91\n%ld\n", dxf_helix->maintainance_release_number);
+        fprintf (fp->fp, " 10\n%f\n", dxf_helix->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_helix->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_helix->z0);
+        fprintf (fp->fp, " 11\n%f\n", dxf_helix->x1);
+        fprintf (fp->fp, " 21\n%f\n", dxf_helix->y1);
+        fprintf (fp->fp, " 31\n%f\n", dxf_helix->z1);
+        fprintf (fp->fp, " 12\n%f\n", dxf_helix->x2);
+        fprintf (fp->fp, " 22\n%f\n", dxf_helix->y2);
+        fprintf (fp->fp, " 32\n%f\n", dxf_helix->z2);
+        fprintf (fp->fp, " 40\n%f\n", dxf_helix->radius);
+        fprintf (fp->fp, " 41\n%f\n", dxf_helix->number_of_turns);
+        fprintf (fp->fp, " 42\n%f\n", dxf_helix->turn_height);
+        if (dxf_helix->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_helix_write () function.\n",
                 __FILE__, __LINE__);
 #endif
         return (EXIT_SUCCESS);
