@@ -255,6 +255,12 @@ dxf_spline_read
         DxfSpline *dxf_spline
 );
 int
+dxf_spline_write
+(
+        DxfFile *fp,
+        DxfSpline *dxf_spline
+);
+int
 dxf_spline_free
 (
         DxfSpline *dxf_spline

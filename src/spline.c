@@ -725,6 +725,142 @@ dxf_spline_read
 
 
 /*!
+ * \brief Write DXF output for a DXF \c SPLINE entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_spline_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfSpline *dxf_spline
+                /*!< DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Entering dxf_spline_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        char *dxf_entity_name = strdup ("SPLINE");
+        int i;
+
+        if (dxf_spline == NULL)
+        {
+                fprintf (stderr, "Error in dxf_spline_write () a NULL pointer was passed.\n");
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_spline->layer, "") == 0)
+        {
+                fprintf (stderr, "Warning in dxf_spline_write () empty layer string for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, dxf_spline->id_code);
+                fprintf (stderr, "\t%s entity is relocated to default layer.\n",
+                        dxf_entity_name);
+                dxf_spline->layer = DXF_DEFAULT_LAYER;
+        }
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (dxf_spline->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", dxf_spline->id_code);
+        }
+        fprintf (fp->fp, "330\n%s\n", dxf_spline->dictionary_owner_soft);
+        fprintf (fp->fp, "100\nAcDbEntity\n");
+        if (dxf_spline->paperspace != DXF_MODELSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_spline->layer);
+        if (strcmp (dxf_spline->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_spline->linetype);
+        }
+        if (strcmp (dxf_spline->material, "") != 0)
+        {
+                fprintf (fp->fp, "347\n%s\n", dxf_spline->material);
+        }
+        if (dxf_spline->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_spline->color);
+        }
+        if (dxf_spline->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_spline->thickness);
+        }
+        fprintf (fp->fp, "370\n%d\n", dxf_spline->lineweight);
+        fprintf (fp->fp, " 48\n%f\n", dxf_spline->linetype_scale);
+        if (dxf_spline->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_spline->visibility);
+        }
+        fprintf (fp->fp, " 92\n%d\n", dxf_spline->graphics_data_size);
+        i = 0;
+        while (strlen (dxf_spline->binary_graphics_data[i]) > 0)
+        {
+                fprintf (fp->fp, "310\n%s\n", dxf_spline->binary_graphics_data[i]);
+                i++;
+        }
+        fprintf (fp->fp, "420\n%ld\n", dxf_spline->color_value);
+        fprintf (fp->fp, "430\n%s\n", dxf_spline->color_name);
+        fprintf (fp->fp, "440\n%ld\n", dxf_spline->transparency);
+        fprintf (fp->fp, "390\n%s\n", dxf_spline->plot_style_name);
+        fprintf (fp->fp, "284\n%d\n", dxf_spline->shadow_mode);
+        fprintf (fp->fp, "100\nAcDbSpline\n");
+        if ((fp->acad_version_number >= AutoCAD_12)
+                && (dxf_spline->extr_x0 != 0.0)
+                && (dxf_spline->extr_y0 != 0.0)
+                && (dxf_spline->extr_z0 != 1.0))
+        {
+                fprintf (fp->fp, "210\n%f\n", dxf_spline->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", dxf_spline->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", dxf_spline->extr_z0);
+        }
+        fprintf (fp->fp, " 70\n%d\n", dxf_spline->flag);
+        fprintf (fp->fp, " 71\n%d\n", dxf_spline->degree);
+        fprintf (fp->fp, " 72\n%d\n", dxf_spline->number_of_knots);
+        fprintf (fp->fp, " 73\n%d\n", dxf_spline->number_of_control_points);
+        fprintf (fp->fp, " 74\n%d\n", dxf_spline->number_of_fit_points);
+        fprintf (fp->fp, " 42\n%f\n", dxf_spline->knot_tolerance);
+        fprintf (fp->fp, " 43\n%f\n", dxf_spline->control_point_tolerance);
+        fprintf (fp->fp, " 12\n%f\n", dxf_spline->x2);
+        fprintf (fp->fp, " 22\n%f\n", dxf_spline->y2);
+        fprintf (fp->fp, " 32\n%f\n", dxf_spline->z2);
+        fprintf (fp->fp, " 13\n%f\n", dxf_spline->x3);
+        fprintf (fp->fp, " 23\n%f\n", dxf_spline->y3);
+        fprintf (fp->fp, " 33\n%f\n", dxf_spline->z3);
+        for (i = 0; i < dxf_spline->number_of_knots; i++)
+        {
+                fprintf (fp->fp, " 40\n%f\n", dxf_spline->knot_value[i]);
+        }
+        if (dxf_spline->number_of_fit_points != 0)
+        {
+        for (i = 0; i < dxf_spline->number_of_fit_points; i++)
+                {
+                        fprintf (fp->fp, " 41\n%f\n", dxf_spline->weight_value[i]);
+                }
+        }
+        for (i = 0; i < dxf_spline->number_of_control_points; i++)
+        {
+                fprintf (fp->fp, " 10\n%f\n", dxf_spline->x0[i]);
+                fprintf (fp->fp, " 20\n%f\n", dxf_spline->y0[i]);
+                fprintf (fp->fp, " 30\n%f\n", dxf_spline->z0[i]);
+        }
+        for (i = 0; i < dxf_spline->number_of_fit_points; i++)
+        {
+                fprintf (fp->fp, " 11\n%f\n", dxf_spline->x1[i]);
+                fprintf (fp->fp, " 21\n%f\n", dxf_spline->y1[i]);
+                fprintf (fp->fp, " 31\n%f\n", dxf_spline->z1[i]);
+        }
+
+#if DEBUG
+        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_spline_write () function.\n",
+                __FILE__, __LINE__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c SPLINE and all it's
  * data fields.
  *
