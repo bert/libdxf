@@ -1,7 +1,7 @@
 /*!
  * \file 3dface.h
  *
- * \author Copyright (C) 2010 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF 3D face entity (\c 3DFACE).
  *
@@ -140,31 +140,6 @@ dxf_3dface_read
 (
         DxfFile *fp,
         Dxf3dface *dxf_3dface
-);
-int
-dxf_3dface_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *linetype,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double x1,
-        double y1,
-        double z1,
-        double x2,
-        double y2,
-        double z2,
-        double x3,
-        double y3,
-        double z3,
-        double thickness,
-        int color,
-        int paperspace,
-        int flag,
-        int acad_version_number
 );
 int
 dxf_3dface_write
