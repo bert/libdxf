@@ -474,6 +474,13 @@ dxf_helix_read
                                         fp->filename, fp->line_number);
                         }
                 }
+                else if (strcmp (temp_string, "160") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_helix->graphics_data_size);
+                }
                 else if (strcmp (temp_string, "280") == 0)
                 {
                         /* Now follows a string containing a constraint
@@ -601,6 +608,7 @@ dxf_helix_write
         char *dxf_entity_name = strdup ("HELIX");
         int i;
 
+        /* Do some basic checks. */
         if (dxf_helix == NULL)
         {
                 fprintf (stderr, "Error in dxf_helix_write () a NULL pointer was passed.\n");
@@ -622,6 +630,7 @@ dxf_helix_write
                         dxf_entity_name);
                 dxf_helix->layer = DXF_DEFAULT_LAYER;
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_helix->id_code != -1)
         {
@@ -629,10 +638,18 @@ dxf_helix_write
         }
         fprintf (fp->fp, "330\n%s\n", dxf_helix->dictionary_owner_soft);
         fprintf (fp->fp, "100\nAcDbEntity\n");
+        if (dxf_helix->paperspace != DXF_MODELSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
         fprintf (fp->fp, "  8\n%s\n", dxf_helix->layer);
         if (strcmp (dxf_helix->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_helix->linetype);
+        }
+        if (strcmp (dxf_helix->material, "") != 0)
+        {
+                fprintf (fp->fp, "347\n%s\n", dxf_helix->material);
         }
         if (dxf_helix->color != DXF_COLOR_BYLAYER)
         {
@@ -643,6 +660,10 @@ dxf_helix_write
                 fprintf (fp->fp, " 39\n%f\n", dxf_helix->thickness);
         }
         fprintf (fp->fp, " 48\n%f\n", dxf_helix->linetype_scale);
+        if (dxf_helix->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_helix->visibility);
+        }
         fprintf (fp->fp, " 92\n%d\n", dxf_helix->graphics_data_size);
         i = 0;
         while (strlen (dxf_helix->binary_graphics_data[i]) > 0)
@@ -651,6 +672,11 @@ dxf_helix_write
                 i++;
         }
         fprintf (fp->fp, "370\n%d\n", dxf_helix->lineweight);
+        fprintf (fp->fp, "420\n%ld\n", dxf_helix->color_value);
+        fprintf (fp->fp, "430\n%s\n", dxf_helix->color_name);
+        fprintf (fp->fp, "440\n%ld\n", dxf_helix->transparency);
+        fprintf (fp->fp, "390\n%s\n", dxf_helix->plot_style_name);
+        fprintf (fp->fp, "284\n%d\n", dxf_helix->shadow_mode);
         /* Create a helix shaped spline and write to a DxfFile. */
         /*! \todo Add code for creating a helix shaped spline. */
         dxf_spline_init (&dxf_helix->spline);
@@ -710,10 +736,8 @@ dxf_helix_write
         fprintf (fp->fp, " 40\n%f\n", dxf_helix->radius);
         fprintf (fp->fp, " 41\n%f\n", dxf_helix->number_of_turns);
         fprintf (fp->fp, " 42\n%f\n", dxf_helix->turn_height);
-        if (dxf_helix->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
+        fprintf (fp->fp, "290\n%d\n", dxf_helix->handedness);
+        fprintf (fp->fp, "280\n%d\n", dxf_helix->constraint_type);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_helix_write () function.\n",
                 __FILE__, __LINE__);

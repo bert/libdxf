@@ -87,7 +87,12 @@ dxf_helix
                 /*!< group code = 92\n
                  * Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
-                 * binary chunk records (optional). */
+                 * binary chunk records (optional).
+                 *
+                 * \warning On some 64 bit workstations output is
+                 * generated with group code "160", thus omitting group
+                 * code "92".
+                 */
         int16_t shadow_mode;
                 /*!< group code = 284\n
                  * Shadow mode:\n
