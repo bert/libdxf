@@ -364,6 +364,7 @@ dxf_3dface_write
 #endif
         char *dxf_entity_name = strdup ("3DFACE");
 
+        /* Do some basic checks. */
         if (dxf_3dface == NULL)
         {
                 return (EXIT_FAILURE);
@@ -377,21 +378,45 @@ dxf_3dface_write
                         dxf_entity_name);
                 dxf_3dface->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
-                fprintf (fp->fp, "100\nAcDbFace\n");
         }
         if (dxf_3dface->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_3dface->id_code);
         }
+        if (dxf_3dface->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_3dface->layer);
         if (strcmp (dxf_3dface->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_3dface->linetype);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_3dface->layer);
+        if (dxf_3dface->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_3dface->color);
+        }
+        if (dxf_3dface->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_3dface->thickness);
+        }
+        if (dxf_3dface->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_3dface->linetype_scale);
+        }
+        if (dxf_3dface->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_3dface->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbFace\n");
+        }
         fprintf (fp->fp, " 10\n%f\n", dxf_3dface->x0);
         fprintf (fp->fp, " 20\n%f\n", dxf_3dface->y0);
         fprintf (fp->fp, " 30\n%f\n", dxf_3dface->z0);
@@ -404,18 +429,7 @@ dxf_3dface_write
         fprintf (fp->fp, " 13\n%f\n", dxf_3dface->x3);
         fprintf (fp->fp, " 23\n%f\n", dxf_3dface->y3);
         fprintf (fp->fp, " 33\n%f\n", dxf_3dface->z3);
-        if (dxf_3dface->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", dxf_3dface->thickness);
-        }
-        if (dxf_3dface->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_3dface->color);
-        }
-        if (dxf_3dface->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
+        fprintf (fp->fp, " 70\n%d\n", dxf_3dface->flag);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_write () function.\n",
                 __FILE__, __LINE__);
