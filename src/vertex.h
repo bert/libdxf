@@ -1,7 +1,7 @@
 /*!
  * \file vertex.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF vertex entity (\c VERTEX).
  *
@@ -37,6 +37,7 @@
 
 
 #include "global.h"
+#include "entity.h"
 
 
 /*!
@@ -139,6 +140,18 @@ dxf_vertex
                  * <li value="64"> 3D polygon mesh vertex.</li>
                  * <li value="128"> Polyface mesh vertex.</li>
                  * </ol> */
+        int polyface_mesh_vertex_index_1;
+                /*!< group code = 71\n
+                 * optional, defaults to 0. */
+        int polyface_mesh_vertex_index_2;
+                /*!< group code = 72\n
+                 * optional, defaults to 0. */
+        int polyface_mesh_vertex_index_3;
+                /*!< group code = 73\n
+                 * optional, defaults to 0. */
+        int polyface_mesh_vertex_index_4;
+                /*!< group code = 74\n
+                 * optional, defaults to 0. */
         struct DxfVertex *next;
                 /*!< pointer to the next DxfVertex.\n
                  * \c NULL in the last DxfVertex. */
@@ -155,9 +168,7 @@ dxf_vertex_init
 int
 dxf_vertex_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfVertex *dxf_vertex
 );
 int
@@ -182,7 +193,7 @@ dxf_vertex_write_lowlevel
 int
 dxf_vertex_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfVertex *dxf_vertex
 );
 
