@@ -1,7 +1,7 @@
 /*!
  * \file 3dsolid.h
  *
- * \author Copyright (C) 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF 3D solid entity (\c 3DSOLID).
  *
@@ -110,22 +110,6 @@ dxf_3dsolid_read
 (
         DxfFile *fp,
         Dxf3dsolid *dxf_3dsolid
-);
-int
-dxf_3dsolid_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *linetype,
-        char *layer,
-        double thickness,
-        int color,
-        int paperspace,
-        char *proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM],
-        char *additional_proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM],
-        int modeler_format_version_number,
-        char *history,
-        int acad_version_number
 );
 int
 dxf_3dsolid_write
