@@ -289,6 +289,20 @@ dxf_3dface_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_3dface->thickness);
                 }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_3dface->visibility);
+                }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
