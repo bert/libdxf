@@ -110,6 +110,8 @@ dxf_3dface_init
         dxf_3dface->y3 = 0.0;
         dxf_3dface->z3 = 0.0;
         dxf_3dface->thickness = 0.0;
+        dxf_3dface->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_3dface->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_3dface->color = DXF_COLOR_BYLAYER;
         dxf_3dface->paperspace = DXF_MODELSPACE;
         dxf_3dface->flag = 0;
