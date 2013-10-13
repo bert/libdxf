@@ -433,6 +433,10 @@ dxf_arc_write
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_arc->linetype);
         }
+        if (dxf_arc->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_arc->color);
+        }
         if (dxf_arc->linetype_scale != 1.0)
         {
                 fprintf (fp->fp, " 48\n%f\n", dxf_arc->linetype_scale);
@@ -440,10 +444,6 @@ dxf_arc_write
         if (dxf_arc->visibility != 0)
         {
                 fprintf (fp->fp, " 60\n%d\n", dxf_arc->visibility);
-        }
-        if (dxf_arc->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_arc->color);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
