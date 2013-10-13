@@ -101,6 +101,8 @@ dxf_3dsolid_init
         dxf_3dsolid->linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
         dxf_3dsolid->thickness = 0.0;
+        dxf_3dsolid->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_3dsolid->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_3dsolid->color = DXF_COLOR_BYLAYER;
         dxf_3dsolid->paperspace = DXF_MODELSPACE;
         dxf_3dsolid->modeler_format_version_number = 1;
@@ -307,6 +309,12 @@ dxf_3dsolid_write
         char *dxf_entity_name = strdup ("3DSOLID");
         int i;
 
+        /* Do some basic checks. */
+        if (dxf_3dsolid == NULL)
+        {
+                return (EXIT_FAILURE);
+                fprintf (stderr, "Error in dxf_3dsolid_write () a NULL pointer was passed.\n");
+        }
         if (strcmp (dxf_3dsolid->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_3dsolid_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
@@ -315,10 +323,40 @@ dxf_3dsolid_write
                         dxf_entity_name);
                 dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_3dsolid->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_3dsolid->id_code);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (dxf_3dsolid->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_3dsolid->layer);
+        if (strcmp (dxf_3dsolid->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_3dsolid->linetype);
+        }
+        if (dxf_3dsolid->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_3dsolid->color);
+        }
+        if (dxf_3dsolid->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_3dsolid->thickness);
+        }
+        if (dxf_3dsolid->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_3dsolid->linetype_scale);
+        }
+        if (dxf_3dsolid->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_3dsolid->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -327,23 +365,6 @@ dxf_3dsolid_write
         if (fp->acad_version_number >= AutoCAD_2008)
         {
                 fprintf (fp->fp, "100\nAcDb3dSolid\n");
-        }
-        if (strcmp (dxf_3dsolid->linetype, DXF_DEFAULT_LINETYPE) != 0)
-        {
-                fprintf (fp->fp, "  6\n%s\n", dxf_3dsolid->linetype);
-        }
-        fprintf (fp->fp, "  8\n%s\n", dxf_3dsolid->layer);
-        if (dxf_3dsolid->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", dxf_3dsolid->thickness);
-        }
-        if (dxf_3dsolid->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_3dsolid->color);
-        }
-        if (dxf_3dsolid->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
