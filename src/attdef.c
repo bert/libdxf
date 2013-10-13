@@ -111,6 +111,8 @@ dxf_attdef_init
         dxf_attdef->rot_angle = 0.0;
         dxf_attdef->obl_angle = 0.0;
         dxf_attdef->thickness = 0.0;
+        dxf_attdef->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_attdef->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_attdef->color = DXF_COLOR_BYLAYER;
         dxf_attdef->paperspace = DXF_MODELSPACE;
         dxf_attdef->attr_flags = 0;
@@ -293,6 +295,13 @@ dxf_attdef_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_attdef->rel_x_scale);
                 }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_attdef->linetype_scale);
+                }
                 else if (strcmp (temp_string, "50") == 0)
                 {
                         /* Now follows a string containing the
@@ -306,6 +315,13 @@ dxf_attdef_read
                          * end angle. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_attdef->obl_angle);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_attdef->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -433,6 +449,8 @@ dxf_attdef_write
                 __FILE__, __LINE__);
 #endif
         char *dxf_entity_name = strdup ("ATTDEF");
+
+        /* Do some basic checks. */
         if (dxf_attdef == NULL)
         {
                 return (EXIT_FAILURE);
@@ -476,10 +494,8 @@ dxf_attdef_write
                         dxf_entity_name);
                 dxf_attdef->rel_x_scale = 1.0;
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp->fp, "  1\n%s\n", dxf_attdef->default_value);
-        fprintf (fp->fp, "  2\n%s\n", dxf_attdef->tag_value);
-        fprintf (fp->fp, "  3\n%s\n", dxf_attdef->prompt_value);
         if (dxf_attdef->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_attdef->id_code);
@@ -487,21 +503,80 @@ dxf_attdef_write
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
-                fprintf (fp->fp, "100\nAcDbText\n");
-                fprintf (fp->fp, "100\nAcDbAttributeDefinition\n");
         }
+        if (dxf_attdef->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_attdef->layer);
         if (strcmp (dxf_attdef->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_attdef->linetype);
+        }
+        if (dxf_attdef->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_attdef->color);
+        }
+        if (dxf_attdef->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_attdef->linetype_scale);
+        }
+        if (dxf_attdef->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_attdef->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbText\n");
+        }
+        if (dxf_attdef->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_attdef->thickness);
+        }
+        fprintf (fp->fp, " 10\n%f\n", dxf_attdef->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_attdef->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_attdef->z0);
+        fprintf (fp->fp, " 40\n%f\n", dxf_attdef->height);
+        fprintf (fp->fp, "  1\n%s\n", dxf_attdef->default_value);
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbAttributeDefinition\n");
+        }
+        fprintf (fp->fp, "  3\n%s\n", dxf_attdef->prompt_value);
+        fprintf (fp->fp, "  2\n%s\n", dxf_attdef->tag_value);
+        fprintf (fp->fp, " 70\n%d\n", dxf_attdef->attr_flags);
+        if (dxf_attdef->field_length != 0)
+        {
+                fprintf (fp->fp, " 73\n%d\n", dxf_attdef->field_length);
+        }
+        if (dxf_attdef->rot_angle != 0.0)
+        {
+                fprintf (fp->fp, " 50\n%f\n", dxf_attdef->rot_angle);
+        }
+        if (dxf_attdef->rel_x_scale != 1.0)
+        {
+                fprintf (fp->fp, " 41\n%f\n", dxf_attdef->rel_x_scale);
+        }
+        if (dxf_attdef->obl_angle != 0.0)
+        {
+                fprintf (fp->fp, " 51\n%f\n", dxf_attdef->obl_angle);
         }
         if (strcmp (dxf_attdef->text_style, "STANDARD") != 0)
         {
                 fprintf (fp->fp, "  7\n%s\n", dxf_attdef->text_style);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_attdef->layer);
-        fprintf (fp->fp, " 10\n%f\n", dxf_attdef->x0);
-        fprintf (fp->fp, " 20\n%f\n", dxf_attdef->y0);
-        fprintf (fp->fp, " 30\n%f\n", dxf_attdef->z0);
+        if (dxf_attdef->text_flags != 0)
+        {
+                fprintf (fp->fp, " 71\n%d\n", dxf_attdef->text_flags);
+        }
+        if (dxf_attdef->hor_align != 0)
+        {
+                fprintf (fp->fp, " 72\n%d\n", dxf_attdef->hor_align);
+        }
+        if (dxf_attdef->vert_align != 0)
+        {
+                fprintf (fp->fp, " 74\n%d\n", dxf_attdef->vert_align);
+        }
         if ((dxf_attdef->hor_align != 0) || (dxf_attdef->vert_align != 0))
         {
                 if ((dxf_attdef->x0 == dxf_attdef->x1)
@@ -527,48 +602,6 @@ dxf_attdef_write
                 fprintf (fp->fp, "210\n%f\n", dxf_attdef->extr_x0);
                 fprintf (fp->fp, "220\n%f\n", dxf_attdef->extr_y0);
                 fprintf (fp->fp, "230\n%f\n", dxf_attdef->extr_z0);
-        }
-        if (dxf_attdef->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", dxf_attdef->thickness);
-        }
-        fprintf (fp->fp, " 40\n%f\n", dxf_attdef->height);
-        if (dxf_attdef->rel_x_scale != 1.0)
-        {
-                fprintf (fp->fp, " 41\n%f\n", dxf_attdef->rel_x_scale);
-        }
-        if (dxf_attdef->rot_angle != 0.0)
-        {
-                fprintf (fp->fp, " 50\n%f\n", dxf_attdef->rot_angle);
-        }
-        if (dxf_attdef->obl_angle != 0.0)
-        {
-                fprintf (fp->fp, " 51\n%f\n", dxf_attdef->obl_angle);
-        }
-        if (dxf_attdef->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_attdef->color);
-        }
-        if (dxf_attdef->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
-        fprintf (fp->fp, " 70\n%d\n", dxf_attdef->attr_flags);
-        if (dxf_attdef->text_flags != 0)
-        {
-                fprintf (fp->fp, " 71\n%d\n", dxf_attdef->text_flags);
-        }
-        if (dxf_attdef->hor_align != 0)
-        {
-                fprintf (fp->fp, " 72\n%d\n", dxf_attdef->hor_align);
-        }
-        if (dxf_attdef->field_length != 0)
-        {
-                fprintf (fp->fp, " 73\n%d\n", dxf_attdef->field_length);
-        }
-        if (dxf_attdef->vert_align != 0)
-        {
-                fprintf (fp->fp, " 74\n%d\n", dxf_attdef->vert_align);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attdef_write () function.\n",
