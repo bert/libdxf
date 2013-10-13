@@ -64,6 +64,12 @@ dxf_arc
                 /*!< group code = 39\n
                  * Thickness of the arc in the local Z-direction.\n
                  * Defaults to 0.0 if ommitted in the DXF file. */
+        double linetype_scale;
+                /*!< group code = 48\n
+                 * Linetype scale (optional). */
+        int16_t visibility;
+                /*!< group code = 60\n
+                 * Object visibility (optional): 0 = Visible; 1 = Invisible. */
         int color;
                 /*!< group code = 62\n
                  * Color of the entity.\n

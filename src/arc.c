@@ -107,6 +107,8 @@ dxf_arc_init
         dxf_arc->extr_y0 = 0.0;
         dxf_arc->extr_z0 = 0.0;
         dxf_arc->thickness = 0.0;
+        dxf_arc->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_arc->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_arc->radius = 0.0;
         dxf_arc->start_angle = 0.0;
         dxf_arc->end_angle = 0.0;
@@ -227,6 +229,13 @@ dxf_arc_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_arc->radius);
                 }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_arc->linetype_scale);
+                }
                 else if (strcmp (temp_string, "50") == 0)
                 {
                         /* Now follows a string containing the
@@ -240,6 +249,13 @@ dxf_arc_read
                          * end angle. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_arc->end_angle);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_arc->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -332,6 +348,7 @@ dxf_arc_write
 #endif
         char *dxf_entity_name = strdup ("ARC");
 
+        /* Do some basic checks. */
         if (dxf_arc == NULL)
         {
                 fprintf (stderr, "Error in dxf_arc_write () a NULL pointer was passed.\n");
@@ -393,6 +410,7 @@ dxf_arc_write
                         dxf_entity_name);
                 dxf_arc->layer = DXF_DEFAULT_LAYER;
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_arc->id_code != -1)
         {
@@ -406,10 +424,22 @@ dxf_arc_write
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
+        if (dxf_arc->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
         fprintf (fp->fp, "  8\n%s\n", dxf_arc->layer);
         if (strcmp (dxf_arc->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_arc->linetype);
+        }
+        if (dxf_arc->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_arc->linetype_scale);
+        }
+        if (dxf_arc->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_arc->visibility);
         }
         if (dxf_arc->color != DXF_COLOR_BYLAYER)
         {
@@ -419,9 +449,20 @@ dxf_arc_write
         {
                 fprintf (fp->fp, "100\nAcDbCircle\n");
         }
+        if (dxf_arc->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_arc->thickness);
+        }
         fprintf (fp->fp, " 10\n%f\n", dxf_arc->x0);
         fprintf (fp->fp, " 20\n%f\n", dxf_arc->y0);
         fprintf (fp->fp, " 30\n%f\n", dxf_arc->z0);
+        fprintf (fp->fp, " 40\n%f\n", dxf_arc->radius);
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbArc\n");
+        }
+        fprintf (fp->fp, " 50\n%f\n", dxf_arc->start_angle);
+        fprintf (fp->fp, " 51\n%f\n", dxf_arc->end_angle);
         if ((fp->acad_version_number >= AutoCAD_12)
                 && (dxf_arc->extr_x0 != 0.0)
                 && (dxf_arc->extr_y0 != 0.0)
@@ -430,21 +471,6 @@ dxf_arc_write
                 fprintf (fp->fp, "210\n%f\n", dxf_arc->extr_x0);
                 fprintf (fp->fp, "220\n%f\n", dxf_arc->extr_y0);
                 fprintf (fp->fp, "230\n%f\n", dxf_arc->extr_z0);
-        }
-        if (dxf_arc->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", dxf_arc->thickness);
-        }
-        fprintf (fp->fp, " 40\n%f\n", dxf_arc->radius);
-        if (fp->acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp->fp, "100\nAcDbArc\n");
-        }
-        fprintf (fp->fp, " 50\n%f\n", dxf_arc->start_angle);
-        fprintf (fp->fp, " 51\n%f\n", dxf_arc->end_angle);
-        if (dxf_arc->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_write () function.\n",
