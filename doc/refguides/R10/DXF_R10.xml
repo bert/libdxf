@@ -264,7 +264,397 @@
             </listitem>
           </orderedlist>
 
+          <para>If you use DXFOUT's "Entities" option, the resulting DXF file
+          will contain only the ENTITIES and END OF FILE sections, and the
+          ENTITIES section will reflect only the objects you select for
+          output.</para>
+
+          <para>A DXF file is composed of a multiplicity of groups, each of
+          which occupies two lines in the DXF file.</para>
+
+          <para>The first line of a group is a group code, which is a positive
+          nonzero integer output in FORTRAN "I3" format (that is, right
+          justified and blank filled in a three character field).</para>
+
+          <para>The second line of the group is the group value, in a format
+          which depends on the type of the group as specified by the group
+          code.</para>
+
+          <para>The specific assignment of group codes depends upon the item
+          being described in the file.</para>
+
+          <para>However, the type of the value this group supplies is derived
+          from the group code in the following way:<table>
+              <title>Group code ranges and values.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="center">Group code range</entry>
+
+                    <entry align="center">Following value</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>0 - 9</entry>
+
+                    <entry>String</entry>
+                  </row>
+
+                  <row>
+                    <entry>10 - 59</entry>
+
+                    <entry>Floating-point</entry>
+                  </row>
+
+                  <row>
+                    <entry>60 - 79</entry>
+
+                    <entry>Integer</entry>
+                  </row>
+
+                  <row>
+                    <entry>210 - 239</entry>
+
+                    <entry>Floating-point</entry>
+                  </row>
+
+                  <row>
+                    <entry>999</entry>
+
+                    <entry>Comment (string)</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
+
+          <para>Thus a program can easily read the value following a group
+          code without knowing the particular use of this group in an item in
+          the file.</para>
+
+          <para>The appearance of values in the DXF file is not affected by
+          the setting of the UNITS command: coordinates are always represented
+          as decimal (or possibly scientific notation if very large) numbers,
+          and angles are always represented in decimal degrees with zero
+          degrees to the east of origin.</para>
+
+          <para>Variables, table entries, and entities are described by a
+          group that introduces the item, giving its type and/or name,
+          followed by multiple groups that supply the values associated with
+          the item.</para>
+
+          <para>In addition, special groups are used for file separators such
+          as markers for the beginning and end of sections, tables, and the
+          file itself.</para>
+
+          <para>Entities, table entries, and file separators are always
+          introduced with a 0 group code that is followed by a name describing
+          the item.</para>
+        </section>
+
+        <section>
+          <title>Group Codes.</title>
+
+          <para>Group codes are used both to indicate the type of the value of
+          the group, as explained above, and to indicate the general use of
+          the group.</para>
+
+          <para>The specific function of the group code depends on the actual
+          variable, table item, or entity description.</para>
+
+          <para>This section indicates the general use of groups, noting as
+          "(fixed)" any that always have the same function.<table>
+              <title>Group codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="center">Group code</entry>
+
+                    <entry align="center">Value type</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>0</entry>
+
+                    <entry>Identifies the start of an entity, table entry, or
+                    file separator. The text value that follows indicates
+                    which.</entry>
+                  </row>
+
+                  <row>
+                    <entry>1</entry>
+
+                    <entry>The primary text value for an entity.</entry>
+                  </row>
+
+                  <row>
+                    <entry>2</entry>
+
+                    <entry>A name; Attribute tag, Block name, etc.</entry>
+                  </row>
+
+                  <row>
+                    <entry>3, 4</entry>
+
+                    <entry>Other textual or name values.</entry>
+                  </row>
+
+                  <row>
+                    <entry>5</entry>
+
+                    <entry>Entity handle expressed as a hexadecimal
+                    string.</entry>
+                  </row>
+
+                  <row>
+                    <entry>6</entry>
+
+                    <entry>Linetype name (fixed).</entry>
+                  </row>
+
+                  <row>
+                    <entry>7</entry>
+
+                    <entry>Text style name (fixed).</entry>
+                  </row>
+
+                  <row>
+                    <entry>8</entry>
+
+                    <entry>Layer name (fixed).</entry>
+                  </row>
+
+                  <row>
+                    <entry>9</entry>
+
+                    <entry>Variable name identifier (used only in HEADER
+                    section of the DXF file).</entry>
+                  </row>
+
+                  <row>
+                    <entry>10</entry>
+
+                    <entry>Primary X coordinate (start point of a Line or Text
+                    entity, center of a Circle, etc.).</entry>
+                  </row>
+
+                  <row>
+                    <entry>11 ... 18</entry>
+
+                    <entry>Other X coordinates.</entry>
+                  </row>
+
+                  <row>
+                    <entry>20</entry>
+
+                    <entry>Primary Y coordinate. 2n values always correspond
+                    to 1n values and immediately follow them in the
+                    file.</entry>
+                  </row>
+
+                  <row>
+                    <entry>21 ... 28</entry>
+
+                    <entry>Other Y coordinates.</entry>
+                  </row>
+
+                  <row>
+                    <entry>30</entry>
+
+                    <entry>Primary Z coordinate. 3n values always correspond
+                    to 1n and 2n values and immediately follow them in the
+                    file.</entry>
+                  </row>
+
+                  <row>
+                    <entry>31 ... 37</entry>
+
+                    <entry>Other Z coordinates.</entry>
+                  </row>
+
+                  <row>
+                    <entry>38</entry>
+
+                    <entry>This entity's elevation if nonzero (fixed). Output
+                    only if system variable FLATLAND is set to 1.</entry>
+                  </row>
+
+                  <row>
+                    <entry>39</entry>
+
+                    <entry>This entity's thickness if nonzero (fixed).</entry>
+                  </row>
+
+                  <row>
+                    <entry>40 ... 48</entry>
+
+                    <entry>Floating-point values (text height, scale factors,
+                    etc.).</entry>
+                  </row>
+
+                  <row>
+                    <entry>49</entry>
+
+                    <entry>epeated value - multiple 49 groups may appear in
+                    one entity for variable length tables (such as the dash
+                    lengths in the LTYPE table). A 7x group always appears
+                    before the first 49 group to specify the table
+                    length.</entry>
+                  </row>
+
+                  <row>
+                    <entry>50 ... 58</entry>
+
+                    <entry>Angles.</entry>
+                  </row>
+
+                  <row>
+                    <entry>62</entry>
+
+                    <entry>Color number (fixed).</entry>
+                  </row>
+
+                  <row>
+                    <entry>66</entry>
+
+                    <entry>"Entities follow" flag (fixed).</entry>
+                  </row>
+
+                  <row>
+                    <entry>70 ... 78</entry>
+
+                    <entry>Integer values, such as repeat counts, flag bits,
+                    or modes.</entry>
+                  </row>
+
+                  <row>
+                    <entry>210, 220, 230</entry>
+
+                    <entry>X, Y, and Z components of extrusion
+                    direction.</entry>
+                  </row>
+
+                  <row>
+                    <entry>999</entry>
+
+                    <entry>DXF only: The 999 group code indicates that the
+                    line following it is a comment string. DXFOUT does not
+                    include such groups in a DXF output file, but DXFIN honors
+                    them and ignores the comments. You can use the 999 group
+                    to include comments in a DXF file you've edited.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
+
           <para/>
+        </section>
+      </section>
+
+      <section>
+        <title>Comments.</title>
+
+        <para>The 999 group code indicates that the following line is a
+        comment string.</para>
+
+        <para>DXFOUT does not currently include such groups in its output
+        file, but DXFIN honors them and ignores the comments.</para>
+
+        <para>Thus, you can use the 999 group to include comments in a DXF
+        file you've edited.</para>
+
+        <para>For example:</para>
+
+        <programlisting>999
+This is a comment.
+999
+This is another comment.</programlisting>
+      </section>
+
+      <section>
+        <title>File Sections.</title>
+
+        <para>The DXF file is subdivided into four sections.</para>
+
+        <para>File separator groups are used to delimit these file
+        sections.</para>
+
+        <para>The following is an example of a void DXF file with only the
+        section markers and table headers present.</para>
+
+        <programlisting>  0                           (Begin HEADER section)
+SECTION
+  2
+HEADER
+     &lt;&lt;&lt;&lt;Header variable items go here&gt;&gt;&gt;&gt;
+  0
+ENDSEC                        (End HEADER section)
+  0                           (Begin TABLES section)
+SECTION
+  2
+TABLES
+  0
+TABLE
+  2
+VPORT
+ 70
+(viewport table maximum item count)
+    &lt;&lt;&lt;&lt;viewport table items go here&gt;&gt;&gt;&gt;
+  0
+ENDTAB
+  0
+TABLE
+  2
+LTYPE, LAYER, STYLE, VIEW, UCS, or DWGMGR
+ 70
+(Table maximum item count)
+    &lt;&lt;&lt;&lt;Table items go here&gt;&gt;&gt;&gt;
+  0
+ENDTAB
+  0
+ENDSEC                        (End TABLES section)
+  0                           (Begin BLOCKS section)
+SECTION
+  2
+BLOCKS
+    &lt;&lt;&lt;&lt;Block definition entities go here&gt;&gt;&gt;&gt;
+  0
+ENDSEC                        (End BLOCKS section)
+  0                           (Begin ENTITIES section)
+SECTION
+  2
+ENTITIES
+    &lt;&lt;&lt;&lt;Drawing entities go here&gt;&gt;&gt;&gt;
+  0
+ENDSEC                        (End ENTITIES section)
+  0
+EOF                           (End of file)
+</programlisting>
+
+        <section>
+          <title>HEADER Section.</title>
+
+          <para>The HEADER section of the DXF file contains settings of
+          variables associated with the drawing.</para>
+
+          <para>These variables are set with various commands and are the type
+          of information displayed by the STATUS command.</para>
+
+          <para>Each variable is specified in the header section by a 9 group
+          giving its name, followed by groups that supply its value.</para>
+
+          <para>The header variables, the groups that follow, and their
+          meanings are listed below.</para>
+
+          <para>Although this list is very similar to the list of system
+          variables in Appendix A, the two lists are not identical.</para>
+
+          <para>Be sure you're referring to the proper list.</para>
         </section>
       </section>
     </section>
