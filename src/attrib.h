@@ -1,7 +1,7 @@
 /*!
  * \file attrib.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF attribute entity (\c ATTRIB).
  *
@@ -178,36 +178,6 @@ dxf_attrib_read
 (
         DxfFile *fp,
         DxfAttrib *dxf_attrib
-);
-int
-dxf_attrib_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *value,
-        char *tag_value,
-        char *linetype,
-        char *text_style,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double x1,
-        double y1,
-        double z1,
-        double thickness,
-        double height,
-        double rel_x_scale,
-        double rot_angle,
-        double obl_angle,
-        int color,
-        int paperspace,
-        int attr_flags,
-        int text_flags,
-        int hor_align,
-        int field_length,
-        int vert_align,
-        int acad_version_number
 );
 int
 dxf_attrib_write
