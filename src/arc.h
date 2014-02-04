@@ -1,7 +1,7 @@
 /*!
  * \file arc.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF arc entity (\c ARC).
  *
@@ -64,6 +64,12 @@ dxf_arc
                 /*!< group code = 39\n
                  * Thickness of the arc in the local Z-direction.\n
                  * Defaults to 0.0 if ommitted in the DXF file. */
+        double linetype_scale;
+                /*!< group code = 48\n
+                 * Linetype scale (optional). */
+        int16_t visibility;
+                /*!< group code = 60\n
+                 * Object visibility (optional): 0 = Visible; 1 = Invisible. */
         int color;
                 /*!< group code = 62\n
                  * Color of the entity.\n
@@ -128,27 +134,6 @@ dxf_arc_read
 (
         DxfFile *fp,
         DxfArc *dxf_arc
-);
-int
-dxf_arc_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *linetype,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0,
-        double thickness,
-        double radius,
-        double start_angle,
-        double end_angle,
-        int color,
-        int paperspace,
-        int acad_version_number
 );
 int dxf_arc_write
 (

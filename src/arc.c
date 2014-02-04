@@ -1,7 +1,7 @@
 /*!
  * \file arc.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF arc entity (\c ARC).
  *
@@ -107,6 +107,8 @@ dxf_arc_init
         dxf_arc->extr_y0 = 0.0;
         dxf_arc->extr_z0 = 0.0;
         dxf_arc->thickness = 0.0;
+        dxf_arc->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_arc->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_arc->radius = 0.0;
         dxf_arc->start_angle = 0.0;
         dxf_arc->end_angle = 0.0;
@@ -227,6 +229,13 @@ dxf_arc_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_arc->radius);
                 }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_arc->linetype_scale);
+                }
                 else if (strcmp (temp_string, "50") == 0)
                 {
                         /* Now follows a string containing the
@@ -240,6 +249,13 @@ dxf_arc_read
                          * end angle. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_arc->end_angle);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_arc->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -318,187 +334,6 @@ dxf_arc_read
  * occurred.
  */
 int
-dxf_arc_write_lowlevel
-(
-        FILE *fp,
-                /*!< File pointer to output file (or device). */
-        int id_code,
-                /*!< Identification number for the entity.\n
-                 * this is to be an unique (sequential) number in the DXF
-                 * file.\n
-                 * Group code = 5. */
-        char *linetype,
-                /*!< The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
-                 * Group code = 6. */
-        char *layer,
-                /*!< Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given.\n
-                 * Group code = 8. */
-        double x0,
-                /*!< X-value of the starting point coordinate.\n
-                 * Group code = 10. */
-        double y0,
-                /*!< Y-value of the starting point coordinate.\n
-                 * Group code = 20. */
-        double z0,
-                /*!< Z-value of the starting point coordinate.\n
-                 * Group code = 30. */
-        double extr_x0,
-                /*!< X-value of the extrusion vector.\n
-                 * Defaults to 0.0 if ommitted in the DXF file.\n
-                 * Group code = 210. */
-        double extr_y0,
-                /*!< Y-value of the extrusion vector.\n
-                 * Defaults to 0.0 if ommitted in the DXF file.\n
-                 * Group code = 220. */
-        double extr_z0,
-                /*!< Z-value of the extrusion vector.\n
-                 * Defaults to 1.0 if ommitted in the DXF file.\n
-                 * Group code = 230. */
-        double thickness,
-                /*!< Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file.\n
-                 * Group code = 39. */
-        double radius,
-                /*!< Radius of the arc.\n
-                 * Group code = 40. */
-        double start_angle,
-                /*!< Start angle of the arc.\n
-                 * Group code = 50. */
-        double end_angle,
-                /*!< End angle of the arc.\n
-                 * Group code = 51. */
-        int color,
-                /*!< Color of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
-                 * Note that entities encapsulated in a block with the
-                 * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity.\n
-                 * Group code = 62. */
-        int paperspace,
-                /*!< Entities are to be drawn on either \c PAPERSPACE or
-                 * \c MODELSPACE.\n
-                 * Defaults to \c MODELSPACE if ommitted in the DXF file.\n
-                 * Group code = 67. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
-)
-{
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
-#endif
-        char *dxf_entity_name = strdup ("ARC");
-
-        if (start_angle == end_angle)
-        {
-                fprintf (stderr, "Error in dxf_arc_write_lowlevel () start angle and end angle are identical for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    skipping %s entity.\n", dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
-        if (start_angle > 360.0)
-        {
-                fprintf (stderr, "Error in dxf_arc_write_lowlevel () start angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    skipping %s entity.\n", dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
-        if (start_angle < 0.0)
-        {
-                fprintf (stderr, "Error in dxf_arc_write_lowlevel () start angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    skipping %s entity.\n", dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
-        if (end_angle > 360.0)
-        {
-                fprintf (stderr, "Error in dxf_arc_write_lowlevel () end angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    skipping %s entity.\n", dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
-        if (end_angle < 0.0)
-        {
-                fprintf (stderr, "Error in dxf_arc_write_lowlevel () end angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    skipping %s entity.\n", dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
-        if (radius == 0.0)
-        {
-                fprintf (stderr, "Error in dxf_arc_write_lowlevel () radius value equals 0.0 for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    skipping %s entity.\n", dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
-        if (strcmp (layer, "") == 0)
-        {
-                fprintf (stderr, "Warning in dxf_arc_write_lowlevel () empty layer string for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to default layer.\n",
-                        dxf_entity_name);
-                layer = strdup (DXF_DEFAULT_LAYER);
-        }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp, "100\nAcDbEntity\n");
-                fprintf (fp, "100\nAcDbCircle\n");
-        }
-        if (id_code != -1)
-        {
-                fprintf (fp, "  5\n%x\n", id_code);
-        }
-        if (strcmp (linetype, DXF_DEFAULT_LINETYPE) != 0)
-        {
-                fprintf (fp, "  6\n%s\n", linetype);
-        }
-        fprintf (fp, "  8\n%s\n", layer);
-        fprintf (fp, " 10\n%f\n", x0);
-        fprintf (fp, " 20\n%f\n", y0);
-        fprintf (fp, " 30\n%f\n", z0);
-        if (acad_version_number >= AutoCAD_12)
-        {
-                fprintf (fp, "210\n%f\n", extr_x0);
-                fprintf (fp, "220\n%f\n", extr_y0);
-                fprintf (fp, "230\n%f\n", extr_z0);
-        }
-        if (thickness != 0.0)
-        {
-                fprintf (fp, " 39\n%f\n", thickness);
-        }
-        fprintf (fp, " 40\n%f\n", radius);
-        if (acad_version_number >= AutoCAD_14)
-        {
-                fprintf (fp, "100\nAcDbArc\n");
-        }
-        fprintf (fp, " 50\n%f\n", start_angle);
-        fprintf (fp, " 51\n%f\n", end_angle);
-        if (color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp, " 62\n%d\n", color);
-        }
-        if (paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Write DXF output for a DXF \c ARC entity.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
 dxf_arc_write
 (
         DxfFile *fp,
@@ -513,6 +348,7 @@ dxf_arc_write
 #endif
         char *dxf_entity_name = strdup ("ARC");
 
+        /* Do some basic checks. */
         if (dxf_arc == NULL)
         {
                 fprintf (stderr, "Error in dxf_arc_write () a NULL pointer was passed.\n");
@@ -574,6 +410,7 @@ dxf_arc_write
                         dxf_entity_name);
                 dxf_arc->layer = DXF_DEFAULT_LAYER;
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_arc->id_code != -1)
         {
@@ -587,6 +424,10 @@ dxf_arc_write
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
+        if (dxf_arc->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
         fprintf (fp->fp, "  8\n%s\n", dxf_arc->layer);
         if (strcmp (dxf_arc->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
@@ -596,13 +437,32 @@ dxf_arc_write
         {
                 fprintf (fp->fp, " 62\n%d\n", dxf_arc->color);
         }
+        if (dxf_arc->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_arc->linetype_scale);
+        }
+        if (dxf_arc->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_arc->visibility);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbCircle\n");
         }
+        if (dxf_arc->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_arc->thickness);
+        }
         fprintf (fp->fp, " 10\n%f\n", dxf_arc->x0);
         fprintf (fp->fp, " 20\n%f\n", dxf_arc->y0);
         fprintf (fp->fp, " 30\n%f\n", dxf_arc->z0);
+        fprintf (fp->fp, " 40\n%f\n", dxf_arc->radius);
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbArc\n");
+        }
+        fprintf (fp->fp, " 50\n%f\n", dxf_arc->start_angle);
+        fprintf (fp->fp, " 51\n%f\n", dxf_arc->end_angle);
         if ((fp->acad_version_number >= AutoCAD_12)
                 && (dxf_arc->extr_x0 != 0.0)
                 && (dxf_arc->extr_y0 != 0.0)
@@ -611,21 +471,6 @@ dxf_arc_write
                 fprintf (fp->fp, "210\n%f\n", dxf_arc->extr_x0);
                 fprintf (fp->fp, "220\n%f\n", dxf_arc->extr_y0);
                 fprintf (fp->fp, "230\n%f\n", dxf_arc->extr_z0);
-        }
-        if (dxf_arc->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", dxf_arc->thickness);
-        }
-        fprintf (fp->fp, " 40\n%f\n", dxf_arc->radius);
-        if (fp->acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp->fp, "100\nAcDbArc\n");
-        }
-        fprintf (fp->fp, " 50\n%f\n", dxf_arc->start_angle);
-        fprintf (fp->fp, " 51\n%f\n", dxf_arc->end_angle);
-        if (dxf_arc->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_write () function.\n",

@@ -318,6 +318,11 @@ dxf_file
 #define DXF_DEFAULT_LINETYPE_SCALE 1.0
 
 /*!
+ * \brief The default visibility.
+ */
+#define DXF_DEFAULT_VISIBILITY 0
+
+/*!
  * \brief The default proxy entity class id.
  */
 #define DXF_DEFAULT_PROXY_ENTITY_ID 498

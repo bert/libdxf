@@ -2,6 +2,8 @@
 ACLOCAL_AMFLAGS = `-I m4` 
 
 SUBDIRS = \
+	doc/refguides/R10\
+	doc/refguides/R13\
 	src\
 	tests
 	

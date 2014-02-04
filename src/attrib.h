@@ -1,7 +1,7 @@
 /*!
  * \file attrib.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF attribute entity (\c ATTRIB).
  *
@@ -64,6 +64,12 @@ dxf_attrib
                 /*!< group code = 39\n
                  * Thickness of the arc in the local Z-direction.\n
                  * Defaults to 0.0 if ommitted in the DXF file. */
+        double linetype_scale;
+                /*!< group code = 48\n
+                 * Linetype scale (optional). */
+        int16_t visibility;
+                /*!< group code = 60\n
+                 * Object visibility (optional): 0 = Visible; 1 = Invisible. */
         int color;
                 /*!< group code = 62\n
                  * Color of the entity.\n
@@ -76,6 +82,13 @@ dxf_attrib
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
+        char *dictionary_owner_soft;
+                /*!< group code = 330\n
+                 * Soft-pointer ID/handle to owner dictionary (optional). */
+        int16_t line_weight;
+                /*!< group code = 370\n
+                 * Lineweight enum value.\n
+                 * Stored and moved around as a 16-bit integer. */
         /* Specific members for a DXF attrib. */
         char *value;
                 /*!< group code = 1. */
@@ -178,36 +191,6 @@ dxf_attrib_read
 (
         DxfFile *fp,
         DxfAttrib *dxf_attrib
-);
-int
-dxf_attrib_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *value,
-        char *tag_value,
-        char *linetype,
-        char *text_style,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double x1,
-        double y1,
-        double z1,
-        double thickness,
-        double height,
-        double rel_x_scale,
-        double rot_angle,
-        double obl_angle,
-        int color,
-        int paperspace,
-        int attr_flags,
-        int text_flags,
-        int hor_align,
-        int field_length,
-        int vert_align,
-        int acad_version_number
 );
 int
 dxf_attrib_write

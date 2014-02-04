@@ -38,6 +38,7 @@
 
 #include "global.h"
 #include "entity.h"
+#include "spline.h"
 
 
 /*!
@@ -86,7 +87,12 @@ dxf_helix
                 /*!< group code = 92\n
                  * Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
-                 * binary chunk records (optional). */
+                 * binary chunk records (optional).
+                 *
+                 * \warning On some 64 bit workstations output is
+                 * generated with group code "160", thus omitting group
+                 * code "92".
+                 */
         int16_t shadow_mode;
                 /*!< group code = 284\n
                  * Shadow mode:\n
@@ -201,6 +207,9 @@ dxf_helix
                  * <li value = "0"> Left.</li>
                  * <li value = "1"> Right</li>
                  * </ol> */
+        DxfSpline spline;
+                /*!< pointer to the first DxfSpline.\n
+                 * \c NULL if the last DxfSpline. */
         struct DxfHelix *next;
                 /*!< pointer to the next DxfHelix.\n
                  * \c NULL in the last DxfHelix. */
@@ -216,6 +225,12 @@ dxf_helix_init
 );
 int
 dxf_helix_read
+(
+        DxfFile *fp,
+        DxfHelix *dxf_helix
+);
+int
+dxf_helix_write
 (
         DxfFile *fp,
         DxfHelix *dxf_helix

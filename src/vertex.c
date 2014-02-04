@@ -1,7 +1,7 @@
 /*!
  * \file vertex.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF vertex entity (\c VERTEX).
  *
@@ -132,12 +132,8 @@ dxf_vertex_init
 int
 dxf_vertex_read
 (
-        char *filename,
-                /*!< filename of input file (or device). */
-        FILE *fp,
+        DxfFile *fp,
                 /*!< filepointer to the input file (or device). */
-        int *line_number,
-                /*!< current line number in the input file (or device). */
         DxfVertex *dxf_vertex
                 /*!< DXF vertex entity. */
 )
@@ -152,57 +148,57 @@ dxf_vertex_read
         {
                 dxf_vertex = dxf_vertex_new ();
         }
-        (*line_number)++;
-        fscanf (fp, "%[^\n]", temp_string);
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
-                if (ferror (fp))
+                if (ferror (fp->fp))
                 {
                         fprintf (stderr, "Error in dxf_vertex_read () while reading from: %s in line: %d.\n",
-                                filename, *line_number);
-                        fclose (fp);
+                                fp->filename, fp->line_number);
+                        fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_vertex->id_code);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_vertex->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_vertex->linetype);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_vertex->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_vertex->layer);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_vertex->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_vertex->x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vertex->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_vertex->y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vertex->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_vertex->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vertex->z0);
                 }
                 else if ((dxf_vertex->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
@@ -213,50 +209,50 @@ dxf_vertex_read
                          * probably be added.
                          * Now follows a string containing the
                          * elevation. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_vertex->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vertex->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_vertex->thickness);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vertex->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
                          * start width. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_vertex->start_width);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vertex->start_width);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a string containing the
                          * end width. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_vertex->end_width);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vertex->end_width);
                 }
                 else if (strcmp (temp_string, "42") == 0)
                 {
                         /* Now follows a string containing the
                          * bulge. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_vertex->bulge);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vertex->bulge);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_vertex->color);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vertex->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_vertex->paperspace);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vertex->paperspace);
                 }
                 else if ((dxf_vertex->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
@@ -266,20 +262,20 @@ dxf_vertex_read
                          * version should probably be added here.
                          * Now follows a string containing the
                          * subclass marker value. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
                 {
                         fprintf (stderr, "Warning: in dxf_vertex_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                filename, *line_number);
+                                fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -431,8 +427,8 @@ dxf_vertex_write_lowlevel
 int
 dxf_vertex_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfVertex *dxf_vertex
                 /*!< DXF vertex entity. */
 )
@@ -443,6 +439,12 @@ dxf_vertex_write
 #endif
         char *dxf_entity_name = strdup ("VERTEX");
 
+        /* Do some basic checks. */
+        if (dxf_vertex == NULL)
+        {
+                fprintf (stderr, "Error in dxf_vertex_write () a NULL pointer was passed.\n");
+                return (EXIT_FAILURE);
+        }
         if (strcmp (dxf_vertex->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_vertex_write () empty layer string for the %s entity with id-code: %x\n",
@@ -451,49 +453,76 @@ dxf_vertex_write
                         dxf_entity_name);
                 dxf_vertex->layer = strdup (DXF_DEFAULT_LAYER);
         }
-
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_vertex->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_vertex->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_vertex->id_code);
         }
-        if (strcmp (dxf_vertex->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp, "  6\n%s\n", dxf_vertex->linetype);
-        }
-        fprintf (fp, "  8\n%s\n", dxf_vertex->layer);
-        fprintf (fp, " 10\n%f\n", dxf_vertex->x0);
-        fprintf (fp, " 20\n%f\n", dxf_vertex->y0);
-        fprintf (fp, " 30\n%f\n", dxf_vertex->z0);
-        if (dxf_vertex->thickness != 0.0)
-        {
-                fprintf (fp, " 39\n%f\n", dxf_vertex->thickness);
-        }
-        if (dxf_vertex->start_width != 0.0)
-        {
-                fprintf (fp, " 40\n%f\n", dxf_vertex->start_width);
-        }
-        if (dxf_vertex->end_width != 0.0)
-        {
-                fprintf (fp, " 41\n%f\n", dxf_vertex->end_width);
-        }
-        if (dxf_vertex->bulge != 0.0)
-        {
-                fprintf (fp, " 42\n%f\n", dxf_vertex->bulge);
-        }
-        if (dxf_vertex->curve_fit_tangent_direction != 0.0)
-        {
-                fprintf (fp, " 50\n%f\n", dxf_vertex->curve_fit_tangent_direction);
-        }
-        if (dxf_vertex->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp, " 62\n%d\n", dxf_vertex->color);
+                fprintf (fp->fp, "100\nAcDbEntity\n");
         }
         if (dxf_vertex->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp, " 70\n%d\n", dxf_vertex->flag);
+        fprintf (fp->fp, "  8\n%s\n", dxf_vertex->layer);
+        if (strcmp (dxf_vertex->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_vertex->linetype);
+        }
+        if (dxf_vertex->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_vertex->color);
+        }
+        /*! \todo Put \c thickness in the correct order. */ 
+        if (dxf_vertex->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_vertex->thickness);
+        }
+        fprintf (fp->fp, "100\nAcDbVertex\n");
+        /*! \todo We use a \c 3dPolylineVertex for now,
+         * it could have been a \c 2dVertex as well, in that case use:\n
+        fprintf (fp->fp, "100\nAcDb2dVertex\n");
+         */
+        fprintf (fp->fp, "100\nAcDb3dPolylineVertex\n");
+        fprintf (fp->fp, " 10\n%f\n", dxf_vertex->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_vertex->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_vertex->z0);
+        if (dxf_vertex->start_width != 0.0)
+        {
+                fprintf (fp->fp, " 40\n%f\n", dxf_vertex->start_width);
+        }
+        if (dxf_vertex->end_width != 0.0)
+        {
+                fprintf (fp->fp, " 41\n%f\n", dxf_vertex->end_width);
+        }
+        if (dxf_vertex->bulge != 0.0)
+        {
+                fprintf (fp->fp, " 42\n%f\n", dxf_vertex->bulge);
+        }
+        fprintf (fp->fp, " 70\n%d\n", dxf_vertex->flag);
+        if (dxf_vertex->curve_fit_tangent_direction != 0.0)
+        {
+                fprintf (fp->fp, " 50\n%f\n", dxf_vertex->curve_fit_tangent_direction);
+        }
+        if (dxf_vertex->polyface_mesh_vertex_index_1 != 0)
+        {
+                fprintf (fp->fp, " 71\n%d\n", dxf_vertex->polyface_mesh_vertex_index_1);
+        }
+        if (dxf_vertex->polyface_mesh_vertex_index_2 != 0)
+        {
+                fprintf (fp->fp, " 72\n%d\n", dxf_vertex->polyface_mesh_vertex_index_2);
+        }
+        if (dxf_vertex->polyface_mesh_vertex_index_3 != 0)
+        {
+                fprintf (fp->fp, " 73\n%d\n", dxf_vertex->polyface_mesh_vertex_index_3);
+        }
+        if (dxf_vertex->polyface_mesh_vertex_index_4 != 0)
+        {
+                fprintf (fp->fp, " 74\n%d\n", dxf_vertex->polyface_mesh_vertex_index_4);
+        }
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_write () function.\n",
                 __FILE__, __LINE__);

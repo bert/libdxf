@@ -1,7 +1,7 @@
 /*!
  * \file 3dsolid.c
  *
- * \author Copyright (C) 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D solid entity (\c 3DSOLID).
  *
@@ -101,6 +101,8 @@ dxf_3dsolid_init
         dxf_3dsolid->linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
         dxf_3dsolid->thickness = 0.0;
+        dxf_3dsolid->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_3dsolid->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_3dsolid->color = DXF_COLOR_BYLAYER;
         dxf_3dsolid->paperspace = DXF_MODELSPACE;
         dxf_3dsolid->modeler_format_version_number = 1;
@@ -208,6 +210,20 @@ dxf_3dsolid_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_3dsolid->thickness);
                 }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dsolid->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_3dsolid->visibility);
+                }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
@@ -292,135 +308,6 @@ dxf_3dsolid_read
  * occurred while reading from the input file.
  */
 int
-dxf_3dsolid_write_lowlevel
-(
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
-        int id_code,
-                /*!< group code = 5. */
-        char *linetype,
-                /*!< group code = 6\n
-                 * optional, defaults to \c BYLAYER. */
-        char *layer,
-                /*!< group code = 8. */
-        double thickness,
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
-        int color,
-                /*!< group code = 62\n
-                 * optional, defaults to \c BYLAYER */
-        int paperspace,
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
-        char *proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM],
-                /*!< group code = 1\n
-                 * Proprietary data (multiple lines < 255 characters
-                 * each).*/
-        char *additional_proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM],
-                /*!< group code = 3\n
-                 * Additional lines of proprietary data if previous
-                 * group 1 string is greater than 255 characters
-                 * (optional).*/
-        int modeler_format_version_number,
-                /*!< group code = 70\n
-                 * Modeler format version number (currently = 1).\n */
-        char *history,
-                /*!< group code = 350\n
-                 * Soft-owner ID / handle to history object. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
-)
-{
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
-#endif
-        int i;
-        char *dxf_entity_name = strdup ("3DSOLID");
-
-        if (strcmp (layer, "") == 0)
-        {
-                fprintf (stderr, "Warning in dxf_3dsolid_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0",
-                        dxf_entity_name);
-                layer = strdup (DXF_DEFAULT_LAYER);
-        }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (id_code != -1)
-        {
-                fprintf (fp, "  5\n%x\n", id_code);
-        }
-        if (acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp, "100\nAcDbModelerGeometry\n");
-        }
-        if (acad_version_number >= AutoCAD_2008)
-        {
-                fprintf (fp, "100\nAcDb3dSolid\n");
-        }
-        if (strcmp (linetype, DXF_DEFAULT_LINETYPE) != 0)
-        {
-                fprintf (fp, "  6\n%s\n", linetype);
-        }
-        fprintf (fp, "  8\n%s\n", layer);
-        if (thickness != 0.0)
-        {
-                fprintf (fp, " 39\n%f\n", thickness);
-        }
-        if (color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp, " 62\n%d\n", color);
-        }
-        if (paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
-        if (acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp, " 70\n%d\n", modeler_format_version_number);
-        }
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                if (strcmp (proprietary_data[DXF_MAX_STRING_LENGTH][i], "") == 0)
-                {
-                        break;
-                }
-                else
-                {
-                        fprintf (fp, "  1\n%s\n", proprietary_data[DXF_MAX_STRING_LENGTH][i]);
-                }
-        }
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                if (strcmp (additional_proprietary_data[DXF_MAX_STRING_LENGTH][i], "") == 0)
-                {
-                        break;
-                }
-                else
-                {
-                        fprintf (fp, "  3\n%s\n", additional_proprietary_data[DXF_MAX_STRING_LENGTH][i]);
-                }
-        }
-        if (acad_version_number >= AutoCAD_2008)
-        {
-                fprintf (fp, "350\n%s\n", history);
-        }
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Write DXF output to a file for a DXF \c 3DSOLID entity.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred while reading from the input file.
- */
-int
 dxf_3dsolid_write
 (
         DxfFile *fp,
@@ -436,6 +323,12 @@ dxf_3dsolid_write
         char *dxf_entity_name = strdup ("3DSOLID");
         int i;
 
+        /* Do some basic checks. */
+        if (dxf_3dsolid == NULL)
+        {
+                return (EXIT_FAILURE);
+                fprintf (stderr, "Error in dxf_3dsolid_write () a NULL pointer was passed.\n");
+        }
         if (strcmp (dxf_3dsolid->layer, "") == 0)
         {
                 fprintf (stderr, "Warning in dxf_3dsolid_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
@@ -444,10 +337,40 @@ dxf_3dsolid_write
                         dxf_entity_name);
                 dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_3dsolid->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_3dsolid->id_code);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (dxf_3dsolid->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_3dsolid->layer);
+        if (strcmp (dxf_3dsolid->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_3dsolid->linetype);
+        }
+        if (dxf_3dsolid->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_3dsolid->color);
+        }
+        if (dxf_3dsolid->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_3dsolid->thickness);
+        }
+        if (dxf_3dsolid->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_3dsolid->linetype_scale);
+        }
+        if (dxf_3dsolid->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_3dsolid->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -456,23 +379,6 @@ dxf_3dsolid_write
         if (fp->acad_version_number >= AutoCAD_2008)
         {
                 fprintf (fp->fp, "100\nAcDb3dSolid\n");
-        }
-        if (strcmp (dxf_3dsolid->linetype, DXF_DEFAULT_LINETYPE) != 0)
-        {
-                fprintf (fp->fp, "  6\n%s\n", dxf_3dsolid->linetype);
-        }
-        fprintf (fp->fp, "  8\n%s\n", dxf_3dsolid->layer);
-        if (dxf_3dsolid->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", dxf_3dsolid->thickness);
-        }
-        if (dxf_3dsolid->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_3dsolid->color);
-        }
-        if (dxf_3dsolid->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {

@@ -1,7 +1,7 @@
 /*!
  * \file 3dsolid.h
  *
- * \author Copyright (C) 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF 3D solid entity (\c 3DSOLID).
  *
@@ -64,6 +64,12 @@ dxf_3dsolid
                 /*!< group code = 39\n
                  * Thickness of the arc in the local Z-direction.\n
                  * Defaults to 0.0 if ommitted in the DXF file. */
+        double linetype_scale;
+                /*!< group code = 48\n
+                 * Linetype scale (optional). */
+        int16_t visibility;
+                /*!< group code = 60\n
+                 * Object visibility (optional): 0 = Visible; 1 = Invisible. */
         int color;
                 /*!< group code = 62\n
                  * Color of the entity.\n
@@ -110,22 +116,6 @@ dxf_3dsolid_read
 (
         DxfFile *fp,
         Dxf3dsolid *dxf_3dsolid
-);
-int
-dxf_3dsolid_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *linetype,
-        char *layer,
-        double thickness,
-        int color,
-        int paperspace,
-        char *proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM],
-        char *additional_proprietary_data[DXF_MAX_STRING_LENGTH][DXF_MAX_PARAM],
-        int modeler_format_version_number,
-        char *history,
-        int acad_version_number
 );
 int
 dxf_3dsolid_write

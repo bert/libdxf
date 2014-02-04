@@ -1,7 +1,7 @@
 /*!
  * \file 3dface.c
  *
- * \author Copyright (C) 2010 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D face entity (\c 3DFACE).
  *
@@ -110,6 +110,8 @@ dxf_3dface_init
         dxf_3dface->y3 = 0.0;
         dxf_3dface->z3 = 0.0;
         dxf_3dface->thickness = 0.0;
+        dxf_3dface->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_3dface->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_3dface->color = DXF_COLOR_BYLAYER;
         dxf_3dface->paperspace = DXF_MODELSPACE;
         dxf_3dface->flag = 0;
@@ -287,6 +289,20 @@ dxf_3dface_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_3dface->thickness);
                 }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_3dface->visibility);
+                }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
@@ -347,145 +363,6 @@ dxf_3dface_read
  * \brief Write DXF output to a file for a DXF \c 3DFACE entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred while reading from the input file.
- */
-int
-dxf_3dface_write_lowlevel
-(
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
-        int id_code,
-                /*!< group code = 5. */
-        char *linetype,
-                /*!< group code = 6\n
-                 * optional, defaults to \c BYLAYER. */
-        char *layer,
-                /*!< group code = 8. */
-        double x0,
-                /*!< group code = 10\n
-                 * base point X-value, bottom left. */
-        double y0,
-                /*!< group code = 20\n
-                 * base point Y-value, bottom left. */
-        double z0,
-                /*!< group code = 30\n
-                 * base point Z-value, bottom left. */
-        double x1,
-                /*!< group code = 11\n
-                 * alignment point X-vaule, bottom right. */
-        double y1,
-                /*!< group code = 21\n
-                 * alignment point Y-vaule, bottom right. */
-        double z1,
-                /*!< group code = 31\n
-                 * alignment point Z-vaule, bottom right. */
-        double x2,
-                /*!< group code = 12\n
-                 * alignment point X-value, top left. */
-        double y2,
-                /*!< group code = 22\n
-                 * alignment point Y-value, top left. */
-        double z2,
-                /*!< group code = 32\n
-                 * alignment point Z-value, top left. */
-        double x3,
-                /*!< group code = 13\n
-                 * alignment point X-value, top right. */
-        double y3,
-                /*!< group code = 23\n
-                 * alignment point Y-value, top right. */
-        double z3,
-                /*!< group code = 33\n
-                 * alignment point Z-value, top right. */
-        double thickness,
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
-        int color,
-                /*!< group code = 62\n
-                 * optional, defaults to \c BYLAYER */
-        int paperspace,
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
-        int flag,
-                /*!< group code = 70\n
-                 * optional, defaults to 0\n
-                 * bit coded:\n
-                 * <ol>
-                 * <li value = "1"> First edge is invisible.</li>
-                 * <li value = "2"> Second edge is invisible.</li>
-                 * <li value = "4"> Third edge is invisible.</li>
-                 * <li value = "8"> Fourth edge is invisible.</li>
-                 * </ol> */
-        int acad_version_number
-                /*!< AutoCAD version number. */
-)
-{
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dface_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
-#endif
-        char *dxf_entity_name = strdup ("3DFACE");
-
-        if (strcmp (layer, "") == 0)
-        {
-                fprintf (stderr, "Warning in dxf_3dface_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0",
-                        dxf_entity_name);
-                layer = strdup (DXF_DEFAULT_LAYER);
-        }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        if (acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp, "100\nAcDbEntity\n");
-                fprintf (fp, "100\nAcDbFace\n");
-        }
-        if (id_code != -1)
-        {
-                fprintf (fp, "  5\n%x\n", id_code);
-        }
-        if (strcmp (linetype, DXF_DEFAULT_LINETYPE) != 0)
-        {
-                fprintf (fp, "  6\n%s\n", linetype);
-        }
-        fprintf (fp, "  8\n%s\n", layer);
-        fprintf (fp, " 10\n%f\n", x0);
-        fprintf (fp, " 20\n%f\n", y0);
-        fprintf (fp, " 30\n%f\n", z0);
-        fprintf (fp, " 11\n%f\n", x1);
-        fprintf (fp, " 21\n%f\n", y1);
-        fprintf (fp, " 31\n%f\n", z1);
-        fprintf (fp, " 12\n%f\n", x2);
-        fprintf (fp, " 22\n%f\n", y2);
-        fprintf (fp, " 32\n%f\n", z2);
-        fprintf (fp, " 13\n%f\n", x3);
-        fprintf (fp, " 23\n%f\n", y3);
-        fprintf (fp, " 33\n%f\n", z3);
-        if (thickness != 0.0)
-        {
-                fprintf (fp, " 39\n%f\n", thickness);
-        }
-        if (color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp, " 62\n%d\n", color);
-        }
-        if (paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
-        fprintf (fp, " 70\n%d\n", flag);
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Write DXF output to a file for a DXF \c 3DFACE entity.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
 int
@@ -503,6 +380,7 @@ dxf_3dface_write
 #endif
         char *dxf_entity_name = strdup ("3DFACE");
 
+        /* Do some basic checks. */
         if (dxf_3dface == NULL)
         {
                 return (EXIT_FAILURE);
@@ -516,21 +394,45 @@ dxf_3dface_write
                         dxf_entity_name);
                 dxf_3dface->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
-                fprintf (fp->fp, "100\nAcDbFace\n");
         }
         if (dxf_3dface->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_3dface->id_code);
         }
+        if (dxf_3dface->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_3dface->layer);
         if (strcmp (dxf_3dface->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_3dface->linetype);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_3dface->layer);
+        if (dxf_3dface->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_3dface->color);
+        }
+        if (dxf_3dface->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_3dface->thickness);
+        }
+        if (dxf_3dface->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_3dface->linetype_scale);
+        }
+        if (dxf_3dface->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_3dface->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbFace\n");
+        }
         fprintf (fp->fp, " 10\n%f\n", dxf_3dface->x0);
         fprintf (fp->fp, " 20\n%f\n", dxf_3dface->y0);
         fprintf (fp->fp, " 30\n%f\n", dxf_3dface->z0);
@@ -543,18 +445,7 @@ dxf_3dface_write
         fprintf (fp->fp, " 13\n%f\n", dxf_3dface->x3);
         fprintf (fp->fp, " 23\n%f\n", dxf_3dface->y3);
         fprintf (fp->fp, " 33\n%f\n", dxf_3dface->z3);
-        if (dxf_3dface->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", dxf_3dface->thickness);
-        }
-        if (dxf_3dface->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_3dface->color);
-        }
-        if (dxf_3dface->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
+        fprintf (fp->fp, " 70\n%d\n", dxf_3dface->flag);
 #if DEBUG
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_write () function.\n",
                 __FILE__, __LINE__);
