@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Data type</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="author" CONTENT="Paolo Caroni">
+<meta name="license" CONTENT="GNU FDL 1.3 or any later versions">
+	<style>
+		<!-- 
+		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Liberation Sans"; font-size:16 }
+		 -->
+	</style>
+</head>
+<body bgcolor=#ffffff>
+<h1>Introduction.</h1>
+Group codes can indicate the type of associated data.<br>
+In some cases the string may be hexadecimal integer (I reported those known to me, but I'm not sure it's all).<br>
+The maximum character number of string are indicated in global.h as DXF_MAX_STRING_LENGTH, however we have to implement a maximum limit for each string in each entity because the limit can be minor, for example see the mtext text value, group code 1, have a limits of 250 characters, although since 2000 it could be 2049.<br>
+<br>
+Table: Data type<br>
+<br>
+<table style="border:2px solid black;border-collapse:collapse">
+<tr><th style="border:2px solid black" bgcolor="#C0C0C0">Group code ranges</th><th style="border:2px solid black" bgcolor="#C0C0C0">Data type</th></tr>
+<tr><td style="border:2px solid black">0-9</th><td style="border:2px solid black">char [255], since DXF R15/2000 char [2049]</td></tr>
+<tr><td style="border:2px solid black">5</th><td style="border:2px solid black">int "%x" (hexadecimal number)</td></tr>
+<tr><td style="border:2px solid black">10-59</th><td style="border:2px solid black">double</td></tr>
+<tr><td style="border:2px solid black">60-79</th><td style="border:2px solid black">int16_t</td></tr>
+<tr><td style="border:2px solid black">90-99</th><td style="border:2px solid black">int32_t</td></tr>
+<tr><td style="border:2px solid black">100</th><td style="border:2px solid black">char [255]</td></tr>
+<tr><td style="border:2px solid black">102</th><td style="border:2px solid black">char [255]</td></tr>
+<tr><td style="border:2px solid black">105</th><td style="border:2px solid black">int "%x" (hexadecimal number)</td></tr>
+<tr><td style="border:2px solid black">110-149</th><td style="border:2px solid black">double</td></tr>
+<tr><td style="border:2px solid black">160-169</th><td style="border:2px solid black">int64_t</td></tr>
+<tr><td style="border:2px solid black">170-179</th><td style="border:2px solid black">int16_t</td></tr>
+<tr><td style="border:2px solid black">210-239</th><td style="border:2px solid black">double</td></tr>
+<tr><td style="border:2px solid black">270-289</th><td style="border:2px solid black">int16_t</td></tr>
+<tr><td style="border:2px solid black">290-299</th><td style="border:2px solid black">bool? (boolean flag value, I don't now how it compare in C89, in C99 using #include &lt;stdbool.h&gt; can be a bool)</td></tr>
+<tr><td style="border:2px solid black">300-309</th><td style="border:2px solid black">char [255?] (isn't clear the maximum limit of characters)</td></tr>
+<tr><td style="border:2px solid black">310-369</th><td style="border:2px solid black">int "%x" (hexadecimal number)</td></tr>
+<tr><td style="border:2px solid black">370-389</th><td style="border:2px solid black">int16_t</td></tr>
+<tr><td style="border:2px solid black">390-399</th><td style="border:2px solid black">int "%x" (hexadecimal number)</td></tr>
+<tr><td style="border:2px solid black">400-409</th><td style="border:2px solid black">int16_t</td></tr>
+<tr><td style="border:2px solid black">410-419</th><td style="border:2px solid black">char [255?] (isn't clear the maximum limit of characters)</td></tr>
+<tr><td style="border:2px solid black">420-429</th><td style="border:2px solid black">int32_t</td></tr>
+<tr><td style="border:2px solid black">430-439</th><td style="border:2px solid black">char [255?] (isn't clear the maximum limit of characters)</td></tr>
+<tr><td style="border:2px solid black">440-449</th><td style="border:2px solid black">int32_t</td></tr>
+<tr><td style="border:2px solid black">450-459</th><td style="border:2px solid black">long int? int64_t? (isn't clear)</td></tr>
+<tr><td style="border:2px solid black">460-469</th><td style="border:2px solid black">double</td></tr>
+<tr><td style="border:2px solid black">470-479</th><td style="border:2px solid black">char [255?] (isn't clear the maximum limit of characters)</td></tr>
+<tr><td style="border:2px solid black">480-481</th><td style="border:2px solid black">int "%x" (hexadecimal number)</td></tr>
+<tr><td style="border:2px solid black">999</th><td style="border:2px solid black">char [255]</td></tr>
+<tr><td style="border:2px solid black">1000-1009</th><td style="border:2px solid black">char [255], since DXF R15/2000 char [2049]</td></tr>
+<tr><td style="border:2px solid black">1004-1005</th><td style="border:2px solid black">int "%x" (hexadecimal number)</td></tr>
+<tr><td style="border:2px solid black">1010-1059</th><td style="border:2px solid black">double</td></tr>
+<tr><td style="border:2px solid black">1060-1070</th><td style="border:2px solid black">int16_t</td></tr>
+<tr><td style="border:2px solid black">1071</th><td style="border:2px solid black">int32_t</td></tr>
+</table>
+</body>
+</html>
