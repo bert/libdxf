@@ -654,7 +654,1500 @@ EOF                           (End of file)
           <para>Although this list is very similar to the list of system
           variables in Appendix A, the two lists are not identical.</para>
 
-          <para>Be sure you're referring to the proper list.</para>
+          <para>Be sure you're referring to the proper list.<table>
+              <title>DXF system variables.</title>
+
+              <tgroup cols="3">
+                <thead>
+                  <row>
+                    <entry align="center">Variable</entry>
+
+                    <entry align="center">Type</entry>
+
+                    <entry align="center">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>$ACADVER</entry>
+
+                    <entry>1</entry>
+
+                    <entry>The AutoCAD drawing database version number: AC1006
+                    = R10, AC1009 = R11 and R12, AC1011 in R13.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$ANGBASE</entry>
+
+                    <entry>50</entry>
+
+                    <entry>Angle 0 direction.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$ANGDIR</entry>
+
+                    <entry>70</entry>
+
+                    <entry>1 = clockwise angles, 0 = counterclockwise.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$ATTDIA</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Attribute entry dialogs: 1 = on, 0 = off.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$ATTMODE</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Attribute visibility: 0 = none, 1 = normal, 2 =
+                    all.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$ATTREQ</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Attribute prompting during INSERT: 1 = on, 0 =
+                    off.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$AUNITS</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Units format for angles.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$AUPREC</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Units precision for angles.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$AXISMODE</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Axis on if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$AXISUNIT</entry>
+
+                    <entry>10, 20</entry>
+
+                    <entry>Axis X and Y tick spacing.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$BLIPMODE</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Blip mode on if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$CECOLOR</entry>
+
+                    <entry>62</entry>
+
+                    <entry>Current entity color number: 0 = BYBLOCK, 256 =
+                    BYLAYER.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$CELTYPE</entry>
+
+                    <entry>6</entry>
+
+                    <entry>Entity linetype name, or BYBLOCK or
+                    BYLAYER.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$CHAMFERA</entry>
+
+                    <entry>40</entry>
+
+                    <entry>First chamfer distance.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$CHAMFERB</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Second chamfer distance.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$CLAYER</entry>
+
+                    <entry>8</entry>
+
+                    <entry>Current layer name.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$COORDS</entry>
+
+                    <entry>70</entry>
+
+                    <entry>0 = static coordinate display, 1 = continuous
+                    update, 2 = "d&lt;a" format.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DELOBJ</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Controls object deletion: 0 = deleted, 1 =
+                    retained.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMALT</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Alternate unit dimensioning performed if
+                    nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMALTD</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Alternate unit decimal places.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMALTF</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Alternate unit scale factor.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMAPOST</entry>
+
+                    <entry>1</entry>
+
+                    <entry>Alternate dimensioning suffix.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMASO</entry>
+
+                    <entry>70</entry>
+
+                    <entry>1 = create associative dimensioning, 0 = draw
+                    individual entities.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMASZ</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Dimensioning arrow size.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMBLK</entry>
+
+                    <entry>2</entry>
+
+                    <entry>Arrow block name.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMBLK1</entry>
+
+                    <entry>1</entry>
+
+                    <entry>First arrow block name.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMBLK2</entry>
+
+                    <entry>1</entry>
+
+                    <entry>Second arrow block name.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMCEN</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Size of center mark/lines.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMDLE</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Dimension line extension.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMDLI</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Dimension line increment.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMEXE</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Extension line extension.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMEXO</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Extension line offset.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMLFAC</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Linear measurements scale factor.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMLIM</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Dimension limits generated if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMPOST</entry>
+
+                    <entry>1</entry>
+
+                    <entry>General dimensioning suffix.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMRND</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Rounding value for dimension distances.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMSAH</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Use separate arrow blocks if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMSCALE</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Overall dimensioning scale factor.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMSE1</entry>
+
+                    <entry>70</entry>
+
+                    <entry>First extension line suppressed if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMSE2</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Second extension line suppressed if
+                    nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMSHO</entry>
+
+                    <entry>70</entry>
+
+                    <entry>1 = Recompute dimensions while dragging, 0 = drag
+                    original image.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMSOXD</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Suppress outside-extensions dimension lines if
+                    nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMTAD</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Text above dimension line if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMTIH</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Text inside horizontal if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMTIX</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Force text inside extensions if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMTM</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Minus tolerance.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMTOFL</entry>
+
+                    <entry>70</entry>
+
+                    <entry>If text outside extensions, force line extensions
+                    between extensions if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMTOH</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Text outside horizontal if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMTOL</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Dimension tolerances generated if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMTP</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Plus tolerance.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMTSZ</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Dimensioning tick size: 0 = no ticks.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMTVP</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Text vertical position.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMTXT</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Dimensioning text height.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DIMZIN</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Zero suppression for "feet &amp; inch"
+                    dimensions.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$DRAGMODE</entry>
+
+                    <entry>70</entry>
+
+                    <entry>0 = off, 1 = on, 2 = auto.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$ELEVATION</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Current elevation set by ELEV command.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$EXTMAX</entry>
+
+                    <entry>10, 20, 30</entry>
+
+                    <entry>X, Y, and Z drawing extents upper-right corner (in
+                    WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>$EXTMIN</entry>
+
+                    <entry>10, 20, 30</entry>
+
+                    <entry>X, Y, and Z drawing extents lower-left corner (in
+                    WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>$FILLETRAD</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Fillet radius.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$FILLMODE</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Fill mode on if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$FLATLAND</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Force compatibility with older versions if
+                    nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$HANDLING</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Handles enabled if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$HANDSEED</entry>
+
+                    <entry>5</entry>
+
+                    <entry>Next available handle.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$INSBASE</entry>
+
+                    <entry>10, 20, 30</entry>
+
+                    <entry>Insertion base set by BASE command (in
+                    WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>$LIMCHECK</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Nonzero if limits checking is on.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$LIMMAX</entry>
+
+                    <entry>10, 20</entry>
+
+                    <entry>XY drawing limits upper-right corner (in
+                    WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>$LIMMIN</entry>
+
+                    <entry>10, 20</entry>
+
+                    <entry>XY drawing limits lower-left corner (in
+                    WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>$LTSCALE</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Global linetype scale.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$LUNITS</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Units format for coordinates and distances.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$LUPREC</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Units precision for coordinates and
+                    distances.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$MENU</entry>
+
+                    <entry>1</entry>
+
+                    <entry>Name of menu file.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$MIRRTEXT</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Mirror text if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$ORTHOMODE</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Ortho mode on if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$OSMODE</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Running object snap modes.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$PDMODE</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Point display mode.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$PDSIZE</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Point display size.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$PLINEWID</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Default polyline width.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$QTEXTMODE</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Quick text mode on if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$REGENMODE</entry>
+
+                    <entry>70</entry>
+
+                    <entry>REGENAUTO mode on if nonzero.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$SKETCHINC</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Sketch record increment.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$SKPOLY</entry>
+
+                    <entry>70</entry>
+
+                    <entry>0 = sketch lines, 1 = sketch polylines.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$SPLFRAME</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Spline control polygon display: 1 = on, 0 =
+                    off.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$SPLINESEGS</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Number of line segments per spline patch.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$SPLINETYPE</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Spline curve type for PEDIT Spline.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$SURFTAB1</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Number of mesh tabulations in first
+                    direction.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$SURFTAB2</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Number of mesh tabulations in second
+                    direction.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$SURFTYPE</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Surface type for PEDIT Smooth.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$SURFU</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Surface density (for PEDIT Smooth) in M
+                    direction.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$SURFV</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Surface density (for PEDIT Smooth) in N
+                    direction.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$TDCREATE</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Date/time of drawing creation.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$TDINDWG</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Cumulative editing time for this drawing.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$TDUPDATE</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Date/time of last drawing update.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$TDUSRTIMER</entry>
+
+                    <entry>40</entry>
+
+                    <entry>User elapsed timer.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$TEXTSIZE</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Default text height.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$TEXTSTYLE</entry>
+
+                    <entry>7</entry>
+
+                    <entry>Current text style name.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$THICKNESS</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Current thickness set by ELEV command.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$TRACEWID</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Default trace width.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$UCSNAME</entry>
+
+                    <entry>2</entry>
+
+                    <entry>Name of current UCS.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$UCSORG</entry>
+
+                    <entry>10, 20, 30</entry>
+
+                    <entry>Origin of current UCS (in WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>$UCSXDIR</entry>
+
+                    <entry>10, 20, 30</entry>
+
+                    <entry>Direction of current UCS's X axis (in WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>$UCSYDIR</entry>
+
+                    <entry>10, 20, 30</entry>
+
+                    <entry>Direction of current UCS's Y axis (in WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>$USERI1 ... $USERI5</entry>
+
+                    <entry>70</entry>
+
+                    <entry>Five integer variables intended for use by
+                    third-party developers.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$USERR1 ... $USERR5</entry>
+
+                    <entry>40</entry>
+
+                    <entry>Five real variables intended for use by third-party
+                    developers.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$USRTIMER</entry>
+
+                    <entry>70</entry>
+
+                    <entry>0 = timer off, 1 = timer on.</entry>
+                  </row>
+
+                  <row>
+                    <entry>$WORLDVIEW</entry>
+
+                    <entry>70</entry>
+
+                    <entry>1 = set UCS to WCS during DVIEW/VPOINT, 0 = don't
+                    change UCS.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
+
+          <para>The header variables listed below existed prior to AutoCAD
+          Release 10 but now have independent settings for each active
+          viewport.</para>
+
+          <para>They are not output by DXFOUT unless system variable FLATLAND
+          is set to 1.</para>
+
+          <para>DXFIN honors these variables when read from DXF files, but if
+          a VPORT symbol table with "*ACTIVE" entries is present (as is true
+          for any DXF file produced by Release 10 or higher), the values in
+          the VPORT table entries will override the values of these header
+          variables.</para>
+
+          <table>
+            <title/>
+
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry align="center">Variable</entry>
+
+                  <entry align="center">Type</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>$FASTZOOM</entry>
+
+                  <entry>70</entry>
+
+                  <entry>Fast zoom enabled if nonzero.</entry>
+                </row>
+
+                <row>
+                  <entry>$GRIDMODE</entry>
+
+                  <entry>70</entry>
+
+                  <entry>Grid mode on if nonzero.</entry>
+                </row>
+
+                <row>
+                  <entry>$GRIDUNIT</entry>
+
+                  <entry>10, 20</entry>
+
+                  <entry>Grid X and Y spacing.</entry>
+                </row>
+
+                <row>
+                  <entry>$SNAPANG</entry>
+
+                  <entry>50</entry>
+
+                  <entry>Snap grid rotation angle.</entry>
+                </row>
+
+                <row>
+                  <entry>$SNAPBASE</entry>
+
+                  <entry>10, 20</entry>
+
+                  <entry>Snap/grid base point (in UCS).</entry>
+                </row>
+
+                <row>
+                  <entry>$SNAPISOPAIR</entry>
+
+                  <entry>70</entry>
+
+                  <entry>Isometric plane: 0=left, 1=top, 2=right.</entry>
+                </row>
+
+                <row>
+                  <entry>$SNAPMODE</entry>
+
+                  <entry>70</entry>
+
+                  <entry>Snap mode on if nonzero.</entry>
+                </row>
+
+                <row>
+                  <entry>$SNAPSTYLE</entry>
+
+                  <entry>70</entry>
+
+                  <entry>Snap style: 0=standard, 1=isometric.</entry>
+                </row>
+
+                <row>
+                  <entry>$SNAPUNIT</entry>
+
+                  <entry>10, 20</entry>
+
+                  <entry>Snap grid X and Y spacing.</entry>
+                </row>
+
+                <row>
+                  <entry>$VIEWCTR</entry>
+
+                  <entry>10, 20</entry>
+
+                  <entry>XY center of current view on screen.</entry>
+                </row>
+
+                <row>
+                  <entry>$VIEWDIR</entry>
+
+                  <entry>10, 20, 30</entry>
+
+                  <entry>Viewing direction (direction from target, in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>$VIEWSIZE</entry>
+
+                  <entry>40</entry>
+
+                  <entry>Height of view.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+
+          <para>The date/time variables ($TDCREATE and $TDUPDATE) are output
+          as real numbers in the format:</para>
+
+          <programlisting>&lt;Julian date&gt;.&lt;Fraction&gt;</programlisting>
+
+          <para>The elapsed time variables ($TDINDWG and $TDUSRTIMER) have a
+          similar format:</para>
+
+          <programlisting>&lt;Number of days&gt;.&lt;Fraction&gt;</programlisting>
+        </section>
+
+        <section>
+          <title>TABLES section.</title>
+
+          <para>The TABLES section contains several tables, each of which in
+          turn contains a variable number of table entries.</para>
+
+          <para>The order of the tables may change, but the LTYPE table will
+          always precede the LAYER table.</para>
+
+          <para>Each table is intro- duced with a 0 group with the label
+          "TABLE".</para>
+
+          <para>This is followed by a 2 group identifying the particular table
+          (VPORT, LTYPE, LAYER, STYLE, VIEW, UCS, or DWGMGR) and a 70 group
+          that specifies the maximum number of table entries that may
+          follow.</para>
+
+          <para>The tables in a drawing may contain deleted items, but these
+          are not written to the DXF file.</para>
+
+          <para>Thus, fewer table entries may follow the table header than are
+          indicated by the 70 group, so don't use the count in the 70 group as
+          an index to read in the table.</para>
+
+          <para>It is provided so that your program to read DXF files can
+          allocate an array in advance large enough to hold all the table
+          entries that follow.</para>
+
+          <para>Following this header for each table are the table
+          entries.</para>
+
+          <para>Each table item consists of a 0 group identifying the item
+          type (same as table name, e.g., "LTYPE" or "LAYER"), a 2 group
+          giving the name of the table entry, a 70 group specifying flags
+          relevant to the table entry (defined for each table below), and
+          additional groups that give the value of the table entry.</para>
+
+          <para>The end of each table is indicated by a 0 group with the value
+          "ENDTAB".</para>
+
+          <para>If any table entry has bit value 64 set in its group 70 flags,
+          the table entry was referenced by at least one entity in the drawing
+          the last time the drawing editor was entered to edit this
+          drawing.</para>
+
+          <para>This "referenced" flag is for the benefit of the PURGE
+          command; it can be ignored by most programs that read DXF files, and
+          need not be set by programs that write DXF files.</para>
+
+          <para>The following are the groups used for each type of table
+          item.</para>
+
+          <para>All groups are present for each table item.</para>
+
+          <table>
+            <title/>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Entity</entry>
+
+                  <entry align="center">Group codes</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>LTYPE</entry>
+
+                  <entry>3 (descriptive text for linetype), 72 (alignment
+                  code), 73 (number of dash length items), 40 (total pattern
+                  length), 49 (dash length 1), 49 (dash length 2), ...</entry>
+                </row>
+
+                <row>
+                  <entry>LAYER</entry>
+
+                  <entry>62 (color number, negative if layer is off), 6
+                  (linetype name). The 1 bit is set in the 70 group flags if
+                  the layer is frozen.</entry>
+                </row>
+
+                <row>
+                  <entry>STYLE</entry>
+
+                  <entry>40 (fixed text height; 0 if not fixed), 41 (width
+                  factor), 50 (obliquing angle), 71 (text generation flags),
+                  42 (last height used), 3 (primary font file name), 4
+                  ("bigfont" file name; blank if none). If the third bit (4)
+                  is set in the 70 group flags, this is a vertically-oriented
+                  text style. A STYLE table item is used to record shape file
+                  LOAD requests also. In this case the first bit (1) is set in
+                  the 70 group flags and only the 3 group (shape file name) is
+                  meaningful (all the other groups are output, however). The
+                  "text generation flags" are a bit-coded field with the
+                  following bit meanings: flag bit value 2 meaning "Text is
+                  backwards (mirrored in X)", flag bit 4 meaning "Text is
+                  upside down (mirrored in Y)".</entry>
+                </row>
+
+                <row>
+                  <entry>VIEW</entry>
+
+                  <entry>40 and 41 (view height and width), 10 and 20 (view
+                  center point), 11, 21, 31 (view direction from target, in
+                  WCS), 12, 22, 32 (target point, in WCS), 42 (lens length),
+                  43 and 44 (front and back clipping planes-offsets from
+                  target point), 50 (twist angle), 71 view mode (see VIEWMODE
+                  system variable appendix).</entry>
+                </row>
+
+                <row>
+                  <entry>UCS</entry>
+
+                  <entry>10, 20, 30 (origin), 11, 21, 31 (X axis direction),
+                  12, 22, 32 (Y axis direction). All in World
+                  coordinates.</entry>
+                </row>
+
+                <row>
+                  <entry>VPORT</entry>
+
+                  <entry>10 and 20 (lower left corner of viewport; 0.0 to
+                  1.0), 11 and 21 (upper right corner), 12 and 22 (view center
+                  point), 13 and 23 (snap base point), 14 and 24 (snap
+                  spacing, X and Y), 15 and 25 (grid spacing, X and Y), 16,
+                  26, 36 (view direction from target point), 17, 27, 37 (view
+                  target point), 40 (view height), 41 (viewport aspect ratio),
+                  42 (lens length), 43 and 44 (front and back clipping planes;
+                  offsets from target point), 50 (snap rotation angle), 51
+                  (view twist angle), 71 (view mode; see VIEWMODE system
+                  variable in Appendix), 72 (circle zoom percent), 73 (fast
+                  zoom setting), 74 (UCSICON setting), 75 (snap on/off), 76
+                  (grid on/off), 77 (snap style), 78 (snap isopair). The VPORT
+                  table is unique in that it may contain several entries with
+                  the same name (indicating a multiple-viewport
+                  configuration). The entries corresponding to the active
+                  view- port configuration all have the name "*ACTIVE". The
+                  first such entry describes the current viewport.</entry>
+                </row>
+
+                <row>
+                  <entry>DWGMGR</entry>
+
+                  <entry>For future use. Fields not yet defined.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </section>
+
+        <section>
+          <title>BLOCKS section.</title>
+
+          <para>The BLOCKS section of the DXF file contains all the Block
+          Definitions.</para>
+
+          <para>This section contains the entities that make up the Blocks
+          used in the drawing, including "anonymous" Blocks generated by the
+          HATCH command and by associative dimensioning.</para>
+
+          <para>The format of the entities in this section is identical to
+          those in the ENTITIES section described below, so refer to that
+          section for details.</para>
+
+          <para>All entities in the BLOCKS section appear between BLOCK and
+          ENDBLK entities.</para>
+
+          <para>BLOCK and ENDBLK entities appear only in the BLOCKS
+          section.</para>
+
+          <para>Block definitions are never nested (that is, no BLOCK or
+          ENDBLK entity ever appears within another BLOCK-ENDBLK pair).</para>
+        </section>
+
+        <section>
+          <title>ENTITIES section.</title>
+
+          <para>Entity items appear in both the BLOCK and ENTITIES sections of
+          the DXF file.</para>
+
+          <para>The appearance of entities in the two sections is identical,
+          with the exception that entities in the BLOCK section never have
+          handles.</para>
+
+          <para>The following gives the format of each entity as it appears in
+          the file.</para>
+
+          <para>Some groups that define an entity always appear, and some are
+          optional and appear only if they differ from their default
+          values.</para>
+
+          <para>In the following discussion, groups that always occur are
+          given by their group number and function, while optional groups are
+          indicated by "-optional N" following the group description.</para>
+
+          <para>"N" is the default value if the group is omitted.</para>
+
+          <para>Programs that read DXF files should not assume that the groups
+          describing an entity occur in the order given here.</para>
+
+          <para>The end of the groups that make up an entity is indicated by
+          the next 0 group, beginning the next entity or indicating the end of
+          the section.</para>
+
+          <para>Remember that a DXF file is a complete representation of the
+          drawing data- base, and that as AutoCAD is further enhanced, new
+          groups will be added to entities to accommodate additional
+          features.</para>
+
+          <para>Writing your DXF processing program in a table-driven way,
+          making no assumptions about the order of groups in an entity, and
+          ignoring any groups not presently defined, will make it much easier
+          to accommodate DXF files from future releases of AutoCAD.</para>
+
+          <para>Each entity begins with a 0 group identifying the entity
+          type.</para>
+
+          <para>The names used for the entities are given in the table that
+          follows.</para>
+
+          <para>Every entity contains an 8 group that gives the name of the
+          layer on which the entity resides.</para>
+
+          <para>Each entity may have elevation, thickness, linetype, or color
+          information associated with it.</para>
+
+          <para>If handles are enabled, every entity has a 5 group containing
+          its handle (as a string representing a hexadecimal number).</para>
+
+          <para>The following groups are included only if the entity has
+          non-default values for these properties.</para>
+
+          <table>
+            <title/>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group code</entry>
+
+                  <entry align="center">Meaning</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>6</entry>
+
+                  <entry>Linetype name (if not "BYLAYER"). The special name
+                  "BYBLOCK" indicates a floating linetype.</entry>
+                </row>
+
+                <row>
+                  <entry>38</entry>
+
+                  <entry>Elevation (if nonzero). Output only if system
+                  variable FLATLAND is 1. Otherwise, Z coordinates are
+                  supplied as 3x-groups as part of each of the entity's
+                  defining points.</entry>
+                </row>
+
+                <row>
+                  <entry>39</entry>
+
+                  <entry>Thickness (if nonzero).</entry>
+                </row>
+
+                <row>
+                  <entry>62</entry>
+
+                  <entry>Color number (if not "BYLAYER"). Zero indicates the
+                  "BYBLOCK" (floating) color.</entry>
+                </row>
+
+                <row>
+                  <entry>210, 220, 230</entry>
+
+                  <entry>These groups are included for each Line, Point,
+                  Circle, Shape, Text, Arc, Trace, Solid, Block Reference,
+                  Polyline, Dimension, Attribute, and Attribute Definition
+                  entity if its extrusion direction is not parallel to the
+                  World Z axis. The indicate the X, Y, and Z components of the
+                  entity's extrusion direction.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+
+          <para>The rest of the groups that make up an entity item are
+          described below.</para>
+
+          <para>Many of the entities include "flag" groups.</para>
+
+          <para>These are integer codes (6x or 7x groups) that encode various
+          pieces of information regarding the entity, and are specific to the
+          particular entity type. In the following descriptions, the term
+          "bit-coded" means that the flag contains various true/false values
+          coded as the sum of the bit values given.</para>
+
+          <para>Any bits not defined in the following section should be
+          ignored in these fields and set to zero when constructing a DXF
+          file.</para>
+
+          <table>
+            <title/>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Entity</entry>
+
+                  <entry align="center">Group codes</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>LINE</entry>
+
+                  <entry>10, 20, 30 (start point), 11, 21, 31 (end
+                  point).</entry>
+                </row>
+
+                <row>
+                  <entry>POINT</entry>
+
+                  <entry>10, 20, 30 (point), 50 (angle of X axis for the UCS
+                  in effect when the Point was drawn -optional 0, for use when
+                  PDMODE is nonzero).</entry>
+                </row>
+
+                <row>
+                  <entry>CIRCLE</entry>
+
+                  <entry>10, 20, 30 (center), 40 (radius).</entry>
+                </row>
+
+                <row>
+                  <entry>ARC</entry>
+
+                  <entry>10, 20, 30 (center), 40 (radius), 50 (start angle),
+                  51 (end angle).</entry>
+                </row>
+
+                <row>
+                  <entry>TRACE</entry>
+
+                  <entry>Four points defining the corners of the trace: (10,
+                  20, 30), (11, 21, 31), (12, 22, 32), and (13, 23,
+                  33).</entry>
+                </row>
+
+                <row>
+                  <entry>SOLID</entry>
+
+                  <entry>Four points defining the corners of the solid: (10,
+                  20, 30), (11, 21, 31), (12, 22, 32), and (13, 23, 33). If
+                  only three points were entered (forming a triangular solid),
+                  the third and fourth points will be the same.</entry>
+                </row>
+
+                <row>
+                  <entry>TEXT</entry>
+
+                  <entry>10, 20, 30 (insertion point), 40 (height), 1 (text
+                  value), 50 (rotation angle -optional 0), 41 (relative X
+                  scale factor -optional 1), 51 (obliquing angle -optional 0),
+                  7 (text style name -optional "STANDARD"), 71 (text
+                  generation flags -optional 0), 72 (justification type
+                  -optional 0), 11, 21, 31 (alignment point -optional, appears
+                  only if 72 group is present and nonzero). The "text
+                  generation flags" are a bit-coded field with mean- ings as
+                  follows: Flag bit value 2 meaning "Text is backwards
+                  (mirrored in X)", flag bit value 4 meaning "Text is upside
+                  down (mirrored in Y)". The "justification type" value (not
+                  bit-coded) indicates the text justification style used on
+                  this entity, as shown in the following: value 0 meaning
+                  "Text is left justified", value 1 meaning "Text is centered
+                  along its baseline", value 2 meaning "Text is right
+                  justified", value 3 meaning "Text is aligned between two
+                  points (height varies)", value 4 meaning "Text is "middle"
+                  (fully) centered", value 5 meaning "Text is fit between two
+                  points (width varies)". If the justification is anything
+                  other than 0 (left justified), 11, 21, and 31 groups will
+                  also appear in the entity to specify the alignment point of
+                  the text (center, rightmost, or second alignment point).
+                  DXFOUT handles ASCII control characters in text strings by
+                  expanding the character into a "^" (caret) followed by the
+                  appropriate letter. For example, an ASCII Control-G (BEL,
+                  decimal code 7) is output as "^G". If the text itself con-
+                  tains a caret character, it is expanded to "^ " (caret,
+                  space). DXFIN performs the complementary conversion.</entry>
+                </row>
+
+                <row>
+                  <entry>SHAPE</entry>
+
+                  <entry>10, 20, 30 (insertion point), 40 (size), 2 (shape
+                  name), 50 (rotation angle -optional 0), 41 (relative X scale
+                  factor -optional 1), 51 (obliquing angle -optional
+                  0).</entry>
+                </row>
+
+                <row>
+                  <entry>BLOCK</entry>
+
+                  <entry>2 (Block name), 70 (Block type flags), 10, 20, 30
+                  (Block base point). Appears only in BLOCKS section. The
+                  "Block type flags" are bit-coded, with the following bit
+                  meanings: Flag bit value 1 meaning "This is an "anonymous"
+                  Block generated by hatching, associative dimensioning, or
+                  other internal operations", flag value 2 meaning "This Block
+                  has Attributes".</entry>
+                </row>
+
+                <row>
+                  <entry>ENDBLK</entry>
+
+                  <entry>No groups. Appears only in BLOCKS section.</entry>
+                </row>
+
+                <row>
+                  <entry>INSERT</entry>
+
+                  <entry>66 ("Attributes follow" flag -optional 0), 2 (Block
+                  name), 10, 20, 30 (insertion point), 41 (X scale factor
+                  -optional 1), 42 (Y scale factor -optional 1), 43 (Z scale
+                  factor -optional 1), 50 (rotation angle -optional 0), 70 and
+                  71 (column and row counts -optional 1), 44 and 45 (column
+                  and row spacing -optional 0). If the value of the
+                  "Attributes follow" flag is 1, a series of Attribute
+                  (ATTRIB) entities is expected to follow the INSERT,
+                  terminated by a sequence end (SEQEND) entity.</entry>
+                </row>
+
+                <row>
+                  <entry>ATTDEF</entry>
+
+                  <entry>10, 20, 30 (text start), 40 (text height), 1 (default
+                  value, see TEXT above for handling of ASCII control
+                  characters), 3 (prompt string), 2 (tag string), 70
+                  (Attribute flags), 73 (field length -optional 0), 50 (text
+                  rotation -optional 0), 41 (relative X scale factor -optional
+                  1), 51 (obliquing angle -optional 0), 7 (text style name
+                  -optional "STANDARD"), 71 (text generation flags -optional
+                  0, see TEXT above), 72 (text justification type -optional 0,
+                  see TEXT above)), 11, 21, 31 (alignment point -optional,
+                  appears only if 72 group is present and nonzero). The
+                  "Attribute flags" are a bit-coded field in which the bits
+                  have the following meanings:</entry>
+                </row>
+
+                <row>
+                  <entry/>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry/>
+
+                  <entry/>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
         </section>
       </section>
     </section>
