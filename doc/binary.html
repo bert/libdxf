@@ -12,8 +12,13 @@
 </head>
 <body bgcolor=#ffffff>
 <h1>Introduction.</h1>
+Ther is three different drawing interchange file format:<br>
+- ASCII DXF<br>
+- Binary DXF<br>
+- Simpler binary DXB<br>
+<h4>Binary DXF File Format</h4>
 The binary file is a compressed version of the ASCII form, but occupies about 25% less.<br>
-Binary is a compact format that can be written and read more quickly by computer software.<br>
+Binary is a compact format that can be written and read more quickly by computer software, however for have a minimum file size the better option is to write a normal ascii dxf file and then use an archivier (like zip. 7zip, tar or other), obviously this archiviation make read and write very slower.<br>
 Not all software can read or write the binary format of DXF.<br>
 Unlike the ASCII DXF, in the binary format is impossible write a comment (group code 999).<br>
 The first writable binary form is the DXF R10, first of this exist only the ASCII form.<br>
@@ -32,5 +37,17 @@ If the value is an string of char is writed like an ASCII string but with a &lt;
 Unlike the ASCII format for the extended data group codes have a 1 byte (with the value 255) pre group code, then a 2 byte integer with the correct group code, then the value.<br>
 If the extended data value is a long values are a 4 bytes data.<br>
 If the extended data value is a string of characters are a 1 unsigned byte, followed by the number of bytes.<br>
+<br>
+<br>
+<h4>DXB File Format</h4>
+A third form of DXF known as DXB (drawing interchange binary) is an even simpler binary format.<br>
+This file have different extension (.dxb) and it's substantial a different format, with different syntax.<br>
+<br>
+The file start olways with a header of 19 Bytes:<br>
+<code>
+AutoCAD DXB 1.0&lt;CR&gt;&lt;LF&gt;&lt;^Z&gt;&lt;NULL&gt;
+</code>
+<br>
+DXB files have only a very limited number of entities: line, point, circle, arc, trace, solid, polyline, and 3D face.<br>
 </body>
 </html>
