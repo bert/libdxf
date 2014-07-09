@@ -1,7 +1,7 @@
 /*!
  * \file 3dface.c
  *
- * \author Copyright (C) 2010 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D face entity (\c 3DFACE).
  *
@@ -44,8 +44,10 @@ Dxf3dface *
 dxf_3dface_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dface_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         Dxf3dface *dxf_3dface = NULL;
         size_t size;
@@ -55,7 +57,11 @@ dxf_3dface_new ()
         if (size == 0) size = 1;
         if ((dxf_3dface = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_3dface_new () could not allocate memory for a Dxf3dface struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a ")),
+                  "Dxf3dface ",
+                  (_("struct.\n")),
+                  __FUNCTION__);
                 dxf_3dface = NULL;
         }
         else
@@ -63,8 +69,10 @@ dxf_3dface_new ()
                 memset (dxf_3dface, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_3dface);
 }
@@ -85,13 +93,19 @@ dxf_3dface_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dface_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         dxf_3dface = dxf_3dface_new ();
         if (dxf_3dface == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_3dface_init () could not allocate memory for a Dxf3dface struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a ")),
+                "Dxf3dface ",
+                (_("struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_3dface->id_code = 0;
@@ -117,8 +131,10 @@ dxf_3dface_init
         dxf_3dface->flag = 0;
         dxf_3dface->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_3dface);
 }
@@ -145,8 +161,10 @@ dxf_3dface_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dface_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
 
@@ -160,8 +178,9 @@ dxf_3dface_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_3dface_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (0);
                 }
@@ -327,8 +346,9 @@ dxf_3dface_read
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && (strcmp (temp_string, "AcDbFace") != 0))
                         {
-                                fprintf (stderr, "Error in dxf_3dface_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "70") == 0)
@@ -343,17 +363,20 @@ dxf_3dface_read
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
-                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                        fprintf (stdout, (_("DXF comment: %s\n")), temp_string);
                 }
                 else
                 {
-                        fprintf (stderr, "Warning in dxf_3dface_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -375,8 +398,10 @@ dxf_3dface_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dface_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("3DFACE");
 
@@ -384,14 +409,18 @@ dxf_3dface_write
         if (dxf_3dface == NULL)
         {
                 return (EXIT_FAILURE);
-                fprintf (stderr, "Error in dxf_3dface_write () a NULL pointer was passed.\n");
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
         }
         if (strcmp (dxf_3dface->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_3dface_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_3dface->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_3dface->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0")),
+                  dxf_entity_name);
                 dxf_3dface->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
@@ -447,8 +476,10 @@ dxf_3dface_write
         fprintf (fp->fp, " 33\n%f\n", dxf_3dface->z3);
         fprintf (fp->fp, " 70\n%d\n", dxf_3dface->flag);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -470,12 +501,16 @@ dxf_3dface_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dface_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         if (dxf_3dface->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_3dface_free () pointer to next Dxf3dface was not NULL.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next Dxf3dface was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_3dface->linetype);
@@ -483,8 +518,10 @@ dxf_3dface_free
         free (dxf_3dface);
         dxf_3dface = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dface_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
