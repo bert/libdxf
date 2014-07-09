@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-10 00:00+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/3dface.c:48 src/3dface.c:73 src/3dface.c:97 src/3dface.c:135
+#: src/3dface.c:165 src/3dface.c:377 src/3dface.c:402 src/3dface.c:480
+#: src/3dface.c:505 src/3dface.c:522
+#, c-format
+msgid "[File: %s: line: %d] "
+msgstr ""
+
+#: src/3dface.c:49 src/3dface.c:98 src/3dface.c:166 src/3dface.c:403
+#: src/3dface.c:506
+#, c-format
+msgid "Entering %s () function.\n"
+msgstr ""
+
+#: src/3dface.c:61 src/3dface.c:105
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a "
+msgstr ""
+
+#: src/3dface.c:63 src/3dface.c:107
+msgid "struct.\n"
+msgstr ""
+
+#: src/3dface.c:74 src/3dface.c:136 src/3dface.c:378 src/3dface.c:481
+#: src/3dface.c:523
+#, c-format
+msgid "Leaving %s () function.\n"
+msgstr ""
+
+#: src/3dface.c:182
+#, c-format
+msgid "Error in %s () while reading from: %s in line: %d.\n"
+msgstr ""
+
+#: src/3dface.c:350
+#, c-format
+msgid "Error in %s () found a bad subclass marker in: %s in line: %d.\n"
+msgstr ""
+
+#: src/3dface.c:366
+#, c-format
+msgid "DXF comment: %s\n"
+msgstr ""
+
+#: src/3dface.c:371
+#, c-format
+msgid ""
+"Warning in %s () unknown string tag found while reading from: %s in line: "
+"%d.\n"
+msgstr ""
+
+#: src/3dface.c:413
+#, c-format
+msgid "Error in %s () a NULL pointer was passed.\n"
+msgstr ""
+
+#: src/3dface.c:419
+#, c-format
+msgid ""
+"Warning in %s () empty layer string for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/3dface.c:422
+#, c-format
+msgid "    %s entity is relocated to layer 0"
+msgstr ""
+
+#: src/3dface.c:512
+#, c-format
+msgid "ERROR in %s () pointer to next Dxf3dface was not NULL.\n"
+msgstr ""
