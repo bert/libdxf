@@ -18,8 +18,18 @@ AM_PROG_LIBTOOL
 # Checks for libraries.
 AC_CHECK_LIB(m, atan2)
 
+# i18n
+GETTEXT_PACKAGE=$PACKAGE
+AH_TEMPLATE([GETTEXT_PACKAGE], [Name of this program's gettext domain])
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE,"$GETTEXT_PACKAGE", [Gettext package.])
+AC_SUBST(GETTEXT_PACKAGE)
+# Add the languages which your application supports.
+ALL_LINGUAS=""
+AM_GLIB_GNU_GETTEXT
+
 AC_OUTPUT([
 Makefile
+po/Makefile.in
 src/Makefile
 tests/Makefile
 ])
