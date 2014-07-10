@@ -1,7 +1,7 @@
 /*!
  * \file acad_proxy_entity.c
  *
- * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief DXF acad_proxy_entity entity.
  *
@@ -47,8 +47,10 @@ DxfAcadProxyEntity *
 dxf_acad_proxy_entity_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_acad_proxy_entity_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfAcadProxyEntity *dxf_acad_proxy_entity = NULL;
         size_t size;
@@ -58,7 +60,9 @@ dxf_acad_proxy_entity_new ()
         if (size == 0) size = 1;
         if ((dxf_acad_proxy_entity = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_acad_proxy_entity_new () could not allocate memory for a DxfAcadProxyEntity struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfAcadProxyEntity struct.\n")),
+                  __FUNCTION__);
                 dxf_acad_proxy_entity = NULL;
         }
         else
@@ -66,8 +70,10 @@ dxf_acad_proxy_entity_new ()
                 memset (dxf_acad_proxy_entity, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_acad_proxy_entity);
 }
@@ -88,15 +94,19 @@ dxf_acad_proxy_entity_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_acad_proxy_entity_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         int i;
 
         dxf_acad_proxy_entity = dxf_acad_proxy_entity_new ();
         if (dxf_acad_proxy_entity == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_acad_proxy_entity_init () could not allocate memory for a DxfAcadProxyEntity struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfAcadProxyEntity struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_acad_proxy_entity->id_code = 0;
@@ -117,8 +127,10 @@ dxf_acad_proxy_entity_init
         }
         dxf_acad_proxy_entity->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_acad_proxy_entity);
 }
@@ -147,8 +159,10 @@ dxf_acad_proxy_entity_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_acad_proxy_entity_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
         int i;
@@ -166,8 +180,9 @@ dxf_acad_proxy_entity_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_acad_proxy_entity_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
@@ -222,8 +237,9 @@ dxf_acad_proxy_entity_read
                         fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->original_custom_object_data_format);
                         if (dxf_acad_proxy_entity->original_custom_object_data_format != 1)
                         {
-                                fprintf (stderr, "Error in dxf_acad_proxy_entity_read () found a bad original custom object data format value in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad original custom object data format value in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "90") == 0)
@@ -234,8 +250,9 @@ dxf_acad_proxy_entity_read
                         fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->proxy_entity_class_id);
                         if (dxf_acad_proxy_entity->proxy_entity_class_id != DXF_DEFAULT_PROXY_ENTITY_ID)
                         {
-                                fprintf (stderr, "Error in dxf_acad_proxy_entity_read () found a bad proxy entity class ID in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad proxy entity class ID in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "91") == 0)
@@ -246,8 +263,9 @@ dxf_acad_proxy_entity_read
                         fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->application_entity_class_id);
                         if (dxf_acad_proxy_entity->application_entity_class_id < 500)
                         {
-                                fprintf (stderr, "Error in dxf_acad_proxy_entity_read () found a bad value in application entity class ID in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad value in application entity class ID in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "92") == 0)
@@ -282,8 +300,9 @@ dxf_acad_proxy_entity_read
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbProxyEntity") != 0)))
                         {
-                                fprintf (stderr, "Error in dxf_acad_proxy_entity_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "310") == 0)
@@ -313,13 +332,16 @@ dxf_acad_proxy_entity_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_arc_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -341,8 +363,10 @@ dxf_acad_proxy_entity_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_acad_proxy_entity_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = NULL;
         int i;
@@ -420,8 +444,10 @@ dxf_acad_proxy_entity_write
         }
         fprintf (fp->fp, " 94\n  0\n");
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_acad_proxy_entity_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -443,8 +469,10 @@ dxf_acad_proxy_entity_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_acad_proxy_entity_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         int i;
 
@@ -463,8 +491,10 @@ dxf_acad_proxy_entity_free
         free (dxf_acad_proxy_entity);
         dxf_acad_proxy_entity = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_acad_proxy_entity_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
