@@ -408,10 +408,10 @@ dxf_3dface_write
         /* Do some basic checks. */
         if (dxf_3dface == NULL)
         {
-                return (EXIT_FAILURE);
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         if (strcmp (dxf_3dface->layer, "") == 0)
         {
