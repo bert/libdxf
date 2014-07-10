@@ -58,9 +58,7 @@ dxf_3dsolid_new ()
         if ((dxf_3dsolid = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a ")),
-                  "Dxf3dsolid ",
-                  (_("struct.\n")),
+                  (_("ERROR in %s () could not allocate memory for a Dxf3dsolid struct.\n")),
                   __FUNCTION__);
                 dxf_3dsolid = NULL;
         }
@@ -104,9 +102,7 @@ dxf_3dsolid_init
         if (dxf_3dsolid == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a ")),
-                "Dxf3dsolid ",
-                (_("struct.\n")),
+                (_("ERROR in %s () could not allocate memory for a Dxf3dsolid struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
