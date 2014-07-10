@@ -58,9 +58,7 @@ dxf_3dface_new ()
         if ((dxf_3dface = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a ")),
-                  "Dxf3dface ",
-                  (_("struct.\n")),
+                  (_("ERROR in %s () could not allocate memory for a Dxf3dface struct.\n")),
                   __FUNCTION__);
                 dxf_3dface = NULL;
         }
@@ -102,9 +100,7 @@ dxf_3dface_init
         if (dxf_3dface == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a ")),
-                "Dxf3dface ",
-                (_("struct.\n")),
+                (_("ERROR in %s () could not allocate memory for a Dxf3dface struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
