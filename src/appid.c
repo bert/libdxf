@@ -1,7 +1,7 @@
 /*!
  * \file appid.c
  *
- * \author Copyright (C) 2009 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF application identity entity (\c APPID).
  *
@@ -50,8 +50,10 @@ DxfAppid *
 dxf_appid_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_appid_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfAppid *dxf_appid = NULL;
         size_t size;
@@ -61,7 +63,9 @@ dxf_appid_new ()
         if (size == 0) size = 1;
         if ((dxf_appid = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_appid_new () could not allocate memory for a DxfAppid struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfAppid struct.\n")),
+                  __FUNCTION__);
                 dxf_appid = NULL;
         }
         else
@@ -69,8 +73,10 @@ dxf_appid_new ()
                 memset (dxf_appid, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_appid);
 }
@@ -91,13 +97,17 @@ dxf_appid_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_appid_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         dxf_appid = dxf_appid_new ();
         if (dxf_appid == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_appid_init () could not allocate memory for a DxfAppid struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfAppid struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_appid->id_code = 0;
@@ -107,8 +117,10 @@ dxf_appid_init
         dxf_appid->hard_owner_object = strdup ("");
         dxf_appid->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_appid);
 }
@@ -136,8 +148,10 @@ dxf_appid_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_appid_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
 
@@ -151,8 +165,9 @@ dxf_appid_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_appid_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
@@ -200,13 +215,16 @@ dxf_appid_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_appid_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -253,17 +271,21 @@ dxf_appid_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_appid_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("APPID");
 
         if (strcmp (application_name, "") == 0)
         {
-                fprintf (stderr, "Warning: empty application name string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is discarded from output.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning: empty application name string for the %s entity with id-code: %x\n")),
+                  dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("    %s entity is discarded from output.\n")),
+                  dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -287,8 +309,10 @@ dxf_appid_write_lowlevel
                 fprintf (fp, "360\n%s\n", hard_owner_object);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -307,8 +331,10 @@ dxf_appid_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_appid_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("APPID");
         if (dxf_appid == NULL)
@@ -318,10 +344,12 @@ dxf_appid_write
         }
         if (dxf_appid->application_name == NULL)
         {
-                fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_appid->id_code);
-                fprintf (stderr, "         %s entity is discarded from output.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning: empty block name string for the %s entity with id-code: %x\n")),
+                  dxf_entity_name, dxf_appid->id_code);
+                fprintf (stderr,
+                  (_("         %s entity is discarded from output.\n")),
+                  dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -345,8 +373,10 @@ dxf_appid_write
                 fprintf (fp->fp, "360\n%s\n", dxf_appid->hard_owner_object);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -367,12 +397,16 @@ dxf_appid_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_appid_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         if (dxf_appid->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_appid_free () pointer to next DxfAppid was not NULL.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfAppid was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_appid->application_name);
@@ -381,8 +415,10 @@ dxf_appid_free
         free (dxf_appid);
         dxf_appid = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_appid_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
