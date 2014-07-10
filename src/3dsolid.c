@@ -1,7 +1,7 @@
 /*!
  * \file 3dsolid.c
  *
- * \author Copyright (C) 2012 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D solid entity (\c 3DSOLID).
  *
@@ -44,8 +44,10 @@ Dxf3dsolid *
 dxf_3dsolid_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         Dxf3dsolid *dxf_3dsolid = NULL;
         size_t size;
@@ -55,7 +57,11 @@ dxf_3dsolid_new ()
         if (size == 0) size = 1;
         if ((dxf_3dsolid = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_3dsolid_new () could not allocate memory for a Dxf3dsolid struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a ")),
+                  "Dxf3dsolid ",
+                  (_("struct.\n")),
+                  __FUNCTION__);
                 dxf_3dsolid = NULL;
         }
         else
@@ -63,8 +69,10 @@ dxf_3dsolid_new ()
                 memset (dxf_3dsolid, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_3dsolid);
 }
@@ -85,15 +93,21 @@ dxf_3dsolid_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         int i;
 
         dxf_3dsolid = dxf_3dsolid_new ();
         if (dxf_3dsolid == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_3dsolid_init () could not allocate memory for a Dxf3dsolid struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a ")),
+                "Dxf3dsolid ",
+                (_("struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_3dsolid->modeler_format_version_number = 0;
@@ -114,8 +128,10 @@ dxf_3dsolid_init
         }
         dxf_3dsolid->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_3dsolid);
 }
@@ -143,8 +159,10 @@ dxf_3dsolid_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
         int i;
@@ -162,8 +180,9 @@ dxf_3dsolid_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_3dsolid_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
@@ -255,8 +274,9 @@ dxf_3dsolid_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "AcDbModelerGeometry") != 0)
                         {
-                                fprintf (stderr, "Error in dxf_3dsolid_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if ((fp->acad_version_number >= AutoCAD_2008)
@@ -268,8 +288,9 @@ dxf_3dsolid_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "AcDb3dSolid") != 0)
                         {
-                                fprintf (stderr, "Error in dxf_3dsolid_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if ((fp->acad_version_number >= AutoCAD_2008)
@@ -285,17 +306,20 @@ dxf_3dsolid_read
                         /* Now follows a string containing a comment. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
-                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                        fprintf (stdout, (_("DXF comment: %s\n")), temp_string);
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_3dsolid_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -317,8 +341,10 @@ dxf_3dsolid_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("3DSOLID");
         int i;
@@ -326,15 +352,19 @@ dxf_3dsolid_write
         /* Do some basic checks. */
         if (dxf_3dsolid == NULL)
         {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 return (EXIT_FAILURE);
-                fprintf (stderr, "Error in dxf_3dsolid_write () a NULL pointer was passed.\n");
         }
         if (strcmp (dxf_3dsolid->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_3dsolid_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_3dsolid->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_3dsolid->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0")),
+                  dxf_entity_name);
                 dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
@@ -401,8 +431,10 @@ dxf_3dsolid_write
                 fprintf (fp->fp, "350\n%s\n", dxf_3dsolid->history);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -424,14 +456,18 @@ dxf_3dsolid_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_3dsolid_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         int i;
 
         if (dxf_3dsolid->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_3dsolid_free () pointer to next Dxf3dsolid was not NULL.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next Dxf3dsolid was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_3dsolid->linetype);
@@ -444,8 +480,10 @@ dxf_3dsolid_free
         free (dxf_3dsolid);
         dxf_3dsolid = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_3dsolid_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] ")),
+          (_("Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
