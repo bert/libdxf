@@ -48,8 +48,7 @@ dxf_acad_proxy_entity_new ()
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfAcadProxyEntity *dxf_acad_proxy_entity = NULL;
@@ -71,8 +70,7 @@ dxf_acad_proxy_entity_new ()
         }
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_acad_proxy_entity);
@@ -95,8 +93,7 @@ dxf_acad_proxy_entity_init
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         int i;
@@ -128,8 +125,7 @@ dxf_acad_proxy_entity_init
         dxf_acad_proxy_entity->next = NULL;
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_acad_proxy_entity);
@@ -160,8 +156,7 @@ dxf_acad_proxy_entity_read
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
@@ -339,8 +334,7 @@ dxf_acad_proxy_entity_read
         }
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
@@ -364,8 +358,7 @@ dxf_acad_proxy_entity_write
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = NULL;
@@ -445,8 +438,7 @@ dxf_acad_proxy_entity_write
         fprintf (fp->fp, " 94\n  0\n");
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
@@ -470,8 +462,7 @@ dxf_acad_proxy_entity_free
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         int i;
@@ -492,8 +483,7 @@ dxf_acad_proxy_entity_free
         dxf_acad_proxy_entity = NULL;
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
