@@ -1,7 +1,7 @@
 /*!
  * \file arc.c
  *
- * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF arc entity (\c ARC).
  *
@@ -47,8 +47,9 @@ DxfArc *
 dxf_arc_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfArc *dxf_arc = NULL;
         size_t size;
@@ -58,7 +59,9 @@ dxf_arc_new ()
         if (size == 0) size = 1;
         if ((dxf_arc = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_arc_new () could not allocate memory for a DxfArc struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfArc struct.\n")),
+                  __FUNCTION__);
                 dxf_arc = NULL;
         }
         else
@@ -66,8 +69,9 @@ dxf_arc_new ()
                 memset (dxf_arc, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_arc);
 }
@@ -88,13 +92,16 @@ dxf_arc_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         dxf_arc = dxf_arc_new ();
         if (dxf_arc == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_arc_init () could not allocate memory for a DxfArc struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfArc struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_arc->id_code = 0;
@@ -116,8 +123,9 @@ dxf_arc_init
         dxf_arc->paperspace = DXF_MODELSPACE;
         dxf_arc->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_arc);
 }
@@ -145,8 +153,9 @@ dxf_arc_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
 
@@ -160,8 +169,9 @@ dxf_arc_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_arc_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
@@ -281,8 +291,9 @@ dxf_arc_read
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbCircle") != 0)))
                         {
-                                fprintf (stderr, "Error in dxf_arc_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "210") == 0)
@@ -315,13 +326,15 @@ dxf_arc_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_arc_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -343,23 +356,27 @@ dxf_arc_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("ARC");
 
         /* Do some basic checks. */
         if (dxf_arc == NULL)
         {
-                fprintf (stderr, "Error in dxf_arc_write () a NULL pointer was passed.\n");
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (dxf_arc->start_angle == dxf_arc->end_angle)
         {
-                fprintf (stderr, "Error in dxf_arc_write () start angle and end angle are identical for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_arc->id_code);
-                fprintf (stderr, "\tskipping %s entity.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Error in %s () start angle and end angle are identical for the %s entity with id-code: %x.\n")),
+                    __FUNCTION__, dxf_entity_name, dxf_arc->id_code);
+                fprintf (stderr,
+                  (_("\tskipping %s entity.\n")), dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (dxf_arc->start_angle > 360.0)
@@ -404,10 +421,12 @@ dxf_arc_write
         }
         if (strcmp (dxf_arc->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_arc_write () empty layer string for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_arc->id_code);
-                fprintf (stderr, "\t%s entity is relocated to default layer.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_arc->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0")),
+                  dxf_entity_name);
                 dxf_arc->layer = DXF_DEFAULT_LAYER;
         }
         /* Start writing output. */
@@ -473,8 +492,9 @@ dxf_arc_write
                 fprintf (fp->fp, "230\n%f\n", dxf_arc->extr_z0);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -496,8 +516,9 @@ dxf_arc_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         if (dxf_arc->next != NULL)
         {
@@ -509,8 +530,9 @@ dxf_arc_free
         free (dxf_arc);
         dxf_arc = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
