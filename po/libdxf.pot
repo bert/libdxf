@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-10 00:00+0200\n"
+"POT-Creation-Date: 2014-07-19 09:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,73 +17,175 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/3dface.c:48 src/3dface.c:73 src/3dface.c:97 src/3dface.c:135
-#: src/3dface.c:165 src/3dface.c:377 src/3dface.c:402 src/3dface.c:480
-#: src/3dface.c:505 src/3dface.c:522
+#: src/3dface.c:48 src/3dface.c:93 src/3dface.c:157 src/3dface.c:392
+#: src/3dface.c:493 src/3dsolid.c:48 src/3dsolid.c:93 src/3dsolid.c:155
+#: src/3dsolid.c:335 src/3dsolid.c:448 src/acad_proxy_entity.c:51
+#: src/acad_proxy_entity.c:96 src/acad_proxy_entity.c:159
+#: src/acad_proxy_entity.c:361 src/acad_proxy_entity.c:465 src/arc.c:51
+#: src/arc.c:96 src/arc.c:157 src/arc.c:360 src/arc.c:520
 #, c-format
-msgid "[File: %s: line: %d] "
+msgid "[File: %s: line: %d] Entering %s () function.\n"
 msgstr ""
 
-#: src/3dface.c:49 src/3dface.c:98 src/3dface.c:166 src/3dface.c:403
-#: src/3dface.c:506
+#: src/3dface.c:60 src/3dface.c:100
 #, c-format
-msgid "Entering %s () function.\n"
+msgid "ERROR in %s () could not allocate memory for a Dxf3dface struct.\n"
 msgstr ""
 
-#: src/3dface.c:61 src/3dface.c:105
+#: src/3dface.c:70 src/3dface.c:128 src/3dface.c:368 src/3dface.c:469
+#: src/3dface.c:509 src/3dsolid.c:70 src/3dsolid.c:125 src/3dsolid.c:311
+#: src/3dsolid.c:424 src/3dsolid.c:471 src/acad_proxy_entity.c:73
+#: src/acad_proxy_entity.c:128 src/acad_proxy_entity.c:337
+#: src/acad_proxy_entity.c:441 src/acad_proxy_entity.c:486 src/arc.c:73
+#: src/arc.c:127 src/arc.c:336 src/arc.c:496 src/arc.c:534
 #, c-format
-msgid "ERROR in %s () could not allocate memory for a "
+msgid "[File: %s: line: %d] Leaving %s () function.\n"
 msgstr ""
 
-#: src/3dface.c:63 src/3dface.c:107
-msgid "struct.\n"
-msgstr ""
-
-#: src/3dface.c:74 src/3dface.c:136 src/3dface.c:378 src/3dface.c:481
-#: src/3dface.c:523
-#, c-format
-msgid "Leaving %s () function.\n"
-msgstr ""
-
-#: src/3dface.c:182
+#: src/3dface.c:173 src/3dsolid.c:175 src/acad_proxy_entity.c:179
+#: src/appid.c:169 src/arc.c:173
 #, c-format
 msgid "Error in %s () while reading from: %s in line: %d.\n"
 msgstr ""
 
-#: src/3dface.c:350
+#: src/3dface.c:341 src/3dsolid.c:269 src/3dsolid.c:283
+#: src/acad_proxy_entity.c:299 src/arc.c:295
 #, c-format
 msgid "Error in %s () found a bad subclass marker in: %s in line: %d.\n"
 msgstr ""
 
-#: src/3dface.c:366
+#: src/3dface.c:357 src/3dsolid.c:300
 #, c-format
 msgid "DXF comment: %s\n"
 msgstr ""
 
-#: src/3dface.c:371
+#: src/3dface.c:362 src/3dsolid.c:305 src/acad_proxy_entity.c:331
+#: src/appid.c:219 src/arc.c:330
 #, c-format
 msgid ""
 "Warning in %s () unknown string tag found while reading from: %s in line: "
 "%d.\n"
 msgstr ""
 
-#: src/3dface.c:413
+#: src/3dface.c:401 src/3dsolid.c:345 src/arc.c:369
 #, c-format
 msgid "Error in %s () a NULL pointer was passed.\n"
 msgstr ""
 
-#: src/3dface.c:419
+#: src/3dface.c:408 src/3dsolid.c:352 src/arc.c:425
 #, c-format
 msgid ""
 "Warning in %s () empty layer string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/3dface.c:422
+#: src/3dface.c:411 src/3dsolid.c:355 src/arc.c:428
 #, c-format
 msgid "    %s entity is relocated to layer 0"
 msgstr ""
 
-#: src/3dface.c:512
+#: src/3dface.c:499
 #, c-format
 msgid "ERROR in %s () pointer to next Dxf3dface was not NULL.\n"
+msgstr ""
+
+#: src/3dsolid.c:60 src/3dsolid.c:102
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a Dxf3dsolid struct.\n"
+msgstr ""
+
+#: src/3dsolid.c:456
+#, c-format
+msgid "ERROR in %s () pointer to next Dxf3dsolid was not NULL.\n"
+msgstr ""
+
+#: src/acad_proxy_entity.c:63 src/acad_proxy_entity.c:105
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a DxfAcadProxyEntity struct.\n"
+msgstr ""
+
+#: src/acad_proxy_entity.c:236
+#, c-format
+msgid ""
+"Error in %s () found a bad original custom object data format value in: %s "
+"in line: %d.\n"
+msgstr ""
+
+#: src/acad_proxy_entity.c:249
+#, c-format
+msgid "Error in %s () found a bad proxy entity class ID in: %s in line: %d.\n"
+msgstr ""
+
+#: src/acad_proxy_entity.c:262
+#, c-format
+msgid ""
+"Error in %s () found a bad value in application entity class ID in: %s in "
+"line: %d.\n"
+msgstr ""
+
+#: src/appid.c:54 src/appid.c:77 src/appid.c:101 src/appid.c:121
+#: src/appid.c:152 src/appid.c:225 src/appid.c:275 src/appid.c:313
+#: src/appid.c:335 src/appid.c:377 src/appid.c:401 src/appid.c:419
+#, c-format
+msgid "[File: %s: line: %d] "
+msgstr ""
+
+#: src/appid.c:55 src/appid.c:102 src/appid.c:153 src/appid.c:276
+#: src/appid.c:336 src/appid.c:402
+#, c-format
+msgid "Entering %s () function.\n"
+msgstr ""
+
+#: src/appid.c:67 src/appid.c:109
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfAppid struct.\n"
+msgstr ""
+
+#: src/appid.c:78 src/appid.c:122 src/appid.c:226 src/appid.c:314
+#: src/appid.c:378 src/appid.c:420
+#, c-format
+msgid "Leaving %s () function.\n"
+msgstr ""
+
+#: src/appid.c:284
+#, c-format
+msgid ""
+"Warning: empty application name string for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/appid.c:287
+#, c-format
+msgid "    %s entity is discarded from output.\n"
+msgstr ""
+
+#: src/appid.c:348
+#, c-format
+msgid "Warning: empty block name string for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/appid.c:351
+#, c-format
+msgid "         %s entity is discarded from output.\n"
+msgstr ""
+
+#: src/appid.c:408
+#, c-format
+msgid "ERROR in %s () pointer to next DxfAppid was not NULL.\n"
+msgstr ""
+
+#: src/arc.c:63 src/arc.c:103
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfArc struct.\n"
+msgstr ""
+
+#: src/arc.c:376
+#, c-format
+msgid ""
+"Error in %s () start angle and end angle are identical for the %s entity "
+"with id-code: %x.\n"
+msgstr ""
+
+#: src/arc.c:379
+#, c-format
+msgid "\tskipping %s entity.\n"
 msgstr ""
