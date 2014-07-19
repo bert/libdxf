@@ -45,8 +45,7 @@ dxf_3dsolid_new ()
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         Dxf3dsolid *dxf_3dsolid = NULL;
@@ -68,8 +67,7 @@ dxf_3dsolid_new ()
         }
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_3dsolid);
@@ -92,8 +90,7 @@ dxf_3dsolid_init
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         int i;
@@ -125,8 +122,7 @@ dxf_3dsolid_init
         dxf_3dsolid->next = NULL;
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_3dsolid);
@@ -156,8 +152,7 @@ dxf_3dsolid_read
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
@@ -313,8 +308,7 @@ dxf_3dsolid_read
         }
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
@@ -338,8 +332,7 @@ dxf_3dsolid_write
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("3DSOLID");
@@ -428,8 +421,7 @@ dxf_3dsolid_write
         }
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
@@ -453,8 +445,7 @@ dxf_3dsolid_free
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         int i;
@@ -477,8 +468,7 @@ dxf_3dsolid_free
         dxf_3dsolid = NULL;
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
