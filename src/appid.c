@@ -51,8 +51,7 @@ dxf_appid_new ()
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfAppid *dxf_appid = NULL;
@@ -74,8 +73,7 @@ dxf_appid_new ()
         }
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_appid);
@@ -98,8 +96,7 @@ dxf_appid_init
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         dxf_appid = dxf_appid_new ();
@@ -118,8 +115,7 @@ dxf_appid_init
         dxf_appid->next = NULL;
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_appid);
@@ -149,8 +145,7 @@ dxf_appid_read
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
@@ -222,8 +217,7 @@ dxf_appid_read
         }
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
@@ -272,8 +266,7 @@ dxf_appid_write_lowlevel
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("APPID");
@@ -310,8 +303,7 @@ dxf_appid_write_lowlevel
         }
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
@@ -332,8 +324,7 @@ dxf_appid_write
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("APPID");
@@ -374,8 +365,7 @@ dxf_appid_write
         }
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
@@ -398,8 +388,7 @@ dxf_appid_free
 {
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Entering %s () function.\n")),
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         if (dxf_appid->next != NULL)
@@ -416,8 +405,7 @@ dxf_appid_free
         dxf_appid = NULL;
 #if DEBUG
         fprintf (stderr,
-          (_("[File: %s: line: %d] ")),
-          (_("Leaving %s () function.\n")),
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
