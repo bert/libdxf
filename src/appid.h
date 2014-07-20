@@ -1,7 +1,7 @@
 /*!
  * \file appid.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF application identity entity (\c APPID).
  *
@@ -100,17 +100,6 @@ dxf_appid_read
 (
         DxfFile *fp,
         DxfAppid *dxf_appid
-);
-int
-dxf_appid_write_lowlevel
-(
-        FILE *fp,
-        int acad_version_number,
-        int id_code,
-        char *application_name,
-        int standard_flag,
-        char *soft_owner_object,
-        char *hard_owner_object
 );
 int
 dxf_appid_write
