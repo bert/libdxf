@@ -1,7 +1,7 @@
 /*!
  * \file attdef.c
  *
- * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF attribute definition entity (\c ATTDEF).
  *
@@ -44,8 +44,9 @@ DxfAttdef *
 dxf_attdef_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_attdef_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfAttdef *dxf_attdef = NULL;
         size_t size;
@@ -55,7 +56,9 @@ dxf_attdef_new ()
         if (size == 0) size = 1;
         if ((dxf_attdef = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_attdef_new () could not allocate memory for a DxfAttdef struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfAttdef struct.\n")),
+                  __FUNCTION__);
                 dxf_attdef = NULL;
         }
         else
@@ -63,8 +66,9 @@ dxf_attdef_new ()
                 memset (dxf_attdef, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attdef_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_attdef);
 }
@@ -84,13 +88,16 @@ dxf_attdef_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_attdef_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         dxf_attdef = dxf_attdef_new ();
         if (dxf_attdef == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_attdef_init () could not allocate memory for a DxfAttdef struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfAttdef struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_attdef->default_value = strdup ("");
@@ -125,8 +132,9 @@ dxf_attdef_init
         dxf_attdef->extr_z0 = 0.0;
         dxf_attdef->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attdef_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_attdef);
 }
@@ -154,8 +162,9 @@ dxf_attdef_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_attdef_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
 
@@ -169,8 +178,9 @@ dxf_attdef_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_attdef_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
@@ -386,8 +396,9 @@ dxf_attdef_read
                         && (strcmp (temp_string, "AcDbText") != 0)
                         && (strcmp (temp_string, "AcDbAttributeDefinition") != 0))
                         {
-                                fprintf (stderr, "Error in dxf_attdef_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "210") == 0)
@@ -420,13 +431,15 @@ dxf_attdef_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_attdef_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attdef_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -445,51 +458,62 @@ dxf_attdef_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_attdef_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("ATTDEF");
 
         /* Do some basic checks. */
         if (dxf_attdef == NULL)
         {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 return (EXIT_FAILURE);
-                fprintf (stderr, "Error in dxf_attdef_write () a NULL pointer was passed.\n");
         }
         if (strcmp (dxf_attdef->tag_value, "") == 0)
         {
-                fprintf (stderr, "Error in dxf_attdef_write () default value string is empty for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_attdef->id_code);
+                fprintf (stderr,
+                  (_("Error in %s () default value string is empty for the %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_attdef->text_style, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_attdef_write () text style string is empty for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_attdef->id_code);
-                fprintf (stderr, "    default text style STANDARD applied to %s entity.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () text style string is empty for the %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
+                fprintf (stderr,
+                  (_("    default text style STANDARD applied to %s entity.\n")),
+                  dxf_entity_name);
                 dxf_attdef->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
         }
         if (strcmp (dxf_attdef->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_attdef_write () empty layer string for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_attdef->id_code);
-                fprintf (stderr, "    %s entity is relocated to the default layer.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0")),
+                  dxf_entity_name);
                 dxf_attdef->layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (dxf_attdef->height == 0.0)
         {
-                fprintf (stderr, "Warning in dxf_attdef_write () height has a value of 0.0 for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_attdef->id_code);
-                fprintf (stderr, "    default height of 1.0 applied to %s entity.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () height has a value of 0.0 for the %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
+                fprintf (stderr,
+                  (_("    default height of 1.0 applied to %s entity.\n")),
+                    dxf_entity_name);
                 dxf_attdef->height = 1.0;
         }
         if (dxf_attdef->rel_x_scale == 0.0)
         {
-                fprintf (stderr, "Warning in dxf_attdef_write () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_attdef->id_code);
+                fprintf (stderr,
+                  (_("Warning in %s () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
                 fprintf (stderr, "    default relative X-scale of 1.0 applied to %s entity.\n",
                         dxf_entity_name);
                 dxf_attdef->rel_x_scale = 1.0;
@@ -583,10 +607,12 @@ dxf_attdef_write
                         && (dxf_attdef->y0 == dxf_attdef->y1)
                         && (dxf_attdef->z0 == dxf_attdef->z1))
                 {
-                        fprintf (stderr, "Warning in dxf_attdef_write () insertion point and alignment point are identical for the %s entity with id-code: %x.\n",
-                                dxf_entity_name, dxf_attdef->id_code);
-                        fprintf (stderr, "    default justification applied to %s entity.\n",
-                                dxf_entity_name);
+                        fprintf (stderr,
+                          (_("Warning in %s () insertion point and alignment point are identical for the %s entity with id-code: %x.\n")),
+                          __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
+                        fprintf (stderr,
+                          (_("    default justification applied to %s entity.\n")),
+                          dxf_entity_name);
                         dxf_attdef->hor_align = 0;
                         dxf_attdef->vert_align = 0;
                 }
@@ -604,8 +630,9 @@ dxf_attdef_write
                 fprintf (fp->fp, "230\n%f\n", dxf_attdef->extr_z0);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attdef_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -626,12 +653,15 @@ dxf_attdef_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_attdef_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         if (dxf_attdef->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_attdef_free () pointer to next DxfAttdef was not NULL.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfAttdef was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_attdef->linetype);
@@ -643,8 +673,9 @@ dxf_attdef_free
         free (dxf_attdef);
         dxf_attdef = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_attdef_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
