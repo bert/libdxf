@@ -1,7 +1,7 @@
 /*!
  * \file body.c
  *
- * \author Copyright (C) 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF body entity (\c BODY).
  *
@@ -44,8 +44,9 @@ DxfBody *
 dxf_body_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_body_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfBody *dxf_body = NULL;
         size_t size;
@@ -55,7 +56,9 @@ dxf_body_new ()
         if (size == 0) size = 1;
         if ((dxf_body = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_body_new () could not allocate memory for a DxfBody struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfBody struct.\n")),
+                  __FUNCTION__);
                 dxf_body = NULL;
         }
         else
@@ -63,8 +66,9 @@ dxf_body_new ()
                 memset (dxf_body, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_body_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_body);
 }
@@ -85,15 +89,18 @@ dxf_body_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_body_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         int i;
 
         dxf_body = dxf_body_new ();
         if (dxf_body == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_body_init () could not allocate memory for a DxfBody struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfBody struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_body->modeler_format_version_number = 0;
@@ -111,8 +118,9 @@ dxf_body_init
         }
         dxf_body->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_body_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_body);
 }
@@ -140,8 +148,9 @@ dxf_body_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_body_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
         int i;
@@ -159,8 +168,9 @@ dxf_body_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_body_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
@@ -251,13 +261,15 @@ dxf_body_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_body_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_body_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -279,18 +291,21 @@ dxf_body_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_body_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("BODY");
         int i;
 
         if (strcmp (dxf_body->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_body_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_body->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_body->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0")),
+                  dxf_entity_name);
                 dxf_body->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -337,8 +352,9 @@ dxf_body_write
                 i++;
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_body_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -360,15 +376,18 @@ dxf_body_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_body_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         int i;
 
         if (dxf_body->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_body_free () pointer to next DxfBody was not NULL.\n");
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("ERROR in %s () pointer to next DxfBody was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (dxf_body->linetype);
         free (dxf_body->layer);
@@ -380,8 +399,9 @@ dxf_body_free
         free (dxf_body);
         dxf_body = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_body_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
