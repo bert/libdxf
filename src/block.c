@@ -1,7 +1,7 @@
 /*!
  * \file block.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF block entity (\c BLOCK).
  *
@@ -45,8 +45,9 @@ DxfBlock *
 dxf_block_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfBlock *dxf_block = NULL;
         size_t size;
@@ -56,7 +57,9 @@ dxf_block_new ()
         if (size == 0) size = 1;
         if ((dxf_block = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_block_new () could not allocate memory for a DxfBlock struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfBlock struct.\n")),
+                  __FUNCTION__);
                 dxf_block = NULL;
         }
         else
@@ -64,8 +67,9 @@ dxf_block_new ()
                 memset (dxf_block, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_block);
 }
@@ -86,14 +90,17 @@ dxf_block_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         dxf_block = dxf_block_new ();
         if (dxf_block == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_block_init () could not allocate memory for a DxfBlock struct.\n");
-              return (NULL);
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfBlock struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
         dxf_block->xref_name = strdup ("");
         dxf_block->block_name = strdup ("");
@@ -107,8 +114,9 @@ dxf_block_init
         dxf_block->soft_owner_object = strdup ("");
         dxf_block->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_block);
 }
@@ -137,8 +145,9 @@ dxf_block_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char temp_string[DXF_MAX_STRING_LENGTH];
 
@@ -149,6 +158,14 @@ dxf_block_read
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        return (0);
+                }
                 if (strcmp (temp_string, "1") == 0)
                 {
                         /* Now follows a string containing a external
@@ -225,8 +242,9 @@ dxf_block_read
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbBlockBegin") != 0)))
                         {
-                                fprintf (stderr, "Error in dxf_block_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "210") == 0)
@@ -261,13 +279,15 @@ dxf_block_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_block_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -335,19 +355,29 @@ dxf_block_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_write_lowlevel () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("BLOCK");
         if (block_name == NULL)
         {
-                fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning: empty block name string for the %s entity with id-code: %x\n")),
+                  dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("         %s entity is discarded from output.\n")),
+                  dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (xref_name == NULL)
         {
-                fprintf (stderr, "Warning: empty xref name string for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
-                fprintf (stderr, "         %s entity is discarded from output.\n", dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning: empty xref name string for the %s entity with id-code: %x\n")),
+                  dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("         %s entity is discarded from output.\n")),
+                  dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
@@ -386,7 +416,9 @@ dxf_block_write_lowlevel
                 fprintf (fp, "330\n%s\n", soft_owner_object);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write_lowlevel () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -406,49 +438,60 @@ dxf_block_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("BLOCK");
         if (dxf_block == NULL)
         {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 return (EXIT_FAILURE);
-                fprintf (stderr, "Error in dxf_block_write () a NULL pointer was passed.\n");
         }
         if (dxf_block->block_name == NULL)
         {
-                fprintf (stderr, "Warning: empty block name string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_block->id_code);
-                fprintf (stderr, "         %s entity is discarded from output.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning: empty block name string for the %s entity with id-code: %x\n")),
+                  dxf_entity_name, dxf_block->id_code);
+                fprintf (stderr,
+                  (_("         %s entity is discarded from output.\n")),
+                  dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (dxf_block->xref_name == NULL)
         {
-                fprintf (stderr, "Warning: empty xref name string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_block->id_code);
-                fprintf (stderr, "         %s entity is discarded from output.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning: empty xref name string for the %s entity with id-code: %x\n")),
+                  dxf_entity_name, dxf_block->id_code);
+                fprintf (stderr,
+                  (_("         %s entity is discarded from output.\n")),
+                  dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (dxf_block->description == NULL)
         {
-                fprintf (stderr, "Warning: NULL pointer to description string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_block->id_code);
+                fprintf (stderr,
+                  (_("Warning: NULL pointer to description string for the %s entity with id-code: %x\n")),
+                  dxf_entity_name, dxf_block->id_code);
                 dxf_block->description = strdup ("");
         }
         if (strcmp (dxf_block->layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_block->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning: empty layer string for the %s entity with id-code: %x\n")),
+                  dxf_entity_name, dxf_block->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0.\n")),
+                  dxf_entity_name);
                 dxf_block->layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (dxf_block->soft_owner_object == NULL)
         {
-                fprintf (stderr, "Warning: NULL pointer to soft owner object string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_block->id_code);
+                fprintf (stderr,
+                  (_("Warning: NULL pointer to soft owner object string for the %s entity with id-code: %x\n")),
+                  dxf_entity_name, dxf_block->id_code);
                 dxf_block->soft_owner_object = strdup ("");
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -481,8 +524,9 @@ dxf_block_write
                 fprintf (fp->fp, "330\n%s\n", dxf_block->soft_owner_object);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -503,11 +547,15 @@ dxf_block_write_endblk
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_write_endblk () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         fprintf (fp->fp, "  0\nENDBLK\n");
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write_endblk () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -526,11 +574,15 @@ dxf_block_write_table
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_write_table () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         /*! \todo Add code here. */
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_write_table () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -552,12 +604,15 @@ dxf_block_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_block_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         if (dxf_block->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_block_free () pointer to next DxfBlock was not NULL.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfBlock was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_block->xref_name);
@@ -568,8 +623,9 @@ dxf_block_free
         free (dxf_block);
         dxf_block = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_block_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
