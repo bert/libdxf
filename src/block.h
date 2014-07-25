@@ -1,7 +1,7 @@
 /*!
  * \file block.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF block entity (\c BLOCK).
  *
@@ -132,24 +132,6 @@ int dxf_block_read
 (
         DxfFile *fp,
         DxfBlock *dxf_block
-);
-int dxf_block_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *xref_name,
-        char *block_name,
-        char *description,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        int block_type,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0,
-        char *soft_owner_object,
-        int acad_version_number
 );
 int dxf_block_write
 (
