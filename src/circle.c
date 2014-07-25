@@ -1,7 +1,7 @@
 /*!
  * \file circle.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF circle entity (\c CIRCLE).
  *
@@ -44,8 +44,9 @@ DxfCircle *
 dxf_circle_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_circle_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfCircle *dxf_circle = NULL;
         size_t size;
@@ -55,7 +56,9 @@ dxf_circle_new ()
         if (size == 0) size = 1;
         if ((dxf_circle = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_circle_new () could not allocate memory for a DxfCircle struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfCircle struct.\n")),
+                  __FUNCTION__);
                 dxf_circle = NULL;
         }
         else
@@ -63,8 +66,9 @@ dxf_circle_new ()
                 memset (dxf_circle, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_circle_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_circle);
 }
@@ -85,13 +89,16 @@ dxf_circle_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_circle_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         dxf_circle = dxf_circle_new ();
         if (dxf_circle == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_circle_init () could not allocate memory for a DxfCircle struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfCircle struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_circle->id_code = 0;
@@ -109,8 +116,9 @@ dxf_circle_init
         dxf_circle->paperspace = DXF_MODELSPACE;
         dxf_circle->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_circle_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_circle);
 }
@@ -138,8 +146,9 @@ dxf_circle_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_circle_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
 
@@ -149,8 +158,9 @@ dxf_circle_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_circle_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (0);
                 }
@@ -245,8 +255,9 @@ dxf_circle_read
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && (strcmp (temp_string, "AcDbCircle") != 0))
                         {
-                                fprintf (stderr, "Error in dxf_circle_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "210") == 0)
@@ -279,13 +290,15 @@ dxf_circle_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_circle_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_circle_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -331,22 +344,27 @@ dxf_circle_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_circle_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("CIRCLE");
 
         if (radius == 0.0)
         {
-                fprintf (stderr, "Error: in dxf_circle_write_lowlevel () radius value equals 0.0 for the %s entity with id-code: %x\n", dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("Error: in %s () radius value equals 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_circle_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0")),
+                  dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -381,8 +399,9 @@ dxf_circle_write_lowlevel
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_circle_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -400,30 +419,34 @@ dxf_circle_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_circle_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("CIRCLE");
 
         if (dxf_circle == NULL)
         {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 return (EXIT_FAILURE);
-                fprintf (stderr, "Error in dxf_circle_write () a NULL pointer was passed.\n");
         }
         if (dxf_circle->radius == 0.0)
         {
-                fprintf (stderr, "Error in dxf_circle_write () radius value equals 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name,
-                        dxf_circle->id_code);
+                fprintf (stderr,
+                  (_("Error in %s () radius value equals 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_circle->id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_circle->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_circle_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name,
-                        dxf_circle->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0",
-                        dxf_entity_name );
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_circle->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0")),
+                  dxf_entity_name );
                 dxf_circle->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -458,8 +481,9 @@ dxf_circle_write
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_circle_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -481,12 +505,15 @@ dxf_circle_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_circle_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         if (dxf_circle->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_circle_free () pointer to next DxfCircle was not NULL.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfCircle was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_circle->linetype);
@@ -494,8 +521,9 @@ dxf_circle_free
         free (dxf_circle);
         dxf_circle = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_circle_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
