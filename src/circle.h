@@ -1,7 +1,7 @@
 /*!
  * \file circle.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF circle entity (\c CIRCLE).
  *
@@ -109,22 +109,6 @@ dxf_circle_read
 (
         DxfFile *fp,
         DxfCircle *dxf_circle
-);
-int
-dxf_circle_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *linetype,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double thickness,
-        double radius,
-        int color,
-        int paperspace,
-        int acad_version_number
 );
 int dxf_circle_write
 (
