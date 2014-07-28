@@ -1,7 +1,7 @@
 /*!
  * \file class.h
  *
- * \author Copyright (C) 2009 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF class entity (\c CLASS).
  *
@@ -122,17 +122,6 @@ dxf_class_read
 (
         DxfFile *fp,
         DxfClass *dxf_class
-);
-int
-dxf_class_write_lowlevel
-(
-        FILE *fp,
-        char *record_name,
-        char *class_name,
-        char *app_name,
-        int proxy_cap_flag,
-        int was_a_proxy_flag,
-        int is_an_entity_flag
 );
 int
 dxf_class_write
