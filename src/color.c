@@ -1,7 +1,7 @@
 /*!
  * \file color.c
  *
- * \author Copyright (C) 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for DXF colors.
  *
@@ -43,8 +43,9 @@ DxfRGBColor *
 dxf_RGB_color_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_RGB_color_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfRGBColor *dxf_RGB_color = NULL;
         size_t size;
@@ -54,7 +55,9 @@ dxf_RGB_color_new ()
         if (size == 0) size = 1;
         if ((dxf_RGB_color = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_RGB_color_new () could not allocate memory for a DxfRGBCcolor struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfRGBCcolor struct.\n")),
+                  __FUNCTION__);
                 dxf_RGB_color = NULL;
         }
         else
@@ -62,8 +65,9 @@ dxf_RGB_color_new ()
                 memset (dxf_RGB_color, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_RGB_color_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_RGB_color);
 }
@@ -84,8 +88,9 @@ dxf_RGB_color_set
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_RGB_color_set () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfRGBColor *dxf_RGB_color;
         int triplet;
@@ -98,7 +103,9 @@ dxf_RGB_color_set
         }
         else
         {
-                fprintf (stderr, "ERROR red color value in dxf_RGB_color_set () out of range.\n");
+                fprintf (stderr,
+                  (_("ERROR red color value in %s () out of range.\n")),
+                  __FUNCTION__);
                 return (NULL);
         }
         if ((green <= 255) || (green >= 0))
@@ -107,7 +114,9 @@ dxf_RGB_color_set
         }
         else
         {
-                fprintf (stderr, "ERROR green color value in dxf_RGB_color_set () out of range.\n");
+                fprintf (stderr,
+                  (_("ERROR green color value in %s () out of range.\n")),
+                  __FUNCTION__);
                 return (NULL);
         }
         if ((blue <= 255) || (blue >= 0))
@@ -116,7 +125,9 @@ dxf_RGB_color_set
         }
         else
         {
-                fprintf (stderr, "ERROR blue color value in dxf_RGB_color_set () out of range.\n");
+                fprintf (stderr,
+                  (_("ERROR blue color value in %s () out of range.\n")),
+                  __FUNCTION__);
                 return (NULL);
         }
         triplet = dxf_RGB_to_triplet (red, green, blue);
@@ -128,12 +139,15 @@ dxf_RGB_color_set
         }
         else
         {
-                fprintf (stderr, "ERROR name value in dxf_RGB_color_set () contains a NULL pointer.\n");
+                fprintf (stderr,
+                  (_("ERROR name value in %s () contains a NULL pointer.\n")),
+                  __FUNCTION__);
                 return (NULL);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_RGB_color_set () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_RGB_color);
 }
@@ -153,8 +167,9 @@ dxf_ACI_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ACI_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         size_t size;
 
@@ -163,7 +178,9 @@ dxf_ACI_init
         if (size == 0) size = 1;
         if ((dxf_ACI = malloc (size * DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_ACI_init () could not allocate memory for a DxfRGBCcolor array.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfRGBCcolor array.\n")),
+                  __FUNCTION__);
                 dxf_ACI = NULL;
                 return (EXIT_FAILURE);
         }
@@ -427,8 +444,9 @@ dxf_ACI_init
                 dxf_ACI[255] = dxf_RGB_color_set (255,255,255);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ACI_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -449,8 +467,9 @@ dxf_RGB_to_triplet
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_RGB_to_triplet () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         int triplet;
 
@@ -482,8 +501,9 @@ dxf_RGB_to_triplet
                 return (-3);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_RGB_to_triplet () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (triplet);
 }
@@ -507,6 +527,11 @@ dxf_RGB_color_get_name
          */
 )
 {
+#if DEBUG
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
+#endif
         char *dxf_RGB_color_get_name;
 
         switch (RGB_color_hex_triplet)
@@ -2187,6 +2212,11 @@ dxf_RGB_color_get_name
                 }
         }
 
+#if DEBUG
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
+#endif
 }
 
 
