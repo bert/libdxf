@@ -1,7 +1,7 @@
 /*!
  * \file comment.c
  *
- * \author Copyright (C) 2008..2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief DXF comment entity (\c COMMENT).
  *
@@ -52,13 +52,18 @@ dxf_comment_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_comment_write () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         fprintf (fp, "999\n%s\n", comment_string);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_comment_write () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */
