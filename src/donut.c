@@ -1,7 +1,7 @@
 /*!
  * \file donut.c
  * 
- * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * 
  * \brief Functions for a DXF donut entity (\c DONUT).
  *
@@ -81,8 +81,9 @@ dxf_donut_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_draw_donut () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("POLYLINE");
         double start_width;
@@ -90,18 +91,21 @@ dxf_donut_write_lowlevel
 
         if (outside_diameter > inside_diameter)
         {
-                fprintf (stderr, "Error in dxf_polyline_write_lowlevel () outside diameter is smaller than the inside diameter for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("Error in %s () outside diameter is smaller than the inside diameter for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         start_width = 0.5 * (outside_diameter - inside_diameter);
         end_width = 0.5 * (outside_diameter - inside_diameter);
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_polyline_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0\n")),
+                  dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Draw a polyline primitive. */
@@ -173,8 +177,9 @@ dxf_donut_write_lowlevel
         dxf_seqend_write (fp, dxf_seqend);
         */
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_draw_donut () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
