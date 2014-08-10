@@ -1,7 +1,7 @@
 /*!
  * \file dimstyle.c
  *
- * \author Copyright (C) 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dimension style table (\c DIMSTYLE).
  *
@@ -47,8 +47,9 @@ DxfDimStyle *
 dxf_dimstyle_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_dimstyle_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfDimStyle *dxf_dimstyle = NULL;
         size_t size;
@@ -58,7 +59,9 @@ dxf_dimstyle_new ()
         if (size == 0) size = 1;
         if ((dxf_dimstyle = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_dimstyle_new () could not allocate memory for a DxfArc struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfDimStyle struct.\n")),
+                  __FUNCTION__);
                 dxf_dimstyle = NULL;
         }
         else
@@ -66,8 +69,9 @@ dxf_dimstyle_new ()
                 memset (dxf_dimstyle, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_dimstyle_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_dimstyle);
 }
@@ -89,13 +93,16 @@ dxf_dimstyle_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_dimstyle_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         dxf_dimstyle = dxf_dimstyle_new ();
         if (dxf_dimstyle == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_dimstyle_init () could not allocate memory for a DxfDimStyle struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfDimStyle struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_dimstyle->dimstyle_name = strdup ("");
@@ -141,8 +148,9 @@ dxf_dimstyle_init
         dxf_dimstyle->dimclrt = DXF_COLOR_BYLAYER;
         dxf_dimstyle->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_dimstyle_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_dimstyle);
 }
@@ -165,32 +173,39 @@ dxf_dimstyle_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_dimstyle_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("DIMSTYLE");
 
         if (dxf_dimstyle == NULL)
         {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 return (EXIT_FAILURE);
-                fprintf (stderr, "Error in dxf_dimstyle_write () a NULL pointer was passed.\n");
         }
         if (strcmp (dxf_dimstyle->dimstyle_name, "") == 0)
         {
-                fprintf (stderr, "Error in dxf_dimstyle_write () dimstyle_name value is empty for the %s entity.\n",
-                        dxf_entity_name);
-                fprintf (stderr, "    skipping %s table.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Error in %s () dimstyle_name value is empty for the %s entity.\n")),
+                  __FUNCTION__, dxf_entity_name);
+                fprintf (stderr,
+                  (_("    skipping %s table.\n")),
+                  dxf_entity_name);
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (!dxf_dimstyle->dimstyle_name)
         {
-                fprintf (stderr, "Error in dxf_dimstyle_write () dimstyle_name value is NULL for the %s entity.\n",
-                        dxf_entity_name);
-                fprintf (stderr, "    skipping %s table.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Error in %s () dimstyle_name value is NULL for the %s entity.\n")),
+                  __FUNCTION__, dxf_entity_name);
+                fprintf (stderr,
+                  (_("    skipping %s table.\n")),
+                  dxf_entity_name);
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
@@ -272,8 +287,9 @@ dxf_dimstyle_write
         fprintf (fp->fp, "177\n%d\n", dxf_dimstyle->dimclre);
         fprintf (fp->fp, "178\n%d\n", dxf_dimstyle->dimclrt);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_dimstyle_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -301,8 +317,9 @@ dxf_dimstyle_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_dimstyle_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
 
@@ -316,8 +333,9 @@ dxf_dimstyle_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_dimstyle_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (0);
                 }
@@ -530,8 +548,9 @@ dxf_dimstyle_read
                         if ((strcmp (temp_string, "AcDbSymbolTableRecord") != 0)
                         && (strcmp (temp_string, "AcDbDimStyleTableRecord") != 0))
                         {
-                                fprintf (stderr, "Error in dxf_dimstyle_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "105") == 0)
@@ -663,8 +682,9 @@ dxf_dimstyle_read
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_dimstyle_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -686,12 +706,15 @@ dxf_dimstyle_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_dimstyle_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         if (dxf_dimstyle->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_dimstyle_free () pointer to next DxfDimStyle was not NULL.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfDimStyle was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_dimstyle->dimstyle_name);
@@ -703,8 +726,9 @@ dxf_dimstyle_free
         free (dxf_dimstyle);
         dxf_dimstyle = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_dimstyle_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
