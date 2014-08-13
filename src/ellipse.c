@@ -1,7 +1,7 @@
 /*!
  * \file ellipse.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF ellipse entity (\c ELLIPSE).
  *
@@ -47,8 +47,9 @@ DxfEllipse *
 dxf_ellipse_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ellipse_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfEllipse *dxf_ellipse = NULL;
         size_t size;
@@ -58,7 +59,9 @@ dxf_ellipse_new ()
         if (size == 0) size = 1;
         if ((dxf_ellipse = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_ellipse_new () could not allocate memory for a DxfEllipse struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfEllipse struct.\n")),
+                  __FUNCTION__);
                 dxf_ellipse = NULL;
         }
         else
@@ -66,8 +69,9 @@ dxf_ellipse_new ()
                 memset (dxf_ellipse, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ellipse_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_ellipse);
 }
@@ -88,13 +92,16 @@ dxf_ellipse_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ellipse_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         dxf_ellipse = dxf_ellipse_new ();
         if (dxf_ellipse == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_ellipse_init () could not allocate memory for a DxfEllipse struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfEllipse struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_ellipse->id_code = 0;
@@ -117,8 +124,9 @@ dxf_ellipse_init
         dxf_ellipse->paperspace = DXF_MODELSPACE;
         dxf_ellipse->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ellipse_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_ellipse);
 }
@@ -146,8 +154,9 @@ dxf_ellipse_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ellipse_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
 
@@ -157,8 +166,9 @@ dxf_ellipse_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_ellipse_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (0);
                 }
@@ -291,8 +301,9 @@ dxf_ellipse_read
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbEllipse") != 0)))
                         {
-                                fprintf (stderr, "Error in dxf_ellipse_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "210") == 0)
@@ -325,13 +336,15 @@ dxf_ellipse_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_ellipse_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ellipse_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -409,27 +422,31 @@ dxf_ellipse_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ellipse_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("ELLIPSE");
 
         if (acad_version_number < AC1014) /* AutoCAD 14 */
         {
-                fprintf (stderr, "Error in dxf_ellipse_write_lowlevel () too old an AutoCAD version used for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("Error in %s () too old an AutoCAD version used for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         if (ratio == 0.0)
         {
-                fprintf (stderr, "Error in dxf_ellipse_write_lowlevel () ratio value equals 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("Error in %s () ratio value equals 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_ellipse_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
@@ -469,8 +486,9 @@ dxf_ellipse_write_lowlevel
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ellipse_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -495,27 +513,31 @@ dxf_ellipse_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ellipse_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("ELLIPSE");
 
         if (fp->acad_version_number < AC1014) /* AutoCAD 14 */
         {
-                fprintf (stderr, "Error in dxf_ellipse_write_lowlevel () too old an AutoCAD version used for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_ellipse->id_code);
+                fprintf (stderr,
+                  (_("Error in %s () too old an AutoCAD version used for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_ellipse->id_code);
                 return (EXIT_FAILURE);
         }
         if (dxf_ellipse->ratio == 0.0)
         {
-                fprintf (stderr, "Error in dxf_ellipse_write () ratio value equals 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_ellipse->id_code);
+                fprintf (stderr,
+                  (_("Error in %s () ratio value equals 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_ellipse->id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_ellipse->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_ellipse_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_ellipse->id_code);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_ellipse->id_code);
                 fprintf (stderr, "    %s entity is relocated to layer 0",
                         dxf_entity_name);
                 dxf_ellipse->layer = strdup (DXF_DEFAULT_LAYER);
@@ -555,8 +577,9 @@ dxf_ellipse_write
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ellipse_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -578,12 +601,15 @@ dxf_ellipse_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ellipse_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         if (dxf_ellipse->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_ellipse_free () pointer to next DxfEllipse was not NULL.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfEllipse was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_ellipse->linetype);
@@ -591,8 +617,9 @@ dxf_ellipse_free
         free (dxf_ellipse);
         dxf_ellipse = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ellopse_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
