@@ -1,7 +1,7 @@
 /*!
  * \file ellipse.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF ellipse entity (\c ELLIPSE).
  *
@@ -134,30 +134,6 @@ dxf_ellipse_read
 (
         DxfFile *fp,
         DxfEllipse *dxf_ellipse
-);
-int
-dxf_ellipse_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *linetype,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double x1,
-        double y1,
-        double z1,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0,
-        double thickness,
-        double ratio,
-        double start_angle,
-        double end_angle,
-        int color,
-        int paperspace,
-        int acad_version_number
 );
 int
 dxf_ellipse_write
