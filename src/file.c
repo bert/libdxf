@@ -1,7 +1,7 @@
 /*!
  * \file file.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  *
  * \brief Functions for the handling of DXF files.
  *
@@ -60,7 +60,9 @@ dxf_file_read
         char temp_string[DXF_MAX_STRING_LENGTH];
         DxfFile *fp;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_file_read () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         /* open the file */
         fp = dxf_read_init (filename);
@@ -92,21 +94,25 @@ dxf_file_read
                                 {
                                          /* We were expecting a dxf SECTION and
                                           * got something else. */
-                                        fprintf (stderr, "Warning: in line %d \"SECTION\" was expected, \"%s\" was found.\n",
-                                                fp->line_number, temp_string);
+                                        fprintf (stderr,
+                                          (_("Warning: in line %d \"SECTION\" was expected, \"%s\" was found.\n")),
+                                          fp->line_number, temp_string);
                                 }
                         }
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: unexpected string encountered while reading line %d from: %s.\n",
-                                fp->line_number , fp->filename);
+                        fprintf (stderr,
+                          (_("Warning: unexpected string encountered while reading line %d from: %s.\n")),
+                          fp->line_number , fp->filename);
                         return (EXIT_FAILURE);
                 }
         }
         dxf_read_close (fp);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_file_read () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -131,7 +137,9 @@ dxf_file_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_file_write () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         extern char *dxf_entities_list;
         extern char *dxf_objects_list;
@@ -147,7 +155,9 @@ dxf_file_write
         dxf_thumbnail_write (dxf_thumbnail, acad_version_number);
         dxf_file_write_eof(fp);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_file_write () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -164,11 +174,15 @@ dxf_file_write_eof
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_file_write_eof () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         fprintf (fp, "  0\nEOF\n");
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_file_write_eof () function.\n", __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
