@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-19 09:40+0200\n"
+"POT-Creation-Date: 2014-08-24 22:58+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,8 +21,43 @@ msgstr ""
 #: src/3dface.c:493 src/3dsolid.c:48 src/3dsolid.c:93 src/3dsolid.c:155
 #: src/3dsolid.c:335 src/3dsolid.c:448 src/acad_proxy_entity.c:51
 #: src/acad_proxy_entity.c:96 src/acad_proxy_entity.c:159
-#: src/acad_proxy_entity.c:361 src/acad_proxy_entity.c:465 src/arc.c:51
-#: src/arc.c:96 src/arc.c:157 src/arc.c:360 src/arc.c:520
+#: src/acad_proxy_entity.c:361 src/acad_proxy_entity.c:465 src/appid.c:54
+#: src/appid.c:99 src/appid.c:148 src/appid.c:241 src/appid.c:305 src/arc.c:51
+#: src/arc.c:96 src/arc.c:157 src/arc.c:360 src/arc.c:520 src/attdef.c:48
+#: src/attdef.c:92 src/attdef.c:166 src/attdef.c:462 src/attdef.c:657
+#: src/attrib.c:48 src/attrib.c:92 src/attrib.c:167 src/attrib.c:456
+#: src/attrib.c:665 src/block.c:49 src/block.c:94 src/block.c:149
+#: src/block.c:311 src/block.c:420 src/block.c:447 src/block.c:477
+#: src/body.c:48 src/body.c:93 src/body.c:152 src/body.c:295 src/body.c:380
+#: src/circle.c:48 src/circle.c:93 src/circle.c:150 src/circle.c:321
+#: src/circle.c:407 src/class.c:50 src/class.c:95 src/class.c:146
+#: src/class.c:258 src/class.c:326 src/class.c:353 src/color.c:47
+#: src/color.c:92 src/color.c:171 src/color.c:471 src/color.c:532
+#: src/comment.c:56 src/dimension.c:51 src/dimension.c:97 src/dimension.c:183
+#: src/dimension.c:588 src/dimension.c:759 src/dimstyle.c:51 src/dimstyle.c:97
+#: src/dimstyle.c:177 src/dimstyle.c:321 src/dimstyle.c:710 src/donut.c:85
+#: src/ellipse.c:51 src/ellipse.c:96 src/ellipse.c:158 src/ellipse.c:373
+#: src/ellipse.c:461 src/entities.c:76 src/entities.c:101 src/file.c:64
+#: src/file.c:141 src/file.c:178 src/hatch.c:52 src/hatch.c:91 src/hatch.c:130
+#: src/hatch.c:169 src/hatch.c:208 src/hatch.c:247 src/hatch.c:287
+#: src/hatch.c:326 src/hatch.c:365 src/hatch.c:404 src/hatch.c:443
+#: src/hatch.c:482 src/hatch.c:522 src/hatch.c:567 src/hatch.c:631
+#: src/hatch.c:676 src/hatch.c:726 src/hatch.c:766 src/hatch.c:806
+#: src/hatch.c:849 src/hatch.c:889 src/hatch.c:931 src/hatch.c:975
+#: src/hatch.c:1021 src/hatch.c:1063 src/hatch.c:1113 src/hatch.c:1212
+#: src/hatch.c:1307 src/hatch.c:1408 src/hatch.c:1490 src/hatch.c:1545
+#: src/hatch.c:1618 src/hatch.c:1673 src/hatch.c:1886 src/hatch.c:2019
+#: src/hatch.c:2082 src/hatch.c:2175 src/hatch.c:2323 src/hatch.c:2427
+#: src/hatch.c:2473 src/hatch.c:2668 src/hatch.c:2892 src/hatch.c:2967
+#: src/hatch.c:3013 src/hatch.c:3046 src/hatch.c:3076 src/hatch.c:3213
+#: src/hatch.c:3301 src/hatch.c:3388 src/hatch.c:3446 src/hatch.c:3511
+#: src/hatch.c:3573 src/hatch.c:3617 src/hatch.c:3657 src/hatch.c:3695
+#: src/hatch.c:3733 src/hatch.c:3773 src/hatch.c:3812 src/hatch.c:3850
+#: src/hatch.c:3892 src/hatch.c:3930 src/hatch.c:3968 src/hatch.c:4006
+#: src/hatch.c:4045 src/header.c:44 src/header.c:80 src/header.c:126
+#: src/header.c:628 src/header.c:836 src/header.c:1086 src/header.c:1126
+#: src/header.c:1167 src/header.c:1224 src/header.c:1704 src/helix.c:51
+#: src/helix.c:96 src/helix.c:181 src/helix.c:619 src/helix.c:786
 #, c-format
 msgid "[File: %s: line: %d] Entering %s () function.\n"
 msgstr ""
@@ -36,20 +71,60 @@ msgstr ""
 #: src/3dface.c:509 src/3dsolid.c:70 src/3dsolid.c:125 src/3dsolid.c:311
 #: src/3dsolid.c:424 src/3dsolid.c:471 src/acad_proxy_entity.c:73
 #: src/acad_proxy_entity.c:128 src/acad_proxy_entity.c:337
-#: src/acad_proxy_entity.c:441 src/acad_proxy_entity.c:486 src/arc.c:73
-#: src/arc.c:127 src/arc.c:336 src/arc.c:496 src/arc.c:534
+#: src/acad_proxy_entity.c:441 src/acad_proxy_entity.c:486 src/appid.c:76
+#: src/appid.c:118 src/appid.c:220 src/appid.c:282 src/appid.c:322
+#: src/arc.c:73 src/arc.c:127 src/arc.c:336 src/arc.c:496 src/arc.c:534
+#: src/attdef.c:70 src/attdef.c:136 src/attdef.c:441 src/attdef.c:634
+#: src/attdef.c:677 src/attrib.c:70 src/attrib.c:137 src/attrib.c:435
+#: src/attrib.c:642 src/attrib.c:685 src/block.c:71 src/block.c:118
+#: src/block.c:289 src/block.c:397 src/block.c:426 src/block.c:453
+#: src/block.c:496 src/body.c:70 src/body.c:122 src/body.c:271 src/body.c:356
+#: src/body.c:403 src/circle.c:70 src/circle.c:120 src/circle.c:300
+#: src/circle.c:383 src/circle.c:423 src/class.c:72 src/class.c:116
+#: src/class.c:237 src/class.c:307 src/class.c:332 src/class.c:371
+#: src/color.c:69 src/color.c:149 src/color.c:448 src/color.c:505
+#: src/color.c:2217 src/comment.c:62 src/dimension.c:73 src/dimension.c:154
+#: src/dimension.c:563 src/dimension.c:735 src/dimension.c:778
+#: src/dimstyle.c:73 src/dimstyle.c:152 src/dimstyle.c:291 src/dimstyle.c:686
+#: src/dimstyle.c:730 src/donut.c:181 src/ellipse.c:73 src/ellipse.c:128
+#: src/ellipse.c:346 src/ellipse.c:437 src/ellipse.c:477 src/entities.c:82
+#: src/entities.c:107 src/file.c:114 src/file.c:159 src/file.c:184
+#: src/hatch.c:74 src/hatch.c:113 src/hatch.c:152 src/hatch.c:191
+#: src/hatch.c:230 src/hatch.c:269 src/hatch.c:309 src/hatch.c:348
+#: src/hatch.c:387 src/hatch.c:426 src/hatch.c:465 src/hatch.c:504
+#: src/hatch.c:544 src/hatch.c:608 src/hatch.c:653 src/hatch.c:703
+#: src/hatch.c:743 src/hatch.c:783 src/hatch.c:826 src/hatch.c:866
+#: src/hatch.c:908 src/hatch.c:952 src/hatch.c:998 src/hatch.c:1040
+#: src/hatch.c:1090 src/hatch.c:1131 src/hatch.c:1278 src/hatch.c:1328
+#: src/hatch.c:1461 src/hatch.c:1517 src/hatch.c:1591 src/hatch.c:1640
+#: src/hatch.c:1748 src/hatch.c:1796 src/hatch.c:1987 src/hatch.c:2053
+#: src/hatch.c:2146 src/hatch.c:2215 src/hatch.c:2395 src/hatch.c:2452
+#: src/hatch.c:2564 src/hatch.c:2742 src/hatch.c:2940 src/hatch.c:2991
+#: src/hatch.c:3020 src/hatch.c:3053 src/hatch.c:3164 src/hatch.c:3277
+#: src/hatch.c:3351 src/hatch.c:3418 src/hatch.c:3465 src/hatch.c:3549
+#: src/hatch.c:3593 src/hatch.c:3633 src/hatch.c:3671 src/hatch.c:3709
+#: src/hatch.c:3749 src/hatch.c:3788 src/hatch.c:3826 src/hatch.c:3868
+#: src/hatch.c:3906 src/hatch.c:3944 src/hatch.c:3982 src/hatch.c:4021
+#: src/hatch.c:4059 src/header.c:62 src/header.c:106 src/header.c:591
+#: src/header.c:815 src/header.c:1067 src/header.c:1107 src/header.c:1147
+#: src/header.c:1202 src/header.c:1684 src/header.c:1756 src/helix.c:73
+#: src/helix.c:151 src/helix.c:595 src/helix.c:762 src/helix.c:813
 #, c-format
 msgid "[File: %s: line: %d] Leaving %s () function.\n"
 msgstr ""
 
 #: src/3dface.c:173 src/3dsolid.c:175 src/acad_proxy_entity.c:179
-#: src/appid.c:169 src/arc.c:173
+#: src/appid.c:164 src/arc.c:173 src/attdef.c:182 src/attrib.c:183
+#: src/block.c:164 src/body.c:172 src/circle.c:162 src/class.c:162
+#: src/dimension.c:199 src/dimstyle.c:337 src/ellipse.c:170 src/helix.c:207
 #, c-format
 msgid "Error in %s () while reading from: %s in line: %d.\n"
 msgstr ""
 
 #: src/3dface.c:341 src/3dsolid.c:269 src/3dsolid.c:283
-#: src/acad_proxy_entity.c:299 src/arc.c:295
+#: src/acad_proxy_entity.c:299 src/arc.c:295 src/attdef.c:400 src/attrib.c:394
+#: src/block.c:246 src/circle.c:259 src/dimension.c:522 src/dimstyle.c:552
+#: src/ellipse.c:305 src/helix.c:484
 #, c-format
 msgid "Error in %s () found a bad subclass marker in: %s in line: %d.\n"
 msgstr ""
@@ -60,25 +135,32 @@ msgid "DXF comment: %s\n"
 msgstr ""
 
 #: src/3dface.c:362 src/3dsolid.c:305 src/acad_proxy_entity.c:331
-#: src/appid.c:219 src/arc.c:330
+#: src/appid.c:214 src/arc.c:330 src/attdef.c:435 src/attrib.c:429
+#: src/dimension.c:557
 #, c-format
 msgid ""
 "Warning in %s () unknown string tag found while reading from: %s in line: "
 "%d.\n"
 msgstr ""
 
-#: src/3dface.c:401 src/3dsolid.c:345 src/arc.c:369
+#: src/3dface.c:401 src/3dsolid.c:345 src/arc.c:369 src/attdef.c:471
+#: src/attrib.c:465 src/block.c:318 src/circle.c:329 src/class.c:266
+#: src/dimension.c:597 src/dimstyle.c:185 src/hatch.c:2483 src/helix.c:629
 #, c-format
 msgid "Error in %s () a NULL pointer was passed.\n"
 msgstr ""
 
-#: src/3dface.c:408 src/3dsolid.c:352 src/arc.c:425
+#: src/3dface.c:408 src/3dsolid.c:352 src/arc.c:425 src/attdef.c:495
+#: src/body.c:304 src/circle.c:343 src/dimension.c:603 src/donut.c:104
+#: src/ellipse.c:395
 #, c-format
 msgid ""
 "Warning in %s () empty layer string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/3dface.c:411 src/3dsolid.c:355 src/arc.c:428
+#: src/3dface.c:411 src/3dsolid.c:355 src/arc.c:428 src/attdef.c:498
+#: src/body.c:307 src/circle.c:346 src/dimension.c:606 src/hatch.c:2493
+#: src/hatch.c:2679
 #, c-format
 msgid "    %s entity is relocated to layer 0"
 msgstr ""
@@ -123,52 +205,22 @@ msgid ""
 "line: %d.\n"
 msgstr ""
 
-#: src/appid.c:54 src/appid.c:77 src/appid.c:101 src/appid.c:121
-#: src/appid.c:152 src/appid.c:225 src/appid.c:275 src/appid.c:313
-#: src/appid.c:335 src/appid.c:377 src/appid.c:401 src/appid.c:419
-#, c-format
-msgid "[File: %s: line: %d] "
-msgstr ""
-
-#: src/appid.c:55 src/appid.c:102 src/appid.c:153 src/appid.c:276
-#: src/appid.c:336 src/appid.c:402
-#, c-format
-msgid "Entering %s () function.\n"
-msgstr ""
-
-#: src/appid.c:67 src/appid.c:109
+#: src/appid.c:66 src/appid.c:106
 #, c-format
 msgid "ERROR in %s () could not allocate memory for a DxfAppid struct.\n"
 msgstr ""
 
-#: src/appid.c:78 src/appid.c:122 src/appid.c:226 src/appid.c:314
-#: src/appid.c:378 src/appid.c:420
-#, c-format
-msgid "Leaving %s () function.\n"
-msgstr ""
-
-#: src/appid.c:284
-#, c-format
-msgid ""
-"Warning: empty application name string for the %s entity with id-code: %x\n"
-msgstr ""
-
-#: src/appid.c:287
-#, c-format
-msgid "    %s entity is discarded from output.\n"
-msgstr ""
-
-#: src/appid.c:348
+#: src/appid.c:253 src/block.c:325
 #, c-format
 msgid "Warning: empty block name string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/appid.c:351
+#: src/appid.c:256 src/block.c:328 src/block.c:338
 #, c-format
 msgid "         %s entity is discarded from output.\n"
 msgstr ""
 
-#: src/appid.c:408
+#: src/appid.c:311
 #, c-format
 msgid "ERROR in %s () pointer to next DxfAppid was not NULL.\n"
 msgstr ""
@@ -188,4 +240,624 @@ msgstr ""
 #: src/arc.c:379
 #, c-format
 msgid "\tskipping %s entity.\n"
+msgstr ""
+
+#: src/attdef.c:60 src/attdef.c:99
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfAttdef struct.\n"
+msgstr ""
+
+#: src/attdef.c:478 src/attrib.c:472
+#, c-format
+msgid ""
+"Error in %s () default value string is empty for the %s entity with id-code: "
+"%x.\n"
+msgstr ""
+
+#: src/attdef.c:485 src/attrib.c:486
+#, c-format
+msgid ""
+"Warning in %s () text style string is empty for the %s entity with id-code: "
+"%x.\n"
+msgstr ""
+
+#: src/attdef.c:488 src/attrib.c:489
+#, c-format
+msgid "    default text style STANDARD applied to %s entity.\n"
+msgstr ""
+
+#: src/attdef.c:505 src/attrib.c:506
+#, c-format
+msgid ""
+"Warning in %s () height has a value of 0.0 for the %s entity with id-code: "
+"%x.\n"
+msgstr ""
+
+#: src/attdef.c:508 src/attrib.c:509
+#, c-format
+msgid "    default height of 1.0 applied to %s entity.\n"
+msgstr ""
+
+#: src/attdef.c:515 src/attrib.c:516
+#, c-format
+msgid ""
+"Warning in %s () relative X-scale factor has a value of 0.0 for the %s "
+"entity with id-code: %x.\n"
+msgstr ""
+
+#: src/attdef.c:611 src/attrib.c:616
+#, c-format
+msgid ""
+"Warning in %s () insertion point and alignment point are identical for the "
+"%s entity with id-code: %x.\n"
+msgstr ""
+
+#: src/attdef.c:614
+#, c-format
+msgid "    default justification applied to %s entity.\n"
+msgstr ""
+
+#: src/attdef.c:663
+#, c-format
+msgid "ERROR in %s () pointer to next DxfAttdef was not NULL.\n"
+msgstr ""
+
+#: src/attrib.c:60 src/attrib.c:99
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfAttrib struct.\n"
+msgstr ""
+
+#: src/attrib.c:479
+#, c-format
+msgid ""
+"Error in %s () tag value string is empty for the %s entity with id-code: "
+"%x.\n"
+msgstr ""
+
+#: src/attrib.c:496 src/helix.c:645
+#, c-format
+msgid ""
+"Warning in %s () empty layer string for the %s entity with id-code: %x.\n"
+msgstr ""
+
+#: src/attrib.c:499
+#, c-format
+msgid "    %s entity is relocated to the default layer.\n"
+msgstr ""
+
+#: src/attrib.c:519
+#, c-format
+msgid "    default relative X-scale of 1.0 applied to %s entity.\n"
+msgstr ""
+
+#: src/attrib.c:619
+#, c-format
+msgid "    default justification applied to %s entity\n"
+msgstr ""
+
+#: src/attrib.c:671
+#, c-format
+msgid "ERROR in %s () pointer to next DxfAttrib was not NULL.\n"
+msgstr ""
+
+#: src/block.c:61 src/block.c:101
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfBlock struct.\n"
+msgstr ""
+
+#: src/block.c:283 src/body.c:265 src/circle.c:294 src/class.c:231
+#: src/ellipse.c:340 src/helix.c:589
+#, c-format
+msgid ""
+"Warning: in %s () unknown string tag found while reading from: %s in line: "
+"%d.\n"
+msgstr ""
+
+#: src/block.c:335
+#, c-format
+msgid "Warning: empty xref name string for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/block.c:345
+#, c-format
+msgid ""
+"Warning: NULL pointer to description string for the %s entity with id-code: "
+"%x\n"
+msgstr ""
+
+#: src/block.c:352 src/hatch.c:2490 src/hatch.c:2676
+#, c-format
+msgid "Warning: empty layer string for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/block.c:355
+#, c-format
+msgid "    %s entity is relocated to layer 0.\n"
+msgstr ""
+
+#: src/block.c:362
+#, c-format
+msgid ""
+"Warning: NULL pointer to soft owner object string for the %s entity with id-"
+"code: %x\n"
+msgstr ""
+
+#: src/block.c:483
+#, c-format
+msgid "ERROR in %s () pointer to next DxfBlock was not NULL.\n"
+msgstr ""
+
+#: src/body.c:60 src/body.c:102
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfBody struct.\n"
+msgstr ""
+
+#: src/body.c:388
+#, c-format
+msgid "ERROR in %s () pointer to next DxfBody was not NULL.\n"
+msgstr ""
+
+#: src/circle.c:60 src/circle.c:100
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfCircle struct.\n"
+msgstr ""
+
+#: src/circle.c:336
+#, c-format
+msgid ""
+"Error in %s () radius value equals 0.0 for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/circle.c:413
+#, c-format
+msgid "ERROR in %s () pointer to next DxfCircle was not NULL.\n"
+msgstr ""
+
+#: src/class.c:62 src/class.c:102
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfClass struct.\n"
+msgstr ""
+
+#: src/class.c:274
+#, c-format
+msgid "Error in %s () empty class_name string for the %s entity\n"
+msgstr ""
+
+#: src/class.c:281
+#, c-format
+msgid "Warning in %s () empty record_name string for the %s entity\n"
+msgstr ""
+
+#: src/class.c:284
+#, c-format
+msgid "    record_name of %s entity is reset to \"\""
+msgstr ""
+
+#: src/class.c:291
+#, c-format
+msgid "Warning in %s () empty app_name string for the %s entity\n"
+msgstr ""
+
+#: src/class.c:294
+#, c-format
+msgid "    app_name of %s entity is reset to \"\""
+msgstr ""
+
+#: src/class.c:359
+#, c-format
+msgid "ERROR in %s () pointer to next DxfClass was not NULL.\n"
+msgstr ""
+
+#: src/color.c:59
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfRGBCcolor struct.\n"
+msgstr ""
+
+#: src/color.c:107
+#, c-format
+msgid "ERROR red color value in %s () out of range.\n"
+msgstr ""
+
+#: src/color.c:118
+#, c-format
+msgid "ERROR green color value in %s () out of range.\n"
+msgstr ""
+
+#: src/color.c:129
+#, c-format
+msgid "ERROR blue color value in %s () out of range.\n"
+msgstr ""
+
+#: src/color.c:143
+#, c-format
+msgid "ERROR name value in %s () contains a NULL pointer.\n"
+msgstr ""
+
+#: src/color.c:182
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfRGBCcolor array.\n"
+msgstr ""
+
+#: src/dimension.c:63 src/dimension.c:104
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfDimension struct.\n"
+msgstr ""
+
+#: src/dimension.c:765
+#, c-format
+msgid "ERROR in %s () pointer to next DxfDimension was not NULL.\n"
+msgstr ""
+
+#: src/dimstyle.c:63 src/dimstyle.c:104
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfDimStyle struct.\n"
+msgstr ""
+
+#: src/dimstyle.c:192
+#, c-format
+msgid "Error in %s () dimstyle_name value is empty for the %s entity.\n"
+msgstr ""
+
+#: src/dimstyle.c:195 src/dimstyle.c:207
+#, c-format
+msgid "    skipping %s table.\n"
+msgstr ""
+
+#: src/dimstyle.c:204
+#, c-format
+msgid "Error in %s () dimstyle_name value is NULL for the %s entity.\n"
+msgstr ""
+
+#: src/dimstyle.c:716
+#, c-format
+msgid "ERROR in %s () pointer to next DxfDimStyle was not NULL.\n"
+msgstr ""
+
+#: src/donut.c:95
+#, c-format
+msgid ""
+"Error in %s () outside diameter is smaller than the inside diameter for the "
+"%s entity with id-code: %x\n"
+msgstr ""
+
+#: src/donut.c:107
+#, c-format
+msgid "    %s entity is relocated to layer 0\n"
+msgstr ""
+
+#: src/ellipse.c:63 src/ellipse.c:103
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfEllipse struct.\n"
+msgstr ""
+
+#: src/ellipse.c:381
+#, c-format
+msgid ""
+"Error in %s () too old an AutoCAD version used for the %s entity with id-"
+"code: %x\n"
+msgstr ""
+
+#: src/ellipse.c:388
+#, c-format
+msgid ""
+"Error in %s () ratio value equals 0.0 for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/ellipse.c:467
+#, c-format
+msgid "ERROR in %s () pointer to next DxfEllipse was not NULL.\n"
+msgstr ""
+
+#: src/file.c:98
+#, c-format
+msgid "Warning: in line %d \"SECTION\" was expected, \"%s\" was found.\n"
+msgstr ""
+
+#: src/file.c:106
+#, c-format
+msgid ""
+"Warning: unexpected string encountered while reading line %d from: %s.\n"
+msgstr ""
+
+#: src/hatch.c:64 src/hatch.c:574
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfHatch struct.\n"
+msgstr ""
+
+#: src/hatch.c:103 src/hatch.c:181
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a DxfHatchPatternSeedpoint "
+"struct.\n"
+msgstr ""
+
+#: src/hatch.c:142 src/hatch.c:685
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a DxfHatchPatternDefLine "
+"struct.\n"
+msgstr ""
+
+#: src/hatch.c:220 src/hatch.c:773
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a DxfHatchBoundaryPath struct.\n"
+msgstr ""
+
+#: src/hatch.c:259 src/hatch.c:813
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathPolyline "
+"struct.\n"
+msgstr ""
+
+#: src/hatch.c:299 src/hatch.c:856
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a "
+"DxfHatchBoundaryPathPolylineVertex struct.\n"
+msgstr ""
+
+#: src/hatch.c:338 src/hatch.c:896
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdge "
+"struct.\n"
+msgstr ""
+
+#: src/hatch.c:377 src/hatch.c:938
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeArc "
+"struct.\n"
+msgstr ""
+
+#: src/hatch.c:416 src/hatch.c:982
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a "
+"DxfHatchBoundaryPathEdgeEllipse struct.\n"
+msgstr ""
+
+#: src/hatch.c:455 src/hatch.c:1028
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeLine "
+"struct.\n"
+msgstr ""
+
+#: src/hatch.c:494 src/hatch.c:1072
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a "
+"DxfHatchBoundaryPathEdgeSpline struct.\n"
+msgstr ""
+
+#: src/hatch.c:534 src/hatch.c:1120
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a "
+"DxfHatchBoundaryPathEdgeSplineCp struct.\n"
+msgstr ""
+
+#: src/hatch.c:638
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a DxfHatchPattern struct.\n"
+msgstr ""
+
+#: src/hatch.c:733
+#, c-format
+msgid ""
+"ERROR in %s () could not allocate memory for a DxfHatchPatternSeedPoint "
+"struct.\n"
+msgstr ""
+
+#: src/hatch.c:1218 src/hatch.c:1313 src/hatch.c:1414 src/hatch.c:1498
+#: src/hatch.c:1554 src/hatch.c:1626 src/hatch.c:1681 src/hatch.c:1782
+#: src/hatch.c:1894 src/hatch.c:2027 src/hatch.c:2090 src/hatch.c:2183
+#: src/hatch.c:2329 src/hatch.c:2435
+#, c-format
+msgid ""
+"ERROR in %s () received a NULL pointer value in "
+"dxf_hatch_boundary_path_edge_spline.\n"
+msgstr ""
+
+#: src/hatch.c:1225 src/hatch.c:1421
+#, c-format
+msgid ""
+"ERROR in %s () received a NULL pointer value in "
+"dxf_hatch_boundary_path_edge_spline_cp.\n"
+msgstr ""
+
+#: src/hatch.c:1505 src/hatch.c:2034 src/hatch.c:2190 src/hatch.c:2442
+#, c-format
+msgid "ERROR in %s () resulted in a array pointer overflow.\n"
+msgstr ""
+
+#: src/hatch.c:1565 src/hatch.c:1699 src/hatch.c:1908 src/hatch.c:2097
+#, c-format
+msgid "ERROR in %s () position is greater than the number of control points.\n"
+msgstr ""
+
+#: src/hatch.c:1633
+#, c-format
+msgid ""
+"ERROR in  () received a position greater than "
+"DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n"
+msgstr ""
+
+#: src/hatch.c:1688 src/hatch.c:1901
+#, c-format
+msgid "ERROR in %s () received a NULL pointer value in control_point.\n"
+msgstr ""
+
+#: src/hatch.c:1789 src/hatch.c:2041 src/hatch.c:2204
+#, c-format
+msgid ""
+"ERROR in %s () received a position greater than "
+"DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n"
+msgstr ""
+
+#: src/hatch.c:2110 src/hatch.c:2351
+#, c-format
+msgid "ERROR in %s () spline contins no control points.\n"
+msgstr ""
+
+#: src/hatch.c:2197
+#, c-format
+msgid "ERROR in %s () resulted in a array pointer underflow.\n"
+msgstr ""
+
+#: src/hatch.c:2336
+#, c-format
+msgid ""
+"WARNING in %s () received a NULL pointer value in "
+"dxf_hatch_boundary_path_edge_spline_cp.\n"
+msgstr ""
+
+#: src/hatch.c:2339
+#, c-format
+msgid "\tAllocating memory.\n"
+msgstr ""
+
+#: src/hatch.c:2911
+#, c-format
+msgid "Error: unsupported boundary path edge type encountered in %s ().\n"
+msgstr ""
+
+#: src/hatch.c:2933
+#, c-format
+msgid "Error: unsupported boundary path type encountered in %s ().\n"
+msgstr ""
+
+#: src/hatch.c:3082 src/hatch.c:3219
+#, c-format
+msgid "ERROR in %s () invalid pointer to polyline (NULL).\n"
+msgstr ""
+
+#: src/hatch.c:3226
+#, c-format
+msgid "ERROR in %s () invalid pointer to point (NULL).\n"
+msgstr ""
+
+#: src/hatch.c:3233
+#, c-format
+msgid "ERROR in %s () polyline is not a closed polygon.\n"
+msgstr ""
+
+#: src/hatch.c:3309
+#, c-format
+msgid "ERROR in %s () received an invalid file pointer (NULL).\n"
+msgstr ""
+
+#: src/hatch.c:3316
+#, c-format
+msgid "ERROR in %s () received an invalid pointer to a polyline (NULL).\n"
+msgstr ""
+
+#: src/hatch.c:3460
+#, c-format
+msgid "Warning: no definition line dash items found in %s () function.\n"
+msgstr ""
+
+#: src/hatch.c:3544
+#, c-format
+msgid "Warning: no definition lines found in %s () function.\n"
+msgstr ""
+
+#: src/hatch.c:3579
+#, c-format
+msgid "ERROR in %s () pointer to next DxfHatch was not NULL.\n"
+msgstr ""
+
+#: src/hatch.c:3623 src/hatch.c:3663
+#, c-format
+msgid "ERROR in %s () pointer to next DxfHatchPattern was not NULL.\n"
+msgstr ""
+
+#: src/hatch.c:3701
+#, c-format
+msgid "ERROR in %s () pointer to next DxfHatchPatternDefLine was not NULL.\n"
+msgstr ""
+
+#: src/hatch.c:3739
+#, c-format
+msgid "ERROR in %s () pointer to next DxfHatchBoundaryPath was not NULL.\n"
+msgstr ""
+
+#: src/hatch.c:3779
+#, c-format
+msgid ""
+"ERROR in %s () pointer to next DxfHatchBoundaryPathPolyline was not NULL.\n"
+msgstr ""
+
+#: src/hatch.c:3818
+#, c-format
+msgid ""
+"ERROR in %s () pointer to next DxfHatchBoundaryPathPolylineVertex was not "
+"NULL.\n"
+msgstr ""
+
+#: src/hatch.c:3856
+#, c-format
+msgid "ERROR in %s () pointer to next DxfHatchBoundaryPathEdge was not NULL.\n"
+msgstr ""
+
+#: src/hatch.c:3898
+#, c-format
+msgid ""
+"ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeArc was not NULL.\n"
+msgstr ""
+
+#: src/hatch.c:3936
+#, c-format
+msgid ""
+"ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeEllipse was not "
+"NULL.\n"
+msgstr ""
+
+#: src/hatch.c:3974
+#, c-format
+msgid ""
+"ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeLine was not NULL.\n"
+msgstr ""
+
+#: src/hatch.c:4012
+#, c-format
+msgid ""
+"ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeSpline was not NULL.\n"
+msgstr ""
+
+#: src/hatch.c:4051
+#, c-format
+msgid ""
+"ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeSplineCp was not "
+"NULL.\n"
+msgstr ""
+
+#: src/header.c:1743
+#, c-format
+msgid "[File: %s: line: %d] read_header :: Section Ended.\n"
+msgstr ""
+
+#: src/helix.c:63 src/helix.c:105
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfHelix struct.\n"
+msgstr ""
+
+#: src/helix.c:636
+#, c-format
+msgid ""
+"Error in %s () radius value equals 0.0 for the %s entity with id-code: %x.\n"
+msgstr ""
+
+#: src/helix.c:648
+#, c-format
+msgid "\t%s entity is relocated to default layer.\n"
+msgstr ""
+
+#: src/helix.c:794
+#, c-format
+msgid "ERROR in %s () pointer to next DxfHelix was not NULL.\n"
 msgstr ""
