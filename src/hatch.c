@@ -2763,11 +2763,11 @@ dxf_hatch_boundaries_write_lowlevel
                 /*!< group code = 92\n
                  * boundary path type flag\n
                  * bit coded:\n
-                 * 0 = default\n
-                 * 1 = external\n
-                 * 2 = polyline\n
-                 * 4 = derived\n
-                 * 8 = textbox\n
+                 * 0 = default.\n
+                 * 1 = external.\n
+                 * 2 = polyline.\n
+                 * 4 = derived.\n
+                 * 8 = textbox.\n
                  * 16 = outermost. */
                 int hatch_boundary_path_edges,
                         /*!< group code = 93\n
@@ -2775,11 +2775,12 @@ dxf_hatch_boundaries_write_lowlevel
                          * (only if boundary is not a polyline). */
                 int hatch_boundary_path_edge_type,
                         /*!< group code = 72\n
-                         * (only if boundary is not a polyline).\n */
-                /*! <hr>
-                 * <ul>
-                 * <li>1 = line\n
-                 * </ul> */
+                         * (only if boundary is not a polyline).\n
+                         * 1 = line.\n
+                         * 2 = circular arc.\n
+                         * 3 = elliptic arc.\n
+                         * 4 = spline.
+                         */
                         double hatch_boundary_path_edge_line_x0,
                                 /*!< group code = 10. */
                         double hatch_boundary_path_edge_line_y0,
@@ -2788,11 +2789,6 @@ dxf_hatch_boundaries_write_lowlevel
                                 /*!< group code = 11. */
                         double hatch_boundary_path_edge_line_y1,
                                 /*!< group code = 21.\n */
-
-                /*! <hr>
-                 * <ul>
-                 * <li>2 = circular arc\n
-                 * </ul> */
                         double hatch_boundary_path_edge_arc_x0,
                                 /*!< group code = 10\n
                                  * X-value of center point coordinate. */
@@ -2808,11 +2804,6 @@ dxf_hatch_boundaries_write_lowlevel
                         int hatch_boundary_path_edge_arc_is_ccw,
                                 /*!< group code = 73\n
                                  * arc is counterclockwise flag.\n */
-
-                /*! <hr>
-                 * <ul>
-                 * <li>3 = elliptic arc\n
-                 * </ul> */
                         double hatch_boundary_path_edge_ellipse_x0,
                                 /*!< group code = 10\n
                                  * X-value of center point coordinate. */
@@ -2838,11 +2829,6 @@ dxf_hatch_boundaries_write_lowlevel
                         int hatch_boundary_path_edge_ellipse_is_ccw,
                                 /*!< group code = 73\n
                                  * ellipse is counterclockwise flag.\n */
-
-                /*! <hr>
-                 * <ul>
-                 * <li>4 = spline
-                 * </ul> */
                         int hatch_boundary_path_edge_spline_degree,
                                 /*!< group code = 94. */
                         int hatch_boundary_path_edge_spline_rational,
