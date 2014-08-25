@@ -99,7 +99,9 @@ A default header looks similar to the following:
 
 /*!
  * \file default.c
+ *
  * \author Copyright (C) 2008 by Author <author@email.address>
+ *
  * \brief A brief description of the files use.
  *
  * A more elaborate description follows here, and can span several lines.
@@ -172,14 +174,16 @@ My ~/.emacs are:
 Truncation
 ----------
 It is prefered for lines to not extend beyond 80 characters long.
+If you continue the line of code at the following line please add 2 spaces to
+the current ident level.
 If you need more than 40 characters to ident (5 levels) you probably should 
 write a function.
 However, I'm not very strict about this myself.
 Please do truncate a line at a convenient position, for example:
 
         if (((very_elaborate_variable_description_1 > 0)
-        || (very_elaborate_variable_description_2 < 0))
-        && (very_elaborate_variable_description_3 > 1000))
+          || (very_elaborate_variable_description_2 < 0))
+          && (very_elaborate_variable_description_3 > 1000))
         {
                 blah;
         }
@@ -292,8 +296,8 @@ Log messages.
 It is prefered to log messages similar like the following example:
 <example>
         g_log ("", G_LOG_LEVEL_WARNING,
-                _("pin #1 position with a null pointer found in: %s.\n"),
-                fpw_filename);
+                _("DxfArc with a null pointer found in: %s.\n"),
+                dxf_filename);
 </example>
 The following criticality is (and should be) maintained:
 
