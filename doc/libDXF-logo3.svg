@@ -7,14 +7,10 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    width="744.09448"
    height="1052.3622"
-   id="svg2"
-   inkscape:version="0.47 r22583"
-   sodipodi:docname="libDXF-logo.svg">
+   id="svg2">
   <metadata
      id="metadata15">
     <rdf:RDF>
@@ -23,39 +19,12 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1024"
-     inkscape:window-height="696"
-     id="namedview13"
-     showgrid="false"
-     inkscape:zoom="0.89702957"
-     inkscape:cx="520.6028"
-     inkscape:cy="729.20695"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg2" />
   <defs
-     id="defs4">
-    <inkscape:perspective
-       sodipodi:type="inkscape:persp3d"
-       inkscape:vp_x="0 : 526.18109 : 1"
-       inkscape:vp_y="0 : 1000 : 0"
-       inkscape:vp_z="744.09448 : 526.18109 : 1"
-       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
-       id="perspective17" />
-  </defs>
+     id="defs4" />
   <g
      id="layer1">
     <text
@@ -69,9 +38,9 @@
          y="860.34546"
          id="tspan2820">libDXF</tspan></text>
     <path
-       style="fill:none;stroke:#000000;stroke-width:32.19489288;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 130.2182,272.26661 133.84929,0 0,137.19367 -133.84929,0 0,-137.19367 z"
-       id="rect2824" />
+       id="rect2824"
+       style="fill:none;stroke:#000000;stroke-width:32.19489288;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     <rect
        width="25.714285"
        height="282.85715"

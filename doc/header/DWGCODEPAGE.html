@@ -1,0 +1,269 @@
+<html>
+<head>
+<title>$DWGCODEPAGE values</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="author" CONTENT="Paolo Caroni">
+<meta name="license" CONTENT="GNU FDL 1.3 or any later versions">
+	<style>
+		<!-- 
+		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Liberation Sans"; font-size:16 }
+		 -->
+	</style>
+</head>
+<body bgcolor=#ffffff>
+<h1>Introduction.</h1>
+Specifies the character set used to display text in the drawing, set to the system code page when a new drawing is created.<br>
+The value of $DWGCODEPAGE can be uppercase or lowercase, statistically dos.. and iso8859-.. are lowercase, ANSI_.. and MAC-ROMAN are uppercase, but this isn't a law.<br>
+$DWGCODEPAGE values are not being clearly documented, I have to carry out reverse engineering (but read ascii file maybe can't define that) for know new values.<br>
+If older than DXF 12, there was not even the DWGCODEPAGE variable.<br>
+In this case is then set to "undefined" and the CAD program can not automatically convert the special characters, but this must be done manually with prompt command.<br>
+Since DXF 2006, this variable is writed but not evaluated.<br>
+Obviously I can not guarantee there are all values.<br>
+<!--
+$DWGCODEPAGE values ​​on which I'm not sure:
+iso8859-10
+iso8859-13
+iso8859-15
+utf16
+windows874
+-->
+<br>
+Table: $DWGCODEPAGE values.<br>
+<br>
+<table style="border:2px solid black;border-collapse:collapse">
+<colgroup width="120"></colgroup><!-- DWGCODEPAGE value -->
+<colgroup width="50"></colgroup><!-- Operating System -->
+<colgroup width="200"></colgroup><!-- Localization -->
+<tr>
+<th style="border:2px solid black" bgcolor="#C0C0C0">DWGCODEPAGE<br>value</th>
+<th style="border:2px solid black" bgcolor="#C0C0C0">O.S.</th>
+<th style="border:2px solid black" bgcolor="#C0C0C0">Localization</th>
+</tr>
+<tr>
+<td style="border:2px solid black">undefined</td>
+<td style="border:2px solid black"></td>
+<td style="border:2px solid black"></td>
+</tr>
+<tr>
+<td style="border:2px solid black">ascii</td>
+<td style="border:2px solid black">Unix</td>
+<td style="border:2px solid black"></td>
+</tr>
+<tr>
+<td style="border:2px solid black">iso8859-1</td>
+<td style="border:2px solid black">Unix</td>
+<td style="border:2px solid black">Western Europe</td>
+</tr>
+<tr>
+<td style="border:2px solid black">iso8859-2</td>
+<td style="border:2px solid black">Unix</td>
+<td style="border:2px solid black">Central Europe</td>
+</tr>
+<tr>
+<td style="border:2px solid black">iso8859-3</td>
+<td style="border:2px solid black">Unix</td>
+<td style="border:2px solid black">Eastern Europe</td>
+</tr>
+<tr>
+<td style="border:2px solid black">iso8859-4</td>
+<td style="border:2px solid black">Unix</td>
+<td style="border:2px solid black">Baltic</td>
+</tr>
+<tr>
+<td style="border:2px solid black">iso8859-5</td>
+<td style="border:2px solid black">Unix</td>
+<td style="border:2px solid black">Cyrillic</td>
+</tr>
+<tr>
+<td style="border:2px solid black">iso8859-6</td>
+<td style="border:2px solid black">Unix</td>
+<td style="border:2px solid black">Arabic</td>
+</tr>
+<tr>
+<td style="border:2px solid black">iso8859-7</td>
+<td style="border:2px solid black">Unix</td>
+<td style="border:2px solid black">Greek</td>
+</tr>
+<tr>
+<td style="border:2px solid black">iso8859-8</td>
+<td style="border:2px solid black">Unix</td>
+<td style="border:2px solid black">Hebrew</td>
+</tr>
+<tr>
+<td style="border:2px solid black">iso8859-9</td>
+<td style="border:2px solid black">Unix</td>
+<td style="border:2px solid black">Turkish</td>
+</tr>
+<tr>
+<td style="border:2px solid black">dos437</td>
+<td style="border:2px solid black">DOS</td>
+<td style="border:2px solid black">USA</td>
+</tr>
+<tr>
+<td style="border:2px solid black">dos850</td>
+<td style="border:2px solid black">DOS</td>
+<td style="border:2px solid black">Western Europe</td>
+</tr>
+<tr>
+<td style="border:2px solid black">dos852</td>
+<td style="border:2px solid black">DOS</td>
+<td style="border:2px solid black">Eastern Europe</td>
+</tr>
+<tr>
+<td style="border:2px solid black">dos855</td>
+<td style="border:2px solid black">IBM</td>
+<td style="border:2px solid black">Russian</td>
+</tr>
+<tr>
+<td style="border:2px solid black">dos857</td>
+<td style="border:2px solid black">IBM</td>
+<td style="border:2px solid black">Turkish</td>
+</tr>
+<tr>
+<td style="border:2px solid black">dos860</td>
+<td style="border:2px solid black">DOS</td>
+<td style="border:2px solid black">Portuguese</td>
+</tr>
+<tr>
+<td style="border:2px solid black">dos861</td>
+<td style="border:2px solid black">DOS</td>
+<td style="border:2px solid black">Icelandic</td>
+</tr>
+<tr>
+<td style="border:2px solid black">dos863</td>
+<td style="border:2px solid black">DOS</td>
+<td style="border:2px solid black">Canadian French</td>
+</tr>
+<tr>
+<td style="border:2px solid black">dos864</td>
+<td style="border:2px solid black">DOS</td>
+<td style="border:2px solid black">Arabic</td>
+</tr>
+<tr>
+<td style="border:2px solid black">dos865</td>
+<td style="border:2px solid black">DOS</td>
+<td style="border:2px solid black">Norwegian</td>
+</tr>
+<tr>
+<td style="border:2px solid black">dos869</td>
+<td style="border:2px solid black">DOS</td>
+<td style="border:2px solid black">Greek</td>
+</tr>
+<tr>
+<td style="border:2px solid black">dos932</td>
+<td style="border:2px solid black">DOS</td>
+<td style="border:2px solid black">Japanese</td>
+</tr>
+<tr>
+<td style="border:2px solid black">big5</td>
+<td style="border:2px solid black">DOS</td>
+<td style="border:2px solid black">Traditional Chinese</td>
+</tr>
+<tr>
+<td style="border:2px solid black">dos866</td>
+<td style="border:2px solid black">DOS</td>
+<td style="border:2px solid black">Russian</td>
+</tr>
+<tr>
+<td style="border:2px solid black">gb2312</td>
+<td style="border:2px solid black">DOS</td>
+<td style="border:2px solid black">Simplified Chinese</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ksc5601</td>
+<td style="border:2px solid black"></td>
+<td style="border:2px solid black">Korean Wansung</td>
+</tr>
+<tr>
+<td style="border:2px solid black">johab</td>
+<td style="border:2px solid black"></td>
+<td style="border:2px solid black">Korean Johab</td>
+</tr>
+<tr>
+<td style="border:2px solid black">mac-roman</td>
+<td style="border:2px solid black">Mac</td>
+<td style="border:2px solid black"></td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_1250</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Eastern Europe</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_1251</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Russian</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_1252</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Western Europe</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_1253</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Greek</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_1254</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Turkish</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_1255</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Hebrew</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_1256</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Arabic</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_1257</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Baltic</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_874</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Thai</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_932</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Japanese</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_936</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Simplified Chinese GB</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_949</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Korean Wansung</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_950</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Traditional Chinese big5</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_1361</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Korean Johab</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_1200</td>
+<td style="border:2px solid black"></td>
+<td style="border:2px solid black">Unicode</td>
+</tr>
+<tr>
+<td style="border:2px solid black">ansi_1258</td>
+<td style="border:2px solid black">Win</td>
+<td style="border:2px solid black">Vietnamese
+</tr>
+</table>
+</body>
+</html>

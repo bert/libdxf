@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>$DIMALTZ values</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="author" CONTENT="Paolo Caroni">
+<meta name="license" CONTENT="GNU FDL 1.3 or any later versions">
+	<style>
+		<!-- 
+		body,div,table,thead,tbody,tfoot,tr,th,td,p { font-family:"Liberation Sans"; font-size:16 }
+		 -->
+	</style>
+</head>
+<body bgcolor=#ffffff>
+<h1>Introduction.</h1>
+Turns on or off the suppression of zeros for alternate unit dimensions. It is used to suppress leading and trailing zeros in dimensions expressed in decimal or in feet and inches.<br>
+<br>
+Table: $DIMALTZ values.<br>
+<br>
+<table style="border:2px solid black;border-collapse:collapse">
+<colgroup width="50"></colgroup><!-- DIMALTZ values -->
+<colgroup width="360"></colgroup><!-- Description -->
+<tr>
+<th style="border:2px solid black" bgcolor="#C0C0C0">DIMALTZ<br>value</th>
+<th style="border:2px solid black" bgcolor="#C0C0C0">Description</th>
+</tr>
+<tr>
+<td style="border:2px solid black" align="CENTER">0</td>
+<td style="border:2px solid black">Suppresses zero feet and zero inches.</td>
+</tr>
+<tr>
+<td style="border:2px solid black" align="CENTER">1</td>
+<td style="border:2px solid black">Includes zero feet and zero inches.</td>
+</tr>
+<tr>
+<td style="border:2px solid black" align="CENTER">2</td>
+<td style="border:2px solid black">Suppresses zero inches and includes zero feet.</td>
+</tr>
+<tr>
+<td style="border:2px solid black" align="CENTER">3</td>
+<td style="border:2px solid black">Suppresses zero feet and includes zero inches</td>
+</tr>
+<!-- To suppress leading or trailing zeros, add the following values to one of the preceding values: -->
+<tr>
+<td style="border:2px solid black" align="CENTER">+4</td>
+<td style="border:2px solid black">Suppresses leading zeros.</td>
+</tr>
+<tr>
+<td style="border:2px solid black" align="CENTER">+8</td>
+<td style="border:2px solid black">Suppresses trailing zeros.</td>
+</tr>
+<tr>
+<td style="border:2px solid black" align="CENTER">+12</td>
+<td style="border:2px solid black">Suppresses both leading and trailing zeros.</td>
+</tr>
+</table>
+</body>
+</html>
