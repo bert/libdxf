@@ -1,7 +1,7 @@
 /*!
  * \file image.c
  *
- * \author Copyright (C) 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF image entity (\c IMAGE).
  *
@@ -51,8 +51,9 @@ DxfImage *
 dxf_image_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_image_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfImage *dxf_image = NULL;
         size_t size;
@@ -62,7 +63,9 @@ dxf_image_new ()
         if (size == 0) size = 1;
         if ((dxf_image = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_image_new () could not allocate memory for a DxfImage struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfImage struct.\n")),
+                  __FUNCTION__);
                 dxf_image = NULL;
         }
         else
@@ -70,8 +73,9 @@ dxf_image_new ()
                 memset (dxf_image, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_image_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_image);
 }
@@ -92,15 +96,18 @@ dxf_image_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_image_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         int i;
 
         dxf_image = dxf_image_new ();
         if (dxf_image == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_image_init () could not allocate memory for a DxfImage struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfImage struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_image->id_code = 0;
@@ -137,8 +144,9 @@ dxf_image_init
         dxf_image->imagedef_reactor_object = strdup ("");
         dxf_image->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_image_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_image);
 }
@@ -166,8 +174,9 @@ dxf_image_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_image_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
         int i;
@@ -185,8 +194,9 @@ dxf_image_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_arc_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
@@ -404,8 +414,9 @@ dxf_image_read
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbRasterImage") != 0)))
                         {
-                                fprintf (stderr, "Error in dxf_image_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "999") == 0)
@@ -417,13 +428,15 @@ dxf_image_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_image_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_image_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -445,23 +458,28 @@ dxf_image_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_image_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("IMAGE");
         int i;
 
         if (dxf_image == NULL)
         {
-                fprintf (stderr, "Error in dxf_image_write () a NULL pointer was passed.\n");
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_image->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_image_write () empty layer string for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_image->id_code);
-                fprintf (stderr, "\t%s entity is relocated to default layer.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_image->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to default layer.\n")),
+                  dxf_entity_name);
                 dxf_image->layer = DXF_DEFAULT_LAYER;
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -518,8 +536,9 @@ dxf_image_write
         fprintf (fp->fp, "340\n%s\n", dxf_image->imagedef_object);
         fprintf (fp->fp, "360\n%s\n", dxf_image->imagedef_reactor_object);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_image_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -541,12 +560,15 @@ dxf_image_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_image_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         if (dxf_image->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_image_free () pointer to next DxfImage was not NULL.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfImage was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_image->linetype);
@@ -556,8 +578,9 @@ dxf_image_free
         free (dxf_image);
         dxf_image = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_image_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
