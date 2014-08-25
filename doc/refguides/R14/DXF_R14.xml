@@ -1,0 +1,910 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book>
+  <bookinfo>
+    <title>DXF Reference R14.</title>
+
+    <author>
+      <firstname/>
+
+      <surname/>
+
+      <affiliation>
+        <orgname>Autodesk Inc.</orgname>
+      </affiliation>
+    </author>
+
+    <pubdate>.</pubdate>
+  </bookinfo>
+
+  <chapter>
+    <title>DXF Reference.</title>
+
+    <section>
+      <title>Overview.</title>
+
+      <para>The information in this document is identical to that found in
+      appendixes B and C of the AutoCAD Customization Guide.</para>
+
+      <para>Any updates to this document will be available from our Web site
+      at http://www.autodesk.com/techpubs/autocad/dxf/.</para>
+
+      <para>Or you can contact us by email at acad_docs@autodesk.com.</para>
+
+      <para>When inquiring about DXF Reference updates, please refer to this
+      file's version number.</para>
+
+      <para>The version number of this file is u14.1.04.</para>
+    </section>
+  </chapter>
+
+  <chapter>
+    <title>Drawing Interchange File Formats.</title>
+
+    <section>
+      <title>Overview.</title>
+
+      <para>AutoCAD can be used as a complete drawing editor.</para>
+
+      <para>However, in some applications, other programs must examine AutoCAD
+      drawings or generate drawings to be viewed, modified, or plotted with
+      AutoCAD.</para>
+
+      <para>Five types of file formats for importing and exporting drawing
+      data are described in this appendix.</para>
+
+      <para>Drawing Interchange Format (DXF) files enable the interchange of
+      drawings between AutoCAD and other programs.</para>
+
+      <para>DXF files can be either ASCII or binary formats.</para>
+
+      <para>Because ASCII DXF files are more common than the binary format,
+      this chapter uses the term DXF file when referring to ASCII DXF files
+      and the term binary DXF files when referring to the binary
+      format.</para>
+
+      <para>Both ASCII and binary DXF files contain a complete description of
+      the AutoCAD drawing.</para>
+
+      <para>Because much of the data in an AutoCAD drawing does not have an
+      equivalent object type in other programs, the Drawing Interchange Binary
+      (DXB) file format is provided, which creates a simpler geometric
+      description of the drawing.</para>
+
+      <para>This appendix also presents the Slide file format and the Slide
+      Library file format.</para>
+
+      <para>Topics in this chapter:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>ASCII DXF File Format.</para>
+        </listitem>
+
+        <listitem>
+          <para>Binary DXF File Format.</para>
+        </listitem>
+
+        <listitem>
+          <para>DXB Files.</para>
+        </listitem>
+
+        <listitem>
+          <para>Slide File Format.</para>
+        </listitem>
+
+        <listitem>
+          <para>Slide Library File Format.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>ASCII DXF File Format.</title>
+
+      <para>This section describes the format of ASCII DXF files.</para>
+
+      <para>It contains information that is needed only if you write your own
+      programs to process DXF files or work with entity information obtained
+      by AutoLISP and ARX applications.</para>
+
+      <para>Topics in this section:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>General File Structure.</para>
+        </listitem>
+
+        <listitem>
+          <para>Symbol Table Example.</para>
+        </listitem>
+
+        <listitem>
+          <para>Writing DXF Interface Programs.</para>
+        </listitem>
+      </itemizedlist>
+
+      <section>
+        <title>General File Structure.</title>
+
+        <para>Essentially a DXF file is composed of pairs of codes and
+        associated values.</para>
+
+        <para>The codes, known as group codes, indicate the type of value that
+        follows.</para>
+
+        <para>Using these group code and value pairs, a DXF file is organized
+        into sections, which are composed of records, which in turn are
+        composed of a group code and a data item.</para>
+
+        <para>Each group code and value are on their own line in the DXF
+        file.</para>
+
+        <para>Each section starts with a group code 0 followed by the string,
+        SECTION.</para>
+
+        <para>This is followed by a group code 2 and a string indicating the
+        name of the section (for example, HEADER).</para>
+
+        <para>Each section is composed of group codes and values that define
+        its elements.</para>
+
+        <para>A section ends with a 0 followed by the string ENDSEC.</para>
+
+        <para>It may be helpful to produce a DXF file from a small drawing,
+        print it out, and refer to it while reading the information presented
+        next.</para>
+
+        <para>Topics in this section:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>DXF File Structure.</para>
+          </listitem>
+
+          <listitem>
+            <para>Group Codes.</para>
+          </listitem>
+        </itemizedlist>
+
+        <section>
+          <title>DXF File Structure.</title>
+
+          <para>The overall organization of a DXF file is as follows:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>HEADER section.</para>
+
+              <para>General information about the drawing is found in this
+              section.</para>
+
+              <para>It consists of an AutoCAD database version number and a
+              number of system variables.</para>
+
+              <para>Each parameter contains a variable name and its associated
+              value.</para>
+            </listitem>
+
+            <listitem>
+              <para>CLASSES section.</para>
+
+              <para>Holds the information for application-defined classes,
+              whose instances appear in the BLOCKS, ENTITIES, and OBJECTS
+              sections of the database.</para>
+
+              <para>A class definition is permanently fixed in class
+              hierarchy.</para>
+            </listitem>
+
+            <listitem>
+              <para>TABLES section.</para>
+
+              <para>This section contains definitions for the following symbol
+              tables.</para>
+
+              <itemizedlist>
+                <listitem>
+                  <para>APPID (application identification table).</para>
+                </listitem>
+
+                <listitem>
+                  <para>BLOCK_RECORD (block reference table).</para>
+                </listitem>
+
+                <listitem>
+                  <para>DIMSTYLE (dimension style table).</para>
+                </listitem>
+
+                <listitem>
+                  <para>LAYER (layer table).</para>
+                </listitem>
+
+                <listitem>
+                  <para>LTYPE (linetype table).</para>
+                </listitem>
+
+                <listitem>
+                  <para>STYLE (text style table).</para>
+                </listitem>
+
+                <listitem>
+                  <para>UCS (User Coordinate System table).</para>
+                </listitem>
+
+                <listitem>
+                  <para>VIEW (view table).</para>
+                </listitem>
+
+                <listitem>
+                  <para>VPORT (viewport configuration table).</para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+
+            <listitem>
+              <para>BLOCKS section.</para>
+
+              <para>Contains block definition and drawing entities that make
+              up each block reference in the drawing.</para>
+            </listitem>
+
+            <listitem>
+              <para>ENTITIES section.</para>
+
+              <para>This section contains the graphical objects (entities) in
+              the drawing, including block references (insert
+              entities).</para>
+            </listitem>
+
+            <listitem>
+              <para>OBJECTS section.</para>
+
+              <para>Contains the nongraphical objects in the drawing.</para>
+
+              <para>All objects that are not entities or symbol table records
+              or symbol tables are stored in this section.</para>
+
+              <para>Examples of entries in the OBJECTS section are
+              dictionaries that contain mline styles and groups.</para>
+            </listitem>
+          </itemizedlist>
+
+          <para>If you use the Entities option of the DXFOUT command, the
+          resulting DXF file contains only the ENTITIES section and the EOF
+          marker.</para>
+
+          <para>The ENTITIES section contains only the objects you select for
+          output.</para>
+
+          <para>If you select an insert entity, the corresponding block
+          definition is not included in the output file.</para>
+        </section>
+
+        <section>
+          <title>Group Codes.</title>
+
+          <para>Group codes and the associated values define a specific aspect
+          of an object or entity.</para>
+
+          <para>The line immediately following the group code is the
+          associated value.</para>
+
+          <para>This value can be a a string, an integer, or a floating-point
+          value, such as the X coordinate of a point.</para>
+
+          <para>The lines following the second line of the group, if any, are
+          determined by the group definition and the data associated with the
+          group.</para>
+
+          <para>Special group codes are used as file separators, such as
+          markers for the beginning and end of sections, tables, and the end
+          of the file itself.</para>
+
+          <para>Entities, objects, classes, tables and table entries, and file
+          separators are introduced with a 0 group code that is followed by a
+          name describing the group.</para>
+
+          <para>The maximum DXF file string length is 256 characters.</para>
+
+          <para>If your AutoCAD drawing contains strings that exceed this
+          number, those strings are truncated during DXFOUT.</para>
+
+          <para>DXFIN fails if your DXF file contains strings that exceed this
+          number.</para>
+
+          <para><emphasis role="bold">ASCII Control
+          Characters.</emphasis></para>
+
+          <para>DXFOUT handles ASCII control characters in text strings by
+          expanding the character into a caret (^) followed by the appropriate
+          letter.</para>
+
+          <para>For example, an ASCII Control-G (BEL, decimal code 7) is
+          output as ^G.</para>
+
+          <para>If the text itself contains a caret character, it is expanded
+          to caret, space (^ ).</para>
+
+          <para>DXFIN performs the complementary conversion.</para>
+        </section>
+      </section>
+
+      <section>
+        <title>Symbol Table Example.</title>
+
+        <para>This DXF sequence represents three full objects: the symbol
+        table itself plus two entries.</para>
+
+        <table>
+          <title>Symbol Table Example.</title>
+
+          <tgroup cols="2">
+            <tbody>
+              <row>
+                <entry> 0</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>TABLE</entry>
+
+                <entry><emphasis>It's a table, but what
+                kind?</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 2</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>STYLE</entry>
+
+                <entry><emphasis>This kind. Exception to rule that code 0
+                fully defines type.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 5</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>1C</entry>
+
+                <entry><emphasis>STYLE table handle; same as for entities and
+                other objects.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 70</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>3</entry>
+
+                <entry><emphasis>Maximum number of STYLE table records to
+                follow (pre-Release 13 field).</emphasis></entry>
+              </row>
+
+              <row>
+                <entry>1001</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>APP_X</entry>
+
+                <entry><emphasis>APP_X has put xdata on a symbol
+                table.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry>1040</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>42.0</entry>
+
+                <entry><emphasis>Just a single floating-point
+                number.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 0</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>STYLE</entry>
+
+                <entry><emphasis>Beginning of first element in the STYLE
+                symbol table.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 5</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>3A</entry>
+
+                <entry><emphasis>The first entry's handle. (DIMSTYLE entries
+                will have 105 here).</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 2</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>ENTRY_1</entry>
+
+                <entry><emphasis>The first entry's text
+                name.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 70</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>64</entry>
+
+                <entry><emphasis>Standard flag value.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 40</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>.4</entry>
+
+                <entry><emphasis>Text height.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 41</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>1.0</entry>
+
+                <entry><emphasis>Width scale factor.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 50</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>0.0</entry>
+
+                <entry><emphasis>Oblique angle.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 71</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>0</entry>
+
+                <entry><emphasis>Text generation flags.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 42</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>0.4</entry>
+
+                <entry><emphasis>Last height used.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 3</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>BUFONTS.TXT</entry>
+
+                <entry><emphasis>Primary font file name.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 0</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>STYLE</entry>
+
+                <entry><emphasis>Second entry begins. No xdata or persistent
+                reactors on first entry.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 5</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>C2</entry>
+
+                <entry><emphasis>Second entry handle.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 2</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>ENTRY_2</entry>
+
+                <entry><emphasis>Second entry text name.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry>...</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>...</entry>
+
+                <entry><emphasis>Other fields down to group code
+                3.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry> 3</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>BUFONTS.TXT</entry>
+
+                <entry><emphasis>Primary font file name and last object
+                type--specific group.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry>102</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>{ACAD_REACTORS</entry>
+
+                <entry><emphasis>This entry has a couple of persistent
+                reactors.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry>330</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>3C2</entry>
+
+                <entry><emphasis>Soft ID to first reactor
+                object.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry>330</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>41B</entry>
+
+                <entry><emphasis>Soft ID to first reactor
+                object.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry>102</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>}</entry>
+
+                <entry><emphasis>Indicates the end of the reactor
+                set.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry>1001</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>APP_1</entry>
+
+                <entry><emphasis>Xdata attached to this
+                entry.</emphasis></entry>
+              </row>
+
+              <row>
+                <entry>1070</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>45</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>1001</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>APP_2</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>1004</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>18A5B3EF2C199A</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry> 0</entry>
+
+                <entry/>
+              </row>
+
+              <row>
+                <entry>UCS</entry>
+
+                <entry><emphasis>Start of UCS table (and end of previous
+                record and table).</emphasis></entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+
+      <section>
+        <title>Writing DXF Interface Programs.</title>
+
+        <para>Writing a program that communicates with AutoCAD by means of the
+        DXF mechanism appears more difficult than it actually is.</para>
+
+        <para>The DXF format makes it easy to ignore information you don't
+        need, while reading the information you do need.</para>
+
+        <para>The following example is a Microsoft BASIC(tm) program that
+        reads a DXF file and extracts all the line entities from the drawing
+        (ignoring lines that appear inside blocks).</para>
+
+        <para>It displays the endpoints of these lines on the screen.</para>
+
+        <para>This program is an example of how simple a DXF-reading program
+        can be.</para>
+
+        <programlisting>1000  REM
+1010  REM Extract lines from DXF file
+1020  REM
+1030  G1% = 0
+1040  LINE INPUT "DXF file name: "; A$
+1050  OPEN "i", 1, A$ + ".dxf"
+1060  REM
+1070  REM Ignore until section start encountered
+1080  REM
+1090  GOSUB 2000
+1100  IF G% &lt;&gt; 0 THEN 1090
+1110  IF S$ &lt;&gt; "SECTION" THEN 1090
+1120  GOSUB 2000
+1130  REM
+1140  REM Skip unless ENTITIES section
+1150  REM
+1160  IF S$ &lt;&gt; "ENTITIES" THEN 1090
+1170  REM
+1180  REM Scan until end of section, processing LINEs
+1190  REM
+1200  GOSUB 2000
+1210  IF G% = 0 AND S$ = "ENDSEC" THEN 2200
+1220  IF G% = 0 AND S$ = "LINE" THEN GOSUB 1400 : GOTO 1210
+1230  GOTO 1200
+1400  REM
+1410  REM Accumulate LINE entity groups
+1420  REM
+1430  GOSUB 2000
+1440  IF G% = 10 THEN X1 = X : Y1 = Y : Z1 = Z
+1450  IF G% = 11 THEN X2 = X : Y2 = Y : Z2 = Z
+1460  IF G% = 0 THEN PRINT "Line from (";X1;",";Y1;",";Z1;") to (";X2;",";Y2;",";Z2;")":RETURN
+1470  GOTO 1430
+2000  REM
+2010  REM Read group code and following value
+2020  REM For X coordinates, read Y and possibly Z also
+2030  REM
+2040  IF G1% &lt; 0 THEN G% = -G1% : G1% = 0 ELSE INPUT #1, G%
+2050  IF G% &lt; 10 OR G% = 999 THEN LINE INPUT #1, S$ : RETURN
+2060  IF G% &gt;= 38 AND G% &lt;= 49 THEN INPUT #1, V : RETURN
+2080  IF G% &gt;= 50 AND G% &lt;= 59 THEN INPUT #1, A : RETURN
+2090  IF G% &gt;= 60 AND G% &lt;= 69 THEN INPUT #1, P% : RETURN
+2100  IF G% &gt;= 70 AND G% &lt;= 79 THEN INPUT #1, F% : RETURN
+2110  IF G% &gt;= 210 AND G% &lt;= 219 THEN 2130
+2115  IF G% &gt;= 1000 THEN LINE INPUT #1, T$ : RETURN
+2120  IF G% &gt;= 20 THEN PRINT "Invalid group code";G% : STOP
+2130  INPUT #1, X
+2140  INPUT #1, G1%
+2150  IF G1% &lt;&gt; (G%+10) THEN PRINT "Invalid Y coord code";G1% : STOP
+2160  INPUT #1, Y
+2170  INPUT #1, G1%
+2180  IF G1% &lt;&gt; (G%+20) THEN G1% = -G1% ELSE INPUT #1, Z
+2190  RETURN
+2200  CLOSE 1 </programlisting>
+
+        <para>Writing a program that constructs a DXF file poses different
+        problems.</para>
+
+        <para>You must maintain consistency within the drawing, although with
+        AutoCAD you can omit many items in a DXF file and still obtain a
+        usable drawing.</para>
+
+        <para>The entire HEADER section can be omitted if you don't set header
+        variables.</para>
+
+        <para>Any of the tables in the TABLES section can be omitted if you
+        don't need to make entries, and the entire TABLES section can be
+        dropped if nothing in it is required.</para>
+
+        <para>If you define any linetypes in the LTYPE table, this table must
+        appear before the LAYER table.</para>
+
+        <para>If no block definitions are used in the drawing, the BLOCKS
+        section can be omitted.</para>
+
+        <para>If present, the BLOCKS section must appear before the ENTITIES
+        section.</para>
+
+        <para>Within the ENTITIES section, you can reference layer names even
+        though you haven't defined them in the LAYER table.</para>
+
+        <para>Such layers are automatically created with color 7 and the
+        CONTINUOUS linetype.</para>
+
+        <para>The EOF item must be present at the end of file.</para>
+
+        <para>The following Microsoft BASIC program constructs a DXF file
+        representing a polygon with a specified number of sides, leftmost
+        origin point, and side length.</para>
+
+        <para>This program supplies only the ENTITIES section of the DXF file
+        and places all entities generated on the default layer 0.</para>
+
+        <para>Because this program doesn't create the drawing header, the
+        drawing limits, extents, and current view will be invalid after
+        performing a DXFIN on the drawing generated by this program.</para>
+
+        <para>You can do a ZOOM Extents to fill the screen with the drawing
+        generated.</para>
+
+        <para>Then adjust the limits manually.</para>
+
+        <programlisting>1000 REM
+1010 REM Polygon generator
+1020 REM
+1030 LINE INPUT "Drawing (DXF) file name: "; A$
+1040 OPEN "o", 1, A$ + ".dxf"
+1050 PRINT #1, 0
+1060 PRINT #1, "SECTION"
+1070 PRINT #1, 2
+1080 PRINT #1, "ENTITIES"
+1090 PI = ATN(1) * 4
+1100 INPUT "Number of sides for polygon: "; S%
+1110 INPUT "Starting point (X,Y): "; X, Y
+1120 INPUT "Polygon side: "; D
+1130 A1 = (2 * PI) / S%
+1140 A = PI / 2
+1150 FOR I% = 1 TO S%
+1160 PRINT #1, 0
+1170 PRINT #1, "LINE"
+1180 PRINT #1, 8
+1190 PRINT #1, "0"
+1200 PRINT #1, 10
+1210 PRINT #1, X
+1220 PRINT #1, 20
+1230 PRINT #1, Y
+1240 PRINT #1, 30
+1250 PRINT #1, 0.0
+1260 NX = D * COS(A) + X
+1270 NY = D * SIN(A) + Y
+1280 PRINT #1, 11
+1290 PRINT #1, NX
+1300 PRINT #1, 21
+1310 PRINT #1, NY
+1320 PRINT #1, 31
+1330 PRINT #1, 0.0
+1340 X = NX
+1350 Y = NY
+1360 A = A + A1
+1370 NEXT I%
+1380 PRINT #1, 0
+1390 PRINT #1, "ENDSEC"
+1400 PRINT #1, 0
+1410 PRINT #1, "EOF"
+1420 CLOSE 1</programlisting>
+
+        <para>As long as a properly formatted item appears on the line on
+        which the data is expected, DXFIN accepts it.</para>
+
+        <para>(Of course, string items should not have leading spaces unless
+        these are intended to be part of the string).</para>
+
+        <para>This program takes advantage of this flexibility in input format
+        and does not generate a file exactly like one generated by
+        AutoCAD.</para>
+
+        <para>In the case of an error in using DXFIN TO load, AutoCAD reports
+        the error with a message indicating the nature of the error and the
+        last line processed in the dxf file before the error was
+        detected.</para>
+
+        <para>This may not be the line on which the error occurred, especially
+        in the case of errors such as the omission of required groups.</para>
+      </section>
+    </section>
+  </chapter>
+</book>
