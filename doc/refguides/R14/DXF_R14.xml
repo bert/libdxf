@@ -343,7 +343,7 @@
           <tgroup cols="2">
             <tbody>
               <row>
-                <entry> 0</entry>
+                <entry>0</entry>
 
                 <entry/>
               </row>
@@ -356,7 +356,7 @@
               </row>
 
               <row>
-                <entry> 2</entry>
+                <entry>2</entry>
 
                 <entry/>
               </row>
@@ -369,7 +369,7 @@
               </row>
 
               <row>
-                <entry> 5</entry>
+                <entry>5</entry>
 
                 <entry/>
               </row>
@@ -382,7 +382,7 @@
               </row>
 
               <row>
-                <entry> 70</entry>
+                <entry>70</entry>
 
                 <entry/>
               </row>
@@ -421,7 +421,7 @@
               </row>
 
               <row>
-                <entry> 0</entry>
+                <entry>0</entry>
 
                 <entry/>
               </row>
@@ -434,7 +434,7 @@
               </row>
 
               <row>
-                <entry> 5</entry>
+                <entry>5</entry>
 
                 <entry/>
               </row>
@@ -447,7 +447,7 @@
               </row>
 
               <row>
-                <entry> 2</entry>
+                <entry>2</entry>
 
                 <entry/>
               </row>
@@ -460,7 +460,7 @@
               </row>
 
               <row>
-                <entry> 70</entry>
+                <entry>70</entry>
 
                 <entry/>
               </row>
@@ -472,7 +472,7 @@
               </row>
 
               <row>
-                <entry> 40</entry>
+                <entry>40</entry>
 
                 <entry/>
               </row>
@@ -484,7 +484,7 @@
               </row>
 
               <row>
-                <entry> 41</entry>
+                <entry>41</entry>
 
                 <entry/>
               </row>
@@ -496,7 +496,7 @@
               </row>
 
               <row>
-                <entry> 50</entry>
+                <entry>50</entry>
 
                 <entry/>
               </row>
@@ -508,7 +508,7 @@
               </row>
 
               <row>
-                <entry> 71</entry>
+                <entry>71</entry>
 
                 <entry/>
               </row>
@@ -520,7 +520,7 @@
               </row>
 
               <row>
-                <entry> 42</entry>
+                <entry>42</entry>
 
                 <entry/>
               </row>
@@ -532,7 +532,7 @@
               </row>
 
               <row>
-                <entry> 3</entry>
+                <entry>3</entry>
 
                 <entry/>
               </row>
@@ -544,7 +544,7 @@
               </row>
 
               <row>
-                <entry> 0</entry>
+                <entry>0</entry>
 
                 <entry/>
               </row>
@@ -557,7 +557,7 @@
               </row>
 
               <row>
-                <entry> 5</entry>
+                <entry>5</entry>
 
                 <entry/>
               </row>
@@ -569,7 +569,7 @@
               </row>
 
               <row>
-                <entry> 2</entry>
+                <entry>2</entry>
 
                 <entry/>
               </row>
@@ -594,7 +594,7 @@
               </row>
 
               <row>
-                <entry> 3</entry>
+                <entry>3</entry>
 
                 <entry/>
               </row>
@@ -708,7 +708,7 @@
               </row>
 
               <row>
-                <entry> 0</entry>
+                <entry>0</entry>
 
                 <entry/>
               </row>
@@ -905,6 +905,584 @@
         <para>This may not be the line on which the error occurred, especially
         in the case of errors such as the omission of required groups.</para>
       </section>
+    </section>
+
+    <section>
+      <title>Binary DXF File Format.</title>
+
+      <para>The ASCII DXF file format is a complete representation of an
+      AutoCAD drawing in an ASCII text form, and is easily processed by other
+      programs.</para>
+
+      <para>In addition, AutoCAD can produce or read a binary form of the full
+      DXF file and accept limited input in another binary file format.</para>
+
+      <para>The DXFOUT command provides a Binary option that writes binary dxf
+      files.</para>
+
+      <para>Such a file contains all of the information present in an ASCII
+      DXF file but in a more compact form that takes, typically, 25 percent
+      less file space and can be read and written more quickly (typically,
+      five times faster) by AutoCAD.</para>
+
+      <para>Unlike ASCII dxf files, which entail a trade-off between size and
+      floating-point accuracy, binary dxf files preserve all of the accuracy
+      in the drawing database.</para>
+
+      <para>(AutoCAD Release 10 was the first version to support this form of
+      DXF file; it cannot be read by older versions.)</para>
+
+      <para>A binary DXF file begins with a 22-byte sentinel consisting of the
+      following:</para>
+
+      <para>AutoCAD Binary
+      DXF&lt;CR&gt;&lt;LF&gt;&lt;SUB&gt;&lt;NULL&gt;</para>
+
+      <para>Following the sentinel are pairs (group, value) as in an ASCII DXF
+      file but represented in binary form.</para>
+
+      <para>The group code is a single-byte binary value, and the value that
+      follows is one of the following:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>A 2-byte integer with the least significant byte first and the
+          most significant byte last.</para>
+        </listitem>
+
+        <listitem>
+          <para>An 8-byte IEEE double-precision floating-point number stored
+          with the least significant byte first and the most significant byte
+          last.</para>
+        </listitem>
+
+        <listitem>
+          <para>An ASCII string terminated by a 0 (NULL) byte.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>The type of the datum following a group is determined from the
+      group code by the same rules used in decoding ASCII DXF files.</para>
+
+      <para>Translation of angles to degrees and dates to fractional Julian
+      date representation is performed for binary files, as well as for ASCII
+      DXF files.</para>
+
+      <para>The comment group, 999, is not used in binary DXF files.</para>
+
+      <para>Extended data group codes are represented in binary DXF as a
+      single byte with the value 255, followed by a 2-byte integer value
+      containing the actual group code, followed by the actual value.</para>
+
+      <para>Extended data long (group code 1071) values occupy 4 bytes of
+      data.</para>
+
+      <para>Extended data binary chunks (group code 1004) are represented as a
+      single-byte, unsigned integer length, followed by the specified number
+      of bytes of chunk data.</para>
+
+      <para>For example, to transfer an extended data long group, the
+      following values would appear, occupying 1, 2, and 4 bytes
+      respectively.</para>
+
+      <table>
+        <title>Escape group code.</title>
+
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry>255</entry>
+
+              <entry>Escape group code.</entry>
+            </row>
+
+            <row>
+              <entry>1071</entry>
+
+              <entry>True group code.</entry>
+            </row>
+
+            <row>
+              <entry>999999</entry>
+
+              <entry>Value for the 1071 group code.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <para>DXFOUT writes binary DXF files with the same file type (.dxf) as
+      for ASCII DXF files.</para>
+
+      <para>The DXFIN command automatically recognizes a binary file by means
+      of its sentinel string.</para>
+
+      <para>There is no need for you to identify it as a binary file. If DXFIN
+      encounters an error in a binary DXF file, it reports the byte address
+      within the file where the error was detected.</para>
+    </section>
+
+    <section>
+      <title>DXB Files.</title>
+
+      <para>The DXF file formats are complete representations of an AutoCAD
+      drawing that can be written and read by AutoCAD and other
+      programs.</para>
+
+      <para>However, programs executed by means of the external commands
+      facility often need to supply simple geometric input to AutoCAD.</para>
+
+      <para>For these purposes, AutoCAD supports another file format, called
+      DXB (drawing interchange binary), which is limited in the entities it
+      can represent.</para>
+
+      <para>To load a DXB file, enter the DXBIN command:</para>
+
+      <programlisting>dxbin</programlisting>
+
+      <para>When AutoCAD prompts you, respond with the name of the file you
+      want to load.</para>
+
+      <para>You do not need to include a .dxb file because the type is
+      assumed.</para>
+
+      <para>There is no direct AutoCAD command for writing a DXB file, but the
+      ADI "AutoCAD file output formats" plotter driver can write such a
+      file.</para>
+
+      <para>If you want to create a DXB file from an AutoCAD drawing,
+      configure the "file output formats" plotter and select its "AutoCAD DXB
+      file" output option.</para>
+
+      <para>Topics in this section:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>The DXB File Format.</para>
+        </listitem>
+      </itemizedlist>
+
+      <section>
+        <title>The DXB File Format.</title>
+
+        <para>This information is for experienced programmers and is subject
+        to change without notice.</para>
+
+        <para>The format of a DXB file is as follows:</para>
+
+        <para>Header: "AutoCAD DXB 1.0" CR LF ^Z NUL (19 bytes)</para>
+
+        <para>Data: ...Zero or more data records...</para>
+
+        <para>Terminator: NUL (1 byte)</para>
+
+        <para>Each data record begins with a single byte identifying the
+        record type, followed by data items.</para>
+
+        <para>The data items have various forms of representation and
+        encoding.</para>
+
+        <para>In the following descriptions of the letter codes, each data
+        item is prefixed with a letter and a hyphen.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>w-</term>
+
+            <listitem>
+              <para>16-bit integer, byte reversed in the standard 80x86 style
+              the least significant byte first, and the most significant byte
+              second).</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>f-</term>
+
+            <listitem>
+              <para>IEEE 64-bit floating-point value stored with LSB first,
+              MSB last (as stored by an 80x87).</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>l-</term>
+
+            <listitem>
+              <para>32-bit integer with the bytes reversed 80x86 style.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>n-</term>
+
+            <listitem>
+              <para>Either a 16-bit integer or a floating-point number,
+              depending on the most recent setting of the number mode data
+              item.</para>
+
+              <para>The number mode defaults to 0, signifying integers.</para>
+
+              <para>If set to 1, all n- items will be read as floating
+              point.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>u-</term>
+
+            <listitem>
+              <para>Either a 32-bit integer or a floating-point number,
+              depending on the most recent number mode setting.</para>
+
+              <para>If a 32-bit integer, the value is scaled by multiplying it
+              by 65,536 (216).</para>
+
+              <para>If a floating-point value, no scaling is applied.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>a-</term>
+
+            <listitem>
+              <para>An angle.</para>
+
+              <para>If number mode is integer, this is a 32-bit integer
+              representing an angle in units of millionths of a degree (range
+              0 to 360,000,000).</para>
+
+              <para>If a floating-point number, it represents degrees.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <para>In the following table, the lengths include the item-type byte
+        and assume that the number mode is set to 0 (integer mode).</para>
+
+        <para>If number mode is floating point, add 6 bytes to the length for
+        each n- item present and 4 bytes for each a- or u- item
+        present.</para>
+
+        <table>
+          <title>Byte length for item types.</title>
+
+          <tgroup cols="4">
+            <thead>
+              <row>
+                <entry align="center">Item type</entry>
+
+                <entry align="center">Code (decimal)</entry>
+
+                <entry align="center">Data items</entry>
+
+                <entry align="center">Length (bytes)</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry>Line</entry>
+
+                <entry>1</entry>
+
+                <entry>n-fromx n-fromy n-tox n-toy n-fromx n-fromy n-fromz
+                n-tox n-toy n-toz</entry>
+
+                <entry>13</entry>
+              </row>
+
+              <row>
+                <entry>Point</entry>
+
+                <entry>2</entry>
+
+                <entry>n-x n-y</entry>
+
+                <entry>5</entry>
+              </row>
+
+              <row>
+                <entry>Circle</entry>
+
+                <entry>3</entry>
+
+                <entry>n-ctrx n-ctry n-rad</entry>
+
+                <entry>7</entry>
+              </row>
+
+              <row>
+                <entry>Arc</entry>
+
+                <entry>8</entry>
+
+                <entry>n-ctrx n-ctry n-rad a-starta a-enda</entry>
+
+                <entry>19</entry>
+              </row>
+
+              <row>
+                <entry>Trace</entry>
+
+                <entry>9</entry>
+
+                <entry>n-x1 n-y1 n-x2 n-y2 n-x3 n-y3 n-x4 n-y4</entry>
+
+                <entry>17</entry>
+              </row>
+
+              <row>
+                <entry>Solid</entry>
+
+                <entry>11</entry>
+
+                <entry>n-x1 n-y1 n-x2 n-y2 n-x3 n-y3 n-x4 n-y4</entry>
+
+                <entry>17</entry>
+              </row>
+
+              <row>
+                <entry>Seqend</entry>
+
+                <entry>17</entry>
+
+                <entry>(none)</entry>
+
+                <entry>1</entry>
+              </row>
+
+              <row>
+                <entry>Polyline</entry>
+
+                <entry>19</entry>
+
+                <entry>w-closureflag</entry>
+
+                <entry>3</entry>
+              </row>
+
+              <row>
+                <entry>Vertex</entry>
+
+                <entry>20</entry>
+
+                <entry>n-x n-y</entry>
+
+                <entry>5</entry>
+              </row>
+
+              <row>
+                <entry>3Dface</entry>
+
+                <entry>22</entry>
+
+                <entry>n-x1 n-y1 n-z1 n-x2 n-y2 n-z2 n-x3 n-y3 n-z3 n-x4 n-y4
+                n-z4</entry>
+
+                <entry>25</entry>
+              </row>
+
+              <row>
+                <entry>Scale factor</entry>
+
+                <entry>128</entry>
+
+                <entry>f-scalefac</entry>
+
+                <entry>9</entry>
+              </row>
+
+              <row>
+                <entry>New layer</entry>
+
+                <entry>129</entry>
+
+                <entry>"layername" NUL</entry>
+
+                <entry>layername length + 2</entry>
+              </row>
+
+              <row>
+                <entry>Line extension</entry>
+
+                <entry>130</entry>
+
+                <entry>n-tox n-toy</entry>
+
+                <entry>5</entry>
+              </row>
+
+              <row>
+                <entry>Trace extension</entry>
+
+                <entry>131</entry>
+
+                <entry>n-x3 n-y3 n-x4 n-y4</entry>
+
+                <entry>9</entry>
+              </row>
+
+              <row>
+                <entry>Block base</entry>
+
+                <entry>132</entry>
+
+                <entry>n-bx n-by</entry>
+
+                <entry>5</entry>
+              </row>
+
+              <row>
+                <entry>Bulge</entry>
+
+                <entry>133</entry>
+
+                <entry>u-2h/d</entry>
+
+                <entry>5</entry>
+              </row>
+
+              <row>
+                <entry>Width</entry>
+
+                <entry>134</entry>
+
+                <entry>n-startw n-endw</entry>
+
+                <entry>5</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+
+        <para>The line extension item extends the last line or line extension
+        from its To point to a new To point.</para>
+
+        <para>The trace extension item extends the last trace solid, or trace
+        extension from its x3,y3-x4,y4 ending line to a new x3,y3--x4,y4
+        line.</para>
+
+        <para>The scale factor is a floating-point value by which all integer
+        coordinates are multiplied to obtain the floating-point coordinates
+        used by the entities.</para>
+
+        <para>The initial scale factor when a file is read is 1.0.</para>
+
+        <para>The new layer item creates a layer if none exists, giving the
+        new layer the same defaults as the LAYER New command, and sets that
+        layer as the current layer for subsequent entities.</para>
+
+        <para>At the end of the DXB file load, the layer in effect before the
+        command is restored.</para>
+
+        <para>The block base item specifies the base (origin) point of a
+        created block.</para>
+
+        <para>The block base must be defined before the first entity record is
+        encountered.</para>
+
+        <para>If DXB does not define a block, this specification is
+        ignored.</para>
+
+        <para>A polyline consists of straight segments of fixed width
+        connecting the vertices, except as overridden by the bulge and width
+        items.</para>
+
+        <para>The closure flag should be 0 or 1; if it is 1, there is an
+        implicit segment from the last vertex (immediately before the Seqend)
+        to the first vertex.</para>
+
+        <para>A bulge item, encountered between two vertex items (or after the
+        last vertex of a closed polyline), indicates that the two vertices are
+        connected by an arc rather by than a straight segment.</para>
+
+        <para>If the distance between the vertices has length d, and the
+        perpendicular distance from the midpoint of that segment to the arc is
+        h, then the magnitude of the bulge is (2 * h / d).</para>
+
+        <para>The sign is negative if the arc from the first vertex to the
+        second is clockwise.</para>
+
+        <para>A semicircle thus has a bulge of 1 (or -1).</para>
+
+        <para>If the number mode is 0 (integer), bulge items are scaled by 2
+        16.</para>
+
+        <para>If the number mode has been set to floating point, then the
+        floating-point value supplied is 2*h/d (not scaled).</para>
+
+        <para>The width item indicates the starting and ending widths of the
+        segment (straight or curved) connecting two vertices.</para>
+
+        <para>This width stays in effect until the next width item or the
+        seqend.</para>
+
+        <para>If there is a width item between the polyline item and the first
+        vertex, it is stored as a default width for the polyline.</para>
+
+        <para>This saves considerable database space if the polyline has
+        several segments of this width.</para>
+
+        <para>The number mode item controls the mode of items with types given
+        in the preceding table as n-, a-, or u-.</para>
+
+        <para>If the value supplied is 0, these values will be integers;
+        otherwise, they are floating point.</para>
+
+        <para>To remember the last to-point, lines share the same cells, so do
+        not mix extension groups for the two entities without an initial group
+        before the extension.</para>
+
+        <para>There is no extension group for 3D faces, because there is no
+        obvious edge to extend from.</para>
+
+        <para>The new color group specifies the color for subsequent entities
+        in the DXB file.</para>
+
+        <para>The w-colornum word argument is in the range from 0 to
+        256.</para>
+
+        <para>0 means color by block, 1-255 are the standard AutoCAD colors,
+        and 256 means color by layer.</para>
+
+        <para>A color outside the range from 0 to 256 sets the color back to
+        the current entity color (you can do this deliberately, and it can be
+        quite useful).</para>
+
+        <para>The initial entity color of material added by DXBIN is the
+        current entity color.</para>
+
+        <para>All points specified in the DXB file are interpreted in terms of
+        the current UCS at the time that the DXBIN command is executed.</para>
+      </section>
+    </section>
+
+    <section>
+      <title>Slide File Format.</title>
+
+      <para><note>
+          <para>This information is for experienced programmers, and is
+          subject to change without notice.</para>
+        </note></para>
+
+      <para>AutoCAD slide files are screen images written by the MSLIDE
+      command and read by the VSLIDE command.</para>
+
+      <para>This section describes the format of slide files for the benefit
+      of developers who wish to incorporate support for AutoCAD slides into
+      their programs.</para>
+
+      <para>A slide file consists of a header portion (31 bytes) and one or
+      more data records of variable length.</para>
+
+      <para>All coordinates and sizes written to the slide file reflect the
+      graphics area of the display device from which the slide was created
+      with point (0,0) located at the lower-left corner of the graphics
+      area.</para>
+
+      <para>For AutoCAD Release 9 and later, the slide file header consists of
+      the following fields:</para>
     </section>
   </chapter>
 </book>
