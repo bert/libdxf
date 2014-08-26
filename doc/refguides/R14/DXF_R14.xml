@@ -36,6 +36,70 @@
       file's version number.</para>
 
       <para>The version number of this file is u14.1.04.</para>
+
+      <para>Topics in this file:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Drawing Interchange File Formats.</para>
+        </listitem>
+
+        <listitem>
+          <para>ASCII DXF File Format.</para>
+        </listitem>
+
+        <listitem>
+          <para>Binary DXF File Format.</para>
+        </listitem>
+
+        <listitem>
+          <para>DXB Files.</para>
+        </listitem>
+
+        <listitem>
+          <para>Slide File Format.</para>
+        </listitem>
+
+        <listitem>
+          <para>Slide Library File Format.</para>
+        </listitem>
+
+        <listitem>
+          <para>DXF Group Codes.</para>
+        </listitem>
+
+        <listitem>
+          <para>General DXF Conventions.</para>
+        </listitem>
+
+        <listitem>
+          <para>HEADER Section.</para>
+        </listitem>
+
+        <listitem>
+          <para>CLASSES Section.</para>
+        </listitem>
+
+        <listitem>
+          <para>TABLES Section.</para>
+        </listitem>
+
+        <listitem>
+          <para>BLOCKS Section.</para>
+        </listitem>
+
+        <listitem>
+          <para>ENTITIES Section.</para>
+        </listitem>
+
+        <listitem>
+          <para>OBJECTS Section.</para>
+        </listitem>
+
+        <listitem>
+          <para>Advanced DXF Issues</para>
+        </listitem>
+      </itemizedlist>
     </section>
   </chapter>
 
@@ -1170,13 +1234,13 @@
           <tgroup cols="4">
             <thead>
               <row>
-                <entry align="center">Item type</entry>
+                <entry>Item type</entry>
 
-                <entry align="center">Code (decimal)</entry>
+                <entry>Code (decimal)</entry>
 
-                <entry align="center">Data items</entry>
+                <entry>Data items</entry>
 
-                <entry align="center">Length (bytes)</entry>
+                <entry>Length (bytes)</entry>
               </row>
             </thead>
 
@@ -1483,6 +1547,464 @@
 
       <para>For AutoCAD Release 9 and later, the slide file header consists of
       the following fields:</para>
+
+      <table>
+        <title>Slide file header.</title>
+
+        <tgroup cols="3">
+          <thead>
+            <row>
+              <entry>Field</entry>
+
+              <entry>Bytes</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>ID string</entry>
+
+              <entry>17</entry>
+
+              <entry>"AutoCAD Slide" CR LF ^Z NUL</entry>
+            </row>
+
+            <row>
+              <entry>Type indicator</entry>
+
+              <entry>1</entry>
+
+              <entry>Currently set to 56 (decimal)</entry>
+            </row>
+
+            <row>
+              <entry>Level indicator</entry>
+
+              <entry>1</entry>
+
+              <entry>Currently set to 2</entry>
+            </row>
+
+            <row>
+              <entry>High X dot</entry>
+
+              <entry>2</entry>
+
+              <entry>Width of the graphics area: 1, in pixels</entry>
+            </row>
+
+            <row>
+              <entry>High Y dot</entry>
+
+              <entry>2</entry>
+
+              <entry>Height of the graphics area: 1, in pixels</entry>
+            </row>
+
+            <row>
+              <entry>Aspect ratio</entry>
+
+              <entry>4</entry>
+
+              <entry>Graphics area aspect ratio (horizontal size/vertical size
+              in inches), scaled by 10,000,000. This value is always written
+              with the least significant byte first.</entry>
+            </row>
+
+            <row>
+              <entry>Hardware fill</entry>
+
+              <entry>2</entry>
+
+              <entry>Either 0 or 2 (value is unimportant)</entry>
+            </row>
+
+            <row>
+              <entry>Test number</entry>
+
+              <entry>2</entry>
+
+              <entry>A number (1234 hex) used to determine whether all 2-byte
+              values in the slide were written with the high-order byte first
+              (Intel 8086-family CPUs) or the low-order byte first (Motorola
+              68000-family CPUs)</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <para>Data records follow the header.</para>
+
+      <para>Each data record begins with a 2-byte field whose high-order byte
+      is the record type.</para>
+
+      <para>The remainder of the record may be composed of 1-byte or 2-byte
+      fields as described in the following table.</para>
+
+      <para>To determine whether the 2-byte fields are written with the
+      high-order byte first or the low-order byte first, examine the Test
+      number field of the header that is described earlier.<table>
+          <title>Slide file data records.</title>
+
+          <tgroup cols="4">
+            <thead>
+              <row>
+                <entry>Record type (hex)</entry>
+
+                <entry>Bytes</entry>
+
+                <entry>Meaning</entry>
+
+                <entry>Description</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry>00-7F</entry>
+
+                <entry>8</entry>
+
+                <entry>Vector</entry>
+
+                <entry>The from-X coordinate for an ordinary vector. From-Y,
+                to-X, and to-Y follow in that order as 2-byte values. The from
+                point is saved as the last point.</entry>
+              </row>
+
+              <row>
+                <entry>80-FA</entry>
+
+                <entry>--</entry>
+
+                <entry>Undefined</entry>
+
+                <entry>Reserved for future use.</entry>
+              </row>
+
+              <row>
+                <entry>FB</entry>
+
+                <entry>5</entry>
+
+                <entry>Offset vector</entry>
+
+                <entry>The low-order byte and the following three bytes
+                specify the endpoints (from-X, from-Y, to-X, to-Y) of a
+                vector, in terms of offsets (-128 to +127) from the saved last
+                point. The adjusted from point is saved as the last point for
+                use by subsequent vectors.</entry>
+              </row>
+
+              <row>
+                <entry>FC</entry>
+
+                <entry>2</entry>
+
+                <entry>End of file</entry>
+
+                <entry>The low-order byte is 00.</entry>
+              </row>
+
+              <row>
+                <entry>FD</entry>
+
+                <entry>6</entry>
+
+                <entry>Solid fill</entry>
+
+                <entry>The low-order byte is always zero. The following two
+                2-byte values specify the X and Y coordinates of one vertex of
+                a polygon to be solid filled. Three to ten such records occur
+                in sequence. A Solid fill record with a negative Y coordinate
+                indicates the start or end of such a flood sequence. In the
+                start record, the X coordinate indicates the number of vertex
+                records to follow.</entry>
+              </row>
+
+              <row>
+                <entry>FE</entry>
+
+                <entry>3</entry>
+
+                <entry>Common endpoint vector</entry>
+
+                <entry>This is a vector starting at the last point. The
+                low-order byte and the following byte specify to-X and to-Y in
+                terms of offsets (-128 to +127) from the saved last point. The
+                adjusted to point is saved as the last point for use by
+                subsequent vectors.</entry>
+              </row>
+
+              <row>
+                <entry>FF</entry>
+
+                <entry>2</entry>
+
+                <entry>New color</entry>
+
+                <entry>Subsequent vectors are to be drawn using the color
+                number indicated by the low-order byte.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table></para>
+
+      <para>If a slide contains any vectors at all, a New color record will be
+      the first data record.</para>
+
+      <para>The order of the vectors in a slide, and the order of the
+      endpoints of those vectors, may vary.</para>
+
+      <para>For example, the following is an annotated hex dump of a simple
+      slide file created on an IBM PC/AT with an IBM Enhanced Graphics
+      Adapter.</para>
+
+      <para>The slide consists of a white diagonal line from the lower-left
+      corner to the upper-right corner of the graphics area, a green vertical
+      line near the lower-left corner, and a small red rectangle at the
+      lower-left corner.</para>
+
+      <table>
+        <title>Example slide file listing.</title>
+
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry>41 75 74 6F 43 41 44 20 53 6C 69 64 65 0D 0A 1A
+              00</entry>
+
+              <entry><emphasis>ID string ("AutoCAD Slide" CR LF ^Z
+              NUL)</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>56</entry>
+
+              <entry><emphasis>Type indicator (56)</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>02</entry>
+
+              <entry><emphasis>Level indicator (02)</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>3C 02</entry>
+
+              <entry><emphasis>High X dot (572)</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>24 01</entry>
+
+              <entry><emphasis>High Y dot (292)</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>0B 80 DF 00</entry>
+
+              <entry><emphasis>Aspect ratio (14,647,307 / 10,000,000 =
+              1.46)</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>02 00</entry>
+
+              <entry><emphasis>Hardware fill (02)</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>34 12</entry>
+
+              <entry><emphasis>Test number (1234 hex)</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>07 FF</entry>
+
+              <entry><emphasis>New color (7 = white)</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>3C 02 24 01 00 00 00 00</entry>
+
+              <entry><emphasis>Vector from 572,292 to 0,0. 572,292 becomes
+              "last" point</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>03 FF</entry>
+
+              <entry><emphasis>New color (3 = green)</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>0F 00 32 00 0F 00 13 00</entry>
+
+              <entry><emphasis>Vector from 15,50 to 15,19. \x1115,50 becomes
+              "last" point</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>01 FF</entry>
+
+              <entry><emphasis>New color (1 = red)</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>12 FB E7 12 CE</entry>
+
+              <entry><emphasis>Offset vector from 15+18,50-25 (33,25) to
+              15+18,50- 50 (33,0). 33,25 becomes "last"
+              point</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>DF FE 00</entry>
+
+              <entry><emphasis>Common-endpoint vector from 33,25 to 33-33,25+0
+              (0,25). 0,25 becomes "last" point</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>00 FE E7</entry>
+
+              <entry><emphasis>Common-endpoint vector from (0,25) to 0+0,25-25
+              (0,0). 0,0 becomes "last" point</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>21 FE 00 </entry>
+
+              <entry><emphasis>Common-endpoint vector from (0,0) to 0+33,0+0
+              (33,0).33,0 becomes "last" point</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>00 FC</entry>
+
+              <entry>End of file</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <para>Topics in this section:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Old Slide Header.</para>
+        </listitem>
+      </itemizedlist>
+
+      <section>
+        <title>Old Slide Header.</title>
+
+        <para>The slide format described in the previous section is produced
+        by AutoCAD Release 9 and later, and is portable among all computers
+        running AutoCAD Release 9 or later.</para>
+
+        <para>Previous versions of AutoCAD (as well as AutoShade 1.0 and
+        AutoSketch 1.02) produce slides with a somewhat different header, as
+        shown in the following table.<table>
+            <title>Old slide file header.</title>
+
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry>Field</entry>
+
+                  <entry>Bytes</entry>
+
+                  <entry>Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>ID string</entry>
+
+                  <entry>17</entry>
+
+                  <entry>"AutoCAD Slide" CR LF ^Z NUL</entry>
+                </row>
+
+                <row>
+                  <entry>Type indicator</entry>
+
+                  <entry>1</entry>
+
+                  <entry>56 (decimal)</entry>
+                </row>
+
+                <row>
+                  <entry>Level indicator</entry>
+
+                  <entry>1</entry>
+
+                  <entry>1 (old format) </entry>
+                </row>
+
+                <row>
+                  <entry>High X dot</entry>
+
+                  <entry>2</entry>
+
+                  <entry>Width of the graphics area: 1, in pixels</entry>
+                </row>
+
+                <row>
+                  <entry>High Y dot</entry>
+
+                  <entry>2</entry>
+
+                  <entry>Height of the graphics area: 1, in pixels</entry>
+                </row>
+
+                <row>
+                  <entry>Aspect ratio</entry>
+
+                  <entry>8</entry>
+
+                  <entry>Graphics area aspect ratio (horizontal size/vertical
+                  size in inches), written as a floating-point number</entry>
+                </row>
+
+                <row>
+                  <entry>Hardware fill</entry>
+
+                  <entry>2</entry>
+
+                  <entry>Either 0 or 2 (value is unimportant)</entry>
+                </row>
+
+                <row>
+                  <entry>Filler byte</entry>
+
+                  <entry>1</entry>
+
+                  <entry>Unused</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>Note that the old-format header does not contain a Test number
+        field.</para>
+
+        <para>The floating-point aspect ratio value and all 2-byte integers
+        are written in the native format of the CPU that was used to create
+        the file (for 8086-family CPUs, IEEE double-precision, and low-order
+        byte first).</para>
+
+        <para>Old-format slide files are not portable across machine types,
+        but they can be read by any version of AutoCAD running on the same CPU
+        type as the CPU with which the slide was created.</para>
+      </section>
     </section>
   </chapter>
 </book>
