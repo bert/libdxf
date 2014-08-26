@@ -1,6 +1,8 @@
 /*!
  * \file util.h
- * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.\n
+ *
+ * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
+ *
  * \brief LIBDXF coding utilities, header file.
  *
  * <hr>
