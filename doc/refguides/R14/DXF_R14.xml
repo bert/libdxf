@@ -4390,5 +4390,437 @@
       <para>The date and time variables are described in the <emphasis>Command
       Reference</emphasis>.</para>
     </section>
+
+    <section>
+      <title>CLASSES Section.</title>
+
+      <para>The group codes described in this section are found only in DXF
+      files.</para>
+
+      <para>The CLASSES section holds the information for application-defined
+      classes whose instances appear in the BLOCKS, ENTITIES, and OBJECTS
+      sections of the database.</para>
+
+      <para>It is assumed that a class definition is permanently fixed in the
+      class hierarchy.</para>
+
+      <para>All fields are required.</para>
+
+      <para>The following is an example of the CLASSES section of a DXF
+      file:</para>
+
+      <table align="left">
+        <title/>
+
+        <tgroup cols="2">
+          <tbody>
+            <row>
+              <entry>0</entry>
+
+              <entry><emphasis>Beginning of CLASSES
+              section.</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>SECTION</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>2</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>CLASSES</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry/>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>0</entry>
+
+              <entry><emphasis>Repeats for each entry.</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>CLASS</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>1</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>&lt;class dxf record&gt;</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>2</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>&lt;class name&gt;</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>3</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>&lt;app name&gt;</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>90</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>&lt;flag&gt;</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>280</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>&lt;flag&gt;</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>281</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>&lt;flag&gt;</entry>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry/>
+
+              <entry/>
+            </row>
+
+            <row>
+              <entry>0</entry>
+
+              <entry><emphasis>End of CLASSES section.</emphasis></entry>
+            </row>
+
+            <row>
+              <entry>ENDSEC</entry>
+
+              <entry/>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <para>Each entry in the CLASSES section contains the groups described in
+      the following table.</para>
+
+      <table align="left">
+        <title>CLASSES section group codes.</title>
+
+        <tgroup cols="2">
+          <thead>
+            <row>
+              <entry>Group code</entry>
+
+              <entry>Description</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>0</entry>
+
+              <entry>Record type (CLASS). Identifies beginning of a CLASS
+              record.</entry>
+            </row>
+
+            <row>
+              <entry>1</entry>
+
+              <entry>Class DXF record name. These should always be
+              unique.</entry>
+            </row>
+
+            <row>
+              <entry>2</entry>
+
+              <entry>C++ class name. Used to bind with software that defines
+              object class behavior. These are always unique.</entry>
+            </row>
+
+            <row>
+              <entry>3</entry>
+
+              <entry>Application name. Posted in Alert box when a class
+              definition listed in this section is not currently
+              loaded.</entry>
+            </row>
+
+            <row>
+              <entry>90</entry>
+
+              <entry>Proxy capabilities flag. Bit coded value that indicates
+              the capabilities of this object as a proxy. 0 = No operations
+              allowed (0) 1 = Erase allowed (0x1) 2 = Transform allowed (0x2)
+              4 = Color change allowed (0x4) 8 = Layer change allowed (0x8) 16
+              = Linetype change allowed (0x10) 32 = Linetype scale change
+              allowed (0x20) 64 = Visibility change allowed (0x40) 127 = All
+              operations except cloning allowed (0x7F) 128 = Cloning allowed
+              (0x80) 255 = All operations allowed (0xFF) 32768 = R13 format
+              proxy (0x8000)</entry>
+            </row>
+
+            <row>
+              <entry>280</entry>
+
+              <entry>Was-a-proxy flag. Set to 1 if class was not loaded when
+              this DXF file was created, and 0 otherwise.</entry>
+            </row>
+
+            <row>
+              <entry>281</entry>
+
+              <entry>Is-an-entity flag. Set to 1 if class was derived from the
+              AcDbEntity class and can reside in the BLOCKS or ENTITIES
+              section. If 0, instances may appear only in the OBJECTS
+              section.</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+
+      <para>AutoCAD registers the classes listed in the following table (note
+      that this may not be a complete list of the classes found in a DXF file
+      depending on the applications currently in use on your system).</para>
+
+      <table align="left">
+        <title>Default class values.</title>
+
+        <tgroup cols="5">
+          <thead>
+            <row>
+              <entry>DXF Record Name Code 1</entry>
+
+              <entry>C++ Class Name Code 2</entry>
+
+              <entry>Code 90</entry>
+
+              <entry>Code 280</entry>
+
+              <entry>Code 281</entry>
+            </row>
+          </thead>
+
+          <tbody>
+            <row>
+              <entry>DICTIONARYVAR</entry>
+
+              <entry>AcDbDictionaryVar</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+            </row>
+
+            <row>
+              <entry>HATCH</entry>
+
+              <entry>AcDbHatch</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+
+              <entry>1</entry>
+            </row>
+
+            <row>
+              <entry>IDBUFFER</entry>
+
+              <entry>AcDbIdBuffer</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+            </row>
+
+            <row>
+              <entry>IMAGE</entry>
+
+              <entry>AcDbRasterImage</entry>
+
+              <entry>127</entry>
+
+              <entry>0</entry>
+
+              <entry>1</entry>
+            </row>
+
+            <row>
+              <entry>IMAGEDEF</entry>
+
+              <entry>AcDbRasterImageDef</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+            </row>
+
+            <row>
+              <entry>IMAGEDEF_REACTOR</entry>
+
+              <entry>AcDbRasterImageDefReactor</entry>
+
+              <entry>1</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+            </row>
+
+            <row>
+              <entry>LAYER_INDEX</entry>
+
+              <entry>AcDbLayerIndex</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+            </row>
+
+            <row>
+              <entry>LWPOLYLINE</entry>
+
+              <entry>AcDbPolyline</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+
+              <entry>1</entry>
+            </row>
+
+            <row>
+              <entry>OBJECT_PTR</entry>
+
+              <entry>CAseDLPNTableRecord</entry>
+
+              <entry>1</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+            </row>
+
+            <row>
+              <entry>OLE2FRAME</entry>
+
+              <entry>AcDbOle2Frame</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+
+              <entry>1</entry>
+            </row>
+
+            <row>
+              <entry>RASTERVARIABLES</entry>
+
+              <entry>AcDbRasterVariables</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+            </row>
+
+            <row>
+              <entry>SORTENTSTABLE</entry>
+
+              <entry>AcDbSortentsTable</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+            </row>
+
+            <row>
+              <entry>SPATIAL_INDEX</entry>
+
+              <entry>AcDbSpatialIndex</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+            </row>
+
+            <row>
+              <entry>SPATIAL_FILTER</entry>
+
+              <entry>AcDbSpatialFilter</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+
+              <entry>0</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    </section>
   </chapter>
 </book>
