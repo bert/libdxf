@@ -1,13 +1,13 @@
 /*!
  * \file image.h
  *
- * \author Copyright (C) 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF image entity (\c IMAGE).
  *
  * \warning The image entity requires AutoCAD version R14 or higher.\n
  *
- * \htmlinclude "../doc/image.html"
+ * \htmlinclude "image.html"
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n

@@ -2,6 +2,7 @@
 ACLOCAL_AMFLAGS = `-I m4` 
 
 SUBDIRS = \
+	doc\
 	doc/refguides/R10\
 	doc/refguides/R13\
 	doc/refguides/R14\
@@ -35,7 +36,7 @@ apidox:
 apidox-am-no:
 apidox-am-yes:
 	@echo "*** Creating API documentation main page"; \
-	cd doc; \
+	cd doc/doxygen; \
 	doxygen libDXF.dox
 
 .PHONY: apidox-am-yes apidox-am-no apidox

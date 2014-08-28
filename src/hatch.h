@@ -1,13 +1,13 @@
 /*!
  * \file hatch.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF hatch entity (\c HATCH).
  *
  * \warning The hatch entity requires AutoCAD version R14 or higher.\n
  *
- * \htmlinclude "../doc/hatch.html"
+ * \htmlinclude "hatch.html"
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n

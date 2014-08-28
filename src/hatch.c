@@ -7,7 +7,7 @@
  *
  * \warning The hatch entity requires AutoCAD version R14 or higher.\n
  *
- * \htmlinclude "../doc/hatch.html"
+ * \htmlinclude "hatch.html"
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n

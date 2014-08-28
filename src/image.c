@@ -7,7 +7,7 @@
  *
  * \warning The image entity requires AutoCAD version R14 or higher.\n
  *
- * \htmlinclude "../doc/image.html"
+ * \htmlinclude "image.html"
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n

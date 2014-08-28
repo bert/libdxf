@@ -12,6 +12,31 @@ AM_PROG_CC_STDC
 AM_PROG_CC_C_O
 AC_HEADER_STDC
 
+# See if we are supposed to build the Doxygen docs.
+
+docs_yesno=yes
+AC_MSG_CHECKING([if the Doxygen developer documentation should be built])
+AC_ARG_ENABLE([doc],
+[  --enable-doc            Build and install the Doxygen developer documentation [[default=yes]]],
+[
+if test "X$enable_doc" = "Xno" ; then
+        DOC=""
+        AC_MSG_RESULT([no])
+        docs_yesno=no
+else
+        DOC=doc
+        AC_MSG_RESULT([yes])
+        docs_yesno=yes
+fi
+],
+[
+DOC=doc
+AC_MSG_RESULT([yes])
+docs_yesno=yes
+])
+AC_SUBST(DOC)
+AM_CONDITIONAL(DOXYGEN, test x$docs_yesno = xyes)
+
 
 AM_PROG_LIBTOOL
 
@@ -29,6 +54,8 @@ AM_GLIB_GNU_GETTEXT
 
 AC_OUTPUT([
 Makefile
+doc/Makefile
+doc/doxygen/Makefile
 po/Makefile.in
 src/Makefile
 tests/Makefile
