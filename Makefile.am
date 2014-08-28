@@ -2,11 +2,12 @@
 ACLOCAL_AMFLAGS = `-I m4` 
 
 SUBDIRS = \
-	doc\
-	doc/refguides/R10\
-	doc/refguides/R13\
-	doc/refguides/R14\
-	src\
+	doc \
+	doc/refguides/R10 \
+	doc/refguides/R13 \
+	doc/refguides/R14 \
+	po \
+	src \
 	tests
 	
 libdxfdocdir = ${prefix}/doc
