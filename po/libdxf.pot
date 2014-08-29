@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-29 11:42+0200\n"
+"POT-Creation-Date: 2014-08-29 14:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,7 +61,8 @@ msgstr ""
 #: src/image.c:55 src/image.c:100 src/image.c:178 src/image.c:462
 #: src/image.c:564 src/insert.c:52 src/insert.c:96 src/insert.c:162
 #: src/insert.c:405 src/insert.c:576 src/layer.c:51 src/layer.c:96
-#: src/layer.c:148 src/layer.c:279 src/layer.c:344
+#: src/layer.c:148 src/layer.c:279 src/layer.c:344 src/line.c:51 src/line.c:95
+#: src/line.c:154 src/line.c:382 src/line.c:459
 #, c-format
 msgid "[File: %s: line: %d] Entering %s () function.\n"
 msgstr ""
@@ -116,7 +117,8 @@ msgstr ""
 #: src/image.c:77 src/image.c:148 src/image.c:438 src/image.c:540
 #: src/image.c:582 src/insert.c:74 src/insert.c:132 src/insert.c:384
 #: src/insert.c:552 src/insert.c:593 src/layer.c:73 src/layer.c:118
-#: src/layer.c:255 src/layer.c:320 src/layer.c:362
+#: src/layer.c:255 src/layer.c:320 src/layer.c:362 src/line.c:73
+#: src/line.c:124 src/line.c:326 src/line.c:435 src/line.c:514
 #, c-format
 msgid "[File: %s: line: %d] Leaving %s () function.\n"
 msgstr ""
@@ -125,7 +127,7 @@ msgstr ""
 #: src/appid.c:164 src/arc.c:173 src/attdef.c:182 src/attrib.c:183
 #: src/block.c:164 src/body.c:172 src/circle.c:162 src/class.c:162
 #: src/dimension.c:199 src/dimstyle.c:337 src/ellipse.c:170 src/helix.c:207
-#: src/image.c:198 src/insert.c:178 src/layer.c:164
+#: src/image.c:198 src/insert.c:178 src/layer.c:164 src/line.c:170
 #, c-format
 msgid "Error in %s () while reading from: %s in line: %d.\n"
 msgstr ""
@@ -134,7 +136,7 @@ msgstr ""
 #: src/acad_proxy_entity.c:299 src/arc.c:295 src/attdef.c:400 src/attrib.c:394
 #: src/block.c:246 src/circle.c:259 src/dimension.c:522 src/dimstyle.c:552
 #: src/ellipse.c:305 src/helix.c:484 src/image.c:418 src/insert.c:343
-#: src/layer.c:208
+#: src/layer.c:208 src/line.c:285
 #, c-format
 msgid "Error in %s () found a bad subclass marker in: %s in line: %d.\n"
 msgstr ""
@@ -163,7 +165,7 @@ msgstr ""
 
 #: src/3dface.c:408 src/3dsolid.c:352 src/arc.c:425 src/attdef.c:495
 #: src/body.c:304 src/circle.c:343 src/dimension.c:603 src/donut.c:104
-#: src/ellipse.c:395 src/insert.c:421
+#: src/ellipse.c:395 src/insert.c:421 src/line.c:398 src/line.c:477
 #, c-format
 msgid ""
 "Warning in %s () empty layer string for the %s entity with id-code: %x\n"
@@ -358,7 +360,7 @@ msgstr ""
 
 #: src/block.c:283 src/body.c:265 src/circle.c:294 src/class.c:231
 #: src/ellipse.c:340 src/helix.c:589 src/image.c:432 src/insert.c:378
-#: src/layer.c:249
+#: src/layer.c:249 src/line.c:320
 #, c-format
 msgid ""
 "Warning: in %s () unknown string tag found while reading from: %s in line: "
@@ -532,7 +534,7 @@ msgid ""
 "%s entity with id-code: %x\n"
 msgstr ""
 
-#: src/donut.c:107
+#: src/donut.c:107 src/line.c:401 src/line.c:480
 #, c-format
 msgid "    %s entity is relocated to layer 0\n"
 msgstr ""
@@ -957,4 +959,16 @@ msgstr ""
 #: src/layer.c:350
 #, c-format
 msgid "ERROR in %s () pointer to next DxfLayer was not NULL.\n"
+msgstr ""
+
+#: src/line.c:63 src/line.c:102
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfLine struct.\n"
+msgstr ""
+
+#: src/line.c:390 src/line.c:469
+#, c-format
+msgid ""
+"Error in %s () start point and end point are identical for the %s entity "
+"with id-code: %x\n"
 msgstr ""
