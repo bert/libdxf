@@ -1,7 +1,7 @@
 /*!
  * \file line.h
  *
- * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF line entity (\c LINE).
  *
@@ -125,23 +125,6 @@ dxf_line_read
 (
         DxfFile *fp,
         DxfLine *dxf_line
-);
-int
-dxf_line_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *linetype,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double x1,
-        double y1,
-        double z1,
-        double thickness,
-        int color,
-        int paperspace
 );
 int
 dxf_line_write
