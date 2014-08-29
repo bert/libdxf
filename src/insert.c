@@ -1,7 +1,7 @@
 /*!
  * \file insert.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF insert entity (\c INSERT).
  *
@@ -48,8 +48,9 @@ DxfInsert *
 dxf_insert_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_insert_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfInsert *dxf_insert = NULL;
         size_t size;
@@ -59,7 +60,9 @@ dxf_insert_new ()
         if (size == 0) size = 1;
         if ((dxf_insert = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_insert_new () could not allocate memory for a DxfInsert struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfInsert struct.\n")),
+                  __FUNCTION__);
                 dxf_insert = NULL;
         }
         else
@@ -67,8 +70,9 @@ dxf_insert_new ()
                 memset (dxf_insert, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_insert_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_insert);
 }
@@ -88,13 +92,16 @@ dxf_insert_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_insert_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         dxf_insert = dxf_insert_new ();
         if (dxf_insert == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_insert_init () could not allocate memory for a DxfInsert struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfInsert struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_insert->block_name = strdup ("");
@@ -121,8 +128,9 @@ dxf_insert_init
         dxf_insert->extr_z0 = 0.0;
         dxf_insert->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_insert_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_insert);
 }
@@ -150,8 +158,9 @@ dxf_insert_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_insert_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
 
@@ -165,8 +174,9 @@ dxf_insert_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_insert_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
@@ -329,8 +339,9 @@ dxf_insert_read
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && (strcmp (temp_string, "AcDbBlockReference") != 0))
                         {
-                                fprintf (stderr, "Error in dxf_insert_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "210") == 0)
@@ -363,13 +374,15 @@ dxf_insert_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_insert_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_insert_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -454,57 +467,70 @@ dxf_insert_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_insert_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("INSERT");
 
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_insert_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0.\n")),
+                  dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (rel_x_scale == 0.0)
         {
-                fprintf (stderr, "Warning in dxf_insert_write_lowlevel () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    default relative X-scale of 1.0 applied to %s entity.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("    default relative X-scale of 1.0 applied to %s entity.\n")),
+                  dxf_entity_name);
                 rel_x_scale = 1.0;
         }
         if (rel_y_scale == 0.0)
         {
-                fprintf (stderr, "Warning dxf_insert_write_lowlevel () relative Y-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    default relative Y-scale of 1.0 applied to %s entity.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () relative Y-scale factor has a value of 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("    default relative Y-scale of 1.0 applied to %s entity.\n")),
+                  dxf_entity_name);
                 rel_y_scale = 1.0;
         }
         if (rel_z_scale == 0.0)
         {
-                fprintf (stderr, "Warning in dxf_insert_write_lowlevel () relative Z-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    default relative Z-scale of 1.0 applied to %s entity.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () relative Z-scale factor has a value of 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("    default relative Z-scale of 1.0 applied to %s entity.\n")),
+                  dxf_entity_name);
                 rel_z_scale = 1.0;
         }
         if ((columns > 1) && (column_spacing == 0.0))
         {
-                fprintf (stderr, "Warning in dxf_insert_write_lowlevel () number of columns is greater than 1 and the column spacing has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    default number of columns value of 1 applied to %s entity.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () number of columns is greater than 1 and the column spacing has a value of 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("    default number of columns value of 1 applied to %s entity.\n")),
+                  dxf_entity_name);
                 columns = 1;
         }
         if ((rows > 1) && (row_spacing == 0.0))
         {
-                fprintf (stderr, "Warning in dxf_insert_write_lowlevel () number of rows is greater than 1 and the row spacing has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    default number of rows value of 1 applied to %s entity.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () number of rows is greater than 1 and the row spacing has a value of 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("    default number of rows value of 1 applied to %s entity.\n")),
+                  dxf_entity_name);
                 rows = 1;
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -581,8 +607,9 @@ dxf_insert_write_lowlevel
                 fprintf (fp, " 71\n%d\n", rows);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_insert2 () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
                 return (EXIT_SUCCESS);
 }
@@ -600,57 +627,69 @@ dxf_insert_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_insert_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("INSERT");
 
         if (strcmp (dxf_insert->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_insert_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_insert->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_insert->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0.\n")),
+                  dxf_entity_name);
                 dxf_insert->layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (dxf_insert->rel_x_scale == 0.0)
         {
-                fprintf (stderr, "Warning in dxf_insert_write () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_insert->id_code);
-                fprintf (stderr, "    default relative X-scale of 1.0 applied to %s entity.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_insert->id_code);
+                fprintf (stderr,
+                  (_("    default relative X-scale of 1.0 applied to %s entity.\n")),
+                  dxf_entity_name);
                 dxf_insert->rel_x_scale = 1.0;
         }
         if (dxf_insert->rel_y_scale == 0.0)
         {
-                fprintf (stderr, "Warning in dxf_insert_write () relative Y-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_insert->id_code);
-                fprintf (stderr, "    default relative Y-scale of 1.0 applied to %s entity.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () relative Y-scale factor has a value of 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_insert->id_code);
+                fprintf (stderr,
+                  (_("    default relative Y-scale of 1.0 applied to %s entity.\n")),
+                  dxf_entity_name);
                 dxf_insert->rel_y_scale = 1.0;
         }
         if (dxf_insert->rel_z_scale == 0.0)
         {
-                fprintf (stderr, "Warning in dxf_insert_write () relative Z-scale factor has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_insert->id_code);
-                fprintf (stderr, "    default relative Z-scale of 1.0 applied to %s entity.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () relative Z-scale factor has a value of 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_insert->id_code);
+                fprintf (stderr,
+                  (_("    default relative Z-scale of 1.0 applied to %s entity.\n")),
+                  dxf_entity_name);
                 dxf_insert->rel_z_scale = 1.0;
         }
         if ((dxf_insert->columns > 1) && (dxf_insert->column_spacing == 0.0))
         {
-                fprintf (stderr, "Warning in dxf_insert_write () number of columns is greater than 1 and the column spacing has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_insert->id_code);
+                fprintf (stderr,
+                  (_("Warning in %s () number of columns is greater than 1 and the column spacing has a value of 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_insert->id_code);
                 fprintf (stderr, "    default number of columns value of 1 applied to %s entity.\n",
                         dxf_entity_name);
                 dxf_insert->columns = 1;
         }
         if ((dxf_insert->rows > 1) && (dxf_insert->row_spacing == 0.0))
         {
-                fprintf (stderr, "Warning in dxf_insert_write () number of rows is greater than 1 and the row spacing has a value of 0.0 for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_insert->id_code);
-                fprintf (stderr, "    default number of rows value of 1 applied to %s entity.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () number of rows is greater than 1 and the row spacing has a value of 0.0 for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_insert->id_code);
+                fprintf (stderr,
+                  (_("    default number of rows value of 1 applied to %s entity.\n")),
+                  dxf_entity_name);
                 dxf_insert->rows = 1;
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -727,8 +766,9 @@ dxf_insert_write
                 fprintf (fp->fp, " 71\n%d\n", dxf_insert->rows);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_insert_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -750,12 +790,15 @@ dxf_insert_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_insert_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         if (dxf_insert->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_insert_free () pointer to next DxfInsert was not NULL.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfInsert was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_insert->linetype);
@@ -764,8 +807,9 @@ dxf_insert_free
         free (dxf_insert);
         dxf_insert = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_insert_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
