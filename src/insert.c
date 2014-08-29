@@ -407,6 +407,14 @@ dxf_insert_write
 #endif
         char *dxf_entity_name = strdup ("INSERT");
 
+        /* Do some basic checks. */
+        if (dxf_insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (strcmp (dxf_insert->layer, "") == 0)
         {
                 fprintf (stderr,
