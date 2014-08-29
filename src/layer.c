@@ -1,7 +1,7 @@
 /*!
  * \file layer.c
  *
- * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief DXF layer table.
  *
@@ -47,8 +47,9 @@ DxfLayer *
 dxf_layer_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_layer_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfLayer *dxf_layer = NULL;
         size_t size;
@@ -58,7 +59,9 @@ dxf_layer_new ()
         if (size == 0) size = 1;
         if ((dxf_layer = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_layer_new () could not allocate memory for a DxfLayer struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfLayer struct.\n")),
+                  __FUNCTION__);
                 dxf_layer = NULL;
         }
         else
@@ -66,8 +69,9 @@ dxf_layer_new ()
                 memset (dxf_layer, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_layer);
 }
@@ -88,13 +92,16 @@ dxf_layer_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_layer_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         dxf_layer = dxf_layer_new ();
         if (dxf_layer == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_layer_init () could not allocate memory for a DxfLayer struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfLayer struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_layer->layer_name = strdup ("");
@@ -107,8 +114,9 @@ dxf_layer_init
         dxf_layer->plot_style_name = strdup ("");
         dxf_layer->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_layer);
 }
@@ -136,8 +144,9 @@ dxf_layer_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_layer_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
 
@@ -151,8 +160,9 @@ dxf_layer_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_layer_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
@@ -194,8 +204,9 @@ dxf_layer_read
                         if ((strcmp (temp_string, "AcDbSymbolTable") != 0)
                         && ((strcmp (temp_string, "AcDbLayerTableRecord") != 0)))
                         {
-                                fprintf (stderr, "Error in dxf_layer_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "290") == 0)
@@ -234,13 +245,15 @@ dxf_layer_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_arc_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -262,20 +275,24 @@ dxf_layer_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_layer_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("LAYER");
 
         if (dxf_layer == NULL)
         {
-                fprintf (stderr, "Error in dxf_layer_write () a NULL pointer was passed.\n");
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_layer->layer_name, "") == 0)
         {
-                fprintf (stderr, "Error in dxf_layer_write () empty layer string for the %s table.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Error in %s () empty layer string for the %s table.\n")),
+                  __FUNCTION__, dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -299,8 +316,9 @@ dxf_layer_write
                 fprintf (fp->fp, "347\n%s\n", dxf_layer->material);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_layer_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -322,12 +340,15 @@ dxf_layer_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_layer_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         if (dxf_layer->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_layer_free () pointer to next DxfLayer was not NULL.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfLayer was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_layer->layer_name);
@@ -337,8 +358,9 @@ dxf_layer_free
         free (dxf_layer);
         dxf_layer = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_layer_free () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }

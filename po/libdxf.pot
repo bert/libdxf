@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-25 10:26+0200\n"
+"POT-Creation-Date: 2014-08-29 11:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,7 +59,9 @@ msgstr ""
 #: src/header.c:1167 src/header.c:1224 src/header.c:1704 src/helix.c:51
 #: src/helix.c:96 src/helix.c:181 src/helix.c:619 src/helix.c:786
 #: src/image.c:55 src/image.c:100 src/image.c:178 src/image.c:462
-#: src/image.c:564
+#: src/image.c:564 src/insert.c:52 src/insert.c:96 src/insert.c:162
+#: src/insert.c:405 src/insert.c:576 src/layer.c:51 src/layer.c:96
+#: src/layer.c:148 src/layer.c:279 src/layer.c:344
 #, c-format
 msgid "[File: %s: line: %d] Entering %s () function.\n"
 msgstr ""
@@ -112,7 +114,9 @@ msgstr ""
 #: src/header.c:1202 src/header.c:1684 src/header.c:1756 src/helix.c:73
 #: src/helix.c:151 src/helix.c:595 src/helix.c:762 src/helix.c:813
 #: src/image.c:77 src/image.c:148 src/image.c:438 src/image.c:540
-#: src/image.c:582
+#: src/image.c:582 src/insert.c:74 src/insert.c:132 src/insert.c:384
+#: src/insert.c:552 src/insert.c:593 src/layer.c:73 src/layer.c:118
+#: src/layer.c:255 src/layer.c:320 src/layer.c:362
 #, c-format
 msgid "[File: %s: line: %d] Leaving %s () function.\n"
 msgstr ""
@@ -121,7 +125,7 @@ msgstr ""
 #: src/appid.c:164 src/arc.c:173 src/attdef.c:182 src/attrib.c:183
 #: src/block.c:164 src/body.c:172 src/circle.c:162 src/class.c:162
 #: src/dimension.c:199 src/dimstyle.c:337 src/ellipse.c:170 src/helix.c:207
-#: src/image.c:198
+#: src/image.c:198 src/insert.c:178 src/layer.c:164
 #, c-format
 msgid "Error in %s () while reading from: %s in line: %d.\n"
 msgstr ""
@@ -129,7 +133,8 @@ msgstr ""
 #: src/3dface.c:341 src/3dsolid.c:269 src/3dsolid.c:283
 #: src/acad_proxy_entity.c:299 src/arc.c:295 src/attdef.c:400 src/attrib.c:394
 #: src/block.c:246 src/circle.c:259 src/dimension.c:522 src/dimstyle.c:552
-#: src/ellipse.c:305 src/helix.c:484 src/image.c:418
+#: src/ellipse.c:305 src/helix.c:484 src/image.c:418 src/insert.c:343
+#: src/layer.c:208
 #, c-format
 msgid "Error in %s () found a bad subclass marker in: %s in line: %d.\n"
 msgstr ""
@@ -151,14 +156,14 @@ msgstr ""
 #: src/3dface.c:401 src/3dsolid.c:345 src/arc.c:369 src/attdef.c:471
 #: src/attrib.c:465 src/block.c:318 src/circle.c:329 src/class.c:266
 #: src/dimension.c:597 src/dimstyle.c:185 src/hatch.c:2483 src/helix.c:629
-#: src/image.c:471
+#: src/image.c:471 src/insert.c:414 src/layer.c:287
 #, c-format
 msgid "Error in %s () a NULL pointer was passed.\n"
 msgstr ""
 
 #: src/3dface.c:408 src/3dsolid.c:352 src/arc.c:425 src/attdef.c:495
 #: src/body.c:304 src/circle.c:343 src/dimension.c:603 src/donut.c:104
-#: src/ellipse.c:395
+#: src/ellipse.c:395 src/insert.c:421
 #, c-format
 msgid ""
 "Warning in %s () empty layer string for the %s entity with id-code: %x\n"
@@ -331,7 +336,7 @@ msgstr ""
 msgid "    %s entity is relocated to the default layer.\n"
 msgstr ""
 
-#: src/attrib.c:519
+#: src/attrib.c:519 src/insert.c:434
 #, c-format
 msgid "    default relative X-scale of 1.0 applied to %s entity.\n"
 msgstr ""
@@ -352,7 +357,8 @@ msgid "ERROR in %s () could not allocate memory for a DxfBlock struct.\n"
 msgstr ""
 
 #: src/block.c:283 src/body.c:265 src/circle.c:294 src/class.c:231
-#: src/ellipse.c:340 src/helix.c:589 src/image.c:432
+#: src/ellipse.c:340 src/helix.c:589 src/image.c:432 src/insert.c:378
+#: src/layer.c:249
 #, c-format
 msgid ""
 "Warning: in %s () unknown string tag found while reading from: %s in line: "
@@ -376,7 +382,7 @@ msgstr ""
 msgid "Warning: empty layer string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/block.c:355
+#: src/block.c:355 src/insert.c:424
 #, c-format
 msgid "    %s entity is relocated to layer 0.\n"
 msgstr ""
@@ -876,4 +882,79 @@ msgstr ""
 #: src/image.c:570
 #, c-format
 msgid "ERROR in %s () pointer to next DxfImage was not NULL.\n"
+msgstr ""
+
+#: src/insert.c:64 src/insert.c:103
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfInsert struct.\n"
+msgstr ""
+
+#: src/insert.c:431
+#, c-format
+msgid ""
+"Warning in %s () relative X-scale factor has a value of 0.0 for the %s "
+"entity with id-code: %x\n"
+msgstr ""
+
+#: src/insert.c:441
+#, c-format
+msgid ""
+"Warning in %s () relative Y-scale factor has a value of 0.0 for the %s "
+"entity with id-code: %x\n"
+msgstr ""
+
+#: src/insert.c:444
+#, c-format
+msgid "    default relative Y-scale of 1.0 applied to %s entity.\n"
+msgstr ""
+
+#: src/insert.c:451
+#, c-format
+msgid ""
+"Warning in %s () relative Z-scale factor has a value of 0.0 for the %s "
+"entity with id-code: %x\n"
+msgstr ""
+
+#: src/insert.c:454
+#, c-format
+msgid "    default relative Z-scale of 1.0 applied to %s entity.\n"
+msgstr ""
+
+#: src/insert.c:461
+#, c-format
+msgid ""
+"Warning in %s () number of columns is greater than 1 and the column spacing "
+"has a value of 0.0 for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/insert.c:470
+#, c-format
+msgid ""
+"Warning in %s () number of rows is greater than 1 and the row spacing has a "
+"value of 0.0 for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/insert.c:473
+#, c-format
+msgid "    default number of rows value of 1 applied to %s entity.\n"
+msgstr ""
+
+#: src/insert.c:582
+#, c-format
+msgid "ERROR in %s () pointer to next DxfInsert was not NULL.\n"
+msgstr ""
+
+#: src/layer.c:63 src/layer.c:103
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfLayer struct.\n"
+msgstr ""
+
+#: src/layer.c:294
+#, c-format
+msgid "Error in %s () empty layer string for the %s table.\n"
+msgstr ""
+
+#: src/layer.c:350
+#, c-format
+msgid "ERROR in %s () pointer to next DxfLayer was not NULL.\n"
 msgstr ""
