@@ -1,7 +1,7 @@
 /*!
  * \file ltype.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF ltype entity.
  *
@@ -132,26 +132,10 @@ dxf_ltype_init
         DxfLType *dxf_ltype
 );
 int
-dxf_ltype_write_lowlevel
+dxf_ltype_write
 (
         FILE *fp,
-        int id_code,
-        char *linetype_name,
-        char *description,
-        int flag,
-        int alignment,
-        double total_pattern_length,
-        int number_of_dash_length_items,
-        char *complex_text_string[number_of_dash_length_items],
-        double complex_x_offset[number_of_dash_length_items],
-        double complex_y_offset[number_of_dash_length_items],
-        double complex_scale[number_of_dash_length_items],
-        double dash_length[number_of_dash_length_items],
-        double complex_rotation[number_of_dash_length_items],
-        int complex_element[number_of_dash_length_items],
-        int complex_shape_number[number_of_dash_length_items],
-        char *complex_style_pointer[number_of_dash_length_items],
-        int acad_version_number
+        DxfLType dxf_ltype
 );
 
 
