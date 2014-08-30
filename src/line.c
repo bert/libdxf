@@ -352,6 +352,14 @@ dxf_line_write
 #endif
         char *dxf_entity_name = strdup ("LINE");
 
+        /* Do some basic checks. */
+        if (dxf_line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if ((dxf_line->x0 == dxf_line->x1)
                 && (dxf_line->y0 == dxf_line->y1)
                 && (dxf_line->z0 == dxf_line->z1))
