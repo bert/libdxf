@@ -1,7 +1,7 @@
 /*!
  * \file ltype.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief DXF ltype entity.
  *
@@ -44,8 +44,9 @@ DxfLType *
 dxf_ltype_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ltype_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfLType *dxf_ltype = NULL;
         size_t size;
@@ -55,7 +56,9 @@ dxf_ltype_new ()
         if (size == 0) size = 1;
         if ((dxf_ltype = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_ltype_new () could not allocate memory for a DxfArc struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfArc struct.\n")),
+                  __FUNCTION__);
                 dxf_ltype = NULL;
         }
         else
@@ -63,8 +66,9 @@ dxf_ltype_new ()
                 memset (dxf_ltype, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ltype_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_ltype);
 }
@@ -84,15 +88,18 @@ dxf_ltype_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ltype_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         int i;
 
         dxf_ltype = dxf_ltype_new ();
         if (dxf_ltype == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_ltype_init () could not allocate memory for a DxfLType struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfLType struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_ltype->id_code = 0;
@@ -109,8 +116,9 @@ dxf_ltype_init
         dxf_ltype->number_of_dash_length_items = 1;
         dxf_ltype->acad_version_number = 0;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_arc_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_ltype);
 }
@@ -132,8 +140,9 @@ dxf_ltype_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ltype_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("LTYPE");
         int i;
@@ -141,10 +150,12 @@ dxf_ltype_write
         /* Test for spoilers. */
         if (strcmp (dxf_ltype.linetype_name, "") == 0)
         {
-                fprintf (stderr, "Warning: empty linetype name string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_ltype.id_code);
-                fprintf (stderr, "    %s entity is discarded from output.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s (): empty linetype name string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_ltype.id_code);
+                fprintf (stderr,
+                  (_("    %s entity is discarded from output.\n")),
+                  dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         /* No spoilers found, write available data to file. */
@@ -234,14 +245,16 @@ dxf_ltype_write
                                 fprintf (fp, "340\n%s\n", dxf_ltype.complex_style_pointer[i]);
                                 break;
                         default:
-                                fprintf (stderr, "Warning: unknown complex element code for the %s entity with id-code: %x\n",
-                                        dxf_entity_name, dxf_ltype.id_code);
+                                fprintf (stderr,
+                                  (_("Warning in %s (): unknown complex element code for the %s entity with id-code: %x\n")),
+                                  __FUNCTION__, dxf_entity_name, dxf_ltype.id_code);
                                 break;
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ltype_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -336,8 +349,9 @@ dxf_ltype_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ltype_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("LTYPE");
         int i;
@@ -345,10 +359,12 @@ dxf_ltype_write_lowlevel
         /* Test for spoilers. */
         if (strcmp (linetype_name, "") == 0)
         {
-                fprintf (stderr, "Warning: empty linetype name string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is discarded from output.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s (): empty linetype name string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("    %s entity is discarded from output.\n")),
+                  dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         /* No spoilers found, write available data to file. */
@@ -431,16 +447,19 @@ dxf_ltype_write_lowlevel
                                 fprintf (fp, "340\n%s\n", complex_style_pointer[i]);
                                 break;
                         default:
-                                fprintf (stderr, "Warning: unknown complex element code for the %s entity with id-code: %x\n",
-                                        dxf_entity_name, id_code);
+                                fprintf (stderr,
+                                  (_("Warning in %s (): unknown complex element code for the %s entity with id-code: %x\n")),
+                                  __FUNCTION__, dxf_entity_name, id_code);
                                 break;
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ltype_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */
