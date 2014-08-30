@@ -132,6 +132,11 @@ dxf_line_write
         DxfFile *fp,
         DxfLine *dxf_line
 );
+int
+dxf_line_free
+(
+        DxfLine *dxf_line
+);
 
 
 #endif /* _LINE_H */

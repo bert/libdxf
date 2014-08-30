@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-29 14:28+0200\n"
+"POT-Creation-Date: 2014-08-30 09:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,7 @@ msgstr ""
 #: src/image.c:564 src/insert.c:52 src/insert.c:96 src/insert.c:162
 #: src/insert.c:405 src/insert.c:576 src/layer.c:51 src/layer.c:96
 #: src/layer.c:148 src/layer.c:279 src/layer.c:344 src/line.c:51 src/line.c:95
-#: src/line.c:154 src/line.c:350
+#: src/line.c:154 src/line.c:350 src/line.c:429
 #, c-format
 msgid "[File: %s: line: %d] Entering %s () function.\n"
 msgstr ""
@@ -118,7 +118,7 @@ msgstr ""
 #: src/image.c:582 src/insert.c:74 src/insert.c:132 src/insert.c:384
 #: src/insert.c:552 src/insert.c:593 src/layer.c:73 src/layer.c:118
 #: src/layer.c:255 src/layer.c:320 src/layer.c:362 src/line.c:73
-#: src/line.c:124 src/line.c:326 src/line.c:405
+#: src/line.c:124 src/line.c:326 src/line.c:405 src/line.c:445
 #, c-format
 msgid "[File: %s: line: %d] Leaving %s () function.\n"
 msgstr ""
@@ -971,4 +971,9 @@ msgstr ""
 msgid ""
 "Error in %s () start point and end point are identical for the %s entity "
 "with id-code: %x\n"
+msgstr ""
+
+#: src/line.c:435
+#, c-format
+msgid "ERROR in %s () pointer to next DxfLine was not NULL.\n"
 msgstr ""

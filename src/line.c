@@ -409,4 +409,44 @@ dxf_line_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c LINE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_line_free
+(
+        DxfLine *dxf_line
+                /*!< Pointer to the memory occupied by the DXF \c LINE
+                 * entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
+#endif
+        if (dxf_line->next != NULL)
+        {
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfLine was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (dxf_line->linetype);
+        free (dxf_line->layer);
+        free (dxf_line);
+        dxf_line = NULL;
+#if DEBUG
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
