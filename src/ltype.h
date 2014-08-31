@@ -119,8 +119,6 @@ dxf_ltype
                 /*!< group code = 340.\n
                  * Pointer to \c STYLE object.\n
                  * One per element if group code 74 > 0. */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
         struct DxfLType *next;
                 /*!< pointer to the next DxfLType.\n
                  * \c NULL in the last DxfLType. */
@@ -137,8 +135,8 @@ dxf_ltype_init
 int
 dxf_ltype_write
 (
-        FILE *fp,
-        DxfLType dxf_ltype
+        DxfFile *fp,
+        DxfLType *dxf_ltype
 );
 int
 dxf_ltype_free
