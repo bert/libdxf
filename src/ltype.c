@@ -260,4 +260,51 @@ dxf_ltype_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c LTYPE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_ltype_free
+(
+        DxfLType *dxf_ltype
+                /*!< Pointer to the memory occupied by the DXF \c LTYPE
+                 * entity. */
+)
+{
+#if DEBUG
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
+#endif
+        int i;
+
+        if (dxf_ltype->next != NULL)
+        {
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfLType was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (dxf_ltype->linetype_name);
+        free (dxf_ltype->description);
+        for ((i = 0); (i <= dxf_ltype->number_of_dash_length_items); i++)
+        {
+                dxf_ltype->complex_text_string[i] = NULL;
+                dxf_ltype->complex_style_pointer[i] = NULL;
+        }
+        free (dxf_ltype);
+        dxf_ltype = NULL;
+#if DEBUG
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

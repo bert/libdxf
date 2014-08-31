@@ -121,6 +121,9 @@ dxf_ltype
                  * One per element if group code 74 > 0. */
         int acad_version_number;
                 /*!< AutoCAD version number. */
+        struct DxfLType *next;
+                /*!< pointer to the next DxfLType.\n
+                 * \c NULL in the last DxfLType. */
 } DxfLType, * DxfLTypePtr;
 
 
@@ -136,6 +139,11 @@ dxf_ltype_write
 (
         FILE *fp,
         DxfLType dxf_ltype
+);
+int
+dxf_ltype_free
+(
+        DxfLType *dxf_ltype
 );
 
 
