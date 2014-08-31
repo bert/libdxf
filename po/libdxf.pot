@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-31 13:44+0200\n"
+"POT-Creation-Date: 2014-08-31 13:46+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,7 +63,7 @@ msgstr ""
 #: src/insert.c:405 src/insert.c:576 src/layer.c:51 src/layer.c:96
 #: src/layer.c:148 src/layer.c:279 src/layer.c:344 src/line.c:51 src/line.c:95
 #: src/line.c:154 src/line.c:350 src/line.c:437 src/ltype.c:48 src/ltype.c:92
-#: src/ltype.c:143 src/ltype.c:279
+#: src/ltype.c:143 src/ltype.c:286
 #, c-format
 msgid "[File: %s: line: %d] Entering %s () function.\n"
 msgstr ""
@@ -120,7 +120,7 @@ msgstr ""
 #: src/insert.c:552 src/insert.c:593 src/layer.c:73 src/layer.c:118
 #: src/layer.c:255 src/layer.c:320 src/layer.c:362 src/line.c:73
 #: src/line.c:124 src/line.c:326 src/line.c:413 src/line.c:453 src/ltype.c:70
-#: src/ltype.c:119 src/ltype.c:255 src/ltype.c:302
+#: src/ltype.c:119 src/ltype.c:262 src/ltype.c:309
 #, c-format
 msgid "[File: %s: line: %d] Leaving %s () function.\n"
 msgstr ""
@@ -161,6 +161,7 @@ msgstr ""
 #: src/attrib.c:465 src/block.c:318 src/circle.c:329 src/class.c:266
 #: src/dimension.c:597 src/dimstyle.c:185 src/hatch.c:2483 src/helix.c:629
 #: src/image.c:471 src/insert.c:414 src/layer.c:287 src/line.c:359
+#: src/ltype.c:153
 #, c-format
 msgid "Error in %s () a NULL pointer was passed.\n"
 msgstr ""
@@ -985,26 +986,26 @@ msgstr ""
 msgid "ERROR in %s () could not allocate memory for a DxfLType struct.\n"
 msgstr ""
 
-#: src/ltype.c:153
+#: src/ltype.c:160
 #, c-format
 msgid ""
 "Warning in %s (): empty linetype name string for the %s entity with id-code: "
 "%x\n"
 msgstr ""
 
-#: src/ltype.c:156
+#: src/ltype.c:163
 #, c-format
 msgid "    %s entity is discarded from output.\n"
 msgstr ""
 
-#: src/ltype.c:248
+#: src/ltype.c:255
 #, c-format
 msgid ""
 "Warning in %s (): unknown complex element code for the %s entity with id-"
 "code: %x\n"
 msgstr ""
 
-#: src/ltype.c:287
+#: src/ltype.c:294
 #, c-format
 msgid "ERROR in %s () pointer to next DxfLType was not NULL.\n"
 msgstr ""

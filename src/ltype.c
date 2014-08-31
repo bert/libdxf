@@ -146,7 +146,14 @@ dxf_ltype_write
         char *dxf_entity_name = strdup ("LTYPE");
         int i;
 
-        /* Test for spoilers. */
+        /* Do some basic checks. */
+        if (dxf_ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (strcmp (dxf_ltype->linetype_name, "") == 0)
         {
                 fprintf (stderr,
@@ -157,7 +164,7 @@ dxf_ltype_write
                   dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        /* No spoilers found, write available data to file. */
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_ltype->id_code != -1)
         {
