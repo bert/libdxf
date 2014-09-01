@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-01 14:36+0200\n"
+"POT-Creation-Date: 2014-09-01 16:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -122,7 +122,7 @@ msgstr ""
 #: src/layer.c:255 src/layer.c:320 src/layer.c:362 src/line.c:73
 #: src/line.c:124 src/line.c:326 src/line.c:413 src/line.c:453 src/ltype.c:70
 #: src/ltype.c:119 src/ltype.c:262 src/ltype.c:309 src/lwpolyline.c:72
-#: src/lwpolyline.c:124 src/lwpolyline.c:313 src/lwpolyline.c:398
+#: src/lwpolyline.c:124 src/lwpolyline.c:313 src/lwpolyline.c:406
 #, c-format
 msgid "[File: %s: line: %d] Leaving %s () function.\n"
 msgstr ""
@@ -164,14 +164,14 @@ msgstr ""
 #: src/attrib.c:465 src/block.c:318 src/circle.c:329 src/class.c:266
 #: src/dimension.c:597 src/dimstyle.c:185 src/hatch.c:2483 src/helix.c:629
 #: src/image.c:471 src/insert.c:414 src/layer.c:287 src/line.c:359
-#: src/ltype.c:153
+#: src/ltype.c:153 src/lwpolyline.c:348
 #, c-format
 msgid "Error in %s () a NULL pointer was passed.\n"
 msgstr ""
 
 #: src/3dface.c:408 src/3dsolid.c:352 src/arc.c:425 src/attdef.c:495
 #: src/body.c:304 src/circle.c:343 src/dimension.c:603 src/donut.c:104
-#: src/ellipse.c:395 src/insert.c:421 src/line.c:376 src/lwpolyline.c:347
+#: src/ellipse.c:395 src/insert.c:421 src/line.c:376 src/lwpolyline.c:355
 #, c-format
 msgid ""
 "Warning in %s () empty layer string for the %s entity with id-code: %x\n"
@@ -540,7 +540,7 @@ msgid ""
 "%s entity with id-code: %x\n"
 msgstr ""
 
-#: src/donut.c:107 src/line.c:379 src/lwpolyline.c:350
+#: src/donut.c:107 src/line.c:379 src/lwpolyline.c:358
 #, c-format
 msgid "    %s entity is relocated to layer 0\n"
 msgstr ""

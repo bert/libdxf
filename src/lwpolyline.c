@@ -341,6 +341,14 @@ dxf_lwpolyline_write
 #endif
         char *dxf_entity_name = strdup ("LWPOLYLINE");
 
+        /* Do some basic checks. */
+        if (dxf_lwpolyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (strcmp (dxf_lwpolyline->layer, "") == 0)
         {
                 fprintf (stderr,
