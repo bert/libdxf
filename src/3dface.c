@@ -116,6 +116,7 @@ dxf_3dface_init
         dxf_3dface->x3 = 0.0;
         dxf_3dface->y3 = 0.0;
         dxf_3dface->z3 = 0.0;
+        dxf_3dface->elevation = 0.0;
         dxf_3dface->thickness = 0.0;
         dxf_3dface->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
         dxf_3dface->visibility = DXF_DEFAULT_VISIBILITY;
@@ -159,8 +160,11 @@ dxf_3dface_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_3dface)
+        if (dxf_3dface == NULL)
         {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_3dface = dxf_3dface_new ();
         }
         (fp->line_number)++;
@@ -173,7 +177,7 @@ dxf_3dface_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (0);
+                        return (EXIT_FAILURE);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -280,17 +284,14 @@ dxf_3dface_read
                         fscanf (fp->fp, "%lf\n", &dxf_3dface->z3);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
-                        && (strcmp (temp_string, "38") == 0)
-                        && (dxf_3dface->z0 = 0.0))
+                  && DXF_FLATLAND
+                  && (strcmp (temp_string, "38") == 0)
+                  && (dxf_3dface->elevation != 0.0))
                 {
-                        /*!
-                         * \todo Elevation is a pre AutoCAD R11 variable
-                         * so additional testing for the version should
-                         * probably be added. */
                         /* Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->z0);
+                        fscanf (fp->fp, "%lf\n", &dxf_3dface->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -434,6 +435,12 @@ dxf_3dface_write
         if (dxf_3dface->color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp->fp, " 62\n%d\n", dxf_3dface->color);
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_3dface->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_3dface->elevation);
         }
         if (dxf_3dface->thickness != 0.0)
         {

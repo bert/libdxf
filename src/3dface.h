@@ -59,9 +59,14 @@ dxf_3dface
                 /*!< group code = 8\n
                  * Layer on which the entity is drawn.\n
                  * Defaults to layer "0" if no valid layername is given. */
+        double elevation;
+                /*!< group code = 38\n
+                 * Elevation of the 3dface in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default). */
         double thickness;
                 /*!< group code = 39\n
-                 * Thickness of the arc in the local Z-direction.\n
+                 * Thickness of the 3dface in the local Z-direction.\n
                  * Defaults to 0.0 if ommitted in the DXF file. */
         double linetype_scale;
                 /*!< group code = 48\n
