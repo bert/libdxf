@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-31 13:46+0200\n"
+"POT-Creation-Date: 2014-09-01 12:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,7 +63,8 @@ msgstr ""
 #: src/insert.c:405 src/insert.c:576 src/layer.c:51 src/layer.c:96
 #: src/layer.c:148 src/layer.c:279 src/layer.c:344 src/line.c:51 src/line.c:95
 #: src/line.c:154 src/line.c:350 src/line.c:437 src/ltype.c:48 src/ltype.c:92
-#: src/ltype.c:143 src/ltype.c:286
+#: src/ltype.c:143 src/ltype.c:286 src/lwpolyline.c:50 src/lwpolyline.c:94
+#: src/lwpolyline.c:159 src/lwpolyline.c:392 src/lwpolyline.c:476
 #, c-format
 msgid "[File: %s: line: %d] Entering %s () function.\n"
 msgstr ""
@@ -120,7 +121,9 @@ msgstr ""
 #: src/insert.c:552 src/insert.c:593 src/layer.c:73 src/layer.c:118
 #: src/layer.c:255 src/layer.c:320 src/layer.c:362 src/line.c:73
 #: src/line.c:124 src/line.c:326 src/line.c:413 src/line.c:453 src/ltype.c:70
-#: src/ltype.c:119 src/ltype.c:262 src/ltype.c:309
+#: src/ltype.c:119 src/ltype.c:262 src/ltype.c:309 src/lwpolyline.c:72
+#: src/lwpolyline.c:125 src/lwpolyline.c:318 src/lwpolyline.c:450
+#: src/lwpolyline.c:535
 #, c-format
 msgid "[File: %s: line: %d] Leaving %s () function.\n"
 msgstr ""
@@ -130,6 +133,7 @@ msgstr ""
 #: src/block.c:164 src/body.c:172 src/circle.c:162 src/class.c:162
 #: src/dimension.c:199 src/dimstyle.c:337 src/ellipse.c:170 src/helix.c:207
 #: src/image.c:198 src/insert.c:178 src/layer.c:164 src/line.c:170
+#: src/lwpolyline.c:175
 #, c-format
 msgid "Error in %s () while reading from: %s in line: %d.\n"
 msgstr ""
@@ -168,7 +172,8 @@ msgstr ""
 
 #: src/3dface.c:408 src/3dsolid.c:352 src/arc.c:425 src/attdef.c:495
 #: src/body.c:304 src/circle.c:343 src/dimension.c:603 src/donut.c:104
-#: src/ellipse.c:395 src/insert.c:421 src/line.c:376
+#: src/ellipse.c:395 src/insert.c:421 src/line.c:376 src/lwpolyline.c:400
+#: src/lwpolyline.c:484
 #, c-format
 msgid ""
 "Warning in %s () empty layer string for the %s entity with id-code: %x\n"
@@ -363,7 +368,7 @@ msgstr ""
 
 #: src/block.c:283 src/body.c:265 src/circle.c:294 src/class.c:231
 #: src/ellipse.c:340 src/helix.c:589 src/image.c:432 src/insert.c:378
-#: src/layer.c:249 src/line.c:320
+#: src/layer.c:249 src/line.c:320 src/lwpolyline.c:312
 #, c-format
 msgid ""
 "Warning: in %s () unknown string tag found while reading from: %s in line: "
@@ -537,7 +542,7 @@ msgid ""
 "%s entity with id-code: %x\n"
 msgstr ""
 
-#: src/donut.c:107 src/line.c:379
+#: src/donut.c:107 src/line.c:379 src/lwpolyline.c:403 src/lwpolyline.c:487
 #, c-format
 msgid "    %s entity is relocated to layer 0\n"
 msgstr ""
@@ -1008,4 +1013,9 @@ msgstr ""
 #: src/ltype.c:294
 #, c-format
 msgid "ERROR in %s () pointer to next DxfLType was not NULL.\n"
+msgstr ""
+
+#: src/lwpolyline.c:62 src/lwpolyline.c:101
+#, c-format
+msgid "ERROR in %s () could not allocate memory for a DxfLWPolyline struct.\n"
 msgstr ""

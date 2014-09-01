@@ -1,7 +1,7 @@
 /*!
  * \file lwpolyline.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF light weight polyline entity (\c LWPOLYLINE).
  *
@@ -46,8 +46,9 @@ DxfLWPolyline *
 dxf_lwpolyline_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_lwpolyline_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         DxfLWPolyline *dxf_lwpolyline = NULL;
         size_t size;
@@ -57,7 +58,9 @@ dxf_lwpolyline_new ()
         if (size == 0) size = 1;
         if ((dxf_lwpolyline = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_lwpolyline_new () could not allocate memory for a DxfArc struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfLWPolyline struct.\n")),
+                  __FUNCTION__);
                 dxf_lwpolyline = NULL;
         }
         else
@@ -65,8 +68,9 @@ dxf_lwpolyline_new ()
                 memset (dxf_lwpolyline, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_lwpolyline_new () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_lwpolyline);
 }
@@ -86,13 +90,16 @@ dxf_lwpolyline_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_lwpolyline_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         dxf_lwpolyline = dxf_lwpolyline_new ();
         if (dxf_lwpolyline == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_lwpolyline_init () could not allocate memory for a DxfLWPolyline struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfLWPolyline struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_lwpolyline->id_code = 0;
@@ -114,8 +121,9 @@ dxf_lwpolyline_init
         dxf_lwpolyline->acad_version_number = 0;
         dxf_lwpolyline->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_lwpolyline_init () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (dxf_lwpolyline);
 }
@@ -147,8 +155,9 @@ dxf_lwpolyline_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_lwpolyline_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *temp_string = NULL;
 
@@ -162,8 +171,9 @@ dxf_lwpolyline_read
         {
                 if (ferror (fp))
                 {
-                        fprintf (stderr, "Error in dxf_lwpolyline_read () while reading from: %s in line: %d.\n",
-                                filename, *line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, filename, *line_number);
                         fclose (fp);
                         return (EXIT_FAILURE);
                 }
@@ -298,13 +308,15 @@ dxf_lwpolyline_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_lwpolyline_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                filename, *line_number);
+                        fprintf (stderr,
+                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, filename, *line_number);
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_lwpolyline_read () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -376,17 +388,20 @@ dxf_lwpolyline_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_lwpolyline_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("LWPOLYLINE");
 
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_lwpolyline_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0\n")),
+                  dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -431,8 +446,9 @@ dxf_lwpolyline_write_lowlevel
                 fprintf (fp, "230\n%f\n", extr_z0);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_lwpolyline_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
@@ -456,17 +472,20 @@ dxf_lwpolyline_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_lwpolyline_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Entering %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         char *dxf_entity_name = strdup ("LWPOLYLINE");
 
         if (strcmp (dxf_lwpolyline->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_lwpolyline_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_lwpolyline->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_lwpolyline->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0\n")),
+                  dxf_entity_name);
                 dxf_lwpolyline->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -512,8 +531,9 @@ dxf_lwpolyline_write
                 fprintf (fp, "230\n%f\n", dxf_lwpolyline->extr_z0);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_lwpolyline_write () function.\n",
-                __FILE__, __LINE__);
+        fprintf (stderr,
+          (_("[File: %s: line: %d] Leaving %s () function.\n")),
+          __FILE__, __LINE__, __FUNCTION__);
 #endif
         return (EXIT_SUCCESS);
 }
