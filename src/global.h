@@ -312,6 +312,12 @@ dxf_file
 #define DXF_COLOR_BYLAYER 256
 
 /*!
+ * \brief Force compatibility with older versions (prior to DXF R12) if
+ * nonzero, default value is 0.
+ */
+#define DXF_FLATLAND 0
+
+/*!
  * \brief This is where our hardware is going to live, default value, can be
  * ommitted in dxf output.
  */
