@@ -78,8 +78,6 @@ dxf_lwpolyline
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
         /* Specific members for a DXF lwpolyline. */
         double x0;
                 /*!< group code = 10\n
@@ -143,15 +141,13 @@ dxf_lwpolyline_init
 int
 dxf_lwpolyline_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfLWPolyline *dxf_lwpolyline
 );
 int
 dxf_lwpolyline_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfLWPolyline *dxf_lwpolyline
 );
 
