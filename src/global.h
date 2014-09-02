@@ -105,13 +105,6 @@
 #endif
 
 /*!
- * Verbose debugging output to \sdterr on/off toggle.
- *
- * Default vaue is 0 (off).
- */
-#define DEBUG 0
-
-/*!
  * Toggle for an interactive prompt during run time.
  */
 #define INTER_ACTIVE_PROMPT 1
