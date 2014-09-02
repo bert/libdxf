@@ -39,6 +39,8 @@
  * \brief Allocate memory for a DXF \c 3DFACE.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R10.
  */
 Dxf3dface *
 dxf_3dface_new ()
@@ -80,6 +82,8 @@ dxf_3dface_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
  */
 Dxf3dface *
 dxf_3dface_init
@@ -143,6 +147,8 @@ dxf_3dface_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred while reading from the input file.
+ *
+ * \version According to DXF R10.
  */
 int
 dxf_3dface_read
@@ -378,6 +384,8 @@ dxf_3dface_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
  */
 int
 dxf_3dface_write
@@ -486,6 +494,8 @@ dxf_3dface_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
  */
 int
 dxf_3dface_free
