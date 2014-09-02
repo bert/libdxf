@@ -105,9 +105,11 @@
 #endif
 
 /*!
- * Debugging on/off toggle.
+ * Verbose debugging output to \sdterr on/off toggle.
+ *
+ * Default vaue is 0 (off).
  */
-#define DEBUG 1
+#define DEBUG 0
 
 /*!
  * Toggle for an interactive prompt during run time.
@@ -123,6 +125,26 @@
  * False is 0.
  */
 #define FALSE 0
+
+/*!
+ * \brief Verbose debugging output to \c stderr.
+ *
+ * Compile with -DDEBUG compiler directive enabled.
+ */
+#define DXF_DEBUG_BEGIN \
+        fprintf (stderr, \
+          (_("[File: %s: line: %d] Entering %s () function.\n")), \
+          __FILE__, __LINE__, __FUNCTION__);
+
+/*!
+ * \brief Verbose debugging output to \c stderr.
+ *
+ * Compile with -DDEBUG compiler directive enabled.
+ */
+#define DXF_DEBUG_END \
+        fprintf (stderr, \
+          (_("[File: %s: line: %d] Leaving %s () function.\n")), \
+          __FILE__, __LINE__, __FUNCTION__);
 
 
 /*!
