@@ -97,6 +97,13 @@ dxf_3dface_init
           (_("[File: %s: line: %d] Entering %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
+        /* Do some basic checks. */
+        if (dxf_3dface == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
         dxf_3dface = dxf_3dface_new ();
         if (dxf_3dface == NULL)
         {
