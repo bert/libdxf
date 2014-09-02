@@ -45,10 +45,8 @@
 Dxf3dface *
 dxf_3dface_new ()
 {
-#if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
 #endif
         Dxf3dface *dxf_3dface = NULL;
         size_t size;
@@ -67,10 +65,8 @@ dxf_3dface_new ()
         {
                 memset (dxf_3dface, 0, size);
         }
-#if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+#ifdef DEBUG
+        DXF_DEBUG_END
 #endif
         return (dxf_3dface);
 }
@@ -92,10 +88,8 @@ dxf_3dface_init
                 /*!< DXF 3dface entity. */
 )
 {
-#if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
         if (dxf_3dface == NULL)
@@ -135,10 +129,8 @@ dxf_3dface_init
         dxf_3dface->paperspace = DXF_MODELSPACE;
         dxf_3dface->flag = 0;
         dxf_3dface->next = NULL;
-#if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+#ifdef DEBUG
+        DXF_DEBUG_END
 #endif
         return (dxf_3dface);
 }
@@ -166,10 +158,8 @@ dxf_3dface_read
                 /*!< DXF 3dface entity. */
 )
 {
-#if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
 
@@ -378,9 +368,7 @@ dxf_3dface_read
                 }
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -403,10 +391,8 @@ dxf_3dface_write
                 /*!< DXF 3D face entity. */
 )
 {
-#if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("3DFACE");
 
@@ -486,10 +472,8 @@ dxf_3dface_write
         fprintf (fp->fp, " 23\n%f\n", dxf_3dface->y3);
         fprintf (fp->fp, " 33\n%f\n", dxf_3dface->z3);
         fprintf (fp->fp, " 70\n%d\n", dxf_3dface->flag);
-#if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+#ifdef DEBUG
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -512,10 +496,8 @@ dxf_3dface_free
                  * entity. */
 )
 {
-#if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
 #endif
         if (dxf_3dface->next != NULL)
         {
@@ -528,10 +510,8 @@ dxf_3dface_free
         free (dxf_3dface->layer);
         free (dxf_3dface);
         dxf_3dface = NULL;
-#if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+#ifdef DEBUG
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
