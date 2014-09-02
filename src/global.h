@@ -114,8 +114,14 @@
  */
 #define INTER_ACTIVE_PROMPT 1
 
+/*!
+ * True is 1.
+ */
 #define TRUE 1
 
+/*!
+ * False is 0.
+ */
 #define FALSE 0
 
 
