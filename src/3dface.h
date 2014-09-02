@@ -54,7 +54,7 @@ dxf_3dface
         char *linetype;
                 /*!< group code = 6\n
                  * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                 * Defaults to \c BYLAYER if omitted in the DXF file. */
         char *layer;
                 /*!< group code = 8\n
                  * Layer on which the entity is drawn.\n
@@ -62,12 +62,12 @@ dxf_3dface
         double elevation;
                 /*!< group code = 38\n
                  * Elevation of the 3dface in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file, or prior
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
                  * to DXF version R12, or DXF_FLATLAND equals 0 (default). */
         double thickness;
                 /*!< group code = 39\n
                  * Thickness of the 3dface in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                 * Defaults to 0.0 if omitted in the DXF file. */
         double linetype_scale;
                 /*!< group code = 48\n
                  * Linetype scale (optional). */
@@ -77,7 +77,7 @@ dxf_3dface
         int color;
                 /*!< group code = 62\n
                  * Color of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Defaults to \c BYLAYER if omitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity. */
