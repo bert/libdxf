@@ -41,6 +41,7 @@
  * Fill the memory contents with zeros.
  *
  * \version According to DXF R10.
+ * \version According to DXF R13.
  */
 Dxf3dface *
 dxf_3dface_new ()
@@ -80,6 +81,7 @@ dxf_3dface_new ()
  * allocated memory when succesful.
  *
  * \version According to DXF R10.
+ * \version According to DXF R13.
  */
 Dxf3dface *
 dxf_3dface_init
@@ -148,6 +150,7 @@ dxf_3dface_init
  * occurred while reading from the input file.
  *
  * \version According to DXF R10.
+ * \version According to DXF R13.
  */
 int
 dxf_3dface_read
@@ -163,12 +166,14 @@ dxf_3dface_read
 #endif
         char *temp_string = NULL;
 
+        /* Do some basic checks. */
         if (dxf_3dface == NULL)
         {
                 fprintf (stderr,
                   (_("WARNING in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_3dface = dxf_3dface_new ();
+                dxf_3dface_init (dxf_3dface);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -367,6 +372,16 @@ dxf_3dface_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle ommitted members and/or illegal values. */
+        if (strcmp (dxf_3dface->linetype, "") != 0)
+        {
+                dxf_3dface->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_3dface->layer, "") != 0)
+        {
+                dxf_3dface->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -381,6 +396,7 @@ dxf_3dface_read
  * occurred.
  *
  * \version According to DXF R10.
+ * \version According to DXF R13.
  */
 int
 dxf_3dface_write
@@ -416,13 +432,13 @@ dxf_3dface_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (fp->acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp->fp, "100\nAcDbEntity\n");
-        }
         if (dxf_3dface->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_3dface->id_code);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
         }
         if (dxf_3dface->paperspace == DXF_PAPERSPACE)
         {
@@ -487,6 +503,7 @@ dxf_3dface_write
  * occurred.
  *
  * \version According to DXF R10.
+ * \version According to DXF R13.
  */
 int
 dxf_3dface_free
