@@ -5,6 +5,8 @@
  *
  * \brief Functions for a DXF 3D solid entity (\c 3DSOLID).
  *
+ * \version The \c 3DSOLID entity was introduced in DXF R13.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -39,6 +41,8 @@
  * \brief Allocate memory for a \c Dxf3dsolid.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R13.
  */
 Dxf3dsolid *
 dxf_3dsolid_new ()
@@ -49,6 +53,7 @@ dxf_3dsolid_new ()
         Dxf3dsolid *dxf_3dsolid = NULL;
         size_t size;
 
+        /* Do some basic checks. */
         size = sizeof (Dxf3dsolid);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
@@ -57,7 +62,7 @@ dxf_3dsolid_new ()
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a Dxf3dsolid struct.\n")),
                   __FUNCTION__);
-                dxf_3dsolid = NULL;
+                return (NULL);
         }
         else
         {
@@ -76,6 +81,8 @@ dxf_3dsolid_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R13.
  */
 Dxf3dsolid *
 dxf_3dsolid_init
@@ -90,6 +97,7 @@ dxf_3dsolid_init
         int i;
 
         dxf_3dsolid = dxf_3dsolid_new ();
+        /* Do some basic checks. */
         if (dxf_3dsolid == NULL)
         {
               fprintf (stderr,
@@ -101,6 +109,7 @@ dxf_3dsolid_init
         dxf_3dsolid->id_code = 0;
         dxf_3dsolid->linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_3dsolid->elevation = 0.0;
         dxf_3dsolid->thickness = 0.0;
         dxf_3dsolid->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
         dxf_3dsolid->visibility = DXF_DEFAULT_VISIBILITY;
@@ -132,6 +141,8 @@ dxf_3dsolid_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R13.
  */
 int
 dxf_3dsolid_read
@@ -149,9 +160,21 @@ dxf_3dsolid_read
         int i;
         int j;
 
-        if (!dxf_3dsolid)
+        /* Do some basic checks. */
+        if (fp->acad_version_number < AutoCAD_13)
         {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dxf_3dsolid == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_3dsolid = dxf_3dsolid_new ();
+                dxf_3dsolid_init (dxf_3dsolid);
         }
         i = 0;
         j = 0;
@@ -202,6 +225,16 @@ dxf_3dsolid_read
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", dxf_3dsolid->layer);
+                }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                  && DXF_FLATLAND
+                  && (strcmp (temp_string, "38") == 0)
+                  && (dxf_3dsolid->elevation != 0.0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_3dsolid->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -296,6 +329,16 @@ dxf_3dsolid_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle ommitted members and/or illegal values. */
+        if (strcmp (dxf_3dsolid->linetype, "") != 0)
+        {
+                dxf_3dsolid->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_3dsolid->layer, "") != 0)
+        {
+                dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -308,6 +351,8 @@ dxf_3dsolid_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred while reading from the input file.
+ *
+ * \version According to DXF R13.
  */
 int
 dxf_3dsolid_write
@@ -325,6 +370,13 @@ dxf_3dsolid_write
         int i;
 
         /* Do some basic checks. */
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_3dsolid == NULL)
         {
                 fprintf (stderr,
@@ -364,6 +416,12 @@ dxf_3dsolid_write
         if (dxf_3dsolid->color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp->fp, " 62\n%d\n", dxf_3dsolid->color);
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_3dsolid->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_3dsolid->elevation);
         }
         if (dxf_3dsolid->thickness != 0.0)
         {
@@ -418,6 +476,8 @@ dxf_3dsolid_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R13.
  */
 int
 dxf_3dsolid_free
@@ -432,6 +492,7 @@ dxf_3dsolid_free
 #endif
         int i;
 
+        /* Do some basic checks. */
         if (dxf_3dsolid->next != NULL)
         {
               fprintf (stderr,

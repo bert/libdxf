@@ -1,9 +1,11 @@
 /*!
  * \file 3dsolid.h
  *
- * \author Copyright (C) 2012 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF 3D solid entity (\c 3DSOLID).
+ *
+ * \version The \c 3DSOLID entity was introduced in DXF R13.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -60,6 +62,11 @@ dxf_3dsolid
                 /*!< group code = 8\n
                  * Layer on which the entity is drawn.\n
                  * Defaults to layer "0" if no valid layername is given. */
+        double elevation;
+                /*!< group code = 38\n
+                 * Elevation of the 3dface in the local Z-direction.\n
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default). */
         double thickness;
                 /*!< group code = 39\n
                  * Thickness of the arc in the local Z-direction.\n
