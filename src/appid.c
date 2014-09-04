@@ -47,6 +47,9 @@
  * \brief Allocate memory for a DXF \c APPID entity.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfAppid *
 dxf_appid_new ()
@@ -84,6 +87,9 @@ dxf_appid_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfAppid *
 dxf_appid_init
@@ -127,13 +133,16 @@ dxf_appid_init
  * \brief Read data from a DXF file into a DXF \c APPID entity.
  *
  * The last line read from file contained the string "APPID". \n
- * Now follows some data for the \c ARC, to be terminated with a "  0"
- * string announcing the following entity, or the end of the \c ENTITY
- * section marker \c ENDSEC. \n
+ * Now follows some data for the \c APPID, to be terminated with a "  0"
+ * string announcing the following table record, or the end of the
+ * \c TABLE section marker \c ENDTAB. \n
  * While parsing the DXF file store data in \c dxf_appid. \n
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_appid_read
@@ -228,6 +237,9 @@ dxf_appid_read
 
 /*!
  * \brief Write DXF output to a file for a DXF \c APPID entity.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_appid_write
@@ -268,21 +280,38 @@ dxf_appid_write
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_appid->id_code);
         }
+        /*!
+         * \todo for version R2000.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_appid->soft_owner_object, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_2000))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_appid->soft_owner_object);
+                fprintf (fp->fp, "102\n}\n");
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
                 fprintf (fp->fp, "100\nAcDbRegAppTableRecord\n");
         }
         fprintf (fp->fp, "  2\n%s\n", dxf_appid->application_name);
-        fprintf (fp->fp, " 70\n%d\n", dxf_appid->standard_flag);
-        if (strcmp (dxf_appid->soft_owner_object, "") != 0)
+        if ((strcmp (dxf_appid->hard_owner_object, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_2000))
         {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_appid->hard_owner_object);
+                fprintf (fp->fp, "102\n}\n");
                 fprintf (fp->fp, "330\n%s\n", dxf_appid->soft_owner_object);
         }
-        if (strcmp (dxf_appid->hard_owner_object, "") != 0)
-        {
-                fprintf (fp->fp, "360\n%s\n", dxf_appid->hard_owner_object);
-        }
+        fprintf (fp->fp, " 70\n%d\n", dxf_appid->standard_flag);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -296,6 +325,9 @@ dxf_appid_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_appid_free
