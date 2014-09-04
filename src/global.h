@@ -77,25 +77,26 @@
 
 #include "entity.h"
 
-/*
+/*!
  * MS DOS - compilers
  *
+ * use #define MSDOS if not defined by compiler or cases below.
+ *
  * Microsoft C auto-defines MSDOS
+ *
  * Borland C   auto-defines __MSDOS__
+ *
  * DJGPP       auto-defines MSDOS
  */
-
-/* #define MSDOS */
-/* use if not defined by compiler or cases below */
-
-/* for Borland C */
 #ifdef __MSDOS__
 #  ifndef MSDOS
 #    define MSDOS
 #  endif
 #endif
 
-/* increase Borland C compatibility in libraries */
+/*!
+ * Increase Borland C compatibility in libraries.
+ */
 #ifdef __TURBOC__
 #  define __MSC
 #endif
@@ -111,7 +112,7 @@
  * 0 (off).
  */
 #ifndef DEBUG
-#define DEBUG 0
+#  define DEBUG 0
 #endif
 
 /*!
@@ -122,12 +123,16 @@
 /*!
  * True is 1.
  */
-#define TRUE 1
+#ifndef TRUE
+#  define TRUE 1
+#endif
 
 /*!
  * False is 0.
  */
-#define FALSE 0
+#ifndef FALSE
+#  define FALSE 0
+#endif
 
 /*!
  * \brief Verbose debugging output to \c stderr.
@@ -169,40 +174,72 @@ dxf_file
 
 /* AutoCAD(TM) versions by name */
 #define AutoCAD_1_0 0
+        /*!< AutoCAD Version 1.0. */
 #define AutoCAD_1_2 120
+        /*!< AutoCAD Version 1.2. */
 #define AutoCAD_1_40 140
+        /*!< AutoCAD Version 1.40. */
 #define AutoCAD_1_50 150
+        /*!< AutoCAD Version 2.05. */
 #define AutoCAD_2_10 210
+        /*!< AutoCAD Version 2.10. */
 #define AutoCAD_2_21 221
+        /*!< AutoCAD Version 2.21. */
 /* 
 #define AutoCAD_2_22 222
  */
 #define AutoCAD_2_22 1001
+        /*!< AutoCAD Version 2.22. */
 #define AutoCAD_2_50 1002
+        /*!< AutoCAD Version 2.50. */
 #define AutoCAD_2_60 1003
+        /*!< AutoCAD Version 2.60. */
 #define AutoCAD_9 1004
+        /*!< AutoCAD Release 9. */
 #define AutoCAD_10 1006
+        /*!< AutoCAD 10. */
 #define AutoCAD_11 1009
+        /*!< AutoCAD 11 & AutoCAD 12 == AutoCAD LT2. */
 #define AutoCAD_12 1009
+        /*!< AutoCAD 11 & AutoCAD 12 == AutoCAD LT2. */
 #define AutoCAD_13 1012
+        /*!< AutoCAD 13 == AutoCAD LT95. */
 #define AutoCAD_14 1014
+        /*!< AutoCAD 14 == AutoCAD LT97 & LT98. */
 #define AutoCAD_2000 1015
+        /*!< AutoCAD 2000. */
 #define AutoCAD_2000i 1016
+        /*!< AutoCAD 2000i. */
 #define AutoCAD_2002 1017
+        /*!< AutoCAD 2002. */
 #define AutoCAD_2004 1018
+        /*!< AutoCAD 2004. */
 #define AutoCAD_2005 1019
+        /*!< AutoCAD 2005. */
 #define AutoCAD_2006 1020
+        /*!< AutoCAD 2006. */
 #define AutoCAD_2007 1021
+        /*!< AutoCAD 2007. */
 #define AutoCAD_2008 1022
+        /*!< AutoCAD 2008. */
 #define AutoCAD_2009 1023
+        /*!< AutoCAD 2009. */
 #define AutoCAD_2010 1024
+        /*!< AutoCAD 2010. */
 #define AutoCAD_2011 1025
+        /*!< AutoCAD 2011. */
 #define AutoCAD_2012 1026
+        /*!< AutoCAD 2012. */
 #define AutoCAD_2013 1027
+        /*!< AutoCAD 2013. */
 #define AutoCAD_LT2 1009
+        /*!< AutoCAD 11 & AutoCAD 12 == AutoCAD LT2. */
 #define AutoCAD_LT95 1012
+        /*!< AutoCAD 13 == AutoCAD LT95. */
 #define AutoCAD_LT97 1014
+        /*!< AutoCAD 14 == AutoCAD LT97 & LT98. */
 #define AutoCAD_LT98 1014
+        /*!< AutoCAD 14 == AutoCAD LT97 & LT98. */
 
 /* AutoCAD(TM) versions by version string */
 #define MC0_0 0
@@ -213,14 +250,14 @@ dxf_file
         /*!< AutoCAD Version 1.40. */
 #define AC1_50 150
         /*!< AutoCAD Version 2.05. */
-#define AC2_10 210 
+#define AC2_10 210
         /*!< AutoCAD Version 2.10. */
 #define AC2_21 221
         /*!< AutoCAD Version 2.21. */
 #define AC2_22 222
         /*!< AutoCAD Version 2.22. \n
          * AC2_22 is an ignored tag. */
-#define AC1001 1001 
+#define AC1001 1001
         /*!< AutoCAD Version 2.22. */
 #define AC1002 1002
         /*!< AutoCAD Version 2.50. */
