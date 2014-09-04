@@ -3,7 +3,12 @@
  *
  * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief DXF acad_proxy_entity entity.
+ * \brief Functions for a DXF acad_proxy_entity entity
+ * (\c ACAD_PROXY_ENTITY).
+ *
+ * \version The \ACAD_ZOMBIE_ENTITY entity was introduced in DXF R13.
+ * \version The \ACAD_ZOMBIE_ENTITY entity was renamed to 
+ * \c ACAD_PROXY_ENTITY in DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
