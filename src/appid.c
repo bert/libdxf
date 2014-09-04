@@ -93,13 +93,20 @@ dxf_appid_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_appid = dxf_appid_new ();
+        /* Do some basic checks. */
         if (dxf_appid == NULL)
         {
-              fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfAppid struct.\n")),
-                __FUNCTION__);
-              return (NULL);
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_appid = dxf_appid_new ();
+        }
+        if (dxf_appid == NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfAppid struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
         dxf_appid->id_code = 0;
         dxf_appid->application_name = strdup ("");
@@ -140,9 +147,14 @@ dxf_appid_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_appid)
+        /* Do some basic checks. */
+        if (dxf_appid == NULL)
         {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_appid = dxf_appid_new ();
+                dxf_appid_init (dxf_appid);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -228,12 +240,17 @@ dxf_appid_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("APPID");
+
+        /* Do some basic checks. */
         if (dxf_appid == NULL)
         {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 return (EXIT_FAILURE);
-                fprintf (stderr, "Error in dxf_appid_write () a NULL pointer was passed.\n");
         }
-        if (dxf_appid->application_name == NULL)
+        if ((dxf_appid->application_name == NULL)
+          || (strcmp (dxf_appid->application_name, "") == 0))
         {
                 fprintf (stderr,
                   (_("Warning: empty block name string for the %s entity with id-code: %x\n")),
@@ -243,6 +260,7 @@ dxf_appid_write
                   dxf_entity_name);
                 return (EXIT_FAILURE);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_appid->id_code != -1)
         {
