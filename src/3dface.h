@@ -41,6 +41,8 @@
 
 /*!
  * \brief DXF definition of an AutoCAD 3D face entity (\c 3DFACE).
+ *
+ * \version According to DXF R13.
  */
 typedef struct
 dxf_3dface
