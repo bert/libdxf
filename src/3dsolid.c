@@ -53,7 +53,6 @@ dxf_3dsolid_new ()
         Dxf3dsolid *dxf_3dsolid = NULL;
         size_t size;
 
-        /* Do some basic checks. */
         size = sizeof (Dxf3dsolid);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
@@ -389,6 +388,16 @@ dxf_3dsolid_write
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_3dsolid->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_3dsolid->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (strcmp (dxf_3dsolid->layer, "") == 0)
         {
