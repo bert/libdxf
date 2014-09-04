@@ -97,13 +97,20 @@ dxf_acad_proxy_entity_init
 #endif
         int i;
 
-        dxf_acad_proxy_entity = dxf_acad_proxy_entity_new ();
+        /* Do some basic checks. */
         if (dxf_acad_proxy_entity == NULL)
         {
-              fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfAcadProxyEntity struct.\n")),
-                __FUNCTION__);
-              return (NULL);
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_acad_proxy_entity = dxf_acad_proxy_entity_new ();
+        }
+        if (dxf_acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfAcadProxyEntity struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
         dxf_acad_proxy_entity->id_code = 0;
         dxf_acad_proxy_entity->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -158,9 +165,21 @@ dxf_acad_proxy_entity_read
         int i;
         int j;
 
+        /* Do some basic checks. */
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (!dxf_acad_proxy_entity)
         {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_acad_proxy_entity = dxf_acad_proxy_entity_new ();
+                dxf_acad_proxy_entity_init (dxf_acad_proxy_entity);
         }
         i = 0;
         j = 0;
@@ -219,7 +238,7 @@ dxf_acad_proxy_entity_read
                         fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->color);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_2000)
-                && (strcmp (temp_string, "70") == 0))
+                  && (strcmp (temp_string, "70") == 0))
                 {
                         /* Now follows a string containing the original
                          * custom object data format value. */
@@ -273,7 +292,7 @@ dxf_acad_proxy_entity_read
                         fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->graphics_data_size);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_2000)
-                && (strcmp (temp_string, "95") == 0))
+                  && (strcmp (temp_string, "95") == 0))
                 {
                         /* Now follows a string containing the object
                          * drawing format value. */
@@ -281,14 +300,15 @@ dxf_acad_proxy_entity_read
                         fscanf (fp->fp, "%ld\n", &dxf_acad_proxy_entity->object_drawing_format);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
-                        && (strcmp (temp_string, "100") == 0))
+                  && (strcmp (temp_string, "100") == 0))
                 {
                         /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
-                        && ((strcmp (temp_string, "AcDbProxyEntity") != 0)))
+                          && ((strcmp (temp_string, "AcDbZombieEntity") != 0))
+                          && ((strcmp (temp_string, "AcDbProxyEntity") != 0)))
                         {
                                 fprintf (stderr,
                                   (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
@@ -304,9 +324,9 @@ dxf_acad_proxy_entity_read
                         i++;
                 }
                 else if ((strcmp (temp_string, "330") == 0)
-                || (strcmp (temp_string, "340") == 0)
-                || (strcmp (temp_string, "350") == 0)
-                || (strcmp (temp_string, "360") == 0))
+                  || (strcmp (temp_string, "340") == 0)
+                  || (strcmp (temp_string, "350") == 0)
+                  || (strcmp (temp_string, "360") == 0))
                 {
                         /* Now follows a string containing an object id. */
                         (fp->line_number)++;
@@ -355,24 +375,30 @@ dxf_acad_proxy_entity_write
         char *dxf_entity_name = NULL;
         int i;
 
-        if (dxf_acad_proxy_entity == NULL)
-        {
-                fprintf (stderr, "Error in dxf_acad_proxy_entity_write () a NULL pointer was passed.\n");
-                return (EXIT_FAILURE);
-        }
+        /* Do some basic checks. */
         if (fp->acad_version_number < AutoCAD_13)
         {
-                fprintf (stderr, "Error in dxf_acad_proxy_entity_write () using DXF version before AutoCAD R13.\n");
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dxf_acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (fp->acad_version_number == AutoCAD_13)
         {
                 dxf_entity_name = strdup ("ACAD_ZOMBIE_ENTITY");
         }
-        else
+        else if (fp->acad_version_number >= AutoCAD_14)
         {
                 dxf_entity_name = strdup ("ACAD_PROXY_ENTITY");
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (fp->acad_version_number >= AutoCAD_14)
         {
@@ -456,7 +482,9 @@ dxf_acad_proxy_entity_free
 
         if (dxf_acad_proxy_entity->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_acad_proxy_entity_free () pointer to next DxfAcadProxyEntity was not NULL.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfAcadProxyEntity was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_acad_proxy_entity->linetype);
