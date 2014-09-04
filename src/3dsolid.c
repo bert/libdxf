@@ -96,14 +96,20 @@ dxf_3dsolid_init
 #endif
         int i;
 
-        dxf_3dsolid = dxf_3dsolid_new ();
         /* Do some basic checks. */
         if (dxf_3dsolid == NULL)
         {
-              fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a Dxf3dsolid struct.\n")),
-                __FUNCTION__);
-              return (NULL);
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_3dsolid = dxf_3dsolid_new ();
+        }
+        if (dxf_3dsolid == NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a Dxf3dsolid struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
         dxf_3dsolid->modeler_format_version_number = 0;
         dxf_3dsolid->id_code = 0;
@@ -330,11 +336,11 @@ dxf_3dsolid_read
                 }
         }
         /* Handle ommitted members and/or illegal values. */
-        if (strcmp (dxf_3dsolid->linetype, "") != 0)
+        if (strcmp (dxf_3dsolid->linetype, "") == 0)
         {
                 dxf_3dsolid->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_3dsolid->layer, "") != 0)
+        if (strcmp (dxf_3dsolid->layer, "") == 0)
         {
                 dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
         }
