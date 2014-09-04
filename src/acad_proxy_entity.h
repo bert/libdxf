@@ -47,7 +47,6 @@
 /*!
  * \brief DXF definition of an AutoCAD acad_proxy_entity entity.
  *
- *
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
