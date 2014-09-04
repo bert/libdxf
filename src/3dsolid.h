@@ -44,6 +44,8 @@
 
 /*!
  * \brief DXF definition of an AutoCAD 3D solid entity (\c 3DSOLID).
+ *
+ * \version According to DXF R13.
  */
 typedef struct
 dxf_3dsolid
