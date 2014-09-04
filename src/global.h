@@ -104,6 +104,16 @@
 #  undef UNIX
 #endif
 
+ /*!
+ * Verbose debugging output to \sdterr on/off toggle.
+ *
+ * If not already defined as a compiler directive the default value is
+ * 0 (off).
+ */
+#ifndef DEBUG
+#define DEBUG 0
+#endif
+
 /*!
  * Toggle for an interactive prompt during run time.
  */
