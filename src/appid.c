@@ -5,6 +5,8 @@
  *
  * \brief Functions for a DXF application identity entity (\c APPID).
  *
+ * \version The \c APPID table was introduced in DXF R12.
+ *
  * A DXF \c APPID entity contains data concerning the application registered
  * with the drawing involved.\n
  * It is a table entry in the \c TABLES section of the DXF file.\n
