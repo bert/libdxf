@@ -1,9 +1,14 @@
 /*!
  * \file acad_proxy_entity.h
  *
- * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Definition of a DXF acad_proxy_entity entity.
+ * \brief Header file FOR a DXF acad_proxy_entity entity
+ * (\c ACAD_PROXY_ENTITY).
+ *
+ * \version The \c ACAD_ZOMBIE_ENTITY entity was introduced in DXF R13.
+ * \version The \c ACAD_ZOMBIE_ENTITY entity was renamed to 
+ * \c ACAD_PROXY_ENTITY in DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -41,6 +46,11 @@
 
 /*!
  * \brief DXF definition of an AutoCAD acad_proxy_entity entity.
+ *
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ * \version According to DXF R2000.
  */
 typedef struct
 dxf_acad_proxy_entity
@@ -59,10 +69,6 @@ dxf_acad_proxy_entity
                 /*!< group code = 8\n
                  * Layer on which the entity is drawn.\n
                  * Defaults to layer "0" if no valid layername is given. */
-        double thickness;
-                /*!< group code = 39\n
-                 * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
         double linetype_scale;
                 /*!< group code = 48\n
                  * Linetype scale (optional). */
