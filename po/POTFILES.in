@@ -67,7 +67,6 @@ src/object.h
 src/oleframe.c
 src/oleframe.h
 src/param.h
-src/paste_82571.c
 src/point.c
 src/point.h
 src/polyline.c
@@ -82,7 +81,6 @@ src/seqend.c
 src/seqend.h
 src/shape.c
 src/shape.h
-src/snippets.c
 src/solid.c
 src/solid.h
 src/spline.c
