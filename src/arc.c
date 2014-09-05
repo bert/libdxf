@@ -42,6 +42,10 @@
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_new ()
@@ -79,6 +83,10 @@ dxf_arc_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_init
@@ -114,6 +122,7 @@ dxf_arc_init
         dxf_arc->extr_x0 = 0.0;
         dxf_arc->extr_y0 = 0.0;
         dxf_arc->extr_z0 = 0.0;
+        dxf_arc->elevation = 0.0;
         dxf_arc->thickness = 0.0;
         dxf_arc->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
         dxf_arc->visibility = DXF_DEFAULT_VISIBILITY;
@@ -122,6 +131,8 @@ dxf_arc_init
         dxf_arc->end_angle = 0.0;
         dxf_arc->color = DXF_COLOR_BYLAYER;
         dxf_arc->paperspace = DXF_MODELSPACE;
+        dxf_arc->dictionary_owner_soft = strdup ("");
+        dxf_arc->dictionary_owner_hard = strdup ("");
         dxf_arc->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -141,6 +152,10 @@ dxf_arc_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_arc_read
@@ -220,12 +235,12 @@ dxf_arc_read
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_arc->z0 = 0.0))
+                        && (dxf_arc->elevation != 0.0))
                 {
                         /* Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_arc->z0);
+                        fscanf (fp->fp, "%lf\n", &dxf_arc->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -319,6 +334,20 @@ dxf_arc_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_arc->extr_z0);
                 }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_arc->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_arc->dictionary_owner_hard);
+                }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
@@ -355,6 +384,10 @@ dxf_arc_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_arc_write
@@ -443,9 +476,29 @@ dxf_arc_write
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_arc->id_code);
         }
-        if (fp->acad_version_number >= AutoCAD_14)
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_arc->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
         {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
                 fprintf (fp->fp, "330\n%s\n", dxf_arc->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_arc->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_arc->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -475,6 +528,12 @@ dxf_arc_write
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbCircle\n");
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_arc->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_arc->elevation);
         }
         if (dxf_arc->thickness != 0.0)
         {
@@ -512,6 +571,10 @@ dxf_arc_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_arc_free
@@ -531,6 +594,8 @@ dxf_arc_free
         }
         free (dxf_arc->linetype);
         free (dxf_arc->layer);
+        free (dxf_arc->dictionary_owner_soft);
+        free (dxf_arc->dictionary_owner_hard);
         free (dxf_arc);
         dxf_arc = NULL;
 #if DEBUG
