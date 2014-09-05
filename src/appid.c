@@ -119,8 +119,8 @@ dxf_appid_init
         dxf_appid->id_code = 0;
         dxf_appid->application_name = strdup ("");
         dxf_appid->standard_flag = 0;
-        dxf_appid->soft_owner_object = strdup ("");
-        dxf_appid->hard_owner_object = strdup ("");
+        dxf_appid->dictionary_owner_soft = strdup ("");
+        dxf_appid->dictionary_owner_hard = strdup ("");
         dxf_appid->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -203,16 +203,16 @@ dxf_appid_read
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
-                         * ID/handle to owner object. */
+                         * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_appid->soft_owner_object);
+                        fscanf (fp->fp, "%s\n", dxf_appid->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_appid->hard_owner_object);
+                        fscanf (fp->fp, "%s\n", dxf_appid->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -281,7 +281,7 @@ dxf_appid_write
                 fprintf (fp->fp, "  5\n%x\n", dxf_appid->id_code);
         }
         /*!
-         * \todo for version R2000.\n
+         * \todo for version R14.\n
          * Implementing the start of application-defined group
          * "{application_name", with Group code 102.\n
          * For example: "{ACAD_REACTORS" indicates the start of the
@@ -290,11 +290,18 @@ dxf_appid_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_appid->soft_owner_object, "") != 0)
-          && (fp->acad_version_number >= AutoCAD_2000))
+        if ((strcmp (dxf_appid->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_appid->soft_owner_object);
+                fprintf (fp->fp, "330\n%s\n", dxf_appid->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_appid->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_appid->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
@@ -303,14 +310,6 @@ dxf_appid_write
                 fprintf (fp->fp, "100\nAcDbRegAppTableRecord\n");
         }
         fprintf (fp->fp, "  2\n%s\n", dxf_appid->application_name);
-        if ((strcmp (dxf_appid->hard_owner_object, "") != 0)
-          && (fp->acad_version_number >= AutoCAD_2000))
-        {
-                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_appid->hard_owner_object);
-                fprintf (fp->fp, "102\n}\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_appid->soft_owner_object);
-        }
         fprintf (fp->fp, " 70\n%d\n", dxf_appid->standard_flag);
 #if DEBUG
         DXF_DEBUG_END
@@ -347,8 +346,8 @@ dxf_appid_free
               return (EXIT_FAILURE);
         }
         free (dxf_appid->application_name);
-        free (dxf_appid->soft_owner_object);
-        free (dxf_appid->hard_owner_object);
+        free (dxf_appid->dictionary_owner_soft);
+        free (dxf_appid->dictionary_owner_hard);
         free (dxf_appid);
         dxf_appid = NULL;
 #if DEBUG

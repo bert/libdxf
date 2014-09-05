@@ -55,6 +55,7 @@
  * registered with a drawing.
  *
  * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_appid
@@ -80,12 +81,12 @@ dxf_appid
                  *      one entity in the drawing the last time the drawing
                  *      was edited.\n
                  * Group code = 70. */
-        char *soft_owner_object;
-                /*!< Soft-pointer ID/handle to owner object.\n
-                 * Group code = 330. */
-        char *hard_owner_object;
-                /*!< Hard owner ID/handle to owner dictionary (optional).\n
-                 * Group code = 360. */
+        char *dictionary_owner_soft;
+                /*!< group code = 330\n
+                 * Soft-pointer ID/handle to owner dictionary (optional). */
+        char *dictionary_owner_hard;
+                /*!< group code = 360\n
+                 * Hard owner ID/handle to owner dictionary (optional). */
         struct DxfAppid *next;
                 /*!< pointer to the next DxfAppid.\n
                  * \c NULL in the last DxfAppid. */
