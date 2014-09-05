@@ -86,7 +86,14 @@ dxf_attdef_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_attdef = dxf_attdef_new ();
+        /* Do some basic checks. */
+        if (dxf_attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_attdef = dxf_attdef_new ();
+        }
         if (dxf_attdef == NULL)
         {
               fprintf (stderr,
@@ -158,9 +165,14 @@ dxf_attdef_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_attdef)
+        /* Do some basic checks. */
+        if (dxf_attdef == NULL)
         {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_attdef = dxf_attdef_new ();
+                dxf_attdef_init (dxf_attdef);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -426,6 +438,15 @@ dxf_attdef_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle ommitted members and/or illegal values. */
+        if (strcmp (dxf_attdef->linetype, "") == 0)
+        {
+                dxf_attdef->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_attdef->layer, "") == 0)
+        {
+                dxf_attdef->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -461,7 +482,7 @@ dxf_attdef_write
         if (strcmp (dxf_attdef->tag_value, "") == 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () default value string is empty for the %s entity with id-code: %x.\n")),
+                  (_("Error in %s () default tag value string is empty for the %s entity with id-code: %x.\n")),
                   __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
                 return (EXIT_FAILURE);
         }
@@ -474,6 +495,16 @@ dxf_attdef_write
                   (_("    default text style STANDARD applied to %s entity.\n")),
                   dxf_entity_name);
                 dxf_attdef->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
+        }
+        if (strcmp (dxf_attdef->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_attdef->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         if (strcmp (dxf_attdef->layer, "") == 0)
         {
