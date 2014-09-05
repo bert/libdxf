@@ -66,7 +66,7 @@ dxf_3dsolid
                  * Defaults to layer "0" if no valid layername is given. */
         double elevation;
                 /*!< group code = 38\n
-                 * Elevation of the 3dface in the local Z-direction.\n
+                 * Elevation of the 3dsolid in the local Z-direction.\n
                  * Defaults to 0.0 if omitted in the DXF file, or prior
                  * to DXF version R12, or DXF_FLATLAND equals 0 (default). */
         double thickness;
