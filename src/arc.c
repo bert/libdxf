@@ -90,7 +90,14 @@ dxf_arc_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_arc = dxf_arc_new ();
+        /* Do some basic checks. */
+        if (dxf_arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_arc = dxf_arc_new ();
+        }
         if (dxf_arc == NULL)
         {
               fprintf (stderr,
@@ -149,9 +156,14 @@ dxf_arc_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_arc)
+        /* Do some basic checks. */
+        if (dxf_arc == NULL)
         {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_arc = dxf_arc_new ();
+                dxf_arc_init (dxf_arc);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -321,6 +333,16 @@ dxf_arc_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle ommitted members and/or illegal values. */
+        if (strcmp (dxf_arc->linetype, "") == 0)
+        {
+                dxf_arc->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_arc->layer, "") == 0)
+        {
+                dxf_arc->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+
 #if DEBUG
         DXF_DEBUG_END
 #endif
