@@ -42,6 +42,10 @@
 
 /*!
  * \brief Definition of an AutoCAD attribute entity (\c ATTRIB).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_attrib
@@ -60,6 +64,11 @@ dxf_attrib
                 /*!< group code = 8\n
                  * Layer on which the entity is drawn.\n
                  * Defaults to layer "0" if no valid layername is given. */
+        double elevation;
+                /*!< group code = 38\n
+                 * Elevation of the 3dface in the local Z-direction.\n
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default). */
         double thickness;
                 /*!< group code = 39\n
                  * Thickness of the arc in the local Z-direction.\n
@@ -85,6 +94,9 @@ dxf_attrib
         char *dictionary_owner_soft;
                 /*!< group code = 330\n
                  * Soft-pointer ID/handle to owner dictionary (optional). */
+        char *dictionary_owner_hard;
+                /*!< group code = 360\n
+                 * Hard owner ID/handle to owner dictionary (optional). */
         int16_t line_weight;
                 /*!< group code = 370\n
                  * Lineweight enum value.\n

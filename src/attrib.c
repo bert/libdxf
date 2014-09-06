@@ -39,6 +39,10 @@
  * \brief Allocate memory for a DXF \c ATTRIB.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfAttrib *
 dxf_attrib_new ()
@@ -75,6 +79,10 @@ dxf_attrib_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfAttrib *
 dxf_attrib_init
@@ -117,6 +125,7 @@ dxf_attrib_init
         dxf_attrib->rel_x_scale = 0.0;
         dxf_attrib->rot_angle = 0.0;
         dxf_attrib->obl_angle = 0.0;
+        dxf_attrib->elevation = 0.0;
         dxf_attrib->thickness = 0.0;
         dxf_attrib->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
         dxf_attrib->visibility = DXF_DEFAULT_VISIBILITY;
@@ -131,6 +140,7 @@ dxf_attrib_init
         dxf_attrib->extr_y0 = 0.0;
         dxf_attrib->extr_z0 = 0.0;
         dxf_attrib->dictionary_owner_soft = strdup("");
+        dxf_attrib->dictionary_owner_hard = strdup("");
         dxf_attrib->line_weight = 0;
         dxf_attrib->next = NULL;
 #if DEBUG
@@ -151,6 +161,10 @@ dxf_attrib_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_attrib_read
@@ -270,7 +284,7 @@ dxf_attrib_read
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_attrib->z0 = 0.0))
+                        && (dxf_attrib->elevation = 0.0))
                 {
                         /* Elevation is a pre AutoCAD R11 variable
                          * so additional testing for the version should
@@ -278,7 +292,7 @@ dxf_attrib_read
                          * Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attrib->z0);
+                        fscanf (fp->fp, "%lf\n", &dxf_attrib->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -418,6 +432,20 @@ dxf_attrib_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_attrib->extr_z0);
                 }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_attrib->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_attrib->dictionary_owner_hard);
+                }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
@@ -450,6 +478,10 @@ dxf_attrib_read
 
 /*!
  * \brief Write DXF output for a DXF \c ATTRIB entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_attrib_write
@@ -543,9 +575,29 @@ dxf_attrib_write
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_attrib->id_code);
         }
-        if (fp->acad_version_number >= AutoCAD_14)
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_attrib->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
         {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
                 fprintf (fp->fp, "330\n%s\n", dxf_attrib->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_attrib->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_attrib->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -575,6 +627,12 @@ dxf_attrib_write
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbText\n");
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_attrib->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_attrib->elevation);
         }
         if (dxf_attrib->thickness != 0.0)
         {
@@ -667,6 +725,10 @@ dxf_attrib_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_attrib_free
@@ -691,6 +753,7 @@ dxf_attrib_free
         free (dxf_attrib->tag_value);
         free (dxf_attrib->text_style);
         free (dxf_attrib->dictionary_owner_soft);
+        free (dxf_attrib->dictionary_owner_hard);
         free (dxf_attrib);
         dxf_attrib = NULL;
 #if DEBUG
