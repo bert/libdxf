@@ -127,7 +127,10 @@ dxf_block
 
 
 DxfBlock *dxf_block_new ();
-DxfBlock *dxf_block_init (DxfBlock *dxf_block);
+DxfBlock *dxf_block_init
+(
+        DxfBlock *dxf_block
+);
 int dxf_block_read
 (
         DxfFile *fp,
@@ -142,8 +145,15 @@ int dxf_block_write_endblk
 (
         DxfFile *fp
 );
-int dxf_block_write_table (char *dxf_blocks_list, int acad_version_number);
-int dxf_block_free (DxfBlock *dxf_block);
+int dxf_block_write_table
+(
+        DxfFile *fp,
+        char *dxf_blocks_list
+);
+int dxf_block_free
+(
+        DxfBlock *dxf_block
+);
 
 
 #endif /* BLOCK_H */

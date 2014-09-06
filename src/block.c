@@ -418,8 +418,9 @@ dxf_block_write_endblk
 int
 dxf_block_write_table
 (
-        char *dxf_blocks_list, 
-        int acad_version_number
+        DxfFile *fp,
+                /*!< DXF file handle of input file (or device). */
+        char *dxf_blocks_list
 )
 {
 #if DEBUG
