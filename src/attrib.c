@@ -86,13 +86,20 @@ dxf_attrib_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_attrib = dxf_attrib_new ();
+        /* Do some basic checks. */
         if (dxf_attrib == NULL)
         {
-              fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfAttrib struct.\n")),
-                __FUNCTION__);
-              return (NULL);
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_attrib = dxf_attrib_new ();
+        }
+        if (dxf_attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfAttrib struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
         dxf_attrib->value = strdup ("");
         dxf_attrib->tag_value = strdup ("");
@@ -159,9 +166,14 @@ dxf_attrib_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_attrib)
+        /* Do some basic checks. */
+        if (dxf_attrib == NULL)
         {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_attrib = dxf_attrib_new ();
+                dxf_attrib_init (dxf_attrib);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -420,6 +432,15 @@ dxf_attrib_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle ommitted members and/or illegal values. */
+        if (strcmp (dxf_attrib->linetype, "") == 0)
+        {
+                dxf_attrib->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_attrib->layer, "") == 0)
+        {
+                dxf_attrib->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -475,6 +496,16 @@ dxf_attrib_write
                   (_("    default text style STANDARD applied to %s entity.\n")),
                   dxf_entity_name);
                 dxf_attrib->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
+        }
+        if (strcmp (dxf_attrib->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_attrib->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_attrib->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         if (strcmp (dxf_attrib->layer, "") == 0)
         {
