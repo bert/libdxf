@@ -39,6 +39,10 @@
  * \brief Allocate memory for a \c DxfAttdef.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_new ()
@@ -75,6 +79,10 @@ dxf_attdef_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_init
@@ -131,6 +139,8 @@ dxf_attdef_init
         dxf_attdef->extr_x0 = 0.0;
         dxf_attdef->extr_y0 = 0.0;
         dxf_attdef->extr_z0 = 0.0;
+        dxf_attdef->dictionary_owner_soft = strdup ("");
+        dxf_attdef->dictionary_owner_hard = strdup ("");
         dxf_attdef->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -150,6 +160,10 @@ dxf_attdef_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_attdef_read
@@ -276,7 +290,7 @@ dxf_attdef_read
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_attdef->z0 = 0.0))
+                        && (dxf_attdef->elevation = 0.0))
                 {
                         /* Elevation is a pre AutoCAD R11 variable
                          * so additional testing for the version should
@@ -284,7 +298,7 @@ dxf_attdef_read
                          * Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->z0);
+                        fscanf (fp->fp, "%lf\n", &dxf_attdef->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -423,6 +437,20 @@ dxf_attdef_read
                          * Z-value of the extrusion vector. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_attdef->extr_z0);
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_attdef->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_attdef->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -659,6 +687,10 @@ dxf_attdef_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_attdef_free
@@ -683,6 +715,8 @@ dxf_attdef_free
         free (dxf_attdef->tag_value);
         free (dxf_attdef->prompt_value);
         free (dxf_attdef->text_style);
+        free (dxf_attdef->dictionary_owner_soft);
+        free (dxf_attdef->dictionary_owner_hard);
         free (dxf_attdef);
         dxf_attdef = NULL;
 #if DEBUG
