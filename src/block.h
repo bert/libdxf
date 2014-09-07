@@ -148,7 +148,7 @@ int dxf_block_write_endblk
 int dxf_block_write_table
 (
         DxfFile *fp,
-        char *dxf_blocks_list
+        DxfBlock *dxf_blocks_list
 );
 int dxf_block_free
 (

@@ -411,16 +411,17 @@ dxf_block_write_endblk
 
 
 /*!
- * \brief Write DXF output to a file for a table of blocks.
+ * \brief Write DXF output to a file for a list of block definitions.
  *
- * Appears only in \c TABLES section.\n
+ * Appears only in the \c BLOCKS section.\n
  */
 int
 dxf_block_write_table
 (
         DxfFile *fp,
-                /*!< DXF file handle of input file (or device). */
-        char *dxf_blocks_list
+                /*!< DXF file pointer to an output file (or device). */
+        DxfBlock *dxf_blocks_list
+                /*!< Pointer to a list of block definitions. */
 )
 {
 #if DEBUG
