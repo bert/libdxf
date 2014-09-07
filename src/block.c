@@ -122,6 +122,7 @@ dxf_block_init
         dxf_block->z0 = 0.0;
         dxf_block->block_type = 0; /* 0 = invalid type */
         dxf_block->dictionary_owner_soft = strdup ("");
+        dxf_block->endblk = dxf_endblk_new ();
         dxf_block->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -146,6 +147,11 @@ dxf_block_init
  * \version According to DXF R10.
  * \version According to DXF R13.
  * \version According to DXF R14.
+ *
+ * \todo After reading information from the \c BLOCK entity up until the
+ * closing Group code 0, the pointer to the following \c ENDBLK entity
+ * needs to be stored in the current (last) \c DxfBlock struct member
+ * \c endblk.
  */
 int
 dxf_block_read
@@ -458,30 +464,7 @@ dxf_block_write
         {
                 fprintf (fp->fp, "  4\n%s\n", dxf_block->description);
         }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Write DXF output to a file for an end of block marker
- * (a \c ENDBLK entity).
- *
- * Appears only in \c BLOCKS section.\n
- */
-int
-dxf_block_write_endblk
-(
-        DxfFile *fp
-                /*!< DXF file pointer to an output file (or device). */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        fprintf (fp->fp, "  0\nENDBLK\n");
+        dxf_endblk_write (fp, dxf_block->endblk);
 #if DEBUG
         DXF_DEBUG_END
 #endif

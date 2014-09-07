@@ -39,6 +39,7 @@
 #include "global.h"
 #include "util.h"
 #include "entity.h"
+#include "endblk.h"
 
 
 /*!
@@ -129,6 +130,8 @@ dxf_block
                 /*!< Soft-pointer ID/handle to owner dictionary
                  * (optional).\n
                  * Group code = 330. */
+        struct DxfEndblk *endblk;
+                /*!< pointer to the end of block marker. */
         struct DxfBlock *next;
                 /*!< pointer to the next DxfBlock.\n
                  * \c NULL in the last DxfBlock. */
