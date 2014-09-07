@@ -40,6 +40,10 @@
  * (a DXF \c BLOCK entity).
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_new ()
@@ -77,6 +81,10 @@ dxf_block_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_init
@@ -113,7 +121,7 @@ dxf_block_init
         dxf_block->y0 = 0.0;
         dxf_block->z0 = 0.0;
         dxf_block->block_type = 0; /* 0 = invalid type */
-        dxf_block->soft_owner_object = strdup ("");
+        dxf_block->dictionary_owner_soft = strdup ("");
         dxf_block->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -134,6 +142,10 @@ dxf_block_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_block_read
@@ -272,7 +284,7 @@ dxf_block_read
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner object. */
-                        fscanf (fp->fp, "%s\n", dxf_block->soft_owner_object);
+                        fscanf (fp->fp, "%s\n", dxf_block->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -317,8 +329,14 @@ dxf_block_read
 
 
 /*!
- * \brief Write DXF output to fp for a DxfBlock
- * ( a \c BLOCK entity).
+ * \brief Write DXF output for a DXF \c BLOCK entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_block_write
@@ -352,12 +370,13 @@ dxf_block_write
                   dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if ((dxf_block->xref_name == NULL)
+        if (((dxf_block->xref_name == NULL)
+          || (strcmp (dxf_block->xref_name, "") == 0))
           && ((dxf_block->block_type != 4)
           || (dxf_block->block_type != 32)))
         {
                 fprintf (stderr,
-                  (_("Warning: empty xref name string for the %s entity with id-code: %x\n")),
+                  (_("Warning: empty xref path name string for the %s entity with id-code: %x\n")),
                   dxf_entity_name, dxf_block->id_code);
                 fprintf (stderr,
                   (_("         %s entity is discarded from output.\n")),
@@ -381,42 +400,63 @@ dxf_block_write
                   dxf_entity_name);
                 dxf_block->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_block->soft_owner_object == NULL)
+        if (dxf_block->dictionary_owner_soft == NULL)
         {
                 fprintf (stderr,
                   (_("Warning: NULL pointer to soft owner object string for the %s entity with id-code: %x\n")),
                   dxf_entity_name, dxf_block->id_code);
-                dxf_block->soft_owner_object = strdup ("");
+                dxf_block->dictionary_owner_soft = strdup ("");
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (fp->acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp->fp, "100\nAcDbEntity\n");
-                fprintf (fp->fp, "100\nAcDbBlockBegin\n");
-        }
-        if ((dxf_block->block_type && 4) || (dxf_block->block_type && 32))
-        {
-                fprintf (fp->fp, "  1\n%s\n", dxf_block->xref_name);
-        }
-        fprintf (fp->fp, "  2\n%s\n", dxf_block->block_name);
-        fprintf (fp->fp, "  3\n%s\n", dxf_block->block_name);
-        if (strcmp (dxf_block->description, "") != 0)
-        {
-                fprintf (fp->fp, "  4\n%s\n", dxf_block->description);
-        }
-        if (dxf_block->id_code != -1)
+        if ((fp->acad_version_number >= AutoCAD_13)
+          && (dxf_block->id_code != -1))
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_block->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_block->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "330\n%s\n", dxf_block->dictionary_owner_soft);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
         fprintf (fp->fp, "  8\n%s\n", dxf_block->layer);
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbBlockBegin\n");
+        }
+        fprintf (fp->fp, "  2\n%s\n", dxf_block->block_name);
+        fprintf (fp->fp, " 70\n%d\n", dxf_block->block_type);
         fprintf (fp->fp, " 10\n%f\n", dxf_block->x0);
         fprintf (fp->fp, " 20\n%f\n", dxf_block->y0);
         fprintf (fp->fp, " 30\n%f\n", dxf_block->z0);
-        fprintf (fp->fp, " 70\n%d\n", dxf_block->block_type);
-        if (strcmp (dxf_block->soft_owner_object, "") != 0)
+        if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp->fp, "330\n%s\n", dxf_block->soft_owner_object);
+                fprintf (fp->fp, "  3\n%s\n", dxf_block->block_name);
+        }
+        if ((fp->acad_version_number >= AutoCAD_13)
+        && ((dxf_block->block_type && 4)
+        || (dxf_block->block_type && 32)))
+        {
+                fprintf (fp->fp, "  1\n%s\n", dxf_block->xref_name);
+        }
+        if ((fp->acad_version_number >= AutoCAD_2000)
+        && (strcmp (dxf_block->description, "") != 0))
+        {
+                fprintf (fp->fp, "  4\n%s\n", dxf_block->description);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -430,7 +470,6 @@ dxf_block_write
  * (a \c ENDBLK entity).
  *
  * Appears only in \c BLOCKS section.\n
- * Contains no other group codes than "0".
  */
 int
 dxf_block_write_endblk
@@ -481,6 +520,10 @@ dxf_block_write_table
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_block_free
@@ -505,7 +548,7 @@ dxf_block_free
         free (dxf_block->block_name_additional);
         free (dxf_block->description);
         free (dxf_block->layer);
-        free (dxf_block->soft_owner_object);
+        free (dxf_block->dictionary_owner_soft);
         free (dxf_block);
         dxf_block = NULL;
 #if DEBUG
