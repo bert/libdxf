@@ -52,6 +52,7 @@
 #include "dimstyle.h"
 #include "donut.h"
 #include "ellipse.h"
+#include "endblk.h"
 #include "entities.h"
 #include "entity.h"
 #include "file.h"
