@@ -69,7 +69,10 @@ dxf_block
                  * Group code = 1. */
         char *block_name;
                 /*!< Block name.\n
-                 * Group code = 2 and 3. */
+                 * Group code = 2. */
+        char *block_name_additional;
+                /*!< Additional block name.\n
+                 * Group code = 3. */
         char *description;
                 /*!< Block description (optional).\n
                  * Group code = 4. */

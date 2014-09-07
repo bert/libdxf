@@ -88,7 +88,14 @@ dxf_block_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_block = dxf_block_new ();
+        /* Do some basic checks. */
+        if (dxf_block == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_block = dxf_block_new ();
+        }
         if (dxf_block == NULL)
         {
                 fprintf (stderr,
@@ -98,6 +105,7 @@ dxf_block_init
         }
         dxf_block->xref_name = strdup ("");
         dxf_block->block_name = strdup ("");
+        dxf_block->block_name_additional = strdup ("");
         dxf_block->id_code = 0;
         dxf_block->description = strdup ("");
         dxf_block->layer = strdup (DXF_DEFAULT_LAYER);
@@ -141,9 +149,14 @@ dxf_block_read
 #endif
         char temp_string[DXF_MAX_STRING_LENGTH];
 
-        if (!dxf_block)
+        /* Do some basic checks. */
+        if (dxf_block == NULL)
         {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_block = dxf_block_new ();
+                dxf_block_init (dxf_block);
         }
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -170,7 +183,7 @@ dxf_block_read
                 else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing a block name. */
-                        fscanf (fp->fp, "%s\n", dxf_block->block_name);
+                        fscanf (fp->fp, "%s\n", dxf_block->block_name_additional);
                 }
                 else if (strcmp (temp_string, "4") == 0)
                 {
@@ -274,6 +287,28 @@ dxf_block_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle ommitted members and/or illegal values. */
+        /*!
+         * \todo Resolve this quick hack for preventing an empty block
+         * name string in a more elegant manner.
+         */
+        if (strcmp (dxf_block->block_name, "") == 0)
+        {
+                sprintf (dxf_block->block_name, "%i", dxf_block->id_code);
+        }
+        if (strcmp (dxf_block->layer, "") == 0)
+        {
+                dxf_block->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        if (dxf_block->block_type == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning: in %s () illegal block type value found while reading from: %s in line: %d.\n")),
+                  __FUNCTION__, fp->filename, fp->line_number);
+                fprintf (stderr,
+                  (_("    block type value is reset to 1.\n")));
+                dxf_block->block_type = 1;
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -298,6 +333,8 @@ dxf_block_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("BLOCK");
+
+        /* Do some basic checks. */
         if (dxf_block == NULL)
         {
                 fprintf (stderr,
@@ -315,7 +352,9 @@ dxf_block_write
                   dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_block->xref_name == NULL)
+        if ((dxf_block->xref_name == NULL)
+          && ((dxf_block->block_type != 4)
+          || (dxf_block->block_type != 32)))
         {
                 fprintf (stderr,
                   (_("Warning: empty xref name string for the %s entity with id-code: %x\n")),
@@ -349,6 +388,7 @@ dxf_block_write
                   dxf_entity_name, dxf_block->id_code);
                 dxf_block->soft_owner_object = strdup ("");
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -462,6 +502,7 @@ dxf_block_free
         }
         free (dxf_block->xref_name);
         free (dxf_block->block_name);
+        free (dxf_block->block_name_additional);
         free (dxf_block->description);
         free (dxf_block->layer);
         free (dxf_block->soft_owner_object);
