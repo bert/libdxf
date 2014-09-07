@@ -37,6 +37,8 @@ src/ellipse.c
 src/ellipse.h
 src/entities.c
 src/entities.h
+src/endblk.c
+src/endblk.h
 src/entity.c
 src/entity.h
 src/file.c
