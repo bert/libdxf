@@ -305,7 +305,7 @@ dxf_block_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
-        /* Handle ommitted members and/or illegal values. */
+        /* Handle omitted members and/or illegal values. */
         /*!
          * \todo Resolve this quick hack for preventing an empty block
          * name string in a more elegant manner.
