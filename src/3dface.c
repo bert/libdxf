@@ -372,7 +372,7 @@ dxf_3dface_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
-        /* Handle ommitted members and/or illegal values. */
+        /* Handle omitted members and/or illegal values. */
         if (strcmp (dxf_3dface->linetype, "") == 0)
         {
                 dxf_3dface->linetype = strdup (DXF_DEFAULT_LINETYPE);
