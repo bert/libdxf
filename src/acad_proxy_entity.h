@@ -63,7 +63,7 @@ dxf_acad_proxy_entity
         char *linetype;
                 /*!< group code = 6\n
                  * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                 * Defaults to \c BYLAYER if omitted in the DXF file. */
         char *layer;
                 /*!< group code = 8\n
                  * Layer on which the entity is drawn.\n
@@ -78,7 +78,7 @@ dxf_acad_proxy_entity
         int color;
                 /*!< group code = 62\n
                  * Color of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Defaults to \c BYLAYER if omitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity. */
