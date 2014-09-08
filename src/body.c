@@ -89,13 +89,20 @@ dxf_body_init
 #endif
         int i;
 
-        dxf_body = dxf_body_new ();
+        /* Do some basic checks. */
         if (dxf_body == NULL)
         {
-              fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfBody struct.\n")),
-                __FUNCTION__);
-              return (NULL);
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_body = dxf_body_new ();
+        }
+        if (dxf_body == NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfBody struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
         dxf_body->modeler_format_version_number = 0;
         dxf_body->id_code = 0;
@@ -146,9 +153,21 @@ dxf_body_read
         int i;
         int j;
 
-        if (!dxf_body)
+        /* Do some basic checks. */
+        if (fp->acad_version_number < AutoCAD_13)
         {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dxf_body == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_body = dxf_body_new ();
+                dxf_body_init (dxf_body);
         }
         i = 0;
         j = 0;
@@ -256,6 +275,24 @@ dxf_body_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle ommitted members and/or illegal values. */
+        if (strcmp (dxf_body->linetype, "") == 0)
+        {
+                dxf_body->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_body->layer, "") == 0)
+        {
+                dxf_body->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        if (dxf_body->modeler_format_version_number == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning: in %s () illegal modeler format version number found while reading from: %s in line: %d.\n")),
+                  __FUNCTION__, fp->filename, fp->line_number);
+                fprintf (stderr,
+                  (_("\tmodeler format version number is reset to 1.\n")));
+                dxf_body->modeler_format_version_number = 1;
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -284,6 +321,31 @@ dxf_body_write
         char *dxf_entity_name = strdup ("BODY");
         int i;
 
+        /* Do some basic checks. */
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dxf_body == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_body->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_body->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_body->layer = strdup (DXF_DEFAULT_LAYER);
+        }
         if (strcmp (dxf_body->layer, "") == 0)
         {
                 fprintf (stderr,
@@ -364,12 +426,13 @@ dxf_body_free
 #endif
         int i;
 
+        /* Do some basic checks. */
         if (dxf_body->next != NULL)
         {
-                fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfBody was not NULL.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfBody was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
         }
         free (dxf_body->linetype);
         free (dxf_body->layer);
