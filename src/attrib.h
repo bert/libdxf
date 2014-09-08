@@ -59,7 +59,7 @@ dxf_attrib
         char *linetype;
                 /*!< group code = 6\n
                  * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                 * Defaults to \c BYLAYER if omitted in the DXF file. */
         char *layer;
                 /*!< group code = 8\n
                  * Layer on which the entity is drawn.\n
@@ -72,7 +72,7 @@ dxf_attrib
         double thickness;
                 /*!< group code = 39\n
                  * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                 * Defaults to 0.0 if omitted in the DXF file. */
         double linetype_scale;
                 /*!< group code = 48\n
                  * Linetype scale (optional). */
@@ -82,7 +82,7 @@ dxf_attrib
         int color;
                 /*!< group code = 62\n
                  * Color of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Defaults to \c BYLAYER if omitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity. */
@@ -175,15 +175,15 @@ dxf_attrib
                  * 3 = top. */
         double extr_x0;
                 /*!< X-value of the extrusion vector.\n
-                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Defaults to 0.0 if omitted in the DXF file.\n
                  * Group code = 210. */
         double extr_y0;
                 /*!< Y-value of the extrusion vector.\n
-                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Defaults to 0.0 if omitted in the DXF file.\n
                  * Group code = 220. */
         double extr_z0;
                 /*!< Z-value of the extrusion vector.\n
-                 * Defaults to 1.0 if ommitted in the DXF file.\n
+                 * Defaults to 1.0 if omitted in the DXF file.\n
                  * Group code = 230. */
         struct DxfAttrib *next;
                 /*!< pointer to the next DxfAttrib.\n
