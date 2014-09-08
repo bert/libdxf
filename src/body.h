@@ -1,7 +1,7 @@
 /*!
  * \file body.h
  *
- * \author Copyright (C) 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF body entity (\c BODY).
  *
@@ -55,7 +55,7 @@ dxf_body
         char *linetype;
                 /*!< group code = 6\n
                  * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                 * Defaults to \c BYLAYER if omitted in the DXF file. */
         char *layer;
                 /*!< group code = 8\n
                  * Layer on which the entity is drawn.\n
@@ -63,11 +63,11 @@ dxf_body
         double thickness;
                 /*!< group code = 39\n
                  * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                 * Defaults to 0.0 if omitted in the DXF file. */
         int color;
                 /*!< group code = 62\n
                  * Color of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Defaults to \c BYLAYER if omitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity. */
