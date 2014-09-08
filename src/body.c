@@ -44,9 +44,7 @@ DxfBody *
 dxf_body_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfBody *dxf_body = NULL;
         size_t size;
@@ -66,9 +64,7 @@ dxf_body_new ()
                 memset (dxf_body, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_body);
 }
@@ -89,9 +85,7 @@ dxf_body_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -118,9 +112,7 @@ dxf_body_init
         }
         dxf_body->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_body);
 }
@@ -148,9 +140,7 @@ dxf_body_read
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
         int i;
@@ -267,9 +257,7 @@ dxf_body_read
                 }
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -291,9 +279,7 @@ dxf_body_write
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("BODY");
         int i;
@@ -352,9 +338,7 @@ dxf_body_write
                 i++;
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -376,9 +360,7 @@ dxf_body_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -399,9 +381,7 @@ dxf_body_free
         free (dxf_body);
         dxf_body = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
