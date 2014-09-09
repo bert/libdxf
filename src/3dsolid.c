@@ -233,8 +233,7 @@ dxf_3dsolid_read
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                   && DXF_FLATLAND
-                  && (strcmp (temp_string, "38") == 0)
-                  && (dxf_3dsolid->elevation != 0.0))
+                  && (strcmp (temp_string, "38") == 0))
                 {
                         /* Now follows a string containing the
                          * elevation. */
