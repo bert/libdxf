@@ -3456,7 +3456,7 @@ dxf_hatch_pattern_def_line_dashes_write_lowlevel
 
 
 /*!
- * \brief Write DXF output to a file for a DXF \C HATCH pattern definition
+ * \brief Write DXF output to a file for a DXF \c HATCH pattern definition
  * lines.
  */
 int
