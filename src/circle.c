@@ -87,7 +87,14 @@ dxf_circle_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_circle = dxf_circle_new ();
+        /* Do some basic checks. */
+        if (dxf_circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_circle = dxf_circle_new ();
+        }
         if (dxf_circle == NULL)
         {
               fprintf (stderr,
@@ -142,6 +149,15 @@ dxf_circle_read
 #endif
         char *temp_string = NULL;
 
+        /* Do some basic checks. */
+        if (dxf_circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_circle = dxf_circle_new ();
+                dxf_circle_init (dxf_circle);
+        }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -285,6 +301,15 @@ dxf_circle_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_circle->linetype, "") == 0)
+        {
+                dxf_circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_circle->layer, "") == 0)
+        {
+                dxf_circle->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -309,6 +334,7 @@ dxf_circle_write
 #endif
         char *dxf_entity_name = strdup ("CIRCLE");
 
+        /* Do some basic checks. */
         if (dxf_circle == NULL)
         {
                 fprintf (stderr,
@@ -333,6 +359,7 @@ dxf_circle_write
                   dxf_entity_name );
                 dxf_circle->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_circle->id_code != -1)
         {
