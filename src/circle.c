@@ -44,9 +44,7 @@ DxfCircle *
 dxf_circle_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfCircle *dxf_circle = NULL;
         size_t size;
@@ -66,9 +64,7 @@ dxf_circle_new ()
                 memset (dxf_circle, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_circle);
 }
@@ -89,9 +85,7 @@ dxf_circle_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         dxf_circle = dxf_circle_new ();
         if (dxf_circle == NULL)
@@ -116,9 +110,7 @@ dxf_circle_init
         dxf_circle->paperspace = DXF_MODELSPACE;
         dxf_circle->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_circle);
 }
@@ -146,9 +138,7 @@ dxf_circle_read
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
 
@@ -296,9 +286,7 @@ dxf_circle_read
                 }
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -317,9 +305,7 @@ dxf_circle_write
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("CIRCLE");
 
@@ -379,9 +365,7 @@ dxf_circle_write
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -403,9 +387,7 @@ dxf_circle_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (dxf_circle->next != NULL)
         {
@@ -419,9 +401,7 @@ dxf_circle_free
         free (dxf_circle);
         dxf_circle = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
