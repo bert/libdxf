@@ -124,7 +124,10 @@ dxf_circle
 
 
 DxfCircle *dxf_circle_new ();
-DxfCircle *dxf_circle_init (DxfCircle *dxf_circle);
+DxfCircle *dxf_circle_init
+(
+        DxfCircle *dxf_circle
+);
 int
 dxf_circle_read
 (
@@ -136,7 +139,10 @@ int dxf_circle_write
         DxfFile *fp,
         DxfCircle *dxf_circle
 );
-int dxf_circle_free (DxfCircle *dxf_circle);
+int dxf_circle_free
+(
+        DxfCircle *dxf_circle
+);
 
 
 /* EOF */
