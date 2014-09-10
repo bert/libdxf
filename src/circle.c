@@ -39,6 +39,10 @@
  * \brief Allocate memory for a DXF \c CIRCLE.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_new ()
@@ -76,6 +80,10 @@ dxf_circle_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_init
@@ -111,10 +119,15 @@ dxf_circle_init
         dxf_circle->extr_x0 = 0.0;
         dxf_circle->extr_y0 = 0.0;
         dxf_circle->extr_z0 = 0.0;
+        dxf_circle->elevation = 0.0;
         dxf_circle->thickness = 0.0;
+        dxf_circle->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_circle->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_circle->radius = 0.0;
         dxf_circle->color = DXF_COLOR_BYLAYER;
         dxf_circle->paperspace = DXF_MODELSPACE;
+        dxf_circle->dictionary_owner_soft = strdup ("");
+        dxf_circle->dictionary_owner_hard = strdup ("");
         dxf_circle->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -237,6 +250,20 @@ dxf_circle_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_circle->radius);
                 }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_circle->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_circle->visibility);
+                }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
@@ -286,6 +313,20 @@ dxf_circle_read
                          * Z-value of the extrusion vector. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_circle->extr_z0);
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_circle->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_circle->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -365,31 +406,81 @@ dxf_circle_write
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_circle->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_circle->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_circle->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_circle->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_circle->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
-                fprintf (fp->fp, "100\nAcDbCircle\n");
-        }
-        if (strcmp (dxf_circle->linetype, DXF_DEFAULT_LINETYPE) != 0)
-        {
-                fprintf (fp->fp, "  6\n%s\n", dxf_circle->linetype);
-        }
-        fprintf (fp->fp, "  8\n%s\n", dxf_circle->layer);
-        fprintf (fp->fp, " 10\n%f\n", dxf_circle->x0);
-        fprintf (fp->fp, " 20\n%f\n", dxf_circle->y0);
-        fprintf (fp->fp, " 30\n%f\n", dxf_circle->z0);
-        if (dxf_circle->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", dxf_circle->thickness);
-        }
-        fprintf (fp->fp, " 40\n%f\n", dxf_circle->radius);
-        if (dxf_circle->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_circle->color);
         }
         if (dxf_circle->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_circle->layer);
+        if (strcmp (dxf_circle->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_circle->linetype);
+        }
+        if (dxf_circle->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_circle->color);
+        }
+        if (dxf_circle->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_circle->linetype_scale);
+        }
+        if (dxf_circle->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_circle->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbCircle\n");
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_circle->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_circle->elevation);
+        }
+        if (dxf_circle->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_circle->thickness);
+        }
+        fprintf (fp->fp, " 10\n%f\n", dxf_circle->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_circle->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_circle->z0);
+        fprintf (fp->fp, " 40\n%f\n", dxf_circle->radius);
+        if ((fp->acad_version_number >= AutoCAD_12)
+                && (dxf_circle->extr_x0 != 0.0)
+                && (dxf_circle->extr_y0 != 0.0)
+                && (dxf_circle->extr_z0 != 1.0))
+        {
+                fprintf (fp->fp, "210\n%f\n", dxf_circle->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", dxf_circle->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", dxf_circle->extr_z0);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -404,6 +495,10 @@ dxf_circle_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_circle_free
@@ -425,6 +520,8 @@ dxf_circle_free
         }
         free (dxf_circle->linetype);
         free (dxf_circle->layer);
+        free (dxf_circle->dictionary_owner_soft);
+        free (dxf_circle->dictionary_owner_hard);
         free (dxf_circle);
         dxf_circle = NULL;
 #if DEBUG
