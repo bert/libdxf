@@ -465,7 +465,9 @@ dxf_RGB_to_triplet
         }
         else
         {
-                fprintf (stderr, "ERROR red color value in dxf_RGB_to_triplet () out of range.\n");
+                fprintf (stderr,
+                  (_("ERROR red color value in %s () out of range.\n")),
+                  __FUNCTION__);
                 return (-1);
         }
         if ((green <= 255) || (green >= 0))
@@ -474,7 +476,9 @@ dxf_RGB_to_triplet
         }
         else
         {
-                fprintf (stderr, "ERROR green color value in dxf_RGB_to_triplet () out of range.\n");
+                fprintf (stderr,
+                  (_("ERROR green color value in %s () out of range.\n")),
+                  __FUNCTION__);
                 return (-2);
         }
         if ((blue <= 255) || (blue >= 0))
@@ -483,7 +487,9 @@ dxf_RGB_to_triplet
         }
         else
         {
-                fprintf (stderr, "ERROR blue color value in dxf_RGB_to_triplet () out of range.\n");
+                fprintf (stderr,
+                  (_("ERROR blue color value in %s () out of range.\n")),
+                  __FUNCTION__);
                 return (-3);
         }
 #if DEBUG
