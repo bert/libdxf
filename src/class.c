@@ -325,10 +325,14 @@ dxf_class_write
                   dxf_entity_name );
                 dxf_class->app_name = strdup ("");
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         fprintf (fp->fp, "  1\n%s\n", dxf_class->record_name);
         fprintf (fp->fp, "  2\n%s\n", dxf_class->class_name);
-        fprintf (fp->fp, "  3\n%s\n", dxf_class->app_name);
+        if (fp->acad_version_number >= AutoCAD_14)
+        {
+                fprintf (fp->fp, "  3\n%s\n", dxf_class->app_name);
+        }
         fprintf (fp->fp, " 90\n%d\n", dxf_class->proxy_cap_flag);
         fprintf (fp->fp, "280\n%d\n", dxf_class->was_a_proxy_flag);
         fprintf (fp->fp, "281\n%d\n", dxf_class->is_an_entity_flag);
