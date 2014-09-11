@@ -45,7 +45,7 @@
 int
 dxf_comment_write
 (
-        FILE *fp,
+        DxfFile *fp,
                 /*!< file pointer to output file (or device). */
         char *comment_string
                 /*!< comment string to be writen to fp. */
@@ -54,7 +54,7 @@ dxf_comment_write
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        fprintf (fp, "999\n%s\n", comment_string);
+        fprintf (fp->fp, "999\n%s\n", comment_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif

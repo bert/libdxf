@@ -40,7 +40,11 @@
 
 
 int
-dxf_comment_write (FILE *fp, char *comment_string);
+dxf_comment_write
+(
+        DxfFile *fp,
+        char *comment_string
+);
 
 
 #endif /* _COMMENT_H */
