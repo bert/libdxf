@@ -1,7 +1,7 @@
 /*!
  * \file color.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of DXF color values.
  *
@@ -87,6 +87,11 @@ dxf_RGB_to_triplet
         int red,
         int green,
         int blue
+);
+int
+dxf_RGB_color_free
+(
+        DxfRGBColor *dxf_RGB_color
 );
 
 

@@ -2206,4 +2206,47 @@ dxf_RGB_color_get_name
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c DxfRGBColor and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_RGB_color_free
+(
+        DxfRGBColor *dxf_RGB_color
+                /*!< Pointer to the memory occupied by the DXF
+                 * RGB Color. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dxf_RGB_color == NULL)
+        {
+              fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        if (dxf_RGB_color->name == NULL)
+        {
+              fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer to a DxfRGBColor name was passed.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (dxf_RGB_color->name);
+        free (dxf_RGB_color);
+        dxf_RGB_color = NULL;
+#ifdef DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
