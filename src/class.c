@@ -89,7 +89,14 @@ dxf_class_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_class = dxf_class_new ();
+        /* Do some basic checks. */
+        if (dxf_class == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_class = dxf_class_new ();
+        }
         if (dxf_class == NULL)
         {
               fprintf (stderr,
@@ -138,9 +145,14 @@ dxf_class_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_class)
+        /* Do some basic checks. */
+        if (dxf_class == NULL)
         {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_class = dxf_class_new ();
+                dxf_class_init (dxf_class);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -222,6 +234,29 @@ dxf_class_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_class->record_type, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Error: in %s () empty record type string after reading from: %s before line: %d.\n")),
+                  __FUNCTION__, fp->filename, fp->line_number);
+                return (EXIT_FAILURE);
+
+        }
+        if (strcmp (dxf_class->record_name, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Error: in %s () empty record name string after reading from: %s before line: %d.\n")),
+                  __FUNCTION__, fp->filename, fp->line_number);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_class->class_name, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Error: in %s () empty class name string after reading from: %s before line: %d.\n")),
+                  __FUNCTION__, fp->filename, fp->line_number);
+                return (EXIT_FAILURE);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -246,6 +281,7 @@ dxf_class_write
 #endif
         char *dxf_entity_name = strdup ("CLASS");
 
+        /* Do some basic checks. */
         if (dxf_class == NULL)
         {
                 fprintf (stderr,
@@ -253,28 +289,36 @@ dxf_class_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (!dxf_class->class_name
-                || (strcmp (dxf_class->class_name, "") == 0))
+        if (!dxf_class->record_type
+                || (strcmp (dxf_class->record_type, "") == 0))
         {
                 fprintf (stderr,
-                  (_("Error in %s () empty class_name string for the %s entity\n")),
+                  (_("Error in %s () empty record type string for the %s entity\n")),
                   __FUNCTION__, dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (!dxf_class->record_name)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () empty record_name string for the %s entity\n")),
+                  (_("Warning in %s () empty record name string for the %s entity\n")),
                   __FUNCTION__, dxf_entity_name);
                 fprintf (stderr,
                   (_("    record_name of %s entity is reset to \"\"")),
                   dxf_entity_name );
                 dxf_class->record_name = strdup ("");
         }
+        if (!dxf_class->class_name
+                || (strcmp (dxf_class->class_name, "") == 0))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () empty class name string for the %s entity\n")),
+                  __FUNCTION__, dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
         if (!dxf_class->app_name)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () empty app_name string for the %s entity\n")),
+                  (_("Warning in %s () empty app name string for the %s entity\n")),
                   __FUNCTION__, dxf_entity_name);
                 fprintf (stderr,
                   (_("    app_name of %s entity is reset to \"\"")),
