@@ -59,6 +59,8 @@ dxf_comment
 } DxfComment, * DxfCommentPtr;
 
 
+DxfComment *
+dxf_comment_new ();
 int
 dxf_comment_write
 (

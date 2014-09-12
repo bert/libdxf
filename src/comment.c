@@ -34,6 +34,41 @@
 #include "comment.h"
 
 /*!
+ * \brief Allocate memory for a DXF \c COMMENT.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfComment *
+dxf_comment_new ()
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfComment *dxf_comment = NULL;
+        size_t size;
+
+        size = sizeof (DxfComment);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_comment = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfComment struct.\n")),
+                  __FUNCTION__);
+                dxf_comment = NULL;
+        }
+        else
+        {
+                memset (dxf_comment, 0, size);
+        }
+#ifdef DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_comment);
+}
+
+
+/*!
  * \brief Write DXF output to fp for a comment.
  *
  * The 999 group code indicates that the following line is a comment string.\n
