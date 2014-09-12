@@ -124,14 +124,14 @@ dxf_comment_write
 (
         DxfFile *fp,
                 /*!< file pointer to output file (or device). */
-        char *comment_string
-                /*!< comment string to be writen to fp. */
+        DxfComment *dxf_comment
+                /*!< DXF Comment entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        fprintf (fp->fp, "999\n%s\n", comment_string);
+        fprintf (fp->fp, "999\n%s\n", dxf_comment->value);
 #if DEBUG
         DXF_DEBUG_END
 #endif

@@ -70,7 +70,7 @@ int
 dxf_comment_write
 (
         DxfFile *fp,
-        char *comment_string
+        DxfComment *dxf_comment
 );
 int
 dxf_comment_free
