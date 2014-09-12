@@ -39,6 +39,26 @@
 #include "global.h"
 
 
+/*!
+ * \brief DXF definition of an AutoCAD comment entity (\c COMMENT).
+ */
+typedef struct
+dxf_comment
+{
+        int id_code;
+                /*!< group code = 5\n
+                 * Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+        char *value;
+                /*!< group code = 999\n
+                 * The comment text string. */
+        struct DxfComment *next;
+                /*!< pointer to the next DxfComment.\n
+                 * \c NULL in the last DxfComment. */
+} DxfComment, * DxfCommentPtr;
+
+
 int
 dxf_comment_write
 (
