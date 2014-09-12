@@ -139,4 +139,39 @@ dxf_comment_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c COMMENT and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_comment_free
+(
+        DxfComment *dxf_comment
+                /*!< Pointer to the memory occupied by the DXF \c COMMENT
+                 * entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dxf_comment->next != NULL)
+        {
+              fprintf (stderr,
+                (_("ERROR in %s () pointer to next DxfComment was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (dxf_comment->value);
+        free (dxf_comment);
+        dxf_comment = NULL;
+#ifdef DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

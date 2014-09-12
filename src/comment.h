@@ -72,6 +72,11 @@ dxf_comment_write
         DxfFile *fp,
         char *comment_string
 );
+int
+dxf_comment_free
+(
+        DxfComment *dxf_comment
+);
 
 
 #endif /* _COMMENT_H */
