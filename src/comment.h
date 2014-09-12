@@ -1,7 +1,7 @@
 /*!
  * \file comment.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF comment entity (\c COMMENT).
  *
@@ -61,6 +61,11 @@ dxf_comment
 
 DxfComment *
 dxf_comment_new ();
+DxfComment *
+dxf_comment_init
+(
+        DxfComment *dxf_comment
+);
 int
 dxf_comment_write
 (

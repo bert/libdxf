@@ -69,6 +69,48 @@ dxf_comment_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c COMMENT
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfComment *
+dxf_comment_init
+(
+        DxfComment *dxf_comment
+                /*!< DXF Comment entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dxf_comment == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_comment = dxf_comment_new ();
+        }
+        if (dxf_comment == NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfComment struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dxf_comment->id_code = 0;
+        dxf_comment->value = strdup ("");
+        dxf_comment->next = NULL;
+#ifdef DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_comment);
+}
+
+
+/*!
  * \brief Write DXF output to fp for a comment.
  *
  * The 999 group code indicates that the following line is a comment string.\n
