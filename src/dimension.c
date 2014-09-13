@@ -91,7 +91,14 @@ dxf_dimension_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_dimension = dxf_dimension_new ();
+        /* Do some basic checks. */
+        if (dxf_dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_dimension = dxf_dimension_new ();
+        }
         if (dxf_dimension == NULL)
         {
               fprintf (stderr,
@@ -175,9 +182,14 @@ dxf_dimension_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_dimension)
+        /* Do some basic checks. */
+        if (dxf_dimension == NULL)
         {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_dimension = dxf_dimension_new ();
+                dxf_dimension_init (dxf_dimension);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -548,6 +560,15 @@ dxf_dimension_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_dimension->linetype, "") == 0)
+        {
+                dxf_dimension->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_dimension->layer, "") == 0)
+        {
+                dxf_dimension->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -576,6 +597,7 @@ dxf_dimension_write
 #endif
         char *dxf_entity_name = strdup ("DIMENSION");
 
+        /* Do some basic checks. */
         if (dxf_dimension == NULL)
         {
                 return (EXIT_FAILURE);
