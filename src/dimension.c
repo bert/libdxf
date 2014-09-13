@@ -47,9 +47,7 @@ DxfDimension *
 dxf_dimension_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfDimension *dxf_dimension = NULL;
         size_t size;
@@ -69,9 +67,7 @@ dxf_dimension_new ()
                 memset (dxf_dimension, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_dimension);
 }
@@ -93,9 +89,7 @@ dxf_dimension_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         dxf_dimension = dxf_dimension_new ();
         if (dxf_dimension == NULL)
@@ -150,9 +144,7 @@ dxf_dimension_init
         dxf_dimension->extr_z0 = 0.0;
         dxf_dimension->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_dimension);
 }
@@ -179,9 +171,7 @@ dxf_dimension_read
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
 
@@ -559,9 +549,7 @@ dxf_dimension_read
                 }
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -584,9 +572,7 @@ dxf_dimension_write
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("DIMENSION");
 
@@ -731,9 +717,7 @@ dxf_dimension_write
         fprintf (fp->fp, "220\n%fn", dxf_dimension->extr_y0);
         fprintf (fp->fp, "230\n%fn", dxf_dimension->extr_z0);
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -755,9 +739,7 @@ dxf_dimension_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (dxf_dimension->next != NULL)
         {
@@ -774,9 +756,7 @@ dxf_dimension_free
         free (dxf_dimension);
         dxf_dimension = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
