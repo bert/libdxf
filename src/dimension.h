@@ -1,9 +1,9 @@
 /*!
  * \file dimension.h
  *
- * \author Copyright (C) 2008, 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Definition of a DXF dimension entity (\c DIMENSION).
+ * \brief Header file for a DXF dimension entity (\c DIMENSION).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
