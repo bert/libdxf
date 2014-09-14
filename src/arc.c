@@ -456,7 +456,7 @@ dxf_arc_write
         {
                 fprintf (stderr, "Error in dxf_arc_write () radius value equals 0.0 for the %s entity with id-code: %x.\n",
                         dxf_entity_name, dxf_arc->id_code);
-                fprintf (stderr, "    skipping %s entity.\n",
+                fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
         }
@@ -466,7 +466,7 @@ dxf_arc_write
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_arc->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is relocated to layer 0")),
+                  (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
                 dxf_arc->layer = DXF_DEFAULT_LAYER;
         }
@@ -589,8 +589,10 @@ dxf_arc_free
 #endif
         if (dxf_arc->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_arc_free () pointer to next DxfArc was not NULL.\n");
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("ERROR in %s () pointer to next DxfArc was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (dxf_arc->linetype);
         free (dxf_arc->layer);
