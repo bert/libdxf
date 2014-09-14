@@ -47,9 +47,7 @@ DxfDimStyle *
 dxf_dimstyle_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfDimStyle *dxf_dimstyle = NULL;
         size_t size;
@@ -69,9 +67,7 @@ dxf_dimstyle_new ()
                 memset (dxf_dimstyle, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_dimstyle);
 }
@@ -93,9 +89,7 @@ dxf_dimstyle_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         dxf_dimstyle = dxf_dimstyle_new ();
         if (dxf_dimstyle == NULL)
@@ -148,9 +142,7 @@ dxf_dimstyle_init
         dxf_dimstyle->dimclrt = DXF_COLOR_BYLAYER;
         dxf_dimstyle->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_dimstyle);
 }
@@ -173,9 +165,7 @@ dxf_dimstyle_write
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("DIMSTYLE");
 
@@ -287,9 +277,7 @@ dxf_dimstyle_write
         fprintf (fp->fp, "177\n%d\n", dxf_dimstyle->dimclre);
         fprintf (fp->fp, "178\n%d\n", dxf_dimstyle->dimclrt);
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -317,9 +305,7 @@ dxf_dimstyle_read
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
 
@@ -682,9 +668,7 @@ dxf_dimstyle_read
                 }
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -706,9 +690,7 @@ dxf_dimstyle_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (dxf_dimstyle->next != NULL)
         {
@@ -726,9 +708,7 @@ dxf_dimstyle_free
         free (dxf_dimstyle);
         dxf_dimstyle = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
