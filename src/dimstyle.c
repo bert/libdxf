@@ -91,7 +91,14 @@ dxf_dimstyle_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_dimstyle = dxf_dimstyle_new ();
+        /* Do some basic checks. */
+        if (dxf_dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_dimstyle = dxf_dimstyle_new ();
+        }
         if (dxf_dimstyle == NULL)
         {
               fprintf (stderr,
@@ -169,6 +176,7 @@ dxf_dimstyle_write
 #endif
         char *dxf_entity_name = strdup ("DIMSTYLE");
 
+        /* Do some basic checks. */
         if (dxf_dimstyle == NULL)
         {
                 fprintf (stderr,
@@ -309,9 +317,14 @@ dxf_dimstyle_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_dimstyle)
+        /* Do some basic checks. */
+        if (dxf_dimstyle == NULL)
         {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_dimstyle = dxf_dimstyle_new ();
+                dxf_dimstyle_init (dxf_dimstyle);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -666,6 +679,14 @@ dxf_dimstyle_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimclrt);
                 }
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_dimstyle->dimstyle_name, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () dimstyle_name value is empty.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
