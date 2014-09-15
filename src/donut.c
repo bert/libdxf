@@ -81,9 +81,7 @@ dxf_donut_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("POLYLINE");
         double start_width;
@@ -177,9 +175,7 @@ dxf_donut_write_lowlevel
         dxf_seqend_write (fp, dxf_seqend);
         */
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
