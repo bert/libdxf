@@ -102,7 +102,7 @@ dxf_donut_write_lowlevel
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, id_code);
                 fprintf (stderr,
-                  (_("    %s entity is relocated to layer 0\n")),
+                  (_("\t%s entity is relocated to layer 0\n")),
                   dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
