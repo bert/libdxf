@@ -42,6 +42,9 @@
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfDimStyle *
 dxf_dimstyle_new ()
@@ -79,6 +82,9 @@ dxf_dimstyle_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfDimStyle *
 dxf_dimstyle_init
@@ -160,6 +166,9 @@ dxf_dimstyle_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_dimstyle_write
@@ -208,42 +217,51 @@ dxf_dimstyle_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (fp->acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
-                fprintf (fp->fp, "100\nAcDbDimStyleTableRecord\n");
-        }
-        fprintf (fp->fp, "  2\n%s\n", dxf_dimstyle->dimstyle_name);
         if (!dxf_dimstyle->dimpost)
         {
                 dxf_dimstyle->dimpost = strdup ("");
         }
-        fprintf (fp->fp, "  3\n%s\n", dxf_dimstyle->dimpost);
         if (!dxf_dimstyle->dimapost)
         {
                 dxf_dimstyle->dimapost = strdup ("");
         }
-        fprintf (fp->fp, "  4\n%s\n", dxf_dimstyle->dimapost);
         if (!dxf_dimstyle->dimblk)
         {
                 dxf_dimstyle->dimblk = strdup ("");
-        }
-        if (fp->acad_version_number < AutoCAD_2000)
-        {
-                fprintf (fp->fp, "  5\n%s\n", dxf_dimstyle->dimblk);
         }
         if (!dxf_dimstyle->dimblk1)
         {
                 dxf_dimstyle->dimblk1 = strdup ("");
         }
-        if (fp->acad_version_number < AutoCAD_2000)
-        {
-                fprintf (fp->fp, "  6\n%s\n", dxf_dimstyle->dimblk1);
-        }
         if (!dxf_dimstyle->dimblk2)
         {
                 dxf_dimstyle->dimblk2 = strdup ("");
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (dxf_dimstyle->id_code != -1)
+        {
+                fprintf (fp->fp, "105\n%x\n", dxf_dimstyle->id_code);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbDimStyleTableRecord\n");
+        }
+        fprintf (fp->fp, "  2\n%s\n", dxf_dimstyle->dimstyle_name);
+        fprintf (fp->fp, " 70\n%d\n", dxf_dimstyle->flag);
+        fprintf (fp->fp, "  3\n%s\n", dxf_dimstyle->dimpost);
+        fprintf (fp->fp, "  4\n%s\n", dxf_dimstyle->dimapost);
+        if (fp->acad_version_number < AutoCAD_2000)
+        {
+                fprintf (fp->fp, "  5\n%s\n", dxf_dimstyle->dimblk);
+        }
+        if (fp->acad_version_number < AutoCAD_2000)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_dimstyle->dimblk1);
         }
         if (fp->acad_version_number < AutoCAD_2000)
         {
@@ -258,15 +276,6 @@ dxf_dimstyle_write
         fprintf (fp->fp, " 46\n%f\n", dxf_dimstyle->dimdle);
         fprintf (fp->fp, " 47\n%f\n", dxf_dimstyle->dimtp);
         fprintf (fp->fp, " 48\n%f\n", dxf_dimstyle->dimtm);
-        fprintf (fp->fp, " 70\n%d\n", dxf_dimstyle->flag);
-        fprintf (fp->fp, " 71\n%d\n", dxf_dimstyle->dimtol);
-        fprintf (fp->fp, " 72\n%d\n", dxf_dimstyle->dimlim);
-        fprintf (fp->fp, " 73\n%d\n", dxf_dimstyle->dimtih);
-        fprintf (fp->fp, " 74\n%d\n", dxf_dimstyle->dimtoh);
-        fprintf (fp->fp, " 75\n%d\n", dxf_dimstyle->dimse1);
-        fprintf (fp->fp, " 76\n%d\n", dxf_dimstyle->dimse2);
-        fprintf (fp->fp, " 77\n%d\n", dxf_dimstyle->dimtad);
-        fprintf (fp->fp, " 78\n%d\n", dxf_dimstyle->dimzin);
         fprintf (fp->fp, "140\n%f\n", dxf_dimstyle->dimtxt);
         fprintf (fp->fp, "141\n%f\n", dxf_dimstyle->dimcen);
         fprintf (fp->fp, "142\n%f\n", dxf_dimstyle->dimtsz);
@@ -275,6 +284,14 @@ dxf_dimstyle_write
         fprintf (fp->fp, "145\n%f\n", dxf_dimstyle->dimtvp);
         fprintf (fp->fp, "146\n%f\n", dxf_dimstyle->dimtfac);
         fprintf (fp->fp, "147\n%f\n", dxf_dimstyle->dimgap);
+        fprintf (fp->fp, " 71\n%d\n", dxf_dimstyle->dimtol);
+        fprintf (fp->fp, " 72\n%d\n", dxf_dimstyle->dimlim);
+        fprintf (fp->fp, " 73\n%d\n", dxf_dimstyle->dimtih);
+        fprintf (fp->fp, " 74\n%d\n", dxf_dimstyle->dimtoh);
+        fprintf (fp->fp, " 75\n%d\n", dxf_dimstyle->dimse1);
+        fprintf (fp->fp, " 76\n%d\n", dxf_dimstyle->dimse2);
+        fprintf (fp->fp, " 77\n%d\n", dxf_dimstyle->dimtad);
+        fprintf (fp->fp, " 78\n%d\n", dxf_dimstyle->dimzin);
         fprintf (fp->fp, "170\n%d\n", dxf_dimstyle->dimalt);
         fprintf (fp->fp, "171\n%d\n", dxf_dimstyle->dimaltd);
         fprintf (fp->fp, "172\n%d\n", dxf_dimstyle->dimtofl);
@@ -284,6 +301,27 @@ dxf_dimstyle_write
         fprintf (fp->fp, "176\n%d\n", dxf_dimstyle->dimclrd);
         fprintf (fp->fp, "177\n%d\n", dxf_dimstyle->dimclre);
         fprintf (fp->fp, "178\n%d\n", dxf_dimstyle->dimclrt);
+        if ((fp->acad_version_number >= AutoCAD_13)
+          && (fp->acad_version_number < AutoCAD_2000))
+        {
+                fprintf (fp->fp, "270\n%d\n", dxf_dimstyle->dimunit);
+                fprintf (fp->fp, "271\n%d\n", dxf_dimstyle->dimdec);
+                fprintf (fp->fp, "272\n%d\n", dxf_dimstyle->dimtdec);
+                fprintf (fp->fp, "273\n%d\n", dxf_dimstyle->dimaltu);
+                fprintf (fp->fp, "274\n%d\n", dxf_dimstyle->dimalttd);
+                fprintf (fp->fp, "340\n%d\n", dxf_dimstyle->dimtxsty);
+                fprintf (fp->fp, "275\n%d\n", dxf_dimstyle->dimaunit);
+                fprintf (fp->fp, "280\n%d\n", dxf_dimstyle->dimjust);
+                fprintf (fp->fp, "281\n%d\n", dxf_dimstyle->dimsd1);
+                fprintf (fp->fp, "282\n%d\n", dxf_dimstyle->dimsd2);
+                fprintf (fp->fp, "283\n%d\n", dxf_dimstyle->dimtolj);
+                fprintf (fp->fp, "284\n%d\n", dxf_dimstyle->dimtzin);
+                fprintf (fp->fp, "285\n%d\n", dxf_dimstyle->dimaltz);
+                fprintf (fp->fp, "286\n%d\n", dxf_dimstyle->dimalttz);
+                fprintf (fp->fp, "287\n%d\n", dxf_dimstyle->dimfit);
+                fprintf (fp->fp, "288\n%d\n", dxf_dimstyle->dimupt);
+                fprintf (fp->fp, "  0\nENDTAB\n");
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -301,6 +339,9 @@ dxf_dimstyle_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred while reading from the input file.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_dimstyle_read
@@ -674,10 +715,128 @@ dxf_dimstyle_read
                 }
                 else if (strcmp (temp_string, "178") == 0)
                 {
-                        /* Now follows a string containing adimension
+                        /* Now follows a string containing a dimension
                          * text color value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimclrt);
+                }
+                else if (strcmp (temp_string, "270") == 0)
+                {
+                        /* Now follows a string containing a units
+                         * format for all dimension style family members
+                         * except angular. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimunit);
+                }
+                else if (strcmp (temp_string, "271") == 0)
+                {
+                        /* Now follows a string containing a number of
+                         * decimal places for the tolerance values of
+                         * a primary units dimension. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimdec);
+                }
+                else if (strcmp (temp_string, "272") == 0)
+                {
+                        /* Now follows a string containing a number of
+                         * decimal places to display the tolerance
+                         * values. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimtdec);
+                }
+                else if (strcmp (temp_string, "273") == 0)
+                {
+                        /* Now follows a string containing a units
+                         * format for alternate units of all dimension
+                         * style family members except angular. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimaltu);
+                }
+                else if (strcmp (temp_string, "274") == 0)
+                {
+                        /* Now follows a string containing a number of
+                         * decimal places for tolerance values of an
+                         * alternate units dimension. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimalttd);
+                }
+                else if (strcmp (temp_string, "275") == 0)
+                {
+                        /* Now follows a string containing an angle
+                         * format for angular dimensions. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimaunit);
+                }
+                else if (strcmp (temp_string, "280") == 0)
+                {
+                        /* Now follows a string containing a horizontal
+                         * dimension text position. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimjust);
+                }
+                else if (strcmp (temp_string, "281") == 0)
+                {
+                        /* Now follows a string containing suppression
+                         * of first extension line. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimsd1);
+                }
+                else if (strcmp (temp_string, "282") == 0)
+                {
+                        /* Now follows a string containing suppression
+                         * of second extension line. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimsd2);
+                }
+                else if (strcmp (temp_string, "283") == 0)
+                {
+                        /* Now follows a string containing vertical
+                         * justification for tolerance values. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimtolj);
+                }
+                else if (strcmp (temp_string, "284") == 0)
+                {
+                        /* Now follows a string containing suppression
+                         * of zeros for tolerance values. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimtzin);
+                }
+                else if (strcmp (temp_string, "285") == 0)
+                {
+                        /* Now follows a string containing toggles
+                         * suppression of zeros for alternate unit
+                         * dimension values. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimaltz);
+                }
+                else if (strcmp (temp_string, "286") == 0)
+                {
+                        /* Now follows a string containing toggles
+                         * suppression of zeros for tolerance values. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimalttz);
+                }
+                else if (strcmp (temp_string, "287") == 0)
+                {
+                        /* Now follows a string containing placement of
+                         * text and arrowheads. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimfit);
+                }
+                else if (strcmp (temp_string, "288") == 0)
+                {
+                        /* Now follows a string containing cursor
+                         * functionality for user positioned text. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimupt);
+                }
+                else if (strcmp (temp_string, "340") == 0)
+                {
+                        /* Now follows a string containing dimension
+                         * text style. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_dimstyle->dimtxsty);
                 }
         }
         /* Handle omitted members and/or illegal values. */
@@ -701,6 +860,9 @@ dxf_dimstyle_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_dimstyle_free
