@@ -47,9 +47,7 @@ DxfEllipse *
 dxf_ellipse_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfEllipse *dxf_ellipse = NULL;
         size_t size;
@@ -69,9 +67,7 @@ dxf_ellipse_new ()
                 memset (dxf_ellipse, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_ellipse);
 }
@@ -92,9 +88,7 @@ dxf_ellipse_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         dxf_ellipse = dxf_ellipse_new ();
         if (dxf_ellipse == NULL)
@@ -124,9 +118,7 @@ dxf_ellipse_init
         dxf_ellipse->paperspace = DXF_MODELSPACE;
         dxf_ellipse->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_ellipse);
 }
@@ -154,9 +146,7 @@ dxf_ellipse_read
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
 
@@ -342,9 +332,7 @@ dxf_ellipse_read
                 }
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -369,9 +357,7 @@ dxf_ellipse_write
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("ELLIPSE");
 
@@ -433,9 +419,7 @@ dxf_ellipse_write
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -457,9 +441,7 @@ dxf_ellipse_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (dxf_ellipse->next != NULL)
         {
@@ -473,9 +455,7 @@ dxf_ellipse_free
         free (dxf_ellipse);
         dxf_ellipse = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
