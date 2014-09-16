@@ -166,6 +166,8 @@ src/ellipse.c
 src/ellipse.h
 src/endblk.c
 src/endblk.h
+src/endtab.c
+src/endtab.h
 src/entities.c
 src/entities.h
 src/entity.c
