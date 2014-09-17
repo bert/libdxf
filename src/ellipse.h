@@ -37,11 +37,10 @@
 
 
 #include "global.h"
-#include "entity.h"
 
 
 /*!
- * \brief Write DXF output to a file for an ellipse entity (elliptic arc).
+ * \brief Definition of an AutoCAD ellipse entity (\c ELLIPSE).
  *
  * This entity requires AutoCAD version R14 or higher.
  */
