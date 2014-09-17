@@ -90,7 +90,14 @@ dxf_ellipse_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_ellipse = dxf_ellipse_new ();
+        /* Do some basic checks. */
+        if (dxf_ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_ellipse = dxf_ellipse_new ();
+        }
         if (dxf_ellipse == NULL)
         {
               fprintf (stderr,
@@ -150,6 +157,15 @@ dxf_ellipse_read
 #endif
         char *temp_string = NULL;
 
+        /* Do some basic checks. */
+        if (dxf_ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_ellipse = dxf_ellipse_new ();
+                dxf_ellipse_init (dxf_ellipse);
+        }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -331,6 +347,15 @@ dxf_ellipse_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_ellipse->linetype, "") == 0)
+        {
+                dxf_ellipse->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_ellipse->layer, "") == 0)
+        {
+                dxf_ellipse->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -361,6 +386,14 @@ dxf_ellipse_write
 #endif
         char *dxf_entity_name = strdup ("ELLIPSE");
 
+        /* Do some basic checks. */
+        if (dxf_ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (fp->acad_version_number < AC1014) /* AutoCAD 14 */
         {
                 fprintf (stderr,
@@ -375,6 +408,16 @@ dxf_ellipse_write
                   __FUNCTION__, dxf_entity_name, dxf_ellipse->id_code);
                 return (EXIT_FAILURE);
         }
+        if (strcmp (dxf_ellipse->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_ellipse->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_ellipse->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
         if (strcmp (dxf_ellipse->layer, "") == 0)
         {
                 fprintf (stderr,
@@ -384,6 +427,7 @@ dxf_ellipse_write
                         dxf_entity_name);
                 dxf_ellipse->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_ellipse->id_code != -1)
         {
