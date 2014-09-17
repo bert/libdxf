@@ -396,7 +396,7 @@ dxf_3dsolid_write
                 fprintf (stderr,
                   (_("    %s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_3dsolid->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         if (strcmp (dxf_3dsolid->layer, "") == 0)
         {
