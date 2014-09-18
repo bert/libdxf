@@ -523,6 +523,16 @@ dxf_arc_write
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_arc->linetype);
         }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_arc->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_arc->elevation);
+        }
+        if (dxf_arc->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_arc->thickness);
+        }
         if (dxf_arc->color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp->fp, " 62\n%d\n", dxf_arc->color);
@@ -538,16 +548,6 @@ dxf_arc_write
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbCircle\n");
-        }
-        if ((fp->acad_version_number <= AutoCAD_11)
-          && DXF_FLATLAND
-          && (dxf_arc->elevation != 0.0))
-        {
-                fprintf (fp->fp, " 38\n%f\n", dxf_arc->elevation);
-        }
-        if (dxf_arc->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", dxf_arc->thickness);
         }
         fprintf (fp->fp, " 10\n%f\n", dxf_arc->x0);
         fprintf (fp->fp, " 20\n%f\n", dxf_arc->y0);
