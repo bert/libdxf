@@ -117,12 +117,17 @@ dxf_ellipse_init
         dxf_ellipse->extr_x0 = 0.0;
         dxf_ellipse->extr_y0 = 0.0;
         dxf_ellipse->extr_z0 = 0.0;
+        dxf_ellipse->elevation = 0.0;
         dxf_ellipse->thickness = 0.0;
+        dxf_ellipse->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_ellipse->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_ellipse->ratio = 0.0;
         dxf_ellipse->start_angle = 0.0;
         dxf_ellipse->end_angle = 0.0;
         dxf_ellipse->color = DXF_COLOR_BYLAYER;
         dxf_ellipse->paperspace = DXF_MODELSPACE;
+        dxf_ellipse->dictionary_owner_soft = strdup ("");
+        dxf_ellipse->dictionary_owner_hard = strdup ("");
         dxf_ellipse->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -242,7 +247,7 @@ dxf_ellipse_read
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_ellipse->z0 = 0.0))
+                        && (dxf_ellipse->elevation = 0.0))
                 {
                         /* Elevation is a pre AutoCAD R11 variable
                          * so additional testing for the version should
@@ -250,7 +255,7 @@ dxf_ellipse_read
                          * Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->z0);
+                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -279,6 +284,20 @@ dxf_ellipse_read
                          * end angle. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_ellipse->end_angle);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_ellipse->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -332,6 +351,20 @@ dxf_ellipse_read
                          * Z-value of the extrusion vector. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_ellipse->extr_z0);
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_ellipse->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_ellipse->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -433,11 +466,69 @@ dxf_ellipse_write
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_ellipse->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_ellipse->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_ellipse->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_ellipse->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_ellipse->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (dxf_ellipse->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_ellipse->layer);
         if (strcmp (dxf_ellipse->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_ellipse->linetype);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_ellipse->layer);
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_ellipse->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_ellipse->elevation);
+        }
+        if (dxf_ellipse->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_ellipse->thickness);
+        }
+        if (dxf_ellipse->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_ellipse->color);
+        }
+        if (dxf_ellipse->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_ellipse->linetype_scale);
+        }
+        if (dxf_ellipse->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_ellipse->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEllipse\n");
+        }
         fprintf (fp->fp, " 10\n%f\n", dxf_ellipse->x0);
         fprintf (fp->fp, " 20\n%f\n", dxf_ellipse->y0);
         fprintf (fp->fp, " 30\n%f\n", dxf_ellipse->z0);
@@ -447,21 +538,9 @@ dxf_ellipse_write
         fprintf (fp->fp, " 210\n%f\n", dxf_ellipse->extr_x0);
         fprintf (fp->fp, " 220\n%f\n", dxf_ellipse->extr_y0);
         fprintf (fp->fp, " 230\n%f\n", dxf_ellipse->extr_z0);
-        if (dxf_ellipse->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", dxf_ellipse->thickness);
-        }
         fprintf (fp->fp, " 40\n%f\n", dxf_ellipse->ratio);
         fprintf (fp->fp, " 41\n%f\n", dxf_ellipse->start_angle);
         fprintf (fp->fp, " 42\n%f\n", dxf_ellipse->end_angle);
-        if (dxf_ellipse->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_ellipse->color);
-        }
-        if (dxf_ellipse->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -496,6 +575,8 @@ dxf_ellipse_free
         }
         free (dxf_ellipse->linetype);
         free (dxf_ellipse->layer);
+        free (dxf_ellipse->dictionary_owner_soft);
+        free (dxf_ellipse->dictionary_owner_hard);
         free (dxf_ellipse);
         dxf_ellipse = NULL;
 #if DEBUG
