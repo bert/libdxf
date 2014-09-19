@@ -48,9 +48,7 @@ DxfHatch *
 dxf_hatch_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatch *hatch = NULL;
         size_t size;
@@ -70,9 +68,7 @@ dxf_hatch_new ()
                 memset (hatch, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (hatch);
 }
@@ -87,9 +83,7 @@ DxfHatchPattern *
 dxf_hatch_pattern_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchPattern *pattern = NULL;
         size_t size;
@@ -109,9 +103,7 @@ dxf_hatch_pattern_new ()
                 memset (pattern, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (pattern);
 }
@@ -126,9 +118,7 @@ DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchPatternDefLine *line = NULL;
         size_t size;
@@ -148,9 +138,7 @@ dxf_hatch_pattern_def_line_new ()
                 memset (line, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (line);
 }
@@ -165,9 +153,7 @@ DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchPatternSeedPoint *seedpoint = NULL;
         size_t size;
@@ -187,9 +173,7 @@ dxf_hatch_pattern_seedpoint_new ()
                 memset (seedpoint, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (seedpoint);
 }
@@ -204,9 +188,7 @@ DxfHatchBoundaryPath *
 dxf_hatch_boundary_path_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchBoundaryPath *path = NULL;
         size_t size;
@@ -226,9 +208,7 @@ dxf_hatch_boundary_path_new ()
                 memset (path, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (path);
 }
@@ -243,9 +223,7 @@ DxfHatchBoundaryPathPolyline *
 dxf_hatch_boundary_path_polyline_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchBoundaryPathPolyline *polyline = NULL;
         size_t size;
@@ -265,9 +243,7 @@ dxf_hatch_boundary_path_polyline_new ()
                 memset (polyline, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (polyline);
 }
@@ -283,9 +259,7 @@ DxfHatchBoundaryPathPolylineVertex *
 dxf_hatch_boundary_path_polyline_vertex_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchBoundaryPathPolylineVertex *vertex = NULL;
         size_t size;
@@ -305,9 +279,7 @@ dxf_hatch_boundary_path_polyline_vertex_new ()
                 memset (vertex, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (vertex);
 }
@@ -322,9 +294,7 @@ DxfHatchBoundaryPathEdge *
 dxf_hatch_boundary_path_edge_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchBoundaryPathEdge *edge = NULL;
         size_t size;
@@ -344,9 +314,7 @@ dxf_hatch_boundary_path_edge_new ()
                 memset (edge, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (edge);
 }
@@ -361,9 +329,7 @@ DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchBoundaryPathEdgeArc *arc = NULL;
         size_t size;
@@ -383,9 +349,7 @@ dxf_hatch_boundary_path_edge_arc_new ()
                 memset (arc, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (arc);
 }
@@ -400,9 +364,7 @@ DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchBoundaryPathEdgeEllipse *ellipse = NULL;
         size_t size;
@@ -422,9 +384,7 @@ dxf_hatch_boundary_path_edge_ellipse_new ()
                 memset (ellipse, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (ellipse);
 }
@@ -439,9 +399,7 @@ DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchBoundaryPathEdgeLine *line = NULL;
         size_t size;
@@ -461,9 +419,7 @@ dxf_hatch_boundary_path_edge_line_new ()
                 memset (line, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (line);
 }
@@ -478,9 +434,7 @@ DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchBoundaryPathEdgeSpline *spline = NULL;
         size_t size;
@@ -500,9 +454,7 @@ dxf_hatch_boundary_path_edge_spline_new ()
                 memset (spline, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (spline);
 }
@@ -518,9 +470,7 @@ DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_control_point_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchBoundaryPathEdgeSplineCp *control_point = NULL;
         size_t size;
@@ -540,9 +490,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_new ()
                 memset (control_point, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (control_point);
 }
@@ -563,9 +511,7 @@ dxf_hatch_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         hatch = dxf_hatch_new ();
         if (hatch == NULL)
@@ -604,9 +550,7 @@ dxf_hatch_init
         hatch->acad_version_number = 0;
         hatch->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (hatch);
 }
@@ -627,9 +571,7 @@ dxf_hatch_pattern_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         pattern = dxf_hatch_pattern_new ();
         if (pattern == NULL)
@@ -649,9 +591,7 @@ dxf_hatch_pattern_init
         pattern->seed_points = NULL;
         pattern->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (pattern);
 }
@@ -672,9 +612,7 @@ dxf_hatch_pattern_def_line_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -699,9 +637,7 @@ dxf_hatch_pattern_def_line_init
         }
         line->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (line);
 }
@@ -722,9 +658,7 @@ dxf_hatch_pattern_seedpoint_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         seedpoint = dxf_hatch_pattern_seedpoint_new ();
         if (seedpoint == NULL)
@@ -739,9 +673,7 @@ dxf_hatch_pattern_seedpoint_init
         seedpoint->y0 = 0.0;
         seedpoint->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (seedpoint);
 }
@@ -762,9 +694,7 @@ dxf_hatch_boundary_path_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         path = dxf_hatch_boundary_path_new ();
         if (path == NULL)
@@ -779,9 +709,7 @@ dxf_hatch_boundary_path_init
         path->polylines = NULL;
         path->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (path);
 }
@@ -802,9 +730,7 @@ dxf_hatch_boundary_path_polyline_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         polyline = dxf_hatch_boundary_path_polyline_new ();
         if (polyline == NULL)
@@ -822,9 +748,7 @@ dxf_hatch_boundary_path_polyline_init
         polyline->vertices = NULL;
         polyline->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (polyline);
 }
@@ -845,9 +769,7 @@ dxf_hatch_boundary_path_polyline_vertex_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         vertex = dxf_hatch_boundary_path_polyline_vertex_new ();
         if (vertex == NULL)
@@ -862,9 +784,7 @@ dxf_hatch_boundary_path_polyline_vertex_init
         vertex->y0 = 0.0;
         vertex->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (vertex);
 }
@@ -885,9 +805,7 @@ dxf_hatch_boundary_path_edge_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         edge = dxf_hatch_boundary_path_edge_new ();
         if (edge == NULL)
@@ -904,9 +822,7 @@ dxf_hatch_boundary_path_edge_init
         edge->splines = NULL;
         edge->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (edge);
 }
@@ -927,9 +843,7 @@ dxf_hatch_boundary_path_edge_arc_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         arc = dxf_hatch_boundary_path_edge_arc_new ();
         if (arc == NULL)
@@ -948,9 +862,7 @@ dxf_hatch_boundary_path_edge_arc_init
         arc->is_ccw = 0;
         arc->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (arc);
 }
@@ -971,9 +883,7 @@ dxf_hatch_boundary_path_edge_ellipse_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         ellipse = dxf_hatch_boundary_path_edge_ellipse_new ();
         if (ellipse == NULL)
@@ -994,9 +904,7 @@ dxf_hatch_boundary_path_edge_ellipse_init
         ellipse->is_ccw = 0;
         ellipse->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (ellipse);
 }
@@ -1017,9 +925,7 @@ dxf_hatch_boundary_path_edge_line_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         line = dxf_hatch_boundary_path_edge_line_new ();
         if (line == NULL)
@@ -1036,9 +942,7 @@ dxf_hatch_boundary_path_edge_line_init
         line->y1 = 0.0;
         line->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (line);
 }
@@ -1059,9 +963,7 @@ dxf_hatch_boundary_path_edge_spline_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -1086,9 +988,7 @@ dxf_hatch_boundary_path_edge_spline_init
         spline->control_points = NULL;
         spline->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (spline);
 }
@@ -1109,9 +1009,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         control_point = dxf_hatch_boundary_path_edge_spline_control_point_new ();
         if (control_point == NULL)
@@ -1127,9 +1025,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_init
         control_point->weight = 0.0;
         control_point->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (control_point);
 }
@@ -1208,9 +1104,7 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (spline == NULL)
         {
@@ -1274,9 +1168,7 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
                 dxf_hatch_boundary_path_edge_spline_control_point_free (iter);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -1303,9 +1195,7 @@ dxf_hatch_boundary_path_edge_spline_append_knot_value
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (spline == NULL)
         {
@@ -1324,9 +1214,7 @@ dxf_hatch_boundary_path_edge_spline_append_knot_value
         spline->knots[spline->number_of_knots + 1] = knot_value;
         spline->number_of_knots++;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -1404,9 +1292,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (spline == NULL)
         {
@@ -1457,9 +1343,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
         dxf_hatch_boundary_path_edge_spline_control_point_free (control_point);
         control_point = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -1486,9 +1370,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_knot_value
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -1513,9 +1395,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_knot_value
         spline->knots[0] = knot_value;
         spline->number_of_knots++;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -1541,9 +1421,7 @@ dxf_hatch_boundary_path_edge_spline_get_control_point
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchBoundaryPathEdgeSplineCp *control_point = NULL;
         int i;
@@ -1587,9 +1465,7 @@ dxf_hatch_boundary_path_edge_spline_get_control_point
                 dxf_hatch_boundary_path_edge_spline_control_point_free (iter);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (control_point);
 }
@@ -1614,9 +1490,7 @@ dxf_hatch_boundary_path_edge_spline_get_knot_value
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         double knot_value;
 
@@ -1636,9 +1510,7 @@ dxf_hatch_boundary_path_edge_spline_get_knot_value
         }
         knot_value = spline->knots[position];
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (knot_value);
 }
@@ -1669,9 +1541,7 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -1744,9 +1614,7 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
                 control_point = NULL;
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -1773,8 +1641,7 @@ dxf_hatch_boundary_path_edge_spline_set_knot_value
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_hatch_boundary_path_edge_spline_set_knot_value () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         if (spline == NULL)
         {
@@ -1792,9 +1659,7 @@ dxf_hatch_boundary_path_edge_spline_set_knot_value
         }
         spline->knots[position] = knot_value;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -1882,9 +1747,7 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -1983,9 +1846,7 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                 dxf_hatch_boundary_path_edge_spline_control_point_free (iter);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -2015,9 +1876,7 @@ dxf_hatch_boundary_path_edge_spline_insert_knot_value
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -2049,9 +1908,7 @@ dxf_hatch_boundary_path_edge_spline_insert_knot_value
         spline->knots[position] = knot_value;
         spline->number_of_knots++;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -2078,9 +1935,7 @@ dxf_hatch_boundary_path_edge_spline_remove_control_point
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -2142,9 +1997,7 @@ dxf_hatch_boundary_path_edge_spline_remove_control_point
                 dxf_hatch_boundary_path_edge_spline_control_point_free (iter);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -2171,9 +2024,7 @@ dxf_hatch_boundary_path_edge_spline_remove_knot_value
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -2211,9 +2062,7 @@ dxf_hatch_boundary_path_edge_spline_remove_knot_value
         }
         spline->number_of_knots--;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -2319,9 +2168,7 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (spline == NULL)
         {
@@ -2391,9 +2238,7 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
                 }
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (control_points);
 }
@@ -2423,9 +2268,7 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -2448,9 +2291,7 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
                 *knot_values[i] = spline->knots[i];
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -2469,9 +2310,7 @@ dxf_hatch_write
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("HATCH");
         int i;
@@ -2560,9 +2399,7 @@ dxf_hatch_write
         }
         fprintf (fp, " 91\n%d\n", dxf_hatch->number_of_boundary_paths);
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -2664,9 +2501,7 @@ dxf_hatch_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("HATCH");
         int i;
@@ -2738,9 +2573,7 @@ dxf_hatch_write_lowlevel
         }
         fprintf (fp, " 91\n%d\n", pattern_boundary_paths);
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -2874,9 +2707,7 @@ dxf_hatch_boundaries_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
         int j;
@@ -2922,9 +2753,7 @@ dxf_hatch_boundaries_write_lowlevel
                 }
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -2949,9 +2778,7 @@ dxf_hatch_boundary_path_polyline_vertex_angle
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         double x0;
         double y0;
@@ -2973,9 +2800,7 @@ dxf_hatch_boundary_path_polyline_vertex_angle
         while (dtheta < -M_PI)
         dtheta += 2 * M_PI;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dtheta);
 }
@@ -2995,16 +2820,12 @@ dxf_hatch_boundary_path_polyline_vertex_write
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         fprintf (fp, " 10\n%f\n", vertex->x0);
         fprintf (fp, " 20\n%f\n", vertex->y0);
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3028,16 +2849,12 @@ dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         fprintf (fp, " 10\n%f\n", x0);
         fprintf (fp, " 20\n%f\n", y0);
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3058,9 +2875,7 @@ dxf_hatch_boundary_path_polyline_close_polyline
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (polyline == NULL)
         {
@@ -3146,9 +2961,7 @@ dxf_hatch_boundary_path_polyline_close_polyline
                 /*! \todo add code here ! */
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3195,9 +3008,7 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (polyline == NULL)
         {
@@ -3259,9 +3070,7 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
                 /*! \todo warning: assignment makes pointer from integer without a cast. */
                 result = TRUE;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3283,9 +3092,7 @@ dxf_hatch_boundary_path_polyline_write
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfHatchBoundaryPathPolylineVertex *iter;
 
@@ -3333,9 +3140,7 @@ dxf_hatch_boundary_path_polyline_write
                 );
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3370,9 +3175,7 @@ dxf_hatch_boundary_path_polyline_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
         fprintf (fp, " 72\n%d\n", has_bulge);
@@ -3400,9 +3203,7 @@ dxf_hatch_boundary_path_polyline_write_lowlevel
                 );
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3428,9 +3229,7 @@ dxf_hatch_pattern_def_line_dashes_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (dash_items != 0)
         {
@@ -3447,9 +3246,7 @@ dxf_hatch_pattern_def_line_dashes_write_lowlevel
                   __FUNCTION__);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3493,9 +3290,7 @@ dxf_hatch_pattern_def_lines_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
         int j;
@@ -3531,9 +3326,7 @@ dxf_hatch_pattern_def_lines_write_lowlevel
                   __FUNCTION__);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3555,9 +3348,7 @@ dxf_hatch_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (hatch->next != NULL)
         {
@@ -3575,9 +3366,7 @@ dxf_hatch_free
         free (hatch);
         hatch = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3599,9 +3388,7 @@ dxf_hatch_pattern_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (pattern->next != NULL)
         {
@@ -3615,9 +3402,7 @@ dxf_hatch_pattern_free
         free (pattern);
         pattern = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3639,9 +3424,7 @@ dxf_hatch_pattern_seedpoint_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (seedpoint->next != NULL)
         {
@@ -3653,9 +3436,7 @@ dxf_hatch_pattern_seedpoint_free
         free (seedpoint);
         seedpoint = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3677,9 +3458,7 @@ dxf_hatch_pattern_def_line_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (def_line->next != NULL)
         {
@@ -3691,9 +3470,7 @@ dxf_hatch_pattern_def_line_free
         free (def_line);
         def_line = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3715,9 +3492,7 @@ dxf_hatch_boundary_path_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (path->next != NULL)
         {
@@ -3731,9 +3506,7 @@ dxf_hatch_boundary_path_free
         free (path);
         path = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3755,9 +3528,7 @@ dxf_hatch_boundary_path_polyline_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (polyline->next != NULL)
         {
@@ -3770,9 +3541,7 @@ dxf_hatch_boundary_path_polyline_free
         free (polyline);
         polyline = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3794,9 +3563,7 @@ dxf_hatch_boundary_path_polyline_vertex_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (vertex->next != NULL)
         {
@@ -3808,9 +3575,7 @@ dxf_hatch_boundary_path_polyline_vertex_free
         free (vertex);
         vertex = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3832,9 +3597,7 @@ dxf_hatch_boundary_path_edge_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (edge->next != NULL)
         {
@@ -3850,9 +3613,7 @@ dxf_hatch_boundary_path_edge_free
         free (edge);
         edge = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3874,9 +3635,7 @@ dxf_hatch_boundary_path_edge_arc_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (arc->next != NULL)
         {
@@ -3888,9 +3647,7 @@ dxf_hatch_boundary_path_edge_arc_free
         free (arc);
         arc = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3912,9 +3669,7 @@ dxf_hatch_boundary_path_edge_ellipse_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (ellipse->next != NULL)
         {
@@ -3926,9 +3681,7 @@ dxf_hatch_boundary_path_edge_ellipse_free
         free (ellipse);
         ellipse = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3950,9 +3703,7 @@ dxf_hatch_boundary_path_edge_line_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (line->next != NULL)
         {
@@ -3964,9 +3715,7 @@ dxf_hatch_boundary_path_edge_line_free
         free (line);
         line = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -3988,9 +3737,7 @@ dxf_hatch_boundary_path_edge_spline_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (spline->next != NULL)
         {
@@ -4003,9 +3750,7 @@ dxf_hatch_boundary_path_edge_spline_free
         free (spline);
         spline = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -4027,9 +3772,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (control_point->next != NULL)
         {
@@ -4041,9 +3784,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
         free (control_point);
         control_point = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
