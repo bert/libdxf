@@ -3254,75 +3254,51 @@ dxf_hatch_pattern_def_line_dashes_write_lowlevel
 
 /*!
  * \brief Write DXF output to a file for a DXF \c HATCH pattern definition
- * lines.
+ * line.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
-dxf_hatch_pattern_def_lines_write_lowlevel
+dxf_hatch_pattern_def_line_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
-        int def_lines,
-                /*!< group code = 78\n
-                 * number of hatch pattern definition lines. */
-        double *angle,
-                /*!< group code = 53\n
-                 * array of hatch pattern definition line angles. */
-        double *x0,
-                /*!< group code = 43\n
-                 * array of hatch pattern line base point X-values. */
-        double *y0,
-                /*!< group code = 44\n
-                 * array of hatch pattern line base point Y-values. */
-        double *x1,
-                /*!< group code = 45\n
-                 * array of hatch pattern line offset point X-values. */
-        double *y1,
-                /*!< group code = 46\n
-                 * array of hatch pattern line offset point Y-values. */
-        int *dash_items,
-                /*!< group code = 79\n
-                 * array of number of hatch pattern definition line dash
-                 * items. */
-        double **dash_length
-                /*!< group code = 49\n
-                 * array of dash lengths for an array of hatch pattern
-                 * definition lines. */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
+                /*!< DXF hatch pattern definition line. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
         int i;
-        int j;
-        if (def_lines != 0)
+
+        /* Do some basic checks. */
+        if (dxf_hatch_pattern_def_line == NULL)
         {
-                /* draw hatch pattern definition lines */
-                for (i = 0; i < def_lines; i++)
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        fprintf (fp->fp, " 53\n%f\n", dxf_hatch_pattern_def_line->angle);
+        fprintf (fp->fp, " 43\n%f\n", dxf_hatch_pattern_def_line->x0);
+        fprintf (fp->fp, " 44\n%f\n", dxf_hatch_pattern_def_line->y0);
+        fprintf (fp->fp, " 45\n%f\n", dxf_hatch_pattern_def_line->x1);
+        fprintf (fp->fp, " 46\n%f\n", dxf_hatch_pattern_def_line->y1);
+        fprintf (fp->fp, " 79\n%d\n", dxf_hatch_pattern_def_line->dash_items);
+        if (dxf_hatch_pattern_def_line->dash_items > 0)
+        {
+                /* draw hatch pattern definition line dash items. */
+                for (i = 1; i < dxf_hatch_pattern_def_line->dash_items; i++)
                 {
-                        fprintf (fp, " 53\n%f\n", angle[i]);
-                        fprintf (fp, " 43\n%f\n", x0[i]);
-                        fprintf (fp, " 44\n%f\n", y0[i]);
-                        fprintf (fp, " 45\n%f\n", x1[i]);
-                        fprintf (fp, " 46\n%f\n", y1[i]);
-                        fprintf (fp, " 79\n%d\n", dash_items[i]);
-                        if (!dash_items)
-                        {
-                                for (j = 0; j < *dash_items; j++)
-                                {
-                                        dxf_hatch_pattern_def_line_dashes_write_lowlevel
-                                        (
-                                                fp,
-                                                *dash_items,
-                                                *dash_length
-                                        );
-                                }
-                        }
+                        fprintf (fp->fp, " 49\n%f\n", dxf_hatch_pattern_def_line->dash_length[i]);
                 }
         }
         else
         {
                 fprintf (stderr,
-                  (_("Warning: no definition lines found in %s () function.\n")),
+                  (_("Warning: no dash length found in %s () function.\n")),
                   __FUNCTION__);
         }
 #if DEBUG

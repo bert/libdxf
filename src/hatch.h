@@ -818,17 +818,12 @@ dxf_hatch_pattern_def_line_dashes_write_lowlevel
         double *dash_length
 );
 int
-dxf_hatch_pattern_def_lines_write_lowlevel
+dxf_hatch_pattern_def_line_write
 (
-        FILE *fp,
-        int def_lines,
-        double *angle,
-        double *x0,
-        double *y0,
-        double *x1,
-        double *y1,
-        int *dash_items,
-        double **dash_length
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
+                /*!< DXF hatch pattern definition line. */
 );
 int
 dxf_hatch_free
