@@ -317,7 +317,7 @@ dxf_hatch_pattern_def_line
                 /*!< group code = 5. */
         double angle;
                 /*!< group code = 53\n
-                 * array of hatch pattern definition line angles. */
+                 * hatch pattern line angle. */
         double x0;
                 /*!< group code = 43\n
                  * hatch pattern line base point X-value. */
