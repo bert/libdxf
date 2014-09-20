@@ -2316,6 +2316,14 @@ dxf_hatch_write
         int i;
         struct DxfHatchPatternSeedPoint *seed_points = NULL;
 
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_hatch == NULL)
         {
                 fprintf (stderr,
@@ -2332,6 +2340,16 @@ dxf_hatch_write
                   (_("    %s entity is relocated to layer 0")),
                         dxf_entity_name);
                 dxf_hatch->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        if (strcmp (dxf_hatch->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning: empty linetype string for the %s entity with id-code: %x\n")),
+                        dxf_entity_name, dxf_hatch->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                        dxf_entity_name);
+                dxf_hatch->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
         fprintf (fp, "100\nAcDbHatch\n");
