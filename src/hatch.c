@@ -2822,6 +2822,21 @@ dxf_hatch_boundary_path_polyline_vertex_write
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         fprintf (fp, " 10\n%f\n", vertex->x0);
         fprintf (fp, " 20\n%f\n", vertex->y0);
 #if DEBUG
@@ -3096,17 +3111,18 @@ dxf_hatch_boundary_path_polyline_write
 #endif
         DxfHatchBoundaryPathPolylineVertex *iter;
 
+        /* Do some basic checks. */
         if (fp == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received an invalid file pointer (NULL).\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (polyline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received an invalid pointer to a polyline (NULL).\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3274,6 +3290,13 @@ dxf_hatch_pattern_def_line_write
         int i;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_hatch_pattern_def_line == NULL)
         {
                 fprintf (stderr,
