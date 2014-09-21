@@ -506,53 +506,69 @@ dxf_hatch_boundary_path_edge_spline_control_point_new ()
 DxfHatch *
 dxf_hatch_init
 (
-        DxfHatch *hatch
+        DxfHatch *dxf_hatch
                 /*!< DXF hatch entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        hatch = dxf_hatch_new ();
-        if (hatch == NULL)
+        int i;
+
+        /* Do some basic checks. */
+        if (dxf_hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_hatch = dxf_hatch_new ();
+        }
+        if (dxf_hatch == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatch struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        hatch->id_code = 0;
-        hatch->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        hatch->layer = strdup (DXF_DEFAULT_LAYER);
-        hatch->x0 = 0.0;
-        hatch->y0 = 0.0;
-        hatch->z0 = 0.0;
-        hatch->extr_x0 = 0.0;
-        hatch->extr_y0 = 0.0;
-        hatch->extr_z0 = 0.0;
-        hatch->thickness = 0.0;
-        hatch->pattern_scale = 1.0;
-        hatch->pixel_size = 1.0;
-        hatch->pattern_angle = 0.0;
-        hatch->color = DXF_COLOR_BYLAYER;
-        hatch->paperspace = DXF_MODELSPACE;
-        hatch->solid_fill = 0;
-        hatch->associative = 1;
-        hatch->hatch_style = 0;
-        hatch->pattern_style = 0;
-        hatch->pattern_double = 0;
-        hatch->number_of_pattern_def_lines = 0;
-        hatch->def_lines = NULL;
-        hatch->number_of_boundary_paths = 0;
-        hatch->paths = NULL;
-        hatch->number_of_seed_points = 0;
-        hatch->seed_points = NULL;
-        hatch->acad_version_number = 0;
-        hatch->next = NULL;
+        dxf_hatch->id_code = 0;
+        dxf_hatch->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_hatch->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_hatch->x0 = 0.0;
+        dxf_hatch->y0 = 0.0;
+        dxf_hatch->z0 = 0.0;
+        dxf_hatch->extr_x0 = 0.0;
+        dxf_hatch->extr_y0 = 0.0;
+        dxf_hatch->extr_z0 = 0.0;
+        dxf_hatch->thickness = 0.0;
+        dxf_hatch->pattern_scale = 1.0;
+        dxf_hatch->pixel_size = 1.0;
+        dxf_hatch->pattern_angle = 0.0;
+        dxf_hatch->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_hatch->visibility = DXF_DEFAULT_VISIBILITY;
+        dxf_hatch->color = DXF_COLOR_BYLAYER;
+        dxf_hatch->paperspace = DXF_MODELSPACE;
+        dxf_hatch->solid_fill = 0;
+        dxf_hatch->associative = 1;
+        dxf_hatch->hatch_style = 0;
+        dxf_hatch->hatch_pattern_type = 0;
+        dxf_hatch->pattern_double = 0;
+        dxf_hatch->number_of_pattern_def_lines = 0;
+        dxf_hatch->def_lines = NULL;
+        dxf_hatch->number_of_boundary_paths = 0;
+        dxf_hatch->paths = NULL;
+        dxf_hatch->number_of_seed_points = 0;
+        dxf_hatch->seed_points = NULL;
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                dxf_hatch->binary_graphics_data[i] = strdup ("");
+        }
+        dxf_hatch->dictionary_owner_soft = strdup ("");
+        dxf_hatch->dictionary_owner_hard = strdup ("");
+        dxf_hatch->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (hatch);
+        return (dxf_hatch);
 }
 
 
@@ -2303,7 +2319,7 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
 int
 dxf_hatch_write
 (
-        FILE *fp,
+        DxfFile *fp,
                 /*!< file pointer to output file (or device). */
         DxfHatch *dxf_hatch
                 /*!< DXF hatch entity. */
@@ -2314,7 +2330,6 @@ dxf_hatch_write
 #endif
         char *dxf_entity_name = strdup ("HATCH");
         int i;
-        struct DxfHatchPatternSeedPoint *seed_points = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -2351,245 +2366,106 @@ dxf_hatch_write
                         dxf_entity_name);
                 dxf_hatch->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp, "100\nAcDbHatch\n");
-        fprintf (fp, "  2\n%s\n", dxf_hatch->pattern_name);
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_hatch->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_hatch->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_hatch->id_code);
         }
-        if (strcmp (dxf_hatch->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_hatch->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
         {
-                fprintf (fp, "  6\n%s\n", dxf_hatch->linetype);
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_hatch->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
         }
-        fprintf (fp, "  8\n%s\n", dxf_hatch->layer);
-        fprintf (fp, " 10\n%f\n", dxf_hatch->x0);
-        fprintf (fp, " 20\n%f\n", dxf_hatch->y0);
-        fprintf (fp, " 30\n%f\n", dxf_hatch->z0);
-        fprintf (fp, "210\n%f\n", dxf_hatch->extr_x0);
-        fprintf (fp, "220\n%f\n", dxf_hatch->extr_y0);
-        fprintf (fp, "230\n%f\n", dxf_hatch->extr_z0);
-        if (dxf_hatch->thickness != 0.0)
+        if ((strcmp (dxf_hatch->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
         {
-                fprintf (fp, " 39\n%f\n", dxf_hatch->thickness);
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_hatch->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
         }
-        if (!dxf_hatch->solid_fill)
+        if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp, " 42\n%f\n", dxf_hatch->pattern_scale);
-        }
-        fprintf (fp, " 47\n%f\n", dxf_hatch->pixel_size);
-        if (!dxf_hatch->solid_fill)
-        {
-                fprintf (fp, " 52\n%f\n", dxf_hatch->pattern_angle);
-        }
-        if (dxf_hatch->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp, " 62\n%d\n", dxf_hatch->color);
+                fprintf (fp->fp, "100\nAcDbEntity\n");
         }
         if (dxf_hatch->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp, " 70\n%d\n", dxf_hatch->solid_fill);
-        fprintf (fp, " 71\n%d\n", dxf_hatch->associative);
-        fprintf (fp, " 75\n%d\n", dxf_hatch->pattern_style);
+        fprintf (fp->fp, "  8\n%s\n", dxf_hatch->layer);
+        if (strcmp (dxf_hatch->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_hatch->linetype);
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_hatch->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_hatch->elevation);
+        }
+        if (dxf_hatch->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_hatch->thickness);
+        }
+        if (dxf_hatch->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_hatch->color);
+        }
+        if (dxf_hatch->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_hatch->linetype_scale);
+        }
+        if (dxf_hatch->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_hatch->visibility);
+        }
+        if (dxf_hatch->number_of_image_bytes > 0)
+        {
+                fprintf (fp->fp, " 92\n%d\n", dxf_hatch->number_of_image_bytes);
+        }
+        i = 0;
+        while (strlen (dxf_hatch->binary_graphics_data[i]) > 0)
+        {
+                fprintf (fp->fp, "310\n%s\n", dxf_hatch->binary_graphics_data[i]);
+                i++;
+        }
+        fprintf (fp->fp, "100\nAcDbHatch\n");
+        fprintf (fp->fp, " 10\n%f\n", dxf_hatch->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_hatch->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_hatch->z0);
+        fprintf (fp->fp, "210\n%f\n", dxf_hatch->extr_x0);
+        fprintf (fp->fp, "220\n%f\n", dxf_hatch->extr_y0);
+        fprintf (fp->fp, "230\n%f\n", dxf_hatch->extr_z0);
+        fprintf (fp->fp, "  2\n%s\n", dxf_hatch->pattern_name);
+        fprintf (fp->fp, " 70\n%d\n", dxf_hatch->solid_fill);
+        fprintf (fp->fp, " 71\n%d\n", dxf_hatch->associative);
+        fprintf (fp->fp, " 91\n%d\n", dxf_hatch->number_of_boundary_paths);
+        dxf_hatch_boundary_path_write (fp, dxf_hatch->paths);
+        fprintf (fp->fp, " 75\n%d\n", dxf_hatch->hatch_style);
+        fprintf (fp->fp, " 76\n%d\n", dxf_hatch->hatch_pattern_type);
         if (!dxf_hatch->solid_fill)
         {
-                fprintf (fp, " 77\n%d\n", dxf_hatch->pattern_double);
+                fprintf (fp->fp, " 52\n%f\n", dxf_hatch->pattern_angle);
+                fprintf (fp->fp, " 41\n%f\n", dxf_hatch->pattern_scale);
+                fprintf (fp->fp, " 77\n%d\n", dxf_hatch->pattern_double);
         }
-        fprintf (fp, " 78\n%d\n", dxf_hatch->number_of_pattern_def_lines);
-        fprintf (fp, " 98\n%d\n", dxf_hatch->number_of_seed_points);
-        if (dxf_hatch->number_of_seed_points > 0)
-        {
-                seed_points = (DxfHatchPatternSeedPoint *) dxf_hatch->seed_points;
-                while (seed_points != NULL);
-                {
-/*! \todo error: dereferencing pointer to incomplete type in:\n
-                        fprintf (fp, " 10\n%f\n", (double) seed_points->x0);
- */
-/*! \todo error: dereferencing pointer to incomplete type in:\n
-                        fprintf (fp, " 20\n%f\n", (double) seed_points->y0);
- */
-/*! \todo error: dereferencing pointer to incomplete type in:\n
-                        seed_points = (DxfHatchPatternSeedPoint *) seed_points->next;
- */
-                }
-        }
-        fprintf (fp, " 91\n%d\n", dxf_hatch->number_of_boundary_paths);
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Write DXF output to a file for a hatch entity (\c HATCH).
- */
-int
-dxf_hatch_write_lowlevel
-(
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
-        char *pattern_name,
-                /*!< group code = 2. */
-        int id_code,
-                /*!< group code = 5. */
-        char *linetype,
-                /*!< group code = 6\n
-                 * optional, defaults to BYLAYER. */
-        char *layer,
-                /*!< group code = 8. */
-        double x0,
-                /*!< group code = 10\n
-                 * base point. */
-        double y0,
-                /*!< group code = 20\n
-                 * base point. */
-        double z0,
-                /*!< group code = 30\n
-                 * base point. */
-        double extr_x0,
-                /*!< group code = 210\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 0.0. */
-        double extr_y0,
-                /*!< group code = 220\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 0.0. */
-        double extr_z0,
-                /*!< group code = 230\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 1.0. */
-        double thickness,
-                /*!< group code = 39\n
-                 * optional, defaults to 0.0. */
-        double pattern_scale,
-                /*!< group code 41\n
-                 * pattern fill only. */
-        double pixel_size,
-                /*!< group code 47. */
-        double pattern_angle,
-                /*!< group code 52\n
-                 *  pattern fill only. */
-        int color,
-                /*!< group code = 62\n
-                 * optional, defaults to BYLAYER. */
-        int paperspace,
-                /*!< group code = 67\n
-                 * optional, defaults to 0 (modelspace). */
-        int solid_fill,
-                /*!< group code = 70\n
-                 * 0 = pattern fill\n
-                 * 1 = solid fill. */
-        int associative,
-                /*!< group code = 71\n
-                 * 0 = non-associative\n
-                 * 1 = associative. */
-        int style,
-                /*!< group code = 75\n
-                 * 0 = hatch "odd parity" area (Normal style)\n
-                 * 1 = hatch outermost area only (Outer style)\n
-                 * 2 = hatch through entire area (Ignore style). */
-        int pattern_style,
-                /*!< group code = 76\n
-                 * 0 = user defined\n
-                 * 1 = predefined\n
-                 * 2 = custom. */
-        int pattern_double,
-                /*!< group code = 77\n
-                 * pattern fill only\n
-                 * 0 = not double\n
-                 * 1 = double. */
-        int pattern_def_lines,
-                /*!< group code = 78\n
-                 * number of pattern definition lines. */
-        int pattern_boundary_paths,
-                /*!< group code = 91\n
-                 * number of boundary paths (loops). */
-        int seed_points,
-                /*!< group code = 98\n
-                 * number of seed points. */
-                double *seed_x0,
-                        /*!< group code = 10\n
-                         * seed point X-value. */
-                double *seed_y0
-                        /*!< group code = 20\n
-                         * seed point Y-value. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        char *dxf_entity_name = strdup ("HATCH");
-        int i;
-        if (strcmp (layer, "") == 0)
-        {
-                fprintf (stderr,
-                  (_("Warning: empty layer string for the %s entity with id-code: %x\n")),
-                        dxf_entity_name, id_code);
-                fprintf (stderr,
-                  (_("    %s entity is relocated to layer 0")),
-                        dxf_entity_name);
-                layer = strdup (DXF_DEFAULT_LAYER);
-        }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp, "100\nAcDbHatch\n");
-        fprintf (fp, "  2\n%s\n", pattern_name);
-        if (id_code != -1)
-        {
-                fprintf (fp, "  5\n%x\n", id_code);
-        }
-        if (strcmp (linetype, DXF_DEFAULT_LINETYPE) != 0)
-        {
-                fprintf (fp, "  6\n%s\n", linetype);
-        }
-        fprintf (fp, "  8\n%s\n", layer);
-        fprintf (fp, " 10\n%f\n", x0);
-        fprintf (fp, " 20\n%f\n", y0);
-        fprintf (fp, " 30\n%f\n", z0);
-        fprintf (fp, "210\n%f\n", extr_x0);
-        fprintf (fp, "220\n%f\n", extr_y0);
-        fprintf (fp, "230\n%f\n", extr_z0);
-        if (thickness != 0.0)
-        {
-                fprintf (fp, " 39\n%f\n", thickness);
-        }
-        if (!solid_fill)
-        {
-                fprintf (fp, " 42\n%f\n", pattern_scale);
-        }
-        fprintf (fp, " 47\n%f\n", pixel_size);
-        if (!solid_fill)
-        {
-                fprintf (fp, " 52\n%f\n", pattern_angle);
-        }
-        if (color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp, " 62\n%d\n", color);
-        }
-        if (paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
-        fprintf (fp, " 70\n%d\n", solid_fill);
-        fprintf (fp, " 71\n%d\n", associative);
-        fprintf (fp, " 75\n%d\n", style);
-        if (!solid_fill)
-        {
-                fprintf (fp, " 77\n%d\n", pattern_double);
-        }
-        fprintf (fp, " 78\n%d\n", pattern_def_lines);
-        fprintf (fp, " 98\n%d\n", seed_points);
-        if (!seed_points)
-        {
-                for (i = 0; i < seed_points; i++)
-                {
-                        fprintf (fp, " 10\n%f\n", seed_x0[i]);
-                        fprintf (fp, " 20\n%f\n", seed_y0[i]);
-                }
-        }
-        fprintf (fp, " 91\n%d\n", pattern_boundary_paths);
+        fprintf (fp->fp, " 78\n%d\n", dxf_hatch->number_of_pattern_def_lines);
+        /*! \todo Add code to write hatch pattern definition line data. */
+        fprintf (fp->fp, " 47\n%f\n", dxf_hatch->pixel_size);
+        fprintf (fp->fp, " 98\n%d\n", dxf_hatch->number_of_seed_points);
+        /*! \todo Add code to write hatch pattern seed points. */
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2603,171 +2479,76 @@ dxf_hatch_write_lowlevel
  * Requires AutoCAD version R14 or higher.
  */
 int
-dxf_hatch_boundaries_write_lowlevel
+dxf_hatch_boundary_path_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
-        int hatch_boundary_paths,
-                /*!< group code = 91\n
-                 * number of boundary paths (loops). */
-        int hatch_boundary_path_type_flag,
-                /*!< group code = 92\n
-                 * boundary path type flag\n
-                 * bit coded:\n
-                 * 0 = default.\n
-                 * 1 = external.\n
-                 * 2 = polyline.\n
-                 * 4 = derived.\n
-                 * 8 = textbox.\n
-                 * 16 = outermost. */
-                int hatch_boundary_path_edges,
-                        /*!< group code = 93\n
-                         * number of edges in this boundary path\n
-                         * (only if boundary is not a polyline). */
-                int hatch_boundary_path_edge_type,
-                        /*!< group code = 72\n
-                         * (only if boundary is not a polyline).\n
-                         * 1 = line.\n
-                         * 2 = circular arc.\n
-                         * 3 = elliptic arc.\n
-                         * 4 = spline.
-                         */
-                        double hatch_boundary_path_edge_line_x0,
-                                /*!< group code = 10. */
-                        double hatch_boundary_path_edge_line_y0,
-                                /*!< group code = 20. */
-                        double hatch_boundary_path_edge_line_x1,
-                                /*!< group code = 11. */
-                        double hatch_boundary_path_edge_line_y1,
-                                /*!< group code = 21.\n */
-                        double hatch_boundary_path_edge_arc_x0,
-                                /*!< group code = 10\n
-                                 * X-value of center point coordinate. */
-                        double hatch_boundary_path_edge_arc_y0,
-                                /*!< group code = 20\n
-                                 * Y-value of center point coordinate. */
-                        double hatch_boundary_path_edge_arc_radius,
-                                /*!< group code = 40. */
-                        double hatch_boundary_path_edge_arc_start_angle,
-                                /*!< group code = 50. */
-                        double hatch_boundary_path_edge_arc_end_angle,
-                                /*!< group code = 51. */
-                        int hatch_boundary_path_edge_arc_is_ccw,
-                                /*!< group code = 73\n
-                                 * arc is counterclockwise flag.\n */
-                        double hatch_boundary_path_edge_ellipse_x0,
-                                /*!< group code = 10\n
-                                 * X-value of center point coordinate. */
-                        double hatch_boundary_path_edge_ellipse_y0,
-                                /*!< group code = 20\n
-                                 * Y-value of center point coordinate. */
-                        double hatch_boundary_path_edge_ellipse_x1,
-                                /*!< group code = 11\n
-                                 * X-value of end point coordinate of major
-                                 * axis (relative to center point. */
-                        double hatch_boundary_path_edge_ellipse_y1,
-                                /*!< group code = 21\n
-                                 * Y-value of end point coordinate of major
-                                 * axis (relative to center point. */
-                        double boundary_path_edge_ellipse_minor_axis,
-                                /*!< group code = 40\n
-                                 * length of minor axis (percentage of major
-                                 * axis length). */
-                        double hatch_boundary_path_edge_ellipse_start_angle,
-                                /*!< group code = 50. */
-                        double hatch_boundary_path_edge_ellipse_end_angle,
-                                /*!< group code = 51. */
-                        int hatch_boundary_path_edge_ellipse_is_ccw,
-                                /*!< group code = 73\n
-                                 * ellipse is counterclockwise flag.\n */
-                        int hatch_boundary_path_edge_spline_degree,
-                                /*!< group code = 94. */
-                        int hatch_boundary_path_edge_spline_rational,
-                                /*!< group code = 73. */
-                        int hatch_boundary_path_edge_spline_periodic,
-                                /*!< group code = 74. */
-                        int hatch_boundary_path_edge_spline_knots,
-                                /*!< group code = 95\n
-                                 * number of knots. */
-                        int hatch_boundary_path_edge_spline_control_points,
-                                /*!< group code = 96\n
-                                 * number of control points. */
-                                int *hatch_boundary_path_edge_spline_knot_value,
-                                        /*!< group code = 40. */
-                                double *hatch_boundary_path_edge_spline_cp_x0,
-                                        /*!< group code = 10. */
-                                double *hatch_boundary_path_edge_spline_cp_y0,
-                                        /*!< group code = 20. */
-                                double *hatch_boundary_path_edge_spline_cp_weight,
-                                        /*!< group code = 42\n
-                                         * optional, defaults to 1.0. */
-                int hatch_boundary_path_polyline_has_bulge,
-                        /*!< group code = 72\n
-                         * polyline boundary data group only. */
-                int hatch_boundary_path_polyline_is_closed,
-                        /*!< group code = 73\n
-                         * polyline boundary data group only. */
-                int hatch_boundary_path_polyline_vertices,
-                        /*!< group code = 93\n
-                         * number of polyline vertices to follow. */
-                double hatch_boundary_path_polyline_bulge,
-                        /*!< group code = 42. */
-                        double *hatch_boundary_path_polyline_x0,
-                                /*!< group code = 10. */
-                        double *hatch_boundary_path_polyline_y0,
-                                /*!< group code = 20. */
-        int hatch_boundary_objects,
-                /*!< group code = 97\n
-                 * number of source boundary objects. */
-        char *hatch_boundary_objects_ref
-                /*!< group code = 330\n
-                 * reference to source boundary objects (multiple entries). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfHatchBoundaryPath *dxf_hatch_boundary_path
+                /*!< Pointer to DXF Boundary paths (loops). */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-        int j;
-        for (i = 0; i < hatch_boundary_paths; i++)
+        DxfHatchBoundaryPathPolyline *iter;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
         {
-                if (hatch_boundary_path_type_flag == 0)
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dxf_hatch_boundary_path == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
+        for (;;)
+        {
+                if (dxf_hatch_boundary_path->next == NULL)
                 {
-                        /* default type boundary */
-                        for (j = 0; j < hatch_boundary_path_edges; j++)
-                        {
-                                switch (hatch_boundary_path_edge_type)
-                                case 1: /* line type */
-                                case 2: /* circular arc type */
-                                case 3: /* elliptic arc type */
-                                case 4: /* spline type */
-                                default:
-                                        fprintf (stderr,
-                                          (_("Error: unsupported boundary path edge type encountered in %s ().\n")),
-                                          __FUNCTION__);
-                                        return (EXIT_FAILURE);
-                        }
-                }
-                else if (hatch_boundary_path_type_flag == 2)
-                {
-                        /* a polyline boundary */
-                        dxf_hatch_boundary_path_polyline_write_lowlevel
-                        (
-                                fp,
-                                hatch_boundary_path_polyline_has_bulge,
-                                hatch_boundary_path_polyline_is_closed,
-                                hatch_boundary_path_polyline_vertices,
-                                hatch_boundary_path_polyline_x0,
-                                hatch_boundary_path_polyline_y0,
-                                hatch_boundary_path_polyline_bulge
-                        );
+                        fprintf (stderr,
+                          (_("Information: last boundary path encountered in %s ().\n")),
+                          __FUNCTION__);
+                        break;
                 }
                 else
                 {
-                        fprintf (stderr,
-                          (_("Error: unsupported boundary path type encountered in %s ().\n")),
-                          __FUNCTION__);
-                        return (EXIT_FAILURE);
+                        /* Test for edge type or polylines type. */
+                        if (dxf_hatch_boundary_path->edges != NULL)
+                        {
+                                /* Write edges data. */
+                        }
+                        else if (dxf_hatch_boundary_path->polylines != NULL)
+                        {
+                                iter = dxf_hatch_boundary_path_polyline_new ();
+                                iter = (DxfHatchBoundaryPathPolyline *) dxf_hatch_boundary_path->polylines;
+                                for (;;)
+                                {
+                                        dxf_hatch_boundary_path_polyline_write
+                                        (
+                                                fp,
+                                                iter
+                                        );
+                                        iter = (DxfHatchBoundaryPathPolyline *) iter->next;
+                                        if (iter == NULL)
+                                        {
+                                                break;
+                                        }
+                                }
+                        }
+                        else
+                        {
+                                fprintf (stderr,
+                                  (_("Error: unknown boundary path type encountered in %s ().\n")),
+                                  __FUNCTION__);
+                                return (EXIT_FAILURE);
+                        }
                 }
         }
 #if DEBUG
@@ -2831,7 +2612,7 @@ dxf_hatch_boundary_path_polyline_vertex_angle
 int
 dxf_hatch_boundary_path_polyline_vertex_write
 (
-        FILE *fp,
+        DxfFile *fp,
                 /*!< file pointer to output file (or device). */
         DxfHatchBoundaryPathPolylineVertex *vertex
                 /*!< DXF hatch boundary path polyline vertex entity. */
@@ -2855,37 +2636,8 @@ dxf_hatch_boundary_path_polyline_vertex_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        fprintf (fp, " 10\n%f\n", vertex->x0);
-        fprintf (fp, " 20\n%f\n", vertex->y0);
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Write DXF output to a file for a hatch boundary polyline
- * vertex.
- */
-int
-dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
-(
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
-        double x0,
-                /*!< group code = 10\n
-                 * X-value of vertex point. */
-        double y0
-                /*!< group code = 20\n
-                 * Y-value of vertex point. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        fprintf (fp, " 10\n%f\n", x0);
-        fprintf (fp, " 20\n%f\n", y0);
+        fprintf (fp->fp, " 10\n%f\n", vertex->x0);
+        fprintf (fp->fp, " 20\n%f\n", vertex->y0);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3118,7 +2870,7 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
 int
 dxf_hatch_boundary_path_polyline_write
 (
-        FILE *fp,
+        DxfFile *fp,
                 /*!< file pointer to output file (or device). */
         DxfHatchBoundaryPathPolyline *polyline
                 /*!< DXF hatch boundary path polyline entity. */
@@ -3144,9 +2896,9 @@ dxf_hatch_boundary_path_polyline_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        fprintf (fp, " 72\n%d\n", polyline->has_bulge);
-        fprintf (fp, " 73\n%d\n", polyline->is_closed);
-        fprintf (fp, " 93\n%d\n", polyline->number_of_vertices);
+        fprintf (fp->fp, " 72\n%d\n", polyline->has_bulge);
+        fprintf (fp->fp, " 73\n%d\n", polyline->is_closed);
+        fprintf (fp->fp, " 93\n%d\n", polyline->number_of_vertices);
         /* draw hatch boundary vertices. */
         iter = dxf_hatch_boundary_path_polyline_vertex_new ();
         iter = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
@@ -3172,70 +2924,7 @@ dxf_hatch_boundary_path_polyline_write
                         (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices
                 );
         }
-        if (polyline->bulge != 0.0) fprintf (fp, " 42\n%f\n", polyline->bulge);
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Write DXF output to a file for a hatch boundary path polyline.
- */
-int
-dxf_hatch_boundary_path_polyline_write_lowlevel
-(
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
-        int has_bulge,
-                /*!< group code = 72\n
-                 * polyline boundary data group only. */
-        int is_closed,
-                /*!< group code = 73\n
-                 * polyline boundary data group only. */
-        int vertices,
-                /*!< group code = 93\n
-                 * number of polyline vertices to follow. */
-        double *x0,
-                /*!< group code = 10\n
-                 * pointer to array of [vertices] X-values. */
-        double *y0,
-                /*!< group code = 20\n
-                 * pointer to array of [vertices] Y-values. */
-        double bulge
-                /*!< group code = 42\n
-                 * pointer to array of [vertices] bulge values. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int i;
-        fprintf (fp, " 72\n%d\n", has_bulge);
-        fprintf (fp, " 73\n%d\n", is_closed);
-        fprintf (fp, " 93\n%d\n", vertices);
-        if (bulge != 0.0) fprintf (fp, " 42\n%f\n", bulge);
-        /* draw hatch boundary vertices. */
-        for (i = 0; i < vertices; i++)
-        {
-                dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
-                (
-                        fp,
-                        x0[i],
-                        y0[i]
-                );
-        }
-        /* test for closed polyline: close with first vertex. */
-        if (is_closed)
-        {
-                dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
-                (
-                        fp,
-                        x0[0],
-                        y0[0]
-                );
-        }
+        if (polyline->bulge != 0.0) fprintf (fp->fp, " 42\n%f\n", polyline->bulge);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3359,7 +3048,7 @@ dxf_hatch_pattern_def_line_write
 int
 dxf_hatch_free
 (
-        DxfHatch *hatch
+        DxfHatch *dxf_hatch
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * entity. */
 )
@@ -3367,21 +3056,29 @@ dxf_hatch_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (hatch->next != NULL)
+        int i;
+
+        if (dxf_hatch->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfHatch was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (hatch->pattern_name);
-        free (hatch->linetype);
-        free (hatch->layer);
-        free (hatch->def_lines);
-        free (hatch->paths);
-        free (hatch->seed_points);
-        free (hatch);
-        hatch = NULL;
+        free (dxf_hatch->pattern_name);
+        free (dxf_hatch->linetype);
+        free (dxf_hatch->layer);
+        free (dxf_hatch->def_lines);
+        free (dxf_hatch->paths);
+        free (dxf_hatch->seed_points);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (dxf_hatch->binary_graphics_data[i]);
+        }
+        free (dxf_hatch->dictionary_owner_soft);
+        free (dxf_hatch->dictionary_owner_hard);
+        free (dxf_hatch);
+        dxf_hatch = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif

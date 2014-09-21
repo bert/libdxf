@@ -411,10 +411,21 @@ dxf_hatch
                 /*!< group code = 8\n
                  * Layer on which the entity is drawn.\n
                  * Defaults to layer "0" if no valid layername is given. */
+        double elevation;
+                /*!< group code = 38\n
+                 * Elevation of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default). */
         double thickness;
                 /*!< group code = 39\n
                  * Thickness of the arc in the local Z-direction.\n
                  * Defaults to 0.0 if ommitted in the DXF file. */
+        double linetype_scale;
+                /*!< group code = 48\n
+                 * Linetype scale (optional). */
+        int16_t visibility;
+                /*!< group code = 60\n
+                 * Object visibility (optional): 0 = Visible; 1 = Invisible. */
         int color;
                 /*!< group code = 62\n
                  * Color of the entity.\n
@@ -427,8 +438,21 @@ dxf_hatch
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
+        int number_of_image_bytes;
+                /*!< group code = 92\n
+                 * The number of bytes in the image (and subsequent
+                 * binary chunk records) (optional). */
+        char *binary_graphics_data[DXF_MAX_PARAM];
+                /*!< group code = 310\n
+                 * Proxy entity graphics data.\n
+                 * Multiple lines of 256 characters maximum per line
+                 * (optional). */
+        char *dictionary_owner_soft;
+                /*!< group code = 330\n
+                 * Soft-pointer ID/handle to owner dictionary (optional). */
+        char *dictionary_owner_hard;
+                /*!< group code = 360\n
+                 * Hard owner ID/handle to owner dictionary (optional). */
         /* Specific members for a DXF hatch. */
         char *pattern_name;
                 /*!< group code = 2. */
@@ -441,18 +465,6 @@ dxf_hatch
         double z0;
                 /*!< group code = 30\n
                  * base point. */
-        double extr_x0;
-                /*!< group code = 210\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 0.0. */
-        double extr_y0;
-                /*!< group code = 220\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 0.0. */
-        double extr_z0;
-                /*!< group code = 230\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 1.0. */
         double pattern_scale;
                 /*!< group code 41\n
                  * pattern fill only. */
@@ -474,7 +486,7 @@ dxf_hatch
                  * 0 = hatch "odd parity" area (Normal style)\n
                  * 1 = hatch outermost area only (Outer style)\n
                  * 2 = hatch through entire area (Ignore style). */
-        int pattern_style;
+        int hatch_pattern_type;
                 /*!< group code = 76\n
                  * 0 = user defined\n
                  * 1 = predefined\n
@@ -487,20 +499,32 @@ dxf_hatch
         int number_of_pattern_def_lines;
                 /*!< group code = 78\n
                  * number of pattern definition lines. */
-        struct DxfHatchPatternDefLine *def_lines;
-                /*!< pointer to the first DxfHatchPatternDefLine.\n
-                 * \c NULL if there is no DxfHatchPatternDefLine in the
-                 * DxfHatch. */
         int number_of_boundary_paths;
                 /*!< group code = 91\n
                  * number of boundary paths (loops). */
+        int number_of_seed_points;
+                /*!< group code = 98\n
+                 * number of seed points. */
+        double extr_x0;
+                /*!< group code = 210\n
+                 * extrusion direction\n
+                 * optional, if ommited defaults to 0.0. */
+        double extr_y0;
+                /*!< group code = 220\n
+                 * extrusion direction\n
+                 * optional, if ommited defaults to 0.0. */
+        double extr_z0;
+                /*!< group code = 230\n
+                 * extrusion direction\n
+                 * optional, if ommited defaults to 1.0. */
         struct DxfHatchBoundaryPath *paths;
                 /*!< pointer to the first DxfHatchBoundaryPath.\n
                  * \c NULL if there is no DxfHatchBoundaryPath in the
                  * DxfHatch. */
-        int number_of_seed_points;
-                /*!< group code = 98\n
-                 * number of seed points. */
+        struct DxfHatchPatternDefLine *def_lines;
+                /*!< pointer to the first DxfHatchPatternDefLine.\n
+                 * \c NULL if there is no DxfHatchPatternDefLine in the
+                 * DxfHatch. */
         struct DxfHatchPatternSeedPoint *seed_points;
                 /*!< pointer to the first DxfHatchSeedPoint. */
         struct DxfHatch *next;
@@ -538,7 +562,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_new ();
 DxfHatch *
 dxf_hatch_init
 (
-        DxfHatch *hatch
+        DxfHatch *dxf_hatch
 );
 DxfHatchPattern *
 dxf_hatch_pattern_init
@@ -689,85 +713,16 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
         double *knot_values[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
 );
 int
-dxf_hatch_write_lowlevel
-(
-        FILE *fp,
-        char *pattern_name,
-        int id_code,
-        char *linetype,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0,
-        double thickness,
-        double pattern_scale,
-        double pixel_size,
-        double pattern_angle,
-        int color,
-        int paperspace,
-        int solid_fill,
-        int associative,
-        int style,
-        int pattern_style,
-        int pattern_double,
-        int pattern_def_lines,
-        int pattern_boundary_paths,
-        int seed_points,
-        double *seed_x0,
-        double *seed_y0
-);
-int
 dxf_hatch_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfHatch *dxf_hatch
 );
 int
-dxf_hatch_boundaries_write_lowlevel
+dxf_hatch_boundary_path_write
 (
-        FILE *fp,
-        int hatch_boundary_paths,
-        int hatch_boundary_path_type_flag,
-        int hatch_boundary_path_edges,
-        int hatch_boundary_path_edge_type,
-        double hatch_boundary_path_edge_line_x0,
-        double hatch_boundary_path_edge_line_y0,
-        double hatch_boundary_path_edge_line_x1,
-        double hatch_boundary_path_edge_line_y1,
-        double hatch_boundary_path_edge_arc_x0,
-        double hatch_boundary_path_edge_arc_y0,
-        double hatch_boundary_path_edge_arc_radius,
-        double hatch_boundary_path_edge_arc_start_angle,
-        double hatch_boundary_path_edge_arc_end_angle,
-        int hatch_boundary_path_edge_arc_is_ccw,
-        double hatch_boundary_path_edge_ellipse_x0,
-        double hatch_boundary_path_edge_ellipse_y0,
-        double hatch_boundary_path_edge_ellipse_x1,
-        double hatch_boundary_path_edge_ellipse_y1,
-        double boundary_path_edge_ellipse_minor_axis,
-        double hatch_boundary_path_edge_ellipse_start_angle,
-        double hatch_boundary_path_edge_ellipse_end_angle,
-        int hatch_boundary_path_edge_ellipse_is_ccw,
-        int hatch_boundary_path_edge_spline_degree,
-        int hatch_boundary_path_edge_spline_rational,
-        int hatch_boundary_path_edge_spline_periodic,
-        int hatch_boundary_path_edge_spline_knots,
-        int hatch_boundary_path_edge_spline_control_points,
-        int *hatch_boundary_path_edge_spline_knot_value,
-        double *hatch_boundary_path_edge_spline_cp_x0,
-        double *hatch_boundary_path_edge_spline_cp_y0,
-        double *hatch_boundary_path_edge_spline_cp_weight,
-        int hatch_boundary_path_polyline_has_bulge,
-        int hatch_boundary_path_polyline_is_closed,
-        int hatch_boundary_path_polyline_vertices,
-        double hatch_boundary_path_polyline_bulge,
-                double *hatch_boundary_path_polyline_x0,
-                double *hatch_boundary_path_polyline_y0,
-        int hatch_boundary_objects,
-        char *hatch_boundary_objects_ref
+        DxfFile *fp,
+        DxfHatchBoundaryPath *dxf_hatch_boundary_path
 );
 int
 dxf_hatch_boundary_path_polyline_close_polyline
@@ -784,31 +739,14 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
 int
 dxf_hatch_boundary_path_polyline_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfHatchBoundaryPathPolyline *polyline
 );
 int
-dxf_hatch_boundary_path_polyline_write_lowlevel
-(
-        FILE *fp,
-        int has_bulge,
-        int is_closed,
-        int vertices,
-        double *x0,
-        double *y0,
-        double bulge );
-int
 dxf_hatch_boundary_path_polyline_vertex_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfHatchBoundaryPathPolylineVertex *vertex
-);
-int
-dxf_hatch_boundary_path_polyline_vertex_write_lowlevel
-(
-        FILE *fp,
-        double x0,
-        double y0
 );
 int
 dxf_hatch_pattern_def_line_dashes_write_lowlevel
@@ -828,7 +766,7 @@ dxf_hatch_pattern_def_line_write
 int
 dxf_hatch_free
 (
-        DxfHatch *hatch
+        DxfHatch *dxf_hatch
 );
 int
 dxf_hatch_pattern_free
