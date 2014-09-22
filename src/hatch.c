@@ -2474,6 +2474,69 @@ dxf_hatch_write
 
 
 /*!
+ * \brief Write DXF output to a file for a DXF \c HATCH pattern definition
+ * line.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_pattern_def_line_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
+                /*!< DXF hatch pattern definition line. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dxf_hatch_pattern_def_line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        fprintf (fp->fp, " 53\n%f\n", dxf_hatch_pattern_def_line->angle);
+        fprintf (fp->fp, " 43\n%f\n", dxf_hatch_pattern_def_line->x0);
+        fprintf (fp->fp, " 44\n%f\n", dxf_hatch_pattern_def_line->y0);
+        fprintf (fp->fp, " 45\n%f\n", dxf_hatch_pattern_def_line->x1);
+        fprintf (fp->fp, " 46\n%f\n", dxf_hatch_pattern_def_line->y1);
+        fprintf (fp->fp, " 79\n%d\n", dxf_hatch_pattern_def_line->dash_items);
+        if (dxf_hatch_pattern_def_line->dash_items > 0)
+        {
+                /* draw hatch pattern definition line dash items. */
+                for (i = 1; i < dxf_hatch_pattern_def_line->dash_items; i++)
+                {
+                        fprintf (fp->fp, " 49\n%f\n", dxf_hatch_pattern_def_line->dash_length[i]);
+                }
+        }
+        else
+        {
+                fprintf (stderr,
+                  (_("Warning: no dash length found in %s () function.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Write DXF output to a file for hatch boundary entities.
  *
  * Requires AutoCAD version R14 or higher.
@@ -2933,69 +2996,6 @@ dxf_hatch_boundary_path_polyline_write
 
 
 /*!
- * \brief Write DXF output to a file for a DXF \c HATCH pattern definition
- * line.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_pattern_def_line_write
-(
-        DxfFile *fp,
-                /*!< DXF file pointer to an output file (or device). */
-        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
-                /*!< DXF hatch pattern definition line. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int i;
-
-        /* Do some basic checks. */
-        if (fp == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (dxf_hatch_pattern_def_line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        fprintf (fp->fp, " 53\n%f\n", dxf_hatch_pattern_def_line->angle);
-        fprintf (fp->fp, " 43\n%f\n", dxf_hatch_pattern_def_line->x0);
-        fprintf (fp->fp, " 44\n%f\n", dxf_hatch_pattern_def_line->y0);
-        fprintf (fp->fp, " 45\n%f\n", dxf_hatch_pattern_def_line->x1);
-        fprintf (fp->fp, " 46\n%f\n", dxf_hatch_pattern_def_line->y1);
-        fprintf (fp->fp, " 79\n%d\n", dxf_hatch_pattern_def_line->dash_items);
-        if (dxf_hatch_pattern_def_line->dash_items > 0)
-        {
-                /* draw hatch pattern definition line dash items. */
-                for (i = 1; i < dxf_hatch_pattern_def_line->dash_items; i++)
-                {
-                        fprintf (fp->fp, " 49\n%f\n", dxf_hatch_pattern_def_line->dash_length[i]);
-                }
-        }
-        else
-        {
-                fprintf (stderr,
-                  (_("Warning: no dash length found in %s () function.\n")),
-                  __FUNCTION__);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Free the allocated memory for a DXF \c HATCH and all it's
  * data fields.
  *
@@ -3080,40 +3080,6 @@ dxf_hatch_pattern_free
 
 
 /*!
- * \brief Free the allocated memory for a DXF \c HATCH pattern seedpoint
- * and all it's data fields.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_pattern_seedpoint_free
-(
-        DxfHatchPatternSeedPoint *seedpoint
-                /*!< Pointer to the memory occupied by the DXF \c HATCH
-                 * pattern seedpoint entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        if (seedpoint->next != NULL)
-        {
-                fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatchPattern was not NULL.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        free (seedpoint);
-        seedpoint = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Free the allocated memory for a DXF \c HATCH pattern
  * definition line and all it's data fields.
  *
@@ -3140,6 +3106,40 @@ dxf_hatch_pattern_def_line_free
         }
         free (def_line);
         def_line = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a DXF \c HATCH pattern seedpoint
+ * and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_pattern_seedpoint_free
+(
+        DxfHatchPatternSeedPoint *seedpoint
+                /*!< Pointer to the memory occupied by the DXF \c HATCH
+                 * pattern seedpoint entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (seedpoint->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () pointer to next DxfHatchPattern was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (seedpoint);
+        seedpoint = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif

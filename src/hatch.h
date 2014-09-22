@@ -719,6 +719,14 @@ dxf_hatch_write
         DxfHatch *dxf_hatch
 );
 int
+dxf_hatch_pattern_def_line_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
+                /*!< DXF hatch pattern definition line. */
+);
+int
 dxf_hatch_boundary_path_write
 (
         DxfFile *fp,
@@ -749,14 +757,6 @@ dxf_hatch_boundary_path_polyline_vertex_write
         DxfHatchBoundaryPathPolylineVertex *vertex
 );
 int
-dxf_hatch_pattern_def_line_write
-(
-        DxfFile *fp,
-                /*!< DXF file pointer to an output file (or device). */
-        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
-                /*!< DXF hatch pattern definition line. */
-);
-int
 dxf_hatch_free
 (
         DxfHatch *dxf_hatch
@@ -767,14 +767,14 @@ dxf_hatch_pattern_free
         DxfHatchPattern *pattern
 );
 int
-dxf_hatch_pattern_seedpoint_free
-(
-        DxfHatchPatternSeedPoint *seedpoint
-);
-int
 dxf_hatch_pattern_def_line_free
 (
         DxfHatchPatternDefLine *def_line
+);
+int
+dxf_hatch_pattern_seedpoint_free
+(
+        DxfHatchPatternSeedPoint *seedpoint
 );
 int
 dxf_hatch_boundary_path_free
