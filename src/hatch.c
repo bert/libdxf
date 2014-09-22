@@ -2933,49 +2933,6 @@ dxf_hatch_boundary_path_polyline_write
 
 
 /*!
- * \brief Write DXF output to a file for a hatch pattern definition line
- * dash items.
- */
-int
-dxf_hatch_pattern_def_line_dashes_write_lowlevel
-(
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
-        int dash_items,
-                /*!< group code = 79\n
-                 * array of number of hatch pattern definition line dash
-                 * items. */
-        double *dash_length
-                /*!< group code = 49\n
-                 * array of dash lengths for an array of hatch pattern
-                 * definition lines. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        if (dash_items != 0)
-        {
-                int i;
-                for (i = 0; i < dash_items; i++)
-                {
-                        fprintf (fp, " 49\n%f\n", dash_length[i]);
-                }
-        }
-        else
-        {
-                fprintf (stderr,
-                  (_("Warning: no definition line dash items found in %s () function.\n")),
-                  __FUNCTION__);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Write DXF output to a file for a DXF \c HATCH pattern definition
  * line.
  *

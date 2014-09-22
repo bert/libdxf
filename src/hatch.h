@@ -749,13 +749,6 @@ dxf_hatch_boundary_path_polyline_vertex_write
         DxfHatchBoundaryPathPolylineVertex *vertex
 );
 int
-dxf_hatch_pattern_def_line_dashes_write_lowlevel
-(
-        FILE *fp,
-        int dash_items,
-        double *dash_length
-);
-int
 dxf_hatch_pattern_def_line_write
 (
         DxfFile *fp,
