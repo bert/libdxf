@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-21 19:10+0200\n"
+"POT-Creation-Date: 2014-09-22 17:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,7 +73,7 @@ msgstr ""
 #: src/circle.c:382 src/class.c:288 src/dimension.c:664 src/dimstyle.c:192
 #: src/ellipse.c:426 src/hatch.c:2338 src/hatch.c:2345 src/hatch.c:2499
 #: src/hatch.c:2506 src/hatch.c:2628 src/hatch.c:2635 src/hatch.c:2888
-#: src/hatch.c:2895 src/hatch.c:3003 src/hatch.c:3010 src/helix.c:629
+#: src/hatch.c:2895 src/hatch.c:2960 src/hatch.c:2967 src/helix.c:629
 #: src/image.c:471 src/insert.c:414 src/layer.c:287 src/line.c:359
 #: src/ltype.c:153 src/lwpolyline.c:348
 #, c-format
@@ -847,80 +847,75 @@ msgstr ""
 msgid "ERROR in %s () polyline is not a closed polygon.\n"
 msgstr ""
 
-#: src/hatch.c:2968
-#, c-format
-msgid "Warning: no definition line dash items found in %s () function.\n"
-msgstr ""
-
-#: src/hatch.c:3031
+#: src/hatch.c:2988
 #, c-format
 msgid "Warning: no dash length found in %s () function.\n"
 msgstr ""
 
-#: src/hatch.c:3064
+#: src/hatch.c:3021
 #, c-format
 msgid "ERROR in %s () pointer to next DxfHatch was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3110 src/hatch.c:3146
+#: src/hatch.c:3067 src/hatch.c:3103
 #, c-format
 msgid "ERROR in %s () pointer to next DxfHatchPattern was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3180
+#: src/hatch.c:3137
 #, c-format
 msgid "ERROR in %s () pointer to next DxfHatchPatternDefLine was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3214
+#: src/hatch.c:3171
 #, c-format
 msgid "ERROR in %s () pointer to next DxfHatchBoundaryPath was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3250
+#: src/hatch.c:3207
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathPolyline was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3285
+#: src/hatch.c:3242
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathPolylineVertex was not "
 "NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3319
+#: src/hatch.c:3276
 #, c-format
 msgid "ERROR in %s () pointer to next DxfHatchBoundaryPathEdge was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3357
+#: src/hatch.c:3314
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeArc was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3391
+#: src/hatch.c:3348
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeEllipse was not "
 "NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3425
+#: src/hatch.c:3382
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeLine was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3459
+#: src/hatch.c:3416
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeSpline was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3494
+#: src/hatch.c:3451
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeSplineCp was not "
