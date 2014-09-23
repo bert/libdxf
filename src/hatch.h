@@ -375,7 +375,7 @@ dxf_hatch_pattern
                 /*!< group code = 78\n
                  * number of hatch pattern definition lines. */
         struct DxfHatchPatternDefLine *lines;
-                /*!< pointer to array of hatch pattern definition lines. */
+                /*!< pointer to the first \c DxfHatchPatterDefLine. */
         double **length;
                 /*!< group code = 49\n
                  * array of dash lengths for an array of hatch pattern
@@ -384,7 +384,7 @@ dxf_hatch_pattern
                 /*!< group code = 98\n
                  * number of seed points. */
         struct DxfHatchPatternSeedPoint *seed_points;
-                /*!< pointer to the first DxfHatchSeedPoint. */
+                /*!< pointer to the first \c DxfHatchSeedPoint. */
         struct DxfHatchPattern *next;
                 /*!< pointer to the next DxfHatchPattern.\n
                  * \c NULL if the last DxfHatchPattern. */
