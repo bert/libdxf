@@ -2509,6 +2509,7 @@ dxf_hatch_pattern_def_line_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        /* Start writing output. */
         fprintf (fp->fp, " 53\n%f\n", dxf_hatch_pattern_def_line->angle);
         fprintf (fp->fp, " 43\n%f\n", dxf_hatch_pattern_def_line->x0);
         fprintf (fp->fp, " 44\n%f\n", dxf_hatch_pattern_def_line->y0);
@@ -2517,7 +2518,7 @@ dxf_hatch_pattern_def_line_write
         fprintf (fp->fp, " 79\n%d\n", dxf_hatch_pattern_def_line->dash_items);
         if (dxf_hatch_pattern_def_line->dash_items > 0)
         {
-                /* draw hatch pattern definition line dash items. */
+                /* Draw hatch pattern definition line dash items. */
                 for (i = 1; i < dxf_hatch_pattern_def_line->dash_items; i++)
                 {
                         fprintf (fp->fp, " 49\n%f\n", dxf_hatch_pattern_def_line->dash_length[i]);
