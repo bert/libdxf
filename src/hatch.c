@@ -2538,6 +2538,52 @@ dxf_hatch_pattern_def_line_write
 
 
 /*!
+ * \brief Write DXF output to a file for a DXF \c HATCH pattern seed
+ * point.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_pattern_seedpoint_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint
+                /*!< DXF hatch pattern seedpoint. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dxf_hatch_pattern_seedpoint == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, " 10\n%f\n", dxf_hatch_pattern_seedpoint->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_hatch_pattern_seedpoint->y0);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Write DXF output to a file for hatch boundary entities.
  *
  * Requires AutoCAD version R14 or higher.

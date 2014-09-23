@@ -727,6 +727,12 @@ dxf_hatch_pattern_def_line_write
                 /*!< DXF hatch pattern definition line. */
 );
 int
+dxf_hatch_pattern_seedpoint_write
+(
+        DxfFile *fp,
+        DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint
+);
+int
 dxf_hatch_boundary_path_write
 (
         DxfFile *fp,
