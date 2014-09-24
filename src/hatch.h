@@ -567,47 +567,47 @@ dxf_hatch_init
 DxfHatchPattern *
 dxf_hatch_pattern_init
 (
-        DxfHatchPattern *pattern
+        DxfHatchPattern *dxf_hatch_pattern
 );
 DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_init
 (
-        DxfHatchPatternDefLine *line
+        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
 );
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_init
 (
-        DxfHatchPatternSeedPoint *seedpoint
+        DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint
 );
 DxfHatchBoundaryPath *
 dxf_hatch_boundary_path_init
 (
-        DxfHatchBoundaryPath *path
+        DxfHatchBoundaryPath *dxf_hatch_boundary_path
 );
 DxfHatchBoundaryPathPolyline *
 dxf_hatch_boundary_path_polyline_init
 (
-        DxfHatchBoundaryPathPolyline *polyline
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline
 );
 DxfHatchBoundaryPathPolylineVertex *
 dxf_hatch_boundary_path_polyline_vertex_init
 (
-        DxfHatchBoundaryPathPolylineVertex *vertex
+        DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex
 );
 DxfHatchBoundaryPathEdge *
 dxf_hatch_boundary_path_edge_init
 (
-        DxfHatchBoundaryPathEdge *edge
+        DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge
 );
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_init
 (
-        DxfHatchBoundaryPathEdgeArc *arc
+        DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc
 );
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_init
 (
-        DxfHatchBoundaryPathEdgeEllipse *ellipse
+        DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse
 );
 DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_init

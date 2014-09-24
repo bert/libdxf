@@ -50,27 +50,27 @@ dxf_hatch_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatch *hatch = NULL;
+        DxfHatch *dxf_hatch = NULL;
         size_t size;
 
         size = sizeof (DxfHatch);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((hatch = malloc (size)) == NULL)
+        if ((dxf_hatch = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatch struct.\n")),
                   __FUNCTION__);
-                hatch = NULL;
+                dxf_hatch = NULL;
         }
         else
         {
-                memset (hatch, 0, size);
+                memset (dxf_hatch, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (hatch);
+        return (dxf_hatch);
 }
 
 
@@ -85,27 +85,27 @@ dxf_hatch_pattern_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchPattern *pattern = NULL;
+        DxfHatchPattern *dxf_hatch_pattern = NULL;
         size_t size;
 
         size = sizeof (DxfHatchPattern);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((pattern = malloc (size)) == NULL)
+        if ((dxf_hatch_pattern = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchPatternSeedpoint struct.\n")),
                   __FUNCTION__);
-                pattern = NULL;
+                dxf_hatch_pattern = NULL;
         }
         else
         {
-                memset (pattern, 0, size);
+                memset (dxf_hatch_pattern, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (pattern);
+        return (dxf_hatch_pattern);
 }
 
 
@@ -120,27 +120,27 @@ dxf_hatch_pattern_def_line_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchPatternDefLine *line = NULL;
+        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line = NULL;
         size_t size;
 
         size = sizeof (DxfHatchPatternDefLine);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((line = malloc (size)) == NULL)
+        if ((dxf_hatch_pattern_def_line = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchPatternDefLine struct.\n")),
                   __FUNCTION__);
-                line = NULL;
+                dxf_hatch_pattern_def_line = NULL;
         }
         else
         {
-                memset (line, 0, size);
+                memset (dxf_hatch_pattern_def_line, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (dxf_hatch_pattern_def_line);
 }
 
 
@@ -155,27 +155,27 @@ dxf_hatch_pattern_seedpoint_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchPatternSeedPoint *seedpoint = NULL;
+        DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint = NULL;
         size_t size;
 
         size = sizeof (DxfHatchPatternSeedPoint);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((seedpoint = malloc (size)) == NULL)
+        if ((dxf_hatch_pattern_seedpoint = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchPatternSeedpoint struct.\n")),
                   __FUNCTION__);
-                seedpoint = NULL;
+                dxf_hatch_pattern_seedpoint = NULL;
         }
         else
         {
-                memset (seedpoint, 0, size);
+                memset (dxf_hatch_pattern_seedpoint, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (seedpoint);
+        return (dxf_hatch_pattern_seedpoint);
 }
 
 
@@ -190,27 +190,27 @@ dxf_hatch_boundary_path_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPath *path = NULL;
+        DxfHatchBoundaryPath *dxf_hatch_boundary_path = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPath);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((path = malloc (size)) == NULL)
+        if ((dxf_hatch_boundary_path = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPath struct.\n")),
                   __FUNCTION__);
-                path = NULL;
+                dxf_hatch_boundary_path = NULL;
         }
         else
         {
-                memset (path, 0, size);
+                memset (dxf_hatch_boundary_path, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (path);
+        return (dxf_hatch_boundary_path);
 }
 
 
@@ -225,27 +225,27 @@ dxf_hatch_boundary_path_polyline_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathPolyline *polyline = NULL;
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPathPolyline);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((polyline = malloc (size)) == NULL)
+        if ((dxf_hatch_boundary_path_polyline = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathPolyline struct.\n")),
                   __FUNCTION__);
-                polyline = NULL;
+                dxf_hatch_boundary_path_polyline = NULL;
         }
         else
         {
-                memset (polyline, 0, size);
+                memset (dxf_hatch_boundary_path_polyline, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (polyline);
+        return (dxf_hatch_boundary_path_polyline);
 }
 
 
@@ -261,27 +261,27 @@ dxf_hatch_boundary_path_polyline_vertex_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathPolylineVertex *vertex = NULL;
+        DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPathPolylineVertex);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((vertex = malloc (size)) == NULL)
+        if ((dxf_hatch_boundary_path_polyline_vertex = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathPolylineVertex struct.\n")),
                   __FUNCTION__);
-                vertex = NULL;
+                dxf_hatch_boundary_path_polyline_vertex = NULL;
         }
         else
         {
-                memset (vertex, 0, size);
+                memset (dxf_hatch_boundary_path_polyline_vertex, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (vertex);
+        return (dxf_hatch_boundary_path_polyline_vertex);
 }
 
 
@@ -296,27 +296,27 @@ dxf_hatch_boundary_path_edge_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdge *edge = NULL;
+        DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPathEdge);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((edge = malloc (size)) == NULL)
+        if ((dxf_hatch_boundary_path_edge = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdge struct.\n")),
                   __FUNCTION__);
-                edge = NULL;
+                dxf_hatch_boundary_path_edge = NULL;
         }
         else
         {
-                memset (edge, 0, size);
+                memset (dxf_hatch_boundary_path_edge, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (edge);
+        return (dxf_hatch_boundary_path_edge);
 }
 
 
@@ -331,27 +331,27 @@ dxf_hatch_boundary_path_edge_arc_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdgeArc *arc = NULL;
+        DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPathEdgeArc);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((arc = malloc (size)) == NULL)
+        if ((dxf_hatch_boundary_path_edge_arc = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n")),
                   __FUNCTION__);
-                arc = NULL;
+                dxf_hatch_boundary_path_edge_arc = NULL;
         }
         else
         {
-                memset (arc, 0, size);
+                memset (dxf_hatch_boundary_path_edge_arc, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (arc);
+        return (dxf_hatch_boundary_path_edge_arc);
 }
 
 
@@ -366,27 +366,27 @@ dxf_hatch_boundary_path_edge_ellipse_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdgeEllipse *ellipse = NULL;
+        DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPathEdgeEllipse);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((ellipse = malloc (size)) == NULL)
+        if ((dxf_hatch_boundary_path_edge_ellipse = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeEllipse struct.\n")),
                   __FUNCTION__);
-                ellipse = NULL;
+                dxf_hatch_boundary_path_edge_ellipse = NULL;
         }
         else
         {
-                memset (ellipse, 0, size);
+                memset (dxf_hatch_boundary_path_edge_ellipse, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (ellipse);
+        return (dxf_hatch_boundary_path_edge_ellipse);
 }
 
 
@@ -401,27 +401,27 @@ dxf_hatch_boundary_path_edge_line_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdgeLine *line = NULL;
+        DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPathEdgeLine);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((line = malloc (size)) == NULL)
+        if ((dxf_hatch_boundary_path_edge_line = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeLine struct.\n")),
                   __FUNCTION__);
-                line = NULL;
+                dxf_hatch_boundary_path_edge_line = NULL;
         }
         else
         {
-                memset (line, 0, size);
+                memset (dxf_hatch_boundary_path_edge_line, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (dxf_hatch_boundary_path_edge_line);
 }
 
 
@@ -436,27 +436,27 @@ dxf_hatch_boundary_path_edge_spline_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdgeSpline *spline = NULL;
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPathEdgeSpline);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((spline = malloc (size)) == NULL)
+        if ((dxf_hatch_boundary_path_edge_spline = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSpline struct.\n")),
                   __FUNCTION__);
-                spline = NULL;
+                dxf_hatch_boundary_path_edge_spline = NULL;
         }
         else
         {
-                memset (spline, 0, size);
+                memset (dxf_hatch_boundary_path_edge_spline, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (spline);
+        return (dxf_hatch_boundary_path_edge_spline);
 }
 
 
@@ -472,27 +472,27 @@ dxf_hatch_boundary_path_edge_spline_control_point_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchBoundaryPathEdgeSplineCp *control_point = NULL;
+        DxfHatchBoundaryPathEdgeSplineCp *dxf_hatch_boundary_path_edge_spline_cp = NULL;
         size_t size;
 
         size = sizeof (DxfHatchBoundaryPathEdgeSplineCp);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((control_point = malloc (size)) == NULL)
+        if ((dxf_hatch_boundary_path_edge_spline_cp = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n")),
                   __FUNCTION__);
-                control_point = NULL;
+                dxf_hatch_boundary_path_edge_spline_cp = NULL;
         }
         else
         {
-                memset (control_point, 0, size);
+                memset (dxf_hatch_boundary_path_edge_spline_cp, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (control_point);
+        return (dxf_hatch_boundary_path_edge_spline_cp);
 }
 
 
@@ -582,34 +582,34 @@ dxf_hatch_init
 DxfHatchPattern *
 dxf_hatch_pattern_init
 (
-        DxfHatchPattern *pattern
+        DxfHatchPattern *dxf_hatch_pattern
                 /*!< DXF hatch pattern entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        pattern = dxf_hatch_pattern_new ();
-        if (pattern == NULL)
+        dxf_hatch_pattern = dxf_hatch_pattern_new ();
+        if (dxf_hatch_pattern == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchPattern struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        pattern->id_code = 0;
-        pattern->def_lines = 0;
-        pattern->lines = NULL;
+        dxf_hatch_pattern->id_code = 0;
+        dxf_hatch_pattern->def_lines = 0;
+        dxf_hatch_pattern->lines = NULL;
 /*! \todo correction in:
-        pattern->length = 0.0;
+        dxf_hatch_pattern->length = 0.0;
 */
-        pattern->number_of_seed_points = 0;
-        pattern->seed_points = NULL;
-        pattern->next = NULL;
+        dxf_hatch_pattern->number_of_seed_points = 0;
+        dxf_hatch_pattern->seed_points = NULL;
+        dxf_hatch_pattern->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (pattern);
+        return (dxf_hatch_pattern);
 }
 
 
@@ -623,7 +623,7 @@ dxf_hatch_pattern_init
 DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_init
 (
-        DxfHatchPatternDefLine *line
+        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
                 /*!< DXF hatch pattern definition line entity. */
 )
 {
@@ -632,30 +632,30 @@ dxf_hatch_pattern_def_line_init
 #endif
         int i;
 
-        line = dxf_hatch_pattern_def_line_new ();
-        if (line == NULL)
+        dxf_hatch_pattern_def_line = dxf_hatch_pattern_def_line_new ();
+        if (dxf_hatch_pattern_def_line == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchPatternDefLine struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        line->id_code = 0;
-        line->angle = 0.0;
-        line->x0 = 0.0;
-        line->y0 = 0.0;
-        line->x1 = 0.0;
-        line->y1 = 0.0;
-        line->dash_items = DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS;
+        dxf_hatch_pattern_def_line->id_code = 0;
+        dxf_hatch_pattern_def_line->angle = 0.0;
+        dxf_hatch_pattern_def_line->x0 = 0.0;
+        dxf_hatch_pattern_def_line->y0 = 0.0;
+        dxf_hatch_pattern_def_line->x1 = 0.0;
+        dxf_hatch_pattern_def_line->y1 = 0.0;
+        dxf_hatch_pattern_def_line->dash_items = DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS;
         for (i = 0; i >= DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS; i++)
         {
-                line->dash_length[i] = 0.0;
+                dxf_hatch_pattern_def_line->dash_length[i] = 0.0;
         }
-        line->next = NULL;
+        dxf_hatch_pattern_def_line->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (line);
+        return (dxf_hatch_pattern_def_line);
 }
 
 
@@ -669,29 +669,29 @@ dxf_hatch_pattern_def_line_init
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_init
 (
-        DxfHatchPatternSeedPoint *seedpoint
+        DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint
                 /*!< DXF hatch pattern seedpoint entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        seedpoint = dxf_hatch_pattern_seedpoint_new ();
-        if (seedpoint == NULL)
+        dxf_hatch_pattern_seedpoint = dxf_hatch_pattern_seedpoint_new ();
+        if (dxf_hatch_pattern_seedpoint == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchPatternSeedPoint struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        seedpoint->id_code = 0;
-        seedpoint->x0 = 0.0;
-        seedpoint->y0 = 0.0;
-        seedpoint->next = NULL;
+        dxf_hatch_pattern_seedpoint->id_code = 0;
+        dxf_hatch_pattern_seedpoint->x0 = 0.0;
+        dxf_hatch_pattern_seedpoint->y0 = 0.0;
+        dxf_hatch_pattern_seedpoint->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (seedpoint);
+        return (dxf_hatch_pattern_seedpoint);
 }
 
 
@@ -705,29 +705,29 @@ dxf_hatch_pattern_seedpoint_init
 DxfHatchBoundaryPath *
 dxf_hatch_boundary_path_init
 (
-        DxfHatchBoundaryPath *path
+        DxfHatchBoundaryPath *dxf_hatch_boundary_path
                 /*!< DXF hatch boundary path entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        path = dxf_hatch_boundary_path_new ();
-        if (path == NULL)
+        dxf_hatch_boundary_path = dxf_hatch_boundary_path_new ();
+        if (dxf_hatch_boundary_path == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPath struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        path->id_code = 0;
-        path->edges = NULL;
-        path->polylines = NULL;
-        path->next = NULL;
+        dxf_hatch_boundary_path->id_code = 0;
+        dxf_hatch_boundary_path->edges = NULL;
+        dxf_hatch_boundary_path->polylines = NULL;
+        dxf_hatch_boundary_path->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (path);
+        return (dxf_hatch_boundary_path);
 }
 
 
@@ -741,32 +741,32 @@ dxf_hatch_boundary_path_init
 DxfHatchBoundaryPathPolyline *
 dxf_hatch_boundary_path_polyline_init
 (
-        DxfHatchBoundaryPathPolyline *polyline
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline
                 /*!< DXF hatch boundary path polyline entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        polyline = dxf_hatch_boundary_path_polyline_new ();
-        if (polyline == NULL)
+        dxf_hatch_boundary_path_polyline = dxf_hatch_boundary_path_polyline_new ();
+        if (dxf_hatch_boundary_path_polyline == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathPolyline struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        polyline->id_code = 0;
-        polyline->bulge = 0.0;
-        polyline->has_bulge = 0;
-        polyline->is_closed = 0;
-        polyline->number_of_vertices = 0;
-        polyline->vertices = NULL;
-        polyline->next = NULL;
+        dxf_hatch_boundary_path_polyline->id_code = 0;
+        dxf_hatch_boundary_path_polyline->bulge = 0.0;
+        dxf_hatch_boundary_path_polyline->has_bulge = 0;
+        dxf_hatch_boundary_path_polyline->is_closed = 0;
+        dxf_hatch_boundary_path_polyline->number_of_vertices = 0;
+        dxf_hatch_boundary_path_polyline->vertices = NULL;
+        dxf_hatch_boundary_path_polyline->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (polyline);
+        return (dxf_hatch_boundary_path_polyline);
 }
 
 
@@ -780,29 +780,29 @@ dxf_hatch_boundary_path_polyline_init
 DxfHatchBoundaryPathPolylineVertex *
 dxf_hatch_boundary_path_polyline_vertex_init
 (
-        DxfHatchBoundaryPathPolylineVertex *vertex
+        DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex
                 /*!< DXF hatch boundary path polyline vertex entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        vertex = dxf_hatch_boundary_path_polyline_vertex_new ();
-        if (vertex == NULL)
+        dxf_hatch_boundary_path_polyline_vertex = dxf_hatch_boundary_path_polyline_vertex_new ();
+        if (dxf_hatch_boundary_path_polyline_vertex == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathPolylineVertex struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        vertex->id_code = 0;
-        vertex->x0 = 0.0;
-        vertex->y0 = 0.0;
-        vertex->next = NULL;
+        dxf_hatch_boundary_path_polyline_vertex->id_code = 0;
+        dxf_hatch_boundary_path_polyline_vertex->x0 = 0.0;
+        dxf_hatch_boundary_path_polyline_vertex->y0 = 0.0;
+        dxf_hatch_boundary_path_polyline_vertex->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (vertex);
+        return (dxf_hatch_boundary_path_polyline_vertex);
 }
 
 
@@ -816,31 +816,31 @@ dxf_hatch_boundary_path_polyline_vertex_init
 DxfHatchBoundaryPathEdge *
 dxf_hatch_boundary_path_edge_init
 (
-        DxfHatchBoundaryPathEdge *edge
+        DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge
                 /*!< DXF hatch boundary path edge entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        edge = dxf_hatch_boundary_path_edge_new ();
-        if (edge == NULL)
+        dxf_hatch_boundary_path_edge = dxf_hatch_boundary_path_edge_new ();
+        if (dxf_hatch_boundary_path_edge == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdge struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        edge->id_code = 0;
-        edge->arcs = NULL;
-        edge->ellipses = NULL;
-        edge->lines = NULL;
-        edge->splines = NULL;
-        edge->next = NULL;
+        dxf_hatch_boundary_path_edge->id_code = 0;
+        dxf_hatch_boundary_path_edge->arcs = NULL;
+        dxf_hatch_boundary_path_edge->ellipses = NULL;
+        dxf_hatch_boundary_path_edge->lines = NULL;
+        dxf_hatch_boundary_path_edge->splines = NULL;
+        dxf_hatch_boundary_path_edge->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (edge);
+        return (dxf_hatch_boundary_path_edge);
 }
 
 
@@ -854,33 +854,33 @@ dxf_hatch_boundary_path_edge_init
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_init
 (
-        DxfHatchBoundaryPathEdgeArc *arc
+        DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc
                 /*!< DXF hatch boundary path edge arc entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        arc = dxf_hatch_boundary_path_edge_arc_new ();
-        if (arc == NULL)
+        dxf_hatch_boundary_path_edge_arc = dxf_hatch_boundary_path_edge_arc_new ();
+        if (dxf_hatch_boundary_path_edge_arc == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        arc->id_code = 0;
-        arc->x0 = 0.0;
-        arc->y0 = 0.0;
-        arc->radius = 0.0;
-        arc->start_angle = 0.0;
-        arc->end_angle = 0.0;
-        arc->is_ccw = 0;
-        arc->next = NULL;
+        dxf_hatch_boundary_path_edge_arc->id_code = 0;
+        dxf_hatch_boundary_path_edge_arc->x0 = 0.0;
+        dxf_hatch_boundary_path_edge_arc->y0 = 0.0;
+        dxf_hatch_boundary_path_edge_arc->radius = 0.0;
+        dxf_hatch_boundary_path_edge_arc->start_angle = 0.0;
+        dxf_hatch_boundary_path_edge_arc->end_angle = 0.0;
+        dxf_hatch_boundary_path_edge_arc->is_ccw = 0;
+        dxf_hatch_boundary_path_edge_arc->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (arc);
+        return (dxf_hatch_boundary_path_edge_arc);
 }
 
 
@@ -894,35 +894,35 @@ dxf_hatch_boundary_path_edge_arc_init
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_init
 (
-        DxfHatchBoundaryPathEdgeEllipse *ellipse
+        DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse
                 /*!< DXF hatch boundary path edge ellipse entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        ellipse = dxf_hatch_boundary_path_edge_ellipse_new ();
-        if (ellipse == NULL)
+        dxf_hatch_boundary_path_edge_ellipse = dxf_hatch_boundary_path_edge_ellipse_new ();
+        if (dxf_hatch_boundary_path_edge_ellipse == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeEllipse struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        ellipse->id_code = 0;
-        ellipse->x0 = 0.0;
-        ellipse->y0 = 0.0;
-        ellipse->x1 = 0.0;
-        ellipse->y1 = 0.0;
-        ellipse->minor_axis = 0.0;
-        ellipse->start_angle = 0.0;
-        ellipse->end_angle = 0.0;
-        ellipse->is_ccw = 0;
-        ellipse->next = NULL;
+        dxf_hatch_boundary_path_edge_ellipse->id_code = 0;
+        dxf_hatch_boundary_path_edge_ellipse->x0 = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->y0 = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->x1 = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->y1 = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->minor_axis = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->start_angle = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->end_angle = 0.0;
+        dxf_hatch_boundary_path_edge_ellipse->is_ccw = 0;
+        dxf_hatch_boundary_path_edge_ellipse->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (ellipse);
+        return (dxf_hatch_boundary_path_edge_ellipse);
 }
 
 
@@ -3309,7 +3309,7 @@ dxf_hatch_boundary_path_polyline_vertex_free
 int
 dxf_hatch_boundary_path_edge_free
 (
-        DxfHatchBoundaryPathEdge *edge
+        DxfHatchBoundaryPathEdge *dxf_hatch_boundary_path_edge
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path edge entity. */
 )
@@ -3317,19 +3317,19 @@ dxf_hatch_boundary_path_edge_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (edge->next != NULL)
+        if (dxf_hatch_boundary_path_edge->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfHatchBoundaryPathEdge was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (edge->arcs);
-        free (edge->ellipses);
-        free (edge->lines);
-        free (edge->splines);
-        free (edge);
-        edge = NULL;
+        free (dxf_hatch_boundary_path_edge->arcs);
+        free (dxf_hatch_boundary_path_edge->ellipses);
+        free (dxf_hatch_boundary_path_edge->lines);
+        free (dxf_hatch_boundary_path_edge->splines);
+        free (dxf_hatch_boundary_path_edge);
+        dxf_hatch_boundary_path_edge = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3347,7 +3347,7 @@ dxf_hatch_boundary_path_edge_free
 int
 dxf_hatch_boundary_path_edge_arc_free
 (
-        DxfHatchBoundaryPathEdgeArc *arc
+        DxfHatchBoundaryPathEdgeArc *dxf_hatch_boundary_path_edge_arc
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path edge arc entity. */
 )
@@ -3355,15 +3355,15 @@ dxf_hatch_boundary_path_edge_arc_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (arc->next != NULL)
+        if (dxf_hatch_boundary_path_edge_arc->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeArc was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (arc);
-        arc = NULL;
+        free (dxf_hatch_boundary_path_edge_arc);
+        dxf_hatch_boundary_path_edge_arc = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3381,7 +3381,7 @@ dxf_hatch_boundary_path_edge_arc_free
 int
 dxf_hatch_boundary_path_edge_ellipse_free
 (
-        DxfHatchBoundaryPathEdgeEllipse *ellipse
+        DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path edge ellipse entity. */
 )
@@ -3389,15 +3389,15 @@ dxf_hatch_boundary_path_edge_ellipse_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (ellipse->next != NULL)
+        if (dxf_hatch_boundary_path_edge_ellipse->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeEllipse was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (ellipse);
-        ellipse = NULL;
+        free (dxf_hatch_boundary_path_edge_ellipse);
+        dxf_hatch_boundary_path_edge_ellipse = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3415,7 +3415,7 @@ dxf_hatch_boundary_path_edge_ellipse_free
 int
 dxf_hatch_boundary_path_edge_line_free
 (
-        DxfHatchBoundaryPathEdgeLine *line
+        DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path edge line entity. */
 )
@@ -3423,15 +3423,15 @@ dxf_hatch_boundary_path_edge_line_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (line->next != NULL)
+        if (dxf_hatch_boundary_path_edge_line->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeLine was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (line);
-        line = NULL;
+        free (dxf_hatch_boundary_path_edge_line);
+        dxf_hatch_boundary_path_edge_line = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3449,7 +3449,7 @@ dxf_hatch_boundary_path_edge_line_free
 int
 dxf_hatch_boundary_path_edge_spline_free
 (
-        DxfHatchBoundaryPathEdgeSpline *spline
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path edge spline entity. */
 )
@@ -3457,16 +3457,16 @@ dxf_hatch_boundary_path_edge_spline_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (spline->next != NULL)
+        if (dxf_hatch_boundary_path_edge_spline->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeSpline was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (spline->control_points);
-        free (spline);
-        spline = NULL;
+        free (dxf_hatch_boundary_path_edge_spline->control_points);
+        free (dxf_hatch_boundary_path_edge_spline);
+        dxf_hatch_boundary_path_edge_spline = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
