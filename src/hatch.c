@@ -2170,7 +2170,10 @@ digraph dxf_hatch_boundary_path_edge_spline_copy_control_points__controlpoints_f
 }
 \enddot
 
- * \return a pointer to the first of the requested control points.
+ * \todo code needs to be checked !
+ *
+ \return a pointer to the first of the requested control points,
+ * \c NULL if no control point was found.
  */
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_copy_control_points
@@ -2211,7 +2214,7 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
                 /* no control points yet, so there is no control point
                  * to copy. */
                 fprintf (stderr,
-                  (_("ERROR in %s () spline contins no control points.\n")),
+                  (_("ERROR in %s () spline contains no control points.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2219,7 +2222,7 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
         {
                 /* iterate through all existing pointers to control
                  * points until the pointer to the last control point
-                 * containing a NULL ponter in it's "next" member is
+                 * containing a NULL pointer in it's "next" member is
                  * found. */
                 DxfHatchBoundaryPathEdgeSplineCp *iter = NULL;
                 DxfHatchBoundaryPathEdgeSplineCp *iter_new = NULL;
@@ -2243,7 +2246,7 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
                         }
                         else
                         {
-                                /* create a new contol point in the chain. */
+                                /* create a new control point in the chain. */
                                 /*! \todo warning: assignment from incompatible pointer type. */
                                 iter_new->next = dxf_hatch_boundary_path_edge_spline_control_point_new ();
                         }
