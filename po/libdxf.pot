@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-22 17:13+0200\n"
+"POT-Creation-Date: 2014-09-27 21:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,11 +71,11 @@ msgstr ""
 #: src/3dface.c:419 src/3dsolid.c:387 src/appid.c:262 src/arc.c:410
 #: src/attdef.c:506 src/attrib.c:504 src/block.c:365 src/body.c:375
 #: src/circle.c:382 src/class.c:288 src/dimension.c:664 src/dimstyle.c:192
-#: src/ellipse.c:426 src/hatch.c:2338 src/hatch.c:2345 src/hatch.c:2499
-#: src/hatch.c:2506 src/hatch.c:2628 src/hatch.c:2635 src/hatch.c:2888
-#: src/hatch.c:2895 src/hatch.c:2960 src/hatch.c:2967 src/helix.c:629
-#: src/image.c:471 src/insert.c:414 src/layer.c:287 src/line.c:359
-#: src/ltype.c:153 src/lwpolyline.c:348
+#: src/ellipse.c:426 src/hatch.c:2341 src/hatch.c:2348 src/hatch.c:2504
+#: src/hatch.c:2511 src/hatch.c:2568 src/hatch.c:2575 src/hatch.c:2612
+#: src/hatch.c:2619 src/hatch.c:2741 src/hatch.c:2748 src/hatch.c:3001
+#: src/hatch.c:3008 src/helix.c:629 src/image.c:471 src/insert.c:414
+#: src/layer.c:287 src/line.c:359 src/ltype.c:153 src/lwpolyline.c:348
 #, c-format
 msgid "Error in %s () a NULL pointer was passed.\n"
 msgstr ""
@@ -88,7 +88,7 @@ msgid ""
 msgstr ""
 
 #: src/3dface.c:429 src/3dsolid.c:397 src/arc.c:469 src/attdef.c:533
-#: src/attrib.c:538 src/body.c:385 src/ellipse.c:450 src/hatch.c:2365
+#: src/attrib.c:538 src/body.c:385 src/ellipse.c:450 src/hatch.c:2368
 #, c-format
 msgid "    %s entity is reset to default linetype"
 msgstr ""
@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 
 #: src/3dface.c:439 src/3dsolid.c:407 src/attdef.c:543 src/body.c:395
-#: src/circle.c:399 src/dimension.c:673 src/hatch.c:2355
+#: src/circle.c:399 src/dimension.c:673 src/hatch.c:2358
 #, c-format
 msgid "    %s entity is relocated to layer 0"
 msgstr ""
@@ -354,7 +354,7 @@ msgid ""
 "%x\n"
 msgstr ""
 
-#: src/block.c:402 src/hatch.c:2352
+#: src/block.c:402 src/hatch.c:2355
 #, c-format
 msgid "Warning: empty layer string for the %s entity with id-code: %x\n"
 msgstr ""
@@ -752,7 +752,7 @@ msgstr ""
 #: src/hatch.c:1128 src/hatch.c:1219 src/hatch.c:1316 src/hatch.c:1396
 #: src/hatch.c:1448 src/hatch.c:1516 src/hatch.c:1567 src/hatch.c:1665
 #: src/hatch.c:1773 src/hatch.c:1902 src/hatch.c:1961 src/hatch.c:2050
-#: src/hatch.c:2192 src/hatch.c:2294
+#: src/hatch.c:2195 src/hatch.c:2297
 #, c-format
 msgid ""
 "ERROR in %s () received a NULL pointer value in "
@@ -766,7 +766,7 @@ msgid ""
 "dxf_hatch_boundary_path_edge_spline_cp.\n"
 msgstr ""
 
-#: src/hatch.c:1403 src/hatch.c:1909 src/hatch.c:2057 src/hatch.c:2301
+#: src/hatch.c:1403 src/hatch.c:1909 src/hatch.c:2057 src/hatch.c:2304
 #, c-format
 msgid "ERROR in %s () resulted in a array pointer overflow.\n"
 msgstr ""
@@ -795,7 +795,7 @@ msgid ""
 "DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n"
 msgstr ""
 
-#: src/hatch.c:1981 src/hatch.c:2214
+#: src/hatch.c:1981
 #, c-format
 msgid "ERROR in %s () spline contins no control points.\n"
 msgstr ""
@@ -805,117 +805,122 @@ msgstr ""
 msgid "ERROR in %s () resulted in a array pointer underflow.\n"
 msgstr ""
 
-#: src/hatch.c:2199
+#: src/hatch.c:2202
 #, c-format
 msgid ""
 "WARNING in %s () received a NULL pointer value in "
 "dxf_hatch_boundary_path_edge_spline_cp.\n"
 msgstr ""
 
-#: src/hatch.c:2202
+#: src/hatch.c:2205
 #, c-format
 msgid "\tAllocating memory.\n"
 msgstr ""
 
-#: src/hatch.c:2362
+#: src/hatch.c:2217
+#, c-format
+msgid "ERROR in %s () spline contains no control points.\n"
+msgstr ""
+
+#: src/hatch.c:2365
 #, c-format
 msgid "Warning: empty linetype string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/hatch.c:2516
-#, c-format
-msgid "Information: last boundary path encountered in %s ().\n"
-msgstr ""
-
-#: src/hatch.c:2548
-#, c-format
-msgid "Error: unknown boundary path type encountered in %s ().\n"
-msgstr ""
-
-#: src/hatch.c:2668 src/hatch.c:2801
-#, c-format
-msgid "ERROR in %s () invalid pointer to polyline (NULL).\n"
-msgstr ""
-
-#: src/hatch.c:2808
-#, c-format
-msgid "ERROR in %s () invalid pointer to point (NULL).\n"
-msgstr ""
-
-#: src/hatch.c:2815
-#, c-format
-msgid "ERROR in %s () polyline is not a closed polygon.\n"
-msgstr ""
-
-#: src/hatch.c:2988
+#: src/hatch.c:2533
 #, c-format
 msgid "Warning: no dash length found in %s () function.\n"
 msgstr ""
 
-#: src/hatch.c:3021
+#: src/hatch.c:2629
+#, c-format
+msgid "Information: last boundary path encountered in %s ().\n"
+msgstr ""
+
+#: src/hatch.c:2661
+#, c-format
+msgid "Error: unknown boundary path type encountered in %s ().\n"
+msgstr ""
+
+#: src/hatch.c:2781 src/hatch.c:2914
+#, c-format
+msgid "ERROR in %s () invalid pointer to polyline (NULL).\n"
+msgstr ""
+
+#: src/hatch.c:2921
+#, c-format
+msgid "ERROR in %s () invalid pointer to point (NULL).\n"
+msgstr ""
+
+#: src/hatch.c:2928
+#, c-format
+msgid "ERROR in %s () polyline is not a closed polygon.\n"
+msgstr ""
+
+#: src/hatch.c:3071
 #, c-format
 msgid "ERROR in %s () pointer to next DxfHatch was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3067 src/hatch.c:3103
+#: src/hatch.c:3117 src/hatch.c:3187
 #, c-format
 msgid "ERROR in %s () pointer to next DxfHatchPattern was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3137
+#: src/hatch.c:3153
 #, c-format
 msgid "ERROR in %s () pointer to next DxfHatchPatternDefLine was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3171
+#: src/hatch.c:3221
 #, c-format
 msgid "ERROR in %s () pointer to next DxfHatchBoundaryPath was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3207
+#: src/hatch.c:3257
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathPolyline was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3242
+#: src/hatch.c:3292
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathPolylineVertex was not "
 "NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3276
+#: src/hatch.c:3326
 #, c-format
 msgid "ERROR in %s () pointer to next DxfHatchBoundaryPathEdge was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3314
+#: src/hatch.c:3364
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeArc was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3348
+#: src/hatch.c:3398
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeEllipse was not "
 "NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3382
+#: src/hatch.c:3432
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeLine was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3416
+#: src/hatch.c:3466
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeSpline was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3451
+#: src/hatch.c:3501
 #, c-format
 msgid ""
 "ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeSplineCp was not "
