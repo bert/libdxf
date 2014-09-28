@@ -709,7 +709,7 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
 int
 dxf_hatch_boundary_path_edge_spline_copy_knot_values
 (
-        DxfHatchBoundaryPathEdgeSpline *spline,
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
         double *knot_values[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
 );
 int
@@ -741,13 +741,13 @@ dxf_hatch_boundary_path_write
 int
 dxf_hatch_boundary_path_polyline_close_polyline
 (
-        DxfHatchBoundaryPathPolyline *polyline
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline
 );
 int
 dxf_hatch_boundary_path_polyline_point_inside_polyline
 (
-        DxfHatchBoundaryPathPolyline *polyline,
-        DxfPoint *point,
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline,
+        DxfPoint *dxf_point,
         int *result
 );
 int
@@ -760,7 +760,7 @@ int
 dxf_hatch_boundary_path_polyline_vertex_write
 (
         DxfFile *fp,
-        DxfHatchBoundaryPathPolylineVertex *vertex
+        DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex
 );
 int
 dxf_hatch_free

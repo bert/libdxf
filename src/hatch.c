@@ -2280,7 +2280,7 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
 int
 dxf_hatch_boundary_path_edge_spline_copy_knot_values
 (
-        DxfHatchBoundaryPathEdgeSpline *spline,
+        DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline,
                 /*!< DXF \c HATCH boundary path edge spline entity (source). */
         double *knot_values[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
                 /*!< Array of knot values (destination). */
@@ -2291,23 +2291,23 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
 #endif
         int i;
 
-        if (spline == NULL)
+        if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (spline->number_of_knots > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        if (dxf_hatch_boundary_path_edge_spline->number_of_knots > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () resulted in a array pointer overflow.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        for (i = 0; i < spline->number_of_knots; i++)
+        for (i = 0; i < dxf_hatch_boundary_path_edge_spline->number_of_knots; i++)
         {
-                *knot_values[i] = spline->knots[i];
+                *knot_values[i] = dxf_hatch_boundary_path_edge_spline->knots[i];
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -2727,7 +2727,7 @@ dxf_hatch_boundary_path_polyline_vertex_write
 (
         DxfFile *fp,
                 /*!< file pointer to output file (or device). */
-        DxfHatchBoundaryPathPolylineVertex *vertex
+        DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex
                 /*!< DXF hatch boundary path polyline vertex entity. */
 )
 {
@@ -2742,15 +2742,15 @@ dxf_hatch_boundary_path_polyline_vertex_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (vertex == NULL)
+        if (dxf_hatch_boundary_path_polyline_vertex == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        fprintf (fp->fp, " 10\n%f\n", vertex->x0);
-        fprintf (fp->fp, " 20\n%f\n", vertex->y0);
+        fprintf (fp->fp, " 10\n%f\n", dxf_hatch_boundary_path_polyline_vertex->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_hatch_boundary_path_polyline_vertex->y0);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2768,21 +2768,21 @@ dxf_hatch_boundary_path_polyline_vertex_write
 int
 dxf_hatch_boundary_path_polyline_close_polyline
 (
-        DxfHatchBoundaryPathPolyline *polyline
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline
                 /*!< DXF hatch boundary path polyline entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (polyline == NULL)
+        if (dxf_hatch_boundary_path_polyline == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () invalid pointer to polyline (NULL).\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (polyline->is_closed == 0)
+        if (dxf_hatch_boundary_path_polyline->is_closed == 0)
         {
                 /* iterate over all vertices until the last vertex,
                  * append a new vertex with values of the first vertex,
@@ -2793,7 +2793,7 @@ dxf_hatch_boundary_path_polyline_close_polyline
                 first = dxf_hatch_boundary_path_polyline_vertex_new ();
                 iter = dxf_hatch_boundary_path_polyline_vertex_new ();
                 next = dxf_hatch_boundary_path_polyline_vertex_new ();
-                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+                first = (DxfHatchBoundaryPathPolylineVertex *) dxf_hatch_boundary_path_polyline->vertices;
                 iter = first;
                 for (;;)
                 {
@@ -2804,7 +2804,7 @@ dxf_hatch_boundary_path_polyline_close_polyline
                         }
                         iter = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
                 }
-                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+                first = (DxfHatchBoundaryPathPolylineVertex *) dxf_hatch_boundary_path_polyline->vertices;
                  /*! \todo How do we know what's the last id_code ?
                   * This should be taken from a global id_code counter. */
                 next->id_code = iter->id_code + 1;
@@ -2813,7 +2813,7 @@ dxf_hatch_boundary_path_polyline_close_polyline
                 next->next = NULL;
                 /*! \todo warning: assignment from incompatible pointer type. */
                 iter->next = (DxfHatchBoundaryPathPolylineVertex *) next;
-                polyline->is_closed = 1;
+                dxf_hatch_boundary_path_polyline->is_closed = 1;
         }
         else
         {
@@ -2827,7 +2827,7 @@ dxf_hatch_boundary_path_polyline_close_polyline
                 first = dxf_hatch_boundary_path_polyline_vertex_new ();
                 iter = dxf_hatch_boundary_path_polyline_vertex_new ();
                 next = dxf_hatch_boundary_path_polyline_vertex_new ();
-                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+                first = (DxfHatchBoundaryPathPolylineVertex *) dxf_hatch_boundary_path_polyline->vertices;
                 iter = first;
                 for (;;)
                 {
@@ -2838,7 +2838,7 @@ dxf_hatch_boundary_path_polyline_close_polyline
                         }
                         iter = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
                 }
-                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+                first = (DxfHatchBoundaryPathPolylineVertex *) dxf_hatch_boundary_path_polyline->vertices;
                 if (iter->x0 != first->x0 && iter->y0 != first->y0)
                 {
                         /* the first vertex coordinates are identical to
@@ -2897,9 +2897,9 @@ dxf_hatch_boundary_path_polyline_close_polyline
 int
 dxf_hatch_boundary_path_polyline_point_inside_polyline
 (
-        DxfHatchBoundaryPathPolyline *polyline,
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline,
                 /*!< DXF hatch boundary path polyline entity. */
-        DxfPoint *point,
+        DxfPoint *dxf_point,
                 /*!< The point to be tested for. */
         int *result
                 /*!< Result of the test. */
@@ -2908,21 +2908,21 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (polyline == NULL)
+        if (dxf_hatch_boundary_path_polyline == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () invalid pointer to polyline (NULL).\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (point == NULL)
+        if (dxf_point == NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () invalid pointer to point (NULL).\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (polyline->is_closed != 1)
+        if (dxf_hatch_boundary_path_polyline->is_closed != 1)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () polyline is not a closed polygon.\n")),
@@ -2939,7 +2939,7 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
         p1 = dxf_hatch_boundary_path_polyline_vertex_new ();
         iter = dxf_hatch_boundary_path_polyline_vertex_new ();
         next = dxf_hatch_boundary_path_polyline_vertex_new ();
-        iter = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+        iter = (DxfHatchBoundaryPathPolylineVertex *) dxf_hatch_boundary_path_polyline->vertices;
         next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
         angle = 0;
         for (;;)
@@ -2950,10 +2950,10 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
                         break;
                 }
                 next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
-                p0->x0 = iter->x0 - point->x0;
-                p0->y0 = iter->y0 - point->y0;
-                p1->x0 = next->x0 - point->x0;
-                p1->y0 = next->y0 - point->y0;
+                p0->x0 = iter->x0 - dxf_point->x0;
+                p0->y0 = iter->y0 - dxf_point->y0;
+                p1->x0 = next->x0 - dxf_point->x0;
+                p1->y0 = next->y0 - dxf_point->y0;
                 angle += dxf_hatch_boundary_path_polyline_vertex_angle (iter, next);
                 iter = next;
         }
