@@ -754,7 +754,7 @@ int
 dxf_hatch_boundary_path_polyline_write
 (
         DxfFile *fp,
-        DxfHatchBoundaryPathPolyline *polyline
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline
 );
 int
 dxf_hatch_boundary_path_polyline_vertex_write
@@ -770,27 +770,27 @@ dxf_hatch_free
 int
 dxf_hatch_pattern_free
 (
-        DxfHatchPattern *pattern
+        DxfHatchPattern *dxf_hatch_pattern
 );
 int
 dxf_hatch_pattern_def_line_free
 (
-        DxfHatchPatternDefLine *def_line
+        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
 );
 int
 dxf_hatch_pattern_seedpoint_free
 (
-        DxfHatchPatternSeedPoint *seedpoint
+        DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint
 );
 int
 dxf_hatch_boundary_path_free
 (
-        DxfHatchBoundaryPath *path
+        DxfHatchBoundaryPath *dxf_hatch_boundary_path
 );
 int
 dxf_hatch_boundary_path_polyline_free
 (
-        DxfHatchBoundaryPathPolyline *polyline
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline
 );
 double
 dxf_hatch_boundary_path_polyline_vertex_angle
@@ -801,7 +801,7 @@ dxf_hatch_boundary_path_polyline_vertex_angle
 int
 dxf_hatch_boundary_path_polyline_vertex_free
 (
-        DxfHatchBoundaryPathPolylineVertex *vertex
+        DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex
 );
 int
 dxf_hatch_boundary_path_edge_free

@@ -2985,7 +2985,7 @@ dxf_hatch_boundary_path_polyline_write
 (
         DxfFile *fp,
                 /*!< file pointer to output file (or device). */
-        DxfHatchBoundaryPathPolyline *polyline
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline
                 /*!< DXF hatch boundary path polyline entity. */
 )
 {
@@ -3002,19 +3002,19 @@ dxf_hatch_boundary_path_polyline_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (polyline == NULL)
+        if (dxf_hatch_boundary_path_polyline == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        fprintf (fp->fp, " 72\n%d\n", polyline->has_bulge);
-        fprintf (fp->fp, " 73\n%d\n", polyline->is_closed);
-        fprintf (fp->fp, " 93\n%d\n", polyline->number_of_vertices);
+        fprintf (fp->fp, " 72\n%d\n", dxf_hatch_boundary_path_polyline->has_bulge);
+        fprintf (fp->fp, " 73\n%d\n", dxf_hatch_boundary_path_polyline->is_closed);
+        fprintf (fp->fp, " 93\n%d\n", dxf_hatch_boundary_path_polyline->number_of_vertices);
         /* draw hatch boundary vertices. */
         iter = dxf_hatch_boundary_path_polyline_vertex_new ();
-        iter = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+        iter = (DxfHatchBoundaryPathPolylineVertex *) dxf_hatch_boundary_path_polyline->vertices;
         for (;;)
         {
                 dxf_hatch_boundary_path_polyline_vertex_write
@@ -3029,15 +3029,18 @@ dxf_hatch_boundary_path_polyline_write
                 }
         }
         /* test for closed polyline: close with first vertex. */
-        if (polyline->is_closed)
+        if (dxf_hatch_boundary_path_polyline->is_closed)
         {
                 dxf_hatch_boundary_path_polyline_vertex_write
                 (
                         fp,
-                        (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices
+                        (DxfHatchBoundaryPathPolylineVertex *) dxf_hatch_boundary_path_polyline->vertices
                 );
         }
-        if (polyline->bulge != 0.0) fprintf (fp->fp, " 42\n%f\n", polyline->bulge);
+        if (dxf_hatch_boundary_path_polyline->bulge != 0.0)
+        {
+                fprintf (fp->fp, " 42\n%f\n", dxf_hatch_boundary_path_polyline->bulge);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3103,7 +3106,7 @@ dxf_hatch_free
 int
 dxf_hatch_pattern_free
 (
-        DxfHatchPattern *pattern
+        DxfHatchPattern *dxf_hatch_pattern
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * pattern entity. */
 )
@@ -3111,17 +3114,17 @@ dxf_hatch_pattern_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (pattern->next != NULL)
+        if (dxf_hatch_pattern->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfHatchPattern was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (pattern->lines);
-        free (pattern->seed_points);
-        free (pattern);
-        pattern = NULL;
+        free (dxf_hatch_pattern->lines);
+        free (dxf_hatch_pattern->seed_points);
+        free (dxf_hatch_pattern);
+        dxf_hatch_pattern = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3139,7 +3142,7 @@ dxf_hatch_pattern_free
 int
 dxf_hatch_pattern_def_line_free
 (
-        DxfHatchPatternDefLine *def_line
+        DxfHatchPatternDefLine *dxf_hatch_pattern_def_line
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * pattern definition line entity. */
 )
@@ -3147,15 +3150,15 @@ dxf_hatch_pattern_def_line_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (def_line->next != NULL)
+        if (dxf_hatch_pattern_def_line->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfHatchPatternDefLine was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (def_line);
-        def_line = NULL;
+        free (dxf_hatch_pattern_def_line);
+        dxf_hatch_pattern_def_line = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3173,7 +3176,7 @@ dxf_hatch_pattern_def_line_free
 int
 dxf_hatch_pattern_seedpoint_free
 (
-        DxfHatchPatternSeedPoint *seedpoint
+        DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * pattern seedpoint entity. */
 )
@@ -3181,15 +3184,15 @@ dxf_hatch_pattern_seedpoint_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (seedpoint->next != NULL)
+        if (dxf_hatch_pattern_seedpoint->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfHatchPattern was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (seedpoint);
-        seedpoint = NULL;
+        free (dxf_hatch_pattern_seedpoint);
+        dxf_hatch_pattern_seedpoint = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3207,7 +3210,7 @@ dxf_hatch_pattern_seedpoint_free
 int
 dxf_hatch_boundary_path_free
 (
-        DxfHatchBoundaryPath *path
+        DxfHatchBoundaryPath *dxf_hatch_boundary_path
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path entity. */
 )
@@ -3215,17 +3218,17 @@ dxf_hatch_boundary_path_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (path->next != NULL)
+        if (dxf_hatch_boundary_path->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfHatchBoundaryPath was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (path->edges);
-        free (path->polylines);
-        free (path);
-        path = NULL;
+        free (dxf_hatch_boundary_path->edges);
+        free (dxf_hatch_boundary_path->polylines);
+        free (dxf_hatch_boundary_path);
+        dxf_hatch_boundary_path = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3243,7 +3246,7 @@ dxf_hatch_boundary_path_free
 int
 dxf_hatch_boundary_path_polyline_free
 (
-        DxfHatchBoundaryPathPolyline *polyline
+        DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path polyline entity. */
 )
@@ -3251,16 +3254,16 @@ dxf_hatch_boundary_path_polyline_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (polyline->next != NULL)
+        if (dxf_hatch_boundary_path_polyline->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfHatchBoundaryPathPolyline was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (polyline->vertices);
-        free (polyline);
-        polyline = NULL;
+        free (dxf_hatch_boundary_path_polyline->vertices);
+        free (dxf_hatch_boundary_path_polyline);
+        dxf_hatch_boundary_path_polyline = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3278,7 +3281,7 @@ dxf_hatch_boundary_path_polyline_free
 int
 dxf_hatch_boundary_path_polyline_vertex_free
 (
-        DxfHatchBoundaryPathPolylineVertex *vertex
+        DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path polyline vertex entity. */
 )
@@ -3286,15 +3289,15 @@ dxf_hatch_boundary_path_polyline_vertex_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (vertex->next != NULL)
+        if (dxf_hatch_boundary_path_polyline_vertex->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfHatchBoundaryPathPolylineVertex was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (vertex);
-        vertex = NULL;
+        free (dxf_hatch_boundary_path_polyline_vertex);
+        dxf_hatch_boundary_path_polyline_vertex = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
