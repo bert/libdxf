@@ -2683,9 +2683,9 @@ dxf_hatch_boundary_path_write
 double
 dxf_hatch_boundary_path_polyline_vertex_angle
 (
-        DxfHatchBoundaryPathPolylineVertex *vertex_0,
+        DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex_0,
                 /*!< The first vertex (of the pair). */
-        DxfHatchBoundaryPathPolylineVertex *vertex_1
+        DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex_1
                 /*!< The second vertex (of the pair). */
 )
 {
@@ -2700,10 +2700,10 @@ dxf_hatch_boundary_path_polyline_vertex_angle
         double theta0;
         double theta1;
 
-        x0 = vertex_0->x0;
-        y0 = vertex_0->y0;
-        x1 = vertex_1->x0;
-        y1 = vertex_1->y0;
+        x0 = dxf_hatch_boundary_path_polyline_vertex_0->x0;
+        y0 = dxf_hatch_boundary_path_polyline_vertex_0->y0;
+        x1 = dxf_hatch_boundary_path_polyline_vertex_1->x0;
+        y1 = dxf_hatch_boundary_path_polyline_vertex_1->y0;
         theta0 = atan2 (y0, x0);
         theta1 = atan2 (y1, x1);
         dtheta = theta1 - theta0;
@@ -3490,7 +3490,7 @@ dxf_hatch_boundary_path_edge_spline_free
 int
 dxf_hatch_boundary_path_edge_spline_control_point_free
 (
-        DxfHatchBoundaryPathEdgeSplineCp *control_point
+        DxfHatchBoundaryPathEdgeSplineCp *dxf_hatch_boundary_path_edge_spline_cp
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * boundary path edge spline control point entity. */
 )
@@ -3498,15 +3498,15 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (control_point->next != NULL)
+        if (dxf_hatch_boundary_path_edge_spline_cp->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeSplineCp was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (control_point);
-        control_point = NULL;
+        free (dxf_hatch_boundary_path_edge_spline_cp);
+        dxf_hatch_boundary_path_edge_spline_cp = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
