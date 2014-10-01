@@ -92,7 +92,14 @@ dxf_helix_init
 #endif
         int i;
 
-        dxf_helix = dxf_helix_new ();
+        /* Do some basic checks. */
+        if (dxf_helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_helix = dxf_helix_new ();
+        }
         if (dxf_helix == NULL)
         {
               fprintf (stderr,
@@ -182,8 +189,13 @@ dxf_helix_read
         int i_knot_value;
         int i_weight_value;
 
-        if (!dxf_helix)
+        /* Do some basic checks. */
+        if (dxf_helix == NULL)
         {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_helix = dxf_helix_new ();
                 dxf_helix_init (dxf_helix);
         }
         i = 0;
@@ -580,6 +592,15 @@ dxf_helix_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_helix->linetype, "") == 0)
+        {
+                dxf_helix->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_helix->layer, "") == 0)
+        {
+                dxf_helix->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -624,6 +645,16 @@ dxf_helix_write
                 fprintf (stderr, "    skipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_helix->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_helix->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_helix->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         if (strcmp (dxf_helix->layer, "") == 0)
         {
