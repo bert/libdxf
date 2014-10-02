@@ -5,6 +5,8 @@
  *
  * \brief Functions for a DXF body entity (\c BODY).
  *
+ * \warning The \c BODY entity requires AutoCAD version R13 or higher.\n
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
