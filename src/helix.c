@@ -5,6 +5,8 @@
  *
  * \brief Functions for a DXF helix entity (\c HELIX).
  *
+ * \warning The \c HELIX entity requires AutoCAD version 2007 or higher.\n
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -630,6 +632,13 @@ dxf_helix_write
         int i;
 
         /* Do some basic checks. */
+        if (fp->acad_version_number < AutoCAD_2007)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_helix == NULL)
         {
                 fprintf (stderr,
