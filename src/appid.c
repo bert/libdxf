@@ -176,7 +176,7 @@ dxf_appid_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
