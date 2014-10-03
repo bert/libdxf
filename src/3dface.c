@@ -169,7 +169,7 @@ dxf_3dface_read
         if (dxf_3dface == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_3dface = dxf_3dface_new ();
                 dxf_3dface_init (dxf_3dface);
@@ -184,7 +184,7 @@ dxf_3dface_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -346,7 +346,7 @@ dxf_3dface_read
                         && (strcmp (temp_string, "AcDbFace") != 0))
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
