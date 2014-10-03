@@ -144,12 +144,11 @@ dxf_3dsolid_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_3dsolid. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return \c a pointer to \c dxf_3dsolid.
  *
  * \version According to DXF R13.
  */
-int
+Dxf3dsolid *
 dxf_3dsolid_read
 (
         DxfFile *fp,
@@ -346,7 +345,7 @@ dxf_3dsolid_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_3dsolid);
 }
 
 

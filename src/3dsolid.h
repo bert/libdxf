@@ -120,7 +120,7 @@ dxf_3dsolid_init
 (
         Dxf3dsolid *dxf_3dsolid
 );
-int
+Dxf3dsolid *
 dxf_3dsolid_read
 (
         DxfFile *fp,
