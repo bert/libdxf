@@ -136,7 +136,7 @@ dxf_acad_proxy_entity_init
 (
         DxfAcadProxyEntity *dxf_acad_proxy_entity
 );
-int
+DxfAcadProxyEntity *
 dxf_acad_proxy_entity_read
 (
         DxfFile *fp,

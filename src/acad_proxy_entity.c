@@ -154,14 +154,13 @@ dxf_acad_proxy_entity_init
  * the \c ENTITY section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_acad_proxy_entity. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_acad_proxy_entity.
  *
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
  */
-int
+DxfAcadProxyEntity *
 dxf_acad_proxy_entity_read
 (
         DxfFile *fp,
@@ -362,7 +361,7 @@ dxf_acad_proxy_entity_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_acad_proxy_entity);
 }
 
 
