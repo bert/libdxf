@@ -146,13 +146,12 @@ dxf_3dface_init
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred while reading from the input file.
+ * \return a pointer to \c dxf_3dface.
  *
  * \version According to DXF R10.
  * \version According to DXF R13.
  */
-int
+Dxf3dface *
 dxf_3dface_read
 (
         DxfFile *fp,
@@ -385,7 +384,7 @@ dxf_3dface_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_3dface);
 }
 
 

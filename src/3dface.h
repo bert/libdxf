@@ -149,7 +149,7 @@ dxf_3dface_init
 (
         Dxf3dface *dxf_3dface
 );
-int
+Dxf3dface *
 dxf_3dface_read
 (
         DxfFile *fp,
