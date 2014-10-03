@@ -170,12 +170,12 @@ dxf_3dsolid_read
                 fprintf (stderr,
                   (_("Error in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
         if (dxf_3dsolid == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_3dsolid = dxf_3dsolid_new ();
                 dxf_3dsolid_init (dxf_3dsolid);
@@ -192,7 +192,7 @@ dxf_3dsolid_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 else if (strcmp (temp_string, "  1") == 0)
                 {
@@ -292,7 +292,7 @@ dxf_3dsolid_read
                         if (strcmp (temp_string, "AcDbModelerGeometry") != 0)
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
@@ -306,7 +306,7 @@ dxf_3dsolid_read
                         if (strcmp (temp_string, "AcDb3dSolid") != 0)
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
