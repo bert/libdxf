@@ -150,14 +150,13 @@ dxf_arc_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_arc. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_arc.
  *
  * \version According to DXF R10.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-int
+DxfArc *
 dxf_arc_read
 (
         DxfFile *fp,
@@ -375,7 +374,7 @@ dxf_arc_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_arc);
 }
 
 

@@ -141,7 +141,7 @@ dxf_arc_init
 (
         DxfArc *dxf_arc
 );
-int
+DxfArc *
 dxf_arc_read
 (
         DxfFile *fp,
