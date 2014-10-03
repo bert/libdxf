@@ -138,13 +138,12 @@ dxf_appid_init
  * \c TABLE section marker \c ENDTAB. \n
  * While parsing the DXF file store data in \c dxf_appid. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_appid.
  *
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-int
+DxfAppid *
 dxf_appid_read
 (
         DxfFile *fp,
@@ -231,7 +230,7 @@ dxf_appid_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_appid);
 }
 
 

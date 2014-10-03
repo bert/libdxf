@@ -100,7 +100,7 @@ dxf_appid_init
 (
         DxfAppid *dxf_appid
 );
-int
+DxfAppid *
 dxf_appid_read
 (
         DxfFile *fp,
