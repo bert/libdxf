@@ -182,12 +182,12 @@ dxf_acad_proxy_entity_read
                 fprintf (stderr,
                   (_("Error in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
         if (!dxf_acad_proxy_entity)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_acad_proxy_entity = dxf_acad_proxy_entity_new ();
                 dxf_acad_proxy_entity_init (dxf_acad_proxy_entity);
@@ -204,7 +204,7 @@ dxf_acad_proxy_entity_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 else if (strcmp (temp_string, "5") == 0)
                 {
@@ -271,7 +271,7 @@ dxf_acad_proxy_entity_read
                         if (dxf_acad_proxy_entity->proxy_entity_class_id != DXF_DEFAULT_PROXY_ENTITY_ID)
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad proxy entity class ID in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad proxy entity class ID in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
@@ -284,7 +284,7 @@ dxf_acad_proxy_entity_read
                         if (dxf_acad_proxy_entity->application_entity_class_id < 500)
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad value in application entity class ID in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad value in application entity class ID in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
@@ -322,7 +322,7 @@ dxf_acad_proxy_entity_read
                           && ((strcmp (temp_string, "AcDbProxyEntity") != 0)))
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
