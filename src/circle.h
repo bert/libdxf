@@ -128,7 +128,7 @@ DxfCircle *dxf_circle_init
 (
         DxfCircle *dxf_circle
 );
-int
+DxfCircle *
 dxf_circle_read
 (
         DxfFile *fp,
