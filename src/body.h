@@ -122,7 +122,7 @@ dxf_body_init
 (
         DxfBody *dxf_body
 );
-int
+DxfBody *
 dxf_body_read
 (
         DxfFile *fp,

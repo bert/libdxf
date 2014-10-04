@@ -147,13 +147,12 @@ dxf_body_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_body. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_body.
  *
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-int
+DxfBody *
 dxf_body_read
 (
         DxfFile *fp,
@@ -175,12 +174,12 @@ dxf_body_read
                 fprintf (stderr,
                   (_("Error in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
         if (dxf_body == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_body = dxf_body_new ();
                 dxf_body_init (dxf_body);
@@ -197,7 +196,7 @@ dxf_body_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 else if (strcmp (temp_string, "  1") == 0)
                 {
@@ -282,7 +281,7 @@ dxf_body_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "AcDbModelerGeometry") != 0)
                         {
-                                fprintf (stderr, "Error in dxf_body_read () found a bad subclass marker in: %s in line: %d.\n",
+                                fprintf (stderr, "Warning in dxf_body_read () found a bad subclass marker in: %s in line: %d.\n",
                                         fp->filename, fp->line_number);
                         }
                 }
@@ -310,7 +309,7 @@ dxf_body_read
                 else
                 {
                         fprintf (stderr,
-                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
@@ -335,7 +334,7 @@ dxf_body_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_body);
 }
 
 
