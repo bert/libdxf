@@ -198,7 +198,7 @@ dxf_attrib_init
 (
         DxfAttrib *dxf_attrib
 );
-int
+DxfAttrib *
 dxf_attrib_read
 (
         DxfFile *fp,

@@ -159,14 +159,13 @@ dxf_attrib_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_attrib. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_attrib.
  *
  * \version According to DXF R10.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-int
+DxfAttrib *
 dxf_attrib_read
 (
         DxfFile *fp,
@@ -184,7 +183,7 @@ dxf_attrib_read
         if (dxf_attrib == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_attrib = dxf_attrib_new ();
                 dxf_attrib_init (dxf_attrib);
@@ -199,7 +198,7 @@ dxf_attrib_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "1") == 0)
                 {
@@ -407,7 +406,7 @@ dxf_attrib_read
                         && (strcmp (temp_string, "AcDbAttribute") != 0))
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
