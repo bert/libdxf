@@ -141,8 +141,7 @@ dxf_block_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_block. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_block.
  *
  * \version According to DXF R10.
  * \version According to DXF R13.
@@ -153,7 +152,7 @@ dxf_block_init
  * needs to be stored in the current (last) \c DxfBlock struct member
  * \c endblk.
  */
-int
+DxfBlock *
 dxf_block_read
 (
         DxfFile *fp,
@@ -171,7 +170,7 @@ dxf_block_read
         if (dxf_block == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_block = dxf_block_new ();
                 dxf_block_init (dxf_block);
@@ -185,7 +184,7 @@ dxf_block_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (0);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "1") == 0)
                 {
@@ -264,7 +263,7 @@ dxf_block_read
                         && ((strcmp (temp_string, "AcDbBlockBegin") != 0)))
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
@@ -301,7 +300,7 @@ dxf_block_read
                 else
                 {
                         fprintf (stderr,
-                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
@@ -321,7 +320,7 @@ dxf_block_read
         if (dxf_block->block_type == 0)
         {
                 fprintf (stderr,
-                  (_("Warning: in %s () illegal block type value found while reading from: %s in line: %d.\n")),
+                  (_("Warning in %s () illegal block type value found while reading from: %s in line: %d.\n")),
                   __FUNCTION__, fp->filename, fp->line_number);
                 fprintf (stderr,
                   (_("    block type value is reset to 1.\n")));
@@ -330,7 +329,7 @@ dxf_block_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_block);
 }
 
 

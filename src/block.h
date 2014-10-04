@@ -144,7 +144,8 @@ DxfBlock *dxf_block_init
 (
         DxfBlock *dxf_block
 );
-int dxf_block_read
+DxfBlock *
+dxf_block_read
 (
         DxfFile *fp,
         DxfBlock *dxf_block
