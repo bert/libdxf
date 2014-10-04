@@ -209,7 +209,7 @@ dxf_attdef_init
 (
         DxfAttdef *dxf_attdef
 );
-int
+DxfAttdef *
 dxf_attdef_read
 (
         DxfFile *fp,
