@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book>
+  <bookinfo>
+    <title>DXF Reference R12.</title>
+
+    <author>
+      <firstname/>
+
+      <surname/>
+
+      <affiliation>
+        <orgname>Autodesk Inc.</orgname>
+      </affiliation>
+    </author>
+
+    <pubdate/>
+
+    <copyright>
+      <year>1982-1990, 1992 Autodesk, Inc</year>
+    </copyright>
+
+    <legalnotice>
+      <para>All rights reserved.</para>
+    </legalnotice>
+
+    <releaseinfo>Drawing Interchange and File Formats Release
+    12.</releaseinfo>
+  </bookinfo>
+
+  <chapter>
+    <title/>
+
+    <section>
+      <title>AutoCAD Release 12 DXF Format.</title>
+
+      <para>AutoCAD can be used by itself as a complete drawing editor.</para>
+
+      <para>In some applications, however, other programs must examine
+      drawings created by AutoCAD or generate drawings to be viewed, modified,
+      or plotted with AutoCAD.</para>
+
+      <para>For example, if you've made an architectural drawing with AutoCAD,
+      using inserted parts to represent windows, doors, and so on, you can
+      process the drawing file and produce a bill of materials of all items
+      used in the drawing, or even make energy-use calculations based on the
+      area and the number and type of windows used.</para>
+
+      <para>Another possible application is to use AutoCAD to describe
+      structures and then send the descriptions to a more powerful computer
+      for finite-element structural analysis.</para>
+
+      <para>You can compute stresses and displacements and send back
+      information to display the deformed structure as an AutoCAD drawing.
+      Since the AutoCAD drawing database (.dwg file) is written in a compact
+      format that changes significantly as new features are added to AutoCAD,
+      we do not document its format and do not recommend that you attempt to
+      write programs to read it directly.</para>
+
+      <para>To assist in interchanging drawings between AutoCAD and other
+      programs, a Drawing Interchange file format (DXF) has been
+      defined.</para>
+
+      <para>All implementations of AutoCAD accept this format and are able to
+      convert it to and from their internal drawing file
+      representation.</para>
+
+      <para>AutoCAD also supports the Initial Graphics Exchange Specification
+      (IGES) file format.</para>
+
+      <para>The information comprising an AutoCAD drawing can be written out
+      in IGES format, and IGES files can be read and converted to the AutoCAD
+      internal format.</para>
+    </section>
+
+    <section>
+      <title>ASCII Drawing Interchange (DXF) Files.</title>
+
+      <para>This section describes the AutoCAD DXF (drawing interchange file)
+      format and the commands provided to read and write these files.</para>
+
+      <para>DXF files are standard ASCII text files.</para>
+
+      <para>They can easily be translated to the formats of other CAD systems
+      or submitted to other programs for specialized analysis.</para>
+
+      <para>AutoCAD can also produce or read a binary form of the full DXF
+      file.</para>
+
+      <para>This feature is described in detail later in this chapter.</para>
+
+      <section>
+        <title>DXFOUT Command - Writing a DXF File.</title>
+
+        <para>You can generate a drawing interchange file from an existing
+        drawing by means of the DXFOUT command:</para>
+
+        <programlisting>Command: dxfout</programlisting>
+
+        <para>When AutoCAD prompts you, respond with a filename or press 5 to
+        accept the default.</para>
+
+        <para>The default name for the output file is the same as that of the
+        current drawing, but with a file type of .dxf.</para>
+
+        <para>If you specify an explicit filename, you do not need to include
+        a file type; .dxf is assumed. If a file with the same name already
+        exists, the existing file is deleted.</para>
+
+        <para>If you specify the file using a file dialogue box, and a file
+        with the same name already exists, AutoCAD tells you; allowing you to
+        OK or cancel the deletion.</para>
+
+        <para>Next, DXFOUT asks what precision you want for floating-point
+        numbers and permits output of a partial DXF file containing only
+        selected objects.</para>
+
+        <programlisting>Enter decimal places of accuracy (0 to 16)/Entities/Binary &lt;6&gt;:</programlisting>
+
+        <para>The Binary option is described later in this chapter.</para>
+
+        <para>If you respond with "entities" (or just "e"), DXFOUT asks you to
+        select the objects you want written to the DXF file.</para>
+
+        <para>Only the objects you select are included in the output file -
+        symbol tables (including Block Definitions) will not be
+        included.</para>
+
+        <para>Once you've selected the desired objects, AutoCAD again prompts
+        you for the numeric precision:</para>
+
+        <programlisting>Enter decimal places of accuracy (0 to 16)/Binary &lt;6&gt;:</programlisting>
+      </section>
+
+      <section>
+        <title>DXFIN Command - Loading a DXF File.</title>
+
+        <para>A drawing interchange file can be converted into an AutoCAD
+        drawing by means of the DXFIN command:</para>
+
+        <programlisting>Command: dxfin</programlisting>
+
+        <para>When AutoCAD prompts you, respond with the name of the drawing
+        interchange file to be loaded.</para>
+
+        <section>
+          <title>Full DXFIN.</title>
+
+          <para>To load a complete DXF file, you must use DXFIN in an empty
+          drawing, before any entities have been drawn and before any
+          additional Block definitions, layers, linetypes, text styles,
+          dimension styles, named views, named coordinate systems, or named
+          viewport configurations have been created.<note>
+              <para>If the drawing you are using as a prototype is not empty,
+              you might find it helpful to open a new drawing using the No
+              Prototype... button of the Create New Drawing dialogue box, as
+              described in chapter 4 of the "AutoCAD Reference Manual".</para>
+
+              <para>You should also be aware that some third-party
+              applications include an acad.lsp or .mnl file that modifies your
+              drawing upon startup.</para>
+            </note>If any errors are detected during the input, the new
+          drawing is discarded.</para>
+
+          <para>Otherwise, an automatic ZOOM All is performed to set the
+          drawing extents.</para>
+        </section>
+
+        <section>
+          <title>Partial DXFIN.</title>
+
+          <para>If the current drawing is not empty, DXFIN loads only the
+          ENTITIES section of the DXF file, adding the entities found there to
+          the current drawing.</para>
+
+          <para>In this case, DXFIN displays the message:<programlisting>Not a new drawing -- only ENTITIES section will be input.</programlisting>If
+          errors are detected during such partial DXF input, the drawing is
+          returned to the state it was in before the DXFIN command.</para>
+
+          <para>Otherwise, the newly added entities are drawn.</para>
+        </section>
+
+        <section>
+          <title>Auditing DXF Files.</title>
+
+          <para>To ensure that corrupt data is not imported into your drawing,
+          you can instruct AutoCAD to perform an audit after importing DXF
+          files into your drawing with DXFIN.</para>
+
+          <para>When you use DXFIN, the default action is to perform no
+          automatic auditing.</para>
+
+          <para>To activate automatic auditing, use the CONFIG command:</para>
+
+          <programlisting>Command: config</programlisting>
+
+          <para>Your current AutoCAD configuration appears.</para>
+
+          <para>Press 5 to continue.</para>
+
+          <para>From the Configuration menu select this option:</para>
+
+          <programlisting>7. Configure operating parameters</programlisting>
+
+          <para>From the Operating parameter menu select this option:</para>
+
+          <programlisting>9. Automatic Audit after IGESIN, DXFIN, or DXBIN</programlisting>
+
+          <para>Answer Y to this question:</para>
+
+          <programlisting>Do you want an automatic audit after IGESIN, DXFIN, or DXBIN?
+&lt;N&gt;: y</programlisting>
+
+          <para>Return to the graphics screen by pressing 5 three times.<note>
+              <para>This kind of audit only displays the errors AutoCAD finds;
+              it does not correct them.</para>
+
+              <para>To correct problems, use the AUDIT command on the drawing
+              while you are in AutoCAD, or manually edit the DXF file.</para>
+            </note></para>
+        </section>
+      </section>
+    </section>
+  </chapter>
+</book>
