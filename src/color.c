@@ -2201,7 +2201,6 @@ dxf_RGB_color_get_name
                         return (NULL);
                 }
         }
-
 #if DEBUG
         DXF_DEBUG_END
 #endif
