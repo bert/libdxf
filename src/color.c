@@ -506,6 +506,8 @@ dxf_RGB_to_triplet
  * These color names are defined by Wikipedia's
  * <a href="http://en.wikipedia.org/wiki/List_of_colors">
  * List of colors</a>.
+ *
+ * \return a pointer to the color name string, or \c NULL if unknown.
  */
 char *
 dxf_RGB_color_get_name
