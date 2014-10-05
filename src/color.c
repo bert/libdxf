@@ -2230,14 +2230,14 @@ dxf_RGB_color_free
         if (dxf_RGB_color == NULL)
         {
               fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
         if (dxf_RGB_color->name == NULL)
         {
               fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer to a DxfRGBColor name was passed.\n")),
+                  (_("Warning in %s () a NULL pointer to a DxfRGBColor name was passed.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
