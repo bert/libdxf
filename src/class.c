@@ -128,10 +128,9 @@ dxf_class_init
  * section marker \c ENDCLASS. \n
  * While parsing the DXF file store data in \c dxf_class. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_class.
  */
-int
+DxfClass *
 dxf_class_read
 (
         DxfFile *fp,
@@ -149,7 +148,7 @@ dxf_class_read
         if (dxf_class == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_class = dxf_class_new ();
                 dxf_class_init (dxf_class);
@@ -164,7 +163,7 @@ dxf_class_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "0") == 0)
                 {
@@ -230,7 +229,7 @@ dxf_class_read
                 else
                 {
                         fprintf (stderr,
-                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
@@ -238,29 +237,29 @@ dxf_class_read
         if (strcmp (dxf_class->record_type, "") == 0)
         {
                 fprintf (stderr,
-                  (_("Error: in %s () empty record type string after reading from: %s before line: %d.\n")),
+                  (_("Error in %s () empty record type string after reading from: %s before line: %d.\n")),
                   __FUNCTION__, fp->filename, fp->line_number);
-                return (EXIT_FAILURE);
+                return (NULL);
 
         }
         if (strcmp (dxf_class->record_name, "") == 0)
         {
                 fprintf (stderr,
-                  (_("Error: in %s () empty record name string after reading from: %s before line: %d.\n")),
+                  (_("Error in %s () empty record name string after reading from: %s before line: %d.\n")),
                   __FUNCTION__, fp->filename, fp->line_number);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
         if (strcmp (dxf_class->class_name, "") == 0)
         {
                 fprintf (stderr,
-                  (_("Error: in %s () empty class name string after reading from: %s before line: %d.\n")),
+                  (_("Error in %s () empty class name string after reading from: %s before line: %d.\n")),
                   __FUNCTION__, fp->filename, fp->line_number);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_class);
 }
 
 

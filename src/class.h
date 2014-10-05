@@ -117,7 +117,7 @@ dxf_class_init
 (
         DxfClass *dxf_class
 );
-int
+DxfClass *
 dxf_class_read
 (
         DxfFile *fp,
