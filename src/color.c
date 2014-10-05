@@ -522,1679 +522,1679 @@ dxf_RGB_color_get_name
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *dxf_RGB_color_get_name;
+        char *RGB_color_name;
 
         switch (RGB_color_hex_triplet)
         {
                 case 0xF0F8FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Alice blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Alice blue");
+                        return (RGB_color_name);
                 }
 /*
                 case 0xE32636 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Alizarin");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Alizarin");
+                        return (RGB_color_name);
                 }
 */
                 case 0xE52B50 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Amaranth");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Amaranth");
+                        return (RGB_color_name);
                 }
                 case 0xF19CBB :
                 {
-                        dxf_RGB_color_get_name = strdup ("Amaranth Pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Amaranth Pink");
+                        return (RGB_color_name);
                 }
                 case 0xFFBF00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Amber");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Amber");
+                        return (RGB_color_name);
                 }
                 case 0x9966CC :
                 {
-                        dxf_RGB_color_get_name = strdup ("Amethyst");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Amethyst");
+                        return (RGB_color_name);
                 }
                 case 0xFBCEB1 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Apricot");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Apricot");
+                        return (RGB_color_name);
                 }
 /*
                 case 0x00FFFF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Aqua");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Aqua");
+                        return (RGB_color_name);
                 }
 */
                 case 0x7FFFD4 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Aquamarine");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Aquamarine");
+                        return (RGB_color_name);
                 }
                 case 0x4B5320 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Aemy green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Aemy green");
+                        return (RGB_color_name);
                 }
                 case 0x7BA05B :
                 {
-                        dxf_RGB_color_get_name = strdup ("Asparagus");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Asparagus");
+                        return (RGB_color_name);
                 }
 /*
                 case 0xFF9966 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Atomic tangerine");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Atomic tangerine");
+                        return (RGB_color_name);
                 }
 */
                 case 0x6D351A :
                 {
-                        dxf_RGB_color_get_name = strdup ("Auburn");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Auburn");
+                        return (RGB_color_name);
                 }
                 case 0x007FFF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Azure (color wheel)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Azure (color wheel)");
+                        return (RGB_color_name);
                 }
                 case 0xF0FFFF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Azure (web)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Azure (web)");
+                        return (RGB_color_name);
                 }
                 case 0xE0FFFF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Baby blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Baby blue");
+                        return (RGB_color_name);
                 }
                 case 0xF5F5DC :
                 {
-                        dxf_RGB_color_get_name = strdup ("Beige");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Beige");
+                        return (RGB_color_name);
                 }
                 case 0x3D2B1F :
                 {
-                        dxf_RGB_color_get_name = strdup ("Bistre");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Bistre");
+                        return (RGB_color_name);
                 }
                 case 0x000000 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Black");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Black");
+                        return (RGB_color_name);
                 }
                 case 0x0000FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Blue");
+                        return (RGB_color_name);
                 }
                 case 0x333399 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Blue (pigment)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Blue (pigment)");
+                        return (RGB_color_name);
                 }
                 case 0x0247FE :
                 {
-                        dxf_RGB_color_get_name = strdup ("Blue (RYB)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Blue (RYB)");
+                        return (RGB_color_name);
                 }
                 case 0x00DDDD :
                 {
-                        dxf_RGB_color_get_name = strdup ("Blue-green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Blue-green");
+                        return (RGB_color_name);
                 }
                 case 0x8A2BE2 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Blue-violet");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Blue-violet");
+                        return (RGB_color_name);
                 }
                 case 0x0095B6 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Bondi blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Bondi blue");
+                        return (RGB_color_name);
                 }
                 case 0xB5A642 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Brass");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Brass");
+                        return (RGB_color_name);
                 }
                 case 0x66FF00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Bright green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Bright green");
+                        return (RGB_color_name);
                 }
 /*
                 case 0xFF007F :
                 {
-                        dxf_RGB_color_get_name = strdup ("Bright pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Bright pink");
+                        return (RGB_color_name);
                 }
 */
                 case 0x08E8DE :
                 {
-                        dxf_RGB_color_get_name = strdup ("Bright turquoise");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Bright turquoise");
+                        return (RGB_color_name);
                 }
                 case 0xFF55A3 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Brilliant rose");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Brilliant rose");
+                        return (RGB_color_name);
                 }
                 case 0xFB607F :
                 {
-                        dxf_RGB_color_get_name = strdup ("Brink pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Brink pink");
+                        return (RGB_color_name);
                 }
                 case 0xCD7F32 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Bronze");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Bronze");
+                        return (RGB_color_name);
                 }
                 case 0x964B00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Brown");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Brown");
+                        return (RGB_color_name);
                 }
                 case 0xF0DC82 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Buff");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Buff");
+                        return (RGB_color_name);
                 }
                 case 0x900020 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Burgundy");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Burgundy");
+                        return (RGB_color_name);
                 }
                 case 0xCC5500 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Burnt orange");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Burnt orange");
+                        return (RGB_color_name);
                 }
                 case 0xE97451 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Burnt sienna");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Burnt sienna");
+                        return (RGB_color_name);
                 }
                 case 0x8A3324 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Burnt umber");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Burnt umber");
+                        return (RGB_color_name);
                 }
                 case 0x78866B :
                 {
-                        dxf_RGB_color_get_name = strdup ("Camouflage green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Camouflage green");
+                        return (RGB_color_name);
                 }
                 case 0x592720 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Caput mortuum");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Caput mortuum");
+                        return (RGB_color_name);
                 }
                 case 0xC41E3A :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cardinal");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cardinal");
+                        return (RGB_color_name);
                 }
                 case 0x960018 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Carmine");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Carmine");
+                        return (RGB_color_name);
                 }
                 case 0xEB4C42 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Carmine Pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Carmine Pink");
+                        return (RGB_color_name);
                 }
                 case 0xFFA6C9 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Carnation pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Carnation pink");
+                        return (RGB_color_name);
                 }
                 case 0x99BADD :
                 {
-                        dxf_RGB_color_get_name = strdup ("Carolina blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Carolina blue");
+                        return (RGB_color_name);
                 }
                 case 0xED9121 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Carrot orange");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Carrot orange");
+                        return (RGB_color_name);
                 }
                 case 0xACE1AF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Celadon");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Celadon");
+                        return (RGB_color_name);
                 }
                 case 0xDE3163 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cerise");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cerise");
+                        return (RGB_color_name);
                 }
                 case 0xEC3B83 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cerise Pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cerise Pink");
+                        return (RGB_color_name);
                 }
                 case 0x007BA7 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cerulean");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cerulean");
+                        return (RGB_color_name);
                 }
                 case 0x2A52BE :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cerulean blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cerulean blue");
+                        return (RGB_color_name);
                 }
                 case 0xF7E7CE :
                 {
-                        dxf_RGB_color_get_name = strdup ("Champagne");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Champagne");
+                        return (RGB_color_name);
                 }
                 case 0x464646 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Charcoal");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Charcoal");
+                        return (RGB_color_name);
                 }
                 case 0xDFFF00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Chartreuse (traditional)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Chartreuse (traditional)");
+                        return (RGB_color_name);
                 }
                 case 0x7FFF00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Chartreuse (web)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Chartreuse (web)");
+                        return (RGB_color_name);
                 }
                 case 0xFFB7C5 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cherry blossom pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cherry blossom pink");
+                        return (RGB_color_name);
                 }
                 case 0xCD5C5C :
                 {
-                        dxf_RGB_color_get_name = strdup ("Chestnut");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Chestnut");
+                        return (RGB_color_name);
                 }
                 case 0x7B3F00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Chocolate");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Chocolate");
+                        return (RGB_color_name);
                 }
 /*
                 case 0xE34234 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cinnabar");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cinnabar");
+                        return (RGB_color_name);
                 }
 */
                 case 0xD2691E :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cinnamon");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cinnamon");
+                        return (RGB_color_name);
                 }
                 case 0x0047AB :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cobalt");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cobalt");
+                        return (RGB_color_name);
                 }
                 case 0x9BDDFF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Columbia blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Columbia blue");
+                        return (RGB_color_name);
                 }
                 case 0xB87333 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Copper");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Copper");
+                        return (RGB_color_name);
                 }
                 case 0x996666 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Copper rose");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Copper rose");
+                        return (RGB_color_name);
                 }
                 case 0xFF7F50 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Coral");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Coral");
+                        return (RGB_color_name);
                 }
                 case 0xF88379 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Coral pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Coral pink");
+                        return (RGB_color_name);
                 }
                 case 0xFF4040 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Coral red");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Coral red");
+                        return (RGB_color_name);
                 }
                 case 0xFBEC5D :
                 {
-                        dxf_RGB_color_get_name = strdup ("Corn");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Corn");
+                        return (RGB_color_name);
                 }
                 case 0x6495ED :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cornflower blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cornflower blue");
+                        return (RGB_color_name);
                 }
                 case 0xFFF8E7 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cosmic latte");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cosmic latte");
+                        return (RGB_color_name);
                 }
                 case 0xFFFDD0 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cream");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cream");
+                        return (RGB_color_name);
                 }
                 case 0xDC143C :
                 {
-                        dxf_RGB_color_get_name = strdup ("Crimson");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Crimson");
+                        return (RGB_color_name);
                 }
                 case 0x00FFFF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cyan");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cyan");
+                        return (RGB_color_name);
                 }
                 case 0x00B7EB :
                 {
-                        dxf_RGB_color_get_name = strdup ("Cyan (process)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Cyan (process)");
+                        return (RGB_color_name);
                 }
                 case 0x00008B :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark blue");
+                        return (RGB_color_name);
                 }
                 case 0x654321 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark brown");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark brown");
+                        return (RGB_color_name);
                 }
                 case 0x08457E :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark cerulean");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark cerulean");
+                        return (RGB_color_name);
                 }
                 case 0x986960 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark chestnut");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark chestnut");
+                        return (RGB_color_name);
                 }
                 case 0xCD5B45 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark coral");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark coral");
+                        return (RGB_color_name);
                 }
                 case 0xB8860B :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark goldenrod");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark goldenrod");
+                        return (RGB_color_name);
                 }
                 case 0x013220 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark green");
+                        return (RGB_color_name);
                 }
                 case 0xBDB76B :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark khaki");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark khaki");
+                        return (RGB_color_name);
                 }
                 case 0x8B008B :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark magenta");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark magenta");
+                        return (RGB_color_name);
                 }
                 case 0x03C03C :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark pastel green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark pastel green");
+                        return (RGB_color_name);
                 }
                 case 0xE75480 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark pink");
+                        return (RGB_color_name);
                 }
                 case 0x560319 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark scarlet");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark scarlet");
+                        return (RGB_color_name);
                 }
                 case 0xE9967A :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark salmon");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark salmon");
+                        return (RGB_color_name);
                 }
                 case 0x2F4F4F :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark slate gray");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark slate gray");
+                        return (RGB_color_name);
                 }
                 case 0x177245 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark spring green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark spring green");
+                        return (RGB_color_name);
                 }
                 case 0x918151 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark tan");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark tan");
+                        return (RGB_color_name);
                 }
                 case 0x00CED1 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark turquoise");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark turquoise");
+                        return (RGB_color_name);
                 }
                 case 0x9400D3 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dark violet");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dark violet");
+                        return (RGB_color_name);
                 }
                 case 0xEF3038 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Deep Carmine Pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Deep Carmine Pink");
+                        return (RGB_color_name);
                 }
                 case 0xDA3287 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Deep cerise");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Deep cerise");
+                        return (RGB_color_name);
                 }
                 case 0xB94E48 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Deep chestnut");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Deep chestnut");
+                        return (RGB_color_name);
                 }
                 case 0xC154C1 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Deep fuchsia");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Deep fuchsia");
+                        return (RGB_color_name);
                 }
                 case 0x9955BB :
                 {
-                        dxf_RGB_color_get_name = strdup ("Deep lilac");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Deep lilac");
+                        return (RGB_color_name);
                 }
                 case 0xCD00CC :
                 {
-                        dxf_RGB_color_get_name = strdup ("Deep magenta");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Deep magenta");
+                        return (RGB_color_name);
                 }
                 case 0xFFCBA4 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Deep peach");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Deep peach");
+                        return (RGB_color_name);
                 }
                 case 0xFF1493 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Deep pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Deep pink");
+                        return (RGB_color_name);
                 }
                 case 0x1560BD :
                 {
-                        dxf_RGB_color_get_name = strdup ("Denim");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Denim");
+                        return (RGB_color_name);
                 }
                 case 0x1E90FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Dodger blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Dodger blue");
+                        return (RGB_color_name);
                 }
                 case 0xC2B280 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Ecru");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Ecru");
+                        return (RGB_color_name);
                 }
                 case 0x1034A6 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Egyptian blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Egyptian blue");
+                        return (RGB_color_name);
                 }
                 case 0x7DF9FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Electric blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Electric blue");
+                        return (RGB_color_name);
                 }
 /*
                 case 0x00FF00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Electric green (X11 green)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Electric green (X11 green)");
+                        return (RGB_color_name);
                 }
 */
                 case 0x6600FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Electric indigo");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Electric indigo");
+                        return (RGB_color_name);
                 }
                 case 0xCCFF00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Electric lime");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Electric lime");
+                        return (RGB_color_name);
                 }
                 case 0xBF00FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Electric purple");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Electric purple");
+                        return (RGB_color_name);
                 }
                 case 0x50C878 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Emerald");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Emerald");
+                        return (RGB_color_name);
                 }
                 case 0x614051 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Eggplant");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Eggplant");
+                        return (RGB_color_name);
                 }
                 case 0x801818 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Falu red");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Falu red");
+                        return (RGB_color_name);
                 }
                 case 0x4F7942 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Fern green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Fern green");
+                        return (RGB_color_name);
                 }
                 case 0xB22222 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Firebrick");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Firebrick");
+                        return (RGB_color_name);
                 }
                 case 0xEEDC82 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Flax");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Flax");
+                        return (RGB_color_name);
                 }
                 case 0x228B22 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Forrest green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Forrest green");
+                        return (RGB_color_name);
                 }
                 case 0xF64A8A :
                 {
-                        dxf_RGB_color_get_name = strdup ("French Rose");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("French Rose");
+                        return (RGB_color_name);
                 }
 /*
                 case 0xFF00FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Fuchsia");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Fuchsia");
+                        return (RGB_color_name);
                 }
 */
                 case 0xFF77FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Fuchsia Pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Fuchsia Pink");
+                        return (RGB_color_name);
                 }
                 case 0xE49B0F :
                 {
-                        dxf_RGB_color_get_name = strdup ("Gamboge");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Gamboge");
+                        return (RGB_color_name);
                 }
                 case 0xD4AF37 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Gold (metallic)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Gold (metallic)");
+                        return (RGB_color_name);
                 }
                 case 0xFFD700 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Gold (web) (Golden)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Gold (web) (Golden)");
+                        return (RGB_color_name);
                 }
                 case 0x996515 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Golden brown");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Golden brown");
+                        return (RGB_color_name);
                 }
                 case 0xFFDF00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Golden yellow");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Golden yellow");
+                        return (RGB_color_name);
                 }
                 case 0xDAA520 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Goldenrod");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Goldenrod");
+                        return (RGB_color_name);
                 }
                 case 0x465945 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Gray-asparagus");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Gray-asparagus");
+                        return (RGB_color_name);
                 }
                 case 0x00FF00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Green (color wheel) (X11 green)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Green (color wheel) (X11 green)");
+                        return (RGB_color_name);
                 }
 /*
                 case 0x008000 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Green (HTML/CSS green)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Green (HTML/CSS green)");
+                        return (RGB_color_name);
                 }
 */
                 case 0x00A550 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Green (pigment)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Green (pigment)");
+                        return (RGB_color_name);
                 }
                 case 0x66B032 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Green (RYB)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Green (RYB)");
+                        return (RGB_color_name);
                 }
                 case 0xADFF2F :
                 {
-                        dxf_RGB_color_get_name = strdup ("Green-yellow");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Green-yellow");
+                        return (RGB_color_name);
                 }
                 case 0x808080 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Gray");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Gray");
+                        return (RGB_color_name);
                 }
                 case 0x5218FA :
                 {
-                        dxf_RGB_color_get_name = strdup ("Han Purple");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Han Purple");
+                        return (RGB_color_name);
                 }
                 case 0x3FFF00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Harlequin");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Harlequin");
+                        return (RGB_color_name);
                 }
                 case 0xDF73FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Heliotrope");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Heliotrope");
+                        return (RGB_color_name);
                 }
                 case 0xF400A1 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Hollywood Cerise");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Hollywood Cerise");
+                        return (RGB_color_name);
                 }
                 case 0xFF00CC :
                 {
-                        dxf_RGB_color_get_name = strdup ("Hot Magenta");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Hot Magenta");
+                        return (RGB_color_name);
                 }
                 case 0xFF69B4 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Hot Pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Hot Pink");
+                        return (RGB_color_name);
                 }
                 case 0x00416A :
                 {
-                        dxf_RGB_color_get_name = strdup ("Indigo (dye)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Indigo (dye)");
+                        return (RGB_color_name);
                 }
                 case 0x4B0082 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Indigo (web)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Indigo (web)");
+                        return (RGB_color_name);
                 }
                 case 0x002FA7 :
                 {
-                        dxf_RGB_color_get_name = strdup ("International Klein Blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("International Klein Blue");
+                        return (RGB_color_name);
                 }
                 case 0xFF4F00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("International orange");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("International orange");
+                        return (RGB_color_name);
                 }
                 case 0x009000 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Islamic green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Islamic green");
+                        return (RGB_color_name);
                 }
                 case 0xFFFFF0 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Ivory");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Ivory");
+                        return (RGB_color_name);
                 }
                 case 0x00A86B :
                 {
-                        dxf_RGB_color_get_name = strdup ("Jade");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Jade");
+                        return (RGB_color_name);
                 }
                 case 0x4CBB17 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Kelly green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Kelly green");
+                        return (RGB_color_name);
                 }
                 case 0xC3B091 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Khaki");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Khaki");
+                        return (RGB_color_name);
                 }
                 case 0xF0E68C :
                 {
-                        dxf_RGB_color_get_name = strdup ("Khaki (X11) (Light khaki)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Khaki (X11) (Light khaki)");
+                        return (RGB_color_name);
                 }
                 case 0xB57EDC :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lavender (floral)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lavender (floral)");
+                        return (RGB_color_name);
                 }
                 case 0xE6E6FA :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lavender (web)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lavender (web)");
+                        return (RGB_color_name);
                 }
                 case 0xCCCCFF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lavender blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lavender blue");
+                        return (RGB_color_name);
                 }
                 case 0xFFF0F5 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lavender blush");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lavender blush");
+                        return (RGB_color_name);
                 }
                 case 0xC4C3D0 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lavender gray");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lavender gray");
+                        return (RGB_color_name);
                 }
                 case 0xEE82EE :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lavender magenta");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lavender magenta");
+                        return (RGB_color_name);
                 }
                 case 0xFBAED2 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lavender pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lavender pink");
+                        return (RGB_color_name);
                 }
                 case 0x967BB6 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lavender purple");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lavender purple");
+                        return (RGB_color_name);
                 }
                 case 0xFBA0E3 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lavender rose");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lavender rose");
+                        return (RGB_color_name);
                 }
                 case 0x7CFC00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lawn green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lawn green");
+                        return (RGB_color_name);
                 }
                 case 0xFDE910 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lemon");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lemon");
+                        return (RGB_color_name);
                 }
                 case 0xFFFACD :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lemon chifton");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lemon chifton");
+                        return (RGB_color_name);
                 }
                 case 0xADD8E6 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Light blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Light blue");
+                        return (RGB_color_name);
                 }
                 case 0xFFB6C1 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Light pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Light pink");
+                        return (RGB_color_name);
                 }
                 case 0xC8A2C8 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lilac");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lilac");
+                        return (RGB_color_name);
                 }
                 case 0xBFFF00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lime (color wheel)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lime (color wheel)");
+                        return (RGB_color_name);
                 }
 /*
                 case 0x00FF00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lime (web) (X11 green)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lime (web) (X11 green)");
+                        return (RGB_color_name);
                 }
 */
                 case 0x32CD32 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Lime green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Lime green");
+                        return (RGB_color_name);
                 }
                 case 0xFAF0E6 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Linen");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Linen");
+                        return (RGB_color_name);
                 }
                 case 0xFF00FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Magenta");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Magenta");
+                        return (RGB_color_name);
                 }
                 case 0xCA1F7B :
                 {
-                        dxf_RGB_color_get_name = strdup ("Magenta (dye)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Magenta (dye)");
+                        return (RGB_color_name);
                 }
                 case 0xFF0090 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Magenta (process)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Magenta (process)");
+                        return (RGB_color_name);
                 }
                 case 0xAAF0D1 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Magic mint");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Magic mint");
+                        return (RGB_color_name);
                 }
                 case 0xF8F4FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Magnolia");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Magnolia");
+                        return (RGB_color_name);
                 }
                 case 0x0BDA51 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Malachite");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Malachite");
+                        return (RGB_color_name);
                 }
                 case 0x800000 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Maroon (HTML/CSS)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Maroon (HTML/CSS)");
+                        return (RGB_color_name);
                 }
                 case 0xB03060 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Maroon (X11)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Maroon (X11)");
+                        return (RGB_color_name);
                 }
                 case 0x73C2FB :
                 {
-                        dxf_RGB_color_get_name = strdup ("Maya blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Maya blue");
+                        return (RGB_color_name);
                 }
                 case 0xE0B0FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Mauve");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Mauve");
+                        return (RGB_color_name);
                 }
                 case 0x915F6D :
                 {
-                        dxf_RGB_color_get_name = strdup ("Mauve Taupe");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Mauve Taupe");
+                        return (RGB_color_name);
                 }
                 case 0x0000CD :
                 {
-                        dxf_RGB_color_get_name = strdup ("Medium blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Medium blue");
+                        return (RGB_color_name);
                 }
 /*
                 case 0xAF4035 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Medium carmine");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Medium carmine");
+                        return (RGB_color_name);
                 }
 */
                 case 0xCC99CC :
                 {
-                        dxf_RGB_color_get_name = strdup ("Medium lavender magenta");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Medium lavender magenta");
+                        return (RGB_color_name);
                 }
                 case 0x9370DB :
                 {
-                        dxf_RGB_color_get_name = strdup ("Medium purple");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Medium purple");
+                        return (RGB_color_name);
                 }
                 case 0x00FA9A :
                 {
-                        dxf_RGB_color_get_name = strdup ("Medium spring green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Medium spring green");
+                        return (RGB_color_name);
                 }
                 case 0x191970 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Midnight Blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Midnight Blue");
+                        return (RGB_color_name);
                 }
                 case 0x004953 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Midnight Green (Eagle Green)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Midnight Green (Eagle Green)");
+                        return (RGB_color_name);
                 }
                 case 0x98FF98 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Mint green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Mint green");
+                        return (RGB_color_name);
                 }
                 case 0xFFE4E1 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Misty rose");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Misty rose");
+                        return (RGB_color_name);
                 }
                 case 0xADDFAD :
                 {
-                        dxf_RGB_color_get_name = strdup ("Moss green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Moss green");
+                        return (RGB_color_name);
                 }
                 case 0x997A8D :
                 {
-                        dxf_RGB_color_get_name = strdup ("Mountbatten pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Mountbatten pink");
+                        return (RGB_color_name);
                 }
                 case 0xFFDB58 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Mustard");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Mustard");
+                        return (RGB_color_name);
                 }
                 case 0x21421E :
                 {
-                        dxf_RGB_color_get_name = strdup ("Myrtle");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Myrtle");
+                        return (RGB_color_name);
                 }
                 case 0x006633 :
                 {
-                        dxf_RGB_color_get_name = strdup ("MSU Green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("MSU Green");
+                        return (RGB_color_name);
                 }
                 case 0xFFDEAD :
                 {
-                        dxf_RGB_color_get_name = strdup ("Navajo white");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Navajo white");
+                        return (RGB_color_name);
                 }
                 case 0x000080 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Navy Blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Navy Blue");
+                        return (RGB_color_name);
                 }
                 case 0xCC7722 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Ochre");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Ochre");
+                        return (RGB_color_name);
                 }
                 case 0x008000 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Office green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Office green");
+                        return (RGB_color_name);
                 }
                 case 0xCFB53B :
                 {
-                        dxf_RGB_color_get_name = strdup ("Old Gold");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Old Gold");
+                        return (RGB_color_name);
                 }
                 case 0xFDF5E6 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Old Lace");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Old Lace");
+                        return (RGB_color_name);
                 }
                 case 0x796878 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Old Lavender");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Old Lavender");
+                        return (RGB_color_name);
                 }
                 case 0xC08081 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Old Rose");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Old Rose");
+                        return (RGB_color_name);
                 }
                 case 0x808000 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Olive");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Olive");
+                        return (RGB_color_name);
                 }
                 case 0x6B8E23 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Olive Drab");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Olive Drab");
+                        return (RGB_color_name);
                 }
                 case 0x9AB973 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Olivine");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Olivine");
+                        return (RGB_color_name);
                 }
                 case 0xFF7F00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Orange (color wheel)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Orange (color wheel)");
+                        return (RGB_color_name);
                 }
                 case 0xFB9902 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Orange (RYB)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Orange (RYB)");
+                        return (RGB_color_name);
                 }
                 case 0xFFA500 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Orange (web)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Orange (web)");
+                        return (RGB_color_name);
                 }
                 case 0xFFA000 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Orange Peel");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Orange Peel");
+                        return (RGB_color_name);
                 }
                 case 0xFF4500 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Orange-Red");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Orange-Red");
+                        return (RGB_color_name);
                 }
                 case 0xDA70D6 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Orchid");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Orchid");
+                        return (RGB_color_name);
                 }
                 case 0xAFEEEE :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pale blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pale blue");
+                        return (RGB_color_name);
                 }
                 case 0x987654 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pale brown");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pale brown");
+                        return (RGB_color_name);
                 }
                 case 0xAF4035 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pale carmine");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pale carmine");
+                        return (RGB_color_name);
                 }
                 case 0xDDADAF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pale chestnut");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pale chestnut");
+                        return (RGB_color_name);
                 }
                 case 0xABCDEF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pale cornflower blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pale cornflower blue");
+                        return (RGB_color_name);
                 }
                 case 0xF984E5 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pale magenta");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pale magenta");
+                        return (RGB_color_name);
                 }
                 case 0xFADADD :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pale pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pale pink");
+                        return (RGB_color_name);
                 }
                 case 0xDB7093 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pale red-violet");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pale red-violet");
+                        return (RGB_color_name);
                 }
                 case 0xBC987E :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pale taupe");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pale taupe");
+                        return (RGB_color_name);
                 }
                 case 0xFFEFD5 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Papaya whip");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Papaya whip");
+                        return (RGB_color_name);
                 }
                 case 0x77DD77 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pastel green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pastel green");
+                        return (RGB_color_name);
                 }
                 case 0xFFD1DC :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pastel pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pastel pink");
+                        return (RGB_color_name);
                 }
                 case 0x40404F :
                 {
-                        dxf_RGB_color_get_name = strdup ("Payne's grey");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Payne's grey");
+                        return (RGB_color_name);
                 }
                 case 0xFFE5B4 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Peach");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Peach");
+                        return (RGB_color_name);
                 }
                 case 0xFFCC99 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Peach-orange");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Peach-orange");
+                        return (RGB_color_name);
                 }
                 case 0xFADFAD :
                 {
-                        dxf_RGB_color_get_name = strdup ("Peach-yellow");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Peach-yellow");
+                        return (RGB_color_name);
                 }
                 case 0xD1E231 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pear");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pear");
+                        return (RGB_color_name);
                 }
 /*
                 case 0xCCCCFF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Periwinkle");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Periwinkle");
+                        return (RGB_color_name);
                 }
 */
                 case 0x1C39BB :
                 {
-                        dxf_RGB_color_get_name = strdup ("Persian blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Persian blue");
+                        return (RGB_color_name);
                 }
                 case 0x00A693 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Persian green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Persian green");
+                        return (RGB_color_name);
                 }
                 case 0x32127A :
                 {
-                        dxf_RGB_color_get_name = strdup ("Persian indigo");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Persian indigo");
+                        return (RGB_color_name);
                 }
                 case 0xD99058 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Persian orange");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Persian orange");
+                        return (RGB_color_name);
                 }
                 case 0xCC3333 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Persian red");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Persian red");
+                        return (RGB_color_name);
                 }
                 case 0xF77FBE :
                 {
-                        dxf_RGB_color_get_name = strdup ("Persian pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Persian pink");
+                        return (RGB_color_name);
                 }
                 case 0xFE28A2 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Persian rose");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Persian rose");
+                        return (RGB_color_name);
                 }
                 case 0xEC5800 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Persimmon");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Persimmon");
+                        return (RGB_color_name);
                 }
                 case 0x01796F :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pine green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pine green");
+                        return (RGB_color_name);
                 }
                 case 0xFFC0CB :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pink");
+                        return (RGB_color_name);
                 }
                 case 0xFF9966 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pink-orange");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pink-orange");
+                        return (RGB_color_name);
                 }
                 case 0xE5E4E2 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Platinum");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Platinum");
+                        return (RGB_color_name);
                 }
 /*
                 case 0xCC99CC :
                 {
-                        dxf_RGB_color_get_name = strdup ("Plum (web)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Plum (web)");
+                        return (RGB_color_name);
                 }
 */
                 case 0xFF5A36 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Portland Orange");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Portland Orange");
+                        return (RGB_color_name);
                 }
 /*
                 case 0xB0E0E6 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Powder blue (web)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Powder blue (web)");
+                        return (RGB_color_name);
                 }
 */
                 case 0xCC8899 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Puce");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Puce");
+                        return (RGB_color_name);
                 }
                 case 0x003153 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Prusian blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Prusian blue");
+                        return (RGB_color_name);
                 }
                 case 0xDD00FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Psychedelic purple");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Psychedelic purple");
+                        return (RGB_color_name);
                 }
                 case 0xFF7518 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Pumpkin");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Pumpkin");
+                        return (RGB_color_name);
                 }
                 case 0x7F007F :
                 {
-                        dxf_RGB_color_get_name = strdup ("Purple (HTML/CSS)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Purple (HTML/CSS)");
+                        return (RGB_color_name);
                 }
                 case 0xA020F0 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Purple (X11)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Purple (X11)");
+                        return (RGB_color_name);
                 }
                 case 0x50404D :
                 {
-                        dxf_RGB_color_get_name = strdup ("Purple Taupe");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Purple Taupe");
+                        return (RGB_color_name);
                 }
                 case 0xE30B5C :
                 {
-                        dxf_RGB_color_get_name = strdup ("Raspberry");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Raspberry");
+                        return (RGB_color_name);
                 }
                 case 0x734A12 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Raw umber");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Raw umber");
+                        return (RGB_color_name);
                 }
                 case 0xE3256B :
                 {
-                        dxf_RGB_color_get_name = strdup ("Razzmatazz");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Razzmatazz");
+                        return (RGB_color_name);
                 }
                 case 0xFF0000 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Red");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Red");
+                        return (RGB_color_name);
                 }
                 case 0xED1C24 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Red (pigment)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Red (pigment)");
+                        return (RGB_color_name);
                 }
                 case 0xFE2712 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Red (RYB)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Red (RYB)");
+                        return (RGB_color_name);
                 }
                 case 0xC71585 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Red-violet");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Red-violet");
+                        return (RGB_color_name);
                 }
                 case 0xD70040 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Rich carmine");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Rich carmine");
+                        return (RGB_color_name);
                 }
                 case 0x00CCCC :
                 {
-                        dxf_RGB_color_get_name = strdup ("Robin egg blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Robin egg blue");
+                        return (RGB_color_name);
                 }
                 case 0xFF007F :
                 {
-                        dxf_RGB_color_get_name = strdup ("Rose");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Rose");
+                        return (RGB_color_name);
                 }
                 case 0xE32636 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Rose Madder");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Rose Madder");
+                        return (RGB_color_name);
                 }
                 case 0xFF66CC :
                 {
-                        dxf_RGB_color_get_name = strdup ("Rose pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Rose pink");
+                        return (RGB_color_name);
                 }
                 case 0xAA98A9 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Rose quartz");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Rose quartz");
+                        return (RGB_color_name);
                 }
                 case 0x905D5D :
                 {
-                        dxf_RGB_color_get_name = strdup ("Rose Taupe");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Rose Taupe");
+                        return (RGB_color_name);
                 }
                 case 0x4169E1 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Royal blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Royal blue");
+                        return (RGB_color_name);
                 }
                 case 0x6B3FA0 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Royal purple");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Royal purple");
+                        return (RGB_color_name);
                 }
                 case 0xE0115F :
                 {
-                        dxf_RGB_color_get_name = strdup ("Ruby");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Ruby");
+                        return (RGB_color_name);
                 }
                 case 0x80461B :
                 {
-                        dxf_RGB_color_get_name = strdup ("Russet");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Russet");
+                        return (RGB_color_name);
                 }
                 case 0xB7410E :
                 {
-                        dxf_RGB_color_get_name = strdup ("Rust");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Rust");
+                        return (RGB_color_name);
                 }
                 case 0xFF6600 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Safety orange (blaze orange)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Safety orange (blaze orange)");
+                        return (RGB_color_name);
                 }
                 case 0xF4C430 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Saffron");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Saffron");
+                        return (RGB_color_name);
                 }
                 case 0xFF8C69 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Salmon");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Salmon");
+                        return (RGB_color_name);
                 }
                 case 0xFF91A4 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Salmon pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Salmon pink");
+                        return (RGB_color_name);
                 }
                 case 0xF4A460 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Sandy brown");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Sandy brown");
+                        return (RGB_color_name);
                 }
                 case 0x92000A :
                 {
-                        dxf_RGB_color_get_name = strdup ("Sangria");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Sangria");
+                        return (RGB_color_name);
                 }
                 case 0x082567 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Sapphire");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Sapphire");
+                        return (RGB_color_name);
                 }
                 case 0xFF2400 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Scarlet");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Scarlet");
+                        return (RGB_color_name);
                 }
                 case 0xFFD800 :
                 {
-                        dxf_RGB_color_get_name = strdup ("School bus yellow");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("School bus yellow");
+                        return (RGB_color_name);
                 }
                 case 0x2E8B57 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Sea green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Sea green");
+                        return (RGB_color_name);
                 }
                 case 0x321414 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Seal brown");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Seal brown");
+                        return (RGB_color_name);
                 }
                 case 0xFFF5EE :
                 {
-                        dxf_RGB_color_get_name = strdup ("Seashell");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Seashell");
+                        return (RGB_color_name);
                 }
                 case 0xFFBA00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Selective yellow");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Selective yellow");
+                        return (RGB_color_name);
                 }
                 case 0x704214 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Sepia");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Sepia");
+                        return (RGB_color_name);
                 }
                 case 0x009E60 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Shamrock green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Shamrock green");
+                        return (RGB_color_name);
                 }
                 case 0xFC0FC0 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Shocking pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Shocking pink");
+                        return (RGB_color_name);
                 }
                 case 0xA0522D :
                 {
-                        dxf_RGB_color_get_name = strdup ("Sienna");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Sienna");
+                        return (RGB_color_name);
                 }
                 case 0xC0C0C0 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Silver");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Silver");
+                        return (RGB_color_name);
                 }
                 case 0x87CEEB :
                 {
-                        dxf_RGB_color_get_name = strdup ("Sky Blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Sky Blue");
+                        return (RGB_color_name);
                 }
                 case 0x708090 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Slate grey");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Slate grey");
+                        return (RGB_color_name);
                 }
                 case 0x003399 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Smalt (Dark powder blue)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Smalt (Dark powder blue)");
+                        return (RGB_color_name);
                 }
                 case 0xA7FC00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Spring bud");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Spring bud");
+                        return (RGB_color_name);
                 }
                 case 0x00FF7F :
                 {
-                        dxf_RGB_color_get_name = strdup ("Spring green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Spring green");
+                        return (RGB_color_name);
                 }
                 case 0x4682B4 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Steel blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Steel blue");
+                        return (RGB_color_name);
                 }
                 case 0xD2B48C :
                 {
-                        dxf_RGB_color_get_name = strdup ("Tan");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Tan");
+                        return (RGB_color_name);
                 }
                 case 0xF28500 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Tangerine");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Tangerine");
+                        return (RGB_color_name);
                 }
                 case 0xFFCC00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Tangerine yellow");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Tangerine yellow");
+                        return (RGB_color_name);
                 }
                 case 0x483C32 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Taupe");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Taupe");
+                        return (RGB_color_name);
                 }
                 case 0x8B8589 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Taupe gray");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Taupe gray");
+                        return (RGB_color_name);
                 }
                 case 0xD0F0C0 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Tea green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Tea green");
+                        return (RGB_color_name);
                 }
 /*
                 case 0xF88379 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Tea rose (orange)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Tea rose (orange)");
+                        return (RGB_color_name);
                 }
 */
                 case 0xF4C2C2 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Tea rose (rose)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Tea rose (rose)");
+                        return (RGB_color_name);
                 }
                 case 0x008080 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Teal");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Teal");
+                        return (RGB_color_name);
                 }
                 case 0xCD5700 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Tenné (Tawny)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Tenné (Tawny)");
+                        return (RGB_color_name);
                 }
                 case 0xE2725B :
                 {
-                        dxf_RGB_color_get_name = strdup ("Terra cotta");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Terra cotta");
+                        return (RGB_color_name);
                 }
                 case 0xD8BFD8 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Thistle");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Thistle");
+                        return (RGB_color_name);
                 }
                 case 0xDE6FA1 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Thullian pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Thullian pink");
+                        return (RGB_color_name);
                 }
                 case 0xFF6347 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Tomato");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Tomato");
+                        return (RGB_color_name);
                 }
                 case 0x30D5C8 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Turquoise");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Turquoise");
+                        return (RGB_color_name);
                 }
                 case 0x66023C :
                 {
-                        dxf_RGB_color_get_name = strdup ("Tyrian Purple");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Tyrian Purple");
+                        return (RGB_color_name);
                 }
                 case 0x120A8F :
                 {
-                        dxf_RGB_color_get_name = strdup ("Ultramarine");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Ultramarine");
+                        return (RGB_color_name);
                 }
                 case 0xFF6FFF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Ultra pink");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Ultra pink");
+                        return (RGB_color_name);
                 }
                 case 0x5B92E5 :
                 {
-                        dxf_RGB_color_get_name = strdup ("United Nations blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("United Nations blue");
+                        return (RGB_color_name);
                 }
                 case 0xAE2029 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Upsdell red");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Upsdell red");
+                        return (RGB_color_name);
                 }
                 case 0xC5B358 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Vegas Gold");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Vegas Gold");
+                        return (RGB_color_name);
                 }
                 case 0xC80815 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Venetian red");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Venetian red");
+                        return (RGB_color_name);
                 }
                 case 0xE34234 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Vermilion");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Vermilion");
+                        return (RGB_color_name);
                 }
                 case 0x8B00FF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Violet");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Violet");
+                        return (RGB_color_name);
                 }
 /*
                 case 0xEE82EE :
                 {
-                        dxf_RGB_color_get_name = strdup ("Violet (web)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Violet (web)");
+                        return (RGB_color_name);
                 }
 */
                 case 0x8601AF :
                 {
-                        dxf_RGB_color_get_name = strdup ("Violet (RYB)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Violet (RYB)");
+                        return (RGB_color_name);
                 }
                 case 0x40826D :
                 {
-                        dxf_RGB_color_get_name = strdup ("Viridian");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Viridian");
+                        return (RGB_color_name);
                 }
                 case 0xF5DEB3 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Wheat");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Wheat");
+                        return (RGB_color_name);
                 }
                 case 0xFFFFFF :
                 {
-                        dxf_RGB_color_get_name = strdup ("White");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("White");
+                        return (RGB_color_name);
                 }
                 case 0xC9A0DC :
                 {
-                        dxf_RGB_color_get_name = strdup ("Wisteria");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Wisteria");
+                        return (RGB_color_name);
                 }
                 case 0x738678 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Xanadu");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Xanadu");
+                        return (RGB_color_name);
                 }
                 case 0x0F4D92 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Yale Blue");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Yale Blue");
+                        return (RGB_color_name);
                 }
                 case 0xFFFF00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Yellow");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Yellow");
+                        return (RGB_color_name);
                 }
                 case 0xFFEF00 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Yellow (process)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Yellow (process)");
+                        return (RGB_color_name);
                 }
                 case 0xFEFE33 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Yellow (RYB)");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Yellow (RYB)");
+                        return (RGB_color_name);
                 }
                 case 0x9ACD32 :
                 {
-                        dxf_RGB_color_get_name = strdup ("Yellow-green");
-                        return (dxf_RGB_color_get_name);
+                        RGB_color_name = strdup ("Yellow-green");
+                        return (RGB_color_name);
                 }
                 default:
                 {
