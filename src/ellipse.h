@@ -145,7 +145,7 @@ dxf_ellipse_init
 (
         DxfEllipse *dxf_ellipse
 );
-int
+DxfEllipse *
 dxf_ellipse_read
 (
         DxfFile *fp,

@@ -145,10 +145,9 @@ dxf_ellipse_init
  * \c ENTITY section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_ellipse. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_ellipse.
  */
-int
+DxfEllipse *
 dxf_ellipse_read
 (
         DxfFile *fp,
@@ -166,7 +165,7 @@ dxf_ellipse_read
         if (dxf_ellipse == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_ellipse = dxf_ellipse_new ();
                 dxf_ellipse_init (dxf_ellipse);
@@ -181,7 +180,7 @@ dxf_ellipse_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (0);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -327,7 +326,7 @@ dxf_ellipse_read
                         && ((strcmp (temp_string, "AcDbEllipse") != 0)))
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
@@ -376,7 +375,7 @@ dxf_ellipse_read
                 else
                 {
                         fprintf (stderr,
-                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
@@ -392,7 +391,7 @@ dxf_ellipse_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_ellipse);
 }
 
 
