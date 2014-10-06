@@ -337,13 +337,12 @@ dxf_dimstyle_write
  * "  0" string announcing the following table, or the end of the
  * \c TABLES section marker \c ENDTAB. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred while reading from the input file.
+ * \return a pointer to \c dxf_dimstyle.
  *
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-int
+DxfDimStyle *
 dxf_dimstyle_read
 (
         DxfFile *fp,
@@ -362,7 +361,7 @@ dxf_dimstyle_read
         if (dxf_dimstyle == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_dimstyle = dxf_dimstyle_new ();
                 dxf_dimstyle_init (dxf_dimstyle);
@@ -377,7 +376,7 @@ dxf_dimstyle_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (0);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "2") == 0)
                 {
@@ -589,7 +588,7 @@ dxf_dimstyle_read
                         && (strcmp (temp_string, "AcDbDimStyleTableRecord") != 0))
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
@@ -845,12 +844,12 @@ dxf_dimstyle_read
                 fprintf (stderr,
                   (_("Error in %s () dimstyle_name value is empty.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_dimstyle);
 }
 
 

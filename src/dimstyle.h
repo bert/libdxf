@@ -321,7 +321,7 @@ int dxf_dimstyle_write
         DxfFile *fp,
         DxfDimStyle *dxf_dimstyle
 );
-int dxf_dimstyle_read
+DxfDimStyle *dxf_dimstyle_read
 (
         DxfFile *fp,
         DxfDimStyle *dxf_dimstyle
