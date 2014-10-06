@@ -300,7 +300,7 @@ dxf_dimension_init
 (
         DxfDimension *dxf_dimension
 );
-int
+DxfDimension *
 dxf_dimension_read
 (
         DxfFile *fp,

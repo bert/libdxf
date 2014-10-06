@@ -180,15 +180,14 @@ dxf_dimension_init
  * "  0" string announcing the following entity, or the end of the
  * \c ENTITY section marker \c ENDSEC. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred while reading from the input file.
+ * \return a pointer to \c dxf_dimension.
  *
  * \version According to DXF R10.
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
  */
-int
+DxfDimension *
 dxf_dimension_read
 (
         DxfFile *fp,
@@ -206,7 +205,7 @@ dxf_dimension_read
         if (dxf_dimension == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_dimension = dxf_dimension_new ();
                 dxf_dimension_init (dxf_dimension);
@@ -221,7 +220,7 @@ dxf_dimension_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (0);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "1") == 0)
                 {
@@ -561,7 +560,7 @@ dxf_dimension_read
                           && (strcmp (temp_string, "AcDbOrdinateDimension") != 0))
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
@@ -626,7 +625,7 @@ dxf_dimension_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_dimension);
 }
 
 
