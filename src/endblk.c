@@ -90,6 +90,7 @@ DxfEndblk *
 dxf_endblk_init
 (
         DxfEndblk *dxf_endblk
+                /*!< DXF end of block marker entity */
 )
 {
 #if DEBUG
@@ -145,7 +146,9 @@ int
 dxf_endblk_read
 (
         DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
         DxfEndblk *dxf_endblk
+                /*!< DXF end of block marker entity */
 )
 {
 #if DEBUG
@@ -276,6 +279,7 @@ int
 dxf_endblk_free
 (
         DxfEndblk *dxf_endblk
+                /*!< DXF end of block marker entity */
 )
 {
 #if DEBUG
