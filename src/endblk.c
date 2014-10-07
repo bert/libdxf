@@ -130,8 +130,7 @@ dxf_endblk_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_endblk. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_endblk.
  *
  * \version According to DXF R10.
  * \version According to DXF R13.
@@ -142,7 +141,7 @@ dxf_endblk_init
  * needs to be stored in the current (last) \c DxfBlock struct member
  * \c endblk.
  */
-int
+DxfEndblk *
 dxf_endblk_read
 (
         DxfFile *fp,
@@ -160,7 +159,7 @@ dxf_endblk_read
         if (dxf_endblk == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_endblk = dxf_endblk_new ();
                 dxf_endblk_init (dxf_endblk);
@@ -174,7 +173,7 @@ dxf_endblk_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (0);
+                        return (NULL);
                 }
                 else if (strcmp (temp_string, "5") == 0)
                 {
@@ -202,7 +201,7 @@ dxf_endblk_read
                 else
                 {
                         fprintf (stderr,
-                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
@@ -214,7 +213,7 @@ dxf_endblk_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_endblk);
 }
 
 

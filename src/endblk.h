@@ -89,7 +89,7 @@ DxfEndblk *dxf_endblk_init
 (
         DxfEndblk *dxf_endblk
 );
-int dxf_endblk_read
+DxfEndblk *dxf_endblk_read
 (
         DxfFile *fp,
         DxfEndblk *dxf_endblk
