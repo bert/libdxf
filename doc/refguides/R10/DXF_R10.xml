@@ -633,8 +633,7 @@ ENTITIES
   0
 ENDSEC                        (End ENTITIES section)
   0
-EOF                           (End of file)
-</programlisting>
+EOF                           (End of file)</programlisting>
 
         <section>
           <title>HEADER Section.</title>
@@ -674,8 +673,8 @@ EOF                           (End of file)
 
                     <entry>1</entry>
 
-                    <entry>The AutoCAD drawing database version number: AC1006
-                    = R10, AC1009 = R11 and R12, AC1011 in R13.</entry>
+                    <entry>The AutoCAD drawing database version
+                    number.</entry>
                   </row>
 
                   <row>
