@@ -1,7 +1,7 @@
 /*!
  * \file spline.h
  *
- * \author Copyright (C) 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF spline entity (\c SPLINE).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _SPLINE_H
-#define _SPLINE_H
+#ifndef LIBDXF_SRC_SPLINE_H
+#define LIBDXF_SRC_SPLINE_H
 
 
 #include "global.h"
@@ -267,7 +267,7 @@ dxf_spline_free
 );
 
 
-#endif /* _SPLINE_H */
+#endif /* LIBDXF_SRC_SPLINE_H */
 
 
 /* EOF */

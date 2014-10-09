@@ -36,8 +36,8 @@
  */
 
 
-#ifndef _IMAGE_H
-#define _IMAGE_H
+#ifndef LIBDXF_SRC_IMAGE_H
+#define LIBDXF_SRC_IMAGE_H
 
 
 #include "global.h"
@@ -225,7 +225,7 @@ dxf_image_free
 );
 
 
-#endif /* _IMAGE_H */
+#endif /* LIBDXF_SRC_IMAGE_H */
 
 
 /* EOF */

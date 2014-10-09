@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _3DFACE_H
-#define _3DFACE_H
+#ifndef LIBDXF_SRC_3DFACE_H
+#define LIBDXF_SRC_3DFACE_H
 
 
 #include "global.h"
@@ -168,7 +168,7 @@ dxf_3dface_free
 );
 
 
-#endif /* _3DFACE_H */
+#endif /* LIBDXF_SRC_3DFACE_H */
 
 
 /* EOF */

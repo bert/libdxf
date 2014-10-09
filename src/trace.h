@@ -1,7 +1,7 @@
 /*!
  * \file trace.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF trace entity (\c TRACE).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _TRACE_H
-#define _TRACE_H
+#ifndef LIBDXF_SRC_TRACE_H
+#define LIBDXF_SRC_TRACE_H
 
 
 #include "global.h"
@@ -145,7 +145,7 @@ int dxf_trace_write_lowlevel
 );
 
 
-#endif /* _TRACE_H */
+#endif /* LIBDXF_SRC_TRACE_H */
 
 
 /* EOF */

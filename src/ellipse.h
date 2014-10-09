@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _ELLIPSE_H
-#define _ELLIPSE_H
+#ifndef LIBDXF_SRC_ELLIPSE_H
+#define LIBDXF_SRC_ELLIPSE_H
 
 
 #include "global.h"
@@ -164,7 +164,7 @@ dxf_ellipse_free
 );
 
 
-#endif /* _ELLIPSE_H */
+#endif /* LIBDXF_SRC_ELLIPSE_H */
 
 
 /* EOF */

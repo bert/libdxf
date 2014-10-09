@@ -36,8 +36,8 @@
  */
 
 
-#ifndef _INSERT_H
-#define _INSERT_H
+#ifndef LIBDXF_SRC_INSERT_H
+#define LIBDXF_SRC_INSERT_H
 
 
 #include "global.h"
@@ -168,7 +168,7 @@ dxf_insert_free
 );
 
 
-#endif /* _INSERT_H */
+#endif /* LIBDXF_SRC_INSERT_H */
 
 
 /* EOF */

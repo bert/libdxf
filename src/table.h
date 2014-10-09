@@ -1,6 +1,8 @@
 /*!
  * \file table.h
- * \author Copyright (C) 2009 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2009 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief Defintion of a DXF table entity (\c TABLE).
  *
  * The TABLES section contains several tables, each of which contain a
@@ -49,8 +51,8 @@
  * <hr>
  */
 
-#ifndef TABLE_H
-#define TABLE_H
+#ifndef LIBDXF_SRC_TABLE_H
+#define LIBDXF_SRC_TABLE_H
 
 
 #include "global.h"
@@ -99,7 +101,7 @@ int
 dxf_table_write_tables (FILE *fp, int *dxf_tables_list, int acad_version_number);
 
 
-#endif /* TABLE_H */
+#endif /* LIBDXF_SRC_TABLE_H */
 
 
 /* EOF */

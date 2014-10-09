@@ -1,7 +1,7 @@
 /*!
  * \file ucs.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF User Coordinate System entity (\c UCS).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _UCS_H
-#define _UCS_H
+#ifndef LIBDXF_SRC_UCS_H
+#define LIBDXF_SRC_UCS_H
 
 
 #include "global.h"
@@ -93,7 +93,7 @@ dxf_ucs
 } DxfUcs, * DxfUcsPtr;
 
 
-#endif /* _UCS_H */
+#endif /* LIBDXF_SRC_UCS_H */
 
 
 /* EOF */

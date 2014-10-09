@@ -1,7 +1,7 @@
 /*!
  * \file vport.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF viewport entity (\c VPORT).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _VPORT_H
-#define _VPORT_H
+#ifndef LIBDXF_SRC_VPORT_H
+#define LIBDXF_SRC_VPORT_H
 
 
 #include "global.h"
@@ -162,7 +162,7 @@ dxf_vport
 } DxfVPort, * DxfVPortPtr;
 
 
-#endif /* _VPORT_H */
+#endif /* LIBDXF_SRC_VPORT_H */
 
 
 /* EOF */

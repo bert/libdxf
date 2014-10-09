@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _COMMENT_H
-#define _COMMENT_H
+#ifndef LIBDXF_SRC_COMMENT_H
+#define LIBDXF_SRC_COMMENT_H
 
 
 #include "global.h"
@@ -79,7 +79,7 @@ dxf_comment_free
 );
 
 
-#endif /* _COMMENT_H */
+#endif /* LIBDXF_SRC_COMMENT_H */
 
 
 /* EOF */

@@ -1,7 +1,7 @@
 /*!
  * \file solid.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF solid entity (\c SOLID).
  *
@@ -39,8 +39,8 @@
  */
 
 
-#ifndef _SOLID_H
-#define _SOLID_H
+#ifndef LIBDXF_SRC_SOLID_H
+#define LIBDXF_SRC_SOLID_H
 
 
 #include "global.h"
@@ -190,7 +190,7 @@ dxf_solid_write
 );
 
 
-#endif /* _SOLID_H */
+#endif /* LIBDXF_SRC_SOLID_H */
 
 
 /* EOF */

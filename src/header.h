@@ -1,6 +1,8 @@
 /*!
  * \file header.h
- * \author Copyright (C) 2008 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ *
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ *
  * \brief Definition of a DXF header section.
  *
  * <hr>
@@ -29,8 +31,11 @@
  * <hr>
  */
 
-#ifndef HEADER_H
-#define HEADER_H
+
+#ifndef LIBDXF_SRC_HEADER_H
+#define LIBDXF_SRC_HEADER_H
+
+
 #include "global.h"
 #include "point.h"
 
@@ -306,6 +311,8 @@ int dxf_init_header (DxfHeader dxf_header, int acad_version_number);
 int dxf_read_header (DxfFile *fp, DxfHeader dxf_header);
 int dxf_write_header (FILE *fp, DxfHeader dxf_header, int acad_version_number);
 
-#endif /* HEADER_H */
+
+#endif /* LIBDXF_SRC_HEADER_H */
+
 
 /* EOF */

@@ -33,8 +33,8 @@
  * <hr>
  */
 
-#ifndef CLASS_H
-#define CLASS_H
+#ifndef LIBDXF_SRC_CLASS_H
+#define LIBDXF_SRC_CLASS_H
 
 
 #include "global.h"
@@ -141,7 +141,7 @@ dxf_class_free
 );
 
 
-#endif /* CLASS_H */
+#endif /* LIBDXF_SRC_CLASS_H */
 
 
 /* EOF */

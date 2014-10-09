@@ -1,7 +1,7 @@
 /*!
  * \file shape.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF shape entity (\c SHAPE).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef SHAPE_H
-#define SHAPE_H
+#ifndef LIBDXF_SRC_SHAPE_H
+#define LIBDXF_SRC_SHAPE_H
 
 
 #include "global.h"
@@ -160,7 +160,7 @@ dxf_shape_write
 );
 
 
-#endif /* SHAPE_H */
+#endif /* LIBDXF_SRC_SHAPE_H */
 
 
 /* EOF */

@@ -1,7 +1,7 @@
 /*!
  * \file util.h
  *
- * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
+ * \author Copyright (C) 2010 ... 2014 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
  * \brief LIBDXF coding utilities, header file.
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef UTIL_H
-#define UTIL_H
+#ifndef LIBDXF_SRC_UTIL_H
+#define LIBDXF_SRC_UTIL_H
 
 #include <stdarg.h>
 #include "global.h"
@@ -66,7 +66,7 @@ DxfFile *dxf_read_init (const char *filename);
 void dxf_read_close (DxfFile *dxf_file);
 
 
-#endif /* UTIL_H */
+#endif /* LIBDXF_SRC_UTIL_H */
 
 
 /* EOF */

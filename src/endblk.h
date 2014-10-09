@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _ENDBLK_H
-#define _ENDBLK_H
+#ifndef LIBDXF_SRC_ENDBLK_H
+#define LIBDXF_SRC_ENDBLK_H
 
 
 #include "global.h"
@@ -105,7 +105,7 @@ int dxf_endblk_free
 );
 
 
-#endif /* _ENDBLK_H */
+#endif /* LIBDXF_SRC_ENDBLK_H */
 
 
 /* EOF */

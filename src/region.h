@@ -1,7 +1,7 @@
 /*!
  * \file region.h
  *
- * \author Copyright (C) 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2014by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF region entity (\c REGION).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _REGION_H
-#define _REGION_H
+#ifndef LIBDXF_SRC_REGION_H
+#define LIBDXF_SRC_REGION_H
 
 
 #include "global.h"
@@ -121,7 +121,7 @@ dxf_region_free
 );
 
 
-#endif /* _REGION_H */
+#endif /* LIBDXF_SRC_REGION_H */
 
 
 /* EOF */

@@ -36,8 +36,8 @@
  */
 
 
-#ifndef _COLOR_H
-#define _COLOR_H
+#ifndef LIBDXF_SRC_COLOR_H
+#define LIBDXF_SRC_COLOR_H
 
 
 #include <inttypes.h>
@@ -95,7 +95,7 @@ dxf_RGB_color_free
 );
 
 
-#endif /* _COLOR_H */
+#endif /* LIBDXF_SRC_COLOR_H */
 
 
 /* EOF */

@@ -31,8 +31,8 @@
  * <hr>
  */
 
-#ifndef _ENDTAB_H
-#define _ENDTAB_H
+#ifndef LIBDXF_SRC_ENDTAB_H
+#define LIBDXF_SRC_ENDTAB_H
 
 
 #include "global.h"
@@ -45,7 +45,7 @@ dxf_endtab_write
 );
 
 
-#endif /* _ENDTAB_H */
+#endif /* LIBDXF_SRC_ENDTAB_H */
 
 
 /* EOF */

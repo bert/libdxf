@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _LTYPE_H
-#define _LTYPE_H
+#ifndef LIBDXF_SRC_LTYPE_H
+#define LIBDXF_SRC_LTYPE_H
 
 
 #include "global.h"
@@ -145,7 +145,7 @@ dxf_ltype_free
 );
 
 
-#endif /* _LTYPE_H */
+#endif /* LIBDXF_SRC_LTYPE_H */
 
 
 /* EOF */

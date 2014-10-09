@@ -34,8 +34,8 @@
 
 
 /* prevent following headers from being loaded a zillion times */
-#ifndef _GLOBAL_H
-#define _GLOBAL_H
+#ifndef LIBDXF_SRC_GLOBAL_H
+#define LIBDXF_SRC_GLOBAL_H
 
 #include <stdarg.h>
 #include <stdio.h>
@@ -473,7 +473,7 @@ dxf_file
 #define DXF_VIEWPORT_FROZEN_LAYER_LIST_END "}"
 
 
-#endif /* _GLOBAL_H */
+#endif /* LIBDXF_SRC_GLOBAL_H */
 
 
 /* EOF */

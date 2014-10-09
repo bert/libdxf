@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _BLOCK_H
-#define _BLOCK_H
+#ifndef LIBDXF_SRC_BLOCK_H
+#define LIBDXF_SRC_BLOCK_H
 
 
 #include "global.h"
@@ -170,7 +170,7 @@ int dxf_block_free
 );
 
 
-#endif /* _BLOCK_H */
+#endif /* LIBDXF_SRC_BLOCK_H */
 
 
 /* EOF */

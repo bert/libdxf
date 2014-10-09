@@ -36,8 +36,8 @@
 #include "entity.h"
 
 
-#ifndef _ATTDEF_H
-#define _ATTDEF_H
+#ifndef LIBDXF_SRC_ATTDEF_H
+#define LIBDXF_SRC_ATTDEF_H
 
 
 /*!
@@ -228,7 +228,7 @@ dxf_attdef_free
 );
 
 
-#endif /* _ATTDEF_H */
+#endif /* LIBDXF_SRC_ATTDEF_H */
 
 
 /* EOF */

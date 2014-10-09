@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _LINE_H
-#define _LINE_H
+#ifndef LIBDXF_SRC_LINE_H
+#define LIBDXF_SRC_LINE_H
 
 
 #include "global.h"
@@ -139,7 +139,7 @@ dxf_line_free
 );
 
 
-#endif /* _LINE_H */
+#endif /* LIBDXF_SRC_LINE_H */
 
 
 /* EOF */

@@ -34,8 +34,8 @@
  */
 
 
-#ifndef _3DSOLID_H
-#define _3DSOLID_H
+#ifndef LIBDXF_SRC_3DSOLID_H
+#define LIBDXF_SRC_3DSOLID_H
 
 
 #include "global.h"
@@ -139,7 +139,7 @@ dxf_3dsolid_free
 );
 
 
-#endif /* _3DSOLID_H */
+#endif /* LIBDXF_SRC_3DSOLID_H */
 
 
 /* EOF */

@@ -1,7 +1,7 @@
 /*!
  * \file text.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF text entity (\c TEXT).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _TEXT_H
-#define _TEXT_H
+#ifndef LIBDXF_SRC_TEXT_H
+#define LIBDXF_SRC_TEXT_H
 
 
 #include "global.h"
@@ -214,7 +214,7 @@ dxf_text_write
 );
 
 
-#endif /* _TEXT_H */
+#endif /* LIBDXF_SRC_TEXT_H */
 
 
 /* EOF */

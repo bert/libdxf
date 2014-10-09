@@ -40,8 +40,8 @@
  */
 
 
-#ifndef _APPID_H
-#define _APPID_H
+#ifndef LIBDXF_SRC_APPID_H
+#define LIBDXF_SRC_APPID_H
 
 
 #include "global.h"
@@ -119,7 +119,7 @@ dxf_appid_free
 );
 
 
-#endif /* _APPID_H */
+#endif /* LIBDXF_SRC_APPID_H */
 
 
 /* EOF */

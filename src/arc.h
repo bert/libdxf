@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _ARC_H
-#define _ARC_H
+#ifndef LIBDXF_SRC_ARC_H
+#define LIBDXF_SRC_ARC_H
 
 
 #include "global.h"
@@ -155,7 +155,7 @@ int dxf_arc_write
 int dxf_arc_free (DxfArc *dxf_arc);
 
 
-#endif /* _ARC_H */
+#endif /* LIBDXF_SRC_ARC_H */
 
 
 /* EOF */

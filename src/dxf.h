@@ -1,7 +1,7 @@
 /*!
  * \file dxf.h
  *
- * \author Copyright (C) 2012 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief List of all dxf header files for convenient inclusion.
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef DXF_H
-#define DXF_H
+#ifndef LIBDXF_SRC_DXF_H
+#define LIBDXF_SRC_DXF_H
 
 
 #include "3dface.h"
@@ -86,7 +86,7 @@
 #include "vport.h"
 
 
-#endif /* DXF_H */
+#endif /* LIBDXF_SRC_DXF_H */
 
 
 /* EOF */

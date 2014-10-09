@@ -37,8 +37,8 @@
  */
 
 
-#ifndef _ACAD_PROXY_ENTITY_H
-#define _ACAD_PROXY_ENTITY_H
+#ifndef LIBDXF_SRC_ACAD_PROXY_ENTITY_H
+#define LIBDXF_SRC_ACAD_PROXY_ENTITY_H
 
 
 #include "global.h"
@@ -155,7 +155,7 @@ dxf_acad_proxy_entity_free
 );
 
 
-#endif /* _ACAD_PROXY_ENTITY_H */
+#endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */
 
 
 /* EOF */

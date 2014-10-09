@@ -1,7 +1,7 @@
 /*!
  * \file vertex.h
  *
- * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF vertex entity (\c VERTEX).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _VERTEX_H
-#define _VERTEX_H
+#ifndef LIBDXF_SRC_VERTEX_H
+#define LIBDXF_SRC_VERTEX_H
 
 
 #include "global.h"
@@ -198,7 +198,7 @@ dxf_vertex_write
 );
 
 
-#endif /* _VERTEX_H */
+#endif /* LIBDXF_SRC_VERTEX_H */
 
 
 /* EOF */

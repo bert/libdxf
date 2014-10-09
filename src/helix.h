@@ -1,7 +1,7 @@
 /*!
  * \file helix.h
  *
- * \author Copyright (C) 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF helix entity (\c HELIX).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _HELIX_H
-#define _HELIX_H
+#ifndef LIBDXF_SRC_HELIX_H
+#define LIBDXF_SRC_HELIX_H
 
 
 #include "global.h"
@@ -242,7 +242,7 @@ dxf_helix_free
 );
 
 
-#endif /* _HELIX_H */
+#endif /* LIBDXF_SRC_HELIX_H */
 
 
 /* EOF */

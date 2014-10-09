@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _CIRCLE_H
-#define _CIRCLE_H
+#ifndef LIBDXF_SRC_CIRCLE_H
+#define LIBDXF_SRC_CIRCLE_H
 
 
 #include "global.h"
@@ -149,7 +149,7 @@ int dxf_circle_free
 );
 
 
-#endif /* _BODY_H */
+#endif /* LIBDXF_SRC_CIRCLE_H */
 
 
 /* EOF */

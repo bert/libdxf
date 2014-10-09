@@ -36,8 +36,8 @@
 #include "entity.h"
 
 
-#ifndef _ATTRIB_H
-#define _ATTRIB_H
+#ifndef LIBDXF_SRC_ATTRIB_H
+#define LIBDXF_SRC_ATTRIB_H
 
 
 /*!
@@ -217,7 +217,7 @@ dxf_attrib_free
 );
 
 
-#endif /* _ATTRIB_H */
+#endif /* LIBDXF_SRC_ATTRIB_H */
 
 
 /* EOF */

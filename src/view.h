@@ -1,7 +1,7 @@
 /*!
  * \file view.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF view entity (\c VIEW).
  *
@@ -31,8 +31,8 @@
  * <hr>
  */
 
-#ifndef _VIEW_H
-#define _VIEW_H
+#ifndef LIBDXF_SRC_VIEW_H
+#define LIBDXF_SRC_VIEW_H
 
 
 #include "global.h"
@@ -111,7 +111,7 @@ dxf_view
 } DxfView, * DxfViewPtr;
 
 
-#endif /* _VIEW_H */
+#endif /* LIBDXF_SRC_VIEW_H */
 
 
 /* EOF */

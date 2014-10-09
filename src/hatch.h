@@ -36,8 +36,8 @@
  */
 
 
-#ifndef HATCH_H
-#define HATCH_H
+#ifndef LIBDXF_SRC_HATCH_H
+#define LIBDXF_SRC_HATCH_H
 
 
 #include <math.h>
@@ -835,7 +835,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
 );
 
 
-#endif /* HATCH_H */
+#endif /* LIBDXF_SRC_HATCH_H */
 
 
 /* EOF */

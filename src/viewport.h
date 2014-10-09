@@ -1,7 +1,7 @@
 /*!
  * \file viewport.h
  *
- * \author Copyright (C) 2010 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF viewport entity (\c VIEWPORT).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _VIEWPORT_H
-#define _VIEWPORT_H
+#ifndef LIBDXF_SRC_VIEWPORT_H
+#define LIBDXF_SRC_VIEWPORT_H
 
 
 #include "global.h"
@@ -319,7 +319,7 @@ dxf_viewport_free
 );
 
 
-#endif /* _VIEWPORT_H */
+#endif /* LIBDXF_SRC_VIEWPORT_H */
 
 
 /* EOF */

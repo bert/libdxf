@@ -1,7 +1,7 @@
 /*!
  * \file donut.h
  *
- * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF donut entity (\c DONUT).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _DONUT_H
-#define _DONUT_H
+#ifndef LIBDXF_SRC_DONUT_H
+#define LIBDXF_SRC_DONUT_H
 
 
 #include "global.h"
@@ -61,7 +61,7 @@ dxf_donut_write_lowlevel
 );
 
 
-#endif /* _DONUT_H */
+#endif /* LIBDXF_SRC_DONUT_H */
 
 
 /* EOF */

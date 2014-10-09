@@ -1,7 +1,7 @@
 /*!
  * \file oleframe.h
  *
- * \author Copyright (C) 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF oleframe entity (\c OLEFRAME).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _OLEFRAME_H
-#define _OLEFRAME_H
+#ifndef LIBDXF_SRC_OLEFRAME_H
+#define LIBDXF_SRC_OLEFRAME_H
 
 
 #include "global.h"
@@ -118,7 +118,7 @@ dxf_oleframe_free
 );
 
 
-#endif /* _OLEFRAME_H */
+#endif /* LIBDXF_SRC_OLEFRAME_H */
 
 
 /* EOF */

@@ -1,7 +1,7 @@
 /*!
  * \file point.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF point entity (\c POINT).
  *
@@ -31,8 +31,8 @@
  * <hr>
  */
 
-#ifndef POINT_H
-#define POINT_H
+#ifndef LIBDXF_SRC_POINT_H
+#define LIBDXF_SRC_POINT_H
 
 
 #include "global.h"
@@ -148,7 +148,7 @@ dxf_point_write
 );
 
 
-#endif /* POINT_H */
+#endif /* LIBDXF_SRC_POINT_H */
 
 
 /* EOF */

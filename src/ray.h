@@ -1,7 +1,7 @@
 /*!
  * \file ray.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF ray entity (\c RAY).
  *
@@ -34,8 +34,8 @@
  */
 
 
-#ifndef _RAY_H
-#define _RAY_H
+#ifndef LIBDXF_SRC_RAY_H
+#define LIBDXF_SRC_RAY_H
 
 
 #include "global.h"
@@ -129,7 +129,7 @@ dxf_ray_free
 );
 
 
-#endif /* _RAY_H */
+#endif /* LIBDXF_SRC_RAY_H */
 
 
 /* EOF */

@@ -34,8 +34,8 @@
  */
 
 
-#ifndef _LWPOLYLINE_H
-#define _LWPOLYLINE_H
+#ifndef LIBDXF_SRC_LWPOLYLINE_H
+#define LIBDXF_SRC_LWPOLYLINE_H
 
 
 #include "global.h"
@@ -152,7 +152,7 @@ dxf_lwpolyline_write
 );
 
 
-#endif /* _LWPOLYLINE_H */
+#endif /* LIBDXF_SRC_LWPOLYLINE_H */
 
 
 /* EOF */

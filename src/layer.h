@@ -1,7 +1,7 @@
 /*!
  * \file layer.h
  *
- * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF layer table.
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _LAYER_H
-#define _LAYER_H
+#ifndef LIBDXF_SRC_LAYER_H
+#define LIBDXF_SRC_LAYER_H
 
 
 #include "global.h"
@@ -109,7 +109,7 @@ dxf_layer_free
 );
 
 
-#endif /* _LAYER_H */
+#endif /* LIBDXF_SRC_LAYER_H */
 
 
 /* EOF */

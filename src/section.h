@@ -1,7 +1,7 @@
 /*!
  * \file section.h
  *
- * \author Copyright (C) 2010 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF section entity (\c SECTION).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef SECTION_H
-#define SECTION_H
+#ifndef LIBDXF_SRC_SECTION_H
+#define LIBDXF_SRC_SECTION_H
 
 
 #include "global.h"
@@ -48,7 +48,7 @@ int dxf_section_write (FILE *fp, char *section_name);
 int dxf_section_write_endsection (FILE *fp);
 
 
-#endif /* SECTION_H */
+#endif /* LIBDXF_SRC_SECTION_H */
 
 
 /* EOF */

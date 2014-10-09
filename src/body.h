@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _BODY_H
-#define _BODY_H
+#ifndef LIBDXF_SRC_BODY_H
+#define LIBDXF_SRC_BODY_H
 
 
 #include "global.h"
@@ -141,7 +141,7 @@ dxf_body_free
 );
 
 
-#endif /* _BODY_H */
+#endif /* LIBDXF_SRC_BODY_H */
 
 
 /* EOF */

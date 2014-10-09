@@ -1,7 +1,7 @@
 /*!
  * \file polyline.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF polyline entity (\c PLINE).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _POLYLINE_H
-#define _POLYLINE_H
+#ifndef LIBDXF_SRC_POLYLINE_H
+#define LIBDXF_SRC_POLYLINE_H
 
 
 #include "global.h"
@@ -244,7 +244,7 @@ dxf_polyline_write
 );
 
 
-#endif /* _POLYLINE_H */
+#endif /* LIBDXF_SRC_POLYLINE_H */
 
 
 /* EOF */

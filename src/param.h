@@ -1,7 +1,7 @@
 /*!
  * \file param.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF parameter entity.
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _PARAM_H
-#define _PARAM_H
+#ifndef LIBDXF_SRC_PARAM_H
+#define LIBDXF_SRC_PARAM_H
 
 
 #include "global.h"
@@ -56,7 +56,7 @@ dxf_param
 } DxfParam;
 
 
-#endif /* _PARAM_H */
+#endif /* LIBDXF_SRC_PARAM_H */
 
 
 /* EOF */

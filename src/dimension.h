@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _DIMENSION_H
-#define _DIMENSION_H
+#ifndef LIBDXF_SRC_DIMENSION_H
+#define LIBDXF_SRC_DIMENSION_H
 
 
 #include "global.h"
@@ -319,7 +319,7 @@ dxf_dimension_free
 );
 
 
-#endif /* _DIMENSION_H */
+#endif /* LIBDXF_SRC_DIMENSION_H */
 
 
 /* EOF */

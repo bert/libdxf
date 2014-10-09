@@ -1,6 +1,8 @@
 /*!
  * \file file.h
- * \author Copyright (C) 2010 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ *
+ * \author Copyright (C) 2010 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ *
  * \brief Header for the handling of DXF files.
  *
  * <hr>
@@ -30,8 +32,8 @@
  */
 
 
-#ifndef FILE_H
-#define FILE_H
+#ifndef LIBDXF_SRC_FILE_H
+#define LIBDXF_SRC_FILE_H
 
 
 #include <stdio.h>
@@ -56,7 +58,7 @@ int
 dxf_file_write_eof (FILE *fp);
 
 
-#endif /* FILE_H */
+#endif /* LIBDXF_SRC_FILE_H */
 
 
 /* EOF */

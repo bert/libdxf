@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _DIMSTYLE_H
-#define _DIMSTYLE_H
+#ifndef LIBDXF_SRC_DIMSTYLE_H
+#define LIBDXF_SRC_DIMSTYLE_H
 
 
 #include "global.h"
@@ -332,7 +332,7 @@ int dxf_dimstyle_free
 );
 
 
-#endif /* _DIMSTYLE_H */
+#endif /* LIBDXF_SRC_DIMSTYLE_H */
 
 
 /* EOF */

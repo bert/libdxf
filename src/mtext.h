@@ -1,7 +1,7 @@
 /*!
  * \file mtext.h
  *
- * \author Copyright (C) 2012 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF mtext entity (\c MTEXT).
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _MTEXT_H
-#define _MTEXT_H
+#ifndef LIBDXF_SRC_MTEXT_H
+#define LIBDXF_SRC_MTEXT_H
 
 
 #include "global.h"
@@ -322,7 +322,7 @@ dxf_mtext_free
 );
 
 
-#endif /* _MTEXT_H */
+#endif /* LIBDXF_SRC_MTEXT_H */
 
 
 /* EOF */

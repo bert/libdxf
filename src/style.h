@@ -1,7 +1,7 @@
 /*!
  * \file style.h
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF (text) style entity \c STYLE.
  *
@@ -32,8 +32,8 @@
  */
 
 
-#ifndef _STYLE_H
-#define _STYLE_H
+#ifndef LIBDXF_SRC_STYLE_H
+#define LIBDXF_SRC_STYLE_H
 
 
 #include "global.h"
@@ -94,7 +94,7 @@ dxf_style
 } DxfStyle, * DxfStylePtr;
 
 
-#endif /* _STYLE_H */
+#endif /* LIBDXF_SRC_STYLE_H */
 
 
 /* EOF */
