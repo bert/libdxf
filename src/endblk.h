@@ -32,8 +32,8 @@
  */
 
 
-#ifndef ENDBLK_H
-#define ENDBLK_H
+#ifndef _ENDBLK_H
+#define _ENDBLK_H
 
 
 #include "global.h"
@@ -105,7 +105,7 @@ int dxf_endblk_free
 );
 
 
-#endif /* ENDBLK_H */
+#endif /* _ENDBLK_H */
 
 
 /* EOF */
