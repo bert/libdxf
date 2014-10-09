@@ -31,8 +31,8 @@
  * <hr>
  */
 
-#ifndef ENDTAB_H
-#define ENDTAB_H
+#ifndef _ENDTAB_H
+#define _ENDTAB_H
 
 
 #include "global.h"
@@ -45,7 +45,7 @@ dxf_endtab_write
 );
 
 
-#endif /* ENDTAB_H */
+#endif /* _ENDTAB_H */
 
 
 /* EOF */
