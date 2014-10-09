@@ -40,8 +40,8 @@
  */
 
 
-#ifndef __APPID_H_INCLUDED__
-#define __APPID_H_INCLUDED__
+#ifndef _APPID_H
+#define _APPID_H
 
 
 #include "global.h"
@@ -119,7 +119,7 @@ dxf_appid_free
 );
 
 
-#endif /* __APPID_H_INCLUDED__ */
+#endif /* _APPID_H */
 
 
 /* EOF */
