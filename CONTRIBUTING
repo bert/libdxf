@@ -122,6 +122,23 @@ A default header looks similar to the following:
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  */
 
+Header guards
+-------------
+All header files should have #define guards to prevent multiple inclusion.
+The format of the symbol name should be <PROJECT>_<PATH>_<FILE>_H_.
+
+To guarantee uniqueness, they should be based on the full path in the project's
+source tree.
+For example, the file foo/src/bar/baz.h in project foo should have the following
+guard:
+
+#ifndef FOO_BAR_BAZ_H_
+#define FOO_BAR_BAZ_H_
+
+...
+
+#endif  // FOO_BAR_BAZ_H_
+
 
 Doxygen style comments
 ----------------------
