@@ -32,6 +32,10 @@
  */
 
 
+#ifndef _CIRCLE_H
+#define _CIRCLE_H
+
+
 #include "global.h"
 #include "entity.h"
 
@@ -143,6 +147,9 @@ int dxf_circle_free
 (
         DxfCircle *dxf_circle
 );
+
+
+#endif /* _BODY_H */
 
 
 /* EOF */
