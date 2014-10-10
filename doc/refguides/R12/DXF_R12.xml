@@ -2072,6 +2072,340 @@ EOF                           (End of file)</programlisting></para>
 
         <para>The date and time variables are described on page 299.</para>
       </section>
+
+      <section>
+        <title>TABLES Section.</title>
+
+        <para>The TABLES section contains several tables, each of which
+        contains a variable number of table entries.</para>
+
+        <para>The order of the tables may change, but the LTYPE table will
+        always precede the LAYER table.</para>
+
+        <para>Each table is introduced with a 0 group with the label
+        TABLE.</para>
+
+        <para>This is followed by a 2 group identifying the particular table
+        (VPORT, LTYPE, LAYER, STYLE, VIEW, DIMSTYLE, UCS or APPID) and a 70
+        group that specifies the maximum number of table entries that may
+        follow.</para>
+
+        <para>Table names are always output in uppercase characters.</para>
+
+        <para>The tables in a drawing can contain deleted items, but these are
+        not written to the DXF file.</para>
+
+        <para>Thus, fewer table entries may follow the table header than are
+        indicated by the 70 group, so don't use the count in the 70 group as
+        an index to read in the table.</para>
+
+        <para>This group is provided so that a program which reads DXF files
+        can allocate an array large enough to hold all the table entries that
+        follow.</para>
+
+        <para>Following this header for each table are the table
+        entries.</para>
+
+        <para>Each table item consists of a 0 group identifying the item type
+        (same as table name, e.g., LTYPE or LAYER), a 2 group giving the name
+        of the table entry, a 70 group specifying flags relevant to the table
+        entry (defined for each following table), and additional groups that
+        give the value of the table entry.</para>
+
+        <para>The end of each table is indicated by a 0 group with the value
+        ENDTAB.</para>
+
+        <para>The 70 group flag bit values that apply to all table entries are
+        described in the following chart.</para>
+
+        <para>Additional 70 group values that apply to LAYER, STYLE, and VIEW
+        table entries are described in the appropriate sections below.<table>
+            <title>Group 70 bit codes that apply to all table entries.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Bit-coded</entry>
+
+                  <entry align="center">Description value</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>16</entry>
+
+                  <entry>If set, table entry is externally dependent on an
+                  Xref.</entry>
+                </row>
+
+                <row>
+                  <entry>32</entry>
+
+                  <entry>If this bit and bit 16 are both set, the externally
+                  dependent Xref has been successfully resolved.</entry>
+                </row>
+
+                <row>
+                  <entry>64</entry>
+
+                  <entry>If set, the table entry was referenced by at least
+                  one entity in the drawing the last time the drawing was
+                  edited. (This flag is for the benefit of AutoCAD commands;
+                  it can be ignored by most programs that read DXF files, and
+                  need not be set by programs that write DXF files).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The following are the groups used for each type of table item.
+        All groups are present for each table item.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>APPID</term>
+
+            <listitem>
+              <para>2 (user-supplied application name), 70 (standard flag
+              values).</para>
+
+              <para>These table entries maintain a set of names for all
+              applications registered with a drawing.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>DIMSTYLE</term>
+
+            <listitem>
+              <para>2 (dimension style name), 70 (standard flag values), and
+              the following, described by dimension variable name: 3
+              (dimpost), 4 (dimapost), 5 (dimblk), 6 (dimblk1), 7 (dimblk2),
+              40 (dimscale), 41 (dimasz), 42 (dimexo), 43 (dimdli), 44
+              (dimexe), 45 (dimrnd), 46 (dimdle), 47 (dimtp), 48 (dimtm), 140
+              (dimtxt), 141 (dimcen), 142 (dimtsz), 143 (dimaltf), 144
+              (dimlfac), 145 (dimtvp), 146 (dimtfac), 147 (dimgap), 71
+              (dimtol), 72 (dimlim), 73 (dimtih), 74 (dimtoh), 75 (dimse1), 76
+              (dimse2), 77 (dimtad), 78 (dimzin), 170 (dimalt), 171 (dimaltd),
+              172 (dimtofl), 173 (dimsah), 174 (dimtix), 175 (dimsoxd), 176
+              (dimclrd), 177 (dimclre), 178 (dimclrt).</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>LTYPE</term>
+
+            <listitem>
+              <para>2 (linetype name), 70 (standard flag values), 3
+              (descriptive text for linetype), 72 (alignment code; value is
+              always 65, the ASCII code for `A'), 73 (number of dash length
+              items), 40 (total pattern length), and optionally: 49 (dash
+              length 1), 49 (dash length 2), and so on.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>LAYER</term>
+
+            <listitem>
+              <para>2 (layer name), 70 (standard flag values), 62 (color
+              number, negative if layer is off), 6 (linetype name).</para>
+
+              <para>In addition to the standard flags, the 70 group flag is
+              bit coded as follows:</para>
+
+              <table>
+                <title>Group 70 bit codes for LAYER table.</title>
+
+                <tgroup cols="2">
+                  <thead>
+                    <row>
+                      <entry align="left">Flag bit value</entry>
+
+                      <entry align="left">Meaning</entry>
+                    </row>
+                  </thead>
+
+                  <tbody>
+                    <row>
+                      <entry>1</entry>
+
+                      <entry>If set, layer is frozen.</entry>
+                    </row>
+
+                    <row>
+                      <entry>2</entry>
+
+                      <entry>If set, layer is frozen by default in new
+                      Viewports.</entry>
+                    </row>
+
+                    <row>
+                      <entry>4</entry>
+
+                      <entry>If set, layer is locked.</entry>
+                    </row>
+                  </tbody>
+                </tgroup>
+              </table>
+
+              <para>If no value (0) is set, the layer is on and thawed.</para>
+
+              <para>The fourth bit (8) and the eighth bit (128) are not
+              used.</para>
+
+              <para>Xref-dependent layers are output during DXFOUT.</para>
+
+              <para>For these layers, the associated linetype name in the DXF
+              file is always CONTINUOUS.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>STYLE</term>
+
+            <listitem>
+              <para>2 (style name), 70 (standard flag values), 40 (fixed text
+              height; 0 if not fixed), 41 (width factor), 50 (oblique angle),
+              71 (text generation flags), 42 (last height used), 3 (primary
+              font filename), 4 (big-font file name; blank if none).</para>
+
+              <para>If the third bit (4) is set in the 70 group flags, this is
+              a vertically oriented text style.</para>
+
+              <para>A STYLE table item is used to record shape file LOAD
+              requests also.</para>
+
+              <para>In this case the first bit (1) is set in the 70 group
+              flags and only the 3 group (shape filename) is meaningful (all
+              the other groups are output, however).</para>
+
+              <para>The text generation flags are a bit-coded field with the
+              following bit meanings:<table>
+                  <title>Group 71 bit codes for STYLE table.</title>
+
+                  <tgroup cols="2">
+                    <thead>
+                      <row>
+                        <entry align="left">Flag bit value</entry>
+
+                        <entry align="left">Meaning</entry>
+                      </row>
+                    </thead>
+
+                    <tbody>
+                      <row>
+                        <entry>2</entry>
+
+                        <entry>Text is backward (mirrored in X).</entry>
+                      </row>
+
+                      <row>
+                        <entry>4</entry>
+
+                        <entry>Text is upside down (mirrored in Y).</entry>
+                      </row>
+                    </tbody>
+                  </tgroup>
+                </table></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>UCS</term>
+
+            <listitem>
+              <para>2 (UCS name), 70 (standard flag values), 10, 20, 30
+              (origin), 11, 21, 31 (X axis direction), 12, 22, 32 (Y axis
+              direction). All in World coordinates.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>VIEW</term>
+
+            <listitem>
+              <para>2 (name of view), 70 (standard flag values), 40 and 41
+              (view height and width, in DCS), 10 and 20 (view center point,
+              in DCS), 11, 21, 31 (view direction from target, in WCS), 12,
+              22, 32 (target point, in WCS), 42 (lens length), 43 and 44
+              (front and back clipping planes - offsets from target point), 50
+              (twist angle), 71 view mode (see VIEWMODE system variable in
+              appendix A).</para>
+
+              <para>If the first bit (1) is set in the 70 group flags, this is
+              a paper space view.</para>
+
+              <para>(See chapter 2 of the "AutoLISP Programmer's Reference"
+              for information on DCS, the Display Coordinate System).</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>VPORT</term>
+
+            <listitem>
+              <para>2 (viewport name), 70 (standard flag values), 10 and 20
+              (lower-left corner of viewport; 0.0 to 1.0), 11 and 21
+              (upper-right corner), 12 and 22 (view center point, in WCS), 13
+              and 23 (snap base point), 14 and 24 (snap spacing, X and Y), 15
+              and 25 (grid spacing, X and Y), 16, 26, 36 (view direction from
+              target point), 17, 27, 37 (view target point), 40 (view height),
+              41 (viewport aspect ratio), 42 (lens length), 43 and 44 (front
+              and back clipping planes; offsets from target point),50 (snap
+              rotation angle), 51 (view twist angle), 68 (status field), 69
+              (ID), 71 (view mode; see VIEWMODE system variable in appendix
+              A), 72 (circle zoom percent), 73 (fast zoom setting), 74
+              (UCSICON setting), 75 (snap on/off), 76 (grid on/off), 77 (snap
+              style), 78 (snap isopair).</para>
+
+              <para>The VPORT table is unique in that it may contain several
+              entries with the same name (indicating a multiple-viewport
+              configuration).</para>
+
+              <para>The entries corresponding to the active viewport
+              configuration all have the name *ACTIVE.</para>
+
+              <para>The first such entry describes the current
+              viewport.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+
+      <section>
+        <title>BLOCKS Section.</title>
+
+        <para>The Blocks section of the DXF file contains all the Block
+        Definitions.</para>
+
+        <para>This section contains the entities that make up the Blocks used
+        in the drawing, including anonymous Blocks generated by the HATCH
+        command and by associative dimensioning.</para>
+
+        <para>The format of the entities in this section is identical to those
+        in the Entities section described later, so see that section for
+        details.</para>
+
+        <para>All entities in the Blocks section appear between Block and
+        Endblk entities.</para>
+
+        <para>Block and Endblk entities appear only in the Blocks
+        section.</para>
+
+        <para>Block definitions are never nested (that is, no Block or Endblk
+        entity ever appears within another Block-Endblk pair), although a
+        Block definition can contain an INSERT entity.</para>
+
+        <para>External References are written in the DXF file as any Block
+        Definition, except they also include a text string (group code 1) of
+        the path and filename of the External Reference.</para>
+
+        <para>This is the text string format:</para>
+
+        <programlisting>Xref filename</programlisting>
+      </section>
     </section>
   </chapter>
 </book>
