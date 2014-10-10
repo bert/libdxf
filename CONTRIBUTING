@@ -352,6 +352,18 @@ equal to sizeof(0).
 Use '\0' for chars. This is the correct type and also makes code more readable.
 
 
+sizeof
+------
+Prefer sizeof(varname) to sizeof(type).
+
+Use sizeof(varname) when you take the size of a particular variable.
+sizeof(varname) will update appropriately if someone changes the variable type
+either now or later.
+You may use sizeof(type) for code unrelated to any particular variable, such as
+code that manages an external or internal data format where a variable of an
+appropriate C type is not convenient.
+
+
 End Of File
 -----------
 The End Of File is denoted with a comment and a blank line such as:
