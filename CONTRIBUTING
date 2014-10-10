@@ -335,7 +335,22 @@ G_LOG_LEVEL_INFO              = 1 << 6, /* Information usefull for the user. */
 G_LOG_LEVEL_DEBUG             = 1 << 7, /* Information usefull for the developer. */
                                          * Requires the debug variable to be
                                          * set. */
-                                         
+
+
+0, 0.0, NULL and '\0'
+---------------------
+Use 0 for integers, 0.0 for reals, NULL for pointers, and '\0' for chars.
+
+Use 0 for integers and 0.0 for reals. This is not controversial.
+
+For pointers (address values), there is a choice between 0, NULL, and nullptr.
+We prefer NULL because it looks like a pointer.
+In fact, some C compilers provide special definitions of NULL which enable them
+to give useful warnings, particularly in situations where sizeof(NULL) is not
+equal to sizeof(0).
+
+Use '\0' for chars. This is the correct type and also makes code more readable.
+
 
 End Of File
 -----------
