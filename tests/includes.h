@@ -1,7 +1,7 @@
 /*!
  * \file includes.h
  *
- * \author Copyright (C) 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Include all header files.
  *
@@ -32,58 +32,56 @@
  */
 
 
-#ifndef _INCLUDES_H
-#define _INCLUDES_H
+#ifndef LIBDXF_TESTS_INCLUDES_H
+#define LIBDXF_TESTS_INCLUDES_H
 
 
-#include "../src/entity.h"
-#include "../src/global.h"
-#include "../src/3dface.h"
-#include "../src/3dsolid.h"
-#include "../src/appid.h"
-#include "../src/arc.h"
-#include "../src/attdef.h"
-#include "../src/attrib.h"
-#include "../src/block.h"
-#include "../src/circle.h"
-#include "../src/class.h"
-#include "../src/color.h"
-#include "../src/comment.h"
-#include "../src/dimension.h"
-#include "../src/donut.h"
-#include "../src/ellipse.h"
-#include "../src/entities.h"
-#include "../src/entity.h"
-#include "../src/file.h"
-#include "../src/global.h"
-#include "../src/hatch.h"
-#include "../src/header.h"
-#include "../src/insert.h"
-#include "../src/layer.h"
-#include "../src/line.h"
-#include "../src/ltype.h"
-#include "../src/lwpolyline.h"
-#include "../src/object.h"
-#include "../src/param.h"
-#include "../src/point.h"
-#include "../src/polyline.h"
-#include "../src/section.h"
-#include "../src/seqend.h"
-#include "../src/shape.h"
-#include "../src/solid.h"
-#include "../src/style.h"
-#include "../src/table.h"
-#include "../src/text.h"
-#include "../src/thumbnail.h"
-#include "../src/trace.h"
-#include "../src/ucs.h"
-#include "../src/util.h"
-#include "../src/vertex.h"
-#include "../src/view.h"
-#include "../src/viewport.h"
-#include "../src/vport.h"
+#include "src/global.h"
+#include "src/entity.h"
+#include "src/3dface.h"
+#include "src/3dsolid.h"
+#include "src/appid.h"
+#include "src/arc.h"
+#include "src/attdef.h"
+#include "src/attrib.h"
+#include "src/block.h"
+#include "src/circle.h"
+#include "src/class.h"
+#include "src/color.h"
+#include "src/comment.h"
+#include "src/dimension.h"
+#include "src/donut.h"
+#include "src/ellipse.h"
+#include "src/entities.h"
+#include "src/file.h"
+#include "src/hatch.h"
+#include "src/header.h"
+#include "src/insert.h"
+#include "src/layer.h"
+#include "src/line.h"
+#include "src/ltype.h"
+#include "src/lwpolyline.h"
+#include "src/object.h"
+#include "src/param.h"
+#include "src/point.h"
+#include "src/polyline.h"
+#include "src/section.h"
+#include "src/seqend.h"
+#include "src/shape.h"
+#include "src/solid.h"
+#include "src/style.h"
+#include "src/table.h"
+#include "src/text.h"
+#include "src/thumbnail.h"
+#include "src/trace.h"
+#include "src/ucs.h"
+#include "src/util.h"
+#include "src/vertex.h"
+#include "src/view.h"
+#include "src/viewport.h"
+#include "src/vport.h"
 
 
-#endif /* _INCLUDES_H */
+#endif /* LIBDXF_TESTS_INCLUDES_H */
 
 
