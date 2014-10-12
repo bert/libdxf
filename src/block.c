@@ -356,6 +356,7 @@ dxf_block_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("BLOCK");
+        struct DxfEndblk *endblk;
 
         /* Do some basic checks. */
         if (dxf_block == NULL)
@@ -368,8 +369,18 @@ dxf_block_write
         if (dxf_block->block_name == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning: empty block name string for the %s entity with id-code: %x\n")),
-                  dxf_entity_name, dxf_block->id_code);
+                  (_("Error in %s () empty block name string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_block->id_code);
+                fprintf (stderr,
+                  (_("         %s entity is discarded from output.\n")),
+                  dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (dxf_block->endblk == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () NULL pointer to endblk was passed or the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_block->id_code);
                 fprintf (stderr,
                   (_("         %s entity is discarded from output.\n")),
                   dxf_entity_name);
@@ -381,8 +392,8 @@ dxf_block_write
           || (dxf_block->block_type != 32)))
         {
                 fprintf (stderr,
-                  (_("Warning: empty xref path name string for the %s entity with id-code: %x\n")),
-                  dxf_entity_name, dxf_block->id_code);
+                  (_("Error in %s () empty xref path name string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_block->id_code);
                 fprintf (stderr,
                   (_("         %s entity is discarded from output.\n")),
                   dxf_entity_name);
@@ -391,15 +402,15 @@ dxf_block_write
         if (dxf_block->description == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning: NULL pointer to description string for the %s entity with id-code: %x\n")),
-                  dxf_entity_name, dxf_block->id_code);
+                  (_("Warning in %s () NULL pointer to description string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_block->id_code);
                 dxf_block->description = strdup ("");
         }
         if (strcmp (dxf_block->layer, "") == 0)
         {
                 fprintf (stderr,
-                  (_("Warning: empty layer string for the %s entity with id-code: %x\n")),
-                  dxf_entity_name, dxf_block->id_code);
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_block->id_code);
                 fprintf (stderr,
                   (_("    %s entity is relocated to layer 0.\n")),
                   dxf_entity_name);
@@ -408,8 +419,8 @@ dxf_block_write
         if (dxf_block->dictionary_owner_soft == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning: NULL pointer to soft owner object string for the %s entity with id-code: %x\n")),
-                  dxf_entity_name, dxf_block->id_code);
+                  (_("Warning in %s () NULL pointer to soft owner object string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_block->id_code);
                 dxf_block->dictionary_owner_soft = strdup ("");
         }
         /* Start writing output. */
@@ -463,7 +474,8 @@ dxf_block_write
         {
                 fprintf (fp->fp, "  4\n%s\n", dxf_block->description);
         }
-        dxf_endblk_write (fp, dxf_block->endblk);
+        endblk = dxf_block->endblk;
+        dxf_endblk_write (fp, endblk);
 #if DEBUG
         DXF_DEBUG_END
 #endif
