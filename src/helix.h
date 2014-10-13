@@ -223,7 +223,7 @@ dxf_helix_init
 (
         DxfHelix *dxf_helix
 );
-int
+DxfHelix *
 dxf_helix_read
 (
         DxfFile *fp,
