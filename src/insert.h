@@ -149,7 +149,7 @@ dxf_insert_init
 (
         DxfInsert *dxf_insert
 );
-int
+DxfInsert *
 dxf_insert_read
 (
         DxfFile *fp,
