@@ -137,10 +137,9 @@ dxf_lwpolyline_init
  * \c ENTITY section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_lwpolyline. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_lwpolyline.
  */
-int
+DxfLWPolyline *
 dxf_lwpolyline_read
 (
         DxfFile *fp,
@@ -170,7 +169,7 @@ dxf_lwpolyline_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -304,7 +303,7 @@ dxf_lwpolyline_read
                 else
                 {
                         fprintf (stderr,
-                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
@@ -313,7 +312,7 @@ dxf_lwpolyline_read
           (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_lwpolyline);
 }
 
 

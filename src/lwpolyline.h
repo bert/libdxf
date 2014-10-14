@@ -138,7 +138,7 @@ dxf_lwpolyline_init
 (
         DxfLWPolyline *dxf_lwpolyline
 );
-int
+DxfLWPolyline *
 dxf_lwpolyline_read
 (
         DxfFile *fp,
