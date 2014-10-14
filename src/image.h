@@ -206,7 +206,7 @@ dxf_image_init
 (
         DxfImage *dxf_image
 );
-int
+DxfImage *
 dxf_image_read
 (
         DxfFile *fp,

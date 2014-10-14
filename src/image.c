@@ -161,10 +161,9 @@ dxf_image_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_image. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_image.
  */
-int
+DxfImage *
 dxf_image_read
 (
         DxfFile *fp,
@@ -198,7 +197,7 @@ dxf_image_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -415,7 +414,7 @@ dxf_image_read
                         && ((strcmp (temp_string, "AcDbRasterImage") != 0)))
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
@@ -429,7 +428,7 @@ dxf_image_read
                 else
                 {
                         fprintf (stderr,
-                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
@@ -438,7 +437,7 @@ dxf_image_read
           (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_image);
 }
 
 
