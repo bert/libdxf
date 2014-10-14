@@ -131,10 +131,9 @@ dxf_layer_init
  * section marker \c ENDTAB. \n
  * While parsing the DXF file store data in \c dxf_layer. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_layer.
  */
-int
+DxfLayer *
 dxf_layer_read
 (
         DxfFile *fp,
@@ -164,7 +163,7 @@ dxf_layer_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "2") == 0)
                 {
@@ -205,7 +204,7 @@ dxf_layer_read
                         && ((strcmp (temp_string, "AcDbLayerTableRecord") != 0)))
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
@@ -246,7 +245,7 @@ dxf_layer_read
                 else
                 {
                         fprintf (stderr,
-                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
@@ -255,7 +254,7 @@ dxf_layer_read
           (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_layer);
 }
 
 

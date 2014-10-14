@@ -90,7 +90,7 @@ dxf_layer_init
 (
         DxfLayer *dxf_layer
 );
-int
+DxfLayer *
 dxf_layer_read
 (
         DxfFile *fp,
