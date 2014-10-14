@@ -120,7 +120,7 @@ dxf_line_init
 (
         DxfLine *dxf_line
 );
-int
+DxfLine *
 dxf_line_read
 (
         DxfFile *fp,

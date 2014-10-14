@@ -137,10 +137,9 @@ dxf_line_init
  * \c ENTITY section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_line.
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_line.
  */
-int
+DxfLine *
 dxf_line_read
 (
         DxfFile *fp,
@@ -170,7 +169,7 @@ dxf_line_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -282,7 +281,7 @@ dxf_line_read
                         && ((strcmp (temp_string, "AcDbLine") != 0)))
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
@@ -317,7 +316,7 @@ dxf_line_read
                 else
                 {
                         fprintf (stderr,
-                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
@@ -326,7 +325,7 @@ dxf_line_read
           (_("[File: %s: line: %d] Leaving %s () function.\n")),
           __FILE__, __LINE__, __FUNCTION__);
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_line);
 }
 
 
