@@ -96,7 +96,14 @@ dxf_image_init
 #endif
         int i;
 
-        dxf_image = dxf_image_new ();
+        /* Do some basic checks. */
+        if (dxf_image == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_image = dxf_image_new ();
+        }
         if (dxf_image == NULL)
         {
               fprintf (stderr,
@@ -171,9 +178,14 @@ dxf_image_read
         int i;
         int j;
 
-        if (!dxf_image)
+        /* Do some basic checks. */
+        if (dxf_image == NULL)
         {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_image = dxf_image_new ();
+                dxf_image_init (dxf_image);
         }
         i = 0;
         j = 0;
@@ -422,6 +434,15 @@ dxf_image_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_image->linetype, "") == 0)
+        {
+                dxf_image->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_image->layer, "") == 0)
+        {
+                dxf_image->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -450,6 +471,14 @@ dxf_image_write
         char *dxf_entity_name = strdup ("IMAGE");
         int i;
 
+        /* Do some basic checks. */
+        if (fp->acad_version_number < AutoCAD_14)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_image == NULL)
         {
                 fprintf (stderr,
