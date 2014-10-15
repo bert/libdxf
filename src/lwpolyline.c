@@ -409,4 +409,40 @@ dxf_lwpolyline_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c LWPOLYLINE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_lwpolyline_free
+(
+        DxfLWPolyline *dxf_lwpolyline
+                /*!< Pointer to the memory occupied by the DXF \c LWPOLYLINE
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dxf_lwpolyline->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () pointer to next DxfLWPolyline was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dxf_lwpolyline->linetype);
+        free (dxf_lwpolyline->layer);
+        free (dxf_lwpolyline);
+        dxf_lwpolyline = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

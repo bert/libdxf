@@ -150,6 +150,10 @@ dxf_lwpolyline_write
         DxfFile *fp,
         DxfLWPolyline *dxf_lwpolyline
 );
+int dxf_lwpolyline_free
+(
+        DxfLWPolyline *dxf_lwpolyline
+);
 
 
 #endif /* LIBDXF_SRC_LWPOLYLINE_H */
