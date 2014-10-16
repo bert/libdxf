@@ -47,9 +47,7 @@ DxfLayer *
 dxf_layer_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfLayer *dxf_layer = NULL;
         size_t size;
@@ -69,9 +67,7 @@ dxf_layer_new ()
                 memset (dxf_layer, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_layer);
 }
@@ -92,9 +88,7 @@ dxf_layer_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         dxf_layer = dxf_layer_new ();
         if (dxf_layer == NULL)
@@ -114,9 +108,7 @@ dxf_layer_init
         dxf_layer->plot_style_name = strdup ("");
         dxf_layer->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_layer);
 }
@@ -143,9 +135,7 @@ dxf_layer_read
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
 
@@ -250,9 +240,7 @@ dxf_layer_read
                 }
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_layer);
 }
@@ -274,9 +262,7 @@ dxf_layer_write
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("LAYER");
 
@@ -315,9 +301,7 @@ dxf_layer_write
                 fprintf (fp->fp, "347\n%s\n", dxf_layer->material);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -339,9 +323,7 @@ dxf_layer_free
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (dxf_layer->next != NULL)
         {
@@ -357,9 +339,7 @@ dxf_layer_free
         free (dxf_layer);
         dxf_layer = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
