@@ -370,7 +370,6 @@ dxf_arc_read
         {
                 dxf_arc->layer = strdup (DXF_DEFAULT_LAYER);
         }
-
 #if DEBUG
         DXF_DEBUG_END
 #endif
