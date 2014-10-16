@@ -90,7 +90,14 @@ dxf_insert_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_insert = dxf_insert_new ();
+        /* Do some basic checks. */
+        if (dxf_insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_insert = dxf_insert_new ();
+        }
         if (dxf_insert == NULL)
         {
               fprintf (stderr,
@@ -153,9 +160,14 @@ dxf_insert_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_insert)
+        /* Do some basic checks. */
+        if (dxf_insert == NULL)
         {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_insert = dxf_insert_new ();
+                dxf_insert_init (dxf_insert);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -368,6 +380,15 @@ dxf_insert_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_insert->linetype, "") == 0)
+        {
+                dxf_insert->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_insert->layer, "") == 0)
+        {
+                dxf_insert->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -399,6 +420,16 @@ dxf_insert_write
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_insert->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_insert->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_insert->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         if (strcmp (dxf_insert->layer, "") == 0)
         {
