@@ -5,6 +5,10 @@
  *
  * \brief DXF layer table.
  *
+ * \note Xref-dependent layers are output during DXFOUT.\n
+ * For these layers, the associated linetype name in the DXF file is
+ * always CONTINUOUS.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -105,12 +109,15 @@ dxf_layer_init
                 __FUNCTION__);
               return (NULL);
         }
+        dxf_layer->id_code = 0;
         dxf_layer->layer_name = strdup ("");
         dxf_layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_layer->color = DXF_COLOR_BYLAYER;
         dxf_layer->flag = 0;
         dxf_layer->plotting_flag = 0;
+        dxf_layer->dictionary_owner_soft = strdup ("");
         dxf_layer->material = strdup ("");
+        dxf_layer->dictionary_owner_hard = strdup ("");
         dxf_layer->lineweight = 0;
         dxf_layer->plot_style_name = strdup ("");
         dxf_layer->next = NULL;
@@ -217,11 +224,25 @@ dxf_layer_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_layer->plotting_flag);
                 }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_layer->dictionary_owner_soft);
+                }
                 else if (strcmp (temp_string, "347") == 0)
                 {
                         /* Now follows a string containing the material. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", dxf_layer->material);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_layer->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "370") == 0)
                 {
@@ -319,15 +340,39 @@ dxf_layer_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (dxf_layer->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", dxf_layer->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_layer->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_layer->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
         if (fp->acad_version_number >= AutoCAD_14)
         {
                 fprintf (fp->fp, "100\nAcDbSymbolTable\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_14)
+        {
                 fprintf (fp->fp, "100\nAcDbLayerTableRecord\n");
         }
         fprintf (fp->fp, "  2\n%s\n", dxf_layer->layer_name);
-        fprintf (fp->fp, "  6\n%s\n", dxf_layer->linetype);
-        fprintf (fp->fp, " 62\n%d\n", dxf_layer->color);
         fprintf (fp->fp, " 70\n%d\n", dxf_layer->flag);
+        fprintf (fp->fp, " 62\n%d\n", dxf_layer->color);
+        fprintf (fp->fp, "  6\n%s\n", dxf_layer->linetype);
         if (fp->acad_version_number >= AutoCAD_2000)
         {
                 fprintf (fp->fp, "290\n%d\n", dxf_layer->plotting_flag);
@@ -372,7 +417,9 @@ dxf_layer_free
         }
         free (dxf_layer->layer_name);
         free (dxf_layer->linetype);
+        free (dxf_layer->dictionary_owner_soft);
         free (dxf_layer->material);
+        free (dxf_layer->dictionary_owner_hard);
         free (dxf_layer->plot_style_name);
         free (dxf_layer);
         dxf_layer = NULL;

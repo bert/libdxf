@@ -42,11 +42,17 @@
 /*!
  * \brief DXF definition of an AutoCAD layer entity.
  *
- * Xref-dependent layers are to be written to an output file during DXFOUT.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_layer
 {
+        int id_code;
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
         char *layer_name;
                 /*!< group code = 2. */
         char *linetype;
@@ -68,9 +74,15 @@ dxf_layer
         int plotting_flag;
                 /*!< group code = 290\n
                  * Boolean, if set to 0, do not plot this layer. */
+        char *dictionary_owner_soft;
+                /*!< group code = 330\n
+                 * Soft-pointer ID/handle to owner dictionary (optional). */
         char *material;
                 /*!< group code = 347\n
                  * Hard-pointer ID / handle to Material object */
+        char *dictionary_owner_hard;
+                /*!< group code = 360\n
+                 * Hard owner ID/handle to owner dictionary (optional). */
         int16_t lineweight;
                 /*!< group code = 370\n
                  * Lineweight enum value. */
