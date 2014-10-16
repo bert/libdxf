@@ -430,4 +430,164 @@ dxf_layer_free
 }
 
 
+/*!
+ * \brief Test if layer is frozen.
+ *
+ * \return \c TRUE when layer is frozen, or \c FALSE when layer is
+ * thawed.
+ */
+int
+dxf_layer_is_frozen
+(
+        DxfLayer *dxf_layer
+                /*!< DXF \c LAYER table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        result = ((DXF_CHECK_BIT (dxf_layer->flag, 0))
+          || (DXF_CHECK_BIT (dxf_layer->flag, 1)));
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if layer is locked.
+ *
+ * \return \c TRUE when layer is locked, or \c FALSE when layer is not
+ * locked.
+ */
+int
+dxf_layer_is_locked
+(
+        DxfLayer *dxf_layer
+                /*!< DXF \c LAYER table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        result = DXF_CHECK_BIT (dxf_layer->flag, 2);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if layer is externally dependent on an xref.
+ *
+ * \return \c TRUE when layer is externally dependent on an xref,
+ * or \c FALSE when layer is not externally dependent on an xref.
+ */
+int
+dxf_layer_is_xreferenced
+(
+        DxfLayer *dxf_layer
+                /*!< DXF \c LAYER table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        result = DXF_CHECK_BIT (dxf_layer->flag, 4);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if layer is externally dependent on a xref and has been
+ * successfully resolved.
+ *
+ * \return \c TRUE when layer is externally dependent on a xref and has
+ * been successfully resolved,
+ * or \c FALSE when layer is not externally dependent on a xref and has
+ * not been successfully resolved.
+ */
+int
+dxf_layer_is_xresolved
+(
+        DxfLayer *dxf_layer
+                /*!< DXF \c LAYER table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        result = ((DXF_CHECK_BIT (dxf_layer->flag, 4))
+          && (DXF_CHECK_BIT (dxf_layer->flag, 5)));
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if layer is internally referenced by an entity.
+ *
+ * \return \c TRUE when layer is internally referenced by an entity,
+ * or \c FALSE when layer is not internally referenced by an entity.
+ */
+int
+dxf_layer_is_referenced
+(
+        DxfLayer *dxf_layer
+                /*!< DXF \c LAYER table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        result = DXF_CHECK_BIT (dxf_layer->flag, 6);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if layer is off.
+ *
+ * \return \c TRUE when layer is off, or \c FALSE when layer is on.
+ */
+int
+dxf_layer_is_off
+(
+        DxfLayer *dxf_layer
+                /*!< DXF \c LAYER table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        result = (dxf_layer->color < 0);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

@@ -119,6 +119,36 @@ dxf_layer_free
 (
         DxfLayer *dxf_layer
 );
+int
+dxf_layer_is_frozen
+(
+        DxfLayer *dxf_layer
+);
+int
+dxf_layer_is_locked
+(
+        DxfLayer *dxf_layer
+);
+int
+dxf_layer_is_xreferenced
+(
+        DxfLayer *dxf_layer
+);
+int
+dxf_layer_is_xresolved
+(
+        DxfLayer *dxf_layer
+);
+int
+dxf_layer_is_referenced
+(
+        DxfLayer *dxf_layer
+);
+int
+dxf_layer_is_off
+(
+        DxfLayer *dxf_layer
+);
 
 
 #endif /* LIBDXF_SRC_LAYER_H */
