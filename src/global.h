@@ -472,6 +472,11 @@ dxf_file
  */
 #define DXF_VIEWPORT_FROZEN_LAYER_LIST_END "}"
 
+/*!
+ * \brief Test bit is set.
+ */
+#define DXF_CHECK_BIT(var,pos) ((var & (1 << pos)) == (1 << pos))
+
 
 #endif /* LIBDXF_SRC_GLOBAL_H */
 
