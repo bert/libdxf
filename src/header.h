@@ -305,7 +305,7 @@ dxf_header
 
         DxfPoint GridUnit; /*!< Grid X and Y spacing  */
         int GridMode; /*!< Grid mode on if nonzero */
-} DxfHeader, * DxfHeaderPtr;
+} DxfHeader;
 
 int dxf_init_header (DxfHeader dxf_header, int acad_version_number);
 int dxf_read_header (DxfFile *fp, DxfHeader dxf_header);

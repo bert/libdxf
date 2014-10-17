@@ -70,7 +70,7 @@ dxf_table
         int max_table_entries;
                 /*!< group code = 70.\n
                  * maximum number of table entries that may follow. */
-} DxfTable, * DxfTablePtr;
+} DxfTable;
 
 
 /*!
@@ -88,7 +88,7 @@ dxf_table_appid
         int flag;
                 /*!< group code = 70.\n
                  * standard flag values. */
-} DxfTableAppid, * DxfTableAppidPtr;
+} DxfTableAppid;
 
 
 int

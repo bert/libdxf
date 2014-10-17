@@ -248,7 +248,7 @@ dxf_mtext
                  * added on DXF 2007 and later\n
                  * transparency of background fill color.\n
                  * (not implemented in AutoCAD). */
-} DxfMtext, * DxfMtextPtr;
+} DxfMtext;
 
 
 DxfMtext *

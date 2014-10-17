@@ -136,7 +136,7 @@ dxf_block
                 /*!< pointer to the next DxfBlock.\n
                  * \c NULL in the last DxfBlock. */
         
-} DxfBlock, * DxfBlockPtr;
+} DxfBlock;
 
 
 DxfBlock *dxf_block_new ();

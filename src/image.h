@@ -196,7 +196,7 @@ dxf_image
         struct DxfImage *next;
                 /*!< pointer to the next DxfImage.\n
                  * \c NULL in the last DxfImage. */
-} DxfImage, * DxfImagePtr;
+} DxfImage;
 
 
 DxfImage *

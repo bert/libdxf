@@ -56,7 +56,7 @@ dxf_comment
         struct DxfComment *next;
                 /*!< pointer to the next DxfComment.\n
                  * \c NULL in the last DxfComment. */
-} DxfComment, * DxfCommentPtr;
+} DxfComment;
 
 
 DxfComment *

@@ -73,7 +73,7 @@ dxf_entity
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
         int acad_version_number;
                 /*!< AutoCAD version number. */
-} DxfEntity, * DxfEntityPtr;
+} DxfEntity;
 
 
 /*!

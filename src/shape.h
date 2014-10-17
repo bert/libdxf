@@ -115,7 +115,7 @@ dxf_shape
         struct DxfShape *next;
                 /*!< pointer to the next DxfShape.\n
                  * \c NULL in the last DxfShape. */
-} DxfShape, * DxfShapePtr;
+} DxfShape;
 
 
 DxfShape *

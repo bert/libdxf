@@ -81,7 +81,7 @@ dxf_endblk
                 /*!< Soft-pointer ID/handle to owner dictionary
                  * (optional).\n
                  * Group code = 330. */
-} DxfEndblk, * DxfEndblkPtr;
+} DxfEndblk;
 
 
 DxfEndblk *dxf_endblk_new ();

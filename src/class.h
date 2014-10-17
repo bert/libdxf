@@ -107,7 +107,7 @@ dxf_class
         struct DxfClass *next;
                 /*!< pointer to the next DxfClass.\n
                  * \c NULL in the last DxfClass. */
-} DxfClass, * DxfClassPtr;
+} DxfClass;
 
 
 DxfClass *

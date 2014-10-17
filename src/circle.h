@@ -124,7 +124,7 @@ dxf_circle
         struct DxfCircle *next;
                 /*!< pointer to the next DxfCircle.\n
                  * \c NULL in the last DxfCircle. */
-} DxfCircle, * DxfCirclePtr;
+} DxfCircle;
 
 
 DxfCircle *dxf_circle_new ();

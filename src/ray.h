@@ -100,7 +100,7 @@ dxf_ray
         struct DxfRay *next;
                 /*!< pointer to the next DxfRay.\n
                  * \c NULL in the last DxfRay. */
-} DxfRay, * DxfRayPtr;
+} DxfRay;
 
 
 DxfRay *

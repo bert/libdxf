@@ -122,7 +122,7 @@ dxf_ltype
         struct DxfLType *next;
                 /*!< pointer to the next DxfLType.\n
                  * \c NULL in the last DxfLType. */
-} DxfLType, * DxfLTypePtr;
+} DxfLType;
 
 
 DxfLType *

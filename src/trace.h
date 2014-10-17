@@ -117,7 +117,7 @@ dxf_trace
         struct DxfTrace *next;
                 /*!< pointer to the next DxfTrace.\n
                  * \c NULL in the last DxfTrace. */
-} DxfTrace, * DxfTracePtr;
+} DxfTrace;
 
 
 int dxf_trace_write (FILE *fp, DxfTrace *dxf_trace);

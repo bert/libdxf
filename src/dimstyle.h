@@ -308,7 +308,7 @@ dxf_dimstyle
         struct DxfDimStyle *next;
                 /*!< pointer to the next DxfDimStyle.\n
                  * \c NULL in the last DxfDimStyle. */
-} DxfDimStyle, * DxfDimStylePtr;
+} DxfDimStyle;
 
 
 DxfDimStyle *dxf_dimstyle_new ();

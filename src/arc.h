@@ -131,7 +131,7 @@ dxf_arc
         struct DxfArc *next;
                 /*!< pointer to the next DxfArc.\n
                  * \c NULL in the last DxfArc. */
-} DxfArc, * DxfArcPtr;
+} DxfArc;
 
 
 DxfArc *

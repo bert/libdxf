@@ -141,7 +141,7 @@ dxf_solid
                 /*!< pointer to the next DxfSolid.\n
                  * \c NULL in the last DxfSolid. */
 
-} DxfSolid, * DxfSolidPtr;
+} DxfSolid;
 
 
 DxfSolid *

@@ -139,7 +139,7 @@ dxf_insert
         struct DxfInsert *next;
                 /*!< pointer to the next DxfInsert.\n
                  * \c NULL in the last DxfInsert. */
-} DxfInsert, * DxfInsertPtr;
+} DxfInsert;
 
 
 DxfInsert *

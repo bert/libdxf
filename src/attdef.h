@@ -199,7 +199,7 @@ dxf_attdef
         struct DxfAttdef *next;
                 /*!< pointer to the next DxfAttdef.\n
                  * \c NULL in the last DxfAttdef. */
-} DxfAttdef, * DxfAttdefPtr;
+} DxfAttdef;
 
 
 DxfAttdef *

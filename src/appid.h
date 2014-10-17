@@ -90,7 +90,7 @@ dxf_appid
         struct DxfAppid *next;
                 /*!< pointer to the next DxfAppid.\n
                  * \c NULL in the last DxfAppid. */
-} DxfAppid, * DxfAppidPtr;
+} DxfAppid;
 
 
 DxfAppid *

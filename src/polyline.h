@@ -195,7 +195,7 @@ dxf_polyline
         struct DxfPolyline *next;
                 /*!< pointer to the next DxfPolyline.\n
                  * \c NULL in the last DxfPolyline. */
-} DxfPolyline, * DxfPolylinePtr;
+} DxfPolyline;
 
 
 DxfPolyline *

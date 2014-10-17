@@ -238,7 +238,7 @@ dxf_spline
         struct DxfSpline *next;
                 /*!< pointer to the next DxfSpline.\n
                  * \c NULL in the last DxfSpline. */
-} DxfSpline, * DxfSplinePtr;
+} DxfSpline;
 
 
 DxfSpline *

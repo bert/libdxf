@@ -109,7 +109,7 @@ dxf_point
         struct DxfPoint *next;
                 /*!< pointer to the next DxfPoint.\n
                  * \c NULL in the last DxfPoint. */
-} DxfPoint, * DxfPointPtr;
+} DxfPoint;
 
 
 DxfPoint *

@@ -159,7 +159,7 @@ dxf_vport
         int acad_version_number;
                 /*!< AutoCAD version number. */
 
-} DxfVPort, * DxfVPortPtr;
+} DxfVPort;
 
 
 #endif /* LIBDXF_SRC_VPORT_H */

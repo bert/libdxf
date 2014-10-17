@@ -155,7 +155,7 @@ dxf_vertex
         struct DxfVertex *next;
                 /*!< pointer to the next DxfVertex.\n
                  * \c NULL in the last DxfVertex. */
-} DxfVertex, * DxfVertexPtr;
+} DxfVertex;
 
 
 DxfVertex *

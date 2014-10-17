@@ -75,7 +75,7 @@ dxf_seqend
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
                  * the \c BLOCK entity. */
-} DxfSeqend, * DxfSeqendPtr;
+} DxfSeqend;
 
 
 int

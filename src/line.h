@@ -110,7 +110,7 @@ dxf_line
         struct DxfLine *next;
                 /*!< pointer to the next DxfLine.\n
                  * \c NULL in the last DxfLine. */
-} DxfLine, * DxfLinePtr;
+} DxfLine;
 
 
 DxfLine *

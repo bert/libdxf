@@ -213,7 +213,7 @@ dxf_helix
         struct DxfHelix *next;
                 /*!< pointer to the next DxfHelix.\n
                  * \c NULL in the last DxfHelix. */
-} DxfHelix, * DxfHelixPtr;
+} DxfHelix;
 
 
 DxfHelix *

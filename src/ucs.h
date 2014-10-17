@@ -90,7 +90,7 @@ dxf_ucs
                  *         commands; it can be ignored by most programs that
                  *         read DXF files, and need not be set by programs that
                  *         write DXF files.\n */
-} DxfUcs, * DxfUcsPtr;
+} DxfUcs;
 
 
 #endif /* LIBDXF_SRC_UCS_H */

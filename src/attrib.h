@@ -188,7 +188,7 @@ dxf_attrib
         struct DxfAttrib *next;
                 /*!< pointer to the next DxfAttrib.\n
                  * \c NULL in the last DxfAttrib. */
-} DxfAttrib, * DxfAttribPtr;
+} DxfAttrib;
 
 
 DxfAttrib *

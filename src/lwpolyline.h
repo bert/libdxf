@@ -128,7 +128,7 @@ dxf_lwpolyline
         struct DxfLWPolyline *next;
                 /*!< pointer to the next DxfLWPolyline.\n
                  * \c NULL in the last DxfLWPolyline. */
-} DxfLWPolyline, * DxfLWPolylinePtr;
+} DxfLWPolyline;
 
 
 DxfLWPolyline *

@@ -91,7 +91,7 @@ dxf_style
                  * bit coded:\n
                  * 2 = text is backward (mirrored in X)\n
                  * 4 = text is upside down (mirrored in Y). */
-} DxfStyle, * DxfStylePtr;
+} DxfStyle;
 
 
 #endif /* LIBDXF_SRC_STYLE_H */

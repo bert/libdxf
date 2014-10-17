@@ -135,7 +135,7 @@ dxf_ellipse
         struct DxfEllipse *next;
                 /*!< pointer to the next DxfEllipse.\n
                  * \c NULL in the last DxfEllipse. */
-} DxfEllipse, * DxfEllipsePtr;
+} DxfEllipse;
 
 
 DxfEllipse *

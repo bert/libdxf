@@ -240,7 +240,7 @@ dxf_viewport
         struct DxfViewport *next;
                 /*!< pointer to the next DxfViewport.\n
                  * \c NULL in the last DxfViewport. */
-} DxfViewport, * DxfViewportPtr;
+} DxfViewport;
 
 
 DxfViewport *

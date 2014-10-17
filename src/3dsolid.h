@@ -110,7 +110,7 @@ dxf_3dsolid
         struct Dxf3dsolid *next;
                 /*!< pointer to the next Dxf3dsolid.\n
                  * \c NULL in the last Dxf3dsolid. */
-} Dxf3dsolid, * Dxf3dsolidPtr;
+} Dxf3dsolid;
 
 
 Dxf3dsolid *

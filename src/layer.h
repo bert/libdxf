@@ -92,7 +92,7 @@ dxf_layer
         struct DxfLayer *next;
                 /*!< pointer to the next DxfLayer.\n
                  * \c NULL in the last DxfLayer. */
-} DxfLayer, * DxfLayerPtr;
+} DxfLayer;
 
 
 DxfLayer *

@@ -76,7 +76,7 @@ dxf_hatch_boundary_path_edge_arc
         struct DxfHatchBoundaryPathEdgeArc *next;
                 /*!< pointer to the next DxfHatchBoundaryPathEdgeArc.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeArc. */
-} DxfHatchBoundaryPathEdgeArc, * DxfHatchBoundaryPathEdgeArcPtr;
+} DxfHatchBoundaryPathEdgeArc;
 
 
 /*!
@@ -114,7 +114,7 @@ dxf_hatch_boundary_path_edge_ellipse
         struct DxfHatchBoundaryPathEdgeEllipse *next;
                 /*!< pointer to the next DxfHatchBoundaryPathEdgeEllipse.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeEllipse. */
-} DxfHatchBoundaryPathEdgeEllipse, * DxfHatchBoundaryPathEdgeEllipsePtr;
+} DxfHatchBoundaryPathEdgeEllipse;
 
 
 /*!
@@ -140,7 +140,7 @@ dxf_hatch_boundary_path_edge_line
         struct DxfHatchBoundaryPathEdgeLine *next;
                 /*!< pointer to the next DxfHatchBoundaryPathEdgeLine.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeLine. */
-} DxfHatchBoundaryPathEdgeLine, * DxfHatchBoundaryPathEdgeLinePtr;
+} DxfHatchBoundaryPathEdgeLine;
 
 
 /*!
@@ -162,7 +162,7 @@ dxf_hatch_boundary_path_edge_spline_cp
         struct DxfHatchBoundaryPathEdgeSplineCp *next;
                 /*!< pointer to the next DxfHatchBoundaryPathEdgeSplineCp.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeSplineCp. */
-} DxfHatchBoundaryPathEdgeSplineCp, * DxfHatchBoundaryPathEdgeSplineCpPtr;
+} DxfHatchBoundaryPathEdgeSplineCp;
 
 
 /*!
@@ -196,7 +196,7 @@ dxf_hatch_boundary_path_edge_spline
         struct DxfHatchBoundaryPathEdgeSpline *next;
                 /*!< pointer to the next DxfHatchBoundaryPathEdgeSpline.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeSpline. */
-} DxfHatchBoundaryPathEdgeSpline, * DxfHatchBoundaryPathEdgeSplinePtr;
+} DxfHatchBoundaryPathEdgeSpline;
 
 
 /*!
@@ -229,7 +229,7 @@ dxf_hatch_boundary_path_edge
         struct DxfHatchBoundaryPathEdge *next;
                 /*!< pointer to the next DxfHatchBoundaryPathEdge.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdge. */
-} DxfHatchBoundaryPathEdge, * DxfHatchBoundaryPathEdgePtr;
+} DxfHatchBoundaryPathEdge;
 
 
 /*!
@@ -248,7 +248,7 @@ dxf_hatch_boundary_path_polyline_vertex
         struct DxfHatchBoundaryPathPolylineVertex *next;
                 /*!< pointer to the next DxfHatchBoundaryPathPolylineVertex.\n
                  * \c NULL if the last DxfHatchBoundaryPathPolylineVertex. */
-} DxfHatchBoundaryPathPolylineVertex, * DxfHatchBoundaryPathPolylineVertexPtr;
+} DxfHatchBoundaryPathPolylineVertex;
 
 
 /*!
@@ -279,7 +279,7 @@ dxf_hatch_boundary_path_polyline
         struct DxfHatchBoundaryPathPolyline *next;
                 /*!< pointer to the next DxfHatchBoundaryPathPolyline.\n
                  * \c NULL if the last DxfHatchBoundaryPathPolyline. */
-} DxfHatchBoundaryPathPolyline, * DxfHatchBoundaryPathPolylinePtr;
+} DxfHatchBoundaryPathPolyline;
 
 
 /*!
@@ -304,7 +304,7 @@ dxf_hatch_boundary_path
         struct DxfHatchBoundaryPath *next;
                 /*!< pointer to the next DxfHatchBoundaryPath.\n
                  * \c NULL if the last DxfHatchBoundaryPath. */
-} DxfHatchBoundaryPath, * DxfHatchBoundaryPathPtr;
+} DxfHatchBoundaryPath;
 
 
 /*!
@@ -340,7 +340,7 @@ dxf_hatch_pattern_def_line
         struct DxfHatchPatternDefLine *next;
                 /*!< pointer to the next DxfHatchPatternDefLine.\n
                  * \c NULL if the last DxfHatchPatternDefLine. */
-} DxfHatchPatternDefLine, * DxfHatchPatternDefLinePtr;
+} DxfHatchPatternDefLine;
 
 
 /*!
@@ -360,7 +360,7 @@ dxf_hatch_pattern_seedpoint
         struct DxfHatchPatternSeedPoint *next;
                 /*!< pointer to the next DxfHatchSeedPoint.\n
                  * \c NULL if the last DxfHatchSeedPoint. */
-} DxfHatchPatternSeedPoint, * DxfHatchPatternSeedPointPtr;
+} DxfHatchPatternSeedPoint;
 
 
 /*!
@@ -388,7 +388,7 @@ dxf_hatch_pattern
         struct DxfHatchPattern *next;
                 /*!< pointer to the next DxfHatchPattern.\n
                  * \c NULL if the last DxfHatchPattern. */
-} DxfHatchPattern, * DxfHatchPatternPtr;
+} DxfHatchPattern;
 
 
 /*!
@@ -530,7 +530,7 @@ dxf_hatch
         struct DxfHatch *next;
                 /*!< pointer to the next DxfHatch.\n
                  * \c NULL if the last DxfHatch. */
-} DxfHatch, * DxfHatchPtr;
+} DxfHatch;
 
 
 DxfHatch *

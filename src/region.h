@@ -92,7 +92,7 @@ dxf_region
         struct DxfRegion *next;
                 /*!< pointer to the next DxfRegion.\n
                  * \c NULL in the last DxfRegion. */
-} DxfRegion, * DxfRegionPtr;
+} DxfRegion;
 
 
 DxfRegion *

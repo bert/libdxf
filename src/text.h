@@ -162,7 +162,7 @@ dxf_text
         struct DxfText *next;
                 /*!< pointer to the next DxfText.\n
                  * \c NULL in the last DxfText. */
-} DxfText, * DxfTextPtr;
+} DxfText;
 
 
 DxfText *

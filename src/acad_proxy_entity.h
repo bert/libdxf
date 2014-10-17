@@ -126,7 +126,7 @@ dxf_acad_proxy_entity
         struct DxfAcadProxyEntity *next;
                 /*!< pointer to the next DxfLayer.\n
                  * \c NULL in the last DxfLayer. */
-} DxfAcadProxyEntity, * DxfAcadProxyEntityPtr;
+} DxfAcadProxyEntity;
 
 
 DxfAcadProxyEntity *

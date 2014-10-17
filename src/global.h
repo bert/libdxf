@@ -169,7 +169,7 @@ dxf_file
         /*!< Last line read. */
     int acad_version_number;
         /*!< AutoCAD version number. */
-} DxfFile, * DxfFilePtr;
+} DxfFile;
 
 
 /* AutoCAD(TM) versions by name */

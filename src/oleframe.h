@@ -89,7 +89,7 @@ dxf_oleframe
         struct DxfOleFrame *next;
                 /*!< pointer to the next DxfOleFrame.\n
                  * \c NULL in the last DxfOleFrame. */
-} DxfOleFrame, * DxfOleFramePtr;
+} DxfOleFrame;
 
 
 DxfOleFrame *

@@ -139,7 +139,7 @@ dxf_3dface
         struct Dxf3dface *next;
                 /*!< pointer to the next Dxf3dface.\n
                  * \c NULL in the last Dxf3dface. */
-} Dxf3dface, * Dxf3dfacePtr;
+} Dxf3dface;
 
 
 Dxf3dface *

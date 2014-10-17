@@ -112,7 +112,7 @@ dxf_body
         struct DxfBody *next;
                 /*!< pointer to the next DxfBody.\n
                  * \c NULL in the last DxfBody. */
-} DxfBody, * DxfBodyPtr;
+} DxfBody;
 
 
 DxfBody *
