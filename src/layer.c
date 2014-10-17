@@ -448,6 +448,14 @@ dxf_layer_is_frozen
 #endif
         int result = FALSE;
 
+        /* Do some basic checks. */
+        if (dxf_layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         result = ((DXF_CHECK_BIT (dxf_layer->flag, 0))
           || (DXF_CHECK_BIT (dxf_layer->flag, 1)));
 #if DEBUG
@@ -475,6 +483,14 @@ dxf_layer_is_locked
 #endif
         int result = FALSE;
 
+        /* Do some basic checks. */
+        if (dxf_layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         result = DXF_CHECK_BIT (dxf_layer->flag, 2);
 #if DEBUG
         DXF_DEBUG_END
@@ -501,6 +517,14 @@ dxf_layer_is_xreferenced
 #endif
         int result = FALSE;
 
+        /* Do some basic checks. */
+        if (dxf_layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         result = DXF_CHECK_BIT (dxf_layer->flag, 4);
 #if DEBUG
         DXF_DEBUG_END
@@ -530,6 +554,14 @@ dxf_layer_is_xresolved
 #endif
         int result = FALSE;
 
+        /* Do some basic checks. */
+        if (dxf_layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         result = ((DXF_CHECK_BIT (dxf_layer->flag, 4))
           && (DXF_CHECK_BIT (dxf_layer->flag, 5)));
 #if DEBUG
@@ -557,6 +589,14 @@ dxf_layer_is_referenced
 #endif
         int result = FALSE;
 
+        /* Do some basic checks. */
+        if (dxf_layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         result = DXF_CHECK_BIT (dxf_layer->flag, 6);
 #if DEBUG
         DXF_DEBUG_END
@@ -582,6 +622,14 @@ dxf_layer_is_off
 #endif
         int result = FALSE;
 
+        /* Do some basic checks. */
+        if (dxf_layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         result = (dxf_layer->color < 0);
 #if DEBUG
         DXF_DEBUG_END
