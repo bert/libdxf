@@ -168,6 +168,26 @@ dxf_3dface_free
 (
         Dxf3dface *dxf_3dface
 );
+int
+dxf_3dface_is_first_edge_invisible
+(
+        Dxf3dface *dxf_3dface
+);
+int
+dxf_3dface_is_second_edge_invisible
+(
+        Dxf3dface *dxf_3dface
+);
+int
+dxf_3dface_is_third_edge_invisible
+(
+        Dxf3dface *dxf_3dface
+);
+int
+dxf_3dface_is_fourth_edge_invisible
+(
+        Dxf3dface *dxf_3dface
+);
 
 
 #endif /* LIBDXF_SRC_3DFACE_H */

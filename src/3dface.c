@@ -554,4 +554,140 @@ dxf_3dface_free
 }
 
 
+/*!
+ * \brief Test if the first edge is invisible.
+ *
+ * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
+ * visible.
+ */
+int
+dxf_3dface_is_first_edge_invisible
+(
+        Dxf3dface *dxf_3dface
+                /*!< DXF 3dface entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_3dface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = (DXF_CHECK_BIT (dxf_3dface->flag, 0));
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if the second edge is invisible.
+ *
+ * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
+ * visible.
+ */
+int
+dxf_3dface_is_second_edge_invisible
+(
+        Dxf3dface *dxf_3dface
+                /*!< DXF 3dface entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_3dface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = (DXF_CHECK_BIT (dxf_3dface->flag, 1));
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if the third edge is invisible.
+ *
+ * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
+ * visible.
+ */
+int
+dxf_3dface_is_third_edge_invisible
+(
+        Dxf3dface *dxf_3dface
+                /*!< DXF 3dface entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_3dface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = (DXF_CHECK_BIT (dxf_3dface->flag, 2));
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if the fourth edge is invisible.
+ *
+ * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
+ * visible.
+ */
+int
+dxf_3dface_is_fourth_edge_invisible
+(
+        Dxf3dface *dxf_3dface
+                /*!< DXF 3dface entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_3dface == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = (DXF_CHECK_BIT (dxf_3dface->flag, 3));
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
