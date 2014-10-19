@@ -41,6 +41,8 @@
  * Fill the memory contents with zeros.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  */
 Dxf3dface *
@@ -81,6 +83,8 @@ dxf_3dface_new ()
  * allocated memory when succesful.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  */
 Dxf3dface *
@@ -149,6 +153,8 @@ dxf_3dface_init
  * \return a pointer to \c dxf_3dface.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  */
 Dxf3dface *
@@ -395,6 +401,8 @@ dxf_3dface_read
  * occurred.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  */
 int
@@ -513,6 +521,8 @@ dxf_3dface_write
  * occurred.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  */
 int
