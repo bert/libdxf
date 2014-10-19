@@ -43,6 +43,10 @@
  * \brief Allocate memory for a \c DxfInsert.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfInsert *
 dxf_insert_new ()
@@ -79,6 +83,10 @@ dxf_insert_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfInsert *
 dxf_insert_init
@@ -112,10 +120,13 @@ dxf_insert_init
         dxf_insert->x0 = 0.0;
         dxf_insert->y0 = 0.0;
         dxf_insert->z0 = 0.0;
+        dxf_insert->elevation = 0.0;
         dxf_insert->thickness = 0.0;
-        dxf_insert->rel_x_scale = 0.0;
-        dxf_insert->rel_y_scale = 0.0;
-        dxf_insert->rel_z_scale = 0.0;
+        dxf_insert->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_insert->visibility = DXF_DEFAULT_VISIBILITY;
+        dxf_insert->rel_x_scale = 1.0;
+        dxf_insert->rel_y_scale = 1.0;
+        dxf_insert->rel_z_scale = 1.0;
         dxf_insert->column_spacing = 0.0;
         dxf_insert->row_spacing = 0.0;
         dxf_insert->rot_angle = 0.0;
@@ -127,6 +138,8 @@ dxf_insert_init
         dxf_insert->extr_x0 = 0.0;
         dxf_insert->extr_y0 = 0.0;
         dxf_insert->extr_z0 = 0.0;
+        dxf_insert->dictionary_owner_soft = strdup ("");
+        dxf_insert->dictionary_owner_hard = strdup ("");
         dxf_insert->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -145,6 +158,10 @@ dxf_insert_init
  * While parsing the DXF file store data in \c dxf_insert. \n
  *
  * \return a pointer to \c dxf_insert.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfInsert *
 dxf_insert_read
@@ -231,15 +248,12 @@ dxf_insert_read
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_insert->z0 = 0.0))
+                        && (dxf_insert->elevation != 0.0))
                 {
-                        /* Elevation is a pre AutoCAD R11 variable
-                         * so additional testing for the version should
-                         * probably be added.
-                         * Now follows a string containing the
+                        /* Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_insert->z0);
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -283,12 +297,26 @@ dxf_insert_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_insert->row_spacing);
                 }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_insert->linetype_scale);
+                }
                 else if (strcmp (temp_string, "50") == 0)
                 {
                         /* Now follows a string containing the
                          * rotation angle. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_insert->rot_angle);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_insert->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -366,6 +394,20 @@ dxf_insert_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_insert->extr_z0);
                 }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_insert->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_insert->dictionary_owner_hard);
+                }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
@@ -397,7 +439,14 @@ dxf_insert_read
 
 
 /*!
- * \brief Write DXF output to fp for an insert entity.
+ * \brief Write DXF output for a DXF \c INSERT entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_insert_write
@@ -490,35 +539,88 @@ dxf_insert_write
                   dxf_entity_name);
                 dxf_insert->rows = 1;
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (fp->acad_version_number >= AutoCAD_14)
-        {
-                fprintf (fp->fp, "100\nAcDbEntity\n");
-                fprintf (fp->fp, "100\nAcDbBlockReference\n");
-        }
-        fprintf (fp->fp, "  2\n%s\n", dxf_insert->block_name);
         if (dxf_insert->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_insert->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_insert->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_insert->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_insert->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_insert->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (dxf_insert->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_insert->layer);
         if (strcmp (dxf_insert->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_insert->linetype);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_insert->layer);
-        fprintf (fp->fp, " 10\n%f\n", dxf_insert->x0);
-        fprintf (fp->fp, " 20\n%f\n", dxf_insert->y0);
-        fprintf (fp->fp, " 30\n%f\n", dxf_insert->z0);
-        if (fp->acad_version_number >= AutoCAD_12)
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_insert->elevation != 0.0))
         {
-                fprintf (fp->fp, "210\n%f\n", dxf_insert->extr_x0);
-                fprintf (fp->fp, "220\n%f\n", dxf_insert->extr_y0);
-                fprintf (fp->fp, "230\n%f\n", dxf_insert->extr_z0);
+                fprintf (fp->fp, " 38\n%f\n", dxf_insert->elevation);
         }
         if (dxf_insert->thickness != 0.0)
         {
                 fprintf (fp->fp, " 39\n%f\n", dxf_insert->thickness);
         }
+        if (dxf_insert->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_insert->color);
+        }
+        if (dxf_insert->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_insert->linetype_scale);
+        }
+        if (dxf_insert->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_insert->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbBlockReference\n");
+        }
+        if (dxf_insert->attributes_follow != 0)
+        {
+                fprintf (fp->fp, " 66\n%d\n", dxf_insert->attributes_follow);
+                /*!
+                 * \todo After a set attributes_follow flag is
+                 * detected, the writing of following entities should
+                 * be implemented and an end of sequence
+                 * marker (\c SEQEND) written. */
+        }
+        fprintf (fp->fp, "  2\n%s\n", dxf_insert->block_name);
+        fprintf (fp->fp, " 10\n%f\n", dxf_insert->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_insert->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_insert->z0);
         if (dxf_insert->rel_x_scale != 1.0)
         {
                 fprintf (fp->fp, " 41\n%f\n", dxf_insert->rel_x_scale);
@@ -531,29 +633,9 @@ dxf_insert_write
         {
                 fprintf (fp->fp, " 43\n%f\n", dxf_insert->rel_z_scale);
         }
-        if ((dxf_insert->columns > 1) && (dxf_insert->column_spacing > 0.0))
-        {
-                fprintf (fp->fp, " 44\n%f\n", dxf_insert->column_spacing);
-        }
-        if ((dxf_insert->rows > 1) && (dxf_insert->row_spacing > 0.0))
-        {
-                fprintf (fp->fp, " 45\n%f\n", dxf_insert->row_spacing);
-        }
         if (dxf_insert->rot_angle != 0.0)
         {
                 fprintf (fp->fp, " 50\n%f\n", dxf_insert->rot_angle);
-        }
-        if (dxf_insert->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_insert->color);
-        }
-        if (dxf_insert->attributes_follow != 0)
-        {
-                fprintf (fp->fp, " 66\n%d\n", dxf_insert->attributes_follow);
-        }
-        if (dxf_insert->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
         if (dxf_insert->columns > 1)
         {
@@ -562,6 +644,20 @@ dxf_insert_write
         if (dxf_insert->rows > 1)
         {
                 fprintf (fp->fp, " 71\n%d\n", dxf_insert->rows);
+        }
+        if ((dxf_insert->columns > 1) && (dxf_insert->column_spacing > 0.0))
+        {
+                fprintf (fp->fp, " 44\n%f\n", dxf_insert->column_spacing);
+        }
+        if ((dxf_insert->rows > 1) && (dxf_insert->row_spacing > 0.0))
+        {
+                fprintf (fp->fp, " 45\n%f\n", dxf_insert->row_spacing);
+        }
+        if (fp->acad_version_number >= AutoCAD_12)
+        {
+                fprintf (fp->fp, "210\n%f\n", dxf_insert->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", dxf_insert->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", dxf_insert->extr_z0);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -576,6 +672,10 @@ dxf_insert_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_insert_free
@@ -598,6 +698,8 @@ dxf_insert_free
         free (dxf_insert->linetype);
         free (dxf_insert->layer);
         free (dxf_insert->block_name);
+        free (dxf_insert->dictionary_owner_soft);
+        free (dxf_insert->dictionary_owner_hard);
         free (dxf_insert);
         dxf_insert = NULL;
 #if DEBUG
