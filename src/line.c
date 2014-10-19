@@ -101,7 +101,14 @@ dxf_line_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_line = dxf_line_new ();
+        /* Do some basic checks. */
+        if (dxf_line == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_line = dxf_line_new ();
+        }
         if (dxf_line == NULL)
         {
               fprintf (stderr,
@@ -168,9 +175,14 @@ dxf_line_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_line)
+        /* Do some basic checks. */
+        if (dxf_line == NULL)
         {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_line = dxf_line_new ();
+                dxf_line_init (dxf_line);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -353,6 +365,15 @@ dxf_line_read
                           (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_line->linetype, "") == 0)
+        {
+                dxf_line->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_line->layer, "") == 0)
+        {
+                dxf_line->layer = strdup (DXF_DEFAULT_LAYER);
         }
 #if DEBUG
         DXF_DEBUG_END
