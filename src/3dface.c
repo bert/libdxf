@@ -468,7 +468,8 @@ dxf_3dface_write
         {
                 fprintf (fp->fp, " 38\n%f\n", dxf_3dface->elevation);
         }
-        if (dxf_3dface->thickness != 0.0)
+        if ((fp->acad_version_number <= AutoCAD_13)
+          && (dxf_3dface->thickness != 0.0))
         {
                 fprintf (fp->fp, " 39\n%f\n", dxf_3dface->thickness);
         }
