@@ -508,7 +508,8 @@ dxf_ellipse_write
         {
                 fprintf (fp->fp, " 38\n%f\n", dxf_ellipse->elevation);
         }
-        if (dxf_ellipse->thickness != 0.0)
+        if ((fp->acad_version_number <= AutoCAD_13)
+          && (dxf_ellipse->thickness != 0.0))
         {
                 fprintf (fp->fp, " 39\n%f\n", dxf_ellipse->thickness);
         }
