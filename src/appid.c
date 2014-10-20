@@ -356,4 +356,145 @@ dxf_appid_free
 }
 
 
+/*!
+ * \brief Test if xdata associated with this APPID is not to be written
+ * when \c SAVEASR12 is performed.
+ *
+ * \return \c TRUE when not to be written,
+ * or \c FALSE when to be written.
+ */
+int
+dxf_appid_is_no_save_xdata
+(
+        DxfAppid *dxf_appid
+                /*!< DXF \c APPID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_appid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (dxf_appid->standard_flag, 0);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if appid is externally dependent on an xref.
+ *
+ * \return \c TRUE when appid is externally dependent on an xref,
+ * or \c FALSE when appid is not externally dependent on an xref.
+ */
+int
+dxf_appid_is_xreferenced
+(
+        DxfAppid *dxf_appid
+                /*!< DXF \c APPID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_appid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (dxf_appid->standard_flag, 4);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if appid is externally dependent on a xref and has been
+ * successfully resolved.
+ *
+ * \return \c TRUE when appid is externally dependent on a xref and has
+ * been successfully resolved,
+ * or \c FALSE when appid is not externally dependent on a xref and has
+ * not been successfully resolved.
+ */
+int
+dxf_appid_is_xresolved
+(
+        DxfAppid *dxf_appid
+                /*!< DXF \c APPID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_appid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = ((DXF_CHECK_BIT (dxf_appid->standard_flag, 4))
+          && (DXF_CHECK_BIT (dxf_appid->standard_flag, 5)));
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if appid is internally referenced by an entity.
+ *
+ * \return \c TRUE when appid is internally referenced by an entity,
+ * or \c FALSE when appid is not internally referenced by an entity.
+ */
+int
+dxf_appid_is_referenced
+(
+        DxfAppid *dxf_appid
+                /*!< DXF \c APPID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_appid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (dxf_appid->standard_flag, 6);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

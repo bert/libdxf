@@ -117,6 +117,26 @@ dxf_appid_free
 (
         DxfAppid *dxf_appid
 );
+int
+dxf_appid_is_xreferenced
+(
+        DxfAppid *dxf_appid
+);
+int
+dxf_appid_is_xresolved
+(
+        DxfAppid *dxf_appid
+);
+int
+dxf_appid_is_referenced
+(
+        DxfAppid *dxf_appid
+);
+int
+dxf_appid_is_no_save_xdata
+(
+        DxfAppid *dxf_appid
+);
 
 
 #endif /* LIBDXF_SRC_APPID_H */
