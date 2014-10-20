@@ -96,13 +96,15 @@ dxf_dimstyle
         int flag;
                 /*!< group code = 70\n
                  * bit coded:\n
-                 * 16 = if set, table entry is externally dependent on an
-                 *      Xref.\n
-                 * 32 = if this bit and bit 16 are both set, the externally
-                 *      dependent Xref has been successfully resolved.\n
-                 * 64 = if set, the table entry was referenced by at least
+                 * <ol>
+                 * <li value = "16"> if set, table entry is externally dependent on an
+                 *      Xref.</li>
+                 * <li value = "32"> if this bit and bit 16 are both set, the externally
+                 *      dependent Xref has been successfully resolved.</li>
+                 * <li value = "64"> if set, the table entry was referenced by at least
                  *      one entity in the drawing the last time the drawing
-                 *      was edited.\n
+                 *      was edited.</li>
+                 * </ol>
                  * This flag is for the benefit of AutoCAD commands; it can
                  * be ignored by most programs that read DXF files, and need
                  * not be set by programs that write DXF files. */
@@ -192,10 +194,10 @@ dxf_dimstyle
                  * Units format for all dimension style family members
                  * except angular:\n
                  * <ol>
-                 * <li value="1"> Scientific,</li>
-                 * <li value="2"> Decimal,</li>
-                 * <li value="3"> Engineering,</li>
-                 * <li value="4"> Architectural.</li>
+                 * <li value = "1"> Scientific,</li>
+                 * <li value = "2"> Decimal,</li>
+                 * <li value = "3"> Engineering,</li>
+                 * <li value = "4"> Architectural.</li>
                  * </ol> */
         int dimdec;
                 /*!< group code = 271\n
@@ -210,10 +212,10 @@ dxf_dimstyle
                  * Units format for alternate units of all dimension
                  * style family members except angular:
                  * <ol>
-                 * <li value="1"> Scientific,</li>
-                 * <li value="2"> Decimal,</li>
-                 * <li value="3"> Engineering,</li>
-                 * <li value="4"> Architectural.</li>
+                 * <li value = "1"> Scientific,</li>
+                 * <li value = "2"> Decimal,</li>
+                 * <li value = "3"> Engineering,</li>
+                 * <li value = "4"> Architectural.</li>
                  * </ol> */
         int dimalttd;
                 /*!< group code = 274\n
@@ -223,70 +225,70 @@ dxf_dimstyle
                 /*!< group code = 275\n
                  * Angle format for angular dimensions:\n
                  * <ol>
-                 * <li value="0"> Decimal degrees,</li>
-                 * <li value="1"> Degrees/minutes/seconds,</li>
-                 * <li value="2"> Gradians,</li>
-                 * <li value="3"> Radians,</li>
-                 * <li value="4"> Surveyor's units.</li>
+                 * <li value = "0"> Decimal degrees,</li>
+                 * <li value = "1"> Degrees/minutes/seconds,</li>
+                 * <li value = "2"> Gradians,</li>
+                 * <li value = "3"> Radians,</li>
+                 * <li value = "4"> Surveyor's units.</li>
                  * </ol> */
         int dimjust;
                 /*!< group code = 280\n
                  * Horizontal dimension text position:\n
                  * <ol>
-                 * <li value="0"> above dimension line and
+                 * <li value = "0"> above dimension line and
                  * center-justified between extension lines,</li>
-                 * <li value="1"> above dimension line and next to first
+                 * <li value = "1"> above dimension line and next to first
                  * extension line,</li>
-                 * <li value="2"> above dimension line and next to
+                 * <li value = "2"> above dimension line and next to
                  * second extension line,</li>
-                 * <li value="3"> above and center-justified to first
+                 * <li value = "3"> above and center-justified to first
                  * extension line,</li>
-                 * <li value="4"> above and center-justified to second
+                 * <li value = "4"> above and center-justified to second
                  * extension line.</li>
                  * </ol> */
         int dimsd1;
                 /*!< group code = 281\n
                  * Suppression of first extension line:\n
                  * <ol>
-                 * <li value="0"> not suppressed,</li>
-                 * <li value="1"> suppressed.</li>
+                 * <li value = "0"> not suppressed,</li>
+                 * <li value = "1"> suppressed.</li>
                  * </ol> */
         int dimsd2;
                 /*!< group code = 282\n
                  * Suppression of second extension line:\n
                  * <ol>
-                 * <li value="0"> not suppressed,</li>
-                 * <li value="1"> suppressed.</li>
+                 * <li value = "0"> not suppressed,</li>
+                 * <li value = "1"> suppressed.</li>
                  * </ol> */
         int dimtolj;
                 /*!< group code = 283\n
                  * Vertical justification for tolerance values:\n
                  * <ol>
-                 * <li value="0"> Top,</li>
-                 * <li value="1"> Middle,</li>
-                 * <li value="2"> Bottom.</li>
+                 * <li value = "0"> Top,</li>
+                 * <li value = "1"> Middle,</li>
+                 * <li value = "2"> Bottom.</li>
                  * </ol> */
         int dimtzin;
                 /*!< group code = 284\n
                  * Suppression of zeros for tolerance values:\n
                  * <ol>
-                 * <li value="0"> not suppressed,</li>
-                 * <li value="1"> suppressed.</li>
+                 * <li value = "0"> not suppressed,</li>
+                 * <li value = "1"> suppressed.</li>
                  * </ol> */
         int dimaltz;
                 /*!< group code = 285\n
                  * Toggles suppression of zeros for alternate unit
                  * dimension values:\n
                  * <ol>
-                 * <li value="0"> zeros not suppressed,</li>
-                 * <li value="1"> zeros suppressed.</li>
+                 * <li value = "0"> zeros not suppressed,</li>
+                 * <li value = "1"> zeros suppressed.</li>
                  * </ol> */
         int dimalttz;
                 /*!< group code = 286\n
                  * Toggles suppression of zeros for tolerance values:\n
                  * <ol>
-                 * <li value="0"> zeros not suppressed,</li>
-                 * <li value="1"> zeros suppressed.</li>
+                 * <li value = "0"> zeros not suppressed,</li>
+                 * <li value = "1"> zeros suppressed.</li>
                  * </ol> */
         int dimfit;
                 /*!< group code = 287\n
@@ -297,9 +299,9 @@ dxf_dimstyle
                 /*!< group code = 288\n
                  * Cursor functionality for user positioned text:\n
                  * <ol>
-                 * <li value="0"> controls only the dimension line
+                 * <li value = "0"> controls only the dimension line
                  * location,</li>
-                 * <li value="1"> controls the text position as well as
+                 * <li value = "1"> controls the text position as well as
                  * the dimension line location.</li>
                  * </ol> */
         int dimtxsty;
