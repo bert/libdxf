@@ -148,27 +148,34 @@ dxf_attdef
                 /*!< group code = 70\n
                  * Attribute flags.\n
                  * Bit coded:\n
-                 * 1 = attribute is invisible (does not display).\n
-                 * 2 = this is a constant attribute.\n
-                 * 4 = verification is required on input of this attribute.\n
-                 * 8 = attribute is preset (no prompt during insertion). */
+                 * <ol>
+                 * <li value = "1"> attribute is invisible (does not display).</li>
+                 * <li value = "2"> this is a constant attribute.</li>
+                 * <li value = "4"> verification is required on input of this attribute.</li>
+                 * <li value = "8"> attribute is preset (no prompt during insertion).</li>
+                 * </ol>
+                 */
         int text_flags;
                 /*!< group code = 71\n
                  * Text flags.\n
                  * Bit coded:\n
-                 * 2 = text is backward (mirrored in X).\n
-                 * 4 = text is upside down (mirrored in Y).\n
+                 * <ol>
+                 * <li value = "2"> text is backward (mirrored in X).</li>
+                 * <li value = "4"> text is upside down (mirrored in Y).</li>
+                 * </ol>
                  * Defaults to 0 if ommited from DXF file. */
         int hor_align;
                 /*!< group code = 72\n
                  * Horizontal alignment.\n
-                 * Bit coded:\n
-                 * 0 = left.\n
-                 * 1 = center.\n
-                 * 2 = right.\n
-                 * 3 = aligned, only when vert_align = 0.\n
-                 * 4 = middle, only when vert_align = 0.\n
-                 * 5 = fit, only when vert_align = 0. \n
+                 * Coded as follows:\n
+                 * <ol>
+                 * <li value = "0"> left.</li>
+                 * <li value = "1"> center.</li>
+                 * <li value = "2"> right.</li>
+                 * <li value = "3"> aligned, only when vert_align = 0.</li>
+                 * <li value = "4"> middle, only when vert_align = 0.</li>
+                 * <li value = "5"> fit, only when vert_align = 0.</li>
+                 * </ol>
                  * Defaults to 0 if omitted from DXF file. */
         int field_length;
                 /*!< group code = 73\n
@@ -178,11 +185,13 @@ dxf_attdef
                 /*!< group code = 74\n
                  * added on DXF R12 and later\n
                  * Vertical alignment.\n
-                 * Bit coded:\n
-                 * 0 = baseline.\n
-                 * 1 = bottom.\n
-                 * 2 = middle.\n
-                 * 3 = top.\n
+                 * Coded as follows:\n
+                 * <ol>
+                 * <li value = "0"> baseline.</li>
+                 * <li value = "1"> bottom.</li>
+                 * <li value = "2"> middle.</li>
+                 * <li value = "3"> top.</li>
+                 * </ol>
                  * Defaults to 0 if omitted from DXF file. */
         double extr_x0;
                 /*!< group code = 210\n
