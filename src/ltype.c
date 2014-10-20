@@ -88,7 +88,14 @@ dxf_ltype_init
 #endif
         int i;
 
-        dxf_ltype = dxf_ltype_new ();
+        /* Do some basic checks. */
+        if (dxf_ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_ltype = dxf_ltype_new ();
+        }
         if (dxf_ltype == NULL)
         {
               fprintf (stderr,
