@@ -54,6 +54,9 @@
  * This table entry contains a name for an application
  * registered with a drawing.
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
