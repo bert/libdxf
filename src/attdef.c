@@ -725,4 +725,141 @@ dxf_attdef_free
 }
 
 
+/*!
+ * \brief Test if the attribute definition is invisible.
+ *
+ * \return \c TRUE when the attribute definition is invisible,
+ * or \c FALSE when the attribute definition is visible.
+ */
+int
+dxf_attdef_is_invisible
+(
+        DxfAttdef *dxf_attdef
+                /*!< DXF \c ATTDEF entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (dxf_attdef->attr_flags, 0);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if the attribute definition is a constant attribute.
+ *
+ * \return \c TRUE when the attribute definition is a constant,
+ * or \c FALSE when the attribute definition is not a constant.
+ */
+int
+dxf_attdef_is_constant
+(
+        DxfAttdef *dxf_attdef
+                /*!< DXF \c ATTDEF entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (dxf_attdef->attr_flags, 1);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if the attribute definition input needs to be verified.
+ *
+ * \return \c TRUE when the input needs to be verified,
+ * or \c FALSE when the input needs not to be verified.
+ */
+int
+dxf_attdef_is_verification_required
+(
+        DxfAttdef *dxf_attdef
+                /*!< DXF \c ATTDEF entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (dxf_attdef->attr_flags, 2);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if the attribute definition is preset (no prompt during
+ * insertion).
+ *
+ * \return \c TRUE when the attributre definition is preset,
+ * or \c FALSE when the attribute definition is not preset.
+ */
+int
+dxf_attdef_is_preset
+(
+        DxfAttdef *dxf_attdef
+                /*!< DXF \c ATTDEF entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (dxf_attdef->attr_flags, 3);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

@@ -235,6 +235,26 @@ dxf_attdef_free
 (
         DxfAttdef *dxf_attdef
 );
+int
+dxf_attdef_is_invisible
+(
+        DxfAttdef *dxf_attdef
+);
+int
+dxf_attdef_is_constant
+(
+        DxfAttdef *dxf_attdef
+);
+int
+dxf_attdef_is_verification_required
+(
+        DxfAttdef *dxf_attdef
+);
+int
+dxf_attdef_is_preset
+(
+        DxfAttdef *dxf_attdef
+);
 
 
 #endif /* LIBDXF_SRC_ATTDEF_H */
