@@ -71,7 +71,8 @@ dxf_ltype_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in a \c LTYPE entity.
+ * \brief Allocate memory and initialize data fields for a DXF \c LTYPE
+ * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
