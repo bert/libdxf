@@ -123,6 +123,222 @@ dxf_ltype_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF \c LTYPE entity.
+ *
+ * The last line read from file contained the string "LTYPE". \n
+ * Now follows some data for the \c LTYPE, to be terminated with a "  0"
+ * string announcing the following table record, or the end of the
+ * \c TABLE section marker \c ENDTAB. \n
+ * While parsing the DXF file store data in \c dxf_ltype. \n
+ *
+ * \return a pointer to \c dxf_ltype.
+ */
+DxfLType *
+dxf_ltype_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfLType *dxf_ltype
+                /*!< DXF ltype entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+        int element;
+
+        /* Do some basic checks. */
+        if (dxf_ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_ltype = dxf_ltype_new ();
+                dxf_ltype_init (dxf_ltype);
+        }
+        element = 0;
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        return (NULL);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_ltype->id_code);
+                }
+                else if (strcmp (temp_string, "2") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_ltype->linetype_name);
+                }
+                else if (strcmp (temp_string, "3") == 0)
+                {
+                        /* Now follows a string containing a description. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_ltype->description);
+                }
+                else if (strcmp (temp_string, "9") == 0)
+                {
+                        /* Now follows a string containing a complex
+                         * text string (multiple entries possible). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_ltype->complex_text_string[element]);
+                }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the total
+                         * pattern length value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_ltype->total_pattern_length);
+                }
+                else if (strcmp (temp_string, "44") == 0)
+                {
+                        /* Now follows a string containing a complex
+                         * x offset value (multiple entries possible). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_ltype->complex_x_offset[element]);
+                }
+                else if (strcmp (temp_string, "45") == 0)
+                {
+                        /* Now follows a string containing a complex
+                         * y offset value (multiple entries possible). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_ltype->complex_y_offset[element]);
+                }
+                else if (strcmp (temp_string, "46") == 0)
+                {
+                        /* Now follows a string containing a complex
+                         * scale value (multiple entries possible). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_ltype->complex_scale[element]);
+                }
+                else if (strcmp (temp_string, "49") == 0)
+                {
+                        /* Now follows a string containing a dash length
+                         * value (multiple entries possible). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_ltype->dash_length[element]);
+                        element++;
+                        /*! \todo We are assuming that 49 is the first
+                         * group code that is encountered for each
+                         * element in the linetype definition.\n
+                         * This assumption breaks the "rule" of parsing
+                         * the dxf file regardless the order in which
+                         * group codes appear within an entity.
+                         */
+                }
+                else if (strcmp (temp_string, "50") == 0)
+                {
+                        /* Now follows a string containing a complex
+                         * rotation value (multiple entries possible). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_ltype->complex_rotation[element]);
+                }
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing the
+                         * standard flag value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_ltype->flag);
+                }
+                else if (strcmp (temp_string, "72") == 0)
+                {
+                        /* Now follows a string containing the
+                         * alignment value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_ltype->alignment);
+                }
+                else if (strcmp (temp_string, "73") == 0)
+                {
+                        /* Now follows a string containing the number of
+                         * dash length items value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_ltype->number_of_dash_length_items);
+                }
+                else if (strcmp (temp_string, "74") == 0)
+                {
+                        /* Now follows a string containing a complex
+                         * element value (multiple entries possible). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_ltype->complex_element[element]);
+                }
+                else if (strcmp (temp_string, "75") == 0)
+                {
+                        /* Now follows a string containing a complex
+                         * element value (multiple entries possible). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_ltype->complex_shape_number[element]);
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_ltype->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "340") == 0)
+                {
+                        /* Now follows a string containing a complex
+                         * style pointer string (multiple entries possible). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_ltype->complex_style_pointer[element]);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_ltype->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                }
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_ltype->linetype_name, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s (): empty linetype name string for the entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_ltype->id_code);
+                fprintf (stderr,
+                  (_("\tentity is discarded from output.\n")));
+                return (NULL);
+        }
+        if (dxf_ltype->alignment != 65)
+        {
+                dxf_ltype->alignment = 65;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_ltype);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a \c LTYPE entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
