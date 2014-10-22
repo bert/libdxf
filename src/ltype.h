@@ -103,7 +103,7 @@ dxf_ltype
                 /*!< Alignment code.\n
                  * Value is always 65, ASCII code for 'A'.\n
                  * Group code = 72. */
-        int number_of_dash_length_items;
+        int number_of_linetype_elements;
                 /*!< The number of linetype elements.\n
                  * Group code = 73. */
         int complex_element[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];

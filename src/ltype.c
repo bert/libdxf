@@ -108,14 +108,13 @@ dxf_ltype_init
         dxf_ltype->linetype_name = strdup ("");
         dxf_ltype->description = strdup ("");
         dxf_ltype->total_pattern_length = 0.0;
-        dxf_ltype->number_of_dash_length_items = 1;
-        for ((i = 1); (i <= dxf_ltype->number_of_dash_length_items); i++)
+        dxf_ltype->number_of_linetype_elements = 1;
+        for ((i = 1); (i <= dxf_ltype->number_of_linetype_elements); i++)
         {
                 dxf_ltype->dash_length[i] = 0.0;
         }
         dxf_ltype->flag = 0;
         dxf_ltype->alignment = 65;
-        dxf_ltype->number_of_dash_length_items = 1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -267,7 +266,7 @@ dxf_ltype_read
                         /* Now follows a string containing the number of
                          * dash length items value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_ltype->number_of_dash_length_items);
+                        fscanf (fp->fp, "%d\n", &dxf_ltype->number_of_linetype_elements);
                 }
                 else if (strcmp (temp_string, "74") == 0)
                 {
@@ -400,9 +399,9 @@ dxf_ltype_write
                 fprintf (fp->fp, "  3\n\n");
         }
         fprintf (fp->fp, " 72\n%d\n", dxf_ltype->alignment);
-        fprintf (fp->fp, " 73\n%d\n", dxf_ltype->number_of_dash_length_items);
+        fprintf (fp->fp, " 73\n%d\n", dxf_ltype->number_of_linetype_elements);
         fprintf (fp->fp, " 40\n%f\n", dxf_ltype->total_pattern_length);
-        for ((i = 1); (i <= dxf_ltype->number_of_dash_length_items); i++)
+        for ((i = 1); (i <= dxf_ltype->number_of_linetype_elements); i++)
         {
                 fprintf (fp->fp, " 49\n%f\n", dxf_ltype->dash_length[i]);
                 fprintf (fp->fp, " 74\n%d\n", dxf_ltype->complex_element[i]);
@@ -507,7 +506,7 @@ dxf_ltype_free
         }
         free (dxf_ltype->linetype_name);
         free (dxf_ltype->description);
-        for ((i = 0); (i <= dxf_ltype->number_of_dash_length_items); i++)
+        for ((i = 0); (i <= dxf_ltype->number_of_linetype_elements); i++)
         {
                 dxf_ltype->complex_text_string[i] = NULL;
                 dxf_ltype->complex_style_pointer[i] = NULL;
