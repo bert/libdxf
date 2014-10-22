@@ -76,20 +76,25 @@ dxf_appid
                  * it can be ignored by most programs that read DXF files,
                  * and need not be set by programs that write DXF files.\n
                  * bit coded:\n
-                 * 16 = if set, table entry is externally dependent on an
-                 *      Xref.\n
-                 * 32 = if this bit and bit 16 are both set, the externally
-                 *      dependent Xref has been successfully resolved.\n
-                 * 64 = if set, the table entry was referenced by at least
-                 *      one entity in the drawing the last time the drawing
-                 *      was edited.\n
+                 * <ol>
+                 * <li value = "16"> if set, table entry is externally
+                 * dependent on an Xref.</li>
+                 * <li value = "32"> if this bit and bit 16 are both set,
+                 * the externally dependent Xref has been successfully
+                 * resolved.</li>
+                 * <li value = "64"> if set, the table entry was
+                 * referenced by at least one entity in the drawing the
+                 * last time the drawing was edited.</li>
+                 * </ol>
                  * Group code = 70. */
         char *dictionary_owner_soft;
-                /*!< group code = 330\n
-                 * Soft-pointer ID/handle to owner dictionary (optional). */
+                /*!< Soft-pointer ID/handle to owner dictionary
+                 * (optional).\n
+                 * Group code = 330. */
         char *dictionary_owner_hard;
-                /*!< group code = 360\n
-                 * Hard owner ID/handle to owner dictionary (optional). */
+                /*!< Hard owner ID/handle to owner dictionary
+                 * (optional).\n
+                 * Group code = 360. */
         struct DxfAppid *next;
                 /*!< pointer to the next DxfAppid.\n
                  * \c NULL in the last DxfAppid. */
