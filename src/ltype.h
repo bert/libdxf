@@ -115,10 +115,16 @@ dxf_ltype
                  * If code 74 specifies an embedded text string, this
                  * value is set to 0.\n
                  * If code 74 is set to 0, code 75 is omitted. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
         char *complex_style_pointer[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
                 /*!< group code = 340.\n
                  * Pointer to \c STYLE object.\n
                  * One per element if group code 74 > 0. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
         struct DxfLType *next;
                 /*!< pointer to the next DxfLType.\n
                  * \c NULL in the last DxfLType. */
