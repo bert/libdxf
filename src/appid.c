@@ -196,7 +196,7 @@ dxf_appid_read
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
-                        /* Now follows a string containing a linetype
+                        /* Now follows a string containing an application
                          * name. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", dxf_appid->application_name);
