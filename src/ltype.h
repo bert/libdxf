@@ -46,82 +46,92 @@ typedef struct
 dxf_ltype
 {
         int id_code;
-                /*!< group code = 5.\n
-                 * Entity handle; text string of up to 16 hexadecimal
-                 * digits (fixed) */
+                /*!< Entity handle; text string of up to 16 hexadecimal
+                 * digits (fixed).\n
+                 * Group code = 5. */
         char *linetype_name;
-                /*!< group code = 2. */
+                /*!< Linetype name.\n
+                 * Group code = 2. */
         char *description;
-                /*!< group code = 3.\n
-                 * Descriptive text for linetype. */
+                /*!< Descriptive text for linetype.\n
+                 * Group code = 3. */
         char *complex_text_string[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
-                /*!< group code = 9.\n
-                 * Text string (one per element if code 74 = 2). */
+                /*!< Text string (one per element if code 74 = 2).\n
+                 * Group code = 9. */
         double total_pattern_length;
-                /*!< group code = 40. */
+                /*!< Total pattern length.\n
+                 * Group code = 40. */
         double complex_x_offset[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
-                /*!< group code = 44.\n
-                 * X offset value (optional).\n
-                 * Multiple entries can exist. */
+                /*!< X offset value (optional).\n
+                 * Multiple entries can exist.\n
+                 * Group code = 44. */
         double complex_y_offset[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
-                /*!< group code = 45.\n
-                 * Y offset value (optional).\n
-                 * Multiple entries can exist. */
+                /*!< Y offset value (optional).\n
+                 * Multiple entries can exist.\n
+                 * Group code = 45. */
         double complex_scale[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
-                /*!< group code = 46.\n
-                 * Scale value (optional).\n
-                 * Multiple entries can exist. */
+                /*!< Scale value (optional).\n
+                 * Multiple entries can exist.\n
+                 * Group code = 46. */
         double dash_length[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
-                /*!< group code = 49.\n
-                 * Dash, dot or space length (one entry per element). */
+                /*!< Dash, dot or space length (one entry per element).\n
+                 * Group code = 49. */
         double complex_rotation[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
-                /*!< group code = 50.\n
+                /*!< \n
                  * R = (relative) or A = (absolute) rotation value in radians
                  * of embedded shape or text.\n
                  * One per element if code 74 specifies an embedded shape
-                 * or text string. */
+                 * or text string.\n
+                 * Group code = 50. */
         int flag;
-                /*!< group code = 70\n
-                 * bit coded:\n
-                 * 16 = if set, table entry is externally dependent on an
-                 *      Xref\n
-                 * 32 = if this bit and bit 16 are both set, the externally
-                 *      dependent Xref has been successfully resolved\n
-                 * 64 = if set, the table entry was referenced by at least
-                 *      one entity in the drawing the last time the drawing
-                 *      was edited.\n
+                /*!< Bit coded:\n
+                 * <ol>
+                 * <li value = "16"> if set, table entry is externally
+                 * dependent on an Xref.</li>
+                 * <li value = "32"> if this bit and bit 16 are both set,
+                 * the externally dependent Xref has been successfully
+                 * resolved.</li>
+                 * <li value = "64"> if set, the table entry was
+                 * referenced by at least one entity in the drawing the
+                 * last time the drawing was edited.</li>
+                 * </ol>
                  * This flag is for the benefit of AutoCAD commands; it can
                  * be ignored by most programs that read DXF files, and need
-                 * not be set by programs that write DXF files. */
+                 * not be set by programs that write DXF files.\n
+                 * Group code = 70. */
         int alignment;
-                /*!< group code = 72\n
-                 * always 65; ASCII code for 'A'. */
+                /*!< Alignment code.\n
+                 * Value is always 65, ASCII code for 'A'.\n
+                 * Group code = 72. */
         int number_of_dash_length_items;
-                /*!< group code = 73. */
+                /*!< The number of linetype elements.\n
+                 * Group code = 73. */
         int complex_element[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
-                /*!< group code = 74.\n
-                 * Complex linetype element type (one per element).\n
+                /*!< Complex linetype element type (one per element).\n
                  * Default is 0 (no embedded shape/text).\n
                  * The following codes are bit values:\n
-                 * 1 = If set, group code 50 specifies an absolute
-                 *     rotation; if not set, group code 50 specifies a
-                 *     relative rotation.\n
-                 * 2 = Embedded element is a text string.\n
-                 * 4 = Embedded element is a shape. */
+                 * <ol>
+                 * <li value = "1"> If set, group code 50 specifies an
+                 * absolute rotation; if not set, group code 50
+                 * specifies a relative rotation.</li>
+                 * <li value = "2"> Embedded element is a text string.</li>
+                 * <li value = "4"> Embedded element is a shape.</li>
+                 * </ol>
+                 * Group code = 74. */
         int complex_shape_number[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
-                /*!< group code = 75.\n
-                 * Shape number (one per element) if code 74 specifies
+                /*!< Shape number (one per element) if code 74 specifies
                  * an embedded shape.\n
                  * If code 74 specifies an embedded text string, this
                  * value is set to 0.\n
-                 * If code 74 is set to 0, code 75 is omitted. */
+                 * If code 74 is set to 0, code 75 is omitted.\n
+                 * roup code = 75. */
         char *dictionary_owner_soft;
                 /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
                  * Group code = 330. */
         char *complex_style_pointer[DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS];
-                /*!< group code = 340.\n
-                 * Pointer to \c STYLE object.\n
-                 * One per element if group code 74 > 0. */
+                /*!< group code = 340.Pointer to \c STYLE object.\n
+                 * One per element if group code 74 > 0.\n
+                 * Group code = 340. */
         char *dictionary_owner_hard;
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360. */
