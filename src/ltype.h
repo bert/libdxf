@@ -124,7 +124,7 @@ dxf_ltype
                  * If code 74 specifies an embedded text string, this
                  * value is set to 0.\n
                  * If code 74 is set to 0, code 75 is omitted.\n
-                 * roup code = 75. */
+                 * Group code = 75. */
         char *dictionary_owner_soft;
                 /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
                  * Group code = 330. */
