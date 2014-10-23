@@ -595,4 +595,110 @@ dxf_ltype_free
 }
 
 
+/*!
+ * \brief Test if ltype is externally dependent on an xref.
+ *
+ * \return \c TRUE when ltype is externally dependent on an xref,
+ * or \c FALSE when ltype is not externally dependent on an xref.
+ */
+int
+dxf_ltype_is_xreferenced
+(
+        DxfLType *dxf_ltype
+                /*!< DXF ltype entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (dxf_ltype->flag, 4);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if ltype is externally dependent on a xref and has been
+ * successfully resolved.
+ *
+ * \return \c TRUE when ltype is externally dependent on a xref and has
+ * been successfully resolved,
+ * or \c FALSE when ltype is not externally dependent on a xref and has
+ * not been successfully resolved.
+ */
+int
+dxf_ltype_is_xresolved
+(
+        DxfLType *dxf_ltype
+                /*!< DXF ltype entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = ((DXF_CHECK_BIT (dxf_ltype->flag, 4))
+          && (DXF_CHECK_BIT (dxf_ltype->flag, 5)));
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Test if ltype is internally referenced by an entity.
+ *
+ * \return \c TRUE when ltype is internally referenced by an entity,
+ * or \c FALSE when ltype is not internally referenced by an entity.
+ */
+int
+dxf_ltype_is_referenced
+(
+        DxfLType *dxf_ltype
+                /*!< DXF ltype entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (dxf_ltype->flag, 6);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

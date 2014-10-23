@@ -165,6 +165,21 @@ dxf_ltype_free
 (
         DxfLType *dxf_ltype
 );
+int
+dxf_ltype_is_xreferenced
+(
+        DxfLType *dxf_ltype
+);
+int
+dxf_ltype_is_xresolved
+(
+        DxfLType *dxf_ltype
+);
+int
+dxf_ltype_is_referenced
+(
+        DxfLType *dxf_ltype
+);
 
 
 #endif /* LIBDXF_SRC_LTYPE_H */
