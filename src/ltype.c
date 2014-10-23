@@ -393,6 +393,30 @@ dxf_ltype_write
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_ltype->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_ltype->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_ltype->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_ltype->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_ltype->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
         if (fp->acad_version_number >= AutoCAD_14)
         {
                 fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
@@ -411,7 +435,7 @@ dxf_ltype_write
         fprintf (fp->fp, " 72\n%d\n", dxf_ltype->alignment);
         fprintf (fp->fp, " 73\n%d\n", dxf_ltype->number_of_linetype_elements);
         fprintf (fp->fp, " 40\n%f\n", dxf_ltype->total_pattern_length);
-        for ((i = 1); (i <= dxf_ltype->number_of_linetype_elements); i++)
+        for ((i = 0); (i < dxf_ltype->number_of_linetype_elements); i++)
         {
                 fprintf (fp->fp, " 49\n%f\n", dxf_ltype->dash_length[i]);
                 fprintf (fp->fp, " 74\n%d\n", dxf_ltype->complex_element[i]);
@@ -419,9 +443,18 @@ dxf_ltype_write
                 {
                         case 0:
                                 /* No embedded shape/text. */
+                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype->complex_x_offset[i]);
+                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype->complex_y_offset[i]);
+                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype->complex_scale[i]);
+                                fprintf (fp->fp, " 75\n0\n");
                                 break;
                         case 1:
                                 /* Specify an absolute rotation. */
+                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype->complex_x_offset[i]);
+                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype->complex_y_offset[i]);
+                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype->complex_scale[i]);
+                                fprintf (fp->fp, " 75\n0\n");
+                                fprintf (fp->fp, "340\n%s\n", dxf_ltype->complex_style_pointer[i]);
                                 break;
                         case 2:
                                 /*
