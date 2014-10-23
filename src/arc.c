@@ -44,6 +44,8 @@
  * allocated memory when succesful.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -85,6 +87,8 @@ dxf_arc_new ()
  * allocated memory when succesful.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -153,6 +157,8 @@ dxf_arc_init
  * \return a pointer to \c dxf_arc.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -384,6 +390,8 @@ dxf_arc_read
  * occurred.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -581,6 +589,8 @@ dxf_arc_write
  * occurred.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
