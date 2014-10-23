@@ -124,7 +124,7 @@ dxf_appid_init
         }
         dxf_appid->id_code = 0;
         dxf_appid->application_name = strdup ("");
-        dxf_appid->standard_flag = 0;
+        dxf_appid->flag = 0;
         dxf_appid->dictionary_owner_soft = strdup ("");
         dxf_appid->dictionary_owner_hard = strdup ("");
         dxf_appid->next = NULL;
@@ -206,7 +206,7 @@ dxf_appid_read
                         /* Now follows a string containing the
                          * standard flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_appid->standard_flag);
+                        fscanf (fp->fp, "%d\n", &dxf_appid->flag);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -321,7 +321,7 @@ dxf_appid_write
                 fprintf (fp->fp, "100\nAcDbRegAppTableRecord\n");
         }
         fprintf (fp->fp, "  2\n%s\n", dxf_appid->application_name);
-        fprintf (fp->fp, " 70\n%d\n", dxf_appid->standard_flag);
+        fprintf (fp->fp, " 70\n%d\n", dxf_appid->flag);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -398,7 +398,7 @@ dxf_appid_is_no_save_xdata
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_appid->standard_flag, 0);
+        result = DXF_CHECK_BIT (dxf_appid->flag, 0);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -432,7 +432,7 @@ dxf_appid_is_xreferenced
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_appid->standard_flag, 4);
+        result = DXF_CHECK_BIT (dxf_appid->flag, 4);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -469,8 +469,8 @@ dxf_appid_is_xresolved
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ((DXF_CHECK_BIT (dxf_appid->standard_flag, 4))
-          && (DXF_CHECK_BIT (dxf_appid->standard_flag, 5)));
+        result = ((DXF_CHECK_BIT (dxf_appid->flag, 4))
+          && (DXF_CHECK_BIT (dxf_appid->flag, 5)));
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -504,7 +504,7 @@ dxf_appid_is_referenced
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_appid->standard_flag, 6);
+        result = DXF_CHECK_BIT (dxf_appid->flag, 6);
 #if DEBUG
         DXF_DEBUG_END
 #endif

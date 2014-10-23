@@ -71,7 +71,7 @@ dxf_appid
         char *application_name;
                 /*!< Name of the application registered with the drawing.\n
                  * Group code = 2. */
-        int standard_flag;
+        int flag;
                 /*!< This flag is for the benefit of AutoCAD commands;
                  * it can be ignored by most programs that read DXF files,
                  * and need not be set by programs that write DXF files.\n
