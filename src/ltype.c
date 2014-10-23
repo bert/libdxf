@@ -109,12 +109,22 @@ dxf_ltype_init
         dxf_ltype->description = strdup ("");
         dxf_ltype->total_pattern_length = 0.0;
         dxf_ltype->number_of_linetype_elements = 1;
-        for ((i = 1); (i <= dxf_ltype->number_of_linetype_elements); i++)
+        for ((i = 0); (i < dxf_ltype->number_of_linetype_elements); i++)
         {
+                dxf_ltype->complex_text_string[i] = strdup ("");
+                dxf_ltype->complex_x_offset[i] = 0.0;
+                dxf_ltype->complex_y_offset[i] = 0.0;
+                dxf_ltype->complex_scale[i] = 0.0;
                 dxf_ltype->dash_length[i] = 0.0;
+                dxf_ltype->complex_rotation[i] = 0.0;
+                dxf_ltype->complex_element[i] = 1;
+                dxf_ltype->complex_shape_number[i] = 0;
+                dxf_ltype->complex_style_pointer[i] = strdup ("");
         }
         dxf_ltype->flag = 0;
         dxf_ltype->alignment = 65;
+        dxf_ltype->dictionary_owner_soft = strdup ("");
+        dxf_ltype->dictionary_owner_hard = strdup ("");
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -511,6 +521,8 @@ dxf_ltype_free
                 dxf_ltype->complex_text_string[i] = NULL;
                 dxf_ltype->complex_style_pointer[i] = NULL;
         }
+        free (dxf_ltype->dictionary_owner_soft);
+        free (dxf_ltype->dictionary_owner_hard);
         free (dxf_ltype);
         dxf_ltype = NULL;
 #if DEBUG
