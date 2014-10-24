@@ -50,83 +50,87 @@ dxf_lwpolyline
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< group code = 5\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                 * file.\n
+                 * Group code = 5. */
         char *linetype;
-                /*!< group code = 6\n
-                 * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-                /*!< group code = 8\n
-                 * Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
         double thickness;
-                /*!< group code = 39\n
-                 * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                /*!< Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
         int color;
-                /*!< group code = 62\n
-                 * Color of the entity.\n
+                /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity. */
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
         int paperspace;
-                /*!< group code = 67\n
-                 * Entities are to be drawn on either \c PAPERSPACE or
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
-                 * Optional, defaults to \c DXF_MODELSPACE (0). */
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
         /* Specific members for a DXF lwpolyline. */
         double x0;
-                /*!< group code = 10\n
-                 * Vertex coordinates (in OCS), multiple entries;\n
+                /*!< Vertex coordinates (in OCS), multiple entries;\n
                  * one entry for each vertex\n
                  * DXF: X value;\n
-                 * APP: 2D point. */
+                 * APP: 2D point.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * DXF: Y value of vertex coordinates (in OCS),
-                 * multiple entries; one entry for each vertex. */
+                /*!< DXF: Y value of vertex coordinates (in OCS),
+                 * multiple entries; one entry for each vertex.\n
+                 * Group code = 20. */
         double start_width;
-                /*!< group code = 40\n
-                 * optional, defaults to 0.0\n
-                 * the default widths apply to any vertex that doesn't
-                 * supply widths. */
+                /*!< The default widths apply to any vertex that doesn't
+                 * supply widths.\n
+                 * Optional, defaults to 0.0.\n
+                 * Group code = 40. */
         double end_width;
-                /*!< group code = 41\n
-                 * optional, defaults to 0.0\n
-                 * the default widths apply to any vertex that doesn't
-                 * supply widths. */
+                /*!< The default widths apply to any vertex that doesn't
+                 * supply widths.\n
+                 * Optional, defaults to 0.0.\n
+                 * Group code = 41. */
         double constant_width;
-                /*!< group code = 43\n
-                 * optional, defaults to 0.0\n
-                 * Not used if variable width (codes 40 and/or 41) is
+                /*!< Not used if variable width (codes 40 and/or 41) is
                  * set the default widths apply to any vertex that
-                 * doesn't supply widths. */
+                 * doesn't supply widths.\n
+                 * Optional, defaults to 0.0.\n
+                 * Group code = 43. */
         int flag;
-                /*!< group code = 70\n
-                 * optional, defaults to 0\n
-                 * bit coded:\n
-                 * 1 = Closed.\n
-                 * 128 = Plinegen. */
+                /*!< Polyline flag.\n
+                 * Bit coded:\n
+                 * <ol>
+                 * <li value = "1"> Closed.</li>
+                 * <li value = "128"> Plinegen.</li>
+                 * </ol>
+                 * Optional, defaults to 0.\n
+                 * Group code = 70. */
         int number_vertices;
-                /*!< group code = 90. */
+                /*!< Number of vertices.\n
+                 * Group code = 90. */
         double extr_x0;
-                /*!< group code = 210\n
-                 * Extrusion direction (optional; default = 0, 0, 1)\n
+                /*!< Extrusion direction (optional; default = 0, 0, 1)\n
                  * DXF: X value;\n
                  * APP: 3D vector\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 210. */
         double extr_y0;
-                /*!< group code = 220
-                 * DXF: Y value of extrusion direction (optional). */
+                /*!< DXF: Y value of extrusion direction (optional).\n
+                 * Group code = 220. */
         double extr_z0;
-                /*!< group code = 230
-                 * DXF: Z value of extrusion direction (optional). */
+                /*!< DXF: Z value of extrusion direction (optional).\n
+                 * Group code = 230. */
         struct DxfLWPolyline *next;
-                /*!< pointer to the next DxfLWPolyline.\n
+                /*!< Pointer to the next DxfLWPolyline.\n
                  * \c NULL in the last DxfLWPolyline. */
 } DxfLWPolyline;
 
