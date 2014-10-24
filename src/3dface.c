@@ -386,7 +386,6 @@ dxf_3dface_read
         {
                 dxf_3dface->layer = strdup (DXF_DEFAULT_LAYER);
         }
-
 #if DEBUG
         DXF_DEBUG_END
 #endif
