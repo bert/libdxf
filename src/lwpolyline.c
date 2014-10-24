@@ -46,9 +46,7 @@ DxfLWPolyline *
 dxf_lwpolyline_new ()
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfLWPolyline *dxf_lwpolyline = NULL;
         size_t size;
@@ -68,9 +66,7 @@ dxf_lwpolyline_new ()
                 memset (dxf_lwpolyline, 0, size);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_lwpolyline);
 }
@@ -90,9 +86,7 @@ dxf_lwpolyline_init
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         dxf_lwpolyline = dxf_lwpolyline_new ();
         if (dxf_lwpolyline == NULL)
@@ -120,9 +114,7 @@ dxf_lwpolyline_init
         dxf_lwpolyline->extr_z0 = 0.0;
         dxf_lwpolyline->next = NULL;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_lwpolyline);
 }
@@ -149,9 +141,7 @@ dxf_lwpolyline_read
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
 
@@ -308,9 +298,7 @@ dxf_lwpolyline_read
                 }
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (dxf_lwpolyline);
 }
@@ -334,9 +322,7 @@ dxf_lwpolyline_write
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("LWPOLYLINE");
 
@@ -401,9 +387,7 @@ dxf_lwpolyline_write
                 fprintf (fp->fp, "230\n%f\n", dxf_lwpolyline->extr_z0);
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
