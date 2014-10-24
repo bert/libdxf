@@ -88,7 +88,14 @@ dxf_lwpolyline_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_lwpolyline = dxf_lwpolyline_new ();
+        /* Do some basic checks. */
+        if (dxf_lwpolyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_lwpolyline = dxf_lwpolyline_new ();
+        }
         if (dxf_lwpolyline == NULL)
         {
               fprintf (stderr,
@@ -145,9 +152,14 @@ dxf_lwpolyline_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_lwpolyline)
+        /* Do some basic checks. */
+        if (dxf_lwpolyline == NULL)
         {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_lwpolyline = dxf_lwpolyline_new ();
+                dxf_lwpolyline_init (dxf_lwpolyline);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -297,6 +309,15 @@ dxf_lwpolyline_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_lwpolyline->linetype, "") == 0)
+        {
+                dxf_lwpolyline->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_lwpolyline->layer, "") == 0)
+        {
+                dxf_lwpolyline->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -334,6 +355,16 @@ dxf_lwpolyline_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (strcmp (dxf_lwpolyline->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_lwpolyline->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_lwpolyline->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
         if (strcmp (dxf_lwpolyline->layer, "") == 0)
         {
                 fprintf (stderr,
@@ -344,6 +375,7 @@ dxf_lwpolyline_write
                   dxf_entity_name);
                 dxf_lwpolyline->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_lwpolyline->id_code != -1)
         {
