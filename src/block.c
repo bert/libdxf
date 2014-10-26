@@ -122,7 +122,7 @@ dxf_block_init
         dxf_block->z0 = 0.0;
         dxf_block->block_type = 0; /* 0 = invalid type */
         dxf_block->dictionary_owner_soft = strdup ("");
-        dxf_block->endblk = dxf_endblk_new ();
+        dxf_block->endblk = (DxfEndblk *) dxf_endblk_new ();
         dxf_block->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
