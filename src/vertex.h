@@ -164,7 +164,7 @@ dxf_vertex_init
 (
         DxfVertex *dxf_vertex
 );
-int
+DxfVertex *
 dxf_vertex_read
 (
         DxfFile *fp,

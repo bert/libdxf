@@ -126,10 +126,9 @@ dxf_vertex_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_vertex. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_vertex.
  */
-int
+DxfVertex *
 dxf_vertex_read
 (
         DxfFile *fp,
@@ -157,7 +156,7 @@ dxf_vertex_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -282,7 +281,7 @@ dxf_vertex_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_vertex);
 }
 
 
