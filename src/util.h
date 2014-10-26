@@ -35,7 +35,6 @@
 #ifndef LIBDXF_SRC_UTIL_H
 #define LIBDXF_SRC_UTIL_H
 
-#include <stdarg.h>
 #include "global.h"
 #include "file.h"
 
