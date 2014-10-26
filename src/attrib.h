@@ -33,7 +33,6 @@
 
 
 #include "global.h"
-#include "entity.h"
 
 
 #ifndef LIBDXF_SRC_ATTRIB_H
