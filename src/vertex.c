@@ -1,7 +1,7 @@
 /*!
  * \file vertex.c
  *
- * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF vertex entity (\c VERTEX).
  *
@@ -44,8 +44,7 @@ DxfVertex *
 dxf_vertex_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_vertex_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfVertex *dxf_vertex = NULL;
         size_t size;
@@ -63,8 +62,7 @@ dxf_vertex_new ()
                 memset (dxf_vertex, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_vertex);
 }
@@ -84,8 +82,7 @@ dxf_vertex_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_vertex_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         dxf_vertex = dxf_vertex_new ();
         if (dxf_vertex == NULL)
@@ -110,8 +107,7 @@ dxf_vertex_init
         dxf_vertex->acad_version_number = 0;
         dxf_vertex->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_vertex);
 }
@@ -139,8 +135,7 @@ dxf_vertex_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_arc_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
 
@@ -279,8 +274,7 @@ dxf_vertex_read
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -357,8 +351,7 @@ dxf_vertex_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_vertex_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("VERTEX");
 
@@ -414,8 +407,7 @@ dxf_vertex_write_lowlevel
         }
         fprintf (fp, " 70\n%d\n", flag);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -434,8 +426,7 @@ dxf_vertex_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_vertex_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("VERTEX");
 
@@ -524,8 +515,7 @@ dxf_vertex_write
                 fprintf (fp->fp, " 74\n%d\n", dxf_vertex->polyface_mesh_vertex_index_4);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_vertex_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
