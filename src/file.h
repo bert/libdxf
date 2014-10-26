@@ -41,7 +41,6 @@
 #include "global.h"
 #include "class.h"
 #include "entities.h"
-#include "entity.h"
 #include "header.h"
 #include "object.h"
 #include "section.h"
