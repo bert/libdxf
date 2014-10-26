@@ -37,7 +37,6 @@
 
 
 #include "global.h"
-#include "entity.h"
 #include "polyline.h"
 #include "vertex.h"
 #include "seqend.h"
