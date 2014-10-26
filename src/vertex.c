@@ -531,4 +531,39 @@ dxf_vertex_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a \c VERTEX entity and all it's
+ * data fields.\n
+ * 
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_vertex_free
+(
+        DxfVertex *dxf_vertex
+                /*!< DXF vertex entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dxf_vertex->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () pointer to next DxfVertex was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dxf_vertex->linetype);
+        free (dxf_vertex->layer);
+        free (dxf_vertex);
+        dxf_vertex = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

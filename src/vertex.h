@@ -195,6 +195,11 @@ dxf_vertex_write
         DxfFile *fp,
         DxfVertex *dxf_vertex
 );
+int
+dxf_vertex_free
+(
+        DxfVertex *dxf_vertex
+);
 
 
 #endif /* LIBDXF_SRC_VERTEX_H */
