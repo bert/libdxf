@@ -38,7 +38,6 @@
 
 #include "global.h"
 #include "util.h"
-#include "entity.h"
 
 
 /*!
