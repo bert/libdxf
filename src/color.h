@@ -40,7 +40,6 @@
 #define LIBDXF_SRC_COLOR_H
 
 
-#include <inttypes.h>
 #include "global.h"
 
 
