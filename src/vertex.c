@@ -86,7 +86,14 @@ dxf_vertex_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_vertex = dxf_vertex_new ();
+        /* Do some basic checks. */
+        if (dxf_vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_vertex = dxf_vertex_new ();
+        }
         if (dxf_vertex == NULL)
         {
               fprintf (stderr,
@@ -142,9 +149,14 @@ dxf_vertex_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_vertex)
+        /* Do some basic checks. */
+        if (dxf_vertex == NULL)
         {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_vertex = dxf_vertex_new ();
+                dxf_vertex_init (dxf_vertex);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -277,6 +289,15 @@ dxf_vertex_read
                           (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_vertex->linetype, "") == 0)
+        {
+                dxf_vertex->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_vertex->layer, "") == 0)
+        {
+                dxf_vertex->layer = strdup (DXF_DEFAULT_LAYER);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -444,6 +465,16 @@ dxf_vertex_write
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_vertex->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_vertex->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_vertex->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         if (strcmp (dxf_vertex->layer, "") == 0)
         {
