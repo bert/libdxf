@@ -356,7 +356,7 @@ dxf_block_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("BLOCK");
-        struct DxfEndblk *endblk;
+        DxfEndblk *endblk = NULL;
 
         /* Do some basic checks. */
         if (dxf_block == NULL)
@@ -474,7 +474,7 @@ dxf_block_write
         {
                 fprintf (fp->fp, "  4\n%s\n", dxf_block->description);
         }
-        endblk = dxf_block->endblk;
+        endblk = (DxfEndblk *) dxf_block->endblk;
         dxf_endblk_write (fp, endblk);
 #if DEBUG
         DXF_DEBUG_END
