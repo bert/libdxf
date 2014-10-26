@@ -54,7 +54,9 @@ dxf_vertex_new ()
         if (size == 0) size = 1;
         if ((dxf_vertex = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_vertex_new () could not allocate memory for a DxfVertex struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfVertex struct.\n")),
+                  __FUNCTION__);
                 dxf_vertex = NULL;
         }
         else
@@ -87,7 +89,9 @@ dxf_vertex_init
         dxf_vertex = dxf_vertex_new ();
         if (dxf_vertex == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_vertex_init () could not allocate memory for a DxfVertex struct.\n");
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfVertex struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_vertex->id_code = 0;
@@ -149,8 +153,9 @@ dxf_vertex_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_vertex_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
@@ -269,8 +274,9 @@ dxf_vertex_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_vertex_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -357,10 +363,12 @@ dxf_vertex_write_lowlevel
 
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_vertex_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0")),
+                  dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
 
@@ -433,15 +441,19 @@ dxf_vertex_write
         /* Do some basic checks. */
         if (dxf_vertex == NULL)
         {
-                fprintf (stderr, "Error in dxf_vertex_write () a NULL pointer was passed.\n");
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_vertex->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_vertex_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_vertex->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_vertex->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0")),
+                  dxf_entity_name);
                 dxf_vertex->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
