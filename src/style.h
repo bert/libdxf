@@ -37,7 +37,6 @@
 
 
 #include "global.h"
-#include "entity.h"
 #include "file.h"
 
 
