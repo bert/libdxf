@@ -5,7 +5,7 @@
  *
  * \brief Functions for a DXF light weight polyline entity (\c LWPOLYLINE).
  *
- * \warning This entity requires AutoCAD version 2004 or higher.
+ * \warning This entity requires AutoCAD version R14 or higher.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -106,11 +106,10 @@ dxf_lwpolyline_init
         dxf_lwpolyline->id_code = 0;
         dxf_lwpolyline->linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_lwpolyline->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_lwpolyline->x0 = 0.0;
-        dxf_lwpolyline->y0 = 0.0;
+        dxf_lwpolyline->elevation = 0.0;
         dxf_lwpolyline->thickness = 0.0;
-        dxf_lwpolyline->start_width = 0.0;
-        dxf_lwpolyline->end_width = 0.0;
+        dxf_lwpolyline->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_lwpolyline->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_lwpolyline->constant_width = 0.0;
         dxf_lwpolyline->color = DXF_COLOR_BYLAYER;
         dxf_lwpolyline->paperspace = DXF_MODELSPACE;
@@ -119,6 +118,9 @@ dxf_lwpolyline_init
         dxf_lwpolyline->extr_x0 = 0.0;
         dxf_lwpolyline->extr_y0 = 0.0;
         dxf_lwpolyline->extr_z0 = 0.0;
+        dxf_lwpolyline->dictionary_owner_soft = strdup ("");
+        dxf_lwpolyline->dictionary_owner_hard = strdup ("");
+        dxf_lwpolyline->vertices = (DxfVertex *) dxf_vertex_new ();
         dxf_lwpolyline->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -151,6 +153,7 @@ dxf_lwpolyline_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        DxfVertex *iter = NULL;
 
         /* Do some basic checks. */
         if (dxf_lwpolyline == NULL)
@@ -161,6 +164,7 @@ dxf_lwpolyline_read
                 dxf_lwpolyline = dxf_lwpolyline_new ();
                 dxf_lwpolyline_init (dxf_lwpolyline);
         }
+        iter = (DxfVertex *) dxf_lwpolyline->vertices;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -196,16 +200,25 @@ dxf_lwpolyline_read
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
-                         * X-coordinate of the primary point. */
+                        * X-coordinate of a vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_lwpolyline->x0);
+                        fscanf (fp->fp, "%lf\n", &iter->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
-                         * Y-coordinate of the primary point. */
+                        * Y-coordinate of a vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_lwpolyline->y0);
+                        fscanf (fp->fp, "%lf\n", &iter->y0);
+                }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0)
+                        && (dxf_lwpolyline->elevation != 0.0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_lwpolyline->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -217,16 +230,28 @@ dxf_lwpolyline_read
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
-                         * starting width. */
+                         * start width of the vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_lwpolyline->start_width);
+                        fscanf (fp->fp, "%lf\n", &iter->start_width);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a string containing the
-                         * end width. */
+                         * start width of the vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_lwpolyline->end_width);
+                        fscanf (fp->fp, "%lf\n", &iter->end_width);
+                }
+                else if (strcmp (temp_string, "42") == 0)
+                {
+                        /* Now follows a string containing the bulge of
+                         * the vertex. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &iter->bulge);
+                        /* The last member of the vertex is read.\n */
+                        /*! \todo The pointer administration needs to be checked for functionality. */
+                         /* Increment iter to next DxfVertex. */
+                        iter->next = (DxfVertex *) dxf_vertex_new ();
+                        iter = (DxfVertex *) iter->next;
                 }
                 else if (strcmp (temp_string, "43") == 0)
                 {
@@ -234,6 +259,20 @@ dxf_lwpolyline_read
                          * constant width. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_lwpolyline->constant_width);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_lwpolyline->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_lwpolyline->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -295,6 +334,20 @@ dxf_lwpolyline_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_lwpolyline->extr_z0);
                 }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_lwpolyline->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_lwpolyline->dictionary_owner_hard);
+                }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
@@ -309,6 +362,10 @@ dxf_lwpolyline_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /*! \todo Free memory to the last (unused) vertex in the linked list. */
+
+        /* Set the pointer to the last (unused) vertex in the linked list to NULL. */
+        iter->next = NULL;
         /* Handle omitted members and/or illegal values. */
         if (strcmp (dxf_lwpolyline->linetype, "") == 0)
         {
@@ -346,6 +403,7 @@ dxf_lwpolyline_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("LWPOLYLINE");
+        DxfVertex *iter = NULL;
 
         /* Do some basic checks. */
         if (dxf_lwpolyline == NULL)
@@ -381,37 +439,86 @@ dxf_lwpolyline_write
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_lwpolyline->id_code);
         }
-        if (strcmp (dxf_lwpolyline->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_lwpolyline->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_lwpolyline->linetype);
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_lwpolyline->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_lwpolyline->layer);
-        fprintf (fp->fp, " 10\n%f\n", dxf_lwpolyline->x0);
-        fprintf (fp->fp, " 20\n%f\n", dxf_lwpolyline->y0);
-        if (dxf_lwpolyline->thickness != 0.0)
+        if ((strcmp (dxf_lwpolyline->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_lwpolyline->thickness);
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_lwpolyline->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
         }
-        if ((dxf_lwpolyline->constant_width = 0.0)
-                && (dxf_lwpolyline->start_width != dxf_lwpolyline->end_width))
+        if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp->fp, " 40\n%f\n", dxf_lwpolyline->start_width);
-                fprintf (fp->fp, " 41\n%f\n", dxf_lwpolyline->end_width);
-        }
-        else
-        {
-                fprintf (fp->fp, " 43\n%f\n", dxf_lwpolyline->constant_width);
-        }
-        if (dxf_lwpolyline->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_lwpolyline->color);
+                fprintf (fp->fp, "100\nAcDbEntity\n");
         }
         if (dxf_lwpolyline->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, " 70\n%d\n", dxf_lwpolyline->flag);
+        fprintf (fp->fp, "  8\n%s\n", dxf_lwpolyline->layer);
+        if (strcmp (dxf_lwpolyline->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_lwpolyline->linetype);
+        }
+        if (dxf_lwpolyline->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_lwpolyline->color);
+        }
+        if (dxf_lwpolyline->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_lwpolyline->linetype_scale);
+        }
+        if (dxf_lwpolyline->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_lwpolyline->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbPolyline\n");
+        }
         fprintf (fp->fp, " 90\n%d\n", dxf_lwpolyline->number_vertices);
+        fprintf (fp->fp, " 70\n%d\n", dxf_lwpolyline->flag);
+        fprintf (fp->fp, " 43\n%f\n", dxf_lwpolyline->constant_width);
+        if (dxf_lwpolyline->elevation != 0.0)
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_lwpolyline->elevation);
+        }
+        if (dxf_lwpolyline->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_lwpolyline->thickness);
+        }
+        /* Start of writing (multiple) vertices. */
+        iter = (DxfVertex *) dxf_lwpolyline->vertices;
+        while (iter != NULL)
+        {
+                fprintf (fp->fp, " 10\n%f\n", iter->x0);
+                fprintf (fp->fp, " 20\n%f\n", iter->y0);
+                if ((iter->start_width != dxf_lwpolyline->constant_width)
+                  || (iter->end_width != dxf_lwpolyline->constant_width))
+                {
+                        fprintf (fp->fp, " 40\n%f\n", iter->start_width);
+                        fprintf (fp->fp, " 41\n%f\n", iter->end_width);
+                }
+                fprintf (fp->fp, " 42\n%f\n", iter->bulge);
+                iter = (DxfVertex *) iter->next;
+        }
+        /* End of writing (multiple) vertices. */
         if (fp->acad_version_number >= AutoCAD_12)
         {
                 fprintf (fp->fp, "210\n%f\n", dxf_lwpolyline->extr_x0);

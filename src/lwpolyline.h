@@ -5,7 +5,7 @@
  *
  * \brief Header file for a DXF light weight polyline entity (\c LWPOLYLINE).
  *
- * \warning This entity requires AutoCAD version 2004 or higher.
+ * \warning This entity requires AutoCAD version R14 or higher.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -39,7 +39,7 @@
 
 
 #include "global.h"
-#include "entity.h"
+#include "vertex.h"
 
 
 /*!
@@ -62,10 +62,26 @@ dxf_lwpolyline
                 /*!< Layer on which the entity is drawn.\n
                  * Defaults to layer "0" if no valid layername is given.\n
                  * Group code = 8. */
+        double elevation;
+                /*!< Elevation of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0
+                 * (default).\n
+                 * Group code = 38. */
         double thickness;
                 /*!< Thickness of the arc in the local Z-direction.\n
                  * Defaults to 0.0 if ommitted in the DXF file.\n
                  * Group code = 39. */
+        double linetype_scale;
+                /*!< Linetype scale (optional).\n
+                 * Group code = 48. */
+        int16_t visibility;
+                /*!< Object visibility (optional):\n
+                 * <ol>
+                 * <li value = "0"> Visible.</li>
+                 * <li value = "1"> Invisible.</li>
+                 * </ol>\n
+                 * Group code = 60. */
         int color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
@@ -78,27 +94,13 @@ dxf_lwpolyline
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67. */
+        char *dictionary_owner_soft;
+                /*!< group code = 330\n
+                 * Soft-pointer ID/handle to owner dictionary (optional). */
+        char *dictionary_owner_hard;
+                /*!< group code = 360\n
+                 * Hard owner ID/handle to owner dictionary (optional). */
         /* Specific members for a DXF lwpolyline. */
-        double x0;
-                /*!< Vertex coordinates (in OCS), multiple entries;\n
-                 * one entry for each vertex\n
-                 * DXF: X value;\n
-                 * APP: 2D point.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< DXF: Y value of vertex coordinates (in OCS),
-                 * multiple entries; one entry for each vertex.\n
-                 * Group code = 20. */
-        double start_width;
-                /*!< The default widths apply to any vertex that doesn't
-                 * supply widths.\n
-                 * Optional, defaults to 0.0.\n
-                 * Group code = 40. */
-        double end_width;
-                /*!< The default widths apply to any vertex that doesn't
-                 * supply widths.\n
-                 * Optional, defaults to 0.0.\n
-                 * Group code = 41. */
         double constant_width;
                 /*!< Not used if variable width (codes 40 and/or 41) is
                  * set the default widths apply to any vertex that
@@ -129,6 +131,11 @@ dxf_lwpolyline
         double extr_z0;
                 /*!< DXF: Z value of extrusion direction (optional).\n
                  * Group code = 230. */
+        struct DxfVertex *vertices;
+                /*!< Pointer to the first DxfVertex of the lwpolyline.\n
+                 * \c NULL in the last DxfVertex.\n
+                 * \note Not all members of the DxfVertex struct are
+                 * used for lwpolylines. */
         struct DxfLWPolyline *next;
                 /*!< Pointer to the next DxfLWPolyline.\n
                  * \c NULL in the last DxfLWPolyline. */
