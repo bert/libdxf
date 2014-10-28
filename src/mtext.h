@@ -258,12 +258,10 @@ dxf_mtext_init
 (
         DxfMtext *dxf_mtext
 );
-int
+DxfMtext *
 dxf_mtext_read
 (
-        char *filename,
         DxfFile *fp,
-        int *line_number,
         DxfMtext *dxf_mtext
 );
 int

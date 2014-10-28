@@ -153,15 +153,11 @@ dxf_mtext_init
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
-int
+DxfMtext *
 dxf_mtext_read
 (
-        char *filename,
-                /*!< filename of input file (or device). */
         DxfFile *fp,
                 /*!< DXF filepointer to the input file (or device). */
-        int *line_number,
-                /*!< current line number in the input file (or device). */
         DxfMtext *dxf_mtext
                 /*!< DXF mtext entity. */
 )
@@ -182,7 +178,7 @@ dxf_mtext_read
                 if (ferror (fp->fp))
                 {
                         fprintf (stderr, "Error in dxf_mtext_read () while reading from: %s in line: %d.\n",
-                                filename, *line_number);
+                                fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
