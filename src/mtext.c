@@ -1,7 +1,7 @@
 /*!
  * \file mtext.c
  *
- * \author Copyright (C) 2012 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF mtext entity (\c MTEXT).
  *
@@ -44,8 +44,7 @@ DxfMtext *
 dxf_mtext_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_mtext_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfMtext *dxf_mtext = NULL;
         size_t size;
@@ -63,8 +62,7 @@ dxf_mtext_new ()
                 memset (dxf_mtext, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_mtext_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_mtext);
 }
@@ -84,8 +82,7 @@ dxf_mtext_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_mtext_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -138,8 +135,7 @@ dxf_mtext_init
         dxf_mtext->background_color_name = strdup ("");
         dxf_mtext->background_transparency = 0;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_mtext_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_mtext);
 }
@@ -171,8 +167,7 @@ dxf_mtext_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_mtext_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
 
@@ -438,10 +433,10 @@ dxf_mtext_read
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_mtext_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
+
 
 /* EOF */
