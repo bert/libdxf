@@ -63,6 +63,12 @@ dxf_mtext
         /*!< Thickness of the arc in the local Z-direction.\n
          * Defaults to 0.0 if ommitted in the DXF file.\n
          * Group code = 39. */
+        double linetype_scale;
+                /*!< group code = 48\n
+                 * Linetype scale (optional). */
+        int16_t visibility;
+                /*!< group code = 60\n
+                 * Object visibility (optional): 0 = Visible; 1 = Invisible. */
         int color;
         /*!< Color of the entity.\n
          * Defaults to \c BYLAYER if ommitted in the DXF file.\n
@@ -75,6 +81,12 @@ dxf_mtext
          * \c MODELSPACE.\n
          * Optional, defaults to \c DXF_MODELSPACE (0).\n
          * Group code = 67. */
+        char *dictionary_owner_soft;
+                /*!< group code = 330\n
+                 * Soft-pointer ID/handle to owner dictionary (optional). */
+        char *dictionary_owner_hard;
+                /*!< group code = 360\n
+                 * Hard owner ID/handle to owner dictionary (optional). */
         /* Specific members for a DXF mtext. */
         char *text_value;
                 /*!< Text string.\n
@@ -244,6 +256,9 @@ dxf_mtext
                 /*!< Transparency of background fill color.\n
                  * Not yet implemented in AutoCAD.\n
                  * Group code = 441. */
+        struct DxfMtext *next;
+                /*!< pointer to the next DxfMtext.\n
+                 * \c NULL in the last DxfMtext. */
 } DxfMtext;
 
 
