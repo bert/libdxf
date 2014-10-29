@@ -75,179 +75,175 @@ dxf_mtext
          * \c MODELSPACE.\n
          * Optional, defaults to \c DXF_MODELSPACE (0).\n
          * Group code = 67. */
+        /* Specific members for a DXF mtext. */
         char *text_value;
-                /*!< group code = 1\n
-                 * Text string.\n
+                /*!< Text string.\n
                  * If the text string is less than 250 characters, all
                  * characters appear in group 1.\n
                  * If the text string is greater than 250 characters,
                  * the string is divided into 250-character chunks,
                  * which appear in one or more group 3 codes.\n
                  * If group 3 codes are used, the last group is a group
-                 * 1 and has fewer than 250 characters. */
+                 * 1 and has fewer than 250 characters.\n
+                 * Group code = 1. */
         char *text_additional_value[MAX_NUMBER_ADDITIONAL];
-                /*!< group code = 3\n
-                 * Optional, only if the text string in group 1 is
-                 * greater than 250 characters. */
+                /*!< Optional, only if the text string in group 1 is
+                 * greater than 250 characters.\n
+                 * Group code = 3. */
         char *text_style;
-                /*!< group code = 7\n
-                 * Optional, defaults to \c STANDARD. */
+                /*!< Text style.\n
+                 * Optional, defaults to \c STANDARD.\n
+                 * Group code = 7. */
         double x0;
-                /*!< group code = 10\n
-                 * Insertion point. */
+                /*!< Insertion point.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * Insertion point. */
+                /*!< Insertion point.\n
+                 * Group code = 20. */
         double z0;
-                /*!< group code = 30\n
-                 * Insertion point. */
+                /*!< Insertion point.\n
+                 * Group code = 30. */
         double x1;
-                /*!< group code = 11\n
-                 * X-axis direction vector, expressed in World
+                /*!< X-axis direction vector, expressed in World
                  * Coordinate System (WCS).\n
                  * A group code 50 (rotation angle in radians) passed as
                  * DXF input is converted to the equivalent direction
                  * vector (if both a code 50 and codes 11, 21, 31 are
                  * passed, the last one wins).\n
                  * This is provided as a convenience for conversions
-                 * from text objects. */
+                 * from text objects.\n
+                 * Group code = 11. */
         double y1;
-                /*!< group code = 21\n
-                 * X-axis direction vector, expressed in World
-                 * Coordinate System (WCS). */
+                /*!< X-axis direction vector, expressed in World
+                 * Coordinate System (WCS).\n
+                 * Group code = 21. */
         double z1;
-                /*!< group code = 31\n
-                 * X-axis direction vector, expressed in World
-                 * Coordinate System (WCS). */
+                /*!< X-axis direction vector, expressed in World
+                 * Coordinate System (WCS).\n
+                 * Group code = 31. */
         double height;
-                /*!< group code = 40\n 
-                 * Nominal (initial) text height. */
+                /*!< Nominal (initial) text height.\n
+                 * Group code = 40. */
         double rectangle_width;
-                /*!< group code = 41\n
-                 * Reference rectangle width. */
+                /*!< Reference rectangle width.\n
+                 * Group code = 41. */
         double horizontal_width;
-                /*!< group code = 42\n
-                 * Horizontal width of the characters that make up the
+                /*!< Horizontal width of the characters that make up the
                  * mtext entity.\n
                  * This value will always be equal to or less than the
                  * value of group code 41 (read-only, ignored if
-                 * supplied). */
+                 * supplied).\n
+                 * Group code = 42. */
         double rectangle_height;
-                /*!< group code = 43\n
-                 * Vertical height of the mtext entity (read-only,
-                 * ignored if supplied). */
+                /*!< Vertical height of the mtext entity (read-only,
+                 * ignored if supplied).\n
+                 * Group code = 43. */
         double spacing_factor;
-                /*!< group code = 44\n
-                 * Added in DXF 2000 and later.\n
-                 * Text line spacing factor (optional):\n
+                /*!< Text line spacing factor (optional):\n
                  * Percentage of default (3-on-5) line spacing to be
                  * applied.\n
-                 * Valid values range from 0.25 to 4.00. */
+                 * Valid values range from 0.25 to 4.00.\n
+                 * Group code = 44. */
         double box_scale;
-                /*!< group code = 45\n
-                 * Added in DXF 2007 and later.\n
-                 * Optional, fill box scale:\n
-                 * Determines how much border is around the text.  */
+                /*!< Optional, fill box scale:\n
+                 * Determines how much border is around the text.\n
+                 * Group code = 45.  */
         double column_width;
-                /*!< group code = 48\n
-                 * Added in DXF 2007 and later.\n
-                 * Column width. */
+                /*!< Column width.\n
+                 * Group code = 48. */
         double column_gutter;
-                /*!< group code = 49\n
-                 * added on DXF 2007 and later\n
-                 * column gutter. */
+                /*!< Column gutter.\n
+                 * Group code = 49. */
         double column_heights;
-                /*!< group code = 50\n
-                 * Added in DXF 2007 and later.\n
-                 * Column heights this code is followed by a column
-                 * count (Int16), and then the number of column heights. */
+                /*!< Column heights this code is followed by a column
+                 * count (Int16), and then the number of column heights.\n
+                 * Group code = 50. */
         double rot_angle;
-                /*!< group code = 50\n
-                 * Rotation angle in radians. */
+                /*!< Rotation angle in radians.\n
+                 * Group code = 50. */
         int background_color;
-                /*!< group code = 63\n
-                 * Added in DXF 2007 and later.\n
-                 * Optional, background fill color:\n
+                /*!< Background fill color (optional).\n
                  * Color to use for background fill when group code 90
-                 * is 1. */
+                 * is 1.\n
+                 * Group code = 63. */
         int attachment_point;
-                /*!< group code = 71\n
-                 * Attachment point:\n
-                 * 1 = Top left.\n
-                 * 2 = Top center.\n
-                 * 3 = Top right.\n
-                 * 4 = Middle left.\n
-                 * 5 = Middle center.\n
-                 * 6 = Middle right.\n
-                 * 7 = Bottom left.\n
-                 * 8 = Bottom center.\n
-                 * 9 = Bottom right. */
+                /*!< Attachment point:\n
+                 * <ol>
+                 * <li value = "1"> Top left.<li>
+                 * <li value = "2"> Top center.<li>
+                 * <li value = "3"> Top right.<li>
+                 * <li value = "4"> Middle left.<li>
+                 * <li value = "5"> Middle center.<li>
+                 * <li value = "6"> Middle right.<li>
+                 * <li value = "7"> Bottom left.<li>
+                 * <li value = "8"> Bottom center.<li>
+                 * <li value = "9"> Bottom right.
+                 * </ol>
+                 * Group code = 71. */
         int drawing_direction;
-                /*!< group code = 72\n
-                 * 2 and 4 removed on DXF R14 and later\n
-                 * 5 added on DXF R14 and later\n
-                 * drawing direction:\n
-                 * 1 = Left to right\n
-                 * 2 = Right to left (removed)\n
-                 * 3 = Top to bottom\n
-                 * 4 = Bottom to top (removed)\n
-                 * 5 = By style (the flow direction is inherited from the associated text style). */
+                /*!< Drawing direction:\n
+                 * <ol>
+                 * <li value = "1"> Left to right.<li>
+                 * <li value = "2"> Right to left (obsolete as of R14).<li>
+                 * <li value = "3"> Top to bottom.<li>
+                 * <li value = "4"> Bottom to top (obsolete as of R14)<li>
+                 * <li value = "5"> By style (the flow direction is
+                 * inherited from the associated text style, added as of
+                 * R14).
+                 * </ol>
+                 * Group code = 72. */
         int spacing_style;
-                /*!< group code = 73\n
-                 * added on DXF 2000 and later\n
-                 * Optional, mtext line spacing style:\n
-                 * 1 = At least (taller characters will override).\n
-                 * 2 = Exact (taller characters will not override). */
+                /*!< Optional, mtext line spacing style:\n
+                 * <ol>
+                 * <li value = "1"> At least (taller characters will
+                 * override).<li>
+                 * <li value = "2"> Exact (taller characters will not
+                 * override).
+                 * </ol>
+                 * Group code = 73. */
         int column_type;
-                /*!< group code = 75\n
-                 * Added in DXF 2007 and later.\n
-                 * Column type. */
+                /*!< Column type.\n
+                 * Group code = 75. */
         int column_count;
-                /*!< group code = 76\n
-                 * Added in DXF 2007 and later.\n
-                 * Column count. */
+                /*!< Column count.\n
+                 * Group code = 76. */
         int column_flow;
-                /*!< group code = 78\n
-                 * Added in DXF 2007 and later.\n
-                 * Column flow reversed. */
+                /*!< Column flow reversed.\n
+                 * Group code = 78. */
         int column_autoheight;
-                /*!< group code = 79\n
-                 * Added in DXF 2007 and later.\n
-                 * Column autoheight. */
+                /*!< Column autoheight.\n
+                 * Group code = 79. */
         int background_fill;
-                /*!< group code = 90\n
-                 * Added in DXF 2007 and later.\n
-                 * Background fill setting:\n
-                 * 0 = Background fill off.\n
-                 * 1 = Use background fill color.\n
-                 * 2 = Use drawing window color as background fill color. */
+                /*!< Background fill setting:\n
+                 * <ol>
+                 * <li value = "0"> Background fill off.</li>
+                 * <li value = "1"> Use background fill color.</li>
+                 * <li value = "2"> Use drawing window color as
+                 * background fill color.
+                 * </li>
+                 * Group code = 90. */
         double extr_x0;
-                /*!< group code = 210\n
+                /*!< X-value of the extrusion direction.\n
                  * Optional, defaults to 0.0.\n
-                 * X-value of the extrusion direction. */
+                 * Group code = 210. */
         double extr_y0;
-                /*!< group code = 220\n
+                /*!< Y-value of the extrusion direction.\n
                  * Optional, defaults to 0.0.\n
-                 * Y-value of the extrusion direction. */
+                 * Group code = 220. */
         double extr_z0;
-                /*!< group code = 230\n
+                /*!< Z-value of the extrusion direction.\n
                  * Optional, defaults to 1.0.\n
-                 * Z-value of the extrusion direction. */
+                 * Group code = 230. */
         int32_t background_color_rgb;
-                /*!< group code = 420-429\n
-                 * added on DXF 2007 and later\n
-                 * background color (if RGB color).\n
-                 * I don't know how is it... */
+                /*!< Background color (if RGB color).\n
+                 * Group code = 420-429. */
         char *background_color_name;
-                /*!< group code = 430-439\n
-                 * added on DXF 2007 and later\n
-                 * background color (if color name).\n
-                 * I don't know how is it... */
+                /*!< Background color (if color name).\n
+                 * Group code = 430-439. */
         int32_t background_transparency;
-                /*!< group code = 441\n
-                 * added on DXF 2007 and later\n
-                 * transparency of background fill color.\n
-                 * (not implemented in AutoCAD). */
+                /*!< Transparency of background fill color.\n
+                 * Not yet implemented in AutoCAD.\n
+                 * Group code = 441. */
 } DxfMtext;
 
 
