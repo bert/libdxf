@@ -261,49 +261,6 @@ dxf_mtext_read
         DxfMtext *dxf_mtext
 );
 int
-dxf_mtext_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *text_value;
-        char *text_additional_value[MAX_NUMBER_ADDITIONAL];
-        char *text_style;
-        char *layer,
-        double x0;
-        double y0;
-        double z0;
-        double x1;
-        double y1;
-        double z1;
-        double height;
-        double rectangle_width;
-        double horizontal_width;
-        double rectangle_height;
-        double spacing_factor;
-        double box_scale;
-        double column_width;
-        double column_gutter;
-        double column_heights;
-        double rot_angle;
-        int color,
-        short int background_color;
-        int paperspace,
-        short int attachment_point;
-        short int drawing_direction;
-        short int spacing_style;
-        short int column_type;
-        short int column_count;
-        short int column_flow;
-        short int column_autoheight;
-        int background_fill;
-        double extr_x0;
-        double extr_y0;
-        double extr_z0;
-        int32_t background_color_rgb;
-        char background_color_name;
-        int32_t background_transparency;
-);
-int
 dxf_mtext_write
 (
         DxfFile *fp,
