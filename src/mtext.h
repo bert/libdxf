@@ -286,6 +286,11 @@ dxf_mtext_free
 (
         DxfMtext *dxf_mtext
 );
+int
+dxf_mtext_free
+(
+        DxfMtext *dxf_mtext
+);
 
 
 #endif /* LIBDXF_SRC_MTEXT_H */

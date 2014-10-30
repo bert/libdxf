@@ -435,4 +435,50 @@ dxf_mtext_read
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c MTEXT and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_mtext_free
+(
+        DxfMtext *dxf_mtext
+                /*!< DXF mtext entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        if (dxf_mtext->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () pointer to next DxfMtext was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dxf_mtext->linetype);
+        free (dxf_mtext->layer);
+        free (dxf_mtext->text_value);
+        for (i = 0; i < MAX_NUMBER_ADDITIONAL; i++)
+        {
+                free (dxf_mtext->text_additional_value[i]);
+        }
+        free (dxf_mtext->text_style);
+        free (dxf_mtext->dictionary_owner_soft);
+        free (dxf_mtext->dictionary_owner_hard);
+        free (dxf_mtext->background_color_name);
+        free (dxf_mtext);
+        dxf_mtext = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
