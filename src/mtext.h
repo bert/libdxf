@@ -39,9 +39,6 @@
 #include "global.h"
 
 
-#define MAX_NUMBER_ADDITIONAL 1024
-
-
 typedef struct
 dxf_mtext
 {
@@ -98,7 +95,7 @@ dxf_mtext
                  * If group 3 codes are used, the last group is a group
                  * 1 and has fewer than 250 characters.\n
                  * Group code = 1. */
-        char *text_additional_value[MAX_NUMBER_ADDITIONAL];
+        char *text_additional_value[DXF_MAX_PARAM];
                 /*!< Optional, only if the text string in group 1 is
                  * greater than 250 characters.\n
                  * Group code = 3. */

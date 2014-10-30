@@ -105,7 +105,7 @@ dxf_mtext_init
         }
         dxf_mtext->id_code = 0;
         dxf_mtext->text_value = strdup ("");
-        for (i = 1; i < MAX_NUMBER_ADDITIONAL; i++)
+        for (i = 1; i < DXF_MAX_PARAM; i++)
         {
                 dxf_mtext->text_additional_value[i] = strdup ("");
         }
@@ -492,7 +492,7 @@ dxf_mtext_free
         free (dxf_mtext->linetype);
         free (dxf_mtext->layer);
         free (dxf_mtext->text_value);
-        for (i = 0; i < MAX_NUMBER_ADDITIONAL; i++)
+        for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 free (dxf_mtext->text_additional_value[i]);
         }
