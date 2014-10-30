@@ -88,7 +88,14 @@ dxf_mtext_init
 #endif
         int i;
 
-        dxf_mtext = dxf_mtext_new ();
+        /* Do some basic checks. */
+        if (dxf_mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_mtext = dxf_mtext_new ();
+        }
         if (dxf_mtext == NULL)
         {
               fprintf (stderr,
@@ -171,9 +178,14 @@ dxf_mtext_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_mtext)
+        /* Do some basic checks. */
+        if (dxf_mtext == NULL)
         {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_mtext = dxf_mtext_new ();
+                dxf_mtext_init (dxf_mtext);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -434,6 +446,15 @@ dxf_mtext_read
                           (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_mtext->linetype, "") == 0)
+        {
+                dxf_mtext->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_mtext->layer, "") == 0)
+        {
+                dxf_mtext->layer = strdup (DXF_DEFAULT_LAYER);
         }
 #if DEBUG
         DXF_DEBUG_END
