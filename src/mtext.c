@@ -54,7 +54,9 @@ dxf_mtext_new ()
         if (size == 0) size = 1;
         if ((dxf_mtext = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_mtext_new () could not allocate memory for a DxfMtext struct.\n");
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfMtext struct.\n")),
+                  __FUNCTION__);
                 dxf_mtext = NULL;
         }
         else
@@ -89,7 +91,9 @@ dxf_mtext_init
         dxf_mtext = dxf_mtext_new ();
         if (dxf_mtext == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_mtext_init () could not allocate memory for a DxfMtext struct.\n");
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory for a DxfMtext struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_mtext->id_code = 0;
@@ -177,10 +181,11 @@ dxf_mtext_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_mtext_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "1") == 0)
                 {
@@ -389,8 +394,9 @@ dxf_mtext_read
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbMText") != 0)))
                         {
-                                fprintf (stderr, "Error in dxf_mtext_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "210") == 0)
@@ -424,8 +430,9 @@ dxf_mtext_read
 
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_mtext_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -457,7 +464,7 @@ dxf_mtext_free
         if (dxf_mtext->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfMtext was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfMtext was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
