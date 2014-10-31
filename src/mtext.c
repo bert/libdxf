@@ -39,6 +39,9 @@
  * \brief Allocate memory for a \c DxfMtext.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfMtext *
 dxf_mtext_new ()
@@ -75,6 +78,9 @@ dxf_mtext_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfMtext *
 dxf_mtext_init
@@ -163,6 +169,9 @@ dxf_mtext_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfMtext *
 dxf_mtext_read
@@ -464,11 +473,163 @@ dxf_mtext_read
 
 
 /*!
+ * \brief Write DXF output for a DXF \c ARC entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_mtext_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfMtext *dxf_mtext
+                /*!< DXF \c MTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("MTEXT");
+        int i;
+
+        /* Do some basic checks. */
+        if (dxf_mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_mtext->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_mtext->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_mtext->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_mtext->layer, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_mtext->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to layer 0")),
+                  dxf_entity_name);
+                dxf_mtext->layer = DXF_DEFAULT_LAYER;
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (dxf_mtext->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", dxf_mtext->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_mtext->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_mtext->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_mtext->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_mtext->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (dxf_mtext->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_mtext->layer);
+        if (strcmp (dxf_mtext->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", dxf_mtext->linetype);
+        }
+        if (dxf_mtext->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_mtext->color);
+        }
+        if (dxf_mtext->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_mtext->linetype_scale);
+        }
+        if (dxf_mtext->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_mtext->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbMText\n");
+        }
+        fprintf (fp->fp, " 10\n%f\n", dxf_mtext->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_mtext->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_mtext->z0);
+        fprintf (fp->fp, " 40\n%f\n", dxf_mtext->height);
+        fprintf (fp->fp, " 41\n%f\n", dxf_mtext->rectangle_width);
+        fprintf (fp->fp, " 71\n%d\n", dxf_mtext->attachment_point);
+        fprintf (fp->fp, " 72\n%d\n", dxf_mtext->drawing_direction);
+        fprintf (fp->fp, "  1\n%s\n", dxf_mtext->text_value);
+        i = 0;
+        while (strlen (dxf_mtext->text_additional_value[i]) > 0)
+        {
+                fprintf (fp->fp, "  3\n%s\n", dxf_mtext->text_additional_value[i]);
+                i++;
+        }
+        fprintf (fp->fp, "  7\n%s\n", dxf_mtext->text_style);
+
+        if ((fp->acad_version_number >= AutoCAD_12)
+                && (dxf_mtext->extr_x0 != 0.0)
+                && (dxf_mtext->extr_y0 != 0.0)
+                && (dxf_mtext->extr_z0 != 1.0))
+        {
+                fprintf (fp->fp, "210\n%f\n", dxf_mtext->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", dxf_mtext->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", dxf_mtext->extr_z0);
+        }
+        fprintf (fp->fp, " 11\n%f\n", dxf_mtext->x1);
+        fprintf (fp->fp, " 21\n%f\n", dxf_mtext->y1);
+        fprintf (fp->fp, " 31\n%f\n", dxf_mtext->z1);
+        fprintf (fp->fp, " 42\n%f\n", dxf_mtext->horizontal_width);
+        fprintf (fp->fp, " 43\n%f\n", dxf_mtext->rectangle_height);
+        fprintf (fp->fp, " 50\n%f\n", dxf_mtext->rot_angle);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c MTEXT and all it's
  * data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_mtext_free

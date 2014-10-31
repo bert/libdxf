@@ -284,6 +284,12 @@ dxf_mtext_free
         DxfMtext *dxf_mtext
 );
 int
+dxf_mtext_write
+(
+        DxfFile *fp,
+        DxfMtext *dxf_mtext
+);
+int
 dxf_mtext_free
 (
         DxfMtext *dxf_mtext
