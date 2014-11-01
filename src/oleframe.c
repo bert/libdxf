@@ -44,8 +44,7 @@ DxfOleFrame *
 dxf_oleframe_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_oleframe_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfOleFrame *dxf_oleframe = NULL;
         size_t size;
@@ -63,8 +62,7 @@ dxf_oleframe_new ()
                 memset (dxf_oleframe, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_oleframe_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_oleframe);
 }
@@ -85,8 +83,7 @@ dxf_oleframe_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_oleframe_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -110,8 +107,7 @@ dxf_oleframe_init
         }
         dxf_oleframe->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_oleframe_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_oleframe);
 }
@@ -139,8 +135,7 @@ dxf_oleframe_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_oleframe_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
         int i;
@@ -263,8 +258,7 @@ dxf_oleframe_read
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_oleframe_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_oleframe);
 }
@@ -286,8 +280,7 @@ dxf_oleframe_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_oleframe_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("OLEFRAME");
         int i;
@@ -337,8 +330,7 @@ dxf_oleframe_write
         }
         fprintf (fp->fp, "  1\nOLE\n");
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_oleframe_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -360,8 +352,7 @@ dxf_oleframe_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_oleframe_free () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -379,8 +370,7 @@ dxf_oleframe_free
         free (dxf_oleframe);
         dxf_oleframe = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_oleframe_free () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
