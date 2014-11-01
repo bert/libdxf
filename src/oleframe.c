@@ -126,8 +126,7 @@ dxf_oleframe_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_oleframe. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_oleframe.
  */
 DxfOleFrame *
 dxf_oleframe_read
