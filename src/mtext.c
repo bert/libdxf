@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Definition of a DXF mtext entity (\c MTEXT).
+ * \brief Functions for a DXF mtext entity (\c MTEXT).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
