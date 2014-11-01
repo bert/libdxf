@@ -1,7 +1,7 @@
 /*!
  * \file oleframe.c
  *
- * \author Copyright (C) 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF oleframe entity (\c OLEFRAME).
  *
@@ -129,7 +129,7 @@ dxf_oleframe_init
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
-int
+DxfOleFrame *
 dxf_oleframe_read
 (
         DxfFile *fp,
@@ -159,7 +159,7 @@ dxf_oleframe_read
                         fprintf (stderr, "Error in dxf_oleframe_read () while reading from: %s in line: %d.\n",
                                 fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "1") == 0)
                 {
@@ -266,7 +266,7 @@ dxf_oleframe_read
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_oleframe_read () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_oleframe);
 }
 
 

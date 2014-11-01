@@ -98,7 +98,7 @@ dxf_oleframe_init
 (
         DxfOleFrame *dxf_oleframe
 );
-int
+DxfOleFrame *
 dxf_oleframe_read
 (
         DxfFile *fp,
