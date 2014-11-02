@@ -1,7 +1,7 @@
 /*!
  * \file object.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for DXF objects.
  *
@@ -44,8 +44,7 @@ DxfObject *
 dxf_object_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_object_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfObject *dxf_object = NULL;
         size_t size;
@@ -63,8 +62,7 @@ dxf_object_new ()
                 memset (dxf_object, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_object_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_object);
 }
@@ -83,11 +81,11 @@ dxf_object_write_objects
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_object_write_objects () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         /*! \todo Add code here. */
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_object_write_objects () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
