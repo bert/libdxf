@@ -54,7 +54,9 @@ dxf_object_new ()
         if (size == 0) size = 1;
         if ((dxf_object = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_object_new () could not allocate memory for a DxfObject struct.\n");
+                fprintf (stderr,
+                  (_("ERROR in %s () could not allocate memory for a DxfObject struct.\n")),
+                  __FUNCTION__);
                 dxf_object = NULL;
         }
         else
@@ -76,7 +78,7 @@ dxf_object_new ()
 int
 dxf_object_write_objects
 (
-        char *dxf_objects_list2, 
+        char *dxf_objects_list, 
         int acad_version_number
 )
 {
