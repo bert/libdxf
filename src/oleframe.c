@@ -89,7 +89,14 @@ dxf_oleframe_init
 #endif
         int i;
 
-        dxf_oleframe = dxf_oleframe_new ();
+        /* Do some basic checks. */
+        if (dxf_oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_oleframe = dxf_oleframe_new ();
+        }
         if (dxf_oleframe == NULL)
         {
               fprintf (stderr,
@@ -143,9 +150,14 @@ dxf_oleframe_read
         char *temp_string = NULL;
         int i;
 
-        if (!dxf_oleframe)
+        /* Do some basic checks. */
+        if (dxf_oleframe == NULL)
         {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_oleframe = dxf_oleframe_new ();
+                dxf_oleframe_init (dxf_oleframe);
         }
         i = 0;
         (fp->line_number)++;
@@ -263,6 +275,15 @@ dxf_oleframe_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_oleframe->linetype, "") == 0)
+        {
+                dxf_oleframe->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_oleframe->layer, "") == 0)
+        {
+                dxf_oleframe->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -291,6 +312,24 @@ dxf_oleframe_write
         char *dxf_entity_name = strdup ("OLEFRAME");
         int i;
 
+        /* Do some basic checks. */
+        if (dxf_oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_oleframe->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_oleframe->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_oleframe->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
         if (strcmp (dxf_oleframe->layer, "") == 0)
         {
                 fprintf (stderr,
