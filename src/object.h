@@ -63,6 +63,11 @@ dxf_object_write_objects
         char *dxf_objects_list,
         int acad_version_number
 );
+int
+dxf_object_free
+(
+        DxfObject *dxf_object
+);
 
 
 #endif /* LIBDXF_SRC_OBJECT_H */
