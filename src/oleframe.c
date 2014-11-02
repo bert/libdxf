@@ -39,6 +39,9 @@
  * \brief Allocate memory for a \c DxfOleFrame.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfOleFrame *
 dxf_oleframe_new ()
@@ -76,6 +79,9 @@ dxf_oleframe_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfOleFrame *
 dxf_oleframe_init
@@ -107,9 +113,14 @@ dxf_oleframe_init
         dxf_oleframe->id_code = 0;
         dxf_oleframe->linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_oleframe->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_oleframe->elevation = 0.0;
         dxf_oleframe->thickness = 0.0;
+        dxf_oleframe->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_oleframe->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_oleframe->color = DXF_COLOR_BYLAYER;
         dxf_oleframe->paperspace = DXF_MODELSPACE;
+        dxf_oleframe->dictionary_owner_soft = strdup ("");
+        dxf_oleframe->dictionary_owner_hard = strdup ("");
         dxf_oleframe->ole_version_number = 1;
         dxf_oleframe->length = 0;
         for (i = 0; i < DXF_MAX_PARAM; i++)
@@ -134,6 +145,9 @@ dxf_oleframe_init
  * While parsing the DXF file store data in \c dxf_oleframe. \n
  *
  * \return a pointer to \c dxf_oleframe.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfOleFrame *
 dxf_oleframe_read
@@ -180,8 +194,9 @@ dxf_oleframe_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "OLE") != 0)
                         {
-                                fprintf (stderr, "Error in dxf_oleframe_read () found a bad End of Ole data marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad End of Ole data marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -204,12 +219,35 @@ dxf_oleframe_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", dxf_oleframe->layer);
                 }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0)
+                        && (dxf_oleframe->elevation != 0.0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_oleframe->elevation);
+                }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_oleframe->thickness);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_oleframe->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_oleframe->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -261,6 +299,20 @@ dxf_oleframe_read
                         fscanf (fp->fp, "%s\n", dxf_oleframe->binary_data[i]);
                         i++;
                 }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_oleframe->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_oleframe->dictionary_owner_hard);
+                }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
@@ -296,6 +348,9 @@ dxf_oleframe_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred while reading from the input file.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_oleframe_write
@@ -340,32 +395,74 @@ dxf_oleframe_write
                   dxf_entity_name);
                 dxf_oleframe->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_oleframe->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_oleframe->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_oleframe->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_oleframe->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_oleframe->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_oleframe->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
-                fprintf (fp->fp, "100\nAcDbOleFrame\n");
         }
+        if (dxf_oleframe->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_oleframe->layer);
         if (strcmp (dxf_oleframe->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_oleframe->linetype);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_oleframe->layer);
-        if (dxf_oleframe->thickness != 0.0)
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_oleframe->elevation != 0.0))
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_oleframe->thickness);
+                fprintf (fp->fp, " 38\n%f\n", dxf_oleframe->elevation);
         }
         if (dxf_oleframe->color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp->fp, " 62\n%d\n", dxf_oleframe->color);
         }
-        if (dxf_oleframe->paperspace == DXF_PAPERSPACE)
+        if (dxf_oleframe->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 48\n%f\n", dxf_oleframe->linetype_scale);
+        }
+        if (dxf_oleframe->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_oleframe->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbOleFrame\n");
+        }
+        if (dxf_oleframe->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_oleframe->thickness);
         }
         fprintf (fp->fp, " 70\n%d\n", dxf_oleframe->ole_version_number);
         fprintf (fp->fp, " 90\n%ld\n", dxf_oleframe->length);
@@ -389,6 +486,9 @@ dxf_oleframe_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_oleframe_free
@@ -412,6 +512,8 @@ dxf_oleframe_free
         }
         free (dxf_oleframe->linetype);
         free (dxf_oleframe->layer);
+        free (dxf_oleframe->dictionary_owner_soft);
+        free (dxf_oleframe->dictionary_owner_hard);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 free (dxf_oleframe->binary_data[i]);
