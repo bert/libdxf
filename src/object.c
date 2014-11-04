@@ -71,6 +71,53 @@ dxf_object_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c OBJECT
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfObject *
+dxf_object_init
+(
+        DxfObject *dxf_object
+                /*!< DXF object entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (dxf_object == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_object = dxf_object_new ();
+        }
+        if (dxf_object == NULL)
+        {
+              fprintf (stderr,
+                (_("ERROR in %s () could not allocate memory for a DxfObject struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        dxf_object->entity_type = UNKNOWN_ENTITY;
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                /*! \todo Add code for initialising a DxfParam. */
+        }
+        dxf_object->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_object);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a table of objects.
  *
  * Appears only in \c TABLES section.\n

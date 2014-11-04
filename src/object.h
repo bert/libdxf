@@ -68,6 +68,11 @@ dxf_object_free
 (
         DxfObject *dxf_object
 );
+DxfObject *
+dxf_object_init
+(
+        DxfObject *dxf_object
+);
 
 
 #endif /* LIBDXF_SRC_OBJECT_H */

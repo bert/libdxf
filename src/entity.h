@@ -82,6 +82,7 @@ dxf_entity
 typedef enum
 dxf_entity_type
 {
+        UNKNOWN_ENTITY,
         APPID,
         ARC,
         ATTDEF,
