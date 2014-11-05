@@ -1,12 +1,12 @@
 /*!
  * \file point.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief DXF point entity (\c POINT).
+ * \brief Functions for a DXF point entity (\c POINT).
  *
  * Point entities have an optional 50 group that determines the
- * orientation of PDMODE images.\n
+ * orientation of \c PDMODE images.\n
  * The group value is the negative of the Entity Coordinate Systems
  * (ECS) angle of the UCS X axis in effect when the point was drawn.\n
  * The X-axis of the UCS in effect when the point was drawn is always
@@ -18,6 +18,7 @@
  * Entity Coordinate Systems (ECS) are described ... somewhere else.
  *
  * \todo Add a link to somewhere else.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
