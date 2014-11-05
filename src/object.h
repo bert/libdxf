@@ -60,8 +60,8 @@ DxfObject *dxf_object_new ();
 int
 dxf_object_write_objects
 (
-        char *dxf_objects_list,
-        int acad_version_number
+        DxfFile *fp,
+        DxfObject *dxf_objects_list
 );
 int
 dxf_object_free

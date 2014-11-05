@@ -125,8 +125,9 @@ dxf_object_init
 int
 dxf_object_write_objects
 (
-        char *dxf_objects_list, 
-        int acad_version_number
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfObject *dxf_objects_list
 )
 {
 #if DEBUG
