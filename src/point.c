@@ -58,8 +58,7 @@ DxfPoint *
 dxf_point_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_point_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfPoint *dxf_point = NULL;
         size_t size;
@@ -77,8 +76,7 @@ dxf_point_new ()
                 memset (dxf_point, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_point_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_point);
 }
@@ -98,8 +96,7 @@ dxf_point_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_point_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         dxf_point = dxf_point_new ();
         if (dxf_point == NULL)
@@ -122,8 +119,7 @@ dxf_point_init
         dxf_point->acad_version_number = 0;
         dxf_point->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_point_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_point);
 }
@@ -155,8 +151,7 @@ dxf_point_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_point_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
 
@@ -295,8 +290,7 @@ dxf_point_read
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_point_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -335,8 +329,7 @@ dxf_point_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_point_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("POINT");
 
@@ -370,8 +363,7 @@ dxf_point_write_lowlevel
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_point_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -393,8 +385,7 @@ dxf_point_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_point_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("POINT");
 
@@ -429,8 +420,7 @@ dxf_point_write
                 fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_point_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
