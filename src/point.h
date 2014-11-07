@@ -122,9 +122,7 @@ dxf_point_init
 int
 dxf_point_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfPoint *dxf_point
 );
 int
