@@ -119,7 +119,7 @@ dxf_point_init
 (
         DxfPoint *dxf_point
 );
-int
+DxfPoint *
 dxf_point_read
 (
         DxfFile *fp,
