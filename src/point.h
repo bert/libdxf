@@ -126,19 +126,6 @@ dxf_point_read
         DxfPoint *dxf_point
 );
 int
-dxf_point_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double thickness,
-        int color,
-        int paperspace
-);
-int
 dxf_point_write
 (
         FILE *fp,
