@@ -128,7 +128,7 @@ dxf_point_read
 int
 dxf_point_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfPoint *dxf_point
 );
 

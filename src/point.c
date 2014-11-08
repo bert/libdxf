@@ -307,8 +307,8 @@ dxf_point_read
 int
 dxf_point_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfPoint *dxf_point
                 /*!< DXF point entity. */
 )
@@ -329,26 +329,26 @@ dxf_point_write
                   dxf_entity_name);
                 dxf_point->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_point->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_point->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_point->id_code);
         }
-        fprintf (fp, "  8\n%s\n", dxf_point->layer);
-        fprintf (fp, " 10\n%f\n", dxf_point->x0);
-        fprintf (fp, " 20\n%f\n", dxf_point->y0);
-        fprintf (fp, " 30\n%f\n", dxf_point->z0);
+        fprintf (fp->fp, "  8\n%s\n", dxf_point->layer);
+        fprintf (fp->fp, " 10\n%f\n", dxf_point->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_point->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_point->z0);
         if (dxf_point->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_point->thickness);
+                fprintf (fp->fp, " 39\n%f\n", dxf_point->thickness);
         }
         if (dxf_point->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_point->color);
+                fprintf (fp->fp, " 62\n%d\n", dxf_point->color);
         }
         if (dxf_point->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
         DXF_DEBUG_END
