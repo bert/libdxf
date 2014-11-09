@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief DXF ltype entity.
+ * \brief Functions for a DXF ltype entity (\c LTYPE).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
