@@ -131,6 +131,11 @@ dxf_point_write
         DxfFile *fp,
         DxfPoint *dxf_point
 );
+int
+dxf_point_free
+(
+        DxfPoint *dxf_point
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */

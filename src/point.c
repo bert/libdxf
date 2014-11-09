@@ -357,4 +357,40 @@ dxf_point_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c POINT and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_point_free
+(
+        DxfPoint *dxf_point
+                /*!< Pointer to the memory occupied by the DXF \c POINT
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dxf_point->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () pointer to next DxfPoint was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dxf_point->linetype);
+        free (dxf_point->layer);
+        free (dxf_point);
+        dxf_point = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
