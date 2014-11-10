@@ -100,13 +100,20 @@ dxf_point_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_point = dxf_point_new ();
+        /* Do some basic checks. */
         if (dxf_point == NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
-                __FUNCTION__);
-              return (NULL);
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_point = dxf_point_new ();
+        }
+        if (dxf_point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
         dxf_point->id_code = 0;
         dxf_point->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -155,6 +162,15 @@ dxf_point_read
 #endif
         char *temp_string = NULL;
 
+        /* Do some basic checks. */
+        if (dxf_point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_point = dxf_point_new ();
+                dxf_point_init (dxf_point);
+        }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -318,6 +334,24 @@ dxf_point_write
 #endif
         char *dxf_entity_name = strdup ("POINT");
 
+        /* Do some basic checks. */
+        if (dxf_point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_point->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_point->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_point->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
         if (strcmp (dxf_point->layer, "") == 0)
         {
                 fprintf (stderr,
