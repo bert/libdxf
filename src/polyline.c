@@ -136,12 +136,8 @@ dxf_polyline_init
 DxfPolyline *
 dxf_polyline_read
 (
-        char *filename,
-                /*!< filename of input file (or device). */
-        FILE *fp,
-                /*!< filepointer to the input file (or device). */
-        int *line_number,
-                /*!< current line number in the input file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
         DxfPolyline *dxf_polyline
                 /*!< DXF polyline entity. */
 )
@@ -155,143 +151,143 @@ dxf_polyline_read
         {
                 dxf_polyline = dxf_polyline_new ();
         }
-        (*line_number)++;
-        fscanf (fp, "%[^\n]", temp_string);
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
-                if (ferror (fp))
+                if (ferror (fp->fp))
                 {
                         fprintf (stderr, "Error in dxf_polyline_read () while reading from: %s in line: %d.\n",
-                                filename, *line_number);
-                        fclose (fp);
+                                fp->filename, fp->line_number);
+                        fclose (fp->fp);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_polyline->id_code);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_polyline->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_polyline->linetype);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_polyline->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_polyline->layer);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_polyline->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the primary point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_polyline->x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_polyline->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the primary point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_polyline->y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_polyline->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the primary point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_polyline->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_polyline->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_polyline->thickness);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_polyline->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
                          * starting width. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_polyline->start_width);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_polyline->start_width);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a string containing the
                          * end width. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_polyline->end_width);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_polyline->end_width);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_polyline->color);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_polyline->color);
                 }
                 else if (strcmp (temp_string, "66") == 0)
                 {
                         /* Now follows a string containing the
                          * vertces follow flag. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_polyline->vertices_follow);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_polyline->vertices_follow);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_polyline->paperspace);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_polyline->paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * flag value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_polyline->flag);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_polyline->flag);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a string containing the polygon
                          * mesh M vertex count value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_polyline->polygon_mesh_M_vertex_count);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_polyline->polygon_mesh_M_vertex_count);
                 }
                 else if (strcmp (temp_string, "72") == 0)
                 {
                         /* Now follows a string containing the polygon
                          * mesh N vertex count value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_polyline->polygon_mesh_N_vertex_count);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_polyline->polygon_mesh_N_vertex_count);
                 }
                 else if (strcmp (temp_string, "73") == 0)
                 {
                         /* Now follows a string containing the smooth M
                          * surface density value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_polyline->smooth_M_surface_density);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_polyline->smooth_M_surface_density);
                 }
                 else if (strcmp (temp_string, "74") == 0)
                 {
                         /* Now follows a string containing the smooth N
                          * surface density value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_polyline->smooth_M_surface_density);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_polyline->smooth_M_surface_density);
                 }
                 else if (strcmp (temp_string, "75") == 0)
                 {
                         /* Now follows a string containing the surface
                          * type value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_polyline->surface_type);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_polyline->surface_type);
                 }
-                else if ((dxf_polyline->acad_version_number >= AutoCAD_12)
+                else if ((fp->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Subclass markers are post AutoCAD R12
@@ -299,41 +295,41 @@ dxf_polyline_read
                          * version should probably be added here.
                          * Now follows a string containing the
                          * subclass marker value. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_polyline->extr_x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_polyline->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_polyline->extr_y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_polyline->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_polyline->extr_z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_polyline->extr_z0);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
                 {
                         fprintf (stderr, "Warning: in dxf_lwpolyline_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                filename, *line_number);
+                                fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -496,8 +492,8 @@ dxf_polyline_write_lowlevel
 int
 dxf_polyline_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfPolyline *dxf_polyline
                 /*!< DXF polyline entity. */
 )
@@ -533,46 +529,46 @@ dxf_polyline_write
                         dxf_entity_name, dxf_polyline->id_code);
                 return (EXIT_FAILURE);
         }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_polyline->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_polyline->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_polyline->id_code);
         }
         if (strcmp (dxf_polyline->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_polyline->linetype);
+                fprintf (fp->fp, "  6\n%s\n", dxf_polyline->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_polyline->layer);
-        fprintf (fp, " 10\n%f\n", dxf_polyline->x0);
-        fprintf (fp, " 20\n%f\n", dxf_polyline->y0);
-        fprintf (fp, " 30\n%f\n", dxf_polyline->z0);
+        fprintf (fp->fp, "  8\n%s\n", dxf_polyline->layer);
+        fprintf (fp->fp, " 10\n%f\n", dxf_polyline->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_polyline->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_polyline->z0);
         if (dxf_polyline->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_polyline->thickness);
+                fprintf (fp->fp, " 39\n%f\n", dxf_polyline->thickness);
         }
         if (dxf_polyline->start_width != 0.0)
         {
-                fprintf (fp, " 40\n%f\n", dxf_polyline->start_width);
+                fprintf (fp->fp, " 40\n%f\n", dxf_polyline->start_width);
         }
         if (dxf_polyline->end_width != 0.0)
         {
-                fprintf (fp, " 41\n%f\n", dxf_polyline->end_width);
+                fprintf (fp->fp, " 41\n%f\n", dxf_polyline->end_width);
         }
         if (dxf_polyline->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_polyline->color);
+                fprintf (fp->fp, " 62\n%d\n", dxf_polyline->color);
         }
-        fprintf (fp, " 66\n%d\n", dxf_polyline->vertices_follow);
+        fprintf (fp->fp, " 66\n%d\n", dxf_polyline->vertices_follow);
         if (dxf_polyline->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp, " 70\n%d\n", dxf_polyline->flag);
-        fprintf (fp, " 71\n%d\n", dxf_polyline->polygon_mesh_M_vertex_count);
-        fprintf (fp, " 72\n%d\n", dxf_polyline->polygon_mesh_N_vertex_count);
-        fprintf (fp, " 73\n%d\n", dxf_polyline->smooth_M_surface_density);
-        fprintf (fp, " 74\n%d\n", dxf_polyline->smooth_N_surface_density);
-        fprintf (fp, " 75\n%d\n", dxf_polyline->surface_type);
+        fprintf (fp->fp, " 70\n%d\n", dxf_polyline->flag);
+        fprintf (fp->fp, " 71\n%d\n", dxf_polyline->polygon_mesh_M_vertex_count);
+        fprintf (fp->fp, " 72\n%d\n", dxf_polyline->polygon_mesh_N_vertex_count);
+        fprintf (fp->fp, " 73\n%d\n", dxf_polyline->smooth_M_surface_density);
+        fprintf (fp->fp, " 74\n%d\n", dxf_polyline->smooth_N_surface_density);
+        fprintf (fp->fp, " 75\n%d\n", dxf_polyline->surface_type);
 #if DEBUG
         DXF_DEBUG_END
 #endif

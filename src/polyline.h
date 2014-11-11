@@ -208,9 +208,7 @@ dxf_polyline_init
 DxfPolyline *
 dxf_polyline_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfPolyline *dxf_polyline
 );
 int
@@ -239,7 +237,7 @@ dxf_polyline_write_lowlevel
 int
 dxf_polyline_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfPolyline *dxf_polyline
 );
 
