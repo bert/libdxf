@@ -592,4 +592,40 @@ dxf_polyline_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c POLYLINE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_polyline_free
+(
+        DxfPolyline *dxf_polyline
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c POLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dxf_polyline->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("ERROR in %s () pointer to next DxfPolyline was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dxf_polyline->linetype);
+        free (dxf_polyline->layer);
+        free (dxf_polyline);
+        dxf_polyline = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

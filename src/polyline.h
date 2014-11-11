@@ -240,6 +240,11 @@ dxf_polyline_write
         DxfFile *fp,
         DxfPolyline *dxf_polyline
 );
+int
+dxf_polyline_free
+(
+        DxfPolyline *dxf_polyline
+);
 
 
 #endif /* LIBDXF_SRC_POLYLINE_H */
