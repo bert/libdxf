@@ -1,7 +1,7 @@
 /*!
  * \file polyline.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF polyline entity (\c POLYLINE).
  *
@@ -44,8 +44,7 @@ DxfPolyline *
 dxf_polyline_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_polyline_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfPolyline *dxf_polyline = NULL;
         size_t size;
@@ -63,8 +62,7 @@ dxf_polyline_new ()
                 memset (dxf_polyline, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_polyline_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_polyline);
 }
@@ -84,8 +82,7 @@ dxf_polyline_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_polyline_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         dxf_polyline = dxf_polyline_new ();
         if (dxf_polyline == NULL)
@@ -117,8 +114,7 @@ dxf_polyline_init
         dxf_polyline->acad_version_number = 0;
         dxf_polyline->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_polyline_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_polyline);
 }
@@ -151,8 +147,7 @@ dxf_polyline_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_polyline_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
 
@@ -342,8 +337,7 @@ dxf_polyline_read
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_lwpolyline_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -416,8 +410,7 @@ dxf_polyline_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_polyline_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("POLYLINE");
 
@@ -488,8 +481,7 @@ dxf_polyline_write_lowlevel
         fprintf (fp, " 74\n%d\n", smooth_N_surface_density);
         fprintf (fp, " 75\n%d\n", surface_type);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_polyline_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -511,8 +503,7 @@ dxf_polyline_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_polyline_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("POLYLINE");
 
@@ -583,8 +574,7 @@ dxf_polyline_write
         fprintf (fp, " 74\n%d\n", dxf_polyline->smooth_N_surface_density);
         fprintf (fp, " 75\n%d\n", dxf_polyline->surface_type);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_polyline_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
