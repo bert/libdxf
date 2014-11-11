@@ -54,7 +54,9 @@ dxf_polyline_new ()
         if (size == 0) size = 1;
         if ((dxf_polyline = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_polyline_new () could not allocate memory for a DxfArc struct.\n");
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfArc struct.\n")),
+                  __FUNCTION__);
                 dxf_polyline = NULL;
         }
         else
@@ -87,7 +89,9 @@ dxf_polyline_init
         dxf_polyline = dxf_polyline_new ();
         if (dxf_polyline == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_polyline_init () could not allocate memory for a DxfPolyline struct.\n");
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory for a DxfPolyline struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_polyline->id_code = 0;
@@ -157,8 +161,9 @@ dxf_polyline_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_polyline_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (NULL);
                 }
@@ -328,8 +333,9 @@ dxf_polyline_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_lwpolyline_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -412,28 +418,33 @@ dxf_polyline_write_lowlevel
 
         if (x0 != 0.0)
         {
-                fprintf (stderr, "Error in dxf_polyline_write_lowlevel () start point has an invalid X-value for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("Error in %s () start point has an invalid X-value for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         if (y0 != 0.0)
         {
-                fprintf (stderr, "Error in dxf_polyline_write_lowlevel () start point has an invalid Y-value for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("Error in %s () start point has an invalid Y-value for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_polyline_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to layer 0\n")),
+                  dxf_entity_name);
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (vertices_follow != 1)
         {
-                fprintf (stderr, "Error in dxf_polyline_write_lowlevel () vertices follow flag has an invalid value for the %s entity with id-code: %x\n",
-                        dxf_entity_name, id_code);
+                fprintf (stderr,
+                  (_("Error in %s () vertices follow flag has an invalid value for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, id_code);
                 return (EXIT_FAILURE);
         }
         fprintf (fp, "  0\n%s\n", dxf_entity_name);
@@ -505,28 +516,33 @@ dxf_polyline_write
 
         if (dxf_polyline->x0 != 0.0)
         {
-                fprintf (stderr, "Error in dxf_polyline_write () start point has an invalid X-value for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_polyline->id_code);
+                fprintf (stderr,
+                  (_("Error in %s () start point has an invalid X-value for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_polyline->id_code);
                 return (EXIT_FAILURE);
         }
         if (dxf_polyline->y0 != 0.0)
         {
-                fprintf (stderr, "Error in dxf_polyline_write () start point has an invalid Y-value for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_polyline->id_code);
+                fprintf (stderr,
+                  (_("Error in %s () start point has an invalid Y-value for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_polyline->id_code);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_polyline->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_polyline_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_polyline->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_polyline->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to layer 0\n")),
+                  dxf_entity_name);
                 dxf_polyline->layer = strdup (DXF_DEFAULT_LAYER);
         }
         if (dxf_polyline->vertices_follow != 1)
         {
-                fprintf (stderr, "Error in dxf_polyline_write () vertices follow flag has an invalid value for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_polyline->id_code);
+                fprintf (stderr,
+                  (_("Error in %s () vertices follow flag has an invalid value for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_polyline->id_code);
                 return (EXIT_FAILURE);
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
