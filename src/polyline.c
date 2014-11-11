@@ -133,7 +133,7 @@ dxf_polyline_init
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
-int
+DxfPolyline *
 dxf_polyline_read
 (
         char *filename,
@@ -164,7 +164,7 @@ dxf_polyline_read
                         fprintf (stderr, "Error in dxf_polyline_read () while reading from: %s in line: %d.\n",
                                 filename, *line_number);
                         fclose (fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -339,7 +339,7 @@ dxf_polyline_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_polyline);
 }
 
 

@@ -205,7 +205,7 @@ dxf_polyline_init
 (
         DxfPolyline *dxf_polyline
 );
-int
+DxfPolyline *
 dxf_polyline_read
 (
         char *filename,
