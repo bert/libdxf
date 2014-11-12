@@ -83,6 +83,8 @@ dxf_donut_write_lowlevel
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        DxfPolyline *dxf_polyline = NULL;
+        DxfVertex *dxf_vertex = NULL;
         char *dxf_entity_name = strdup ("POLYLINE");
         double start_width;
         double end_width;
@@ -107,71 +109,56 @@ dxf_donut_write_lowlevel
                 layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Draw a polyline primitive. */
-        dxf_polyline_write_lowlevel
-        (
-                fp->fp,
-                id_code,
-                linetype,
-                layer,
-                x0,
-                y0,
-                z0,
-                thickness,
-                0.5 * start_width,
-                0.5 * end_width,
-                color,
-                1, /* vertices_follow, */
-                paperspace,
-                1, /* flag, */
-                0, /* polygon_mesh_M_vertex_count, */
-                0, /* polygon_mesh_N_vertex_count, */
-                0, /* smooth_M_surface_density, */
-                0, /* smooth_N_surface_density, */
-                0 /* surface_type */
-        );
+        dxf_polyline_new (dxf_polyline);
+        dxf_polyline = dxf_polyline_init (dxf_polyline);
+        dxf_polyline->id_code = id_code;
+        dxf_polyline->linetype = linetype;
+        dxf_polyline->layer = layer;
+        dxf_polyline->x0 = x0;
+        dxf_polyline->y0 = y0;
+        dxf_polyline->z0 = z0;
+        dxf_polyline->thickness = thickness;
+        dxf_polyline->start_width = 0.5 * start_width;
+        dxf_polyline->end_width = 0.5 * end_width;
+        dxf_polyline->color = color;
+        dxf_polyline->vertices_follow = 1;
+        dxf_polyline->paperspace = paperspace;
+        dxf_polyline->flag = 1;
+        dxf_polyline->polygon_mesh_M_vertex_count = 0;
+        dxf_polyline->polygon_mesh_N_vertex_count = 0;
+        dxf_polyline->smooth_M_surface_density = 0;
+        dxf_polyline->smooth_N_surface_density = 0;
+        dxf_polyline->surface_type = 0;
+        dxf_polyline_write (fp, dxf_polyline);
+        /*! \todo Hook up this polyline to the list of polylines. */
         id_code++;
         /* Write first XY-coordinate. */
-        dxf_vertex_write_lowlevel
-        (
-                fp->fp,
-                id_code,
-                linetype,
-                layer,
-                x0 - (0.25 * (outside_diameter + inside_diameter)),
-                y0,
-                z0,
-                thickness,
-                0.5 * start_width,
-                0.5 * end_width,
-                1.0, /* bulge, */
-                0.0, /* curve_fit_tangent_direction, */
-                color,
-                paperspace,
-                0 /* flag */
-        );
+        dxf_vertex = dxf_vertex_new ();
+        dxf_vertex = dxf_vertex_init (dxf_vertex);
+        dxf_vertex->id_code = id_code;
+        dxf_vertex->layer = layer;
+        dxf_vertex->linetype = linetype;
+        dxf_vertex->x0 = x0 - (0.25 * (outside_diameter + inside_diameter));
+        dxf_vertex->y0 = y0;
+        dxf_vertex->z0 = z0;
+        dxf_vertex->thickness = thickness;
+        dxf_vertex->start_width = 0.5 * start_width;
+        dxf_vertex->end_width = 0.5 * end_width;
+        dxf_vertex->bulge = 1;
+        dxf_vertex->curve_fit_tangent_direction = 0.0;
+        dxf_vertex->color = color;
+        dxf_vertex->paperspace = paperspace;
+        dxf_vertex->flag = 0;
+        dxf_vertex_write (fp, dxf_vertex);
+        /*! \todo Hook up this vertex to the list of vertices. */
         id_code++;
         /* Write second XY-coordinate. */
-        dxf_vertex_write_lowlevel
-        (
-                fp->fp,
-                id_code,
-                linetype,
-                layer,
-                x0 + (0.25 * (outside_diameter + inside_diameter)),
-                y0,
-                z0,
-                thickness,
-                0.5 * start_width,
-                0.5 * end_width,
-                1.0, /* bulge, */
-                0.0, /* curve_fit_tangent_direction, */
-                color,
-                paperspace,
-                0 /* flag */
-        );
+        dxf_vertex->x0 = x0 + (0.25 * (outside_diameter + inside_diameter));
+        dxf_vertex_write (fp, dxf_vertex);
+        /*! \todo Hook up this vertex to the list of vertices. */
         id_code++;
         /* Write the end of polyline sequence marker. */
-        /*! \todo FIX ME.
+        /*! \todo FIX ME:
         dxf_seqend_write (fp, dxf_seqend);
         */
 #if DEBUG
