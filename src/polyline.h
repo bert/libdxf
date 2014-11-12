@@ -212,29 +212,6 @@ dxf_polyline_read
         DxfPolyline *dxf_polyline
 );
 int
-dxf_polyline_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *linetype,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double thickness,
-        double start_width,
-        double end_width,
-        int color,
-        int vertices_follow,
-        int paperspace,
-        int flag,
-        int polygon_mesh_M_vertex_count,
-        int polygon_mesh_N_vertex_count,
-        int smooth_M_surface_density,
-        int smooth_N_surface_density,
-        int surface_type
-);
-int
 dxf_polyline_write
 (
         DxfFile *fp,
