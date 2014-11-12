@@ -171,25 +171,6 @@ dxf_vertex_read
         DxfVertex *dxf_vertex
 );
 int
-dxf_vertex_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *linetype,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double thickness,
-        double start_width,
-        double end_width,
-        double bulge,
-        double curve_fit_tangent_direction,
-        int color,
-        int paperspace,
-        int flag
-);
-int
 dxf_vertex_write
 (
         DxfFile *fp,
