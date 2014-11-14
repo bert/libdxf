@@ -86,7 +86,14 @@ dxf_polyline_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_polyline = dxf_polyline_new ();
+        /* Do some basic checks. */
+        if (dxf_polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_polyline = dxf_polyline_new ();
+        }
         if (dxf_polyline == NULL)
         {
               fprintf (stderr,
@@ -151,9 +158,14 @@ dxf_polyline_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_polyline)
+        /* Do some basic checks. */
+        if (dxf_polyline == NULL)
         {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_polyline = dxf_polyline_new ();
+                dxf_polyline_init (dxf_polyline);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -338,6 +350,15 @@ dxf_polyline_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_polyline->linetype, "") == 0)
+        {
+                dxf_polyline->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_polyline->layer, "") == 0)
+        {
+                dxf_polyline->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -365,6 +386,14 @@ dxf_polyline_write
 #endif
         char *dxf_entity_name = strdup ("POLYLINE");
 
+        /* Do some basic checks. */
+        if (dxf_polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_polyline->x0 != 0.0)
         {
                 fprintf (stderr,
@@ -378,6 +407,16 @@ dxf_polyline_write
                   (_("Error in %s () start point has an invalid Y-value for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_polyline->id_code);
                 return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_polyline->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_polyline->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_polyline->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         if (strcmp (dxf_polyline->layer, "") == 0)
         {
