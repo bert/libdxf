@@ -1,7 +1,7 @@
 /*!
  * \file ray.c
  *
- * \author Copyright (C) 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF ray entity (\c RAY).
  *
@@ -49,8 +49,7 @@ DxfRay *
 dxf_ray_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ray_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfRay *dxf_ray = NULL;
         size_t size;
@@ -68,8 +67,7 @@ dxf_ray_new ()
                 memset (dxf_ray, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ray_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_ray);
 }
@@ -89,8 +87,7 @@ dxf_ray_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ray_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         dxf_ray = dxf_ray_new ();
         if (dxf_ray == NULL)
@@ -112,8 +109,7 @@ dxf_ray_init
         dxf_ray->paperspace = DXF_MODELSPACE;
         dxf_ray->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ray_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_ray);
 }
@@ -141,8 +137,7 @@ dxf_ray_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ray_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
 
@@ -288,8 +283,7 @@ dxf_ray_read
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ray_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -311,8 +305,7 @@ dxf_ray_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ray_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("RAY");
 
@@ -367,8 +360,7 @@ dxf_ray_write
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ray_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -390,8 +382,7 @@ dxf_ray_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_ray_free () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         if (dxf_ray->next != NULL)
         {
@@ -403,8 +394,7 @@ dxf_ray_free
         free (dxf_ray);
         dxf_ray = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_ray_free () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
