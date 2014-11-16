@@ -39,6 +39,12 @@
  * \brief Allocate memory for a \c DxfPolyline.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfPolyline *
 dxf_polyline_new ()
@@ -75,6 +81,12 @@ dxf_polyline_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfPolyline *
 dxf_polyline_init
@@ -107,7 +119,10 @@ dxf_polyline_init
         dxf_polyline->x0 = 0.0;
         dxf_polyline->y0 = 0.0;
         dxf_polyline->z0 = 0.0;
+        dxf_polyline->elevation = 0.0;
         dxf_polyline->thickness = 0.0;
+        dxf_polyline->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_polyline->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_polyline->start_width = 0.0;
         dxf_polyline->end_width = 0.0;
         dxf_polyline->vertices_follow = 1;
@@ -122,7 +137,8 @@ dxf_polyline_init
         dxf_polyline->extr_x0 = 0.0;
         dxf_polyline->extr_y0 = 0.0;
         dxf_polyline->extr_z0 = 0.0;
-        dxf_polyline->acad_version_number = 0;
+        dxf_polyline->dictionary_owner_soft = strdup ("");
+        dxf_polyline->dictionary_owner_hard = strdup ("");
         dxf_polyline->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -143,6 +159,12 @@ dxf_polyline_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfPolyline *
 dxf_polyline_read
@@ -220,6 +242,15 @@ dxf_polyline_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_polyline->z0);
                 }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0)
+                        && (dxf_polyline->elevation != 0.0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_polyline->elevation);
+                }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
@@ -240,6 +271,20 @@ dxf_polyline_read
                          * end width. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_polyline->end_width);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_polyline->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_polyline->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -336,6 +381,20 @@ dxf_polyline_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_polyline->extr_z0);
                 }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_polyline->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_polyline->dictionary_owner_hard);
+                }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
@@ -371,6 +430,12 @@ dxf_polyline_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_polyline_write
@@ -385,6 +450,7 @@ dxf_polyline_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("POLYLINE");
+        DxfVertex *iter = NULL;
 
         /* Do some basic checks. */
         if (dxf_polyline == NULL)
@@ -435,16 +501,72 @@ dxf_polyline_write
                   __FUNCTION__, dxf_entity_name, dxf_polyline->id_code);
                 return (EXIT_FAILURE);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_polyline->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_polyline->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_polyline->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_polyline->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_polyline->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_polyline->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (dxf_polyline->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_polyline->layer);
         if (strcmp (dxf_polyline->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_polyline->linetype);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_polyline->layer);
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_polyline->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_polyline->elevation);
+        }
+        if (dxf_polyline->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_polyline->color);
+        }
+        if (dxf_polyline->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_polyline->linetype_scale);
+        }
+        if (dxf_polyline->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_polyline->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDb3dPolyline\n");
+        }
+        fprintf (fp->fp, " 66\n%d\n", dxf_polyline->vertices_follow);
         fprintf (fp->fp, " 10\n%f\n", dxf_polyline->x0);
         fprintf (fp->fp, " 20\n%f\n", dxf_polyline->y0);
         fprintf (fp->fp, " 30\n%f\n", dxf_polyline->z0);
@@ -452,6 +574,7 @@ dxf_polyline_write
         {
                 fprintf (fp->fp, " 39\n%f\n", dxf_polyline->thickness);
         }
+        fprintf (fp->fp, " 70\n%d\n", dxf_polyline->flag);
         if (dxf_polyline->start_width != 0.0)
         {
                 fprintf (fp->fp, " 40\n%f\n", dxf_polyline->start_width);
@@ -460,21 +583,26 @@ dxf_polyline_write
         {
                 fprintf (fp->fp, " 41\n%f\n", dxf_polyline->end_width);
         }
-        if (dxf_polyline->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_polyline->color);
-        }
-        fprintf (fp->fp, " 66\n%d\n", dxf_polyline->vertices_follow);
-        if (dxf_polyline->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
-        fprintf (fp->fp, " 70\n%d\n", dxf_polyline->flag);
         fprintf (fp->fp, " 71\n%d\n", dxf_polyline->polygon_mesh_M_vertex_count);
         fprintf (fp->fp, " 72\n%d\n", dxf_polyline->polygon_mesh_N_vertex_count);
         fprintf (fp->fp, " 73\n%d\n", dxf_polyline->smooth_M_surface_density);
         fprintf (fp->fp, " 74\n%d\n", dxf_polyline->smooth_N_surface_density);
         fprintf (fp->fp, " 75\n%d\n", dxf_polyline->surface_type);
+        if ((fp->acad_version_number >= AutoCAD_12)
+                && (dxf_polyline->extr_x0 != 0.0)
+                && (dxf_polyline->extr_y0 != 0.0)
+                && (dxf_polyline->extr_z0 != 1.0))
+        {
+                fprintf (fp->fp, "210\n%f\n", dxf_polyline->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", dxf_polyline->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", dxf_polyline->extr_z0);
+        }
+        iter = (DxfVertex *) dxf_polyline->vertices;
+        while (iter != NULL)
+        {
+                /*! \todo Start of writing (multiple) vertices. */
+        }
+        dxf_vertex_free (iter);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -488,6 +616,12 @@ dxf_polyline_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_polyline_free
