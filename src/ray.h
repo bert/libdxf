@@ -43,6 +43,12 @@
 
 /*!
  * \brief DXF definition of an AutoCAD ray entity (\c RAY).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_ray
@@ -61,10 +67,21 @@ dxf_ray
                 /*!< Layer on which the entity is drawn.\n
                  * Defaults to layer "0" if no valid layername is given.\n
                  * Group code = 8. */
+        double elevation;
+                /*!< group code = 38\n
+                 * Elevation of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default). */
         double thickness;
                 /*!< Thickness of the arc in the local Z-direction.\n
                  * Defaults to 0.0 if ommitted in the DXF file.\n
                  * Group code = 39. */
+        double linetype_scale;
+                /*!< group code = 48\n
+                 * Linetype scale (optional). */
+        int16_t visibility;
+                /*!< group code = 60\n
+                 * Object visibility (optional): 0 = Visible; 1 = Invisible. */
         int color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
@@ -77,6 +94,12 @@ dxf_ray
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67. */
+        char *dictionary_owner_soft;
+                /*!< group code = 330\n
+                 * Soft-pointer ID/handle to owner dictionary (optional). */
+        char *dictionary_owner_hard;
+                /*!< group code = 360\n
+                 * Hard owner ID/handle to owner dictionary (optional). */
         /* Specific members for a DXF ray. */
         double x0;
                 /*!< group code = 10\n

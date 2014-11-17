@@ -44,6 +44,12 @@
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfRay *
 dxf_ray_new ()
@@ -80,6 +86,12 @@ dxf_ray_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfRay *
 dxf_ray_init
@@ -115,9 +127,14 @@ dxf_ray_init
         dxf_ray->x1 = 0.0;
         dxf_ray->y1 = 0.0;
         dxf_ray->z1 = 0.0;
+        dxf_ray->elevation = 0.0;
         dxf_ray->thickness = 0.0;
+        dxf_ray->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_ray->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_ray->color = DXF_COLOR_BYLAYER;
         dxf_ray->paperspace = DXF_MODELSPACE;
+        dxf_ray->dictionary_owner_soft = strdup ("");
+        dxf_ray->dictionary_owner_hard = strdup ("");
         dxf_ray->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -137,6 +154,12 @@ dxf_ray_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfRay *
 dxf_ray_read
@@ -237,19 +260,12 @@ dxf_ray_read
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_ray->z0 = 0.0))
+                        && (dxf_ray->elevation != 0.0))
                 {
-                        /* Elevation is a pre AutoCAD R11 variable
-                         * so additional testing for the version should
-                         * probably be added.
-                         * Now follows a string containing the
+                        /* Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ray->z0);
-                        /*! \todo Consider to add 
-                         * dxf_ray->z1 = dxf_ray.z0;
-                         * for the elevation could affect both
-                         * Z-coordinates. */
+                        fscanf (fp->fp, "%lf\n", &dxf_ray->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -257,6 +273,20 @@ dxf_ray_read
                          * thickness. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_ray->thickness);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_ray->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_ray->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -286,6 +316,20 @@ dxf_ray_read
                                   (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_ray->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_ray->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -322,6 +366,12 @@ dxf_ray_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occured.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_ray_write
@@ -375,34 +425,81 @@ dxf_ray_write
                   dxf_entity_name);
                 dxf_ray->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_ray->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_ray->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_ray->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_ray->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_ray->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_ray->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (dxf_ray->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_ray->layer);
         if (strcmp (dxf_ray->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_ray->linetype);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_ray->layer);
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_ray->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_ray->elevation);
+        }
+        if (dxf_ray->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_ray->color);
+        }
+        if (dxf_ray->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_ray->linetype_scale);
+        }
+        if (dxf_ray->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_ray->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbRay\n");
+        }
+        if (dxf_ray->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_ray->thickness);
+        }
         fprintf (fp->fp, " 10\n%f\n", dxf_ray->x0);
         fprintf (fp->fp, " 20\n%f\n", dxf_ray->y0);
         fprintf (fp->fp, " 30\n%f\n", dxf_ray->z0);
         fprintf (fp->fp, " 11\n%f\n", dxf_ray->x1);
         fprintf (fp->fp, " 21\n%f\n", dxf_ray->y1);
         fprintf (fp->fp, " 31\n%f\n", dxf_ray->z1);
-        if (dxf_ray->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", dxf_ray->thickness);
-        }
-        if (dxf_ray->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_ray->color);
-        }
-        if (dxf_ray->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -416,6 +513,12 @@ dxf_ray_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_ray_free
@@ -437,6 +540,8 @@ dxf_ray_free
         }
         free (dxf_ray->linetype);
         free (dxf_ray->layer);
+        free (dxf_ray->dictionary_owner_soft);
+        free (dxf_ray->dictionary_owner_hard);
         free (dxf_ray);
         dxf_ray = NULL;
 #if DEBUG
