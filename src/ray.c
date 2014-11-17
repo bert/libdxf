@@ -91,7 +91,14 @@ dxf_ray_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_ray = dxf_ray_new ();
+        /* Do some basic checks. */
+        if (dxf_ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_ray = dxf_ray_new ();
+        }
         if (dxf_ray == NULL)
         {
               fprintf (stderr,
@@ -145,9 +152,14 @@ dxf_ray_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_ray)
+        /* Do some basic checks. */
+        if (dxf_ray == NULL)
         {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_ray = dxf_ray_new ();
+                dxf_ray_init (dxf_ray);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -289,6 +301,15 @@ dxf_ray_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_ray->linetype, "") == 0)
+        {
+                dxf_ray->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_ray->layer, "") == 0)
+        {
+                dxf_ray->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -316,6 +337,7 @@ dxf_ray_write
 #endif
         char *dxf_entity_name = strdup ("RAY");
 
+        /* Do some basic checks. */
         if (dxf_ray == NULL)
         {
                 fprintf (stderr,
@@ -332,6 +354,16 @@ dxf_ray_write
                   __FUNCTION__, dxf_entity_name, dxf_ray->id_code);
                 dxf_entity_skip (dxf_entity_name);
                 return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_ray->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_ray->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_ray->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         if (strcmp (dxf_ray->layer, "") == 0)
         {
