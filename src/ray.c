@@ -59,7 +59,9 @@ dxf_ray_new ()
         if (size == 0) size = 1;
         if ((dxf_ray = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_ray_new () could not allocate memory for a DxfRay struct.\n");
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfRay struct.\n")),
+                  __FUNCTION__);
                 dxf_ray = NULL;
         }
         else
@@ -92,7 +94,9 @@ dxf_ray_init
         dxf_ray = dxf_ray_new ();
         if (dxf_ray == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_ray_init () could not allocate memory for a DxfRay struct.\n");
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory for a DxfRay struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_ray->id_code = 0;
@@ -151,8 +155,9 @@ dxf_ray_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_ray_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (NULL);
                 }
@@ -265,8 +270,9 @@ dxf_ray_read
                         if ((strcmp (temp_string, "AcDbEntity") != 0)
                         && ((strcmp (temp_string, "AcDbRay") != 0)))
                         {
-                                fprintf (stderr, "Error in dxf_ray_read () found a bad subclass marker in: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
                 else if (strcmp (temp_string, "999") == 0)
@@ -278,8 +284,9 @@ dxf_ray_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_ray_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -311,24 +318,29 @@ dxf_ray_write
 
         if (dxf_ray == NULL)
         {
-                fprintf (stderr, "Error in dxf_ray_write () a NULL pointer was passed.\n");
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if ((dxf_ray->x0 == dxf_ray->x1)
                 && (dxf_ray->y0 == dxf_ray->y1)
                 && (dxf_ray->z0 == dxf_ray->z1))
         {
-                fprintf (stderr, "Error in dxf_ray_write () start point and end point are identical for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_ray->id_code);
+                fprintf (stderr,
+                  (_("Error in %s () start point and end point are identical for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_ray->id_code);
                 dxf_entity_skip (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_ray->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_ray_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_ray->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_ray->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to layer 0\n")),
+                  dxf_entity_name);
                 dxf_ray->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -386,8 +398,10 @@ dxf_ray_free
 #endif
         if (dxf_ray->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_ray_free () pointer to next DxfRay was not NULL.\n");
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfRay was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (dxf_ray->linetype);
         free (dxf_ray->layer);
