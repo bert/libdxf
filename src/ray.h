@@ -109,7 +109,7 @@ dxf_ray_init
 (
         DxfRay *dxf_ray
 );
-int
+DxfRay *
 dxf_ray_read
 (
         DxfFile *fp,

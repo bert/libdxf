@@ -127,7 +127,7 @@ dxf_ray_init
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
-int
+DxfRay *
 dxf_ray_read
 (
         DxfFile *fp,
@@ -154,7 +154,7 @@ dxf_ray_read
                         fprintf (stderr, "Error in dxf_ray_read () while reading from: %s in line: %d.\n",
                                 fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -285,7 +285,7 @@ dxf_ray_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_ray);
 }
 
 
