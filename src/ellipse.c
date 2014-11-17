@@ -419,18 +419,18 @@ dxf_ellipse_write
         char *dxf_entity_name = strdup ("ELLIPSE");
 
         /* Do some basic checks. */
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_ellipse == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (fp->acad_version_number < AC1014) /* AutoCAD 14 */
-        {
-                fprintf (stderr,
-                  (_("Error in %s () too old an AutoCAD version used for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_ellipse->id_code);
                 return (EXIT_FAILURE);
         }
         if (dxf_ellipse->ratio == 0.0)
