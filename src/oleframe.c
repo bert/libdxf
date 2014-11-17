@@ -368,6 +368,13 @@ dxf_oleframe_write
         int i;
 
         /* Do some basic checks. */
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_oleframe == NULL)
         {
                 fprintf (stderr,
