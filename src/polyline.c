@@ -597,10 +597,12 @@ dxf_polyline_write
                 fprintf (fp->fp, "220\n%f\n", dxf_polyline->extr_y0);
                 fprintf (fp->fp, "230\n%f\n", dxf_polyline->extr_z0);
         }
+        /* Start of writing (multiple) vertices. */
         iter = (DxfVertex *) dxf_polyline->vertices;
         while (iter != NULL)
         {
-                /*! \todo Start of writing (multiple) vertices. */
+                dxf_vertex_write (fp, iter);
+                iter = (DxfVertex *) iter->next;
         }
         dxf_vertex_free (iter);
 #if DEBUG
