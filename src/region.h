@@ -101,7 +101,7 @@ dxf_region_init
 (
         DxfRegion *dxf_region
 );
-int
+DxfRegion *
 dxf_region_read
 (
         DxfFile *fp,

@@ -130,7 +130,7 @@ dxf_region_init
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
-int
+DxfRegion *
 dxf_region_read
 (
         DxfFile *fp,
@@ -162,7 +162,7 @@ dxf_region_read
                         fprintf (stderr, "Error in dxf_region_read () while reading from: %s in line: %d.\n",
                                 fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 else if (strcmp (temp_string, "  1") == 0)
                 {
@@ -259,7 +259,7 @@ dxf_region_read
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_region_read () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_region);
 }
 
 
