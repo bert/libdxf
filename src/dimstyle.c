@@ -61,7 +61,7 @@ dxf_dimstyle_new ()
         if ((dxf_dimstyle = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfDimStyle struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfDimStyle struct.\n")),
                   __FUNCTION__);
                 dxf_dimstyle = NULL;
         }
@@ -101,14 +101,14 @@ dxf_dimstyle_init
         if (dxf_dimstyle == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_dimstyle = dxf_dimstyle_new ();
         }
         if (dxf_dimstyle == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfDimStyle struct.\n")),
+                (_("Error in %s () could not allocate memory for a DxfDimStyle struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -199,7 +199,7 @@ dxf_dimstyle_write
                   (_("Error in %s () dimstyle_name value is empty for the %s entity.\n")),
                   __FUNCTION__, dxf_entity_name);
                 fprintf (stderr,
-                  (_("    skipping %s table.\n")),
+                  (_("\tskipping %s table.\n")),
                   dxf_entity_name);
                 /* Clean up. */
                 free (dxf_entity_name);
@@ -211,7 +211,7 @@ dxf_dimstyle_write
                   (_("Error in %s () dimstyle_name value is NULL for the %s entity.\n")),
                   __FUNCTION__, dxf_entity_name);
                 fprintf (stderr,
-                  (_("    skipping %s table.\n")),
+                  (_("\tskipping %s table.\n")),
                   dxf_entity_name);
                 /* Clean up. */
                 free (dxf_entity_name);
@@ -877,7 +877,7 @@ dxf_dimstyle_free
         if (dxf_dimstyle->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfDimStyle was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfDimStyle was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
