@@ -53,7 +53,7 @@ dxf_comment_new ()
         if ((dxf_comment = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfComment struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfComment struct.\n")),
                   __FUNCTION__);
                 dxf_comment = NULL;
         }
@@ -89,14 +89,14 @@ dxf_comment_init
         if (dxf_comment == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_comment = dxf_comment_new ();
         }
         if (dxf_comment == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfComment struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfComment struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -160,7 +160,7 @@ dxf_comment_free
         if (dxf_comment->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfComment was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfComment was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
