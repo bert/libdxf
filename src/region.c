@@ -89,7 +89,14 @@ dxf_region_init
 #endif
         int i;
 
-        dxf_region = dxf_region_new ();
+        /* Do some basic checks. */
+        if (dxf_region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_region = dxf_region_new ();
+        }
         if (dxf_region == NULL)
         {
               fprintf (stderr,
@@ -146,12 +153,17 @@ dxf_region_read
         int i;
         int j;
 
-        if (!dxf_region)
-        {
-                dxf_region = dxf_region_new ();
-        }
         i = 0;
         j = 0;
+        /* Do some basic checks. */
+        if (dxf_region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_region = dxf_region_new ();
+                dxf_region_init (dxf_region);
+        }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -256,6 +268,15 @@ dxf_region_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_region->linetype, "") == 0)
+        {
+                dxf_region->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_region->layer, "") == 0)
+        {
+                dxf_region->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -284,6 +305,24 @@ dxf_region_write
         char *dxf_entity_name = strdup ("REGION");
         int i;
 
+        /* Do some basic checks. */
+        if (dxf_region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_region->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_region->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_region->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
         if (strcmp (dxf_region->layer, "") == 0)
         {
                 fprintf (stderr,
