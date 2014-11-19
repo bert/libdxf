@@ -67,7 +67,7 @@ dxf_acad_proxy_entity_new ()
         if ((dxf_acad_proxy_entity = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfAcadProxyEntity struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfAcadProxyEntity struct.\n")),
                   __FUNCTION__);
                 dxf_acad_proxy_entity = NULL;
         }
@@ -109,14 +109,14 @@ dxf_acad_proxy_entity_init
         if (dxf_acad_proxy_entity == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_acad_proxy_entity = dxf_acad_proxy_entity_new ();
         }
         if (dxf_acad_proxy_entity == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfAcadProxyEntity struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfAcadProxyEntity struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -401,7 +401,7 @@ dxf_acad_proxy_entity_write
         if (dxf_acad_proxy_entity == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -514,7 +514,7 @@ dxf_acad_proxy_entity_free
         if (dxf_acad_proxy_entity->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfAcadProxyEntity was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfAcadProxyEntity was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
