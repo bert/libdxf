@@ -59,7 +59,7 @@ dxf_attrib_new ()
         if ((dxf_attrib = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfAttrib struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfAttrib struct.\n")),
                   __FUNCTION__);
                 dxf_attrib = NULL;
         }
@@ -98,14 +98,14 @@ dxf_attrib_init
         if (dxf_attrib == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_attrib = dxf_attrib_new ();
         }
         if (dxf_attrib == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfAttrib struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfAttrib struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -524,7 +524,7 @@ dxf_attrib_write
                   (_("Warning in %s () text style string is empty for the %s entity with id-code: %x.\n")),
                   __FUNCTION__, dxf_entity_name, dxf_attrib->id_code);
                 fprintf (stderr,
-                  (_("    default text style STANDARD applied to %s entity.\n")),
+                  (_("\tdefault text style STANDARD applied to %s entity.\n")),
                   dxf_entity_name);
                 dxf_attrib->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
         }
@@ -534,7 +534,7 @@ dxf_attrib_write
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_attrib->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is reset to default linetype")),
+                  (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
                 dxf_attrib->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
@@ -544,7 +544,7 @@ dxf_attrib_write
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x.\n")),
                   __FUNCTION__, dxf_entity_name, dxf_attrib->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is relocated to the default layer.\n")),
+                  (_("\t%s entity is relocated to the default layer.\n")),
                   dxf_entity_name);
                 dxf_attrib->layer = strdup (DXF_DEFAULT_LAYER);
         }
@@ -554,7 +554,7 @@ dxf_attrib_write
                   (_("Warning in %s () height has a value of 0.0 for the %s entity with id-code: %x.\n")),
                   __FUNCTION__, dxf_entity_name, dxf_attrib->id_code);
                 fprintf (stderr,
-                  (_("    default height of 1.0 applied to %s entity.\n")),
+                  (_("\tdefault height of 1.0 applied to %s entity.\n")),
                   dxf_entity_name);
                 dxf_attrib->height = 1.0;
         }
@@ -564,7 +564,7 @@ dxf_attrib_write
                   (_("Warning in %s () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x.\n")),
                   __FUNCTION__, dxf_entity_name, dxf_attrib->id_code);
                 fprintf (stderr,
-                  (_("    default relative X-scale of 1.0 applied to %s entity.\n")),
+                  (_("\tdefault relative X-scale of 1.0 applied to %s entity.\n")),
                   dxf_entity_name);
                 dxf_attrib->rel_x_scale = 1.0;
         }
@@ -742,7 +742,7 @@ dxf_attrib_free
         if (dxf_attrib->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfAttrib was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfAttrib was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
