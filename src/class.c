@@ -57,7 +57,7 @@ dxf_class_new ()
         if ((dxf_class = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfClass struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfClass struct.\n")),
                   __FUNCTION__);
                 dxf_class = NULL;
         }
@@ -93,14 +93,14 @@ dxf_class_init
         if (dxf_class == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_class = dxf_class_new ();
         }
         if (dxf_class == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfClass struct.\n")),
+                (_("Error in %s () could not allocate memory for a DxfClass struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -302,7 +302,7 @@ dxf_class_write
                   (_("Warning in %s () empty record name string for the %s entity\n")),
                   __FUNCTION__, dxf_entity_name);
                 fprintf (stderr,
-                  (_("    record_name of %s entity is reset to \"\"")),
+                  (_("\trecord_name of %s entity is reset to \"\"")),
                   dxf_entity_name );
                 dxf_class->record_name = strdup ("");
         }
@@ -320,7 +320,7 @@ dxf_class_write
                   (_("Warning in %s () empty app name string for the %s entity\n")),
                   __FUNCTION__, dxf_entity_name);
                 fprintf (stderr,
-                  (_("    app_name of %s entity is reset to \"\"")),
+                  (_("\tapp_name of %s entity is reset to \"\"")),
                   dxf_entity_name );
                 dxf_class->app_name = strdup ("");
         }
@@ -381,7 +381,7 @@ dxf_class_free
         if (dxf_class->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfClass was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfClass was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
