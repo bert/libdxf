@@ -69,7 +69,7 @@ dxf_appid_new ()
         if ((dxf_appid = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfAppid struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfAppid struct.\n")),
                   __FUNCTION__);
                 dxf_appid = NULL;
         }
@@ -111,14 +111,14 @@ dxf_appid_init
         if (dxf_appid == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_appid = dxf_appid_new ();
         }
         if (dxf_appid == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfAppid struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfAppid struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -170,7 +170,7 @@ dxf_appid_read
         if (dxf_appid == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_appid = dxf_appid_new ();
                 dxf_appid_init (dxf_appid);
@@ -281,7 +281,7 @@ dxf_appid_write
                   (_("Warning: empty block name string for the %s entity with id-code: %x\n")),
                   dxf_entity_name, dxf_appid->id_code);
                 fprintf (stderr,
-                  (_("         %s entity is discarded from output.\n")),
+                  (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
                 return (EXIT_FAILURE);
         }
@@ -355,7 +355,7 @@ dxf_appid_free
         if (dxf_appid->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfAppid was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfAppid was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
