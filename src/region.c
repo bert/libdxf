@@ -1,7 +1,7 @@
 /*!
  * \file region.c
  *
- * \author Copyright (C) 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF region entity (\c REGION).
  *
@@ -54,7 +54,9 @@ dxf_region_new ()
         if (size == 0) size = 1;
         if ((dxf_region = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_region_new () could not allocate memory for a DxfRegion struct.\n");
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfRegion struct.\n")),
+                  __FUNCTION__);
                 dxf_region = NULL;
         }
         else
@@ -90,7 +92,9 @@ dxf_region_init
         dxf_region = dxf_region_new ();
         if (dxf_region == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_region_init () could not allocate memory for a DxfRegion struct.\n");
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory for a DxfRegion struct.\n")),
+                __FUNCTION__);
               return (NULL);
         }
         dxf_region->modeler_format_version_number = 0;
@@ -154,8 +158,9 @@ dxf_region_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_region_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (NULL);
                 }
@@ -246,8 +251,9 @@ dxf_region_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_region_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -280,10 +286,12 @@ dxf_region_write
 
         if (strcmp (dxf_region->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_region_write_lowlevel () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_region->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_region->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to layer 0")),
+                  dxf_entity_name);
                 dxf_region->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -358,7 +366,9 @@ dxf_region_free
 
         if (dxf_region->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_region_free () pointer to next DxfRegion was not NULL.\n");
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfRegion was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_region->linetype);
