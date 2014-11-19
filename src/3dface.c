@@ -60,7 +60,7 @@ dxf_3dface_new ()
         if ((dxf_3dface = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a Dxf3dface struct.\n")),
+                  (_("Error in %s () could not allocate memory for a Dxf3dface struct.\n")),
                   __FUNCTION__);
                 dxf_3dface = NULL;
         }
@@ -101,14 +101,14 @@ dxf_3dface_init
         if (dxf_3dface == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_3dface = dxf_3dface_new ();
         }
         if (dxf_3dface == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a Dxf3dface struct.\n")),
+                  (_("Error in %s () could not allocate memory for a Dxf3dface struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -432,7 +432,7 @@ dxf_3dface_write
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_3dface->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is reset to default linetype")),
+                  (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
                 dxf_3dface->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
@@ -442,7 +442,7 @@ dxf_3dface_write
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_3dface->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is relocated to layer 0")),
+                  (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
                 dxf_3dface->layer = strdup (DXF_DEFAULT_LAYER);
         }
@@ -538,7 +538,7 @@ dxf_3dface_free
         if (dxf_3dface->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next Dxf3dface was not NULL.\n")),
+                (_("Error in %s () pointer to next Dxf3dface was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
