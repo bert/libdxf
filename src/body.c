@@ -60,7 +60,7 @@ dxf_body_new ()
         if ((dxf_body = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfBody struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfBody struct.\n")),
                   __FUNCTION__);
                 dxf_body = NULL;
         }
@@ -101,14 +101,14 @@ dxf_body_init
         if (dxf_body == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_body = dxf_body_new ();
         }
         if (dxf_body == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfBody struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfBody struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -383,7 +383,7 @@ dxf_body_write
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_body->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is reset to default linetype")),
+                  (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
                 dxf_body->layer = strdup (DXF_DEFAULT_LAYER);
         }
@@ -393,7 +393,7 @@ dxf_body_write
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_body->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is relocated to layer 0")),
+                  (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
                 dxf_body->layer = strdup (DXF_DEFAULT_LAYER);
         }
@@ -516,7 +516,7 @@ dxf_body_free
         if (dxf_body->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfBody was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfBody was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
