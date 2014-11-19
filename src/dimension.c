@@ -63,7 +63,7 @@ dxf_dimension_new ()
         if ((dxf_dimension = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfDimension struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfDimension struct.\n")),
                   __FUNCTION__);
                 dxf_dimension = NULL;
         }
@@ -105,14 +105,14 @@ dxf_dimension_init
         if (dxf_dimension == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_dimension = dxf_dimension_new ();
         }
         if (dxf_dimension == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfDimension struct.\n")),
+                (_("Error in %s () could not allocate memory for a DxfDimension struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -669,7 +669,7 @@ dxf_dimension_write
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_dimension->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is relocated to layer 0")),
+                  (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
                 dxf_dimension->layer = strdup (DXF_DEFAULT_LAYER);
         }
@@ -910,7 +910,7 @@ dxf_dimension_free
         if (dxf_dimension->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfDimension was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfDimension was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
