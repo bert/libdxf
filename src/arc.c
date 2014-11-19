@@ -64,7 +64,7 @@ dxf_arc_new ()
         if ((dxf_arc = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfArc struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfArc struct.\n")),
                   __FUNCTION__);
                 dxf_arc = NULL;
         }
@@ -106,14 +106,14 @@ dxf_arc_init
         if (dxf_arc == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_arc = dxf_arc_new ();
         }
         if (dxf_arc == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfArc struct.\n")),
+                (_("Error in %s () could not allocate memory for a DxfArc struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -608,7 +608,7 @@ dxf_arc_free
         if (dxf_arc->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfArc was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfArc was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
