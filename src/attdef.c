@@ -59,7 +59,7 @@ dxf_attdef_new ()
         if ((dxf_attdef = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfAttdef struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfAttdef struct.\n")),
                   __FUNCTION__);
                 dxf_attdef = NULL;
         }
@@ -98,14 +98,14 @@ dxf_attdef_init
         if (dxf_attdef == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_attdef = dxf_attdef_new ();
         }
         if (dxf_attdef == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfAttdef struct.\n")),
+                (_("Error in %s () could not allocate memory for a DxfAttdef struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -519,7 +519,7 @@ dxf_attdef_write
                   (_("Warning in %s () text style string is empty for the %s entity with id-code: %x.\n")),
                   __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
                 fprintf (stderr,
-                  (_("    default text style STANDARD applied to %s entity.\n")),
+                  (_("\tdefault text style STANDARD applied to %s entity.\n")),
                   dxf_entity_name);
                 dxf_attdef->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
         }
@@ -529,7 +529,7 @@ dxf_attdef_write
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is reset to default linetype")),
+                  (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
                 dxf_attdef->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
@@ -539,7 +539,7 @@ dxf_attdef_write
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is relocated to layer 0")),
+                  (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
                 dxf_attdef->layer = strdup (DXF_DEFAULT_LAYER);
         }
@@ -549,8 +549,8 @@ dxf_attdef_write
                   (_("Warning in %s () height has a value of 0.0 for the %s entity with id-code: %x.\n")),
                   __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
                 fprintf (stderr,
-                  (_("    default height of 1.0 applied to %s entity.\n")),
-                    dxf_entity_name);
+                  (_("\tdefault height of 1.0 applied to %s entity.\n")),
+                  dxf_entity_name);
                 dxf_attdef->height = 1.0;
         }
         if (dxf_attdef->rel_x_scale == 0.0)
@@ -558,8 +558,9 @@ dxf_attdef_write
                 fprintf (stderr,
                   (_("Warning in %s () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x.\n")),
                   __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
-                fprintf (stderr, "    default relative X-scale of 1.0 applied to %s entity.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("\tdefault relative X-scale of 1.0 applied to %s entity.\n")),
+                  dxf_entity_name);
                 dxf_attdef->rel_x_scale = 1.0;
         }
         /* Start writing output. */
@@ -655,7 +656,7 @@ dxf_attdef_write
                           (_("Warning in %s () insertion point and alignment point are identical for the %s entity with id-code: %x.\n")),
                           __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
                         fprintf (stderr,
-                          (_("    default justification applied to %s entity.\n")),
+                          (_("\tdefault justification applied to %s entity.\n")),
                           dxf_entity_name);
                         dxf_attdef->hor_align = 0;
                         dxf_attdef->vert_align = 0;
@@ -704,7 +705,7 @@ dxf_attdef_free
         if (dxf_attdef->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfAttdef was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfAttdef was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
