@@ -60,7 +60,7 @@ dxf_block_new ()
         if ((dxf_block = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfBlock struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfBlock struct.\n")),
                   __FUNCTION__);
                 dxf_block = NULL;
         }
@@ -100,14 +100,14 @@ dxf_block_init
         if (dxf_block == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_block = dxf_block_new ();
         }
         if (dxf_block == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfBlock struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfBlock struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -323,7 +323,7 @@ dxf_block_read
                   (_("Warning in %s () illegal block type value found while reading from: %s in line: %d.\n")),
                   __FUNCTION__, fp->filename, fp->line_number);
                 fprintf (stderr,
-                  (_("    block type value is reset to 1.\n")));
+                  (_("\tblock type value is reset to 1.\n")));
                 dxf_block->block_type = 1;
         }
 #if DEBUG
@@ -372,7 +372,7 @@ dxf_block_write
                   (_("Error in %s () empty block name string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_block->id_code);
                 fprintf (stderr,
-                  (_("         %s entity is discarded from output.\n")),
+                  (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
                 return (EXIT_FAILURE);
         }
@@ -382,7 +382,7 @@ dxf_block_write
                   (_("Error in %s () NULL pointer to endblk was passed or the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_block->id_code);
                 fprintf (stderr,
-                  (_("         %s entity is discarded from output.\n")),
+                  (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
                 return (EXIT_FAILURE);
         }
@@ -395,7 +395,7 @@ dxf_block_write
                   (_("Error in %s () empty xref path name string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_block->id_code);
                 fprintf (stderr,
-                  (_("         %s entity is discarded from output.\n")),
+                  (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
                 return (EXIT_FAILURE);
         }
@@ -412,7 +412,7 @@ dxf_block_write
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_block->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is relocated to layer 0.\n")),
+                  (_("\t%s entity is relocated to layer 0.\n")),
                   dxf_entity_name);
                 dxf_block->layer = strdup (DXF_DEFAULT_LAYER);
         }
@@ -533,7 +533,7 @@ dxf_block_free
         if (dxf_block->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfBlock was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfBlock was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
