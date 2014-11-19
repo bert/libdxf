@@ -59,7 +59,7 @@ dxf_3dsolid_new ()
         if ((dxf_3dsolid = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a Dxf3dsolid struct.\n")),
+                  (_("Error in %s () could not allocate memory for a Dxf3dsolid struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -99,14 +99,14 @@ dxf_3dsolid_init
         if (dxf_3dsolid == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_3dsolid = dxf_3dsolid_new ();
         }
         if (dxf_3dsolid == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a Dxf3dsolid struct.\n")),
+                  (_("Error in %s () could not allocate memory for a Dxf3dsolid struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -393,7 +393,7 @@ dxf_3dsolid_write
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_3dsolid->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is reset to default linetype")),
+                  (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
                 dxf_3dsolid->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
@@ -403,7 +403,7 @@ dxf_3dsolid_write
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_3dsolid->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is relocated to layer 0")),
+                  (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
                 dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
         }
@@ -509,7 +509,7 @@ dxf_3dsolid_free
         if (dxf_3dsolid->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next Dxf3dsolid was not NULL.\n")),
+                (_("Error in %s () pointer to next Dxf3dsolid was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
