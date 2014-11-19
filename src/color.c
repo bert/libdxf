@@ -54,7 +54,7 @@ dxf_RGB_color_new ()
         if ((dxf_RGB_color = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfRGBCcolor struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfRGBCcolor struct.\n")),
                   __FUNCTION__);
                 dxf_RGB_color = NULL;
         }
@@ -98,7 +98,7 @@ dxf_RGB_color_set
         else
         {
                 fprintf (stderr,
-                  (_("ERROR red color value in %s () out of range.\n")),
+                  (_("Error red color value in %s () out of range.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -109,7 +109,7 @@ dxf_RGB_color_set
         else
         {
                 fprintf (stderr,
-                  (_("ERROR green color value in %s () out of range.\n")),
+                  (_("Error green color value in %s () out of range.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -120,7 +120,7 @@ dxf_RGB_color_set
         else
         {
                 fprintf (stderr,
-                  (_("ERROR blue color value in %s () out of range.\n")),
+                  (_("Error blue color value in %s () out of range.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -134,7 +134,7 @@ dxf_RGB_color_set
         else
         {
                 fprintf (stderr,
-                  (_("ERROR name value in %s () contains a NULL pointer.\n")),
+                  (_("Error name value in %s () contains a NULL pointer.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -169,7 +169,7 @@ dxf_ACI_init
         if ((dxf_ACI = malloc (size * DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfRGBCcolor array.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfRGBCcolor array.\n")),
                   __FUNCTION__);
                 dxf_ACI = NULL;
                 return (EXIT_FAILURE);
@@ -466,7 +466,7 @@ dxf_RGB_to_triplet
         else
         {
                 fprintf (stderr,
-                  (_("ERROR red color value in %s () out of range.\n")),
+                  (_("Error red color value in %s () out of range.\n")),
                   __FUNCTION__);
                 return (-1);
         }
@@ -477,7 +477,7 @@ dxf_RGB_to_triplet
         else
         {
                 fprintf (stderr,
-                  (_("ERROR green color value in %s () out of range.\n")),
+                  (_("Error green color value in %s () out of range.\n")),
                   __FUNCTION__);
                 return (-2);
         }
@@ -488,7 +488,7 @@ dxf_RGB_to_triplet
         else
         {
                 fprintf (stderr,
-                  (_("ERROR blue color value in %s () out of range.\n")),
+                  (_("Error blue color value in %s () out of range.\n")),
                   __FUNCTION__);
                 return (-3);
         }
