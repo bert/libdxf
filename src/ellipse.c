@@ -58,7 +58,7 @@ dxf_ellipse_new ()
         if ((dxf_ellipse = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfEllipse struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfEllipse struct.\n")),
                   __FUNCTION__);
                 dxf_ellipse = NULL;
         }
@@ -94,14 +94,14 @@ dxf_ellipse_init
         if (dxf_ellipse == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_ellipse = dxf_ellipse_new ();
         }
         if (dxf_ellipse == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfEllipse struct.\n")),
+                (_("Error in %s () could not allocate memory for a DxfEllipse struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -446,7 +446,7 @@ dxf_ellipse_write
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_ellipse->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is reset to default linetype")),
+                  (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
                 dxf_ellipse->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
@@ -455,8 +455,9 @@ dxf_ellipse_write
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_ellipse->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to layer 0")),
+                  dxf_entity_name);
                 dxf_ellipse->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
@@ -569,7 +570,7 @@ dxf_ellipse_free
         if (dxf_ellipse->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfEllipse was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfEllipse was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
