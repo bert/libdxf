@@ -60,7 +60,7 @@ dxf_endblk_new ()
         if ((dxf_endblk = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfEndblk struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfEndblk struct.\n")),
                   __FUNCTION__);
                 dxf_endblk = NULL;
         }
@@ -100,14 +100,14 @@ dxf_endblk_init
         if (dxf_endblk == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_endblk = dxf_endblk_new ();
         }
         if (dxf_endblk == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfEndblk struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfEndblk struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
