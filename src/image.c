@@ -486,6 +486,16 @@ dxf_image_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (strcmp (dxf_image->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_image->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_image->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
         if (strcmp (dxf_image->layer, "") == 0)
         {
                 fprintf (stderr,
