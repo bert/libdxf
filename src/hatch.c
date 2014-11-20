@@ -59,7 +59,7 @@ dxf_hatch_new ()
         if ((dxf_hatch = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatch struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatch struct.\n")),
                   __FUNCTION__);
                 dxf_hatch = NULL;
         }
@@ -94,7 +94,7 @@ dxf_hatch_pattern_new ()
         if ((dxf_hatch_pattern = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchPatternSeedpoint struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchPatternSeedpoint struct.\n")),
                   __FUNCTION__);
                 dxf_hatch_pattern = NULL;
         }
@@ -129,7 +129,7 @@ dxf_hatch_pattern_def_line_new ()
         if ((dxf_hatch_pattern_def_line = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchPatternDefLine struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchPatternDefLine struct.\n")),
                   __FUNCTION__);
                 dxf_hatch_pattern_def_line = NULL;
         }
@@ -164,7 +164,7 @@ dxf_hatch_pattern_seedpoint_new ()
         if ((dxf_hatch_pattern_seedpoint = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchPatternSeedpoint struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchPatternSeedpoint struct.\n")),
                   __FUNCTION__);
                 dxf_hatch_pattern_seedpoint = NULL;
         }
@@ -199,7 +199,7 @@ dxf_hatch_boundary_path_new ()
         if ((dxf_hatch_boundary_path = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPath struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPath struct.\n")),
                   __FUNCTION__);
                 dxf_hatch_boundary_path = NULL;
         }
@@ -234,7 +234,7 @@ dxf_hatch_boundary_path_polyline_new ()
         if ((dxf_hatch_boundary_path_polyline = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathPolyline struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathPolyline struct.\n")),
                   __FUNCTION__);
                 dxf_hatch_boundary_path_polyline = NULL;
         }
@@ -270,7 +270,7 @@ dxf_hatch_boundary_path_polyline_vertex_new ()
         if ((dxf_hatch_boundary_path_polyline_vertex = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathPolylineVertex struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathPolylineVertex struct.\n")),
                   __FUNCTION__);
                 dxf_hatch_boundary_path_polyline_vertex = NULL;
         }
@@ -305,7 +305,7 @@ dxf_hatch_boundary_path_edge_new ()
         if ((dxf_hatch_boundary_path_edge = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdge struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdge struct.\n")),
                   __FUNCTION__);
                 dxf_hatch_boundary_path_edge = NULL;
         }
@@ -340,7 +340,7 @@ dxf_hatch_boundary_path_edge_arc_new ()
         if ((dxf_hatch_boundary_path_edge_arc = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n")),
                   __FUNCTION__);
                 dxf_hatch_boundary_path_edge_arc = NULL;
         }
@@ -375,7 +375,7 @@ dxf_hatch_boundary_path_edge_ellipse_new ()
         if ((dxf_hatch_boundary_path_edge_ellipse = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeEllipse struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeEllipse struct.\n")),
                   __FUNCTION__);
                 dxf_hatch_boundary_path_edge_ellipse = NULL;
         }
@@ -410,7 +410,7 @@ dxf_hatch_boundary_path_edge_line_new ()
         if ((dxf_hatch_boundary_path_edge_line = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeLine struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeLine struct.\n")),
                   __FUNCTION__);
                 dxf_hatch_boundary_path_edge_line = NULL;
         }
@@ -445,7 +445,7 @@ dxf_hatch_boundary_path_edge_spline_new ()
         if ((dxf_hatch_boundary_path_edge_spline = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSpline struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSpline struct.\n")),
                   __FUNCTION__);
                 dxf_hatch_boundary_path_edge_spline = NULL;
         }
@@ -481,7 +481,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_new ()
         if ((dxf_hatch_boundary_path_edge_spline_cp = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n")),
                   __FUNCTION__);
                 dxf_hatch_boundary_path_edge_spline_cp = NULL;
         }
@@ -519,14 +519,14 @@ dxf_hatch_init
         if (dxf_hatch == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_hatch = dxf_hatch_new ();
         }
         if (dxf_hatch == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatch struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatch struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -593,7 +593,7 @@ dxf_hatch_pattern_init
         if (dxf_hatch_pattern == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchPattern struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchPattern struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -636,7 +636,7 @@ dxf_hatch_pattern_def_line_init
         if (dxf_hatch_pattern_def_line == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchPatternDefLine struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchPatternDefLine struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -680,7 +680,7 @@ dxf_hatch_pattern_seedpoint_init
         if (dxf_hatch_pattern_seedpoint == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchPatternSeedPoint struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchPatternSeedPoint struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -716,7 +716,7 @@ dxf_hatch_boundary_path_init
         if (dxf_hatch_boundary_path == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPath struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPath struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -752,7 +752,7 @@ dxf_hatch_boundary_path_polyline_init
         if (dxf_hatch_boundary_path_polyline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathPolyline struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathPolyline struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -791,7 +791,7 @@ dxf_hatch_boundary_path_polyline_vertex_init
         if (dxf_hatch_boundary_path_polyline_vertex == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathPolylineVertex struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathPolylineVertex struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -827,7 +827,7 @@ dxf_hatch_boundary_path_edge_init
         if (dxf_hatch_boundary_path_edge == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdge struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdge struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -865,7 +865,7 @@ dxf_hatch_boundary_path_edge_arc_init
         if (dxf_hatch_boundary_path_edge_arc == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -905,7 +905,7 @@ dxf_hatch_boundary_path_edge_ellipse_init
         if (dxf_hatch_boundary_path_edge_ellipse == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeEllipse struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeEllipse struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -947,7 +947,7 @@ dxf_hatch_boundary_path_edge_line_init
         if (dxf_hatch_boundary_path_edge_line == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeLine struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeLine struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -987,7 +987,7 @@ dxf_hatch_boundary_path_edge_spline_init
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSpline struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSpline struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1031,7 +1031,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_init
         if (dxf_hatch_boundary_path_edge_spline_cp == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1125,14 +1125,14 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (dxf_hatch_boundary_path_edge_spline_cp == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline_cp.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline_cp.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1216,14 +1216,14 @@ dxf_hatch_boundary_path_edge_spline_append_knot_value
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if ((dxf_hatch_boundary_path_edge_spline->number_of_knots + 1) > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr,
-                  (("ERROR in %s () resulted in a array pointer overflow.\n")),
+                  (("Error in %s () resulted in a array pointer overflow.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1313,14 +1313,14 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (dxf_hatch_boundary_path_edge_spline_cp == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline_cp.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline_cp.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1393,14 +1393,14 @@ dxf_hatch_boundary_path_edge_spline_prepend_knot_value
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if ((dxf_hatch_boundary_path_edge_spline->number_of_knots + 1) > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () resulted in a array pointer overflow.\n")),
+                  (_("Error in %s () resulted in a array pointer overflow.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1445,7 +1445,7 @@ dxf_hatch_boundary_path_edge_spline_get_control_point
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1456,7 +1456,7 @@ dxf_hatch_boundary_path_edge_spline_get_control_point
         if (dxf_hatch_boundary_path_edge_spline->number_of_control_points <= position)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () position is greater than the number of control points.\n")),
+                  (_("Error in %s () position is greater than the number of control points.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1513,14 +1513,14 @@ dxf_hatch_boundary_path_edge_spline_get_knot_value
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (position > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr,
-                  (_("ERROR in  () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
+                  (_("Error in  () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1564,14 +1564,14 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (dxf_hatch_boundary_path_edge_spline_cp == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in control_point.\n")),
+                  (_("Error in %s () received a NULL pointer value in control_point.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1582,7 +1582,7 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
         if (dxf_hatch_boundary_path_edge_spline->number_of_control_points <= position)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () position is greater than the number of control points.\n")),
+                  (_("Error in %s () position is greater than the number of control points.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1662,14 +1662,14 @@ dxf_hatch_boundary_path_edge_spline_set_knot_value
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (position > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
+                  (_("Error in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1770,21 +1770,21 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (dxf_hatch_boundary_path_edge_spline_cp == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in control_point.\n")),
+                  (_("Error in %s () received a NULL pointer value in control_point.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (dxf_hatch_boundary_path_edge_spline->number_of_control_points <= position)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () position is greater than the number of control points.\n")),
+                  (_("Error in %s () position is greater than the number of control points.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1899,21 +1899,21 @@ dxf_hatch_boundary_path_edge_spline_insert_knot_value
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if ((dxf_hatch_boundary_path_edge_spline->number_of_knots + 1) > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () resulted in a array pointer overflow.\n")),
+                  (_("Error in %s () resulted in a array pointer overflow.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (position >= DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
+                  (_("Error in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1958,14 +1958,14 @@ dxf_hatch_boundary_path_edge_spline_remove_control_point
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (dxf_hatch_boundary_path_edge_spline->number_of_control_points <= position)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () position is greater than the number of control points.\n")),
+                  (_("Error in %s () position is greater than the number of control points.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1978,7 +1978,7 @@ dxf_hatch_boundary_path_edge_spline_remove_control_point
                 /* no control points yet, so there is no control point to
                  * remove. */
                 fprintf (stderr,
-                  (_("ERROR in %s () spline contins no control points.\n")),
+                  (_("Error in %s () spline contins no control points.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -2047,28 +2047,28 @@ dxf_hatch_boundary_path_edge_spline_remove_knot_value
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (dxf_hatch_boundary_path_edge_spline->number_of_knots > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () resulted in a array pointer overflow.\n")),
+                  (_("Error in %s () resulted in a array pointer overflow.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if ((dxf_hatch_boundary_path_edge_spline->number_of_knots - 1) < 0)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () resulted in a array pointer underflow.\n")),
+                  (_("Error in %s () resulted in a array pointer underflow.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (position >= DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
+                  (_("Error in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -2192,14 +2192,14 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (dxf_hatch_boundary_path_edge_spline_cp == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline_cp.\n")),
+                  (_("Warning in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline_cp.\n")),
                   __FUNCTION__);
                 fprintf (stderr,
                   (_("\tAllocating memory.\n")));
@@ -2214,7 +2214,7 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
                 /* no control points yet, so there is no control point
                  * to copy. */
                 fprintf (stderr,
-                  (_("ERROR in %s () spline contains no control points.\n")),
+                  (_("Error in %s () spline contains no control points.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2294,14 +2294,14 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
         if (dxf_hatch_boundary_path_edge_spline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (dxf_hatch_boundary_path_edge_spline->number_of_knots > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () resulted in a array pointer overflow.\n")),
+                  (_("Error in %s () resulted in a array pointer overflow.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -2537,7 +2537,7 @@ dxf_hatch_pattern_def_line_write
         else
         {
                 fprintf (stderr,
-                  (_("Warning: no dash length found in %s () function.\n")),
+                  (_("Warning in %s () no dash length found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -2633,7 +2633,7 @@ dxf_hatch_boundary_path_write
                 if (dxf_hatch_boundary_path->next == NULL)
                 {
                         fprintf (stderr,
-                          (_("Information: last boundary path encountered in %s ().\n")),
+                          (_("Information from %s () last boundary path encountered.\n")),
                           __FUNCTION__);
                         break;
                 }
@@ -2665,7 +2665,7 @@ dxf_hatch_boundary_path_write
                         else
                         {
                                 fprintf (stderr,
-                                  (_("Error: unknown boundary path type encountered in %s ().\n")),
+                                  (_("Error in %s () unknown boundary path type encountered.\n")),
                                   __FUNCTION__);
                                 return (EXIT_FAILURE);
                         }
@@ -2785,7 +2785,7 @@ dxf_hatch_boundary_path_polyline_close_polyline
         if (dxf_hatch_boundary_path_polyline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () invalid pointer to polyline (NULL).\n")),
+                  (_("Error in %s () invalid pointer to polyline (NULL).\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -2918,21 +2918,21 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
         if (dxf_hatch_boundary_path_polyline == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () invalid pointer to polyline (NULL).\n")),
+                  (_("Error in %s () invalid pointer to polyline (NULL).\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (dxf_point == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () invalid pointer to point (NULL).\n")),
+                  (_("Error in %s () invalid pointer to point (NULL).\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (dxf_hatch_boundary_path_polyline->is_closed != 1)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () polyline is not a closed polygon.\n")),
+                  (_("Error in %s () polyline is not a closed polygon.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3078,7 +3078,7 @@ dxf_hatch_free
         if (dxf_hatch->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatch was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfHatch was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3124,7 +3124,7 @@ dxf_hatch_pattern_free
         if (dxf_hatch_pattern->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatchPattern was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfHatchPattern was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3160,7 +3160,7 @@ dxf_hatch_pattern_def_line_free
         if (dxf_hatch_pattern_def_line->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatchPatternDefLine was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfHatchPatternDefLine was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3194,7 +3194,7 @@ dxf_hatch_pattern_seedpoint_free
         if (dxf_hatch_pattern_seedpoint->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatchPattern was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfHatchPattern was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3228,7 +3228,7 @@ dxf_hatch_boundary_path_free
         if (dxf_hatch_boundary_path->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatchBoundaryPath was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPath was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3264,7 +3264,7 @@ dxf_hatch_boundary_path_polyline_free
         if (dxf_hatch_boundary_path_polyline->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatchBoundaryPathPolyline was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPathPolyline was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3299,7 +3299,7 @@ dxf_hatch_boundary_path_polyline_vertex_free
         if (dxf_hatch_boundary_path_polyline_vertex->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatchBoundaryPathPolylineVertex was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPathPolylineVertex was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3333,7 +3333,7 @@ dxf_hatch_boundary_path_edge_free
         if (dxf_hatch_boundary_path_edge->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatchBoundaryPathEdge was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdge was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3371,7 +3371,7 @@ dxf_hatch_boundary_path_edge_arc_free
         if (dxf_hatch_boundary_path_edge_arc->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeArc was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeArc was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3405,7 +3405,7 @@ dxf_hatch_boundary_path_edge_ellipse_free
         if (dxf_hatch_boundary_path_edge_ellipse->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeEllipse was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeEllipse was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3439,7 +3439,7 @@ dxf_hatch_boundary_path_edge_line_free
         if (dxf_hatch_boundary_path_edge_line->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeLine was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeLine was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3473,7 +3473,7 @@ dxf_hatch_boundary_path_edge_spline_free
         if (dxf_hatch_boundary_path_edge_spline->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeSpline was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeSpline was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3508,7 +3508,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
         if (dxf_hatch_boundary_path_edge_spline_cp->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfHatchBoundaryPathEdgeSplineCp was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeSplineCp was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
