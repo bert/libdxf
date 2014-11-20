@@ -62,7 +62,7 @@ dxf_image_new ()
         if ((dxf_image = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfImage struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfImage struct.\n")),
                   __FUNCTION__);
                 dxf_image = NULL;
         }
@@ -100,14 +100,14 @@ dxf_image_init
         if (dxf_image == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_image = dxf_image_new ();
         }
         if (dxf_image == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfImage struct.\n")),
+                (_("Error in %s () could not allocate memory for a DxfImage struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -587,7 +587,7 @@ dxf_image_free
         if (dxf_image->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfImage was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfImage was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
