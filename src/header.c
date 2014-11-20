@@ -40,9 +40,7 @@
 static char *acad_version_string (int version_number)
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         switch (version_number)
         {
@@ -58,9 +56,7 @@ static char *acad_version_string (int version_number)
                 case AC1024: return "AC1024";
         }
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return NULL;
 }
@@ -76,9 +72,7 @@ static int acad_version_from_string
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         if (strcmp ("AC1006", version_string) == 0)
                 return AC1006;
@@ -102,9 +96,7 @@ static int acad_version_from_string
                 return AC1024;
         /* in the case that it is an invalid version */
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return 0;
 }
@@ -122,9 +114,7 @@ dxf_init_header
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         dxf_header.AcadVer = acad_version_string (acad_version_number);
         switch (acad_version_number)
@@ -587,9 +577,7 @@ dxf_init_header
         dxf_header.PLineGen = 0;
         dxf_header.PSLTScale = 1;
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -624,9 +612,7 @@ dxf_write_header_metric_new
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int JD;
         float fraction_day;
@@ -811,9 +797,7 @@ dxf_write_header_metric_new
         fprintf (fp, "  9\n$MEASUREMENT\n 70\n     0\n");
         fprintf (fp, "  0\nENDSEC\n");
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
 }
 
@@ -832,9 +816,7 @@ dxf_write_header
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("HEADER");
 
@@ -1063,9 +1045,7 @@ dxf_write_header
         if (acad_version_number >= AC1018) fprintf (fp, "  9\n$PROJECTNAME\n  1\n%s\n", dxf_header.ProjectName);
         dxf_section_write_endsection (fp);
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -1082,9 +1062,7 @@ dxf_read_header_parse_string
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char tstring[255];
         int n, ret = SUCCESS;
@@ -1103,9 +1081,7 @@ dxf_read_header_parse_string
                 ret = SUCCESS;
                 
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return ret;
 }
@@ -1122,9 +1098,7 @@ dxf_read_header_parse_int
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int f, tvar, n, ret = SUCCESS;
         /* test for header_var and version number. -3 makes it version agnostic */
@@ -1143,9 +1117,7 @@ dxf_read_header_parse_int
                 ret = SUCCESS;
 
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return ret;
 }
@@ -1163,9 +1135,7 @@ dxf_read_header_parse_n_double
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int f, n, i, ret = SUCCESS;
         double *dvar;
@@ -1198,9 +1168,7 @@ dxf_read_header_parse_n_double
                 ret = SUCCESS;
 
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return ret;
 }
@@ -1220,9 +1188,7 @@ dxf_read_header_parser
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         int ret;
         /*!
@@ -1680,9 +1646,7 @@ dxf_read_header_parser
                                          acad_version_number >= AC1009);
         dxf_return(ret);
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
        return FALSE;
 }
@@ -1700,9 +1664,7 @@ dxf_read_header
 )
 {
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Entering %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_BEGIN
 #endif
         char temp_string[255];
         int n, acad_version_number, ret;
@@ -1752,9 +1714,7 @@ dxf_read_header
         }
 
 #if DEBUG
-        fprintf (stderr,
-          (_("[File: %s: line: %d] Leaving %s () function.\n")),
-          __FILE__, __LINE__, __FUNCTION__);
+        DXF_DEBUG_END
 #endif
         return FALSE;
 }
