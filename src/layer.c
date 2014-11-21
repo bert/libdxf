@@ -62,7 +62,7 @@ dxf_layer_new ()
         if ((dxf_layer = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfLayer struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfLayer struct.\n")),
                   __FUNCTION__);
                 dxf_layer = NULL;
         }
@@ -98,14 +98,14 @@ dxf_layer_init
         if (dxf_layer == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_layer = dxf_layer_new ();
         }
         if (dxf_layer == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfLayer struct.\n")),
+                (_("Error in %s () could not allocate memory for a DxfLayer struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -327,7 +327,7 @@ dxf_layer_write
                   (_("Warning in %s () empty linetype string for the %s layer\n")),
                   __FUNCTION__, dxf_entity_name);
                 fprintf (stderr,
-                  (_("    %s entity is reset to default linetype")),
+                  (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
                 dxf_layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
@@ -411,7 +411,7 @@ dxf_layer_free
         if (dxf_layer->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfLayer was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfLayer was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
