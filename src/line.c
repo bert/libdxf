@@ -64,7 +64,7 @@ dxf_line_new ()
         if ((dxf_line = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfLine struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfLine struct.\n")),
                   __FUNCTION__);
                 dxf_line = NULL;
         }
@@ -105,14 +105,14 @@ dxf_line_init
         if (dxf_line == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_line = dxf_line_new ();
         }
         if (dxf_line == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfLine struct.\n")),
+                (_("Error in %s () could not allocate memory for a DxfLine struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -554,7 +554,7 @@ dxf_line_free
         if (dxf_line->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfLine was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfLine was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
