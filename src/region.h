@@ -41,53 +41,77 @@
 
 /*!
  * \brief DXF definition of an AutoCAD region entity (\c REGION).
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_region
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< group code = 5\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                 * file.\n
+                 * Group code = 5. */
         char *linetype;
-                /*!< group code = 6\n
-                 * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-                /*!< group code = 8\n
-                 * Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
+        double elevation;
+                /*!< Elevation of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default).\n
+                 * Group code = 38. */
         double thickness;
-                /*!< group code = 39\n
-                 * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                /*!< Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
+        double linetype_scale;
+                /*!< Linetype scale (optional).\n
+                 * Group code = 48. */
+        int16_t visibility;
+                /*!< Object visibility (optional):\n
+                 * <ol>
+                 * <li value = "0"> Visible</li>
+                 * <li value = "1"> Invisible</li>
+                 * </ol>
+                 * Group code = 60. */
         int color;
-                /*!< group code = 62\n
-                 * Color of the entity.\n
+                /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity. */
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
         int paperspace;
-                /*!< group code = 67\n
-                 * Entities are to be drawn on either \c PAPERSPACE or
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
-                 * Optional, defaults to \c DXF_MODELSPACE (0). */
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
         /* Specific members for a DXF region. */
         char *proprietary_data[DXF_MAX_PARAM];
-                /*!< group code = 1\n
-                 * Proprietary data (multiple lines < 255 characters
-                 * each).*/
+                /*!< Proprietary data (multiple lines < 255 characters
+                 * each).\n
+                 * Group code = 1. */
         char *additional_proprietary_data[DXF_MAX_PARAM];
-                /*!< group code = 3\n
-                 * Additional lines of proprietary data if previous
+                /*!< Additional lines of proprietary data if previous
                  * group 1 string is greater than 255 characters
-                 * (optional).*/
+                 * (optional).\n
+                 * Group code = 3. */
         int modeler_format_version_number;
-                /*!< group code = 70\n
-                 * Modeler format version number (currently = 1).\n */
+                /*!< Modeler format version number (currently = 1).\n
+                 * Group code = 70. */
         struct DxfRegion *next;
                 /*!< pointer to the next DxfRegion.\n
                  * \c NULL in the last DxfRegion. */
