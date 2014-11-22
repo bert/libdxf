@@ -116,7 +116,7 @@ dxf_point_init
         if (dxf_point == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_point = dxf_point_new ();
         }
@@ -418,7 +418,7 @@ dxf_point_write
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_point->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is reset to default linetype")),
+                  (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
                 dxf_point->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
@@ -549,7 +549,7 @@ dxf_point_free
         if (dxf_point->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfPoint was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfPoint was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
