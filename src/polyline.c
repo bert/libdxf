@@ -102,7 +102,7 @@ dxf_polyline_init
         if (dxf_polyline == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_polyline = dxf_polyline_new ();
         }
@@ -639,7 +639,7 @@ dxf_polyline_free
         if (dxf_polyline->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfPolyline was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfPolyline was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
