@@ -55,7 +55,7 @@ dxf_object_new ()
         if ((dxf_object = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfObject struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfObject struct.\n")),
                   __FUNCTION__);
                 dxf_object = NULL;
         }
@@ -93,14 +93,14 @@ dxf_object_init
         if (dxf_object == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_object = dxf_object_new ();
         }
         if (dxf_object == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfObject struct.\n")),
+                (_("Error in %s () could not allocate memory for a DxfObject struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -162,7 +162,7 @@ dxf_object_free
         if (dxf_object->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfObject was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfObject was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
