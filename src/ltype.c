@@ -61,7 +61,7 @@ dxf_ltype_new ()
         if ((dxf_ltype = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfArc struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfArc struct.\n")),
                   __FUNCTION__);
                 dxf_ltype = NULL;
         }
@@ -105,14 +105,14 @@ dxf_ltype_init
         if (dxf_ltype == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_ltype = dxf_ltype_new ();
         }
         if (dxf_ltype == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfLType struct.\n")),
+                (_("Error in %s () could not allocate memory for a DxfLType struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -180,7 +180,7 @@ dxf_ltype_read
         if (dxf_ltype == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_ltype = dxf_ltype_new ();
                 dxf_ltype_init (dxf_ltype);
@@ -407,7 +407,7 @@ dxf_ltype_write
                   (_("Warning in %s (): empty linetype name string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_ltype->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is discarded from output.\n")),
+                  (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
                 return (EXIT_FAILURE);
         }
@@ -573,7 +573,7 @@ dxf_ltype_free
         if (dxf_ltype->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfLType was not NULL.\n")),
+                (_("Error in %s () pointer to next DxfLType was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
