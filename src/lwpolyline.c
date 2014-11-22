@@ -57,7 +57,7 @@ dxf_lwpolyline_new ()
         if ((dxf_lwpolyline = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfLWPolyline struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfLWPolyline struct.\n")),
                   __FUNCTION__);
                 dxf_lwpolyline = NULL;
         }
@@ -92,14 +92,14 @@ dxf_lwpolyline_init
         if (dxf_lwpolyline == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_lwpolyline = dxf_lwpolyline_new ();
         }
         if (dxf_lwpolyline == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfLWPolyline struct.\n")),
+                (_("Error in %s () could not allocate memory for a DxfLWPolyline struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -419,7 +419,7 @@ dxf_lwpolyline_write
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_lwpolyline->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is reset to default linetype")),
+                  (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
                 dxf_lwpolyline->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
@@ -429,7 +429,7 @@ dxf_lwpolyline_write
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_lwpolyline->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is relocated to layer 0\n")),
+                  (_("\t%s entity is relocated to layer 0\n")),
                   dxf_entity_name);
                 dxf_lwpolyline->layer = strdup (DXF_DEFAULT_LAYER);
         }
@@ -553,7 +553,7 @@ dxf_lwpolyline_free
         if (dxf_lwpolyline->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfLWPolyline was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfLWPolyline was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
