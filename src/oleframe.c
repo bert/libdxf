@@ -99,7 +99,7 @@ dxf_oleframe_init
         if (dxf_oleframe == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_oleframe = dxf_oleframe_new ();
         }
@@ -388,7 +388,7 @@ dxf_oleframe_write
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_oleframe->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is reset to default linetype")),
+                  (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
                 dxf_oleframe->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
@@ -398,7 +398,7 @@ dxf_oleframe_write
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_oleframe->id_code);
                 fprintf (stderr,
-                  (_("    %s entity is relocated to layer 0")),
+                  (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
                 dxf_oleframe->layer = strdup (DXF_DEFAULT_LAYER);
         }
