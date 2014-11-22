@@ -107,7 +107,7 @@ dxf_ray_init
         if (dxf_ray == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_ray = dxf_ray_new ();
         }
