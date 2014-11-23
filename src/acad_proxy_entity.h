@@ -45,7 +45,8 @@
 
 
 /*!
- * \brief DXF definition of an AutoCAD acad_proxy_entity entity.
+ * \brief DXF definition of an AutoCAD acad_proxy_entity entity
+ * (\c ACAD_PROXY_ENTITY).
  *
  * \version According to DXF R13.
  * \version According to DXF R14.
@@ -56,75 +57,80 @@ dxf_acad_proxy_entity
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< group code = 5\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                 * file.\n
+                 * Group code = 5. */
         char *linetype;
-                /*!< group code = 6\n
-                 * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if omitted in the DXF file. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-                /*!< group code = 8\n
-                 * Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
         double linetype_scale;
-                /*!< group code = 48\n
-                 * Linetype scale (optional). */
+                /*!< Linetype scale (optional).\n
+                 * Group code = 48. */
         int object_visability;
-                /*!< group code = 60\n
-                 * Object visibility (optional):\n
-                 * 0 = visible, 1 = invisible. */
+                /*!< Object visibility (optional):\n
+                 * <ol>
+                 * <li value = "0"> Visible</li>
+                 * <li value = "1"> Invisible</li>
+                 * </ol>
+                 * Group code = 60. */
         int color;
-                /*!< group code = 62\n
-                 * Color of the entity.\n
-                 * Defaults to \c BYLAYER if omitted in the DXF file.\n
+                /*!< Color of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity. */
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
         int paperspace;
-                /*!< group code = 67\n
-                 * Entities are to be drawn on either \c PAPERSPACE or
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
-                 * Optional, defaults to \c DXF_MODELSPACE (0). */
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
         /* Specific members for a DXF acad_proxy_entity. */
         int original_custom_object_data_format;
-                /*!< group code = 70\n
-                 * Original custom object data format:\n
-                 * 0 = DWG format\n
-                 * 1 = DXF format.
-                 * Added in AutoCAD release 2000. */
+                /*!< Original custom object data format:\n
+                 * <ol>
+                 * <li value = "0"> DWG format</li>
+                 * <li value = "1"> DXF format</li>
+                 * </ol>
+                 * Added in AutoCAD release 2000.\n
+                 * Group code = 70. */
         int proxy_entity_class_id;
-                /*!< group code = 90\n
-                 * Always 498. */
+                /*!< Always 498.\n
+                 * Group code = 90. */
         int application_entity_class_id;
-                /*!< group code = 91\n
-                 * Class IDs are based on the order of the class in the
+                /*!< Class IDs are based on the order of the class in the
                  * CLASSES section.\n
                  * The first class is given the ID of 500, the next is
-                 * 501, and so on. */
+                 * 501, and so on.\n
+                 * Group code = 91. */
         int graphics_data_size;
-                /*!< group code = 92\n
-                 * Size of graphics data in bytes. */
+                /*!< Size of graphics data in bytes.\n
+                 * Group code = 92. */
         int entity_data_size;
-                /*!< group code = 93\n
-                 * Size of entity data in bits. */
+                /*!< Size of entity data in bits.\n
+                 * Group code = 93. */
         ulong object_drawing_format;
-                /*!< group code = 95\n
-                 * Object drawing format when it becomes a proxy
+                /*!< Object drawing format when it becomes a proxy
                  * (a 32-bit unsigned integer):\n
                  * Low word is AcDbDwgVersion.\n
                  * High word is MaintenanceReleaseVersion.
-                 * Added in AutoCAD release 2000. */
+                 * Added in AutoCAD release 2000.\n
+                 * Group code = 95. */
         char *binary_graphics_data[DXF_MAX_PARAM];
-                /*!< group code = 310\n
-                 * Binary graphics data (multiple entries can appear)
-                 * (optional). */
+                /*!< Binary graphics data (multiple entries can appear)
+                 * (optional).\n
+                 * Group code = 310. */
         char *object_id[DXF_MAX_PARAM];
-                /*!< group code = 330 or 340 or 350 or 360\n
-                 * An object ID (multiple entries can appear). */
+                /*!< An object ID (multiple entries can appear).\n
+                 * Group code = 330 or 340 or 350 or 360. */
         struct DxfAcadProxyEntity *next;
-                /*!< pointer to the next DxfLayer.\n
+                /*!< Pointer to the next DxfLayer.\n
                  * \c NULL in the last DxfLayer. */
 } DxfAcadProxyEntity;
 
