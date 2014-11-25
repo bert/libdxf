@@ -40,112 +40,120 @@
 
 
 /*!
- * \brief Definition of an AutoCAD attribute definition entity
+ * \brief DXF definition of an AutoCAD attribute definition entity
  * (\c ATTDEF).
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_attdef
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< group code = 5\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                 * file.\n
+                 * Group code = 5. */
         char *linetype;
-                /*!< group code = 6\n
-                 * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if omitted in the DXF file. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-                /*!< group code = 8\n
-                 * Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
         double elevation;
-                /*!< group code = 38\n
-                 * Elevation of the attdef in the local Z-direction.\n
+                /*!< Elevation of the arc in the local Z-direction.\n
                  * Defaults to 0.0 if omitted in the DXF file, or prior
-                 * to DXF version R12, or DXF_FLATLAND equals 0 (default). */
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default).\n
+                 * Group code = 38. */
         double thickness;
-                /*!< group code = 39\n
-                 * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if omitted in the DXF file. */
+                /*!< Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
         double linetype_scale;
-                /*!< group code = 48\n
-                 * Linetype scale (optional). */
+                /*!< Linetype scale (optional).\n
+                 * Group code = 48. */
         int16_t visibility;
-                /*!< group code = 60\n
-                 * Object visibility (optional): 0 = Visible; 1 = Invisible. */
+                /*!< Object visibility (optional):\n
+                 * <ol>
+                 * <li value = "0"> Visible</li>
+                 * <li value = "1"> Invisible</li>
+                 * </ol>
+                 * Group code = 60. */
         int color;
-                /*!< group code = 62\n
-                 * Color of the entity.\n
-                 * Defaults to \c BYLAYER if omitted in the DXF file.\n
+                /*!< Color of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity. */
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
         int paperspace;
-                /*!< group code = 67\n
-                 * Entities are to be drawn on either \c PAPERSPACE or
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
-                 * Optional, defaults to \c DXF_MODELSPACE (0). */
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
         char *dictionary_owner_soft;
-                /*!< group code = 330\n
-                 * Soft-pointer ID/handle to owner dictionary (optional). */
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
         char *dictionary_owner_hard;
-                /*!< group code = 360\n
-                 * Hard owner ID/handle to owner dictionary (optional). */
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
         /* Specific members for a DXF attdef. */
         char *default_value;
-                /*!< group code = 1\n
-                 * Default value for the attribute. */
+                /*!< Default value for the attribute.\n
+                 * Group code = 1. */
         char *tag_value;
-                /*!< group code = 2\n
-                 * Tagname for the attribute. */
+                /*!< Tagname for the attribute.\n
+                 * Group code = 2. */
         char *prompt_value;
-                /*!< group code = 3\n
-                 * Prompt text for the value to be stored in the attribute. */
-        char *text_style;
-                /*!< group code = 7\n
-                 * The style used for the presentation of the value of the
+                /*!< Prompt text for the value to be stored in the
                  * attribute.\n
-                 * Defaults to \c STANDARD if  omitted in the DXF file. */
+                 * Group code = 3. */
+        char *text_style;
+                /*!< The style used for the presentation of the value of
+                 * the attribute.\n
+                 * Defaults to \c STANDARD if  omitted in the DXF file.\n
+                 * Group code = 7. */
         double x0;
-                /*!< group code = 10\n
-                 * X-value of the starting point coordinate. */
+                /*!< X-value of the starting point coordinate.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * Y-value of the starting point coordinate. */
+                /*!< Y-value of the starting point coordinate.\n
+                 * Group code = 20. */
         double z0;
-                /*!< group code = 30\n
-                 * Z-value of the starting point coordinate. */
+                /*!< Z-value of the starting point coordinate.\n
+                 * Group code = 30. */
         double x1;
-                /*!< group code = 11\n
-                 * X-value of the alignment point coordinate. */
+                /*!< X-value of the alignment point coordinate.\n
+                 * Group code = 11. */
         double y1;
-                /*!< group code = 21\n
-                 * Y-value of the alignment point coordinate. */
+                /*!< Y-value of the alignment point coordinate.\n
+                 * Group code = 21. */
         double z1;
                 /*!< Z-value of the alignment point coordinate.\n
                  * Group code = 31. */
         double height;
-                /*!< group code = 40\n
-                 * Character height of the attribute value. */
+                /*!< Character height of the attribute value.\n
+                 * Group code = 40. */
         double rel_x_scale;
-                /*!< group code = 41\n
-                 * Relative scale in the X-direction.\n
-                 * Defaults to 1.0 if omitted from DXF file. */
+                /*!< Relative scale in the X-direction.\n
+                 * Defaults to 1.0 if omitted from DXF file.\n
+                 * Group code = 41. */
         double rot_angle;
-                /*!< group code = 50\n
-                 * Rotation angle of the attribute value.\n
-                 * Defaults to 0.0 if omitted from DXF file. */
+                /*!< Rotation angle of the attribute value.\n
+                 * Defaults to 0.0 if omitted from DXF file.\n
+                 * Group code = 50. */
         double obl_angle;
-                /*!< group code = 51\n
-                 * Oblique angle of the attribute value.\n
-                 * Defaults to 0.0 if omitted from DXF file. */
+                /*!< Oblique angle of the attribute value.\n
+                 * Defaults to 0.0 if omitted from DXF file.\n
+                 * Group code = 51. */
         int attr_flags;
-                /*!< group code = 70\n
-                 * Attribute flags.\n
+                /*!< Attribute flags.\n
                  * Bit coded:\n
                  * <ol>
                  * <li value = "1"> attribute is invisible (does not display).</li>
@@ -153,59 +161,62 @@ dxf_attdef
                  * <li value = "4"> verification is required on input of this attribute.</li>
                  * <li value = "8"> attribute is preset (no prompt during insertion).</li>
                  * </ol>
+                 * Group code = 70.
                  */
         int text_flags;
-                /*!< group code = 71\n
-                 * Text flags.\n
+                /*!< Text flags.\n
                  * Bit coded:\n
                  * <ol>
                  * <li value = "2"> text is backward (mirrored in X).</li>
                  * <li value = "4"> text is upside down (mirrored in Y).</li>
                  * </ol>
-                 * Defaults to 0 if ommited from DXF file. */
+                 * Defaults to 0 if ommited from DXF file.\n
+                 * Group code = 71. */
         int hor_align;
-                /*!< group code = 72\n
-                 * Horizontal alignment.\n
-                 * Coded as follows:\n
+                /*!< Horizontal text justification type (optional,
+                 * default = 0).\n
+                 * See \c TEXT.\n
+                 * Not bit coded:
                  * <ol>
-                 * <li value = "0"> left.</li>
-                 * <li value = "1"> center.</li>
-                 * <li value = "2"> right.</li>
-                 * <li value = "3"> aligned, only when vert_align = 0.</li>
-                 * <li value = "4"> middle, only when vert_align = 0.</li>
-                 * <li value = "5"> fit, only when vert_align = 0.</li>
+                 * <li value = "0"> Left.</li>
+                 * <li value = "1"> Center.</li>
+                 * <li value = "2"> Right.</li>
+                 * <li value = "3"> Aligned, only when vert_align = 0.</li>
+                 * <li value = "4"> Middle, only when vert_align = 0.</li>
+                 * <li value = "5"> Fit, only when vert_align = 0.</li>
                  * </ol>
-                 * Defaults to 0 if omitted from DXF file. */
+                 * Group code = 72. */
         int field_length;
-                /*!< group code = 73\n
-                 * Field length.\n
-                 * Defaults to 0 if omitted from DXF file. */
+                /*!< Field length (optional; default = 0) (not currently
+                 * used in DXF R14).\n
+                 * Group code = 73. */
         int vert_align;
-                /*!< group code = 74\n
-                 * added on DXF R12 and later\n
-                 * Vertical alignment.\n
-                 * Coded as follows:\n
+                /*!< Vertical text justification type (optional,
+                 * default = 0).\n
+                 * See group code 73 in \c TEXT.\n
+                 * Not bit coded:\n
                  * <ol>
-                 * <li value = "0"> baseline.</li>
-                 * <li value = "1"> bottom.</li>
-                 * <li value = "2"> middle.</li>
-                 * <li value = "3"> top.</li>
+                 * <li value = "0"> Baseline.</li>
+                 * <li value = "1"> Bottom.</li>
+                 * <li value = "2"> Middle.</li>
+                 * <li value = "3"> Top.</li>
                  * </ol>
-                 * Defaults to 0 if omitted from DXF file. */
+                 * Group code = 74.\n
+                 * \version Added in DXF R12. */
         double extr_x0;
-                /*!< group code = 210\n
-                 * X-value of the extrusion vector.\n
-                 * Defaults to 0.0 if omitted in the DXF file. */
+                /*!< X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if omitted in the DXF file.\n
+                 * Group code = 210. */
         double extr_y0;
-                /*!< group code = 220\n
-                 * Y-value of the extrusion vector.\n
-                 * Defaults to 0.0 if omitted in the DXF file. */
+                /*!< Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if omitted in the DXF file.\n
+                 * Group code = 220. */
         double extr_z0;
-                /*!< group code = 230\n
-                 * Z-value of the extrusion vector.\n
-                 * Defaults to 1.0 if omitted in the DXF file. */
+                /*!< Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if omitted in the DXF file.\n
+                 * Group code = 230. */
         struct DxfAttdef *next;
-                /*!< pointer to the next DxfAttdef.\n
+                /*!< Pointer to the next DxfAttdef.\n
                  * \c NULL in the last DxfAttdef. */
 } DxfAttdef;
 
