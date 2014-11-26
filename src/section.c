@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief DXF section entity (\c SECTION).
+ * \brief Functions for a DXF section entity (\c SECTION).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
