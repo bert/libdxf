@@ -53,6 +53,14 @@ dxf_section_read
         DxfBlock dxf_block;
         char *dxf_entities_list = NULL;
 
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         dxf_read_line (temp_string, fp);
         if (strcmp (temp_string, "2") == 0)
         {
@@ -132,6 +140,21 @@ dxf_section_write
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (section_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         fprintf (fp->fp, "  0\nSECTION\n  2\n%s\n", section_name);
 #if DEBUG
         DXF_DEBUG_END
@@ -152,6 +175,14 @@ dxf_section_write_endsection
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         fprintf (fp->fp, "  0\nENDSEC\n");
 #if DEBUG
         DXF_DEBUG_END
