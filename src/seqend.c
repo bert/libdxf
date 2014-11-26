@@ -59,8 +59,7 @@ dxf_seqend_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_seqend_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         fprintf (fp->fp, "  0\nSEQEND\n");
         if (dxf_seqend->id_code != -1)
@@ -77,8 +76,7 @@ dxf_seqend_write
                 fprintf (fp->fp, " 62\n%d\n", dxf_seqend->color);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_seqend_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
