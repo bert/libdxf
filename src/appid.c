@@ -48,8 +48,8 @@
  *
  * Fill the memory contents with zeros.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
  * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
@@ -91,8 +91,8 @@ dxf_appid_new ()
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
  * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
@@ -146,8 +146,8 @@ dxf_appid_init
  *
  * \return a pointer to \c dxf_appid.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
  * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
@@ -246,8 +246,6 @@ dxf_appid_read
 /*!
  * \brief Write DXF output to a file for a DXF \c APPID entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
  * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
@@ -267,6 +265,13 @@ dxf_appid_write
         char *dxf_entity_name = strdup ("APPID");
 
         /* Do some basic checks. */
+        if (fp->acad_version_number < AutoCAD_12)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_appid == NULL)
         {
                 fprintf (stderr,
@@ -336,8 +341,8 @@ dxf_appid_write
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
  * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
@@ -377,6 +382,12 @@ dxf_appid_free
  *
  * \return \c TRUE when not to be written,
  * or \c FALSE when to be written.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_appid_is_no_save_xdata
@@ -411,6 +422,12 @@ dxf_appid_is_no_save_xdata
  *
  * \return \c TRUE when appid is externally dependent on an xref,
  * or \c FALSE when appid is not externally dependent on an xref.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_appid_is_xreferenced
@@ -448,6 +465,12 @@ dxf_appid_is_xreferenced
  * been successfully resolved,
  * or \c FALSE when appid is not externally dependent on a xref and has
  * not been successfully resolved.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_appid_is_xresolved
@@ -483,6 +506,12 @@ dxf_appid_is_xresolved
  *
  * \return \c TRUE when appid is internally referenced by an entity,
  * or \c FALSE when appid is not internally referenced by an entity.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_appid_is_referenced
