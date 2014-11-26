@@ -96,7 +96,7 @@ dxf_appid
                  * (optional).\n
                  * Group code = 360. */
         struct DxfAppid *next;
-                /*!< pointer to the next DxfAppid.\n
+                /*!< Pointer to the next DxfAppid.\n
                  * \c NULL in the last DxfAppid. */
 } DxfAppid;
 
