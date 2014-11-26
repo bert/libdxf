@@ -40,7 +40,7 @@
 
 
 /*!
- * \brief Definition of an AutoCAD arc entity (\c ARC).
+ * \brief DXF definition of an AutoCAD arc entity (\c ARC).
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
