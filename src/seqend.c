@@ -1,9 +1,9 @@
 /*!
  * \file seqend.c
  *
- * \author Copyright (C) 2008 ... 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief DXF end of sequence marker (\c SEQEND).
+ * \brief Functions for a DXF end of sequence marker (\c SEQEND).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
