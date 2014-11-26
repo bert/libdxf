@@ -108,8 +108,9 @@ dxf_section_read
         }
         else
         {
-                fprintf (stderr, "Warning: unexpected string encountered while reading line %d from: %s.\n",
-                        fp->line_number, fp->filename);
+                fprintf (stderr,
+                  (_("Warning in %s () unexpected string encountered while reading line %d from: %s.\n")),
+                  __FUNCTION__, fp->line_number, fp->filename);
         }
 #if DEBUG
         DXF_DEBUG_END
