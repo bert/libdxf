@@ -1,7 +1,7 @@
 /*!
  * \file section.c
  *
- * \author Copyright (C) 2008 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief DXF section entity (\c SECTION).
  *
@@ -45,13 +45,14 @@ dxf_section_read
                 /*!< DXF file handle of input file (or device). */
 )
 {
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
         char temp_string[DXF_MAX_STRING_LENGTH];
         DxfHeader dxf_header;
         DxfBlock dxf_block;
         char *dxf_entities_list = NULL;
-#if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_section_read () function.\n", __FILE__, __LINE__);
-#endif
+
         dxf_read_line (temp_string, fp);
         if (strcmp (temp_string, "2") == 0)
         {
@@ -111,7 +112,7 @@ dxf_section_read
                         fp->line_number, fp->filename);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_section_read () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return EXIT_SUCCESS;
 }
@@ -128,11 +129,11 @@ dxf_section_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_section_write () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         fprintf (fp, "  0\nSECTION\n  2\n%s\n", section_name);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_section_write () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -148,11 +149,11 @@ dxf_section_write_endsection
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_endsection () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         fprintf (fp, "  0\nENDSEC\n");
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_endsection () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
