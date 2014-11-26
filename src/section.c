@@ -125,14 +125,14 @@ dxf_section_read
 int
 dxf_section_write
 (
-        FILE *fp,
+        DxfFile *fp,
         char *section_name
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        fprintf (fp, "  0\nSECTION\n  2\n%s\n", section_name);
+        fprintf (fp->fp, "  0\nSECTION\n  2\n%s\n", section_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -146,13 +146,13 @@ dxf_section_write
 int
 dxf_section_write_endsection
 (
-        FILE *fp
+        DxfFile *fp
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        fprintf (fp, "  0\nENDSEC\n");
+        fprintf (fp->fp, "  0\nENDSEC\n");
 #if DEBUG
         DXF_DEBUG_END
 #endif

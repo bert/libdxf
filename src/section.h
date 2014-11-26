@@ -44,8 +44,8 @@
 
 
 int dxf_section_read (DxfFile *fp);
-int dxf_section_write (FILE *fp, char *section_name);
-int dxf_section_write_endsection (FILE *fp);
+int dxf_section_write (DxfFile *fp, char *section_name);
+int dxf_section_write_endsection (DxfFile *fp);
 
 
 #endif /* LIBDXF_SRC_SECTION_H */
