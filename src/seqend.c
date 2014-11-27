@@ -36,6 +36,44 @@
 
 
 /*!
+ * \brief Allocate memory for a DXF \c SEQEND.
+ *
+ * Fill the memory contents with zeros.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfSeqend *
+dxf_seqend_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfSeqend *dxf_seqend = NULL;
+        size_t size;
+
+        size = sizeof (DxfSeqend);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_seqend = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfSeqend struct.\n")),
+                  __FUNCTION__);
+                dxf_seqend = NULL;
+        }
+        else
+        {
+                memset (dxf_seqend, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_seqend);
+}
+
+
+/*!
  * \brief Write DXF output to a file for an end of sequence marker
  * (\c SEQEND).
  *

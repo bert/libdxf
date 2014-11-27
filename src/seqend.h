@@ -78,6 +78,8 @@ dxf_seqend
 } DxfSeqend;
 
 
+DxfSeqend *
+dxf_seqend_new ();
 int
 dxf_seqend_write
 (
