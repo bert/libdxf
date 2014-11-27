@@ -56,25 +56,25 @@ dxf_seqend
                  * This code is not saved in a DXF file.\n
                  * Group code = 2. */
         int id_code;
-                /*!< group code = 5\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                 * file.\n
+                 * Group code = 5. */
         char *linetype;
-                /*!< group code = 6\n
-                 * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-                /*!< group code = 8\n
-                 * Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
         int color;
-                /*!< group code = 62\n
-                 * Color of the entity.\n
+                /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity. */
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
 } DxfSeqend;
 
 
