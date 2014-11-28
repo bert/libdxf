@@ -91,6 +91,11 @@ dxf_seqend_write
         DxfFile *fp,
         DxfSeqend *dxf_seqend
 );
+int
+dxf_seqend_free
+(
+        DxfSeqend *dxf_seqend
+);
 
 
 #endif /* LIBDXF_SRC_SEQEND_H */

@@ -202,4 +202,33 @@ dxf_seqend_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c SEQEND and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_seqend_free
+(
+        DxfSeqend *dxf_seqend
+                /*!< Pointer to the memory occupied by the DXF \c SEQEND
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        free (dxf_seqend->linetype);
+        free (dxf_seqend->layer);
+        free (dxf_seqend);
+        dxf_seqend = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
