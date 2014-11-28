@@ -74,6 +74,50 @@ dxf_seqend_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c SEQEND
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfSeqend *
+dxf_seqend_init
+(
+        DxfSeqend *dxf_seqend
+                /*!< DXF seqend entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dxf_seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_seqend = dxf_seqend_new ();
+        }
+        if (dxf_seqend == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory for a DxfSeqend struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        dxf_seqend->app_name = strdup ("");
+        dxf_seqend->id_code = 0;
+        dxf_seqend->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_seqend->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_seqend->color = DXF_COLOR_BYLAYER;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_seqend);
+}
+
+
+/*!
  * \brief Write DXF output to a file for an end of sequence marker
  * (\c SEQEND).
  *

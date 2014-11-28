@@ -80,6 +80,11 @@ dxf_seqend
 
 DxfSeqend *
 dxf_seqend_new ();
+DxfSeqend *
+dxf_seqend_init
+(
+        DxfSeqend *dxf_seqend
+);
 int
 dxf_seqend_write
 (
