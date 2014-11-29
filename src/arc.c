@@ -183,7 +183,7 @@ dxf_arc_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_arc = dxf_arc_new ();
-                dxf_arc_init (dxf_arc);
+                dxf_arc = dxf_arc_init (dxf_arc);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
