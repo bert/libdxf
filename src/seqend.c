@@ -42,6 +42,12 @@
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfSeqend *
 dxf_seqend_new ()
@@ -79,6 +85,12 @@ dxf_seqend_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfSeqend *
 dxf_seqend_init
@@ -109,7 +121,14 @@ dxf_seqend_init
         dxf_seqend->id_code = 0;
         dxf_seqend->linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_seqend->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_seqend->elevation = 0.0;
+        dxf_seqend->thickness = 0.0;
+        dxf_seqend->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_seqend->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_seqend->color = DXF_COLOR_BYLAYER;
+        dxf_seqend->paperspace = DXF_MODELSPACE;
+        dxf_seqend->dictionary_owner_soft = strdup ("");
+        dxf_seqend->dictionary_owner_hard = strdup ("");
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -130,6 +149,12 @@ dxf_seqend_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_seqend_write
@@ -186,7 +211,46 @@ dxf_seqend_write
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_seqend->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_seqend->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_seqend->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_seqend->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_seqend->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+
+        if (dxf_seqend->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
         fprintf (fp->fp, "  8\n%s\n", dxf_seqend->layer);
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_seqend->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_seqend->elevation);
+        }
         if (strcmp (dxf_seqend->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_seqend->linetype);
@@ -194,6 +258,14 @@ dxf_seqend_write
         if (dxf_seqend->color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp->fp, " 62\n%d\n", dxf_seqend->color);
+        }
+        if (dxf_seqend->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_seqend->linetype_scale);
+        }
+        if (dxf_seqend->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_seqend->visibility);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -208,6 +280,12 @@ dxf_seqend_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_seqend_free
@@ -222,6 +300,8 @@ dxf_seqend_free
 #endif
         free (dxf_seqend->linetype);
         free (dxf_seqend->layer);
+        free (dxf_seqend->dictionary_owner_soft);
+        free (dxf_seqend->dictionary_owner_hard);
         free (dxf_seqend);
         dxf_seqend = NULL;
 #if DEBUG
