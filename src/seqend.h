@@ -121,6 +121,12 @@ dxf_seqend_init
 (
         DxfSeqend *dxf_seqend
 );
+DxfSeqend *
+dxf_seqend_read
+(
+        DxfFile *fp,
+        DxfSeqend *dxf_seqend
+);
 int
 dxf_seqend_write
 (

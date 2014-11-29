@@ -137,6 +137,180 @@ dxf_seqend_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF \c SEQEND entity.
+ *
+ * The last line read from file contained the string "SEQEND". \n
+ * Now follows some data for the \c SEQEND, to be terminated with a "  0"
+ * string announcing the following entity, or the end of the \c ENTITY
+ * section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c dxf_seqend. \n
+ *
+ * \return a pointer to \c dxf_seqend.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfSeqend *
+dxf_seqend_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfSeqend *dxf_seqend
+                /*!< DXF \c SEQEND entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+
+        /* Do some basic checks. */
+        if (dxf_seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_seqend = dxf_seqend_new ();
+                dxf_seqend_init (dxf_seqend);
+        }
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        return (NULL);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_seqend->id_code);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_seqend->linetype);
+                }
+                else if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing a layer name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_seqend->layer);
+                }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0)
+                        && (dxf_seqend->elevation != 0.0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_seqend->elevation);
+                }
+                else if (strcmp (temp_string, "39") == 0)
+                {
+                        /* Now follows a string containing the
+                         * thickness. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_seqend->thickness);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_seqend->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_seqend->visibility);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_seqend->color);
+                }
+                else if (strcmp (temp_string, "67") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_seqend->paperspace);
+                }
+                else if ((fp->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if (strcmp (temp_string, "AcDbEntity") != 0)
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_seqend->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_seqend->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                }
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_seqend->linetype, "") == 0)
+        {
+                dxf_seqend->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_seqend->layer, "") == 0)
+        {
+                dxf_seqend->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_seqend);
+}
+
+
+/*!
  * \brief Write DXF output to a file for an end of sequence marker
  * (\c SEQEND).
  *
