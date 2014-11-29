@@ -174,7 +174,7 @@ dxf_seqend_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_seqend = dxf_seqend_new ();
-                dxf_seqend_init (dxf_seqend);
+                dxf_seqend = dxf_seqend_init (dxf_seqend);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
