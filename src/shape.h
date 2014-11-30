@@ -132,25 +132,6 @@ dxf_shape_read
         DxfShape *dxf_shape
 );
 int
-dxf_shape_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *shape_name,
-        char *linetype,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double thickness,
-        double size,
-        double rel_x_scale,
-        double rot_angle,
-        double obl_angle,
-        int color,
-        int paperspace
-);
-int
 dxf_shape_write
 (
         DxfFile *fp,
