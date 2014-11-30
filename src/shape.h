@@ -128,9 +128,7 @@ dxf_shape_init
 int
 dxf_shape_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfShape *dxf_shape
 );
 int
@@ -155,7 +153,7 @@ dxf_shape_write_lowlevel
 int
 dxf_shape_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfShape *dxf_shape
 );
 

@@ -134,12 +134,8 @@ dxf_shape_init
 int
 dxf_shape_read
 (
-        char *filename,
-                /*!< filename of input file (or device). */
-        FILE *fp,
-                /*!< filepointer to the input file (or device). */
-        int *line_number,
-                /*!< current line number in the input file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
         DxfShape *dxf_shape
                 /*!< DXF shape entity. */
 )
@@ -153,67 +149,67 @@ dxf_shape_read
         {
                 dxf_shape = dxf_shape_new ();
         }
-        (*line_number)++;
-        fscanf (fp, "%[^\n]", temp_string);
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
-                if (ferror (fp))
+                if (ferror (fp->fp))
                 {
                         fprintf (stderr,
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
-                          __FUNCTION__, filename, *line_number);
-                        fclose (fp);
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
                 if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a shape
                          * name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_shape->shape_name);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_shape->shape_name);
                 }
                 else if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_shape->id_code);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_shape->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_shape->linetype);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_shape->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_shape->layer);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_shape->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the insertion point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_shape->x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the insertion point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_shape->y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the insertion point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_shape->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->z0);
                 }
-                else if ((dxf_shape->acad_version_number <= AutoCAD_11)
+                else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_shape->z0 = 0.0))
                 {
@@ -222,59 +218,59 @@ dxf_shape_read
                          * probably be added.
                          * Now follows a string containing the
                          * elevation. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_shape->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_shape->thickness);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
                          * size. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_shape->size);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->size);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a string containing the
                          * relative X scale. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_shape->rel_x_scale);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->rel_x_scale);
                 }
                 else if (strcmp (temp_string, "50") == 0)
                 {
                         /* Now follows a string containing the
                          * rotation angle. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_shape->rot_angle);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->rot_angle);
                 }
                 else if (strcmp (temp_string, "51") == 0)
                 {
                         /* Now follows a string containing the
                          * oblique angle. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_shape->obl_angle);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->obl_angle);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_shape->color);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_shape->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_shape->paperspace);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_shape->paperspace);
                 }
-                else if ((dxf_shape->acad_version_number >= AutoCAD_12)
+                else if ((fp->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Subclass markers are post AutoCAD R12
@@ -282,42 +278,42 @@ dxf_shape_read
                          * version should probably be added here.
                          * Now follows a string containing the
                          * subclass marker value. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_shape->extr_x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_shape->extr_y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_shape->extr_z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->extr_z0);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
                 {
                         fprintf (stderr,
                           (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
-                          __FUNCTION__, filename, *line_number);
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -461,8 +457,8 @@ dxf_shape_write_lowlevel
 int
 dxf_shape_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfShape *dxf_shape
                 /*!< DXF shape entity. */
 )
@@ -508,44 +504,44 @@ dxf_shape_write
                   (_("Warning: in %s () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_shape->id_code);
         }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp, "  2\n%s\n", dxf_shape->shape_name);
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        fprintf (fp->fp, "  2\n%s\n", dxf_shape->shape_name);
         if (dxf_shape->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_shape->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_shape->id_code);
         }
         if (strcmp (dxf_shape->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_shape->linetype);
+                fprintf (fp->fp, "  6\n%s\n", dxf_shape->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_shape->layer);
-        fprintf (fp, " 10\n%f\n", dxf_shape->x0);
-        fprintf (fp, " 20\n%f\n", dxf_shape->y0);
-        fprintf (fp, " 30\n%f\n", dxf_shape->z0);
+        fprintf (fp->fp, "  8\n%s\n", dxf_shape->layer);
+        fprintf (fp->fp, " 10\n%f\n", dxf_shape->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_shape->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_shape->z0);
         if (dxf_shape->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_shape->thickness);
+                fprintf (fp->fp, " 39\n%f\n", dxf_shape->thickness);
         }
-        fprintf (fp, " 40\n%f\n", dxf_shape->size);
+        fprintf (fp->fp, " 40\n%f\n", dxf_shape->size);
         if (dxf_shape->rel_x_scale != 1.0)
         {
-                fprintf (fp, " 41\n%f\n", dxf_shape->rel_x_scale);
+                fprintf (fp->fp, " 41\n%f\n", dxf_shape->rel_x_scale);
         }
         if (dxf_shape->rot_angle != 0.0)
         {
-                fprintf (fp, " 50\n%f\n", dxf_shape->rot_angle);
+                fprintf (fp->fp, " 50\n%f\n", dxf_shape->rot_angle);
         }
         if (dxf_shape->obl_angle != 0.0)
         {
-                fprintf (fp, " 51\n%f\n", dxf_shape->obl_angle);
+                fprintf (fp->fp, " 51\n%f\n", dxf_shape->obl_angle);
         }
         if (dxf_shape->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_shape->color);
+                fprintf (fp->fp, " 62\n%d\n", dxf_shape->color);
         }
         if (dxf_shape->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
         DXF_DEBUG_END
