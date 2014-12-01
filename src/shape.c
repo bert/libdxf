@@ -422,4 +422,40 @@ dxf_shape_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c SHAPE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_shape_free
+(
+        DxfShape *dxf_shape
+                /*!< Pointer to the memory occupied by the DXF \c SHAPE
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dxf_shape->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfShape was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dxf_shape->linetype);
+        free (dxf_shape->layer);
+        free (dxf_shape);
+        dxf_shape = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

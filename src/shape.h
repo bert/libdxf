@@ -137,6 +137,11 @@ dxf_shape_write
         DxfFile *fp,
         DxfShape *dxf_shape
 );
+int
+dxf_shape_free
+(
+        DxfShape *dxf_shape
+);
 
 
 #endif /* LIBDXF_SRC_SHAPE_H */
