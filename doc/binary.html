@@ -12,38 +12,38 @@
 </head>
 <body bgcolor=#ffffff>
 <h1>Introduction.</h1>
-Ther is three different drawing interchange file format:<br>
+There are three different drawing interchange file formats:<br>
 - ASCII DXF<br>
 - Binary DXF<br>
 - Simpler binary DXB<br>
-<h4>Binary DXF File Format</h4>
-The binary file is a compressed version of the ASCII form, but occupies about 25% less.<br>
-Binary is a compact format that can be written and read more quickly by computer software, however for have a minimum file size the better option is to write a normal ascii dxf file and then use an archivier (like zip. 7zip, tar or other), obviously this archiviation make read and write very slower.<br>
+<h4>Binary DXF File Format.</h4>
+The binary file is a compressed version of the ASCII form, but occupies about 25% less size on disk.<br>
+Binary is a compact format that can be written and read more quickly by computer software, however to have a minimum file size the better option is to write a normal ascii dxf file and then use an archiver (like zip. 7zip, tar or other), obviously this compessing/decompressing make read and write very slow.<br>
 Not all software can read or write the binary format of DXF.<br>
 Unlike the ASCII DXF, in the binary format is impossible write a comment (group code 999).<br>
-The first writable binary form is the DXF R10, first of this exist only the ASCII form.<br>
+The first writable binary form is the DXF R10, before this version only the ASCII form existed.<br>
 <br>
-The file start olways with a header of 22 Bytes:<br>
+The file always start with a header of 22 Bytes:<br>
 <code>
 AutoCAD Binary DXF&lt;CR&gt;&lt;LF&gt;&lt;SUB&gt;&lt;NULL&gt;
 </code>
 <br>
-than follow the group code and the value, like the ASCII format, but rappresented in binary form:<br>
-The group code is a 1 byte binary value, since R14 2 byte binary value.<br>
-If the value is an integer is writed in a 2 byte integer (with the least significant byte followed by the most significant byte).<br>
-If the value is an double is writed in a 8 byte IEEE form (with the least significant byte followed by the most significant byte).<br>
-If the value is an string of char is writed like an ASCII string but with a &lt;NULL&gt; byte (0) at the end.<br>
+Than follow the group code and the value, like the ASCII format, but represented in binary form:<br>
+The group code is a 1 byte binary value, since R14 it is a 2 byte binary value.<br>
+If the value is an integer, it is written in a 2 byte integer (with the least significant byte followed by the most significant byte).<br>
+If the value is a double, it is written in a 8 byte IEEE form (with the least significant byte followed by the most significant byte).<br>
+If the value is a string of char, it is written like an ASCII string but with a &lt;NULL&gt; byte (0) at the end.<br>
 <br>
-Unlike the ASCII format for the extended data group codes have a 1 byte (with the value 255) pre group code, then a 2 byte integer with the correct group code, then the value.<br>
-If the extended data value is a long values are a 4 bytes data.<br>
-If the extended data value is a string of characters are a 1 unsigned byte, followed by the number of bytes.<br>
+Unlike the ASCII format, the extended data group codes have a 1 byte (with the value 255) pre group code, then a 2 byte integer with the correct group code, then the value.<br>
+If the extended data value is a long value, there are 4 bytes data.<br>
+If the extended data value is a string of characters, there are a 1 unsigned byte, followed by the number of bytes.<br>
 <br>
 <br>
-<h4>DXB File Format</h4>
+<h4>DXB File Format.</h4>
 A third form of DXF known as DXB (drawing interchange binary) is an even simpler binary format.<br>
-This file have different extension (.dxb) and it's substantial a different format, with different syntax.<br>
+This file has a different file extension (.dxb) and it's substantial different format, with a different syntax.<br>
 <br>
-The file start olways with a header of 19 Bytes:<br>
+The file always start with a header of 19 Bytes:<br>
 <code>
 AutoCAD DXB 1.0&lt;CR&gt;&lt;LF&gt;&lt;^Z&gt;&lt;NULL&gt;
 </code>
