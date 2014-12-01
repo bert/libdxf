@@ -87,7 +87,14 @@ dxf_shape_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_shape = dxf_shape_new ();
+        /* Do some basic checks. */
+        if (dxf_shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_shape = dxf_shape_new ();
+        }
         if (dxf_shape == NULL)
         {
               fprintf (stderr,
@@ -145,9 +152,21 @@ dxf_shape_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_shape)
+        /* Do some basic checks. */
+        if (fp == NULL)
         {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dxf_shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_shape = dxf_shape_new ();
+                dxf_shape = dxf_shape_init (dxf_shape);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -316,6 +335,15 @@ dxf_shape_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_shape->linetype, "") == 0)
+        {
+                dxf_shape->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_shape->layer, "") == 0)
+        {
+                dxf_shape->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -340,19 +368,37 @@ dxf_shape_write
 #endif
         char *dxf_entity_name = strdup ("SHAPE");
 
-        if (&dxf_shape == NULL)
+        /* Do some basic checks. */
+        if (fp == NULL)
         {
-                return (EXIT_FAILURE);
                 fprintf (stderr,
-                  (_("Error in %s () NULL pointer passed to dxf_shape_write ().\n")),
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                return (EXIT_FAILURE);
         }
-                if (strcmp (dxf_shape->shape_name, "") == 0)
+        if (dxf_shape == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_shape->shape_name, "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () empty name string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_shape->id_code);
                 return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_shape->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_shape->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_shape->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         if (strcmp (dxf_shape->layer, "") == 0)
         {
