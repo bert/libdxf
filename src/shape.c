@@ -131,7 +131,7 @@ dxf_shape_init
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred while reading from the input file.
  */
-int
+DxfShape *
 dxf_shape_read
 (
         DxfFile *fp,
@@ -159,7 +159,7 @@ dxf_shape_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "2") == 0)
                 {
@@ -319,7 +319,7 @@ dxf_shape_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_shape);
 }
 
 

@@ -125,7 +125,7 @@ dxf_shape_init
 (
         DxfShape *dxf_shape
 );
-int
+DxfShape *
 dxf_shape_read
 (
         DxfFile *fp,
