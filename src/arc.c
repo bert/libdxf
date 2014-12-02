@@ -39,7 +39,7 @@
  * \brief Allocate memory for a DXF \c ARC.
  *
  * Fill the memory contents with zeros.
- * 
+ *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
