@@ -39,6 +39,15 @@
  * \brief Allocate memory for a \c DxfShape.
  *
  * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfShape *
 dxf_shape_new ()
@@ -76,6 +85,12 @@ dxf_shape_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfShape *
 dxf_shape_init
@@ -106,6 +121,14 @@ dxf_shape_init
         dxf_shape->shape_name = strdup ("");
         dxf_shape->linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_shape->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_shape->elevation = 0.0;
+        dxf_shape->thickness = 0.0;
+        dxf_shape->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_shape->visibility = DXF_DEFAULT_VISIBILITY;
+        dxf_shape->color = DXF_COLOR_BYLAYER;
+        dxf_shape->paperspace = DXF_MODELSPACE;
+        dxf_shape->dictionary_owner_soft = strdup ("");
+        dxf_shape->dictionary_owner_hard = strdup ("");
         dxf_shape->x0 = 0.0;
         dxf_shape->y0 = 0.0;
         dxf_shape->z0 = 0.0;
@@ -116,9 +139,6 @@ dxf_shape_init
         dxf_shape->rel_x_scale = 0.0;
         dxf_shape->rot_angle = 0.0;
         dxf_shape->obl_angle = 0.0;
-        dxf_shape->color = DXF_COLOR_BYLAYER;
-        dxf_shape->paperspace = DXF_MODELSPACE;
-        dxf_shape->acad_version_number = 0;
         dxf_shape->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -135,8 +155,13 @@ dxf_shape_init
  * a "  0" string announcing the following entity, or the end of the
  * \c ENTITY section marker \c ENDSEC. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred while reading from the input file.
+ * \return a pointer to \c dxf_shape.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfShape *
 dxf_shape_read
@@ -151,6 +176,7 @@ dxf_shape_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        char *dxf_entity_name = strdup ("SHAPE");
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -230,15 +256,12 @@ dxf_shape_read
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_shape->z0 = 0.0))
+                        && (dxf_shape->elevation != 0.0))
                 {
-                        /* Elevation is a pre AutoCAD R11 variable
-                         * so additional testing for the version should
-                         * probably be added.
-                         * Now follows a string containing the
+                        /* Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_shape->z0);
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -261,6 +284,13 @@ dxf_shape_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_shape->rel_x_scale);
                 }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_shape->linetype_scale);
+                }
                 else if (strcmp (temp_string, "50") == 0)
                 {
                         /* Now follows a string containing the
@@ -274,6 +304,13 @@ dxf_shape_read
                          * oblique angle. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_shape->obl_angle);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_shape->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -289,16 +326,20 @@ dxf_shape_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_shape->paperspace);
                 }
-                else if ((fp->acad_version_number >= AutoCAD_12)
+                else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
-                        /* Subclass markers are post AutoCAD R12
-                         * variable so additional testing for the
-                         * version should probably be added here.
-                         * Now follows a string containing the
+                        /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && ((strcmp (temp_string, "AcDbShape") != 0)))
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
@@ -321,6 +362,20 @@ dxf_shape_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_shape->extr_z0);
                 }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_shape->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_shape->dictionary_owner_hard);
+                }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
@@ -336,6 +391,13 @@ dxf_shape_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_shape->shape_name, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () empty name string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_shape->id_code);
+                return (EXIT_FAILURE);
+        }
         if (strcmp (dxf_shape->linetype, "") == 0)
         {
                 dxf_shape->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -352,7 +414,17 @@ dxf_shape_read
 
 
 /*!
- * \brief Write DXF output to fp for a shape entity.
+ * \brief Write DXF output for a DXF \c SHAPE entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_shape_write
@@ -422,44 +494,100 @@ dxf_shape_write
                   (_("Warning: in %s () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_shape->id_code);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp->fp, "  2\n%s\n", dxf_shape->shape_name);
         if (dxf_shape->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_shape->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_shape->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_shape->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_shape->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_shape->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (dxf_shape->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_shape->layer);
         if (strcmp (dxf_shape->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_shape->linetype);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_shape->layer);
-        fprintf (fp->fp, " 10\n%f\n", dxf_shape->x0);
-        fprintf (fp->fp, " 20\n%f\n", dxf_shape->y0);
-        fprintf (fp->fp, " 30\n%f\n", dxf_shape->z0);
-        if (dxf_shape->thickness != 0.0)
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_shape->elevation != 0.0))
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_shape->thickness);
-        }
-        fprintf (fp->fp, " 40\n%f\n", dxf_shape->size);
-        if (dxf_shape->rel_x_scale != 1.0)
-        {
-                fprintf (fp->fp, " 41\n%f\n", dxf_shape->rel_x_scale);
-        }
-        if (dxf_shape->rot_angle != 0.0)
-        {
-                fprintf (fp->fp, " 50\n%f\n", dxf_shape->rot_angle);
-        }
-        if (dxf_shape->obl_angle != 0.0)
-        {
-                fprintf (fp->fp, " 51\n%f\n", dxf_shape->obl_angle);
+                fprintf (fp->fp, " 38\n%f\n", dxf_shape->elevation);
         }
         if (dxf_shape->color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp->fp, " 62\n%d\n", dxf_shape->color);
         }
-        if (dxf_shape->paperspace == DXF_PAPERSPACE)
+        if (dxf_shape->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 48\n%f\n", dxf_shape->linetype_scale);
+        }
+        if (dxf_shape->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_shape->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbShape\n");
+        }
+        if (dxf_shape->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_shape->thickness);
+        }
+        fprintf (fp->fp, " 10\n%f\n", dxf_shape->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_shape->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_shape->z0);
+        fprintf (fp->fp, " 40\n%f\n", dxf_shape->size);
+        fprintf (fp->fp, "  2\n%s\n", dxf_shape->shape_name);
+        if (dxf_shape->rot_angle != 0.0)
+        {
+                fprintf (fp->fp, " 50\n%f\n", dxf_shape->rot_angle);
+        }
+        if (dxf_shape->rel_x_scale != 1.0)
+        {
+                fprintf (fp->fp, " 41\n%f\n", dxf_shape->rel_x_scale);
+        }
+        if (dxf_shape->obl_angle != 0.0)
+        {
+                fprintf (fp->fp, " 51\n%f\n", dxf_shape->obl_angle);
+        }
+        if ((fp->acad_version_number >= AutoCAD_12)
+                && (dxf_shape->extr_x0 != 0.0)
+                && (dxf_shape->extr_y0 != 0.0)
+                && (dxf_shape->extr_z0 != 1.0))
+        {
+                fprintf (fp->fp, "210\n%f\n", dxf_shape->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", dxf_shape->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", dxf_shape->extr_z0);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -474,6 +602,12 @@ dxf_shape_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_shape_free
@@ -493,8 +627,11 @@ dxf_shape_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        free (dxf_shape->shape_name);
         free (dxf_shape->linetype);
         free (dxf_shape->layer);
+        free (dxf_shape->dictionary_owner_soft);
+        free (dxf_shape->dictionary_owner_hard);
         free (dxf_shape);
         dxf_shape = NULL;
 #if DEBUG
