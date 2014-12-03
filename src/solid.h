@@ -153,15 +153,13 @@ dxf_solid_init
 int
 dxf_solid_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfSolid *dxf_solid
 );
 int
 dxf_solid_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfSolid *dxf_solid
 );
 

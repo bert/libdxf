@@ -141,12 +141,8 @@ dxf_solid_init
 int
 dxf_solid_read
 (
-        char *filename,
-                /*!< filename of input file (or device). */
-        FILE *fp,
-                /*!< filepointer to the input file (or device). */
-        int *line_number,
-                /*!< current line number in the input file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
         DxfSolid *dxf_solid
                 /*!< DXF solid entity. */
 )
@@ -160,122 +156,122 @@ dxf_solid_read
         {
                 dxf_solid = dxf_solid_new ();
         }
-        (*line_number)++;
-        fscanf (fp, "%[^\n]", temp_string);
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
         {
-                if (ferror (fp))
+                if (ferror (fp->fp))
                 {
                         fprintf (stderr, "Error in dxf_solid_read () while reading from: %s in line: %d.\n",
-                                filename, *line_number);
-                        fclose (fp);
+                                fp->filename, fp->line_number);
+                        fclose (fp->fp);
                         return (0);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        (*line_number)++;
-                        fscanf (fp, "%x\n", &dxf_solid->id_code);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_solid->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_solid->linetype);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_solid->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", dxf_solid->layer);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_solid->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->x1);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->x1);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->y1);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->y1);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->z1);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->z1);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->x2);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->x2);
                 }
                 else if (strcmp (temp_string, "22") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->y2);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->y2);
                 }
                 else if (strcmp (temp_string, "32") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->z2);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->z2);
                 }
                 else if (strcmp (temp_string, "13") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->x3);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->x3);
                 }
                 else if (strcmp (temp_string, "23") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->y3);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->y3);
                 }
                 else if (strcmp (temp_string, "33") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the point. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->z3);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->z3);
                 }
-                else if ((dxf_solid->acad_version_number <= AutoCAD_11)
+                else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_solid->z0 = 0.0))
                 {
@@ -284,31 +280,31 @@ dxf_solid_read
                          * probably be added.
                          * Now follows a string containing the
                          * elevation. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->thickness);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->thickness);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_solid->color);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_solid->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
-                        (*line_number)++;
-                        fscanf (fp, "%d\n", &dxf_solid->paperspace);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_solid->paperspace);
                 }
-                else if ((dxf_solid->acad_version_number >= AutoCAD_12)
+                else if ((fp->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
                 {
                         /* Subclass markers are post AutoCAD R12
@@ -316,41 +312,41 @@ dxf_solid_read
                          * version should probably be added here.
                          * Now follows a string containing the
                          * subclass marker value. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                 }
                 else if (strcmp (temp_string, "210") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->extr_x0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->extr_y0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
-                        (*line_number)++;
-                        fscanf (fp, "%lf\n", &dxf_solid->extr_z0);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_solid->extr_z0);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
-                        (*line_number)++;
-                        fscanf (fp, "%s\n", temp_string);
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
                         fprintf (stdout, "DXF comment: %s\n", temp_string);
                 }
                 else
                 {
                         fprintf (stderr, "Warning in dxf_solid_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                filename, *line_number);
+                                fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -369,8 +365,8 @@ dxf_solid_read
 int
 dxf_solid_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfSolid *dxf_solid
                 /*!< DXF solid entity. */
 )
@@ -388,39 +384,39 @@ dxf_solid_write
                         dxf_entity_name);
                 dxf_solid->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_solid->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_solid->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_solid->id_code);
         }
         if (strcmp (dxf_solid->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_solid->linetype);
+                fprintf (fp->fp, "  6\n%s\n", dxf_solid->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_solid->layer);
-        fprintf (fp, " 10\n%f\n", dxf_solid->x0);
-        fprintf (fp, " 20\n%f\n", dxf_solid->y0);
-        fprintf (fp, " 30\n%f\n", dxf_solid->z0);
-        fprintf (fp, " 11\n%f\n", dxf_solid->x1);
-        fprintf (fp, " 21\n%f\n", dxf_solid->y1);
-        fprintf (fp, " 31\n%f\n", dxf_solid->z1);
-        fprintf (fp, " 12\n%f\n", dxf_solid->x2);
-        fprintf (fp, " 22\n%f\n", dxf_solid->y2);
-        fprintf (fp, " 32\n%f\n", dxf_solid->z2);
-        fprintf (fp, " 13\n%f\n", dxf_solid->x3);
-        fprintf (fp, " 23\n%f\n", dxf_solid->y3);
-        fprintf (fp, " 33\n%f\n", dxf_solid->z3);
+        fprintf (fp->fp, "  8\n%s\n", dxf_solid->layer);
+        fprintf (fp->fp, " 10\n%f\n", dxf_solid->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_solid->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_solid->z0);
+        fprintf (fp->fp, " 11\n%f\n", dxf_solid->x1);
+        fprintf (fp->fp, " 21\n%f\n", dxf_solid->y1);
+        fprintf (fp->fp, " 31\n%f\n", dxf_solid->z1);
+        fprintf (fp->fp, " 12\n%f\n", dxf_solid->x2);
+        fprintf (fp->fp, " 22\n%f\n", dxf_solid->y2);
+        fprintf (fp->fp, " 32\n%f\n", dxf_solid->z2);
+        fprintf (fp->fp, " 13\n%f\n", dxf_solid->x3);
+        fprintf (fp->fp, " 23\n%f\n", dxf_solid->y3);
+        fprintf (fp->fp, " 33\n%f\n", dxf_solid->z3);
         if (dxf_solid->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_solid->thickness);
+                fprintf (fp->fp, " 39\n%f\n", dxf_solid->thickness);
         }
         if (dxf_solid->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_solid->color);
+                fprintf (fp->fp, " 62\n%d\n", dxf_solid->color);
         }
         if (dxf_solid->paperspace == DXF_PAPERSPACE)
         {
-                fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
 #if DEBUG
         DXF_DEBUG_END
