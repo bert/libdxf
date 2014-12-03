@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief DXF solid entity (\c SOLID).
+ * \brief Functions for a DXF solid entity (\c SOLID).
  *
  * A DXF \c SOLID entity is a filled shape made with up to four point
  * (X, Y, Z)-coordinates.\n
