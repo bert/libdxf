@@ -61,7 +61,9 @@ dxf_solid_new ()
         if (size == 0) size = 1;
         if ((dxf_solid = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_solid_new () could not allocate memory for a DxfSolid struct.\n");
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfSolid struct.\n")),
+                  __FUNCTION__);
                 dxf_solid = NULL;
         }
         else
@@ -94,8 +96,10 @@ dxf_solid_init
         dxf_solid = dxf_solid_new ();
         if (dxf_solid == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_solid_init () could not allocate memory for a DxfSolid struct.\n");
-              return (NULL);
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfSolid struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
         dxf_solid->id_code = 0;
         dxf_solid->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -162,8 +166,9 @@ dxf_solid_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_solid_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (NULL);
                 }
@@ -345,8 +350,9 @@ dxf_solid_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning in dxf_solid_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -378,10 +384,12 @@ dxf_solid_write
 
         if (strcmp (dxf_solid->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_solid_write () empty layer string for the %s entity with id-code: %x\n",
-                        dxf_entity_name, dxf_solid->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_solid->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to layer 0")),
+                  dxf_entity_name);
                 dxf_solid->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
