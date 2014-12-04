@@ -138,7 +138,7 @@ dxf_solid_init
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred while reading from the input file.
  */
-int
+DxfSolid *
 dxf_solid_read
 (
         DxfFile *fp,
@@ -165,7 +165,7 @@ dxf_solid_read
                         fprintf (stderr, "Error in dxf_solid_read () while reading from: %s in line: %d.\n",
                                 fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (0);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -352,7 +352,7 @@ dxf_solid_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_solid);
 }
 
 

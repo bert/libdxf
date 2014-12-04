@@ -150,7 +150,7 @@ dxf_solid_init
 (
         DxfSolid *dxf_solid
 );
-int
+DxfSolid *
 dxf_solid_read
 (
         DxfFile *fp,
