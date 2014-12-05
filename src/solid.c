@@ -433,4 +433,40 @@ dxf_solid_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c SOLID and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_solid_free
+(
+        DxfSolid *dxf_solid
+                /*!< Pointer to the memory occupied by the DXF \c SOLID
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dxf_solid->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfSolid was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dxf_solid->linetype);
+        free (dxf_solid->layer);
+        free (dxf_solid);
+        dxf_solid = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

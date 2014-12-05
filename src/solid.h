@@ -162,6 +162,11 @@ dxf_solid_write
         DxfFile *fp,
         DxfSolid *dxf_solid
 );
+int
+dxf_solid_free
+(
+        DxfSolid *dxf_solid
+);
 
 
 #endif /* LIBDXF_SRC_SOLID_H */
