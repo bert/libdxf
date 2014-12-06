@@ -105,7 +105,14 @@ dxf_solid_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_solid = dxf_solid_new ();
+        /* Do some basic checks. */
+        if (dxf_solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_solid = dxf_solid_new ();
+        }
         if (dxf_solid == NULL)
         {
                 fprintf (stderr,
@@ -178,9 +185,14 @@ dxf_solid_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_solid)
+        /* Do some basic checks. */
+        if (dxf_solid == NULL)
         {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_solid = dxf_solid_new ();
+                dxf_solid = dxf_solid_init (dxf_solid);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -402,6 +414,15 @@ dxf_solid_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_solid->linetype, "") == 0)
+        {
+                dxf_solid->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_solid->layer, "") == 0)
+        {
+                dxf_solid->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -435,6 +456,24 @@ dxf_solid_write
 #endif
         char *dxf_entity_name = strdup ("SOLID");
 
+        /* Do some basic checks. */
+        if (dxf_solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_solid->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_solid->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_solid->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
         if (strcmp (dxf_solid->layer, "") == 0)
         {
                 fprintf (stderr,
