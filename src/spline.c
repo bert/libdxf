@@ -1,7 +1,7 @@
 /*!
  * \file spline.c
  * 
- * \author Copyright (C) 2013 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * 
  * \brief Functions for a DXF spline entity (\c SPLINE).
  *
@@ -359,7 +359,7 @@ dxf_spline_init
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  */
-int
+DxfSpline *
 dxf_spline_read
 (
         DxfFile *fp,
@@ -405,7 +405,7 @@ dxf_spline_read
                         fprintf (stderr, "Error in dxf_spline_read () while reading from: %s in line: %d.\n",
                                 fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -720,7 +720,7 @@ dxf_spline_read
         fprintf (stderr, "[File: %s: line: %d] Leaving dxf_spline_read () function.\n",
                 __FILE__, __LINE__);
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_spline);
 }
 
 
