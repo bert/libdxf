@@ -239,8 +239,7 @@ DxfSpline *
 dxf_spline_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_spline_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfSpline *dxf_spline = NULL;
         size_t size;
@@ -258,8 +257,7 @@ dxf_spline_new ()
                 memset (dxf_spline, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_spline_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_spline);
 }
@@ -280,8 +278,7 @@ dxf_spline_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_spline_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -340,8 +337,7 @@ dxf_spline_init
         dxf_spline->number_of_fit_points = 0;
         dxf_spline->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_spline_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_spline);
 }
@@ -369,8 +365,7 @@ dxf_spline_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_spline_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
         int i_x0;
@@ -717,8 +712,7 @@ dxf_spline_read
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_spline_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_spline);
 }
@@ -740,8 +734,7 @@ dxf_spline_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_spline_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("SPLINE");
         int i;
@@ -853,8 +846,7 @@ dxf_spline_write
         }
 
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_spline_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -876,8 +868,7 @@ dxf_spline_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_spline_free () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -900,8 +891,7 @@ dxf_spline_free
         free (dxf_spline);
         dxf_spline = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_spline_free () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
