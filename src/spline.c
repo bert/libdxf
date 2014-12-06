@@ -249,7 +249,9 @@ dxf_spline_new ()
         if (size == 0) size = 1;
         if ((dxf_spline = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_spline_new () could not allocate memory for a DxfSpline struct.\n");
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfSpline struct.\n")),
+                  __FUNCTION__);
                 dxf_spline = NULL;
         }
         else
@@ -285,8 +287,10 @@ dxf_spline_init
         dxf_spline = dxf_spline_new ();
         if (dxf_spline == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_spline_init () could not allocate memory for a DxfSpline struct.\n");
-              return (NULL);
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfSpline struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
         dxf_spline->id_code = 0;
         dxf_spline->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -397,8 +401,9 @@ dxf_spline_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_spline_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (NULL);
                 }
@@ -707,8 +712,9 @@ dxf_spline_read
                 }
                 else
                 {
-                        fprintf (stderr, "Warning: in dxf_spline_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -741,15 +747,19 @@ dxf_spline_write
 
         if (dxf_spline == NULL)
         {
-                fprintf (stderr, "Error in dxf_spline_write () a NULL pointer was passed.\n");
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dxf_spline->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_spline_write () empty layer string for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_spline->id_code);
-                fprintf (stderr, "\t%s entity is relocated to default layer.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_spline->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to default layer.\n")),
+                  __FUNCTION__, dxf_entity_name);
                 dxf_spline->layer = DXF_DEFAULT_LAYER;
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -874,7 +884,9 @@ dxf_spline_free
 
         if (dxf_spline->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_spline_free () pointer to next DxfSpline was not NULL.\n");
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfSpline was not NULL.\n")),
+                __FUNCTION__);
               return (EXIT_FAILURE);
         }
         free (dxf_spline->linetype);
