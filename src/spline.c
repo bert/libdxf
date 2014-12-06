@@ -284,7 +284,14 @@ dxf_spline_init
 #endif
         int i;
 
-        dxf_spline = dxf_spline_new ();
+        /* Do some basic checks. */
+        if (dxf_spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_spline = dxf_spline_new ();
+        }
         if (dxf_spline == NULL)
         {
                 fprintf (stderr,
@@ -382,9 +389,14 @@ dxf_spline_read
         int i_weight_value;
         int i_graphics_data_size;
 
-        if (!dxf_spline)
+        /* Do some basic checks. */
+        if (dxf_spline == NULL)
         {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_spline = dxf_spline_new ();
+                dxf_spline = dxf_spline_init (dxf_spline);
         }
         i_x0 = 0;
         i_y0 = 0;
@@ -717,6 +729,15 @@ dxf_spline_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_spline->linetype, "") == 0)
+        {
+                dxf_spline->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_spline->layer, "") == 0)
+        {
+                dxf_spline->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -745,12 +766,23 @@ dxf_spline_write
         char *dxf_entity_name = strdup ("SPLINE");
         int i;
 
+        /* Do some basic checks. */
         if (dxf_spline == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_spline->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_spline->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_spline->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         if (strcmp (dxf_spline->layer, "") == 0)
         {
