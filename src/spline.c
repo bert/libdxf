@@ -234,6 +234,12 @@
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility). 
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfSpline *
 dxf_spline_new ()
@@ -271,6 +277,12 @@ dxf_spline_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility). 
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfSpline *
 dxf_spline_init
@@ -302,6 +314,7 @@ dxf_spline_init
         dxf_spline->id_code = 0;
         dxf_spline->linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_spline->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_spline->elevation = 0.0;
         dxf_spline->thickness = 0.0;
         dxf_spline->linetype_scale = 1.0;
         dxf_spline->visibility = 0;
@@ -363,8 +376,13 @@ dxf_spline_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_spline. \n
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c dxf_spline.
+ *
+ * \version According to DXF R10 (backward compatibility). 
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfSpline *
 dxf_spline_read
@@ -540,6 +558,15 @@ dxf_spline_read
                          * may be omitted (in WCS). */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_spline->z3);
+                }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0)
+                        && (dxf_spline->elevation != 0.0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_spline->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -750,6 +777,9 @@ dxf_spline_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_spline_write
@@ -767,6 +797,13 @@ dxf_spline_write
         int i;
 
         /* Do some basic checks. */
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_spline == NULL)
         {
                 fprintf (stderr,
@@ -791,16 +828,43 @@ dxf_spline_write
                   __FUNCTION__, dxf_entity_name, dxf_spline->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to default layer.\n")),
-                  __FUNCTION__, dxf_entity_name);
+                  dxf_entity_name);
                 dxf_spline->layer = DXF_DEFAULT_LAYER;
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_spline->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_spline->id_code);
         }
-        fprintf (fp->fp, "330\n%s\n", dxf_spline->dictionary_owner_soft);
-        fprintf (fp->fp, "100\nAcDbEntity\n");
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_spline->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_spline->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_spline->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_spline->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
         if (dxf_spline->paperspace != DXF_MODELSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
@@ -810,7 +874,14 @@ dxf_spline_write
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_spline->linetype);
         }
-        if (strcmp (dxf_spline->material, "") != 0)
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_spline->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_spline->elevation);
+        }
+        if ((fp->acad_version_number >= AutoCAD_2007)
+          && (strcmp (dxf_spline->material, "") != 0))
         {
                 fprintf (fp->fp, "347\n%s\n", dxf_spline->material);
         }
@@ -900,6 +971,12 @@ dxf_spline_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility). 
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_spline_free
