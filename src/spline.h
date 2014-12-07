@@ -41,85 +41,99 @@
 
 /*!
  * \brief Definition of an AutoCAD spline entity (\c SPLINE).
+ *
+ * \version According to DXF R10 (backward compatibility). 
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_spline
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< group code = 5\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                 * file.\n
+                 * Group code = 5. */
         char *linetype;
-                /*!< group code = 6\n
-                 * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-                /*!< group code = 8\n
-                 * Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
+        double elevation;
+                /*!< Elevation of the spline in the local Z-direction.\n
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default).\n
+                 * Group code = 38. */
         double thickness;
-                /*!< group code = 39\n
-                 * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                /*!< Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
         double linetype_scale;
-                /*!< group code = 48\n
-                 * Linetype scale (optional). */
+                /*!< Linetype scale (optional).\n
+                 * Group code = 48. */
         int16_t visibility;
-                /*!< group code = 60\n
-                 * Object visibility (optional): 0 = Visible; 1 = Invisible. */
+                /*!< Object visibility (optional):\n
+                 * <ol>
+                 * <li value = "0"> Visible</li>
+                 * <li value = "1"> Invisible</li>
+                 * </ol>
+                 * Group code = 60. */
         int color;
-                /*!< group code = 62\n
-                 * Color of the entity.\n
+                /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity. */
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
         int paperspace;
-                /*!< group code = 67\n
-                 * Entities are to be drawn on either \c PAPERSPACE or
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
-                 * Optional, defaults to \c DXF_MODELSPACE (0). */
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
         int graphics_data_size;
-                /*!< group code = 92\n
-                 * Number of bytes in the proxy entity graphics
+                /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
-                 * binary chunk records (optional). */
+                 * binary chunk records (optional).\n
+                 * Group code = 92. */
         int16_t shadow_mode;
-                /*!< group code = 284\n
-                 * Shadow mode:\n
+                /*!< Shadow mode:\n
                  * <ol>
                  * <li value = "0"> Casts and receives shadows.</li>
                  * <li value = "1"> Casts shadows.</li>
                  * <li value = "2"> Receives shadows.</li>
                  * <li value = "3"> Ignores shadows.</li>
-                 * </ol> */
+                 * </ol>\n
+                 * Group code = 284. */
         char *binary_graphics_data[DXF_MAX_PARAM];
-                /*!< group code = 310\n
-                 * Proxy entity graphics data.\n
+                /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
-                 * (optional). */
+                 * (optional).\n
+                 * Group code = 310. */
         char *dictionary_owner_soft;
-                /*!< group code = 330\n
-                 * Soft-pointer ID/handle to owner dictionary (optional). */
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
         char *material;
-                /*!< group code = 347\n
-                 * Hard-pointer ID/handle to material object (present if
-                 * not BYLAYER). */
+                /*!< Hard-pointer ID/handle to material object (present if
+                 * not BYLAYER).\n
+                 * Group code = 347. */
         char *dictionary_owner_hard;
-                /*!< group code = 360\n
-                 * Hard-owner ID/handle to owner dictionary (optional). */
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
         int16_t lineweight;
-                /*!< group code = 370\n
-                 * Lineweight enum value.\n
-                 * Stored and moved around as a 16-bit integer. */
+                /*!< Lineweight enum value.\n
+                 * Stored and moved around as a 16-bit integer.\n
+                 * Group code = 370. */
         char *plot_style_name;
-                /*!< group code = 390\n
-                 * Hard pointer ID / handle of PlotStyleName object. */
+                /*!< Hard pointer ID / handle of PlotStyleName object.\n
+                 * Group code = 390. */
         long color_value;
-                /*!< group code = 420\n
-                 * A 24-bit color value that should be dealt with in
+                /*!< A 24-bit color value that should be dealt with in
                  * terms of bytes with values of 0 to 255.\n
                  * The lowest byte is the blue value, the middle byte is
                  * the green value, and the third byte is the red value.\n
@@ -127,116 +141,123 @@ dxf_spline
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
                  * AcDbEntity, class-level color data and AcDbEntity,
-                 * class-level transparency data. */
+                 * class-level transparency data.\n
+                 * Group code = 420. */
         char *color_name;
-                /*!< group code = 430\n
-                 * Color name.\n
+                /*!< Color name.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
                  * AcDbEntity, class-level color data and AcDbEntity,
-                 * class-level transparency data. */
+                 * class-level transparency data.\n
+                 * Group code = 430. */
         long transparency;
-                /*!< group code = 440\n
-                 * Transparency value.\n
+                /*!< Transparency value.\n
                  * The group code cannot be used by custom entities for
                  * their own data because the group code is reserved for
                  * AcDbEntity, class-level color data and AcDbEntity,
-                 * class-level transparency data. */
+                 * class-level transparency data.\n
+                 * Group code = 440. */
         /* Specific members for a DXF spline. */
         double x0[DXF_MAX_PARAM];
-                /*!< group code = 10\n
-                 * X-value of the control point coordinate
-                 * (multiple entries). */
+                /*!< X-value of the control point coordinate
+                 * (multiple entries).\n
+                 * Group code = 10. */
         double y0[DXF_MAX_PARAM];
-                /*!< group code = 20\n
-                 * Y-value of the control point coordinate
-                 * (multiple entries). */
+                /*!< Y-value of the control point coordinate
+                 * (multiple entries).\n
+                 * Group code = 20. */
         double z0[DXF_MAX_PARAM];
-                /*!< group code = 30\n
-                 * Z-value of the control point coordinate
-                 * (multiple entries). */
+                /*!< Z-value of the control point coordinate
+                 * (multiple entries).\n
+                 * Group code = 30. */
         double x1[DXF_MAX_PARAM];
-                /*!< group code = 11\n
-                 * X-value of the fit point coordinate
-                 * (multiple entries). */
+                /*!< X-value of the fit point coordinate
+                 * (multiple entries).\n
+                 * Group code = 11. */
         double y1[DXF_MAX_PARAM];
-                /*!< group code = 21\n
-                 * Y-value of the fit point coordinate
-                 * (multiple entries). */
+                /*!< Y-value of the fit point coordinate
+                 * (multiple entries).\n
+                 * Group code = 21. */
         double z1[DXF_MAX_PARAM];
-                /*!< group code = 31\n
-                 * Z-value of the fit point coordinate
-                 * (multiple entries). */
+                /*!< Z-value of the fit point coordinate
+                 * (multiple entries).\n
+                 * Group code = 31. */
         double x2;
-                /*!< group code = 12\n
-                 * X-value of the start tangent, may be omitted (in WCS). */
+                /*!< X-value of the start tangent,
+                 * may be omitted (in WCS).\n
+                 * Group code = 12. */
         double y2;
-                /*!< group code = 22\n
-                 * Y-value of the start tangent, may be omitted (in WCS). */
+                /*!< Y-value of the start tangent,
+                 * may be omitted (in WCS).\n
+                 * Group code = 22. */
         double z2;
-                /*!< group code = 32\n
-                 * Z-value of the start tangent, may be omitted (in WCS). */
+                /*!< Z-value of the start tangent,
+                 * may be omitted (in WCS).\n
+                 * Group code = 32. */
         double x3;
-                /*!< group code = 13\n
-                 * X-value of the end tangent, may be omitted (in WCS). */
+                /*!< X-value of the end tangent,
+                 * may be omitted (in WCS).\n
+                 * Group code = 13. */
         double y3;
-                /*!< group code = 23\n
-                 * Y-value of the end tangent, may be omitted (in WCS). */
+                /*!< Y-value of the end tangent,
+                 * may be omitted (in WCS).\n
+                 * Group code = 23. */
         double z3;
-                /*!< group code = 33\n
-                 * Z-value of the end tangent, may be omitted (in WCS). */
+                /*!< Z-value of the end tangent,
+                 * may be omitted (in WCS).\n
+                 * Group code = 33. */
         double knot_value[DXF_MAX_PARAM];
-                /*!< group code = 40\n
-                 * Knot value (one entry per knot, multiple entries). */
+                /*!< Knot value (one entry per knot, multiple entries).\n
+                 * Group code = 40. */
         double weight_value[DXF_MAX_PARAM];
-                /*!< group code = 41\n
-                 * Weight (if not 1); with multiple group pairs, they
-                 * are present if all are not 1. */
+                /*!< Weight (if not 1); with multiple group pairs, they
+                 * are present if all are not 1.\n
+                 * Group code = 41. */
         double knot_tolerance;
-                /*!< group code = 42\n
-                 * Knot tolerance (default = 0.0000001).*/
+                /*!< Knot tolerance (default = 0.0000001).\n
+                 * Group code = 42. */
         double control_point_tolerance;
-                /*!< group code = 43\n
-                 * Control-point tolerance (default = 0.0000001).*/
+                /*!< Control-point tolerance (default = 0.0000001).\n
+                 * Group code = 43. */
         double fit_tolerance;
-                /*!< group code = 44\n
-                 * Fit tolerance (default = 0.0000000001).*/
+                /*!< Fit tolerance (default = 0.0000000001).\n
+                 * Group code = 44. */
         int flag;
-                /*!< group code = 70\n
-                 * Spline flag (bit coded):\n
+                /*!< Spline flag (bit coded):\n
                  * <ol>
                  * <li value = "1"> Closed spline.</li>
                  * <li value = "2"> Periodic spline.</li>
                  * <li value = "4"> Rational spline.</li>
                  * <li value = "8"> Planar.</li>
                  * <li value = "16"> Linear (planar bit is also set).</li>
-                 * </ol> */
+                 * </ol>\n
+                 * Group code = 70. */
         int degree;
-                /*!< group code = 71\n
-                 * Degree of the spline curve.*/
+                /*!< Degree of the spline curve.\n
+                 * Group code = 71. */
         int number_of_knots;
-                /*!< group code = 72\n
-                 * Number of knots.*/
+                /*!< Number of knots.\n
+                 * Group code = 72. */
         int number_of_control_points;
-                /*!< group code = 73\n
-                 * Number of control points.*/
+                /*!< Number of control points.\n
+                 * Group code = 73. */
         int number_of_fit_points;
                 /*!< group code = 74\n
                  * Number of fit points (if any).*/
         double extr_x0;
-                /*!< group code = 210\n
-                 * X-value of the extrusion vector.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                /*!< X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if omitted in the DXF file.\n
+                 * Group code = 210. */
         double extr_y0;
-                /*!< group code = 220\n
-                 * Y-value of the extrusion vector.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                /*!< Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if omitted in the DXF file.\n
+                 * Group code = 220. */
         double extr_z0;
-                /*!< group code = 230\n
-                 * Z-value of the extrusion vector.\n
-                 * Defaults to 1.0 if ommitted in the DXF file. */
+                /*!< Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if omitted in the DXF file.\n
+                 * Group code = 230. */
         struct DxfSpline *next;
-                /*!< pointer to the next DxfSpline.\n
+                /*!< Pointer to the next DxfSpline.\n
                  * \c NULL in the last DxfSpline. */
 } DxfSpline;
 
