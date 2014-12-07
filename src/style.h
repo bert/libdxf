@@ -41,7 +41,7 @@
 
 
 /*!
- * \brief DXF definition of an AutoCAD (text) style.
+ * \brief DXF definition of an AutoCAD (text) style (\c STYLE).
  *
  * A \c STYLE table item can also be used to record shape file \c LOAD
  * requests.\n
@@ -52,44 +52,63 @@ typedef struct
 dxf_style
 {
         int id_code;
-                /*!< group code = 5. */
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
         char *style_name;
-                /*!< group code = 2. */
+                /*!< Style name.\n
+                 * Group code = 2. */
         char *primary_font_filename;
-                /*!< group code = 3. */
+                /*!< Primary font file name.\n
+                 * Group code = 3. */
         char *big_font_filename;
-                /*!< group code = 4\n
-                 * blank if none. */
+                /*!< Bigfont file name; blank if none.\n
+                 * Group code = 4. */
         double height;
-                /*!< group code = 40\n
-                 * 0 if not fixed. */
+                /*!< Fixed text height; 0 if not fixed.\n
+                 * Group code = 40. */
         double width;
-                /*!< group code = 41. */
+                /*!< Width factor.\n
+                 * Group code = 41. */
         double last_height;
-                /*!< group code = 42. */
+                /*!< Last height used.\n
+                 * Group code = 42. */
         double oblique_angle;
-                /*!< group code = 50. */
+                /*!< Oblique angle.\n
+                 * Group code = 50. */
         int flag;
-                /*!< group code = 70\n
-                 * bit coded:\n
-                 * 1 = loads a shape file, only the primary_font_filename
-                 *     (group code = 3) is relevant\n
-                 * 4 = text is vertical oriented\n
-                 * 16 = if set, table entry is externally dependent on an
-                 *      Xref\n
-                 * 32 = if this bit and bit 16 are both set, the externally
-                 *      dependent Xref has been successfully resolved\n
-                 * 64 = if set, the table entry was referenced by at least
-                 *      one entity in the drawing the last time the drawing
-                 *      was edited.\n
+                /*!< Standard flag values.\n
+                 * Bit coded:\n
+                 * <ol>
+                 * <li value = "1"> Loads a shape file, only
+                 * the primary_font_filename (group code = 3) is
+                 * relevant.</li>
+                 * <li value = "4"> Text is vertical oriented.</li>
+                 * <li value = "16"> If set, table entry is externally
+                 * dependent on an Xref.</li>
+                 * <li value = "32"> If this bit and bit 16 are both
+                 * set, the externally dependent Xref has been
+                 * successfully resolved.</li>
+                 * <li value = "64"> If set, the table entry was
+                 * referenced by at least one entity in the drawing the
+                 * last time the drawing was edited.</li>
+                 * </ol>
                  * This flag is for the benefit of AutoCAD commands;
                  * it can be ignored by most programs that read DXF files,
-                 * and need not be set by programs that write DXF files.\n */
+                 * and need not be set by programs that write DXF files.\n
+                 * Group code = 70. */
         int text_generation_flag;
-                /*!< group code = 71\n
-                 * bit coded:\n
-                 * 2 = text is backward (mirrored in X)\n
-                 * 4 = text is upside down (mirrored in Y). */
+                /*!< Text generation flags.\n
+                 * Bit coded:\n
+                 * <ol>
+                 * <li value = "2"> Text is backward (mirrored in X).</li>
+                 * <li value = "4"> Text is upside down (mirrored in Y).</li>
+                 * </ol>\n
+                 * Group code = 71. */
+        struct DxfStyle *next;
+                /*!< Pointer to the next DxfStyle.\n
+                 * \c NULL in the last DxfStyle. */
 } DxfStyle;
 
 
