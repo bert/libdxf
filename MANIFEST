@@ -218,6 +218,7 @@ src/solid.c
 src/solid.h
 src/spline.c
 src/spline.h
+src/style.c
 src/style.h
 src/table.c
 src/table.h
