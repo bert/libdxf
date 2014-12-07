@@ -110,6 +110,8 @@ dxf_style
                 /*!< Pointer to the next DxfStyle.\n
                  * \c NULL in the last DxfStyle. */
 } DxfStyle;
+DxfStyle *
+dxf_style_new ();
 
 
 #endif /* LIBDXF_SRC_STYLE_H */

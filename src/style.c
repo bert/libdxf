@@ -35,4 +35,42 @@
 #include "style.h"
 
 
+/*!
+ * \brief Allocate memory for a DXF \c STYLE.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfStyle *
+dxf_style_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfStyle *dxf_style = NULL;
+        size_t size;
+
+        size = sizeof (DxfStyle);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_style = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfStyle struct.\n")),
+                  __FUNCTION__);
+                dxf_style = NULL;
+        }
+        else
+        {
+                memset (dxf_style, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_style);
+}
+
+
 /* EOF*/
