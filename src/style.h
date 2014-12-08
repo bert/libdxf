@@ -112,6 +112,11 @@ dxf_style
 } DxfStyle;
 DxfStyle *
 dxf_style_new ();
+DxfStyle *
+dxf_style_init
+(
+        DxfStyle *dxf_style
+);
 
 
 #endif /* LIBDXF_SRC_STYLE_H */
