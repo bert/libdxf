@@ -123,4 +123,41 @@ dxf_style_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c STYLE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_style_free
+(
+        DxfStyle *dxf_style
+                /*!< Pointer to the memory occupied by the DXF \c STYLE
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dxf_style->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfStyle was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dxf_style->style_name);
+        free (dxf_style->primary_font_filename);
+        free (dxf_style->big_font_filename);
+        free (dxf_style);
+        dxf_style = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
