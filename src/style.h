@@ -106,6 +106,12 @@ dxf_style
                  * <li value = "4"> Text is upside down (mirrored in Y).</li>
                  * </ol>\n
                  * Group code = 71. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
         struct DxfStyle *next;
                 /*!< Pointer to the next DxfStyle.\n
                  * \c NULL in the last DxfStyle. */
