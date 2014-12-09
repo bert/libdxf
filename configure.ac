@@ -56,6 +56,7 @@ AC_OUTPUT([
 Makefile
 doc/Makefile
 doc/doxygen/Makefile
+doc/refguides/Makefile
 po/Makefile.in
 src/Makefile
 tests/Makefile

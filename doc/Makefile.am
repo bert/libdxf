@@ -1,6 +1,7 @@
 SUBDIRS = \
-	doxygen
-	
+	doxygen \
+	refguides
+
 EXTRA_DIST = \
 	binary.html \
 	class.html \
