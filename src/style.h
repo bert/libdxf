@@ -124,6 +124,12 @@ dxf_style_init
         DxfStyle *dxf_style
 );
 int
+dxf_style_write
+(
+        DxfFile *fp,
+        DxfStyle *dxf_style
+);
+int
 dxf_style_free
 (
         DxfStyle *dxf_style
