@@ -124,6 +124,175 @@ dxf_style_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF \c STYLE entity.
+ *
+ * The last line read from file contained the string "STYLE". \n
+ * Now follows some data for the \c STYLE, to be terminated with a "  0"
+ * string announcing the following entity, or the end of the \c TABLES
+ * section marker \c ENDTAB. \n
+ * While parsing the DXF file store data in \c dxf_style. \n
+ *
+ * \return a pointer to \c dxf_style.
+ */
+DxfStyle *
+dxf_style_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfStyle *dxf_style
+                /*!< DXF \c STYLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+
+        /* Do some basic checks. */
+        if (dxf_style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_style = dxf_style_new ();
+                dxf_style = dxf_style_init (dxf_style);
+        }
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        return (NULL);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_style->id_code);
+                }
+                else if (strcmp (temp_string, "2") == 0)
+                {
+                        /* Now follows a string containing a style name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_style->style_name);
+                }
+                else if (strcmp (temp_string, "3") == 0)
+                {
+                        /* Now follows a string containing a primary
+                         * font filename. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_style->primary_font_filename);
+                }
+                else if (strcmp (temp_string, "4") == 0)
+                {
+                        /* Now follows a string containing a big font
+                         * filename. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_style->big_font_filename);
+                }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the
+                         * height. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_style->height);
+                }
+                else if (strcmp (temp_string, "41") == 0)
+                {
+                        /* Now follows a string containing the
+                         * width. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_style->width);
+                }
+                else if (strcmp (temp_string, "42") == 0)
+                {
+                        /* Now follows a string containing the
+                         * last used height. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_style->last_height);
+                }
+                else if (strcmp (temp_string, "50") == 0)
+                {
+                        /* Now follows a string containing the
+                         * oblique angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_style->oblique_angle);
+                }
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing the
+                         * standard flag value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_style->flag);
+                }
+                else if (strcmp (temp_string, "71") == 0)
+                {
+                        /* Now follows a string containing the
+                         * text generation flag value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_style->text_generation_flag);
+                }
+                else if ((fp->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbSymbolTableRecord") != 0)
+                        && ((strcmp (temp_string, "AcDbTextStyleTableRecord") != 0)))
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_style->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_style->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                }
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_style->style_name, "") == 0)
+        {
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_style);
+}
+
+
+/*!
  * \brief Write DXF output for a DXF \c STYLE entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error

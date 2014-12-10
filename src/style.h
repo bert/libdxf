@@ -123,6 +123,12 @@ dxf_style_init
 (
         DxfStyle *dxf_style
 );
+DxfStyle *
+dxf_style_read
+(
+        DxfFile *fp,
+        DxfStyle *dxf_style
+);
 int
 dxf_style_write
 (
