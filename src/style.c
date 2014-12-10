@@ -352,6 +352,7 @@ dxf_style_write
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
+                fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
                 fprintf (fp->fp, "100\nAcDbTextStyleTableRecord\n");
         }
         fprintf (fp->fp, "  2\n%s\n", dxf_style->style_name);
