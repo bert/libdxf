@@ -284,6 +284,18 @@ dxf_style_read
         /* Handle omitted members and/or illegal values. */
         if (strcmp (dxf_style->style_name, "") == 0)
         {
+                sprintf (dxf_style->style_name, "%i", dxf_style->id_code);
+                fprintf (stderr,
+                  (_("Warning in %s () illegal style name value found while reading from: %s in line: %d.\n")),
+                  __FUNCTION__, fp->filename, fp->line_number);
+        }
+        if ((strcmp (dxf_style->primary_font_filename, "") == 0)
+          && (dxf_style->flag == 1))
+        {
+                sprintf (dxf_style->primary_font_filename, "%i", dxf_style->id_code);
+                fprintf (stderr,
+                  (_("Warning in %s () illegal primary font filename value found while reading from: %s in line: %d.\n")),
+                  __FUNCTION__, fp->filename, fp->line_number);
         }
 #if DEBUG
         DXF_DEBUG_END
