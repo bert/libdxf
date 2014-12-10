@@ -10,12 +10,19 @@ SUBDIRS = \
 libdxfdocdir = ${prefix}/doc
 
 libdxfdoc_DATA = \
-	README \
-	COPYING \
+	ABOUT-NLS \
 	AUTHORS \
+	BUGS \
 	ChangeLog \
+	CONTRIBUTING \
+	COPYING \
 	INSTALL \
-	NEWS 
+	ISSUES \
+	LICENSE \
+	MANIFEST \
+	NEWS \
+	README \
+	TODO
 	
 EXTRA_DIST = $(libdxfdoc_DATA)
 
