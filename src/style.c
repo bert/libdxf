@@ -450,4 +450,45 @@ dxf_style_free
 }
 
 
+/*!
+ * \brief Test if a shape file should be loaded.
+ *
+ * \return \c TRUE when a shape file should be loaded,
+ * or \c FALSE when not.
+ *
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_style_is_shape_file
+(
+        DxfStyle *dxf_style
+                /*!< DXF style entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (dxf_style->flag, 0);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
