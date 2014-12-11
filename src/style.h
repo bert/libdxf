@@ -47,6 +47,12 @@
  * requests.\n
  * In this case the first bit (1) is set in the 70 group flags and only the
  * 3 group (shape filename) is meaningful (all the other groups are output).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_style
