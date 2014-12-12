@@ -456,7 +456,6 @@ dxf_style_free
  * \return \c TRUE when a shape file should be loaded,
  * or \c FALSE when not.
  *
- *
  * \version According to DXF R10.
  * \version According to DXF R11.
  * \version According to DXF R12.
@@ -496,7 +495,6 @@ dxf_style_is_shape_file
  *
  * \return \c TRUE when vertical oriented,
  * or \c FALSE when not vertically oriented.
- *
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
