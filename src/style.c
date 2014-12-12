@@ -532,4 +532,44 @@ dxf_style_is_text_vertical
 }
 
 
+/*!
+ * \brief Test if appid is externally dependent on an xref.
+ *
+ * \return \c TRUE when appid is externally dependent on an xref,
+ * or \c FALSE when appid is not externally dependent on an xref.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_style_is_xreferenced
+(
+        DxfStyle *dxf_style
+                /*!< DXF style entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (dxf_style->flag, 4);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
