@@ -531,10 +531,10 @@ dxf_style_is_text_vertical
 
 
 /*!
- * \brief Test if appid is externally dependent on an xref.
+ * \brief Test if style is externally dependent on an xref.
  *
- * \return \c TRUE when appid is externally dependent on an xref,
- * or \c FALSE when appid is not externally dependent on an xref.
+ * \return \c TRUE when style is externally dependent on an xref,
+ * or \c FALSE when style is not externally dependent on an xref.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
