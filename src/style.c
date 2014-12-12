@@ -491,4 +491,45 @@ dxf_style_is_shape_file
 }
 
 
+/*!
+ * \brief Test if a shape text is vertically oriented.
+ *
+ * \return \c TRUE when vertical oriented,
+ * or \c FALSE when not vertically oriented.
+ *
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_style_is_text_vertical
+(
+        DxfStyle *dxf_style
+                /*!< DXF style entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (dxf_style->flag, 2);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
