@@ -570,4 +570,48 @@ dxf_style_is_xreferenced
 }
 
 
+/*!
+ * \brief Test if style is externally dependent on a xref and has been
+ * successfully resolved.
+ *
+ * \return \c TRUE when style is externally dependent on a xref and has
+ * been successfully resolved,
+ * or \c FALSE when style is not externally dependent on a xref and has
+ * not been successfully resolved.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_style_is_xresolved
+(
+        DxfStyle *dxf_style
+                /*!< DXF style entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (dxf_style == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = ((DXF_CHECK_BIT (dxf_style->flag, 4))
+          && (DXF_CHECK_BIT (dxf_style->flag, 5)));
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
