@@ -166,6 +166,11 @@ dxf_style_is_xresolved
 (
         DxfStyle *dxf_style
 );
+int
+dxf_style_is_referenced
+(
+        DxfStyle *dxf_style
+);
 
 
 #endif /* LIBDXF_SRC_STYLE_H */
