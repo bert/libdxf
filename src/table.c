@@ -1,7 +1,7 @@
 /*!
  * \file table.c
- * \author Copyright (C) 2009 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief DXF table entity (\c TABLE).
+ * \author Copyright (C) 2009 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \brief Functions for a DXF table entity (\c TABLE).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -52,14 +52,14 @@ dxf_table_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_table_write () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         //char *dxf_entity_name = strdup ("TABLE");
         
         /*! \todo Add code here */
         
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_table_write () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -78,11 +78,11 @@ dxf_table_write_endtable
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_table_write_endtable () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         fprintf (fp, "  0\nENDTAB\n");
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_table_write_endtable () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -108,14 +108,14 @@ dxf_table_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_table_write_lowlevel () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         //char *dxf_entity_name = strdup ("TABLE");
         
         /*! \todo Add code here */
         
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_table_write_lowlevel () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -141,7 +141,7 @@ dxf_table_write_tables
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_write_tables () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_section_name = strdup ("TABLES");
         int dxf_tables_list_iter;
@@ -166,7 +166,7 @@ dxf_table_write_tables
         }
         dxf_table_write_endtable (fp);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_write_tables () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
