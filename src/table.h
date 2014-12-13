@@ -103,8 +103,6 @@ dxf_table_write_endtable
         DxfFile *fp
 );
 int
-dxf_table_write_lowlevel (FILE *fp, int dxf_tables_list, int dxf_tables_list_iter, int acad_version_number);
-int
 dxf_table_write_tables
 (
         DxfFile *fp,

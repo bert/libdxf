@@ -89,39 +89,6 @@ dxf_table_write_endtable
 
 
 /*!
- * \brief Write DXF output to a file for a table section.
- *
- * \param [FILE *fp]: the file pointer to write to.
- * \return none.
- */
-int
-dxf_table_write_lowlevel
-(
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
-        int dxf_tables_list,
-                /*!< pointer to list of TABLES. */
-        int dxf_tables_list_iter,
-                /*!< . */
-        int acad_version_number
-                /*!< AutoCAD version number. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        //char *dxf_entity_name = strdup ("TABLE");
-        
-        /*! \todo Add code here */
-        
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Function generates dxf output to a file for all tables entities.
  * 
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
