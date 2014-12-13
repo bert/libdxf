@@ -92,13 +92,24 @@ dxf_table_appid
 
 
 int
-dxf_table_write (FILE *fp, DxfTable dxf_table);
+dxf_table_write
+(
+        DxfFile *fp,
+        DxfTable dxf_table
+);
 int
-dxf_table_write_endtable (FILE *fp);
+dxf_table_write_endtable
+(
+        DxfFile *fp
+);
 int
 dxf_table_write_lowlevel (FILE *fp, int dxf_tables_list, int dxf_tables_list_iter, int acad_version_number);
 int
-dxf_table_write_tables (FILE *fp, int *dxf_tables_list, int acad_version_number);
+dxf_table_write_tables
+(
+        DxfFile *fp,
+        int *dxf_tables_list
+);
 
 
 #endif /* LIBDXF_SRC_TABLE_H */

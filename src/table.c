@@ -38,15 +38,14 @@
 /*!
  * \brief Write DXF output to a file for a table section.
  * 
- * \param [FILE *fp]: the file pointer to write to.
- * \param [DxfTable dxf_table]: the table to write to file.
- * \return none.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_table_write
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfTable dxf_table
                 /*!< DXF table section. */
 )
@@ -68,19 +67,20 @@ dxf_table_write
 /*!
  * \brief Write DXF output to a file for an end of class section.
  * 
- * \param [FILE *fp]: the file pointer to write to.
- * \return none.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_table_write_endtable
 (
-        FILE *fp
+        DxfFile *fp
+                /*!< DXF file pointer to an output file (or device). */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        fprintf (fp, "  0\nENDTAB\n");
+        fprintf (fp->fp, "  0\nENDTAB\n");
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -124,20 +124,16 @@ dxf_table_write_lowlevel
 /*!
  * \brief Function generates dxf output to a file for all tables entities.
  * 
- * \param [FILE *fp]: the file pointer to write to.
- * \param [int *dxf_tables_list]: pointer to a list of dxf tables.
- * \param [int acad_version_number]: the AutoCAD version number.
- * \return none.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_table_write_tables
 (
-        FILE *fp,
-                /*!< file pointer to output file (or device). */
-        int *dxf_tables_list,
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        int *dxf_tables_list
                 /*!< pointer to list of TABLES. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -147,7 +143,7 @@ dxf_table_write_tables
         int dxf_tables_list_iter;
         int dxf_tables_list_last_iter = 0;
 
-        dxf_section_write (fp, dxf_section_name);
+        dxf_section_write (fp->fp, dxf_section_name);
         dxf_tables_list_iter = 1;
         /* \FIXME
          * find_last_iter does not exist
@@ -157,14 +153,14 @@ dxf_table_write_tables
         {
                 dxf_table_write_lowlevel
                         (
-                        fp,
+                        fp->fp,
                         *dxf_tables_list,
                         dxf_tables_list_iter,
-                        acad_version_number
+                        fp->acad_version_number
                         );
                 dxf_tables_list_iter++;
         }
-        dxf_table_write_endtable (fp);
+        dxf_table_write_endtable (fp->fp);
 #if DEBUG
         DXF_DEBUG_END
 #endif
