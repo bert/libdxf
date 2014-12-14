@@ -115,6 +115,11 @@ dxf_table_write_tables
         DxfFile *fp,
         int *dxf_tables_list
 );
+int
+dxf_table_free
+(
+        DxfTable *dxf_table
+);
 
 
 #endif /* LIBDXF_SRC_TABLE_H */
