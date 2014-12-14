@@ -106,15 +106,6 @@ dxf_table_init
         }
         dxf_table->table_name = strdup ("");
         dxf_table->max_table_entries = 0;
-        dxf_table->appids = NULL;
-        //dxf_table->block_records = NULL;
-        dxf_table->dimstyles = NULL;
-        dxf_table->layers = NULL;
-        dxf_table->ltypes = NULL;
-        dxf_table->styles = NULL;
-        dxf_table->ucss = NULL;
-        dxf_table->views = NULL;
-        dxf_table->vports = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
