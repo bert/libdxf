@@ -70,6 +70,24 @@ dxf_table
         int max_table_entries;
                 /*!< group code = 70.\n
                  * maximum number of table entries that may follow. */
+        struct DxfAppid *appids;
+                /*!< Pointer to the first \c APPID symbol table entry. */
+        //struct DxfBlockRecord *block_record;
+                /*!< Pointer to the first \c BLOCK_RECORD symbol table entry. */
+        struct DxfDimStyle *dimstyles;
+                /*!< Pointer to the first \c DIMSTYLE symbol table entry. */
+        struct DxfLayer *layers;
+                /*!< Pointer to the first \c LAYER symbol table entry. */
+        struct DxfLType *ltypes;
+                /*!< Pointer to the first \c LTYPE symbol table entry. */
+        struct DxfStyle *styles;
+                /*!< Pointer to the first \c STYLE symbol table entry. */
+        struct DxfUcs *ucss;
+                /*!< Pointer to the first \c UCS symbol table entry. */
+        struct DxfView *views;
+                /*!< Pointer to the first \c VIEW symbol table entry. */
+        struct DxfVPort *vports;
+                /*!< Pointer to the first \c VPORT symbol table entry. */
 } DxfTable;
 
 
