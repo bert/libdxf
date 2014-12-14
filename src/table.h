@@ -93,6 +93,11 @@ dxf_table_appid
 
 DxfTable *
 dxf_table_new ();
+DxfTable *
+dxf_table_init
+(
+        DxfTable *dxf_table
+);
 int
 dxf_table_write
 (

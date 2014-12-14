@@ -74,6 +74,47 @@ dxf_table_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c TABLE
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfTable *
+dxf_table_init
+(
+        DxfTable *dxf_table
+                /*!< DXF table section. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dxf_table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_table = dxf_table_new ();
+        }
+        if (dxf_table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfTable struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dxf_table->table_name = strdup ("");
+        dxf_table->max_table_entries = 0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_table);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a table section.
  * 
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
