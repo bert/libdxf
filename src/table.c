@@ -125,7 +125,7 @@ dxf_table_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfTable dxf_table
+        DxfTable *dxf_table
                 /*!< DXF table section. */
 )
 {

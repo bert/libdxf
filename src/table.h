@@ -102,7 +102,7 @@ int
 dxf_table_write
 (
         DxfFile *fp,
-        DxfTable dxf_table
+        DxfTable *dxf_table
 );
 int
 dxf_table_write_endtable
