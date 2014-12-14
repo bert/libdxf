@@ -188,25 +188,21 @@ dxf_table_write_tables
         char *dxf_section_name = strdup ("TABLES");
         int dxf_tables_list_iter;
         int dxf_tables_list_last_iter = 0;
+        DxfTable *table = NULL;
 
-        dxf_section_write (fp->fp, dxf_section_name);
+        dxf_section_write (fp, dxf_section_name);
         dxf_tables_list_iter = 1;
-        /* \FIXME
-         * find_last_iter does not exist
+        /*! \todo
+         * find_last_iter does not exist.\n
         dxf_tables_list_last_iter = find_last_iter (dxf_tables_list);
          */
         while (dxf_tables_list_iter !=  dxf_tables_list_last_iter)
         {
-                dxf_table_write_lowlevel
-                        (
-                        fp->fp,
-                        *dxf_tables_list,
-                        dxf_tables_list_iter,
-                        fp->acad_version_number
-                        );
+                table = dxf_table_init (table);
+                dxf_table_write (fp, table);
                 dxf_tables_list_iter++;
         }
-        dxf_table_write_endtable (fp->fp);
+        dxf_table_write_endtable (fp);
 #if DEBUG
         DXF_DEBUG_END
 #endif
