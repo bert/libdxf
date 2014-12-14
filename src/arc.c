@@ -112,10 +112,10 @@ dxf_arc_init
         }
         if (dxf_arc == NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a DxfArc struct.\n")),
-                __FUNCTION__);
-              return (NULL);
+                printf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfArc struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
         dxf_arc->id_code = 0;
         dxf_arc->linetype = strdup (DXF_DEFAULT_LINETYPE);
