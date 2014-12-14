@@ -91,24 +91,6 @@ dxf_table
 } DxfTable;
 
 
-/*!
- * \brief DXF definition of an \c APPID table entity.
- *
- * These table entries maintain a set of names for all applications
- * registered with a drawing.
- */
-typedef struct
-dxf_table_appid
-{
-        char *application_name;
-                /*!< group code = 2.\n
-                 * user-supplied application name. */
-        int flag;
-                /*!< group code = 70.\n
-                 * standard flag values. */
-} DxfTableAppid;
-
-
 DxfTable *
 dxf_table_new ();
 DxfTable *
