@@ -30,7 +30,6 @@
  */
 
 
-#include "global.h"
 #include "table.h"
 #include "section.h"
 
