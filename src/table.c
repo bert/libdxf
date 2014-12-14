@@ -36,6 +36,44 @@
 
 
 /*!
+ * \brief Allocate memory for a DXF \c TABLE.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfTable *
+dxf_table_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfTable *dxf_table = NULL;
+        size_t size;
+
+        size = sizeof (DxfTable);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_table = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfTable struct.\n")),
+                  __FUNCTION__);
+                dxf_table = NULL;
+        }
+        else
+        {
+                memset (dxf_table, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_table);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a table section.
  * 
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error

@@ -91,6 +91,8 @@ dxf_table_appid
 } DxfTableAppid;
 
 
+DxfTable *
+dxf_table_new ();
 int
 dxf_table_write
 (
