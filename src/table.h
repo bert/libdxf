@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2009 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Header file for of a DXF table entity (\c TABLE).
+ * \brief Header file for of a DXF table entry (\c TABLE).
  *
  * The TABLES section contains several tables, each of which contain a
  * variable number of table entries.\n

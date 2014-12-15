@@ -1,7 +1,7 @@
 /*!
  * \file table.c
  * \author Copyright (C) 2009 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
- * \brief Functions for a DXF table entity (\c TABLE).
+ * \brief Functions for a DXF table entry (\c TABLE).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
