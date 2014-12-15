@@ -70,6 +70,15 @@ dxf_table
         int max_table_entries;
                 /*!< Maximum number of table entries that may follow.\n
                  * Group code = 70. */
+} DxfTable;
+
+
+/*!
+ * \brief DXF definition of a tables section.
+ */
+typedef struct
+dxf_tables
+{
         struct DxfAppid *appids;
                 /*!< Pointer to the first \c APPID symbol table entry. */
         //struct DxfBlockRecord *block_record;
@@ -88,7 +97,7 @@ dxf_table
                 /*!< Pointer to the first \c VIEW symbol table entry. */
         struct DxfVPort *vports;
                 /*!< Pointer to the first \c VPORT symbol table entry. */
-} DxfTable;
+} DxfTables;
 
 
 DxfTable *

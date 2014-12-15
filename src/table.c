@@ -233,6 +233,7 @@ dxf_table_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        free (dxf_table->table_name);
         free (dxf_table);
         dxf_table = NULL;
 #if DEBUG
