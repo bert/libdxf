@@ -19,6 +19,8 @@ libdxf_la_SOURCES = \
   thumbnail.c \
   text.h \
   text.c \
+  tables.h \
+  tables.c \
   table.h \
   table.c \
   style.h \

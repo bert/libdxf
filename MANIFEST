@@ -222,6 +222,8 @@ src/style.c
 src/style.h
 src/table.c
 src/table.h
+src/tables.c
+src/tables.h
 src/text.c
 src/text.h
 src/thumbnail.c
