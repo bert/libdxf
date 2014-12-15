@@ -167,49 +167,6 @@ dxf_table_write_endtable
 
 
 /*!
- * \brief Function generates dxf output to a file for all tables entities.
- * 
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_table_write_tables
-(
-        DxfFile *fp,
-                /*!< DXF file pointer to an output file (or device). */
-        int *dxf_tables_list
-                /*!< pointer to list of TABLES. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        char *dxf_section_name = strdup ("TABLES");
-        int dxf_tables_list_iter;
-        int dxf_tables_list_last_iter = 0;
-        DxfTable *table = NULL;
-
-        dxf_section_write (fp, dxf_section_name);
-        dxf_tables_list_iter = 1;
-        /*! \todo
-         * find_last_iter does not exist.\n
-        dxf_tables_list_last_iter = find_last_iter (dxf_tables_list);
-         */
-        while (dxf_tables_list_iter !=  dxf_tables_list_last_iter)
-        {
-                table = dxf_table_init (table);
-                dxf_table_write (fp, table);
-                dxf_tables_list_iter++;
-        }
-        dxf_table_write_endtable (fp);
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Free the allocated memory for a DXF \c TABLE and all it's
  * data fields.
  *

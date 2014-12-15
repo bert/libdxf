@@ -73,33 +73,6 @@ dxf_table
 } DxfTable;
 
 
-/*!
- * \brief DXF definition of a tables section.
- */
-typedef struct
-dxf_tables
-{
-        struct DxfAppid *appids;
-                /*!< Pointer to the first \c APPID symbol table entry. */
-        //struct DxfBlockRecord *block_record;
-                /*!< Pointer to the first \c BLOCK_RECORD symbol table entry. */
-        struct DxfDimStyle *dimstyles;
-                /*!< Pointer to the first \c DIMSTYLE symbol table entry. */
-        struct DxfLayer *layers;
-                /*!< Pointer to the first \c LAYER symbol table entry. */
-        struct DxfLType *ltypes;
-                /*!< Pointer to the first \c LTYPE symbol table entry. */
-        struct DxfStyle *styles;
-                /*!< Pointer to the first \c STYLE symbol table entry. */
-        struct DxfUcs *ucss;
-                /*!< Pointer to the first \c UCS symbol table entry. */
-        struct DxfView *views;
-                /*!< Pointer to the first \c VIEW symbol table entry. */
-        struct DxfVPort *vports;
-                /*!< Pointer to the first \c VPORT symbol table entry. */
-} DxfTables;
-
-
 DxfTable *
 dxf_table_new ();
 DxfTable *
