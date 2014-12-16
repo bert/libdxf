@@ -130,10 +130,28 @@ dxf_table_write
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        //char *dxf_entity_name = strdup ("TABLE");
-        
-        /*! \todo Add code here */
-        
+        char *dxf_entity_name = strdup ("TABLE");
+
+        /* Do some basic checks. */
+        if (dxf_table == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        fprintf (fp->fp, "  2\n%s\n", dxf_table->table_name);
+        if (dxf_table->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", dxf_table->id_code);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbSymbolTable\n");
+        }
+        fprintf (fp->fp, " 70\n%d\n", dxf_table->max_table_entries);
 #if DEBUG
         DXF_DEBUG_END
 #endif
