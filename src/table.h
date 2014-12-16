@@ -64,6 +64,11 @@
 typedef struct
 dxf_table
 {
+        int id_code;
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
         char *table_name;
                 /*!< Table name.\n
                  * Group code = 2. */
