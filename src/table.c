@@ -40,6 +40,12 @@
  *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfTable *
 dxf_table_new ()
@@ -77,6 +83,12 @@ dxf_table_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfTable *
 dxf_table_init
@@ -117,6 +129,12 @@ dxf_table_init
  * 
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_table_write
@@ -164,6 +182,12 @@ dxf_table_write
  * 
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_table_write_endtable
@@ -189,6 +213,12 @@ dxf_table_write_endtable
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_table_free
