@@ -98,11 +98,6 @@ dxf_table_write
         DxfTable *dxf_table
 );
 int
-dxf_table_write_endtable
-(
-        DxfFile *fp
-);
-int
 dxf_table_write_tables
 (
         DxfFile *fp,

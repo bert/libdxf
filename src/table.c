@@ -178,36 +178,6 @@ dxf_table_write
 
 
 /*!
- * \brief Write DXF output to a file for an end of class section.
- * 
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- */
-int
-dxf_table_write_endtable
-(
-        DxfFile *fp
-                /*!< DXF file pointer to an output file (or device). */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        fprintf (fp->fp, "  0\nENDTAB\n");
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Free the allocated memory for a DXF \c TABLE and all it's
  * data fields.
  *
