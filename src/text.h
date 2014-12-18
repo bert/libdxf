@@ -181,32 +181,6 @@ dxf_text_read
         DxfText *dxf_text
 );
 int
-dxf_text_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *text_value,
-        char *linetype,
-        char *text_style,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double x1,
-        double y1,
-        double z1,
-        double thickness,
-        double height,
-        double rel_x_scale,
-        double rot_angle,
-        double obl_angle,
-        int color,
-        int paperspace,
-        int text_flags,
-        int hor_align,
-        int vert_align
-);
-int
 dxf_text_write
 (
         FILE *fp,
