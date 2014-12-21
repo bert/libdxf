@@ -493,4 +493,41 @@ dxf_text_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c TEXT and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_text_free
+(
+        DxfText *dxf_text
+                /*!< DXF text entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dxf_text == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dxf_text->linetype);
+        free (dxf_text->layer);
+        free (dxf_text->text_value);
+        free (dxf_text->text_style);
+        free (dxf_text);
+        dxf_text = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

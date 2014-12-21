@@ -184,6 +184,11 @@ dxf_text_write
         FILE *fp,
         DxfText *dxf_text
 );
+int
+dxf_text_free
+(
+        DxfText *dxf_text
+);
 
 
 #endif /* LIBDXF_SRC_TEXT_H */
