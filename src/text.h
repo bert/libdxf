@@ -172,12 +172,10 @@ dxf_text_init
 (
         DxfText *dxf_text
 );
-int
+DxfText *
 dxf_text_read
 (
-        char *filename,
-        FILE *fp,
-        int *line_number,
+        DxfFile *fp,
         DxfText *dxf_text
 );
 int
