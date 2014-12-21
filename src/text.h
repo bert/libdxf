@@ -181,7 +181,7 @@ dxf_text_read
 int
 dxf_text_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfText *dxf_text
 );
 int
