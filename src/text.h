@@ -48,105 +48,146 @@
  * If the text itself contains a caret character, it is expanded to ^ (caret,
  * space).\n
  * DXFIN performs the complementary conversion.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_text
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< group code = 5\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                 * file.\n
+                 * Group code = 5. */
         char *linetype;
-                /*!< group code = 6\n
-                 * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-                /*!< group code = 8\n
-                 * Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
+        double elevation;
+                /*!< Elevation of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default).\n
+                 * Group code = 38. */
         double thickness;
-                /*!< group code = 39\n
-                 * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                /*!< Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
+        double linetype_scale;
+                /*!< Linetype scale (optional).\n
+                 * Group code = 48. */
+        int16_t visibility;
+                /*!< Object visibility (optional):\n
+                 * <ol>
+                 * <li value = "0"> Visible</li>
+                 * <li value = "1"> Invisible</li>
+                 * </ol>
+                 * Group code = 60. */
         int color;
-                /*!< group code = 62\n
-                 * Color of the entity.\n
+                /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity. */
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
         int paperspace;
-                /*!< group code = 67\n
-                 * Entities are to be drawn on either \c PAPERSPACE or
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
-                 * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
         /* Specific members for a DXF text. */
         char *text_value;
-                /*!< group code = 1. */
+                /*!< Default value (the string itself).\n
+                 * Group code = 1. */
         char *text_style;
-                /*!< group code = 7\n
-                 * optional, defaults to \c STANDARD. */
+                /*!< Optional, defaults to \c STANDARD.\n
+                 * Group code = 7. */
         double x0;
-                /*!< group code = 10\n
-                 * start point. */
+                /*!< X-value first alignment point.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * start point. */
+                /*!< Y-value first alignment point.\n
+                 * Group code = 20. */
         double z0;
-                /*!< group code = 30\n
-                 * start point. */
+                /*!< Z-value first alignment point.\n
+                 * Group code = 30. */
         double x1;
-                /*!< group code = 11\n
-                 * alignment point, appears only if 72 or 73 group code is
-                 * present and nonzero. */
+                /*!< X-value second alignment point.\n
+                 * This value is meaningful only if the value of a 72 or
+                 * 73 group is nonzero (if the justification is anything
+                 * other than baseline/left).\n
+                 * Group code = 11. */
         double y1;
-                /*!< group code = 21\n
-                 * alignment point, appears only if 72 or 73 group code is
-                 * present and nonzero. */
+                /*!< Y-value second alignment point.\n
+                 * This value is meaningful only if the value of a 72 or
+                 * 73 group is nonzero (if the justification is anything
+                 * other than baseline/left).\n
+                 * Group code = 21. */
         double z1;
-                /*!< group code = 31\n
-                 * alignment point, appears only if 72 or 73 group code is
-                 * present and nonzero. */
+                /*!< Z-value second alignment point.\n
+                 * This value is meaningful only if the value of a 72 or
+                 * 73 group is nonzero (if the justification is anything
+                 * other than baseline/left).\n
+                 * Group code = 31. */
         double height;
-                /*!< group code = 40. */
+                /*!< Text height.\n
+                 * Group code = 40. */
         double rel_x_scale;
-                /*!< group code = 41\n
-                 * optional, defaults to 1.0. */
+                /*!< Relative X scale factor-width (optional;
+                 * default = 1.0).\n
+                 * This value is also adjusted when fit-type text is
+                 * used.\n
+                 * Group code = 41. */
         double rot_angle;
-                /*!< group code = 50\n
-                 * optional, defaults to 0.0. */
+                /*!< Text rotation (optional; default = 0.0).\n
+                 * Group code = 50. */
         double obl_angle;
-                /*!< group code = 51\n
-                 * optional, defaults to 0.0. */
+                /*!< Oblique angle (optional; default = 0.0).\n
+                 * Group code = 51. */
         int text_flags;
-                /*!< group code = 71\n
-                 * optional, defaults to 0\n
-                 * bit coded:\n
-                 * 2 = text is backward (mirrored in X)\n
-                 * 4 = text is upside down (mirrored in Y). */
+                /*!< Text generation flags (optional, default = 0).\n
+                 * Bit coded:\n
+                 * <ol>
+                 * <li value = "2"> Text is backward (mirrored in X).</li>
+                 * <li value = "4"> Text is upside down (mirrored in Y).</li>
+                 * </ol>
+                 * Group code = 71. */
         int hor_align;
-                /*!< group code = 72\n
-                 * optional, defaults to 0\n
-                 * not bit coded:\n
-                 * 0 = left\n
-                 * 1 = center\n
-                 * 2 = right\n
-                 * 3 = aligned, only when vert_align = 0\n
-                 * 4 = middle, only when vert_align = 0\n
-                 * 5 = fit, only when vert_align = 0. */
+                /*!< Horizontal text justification type (optional,
+                 * default = 0) integer codes (not bit-coded)\n
+                 * <ol>
+                 * <li value = "0"> left.</li>
+                 * <li value = "1"> center.</li>
+                 * <li value = "2"> right.</li>
+                 * <li value = "3"> aligned, only when vert_align = 0.</li>
+                 * <li value = "4"> middle, only when vert_align = 0.</li>
+                 * <li value = "5"> fit, only when vert_align = 0.</li>
+                 * </ol>
+                 * Group code = 72. */
         int vert_align;
-                /*!< group code = 73\n
-                 * added on DXF R12 and later\n
-                 * optional, defaults to 0\n
-                 * not bit coded:\n
-                 * 0 = baseline\n
-                 * 1 = bottom\n
-                 * 2 = middle\n
-                 * 3 = top. */
+                /*!< Vertical text justification type (optional,
+                 * default = 0): integer codes (not bit-coded)\n
+                 * <ol>
+                 * <li value = "0"> baseline.</li>
+                 * <li value = "1"> bottom.</li>
+                 * <li value = "2"> middle.</li>
+                 * <li value = "3"> top.</li>
+                 * </ol>
+                 * Group code = 73. */
         double extr_x0;
                 /*!< X-value of the extrusion vector.\n
                  * Defaults to 0.0 if ommitted in the DXF file.\n
@@ -160,7 +201,7 @@ dxf_text
                  * Defaults to 1.0 if ommitted in the DXF file.\n
                  * Group code = 230. */
         struct DxfText *next;
-                /*!< pointer to the next DxfText.\n
+                /*!< Pointer to the next DxfText.\n
                  * \c NULL in the last DxfText. */
 } DxfText;
 

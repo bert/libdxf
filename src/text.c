@@ -115,7 +115,6 @@ dxf_text_init
         dxf_text->text_flags = 0;
         dxf_text->hor_align = 0;
         dxf_text->vert_align = 0;
-        dxf_text->acad_version_number = 0;
         dxf_text->extr_x0 = 0.0;
         dxf_text->extr_y0 = 0.0;
         dxf_text->extr_z0 = 0.0;
