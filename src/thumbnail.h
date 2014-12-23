@@ -49,7 +49,7 @@ dxf_thumbnail
                 /*!< group code = 90\n
                  * The number of bytes in the image (and subsequent binary
                  * chunk records). */
-        char *preview_image_data;
+        char *preview_image_data[DXF_MAX_PARAM];
                 /*!< group code = 310\n
                  * multiple lines (256 characters maximum per line). */
 } DxfThumbnail;
