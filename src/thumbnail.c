@@ -48,13 +48,13 @@ dxf_thumbnail_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_thumbnail_write () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         /*!
          * \todo Add code here
          */
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_thumbnail_write () function.\n", __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
