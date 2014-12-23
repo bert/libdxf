@@ -1,7 +1,7 @@
 /*!
  * \file thumbnail.c
  *
- * \author Copyright (C) 2009 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF thumbnail.
  *
@@ -41,10 +41,10 @@
 int
 dxf_thumbnail_write
 (
-        DxfThumbnail *dxf_thumbnail,
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfThumbnail *dxf_thumbnail
                 /*!< the thumbnail to write to the output file. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG

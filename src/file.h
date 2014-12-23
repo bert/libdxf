@@ -52,9 +52,9 @@
 int
 dxf_file_read (char *filename);
 int
-dxf_file_write (FILE *fp, DxfHeader dxf_header, DxfClass dxf_classes_list, DxfTable dxf_tables_list, int acad_version_number);
+dxf_file_write (DxfFile *fp, DxfHeader dxf_header, DxfClass dxf_classes_list, DxfTable dxf_tables_list);
 int
-dxf_file_write_eof (FILE *fp);
+dxf_file_write_eof (DxfFile *fp);
 
 
 #endif /* LIBDXF_SRC_FILE_H */

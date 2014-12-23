@@ -120,16 +120,14 @@ dxf_file_read
 int
 dxf_file_write
 (
-        FILE *fp,
+        DxfFile *fp,
                 /*!< file pointer to output file (or device). */
         DxfHeader dxf_header,
                 /*!< a dxf header. */
         DxfClass dxf_classes_list,
                 /*!< pointer to a list of CLASSES. */
-        DxfTable dxf_tables_list,
+        DxfTable dxf_tables_list
                 /*!< pointer to a list of TABLES. */
-        int acad_version_number
-                /*!< AutoCAD version number. */
 )
 {
 #if DEBUG
@@ -140,15 +138,15 @@ dxf_file_write
 //        DxfBlock *dxf_blocks_list;
         extern DxfThumbnail *dxf_thumbnail;
 
-        dxf_init_header (dxf_header, acad_version_number);
-        dxf_write_header (fp, dxf_header, acad_version_number);
-//        dxf_write_classes (fp, dxf_classes_list, acad_version_number);
-//        dxf_write_tables (fp, dxf_tables_list, acad_version_number);
+//        dxf_init_header (dxf_header);
+//        dxf_write_header (fp, dxf_header);
+//        dxf_write_classes (fp, dxf_classes_list);
+//        dxf_write_tables (fp, dxf_tables_list);
 //        dxf_block_write_table (fp, dxf_blocks_list);
-        dxf_entities_write_table (dxf_entities_list, acad_version_number);
-        dxf_object_write_objects (dxf_objects_list, acad_version_number);
-        dxf_thumbnail_write (dxf_thumbnail, acad_version_number);
-        dxf_file_write_eof(fp);
+//        dxf_entities_write_table (fp, dxf_entities_list);
+//        dxf_object_write_objects (fp, dxf_objects_list);
+//        dxf_thumbnail_write (fp, dxf_thumbnail);
+//        dxf_file_write_eof (fp);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -162,14 +160,14 @@ dxf_file_write
 int
 dxf_file_write_eof
 (
-        FILE *fp
+        DxfFile *fp
                 /*!< file pointer to output file (or device). */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        fprintf (fp, "  0\nEOF\n");
+        fprintf (fp->fp, "  0\nEOF\n");
 #if DEBUG
         DXF_DEBUG_END
 #endif

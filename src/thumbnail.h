@@ -56,7 +56,11 @@ dxf_thumbnail
 
 
 int
-dxf_thumbnail_write (DxfThumbnail *dxf_thumbnail, int acad_version_number);
+dxf_thumbnail_write
+(
+        DxfFile *fp,
+        DxfThumbnail *dxf_thumbnail
+);
 
 
 #endif /* LIBDXF_SRC_THUMBNAIL_H */
