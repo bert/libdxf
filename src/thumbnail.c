@@ -74,6 +74,52 @@ dxf_thumbnail_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF
+ * \c THUMBNAILIMAGE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfThumbnail *
+dxf_thumbnail_init
+(
+        DxfThumbnail *dxf_thumbnail
+                /*!< DXF thumbnailimage entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (dxf_thumbnail == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_thumbnail = dxf_thumbnail_new ();
+        }
+        if (dxf_thumbnail == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfThumbnail struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dxf_thumbnail->number_of_bytes = 0;
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                dxf_thumbnail->preview_image_data[i] = strdup ("");
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_thumbnail);
+}
+
+
+/*!
  * \brief Write a thumbnail to a DXF file.
  */
 int
