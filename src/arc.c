@@ -112,7 +112,7 @@ dxf_arc_init
         }
         if (dxf_arc == NULL)
         {
-                printf (stderr,
+                fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfArc struct.\n")),
                   __FUNCTION__);
                 return (NULL);
