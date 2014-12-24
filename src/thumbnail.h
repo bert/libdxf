@@ -55,6 +55,8 @@ dxf_thumbnail
 } DxfThumbnail;
 
 
+DxfThumbnail *
+dxf_thumbnail_new ();
 int
 dxf_thumbnail_write
 (

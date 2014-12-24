@@ -36,6 +36,44 @@
 
 
 /*!
+ * \brief Allocate memory for a DXF \c THUMBNAILIMAGE.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfThumbnail *
+dxf_thumbnail_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfThumbnail *dxf_thumbnail = NULL;
+        size_t size;
+
+        size = sizeof (DxfThumbnail);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_thumbnail = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfThumbnail struct.\n")),
+                  __FUNCTION__);
+                dxf_thumbnail = NULL;
+        }
+        else
+        {
+                memset (dxf_thumbnail, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_thumbnail);
+}
+
+
+/*!
  * \brief Write a thumbnail to a DXF file.
  */
 int
