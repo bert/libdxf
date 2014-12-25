@@ -36,6 +36,44 @@
 
 
 /*!
+ * \brief Allocate memory for a DXF \c TRACE.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfTrace *
+dxf_trace_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfTrace *dxf_trace = NULL;
+        size_t size;
+
+        size = sizeof (DxfTrace);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_trace = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfTrace struct.\n")),
+                  __FUNCTION__);
+                dxf_trace = NULL;
+        }
+        else
+        {
+                memset (dxf_trace, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_trace);
+}
+
+
+/*!
  * \brief Write DXF output to fp for a trace entity.
  */
 int

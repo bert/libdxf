@@ -120,6 +120,8 @@ dxf_trace
 } DxfTrace;
 
 
+DxfTrace *
+dxf_trace_new ();
 int dxf_trace_write (FILE *fp, DxfTrace *dxf_trace);
 
 
