@@ -134,9 +134,40 @@ dxf_thumbnail_write
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        /*!
-         * \todo Add code here
-         */
+        char *dxf_entity_name = strdup ("THUMBNAILIMAGE");
+        int i;
+
+        /* Do some basic checks. */
+        if (fp->acad_version_number < AutoCAD_2000)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dxf_thumbnail == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dxf_thumbnail->number_of_bytes < 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () number of bytes was 0 or less.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        fprintf (fp->fp, " 90\n%d\n", dxf_thumbnail->number_of_bytes);
+        i = 0;
+        while (strlen (dxf_thumbnail->preview_image_data[i]) > 0)
+        {
+                fprintf (fp->fp, "310\n%s\n", dxf_thumbnail->preview_image_data[i]);
+                i++;
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
