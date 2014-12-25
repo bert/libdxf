@@ -211,7 +211,7 @@ dxf_body_read
                          * proprietary data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", dxf_body->additional_proprietary_data[j]);
-                        i++;
+                        j++;
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
