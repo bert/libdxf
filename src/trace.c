@@ -93,12 +93,35 @@ dxf_trace_write
 #endif
         char *dxf_entity_name = strdup ("TRACE");
 
+        /* Do some basic checks. */
+        if (dxf_trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_trace->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_trace->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_trace->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
         if (strcmp (dxf_trace->layer, "") == 0)
         {
-                fprintf (stderr, "Warning: empty layer string for the %s entity with id-code: %x\n", dxf_entity_name, dxf_trace->id_code);
-                fprintf (stderr, "    %s entity is relocated to layer 0", dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_trace->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to layer 0")),
+                  dxf_entity_name);
                 dxf_trace->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_trace->id_code != -1)
         {
