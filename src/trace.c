@@ -190,6 +190,8 @@ dxf_trace_free
         }
         free (dxf_trace->linetype);
         free (dxf_trace->layer);
+        free (dxf_trace->dictionary_owner_soft);
+        free (dxf_trace->dictionary_owner_hard);
         free (dxf_trace);
         dxf_trace = NULL;
 #if DEBUG
