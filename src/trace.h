@@ -153,6 +153,11 @@ dxf_trace
 
 DxfTrace *
 dxf_trace_new ();
+DxfTrace *
+dxf_trace_init
+(
+        DxfTrace *dxf_trace
+);
 int
 dxf_trace_write
 (

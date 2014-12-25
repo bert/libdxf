@@ -74,6 +74,72 @@ dxf_trace_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c TRACE
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfTrace *
+dxf_trace_init
+(
+        DxfTrace *dxf_trace
+                /*!< DXF trace entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dxf_trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_trace = dxf_trace_new ();
+        }
+        if (dxf_trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfTrace struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dxf_trace->id_code = 0;
+        dxf_trace->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        dxf_trace->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_trace->x0 = 0.0;
+        dxf_trace->y0 = 0.0;
+        dxf_trace->z0 = 0.0;
+        dxf_trace->x1 = 0.0;
+        dxf_trace->y1 = 0.0;
+        dxf_trace->z1 = 0.0;
+        dxf_trace->x2 = 0.0;
+        dxf_trace->y2 = 0.0;
+        dxf_trace->z2 = 0.0;
+        dxf_trace->x3 = 0.0;
+        dxf_trace->y3 = 0.0;
+        dxf_trace->z3 = 0.0;
+        dxf_trace->elevation = 0.0;
+        dxf_trace->thickness = 0.0;
+        dxf_trace->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_trace->visibility = DXF_DEFAULT_VISIBILITY;
+        dxf_trace->color = DXF_COLOR_BYLAYER;
+        dxf_trace->paperspace = DXF_MODELSPACE;
+        dxf_trace->extr_x0 = 0.0;
+        dxf_trace->extr_y0 = 0.0;
+        dxf_trace->extr_z0 = 0.0;
+        dxf_trace->dictionary_owner_soft = strdup ("");
+        dxf_trace->dictionary_owner_hard = strdup ("");
+        dxf_trace->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_trace);
+}
+
+
+/*!
  * \brief Write DXF output to fp for a DCF \c TRACE entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
