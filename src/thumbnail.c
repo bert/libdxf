@@ -175,4 +175,37 @@ dxf_thumbnail_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c THUMBNAILIMAGE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_thumbnail_free
+(
+        DxfThumbnail *dxf_thumbnail
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c THUMBNAILIMAGE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (dxf_thumbnail->preview_image_data[i]);
+        }
+        free (dxf_thumbnail);
+        dxf_thumbnail = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
