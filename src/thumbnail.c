@@ -186,6 +186,7 @@ dxf_thumbnail_read
 #endif
         char *temp_string = NULL;
         int i;
+        int preview_data_length = 0;
 
         /* Do some basic checks. */
         if (dxf_thumbnail == NULL)
@@ -228,6 +229,7 @@ dxf_thumbnail_read
                          * proprietary data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", dxf_thumbnail->preview_image_data[i]);
+                        preview_data_length = preview_data_length + strlen (dxf_thumbnail->preview_image_data[i]);
                         i++;
                 }
                 else if (strcmp (temp_string, "999") == 0)
@@ -245,6 +247,13 @@ dxf_thumbnail_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
+        if (preview_data_length != dxf_thumbnail->number_of_bytes)
+        {
+                        fprintf (stderr,
+                          (_("Warning in %s () read %d preview data bytes from %s while %d were expected.\n")),
+                          __FUNCTION__, preview_data_length,
+                          fp->filename, dxf_thumbnail->number_of_bytes);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
