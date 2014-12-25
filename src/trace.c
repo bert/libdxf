@@ -137,4 +137,40 @@ dxf_trace_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c TRACE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_trace_free
+(
+        DxfTrace *dxf_trace
+                /*!< Pointer to the memory occupied by the DXF \c TRACE
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dxf_trace->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfTrace was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dxf_trace->linetype);
+        free (dxf_trace->layer);
+        free (dxf_trace);
+        dxf_trace = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

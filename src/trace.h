@@ -123,6 +123,11 @@ dxf_trace
 DxfTrace *
 dxf_trace_new ();
 int dxf_trace_write (FILE *fp, DxfTrace *dxf_trace);
+int
+dxf_trace_free
+(
+        DxfTrace *dxf_trace
+);
 
 
 #endif /* LIBDXF_SRC_TRACE_H */
