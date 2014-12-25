@@ -40,7 +40,21 @@
 
 
 /*!
- * \brief DXF definition of a thumbnail.
+ * \brief DXF definition of an AutoCAD arc entity (\c THUMBNAILIMAGE).
+ *
+ * \version According to DXF R2000.
+ * \version According to DXF R2000i.
+ * \version According to DXF R2002.
+ * \version According to DXF R2004.
+ * \version According to DXF R2005.
+ * \version According to DXF R2006.
+ * \version According to DXF R2008.
+ * \version According to DXF R2009.
+ * \version According to DXF R2010.
+ * \version According to DXF R2011.
+ * \version According to DXF R2012.
+ * \version According to DXF R2013.
+ * \version According to DXF R2014.
  */
 typedef struct
 dxf_thumbnail
