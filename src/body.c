@@ -169,20 +169,19 @@ dxf_body_read
         int j;
 
         /* Do some basic checks. */
-        if (fp->acad_version_number < AutoCAD_13)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () illegal DXF version for this entity.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
         if (dxf_body == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_body = dxf_body_new ();
-                dxf_body_init (dxf_body);
+                dxf_body = dxf_body_init (dxf_body);
+        }
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
         }
         i = 0;
         j = 0;
