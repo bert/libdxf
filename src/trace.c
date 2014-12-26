@@ -140,6 +140,278 @@ dxf_trace_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF \c TRACE entity.
+ *
+ * The last line read from file contained the string "TRACE". \n
+ * Now follows some data for the \c TRACE, to be terminated with a "  0"
+ * string announcing the following entity, or the end of the \c ENTITY
+ * section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c dxf_trace. \n
+ */
+DxfTrace *
+dxf_trace_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfTrace *dxf_trace
+                /*!< DXF \c TRACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+
+        /* Do some basic checks. */
+        if (dxf_trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_trace = dxf_trace_new ();
+                dxf_trace = dxf_trace_init (dxf_trace);
+        }
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        return (NULL);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_trace->id_code);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_trace->linetype);
+                }
+                else if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing a layer name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_trace->layer);
+                }
+                else if (strcmp (temp_string, "10") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the base point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->x0);
+                }
+                else if (strcmp (temp_string, "11") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the alignment point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->x1);
+                }
+                else if (strcmp (temp_string, "12") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the alignment point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->x2);
+                }
+                else if (strcmp (temp_string, "13") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the alignment point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->x3);
+                }
+                else if (strcmp (temp_string, "20") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the base point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->y0);
+                }
+                else if (strcmp (temp_string, "21") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the alignment point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->y1);
+                }
+                else if (strcmp (temp_string, "22") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the alignment point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->y2);
+                }
+                else if (strcmp (temp_string, "23") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the alignment point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->y3);
+                }
+                else if (strcmp (temp_string, "30") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the base point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->z0);
+                }
+                else if (strcmp (temp_string, "31") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the alignment point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->z1);
+                }
+                else if (strcmp (temp_string, "32") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the alignment point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->z2);
+                }
+                else if (strcmp (temp_string, "33") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the alignment point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->z3);
+                }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0)
+                        && (dxf_trace->elevation != 0.0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->elevation);
+                }
+                else if (strcmp (temp_string, "39") == 0)
+                {
+                        /* Now follows a string containing the
+                         * thickness. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->thickness);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_trace->visibility);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_trace->color);
+                }
+                else if (strcmp (temp_string, "67") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_trace->paperspace);
+                }
+                else if ((fp->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && ((strcmp (temp_string, "AcDbTrace") != 0)))
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "210") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the extrusion vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->extr_x0);
+                }
+                else if (strcmp (temp_string, "220") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the extrusion vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->extr_y0);
+                }
+                else if (strcmp (temp_string, "230") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the extrusion vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_trace->extr_z0);
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_trace->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_trace->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                }
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_trace->linetype, "") == 0)
+        {
+                dxf_trace->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_trace->layer, "") == 0)
+        {
+                dxf_trace->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_trace);
+}
+
+
+/*!
  * \brief Write DXF output to fp for a DCF \c TRACE entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
