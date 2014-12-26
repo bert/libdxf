@@ -193,11 +193,65 @@ dxf_trace_write
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_trace->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_trace->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_trace->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_trace->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_trace->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (dxf_trace->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_trace->layer);
         if (strcmp (dxf_trace->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_trace->linetype);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_trace->layer);
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_trace->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_trace->elevation);
+        }
+        if (dxf_trace->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_trace->color);
+        }
+        if (dxf_trace->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_trace->linetype_scale);
+        }
+        if (dxf_trace->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_trace->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbTrace\n");
+        }
         fprintf (fp->fp, " 10\n%f\n", dxf_trace->x0);
         fprintf (fp->fp, " 20\n%f\n", dxf_trace->y0);
         fprintf (fp->fp, " 30\n%f\n", dxf_trace->z0);
@@ -214,13 +268,14 @@ dxf_trace_write
         {
                 fprintf (fp->fp, " 39\n%f\n", dxf_trace->thickness);
         }
-        if (dxf_trace->color != DXF_COLOR_BYLAYER)
+        if ((fp->acad_version_number >= AutoCAD_12)
+                && (dxf_trace->extr_x0 != 0.0)
+                && (dxf_trace->extr_y0 != 0.0)
+                && (dxf_trace->extr_z0 != 1.0))
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_trace->color);
-        }
-        if (dxf_trace->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+                fprintf (fp->fp, "210\n%f\n", dxf_trace->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", dxf_trace->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", dxf_trace->extr_z0);
         }
 #if DEBUG
         DXF_DEBUG_END
