@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Definition of a DXF User Coordinate System entity (\c UCS).
+ * \brief Header file for a DXF User Coordinate System entity (\c UCS).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
