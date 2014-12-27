@@ -13,6 +13,7 @@ libdxf_la_SOURCES = \
   util.h \
   util.c \
   ucs.h \
+  ucs.c \
   trace.h \
   trace.c \
   thumbnail.h \
