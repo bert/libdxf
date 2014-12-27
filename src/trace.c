@@ -42,6 +42,12 @@
  *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfTrace *
 dxf_trace_new ()
@@ -79,6 +85,12 @@ dxf_trace_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfTrace *
 dxf_trace_init
@@ -147,6 +159,12 @@ dxf_trace_init
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_trace. \n
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfTrace *
 dxf_trace_read
@@ -416,6 +434,12 @@ dxf_trace_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_trace_write
@@ -562,6 +586,12 @@ dxf_trace_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_trace_free
