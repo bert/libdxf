@@ -40,55 +40,82 @@
 
 
 /*!
- * \brief DXF definition of an AutoCAD User Coordinate System entity.
+ * \brief DXF definition of an AutoCAD User Coordinate System entity
+ * (\c UCS).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_ucs
 {
         int id_code;
-                /*!< group code = 5. */
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
         char *UCS_name;
                 /*!< group code = 2. */
         double x_origin;
-                /*!< group code = 10\n
-                 * base point. */
+                /*!< X-value of the base point coordinate.\n
+                 * Group code = 10. */
         double y_origin;
-                /*!< group code = 20\n
-                 * base point. */
+                /*!< Y-value of the base point coordinate.\n
+                 * Group code = 20. */
         double z_origin;
-                /*!< group code = 30\n
-                 * base point. */
+                /*!< Z-value of the base point coordinate.\n
+                 * Group code = 30. */
         double x_X_dir;
-                /*!< group code = 11\n
-                 * X axis direction. */
+                /*!< X-value of the reference point for the X-axis
+                 * direction.\n
+                 * Group code = 11. */
         double y_X_dir;
-                /*!< group code = 21\n
-                 * X axis direction. */
+                /*!< Y-value of the reference point for the X-axis
+                 * direction.\n
+                 * Group code = 21. */
         double z_X_dir;
-                /*!< group code = 31\n
-                 * X axis direction. */
+                /*!< Z-value of the reference point for the X-axis
+                 * direction.\n
+                 * Group code = 31. */
         double x_Y_dir;
-                /*!< group code = 12\n
-                 * Y axis direction. */
+                /*!< X-value of the reference point for the Y-axis
+                 * direction.\n
+                 * Group code = 12. */
         double y_Y_dir;
-                /*!< group code = 22\n
-                 * Y axis direction. */
+                /*!< Y-value of the reference point for the Y-axis
+                 * direction.\n
+                 * Group code = 22. */
         double z_Y_dir;
-                /*!< group code = 32\n
-                 * Y axis direction. */
+                /*!< Z-value of the reference point for the Y-axis
+                 * direction.\n
+                 * Group code = 32. */
         int flag;
-                /*!< group code = 70\n
+                /*!< This flag is for the benefit of AutoCAD commands;
+                 * it can be ignored by most programs that read DXF files,
+                 * and need not be set by programs that write DXF files.\n
                  * bit coded:\n
-                 * 16 = if set, table entry is externally dependent on an
-                 *         Xref\n
-                 * 32 = if this bit and bit 16 are both set, the externally
-                 *         dependent Xref has been successfully resolved\n
-                 * 64 = if set, the table entry was referenced by at least
-                 *         one entity in the drawing the last time the drawing
-                 *         was edited.\n This flag is for the benefit of AutoCAD
-                 *         commands; it can be ignored by most programs that
-                 *         read DXF files, and need not be set by programs that
-                 *         write DXF files.\n */
+                 * <ol>
+                 * <li value = "16"> if set, table entry is externally
+                 * dependent on an Xref.</li>
+                 * <li value = "32"> if this bit and bit 16 are both set,
+                 * the externally dependent Xref has been successfully
+                 * resolved.</li>
+                 * <li value = "64"> if set, the table entry was
+                 * referenced by at least one entity in the drawing the
+                 * last time the drawing was edited.</li>
+                 * </ol>
+                 * Group code = 70. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary
+                 * (optional).\n
+                 * Group code = 330. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary
+                 * (optional).\n
+                 * Group code = 360. */
 } DxfUcs;
 
 
