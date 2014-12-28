@@ -35,4 +35,42 @@
 #include "ucs.h"
 
 
+/*!
+ * \brief Allocate memory for a DXF \c UCS.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfUcs *
+dxf_ucs_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfUcs *dxf_ucs = NULL;
+        size_t size;
+
+        size = sizeof (DxfUcs);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_ucs = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfUcs struct.\n")),
+                  __FUNCTION__);
+                dxf_ucs = NULL;
+        }
+        else
+        {
+                memset (dxf_ucs, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_ucs);
+}
+
+
 /* EOF */

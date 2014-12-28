@@ -119,6 +119,10 @@ dxf_ucs
 } DxfUcs;
 
 
+DxfUcs *
+dxf_ucs_new ();
+
+
 #endif /* LIBDXF_SRC_UCS_H */
 
 
