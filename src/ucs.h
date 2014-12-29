@@ -116,6 +116,9 @@ dxf_ucs
                 /*!< Hard owner ID/handle to owner dictionary
                  * (optional).\n
                  * Group code = 360. */
+        struct DxfUcs *next;
+                /*!< Pointer to the next DxfUcs.\n
+                 * \c NULL in the last DxfUcs. */
 } DxfUcs;
 
 
