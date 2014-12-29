@@ -73,4 +73,58 @@ dxf_ucs_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c UCS
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfUcs *
+dxf_ucs_init
+(
+        DxfUcs *dxf_ucs
+                /*!< DXF ucs entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dxf_ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_ucs = dxf_ucs_new ();
+        }
+        if (dxf_ucs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfUcs struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dxf_ucs->id_code = 0;
+        dxf_ucs->UCS_name = strdup ("");
+        dxf_ucs->x_origin = 0.0;
+        dxf_ucs->y_origin = 0.0;
+        dxf_ucs->z_origin = 0.0;
+        dxf_ucs->x_X_dir = 0.0;
+        dxf_ucs->y_X_dir = 0.0;
+        dxf_ucs->z_X_dir = 0.0;
+        dxf_ucs->x_Y_dir = 0.0;
+        dxf_ucs->y_Y_dir = 0.0;
+        dxf_ucs->z_Y_dir = 0.0;
+        dxf_ucs->flag = 0;
+        dxf_ucs->dictionary_owner_soft = strdup ("");
+        dxf_ucs->dictionary_owner_hard = strdup ("");
+        dxf_ucs->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_ucs);
+}
+
+
 /* EOF */

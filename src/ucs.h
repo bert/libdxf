@@ -124,6 +124,11 @@ dxf_ucs
 
 DxfUcs *
 dxf_ucs_new ();
+DxfUcs *
+dxf_ucs_init
+(
+        DxfUcs *dxf_ucs
+);
 
 
 #endif /* LIBDXF_SRC_UCS_H */
