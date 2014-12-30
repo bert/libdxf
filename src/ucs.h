@@ -129,6 +129,12 @@ dxf_ucs_init
 (
         DxfUcs *dxf_ucs
 );
+DxfUcs *
+dxf_ucs_read
+(
+        DxfFile *fp,
+        DxfUcs *dxf_ucs
+);
 int
 dxf_ucs_free
 (
