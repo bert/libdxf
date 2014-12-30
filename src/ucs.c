@@ -127,4 +127,41 @@ dxf_ucs_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c UCS and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_ucs_free
+(
+        DxfUcs *dxf_ucs
+                /*!< Pointer to the memory occupied by the DXF \c UCS
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dxf_ucs->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfUcs was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dxf_ucs->UCS_name);
+        free (dxf_ucs->dictionary_owner_soft);
+        free (dxf_ucs->dictionary_owner_hard);
+        free (dxf_ucs);
+        dxf_ucs = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
