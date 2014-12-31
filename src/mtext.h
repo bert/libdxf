@@ -44,22 +44,22 @@ dxf_mtext
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-        /*!< Identification code for the entity.\n
-         * This is to be an unique sequential code in the DXF
-         * file (the number can be hexadecimal).\n
-         * Group code = 5. */
+                /*!< Identification code for the entity.\n
+                 * This is to be an unique sequential code in the DXF
+                 * file (the number can be hexadecimal).\n
+                 * Group code = 5. */
         char *linetype;
-        /*!< The linetype of the entity.\n
-         * Defaults to \c BYLAYER if ommitted in the DXF file.\n
-         * Group code = 6. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-        /*!< Layer on which the entity is drawn.\n
-         * Defaults to layer "0" if no valid layername is given.\n
-         * Group code = 8. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
         double thickness;
-        /*!< Thickness of the arc in the local Z-direction.\n
-         * Defaults to 0.0 if ommitted in the DXF file.\n
-         * Group code = 39. */
+                /*!< Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                * Group code = 39. */
         double linetype_scale;
                 /*!< group code = 48\n
                  * Linetype scale (optional). */
@@ -67,17 +67,17 @@ dxf_mtext
                 /*!< group code = 60\n
                  * Object visibility (optional): 0 = Visible; 1 = Invisible. */
         int color;
-        /*!< Color of the entity.\n
-         * Defaults to \c BYLAYER if ommitted in the DXF file.\n
-         * Note that entities encapsulated in a block with the
-         * color \c BYBLOCK are represented in the "native" color of
-         * the \c BLOCK entity.\n
-         * Group code = 62. */
+                /*!< Color of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Note that entities encapsulated in a block with the
+                 * color \c BYBLOCK are represented in the "native" color of
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
         int paperspace;
-        /*!< Entities are to be drawn on either \c PAPERSPACE or
-         * \c MODELSPACE.\n
-         * Optional, defaults to \c DXF_MODELSPACE (0).\n
-         * Group code = 67. */
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
+                 * \c MODELSPACE.\n
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
         char *dictionary_owner_soft;
                 /*!< group code = 330\n
                  * Soft-pointer ID/handle to owner dictionary (optional). */
@@ -178,36 +178,36 @@ dxf_mtext
         int attachment_point;
                 /*!< Attachment point:\n
                  * <ol>
-                 * <li value = "1"> Top left.<li>
-                 * <li value = "2"> Top center.<li>
-                 * <li value = "3"> Top right.<li>
-                 * <li value = "4"> Middle left.<li>
-                 * <li value = "5"> Middle center.<li>
-                 * <li value = "6"> Middle right.<li>
-                 * <li value = "7"> Bottom left.<li>
-                 * <li value = "8"> Bottom center.<li>
-                 * <li value = "9"> Bottom right.
+                 * <li value = "1"> Top left.</li>
+                 * <li value = "2"> Top center.</li>
+                 * <li value = "3"> Top right.</li>
+                 * <li value = "4"> Middle left.</li>
+                 * <li value = "5"> Middle center.</li>
+                 * <li value = "6"> Middle right.</li>
+                 * <li value = "7"> Bottom left.</li>
+                 * <li value = "8"> Bottom center.</li>
+                 * <li value = "9"> Bottom right.</li>
                  * </ol>
                  * Group code = 71. */
         int drawing_direction;
                 /*!< Drawing direction:\n
                  * <ol>
-                 * <li value = "1"> Left to right.<li>
-                 * <li value = "2"> Right to left (obsolete as of R14).<li>
-                 * <li value = "3"> Top to bottom.<li>
-                 * <li value = "4"> Bottom to top (obsolete as of R14)<li>
+                 * <li value = "1"> Left to right.</li>
+                 * <li value = "2"> Right to left (obsolete as of R14).</li>
+                 * <li value = "3"> Top to bottom.</li>
+                 * <li value = "4"> Bottom to top (obsolete as of R14)</li>
                  * <li value = "5"> By style (the flow direction is
                  * inherited from the associated text style, added as of
-                 * R14).
+                 * R14).</li>
                  * </ol>
                  * Group code = 72. */
         int spacing_style;
                 /*!< Optional, mtext line spacing style:\n
                  * <ol>
                  * <li value = "1"> At least (taller characters will
-                 * override).<li>
+                 * override).</li>
                  * <li value = "2"> Exact (taller characters will not
-                 * override).
+                 * override).</li>
                  * </ol>
                  * Group code = 73. */
         int column_type;
@@ -228,8 +228,8 @@ dxf_mtext
                  * <li value = "0"> Background fill off.</li>
                  * <li value = "1"> Use background fill color.</li>
                  * <li value = "2"> Use drawing window color as
-                 * background fill color.
-                 * </li>
+                 * background fill color.</li>
+                 * </ol>
                  * Group code = 90. */
         double extr_x0;
                 /*!< X-value of the extrusion direction.\n
