@@ -136,6 +136,12 @@ dxf_ucs_read
         DxfUcs *dxf_ucs
 );
 int
+dxf_ucs_write
+(
+        DxfFile *fp,
+        DxfUcs *dxf_ucs
+);
+int
 dxf_ucs_free
 (
         DxfUcs *dxf_ucs
