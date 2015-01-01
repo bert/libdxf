@@ -35,4 +35,42 @@
 #include "view.h"
 
 
+/*!
+ * \brief Allocate memory for a DXF \c VIEW.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfView *
+dxf_view_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfView *dxf_view = NULL;
+        size_t size;
+
+        size = sizeof (DxfView);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_view = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfView struct.\n")),
+                  __FUNCTION__);
+                dxf_view = NULL;
+        }
+        else
+        {
+                memset (dxf_view, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_view);
+}
+
+
 /* EOF */
