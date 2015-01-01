@@ -8,6 +8,7 @@ libdxf_la_SOURCES = \
   viewport.h \
   viewport.c \
   view.h \
+  view.c \
   vertex.h \
   vertex.c \
   util.h \
