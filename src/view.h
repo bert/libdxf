@@ -1,7 +1,7 @@
 /*!
  * \file view.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF view entity (\c VIEW).
  *
@@ -107,7 +107,7 @@ dxf_view
                  * and need not be set by programs that write DXF files. */
         int view_mode;
                 /*!< group code = 71. */
-} DxfView, * DxfViewPtr;
+} DxfView;
 
 
 #endif /* LIBDXF_SRC_VIEW_H */
