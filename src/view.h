@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Definition of a DXF view entity (\c VIEW).
+ * \brief Header file for a DXF view symbol table entry (\c VIEW).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -39,74 +39,105 @@
 
 
 /*!
- * \brief DXF definition of an AutoCAD view entity.
+ * \brief DXF definition of an AutoCAD view symbol table entry (\c VIEW).
  *
- * See chapter 2 of the "AutoLISP Programmer's Reference" for information on
- * DCS, the Display Coordinate System.
-*/
+ * See chapter 2 of the "AutoLISP Programmer's Reference" for
+ * information on DCS, the Display Coordinate System.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
 typedef struct
 dxf_view
 {
         int id_code;
-                /*!< group code = 5. */
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
         char *view_name;
-                /*!< group code = 2. */
+                /*!< Name of view.\n
+                 * Group code = 2. */
         double x_view;
-                /*!< group code = 10\n
-                 * view center point, in Display Coordinate System. */
+                /*!< View center point, in Display Coordinate System.\n
+                 * Group code = 10. */
         double y_view;
-                /*!< group code = 20\n
-                 * view center point, in Display Coordinate System. */
+                /*!< View center point, in Display Coordinate System.\n
+                 * Group code = 20. */
         double x_direction;
-                /*!< group code = 11\n
-                 * view direction from target, in World Coordinate System. */
+                /*!< View direction from target, in World Coordinate
+                 * System.\n
+                 * Group code = 11. */
         double y_direction;
-                /*!< group code = 21\n
-                 * view direction from target, in World Coordinate System. */
+                /*!< View direction from target, in World Coordinate
+                 * System.\n
+                 * Group code = 21. */
         double z_direction;
-                /*!< group code = 31\n
-                 * view direction from target, in World Coordinate System. */
+                /*!< View direction from target, in World Coordinate
+                 * System.\n
+                 * Group code = 31. */
         double x_target;
-                /*!< group code = 12\n
-                 * target point, in WCS. */
+                /*!< Target point, in WCS.\n
+                 * Group code = 12. */
         double y_target;
-                /*!< group code = 22\n
-                 * target point, in WCS. */
+                /*!< Target point, in WCS.\n
+                 * Group code = 22. */
         double z_target;
-                /*!< group code = 32\n
-                 * target point, in WCS. */
+                /*!< Target point, in WCS.\n
+                 * Group code = 32. */
         double view_height;
-                /*!< group code = 40\n
-                 * view height in DCS. */
+                /*!< View height in DCS.\n
+                 * Group code = 40. */
         double view_width;
-                /*!< group code = 41\n
-                 * view width in DCS. */
+                /*!< View width in DCS.\n
+                 * Group code = 41. */
         double lens_length;
-                /*!< group code = 42. */
+                /*!< Lens length.\n
+                 * Group code = 42. */
         double front_plane_offset;
-                /*!< group code = 43\n
-                 * front clipping plane - offset from target point. */
+                /*!< Front clipping plane - offset from target point.\n
+                 * Group code = 43. */
         double back_plane_offset;
-                /*!< group code = 44\n
-                 * back clipping plane - offset from target point. */
+                /*!< Back clipping plane - offset from target point.\n
+                 * Group code = 44. */
         double view_twist_angle;
-                /*!< group code = 50. */
+                /*!< Twist angle.\n
+                 * Group code = 50. */
         int flag;
-                /*!< group code = 70\n
+                /*!< \n
                  * bit coded:\n
-                 * 1 = if set, view is in paperspace\n
-                 * 16 = if set, table entry is externally dependent on an
-                 *         Xref\n
-                 * 32 = if this bit and bit 16 are both set, the externally
-                 *         dependent Xref has been successfully resolved\n
-                 * 64 = if set, the table entry was referenced by at least
-                 *         one entity in the drawing the last time the drawing
-                 *         was edited.\n
+                 * <ol>
+                 * <li value ="1"> If set, view is in paperspace.</li>
+                 * <li value ="16"> If set, table entry is externally
+                 * dependent on an Xref.</li>
+                 * <li value = "32"> If this bit and bit 16 are both set,
+                 * the externally dependent Xref has been successfully
+                 * resolved.</li>
+                 * <li value ="64"> If set, the table entry was
+                 * referenced by at least one entity in the drawing the
+                 * last time the drawing was edited.</li>
+                 * </ol>
                  * This flag is for the benefit of AutoCAD commands;
                  * it can be ignored by most programs that read DXF files,
-                 * and need not be set by programs that write DXF files. */
+                 * and need not be set by programs that write DXF files.\n
+                 * Group code = 70. */
         int view_mode;
-                /*!< group code = 71. */
+                /*!< View mode (see \c VIEWMODE system variable).\n
+                 * Group code = 71. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary
+                 * (optional).\n
+                 * Group code = 330. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary
+                 * (optional).\n
+                 * Group code = 360. */
+        struct DxfView *next;
+                /*!< Pointer to the next DxfView.\n
+                 * \c NULL in the last DxfView. */
 } DxfView;
 
 
