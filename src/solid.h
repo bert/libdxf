@@ -9,7 +9,7 @@
  * (X, Y, Z)-coordinates.\n
  * A filled triangle can be formed by duplicating the third coordinate at the
  * fourth coordinate position.\n
- * A diabolo shaped solid can be formed by "twisting" the \SHAPE form in it's
+ * A diabolo shaped solid can be formed by "twisting" the \c SOLID form in it's
  * plane, by "swapping" the third and fourth coordinate set.
  *
  * <hr>
