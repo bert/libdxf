@@ -51,149 +51,149 @@ dxf_image
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< group code = 5\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                 * file.\n
+                 * Group code = 5. */
         char *linetype;
-                /*!< group code = 6\n
-                 * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-                /*!< group code = 8\n
-                 * Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
         double thickness;
-                /*!< group code = 39\n
-                 * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                /*!< Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
         int color;
-                /*!< group code = 62\n
-                 * Color of the entity.\n
+                /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity. */
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
         int paperspace;
-                /*!< group code = 67\n
-                 * Entities are to be drawn on either \c PAPERSPACE or
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
-                 * Optional, defaults to \c DXF_MODELSPACE (0). */
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
         /* Specific members for a DXF image. */
         double x0;
-                /*!< group code = 10\n
-                 * X-value of the insertion point coordinate. */
+                /*!< X-value of the insertion point coordinate.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * Y-value of the insertion point coordinate. */
+                /*!< Y-value of the insertion point coordinate.\n
+                 * Group code = 20. */
         double z0;
-                /*!< group code = 30\n
-                 * Z-value of the insertion point coordinate. */
+                /*!< Z-value of the insertion point coordinate.\n
+                 * Group code = 30. */
         double x1;
-                /*!< group code = 11\n
-                 * X-value of the U-vector of a single pixel (points
+                /*!< X-value of the U-vector of a single pixel (points
                  * along the visual bottom of the image, starting at the
-                 * insertion point) (in OCS). */
+                 * insertion point) (in OCS).\n
+                 * Group code = 11. */
         double y1;
-                /*!< group code = 21\n
-                 * Y-value of the U-vector of a single pixel (points
+                /*!< Y-value of the U-vector of a single pixel (points
                  * along the visual bottom of the image, starting at the
-                 * insertion point) (in OCS). */
+                 * insertion point) (in OCS).\n
+                 * Group code = 21. */
         double z1;
-                /*!< group code = 31\n
-                 * Z-value of the U-vector of a single pixel (points
+                /*!< Z-value of the U-vector of a single pixel (points
                  * along the visual bottom of the image, starting at the
-                 * insertion point) (in OCS). */
+                 * insertion point) (in OCS).\n
+                 * Group code = 31. */
         double x2;
-                /*!< group code = 12\n
-                 * X-value of the V-vector of a single pixel (points
+                /*!< X-value of the V-vector of a single pixel (points
                  * along the visual left side of the image, starting at
-                 * the insertion point) (in OCS). */
+                 * the insertion point) (in OCS).\n
+                 * Group code = 12. */
         double y2;
-                /*!< group code = 22\n
-                 * Y-value of the V-vector of a single pixel (points
+                /*!< Y-value of the V-vector of a single pixel (points
                  * along the visual left side of the image, starting at
-                 * the insertion point) (in OCS). */
+                 * the insertion point) (in OCS).\n
+                 * Group code = 22. */
         double z2;
-                /*!< group code = 32\n
-                 * Z-value of the V-vector of a single pixel (points
+                /*!< Z-value of the V-vector of a single pixel (points
                  * along the visual left side of the image, starting at
-                 * the insertion point) (in OCS). */
+                 * the insertion point) (in OCS).\n
+                 * Group code = 32. */
         double x3;
-                /*!< group code = 13\n
-                 * U-value of image size in pixels. */
+                /*!< U-value of image size in pixels.\n
+                 * Group code = 13. */
         double y3;
-                /*!< group code = 23\n
-                 * V-value of image size in pixels. */
+                /*!< V-value of image size in pixels.\n
+                 * Group code = 23. */
         double x4[DXF_MAX_PARAM];
-                /*!< group code = 14\n
-                 * X-value of clip boundary vertex (in OCS) (multiple
+                /*!< X-value of clip boundary vertex (in OCS) (multiple
                  * entries).\n
                  * Notes:\n
-                 * <ol>
+                 * <ul>
                  * <li>For rectangular clip boundary type, two opposite
                  * corners must be specified.\n
                  * Default is (-0.5,-0.5), (size.x-0.5, size.y-0.5).</li>
                  * <li>For polygonal clip boundary type, three or more
                  * vertices must be specified.\n
                  * Polygonal vertices must be listed sequentially.</li>
-                 * </ul> */
+                 * </ul>\n
+                 * Group code = 14. */
         double y4[DXF_MAX_PARAM];
-                /*!< group code = 24\n
-                 * Y-value of clip boundary vertex (in OCS) (multiple
+                /*!< Y-value of clip boundary vertex (in OCS) (multiple
                  * entries).\n
                  * Notes:\n
-                 * <ol>
+                 * <ul>
                  * <li>For rectangular clip boundary type, two opposite
                  * corners must be specified.\n
                  * Default is (-0.5,-0.5), (size.x-0.5, size.y-0.5).</li>
                  * <li>For polygonal clip boundary type, three or more
                  * vertices must be specified.\n
                  * Polygonal vertices must be listed sequentially.</li>
-                 * </ul> */
+                 * </ul>\n
+                 * Group code = 24. */
         int image_display_properties;
-                /*!< group code = 70\n
-                 * Image display properties.\n
+                /*!< Image display properties.\n
                  * bit coded:\n
                  * <ol>
                  * <li value = "1"> Show image.</li>
                  * <li value = "2"> Show image when not aligned with screen.</li>
                  * <li value = "4"> Use clipping boundary</li>
                  * <li value = "8"> Transparency is on.</li>
-                 * </ol> */
+                 * </ol>\n
+                 * Group code = 70. */
         int clipping_boundary_type;
-                /*!< group code = 71\n
-                 * Clipping boundary type.\n
+                /*!< Clipping boundary type.\n
                  * <ol>
                  * <li value = "1"> Rectangular.</li>
                  * <li value = "2"> Polygonal.</li>
-                 * </ol> */
+                 * </ol>\n
+                 * Group code = 71. */
         long class_version;
-                /*!< group code = 90\n
-                 * Class version.\n */
+                /*!< Class version.\n
+                 * Group code = 90. */
         long number_of_clip_boundary_vertices;
-                /*!< group code = 91\n
-                 * Number of clip boundary vertices that follow.\n */
+                /*!< Number of clip boundary vertices that follow.\n
+                 * Group code = 91. */
         int clipping_state;
-                /*!< group code = 280\n
-                 * Clipping state: 0 = off, 1 = on. */
+                /*!< Clipping state: 0 = off, 1 = on.\n
+                 * Group code = 280. */
         int brightness;
-                /*!< group code = 281\n
-                 * Brightness value (0 - 100; default = 50). */
+                /*!< Brightness value (0 ... 100; default = 50).\n
+                 * Group code = 281. */
         int contrast;
-                /*!< group code = 282\n
-                 * Contrast value (0 - 100; default = 50). */
+                /*!< Contrast value (0 ... 100; default = 50).\n
+                 * Group code = 282. */
         int fade;
-                /*!< group code = 283\n
-                 * Fade value (0 - 100; default = 50). */
+                /*!< Fade value (0 ... 100; default = 50).\n
+                 * Group code = 283. */
         char *imagedef_object;
-                /*!< group code = 340\n
-                 * Hard reference to imagedef object. */
+                /*!< Hard reference to imagedef object.\n
+                 * Group code = 340. */
         char *imagedef_reactor_object;
-                /*!< group code = 360\n
-                 * Hard reference to imagedef_reactor object. */
+                /*!< Hard reference to imagedef_reactor object.\n
+                 * Group code = 360. */
         struct DxfImage *next;
-                /*!< pointer to the next DxfImage.\n
+                /*!< Pointer to the next DxfImage.\n
                  * \c NULL in the last DxfImage. */
 } DxfImage;
 
