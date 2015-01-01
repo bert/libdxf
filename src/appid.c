@@ -1,9 +1,10 @@
 /*!
  * \file appid.c
  *
- * \author Copyright (C) 2009 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Functions for a DXF application identity entity (\c APPID).
+ * \brief Functions for a DXF application identity symbol table entry
+ * (\c APPID).
  *
  * \version The \c APPID table was introduced in DXF R12.
  *
