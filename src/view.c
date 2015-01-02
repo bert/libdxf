@@ -73,4 +73,64 @@ dxf_view_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c VIEW
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfView *
+dxf_view_init
+(
+        DxfView *dxf_view
+                /*!< DXF View entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dxf_view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_view = dxf_view_new ();
+        }
+        if (dxf_view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfView struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dxf_view->id_code = 0;
+        dxf_view->view_name = strdup ("");
+        dxf_view->x_view = 0.0;
+        dxf_view->y_view = 0.0;
+        dxf_view->x_direction = 0.0;
+        dxf_view->y_direction = 0.0;
+        dxf_view->z_direction = 0.0;
+        dxf_view->x_target = 0.0;
+        dxf_view->y_target = 0.0;
+        dxf_view->z_target = 0.0;
+        dxf_view->view_height = 0.0;
+        dxf_view->view_width = 0.0;
+        dxf_view->lens_length = 0.0;
+        dxf_view->front_plane_offset = 0.0;
+        dxf_view->back_plane_offset = 0.0;
+        dxf_view->view_twist_angle = 0.0;
+        dxf_view->flag = 0;
+        dxf_view->view_mode = 0;
+        dxf_view->dictionary_owner_soft = strdup ("");
+        dxf_view->dictionary_owner_hard = strdup ("");
+        dxf_view->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_view);
+}
+
+
 /* EOF */

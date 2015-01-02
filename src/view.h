@@ -143,6 +143,11 @@ dxf_view
 
 DxfView *
 dxf_view_new ();
+DxfView *
+dxf_view_init
+(
+        DxfView *dxf_view
+);
 
 
 #endif /* LIBDXF_SRC_VIEW_H */
