@@ -133,4 +133,41 @@ dxf_view_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c VIEW and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_view_free
+(
+        DxfView *dxf_view
+                /*!< Pointer to the memory occupied by the DXF \c VIEW
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dxf_view->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfView was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dxf_view->view_name);
+        free (dxf_view->dictionary_owner_soft);
+        free (dxf_view->dictionary_owner_hard);
+        free (dxf_view);
+        dxf_view = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
