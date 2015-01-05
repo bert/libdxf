@@ -359,6 +359,104 @@ dxf_view_read
 
 
 /*!
+ * \brief Write DXF output to a file for a DXF \c VIEW entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_view_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfView *dxf_view
+                /*!< DXF VIEW entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("VIEW");
+
+        /* Do some basic checks. */
+        if (dxf_view == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if ((dxf_view->view_name == NULL)
+          || (strcmp (dxf_view->view_name, "") == 0))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () empty UCS name string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_view->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is discarded from output.\n")),
+                  dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (dxf_view->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", dxf_view->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_view->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_view->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_view->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_view->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
+                fprintf (fp->fp, "100\nAcDbViewTableRecord\n");
+        }
+        fprintf (fp->fp, "  2\n%s\n", dxf_view->view_name);
+        fprintf (fp->fp, " 40\n%f\n", dxf_view->view_height);
+        fprintf (fp->fp, " 70\n%d\n", dxf_view->flag);
+        fprintf (fp->fp, " 10\n%f\n", dxf_view->x_view);
+        fprintf (fp->fp, " 20\n%f\n", dxf_view->y_view);
+        fprintf (fp->fp, " 41\n%f\n", dxf_view->view_width);
+        fprintf (fp->fp, " 11\n%f\n", dxf_view->x_direction);
+        fprintf (fp->fp, " 21\n%f\n", dxf_view->y_direction);
+        fprintf (fp->fp, " 31\n%f\n", dxf_view->z_direction);
+        fprintf (fp->fp, " 12\n%f\n", dxf_view->x_target);
+        fprintf (fp->fp, " 22\n%f\n", dxf_view->y_target);
+        fprintf (fp->fp, " 32\n%f\n", dxf_view->z_target);
+        fprintf (fp->fp, " 42\n%f\n", dxf_view->lens_length);
+        fprintf (fp->fp, " 43\n%f\n", dxf_view->front_plane_offset);
+        fprintf (fp->fp, " 44\n%f\n", dxf_view->back_plane_offset);
+        fprintf (fp->fp, " 50\n%f\n", dxf_view->view_twist_angle);
+        fprintf (fp->fp, " 71\n%d\n", dxf_view->view_mode);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c VIEW and all it's
  * data fields.
  *

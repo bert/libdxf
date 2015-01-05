@@ -155,6 +155,12 @@ dxf_view_read
         DxfView *dxf_view
 );
 int
+dxf_view_write
+(
+        DxfFile *fp,
+        DxfView *dxf_view
+);
+int
 dxf_view_free
 (
         DxfView *dxf_view
