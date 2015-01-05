@@ -1,7 +1,7 @@
 /*!
  * \file ucs.c
  *
- * \author Copyright (C) 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2014 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF User Coordinate System entity (\c UCS).
  *
@@ -369,8 +369,8 @@ dxf_ucs_write
           || (strcmp (dxf_ucs->UCS_name, "") == 0))
         {
                 fprintf (stderr,
-                  (_("Warning: empty UCS name string for the %s entity with id-code: %x\n")),
-                  dxf_entity_name, dxf_ucs->id_code);
+                  (_("Error in %s () empty UCS name string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_ucs->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
