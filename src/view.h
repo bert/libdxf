@@ -148,6 +148,12 @@ dxf_view_init
 (
         DxfView *dxf_view
 );
+DxfView *
+dxf_view_read
+(
+        DxfFile *fp,
+        DxfView *dxf_view
+);
 int
 dxf_view_free
 (
