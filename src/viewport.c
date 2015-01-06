@@ -1,7 +1,7 @@
 /*!
  * \file viewport.c
  *
- * \author Copyright (C) 2010 ... 2012 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF viewport entity (\c VIEWPORT).
  *
@@ -44,8 +44,7 @@ DxfViewport *
 dxf_viewport_new ()
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_viewport_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         DxfViewport *dxf_viewport = NULL;
         size_t size;
@@ -63,8 +62,7 @@ dxf_viewport_new ()
                 memset (dxf_viewport, 0, size);
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_viewport_new () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_viewport);
 }
@@ -85,8 +83,7 @@ dxf_viewport_init
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_viewport_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
         dxf_viewport = dxf_viewport_new ();
@@ -158,8 +155,7 @@ dxf_viewport_init
         dxf_viewport->acad_version_number = AutoCAD_12; /* Minimum required version is AutoCAD R12*/
         dxf_viewport->next = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_viewport_init () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (dxf_viewport);
 }
@@ -187,8 +183,7 @@ dxf_viewport_read
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_viewport_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
 
@@ -853,8 +848,7 @@ dxf_viewport_read
                 }
         }
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_viewport_read () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -876,8 +870,7 @@ dxf_viewport_write
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_viewport_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("VIEWPORT");
 
@@ -961,8 +954,7 @@ dxf_viewport_write
         fprintf (fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_END);
         fprintf (fp, "1002\n%s\n", DXF_VIEWPORT_WINDOW_END);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_viewport_write () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -1141,8 +1133,7 @@ dxf_viewport_write_lowlevel
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_viewport_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("VIEWPORT");
 
@@ -1226,8 +1217,7 @@ dxf_viewport_write_lowlevel
         fprintf (fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_END);
         fprintf (fp, "1002\n%s\n", DXF_VIEWPORT_WINDOW_END);
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_viewport_write_lowlevel () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
@@ -1249,8 +1239,7 @@ dxf_viewport_free
 )
 {
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Entering dxf_viewport_free () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_BEGIN
 #endif
         int i;
 
@@ -1277,8 +1266,7 @@ dxf_viewport_free
         free (dxf_viewport);
         dxf_viewport = NULL;
 #if DEBUG
-        fprintf (stderr, "[File: %s: line: %d] Leaving dxf_viewport_free () function.\n",
-                __FILE__, __LINE__);
+        DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
 }
