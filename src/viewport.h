@@ -263,56 +263,6 @@ dxf_viewport_write
         DxfViewport *dxf_viewport
 );
 int
-dxf_viewport_write_lowlevel
-(
-        FILE *fp,
-        int id_code,
-        char *linetype,
-        char *layer,
-        double x0,
-        double y0,
-        double z0,
-        double thickness,
-        double width,
-        double height,
-        int color,
-        int paperspace,
-        int status,
-        int id,
-        int extended_entity_data_version,
-        double x_target,
-        double y_target,
-        double z_target,
-        double x_direction,
-        double y_direction,
-        double z_direction,
-        double view_twist_angle,
-        double view_height,
-        double x_center,
-        double y_center,
-        double perspective_lens_length,
-        double front_plane_offset,
-        double back_plane_offset,
-        int view_mode,
-        int circle_zoom_percent,
-        int fast_zoom_setting,
-        int UCSICON_setting,
-        int snap_on,
-        int grid_on,
-        int snap_style,
-        int snap_isopair,
-        double snap_rotation_angle,
-        double x_snap_base,
-        double y_snap_base,
-        double x_snap_spacing,
-        double y_snap_spacing,
-        double x_grid_spacing,
-        double y_grid_spacing,
-        int plot_flag,
-        char *frozen_layers[DXF_MAX_LAYERS],
-        int acad_version_number
-);
-int
 dxf_viewport_free
 (
         DxfViewport *dxf_viewport
