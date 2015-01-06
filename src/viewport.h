@@ -1,7 +1,7 @@
 /*!
  * \file viewport.h
  *
- * \author Copyright (C) 2010 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF viewport entity (\c VIEWPORT).
  *
@@ -259,7 +259,7 @@ dxf_viewport_read
 int
 dxf_viewport_write
 (
-        FILE *fp,
+        DxfFile *fp,
         DxfViewport *dxf_viewport
 );
 int

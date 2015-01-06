@@ -863,8 +863,8 @@ dxf_viewport_read
 int
 dxf_viewport_write
 (
-        FILE *fp,
-                /*!< File pointer to output file (or device). */
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
         DxfViewport *dxf_viewport
                 /*!< DXF viewport entity. */
 )
@@ -882,77 +882,77 @@ dxf_viewport_write
                         dxf_entity_name);
                 dxf_viewport->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        fprintf (fp, "  0\n%s\n", dxf_entity_name);
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_viewport->id_code != -1)
         {
-                fprintf (fp, "  5\n%x\n", dxf_viewport->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_viewport->id_code);
         }
         if (strcmp (dxf_viewport->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp, "  6\n%s\n", dxf_viewport->linetype);
+                fprintf (fp->fp, "  6\n%s\n", dxf_viewport->linetype);
         }
-        fprintf (fp, "  8\n%s\n", dxf_viewport->layer);
-        fprintf (fp, " 10\n%f\n", dxf_viewport->x0);
-        fprintf (fp, " 20\n%f\n", dxf_viewport->y0);
-        fprintf (fp, " 30\n%f\n", dxf_viewport->z0);
+        fprintf (fp->fp, "  8\n%s\n", dxf_viewport->layer);
+        fprintf (fp->fp, " 10\n%f\n", dxf_viewport->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_viewport->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_viewport->z0);
         if (dxf_viewport->thickness != 0.0)
         {
-                fprintf (fp, " 39\n%f\n", dxf_viewport->thickness);
+                fprintf (fp->fp, " 39\n%f\n", dxf_viewport->thickness);
         }
-        fprintf (fp, " 40\n%f\n", dxf_viewport->width);
-        fprintf (fp, " 41\n%f\n", dxf_viewport->height);
+        fprintf (fp->fp, " 40\n%f\n", dxf_viewport->width);
+        fprintf (fp->fp, " 41\n%f\n", dxf_viewport->height);
         if (dxf_viewport->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp, " 62\n%d\n", dxf_viewport->color);
+                fprintf (fp->fp, " 62\n%d\n", dxf_viewport->color);
         }
-        fprintf (fp, " 67\n%d\n", DXF_PAPERSPACE);
-        fprintf (fp, " 68\n%d\n", dxf_viewport->status);
-        fprintf (fp, " 69\n%d\n", dxf_viewport->id);
-        fprintf (fp, "1001\n%s\n", DXF_VIEWPORT_APP_NAME);
-        fprintf (fp, "1000\n%s\n", DXF_VIEWPORT_DATA);
-        fprintf (fp, "1002\n%s\n", DXF_VIEWPORT_WINDOW_BEGIN);
-        fprintf (fp, "1070\n%d\n", dxf_viewport->extended_entity_data_version);
-        fprintf (fp, "1010\n%f\n", dxf_viewport->x_target);
-        fprintf (fp, "1020\n%f\n", dxf_viewport->y_target);
-        fprintf (fp, "1030\n%f\n", dxf_viewport->z_target);
-        fprintf (fp, "1010\n%f\n", dxf_viewport->x_direction);
-        fprintf (fp, "1020\n%f\n", dxf_viewport->y_direction);
-        fprintf (fp, "1030\n%f\n", dxf_viewport->z_direction);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->view_twist_angle);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->view_height);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->x_center);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->y_center);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->perspective_lens_length);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->front_plane_offset);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->back_plane_offset);
-        fprintf (fp, "1070\n%d\n", dxf_viewport->view_mode);
-        fprintf (fp, "1070\n%d\n", dxf_viewport->circle_zoom_percent);
-        fprintf (fp, "1070\n%d\n", dxf_viewport->fast_zoom_setting);
-        fprintf (fp, "1070\n%d\n", dxf_viewport->UCSICON_setting);
-        fprintf (fp, "1070\n%d\n", dxf_viewport->snap_on);
-        fprintf (fp, "1070\n%d\n", dxf_viewport->grid_on);
-        fprintf (fp, "1070\n%d\n", dxf_viewport->snap_style);
-        fprintf (fp, "1070\n%d\n", dxf_viewport->snap_isopair);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->snap_rotation_angle);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->x_snap_base);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->y_snap_base);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->x_snap_spacing);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->y_snap_spacing);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->x_grid_spacing);
-        fprintf (fp, "1040\n%f\n", dxf_viewport->y_grid_spacing);
-        fprintf (fp, "1070\n%d\n", dxf_viewport->plot_flag);
-        fprintf (fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_BEGIN);
+        fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        fprintf (fp->fp, " 68\n%d\n", dxf_viewport->status);
+        fprintf (fp->fp, " 69\n%d\n", dxf_viewport->id);
+        fprintf (fp->fp, "1001\n%s\n", DXF_VIEWPORT_APP_NAME);
+        fprintf (fp->fp, "1000\n%s\n", DXF_VIEWPORT_DATA);
+        fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_WINDOW_BEGIN);
+        fprintf (fp->fp, "1070\n%d\n", dxf_viewport->extended_entity_data_version);
+        fprintf (fp->fp, "1010\n%f\n", dxf_viewport->x_target);
+        fprintf (fp->fp, "1020\n%f\n", dxf_viewport->y_target);
+        fprintf (fp->fp, "1030\n%f\n", dxf_viewport->z_target);
+        fprintf (fp->fp, "1010\n%f\n", dxf_viewport->x_direction);
+        fprintf (fp->fp, "1020\n%f\n", dxf_viewport->y_direction);
+        fprintf (fp->fp, "1030\n%f\n", dxf_viewport->z_direction);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->view_twist_angle);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->view_height);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->x_center);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->y_center);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->perspective_lens_length);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->front_plane_offset);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->back_plane_offset);
+        fprintf (fp->fp, "1070\n%d\n", dxf_viewport->view_mode);
+        fprintf (fp->fp, "1070\n%d\n", dxf_viewport->circle_zoom_percent);
+        fprintf (fp->fp, "1070\n%d\n", dxf_viewport->fast_zoom_setting);
+        fprintf (fp->fp, "1070\n%d\n", dxf_viewport->UCSICON_setting);
+        fprintf (fp->fp, "1070\n%d\n", dxf_viewport->snap_on);
+        fprintf (fp->fp, "1070\n%d\n", dxf_viewport->grid_on);
+        fprintf (fp->fp, "1070\n%d\n", dxf_viewport->snap_style);
+        fprintf (fp->fp, "1070\n%d\n", dxf_viewport->snap_isopair);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->snap_rotation_angle);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->x_snap_base);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->y_snap_base);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->x_snap_spacing);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->y_snap_spacing);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->x_grid_spacing);
+        fprintf (fp->fp, "1040\n%f\n", dxf_viewport->y_grid_spacing);
+        fprintf (fp->fp, "1070\n%d\n", dxf_viewport->plot_flag);
+        fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_BEGIN);
         /* Start a loop writing all frozen layer names*/
         int j = 0;
         while ((!dxf_viewport->frozen_layers[j]) /* Do not allow NULL pointers. */
                 || (strcmp (dxf_viewport->frozen_layers[j], "") == 1) /* Do not allow empty strings. */
                 || (j < DXF_MAX_LAYERS)) /* Do not overrun the array size. */
         {
-                fprintf (fp, "1003\n%s\n", dxf_viewport->frozen_layers[j]);
+                fprintf (fp->fp, "1003\n%s\n", dxf_viewport->frozen_layers[j]);
                 j++;
         }
-        fprintf (fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_END);
-        fprintf (fp, "1002\n%s\n", DXF_VIEWPORT_WINDOW_END);
+        fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_END);
+        fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_WINDOW_END);
 #if DEBUG
         DXF_DEBUG_END
 #endif
