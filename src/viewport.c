@@ -54,7 +54,9 @@ dxf_viewport_new ()
         if (size == 0) size = 1;
         if ((dxf_viewport = malloc (size)) == NULL)
         {
-                fprintf (stderr, "ERROR in dxf_viewport_new () could not allocate memory for a DxfViewport struct.\n");
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfViewport struct.\n")),
+                  __FUNCTION__);
                 dxf_viewport = NULL;
         }
         else
@@ -89,8 +91,10 @@ dxf_viewport_init
         dxf_viewport = dxf_viewport_new ();
         if (dxf_viewport == NULL)
         {
-              fprintf (stderr, "ERROR in dxf_viewport_init () could not allocate memory for a DxfViewport struct.\n");
-              return (NULL);
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfViewport struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
         dxf_viewport->id_code = 0;
         dxf_viewport->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -197,8 +201,9 @@ dxf_viewport_read
         {
                 if (ferror (fp->fp))
                 {
-                        fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
                         return (EXIT_FAILURE);
                 }
@@ -330,9 +335,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1000") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the viewport
@@ -341,18 +348,23 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", dxf_viewport->viewport_data);
                         if (strcmp (dxf_viewport->viewport_data, "MVIEW") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string.\n")));
+                                return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1002") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the window
@@ -361,18 +373,22 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", dxf_viewport->window_descriptor_begin);
                         if (strcmp (dxf_viewport->window_descriptor_begin, "{") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string.\n");
+                                return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the extended
@@ -384,9 +400,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1010") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the X-target. */
@@ -397,9 +415,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1020") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the Y-target. */
@@ -410,9 +430,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1030") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the Z-target. */
@@ -423,9 +445,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1010") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the X-direction. */
@@ -436,9 +460,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1020") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the Y-direction. */
@@ -449,9 +475,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1030") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the Z-direction. */
@@ -462,9 +490,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the view
@@ -476,9 +506,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the view
@@ -490,9 +522,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the
@@ -504,9 +538,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the
@@ -518,9 +554,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the
@@ -532,9 +570,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the front
@@ -546,9 +586,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the back
@@ -560,9 +602,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the view mode. */
@@ -573,9 +617,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the circle
@@ -587,9 +633,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the fast zoom
@@ -601,9 +649,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the ICS ICON
@@ -615,9 +665,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the snap on
@@ -629,9 +681,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the grid on
@@ -643,9 +697,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the snap
@@ -657,9 +713,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the snap
@@ -671,9 +729,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the snap
@@ -685,9 +745,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the X snap
@@ -699,9 +761,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the Y snap
@@ -713,9 +777,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the X snap
@@ -727,9 +793,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1040") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the Y snap
@@ -741,9 +809,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1070") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the plot flag. */
@@ -754,9 +824,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1002") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the frozen
@@ -765,9 +837,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", dxf_viewport->frozen_layer_list_begin);
                         if (strcmp (dxf_viewport->frozen_layer_list_begin, "{") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string.\n")));
                         }
                         /* Now follows a string containing a group code
                          * value of "1003". */
@@ -796,17 +870,21 @@ dxf_viewport_read
                         {
                                 /* Either we found an empty list or we
                                  * have found an exception. */
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected end of frozen layer list found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected end of frozen layer list found.\n")));
                         }
                         /* Now we are expecting temp_string to contain a
                          * group code value of "1002". */
                         if (strcmp (temp_string, "1002") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the frozen
@@ -815,18 +893,22 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", dxf_viewport->frozen_layer_list_end);
                         if (strcmp (dxf_viewport->frozen_layer_list_end, "}") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string.\n")));
                         }
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
                         if (strcmp (temp_string, "1002") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string sequence found.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string sequence found.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing the window
@@ -835,16 +917,19 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", dxf_viewport->window_descriptor_end);
                         if (strcmp (dxf_viewport->window_descriptor_end, "}") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string.\n")));
                         }
                 }
                 /* End of sequential ordered data fields. */
                 else 
                 {
-                        fprintf (stderr, "Warning: in dxf_viewport_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                fp->filename, fp->line_number);
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
 #if DEBUG
@@ -876,10 +961,12 @@ dxf_viewport_write
 
         if (strcmp (dxf_viewport->layer, "") == 0)
         {
-                fprintf (stderr, "Warning in dxf_viewport_write_lowlevel () empty layer string for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, dxf_viewport->id_code);
-                fprintf (stderr, "    %s entity is relocated to default layer.\n",
-                        dxf_entity_name);
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_viewport->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to default layer.\n")),
+                  dxf_entity_name);
                 dxf_viewport->layer = strdup (DXF_DEFAULT_LAYER);
         }
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -982,7 +1069,8 @@ dxf_viewport_free
 
         if (dxf_viewport->next != NULL)
         {
-              fprintf (stderr, "ERROR in dxf_viewport_free () pointer to next DxfViewport was not NULL.\n");
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfViewport was not NULL.\n")));
               return (EXIT_FAILURE);
         }
         free (dxf_viewport->linetype);
