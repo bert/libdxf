@@ -88,7 +88,15 @@ dxf_viewport_init
         DXF_DEBUG_BEGIN
 #endif
         int i;
-        dxf_viewport = dxf_viewport_new ();
+
+        /* Do some basic checks. */
+        if (dxf_viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_viewport = dxf_viewport_new ();
+        }
         if (dxf_viewport == NULL)
         {
                 fprintf (stderr,
@@ -150,7 +158,7 @@ dxf_viewport_init
          * reasonable number of layers during compile time, and
          * (re-allocating) shrinking when the actual number of layers is
          * known during run time. */
-        for (i = 0; i == DXF_MAX_LAYERS; i++)
+        for (i = 0; i < DXF_MAX_LAYERS; i++)
         {
                 dxf_viewport->frozen_layers[i] = strdup ("");
         }
@@ -190,9 +198,14 @@ dxf_viewport_read
 #endif
         char *temp_string = NULL;
 
-        if (!dxf_viewport)
+        /* Do some basic checks. */
+        if (dxf_viewport == NULL)
         {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
                 dxf_viewport = dxf_viewport_new ();
+                dxf_viewport = dxf_viewport_init (dxf_viewport);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -933,6 +946,15 @@ dxf_viewport_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (dxf_viewport->linetype, "") == 0)
+        {
+                dxf_viewport->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (dxf_viewport->layer, "") == 0)
+        {
+                dxf_viewport->layer = strdup (DXF_DEFAULT_LAYER);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -960,6 +982,24 @@ dxf_viewport_write
 #endif
         char *dxf_entity_name = strdup ("VIEWPORT");
 
+        /* Do some basic checks. */
+        if (dxf_viewport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_viewport->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_viewport->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                dxf_viewport->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
         if (strcmp (dxf_viewport->layer, "") == 0)
         {
                 fprintf (stderr,
@@ -970,30 +1010,80 @@ dxf_viewport_write
                   dxf_entity_name);
                 dxf_viewport->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_viewport->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_viewport->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_viewport->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_viewport->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_viewport->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_viewport->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (dxf_viewport->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_viewport->layer);
         if (strcmp (dxf_viewport->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_viewport->linetype);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_viewport->layer);
-        fprintf (fp->fp, " 10\n%f\n", dxf_viewport->x0);
-        fprintf (fp->fp, " 20\n%f\n", dxf_viewport->y0);
-        fprintf (fp->fp, " 30\n%f\n", dxf_viewport->z0);
-        if (dxf_viewport->thickness != 0.0)
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_viewport->elevation != 0.0))
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_viewport->thickness);
+                fprintf (fp->fp, " 38\n%f\n", dxf_viewport->elevation);
         }
-        fprintf (fp->fp, " 40\n%f\n", dxf_viewport->width);
-        fprintf (fp->fp, " 41\n%f\n", dxf_viewport->height);
         if (dxf_viewport->color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp->fp, " 62\n%d\n", dxf_viewport->color);
         }
-        fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        if (dxf_viewport->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_viewport->linetype_scale);
+        }
+        if (dxf_viewport->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_viewport->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbViewport\n");
+        }
+        if (dxf_viewport->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_viewport->thickness);
+        }
+        fprintf (fp->fp, " 10\n%f\n", dxf_viewport->x0);
+        fprintf (fp->fp, " 20\n%f\n", dxf_viewport->y0);
+        fprintf (fp->fp, " 30\n%f\n", dxf_viewport->z0);
+        fprintf (fp->fp, " 40\n%f\n", dxf_viewport->width);
+        fprintf (fp->fp, " 41\n%f\n", dxf_viewport->height);
         fprintf (fp->fp, " 68\n%d\n", dxf_viewport->status);
         fprintf (fp->fp, " 69\n%d\n", dxf_viewport->id);
         fprintf (fp->fp, "1001\n%s\n", DXF_VIEWPORT_APP_NAME);
@@ -1030,7 +1120,7 @@ dxf_viewport_write
         fprintf (fp->fp, "1040\n%f\n", dxf_viewport->y_grid_spacing);
         fprintf (fp->fp, "1070\n%d\n", dxf_viewport->plot_flag);
         fprintf (fp->fp, "1002\n%s\n", DXF_VIEWPORT_FROZEN_LAYER_LIST_BEGIN);
-        /* Start a loop writing all frozen layer names*/
+        /* Start a loop writing all frozen layer names. */
         int j = 0;
         while ((!dxf_viewport->frozen_layers[j]) /* Do not allow NULL pointers. */
                 || (strcmp (dxf_viewport->frozen_layers[j], "") == 1) /* Do not allow empty strings. */
@@ -1070,9 +1160,10 @@ dxf_viewport_free
 
         if (dxf_viewport->next != NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next DxfViewport was not NULL.\n")));
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfViewport was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (dxf_viewport->linetype);
         free (dxf_viewport->layer);
@@ -1080,7 +1171,7 @@ dxf_viewport_free
         free (dxf_viewport->viewport_data);
         free (dxf_viewport->window_descriptor_begin);
         free (dxf_viewport->frozen_layer_list_begin);
-        for (i = 0; i == DXF_MAX_LAYERS; i++)
+        for (i = 0; i < DXF_MAX_LAYERS; i++)
         {
                 if (strcmp (dxf_viewport->frozen_layers[i], "") != 0)
                 {
