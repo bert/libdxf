@@ -5,6 +5,7 @@ lib_LTLIBRARIES = \
 
 libdxf_la_SOURCES = \
   vport.h \
+  vport.c \
   viewport.h \
   viewport.c \
   view.h \
