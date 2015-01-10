@@ -39,6 +39,12 @@
  * \brief Allocate memory for a \c DxfViewport.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfViewport *
 dxf_viewport_new ()
@@ -76,6 +82,12 @@ dxf_viewport_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfViewport *
 dxf_viewport_init
@@ -110,7 +122,10 @@ dxf_viewport_init
         dxf_viewport->x0 = 0.0;
         dxf_viewport->y0 = 0.0;
         dxf_viewport->z0 = 0.0;
+        dxf_viewport->elevation = 0.0;
         dxf_viewport->thickness = 0.0;
+        dxf_viewport->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_viewport->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_viewport->width = 0.0;
         dxf_viewport->height = 0.0;
         dxf_viewport->status = 0;
@@ -164,6 +179,8 @@ dxf_viewport_init
         }
         dxf_viewport->frozen_layer_list_end = strdup ("}"); /* Always "}". */
         dxf_viewport->window_descriptor_end = strdup ("}"); /* Always "}". */
+        dxf_viewport->dictionary_owner_soft = strdup ("");
+        dxf_viewport->dictionary_owner_hard = strdup ("");
         dxf_viewport->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -183,6 +200,12 @@ dxf_viewport_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_viewport_read
@@ -292,6 +315,20 @@ dxf_viewport_read
                          * height. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_viewport->height);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_viewport->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_viewport->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -967,6 +1004,12 @@ dxf_viewport_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_viewport_write
@@ -1144,6 +1187,10 @@ dxf_viewport_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_viewport_free

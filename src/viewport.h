@@ -47,6 +47,12 @@
  *
  * \warning In contrast to normal entity data, the same extended entity
  * group code can appear multiple times, and so order is important.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_viewport
