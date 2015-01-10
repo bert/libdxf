@@ -156,7 +156,6 @@ dxf_viewport_init
         }
         dxf_viewport->frozen_layer_list_end = strdup ("}"); /* Always "}". */
         dxf_viewport->window_descriptor_end = strdup ("}"); /* Always "}". */
-        dxf_viewport->acad_version_number = AutoCAD_12; /* Minimum required version is AutoCAD R12*/
         dxf_viewport->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -248,7 +247,7 @@ dxf_viewport_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_viewport->z0);
                 }
-                else if ((dxf_viewport->acad_version_number <= AutoCAD_11)
+                else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
                         && (dxf_viewport->z0 = 0.0))
                 {

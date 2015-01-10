@@ -53,36 +53,55 @@ dxf_viewport
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< group code = 5\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                 * file.\n
+                 * Group code = 5. */
         char *linetype;
-                /*!< group code = 6\n
-                 * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-                /*!< group code = 8\n
-                 * Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
+        double elevation;
+                /*!< Elevation in the local Z-direction.\n
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default).\n
+                 * Group code = 38. */
         double thickness;
-                /*!< group code = 39\n
-                 * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                /*!< Thickness in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
+        double linetype_scale;
+                /*!< Linetype scale (optional).\n
+                 * Group code = 48. */
+        int16_t visibility;
+                /*!< Object visibility (optional):\n
+                 * <ol>
+                 * <li value = "0"> Visible</li>
+                 * <li value = "1"> Invisible</li>
+                 * </ol>
+                 * Group code = 60. */
         int color;
-                /*!< group code = 62\n
-                 * Color of the entity.\n
+                /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity. */
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
         int paperspace;
-                /*!< group code = 67\n
-                 * Entities are to be drawn on either \c PAPERSPACE or
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
-                 * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
         /* Specific members for a DXF viewport. */
         double x0;
                 /*!< X-value of the center point of entity in paper
@@ -136,8 +155,8 @@ dxf_viewport
                  * Group code 1002. */
         int extended_entity_data_version;
                 /*!< Extended entity data version number.\n
-                 * For Releases 11 and 12, this field will always be
-                 * the integer 16.\n
+                 * For Releases 11, 12, 13 and 14, this field will
+                 * always be the integer 16.\n
                  * Group code = 1070. */
         double x_target;
                 /*!< View target point X-value.\n
@@ -158,56 +177,70 @@ dxf_viewport
                 /*!< View direction from target point Z-value.\n
                  * Group code = 1030. */
         double view_twist_angle;
-                /*!< group code = 1040. */
+                /*!< View twist angle.\n
+                 * Group code = 1040. */
         double view_height;
-                /*!< group code = 1040. */
+                /*!< View height.\n
+                 * Group code = 1040. */
         double x_center;
-                /*!< group code = 1040\n
-                 * view center point X-value. */
+                /*!< View center point X-value.\n
+                 * Group code = 1040. */
         double y_center;
-                /*!< group code = 1040\n
-                 * view center point Y-value. */
+                /*!< View center point Y-value.\n
+                 * Group code = 1040. */
         double perspective_lens_length;
                 /*!< group code = 1040. */
         double front_plane_offset;
-                /*!< group code = 1040\n
-                 * front clipping plane - offset from target point. */
+                /*!< Front clip plane Z value.\n
+                 * Group code = 1040. */
         double back_plane_offset;
-                /*!< group code = 1040\n
-                 * back clipping plane - offset from target point. */
+                /*!< Back clip plane Z value.\n
+                 * Group code = 1040. */
         int view_mode;
-                /*!< group code = 1070\n
-                 * View mode. */
+                /*!< View mode.\n
+                 * Group code = 1070. */
         int circle_zoom_percent;
-                /*!< group code = 1070. */
+                /*!< Circle zoom.\n
+                 * Group code = 1070. */
         int fast_zoom_setting;
-                /*!< group code = 1070. */
+                /*!< Fast zoom setting.\n
+                 * Group code = 1070. */
         int UCSICON_setting;
-                /*!< group code = 1070. */
+                /*!< UCSICON setting.\n
+                 * Group code = 1070. */
         int snap_on;
-                /*!< group code = 1070. */
+                /*!< Snap ON/OFF.\n
+                 * Group code = 1070. */
         int grid_on;
-                /*!< group code = 1070. */
+                /*!< Grid ON/OFF.\n
+                 * Group code = 1070. */
         int snap_style;
-                /*!< group code = 1070. */
+                /*!< Snap style.\n
+                 * Group code = 1070. */
         int snap_isopair;
-                /*!< group code = 1070. */
+                /*!< Snap ISOPAIR.\n
+                 * Group code = 1070. */
         double snap_rotation_angle;
-                /*!< group code = 1040. */
+                /*!< Snap angle.\n
+                 * Group code = 1040. */
         double x_snap_base;
-                /*!< group code = 1040.\n
-                 * snap base point UCS X-coordinate. */
+                /*!< Snap base point UCS X-coordinate.\n
+                 * Group code = 1040. */
         double y_snap_base;
-                /*!< group code = 1040.\n
-                 * snap base point UCS Y-coordinate. */
+                /*!< Snap base point UCS Y-coordinate.\n
+                 * Group code = 1040. */
         double x_snap_spacing;
-                /*!< group code = 1040. */
+                /*!< Snap X spacing.\n
+                 * Group code = 1040. */
         double y_snap_spacing;
-                /*!< group code = 1040. */
+                /*!< Snap Y spacing.\n
+                 * Group code = 1040. */
         double x_grid_spacing;
-                /*!< group code = 1040. */
+                /*!< Grid X spacing.\n
+                 * Group code = 1040. */
         double y_grid_spacing;
-                /*!< group code = 1040. */
+                /*!< Grid Y spacing.\n
+                 * Group code = 1040. */
         int plot_flag;
                 /*!< Hidden in plot flag.\n
                  * Group code = 1070. */
@@ -220,6 +253,7 @@ dxf_viewport
                  * This list may include Xref-dependent layers.\n
                  * Any number of 1003 groups may appear here.\n
                  * Group code = 1003.\n
+                 *
                  * \todo Implement the number of layers in a more
                  * efficient way.\n
                  * A lot of memory is consumed by reserving for
@@ -238,7 +272,7 @@ dxf_viewport
                  * This field will always be the string "}".\n
                  * Group code = 1002. */
         struct DxfViewport *next;
-                /*!< pointer to the next DxfViewport.\n
+                /*!< Pointer to the next DxfViewport.\n
                  * \c NULL in the last DxfViewport. */
 } DxfViewport;
 
