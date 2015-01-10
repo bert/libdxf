@@ -324,9 +324,11 @@ dxf_viewport_read
                         fscanf (fp->fp, "%s\n", dxf_viewport->app_name);
                         if (strcmp (dxf_viewport->app_name, "ACAD") == 1)
                         {
-                                fprintf (stderr, "Error in dxf_viewport_read () while reading from: %s in line: %d.\n",
-                                        fp->filename, fp->line_number);
-                                fprintf (stderr, "    unexpected content in string followed after group code 1001.\n");
+                                fprintf (stderr,
+                                  (_("Error in %s () while reading from: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                                fprintf (stderr,
+                                  (_("\tunexpected content in string followed after group code 1001.\n")));
                                 return (EXIT_FAILURE);
                         }
                         /* Now follows a string containing a group code. */
