@@ -35,4 +35,39 @@
 #include "vport.h"
 
 
+/*!
+ * \brief Allocate memory for a DXF \c VPORT entity.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfVPort *
+dxf_vport_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfVPort *dxf_vport = NULL;
+        size_t size;
+
+        size = sizeof (DxfVPort);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dxf_vport = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfVPort struct.\n")),
+                  __FUNCTION__);
+                dxf_vport = NULL;
+        }
+        else
+        {
+                memset (dxf_vport, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_vport);
+}
+
+
 /* EOF*/

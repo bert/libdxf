@@ -1,9 +1,9 @@
 /*!
  * \file vport.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Definition of a DXF viewport entity (\c VPORT).
+ * \brief Header file for a DXF Viewport symbol table entry (\c VPORT).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -159,6 +159,10 @@ dxf_vport
                 /*!< AutoCAD version number. */
 
 } DxfVPort;
+
+
+DxfVPort *
+dxf_vport_new ();
 
 
 #endif /* LIBDXF_SRC_VPORT_H */
