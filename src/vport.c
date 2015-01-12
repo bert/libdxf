@@ -70,4 +70,84 @@ dxf_vport_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c VPORT
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfVPort *
+dxf_vport_init
+(
+        DxfVPort *dxf_vport
+                /*!< DXF Viewport symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dxf_vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_vport = dxf_vport_new ();
+        }
+        if (dxf_vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfVPort struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dxf_vport->id_code = 0;
+        dxf_vport->viewport_name = strdup ("");
+        dxf_vport->x_min = 0.0;
+        dxf_vport->y_min = 0.0;
+        dxf_vport->x_max = 0.0;
+        dxf_vport->y_max = 0.0;
+        dxf_vport->x_center = 0.0;
+        dxf_vport->y_center = 0.0;
+        dxf_vport->x_snap_base = 0.0;
+        dxf_vport->y_snap_base = 0.0;
+        dxf_vport->x_snap_spacing = 0.0;
+        dxf_vport->y_snap_spacing = 0.0;
+        dxf_vport->x_grid_spacing = 0.0;
+        dxf_vport->y_grid_spacing = 0.0;
+        dxf_vport->x_direction = 0.0;
+        dxf_vport->y_direction = 0.0;
+        dxf_vport->z_direction = 0.0;
+        dxf_vport->x_target = 0.0;
+        dxf_vport->y_target = 0.0;
+        dxf_vport->z_target = 0.0;
+        dxf_vport->view_height = 0.0;
+        dxf_vport->viewport_aspect_ratio = 0.0;
+        dxf_vport->lens_length = 0.0;
+        dxf_vport->front_plane_offset = 0.0;
+        dxf_vport->back_plane_offset = 0.0;
+        dxf_vport->snap_rotation_angle = 0.0;
+        dxf_vport->view_twist_angle = 0.0;
+        dxf_vport->status_field = 0;
+        dxf_vport->id = 0;
+        dxf_vport->standard_flag = 0;
+        dxf_vport->view_mode = 0;
+        dxf_vport->circle_zoom_percent = 0;
+        dxf_vport->fast_zoom_setting = 0;
+        dxf_vport->UCSICON_setting = 0;
+        dxf_vport->snap_on = 0;
+        dxf_vport->grid_on = 0;
+        dxf_vport->snap_style = 0;
+        dxf_vport->snap_isopair = 0;
+        dxf_vport->dictionary_owner_soft = strdup ("");
+        dxf_vport->dictionary_owner_hard = strdup ("");
+        dxf_vport->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_vport);
+}
+
+
 /* EOF*/

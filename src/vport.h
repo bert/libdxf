@@ -171,6 +171,11 @@ dxf_vport
 
 DxfVPort *
 dxf_vport_new ();
+DxfVPort *
+dxf_vport_init
+(
+        DxfVPort *dxf_vport
+);
 
 
 #endif /* LIBDXF_SRC_VPORT_H */
