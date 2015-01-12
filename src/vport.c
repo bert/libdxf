@@ -150,4 +150,43 @@ dxf_vport_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c VPORT and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_vport_free
+(
+        DxfVPort *dxf_vport
+                /*!< Pointer to the memory occupied by the DXF \c VPORT
+                 * symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        if (dxf_vport->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfVPort was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dxf_vport->viewport_name);
+        free (dxf_vport->dictionary_owner_soft);
+        free (dxf_vport->dictionary_owner_hard);
+        free (dxf_vport);
+        dxf_vport = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
