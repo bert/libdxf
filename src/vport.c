@@ -168,8 +168,6 @@ dxf_vport_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         if (dxf_vport->next != NULL)
         {
                 fprintf (stderr,
