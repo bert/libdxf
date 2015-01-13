@@ -52,109 +52,137 @@ typedef struct
 dxf_vport
 {
         int id_code;
-                /*!< group code = 5. */
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
         char *viewport_name;
-                /*!< group code = 2. */
+                /*!< Group code = 2. */
         double x_min;
-                /*!< group code = 10\n
-                 * lower-left corner of viewport; 0.0 to 1.0. */
+                /*!< X value of the lower-left corner of viewport.\n
+                 * Group code = 10. */
         double y_min;
-                /*!< group code = 20\n
-                 * lower-left corner of viewport; 0.0 to 1.0. */
+                /*!< Y value of the lower-left corner of viewport.\n
+                 * Group code = 20. */
         double x_max;
-                /*!< group code = 11\n
-                 * upper-right corner. */
+                /*!< X value of the upper-right corner.\n
+                 * Group code = 11. */
         double y_max;
-                /*!< group code = 21\n
-                 * upper-right corner. */
+                /*!< Y value of the upper-right corner.\n
+                 * Group code = 21. */
         double x_center;
-                /*!< group code = 12\n
-                 * view center point, in World Coordinate System. */
+                /*!< X value of the view center point, in World
+                 * Coordinate System.\n
+                 * Group code = 12. */
         double y_center;
-                /*!< group code = 22\n
-                 * view center point, in World Coordinate System. */
+                /*!< Y value of the view center point, in World
+                 * Coordinate System.\n
+                 * Group code = 22. */
         double x_snap_base;
-                /*!< group code = 13\n
-                 * snap base point. */
+                /*!< X value of the snap base point.\n
+                 * Group code = 13. */
         double y_snap_base;
-                /*!< group code = 23\n
-                 * snap base point. */
+                /*!< Y value of the snap base point.\n
+                 * Group code = 23. */
         double x_snap_spacing;
-                /*!< group code = 14. */
+                /*!< X value of snap spacing X and Y.\n
+                 * Group code = 14. */
         double y_snap_spacing;
-                /*!< group code = 24. */
+                /*!< Y value of snap spacing X and Y.\n
+                 * Group code = 24. */
         double x_grid_spacing;
-                /*!< group code = 15. */
+                /*!< X value of  grid spacing X and Y.\n
+                 * Group code = 15. */
         double y_grid_spacing;
-                /*!< group code = 25. */
+                /*!< Y value of grid spacing X and Y.\n
+                 * Group code = 25. */
         double x_direction;
-                /*!< group code = 16\n
-                 * view direction from target point. */
+                /*!< X value of the view direction from target point.\n
+                 * Group code = 16. */
         double y_direction;
-                /*!< group code = 26\n
-                 * view direction from target point. */
+                /*!< Y value of the view direction from target point.\n
+                 * Group code = 26. */
         double z_direction;
-                /*!< group code = 36\n
-                 * view direction from target point. */
+                /*!< Z value of the view direction from target point.\n
+                 * Group code = 36. */
         double x_target;
-                /*!< group code = 17\n
-                 * view target point. */
+                /*!< X value of the view target point.\n
+                 * Group code = 17. */
         double y_target;
-                /*!< group code = 27\n
-                 * view target point. */
+                /*!< Y value of the view target point.\n
+                 * Group code = 27. */
         double z_target;
-                /*!< group code = 37\n
-                 * view target point. */
+                /*!< Z value of the view target point.\n
+                 * Group code = 37. */
         double view_height;
-                /*!< group code = 40. */
+                /*!< View height.\n
+                 * Group code = 40. */
         double viewport_aspect_ratio;
-                /*!< group code = 41. */
+                /*!< Viewport aspect ratio.\n
+                 * Group code = 41. */
         double lens_length;
-                /*!< group code = 42. */
+                /*!< Lens length.\n
+                 * Group code = 42. */
         double front_plane_offset;
-                /*!< group code = 43\n
-                 * front clipping plane - offset from target point. */
+                /*!< Front clipping plane - offset from target point.\n
+                 * Group code = 43. */
         double back_plane_offset;
-                /*!< group code = 44\n
-                 * back clipping plane - offset from target point. */
+                /*!< Back clipping plane - offset from target point.\n
+                 * Group code = 44. */
         double snap_rotation_angle;
-                /*!< group code = 50. */
+                /*!< Snap rotation angle.\n
+                 * Group code = 50. */
         double view_twist_angle;
-                /*!< group code = 51. */
+                /*!< View twist angle.\n
+                 * Group code = 51. */
         int status_field;
-                /*!< group code = 68. */
+                /*!< Status field (never saved in DXF).\n
+                 * Group code = 68. */
         int id;
-                /*!< group code = 69. */
+                /*!< ID (never saved in DXF).\n
+                 * Group code = 69. */
         int standard_flag;
-                /*!< group code = 70\n
-                 * bit coded:\n
-                 * 16 = if set, table entry is externally dependent on an
-                 *         Xref\n
-                 * 32 = if this bit and bit 16 are both set, the externally
-                 *         dependent Xref has been successfully resolved\n
-                 * 64 = if set, the table entry was referenced by at least
-                 *         one entity in the drawing the last time the drawing
-                 *         was edited.\n
+                /*!< Standard flag values (See "Common Group Codes for
+                 * Symbol Table Entries.").\n
+                 * Bit coded:\n
+                 * <ol>
+                 * <li value = "16"> If set, table entry is externally
+                 * dependent on an Xref.</li>
+                 * <li value = "32"> If this bit and bit 16 are both
+                 * set, the externally dependent Xref has been
+                 * successfully resolved.</li>
+                 * <li value = "64"> If set, the table entry was
+                 * referenced by at least one entity in the drawing the
+                 * last time the drawing was edited.</li>
+                 * </ol>
                  * This flag is for the benefit of AutoCAD commands; it can
                  * be ignored by most programs that read DXF files, and need
-                 * not be set by programs that write DXF files.\n */
+                 * not be set by programs that write DXF files.\n
+                 * Group code = 70. */
         int view_mode;
-                /*!< group code = 71\n
-                 * see VIEWMODE system variable in appendix A. */
+                /*!< See VIEWMODE system variable in appendix A.\n
+                 * Group code = 71. */
         int circle_zoom_percent;
-                /*!< group code = 72. */
+                /*!< Circle zoom percent.\n
+                 * Group code = 72. */
         int fast_zoom_setting;
-                /*!< group code = 73. */
+                /*!< Fast zoom setting.\n
+                 * Group code = 73. */
         int UCSICON_setting;
-                /*!< group code = 74. */
+                /*!< UCSICON setting.\n
+                 * Group code = 74. */
         int snap_on;
-                /*!< group code = 75. */
+                /*!< Snap on/off.\n
+                 * Group code = 75. */
         int grid_on;
-                /*!< group code = 76. */
+                /*!< Grid on/off.\n
+                 * Group code = 76. */
         int snap_style;
-                /*!< group code = 77. */
+                /*!< Snap style.\n
+                 * Group code = 77. */
         int snap_isopair;
-                /*!< group code = 78. */
+                /*!< Snap isopair.\n
+                 * Group code = 78. */
         char *dictionary_owner_soft;
                 /*!< Soft-pointer ID/handle to owner dictionary
                  * (optional).\n
