@@ -207,7 +207,7 @@ dxf_viewport_init
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-int
+DxfViewport *
 dxf_viewport_read
 (
         DxfFile *fp,
@@ -240,7 +240,7 @@ dxf_viewport_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
-                        return (EXIT_FAILURE);
+                        return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
@@ -379,7 +379,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string followed after group code 1001.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
@@ -391,7 +391,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the viewport
                          * data, always "MVIEW". */
@@ -404,7 +404,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
@@ -416,7 +416,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the window
                          * begin descriptor, always "{". */
@@ -428,7 +428,7 @@ dxf_viewport_read
                                   (_("Error in %s () while reading from: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr, "    unexpected content in string.\n");
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
@@ -440,7 +440,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the extended
                          * entity data version number. */
@@ -456,7 +456,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the X-target. */
                         (fp->line_number)++;
@@ -471,7 +471,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the Y-target. */
                         (fp->line_number)++;
@@ -486,7 +486,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the Z-target. */
                         (fp->line_number)++;
@@ -501,7 +501,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the X-direction. */
                         (fp->line_number)++;
@@ -516,7 +516,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the Y-direction. */
                         (fp->line_number)++;
@@ -531,7 +531,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the Z-direction. */
                         (fp->line_number)++;
@@ -546,7 +546,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the view
                          * twist angle. */
@@ -562,7 +562,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the view
                          * height. */
@@ -578,7 +578,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the
                          * X-coordinate of the view center point. */
@@ -594,7 +594,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the
                          * Y-coordinate of the view center point. */
@@ -610,7 +610,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the
                          * perspective lens length. */
@@ -626,7 +626,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the front
                          * clipping plane offset. */
@@ -642,7 +642,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the back
                          * clipping plane offset. */
@@ -658,7 +658,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the view mode. */
                         (fp->line_number)++;
@@ -673,7 +673,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the circle
                          * zoom percent. */
@@ -689,7 +689,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the fast zoom
                          * setting. */
@@ -705,7 +705,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the ICS ICON
                          * setting. */
@@ -721,7 +721,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the snap on
                          * setting. */
@@ -737,7 +737,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the grid on
                          * setting. */
@@ -753,7 +753,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the snap
                          * style setting. */
@@ -769,7 +769,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the snap
                          * isopair setting. */
@@ -785,7 +785,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the snap
                          * rotation angle. */
@@ -801,7 +801,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the X snap
                          * base. */
@@ -817,7 +817,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the Y snap
                          * base. */
@@ -833,7 +833,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the X snap
                          * spacing. */
@@ -849,7 +849,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the Y snap
                          * spacing. */
@@ -865,7 +865,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the plot flag. */
                         (fp->line_number)++;
@@ -880,7 +880,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the frozen
                          * layer list begin descriptor, always "{". */
@@ -893,6 +893,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string.\n")));
+                                return (NULL);
                         }
                         /* Now follows a string containing a group code
                          * value of "1003". */
@@ -926,6 +927,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected end of frozen layer list found.\n")));
+                                return (NULL);
                         }
                         /* Now we are expecting temp_string to contain a
                          * group code value of "1002". */
@@ -936,7 +938,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the frozen
                          * layer list end descriptor, always "}". */
@@ -949,6 +951,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string.\n")));
+                                return (NULL);
                         }
                         /* Now follows a string containing a group code. */
                         (fp->line_number)++;
@@ -960,7 +963,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string sequence found.\n")));
-                                return (EXIT_FAILURE);
+                                return (NULL);
                         }
                         /* Now follows a string containing the window
                          * end descriptor, always "}". */
@@ -973,6 +976,7 @@ dxf_viewport_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                                 fprintf (stderr,
                                   (_("\tunexpected content in string.\n")));
+                                return (NULL);
                         }
                 }
                 /* End of sequential ordered data fields. */
@@ -995,7 +999,7 @@ dxf_viewport_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (dxf_viewport);
 }
 
 

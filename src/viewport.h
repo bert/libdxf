@@ -290,7 +290,7 @@ dxf_viewport_init
 (
         DxfViewport *dxf_viewport
 );
-int
+DxfViewport *
 dxf_viewport_read
 (
         DxfFile *fp,
