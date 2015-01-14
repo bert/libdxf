@@ -157,6 +157,358 @@ dxf_vport_init
 
 
 /*!
+ * \brief Read data from a DXF file into an \c VPORT symbol table entry.
+ *
+ * The last line read from file contained the string "VPORT". \n
+ * Now follows some data for the \c VPORT, to be terminated with a
+ * "  0" string announcing the following entity, or the end of the
+ * \c TABLE section marker \c ENDTAB. \n
+ * While parsing the DXF file store data in \c dxf_vport. \n
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+DxfVPort *
+dxf_vport_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfVPort *dxf_vport
+                /*!< DXF vport symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+
+        /* Do some basic checks. */
+        if (dxf_vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dxf_vport = dxf_vport_new ();
+                dxf_vport = dxf_vport_init (dxf_vport);
+        }
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        return (NULL);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &dxf_vport->id_code);
+                }
+                else if (strcmp (temp_string, "2") == 0)
+                {
+                        /* Now follows a string containing a viewport
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_vport->viewport_name);
+                }
+                else if (strcmp (temp_string, "10") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X value of the lower-left corner of viewport. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->x_min);
+                }
+                else if (strcmp (temp_string, "20") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y value of the lower-left corner of viewport. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->y_min);
+                }
+                else if (strcmp (temp_string, "11") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X value of the upper-right corner of viewport. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->x_max);
+                }
+                else if (strcmp (temp_string, "21") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y value of the upper-right corner of viewport. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->y_max);
+                }
+                else if (strcmp (temp_string, "12") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X value of the view center point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->x_center);
+                }
+                else if (strcmp (temp_string, "22") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y value of the view center point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->y_center);
+                }
+                else if (strcmp (temp_string, "13") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X value of the snap base point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->x_snap_base);
+                }
+                else if (strcmp (temp_string, "23") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y value of the snap base point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->y_snap_base);
+                }
+                else if (strcmp (temp_string, "14") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X value of snap spacing X and Y. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->x_snap_spacing);
+                }
+                else if (strcmp (temp_string, "24") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y value of snap spacing X and Y. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->y_snap_spacing);
+                }
+                else if (strcmp (temp_string, "15") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X value of grid spacing X and Y. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->x_grid_spacing);
+                }
+                else if (strcmp (temp_string, "25") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y value of grid spacing X and Y. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->y_grid_spacing);
+                }
+                else if (strcmp (temp_string, "16") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X value of the view direction from target point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->x_direction);
+                }
+                else if (strcmp (temp_string, "26") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y value of the view direction from target point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->y_direction);
+                }
+                else if (strcmp (temp_string, "36") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z value of the view direction from target point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->z_direction);
+                }
+                else if (strcmp (temp_string, "17") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X value of the view target point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->x_target);
+                }
+                else if (strcmp (temp_string, "27") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y value of the view target point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->y_target);
+                }
+                else if (strcmp (temp_string, "37") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z value of the view target point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->z_target);
+                }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the view
+                         * height. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->view_height);
+                }
+                else if (strcmp (temp_string, "41") == 0)
+                {
+                        /* Now follows a string containing the viewport
+                         * aspect ratio. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->viewport_aspect_ratio);
+                }
+                else if (strcmp (temp_string, "42") == 0)
+                {
+                        /* Now follows a string containing the lens
+                         * length. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->viewport_aspect_ratio);
+                }
+                else if (strcmp (temp_string, "43") == 0)
+                {
+                        /* Now follows a string containing the front
+                         * clipping plane - offset from target point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->front_plane_offset);
+                }
+                else if (strcmp (temp_string, "44") == 0)
+                {
+                        /* Now follows a string containing the back
+                         * clipping plane - offset from target point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->back_plane_offset);
+                }
+                else if (strcmp (temp_string, "50") == 0)
+                {
+                        /* Now follows a string containing the snap
+                         * rotation angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->snap_rotation_angle);
+                }
+                else if (strcmp (temp_string, "51") == 0)
+                {
+                        /* Now follows a string containing the view
+                         * twist angle. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vport->view_twist_angle);
+                }
+                else if (strcmp (temp_string, "68") == 0)
+                {
+                        /* Now follows a string containing the
+                         * status field value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vport->status_field);
+                }
+                else if (strcmp (temp_string, "69") == 0)
+                {
+                        /* Now follows a string containing the
+                         * ID value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vport->id);
+                }
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing the
+                         * standard flag value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vport->standard_flag);
+                }
+                else if (strcmp (temp_string, "71") == 0)
+                {
+                        /* Now follows a string containing the
+                         * view mode value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vport->view_mode);
+                }
+                else if (strcmp (temp_string, "72") == 0)
+                {
+                        /* Now follows a string containing the circle
+                         * zoom percent value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vport->circle_zoom_percent);
+                }
+                else if (strcmp (temp_string, "73") == 0)
+                {
+                        /* Now follows a string containing the fast
+                         * zoom setting value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vport->fast_zoom_setting);
+                }
+                else if (strcmp (temp_string, "74") == 0)
+                {
+                        /* Now follows a string containing the UCSICON
+                         * setting value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vport->UCSICON_setting);
+                }
+                else if (strcmp (temp_string, "75") == 0)
+                {
+                        /* Now follows a string containing the snap
+                         * on/off value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vport->snap_on);
+                }
+                else if (strcmp (temp_string, "76") == 0)
+                {
+                        /* Now follows a string containing the grid
+                         * on/off value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vport->grid_on);
+                }
+                else if (strcmp (temp_string, "77") == 0)
+                {
+                        /* Now follows a string containing the snap
+                         * style value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vport->snap_style);
+                }
+                else if (strcmp (temp_string, "78") == 0)
+                {
+                        /* Now follows a string containing the snap
+                         * isopair value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vport->snap_isopair);
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_vport->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_vport->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+
+        }
+        /* Handle omitted members and/or illegal values. */
+        if ((strcmp (dxf_vport->viewport_name, "") == 0)
+          || (dxf_vport->viewport_name == NULL))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () empty string in viewport name found while reading from: %s in line: %d.\n")),
+                  __FUNCTION__, fp->filename, fp->line_number);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dxf_vport);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c VPORT and all it's
  * data fields.
  *
