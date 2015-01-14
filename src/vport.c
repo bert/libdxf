@@ -5,6 +5,12 @@
  *
  * \brief Functions for a DXF Viewport symbol table entry (\c VPORT).
  *
+ * The VPORT table is unique: it may contain several entries with the
+ * same name (indicating a multiple-viewport configuration).\n
+ * The entries corresponding to the active viewport configuration all
+ * have the name *ACTIVE.\n
+ * The first such entry describes the current viewport.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
