@@ -91,7 +91,7 @@ dxf_vport
                 /*!< Y value of snap spacing X and Y.\n
                  * Group code = 24. */
         double x_grid_spacing;
-                /*!< X value of  grid spacing X and Y.\n
+                /*!< X value of grid spacing X and Y.\n
                  * Group code = 15. */
         double y_grid_spacing;
                 /*!< Y value of grid spacing X and Y.\n
