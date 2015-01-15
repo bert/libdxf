@@ -509,6 +509,122 @@ dxf_vport_read
 
 
 /*!
+ * \brief Write DXF output to a file for a DXF \c VPORT symbol table
+ * entry.
+ */
+int
+dxf_vport_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfVPort *dxf_vport
+                /*!< DXF VPORT symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("VPORT");
+
+        /* Do some basic checks. */
+        if (dxf_vport == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if ((dxf_vport->viewport_name == NULL)
+          || (strcmp (dxf_vport->viewport_name, "") == 0))
+        {
+                fprintf (stderr,
+                  (_("Error: empty viewport name string for the %s entity with id-code: %x\n")),
+                  dxf_entity_name, dxf_vport->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is discarded from output.\n")),
+                  dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (dxf_vport->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", dxf_vport->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_vport->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_vport->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_vport->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_vport->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
+                fprintf (fp->fp, "100\nAcDbViewportTableRecord\n");
+        }
+        fprintf (fp->fp, "  2\n%s\n", dxf_vport->viewport_name);
+        fprintf (fp->fp, " 70\n%d\n", dxf_vport->standard_flag);
+        fprintf (fp->fp, " 10\n%f\n", dxf_vport->x_min);
+        fprintf (fp->fp, " 20\n%f\n", dxf_vport->y_min);
+        fprintf (fp->fp, " 11\n%f\n", dxf_vport->x_max);
+        fprintf (fp->fp, " 21\n%f\n", dxf_vport->y_max);
+        fprintf (fp->fp, " 12\n%f\n", dxf_vport->x_center);
+        fprintf (fp->fp, " 22\n%f\n", dxf_vport->y_center);
+        fprintf (fp->fp, " 13\n%f\n", dxf_vport->x_snap_base);
+        fprintf (fp->fp, " 23\n%f\n", dxf_vport->y_snap_base);
+        fprintf (fp->fp, " 14\n%f\n", dxf_vport->x_snap_spacing);
+        fprintf (fp->fp, " 24\n%f\n", dxf_vport->y_snap_spacing);
+        fprintf (fp->fp, " 15\n%f\n", dxf_vport->x_grid_spacing);
+        fprintf (fp->fp, " 25\n%f\n", dxf_vport->y_grid_spacing);
+        fprintf (fp->fp, " 16\n%f\n", dxf_vport->x_direction);
+        fprintf (fp->fp, " 26\n%f\n", dxf_vport->y_direction);
+        fprintf (fp->fp, " 36\n%f\n", dxf_vport->z_direction);
+        fprintf (fp->fp, " 17\n%f\n", dxf_vport->x_target);
+        fprintf (fp->fp, " 27\n%f\n", dxf_vport->y_target);
+        fprintf (fp->fp, " 37\n%f\n", dxf_vport->z_target);
+        fprintf (fp->fp, " 40\n%f\n", dxf_vport->view_height);
+        fprintf (fp->fp, " 41\n%f\n", dxf_vport->viewport_aspect_ratio);
+        fprintf (fp->fp, " 42\n%f\n", dxf_vport->lens_length);
+        fprintf (fp->fp, " 43\n%f\n", dxf_vport->front_plane_offset);
+        fprintf (fp->fp, " 44\n%f\n", dxf_vport->back_plane_offset);
+        fprintf (fp->fp, " 50\n%f\n", dxf_vport->snap_rotation_angle);
+        fprintf (fp->fp, " 51\n%f\n", dxf_vport->view_twist_angle);
+//        fprintf (fp->fp, " 68\n%d\n", dxf_vport->status_field);
+//        fprintf (fp->fp, " 69\n%d\n", dxf_vport->id);
+        fprintf (fp->fp, " 71\n%d\n", dxf_vport->view_mode);
+        fprintf (fp->fp, " 72\n%d\n", dxf_vport->circle_zoom_percent);
+        fprintf (fp->fp, " 73\n%d\n", dxf_vport->fast_zoom_setting);
+        fprintf (fp->fp, " 74\n%d\n", dxf_vport->UCSICON_setting);
+        fprintf (fp->fp, " 75\n%d\n", dxf_vport->snap_on);
+        fprintf (fp->fp, " 76\n%d\n", dxf_vport->grid_on);
+        fprintf (fp->fp, " 77\n%d\n", dxf_vport->snap_style);
+        fprintf (fp->fp, " 78\n%d\n", dxf_vport->snap_isopair);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c VPORT and all it's
  * data fields.
  *

@@ -211,6 +211,12 @@ dxf_vport_read
         DxfVPort *dxf_vport
 );
 int
+dxf_vport_write
+(
+        DxfFile *fp,
+        DxfVPort *dxf_vport
+);
+int
 dxf_vport_free
 (
         DxfVPort *dxf_vport
