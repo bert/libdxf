@@ -245,7 +245,8 @@ dxf_appid_read
 
 
 /*!
- * \brief Write DXF output to a file for a DXF \c APPID entity.
+ * \brief Write DXF output to a file for a DXF \c APPID symbol table
+ * entry.
  *
  * \version According to DXF R12.
  * \version According to DXF R13.
@@ -257,7 +258,7 @@ dxf_appid_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfAppid *dxf_appid
-                /*!< DXF appid entity. */
+                /*!< DXF APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -284,8 +285,8 @@ dxf_appid_write
           || (strcmp (dxf_appid->application_name, "") == 0))
         {
                 fprintf (stderr,
-                  (_("Warning: empty block name string for the %s entity with id-code: %x\n")),
-                  dxf_entity_name, dxf_appid->id_code);
+                  (_("Error in %s empty block name string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_appid->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
