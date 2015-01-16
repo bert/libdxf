@@ -47,6 +47,12 @@
  * The entries corresponding to the active viewport configuration all have
  * the name *ACTIVE.\n
  * The first such entry describes the current viewport.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_vport

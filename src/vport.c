@@ -45,6 +45,12 @@
  * \brief Allocate memory for a DXF \c VPORT entity.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfVPort *
 dxf_vport_new ()
@@ -82,6 +88,12 @@ dxf_vport_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfVPort *
 dxf_vport_init
@@ -167,6 +179,12 @@ dxf_vport_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfVPort *
 dxf_vport_read
@@ -511,6 +529,12 @@ dxf_vport_read
 /*!
  * \brief Write DXF output to a file for a DXF \c VPORT symbol table
  * entry.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_vport_write
@@ -630,6 +654,12 @@ dxf_vport_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_vport_free
