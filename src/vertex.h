@@ -1,7 +1,7 @@
 /*!
  * \file vertex.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF vertex entity (\c VERTEX).
  *
@@ -62,68 +62,95 @@
  * The first zero \c VERTEX marks the end of the vertices of the face.\n
  * Since the 71 through 74 groups are optional fields with default values of
  * zero, they are present in DXF only if nonzero.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_vertex
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< group code = 5\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                 * file.\n
+                 * Group code = 5. */
         char *linetype;
-                /*!< group code = 6\n
-                 * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-                /*!< group code = 8\n
-                 * Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
+        double elevation;
+                /*!< Elevation of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default).\n
+                 * Group code = 38. */
         double thickness;
-                /*!< group code = 39\n
-                 * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                /*!< Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
+        double linetype_scale;
+                /*!< Linetype scale (optional).\n
+                 * Group code = 48. */
+        int16_t visibility;
+                /*!< Object visibility (optional):\n
+                 * <ol>
+                 * <li value = "0"> Visible</li>
+                 * <li value = "1"> Invisible</li>
+                 * </ol>
+                 * Group code = 60. */
         int color;
-                /*!< group code = 62\n
-                 * Color of the entity.\n
+                /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity. */
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
         int paperspace;
-                /*!< group code = 67\n
-                 * Entities are to be drawn on either \c PAPERSPACE or
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
-                 * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int acad_version_number;
-                /*!< AutoCAD version number. */
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
         /* Specific members for a DXF vertex. */
         double x0;
-                /*!< group code = 10. */
+                /*!< X value of the location point.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20. */
+                /*!< Y value of the location point.\n
+                 * Group code = 20. */
         double z0;
-                /*!< group code = 30. */
+                /*!< Z value of the location point.\n
+                 * Group code = 30. */
         double start_width;
-                /*!< group code = 40\n
-                 * optional, defaults to 0.0. */
+                /*!< Starting width (optional, defaults to 0.0).\n
+                 * Group code = 40. */
         double end_width;
-                /*!< group code = 41\n
-                 * optional, defaults to 0.0. */
+                /*!< Ending width (optional, defaults to 0.0).\n
+                 * Group code = 41. */
         double bulge;
-                /*!< group code = 42\n
-                 * optional, defaults to 0.0\n
-                 * the bulge is the tangent of 1/4 the included angle for an
+                /*!< Bulge (optional, defaults to 0.0).\n
+                 * The bulge is the tangent of 1/4 the included angle for an
                  * arc segment, made negative if the arc goes clockwise from
                  * the start point to the endpoint; a bulge of 0 indicates a
-                 * straight segment, and a bulge of 1 is a semicircle. */
+                 * straight segment, and a bulge of 1 is a semicircle.\n
+                 * Group code = 42. */
         double curve_fit_tangent_direction;
-                /*!< group code = 50\n
-                 * optional. */
+                /*!< Curve fit tangent direction.\n
+                 * Group code = 50. */
         int flag;
-                /*!< group code = 70\n
-                 * Optional, defaults to 0\n
+                /*!< Flag (optional, defaults to 0)\n
                  * Bit coded:\n
                  * <ol>
                  * <li value = "1"> Extra vertex created by curve-fitting.</li>
@@ -138,21 +165,30 @@ dxf_vertex
                  * <li value = "32"> 3D Polyline vertex.</li>
                  * <li value = "64"> 3D polygon mesh vertex.</li>
                  * <li value = "128"> Polyface mesh vertex.</li>
-                 * </ol> */
+                 * </ol>
+                 * Group code = 70. */
         int polyface_mesh_vertex_index_1;
-                /*!< group code = 71\n
-                 * optional, defaults to 0. */
+                /*!< Polyface mesh vertex index.\n
+                 * Optional.\n
+                 * Present only if nonzero.\n
+                 * Group code = 71. */
         int polyface_mesh_vertex_index_2;
-                /*!< group code = 72\n
-                 * optional, defaults to 0. */
+                /*!< Polyface mesh vertex index.\n
+                 * Optional.\n
+                 * Present only if nonzero.\n
+                 * Group code = 72. */
         int polyface_mesh_vertex_index_3;
-                /*!< group code = 73\n
-                 * optional, defaults to 0. */
+                /*!< Polyface mesh vertex index.\n
+                 * Optional.\n
+                 * Present only if nonzero.\n
+                 * Group code = 73. */
         int polyface_mesh_vertex_index_4;
-                /*!< group code = 74\n
-                 * optional, defaults to 0. */
+                /*!< Polyface mesh vertex index.\n
+                 * Optional.\n
+                 * Present only if nonzero.\n
+                 * Group code = 74. */
         struct DxfVertex *next;
-                /*!< pointer to the next DxfVertex.\n
+                /*!< Pointer to the next DxfVertex.\n
                  * \c NULL in the last DxfVertex. */
 } DxfVertex;
 

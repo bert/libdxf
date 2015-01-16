@@ -1,7 +1,7 @@
 /*!
  * \file vertex.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF vertex entity (\c VERTEX).
  *
@@ -39,6 +39,12 @@
  * \brief Allocate memory for a \c DxfVertex.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfVertex *
 dxf_vertex_new ()
@@ -55,7 +61,7 @@ dxf_vertex_new ()
         if ((dxf_vertex = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () could not allocate memory for a DxfVertex struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfVertex struct.\n")),
                   __FUNCTION__);
                 dxf_vertex = NULL;
         }
@@ -75,6 +81,12 @@ dxf_vertex_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfVertex *
 dxf_vertex_init
@@ -90,14 +102,14 @@ dxf_vertex_init
         if (dxf_vertex == NULL)
         {
                 fprintf (stderr,
-                  (_("WARNING in %s () a NULL pointer was passed.\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_vertex = dxf_vertex_new ();
         }
         if (dxf_vertex == NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () could not allocate memory for a DxfVertex struct.\n")),
+                (_("Error in %s () could not allocate memory for a DxfVertex struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -107,15 +119,19 @@ dxf_vertex_init
         dxf_vertex->x0 = 0.0;
         dxf_vertex->y0 = 0.0;
         dxf_vertex->z0 = 0.0;
+        dxf_vertex->elevation = 0.0;
         dxf_vertex->thickness = 0.0;
         dxf_vertex->start_width = 0.0;
         dxf_vertex->end_width = 0.0;
         dxf_vertex->bulge = 0.0;
         dxf_vertex->curve_fit_tangent_direction = 0.0;
+        dxf_vertex->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_vertex->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_vertex->color = DXF_COLOR_BYLAYER;
         dxf_vertex->paperspace = DXF_MODELSPACE;
         dxf_vertex->flag = 0;
-        dxf_vertex->acad_version_number = 0;
+        dxf_vertex->dictionary_owner_soft = strdup ("");
+        dxf_vertex->dictionary_owner_hard = strdup ("");
         dxf_vertex->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -134,6 +150,12 @@ dxf_vertex_init
  * While parsing the DXF file store data in \c dxf_vertex. \n
  *
  * \return a pointer to \c dxf_vertex.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfVertex *
 dxf_vertex_read
@@ -156,7 +178,7 @@ dxf_vertex_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_vertex = dxf_vertex_new ();
-                dxf_vertex_init (dxf_vertex);
+                dxf_vertex = dxf_vertex_init (dxf_vertex);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -211,17 +233,14 @@ dxf_vertex_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_vertex->z0);
                 }
-                else if ((dxf_vertex->acad_version_number <= AutoCAD_11)
+                else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_vertex->z0 = 0.0))
+                        && (dxf_vertex->elevation != 0.0))
                 {
-                        /* Elevation is a pre AutoCAD R11 variable
-                         * so additional testing for the version should
-                         * probably be added.
-                         * Now follows a string containing the
+                        /* Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_vertex->z0);
+                        fscanf (fp->fp, "%lf\n", &dxf_vertex->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -251,6 +270,27 @@ dxf_vertex_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_vertex->bulge);
                 }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vertex->linetype_scale);
+                }
+                else if (strcmp (temp_string, "50") == 0)
+                {
+                        /* Now follows a string containing the
+                         * curve fitting tangent. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_vertex->curve_fit_tangent_direction);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_vertex->visibility);
+                }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
@@ -265,16 +305,71 @@ dxf_vertex_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_vertex->paperspace);
                 }
-                else if ((dxf_vertex->acad_version_number >= AutoCAD_12)
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing the flag
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vertex->flag);
+                }
+                else if (strcmp (temp_string, "71") == 0)
+                {
+                        /* Now follows a string containing the Polyface
+                         * mesh vertex index value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vertex->polyface_mesh_vertex_index_1);
+                }
+                else if (strcmp (temp_string, "72") == 0)
+                {
+                        /* Now follows a string containing the Polyface
+                         * mesh vertex index value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vertex->polyface_mesh_vertex_index_2);
+                }
+                else if (strcmp (temp_string, "73") == 0)
+                {
+                        /* Now follows a string containing the Polyface
+                         * mesh vertex index value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vertex->polyface_mesh_vertex_index_3);
+                }
+                else if (strcmp (temp_string, "74") == 0)
+                {
+                        /* Now follows a string containing the Polyface
+                         * mesh vertex index value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &dxf_vertex->polyface_mesh_vertex_index_4);
+                }
+                else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
-                        /* Subclass markers are post AutoCAD R12
-                         * variable so additional testing for the
-                         * version should probably be added here.
-                         * Now follows a string containing the
+                        /* Now follows a string containing the
                          * subclass marker value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && (strcmp (temp_string, "AcDbVertex") != 0)
+                        && (strcmp (temp_string, "AcDb2dVertex") != 0)
+                        && (strcmp (temp_string, "AcDb3dPolylineVertex") != 0))
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_vertex->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_vertex->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -286,7 +381,7 @@ dxf_vertex_read
                 else
                 {
                         fprintf (stderr,
-                          (_("Warning: in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
@@ -308,6 +403,15 @@ dxf_vertex_read
 
 /*!
  * \brief Write DXF output to fp for a vertex entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_vertex_write
@@ -357,6 +461,30 @@ dxf_vertex_write
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_vertex->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_vertex->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_vertex->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_vertex->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_vertex->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
@@ -370,9 +498,23 @@ dxf_vertex_write
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_vertex->linetype);
         }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_vertex->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_vertex->elevation);
+        }
         if (dxf_vertex->color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp->fp, " 62\n%d\n", dxf_vertex->color);
+        }
+        if (dxf_vertex->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_vertex->linetype_scale);
+        }
+        if (dxf_vertex->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_vertex->visibility);
         }
         /*! \todo Put \c thickness in the correct order. */ 
         if (dxf_vertex->thickness != 0.0)
@@ -434,6 +576,12 @@ dxf_vertex_write
  * 
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_vertex_free
@@ -454,6 +602,8 @@ dxf_vertex_free
         }
         free (dxf_vertex->linetype);
         free (dxf_vertex->layer);
+        free (dxf_vertex->dictionary_owner_soft);
+        free (dxf_vertex->dictionary_owner_hard);
         free (dxf_vertex);
         dxf_vertex = NULL;
 #if DEBUG
