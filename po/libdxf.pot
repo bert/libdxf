@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-06 21:47+0100\n"
+"POT-Creation-Date: 2015-01-17 16:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,7 +41,8 @@ msgstr ""
 #: src/shape.c:192 src/solid.c:112 src/solid.c:192 src/spline.c:303
 #: src/spline.c:414 src/table.c:107 src/table.c:162 src/text.c:105
 #: src/text.c:190 src/thumbnail.c:127 src/thumbnail.c:195 src/trace.c:109
-#: src/trace.c:187 src/vertex.c:156
+#: src/trace.c:187 src/vertex.c:105 src/vertex.c:178 src/viewport.c:108
+#: src/viewport.c:228
 #, c-format
 msgid "Warning in %s () a NULL pointer was passed.\n"
 msgstr ""
@@ -55,7 +56,17 @@ msgstr ""
 #: src/oleframe.c:184 src/point.c:204 src/polyline.c:199 src/ray.c:194
 #: src/region.c:188 src/seqend.c:186 src/shape.c:204 src/solid.c:204
 #: src/spline.c:435 src/table.c:174 src/text.c:202 src/thumbnail.c:214
-#: src/trace.c:199 src/vertex.c:168
+#: src/trace.c:199 src/vertex.c:190 src/viewport.c:240 src/viewport.c:378
+#: src/viewport.c:390 src/viewport.c:403 src/viewport.c:415 src/viewport.c:428
+#: src/viewport.c:439 src/viewport.c:455 src/viewport.c:470 src/viewport.c:485
+#: src/viewport.c:500 src/viewport.c:515 src/viewport.c:530 src/viewport.c:545
+#: src/viewport.c:561 src/viewport.c:577 src/viewport.c:593 src/viewport.c:609
+#: src/viewport.c:625 src/viewport.c:641 src/viewport.c:657 src/viewport.c:672
+#: src/viewport.c:688 src/viewport.c:704 src/viewport.c:720 src/viewport.c:736
+#: src/viewport.c:752 src/viewport.c:768 src/viewport.c:784 src/viewport.c:800
+#: src/viewport.c:816 src/viewport.c:832 src/viewport.c:848 src/viewport.c:864
+#: src/viewport.c:879 src/viewport.c:892 src/viewport.c:926 src/viewport.c:937
+#: src/viewport.c:950 src/viewport.c:962 src/viewport.c:975
 #, c-format
 msgid "Error in %s () while reading from: %s in line: %d.\n"
 msgstr ""
@@ -66,7 +77,7 @@ msgstr ""
 #: src/ellipse.c:329 src/helix.c:487 src/image.c:419 src/insert.c:372
 #: src/layer.c:216 src/line.c:316 src/mtext.c:419 src/oleframe.c:291
 #: src/point.c:312 src/seqend.c:265 src/shape.c:340 src/text.c:365
-#: src/trace.c:363
+#: src/trace.c:363 src/vertex.c:356
 #, c-format
 msgid "Warning in %s () found a bad subclass marker in: %s in line: %d.\n"
 msgstr ""
@@ -84,7 +95,7 @@ msgstr ""
 #: src/ltype.c:344 src/lwpolyline.c:361 src/mtext.c:455 src/oleframe.c:326
 #: src/polyline.c:408 src/ray.c:344 src/region.c:318 src/seqend.c:293
 #: src/shape.c:389 src/solid.c:413 src/spline.c:755 src/table.c:210
-#: src/thumbnail.c:245 src/trace.c:412
+#: src/thumbnail.c:245 src/trace.c:412 src/vertex.c:384 src/viewport.c:986
 #, c-format
 msgid ""
 "Warning in %s () unknown string tag found while reading from: %s in line: "
@@ -93,8 +104,8 @@ msgstr ""
 
 #: src/3dface.c:425 src/3dface.c:578 src/3dface.c:612 src/3dface.c:646
 #: src/3dface.c:680 src/3dsolid.c:386 src/acad_proxy_entity.c:404
-#: src/appid.c:279 src/appid.c:409 src/appid.c:449 src/appid.c:492
-#: src/appid.c:533 src/arc.c:416 src/attdef.c:505 src/attdef.c:751
+#: src/appid.c:280 src/appid.c:410 src/appid.c:450 src/appid.c:493
+#: src/appid.c:534 src/arc.c:416 src/attdef.c:505 src/attdef.c:751
 #: src/attdef.c:785 src/attdef.c:819 src/attdef.c:854 src/attrib.c:503
 #: src/block.c:365 src/body.c:375 src/circle.c:381 src/class.c:287
 #: src/dimension.c:663 src/dimstyle.c:192 src/ellipse.c:432 src/hatch.c:2348
@@ -109,7 +120,7 @@ msgstr ""
 #: src/region.c:366 src/section.c:154 src/seqend.c:358 src/shape.c:454
 #: src/solid.c:463 src/spline.c:810 src/table.c:251 src/table.c:300
 #: src/text.c:469 src/text.c:677 src/thumbnail.c:307 src/trace.c:462
-#: src/vertex.c:330
+#: src/vertex.c:434 src/viewport.c:1036
 #, c-format
 msgid "Error in %s () a NULL pointer was passed.\n"
 msgstr ""
@@ -119,7 +130,8 @@ msgstr ""
 #: src/helix.c:660 src/image.c:492 src/insert.c:476 src/lwpolyline.c:419
 #: src/mtext.c:517 src/oleframe.c:388 src/point.c:418 src/polyline.c:480
 #: src/ray.c:418 src/region.c:373 src/seqend.c:365 src/shape.c:468
-#: src/solid.c:470 src/spline.c:817 src/trace.c:469 src/vertex.c:337
+#: src/solid.c:470 src/spline.c:817 src/trace.c:469 src/vertex.c:441
+#: src/viewport.c:1043
 #, c-format
 msgid ""
 "Warning in %s () empty linetype string for the %s entity with id-code: %x\n"
@@ -131,6 +143,7 @@ msgstr ""
 #: src/lwpolyline.c:422 src/mtext.c:520 src/oleframe.c:391 src/point.c:421
 #: src/polyline.c:483 src/ray.c:421 src/region.c:376 src/seqend.c:368
 #: src/shape.c:471 src/solid.c:473 src/spline.c:820 src/trace.c:472
+#: src/viewport.c:1046
 #, c-format
 msgid "\t%s entity is reset to default linetype"
 msgstr ""
@@ -141,7 +154,7 @@ msgstr ""
 #: src/lwpolyline.c:429 src/mtext.c:527 src/oleframe.c:398 src/point.c:428
 #: src/polyline.c:490 src/ray.c:428 src/region.c:383 src/seqend.c:375
 #: src/shape.c:478 src/solid.c:480 src/text.c:490 src/trace.c:479
-#: src/vertex.c:347
+#: src/vertex.c:451
 #, c-format
 msgid ""
 "Warning in %s () empty layer string for the %s entity with id-code: %x\n"
@@ -167,7 +180,7 @@ msgid "Error in %s () could not allocate memory for a Dxf3dsolid struct.\n"
 msgstr ""
 
 #: src/3dsolid.c:171 src/3dsolid.c:379 src/acad_proxy_entity.c:183
-#: src/acad_proxy_entity.c:397 src/appid.c:272 src/body.c:368
+#: src/acad_proxy_entity.c:397 src/appid.c:273 src/body.c:368
 #: src/ellipse.c:425 src/hatch.c:2341 src/helix.c:637 src/image.c:478
 #: src/mtext.c:503 src/oleframe.c:374 src/ray.c:394 src/spline.c:803
 #: src/thumbnail.c:300
@@ -216,18 +229,19 @@ msgstr ""
 msgid "Error in %s () could not allocate memory for a DxfAppid struct.\n"
 msgstr ""
 
-#: src/appid.c:287
+#: src/appid.c:288
 #, c-format
-msgid "Warning: empty block name string for the %s entity with id-code: %x\n"
+msgid ""
+"Error in %s empty block name string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/appid.c:290 src/block.c:375 src/block.c:385 src/block.c:398
+#: src/appid.c:291 src/block.c:375 src/block.c:385 src/block.c:398
 #: src/ltype.c:410
 #, c-format
 msgid "\t%s entity is discarded from output.\n"
 msgstr ""
 
-#: src/appid.c:364
+#: src/appid.c:365
 #, c-format
 msgid "Error in %s () pointer to next DxfAppid was not NULL.\n"
 msgstr ""
@@ -339,6 +353,7 @@ msgid ""
 msgstr ""
 
 #: src/attrib.c:544 src/helix.c:670 src/image.c:502 src/spline.c:827
+#: src/viewport.c:1053
 #, c-format
 msgid ""
 "Warning in %s () empty layer string for the %s entity with id-code: %x.\n"
@@ -845,7 +860,7 @@ msgstr ""
 msgid "Warning: empty layer string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/hatch.c:2365 src/vertex.c:350
+#: src/hatch.c:2365 src/vertex.c:454
 #, c-format
 msgid "    %s entity is relocated to layer 0"
 msgstr ""
@@ -855,7 +870,7 @@ msgstr ""
 msgid "Warning: empty linetype string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/hatch.c:2375 src/vertex.c:340
+#: src/hatch.c:2375 src/vertex.c:444
 #, c-format
 msgid "    %s entity is reset to default linetype"
 msgstr ""
@@ -976,7 +991,7 @@ msgid ""
 "Error in %s () radius value equals 0.0 for the %s entity with id-code: %x.\n"
 msgstr ""
 
-#: src/helix.c:673 src/image.c:505 src/spline.c:830
+#: src/helix.c:673 src/image.c:505 src/spline.c:830 src/viewport.c:1056
 #, c-format
 msgid "\t%s entity is relocated to default layer.\n"
 msgstr ""
@@ -1198,7 +1213,7 @@ msgstr ""
 msgid "Error in %s () could not allocate memory for a DxfPoint struct.\n"
 msgstr ""
 
-#: src/point.c:361 src/text.c:414 src/vertex.c:289
+#: src/point.c:361 src/text.c:414
 #, c-format
 msgid ""
 "Warning: in %s () unknown string tag found while reading from: %s in line: "
@@ -1401,17 +1416,50 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfTrace was not NULL.\n"
 msgstr ""
 
-#: src/vertex.c:58 src/vertex.c:100
+#: src/vertex.c:64 src/vertex.c:112
 #, c-format
-msgid "ERROR in %s () could not allocate memory for a DxfVertex struct.\n"
+msgid "Error in %s () could not allocate memory for a DxfVertex struct.\n"
 msgstr ""
 
-#: src/vertex.c:93
-#, c-format
-msgid "WARNING in %s () a NULL pointer was passed.\n"
-msgstr ""
-
-#: src/vertex.c:451
+#: src/vertex.c:599
 #, c-format
 msgid "ERROR in %s () pointer to next DxfVertex was not NULL.\n"
+msgstr ""
+
+#: src/viewport.c:64 src/viewport.c:115
+#, c-format
+msgid "Error in %s () could not allocate memory for a DxfViewport struct.\n"
+msgstr ""
+
+#: src/viewport.c:381
+#, c-format
+msgid "\tunexpected content in string followed after group code 1001.\n"
+msgstr ""
+
+#: src/viewport.c:393 src/viewport.c:418 src/viewport.c:442 src/viewport.c:458
+#: src/viewport.c:473 src/viewport.c:488 src/viewport.c:503 src/viewport.c:518
+#: src/viewport.c:533 src/viewport.c:548 src/viewport.c:564 src/viewport.c:580
+#: src/viewport.c:596 src/viewport.c:612 src/viewport.c:628 src/viewport.c:644
+#: src/viewport.c:660 src/viewport.c:675 src/viewport.c:691 src/viewport.c:707
+#: src/viewport.c:723 src/viewport.c:739 src/viewport.c:755 src/viewport.c:771
+#: src/viewport.c:787 src/viewport.c:803 src/viewport.c:819 src/viewport.c:835
+#: src/viewport.c:851 src/viewport.c:867 src/viewport.c:882 src/viewport.c:940
+#: src/viewport.c:965
+#, c-format
+msgid "\tunexpected content in string sequence found.\n"
+msgstr ""
+
+#: src/viewport.c:406 src/viewport.c:895 src/viewport.c:953 src/viewport.c:978
+#, c-format
+msgid "\tunexpected content in string.\n"
+msgstr ""
+
+#: src/viewport.c:929
+#, c-format
+msgid "\tunexpected end of frozen layer list found.\n"
+msgstr ""
+
+#: src/viewport.c:1215
+#, c-format
+msgid "Error in %s () pointer to next DxfViewport was not NULL.\n"
 msgstr ""
