@@ -1,7 +1,7 @@
 /*!
  * \file endblk.c
  *
- * \author Copyright (C) 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2014 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF end of block marker entity (\c ENDBLK).
  *
@@ -162,7 +162,7 @@ dxf_endblk_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_endblk = dxf_endblk_new ();
-                dxf_endblk_init (dxf_endblk);
+                dxf_endblk = dxf_endblk_init (dxf_endblk);
         }
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
