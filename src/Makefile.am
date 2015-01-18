@@ -80,6 +80,8 @@ libdxf_la_SOURCES = \
   entities.c \
   endtab.h \
   endtab.c \
+  endsec.h \
+  endsec.c \
   endblk.h \
   endblk.c \
   ellipse.h \
