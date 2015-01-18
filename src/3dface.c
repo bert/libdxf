@@ -1,7 +1,7 @@
 /*!
  * \file 3dface.c
  *
- * \author Copyright (C) 2010 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D face entity (\c 3DFACE).
  *
@@ -178,7 +178,7 @@ dxf_3dface_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_3dface = dxf_3dface_new ();
-                dxf_3dface_init (dxf_3dface);
+                dxf_3dface = dxf_3dface_init (dxf_3dface);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
