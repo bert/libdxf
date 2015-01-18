@@ -1,7 +1,7 @@
 /*!
  * \file acad_proxy_entity.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF acad_proxy_entity entity
  * (\c ACAD_PROXY_ENTITY).
@@ -190,7 +190,7 @@ dxf_acad_proxy_entity_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_acad_proxy_entity = dxf_acad_proxy_entity_new ();
-                dxf_acad_proxy_entity_init (dxf_acad_proxy_entity);
+                dxf_acad_proxy_entity = dxf_acad_proxy_entity_init (dxf_acad_proxy_entity);
         }
         i = 0;
         j = 0;
