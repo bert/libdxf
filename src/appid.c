@@ -174,7 +174,7 @@ dxf_appid_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_appid = dxf_appid_new ();
-                dxf_appid_init (dxf_appid);
+                dxf_appid = dxf_appid_init (dxf_appid);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
