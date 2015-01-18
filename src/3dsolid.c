@@ -1,7 +1,7 @@
 /*!
  * \file 3dsolid.c
  *
- * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D solid entity (\c 3DSOLID).
  *
@@ -178,7 +178,7 @@ dxf_3dsolid_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_3dsolid = dxf_3dsolid_new ();
-                dxf_3dsolid_init (dxf_3dsolid);
+                dxf_3dsolid = dxf_3dsolid_init (dxf_3dsolid);
         }
         i = 0;
         j = 0;
