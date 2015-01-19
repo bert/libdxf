@@ -1,7 +1,7 @@
 /*!
  * \file dimstyle.c
  *
- * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dimension style table (\c DIMSTYLE).
  *
@@ -364,7 +364,7 @@ dxf_dimstyle_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_dimstyle = dxf_dimstyle_new ();
-                dxf_dimstyle_init (dxf_dimstyle);
+                dxf_dimstyle = dxf_dimstyle_init (dxf_dimstyle);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
