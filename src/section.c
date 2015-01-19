@@ -163,31 +163,4 @@ dxf_section_write
 }
 
 
-/*!
- * \brief Write DXF output to a file for an end of section marker.
- */
-int
-dxf_section_write_endsection
-(
-        DxfFile *fp
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (fp == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL file pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        fprintf (fp->fp, "  0\nENDSEC\n");
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
 /* EOF */
