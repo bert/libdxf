@@ -1,6 +1,6 @@
 /*!
  * \file header.c
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  * \brief DXF header section.
  *
  * <hr>
@@ -1043,7 +1043,7 @@ dxf_write_header
         if (acad_version_number >= AC1018) fprintf (fp, "  9\n$INTERSECTIONCOLOR\n 70\n%i\n", dxf_header.InterSectionColor);
         if (acad_version_number >= AC1018) fprintf (fp, "  9\n$DIMASSOC\n280\n%i\n", dxf_header.DimASSOC);
         if (acad_version_number >= AC1018) fprintf (fp, "  9\n$PROJECTNAME\n  1\n%s\n", dxf_header.ProjectName);
-        dxf_section_write_endsection (fp);
+        dxf_endsec_write (fp);
 #if DEBUG
         DXF_DEBUG_END
 #endif
