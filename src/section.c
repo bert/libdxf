@@ -86,7 +86,7 @@ dxf_section_read
                         {
                                 /* We have found the begin of the BLOCKS sction. */
 
-                                /* FIXME experimental usage of block_read */
+                                /*! \todo Experimental usage of block_read */
 //                                dxf_read_blocks
 //                                (
 //                                        fp->fp,
