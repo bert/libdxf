@@ -1,7 +1,7 @@
 /*!
  * \file block.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF block entity (\c BLOCK).
  *
@@ -173,7 +173,7 @@ dxf_block_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_block = dxf_block_new ();
-                dxf_block_init (dxf_block);
+                dxf_block = dxf_block_init (dxf_block);
         }
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
