@@ -1,7 +1,7 @@
 /*!
  * \file attdef.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF attribute definition entity (\c ATTDEF).
  *
@@ -185,7 +185,7 @@ dxf_attdef_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_attdef = dxf_attdef_new ();
-                dxf_attdef_init (dxf_attdef);
+                dxf_attdef = dxf_attdef_init (dxf_attdef);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
