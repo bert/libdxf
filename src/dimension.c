@@ -1,7 +1,7 @@
 /*!
  * \file dimension.c
  *
- * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dimension entity (\c DIMENSION).
  *
@@ -208,7 +208,7 @@ dxf_dimension_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_dimension = dxf_dimension_new ();
-                dxf_dimension_init (dxf_dimension);
+                dxf_dimension = dxf_dimension_init (dxf_dimension);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
