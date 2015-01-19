@@ -1,7 +1,7 @@
 /*!
  * \file tables.c
  *
- * \author Copyright (C) 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2014 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF tables section (\c TABLES).
  *
@@ -144,7 +144,7 @@ dxf_tables_write
 
         dxf_section_write (fp, dxf_section_name);
         /*! \todo Add code here */
-        dxf_section_write_endsection (fp);
+        dxf_endsec_write (fp);
 #if DEBUG
         DXF_DEBUG_END
 #endif
