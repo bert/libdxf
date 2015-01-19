@@ -1,7 +1,7 @@
 /*!
  * \file class.c
  *
- * \author Copyright (C) 2009 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF class entity (\c CLASS).
  *
@@ -151,7 +151,7 @@ dxf_class_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_class = dxf_class_new ();
-                dxf_class_init (dxf_class);
+                dxf_class = dxf_class_init (dxf_class);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
