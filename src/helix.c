@@ -1,7 +1,7 @@
 /*!
  * \file helix.c
  *
- * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF helix entity (\c HELIX).
  *
@@ -197,7 +197,7 @@ dxf_helix_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_helix = dxf_helix_new ();
-                dxf_helix_init (dxf_helix);
+                dxf_helix = dxf_helix_init (dxf_helix);
         }
         i = 0;
         (fp->line_number)++;
