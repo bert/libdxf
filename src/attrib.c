@@ -1,7 +1,7 @@
 /*!
  * \file attrib.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief DXF attribute entity (\c ATTRIB).
  *
@@ -186,7 +186,7 @@ dxf_attrib_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_attrib = dxf_attrib_new ();
-                dxf_attrib_init (dxf_attrib);
+                dxf_attrib = dxf_attrib_init (dxf_attrib);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
