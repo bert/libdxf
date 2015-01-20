@@ -1,7 +1,7 @@
 /*!
  * \file ray.c
  *
- * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF ray entity (\c RAY).
  *
@@ -182,7 +182,7 @@ dxf_ray_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_ray = dxf_ray_new ();
-                dxf_ray_init (dxf_ray);
+                dxf_ray = dxf_ray_init (dxf_ray);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
