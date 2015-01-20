@@ -1,7 +1,7 @@
 /*!
  * \file polyline.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF polyline entity (\c POLYLINE).
  *
@@ -187,7 +187,7 @@ dxf_polyline_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_polyline = dxf_polyline_new ();
-                dxf_polyline_init (dxf_polyline);
+                dxf_polyline = dxf_polyline_init (dxf_polyline);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
