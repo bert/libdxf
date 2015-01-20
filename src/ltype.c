@@ -1,7 +1,7 @@
 /*!
  * \file ltype.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF ltype entity (\c LTYPE).
  *
@@ -183,7 +183,7 @@ dxf_ltype_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_ltype = dxf_ltype_new ();
-                dxf_ltype_init (dxf_ltype);
+                dxf_ltype = dxf_ltype_init (dxf_ltype);
         }
         element = 0;
         (fp->line_number)++;
