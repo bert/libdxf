@@ -1,7 +1,7 @@
 /*!
  * \file layer.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief DXF layer table.
  *
@@ -160,7 +160,7 @@ dxf_layer_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_layer = dxf_layer_new ();
-                dxf_layer_init (dxf_layer);
+                dxf_layer = dxf_layer_init (dxf_layer);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
