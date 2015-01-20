@@ -1,7 +1,7 @@
 /*!
  * \file line.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF line entity (\c LINE).
  *
@@ -182,7 +182,7 @@ dxf_line_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_line = dxf_line_new ();
-                dxf_line_init (dxf_line);
+                dxf_line = dxf_line_init (dxf_line);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
