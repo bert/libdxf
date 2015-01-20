@@ -1,7 +1,7 @@
 /*!
  * \file lwpolyline.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF light weight polyline entity (\c LWPOLYLINE).
  *
@@ -162,7 +162,7 @@ dxf_lwpolyline_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_lwpolyline = dxf_lwpolyline_new ();
-                dxf_lwpolyline_init (dxf_lwpolyline);
+                dxf_lwpolyline = dxf_lwpolyline_init (dxf_lwpolyline);
         }
         iter = (DxfVertex *) dxf_lwpolyline->vertices;
         (fp->line_number)++;
