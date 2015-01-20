@@ -1,7 +1,7 @@
 /*!
  * \file mtext.c
  *
- * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF mtext entity (\c MTEXT).
  *
@@ -194,7 +194,7 @@ dxf_mtext_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_mtext = dxf_mtext_new ();
-                dxf_mtext_init (dxf_mtext);
+                dxf_mtext = dxf_mtext_init (dxf_mtext);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
