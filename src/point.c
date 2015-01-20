@@ -1,7 +1,7 @@
 /*!
  * \file point.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF point entity (\c POINT).
  *
@@ -192,7 +192,7 @@ dxf_point_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_point = dxf_point_new ();
-                dxf_point_init (dxf_point);
+                dxf_point = dxf_point_init (dxf_point);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
