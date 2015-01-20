@@ -1,7 +1,7 @@
 /*!
  * \file oleframe.c
  *
- * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF oleframe entity (\c OLEFRAME).
  *
@@ -171,7 +171,7 @@ dxf_oleframe_read
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 dxf_oleframe = dxf_oleframe_new ();
-                dxf_oleframe_init (dxf_oleframe);
+                dxf_oleframe = dxf_oleframe_init (dxf_oleframe);
         }
         i = 0;
         (fp->line_number)++;
