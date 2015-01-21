@@ -1,7 +1,7 @@
 /*!
  * \file comment.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief DXF comment entity (\c COMMENT).
  *
@@ -131,6 +131,15 @@ dxf_comment_write
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
         fprintf (fp->fp, "999\n%s\n", dxf_comment->value);
 #if DEBUG
         DXF_DEBUG_END
