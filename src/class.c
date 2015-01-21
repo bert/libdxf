@@ -145,6 +145,13 @@ dxf_class_read
         char *temp_string = NULL;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_class == NULL)
         {
                 fprintf (stderr,
@@ -281,6 +288,13 @@ dxf_class_write
         char *dxf_entity_name = strdup ("CLASS");
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_class == NULL)
         {
                 fprintf (stderr,
@@ -355,6 +369,15 @@ dxf_class_write_endclass
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
         fprintf (fp, "  0\nENDSEC\n");
 #if DEBUG
         DXF_DEBUG_END
