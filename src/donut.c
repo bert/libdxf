@@ -1,7 +1,7 @@
 /*!
  * \file donut.c
  * 
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * 
  * \brief Functions for a DXF donut entity (\c DONUT).
  *
@@ -89,6 +89,14 @@ dxf_donut_write_lowlevel
         double start_width;
         double end_width;
 
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (outside_diameter > inside_diameter)
         {
                 fprintf (stderr,
