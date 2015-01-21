@@ -156,6 +156,13 @@ dxf_endblk_read
         char temp_string[DXF_MAX_STRING_LENGTH];
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_endblk == NULL)
         {
                 fprintf (stderr,
@@ -235,6 +242,22 @@ dxf_endblk_write
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dxf_endblk == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\nENDBLK\n");
         if (fp->acad_version_number >= AutoCAD_13)
         {
