@@ -167,6 +167,13 @@ dxf_block_read
         char temp_string[DXF_MAX_STRING_LENGTH];
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_block == NULL)
         {
                 fprintf (stderr,
@@ -359,6 +366,13 @@ dxf_block_write
         DxfEndblk *endblk = NULL;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_block == NULL)
         {
                 fprintf (stderr,
@@ -500,6 +514,15 @@ dxf_block_write_table
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+
         /*! \todo Add code here. */
 #if DEBUG
         DXF_DEBUG_END
