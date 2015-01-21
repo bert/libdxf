@@ -191,6 +191,13 @@ dxf_helix_read
         int i_weight_value;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_helix == NULL)
         {
                 fprintf (stderr,
@@ -631,6 +638,13 @@ dxf_helix_write
         int i;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (fp->acad_version_number < AutoCAD_2007)
         {
                 fprintf (stderr,
