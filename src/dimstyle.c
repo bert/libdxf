@@ -186,6 +186,13 @@ dxf_dimstyle_write
         char *dxf_entity_name = strdup ("DIMSTYLE");
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_dimstyle == NULL)
         {
                 fprintf (stderr,
@@ -358,6 +365,13 @@ dxf_dimstyle_read
         char *temp_string = NULL;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_dimstyle == NULL)
         {
                 fprintf (stderr,
