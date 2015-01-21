@@ -1,7 +1,7 @@
 /*!
  * \file hatch.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF hatch entity (\c HATCH).
  *
@@ -2335,17 +2335,17 @@ dxf_hatch_write
         int i;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (fp->acad_version_number < AutoCAD_14)
         {
                 fprintf (stderr,
                   (_("Error in %s () illegal DXF version for this entity.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (fp == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
