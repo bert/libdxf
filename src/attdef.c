@@ -179,6 +179,13 @@ dxf_attdef_read
         char *temp_string = NULL;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_attdef == NULL)
         {
                 fprintf (stderr,
@@ -499,6 +506,13 @@ dxf_attdef_write
         char *dxf_entity_name = strdup ("ATTDEF");
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_attdef == NULL)
         {
                 fprintf (stderr,
