@@ -1,7 +1,7 @@
 /*!
  * \file file.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  *
  * \brief Functions for the handling of DXF files.
  *
@@ -64,6 +64,13 @@ dxf_file_read
 #endif
         /* open the file */
         fp = dxf_read_init (filename);
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         while (fp)
         {
                 dxf_read_line (temp_string, fp);
@@ -138,6 +145,14 @@ dxf_file_write
 //        DxfBlock *dxf_blocks_list;
         extern DxfThumbnail *dxf_thumbnail;
 
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
 //        dxf_init_header (dxf_header);
 //        dxf_write_header (fp, dxf_header);
 //        dxf_write_classes (fp, dxf_classes_list);
@@ -167,6 +182,15 @@ dxf_file_write_eof
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\nEOF\n");
 #if DEBUG
         DXF_DEBUG_END
