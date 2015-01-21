@@ -168,6 +168,13 @@ dxf_appid_read
         char *temp_string = NULL;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_appid == NULL)
         {
                 fprintf (stderr,
@@ -267,6 +274,13 @@ dxf_appid_write
         char *dxf_entity_name = strdup ("APPID");
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (fp->acad_version_number < AutoCAD_12)
         {
                 fprintf (stderr,
