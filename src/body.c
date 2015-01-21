@@ -1,7 +1,7 @@
 /*!
  * \file body.c
  *
- * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF body entity (\c BODY).
  *
@@ -169,6 +169,13 @@ dxf_body_read
         int j;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_body == NULL)
         {
                 fprintf (stderr,
@@ -362,6 +369,13 @@ dxf_body_write
         int i;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (fp->acad_version_number < AutoCAD_13)
         {
                 fprintf (stderr,
