@@ -162,6 +162,13 @@ dxf_circle_read
         char *temp_string = NULL;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_circle == NULL)
         {
                 fprintf (stderr,
@@ -375,6 +382,13 @@ dxf_circle_write
         char *dxf_entity_name = strdup ("CIRCLE");
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_circle == NULL)
         {
                 fprintf (stderr,
