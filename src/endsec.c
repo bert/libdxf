@@ -58,6 +58,15 @@ dxf_endsec_write
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\nENDSEC\n");
 #if DEBUG
         DXF_DEBUG_END
