@@ -202,6 +202,13 @@ dxf_dimension_read
         char *temp_string = NULL;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_dimension == NULL)
         {
                 fprintf (stderr,
@@ -656,12 +663,20 @@ dxf_dimension_write
         char *dxf_entity_name = strdup ("DIMENSION");
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_dimension == NULL)
         {
                 return (EXIT_FAILURE);
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         if (strcmp (dxf_dimension->layer, "") == 0)
         {
