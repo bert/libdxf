@@ -1,7 +1,7 @@
 /*!
  * \file style.c
  *
- * \author Copyright (C) 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2014 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF style entity (\c STYLE).
  *
@@ -167,6 +167,13 @@ dxf_style_read
         char *temp_string = NULL;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_style == NULL)
         {
                 fprintf (stderr,
@@ -349,6 +356,13 @@ dxf_style_write
         char *dxf_entity_name = strdup ("STYLE");
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_style == NULL)
         {
                 fprintf (stderr,
