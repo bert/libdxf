@@ -188,6 +188,13 @@ dxf_mtext_read
         char *temp_string = NULL;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_mtext == NULL)
         {
                 fprintf (stderr,
@@ -497,6 +504,13 @@ dxf_mtext_write
         int i;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (fp->acad_version_number < AutoCAD_13)
         {
                 fprintf (stderr,
