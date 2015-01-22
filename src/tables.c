@@ -142,6 +142,14 @@ dxf_tables_write
 #endif
         char *dxf_section_name = strdup ("TABLES");
 
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         dxf_section_write (fp, dxf_section_name);
         /*! \todo Add code here */
         dxf_endsec_write (fp);
