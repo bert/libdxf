@@ -1,7 +1,7 @@
 /*!
  * \file thumbnail.c
  *
- * \author Copyright (C) 2009 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF thumbnail.
  *
@@ -189,6 +189,13 @@ dxf_thumbnail_read
         int preview_data_length = 0;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_thumbnail == NULL)
         {
                 fprintf (stderr,
@@ -294,6 +301,13 @@ dxf_thumbnail_write
         int i;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (fp->acad_version_number < AutoCAD_2000)
         {
                 fprintf (stderr,
