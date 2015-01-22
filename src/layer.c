@@ -154,6 +154,13 @@ dxf_layer_read
         char *temp_string = NULL;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_layer == NULL)
         {
                 fprintf (stderr,
@@ -314,6 +321,13 @@ dxf_layer_write
         char *dxf_entity_name = strdup ("LAYER");
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_layer == NULL)
         {
                 fprintf (stderr,
