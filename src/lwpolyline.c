@@ -120,7 +120,7 @@ dxf_lwpolyline_init
         dxf_lwpolyline->extr_z0 = 0.0;
         dxf_lwpolyline->dictionary_owner_soft = strdup ("");
         dxf_lwpolyline->dictionary_owner_hard = strdup ("");
-        dxf_lwpolyline->vertices = (DxfVertex *) dxf_vertex_new ();
+        dxf_lwpolyline->vertices = (struct DxfVertex *) dxf_vertex_new ();
         dxf_lwpolyline->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -257,7 +257,7 @@ dxf_lwpolyline_read
                         /* The last member of the vertex is read.\n */
                         /*! \todo The pointer administration needs to be checked for functionality. */
                          /* Increment iter to next DxfVertex. */
-                        iter->next = (DxfVertex *) dxf_vertex_new ();
+                        iter->next = (struct DxfVertex *) dxf_vertex_new ();
                         iter = (DxfVertex *) iter->next;
                 }
                 else if (strcmp (temp_string, "43") == 0)
