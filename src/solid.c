@@ -1,7 +1,7 @@
 /*!
  * \file solid.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF solid entity (\c SOLID).
  *
@@ -186,6 +186,13 @@ dxf_solid_read
         char *temp_string = NULL;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_solid == NULL)
         {
                 fprintf (stderr,
@@ -457,6 +464,13 @@ dxf_solid_write
         char *dxf_entity_name = strdup ("SOLID");
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_solid == NULL)
         {
                 fprintf (stderr,
