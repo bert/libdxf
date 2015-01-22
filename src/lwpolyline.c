@@ -156,6 +156,13 @@ dxf_lwpolyline_read
         DxfVertex *iter = NULL;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_lwpolyline == NULL)
         {
                 fprintf (stderr,
@@ -406,6 +413,13 @@ dxf_lwpolyline_write
         DxfVertex *iter = NULL;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_lwpolyline == NULL)
         {
                 fprintf (stderr,
