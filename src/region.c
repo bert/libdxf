@@ -170,6 +170,13 @@ dxf_region_read
         i = 0;
         j = 0;
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (dxf_region == NULL)
         {
                 fprintf (stderr,
@@ -360,6 +367,13 @@ dxf_region_write
         int i;
 
         /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_region == NULL)
         {
                 fprintf (stderr,
