@@ -1,7 +1,7 @@
 /*!
  * \file global.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  *
  * \brief  This is a global header file for a library with functions to
  * generate a dxf file.
@@ -126,6 +126,20 @@
  */
 #ifndef TRUE
 #  define TRUE 1
+#endif
+
+/*!
+ * Outside is 2.
+ */
+#ifndef OUTSIDE
+#  define OUTSIDE 2
+#endif
+
+/*!
+ * Inside is 3.
+ */
+#ifndef INSIDE
+#  define INSIDE 3
 #endif
 
 /*!

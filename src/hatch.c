@@ -2898,18 +2898,16 @@ dxf_hatch_boundary_path_polyline_close_polyline
  * \note It is assumed that the polygon is simple (does not intersect
  * itself).
  *
- * \return \c result is \c TRUE if an interior point, and \c FALSE if an
- * exterior point.
+ * \return \c INSIDE if an interior point, \c OUTSIDE if an exterior
+ * point, or \c EXIT_FAILURE if an error occurred.
  */
 int
 dxf_hatch_boundary_path_polyline_point_inside_polyline
 (
         DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline,
                 /*!< DXF hatch boundary path polyline entity. */
-        DxfPoint *dxf_point,
+        DxfPoint *dxf_point
                 /*!< The point to be tested for. */
-        int *result
-                /*!< Result of the test. */
 )
 {
 #if DEBUG
@@ -2970,14 +2968,14 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
         dxf_hatch_boundary_path_polyline_vertex_free (p1);
 
         if (abs (angle) < M_PI)
-                result = FALSE;
+                return (OUTSIDE);
         else
-                /*! \todo warning: assignment makes pointer from integer without a cast. */
-                result = TRUE;
+                return (INSIDE);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        /* This is a dead code path. */
+        return (EXIT_FAILURE);
 }
 
 

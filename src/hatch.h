@@ -1,7 +1,7 @@
 /*!
  * \file hatch.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF hatch entity (\c HATCH).
  *
@@ -747,8 +747,7 @@ int
 dxf_hatch_boundary_path_polyline_point_inside_polyline
 (
         DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline,
-        DxfPoint *dxf_point,
-        int *result
+        DxfPoint *dxf_point
 );
 int
 dxf_hatch_boundary_path_polyline_write
