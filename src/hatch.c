@@ -1144,8 +1144,7 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
         {
                 /* no control points yet, so append the first control
                  * point. */
-                /*! \todo warning: assignment from incompatible pointer type. */
-                dxf_hatch_boundary_path_edge_spline->control_points = dxf_hatch_boundary_path_edge_spline_cp;
+                dxf_hatch_boundary_path_edge_spline->control_points = (struct DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline_cp;
         }
         else
         {
@@ -1175,8 +1174,7 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
                 new->y0 = dxf_hatch_boundary_path_edge_spline_cp->y0;
                 new->weight = dxf_hatch_boundary_path_edge_spline_cp->weight;
                 new->next = NULL;
-                /*! \todo warning: assignment from incompatible pointer type. */
-                iter->next = new;
+                iter->next = (struct DxfHatchBoundaryPathEdgeSplineCp *) new;
                 dxf_hatch_boundary_path_edge_spline->number_of_control_points++;
                 /* clean up. */
                 dxf_hatch_boundary_path_edge_spline_control_point_free (dxf_hatch_boundary_path_edge_spline_cp);
@@ -1339,8 +1337,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
                 new->y0 = dxf_hatch_boundary_path_edge_spline_cp->y0;
                 new->weight = dxf_hatch_boundary_path_edge_spline_cp->weight;
                 new->next = NULL;
-                /*! \todo warning: assignment from incompatible pointer type. */
-                dxf_hatch_boundary_path_edge_spline->control_points = new;
+                dxf_hatch_boundary_path_edge_spline->control_points = (struct DxfHatchBoundaryPathEdgeSplineCp *) new;
         }
         else
         {
@@ -1351,8 +1348,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
                 new->y0 = dxf_hatch_boundary_path_edge_spline_cp->y0;
                 new->weight = dxf_hatch_boundary_path_edge_spline_cp->weight;
                 new->next = dxf_hatch_boundary_path_edge_spline->control_points;
-                /*! \todo warning: assignment from incompatible pointer type. */
-                dxf_hatch_boundary_path_edge_spline->control_points = (DxfHatchBoundaryPathEdgeSplineCp *) new;
+                dxf_hatch_boundary_path_edge_spline->control_points = (struct DxfHatchBoundaryPathEdgeSplineCp *) new;
         }
         dxf_hatch_boundary_path_edge_spline->number_of_control_points++;
         /* clean up. */
@@ -1520,7 +1516,7 @@ dxf_hatch_boundary_path_edge_spline_get_knot_value
         if (position > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
         {
                 fprintf (stderr,
-                  (_("Error in  () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
+                  (_("Error in  %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1597,8 +1593,7 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
                 new->y0 = dxf_hatch_boundary_path_edge_spline_cp->y0;
                 new->weight = dxf_hatch_boundary_path_edge_spline_cp->weight;
                 new->next = NULL;
-                /*! \todo warning: assignment from incompatible pointer type. */
-                dxf_hatch_boundary_path_edge_spline->control_points = new;
+                dxf_hatch_boundary_path_edge_spline->control_points = (struct DxfHatchBoundaryPathEdgeSplineCp *) new;
         }
         else
         {
@@ -1622,8 +1617,7 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
                 new->y0 = dxf_hatch_boundary_path_edge_spline_cp->y0;
                 new->weight = dxf_hatch_boundary_path_edge_spline_cp->weight;
                 new->next = NULL;
-                /*! \todo warning: assignment from incompatible pointer type. */
-                iter->next = new;
+                iter->next = (struct DxfHatchBoundaryPathEdgeSplineCp *) new;
                 /* clean up. */
                 dxf_hatch_boundary_path_edge_spline_control_point_free (iter);
                 dxf_hatch_boundary_path_edge_spline_control_point_free (dxf_hatch_boundary_path_edge_spline_cp);
@@ -1803,8 +1797,7 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                 new->y0 = dxf_hatch_boundary_path_edge_spline_cp->y0;
                 new->weight = dxf_hatch_boundary_path_edge_spline_cp->weight;
                 new->next = NULL;
-                /*! \todo warning: assignment from incompatible pointer type. */
-                dxf_hatch_boundary_path_edge_spline->control_points = new;
+                dxf_hatch_boundary_path_edge_spline->control_points = (struct DxfHatchBoundaryPathEdgeSplineCp *) new;
         }
         else
         {
@@ -1838,8 +1831,7 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
                         new->y0 = dxf_hatch_boundary_path_edge_spline_cp->y0;
                         new->weight = dxf_hatch_boundary_path_edge_spline_cp->weight;
                         new->next = NULL;
-                        /*! \todo warning: assignment from incompatible pointer type. */
-                        iter->next = new;
+                        iter->next = (struct DxfHatchBoundaryPathEdgeSplineCp *) new;
                 }
                 else
                 {
@@ -2247,8 +2239,7 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
                         else
                         {
                                 /* create a new control point in the chain. */
-                                /*! \todo warning: assignment from incompatible pointer type. */
-                                iter_new->next = dxf_hatch_boundary_path_edge_spline_control_point_new ();
+                                iter_new->next = (struct DxfHatchBoundaryPathEdgeSplineCp *) dxf_hatch_boundary_path_edge_spline_control_point_new ();
                         }
                         /* set both iterators to the next control point
                          * in their chain. */
@@ -2462,7 +2453,7 @@ dxf_hatch_write
         fprintf (fp->fp, " 70\n%d\n", dxf_hatch->solid_fill);
         fprintf (fp->fp, " 71\n%d\n", dxf_hatch->associative);
         fprintf (fp->fp, " 91\n%d\n", dxf_hatch->number_of_boundary_paths);
-        dxf_hatch_boundary_path_write (fp, dxf_hatch->paths);
+        dxf_hatch_boundary_path_write (fp, (DxfHatchBoundaryPath *) dxf_hatch->paths);
         fprintf (fp->fp, " 75\n%d\n", dxf_hatch->hatch_style);
         fprintf (fp->fp, " 76\n%d\n", dxf_hatch->hatch_pattern_type);
         if (!dxf_hatch->solid_fill)
@@ -2566,8 +2557,6 @@ dxf_hatch_pattern_seedpoint_write
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (fp == NULL)
         {
@@ -2818,8 +2807,7 @@ dxf_hatch_boundary_path_polyline_close_polyline
                 next->x0 = first->x0;
                 next->y0 = first->y0;
                 next->next = NULL;
-                /*! \todo warning: assignment from incompatible pointer type. */
-                iter->next = (DxfHatchBoundaryPathPolylineVertex *) next;
+                iter->next = (struct DxfHatchBoundaryPathPolylineVertex *) next;
                 dxf_hatch_boundary_path_polyline->is_closed = 1;
         }
         else
@@ -2860,8 +2848,7 @@ dxf_hatch_boundary_path_polyline_close_polyline
                         next->x0 = (double) first->x0;
                         next->y0 = first->y0;
                         next->next = NULL;
-                        /*! \todo warning: assignment from incompatible pointer type. */
-                        iter->next = (DxfHatchBoundaryPathPolylineVertex *) next;
+                        iter->next = (struct DxfHatchBoundaryPathPolylineVertex *) next;
                 }
                 /*! \todo add code here ! */
         }
