@@ -182,6 +182,8 @@ dxf_file
         /*!< Dxf filename. */
     int line_number;
         /*!< Last line read. */
+    int last_id_code;
+        /*!< Last id code written to, or read from, file. */
     int acad_version_number;
         /*!< AutoCAD version number. */
 } DxfFile;
