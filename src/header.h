@@ -311,6 +311,11 @@ dxf_header
 int dxf_init_header (DxfHeader dxf_header, int acad_version_number);
 int dxf_read_header (DxfFile *fp, DxfHeader dxf_header);
 int dxf_write_header (DxfFile *fp, DxfHeader dxf_header);
+int
+dxf_write_header_metric_new
+(
+        DxfFile *fp
+);
 
 
 #endif /* LIBDXF_SRC_HEADER_H */
