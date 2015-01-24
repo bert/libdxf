@@ -1,7 +1,7 @@
 /*!
  * \file shape.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF shape entity (\c SHAPE).
  *
@@ -396,7 +396,7 @@ dxf_shape_read
                 fprintf (stderr,
                   (_("Error in %s () empty name string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_shape->id_code);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
         if (strcmp (dxf_shape->linetype, "") == 0)
         {
