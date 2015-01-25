@@ -46,6 +46,8 @@
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R14.
  */
 DxfImage *
 dxf_image_new ()
@@ -83,6 +85,8 @@ dxf_image_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R14.
  */
 DxfImage *
 dxf_image_init
@@ -114,9 +118,14 @@ dxf_image_init
         dxf_image->id_code = 0;
         dxf_image->linetype = strdup (DXF_DEFAULT_LINETYPE);
         dxf_image->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_image->elevation = 0.0;
         dxf_image->thickness = 0.0;
+        dxf_image->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        dxf_image->visibility = DXF_DEFAULT_VISIBILITY;
         dxf_image->color = DXF_COLOR_BYLAYER;
         dxf_image->paperspace = DXF_MODELSPACE;
+        dxf_image->dictionary_owner_soft = strdup ("");
+        dxf_image->dictionary_owner_hard = strdup ("");
         dxf_image->x0 = 0.0;
         dxf_image->y0 = 0.0;
         dxf_image->z0 = 0.0;
@@ -662,6 +671,8 @@ dxf_image_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R14.
  */
 int
 dxf_image_free
@@ -685,6 +696,8 @@ dxf_image_free
         free (dxf_image->layer);
         free (dxf_image->imagedef_object);
         free (dxf_image->imagedef_reactor_object);
+        free (dxf_image->dictionary_owner_soft);
+        free (dxf_image->dictionary_owner_hard);
         free (dxf_image);
         dxf_image = NULL;
 #if DEBUG
