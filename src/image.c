@@ -462,6 +462,8 @@ dxf_image_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R14.
  */
 int
 dxf_image_write
@@ -520,21 +522,76 @@ dxf_image_write
                   dxf_entity_name);
                 dxf_image->layer = DXF_DEFAULT_LAYER;
         }
+        /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (fp->acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp->fp, "100\nAcDbEntity\n");
-                fprintf (fp->fp, "100\nAcDbRasterImage\n");
-        }
         if (dxf_image->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_image->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_image->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_image->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_image->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_image->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (dxf_image->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", dxf_image->layer);
         if (strcmp (dxf_image->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
                 fprintf (fp->fp, "  6\n%s\n", dxf_image->linetype);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_image->layer);
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (dxf_image->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", dxf_image->elevation);
+        }
+        if (dxf_image->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", dxf_image->color);
+        }
+        if (dxf_image->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", dxf_image->linetype_scale);
+        }
+        if (dxf_image->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_image->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbRasterImage\n");
+        }
+        if (dxf_image->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", dxf_image->thickness);
+        }
+        fprintf (fp->fp, " 90\n%ld\n", dxf_image->class_version);
         fprintf (fp->fp, " 10\n%f\n", dxf_image->x0);
         fprintf (fp->fp, " 20\n%f\n", dxf_image->y0);
         fprintf (fp->fp, " 30\n%f\n", dxf_image->z0);
@@ -546,33 +603,20 @@ dxf_image_write
         fprintf (fp->fp, " 32\n%f\n", dxf_image->z2);
         fprintf (fp->fp, " 13\n%f\n", dxf_image->x3);
         fprintf (fp->fp, " 23\n%f\n", dxf_image->y3);
+        fprintf (fp->fp, "340\n%s\n", dxf_image->imagedef_object);
+        fprintf (fp->fp, " 70\n%d\n", dxf_image->image_display_properties);
+        fprintf (fp->fp, "280\n%d\n", dxf_image->clipping_state);
+        fprintf (fp->fp, "281\n%d\n", dxf_image->brightness);
+        fprintf (fp->fp, "282\n%d\n", dxf_image->contrast);
+        fprintf (fp->fp, "283\n%d\n", dxf_image->fade);
+        fprintf (fp->fp, "360\n%s\n", dxf_image->imagedef_reactor_object);
+        fprintf (fp->fp, " 71\n%d\n", dxf_image->clipping_boundary_type);
+        fprintf (fp->fp, " 91\n%ld\n", dxf_image->number_of_clip_boundary_vertices);
         for (i = 0; i < dxf_image->number_of_clip_boundary_vertices; i++)
         {
                 fprintf (fp->fp, " 14\n%f\n", dxf_image->x4[i]);
                 fprintf (fp->fp, " 24\n%f\n", dxf_image->y4[i]);
         }
-        if (dxf_image->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", dxf_image->thickness);
-        }
-        if (dxf_image->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", dxf_image->color);
-        }
-        if (dxf_image->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
-        fprintf (fp->fp, " 70\n%d\n", dxf_image->image_display_properties);
-        fprintf (fp->fp, " 71\n%d\n", dxf_image->clipping_boundary_type);
-        fprintf (fp->fp, " 90\n%ld\n", dxf_image->class_version);
-        fprintf (fp->fp, " 91\n%ld\n", dxf_image->number_of_clip_boundary_vertices);
-        fprintf (fp->fp, "280\n%d\n", dxf_image->clipping_state);
-        fprintf (fp->fp, "281\n%d\n", dxf_image->brightness);
-        fprintf (fp->fp, "282\n%d\n", dxf_image->contrast);
-        fprintf (fp->fp, "283\n%d\n", dxf_image->fade);
-        fprintf (fp->fp, "340\n%s\n", dxf_image->imagedef_object);
-        fprintf (fp->fp, "360\n%s\n", dxf_image->imagedef_reactor_object);
 #if DEBUG
         DXF_DEBUG_END
 #endif
