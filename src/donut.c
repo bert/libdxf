@@ -7,6 +7,10 @@
  *
  * \warning This is not an official AutoCAD entity.
  *
+ * \c donut is an AutoCAD command that generates a polyline (\c POLYLINE)
+ * consisting of two vertices (\c VERTEX) and an end of sequence marker
+ * (\c SEQEND).
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -76,7 +80,7 @@ dxf_donut_new ()
 
 
 /*!
- * \brief Write DXF output to a file for a donut.
+ * \brief Write DXF output to a file for a libDXF donut.
  *
  * A typical convenience function.\n
  * Draw a donut by means of two bulged vertices into a single polyline.
@@ -208,6 +212,7 @@ dxf_donut_write
         seqend->layer = donut->layer;
         seqend->linetype = donut->linetype;
         dxf_seqend_write (fp, seqend);
+        /*! \todo Hook up this seqend to the list of seqends. */
 #if DEBUG
         DXF_DEBUG_END
 #endif
