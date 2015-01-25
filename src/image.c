@@ -161,6 +161,8 @@ dxf_image_init
  * While parsing the DXF file store data in \c dxf_image. \n
  *
  * \return a pointer to \c dxf_image.
+ *
+ * \version According to DXF R14.
  */
 DxfImage *
 dxf_image_read
@@ -321,12 +323,35 @@ dxf_image_read
                         fscanf (fp->fp, "%lf\n", &dxf_image->y4[j]);
                         j++;
                 }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0)
+                        && (dxf_image->elevation != 0.0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_image->elevation);
+                }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &dxf_image->thickness);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &dxf_image->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &dxf_image->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -370,6 +395,21 @@ dxf_image_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%ld\n", &dxf_image->number_of_clip_boundary_vertices);
                 }
+                else if ((fp->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && ((strcmp (temp_string, "AcDbRasterImage") != 0)))
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
                 else if (strcmp (temp_string, "280") == 0)
                 {
                         /* Now follows a string containing the clipping
@@ -398,6 +438,13 @@ dxf_image_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &dxf_image->fade);
                 }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_image->dictionary_owner_soft);
+                }
                 else if (strcmp (temp_string, "340") == 0)
                 {
                         /* Now follows a string containing a hard
@@ -411,21 +458,6 @@ dxf_image_read
                          * reference to imagedef_reactor object. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", dxf_image->imagedef_reactor_object);
-                }
-                else if ((fp->acad_version_number >= AutoCAD_13)
-                        && (strcmp (temp_string, "100") == 0))
-                {
-                        /* Now follows a string containing the
-                         * subclass marker value. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", temp_string);
-                        if ((strcmp (temp_string, "AcDbEntity") != 0)
-                        && ((strcmp (temp_string, "AcDbRasterImage") != 0)))
-                        {
-                                fprintf (stderr,
-                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
-                                  __FUNCTION__, fp->filename, fp->line_number);
-                        }
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
