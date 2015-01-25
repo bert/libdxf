@@ -131,6 +131,8 @@ dxf_donut
 } DxfDonut;
 
 
+DxfDonut *
+dxf_donut_new ();
 int
 dxf_donut_write
 (

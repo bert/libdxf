@@ -38,6 +38,44 @@
 
 
 /*!
+ * \brief Allocate memory for a libDXF donut.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfDonut *
+dxf_donut_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfDonut *donut = NULL;
+        size_t size;
+
+        size = sizeof (DxfDonut);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((donut = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfDonut struct.\n")),
+                  __FUNCTION__);
+                donut = NULL;
+        }
+        else
+        {
+                memset (donut, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a donut.
  *
  * A typical convenience function.\n
