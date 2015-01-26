@@ -139,6 +139,11 @@ dxf_donut_write
         DxfFile *fp,
         DxfDonut *donut
 );
+int
+dxf_donut_free
+(
+        DxfDonut *donut
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */

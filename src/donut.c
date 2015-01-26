@@ -220,4 +220,42 @@ dxf_donut_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a libDXF donut and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_donut_free
+(
+        DxfDonut *donut
+                /*!< Pointer to the memory occupied by the libDXF donut
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (donut->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfDonut was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (donut->linetype);
+        free (donut->layer);
+        free (donut->dictionary_owner_soft);
+        free (donut->dictionary_owner_hard);
+        free (donut);
+        donut = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
