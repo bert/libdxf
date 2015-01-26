@@ -201,7 +201,7 @@ dxf_donut_write
                   dxf_entity_name);
                 donut->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        /* Draw a polyline primitive. */
+        /* Create and write a polyline primitive. */
         dxf_polyline_new (polyline);
         polyline = dxf_polyline_init (polyline);
         id_code = fp->last_id_code;
@@ -226,7 +226,7 @@ dxf_donut_write
         polyline->surface_type = 0;
         dxf_polyline_write (fp, polyline);
         /*! \todo Hook up this polyline to the list of polylines. */
-        /* Write the first vertex. */
+        /* Create and write the first vertex. */
         vertex_1 = dxf_vertex_new ();
         vertex_1 = dxf_vertex_init (vertex_1);
         id_code = fp->last_id_code;
@@ -247,7 +247,7 @@ dxf_donut_write
         vertex_1->flag = 0;
         dxf_vertex_write (fp, vertex_1);
         /*! \todo Hook up this vertex to the list of vertices. */
-        /* Write the second vertex. */
+        /* Create and write the second vertex. */
         vertex_2 = dxf_vertex_new ();
         vertex_2 = dxf_vertex_init (vertex_2);
         id_code = fp->last_id_code;
@@ -268,7 +268,7 @@ dxf_donut_write
         vertex_2->flag = 0;
         dxf_vertex_write (fp, vertex_2);
         /*! \todo Hook up this vertex to the list of vertices. */
-        /* Write the end of polyline sequence marker. */
+        /* Create and write the end of sequence marker. */
         dxf_seqend_new (seqend);
         seqend = dxf_seqend_init (seqend);
         id_code = fp->last_id_code;
