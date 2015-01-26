@@ -80,6 +80,64 @@ dxf_donut_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a libDXF donut
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfDonut *
+dxf_donut_init
+(
+        DxfDonut *donut
+                /*!< libDXF donut entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                donut = dxf_donut_new ();
+        }
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfDonut struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        /* Members common for all DXF drawable entities. */
+        donut->id_code = 0;
+        donut->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        donut->layer = strdup (DXF_DEFAULT_LAYER);
+        donut->elevation = 0.0;
+        donut->thickness = 0.0;
+        donut->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        donut->visibility = DXF_DEFAULT_VISIBILITY;
+        donut->color = DXF_COLOR_BYLAYER;
+        donut->paperspace = DXF_MODELSPACE;
+        donut->dictionary_owner_soft = strdup ("");
+        donut->dictionary_owner_hard = strdup ("");
+        /* Specific members for a libDXF donut. */
+        donut->x0 = 0.0;
+        donut->y0 = 0.0;
+        donut->z0 = 0.0;
+        donut->outside_diameter = 0.0;
+        donut->inside_diameter = 0.0;
+        donut->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut);
+}
+
+
+/*!
  * \brief Write DXF output to a file for a libDXF donut.
  *
  * A typical convenience function.\n
