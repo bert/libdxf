@@ -149,6 +149,8 @@ src/attrib.c
 src/attrib.h
 src/block.c
 src/block.h
+src/block_record.c
+src/block_record.h
 src/body.c
 src/body.h
 src/circle.c
