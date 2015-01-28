@@ -191,6 +191,16 @@ dxf_donut_write
         }
         start_width = 0.5 * (donut->outside_diameter - donut->inside_diameter);
         end_width = 0.5 * (donut->outside_diameter - donut->inside_diameter);
+        if (strcmp (donut->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, donut->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                donut->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
         if (strcmp (donut->layer, "") == 0)
         {
                 fprintf (stderr,
