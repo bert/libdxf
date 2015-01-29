@@ -38,4 +38,39 @@
 #include "block_record.h"
 
 
+/*!
+ * \brief Allocate memory for a DXF \c BLOCK_RECORD symbol table entry.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfBlockRecord *
+dxf_block_record_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfBlockRecord *block_record = NULL;
+        size_t size;
+
+        size = sizeof (DxfBlockRecord);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((block_record = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfBlockRecord struct.\n")),
+                  __FUNCTION__);
+                block_record = NULL;
+        }
+        else
+        {
+                memset (block_record, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block_record);
+}
+
+
 /* EOF*/
