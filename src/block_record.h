@@ -42,6 +42,57 @@
 #include "global.h"
 
 
+/*!
+ * \brief Definition of an AutoCAD block record symbol table entry
+ * (\c BLOCK_RECORD).
+ *
+ * This table entry contains an entry to a block registered within a
+ * drawing.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+typedef struct
+dxf_block_record
+{
+        int id_code;
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
+        char *block_name;
+                /*!< Name of the block registered within the drawing.\n
+                 * Group code = 2. */
+        int flag;
+                /*!< This flag is for the benefit of AutoCAD commands;
+                 * it can be ignored by most programs that read DXF files,
+                 * and need not be set by programs that write DXF files.\n
+                 * bit coded:\n
+                 * <ol>
+                 * <li value = "16"> if set, table entry is externally
+                 * dependent on an Xref.</li>
+                 * <li value = "32"> if this bit and bit 16 are both set,
+                 * the externally dependent Xref has been successfully
+                 * resolved.</li>
+                 * <li value = "64"> if set, the table entry was
+                 * referenced by at least one entity in the drawing the
+                 * last time the drawing was edited.</li>
+                 * </ol>
+                 * Group code = 70. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary
+                 * (optional).\n
+                 * Group code = 330. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary
+                 * (optional).\n
+                 * Group code = 360. */
+        struct DxfBlockRecord *next;
+                /*!< Pointer to the next DxfAppid.\n
+                 * \c NULL in the last DxfAppid. */
+} DxfBlockRecord;
+
+
 #endif /* LIBDXF_SRC_BLOCK_RECORD_H */
 
 
