@@ -73,4 +73,49 @@ dxf_block_record_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF
+ * \c BLOCK_RECORD symbol table entry.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfBlockRecord *
+dxf_block_record_init
+(
+        DxfBlockRecord *block_record
+                /*!< DXF block record symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                block_record = dxf_block_record_new ();
+        }
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfBlockRecord struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        block_record->id_code = 0;
+        block_record->block_name = strdup ("");
+        block_record->flag = 0;
+        block_record->dictionary_owner_soft = strdup ("");
+        block_record->dictionary_owner_hard = strdup ("");
+        block_record->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block_record);
+}
+
+
 /* EOF*/

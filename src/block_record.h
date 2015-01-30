@@ -95,6 +95,11 @@ dxf_block_record
 
 DxfBlockRecord *
 dxf_block_record_new ();
+DxfBlockRecord *
+dxf_block_record_init
+(
+        DxfBlockRecord *block_record
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_RECORD_H */
