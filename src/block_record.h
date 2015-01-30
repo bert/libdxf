@@ -100,6 +100,12 @@ dxf_block_record_init
 (
         DxfBlockRecord *block_record
 );
+DxfBlockRecord *
+dxf_block_record_read
+(
+        DxfFile *fp,
+        DxfBlockRecord *block_record
+);
 int
 dxf_block_record_free
 (
