@@ -118,4 +118,40 @@ dxf_block_record_init
 }
 
 
+/*!
+ * \brief Free the allocate memory for a DXF \c BLOCK_RECORD and all
+ * it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_block_record_free
+(
+        DxfBlockRecord *block_record
+                /*!< DXF \c BLOCK_RECORD symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (block_record->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfBlockRecord was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (block_record->block_name);
+        free (block_record->dictionary_owner_soft);
+        free (block_record->dictionary_owner_hard);
+        free (block_record);
+        block_record = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
