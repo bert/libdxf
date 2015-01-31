@@ -107,6 +107,12 @@ dxf_block_record_read
         DxfBlockRecord *block_record
 );
 int
+dxf_block_record_write
+(
+        DxfFile *fp,
+        DxfBlockRecord *block_record
+);
+int
 dxf_block_record_free
 (
         DxfBlockRecord *block_record
