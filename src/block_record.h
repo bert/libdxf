@@ -111,6 +111,11 @@ dxf_block_record_free
 (
         DxfBlockRecord *block_record
 );
+int
+dxf_block_record_is_xreferenced
+(
+        DxfBlockRecord *block_record
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_RECORD_H */
