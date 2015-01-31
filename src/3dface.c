@@ -36,7 +36,7 @@
 
 
 /*!
- * \brief Allocate memory for a DXF \c 3DFACE.
+ * \brief Allocate memory for a DXF \c 3DFACE entity.
  *
  * Fill the memory contents with zeros.
  *
@@ -44,6 +44,7 @@
  * \version According to DXF R11.
  * \version According to DXF R12.
  * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_new ()
@@ -51,27 +52,27 @@ dxf_3dface_new ()
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        Dxf3dface *dxf_3dface = NULL;
+        Dxf3dface *face = NULL;
         size_t size;
 
         size = sizeof (Dxf3dface);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_3dface = malloc (size)) == NULL)
+        if ((face = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a Dxf3dface struct.\n")),
                   __FUNCTION__);
-                dxf_3dface = NULL;
+                face = NULL;
         }
         else
         {
-                memset (dxf_3dface, 0, size);
+                memset (face, 0, size);
         }
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_3dface);
+        return (face);
 }
 
 
@@ -86,11 +87,12 @@ dxf_3dface_new ()
  * \version According to DXF R11.
  * \version According to DXF R12.
  * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_init
 (
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
                 /*!< DXF 3dface entity. */
 )
 {
@@ -98,47 +100,49 @@ dxf_3dface_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_3dface == NULL)
+        if (face == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_3dface = dxf_3dface_new ();
+                face = dxf_3dface_new ();
         }
-        if (dxf_3dface == NULL)
+        if (face == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a Dxf3dface struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_3dface->id_code = 0;
-        dxf_3dface->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_3dface->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_3dface->x0 = 0.0;
-        dxf_3dface->y0 = 0.0;
-        dxf_3dface->z0 = 0.0;
-        dxf_3dface->x1 = 0.0;
-        dxf_3dface->y1 = 0.0;
-        dxf_3dface->z1 = 0.0;
-        dxf_3dface->x2 = 0.0;
-        dxf_3dface->y2 = 0.0;
-        dxf_3dface->z2 = 0.0;
-        dxf_3dface->x3 = 0.0;
-        dxf_3dface->y3 = 0.0;
-        dxf_3dface->z3 = 0.0;
-        dxf_3dface->elevation = 0.0;
-        dxf_3dface->thickness = 0.0;
-        dxf_3dface->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        dxf_3dface->visibility = DXF_DEFAULT_VISIBILITY;
-        dxf_3dface->color = DXF_COLOR_BYLAYER;
-        dxf_3dface->paperspace = DXF_MODELSPACE;
-        dxf_3dface->flag = 0;
-        dxf_3dface->next = NULL;
+        face->id_code = 0;
+        face->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        face->layer = strdup (DXF_DEFAULT_LAYER);
+        face->x0 = 0.0;
+        face->y0 = 0.0;
+        face->z0 = 0.0;
+        face->x1 = 0.0;
+        face->y1 = 0.0;
+        face->z1 = 0.0;
+        face->x2 = 0.0;
+        face->y2 = 0.0;
+        face->z2 = 0.0;
+        face->x3 = 0.0;
+        face->y3 = 0.0;
+        face->z3 = 0.0;
+        face->elevation = 0.0;
+        face->thickness = 0.0;
+        face->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        face->visibility = DXF_DEFAULT_VISIBILITY;
+        face->color = DXF_COLOR_BYLAYER;
+        face->paperspace = DXF_MODELSPACE;
+        face->flag = 0;
+        face->dictionary_owner_soft = strdup ("");
+        face->dictionary_owner_hard = strdup ("");
+        face->next = NULL;
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_3dface);
+        return (face);
 }
 
 
@@ -150,19 +154,20 @@ dxf_3dface_init
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
  *
- * \return a pointer to \c dxf_3dface.
+ * \return a pointer to \c face.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
  * \version According to DXF R12.
  * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
                 /*!< DXF 3dface entity. */
 )
 {
@@ -179,13 +184,13 @@ dxf_3dface_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_3dface == NULL)
+        if (face == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_3dface = dxf_3dface_new ();
-                dxf_3dface = dxf_3dface_init (dxf_3dface);
+                face = dxf_3dface_new ();
+                face = dxf_3dface_init (face);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -204,149 +209,149 @@ dxf_3dface_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_3dface->id_code);
+                        fscanf (fp->fp, "%x\n", &face->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_3dface->linetype);
+                        fscanf (fp->fp, "%s\n", face->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_3dface->layer);
+                        fscanf (fp->fp, "%s\n", face->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the first point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->x0);
+                        fscanf (fp->fp, "%lf\n", &face->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the first point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->y0);
+                        fscanf (fp->fp, "%lf\n", &face->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of first the point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->z0);
+                        fscanf (fp->fp, "%lf\n", &face->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the second point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->x1);
+                        fscanf (fp->fp, "%lf\n", &face->x1);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the second point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->y1);
+                        fscanf (fp->fp, "%lf\n", &face->y1);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the second point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->z1);
+                        fscanf (fp->fp, "%lf\n", &face->z1);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the third point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->x2);
+                        fscanf (fp->fp, "%lf\n", &face->x2);
                 }
                 else if (strcmp (temp_string, "22") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the third point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->y2);
+                        fscanf (fp->fp, "%lf\n", &face->y2);
                 }
                 else if (strcmp (temp_string, "32") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the third point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->z2);
+                        fscanf (fp->fp, "%lf\n", &face->z2);
                 }
                 else if (strcmp (temp_string, "13") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the fourth point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->x3);
+                        fscanf (fp->fp, "%lf\n", &face->x3);
                 }
                 else if (strcmp (temp_string, "23") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the fourth point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->y3);
+                        fscanf (fp->fp, "%lf\n", &face->y3);
                 }
                 else if (strcmp (temp_string, "33") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the fourth point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->z3);
+                        fscanf (fp->fp, "%lf\n", &face->z3);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                   && DXF_FLATLAND
                   && (strcmp (temp_string, "38") == 0)
-                  && (dxf_3dface->elevation != 0.0))
+                  && (face->elevation != 0.0))
                 {
                         /* Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->elevation);
+                        fscanf (fp->fp, "%lf\n", &face->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->thickness);
+                        fscanf (fp->fp, "%lf\n", &face->thickness);
                 }
                 else if (strcmp (temp_string, "48") == 0)
                 {
                         /* Now follows a string containing the linetype
                          * scale. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_3dface->linetype_scale);
+                        fscanf (fp->fp, "%lf\n", &face->linetype_scale);
                 }
                 else if (strcmp (temp_string, "60") == 0)
                 {
                         /* Now follows a string containing the
                          * visibility value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%hd\n", &dxf_3dface->visibility);
+                        fscanf (fp->fp, "%hd\n", &face->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_3dface->color);
+                        fscanf (fp->fp, "%d\n", &face->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_3dface->paperspace);
+                        fscanf (fp->fp, "%d\n", &face->paperspace);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -368,7 +373,21 @@ dxf_3dface_read
                         /* Now follows a string containing the
                          * value of edge visibility flag. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_3dface->flag);
+                        fscanf (fp->fp, "%d\n", &face->flag);
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", face->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", face->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -385,18 +404,18 @@ dxf_3dface_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_3dface->linetype, "") == 0)
+        if (strcmp (face->linetype, "") == 0)
         {
-                dxf_3dface->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                face->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_3dface->layer, "") == 0)
+        if (strcmp (face->layer, "") == 0)
         {
-                dxf_3dface->layer = strdup (DXF_DEFAULT_LAYER);
+                face->layer = strdup (DXF_DEFAULT_LAYER);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_3dface);
+        return (face);
 }
 
 
@@ -410,13 +429,14 @@ dxf_3dface_read
  * \version According to DXF R11.
  * \version According to DXF R12.
  * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_3dface_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
                 /*!< DXF 3D face entity. */
 )
 {
@@ -433,92 +453,116 @@ dxf_3dface_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_3dface == NULL)
+        if (face == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_3dface->linetype, "") == 0)
+        if (strcmp (face->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_3dface->id_code);
+                  __FUNCTION__, dxf_entity_name, face->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_3dface->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                face->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_3dface->layer, "") == 0)
+        if (strcmp (face->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_3dface->id_code);
+                  __FUNCTION__, dxf_entity_name, face->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
-                dxf_3dface->layer = strdup (DXF_DEFAULT_LAYER);
+                face->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_3dface->id_code != -1)
+        if (face->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_3dface->id_code);
+                fprintf (fp->fp, "  5\n%x\n", face->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (face->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", face->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (face->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", face->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_3dface->paperspace == DXF_PAPERSPACE)
+        if (face->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_3dface->layer);
-        if (strcmp (dxf_3dface->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", face->layer);
+        if (strcmp (face->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_3dface->linetype);
+                fprintf (fp->fp, "  6\n%s\n", face->linetype);
         }
-        if (dxf_3dface->color != DXF_COLOR_BYLAYER)
+        if (face->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_3dface->color);
+                fprintf (fp->fp, " 62\n%d\n", face->color);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_3dface->elevation != 0.0))
+          && (face->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_3dface->elevation);
+                fprintf (fp->fp, " 38\n%f\n", face->elevation);
         }
         if ((fp->acad_version_number <= AutoCAD_13)
-          && (dxf_3dface->thickness != 0.0))
+          && (face->thickness != 0.0))
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_3dface->thickness);
+                fprintf (fp->fp, " 39\n%f\n", face->thickness);
         }
-        if (dxf_3dface->linetype_scale != 1.0)
+        if (face->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_3dface->linetype_scale);
+                fprintf (fp->fp, " 48\n%f\n", face->linetype_scale);
         }
-        if (dxf_3dface->visibility != 0)
+        if (face->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_3dface->visibility);
+                fprintf (fp->fp, " 60\n%d\n", face->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbFace\n");
         }
-        fprintf (fp->fp, " 10\n%f\n", dxf_3dface->x0);
-        fprintf (fp->fp, " 20\n%f\n", dxf_3dface->y0);
-        fprintf (fp->fp, " 30\n%f\n", dxf_3dface->z0);
-        fprintf (fp->fp, " 11\n%f\n", dxf_3dface->x1);
-        fprintf (fp->fp, " 21\n%f\n", dxf_3dface->y1);
-        fprintf (fp->fp, " 31\n%f\n", dxf_3dface->z1);
-        fprintf (fp->fp, " 12\n%f\n", dxf_3dface->x2);
-        fprintf (fp->fp, " 22\n%f\n", dxf_3dface->y2);
-        fprintf (fp->fp, " 32\n%f\n", dxf_3dface->z2);
-        fprintf (fp->fp, " 13\n%f\n", dxf_3dface->x3);
-        fprintf (fp->fp, " 23\n%f\n", dxf_3dface->y3);
-        fprintf (fp->fp, " 33\n%f\n", dxf_3dface->z3);
-        fprintf (fp->fp, " 70\n%d\n", dxf_3dface->flag);
+        fprintf (fp->fp, " 10\n%f\n", face->x0);
+        fprintf (fp->fp, " 20\n%f\n", face->y0);
+        fprintf (fp->fp, " 30\n%f\n", face->z0);
+        fprintf (fp->fp, " 11\n%f\n", face->x1);
+        fprintf (fp->fp, " 21\n%f\n", face->y1);
+        fprintf (fp->fp, " 31\n%f\n", face->z1);
+        fprintf (fp->fp, " 12\n%f\n", face->x2);
+        fprintf (fp->fp, " 22\n%f\n", face->y2);
+        fprintf (fp->fp, " 32\n%f\n", face->z2);
+        fprintf (fp->fp, " 13\n%f\n", face->x3);
+        fprintf (fp->fp, " 23\n%f\n", face->y3);
+        fprintf (fp->fp, " 33\n%f\n", face->z3);
+        fprintf (fp->fp, " 70\n%d\n", face->flag);
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
@@ -537,11 +581,12 @@ dxf_3dface_write
  * \version According to DXF R11.
  * \version According to DXF R12.
  * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_3dface_free
 (
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
                 /*!< Pointer to the memory occupied by the DXF \c 3DFACE
                  * entity. */
 )
@@ -549,17 +594,19 @@ dxf_3dface_free
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_3dface->next != NULL)
+        if (face->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next Dxf3dface was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_3dface->linetype);
-        free (dxf_3dface->layer);
-        free (dxf_3dface);
-        dxf_3dface = NULL;
+        free (face->linetype);
+        free (face->layer);
+        free (face->dictionary_owner_soft);
+        free (face->dictionary_owner_hard);
+        free (face);
+        face = NULL;
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
@@ -568,7 +615,7 @@ dxf_3dface_free
 
 
 /*!
- * \brief Test if the first edge is invisible.
+ * \brief Test if the first edge of the DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
  * visible.
@@ -576,7 +623,7 @@ dxf_3dface_free
 int
 dxf_3dface_is_first_edge_invisible
 (
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
                 /*!< DXF 3dface entity. */
 )
 {
@@ -586,14 +633,14 @@ dxf_3dface_is_first_edge_invisible
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_3dface == NULL)
+        if (face == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = (DXF_CHECK_BIT (dxf_3dface->flag, 0));
+        result = (DXF_CHECK_BIT (face->flag, 0));
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -602,7 +649,7 @@ dxf_3dface_is_first_edge_invisible
 
 
 /*!
- * \brief Test if the second edge is invisible.
+ * \brief Test if the second edge of the DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
  * visible.
@@ -610,7 +657,7 @@ dxf_3dface_is_first_edge_invisible
 int
 dxf_3dface_is_second_edge_invisible
 (
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
                 /*!< DXF 3dface entity. */
 )
 {
@@ -620,14 +667,14 @@ dxf_3dface_is_second_edge_invisible
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_3dface == NULL)
+        if (face == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = (DXF_CHECK_BIT (dxf_3dface->flag, 1));
+        result = (DXF_CHECK_BIT (face->flag, 1));
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -636,7 +683,7 @@ dxf_3dface_is_second_edge_invisible
 
 
 /*!
- * \brief Test if the third edge is invisible.
+ * \brief Test if the third edge of the DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
  * visible.
@@ -644,7 +691,7 @@ dxf_3dface_is_second_edge_invisible
 int
 dxf_3dface_is_third_edge_invisible
 (
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
                 /*!< DXF 3dface entity. */
 )
 {
@@ -654,14 +701,14 @@ dxf_3dface_is_third_edge_invisible
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_3dface == NULL)
+        if (face == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = (DXF_CHECK_BIT (dxf_3dface->flag, 2));
+        result = (DXF_CHECK_BIT (face->flag, 2));
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -670,7 +717,7 @@ dxf_3dface_is_third_edge_invisible
 
 
 /*!
- * \brief Test if the fourth edge is invisible.
+ * \brief Test if the fourth edge of the DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
  * visible.
@@ -678,7 +725,7 @@ dxf_3dface_is_third_edge_invisible
 int
 dxf_3dface_is_fourth_edge_invisible
 (
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
                 /*!< DXF 3dface entity. */
 )
 {
@@ -688,14 +735,14 @@ dxf_3dface_is_fourth_edge_invisible
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_3dface == NULL)
+        if (face == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = (DXF_CHECK_BIT (dxf_3dface->flag, 3));
+        result = (DXF_CHECK_BIT (face->flag, 3));
 #if DEBUG
         DXF_DEBUG_END
 #endif

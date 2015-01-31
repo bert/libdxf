@@ -46,6 +46,7 @@
  * \version According to DXF R11.
  * \version According to DXF R12.
  * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 typedef struct
 dxf_3dface
@@ -95,6 +96,12 @@ dxf_3dface
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
         /* Specific members for a DXF 3D face. */
         double x0;
                 /*!< X-value of the base point.\n
@@ -153,44 +160,44 @@ dxf_3dface_new ();
 Dxf3dface *
 dxf_3dface_init
 (
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
 );
 Dxf3dface *
 dxf_3dface_read
 (
         DxfFile *fp,
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
 );
 int
 dxf_3dface_write
 (
         DxfFile *fp,
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
 );
 int
 dxf_3dface_free
 (
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
 );
 int
 dxf_3dface_is_first_edge_invisible
 (
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
 );
 int
 dxf_3dface_is_second_edge_invisible
 (
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
 );
 int
 dxf_3dface_is_third_edge_invisible
 (
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
 );
 int
 dxf_3dface_is_fourth_edge_invisible
 (
-        Dxf3dface *dxf_3dface
+        Dxf3dface *face
 );
 
 
