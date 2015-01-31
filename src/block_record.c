@@ -324,7 +324,7 @@ dxf_block_record_write
 
 
 /*!
- * \brief Free the allocate memory for a DXF \c BLOCK_RECORD and all
+ * \brief Free the allocated memory for a DXF \c BLOCK_RECORD and all
  * it's data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
