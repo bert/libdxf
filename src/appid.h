@@ -107,44 +107,44 @@ dxf_appid_new ();
 DxfAppid *
 dxf_appid_init
 (
-        DxfAppid *dxf_appid
+        DxfAppid *appid
 );
 DxfAppid *
 dxf_appid_read
 (
         DxfFile *fp,
-        DxfAppid *dxf_appid
+        DxfAppid *appid
 );
 int
 dxf_appid_write
 (
         DxfFile *fp,
-        DxfAppid* dxf_appid
+        DxfAppid* appid
 );
 int
 dxf_appid_free
 (
-        DxfAppid *dxf_appid
+        DxfAppid *appid
 );
 int
 dxf_appid_is_xreferenced
 (
-        DxfAppid *dxf_appid
+        DxfAppid *appid
 );
 int
 dxf_appid_is_xresolved
 (
-        DxfAppid *dxf_appid
+        DxfAppid *appid
 );
 int
 dxf_appid_is_referenced
 (
-        DxfAppid *dxf_appid
+        DxfAppid *appid
 );
 int
 dxf_appid_is_no_save_xdata
 (
-        DxfAppid *dxf_appid
+        DxfAppid *appid
 );
 
 

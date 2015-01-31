@@ -45,7 +45,7 @@
 
 
 /*!
- * \brief Allocate memory for a DXF \c APPID entity.
+ * \brief Allocate memory for a DXF \c APPID symbol table entry.
  *
  * Fill the memory contents with zeros.
  *
@@ -61,33 +61,33 @@ dxf_appid_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfAppid *dxf_appid = NULL;
+        DxfAppid *appid = NULL;
         size_t size;
 
         size = sizeof (DxfAppid);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_appid = malloc (size)) == NULL)
+        if ((appid = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfAppid struct.\n")),
                   __FUNCTION__);
-                dxf_appid = NULL;
+                appid = NULL;
         }
         else
         {
-                memset (dxf_appid, 0, size);
+                memset (appid, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_appid);
+        return (appid);
 }
 
 
 /*!
  * \brief Allocate memory and initialize data fields in a DXF \c APPID
- * entity.
+ * symbol table entry.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
@@ -101,51 +101,52 @@ dxf_appid_new ()
 DxfAppid *
 dxf_appid_init
 (
-        DxfAppid *dxf_appid
-                /*!< DXF application id entity. */
+        DxfAppid *appid
+                /*!< DXF application id symbol table entry. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_appid == NULL)
+        if (appid == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_appid = dxf_appid_new ();
+                appid = dxf_appid_new ();
         }
-        if (dxf_appid == NULL)
+        if (appid == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfAppid struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_appid->id_code = 0;
-        dxf_appid->application_name = strdup ("");
-        dxf_appid->flag = 0;
-        dxf_appid->dictionary_owner_soft = strdup ("");
-        dxf_appid->dictionary_owner_hard = strdup ("");
-        dxf_appid->next = NULL;
+        appid->id_code = 0;
+        appid->application_name = strdup ("");
+        appid->flag = 0;
+        appid->dictionary_owner_soft = strdup ("");
+        appid->dictionary_owner_hard = strdup ("");
+        appid->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_appid);
+        return (appid);
 }
 
 
 /*!
- * \brief Read data from a DXF file into a DXF \c APPID entity.
+ * \brief Read data from a DXF file into a DXF \c APPID symbol table
+ * entry.
  *
  * The last line read from file contained the string "APPID". \n
  * Now follows some data for the \c APPID, to be terminated with a "  0"
  * string announcing the following table record, or the end of the
  * \c TABLE section marker \c ENDTAB. \n
- * While parsing the DXF file store data in \c dxf_appid. \n
+ * While parsing the DXF file store data in \c appid. \n
  *
- * \return a pointer to \c dxf_appid.
+ * \return a pointer to \c appid.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -158,8 +159,8 @@ dxf_appid_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfAppid *dxf_appid
-                /*!< DXF appid entity. */
+        DxfAppid *appid
+                /*!< DXF appid symbol table entry. */
 )
 {
 #if DEBUG
@@ -175,13 +176,13 @@ dxf_appid_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_appid == NULL)
+        if (appid == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_appid = dxf_appid_new ();
-                dxf_appid = dxf_appid_init (dxf_appid);
+                appid = dxf_appid_new ();
+                appid = dxf_appid_init (appid);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -200,35 +201,35 @@ dxf_appid_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_appid->id_code);
+                        fscanf (fp->fp, "%x\n", &appid->id_code);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing an application
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_appid->application_name);
+                        fscanf (fp->fp, "%s\n", appid->application_name);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * standard flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_appid->flag);
+                        fscanf (fp->fp, "%d\n", &appid->flag);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_appid->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", appid->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_appid->dictionary_owner_hard);
+                        fscanf (fp->fp, "%s\n", appid->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -247,7 +248,7 @@ dxf_appid_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_appid);
+        return (appid);
 }
 
 
@@ -264,7 +265,7 @@ dxf_appid_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfAppid *dxf_appid
+        DxfAppid *appid
                 /*!< DXF APPID symbol table entry. */
 )
 {
@@ -288,19 +289,19 @@ dxf_appid_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_appid == NULL)
+        if (appid == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if ((dxf_appid->application_name == NULL)
-          || (strcmp (dxf_appid->application_name, "") == 0))
+        if ((appid->application_name == NULL)
+          || (strcmp (appid->application_name, "") == 0))
         {
                 fprintf (stderr,
                   (_("Error in %s empty block name string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_appid->id_code);
+                  __FUNCTION__, dxf_entity_name, appid->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
@@ -308,9 +309,9 @@ dxf_appid_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_appid->id_code != -1)
+        if (appid->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_appid->id_code);
+                fprintf (fp->fp, "  5\n%x\n", appid->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -322,18 +323,18 @@ dxf_appid_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_appid->dictionary_owner_soft, "") != 0)
+        if ((strcmp (appid->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_appid->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", appid->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_appid->dictionary_owner_hard, "") != 0)
+        if ((strcmp (appid->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_appid->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", appid->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
@@ -341,8 +342,8 @@ dxf_appid_write
                 fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
                 fprintf (fp->fp, "100\nAcDbRegAppTableRecord\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", dxf_appid->application_name);
-        fprintf (fp->fp, " 70\n%d\n", dxf_appid->flag);
+        fprintf (fp->fp, "  2\n%s\n", appid->application_name);
+        fprintf (fp->fp, " 70\n%d\n", appid->flag);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -366,25 +367,25 @@ dxf_appid_write
 int
 dxf_appid_free
 (
-        DxfAppid *dxf_appid
-                /*!< DXF \c APPID entity. */
+        DxfAppid *appid
+                /*!< DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_appid->next != NULL)
+        if (appid->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfAppid was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_appid->application_name);
-        free (dxf_appid->dictionary_owner_soft);
-        free (dxf_appid->dictionary_owner_hard);
-        free (dxf_appid);
-        dxf_appid = NULL;
+        free (appid->application_name);
+        free (appid->dictionary_owner_soft);
+        free (appid->dictionary_owner_hard);
+        free (appid);
+        appid = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -393,8 +394,8 @@ dxf_appid_free
 
 
 /*!
- * \brief Test if xdata associated with this APPID is not to be written
- * when \c SAVEASR12 is performed.
+ * \brief Test if xdata associated with this DXF \c APPID is not to be
+ * written when \c SAVEASR12 is performed.
  *
  * \return \c TRUE when not to be written,
  * or \c FALSE when to be written.
@@ -408,8 +409,8 @@ dxf_appid_free
 int
 dxf_appid_is_no_save_xdata
 (
-        DxfAppid *dxf_appid
-                /*!< DXF \c APPID entity. */
+        DxfAppid *appid
+                /*!< DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -418,14 +419,14 @@ dxf_appid_is_no_save_xdata
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_appid == NULL)
+        if (appid == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_appid->flag, 0);
+        result = DXF_CHECK_BIT (appid->flag, 0);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -434,10 +435,10 @@ dxf_appid_is_no_save_xdata
 
 
 /*!
- * \brief Test if appid is externally dependent on an xref.
+ * \brief Test if this DXF \c APPID is externally dependent on an xref.
  *
- * \return \c TRUE when appid is externally dependent on an xref,
- * or \c FALSE when appid is not externally dependent on an xref.
+ * \return \c TRUE when \c APPID is externally dependent on an xref,
+ * or \c FALSE when \c APPID is not externally dependent on an xref.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -448,8 +449,8 @@ dxf_appid_is_no_save_xdata
 int
 dxf_appid_is_xreferenced
 (
-        DxfAppid *dxf_appid
-                /*!< DXF \c APPID entity. */
+        DxfAppid *appid
+                /*!< DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -458,14 +459,14 @@ dxf_appid_is_xreferenced
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_appid == NULL)
+        if (appid == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_appid->flag, 4);
+        result = DXF_CHECK_BIT (appid->flag, 4);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -474,13 +475,12 @@ dxf_appid_is_xreferenced
 
 
 /*!
- * \brief Test if appid is externally dependent on a xref and has been
- * successfully resolved.
+ * \brief Test if this DXF \c APPID is externally dependent on a xref
+ * and has been successfully resolved.
  *
- * \return \c TRUE when appid is externally dependent on a xref and has
- * been successfully resolved,
- * or \c FALSE when appid is not externally dependent on a xref and has
- * not been successfully resolved.
+ * \return \c TRUE when \c APPID is externally dependent on a xref and
+ * has been successfully resolved, or \c FALSE when \c APPID is not
+ * externally dependent on a xref and has not been successfully resolved.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -491,8 +491,8 @@ dxf_appid_is_xreferenced
 int
 dxf_appid_is_xresolved
 (
-        DxfAppid *dxf_appid
-                /*!< DXF \c APPID entity. */
+        DxfAppid *appid
+                /*!< DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -501,15 +501,15 @@ dxf_appid_is_xresolved
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_appid == NULL)
+        if (appid == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ((DXF_CHECK_BIT (dxf_appid->flag, 4))
-          && (DXF_CHECK_BIT (dxf_appid->flag, 5)));
+        result = ((DXF_CHECK_BIT (appid->flag, 4))
+          && (DXF_CHECK_BIT (appid->flag, 5)));
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -518,10 +518,11 @@ dxf_appid_is_xresolved
 
 
 /*!
- * \brief Test if appid is internally referenced by an entity.
+ * \brief Test if this DXF \c APPID is internally referenced by an
+ * entity.
  *
- * \return \c TRUE when appid is internally referenced by an entity,
- * or \c FALSE when appid is not internally referenced by an entity.
+ * \return \c TRUE when \c APPID is internally referenced by an entity,
+ * or \c FALSE when \c APPID is not internally referenced by an entity.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -532,7 +533,7 @@ dxf_appid_is_xresolved
 int
 dxf_appid_is_referenced
 (
-        DxfAppid *dxf_appid
+        DxfAppid *appid
                 /*!< DXF \c APPID entity. */
 )
 {
@@ -542,14 +543,14 @@ dxf_appid_is_referenced
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_appid == NULL)
+        if (appid == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_appid->flag, 6);
+        result = DXF_CHECK_BIT (appid->flag, 6);
 #if DEBUG
         DXF_DEBUG_END
 #endif
