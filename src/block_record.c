@@ -338,4 +338,40 @@ dxf_block_record_is_xresolved
 }
 
 
+/*!
+ * \brief Test if this DXF \c BLOCK_RECORD is internally referenced by
+ * an entity.
+ *
+ * \return \c TRUE when \c BLOCK_RECORD is internally referenced by an
+ * entity, or \c FALSE when \c BLOCK_RECORD is not internally referenced
+ * by an entity.
+ */
+int
+dxf_block_record_is_referenced
+(
+        DxfBlockRecord *block_record
+                /*!< DXF \c BLOCK_RECORD symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (block_record->flag, 6);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
