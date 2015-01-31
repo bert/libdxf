@@ -352,7 +352,7 @@ dxf_appid_write
 
 
 /*!
- * \brief Free the allocate memory for a DXF \c APPID and all it's
+ * \brief Free the allocated memory for a DXF \c APPID and all it's
  * data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
@@ -534,7 +534,7 @@ int
 dxf_appid_is_referenced
 (
         DxfAppid *appid
-                /*!< DXF \c APPID entity. */
+                /*!< DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
