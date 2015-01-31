@@ -42,6 +42,12 @@
  * \brief Allocate memory for a DXF \c BLOCK_RECORD symbol table entry.
  *
  * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfBlockRecord *
 dxf_block_record_new ()
@@ -79,6 +85,12 @@ dxf_block_record_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfBlockRecord *
 dxf_block_record_init
@@ -129,6 +141,12 @@ dxf_block_record_init
  * While parsing the DXF file store data in \c block_record. \n
  *
  * \return a pointer to \c block_record.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfBlockRecord *
 dxf_block_record_read
@@ -231,6 +249,9 @@ dxf_block_record_read
 /*!
  * \brief Write DXF output to a file for a DXF \c BLOCK_RECORD symbol table
  * entry.
+ *
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_block_record_write
@@ -329,6 +350,12 @@ dxf_block_record_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_block_record_free
@@ -366,6 +393,12 @@ dxf_block_record_free
  * \return \c TRUE when \c BLOCK_RECORD is externally dependent on an
  * xref, or \c FALSE when \c BLOCK_RECORD is not externally dependent on
  * an xref.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_block_record_is_xreferenced
@@ -403,6 +436,12 @@ dxf_block_record_is_xreferenced
  * xref and has been successfully resolved, or \c FALSE when
  * \c BLOCK_RECORD is not externally dependent on a xref and has not
  * been successfully resolved.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_block_record_is_xresolved
@@ -440,6 +479,12 @@ dxf_block_record_is_xresolved
  * \return \c TRUE when \c BLOCK_RECORD is internally referenced by an
  * entity, or \c FALSE when \c BLOCK_RECORD is not internally referenced
  * by an entity.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_block_record_is_referenced
