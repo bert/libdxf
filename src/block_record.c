@@ -300,4 +300,42 @@ dxf_block_record_is_xreferenced
 }
 
 
+/*!
+ * \brief Test if this DXF \c BLOCK_RECORD is externally dependent on a
+ * xref and has been successfully resolved.
+ *
+ * \return \c TRUE when \c BLOCK_RECORD is externally dependent on a
+ * xref and has been successfully resolved, or \c FALSE when
+ * \c BLOCK_RECORD is not externally dependent on a xref and has not
+ * been successfully resolved.
+ */
+int
+dxf_block_record_is_xresolved
+(
+        DxfBlockRecord *block_record
+                /*!< DXF \c BLOCK_RECORD symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = ((DXF_CHECK_BIT (block_record->flag, 4))
+          && (DXF_CHECK_BIT (block_record->flag, 5)));
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
