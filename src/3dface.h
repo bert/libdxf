@@ -174,7 +174,7 @@ dxf_3dface_write
         DxfFile *fp,
         Dxf3dface *face
 );
-int
+Dxf3dface *
 dxf_3dface_free
 (
         Dxf3dface *face
