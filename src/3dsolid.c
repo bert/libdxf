@@ -61,13 +61,13 @@ dxf_3dsolid_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        Dxf3dsolid *dxf_3dsolid = NULL;
+        Dxf3dsolid *solid = NULL;
         size_t size;
 
         size = sizeof (Dxf3dsolid);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_3dsolid = malloc (size)) == NULL)
+        if ((solid = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a Dxf3dsolid struct.\n")),
@@ -76,12 +76,12 @@ dxf_3dsolid_new ()
         }
         else
         {
-                memset (dxf_3dsolid, 0, size);
+                memset (solid, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_3dsolid);
+        return (solid);
 }
 
 
@@ -101,7 +101,7 @@ dxf_3dsolid_new ()
 Dxf3dsolid *
 dxf_3dsolid_init
 (
-        Dxf3dsolid *dxf_3dsolid
+        Dxf3dsolid *solid
                 /*!< DXF \c 3DSOLID entity. */
 )
 {
@@ -111,44 +111,44 @@ dxf_3dsolid_init
         int i;
 
         /* Do some basic checks. */
-        if (dxf_3dsolid == NULL)
+        if (solid == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_3dsolid = dxf_3dsolid_new ();
+                solid = dxf_3dsolid_new ();
         }
-        if (dxf_3dsolid == NULL)
+        if (solid == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a Dxf3dsolid struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_3dsolid->modeler_format_version_number = 0;
-        dxf_3dsolid->id_code = 0;
-        dxf_3dsolid->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_3dsolid->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_3dsolid->elevation = 0.0;
-        dxf_3dsolid->thickness = 0.0;
-        dxf_3dsolid->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        dxf_3dsolid->visibility = DXF_DEFAULT_VISIBILITY;
-        dxf_3dsolid->color = DXF_COLOR_BYLAYER;
-        dxf_3dsolid->paperspace = DXF_MODELSPACE;
-        dxf_3dsolid->modeler_format_version_number = 1;
-        dxf_3dsolid->history = strdup ("");
+        solid->modeler_format_version_number = 0;
+        solid->id_code = 0;
+        solid->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        solid->layer = strdup (DXF_DEFAULT_LAYER);
+        solid->elevation = 0.0;
+        solid->thickness = 0.0;
+        solid->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        solid->visibility = DXF_DEFAULT_VISIBILITY;
+        solid->color = DXF_COLOR_BYLAYER;
+        solid->paperspace = DXF_MODELSPACE;
+        solid->modeler_format_version_number = 1;
+        solid->history = strdup ("");
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                dxf_3dsolid->proprietary_data[i] = strdup ("");
-                dxf_3dsolid->additional_proprietary_data[i] = strdup ("");
+                solid->proprietary_data[i] = strdup ("");
+                solid->additional_proprietary_data[i] = strdup ("");
         }
-        dxf_3dsolid->dictionary_owner_soft = strdup ("");
-        dxf_3dsolid->dictionary_owner_hard = strdup ("");
-        dxf_3dsolid->next = NULL;
+        solid->dictionary_owner_soft = strdup ("");
+        solid->dictionary_owner_hard = strdup ("");
+        solid->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_3dsolid);
+        return (solid);
 }
 
 

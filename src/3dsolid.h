@@ -131,24 +131,24 @@ dxf_3dsolid_new ();
 Dxf3dsolid *
 dxf_3dsolid_init
 (
-        Dxf3dsolid *dxf_3dsolid
+        Dxf3dsolid *solid
 );
 Dxf3dsolid *
 dxf_3dsolid_read
 (
         DxfFile *fp,
-        Dxf3dsolid *dxf_3dsolid
+        Dxf3dsolid *solid
 );
 int
 dxf_3dsolid_write
 (
         DxfFile *fp,
-        Dxf3dsolid *dxf_3dsolid
+        Dxf3dsolid *solid
 );
 int
 dxf_3dsolid_free
 (
-        Dxf3dsolid *dxf_3dsolid
+        Dxf3dsolid *solid
 );
 
 
