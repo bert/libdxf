@@ -14,6 +14,12 @@
  * These table entries maintain a set of names for all applications
  * registered with a drawing.
  *
+ * \warning dxf_appid_new(), dxf_appid_init(), dxf_appid_read() and
+ * dxf_appid_free() are backward compatible with versions R10 and R11 to
+ * allow for reading DXF data generated with other CAD software. \n
+ * When writing DXF data to file with versions before DXF R12 a warning
+ * message is given.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -256,6 +262,8 @@ dxf_appid_read
  * \brief Write DXF output to a file for a DXF \c APPID symbol table
  * entry.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
  * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
@@ -282,13 +290,6 @@ dxf_appid_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (fp->acad_version_number < AutoCAD_12)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () illegal DXF version for this entity.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
         if (appid == NULL)
         {
                 fprintf (stderr,
@@ -306,6 +307,12 @@ dxf_appid_write
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
                 return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_12)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
