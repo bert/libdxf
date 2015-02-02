@@ -117,6 +117,7 @@ dxf_table_init
         }
         dxf_table->table_name = strdup ("");
         dxf_table->max_table_entries = 0;
+        dxf_table->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -314,6 +315,13 @@ dxf_table_free
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
+        }
+        if (dxf_table->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfTable was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
         }
         free (dxf_table->table_name);
         free (dxf_table);

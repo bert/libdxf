@@ -1,7 +1,7 @@
 /*!
  * \file table.h
  *
- * \author Copyright (C) 2009 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for of a DXF table entry (\c TABLE).
  *
@@ -81,6 +81,9 @@ dxf_table
         int max_table_entries;
                 /*!< Maximum number of table entries that may follow.\n
                  * Group code = 70. */
+        struct DxfTable *next;
+                /*!< Pointer to the next DxfTable.\n
+                 * \c NULL in the last DxfTable. */
 } DxfTable;
 
 
