@@ -7,6 +7,13 @@
  *
  * \version The \c 3DSOLID entity was introduced in DXF R13.
  *
+ * \warning dxf_3dsolid_new(), dxf_3dsolid_init(), dxf_3dsolid_read()
+ * and dxf_3dsolid_free() are backward compatible with versions
+ * R10 .. R12 to allow for reading DXF data generated with other CAD
+ * software. \n
+ * When writing DXF data to file with versions before DXF R13 a warning
+ * message is given.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -42,7 +49,11 @@
  *
  * Fill the memory contents with zeros.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_new ()
@@ -81,7 +92,11 @@ dxf_3dsolid_new ()
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_init
@@ -127,6 +142,8 @@ dxf_3dsolid_init
                 dxf_3dsolid->proprietary_data[i] = strdup ("");
                 dxf_3dsolid->additional_proprietary_data[i] = strdup ("");
         }
+        dxf_3dsolid->dictionary_owner_soft = strdup ("");
+        dxf_3dsolid->dictionary_owner_hard = strdup ("");
         dxf_3dsolid->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -146,7 +163,11 @@ dxf_3dsolid_init
  *
  * \return \c a pointer to \c dxf_3dsolid.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_read
@@ -317,6 +338,13 @@ dxf_3dsolid_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_3dsolid->dictionary_owner_soft);
+                }
                 else if ((fp->acad_version_number >= AutoCAD_2008)
                         && (strcmp (temp_string, "350") == 0))
                 {
@@ -324,6 +352,13 @@ dxf_3dsolid_read
                          * history object. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", dxf_3dsolid->history);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", dxf_3dsolid->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -362,7 +397,11 @@ dxf_3dsolid_read
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred while reading from the input file.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_3dsolid_write
@@ -387,19 +426,18 @@ dxf_3dsolid_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (fp->acad_version_number < AutoCAD_13)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () illegal DXF version for this entity.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
         if (dxf_3dsolid == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, dxf_3dsolid->id_code);
         }
         if (strcmp (dxf_3dsolid->linetype, "") == 0)
         {
@@ -426,6 +464,30 @@ dxf_3dsolid_write
         if (dxf_3dsolid->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", dxf_3dsolid->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (dxf_3dsolid->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", dxf_3dsolid->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (dxf_3dsolid->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", dxf_3dsolid->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -504,7 +566,11 @@ dxf_3dsolid_write
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_3dsolid_free
@@ -534,6 +600,8 @@ dxf_3dsolid_free
                 free (dxf_3dsolid->proprietary_data[i]);
                 free (dxf_3dsolid->additional_proprietary_data[i]);
         }
+        free (dxf_3dsolid->dictionary_owner_soft);
+        free (dxf_3dsolid->dictionary_owner_hard);
         free (dxf_3dsolid);
         dxf_3dsolid = NULL;
 #if DEBUG
