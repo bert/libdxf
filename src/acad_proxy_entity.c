@@ -10,6 +10,13 @@
  * \version The \c ACAD_ZOMBIE_ENTITY entity was renamed to 
  * \c ACAD_PROXY_ENTITY in DXF R14.
  *
+ * \warning dxf_acad_proxy_entity_new(), dxf_acad_proxy_entity_init(),
+ * dxf_acad_proxy_entity_read() and dxf_acad_proxy_entity_free() are
+ * backward compatible with versions R10 .. R12 to allow for reading DXF
+ * data generated with other CAD software. \n
+ * When writing DXF data to file with versions before DXF R13 a warning
+ * message is given.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -48,6 +55,9 @@
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
@@ -58,27 +68,27 @@ dxf_acad_proxy_entity_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfAcadProxyEntity *dxf_acad_proxy_entity = NULL;
+        DxfAcadProxyEntity *acad_proxy_entity = NULL;
         size_t size;
 
         size = sizeof (DxfAcadProxyEntity);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_acad_proxy_entity = malloc (size)) == NULL)
+        if ((acad_proxy_entity = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfAcadProxyEntity struct.\n")),
                   __FUNCTION__);
-                dxf_acad_proxy_entity = NULL;
+                acad_proxy_entity = NULL;
         }
         else
         {
-                memset (dxf_acad_proxy_entity, 0, size);
+                memset (acad_proxy_entity, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_acad_proxy_entity);
+        return (acad_proxy_entity);
 }
 
 
@@ -89,6 +99,9 @@ dxf_acad_proxy_entity_new ()
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
@@ -96,7 +109,7 @@ dxf_acad_proxy_entity_new ()
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_init
 (
-        DxfAcadProxyEntity *dxf_acad_proxy_entity
+        DxfAcadProxyEntity *acad_proxy_entity
                 /*!< DXF ACAD_PROXY_ENTITY table. */
 )
 {
@@ -106,41 +119,41 @@ dxf_acad_proxy_entity_init
         int i;
 
         /* Do some basic checks. */
-        if (dxf_acad_proxy_entity == NULL)
+        if (acad_proxy_entity == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_acad_proxy_entity = dxf_acad_proxy_entity_new ();
+                acad_proxy_entity = dxf_acad_proxy_entity_new ();
         }
-        if (dxf_acad_proxy_entity == NULL)
+        if (acad_proxy_entity == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfAcadProxyEntity struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_acad_proxy_entity->id_code = 0;
-        dxf_acad_proxy_entity->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_acad_proxy_entity->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_acad_proxy_entity->color = DXF_COLOR_BYLAYER;
-        dxf_acad_proxy_entity->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        dxf_acad_proxy_entity->object_visability = 0;
-        dxf_acad_proxy_entity->original_custom_object_data_format = 1;
-        dxf_acad_proxy_entity->proxy_entity_class_id = DXF_DEFAULT_PROXY_ENTITY_ID;
-        dxf_acad_proxy_entity->application_entity_class_id = 0;
-        dxf_acad_proxy_entity->graphics_data_size = 0;
-        dxf_acad_proxy_entity->object_drawing_format = 0;
+        acad_proxy_entity->id_code = 0;
+        acad_proxy_entity->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        acad_proxy_entity->layer = strdup (DXF_DEFAULT_LAYER);
+        acad_proxy_entity->color = DXF_COLOR_BYLAYER;
+        acad_proxy_entity->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        acad_proxy_entity->object_visability = 0;
+        acad_proxy_entity->original_custom_object_data_format = 1;
+        acad_proxy_entity->proxy_entity_class_id = DXF_DEFAULT_PROXY_ENTITY_ID;
+        acad_proxy_entity->application_entity_class_id = 0;
+        acad_proxy_entity->graphics_data_size = 0;
+        acad_proxy_entity->object_drawing_format = 0;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                dxf_acad_proxy_entity->binary_graphics_data[i] = strdup ("");
-                dxf_acad_proxy_entity->object_id[i] = strdup ("");
+                acad_proxy_entity->binary_graphics_data[i] = strdup ("");
+                acad_proxy_entity->object_id[i] = strdup ("");
         }
-        dxf_acad_proxy_entity->next = NULL;
+        acad_proxy_entity->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_acad_proxy_entity);
+        return (acad_proxy_entity);
 }
 
 
@@ -154,8 +167,11 @@ dxf_acad_proxy_entity_init
  * the \c ENTITY section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_acad_proxy_entity. \n
  *
- * \return a pointer to \c dxf_acad_proxy_entity.
+ * \return a pointer to \c acad_proxy_entity.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
@@ -165,7 +181,7 @@ dxf_acad_proxy_entity_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfAcadProxyEntity *dxf_acad_proxy_entity
+        DxfAcadProxyEntity *acad_proxy_entity
                 /*!< DXF ACAD_PROXY_ENTITY entity. */
 )
 {
@@ -191,13 +207,13 @@ dxf_acad_proxy_entity_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (!dxf_acad_proxy_entity)
+        if (!acad_proxy_entity)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_acad_proxy_entity = dxf_acad_proxy_entity_new ();
-                dxf_acad_proxy_entity = dxf_acad_proxy_entity_init (dxf_acad_proxy_entity);
+                acad_proxy_entity = dxf_acad_proxy_entity_new ();
+                acad_proxy_entity = dxf_acad_proxy_entity_init (acad_proxy_entity);
         }
         i = 0;
         j = 0;
@@ -218,42 +234,42 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_acad_proxy_entity->id_code);
+                        fscanf (fp->fp, "%x\n", &acad_proxy_entity->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing the linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_acad_proxy_entity->linetype);
+                        fscanf (fp->fp, "%s\n", acad_proxy_entity->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing the layer
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_acad_proxy_entity->layer);
+                        fscanf (fp->fp, "%s\n", acad_proxy_entity->layer);
                 }
                 else if (strcmp (temp_string, "48") == 0)
                 {
                         /* Now follows a string containing the linetype
                          * scale value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_acad_proxy_entity->linetype_scale);
+                        fscanf (fp->fp, "%lf\n", &acad_proxy_entity->linetype_scale);
                 }
                 else if (strcmp (temp_string, "60") == 0)
                 {
                         /* Now follows a string containing the object
                          * visability value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->object_visability);
+                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->object_visability);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->color);
+                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->color);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_2000)
                   && (strcmp (temp_string, "70") == 0))
@@ -261,8 +277,8 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the original
                          * custom object data format value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->original_custom_object_data_format);
-                        if (dxf_acad_proxy_entity->original_custom_object_data_format != 1)
+                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->original_custom_object_data_format);
+                        if (acad_proxy_entity->original_custom_object_data_format != 1)
                         {
                                 fprintf (stderr,
                                   (_("Error in %s () found a bad original custom object data format value in: %s in line: %d.\n")),
@@ -274,8 +290,8 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the proxy
                          * entity ID value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->proxy_entity_class_id);
-                        if (dxf_acad_proxy_entity->proxy_entity_class_id != DXF_DEFAULT_PROXY_ENTITY_ID)
+                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->proxy_entity_class_id);
+                        if (acad_proxy_entity->proxy_entity_class_id != DXF_DEFAULT_PROXY_ENTITY_ID)
                         {
                                 fprintf (stderr,
                                   (_("Warning in %s () found a bad proxy entity class ID in: %s in line: %d.\n")),
@@ -287,8 +303,8 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the application
                          * entity ID value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->application_entity_class_id);
-                        if (dxf_acad_proxy_entity->application_entity_class_id < 500)
+                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->application_entity_class_id);
+                        if (acad_proxy_entity->application_entity_class_id < 500)
                         {
                                 fprintf (stderr,
                                   (_("Warning in %s () found a bad value in application entity class ID in: %s in line: %d.\n")),
@@ -300,14 +316,14 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the graphics
                          * data size value (bytes). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->graphics_data_size);
+                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->graphics_data_size);
                 }
                 else if (strcmp (temp_string, "93") == 0)
                 {
                         /* Now follows a string containing the entity
                          * data size value (bits). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_acad_proxy_entity->graphics_data_size);
+                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->graphics_data_size);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_2000)
                   && (strcmp (temp_string, "95") == 0))
@@ -315,7 +331,7 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the object
                          * drawing format value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &dxf_acad_proxy_entity->object_drawing_format);
+                        fscanf (fp->fp, "%ld\n", &acad_proxy_entity->object_drawing_format);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                   && (strcmp (temp_string, "100") == 0))
@@ -338,7 +354,7 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_acad_proxy_entity->binary_graphics_data[i]);
+                        fscanf (fp->fp, "%s\n", acad_proxy_entity->binary_graphics_data[i]);
                         i++;
                 }
                 else if ((strcmp (temp_string, "330") == 0)
@@ -348,7 +364,7 @@ dxf_acad_proxy_entity_read
                 {
                         /* Now follows a string containing an object id. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_acad_proxy_entity->object_id[j]);
+                        fscanf (fp->fp, "%s\n", acad_proxy_entity->object_id[j]);
                         j++;
                 }
                 else if (strcmp (temp_string, "999") == 0)
@@ -368,7 +384,7 @@ dxf_acad_proxy_entity_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_acad_proxy_entity);
+        return (acad_proxy_entity);
 }
 
 
@@ -378,6 +394,9 @@ dxf_acad_proxy_entity_read
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
@@ -387,7 +406,7 @@ dxf_acad_proxy_entity_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfAcadProxyEntity *dxf_acad_proxy_entity
+        DxfAcadProxyEntity *acad_proxy_entity
                 /*!< DXF \c ACAD_PROXY_ENTITY entity. */
 )
 {
@@ -405,21 +424,20 @@ dxf_acad_proxy_entity_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (fp->acad_version_number < AutoCAD_13)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () illegal DXF version for this entity.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (dxf_acad_proxy_entity == NULL)
+        if (acad_proxy_entity == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (fp->acad_version_number == AutoCAD_13)
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+        }
+        if (fp->acad_version_number <= AutoCAD_13)
         {
                 dxf_entity_name = strdup ("ACAD_ZOMBIE_ENTITY");
         }
@@ -429,29 +447,29 @@ dxf_acad_proxy_entity_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_acad_proxy_entity->id_code != -1)
+        if (acad_proxy_entity->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_acad_proxy_entity->id_code);
+                fprintf (fp->fp, "  5\n%x\n", acad_proxy_entity->id_code);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_acad_proxy_entity->paperspace == DXF_PAPERSPACE)
+        if (acad_proxy_entity->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_acad_proxy_entity->layer);
-        if (strcmp (dxf_acad_proxy_entity->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", acad_proxy_entity->layer);
+        if (strcmp (acad_proxy_entity->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_acad_proxy_entity->linetype);
+                fprintf (fp->fp, "  6\n%s\n", acad_proxy_entity->linetype);
         }
-        if (dxf_acad_proxy_entity->color != DXF_COLOR_BYLAYER)
+        if (acad_proxy_entity->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_acad_proxy_entity->color);
+                fprintf (fp->fp, " 62\n%d\n", acad_proxy_entity->color);
         }
-        fprintf (fp->fp, " 48\n%f\n", dxf_acad_proxy_entity->linetype_scale);
-        fprintf (fp->fp, " 60\n%d\n", dxf_acad_proxy_entity->object_visability);
+        fprintf (fp->fp, " 48\n%f\n", acad_proxy_entity->linetype_scale);
+        fprintf (fp->fp, " 60\n%d\n", acad_proxy_entity->object_visability);
         if (fp->acad_version_number == AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbZombieEntity\n");
@@ -462,37 +480,37 @@ dxf_acad_proxy_entity_write
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, " 70\n%d\n", dxf_acad_proxy_entity->original_custom_object_data_format);
+                fprintf (fp->fp, " 70\n%d\n", acad_proxy_entity->original_custom_object_data_format);
         }
-        fprintf (fp->fp, " 90\n%d\n", dxf_acad_proxy_entity->proxy_entity_class_id);
-        fprintf (fp->fp, " 91\n%d\n", dxf_acad_proxy_entity->application_entity_class_id);
-        fprintf (fp->fp, " 92\n%d\n", dxf_acad_proxy_entity->graphics_data_size);
+        fprintf (fp->fp, " 90\n%d\n", acad_proxy_entity->proxy_entity_class_id);
+        fprintf (fp->fp, " 91\n%d\n", acad_proxy_entity->application_entity_class_id);
+        fprintf (fp->fp, " 92\n%d\n", acad_proxy_entity->graphics_data_size);
         i = 0;
-        while (strlen (dxf_acad_proxy_entity->binary_graphics_data[i]) > 0)
+        while (strlen (acad_proxy_entity->binary_graphics_data[i]) > 0)
         {
-                fprintf (fp->fp, "310\n%s\n", dxf_acad_proxy_entity->binary_graphics_data[i]);
+                fprintf (fp->fp, "310\n%s\n", acad_proxy_entity->binary_graphics_data[i]);
                 i++;
         }
-        fprintf (fp->fp, " 93\n%d\n", dxf_acad_proxy_entity->entity_data_size);
-        while (strlen (dxf_acad_proxy_entity->binary_graphics_data[i]) > 0)
+        fprintf (fp->fp, " 93\n%d\n", acad_proxy_entity->entity_data_size);
+        while (strlen (acad_proxy_entity->binary_graphics_data[i]) > 0)
         {
-                fprintf (fp->fp, "310\n%s\n", dxf_acad_proxy_entity->binary_graphics_data[i]);
+                fprintf (fp->fp, "310\n%s\n", acad_proxy_entity->binary_graphics_data[i]);
                 i++;
         }
         i = 0;
-        while (strlen (dxf_acad_proxy_entity->object_id[i]) > 0)
+        while (strlen (acad_proxy_entity->object_id[i]) > 0)
         {
-                fprintf (fp->fp, "330\n%s\n", dxf_acad_proxy_entity->object_id[i]);
+                fprintf (fp->fp, "330\n%s\n", acad_proxy_entity->object_id[i]);
                 i++;
         }
         fprintf (fp->fp, " 94\n  0\n");
         if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, " 95\n%ld\n", dxf_acad_proxy_entity->object_drawing_format);
+                fprintf (fp->fp, " 95\n%ld\n", acad_proxy_entity->object_drawing_format);
         }
         if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, " 70\n%d\n", dxf_acad_proxy_entity->original_custom_object_data_format);
+                fprintf (fp->fp, " 70\n%d\n", acad_proxy_entity->original_custom_object_data_format);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -508,6 +526,9 @@ dxf_acad_proxy_entity_write
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
@@ -515,7 +536,7 @@ dxf_acad_proxy_entity_write
 int
 dxf_acad_proxy_entity_free
 (
-        DxfAcadProxyEntity *dxf_acad_proxy_entity
+        DxfAcadProxyEntity *acad_proxy_entity
                 /*!< Pointer to the memory occupied by the DXF \c ACAD_PROXY_ENTITY
                  * table. */
 )
@@ -525,22 +546,22 @@ dxf_acad_proxy_entity_free
 #endif
         int i;
 
-        if (dxf_acad_proxy_entity->next != NULL)
+        if (acad_proxy_entity->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfAcadProxyEntity was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_acad_proxy_entity->linetype);
-        free (dxf_acad_proxy_entity->layer);
+        free (acad_proxy_entity->linetype);
+        free (acad_proxy_entity->layer);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                free (dxf_acad_proxy_entity->binary_graphics_data[i]);
-                free (dxf_acad_proxy_entity->object_id[i]);
+                free (acad_proxy_entity->binary_graphics_data[i]);
+                free (acad_proxy_entity->object_id[i]);
         }
-        free (dxf_acad_proxy_entity);
-        dxf_acad_proxy_entity = NULL;
+        free (acad_proxy_entity);
+        acad_proxy_entity = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif

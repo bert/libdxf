@@ -1,7 +1,7 @@
 /*!
  * \file acad_proxy_entity.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file FOR a DXF acad_proxy_entity entity
  * (\c ACAD_PROXY_ENTITY).
@@ -48,6 +48,9 @@
  * \brief DXF definition of an AutoCAD acad_proxy_entity entity
  * (\c ACAD_PROXY_ENTITY).
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
@@ -140,24 +143,24 @@ dxf_acad_proxy_entity_new ();
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_init
 (
-        DxfAcadProxyEntity *dxf_acad_proxy_entity
+        DxfAcadProxyEntity *acad_proxy_entity
 );
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_read
 (
         DxfFile *fp,
-        DxfAcadProxyEntity *dxf_acad_proxy_entity
+        DxfAcadProxyEntity *acad_proxy_entity
 );
 int
 dxf_acad_proxy_entity_write
 (
         DxfFile *fp,
-        DxfAcadProxyEntity *dxf_acad_proxy_entity
+        DxfAcadProxyEntity *acad_proxy_entity
 );
 int
 dxf_acad_proxy_entity_free
 (
-        DxfAcadProxyEntity *dxf_acad_proxy_entity
+        DxfAcadProxyEntity *acad_proxy_entity
 );
 
 
