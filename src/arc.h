@@ -1,7 +1,7 @@
 /*!
  * \file arc.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF arc entity (\c ARC).
  *
@@ -144,20 +144,20 @@ dxf_arc_new ();
 DxfArc *
 dxf_arc_init
 (
-        DxfArc *dxf_arc
+        DxfArc *arc
 );
 DxfArc *
 dxf_arc_read
 (
         DxfFile *fp,
-        DxfArc *dxf_arc
+        DxfArc *arc
 );
 int dxf_arc_write
 (
         DxfFile *fp,
-        DxfArc *dxf_arc
+        DxfArc *arc
 );
-int dxf_arc_free (DxfArc *dxf_arc);
+int dxf_arc_free (DxfArc *arc);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
