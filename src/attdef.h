@@ -1,7 +1,7 @@
 /*!
  * \file attdef.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF attribute definition entity (\c ATTDEF).
  *
@@ -226,44 +226,44 @@ dxf_attdef_new ();
 DxfAttdef *
 dxf_attdef_init
 (
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
 );
 DxfAttdef *
 dxf_attdef_read
 (
         DxfFile *fp,
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
 );
 int
 dxf_attdef_write
 (
         DxfFile *fp,
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
 );
 int
 dxf_attdef_free
 (
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
 );
 int
 dxf_attdef_is_invisible
 (
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
 );
 int
 dxf_attdef_is_constant
 (
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
 );
 int
 dxf_attdef_is_verification_required
 (
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
 );
 int
 dxf_attdef_is_preset
 (
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
 );
 
 

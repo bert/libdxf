@@ -50,27 +50,27 @@ dxf_attdef_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfAttdef *dxf_attdef = NULL;
+        DxfAttdef *attdef = NULL;
         size_t size;
 
         size = sizeof (DxfAttdef);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_attdef = malloc (size)) == NULL)
+        if ((attdef = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfAttdef struct.\n")),
                   __FUNCTION__);
-                dxf_attdef = NULL;
+                attdef = NULL;
         }
         else
         {
-                memset (dxf_attdef, 0, size);
+                memset (attdef, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_attdef);
+        return (attdef);
 }
 
 
@@ -87,7 +87,7 @@ dxf_attdef_new ()
 DxfAttdef *
 dxf_attdef_init
 (
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
                 /*!< DXF attdef entity. */
 )
 {
@@ -95,57 +95,57 @@ dxf_attdef_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_attdef == NULL)
+        if (attdef == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_attdef = dxf_attdef_new ();
+                attdef = dxf_attdef_new ();
         }
-        if (dxf_attdef == NULL)
+        if (attdef == NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () could not allocate memory for a DxfAttdef struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_attdef->default_value = strdup ("");
-        dxf_attdef->tag_value = strdup ("");
-        dxf_attdef->prompt_value = strdup ("");
-        dxf_attdef->id_code = 0;
-        dxf_attdef->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_attdef->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
-        dxf_attdef->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_attdef->x0 = 0.0;
-        dxf_attdef->y0 = 0.0;
-        dxf_attdef->z0 = 0.0;
-        dxf_attdef->x1 = 0.0;
-        dxf_attdef->y1 = 0.0;
-        dxf_attdef->z1 = 0.0;
-        dxf_attdef->height = 0.0;
-        dxf_attdef->rel_x_scale = 0.0;
-        dxf_attdef->rot_angle = 0.0;
-        dxf_attdef->obl_angle = 0.0;
-        dxf_attdef->thickness = 0.0;
-        dxf_attdef->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        dxf_attdef->visibility = DXF_DEFAULT_VISIBILITY;
-        dxf_attdef->color = DXF_COLOR_BYLAYER;
-        dxf_attdef->paperspace = DXF_MODELSPACE;
-        dxf_attdef->attr_flags = 0;
-        dxf_attdef->text_flags = 0;
-        dxf_attdef->hor_align = 0;
-        dxf_attdef->field_length = 0;
-        dxf_attdef->vert_align = 0;
-        dxf_attdef->extr_x0 = 0.0;
-        dxf_attdef->extr_y0 = 0.0;
-        dxf_attdef->extr_z0 = 0.0;
-        dxf_attdef->dictionary_owner_soft = strdup ("");
-        dxf_attdef->dictionary_owner_hard = strdup ("");
-        dxf_attdef->next = NULL;
+        attdef->default_value = strdup ("");
+        attdef->tag_value = strdup ("");
+        attdef->prompt_value = strdup ("");
+        attdef->id_code = 0;
+        attdef->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        attdef->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
+        attdef->layer = strdup (DXF_DEFAULT_LAYER);
+        attdef->x0 = 0.0;
+        attdef->y0 = 0.0;
+        attdef->z0 = 0.0;
+        attdef->x1 = 0.0;
+        attdef->y1 = 0.0;
+        attdef->z1 = 0.0;
+        attdef->height = 0.0;
+        attdef->rel_x_scale = 0.0;
+        attdef->rot_angle = 0.0;
+        attdef->obl_angle = 0.0;
+        attdef->thickness = 0.0;
+        attdef->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        attdef->visibility = DXF_DEFAULT_VISIBILITY;
+        attdef->color = DXF_COLOR_BYLAYER;
+        attdef->paperspace = DXF_MODELSPACE;
+        attdef->attr_flags = 0;
+        attdef->text_flags = 0;
+        attdef->hor_align = 0;
+        attdef->field_length = 0;
+        attdef->vert_align = 0;
+        attdef->extr_x0 = 0.0;
+        attdef->extr_y0 = 0.0;
+        attdef->extr_z0 = 0.0;
+        attdef->dictionary_owner_soft = strdup ("");
+        attdef->dictionary_owner_hard = strdup ("");
+        attdef->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_attdef);
+        return (attdef);
 }
 
 
@@ -158,7 +158,7 @@ dxf_attdef_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_attdef. \n
  *
- * \return a pointer to \c dxf_attdef.
+ * \return a pointer to \c attdef.
  *
  * \version According to DXF R10.
  * \version According to DXF R13.
@@ -169,7 +169,7 @@ dxf_attdef_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
                 /*!< DXF attdef entity. */
 )
 {
@@ -186,13 +186,13 @@ dxf_attdef_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_attdef == NULL)
+        if (attdef == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_attdef = dxf_attdef_new ();
-                dxf_attdef = dxf_attdef_init (dxf_attdef);
+                attdef = dxf_attdef_new ();
+                attdef = dxf_attdef_init (attdef);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -211,92 +211,92 @@ dxf_attdef_read
                         /* Now follows a string containing the attribute
                          * default value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_attdef->default_value);
+                        fscanf (fp->fp, "%s\n", attdef->default_value);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a tag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_attdef->tag_value);
+                        fscanf (fp->fp, "%s\n", attdef->tag_value);
                 }
                 else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing a prompt
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_attdef->prompt_value);
+                        fscanf (fp->fp, "%s\n", attdef->prompt_value);
                 }
                 else if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_attdef->id_code);
+                        fscanf (fp->fp, "%x\n", &attdef->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_attdef->linetype);
+                        fscanf (fp->fp, "%s\n", attdef->linetype);
                 }
                 else if (strcmp (temp_string, "7") == 0)
                 {
                         /* Now follows a string containing a text style. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_attdef->text_style);
+                        fscanf (fp->fp, "%s\n", attdef->text_style);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_attdef->layer);
+                        fscanf (fp->fp, "%s\n", attdef->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->x0);
+                        fscanf (fp->fp, "%lf\n", &attdef->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->y0);
+                        fscanf (fp->fp, "%lf\n", &attdef->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->z0);
+                        fscanf (fp->fp, "%lf\n", &attdef->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the align point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->x1);
+                        fscanf (fp->fp, "%lf\n", &attdef->x1);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the align point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->y1);
+                        fscanf (fp->fp, "%lf\n", &attdef->y1);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the align point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->z1);
+                        fscanf (fp->fp, "%lf\n", &attdef->z1);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_attdef->elevation = 0.0))
+                        && (attdef->elevation = 0.0))
                 {
                         /* Elevation is a pre AutoCAD R11 variable
                          * so additional testing for the version should
@@ -304,105 +304,105 @@ dxf_attdef_read
                          * Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->elevation);
+                        fscanf (fp->fp, "%lf\n", &attdef->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->thickness);
+                        fscanf (fp->fp, "%lf\n", &attdef->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
                          * height. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->height);
+                        fscanf (fp->fp, "%lf\n", &attdef->height);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a string containing the
                          * relative X-scale. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->rel_x_scale);
+                        fscanf (fp->fp, "%lf\n", &attdef->rel_x_scale);
                 }
                 else if (strcmp (temp_string, "48") == 0)
                 {
                         /* Now follows a string containing the linetype
                          * scale. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->linetype_scale);
+                        fscanf (fp->fp, "%lf\n", &attdef->linetype_scale);
                 }
                 else if (strcmp (temp_string, "50") == 0)
                 {
                         /* Now follows a string containing the
                          * rotation angle. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->rot_angle);
+                        fscanf (fp->fp, "%lf\n", &attdef->rot_angle);
                 }
                 else if (strcmp (temp_string, "51") == 0)
                 {
                         /* Now follows a string containing the
                          * end angle. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->obl_angle);
+                        fscanf (fp->fp, "%lf\n", &attdef->obl_angle);
                 }
                 else if (strcmp (temp_string, "60") == 0)
                 {
                         /* Now follows a string containing the
                          * visibility value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%hd\n", &dxf_attdef->visibility);
+                        fscanf (fp->fp, "%hd\n", &attdef->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_attdef->color);
+                        fscanf (fp->fp, "%d\n", &attdef->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_attdef->paperspace);
+                        fscanf (fp->fp, "%d\n", &attdef->paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * attribute flags value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_attdef->attr_flags);
+                        fscanf (fp->fp, "%d\n", &attdef->attr_flags);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a string containing the
                          * text flags value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_attdef->text_flags);
+                        fscanf (fp->fp, "%d\n", &attdef->text_flags);
                 }
                 else if (strcmp (temp_string, "72") == 0)
                 {
                         /* Now follows a string containing the
                          * horizontal alignment value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_attdef->hor_align);
+                        fscanf (fp->fp, "%d\n", &attdef->hor_align);
                 }
                 else if (strcmp (temp_string, "73") == 0)
                 {
                         /* Now follows a string containing the
                          * field length value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_attdef->field_length);
+                        fscanf (fp->fp, "%d\n", &attdef->field_length);
                 }
                 else if (strcmp (temp_string, "74") == 0)
                 {
                         /* Now follows a string containing the
                          * vertical alignment value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_attdef->vert_align);
+                        fscanf (fp->fp, "%d\n", &attdef->vert_align);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -428,35 +428,35 @@ dxf_attdef_read
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->extr_x0);
+                        fscanf (fp->fp, "%lf\n", &attdef->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->extr_y0);
+                        fscanf (fp->fp, "%lf\n", &attdef->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_attdef->extr_z0);
+                        fscanf (fp->fp, "%lf\n", &attdef->extr_z0);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_attdef->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", attdef->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_attdef->dictionary_owner_hard);
+                        fscanf (fp->fp, "%s\n", attdef->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -473,18 +473,18 @@ dxf_attdef_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_attdef->linetype, "") == 0)
+        if (strcmp (attdef->linetype, "") == 0)
         {
-                dxf_attdef->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                attdef->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_attdef->layer, "") == 0)
+        if (strcmp (attdef->layer, "") == 0)
         {
-                dxf_attdef->layer = strdup (DXF_DEFAULT_LAYER);
+                attdef->layer = strdup (DXF_DEFAULT_LAYER);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_attdef);
+        return (attdef);
 }
 
 
@@ -496,7 +496,7 @@ dxf_attdef_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
                 /*!< attribute definition entity. */
 )
 {
@@ -513,180 +513,180 @@ dxf_attdef_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_attdef == NULL)
+        if (attdef == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_attdef->tag_value, "") == 0)
+        if (strcmp (attdef->tag_value, "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () default tag value string is empty for the %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
+                  __FUNCTION__, dxf_entity_name, attdef->id_code);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_attdef->text_style, "") == 0)
+        if (strcmp (attdef->text_style, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () text style string is empty for the %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
+                  __FUNCTION__, dxf_entity_name, attdef->id_code);
                 fprintf (stderr,
                   (_("\tdefault text style STANDARD applied to %s entity.\n")),
                   dxf_entity_name);
-                dxf_attdef->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
+                attdef->text_style = strdup (DXF_DEFAULT_TEXTSTYLE);
         }
-        if (strcmp (dxf_attdef->linetype, "") == 0)
+        if (strcmp (attdef->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
+                  __FUNCTION__, dxf_entity_name, attdef->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_attdef->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                attdef->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_attdef->layer, "") == 0)
+        if (strcmp (attdef->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
+                  __FUNCTION__, dxf_entity_name, attdef->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
-                dxf_attdef->layer = strdup (DXF_DEFAULT_LAYER);
+                attdef->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_attdef->height == 0.0)
+        if (attdef->height == 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () height has a value of 0.0 for the %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
+                  __FUNCTION__, dxf_entity_name, attdef->id_code);
                 fprintf (stderr,
                   (_("\tdefault height of 1.0 applied to %s entity.\n")),
                   dxf_entity_name);
-                dxf_attdef->height = 1.0;
+                attdef->height = 1.0;
         }
-        if (dxf_attdef->rel_x_scale == 0.0)
+        if (attdef->rel_x_scale == 0.0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () relative X-scale factor has a value of 0.0 for the %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
+                  __FUNCTION__, dxf_entity_name, attdef->id_code);
                 fprintf (stderr,
                   (_("\tdefault relative X-scale of 1.0 applied to %s entity.\n")),
                   dxf_entity_name);
-                dxf_attdef->rel_x_scale = 1.0;
+                attdef->rel_x_scale = 1.0;
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_attdef->id_code != -1)
+        if (attdef->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_attdef->id_code);
+                fprintf (fp->fp, "  5\n%x\n", attdef->id_code);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_attdef->paperspace == DXF_PAPERSPACE)
+        if (attdef->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_attdef->layer);
-        if (strcmp (dxf_attdef->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", attdef->layer);
+        if (strcmp (attdef->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_attdef->linetype);
+                fprintf (fp->fp, "  6\n%s\n", attdef->linetype);
         }
-        if (dxf_attdef->color != DXF_COLOR_BYLAYER)
+        if (attdef->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_attdef->color);
+                fprintf (fp->fp, " 62\n%d\n", attdef->color);
         }
-        if (dxf_attdef->linetype_scale != 1.0)
+        if (attdef->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_attdef->linetype_scale);
+                fprintf (fp->fp, " 48\n%f\n", attdef->linetype_scale);
         }
-        if (dxf_attdef->visibility != 0)
+        if (attdef->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_attdef->visibility);
+                fprintf (fp->fp, " 60\n%d\n", attdef->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbText\n");
         }
-        if (dxf_attdef->thickness != 0.0)
+        if (attdef->thickness != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_attdef->thickness);
+                fprintf (fp->fp, " 39\n%f\n", attdef->thickness);
         }
-        fprintf (fp->fp, " 10\n%f\n", dxf_attdef->x0);
-        fprintf (fp->fp, " 20\n%f\n", dxf_attdef->y0);
-        fprintf (fp->fp, " 30\n%f\n", dxf_attdef->z0);
-        fprintf (fp->fp, " 40\n%f\n", dxf_attdef->height);
-        fprintf (fp->fp, "  1\n%s\n", dxf_attdef->default_value);
+        fprintf (fp->fp, " 10\n%f\n", attdef->x0);
+        fprintf (fp->fp, " 20\n%f\n", attdef->y0);
+        fprintf (fp->fp, " 30\n%f\n", attdef->z0);
+        fprintf (fp->fp, " 40\n%f\n", attdef->height);
+        fprintf (fp->fp, "  1\n%s\n", attdef->default_value);
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbAttributeDefinition\n");
         }
-        fprintf (fp->fp, "  3\n%s\n", dxf_attdef->prompt_value);
-        fprintf (fp->fp, "  2\n%s\n", dxf_attdef->tag_value);
-        fprintf (fp->fp, " 70\n%d\n", dxf_attdef->attr_flags);
-        if (dxf_attdef->field_length != 0)
+        fprintf (fp->fp, "  3\n%s\n", attdef->prompt_value);
+        fprintf (fp->fp, "  2\n%s\n", attdef->tag_value);
+        fprintf (fp->fp, " 70\n%d\n", attdef->attr_flags);
+        if (attdef->field_length != 0)
         {
-                fprintf (fp->fp, " 73\n%d\n", dxf_attdef->field_length);
+                fprintf (fp->fp, " 73\n%d\n", attdef->field_length);
         }
-        if (dxf_attdef->rot_angle != 0.0)
+        if (attdef->rot_angle != 0.0)
         {
-                fprintf (fp->fp, " 50\n%f\n", dxf_attdef->rot_angle);
+                fprintf (fp->fp, " 50\n%f\n", attdef->rot_angle);
         }
-        if (dxf_attdef->rel_x_scale != 1.0)
+        if (attdef->rel_x_scale != 1.0)
         {
-                fprintf (fp->fp, " 41\n%f\n", dxf_attdef->rel_x_scale);
+                fprintf (fp->fp, " 41\n%f\n", attdef->rel_x_scale);
         }
-        if (dxf_attdef->obl_angle != 0.0)
+        if (attdef->obl_angle != 0.0)
         {
-                fprintf (fp->fp, " 51\n%f\n", dxf_attdef->obl_angle);
+                fprintf (fp->fp, " 51\n%f\n", attdef->obl_angle);
         }
-        if (strcmp (dxf_attdef->text_style, "STANDARD") != 0)
+        if (strcmp (attdef->text_style, "STANDARD") != 0)
         {
-                fprintf (fp->fp, "  7\n%s\n", dxf_attdef->text_style);
+                fprintf (fp->fp, "  7\n%s\n", attdef->text_style);
         }
-        if (dxf_attdef->text_flags != 0)
+        if (attdef->text_flags != 0)
         {
-                fprintf (fp->fp, " 71\n%d\n", dxf_attdef->text_flags);
+                fprintf (fp->fp, " 71\n%d\n", attdef->text_flags);
         }
-        if (dxf_attdef->hor_align != 0)
+        if (attdef->hor_align != 0)
         {
-                fprintf (fp->fp, " 72\n%d\n", dxf_attdef->hor_align);
+                fprintf (fp->fp, " 72\n%d\n", attdef->hor_align);
         }
-        if (dxf_attdef->vert_align != 0)
+        if (attdef->vert_align != 0)
         {
-                fprintf (fp->fp, " 74\n%d\n", dxf_attdef->vert_align);
+                fprintf (fp->fp, " 74\n%d\n", attdef->vert_align);
         }
-        if ((dxf_attdef->hor_align != 0) || (dxf_attdef->vert_align != 0))
+        if ((attdef->hor_align != 0) || (attdef->vert_align != 0))
         {
-                if ((dxf_attdef->x0 == dxf_attdef->x1)
-                        && (dxf_attdef->y0 == dxf_attdef->y1)
-                        && (dxf_attdef->z0 == dxf_attdef->z1))
+                if ((attdef->x0 == attdef->x1)
+                        && (attdef->y0 == attdef->y1)
+                        && (attdef->z0 == attdef->z1))
                 {
                         fprintf (stderr,
                           (_("Warning in %s () insertion point and alignment point are identical for the %s entity with id-code: %x.\n")),
-                          __FUNCTION__, dxf_entity_name, dxf_attdef->id_code);
+                          __FUNCTION__, dxf_entity_name, attdef->id_code);
                         fprintf (stderr,
                           (_("\tdefault justification applied to %s entity.\n")),
                           dxf_entity_name);
-                        dxf_attdef->hor_align = 0;
-                        dxf_attdef->vert_align = 0;
+                        attdef->hor_align = 0;
+                        attdef->vert_align = 0;
                 }
                 else
                 {
-                        fprintf (fp->fp, " 11\n%f\n", dxf_attdef->x1);
-                        fprintf (fp->fp, " 21\n%f\n", dxf_attdef->y1);
-                        fprintf (fp->fp, " 31\n%f\n", dxf_attdef->z1);
+                        fprintf (fp->fp, " 11\n%f\n", attdef->x1);
+                        fprintf (fp->fp, " 21\n%f\n", attdef->y1);
+                        fprintf (fp->fp, " 31\n%f\n", attdef->z1);
                 }
         }
         if (fp->acad_version_number >= AutoCAD_12)
         {
-                fprintf (fp->fp, "210\n%f\n", dxf_attdef->extr_x0);
-                fprintf (fp->fp, "220\n%f\n", dxf_attdef->extr_y0);
-                fprintf (fp->fp, "230\n%f\n", dxf_attdef->extr_z0);
+                fprintf (fp->fp, "210\n%f\n", attdef->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", attdef->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", attdef->extr_z0);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -709,30 +709,30 @@ dxf_attdef_write
 int
 dxf_attdef_free
 (
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
                 /*!< DXF \c ATTDEF entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_attdef->next != NULL)
+        if (attdef->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfAttdef was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_attdef->linetype);
-        free (dxf_attdef->layer);
-        free (dxf_attdef->default_value);
-        free (dxf_attdef->tag_value);
-        free (dxf_attdef->prompt_value);
-        free (dxf_attdef->text_style);
-        free (dxf_attdef->dictionary_owner_soft);
-        free (dxf_attdef->dictionary_owner_hard);
-        free (dxf_attdef);
-        dxf_attdef = NULL;
+        free (attdef->linetype);
+        free (attdef->layer);
+        free (attdef->default_value);
+        free (attdef->tag_value);
+        free (attdef->prompt_value);
+        free (attdef->text_style);
+        free (attdef->dictionary_owner_soft);
+        free (attdef->dictionary_owner_hard);
+        free (attdef);
+        attdef = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -749,7 +749,7 @@ dxf_attdef_free
 int
 dxf_attdef_is_invisible
 (
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
                 /*!< DXF \c ATTDEF entity. */
 )
 {
@@ -759,14 +759,14 @@ dxf_attdef_is_invisible
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_attdef == NULL)
+        if (attdef == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_attdef->attr_flags, 0);
+        result = DXF_CHECK_BIT (attdef->attr_flags, 0);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -783,7 +783,7 @@ dxf_attdef_is_invisible
 int
 dxf_attdef_is_constant
 (
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
                 /*!< DXF \c ATTDEF entity. */
 )
 {
@@ -793,14 +793,14 @@ dxf_attdef_is_constant
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_attdef == NULL)
+        if (attdef == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_attdef->attr_flags, 1);
+        result = DXF_CHECK_BIT (attdef->attr_flags, 1);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -817,7 +817,7 @@ dxf_attdef_is_constant
 int
 dxf_attdef_is_verification_required
 (
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
                 /*!< DXF \c ATTDEF entity. */
 )
 {
@@ -827,14 +827,14 @@ dxf_attdef_is_verification_required
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_attdef == NULL)
+        if (attdef == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_attdef->attr_flags, 2);
+        result = DXF_CHECK_BIT (attdef->attr_flags, 2);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -852,7 +852,7 @@ dxf_attdef_is_verification_required
 int
 dxf_attdef_is_preset
 (
-        DxfAttdef *dxf_attdef
+        DxfAttdef *attdef
                 /*!< DXF \c ATTDEF entity. */
 )
 {
@@ -862,14 +862,14 @@ dxf_attdef_is_preset
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_attdef == NULL)
+        if (attdef == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_attdef->attr_flags, 3);
+        result = DXF_CHECK_BIT (attdef->attr_flags, 3);
 #if DEBUG
         DXF_DEBUG_END
 #endif
