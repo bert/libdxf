@@ -41,6 +41,8 @@
  * Fill the memory contents with zeros.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -81,6 +83,8 @@ dxf_attdef_new ()
  * allocated memory when succesful.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -161,6 +165,8 @@ dxf_attdef_init
  * \return a pointer to \c attdef.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -490,6 +496,12 @@ dxf_attdef_read
 
 /*!
  * \brief Write DXF output to fp for a attribute definition entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_attdef_write
@@ -582,6 +594,30 @@ dxf_attdef_write
         if (attdef->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", attdef->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (attdef->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", attdef->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (attdef->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", attdef->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -703,6 +739,8 @@ dxf_attdef_write
  * occurred.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -745,6 +783,12 @@ dxf_attdef_free
  *
  * \return \c TRUE when the attribute definition is invisible,
  * or \c FALSE when the attribute definition is visible.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_attdef_is_invisible
@@ -779,6 +823,12 @@ dxf_attdef_is_invisible
  *
  * \return \c TRUE when the attribute definition is a constant,
  * or \c FALSE when the attribute definition is not a constant.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_attdef_is_constant
@@ -813,6 +863,12 @@ dxf_attdef_is_constant
  *
  * \return \c TRUE when the input needs to be verified,
  * or \c FALSE when the input needs not to be verified.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_attdef_is_verification_required
@@ -848,6 +904,12 @@ dxf_attdef_is_verification_required
  *
  * \return \c TRUE when the attributre definition is preset,
  * or \c FALSE when the attribute definition is not preset.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_attdef_is_preset
