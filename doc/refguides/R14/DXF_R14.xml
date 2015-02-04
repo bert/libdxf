@@ -4410,7 +4410,7 @@
       file:</para>
 
       <table align="left">
-        <title/>
+        <title>Example of a CLASSES section.</title>
 
         <tgroup cols="2">
           <tbody>
@@ -4821,6 +4821,703 @@
           </tbody>
         </tgroup>
       </table>
+    </section>
+
+    <section>
+      <title>TABLES Section.</title>
+
+      <para>The group codes described in this section are found in DXF files
+      and used by applications.</para>
+
+      <para>The TABLES section contains several tables, each of which can
+      contain a variable number of entries.</para>
+
+      <para>These codes are also used by AutoLISP and ARX applications in
+      entity definition lists.</para>
+
+      <para>The group codes shown in this section can apply to DXF files,
+      applications (AutoLISP or ARX), or both.</para>
+
+      <para>When the description of a code is different for applications and
+      DXF files (or only applies to one or the other), the description is
+      preceeded by the following indicators:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>APP</term>
+
+          <listitem>
+            <para>Application-specific description.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>DXF</term>
+
+          <listitem>
+            <para>DXF file-specific description.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>If the description is common to both DXF files and applications,
+      no indicator is provided.</para>
+
+      <para>Otherwise, the appropriate indicator is present.</para>
+
+      <para>Optional codes are shown in gray.</para>
+
+      <para>Topics in this section:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Symbol Tables in DXF Files.</para>
+        </listitem>
+
+        <listitem>
+          <para>Symbol Table Group Codes.</para>
+        </listitem>
+
+        <listitem>
+          <para>Common Group Codes for Symbol Table Entries.</para>
+        </listitem>
+
+        <listitem>
+          <para>APPID.</para>
+        </listitem>
+
+        <listitem>
+          <para>BLOCK_RECORD.</para>
+        </listitem>
+
+        <listitem>
+          <para>DIMSTYLE.</para>
+        </listitem>
+
+        <listitem>
+          <para>LAYER.</para>
+        </listitem>
+
+        <listitem>
+          <para>LTYPE.</para>
+        </listitem>
+
+        <listitem>
+          <para>STYLE.</para>
+        </listitem>
+
+        <listitem>
+          <para>UCS.</para>
+        </listitem>
+
+        <listitem>
+          <para>VIEW.</para>
+        </listitem>
+
+        <listitem>
+          <para>VPORT.</para>
+        </listitem>
+      </itemizedlist>
+
+      <section>
+        <title>Symbol Tables in DXF Files.</title>
+
+        <para>The order of the tables may change, but the LTYPE table always
+        precedes the LAYER table.</para>
+
+        <para>Each table is introduced with a 0 group with the label
+        TABLE.</para>
+
+        <para>This is followed by a 2 group identifying the particular table
+        (APPID, DIMSTYLE, LAYER, LTYPE, STYLE, UCS, VIEW, VPORT, or
+        BLOCK_RECORD), a 5 group (a handle), a group 100 (AcDbSymbolTable
+        subclass marker), and a 70 group that specifies the maximum number of
+        table entries that may follow.</para>
+
+        <para>Table names are output in uppercase characters.</para>
+
+        <para>The DIMSTYLE handle is a 105 group not a 5 group.</para>
+
+        <para>The tables in a drawing can contain deleted items, but these are
+        not written to the DXF file.</para>
+
+        <para>As a result, fewer table entries may follow the table header
+        than are indicated by the 70 group, so do not use the count in the 70
+        group as an index to read in the table.</para>
+
+        <para>This group is provided so that a program that reads DXF files
+        can allocate an array large enough to hold all the table entries that
+        follow.</para>
+
+        <para>Following this header for each table are the table
+        entries.</para>
+
+        <para>Each table item consists of a 0 group identifying the item type
+        (same as table name, such as LTYPE or LAYER), a 2 group giving the
+        name of the table entry, a 70 group specifying flags relevant to the
+        table entry (defined for each following table), and additional groups
+        that give the value of the table entry.</para>
+
+        <para>The end of each table is indicated by a 0 group with the value
+        ENDTAB.</para>
+
+        <para>The following is an example of the TABLES section of a DXF
+        file.</para>
+
+        <para><table align="left">
+            <title>Example of a TABLES section.</title>
+
+            <tgroup cols="2">
+              <tbody>
+                <row>
+                  <entry>0</entry>
+
+                  <entry><emphasis>Beginning of TABLES
+                  section.</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>SECTION</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>TABLES</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry/>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>0</entry>
+
+                  <entry><emphasis>Common table group
+                  codes.</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>TABLE</entry>
+
+                  <entry><emphasis>repeats for each entry.</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>&lt;table type&gt;</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>&lt;handle&gt;</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>AcDbSymbolTable</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>&lt;max. entries&gt;</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry/>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry> 0</entry>
+
+                  <entry><emphasis>Table entry data,
+                  repeats</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>&lt;table type&gt;</entry>
+
+                  <entry><emphasis>for each table record</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry> 5</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>&lt;handle&gt;</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>AcDbSymbolTableRecord</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>.</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>. &lt;data&gt;</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>.</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry/>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>0</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>ENDTAB</entry>
+
+                  <entry><emphasis>End of table</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry/>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>0</entry>
+
+                  <entry><emphasis>End of TABLES section.</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>ENDSEC</entry>
+
+                  <entry/>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>Both symbol table records and symbol tables are database
+        objects.</para>
+
+        <para>At a very minimum, with all prevailing usage within AutoCAD,
+        this implies that a handle is present, positioned after the 2 group
+        codes for both the symbol table record objects and the symbol table
+        objects.</para>
+
+        <para>The DIMSTYLE table is the only record type in the system with a
+        handle code of 105 because of its earlier usage of group code
+        5.</para>
+
+        <para>As a rule, programmers should not be concerned about this
+        exception unless it is in the context of the DIMSTYLE table
+        section.</para>
+
+        <para>This is the only context in which this exception should
+        occur.</para>
+      </section>
+
+      <section>
+        <title>Symbol Table Group Codes.</title>
+
+        <para>The following table shows group codes that apply to all symbol
+        tables.</para>
+
+        <para><table>
+            <title>Group codes that apply to all symbol tables.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>-1</entry>
+
+                  <entry>APP: entity name (changes each time a drawing is
+                  opened).</entry>
+                </row>
+
+                <row>
+                  <entry>0</entry>
+
+                  <entry>Object type (TABLE).</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>Table name.</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Handle.</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbSymbolTable).</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Maximum number of entries in table.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>Common Group Codes for Symbol Table Entries.</title>
+
+        <para>The following table shows group codes that apply to all symbol
+        table entries.</para>
+
+        <para>Optional codes are shown in gray.</para>
+
+        <para>When you refer to the table of group codes by entity type, which
+        lists the codes associated with specific entities, keep in mind that
+        the codes shown here can also be present.<table>
+            <title>Group codes that apply to all symbol table entries.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>-1</entry>
+
+                  <entry>APP: entity name (changes each time a drawing is
+                  opened).</entry>
+                </row>
+
+                <row>
+                  <entry>0</entry>
+
+                  <entry>Entity type (table name).</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Handle (all except DIMSTYLE).</entry>
+                </row>
+
+                <row>
+                  <entry>105</entry>
+
+                  <entry>Handle (DIMSTYLE table only).</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>Start of application defined group
+                  "{application_name". For example, "{ACAD_REACTORS" indicates
+                  the start of the AutoCAD persistent reactors group.</entry>
+                </row>
+
+                <row>
+                  <entry>application-defined codes</entry>
+
+                  <entry>Codes and values within the 102 groups are
+                  application-defined.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of group, "}".</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbSymbolTableRecord).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The following table shows the group codes that are output if
+        persistent reactors have been attached to an object.<table>
+            <title>ACAD_REACTORS records.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>102</entry>
+
+                  <entry>"{ACAD_REACTORS" indicates the start of the AutoCAD
+                  persistent reactors group.</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Soft pointer ID/handle to owner dictionary.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of group, "}".</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The following table shows the group codes that are output if an
+        extension dictionary has been attached to an object.<table>
+            <title>ACAD_XDICTIONARY records.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>102</entry>
+
+                  <entry>"{ACAD_XDICTIONARY" indicates the start of an
+                  extension dictionary group.</entry>
+                </row>
+
+                <row>
+                  <entry>360</entry>
+
+                  <entry>Hard-owner ID/handle to owner dictionary.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of group, "}".</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>Common 70 group flag bit-coded values are described in the
+        following tables.</para>
+
+        <para>Additional 70 group values that apply to LAYER, STYLE, and VIEW
+        table entries are described in those tables.</para>
+
+        <para><table>
+            <title>Group 70 bit codes that apply to all table entries.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Bit-coded</entry>
+
+                  <entry align="center">Description value</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>16</entry>
+
+                  <entry>If set, table entry is externally dependent on an
+                  XREF.</entry>
+                </row>
+
+                <row>
+                  <entry>32</entry>
+
+                  <entry>If this bit and bit 16 are both set, the externally
+                  dependent XREF has been successfully resolved.</entry>
+                </row>
+
+                <row>
+                  <entry>64</entry>
+
+                  <entry>If set, the table entry was referenced by at least
+                  one entity in the drawing the last time the drawing was
+                  edited. (This flag is for the benefit of AutoCAD commands;
+                  it can be ignored by most programs that read DXF files, and
+                  need not be set by programs that write DXF files).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>APPID.</title>
+
+        <para>The following group codes apply to APPID symbol table
+        entries.<table>
+            <title>APPID table group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbRegAppTableRecord).</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>User-supplied application name; these table entries
+                  maintain a set of names for all registered
+                  applications.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Standard flag values (See "Common Group Codes for
+                  Symbol Table Entries."): 1 = If set, xdata associated with
+                  this APPID is not written when SAVEASR12 is
+                  performed.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para><note>
+            <para>Because there was no change in the ASE data format from R13
+            to R14, the ASE application name (ACADASER13) did not
+            change.</para>
+          </note></para>
+      </section>
+
+      <section>
+        <title>BLOCK_RECORD.</title>
+
+        <para>The following group codes apply to BLOCK_RECORD symbol table
+        entries.<table>
+            <title>BLOCK_RECORD group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbBlockTableRecord).</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>Block name.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
