@@ -5518,6 +5518,582 @@
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>DIMSTYLE.</title>
+
+        <para>The following group codes apply to DIMSTYLE symbol table
+        entries.</para>
+
+        <para>The DIMSTYLE system variables are described in appendix A,
+        "System Variables," in the Command Reference.<table>
+            <title>DIMSTYLE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbDimStyleTableRecord).</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>Dimension style name.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Standard flag values (See "Common Group Codes for
+                  Symbol Table Entries.").</entry>
+                </row>
+
+                <row>
+                  <entry>3</entry>
+
+                  <entry>DIMPOST.</entry>
+                </row>
+
+                <row>
+                  <entry>4</entry>
+
+                  <entry>DIMAPOST.</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>DIMBLK.</entry>
+                </row>
+
+                <row>
+                  <entry>6</entry>
+
+                  <entry>DIMBLK1.</entry>
+                </row>
+
+                <row>
+                  <entry>7</entry>
+
+                  <entry>DIMBLK2.</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>DIMSCALE.</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>DIMASZ.</entry>
+                </row>
+
+                <row>
+                  <entry>42</entry>
+
+                  <entry>DIMEXO.</entry>
+                </row>
+
+                <row>
+                  <entry>43</entry>
+
+                  <entry>DIMDLI.</entry>
+                </row>
+
+                <row>
+                  <entry>44</entry>
+
+                  <entry>DIMEXE.</entry>
+                </row>
+
+                <row>
+                  <entry>45</entry>
+
+                  <entry>DIMRND.</entry>
+                </row>
+
+                <row>
+                  <entry>46</entry>
+
+                  <entry>DIMDLE.</entry>
+                </row>
+
+                <row>
+                  <entry>47</entry>
+
+                  <entry>DIMTP.</entry>
+                </row>
+
+                <row>
+                  <entry>48</entry>
+
+                  <entry>DIMTM.</entry>
+                </row>
+
+                <row>
+                  <entry>140</entry>
+
+                  <entry>DIMTXT.</entry>
+                </row>
+
+                <row>
+                  <entry>141</entry>
+
+                  <entry>DIMCEN.</entry>
+                </row>
+
+                <row>
+                  <entry>142</entry>
+
+                  <entry>DIMTSZ.</entry>
+                </row>
+
+                <row>
+                  <entry>143</entry>
+
+                  <entry>DIMALTF.</entry>
+                </row>
+
+                <row>
+                  <entry>144</entry>
+
+                  <entry>DIMLFAC.</entry>
+                </row>
+
+                <row>
+                  <entry>145</entry>
+
+                  <entry>DIMTVP.</entry>
+                </row>
+
+                <row>
+                  <entry>146</entry>
+
+                  <entry>DIMTFAC.</entry>
+                </row>
+
+                <row>
+                  <entry>147</entry>
+
+                  <entry>DIMGAP.</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>DIMTOL.</entry>
+                </row>
+
+                <row>
+                  <entry>72</entry>
+
+                  <entry>DIMLIM.</entry>
+                </row>
+
+                <row>
+                  <entry>73</entry>
+
+                  <entry>DIMTIH.</entry>
+                </row>
+
+                <row>
+                  <entry>74</entry>
+
+                  <entry>DIMTOH.</entry>
+                </row>
+
+                <row>
+                  <entry>75</entry>
+
+                  <entry>DIMSE1.</entry>
+                </row>
+
+                <row>
+                  <entry>76</entry>
+
+                  <entry>DIMSE2.</entry>
+                </row>
+
+                <row>
+                  <entry>77</entry>
+
+                  <entry>DIMTAD.</entry>
+                </row>
+
+                <row>
+                  <entry>78</entry>
+
+                  <entry>DIMZIN.</entry>
+                </row>
+
+                <row>
+                  <entry>170</entry>
+
+                  <entry>DIMALT.</entry>
+                </row>
+
+                <row>
+                  <entry>171</entry>
+
+                  <entry>DIMALTD.</entry>
+                </row>
+
+                <row>
+                  <entry>172</entry>
+
+                  <entry>DIMTOFL.</entry>
+                </row>
+
+                <row>
+                  <entry>173</entry>
+
+                  <entry>DIMSAH.</entry>
+                </row>
+
+                <row>
+                  <entry>174</entry>
+
+                  <entry>DIMTIX.</entry>
+                </row>
+
+                <row>
+                  <entry>175</entry>
+
+                  <entry>DIMSOXD.</entry>
+                </row>
+
+                <row>
+                  <entry>176</entry>
+
+                  <entry>DIMDLRD.</entry>
+                </row>
+
+                <row>
+                  <entry>177</entry>
+
+                  <entry>DIMCLRE.</entry>
+                </row>
+
+                <row>
+                  <entry>178</entry>
+
+                  <entry>DIMCLRT.</entry>
+                </row>
+
+                <row>
+                  <entry>270</entry>
+
+                  <entry>DIMUNIT.</entry>
+                </row>
+
+                <row>
+                  <entry>271</entry>
+
+                  <entry>DIMDEC.</entry>
+                </row>
+
+                <row>
+                  <entry>272</entry>
+
+                  <entry>DIMTDEC.</entry>
+                </row>
+
+                <row>
+                  <entry>273</entry>
+
+                  <entry>DIMALTU.</entry>
+                </row>
+
+                <row>
+                  <entry>274</entry>
+
+                  <entry>DIMALTTD.</entry>
+                </row>
+
+                <row>
+                  <entry>340</entry>
+
+                  <entry>Handle of referenced STYLE object (used instead of
+                  storing DIMTXSTY value).</entry>
+                </row>
+
+                <row>
+                  <entry>275</entry>
+
+                  <entry>DIMAUNIT.</entry>
+                </row>
+
+                <row>
+                  <entry>280</entry>
+
+                  <entry>DIMJUST.</entry>
+                </row>
+
+                <row>
+                  <entry>281</entry>
+
+                  <entry>DIMSD1.</entry>
+                </row>
+
+                <row>
+                  <entry>282</entry>
+
+                  <entry>DIMSD2.</entry>
+                </row>
+
+                <row>
+                  <entry>283</entry>
+
+                  <entry>DIMTOLJ.</entry>
+                </row>
+
+                <row>
+                  <entry>284</entry>
+
+                  <entry>DIMTZIN.</entry>
+                </row>
+
+                <row>
+                  <entry>285</entry>
+
+                  <entry>DIMALTZ.</entry>
+                </row>
+
+                <row>
+                  <entry>286</entry>
+
+                  <entry>DIMALTTZ.</entry>
+                </row>
+
+                <row>
+                  <entry>287</entry>
+
+                  <entry>DIMFIT.</entry>
+                </row>
+
+                <row>
+                  <entry>288</entry>
+
+                  <entry>DIMUPT.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>LAYER.</title>
+
+        <para>The following group codes apply to LAYER symbol table
+        entries.<table>
+            <title>LAYER table group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbSymbolTableRecord).</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>Layer name.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Standard flags. (See "Common Group Codes for Symbol
+                  Table Entries.") In addition to the standard flags, the
+                  following values apply to layers (bit-coded values) 1 =
+                  Layer is frozen, otherwise layer is thawed 2 = Layer is
+                  frozen by default in new viewports 4 = Layer is
+                  locked.</entry>
+                </row>
+
+                <row>
+                  <entry>62</entry>
+
+                  <entry>Color number (if negative, layer is Off).</entry>
+                </row>
+
+                <row>
+                  <entry>6</entry>
+
+                  <entry>Linetype name.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>Xref-dependent layers are output during DXFOUT.</para>
+
+        <para>For these layers, the associated linetype name in the DXF file
+        is always CONTINUOUS.</para>
+      </section>
+
+      <section>
+        <title>LTYPE.</title>
+
+        <para>The following group codes apply to LTYPE symbol table
+        entries.<table>
+            <title>LTYPE table group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbLinetypeTableRecord).</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>Linetype name.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Standard flags. (See "Common Group Codes for Symbol
+                  Table Entries.").</entry>
+                </row>
+
+                <row>
+                  <entry>3</entry>
+
+                  <entry>Descriptive text for linetype.</entry>
+                </row>
+
+                <row>
+                  <entry>72</entry>
+
+                  <entry>Alignment code; value is always 65, the ASCII code
+                  for A.</entry>
+                </row>
+
+                <row>
+                  <entry>73</entry>
+
+                  <entry>The number of linetype elements.</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Total pattern length.</entry>
+                </row>
+
+                <row>
+                  <entry>49</entry>
+
+                  <entry>Dash, dot or space length (one entry per
+                  element).</entry>
+                </row>
+
+                <row>
+                  <entry>74</entry>
+
+                  <entry>Complex linetype element type (one per element).
+                  Default is 0 (no embedded shape/text). The following codes
+                  are bit values: 1 = if set, code 50 specifies an absolute
+                  rotation, if not set, code 50 specifies a relative rotation;
+                  2 = embedded element is a text string; 4 = embedded element
+                  is a shape.</entry>
+                </row>
+
+                <row>
+                  <entry>75</entry>
+
+                  <entry>Shape number (one per element) if code 74 specifies
+                  an embeded shape. If code 74 specifies an embeded text
+                  string, this value is set to 0. If code 74 is set to 0, code
+                  75 is omitted.</entry>
+                </row>
+
+                <row>
+                  <entry>340</entry>
+
+                  <entry>Pointer to STYLE object (one per element if code 74
+                  &gt; 0).</entry>
+                </row>
+
+                <row>
+                  <entry>46</entry>
+
+                  <entry>S = scale value (optional). Multiple entries can
+                  exist.</entry>
+                </row>
+
+                <row>
+                  <entry>50</entry>
+
+                  <entry>R = (relative) or A = (absolute) rotation value in
+                  radians of embedded shape or text. One per element if code
+                  74 specifies an embeded shape or text string. .</entry>
+                </row>
+
+                <row>
+                  <entry>44</entry>
+
+                  <entry>X= x offset value (optional). Multiple entries can
+                  exist.</entry>
+                </row>
+
+                <row>
+                  <entry>45</entry>
+
+                  <entry>Y= y offset value (optional). Multiple entries can
+                  exist.</entry>
+                </row>
+
+                <row>
+                  <entry>9</entry>
+
+                  <entry>Text string (one per element if code 74 = 2).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The group codes 74, 75, 340, 46, 50, 44, 45, and 9 are not
+        returned by the <emphasis role="bold">tblsearch</emphasis> or
+        <emphasis role="bold">tblnext</emphasis> functions.</para>
+
+        <para>You must use <emphasis role="bold">tblobjname</emphasis> to
+        retrieve these values within an application.</para>
+      </section>
     </section>
   </chapter>
 </book>
