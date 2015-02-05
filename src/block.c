@@ -51,27 +51,27 @@ dxf_block_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfBlock *dxf_block = NULL;
+        DxfBlock *block = NULL;
         size_t size;
 
         size = sizeof (DxfBlock);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_block = malloc (size)) == NULL)
+        if ((block = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfBlock struct.\n")),
                   __FUNCTION__);
-                dxf_block = NULL;
+                block = NULL;
         }
         else
         {
-                memset (dxf_block, 0, size);
+                memset (block, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_block);
+        return (block);
 }
 
 
@@ -89,7 +89,7 @@ dxf_block_new ()
 DxfBlock *
 dxf_block_init
 (
-        DxfBlock *dxf_block
+        DxfBlock *block
                 /*!< DXF block entity. */
 )
 {
@@ -97,37 +97,37 @@ dxf_block_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_block == NULL)
+        if (block == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_block = dxf_block_new ();
+                block = dxf_block_new ();
         }
-        if (dxf_block == NULL)
+        if (block == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfBlock struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_block->xref_name = strdup ("");
-        dxf_block->block_name = strdup ("");
-        dxf_block->block_name_additional = strdup ("");
-        dxf_block->id_code = 0;
-        dxf_block->description = strdup ("");
-        dxf_block->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_block->x0 = 0.0;
-        dxf_block->y0 = 0.0;
-        dxf_block->z0 = 0.0;
-        dxf_block->block_type = 0; /* 0 = invalid type */
-        dxf_block->dictionary_owner_soft = strdup ("");
-        dxf_block->endblk = (struct DxfEndblk *) dxf_endblk_new ();
-        dxf_block->next = NULL;
+        block->xref_name = strdup ("");
+        block->block_name = strdup ("");
+        block->block_name_additional = strdup ("");
+        block->id_code = 0;
+        block->description = strdup ("");
+        block->layer = strdup (DXF_DEFAULT_LAYER);
+        block->x0 = 0.0;
+        block->y0 = 0.0;
+        block->z0 = 0.0;
+        block->block_type = 0; /* 0 = invalid type */
+        block->dictionary_owner_soft = strdup ("");
+        block->endblk = (struct DxfEndblk *) dxf_endblk_new ();
+        block->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_block);
+        return (block);
 }
 
 
@@ -141,7 +141,7 @@ dxf_block_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c dxf_block. \n
  *
- * \return a pointer to \c dxf_block.
+ * \return a pointer to \c block.
  *
  * \version According to DXF R10.
  * \version According to DXF R13.
@@ -157,7 +157,7 @@ dxf_block_read
 (
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
-        DxfBlock *dxf_block
+        DxfBlock *block
                 /*!< DXF block entity. */
 )
 {
@@ -174,13 +174,13 @@ dxf_block_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_block == NULL)
+        if (block == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_block = dxf_block_new ();
-                dxf_block = dxf_block_init (dxf_block);
+                block = dxf_block_new ();
+                block = dxf_block_init (block);
         }
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -197,68 +197,68 @@ dxf_block_read
                 {
                         /* Now follows a string containing a external
                          * reference name. */
-                        fscanf (fp->fp, "%s\n", dxf_block->xref_name);
+                        fscanf (fp->fp, "%s\n", block->xref_name);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a block name. */
-                        fscanf (fp->fp, "%s\n", dxf_block->block_name);
+                        fscanf (fp->fp, "%s\n", block->block_name);
                 }
                 else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing a block name. */
-                        fscanf (fp->fp, "%s\n", dxf_block->block_name_additional);
+                        fscanf (fp->fp, "%s\n", block->block_name_additional);
                 }
                 else if (strcmp (temp_string, "4") == 0)
                 {
                         /* Now follows a string containing a description. */
-                        fscanf (fp->fp, "%s\n", dxf_block->description);
+                        fscanf (fp->fp, "%s\n", block->description);
                 }
                 else if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        fscanf (fp->fp, "%x\n", &dxf_block->id_code);
+                        fscanf (fp->fp, "%x\n", &block->id_code);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        fscanf (fp->fp, "%s\n", dxf_block->layer);
+                        fscanf (fp->fp, "%s\n", block->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
-                        fscanf (fp->fp, "%lf\n", &dxf_block->x0);
+                        fscanf (fp->fp, "%lf\n", &block->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
-                        fscanf (fp->fp, "%lf\n", &dxf_block->y0);
+                        fscanf (fp->fp, "%lf\n", &block->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
-                        fscanf (fp->fp, "%lf\n", &dxf_block->z0);
+                        fscanf (fp->fp, "%lf\n", &block->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_block->z0 = 0.0))
+                        && (block->z0 = 0.0))
                 {
                         /* Elevation is a pre AutoCAD R11 variable
                          * so additional testing for the version should
                          * probably be added.
                          * Now follows a string containing the
                          * elevation. */
-                        fscanf (fp->fp, "%lf\n", &dxf_block->z0);
+                        fscanf (fp->fp, "%lf\n", &block->z0);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the block
                          * type value. */
-                        fscanf (fp->fp, "%d\n", &dxf_block->block_type);
+                        fscanf (fp->fp, "%d\n", &block->block_type);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -278,25 +278,25 @@ dxf_block_read
                 {
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
-                        fscanf (fp->fp, "%lf\n", &dxf_block->extr_x0);
+                        fscanf (fp->fp, "%lf\n", &block->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
-                        fscanf (fp->fp, "%lf\n", &dxf_block->extr_y0);
+                        fscanf (fp->fp, "%lf\n", &block->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
-                        fscanf (fp->fp, "%lf\n", &dxf_block->extr_z0);
+                        fscanf (fp->fp, "%lf\n", &block->extr_z0);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner object. */
-                        fscanf (fp->fp, "%s\n", dxf_block->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", block->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -316,27 +316,27 @@ dxf_block_read
          * \todo Resolve this quick hack for preventing an empty block
          * name string in a more elegant manner.
          */
-        if (strcmp (dxf_block->block_name, "") == 0)
+        if (strcmp (block->block_name, "") == 0)
         {
-                sprintf (dxf_block->block_name, "%i", dxf_block->id_code);
+                sprintf (block->block_name, "%i", block->id_code);
         }
-        if (strcmp (dxf_block->layer, "") == 0)
+        if (strcmp (block->layer, "") == 0)
         {
-                dxf_block->layer = strdup (DXF_DEFAULT_LAYER);
+                block->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_block->block_type == 0)
+        if (block->block_type == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () illegal block type value found while reading from: %s in line: %d.\n")),
                   __FUNCTION__, fp->filename, fp->line_number);
                 fprintf (stderr,
                   (_("\tblock type value is reset to 1.\n")));
-                dxf_block->block_type = 1;
+                block->block_type = 1;
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_block);
+        return (block);
 }
 
 
@@ -355,7 +355,7 @@ dxf_block_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfBlock *dxf_block
+        DxfBlock *block
                 /*!< DXF block entity */
 )
 {
@@ -373,76 +373,76 @@ dxf_block_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_block == NULL)
+        if (block == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_block->block_name == NULL)
+        if (block->block_name == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () empty block name string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_block->id_code);
+                  __FUNCTION__, dxf_entity_name, block->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_block->endblk == NULL)
+        if (block->endblk == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () NULL pointer to endblk was passed or the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_block->id_code);
+                  __FUNCTION__, dxf_entity_name, block->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (((dxf_block->xref_name == NULL)
-          || (strcmp (dxf_block->xref_name, "") == 0))
-          && ((dxf_block->block_type != 4)
-          || (dxf_block->block_type != 32)))
+        if (((block->xref_name == NULL)
+          || (strcmp (block->xref_name, "") == 0))
+          && ((block->block_type != 4)
+          || (block->block_type != 32)))
         {
                 fprintf (stderr,
                   (_("Error in %s () empty xref path name string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_block->id_code);
+                  __FUNCTION__, dxf_entity_name, block->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dxf_block->description == NULL)
+        if (block->description == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () NULL pointer to description string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_block->id_code);
-                dxf_block->description = strdup ("");
+                  __FUNCTION__, dxf_entity_name, block->id_code);
+                block->description = strdup ("");
         }
-        if (strcmp (dxf_block->layer, "") == 0)
+        if (strcmp (block->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_block->id_code);
+                  __FUNCTION__, dxf_entity_name, block->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0.\n")),
                   dxf_entity_name);
-                dxf_block->layer = strdup (DXF_DEFAULT_LAYER);
+                block->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_block->dictionary_owner_soft == NULL)
+        if (block->dictionary_owner_soft == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () NULL pointer to soft owner object string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_block->id_code);
-                dxf_block->dictionary_owner_soft = strdup ("");
+                  __FUNCTION__, dxf_entity_name, block->id_code);
+                block->dictionary_owner_soft = strdup ("");
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if ((fp->acad_version_number >= AutoCAD_13)
-          && (dxf_block->id_code != -1))
+          && (block->id_code != -1))
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_block->id_code);
+                fprintf (fp->fp, "  5\n%x\n", block->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -454,41 +454,41 @@ dxf_block_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_block->dictionary_owner_soft, "") != 0)
+        if ((strcmp (block->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
-                fprintf (fp->fp, "330\n%s\n", dxf_block->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", block->dictionary_owner_soft);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_block->layer);
+        fprintf (fp->fp, "  8\n%s\n", block->layer);
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbBlockBegin\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", dxf_block->block_name);
-        fprintf (fp->fp, " 70\n%d\n", dxf_block->block_type);
-        fprintf (fp->fp, " 10\n%f\n", dxf_block->x0);
-        fprintf (fp->fp, " 20\n%f\n", dxf_block->y0);
-        fprintf (fp->fp, " 30\n%f\n", dxf_block->z0);
+        fprintf (fp->fp, "  2\n%s\n", block->block_name);
+        fprintf (fp->fp, " 70\n%d\n", block->block_type);
+        fprintf (fp->fp, " 10\n%f\n", block->x0);
+        fprintf (fp->fp, " 20\n%f\n", block->y0);
+        fprintf (fp->fp, " 30\n%f\n", block->z0);
         if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp->fp, "  3\n%s\n", dxf_block->block_name);
+                fprintf (fp->fp, "  3\n%s\n", block->block_name);
         }
         if ((fp->acad_version_number >= AutoCAD_13)
-        && ((dxf_block->block_type && 4)
-        || (dxf_block->block_type && 32)))
+        && ((block->block_type && 4)
+        || (block->block_type && 32)))
         {
-                fprintf (fp->fp, "  1\n%s\n", dxf_block->xref_name);
+                fprintf (fp->fp, "  1\n%s\n", block->xref_name);
         }
         if ((fp->acad_version_number >= AutoCAD_2000)
-        && (strcmp (dxf_block->description, "") != 0))
+        && (strcmp (block->description, "") != 0))
         {
-                fprintf (fp->fp, "  4\n%s\n", dxf_block->description);
+                fprintf (fp->fp, "  4\n%s\n", block->description);
         }
-        endblk = (DxfEndblk *) dxf_block->endblk;
+        endblk = (DxfEndblk *) block->endblk;
         dxf_endblk_write (fp, endblk);
 #if DEBUG
         DXF_DEBUG_END
@@ -507,7 +507,7 @@ dxf_block_write_table
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfBlock *dxf_blocks_list
+        DxfBlock *blocks_list
                 /*!< Pointer to a list of block definitions. */
 )
 {
@@ -545,7 +545,7 @@ dxf_block_write_table
 int
 dxf_block_free
 (
-        DxfBlock *dxf_block
+        DxfBlock *block
                 /*!< Pointer to the memory occupied by the DXF \c BLOCK
                  * entity. */
 )
@@ -553,21 +553,21 @@ dxf_block_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_block->next != NULL)
+        if (block->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfBlock was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_block->xref_name);
-        free (dxf_block->block_name);
-        free (dxf_block->block_name_additional);
-        free (dxf_block->description);
-        free (dxf_block->layer);
-        free (dxf_block->dictionary_owner_soft);
-        free (dxf_block);
-        dxf_block = NULL;
+        free (block->xref_name);
+        free (block->block_name);
+        free (block->block_name_additional);
+        free (block->description);
+        free (block->layer);
+        free (block->dictionary_owner_soft);
+        free (block);
+        block = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif

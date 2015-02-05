@@ -1,7 +1,7 @@
 /*!
  * \file block.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF block entity (\c BLOCK).
  *
@@ -62,6 +62,8 @@
  * filename of the External Reference.\n
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -141,18 +143,18 @@ dxf_block
 DxfBlock *dxf_block_new ();
 DxfBlock *dxf_block_init
 (
-        DxfBlock *dxf_block
+        DxfBlock *block
 );
 DxfBlock *
 dxf_block_read
 (
         DxfFile *fp,
-        DxfBlock *dxf_block
+        DxfBlock *block
 );
 int dxf_block_write
 (
         DxfFile *fp,
-        DxfBlock *dxf_block
+        DxfBlock *block
 );
 int dxf_block_write_endblk
 (
@@ -161,11 +163,11 @@ int dxf_block_write_endblk
 int dxf_block_write_table
 (
         DxfFile *fp,
-        DxfBlock *dxf_blocks_list
+        DxfBlock *blocks_list
 );
 int dxf_block_free
 (
-        DxfBlock *dxf_block
+        DxfBlock *block
 );
 
 
