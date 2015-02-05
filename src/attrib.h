@@ -1,7 +1,7 @@
 /*!
  * \file attrib.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF attribute entity (\c ATTRIB).
  *
@@ -232,24 +232,24 @@ dxf_attrib_new ();
 DxfAttrib *
 dxf_attrib_init
 (
-        DxfAttrib *dxf_attrib
+        DxfAttrib *attrib
 );
 DxfAttrib *
 dxf_attrib_read
 (
         DxfFile *fp,
-        DxfAttrib *dxf_attrib
+        DxfAttrib *attrib
 );
 int
 dxf_attrib_write
 (
         DxfFile *fp,
-        DxfAttrib *dxf_attrib
+        DxfAttrib *attrib
 );
 int
 dxf_attrib_free
 (
-        DxfAttrib *dxf_attrib
+        DxfAttrib *attrib
 );
 
 
