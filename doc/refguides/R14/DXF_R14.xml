@@ -6094,6 +6094,177 @@
         <para>You must use <emphasis role="bold">tblobjname</emphasis> to
         retrieve these values within an application.</para>
       </section>
+
+      <section>
+        <title>STYLE.</title>
+
+        <para>The following group codes apply to STYLE symbol table
+        entries.<table>
+            <title>STYLE table group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbTextStyleTableRecord).</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>Style name.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Standard flag values (bit-coded values) (See "Common
+                  Group Codes for Symbol Table Entries.") 1=if set, this entry
+                  describes a shape 4=Vertical text.</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Fixed text height; 0 if not fixed.</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>Width factor.</entry>
+                </row>
+
+                <row>
+                  <entry>50</entry>
+
+                  <entry>Oblique angle.</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Text generation flags 2=Text is backward (mirrored in
+                  X) 4=Text is upside down (mirrored in Y).</entry>
+                </row>
+
+                <row>
+                  <entry>42</entry>
+
+                  <entry>Last height used.</entry>
+                </row>
+
+                <row>
+                  <entry>3</entry>
+
+                  <entry>Primary font file name.</entry>
+                </row>
+
+                <row>
+                  <entry>4</entry>
+
+                  <entry>Bigfont file name; blank if none.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>A STYLE table item is also used to record shape file LOAD
+        command requests.</para>
+
+        <para>In this case the first bit (1) is set in the 70 group flags and
+        only the 3 group (shape file name) is meaningful (all the other groups
+        are output, however).</para>
+      </section>
+
+      <section>
+        <title>UCS.</title>
+
+        <para>The following group codes apply to UCS symbol table
+        entries.<table>
+            <title>UCS table group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbUcsTableRecord).</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>UCS name.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Standard flag values (See "Common Group Codes for
+                  Symbol Table Entries.").</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Origin (in WCS). DXF: X value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of origin (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>X-axis direction (in WCS). DXF: X value; APP: 3D
+                  vector.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of X-axis direction (in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>12</entry>
+
+                  <entry>Y-axis direction (in WCS). DXF: X value; APP: 3D
+                  vector.</entry>
+                </row>
+
+                <row>
+                  <entry>22, 32</entry>
+
+                  <entry>DXF: Y and Z values of Y-axis direction (in
+                  WCS).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
