@@ -6265,6 +6265,390 @@
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>VIEW.</title>
+
+        <para>The following group codes apply to VIEW symbol table
+        entries.<table>
+            <title>VIEW table group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbViewTableRecord).</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>Name of view.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Standard flag values (bit-coded values) (See "Common
+                  Group Codes for Symbol Table Entries.") 1 = if set, this is
+                  a paper space view.</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>View height (in DCS).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>View center point (in DCS). DXF: X value; APP: 2D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20</entry>
+
+                  <entry>DXF: Y value of view center point (in DCS).</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>View width (in DCS).</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>View direction from target (in WCS) DXF: X value;
+                  APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of view direction from target (in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>12</entry>
+
+                  <entry>Target point (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>22, 2</entry>
+
+                  <entry>DXF: Y and Z values of target point (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>42</entry>
+
+                  <entry>Lens length.</entry>
+                </row>
+
+                <row>
+                  <entry>43</entry>
+
+                  <entry>Front clipping plane (offset from target
+                  point).</entry>
+                </row>
+
+                <row>
+                  <entry>44</entry>
+
+                  <entry>Back clipping plane (offset from target
+                  point).</entry>
+                </row>
+
+                <row>
+                  <entry>50</entry>
+
+                  <entry>Twist angle.</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>View mode (see VIEWMODE system variable).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>VPORT.</title>
+
+        <para>The following group codes apply to VPORT symbol table
+        entries.<table>
+            <title>VPORT table group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbViewportTableRecord).</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>Viewport name.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Standard flag values (See "Common Group Codes for
+                  Symbol Table Entries.").</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Lower-left corner of viewport. DXF: X value; APP: 2D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20</entry>
+
+                  <entry>DXF: Y value of lower-left corner of
+                  viewport.</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>Upper-right corner of viewport DXF: X value; APP: 2D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>21</entry>
+
+                  <entry>DXF: Y value of upper-right corner of viewport
+                  .</entry>
+                </row>
+
+                <row>
+                  <entry>12</entry>
+
+                  <entry>View center point (in DCS). DXF: X value; APP: 2D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>22</entry>
+
+                  <entry>DXF: Y value of view center point (in DCS).</entry>
+                </row>
+
+                <row>
+                  <entry>13</entry>
+
+                  <entry>Snap base point. DXF: X value; APP: 2D point.</entry>
+                </row>
+
+                <row>
+                  <entry>23</entry>
+
+                  <entry>DXF: Y value of snap base point.</entry>
+                </row>
+
+                <row>
+                  <entry>14</entry>
+
+                  <entry>Snap spacing X and Y. DXF: X value; APP: 2D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>24</entry>
+
+                  <entry>DXF: Y value of snap spacing X and Y.</entry>
+                </row>
+
+                <row>
+                  <entry>15</entry>
+
+                  <entry>Grid spacing X and Y. DXF: X value; APP: 2D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>25</entry>
+
+                  <entry>DXF: Y value of grid spacing X and Y.</entry>
+                </row>
+
+                <row>
+                  <entry>16</entry>
+
+                  <entry>View direction from target point (in WCS) DXF: X
+                  value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>26, 36</entry>
+
+                  <entry>DXF: Y and Z values of view direction from target
+                  point (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>17</entry>
+
+                  <entry>View target point (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>27, 37</entry>
+
+                  <entry>DXF: Y and Z values of view target point (in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>View height.</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>Viewport aspect ratio.</entry>
+                </row>
+
+                <row>
+                  <entry>42</entry>
+
+                  <entry>Lens length.</entry>
+                </row>
+
+                <row>
+                  <entry>43</entry>
+
+                  <entry>Front clipping plane (offset from target
+                  point).</entry>
+                </row>
+
+                <row>
+                  <entry>44</entry>
+
+                  <entry>Back clipping plane (offset from target
+                  point).</entry>
+                </row>
+
+                <row>
+                  <entry>50</entry>
+
+                  <entry>Snap rotation angle.</entry>
+                </row>
+
+                <row>
+                  <entry>51</entry>
+
+                  <entry>View twist angle.</entry>
+                </row>
+
+                <row>
+                  <entry>68</entry>
+
+                  <entry>APP: Status field (never saved in DXF).</entry>
+                </row>
+
+                <row>
+                  <entry>69</entry>
+
+                  <entry>APP: ID (never saved in DXF).</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>View mode (see VIEWMODE system variable).</entry>
+                </row>
+
+                <row>
+                  <entry>72</entry>
+
+                  <entry>Circle zoom percent.</entry>
+                </row>
+
+                <row>
+                  <entry>73</entry>
+
+                  <entry>Fast zoom setting.</entry>
+                </row>
+
+                <row>
+                  <entry>74</entry>
+
+                  <entry>UCSICON setting.</entry>
+                </row>
+
+                <row>
+                  <entry>75</entry>
+
+                  <entry>Snap on/off.</entry>
+                </row>
+
+                <row>
+                  <entry>76</entry>
+
+                  <entry>Grid on/off.</entry>
+                </row>
+
+                <row>
+                  <entry>77</entry>
+
+                  <entry>Snap style.</entry>
+                </row>
+
+                <row>
+                  <entry>78</entry>
+
+                  <entry>Snap isopair.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The VPORT table is unique: it may contain several entries with
+        the same name (indicating a multiple-viewport configuration).</para>
+
+        <para>The entries corresponding to the active viewport configuration
+        all have the name *ACTIVE.</para>
+
+        <para>The first such entry describes the current viewport.</para>
+      </section>
     </section>
   </chapter>
 </book>
