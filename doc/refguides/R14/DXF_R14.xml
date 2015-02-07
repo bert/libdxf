@@ -7788,6 +7788,168 @@
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>ACAD_PROXY_ENTITY.</title>
+
+        <para>The following group codes apply to proxy entities.<table>
+            <title>ACAD_PROXY_ENTITY group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>DXF: AcDbProxyEntity.</entry>
+                </row>
+
+                <row>
+                  <entry>90</entry>
+
+                  <entry>DXF: Proxy entity class ID (always 498).</entry>
+                </row>
+
+                <row>
+                  <entry>91</entry>
+
+                  <entry>DXF: Application entity's class ID. Class IDs are
+                  based on the order of the class in the CLASSES section. The
+                  first class is given the ID of 500, the next is 501, and so
+                  on.</entry>
+                </row>
+
+                <row>
+                  <entry>92</entry>
+
+                  <entry>DXF: Size of graphics data in bytes.</entry>
+                </row>
+
+                <row>
+                  <entry>310</entry>
+
+                  <entry>DXF: Binary graphics data (multiple entries can
+                  appear).</entry>
+                </row>
+
+                <row>
+                  <entry>93</entry>
+
+                  <entry>DXF: Size of entity data in bits.</entry>
+                </row>
+
+                <row>
+                  <entry>310</entry>
+
+                  <entry>DXF: Binary entity data (multiple entries can
+                  appear).</entry>
+                </row>
+
+                <row>
+                  <entry>330 or 340 or 350 or 360</entry>
+
+                  <entry>DXF: An object ID (multiple entries can
+                  appear).</entry>
+                </row>
+
+                <row>
+                  <entry>94</entry>
+
+                  <entry>DXF: 0 (indicates end of object ID section).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>ARC.</title>
+
+        <para>The following group codes apply to arc entities.<table>
+            <title>ARC group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbCircle).</entry>
+                </row>
+
+                <row>
+                  <entry>39</entry>
+
+                  <entry>Thickness (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Center point (in OCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of center point (in OCS).</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Radius.</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbArc).</entry>
+                </row>
+
+                <row>
+                  <entry>50</entry>
+
+                  <entry>Start angle.</entry>
+                </row>
+
+                <row>
+                  <entry>51</entry>
+
+                  <entry>End angle.</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
