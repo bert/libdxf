@@ -7651,6 +7651,143 @@
             even if the order is unexpected.</para>
           </note></para>
       </section>
+
+      <section>
+        <title>3DFACE.</title>
+
+        <para>The following group codes apply to 3dface entities.<table>
+            <title>3DFACE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbFace).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>First corner (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of first corner (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>Second corner (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of second corner (in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>12</entry>
+
+                  <entry>Third corner (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>22, 32</entry>
+
+                  <entry>DXF: Y and Z values of third corner (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>13</entry>
+
+                  <entry>Fourth corner (in WCS). If only three corners are
+                  entered, this is the same as the third corner DXF: X value;
+                  APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>23, 33</entry>
+
+                  <entry>DXF: Y and Z values of fourth corner (in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Invisible edge flags (optional; default = 0): 1 =
+                  First edge is invisible. 2 = Second edge is invisible. 4 =
+                  Third edge is invisible. 8 = Fourth edge is
+                  invisible.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>3DSOLID.</title>
+
+        <para>The following group codes apply to 3dsolid entities.<table>
+            <title>3DSOLID group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbModelerGeometry).</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Modeler format version number (currently =
+                  1).</entry>
+                </row>
+
+                <row>
+                  <entry>1</entry>
+
+                  <entry>Proprietary data (multiple lines &lt; 255 characters
+                  each).</entry>
+                </row>
+
+                <row>
+                  <entry>3</entry>
+
+                  <entry>Additional lines of proprietary data (if previous
+                  group 1 string is greater than 255 characters).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
