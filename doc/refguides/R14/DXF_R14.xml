@@ -5068,7 +5068,7 @@
                 </row>
 
                 <row>
-                  <entry> 0</entry>
+                  <entry>0</entry>
 
                   <entry><emphasis>Table entry data,
                   repeats</emphasis></entry>
@@ -5081,7 +5081,7 @@
                 </row>
 
                 <row>
-                  <entry> 5</entry>
+                  <entry>5</entry>
 
                   <entry/>
                 </row>
@@ -6843,7 +6843,7 @@
                 </row>
 
                 <row>
-                  <entry> 2</entry>
+                  <entry>2</entry>
 
                   <entry/>
                 </row>
@@ -6855,7 +6855,7 @@
                 </row>
 
                 <row>
-                  <entry> 70</entry>
+                  <entry>70</entry>
 
                   <entry/>
                 </row>
@@ -6867,7 +6867,7 @@
                 </row>
 
                 <row>
-                  <entry> 10</entry>
+                  <entry>10</entry>
 
                   <entry/>
                 </row>
@@ -6879,7 +6879,7 @@
                 </row>
 
                 <row>
-                  <entry> 20</entry>
+                  <entry>20</entry>
 
                   <entry/>
                 </row>
@@ -6891,7 +6891,7 @@
                 </row>
 
                 <row>
-                  <entry> 30</entry>
+                  <entry>30</entry>
 
                   <entry/>
                 </row>
@@ -6903,7 +6903,7 @@
                 </row>
 
                 <row>
-                  <entry> 3</entry>
+                  <entry>3</entry>
 
                   <entry/>
                 </row>
@@ -6915,7 +6915,7 @@
                 </row>
 
                 <row>
-                  <entry> 1</entry>
+                  <entry>1</entry>
 
                   <entry/>
                 </row>
@@ -6933,7 +6933,7 @@
                 </row>
 
                 <row>
-                  <entry> 0</entry>
+                  <entry>0</entry>
 
                   <entry>One entry for each entity definition within the
                   block.</entry>
@@ -6964,7 +6964,7 @@
                 </row>
 
                 <row>
-                  <entry> 0</entry>
+                  <entry>0</entry>
 
                   <entry>End of each block entry (an endblk entity
                   definition).</entry>
@@ -6977,7 +6977,7 @@
                 </row>
 
                 <row>
-                  <entry> 5</entry>
+                  <entry>5</entry>
 
                   <entry/>
                 </row>
@@ -7239,6 +7239,417 @@
               </tbody>
             </tgroup>
           </table></para>
+      </section>
+    </section>
+
+    <section>
+      <title>ENTITIES Section.</title>
+
+      <para>This section presents the group codes that apply to graphical
+      objects.</para>
+
+      <para>These codes are found in the ENTITIES section of a DXF file and
+      are used by AutoLISP and ARX applications in entity definition
+      lists.</para>
+
+      <para>The group codes shown in this section can apply to DXF files,
+      applications (AutoLISP or ARX), or both.</para>
+
+      <para>When the description of a code is different for applications and
+      DXF files (or only applies to one or the other), the description is
+      preceeded by the following indicators:<variablelist>
+          <varlistentry>
+            <term>APP</term>
+
+            <listitem>
+              <para>Application-specific description.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>DXF</term>
+
+            <listitem>
+              <para>DXF file-specific description.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+
+      <para>If the description is common to both DXF files and applications,
+      no indicator is provided.</para>
+
+      <para>Otherwise, the appropriate indicator is present.</para>
+
+      <para>Optional codes are shown in gray.</para>
+
+      <para>Topics in this section:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Common Group Codes for Graphical Objects.</para>
+        </listitem>
+
+        <listitem>
+          <para>3DFACE.</para>
+        </listitem>
+
+        <listitem>
+          <para>3DSOLID.</para>
+        </listitem>
+
+        <listitem>
+          <para>ACAD_PROXY_ENTITY.</para>
+        </listitem>
+
+        <listitem>
+          <para>ARC.</para>
+        </listitem>
+
+        <listitem>
+          <para>ATTDEF.</para>
+        </listitem>
+
+        <listitem>
+          <para>ATTRIB.</para>
+        </listitem>
+
+        <listitem>
+          <para>BODY.</para>
+        </listitem>
+
+        <listitem>
+          <para>CIRCLE.</para>
+        </listitem>
+
+        <listitem>
+          <para>DIMENSION.</para>
+        </listitem>
+
+        <listitem>
+          <para>ELLIPSE.</para>
+        </listitem>
+
+        <listitem>
+          <para>HATCH.</para>
+        </listitem>
+
+        <listitem>
+          <para>IMAGE.</para>
+        </listitem>
+
+        <listitem>
+          <para>INSERT.</para>
+        </listitem>
+
+        <listitem>
+          <para>LEADER.</para>
+        </listitem>
+
+        <listitem>
+          <para>LINE.</para>
+        </listitem>
+
+        <listitem>
+          <para>LWPOLYLINE.</para>
+        </listitem>
+
+        <listitem>
+          <para>MLINE.</para>
+        </listitem>
+
+        <listitem>
+          <para>MTEXT.</para>
+        </listitem>
+
+        <listitem>
+          <para>OLEFRAME.</para>
+        </listitem>
+
+        <listitem>
+          <para>OLE2FRAME.</para>
+        </listitem>
+
+        <listitem>
+          <para>POINT.</para>
+        </listitem>
+
+        <listitem>
+          <para>POLYLINE.</para>
+        </listitem>
+
+        <listitem>
+          <para>RAY.</para>
+        </listitem>
+
+        <listitem>
+          <para>REGION.</para>
+        </listitem>
+
+        <listitem>
+          <para>SEQEND.</para>
+        </listitem>
+
+        <listitem>
+          <para>SHAPE.</para>
+        </listitem>
+
+        <listitem>
+          <para>SOLID.</para>
+        </listitem>
+
+        <listitem>
+          <para>SPLINE.</para>
+        </listitem>
+
+        <listitem>
+          <para>TEXT.</para>
+        </listitem>
+
+        <listitem>
+          <para>TOLERANCE.</para>
+        </listitem>
+
+        <listitem>
+          <para>TRACE.</para>
+        </listitem>
+
+        <listitem>
+          <para>VERTEX.</para>
+        </listitem>
+
+        <listitem>
+          <para>VIEWPORT.</para>
+        </listitem>
+
+        <listitem>
+          <para>XLINE.</para>
+        </listitem>
+      </itemizedlist>
+
+      <section>
+        <title>Common Group Codes for Graphical Objects.</title>
+
+        <para>The following table shows group codes that apply to virtually
+        all graphical objects.</para>
+
+        <para>Some of the group codes shown here are included with an entity
+        definition only if the entity has nondefault values for the
+        property.</para>
+
+        <para>When you refer to the group codes by entity type, which lists
+        the codes associated with specific entities, keep in mind that the
+        codes shown here are also present.</para>
+
+        <para>When a group is omitted, its default value upon input (when
+        using DXFIN) is indicated in the third column.</para>
+
+        <para>If the value of a group code is equal to the default, it is
+        omitted upon output (when using DXFOUT).<table>
+            <title>Group codes that apply to all graphical objects.</title>
+
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+
+                  <entry align="center">If ommitted, defaults to ...</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>-1</entry>
+
+                  <entry>APP: entity name (changes each time a drawing is
+                  opened).</entry>
+
+                  <entry><emphasis>Not</emphasis> ommitted.</entry>
+                </row>
+
+                <row>
+                  <entry>0</entry>
+
+                  <entry>Entity type.</entry>
+
+                  <entry><emphasis>Not</emphasis> ommitted.</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Handle (all except DIMSTYLE).</entry>
+
+                  <entry><emphasis>Not</emphasis> ommitted.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>Start of application defined group
+                  "{application_name". For example, "{ACAD_REACTORS" indicates
+                  the start of the AutoCAD persistent reactors group.</entry>
+
+                  <entry>No default.</entry>
+                </row>
+
+                <row>
+                  <entry>application-defined codes</entry>
+
+                  <entry>Codes and values within the 102 groups are
+                  application-defined.</entry>
+
+                  <entry>No default.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of group, "}".</entry>
+
+                  <entry>No default.</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbEntity).</entry>
+
+                  <entry><emphasis>Not</emphasis> ommitted.</entry>
+                </row>
+
+                <row>
+                  <entry>67</entry>
+
+                  <entry>Absent or zero indicates entity is in model space.
+                  One indicates entity is in paper space. (optional).</entry>
+
+                  <entry>0.</entry>
+                </row>
+
+                <row>
+                  <entry>8</entry>
+
+                  <entry>Layer name.</entry>
+
+                  <entry><emphasis>Not</emphasis> ommitted.</entry>
+                </row>
+
+                <row>
+                  <entry>62</entry>
+
+                  <entry>Linetype name (present if not BYLAYER). The special
+                  name BYBLOCK indicates a floating linetype.
+                  (optional).</entry>
+
+                  <entry>BYLAYER.</entry>
+                </row>
+
+                <row>
+                  <entry>48</entry>
+
+                  <entry>Linetype scale (optional).</entry>
+
+                  <entry>1.0.</entry>
+                </row>
+
+                <row>
+                  <entry>60</entry>
+
+                  <entry>Object visibility (optional): 0 = visible, 1 =
+                  invisible. .</entry>
+
+                  <entry>0.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The following table shows the group codes that are output if
+        persistent reactors have been attached to an entity.<table>
+            <title>ACAD_REACTORS records.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>102</entry>
+
+                  <entry>"{ACAD_REACTORS" indicates the start of the AutoCAD
+                  persistent reactors group.</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Soft pointer ID/handle to owner dictionary.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of group, "}".</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The following table shows the group codes that are output if an
+        extension dictionary has been attached to an entity.<table>
+            <title>ACAD_XDICTIONARY records.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>102</entry>
+
+                  <entry>"{ACAD_XDICTIONARY" indicates the start of an
+                  extension dictionary group.</entry>
+                </row>
+
+                <row>
+                  <entry>360</entry>
+
+                  <entry>Hard-owner ID/handle to owner dictionary.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of group, "}".</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para><note>
+            <para>Do not write programs that rely on the order shown in these
+            DXF code tables.</para>
+
+            <para>Although these tables show the order of group codes as they
+            usually appear, the order can change under certain conditions or
+            in a future AutoCAD release.</para>
+
+            <para>The code that controls an entity should be driven by a case
+            (switch) or a table so that it can process each group correctly
+            even if the order is unexpected.</para>
+          </note></para>
       </section>
     </section>
   </chapter>
