@@ -8419,6 +8419,191 @@
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>DIMENSION.</title>
+
+        <para>Dimension entity definitions consist of group codes that are
+        common to all dimension types, followed by codes specific to the
+        type.</para>
+
+        <para>Topics in this section:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Common Dimension Group Codes.</para>
+          </listitem>
+
+          <listitem>
+            <para>Aligned, Linear, and Rotated Dimension Group Codes.</para>
+          </listitem>
+
+          <listitem>
+            <para>Linear and Rotated Dimension Group Codes.</para>
+          </listitem>
+
+          <listitem>
+            <para>Radial and Diameter Dimension Group Codes.</para>
+          </listitem>
+
+          <listitem>
+            <para>Angular Dimension Group Codes.</para>
+          </listitem>
+
+          <listitem>
+            <para>Ordinate Dimension Group Codes.</para>
+          </listitem>
+
+          <listitem>
+            <para>Dimension Style Overrides.</para>
+          </listitem>
+        </itemizedlist>
+
+        <section>
+          <title>Common Dimension Group Codes.</title>
+
+          <para>The following group codes apply to all dimension entity
+          types.<table>
+              <title>Common dimension group codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="center">Group codes</entry>
+
+                    <entry align="center">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>100</entry>
+
+                    <entry>Subclass marker (AcDbDimension).</entry>
+                  </row>
+
+                  <row>
+                    <entry>2</entry>
+
+                    <entry>Name of the block that contains the entities that
+                    make up the dimension picture.</entry>
+                  </row>
+
+                  <row>
+                    <entry>10</entry>
+
+                    <entry>Definition point (in WCS). DXF: X value; APP: 3D
+                    point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>20, 30</entry>
+
+                    <entry>DXF: Y and Z values of definition point (in
+                    WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>11</entry>
+
+                    <entry>Middle point of dimension text. (in OCS). DXF: X
+                    value; APP: 3D point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>21, 31</entry>
+
+                    <entry>DXF: Y and Z values of middle point of dimension
+                    text. (in OCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>70</entry>
+
+                    <entry>Dimension type. Values 0 - 6 are integer values
+                    which represent the dimension type. Values 32, 64, and 128
+                    are bit values, which are added to the integer values
+                    (value 32 is always set in R13 and later releases). 0 =
+                    Rotated, horizontal, or vertical; 1 = Aligned 2 = Angular;
+                    3 = Diameter; 4 = Radius; 5 = Angular 3 point; 6 =
+                    Ordinate 32 = Indicates that the block reference (group
+                    code 2) is referenced by this dimension only. 64 =
+                    Ordinate type. This is a bit value (bit 7) used only with
+                    integer value 6. If set, ordinate is X-type; if not set,
+                    ordinate is Y-type. 128 = This is a bit value (bit 8)
+                    added to the other group 70 values if the dimension text
+                    has been positioned at a user-defined location rather than
+                    at the default location.</entry>
+                  </row>
+
+                  <row>
+                    <entry>1</entry>
+
+                    <entry>Dimension text explicitly entered by the user.
+                    Optional; default is the measurement. If null or
+                    "&lt;&gt;", the dimension measurement is drawn as the
+                    text, if " " (one blank space), the text is suppressed.
+                    Anything else is drawn as the text.</entry>
+                  </row>
+
+                  <row>
+                    <entry>53</entry>
+
+                    <entry>The optional group code 53 is the rotation angle of
+                    the dimension text away from its default orientation (the
+                    direction of the dimension line).</entry>
+                  </row>
+
+                  <row>
+                    <entry>51</entry>
+
+                    <entry>All dimension types have an optional 51 group code,
+                    which indicates the horizontal direction for the dimension
+                    entity. It determines the orientation of dimension text
+                    and lines for horizontal, vertical, and rotated linear
+                    dimensions. This group value is the negative of the angle
+                    between the OCS X axis and the UCS X axis. It is always in
+                    the XY plane of the OCS.</entry>
+                  </row>
+
+                  <row>
+                    <entry>210</entry>
+
+                    <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                    DXF: X value; APP: 3D vector.</entry>
+                  </row>
+
+                  <row>
+                    <entry>220, 230</entry>
+
+                    <entry>DXF: Y and Z values of extrusion direction.</entry>
+                  </row>
+
+                  <row>
+                    <entry>3</entry>
+
+                    <entry>Dimension style name.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
+
+          <para>Xdata belonging to the application ID "ACAD" may follow a
+          dimension entity.</para>
+
+          <para>This describes any dimension overrides that have been applied
+          to this entity.</para>
+
+          <para>See "Dimension Style Overrides".</para>
+
+          <para>For all dimension types, the following group codes represent
+          3D WCS points: (10, 20, 30), (13, 23, 33), (14, 24, 34), and (15,
+          25, 35).</para>
+
+          <para>For all dimension types, the following group codes represent
+          3D OCS points: (11, 21, 31), (12, 22, 32), and (16, 26, 36).</para>
+        </section>
+      </section>
     </section>
   </chapter>
 </book>
