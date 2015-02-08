@@ -51,27 +51,27 @@ dxf_body_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfBody *dxf_body = NULL;
+        DxfBody *body = NULL;
         size_t size;
 
         size = sizeof (DxfBody);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_body = malloc (size)) == NULL)
+        if ((body = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfBody struct.\n")),
                   __FUNCTION__);
-                dxf_body = NULL;
+                body = NULL;
         }
         else
         {
-                memset (dxf_body, 0, size);
+                memset (body, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_body);
+        return (body);
 }
 
 
@@ -88,7 +88,7 @@ dxf_body_new ()
 DxfBody *
 dxf_body_init
 (
-        DxfBody *dxf_body
+        DxfBody *body
                 /*!< DXF \c BODY entity. */
 )
 {
@@ -98,43 +98,43 @@ dxf_body_init
         int i;
 
         /* Do some basic checks. */
-        if (dxf_body == NULL)
+        if (body == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_body = dxf_body_new ();
+                body = dxf_body_new ();
         }
-        if (dxf_body == NULL)
+        if (body == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfBody struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_body->modeler_format_version_number = 0;
-        dxf_body->id_code = 0;
-        dxf_body->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_body->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_body->elevation = 0.0;
-        dxf_body->thickness = 0.0;
-        dxf_body->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        dxf_body->visibility = DXF_DEFAULT_VISIBILITY;
-        dxf_body->color = DXF_COLOR_BYLAYER;
-        dxf_body->paperspace = DXF_MODELSPACE;
-        dxf_body->modeler_format_version_number = 1;
+        body->modeler_format_version_number = 0;
+        body->id_code = 0;
+        body->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        body->layer = strdup (DXF_DEFAULT_LAYER);
+        body->elevation = 0.0;
+        body->thickness = 0.0;
+        body->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        body->visibility = DXF_DEFAULT_VISIBILITY;
+        body->color = DXF_COLOR_BYLAYER;
+        body->paperspace = DXF_MODELSPACE;
+        body->modeler_format_version_number = 1;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                dxf_body->proprietary_data[i] = strdup ("");
-                dxf_body->additional_proprietary_data[i] = strdup ("");
+                body->proprietary_data[i] = strdup ("");
+                body->additional_proprietary_data[i] = strdup ("");
         }
-        dxf_body->dictionary_owner_soft = strdup ("");
-        dxf_body->dictionary_owner_hard = strdup ("");
-        dxf_body->next = NULL;
+        body->dictionary_owner_soft = strdup ("");
+        body->dictionary_owner_hard = strdup ("");
+        body->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_body);
+        return (body);
 }
 
 
@@ -145,9 +145,9 @@ dxf_body_init
  * Now follows some data for the \c BODY, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
- * While parsing the DXF file store data in \c dxf_body. \n
+ * While parsing the DXF file store data in \c body. \n
  *
- * \return a pointer to \c dxf_body.
+ * \return a pointer to \c body.
  *
  * \version According to DXF R13.
  * \version According to DXF R14.
@@ -157,7 +157,7 @@ dxf_body_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfBody *dxf_body
+        DxfBody *body
                 /*!< DXF \c BODY entity. */
 )
 {
@@ -176,13 +176,13 @@ dxf_body_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_body == NULL)
+        if (body == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_body = dxf_body_new ();
-                dxf_body = dxf_body_init (dxf_body);
+                body = dxf_body_new ();
+                body = dxf_body_init (body);
         }
         if (fp->acad_version_number < AutoCAD_13)
         {
@@ -209,7 +209,7 @@ dxf_body_read
                         /* Now follows a string containing proprietary
                          * data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_body->proprietary_data[i]);
+                        fscanf (fp->fp, "%s\n", body->proprietary_data[i]);
                         i++;
                 }
                 else if (strcmp (temp_string, "  3") == 0)
@@ -217,7 +217,7 @@ dxf_body_read
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_body->additional_proprietary_data[j]);
+                        fscanf (fp->fp, "%s\n", body->additional_proprietary_data[j]);
                         j++;
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -225,20 +225,20 @@ dxf_body_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_body->id_code);
+                        fscanf (fp->fp, "%x\n", &body->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_body->linetype);
+                        fscanf (fp->fp, "%s\n", body->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_body->layer);
+                        fscanf (fp->fp, "%s\n", body->layer);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                   && DXF_FLATLAND
@@ -247,28 +247,28 @@ dxf_body_read
                         /* Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_body->elevation);
+                        fscanf (fp->fp, "%lf\n", &body->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_body->thickness);
+                        fscanf (fp->fp, "%lf\n", &body->thickness);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_body->color);
+                        fscanf (fp->fp, "%d\n", &body->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_body->paperspace);
+                        fscanf (fp->fp, "%d\n", &body->paperspace);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "70") == 0))
@@ -276,7 +276,7 @@ dxf_body_read
                         /* Now follows a string containing the modeler
                          * format version number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_body->modeler_format_version_number);
+                        fscanf (fp->fp, "%d\n", &body->modeler_format_version_number);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -296,14 +296,14 @@ dxf_body_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_body->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", body->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_body->dictionary_owner_hard);
+                        fscanf (fp->fp, "%s\n", body->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -320,27 +320,27 @@ dxf_body_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_body->linetype, "") == 0)
+        if (strcmp (body->linetype, "") == 0)
         {
-                dxf_body->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                body->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_body->layer, "") == 0)
+        if (strcmp (body->layer, "") == 0)
         {
-                dxf_body->layer = strdup (DXF_DEFAULT_LAYER);
+                body->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (dxf_body->modeler_format_version_number == 0)
+        if (body->modeler_format_version_number == 0)
         {
                 fprintf (stderr,
                   (_("Warning: in %s () illegal modeler format version number found while reading from: %s in line: %d.\n")),
                   __FUNCTION__, fp->filename, fp->line_number);
                 fprintf (stderr,
                   (_("\tmodeler format version number is reset to 1.\n")));
-                dxf_body->modeler_format_version_number = 1;
+                body->modeler_format_version_number = 1;
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_body);
+        return (body);
 }
 
 
@@ -358,7 +358,7 @@ dxf_body_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfBody *dxf_body
+        DxfBody *body
                 /*!< DXF \c BODY entity. */
 )
 {
@@ -383,38 +383,38 @@ dxf_body_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_body == NULL)
+        if (body == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_body->linetype, "") == 0)
+        if (strcmp (body->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_body->id_code);
+                  __FUNCTION__, dxf_entity_name, body->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_body->layer = strdup (DXF_DEFAULT_LAYER);
+                body->layer = strdup (DXF_DEFAULT_LAYER);
         }
-        if (strcmp (dxf_body->layer, "") == 0)
+        if (strcmp (body->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_body->id_code);
+                  __FUNCTION__, dxf_entity_name, body->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
-                dxf_body->layer = strdup (DXF_DEFAULT_LAYER);
+                body->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_body->id_code != -1)
+        if (body->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_body->id_code);
+                fprintf (fp->fp, "  5\n%x\n", body->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -426,54 +426,54 @@ dxf_body_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_body->dictionary_owner_soft, "") != 0)
+        if ((strcmp (body->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_body->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", body->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_body->dictionary_owner_hard, "") != 0)
+        if ((strcmp (body->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_body->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", body->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_body->paperspace == DXF_PAPERSPACE)
+        if (body->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_body->layer);
-        if (strcmp (dxf_body->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", body->layer);
+        if (strcmp (body->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_body->linetype);
+                fprintf (fp->fp, "  6\n%s\n", body->linetype);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_body->elevation != 0.0))
+          && (body->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_body->elevation);
+                fprintf (fp->fp, " 38\n%f\n", body->elevation);
         }
-        if (dxf_body->thickness != 0.0)
+        if (body->thickness != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_body->thickness);
+                fprintf (fp->fp, " 39\n%f\n", body->thickness);
         }
-        if (dxf_body->linetype_scale != 1.0)
+        if (body->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_body->linetype_scale);
+                fprintf (fp->fp, " 48\n%f\n", body->linetype_scale);
         }
-        if (dxf_body->visibility != 0)
+        if (body->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_body->visibility);
+                fprintf (fp->fp, " 60\n%d\n", body->visibility);
         }
-        if (dxf_body->color != DXF_COLOR_BYLAYER)
+        if (body->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_body->color);
+                fprintf (fp->fp, " 62\n%d\n", body->color);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -481,18 +481,18 @@ dxf_body_write
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp->fp, " 70\n%d\n", dxf_body->modeler_format_version_number);
+                fprintf (fp->fp, " 70\n%d\n", body->modeler_format_version_number);
         }
         i = 0;
-        while (strlen (dxf_body->proprietary_data[i]) > 0)
+        while (strlen (body->proprietary_data[i]) > 0)
         {
-                fprintf (fp->fp, "  1\n%s\n", dxf_body->proprietary_data[i]);
+                fprintf (fp->fp, "  1\n%s\n", body->proprietary_data[i]);
                 i++;
         }
         i = 0;
-        while (strlen (dxf_body->additional_proprietary_data[i]) > 0)
+        while (strlen (body->additional_proprietary_data[i]) > 0)
         {
-                fprintf (fp->fp, "  3\n%s\n", dxf_body->additional_proprietary_data[i]);
+                fprintf (fp->fp, "  3\n%s\n", body->additional_proprietary_data[i]);
                 i++;
         }
 #if DEBUG
@@ -515,7 +515,7 @@ dxf_body_write
 int
 dxf_body_free
 (
-        DxfBody *dxf_body
+        DxfBody *body
                 /*!< Pointer to the memory occupied by the DXF
                  * \c BODY entity. */
 )
@@ -526,24 +526,24 @@ dxf_body_free
         int i;
 
         /* Do some basic checks. */
-        if (dxf_body->next != NULL)
+        if (body->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfBody was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_body->linetype);
-        free (dxf_body->layer);
+        free (body->linetype);
+        free (body->layer);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                free (dxf_body->proprietary_data[i]);
-                free (dxf_body->additional_proprietary_data[i]);
+                free (body->proprietary_data[i]);
+                free (body->additional_proprietary_data[i]);
         }
-        free (dxf_body->dictionary_owner_soft);
-        free (dxf_body->dictionary_owner_hard);
-        free (dxf_body);
-        dxf_body = NULL;
+        free (body->dictionary_owner_soft);
+        free (body->dictionary_owner_hard);
+        free (body);
+        body = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif

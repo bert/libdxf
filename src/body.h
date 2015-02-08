@@ -1,7 +1,7 @@
 /*!
  * \file body.h
  *
- * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF body entity (\c BODY).
  *
@@ -119,24 +119,24 @@ dxf_body_new ();
 DxfBody *
 dxf_body_init
 (
-        DxfBody *dxf_body
+        DxfBody *body
 );
 DxfBody *
 dxf_body_read
 (
         DxfFile *fp,
-        DxfBody *dxf_body
+        DxfBody *body
 );
 int
 dxf_body_write
 (
         DxfFile *fp,
-        DxfBody *dxf_body
+        DxfBody *body
 );
 int
 dxf_body_free
 (
-        DxfBody *dxf_body
+        DxfBody *body
 );
 
 
