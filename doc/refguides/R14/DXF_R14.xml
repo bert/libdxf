@@ -8308,6 +8308,117 @@
         insertion point and the length of the text string itself (after
         applying the text style).</para>
       </section>
+
+      <section>
+        <title>BODY.</title>
+
+        <para>The following group codes apply to body entities.<table>
+            <title>BODY group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbModelerGeometry).</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Modeler format version number (currently =
+                  1).</entry>
+                </row>
+
+                <row>
+                  <entry>1</entry>
+
+                  <entry>Proprietary data (multiple lines &lt; 255 characters
+                  each).</entry>
+                </row>
+
+                <row>
+                  <entry>3</entry>
+
+                  <entry>Additional lines of proprietary data (if previous
+                  group 1 string is greater than 255 characters).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>CIRCLE.</title>
+
+        <para>The following group codes apply to circle entities.<table>
+            <title>CIRCLE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbCircle).</entry>
+                </row>
+
+                <row>
+                  <entry>39</entry>
+
+                  <entry>Thickness (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Center point (in OCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of center point (in OCS).</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Radius.</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
