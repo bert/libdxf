@@ -8943,6 +8943,198 @@
           <para>Point (10,20,30) is placed at the origin of the UCS that is
           current when the dimension is created.</para>
         </section>
+
+        <section>
+          <title>Dimension Style Overrides.</title>
+
+          <para>Dimension style overrides can be applied to dimension, leader,
+          and tolerance entities.</para>
+
+          <para>Any overrides applied to these entities are stored in the
+          entity as xdata.</para>
+
+          <para>The overridden dimension variable group codes and the related
+          values are contained within group 1002 control strings.</para>
+
+          <para>The following example shows the xdata of a dimension entity
+          where the DIMTOL and DIMCLRE variables have been overridden.</para>
+
+          <programlisting>(setq diment (car (entsel)))          ; Select dimension entity
+(setq elst (entget diment '("ACAD"))) ; Get entity definition list
+
+(assoc -3 elst)                       ; Extract xdata only</programlisting>
+
+          <para>This code returns the following:</para>
+
+          <programlisting>(-3 ("ACAD"                         <emphasis>Start of the ACAD APPID section of xdata</emphasis>
+  (1000 . "DSTYLE") (1002 . "{")    <emphasis>Beginning of the dimstyle subsection</emphasis>
+  (1070 . 177) (1070 . 3)           <emphasis>The DIMCLRE (code 177) override + value (3)</emphasis>
+  (1070 . 71) (1070 . 1)            <emphasis>The DIMTOL (code 71) override + value (1)</emphasis>
+
+  (1002 . "}") ))                   <emphasis>End dimstyle subsection and ACAD section</emphasis></programlisting>
+        </section>
+      </section>
+
+      <section>
+        <title>ELLIPSE.</title>
+
+        <para>The following group codes apply to ellipse entities.<table>
+            <title>ELLIPSE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="center">Group codes</entry>
+
+                  <entry align="center">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbEllipse).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Center point (in OCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of center point (in OCS).</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>Endpoint of major axis, relative to the center (in
+                  WCS). DXF: X value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of endpoint of major axis,
+                  relative to the center (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Ratio of minor axis to major axis.</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>Start parameter (this value is 0.0 for a full
+                  ellipse).</entry>
+                </row>
+
+                <row>
+                  <entry>42</entry>
+
+                  <entry>End parameter (this value is 2pi for a full
+                  ellipse).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The group codes 41 and 42 are the start and end values for u in
+        the equation below.</para>
+
+        <para>The magnitude of the codes (11,21,31) vector is equal to 1/2 of
+        the major axis which is the a value in the equation.</para>
+
+        <para>The point (10,20,30) is the c value in the equation.</para>
+
+        <para>Knowing all these, we can calculate the b value to complete the
+        equation.</para>
+
+        <para><emphasis role="bold">Explanation of the ELLIPSE Command's
+        Parameter Option.</emphasis></para>
+
+        <para>The Parameter option of the ELLIPSE command, uses the following
+        equation to define an elliptical arc.</para>
+
+        <literallayout>p(u)=c+a*cos(u)+b*sin(u)</literallayout>
+
+        <para>The variables a, b, c are determined when you select the
+        endpoints for the first axis and the distance for the second
+        axis.</para>
+
+        <para>a is the negative of 1/2 of the major axis length, b is the
+        negative of 1/2 the minor axis length, and c is the center point (2-D)
+        of the ellipse.</para>
+
+        <para>Because this is actually a vector equation and the variable c is
+        actually a point with X and Y values, it really should be written
+        as:</para>
+
+        <literallayout>p(u)=(Cx+a*cos(u))*i+(Cy+b*sin(u))*j</literallayout>
+
+        <para>where:</para>
+
+        <para>Cx is the X value of the point c</para>
+
+        <para>Cy is the Y value of the point c</para>
+
+        <para>a is -(1/2 of the major axis length)</para>
+
+        <para>b is -(1/2 of the minor axis length)</para>
+
+        <para>i and j represent unit vectors in the X and Y directions.</para>
+
+        <para>In AutoCAD, once the axis endpoints are selected all you have
+        left to specify is the start and end of the elliptical arc.</para>
+
+        <para>When you select the parameter option you are asked for a start
+        parameter and an end parameter.</para>
+
+        <para>These values are plugged into the equation to determine the
+        actual start and end points on the ellipse.</para>
+
+        <para>The rest of the ellipse is filled in between these two points in
+        a counterclockwise direction from the first parameter to the
+        second.</para>
+
+        <para>The value entered for the parameter u is taken to be degrees for
+        the purposes of obtaining the cos(u) and sin(u).</para>
+
+        <para>For example:</para>
+
+        <para>Axis endpoint 1 = 0,1</para>
+
+        <para>Axis endpoint 2 = 4,1</para>
+
+        <para>Other axis distance = 2,0</para>
+
+        <para>Start parameter = 270</para>
+
+        <para>End parameter = 0</para>
+
+        <para>will generate the start point at 2,2 and the end point at 0,1
+        and fill in the ellipse from 2,2 to 0,1 in a CCW direction.</para>
       </section>
     </section>
   </chapter>
