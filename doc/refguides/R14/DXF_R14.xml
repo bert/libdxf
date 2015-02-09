@@ -8775,6 +8775,174 @@
               </tgroup>
             </table></para>
         </section>
+
+        <section>
+          <title>Angular Dimension Group Codes.</title>
+
+          <para>The following group codes apply to angular dimensions.<table>
+              <title>Angular dimension group codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="center">Group codes</entry>
+
+                    <entry align="center">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>100</entry>
+
+                    <entry>Subclass marker
+                    (AcDb3PointAngularDimension).</entry>
+                  </row>
+
+                  <row>
+                    <entry>13</entry>
+
+                    <entry>Definition point for linear and angular dimensions
+                    (in WCS). DXF: X value; APP: 3D point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>23, 33</entry>
+
+                    <entry>DXF: Y and Z values of definition point for linear
+                    and angular dimensions (in WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>14</entry>
+
+                    <entry>Definition point for linear and angular dimensions
+                    (in WCS). DXF: X value; APP: 3D point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>24, 34</entry>
+
+                    <entry>DXF: Y and Z values of definition point for linear
+                    and angular dimensions (in WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>15</entry>
+
+                    <entry>Definition point for diameter, radius, and angular
+                    dimensions (in WCS). DXF: X value; APP: 3D point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>25, 35</entry>
+
+                    <entry>DXF: Y and Z values of definition point for
+                    diameter, radius, and angular dimensions (in WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>16</entry>
+
+                    <entry>Point defining dimension arc for angular
+                    dimensions. (in OCS). DXF: X value; APP: 3D point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>26, 36</entry>
+
+                    <entry>DXF: Y and Z values of point defining dimension arc
+                    for angular dimensions (in OCS).</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
+
+          <para>The points (13,23,33) and (14,24,34) specify the endpoints of
+          the line used to determine the first extension line and points
+          (10,20,30) and (15,25,35) specify the endpoints of the line used to
+          determine the second extension line.</para>
+
+          <para>Point (16,26,36) specifies the location of the dimension line
+          arc.</para>
+
+          <para>The point (11,21,31) specifies the midpoint of the dimension
+          text.</para>
+
+          <para/>
+
+          <para>The point (15,25,35) specifies the vertex of the angle.</para>
+
+          <para>The points (13,23,33) and (14,24,34) specify the endpoints of
+          the extension lines.</para>
+
+          <para>The point (10,20,30) specifies the location of the dimension
+          line arc and the point (11,21,31) specifies the midpoint of the
+          dimension text. </para>
+        </section>
+
+        <section>
+          <title>Ordinate Dimension Group Codes.</title>
+
+          <para>The following group codes apply to ordinate dimensions.<table>
+              <title>Ordinate dimension group codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="center">Group codes</entry>
+
+                    <entry align="center">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>100</entry>
+
+                    <entry>Subclass marker (AcDbOrdinateDimension).</entry>
+                  </row>
+
+                  <row>
+                    <entry>13</entry>
+
+                    <entry>Definition point for linear and angular dimensions
+                    (in WCS). DXF: X value; APP: 3D point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>23, 33</entry>
+
+                    <entry>DXF: Y and Z values of definition point for linear
+                    and angular dimensions (in WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>14</entry>
+
+                    <entry>Definition point for linear and angular dimensions
+                    (in WCS). DXF: X value; APP: 3D point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>24, 34</entry>
+
+                    <entry>DXF: Y and Z values of definition point for linear
+                    and angular dimensions (in WCS).</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
+
+          <para>The point (13,23,33) specifies the feature location and the
+          point (14,24,34) specifies the leader end point.</para>
+
+          <para>The point (11,21,31) specifies the midpoint of the dimension
+          text.</para>
+
+          <para>Point (10,20,30) is placed at the origin of the UCS that is
+          current when the dimension is created.</para>
+        </section>
       </section>
     </section>
   </chapter>
