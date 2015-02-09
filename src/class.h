@@ -132,7 +132,7 @@ dxf_class_write
 int
 dxf_class_write_endclass
 (
-        FILE *fp
+        DxfFile *fp
 );
 int
 dxf_class_free

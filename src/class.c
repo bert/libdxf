@@ -359,11 +359,14 @@ dxf_class_write
 /*!
  * \brief Write DXF output to a file for an end of \c CLASSES section
  * marker.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_class_write_endclass
 (
-        FILE *fp
+        DxfFile *fp
 )
 {
 #if DEBUG
@@ -378,7 +381,7 @@ dxf_class_write_endclass
                 return (EXIT_FAILURE);
         }
         /* Start writing output. */
-        fprintf (fp, "  0\nENDSEC\n");
+        fprintf (fp->fp, "  0\nENDSEC\n");
 #if DEBUG
         DXF_DEBUG_END
 #endif
