@@ -50,27 +50,27 @@ dxf_circle_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfCircle *dxf_circle = NULL;
+        DxfCircle *circle = NULL;
         size_t size;
 
         size = sizeof (DxfCircle);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_circle = malloc (size)) == NULL)
+        if ((circle = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfCircle struct.\n")),
                   __FUNCTION__);
-                dxf_circle = NULL;
+                circle = NULL;
         }
         else
         {
-                memset (dxf_circle, 0, size);
+                memset (circle, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_circle);
+        return (circle);
 }
 
 
@@ -88,7 +88,7 @@ dxf_circle_new ()
 DxfCircle *
 dxf_circle_init
 (
-        DxfCircle *dxf_circle
+        DxfCircle *circle
                 /*!< DXF circle entity. */
 )
 {
@@ -96,43 +96,43 @@ dxf_circle_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_circle == NULL)
+        if (circle == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_circle = dxf_circle_new ();
+                circle = dxf_circle_new ();
         }
-        if (dxf_circle == NULL)
+        if (circle == NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () could not allocate memory for a DxfCircle struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_circle->id_code = 0;
-        dxf_circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_circle->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_circle->x0 = 0.0;
-        dxf_circle->y0 = 0.0;
-        dxf_circle->z0 = 0.0;
-        dxf_circle->extr_x0 = 0.0;
-        dxf_circle->extr_y0 = 0.0;
-        dxf_circle->extr_z0 = 0.0;
-        dxf_circle->elevation = 0.0;
-        dxf_circle->thickness = 0.0;
-        dxf_circle->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        dxf_circle->visibility = DXF_DEFAULT_VISIBILITY;
-        dxf_circle->radius = 0.0;
-        dxf_circle->color = DXF_COLOR_BYLAYER;
-        dxf_circle->paperspace = DXF_MODELSPACE;
-        dxf_circle->dictionary_owner_soft = strdup ("");
-        dxf_circle->dictionary_owner_hard = strdup ("");
-        dxf_circle->next = NULL;
+        circle->id_code = 0;
+        circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        circle->layer = strdup (DXF_DEFAULT_LAYER);
+        circle->x0 = 0.0;
+        circle->y0 = 0.0;
+        circle->z0 = 0.0;
+        circle->extr_x0 = 0.0;
+        circle->extr_y0 = 0.0;
+        circle->extr_z0 = 0.0;
+        circle->elevation = 0.0;
+        circle->thickness = 0.0;
+        circle->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        circle->visibility = DXF_DEFAULT_VISIBILITY;
+        circle->radius = 0.0;
+        circle->color = DXF_COLOR_BYLAYER;
+        circle->paperspace = DXF_MODELSPACE;
+        circle->dictionary_owner_soft = strdup ("");
+        circle->dictionary_owner_hard = strdup ("");
+        circle->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_circle);
+        return (circle);
 }
 
 
@@ -143,16 +143,16 @@ dxf_circle_init
  * Now follows some data for the \c CIRCLE, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
- * While parsing the DXF file store data in \c dxf_circle. \n
+ * While parsing the DXF file store data in \c circle. \n
  *
- * \return a pointer to \c dxf_circle.
+ * \return a pointer to \c circle.
  */
 DxfCircle *
 dxf_circle_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfCircle *dxf_circle
+        DxfCircle *circle
                 /*!< DXF circle entity. */
 )
 {
@@ -169,13 +169,13 @@ dxf_circle_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_circle == NULL)
+        if (circle == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_circle = dxf_circle_new ();
-                dxf_circle = dxf_circle_init (dxf_circle);
+                circle = dxf_circle_new ();
+                circle = dxf_circle_init (circle);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -194,45 +194,45 @@ dxf_circle_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_circle->id_code);
+                        fscanf (fp->fp, "%x\n", &circle->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_circle->linetype);
+                        fscanf (fp->fp, "%s\n", circle->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_circle->layer);
+                        fscanf (fp->fp, "%s\n", circle->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_circle->x0);
+                        fscanf (fp->fp, "%lf\n", &circle->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_circle->y0);
+                        fscanf (fp->fp, "%lf\n", &circle->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_circle->z0);
+                        fscanf (fp->fp, "%lf\n", &circle->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_circle->z0 = 0.0))
+                        && (circle->z0 = 0.0))
                 {
                         /* Elevation is a pre AutoCAD R11 variable
                          * so additional testing for the version should
@@ -240,49 +240,49 @@ dxf_circle_read
                          * Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_circle->z0);
+                        fscanf (fp->fp, "%lf\n", &circle->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_circle->thickness);
+                        fscanf (fp->fp, "%lf\n", &circle->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
                          * radius. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_circle->radius);
+                        fscanf (fp->fp, "%lf\n", &circle->radius);
                 }
                 else if (strcmp (temp_string, "48") == 0)
                 {
                         /* Now follows a string containing the linetype
                          * scale. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_circle->linetype_scale);
+                        fscanf (fp->fp, "%lf\n", &circle->linetype_scale);
                 }
                 else if (strcmp (temp_string, "60") == 0)
                 {
                         /* Now follows a string containing the
                          * visibility value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%hd\n", &dxf_circle->visibility);
+                        fscanf (fp->fp, "%hd\n", &circle->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_circle->color);
+                        fscanf (fp->fp, "%d\n", &circle->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_circle->paperspace);
+                        fscanf (fp->fp, "%d\n", &circle->paperspace);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -304,35 +304,35 @@ dxf_circle_read
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_circle->extr_x0);
+                        fscanf (fp->fp, "%lf\n", &circle->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_circle->extr_y0);
+                        fscanf (fp->fp, "%lf\n", &circle->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_circle->extr_z0);
+                        fscanf (fp->fp, "%lf\n", &circle->extr_z0);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_circle->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", circle->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_circle->dictionary_owner_hard);
+                        fscanf (fp->fp, "%s\n", circle->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -349,18 +349,18 @@ dxf_circle_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_circle->linetype, "") == 0)
+        if (strcmp (circle->linetype, "") == 0)
         {
-                dxf_circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_circle->layer, "") == 0)
+        if (strcmp (circle->layer, "") == 0)
         {
-                dxf_circle->layer = strdup (DXF_DEFAULT_LAYER);
+                circle->layer = strdup (DXF_DEFAULT_LAYER);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_circle);
+        return (circle);
 }
 
 
@@ -372,7 +372,7 @@ dxf_circle_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfCircle *dxf_circle
+        DxfCircle *circle
                 /*!< DXF circle entity. */
 )
 {
@@ -389,45 +389,45 @@ dxf_circle_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_circle == NULL)
+        if (circle == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_circle->radius == 0.0)
+        if (circle->radius == 0.0)
         {
                 fprintf (stderr,
                   (_("Error in %s () radius value equals 0.0 for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_circle->id_code);
+                  __FUNCTION__, dxf_entity_name, circle->id_code);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_circle->linetype, "") == 0)
+        if (strcmp (circle->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_circle->id_code);
+                  __FUNCTION__, dxf_entity_name, circle->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_circle->layer, "") == 0)
+        if (strcmp (circle->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_circle->id_code);
+                  __FUNCTION__, dxf_entity_name, circle->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name );
-                dxf_circle->layer = strdup (DXF_DEFAULT_LAYER);
+                circle->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_circle->id_code != -1)
+        if (circle->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_circle->id_code);
+                fprintf (fp->fp, "  5\n%x\n", circle->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -439,44 +439,44 @@ dxf_circle_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_circle->dictionary_owner_soft, "") != 0)
+        if ((strcmp (circle->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_circle->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", circle->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_circle->dictionary_owner_hard, "") != 0)
+        if ((strcmp (circle->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_circle->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", circle->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_circle->paperspace == DXF_PAPERSPACE)
+        if (circle->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_circle->layer);
-        if (strcmp (dxf_circle->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", circle->layer);
+        if (strcmp (circle->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_circle->linetype);
+                fprintf (fp->fp, "  6\n%s\n", circle->linetype);
         }
-        if (dxf_circle->color != DXF_COLOR_BYLAYER)
+        if (circle->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_circle->color);
+                fprintf (fp->fp, " 62\n%d\n", circle->color);
         }
-        if (dxf_circle->linetype_scale != 1.0)
+        if (circle->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_circle->linetype_scale);
+                fprintf (fp->fp, " 48\n%f\n", circle->linetype_scale);
         }
-        if (dxf_circle->visibility != 0)
+        if (circle->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_circle->visibility);
+                fprintf (fp->fp, " 60\n%d\n", circle->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -484,26 +484,26 @@ dxf_circle_write
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_circle->elevation != 0.0))
+          && (circle->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_circle->elevation);
+                fprintf (fp->fp, " 38\n%f\n", circle->elevation);
         }
-        if (dxf_circle->thickness != 0.0)
+        if (circle->thickness != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_circle->thickness);
+                fprintf (fp->fp, " 39\n%f\n", circle->thickness);
         }
-        fprintf (fp->fp, " 10\n%f\n", dxf_circle->x0);
-        fprintf (fp->fp, " 20\n%f\n", dxf_circle->y0);
-        fprintf (fp->fp, " 30\n%f\n", dxf_circle->z0);
-        fprintf (fp->fp, " 40\n%f\n", dxf_circle->radius);
+        fprintf (fp->fp, " 10\n%f\n", circle->x0);
+        fprintf (fp->fp, " 20\n%f\n", circle->y0);
+        fprintf (fp->fp, " 30\n%f\n", circle->z0);
+        fprintf (fp->fp, " 40\n%f\n", circle->radius);
         if ((fp->acad_version_number >= AutoCAD_12)
-                && (dxf_circle->extr_x0 != 0.0)
-                && (dxf_circle->extr_y0 != 0.0)
-                && (dxf_circle->extr_z0 != 1.0))
+                && (circle->extr_x0 != 0.0)
+                && (circle->extr_y0 != 0.0)
+                && (circle->extr_z0 != 1.0))
         {
-                fprintf (fp->fp, "210\n%f\n", dxf_circle->extr_x0);
-                fprintf (fp->fp, "220\n%f\n", dxf_circle->extr_y0);
-                fprintf (fp->fp, "230\n%f\n", dxf_circle->extr_z0);
+                fprintf (fp->fp, "210\n%f\n", circle->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", circle->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", circle->extr_z0);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -526,7 +526,7 @@ dxf_circle_write
 int
 dxf_circle_free
 (
-        DxfCircle *dxf_circle
+        DxfCircle *circle
                 /*!< Pointer to the memory occupied by the DXF \c CIRCLE
                  * entity. */
 )
@@ -534,19 +534,19 @@ dxf_circle_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_circle->next != NULL)
+        if (circle->next != NULL)
         {
               fprintf (stderr,
                 (_("ERROR in %s () pointer to next DxfCircle was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_circle->linetype);
-        free (dxf_circle->layer);
-        free (dxf_circle->dictionary_owner_soft);
-        free (dxf_circle->dictionary_owner_hard);
-        free (dxf_circle);
-        dxf_circle = NULL;
+        free (circle->linetype);
+        free (circle->layer);
+        free (circle->dictionary_owner_soft);
+        free (circle->dictionary_owner_hard);
+        free (circle);
+        circle = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif

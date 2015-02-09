@@ -1,7 +1,7 @@
 /*!
  * \file circle.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF circle entity (\c CIRCLE).
  *
@@ -129,22 +129,22 @@ dxf_circle
 DxfCircle *dxf_circle_new ();
 DxfCircle *dxf_circle_init
 (
-        DxfCircle *dxf_circle
+        DxfCircle *circle
 );
 DxfCircle *
 dxf_circle_read
 (
         DxfFile *fp,
-        DxfCircle *dxf_circle
+        DxfCircle *circle
 );
 int dxf_circle_write
 (
         DxfFile *fp,
-        DxfCircle *dxf_circle
+        DxfCircle *circle
 );
 int dxf_circle_free
 (
-        DxfCircle *dxf_circle
+        DxfCircle *circle
 );
 
 
