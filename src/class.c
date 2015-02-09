@@ -272,6 +272,9 @@ dxf_class_read
 
 /*!
  * \brief Write DXF output to a file for a DXF \c CLASS entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_class_write
@@ -392,6 +395,9 @@ dxf_class_write_endclass
 /*!
  * \brief Free the allocated memory for a DXF \c CLASS and all it's
  * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_class_free
