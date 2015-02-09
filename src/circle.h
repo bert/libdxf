@@ -43,6 +43,8 @@
  * \brief DXF definition of a circle entity (\c CIRCLE).
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */

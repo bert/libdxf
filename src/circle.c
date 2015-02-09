@@ -41,6 +41,8 @@
  * Fill the memory contents with zeros.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -82,6 +84,8 @@ dxf_circle_new ()
  * allocated memory when succesful.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -146,6 +150,12 @@ dxf_circle_init
  * While parsing the DXF file store data in \c circle. \n
  *
  * \return a pointer to \c circle.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_read
@@ -232,15 +242,12 @@ dxf_circle_read
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (circle->z0 = 0.0))
+                        && (circle->elevation != 0.0))
                 {
-                        /* Elevation is a pre AutoCAD R11 variable
-                         * so additional testing for the version should
-                         * probably be added.
-                         * Now follows a string containing the
+                        /* Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &circle->z0);
+                        fscanf (fp->fp, "%lf\n", &circle->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -366,6 +373,12 @@ dxf_circle_read
 
 /*!
  * \brief Write DXF output to file for a DXF \c CIRCLE entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_circle_write
@@ -520,6 +533,8 @@ dxf_circle_write
  * occurred.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
