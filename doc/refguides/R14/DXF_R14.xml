@@ -8603,6 +8603,178 @@
           <para>For all dimension types, the following group codes represent
           3D OCS points: (11, 21, 31), (12, 22, 32), and (16, 26, 36).</para>
         </section>
+
+        <section>
+          <title>Aligned, Linear, and Rotated Dimension Group Codes.</title>
+
+          <para>The following group codes apply to aligned, linear, and
+          rotated dimensions.<table>
+              <title>Aligned, linear, and rotated dimension group
+              codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="center">Group codes</entry>
+
+                    <entry align="center">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>100</entry>
+
+                    <entry>Subclass marker (AcDbAlignedDimension).</entry>
+                  </row>
+
+                  <row>
+                    <entry>12</entry>
+
+                    <entry>Insertion point for clones of a dimension--Baseline
+                    and Continue (in OCS). DXF: X value; APP: 3D
+                    point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>22. 30</entry>
+
+                    <entry>DXF: Y and Z values of insertion point for clones
+                    of a dimension--Baseline and Continue (in OCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>13</entry>
+
+                    <entry>Definition point for linear and angular dimensions
+                    (in WCS). DXF: X value; APP: 3D point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>23, 33</entry>
+
+                    <entry>DXF: Y and Z values of definition point for linear
+                    and angular dimensions (in WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>14</entry>
+
+                    <entry>Definition point for linear and angular dimensions
+                    (in WCS). DXF: X value; APP: 3D point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>24, 34</entry>
+
+                    <entry>DXF: Y and Z values of definition point for linear
+                    and angular dimensions (in WCS).</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
+
+          <para>The point (13,23,33) specifies the start point of the first
+          extension line and the point (14,24,34) specifies the start point of
+          the second extension line.</para>
+
+          <para>Point (10,20,30) specifies the dimension line location.</para>
+
+          <para>The point (11,21,31) specifies the midpoint of the dimension
+          text.</para>
+        </section>
+
+        <section>
+          <title>Linear and Rotated Dimension Group Codes.</title>
+
+          <para>The following group codes apply to linear and rotated
+          dimensions.<table>
+              <title>Linear and rotated dimension group codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="center">Group codes</entry>
+
+                    <entry align="center">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>50</entry>
+
+                    <entry>Angle of rotated, horizontal, or vertical
+                    dimensions.</entry>
+                  </row>
+
+                  <row>
+                    <entry>52</entry>
+
+                    <entry>Linear dimension types with an oblique angle have
+                    an optional group code 52. When added to the rotation
+                    angle of the linear dimension (group code 50), it gives
+                    the angle of the extension lines.</entry>
+                  </row>
+
+                  <row>
+                    <entry>100</entry>
+
+                    <entry>Subclass marker (AcDbRotatedDimension).</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
+        </section>
+
+        <section>
+          <title>Radial and Diameter Dimension Group Codes.</title>
+
+          <para>The following group codes apply to radial and diameter
+          dimensions.<table>
+              <title>Radial and diameter dimension group codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="center">Group codes</entry>
+
+                    <entry align="center">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>100</entry>
+
+                    <entry>Subclass marker (AcDbRadialDimension or
+                    AcDbDiametricDimension).</entry>
+                  </row>
+
+                  <row>
+                    <entry>15</entry>
+
+                    <entry>Definition point for diameter, radius, and angular
+                    dimensions (in WCS). DXF: X value; APP: 3D point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>25, 35</entry>
+
+                    <entry>DXF: Y and Z values of definition point for
+                    diameter, radius, and angular dimensions (in WCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>40</entry>
+
+                    <entry>Leader length for radius and diameter
+                    dimensions.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
+        </section>
       </section>
     </section>
   </chapter>
