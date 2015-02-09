@@ -1,7 +1,7 @@
 /*!
  * \file class.h
  *
- * \author Copyright (C) 2009 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF class entity (\c CLASS).
  *
@@ -115,19 +115,19 @@ dxf_class_new ();
 DxfClass *
 dxf_class_init
 (
-        DxfClass *dxf_class
+        DxfClass *class
 );
 DxfClass *
 dxf_class_read
 (
         DxfFile *fp,
-        DxfClass *dxf_class
+        DxfClass *class
 );
 int
 dxf_class_write
 (
         DxfFile *fp,
-        DxfClass *dxf_class
+        DxfClass *class
 );
 int
 dxf_class_write_endclass
@@ -137,7 +137,7 @@ dxf_class_write_endclass
 int
 dxf_class_free
 (
-        DxfClass *dxf_class
+        DxfClass *class
 );
 
 

@@ -48,27 +48,27 @@ dxf_class_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfClass *dxf_class = NULL;
+        DxfClass *class = NULL;
         size_t size;
 
         size = sizeof (DxfClass);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_class = malloc (size)) == NULL)
+        if ((class = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfClass struct.\n")),
                   __FUNCTION__);
-                dxf_class = NULL;
+                class = NULL;
         }
         else
         {
-                memset (dxf_class, 0, size);
+                memset (class, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_class);
+        return (class);
 }
 
 
@@ -82,7 +82,7 @@ dxf_class_new ()
 DxfClass *
 dxf_class_init
 (
-        DxfClass *dxf_class
+        DxfClass *class
                 /*!< DXF class entity. */
 )
 {
@@ -90,32 +90,32 @@ dxf_class_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_class == NULL)
+        if (class == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_class = dxf_class_new ();
+                class = dxf_class_new ();
         }
-        if (dxf_class == NULL)
+        if (class == NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () could not allocate memory for a DxfClass struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_class->record_type = strdup ("");
-        dxf_class->record_name = strdup ("");
-        dxf_class->class_name = strdup ("");
-        dxf_class->app_name = strdup ("");
-        dxf_class->proxy_cap_flag = 0;
-        dxf_class->was_a_proxy_flag = 0;
-        dxf_class->is_an_entity_flag = 0;
-        dxf_class->next = NULL;
+        class->record_type = strdup ("");
+        class->record_name = strdup ("");
+        class->class_name = strdup ("");
+        class->app_name = strdup ("");
+        class->proxy_cap_flag = 0;
+        class->was_a_proxy_flag = 0;
+        class->is_an_entity_flag = 0;
+        class->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_class);
+        return (class);
 }
 
 
@@ -126,16 +126,16 @@ dxf_class_init
  * Now follows some data for the \c CLASS, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDCLASS. \n
- * While parsing the DXF file store data in \c dxf_class. \n
+ * While parsing the DXF file store data in \c class. \n
  *
- * \return a pointer to \c dxf_class.
+ * \return a pointer to \c class.
  */
 DxfClass *
 dxf_class_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfClass *dxf_class
+        DxfClass *class
                 /*!< DXF class entity. */
 )
 {
@@ -152,13 +152,13 @@ dxf_class_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_class == NULL)
+        if (class == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_class = dxf_class_new ();
-                dxf_class = dxf_class_init (dxf_class);
+                class = dxf_class_new ();
+                class = dxf_class_init (class);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -182,49 +182,49 @@ dxf_class_read
                          * read. See the while condition above.
                          */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_class->record_type);
+                        fscanf (fp->fp, "%s\n", class->record_type);
                 }
                 else if (strcmp (temp_string, "1") == 0)
                 {
                         /* Now follows a string containing a record
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_class->record_name);
+                        fscanf (fp->fp, "%s\n", class->record_name);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a class name.
                          */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_class->class_name);
+                        fscanf (fp->fp, "%s\n", class->class_name);
                 }
                 else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing the
                          * application name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_class->app_name);
+                        fscanf (fp->fp, "%s\n", class->app_name);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
                         /* Now follows a string containing the
                          * proxy cap flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_class->proxy_cap_flag);
+                        fscanf (fp->fp, "%d\n", &class->proxy_cap_flag);
                 }
                 else if (strcmp (temp_string, "280") == 0)
                 {
                         /* Now follows a string containing the
                          * was a proxy flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_class->was_a_proxy_flag);
+                        fscanf (fp->fp, "%d\n", &class->was_a_proxy_flag);
                 }
                 else if (strcmp (temp_string, "281") == 0)
                 {
                         /* Now follows a string containing the
                          * is an entity flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_class->is_an_entity_flag);
+                        fscanf (fp->fp, "%d\n", &class->is_an_entity_flag);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -241,7 +241,7 @@ dxf_class_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_class->record_type, "") == 0)
+        if (strcmp (class->record_type, "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () empty record type string after reading from: %s before line: %d.\n")),
@@ -249,14 +249,14 @@ dxf_class_read
                 return (NULL);
 
         }
-        if (strcmp (dxf_class->record_name, "") == 0)
+        if (strcmp (class->record_name, "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () empty record name string after reading from: %s before line: %d.\n")),
                   __FUNCTION__, fp->filename, fp->line_number);
                 return (NULL);
         }
-        if (strcmp (dxf_class->class_name, "") == 0)
+        if (strcmp (class->class_name, "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () empty class name string after reading from: %s before line: %d.\n")),
@@ -266,7 +266,7 @@ dxf_class_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_class);
+        return (class);
 }
 
 
@@ -278,7 +278,7 @@ dxf_class_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfClass *dxf_class
+        DxfClass *class
                 /*!< DXF class section. */
 )
 {
@@ -295,22 +295,22 @@ dxf_class_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_class == NULL)
+        if (class == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (!dxf_class->record_type
-                || (strcmp (dxf_class->record_type, "") == 0))
+        if (!class->record_type
+                || (strcmp (class->record_type, "") == 0))
         {
                 fprintf (stderr,
                   (_("Error in %s () empty record type string for the %s entity\n")),
                   __FUNCTION__, dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (!dxf_class->record_name)
+        if (!class->record_name)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty record name string for the %s entity\n")),
@@ -318,17 +318,17 @@ dxf_class_write
                 fprintf (stderr,
                   (_("\trecord_name of %s entity is reset to \"\"")),
                   dxf_entity_name );
-                dxf_class->record_name = strdup ("");
+                class->record_name = strdup ("");
         }
-        if (!dxf_class->class_name
-                || (strcmp (dxf_class->class_name, "") == 0))
+        if (!class->class_name
+                || (strcmp (class->class_name, "") == 0))
         {
                 fprintf (stderr,
                   (_("Error in %s () empty class name string for the %s entity\n")),
                   __FUNCTION__, dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (!dxf_class->app_name)
+        if (!class->app_name)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty app name string for the %s entity\n")),
@@ -336,19 +336,19 @@ dxf_class_write
                 fprintf (stderr,
                   (_("\tapp_name of %s entity is reset to \"\"")),
                   dxf_entity_name );
-                dxf_class->app_name = strdup ("");
+                class->app_name = strdup ("");
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp->fp, "  1\n%s\n", dxf_class->record_name);
-        fprintf (fp->fp, "  2\n%s\n", dxf_class->class_name);
+        fprintf (fp->fp, "  1\n%s\n", class->record_name);
+        fprintf (fp->fp, "  2\n%s\n", class->class_name);
         if (fp->acad_version_number >= AutoCAD_14)
         {
-                fprintf (fp->fp, "  3\n%s\n", dxf_class->app_name);
+                fprintf (fp->fp, "  3\n%s\n", class->app_name);
         }
-        fprintf (fp->fp, " 90\n%d\n", dxf_class->proxy_cap_flag);
-        fprintf (fp->fp, "280\n%d\n", dxf_class->was_a_proxy_flag);
-        fprintf (fp->fp, "281\n%d\n", dxf_class->is_an_entity_flag);
+        fprintf (fp->fp, " 90\n%d\n", class->proxy_cap_flag);
+        fprintf (fp->fp, "280\n%d\n", class->was_a_proxy_flag);
+        fprintf (fp->fp, "281\n%d\n", class->is_an_entity_flag);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -393,7 +393,7 @@ dxf_class_write_endclass
 int
 dxf_class_free
 (
-        DxfClass *dxf_class
+        DxfClass *class
                 /*!< Pointer to the memory occupied by the DXF \c CLASS
                  * entity. */
 )
@@ -401,19 +401,19 @@ dxf_class_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_class->next != NULL)
+        if (class->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfClass was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_class->record_type);
-        free (dxf_class->record_name);
-        free (dxf_class->class_name);
-        free (dxf_class->app_name);
-        free (dxf_class);
-        dxf_class = NULL;
+        free (class->record_type);
+        free (class->record_name);
+        free (class->class_name);
+        free (class->app_name);
+        free (class);
+        class = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
