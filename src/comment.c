@@ -44,27 +44,27 @@ dxf_comment_new ()
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfComment *dxf_comment = NULL;
+        DxfComment *comment = NULL;
         size_t size;
 
         size = sizeof (DxfComment);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_comment = malloc (size)) == NULL)
+        if ((comment = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfComment struct.\n")),
                   __FUNCTION__);
-                dxf_comment = NULL;
+                comment = NULL;
         }
         else
         {
-                memset (dxf_comment, 0, size);
+                memset (comment, 0, size);
         }
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_comment);
+        return (comment);
 }
 
 
@@ -78,7 +78,7 @@ dxf_comment_new ()
 DxfComment *
 dxf_comment_init
 (
-        DxfComment *dxf_comment
+        DxfComment *comment
                 /*!< DXF Comment entity. */
 )
 {
@@ -86,27 +86,27 @@ dxf_comment_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_comment == NULL)
+        if (comment == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_comment = dxf_comment_new ();
+                comment = dxf_comment_new ();
         }
-        if (dxf_comment == NULL)
+        if (comment == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfComment struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_comment->id_code = 0;
-        dxf_comment->value = strdup ("");
-        dxf_comment->next = NULL;
+        comment->id_code = 0;
+        comment->value = strdup ("");
+        comment->next = NULL;
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_comment);
+        return (comment);
 }
 
 
@@ -124,7 +124,7 @@ dxf_comment_write
 (
         DxfFile *fp,
                 /*!< file pointer to output file (or device). */
-        DxfComment *dxf_comment
+        DxfComment *comment
                 /*!< DXF Comment entity. */
 )
 {
@@ -140,7 +140,7 @@ dxf_comment_write
                 return (EXIT_FAILURE);
         }
         /* Start writing output. */
-        fprintf (fp->fp, "999\n%s\n", dxf_comment->value);
+        fprintf (fp->fp, "999\n%s\n", comment->value);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -158,7 +158,7 @@ dxf_comment_write
 int
 dxf_comment_free
 (
-        DxfComment *dxf_comment
+        DxfComment *comment
                 /*!< Pointer to the memory occupied by the DXF \c COMMENT
                  * entity. */
 )
@@ -166,16 +166,16 @@ dxf_comment_free
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_comment->next != NULL)
+        if (comment->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfComment was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_comment->value);
-        free (dxf_comment);
-        dxf_comment = NULL;
+        free (comment->value);
+        free (comment);
+        comment = NULL;
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
