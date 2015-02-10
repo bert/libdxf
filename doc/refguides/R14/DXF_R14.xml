@@ -5191,9 +5191,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -5255,9 +5255,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -5324,9 +5324,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -5360,9 +5360,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -5401,9 +5401,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Bit-coded</entry>
+                  <entry align="left">Bit-coded</entry>
 
-                  <entry align="center">Description value</entry>
+                  <entry align="left">Description value</entry>
                 </row>
               </thead>
 
@@ -5446,9 +5446,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -5496,9 +5496,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -5532,9 +5532,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -5903,9 +5903,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -5964,9 +5964,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -6105,9 +6105,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -6196,9 +6196,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -6276,9 +6276,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -6401,9 +6401,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -7043,9 +7043,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -7191,9 +7191,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -7450,11 +7450,11 @@
             <tgroup cols="3">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
 
-                  <entry align="center">If ommitted, defaults to ...</entry>
+                  <entry align="left">If ommitted, defaults to ...</entry>
                 </row>
               </thead>
 
@@ -7573,9 +7573,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -7609,9 +7609,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -7661,9 +7661,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -7751,9 +7751,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -7798,9 +7798,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -7878,9 +7878,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -7961,9 +7961,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -8144,9 +8144,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -8318,9 +8318,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -8365,9 +8365,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -8469,9 +8469,9 @@
               <tgroup cols="2">
                 <thead>
                   <row>
-                    <entry align="center">Group codes</entry>
+                    <entry align="left">Group codes</entry>
 
-                    <entry align="center">Description</entry>
+                    <entry align="left">Description</entry>
                   </row>
                 </thead>
 
@@ -8615,9 +8615,9 @@
               <tgroup cols="2">
                 <thead>
                   <row>
-                    <entry align="center">Group codes</entry>
+                    <entry align="left">Group codes</entry>
 
-                    <entry align="center">Description</entry>
+                    <entry align="left">Description</entry>
                   </row>
                 </thead>
 
@@ -8694,9 +8694,9 @@
               <tgroup cols="2">
                 <thead>
                   <row>
-                    <entry align="center">Group codes</entry>
+                    <entry align="left">Group codes</entry>
 
-                    <entry align="center">Description</entry>
+                    <entry align="left">Description</entry>
                   </row>
                 </thead>
 
@@ -8737,9 +8737,9 @@
               <tgroup cols="2">
                 <thead>
                   <row>
-                    <entry align="center">Group codes</entry>
+                    <entry align="left">Group codes</entry>
 
-                    <entry align="center">Description</entry>
+                    <entry align="left">Description</entry>
                   </row>
                 </thead>
 
@@ -8785,9 +8785,9 @@
               <tgroup cols="2">
                 <thead>
                   <row>
-                    <entry align="center">Group codes</entry>
+                    <entry align="left">Group codes</entry>
 
-                    <entry align="center">Description</entry>
+                    <entry align="left">Description</entry>
                   </row>
                 </thead>
 
@@ -8890,9 +8890,9 @@
               <tgroup cols="2">
                 <thead>
                   <row>
-                    <entry align="center">Group codes</entry>
+                    <entry align="left">Group codes</entry>
 
-                    <entry align="center">Description</entry>
+                    <entry align="left">Description</entry>
                   </row>
                 </thead>
 
@@ -8984,9 +8984,9 @@
             <tgroup cols="2">
               <thead>
                 <row>
-                  <entry align="center">Group codes</entry>
+                  <entry align="left">Group codes</entry>
 
-                  <entry align="center">Description</entry>
+                  <entry align="left">Description</entry>
                 </row>
               </thead>
 
@@ -9135,6 +9135,598 @@
 
         <para>will generate the start point at 2,2 and the end point at 0,1
         and fill in the ellipse from 2,2 to 0,1 in a CCW direction.</para>
+      </section>
+
+      <section>
+        <title>HATCH.</title>
+
+        <para>The following group codes apply to hatch entities.<table>
+            <title>HATCH group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbHatch).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Elevation point (in OCS). DXF: X value = 0; APP: 3D
+                  point (X and Y always equal 0, Z represents the
+                  elevation).</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of elevation point (in OCS). Y
+                  value = 0, Z represents the elevation.</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>Hatch pattern name.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Solid fill flag (solid fill = 1; pattern fill =
+                  0).</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Associativity flag (associative = 1; non-associative
+                  = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>91</entry>
+
+                  <entry>Number of boundary paths (loops).</entry>
+                </row>
+
+                <row>
+                  <entry>varies</entry>
+
+                  <entry>Boundary path data. Repeats number of times specified
+                  by code 91. See "Boundary Path Data.".</entry>
+                </row>
+
+                <row>
+                  <entry>75</entry>
+
+                  <entry>Hatch style 0 = hatch "odd parity" area (Normal
+                  style) 1 = hatch outermost area only (Outer style) 2 = hatch
+                  through entire area (Ignore style).</entry>
+                </row>
+
+                <row>
+                  <entry>76</entry>
+
+                  <entry>Hatch pattern type 0 = user-defined 1 = predefined 2
+                  = custom.</entry>
+                </row>
+
+                <row>
+                  <entry>52</entry>
+
+                  <entry>Hatch pattern angle (pattern fill only).</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>Hatch pattern scale or spacing (pattern fill
+                  only).</entry>
+                </row>
+
+                <row>
+                  <entry>77</entry>
+
+                  <entry>Hatch pattern double flag (double = 1, not double =
+                  0). (pattern fill only).</entry>
+                </row>
+
+                <row>
+                  <entry>78</entry>
+
+                  <entry>Number of pattern definition lines.</entry>
+                </row>
+
+                <row>
+                  <entry>varies</entry>
+
+                  <entry>Pattern line data. Repeats number of times specified
+                  by code 78. See "Pattern Data.".</entry>
+                </row>
+
+                <row>
+                  <entry>47</entry>
+
+                  <entry>Pixel size.</entry>
+                </row>
+
+                <row>
+                  <entry>98</entry>
+
+                  <entry>Number of seed points.</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Seed point (in OCS). DXF: X value; APP: 2D point
+                  (multiple entries).</entry>
+                </row>
+
+                <row>
+                  <entry>20</entry>
+
+                  <entry>DXF: Y value of seed point (in OCS). (multiple
+                  entries).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>Topics in this section:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Boundary Path Data.</para>
+          </listitem>
+
+          <listitem>
+            <para>Pattern Data.</para>
+          </listitem>
+        </itemizedlist>
+
+        <section>
+          <title>Boundary Path Data.</title>
+
+          <para>The boundary of each hatch object is defined by a path (or
+          loop) that consists of one or more segments.</para>
+
+          <para>Path segment data varies depending on the entity type (or
+          types) that make up the path.</para>
+
+          <para>Each path segment is defined by its own set of group
+          codes.<table>
+              <title>Hatch boundary path data group codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="left">Group codes</entry>
+
+                    <entry align="left">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>92</entry>
+
+                    <entry>Boundary path type flag (bit coded) 0 = default 1 =
+                    external 2 = polyline 4= derived 8 = textbox 16 =
+                    outermost.</entry>
+                  </row>
+
+                  <row>
+                    <entry>varies</entry>
+
+                    <entry>Polyline boundary type data (only if boundary =
+                    polyline) See Polyline boundary data table below.</entry>
+                  </row>
+
+                  <row>
+                    <entry>93</entry>
+
+                    <entry>Number of edges in this boundary path (only if
+                    boundary is not a polyline).</entry>
+                  </row>
+
+                  <row>
+                    <entry>72</entry>
+
+                    <entry>Edge type (only if boundary is not a polyline) 1 =
+                    line 2 = circular arc 3 = elliptic arc 4 = spline.</entry>
+                  </row>
+
+                  <row>
+                    <entry>varies</entry>
+
+                    <entry>Edge type data (only if boundary is not a
+                    polyline). See appropriate Edge data table below.</entry>
+                  </row>
+
+                  <row>
+                    <entry>97</entry>
+
+                    <entry>Number of source boundary objects.</entry>
+                  </row>
+
+                  <row>
+                    <entry>330</entry>
+
+                    <entry>Reference to source boundary objects (multiple
+                    entries).</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
+
+          <para><table>
+              <title>Polyline boundary data group codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="left">Group codes</entry>
+
+                    <entry align="left">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>72</entry>
+
+                    <entry>Has bulge flag.</entry>
+                  </row>
+
+                  <row>
+                    <entry>73</entry>
+
+                    <entry>Is closed flag.</entry>
+                  </row>
+
+                  <row>
+                    <entry>93</entry>
+
+                    <entry>Number of polyline vertices.</entry>
+                  </row>
+
+                  <row>
+                    <entry>10</entry>
+
+                    <entry>Vertex location (in OCS). DXF: X value; APP: 2D
+                    point (multiple entries).</entry>
+                  </row>
+
+                  <row>
+                    <entry>20</entry>
+
+                    <entry>DXF: Y value of vertex location (in OCS). (multiple
+                    entries).</entry>
+                  </row>
+
+                  <row>
+                    <entry>42</entry>
+
+                    <entry>Bulge (optional, default = 0).</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table><table>
+              <title>Line edge data group codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="left">Group codes</entry>
+
+                    <entry align="left">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>10</entry>
+
+                    <entry>Start point (in OCS). DXF: X value; APP: 2D
+                    point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>20</entry>
+
+                    <entry>DXF: Y value of start point (in OCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>11</entry>
+
+                    <entry>End point (in OCS). DXF: X value; APP: 2D
+                    point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>21</entry>
+
+                    <entry>DXF: Y value of end point (in OCS).</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table><table>
+              <title>Arc edge data group codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="left">Group codes</entry>
+
+                    <entry align="left">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>10</entry>
+
+                    <entry>Center point (in OCS). DXF: X value; APP: 2D
+                    point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>20</entry>
+
+                    <entry>DXF: Y value of center point (in OCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>40</entry>
+
+                    <entry>Radius.</entry>
+                  </row>
+
+                  <row>
+                    <entry>50</entry>
+
+                    <entry>Start angle.</entry>
+                  </row>
+
+                  <row>
+                    <entry>51</entry>
+
+                    <entry>End angle.</entry>
+                  </row>
+
+                  <row>
+                    <entry>73</entry>
+
+                    <entry>Is counterclockwise flag.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table><table>
+              <title>Ellipse edge data group codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="left">Group codes</entry>
+
+                    <entry align="left">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>10</entry>
+
+                    <entry>Center point (in OCS). DXF: X value; APP: 2D
+                    point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>20</entry>
+
+                    <entry>DXF: Y value of center point (in OCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>11</entry>
+
+                    <entry>End point of major axis relative to center point
+                    (in OCS). DXF: X value; APP: 2D point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>21</entry>
+
+                    <entry>DXF: Y value of end point of major axis (in
+                    OCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>40</entry>
+
+                    <entry>Length of minor axis (percentage of major axis
+                    length).</entry>
+                  </row>
+
+                  <row>
+                    <entry>50</entry>
+
+                    <entry>Start angle.</entry>
+                  </row>
+
+                  <row>
+                    <entry>51</entry>
+
+                    <entry>End angle.</entry>
+                  </row>
+
+                  <row>
+                    <entry>73</entry>
+
+                    <entry>Is counterclockwise flag.</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table><table>
+              <title>Spline edge data group codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="left">Group codes</entry>
+
+                    <entry align="left">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>94</entry>
+
+                    <entry>Degree.</entry>
+                  </row>
+
+                  <row>
+                    <entry>73</entry>
+
+                    <entry>Rational.</entry>
+                  </row>
+
+                  <row>
+                    <entry>74</entry>
+
+                    <entry>Periodic.</entry>
+                  </row>
+
+                  <row>
+                    <entry>95</entry>
+
+                    <entry>Number of knots.</entry>
+                  </row>
+
+                  <row>
+                    <entry>96</entry>
+
+                    <entry>Number of control points.</entry>
+                  </row>
+
+                  <row>
+                    <entry>40</entry>
+
+                    <entry>Knot values (multiple entries).</entry>
+                  </row>
+
+                  <row>
+                    <entry>10</entry>
+
+                    <entry>Control point (in OCS). DXF: X value; APP: 2D
+                    point.</entry>
+                  </row>
+
+                  <row>
+                    <entry>20</entry>
+
+                    <entry>DXF: Y value of control point (in OCS).</entry>
+                  </row>
+
+                  <row>
+                    <entry>42</entry>
+
+                    <entry>Weights (optional, default = 1).</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
+        </section>
+
+        <section>
+          <title>Pattern Data.</title>
+
+          <para>The following pattern data codes repeat for each pattern
+          definition line.<table>
+              <title>Hatch pattern data group codes.</title>
+
+              <tgroup cols="2">
+                <thead>
+                  <row>
+                    <entry align="left">Group codes</entry>
+
+                    <entry align="left">Description</entry>
+                  </row>
+                </thead>
+
+                <tbody>
+                  <row>
+                    <entry>53</entry>
+
+                    <entry>Pattern line angle.</entry>
+                  </row>
+
+                  <row>
+                    <entry>43</entry>
+
+                    <entry>Pattern line base point, X component.</entry>
+                  </row>
+
+                  <row>
+                    <entry>44</entry>
+
+                    <entry>Pattern line base point, Y component.</entry>
+                  </row>
+
+                  <row>
+                    <entry>45</entry>
+
+                    <entry>Pattern line offset, X component.</entry>
+                  </row>
+
+                  <row>
+                    <entry>46</entry>
+
+                    <entry>Pattern line offset, Y component.</entry>
+                  </row>
+
+                  <row>
+                    <entry>79</entry>
+
+                    <entry>Number of dash length items.</entry>
+                  </row>
+
+                  <row>
+                    <entry>49</entry>
+
+                    <entry>Dash length (multiple entries).</entry>
+                  </row>
+                </tbody>
+              </tgroup>
+            </table></para>
+        </section>
       </section>
     </section>
   </chapter>
