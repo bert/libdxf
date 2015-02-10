@@ -1,7 +1,7 @@
 /*!
  * \file color.c
  *
- * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for DXF colors.
  *
@@ -45,27 +45,27 @@ dxf_RGB_color_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfRGBColor *dxf_RGB_color = NULL;
+        DxfRGBColor *RGB_color = NULL;
         size_t size;
 
         size = sizeof (DxfRGBColor);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_RGB_color = malloc (size)) == NULL)
+        if ((RGB_color = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfRGBCcolor struct.\n")),
                   __FUNCTION__);
-                dxf_RGB_color = NULL;
+                RGB_color = NULL;
         }
         else
         {
-                memset (dxf_RGB_color, 0, size);
+                memset (RGB_color, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_RGB_color);
+        return (RGB_color);
 }
 
 
@@ -86,14 +86,14 @@ dxf_RGB_color_set
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfRGBColor *dxf_RGB_color;
+        DxfRGBColor *RGB_color;
         int triplet;
         char *name = NULL;
 
-        dxf_RGB_color = dxf_RGB_color_new ();
+        RGB_color = dxf_RGB_color_new ();
         if ((red <= 255) || (red >= 0))
         {
-                dxf_RGB_color->r = red;
+                RGB_color->r = red;
         }
         else
         {
@@ -104,7 +104,7 @@ dxf_RGB_color_set
         }
         if ((green <= 255) || (green >= 0))
         {
-                dxf_RGB_color->g = green;
+                RGB_color->g = green;
         }
         else
         {
@@ -115,7 +115,7 @@ dxf_RGB_color_set
         }
         if ((blue <= 255) || (blue >= 0))
         {
-                dxf_RGB_color->b = blue;
+                RGB_color->b = blue;
         }
         else
         {
@@ -128,7 +128,7 @@ dxf_RGB_color_set
         name = dxf_RGB_color_get_name (triplet);
         if (name != NULL)
         {
-                dxf_RGB_color->name = strdup (name);
+                RGB_color->name = strdup (name);
                 free (name);
         }
         else
@@ -141,7 +141,7 @@ dxf_RGB_color_set
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_RGB_color);
+        return (RGB_color);
 }
 
 
@@ -155,7 +155,7 @@ dxf_RGB_color_set
 int
 dxf_ACI_init
 (
-        DxfRGBColor *dxf_ACI[DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS]
+        DxfRGBColor *ACI[DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS]
 )
 {
 #if DEBUG
@@ -166,272 +166,272 @@ dxf_ACI_init
         size = sizeof (DxfRGBColor);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_ACI = malloc (size * DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS)) == NULL)
+        if ((ACI = malloc (size * DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfRGBCcolor array.\n")),
                   __FUNCTION__);
-                dxf_ACI = NULL;
+                ACI = NULL;
                 return (EXIT_FAILURE);
         }
         else
         {
-                dxf_ACI[0] = dxf_RGB_color_set (0,0,0);
-                dxf_ACI[1] = dxf_RGB_color_set (255,0,0);
-                dxf_ACI[2] = dxf_RGB_color_set (255,255,0);
-                dxf_ACI[3] = dxf_RGB_color_set (0,255,0);
-                dxf_ACI[4] = dxf_RGB_color_set (0,255,255);
-                dxf_ACI[5] = dxf_RGB_color_set (0,0,255);
-                dxf_ACI[6] = dxf_RGB_color_set (255,0,255);
-                dxf_ACI[7] = dxf_RGB_color_set (255,255,255);
-                dxf_ACI[8] = dxf_RGB_color_set (128,128,128);
-                dxf_ACI[9] = dxf_RGB_color_set (192,192,192);
-                dxf_ACI[10] = dxf_RGB_color_set (255,0,0);
-                dxf_ACI[11] = dxf_RGB_color_set (255,127,127);
-                dxf_ACI[12] = dxf_RGB_color_set (204,0,0);
-                dxf_ACI[13] = dxf_RGB_color_set (204,102,102);
-                dxf_ACI[14] = dxf_RGB_color_set (153,0,0);
-                dxf_ACI[15] = dxf_RGB_color_set (153,76,76);
-                dxf_ACI[16] = dxf_RGB_color_set (127,0,0);
-                dxf_ACI[17] = dxf_RGB_color_set (127,63,63);
-                dxf_ACI[18] = dxf_RGB_color_set (76,0,0);
-                dxf_ACI[19] = dxf_RGB_color_set (76,38,38);
-                dxf_ACI[20] = dxf_RGB_color_set (255,63,0);
-                dxf_ACI[21] = dxf_RGB_color_set (255,159,127);
-                dxf_ACI[22] = dxf_RGB_color_set (204,51,0);
-                dxf_ACI[23] = dxf_RGB_color_set (204,127,102);
-                dxf_ACI[24] = dxf_RGB_color_set (153,38,0);
-                dxf_ACI[25] = dxf_RGB_color_set (153,95,76);
-                dxf_ACI[26] = dxf_RGB_color_set (127,31,0);
-                dxf_ACI[27] = dxf_RGB_color_set (127,79,63);
-                dxf_ACI[28] = dxf_RGB_color_set (76,19,0);
-                dxf_ACI[29] = dxf_RGB_color_set (76,47,38);
-                dxf_ACI[30] = dxf_RGB_color_set (255,127,0);
-                dxf_ACI[31] = dxf_RGB_color_set (255,191,127);
-                dxf_ACI[32] = dxf_RGB_color_set (204,102,0);
-                dxf_ACI[33] = dxf_RGB_color_set (204,153,102);
-                dxf_ACI[34] = dxf_RGB_color_set (153,76,0);
-                dxf_ACI[35] = dxf_RGB_color_set (153,114,76);
-                dxf_ACI[36] = dxf_RGB_color_set (127,63,0);
-                dxf_ACI[37] = dxf_RGB_color_set (127,95,63);
-                dxf_ACI[38] = dxf_RGB_color_set (76,38,0);
-                dxf_ACI[39] = dxf_RGB_color_set (76,57,38);
-                dxf_ACI[40] = dxf_RGB_color_set (255,191,0);
-                dxf_ACI[41] = dxf_RGB_color_set (255,223,127);
-                dxf_ACI[42] = dxf_RGB_color_set (204,153,0);
-                dxf_ACI[43] = dxf_RGB_color_set (204,178,102);
-                dxf_ACI[44] = dxf_RGB_color_set (153,114,0);
-                dxf_ACI[45] = dxf_RGB_color_set (153,133,76);
-                dxf_ACI[46] = dxf_RGB_color_set (127,95,0);
-                dxf_ACI[47] = dxf_RGB_color_set (127,111,63);
-                dxf_ACI[48] = dxf_RGB_color_set (76,57,0);
-                dxf_ACI[49] = dxf_RGB_color_set (76,66,38);
-                dxf_ACI[50] = dxf_RGB_color_set (255,255,0);
-                dxf_ACI[51] = dxf_RGB_color_set (255,255,127);
-                dxf_ACI[52] = dxf_RGB_color_set (204,204,0);
-                dxf_ACI[53] = dxf_RGB_color_set (204,204,102);
-                dxf_ACI[54] = dxf_RGB_color_set (153,153,0);
-                dxf_ACI[55] = dxf_RGB_color_set (153,153,76);
-                dxf_ACI[56] = dxf_RGB_color_set (127,127,0);
-                dxf_ACI[57] = dxf_RGB_color_set (127,127,63);
-                dxf_ACI[58] = dxf_RGB_color_set (76,76,0);
-                dxf_ACI[59] = dxf_RGB_color_set (76,76,38);
-                dxf_ACI[60] = dxf_RGB_color_set (191,255,0);
-                dxf_ACI[61] = dxf_RGB_color_set (223,255,127);
-                dxf_ACI[62] = dxf_RGB_color_set (153,204,0);
-                dxf_ACI[63] = dxf_RGB_color_set (178,204,102);
-                dxf_ACI[64] = dxf_RGB_color_set (114,153,0);
-                dxf_ACI[65] = dxf_RGB_color_set (133,153,76);
-                dxf_ACI[66] = dxf_RGB_color_set (95,127,0);
-                dxf_ACI[67] = dxf_RGB_color_set (111,127,63);
-                dxf_ACI[68] = dxf_RGB_color_set (57,76,0);
-                dxf_ACI[69] = dxf_RGB_color_set (66,76,38);
-                dxf_ACI[70] = dxf_RGB_color_set (127,255,0);
-                dxf_ACI[71] = dxf_RGB_color_set (191,255,127);
-                dxf_ACI[72] = dxf_RGB_color_set (102,204,0);
-                dxf_ACI[73] = dxf_RGB_color_set (153,204,102);
-                dxf_ACI[74] = dxf_RGB_color_set (76,153,0);
-                dxf_ACI[75] = dxf_RGB_color_set (114,153,76);
-                dxf_ACI[76] = dxf_RGB_color_set (63,127,0);
-                dxf_ACI[77] = dxf_RGB_color_set (95,127,63);
-                dxf_ACI[78] = dxf_RGB_color_set (38,76,0);
-                dxf_ACI[79] = dxf_RGB_color_set (57,76,38);
-                dxf_ACI[80] = dxf_RGB_color_set (63,255,0);
-                dxf_ACI[81] = dxf_RGB_color_set (159,255,127);
-                dxf_ACI[82] = dxf_RGB_color_set (51,204,0);
-                dxf_ACI[83] = dxf_RGB_color_set (127,204,102);
-                dxf_ACI[84] = dxf_RGB_color_set (38,153,0);
-                dxf_ACI[85] = dxf_RGB_color_set (95,153,76);
-                dxf_ACI[86] = dxf_RGB_color_set (31,127,0);
-                dxf_ACI[87] = dxf_RGB_color_set (79,127,63);
-                dxf_ACI[88] = dxf_RGB_color_set (19,76,0);
-                dxf_ACI[89] = dxf_RGB_color_set (47,76,38);
-                dxf_ACI[90] = dxf_RGB_color_set (0,255,0);
-                dxf_ACI[91] = dxf_RGB_color_set (127,255,127);
-                dxf_ACI[92] = dxf_RGB_color_set (0,204,0);
-                dxf_ACI[93] = dxf_RGB_color_set (102,204,102);
-                dxf_ACI[94] = dxf_RGB_color_set (0,153,0);
-                dxf_ACI[95] = dxf_RGB_color_set (76,153,76);
-                dxf_ACI[96] = dxf_RGB_color_set (0,127,0);
-                dxf_ACI[97] = dxf_RGB_color_set (63,127,63);
-                dxf_ACI[98] = dxf_RGB_color_set (0,76,0);
-                dxf_ACI[99] = dxf_RGB_color_set (38,76,38);
-                dxf_ACI[100] = dxf_RGB_color_set (0,255,63);
-                dxf_ACI[101] = dxf_RGB_color_set (127,255,159);
-                dxf_ACI[102] = dxf_RGB_color_set (0,204,51);
-                dxf_ACI[103] = dxf_RGB_color_set (102,204,127);
-                dxf_ACI[104] = dxf_RGB_color_set (0,153,38);
-                dxf_ACI[105] = dxf_RGB_color_set (76,153,95);
-                dxf_ACI[106] = dxf_RGB_color_set (0,127,31);
-                dxf_ACI[107] = dxf_RGB_color_set (63,127,79);
-                dxf_ACI[108] = dxf_RGB_color_set (0,76,19);
-                dxf_ACI[109] = dxf_RGB_color_set (38,76,47);
-                dxf_ACI[110] = dxf_RGB_color_set (0,255,127);
-                dxf_ACI[111] = dxf_RGB_color_set (127,255,191);
-                dxf_ACI[112] = dxf_RGB_color_set (0,204,102);
-                dxf_ACI[113] = dxf_RGB_color_set (102,204,153);
-                dxf_ACI[114] = dxf_RGB_color_set (0,153,76);
-                dxf_ACI[115] = dxf_RGB_color_set (76,153,114);
-                dxf_ACI[116] = dxf_RGB_color_set (0,127,63);
-                dxf_ACI[117] = dxf_RGB_color_set (63,127,95);
-                dxf_ACI[118] = dxf_RGB_color_set (0,76,38);
-                dxf_ACI[119] = dxf_RGB_color_set (38,76,57);
-                dxf_ACI[120] = dxf_RGB_color_set (0,255,191);
-                dxf_ACI[121] = dxf_RGB_color_set (127,255,223);
-                dxf_ACI[122] = dxf_RGB_color_set (0,204,153);
-                dxf_ACI[123] = dxf_RGB_color_set (102,204,178);
-                dxf_ACI[124] = dxf_RGB_color_set (0,153,114);
-                dxf_ACI[125] = dxf_RGB_color_set (76,153,133);
-                dxf_ACI[126] = dxf_RGB_color_set (0,127,95);
-                dxf_ACI[127] = dxf_RGB_color_set (63,127,111);
-                dxf_ACI[128] = dxf_RGB_color_set (0,76,57);
-                dxf_ACI[129] = dxf_RGB_color_set (38,76,66);
-                dxf_ACI[130] = dxf_RGB_color_set (0,255,255);
-                dxf_ACI[131] = dxf_RGB_color_set (127,255,255);
-                dxf_ACI[132] = dxf_RGB_color_set (0,204,204);
-                dxf_ACI[133] = dxf_RGB_color_set (102,204,204);
-                dxf_ACI[134] = dxf_RGB_color_set (0,153,153);
-                dxf_ACI[135] = dxf_RGB_color_set (76,153,153);
-                dxf_ACI[136] = dxf_RGB_color_set (0,127,127);
-                dxf_ACI[137] = dxf_RGB_color_set (63,127,127);
-                dxf_ACI[138] = dxf_RGB_color_set (0,76,76);
-                dxf_ACI[139] = dxf_RGB_color_set (38,76,76);
-                dxf_ACI[140] = dxf_RGB_color_set (0,191,255);
-                dxf_ACI[141] = dxf_RGB_color_set (127,223,255);
-                dxf_ACI[142] = dxf_RGB_color_set (0,153,204);
-                dxf_ACI[143] = dxf_RGB_color_set (102,178,204);
-                dxf_ACI[144] = dxf_RGB_color_set (0,114,153);
-                dxf_ACI[145] = dxf_RGB_color_set (76,133,153);
-                dxf_ACI[146] = dxf_RGB_color_set (0,95,127);
-                dxf_ACI[147] = dxf_RGB_color_set (63,111,127);
-                dxf_ACI[148] = dxf_RGB_color_set (0,57,76);
-                dxf_ACI[149] = dxf_RGB_color_set (38,66,76);
-                dxf_ACI[150] = dxf_RGB_color_set (0,127,255);
-                dxf_ACI[151] = dxf_RGB_color_set (127,191,255);
-                dxf_ACI[152] = dxf_RGB_color_set (0,102,204);
-                dxf_ACI[153] = dxf_RGB_color_set (102,153,204);
-                dxf_ACI[154] = dxf_RGB_color_set (0,76,153);
-                dxf_ACI[155] = dxf_RGB_color_set (76,114,153);
-                dxf_ACI[156] = dxf_RGB_color_set (0,63,127);
-                dxf_ACI[157] = dxf_RGB_color_set (63,95,127);
-                dxf_ACI[158] = dxf_RGB_color_set (0,38,76);
-                dxf_ACI[159] = dxf_RGB_color_set (38,57,76);
-                dxf_ACI[160] = dxf_RGB_color_set (0,63,255);
-                dxf_ACI[161] = dxf_RGB_color_set (127,159,255);
-                dxf_ACI[162] = dxf_RGB_color_set (0,51,204);
-                dxf_ACI[163] = dxf_RGB_color_set (102,127,204);
-                dxf_ACI[164] = dxf_RGB_color_set (0,38,153);
-                dxf_ACI[165] = dxf_RGB_color_set (76,95,153);
-                dxf_ACI[166] = dxf_RGB_color_set (0,31,127);
-                dxf_ACI[167] = dxf_RGB_color_set (63,79,127);
-                dxf_ACI[168] = dxf_RGB_color_set (0,19,76);
-                dxf_ACI[169] = dxf_RGB_color_set (38,47,76);
-                dxf_ACI[170] = dxf_RGB_color_set (0,0,255);
-                dxf_ACI[171] = dxf_RGB_color_set (170,170,255);
-                dxf_ACI[172] = dxf_RGB_color_set (0,0,189);
-                dxf_ACI[173] = dxf_RGB_color_set (126,126,189);
-                dxf_ACI[174] = dxf_RGB_color_set (0,0,129);
-                dxf_ACI[175] = dxf_RGB_color_set (86,86,129);
-                dxf_ACI[176] = dxf_RGB_color_set (0,0,104);
-                dxf_ACI[177] = dxf_RGB_color_set (69,69,104);
-                dxf_ACI[178] = dxf_RGB_color_set (0,0,79);
-                dxf_ACI[179] = dxf_RGB_color_set (53,53,79);
-                dxf_ACI[180] = dxf_RGB_color_set (63,0,255);
-                dxf_ACI[181] = dxf_RGB_color_set (191,170,255);
-                dxf_ACI[182] = dxf_RGB_color_set (46,0,189);
-                dxf_ACI[183] = dxf_RGB_color_set (141,126,189);
-                dxf_ACI[184] = dxf_RGB_color_set (31,0,129);
-                dxf_ACI[185] = dxf_RGB_color_set (96,86,129);
-                dxf_ACI[186] = dxf_RGB_color_set (25,0,104);
-                dxf_ACI[187] = dxf_RGB_color_set (78,69,104);
-                dxf_ACI[188] = dxf_RGB_color_set (19,0,79);
-                dxf_ACI[189] = dxf_RGB_color_set (59,53,79);
-                dxf_ACI[190] = dxf_RGB_color_set (127,0,255);
-                dxf_ACI[191] = dxf_RGB_color_set (212,170,255);
-                dxf_ACI[192] = dxf_RGB_color_set (94,0,189);
-                dxf_ACI[193] = dxf_RGB_color_set (157,126,189);
-                dxf_ACI[194] = dxf_RGB_color_set (64,0,129);
-                dxf_ACI[195] = dxf_RGB_color_set (107,86,129);
-                dxf_ACI[196] = dxf_RGB_color_set (52,0,104);
-                dxf_ACI[197] = dxf_RGB_color_set (86,69,104);
-                dxf_ACI[198] = dxf_RGB_color_set (39,0,79);
-                dxf_ACI[199] = dxf_RGB_color_set (66,53,79);
-                dxf_ACI[200] = dxf_RGB_color_set (191,0,255);
-                dxf_ACI[201] = dxf_RGB_color_set (234,170,255);
-                dxf_ACI[202] = dxf_RGB_color_set (141,0,189);
-                dxf_ACI[203] = dxf_RGB_color_set (173,126,189);
-                dxf_ACI[204] = dxf_RGB_color_set (96,0,129);
-                dxf_ACI[205] = dxf_RGB_color_set (118,86,129);
-                dxf_ACI[206] = dxf_RGB_color_set (78,0,104);
-                dxf_ACI[207] = dxf_RGB_color_set (95,69,104);
-                dxf_ACI[208] = dxf_RGB_color_set (59,0,79);
-                dxf_ACI[209] = dxf_RGB_color_set (73,53,79);
-                dxf_ACI[210] = dxf_RGB_color_set (255,0,255);
-                dxf_ACI[211] = dxf_RGB_color_set (255,170,255);
-                dxf_ACI[212] = dxf_RGB_color_set (189,0,189);
-                dxf_ACI[213] = dxf_RGB_color_set (189,126,189);
-                dxf_ACI[214] = dxf_RGB_color_set (129,0,129);
-                dxf_ACI[215] = dxf_RGB_color_set (129,86,129);
-                dxf_ACI[216] = dxf_RGB_color_set (104,0,104);
-                dxf_ACI[217] = dxf_RGB_color_set (104,69,104);
-                dxf_ACI[218] = dxf_RGB_color_set (79,0,79);
-                dxf_ACI[219] = dxf_RGB_color_set (79,53,79);
-                dxf_ACI[220] = dxf_RGB_color_set (255,0,191);
-                dxf_ACI[221] = dxf_RGB_color_set (255,170,234);
-                dxf_ACI[222] = dxf_RGB_color_set (189,0,141);
-                dxf_ACI[223] = dxf_RGB_color_set (189,126,173);
-                dxf_ACI[224] = dxf_RGB_color_set (129,0,96);
-                dxf_ACI[225] = dxf_RGB_color_set (129,86,118);
-                dxf_ACI[226] = dxf_RGB_color_set (104,0,78);
-                dxf_ACI[227] = dxf_RGB_color_set (104,69,95);
-                dxf_ACI[228] = dxf_RGB_color_set (79,0,59);
-                dxf_ACI[229] = dxf_RGB_color_set (79,53,73);
-                dxf_ACI[230] = dxf_RGB_color_set (255,0,127);
-                dxf_ACI[231] = dxf_RGB_color_set (255,170,212);
-                dxf_ACI[232] = dxf_RGB_color_set (189,0,94);
-                dxf_ACI[233] = dxf_RGB_color_set (189,126,157);
-                dxf_ACI[234] = dxf_RGB_color_set (129,0,64);
-                dxf_ACI[235] = dxf_RGB_color_set (129,86,107);
-                dxf_ACI[236] = dxf_RGB_color_set (104,0,52);
-                dxf_ACI[237] = dxf_RGB_color_set (104,69,86);
-                dxf_ACI[238] = dxf_RGB_color_set (79,0,39);
-                dxf_ACI[239] = dxf_RGB_color_set (79,53,66);
-                dxf_ACI[240] = dxf_RGB_color_set (255,0,63);
-                dxf_ACI[241] = dxf_RGB_color_set (255,170,191);
-                dxf_ACI[242] = dxf_RGB_color_set (189,0,46);
-                dxf_ACI[243] = dxf_RGB_color_set (189,126,141);
-                dxf_ACI[244] = dxf_RGB_color_set (129,0,31);
-                dxf_ACI[245] = dxf_RGB_color_set (129,86,96);
-                dxf_ACI[246] = dxf_RGB_color_set (104,0,25);
-                dxf_ACI[247] = dxf_RGB_color_set (104,69,78);
-                dxf_ACI[248] = dxf_RGB_color_set (79,0,19);
-                dxf_ACI[249] = dxf_RGB_color_set (79,53,59);
-                dxf_ACI[250] = dxf_RGB_color_set (51,51,51);
-                dxf_ACI[251] = dxf_RGB_color_set (80,80,80);
-                dxf_ACI[252] = dxf_RGB_color_set (105,105,105);
-                dxf_ACI[253] = dxf_RGB_color_set (130,130,130);
-                dxf_ACI[254] = dxf_RGB_color_set (190,190,190);
-                dxf_ACI[255] = dxf_RGB_color_set (255,255,255);
+                ACI[0] = dxf_RGB_color_set (0,0,0);
+                ACI[1] = dxf_RGB_color_set (255,0,0);
+                ACI[2] = dxf_RGB_color_set (255,255,0);
+                ACI[3] = dxf_RGB_color_set (0,255,0);
+                ACI[4] = dxf_RGB_color_set (0,255,255);
+                ACI[5] = dxf_RGB_color_set (0,0,255);
+                ACI[6] = dxf_RGB_color_set (255,0,255);
+                ACI[7] = dxf_RGB_color_set (255,255,255);
+                ACI[8] = dxf_RGB_color_set (128,128,128);
+                ACI[9] = dxf_RGB_color_set (192,192,192);
+                ACI[10] = dxf_RGB_color_set (255,0,0);
+                ACI[11] = dxf_RGB_color_set (255,127,127);
+                ACI[12] = dxf_RGB_color_set (204,0,0);
+                ACI[13] = dxf_RGB_color_set (204,102,102);
+                ACI[14] = dxf_RGB_color_set (153,0,0);
+                ACI[15] = dxf_RGB_color_set (153,76,76);
+                ACI[16] = dxf_RGB_color_set (127,0,0);
+                ACI[17] = dxf_RGB_color_set (127,63,63);
+                ACI[18] = dxf_RGB_color_set (76,0,0);
+                ACI[19] = dxf_RGB_color_set (76,38,38);
+                ACI[20] = dxf_RGB_color_set (255,63,0);
+                ACI[21] = dxf_RGB_color_set (255,159,127);
+                ACI[22] = dxf_RGB_color_set (204,51,0);
+                ACI[23] = dxf_RGB_color_set (204,127,102);
+                ACI[24] = dxf_RGB_color_set (153,38,0);
+                ACI[25] = dxf_RGB_color_set (153,95,76);
+                ACI[26] = dxf_RGB_color_set (127,31,0);
+                ACI[27] = dxf_RGB_color_set (127,79,63);
+                ACI[28] = dxf_RGB_color_set (76,19,0);
+                ACI[29] = dxf_RGB_color_set (76,47,38);
+                ACI[30] = dxf_RGB_color_set (255,127,0);
+                ACI[31] = dxf_RGB_color_set (255,191,127);
+                ACI[32] = dxf_RGB_color_set (204,102,0);
+                ACI[33] = dxf_RGB_color_set (204,153,102);
+                ACI[34] = dxf_RGB_color_set (153,76,0);
+                ACI[35] = dxf_RGB_color_set (153,114,76);
+                ACI[36] = dxf_RGB_color_set (127,63,0);
+                ACI[37] = dxf_RGB_color_set (127,95,63);
+                ACI[38] = dxf_RGB_color_set (76,38,0);
+                ACI[39] = dxf_RGB_color_set (76,57,38);
+                ACI[40] = dxf_RGB_color_set (255,191,0);
+                ACI[41] = dxf_RGB_color_set (255,223,127);
+                ACI[42] = dxf_RGB_color_set (204,153,0);
+                ACI[43] = dxf_RGB_color_set (204,178,102);
+                ACI[44] = dxf_RGB_color_set (153,114,0);
+                ACI[45] = dxf_RGB_color_set (153,133,76);
+                ACI[46] = dxf_RGB_color_set (127,95,0);
+                ACI[47] = dxf_RGB_color_set (127,111,63);
+                ACI[48] = dxf_RGB_color_set (76,57,0);
+                ACI[49] = dxf_RGB_color_set (76,66,38);
+                ACI[50] = dxf_RGB_color_set (255,255,0);
+                ACI[51] = dxf_RGB_color_set (255,255,127);
+                ACI[52] = dxf_RGB_color_set (204,204,0);
+                ACI[53] = dxf_RGB_color_set (204,204,102);
+                ACI[54] = dxf_RGB_color_set (153,153,0);
+                ACI[55] = dxf_RGB_color_set (153,153,76);
+                ACI[56] = dxf_RGB_color_set (127,127,0);
+                ACI[57] = dxf_RGB_color_set (127,127,63);
+                ACI[58] = dxf_RGB_color_set (76,76,0);
+                ACI[59] = dxf_RGB_color_set (76,76,38);
+                ACI[60] = dxf_RGB_color_set (191,255,0);
+                ACI[61] = dxf_RGB_color_set (223,255,127);
+                ACI[62] = dxf_RGB_color_set (153,204,0);
+                ACI[63] = dxf_RGB_color_set (178,204,102);
+                ACI[64] = dxf_RGB_color_set (114,153,0);
+                ACI[65] = dxf_RGB_color_set (133,153,76);
+                ACI[66] = dxf_RGB_color_set (95,127,0);
+                ACI[67] = dxf_RGB_color_set (111,127,63);
+                ACI[68] = dxf_RGB_color_set (57,76,0);
+                ACI[69] = dxf_RGB_color_set (66,76,38);
+                ACI[70] = dxf_RGB_color_set (127,255,0);
+                ACI[71] = dxf_RGB_color_set (191,255,127);
+                ACI[72] = dxf_RGB_color_set (102,204,0);
+                ACI[73] = dxf_RGB_color_set (153,204,102);
+                ACI[74] = dxf_RGB_color_set (76,153,0);
+                ACI[75] = dxf_RGB_color_set (114,153,76);
+                ACI[76] = dxf_RGB_color_set (63,127,0);
+                ACI[77] = dxf_RGB_color_set (95,127,63);
+                ACI[78] = dxf_RGB_color_set (38,76,0);
+                ACI[79] = dxf_RGB_color_set (57,76,38);
+                ACI[80] = dxf_RGB_color_set (63,255,0);
+                ACI[81] = dxf_RGB_color_set (159,255,127);
+                ACI[82] = dxf_RGB_color_set (51,204,0);
+                ACI[83] = dxf_RGB_color_set (127,204,102);
+                ACI[84] = dxf_RGB_color_set (38,153,0);
+                ACI[85] = dxf_RGB_color_set (95,153,76);
+                ACI[86] = dxf_RGB_color_set (31,127,0);
+                ACI[87] = dxf_RGB_color_set (79,127,63);
+                ACI[88] = dxf_RGB_color_set (19,76,0);
+                ACI[89] = dxf_RGB_color_set (47,76,38);
+                ACI[90] = dxf_RGB_color_set (0,255,0);
+                ACI[91] = dxf_RGB_color_set (127,255,127);
+                ACI[92] = dxf_RGB_color_set (0,204,0);
+                ACI[93] = dxf_RGB_color_set (102,204,102);
+                ACI[94] = dxf_RGB_color_set (0,153,0);
+                ACI[95] = dxf_RGB_color_set (76,153,76);
+                ACI[96] = dxf_RGB_color_set (0,127,0);
+                ACI[97] = dxf_RGB_color_set (63,127,63);
+                ACI[98] = dxf_RGB_color_set (0,76,0);
+                ACI[99] = dxf_RGB_color_set (38,76,38);
+                ACI[100] = dxf_RGB_color_set (0,255,63);
+                ACI[101] = dxf_RGB_color_set (127,255,159);
+                ACI[102] = dxf_RGB_color_set (0,204,51);
+                ACI[103] = dxf_RGB_color_set (102,204,127);
+                ACI[104] = dxf_RGB_color_set (0,153,38);
+                ACI[105] = dxf_RGB_color_set (76,153,95);
+                ACI[106] = dxf_RGB_color_set (0,127,31);
+                ACI[107] = dxf_RGB_color_set (63,127,79);
+                ACI[108] = dxf_RGB_color_set (0,76,19);
+                ACI[109] = dxf_RGB_color_set (38,76,47);
+                ACI[110] = dxf_RGB_color_set (0,255,127);
+                ACI[111] = dxf_RGB_color_set (127,255,191);
+                ACI[112] = dxf_RGB_color_set (0,204,102);
+                ACI[113] = dxf_RGB_color_set (102,204,153);
+                ACI[114] = dxf_RGB_color_set (0,153,76);
+                ACI[115] = dxf_RGB_color_set (76,153,114);
+                ACI[116] = dxf_RGB_color_set (0,127,63);
+                ACI[117] = dxf_RGB_color_set (63,127,95);
+                ACI[118] = dxf_RGB_color_set (0,76,38);
+                ACI[119] = dxf_RGB_color_set (38,76,57);
+                ACI[120] = dxf_RGB_color_set (0,255,191);
+                ACI[121] = dxf_RGB_color_set (127,255,223);
+                ACI[122] = dxf_RGB_color_set (0,204,153);
+                ACI[123] = dxf_RGB_color_set (102,204,178);
+                ACI[124] = dxf_RGB_color_set (0,153,114);
+                ACI[125] = dxf_RGB_color_set (76,153,133);
+                ACI[126] = dxf_RGB_color_set (0,127,95);
+                ACI[127] = dxf_RGB_color_set (63,127,111);
+                ACI[128] = dxf_RGB_color_set (0,76,57);
+                ACI[129] = dxf_RGB_color_set (38,76,66);
+                ACI[130] = dxf_RGB_color_set (0,255,255);
+                ACI[131] = dxf_RGB_color_set (127,255,255);
+                ACI[132] = dxf_RGB_color_set (0,204,204);
+                ACI[133] = dxf_RGB_color_set (102,204,204);
+                ACI[134] = dxf_RGB_color_set (0,153,153);
+                ACI[135] = dxf_RGB_color_set (76,153,153);
+                ACI[136] = dxf_RGB_color_set (0,127,127);
+                ACI[137] = dxf_RGB_color_set (63,127,127);
+                ACI[138] = dxf_RGB_color_set (0,76,76);
+                ACI[139] = dxf_RGB_color_set (38,76,76);
+                ACI[140] = dxf_RGB_color_set (0,191,255);
+                ACI[141] = dxf_RGB_color_set (127,223,255);
+                ACI[142] = dxf_RGB_color_set (0,153,204);
+                ACI[143] = dxf_RGB_color_set (102,178,204);
+                ACI[144] = dxf_RGB_color_set (0,114,153);
+                ACI[145] = dxf_RGB_color_set (76,133,153);
+                ACI[146] = dxf_RGB_color_set (0,95,127);
+                ACI[147] = dxf_RGB_color_set (63,111,127);
+                ACI[148] = dxf_RGB_color_set (0,57,76);
+                ACI[149] = dxf_RGB_color_set (38,66,76);
+                ACI[150] = dxf_RGB_color_set (0,127,255);
+                ACI[151] = dxf_RGB_color_set (127,191,255);
+                ACI[152] = dxf_RGB_color_set (0,102,204);
+                ACI[153] = dxf_RGB_color_set (102,153,204);
+                ACI[154] = dxf_RGB_color_set (0,76,153);
+                ACI[155] = dxf_RGB_color_set (76,114,153);
+                ACI[156] = dxf_RGB_color_set (0,63,127);
+                ACI[157] = dxf_RGB_color_set (63,95,127);
+                ACI[158] = dxf_RGB_color_set (0,38,76);
+                ACI[159] = dxf_RGB_color_set (38,57,76);
+                ACI[160] = dxf_RGB_color_set (0,63,255);
+                ACI[161] = dxf_RGB_color_set (127,159,255);
+                ACI[162] = dxf_RGB_color_set (0,51,204);
+                ACI[163] = dxf_RGB_color_set (102,127,204);
+                ACI[164] = dxf_RGB_color_set (0,38,153);
+                ACI[165] = dxf_RGB_color_set (76,95,153);
+                ACI[166] = dxf_RGB_color_set (0,31,127);
+                ACI[167] = dxf_RGB_color_set (63,79,127);
+                ACI[168] = dxf_RGB_color_set (0,19,76);
+                ACI[169] = dxf_RGB_color_set (38,47,76);
+                ACI[170] = dxf_RGB_color_set (0,0,255);
+                ACI[171] = dxf_RGB_color_set (170,170,255);
+                ACI[172] = dxf_RGB_color_set (0,0,189);
+                ACI[173] = dxf_RGB_color_set (126,126,189);
+                ACI[174] = dxf_RGB_color_set (0,0,129);
+                ACI[175] = dxf_RGB_color_set (86,86,129);
+                ACI[176] = dxf_RGB_color_set (0,0,104);
+                ACI[177] = dxf_RGB_color_set (69,69,104);
+                ACI[178] = dxf_RGB_color_set (0,0,79);
+                ACI[179] = dxf_RGB_color_set (53,53,79);
+                ACI[180] = dxf_RGB_color_set (63,0,255);
+                ACI[181] = dxf_RGB_color_set (191,170,255);
+                ACI[182] = dxf_RGB_color_set (46,0,189);
+                ACI[183] = dxf_RGB_color_set (141,126,189);
+                ACI[184] = dxf_RGB_color_set (31,0,129);
+                ACI[185] = dxf_RGB_color_set (96,86,129);
+                ACI[186] = dxf_RGB_color_set (25,0,104);
+                ACI[187] = dxf_RGB_color_set (78,69,104);
+                ACI[188] = dxf_RGB_color_set (19,0,79);
+                ACI[189] = dxf_RGB_color_set (59,53,79);
+                ACI[190] = dxf_RGB_color_set (127,0,255);
+                ACI[191] = dxf_RGB_color_set (212,170,255);
+                ACI[192] = dxf_RGB_color_set (94,0,189);
+                ACI[193] = dxf_RGB_color_set (157,126,189);
+                ACI[194] = dxf_RGB_color_set (64,0,129);
+                ACI[195] = dxf_RGB_color_set (107,86,129);
+                ACI[196] = dxf_RGB_color_set (52,0,104);
+                ACI[197] = dxf_RGB_color_set (86,69,104);
+                ACI[198] = dxf_RGB_color_set (39,0,79);
+                ACI[199] = dxf_RGB_color_set (66,53,79);
+                ACI[200] = dxf_RGB_color_set (191,0,255);
+                ACI[201] = dxf_RGB_color_set (234,170,255);
+                ACI[202] = dxf_RGB_color_set (141,0,189);
+                ACI[203] = dxf_RGB_color_set (173,126,189);
+                ACI[204] = dxf_RGB_color_set (96,0,129);
+                ACI[205] = dxf_RGB_color_set (118,86,129);
+                ACI[206] = dxf_RGB_color_set (78,0,104);
+                ACI[207] = dxf_RGB_color_set (95,69,104);
+                ACI[208] = dxf_RGB_color_set (59,0,79);
+                ACI[209] = dxf_RGB_color_set (73,53,79);
+                ACI[210] = dxf_RGB_color_set (255,0,255);
+                ACI[211] = dxf_RGB_color_set (255,170,255);
+                ACI[212] = dxf_RGB_color_set (189,0,189);
+                ACI[213] = dxf_RGB_color_set (189,126,189);
+                ACI[214] = dxf_RGB_color_set (129,0,129);
+                ACI[215] = dxf_RGB_color_set (129,86,129);
+                ACI[216] = dxf_RGB_color_set (104,0,104);
+                ACI[217] = dxf_RGB_color_set (104,69,104);
+                ACI[218] = dxf_RGB_color_set (79,0,79);
+                ACI[219] = dxf_RGB_color_set (79,53,79);
+                ACI[220] = dxf_RGB_color_set (255,0,191);
+                ACI[221] = dxf_RGB_color_set (255,170,234);
+                ACI[222] = dxf_RGB_color_set (189,0,141);
+                ACI[223] = dxf_RGB_color_set (189,126,173);
+                ACI[224] = dxf_RGB_color_set (129,0,96);
+                ACI[225] = dxf_RGB_color_set (129,86,118);
+                ACI[226] = dxf_RGB_color_set (104,0,78);
+                ACI[227] = dxf_RGB_color_set (104,69,95);
+                ACI[228] = dxf_RGB_color_set (79,0,59);
+                ACI[229] = dxf_RGB_color_set (79,53,73);
+                ACI[230] = dxf_RGB_color_set (255,0,127);
+                ACI[231] = dxf_RGB_color_set (255,170,212);
+                ACI[232] = dxf_RGB_color_set (189,0,94);
+                ACI[233] = dxf_RGB_color_set (189,126,157);
+                ACI[234] = dxf_RGB_color_set (129,0,64);
+                ACI[235] = dxf_RGB_color_set (129,86,107);
+                ACI[236] = dxf_RGB_color_set (104,0,52);
+                ACI[237] = dxf_RGB_color_set (104,69,86);
+                ACI[238] = dxf_RGB_color_set (79,0,39);
+                ACI[239] = dxf_RGB_color_set (79,53,66);
+                ACI[240] = dxf_RGB_color_set (255,0,63);
+                ACI[241] = dxf_RGB_color_set (255,170,191);
+                ACI[242] = dxf_RGB_color_set (189,0,46);
+                ACI[243] = dxf_RGB_color_set (189,126,141);
+                ACI[244] = dxf_RGB_color_set (129,0,31);
+                ACI[245] = dxf_RGB_color_set (129,86,96);
+                ACI[246] = dxf_RGB_color_set (104,0,25);
+                ACI[247] = dxf_RGB_color_set (104,69,78);
+                ACI[248] = dxf_RGB_color_set (79,0,19);
+                ACI[249] = dxf_RGB_color_set (79,53,59);
+                ACI[250] = dxf_RGB_color_set (51,51,51);
+                ACI[251] = dxf_RGB_color_set (80,80,80);
+                ACI[252] = dxf_RGB_color_set (105,105,105);
+                ACI[253] = dxf_RGB_color_set (130,130,130);
+                ACI[254] = dxf_RGB_color_set (190,190,190);
+                ACI[255] = dxf_RGB_color_set (255,255,255);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -2217,7 +2217,7 @@ dxf_RGB_color_get_name
 int
 dxf_RGB_color_free
 (
-        DxfRGBColor *dxf_RGB_color
+        DxfRGBColor *RGB_color
                 /*!< Pointer to the memory occupied by the DXF
                  * RGB Color. */
 )
@@ -2226,23 +2226,23 @@ dxf_RGB_color_free
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_RGB_color == NULL)
+        if (RGB_color == NULL)
         {
               fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        if (dxf_RGB_color->name == NULL)
+        if (RGB_color->name == NULL)
         {
               fprintf (stderr,
                   (_("Warning in %s () a NULL pointer to a DxfRGBColor name was passed.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_RGB_color->name);
-        free (dxf_RGB_color);
-        dxf_RGB_color = NULL;
+        free (RGB_color->name);
+        free (RGB_color);
+        RGB_color = NULL;
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif

@@ -1,7 +1,7 @@
 /*!
  * \file color.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of DXF color values.
  *
@@ -78,7 +78,7 @@ dxf_RGB_color_set
 int
 dxf_ACI_init
 (
-        DxfRGBColor *dxf_ACI[DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS]
+        DxfRGBColor *ACI[DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS]
 );
 int
 dxf_RGB_to_triplet
@@ -90,7 +90,7 @@ dxf_RGB_to_triplet
 int
 dxf_RGB_color_free
 (
-        DxfRGBColor *dxf_RGB_color
+        DxfRGBColor *RGB_color
 );
 
 
