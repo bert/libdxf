@@ -1,7 +1,7 @@
 /*!
  * \file dimension.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF dimension entity (\c DIMENSION).
  *
@@ -298,24 +298,24 @@ DxfDimension *dxf_dimension_new ();
 DxfDimension *
 dxf_dimension_init
 (
-        DxfDimension *dxf_dimension
+        DxfDimension *dimension
 );
 DxfDimension *
 dxf_dimension_read
 (
         DxfFile *fp,
-        DxfDimension *dxf_dimension
+        DxfDimension *dimension
 );
 int
 dxf_dimension_write
 (
         DxfFile *fp,
-        DxfDimension *dxf_dimension
+        DxfDimension *dimension
 );
 int
 dxf_dimension_free
 (
-        DxfDimension *dxf_dimension
+        DxfDimension *dimension
 );
 
 
