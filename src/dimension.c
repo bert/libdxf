@@ -44,6 +44,8 @@
  * allocated memory when succesful.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
@@ -86,6 +88,8 @@ dxf_dimension_new ()
  * allocated memory when succesful.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
@@ -183,6 +187,8 @@ dxf_dimension_init
  * \return a pointer to \c dimension.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
@@ -643,6 +649,8 @@ dxf_dimension_read
  * occurred.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
@@ -907,6 +915,8 @@ dxf_dimension_write
  * occurred.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  * \version According to DXF R2000.
