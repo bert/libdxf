@@ -298,7 +298,7 @@ dxf_dimension
         struct DxfDimension *next;
                 /*!< pointer to the next DxfDimension.\n
                  * \c NULL in the last DxfDimension. */
-} DxfDimension, * DxfDimensionPtr;
+} DxfDimension;
 
 
 DxfDimension *dxf_dimension_new ();
