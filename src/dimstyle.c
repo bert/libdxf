@@ -43,6 +43,9 @@
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -83,6 +86,9 @@ dxf_dimstyle_new ()
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -167,6 +173,9 @@ dxf_dimstyle_init
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -346,6 +355,9 @@ dxf_dimstyle_write
  *
  * \return a pointer to \c dimstyle.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -874,6 +886,9 @@ dxf_dimstyle_read
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
