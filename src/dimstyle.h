@@ -1,7 +1,7 @@
 /*!
  * \file dimstyle.h
  *
- * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF dimension style table (\c DIMSTYLE).
  *
@@ -316,21 +316,21 @@ dxf_dimstyle
 DxfDimStyle *dxf_dimstyle_new ();
 DxfDimStyle *dxf_dimstyle_init
 (
-        DxfDimStyle *dxf_dimstyle
+        DxfDimStyle *dimstyle
 );
 int dxf_dimstyle_write
 (
         DxfFile *fp,
-        DxfDimStyle *dxf_dimstyle
+        DxfDimStyle *dimstyle
 );
 DxfDimStyle *dxf_dimstyle_read
 (
         DxfFile *fp,
-        DxfDimStyle *dxf_dimstyle
+        DxfDimStyle *dimstyle
 );
 int dxf_dimstyle_free
 (
-        DxfDimStyle *dxf_dimstyle
+        DxfDimStyle *dimstyle
 );
 
 
