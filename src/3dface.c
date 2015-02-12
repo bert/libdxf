@@ -182,6 +182,8 @@ dxf_3dface_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (face == NULL)
@@ -201,6 +203,8 @@ dxf_3dface_read
                         fprintf (stderr,
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
+                        /* Clean up. */
+                        free (temp_string);
                         fclose (fp->fp);
                         return (NULL);
                 }
@@ -412,6 +416,8 @@ dxf_3dface_read
         {
                 face->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -451,6 +457,8 @@ dxf_3dface_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (face == NULL)
@@ -458,6 +466,8 @@ dxf_3dface_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (face->linetype, "") == 0)
@@ -563,6 +573,8 @@ dxf_3dface_write
         fprintf (fp->fp, " 23\n%f\n", face->y3);
         fprintf (fp->fp, " 33\n%f\n", face->z3);
         fprintf (fp->fp, " 70\n%d\n", face->flag);
+        /* Clean up. */
+        free (dxf_entity_name);
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
