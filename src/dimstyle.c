@@ -200,6 +200,8 @@ dxf_dimstyle_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (dimstyle == NULL)
@@ -207,6 +209,8 @@ dxf_dimstyle_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (dimstyle->dimstyle_name, "") == 0)
@@ -344,6 +348,8 @@ dxf_dimstyle_write
                 fprintf (fp->fp, "288\n%d\n", dimstyle->dimupt);
                 fprintf (fp->fp, "  0\nENDTAB\n");
         }
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -388,6 +394,8 @@ dxf_dimstyle_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (dimstyle == NULL)
@@ -407,6 +415,8 @@ dxf_dimstyle_read
                         fprintf (stderr,
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
+                        /* Clean up. */
+                        free (temp_string);
                         fclose (fp->fp);
                         return (NULL);
                 }
@@ -876,8 +886,12 @@ dxf_dimstyle_read
                 fprintf (stderr,
                   (_("Error in %s () dimstyle_name value is empty.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
