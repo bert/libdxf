@@ -191,14 +191,15 @@ dxf_3dsolid_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (fp->acad_version_number < AutoCAD_13)
         {
                 fprintf (stderr,
-                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (solid == NULL)
         {
@@ -219,6 +220,8 @@ dxf_3dsolid_read
                         fprintf (stderr,
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
+                        /* Clean up. */
+                        free (temp_string);
                         fclose (fp->fp);
                         return (NULL);
                 }
@@ -383,7 +386,8 @@ dxf_3dsolid_read
         {
                 solid->layer = strdup (DXF_DEFAULT_LAYER);
         }
-
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -424,6 +428,8 @@ dxf_3dsolid_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (solid == NULL)
@@ -431,6 +437,8 @@ dxf_3dsolid_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (fp->acad_version_number < AutoCAD_13)
@@ -552,6 +560,8 @@ dxf_3dsolid_write
         {
                 fprintf (fp->fp, "350\n%s\n", solid->history);
         }
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
