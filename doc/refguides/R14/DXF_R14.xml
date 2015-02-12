@@ -9728,6 +9728,286 @@
             </table></para>
         </section>
       </section>
+
+      <section>
+        <title>IMAGE.</title>
+
+        <para>The following group codes apply to image entities.<table>
+            <title>IMAGE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbRasterImage).</entry>
+                </row>
+
+                <row>
+                  <entry>90</entry>
+
+                  <entry>Class version.</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Insertion point (in OCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of insertion point (in OCS)
+                  .</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>U-vector of a single pixel (points along the visual
+                  bottom of the image, starting at the insertion point) (in
+                  OCS). DXF: X value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values U-vector (in OCS).</entry>
+                </row>
+
+                <row>
+                  <entry>12</entry>
+
+                  <entry>V-vector of a single pixel (points along the visual
+                  left side of the image, starting at the insertion point) (in
+                  OCS). DXF: X value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>22, 32</entry>
+
+                  <entry>DXF: Y and Z values of V-vector (in OCS).</entry>
+                </row>
+
+                <row>
+                  <entry>13</entry>
+
+                  <entry>Image size in pixels. DXF: U value; APP: 2D point (U
+                  and V values).</entry>
+                </row>
+
+                <row>
+                  <entry>23</entry>
+
+                  <entry>DXF: V value of image size in pixels.</entry>
+                </row>
+
+                <row>
+                  <entry>340</entry>
+
+                  <entry>Hard reference to imagedef object.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Image display properties 1 = Show image 2 = Show
+                  image when not aligned with screen 4 = Use clipping boundary
+                  8 = Transparency is on.</entry>
+                </row>
+
+                <row>
+                  <entry>280</entry>
+
+                  <entry>Clipping state: 0=off, 1=on.</entry>
+                </row>
+
+                <row>
+                  <entry>281</entry>
+
+                  <entry>Brightness value (0 - 100; default = 50).</entry>
+                </row>
+
+                <row>
+                  <entry>282</entry>
+
+                  <entry>Contrast value (0 - 100; default = 50).</entry>
+                </row>
+
+                <row>
+                  <entry>283</entry>
+
+                  <entry>Fade value (0 - 100; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>360</entry>
+
+                  <entry>Hard reference to imagedef_reactor object.</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Clipping boundary type. 1 = rectangular, 2 =
+                  polygonal.</entry>
+                </row>
+
+                <row>
+                  <entry>91</entry>
+
+                  <entry>Number of clip boundary vertices that follow.</entry>
+                </row>
+
+                <row>
+                  <entry>14</entry>
+
+                  <entry>Clip boundary vertex (in OCS). DXF: X value; APP: 2D
+                  point (multiple entries) Notes: 1) For rectangular clip
+                  boundary type, two opposite corners must be specified.
+                  Default is (-0.5,-0.5), (size.x-0.5, size.y-0.5). 2) For
+                  polygonal clip boundary type, three or more vertices must be
+                  specified. Polygonal vertices must be listed
+                  sequentially.</entry>
+                </row>
+
+                <row>
+                  <entry>24</entry>
+
+                  <entry>DXF: Y value of clip boundary vertex (in OCS)
+                  (multiple entries).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>INSERT.</title>
+
+        <para>The following group codes apply to insert (block reference)
+        entities.<table>
+            <title>INSERT group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbBlockReference).</entry>
+                </row>
+
+                <row>
+                  <entry>66</entry>
+
+                  <entry>Variable attributes-follow flag (optional; default =
+                  0); if the value of attributes-follow flag is 1, a series of
+                  attribute entities is expected to follow the insert,
+                  terminated by a seqend entity.</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>Block name.</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Insertion point (in OCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of insertion point (in
+                  OCS).</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>X scale factor (optional; default = 1).</entry>
+                </row>
+
+                <row>
+                  <entry>42</entry>
+
+                  <entry>Y scale factor (optional; default = 1).</entry>
+                </row>
+
+                <row>
+                  <entry>43</entry>
+
+                  <entry>Z scale factor (optional; default = 1).</entry>
+                </row>
+
+                <row>
+                  <entry>50</entry>
+
+                  <entry>Rotation angle (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Column count (optional; default = 1).</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Row count (optional; default = 1).</entry>
+                </row>
+
+                <row>
+                  <entry>44</entry>
+
+                  <entry>Column spacing (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>45</entry>
+
+                  <entry>Row spacing (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
