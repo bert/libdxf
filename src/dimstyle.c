@@ -233,6 +233,12 @@ dxf_dimstyle_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, dimstyle->id_code);
+        }
         if (!dimstyle->dimpost)
         {
                 dimstyle->dimpost = strdup ("");
