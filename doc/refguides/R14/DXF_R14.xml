@@ -10008,6 +10008,254 @@
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>LEADER.</title>
+
+        <para>The following group codes apply to leader entities.<table>
+            <title>LEADER group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbLeader).</entry>
+                </row>
+
+                <row>
+                  <entry>3</entry>
+
+                  <entry>Dimension style name.</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Arrowhead flag: 0 = disabled; 1 = enabled.</entry>
+                </row>
+
+                <row>
+                  <entry>72</entry>
+
+                  <entry>Leader path type: 0 = Straight line segments; 1 =
+                  Spline.</entry>
+                </row>
+
+                <row>
+                  <entry>73</entry>
+
+                  <entry>Leader creation flag (default = 3): 0 = leader
+                  created with text annotation. 1 = created with tolerance
+                  annotation 2 = created with block reference annotation 3 =
+                  created without any annotation.</entry>
+                </row>
+
+                <row>
+                  <entry>74</entry>
+
+                  <entry>Hookline direction flag: 0 = hookline (or end of
+                  tangent for a splined leader) is the opposite direction from
+                  the horizontal vector. 1 = hookline (or end of tangent for a
+                  splined leader) is the same direction as horizontal vector
+                  (see code 75).</entry>
+                </row>
+
+                <row>
+                  <entry>75</entry>
+
+                  <entry>Hookline flag: 0 = no hookline; 1 = has a
+                  hookline.</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Text annotation height.</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>Text annotation width.</entry>
+                </row>
+
+                <row>
+                  <entry>76</entry>
+
+                  <entry>Number of vertices in leader (ignored for
+                  DXFIN).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Vertex coordinates (one entry for each vertex) DXF: X
+                  value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of vertex coordinates.</entry>
+                </row>
+
+                <row>
+                  <entry>77</entry>
+
+                  <entry>Color to use if leader's DIMCLRD=BYBLOCK.</entry>
+                </row>
+
+                <row>
+                  <entry>340</entry>
+
+                  <entry>Hard reference to associated annotation (mtext,
+                  tolerance, or insert entity).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Normal vector. DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of normal vector.</entry>
+                </row>
+
+                <row>
+                  <entry>211</entry>
+
+                  <entry>"Horizontal" direction for leader. DXF: X value; APP:
+                  3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>221, 231</entry>
+
+                  <entry>DXF: Y and Z values of "horizontal" direction for
+                  leader.</entry>
+                </row>
+
+                <row>
+                  <entry>212</entry>
+
+                  <entry>Block reference insertion point offset from last
+                  leader vertex. DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>222, 232</entry>
+
+                  <entry>DXF: Y and Z values of block reference insertion
+                  point offset from last leader vertex.</entry>
+                </row>
+
+                <row>
+                  <entry>213</entry>
+
+                  <entry>Annotation placement point offset from last leader
+                  vertex. DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>223, 233</entry>
+
+                  <entry>DXF: Y and Z values of annotation placement point
+                  offset from last leader vertex.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>Xdata belonging to the application ID "ACAD" may follow.</para>
+
+        <para>This describes any dimension overrides that have been applied to
+        this entity.</para>
+
+        <para>See "Dimension Style Overrides".</para>
+      </section>
+
+      <section>
+        <title>LINE.</title>
+
+        <para>The following group codes apply to line entities.<table>
+            <title>LINE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbLine).</entry>
+                </row>
+
+                <row>
+                  <entry>39</entry>
+
+                  <entry>Thickness (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Start point (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of start point (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>End point (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of end point (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
