@@ -10256,6 +10256,353 @@
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>LWPOLYLINE.</title>
+
+        <para>The following group codes apply to lwpolyline entities.<table>
+            <title>LWPOLYLINE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbPolyline).</entry>
+                </row>
+
+                <row>
+                  <entry>90</entry>
+
+                  <entry>Number of vertices.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Polyline flag (bit-coded); default is 0: 1 = closed
+                  128 = plinegen.</entry>
+                </row>
+
+                <row>
+                  <entry>43</entry>
+
+                  <entry>Constant width (optional; default = 0) Not used if
+                  variable width (codes 40 and/or 41) is set.</entry>
+                </row>
+
+                <row>
+                  <entry>38</entry>
+
+                  <entry>Elevation (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>39</entry>
+
+                  <entry>Thickness (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Vertex coordinates (in OCS), multiple entries; one
+                  entry for each vertex. DXF: X value; APP: 2D point.</entry>
+                </row>
+
+                <row>
+                  <entry>20</entry>
+
+                  <entry>DXF: Y value of vertex coordinates (in OCS), multiple
+                  entries; one entry for each vertex.</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Starting width (multiple entries; one entry for each
+                  vertex) (optional; default = 0; multiple entries). Not used
+                  if constant width (code 43) is set.</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>End width (multiple entries; one entry for each
+                  vertex) (optional; default = 0; multiple entries). Not used
+                  if constant width (code 43) is set.</entry>
+                </row>
+
+                <row>
+                  <entry>42</entry>
+
+                  <entry>Bulge (multiple entries; one entry for each vertex)
+                  (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>MLINE.</title>
+
+        <para>The following group codes apply to mline entities.<table>
+            <title>MLINE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbMline).</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>String of up to 32 characters. The name of the style
+                  used for this mline. An entry for this style must exist in
+                  the MLINESTYLE dictionary. NOTE Do not modify this
+                  field.</entry>
+                </row>
+
+                <row>
+                  <entry>340</entry>
+
+                  <entry>Pointer-handle/ID of MLINESTYLE dictionary.</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Scale factor.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Justification: 0=top, 1=zero, 2=bottom.</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Flags (bit-coded values): 1=unlocked; 2=closed;
+                  4=supress start caps; 8=supress end caps.</entry>
+                </row>
+
+                <row>
+                  <entry>72</entry>
+
+                  <entry>Number of vertices.</entry>
+                </row>
+
+                <row>
+                  <entry>73</entry>
+
+                  <entry>Number of elements in MLINESTYLE definition.</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Start point (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of start point (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>Vertex coordinates (multiple entries; one entry for
+                  each vertex). DXF: X value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of vertex coordinates.</entry>
+                </row>
+
+                <row>
+                  <entry>12</entry>
+
+                  <entry>Direction vector of segment starting at this vertex
+                  (multiple entries; one for each vertex). DXF: X value; APP:
+                  3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>22, 32</entry>
+
+                  <entry>DXF: Y and Z values of direction vector of segment
+                  starting at this vertex.</entry>
+                </row>
+
+                <row>
+                  <entry>13</entry>
+
+                  <entry>Direction vector of miter at this vertex (multiple
+                  entries: one for each vertex). DXF: X value; APP: 3D
+                  vector.</entry>
+                </row>
+
+                <row>
+                  <entry>23, 33</entry>
+
+                  <entry>DXF: Y and Z values of direction vector of
+                  miter.</entry>
+                </row>
+
+                <row>
+                  <entry>74</entry>
+
+                  <entry>Number of parameters for this element (repeats for
+                  each element in segment).</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>Element parameters (repeats based on previous code
+                  74).</entry>
+                </row>
+
+                <row>
+                  <entry>75</entry>
+
+                  <entry>Number of area fill parameters for this element
+                  (repeats for each element in segment).</entry>
+                </row>
+
+                <row>
+                  <entry>42</entry>
+
+                  <entry>Area fill parameters (repeats based on previous code
+                  75).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The group code 41 parameterization is a list of real values, one
+        real per group code 41.</para>
+
+        <para>The list may contain zero or more items.</para>
+
+        <para>The first group code 41 value is the distance from the segment
+        vertex along the miter vector to the point where the line element's
+        path intersects the miter vector.</para>
+
+        <para>The next group code 41 value is the distance along the line
+        element's path from the point defined by the first group 41 to the
+        actual start of the line element.</para>
+
+        <para>The next is the distance from the start of the line element to
+        the first break (or cut) in the line element.</para>
+
+        <para>The successive group code 41 values continue to list the start
+        and stop points of the line element in this segment of the
+        mline.</para>
+
+        <para>Linetypes do not affect group 41 lists.</para>
+
+        <para>The group code 42 parameterization is also a list of real
+        values.</para>
+
+        <para>Similar to the 41 parameterization, it describes the
+        parameterization of the fill area for this mline segment.</para>
+
+        <para>The values are interpreted identically to the 41 parameters and
+        when taken as a whole for all line elements in the mline segment, they
+        define the boundary of the fill area for the mline segment.</para>
+
+        <para>A common example of the use of the group code 42 mechanism is
+        when an unfilled mline crosses over a filled mline and mledit is used
+        to cause the filled mline to appear unfilled in the crossing
+        area.</para>
+
+        <para>This would result in two group 42s for each line element in the
+        affected mline segment, one for the fill stop and one for the fill
+        start.</para>
+
+        <para>The 2 group codes in mline entities and mlinestyle objects are
+        redundant fields.</para>
+
+        <para>These groups should not be modified under any circumstances,
+        although it is safe to read them and use their values.</para>
+
+        <para>The correct fields to modify are as follows:</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>Mline</term>
+
+            <listitem>
+              <para>The 340 group in the same object, which indicates the
+              proper mlinestyle object.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>Mlinestyle</term>
+
+            <listitem>
+              <para>The 3 group value in the mlinestyle dictionary which
+              precedes the 350 group that has the handle or entity name of the
+              current mlinestyle.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
     </section>
   </chapter>
 </book>
