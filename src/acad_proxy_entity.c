@@ -198,14 +198,15 @@ dxf_acad_proxy_entity_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (fp->acad_version_number < AutoCAD_13)
         {
                 fprintf (stderr,
-                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         if (!acad_proxy_entity)
         {
@@ -226,6 +227,8 @@ dxf_acad_proxy_entity_read
                         fprintf (stderr,
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
+                        /* Clean up. */
+                        free (temp_string);
                         fclose (fp->fp);
                         return (NULL);
                 }
@@ -381,6 +384,8 @@ dxf_acad_proxy_entity_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -422,6 +427,8 @@ dxf_acad_proxy_entity_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (acad_proxy_entity == NULL)
@@ -429,6 +436,8 @@ dxf_acad_proxy_entity_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (fp->acad_version_number < AutoCAD_13)
@@ -512,6 +521,8 @@ dxf_acad_proxy_entity_write
         {
                 fprintf (fp->fp, " 70\n%d\n", acad_proxy_entity->original_custom_object_data_format);
         }
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
