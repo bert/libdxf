@@ -1,7 +1,7 @@
 /*!
  * \file dxf.h
  *
- * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief List of all dxf header files for convenient inclusion.
  *
@@ -61,6 +61,7 @@
 #include "header.h"
 #include "insert.h"
 #include "layer.h"
+#include "leader.h"
 #include "line.h"
 #include "ltype.h"
 #include "lwpolyline.h"

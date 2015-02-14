@@ -59,6 +59,8 @@ libdxf_la_SOURCES = \
   ltype.c \
   line.c \
   line.h \
+  leader.c \
+  leader.h \
   layer.h \
   layer.c \
   insert.h \
