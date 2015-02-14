@@ -241,6 +241,10 @@ dxf_leader
 } DxfLeader;
 
 
+DxfLeader *
+dxf_leader_new ();
+
+
 #endif /* LIBDXF_SRC_LEADER_H */
 
 

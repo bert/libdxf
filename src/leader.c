@@ -37,4 +37,48 @@
 #include "leader.h"
 
 
+/*!
+ * \brief Allocate memory for a DXF \c LEADER.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfLeader *
+dxf_leader_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfLeader *leader = NULL;
+        size_t size;
+
+        size = sizeof (DxfLeader);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((leader = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfArc struct.\n")),
+                  __FUNCTION__);
+                leader = NULL;
+        }
+        else
+        {
+                memset (leader, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
 /* EOF */
