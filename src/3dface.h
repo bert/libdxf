@@ -179,6 +179,11 @@ dxf_3dface_free
 (
         Dxf3dface *face
 );
+void
+dxf_3dface_free_chain
+(
+        Dxf3dface *faces
+);
 int
 dxf_3dface_is_first_edge_invisible
 (

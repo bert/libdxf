@@ -627,6 +627,39 @@ dxf_3dface_free
 
 
 /*!
+ * \brief Free the allocated memory for a chain of DXF \c 3DFACE
+ * entities and all their data fields.
+ */
+void
+dxf_3dface_free_chain
+(
+        Dxf3dface *faces
+                /*!< pointer to the chain of DXF 3DFACE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (faces == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (faces != NULL)
+        {
+                struct Dxf3dface *iter = faces->next;
+                dxf_3dface_free (faces->next);
+                dxf_3dface_free (faces);
+                faces = iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Test if the first edge of the DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
