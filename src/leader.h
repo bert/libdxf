@@ -39,6 +39,202 @@
 #include "global.h"
 
 
+/*!
+ * \brief DXF definition of an AutoCAD leader entity (\c LEADER).
+ */
+typedef struct
+dxf_leader
+{
+        /* Members common for all DXF drawable entities. */
+        int id_code;
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
+        char *linetype;
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
+        char *layer;
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
+        double elevation;
+                /*!< Elevation of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default).\n
+                 * Group code = 38. */
+        double thickness;
+                /*!< Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
+        double linetype_scale;
+                /*!< Linetype scale (optional).\n
+                 * Group code = 48. */
+        int16_t visibility;
+                /*!< Object visibility (optional):\n
+                 * <ol>
+                 * <li value = "0"> Visible</li>
+                 * <li value = "1"> Invisible</li>
+                 * </ol>
+                 * Group code = 60. */
+        int color;
+                /*!< Color of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Note that entities encapsulated in a block with the
+                 * color \c BYBLOCK are represented in the "native" color of
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
+        int paperspace;
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
+                 * \c MODELSPACE.\n
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
+        /* Specific members for a DXF 3D face. */
+        char *dimension_style_name;
+                /*!< Dimension style name.\n
+                 * Group code = 3. */
+        double x0[DXF_MAX_PARAM];
+                /*!< X-value of the Vertex coordinates (one entry for
+                 * each vertex).\n
+                 * Group code = 10. */
+        double y0[DXF_MAX_PARAM];
+                /*!< Y-value of the Vertex coordinates (one entry for
+                 * each vertex).\n
+                 * Group code = 20. */
+        double z0[DXF_MAX_PARAM];
+                /*!< Z-value of the Vertex coordinates (one entry for
+                 * each vertex).\n
+                 * Group code = 30. */
+        double text_annotation_height;
+                /*!< Text annotation height.\n
+                 * Group code = 40. */
+        double text_annotation_width;
+                /*!< Text annotation width.\n
+                 * Group code = 41. */
+        int flag;
+                /*!< Optional, defaults to 0.\n
+                 * Bit coded:\n
+                 * <ol>
+                 * <li value = "1"> First edge is invisible.</li>
+                 * <li value = "2"> Second edge is invisible.</li>
+                 * <li value = "4"> Third edge is invisible.</li>
+                 * <li value = "8"> Fourth edge is invisible.</li>
+                 * </ol>
+                 * Group code = 70. */
+        int arrow_head_flag;
+                /*!< Arrow head flag.\n
+                 * Bit coded:\n
+                 * <ol>
+                 * <li value = "0"> Disabled.</li>
+                 * <li value = "1"> Enabled.</li>
+                 * </ol>
+                 * Group code = 71. */
+        int path_type;
+                /*!< Leader path type.\n
+                 * Bit coded:\n
+                 * <ol>
+                 * <li value = "0"> Straight line segments.</li>
+                 * <li value = "1"> Spline.</li>
+                 * </ol>
+                 * Group code = 72. */
+        int creation_flag;
+                /*!< Leader creation flag (default = 3).\n
+                 * Not bit coded:\n
+                 * <ol>
+                 * <li value = "0"> Leader created with text annotation.</li>
+                 * <li value = "1"> Created with tolerance annotation.</li>
+                 * <li value = "2"> Created with block reference annotation.</li>
+                 * <li value = "3"> Created without any annotation.</li>
+                 * </ol>
+                 * Group code = 73. */
+        int hookline_direction_flag;
+                /*!< Hookline direction flag.\n
+                 * Not bit coded:\n
+                 * <ol>
+                 * <li value = "0"> Hookline (or end of tangent for a
+                 * splined leader) is the opposite direction from the
+                 * horizontal vector.</li>
+                 * <li value = "1"> Hookline (or end of tangent for a
+                 * splined leader) is the same direction as horizontal
+                 * vector (see Group code 75).</li>
+                 * </ol>
+                 * Group code = 74. */
+        int hookline_flag;
+                /*!< Hookline flag.\n
+                 * Bit coded:\n
+                 * <ol>
+                 * <li value = "0"> No hookline.</li>
+                 * <li value = "1"> Has a hookline.</li>
+                 * </ol>
+                 * Group code = 75. */
+        int number_vertices;
+                /*!< Number of vertices in leader (ignored for DXFIN).\n
+                 * Group code = 76. */
+        int leader_color;
+                /*!< Color to use if leader's DIMCLRD=BYBLOCK.\n
+                 * Group code = 77. */
+        double x_extr;
+                /*!< X-value of the extrusion vector.\n
+                 * Defaults to 0.0 if omitted in the DXF file.\n
+                 * Group code = 210. */
+        double y_extr;
+                /*!< Y-value of the extrusion vector.\n
+                 * Defaults to 0.0 if omitted in the DXF file.\n
+                 * Group code = 220. */
+        double z_extr;
+                /*!< Z-value of the extrusion vector.\n
+                 * Defaults to 1.0 if omitted in the DXF file.\n
+                 * Group code = 230. */
+        double x1;
+                /*!< X-value of the "Horizontal" direction for leader.\n
+                 * Group code = 211. */
+        double y1;
+                /*!< Y-value of the "Horizontal" direction for leader.\n
+                 * Group code = 221. */
+        double z1;
+                /*!< Z-value of the "Horizontal" direction for leader.\n
+                 * Group code = 231. */
+        double x2;
+                /*!< X-value of the Block reference insertion point
+                 * offset from last leader vertex.\n
+                 * Group code = 212. */
+        double y2;
+                /*!< Y-value of the Block reference insertion point
+                 * offset from last leader vertex.\n
+                 * Group code = 222. */
+        double z2;
+                /*!< Z-value of the Block reference insertion point
+                 * offset from last leader vertex.\n
+                 * Group code = 232. */
+        double x3;
+                /*!< X-value of the Annotation placement point offset
+                 * from last leader vertex.\n
+                 * Group code = 213. */
+        double y3;
+                /*!< Y-value of the Annotation placement point offset
+                 * from last leader vertex.\n
+                 * Group code = 223. */
+        double z3;
+                /*!< Z-value of the Annotation placement point offset
+                 * from last leader vertex.\n
+                 * Group code = 233. */
+        char *annotation_reference_hard;
+                /*!< Hard reference to associated annotation (mtext,
+                 * tolerance, or insert entity).\n
+                 * Group code = 340. */
+        struct DxfLeader *next;
+                /*!< Pointer to the next DxfLeader.\n
+                 * \c NULL in the last DxfLeader. */
+} DxfLeader;
+
+
 #endif /* LIBDXF_SRC_LEADER_H */
 
 
