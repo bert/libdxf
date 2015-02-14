@@ -44,6 +44,7 @@
 #include "attdef.h"
 #include "attrib.h"
 #include "block.h"
+#include "block_record.h"
 #include "circle.h"
 #include "class.h"
 #include "color.h"
