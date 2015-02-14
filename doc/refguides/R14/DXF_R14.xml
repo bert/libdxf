@@ -10392,7 +10392,8 @@
 
                   <entry>String of up to 32 characters. The name of the style
                   used for this mline. An entry for this style must exist in
-                  the MLINESTYLE dictionary. NOTE Do not modify this
+                  the MLINESTYLE dictionary. <emphasis
+                  role="bold">NOTE</emphasis>: Do not modify this
                   field.</entry>
                 </row>
 
@@ -10602,6 +10603,200 @@
             </listitem>
           </varlistentry>
         </variablelist>
+      </section>
+
+      <section>
+        <title>MTEXT.</title>
+
+        <para>The following group codes apply to mtext entities.<table>
+            <title>MTEXT group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbMText).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Insertion point. DXF: X value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of insertion point.</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Default text height.</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>Reference rectangle width.</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Attachment point: 1 = Top left; 2 = Top center; 3 =
+                  Top right; 4 = Middle left; 5 = Middle center; 6 = Middle
+                  right 7 = Bottom left; 8 = Bottom center; 9 = Bottom
+                  right.</entry>
+                </row>
+
+                <row>
+                  <entry>72</entry>
+
+                  <entry>Drawing direction: 1 = Left to right; 3 = Top to
+                  bottom; 5 = By style (the flow direction is inherited from
+                  the associated text style).</entry>
+                </row>
+
+                <row>
+                  <entry>1</entry>
+
+                  <entry>Text string. If the text string is less than 250
+                  characters, all characters appear in group 1. If the text
+                  string is greater than 250 characters, the string is divided
+                  into 250 character chunks, which appear in one or more group
+                  3 codes. If group 3 codes are used, the last group is a
+                  group 1 and has fewer than 250 characters.</entry>
+                </row>
+
+                <row>
+                  <entry>3</entry>
+
+                  <entry>Additional text (always in 250 character
+                  chunks).</entry>
+                </row>
+
+                <row>
+                  <entry>7</entry>
+
+                  <entry>Text style name (STANDARD if not provided).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>X-axis direction vector (in WCS) DXF: X value; APP:
+                  3D vector. <emphasis role="bold">NOTE</emphasis>: A group
+                  code 50 (rotation angle in radians) passed as DXF input is
+                  converted to the equivalent direction vector (if both a code
+                  50 and codes 11,21,31 are passed, the last one wins). This
+                  is provided as a convenience for conversions from text
+                  objects..</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of X-axis direction vector (in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>42</entry>
+
+                  <entry>Horizontal width of the characters that make up the
+                  mtext object (this value will always be equal to or less
+                  than the value of group code 41).</entry>
+                </row>
+
+                <row>
+                  <entry>43</entry>
+
+                  <entry>Vertical height of the characters that make up the
+                  mtext object.</entry>
+                </row>
+
+                <row>
+                  <entry>50</entry>
+
+                  <entry>Rotation angle in radians.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>OLEFRAME.</title>
+
+        <para>The following group codes apply to oleframe entities.<table>
+            <title>OLEFRAME group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbOleFrame).</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>OLE version number.</entry>
+                </row>
+
+                <row>
+                  <entry>90</entry>
+
+                  <entry>Length of binary data.</entry>
+                </row>
+
+                <row>
+                  <entry>310</entry>
+
+                  <entry>Binary data (multiple lines).</entry>
+                </row>
+
+                <row>
+                  <entry>1</entry>
+
+                  <entry>End of Ole data (the string "OLE").</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
       </section>
     </section>
   </chapter>
