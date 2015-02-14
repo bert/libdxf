@@ -124,16 +124,6 @@ dxf_leader
         double text_annotation_width;
                 /*!< Text annotation width.\n
                  * Group code = 41. */
-        int flag;
-                /*!< Optional, defaults to 0.\n
-                 * Bit coded:\n
-                 * <ol>
-                 * <li value = "1"> First edge is invisible.</li>
-                 * <li value = "2"> Second edge is invisible.</li>
-                 * <li value = "4"> Third edge is invisible.</li>
-                 * <li value = "8"> Fourth edge is invisible.</li>
-                 * </ol>
-                 * Group code = 70. */
         int arrow_head_flag;
                 /*!< Arrow head flag.\n
                  * Bit coded:\n
