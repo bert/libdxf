@@ -180,6 +180,8 @@ dxf_appid_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (appid == NULL)
@@ -200,6 +202,8 @@ dxf_appid_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -251,6 +255,8 @@ dxf_appid_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -288,6 +294,8 @@ dxf_appid_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (appid == NULL)
@@ -295,6 +303,8 @@ dxf_appid_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if ((appid->application_name == NULL)
@@ -306,6 +316,8 @@ dxf_appid_write
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (fp->acad_version_number < AutoCAD_12)
@@ -351,6 +363,8 @@ dxf_appid_write
         }
         fprintf (fp->fp, "  2\n%s\n", appid->application_name);
         fprintf (fp->fp, " 70\n%d\n", appid->flag);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
