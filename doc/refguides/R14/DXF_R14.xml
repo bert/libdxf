@@ -8878,7 +8878,7 @@
 
           <para>The point (10,20,30) specifies the location of the dimension
           line arc and the point (11,21,31) specifies the midpoint of the
-          dimension text. </para>
+          dimension text.</para>
         </section>
 
         <section>
@@ -10793,6 +10793,229 @@
                   <entry>1</entry>
 
                   <entry>End of Ole data (the string "OLE").</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>OLE2FRAME.</title>
+
+        <para>The following group codes apply to ole2frame entities.</para>
+
+        <para>This information is read only.</para>
+
+        <para>During DXFIN, the values are ignored, because they are part of
+        the OLE binary object, and are obtained via access functions.<table>
+            <title>OLE2FRAME group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbOle2Frame).</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>OLE version number.</entry>
+                </row>
+
+                <row>
+                  <entry>3</entry>
+
+                  <entry>Length of binary data.</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Upper left corner (WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of upper left corner (in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>Lower right corner (WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of lower right corner (in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>OLE object type, 1 = link, 2 = embedded, 3 =
+                  static.</entry>
+                </row>
+
+                <row>
+                  <entry>72</entry>
+
+                  <entry>Tile mode descriptor, 0 = object is in a tiled model
+                  space viewport 1 = object is in a non-tiled viewport (paper
+                  space or floating model space).</entry>
+                </row>
+
+                <row>
+                  <entry>90</entry>
+
+                  <entry>Length of binary data.</entry>
+                </row>
+
+                <row>
+                  <entry>310</entry>
+
+                  <entry>Binary data (multiple lines).</entry>
+                </row>
+
+                <row>
+                  <entry>1</entry>
+
+                  <entry>End of Ole data (the string "OLE").</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>Sample DXF output:</para>
+
+        <programlisting>OLE2FRAME
+  5
+2D
+100
+AcDbEntity
+ 67
+     1
+  8
+0
+100
+AcDbOle2Frame
+ 70
+     2
+  3
+Paintbrush Picture
+ 10
+4.43116
+ 20
+5.665992
+ 30
+0.0
+ 11
+6.4188
+ 21
+4.244939
+ 31
+0.0
+ 71
+     2
+ 72
+     1
+ 90
+    23680
+310
+0155764BD60082B91140114B08C8F9A916400000000000000000506DC0D0D9AC
+310
+1940114B08C8F9A916400000000000000000506DC0D0D9AC194002303E5CD1FA
+310
+10400000000000000000764BD60082B9114002303E5CD1FA1040000000000000
+...
+... </programlisting>
+
+        <para>AutoLISP entnext function sample output:</para>
+
+        <programlisting>Command:  (setq e (entget e3))
+((-1 . &lt;Entity name: 7d50428&gt;) (0 . "OLE2FRAME") (5 . "2D")
+(100 . "AcDbEntity") (67 . 1) (8 . "0") (100 . "AcDbOle2Frame")
+(70 . 2) (3 "Paintbrush Picture") (10 4.43116 5.66599 0.0)
+(11 6.4188 4.24494 0.0) (71 . 2) (72 . 1))</programlisting>
+      </section>
+
+      <section>
+        <title>POINT.</title>
+
+        <para>The following group codes apply to point entities.<table>
+            <title>POINT group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbPoint).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Point location (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of point location (in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>39</entry>
+
+                  <entry>Thickness (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+
+                <row>
+                  <entry>50</entry>
+
+                  <entry>Angle of the X axis for the UCS in effect when the
+                  point was drawn (optional, default = 0); used when PDMODE is
+                  nonzero.</entry>
                 </row>
               </tbody>
             </tgroup>
