@@ -169,4 +169,51 @@ dxf_leader_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c LEADER and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_leader_free
+(
+        DxfLeader *leader
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c LEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfLeader was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (leader->linetype);
+        free (leader->layer);
+        free (leader->dictionary_owner_soft);
+        free (leader->dictionary_owner_hard);
+        free (leader->dimension_style_name);
+        free (leader->annotation_reference_hard);
+        free (leader);
+        leader = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
