@@ -159,9 +159,9 @@ dxf_3dsolid_init
  * Now follows some data for the \c 3DSOLID, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
- * While parsing the DXF file store data in \c dxf_3dsolid. \n
+ * While parsing the DXF file store data in \c solid. \n
  *
- * \return \c a pointer to \c dxf_3dsolid.
+ * \return \c a pointer to \c solid.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
