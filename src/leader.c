@@ -81,4 +81,92 @@ dxf_leader_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c LEADER
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfLeader *
+dxf_leader_init
+(
+        DxfLeader *leader
+                /*!< pointer to a DXF \c LEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                leader = dxf_leader_new ();
+        }
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfLeader struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        leader->id_code = 0;
+        leader->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        leader->layer = strdup (DXF_DEFAULT_LAYER);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                leader->x0[i] = 0.0;
+                leader->y0[i] = 0.0;
+                leader->z0[i] = 0.0;
+        }
+        leader->x_extr = 0.0;
+        leader->y_extr = 0.0;
+        leader->z_extr = 0.0;
+        leader->elevation = 0.0;
+        leader->thickness = 0.0;
+        leader->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        leader->visibility = DXF_DEFAULT_VISIBILITY;
+        leader->color = DXF_COLOR_BYLAYER;
+        leader->paperspace = DXF_MODELSPACE;
+        leader->dictionary_owner_soft = strdup ("");
+        leader->dictionary_owner_hard = strdup ("");
+        leader->dimension_style_name = strdup ("");
+        leader->text_annotation_height = 0.0;
+        leader->text_annotation_width = 0.0;
+        leader->arrow_head_flag = 0;
+        leader->path_type = 0;
+        leader->creation_flag = 0;
+        leader->hookline_direction_flag = 0;
+        leader->hookline_flag = 0;
+        leader->number_vertices = 0;
+        leader->leader_color = 0;
+        leader->x1 = 0.0;
+        leader->y1 = 0.0;
+        leader->z1 = 0.0;
+        leader->x2 = 0.0;
+        leader->y2 = 0.0;
+        leader->z2 = 0.0;
+        leader->x3 = 0.0;
+        leader->y3 = 0.0;
+        leader->z3 = 0.0;
+        leader->annotation_reference_hard = strdup ("");
+        leader->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
 /* EOF */

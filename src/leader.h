@@ -233,6 +233,11 @@ dxf_leader
 
 DxfLeader *
 dxf_leader_new ();
+DxfLeader *
+dxf_leader_init
+(
+        DxfLeader *leader
+);
 
 
 #endif /* LIBDXF_SRC_LEADER_H */
