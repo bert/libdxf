@@ -49,27 +49,27 @@ dxf_ellipse_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfEllipse *dxf_ellipse = NULL;
+        DxfEllipse *ellipse = NULL;
         size_t size;
 
         size = sizeof (DxfEllipse);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_ellipse = malloc (size)) == NULL)
+        if ((ellipse = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfEllipse struct.\n")),
                   __FUNCTION__);
-                dxf_ellipse = NULL;
+                ellipse = NULL;
         }
         else
         {
-                memset (dxf_ellipse, 0, size);
+                memset (ellipse, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_ellipse);
+        return (ellipse);
 }
 
 
@@ -83,56 +83,56 @@ dxf_ellipse_new ()
 DxfEllipse *
 dxf_ellipse_init
 (
-        DxfEllipse *dxf_ellipse
-                /*!< DXF ellipse entity. */
+        DxfEllipse *ellipse
+                /*!< Pointer to a DXF \c ELLIPSE entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_ellipse == NULL)
+        if (ellipse == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_ellipse = dxf_ellipse_new ();
+                ellipse = dxf_ellipse_new ();
         }
-        if (dxf_ellipse == NULL)
+        if (ellipse == NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () could not allocate memory for a DxfEllipse struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_ellipse->id_code = 0;
-        dxf_ellipse->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_ellipse->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_ellipse->x0 = 0.0;
-        dxf_ellipse->y0 = 0.0;
-        dxf_ellipse->z0 = 0.0;
-        dxf_ellipse->x1 = 0.0;
-        dxf_ellipse->y1 = 0.0;
-        dxf_ellipse->z1 = 0.0;
-        dxf_ellipse->extr_x0 = 0.0;
-        dxf_ellipse->extr_y0 = 0.0;
-        dxf_ellipse->extr_z0 = 0.0;
-        dxf_ellipse->elevation = 0.0;
-        dxf_ellipse->thickness = 0.0;
-        dxf_ellipse->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        dxf_ellipse->visibility = DXF_DEFAULT_VISIBILITY;
-        dxf_ellipse->ratio = 0.0;
-        dxf_ellipse->start_angle = 0.0;
-        dxf_ellipse->end_angle = 0.0;
-        dxf_ellipse->color = DXF_COLOR_BYLAYER;
-        dxf_ellipse->paperspace = DXF_MODELSPACE;
-        dxf_ellipse->dictionary_owner_soft = strdup ("");
-        dxf_ellipse->dictionary_owner_hard = strdup ("");
-        dxf_ellipse->next = NULL;
+        ellipse->id_code = 0;
+        ellipse->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        ellipse->layer = strdup (DXF_DEFAULT_LAYER);
+        ellipse->x0 = 0.0;
+        ellipse->y0 = 0.0;
+        ellipse->z0 = 0.0;
+        ellipse->x1 = 0.0;
+        ellipse->y1 = 0.0;
+        ellipse->z1 = 0.0;
+        ellipse->extr_x0 = 0.0;
+        ellipse->extr_y0 = 0.0;
+        ellipse->extr_z0 = 0.0;
+        ellipse->elevation = 0.0;
+        ellipse->thickness = 0.0;
+        ellipse->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        ellipse->visibility = DXF_DEFAULT_VISIBILITY;
+        ellipse->ratio = 0.0;
+        ellipse->start_angle = 0.0;
+        ellipse->end_angle = 0.0;
+        ellipse->color = DXF_COLOR_BYLAYER;
+        ellipse->paperspace = DXF_MODELSPACE;
+        ellipse->dictionary_owner_soft = strdup ("");
+        ellipse->dictionary_owner_hard = strdup ("");
+        ellipse->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_ellipse);
+        return (ellipse);
 }
 
 
@@ -143,17 +143,17 @@ dxf_ellipse_init
  * Now follows some data for the \c ELLIPSE, to be terminated with a
  * "  0" string announcing the following entity, or the end of the
  * \c ENTITY section marker \c ENDSEC. \n
- * While parsing the DXF file store data in \c dxf_ellipse. \n
+ * While parsing the DXF file store data in \c ellipse. \n
  *
- * \return a pointer to \c dxf_ellipse.
+ * \return a pointer to \c ellipse.
  */
 DxfEllipse *
 dxf_ellipse_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfEllipse *dxf_ellipse
-                /*!< DXF ellipse entity. */
+        DxfEllipse *ellipse
+                /*!< Pointer to a DXF \c ELLIPSE entity. */
 )
 {
 #if DEBUG
@@ -169,13 +169,13 @@ dxf_ellipse_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_ellipse == NULL)
+        if (ellipse == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_ellipse = dxf_ellipse_new ();
-                dxf_ellipse = dxf_ellipse_init (dxf_ellipse);
+                ellipse = dxf_ellipse_new ();
+                ellipse = dxf_ellipse_init (ellipse);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -194,66 +194,66 @@ dxf_ellipse_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_ellipse->id_code);
+                        fscanf (fp->fp, "%x\n", &ellipse->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_ellipse->linetype);
+                        fscanf (fp->fp, "%s\n", ellipse->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_ellipse->layer);
+                        fscanf (fp->fp, "%s\n", ellipse->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->x0);
+                        fscanf (fp->fp, "%lf\n", &ellipse->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->y0);
+                        fscanf (fp->fp, "%lf\n", &ellipse->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->z0);
+                        fscanf (fp->fp, "%lf\n", &ellipse->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->x1);
+                        fscanf (fp->fp, "%lf\n", &ellipse->x1);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->y1);
+                        fscanf (fp->fp, "%lf\n", &ellipse->y1);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->z1);
+                        fscanf (fp->fp, "%lf\n", &ellipse->z1);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_ellipse->elevation = 0.0))
+                        && (ellipse->elevation = 0.0))
                 {
                         /* Elevation is a pre AutoCAD R11 variable
                          * so additional testing for the version should
@@ -261,63 +261,63 @@ dxf_ellipse_read
                          * Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->elevation);
+                        fscanf (fp->fp, "%lf\n", &ellipse->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->thickness);
+                        fscanf (fp->fp, "%lf\n", &ellipse->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
                          * radius. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->ratio);
+                        fscanf (fp->fp, "%lf\n", &ellipse->ratio);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a string containing the
                          * start angle. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->start_angle);
+                        fscanf (fp->fp, "%lf\n", &ellipse->start_angle);
                 }
                 else if (strcmp (temp_string, "42") == 0)
                 {
                         /* Now follows a string containing the
                          * end angle. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->end_angle);
+                        fscanf (fp->fp, "%lf\n", &ellipse->end_angle);
                 }
                 else if (strcmp (temp_string, "48") == 0)
                 {
                         /* Now follows a string containing the linetype
                          * scale. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->linetype_scale);
+                        fscanf (fp->fp, "%lf\n", &ellipse->linetype_scale);
                 }
                 else if (strcmp (temp_string, "60") == 0)
                 {
                         /* Now follows a string containing the
                          * visibility value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%hd\n", &dxf_ellipse->visibility);
+                        fscanf (fp->fp, "%hd\n", &ellipse->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_ellipse->color);
+                        fscanf (fp->fp, "%d\n", &ellipse->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_ellipse->paperspace);
+                        fscanf (fp->fp, "%d\n", &ellipse->paperspace);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_12)
                         && (strcmp (temp_string, "100") == 0))
@@ -342,35 +342,35 @@ dxf_ellipse_read
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->extr_x0);
+                        fscanf (fp->fp, "%lf\n", &ellipse->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->extr_y0);
+                        fscanf (fp->fp, "%lf\n", &ellipse->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ellipse->extr_z0);
+                        fscanf (fp->fp, "%lf\n", &ellipse->extr_z0);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_ellipse->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", ellipse->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_ellipse->dictionary_owner_hard);
+                        fscanf (fp->fp, "%s\n", ellipse->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -387,18 +387,18 @@ dxf_ellipse_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_ellipse->linetype, "") == 0)
+        if (strcmp (ellipse->linetype, "") == 0)
         {
-                dxf_ellipse->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                ellipse->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_ellipse->layer, "") == 0)
+        if (strcmp (ellipse->layer, "") == 0)
         {
-                dxf_ellipse->layer = strdup (DXF_DEFAULT_LAYER);
+                ellipse->layer = strdup (DXF_DEFAULT_LAYER);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_ellipse);
+        return (ellipse);
 }
 
 
@@ -416,8 +416,8 @@ dxf_ellipse_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfEllipse *dxf_ellipse
-                /*!< DXF ellipse entity */
+        DxfEllipse *ellipse
+                /*!< Pointer to a DXF \c ELLIPSE entity */
 )
 {
 #if DEBUG
@@ -440,45 +440,45 @@ dxf_ellipse_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_ellipse == NULL)
+        if (ellipse == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_ellipse->ratio == 0.0)
+        if (ellipse->ratio == 0.0)
         {
                 fprintf (stderr,
                   (_("Error in %s () ratio value equals 0.0 for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_ellipse->id_code);
+                  __FUNCTION__, dxf_entity_name, ellipse->id_code);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_ellipse->linetype, "") == 0)
+        if (strcmp (ellipse->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_ellipse->id_code);
+                  __FUNCTION__, dxf_entity_name, ellipse->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_ellipse->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                ellipse->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_ellipse->layer, "") == 0)
+        if (strcmp (ellipse->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_ellipse->id_code);
+                  __FUNCTION__, dxf_entity_name, ellipse->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
-                dxf_ellipse->layer = strdup (DXF_DEFAULT_LAYER);
+                ellipse->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_ellipse->id_code != -1)
+        if (ellipse->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_ellipse->id_code);
+                fprintf (fp->fp, "  5\n%x\n", ellipse->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -490,72 +490,72 @@ dxf_ellipse_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_ellipse->dictionary_owner_soft, "") != 0)
+        if ((strcmp (ellipse->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_ellipse->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", ellipse->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_ellipse->dictionary_owner_hard, "") != 0)
+        if ((strcmp (ellipse->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_ellipse->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", ellipse->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_ellipse->paperspace == DXF_PAPERSPACE)
+        if (ellipse->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_ellipse->layer);
-        if (strcmp (dxf_ellipse->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", ellipse->layer);
+        if (strcmp (ellipse->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_ellipse->linetype);
+                fprintf (fp->fp, "  6\n%s\n", ellipse->linetype);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_ellipse->elevation != 0.0))
+          && (ellipse->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_ellipse->elevation);
+                fprintf (fp->fp, " 38\n%f\n", ellipse->elevation);
         }
         if ((fp->acad_version_number <= AutoCAD_13)
-          && (dxf_ellipse->thickness != 0.0))
+          && (ellipse->thickness != 0.0))
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_ellipse->thickness);
+                fprintf (fp->fp, " 39\n%f\n", ellipse->thickness);
         }
-        if (dxf_ellipse->color != DXF_COLOR_BYLAYER)
+        if (ellipse->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_ellipse->color);
+                fprintf (fp->fp, " 62\n%d\n", ellipse->color);
         }
-        if (dxf_ellipse->linetype_scale != 1.0)
+        if (ellipse->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_ellipse->linetype_scale);
+                fprintf (fp->fp, " 48\n%f\n", ellipse->linetype_scale);
         }
-        if (dxf_ellipse->visibility != 0)
+        if (ellipse->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_ellipse->visibility);
+                fprintf (fp->fp, " 60\n%d\n", ellipse->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEllipse\n");
         }
-        fprintf (fp->fp, " 10\n%f\n", dxf_ellipse->x0);
-        fprintf (fp->fp, " 20\n%f\n", dxf_ellipse->y0);
-        fprintf (fp->fp, " 30\n%f\n", dxf_ellipse->z0);
-        fprintf (fp->fp, " 11\n%f\n", dxf_ellipse->x1);
-        fprintf (fp->fp, " 21\n%f\n", dxf_ellipse->y1);
-        fprintf (fp->fp, " 31\n%f\n", dxf_ellipse->z1);
-        fprintf (fp->fp, " 210\n%f\n", dxf_ellipse->extr_x0);
-        fprintf (fp->fp, " 220\n%f\n", dxf_ellipse->extr_y0);
-        fprintf (fp->fp, " 230\n%f\n", dxf_ellipse->extr_z0);
-        fprintf (fp->fp, " 40\n%f\n", dxf_ellipse->ratio);
-        fprintf (fp->fp, " 41\n%f\n", dxf_ellipse->start_angle);
-        fprintf (fp->fp, " 42\n%f\n", dxf_ellipse->end_angle);
+        fprintf (fp->fp, " 10\n%f\n", ellipse->x0);
+        fprintf (fp->fp, " 20\n%f\n", ellipse->y0);
+        fprintf (fp->fp, " 30\n%f\n", ellipse->z0);
+        fprintf (fp->fp, " 11\n%f\n", ellipse->x1);
+        fprintf (fp->fp, " 21\n%f\n", ellipse->y1);
+        fprintf (fp->fp, " 31\n%f\n", ellipse->z1);
+        fprintf (fp->fp, " 210\n%f\n", ellipse->extr_x0);
+        fprintf (fp->fp, " 220\n%f\n", ellipse->extr_y0);
+        fprintf (fp->fp, " 230\n%f\n", ellipse->extr_z0);
+        fprintf (fp->fp, " 40\n%f\n", ellipse->ratio);
+        fprintf (fp->fp, " 41\n%f\n", ellipse->start_angle);
+        fprintf (fp->fp, " 42\n%f\n", ellipse->end_angle);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -573,7 +573,7 @@ dxf_ellipse_write
 int
 dxf_ellipse_free
 (
-        DxfEllipse *dxf_ellipse
+        DxfEllipse *ellipse
                 /*!< Pointer to the memory occupied by the DXF
                  * \c ELLIPSE entity. */
 )
@@ -581,19 +581,19 @@ dxf_ellipse_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_ellipse->next != NULL)
+        if (ellipse->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfEllipse was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_ellipse->linetype);
-        free (dxf_ellipse->layer);
-        free (dxf_ellipse->dictionary_owner_soft);
-        free (dxf_ellipse->dictionary_owner_hard);
-        free (dxf_ellipse);
-        dxf_ellipse = NULL;
+        free (ellipse->linetype);
+        free (ellipse->layer);
+        free (ellipse->dictionary_owner_soft);
+        free (ellipse->dictionary_owner_hard);
+        free (ellipse);
+        ellipse = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif

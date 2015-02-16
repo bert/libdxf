@@ -143,24 +143,24 @@ dxf_ellipse_new ();
 DxfEllipse *
 dxf_ellipse_init
 (
-        DxfEllipse *dxf_ellipse
+        DxfEllipse *ellipse
 );
 DxfEllipse *
 dxf_ellipse_read
 (
         DxfFile *fp,
-        DxfEllipse *dxf_ellipse
+        DxfEllipse *ellipse
 );
 int
 dxf_ellipse_write
 (
         DxfFile *fp,
-        DxfEllipse *dxf_ellipse
+        DxfEllipse *ellipse
 );
 int
 dxf_ellipse_free
 (
-        DxfEllipse *dxf_ellipse
+        DxfEllipse *ellipse
 );
 
 
