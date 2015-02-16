@@ -11021,6 +11021,206 @@ Paintbrush Picture
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>POLYLINE.</title>
+
+        <para>The following group codes apply to polyline entities.<table>
+            <title>POLYLINE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDb2dPolyline or
+                  AcDb3dPolyline).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>DXF: always 0 APP: a "dummy" point; the X and Y
+                  values are always 0, and the Z value is the polyline's
+                  elevation (in OCS when 2D, WCS when 3D).</entry>
+                </row>
+
+                <row>
+                  <entry>20</entry>
+
+                  <entry>DXF: always 0.</entry>
+                </row>
+
+                <row>
+                  <entry>30</entry>
+
+                  <entry>DXF: polyline's elevation (in OCS when 2D, WCS when
+                  3D).</entry>
+                </row>
+
+                <row>
+                  <entry>39</entry>
+
+                  <entry>Thickness (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Polyline flag (bit-coded); default is 0: 1 = This is
+                  a closed polyline (or a polygon mesh closed in the M
+                  direction). 2 = Curve-fit vertices have been added. 4 =
+                  Spline-fit vertices have been added. 8 = This is a 3D
+                  polyline. 16 = This is a 3D polygon mesh. 32 = The polygon
+                  mesh is closed in the N direction. 64 = The polyline is a
+                  polyface mesh. 128 = The linetype pattern is generated
+                  continuously around the vertices of this polyline.</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Default starting width (optional; default =
+                  0).</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>Default ending width (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Polygon mesh M vertex count (optional; default =
+                  0).</entry>
+                </row>
+
+                <row>
+                  <entry>72</entry>
+
+                  <entry>Polygon mesh N vertex count (optional; default =
+                  0).</entry>
+                </row>
+
+                <row>
+                  <entry>73</entry>
+
+                  <entry>Smooth surface M density (optional; default =
+                  0).</entry>
+                </row>
+
+                <row>
+                  <entry>74</entry>
+
+                  <entry>Smooth surface N density (optional; default =
+                  0).</entry>
+                </row>
+
+                <row>
+                  <entry>75</entry>
+
+                  <entry>Curves and smooth surface type (optional; default =
+                  0); integer codes, not bit-coded: 0 = No smooth surface
+                  fitted 5 = Quadratic B-spline surface 6 = Cubic B-spline
+                  surface 8 = Bezier surface.</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>Xdata with the "AUTOCAD_POSTSCRIPT_FIGURE" application ID may
+        follow.</para>
+
+        <para>This contains information related to PostScript images and
+        PostScript fill information.</para>
+
+        <para>Topics in this section:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Polyface Meshes.</para>
+          </listitem>
+        </itemizedlist>
+
+        <section>
+          <title>Polyface Meshes.</title>
+
+          <para>A polyface mesh is represented in DXF as a variant of a
+          polyline entity.</para>
+
+          <para>The polyline header is identified as introducing a polyface
+          mesh by the presence of the 64 bit in the polyline flags (70)
+          group.</para>
+
+          <para>The 71 group specifies the number of vertices in the mesh, and
+          the 72 group specifies the number of faces.</para>
+
+          <para>Although these counts are correct for all meshes created with
+          the PFACE command, applications are not required to place correct
+          values in these fields.</para>
+
+          <para>Following the polyline header is a sequence of vertex entities
+          that specify the vertex coordinates, then followed by faces that
+          compose the mesh.</para>
+
+          <para>The AutoCAD entity structure imposes a limit on the number of
+          vertices that a given face entity can specify.</para>
+
+          <para>You can represent more complex polygons by decomposing them
+          into triangular wedges.</para>
+
+          <para>Their edges should be made invisible to prevent visible
+          artifacts of this subdivision from being drawn.</para>
+
+          <para>The PFACE command performs this subdivision automatically, but
+          when applications generate polyface meshes directly, the
+          applications must do this themselves.</para>
+
+          <para>The number of vertices per face is the key parameter in this
+          subdivision process.</para>
+
+          <para>The PFACEVMAX system variable provides an application with the
+          number of vertices per face entity.</para>
+
+          <para>This value is read-only and is set to 4.</para>
+
+          <para>Polyface meshes created with the PFACE command are always
+          generated with all the vertex coordinate entities first, followed by
+          the face definition entities.</para>
+
+          <para>The code within AutoCAD that processes polyface meshes
+          requires this ordering.</para>
+
+          <para>Programs that generate polyface meshes in DXF should generate
+          all the vertices then all the faces.</para>
+
+          <para>However, programs that read polyface meshes from DXF should be
+          tolerant of odd vertex and face ordering.</para>
+        </section>
+      </section>
     </section>
   </chapter>
 </book>
