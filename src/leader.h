@@ -238,6 +238,12 @@ dxf_leader_init
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_read
+(
+        DxfFile *fp,
+        DxfLeader *leader
+);
 int
 dxf_leader_free
 (

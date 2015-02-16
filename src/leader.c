@@ -170,6 +170,401 @@ dxf_leader_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF \c LEADER entity.
+ *
+ * The last line read from file contained the string "LEADER". \n
+ * Now follows some data for the \c LEADER, to be terminated with a "  0"
+ * string announcing the following entity, or the end of the \c ENTITY
+ * section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c leader. \n
+ *
+ * \return \c a pointer to \c leader.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfLeader *
+dxf_leader_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfLeader *leader
+                /*!< Pointer to a DXF \c LEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
+                return (NULL);
+        }
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+        }
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                leader = dxf_leader_new ();
+                leader = dxf_leader_init (leader);
+        }
+        i = 0;
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        /* Clean up. */
+                        free (temp_string);
+                        fclose (fp->fp);
+                        return (NULL);
+                }
+                else if (strcmp (temp_string, "  3") == 0)
+                {
+                        /* Now follows a string containing additional
+                         * proprietary data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", leader->dimension_style_name);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &leader->id_code);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", leader->linetype);
+                }
+                else if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing a layer name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", leader->layer);
+                }
+                else if ((strcmp (temp_string, "10") == 0)
+                  || (strcmp (temp_string, "20") == 0)
+                  || (strcmp (temp_string, "30") == 0))
+                {
+                        if (strcmp (temp_string, "10") == 0)
+                        {
+                                /* Now follows a string containing the X-value
+                                 * of the Vertex coordinates (one entry for each
+                                 * vertex). */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%lf\n", &leader->x0[i]);
+                        }
+                        else if (strcmp (temp_string, "20") == 0)
+                        {
+                                /* Now follows a string containing the Y-value
+                                 * of the Vertex coordinates (one entry for each
+                                 * vertex). */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%lf\n", &leader->y0[i]);
+                        }
+                        else if (strcmp (temp_string, "30") == 0)
+                        {
+                                /* Now follows a string containing the Z-value
+                                 * of the Vertex coordinates (one entry for each
+                                 * vertex). */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%lf\n", &leader->z0[i]);
+                                i++;
+                        }
+                }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                  && DXF_FLATLAND
+                  && (strcmp (temp_string, "38") == 0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->elevation);
+                }
+                else if (strcmp (temp_string, "39") == 0)
+                {
+                        /* Now follows a string containing the
+                         * thickness. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->thickness);
+                }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the text
+                         * annotation height. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->text_annotation_height);
+                }
+                else if (strcmp (temp_string, "41") == 0)
+                {
+                        /* Now follows a string containing the text
+                         * annotation width. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->text_annotation_width);
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &leader->visibility);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &leader->color);
+                }
+                else if (strcmp (temp_string, "67") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &leader->paperspace);
+                }
+                else if (strcmp (temp_string, "71") == 0)
+                {
+                        /* Now follows a string containing the arrow
+                         * head flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &leader->arrow_head_flag);
+                }
+                else if (strcmp (temp_string, "72") == 0)
+                {
+                        /* Now follows a string containing the path type. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &leader->path_type);
+                }
+                else if (strcmp (temp_string, "73") == 0)
+                {
+                        /* Now follows a string containing the creation
+                         * flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &leader->creation_flag);
+                }
+                else if (strcmp (temp_string, "74") == 0)
+                {
+                        /* Now follows a string containing the hookline
+                         * direction flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &leader->hookline_direction_flag);
+                }
+                else if (strcmp (temp_string, "75") == 0)
+                {
+                        /* Now follows a string containing the hookline
+                         * flag. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &leader->hookline_flag);
+                }
+                else if (strcmp (temp_string, "76") == 0)
+                {
+                        /* Now follows a string containing the number of
+                         * vertices. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &leader->number_vertices);
+                }
+                else if (strcmp (temp_string, "77") == 0)
+                {
+                        /* Now follows a string containing the leader
+                         * color. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &leader->leader_color);
+                }
+                else if ((fp->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if (strcmp (temp_string, "AcDbLeader") != 0)
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "210") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the extrusion vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->x_extr);
+                }
+                else if (strcmp (temp_string, "220") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the extrusion vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->y_extr);
+                }
+                else if (strcmp (temp_string, "230") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the extrusion vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->z_extr);
+                }
+                else if (strcmp (temp_string, "211") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the "Horizontal" direction for
+                         * leader. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->x1);
+                }
+                else if (strcmp (temp_string, "221") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the "Horizontal" direction for
+                         * leader. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->y1);
+                }
+                else if (strcmp (temp_string, "231") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the "Horizontal" direction for
+                         * leader. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->z1);
+                }
+                else if (strcmp (temp_string, "212") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the Block reference insertion
+                         * point offset from last leader vertex. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->x2);
+                }
+                else if (strcmp (temp_string, "222") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the Block reference insertion
+                         * point offset from last leader vertex. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->y2);
+                }
+                else if (strcmp (temp_string, "232") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the Block reference insertion
+                         * point offset from last leader vertex. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->z2);
+                }
+                else if (strcmp (temp_string, "213") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-value of the Annotation placement point
+                         * offset from last leader vertex. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->x3);
+                }
+                else if (strcmp (temp_string, "223") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-value of the Annotation placement point
+                         * offset from last leader vertex. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->y3);
+                }
+                else if (strcmp (temp_string, "233") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-value of the Annotation placement point
+                         * offset from last leader vertex. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &leader->z3);
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", leader->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "340") == 0)
+                {
+                        /* Now follows a string containing Hard
+                         * reference to associated annotation (mtext,
+                         * tolerance, or insert entity). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", leader->annotation_reference_hard);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", leader->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, (_("DXF comment: %s\n")), temp_string);
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                }
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (leader->linetype, "") == 0)
+        {
+                leader->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (leader->layer, "") == 0)
+        {
+                leader->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        /* Clean up. */
+        free (temp_string);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c LEADER and all it's
  * data fields.
  *
