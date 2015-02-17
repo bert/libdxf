@@ -36,12 +36,15 @@
 
 
 /*!
- * \brief Allocate memory for a \c DxfEndblk
- * (a DXF \c ENDBLK entity).
+ * \brief Allocate memory for a \c DxfEndblk (a DXF \c ENDBLK entity).
  *
  * Fill the memory contents with zeros.
  *
+ * \return Pointer to the memory occupied by the \c DxfEndblk.
+ *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -83,6 +86,8 @@ dxf_endblk_new ()
  * allocated memory when succesful.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -90,7 +95,7 @@ DxfEndblk *
 dxf_endblk_init
 (
         DxfEndblk *endblk
-                /*!< DXF end of block marker entity */
+                /*!< Pointer to the DXF end of block marker entity */
 )
 {
 #if DEBUG
@@ -133,6 +138,8 @@ dxf_endblk_init
  * \return a pointer to \c endblk.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  *
@@ -147,7 +154,7 @@ dxf_endblk_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfEndblk *endblk
-                /*!< DXF end of block marker entity */
+                /*!< Pointer to the DXF end of block marker entity */
 )
 {
 #if DEBUG
@@ -229,6 +236,12 @@ dxf_endblk_read
  * (a DXF \c ENDBLK entity).
  *
  * Appears only in \c BLOCKS section.\n
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 int
 dxf_endblk_write
@@ -236,7 +249,7 @@ dxf_endblk_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfEndblk *endblk
-                /*!< DXF end of block marker entity */
+                /*!< Pointer to the DXF end of block marker entity */
 )
 {
 #if DEBUG
@@ -294,6 +307,8 @@ dxf_endblk_write
  * occurred.
  *
  * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -301,7 +316,7 @@ int
 dxf_endblk_free
 (
         DxfEndblk *endblk
-                /*!< DXF end of block marker entity */
+                /*!< Pointer to the DXF end of block marker entity */
 )
 {
 #if DEBUG
