@@ -11321,6 +11321,127 @@ Paintbrush Picture
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>SEQEND.</title>
+
+        <para>The following group codes apply to seqend entities.<table>
+            <title>SEQEND group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>-2</entry>
+
+                  <entry>APP: name of entity that began the sequence. This
+                  entity marks the end of vertex (vertex type name) for a
+                  polyline, or the end of attribute entities (attrib type
+                  name) for an insert entity that has attributes (indicated)
+                  by 66 group present and nonzero in insert entity). This code
+                  is not saved in a DXF file.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>SHAPE.</title>
+
+        <para>The following group codes apply to shape entities.<table>
+            <title>SHAPE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbShape).</entry>
+                </row>
+
+                <row>
+                  <entry>39</entry>
+
+                  <entry>Thickness (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Insertion point (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of insertion point (in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Size.</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>Shape name.</entry>
+                </row>
+
+                <row>
+                  <entry>50</entry>
+
+                  <entry>Rotation angle (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>Relative X scale factor (optional; default
+                  =1).</entry>
+                </row>
+
+                <row>
+                  <entry>51</entry>
+
+                  <entry>Oblique angle (optional; default =0).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
