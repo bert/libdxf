@@ -51,27 +51,27 @@ dxf_endblk_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfEndblk *dxf_endblk = NULL;
+        DxfEndblk *endblk = NULL;
         size_t size;
 
         size = sizeof (DxfEndblk);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_endblk = malloc (size)) == NULL)
+        if ((endblk = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfEndblk struct.\n")),
                   __FUNCTION__);
-                dxf_endblk = NULL;
+                endblk = NULL;
         }
         else
         {
-                memset (dxf_endblk, 0, size);
+                memset (endblk, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_endblk);
+        return (endblk);
 }
 
 
@@ -89,7 +89,7 @@ dxf_endblk_new ()
 DxfEndblk *
 dxf_endblk_init
 (
-        DxfEndblk *dxf_endblk
+        DxfEndblk *endblk
                 /*!< DXF end of block marker entity */
 )
 {
@@ -97,27 +97,27 @@ dxf_endblk_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_endblk == NULL)
+        if (endblk == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_endblk = dxf_endblk_new ();
+                endblk = dxf_endblk_new ();
         }
-        if (dxf_endblk == NULL)
+        if (endblk == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfEndblk struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_endblk->id_code = 0;
-        dxf_endblk->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_endblk->dictionary_owner_soft = strdup ("");
+        endblk->id_code = 0;
+        endblk->layer = strdup (DXF_DEFAULT_LAYER);
+        endblk->dictionary_owner_soft = strdup ("");
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_endblk);
+        return (endblk);
 }
 
 /*!
@@ -128,9 +128,9 @@ dxf_endblk_init
  * Now follows some data for the \c ENDBLK, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
- * While parsing the DXF file store data in \c dxf_endblk. \n
+ * While parsing the DXF file store data in \c endblk. \n
  *
- * \return a pointer to \c dxf_endblk.
+ * \return a pointer to \c endblk.
  *
  * \version According to DXF R10.
  * \version According to DXF R13.
@@ -146,7 +146,7 @@ dxf_endblk_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfEndblk *dxf_endblk
+        DxfEndblk *endblk
                 /*!< DXF end of block marker entity */
 )
 {
@@ -163,13 +163,13 @@ dxf_endblk_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_endblk == NULL)
+        if (endblk == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_endblk = dxf_endblk_new ();
-                dxf_endblk = dxf_endblk_init (dxf_endblk);
+                endblk = dxf_endblk_new ();
+                endblk = dxf_endblk_init (endblk);
         }
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -186,18 +186,18 @@ dxf_endblk_read
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
-                        fscanf (fp->fp, "%x\n", &dxf_endblk->id_code);
+                        fscanf (fp->fp, "%x\n", &endblk->id_code);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
-                        fscanf (fp->fp, "%s\n", dxf_endblk->layer);
+                        fscanf (fp->fp, "%s\n", endblk->layer);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner object. */
-                        fscanf (fp->fp, "%s\n", dxf_endblk->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", endblk->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -213,14 +213,14 @@ dxf_endblk_read
                 }
         }
         /* Handle ommitted members and/or illegal values. */
-        if (strcmp (dxf_endblk->layer, "") == 0)
+        if (strcmp (endblk->layer, "") == 0)
         {
-                dxf_endblk->layer = strdup (DXF_DEFAULT_LAYER);
+                endblk->layer = strdup (DXF_DEFAULT_LAYER);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_endblk);
+        return (endblk);
 }
 
 
@@ -235,7 +235,7 @@ dxf_endblk_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfEndblk *dxf_endblk
+        DxfEndblk *endblk
                 /*!< DXF end of block marker entity */
 )
 {
@@ -250,7 +250,7 @@ dxf_endblk_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_endblk == NULL)
+        if (endblk == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
@@ -261,7 +261,7 @@ dxf_endblk_write
         fprintf (fp->fp, "  0\nENDBLK\n");
         if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_endblk->id_code);
+                fprintf (fp->fp, "  5\n%x\n", endblk->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -276,7 +276,7 @@ dxf_endblk_write
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
-                fprintf (fp->fp, "  8\n%s\n", dxf_endblk->layer);
+                fprintf (fp->fp, "  8\n%s\n", endblk->layer);
                 fprintf (fp->fp, "100\nAcDbBlockEnd\n");
         }
 #if DEBUG
@@ -300,17 +300,17 @@ dxf_endblk_write
 int
 dxf_endblk_free
 (
-        DxfEndblk *dxf_endblk
+        DxfEndblk *endblk
                 /*!< DXF end of block marker entity */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        free (dxf_endblk->layer);
-        free (dxf_endblk->dictionary_owner_soft);
-        free (dxf_endblk);
-        dxf_endblk = NULL;
+        free (endblk->layer);
+        free (endblk->dictionary_owner_soft);
+        free (endblk);
+        endblk = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif

@@ -1,7 +1,7 @@
 /*!
  * \file endblk.h
  *
- * \author Copyright (C) 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2014 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF end of block marker entity (\c ENDBLK).
  *
@@ -86,21 +86,21 @@ dxf_endblk
 DxfEndblk *dxf_endblk_new ();
 DxfEndblk *dxf_endblk_init
 (
-        DxfEndblk *dxf_endblk
+        DxfEndblk *endblk
 );
 DxfEndblk *dxf_endblk_read
 (
         DxfFile *fp,
-        DxfEndblk *dxf_endblk
+        DxfEndblk *endblk
 );
 int dxf_endblk_write
 (
         DxfFile *fp,
-        DxfEndblk *dxf_endblk
+        DxfEndblk *endblk
 );
 int dxf_endblk_free
 (
-        DxfEndblk *dxf_endblk
+        DxfEndblk *endblk
 );
 
 
