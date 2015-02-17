@@ -167,6 +167,8 @@ dxf_ellipse_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (ellipse == NULL)
@@ -187,6 +189,8 @@ dxf_ellipse_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -395,6 +399,8 @@ dxf_ellipse_read
         {
                 ellipse->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -431,6 +437,8 @@ dxf_ellipse_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (fp->acad_version_number < AutoCAD_13)
@@ -438,6 +446,8 @@ dxf_ellipse_write
                 fprintf (stderr,
                   (_("Error in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (ellipse == NULL)
@@ -445,6 +455,8 @@ dxf_ellipse_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (ellipse->ratio == 0.0)
@@ -452,6 +464,8 @@ dxf_ellipse_write
                 fprintf (stderr,
                   (_("Error in %s () ratio value equals 0.0 for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, ellipse->id_code);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (ellipse->linetype, "") == 0)
@@ -556,6 +570,8 @@ dxf_ellipse_write
         fprintf (fp->fp, " 40\n%f\n", ellipse->ratio);
         fprintf (fp->fp, " 41\n%f\n", ellipse->start_angle);
         fprintf (fp->fp, " 42\n%f\n", ellipse->end_angle);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
