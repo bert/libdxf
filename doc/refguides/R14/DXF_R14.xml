@@ -11221,6 +11221,106 @@ Paintbrush Picture
           tolerant of odd vertex and face ordering.</para>
         </section>
       </section>
+
+      <section>
+        <title>RAY.</title>
+
+        <para>The following group codes apply to ray entities.<table>
+            <title>RAY group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbRay).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Start point (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of start point (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>Unit direction vector (in WCS). DXF: X value; APP: 3D
+                  vector.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of unit direction vector (in
+                  WCS).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>REGION.</title>
+
+        <para>The following group codes apply to region entities.<table>
+            <title>REGION group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbModelerGeometry).</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Modeler format version number (currently =
+                  1).</entry>
+                </row>
+
+                <row>
+                  <entry>1</entry>
+
+                  <entry>Proprietary data (multiple lines &lt; 255 characters
+                  each).</entry>
+                </row>
+
+                <row>
+                  <entry>3</entry>
+
+                  <entry>Additional lines of proprietary data (if previous
+                  group 1 string is greater than 255 characters).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
