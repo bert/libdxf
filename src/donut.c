@@ -173,6 +173,8 @@ dxf_donut_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (donut == NULL)
@@ -180,6 +182,8 @@ dxf_donut_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (donut->outside_diameter > donut->inside_diameter)
@@ -187,6 +191,8 @@ dxf_donut_write
                 fprintf (stderr,
                   (_("Error in %s () outside diameter is smaller than the inside diameter for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, id_code);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         start_width = 0.5 * (donut->outside_diameter - donut->inside_diameter);
@@ -288,6 +294,8 @@ dxf_donut_write
         seqend->linetype = donut->linetype;
         dxf_seqend_write (fp, seqend);
         /*! \todo Hook up this seqend to the list of seqends. */
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
