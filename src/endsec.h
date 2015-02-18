@@ -1,7 +1,7 @@
 /*!
  * \file endsec.h
  *
- * \author Copyright (C) 20154 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF end of section marker (\c ENDSEC).
  *
