@@ -11442,6 +11442,260 @@ Paintbrush Picture
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>SOLID.</title>
+
+        <para>The following group codes apply to solid entities.<table>
+            <title>SOLID group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbTrace).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>First corner. DXF: X value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of first corner.</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>Second corner. DXF: X value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of second corner.</entry>
+                </row>
+
+                <row>
+                  <entry>12</entry>
+
+                  <entry>Third corner. DXF: X value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>22, 32</entry>
+
+                  <entry>DXF: Y and Z values of third corner.</entry>
+                </row>
+
+                <row>
+                  <entry>13</entry>
+
+                  <entry>Fourth corner. If only three corners are entered to
+                  define the SOLID, then the fourth corner coordinate is the
+                  same as the third DXF: X value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>23, 33</entry>
+
+                  <entry>DXF: Y and Z values of fourth corner.</entry>
+                </row>
+
+                <row>
+                  <entry>39</entry>
+
+                  <entry>Thickness (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>SPLINE.</title>
+
+        <para>The following group codes apply to spline entities.<table>
+            <title>SPLINE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbSpline).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Normal vector (omitted if the spline is nonplanar)
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of normal vector.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Spline flag (bit coded): 1 = Closed spline 2 =
+                  Periodic spline 4 = Rational spline 8 = Planar 16 = Linear
+                  (planar bit is also set).</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Degree of the spline curve.</entry>
+                </row>
+
+                <row>
+                  <entry>72</entry>
+
+                  <entry>Number of knots.</entry>
+                </row>
+
+                <row>
+                  <entry>73</entry>
+
+                  <entry>Number of control points.</entry>
+                </row>
+
+                <row>
+                  <entry>74</entry>
+
+                  <entry>Number of fit points (if any).</entry>
+                </row>
+
+                <row>
+                  <entry>42</entry>
+
+                  <entry>Knot tolerance (default = 0.0000001).</entry>
+                </row>
+
+                <row>
+                  <entry>43</entry>
+
+                  <entry>Control-point tolerance (default =
+                  0.0000001).</entry>
+                </row>
+
+                <row>
+                  <entry>44</entry>
+
+                  <entry>Fit tolerance (default = 0.0000000001).</entry>
+                </row>
+
+                <row>
+                  <entry>12</entry>
+
+                  <entry>Start tangent--may be omitted (in WCS). DXF: X value;
+                  APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>22, 32</entry>
+
+                  <entry>DXF: Y and Z values of start tangent--may be omitted
+                  (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>13</entry>
+
+                  <entry>End tangent--may be omitted (in WCS). DXF: X value;
+                  APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>23, 33</entry>
+
+                  <entry>DXF: Y and Z values of end tangent--may be omitted
+                  (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Knot value (one entry per knot).</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>Weight (if not 1); with multiple group pairs, are
+                  present if all are not 1.</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Control points (in WCS) one entry per control point.
+                  DXF: X value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of control points (in WCS) (one
+                  entry per control point).</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>Fit points (in WCS) one entry per fit point. DXF: X
+                  value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of fit points (in WCS) (one entry
+                  per fit point).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
