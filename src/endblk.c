@@ -160,7 +160,7 @@ dxf_endblk_read
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char temp_string[DXF_MAX_STRING_LENGTH];
+        char *temp_string = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -168,6 +168,8 @@ dxf_endblk_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (endblk == NULL)
@@ -187,6 +189,8 @@ dxf_endblk_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 else if (strcmp (temp_string, "5") == 0)
@@ -224,6 +228,8 @@ dxf_endblk_read
         {
                 endblk->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
