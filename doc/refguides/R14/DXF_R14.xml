@@ -11958,6 +11958,180 @@ Paintbrush Picture
         <para>If the 72 and 73 values are zero or missing, then the second
         alignment point is meaningless.</para>
       </section>
+
+      <section>
+        <title>TOLERANCE.</title>
+
+        <para>The following group codes apply to tolerance entities.<table>
+            <title>TOLERANCE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbFcf).</entry>
+                </row>
+
+                <row>
+                  <entry>3</entry>
+
+                  <entry>Dimension style name.</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Insertion point. (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of insertion point (in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>X-axis direction vector (in WCS) DXF: X value; APP:
+                  3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of X-axis direction vector (in
+                  WCS).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+
+      <section>
+        <title>TRACE.</title>
+
+        <para>The following group codes apply to trace entities.</para>
+
+        <para><table>
+            <title>TRACE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbTrace).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>First corner (in OCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of first corner (in OCS).</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>Second corner (in OCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of second corner (in
+                  OCS).</entry>
+                </row>
+
+                <row>
+                  <entry>12</entry>
+
+                  <entry>Third corner (in OCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>22, 32</entry>
+
+                  <entry>DXF: Y and Z values of third corner (in OCS).</entry>
+                </row>
+
+                <row>
+                  <entry>13</entry>
+
+                  <entry>Fourth corner (in OCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>23, 33</entry>
+
+                  <entry>DXF: Y and Z values of fourth corner (in
+                  OCS).</entry>
+                </row>
+
+                <row>
+                  <entry>39</entry>
+
+                  <entry>Thickness (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
