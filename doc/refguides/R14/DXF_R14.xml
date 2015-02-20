@@ -11696,6 +11696,268 @@ Paintbrush Picture
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>TEXT.</title>
+
+        <para>The following group codes apply to text entities.<table>
+            <title>TEXT group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbText).</entry>
+                </row>
+
+                <row>
+                  <entry>39</entry>
+
+                  <entry>Thickness (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>First alignment point (in OCS) DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of first alignment point (in
+                  OCS).</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Text height.</entry>
+                </row>
+
+                <row>
+                  <entry>1</entry>
+
+                  <entry>Default value (the string itself).</entry>
+                </row>
+
+                <row>
+                  <entry>50</entry>
+
+                  <entry>Text rotation (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>Relative X scale factor--width (optional; default =
+                  1). This value is also adjusted when fit-type text is
+                  used.</entry>
+                </row>
+
+                <row>
+                  <entry>51</entry>
+
+                  <entry>Oblique angle (optional; default = 0).</entry>
+                </row>
+
+                <row>
+                  <entry>7</entry>
+
+                  <entry>Text style name (optional, default =
+                  STANDARD).</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Text generation flags (optional, default = 0): 2 =
+                  Text is backward (mirrored in X), 4 = Text is upside down
+                  (mirrored in Y).</entry>
+                </row>
+
+                <row>
+                  <entry>72</entry>
+
+                  <entry>Horizontal text justification type (optional, default
+                  = 0) integer codes (not bit-coded) 0 = Left;1= Center; 2 =
+                  Right 3 = Aligned (if vertical alignment = 0) 4 = Middle (if
+                  vertical alignment = 0) 5 = Fit (if vertical alignment = 0)
+                  See the following table for clarification.</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>Second alignment point (in OCS). DXF: X value; APP:
+                  3D point. This value is meaningful only if the value of a 72
+                  or 73 group is nonzero (if the justification is anything
+                  other than baseline/left).</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of second alignment point (in
+                  OCS).</entry>
+                </row>
+
+                <row>
+                  <entry>210</entry>
+
+                  <entry>Extrusion direction. (optional; default = 0, 0, 1).
+                  DXF: X value; APP: 3D vector.</entry>
+                </row>
+
+                <row>
+                  <entry>220, 230</entry>
+
+                  <entry>DXF: Y and Z values of extrusion direction.</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbText).</entry>
+                </row>
+
+                <row>
+                  <entry>73</entry>
+
+                  <entry>Vertical text justification type (optional, default =
+                  0): integer codes (not bit- coded) 0 = Baseline; 1 = Bottom;
+                  2 = Middle; 3 = Top See the following table for
+                  clarification.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The following table describes the group codes 72 (horizontal
+        alignment) and 73 (vertical alignment) in greater detail.<table>
+            <title>Group 72 and 73 integer codes.</title>
+
+            <tgroup cols="7">
+              <thead>
+                <row>
+                  <entry align="left">Group 72</entry>
+
+                  <entry align="left">Group 73</entry>
+
+                  <entry align="left"/>
+
+                  <entry align="left"/>
+
+                  <entry align="left"/>
+
+                  <entry align="left"/>
+
+                  <entry align="left"/>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry/>
+
+                  <entry><emphasis role="bold">0</emphasis></entry>
+
+                  <entry><emphasis role="bold">1</emphasis></entry>
+
+                  <entry><emphasis role="bold">2</emphasis></entry>
+
+                  <entry><emphasis role="bold">3</emphasis></entry>
+
+                  <entry><emphasis role="bold">4</emphasis></entry>
+
+                  <entry><emphasis role="bold">5</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>3 (top)</entry>
+
+                  <entry>TLeft</entry>
+
+                  <entry>TCenter</entry>
+
+                  <entry>TRight</entry>
+
+                  <entry/>
+
+                  <entry/>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>2 (middle)</entry>
+
+                  <entry>MLeft</entry>
+
+                  <entry>MCenter</entry>
+
+                  <entry>MRight</entry>
+
+                  <entry/>
+
+                  <entry/>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>1 (bottom)</entry>
+
+                  <entry>BLeft</entry>
+
+                  <entry>BCenter</entry>
+
+                  <entry>BRight</entry>
+
+                  <entry/>
+
+                  <entry/>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>0 (baseline)</entry>
+
+                  <entry>Left</entry>
+
+                  <entry>Center</entry>
+
+                  <entry>Right</entry>
+
+                  <entry>Aligned</entry>
+
+                  <entry>Middle</entry>
+
+                  <entry>Fit</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>If group 72 and/or 73 values are nonzero then the first
+        alignment point values are ignored and AutoCAD calculates new values
+        based on the second alignment point and the length and height of the
+        text string itself (after applying the text style).</para>
+
+        <para>If the 72 and 73 values are zero or missing, then the second
+        alignment point is meaningless.</para>
+      </section>
     </section>
   </chapter>
 </book>
