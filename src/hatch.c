@@ -2323,6 +2323,8 @@ dxf_hatch_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (fp->acad_version_number < AutoCAD_14)
@@ -2330,6 +2332,8 @@ dxf_hatch_write
                 fprintf (stderr,
                   (_("Error in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (hatch == NULL)
@@ -2337,6 +2341,8 @@ dxf_hatch_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (hatch->layer, "") == 0)
@@ -2459,6 +2465,8 @@ dxf_hatch_write
         fprintf (fp->fp, " 47\n%f\n", hatch->pixel_size);
         fprintf (fp->fp, " 98\n%d\n", hatch->number_of_seed_points);
         /*! \todo Add code to write hatch pattern seed points. */
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
