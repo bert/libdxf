@@ -12132,6 +12132,523 @@ Paintbrush Picture
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>VERTEX.</title>
+
+        <para>The following group codes apply to vertex entities.<table>
+            <title>VERTEX group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbVertex).</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDb2dVertex or
+                  AcDb3dPolylineVertex).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Location point (in OCS when 2D, and WCS when 3D).
+                  DXF: X value; APP: 3D point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of location point (in OCS when
+                  2D, and WCS when 3D).</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Starting width (optional; default is 0).</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>Ending width (optional; default is 0).</entry>
+                </row>
+
+                <row>
+                  <entry>42</entry>
+
+                  <entry>Bulge (optional; default is 0). The bulge is the
+                  tangent of one fourth the included angle for an arc segment,
+                  made negative if the arc goes clockwise from the start point
+                  to the endpoint. A bulge of 0 indicates a straight segment,
+                  and a bulge of 1 is a semicircle.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Vertex flags: 1 = Extra vertex created by
+                  curve-fitting. 2 = Curve-fit tangent defined for this
+                  vertex. A curve-fit tangent direction of 0 may be omitted
+                  from DXF output but is significant if this bit is set. 4 =
+                  Not used 8 = Spline vertex created by spline-fitting 16 =
+                  Spline frame control point 32 = 3D polyline vertex 64 = 3D
+                  polygon mesh 128 = Polyface mesh vertex.</entry>
+                </row>
+
+                <row>
+                  <entry>50</entry>
+
+                  <entry>Curve fit tangent direction.</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Polyface mesh vertex index. Optional. Present only if
+                  nonzero.</entry>
+                </row>
+
+                <row>
+                  <entry>72</entry>
+
+                  <entry>Polyface mesh vertex index. Optional. Present only if
+                  nonzero.</entry>
+                </row>
+
+                <row>
+                  <entry>73</entry>
+
+                  <entry>Polyface mesh vertex index. Optional. Present only if
+                  nonzero.</entry>
+                </row>
+
+                <row>
+                  <entry>74</entry>
+
+                  <entry>Polyface mesh vertex index. Optional. Present only if
+                  nonzero.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>Every vertex that is part of a polyface mesh has its vertex flag
+        128 bit set.</para>
+
+        <para>If the entity supplies the coordinate of a vertex of the mesh,
+        its 64 bit is set as well, and the 10, 20, 30 groups give the vertex
+        coordinate.</para>
+
+        <para>The vertex index values are determined by the order in which the
+        vertex entities appear within the polyline, with the first being
+        numbered 1.</para>
+
+        <para>If the vertex defines a face of the mesh, its vertex flags group
+        has the 128 bit set but not the 64 bit.</para>
+
+        <para>In this case, the 10, 20, 30 (location) groups of the face
+        entity are irrelevant and are always written as 0 in a DXF
+        file.</para>
+
+        <para>The vertex indexes that define the mesh are given by 71, 72, 73,
+        and 74 group codes, the values of which specify one of the previously
+        defined vertexes by index.</para>
+
+        <para>If the index is negative, the edge that begins with that vertex
+        is invisible.</para>
+
+        <para>The first 0 vertex marks the end of the vertices of the
+        face.</para>
+      </section>
+
+      <section>
+        <title>VIEWPORT.</title>
+
+        <para>The following group codes apply to viewport entities.<table>
+            <title>VIEWPORT group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbViewport).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Center point (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of center point (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Width in paper space units.</entry>
+                </row>
+
+                <row>
+                  <entry>41</entry>
+
+                  <entry>Height in paper space units.</entry>
+                </row>
+
+                <row>
+                  <entry>68</entry>
+
+                  <entry>Viewport status field: -1 = On, but is fully off
+                  screen, or is one of the viewports that is not active
+                  because the $MAXACTVP count is currently being exceeded. 0 =
+                  Off &lt;positive value &gt; = On and active. The value
+                  indicates the order of stacking for the viewports, where 1
+                  is the active viewport, 2 is the next, and so forth.</entry>
+                </row>
+
+                <row>
+                  <entry>69</entry>
+
+                  <entry>Viewport ID. Changes each time a drawing is opened.
+                  Never saved, except for the paper space viewport, which is
+                  always 1.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The following table lists the xdata that can be attached to
+        viewport entities.</para>
+
+        <para>In contrast to normal entity data, the order of the extended
+        group codes is important.</para>
+
+        <para>Also group codes can appear multiple times.<table>
+            <title>VIEWPORT xdata group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>1001</entry>
+
+                  <entry>Application ID ("ACAD"). This begins a section of
+                  xdata that describes the viewport.</entry>
+                </row>
+
+                <row>
+                  <entry>1000</entry>
+
+                  <entry>Begin viewport data. This field is always the string
+                  MVIEW. Other data groups may appear in the future.</entry>
+                </row>
+
+                <row>
+                  <entry>1002</entry>
+
+                  <entry>Begin window descriptor data. This field always is
+                  the string.</entry>
+                </row>
+
+                <row>
+                  <entry>1070</entry>
+
+                  <entry>Extended data version number. Always the integer
+                  16.</entry>
+                </row>
+
+                <row>
+                  <entry>1010</entry>
+
+                  <entry>View target point (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>1020, 1030</entry>
+
+                  <entry>DXF: Y and Z values of view target point (in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>1010</entry>
+
+                  <entry>View direction vector (in WCS). DXF: X value; APP: 3D
+                  vector.</entry>
+                </row>
+
+                <row>
+                  <entry>1020, 1030</entry>
+
+                  <entry>DXF: Y and Z values of view direction vector (in
+                  WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>View twist angle.</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>View height.</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>View center point X value (in DCS).</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>View center point Y value (in DCS).</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>Perspective lens length.</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>Front clip plane Z value.</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>Back clip plane Z value.</entry>
+                </row>
+
+                <row>
+                  <entry>1070</entry>
+
+                  <entry>View mode.</entry>
+                </row>
+
+                <row>
+                  <entry>1070</entry>
+
+                  <entry>Circle zoom.</entry>
+                </row>
+
+                <row>
+                  <entry>1070</entry>
+
+                  <entry>Fast zoom setting.</entry>
+                </row>
+
+                <row>
+                  <entry>1070</entry>
+
+                  <entry>UCSICON setting.</entry>
+                </row>
+
+                <row>
+                  <entry>1070</entry>
+
+                  <entry>Snap ON/OFF.</entry>
+                </row>
+
+                <row>
+                  <entry>1070</entry>
+
+                  <entry>Grid ON/OFF.</entry>
+                </row>
+
+                <row>
+                  <entry>1070</entry>
+
+                  <entry>Snap style.</entry>
+                </row>
+
+                <row>
+                  <entry>1070</entry>
+
+                  <entry>Snap ISOPAIR.</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>Snap angle.</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>Snap base point UCS X value of coordinate.</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>Snap base point UCS Y value of coordinate.</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>Snap X spacing.</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>Snap Y spacing.</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>Grid X spacing.</entry>
+                </row>
+
+                <row>
+                  <entry>1040</entry>
+
+                  <entry>Grid Y spacing.</entry>
+                </row>
+
+                <row>
+                  <entry>1070</entry>
+
+                  <entry>Hidden in plot flag.</entry>
+                </row>
+
+                <row>
+                  <entry>1002</entry>
+
+                  <entry>Begin frozen layer list (possibly empty). This field
+                  always is the string "{".</entry>
+                </row>
+
+                <row>
+                  <entry>1003</entry>
+
+                  <entry>The names of layers frozen in this viewport. This
+                  list may include xref-dependent layers. Any number of 1003
+                  groups may appear here.</entry>
+                </row>
+
+                <row>
+                  <entry>1002</entry>
+
+                  <entry>End frozen layer list. This field always is the
+                  string "}".</entry>
+                </row>
+
+                <row>
+                  <entry>1002</entry>
+
+                  <entry>End viewport data. This field always is the string
+                  "}".</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para><note>
+            <para>The ZOOM XP factor is calculated with the following formula:
+            group_41 / 2nd_group_1040 (or pspace_height /
+            mspace_height).</para>
+          </note></para>
+      </section>
+
+      <section>
+        <title>XLINE.</title>
+
+        <para>The following group codes apply to xline entities.<table>
+            <title>XLINE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbXline).</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>First point (in WCS). DXF: X value; APP: 3D
+                  point.</entry>
+                </row>
+
+                <row>
+                  <entry>20, 30</entry>
+
+                  <entry>DXF: Y and Z values of first point (in WCS).</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>Unit direction vector (in WCS). DXF: X value; APP: 3D
+                  vector.</entry>
+                </row>
+
+                <row>
+                  <entry>21, 31</entry>
+
+                  <entry>DXF: Y and Z values of unit direction vector (in
+                  WCS).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
