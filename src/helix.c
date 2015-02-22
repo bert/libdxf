@@ -645,13 +645,6 @@ dxf_helix_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (fp->acad_version_number < AutoCAD_2007)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () illegal DXF version for this entity.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
         if (helix == NULL)
         {
                 fprintf (stderr,
@@ -667,6 +660,12 @@ dxf_helix_write
                 fprintf (stderr, "    skipping %s entity.\n",
                         dxf_entity_name);
                 return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_2007)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
         }
         if (strcmp (helix->linetype, "") == 0)
         {
