@@ -1,7 +1,7 @@
 /*!
  * \file helix.h
  *
- * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF helix entity (\c HELIX).
  *
@@ -220,24 +220,24 @@ dxf_helix_new ();
 DxfHelix *
 dxf_helix_init
 (
-        DxfHelix *dxf_helix
+        DxfHelix *helix
 );
 DxfHelix *
 dxf_helix_read
 (
         DxfFile *fp,
-        DxfHelix *dxf_helix
+        DxfHelix *helix
 );
 int
 dxf_helix_write
 (
         DxfFile *fp,
-        DxfHelix *dxf_helix
+        DxfHelix *helix
 );
 int
 dxf_helix_free
 (
-        DxfHelix *dxf_helix
+        DxfHelix *helix
 );
 
 
