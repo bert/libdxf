@@ -12650,5 +12650,157 @@ Paintbrush Picture
           </table></para>
       </section>
     </section>
+
+    <section>
+      <title>OBJECTS Section.</title>
+
+      <para>This section presents the group codes that apply to nongraphical
+      objects.</para>
+
+      <para>These codes are found in the OBJECTS section of a DXF file and are
+      used by AutoLISP and ARX applications in entity definition lists.</para>
+
+      <para>The group codes shown in this section can apply to DXF files,
+      applications (AutoLISP or ARX), or both.</para>
+
+      <para>When the description of a code is different for applications and
+      DXF files (or only applies to one or the other), the description is
+      preceeded by the following indicators:<variablelist>
+          <varlistentry>
+            <term>APP</term>
+
+            <listitem>
+              <para>Application-specific description.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>DXF</term>
+
+            <listitem>
+              <para>DXF file-specific description.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+
+      <para>If the description is common to both DXF files and applications,
+      no indicator is provided.</para>
+
+      <para>Otherwise, the appropriate indicator is present.</para>
+
+      <para>Optional codes are shown in gray.</para>
+
+      <para>Objects are similar to entities, except that they have no
+      graphical or geometric meaning.</para>
+
+      <para>All objects that are not entities or symbol table records or
+      symbol tables are stored in this section.</para>
+
+      <para>This section represents a homogeneous heap of objects with
+      topological ordering of objects by ownership, such that the owners
+      always appear before the objects they own.</para>
+
+      <para>Topics in this section:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Object Ownership.</para>
+        </listitem>
+
+        <listitem>
+          <para>Object Group Codes in DXF Files.</para>
+        </listitem>
+
+        <listitem>
+          <para>Common Object Group Codes.</para>
+        </listitem>
+
+        <listitem>
+          <para>ACAD_PROXY_OBJECT.</para>
+        </listitem>
+
+        <listitem>
+          <para>DICTIONARY.</para>
+        </listitem>
+
+        <listitem>
+          <para>DICTIONARYVAR.</para>
+        </listitem>
+
+        <listitem>
+          <para>GROUP.</para>
+        </listitem>
+
+        <listitem>
+          <para>IDBUFFER.</para>
+        </listitem>
+
+        <listitem>
+          <para>IMAGEDEF.</para>
+        </listitem>
+
+        <listitem>
+          <para>IMAGEDEF_REACTOR.</para>
+        </listitem>
+
+        <listitem>
+          <para>LAYER_INDEX.</para>
+        </listitem>
+
+        <listitem>
+          <para>MLINESTYLE.</para>
+        </listitem>
+
+        <listitem>
+          <para>OBJECT_PTR.</para>
+        </listitem>
+
+        <listitem>
+          <para>RASTERVARIABLES.</para>
+        </listitem>
+
+        <listitem>
+          <para>SPATIAL_INDEX.</para>
+        </listitem>
+
+        <listitem>
+          <para>SPATIAL_FILTER.</para>
+        </listitem>
+
+        <listitem>
+          <para>SORTENTSTABLE.</para>
+        </listitem>
+
+        <listitem>
+          <para>XRECORD.</para>
+        </listitem>
+      </itemizedlist>
+
+      <section>
+        <title>Object Ownership.</title>
+
+        <para>The root owner of most objects appearing in the OBJECTS section
+        is the named object dictionary, which is, therefore, always the first
+        object that appears in this section.</para>
+
+        <para>Objects that are not owned by the named object dictionary are
+        owned by other entities, objects, or symbol table entries.</para>
+
+        <para>Objects in this section may be defined by AutoCAD or by
+        applications with access to ARX API.</para>
+
+        <para>The DXF names of application-defined object types should always
+        be associated with a class name in the CLASS section of the DXF file,
+        or else the object record cannot be bound to the application that will
+        interpret it.</para>
+
+        <para>As with other dictionaries, the named-object dictionary record
+        consists solely of associated pairs of entry names and hard ownership
+        pointer references to the associated object.</para>
+
+        <para>To avoid name collision between objects, developers should
+        always use their registered developer prefix for their entries.</para>
+      </section>
+    </section>
   </chapter>
 </book>
