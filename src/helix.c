@@ -196,6 +196,8 @@ dxf_helix_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (helix == NULL)
@@ -217,6 +219,8 @@ dxf_helix_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -609,6 +613,8 @@ dxf_helix_read
         {
                 helix->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -643,6 +649,8 @@ dxf_helix_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (helix == NULL)
@@ -650,6 +658,8 @@ dxf_helix_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (helix->radius == 0.0)
@@ -659,6 +669,8 @@ dxf_helix_write
                   __FUNCTION__, dxf_entity_name, helix->id_code);
                 fprintf (stderr, "    skipping %s entity.\n",
                         dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (fp->acad_version_number < AutoCAD_2007)
@@ -795,6 +807,8 @@ dxf_helix_write
         fprintf (fp->fp, " 42\n%f\n", helix->turn_height);
         fprintf (fp->fp, "290\n%d\n", helix->handedness);
         fprintf (fp->fp, "280\n%d\n", helix->constraint_type);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
