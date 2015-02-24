@@ -226,24 +226,24 @@ dxf_image_new ();
 DxfImage *
 dxf_image_init
 (
-        DxfImage *dxf_image
+        DxfImage *image
 );
 DxfImage *
 dxf_image_read
 (
         DxfFile *fp,
-        DxfImage *dxf_image
+        DxfImage *image
 );
 int
 dxf_image_write
 (
         DxfFile *fp,
-        DxfImage *dxf_image
+        DxfImage *image
 );
 int
 dxf_image_free
 (
-        DxfImage *dxf_image
+        DxfImage *image
 );
 
 

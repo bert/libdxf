@@ -55,27 +55,27 @@ dxf_image_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfImage *dxf_image = NULL;
+        DxfImage *image = NULL;
         size_t size;
 
         size = sizeof (DxfImage);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_image = malloc (size)) == NULL)
+        if ((image = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfImage struct.\n")),
                   __FUNCTION__);
-                dxf_image = NULL;
+                image = NULL;
         }
         else
         {
-                memset (dxf_image, 0, size);
+                memset (image, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_image);
+        return (image);
 }
 
 
@@ -91,7 +91,7 @@ dxf_image_new ()
 DxfImage *
 dxf_image_init
 (
-        DxfImage *dxf_image
+        DxfImage *image
                 /*!< DXF image entity. */
 )
 {
@@ -101,62 +101,62 @@ dxf_image_init
         int i;
 
         /* Do some basic checks. */
-        if (dxf_image == NULL)
+        if (image == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_image = dxf_image_new ();
+                image = dxf_image_new ();
         }
-        if (dxf_image == NULL)
+        if (image == NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () could not allocate memory for a DxfImage struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_image->id_code = 0;
-        dxf_image->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_image->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_image->elevation = 0.0;
-        dxf_image->thickness = 0.0;
-        dxf_image->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        dxf_image->visibility = DXF_DEFAULT_VISIBILITY;
-        dxf_image->color = DXF_COLOR_BYLAYER;
-        dxf_image->paperspace = DXF_MODELSPACE;
-        dxf_image->dictionary_owner_soft = strdup ("");
-        dxf_image->dictionary_owner_hard = strdup ("");
-        dxf_image->x0 = 0.0;
-        dxf_image->y0 = 0.0;
-        dxf_image->z0 = 0.0;
-        dxf_image->x1 = 0.0;
-        dxf_image->y1 = 0.0;
-        dxf_image->z1 = 0.0;
-        dxf_image->x2 = 0.0;
-        dxf_image->y2 = 0.0;
-        dxf_image->z2 = 0.0;
-        dxf_image->x3 = 0.0;
-        dxf_image->y3 = 0.0;
+        image->id_code = 0;
+        image->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        image->layer = strdup (DXF_DEFAULT_LAYER);
+        image->elevation = 0.0;
+        image->thickness = 0.0;
+        image->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        image->visibility = DXF_DEFAULT_VISIBILITY;
+        image->color = DXF_COLOR_BYLAYER;
+        image->paperspace = DXF_MODELSPACE;
+        image->dictionary_owner_soft = strdup ("");
+        image->dictionary_owner_hard = strdup ("");
+        image->x0 = 0.0;
+        image->y0 = 0.0;
+        image->z0 = 0.0;
+        image->x1 = 0.0;
+        image->y1 = 0.0;
+        image->z1 = 0.0;
+        image->x2 = 0.0;
+        image->y2 = 0.0;
+        image->z2 = 0.0;
+        image->x3 = 0.0;
+        image->y3 = 0.0;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                dxf_image->x4[i] = 0.0;
-                dxf_image->y4[i] = 0.0;
+                image->x4[i] = 0.0;
+                image->y4[i] = 0.0;
         }
-        dxf_image->image_display_properties = 0;
-        dxf_image->clipping_boundary_type = 0;
-        dxf_image->class_version = 0;
-        dxf_image->number_of_clip_boundary_vertices = 0;
-        dxf_image->clipping_state = 0;
-        dxf_image->brightness = 50;
-        dxf_image->contrast = 50;
-        dxf_image->fade = 50;
-        dxf_image->imagedef_object = strdup ("");
-        dxf_image->imagedef_reactor_object = strdup ("");
-        dxf_image->next = NULL;
+        image->image_display_properties = 0;
+        image->clipping_boundary_type = 0;
+        image->class_version = 0;
+        image->number_of_clip_boundary_vertices = 0;
+        image->clipping_state = 0;
+        image->brightness = 50;
+        image->contrast = 50;
+        image->fade = 50;
+        image->imagedef_object = strdup ("");
+        image->imagedef_reactor_object = strdup ("");
+        image->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_image);
+        return (image);
 }
 
 
@@ -167,9 +167,9 @@ dxf_image_init
  * Now follows some data for the \c IMAGE, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
- * While parsing the DXF file store data in \c dxf_image. \n
+ * While parsing the DXF file store data in \c image. \n
  *
- * \return a pointer to \c dxf_image.
+ * \return a pointer to \c image.
  *
  * \version According to DXF R14.
  */
@@ -178,7 +178,7 @@ dxf_image_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfImage *dxf_image
+        DxfImage *image
                 /*!< DXF \c IMAGE entity. */
 )
 {
@@ -197,13 +197,13 @@ dxf_image_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_image == NULL)
+        if (image == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_image = dxf_image_new ();
-                dxf_image = dxf_image_init (dxf_image);
+                image = dxf_image_new ();
+                image = dxf_image_init (image);
         }
         i = 0;
         j = 0;
@@ -224,104 +224,104 @@ dxf_image_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_image->id_code);
+                        fscanf (fp->fp, "%x\n", &image->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_image->linetype);
+                        fscanf (fp->fp, "%s\n", image->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_image->layer);
+                        fscanf (fp->fp, "%s\n", image->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the insertion point coordinate. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->x0);
+                        fscanf (fp->fp, "%lf\n", &image->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the insertion point coordinate. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->y0);
+                        fscanf (fp->fp, "%lf\n", &image->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the insertion point coordinate. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->z1);
+                        fscanf (fp->fp, "%lf\n", &image->z1);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the U-vector of a single pixel. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->x1);
+                        fscanf (fp->fp, "%lf\n", &image->x1);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the U-vector of a single pixel. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->y1);
+                        fscanf (fp->fp, "%lf\n", &image->y1);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the U-vector of a single pixel. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->z1);
+                        fscanf (fp->fp, "%lf\n", &image->z1);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the V-vector of a single pixel. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->x2);
+                        fscanf (fp->fp, "%lf\n", &image->x2);
                 }
                 else if (strcmp (temp_string, "22") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the V-vector of a single pixel. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->y2);
+                        fscanf (fp->fp, "%lf\n", &image->y2);
                 }
                 else if (strcmp (temp_string, "32") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the V-vector of a single pixel. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->z2);
+                        fscanf (fp->fp, "%lf\n", &image->z2);
                 }
                 else if (strcmp (temp_string, "13") == 0)
                 {
                         /* Now follows a string containing the
                          * U-value of image size in pixels. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->x3);
+                        fscanf (fp->fp, "%lf\n", &image->x3);
                 }
                 else if (strcmp (temp_string, "23") == 0)
                 {
                         /* Now follows a string containing the
                          * V-value of image size in pixels. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->y3);
+                        fscanf (fp->fp, "%lf\n", &image->y3);
                 }
                 else if (strcmp (temp_string, "14") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of a clip boundary vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->x4[i]);
+                        fscanf (fp->fp, "%lf\n", &image->x4[i]);
                         i++;
                 }
                 else if (strcmp (temp_string, "24") == 0)
@@ -329,80 +329,80 @@ dxf_image_read
                         /* Now follows a string containing the
                          * Y-value of a clip boundary vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->y4[j]);
+                        fscanf (fp->fp, "%lf\n", &image->y4[j]);
                         j++;
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_image->elevation != 0.0))
+                        && (image->elevation != 0.0))
                 {
                         /* Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->elevation);
+                        fscanf (fp->fp, "%lf\n", &image->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->thickness);
+                        fscanf (fp->fp, "%lf\n", &image->thickness);
                 }
                 else if (strcmp (temp_string, "48") == 0)
                 {
                         /* Now follows a string containing the linetype
                          * scale. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_image->linetype_scale);
+                        fscanf (fp->fp, "%lf\n", &image->linetype_scale);
                 }
                 else if (strcmp (temp_string, "60") == 0)
                 {
                         /* Now follows a string containing the
                          * visibility value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%hd\n", &dxf_image->visibility);
+                        fscanf (fp->fp, "%hd\n", &image->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_image->color);
+                        fscanf (fp->fp, "%d\n", &image->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_image->paperspace);
+                        fscanf (fp->fp, "%d\n", &image->paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * image display properties. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_image->image_display_properties);
+                        fscanf (fp->fp, "%d\n", &image->image_display_properties);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a string containing the
                          * clipping boundary type. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_image->clipping_boundary_type);
+                        fscanf (fp->fp, "%d\n", &image->clipping_boundary_type);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
                         /* Now follows a string containing the class
                          * version. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &dxf_image->class_version);
+                        fscanf (fp->fp, "%ld\n", &image->class_version);
                 }
                 else if (strcmp (temp_string, "91") == 0)
                 {
                         /* Now follows a string containing the number of
                          * clip boundary vertices. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &dxf_image->number_of_clip_boundary_vertices);
+                        fscanf (fp->fp, "%ld\n", &image->number_of_clip_boundary_vertices);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -424,49 +424,49 @@ dxf_image_read
                         /* Now follows a string containing the clipping
                          * state. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_image->clipping_state);
+                        fscanf (fp->fp, "%d\n", &image->clipping_state);
                 }
                 else if (strcmp (temp_string, "281") == 0)
                 {
                         /* Now follows a string containing the
                          * brightness value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_image->brightness);
+                        fscanf (fp->fp, "%d\n", &image->brightness);
                 }
                 else if (strcmp (temp_string, "282") == 0)
                 {
                         /* Now follows a string containing the contrast
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_image->contrast);
+                        fscanf (fp->fp, "%d\n", &image->contrast);
                 }
                 else if (strcmp (temp_string, "283") == 0)
                 {
                         /* Now follows a string containing the fade
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_image->fade);
+                        fscanf (fp->fp, "%d\n", &image->fade);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_image->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", image->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "340") == 0)
                 {
                         /* Now follows a string containing a hard
                          * reference to imagedef object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_image->imagedef_object);
+                        fscanf (fp->fp, "%s\n", image->imagedef_object);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing a hard
                          * reference to imagedef_reactor object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_image->imagedef_reactor_object);
+                        fscanf (fp->fp, "%s\n", image->imagedef_reactor_object);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -483,18 +483,18 @@ dxf_image_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_image->linetype, "") == 0)
+        if (strcmp (image->linetype, "") == 0)
         {
-                dxf_image->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                image->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_image->layer, "") == 0)
+        if (strcmp (image->layer, "") == 0)
         {
-                dxf_image->layer = strdup (DXF_DEFAULT_LAYER);
+                image->layer = strdup (DXF_DEFAULT_LAYER);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_image);
+        return (image);
 }
 
 
@@ -511,7 +511,7 @@ dxf_image_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfImage *dxf_image
+        DxfImage *image
                 /*!< DXF \c IMAGE entity. */
 )
 {
@@ -536,38 +536,38 @@ dxf_image_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_image == NULL)
+        if (image == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_image->linetype, "") == 0)
+        if (strcmp (image->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_image->id_code);
+                  __FUNCTION__, dxf_entity_name, image->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_image->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                image->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_image->layer, "") == 0)
+        if (strcmp (image->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_image->id_code);
+                  __FUNCTION__, dxf_entity_name, image->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to default layer.\n")),
                   dxf_entity_name);
-                dxf_image->layer = DXF_DEFAULT_LAYER;
+                image->layer = DXF_DEFAULT_LAYER;
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_image->id_code != -1)
+        if (image->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_image->id_code);
+                fprintf (fp->fp, "  5\n%x\n", image->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -579,84 +579,84 @@ dxf_image_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_image->dictionary_owner_soft, "") != 0)
+        if ((strcmp (image->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_image->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", image->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_image->dictionary_owner_hard, "") != 0)
+        if ((strcmp (image->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_image->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", image->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_image->paperspace == DXF_PAPERSPACE)
+        if (image->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_image->layer);
-        if (strcmp (dxf_image->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", image->layer);
+        if (strcmp (image->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_image->linetype);
+                fprintf (fp->fp, "  6\n%s\n", image->linetype);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_image->elevation != 0.0))
+          && (image->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_image->elevation);
+                fprintf (fp->fp, " 38\n%f\n", image->elevation);
         }
-        if (dxf_image->color != DXF_COLOR_BYLAYER)
+        if (image->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_image->color);
+                fprintf (fp->fp, " 62\n%d\n", image->color);
         }
-        if (dxf_image->linetype_scale != 1.0)
+        if (image->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_image->linetype_scale);
+                fprintf (fp->fp, " 48\n%f\n", image->linetype_scale);
         }
-        if (dxf_image->visibility != 0)
+        if (image->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_image->visibility);
+                fprintf (fp->fp, " 60\n%d\n", image->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbRasterImage\n");
         }
-        if (dxf_image->thickness != 0.0)
+        if (image->thickness != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_image->thickness);
+                fprintf (fp->fp, " 39\n%f\n", image->thickness);
         }
-        fprintf (fp->fp, " 90\n%ld\n", dxf_image->class_version);
-        fprintf (fp->fp, " 10\n%f\n", dxf_image->x0);
-        fprintf (fp->fp, " 20\n%f\n", dxf_image->y0);
-        fprintf (fp->fp, " 30\n%f\n", dxf_image->z0);
-        fprintf (fp->fp, " 11\n%f\n", dxf_image->x1);
-        fprintf (fp->fp, " 21\n%f\n", dxf_image->y1);
-        fprintf (fp->fp, " 31\n%f\n", dxf_image->z1);
-        fprintf (fp->fp, " 12\n%f\n", dxf_image->x2);
-        fprintf (fp->fp, " 22\n%f\n", dxf_image->y2);
-        fprintf (fp->fp, " 32\n%f\n", dxf_image->z2);
-        fprintf (fp->fp, " 13\n%f\n", dxf_image->x3);
-        fprintf (fp->fp, " 23\n%f\n", dxf_image->y3);
-        fprintf (fp->fp, "340\n%s\n", dxf_image->imagedef_object);
-        fprintf (fp->fp, " 70\n%d\n", dxf_image->image_display_properties);
-        fprintf (fp->fp, "280\n%d\n", dxf_image->clipping_state);
-        fprintf (fp->fp, "281\n%d\n", dxf_image->brightness);
-        fprintf (fp->fp, "282\n%d\n", dxf_image->contrast);
-        fprintf (fp->fp, "283\n%d\n", dxf_image->fade);
-        fprintf (fp->fp, "360\n%s\n", dxf_image->imagedef_reactor_object);
-        fprintf (fp->fp, " 71\n%d\n", dxf_image->clipping_boundary_type);
-        fprintf (fp->fp, " 91\n%ld\n", dxf_image->number_of_clip_boundary_vertices);
-        for (i = 0; i < dxf_image->number_of_clip_boundary_vertices; i++)
+        fprintf (fp->fp, " 90\n%ld\n", image->class_version);
+        fprintf (fp->fp, " 10\n%f\n", image->x0);
+        fprintf (fp->fp, " 20\n%f\n", image->y0);
+        fprintf (fp->fp, " 30\n%f\n", image->z0);
+        fprintf (fp->fp, " 11\n%f\n", image->x1);
+        fprintf (fp->fp, " 21\n%f\n", image->y1);
+        fprintf (fp->fp, " 31\n%f\n", image->z1);
+        fprintf (fp->fp, " 12\n%f\n", image->x2);
+        fprintf (fp->fp, " 22\n%f\n", image->y2);
+        fprintf (fp->fp, " 32\n%f\n", image->z2);
+        fprintf (fp->fp, " 13\n%f\n", image->x3);
+        fprintf (fp->fp, " 23\n%f\n", image->y3);
+        fprintf (fp->fp, "340\n%s\n", image->imagedef_object);
+        fprintf (fp->fp, " 70\n%d\n", image->image_display_properties);
+        fprintf (fp->fp, "280\n%d\n", image->clipping_state);
+        fprintf (fp->fp, "281\n%d\n", image->brightness);
+        fprintf (fp->fp, "282\n%d\n", image->contrast);
+        fprintf (fp->fp, "283\n%d\n", image->fade);
+        fprintf (fp->fp, "360\n%s\n", image->imagedef_reactor_object);
+        fprintf (fp->fp, " 71\n%d\n", image->clipping_boundary_type);
+        fprintf (fp->fp, " 91\n%ld\n", image->number_of_clip_boundary_vertices);
+        for (i = 0; i < image->number_of_clip_boundary_vertices; i++)
         {
-                fprintf (fp->fp, " 14\n%f\n", dxf_image->x4[i]);
-                fprintf (fp->fp, " 24\n%f\n", dxf_image->y4[i]);
+                fprintf (fp->fp, " 14\n%f\n", image->x4[i]);
+                fprintf (fp->fp, " 24\n%f\n", image->y4[i]);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -677,7 +677,7 @@ dxf_image_write
 int
 dxf_image_free
 (
-        DxfImage *dxf_image
+        DxfImage *image
                 /*!< Pointer to the memory occupied by the DXF \c IMAGE
                  * entity. */
 )
@@ -685,21 +685,21 @@ dxf_image_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_image->next != NULL)
+        if (image->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfImage was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_image->linetype);
-        free (dxf_image->layer);
-        free (dxf_image->imagedef_object);
-        free (dxf_image->imagedef_reactor_object);
-        free (dxf_image->dictionary_owner_soft);
-        free (dxf_image->dictionary_owner_hard);
-        free (dxf_image);
-        dxf_image = NULL;
+        free (image->linetype);
+        free (image->layer);
+        free (image->imagedef_object);
+        free (image->imagedef_reactor_object);
+        free (image->dictionary_owner_soft);
+        free (image->dictionary_owner_hard);
+        free (image);
+        image = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
