@@ -565,6 +565,182 @@ dxf_leader_read
 
 
 /*!
+ * \brief Write DXF output to a file for a DXF \c LEADER entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_leader_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfLeader *leader
+                /*!< DXF \c LEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("LEADER");
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, leader->id_code);
+        }
+        if (strcmp (leader->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, leader->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                leader->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (leader->layer, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, leader->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to layer 0")),
+                  dxf_entity_name);
+                leader->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (leader->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", leader->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (leader->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", leader->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (leader->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", leader->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (leader->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", leader->layer);
+        if (strcmp (leader->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", leader->linetype);
+        }
+        if (leader->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", leader->color);
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (leader->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", leader->elevation);
+        }
+        if (leader->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", leader->thickness);
+        }
+        if (leader->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", leader->linetype_scale);
+        }
+        if (leader->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", leader->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbLeader\n");
+        }
+        fprintf (fp->fp, "  3\n%s\n", leader->dimension_style_name);
+        fprintf (fp->fp, " 71\n%d\n", leader->arrow_head_flag);
+        fprintf (fp->fp, " 72\n%d\n", leader->path_type);
+        fprintf (fp->fp, " 73\n%d\n", leader->creation_flag);
+        fprintf (fp->fp, " 74\n%d\n", leader->hookline_direction_flag);
+        fprintf (fp->fp, " 75\n%d\n", leader->hookline_flag);
+        fprintf (fp->fp, " 40\n%f\n", leader->text_annotation_height);
+        fprintf (fp->fp, " 41\n%f\n", leader->text_annotation_width);
+        fprintf (fp->fp, " 76\n%d\n", leader->number_vertices);
+        for (i = 0; i < leader->number_vertices; i++)
+        {
+                fprintf (fp->fp, " 10\n%f\n", leader->x0[i]);
+                fprintf (fp->fp, " 20\n%f\n", leader->y0[i]);
+                fprintf (fp->fp, " 30\n%f\n", leader->z0[i]);
+        }
+        fprintf (fp->fp, " 77\n%d\n", leader->leader_color);
+        fprintf (fp->fp, "340\n%s\n", leader->annotation_reference_hard);
+        fprintf (fp->fp, "210\n%f\n", leader->x_extr);
+        fprintf (fp->fp, "220\n%f\n", leader->y_extr);
+        fprintf (fp->fp, "230\n%f\n", leader->z_extr);
+        fprintf (fp->fp, "211\n%f\n", leader->x1);
+        fprintf (fp->fp, "221\n%f\n", leader->y1);
+        fprintf (fp->fp, "231\n%f\n", leader->z1);
+        fprintf (fp->fp, "212\n%f\n", leader->x2);
+        fprintf (fp->fp, "222\n%f\n", leader->y2);
+        fprintf (fp->fp, "232\n%f\n", leader->z2);
+        fprintf (fp->fp, "213\n%f\n", leader->x3);
+        fprintf (fp->fp, "223\n%f\n", leader->y3);
+        fprintf (fp->fp, "233\n%f\n", leader->z3);
+        /*! \todo Xdata belonging to the application ID "ACAD" may
+         * follow.\n This describes any dimension overrides that have
+         * been applied to this entity. */
+        /* Clean up. */
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c LEADER and all it's
  * data fields.
  *
