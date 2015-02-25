@@ -1,7 +1,7 @@
 /*!
  * \file insert.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF insert entity (\c INSERT).
  *
@@ -167,24 +167,24 @@ dxf_insert_new ();
 DxfInsert *
 dxf_insert_init
 (
-        DxfInsert *dxf_insert
+        DxfInsert *insert
 );
 DxfInsert *
 dxf_insert_read
 (
         DxfFile *fp,
-        DxfInsert *dxf_insert
+        DxfInsert *insert
 );
 int
 dxf_insert_write
 (
         DxfFile *fp,
-        DxfInsert *dxf_insert
+        DxfInsert *insert
 );
 int
 dxf_insert_free
 (
-        DxfInsert *dxf_insert
+        DxfInsert *insert
 );
 
 
