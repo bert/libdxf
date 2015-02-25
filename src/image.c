@@ -537,15 +537,6 @@ dxf_image_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (fp->acad_version_number < AutoCAD_14)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () illegal DXF version for this entity.\n")),
-                  __FUNCTION__);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
         if (image == NULL)
         {
                 fprintf (stderr,
@@ -554,6 +545,12 @@ dxf_image_write
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_14)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
         }
         if (strcmp (image->linetype, "") == 0)
         {
