@@ -448,7 +448,7 @@ dxf_layer_free
  * \brief Test if layer is frozen.
  *
  * \return \c TRUE when layer is frozen, or \c FALSE when layer is
- * thawed.
+ * thawed, or (-1) when an error occurred.
  */
 int
 dxf_layer_is_frozen
@@ -468,7 +468,7 @@ dxf_layer_is_frozen
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = ((DXF_CHECK_BIT (layer->flag, 0))
           || (DXF_CHECK_BIT (layer->flag, 1)));
@@ -483,7 +483,7 @@ dxf_layer_is_frozen
  * \brief Test if layer is locked.
  *
  * \return \c TRUE when layer is locked, or \c FALSE when layer is not
- * locked.
+ * locked, or (-1) when an error occurred.
  */
 int
 dxf_layer_is_locked
@@ -503,7 +503,7 @@ dxf_layer_is_locked
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = DXF_CHECK_BIT (layer->flag, 2);
 #if DEBUG
@@ -517,7 +517,8 @@ dxf_layer_is_locked
  * \brief Test if layer is externally dependent on an xref.
  *
  * \return \c TRUE when layer is externally dependent on an xref,
- * or \c FALSE when layer is not externally dependent on an xref.
+ * or \c FALSE when layer is not externally dependent on an xref, or
+ * (-1) when an error occurred.
  */
 int
 dxf_layer_is_xreferenced
@@ -537,7 +538,7 @@ dxf_layer_is_xreferenced
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = DXF_CHECK_BIT (layer->flag, 4);
 #if DEBUG
@@ -552,9 +553,9 @@ dxf_layer_is_xreferenced
  * successfully resolved.
  *
  * \return \c TRUE when layer is externally dependent on a xref and has
- * been successfully resolved,
- * or \c FALSE when layer is not externally dependent on a xref and has
- * not been successfully resolved.
+ * been successfully resolved, or \c FALSE when layer is not externally
+ * dependent on a xref and has not been successfully resolved, or (-1)
+ * when an error occurred.
  */
 int
 dxf_layer_is_xresolved
@@ -574,7 +575,7 @@ dxf_layer_is_xresolved
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = ((DXF_CHECK_BIT (layer->flag, 4))
           && (DXF_CHECK_BIT (layer->flag, 5)));
@@ -589,7 +590,8 @@ dxf_layer_is_xresolved
  * \brief Test if layer is internally referenced by an entity.
  *
  * \return \c TRUE when layer is internally referenced by an entity,
- * or \c FALSE when layer is not internally referenced by an entity.
+ * or \c FALSE when layer is not internally referenced by an entity, or
+ * (-1) when an error occurred.
  */
 int
 dxf_layer_is_referenced
@@ -609,7 +611,7 @@ dxf_layer_is_referenced
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = DXF_CHECK_BIT (layer->flag, 6);
 #if DEBUG
@@ -622,7 +624,8 @@ dxf_layer_is_referenced
 /*!
  * \brief Test if layer is off.
  *
- * \return \c TRUE when layer is off, or \c FALSE when layer is on.
+ * \return \c TRUE when layer is off, or \c FALSE when layer is on, or
+ * (-1) when an error occurred.
  */
 int
 dxf_layer_is_off
@@ -642,7 +645,7 @@ dxf_layer_is_off
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = (layer->color < 0);
 #if DEBUG
