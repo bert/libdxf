@@ -53,27 +53,27 @@ dxf_layer_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfLayer *dxf_layer = NULL;
+        DxfLayer *layer = NULL;
         size_t size;
 
         size = sizeof (DxfLayer);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_layer = malloc (size)) == NULL)
+        if ((layer = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfLayer struct.\n")),
                   __FUNCTION__);
-                dxf_layer = NULL;
+                layer = NULL;
         }
         else
         {
-                memset (dxf_layer, 0, size);
+                memset (layer, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_layer);
+        return (layer);
 }
 
 
@@ -87,7 +87,7 @@ dxf_layer_new ()
 DxfLayer *
 dxf_layer_init
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
                 /*!< DXF LAYER table. */
 )
 {
@@ -95,36 +95,36 @@ dxf_layer_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_layer == NULL)
+        if (layer == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_layer = dxf_layer_new ();
+                layer = dxf_layer_new ();
         }
-        if (dxf_layer == NULL)
+        if (layer == NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () could not allocate memory for a DxfLayer struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_layer->id_code = 0;
-        dxf_layer->layer_name = strdup ("");
-        dxf_layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_layer->color = DXF_COLOR_BYLAYER;
-        dxf_layer->flag = 0;
-        dxf_layer->plotting_flag = 0;
-        dxf_layer->dictionary_owner_soft = strdup ("");
-        dxf_layer->material = strdup ("");
-        dxf_layer->dictionary_owner_hard = strdup ("");
-        dxf_layer->lineweight = 0;
-        dxf_layer->plot_style_name = strdup ("");
-        dxf_layer->next = NULL;
+        layer->id_code = 0;
+        layer->layer_name = strdup ("");
+        layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        layer->color = DXF_COLOR_BYLAYER;
+        layer->flag = 0;
+        layer->plotting_flag = 0;
+        layer->dictionary_owner_soft = strdup ("");
+        layer->material = strdup ("");
+        layer->dictionary_owner_hard = strdup ("");
+        layer->lineweight = 0;
+        layer->plot_style_name = strdup ("");
+        layer->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_layer);
+        return (layer);
 }
 
 
@@ -135,16 +135,16 @@ dxf_layer_init
  * Now follows some data for the \c LAYER, to be terminated with a "  0"
  * string announcing the following table, or the end of the \c TABLE
  * section marker \c ENDTAB. \n
- * While parsing the DXF file store data in \c dxf_layer. \n
+ * While parsing the DXF file store data in \c layer. \n
  *
- * \return a pointer to \c dxf_layer.
+ * \return a pointer to \c layer.
  */
 DxfLayer *
 dxf_layer_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfLayer *dxf_layer
+        DxfLayer *layer
                 /*!< DXF LAYER table. */
 )
 {
@@ -161,13 +161,13 @@ dxf_layer_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_layer == NULL)
+        if (layer == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_layer = dxf_layer_new ();
-                dxf_layer = dxf_layer_init (dxf_layer);
+                layer = dxf_layer_new ();
+                layer = dxf_layer_init (layer);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -186,28 +186,28 @@ dxf_layer_read
                         /* Now follows a string containing the layer
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_layer->layer_name);
+                        fscanf (fp->fp, "%s\n", layer->layer_name);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing the linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_layer->linetype);
+                        fscanf (fp->fp, "%s\n", layer->linetype);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_layer->color);
+                        fscanf (fp->fp, "%d\n", &layer->color);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_layer->flag);
+                        fscanf (fp->fp, "%d\n", &layer->flag);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -229,41 +229,41 @@ dxf_layer_read
                         /* Now follows a string containing the plotting
                          * flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_layer->plotting_flag);
+                        fscanf (fp->fp, "%d\n", &layer->plotting_flag);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_layer->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", layer->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "347") == 0)
                 {
                         /* Now follows a string containing the material. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_layer->material);
+                        fscanf (fp->fp, "%s\n", layer->material);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_layer->dictionary_owner_hard);
+                        fscanf (fp->fp, "%s\n", layer->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "370") == 0)
                 {
                         /* Now follows a string containing the
                          * lineweight. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%hd\n", &dxf_layer->lineweight);
+                        fscanf (fp->fp, "%hd\n", &layer->lineweight);
                 }
                 else if (strcmp (temp_string, "390") == 0)
                 {
                         /* Now follows a string containing the plot style
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_layer->plot_style_name);
+                        fscanf (fp->fp, "%s\n", layer->plot_style_name);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -280,7 +280,7 @@ dxf_layer_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_layer->layer_name, "") == 0)
+        if (strcmp (layer->layer_name, "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () found a bad layer name in: %s in line: %d.\n")),
@@ -289,14 +289,14 @@ dxf_layer_read
                   (_("\tskipping layer.\n")));
                 return (NULL);
         }
-        if (strcmp (dxf_layer->linetype, "") == 0)
+        if (strcmp (layer->linetype, "") == 0)
         {
-                dxf_layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_layer);
+        return (layer);
 }
 
 
@@ -311,7 +311,7 @@ dxf_layer_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfLayer *dxf_layer
+        DxfLayer *layer
                 /*!< DXF \c LAYER table. */
 )
 {
@@ -328,14 +328,14 @@ dxf_layer_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_layer == NULL)
+        if (layer == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_layer->linetype, "") == 0)
+        if (strcmp (layer->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s layer\n")),
@@ -343,9 +343,9 @@ dxf_layer_write
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_layer->layer_name, "") == 0)
+        if (strcmp (layer->layer_name, "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () empty layer string for the %s table.\n")),
@@ -354,9 +354,9 @@ dxf_layer_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_layer->id_code != -1)
+        if (layer->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_layer->id_code);
+                fprintf (fp->fp, "  5\n%x\n", layer->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -368,11 +368,11 @@ dxf_layer_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_layer->dictionary_owner_soft, "") != 0)
+        if ((strcmp (layer->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_layer->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", layer->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_14)
@@ -383,19 +383,19 @@ dxf_layer_write
         {
                 fprintf (fp->fp, "100\nAcDbLayerTableRecord\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", dxf_layer->layer_name);
-        fprintf (fp->fp, " 70\n%d\n", dxf_layer->flag);
-        fprintf (fp->fp, " 62\n%d\n", dxf_layer->color);
-        fprintf (fp->fp, "  6\n%s\n", dxf_layer->linetype);
+        fprintf (fp->fp, "  2\n%s\n", layer->layer_name);
+        fprintf (fp->fp, " 70\n%d\n", layer->flag);
+        fprintf (fp->fp, " 62\n%d\n", layer->color);
+        fprintf (fp->fp, "  6\n%s\n", layer->linetype);
         if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, "290\n%d\n", dxf_layer->plotting_flag);
-                fprintf (fp->fp, "370\n%hd\n", dxf_layer->lineweight);
-                fprintf (fp->fp, "390\n%s\n", dxf_layer->plot_style_name);
+                fprintf (fp->fp, "290\n%d\n", layer->plotting_flag);
+                fprintf (fp->fp, "370\n%hd\n", layer->lineweight);
+                fprintf (fp->fp, "390\n%s\n", layer->plot_style_name);
         }
         if (fp->acad_version_number >= AutoCAD_2007)
         {
-                fprintf (fp->fp, "347\n%s\n", dxf_layer->material);
+                fprintf (fp->fp, "347\n%s\n", layer->material);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -414,7 +414,7 @@ dxf_layer_write
 int
 dxf_layer_free
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
                 /*!< Pointer to the memory occupied by the DXF \c LAYER
                  * table. */
 )
@@ -422,21 +422,21 @@ dxf_layer_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_layer->next != NULL)
+        if (layer->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfLayer was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_layer->layer_name);
-        free (dxf_layer->linetype);
-        free (dxf_layer->dictionary_owner_soft);
-        free (dxf_layer->material);
-        free (dxf_layer->dictionary_owner_hard);
-        free (dxf_layer->plot_style_name);
-        free (dxf_layer);
-        dxf_layer = NULL;
+        free (layer->layer_name);
+        free (layer->linetype);
+        free (layer->dictionary_owner_soft);
+        free (layer->material);
+        free (layer->dictionary_owner_hard);
+        free (layer->plot_style_name);
+        free (layer);
+        layer = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -453,7 +453,7 @@ dxf_layer_free
 int
 dxf_layer_is_frozen
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
                 /*!< DXF \c LAYER table. */
 )
 {
@@ -463,15 +463,15 @@ dxf_layer_is_frozen
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_layer == NULL)
+        if (layer == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ((DXF_CHECK_BIT (dxf_layer->flag, 0))
-          || (DXF_CHECK_BIT (dxf_layer->flag, 1)));
+        result = ((DXF_CHECK_BIT (layer->flag, 0))
+          || (DXF_CHECK_BIT (layer->flag, 1)));
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -488,7 +488,7 @@ dxf_layer_is_frozen
 int
 dxf_layer_is_locked
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
                 /*!< DXF \c LAYER table. */
 )
 {
@@ -498,14 +498,14 @@ dxf_layer_is_locked
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_layer == NULL)
+        if (layer == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_layer->flag, 2);
+        result = DXF_CHECK_BIT (layer->flag, 2);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -522,7 +522,7 @@ dxf_layer_is_locked
 int
 dxf_layer_is_xreferenced
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
                 /*!< DXF \c LAYER table. */
 )
 {
@@ -532,14 +532,14 @@ dxf_layer_is_xreferenced
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_layer == NULL)
+        if (layer == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_layer->flag, 4);
+        result = DXF_CHECK_BIT (layer->flag, 4);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -559,7 +559,7 @@ dxf_layer_is_xreferenced
 int
 dxf_layer_is_xresolved
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
                 /*!< DXF \c LAYER table. */
 )
 {
@@ -569,15 +569,15 @@ dxf_layer_is_xresolved
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_layer == NULL)
+        if (layer == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ((DXF_CHECK_BIT (dxf_layer->flag, 4))
-          && (DXF_CHECK_BIT (dxf_layer->flag, 5)));
+        result = ((DXF_CHECK_BIT (layer->flag, 4))
+          && (DXF_CHECK_BIT (layer->flag, 5)));
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -594,7 +594,7 @@ dxf_layer_is_xresolved
 int
 dxf_layer_is_referenced
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
                 /*!< DXF \c LAYER table. */
 )
 {
@@ -604,14 +604,14 @@ dxf_layer_is_referenced
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_layer == NULL)
+        if (layer == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_layer->flag, 6);
+        result = DXF_CHECK_BIT (layer->flag, 6);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -627,7 +627,7 @@ dxf_layer_is_referenced
 int
 dxf_layer_is_off
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
                 /*!< DXF \c LAYER table. */
 )
 {
@@ -637,14 +637,14 @@ dxf_layer_is_off
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_layer == NULL)
+        if (layer == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = (dxf_layer->color < 0);
+        result = (layer->color < 0);
 #if DEBUG
         DXF_DEBUG_END
 #endif

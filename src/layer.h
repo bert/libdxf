@@ -1,7 +1,7 @@
 /*!
  * \file layer.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF layer table.
  *
@@ -100,54 +100,54 @@ dxf_layer_new ();
 DxfLayer *
 dxf_layer_init
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
 );
 DxfLayer *
 dxf_layer_read
 (
         DxfFile *fp,
-        DxfLayer *dxf_layer
+        DxfLayer *layer
 );
 int
 dxf_layer_write
 (
         DxfFile *fp,
-        DxfLayer *dxf_layer
+        DxfLayer *layer
 );
 int
 dxf_layer_free
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
 );
 int
 dxf_layer_is_frozen
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
 );
 int
 dxf_layer_is_locked
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
 );
 int
 dxf_layer_is_xreferenced
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
 );
 int
 dxf_layer_is_xresolved
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
 );
 int
 dxf_layer_is_referenced
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
 );
 int
 dxf_layer_is_off
 (
-        DxfLayer *dxf_layer
+        DxfLayer *layer
 );
 
 
