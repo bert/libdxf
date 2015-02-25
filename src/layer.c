@@ -159,6 +159,8 @@ dxf_layer_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (layer == NULL)
@@ -179,6 +181,8 @@ dxf_layer_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "2") == 0)
@@ -293,6 +297,8 @@ dxf_layer_read
         {
                 layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -326,6 +332,8 @@ dxf_layer_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (layer == NULL)
@@ -333,6 +341,17 @@ dxf_layer_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (layer->layer_name, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () empty layer string for the %s table.\n")),
+                  __FUNCTION__, dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (layer->linetype, "") == 0)
@@ -344,13 +363,6 @@ dxf_layer_write
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
                 layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        }
-        if (strcmp (layer->layer_name, "") == 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () empty layer string for the %s table.\n")),
-                  __FUNCTION__, dxf_entity_name);
-                return (EXIT_FAILURE);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -397,6 +409,8 @@ dxf_layer_write
         {
                 fprintf (fp->fp, "347\n%s\n", layer->material);
         }
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
