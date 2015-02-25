@@ -399,7 +399,7 @@ dxf_3dsolid_read
  * \brief Write DXF output to a file for a DXF \c 3DSOLID entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred while reading from the input file.
+ * occurred.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
