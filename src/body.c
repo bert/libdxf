@@ -183,6 +183,8 @@ dxf_body_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (body == NULL)
@@ -211,6 +213,8 @@ dxf_body_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 else if (strcmp (temp_string, "  1") == 0)
@@ -346,6 +350,8 @@ dxf_body_read
                   (_("\tmodeler format version number is reset to 1.\n")));
                 body->modeler_format_version_number = 1;
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -386,6 +392,8 @@ dxf_body_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (body == NULL)
@@ -393,6 +401,8 @@ dxf_body_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (fp->acad_version_number < AutoCAD_13)
@@ -506,6 +516,8 @@ dxf_body_write
                 fprintf (fp->fp, "  3\n%s\n", body->additional_proprietary_data[i]);
                 i++;
         }
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
