@@ -190,6 +190,8 @@ dxf_attdef_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (attdef == NULL)
@@ -210,6 +212,8 @@ dxf_attdef_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "1") == 0)
@@ -487,6 +491,8 @@ dxf_attdef_read
         {
                 attdef->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -523,6 +529,8 @@ dxf_attdef_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (attdef == NULL)
@@ -530,6 +538,8 @@ dxf_attdef_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (attdef->tag_value, "") == 0)
@@ -537,6 +547,8 @@ dxf_attdef_write
                 fprintf (stderr,
                   (_("Error in %s () default tag value string is empty for the %s entity with id-code: %x.\n")),
                   __FUNCTION__, dxf_entity_name, attdef->id_code);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (attdef->text_style, "") == 0)
@@ -724,6 +736,8 @@ dxf_attdef_write
                 fprintf (fp->fp, "220\n%f\n", attdef->extr_y0);
                 fprintf (fp->fp, "230\n%f\n", attdef->extr_z0);
         }
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
