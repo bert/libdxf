@@ -170,7 +170,7 @@ dxf_block_read
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char temp_string[DXF_MAX_STRING_LENGTH];
+        char *temp_string = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -178,6 +178,8 @@ dxf_block_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (block == NULL)
@@ -197,6 +199,8 @@ dxf_block_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "1") == 0)
@@ -339,6 +343,8 @@ dxf_block_read
                   (_("\tblock type value is reset to 1.\n")));
                 block->block_type = 1;
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -379,6 +385,8 @@ dxf_block_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (block == NULL)
@@ -386,6 +394,8 @@ dxf_block_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (block->block_name == NULL)
@@ -396,6 +406,8 @@ dxf_block_write
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (block->endblk == NULL)
@@ -406,6 +418,8 @@ dxf_block_write
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (((block->xref_name == NULL)
@@ -419,6 +433,8 @@ dxf_block_write
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (block->description == NULL)
@@ -498,6 +514,8 @@ dxf_block_write
         }
         endblk = (DxfEndblk *) block->endblk;
         dxf_endblk_write (fp, endblk);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
