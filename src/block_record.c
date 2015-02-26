@@ -408,7 +408,7 @@ dxf_block_record_free
  *
  * \return \c TRUE when \c BLOCK_RECORD is externally dependent on an
  * xref, or \c FALSE when \c BLOCK_RECORD is not externally dependent on
- * an xref.
+ * an xref, or (-1) when an error occured.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -434,7 +434,7 @@ dxf_block_record_is_xreferenced
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = DXF_CHECK_BIT (block_record->flag, 4);
 #if DEBUG
@@ -451,7 +451,7 @@ dxf_block_record_is_xreferenced
  * \return \c TRUE when \c BLOCK_RECORD is externally dependent on a
  * xref and has been successfully resolved, or \c FALSE when
  * \c BLOCK_RECORD is not externally dependent on a xref and has not
- * been successfully resolved.
+ * been successfully resolved, or (-1) when an error occured.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -477,7 +477,7 @@ dxf_block_record_is_xresolved
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = ((DXF_CHECK_BIT (block_record->flag, 4))
           && (DXF_CHECK_BIT (block_record->flag, 5)));
@@ -494,7 +494,7 @@ dxf_block_record_is_xresolved
  *
  * \return \c TRUE when \c BLOCK_RECORD is internally referenced by an
  * entity, or \c FALSE when \c BLOCK_RECORD is not internally referenced
- * by an entity.
+ * by an entity, or (-1) when an error occured.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -520,7 +520,7 @@ dxf_block_record_is_referenced
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = DXF_CHECK_BIT (block_record->flag, 6);
 #if DEBUG
