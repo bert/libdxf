@@ -177,6 +177,8 @@ dxf_circle_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (circle == NULL)
@@ -197,6 +199,8 @@ dxf_circle_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -364,6 +368,8 @@ dxf_circle_read
         {
                 circle->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -400,6 +406,8 @@ dxf_circle_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (circle == NULL)
@@ -407,6 +415,8 @@ dxf_circle_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (circle->radius == 0.0)
@@ -414,6 +424,8 @@ dxf_circle_write
                 fprintf (stderr,
                   (_("Error in %s () radius value equals 0.0 for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, circle->id_code);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (circle->linetype, "") == 0)
@@ -518,6 +530,8 @@ dxf_circle_write
                 fprintf (fp->fp, "220\n%f\n", circle->extr_y0);
                 fprintf (fp->fp, "230\n%f\n", circle->extr_z0);
         }
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
