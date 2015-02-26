@@ -150,6 +150,8 @@ dxf_class_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (class == NULL)
@@ -170,6 +172,8 @@ dxf_class_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "0") == 0)
@@ -263,6 +267,8 @@ dxf_class_read
                   __FUNCTION__, fp->filename, fp->line_number);
                 return (NULL);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -296,6 +302,8 @@ dxf_class_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (class == NULL)
@@ -303,6 +311,8 @@ dxf_class_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (!class->record_type
@@ -311,6 +321,8 @@ dxf_class_write
                 fprintf (stderr,
                   (_("Error in %s () empty record type string for the %s entity\n")),
                   __FUNCTION__, dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (!class->record_name)
@@ -329,6 +341,8 @@ dxf_class_write
                 fprintf (stderr,
                   (_("Error in %s () empty class name string for the %s entity\n")),
                   __FUNCTION__, dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (!class->app_name)
@@ -352,6 +366,8 @@ dxf_class_write
         fprintf (fp->fp, " 90\n%d\n", class->proxy_cap_flag);
         fprintf (fp->fp, "280\n%d\n", class->was_a_proxy_flag);
         fprintf (fp->fp, "281\n%d\n", class->is_an_entity_flag);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
