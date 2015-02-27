@@ -181,6 +181,8 @@ dxf_line_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (line == NULL)
@@ -201,6 +203,8 @@ dxf_line_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -382,6 +386,8 @@ dxf_line_read
         {
                 line->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -421,6 +427,8 @@ dxf_line_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (line == NULL)
@@ -428,6 +436,8 @@ dxf_line_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if ((line->x0 == line->x1)
@@ -438,6 +448,8 @@ dxf_line_write
                   (_("Error in %s () start point and end point are identical for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, line->id_code);
                 dxf_entity_skip (dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (line->layer, "") == 0)
@@ -534,6 +546,8 @@ dxf_line_write
                 fprintf (fp->fp, "220\n%f\n", line->extr_y0);
                 fprintf (fp->fp, "230\n%f\n", line->extr_z0);
         }
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
