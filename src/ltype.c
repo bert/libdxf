@@ -52,27 +52,27 @@ dxf_ltype_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfLType *dxf_ltype = NULL;
+        DxfLType *ltype = NULL;
         size_t size;
 
         size = sizeof (DxfLType);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_ltype = malloc (size)) == NULL)
+        if ((ltype = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfArc struct.\n")),
                   __FUNCTION__);
-                dxf_ltype = NULL;
+                ltype = NULL;
         }
         else
         {
-                memset (dxf_ltype, 0, size);
+                memset (ltype, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_ltype);
+        return (ltype);
 }
 
 
@@ -92,7 +92,7 @@ dxf_ltype_new ()
 DxfLType *
 dxf_ltype_init
 (
-        DxfLType *dxf_ltype
+        DxfLType *ltype
                 /*!< DXF LType entity. */
 )
 {
@@ -102,45 +102,45 @@ dxf_ltype_init
         int i;
 
         /* Do some basic checks. */
-        if (dxf_ltype == NULL)
+        if (ltype == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_ltype = dxf_ltype_new ();
+                ltype = dxf_ltype_new ();
         }
-        if (dxf_ltype == NULL)
+        if (ltype == NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () could not allocate memory for a DxfLType struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_ltype->id_code = 0;
-        dxf_ltype->linetype_name = strdup ("");
-        dxf_ltype->description = strdup ("");
-        dxf_ltype->total_pattern_length = 0.0;
-        dxf_ltype->number_of_linetype_elements = 1;
-        for ((i = 0); (i < dxf_ltype->number_of_linetype_elements); i++)
+        ltype->id_code = 0;
+        ltype->linetype_name = strdup ("");
+        ltype->description = strdup ("");
+        ltype->total_pattern_length = 0.0;
+        ltype->number_of_linetype_elements = 1;
+        for ((i = 0); (i < ltype->number_of_linetype_elements); i++)
         {
-                dxf_ltype->complex_text_string[i] = strdup ("");
-                dxf_ltype->complex_x_offset[i] = 0.0;
-                dxf_ltype->complex_y_offset[i] = 0.0;
-                dxf_ltype->complex_scale[i] = 0.0;
-                dxf_ltype->dash_length[i] = 0.0;
-                dxf_ltype->complex_rotation[i] = 0.0;
-                dxf_ltype->complex_element[i] = 1;
-                dxf_ltype->complex_shape_number[i] = 0;
-                dxf_ltype->complex_style_pointer[i] = strdup ("");
+                ltype->complex_text_string[i] = strdup ("");
+                ltype->complex_x_offset[i] = 0.0;
+                ltype->complex_y_offset[i] = 0.0;
+                ltype->complex_scale[i] = 0.0;
+                ltype->dash_length[i] = 0.0;
+                ltype->complex_rotation[i] = 0.0;
+                ltype->complex_element[i] = 1;
+                ltype->complex_shape_number[i] = 0;
+                ltype->complex_style_pointer[i] = strdup ("");
         }
-        dxf_ltype->flag = 0;
-        dxf_ltype->alignment = 65;
-        dxf_ltype->dictionary_owner_soft = strdup ("");
-        dxf_ltype->dictionary_owner_hard = strdup ("");
+        ltype->flag = 0;
+        ltype->alignment = 65;
+        ltype->dictionary_owner_soft = strdup ("");
+        ltype->dictionary_owner_hard = strdup ("");
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_ltype);
+        return (ltype);
 }
 
 
@@ -151,9 +151,9 @@ dxf_ltype_init
  * Now follows some data for the \c LTYPE, to be terminated with a "  0"
  * string announcing the following table record, or the end of the
  * \c TABLE section marker \c ENDTAB. \n
- * While parsing the DXF file store data in \c dxf_ltype. \n
+ * While parsing the DXF file store data in \c ltype. \n
  *
- * \return a pointer to \c dxf_ltype.
+ * \return a pointer to \c ltype.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -166,7 +166,7 @@ dxf_ltype_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfLType *dxf_ltype
+        DxfLType *ltype
                 /*!< DXF ltype entity. */
 )
 {
@@ -184,13 +184,13 @@ dxf_ltype_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_ltype == NULL)
+        if (ltype == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_ltype = dxf_ltype_new ();
-                dxf_ltype = dxf_ltype_init (dxf_ltype);
+                ltype = dxf_ltype_new ();
+                ltype = dxf_ltype_init (ltype);
         }
         element = 0;
         (fp->line_number)++;
@@ -210,62 +210,62 @@ dxf_ltype_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_ltype->id_code);
+                        fscanf (fp->fp, "%x\n", &ltype->id_code);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_ltype->linetype_name);
+                        fscanf (fp->fp, "%s\n", ltype->linetype_name);
                 }
                 else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing a description. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_ltype->description);
+                        fscanf (fp->fp, "%s\n", ltype->description);
                 }
                 else if (strcmp (temp_string, "9") == 0)
                 {
                         /* Now follows a string containing a complex
                          * text string (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_ltype->complex_text_string[element]);
+                        fscanf (fp->fp, "%s\n", ltype->complex_text_string[element]);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the total
                          * pattern length value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ltype->total_pattern_length);
+                        fscanf (fp->fp, "%lf\n", &ltype->total_pattern_length);
                 }
                 else if (strcmp (temp_string, "44") == 0)
                 {
                         /* Now follows a string containing a complex
                          * x offset value (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ltype->complex_x_offset[element]);
+                        fscanf (fp->fp, "%lf\n", &ltype->complex_x_offset[element]);
                 }
                 else if (strcmp (temp_string, "45") == 0)
                 {
                         /* Now follows a string containing a complex
                          * y offset value (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ltype->complex_y_offset[element]);
+                        fscanf (fp->fp, "%lf\n", &ltype->complex_y_offset[element]);
                 }
                 else if (strcmp (temp_string, "46") == 0)
                 {
                         /* Now follows a string containing a complex
                          * scale value (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ltype->complex_scale[element]);
+                        fscanf (fp->fp, "%lf\n", &ltype->complex_scale[element]);
                 }
                 else if (strcmp (temp_string, "49") == 0)
                 {
                         /* Now follows a string containing a dash length
                          * value (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ltype->dash_length[element]);
+                        fscanf (fp->fp, "%lf\n", &ltype->dash_length[element]);
                         element++;
                         /*! \todo We are assuming that 49 is the first
                          * group code that is encountered for each
@@ -280,63 +280,63 @@ dxf_ltype_read
                         /* Now follows a string containing a complex
                          * rotation value (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ltype->complex_rotation[element]);
+                        fscanf (fp->fp, "%lf\n", &ltype->complex_rotation[element]);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * standard flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_ltype->flag);
+                        fscanf (fp->fp, "%d\n", &ltype->flag);
                 }
                 else if (strcmp (temp_string, "72") == 0)
                 {
                         /* Now follows a string containing the
                          * alignment value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_ltype->alignment);
+                        fscanf (fp->fp, "%d\n", &ltype->alignment);
                 }
                 else if (strcmp (temp_string, "73") == 0)
                 {
                         /* Now follows a string containing the number of
                          * dash length items value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_ltype->number_of_linetype_elements);
+                        fscanf (fp->fp, "%d\n", &ltype->number_of_linetype_elements);
                 }
                 else if (strcmp (temp_string, "74") == 0)
                 {
                         /* Now follows a string containing a complex
                          * element value (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_ltype->complex_element[element]);
+                        fscanf (fp->fp, "%d\n", &ltype->complex_element[element]);
                 }
                 else if (strcmp (temp_string, "75") == 0)
                 {
                         /* Now follows a string containing a complex
                          * element value (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_ltype->complex_shape_number[element]);
+                        fscanf (fp->fp, "%d\n", &ltype->complex_shape_number[element]);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_ltype->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", ltype->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "340") == 0)
                 {
                         /* Now follows a string containing a complex
                          * style pointer string (multiple entries possible). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_ltype->complex_style_pointer[element]);
+                        fscanf (fp->fp, "%s\n", ltype->complex_style_pointer[element]);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_ltype->dictionary_owner_hard);
+                        fscanf (fp->fp, "%s\n", ltype->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -353,23 +353,23 @@ dxf_ltype_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_ltype->linetype_name, "") == 0)
+        if (strcmp (ltype->linetype_name, "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s (): empty linetype name string for the entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_ltype->id_code);
+                  __FUNCTION__, ltype->id_code);
                 fprintf (stderr,
                   (_("\tentity is discarded from output.\n")));
                 return (NULL);
         }
-        if (dxf_ltype->alignment != 65)
+        if (ltype->alignment != 65)
         {
-                dxf_ltype->alignment = 65;
+                ltype->alignment = 65;
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_ltype);
+        return (ltype);
 }
 
 
@@ -390,7 +390,7 @@ dxf_ltype_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfLType *dxf_ltype
+        DxfLType *ltype
                 /*!< DXF ltype entity. */
 )
 {
@@ -408,18 +408,18 @@ dxf_ltype_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_ltype == NULL)
+        if (ltype == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_ltype->linetype_name, "") == 0)
+        if (strcmp (ltype->linetype_name, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s (): empty linetype name string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_ltype->id_code);
+                  __FUNCTION__, dxf_entity_name, ltype->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
@@ -427,9 +427,9 @@ dxf_ltype_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_ltype->id_code != -1)
+        if (ltype->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_ltype->id_code);
+                fprintf (fp->fp, "  5\n%x\n", ltype->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -441,18 +441,18 @@ dxf_ltype_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_ltype->dictionary_owner_soft, "") != 0)
+        if ((strcmp (ltype->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_ltype->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", ltype->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_ltype->dictionary_owner_hard, "") != 0)
+        if ((strcmp (ltype->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_ltype->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", ltype->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_14)
@@ -460,94 +460,94 @@ dxf_ltype_write
                 fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
                 fprintf (fp->fp, "100\nAcDbLinetypeTableRecord\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", dxf_ltype->linetype_name);
-        fprintf (fp->fp, " 70\n%d\n", dxf_ltype->flag);
-        if (dxf_ltype->description)
+        fprintf (fp->fp, "  2\n%s\n", ltype->linetype_name);
+        fprintf (fp->fp, " 70\n%d\n", ltype->flag);
+        if (ltype->description)
         {
-                fprintf (fp->fp, "  3\n%s\n", dxf_ltype->description);
+                fprintf (fp->fp, "  3\n%s\n", ltype->description);
         }
         else
         {
                 fprintf (fp->fp, "  3\n\n");
         }
-        fprintf (fp->fp, " 72\n%d\n", dxf_ltype->alignment);
-        fprintf (fp->fp, " 73\n%d\n", dxf_ltype->number_of_linetype_elements);
-        fprintf (fp->fp, " 40\n%f\n", dxf_ltype->total_pattern_length);
-        for ((i = 0); (i < dxf_ltype->number_of_linetype_elements); i++)
+        fprintf (fp->fp, " 72\n%d\n", ltype->alignment);
+        fprintf (fp->fp, " 73\n%d\n", ltype->number_of_linetype_elements);
+        fprintf (fp->fp, " 40\n%f\n", ltype->total_pattern_length);
+        for ((i = 0); (i < ltype->number_of_linetype_elements); i++)
         {
-                fprintf (fp->fp, " 49\n%f\n", dxf_ltype->dash_length[i]);
-                fprintf (fp->fp, " 74\n%d\n", dxf_ltype->complex_element[i]);
-                switch (dxf_ltype->complex_element[i])
+                fprintf (fp->fp, " 49\n%f\n", ltype->dash_length[i]);
+                fprintf (fp->fp, " 74\n%d\n", ltype->complex_element[i]);
+                switch (ltype->complex_element[i])
                 {
                         case 0:
                                 /* No embedded shape/text. */
-                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype->complex_x_offset[i]);
-                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype->complex_y_offset[i]);
-                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype->complex_scale[i]);
+                                fprintf (fp->fp, " 44\n%f\n", ltype->complex_x_offset[i]);
+                                fprintf (fp->fp, " 45\n%f\n", ltype->complex_y_offset[i]);
+                                fprintf (fp->fp, " 46\n%f\n", ltype->complex_scale[i]);
                                 fprintf (fp->fp, " 75\n0\n");
                                 break;
                         case 1:
                                 /* Specify an absolute rotation. */
-                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype->complex_x_offset[i]);
-                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype->complex_y_offset[i]);
-                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype->complex_scale[i]);
+                                fprintf (fp->fp, " 44\n%f\n", ltype->complex_x_offset[i]);
+                                fprintf (fp->fp, " 45\n%f\n", ltype->complex_y_offset[i]);
+                                fprintf (fp->fp, " 46\n%f\n", ltype->complex_scale[i]);
                                 fprintf (fp->fp, " 75\n0\n");
-                                fprintf (fp->fp, "340\n%s\n", dxf_ltype->complex_style_pointer[i]);
+                                fprintf (fp->fp, "340\n%s\n", ltype->complex_style_pointer[i]);
                                 break;
                         case 2:
                                 /*
                                  * The complex is a text string.
                                  * Use a relative rotation angle.
                                  */
-                                fprintf (fp->fp, "  9\n%s\n", dxf_ltype->complex_text_string[i]);
-                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype->complex_x_offset[i]);
-                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype->complex_y_offset[i]);
-                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype->complex_scale[i]);
-                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype->complex_rotation[i]);
+                                fprintf (fp->fp, "  9\n%s\n", ltype->complex_text_string[i]);
+                                fprintf (fp->fp, " 44\n%f\n", ltype->complex_x_offset[i]);
+                                fprintf (fp->fp, " 45\n%f\n", ltype->complex_y_offset[i]);
+                                fprintf (fp->fp, " 46\n%f\n", ltype->complex_scale[i]);
+                                fprintf (fp->fp, " 50\n%f\n", ltype->complex_rotation[i]);
                                 fprintf (fp->fp, " 75\n0\n");
-                                fprintf (fp->fp, "340\n%s\n", dxf_ltype->complex_style_pointer[i]);
+                                fprintf (fp->fp, "340\n%s\n", ltype->complex_style_pointer[i]);
                                 break;
                         case 3:
                                 /*
                                  * The complex is a text string.
                                  * Use an absolute rotation angle.
                                  */
-                                fprintf (fp->fp, "  9\n%s\n", dxf_ltype->complex_text_string[i]);
-                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype->complex_x_offset[i]);
-                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype->complex_y_offset[i]);
-                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype->complex_scale[i]);
-                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype->complex_rotation[i]);
+                                fprintf (fp->fp, "  9\n%s\n", ltype->complex_text_string[i]);
+                                fprintf (fp->fp, " 44\n%f\n", ltype->complex_x_offset[i]);
+                                fprintf (fp->fp, " 45\n%f\n", ltype->complex_y_offset[i]);
+                                fprintf (fp->fp, " 46\n%f\n", ltype->complex_scale[i]);
+                                fprintf (fp->fp, " 50\n%f\n", ltype->complex_rotation[i]);
                                 fprintf (fp->fp, " 75\n0\n");
-                                fprintf (fp->fp, "340\n%s\n", dxf_ltype->complex_style_pointer[i]);
+                                fprintf (fp->fp, "340\n%s\n", ltype->complex_style_pointer[i]);
                                 break;
                         case 4:
                                 /*
                                  * The complex is a shape.
                                  * Use a relative rotation angle.
                                  */
-                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype->complex_x_offset[i]);
-                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype->complex_y_offset[i]);
-                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype->complex_scale[i]);
-                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype->complex_rotation[i]);
-                                fprintf (fp->fp, " 75\n%d\n", dxf_ltype->complex_shape_number[i]);
-                                fprintf (fp->fp, "340\n%s\n", dxf_ltype->complex_style_pointer[i]);
+                                fprintf (fp->fp, " 44\n%f\n", ltype->complex_x_offset[i]);
+                                fprintf (fp->fp, " 45\n%f\n", ltype->complex_y_offset[i]);
+                                fprintf (fp->fp, " 46\n%f\n", ltype->complex_scale[i]);
+                                fprintf (fp->fp, " 50\n%f\n", ltype->complex_rotation[i]);
+                                fprintf (fp->fp, " 75\n%d\n", ltype->complex_shape_number[i]);
+                                fprintf (fp->fp, "340\n%s\n", ltype->complex_style_pointer[i]);
                                 break;
                         case 5:
                                 /*
                                  * The complex is a shape.
                                  * Use an absolute rotation angle.
                                  */
-                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype->complex_x_offset[i]);
-                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype->complex_y_offset[i]);
-                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype->complex_scale[i]);
-                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype->complex_rotation[i]);
-                                fprintf (fp->fp, " 75\n%d\n", dxf_ltype->complex_shape_number[i]);
-                                fprintf (fp->fp, "340\n%s\n", dxf_ltype->complex_style_pointer[i]);
+                                fprintf (fp->fp, " 44\n%f\n", ltype->complex_x_offset[i]);
+                                fprintf (fp->fp, " 45\n%f\n", ltype->complex_y_offset[i]);
+                                fprintf (fp->fp, " 46\n%f\n", ltype->complex_scale[i]);
+                                fprintf (fp->fp, " 50\n%f\n", ltype->complex_rotation[i]);
+                                fprintf (fp->fp, " 75\n%d\n", ltype->complex_shape_number[i]);
+                                fprintf (fp->fp, "340\n%s\n", ltype->complex_style_pointer[i]);
                                 break;
                         default:
                                 fprintf (stderr,
                                   (_("Warning in %s (): unknown complex element code for the %s entity with id-code: %x\n")),
-                                  __FUNCTION__, dxf_entity_name, dxf_ltype->id_code);
+                                  __FUNCTION__, dxf_entity_name, ltype->id_code);
                                 break;
                 }
         }
@@ -574,7 +574,7 @@ dxf_ltype_write
 int
 dxf_ltype_free
 (
-        DxfLType *dxf_ltype
+        DxfLType *ltype
                 /*!< Pointer to the memory occupied by the DXF \c LTYPE
                  * entity. */
 )
@@ -584,24 +584,24 @@ dxf_ltype_free
 #endif
         int i;
 
-        if (dxf_ltype->next != NULL)
+        if (ltype->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfLType was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_ltype->linetype_name);
-        free (dxf_ltype->description);
-        for ((i = 0); (i <= dxf_ltype->number_of_linetype_elements); i++)
+        free (ltype->linetype_name);
+        free (ltype->description);
+        for ((i = 0); (i <= ltype->number_of_linetype_elements); i++)
         {
-                dxf_ltype->complex_text_string[i] = NULL;
-                dxf_ltype->complex_style_pointer[i] = NULL;
+                ltype->complex_text_string[i] = NULL;
+                ltype->complex_style_pointer[i] = NULL;
         }
-        free (dxf_ltype->dictionary_owner_soft);
-        free (dxf_ltype->dictionary_owner_hard);
-        free (dxf_ltype);
-        dxf_ltype = NULL;
+        free (ltype->dictionary_owner_soft);
+        free (ltype->dictionary_owner_hard);
+        free (ltype);
+        ltype = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -618,7 +618,7 @@ dxf_ltype_free
 int
 dxf_ltype_is_xreferenced
 (
-        DxfLType *dxf_ltype
+        DxfLType *ltype
                 /*!< DXF ltype entity. */
 )
 {
@@ -628,14 +628,14 @@ dxf_ltype_is_xreferenced
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_ltype == NULL)
+        if (ltype == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_ltype->flag, 4);
+        result = DXF_CHECK_BIT (ltype->flag, 4);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -655,7 +655,7 @@ dxf_ltype_is_xreferenced
 int
 dxf_ltype_is_xresolved
 (
-        DxfLType *dxf_ltype
+        DxfLType *ltype
                 /*!< DXF ltype entity. */
 )
 {
@@ -665,15 +665,15 @@ dxf_ltype_is_xresolved
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_ltype == NULL)
+        if (ltype == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ((DXF_CHECK_BIT (dxf_ltype->flag, 4))
-          && (DXF_CHECK_BIT (dxf_ltype->flag, 5)));
+        result = ((DXF_CHECK_BIT (ltype->flag, 4))
+          && (DXF_CHECK_BIT (ltype->flag, 5)));
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -690,7 +690,7 @@ dxf_ltype_is_xresolved
 int
 dxf_ltype_is_referenced
 (
-        DxfLType *dxf_ltype
+        DxfLType *ltype
                 /*!< DXF ltype entity. */
 )
 {
@@ -700,14 +700,14 @@ dxf_ltype_is_referenced
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_ltype == NULL)
+        if (ltype == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_ltype->flag, 6);
+        result = DXF_CHECK_BIT (ltype->flag, 6);
 #if DEBUG
         DXF_DEBUG_END
 #endif

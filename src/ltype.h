@@ -1,7 +1,7 @@
 /*!
  * \file ltype.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF ltype entity (\c LTYPE).
  *
@@ -152,33 +152,39 @@ dxf_ltype_new ();
 DxfLType *
 dxf_ltype_init
 (
-        DxfLType *dxf_ltype
+        DxfLType *ltype
+);
+DxfLType *
+dxf_ltype_read
+(
+        DxfFile *fp,
+        DxfLType *ltype
 );
 int
 dxf_ltype_write
 (
         DxfFile *fp,
-        DxfLType *dxf_ltype
+        DxfLType *ltype
 );
 int
 dxf_ltype_free
 (
-        DxfLType *dxf_ltype
+        DxfLType *ltype
 );
 int
 dxf_ltype_is_xreferenced
 (
-        DxfLType *dxf_ltype
+        DxfLType *ltype
 );
 int
 dxf_ltype_is_xresolved
 (
-        DxfLType *dxf_ltype
+        DxfLType *ltype
 );
 int
 dxf_ltype_is_referenced
 (
-        DxfLType *dxf_ltype
+        DxfLType *ltype
 );
 
 
