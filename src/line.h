@@ -1,7 +1,7 @@
 /*!
  * \file line.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF line entity (\c LINE).
  *
@@ -141,24 +141,24 @@ dxf_line_new ();
 DxfLine *
 dxf_line_init
 (
-        DxfLine *dxf_line
+        DxfLine *line
 );
 DxfLine *
 dxf_line_read
 (
         DxfFile *fp,
-        DxfLine *dxf_line
+        DxfLine *line
 );
 int
 dxf_line_write
 (
         DxfFile *fp,
-        DxfLine *dxf_line
+        DxfLine *line
 );
 int
 dxf_line_free
 (
-        DxfLine *dxf_line
+        DxfLine *line
 );
 
 
