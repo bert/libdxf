@@ -392,7 +392,7 @@ dxf_lwpolyline_read
 /*!
  * \brief Write DXF output to fp for a light weight polyline entity.
  *
- * \warning This entity requires AutoCAD version 2004 or higher.
+ * \warning This entity requires AutoCAD version R14 or higher.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -426,6 +426,12 @@ dxf_lwpolyline_write
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, lwpolyline->id_code);
         }
         if (strcmp (lwpolyline->linetype, "") == 0)
         {
