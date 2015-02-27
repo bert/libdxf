@@ -1,7 +1,7 @@
 /*!
  * \file lwpolyline.h
  *
- * \author Copyright (C) 2010 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF light weight polyline entity (\c LWPOLYLINE).
  *
@@ -147,23 +147,23 @@ dxf_lwpolyline_new ();
 DxfLWPolyline *
 dxf_lwpolyline_init
 (
-        DxfLWPolyline *dxf_lwpolyline
+        DxfLWPolyline *lwpolyline
 );
 DxfLWPolyline *
 dxf_lwpolyline_read
 (
         DxfFile *fp,
-        DxfLWPolyline *dxf_lwpolyline
+        DxfLWPolyline *lwpolyline
 );
 int
 dxf_lwpolyline_write
 (
         DxfFile *fp,
-        DxfLWPolyline *dxf_lwpolyline
+        DxfLWPolyline *lwpolyline
 );
 int dxf_lwpolyline_free
 (
-        DxfLWPolyline *dxf_lwpolyline
+        DxfLWPolyline *lwpolyline
 );
 
 
