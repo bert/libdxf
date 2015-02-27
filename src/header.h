@@ -311,20 +311,20 @@ dxf_header
 int
 dxf_init_header
 (
-        DxfHeader dxf_header,
+        DxfHeader header,
         int acad_version_number
 );
 int
 dxf_read_header
 (
         DxfFile *fp,
-        DxfHeader dxf_header
+        DxfHeader header
 );
 int
 dxf_write_header
 (
         DxfFile *fp,
-        DxfHeader dxf_header
+        DxfHeader header
 );
 int
 dxf_write_header_metric_new

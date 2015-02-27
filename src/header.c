@@ -109,473 +109,473 @@ static int acad_version_from_string
 int
 dxf_init_header
 (
-        DxfHeader dxf_header, /*!< DXF header to be initialized.\n */
+        DxfHeader header, /*!< DXF header to be initialized.\n */
         int acad_version_number /*!< AutoCAD version number.\n */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        dxf_header.AcadVer = acad_version_string (acad_version_number);
+        header.AcadVer = acad_version_string (acad_version_number);
         switch (acad_version_number)
         {
                 case AC1009: /* AutoCAD 12 */
                 {
-                        dxf_header.DragMode = 2;
-                        dxf_header.OSMode = 125;
-                        dxf_header.BlipMode = 0;
-                        dxf_header.Coords = 2;
-                        dxf_header.AttDia = 0;
-                        dxf_header.AttReq = 1;
-                        dxf_header.Handling = 1;
-                        dxf_header.HandSeed = strdup ("233");
+                        header.DragMode = 2;
+                        header.OSMode = 125;
+                        header.BlipMode = 0;
+                        header.Coords = 2;
+                        header.AttDia = 0;
+                        header.AttReq = 1;
+                        header.Handling = 1;
+                        header.HandSeed = strdup ("233");
 
                 }
                 case AC1012: /* AutoCAD 13 */
                 {
-                        dxf_header.DWGCodePage = strdup ("ANSI_1252");
-                        dxf_header.DragMode = 2;
-                        dxf_header.OSMode = 125;
-                        dxf_header.CELTScale = 1.0;
-                        dxf_header.DispSilH = 0;
-                        dxf_header.DelObj = 1;
-                        dxf_header.DimJUST = 0;
-                        dxf_header.DimSD1 = 0;
-                        dxf_header.DimSD2 = 0;
-                        dxf_header.DimTOLJ = 1;
-                        dxf_header.DimTZIN = 0;
-                        dxf_header.DimALTZ = 0;
-                        dxf_header.DimALTTZ = 0;
-                        dxf_header.DimFIT = 3;
-                        dxf_header.DimUPT = 0;
-                        dxf_header.DimUNIT = 2;
-                        dxf_header.DimDEC = 4;
-                        dxf_header.DimTDEC = 4;
-                        dxf_header.DimALTU = 2;
-                        dxf_header.DimALTTD = 2;
-                        dxf_header.DimTXSTY = strdup ("STANDARD");
-                        dxf_header.DimAUNIT = 0;
-                        dxf_header.BlipMode = 0;
-                        dxf_header.ChamferC = 10.0;
-                        dxf_header.ChamferD = 10.0;
-                        dxf_header.Coords = 2;
-                        dxf_header.AttDia = 0;
-                        dxf_header.AttReq = 1;
-                        dxf_header.Handling = 1;
-                        dxf_header.HandSeed = strdup ("233");
-                        dxf_header.TreeDepth = 3020;
-                        dxf_header.PickStyle = 1;
-                        dxf_header.CMLStyle = strdup ("STANDARD");
-                        dxf_header.CMLJust = 0;
-                        dxf_header.CMLScale = 1.0;
-                        dxf_header.SaveImages = 1;
+                        header.DWGCodePage = strdup ("ANSI_1252");
+                        header.DragMode = 2;
+                        header.OSMode = 125;
+                        header.CELTScale = 1.0;
+                        header.DispSilH = 0;
+                        header.DelObj = 1;
+                        header.DimJUST = 0;
+                        header.DimSD1 = 0;
+                        header.DimSD2 = 0;
+                        header.DimTOLJ = 1;
+                        header.DimTZIN = 0;
+                        header.DimALTZ = 0;
+                        header.DimALTTZ = 0;
+                        header.DimFIT = 3;
+                        header.DimUPT = 0;
+                        header.DimUNIT = 2;
+                        header.DimDEC = 4;
+                        header.DimTDEC = 4;
+                        header.DimALTU = 2;
+                        header.DimALTTD = 2;
+                        header.DimTXSTY = strdup ("STANDARD");
+                        header.DimAUNIT = 0;
+                        header.BlipMode = 0;
+                        header.ChamferC = 10.0;
+                        header.ChamferD = 10.0;
+                        header.Coords = 2;
+                        header.AttDia = 0;
+                        header.AttReq = 1;
+                        header.Handling = 1;
+                        header.HandSeed = strdup ("233");
+                        header.TreeDepth = 3020;
+                        header.PickStyle = 1;
+                        header.CMLStyle = strdup ("STANDARD");
+                        header.CMLJust = 0;
+                        header.CMLScale = 1.0;
+                        header.SaveImages = 1;
                 }
                 case AC1014: /* AutoCAD 14 */
                 {
-                        dxf_header.AcadMaintVer = 0;
-                        dxf_header.DWGCodePage = strdup ("ANSI_1252");
-                        dxf_header.DragMode = 2;
-                        dxf_header.OSMode = 125;
-                        dxf_header.CELTScale = 1.0;
-                        dxf_header.DispSilH = 0;
-                        dxf_header.DelObj = 1;
-                        dxf_header.DimJUST = 0;
-                        dxf_header.DimSD1 = 0;
-                        dxf_header.DimSD2 = 0;
-                        dxf_header.DimTOLJ = 1;
-                        dxf_header.DimTZIN = 0;
-                        dxf_header.DimALTZ = 0;
-                        dxf_header.DimALTTZ = 0;
-                        dxf_header.DimFIT = 3;
-                        dxf_header.DimUPT = 0;
-                        dxf_header.DimUNIT = 0;
-                        dxf_header.DimDEC = 4;
-                        dxf_header.DimTDEC = 4;
-                        dxf_header.DimALTU = 2;
-                        dxf_header.DimALTTD = 2;
-                        dxf_header.DimTXSTY = strdup ("STANDARD");
-                        dxf_header.DimAUNIT = 0;
-                        dxf_header.BlipMode = 0;
-                        dxf_header.ChamferC = 10.0;
-                        dxf_header.ChamferD = 10.0;
-                        dxf_header.Coords = 2;
-                        dxf_header.AttDia = 0;
-                        dxf_header.AttReq = 1;
-                        dxf_header.Handling = 1;
-                        dxf_header.HandSeed = strdup ("262");
-                        dxf_header.TreeDepth = 3020;
-                        dxf_header.PickStyle = 1;
-                        dxf_header.CMLStyle = strdup ("STANDARD");
-                        dxf_header.CMLJust = 0;
-                        dxf_header.CMLScale = 1.0;
-                        dxf_header.ProxyGraphics = 1;
-                        dxf_header.Measurement = 0;
+                        header.AcadMaintVer = 0;
+                        header.DWGCodePage = strdup ("ANSI_1252");
+                        header.DragMode = 2;
+                        header.OSMode = 125;
+                        header.CELTScale = 1.0;
+                        header.DispSilH = 0;
+                        header.DelObj = 1;
+                        header.DimJUST = 0;
+                        header.DimSD1 = 0;
+                        header.DimSD2 = 0;
+                        header.DimTOLJ = 1;
+                        header.DimTZIN = 0;
+                        header.DimALTZ = 0;
+                        header.DimALTTZ = 0;
+                        header.DimFIT = 3;
+                        header.DimUPT = 0;
+                        header.DimUNIT = 0;
+                        header.DimDEC = 4;
+                        header.DimTDEC = 4;
+                        header.DimALTU = 2;
+                        header.DimALTTD = 2;
+                        header.DimTXSTY = strdup ("STANDARD");
+                        header.DimAUNIT = 0;
+                        header.BlipMode = 0;
+                        header.ChamferC = 10.0;
+                        header.ChamferD = 10.0;
+                        header.Coords = 2;
+                        header.AttDia = 0;
+                        header.AttReq = 1;
+                        header.Handling = 1;
+                        header.HandSeed = strdup ("262");
+                        header.TreeDepth = 3020;
+                        header.PickStyle = 1;
+                        header.CMLStyle = strdup ("STANDARD");
+                        header.CMLJust = 0;
+                        header.CMLScale = 1.0;
+                        header.ProxyGraphics = 1;
+                        header.Measurement = 0;
                 }
                 case AC1015: /* AutoCAD 2000 */
                 {
-                        dxf_header.AcadMaintVer = 20;
-                        dxf_header.DWGCodePage = strdup ("ANSI_1252");
-                        dxf_header.CELTScale = 1.0;
-                        dxf_header.DispSilH = 0;
-                        dxf_header.DimJUST = 0;
-                        dxf_header.DimSD1 = 0;
-                        dxf_header.DimSD2 = 0;
-                        dxf_header.DimTOLJ = 1;
-                        dxf_header.DimTZIN = 0;
-                        dxf_header.DimALTZ = 0;
-                        dxf_header.DimALTTZ = 0;
-                        dxf_header.DimUPT = 0;
-                        dxf_header.DimDEC = 4;
-                        dxf_header.DimTDEC = 4;
-                        dxf_header.DimALTU = 2;
-                        dxf_header.DimALTTD = 2;
-                        dxf_header.DimTXSTY = strdup ("STANDARD");
-                        dxf_header.DimAUNIT = 0;
-                        dxf_header.DimADEC = 0;
-                        dxf_header.DimALTRND = 0.0;
-                        dxf_header.DimAZIN = 0;
-                        dxf_header.DimDSEP = 46;
-                        dxf_header.DimATFIT = 3;
-                        dxf_header.DimFRAC = 0;
-                        dxf_header.DimLDRBLK = strdup ("");
-                        dxf_header.DimLUNIT = 2;
-                        dxf_header.DimLWD = -2;
-                        dxf_header.DimLWE = -2;
-                        dxf_header.DimTMOVE = 0;
-                        dxf_header.ChamferC = 10.0;
-                        dxf_header.ChamferD = 10.0;
-                        dxf_header.TDUCreate = 0.0;
-                        dxf_header.TDUUpdate = 0.0;
-                        dxf_header.HandSeed = strdup ("274");
-                        dxf_header.UCSBase = strdup ("");
-                        dxf_header.UCSOrthoRef = strdup ("");
-                        dxf_header.UCSOrthoView = 0;
-                        dxf_header.UCSOrgTop.x0 = 0.0;
-                        dxf_header.UCSOrgTop.y0 = 0.0;
-                        dxf_header.UCSOrgTop.z0 = 0.0;
-                        dxf_header.UCSOrgBottom.x0 = 0.0;
-                        dxf_header.UCSOrgBottom.y0 = 0.0;
-                        dxf_header.UCSOrgBottom.z0 = 0.0;
-                        dxf_header.UCSOrgLeft.x0 = 0.0;
-                        dxf_header.UCSOrgLeft.y0 = 0.0;
-                        dxf_header.UCSOrgLeft.z0 = 0.0;
-                        dxf_header.UCSOrgRight.x0 = 0.0;
-                        dxf_header.UCSOrgRight.y0 = 0.0;
-                        dxf_header.UCSOrgRight.z0 = 0.0;
-                        dxf_header.UCSOrgFront.x0 = 0.0;
-                        dxf_header.UCSOrgFront.y0 = 0.0;
-                        dxf_header.UCSOrgFront.z0 = 0.0;
-                        dxf_header.UCSOrgBack.x0 = 0.0;
-                        dxf_header.UCSOrgBack.y0 = 0.0;
-                        dxf_header.UCSOrgBack.z0 = 0.0;
-                        dxf_header.PUCSBase = strdup ("");
-                        dxf_header.PUCSOrthoRef = strdup ("");
-                        dxf_header.PUCSOrthoView = 0;
-                        dxf_header.PUCSOrgTop.x0 = 0.0;
-                        dxf_header.PUCSOrgTop.y0 = 0.0;
-                        dxf_header.PUCSOrgTop.z0 = 0.0;
-                        dxf_header.PUCSOrgBottom.x0 = 0.0;
-                        dxf_header.PUCSOrgBottom.y0 = 0.0;
-                        dxf_header.PUCSOrgBottom.z0 = 0.0;
-                        dxf_header.PUCSOrgLeft.x0 = 0.0;
-                        dxf_header.PUCSOrgLeft.y0 = 0.0;
-                        dxf_header.PUCSOrgLeft.z0 = 0.0;
-                        dxf_header.PUCSOrgRight.x0 = 0.0;
-                        dxf_header.PUCSOrgRight.y0 = 0.0;
-                        dxf_header.PUCSOrgRight.z0 = 0.0;
-                        dxf_header.PUCSOrgFront.x0 = 0.0;
-                        dxf_header.PUCSOrgFront.y0 = 0.0;
-                        dxf_header.PUCSOrgFront.z0 = 0.0;
-                        dxf_header.PUCSOrgBack.x0 = 0.0;
-                        dxf_header.PUCSOrgBack.y0 = 0.0;
-                        dxf_header.PUCSOrgBack.z0 = 0.0;
-                        dxf_header.TreeDepth = 3020;
-                        dxf_header.CMLStyle = strdup ("STANDARD");
-                        dxf_header.CMLJust = 0;
-                        dxf_header.CMLScale = 1.0;
-                        dxf_header.ProxyGraphics = 1;
-                        dxf_header.Measurement = 0;
-                        dxf_header.CELWeight = -1;
-                        dxf_header.EndCaps = 0;
-                        dxf_header.JoinStyle = 0;
-                        dxf_header.LWDisplay = 0;
-                        dxf_header.InsUnits = 0;
-                        dxf_header.HyperLinkBase = strdup ("");
-                        dxf_header.StyleSheet = strdup ("");
-                        dxf_header.XEdit = 1;
-                        dxf_header.CEPSNType = 0;
-                        dxf_header.PStyleMode = 1;
-                        dxf_header.FingerPrintGUID = strdup ("");
-                        dxf_header.VersionGUID = strdup ("");
-                        dxf_header.ExtNames = 0;
-                        dxf_header.PSVPScale = 0.0;
-                        dxf_header.OLEStartUp = 0;
+                        header.AcadMaintVer = 20;
+                        header.DWGCodePage = strdup ("ANSI_1252");
+                        header.CELTScale = 1.0;
+                        header.DispSilH = 0;
+                        header.DimJUST = 0;
+                        header.DimSD1 = 0;
+                        header.DimSD2 = 0;
+                        header.DimTOLJ = 1;
+                        header.DimTZIN = 0;
+                        header.DimALTZ = 0;
+                        header.DimALTTZ = 0;
+                        header.DimUPT = 0;
+                        header.DimDEC = 4;
+                        header.DimTDEC = 4;
+                        header.DimALTU = 2;
+                        header.DimALTTD = 2;
+                        header.DimTXSTY = strdup ("STANDARD");
+                        header.DimAUNIT = 0;
+                        header.DimADEC = 0;
+                        header.DimALTRND = 0.0;
+                        header.DimAZIN = 0;
+                        header.DimDSEP = 46;
+                        header.DimATFIT = 3;
+                        header.DimFRAC = 0;
+                        header.DimLDRBLK = strdup ("");
+                        header.DimLUNIT = 2;
+                        header.DimLWD = -2;
+                        header.DimLWE = -2;
+                        header.DimTMOVE = 0;
+                        header.ChamferC = 10.0;
+                        header.ChamferD = 10.0;
+                        header.TDUCreate = 0.0;
+                        header.TDUUpdate = 0.0;
+                        header.HandSeed = strdup ("274");
+                        header.UCSBase = strdup ("");
+                        header.UCSOrthoRef = strdup ("");
+                        header.UCSOrthoView = 0;
+                        header.UCSOrgTop.x0 = 0.0;
+                        header.UCSOrgTop.y0 = 0.0;
+                        header.UCSOrgTop.z0 = 0.0;
+                        header.UCSOrgBottom.x0 = 0.0;
+                        header.UCSOrgBottom.y0 = 0.0;
+                        header.UCSOrgBottom.z0 = 0.0;
+                        header.UCSOrgLeft.x0 = 0.0;
+                        header.UCSOrgLeft.y0 = 0.0;
+                        header.UCSOrgLeft.z0 = 0.0;
+                        header.UCSOrgRight.x0 = 0.0;
+                        header.UCSOrgRight.y0 = 0.0;
+                        header.UCSOrgRight.z0 = 0.0;
+                        header.UCSOrgFront.x0 = 0.0;
+                        header.UCSOrgFront.y0 = 0.0;
+                        header.UCSOrgFront.z0 = 0.0;
+                        header.UCSOrgBack.x0 = 0.0;
+                        header.UCSOrgBack.y0 = 0.0;
+                        header.UCSOrgBack.z0 = 0.0;
+                        header.PUCSBase = strdup ("");
+                        header.PUCSOrthoRef = strdup ("");
+                        header.PUCSOrthoView = 0;
+                        header.PUCSOrgTop.x0 = 0.0;
+                        header.PUCSOrgTop.y0 = 0.0;
+                        header.PUCSOrgTop.z0 = 0.0;
+                        header.PUCSOrgBottom.x0 = 0.0;
+                        header.PUCSOrgBottom.y0 = 0.0;
+                        header.PUCSOrgBottom.z0 = 0.0;
+                        header.PUCSOrgLeft.x0 = 0.0;
+                        header.PUCSOrgLeft.y0 = 0.0;
+                        header.PUCSOrgLeft.z0 = 0.0;
+                        header.PUCSOrgRight.x0 = 0.0;
+                        header.PUCSOrgRight.y0 = 0.0;
+                        header.PUCSOrgRight.z0 = 0.0;
+                        header.PUCSOrgFront.x0 = 0.0;
+                        header.PUCSOrgFront.y0 = 0.0;
+                        header.PUCSOrgFront.z0 = 0.0;
+                        header.PUCSOrgBack.x0 = 0.0;
+                        header.PUCSOrgBack.y0 = 0.0;
+                        header.PUCSOrgBack.z0 = 0.0;
+                        header.TreeDepth = 3020;
+                        header.CMLStyle = strdup ("STANDARD");
+                        header.CMLJust = 0;
+                        header.CMLScale = 1.0;
+                        header.ProxyGraphics = 1;
+                        header.Measurement = 0;
+                        header.CELWeight = -1;
+                        header.EndCaps = 0;
+                        header.JoinStyle = 0;
+                        header.LWDisplay = 0;
+                        header.InsUnits = 0;
+                        header.HyperLinkBase = strdup ("");
+                        header.StyleSheet = strdup ("");
+                        header.XEdit = 1;
+                        header.CEPSNType = 0;
+                        header.PStyleMode = 1;
+                        header.FingerPrintGUID = strdup ("");
+                        header.VersionGUID = strdup ("");
+                        header.ExtNames = 0;
+                        header.PSVPScale = 0.0;
+                        header.OLEStartUp = 0;
                 }
                 case AC1018: /* AutoCAD 2004 */
                 {
-                        dxf_header.AcadMaintVer = 0;
-                        dxf_header.DWGCodePage = strdup ("ANSI_1252");
-                        dxf_header.CELTScale = 1.0;
-                        dxf_header.DispSilH = 0;
-                        dxf_header.DimJUST = 0;
-                        dxf_header.DimSD1 = 0;
-                        dxf_header.DimSD2 = 0;
-                        dxf_header.DimTOLJ = 1;
-                        dxf_header.DimTZIN = 0;
-                        dxf_header.DimALTZ = 0;
-                        dxf_header.DimALTTZ = 0;
-                        dxf_header.DimUPT = 0;
-                        dxf_header.DimDEC = 4;
-                        dxf_header.DimTDEC = 4;
-                        dxf_header.DimALTU = 2;
-                        dxf_header.DimALTTD = 2;
-                        dxf_header.DimTXSTY = strdup ("STANDARD");
-                        dxf_header.DimAUNIT = 0;
-                        dxf_header.DimADEC = 0;
-                        dxf_header.DimALTRND = 0.0;
-                        dxf_header.DimAZIN = 0;
-                        dxf_header.DimDSEP = 46;
-                        dxf_header.DimATFIT = 3;
-                        dxf_header.DimFRAC = 0;
-                        dxf_header.DimLDRBLK = strdup ("");
-                        dxf_header.DimLUNIT = 2;
-                        dxf_header.DimLWD = -2;
-                        dxf_header.DimLWE = -2;
-                        dxf_header.DimTMOVE = 0;
-                        dxf_header.ChamferC = 10.0;
-                        dxf_header.ChamferD = 10.0;
-                        dxf_header.TDUCreate = 0.0;
-                        dxf_header.TDUUpdate = 0.0;
-                        dxf_header.HandSeed = strdup ("26A");
-                        dxf_header.UCSBase = strdup ("");
-                        dxf_header.UCSOrthoRef = strdup ("");
-                        dxf_header.UCSOrthoView = 0;
-                        dxf_header.UCSOrgTop.x0 = 0.0;
-                        dxf_header.UCSOrgTop.y0 = 0.0;
-                        dxf_header.UCSOrgTop.z0 = 0.0;
-                        dxf_header.UCSOrgBottom.x0 = 0.0;
-                        dxf_header.UCSOrgBottom.y0 = 0.0;
-                        dxf_header.UCSOrgBottom.z0 = 0.0;
-                        dxf_header.UCSOrgLeft.x0 = 0.0;
-                        dxf_header.UCSOrgLeft.y0 = 0.0;
-                        dxf_header.UCSOrgLeft.z0 = 0.0;
-                        dxf_header.UCSOrgRight.x0 = 0.0;
-                        dxf_header.UCSOrgRight.y0 = 0.0;
-                        dxf_header.UCSOrgRight.z0 = 0.0;
-                        dxf_header.UCSOrgFront.x0 = 0.0;
-                        dxf_header.UCSOrgFront.y0 = 0.0;
-                        dxf_header.UCSOrgFront.z0 = 0.0;
-                        dxf_header.UCSOrgBack.x0 = 0.0;
-                        dxf_header.UCSOrgBack.y0 = 0.0;
-                        dxf_header.UCSOrgBack.z0 = 0.0;
-                        dxf_header.PUCSBase = strdup ("");
-                        dxf_header.PUCSOrthoRef = strdup ("");
-                        dxf_header.PUCSOrthoView = 0;
-                        dxf_header.PUCSOrgTop.x0 = 0.0;
-                        dxf_header.PUCSOrgTop.y0 = 0.0;
-                        dxf_header.PUCSOrgTop.z0 = 0.0;
-                        dxf_header.PUCSOrgBottom.x0 = 0.0;
-                        dxf_header.PUCSOrgBottom.y0 = 0.0;
-                        dxf_header.PUCSOrgBottom.z0 = 0.0;
-                        dxf_header.PUCSOrgLeft.x0 = 0.0;
-                        dxf_header.PUCSOrgLeft.y0 = 0.0;
-                        dxf_header.PUCSOrgLeft.z0 = 0.0;
-                        dxf_header.PUCSOrgRight.x0 = 0.0;
-                        dxf_header.PUCSOrgRight.y0 = 0.0;
-                        dxf_header.PUCSOrgRight.z0 = 0.0;
-                        dxf_header.PUCSOrgFront.x0 = 0.0;
-                        dxf_header.PUCSOrgFront.y0 = 0.0;
-                        dxf_header.PUCSOrgFront.z0 = 0.0;
-                        dxf_header.PUCSOrgBack.x0 = 0.0;
-                        dxf_header.PUCSOrgBack.y0 = 0.0;
-                        dxf_header.PUCSOrgBack.z0 = 0.0;
-                        dxf_header.TreeDepth = 3020;
-                        dxf_header.CMLStyle = strdup ("STANDARD");
-                        dxf_header.CMLJust = 0;
-                        dxf_header.CMLScale = 1.0;
-                        dxf_header.ProxyGraphics = 1;
-                        dxf_header.Measurement = 0;
-                        dxf_header.CELWeight = -1;
-                        dxf_header.EndCaps = 0;
-                        dxf_header.JoinStyle = 0;
-                        dxf_header.LWDisplay = 0;
-                        dxf_header.InsUnits = 0;
-                        dxf_header.HyperLinkBase = strdup ("");
-                        dxf_header.StyleSheet = strdup ("");
-                        dxf_header.XEdit = 1;
-                        dxf_header.CEPSNType = 0;
-                        dxf_header.PStyleMode = 1;
-                        dxf_header.FingerPrintGUID = strdup ("");
-                        dxf_header.VersionGUID = strdup ("");
-                        dxf_header.ExtNames = 0;
-                        dxf_header.PSVPScale = 0.0;
-                        dxf_header.OLEStartUp = 0;
-                        dxf_header.SortEnts = 127;
-                        dxf_header.IndexCtl = 0;
-                        dxf_header.HideText = 0;
-                        dxf_header.XClipFrame = 0;
-                        dxf_header.HaloGap = 0;
-                        dxf_header.ObsColor = 257;
-                        dxf_header.ObsLType = 0;
-                        dxf_header.InterSectionDisplay = 0;
-                        dxf_header.InterSectionColor = 257;
-                        dxf_header.DimASSOC = 1;
-                        dxf_header.ProjectName = strdup ("");
+                        header.AcadMaintVer = 0;
+                        header.DWGCodePage = strdup ("ANSI_1252");
+                        header.CELTScale = 1.0;
+                        header.DispSilH = 0;
+                        header.DimJUST = 0;
+                        header.DimSD1 = 0;
+                        header.DimSD2 = 0;
+                        header.DimTOLJ = 1;
+                        header.DimTZIN = 0;
+                        header.DimALTZ = 0;
+                        header.DimALTTZ = 0;
+                        header.DimUPT = 0;
+                        header.DimDEC = 4;
+                        header.DimTDEC = 4;
+                        header.DimALTU = 2;
+                        header.DimALTTD = 2;
+                        header.DimTXSTY = strdup ("STANDARD");
+                        header.DimAUNIT = 0;
+                        header.DimADEC = 0;
+                        header.DimALTRND = 0.0;
+                        header.DimAZIN = 0;
+                        header.DimDSEP = 46;
+                        header.DimATFIT = 3;
+                        header.DimFRAC = 0;
+                        header.DimLDRBLK = strdup ("");
+                        header.DimLUNIT = 2;
+                        header.DimLWD = -2;
+                        header.DimLWE = -2;
+                        header.DimTMOVE = 0;
+                        header.ChamferC = 10.0;
+                        header.ChamferD = 10.0;
+                        header.TDUCreate = 0.0;
+                        header.TDUUpdate = 0.0;
+                        header.HandSeed = strdup ("26A");
+                        header.UCSBase = strdup ("");
+                        header.UCSOrthoRef = strdup ("");
+                        header.UCSOrthoView = 0;
+                        header.UCSOrgTop.x0 = 0.0;
+                        header.UCSOrgTop.y0 = 0.0;
+                        header.UCSOrgTop.z0 = 0.0;
+                        header.UCSOrgBottom.x0 = 0.0;
+                        header.UCSOrgBottom.y0 = 0.0;
+                        header.UCSOrgBottom.z0 = 0.0;
+                        header.UCSOrgLeft.x0 = 0.0;
+                        header.UCSOrgLeft.y0 = 0.0;
+                        header.UCSOrgLeft.z0 = 0.0;
+                        header.UCSOrgRight.x0 = 0.0;
+                        header.UCSOrgRight.y0 = 0.0;
+                        header.UCSOrgRight.z0 = 0.0;
+                        header.UCSOrgFront.x0 = 0.0;
+                        header.UCSOrgFront.y0 = 0.0;
+                        header.UCSOrgFront.z0 = 0.0;
+                        header.UCSOrgBack.x0 = 0.0;
+                        header.UCSOrgBack.y0 = 0.0;
+                        header.UCSOrgBack.z0 = 0.0;
+                        header.PUCSBase = strdup ("");
+                        header.PUCSOrthoRef = strdup ("");
+                        header.PUCSOrthoView = 0;
+                        header.PUCSOrgTop.x0 = 0.0;
+                        header.PUCSOrgTop.y0 = 0.0;
+                        header.PUCSOrgTop.z0 = 0.0;
+                        header.PUCSOrgBottom.x0 = 0.0;
+                        header.PUCSOrgBottom.y0 = 0.0;
+                        header.PUCSOrgBottom.z0 = 0.0;
+                        header.PUCSOrgLeft.x0 = 0.0;
+                        header.PUCSOrgLeft.y0 = 0.0;
+                        header.PUCSOrgLeft.z0 = 0.0;
+                        header.PUCSOrgRight.x0 = 0.0;
+                        header.PUCSOrgRight.y0 = 0.0;
+                        header.PUCSOrgRight.z0 = 0.0;
+                        header.PUCSOrgFront.x0 = 0.0;
+                        header.PUCSOrgFront.y0 = 0.0;
+                        header.PUCSOrgFront.z0 = 0.0;
+                        header.PUCSOrgBack.x0 = 0.0;
+                        header.PUCSOrgBack.y0 = 0.0;
+                        header.PUCSOrgBack.z0 = 0.0;
+                        header.TreeDepth = 3020;
+                        header.CMLStyle = strdup ("STANDARD");
+                        header.CMLJust = 0;
+                        header.CMLScale = 1.0;
+                        header.ProxyGraphics = 1;
+                        header.Measurement = 0;
+                        header.CELWeight = -1;
+                        header.EndCaps = 0;
+                        header.JoinStyle = 0;
+                        header.LWDisplay = 0;
+                        header.InsUnits = 0;
+                        header.HyperLinkBase = strdup ("");
+                        header.StyleSheet = strdup ("");
+                        header.XEdit = 1;
+                        header.CEPSNType = 0;
+                        header.PStyleMode = 1;
+                        header.FingerPrintGUID = strdup ("");
+                        header.VersionGUID = strdup ("");
+                        header.ExtNames = 0;
+                        header.PSVPScale = 0.0;
+                        header.OLEStartUp = 0;
+                        header.SortEnts = 127;
+                        header.IndexCtl = 0;
+                        header.HideText = 0;
+                        header.XClipFrame = 0;
+                        header.HaloGap = 0;
+                        header.ObsColor = 257;
+                        header.ObsLType = 0;
+                        header.InterSectionDisplay = 0;
+                        header.InterSectionColor = 257;
+                        header.DimASSOC = 1;
+                        header.ProjectName = strdup ("");
                 }
         }
-        dxf_header.AcadVer = strdup (acad_version_string (acad_version_number));
-        dxf_header.InsBase.x0 = 0.0;
-        dxf_header.InsBase.y0 = 0.0;
-        dxf_header.InsBase.z0 = 0.0;
-        dxf_header.ExtMin.x0 = 0.0;
-        dxf_header.ExtMin.y0 = 0.0;
-        dxf_header.ExtMin.z0 = 0.0;
-        dxf_header.ExtMax.x0 = 0.0;
-        dxf_header.ExtMax.y0 = 0.0;
-        dxf_header.ExtMax.z0 = 0.0;
-        dxf_header.LimMin.x0 = 0.0;
-        dxf_header.LimMin.y0 = 0.0;
-        dxf_header.LimMax.x0 = 0.0;
-        dxf_header.LimMax.y0 = 0.0;
-        dxf_header.OrthoMode = 0;
-        dxf_header.RegenMode = 0;
-        dxf_header.FillMode = 1;
-        dxf_header.QTextMode = 0;
-        dxf_header.MirrText = 1;
-        dxf_header.LTScale = 1.0;
-        dxf_header.AttMode = 1;
-        dxf_header.TextSize = 2.5;
-        dxf_header.TraceWid = 1.0;
-        dxf_header.TextStyle = strdup ("STANDARD");
-        dxf_header.CELType = strdup ("BYLAYER");
-        dxf_header.CLayer = strdup ("0");
-        dxf_header.CEColor = 256;
-        dxf_header.DimSCALE = 1.0;
-        dxf_header.DimASZ = 2.5;
-        dxf_header.DimEXO = 0.625;
-        dxf_header.DimDLI = 3.75;
-        dxf_header.DimRND = 0.0;
-        dxf_header.DimDLE = 0.0;
-        dxf_header.DimEXE = 1.25;
-        dxf_header.DimTP = 0.0;
-        dxf_header.DimTM = 0.0;
-        dxf_header.DimTXT = 2.5;
-        dxf_header.DimCEN = 2.5;
-        dxf_header.DimTSZ = 0.0;
-        dxf_header.DimTOL = 0;
-        dxf_header.DimLIM = 0;
-        dxf_header.DimTIH = 0;
-        dxf_header.DimTOH = 0;
-        dxf_header.DimSE1 = 0;
-        dxf_header.DimSE2 = 0;
-        dxf_header.DimTAD = 1;
-        dxf_header.DimZIN = 8;
-        dxf_header.DimBLK = strdup ("");
-        dxf_header.DimASO = 1;
-        dxf_header.DimSHO = 1;
-        dxf_header.DimPOST = strdup ("");
-        dxf_header.DimAPOST = strdup ("");
-        dxf_header.DimALT = 0;
-        dxf_header.DimALTD = 4;
-        dxf_header.DimALTF = 0.0394;
-        dxf_header.DimLFAC = 1.0;
-        dxf_header.DimTOFL = 1;
-        dxf_header.DimTVP = 0.0;
-        dxf_header.DimTIX = 0;
-        dxf_header.DimSOXD = 0;
-        dxf_header.DimSAH = 0;
-        dxf_header.DimBLK1 = strdup ("");
-        dxf_header.DimBLK2 = strdup ("");
-        dxf_header.DimCLRD = 0;
-        dxf_header.DimCLRE = 0;
-        dxf_header.DimCLRT = 0;
-        dxf_header.DimTFAC = 1.0;
-        dxf_header.DimGAP = 0.625;
-        dxf_header.LUnits = 2;
-        dxf_header.LUPrec = 4;
-        dxf_header.Sketchinc = 1.0;
-        dxf_header.FilletRad = 1.0;
-        dxf_header.AUnits = 0;
-        dxf_header.AUPrec = 0;
-        dxf_header.Menu = strdup (".");
-        dxf_header.Elevation = 0.0;
-        dxf_header.PElevation = 0.0;
-        dxf_header.Thickness = 0.0;
-        dxf_header.LimCheck = 0;
-        dxf_header.ChamferA = 10.0;
-        dxf_header.ChamferB = 10.0;
-        dxf_header.SKPoly = 0;
-        dxf_header.TDCreate = 0.0;
-        dxf_header.TDUpdate = 0.0;
-        dxf_header.TDInDWG = 0.0;
-        dxf_header.TDUSRTimer = 0.0;
-        dxf_header.USRTimer = 1;
-        dxf_header.AngBase = 0.0;
-        dxf_header.AngDir = 0;
-        dxf_header.PDMode = 98;
-        dxf_header.PDSize = 0.0;
-        dxf_header.PLineWid = 0.0;
-        dxf_header.SPLFrame = 0;
-        dxf_header.SPLineType = 6;
-        dxf_header.SPLineSegs = 8;
-        dxf_header.SurfTab1 = 6;
-        dxf_header.SurfTab2 = 6;
-        dxf_header.SurfType = 6;
-        dxf_header.SurfU = 6;
-        dxf_header.SurfV = 6;
-        dxf_header.UCSName = strdup ("");
-        dxf_header.UCSOrg.x0 = 0.0;
-        dxf_header.UCSOrg.y0 = 0.0;
-        dxf_header.UCSOrg.z0 = 0.0;
-        dxf_header.UCSXDir.x0 = 0.0;
-        dxf_header.UCSXDir.y0 = 0.0;
-        dxf_header.UCSXDir.z0 = 0.0;
-        dxf_header.UCSYDir.x0 = 0.0;
-        dxf_header.UCSYDir.y0 = 0.0;
-        dxf_header.UCSYDir.z0 = 0.0;
-        dxf_header.PUCSName = strdup ("");
-        dxf_header.PUCSOrg.x0 = 0.0;
-        dxf_header.PUCSOrg.y0 = 0.0;
-        dxf_header.PUCSOrg.z0 = 0.0;
-        dxf_header.PUCSXDir.x0 = 0.0;
-        dxf_header.PUCSXDir.y0 = 0.0;
-        dxf_header.PUCSXDir.z0 = 0.0;
-        dxf_header.PUCSYDir.x0 = 0.0;
-        dxf_header.PUCSYDir.y0 = 0.0;
-        dxf_header.PUCSYDir.z0 = 0.0;
-        dxf_header.UserI1 = 0;
-        dxf_header.UserI2 = 0;
-        dxf_header.UserI3 = 0;
-        dxf_header.UserI4 = 0;
-        dxf_header.UserI5 = 0;
-        dxf_header.UserR1 = 0.0;
-        dxf_header.UserR2 = 0.0;
-        dxf_header.UserR3 = 0.0;
-        dxf_header.UserR4 = 0.0;
-        dxf_header.UserR5 = 0.0;
-        dxf_header.WorldView = 0;
-        dxf_header.ShadEdge = 3;
-        dxf_header.ShadeDif = 70;
-        dxf_header.TileMode = 1;
-        dxf_header.MaxActVP = 48;
-        dxf_header.PInsBase.x0 = 0.0;
-        dxf_header.PInsBase.y0 = 0.0;
-        dxf_header.PInsBase.z0 = 0.0;
-        dxf_header.PLimCheck = 0;
-        dxf_header.PExtMin.x0 = 0.0;
-        dxf_header.PExtMin.y0 = 0.0;
-        dxf_header.PExtMin.z0 = 0.0;
-        dxf_header.PExtMax.x0 = 0.0;
-        dxf_header.PExtMax.y0 = 0.0;
-        dxf_header.PExtMax.z0 = 0.0;
-        dxf_header.PLimMin.x0 = 0.0;
-        dxf_header.PLimMin.y0 = 0.0;
-        dxf_header.PLimMax.x0 = 0.0;
-        dxf_header.PLimMax.y0 = 0.0;
-        dxf_header.UnitMode = 0;
-        dxf_header.VisRetain = 1;
-        dxf_header.PLineGen = 0;
-        dxf_header.PSLTScale = 1;
+        header.AcadVer = strdup (acad_version_string (acad_version_number));
+        header.InsBase.x0 = 0.0;
+        header.InsBase.y0 = 0.0;
+        header.InsBase.z0 = 0.0;
+        header.ExtMin.x0 = 0.0;
+        header.ExtMin.y0 = 0.0;
+        header.ExtMin.z0 = 0.0;
+        header.ExtMax.x0 = 0.0;
+        header.ExtMax.y0 = 0.0;
+        header.ExtMax.z0 = 0.0;
+        header.LimMin.x0 = 0.0;
+        header.LimMin.y0 = 0.0;
+        header.LimMax.x0 = 0.0;
+        header.LimMax.y0 = 0.0;
+        header.OrthoMode = 0;
+        header.RegenMode = 0;
+        header.FillMode = 1;
+        header.QTextMode = 0;
+        header.MirrText = 1;
+        header.LTScale = 1.0;
+        header.AttMode = 1;
+        header.TextSize = 2.5;
+        header.TraceWid = 1.0;
+        header.TextStyle = strdup ("STANDARD");
+        header.CELType = strdup ("BYLAYER");
+        header.CLayer = strdup ("0");
+        header.CEColor = 256;
+        header.DimSCALE = 1.0;
+        header.DimASZ = 2.5;
+        header.DimEXO = 0.625;
+        header.DimDLI = 3.75;
+        header.DimRND = 0.0;
+        header.DimDLE = 0.0;
+        header.DimEXE = 1.25;
+        header.DimTP = 0.0;
+        header.DimTM = 0.0;
+        header.DimTXT = 2.5;
+        header.DimCEN = 2.5;
+        header.DimTSZ = 0.0;
+        header.DimTOL = 0;
+        header.DimLIM = 0;
+        header.DimTIH = 0;
+        header.DimTOH = 0;
+        header.DimSE1 = 0;
+        header.DimSE2 = 0;
+        header.DimTAD = 1;
+        header.DimZIN = 8;
+        header.DimBLK = strdup ("");
+        header.DimASO = 1;
+        header.DimSHO = 1;
+        header.DimPOST = strdup ("");
+        header.DimAPOST = strdup ("");
+        header.DimALT = 0;
+        header.DimALTD = 4;
+        header.DimALTF = 0.0394;
+        header.DimLFAC = 1.0;
+        header.DimTOFL = 1;
+        header.DimTVP = 0.0;
+        header.DimTIX = 0;
+        header.DimSOXD = 0;
+        header.DimSAH = 0;
+        header.DimBLK1 = strdup ("");
+        header.DimBLK2 = strdup ("");
+        header.DimCLRD = 0;
+        header.DimCLRE = 0;
+        header.DimCLRT = 0;
+        header.DimTFAC = 1.0;
+        header.DimGAP = 0.625;
+        header.LUnits = 2;
+        header.LUPrec = 4;
+        header.Sketchinc = 1.0;
+        header.FilletRad = 1.0;
+        header.AUnits = 0;
+        header.AUPrec = 0;
+        header.Menu = strdup (".");
+        header.Elevation = 0.0;
+        header.PElevation = 0.0;
+        header.Thickness = 0.0;
+        header.LimCheck = 0;
+        header.ChamferA = 10.0;
+        header.ChamferB = 10.0;
+        header.SKPoly = 0;
+        header.TDCreate = 0.0;
+        header.TDUpdate = 0.0;
+        header.TDInDWG = 0.0;
+        header.TDUSRTimer = 0.0;
+        header.USRTimer = 1;
+        header.AngBase = 0.0;
+        header.AngDir = 0;
+        header.PDMode = 98;
+        header.PDSize = 0.0;
+        header.PLineWid = 0.0;
+        header.SPLFrame = 0;
+        header.SPLineType = 6;
+        header.SPLineSegs = 8;
+        header.SurfTab1 = 6;
+        header.SurfTab2 = 6;
+        header.SurfType = 6;
+        header.SurfU = 6;
+        header.SurfV = 6;
+        header.UCSName = strdup ("");
+        header.UCSOrg.x0 = 0.0;
+        header.UCSOrg.y0 = 0.0;
+        header.UCSOrg.z0 = 0.0;
+        header.UCSXDir.x0 = 0.0;
+        header.UCSXDir.y0 = 0.0;
+        header.UCSXDir.z0 = 0.0;
+        header.UCSYDir.x0 = 0.0;
+        header.UCSYDir.y0 = 0.0;
+        header.UCSYDir.z0 = 0.0;
+        header.PUCSName = strdup ("");
+        header.PUCSOrg.x0 = 0.0;
+        header.PUCSOrg.y0 = 0.0;
+        header.PUCSOrg.z0 = 0.0;
+        header.PUCSXDir.x0 = 0.0;
+        header.PUCSXDir.y0 = 0.0;
+        header.PUCSXDir.z0 = 0.0;
+        header.PUCSYDir.x0 = 0.0;
+        header.PUCSYDir.y0 = 0.0;
+        header.PUCSYDir.z0 = 0.0;
+        header.UserI1 = 0;
+        header.UserI2 = 0;
+        header.UserI3 = 0;
+        header.UserI4 = 0;
+        header.UserI5 = 0;
+        header.UserR1 = 0.0;
+        header.UserR2 = 0.0;
+        header.UserR3 = 0.0;
+        header.UserR4 = 0.0;
+        header.UserR5 = 0.0;
+        header.WorldView = 0;
+        header.ShadEdge = 3;
+        header.ShadeDif = 70;
+        header.TileMode = 1;
+        header.MaxActVP = 48;
+        header.PInsBase.x0 = 0.0;
+        header.PInsBase.y0 = 0.0;
+        header.PInsBase.z0 = 0.0;
+        header.PLimCheck = 0;
+        header.PExtMin.x0 = 0.0;
+        header.PExtMin.y0 = 0.0;
+        header.PExtMin.z0 = 0.0;
+        header.PExtMax.x0 = 0.0;
+        header.PExtMax.y0 = 0.0;
+        header.PExtMax.z0 = 0.0;
+        header.PLimMin.x0 = 0.0;
+        header.PLimMin.y0 = 0.0;
+        header.PLimMax.x0 = 0.0;
+        header.PLimMax.y0 = 0.0;
+        header.UnitMode = 0;
+        header.VisRetain = 1;
+        header.PLineGen = 0;
+        header.PSLTScale = 1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -814,7 +814,7 @@ dxf_write_header
 (
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
-        DxfHeader dxf_header
+        DxfHeader header
                 /*!< DXF header entity. */
 )
 {
@@ -824,232 +824,232 @@ dxf_write_header
         char *dxf_entity_name = strdup ("HEADER");
 
         dxf_section_write (fp, dxf_entity_name);
-        fprintf (fp->fp, "  9\n$ACADVER\n  1\n%s\n", dxf_header.AcadVer);
-        if (fp->acad_version_number >= AC1014) fprintf (fp->fp, "  9\n$ACADMAINTVER\n 70\n%i\n", dxf_header.AcadMaintVer);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DWGCODEPAGE\n  3\n%s\n", dxf_header.DWGCodePage);
-        fprintf (fp->fp, "  9\n$INSBASE\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.InsBase.x0, dxf_header.InsBase.y0, dxf_header.InsBase.z0);
-        fprintf (fp->fp, "  9\n$EXTMIN\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.ExtMin.x0, dxf_header.ExtMin.y0, dxf_header.ExtMin.z0);
-        fprintf (fp->fp, "  9\n$EXTMAX\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.ExtMax.x0, dxf_header.ExtMax.y0, dxf_header.ExtMax.z0);
-        fprintf (fp->fp, "  9\n$LIMMIN\n 10\n%f\n 20\n%f\n", dxf_header.LimMin.x0, dxf_header.LimMin.y0);
-        fprintf (fp->fp, "  9\n$LIMMAX\n 10\n%f\n 20\n%f\n", dxf_header.LimMax.x0, dxf_header.LimMax.y0);
-        fprintf (fp->fp, "  9\n$ORTHOMODE\n 70\n%i\n", dxf_header.OrthoMode);
-        fprintf (fp->fp, "  9\n$REGENMODE\n 70\n%i\n", dxf_header.RegenMode);
-        fprintf (fp->fp, "  9\n$FILLMODE\n 70\n%i\n", dxf_header.FillMode);
-        fprintf (fp->fp, "  9\n$QTEXTMODE\n 70\n%i\n", dxf_header.QTextMode);
-        fprintf (fp->fp, "  9\n$MIRRTEXT\n 70\n%i\n", dxf_header.MirrText);
-        if (fp->acad_version_number <= AC1015) fprintf (fp->fp, "  9\n$DRAGMODE\n 70\n%i\n", dxf_header.DragMode);
-        fprintf (fp->fp, "  9\n$LTSCALE\n 40\n%f\n", dxf_header.LTScale);
-        if (fp->acad_version_number <= AC1014) fprintf (fp->fp, "  9\n$OSMODE\n 70\n%i\n", dxf_header.OSMode);
-        fprintf (fp->fp, "  9\n$ATTMODE\n 70\n%i\n", dxf_header.AttMode);
-        fprintf (fp->fp, "  9\n$TEXTSIZE\n 40\n%f\n", dxf_header.TextSize);
-        fprintf (fp->fp, "  9\n$TRACEWID\n 40\n%f\n", dxf_header.TraceWid);
-        fprintf (fp->fp, "  9\n$TEXTSTYLE\n  7\n%s\n", dxf_header.TextStyle);
-        fprintf (fp->fp, "  9\n$CLAYER\n  8\n%s\n", dxf_header.CLayer);
-        fprintf (fp->fp, "  9\n$CELTYPE\n  6\n%s\n", dxf_header.CELType);
-        fprintf (fp->fp, "  9\n$CECOLOR\n 62\n%i\n", dxf_header.CEColor);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$CELTSCALE\n 40\n%f\n", dxf_header.CELTScale);
+        fprintf (fp->fp, "  9\n$ACADVER\n  1\n%s\n", header.AcadVer);
+        if (fp->acad_version_number >= AC1014) fprintf (fp->fp, "  9\n$ACADMAINTVER\n 70\n%i\n", header.AcadMaintVer);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DWGCODEPAGE\n  3\n%s\n", header.DWGCodePage);
+        fprintf (fp->fp, "  9\n$INSBASE\n 10\n%f\n 20\n%f\n 30\n%f\n", header.InsBase.x0, header.InsBase.y0, header.InsBase.z0);
+        fprintf (fp->fp, "  9\n$EXTMIN\n 10\n%f\n 20\n%f\n 30\n%f\n", header.ExtMin.x0, header.ExtMin.y0, header.ExtMin.z0);
+        fprintf (fp->fp, "  9\n$EXTMAX\n 10\n%f\n 20\n%f\n 30\n%f\n", header.ExtMax.x0, header.ExtMax.y0, header.ExtMax.z0);
+        fprintf (fp->fp, "  9\n$LIMMIN\n 10\n%f\n 20\n%f\n", header.LimMin.x0, header.LimMin.y0);
+        fprintf (fp->fp, "  9\n$LIMMAX\n 10\n%f\n 20\n%f\n", header.LimMax.x0, header.LimMax.y0);
+        fprintf (fp->fp, "  9\n$ORTHOMODE\n 70\n%i\n", header.OrthoMode);
+        fprintf (fp->fp, "  9\n$REGENMODE\n 70\n%i\n", header.RegenMode);
+        fprintf (fp->fp, "  9\n$FILLMODE\n 70\n%i\n", header.FillMode);
+        fprintf (fp->fp, "  9\n$QTEXTMODE\n 70\n%i\n", header.QTextMode);
+        fprintf (fp->fp, "  9\n$MIRRTEXT\n 70\n%i\n", header.MirrText);
+        if (fp->acad_version_number <= AC1015) fprintf (fp->fp, "  9\n$DRAGMODE\n 70\n%i\n", header.DragMode);
+        fprintf (fp->fp, "  9\n$LTSCALE\n 40\n%f\n", header.LTScale);
+        if (fp->acad_version_number <= AC1014) fprintf (fp->fp, "  9\n$OSMODE\n 70\n%i\n", header.OSMode);
+        fprintf (fp->fp, "  9\n$ATTMODE\n 70\n%i\n", header.AttMode);
+        fprintf (fp->fp, "  9\n$TEXTSIZE\n 40\n%f\n", header.TextSize);
+        fprintf (fp->fp, "  9\n$TRACEWID\n 40\n%f\n", header.TraceWid);
+        fprintf (fp->fp, "  9\n$TEXTSTYLE\n  7\n%s\n", header.TextStyle);
+        fprintf (fp->fp, "  9\n$CLAYER\n  8\n%s\n", header.CLayer);
+        fprintf (fp->fp, "  9\n$CELTYPE\n  6\n%s\n", header.CELType);
+        fprintf (fp->fp, "  9\n$CECOLOR\n 62\n%i\n", header.CEColor);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$CELTSCALE\n 40\n%f\n", header.CELTScale);
         if ((fp->acad_version_number == AC1012)
-          || (fp->acad_version_number == AC1014)) fprintf (fp->fp, "  9\n$DELOBJ\n 70\n%i\n", dxf_header.DelObj);
-        if (fp->acad_version_number <= AC1012) fprintf (fp->fp, "  9\n$DISPSILH\n 70\n%i\n", dxf_header.DispSilH);
-        fprintf (fp->fp, "  9\n$DIMSCALE\n 40\n%f\n", dxf_header.DimSCALE);
-        fprintf (fp->fp, "  9\n$DIMASZ\n 40\n%f\n", dxf_header.DimASZ);
-        fprintf (fp->fp, "  9\n$DIMEXO\n 40\n%f\n", dxf_header.DimEXO);
-        fprintf (fp->fp, "  9\n$DIMDLI\n 40\n%f\n", dxf_header.DimDLI);
-        fprintf (fp->fp, "  9\n$DIMRND\n 40\n%f\n", dxf_header.DimRND);
-        fprintf (fp->fp, "  9\n$DIMDLE\n 40\n%f\n", dxf_header.DimDLE);
-        fprintf (fp->fp, "  9\n$DIMEXE\n 40\n%f\n", dxf_header.DimEXE);
-        fprintf (fp->fp, "  9\n$DIMTP\n 40\n%f\n", dxf_header.DimTP);
-        fprintf (fp->fp, "  9\n$DIMTM\n 40\n%f\n", dxf_header.DimTM);
-        fprintf (fp->fp, "  9\n$DIMTXT\n 40\n%f\n", dxf_header.DimTXT);
-        fprintf (fp->fp, "  9\n$DIMCEN\n 40\n%f\n", dxf_header.DimCEN);
-        fprintf (fp->fp, "  9\n$DIMTSZ\n 40\n%f\n", dxf_header.DimTSZ);
-        fprintf (fp->fp, "  9\n$DIMTOL\n 70\n%i\n", dxf_header.DimTOL);
-        fprintf (fp->fp, "  9\n$DIMLIM\n 70\n%i\n", dxf_header.DimLIM);
-        fprintf (fp->fp, "  9\n$DIMTIH\n 70\n%i\n", dxf_header.DimTIH);
-        fprintf (fp->fp, "  9\n$DIMTOH\n 70\n%i\n", dxf_header.DimTOH);
-        fprintf (fp->fp, "  9\n$DIMSE1\n 70\n%i\n", dxf_header.DimSE1);
-        fprintf (fp->fp, "  9\n$DIMSE2\n 70\n%i\n", dxf_header.DimSE2);
-        fprintf (fp->fp, "  9\n$DIMTAD\n 70\n%i\n", dxf_header.DimTAD);
-        fprintf (fp->fp, "  9\n$DIMZIN\n 70\n%i\n", dxf_header.DimZIN);
-        fprintf (fp->fp, "  9\n$DIMBLK\n  1\n%s\n", dxf_header.DimBLK);
-        fprintf (fp->fp, "  9\n$DIMASO\n 70\n%i\n", dxf_header.DimASO);
-        fprintf (fp->fp, "  9\n$DIMSHO\n 70\n%i\n", dxf_header.DimSHO);
-        fprintf (fp->fp, "  9\n$DIMPOST\n  1\n%s\n", dxf_header.DimPOST);
-        fprintf (fp->fp, "  9\n$DIMAPOST\n  1\n%s\n", dxf_header.DimAPOST);
-        fprintf (fp->fp, "  9\n$DIMALT\n 70\n%i\n", dxf_header.DimALT);
-        fprintf (fp->fp, "  9\n$DIMALTD\n 70\n%i\n", dxf_header.DimALTD);
-        fprintf (fp->fp, "  9\n$DIMALTF\n 40\n%f\n", dxf_header.DimALTF);
-        fprintf (fp->fp, "  9\n$DIMLFAC\n 40\n%f\n", dxf_header.DimLFAC);
-        fprintf (fp->fp, "  9\n$DIMTOFL\n 70\n%i\n", dxf_header.DimTOFL);
-        fprintf (fp->fp, "  9\n$DIMTVP\n 40\n%f\n", dxf_header.DimTVP);
-        fprintf (fp->fp, "  9\n$DIMTIX\n 70\n%i\n", dxf_header.DimTIX);
-        fprintf (fp->fp, "  9\n$DIMSOXD\n 70\n%i\n", dxf_header.DimSOXD);
-        fprintf (fp->fp, "  9\n$DIMSAH\n 70\n%i\n", dxf_header.DimSAH);
-        fprintf (fp->fp, "  9\n$DIMBLK1\n  1\n%s\n", dxf_header.DimBLK1);
-        fprintf (fp->fp, "  9\n$DIMBLK2\n  1\n%s\n", dxf_header.DimBLK2);
-        fprintf (fp->fp, "  9\n$DIMSTYLE\n  2\n%s\n", dxf_header.DimSTYLE);
-        fprintf (fp->fp, "  9\n$DIMCLRD\n 70\n%i\n", dxf_header.DimCLRD);
-        fprintf (fp->fp, "  9\n$DIMCLRE\n 70\n%i\n", dxf_header.DimCLRE);
-        fprintf (fp->fp, "  9\n$DIMCLRT\n 70\n%i\n", dxf_header.DimCLRT);
-        fprintf (fp->fp, "  9\n$DIMTFAC\n 40\n%f\n", dxf_header.DimTFAC);
-        fprintf (fp->fp, "  9\n$DIMGAP\n 40\n%f\n", dxf_header.DimGAP);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMJUST\n 70\n%i\n", dxf_header.DimJUST);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMSD1\n 70\n%i\n", dxf_header.DimSD1);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMSD2\n 70\n%i\n", dxf_header.DimSD2);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMTOLJ\n 70\n%i\n", dxf_header.DimTOLJ);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMTZIN\n 70\n%i\n", dxf_header.DimTZIN);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMALTZ\n 70\n%i\n", dxf_header.DimALTZ);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMALTTZ\n 70\n%i\n", dxf_header.DimALTTZ);
+          || (fp->acad_version_number == AC1014)) fprintf (fp->fp, "  9\n$DELOBJ\n 70\n%i\n", header.DelObj);
+        if (fp->acad_version_number <= AC1012) fprintf (fp->fp, "  9\n$DISPSILH\n 70\n%i\n", header.DispSilH);
+        fprintf (fp->fp, "  9\n$DIMSCALE\n 40\n%f\n", header.DimSCALE);
+        fprintf (fp->fp, "  9\n$DIMASZ\n 40\n%f\n", header.DimASZ);
+        fprintf (fp->fp, "  9\n$DIMEXO\n 40\n%f\n", header.DimEXO);
+        fprintf (fp->fp, "  9\n$DIMDLI\n 40\n%f\n", header.DimDLI);
+        fprintf (fp->fp, "  9\n$DIMRND\n 40\n%f\n", header.DimRND);
+        fprintf (fp->fp, "  9\n$DIMDLE\n 40\n%f\n", header.DimDLE);
+        fprintf (fp->fp, "  9\n$DIMEXE\n 40\n%f\n", header.DimEXE);
+        fprintf (fp->fp, "  9\n$DIMTP\n 40\n%f\n", header.DimTP);
+        fprintf (fp->fp, "  9\n$DIMTM\n 40\n%f\n", header.DimTM);
+        fprintf (fp->fp, "  9\n$DIMTXT\n 40\n%f\n", header.DimTXT);
+        fprintf (fp->fp, "  9\n$DIMCEN\n 40\n%f\n", header.DimCEN);
+        fprintf (fp->fp, "  9\n$DIMTSZ\n 40\n%f\n", header.DimTSZ);
+        fprintf (fp->fp, "  9\n$DIMTOL\n 70\n%i\n", header.DimTOL);
+        fprintf (fp->fp, "  9\n$DIMLIM\n 70\n%i\n", header.DimLIM);
+        fprintf (fp->fp, "  9\n$DIMTIH\n 70\n%i\n", header.DimTIH);
+        fprintf (fp->fp, "  9\n$DIMTOH\n 70\n%i\n", header.DimTOH);
+        fprintf (fp->fp, "  9\n$DIMSE1\n 70\n%i\n", header.DimSE1);
+        fprintf (fp->fp, "  9\n$DIMSE2\n 70\n%i\n", header.DimSE2);
+        fprintf (fp->fp, "  9\n$DIMTAD\n 70\n%i\n", header.DimTAD);
+        fprintf (fp->fp, "  9\n$DIMZIN\n 70\n%i\n", header.DimZIN);
+        fprintf (fp->fp, "  9\n$DIMBLK\n  1\n%s\n", header.DimBLK);
+        fprintf (fp->fp, "  9\n$DIMASO\n 70\n%i\n", header.DimASO);
+        fprintf (fp->fp, "  9\n$DIMSHO\n 70\n%i\n", header.DimSHO);
+        fprintf (fp->fp, "  9\n$DIMPOST\n  1\n%s\n", header.DimPOST);
+        fprintf (fp->fp, "  9\n$DIMAPOST\n  1\n%s\n", header.DimAPOST);
+        fprintf (fp->fp, "  9\n$DIMALT\n 70\n%i\n", header.DimALT);
+        fprintf (fp->fp, "  9\n$DIMALTD\n 70\n%i\n", header.DimALTD);
+        fprintf (fp->fp, "  9\n$DIMALTF\n 40\n%f\n", header.DimALTF);
+        fprintf (fp->fp, "  9\n$DIMLFAC\n 40\n%f\n", header.DimLFAC);
+        fprintf (fp->fp, "  9\n$DIMTOFL\n 70\n%i\n", header.DimTOFL);
+        fprintf (fp->fp, "  9\n$DIMTVP\n 40\n%f\n", header.DimTVP);
+        fprintf (fp->fp, "  9\n$DIMTIX\n 70\n%i\n", header.DimTIX);
+        fprintf (fp->fp, "  9\n$DIMSOXD\n 70\n%i\n", header.DimSOXD);
+        fprintf (fp->fp, "  9\n$DIMSAH\n 70\n%i\n", header.DimSAH);
+        fprintf (fp->fp, "  9\n$DIMBLK1\n  1\n%s\n", header.DimBLK1);
+        fprintf (fp->fp, "  9\n$DIMBLK2\n  1\n%s\n", header.DimBLK2);
+        fprintf (fp->fp, "  9\n$DIMSTYLE\n  2\n%s\n", header.DimSTYLE);
+        fprintf (fp->fp, "  9\n$DIMCLRD\n 70\n%i\n", header.DimCLRD);
+        fprintf (fp->fp, "  9\n$DIMCLRE\n 70\n%i\n", header.DimCLRE);
+        fprintf (fp->fp, "  9\n$DIMCLRT\n 70\n%i\n", header.DimCLRT);
+        fprintf (fp->fp, "  9\n$DIMTFAC\n 40\n%f\n", header.DimTFAC);
+        fprintf (fp->fp, "  9\n$DIMGAP\n 40\n%f\n", header.DimGAP);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMJUST\n 70\n%i\n", header.DimJUST);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMSD1\n 70\n%i\n", header.DimSD1);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMSD2\n 70\n%i\n", header.DimSD2);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMTOLJ\n 70\n%i\n", header.DimTOLJ);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMTZIN\n 70\n%i\n", header.DimTZIN);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMALTZ\n 70\n%i\n", header.DimALTZ);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMALTTZ\n 70\n%i\n", header.DimALTTZ);
         if ((fp->acad_version_number == AC1012)
-          || (fp->acad_version_number == AC1014)) fprintf (fp->fp, "  9\n$DIMFIT\n 70\n%i\n", dxf_header.DimFIT);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMUPT\n 70\n%i\n", dxf_header.DimUPT);
+          || (fp->acad_version_number == AC1014)) fprintf (fp->fp, "  9\n$DIMFIT\n 70\n%i\n", header.DimFIT);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMUPT\n 70\n%i\n", header.DimUPT);
         if ((fp->acad_version_number == AC1012) ||
-          (fp->acad_version_number == AC1014)) fprintf (fp->fp, "  9\n$DIMUNIT\n 70\n%i\n", dxf_header.DimUNIT);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMDEC\n 70\n%i\n", dxf_header.DimDEC);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMTDEC\n 70\n%i\n", dxf_header.DimTDEC);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMALTU\n 70\n%i\n", dxf_header.DimALTU);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMALTTD\n 70\n%i\n", dxf_header.DimALTTD);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMTXSTY\n  7\n%s\n", dxf_header.DimTXSTY);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMAUNIT\n 70\n%i\n", dxf_header.DimAUNIT);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMADEC\n 70\n%i\n", dxf_header.DimADEC);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMALTRND\n 40\n%f\n", dxf_header.DimALTRND);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMAZIN\n 70\n%i\n", dxf_header.DimAZIN);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMDSEP\n 70\n%i\n", dxf_header.DimDSEP);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMATFIT\n 70\n%i\n", dxf_header.DimATFIT);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMFRAC\n 70\n%i\n", dxf_header.DimFRAC);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMLDRBLK\n  1\n%s\n", dxf_header.DimLDRBLK);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMLUNIT\n 70\n%i\n", dxf_header.DimLUNIT);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMLWD\n 70\n%i\n", dxf_header.DimLWD);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMLWE\n 70\n%i\n", dxf_header.DimLWE);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMTMOVE\n 70\n%i\n", dxf_header.DimTMOVE);
-        fprintf (fp->fp, "  9\n$LUNITS\n 70\n%i\n", dxf_header.LUnits);
-        fprintf (fp->fp, "  9\n$LUPREC\n 70\n%i\n", dxf_header.LUPrec);
-        fprintf (fp->fp, "  9\n$SKETCHINC\n 40\n%f\n", dxf_header.Sketchinc);
-        fprintf (fp->fp, "  9\n$FILLETRAD\n 40\n%f\n", dxf_header.FilletRad);
-        fprintf (fp->fp, "  9\n$AUNITS\n 70\n%i\n", dxf_header.AUnits);
-        fprintf (fp->fp, "  9\n$AUPREC\n 70\n%i\n", dxf_header.AUPrec);
-        fprintf (fp->fp, "  9\n$MENU\n  1\n%s\n", dxf_header.Menu);
-        fprintf (fp->fp, "  9\n$ELEVATION\n 40\n%f\n", dxf_header.Elevation);
-        fprintf (fp->fp, "  9\n$PELEVATION\n 40\n%f\n", dxf_header.PElevation);
-        fprintf (fp->fp, "  9\n$THICKNESS\n 40\n%f\n", dxf_header.Thickness);
-        fprintf (fp->fp, "  9\n$LIMCHECK\n 70\n%i\n", dxf_header.LimCheck);
-        if (fp->acad_version_number <= AC1014) fprintf (fp->fp, "  9\n$BLIPMODE\n 70\n%i\n", dxf_header.BlipMode);
-        fprintf (fp->fp, "  9\n$CHAMFERA\n 40\n%f\n", dxf_header.ChamferA);
-        fprintf (fp->fp, "  9\n$CHAMFERB\n 40\n%f\n", dxf_header.ChamferB);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$CHAMFERC\n 40\n%f\n", dxf_header.ChamferC);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$CHAMFERD\n 40\n%f\n", dxf_header.ChamferD);
-        fprintf (fp->fp, "  9\n$SKPOLY\n 70\n%i\n", dxf_header.SKPoly);
-        fprintf (fp->fp, "  9\n$TDCREATE\n 40\n%f\n", dxf_header.TDCreate);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$TDUCREATE\n 40\n%f\n", dxf_header.TDUCreate);
-        fprintf (fp->fp, "  9\n$TDUPDATE\n 40\n%f\n", dxf_header.TDUpdate);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$TDUUPDATE\n 40\n%f\n", dxf_header.TDUUpdate);
-        fprintf (fp->fp, "  9\n$TDINDWG\n 40\n%f\n", dxf_header.TDInDWG);
-        fprintf (fp->fp, "  9\n$TDUSRTIMER\n 40\n%f\n", dxf_header.TDUSRTimer);
-        fprintf (fp->fp, "  9\n$USRTIMER\n 70\n%i\n", dxf_header.USRTimer);
-        fprintf (fp->fp, "  9\n$ANGBASE\n 50\n%f\n", dxf_header.AngBase);
-        fprintf (fp->fp, "  9\n$ANGDIR\n 70\n%i\n", dxf_header.AngDir);
-        fprintf (fp->fp, "  9\n$PDMODE\n 70\n%i\n", dxf_header.PDMode);
-        fprintf (fp->fp, "  9\n$PDSIZE\n 40\n%f\n", dxf_header.PDSize);
-        fprintf (fp->fp, "  9\n$PLINEWID\n 40\n%f\n", dxf_header.PLineWid);
-        if (fp->acad_version_number <= AC1014) fprintf (fp->fp, "  9\n$COORDS\n 70\n%i\n", dxf_header.Coords);
-        fprintf (fp->fp, "  9\n$SPLFRAME\n 70\n%i\n", dxf_header.SPLFrame);
-        fprintf (fp->fp, "  9\n$SPLINETYPE\n 70\n%i\n", dxf_header.SPLineType);
-        if (fp->acad_version_number <= AC1014) fprintf (fp->fp, "  9\n$ATTDIA\n 70\n%i\n", dxf_header.AttDia);
-        if (fp->acad_version_number <= AC1014) fprintf (fp->fp, "  9\n$ATTREQ\n 70\n%i\n", dxf_header.AttReq);
-        if (fp->acad_version_number <= AC1014) fprintf (fp->fp, "  9\n$HANDLING\n 70\n%i\n", dxf_header.Handling);
-        fprintf (fp->fp, "  9\n$SPLINESEGS\n 70\n%i\n", dxf_header.SPLineSegs);
-        fprintf (fp->fp, "  9\n$HANDSEED\n  5\n%s\n", dxf_header.HandSeed);
-        fprintf (fp->fp, "  9\n$SURFTAB1\n 70\n%i\n", dxf_header.SurfTab1);
-        fprintf (fp->fp, "  9\n$SURFTAB2\n 70\n%i\n", dxf_header.SurfTab2);
-        fprintf (fp->fp, "  9\n$SURFTYPE\n 70\n%i\n", dxf_header.SurfType);
-        fprintf (fp->fp, "  9\n$SURFU\n 70\n%i\n", dxf_header.SurfU);
-        fprintf (fp->fp, "  9\n$SURFV\n 70\n%i\n", dxf_header.SurfV);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSBASE\n  2\n%s\n", dxf_header.UCSBase);
-        fprintf (fp->fp, "  9\n$UCSNAME\n  2\n%s\n", dxf_header.UCSName);
-        fprintf (fp->fp, "  9\n$UCSORG\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrg.x0, dxf_header.UCSOrg.y0, dxf_header.UCSOrg.z0);
-        fprintf (fp->fp, "  9\n$UCSXDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSXDir.x0, dxf_header.UCSXDir.y0, dxf_header.UCSXDir.z0);
-        fprintf (fp->fp, "  9\n$UCSYDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSYDir.x0, dxf_header.UCSYDir.y0, dxf_header.UCSYDir.z0);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORTHOREF\n  2\n%s\n", dxf_header.UCSOrthoRef);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORTHOVIEW\n 70\n%i\n", dxf_header.UCSOrthoView);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORGTOP\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgTop.x0, dxf_header.UCSOrgTop.y0, dxf_header.UCSOrgTop.z0);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORGBOTTOM\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgBottom.x0, dxf_header.UCSOrgBottom.y0, dxf_header.UCSOrgBottom.z0);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORGLEFT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgLeft.x0, dxf_header.UCSOrgLeft.y0, dxf_header.UCSOrgLeft.z0);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORGRIGHT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgRight.x0, dxf_header.UCSOrgRight.y0, dxf_header.UCSOrgRight.z0);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORGFRONT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgFront.x0, dxf_header.UCSOrgFront.y0, dxf_header.UCSOrgFront.z0);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORGBACK\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgBack.x0, dxf_header.UCSOrgBack.y0, dxf_header.UCSOrgBack.z0);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSBASE\n  2\n%s\n", dxf_header.PUCSBase);
-        fprintf (fp->fp, "  9\n$PUCSNAME\n  2\n%s\n", dxf_header.PUCSName);
-        fprintf (fp->fp, "  9\n$PUCSORG\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrg.x0, dxf_header.PUCSOrg.y0, dxf_header.PUCSOrg.z0);
-        fprintf (fp->fp, "  9\n$PUCSXDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSXDir.x0, dxf_header.PUCSXDir.y0, dxf_header.PUCSXDir.z0);
-        fprintf (fp->fp, "  9\n$PUCSYDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSYDir.x0, dxf_header.PUCSYDir.y0, dxf_header.PUCSYDir.z0);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORTHOREF\n  2\n%s\n", dxf_header.PUCSOrthoRef);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORTHOVIEW\n 70\n%i\n", dxf_header.PUCSOrthoView);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORGTOP\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgTop.x0, dxf_header.PUCSOrgTop.y0, dxf_header.PUCSOrgTop.z0);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORGBOTTOM\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgBottom.x0, dxf_header.PUCSOrgBottom.y0, dxf_header.PUCSOrgBottom.z0);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORGLEFT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgLeft.x0, dxf_header.PUCSOrgLeft.y0, dxf_header.PUCSOrgLeft.z0);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORGRIGHT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgRight.x0, dxf_header.PUCSOrgRight.y0, dxf_header.PUCSOrgRight.z0);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORGFRONT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgFront.x0, dxf_header.PUCSOrgFront.y0, dxf_header.PUCSOrgFront.z0);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORGBACK\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgBack.x0, dxf_header.PUCSOrgBack.y0, dxf_header.PUCSOrgBack.z0);
-        fprintf (fp->fp, "  9\n$USERI1\n 70\n%i\n", dxf_header.UserI1);
-        fprintf (fp->fp, "  9\n$USERI2\n 70\n%i\n", dxf_header.UserI2);
-        fprintf (fp->fp, "  9\n$USERI3\n 70\n%i\n", dxf_header.UserI3);
-        fprintf (fp->fp, "  9\n$USERI4\n 70\n%i\n", dxf_header.UserI4);
-        fprintf (fp->fp, "  9\n$USERI5\n 70\n%i\n", dxf_header.UserI5);
-        fprintf (fp->fp, "  9\n$USERR1\n 40\n%f\n", dxf_header.UserR1);
-        fprintf (fp->fp, "  9\n$USERR2\n 40\n%f\n", dxf_header.UserR2);
-        fprintf (fp->fp, "  9\n$USERR3\n 40\n%f\n", dxf_header.UserR3);
-        fprintf (fp->fp, "  9\n$USERR4\n 40\n%f\n", dxf_header.UserR4);
-        fprintf (fp->fp, "  9\n$USERR5\n 40\n%f\n", dxf_header.UserR5);
-        fprintf (fp->fp, "  9\n$WORLDVIEW\n 70\n%i\n", dxf_header.WorldView);
-        fprintf (fp->fp, "  9\n$SHADEDGE\n 70\n%i\n", dxf_header.ShadEdge);
-        fprintf (fp->fp, "  9\n$SHADEDIF\n 70\n%i\n", dxf_header.ShadeDif);
-        fprintf (fp->fp, "  9\n$TILEMODE\n 70\n%i\n", dxf_header.TileMode);
-        fprintf (fp->fp, "  9\n$MAXACTVP\n 70\n%i\n", dxf_header.MaxActVP);
-        fprintf (fp->fp, "  9\n$PINSBASE\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PInsBase.x0, dxf_header.PInsBase.y0, dxf_header.PInsBase.z0);
-        fprintf (fp->fp, "  9\n$PLIMCHECK\n 70\n%i\n", dxf_header.PLimCheck);
-        fprintf (fp->fp, "  9\n$PEXTMIN\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PExtMin.x0, dxf_header.PExtMin.y0, dxf_header.PExtMin.z0);
-        fprintf (fp->fp, "  9\n$PEXTMAX\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PExtMax.x0, dxf_header.PExtMax.y0, dxf_header.PExtMax.z0);
-        fprintf (fp->fp, "  9\n$PLIMMIN\n 10\n%f\n 20\n%f\n", dxf_header.PLimMin.x0, dxf_header.PLimMin.y0);
-        fprintf (fp->fp, "  9\n$PLIMMAX\n 10\n%f\n 20\n%f\n", dxf_header.PLimMax.x0, dxf_header.PLimMax.y0);
-        fprintf (fp->fp, "  9\n$UNITMODE\n 70\n%i\n", dxf_header.UnitMode);
-        fprintf (fp->fp, "  9\n$VISRETAIN\n 70\n%i\n", dxf_header.VisRetain);
-        fprintf (fp->fp, "  9\n$PLINEGEN\n 70\n%i\n", dxf_header.PLineGen);
-        fprintf (fp->fp, "  9\n$PSLTSCALE\n 70\n%i\n", dxf_header.PSLTScale);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$TREEDEPTH\n 70\n%i\n", dxf_header.TreeDepth);
+          (fp->acad_version_number == AC1014)) fprintf (fp->fp, "  9\n$DIMUNIT\n 70\n%i\n", header.DimUNIT);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMDEC\n 70\n%i\n", header.DimDEC);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMTDEC\n 70\n%i\n", header.DimTDEC);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMALTU\n 70\n%i\n", header.DimALTU);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMALTTD\n 70\n%i\n", header.DimALTTD);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMTXSTY\n  7\n%s\n", header.DimTXSTY);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DIMAUNIT\n 70\n%i\n", header.DimAUNIT);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMADEC\n 70\n%i\n", header.DimADEC);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMALTRND\n 40\n%f\n", header.DimALTRND);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMAZIN\n 70\n%i\n", header.DimAZIN);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMDSEP\n 70\n%i\n", header.DimDSEP);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMATFIT\n 70\n%i\n", header.DimATFIT);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMFRAC\n 70\n%i\n", header.DimFRAC);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMLDRBLK\n  1\n%s\n", header.DimLDRBLK);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMLUNIT\n 70\n%i\n", header.DimLUNIT);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMLWD\n 70\n%i\n", header.DimLWD);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMLWE\n 70\n%i\n", header.DimLWE);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$DIMTMOVE\n 70\n%i\n", header.DimTMOVE);
+        fprintf (fp->fp, "  9\n$LUNITS\n 70\n%i\n", header.LUnits);
+        fprintf (fp->fp, "  9\n$LUPREC\n 70\n%i\n", header.LUPrec);
+        fprintf (fp->fp, "  9\n$SKETCHINC\n 40\n%f\n", header.Sketchinc);
+        fprintf (fp->fp, "  9\n$FILLETRAD\n 40\n%f\n", header.FilletRad);
+        fprintf (fp->fp, "  9\n$AUNITS\n 70\n%i\n", header.AUnits);
+        fprintf (fp->fp, "  9\n$AUPREC\n 70\n%i\n", header.AUPrec);
+        fprintf (fp->fp, "  9\n$MENU\n  1\n%s\n", header.Menu);
+        fprintf (fp->fp, "  9\n$ELEVATION\n 40\n%f\n", header.Elevation);
+        fprintf (fp->fp, "  9\n$PELEVATION\n 40\n%f\n", header.PElevation);
+        fprintf (fp->fp, "  9\n$THICKNESS\n 40\n%f\n", header.Thickness);
+        fprintf (fp->fp, "  9\n$LIMCHECK\n 70\n%i\n", header.LimCheck);
+        if (fp->acad_version_number <= AC1014) fprintf (fp->fp, "  9\n$BLIPMODE\n 70\n%i\n", header.BlipMode);
+        fprintf (fp->fp, "  9\n$CHAMFERA\n 40\n%f\n", header.ChamferA);
+        fprintf (fp->fp, "  9\n$CHAMFERB\n 40\n%f\n", header.ChamferB);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$CHAMFERC\n 40\n%f\n", header.ChamferC);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$CHAMFERD\n 40\n%f\n", header.ChamferD);
+        fprintf (fp->fp, "  9\n$SKPOLY\n 70\n%i\n", header.SKPoly);
+        fprintf (fp->fp, "  9\n$TDCREATE\n 40\n%f\n", header.TDCreate);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$TDUCREATE\n 40\n%f\n", header.TDUCreate);
+        fprintf (fp->fp, "  9\n$TDUPDATE\n 40\n%f\n", header.TDUpdate);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$TDUUPDATE\n 40\n%f\n", header.TDUUpdate);
+        fprintf (fp->fp, "  9\n$TDINDWG\n 40\n%f\n", header.TDInDWG);
+        fprintf (fp->fp, "  9\n$TDUSRTIMER\n 40\n%f\n", header.TDUSRTimer);
+        fprintf (fp->fp, "  9\n$USRTIMER\n 70\n%i\n", header.USRTimer);
+        fprintf (fp->fp, "  9\n$ANGBASE\n 50\n%f\n", header.AngBase);
+        fprintf (fp->fp, "  9\n$ANGDIR\n 70\n%i\n", header.AngDir);
+        fprintf (fp->fp, "  9\n$PDMODE\n 70\n%i\n", header.PDMode);
+        fprintf (fp->fp, "  9\n$PDSIZE\n 40\n%f\n", header.PDSize);
+        fprintf (fp->fp, "  9\n$PLINEWID\n 40\n%f\n", header.PLineWid);
+        if (fp->acad_version_number <= AC1014) fprintf (fp->fp, "  9\n$COORDS\n 70\n%i\n", header.Coords);
+        fprintf (fp->fp, "  9\n$SPLFRAME\n 70\n%i\n", header.SPLFrame);
+        fprintf (fp->fp, "  9\n$SPLINETYPE\n 70\n%i\n", header.SPLineType);
+        if (fp->acad_version_number <= AC1014) fprintf (fp->fp, "  9\n$ATTDIA\n 70\n%i\n", header.AttDia);
+        if (fp->acad_version_number <= AC1014) fprintf (fp->fp, "  9\n$ATTREQ\n 70\n%i\n", header.AttReq);
+        if (fp->acad_version_number <= AC1014) fprintf (fp->fp, "  9\n$HANDLING\n 70\n%i\n", header.Handling);
+        fprintf (fp->fp, "  9\n$SPLINESEGS\n 70\n%i\n", header.SPLineSegs);
+        fprintf (fp->fp, "  9\n$HANDSEED\n  5\n%s\n", header.HandSeed);
+        fprintf (fp->fp, "  9\n$SURFTAB1\n 70\n%i\n", header.SurfTab1);
+        fprintf (fp->fp, "  9\n$SURFTAB2\n 70\n%i\n", header.SurfTab2);
+        fprintf (fp->fp, "  9\n$SURFTYPE\n 70\n%i\n", header.SurfType);
+        fprintf (fp->fp, "  9\n$SURFU\n 70\n%i\n", header.SurfU);
+        fprintf (fp->fp, "  9\n$SURFV\n 70\n%i\n", header.SurfV);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSBASE\n  2\n%s\n", header.UCSBase);
+        fprintf (fp->fp, "  9\n$UCSNAME\n  2\n%s\n", header.UCSName);
+        fprintf (fp->fp, "  9\n$UCSORG\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrg.x0, header.UCSOrg.y0, header.UCSOrg.z0);
+        fprintf (fp->fp, "  9\n$UCSXDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSXDir.x0, header.UCSXDir.y0, header.UCSXDir.z0);
+        fprintf (fp->fp, "  9\n$UCSYDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSYDir.x0, header.UCSYDir.y0, header.UCSYDir.z0);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORTHOREF\n  2\n%s\n", header.UCSOrthoRef);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORTHOVIEW\n 70\n%i\n", header.UCSOrthoView);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORGTOP\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrgTop.x0, header.UCSOrgTop.y0, header.UCSOrgTop.z0);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORGBOTTOM\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrgBottom.x0, header.UCSOrgBottom.y0, header.UCSOrgBottom.z0);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORGLEFT\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrgLeft.x0, header.UCSOrgLeft.y0, header.UCSOrgLeft.z0);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORGRIGHT\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrgRight.x0, header.UCSOrgRight.y0, header.UCSOrgRight.z0);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORGFRONT\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrgFront.x0, header.UCSOrgFront.y0, header.UCSOrgFront.z0);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$UCSORGBACK\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrgBack.x0, header.UCSOrgBack.y0, header.UCSOrgBack.z0);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSBASE\n  2\n%s\n", header.PUCSBase);
+        fprintf (fp->fp, "  9\n$PUCSNAME\n  2\n%s\n", header.PUCSName);
+        fprintf (fp->fp, "  9\n$PUCSORG\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrg.x0, header.PUCSOrg.y0, header.PUCSOrg.z0);
+        fprintf (fp->fp, "  9\n$PUCSXDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSXDir.x0, header.PUCSXDir.y0, header.PUCSXDir.z0);
+        fprintf (fp->fp, "  9\n$PUCSYDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSYDir.x0, header.PUCSYDir.y0, header.PUCSYDir.z0);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORTHOREF\n  2\n%s\n", header.PUCSOrthoRef);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORTHOVIEW\n 70\n%i\n", header.PUCSOrthoView);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORGTOP\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrgTop.x0, header.PUCSOrgTop.y0, header.PUCSOrgTop.z0);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORGBOTTOM\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrgBottom.x0, header.PUCSOrgBottom.y0, header.PUCSOrgBottom.z0);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORGLEFT\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrgLeft.x0, header.PUCSOrgLeft.y0, header.PUCSOrgLeft.z0);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORGRIGHT\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrgRight.x0, header.PUCSOrgRight.y0, header.PUCSOrgRight.z0);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORGFRONT\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrgFront.x0, header.PUCSOrgFront.y0, header.PUCSOrgFront.z0);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PUCSORGBACK\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrgBack.x0, header.PUCSOrgBack.y0, header.PUCSOrgBack.z0);
+        fprintf (fp->fp, "  9\n$USERI1\n 70\n%i\n", header.UserI1);
+        fprintf (fp->fp, "  9\n$USERI2\n 70\n%i\n", header.UserI2);
+        fprintf (fp->fp, "  9\n$USERI3\n 70\n%i\n", header.UserI3);
+        fprintf (fp->fp, "  9\n$USERI4\n 70\n%i\n", header.UserI4);
+        fprintf (fp->fp, "  9\n$USERI5\n 70\n%i\n", header.UserI5);
+        fprintf (fp->fp, "  9\n$USERR1\n 40\n%f\n", header.UserR1);
+        fprintf (fp->fp, "  9\n$USERR2\n 40\n%f\n", header.UserR2);
+        fprintf (fp->fp, "  9\n$USERR3\n 40\n%f\n", header.UserR3);
+        fprintf (fp->fp, "  9\n$USERR4\n 40\n%f\n", header.UserR4);
+        fprintf (fp->fp, "  9\n$USERR5\n 40\n%f\n", header.UserR5);
+        fprintf (fp->fp, "  9\n$WORLDVIEW\n 70\n%i\n", header.WorldView);
+        fprintf (fp->fp, "  9\n$SHADEDGE\n 70\n%i\n", header.ShadEdge);
+        fprintf (fp->fp, "  9\n$SHADEDIF\n 70\n%i\n", header.ShadeDif);
+        fprintf (fp->fp, "  9\n$TILEMODE\n 70\n%i\n", header.TileMode);
+        fprintf (fp->fp, "  9\n$MAXACTVP\n 70\n%i\n", header.MaxActVP);
+        fprintf (fp->fp, "  9\n$PINSBASE\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PInsBase.x0, header.PInsBase.y0, header.PInsBase.z0);
+        fprintf (fp->fp, "  9\n$PLIMCHECK\n 70\n%i\n", header.PLimCheck);
+        fprintf (fp->fp, "  9\n$PEXTMIN\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PExtMin.x0, header.PExtMin.y0, header.PExtMin.z0);
+        fprintf (fp->fp, "  9\n$PEXTMAX\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PExtMax.x0, header.PExtMax.y0, header.PExtMax.z0);
+        fprintf (fp->fp, "  9\n$PLIMMIN\n 10\n%f\n 20\n%f\n", header.PLimMin.x0, header.PLimMin.y0);
+        fprintf (fp->fp, "  9\n$PLIMMAX\n 10\n%f\n 20\n%f\n", header.PLimMax.x0, header.PLimMax.y0);
+        fprintf (fp->fp, "  9\n$UNITMODE\n 70\n%i\n", header.UnitMode);
+        fprintf (fp->fp, "  9\n$VISRETAIN\n 70\n%i\n", header.VisRetain);
+        fprintf (fp->fp, "  9\n$PLINEGEN\n 70\n%i\n", header.PLineGen);
+        fprintf (fp->fp, "  9\n$PSLTSCALE\n 70\n%i\n", header.PSLTScale);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$TREEDEPTH\n 70\n%i\n", header.TreeDepth);
         if ((fp->acad_version_number == AC1012)
-          || (fp->acad_version_number == AC1014)) fprintf (fp->fp, "  9\n$PICKSTYLE\n 70\n%i\n", dxf_header.PickStyle);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$CMLSTYLE\n  2\n%s\n", dxf_header.CMLStyle);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$CMLJUST\n 70\n%i\n", dxf_header.CMLJust);
-        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$CMLSCALE\n 40\n%f\n", dxf_header.CMLScale);
-        if (fp->acad_version_number >= AC1014) fprintf (fp->fp, "  9\n$PROXYGRAPHICS\n 70\n%i\n", dxf_header.ProxyGraphics);
-        if (fp->acad_version_number >= AC1014) fprintf (fp->fp, "  9\n$MEASUREMENT\n 70\n%i\n", dxf_header.Measurement);
-        if (fp->acad_version_number == AC1012) fprintf (fp->fp, "  9\n$SAVEIMAGES\n 70\n%i\n", dxf_header.SaveImages);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$CELWEIGHT\n370\n%i\n", dxf_header.CELWeight);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$ENDCAPS\n280\n%i\n", dxf_header.EndCaps);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$JOINSTYLE\n280\n%i\n", dxf_header.JoinStyle);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$LWDISPLAY\n290\n%i\n", dxf_header.LWDisplay);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$INSUNITS\n 70\n%i\n", dxf_header.InsUnits);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$HYPERLINKBASE\n  1\n%s\n", dxf_header.HyperLinkBase);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$STYLESHEET\n  1\n%s\n", dxf_header.StyleSheet);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$XEDIT\n290\n%i\n", dxf_header.XEdit);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$CEPSNTYPE\n380\n%i\n", dxf_header.CEPSNType);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PSTYLEMODE\n290\n%i\n", dxf_header.PStyleMode);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$FINGERPRINTGUID\n  2\n%s\n", dxf_header.FingerPrintGUID);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$VERSIONGUID\n  2\n%s\n", dxf_header.VersionGUID);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$EXTNAMES\n290\n%i\n", dxf_header.ExtNames);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PSVPSCALE\n 40\n%f\n", dxf_header.PSVPScale);
-        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$OLESTARTUP\n290\n%i\n", dxf_header.OLEStartUp);
-        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$SORTENTS\n280\n%i\n", dxf_header.SortEnts);
-        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$INDEXCTL\n280\n%i\n", dxf_header.IndexCtl);
-        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$HIDETEXT\n280\n%i\n", dxf_header.HideText);
-        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$XCLIPFRAME\n290\n%i\n", dxf_header.XClipFrame);
-        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$HALOGAP\n280\n%i\n", dxf_header.HaloGap);
-        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$OBSCOLOR\n 70\n%i\n", dxf_header.ObsColor);
-        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$OBSLTYPE\n280\n%i\n", dxf_header.ObsLType);
-        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$INTERSECTIONDISPLAY\n280\n%i\n", dxf_header.InterSectionDisplay);
-        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$INTERSECTIONCOLOR\n 70\n%i\n", dxf_header.InterSectionColor);
-        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$DIMASSOC\n280\n%i\n", dxf_header.DimASSOC);
-        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$PROJECTNAME\n  1\n%s\n", dxf_header.ProjectName);
+          || (fp->acad_version_number == AC1014)) fprintf (fp->fp, "  9\n$PICKSTYLE\n 70\n%i\n", header.PickStyle);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$CMLSTYLE\n  2\n%s\n", header.CMLStyle);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$CMLJUST\n 70\n%i\n", header.CMLJust);
+        if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$CMLSCALE\n 40\n%f\n", header.CMLScale);
+        if (fp->acad_version_number >= AC1014) fprintf (fp->fp, "  9\n$PROXYGRAPHICS\n 70\n%i\n", header.ProxyGraphics);
+        if (fp->acad_version_number >= AC1014) fprintf (fp->fp, "  9\n$MEASUREMENT\n 70\n%i\n", header.Measurement);
+        if (fp->acad_version_number == AC1012) fprintf (fp->fp, "  9\n$SAVEIMAGES\n 70\n%i\n", header.SaveImages);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$CELWEIGHT\n370\n%i\n", header.CELWeight);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$ENDCAPS\n280\n%i\n", header.EndCaps);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$JOINSTYLE\n280\n%i\n", header.JoinStyle);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$LWDISPLAY\n290\n%i\n", header.LWDisplay);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$INSUNITS\n 70\n%i\n", header.InsUnits);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$HYPERLINKBASE\n  1\n%s\n", header.HyperLinkBase);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$STYLESHEET\n  1\n%s\n", header.StyleSheet);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$XEDIT\n290\n%i\n", header.XEdit);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$CEPSNTYPE\n380\n%i\n", header.CEPSNType);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PSTYLEMODE\n290\n%i\n", header.PStyleMode);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$FINGERPRINTGUID\n  2\n%s\n", header.FingerPrintGUID);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$VERSIONGUID\n  2\n%s\n", header.VersionGUID);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$EXTNAMES\n290\n%i\n", header.ExtNames);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$PSVPSCALE\n 40\n%f\n", header.PSVPScale);
+        if (fp->acad_version_number >= AC1015) fprintf (fp->fp, "  9\n$OLESTARTUP\n290\n%i\n", header.OLEStartUp);
+        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$SORTENTS\n280\n%i\n", header.SortEnts);
+        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$INDEXCTL\n280\n%i\n", header.IndexCtl);
+        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$HIDETEXT\n280\n%i\n", header.HideText);
+        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$XCLIPFRAME\n290\n%i\n", header.XClipFrame);
+        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$HALOGAP\n280\n%i\n", header.HaloGap);
+        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$OBSCOLOR\n 70\n%i\n", header.ObsColor);
+        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$OBSLTYPE\n280\n%i\n", header.ObsLType);
+        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$INTERSECTIONDISPLAY\n280\n%i\n", header.InterSectionDisplay);
+        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$INTERSECTIONCOLOR\n 70\n%i\n", header.InterSectionColor);
+        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$DIMASSOC\n280\n%i\n", header.DimASSOC);
+        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$PROJECTNAME\n  1\n%s\n", header.ProjectName);
         dxf_endsec_write (fp);
 #if DEBUG
         DXF_DEBUG_END
@@ -1188,7 +1188,7 @@ dxf_read_header_parser
 (
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
-        DxfHeader dxf_header,
+        DxfHeader header,
                 /*!< DXF header to be initialized.\n */
         char * temp_string,
         int acad_version_number
@@ -1203,453 +1203,453 @@ dxf_read_header_parser
         * and check if we read all header data.
         */
         ret = dxf_read_header_parse_int (fp, temp_string, "$ACADMAINTVER",
-                                         &dxf_header.AcadMaintVer,
+                                         &header.AcadMaintVer,
                                          acad_version_number > AC1014);
         dxf_return(ret);
                 
         ret = dxf_read_header_parse_string (fp, temp_string, "$DWGCODEPAGE",
-                                            &dxf_header.DWGCodePage,
+                                            &header.DWGCodePage,
                                             acad_version_number >= AC1012);
         dxf_return(ret);
         
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$INSBASE",
                                               TRUE,
                                               3,
-                                              &dxf_header.InsBase.x0,
-                                              &dxf_header.InsBase.y0,
-                                              &dxf_header.InsBase.z0);
+                                              &header.InsBase.x0,
+                                              &header.InsBase.y0,
+                                              &header.InsBase.z0);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$EXTMIN",
                                               TRUE,
                                               3,
-                                              &dxf_header.ExtMin.x0,
-                                              &dxf_header.ExtMin.y0,
-                                              &dxf_header.ExtMin.z0);
+                                              &header.ExtMin.x0,
+                                              &header.ExtMin.y0,
+                                              &header.ExtMin.z0);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$EXTMAX",
                                               TRUE,
                                               3,
-                                              &dxf_header.ExtMax.x0,
-                                              &dxf_header.ExtMax.y0,
-                                              &dxf_header.ExtMax.z0);
+                                              &header.ExtMax.x0,
+                                              &header.ExtMax.y0,
+                                              &header.ExtMax.z0);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$LIMMIN",
                                               TRUE,
                                               2,
-                                              &dxf_header.LimMin.x0,
-                                              &dxf_header.LimMin.y0);
+                                              &header.LimMin.x0,
+                                              &header.LimMin.y0);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$LIMMAX",
                                               TRUE,
                                               2,
-                                              &dxf_header.LimMax.x0,
-                                              &dxf_header.LimMax.y0);
+                                              &header.LimMax.x0,
+                                              &header.LimMax.y0);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_int (fp, temp_string, "$ORTHOMODE",
-                                         &dxf_header.OrthoMode,
+                                         &header.OrthoMode,
                                          TRUE);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_int (fp, temp_string, "$REGENMODE",
-                                         &dxf_header.RegenMode,
+                                         &header.RegenMode,
                                          TRUE);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_int (fp, temp_string, "$FILLMODE",
-                                         &dxf_header.FillMode,
+                                         &header.FillMode,
                                          TRUE);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_int (fp, temp_string, "$QTEXTMODE",
-                                         &dxf_header.QTextMode,
+                                         &header.QTextMode,
                                          TRUE);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_int (fp, temp_string, "$MIRRTEXT",
-                                         &dxf_header.MirrText,
+                                         &header.MirrText,
                                          TRUE);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_int (fp, temp_string, "$DRAGMODE",
-                                         &dxf_header.MirrText,
+                                         &header.MirrText,
                                          acad_version_number < AC1015);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$LTSCALE",
                                               TRUE,
                                               1,
-                                              &dxf_header.LTScale);
+                                              &header.LTScale);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_int (fp, temp_string, "$OSMODE",
-                                         &dxf_header.OSMode,
+                                         &header.OSMode,
                                          acad_version_number <= AC1014);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_int (fp, temp_string, "$ATTMODE",
-                                         &dxf_header.AttMode,
+                                         &header.AttMode,
                                          TRUE);
         dxf_return(ret);
     
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$TEXTSIZE",
                                               TRUE,
                                               1,
-                                              &dxf_header.TextSize);
+                                              &header.TextSize);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$TRACEWID",
                                               TRUE,
                                               1,
-                                              &dxf_header.TraceWid);
+                                              &header.TraceWid);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_string (fp, temp_string, "$TEXTSTYLE",
-                                            &dxf_header.TextStyle,
+                                            &header.TextStyle,
                                             TRUE);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_string (fp, temp_string, "$CLAYER",
-                                            &dxf_header.CLayer,
+                                            &header.CLayer,
                                             TRUE);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_string (fp, temp_string, "$CELTYPE",
-                                            &dxf_header.CELType,
+                                            &header.CELType,
                                             TRUE);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_int (fp, temp_string, "$CECOLOR",
-                                         &dxf_header.CEColor,
+                                         &header.CEColor,
                                          TRUE);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$CELTSCALE",
                                               acad_version_number >= AC1012,
                                               1,
-                                              &dxf_header.CELTScale);
+                                              &header.CELTScale);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_int (fp, temp_string, "$DELOBJ",
-                                         &dxf_header.DelObj,
+                                         &header.DelObj,
                                          (acad_version_number == AC1012)
                                          || (acad_version_number == AC1014));
         dxf_return(ret);
 
         /*! \todo FIXME: changed from AC1012 to AC1015 */
         ret = dxf_read_header_parse_int (fp, temp_string, "$DISPSILH",
-                                         &dxf_header.DispSilH,
+                                         &header.DispSilH,
                                          acad_version_number <= AC1015);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMSCALE",
                                               TRUE,
                                               1,
-                                              &dxf_header.DimSCALE);
+                                              &header.DimSCALE);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMASZ",
                                               TRUE,
                                               1,
-                                              &dxf_header.DimASZ);
+                                              &header.DimASZ);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMEXO",
                                               TRUE,
                                               1,
-                                              &dxf_header.DimEXO);
+                                              &header.DimEXO);
         dxf_return(ret);
 
         /*
-        fprintf (fp, "  9\n$DIMDLI\n 40\n%f\n", dxf_header.DimDLI);
-        fprintf (fp, "  9\n$DIMRND\n 40\n%f\n", dxf_header.DimRND);
-        fprintf (fp, "  9\n$DIMDLE\n 40\n%f\n", dxf_header.DimDLE);
+        fprintf (fp, "  9\n$DIMDLI\n 40\n%f\n", header.DimDLI);
+        fprintf (fp, "  9\n$DIMRND\n 40\n%f\n", header.DimRND);
+        fprintf (fp, "  9\n$DIMDLE\n 40\n%f\n", header.DimDLE);
         */
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMEXE",
                                               TRUE,
                                               1,
-                                              &dxf_header.DimEXE);
+                                              &header.DimEXE);
         dxf_return(ret);
         /*
-        fprintf (fp, "  9\n$DIMTP\n 40\n%f\n", dxf_header.DimTP);
-        fprintf (fp, "  9\n$DIMTM\n 40\n%f\n", dxf_header.DimTM);
+        fprintf (fp, "  9\n$DIMTP\n 40\n%f\n", header.DimTP);
+        fprintf (fp, "  9\n$DIMTM\n 40\n%f\n", header.DimTM);
         */
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMTXT",
                                               TRUE,
                                               1,
-                                              &dxf_header.DimTXT);
+                                              &header.DimTXT);
         dxf_return(ret);
         /*
-        fprintf (fp, "  9\n$DIMCEN\n 40\n%f\n", dxf_header.DimCEN);
-        fprintf (fp, "  9\n$DIMTSZ\n 40\n%f\n", dxf_header.DimTSZ);
-        fprintf (fp, "  9\n$DIMTOL\n 70\n%i\n", dxf_header.DimTOL);
-        fprintf (fp, "  9\n$DIMLIM\n 70\n%i\n", dxf_header.DimLIM);
-        fprintf (fp, "  9\n$DIMTIH\n 70\n%i\n", dxf_header.DimTIH);
-        fprintf (fp, "  9\n$DIMTOH\n 70\n%i\n", dxf_header.DimTOH);
-        fprintf (fp, "  9\n$DIMSE1\n 70\n%i\n", dxf_header.DimSE1);
-        fprintf (fp, "  9\n$DIMSE2\n 70\n%i\n", dxf_header.DimSE2);
-        fprintf (fp, "  9\n$DIMTAD\n 70\n%i\n", dxf_header.DimTAD);
-        fprintf (fp, "  9\n$DIMZIN\n 70\n%i\n", dxf_header.DimZIN);
-        fprintf (fp, "  9\n$DIMBLK\n  1\n%s\n", dxf_header.DimBLK);
-        fprintf (fp, "  9\n$DIMASO\n 70\n%i\n", dxf_header.DimASO);
-        fprintf (fp, "  9\n$DIMSHO\n 70\n%i\n", dxf_header.DimSHO);
-        fprintf (fp, "  9\n$DIMPOST\n  1\n%s\n", dxf_header.DimPOST);
-        fprintf (fp, "  9\n$DIMAPOST\n  1\n%s\n", dxf_header.DimAPOST);
-        fprintf (fp, "  9\n$DIMALT\n 70\n%i\n", dxf_header.DimALT);
-        fprintf (fp, "  9\n$DIMALTD\n 70\n%i\n", dxf_header.DimALTD);
-        fprintf (fp, "  9\n$DIMALTF\n 40\n%f\n", dxf_header.DimALTF);
-        fprintf (fp, "  9\n$DIMLFAC\n 40\n%f\n", dxf_header.DimLFAC);
-        fprintf (fp, "  9\n$DIMTOFL\n 70\n%i\n", dxf_header.DimTOFL);
-        fprintf (fp, "  9\n$DIMTVP\n 40\n%f\n", dxf_header.DimTVP);
-        fprintf (fp, "  9\n$DIMTIX\n 70\n%i\n", dxf_header.DimTIX);
-        fprintf (fp, "  9\n$DIMSOXD\n 70\n%i\n", dxf_header.DimSOXD);
-        fprintf (fp, "  9\n$DIMSAH\n 70\n%i\n", dxf_header.DimSAH);
-        fprintf (fp, "  9\n$DIMBLK1\n  1\n%s\n", dxf_header.DimBLK1);
-        fprintf (fp, "  9\n$DIMBLK2\n  1\n%s\n", dxf_header.DimBLK2);
+        fprintf (fp, "  9\n$DIMCEN\n 40\n%f\n", header.DimCEN);
+        fprintf (fp, "  9\n$DIMTSZ\n 40\n%f\n", header.DimTSZ);
+        fprintf (fp, "  9\n$DIMTOL\n 70\n%i\n", header.DimTOL);
+        fprintf (fp, "  9\n$DIMLIM\n 70\n%i\n", header.DimLIM);
+        fprintf (fp, "  9\n$DIMTIH\n 70\n%i\n", header.DimTIH);
+        fprintf (fp, "  9\n$DIMTOH\n 70\n%i\n", header.DimTOH);
+        fprintf (fp, "  9\n$DIMSE1\n 70\n%i\n", header.DimSE1);
+        fprintf (fp, "  9\n$DIMSE2\n 70\n%i\n", header.DimSE2);
+        fprintf (fp, "  9\n$DIMTAD\n 70\n%i\n", header.DimTAD);
+        fprintf (fp, "  9\n$DIMZIN\n 70\n%i\n", header.DimZIN);
+        fprintf (fp, "  9\n$DIMBLK\n  1\n%s\n", header.DimBLK);
+        fprintf (fp, "  9\n$DIMASO\n 70\n%i\n", header.DimASO);
+        fprintf (fp, "  9\n$DIMSHO\n 70\n%i\n", header.DimSHO);
+        fprintf (fp, "  9\n$DIMPOST\n  1\n%s\n", header.DimPOST);
+        fprintf (fp, "  9\n$DIMAPOST\n  1\n%s\n", header.DimAPOST);
+        fprintf (fp, "  9\n$DIMALT\n 70\n%i\n", header.DimALT);
+        fprintf (fp, "  9\n$DIMALTD\n 70\n%i\n", header.DimALTD);
+        fprintf (fp, "  9\n$DIMALTF\n 40\n%f\n", header.DimALTF);
+        fprintf (fp, "  9\n$DIMLFAC\n 40\n%f\n", header.DimLFAC);
+        fprintf (fp, "  9\n$DIMTOFL\n 70\n%i\n", header.DimTOFL);
+        fprintf (fp, "  9\n$DIMTVP\n 40\n%f\n", header.DimTVP);
+        fprintf (fp, "  9\n$DIMTIX\n 70\n%i\n", header.DimTIX);
+        fprintf (fp, "  9\n$DIMSOXD\n 70\n%i\n", header.DimSOXD);
+        fprintf (fp, "  9\n$DIMSAH\n 70\n%i\n", header.DimSAH);
+        fprintf (fp, "  9\n$DIMBLK1\n  1\n%s\n", header.DimBLK1);
+        fprintf (fp, "  9\n$DIMBLK2\n  1\n%s\n", header.DimBLK2);
         */
         ret = dxf_read_header_parse_string (fp, temp_string, "$DIMSTYLE",
-                                            &dxf_header.DimSTYLE,
+                                            &header.DimSTYLE,
                                             TRUE);
         dxf_return(ret);
         /*
-        fprintf (fp, "  9\n$DIMCLRD\n 70\n%i\n", dxf_header.DimCLRD);
-        fprintf (fp, "  9\n$DIMCLRE\n 70\n%i\n", dxf_header.DimCLRE);
-        fprintf (fp, "  9\n$DIMCLRT\n 70\n%i\n", dxf_header.DimCLRT);
-        fprintf (fp, "  9\n$DIMTFAC\n 40\n%f\n", dxf_header.DimTFAC);
+        fprintf (fp, "  9\n$DIMCLRD\n 70\n%i\n", header.DimCLRD);
+        fprintf (fp, "  9\n$DIMCLRE\n 70\n%i\n", header.DimCLRE);
+        fprintf (fp, "  9\n$DIMCLRT\n 70\n%i\n", header.DimCLRT);
+        fprintf (fp, "  9\n$DIMTFAC\n 40\n%f\n", header.DimTFAC);
         */
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMGAP",
                                               TRUE,
                                               1,
-                                              &dxf_header.DimGAP);
+                                              &header.DimGAP);
         dxf_return(ret);
         /*
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMJUST\n 70\n%i\n", dxf_header.DimJUST);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMSD1\n 70\n%i\n", dxf_header.DimSD1);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMSD2\n 70\n%i\n", dxf_header.DimSD2);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMTOLJ\n 70\n%i\n", dxf_header.DimTOLJ);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMTZIN\n 70\n%i\n", dxf_header.DimTZIN);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMALTZ\n 70\n%i\n", dxf_header.DimALTZ);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMALTTZ\n 70\n%i\n", dxf_header.DimALTTZ);
-        if ((acad_version_number == AC1012) || (acad_version_number == AC1014)) fprintf (fp, "  9\n$DIMFIT\n 70\n%i\n", dxf_header.DimFIT);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMUPT\n 70\n%i\n", dxf_header.DimUPT);
-        if ((acad_version_number == AC1012) || (acad_version_number == AC1014)) fprintf (fp, "  9\n$DIMUNIT\n 70\n%i\n", dxf_header.DimUNIT);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMDEC\n 70\n%i\n", dxf_header.DimDEC);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMTDEC\n 70\n%i\n", dxf_header.DimTDEC);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMALTU\n 70\n%i\n", dxf_header.DimALTU);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMALTTD\n 70\n%i\n", dxf_header.DimALTTD);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMTXSTY\n  7\n%s\n", dxf_header.DimTXSTY);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMJUST\n 70\n%i\n", header.DimJUST);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMSD1\n 70\n%i\n", header.DimSD1);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMSD2\n 70\n%i\n", header.DimSD2);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMTOLJ\n 70\n%i\n", header.DimTOLJ);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMTZIN\n 70\n%i\n", header.DimTZIN);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMALTZ\n 70\n%i\n", header.DimALTZ);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMALTTZ\n 70\n%i\n", header.DimALTTZ);
+        if ((acad_version_number == AC1012) || (acad_version_number == AC1014)) fprintf (fp, "  9\n$DIMFIT\n 70\n%i\n", header.DimFIT);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMUPT\n 70\n%i\n", header.DimUPT);
+        if ((acad_version_number == AC1012) || (acad_version_number == AC1014)) fprintf (fp, "  9\n$DIMUNIT\n 70\n%i\n", header.DimUNIT);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMDEC\n 70\n%i\n", header.DimDEC);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMTDEC\n 70\n%i\n", header.DimTDEC);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMALTU\n 70\n%i\n", header.DimALTU);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMALTTD\n 70\n%i\n", header.DimALTTD);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMTXSTY\n  7\n%s\n", header.DimTXSTY);
         */
         ret = dxf_read_header_parse_int (fp, temp_string, "$DIMAUNIT",
-                                         &dxf_header.DimAUNIT,
+                                         &header.DimAUNIT,
                                          acad_version_number >= AC1012);
         dxf_return(ret);
     
         ret = dxf_read_header_parse_int (fp, temp_string, "$DIMADEC",
-                                         &dxf_header.DimADEC,
+                                         &header.DimADEC,
                                          acad_version_number >= AC1015);
         dxf_return(ret);
         /*
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMALTRND\n 40\n%f\n", dxf_header.DimALTRND);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMAZIN\n 70\n%i\n", dxf_header.DimAZIN);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMDSEP\n 70\n%i\n", dxf_header.DimDSEP);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMATFIT\n 70\n%i\n", dxf_header.DimATFIT);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMFRAC\n 70\n%i\n", dxf_header.DimFRAC);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMLDRBLK\n  1\n%s\n", dxf_header.DimLDRBLK);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMALTRND\n 40\n%f\n", header.DimALTRND);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMAZIN\n 70\n%i\n", header.DimAZIN);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMDSEP\n 70\n%i\n", header.DimDSEP);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMATFIT\n 70\n%i\n", header.DimATFIT);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMFRAC\n 70\n%i\n", header.DimFRAC);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMLDRBLK\n  1\n%s\n", header.DimLDRBLK);
         */
         ret = dxf_read_header_parse_int (fp, temp_string, "$DIMLUNIT",
-                                         &dxf_header.DimLUNIT,
+                                         &header.DimLUNIT,
                                          acad_version_number >= AC1015);
         dxf_return(ret);
         /*
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMLWD\n 70\n%i\n", dxf_header.DimLWD);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMLWE\n 70\n%i\n", dxf_header.DimLWE);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMTMOVE\n 70\n%i\n", dxf_header.DimTMOVE);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMLWD\n 70\n%i\n", header.DimLWD);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMLWE\n 70\n%i\n", header.DimLWE);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMTMOVE\n 70\n%i\n", header.DimTMOVE);
         */
         ret = dxf_read_header_parse_int (fp, temp_string, "$LUNITS",
-                                         &dxf_header.LUnits,
+                                         &header.LUnits,
                                          TRUE);
         dxf_return(ret);
         
         ret = dxf_read_header_parse_int (fp, temp_string, "$LUPREC",
-                                         &dxf_header.LUPrec,
+                                         &header.LUPrec,
                                          TRUE);
         dxf_return(ret);
         /*
-        fprintf (fp, "  9\n$SKETCHINC\n 40\n%f\n", dxf_header.Sketchinc);
-        fprintf (fp, "  9\n$FILLETRAD\n 40\n%f\n", dxf_header.FilletRad);
+        fprintf (fp, "  9\n$SKETCHINC\n 40\n%f\n", header.Sketchinc);
+        fprintf (fp, "  9\n$FILLETRAD\n 40\n%f\n", header.FilletRad);
         */
         ret = dxf_read_header_parse_int (fp, temp_string, "$AUNITS",
-                                         &dxf_header.AUnits,
+                                         &header.AUnits,
                                          TRUE);
         dxf_return(ret);
     
         ret = dxf_read_header_parse_int (fp, temp_string, "$AUPREC",
-                                         &dxf_header.AUPrec,
+                                         &header.AUPrec,
                                          TRUE);
         dxf_return(ret);
         /*
-        fprintf (fp, "  9\n$MENU\n  1\n%s\n", dxf_header.Menu);
-        fprintf (fp, "  9\n$ELEVATION\n 40\n%f\n", dxf_header.Elevation);
-        fprintf (fp, "  9\n$PELEVATION\n 40\n%f\n", dxf_header.PElevation);
-        fprintf (fp, "  9\n$THICKNESS\n 40\n%f\n", dxf_header.Thickness);
-        fprintf (fp, "  9\n$LIMCHECK\n 70\n%i\n", dxf_header.LimCheck);
-        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$BLIPMODE\n 70\n%i\n", dxf_header.BlipMode);
-        fprintf (fp, "  9\n$CHAMFERA\n 40\n%f\n", dxf_header.ChamferA);
-        fprintf (fp, "  9\n$CHAMFERB\n 40\n%f\n", dxf_header.ChamferB);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CHAMFERC\n 40\n%f\n", dxf_header.ChamferC);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CHAMFERD\n 40\n%f\n", dxf_header.ChamferD);
-        fprintf (fp, "  9\n$SKPOLY\n 70\n%i\n", dxf_header.SKPoly);
-        fprintf (fp, "  9\n$TDCREATE\n 40\n%f\n", dxf_header.TDCreate);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$TDUCREATE\n 40\n%f\n", dxf_header.TDUCreate);
-        fprintf (fp, "  9\n$TDUPDATE\n 40\n%f\n", dxf_header.TDUpdate);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$TDUUPDATE\n 40\n%f\n", dxf_header.TDUUpdate);
-        fprintf (fp, "  9\n$TDINDWG\n 40\n%f\n", dxf_header.TDInDWG);
-        fprintf (fp, "  9\n$TDUSRTIMER\n 40\n%f\n", dxf_header.TDUSRTimer);
-        fprintf (fp, "  9\n$USRTIMER\n 70\n%i\n", dxf_header.USRTimer);
-        fprintf (fp, "  9\n$ANGBASE\n 50\n%f\n", dxf_header.AngBase);
-        fprintf (fp, "  9\n$ANGDIR\n 70\n%i\n", dxf_header.AngDir);
-        fprintf (fp, "  9\n$PDMODE\n 70\n%i\n", dxf_header.PDMode);
-        fprintf (fp, "  9\n$PDSIZE\n 40\n%f\n", dxf_header.PDSize);
-        fprintf (fp, "  9\n$PLINEWID\n 40\n%f\n", dxf_header.PLineWid);
-        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$COORDS\n 70\n%i\n", dxf_header.Coords);
-        fprintf (fp, "  9\n$SPLFRAME\n 70\n%i\n", dxf_header.SPLFrame);
-        fprintf (fp, "  9\n$SPLINETYPE\n 70\n%i\n", dxf_header.SPLineType);
-        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$ATTDIA\n 70\n%i\n", dxf_header.AttDia);
-        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$ATTREQ\n 70\n%i\n", dxf_header.AttReq);
-        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$HANDLING\n 70\n%i\n", dxf_header.Handling);
+        fprintf (fp, "  9\n$MENU\n  1\n%s\n", header.Menu);
+        fprintf (fp, "  9\n$ELEVATION\n 40\n%f\n", header.Elevation);
+        fprintf (fp, "  9\n$PELEVATION\n 40\n%f\n", header.PElevation);
+        fprintf (fp, "  9\n$THICKNESS\n 40\n%f\n", header.Thickness);
+        fprintf (fp, "  9\n$LIMCHECK\n 70\n%i\n", header.LimCheck);
+        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$BLIPMODE\n 70\n%i\n", header.BlipMode);
+        fprintf (fp, "  9\n$CHAMFERA\n 40\n%f\n", header.ChamferA);
+        fprintf (fp, "  9\n$CHAMFERB\n 40\n%f\n", header.ChamferB);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CHAMFERC\n 40\n%f\n", header.ChamferC);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CHAMFERD\n 40\n%f\n", header.ChamferD);
+        fprintf (fp, "  9\n$SKPOLY\n 70\n%i\n", header.SKPoly);
+        fprintf (fp, "  9\n$TDCREATE\n 40\n%f\n", header.TDCreate);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$TDUCREATE\n 40\n%f\n", header.TDUCreate);
+        fprintf (fp, "  9\n$TDUPDATE\n 40\n%f\n", header.TDUpdate);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$TDUUPDATE\n 40\n%f\n", header.TDUUpdate);
+        fprintf (fp, "  9\n$TDINDWG\n 40\n%f\n", header.TDInDWG);
+        fprintf (fp, "  9\n$TDUSRTIMER\n 40\n%f\n", header.TDUSRTimer);
+        fprintf (fp, "  9\n$USRTIMER\n 70\n%i\n", header.USRTimer);
+        fprintf (fp, "  9\n$ANGBASE\n 50\n%f\n", header.AngBase);
+        fprintf (fp, "  9\n$ANGDIR\n 70\n%i\n", header.AngDir);
+        fprintf (fp, "  9\n$PDMODE\n 70\n%i\n", header.PDMode);
+        fprintf (fp, "  9\n$PDSIZE\n 40\n%f\n", header.PDSize);
+        fprintf (fp, "  9\n$PLINEWID\n 40\n%f\n", header.PLineWid);
+        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$COORDS\n 70\n%i\n", header.Coords);
+        fprintf (fp, "  9\n$SPLFRAME\n 70\n%i\n", header.SPLFrame);
+        fprintf (fp, "  9\n$SPLINETYPE\n 70\n%i\n", header.SPLineType);
+        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$ATTDIA\n 70\n%i\n", header.AttDia);
+        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$ATTREQ\n 70\n%i\n", header.AttReq);
+        if (acad_version_number <= AC1014) fprintf (fp, "  9\n$HANDLING\n 70\n%i\n", header.Handling);
         */
         ret = dxf_read_header_parse_int (fp, temp_string, "$SPLINESEGS",
-                                         &dxf_header.SPLineSegs,
+                                         &header.SPLineSegs,
                                          TRUE);
         dxf_return(ret);
         
         ret = dxf_read_header_parse_string (fp, temp_string, "$HANDSEED",
-                                            &dxf_header.HandSeed,
+                                            &header.HandSeed,
                                             TRUE);
         dxf_return(ret);
     /*
-        fprintf (fp, "  9\n$SURFTAB1\n 70\n%i\n", dxf_header.SurfTab1);
-        fprintf (fp, "  9\n$SURFTAB2\n 70\n%i\n", dxf_header.SurfTab2);
-        fprintf (fp, "  9\n$SURFTYPE\n 70\n%i\n", dxf_header.SurfType);
-        fprintf (fp, "  9\n$SURFU\n 70\n%i\n", dxf_header.SurfU);
-        fprintf (fp, "  9\n$SURFV\n 70\n%i\n", dxf_header.SurfV);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSBASE\n  2\n%s\n", dxf_header.UCSBase);
-        fprintf (fp, "  9\n$UCSNAME\n  2\n%s\n", dxf_header.UCSName);
-        fprintf (fp, "  9\n$UCSORG\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrg.x0, dxf_header.UCSOrg.y0, dxf_header.UCSOrg.z0);
-        fprintf (fp, "  9\n$UCSXDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSXDir.x0, dxf_header.UCSXDir.y0, dxf_header.UCSXDir.z0);
-        fprintf (fp, "  9\n$UCSYDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSYDir.x0, dxf_header.UCSYDir.y0, dxf_header.UCSYDir.z0);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORTHOREF\n  2\n%s\n", dxf_header.UCSOrthoRef);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORTHOVIEW\n 70\n%i\n", dxf_header.UCSOrthoView);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGTOP\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgTop.x0, dxf_header.UCSOrgTop.y0, dxf_header.UCSOrgTop.z0);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGBOTTOM\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgBottom.x0, dxf_header.UCSOrgBottom.y0, dxf_header.UCSOrgBottom.z0);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGLEFT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgLeft.x0, dxf_header.UCSOrgLeft.y0, dxf_header.UCSOrgLeft.z0);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGRIGHT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgRight.x0, dxf_header.UCSOrgRight.y0, dxf_header.UCSOrgRight.z0);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGFRONT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgFront.x0, dxf_header.UCSOrgFront.y0, dxf_header.UCSOrgFront.z0);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGBACK\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.UCSOrgBack.x0, dxf_header.UCSOrgBack.y0, dxf_header.UCSOrgBack.z0);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSBASE\n  2\n%s\n", dxf_header.PUCSBase);
-        fprintf (fp, "  9\n$PUCSNAME\n  2\n%s\n", dxf_header.PUCSName);
-        fprintf (fp, "  9\n$PUCSORG\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrg.x0, dxf_header.PUCSOrg.y0, dxf_header.PUCSOrg.z0);
-        fprintf (fp, "  9\n$PUCSXDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSXDir.x0, dxf_header.PUCSXDir.y0, dxf_header.PUCSXDir.z0);
-        fprintf (fp, "  9\n$PUCSYDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSYDir.x0, dxf_header.PUCSYDir.y0, dxf_header.PUCSYDir.z0);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORTHOREF\n  2\n%s\n", dxf_header.PUCSOrthoRef);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORTHOVIEW\n 70\n%i\n", dxf_header.PUCSOrthoView);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGTOP\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgTop.x0, dxf_header.PUCSOrgTop.y0, dxf_header.PUCSOrgTop.z0);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGBOTTOM\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgBottom.x0, dxf_header.PUCSOrgBottom.y0, dxf_header.PUCSOrgBottom.z0);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGLEFT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgLeft.x0, dxf_header.PUCSOrgLeft.y0, dxf_header.PUCSOrgLeft.z0);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGRIGHT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgRight.x0, dxf_header.PUCSOrgRight.y0, dxf_header.PUCSOrgRight.z0);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGFRONT\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgFront.x0, dxf_header.PUCSOrgFront.y0, dxf_header.PUCSOrgFront.z0);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGBACK\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PUCSOrgBack.x0, dxf_header.PUCSOrgBack.y0, dxf_header.PUCSOrgBack.z0);
-        fprintf (fp, "  9\n$USERI1\n 70\n%i\n", dxf_header.UserI1);
-        fprintf (fp, "  9\n$USERI2\n 70\n%i\n", dxf_header.UserI2);
-        fprintf (fp, "  9\n$USERI3\n 70\n%i\n", dxf_header.UserI3);
-        fprintf (fp, "  9\n$USERI4\n 70\n%i\n", dxf_header.UserI4);
-        fprintf (fp, "  9\n$USERI5\n 70\n%i\n", dxf_header.UserI5);
-        fprintf (fp, "  9\n$USERR1\n 40\n%f\n", dxf_header.UserR1);
-        fprintf (fp, "  9\n$USERR2\n 40\n%f\n", dxf_header.UserR2);
-        fprintf (fp, "  9\n$USERR3\n 40\n%f\n", dxf_header.UserR3);
-        fprintf (fp, "  9\n$USERR4\n 40\n%f\n", dxf_header.UserR4);
-        fprintf (fp, "  9\n$USERR5\n 40\n%f\n", dxf_header.UserR5);
-        fprintf (fp, "  9\n$WORLDVIEW\n 70\n%i\n", dxf_header.WorldView);
-        fprintf (fp, "  9\n$SHADEDGE\n 70\n%i\n", dxf_header.ShadEdge);
-        fprintf (fp, "  9\n$SHADEDIF\n 70\n%i\n", dxf_header.ShadeDif);
-        fprintf (fp, "  9\n$TILEMODE\n 70\n%i\n", dxf_header.TileMode);
-        fprintf (fp, "  9\n$MAXACTVP\n 70\n%i\n", dxf_header.MaxActVP);
-        fprintf (fp, "  9\n$PINSBASE\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PInsBase.x0, dxf_header.PInsBase.y0, dxf_header.PInsBase.z0);
-        fprintf (fp, "  9\n$PLIMCHECK\n 70\n%i\n", dxf_header.PLimCheck);
-        fprintf (fp, "  9\n$PEXTMIN\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PExtMin.x0, dxf_header.PExtMin.y0, dxf_header.PExtMin.z0);
-        fprintf (fp, "  9\n$PEXTMAX\n 10\n%f\n 20\n%f\n 30\n%f\n", dxf_header.PExtMax.x0, dxf_header.PExtMax.y0, dxf_header.PExtMax.z0);
+        fprintf (fp, "  9\n$SURFTAB1\n 70\n%i\n", header.SurfTab1);
+        fprintf (fp, "  9\n$SURFTAB2\n 70\n%i\n", header.SurfTab2);
+        fprintf (fp, "  9\n$SURFTYPE\n 70\n%i\n", header.SurfType);
+        fprintf (fp, "  9\n$SURFU\n 70\n%i\n", header.SurfU);
+        fprintf (fp, "  9\n$SURFV\n 70\n%i\n", header.SurfV);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSBASE\n  2\n%s\n", header.UCSBase);
+        fprintf (fp, "  9\n$UCSNAME\n  2\n%s\n", header.UCSName);
+        fprintf (fp, "  9\n$UCSORG\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrg.x0, header.UCSOrg.y0, header.UCSOrg.z0);
+        fprintf (fp, "  9\n$UCSXDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSXDir.x0, header.UCSXDir.y0, header.UCSXDir.z0);
+        fprintf (fp, "  9\n$UCSYDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSYDir.x0, header.UCSYDir.y0, header.UCSYDir.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORTHOREF\n  2\n%s\n", header.UCSOrthoRef);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORTHOVIEW\n 70\n%i\n", header.UCSOrthoView);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGTOP\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrgTop.x0, header.UCSOrgTop.y0, header.UCSOrgTop.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGBOTTOM\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrgBottom.x0, header.UCSOrgBottom.y0, header.UCSOrgBottom.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGLEFT\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrgLeft.x0, header.UCSOrgLeft.y0, header.UCSOrgLeft.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGRIGHT\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrgRight.x0, header.UCSOrgRight.y0, header.UCSOrgRight.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGFRONT\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrgFront.x0, header.UCSOrgFront.y0, header.UCSOrgFront.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$UCSORGBACK\n 10\n%f\n 20\n%f\n 30\n%f\n", header.UCSOrgBack.x0, header.UCSOrgBack.y0, header.UCSOrgBack.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSBASE\n  2\n%s\n", header.PUCSBase);
+        fprintf (fp, "  9\n$PUCSNAME\n  2\n%s\n", header.PUCSName);
+        fprintf (fp, "  9\n$PUCSORG\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrg.x0, header.PUCSOrg.y0, header.PUCSOrg.z0);
+        fprintf (fp, "  9\n$PUCSXDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSXDir.x0, header.PUCSXDir.y0, header.PUCSXDir.z0);
+        fprintf (fp, "  9\n$PUCSYDIR\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSYDir.x0, header.PUCSYDir.y0, header.PUCSYDir.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORTHOREF\n  2\n%s\n", header.PUCSOrthoRef);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORTHOVIEW\n 70\n%i\n", header.PUCSOrthoView);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGTOP\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrgTop.x0, header.PUCSOrgTop.y0, header.PUCSOrgTop.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGBOTTOM\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrgBottom.x0, header.PUCSOrgBottom.y0, header.PUCSOrgBottom.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGLEFT\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrgLeft.x0, header.PUCSOrgLeft.y0, header.PUCSOrgLeft.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGRIGHT\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrgRight.x0, header.PUCSOrgRight.y0, header.PUCSOrgRight.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGFRONT\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrgFront.x0, header.PUCSOrgFront.y0, header.PUCSOrgFront.z0);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PUCSORGBACK\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PUCSOrgBack.x0, header.PUCSOrgBack.y0, header.PUCSOrgBack.z0);
+        fprintf (fp, "  9\n$USERI1\n 70\n%i\n", header.UserI1);
+        fprintf (fp, "  9\n$USERI2\n 70\n%i\n", header.UserI2);
+        fprintf (fp, "  9\n$USERI3\n 70\n%i\n", header.UserI3);
+        fprintf (fp, "  9\n$USERI4\n 70\n%i\n", header.UserI4);
+        fprintf (fp, "  9\n$USERI5\n 70\n%i\n", header.UserI5);
+        fprintf (fp, "  9\n$USERR1\n 40\n%f\n", header.UserR1);
+        fprintf (fp, "  9\n$USERR2\n 40\n%f\n", header.UserR2);
+        fprintf (fp, "  9\n$USERR3\n 40\n%f\n", header.UserR3);
+        fprintf (fp, "  9\n$USERR4\n 40\n%f\n", header.UserR4);
+        fprintf (fp, "  9\n$USERR5\n 40\n%f\n", header.UserR5);
+        fprintf (fp, "  9\n$WORLDVIEW\n 70\n%i\n", header.WorldView);
+        fprintf (fp, "  9\n$SHADEDGE\n 70\n%i\n", header.ShadEdge);
+        fprintf (fp, "  9\n$SHADEDIF\n 70\n%i\n", header.ShadeDif);
+        fprintf (fp, "  9\n$TILEMODE\n 70\n%i\n", header.TileMode);
+        fprintf (fp, "  9\n$MAXACTVP\n 70\n%i\n", header.MaxActVP);
+        fprintf (fp, "  9\n$PINSBASE\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PInsBase.x0, header.PInsBase.y0, header.PInsBase.z0);
+        fprintf (fp, "  9\n$PLIMCHECK\n 70\n%i\n", header.PLimCheck);
+        fprintf (fp, "  9\n$PEXTMIN\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PExtMin.x0, header.PExtMin.y0, header.PExtMin.z0);
+        fprintf (fp, "  9\n$PEXTMAX\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PExtMax.x0, header.PExtMax.y0, header.PExtMax.z0);
         */
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$PLIMMIN",
                                               TRUE,
                                               2,
-                                              &dxf_header.PLimMin.x0,
-                                              dxf_header.PLimMin.y0);
+                                              &header.PLimMin.x0,
+                                              header.PLimMin.y0);
         dxf_return(ret);
     
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$PLIMMAX",
                                               TRUE,
                                               2,
-                                              &dxf_header.PLimMax.x0,
-                                              dxf_header.PLimMax.y0);
+                                              &header.PLimMax.x0,
+                                              header.PLimMax.y0);
         dxf_return(ret);
         /*
-        fprintf (fp, "  9\n$UNITMODE\n 70\n%i\n", dxf_header.UnitMode);
-        fprintf (fp, "  9\n$VISRETAIN\n 70\n%i\n", dxf_header.VisRetain);
-        fprintf (fp, "  9\n$PLINEGEN\n 70\n%i\n", dxf_header.PLineGen);
-        fprintf (fp, "  9\n$PSLTSCALE\n 70\n%i\n", dxf_header.PSLTScale);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$TREEDEPTH\n 70\n%i\n", dxf_header.TreeDepth);
-        if ((acad_version_number == AC1012) || (acad_version_number == AC1014)) fprintf (fp, "  9\n$PICKSTYLE\n 70\n%i\n", dxf_header.PickStyle);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CMLSTYLE\n  2\n%s\n", dxf_header.CMLStyle);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CMLJUST\n 70\n%i\n", dxf_header.CMLJust);
-        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CMLSCALE\n 40\n%f\n", dxf_header.CMLScale);
-        if (acad_version_number >= AC1014) fprintf (fp, "  9\n$PROXYGRAPHICS\n 70\n%i\n", dxf_header.ProxyGraphics);
-        if (acad_version_number >= AC1014) fprintf (fp, "  9\n$MEASUREMENT\n 70\n%i\n", dxf_header.Measurement);
-        if (acad_version_number == AC1012) fprintf (fp, "  9\n$SAVEIMAGES\n 70\n%i\n", dxf_header.SaveImages);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$CELWEIGHT\n370\n%i\n", dxf_header.CELWeight);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$ENDCAPS\n280\n%i\n", dxf_header.EndCaps);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$JOINSTYLE\n280\n%i\n", dxf_header.JoinStyle);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$LWDISPLAY\n290\n%i\n", dxf_header.LWDisplay);
+        fprintf (fp, "  9\n$UNITMODE\n 70\n%i\n", header.UnitMode);
+        fprintf (fp, "  9\n$VISRETAIN\n 70\n%i\n", header.VisRetain);
+        fprintf (fp, "  9\n$PLINEGEN\n 70\n%i\n", header.PLineGen);
+        fprintf (fp, "  9\n$PSLTSCALE\n 70\n%i\n", header.PSLTScale);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$TREEDEPTH\n 70\n%i\n", header.TreeDepth);
+        if ((acad_version_number == AC1012) || (acad_version_number == AC1014)) fprintf (fp, "  9\n$PICKSTYLE\n 70\n%i\n", header.PickStyle);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CMLSTYLE\n  2\n%s\n", header.CMLStyle);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CMLJUST\n 70\n%i\n", header.CMLJust);
+        if (acad_version_number >= AC1012) fprintf (fp, "  9\n$CMLSCALE\n 40\n%f\n", header.CMLScale);
+        if (acad_version_number >= AC1014) fprintf (fp, "  9\n$PROXYGRAPHICS\n 70\n%i\n", header.ProxyGraphics);
+        if (acad_version_number >= AC1014) fprintf (fp, "  9\n$MEASUREMENT\n 70\n%i\n", header.Measurement);
+        if (acad_version_number == AC1012) fprintf (fp, "  9\n$SAVEIMAGES\n 70\n%i\n", header.SaveImages);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$CELWEIGHT\n370\n%i\n", header.CELWeight);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$ENDCAPS\n280\n%i\n", header.EndCaps);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$JOINSTYLE\n280\n%i\n", header.JoinStyle);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$LWDISPLAY\n290\n%i\n", header.LWDisplay);
         */
         ret = dxf_read_header_parse_int (fp, temp_string, "$INSUNITS",
-                                         &dxf_header.InsUnits,
+                                         &header.InsUnits,
                                          acad_version_number >= AC1015);
         dxf_return(ret);
         /*
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$HYPERLINKBASE\n  1\n%s\n", dxf_header.HyperLinkBase);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$STYLESHEET\n  1\n%s\n", dxf_header.StyleSheet);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$XEDIT\n290\n%i\n", dxf_header.XEdit);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$CEPSNTYPE\n380\n%i\n", dxf_header.CEPSNType);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PSTYLEMODE\n290\n%i\n", dxf_header.PStyleMode);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$FINGERPRINTGUID\n  2\n%s\n", dxf_header.FingerPrintGUID);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$VERSIONGUID\n  2\n%s\n", dxf_header.VersionGUID);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$EXTNAMES\n290\n%i\n", dxf_header.ExtNames);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PSVPSCALE\n 40\n%f\n", dxf_header.PSVPScale);
-        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$OLESTARTUP\n290\n%i\n", dxf_header.OLEStartUp);
-        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$SORTENTS\n280\n%i\n", dxf_header.SortEnts);
-        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$INDEXCTL\n280\n%i\n", dxf_header.IndexCtl);
-        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$HIDETEXT\n280\n%i\n", dxf_header.HideText);
-        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$XCLIPFRAME\n290\n%i\n", dxf_header.XClipFrame);
-        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$HALOGAP\n280\n%i\n", dxf_header.HaloGap);
-        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$OBSCOLOR\n 70\n%i\n", dxf_header.ObsColor);
-        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$OBSLTYPE\n280\n%i\n", dxf_header.ObsLType);
-        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$INTERSECTIONDISPLAY\n280\n%i\n", dxf_header.InterSectionDisplay);
-        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$INTERSECTIONCOLOR\n 70\n%i\n", dxf_header.InterSectionColor);
-        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$DIMASSOC\n280\n%i\n", dxf_header.DimASSOC);
-        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$PROJECTNAME\n  1\n%s\n", dxf_header.ProjectName);        
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$HYPERLINKBASE\n  1\n%s\n", header.HyperLinkBase);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$STYLESHEET\n  1\n%s\n", header.StyleSheet);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$XEDIT\n290\n%i\n", header.XEdit);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$CEPSNTYPE\n380\n%i\n", header.CEPSNType);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PSTYLEMODE\n290\n%i\n", header.PStyleMode);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$FINGERPRINTGUID\n  2\n%s\n", header.FingerPrintGUID);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$VERSIONGUID\n  2\n%s\n", header.VersionGUID);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$EXTNAMES\n290\n%i\n", header.ExtNames);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$PSVPSCALE\n 40\n%f\n", header.PSVPScale);
+        if (acad_version_number >= AC1015) fprintf (fp, "  9\n$OLESTARTUP\n290\n%i\n", header.OLEStartUp);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$SORTENTS\n280\n%i\n", header.SortEnts);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$INDEXCTL\n280\n%i\n", header.IndexCtl);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$HIDETEXT\n280\n%i\n", header.HideText);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$XCLIPFRAME\n290\n%i\n", header.XClipFrame);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$HALOGAP\n280\n%i\n", header.HaloGap);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$OBSCOLOR\n 70\n%i\n", header.ObsColor);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$OBSLTYPE\n280\n%i\n", header.ObsLType);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$INTERSECTIONDISPLAY\n280\n%i\n", header.InterSectionDisplay);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$INTERSECTIONCOLOR\n 70\n%i\n", header.InterSectionColor);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$DIMASSOC\n280\n%i\n", header.DimASSOC);
+        if (acad_version_number >= AC1018) fprintf (fp, "  9\n$PROJECTNAME\n  1\n%s\n", header.ProjectName);        
 */
         ret = dxf_read_header_parse_n_double (fp, temp_string, "$GRIDUNIT",
                                               acad_version_number >= AC1009,
                                               2,
-                                              &dxf_header.GridUnit.x0,
-                                              &dxf_header.GridUnit.y0);
+                                              &header.GridUnit.x0,
+                                              &header.GridUnit.y0);
         dxf_return(ret);
 
         ret = dxf_read_header_parse_int (fp, temp_string, "$GRIDMODE",
-                                         &dxf_header.GridMode,
+                                         &header.GridMode,
                                          acad_version_number >= AC1009);
         dxf_return(ret);
 #if DEBUG
@@ -1666,7 +1666,7 @@ dxf_read_header
 (
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
-        DxfHeader dxf_header
+        DxfHeader header
                 /*!< DXF header to be initialized.\n */
 )
 {
@@ -1679,14 +1679,14 @@ dxf_read_header
         /* first of all we MUST read the version number */
         dxf_read_scanf (fp, "%i\n%s\n", &n, temp_string);
         ret = dxf_read_header_parse_string (fp, temp_string,
-                                            "$ACADVER", &dxf_header.AcadVer,
+                                            "$ACADVER", &header.AcadVer,
                                             TRUE);
         dxf_return_val_if_fail (ret, FALSE);
         /* turn the acad_version into an integer */
-        acad_version_number= acad_version_from_string (dxf_header.AcadVer);
+        acad_version_number= acad_version_from_string (header.AcadVer);
     
         /* \FIXME: stores the autocad version as int */
-        dxf_header._AcadVer = acad_version_number;
+        header._AcadVer = acad_version_number;
     
         /* a loop to read all the header with no particulary order */
         while (!feof(fp->fp))
@@ -1697,7 +1697,7 @@ dxf_read_header
                 if (n == 9)
                 {
                         /* parses the header content and extract info to the header struct */
-                        ret = dxf_read_header_parser(fp, dxf_header,
+                        ret = dxf_read_header_parser(fp, header,
                                                      temp_string,
                                                      acad_version_number);
                         dxf_return_val_if_fail(ret, FALSE);
