@@ -161,6 +161,8 @@ dxf_lwpolyline_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (lwpolyline == NULL)
@@ -382,6 +384,8 @@ dxf_lwpolyline_read
         {
                 lwpolyline->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -418,6 +422,8 @@ dxf_lwpolyline_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (lwpolyline == NULL)
@@ -425,6 +431,8 @@ dxf_lwpolyline_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (fp->acad_version_number < AutoCAD_13)
@@ -545,6 +553,8 @@ dxf_lwpolyline_write
                 fprintf (fp->fp, "220\n%f\n", lwpolyline->extr_y0);
                 fprintf (fp->fp, "230\n%f\n", lwpolyline->extr_z0);
         }
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
