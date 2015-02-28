@@ -1,7 +1,7 @@
 /*!
  * \file mtext.h
  *
- * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF mtext entity (\c MTEXT).
  *
@@ -264,35 +264,24 @@ dxf_mtext_new ();
 DxfMtext *
 dxf_mtext_init
 (
-        DxfMtext *dxf_mtext
+        DxfMtext *mtext
 );
 DxfMtext *
 dxf_mtext_read
 (
         DxfFile *fp,
-        DxfMtext *dxf_mtext
+        DxfMtext *mtext
 );
 int
 dxf_mtext_write
 (
         DxfFile *fp,
-        DxfMtext *dxf_mtext
+        DxfMtext *mtext
 );
 int
 dxf_mtext_free
 (
-        DxfMtext *dxf_mtext
-);
-int
-dxf_mtext_write
-(
-        DxfFile *fp,
-        DxfMtext *dxf_mtext
-);
-int
-dxf_mtext_free
-(
-        DxfMtext *dxf_mtext
+        DxfMtext *mtext
 );
 
 
