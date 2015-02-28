@@ -1,7 +1,7 @@
 /*!
  * \file oleframe.h
  *
- * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF oleframe entity (\c OLEFRAME).
  *
@@ -116,24 +116,24 @@ dxf_oleframe_new ();
 DxfOleFrame *
 dxf_oleframe_init
 (
-        DxfOleFrame *dxf_oleframe
+        DxfOleFrame *oleframe
 );
 DxfOleFrame *
 dxf_oleframe_read
 (
         DxfFile *fp,
-        DxfOleFrame *dxf_oleframe
+        DxfOleFrame *oleframe
 );
 int
 dxf_oleframe_write
 (
         DxfFile *fp,
-        DxfOleFrame *dxf_oleframe
+        DxfOleFrame *oleframe
 );
 int
 dxf_oleframe_free
 (
-        DxfOleFrame *dxf_oleframe
+        DxfOleFrame *oleframe
 );
 
 

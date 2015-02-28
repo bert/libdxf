@@ -49,27 +49,27 @@ dxf_oleframe_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfOleFrame *dxf_oleframe = NULL;
+        DxfOleFrame *oleframe = NULL;
         size_t size;
 
         size = sizeof (DxfOleFrame);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_oleframe = malloc (size)) == NULL)
+        if ((oleframe = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfOleFrame struct.\n")),
                   __FUNCTION__);
-                dxf_oleframe = NULL;
+                oleframe = NULL;
         }
         else
         {
-                memset (dxf_oleframe, 0, size);
+                memset (oleframe, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_oleframe);
+        return (oleframe);
 }
 
 
@@ -86,7 +86,7 @@ dxf_oleframe_new ()
 DxfOleFrame *
 dxf_oleframe_init
 (
-        DxfOleFrame *dxf_oleframe
+        DxfOleFrame *oleframe
                 /*!< DXF \c OLEFRAME entity. */
 )
 {
@@ -96,42 +96,42 @@ dxf_oleframe_init
         int i;
 
         /* Do some basic checks. */
-        if (dxf_oleframe == NULL)
+        if (oleframe == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_oleframe = dxf_oleframe_new ();
+                oleframe = dxf_oleframe_new ();
         }
-        if (dxf_oleframe == NULL)
+        if (oleframe == NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () could not allocate memory for a DxfOleFrame struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_oleframe->id_code = 0;
-        dxf_oleframe->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_oleframe->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_oleframe->elevation = 0.0;
-        dxf_oleframe->thickness = 0.0;
-        dxf_oleframe->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        dxf_oleframe->visibility = DXF_DEFAULT_VISIBILITY;
-        dxf_oleframe->color = DXF_COLOR_BYLAYER;
-        dxf_oleframe->paperspace = DXF_MODELSPACE;
-        dxf_oleframe->dictionary_owner_soft = strdup ("");
-        dxf_oleframe->dictionary_owner_hard = strdup ("");
-        dxf_oleframe->ole_version_number = 1;
-        dxf_oleframe->length = 0;
+        oleframe->id_code = 0;
+        oleframe->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        oleframe->layer = strdup (DXF_DEFAULT_LAYER);
+        oleframe->elevation = 0.0;
+        oleframe->thickness = 0.0;
+        oleframe->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        oleframe->visibility = DXF_DEFAULT_VISIBILITY;
+        oleframe->color = DXF_COLOR_BYLAYER;
+        oleframe->paperspace = DXF_MODELSPACE;
+        oleframe->dictionary_owner_soft = strdup ("");
+        oleframe->dictionary_owner_hard = strdup ("");
+        oleframe->ole_version_number = 1;
+        oleframe->length = 0;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                dxf_oleframe->binary_data[i] = strdup ("");
+                oleframe->binary_data[i] = strdup ("");
         }
-        dxf_oleframe->next = NULL;
+        oleframe->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_oleframe);
+        return (oleframe);
 }
 
 
@@ -142,9 +142,9 @@ dxf_oleframe_init
  * Now follows some data for the \c OLEFRAME, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
- * While parsing the DXF file store data in \c dxf_oleframe. \n
+ * While parsing the DXF file store data in \c oleframe. \n
  *
- * \return a pointer to \c dxf_oleframe.
+ * \return a pointer to \c oleframe.
  *
  * \version According to DXF R13.
  * \version According to DXF R14.
@@ -154,7 +154,7 @@ dxf_oleframe_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfOleFrame *dxf_oleframe
+        DxfOleFrame *oleframe
                 /*!< DXF \c OLEFRAME entity. */
 )
 {
@@ -172,13 +172,13 @@ dxf_oleframe_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_oleframe == NULL)
+        if (oleframe == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_oleframe = dxf_oleframe_new ();
-                dxf_oleframe = dxf_oleframe_init (dxf_oleframe);
+                oleframe = dxf_oleframe_new ();
+                oleframe = dxf_oleframe_init (oleframe);
         }
         i = 0;
         (fp->line_number)++;
@@ -211,78 +211,78 @@ dxf_oleframe_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_oleframe->id_code);
+                        fscanf (fp->fp, "%x\n", &oleframe->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_oleframe->linetype);
+                        fscanf (fp->fp, "%s\n", oleframe->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_oleframe->layer);
+                        fscanf (fp->fp, "%s\n", oleframe->layer);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_oleframe->elevation != 0.0))
+                        && (oleframe->elevation != 0.0))
                 {
                         /* Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_oleframe->elevation);
+                        fscanf (fp->fp, "%lf\n", &oleframe->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_oleframe->thickness);
+                        fscanf (fp->fp, "%lf\n", &oleframe->thickness);
                 }
                 else if (strcmp (temp_string, "48") == 0)
                 {
                         /* Now follows a string containing the linetype
                          * scale. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_oleframe->linetype_scale);
+                        fscanf (fp->fp, "%lf\n", &oleframe->linetype_scale);
                 }
                 else if (strcmp (temp_string, "60") == 0)
                 {
                         /* Now follows a string containing the
                          * visibility value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%hd\n", &dxf_oleframe->visibility);
+                        fscanf (fp->fp, "%hd\n", &oleframe->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_oleframe->color);
+                        fscanf (fp->fp, "%d\n", &oleframe->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_oleframe->paperspace);
+                        fscanf (fp->fp, "%d\n", &oleframe->paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the ole
                          * version number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_oleframe->ole_version_number);
+                        fscanf (fp->fp, "%d\n", &oleframe->ole_version_number);
                 }
                 else if (strcmp (temp_string, "90") == 0)
                 {
                         /* Now follows a string containing the length of
                          * binary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%ld\n", &dxf_oleframe->length);
+                        fscanf (fp->fp, "%ld\n", &oleframe->length);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -303,7 +303,7 @@ dxf_oleframe_read
                 {
                         /* Now follows a string containing binary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_oleframe->binary_data[i]);
+                        fscanf (fp->fp, "%s\n", oleframe->binary_data[i]);
                         i++;
                 }
                 else if (strcmp (temp_string, "330") == 0)
@@ -311,14 +311,14 @@ dxf_oleframe_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_oleframe->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", oleframe->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_oleframe->dictionary_owner_hard);
+                        fscanf (fp->fp, "%s\n", oleframe->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -335,18 +335,18 @@ dxf_oleframe_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_oleframe->linetype, "") == 0)
+        if (strcmp (oleframe->linetype, "") == 0)
         {
-                dxf_oleframe->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                oleframe->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_oleframe->layer, "") == 0)
+        if (strcmp (oleframe->layer, "") == 0)
         {
-                dxf_oleframe->layer = strdup (DXF_DEFAULT_LAYER);
+                oleframe->layer = strdup (DXF_DEFAULT_LAYER);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_oleframe);
+        return (oleframe);
 }
 
 
@@ -364,7 +364,7 @@ dxf_oleframe_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfOleFrame *dxf_oleframe
+        DxfOleFrame *oleframe
                 /*!< DXF \c OLEFRAME entity. */
 )
 {
@@ -389,38 +389,38 @@ dxf_oleframe_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_oleframe == NULL)
+        if (oleframe == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_oleframe->linetype, "") == 0)
+        if (strcmp (oleframe->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_oleframe->id_code);
+                  __FUNCTION__, dxf_entity_name, oleframe->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_oleframe->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                oleframe->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_oleframe->layer, "") == 0)
+        if (strcmp (oleframe->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_oleframe->id_code);
+                  __FUNCTION__, dxf_entity_name, oleframe->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
-                dxf_oleframe->layer = strdup (DXF_DEFAULT_LAYER);
+                oleframe->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_oleframe->id_code != -1)
+        if (oleframe->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_oleframe->id_code);
+                fprintf (fp->fp, "  5\n%x\n", oleframe->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -432,65 +432,65 @@ dxf_oleframe_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_oleframe->dictionary_owner_soft, "") != 0)
+        if ((strcmp (oleframe->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_oleframe->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", oleframe->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_oleframe->dictionary_owner_hard, "") != 0)
+        if ((strcmp (oleframe->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_oleframe->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", oleframe->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_oleframe->paperspace == DXF_PAPERSPACE)
+        if (oleframe->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_oleframe->layer);
-        if (strcmp (dxf_oleframe->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", oleframe->layer);
+        if (strcmp (oleframe->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_oleframe->linetype);
+                fprintf (fp->fp, "  6\n%s\n", oleframe->linetype);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_oleframe->elevation != 0.0))
+          && (oleframe->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_oleframe->elevation);
+                fprintf (fp->fp, " 38\n%f\n", oleframe->elevation);
         }
-        if (dxf_oleframe->color != DXF_COLOR_BYLAYER)
+        if (oleframe->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_oleframe->color);
+                fprintf (fp->fp, " 62\n%d\n", oleframe->color);
         }
-        if (dxf_oleframe->linetype_scale != 1.0)
+        if (oleframe->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_oleframe->linetype_scale);
+                fprintf (fp->fp, " 48\n%f\n", oleframe->linetype_scale);
         }
-        if (dxf_oleframe->visibility != 0)
+        if (oleframe->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_oleframe->visibility);
+                fprintf (fp->fp, " 60\n%d\n", oleframe->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbOleFrame\n");
         }
-        if (dxf_oleframe->thickness != 0.0)
+        if (oleframe->thickness != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_oleframe->thickness);
+                fprintf (fp->fp, " 39\n%f\n", oleframe->thickness);
         }
-        fprintf (fp->fp, " 70\n%d\n", dxf_oleframe->ole_version_number);
-        fprintf (fp->fp, " 90\n%ld\n", dxf_oleframe->length);
+        fprintf (fp->fp, " 70\n%d\n", oleframe->ole_version_number);
+        fprintf (fp->fp, " 90\n%ld\n", oleframe->length);
         i = 0;
-        while (strlen (dxf_oleframe->binary_data[i]) > 0)
+        while (strlen (oleframe->binary_data[i]) > 0)
         {
-                fprintf (fp->fp, "310\n%s\n", dxf_oleframe->binary_data[i]);
+                fprintf (fp->fp, "310\n%s\n", oleframe->binary_data[i]);
                 i++;
         }
         fprintf (fp->fp, "  1\nOLE\n");
@@ -514,7 +514,7 @@ dxf_oleframe_write
 int
 dxf_oleframe_free
 (
-        DxfOleFrame *dxf_oleframe
+        DxfOleFrame *oleframe
                 /*!< Pointer to the memory occupied by the DXF
                  * \c OLEFRAME entity. */
 )
@@ -524,23 +524,23 @@ dxf_oleframe_free
 #endif
         int i;
 
-        if (dxf_oleframe->next != NULL)
+        if (oleframe->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfOleFrame was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_oleframe->linetype);
-        free (dxf_oleframe->layer);
-        free (dxf_oleframe->dictionary_owner_soft);
-        free (dxf_oleframe->dictionary_owner_hard);
+        free (oleframe->linetype);
+        free (oleframe->layer);
+        free (oleframe->dictionary_owner_soft);
+        free (oleframe->dictionary_owner_hard);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                free (dxf_oleframe->binary_data[i]);
+                free (oleframe->binary_data[i]);
         }
-        free (dxf_oleframe);
-        dxf_oleframe = NULL;
+        free (oleframe);
+        oleframe = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
