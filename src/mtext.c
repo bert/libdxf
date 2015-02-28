@@ -204,6 +204,8 @@ dxf_mtext_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (mtext == NULL)
@@ -224,6 +226,8 @@ dxf_mtext_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "1") == 0)
@@ -499,6 +503,8 @@ dxf_mtext_read
         {
                 mtext->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -539,6 +545,8 @@ dxf_mtext_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (fp->acad_version_number < AutoCAD_13)
@@ -552,6 +560,8 @@ dxf_mtext_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (mtext->linetype, "") == 0)
@@ -674,6 +684,8 @@ dxf_mtext_write
         fprintf (fp->fp, " 42\n%f\n", mtext->horizontal_width);
         fprintf (fp->fp, " 43\n%f\n", mtext->rectangle_height);
         fprintf (fp->fp, " 50\n%f\n", mtext->rot_angle);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
