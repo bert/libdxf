@@ -39,6 +39,15 @@
 #include "global.h"
 
 
+/*!
+ * \brief DXF definition of an AutoCAD mtext entity (\c MTEXT).
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
 typedef struct
 dxf_mtext
 {
@@ -56,6 +65,11 @@ dxf_mtext
                 /*!< Layer on which the entity is drawn.\n
                  * Defaults to layer "0" if no valid layername is given.\n
                  * Group code = 8. */
+        double elevation;
+                /*!< Elevation of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default).\n
+                 * Group code = 38. */
         double thickness;
                 /*!< Thickness of the arc in the local Z-direction.\n
                  * Defaults to 0.0 if ommitted in the DXF file.\n

@@ -40,6 +40,9 @@
  *
  * Fill the memory contents with zeros.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -79,6 +82,9 @@ dxf_mtext_new ()
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -124,6 +130,8 @@ dxf_mtext_init
         mtext->x1 = 0.0;
         mtext->y1 = 0.0;
         mtext->z1 = 0.0;
+        mtext->elevation = 0.0;
+        mtext->thickness = 0.0;
         mtext->height = 0.0;
         mtext->rectangle_width = 0.0;
         mtext->horizontal_width = 0.0;
@@ -170,6 +178,9 @@ dxf_mtext_init
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -276,6 +287,22 @@ dxf_mtext_read
                          * Z-coordinate of the insertion point. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &mtext->z0);
+                }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                  && DXF_FLATLAND
+                  && (strcmp (temp_string, "38") == 0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mtext->elevation);
+                }
+                else if (strcmp (temp_string, "39") == 0)
+                {
+                        /* Now follows a string containing the
+                         * thickness. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mtext->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
@@ -485,6 +512,9 @@ dxf_mtext_read
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -514,9 +544,8 @@ dxf_mtext_write
         if (fp->acad_version_number < AutoCAD_13)
         {
                 fprintf (stderr,
-                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
         if (mtext == NULL)
         {
@@ -592,6 +621,16 @@ dxf_mtext_write
         {
                 fprintf (fp->fp, " 62\n%d\n", mtext->color);
         }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (mtext->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", mtext->elevation);
+        }
+        if (mtext->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", mtext->thickness);
+        }
         if (mtext->linetype_scale != 1.0)
         {
                 fprintf (fp->fp, " 48\n%f\n", mtext->linetype_scale);
@@ -649,6 +688,9 @@ dxf_mtext_write
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
