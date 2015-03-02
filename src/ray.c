@@ -181,6 +181,8 @@ dxf_ray_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (ray == NULL)
@@ -201,6 +203,8 @@ dxf_ray_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -361,6 +365,8 @@ dxf_ray_read
         {
                 ray->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -400,6 +406,8 @@ dxf_ray_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (fp->acad_version_number < AutoCAD_13)
@@ -407,6 +415,8 @@ dxf_ray_write
                 fprintf (stderr,
                   (_("Error in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (ray == NULL)
@@ -414,6 +424,8 @@ dxf_ray_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if ((ray->x0 == ray->x1)
@@ -424,6 +436,8 @@ dxf_ray_write
                   (_("Error in %s () start point and end point are identical for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, ray->id_code);
                 dxf_entity_skip (dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (ray->linetype, "") == 0)
@@ -521,6 +535,8 @@ dxf_ray_write
         fprintf (fp->fp, " 11\n%f\n", ray->x1);
         fprintf (fp->fp, " 21\n%f\n", ray->y1);
         fprintf (fp->fp, " 31\n%f\n", ray->z1);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
