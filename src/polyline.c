@@ -186,6 +186,8 @@ dxf_polyline_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (polyline == NULL)
@@ -206,6 +208,8 @@ dxf_polyline_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -425,6 +429,8 @@ dxf_polyline_read
         {
                 polyline->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -465,6 +471,8 @@ dxf_polyline_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (polyline == NULL)
@@ -472,6 +480,8 @@ dxf_polyline_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (polyline->x0 != 0.0)
@@ -479,6 +489,8 @@ dxf_polyline_write
                 fprintf (stderr,
                   (_("Error in %s () start point has an invalid X-value for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, polyline->id_code);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (polyline->y0 != 0.0)
@@ -486,6 +498,8 @@ dxf_polyline_write
                 fprintf (stderr,
                   (_("Error in %s () start point has an invalid Y-value for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, polyline->id_code);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (polyline->linetype, "") == 0)
@@ -513,6 +527,8 @@ dxf_polyline_write
                 fprintf (stderr,
                   (_("Error in %s () vertices follow flag has an invalid value for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, polyline->id_code);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         /* Start writing output. */
@@ -619,6 +635,8 @@ dxf_polyline_write
                 iter = (DxfVertex *) iter->next;
         }
         dxf_vertex_free (iter);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
