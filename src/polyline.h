@@ -1,7 +1,7 @@
 /*!
  * \file polyline.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF polyline entity (\c PLINE).
  *
@@ -230,24 +230,24 @@ dxf_polyline_new ();
 DxfPolyline *
 dxf_polyline_init
 (
-        DxfPolyline *dxf_polyline
+        DxfPolyline *polyline
 );
 DxfPolyline *
 dxf_polyline_read
 (
         DxfFile *fp,
-        DxfPolyline *dxf_polyline
+        DxfPolyline *polyline
 );
 int
 dxf_polyline_write
 (
         DxfFile *fp,
-        DxfPolyline *dxf_polyline
+        DxfPolyline *polyline
 );
 int
 dxf_polyline_free
 (
-        DxfPolyline *dxf_polyline
+        DxfPolyline *polyline
 );
 
 
