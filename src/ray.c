@@ -45,9 +45,9 @@
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -87,9 +87,9 @@ dxf_ray_new ()
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -155,9 +155,9 @@ dxf_ray_init
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -380,9 +380,9 @@ dxf_ray_read
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occured.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -410,15 +410,6 @@ dxf_ray_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (fp->acad_version_number < AutoCAD_13)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () illegal DXF version for this entity.\n")),
-                  __FUNCTION__);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
         if (ray == NULL)
         {
                 fprintf (stderr,
@@ -439,6 +430,12 @@ dxf_ray_write
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
         }
         if (strcmp (ray->linetype, "") == 0)
         {
@@ -551,9 +548,9 @@ dxf_ray_write
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
