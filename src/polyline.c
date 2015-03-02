@@ -502,6 +502,15 @@ dxf_polyline_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
+        if (polyline->vertices_follow != 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () vertices follow flag has an invalid value for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, polyline->id_code);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
         if (strcmp (polyline->linetype, "") == 0)
         {
                 fprintf (stderr,
@@ -521,15 +530,6 @@ dxf_polyline_write
                   (_("\t%s entity is relocated to layer 0\n")),
                   dxf_entity_name);
                 polyline->layer = strdup (DXF_DEFAULT_LAYER);
-        }
-        if (polyline->vertices_follow != 1)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () vertices follow flag has an invalid value for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, polyline->id_code);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
