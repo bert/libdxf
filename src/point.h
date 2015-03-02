@@ -1,7 +1,7 @@
 /*!
  * \file point.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF point entity (\c POINT).
  *
@@ -143,24 +143,24 @@ dxf_point_new ();
 DxfPoint *
 dxf_point_init
 (
-        DxfPoint *dxf_point
+        DxfPoint *point
 );
 DxfPoint *
 dxf_point_read
 (
         DxfFile *fp,
-        DxfPoint *dxf_point
+        DxfPoint *point
 );
 int
 dxf_point_write
 (
         DxfFile *fp,
-        DxfPoint *dxf_point
+        DxfPoint *point
 );
 int
 dxf_point_free
 (
-        DxfPoint *dxf_point
+        DxfPoint *point
 );
 
 
