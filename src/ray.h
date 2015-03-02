@@ -1,7 +1,7 @@
 /*!
  * \file ray.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF ray entity (\c RAY).
  *
@@ -130,24 +130,24 @@ dxf_ray_new ();
 DxfRay *
 dxf_ray_init
 (
-        DxfRay *dxf_ray
+        DxfRay *ray
 );
 DxfRay *
 dxf_ray_read
 (
         DxfFile *fp,
-        DxfRay *dxf_ray
+        DxfRay *ray
 );
 int
 dxf_ray_write
 (
         DxfFile *fp,
-        DxfRay *dxf_ray
+        DxfRay *ray
 );
 int
 dxf_ray_free
 (
-        DxfRay *dxf_ray
+        DxfRay *ray
 );
 
 
