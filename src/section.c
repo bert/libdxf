@@ -1,7 +1,7 @@
 /*!
  * \file section.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF section entity (\c SECTION).
  *
@@ -48,7 +48,7 @@ dxf_section_read
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char temp_string[DXF_MAX_STRING_LENGTH];
+        char *temp_string = NULL;
         DxfHeader dxf_header;
         DxfBlock dxf_block;
         char *dxf_entities_list = NULL;
@@ -59,6 +59,8 @@ dxf_section_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (EXIT_FAILURE);
         }
         dxf_read_line (temp_string, fp);
@@ -120,6 +122,8 @@ dxf_section_read
                   (_("Warning in %s () unexpected string encountered while reading line %d from: %s.\n")),
                   __FUNCTION__, fp->line_number, fp->filename);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
