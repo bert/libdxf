@@ -40,6 +40,9 @@
  *
  * Fill the memory contents with zeros.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -80,6 +83,9 @@ dxf_region_new ()
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -148,6 +154,9 @@ dxf_region_init
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -354,6 +363,9 @@ dxf_region_read
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred while reading from the input file.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -390,6 +402,12 @@ dxf_region_write
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, region->id_code);
         }
         if (strcmp (region->linetype, "") == 0)
         {
@@ -512,6 +530,9 @@ dxf_region_write
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */

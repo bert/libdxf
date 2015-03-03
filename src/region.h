@@ -42,6 +42,9 @@
 /*!
  * \brief DXF definition of an AutoCAD region entity (\c REGION).
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
