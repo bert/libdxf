@@ -1,7 +1,7 @@
 /*!
  * \file region.h
  *
- * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF region entity (\c REGION).
  *
@@ -123,24 +123,24 @@ dxf_region_new ();
 DxfRegion *
 dxf_region_init
 (
-        DxfRegion *dxf_region
+        DxfRegion *region
 );
 DxfRegion *
 dxf_region_read
 (
         DxfFile *fp,
-        DxfRegion *dxf_region
+        DxfRegion *region
 );
 int
 dxf_region_write
 (
         DxfFile *fp,
-        DxfRegion *dxf_region
+        DxfRegion *region
 );
 int
 dxf_region_free
 (
-        DxfRegion *dxf_region
+        DxfRegion *region
 );
 
 

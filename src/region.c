@@ -49,27 +49,27 @@ dxf_region_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfRegion *dxf_region = NULL;
+        DxfRegion *region = NULL;
         size_t size;
 
         size = sizeof (DxfRegion);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_region = malloc (size)) == NULL)
+        if ((region = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfRegion struct.\n")),
                   __FUNCTION__);
-                dxf_region = NULL;
+                region = NULL;
         }
         else
         {
-                memset (dxf_region, 0, size);
+                memset (region, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_region);
+        return (region);
 }
 
 
@@ -86,7 +86,7 @@ dxf_region_new ()
 DxfRegion *
 dxf_region_init
 (
-        DxfRegion *dxf_region
+        DxfRegion *region
                 /*!< DXF \c REGION entity. */
 )
 {
@@ -96,43 +96,43 @@ dxf_region_init
         int i;
 
         /* Do some basic checks. */
-        if (dxf_region == NULL)
+        if (region == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_region = dxf_region_new ();
+                region = dxf_region_new ();
         }
-        if (dxf_region == NULL)
+        if (region == NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () could not allocate memory for a DxfRegion struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_region->modeler_format_version_number = 0;
-        dxf_region->id_code = 0;
-        dxf_region->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_region->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_region->elevation = 0.0;
-        dxf_region->thickness = 0.0;
-        dxf_region->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        dxf_region->visibility = DXF_DEFAULT_VISIBILITY;
-        dxf_region->color = DXF_COLOR_BYLAYER;
-        dxf_region->paperspace = DXF_MODELSPACE;
-        dxf_region->modeler_format_version_number = 1;
+        region->modeler_format_version_number = 0;
+        region->id_code = 0;
+        region->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        region->layer = strdup (DXF_DEFAULT_LAYER);
+        region->elevation = 0.0;
+        region->thickness = 0.0;
+        region->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        region->visibility = DXF_DEFAULT_VISIBILITY;
+        region->color = DXF_COLOR_BYLAYER;
+        region->paperspace = DXF_MODELSPACE;
+        region->modeler_format_version_number = 1;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                dxf_region->proprietary_data[i] = strdup ("");
-                dxf_region->additional_proprietary_data[i] = strdup ("");
+                region->proprietary_data[i] = strdup ("");
+                region->additional_proprietary_data[i] = strdup ("");
         }
-        dxf_region->dictionary_owner_soft = strdup ("");
-        dxf_region->dictionary_owner_hard = strdup ("");
-        dxf_region->next = NULL;
+        region->dictionary_owner_soft = strdup ("");
+        region->dictionary_owner_hard = strdup ("");
+        region->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_region);
+        return (region);
 }
 
 
@@ -143,7 +143,7 @@ dxf_region_init
  * Now follows some data for the \c REGION, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
- * While parsing the DXF file store data in \c dxf_region. \n
+ * While parsing the DXF file store data in \c region. \n
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -156,7 +156,7 @@ dxf_region_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfRegion *dxf_region
+        DxfRegion *region
                 /*!< DXF \c REGION entity. */
 )
 {
@@ -177,13 +177,13 @@ dxf_region_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_region == NULL)
+        if (region == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_region = dxf_region_new ();
-                dxf_region = dxf_region_init (dxf_region);
+                region = dxf_region_new ();
+                region = dxf_region_init (region);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -202,7 +202,7 @@ dxf_region_read
                         /* Now follows a string containing proprietary
                          * data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_region->proprietary_data[i]);
+                        fscanf (fp->fp, "%s\n", region->proprietary_data[i]);
                         i++;
                 }
                 else if (strcmp (temp_string, "  3") == 0)
@@ -210,7 +210,7 @@ dxf_region_read
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_region->additional_proprietary_data[j]);
+                        fscanf (fp->fp, "%s\n", region->additional_proprietary_data[j]);
                         i++;
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -218,64 +218,64 @@ dxf_region_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_region->id_code);
+                        fscanf (fp->fp, "%x\n", &region->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_region->linetype);
+                        fscanf (fp->fp, "%s\n", region->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_region->layer);
+                        fscanf (fp->fp, "%s\n", region->layer);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_region->elevation != 0.0))
+                        && (region->elevation != 0.0))
                 {
                         /* Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_region->elevation);
+                        fscanf (fp->fp, "%lf\n", &region->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_region->thickness);
+                        fscanf (fp->fp, "%lf\n", &region->thickness);
                 }
                 else if (strcmp (temp_string, "48") == 0)
                 {
                         /* Now follows a string containing the linetype
                          * scale. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_region->linetype_scale);
+                        fscanf (fp->fp, "%lf\n", &region->linetype_scale);
                 }
                 else if (strcmp (temp_string, "60") == 0)
                 {
                         /* Now follows a string containing the
                          * visibility value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%hd\n", &dxf_region->visibility);
+                        fscanf (fp->fp, "%hd\n", &region->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_region->color);
+                        fscanf (fp->fp, "%d\n", &region->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_region->paperspace);
+                        fscanf (fp->fp, "%d\n", &region->paperspace);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "70") == 0))
@@ -283,7 +283,7 @@ dxf_region_read
                         /* Now follows a string containing the modeler
                          * format version number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_region->modeler_format_version_number);
+                        fscanf (fp->fp, "%d\n", &region->modeler_format_version_number);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -303,14 +303,14 @@ dxf_region_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_region->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", region->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_region->dictionary_owner_hard);
+                        fscanf (fp->fp, "%s\n", region->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -327,18 +327,18 @@ dxf_region_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_region->linetype, "") == 0)
+        if (strcmp (region->linetype, "") == 0)
         {
-                dxf_region->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                region->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_region->layer, "") == 0)
+        if (strcmp (region->layer, "") == 0)
         {
-                dxf_region->layer = strdup (DXF_DEFAULT_LAYER);
+                region->layer = strdup (DXF_DEFAULT_LAYER);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_region);
+        return (region);
 }
 
 
@@ -356,7 +356,7 @@ dxf_region_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfRegion *dxf_region
+        DxfRegion *region
                 /*!< DXF \c REGION entity. */
 )
 {
@@ -374,38 +374,38 @@ dxf_region_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_region == NULL)
+        if (region == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_region->linetype, "") == 0)
+        if (strcmp (region->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_region->id_code);
+                  __FUNCTION__, dxf_entity_name, region->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_region->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                region->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_region->layer, "") == 0)
+        if (strcmp (region->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_region->id_code);
+                  __FUNCTION__, dxf_entity_name, region->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
-                dxf_region->layer = strdup (DXF_DEFAULT_LAYER);
+                region->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_region->id_code != -1)
+        if (region->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_region->id_code);
+                fprintf (fp->fp, "  5\n%x\n", region->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -417,73 +417,73 @@ dxf_region_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_region->dictionary_owner_soft, "") != 0)
+        if ((strcmp (region->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_region->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", region->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_region->dictionary_owner_hard, "") != 0)
+        if ((strcmp (region->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_region->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", region->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_region->paperspace == DXF_PAPERSPACE)
+        if (region->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_region->layer);
-        if (strcmp (dxf_region->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", region->layer);
+        if (strcmp (region->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_region->linetype);
+                fprintf (fp->fp, "  6\n%s\n", region->linetype);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_region->elevation != 0.0))
+          && (region->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_region->elevation);
+                fprintf (fp->fp, " 38\n%f\n", region->elevation);
         }
-        if (dxf_region->color != DXF_COLOR_BYLAYER)
+        if (region->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_region->color);
+                fprintf (fp->fp, " 62\n%d\n", region->color);
         }
-        if (dxf_region->linetype_scale != 1.0)
+        if (region->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_region->linetype_scale);
+                fprintf (fp->fp, " 48\n%f\n", region->linetype_scale);
         }
-        if (dxf_region->visibility != 0)
+        if (region->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_region->visibility);
+                fprintf (fp->fp, " 60\n%d\n", region->visibility);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbModelerGeometry\n");
         }
-        if (dxf_region->thickness != 0.0)
+        if (region->thickness != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_region->thickness);
+                fprintf (fp->fp, " 39\n%f\n", region->thickness);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp->fp, " 70\n%d\n", dxf_region->modeler_format_version_number);
+                fprintf (fp->fp, " 70\n%d\n", region->modeler_format_version_number);
         }
         i = 0;
-        while (strlen (dxf_region->proprietary_data[i]) > 0)
+        while (strlen (region->proprietary_data[i]) > 0)
         {
-                fprintf (fp->fp, "  1\n%s\n", dxf_region->proprietary_data[i]);
+                fprintf (fp->fp, "  1\n%s\n", region->proprietary_data[i]);
                 i++;
         }
         i = 0;
-        while (strlen (dxf_region->additional_proprietary_data[i]) > 0)
+        while (strlen (region->additional_proprietary_data[i]) > 0)
         {
-                fprintf (fp->fp, "  3\n%s\n", dxf_region->additional_proprietary_data[i]);
+                fprintf (fp->fp, "  3\n%s\n", region->additional_proprietary_data[i]);
                 i++;
         }
 #if DEBUG
@@ -506,7 +506,7 @@ dxf_region_write
 int
 dxf_region_free
 (
-        DxfRegion *dxf_region
+        DxfRegion *region
                 /*!< Pointer to the memory occupied by the DXF
                  * \c REGION entity. */
 )
@@ -516,24 +516,24 @@ dxf_region_free
 #endif
         int i;
 
-        if (dxf_region->next != NULL)
+        if (region->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfRegion was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_region->linetype);
-        free (dxf_region->layer);
+        free (region->linetype);
+        free (region->layer);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                free (dxf_region->proprietary_data[i]);
-                free (dxf_region->additional_proprietary_data[i]);
+                free (region->proprietary_data[i]);
+                free (region->additional_proprietary_data[i]);
         }
-        free (dxf_region->dictionary_owner_soft);
-        free (dxf_region->dictionary_owner_hard);
-        free (dxf_region);
-        dxf_region = NULL;
+        free (region->dictionary_owner_soft);
+        free (region->dictionary_owner_hard);
+        free (region);
+        region = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
