@@ -175,6 +175,8 @@ dxf_region_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (region == NULL)
@@ -195,6 +197,8 @@ dxf_region_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 else if (strcmp (temp_string, "  1") == 0)
@@ -335,6 +339,8 @@ dxf_region_read
         {
                 region->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -372,6 +378,8 @@ dxf_region_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (region == NULL)
@@ -379,6 +387,8 @@ dxf_region_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (region->linetype, "") == 0)
@@ -486,6 +496,8 @@ dxf_region_write
                 fprintf (fp->fp, "  3\n%s\n", region->additional_proprietary_data[i]);
                 i++;
         }
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
