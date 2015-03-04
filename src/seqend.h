@@ -1,7 +1,7 @@
 /*!
  * \file seqend.h
  *
- * \author Copyright (C) 2010 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF end of sequence marker (\c SEQEND).
  *
@@ -119,24 +119,24 @@ dxf_seqend_new ();
 DxfSeqend *
 dxf_seqend_init
 (
-        DxfSeqend *dxf_seqend
+        DxfSeqend *seqend
 );
 DxfSeqend *
 dxf_seqend_read
 (
         DxfFile *fp,
-        DxfSeqend *dxf_seqend
+        DxfSeqend *seqend
 );
 int
 dxf_seqend_write
 (
         DxfFile *fp,
-        DxfSeqend *dxf_seqend
+        DxfSeqend *seqend
 );
 int
 dxf_seqend_free
 (
-        DxfSeqend *dxf_seqend
+        DxfSeqend *seqend
 );
 
 
