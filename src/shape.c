@@ -184,6 +184,8 @@ dxf_shape_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (shape == NULL)
@@ -204,6 +206,8 @@ dxf_shape_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "2") == 0)
@@ -406,6 +410,8 @@ dxf_shape_read
         {
                 shape->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -446,6 +452,8 @@ dxf_shape_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (shape == NULL)
@@ -453,6 +461,8 @@ dxf_shape_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (shape->shape_name, "") == 0)
@@ -460,6 +470,8 @@ dxf_shape_write
                 fprintf (stderr,
                   (_("Error in %s () empty name string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, shape->id_code);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (shape->linetype, "") == 0)
@@ -589,6 +601,8 @@ dxf_shape_write
                 fprintf (fp->fp, "220\n%f\n", shape->extr_y0);
                 fprintf (fp->fp, "230\n%f\n", shape->extr_z0);
         }
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
