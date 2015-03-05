@@ -1,7 +1,7 @@
 /*!
  * \file solid.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF solid entity (\c SOLID).
  *
@@ -173,24 +173,24 @@ dxf_solid_new ();
 DxfSolid *
 dxf_solid_init
 (
-        DxfSolid *dxf_solid
+        DxfSolid *solid
 );
 DxfSolid *
 dxf_solid_read
 (
         DxfFile *fp,
-        DxfSolid *dxf_solid
+        DxfSolid *solid
 );
 int
 dxf_solid_write
 (
         DxfFile *fp,
-        DxfSolid *dxf_solid
+        DxfSolid *solid
 );
 int
 dxf_solid_free
 (
-        DxfSolid *dxf_solid
+        DxfSolid *solid
 );
 
 
