@@ -1,7 +1,7 @@
 /*!
  * \file spline.h
  *
- * \author Copyright (C) 2013 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF spline entity (\c SPLINE).
  *
@@ -267,24 +267,24 @@ dxf_spline_new ();
 DxfSpline *
 dxf_spline_init
 (
-        DxfSpline *dxf_spline
+        DxfSpline *spline
 );
 DxfSpline *
 dxf_spline_read
 (
         DxfFile *fp,
-        DxfSpline *dxf_spline
+        DxfSpline *spline
 );
 int
 dxf_spline_write
 (
         DxfFile *fp,
-        DxfSpline *dxf_spline
+        DxfSpline *spline
 );
 int
 dxf_spline_free
 (
-        DxfSpline *dxf_spline
+        DxfSpline *spline
 );
 
 
