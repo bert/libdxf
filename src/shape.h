@@ -1,7 +1,7 @@
 /*!
  * \file shape.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF shape entity (\c SHAPE).
  *
@@ -150,24 +150,24 @@ dxf_shape_new ();
 DxfShape *
 dxf_shape_init
 (
-        DxfShape *dxf_shape
+        DxfShape *shape
 );
 DxfShape *
 dxf_shape_read
 (
         DxfFile *fp,
-        DxfShape *dxf_shape
+        DxfShape *shape
 );
 int
 dxf_shape_write
 (
         DxfFile *fp,
-        DxfShape *dxf_shape
+        DxfShape *shape
 );
 int
 dxf_shape_free
 (
-        DxfShape *dxf_shape
+        DxfShape *shape
 );
 
 
