@@ -791,6 +791,9 @@ dxf_spline_read
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -819,15 +822,6 @@ dxf_spline_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (fp->acad_version_number < AutoCAD_13)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () illegal DXF version for this entity.\n")),
-                  __FUNCTION__);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
         if (spline == NULL)
         {
                 fprintf (stderr,
@@ -836,6 +830,12 @@ dxf_spline_write
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_13)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
         }
         if (strcmp (spline->linetype, "") == 0)
         {
