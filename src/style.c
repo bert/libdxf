@@ -480,7 +480,7 @@ dxf_style_free
  * \brief Test if a shape file should be loaded.
  *
  * \return \c TRUE when a shape file should be loaded,
- * or \c FALSE when not.
+ * or \c FALSE when not, or (-1) when an error occured.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -506,7 +506,7 @@ dxf_style_is_shape_file
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = DXF_CHECK_BIT (style->flag, 0);
 #if DEBUG
@@ -520,7 +520,8 @@ dxf_style_is_shape_file
  * \brief Test if a shape text is vertically oriented.
  *
  * \return \c TRUE when vertical oriented,
- * or \c FALSE when not vertically oriented.
+ * or \c FALSE when not vertically oriented, or (-1) when an error
+ * occured.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -546,7 +547,7 @@ dxf_style_is_text_vertical
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = DXF_CHECK_BIT (style->flag, 2);
 #if DEBUG
@@ -560,7 +561,8 @@ dxf_style_is_text_vertical
  * \brief Test if style is externally dependent on an xref.
  *
  * \return \c TRUE when style is externally dependent on an xref,
- * or \c FALSE when style is not externally dependent on an xref.
+ * or \c FALSE when style is not externally dependent on an xref,
+ * or (-1) when an error occured.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -586,7 +588,7 @@ dxf_style_is_xreferenced
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = DXF_CHECK_BIT (style->flag, 4);
 #if DEBUG
@@ -603,7 +605,7 @@ dxf_style_is_xreferenced
  * \return \c TRUE when style is externally dependent on a xref and has
  * been successfully resolved,
  * or \c FALSE when style is not externally dependent on a xref and has
- * not been successfully resolved.
+ * not been successfully resolved, or (-1) when an error occured.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -629,7 +631,7 @@ dxf_style_is_xresolved
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = ((DXF_CHECK_BIT (style->flag, 4))
           && (DXF_CHECK_BIT (style->flag, 5)));
@@ -644,7 +646,8 @@ dxf_style_is_xresolved
  * \brief Test if style is internally referenced by an entity.
  *
  * \return \c TRUE when style is internally referenced by an entity,
- * or \c FALSE when style is not internally referenced by an entity.
+ * or \c FALSE when style is not internally referenced by an entity,
+ * or (-1) when an error occured.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -670,7 +673,7 @@ dxf_style_is_referenced
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (-1);
         }
         result = DXF_CHECK_BIT (style->flag, 6);
 #if DEBUG
