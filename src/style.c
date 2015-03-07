@@ -172,6 +172,8 @@ dxf_style_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (style == NULL)
@@ -192,6 +194,8 @@ dxf_style_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -322,6 +326,8 @@ dxf_style_read
                   (_("Warning in %s () illegal primary font filename value found while reading from: %s in line: %d.\n")),
                   __FUNCTION__, fp->filename, fp->line_number);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -361,6 +367,8 @@ dxf_style_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (style == NULL)
@@ -368,6 +376,8 @@ dxf_style_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         /* Start writing output. */
@@ -414,6 +424,8 @@ dxf_style_write
         fprintf (fp->fp, " 42\n%f\n", style->last_height);
         fprintf (fp->fp, "  3\n%s\n", style->primary_font_filename);
         fprintf (fp->fp, "  4\n%s\n", style->big_font_filename);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
