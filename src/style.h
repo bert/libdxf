@@ -1,7 +1,7 @@
 /*!
  * \file style.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF (text) style entity \c STYLE.
  *
@@ -127,49 +127,49 @@ dxf_style_new ();
 DxfStyle *
 dxf_style_init
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
 );
 DxfStyle *
 dxf_style_read
 (
         DxfFile *fp,
-        DxfStyle *dxf_style
+        DxfStyle *style
 );
 int
 dxf_style_write
 (
         DxfFile *fp,
-        DxfStyle *dxf_style
+        DxfStyle *style
 );
 int
 dxf_style_free
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
 );
 int
 dxf_style_is_shape_file
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
 );
 int
 dxf_style_is_text_vertical
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
 );
 int
 dxf_style_is_xreferenced
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
 );
 int
 dxf_style_is_xresolved
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
 );
 int
 dxf_style_is_referenced
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
 );
 
 

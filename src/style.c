@@ -55,27 +55,27 @@ dxf_style_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfStyle *dxf_style = NULL;
+        DxfStyle *style = NULL;
         size_t size;
 
         size = sizeof (DxfStyle);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_style = malloc (size)) == NULL)
+        if ((style = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfStyle struct.\n")),
                   __FUNCTION__);
-                dxf_style = NULL;
+                style = NULL;
         }
         else
         {
-                memset (dxf_style, 0, size);
+                memset (style, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_style);
+        return (style);
 }
 
 
@@ -95,7 +95,7 @@ dxf_style_new ()
 DxfStyle *
 dxf_style_init
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
                 /*!< DXF style entity. */
 )
 {
@@ -103,35 +103,35 @@ dxf_style_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_style == NULL)
+        if (style == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_style = dxf_style_new ();
+                style = dxf_style_new ();
         }
-        if (dxf_style == NULL)
+        if (style == NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () could not allocate memory for a DxfStyle struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_style->id_code = 0;
-        dxf_style->style_name = strdup ("");
-        dxf_style->primary_font_filename = strdup ("");
-        dxf_style->big_font_filename = strdup ("");
-        dxf_style->height = 0.0;
-        dxf_style->width = 0.0;
-        dxf_style->last_height = 0.0;
-        dxf_style->oblique_angle = 0.0;
-        dxf_style->flag = 0;
-        dxf_style->text_generation_flag = 0;
-        dxf_style->next = NULL;
+        style->id_code = 0;
+        style->style_name = strdup ("");
+        style->primary_font_filename = strdup ("");
+        style->big_font_filename = strdup ("");
+        style->height = 0.0;
+        style->width = 0.0;
+        style->last_height = 0.0;
+        style->oblique_angle = 0.0;
+        style->flag = 0;
+        style->text_generation_flag = 0;
+        style->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_style);
+        return (style);
 }
 
 
@@ -142,9 +142,9 @@ dxf_style_init
  * Now follows some data for the \c STYLE, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c TABLES
  * section marker \c ENDTAB. \n
- * While parsing the DXF file store data in \c dxf_style. \n
+ * While parsing the DXF file store data in \c style. \n
  *
- * \return a pointer to \c dxf_style.
+ * \return a pointer to \c style.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -157,7 +157,7 @@ dxf_style_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfStyle *dxf_style
+        DxfStyle *style
                 /*!< DXF \c STYLE entity. */
 )
 {
@@ -174,13 +174,13 @@ dxf_style_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_style == NULL)
+        if (style == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_style = dxf_style_new ();
-                dxf_style = dxf_style_init (dxf_style);
+                style = dxf_style_new ();
+                style = dxf_style_init (style);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -199,69 +199,69 @@ dxf_style_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_style->id_code);
+                        fscanf (fp->fp, "%x\n", &style->id_code);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing a style name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_style->style_name);
+                        fscanf (fp->fp, "%s\n", style->style_name);
                 }
                 else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing a primary
                          * font filename. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_style->primary_font_filename);
+                        fscanf (fp->fp, "%s\n", style->primary_font_filename);
                 }
                 else if (strcmp (temp_string, "4") == 0)
                 {
                         /* Now follows a string containing a big font
                          * filename. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_style->big_font_filename);
+                        fscanf (fp->fp, "%s\n", style->big_font_filename);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
                          * height. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_style->height);
+                        fscanf (fp->fp, "%lf\n", &style->height);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a string containing the
                          * width. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_style->width);
+                        fscanf (fp->fp, "%lf\n", &style->width);
                 }
                 else if (strcmp (temp_string, "42") == 0)
                 {
                         /* Now follows a string containing the
                          * last used height. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_style->last_height);
+                        fscanf (fp->fp, "%lf\n", &style->last_height);
                 }
                 else if (strcmp (temp_string, "50") == 0)
                 {
                         /* Now follows a string containing the
                          * oblique angle. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_style->oblique_angle);
+                        fscanf (fp->fp, "%lf\n", &style->oblique_angle);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * standard flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_style->flag);
+                        fscanf (fp->fp, "%d\n", &style->flag);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a string containing the
                          * text generation flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_style->text_generation_flag);
+                        fscanf (fp->fp, "%d\n", &style->text_generation_flag);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -283,14 +283,14 @@ dxf_style_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_style->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", style->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_style->dictionary_owner_hard);
+                        fscanf (fp->fp, "%s\n", style->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -307,17 +307,17 @@ dxf_style_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_style->style_name, "") == 0)
+        if (strcmp (style->style_name, "") == 0)
         {
-                sprintf (dxf_style->style_name, "%i", dxf_style->id_code);
+                sprintf (style->style_name, "%i", style->id_code);
                 fprintf (stderr,
                   (_("Warning in %s () illegal style name value found while reading from: %s in line: %d.\n")),
                   __FUNCTION__, fp->filename, fp->line_number);
         }
-        if ((strcmp (dxf_style->primary_font_filename, "") == 0)
-          && (dxf_style->flag == 1))
+        if ((strcmp (style->primary_font_filename, "") == 0)
+          && (style->flag == 1))
         {
-                sprintf (dxf_style->primary_font_filename, "%i", dxf_style->id_code);
+                sprintf (style->primary_font_filename, "%i", style->id_code);
                 fprintf (stderr,
                   (_("Warning in %s () illegal primary font filename value found while reading from: %s in line: %d.\n")),
                   __FUNCTION__, fp->filename, fp->line_number);
@@ -325,7 +325,7 @@ dxf_style_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_style);
+        return (style);
 }
 
 
@@ -346,7 +346,7 @@ dxf_style_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfStyle *dxf_style
+        DxfStyle *style
                 /*!< DXF \c STYLE entity. */
 )
 {
@@ -363,7 +363,7 @@ dxf_style_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_style == NULL)
+        if (style == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
@@ -372,9 +372,9 @@ dxf_style_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_style->id_code != -1)
+        if (style->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_style->id_code);
+                fprintf (fp->fp, "  5\n%x\n", style->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -386,18 +386,18 @@ dxf_style_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_style->dictionary_owner_soft, "") != 0)
+        if ((strcmp (style->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_style->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", style->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_style->dictionary_owner_hard, "") != 0)
+        if ((strcmp (style->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_style->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", style->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
@@ -405,15 +405,15 @@ dxf_style_write
                 fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
                 fprintf (fp->fp, "100\nAcDbTextStyleTableRecord\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", dxf_style->style_name);
-        fprintf (fp->fp, " 70\n%d\n", dxf_style->flag);
-        fprintf (fp->fp, " 40\n%f\n", dxf_style->height);
-        fprintf (fp->fp, " 41\n%f\n", dxf_style->width);
-        fprintf (fp->fp, " 50\n%f\n", dxf_style->oblique_angle);
-        fprintf (fp->fp, " 71\n%d\n", dxf_style->text_generation_flag);
-        fprintf (fp->fp, " 42\n%f\n", dxf_style->last_height);
-        fprintf (fp->fp, "  3\n%s\n", dxf_style->primary_font_filename);
-        fprintf (fp->fp, "  4\n%s\n", dxf_style->big_font_filename);
+        fprintf (fp->fp, "  2\n%s\n", style->style_name);
+        fprintf (fp->fp, " 70\n%d\n", style->flag);
+        fprintf (fp->fp, " 40\n%f\n", style->height);
+        fprintf (fp->fp, " 41\n%f\n", style->width);
+        fprintf (fp->fp, " 50\n%f\n", style->oblique_angle);
+        fprintf (fp->fp, " 71\n%d\n", style->text_generation_flag);
+        fprintf (fp->fp, " 42\n%f\n", style->last_height);
+        fprintf (fp->fp, "  3\n%s\n", style->primary_font_filename);
+        fprintf (fp->fp, "  4\n%s\n", style->big_font_filename);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -437,7 +437,7 @@ dxf_style_write
 int
 dxf_style_free
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
                 /*!< Pointer to the memory occupied by the DXF \c STYLE
                  * entity. */
 )
@@ -445,18 +445,18 @@ dxf_style_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_style->next != NULL)
+        if (style->next != NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () pointer to next DxfStyle was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (dxf_style->style_name);
-        free (dxf_style->primary_font_filename);
-        free (dxf_style->big_font_filename);
-        free (dxf_style);
-        dxf_style = NULL;
+        free (style->style_name);
+        free (style->primary_font_filename);
+        free (style->big_font_filename);
+        free (style);
+        style = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -479,7 +479,7 @@ dxf_style_free
 int
 dxf_style_is_shape_file
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
                 /*!< DXF style entity. */
 )
 {
@@ -489,14 +489,14 @@ dxf_style_is_shape_file
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_style == NULL)
+        if (style == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_style->flag, 0);
+        result = DXF_CHECK_BIT (style->flag, 0);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -519,7 +519,7 @@ dxf_style_is_shape_file
 int
 dxf_style_is_text_vertical
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
                 /*!< DXF style entity. */
 )
 {
@@ -529,14 +529,14 @@ dxf_style_is_text_vertical
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_style == NULL)
+        if (style == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_style->flag, 2);
+        result = DXF_CHECK_BIT (style->flag, 2);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -559,7 +559,7 @@ dxf_style_is_text_vertical
 int
 dxf_style_is_xreferenced
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
                 /*!< DXF style entity. */
 )
 {
@@ -569,14 +569,14 @@ dxf_style_is_xreferenced
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_style == NULL)
+        if (style == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_style->flag, 4);
+        result = DXF_CHECK_BIT (style->flag, 4);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -602,7 +602,7 @@ dxf_style_is_xreferenced
 int
 dxf_style_is_xresolved
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
                 /*!< DXF style entity. */
 )
 {
@@ -612,15 +612,15 @@ dxf_style_is_xresolved
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_style == NULL)
+        if (style == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ((DXF_CHECK_BIT (dxf_style->flag, 4))
-          && (DXF_CHECK_BIT (dxf_style->flag, 5)));
+        result = ((DXF_CHECK_BIT (style->flag, 4))
+          && (DXF_CHECK_BIT (style->flag, 5)));
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -643,7 +643,7 @@ dxf_style_is_xresolved
 int
 dxf_style_is_referenced
 (
-        DxfStyle *dxf_style
+        DxfStyle *style
                 /*!< DXF style entity. */
 )
 {
@@ -653,14 +653,14 @@ dxf_style_is_referenced
         int result = FALSE;
 
         /* Do some basic checks. */
-        if (dxf_style == NULL)
+        if (style == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (dxf_style->flag, 6);
+        result = DXF_CHECK_BIT (style->flag, 6);
 #if DEBUG
         DXF_DEBUG_END
 #endif
