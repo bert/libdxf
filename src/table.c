@@ -164,6 +164,8 @@ dxf_table_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (table == NULL)
@@ -184,6 +186,8 @@ dxf_table_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -221,6 +225,8 @@ dxf_table_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -260,6 +266,8 @@ dxf_table_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (table == NULL)
@@ -267,6 +275,8 @@ dxf_table_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         /* Start writing output. */
@@ -281,6 +291,8 @@ dxf_table_write
                 fprintf (fp->fp, "100\nAcDbSymbolTable\n");
         }
         fprintf (fp->fp, " 70\n%d\n", table->max_table_entries);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
