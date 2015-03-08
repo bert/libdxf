@@ -90,18 +90,18 @@ dxf_tables_new ();
 DxfTables *
 dxf_tables_init
 (
-        DxfTables *dxf_tables
+        DxfTables *tables
 );
 int
 dxf_tables_write
 (
         DxfFile *fp,
-        DxfTables *dxf_tables
+        DxfTables *tables
 );
 int
 dxf_tables_free
 (
-        DxfTables *dxf_tables
+        DxfTables *tables
 );
 
 

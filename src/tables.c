@@ -50,27 +50,27 @@ dxf_tables_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfTables *dxf_tables = NULL;
+        DxfTables *tables = NULL;
         size_t size;
 
         size = sizeof (DxfTables);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_tables = malloc (size)) == NULL)
+        if ((tables = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfTables struct.\n")),
                   __FUNCTION__);
-                dxf_tables = NULL;
+                tables = NULL;
         }
         else
         {
-                memset (dxf_tables, 0, size);
+                memset (tables, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_tables);
+        return (tables);
 }
 
 
@@ -84,7 +84,7 @@ dxf_tables_new ()
 DxfTables *
 dxf_tables_init
 (
-        DxfTables *dxf_tables
+        DxfTables *tables
                 /*!< DXF tables section. */
 )
 {
@@ -92,33 +92,33 @@ dxf_tables_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_tables == NULL)
+        if (tables == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_tables = dxf_tables_new ();
+                tables = dxf_tables_new ();
         }
-        if (dxf_tables == NULL)
+        if (tables == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfTables struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_tables->appids = NULL;
+        tables->appids = NULL;
         //dxf_table->block_records = NULL;
-        dxf_tables->dimstyles = NULL;
-        dxf_tables->layers = NULL;
-        dxf_tables->ltypes = NULL;
-        dxf_tables->styles = NULL;
-        dxf_tables->ucss = NULL;
-        dxf_tables->views = NULL;
-        dxf_tables->vports = NULL;
+        tables->dimstyles = NULL;
+        tables->layers = NULL;
+        tables->ltypes = NULL;
+        tables->styles = NULL;
+        tables->ucss = NULL;
+        tables->views = NULL;
+        tables->vports = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_tables);
+        return (tables);
 }
 
 
@@ -133,7 +133,7 @@ dxf_tables_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfTables *dxf_tables
+        DxfTables *tables
                 /*!< DXF table section. */
 )
 {
@@ -172,30 +172,30 @@ dxf_tables_write
 int
 dxf_tables_free
 (
-        DxfTables *dxf_tables
+        DxfTables *tables
                 /*!< DXF table section. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_tables == NULL)
+        if (tables == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (dxf_tables->appids);
-        //free (dxf_tables->block_records);
-        free (dxf_tables->dimstyles);
-        free (dxf_tables->layers);
-        free (dxf_tables->ltypes);
-        free (dxf_tables->styles);
-        free (dxf_tables->ucss);
-        free (dxf_tables->views);
-        free (dxf_tables->vports);
-        dxf_tables = NULL;
+        free (tables->appids);
+        //free (tables->block_records);
+        free (tables->dimstyles);
+        free (tables->layers);
+        free (tables->ltypes);
+        free (tables->styles);
+        free (tables->ucss);
+        free (tables->views);
+        free (tables->vports);
+        tables = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
