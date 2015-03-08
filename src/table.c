@@ -55,27 +55,27 @@ dxf_table_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfTable *dxf_table = NULL;
+        DxfTable *table = NULL;
         size_t size;
 
         size = sizeof (DxfTable);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_table = malloc (size)) == NULL)
+        if ((table = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfTable struct.\n")),
                   __FUNCTION__);
-                dxf_table = NULL;
+                table = NULL;
         }
         else
         {
-                memset (dxf_table, 0, size);
+                memset (table, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_table);
+        return (table);
 }
 
 
@@ -95,7 +95,7 @@ dxf_table_new ()
 DxfTable *
 dxf_table_init
 (
-        DxfTable *dxf_table
+        DxfTable *table
                 /*!< DXF table section. */
 )
 {
@@ -103,27 +103,27 @@ dxf_table_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_table == NULL)
+        if (table == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_table = dxf_table_new ();
+                table = dxf_table_new ();
         }
-        if (dxf_table == NULL)
+        if (table == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfTable struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_table->table_name = strdup ("");
-        dxf_table->max_table_entries = 0;
-        dxf_table->next = NULL;
+        table->table_name = strdup ("");
+        table->max_table_entries = 0;
+        table->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_table);
+        return (table);
 }
 
 
@@ -134,9 +134,9 @@ dxf_table_init
  * Now follows some data for the \c TABLE, to be terminated with a "  0"
  * string announcing the following table record, or the end of the
  * \c TABLE section marker \c ENDTAB. \n
- * While parsing the DXF file store data in \c dxf_table. \n
+ * While parsing the DXF file store data in \c table. \n
  *
- * \return a pointer to \c dxf_table.
+ * \return a pointer to \c table.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -149,7 +149,7 @@ dxf_table_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfTable *dxf_table
+        DxfTable *table
                 /*!< DXF table entity. */
 )
 {
@@ -166,13 +166,13 @@ dxf_table_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_table == NULL)
+        if (table == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_table = dxf_table_new ();
-                dxf_table = dxf_table_init (dxf_table);
+                table = dxf_table_new ();
+                table = dxf_table_init (table);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -191,21 +191,21 @@ dxf_table_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_table->id_code);
+                        fscanf (fp->fp, "%x\n", &table->id_code);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing an application
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_table->table_name);
+                        fscanf (fp->fp, "%s\n", table->table_name);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * standard flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_table->max_table_entries);
+                        fscanf (fp->fp, "%d\n", &table->max_table_entries);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -224,7 +224,7 @@ dxf_table_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_table);
+        return (table);
 }
 
 
@@ -245,7 +245,7 @@ dxf_table_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfTable *dxf_table
+        DxfTable *table
                 /*!< DXF table section. */
 )
 {
@@ -262,7 +262,7 @@ dxf_table_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_table == NULL)
+        if (table == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
@@ -271,16 +271,16 @@ dxf_table_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp->fp, "  2\n%s\n", dxf_table->table_name);
-        if (dxf_table->id_code != -1)
+        fprintf (fp->fp, "  2\n%s\n", table->table_name);
+        if (table->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_table->id_code);
+                fprintf (fp->fp, "  5\n%x\n", table->id_code);
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbSymbolTable\n");
         }
-        fprintf (fp->fp, " 70\n%d\n", dxf_table->max_table_entries);
+        fprintf (fp->fp, " 70\n%d\n", table->max_table_entries);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -304,30 +304,30 @@ dxf_table_write
 int
 dxf_table_free
 (
-        DxfTable *dxf_table
+        DxfTable *table
                 /*!< DXF table entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_table == NULL)
+        if (table == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_table->next != NULL)
+        if (table->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfTable was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dxf_table->table_name);
-        free (dxf_table);
-        dxf_table = NULL;
+        free (table->table_name);
+        free (table);
+        table = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif

@@ -92,24 +92,24 @@ dxf_table_new ();
 DxfTable *
 dxf_table_init
 (
-        DxfTable *dxf_table
+        DxfTable *table
 );
 DxfTable *
 dxf_table_read
 (
         DxfFile *fp,
-        DxfTable *dxf_table
+        DxfTable *table
 );
 int
 dxf_table_write
 (
         DxfFile *fp,
-        DxfTable *dxf_table
+        DxfTable *table
 );
 int
 dxf_table_free
 (
-        DxfTable *dxf_table
+        DxfTable *table
 );
 
 
