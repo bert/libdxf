@@ -148,6 +148,8 @@ dxf_tables_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_section_name);
                 return (EXIT_FAILURE);
         }
         dxf_section_write (fp, dxf_section_name);
