@@ -194,6 +194,8 @@ dxf_thumbnail_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (thumbnail == NULL)
@@ -221,6 +223,8 @@ dxf_thumbnail_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 else if (strcmp (temp_string, "90") == 0)
@@ -261,6 +265,8 @@ dxf_thumbnail_read
                           __FUNCTION__, preview_data_length,
                           fp->filename, thumbnail->number_of_bytes);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -306,6 +312,8 @@ dxf_thumbnail_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (fp->acad_version_number < AutoCAD_2000)
@@ -313,6 +321,8 @@ dxf_thumbnail_write
                 fprintf (stderr,
                   (_("Error in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (thumbnail == NULL)
@@ -320,6 +330,8 @@ dxf_thumbnail_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (thumbnail->number_of_bytes < 1)
@@ -327,6 +339,8 @@ dxf_thumbnail_write
                 fprintf (stderr,
                   (_("Error in %s () number of bytes was 0 or less.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         /* Start writing output. */
@@ -338,6 +352,8 @@ dxf_thumbnail_write
                 fprintf (fp->fp, "310\n%s\n", thumbnail->preview_image_data[i]);
                 i++;
         }
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
