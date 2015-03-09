@@ -1,7 +1,7 @@
 /*!
  * \file thumbnail.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for DXF thumbnail (\c THUMBNAIL) functions.
  *
@@ -74,24 +74,24 @@ dxf_thumbnail_new ();
 DxfThumbnail *
 dxf_thumbnail_init
 (
-        DxfThumbnail *dxf_thumbnail
+        DxfThumbnail *thumbnail
 );
 DxfThumbnail *
 dxf_thumbnail_read
 (
         DxfFile *fp,
-        DxfThumbnail *dxf_thumbnail
+        DxfThumbnail *thumbnail
 );
 int
 dxf_thumbnail_write
 (
         DxfFile *fp,
-        DxfThumbnail *dxf_thumbnail
+        DxfThumbnail *thumbnail
 );
 int
 dxf_thumbnail_free
 (
-        DxfThumbnail *dxf_thumbnail
+        DxfThumbnail *thumbnail
 );
 
 

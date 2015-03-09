@@ -63,27 +63,27 @@ dxf_thumbnail_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfThumbnail *dxf_thumbnail = NULL;
+        DxfThumbnail *thumbnail = NULL;
         size_t size;
 
         size = sizeof (DxfThumbnail);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_thumbnail = malloc (size)) == NULL)
+        if ((thumbnail = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfThumbnail struct.\n")),
                   __FUNCTION__);
-                dxf_thumbnail = NULL;
+                thumbnail = NULL;
         }
         else
         {
-                memset (dxf_thumbnail, 0, size);
+                memset (thumbnail, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_thumbnail);
+        return (thumbnail);
 }
 
 
@@ -111,7 +111,7 @@ dxf_thumbnail_new ()
 DxfThumbnail *
 dxf_thumbnail_init
 (
-        DxfThumbnail *dxf_thumbnail
+        DxfThumbnail *thumbnail
                 /*!< DXF thumbnailimage entity. */
 )
 {
@@ -121,29 +121,29 @@ dxf_thumbnail_init
         int i;
 
         /* Do some basic checks. */
-        if (dxf_thumbnail == NULL)
+        if (thumbnail == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_thumbnail = dxf_thumbnail_new ();
+                thumbnail = dxf_thumbnail_new ();
         }
-        if (dxf_thumbnail == NULL)
+        if (thumbnail == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfThumbnail struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_thumbnail->number_of_bytes = 0;
+        thumbnail->number_of_bytes = 0;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                dxf_thumbnail->preview_image_data[i] = strdup ("");
+                thumbnail->preview_image_data[i] = strdup ("");
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_thumbnail);
+        return (thumbnail);
 }
 
 
@@ -154,9 +154,9 @@ dxf_thumbnail_init
  * Now follows some data for the \c THUMBNAILIMAGE, to be terminated
  * with a "  0" string announcing the following entity, or the end of
  * the \c ENTITY section marker \c ENDSEC. \n
- * While parsing the DXF file store data in \c dxf_thumbnail. \n
+ * While parsing the DXF file store data in \c thumbnail. \n
  *
- * \return a pointer to \c dxf_thumbnail.
+ * \return a pointer to \c thumbnail.
  *
  * \version According to DXF R2000.
  * \version According to DXF R2000i.
@@ -177,7 +177,7 @@ dxf_thumbnail_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfThumbnail *dxf_thumbnail
+        DxfThumbnail *thumbnail
                 /*!< DXF thumbnailimage entity. */
 )
 {
@@ -196,13 +196,13 @@ dxf_thumbnail_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_thumbnail == NULL)
+        if (thumbnail == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_thumbnail = dxf_thumbnail_new ();
-                dxf_thumbnail = dxf_thumbnail_init (dxf_thumbnail);
+                thumbnail = dxf_thumbnail_new ();
+                thumbnail = dxf_thumbnail_init (thumbnail);
         }
         if (fp->acad_version_number < AutoCAD_2000)
         {
@@ -228,15 +228,15 @@ dxf_thumbnail_read
                         /* Now follows a string containing the
                          * number of bytes value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_thumbnail->number_of_bytes);
+                        fscanf (fp->fp, "%d\n", &thumbnail->number_of_bytes);
                 }
                 else if (strcmp (temp_string, "310") == 0)
                 {
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_thumbnail->preview_image_data[i]);
-                        preview_data_length = preview_data_length + strlen (dxf_thumbnail->preview_image_data[i]);
+                        fscanf (fp->fp, "%s\n", thumbnail->preview_image_data[i]);
+                        preview_data_length = preview_data_length + strlen (thumbnail->preview_image_data[i]);
                         i++;
                 }
                 else if (strcmp (temp_string, "999") == 0)
@@ -254,17 +254,17 @@ dxf_thumbnail_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (preview_data_length != dxf_thumbnail->number_of_bytes)
+        if (preview_data_length != thumbnail->number_of_bytes)
         {
                         fprintf (stderr,
                           (_("Warning in %s () read %d preview data bytes from %s while %d were expected.\n")),
                           __FUNCTION__, preview_data_length,
-                          fp->filename, dxf_thumbnail->number_of_bytes);
+                          fp->filename, thumbnail->number_of_bytes);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_thumbnail);
+        return (thumbnail);
 }
 
 
@@ -290,7 +290,7 @@ dxf_thumbnail_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfThumbnail *dxf_thumbnail
+        DxfThumbnail *thumbnail
                 /*!< the thumbnail to write to the output file. */
 )
 {
@@ -315,14 +315,14 @@ dxf_thumbnail_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_thumbnail == NULL)
+        if (thumbnail == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_thumbnail->number_of_bytes < 1)
+        if (thumbnail->number_of_bytes < 1)
         {
                 fprintf (stderr,
                   (_("Error in %s () number of bytes was 0 or less.\n")),
@@ -331,11 +331,11 @@ dxf_thumbnail_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp->fp, " 90\n%d\n", dxf_thumbnail->number_of_bytes);
+        fprintf (fp->fp, " 90\n%d\n", thumbnail->number_of_bytes);
         i = 0;
-        while (strlen (dxf_thumbnail->preview_image_data[i]) > 0)
+        while (strlen (thumbnail->preview_image_data[i]) > 0)
         {
-                fprintf (fp->fp, "310\n%s\n", dxf_thumbnail->preview_image_data[i]);
+                fprintf (fp->fp, "310\n%s\n", thumbnail->preview_image_data[i]);
                 i++;
         }
 #if DEBUG
@@ -369,7 +369,7 @@ dxf_thumbnail_write
 int
 dxf_thumbnail_free
 (
-        DxfThumbnail *dxf_thumbnail
+        DxfThumbnail *thumbnail
                 /*!< Pointer to the memory occupied by the DXF
                  * \c THUMBNAILIMAGE entity. */
 )
@@ -381,10 +381,10 @@ dxf_thumbnail_free
 
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                free (dxf_thumbnail->preview_image_data[i]);
+                free (thumbnail->preview_image_data[i]);
         }
-        free (dxf_thumbnail);
-        dxf_thumbnail = NULL;
+        free (thumbnail);
+        thumbnail = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
