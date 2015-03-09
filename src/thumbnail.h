@@ -42,6 +42,11 @@
 /*!
  * \brief DXF definition of an AutoCAD arc entity (\c THUMBNAILIMAGE).
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
  * \version According to DXF R2000.
  * \version According to DXF R2000i.
  * \version According to DXF R2002.

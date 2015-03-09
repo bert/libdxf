@@ -43,6 +43,11 @@
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
  * \version According to DXF R2000.
  * \version According to DXF R2000i.
  * \version According to DXF R2002.
@@ -94,6 +99,11 @@ dxf_thumbnail_new ()
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
  * \version According to DXF R2000.
  * \version According to DXF R2000i.
  * \version According to DXF R2002.
@@ -158,6 +168,11 @@ dxf_thumbnail_init
  *
  * \return a pointer to \c thumbnail.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
  * \version According to DXF R2000.
  * \version According to DXF R2000i.
  * \version According to DXF R2002.
@@ -277,6 +292,11 @@ dxf_thumbnail_read
 /*!
  * \brief Write a thumbnail to a DXF file.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
  * \version According to DXF R2000.
  * \version According to DXF R2000i.
  * \version According to DXF R2002.
@@ -316,15 +336,6 @@ dxf_thumbnail_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (fp->acad_version_number < AutoCAD_2000)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () illegal DXF version for this entity.\n")),
-                  __FUNCTION__);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
         if (thumbnail == NULL)
         {
                 fprintf (stderr,
@@ -342,6 +353,12 @@ dxf_thumbnail_write
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_2000)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
@@ -368,6 +385,11 @@ dxf_thumbnail_write
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
  * \version According to DXF R2000.
  * \version According to DXF R2000i.
  * \version According to DXF R2002.
