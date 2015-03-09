@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2009 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Functions for a DXF thumbnail.
+ * \brief Functions for a DXF thumbnail (\c THUMBNAIL).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
