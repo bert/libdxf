@@ -1,7 +1,7 @@
 /*!
  * \file trace.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF trace entity (\c TRACE).
  *
@@ -162,24 +162,24 @@ dxf_trace_new ();
 DxfTrace *
 dxf_trace_init
 (
-        DxfTrace *dxf_trace
+        DxfTrace *trace
 );
 DxfTrace *
 dxf_trace_read
 (
         DxfFile *fp,
-        DxfTrace *dxf_trace
+        DxfTrace *trace
 );
 int
 dxf_trace_write
 (
         DxfFile *fp,
-        DxfTrace *dxf_trace
+        DxfTrace *trace
 );
 int
 dxf_trace_free
 (
-        DxfTrace *dxf_trace
+        DxfTrace *trace
 );
 
 
