@@ -1,7 +1,7 @@
 /*!
  * \file text.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Definition of a DXF text entity (\c TEXT).
  *
@@ -211,24 +211,24 @@ dxf_text_new ();
 DxfText *
 dxf_text_init
 (
-        DxfText *dxf_text
+        DxfText *text
 );
 DxfText *
 dxf_text_read
 (
         DxfFile *fp,
-        DxfText *dxf_text
+        DxfText *text
 );
 int
 dxf_text_write
 (
         DxfFile *fp,
-        DxfText *dxf_text
+        DxfText *text
 );
 int
 dxf_text_free
 (
-        DxfText *dxf_text
+        DxfText *text
 );
 
 
