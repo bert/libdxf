@@ -189,6 +189,8 @@ dxf_text_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (text == NULL)
@@ -209,6 +211,8 @@ dxf_text_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "1") == 0)
@@ -439,6 +443,8 @@ dxf_text_read
         {
                 text->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -475,6 +481,8 @@ dxf_text_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (text == NULL)
@@ -482,6 +490,8 @@ dxf_text_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (text->text_value, "") == 0)
@@ -490,6 +500,8 @@ dxf_text_write
                   (_("Error in %s () text value string is empty for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, text->id_code);
                 dxf_entity_skip (dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (strcmp (text->text_style, "") == 0)
@@ -655,6 +667,8 @@ dxf_text_write
         {
                 fprintf (fp->fp, " 73\n%d\n", text->vert_align);
         }
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
