@@ -1,7 +1,7 @@
 /*!
  * \file ucs.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF User Coordinate System entity (\c UCS).
  *
@@ -127,24 +127,24 @@ dxf_ucs_new ();
 DxfUcs *
 dxf_ucs_init
 (
-        DxfUcs *dxf_ucs
+        DxfUcs *ucs
 );
 DxfUcs *
 dxf_ucs_read
 (
         DxfFile *fp,
-        DxfUcs *dxf_ucs
+        DxfUcs *ucs
 );
 int
 dxf_ucs_write
 (
         DxfFile *fp,
-        DxfUcs *dxf_ucs
+        DxfUcs *ucs
 );
 int
 dxf_ucs_free
 (
-        DxfUcs *dxf_ucs
+        DxfUcs *ucs
 );
 
 

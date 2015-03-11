@@ -55,27 +55,27 @@ dxf_ucs_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfUcs *dxf_ucs = NULL;
+        DxfUcs *ucs = NULL;
         size_t size;
 
         size = sizeof (DxfUcs);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_ucs = malloc (size)) == NULL)
+        if ((ucs = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfUcs struct.\n")),
                   __FUNCTION__);
-                dxf_ucs = NULL;
+                ucs = NULL;
         }
         else
         {
-                memset (dxf_ucs, 0, size);
+                memset (ucs, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_ucs);
+        return (ucs);
 }
 
 
@@ -95,7 +95,7 @@ dxf_ucs_new ()
 DxfUcs *
 dxf_ucs_init
 (
-        DxfUcs *dxf_ucs
+        DxfUcs *ucs
                 /*!< DXF ucs entity. */
 )
 {
@@ -103,39 +103,39 @@ dxf_ucs_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_ucs == NULL)
+        if (ucs == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_ucs = dxf_ucs_new ();
+                ucs = dxf_ucs_new ();
         }
-        if (dxf_ucs == NULL)
+        if (ucs == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfUcs struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dxf_ucs->id_code = 0;
-        dxf_ucs->UCS_name = strdup ("");
-        dxf_ucs->x_origin = 0.0;
-        dxf_ucs->y_origin = 0.0;
-        dxf_ucs->z_origin = 0.0;
-        dxf_ucs->x_X_dir = 0.0;
-        dxf_ucs->y_X_dir = 0.0;
-        dxf_ucs->z_X_dir = 0.0;
-        dxf_ucs->x_Y_dir = 0.0;
-        dxf_ucs->y_Y_dir = 0.0;
-        dxf_ucs->z_Y_dir = 0.0;
-        dxf_ucs->flag = 0;
-        dxf_ucs->dictionary_owner_soft = strdup ("");
-        dxf_ucs->dictionary_owner_hard = strdup ("");
-        dxf_ucs->next = NULL;
+        ucs->id_code = 0;
+        ucs->UCS_name = strdup ("");
+        ucs->x_origin = 0.0;
+        ucs->y_origin = 0.0;
+        ucs->z_origin = 0.0;
+        ucs->x_X_dir = 0.0;
+        ucs->y_X_dir = 0.0;
+        ucs->z_X_dir = 0.0;
+        ucs->x_Y_dir = 0.0;
+        ucs->y_Y_dir = 0.0;
+        ucs->z_Y_dir = 0.0;
+        ucs->flag = 0;
+        ucs->dictionary_owner_soft = strdup ("");
+        ucs->dictionary_owner_hard = strdup ("");
+        ucs->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_ucs);
+        return (ucs);
 }
 
 
@@ -146,9 +146,9 @@ dxf_ucs_init
  * Now follows some data for the \c UCS, to be terminated with a "  0"
  * string announcing the following table record, or the end of the
  * \c TABLE section marker \c ENDTAB. \n
- * While parsing the DXF file store data in \c dxf_ucs. \n
+ * While parsing the DXF file store data in \c ucs. \n
  *
- * \return a pointer to \c dxf_ucs.
+ * \return a pointer to \c ucs.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -161,7 +161,7 @@ dxf_ucs_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfUcs *dxf_ucs
+        DxfUcs *ucs
                 /*!< DXF UCS entity. */
 )
 {
@@ -178,13 +178,13 @@ dxf_ucs_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_ucs == NULL)
+        if (ucs == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_ucs = dxf_ucs_new ();
-                dxf_ucs = dxf_ucs_init (dxf_ucs);
+                ucs = dxf_ucs_new ();
+                ucs = dxf_ucs_init (ucs);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -203,35 +203,35 @@ dxf_ucs_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_ucs->id_code);
+                        fscanf (fp->fp, "%x\n", &ucs->id_code);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
                         /* Now follows a string containing an UCS
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_ucs->UCS_name);
+                        fscanf (fp->fp, "%s\n", ucs->UCS_name);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the base point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ucs->x_origin);
+                        fscanf (fp->fp, "%lf\n", &ucs->x_origin);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the base point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ucs->y_origin);
+                        fscanf (fp->fp, "%lf\n", &ucs->y_origin);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the base point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ucs->z_origin);
+                        fscanf (fp->fp, "%lf\n", &ucs->z_origin);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
@@ -239,7 +239,7 @@ dxf_ucs_read
                          * X-coordinate of the reference point for the
                          * X-axis direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ucs->x_X_dir);
+                        fscanf (fp->fp, "%lf\n", &ucs->x_X_dir);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
@@ -247,7 +247,7 @@ dxf_ucs_read
                          * Y-coordinate of the reference point for the
                          * X-axis direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ucs->y_X_dir);
+                        fscanf (fp->fp, "%lf\n", &ucs->y_X_dir);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
@@ -255,7 +255,7 @@ dxf_ucs_read
                          * Z-coordinate of the reference point for the
                          * X-axis direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ucs->z_X_dir);
+                        fscanf (fp->fp, "%lf\n", &ucs->z_X_dir);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
@@ -263,7 +263,7 @@ dxf_ucs_read
                          * X-coordinate of the reference point for the
                          * Y-axis direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ucs->x_Y_dir);
+                        fscanf (fp->fp, "%lf\n", &ucs->x_Y_dir);
                 }
                 else if (strcmp (temp_string, "22") == 0)
                 {
@@ -271,7 +271,7 @@ dxf_ucs_read
                          * Y-coordinate of the reference point for the
                          * Y-axis direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ucs->y_Y_dir);
+                        fscanf (fp->fp, "%lf\n", &ucs->y_Y_dir);
                 }
                 else if (strcmp (temp_string, "32") == 0)
                 {
@@ -279,14 +279,14 @@ dxf_ucs_read
                          * Z-coordinate of the reference point for the
                          * Y-axis direction. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_ucs->z_Y_dir);
+                        fscanf (fp->fp, "%lf\n", &ucs->z_Y_dir);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the
                          * standard flag value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_ucs->flag);
+                        fscanf (fp->fp, "%d\n", &ucs->flag);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -308,14 +308,14 @@ dxf_ucs_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_ucs->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", ucs->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_ucs->dictionary_owner_hard);
+                        fscanf (fp->fp, "%s\n", ucs->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -334,7 +334,7 @@ dxf_ucs_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_ucs);
+        return (ucs);
 }
 
 
@@ -355,7 +355,7 @@ dxf_ucs_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfUcs *dxf_ucs
+        DxfUcs *ucs
                 /*!< DXF UCS entity. */
 )
 {
@@ -372,19 +372,19 @@ dxf_ucs_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_ucs == NULL)
+        if (ucs == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if ((dxf_ucs->UCS_name == NULL)
-          || (strcmp (dxf_ucs->UCS_name, "") == 0))
+        if ((ucs->UCS_name == NULL)
+          || (strcmp (ucs->UCS_name, "") == 0))
         {
                 fprintf (stderr,
                   (_("Error in %s () empty UCS name string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_ucs->id_code);
+                  __FUNCTION__, dxf_entity_name, ucs->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
@@ -392,9 +392,9 @@ dxf_ucs_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_ucs->id_code != -1)
+        if (ucs->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_ucs->id_code);
+                fprintf (fp->fp, "  5\n%x\n", ucs->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -406,18 +406,18 @@ dxf_ucs_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_ucs->dictionary_owner_soft, "") != 0)
+        if ((strcmp (ucs->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_ucs->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", ucs->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_ucs->dictionary_owner_hard, "") != 0)
+        if ((strcmp (ucs->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_ucs->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", ucs->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
@@ -425,17 +425,17 @@ dxf_ucs_write
                 fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
                 fprintf (fp->fp, "100\nAcDbUCSTableRecord\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", dxf_ucs->UCS_name);
-        fprintf (fp->fp, " 70\n%d\n", dxf_ucs->flag);
-        fprintf (fp->fp, " 10\n%f\n", dxf_ucs->x_origin);
-        fprintf (fp->fp, " 20\n%f\n", dxf_ucs->y_origin);
-        fprintf (fp->fp, " 30\n%f\n", dxf_ucs->z_origin);
-        fprintf (fp->fp, " 11\n%f\n", dxf_ucs->x_X_dir);
-        fprintf (fp->fp, " 21\n%f\n", dxf_ucs->y_X_dir);
-        fprintf (fp->fp, " 31\n%f\n", dxf_ucs->z_X_dir);
-        fprintf (fp->fp, " 12\n%f\n", dxf_ucs->x_Y_dir);
-        fprintf (fp->fp, " 22\n%f\n", dxf_ucs->y_Y_dir);
-        fprintf (fp->fp, " 32\n%f\n", dxf_ucs->z_Y_dir);
+        fprintf (fp->fp, "  2\n%s\n", ucs->UCS_name);
+        fprintf (fp->fp, " 70\n%d\n", ucs->flag);
+        fprintf (fp->fp, " 10\n%f\n", ucs->x_origin);
+        fprintf (fp->fp, " 20\n%f\n", ucs->y_origin);
+        fprintf (fp->fp, " 30\n%f\n", ucs->z_origin);
+        fprintf (fp->fp, " 11\n%f\n", ucs->x_X_dir);
+        fprintf (fp->fp, " 21\n%f\n", ucs->y_X_dir);
+        fprintf (fp->fp, " 31\n%f\n", ucs->z_X_dir);
+        fprintf (fp->fp, " 12\n%f\n", ucs->x_Y_dir);
+        fprintf (fp->fp, " 22\n%f\n", ucs->y_Y_dir);
+        fprintf (fp->fp, " 32\n%f\n", ucs->z_Y_dir);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -459,7 +459,7 @@ dxf_ucs_write
 int
 dxf_ucs_free
 (
-        DxfUcs *dxf_ucs
+        DxfUcs *ucs
                 /*!< Pointer to the memory occupied by the DXF \c UCS
                  * entity. */
 )
@@ -467,18 +467,18 @@ dxf_ucs_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_ucs->next != NULL)
+        if (ucs->next != NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () pointer to next DxfUcs was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (dxf_ucs->UCS_name);
-        free (dxf_ucs->dictionary_owner_soft);
-        free (dxf_ucs->dictionary_owner_hard);
-        free (dxf_ucs);
-        dxf_ucs = NULL;
+        free (ucs->UCS_name);
+        free (ucs->dictionary_owner_soft);
+        free (ucs->dictionary_owner_hard);
+        free (ucs);
+        ucs = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
