@@ -176,6 +176,8 @@ dxf_ucs_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (ucs == NULL)
@@ -196,6 +198,8 @@ dxf_ucs_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -331,6 +335,8 @@ dxf_ucs_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -370,6 +376,8 @@ dxf_ucs_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (ucs == NULL)
@@ -377,6 +385,8 @@ dxf_ucs_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if ((ucs->UCS_name == NULL)
@@ -388,6 +398,8 @@ dxf_ucs_write
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         /* Start writing output. */
@@ -436,6 +448,8 @@ dxf_ucs_write
         fprintf (fp->fp, " 12\n%f\n", ucs->x_Y_dir);
         fprintf (fp->fp, " 22\n%f\n", ucs->y_Y_dir);
         fprintf (fp->fp, " 32\n%f\n", ucs->z_Y_dir);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
