@@ -146,24 +146,24 @@ dxf_view_new ();
 DxfView *
 dxf_view_init
 (
-        DxfView *dxf_view
+        DxfView *view
 );
 DxfView *
 dxf_view_read
 (
         DxfFile *fp,
-        DxfView *dxf_view
+        DxfView *view
 );
 int
 dxf_view_write
 (
         DxfFile *fp,
-        DxfView *dxf_view
+        DxfView *view
 );
 int
 dxf_view_free
 (
-        DxfView *dxf_view
+        DxfView *view
 );
 
 
