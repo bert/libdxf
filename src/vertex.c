@@ -52,27 +52,27 @@ dxf_vertex_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfVertex *dxf_vertex = NULL;
+        DxfVertex *vertex = NULL;
         size_t size;
 
         size = sizeof (DxfVertex);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_vertex = malloc (size)) == NULL)
+        if ((vertex = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfVertex struct.\n")),
                   __FUNCTION__);
-                dxf_vertex = NULL;
+                vertex = NULL;
         }
         else
         {
-                memset (dxf_vertex, 0, size);
+                memset (vertex, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_vertex);
+        return (vertex);
 }
 
 
@@ -91,7 +91,7 @@ dxf_vertex_new ()
 DxfVertex *
 dxf_vertex_init
 (
-        DxfVertex *dxf_vertex
+        DxfVertex *vertex
                 /*!< DXF vertex entity. */
 )
 {
@@ -99,44 +99,44 @@ dxf_vertex_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dxf_vertex == NULL)
+        if (vertex == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_vertex = dxf_vertex_new ();
+                vertex = dxf_vertex_new ();
         }
-        if (dxf_vertex == NULL)
+        if (vertex == NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () could not allocate memory for a DxfVertex struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_vertex->id_code = 0;
-        dxf_vertex->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        dxf_vertex->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_vertex->x0 = 0.0;
-        dxf_vertex->y0 = 0.0;
-        dxf_vertex->z0 = 0.0;
-        dxf_vertex->elevation = 0.0;
-        dxf_vertex->thickness = 0.0;
-        dxf_vertex->start_width = 0.0;
-        dxf_vertex->end_width = 0.0;
-        dxf_vertex->bulge = 0.0;
-        dxf_vertex->curve_fit_tangent_direction = 0.0;
-        dxf_vertex->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        dxf_vertex->visibility = DXF_DEFAULT_VISIBILITY;
-        dxf_vertex->color = DXF_COLOR_BYLAYER;
-        dxf_vertex->paperspace = DXF_MODELSPACE;
-        dxf_vertex->flag = 0;
-        dxf_vertex->dictionary_owner_soft = strdup ("");
-        dxf_vertex->dictionary_owner_hard = strdup ("");
-        dxf_vertex->next = NULL;
+        vertex->id_code = 0;
+        vertex->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        vertex->layer = strdup (DXF_DEFAULT_LAYER);
+        vertex->x0 = 0.0;
+        vertex->y0 = 0.0;
+        vertex->z0 = 0.0;
+        vertex->elevation = 0.0;
+        vertex->thickness = 0.0;
+        vertex->start_width = 0.0;
+        vertex->end_width = 0.0;
+        vertex->bulge = 0.0;
+        vertex->curve_fit_tangent_direction = 0.0;
+        vertex->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        vertex->visibility = DXF_DEFAULT_VISIBILITY;
+        vertex->color = DXF_COLOR_BYLAYER;
+        vertex->paperspace = DXF_MODELSPACE;
+        vertex->flag = 0;
+        vertex->dictionary_owner_soft = strdup ("");
+        vertex->dictionary_owner_hard = strdup ("");
+        vertex->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_vertex);
+        return (vertex);
 }
 
 
@@ -147,9 +147,9 @@ dxf_vertex_init
  * Now follows some data for the \c VERTEX, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
- * While parsing the DXF file store data in \c dxf_vertex. \n
+ * While parsing the DXF file store data in \c vertex. \n
  *
- * \return a pointer to \c dxf_vertex.
+ * \return a pointer to \c vertex.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -162,7 +162,7 @@ dxf_vertex_read
 (
         DxfFile *fp,
                 /*!< filepointer to the input file (or device). */
-        DxfVertex *dxf_vertex
+        DxfVertex *vertex
                 /*!< DXF vertex entity. */
 )
 {
@@ -179,13 +179,13 @@ dxf_vertex_read
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dxf_vertex == NULL)
+        if (vertex == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_vertex = dxf_vertex_new ();
-                dxf_vertex = dxf_vertex_init (dxf_vertex);
+                vertex = dxf_vertex_new ();
+                vertex = dxf_vertex_init (vertex);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -204,148 +204,148 @@ dxf_vertex_read
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dxf_vertex->id_code);
+                        fscanf (fp->fp, "%x\n", &vertex->id_code);
                 }
                 else if (strcmp (temp_string, "6") == 0)
                 {
                         /* Now follows a string containing a linetype
                          * name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_vertex->linetype);
+                        fscanf (fp->fp, "%s\n", vertex->linetype);
                 }
                 else if (strcmp (temp_string, "8") == 0)
                 {
                         /* Now follows a string containing a layer name. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_vertex->layer);
+                        fscanf (fp->fp, "%s\n", vertex->layer);
                 }
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_vertex->x0);
+                        fscanf (fp->fp, "%lf\n", &vertex->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_vertex->y0);
+                        fscanf (fp->fp, "%lf\n", &vertex->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_vertex->z0);
+                        fscanf (fp->fp, "%lf\n", &vertex->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (dxf_vertex->elevation != 0.0))
+                        && (vertex->elevation != 0.0))
                 {
                         /* Now follows a string containing the
                          * elevation. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_vertex->elevation);
+                        fscanf (fp->fp, "%lf\n", &vertex->elevation);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
                         /* Now follows a string containing the
                          * thickness. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_vertex->thickness);
+                        fscanf (fp->fp, "%lf\n", &vertex->thickness);
                 }
                 else if (strcmp (temp_string, "40") == 0)
                 {
                         /* Now follows a string containing the
                          * start width. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_vertex->start_width);
+                        fscanf (fp->fp, "%lf\n", &vertex->start_width);
                 }
                 else if (strcmp (temp_string, "41") == 0)
                 {
                         /* Now follows a string containing the
                          * end width. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_vertex->end_width);
+                        fscanf (fp->fp, "%lf\n", &vertex->end_width);
                 }
                 else if (strcmp (temp_string, "42") == 0)
                 {
                         /* Now follows a string containing the
                          * bulge. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_vertex->bulge);
+                        fscanf (fp->fp, "%lf\n", &vertex->bulge);
                 }
                 else if (strcmp (temp_string, "48") == 0)
                 {
                         /* Now follows a string containing the linetype
                          * scale. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_vertex->linetype_scale);
+                        fscanf (fp->fp, "%lf\n", &vertex->linetype_scale);
                 }
                 else if (strcmp (temp_string, "50") == 0)
                 {
                         /* Now follows a string containing the
                          * curve fitting tangent. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dxf_vertex->curve_fit_tangent_direction);
+                        fscanf (fp->fp, "%lf\n", &vertex->curve_fit_tangent_direction);
                 }
                 else if (strcmp (temp_string, "60") == 0)
                 {
                         /* Now follows a string containing the
                          * visibility value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%hd\n", &dxf_vertex->visibility);
+                        fscanf (fp->fp, "%hd\n", &vertex->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
                         /* Now follows a string containing the
                          * color value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_vertex->color);
+                        fscanf (fp->fp, "%d\n", &vertex->color);
                 }
                 else if (strcmp (temp_string, "67") == 0)
                 {
                         /* Now follows a string containing the
                          * paperspace value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_vertex->paperspace);
+                        fscanf (fp->fp, "%d\n", &vertex->paperspace);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the flag
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_vertex->flag);
+                        fscanf (fp->fp, "%d\n", &vertex->flag);
                 }
                 else if (strcmp (temp_string, "71") == 0)
                 {
                         /* Now follows a string containing the Polyface
                          * mesh vertex index value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_vertex->polyface_mesh_vertex_index_1);
+                        fscanf (fp->fp, "%d\n", &vertex->polyface_mesh_vertex_index_1);
                 }
                 else if (strcmp (temp_string, "72") == 0)
                 {
                         /* Now follows a string containing the Polyface
                          * mesh vertex index value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_vertex->polyface_mesh_vertex_index_2);
+                        fscanf (fp->fp, "%d\n", &vertex->polyface_mesh_vertex_index_2);
                 }
                 else if (strcmp (temp_string, "73") == 0)
                 {
                         /* Now follows a string containing the Polyface
                          * mesh vertex index value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_vertex->polyface_mesh_vertex_index_3);
+                        fscanf (fp->fp, "%d\n", &vertex->polyface_mesh_vertex_index_3);
                 }
                 else if (strcmp (temp_string, "74") == 0)
                 {
                         /* Now follows a string containing the Polyface
                          * mesh vertex index value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dxf_vertex->polyface_mesh_vertex_index_4);
+                        fscanf (fp->fp, "%d\n", &vertex->polyface_mesh_vertex_index_4);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -369,14 +369,14 @@ dxf_vertex_read
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_vertex->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", vertex->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dxf_vertex->dictionary_owner_hard);
+                        fscanf (fp->fp, "%s\n", vertex->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -393,18 +393,18 @@ dxf_vertex_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dxf_vertex->linetype, "") == 0)
+        if (strcmp (vertex->linetype, "") == 0)
         {
-                dxf_vertex->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                vertex->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_vertex->layer, "") == 0)
+        if (strcmp (vertex->layer, "") == 0)
         {
-                dxf_vertex->layer = strdup (DXF_DEFAULT_LAYER);
+                vertex->layer = strdup (DXF_DEFAULT_LAYER);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_vertex);
+        return (vertex);
 }
 
 
@@ -425,7 +425,7 @@ dxf_vertex_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfVertex *dxf_vertex
+        DxfVertex *vertex
                 /*!< DXF vertex entity. */
 )
 {
@@ -442,38 +442,38 @@ dxf_vertex_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dxf_vertex == NULL)
+        if (vertex == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dxf_vertex->linetype, "") == 0)
+        if (strcmp (vertex->linetype, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_vertex->id_code);
+                  __FUNCTION__, dxf_entity_name, vertex->id_code);
                 fprintf (stderr,
                   (_("    %s entity is reset to default linetype")),
                   dxf_entity_name);
-                dxf_vertex->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                vertex->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
-        if (strcmp (dxf_vertex->layer, "") == 0)
+        if (strcmp (vertex->layer, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dxf_vertex->id_code);
+                  __FUNCTION__, dxf_entity_name, vertex->id_code);
                 fprintf (stderr,
                   (_("    %s entity is relocated to layer 0")),
                   dxf_entity_name);
-                dxf_vertex->layer = strdup (DXF_DEFAULT_LAYER);
+                vertex->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dxf_vertex->id_code != -1)
+        if (vertex->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dxf_vertex->id_code);
+                fprintf (fp->fp, "  5\n%x\n", vertex->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -485,55 +485,55 @@ dxf_vertex_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dxf_vertex->dictionary_owner_soft, "") != 0)
+        if ((strcmp (vertex->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dxf_vertex->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", vertex->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dxf_vertex->dictionary_owner_hard, "") != 0)
+        if ((strcmp (vertex->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dxf_vertex->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", vertex->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dxf_vertex->paperspace == DXF_PAPERSPACE)
+        if (vertex->paperspace == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dxf_vertex->layer);
-        if (strcmp (dxf_vertex->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", vertex->layer);
+        if (strcmp (vertex->linetype, DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dxf_vertex->linetype);
+                fprintf (fp->fp, "  6\n%s\n", vertex->linetype);
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (dxf_vertex->elevation != 0.0))
+          && (vertex->elevation != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", dxf_vertex->elevation);
+                fprintf (fp->fp, " 38\n%f\n", vertex->elevation);
         }
-        if (dxf_vertex->color != DXF_COLOR_BYLAYER)
+        if (vertex->color != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dxf_vertex->color);
+                fprintf (fp->fp, " 62\n%d\n", vertex->color);
         }
-        if (dxf_vertex->linetype_scale != 1.0)
+        if (vertex->linetype_scale != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dxf_vertex->linetype_scale);
+                fprintf (fp->fp, " 48\n%f\n", vertex->linetype_scale);
         }
-        if (dxf_vertex->visibility != 0)
+        if (vertex->visibility != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dxf_vertex->visibility);
+                fprintf (fp->fp, " 60\n%d\n", vertex->visibility);
         }
         /*! \todo Put \c thickness in the correct order. */ 
-        if (dxf_vertex->thickness != 0.0)
+        if (vertex->thickness != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", dxf_vertex->thickness);
+                fprintf (fp->fp, " 39\n%f\n", vertex->thickness);
         }
         fprintf (fp->fp, "100\nAcDbVertex\n");
         /*! \todo We use a \c 3dPolylineVertex for now,
@@ -541,41 +541,41 @@ dxf_vertex_write
         fprintf (fp->fp, "100\nAcDb2dVertex\n");
          */
         fprintf (fp->fp, "100\nAcDb3dPolylineVertex\n");
-        fprintf (fp->fp, " 10\n%f\n", dxf_vertex->x0);
-        fprintf (fp->fp, " 20\n%f\n", dxf_vertex->y0);
-        fprintf (fp->fp, " 30\n%f\n", dxf_vertex->z0);
-        if (dxf_vertex->start_width != 0.0)
+        fprintf (fp->fp, " 10\n%f\n", vertex->x0);
+        fprintf (fp->fp, " 20\n%f\n", vertex->y0);
+        fprintf (fp->fp, " 30\n%f\n", vertex->z0);
+        if (vertex->start_width != 0.0)
         {
-                fprintf (fp->fp, " 40\n%f\n", dxf_vertex->start_width);
+                fprintf (fp->fp, " 40\n%f\n", vertex->start_width);
         }
-        if (dxf_vertex->end_width != 0.0)
+        if (vertex->end_width != 0.0)
         {
-                fprintf (fp->fp, " 41\n%f\n", dxf_vertex->end_width);
+                fprintf (fp->fp, " 41\n%f\n", vertex->end_width);
         }
-        if (dxf_vertex->bulge != 0.0)
+        if (vertex->bulge != 0.0)
         {
-                fprintf (fp->fp, " 42\n%f\n", dxf_vertex->bulge);
+                fprintf (fp->fp, " 42\n%f\n", vertex->bulge);
         }
-        fprintf (fp->fp, " 70\n%d\n", dxf_vertex->flag);
-        if (dxf_vertex->curve_fit_tangent_direction != 0.0)
+        fprintf (fp->fp, " 70\n%d\n", vertex->flag);
+        if (vertex->curve_fit_tangent_direction != 0.0)
         {
-                fprintf (fp->fp, " 50\n%f\n", dxf_vertex->curve_fit_tangent_direction);
+                fprintf (fp->fp, " 50\n%f\n", vertex->curve_fit_tangent_direction);
         }
-        if (dxf_vertex->polyface_mesh_vertex_index_1 != 0)
+        if (vertex->polyface_mesh_vertex_index_1 != 0)
         {
-                fprintf (fp->fp, " 71\n%d\n", dxf_vertex->polyface_mesh_vertex_index_1);
+                fprintf (fp->fp, " 71\n%d\n", vertex->polyface_mesh_vertex_index_1);
         }
-        if (dxf_vertex->polyface_mesh_vertex_index_2 != 0)
+        if (vertex->polyface_mesh_vertex_index_2 != 0)
         {
-                fprintf (fp->fp, " 72\n%d\n", dxf_vertex->polyface_mesh_vertex_index_2);
+                fprintf (fp->fp, " 72\n%d\n", vertex->polyface_mesh_vertex_index_2);
         }
-        if (dxf_vertex->polyface_mesh_vertex_index_3 != 0)
+        if (vertex->polyface_mesh_vertex_index_3 != 0)
         {
-                fprintf (fp->fp, " 73\n%d\n", dxf_vertex->polyface_mesh_vertex_index_3);
+                fprintf (fp->fp, " 73\n%d\n", vertex->polyface_mesh_vertex_index_3);
         }
-        if (dxf_vertex->polyface_mesh_vertex_index_4 != 0)
+        if (vertex->polyface_mesh_vertex_index_4 != 0)
         {
-                fprintf (fp->fp, " 74\n%d\n", dxf_vertex->polyface_mesh_vertex_index_4);
+                fprintf (fp->fp, " 74\n%d\n", vertex->polyface_mesh_vertex_index_4);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -600,26 +600,26 @@ dxf_vertex_write
 int
 dxf_vertex_free
 (
-        DxfVertex *dxf_vertex
+        DxfVertex *vertex
                 /*!< DXF vertex entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_vertex->next != NULL)
+        if (vertex->next != NULL)
         {
                 fprintf (stderr,
                   (_("ERROR in %s () pointer to next DxfVertex was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (dxf_vertex->linetype);
-        free (dxf_vertex->layer);
-        free (dxf_vertex->dictionary_owner_soft);
-        free (dxf_vertex->dictionary_owner_hard);
-        free (dxf_vertex);
-        dxf_vertex = NULL;
+        free (vertex->linetype);
+        free (vertex->layer);
+        free (vertex->dictionary_owner_soft);
+        free (vertex->dictionary_owner_hard);
+        free (vertex);
+        vertex = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif

@@ -198,24 +198,24 @@ dxf_vertex_new ();
 DxfVertex *
 dxf_vertex_init
 (
-        DxfVertex *dxf_vertex
+        DxfVertex *vertex
 );
 DxfVertex *
 dxf_vertex_read
 (
         DxfFile *fp,
-        DxfVertex *dxf_vertex
+        DxfVertex *vertex
 );
 int
 dxf_vertex_write
 (
         DxfFile *fp,
-        DxfVertex *dxf_vertex
+        DxfVertex *vertex
 );
 int
 dxf_vertex_free
 (
-        DxfVertex *dxf_vertex
+        DxfVertex *vertex
 );
 
 
