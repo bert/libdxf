@@ -182,6 +182,8 @@ dxf_view_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (view == NULL)
@@ -202,6 +204,8 @@ dxf_view_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -376,6 +380,8 @@ dxf_view_read
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -415,6 +421,8 @@ dxf_view_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (view == NULL)
@@ -422,6 +430,8 @@ dxf_view_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if ((view->view_name == NULL)
@@ -433,6 +443,8 @@ dxf_view_write
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         /* Start writing output. */
@@ -487,6 +499,8 @@ dxf_view_write
         fprintf (fp->fp, " 44\n%f\n", view->back_plane_offset);
         fprintf (fp->fp, " 50\n%f\n", view->view_twist_angle);
         fprintf (fp->fp, " 71\n%d\n", view->view_mode);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
