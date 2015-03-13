@@ -288,24 +288,24 @@ dxf_viewport_new ();
 DxfViewport *
 dxf_viewport_init
 (
-        DxfViewport *dxf_viewport
+        DxfViewport *viewport
 );
 DxfViewport *
 dxf_viewport_read
 (
         DxfFile *fp,
-        DxfViewport *dxf_viewport
+        DxfViewport *viewport
 );
 int
 dxf_viewport_write
 (
         DxfFile *fp,
-        DxfViewport *dxf_viewport
+        DxfViewport *viewport
 );
 int
 dxf_viewport_free
 (
-        DxfViewport *dxf_viewport
+        DxfViewport *viewport
 );
 
 
