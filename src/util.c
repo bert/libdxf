@@ -81,19 +81,22 @@ dxf_read_init (const char *filename)
         FILE *fp;
         if (!filename)
         {
-                fprintf (stderr, "Error: filename is not initialised (NULL pointer).\n");
+                fprintf (stderr,
+                  (_("Error: filename is not initialised (NULL pointer).\n")));
                 return (NULL);
         }
         if (strcmp (filename, "") == 0)
         {
-                fprintf (stderr, "Error: filename contains an empty string.\n");
+                fprintf (stderr,
+                  (_("Error: filename contains an empty string.\n")));
                 return (NULL);
         }
         fp = fopen (filename, "r");
         if (!fp)
         {
-                fprintf (stderr, "Error: could not open file: %s for reading (NULL pointer).\n",
-                        filename);
+                fprintf (stderr,
+                  (_("Error: could not open file: %s for reading (NULL pointer).\n")),
+                  filename);
                 return (NULL);
         }
         dxf_file = malloc (sizeof(DxfFile));
@@ -136,8 +139,9 @@ dxf_read_line (char * temp_string, DxfFile *fp)
         ret = fscanf (fp->fp, "%[^\n]\n", temp_string);
         if (ferror (fp->fp))
         {
-                fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
-                        fp->filename, fp->line_number);
+                fprintf (stderr,
+                  (_("Error: while reading from: %s in line: %d.\n")),
+                  fp->filename, fp->line_number);
                 return (EXIT_FAILURE);
         }
         if (ret)
@@ -163,8 +167,9 @@ dxf_read_scanf (DxfFile *fp, const char *template, ...)
         ret = vfscanf (fp->fp, template, lst);
         if (ferror (fp->fp))
         {
-                fprintf (stderr, "Error: while reading from: %s in line: %d.\n",
-                        fp->filename, fp->line_number);
+                fprintf (stderr,
+                  (_("Error: while reading from: %s in line: %d.\n")),
+                  fp->filename, fp->line_number);
                 return (EXIT_FAILURE);
         }
         va_end (lst);
