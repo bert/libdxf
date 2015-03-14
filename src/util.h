@@ -41,10 +41,10 @@
 #include "file.h"
 
 
-/* macro to return if the expression is false */
+/*! Macro to return if the expression is false */
 #define dxf_return_val_if_fail(expr, val) if (!expr) return val;
 
-/* macro to return according to the expression */
+/*! Macro to return according to the expression */
 enum return_state { FAIL = 0, SUCCESS, FOUND };
 
 #define dxf_return(expr) switch(expr) \
