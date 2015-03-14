@@ -45,9 +45,19 @@ dxf_read_is_double (int type)
         DXF_DEBUG_BEGIN
 #endif
         if (type >=10 && type < 60)
+        {
+#if DEBUG
+        DXF_DEBUG_END
+#endif
                 return TRUE;
+        }
         else
+        {
+#if DEBUG
+        DXF_DEBUG_END
+#endif
                 return FALSE;
+        }
 }
 
 
