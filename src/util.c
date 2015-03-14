@@ -3,6 +3,8 @@
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
+ * \author Copyright (C) 2010 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief LIBDXF coding utilities.
  *
  * <hr>
@@ -107,15 +109,15 @@ dxf_read_init (const char *filename)
 
 
 void
-dxf_read_close (DxfFile *dxf_file)
+dxf_read_close (DxfFile *file)
 {
         /*! \todo FIXME: how to free other sub structures */
-        if (dxf_file != NULL)
+        if (file != NULL)
         {
-                fclose (dxf_file->fp);
-                free (dxf_file->filename);
-                free (dxf_file);
-                dxf_file = NULL;
+                fclose (file->fp);
+                free (file->filename);
+                free (file);
+                file = NULL;
         }
 }
 

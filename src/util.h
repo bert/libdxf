@@ -1,7 +1,9 @@
 /*!
  * \file util.h
  *
- * \author Copyright (C) 2010 ... 2014 by Luis Matos <gass@otiliamatos.ath.cx>.
+ * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
+ *
+ * \author Copyright (C) 2010 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief LIBDXF coding utilities, header file.
  *
@@ -62,7 +64,7 @@ int dxf_read_is_string (int type);
 int dxf_read_line (char * temp_string, DxfFile *fp);
 int dxf_read_scanf (DxfFile *fp, const char *template, ...);
 DxfFile *dxf_read_init (const char *filename);
-void dxf_read_close (DxfFile *dxf_file);
+void dxf_read_close (DxfFile *file);
 
 
 #endif /* LIBDXF_SRC_UTIL_H */
