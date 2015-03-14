@@ -41,6 +41,9 @@
 int
 dxf_read_is_double (int type)
 {
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
         if (type >=10 && type < 60)
                 return TRUE;
         else
@@ -51,20 +54,46 @@ dxf_read_is_double (int type)
 int
 dxf_read_is_int (int type)
 {
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
         if (type >= 60 && type < 80)
+        {
+#if DEBUG
+        DXF_DEBUG_END
+#endif
                 return TRUE;
+        }
         else
+        {
+#if DEBUG
+        DXF_DEBUG_END
+#endif
                 return FALSE;
+        }
 }
 
 
 int
 dxf_read_is_string (int type)
 {
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
         if (type >= 0 && type <= 9)
+        {
+#if DEBUG
+        DXF_DEBUG_END
+#endif
                 return TRUE;
+        }
         else
+        {
+#if DEBUG
+        DXF_DEBUG_END
+#endif
                 return FALSE;
+        }
 }
 
 /*!
@@ -77,6 +106,9 @@ dxf_read_is_string (int type)
 DxfFile *
 dxf_read_init (const char *filename)
 {
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
         DxfFile * dxf_file = NULL;
         FILE *fp;
         if (!filename)
@@ -107,6 +139,9 @@ dxf_read_init (const char *filename)
         dxf_header_init (dxf_file->dxf_header);
         dxf_block_init (dxf_file->dxf_block);
         */
+#if DEBUG
+        DXF_DEBUG_END
+#endif
         return dxf_file;
 }
 
@@ -114,6 +149,9 @@ dxf_read_init (const char *filename)
 void
 dxf_read_close (DxfFile *file)
 {
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
         /*! \todo FIXME: how to free other sub structures */
         if (file != NULL)
         {
@@ -122,6 +160,9 @@ dxf_read_close (DxfFile *file)
                 free (file);
                 file = NULL;
         }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
 }
 
 
@@ -134,6 +175,9 @@ dxf_read_close (DxfFile *file)
 int
 dxf_read_line (char * temp_string, DxfFile *fp)
 {
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
         int ret;
 
         ret = fscanf (fp->fp, "%[^\n]\n", temp_string);
@@ -148,6 +192,9 @@ dxf_read_line (char * temp_string, DxfFile *fp)
         {
                 fp->line_number++;
         }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
         return ret;
 }
 
@@ -160,6 +207,9 @@ dxf_read_line (char * temp_string, DxfFile *fp)
 int
 dxf_read_scanf (DxfFile *fp, const char *template, ...)
 {
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
         int ret;
         char * search_result;
         va_list lst;
@@ -189,6 +239,9 @@ dxf_read_scanf (DxfFile *fp, const char *template, ...)
                 }
         }
         return ret;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
 }
 
 
