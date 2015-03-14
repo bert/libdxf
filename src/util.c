@@ -153,7 +153,12 @@ dxf_read_close (DxfFile *file)
         DXF_DEBUG_BEGIN
 #endif
         /*! \todo FIXME: how to free other sub structures */
-        if (file != NULL)
+        if (file == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error: file is not initialised (NULL pointer).\n")));
+        }
+        else
         {
                 fclose (file->fp);
                 free (file->filename);
