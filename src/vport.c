@@ -206,6 +206,8 @@ dxf_vport_read
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
                 return (NULL);
         }
         if (vport == NULL)
@@ -226,6 +228,8 @@ dxf_vport_read
                           (_("Error in %s () while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                         fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
                         return (NULL);
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -526,6 +530,8 @@ dxf_vport_read
                   __FUNCTION__, fp->filename, fp->line_number);
                 return (NULL);
         }
+        /* Clean up. */
+        free (temp_string);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -563,6 +569,8 @@ dxf_vport_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL file pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if (vport == NULL)
@@ -570,6 +578,8 @@ dxf_vport_write
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         if ((vport->viewport_name == NULL)
@@ -581,6 +591,8 @@ dxf_vport_write
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
         /* Start writing output. */
@@ -655,6 +667,8 @@ dxf_vport_write
         fprintf (fp->fp, " 76\n%d\n", vport->grid_on);
         fprintf (fp->fp, " 77\n%d\n", vport->snap_style);
         fprintf (fp->fp, " 78\n%d\n", vport->snap_isopair);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
