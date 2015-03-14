@@ -208,24 +208,24 @@ dxf_vport_new ();
 DxfVPort *
 dxf_vport_init
 (
-        DxfVPort *dxf_vport
+        DxfVPort *vport
 );
 DxfVPort *
 dxf_vport_read
 (
         DxfFile *fp,
-        DxfVPort *dxf_vport
+        DxfVPort *vport
 );
 int
 dxf_vport_write
 (
         DxfFile *fp,
-        DxfVPort *dxf_vport
+        DxfVPort *vport
 );
 int
 dxf_vport_free
 (
-        DxfVPort *dxf_vport
+        DxfVPort *vport
 );
 
 
