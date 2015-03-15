@@ -119,7 +119,7 @@ dxf_read_init (const char *filename)
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfFile * dxf_file = NULL;
+        DxfFile * file = NULL;
         FILE *fp;
         if (!filename)
         {
@@ -141,18 +141,18 @@ dxf_read_init (const char *filename)
                   filename);
                 return (NULL);
         }
-        dxf_file = malloc (sizeof(DxfFile));
-        dxf_file->fp = fp;
-        dxf_file->filename = strdup(filename);
-        dxf_file->line_number = 0;
+        file = malloc (sizeof(DxfFile));
+        file->fp = fp;
+        file->filename = strdup(filename);
+        file->line_number = 0;
         /*! \todo FIXME: dxf header and blocks need initialized ?
-        dxf_header_init (dxf_file->dxf_header);
-        dxf_block_init (dxf_file->dxf_block);
+        dxf_header_init (file->dxf_header);
+        dxf_block_init (file->dxf_block);
         */
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return dxf_file;
+        return file;
 }
 
 
