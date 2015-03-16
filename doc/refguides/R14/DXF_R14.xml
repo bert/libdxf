@@ -12801,6 +12801,165 @@ Paintbrush Picture
         <para>To avoid name collision between objects, developers should
         always use their registered developer prefix for their entries.</para>
       </section>
+
+      <section>
+        <title>Object Group Codes in DXF Files.</title>
+
+        <para>The following is an example of the OBJECTS section of a DXF
+        file:<table align="left">
+            <title>Example of a CLASSES section.</title>
+
+            <tgroup cols="2">
+              <tbody>
+                <row>
+                  <entry> 0</entry>
+
+                  <entry><emphasis>Beginning of OBJECTS
+                  section.</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>SECTION</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry> 2</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>OBJECTS</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry/>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry> 0</entry>
+
+                  <entry><emphasis>Beginning of named object dictionary (root
+                  dictionary object).</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>DICTIONARY</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry> 5</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>&lt;handle&gt;</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>AcDbDictionary</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry/>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry> 3</entry>
+
+                  <entry>Repeats for each entry.</entry>
+                </row>
+
+                <row>
+                  <entry>350</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>&lt;handle of child&gt;</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry/>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry> 0</entry>
+
+                  <entry>Groups of object data.</entry>
+                </row>
+
+                <row>
+                  <entry>&lt;object type&gt;</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>.</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>. data</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry>.</entry>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry/>
+
+                  <entry/>
+                </row>
+
+                <row>
+                  <entry> 0</entry>
+
+                  <entry><emphasis>End of OBJECTS section.</emphasis></entry>
+                </row>
+
+                <row>
+                  <entry>ENDSEC</entry>
+
+                  <entry/>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
