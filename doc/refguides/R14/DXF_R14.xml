@@ -12960,6 +12960,145 @@ Paintbrush Picture
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>Common Object Group Codes.</title>
+
+        <para>The following table shows group codes that apply to virtually
+        all non-graphical entities (objects).</para>
+
+        <para>When you refer to the table of group codes by entity type, which
+        lists the codes associated with specific entities, keep in mind that
+        the codes shown here can also be present.</para>
+
+        <para>Some of the group codes are included with an entity only if the
+        entity has non-default values for these properties.</para>
+
+        <para>When a group is omitted, its default value upon input (when
+        using DXFIN) is indicated in the third column.</para>
+
+        <para>If the value of a group code is equal to the default, it is
+        omitted upon output (when using DXFOUT).<table>
+            <title>Common object group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>0</entry>
+
+                  <entry>Object type.</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Handle.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>Start of application defined group
+                  "{application_name". For example, "{ACAD_REACTORS" indicates
+                  the start of the AutoCAD persistent reactors group.</entry>
+                </row>
+
+                <row>
+                  <entry>application-defined codes</entry>
+
+                  <entry>Codes and values within the 102 groups are
+                  application-defined.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of group, "}".</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The following table shows the group codes that are output if
+        persistent reactors have been attached to an object.<table>
+            <title>ACAD_REACTORS records.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>102</entry>
+
+                  <entry>"{ACAD_REACTORS" indicates the start of the AutoCAD
+                  persistent reactors group.</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Soft-pointer ID/handle to owner dictionary.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of group, "}".</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The following table shows the group codes that are output if an
+        extension dictionary has been attached to an object.<table>
+            <title>ACAD_XDICTIONARY records.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>102</entry>
+
+                  <entry>"{ACAD_XDICTIONARY" indicates the start of an
+                  extension dictionary group.</entry>
+                </row>
+
+                <row>
+                  <entry>360</entry>
+
+                  <entry>Hard-owner ID/handle to owner dictionary.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of group, "}".</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
