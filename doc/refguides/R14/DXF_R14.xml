@@ -13219,6 +13219,87 @@ Paintbrush Picture
         <para>Note that the prefix "ACAD_" is reserved for use by AutoCAD
         applications.</para>
       </section>
+
+      <section>
+        <title>DICTIONARYVAR.</title>
+
+        <para>The following group codes are used by DICTIONARYVAR
+        objects.<table>
+            <title>DICTIONARYVAR group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>0</entry>
+
+                  <entry>Object name (DICTIONARYVAR).</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Handle.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>Start of persistent reactors group; always
+                  "{ACAD_REACTORS".</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Soft-pointer ID/handle to owner dictionary
+                  (ACDBVARIABLEDICTIONARY).</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of persistent reactors group, always "}".</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (DictionaryVariables).</entry>
+                </row>
+
+                <row>
+                  <entry>280</entry>
+
+                  <entry>Object schema number (currently set to 0).</entry>
+                </row>
+
+                <row>
+                  <entry>1</entry>
+
+                  <entry>Value of variable.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>DICTIONARYVAR objects are used by AutoCAD as a means to store
+        named values in the database for <emphasis
+        role="bold">setvar</emphasis>/<emphasis role="bold">getvar</emphasis>
+        purposes without the need to add entries to the DXF HEADER
+        section.</para>
+
+        <para>Currently, the system variables that are stored as DICTIONARYVAR
+        objects are: DIMADEC, DIMDSEP, INDEXCTL, PROJECTNAME, and
+        XCLIPFRAME.</para>
+      </section>
     </section>
   </chapter>
 </book>
