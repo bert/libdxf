@@ -13300,6 +13300,92 @@ Paintbrush Picture
         objects are: DIMADEC, DIMDSEP, INDEXCTL, PROJECTNAME, and
         XCLIPFRAME.</para>
       </section>
+
+      <section>
+        <title>GROUP.</title>
+
+        <para>The following group codes are used by GROUP objects.<table>
+            <title>GROUP group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>0</entry>
+
+                  <entry>Object name (GROUP).</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Handle.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>Start of persistent reactors group; always
+                  "{ACAD_REACTORS" (persistent reactors group appears in all
+                  dictionaries except the main dictionary).</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Soft-pointer ID/handle to owner dictionary. For GROUP
+                  objects this is always the ACAD_GROUP entry of the named
+                  object dictionary.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of persistent reactors group, always "}".</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbGroup).</entry>
+                </row>
+
+                <row>
+                  <entry>300</entry>
+
+                  <entry>Group description.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>"Unnamed" flag: 1 = unnamed; 0 = named.</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Selectability flag: 1 = selectable; 0 = not
+                  selectable.</entry>
+                </row>
+
+                <row>
+                  <entry>340</entry>
+
+                  <entry>Handle of entity in group (one entry per
+                  object).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
