@@ -13099,6 +13099,78 @@ Paintbrush Picture
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>ACAD_PROXY_OBJECT.</title>
+
+        <para>The following group codes apply to ACAD_PROXY_OBJECT
+        objects.<table>
+            <title>ACAD_PROXY_OBJECT group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>DXF: Subclass marker (AcDbProxyObject).</entry>
+                </row>
+
+                <row>
+                  <entry>90</entry>
+
+                  <entry>DXF: Proxy object class ID (always 499).</entry>
+                </row>
+
+                <row>
+                  <entry>91</entry>
+
+                  <entry>DXF: Application object's class ID. Class IDs are
+                  based on the order of the class in the CLASSES section. The
+                  first class is given the ID of 500, the next is 501, and so
+                  on.</entry>
+                </row>
+
+                <row>
+                  <entry>93</entry>
+
+                  <entry>DXF: Size of object data in bits.</entry>
+                </row>
+
+                <row>
+                  <entry>310</entry>
+
+                  <entry>DXF: Binary object data (multiple entries can
+                  appear).</entry>
+                </row>
+
+                <row>
+                  <entry>330 or 340 or 350 or 360</entry>
+
+                  <entry>DXF: An object ID (multiple entries can
+                  appear).</entry>
+                </row>
+
+                <row>
+                  <entry>94</entry>
+
+                  <entry>DXF: 0 (indicates end of object ID section).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The 92 field is not used for AcDbProxyObject.</para>
+
+        <para>Objects of this class never have graphics.</para>
+      </section>
     </section>
   </chapter>
 </book>
