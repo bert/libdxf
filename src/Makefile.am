@@ -119,6 +119,8 @@ libdxf_la_SOURCES = \
   acad_proxy_entity.c \
   3dsolid.h \
   3dsolid.c \
+  3dline.h \
+  3dline.c \
   3dface.h \
   3dface.c
 

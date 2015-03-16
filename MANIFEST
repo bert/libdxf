@@ -134,6 +134,8 @@ po/quot.sed
 po/remove-potcdate.sin
 src/3dface.c
 src/3dface.h
+src/3dline.c
+src/3dline.h
 src/3dsolid.c
 src/3dsolid.h
 src/Makefile.am
