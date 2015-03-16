@@ -13171,6 +13171,54 @@ Paintbrush Picture
 
         <para>Objects of this class never have graphics.</para>
       </section>
+
+      <section>
+        <title>DICTIONARY.</title>
+
+        <para>The following group codes are used by DICTIONARY objects.<table>
+            <title>DICTIONARY group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbDictionary).</entry>
+                </row>
+
+                <row>
+                  <entry>3</entry>
+
+                  <entry>Entry name (one for each entry).</entry>
+                </row>
+
+                <row>
+                  <entry>350</entry>
+
+                  <entry>Handle of entry object (one for each entry).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>AutoCAD maintains items such as mline styles and group
+        definitions as objects in dictionaries.</para>
+
+        <para>The following sections describe the AutoCAD object group codes
+        maintained in dictionaries; however, other applications are free to
+        create and use their own dictionaries as they see fit.</para>
+
+        <para>Note that the prefix "ACAD_" is reserved for use by AutoCAD
+        applications.</para>
+      </section>
     </section>
   </chapter>
 </book>
