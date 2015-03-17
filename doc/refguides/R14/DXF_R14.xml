@@ -13453,6 +13453,122 @@ Paintbrush Picture
         <para>The IDBUFFER object is a utility object that is just a list of
         references to objects.</para>
       </section>
+
+      <section>
+        <title>IMAGEDEF.</title>
+
+        <para>The following group codes are used by IMAGEDEF objects.<table>
+            <title>IMAGEDEF group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>0</entry>
+
+                  <entry>Object name (IMAGEDEF).</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Handle.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>Start of persistent reactors group; always
+                  "{ACAD_REACTORS".</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Soft-pointer ID/handle to the ACAD_IMAGE_DICT
+                  dictionary.</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Soft-pointer ID/handle to IMAGEDEF_REACTOR object
+                  (multiple entries; one for each instance).</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of persistent reactors group, always "}".</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbRasterImageDef).</entry>
+                </row>
+
+                <row>
+                  <entry>90</entry>
+
+                  <entry>Class version. 0=R14 version.</entry>
+                </row>
+
+                <row>
+                  <entry>1</entry>
+
+                  <entry>File name of image.</entry>
+                </row>
+
+                <row>
+                  <entry>10</entry>
+
+                  <entry>Image size in pixels. DXF: U value; APP: 2D point (U
+                  and V values).</entry>
+                </row>
+
+                <row>
+                  <entry>20</entry>
+
+                  <entry>DXF: V value of image size in pixels.</entry>
+                </row>
+
+                <row>
+                  <entry>11</entry>
+
+                  <entry>Default size of one pixel in AutoCAD units. DXF: U
+                  value; APP: 2D point (U and V values).</entry>
+                </row>
+
+                <row>
+                  <entry>12</entry>
+
+                  <entry>DXF: V value of pixel size.</entry>
+                </row>
+
+                <row>
+                  <entry>280</entry>
+
+                  <entry>Image-is-loaded flag. 0=Unloaded; 1=Loaded.</entry>
+                </row>
+
+                <row>
+                  <entry>281</entry>
+
+                  <entry>Resolution units. 0=No units; 2=Centimeters;
+                  5=Inch.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
