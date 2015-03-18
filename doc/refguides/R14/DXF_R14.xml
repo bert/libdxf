@@ -13569,6 +13569,57 @@ Paintbrush Picture
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>IMAGEDEF_REACTOR.</title>
+
+        <para>The following group codes are used by IMAGEDEF_REACTOR
+        objects.<table>
+            <title>IMAGEDEF_REACTOR group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>0</entry>
+
+                  <entry>Object name (IMAGEDEF_REACTOR).</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Handle.</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbRasterImageDefReactor).</entry>
+                </row>
+
+                <row>
+                  <entry>90</entry>
+
+                  <entry>Class version. 2=R14 version.</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Object ID for associated image object.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
