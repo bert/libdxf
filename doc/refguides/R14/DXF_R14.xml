@@ -13620,6 +13620,95 @@ Paintbrush Picture
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>LAYER_INDEX.</title>
+
+        <para>The following group codes are used by LAYER_INDEX objects.<table>
+            <title>LAYER_INDEX group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>0</entry>
+
+                  <entry>Object name (LAYER_INDEX).</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Handle.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>Start of persistent reactors group; always
+                  "{ACAD_REACTORS".</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Soft-pointer ID/handle to owner dictionary.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of persistent reactors group, always "}".</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbIndex).</entry>
+                </row>
+
+                <row>
+                  <entry>40</entry>
+
+                  <entry>Time stamp (Julian date).</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbLayerIndex).</entry>
+                </row>
+
+                <row>
+                  <entry>8</entry>
+
+                  <entry>Layer name (multiple entries may exist).</entry>
+                </row>
+
+                <row>
+                  <entry>360</entry>
+
+                  <entry>Hard owner reference to IDBUFFER (multiple entries
+                  may exist).</entry>
+                </row>
+
+                <row>
+                  <entry>90</entry>
+
+                  <entry>Number of entries in the IDBUFFER list (multiple
+                  entries may exist).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
