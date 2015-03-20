@@ -12812,7 +12812,7 @@ Paintbrush Picture
             <tgroup cols="2">
               <tbody>
                 <row>
-                  <entry> 0</entry>
+                  <entry>0</entry>
 
                   <entry><emphasis>Beginning of OBJECTS
                   section.</emphasis></entry>
@@ -12825,7 +12825,7 @@ Paintbrush Picture
                 </row>
 
                 <row>
-                  <entry> 2</entry>
+                  <entry>2</entry>
 
                   <entry/>
                 </row>
@@ -12843,7 +12843,7 @@ Paintbrush Picture
                 </row>
 
                 <row>
-                  <entry> 0</entry>
+                  <entry>0</entry>
 
                   <entry><emphasis>Beginning of named object dictionary (root
                   dictionary object).</emphasis></entry>
@@ -12856,7 +12856,7 @@ Paintbrush Picture
                 </row>
 
                 <row>
-                  <entry> 5</entry>
+                  <entry>5</entry>
 
                   <entry/>
                 </row>
@@ -12886,7 +12886,7 @@ Paintbrush Picture
                 </row>
 
                 <row>
-                  <entry> 3</entry>
+                  <entry>3</entry>
 
                   <entry>Repeats for each entry.</entry>
                 </row>
@@ -12910,7 +12910,7 @@ Paintbrush Picture
                 </row>
 
                 <row>
-                  <entry> 0</entry>
+                  <entry>0</entry>
 
                   <entry>Groups of object data.</entry>
                 </row>
@@ -12946,7 +12946,7 @@ Paintbrush Picture
                 </row>
 
                 <row>
-                  <entry> 0</entry>
+                  <entry>0</entry>
 
                   <entry><emphasis>End of OBJECTS section.</emphasis></entry>
                 </row>
@@ -13708,6 +13708,163 @@ Paintbrush Picture
               </tbody>
             </tgroup>
           </table></para>
+      </section>
+
+      <section>
+        <title>MLINESTYLE.</title>
+
+        <para>The following group codes are used by MLINESTYLE objects.<table>
+            <title>MLINESTYLE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>0</entry>
+
+                  <entry>Object name (MLINESTYLE).</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Handle.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>Start of persistent reactors group; always
+                  "{ACAD_REACTORS" (persistent reactors group appears in all
+                  dictionaries except the main dictionary).</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Soft-pointer ID/handle to owner dictionary. For
+                  MLINESTYLE objects this is always the ACAD_MLINESTYLE entry
+                  of the named object dictionary.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of persistent reactors group; always "}".</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbMlineStyle).</entry>
+                </row>
+
+                <row>
+                  <entry>2</entry>
+
+                  <entry>Mline style name.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Flags (bit coded): 1 = fill on 2 = display miters 16
+                  = Start square end (line) cap 32 = Start inner arcs cap 64 =
+                  Start round (outer arcs) cap 256 = End square (line) cap 512
+                  = End inner arcs 1024 = End round (outer arcs) cap.</entry>
+                </row>
+
+                <row>
+                  <entry>3</entry>
+
+                  <entry>Style description (string, 255 characters
+                  maximum).</entry>
+                </row>
+
+                <row>
+                  <entry>62</entry>
+
+                  <entry>Fill color (integer, default = 256).</entry>
+                </row>
+
+                <row>
+                  <entry>51</entry>
+
+                  <entry>Start angle (real, default is 90 degrees).</entry>
+                </row>
+
+                <row>
+                  <entry>52</entry>
+
+                  <entry>End angle (real, default is 90 degrees).</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Number of elements.</entry>
+                </row>
+
+                <row>
+                  <entry>49</entry>
+
+                  <entry>Element offset (real, no default). Multiple entries
+                  can exist; one entry for each element.</entry>
+                </row>
+
+                <row>
+                  <entry>62</entry>
+
+                  <entry>Element color (integer, default = 0). Multiple
+                  entries can exist; one entry for each element.</entry>
+                </row>
+
+                <row>
+                  <entry>6</entry>
+
+                  <entry>Element linetype (string, default = BYLAYER).
+                  Multiple entries can exist; one entry for each
+                  element.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>The 2 group codes in mline entities and mlinestyle objects are
+        redundant fields.</para>
+
+        <para>These groups should not be modified under any circumstances,
+        although it is safe to read them and use their values.</para>
+
+        <para>The correct fields to modify are:</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>Mline</term>
+
+            <listitem>
+              <para>The 340 group in the same object, which indicates the
+              proper MLINESTYLE object.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>Mlinestyle</term>
+
+            <listitem>
+              <para>The 3 group value in the MLINESTYLE dictionary, which
+              precedes the 350 group that has the handle or entity name of the
+              current MLINESTYLE.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
       </section>
     </section>
   </chapter>
