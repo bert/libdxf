@@ -13866,6 +13866,63 @@ Paintbrush Picture
           </varlistentry>
         </variablelist>
       </section>
+
+      <section>
+        <title>OBJECT_PTR.</title>
+
+        <para>The following group codes are used by OBJECT_PTR objects.<table>
+            <title>OBJECT_PTR group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>0</entry>
+
+                  <entry>Object name (OBJECT_PTR).</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Handle.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>Start of persistent reactors group; always
+                  "{ACAD_REACTORS".</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Soft-pointer ID/handle to owner dictionary.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of persistent reactors group, always "}".</entry>
+                </row>
+
+                <row>
+                  <entry>1001</entry>
+
+                  <entry>Begin ASE xdata (ACADASER13).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
