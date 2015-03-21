@@ -13923,6 +13923,96 @@ Paintbrush Picture
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>RASTERVARIABLES.</title>
+
+        <para>The following group codes are used by RASTERVARIABLES
+        objects.<table>
+            <title>RASTERVARIABLES group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>0</entry>
+
+                  <entry>Object name (RASTERVARIABLES).</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Handle.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>Start of persistent reactors group; always
+                  "{ACAD_REACTORS".</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Soft-pointer ID/handle to owner dictionary. For a
+                  RASTERVARIABLES object this is always the ACAD_IMAGE_VARS
+                  entry of the named object dictionary.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of persistent reactors group, always "}".</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbRasterVariables).</entry>
+                </row>
+
+                <row>
+                  <entry>90</entry>
+
+                  <entry>Class version. 0=R14 version.</entry>
+                </row>
+
+                <row>
+                  <entry>70</entry>
+
+                  <entry>Display-image-frame flag. 0=No frame; 1=Display
+                  frame.</entry>
+                </row>
+
+                <row>
+                  <entry>71</entry>
+
+                  <entry>Image display quality (screen only). 0=Draft;
+                  1=High.</entry>
+                </row>
+
+                <row>
+                  <entry>72</entry>
+
+                  <entry>AutoCAD units for inserting images. This is what one
+                  AutoCAD unit is equal to for the purpose of inserting and
+                  scaling images with an associated resolution. 0=None,
+                  1=Millimeter, 2=Centimeter, 3=Meter, 4=Kilometer, 5=Inch,
+                  6=Foot, 7=Yard, 8=Mile.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
     </section>
   </chapter>
 </book>
