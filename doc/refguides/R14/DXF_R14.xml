@@ -14430,6 +14430,43 @@ Paintbrush Picture
           <para>Object Coordinate Systems (OCS).</para>
         </listitem>
       </itemizedlist>
+
+      <section>
+        <title>Database Objects.</title>
+
+        <para>AutoCAD drawings consist largely of structured containers for
+        database objects. Database objects each have the following:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Handle whose value is unique to the drawing/DXF file, and is
+            constant for the lifetime of the drawing.</para>
+
+            <para>This format has existed since AutoCAD Release 10, but as of
+            AutoCAD Release 13, handles are always enabled.</para>
+          </listitem>
+
+          <listitem>
+            <para>Optional xdata table, just as entities have had since
+            AutoCAD Release 11.</para>
+          </listitem>
+
+          <listitem>
+            <para>Optional persistent reactor table.</para>
+          </listitem>
+
+          <listitem>
+            <para>Optional ownership pointer to an extension dictionary, which
+            in turn owns subobjects placed in it by an application.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Symbol tables and symbol table records are database objects and,
+        thus, have a handle.</para>
+
+        <para>They can also have xdata and persistent reactors in their DXF
+        records.</para>
+      </section>
     </section>
   </chapter>
 </book>
