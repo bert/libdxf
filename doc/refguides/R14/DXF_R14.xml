@@ -14083,8 +14083,8 @@ Paintbrush Picture
             </tgroup>
           </table></para>
 
-        <para>The SPATIAL_INDEX is always written out empty to a DXF file.
-        </para>
+        <para>The SPATIAL_INDEX is always written out empty to a DXF
+        file.</para>
 
         <para>This object can be ignored.</para>
       </section>
@@ -14254,6 +14254,96 @@ Paintbrush Picture
               </tbody>
             </tgroup>
           </table></para>
+      </section>
+
+      <section>
+        <title>SORTENTSTABLE.</title>
+
+        <para>The following group codes are used by SORTENTSTABLE
+        objects.<table>
+            <title>SORTENTSTABLE group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>0</entry>
+
+                  <entry>Object name (SORTENTSTABLE).</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Handle.</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>Start of persistent reactors group; always
+                  "{ACAD_REACTORS".</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Soft-pointer ID/handle to owner dictionary
+                  (ACAD_SORTENTS).</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>End of persistent reactors group, always "}".</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbSortentsTable).</entry>
+                </row>
+
+                <row>
+                  <entry>330</entry>
+
+                  <entry>Soft pointer ID/handle to owner (currently only the
+                  *MODEL_SPACE or *PAPER_SPACE blocks).</entry>
+                </row>
+
+                <row>
+                  <entry>331</entry>
+
+                  <entry>Soft pointer ID/handle to an entity (zero or more
+                  entries may exist).</entry>
+                </row>
+
+                <row>
+                  <entry>5</entry>
+
+                  <entry>Sort handle (zero or more entries may exist).</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>If the SORTENTS Regen flag (bit-code value 16) is set, AutoCAD
+        regenerates entities in ascending handle order.</para>
+
+        <para>When the DRAWORDER command is used a SORTENTSTABLE object is
+        attached to the *MODEL_SPACE or *PAPER_SPACE block's extension
+        dictionary under the name ACAD_SORTENTS.</para>
+
+        <para>The SORTENTSTABLE object related to this dictionary associates a
+        different handle with each entity which redefines the order that the
+        entities are regenerated.</para>
       </section>
     </section>
   </chapter>
