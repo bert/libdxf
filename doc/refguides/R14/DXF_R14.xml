@@ -14345,6 +14345,56 @@ Paintbrush Picture
         different handle with each entity which redefines the order that the
         entities are regenerated.</para>
       </section>
+
+      <section>
+        <title>XRECORD.</title>
+
+        <para>The following group codes are common to all xrecord
+        objects.<table>
+            <title>XRECORD group codes.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Group codes</entry>
+
+                  <entry align="left">Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>100</entry>
+
+                  <entry>Subclass marker (AcDbXrecord).</entry>
+                </row>
+
+                <row>
+                  <entry>1-369 (except 5 and 105)</entry>
+
+                  <entry>These values can be used by an application in any
+                  way.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>Xrecord objects are used to store and manage arbitrary data.
+        </para>
+
+        <para>They are composed of DXF group codes with "normal object"
+        groups, (that is, non-xdata group codes) ranging from 1 through 369
+        for supported ranges.</para>
+
+        <para>This object is similar in concept to xdata but is not limited by
+        size or order.</para>
+
+        <para>Xrecord objects are designed to work in such a way as to not
+        offend releases R13c0 through R13c3.</para>
+
+        <para>However, if read into a pre-R13c4 level of AutoCAD, xrecord
+        objects disappear.</para>
+      </section>
     </section>
   </chapter>
 </book>
