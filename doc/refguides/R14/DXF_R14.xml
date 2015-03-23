@@ -14396,5 +14396,40 @@ Paintbrush Picture
         objects disappear.</para>
       </section>
     </section>
+
+    <section>
+      <title>Advanced DXF Issues .</title>
+
+      <para>This section discusses the advanced concepts related to DXF group
+      codes. </para>
+
+      <para>Topics in this section:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Database Objects.</para>
+        </listitem>
+
+        <listitem>
+          <para>Persistent Inter-Object Reference Handles.</para>
+        </listitem>
+
+        <listitem>
+          <para>Subclass Markers.</para>
+        </listitem>
+
+        <listitem>
+          <para>Extension Dictionary and Persistent Reactors.</para>
+        </listitem>
+
+        <listitem>
+          <para>Extended Data.</para>
+        </listitem>
+
+        <listitem>
+          <para>Object Coordinate Systems (OCS).</para>
+        </listitem>
+      </itemizedlist>
+    </section>
   </chapter>
 </book>
