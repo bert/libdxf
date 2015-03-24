@@ -14984,6 +14984,146 @@ MILD_STEEL</programlisting>
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>Object Coordinate Systems (OCS).</title>
+
+        <para>To save space in the drawing database (and in the DXF file), the
+        points associated with each entity are expressed in terms of the
+        entity's own object coordinate system (OCS).</para>
+
+        <para>The OCS was referred to as ECS in previous releases of
+        AutoCAD.</para>
+
+        <para>With OCS, the only additional information needed to describe the
+        entity's position in 3D space is the 3D vector describing the Z axis
+        of the OCS, and the elevation value.</para>
+
+        <para>For a given Z axis (or extrusion) direction, there are an
+        infinite number of coordinate systems, defined by translating the
+        origin in 3D space and by rotating the X and Y axes around the Z
+        axis.</para>
+
+        <para>However, for the same Z axis direction, there is only one
+        OCS.</para>
+
+        <para>It has the following properties:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Its origin coincides with the WCS origin.</para>
+          </listitem>
+
+          <listitem>
+            <para>The orientation of the X and Y axes within the XY plane are
+            calculated in an arbitrary but consistent manner.</para>
+
+            <para>AutoCAD performs this calculation using the arbitrary axis
+            algorithm (see "Arbitrary Axis Algorithm").</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>For some entities, the OCS is equivalent to the WCS and all
+        points (DXF groups 10-37) are expressed in World coordinates.</para>
+
+        <para>See the following table.<table>
+            <title>Coordinate systems associated with an entity type.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry align="left">Entities</entry>
+
+                  <entry align="left">Notes</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>3D entities such as line, point, 3dface, 3D polyline,
+                  3D vertex, 3D mesh, 3D mesh vertex.</entry>
+
+                  <entry>These entities do not lie in a particular plane. All
+                  points are expressed in world coordinates. Of these
+                  entities, only lines and points can be extruded. Their
+                  extrusion direction can differ from the World Z
+                  axis.</entry>
+                </row>
+
+                <row>
+                  <entry>2D entities such as circle, arc, solid, trace, text,
+                  attrib, attdef, shape, insert, 2D polyline, 2D vertex,
+                  lwpolyline, hatch, image.</entry>
+
+                  <entry>These entities are planar in nature. All points are
+                  expressed in object coordinates. All of these entities can
+                  be extruded. Their extrusion direction can differ from the
+                  World Z axis.</entry>
+                </row>
+
+                <row>
+                  <entry>Dimension.</entry>
+
+                  <entry>Some of a dimension's points are expressed in WCS and
+                  some in OCS.</entry>
+                </row>
+
+                <row>
+                  <entry>Viewport.</entry>
+
+                  <entry>Expressed in World coordinates.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+
+        <para>Once AutoCAD has established the OCS for a given entity, the OCS
+        works as follows:</para>
+
+        <para>The elevation value stored with an entity indicates how far to
+        shift the XY plane along the Z axis (from the WCS origin) to make it
+        coincide with the plane that contains the entity.</para>
+
+        <para>How much of this is the user-defined elevation is
+        unimportant.</para>
+
+        <para>Any 2D points entered through the UCS are transformed into the
+        corresponding 2D points in the OCS, which is shifted and rotated with
+        respect to the UCS.</para>
+
+        <para>These are a few ramifications of this process:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>You cannot reliably find out what UCS was in effect when an
+            entity was acquired.</para>
+          </listitem>
+
+          <listitem>
+            <para>When you enter the XY coordinates of an entity in a given
+            UCS and then do a DXFOUT, you probably won't recognize those XY
+            coordinates in the DXF file.</para>
+
+            <para>You must know the method by which AutoCAD calculates the X
+            and Y axes in order to work with these values.</para>
+          </listitem>
+
+          <listitem>
+            <para>The elevation value stored with an entity and output in DXF
+            files is a sum of the Z-coordinate difference between the UCS XY
+            plane and the OCS XY plane, and the elevation value that the user
+            specified at the time the entity was drawn.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Topics in this section:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Arbitrary Axis Algorithm.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
     </section>
   </chapter>
 </book>
