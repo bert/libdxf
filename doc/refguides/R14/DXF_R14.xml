@@ -14467,6 +14467,122 @@ Paintbrush Picture
         <para>They can also have xdata and persistent reactors in their DXF
         records.</para>
       </section>
+
+      <section>
+        <title>Persistent Inter-Object Reference Handles.</title>
+
+        <para>A set of group code ranges permit objects to directly specify
+        references to other objects within the same drawing/DXF file.</para>
+
+        <para>There are four ranges to go with the four types of relationships
+        that can be specified:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Soft-pointer handle.</para>
+          </listitem>
+
+          <listitem>
+            <para>Hard-pointer handle.</para>
+          </listitem>
+
+          <listitem>
+            <para>Soft-owner handle.</para>
+          </listitem>
+
+          <listitem>
+            <para>Hard-owner handle.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>These handle types are manifested as entity names in AutoLISP,
+        as ads_name values in ADSRX and as like-named classes derived from
+        ARX.</para>
+
+        <para>These values are always maintained in insert, xref, and wblock
+        operations such that references between objects in a set being copied
+        are updated to point to the copied objects, while references to other
+        objects remain unchanged.</para>
+
+        <para>Also, a group code range for "arbitrary" handles is defined to
+        allow convenient storage of handle values that are not converted to
+        entity names and then translated in insert, xref, or wblock.</para>
+
+        <para><note>
+            <para>If you use 1005 xdata group codes to store handles, they are
+            treated as soft-pointer handles, which means that when groups of
+            objects are copied or are inserted into another drawing,
+            references between the involved objects are translated.</para>
+
+            <para>Although 1005 xdata items are always returned as handles in
+            AutoLISP and ADSRX, all of the reference handle group code ranges
+            are represented as "entity names" in AutoLISP and as ads_name
+            structures in ADSRX.</para>
+          </note>Topics in this section:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Pointer and Ownership References.</para>
+          </listitem>
+
+          <listitem>
+            <para>Hard and Soft.</para>
+          </listitem>
+
+          <listitem>
+            <para>Arbitrary Handles.</para>
+          </listitem>
+
+          <listitem>
+            <para>1005 Group Codes.</para>
+          </listitem>
+        </itemizedlist>
+
+        <section>
+          <title>Pointer and Ownership References.</title>
+
+          <para>A pointer is a reference that indicates usage but not
+          possession or responsibility for another object.</para>
+
+          <para>Pointer references mean that the object uses the other object
+          in some way, and shares access to it.</para>
+
+          <para>An ownership reference means that an owner object is
+          responsible for the objects for which it has an owner handle.</para>
+
+          <para>Ownership references direct the writing of the entire DWG and
+          DXF files in a generic manner, such as beginning from a few key root
+          objects, the writing of an owner handle.</para>
+
+          <para>An object can have any number of pointer references associated
+          with it, but it can have only one owner.</para>
+        </section>
+
+        <section>
+          <title>Hard and Soft.</title>
+
+          <para>Hard references, whether they are pointer or owner, protect an
+          object from being purged.</para>
+
+          <para>Soft references do not.</para>
+
+          <para>In AutoCAD, block definitions and complex entities are hard
+          owners of their elements.</para>
+
+          <para>A symbol table and dictionaries are soft owners of their
+          elements.</para>
+
+          <para>Polyline entities are hard owners of their vertex and seqend
+          entities.</para>
+
+          <para>Insert entities are hard owners of their attrib and seqend
+          entities.</para>
+
+          <para>When establishing a reference to another object, it is
+          recommended that you think about whether the reference should
+          protect an object from the PURGE command.</para>
+        </section>
+      </section>
     </section>
   </chapter>
 </book>
