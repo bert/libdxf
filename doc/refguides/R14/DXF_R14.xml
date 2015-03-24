@@ -15123,6 +15123,69 @@ MILD_STEEL</programlisting>
             <para>Arbitrary Axis Algorithm.</para>
           </listitem>
         </itemizedlist>
+
+        <section>
+          <title>Arbitrary Axis Algorithm.</title>
+
+          <para>The arbitrary axis algorithm is used by AutoCAD internally to
+          implement the arbitrary but consistent generation of object
+          coordinate systems for all entities which use object
+          coordinates.</para>
+
+          <para>Given a unit-length vector to be used as the Z axis of a
+          coordinate system, the arbitrary axis algorithm generates a
+          corresponding X axis for the coordinate system.</para>
+
+          <para>The Y axis follows by application of the right-hand
+          rule.</para>
+
+          <para>The method is to examine the given Z axis (also called the
+          normal vector) and see if it is close to the positive or negative
+          World Z axis.</para>
+
+          <para>If it is, cross the World Y axis with the given Z axis to
+          arrive at the arbitrary X axis.</para>
+
+          <para>If not, cross the World Z axis with the given Z axis to arrive
+          at the arbitrary X axis.</para>
+
+          <para>The boundary at which the decision is made was chosen to be
+          both inexpensive to calculate and completely portable across
+          machines.</para>
+
+          <para>This is achieved by having a sort of "square" polar cap, the
+          bounds of which is 1/64, which is precisely specifiable in six
+          decimal-fraction digits and in six binary-fraction bits.</para>
+
+          <para>The algorithm does the following. (All vectors are assumed to
+          be in 3D space and specified in the World Coordinate System).</para>
+
+          <programlisting>Let the given normal vector be called N.
+Let the world Y axis be called Wy, which is always (0,1,0).
+Let the world Z axis be called Wz, which is always (0,0,1).</programlisting>
+
+          <para>Here we are looking for the arbitrary <emphasis>X</emphasis>
+          and <emphasis>Y</emphasis> axes to go with the normal
+          <emphasis>N</emphasis>.</para>
+
+          <para>They will be called <emphasis>Ax</emphasis> and
+          <emphasis>Ay</emphasis>.</para>
+
+          <para><emphasis>N</emphasis> could also be called
+          <emphasis>Az</emphasis> (the arbitrary <emphasis>Z</emphasis> axis)
+          as follows:</para>
+
+          <programlisting>If (abs (Nx) &lt; 1/64) and (abs (Ny) &lt; 1/64)  then
+   Ax = Wy X N  (where "X" is the cross-product operator).
+Otherwise,
+   Ax = Wz X N.
+
+Scale Ax to unit length.</programlisting>
+
+          <para>The method of getting the Ay vector is:</para>
+
+          <programlisting>Ay = N X Ax.  Scale Ay to unit length.</programlisting>
+        </section>
       </section>
     </section>
   </chapter>
