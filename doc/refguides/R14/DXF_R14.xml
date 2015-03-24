@@ -14582,6 +14582,26 @@ Paintbrush Picture
           recommended that you think about whether the reference should
           protect an object from the PURGE command.</para>
         </section>
+
+        <section>
+          <title>Arbitrary Handles.</title>
+
+          <para>Arbitrary handles are distinct in that they are not translated
+          to session persistent identifiers internally, to entity names in
+          AutoLISP, and so on.</para>
+
+          <para>They are stored as handles.</para>
+
+          <para>When translation of handle values are translated in
+          drawing-merge operations, arbitrary handles are ignored.</para>
+
+          <para>In all environments, arbitrary handles can be exchanged for
+          entity names of the current drawing by means of the <emphasis
+          role="bold">handent</emphasis> functions.</para>
+
+          <para>A common usage of arbitrary handles is to refer to objects in
+          external DXF and DWG files.</para>
+        </section>
       </section>
     </section>
   </chapter>
