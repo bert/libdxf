@@ -14602,6 +14602,387 @@ Paintbrush Picture
           <para>A common usage of arbitrary handles is to refer to objects in
           external DXF and DWG files.</para>
         </section>
+
+        <section>
+          <title>1005 Group Codes.</title>
+
+          <para>1005 xdata group codes have the same behavior and semantics as
+          soft pointers, which means that they are translated whenever the
+          host object is merged into a different drawing.</para>
+
+          <para>However, 1005 items are not translated to session-persistent
+          identifiers, internally entity names in AutoLISP and ADSRX.</para>
+
+          <para>They are stored as handles.</para>
+        </section>
+      </section>
+
+      <section>
+        <title>Subclass Markers.</title>
+
+        <para>A big problem with filing a stream of group data is that a
+        single object may be composed of several filer members, one for each
+        level of inheritance where filing is done, which can be done by
+        different developers.</para>
+
+        <para>Because each level of inheritance can evolve separately, it is
+        necessary to segregate the data of each class filer member from each
+        other.</para>
+
+        <para>All class filer members are expected to precede their
+        class-specific portion of instance data with a "subclass" marker--a
+        100 group code followed by a string with the actual name of the
+        class.</para>
+
+        <para>This does not affect the state needed to define the object's
+        state, but it provides a means for the DXF file parsers to direct the
+        group codes to the corresponding application software.</para>
+
+        <para>For example, an object which has data from different derived
+        classes would be represented as follows:</para>
+
+        <programlisting>999
+FOOGRANDCHILD, defined by class AcDbSonOfSonOfFoo, which
+999
+is derived from AcDbSonOfFoo
+  0
+FOOGRANDCHILD
+  5
+C2
+100
+AcDbFoo
+999
+Uses 10/20/30 group codes
+10
+1.1
+20
+2.3
+30
+7.3
+100
+AcDbSonOfFoo
+999
+Also uses 10/20/30 group codes, for a different purpose
+10
+1.1
+20
+2.3
+30
+7.3
+100
+AcDbSonOfSonOfFoo
+999
+Also uses 10/20/30 group codes, for yet another purpose
+10
+13.2
+20
+23.1
+30
+31.2
+999
+Now for the Xdata
+1001
+APP_1
+1070
+45
+1001
+APP_2
+1004
+
+18A5B3EF2C199A </programlisting>
+      </section>
+
+      <section>
+        <title>Extension Dictionary and Persistent Reactors.</title>
+
+        <para>The extension dictionary is an optional sequence that stores the
+        handle of a dictionary object that belongs to the current object,
+        which in turn may contain entries.</para>
+
+        <para>This facility allows attachment of arbitrary database objects to
+        any database object.</para>
+
+        <para>Any object or entity may have this section.</para>
+
+        <para>Persistent reactors are an optional sequence that stores object
+        handles of objects registering themselves as reactors on the current
+        object.</para>
+
+        <para>Any object or entity may have this section.</para>
+      </section>
+
+      <section>
+        <title>Extended Data.</title>
+
+        <para>Extended data is created by AutoLISP or ARX applications.</para>
+
+        <para>If an entity contains extended data, it follows the entity's
+        normal definition data.</para>
+
+        <para>The group codes 1000 through 1071 describe extended data.</para>
+
+        <para>The following is an example of an entity containing extended
+        data in DXF format.</para>
+
+        <para>Normal entity definition data:</para>
+
+        <programlisting>  0
+INSERT
+  5
+F11
+100
+AcDbEntity
+  8
+TOP
+100
+AcDbBlockReference
+2
+BLOCK_A
+10
+0.0
+20
+0.0
+30
+
+0.0</programlisting>
+
+        <para>Extended entity definition data:</para>
+
+        <programlisting>1001
+AME_SOL
+1002
+{
+1070
+0
+1071
+1.95059E+06
+1070
+519
+1010
+2.54717
+1020
+2.122642
+1030
+2.049201
+1005
+ECD
+1005
+EE9
+1005
+0
+1040
+0.0
+1040
+1.0
+1000
+
+MILD_STEEL</programlisting>
+
+        <para>The group code 1001 indicates the beginning of extended
+        data.</para>
+
+        <para>In contrast to normal entity data, with extended data the same
+        group code can appear multiple times, and order is important.</para>
+
+        <para>Extended data are grouped by registered application name.</para>
+
+        <para>Each registered application's group begins with a 1001 group
+        code with the application name as the string value.</para>
+
+        <para>Registered application names correspond to APPID symbol table
+        entries.</para>
+
+        <para>An application can use as many APPID names as needed. APPID
+        names are permanent, although they can be purged if they aren't
+        currently used in the drawing.</para>
+
+        <para>Each APPID name can have no more than one data group attached to
+        each entity.</para>
+
+        <para>Within an application's group, the sequence of extended data
+        groups and their meaning is defined by the application.</para>
+
+        <para>The extended data group codes listed in the following table
+        values as described:</para>
+
+        <para><table align="left">
+            <title>Extended data group codes and descriptions.</title>
+
+            <tgroup cols="3">
+              <thead>
+                <row>
+                  <entry>Entity name</entry>
+
+                  <entry>Group code</entry>
+
+                  <entry>Description</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>String</entry>
+
+                  <entry>1000</entry>
+
+                  <entry>Strings in extended data can be up to 255 bytes long
+                  (with the 256th byte reserved for the null
+                  character).</entry>
+                </row>
+
+                <row>
+                  <entry>Application name</entry>
+
+                  <entry>1001 also a string value</entry>
+
+                  <entry>Application names can be up to 31 bytes long (the
+                  32nd byte is reserved for the null character). <emphasis
+                  role="bold">NOTE:</emphasis> do not add a 1001 group into
+                  your extended data because AutoCAD assumes it is the
+                  beginning of a new application extended data group. </entry>
+                </row>
+
+                <row>
+                  <entry>Control string</entry>
+
+                  <entry>1002</entry>
+
+                  <entry>An extended data control string can be either "{"or
+                  "}". These braces enable applications to organize their data
+                  by subdividing the data into lists. The left brace begins a
+                  list, and the right brace terminates the most recent list.
+                  Lists can be nested. When AutoCAD reads the extended data
+                  for a particular application, it checks to ensure that
+                  braces are balanced.</entry>
+                </row>
+
+                <row>
+                  <entry>Layer name</entry>
+
+                  <entry>1003</entry>
+
+                  <entry>Name of the layer associated with the extended
+                  data.</entry>
+                </row>
+
+                <row>
+                  <entry>Binary data</entry>
+
+                  <entry>1004</entry>
+
+                  <entry>Binary data is organized into variable-length chunks.
+                  The maximum length of each chunk is 127 bytes. In ASCII DXF
+                  files, binary data is represented as a string of hexadecimal
+                  digits, two per binary byte.</entry>
+                </row>
+
+                <row>
+                  <entry>Database handle</entry>
+
+                  <entry>1005</entry>
+
+                  <entry>Handles of entities in the drawing database.
+                  <emphasis role="bold">NOTE:</emphasis> when a drawing with
+                  handles and extended data handles is imported into another
+                  drawing using INSERT, INSERT *, XREF Bind, XBIND, or partial
+                  DXFIN, the extended data handles are translated in the same
+                  manner as their corresponding entity handles, thus
+                  maintaining their binding. This is also done in the EXPLODE
+                  block operation or for any other AutoCAD operation. When
+                  AUDIT detects an extended data handle that doesn't match the
+                  handle of an entity in the drawing file, it is considered an
+                  error. If AUDIT is fixing entities, it sets the handle to
+                  0.</entry>
+                </row>
+
+                <row>
+                  <entry>3 reals</entry>
+
+                  <entry>1010, 1020, 1030</entry>
+
+                  <entry>Three real values, in the order X, Y, Z. They can be
+                  used as a point or vector record. AutoCAD never alters their
+                  value.</entry>
+                </row>
+
+                <row>
+                  <entry>World space position</entry>
+
+                  <entry>1011, 1021, 1031</entry>
+
+                  <entry>Unlike a simple 3D point, the world space coordinates
+                  are moved, scaled, rotated, and mirrored along with the
+                  parent entity to which the extended data belongs. The world
+                  space position is also stretched when the STRETCH command is
+                  applied to the parent entity and this point lies within the
+                  select window.</entry>
+                </row>
+
+                <row>
+                  <entry>World space displacement</entry>
+
+                  <entry>1012, 1022, 1032</entry>
+
+                  <entry>Also a 3D point that is scaled, rotated, and mirrored
+                  along with the parent (but is not moved or
+                  stretched).</entry>
+                </row>
+
+                <row>
+                  <entry>World direction</entry>
+
+                  <entry>1013, 1023, 1033</entry>
+
+                  <entry>Also a 3D point that is rotated and mirrored along
+                  with the parent (but is not moved, scaled, or
+                  stretched).</entry>
+                </row>
+
+                <row>
+                  <entry>Real</entry>
+
+                  <entry>1040</entry>
+
+                  <entry>A real value.</entry>
+                </row>
+
+                <row>
+                  <entry>Distance</entry>
+
+                  <entry>1041</entry>
+
+                  <entry>A real value that is scaled along with the parent
+                  entity.</entry>
+                </row>
+
+                <row>
+                  <entry>Scale factor</entry>
+
+                  <entry>1042</entry>
+
+                  <entry>Also a real value that is scaled along with the
+                  parent. The difference between a distance and a scale factor
+                  is application-defined.</entry>
+                </row>
+
+                <row>
+                  <entry>Integer</entry>
+
+                  <entry>1070</entry>
+
+                  <entry>A 16-bit integer (signed or unsigned).</entry>
+                </row>
+
+                <row>
+                  <entry>Long</entry>
+
+                  <entry>1071</entry>
+
+                  <entry>A 32-bit signed (long) integer.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
       </section>
     </section>
   </chapter>
