@@ -15189,4 +15189,96 @@ Scale Ax to unit length.</programlisting>
       </section>
     </section>
   </chapter>
+
+  <chapter>
+    <title>DXF Reference Revision History.</title>
+
+    <variablelist>
+      <varlistentry>
+        <term>u14.1.04 - 24 June 1998.</term>
+
+        <listitem>
+          <para><emphasis role="bold">Tables Section - LTYPE</emphasis></para>
+
+          <para>Revised descriptions of codes 74, 75, and 50.</para>
+
+          <para><emphasis role="bold">Entities Section -
+          ELLIPSE</emphasis></para>
+
+          <para>Revised descriptions of the codes 11, 21, and 31.</para>
+
+          <para>Revised parameter option's equation.</para>
+
+          <para><emphasis role="bold">Entities Section -
+          HATCH</emphasis></para>
+
+          <para>Remove "optional" from code 47.</para>
+
+          <para>Boundary Path Data, Spline edge data group codes .. change
+          "center point" to "control point" in description of codes 10 and
+          20.</para>
+
+          <para><emphasis role="bold">Entities Section -
+          MLINE</emphasis></para>
+
+          <para>Revised description and values for code 71.</para>
+
+          <para><emphasis role="bold">Entities Section -
+          MTEXT</emphasis></para>
+
+          <para>Added value 5 and removed values 2 and 4 of code 72.</para>
+
+          <para><emphasis role="bold">Objects Section -
+          MLINESTYLE</emphasis></para>
+
+          <para>Fill color, code 62, only one element exists for overall fill
+          color.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>u14.1.03 - 16 Jan. 1998.</term>
+
+        <listitem>
+          <para>Added content from appendix B of the Customization
+          Guide.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>u14.1.02 - 1 Dec. 1997, Minor corrections.</term>
+
+        <listitem>
+          <para><emphasis role="bold">Classes Section</emphasis></para>
+
+          <para>Added more bit values for group 90 codes.</para>
+
+          <para><emphasis role="bold">Entities Section -
+          TEXT</emphasis></para>
+
+          <para>This topic was missing from the HTML versions, it has been
+          added.</para>
+
+          <para><emphasis role="bold">Objects Section -
+          OBJECT_PTR</emphasis></para>
+
+          <para>Added codes 330 and 102 following the first 102.</para>
+
+          <para><emphasis role="bold">Objects Section -
+          RASTERVARIABLES</emphasis></para>
+
+          <para>Changed codes 71, 72, and 73 to 70, 71, and 72,
+          respectively.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>u14.1.01 - Updated from R13 spec.</term>
+
+        <listitem>
+          <para>...</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </chapter>
 </book>
