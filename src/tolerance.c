@@ -79,4 +79,70 @@ dxf_tolerance_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF
+ * \c TOLERANCE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfTolerance *
+dxf_tolerance_init
+(
+        DxfTolerance *tolerance
+                /*!< DXF tolerance entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                tolerance = dxf_tolerance_new ();
+        }
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfTolerance struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        tolerance->id_code = 0;
+        tolerance->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        tolerance->layer = strdup (DXF_DEFAULT_LAYER);
+        tolerance->x0 = 0.0;
+        tolerance->y0 = 0.0;
+        tolerance->z0 = 0.0;
+        tolerance->x1 = 0.0;
+        tolerance->y1 = 0.0;
+        tolerance->z1 = 0.0;
+        tolerance->extr_x0 = 0.0;
+        tolerance->extr_y0 = 0.0;
+        tolerance->extr_z0 = 0.0;
+        tolerance->elevation = 0.0;
+        tolerance->thickness = 0.0;
+        tolerance->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        tolerance->visibility = DXF_DEFAULT_VISIBILITY;
+        tolerance->color = DXF_COLOR_BYLAYER;
+        tolerance->paperspace = DXF_MODELSPACE;
+        tolerance->dictionary_owner_soft = strdup ("");
+        tolerance->dictionary_owner_hard = strdup ("");
+        tolerance->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (tolerance);
+}
+
+
 /* EOF*/
