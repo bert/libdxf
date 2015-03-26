@@ -238,6 +238,8 @@ src/text.c
 src/text.h
 src/thumbnail.c
 src/thumbnail.h
+src/tolerance.c
+src/tolerance.h
 src/trace.c
 src/trace.h
 src/ucs.c

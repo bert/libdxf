@@ -142,6 +142,10 @@ dxf_tolerance
 } DxfTolerance;
 
 
+DxfTolerance *
+dxf_tolerance_new ();
+
+
 #endif /* LIBDXF_SRC_TOLERANCE_H */
 
 

@@ -18,6 +18,8 @@ libdxf_la_SOURCES = \
   ucs.c \
   trace.h \
   trace.c \
+  tolerance.h \
+  tolerance.c \
   thumbnail.h \
   thumbnail.c \
   text.h \
