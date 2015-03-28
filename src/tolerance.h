@@ -149,6 +149,12 @@ dxf_tolerance_init
 (
         DxfTolerance *tolerance
 );
+DxfTolerance *
+dxf_tolerance_read
+(
+        DxfFile *fp,
+        DxfTolerance *tolerance
+);
 int
 dxf_tolerance_free
 (
