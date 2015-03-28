@@ -152,7 +152,7 @@ dxf_arc_init
  * Now follows some data for the \c ARC, to be terminated with a "  0"
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
- * While parsing the DXF file store data in \c dxf_arc. \n
+ * While parsing the DXF file store data in \c arc. \n
  *
  * \return a pointer to \c arc.
  *
@@ -250,8 +250,7 @@ dxf_arc_read
                         fscanf (fp->fp, "%lf\n", &arc->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
-                        && (strcmp (temp_string, "38") == 0)
-                        && (arc->elevation != 0.0))
+                        && (strcmp (temp_string, "38") == 0))
                 {
                         /* Now follows a string containing the
                          * elevation. */
