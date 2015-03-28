@@ -102,7 +102,7 @@ dxf_tolerance
         char *dictionary_owner_hard;
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360. */
-        /* Specific members for a DXF arc. */
+        /* Specific members for a DXF tolerance. */
         char *dimstyle_name;
                 /*!< Dimension style name.\n
                  * Group code = 3.  */
