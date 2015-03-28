@@ -117,6 +117,7 @@ dxf_tolerance_init
                   __FUNCTION__);
                 return (NULL);
         }
+        tolerance->dimstyle_name = strdup ("");
         tolerance->id_code = 0;
         tolerance->linetype = strdup (DXF_DEFAULT_LINETYPE);
         tolerance->layer = strdup (DXF_DEFAULT_LAYER);
