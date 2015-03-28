@@ -128,7 +128,7 @@ dxf_ole2frame
                 /*!< Z-value of the direction vector.\n
                  * Group code = 31. */
         int ole_version_number ;
-                /*!<  OLE version number ).\n
+                /*!<  OLE version number.\n
                  * Group code = 70. */
         int ole_object_type;
                 /*!< OLE object type, 1 = link, 2 = embedded, 3 = static.\n
