@@ -408,6 +408,175 @@ dxf_tolerance_read
 
 
 /*!
+ * \brief Write DXF output for a DXF \c TOLERANCE entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_tolerance_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfTolerance *tolerance
+                /*!< DXF \c TOLERANCE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("TOLERANCE");
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (tolerance == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (tolerance->dimstyle_name, "") == 0)
+        {
+                fprintf (stderr, "Error in dxf_tolerance_write () empty dimstyle name for the %s entity with id-code: %x.\n",
+                        dxf_entity_name, tolerance->id_code);
+                fprintf (stderr, "\tskipping %s entity.\n",
+                        dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (tolerance->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, tolerance->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is reset to default linetype")),
+                  dxf_entity_name);
+                tolerance->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (tolerance->layer, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, tolerance->id_code);
+                fprintf (stderr,
+                  (_("\t%s entity is relocated to layer 0")),
+                  dxf_entity_name);
+                tolerance->layer = DXF_DEFAULT_LAYER;
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (tolerance->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", tolerance->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (tolerance->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", tolerance->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (tolerance->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", tolerance->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (tolerance->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", tolerance->layer);
+        if (strcmp (tolerance->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", tolerance->linetype);
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (tolerance->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", tolerance->elevation);
+        }
+        if (tolerance->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", tolerance->color);
+        }
+        if (tolerance->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", tolerance->linetype_scale);
+        }
+        if (tolerance->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", tolerance->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbFcf\n");
+        }
+        if (tolerance->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", tolerance->thickness);
+        }
+        fprintf (fp->fp, "  3\n%s\n", tolerance->dimstyle_name);
+        fprintf (fp->fp, " 10\n%f\n", tolerance->x0);
+        fprintf (fp->fp, " 20\n%f\n", tolerance->y0);
+        fprintf (fp->fp, " 30\n%f\n", tolerance->z0);
+        if ((fp->acad_version_number >= AutoCAD_12)
+                && (tolerance->extr_x0 != 0.0)
+                && (tolerance->extr_y0 != 0.0)
+                && (tolerance->extr_z0 != 1.0))
+        {
+                fprintf (fp->fp, "210\n%f\n", tolerance->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", tolerance->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", tolerance->extr_z0);
+        }
+        fprintf (fp->fp, " 11\n%f\n", tolerance->x1);
+        fprintf (fp->fp, " 21\n%f\n", tolerance->y1);
+        fprintf (fp->fp, " 31\n%f\n", tolerance->z1);
+        /* Clean up. */
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c TOLERANCE and all it's
  * data fields.
  *
