@@ -151,4 +151,56 @@ dxf_ole2frame_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c OLE2FRAME and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+int
+dxf_ole2frame_free
+(
+        DxfOle2Frame *ole2frame
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c OLE2FRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        if (ole2frame->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfOle2Frame was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (ole2frame->end_of_data);
+        free (ole2frame->length_of_binary_data);
+        free (ole2frame->linetype);
+        free (ole2frame->layer);
+        free (ole2frame->dictionary_owner_soft);
+        free (ole2frame->dictionary_owner_hard);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (ole2frame->binary_data[i]);
+        }
+        free (ole2frame);
+        ole2frame = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

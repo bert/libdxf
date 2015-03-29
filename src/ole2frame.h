@@ -161,6 +161,11 @@ dxf_ole2frame_init
 (
         DxfOle2Frame *ole2frame
 );
+int
+dxf_ole2frame_free
+(
+        DxfOle2Frame *ole2frame
+);
 
 
 #endif /* LIBDXF_SRC_OLE2FRAME_H */
