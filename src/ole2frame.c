@@ -76,4 +76,79 @@ dxf_ole2frame_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a \c OLE2FRAME
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfOle2Frame *
+dxf_ole2frame_init
+(
+        DxfOle2Frame *ole2frame
+                /*!< DXF \c OLEFRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                ole2frame = dxf_ole2frame_new ();
+        }
+        if (ole2frame == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory for a DxfOle2Frame struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        ole2frame->id_code = 0;
+        ole2frame->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        ole2frame->layer = strdup (DXF_DEFAULT_LAYER);
+        ole2frame->elevation = 0.0;
+        ole2frame->thickness = 0.0;
+        ole2frame->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        ole2frame->visibility = DXF_DEFAULT_VISIBILITY;
+        ole2frame->color = DXF_COLOR_BYLAYER;
+        ole2frame->paperspace = DXF_MODELSPACE;
+        ole2frame->dictionary_owner_soft = strdup ("");
+        ole2frame->dictionary_owner_hard = strdup ("");
+        ole2frame->end_of_data = strdup ("");
+        ole2frame->length_of_binary_data = strdup ("");
+        ole2frame->x0 = 0.0;
+        ole2frame->y0 = 0.0;
+        ole2frame->z0 = 0.0;
+        ole2frame->x1 = 0.0;
+        ole2frame->y1 = 0.0;
+        ole2frame->z1 = 0.0;
+        ole2frame->ole_version_number = 1;
+        ole2frame->ole_object_type = 0;
+        ole2frame->tilemode_descriptor = 0;
+        ole2frame->length = 0;
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                ole2frame->binary_data[i] = strdup ("");
+        }
+        ole2frame->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ole2frame);
+}
+
+
 /* EOF */
