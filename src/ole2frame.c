@@ -43,7 +43,7 @@
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
  * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
+ * \version According to DXF R13 (backward compatibility).
  * \version According to DXF R14.
  */
 DxfOle2Frame *
@@ -86,7 +86,7 @@ dxf_ole2frame_new ()
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
  * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
+ * \version According to DXF R13 (backward compatibility).
  * \version According to DXF R14.
  */
 DxfOle2Frame *
