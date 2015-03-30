@@ -206,7 +206,7 @@ dxf_oleframe_read
                         if (strcmp (temp_string, "OLE") != 0)
                         {
                                 fprintf (stderr,
-                                  (_("Error in %s () found a bad End of Ole data marker in: %s in line: %d.\n")),
+                                  (_("Warning in %s () found a bad End of Ole data marker in: %s in line: %d.\n")),
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
