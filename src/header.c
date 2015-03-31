@@ -1,6 +1,8 @@
 /*!
  * \file header.c
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ *
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
  * \brief DXF header section.
  *
  * <hr>
@@ -109,8 +111,10 @@ static int acad_version_from_string
 int
 dxf_init_header
 (
-        DxfHeader header, /*!< DXF header to be initialized.\n */
-        int acad_version_number /*!< AutoCAD version number.\n */
+        DxfHeader header,
+                /*!< DXF header to be initialized.\n */
+        int acad_version_number
+                /*!< AutoCAD version number.\n */
 )
 {
 #if DEBUG
@@ -611,7 +615,8 @@ dxf_init_header
 int
 dxf_write_header_metric_new
 (
-        DxfFile *fp /*!< file pointer to output file (or device) */
+        DxfFile *fp
+                /*!< file pointer to output file (or device) */
 )
 {
 #if DEBUG
