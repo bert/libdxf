@@ -161,6 +161,12 @@ dxf_ole2frame_init
 (
         DxfOle2Frame *ole2frame
 );
+DxfOle2Frame *
+dxf_ole2frame_read
+(
+        DxfFile *fp,
+        DxfOle2Frame *ole2frame
+);
 int
 dxf_ole2frame_free
 (
