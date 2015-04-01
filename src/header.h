@@ -308,6 +308,9 @@ dxf_header
         int GridMode; /*!< Grid mode on if nonzero */
 } DxfHeader;
 
+
+DxfHeader *
+dxf_header_new ();
 int
 dxf_init_header
 (

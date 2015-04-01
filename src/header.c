@@ -39,6 +39,48 @@
 #include "section.h"
 #include "util.h"
 
+
+/*!
+ * \brief Allocate memory for a \c DxfHeader.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfHeader *
+dxf_header_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHeader *header = NULL;
+        size_t size;
+
+        size = sizeof (DxfHeader);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((header = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfHeader struct.\n")),
+                  __FUNCTION__);
+                header = NULL;
+        }
+        else
+        {
+                memset (header, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (header);
+}
+
+
 static char *acad_version_string (int version_number)
 {
 #if DEBUG
