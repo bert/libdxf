@@ -153,7 +153,7 @@ dxf_file_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-//        dxf_init_header (dxf_header);
+//        dxf_header_init (dxf_header);
 //        dxf_write_header (fp, dxf_header);
 //        dxf_write_classes (fp, dxf_classes_list);
 //        dxf_write_tables (fp, dxf_tables_list);

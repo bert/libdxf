@@ -312,7 +312,7 @@ dxf_header
 DxfHeader *
 dxf_header_new ();
 int
-dxf_init_header
+dxf_header_init
 (
         DxfHeader header,
         int acad_version_number

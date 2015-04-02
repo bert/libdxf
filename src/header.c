@@ -151,7 +151,7 @@ static int acad_version_from_string
  * Only initialize members which are valid for the given AutoCAD version.\n
  */
 int
-dxf_init_header
+dxf_header_init
 (
         DxfHeader header,
                 /*!< DXF header to be initialized.\n */
