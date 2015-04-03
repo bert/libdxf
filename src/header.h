@@ -324,7 +324,7 @@ dxf_read_header
         DxfHeader header
 );
 int
-dxf_write_header
+dxf_header_write
 (
         DxfFile *fp,
         DxfHeader header

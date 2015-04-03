@@ -154,7 +154,7 @@ dxf_file_write
                 return (EXIT_FAILURE);
         }
 //        dxf_header_init (dxf_header);
-//        dxf_write_header (fp, dxf_header);
+//        dxf_header_write (fp, dxf_header);
 //        dxf_write_classes (fp, dxf_classes_list);
 //        dxf_write_tables (fp, dxf_tables_list);
 //        dxf_block_write_table (fp, dxf_blocks_list);

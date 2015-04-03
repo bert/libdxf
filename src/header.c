@@ -857,7 +857,7 @@ dxf_write_header_metric_new
  * \brief Write DXF output to a file for a dxf header.
  */
 int
-dxf_write_header
+dxf_header_write
 (
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
