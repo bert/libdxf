@@ -1709,7 +1709,7 @@ dxf_read_header_parser
  * \brief Reads the header from a DXF file.
  */
 int
-dxf_read_header
+dxf_header_read
 (
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
