@@ -655,7 +655,7 @@ dxf_header_init
  * occurred.
  */
 int
-dxf_write_header_metric_new
+dxf_header_write_metric_new
 (
         DxfFile *fp
                 /*!< file pointer to output file (or device) */

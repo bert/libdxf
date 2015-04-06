@@ -330,7 +330,7 @@ dxf_header_write
         DxfHeader header
 );
 int
-dxf_write_header_metric_new
+dxf_header_write_metric_new
 (
         DxfFile *fp
 );
