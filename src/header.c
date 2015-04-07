@@ -1140,8 +1140,8 @@ dxf_read_header_parse_string
         return ret;
 }
 
-static int
-dxf_read_header_parse_int
+int
+dxf_header_read_parse_int
 (
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
@@ -1249,7 +1249,7 @@ dxf_read_header_parser
         * \todo: add some kind of control to what we have already read
         * and check if we read all header data.
         */
-        ret = dxf_read_header_parse_int (fp, temp_string, "$ACADMAINTVER",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$ACADMAINTVER",
                                          &header.AcadMaintVer,
                                          acad_version_number > AC1014);
         dxf_return(ret);
@@ -1297,32 +1297,32 @@ dxf_read_header_parser
                                               &header.LimMax.y0);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_int (fp, temp_string, "$ORTHOMODE",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$ORTHOMODE",
                                          &header.OrthoMode,
                                          TRUE);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_int (fp, temp_string, "$REGENMODE",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$REGENMODE",
                                          &header.RegenMode,
                                          TRUE);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_int (fp, temp_string, "$FILLMODE",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$FILLMODE",
                                          &header.FillMode,
                                          TRUE);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_int (fp, temp_string, "$QTEXTMODE",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$QTEXTMODE",
                                          &header.QTextMode,
                                          TRUE);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_int (fp, temp_string, "$MIRRTEXT",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$MIRRTEXT",
                                          &header.MirrText,
                                          TRUE);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_int (fp, temp_string, "$DRAGMODE",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$DRAGMODE",
                                          &header.MirrText,
                                          acad_version_number < AC1015);
         dxf_return(ret);
@@ -1333,12 +1333,12 @@ dxf_read_header_parser
                                               &header.LTScale);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_int (fp, temp_string, "$OSMODE",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$OSMODE",
                                          &header.OSMode,
                                          acad_version_number <= AC1014);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_int (fp, temp_string, "$ATTMODE",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$ATTMODE",
                                          &header.AttMode,
                                          TRUE);
         dxf_return(ret);
@@ -1370,7 +1370,7 @@ dxf_read_header_parser
                                             TRUE);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_int (fp, temp_string, "$CECOLOR",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$CECOLOR",
                                          &header.CEColor,
                                          TRUE);
         dxf_return(ret);
@@ -1381,14 +1381,14 @@ dxf_read_header_parser
                                               &header.CELTScale);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_int (fp, temp_string, "$DELOBJ",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$DELOBJ",
                                          &header.DelObj,
                                          (acad_version_number == AC1012)
                                          || (acad_version_number == AC1014));
         dxf_return(ret);
 
         /*! \todo FIXME: changed from AC1012 to AC1015 */
-        ret = dxf_read_header_parse_int (fp, temp_string, "$DISPSILH",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$DISPSILH",
                                          &header.DispSilH,
                                          acad_version_number <= AC1015);
         dxf_return(ret);
@@ -1490,12 +1490,12 @@ dxf_read_header_parser
         if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMALTTD\n 70\n%i\n", header.DimALTTD);
         if (acad_version_number >= AC1012) fprintf (fp, "  9\n$DIMTXSTY\n  7\n%s\n", header.DimTXSTY);
         */
-        ret = dxf_read_header_parse_int (fp, temp_string, "$DIMAUNIT",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$DIMAUNIT",
                                          &header.DimAUNIT,
                                          acad_version_number >= AC1012);
         dxf_return(ret);
     
-        ret = dxf_read_header_parse_int (fp, temp_string, "$DIMADEC",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$DIMADEC",
                                          &header.DimADEC,
                                          acad_version_number >= AC1015);
         dxf_return(ret);
@@ -1507,7 +1507,7 @@ dxf_read_header_parser
         if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMFRAC\n 70\n%i\n", header.DimFRAC);
         if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMLDRBLK\n  1\n%s\n", header.DimLDRBLK);
         */
-        ret = dxf_read_header_parse_int (fp, temp_string, "$DIMLUNIT",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$DIMLUNIT",
                                          &header.DimLUNIT,
                                          acad_version_number >= AC1015);
         dxf_return(ret);
@@ -1516,12 +1516,12 @@ dxf_read_header_parser
         if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMLWE\n 70\n%i\n", header.DimLWE);
         if (acad_version_number >= AC1015) fprintf (fp, "  9\n$DIMTMOVE\n 70\n%i\n", header.DimTMOVE);
         */
-        ret = dxf_read_header_parse_int (fp, temp_string, "$LUNITS",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$LUNITS",
                                          &header.LUnits,
                                          TRUE);
         dxf_return(ret);
         
-        ret = dxf_read_header_parse_int (fp, temp_string, "$LUPREC",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$LUPREC",
                                          &header.LUPrec,
                                          TRUE);
         dxf_return(ret);
@@ -1529,12 +1529,12 @@ dxf_read_header_parser
         fprintf (fp, "  9\n$SKETCHINC\n 40\n%f\n", header.Sketchinc);
         fprintf (fp, "  9\n$FILLETRAD\n 40\n%f\n", header.FilletRad);
         */
-        ret = dxf_read_header_parse_int (fp, temp_string, "$AUNITS",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$AUNITS",
                                          &header.AUnits,
                                          TRUE);
         dxf_return(ret);
     
-        ret = dxf_read_header_parse_int (fp, temp_string, "$AUPREC",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$AUPREC",
                                          &header.AUPrec,
                                          TRUE);
         dxf_return(ret);
@@ -1569,7 +1569,7 @@ dxf_read_header_parser
         if (acad_version_number <= AC1014) fprintf (fp, "  9\n$ATTREQ\n 70\n%i\n", header.AttReq);
         if (acad_version_number <= AC1014) fprintf (fp, "  9\n$HANDLING\n 70\n%i\n", header.Handling);
         */
-        ret = dxf_read_header_parse_int (fp, temp_string, "$SPLINESEGS",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$SPLINESEGS",
                                          &header.SPLineSegs,
                                          TRUE);
         dxf_return(ret);
@@ -1661,7 +1661,7 @@ dxf_read_header_parser
         if (acad_version_number >= AC1015) fprintf (fp, "  9\n$JOINSTYLE\n280\n%i\n", header.JoinStyle);
         if (acad_version_number >= AC1015) fprintf (fp, "  9\n$LWDISPLAY\n290\n%i\n", header.LWDisplay);
         */
-        ret = dxf_read_header_parse_int (fp, temp_string, "$INSUNITS",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$INSUNITS",
                                          &header.InsUnits,
                                          acad_version_number >= AC1015);
         dxf_return(ret);
@@ -1695,7 +1695,7 @@ dxf_read_header_parser
                                               &header.GridUnit.y0);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_int (fp, temp_string, "$GRIDMODE",
+        ret = dxf_header_read_parse_int (fp, temp_string, "$GRIDMODE",
                                          &header.GridMode,
                                          acad_version_number >= AC1009);
         dxf_return(ret);

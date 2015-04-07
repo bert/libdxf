@@ -324,6 +324,15 @@ dxf_header_read
         DxfHeader header
 );
 int
+dxf_header_read_parse_int
+(
+        DxfFile *fp,
+        const char *temp_string,
+        const char *header_var,
+        int *value,
+        int version_expression
+);
+int
 dxf_header_write
 (
         DxfFile *fp,
