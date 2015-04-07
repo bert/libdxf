@@ -1176,8 +1176,9 @@ dxf_header_read_parse_int
         return ret;
 }
 
-static int
-dxf_read_header_parse_n_double
+
+int
+dxf_header_read_parse_n_double
 (
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
@@ -1227,6 +1228,7 @@ dxf_read_header_parse_n_double
         return ret;
 }
 
+
 /*!
  * \brief Parses the header from a DXF file, with no particulary order.
  */
@@ -1259,7 +1261,7 @@ dxf_read_header_parser
                                             acad_version_number >= AC1012);
         dxf_return(ret);
         
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$INSBASE",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$INSBASE",
                                               TRUE,
                                               3,
                                               &header.InsBase.x0,
@@ -1267,7 +1269,7 @@ dxf_read_header_parser
                                               &header.InsBase.z0);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$EXTMIN",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$EXTMIN",
                                               TRUE,
                                               3,
                                               &header.ExtMin.x0,
@@ -1275,7 +1277,7 @@ dxf_read_header_parser
                                               &header.ExtMin.z0);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$EXTMAX",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$EXTMAX",
                                               TRUE,
                                               3,
                                               &header.ExtMax.x0,
@@ -1283,14 +1285,14 @@ dxf_read_header_parser
                                               &header.ExtMax.z0);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$LIMMIN",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$LIMMIN",
                                               TRUE,
                                               2,
                                               &header.LimMin.x0,
                                               &header.LimMin.y0);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$LIMMAX",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$LIMMAX",
                                               TRUE,
                                               2,
                                               &header.LimMax.x0,
@@ -1327,7 +1329,7 @@ dxf_read_header_parser
                                          acad_version_number < AC1015);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$LTSCALE",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$LTSCALE",
                                               TRUE,
                                               1,
                                               &header.LTScale);
@@ -1343,13 +1345,13 @@ dxf_read_header_parser
                                          TRUE);
         dxf_return(ret);
     
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$TEXTSIZE",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$TEXTSIZE",
                                               TRUE,
                                               1,
                                               &header.TextSize);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$TRACEWID",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$TRACEWID",
                                               TRUE,
                                               1,
                                               &header.TraceWid);
@@ -1375,7 +1377,7 @@ dxf_read_header_parser
                                          TRUE);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$CELTSCALE",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$CELTSCALE",
                                               acad_version_number >= AC1012,
                                               1,
                                               &header.CELTScale);
@@ -1393,19 +1395,19 @@ dxf_read_header_parser
                                          acad_version_number <= AC1015);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMSCALE",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$DIMSCALE",
                                               TRUE,
                                               1,
                                               &header.DimSCALE);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMASZ",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$DIMASZ",
                                               TRUE,
                                               1,
                                               &header.DimASZ);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMEXO",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$DIMEXO",
                                               TRUE,
                                               1,
                                               &header.DimEXO);
@@ -1416,7 +1418,7 @@ dxf_read_header_parser
         fprintf (fp, "  9\n$DIMRND\n 40\n%f\n", header.DimRND);
         fprintf (fp, "  9\n$DIMDLE\n 40\n%f\n", header.DimDLE);
         */
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMEXE",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$DIMEXE",
                                               TRUE,
                                               1,
                                               &header.DimEXE);
@@ -1425,7 +1427,7 @@ dxf_read_header_parser
         fprintf (fp, "  9\n$DIMTP\n 40\n%f\n", header.DimTP);
         fprintf (fp, "  9\n$DIMTM\n 40\n%f\n", header.DimTM);
         */
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMTXT",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$DIMTXT",
                                               TRUE,
                                               1,
                                               &header.DimTXT);
@@ -1468,7 +1470,7 @@ dxf_read_header_parser
         fprintf (fp, "  9\n$DIMCLRT\n 70\n%i\n", header.DimCLRT);
         fprintf (fp, "  9\n$DIMTFAC\n 40\n%f\n", header.DimTFAC);
         */
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$DIMGAP",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$DIMGAP",
                                               TRUE,
                                               1,
                                               &header.DimGAP);
@@ -1630,14 +1632,14 @@ dxf_read_header_parser
         fprintf (fp, "  9\n$PEXTMIN\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PExtMin.x0, header.PExtMin.y0, header.PExtMin.z0);
         fprintf (fp, "  9\n$PEXTMAX\n 10\n%f\n 20\n%f\n 30\n%f\n", header.PExtMax.x0, header.PExtMax.y0, header.PExtMax.z0);
         */
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$PLIMMIN",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$PLIMMIN",
                                               TRUE,
                                               2,
                                               &header.PLimMin.x0,
                                               header.PLimMin.y0);
         dxf_return(ret);
     
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$PLIMMAX",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$PLIMMAX",
                                               TRUE,
                                               2,
                                               &header.PLimMax.x0,
@@ -1688,7 +1690,7 @@ dxf_read_header_parser
         if (acad_version_number >= AC1018) fprintf (fp, "  9\n$DIMASSOC\n280\n%i\n", header.DimASSOC);
         if (acad_version_number >= AC1018) fprintf (fp, "  9\n$PROJECTNAME\n  1\n%s\n", header.ProjectName);        
 */
-        ret = dxf_read_header_parse_n_double (fp, temp_string, "$GRIDUNIT",
+        ret = dxf_header_read_parse_n_double (fp, temp_string, "$GRIDUNIT",
                                               acad_version_number >= AC1009,
                                               2,
                                               &header.GridUnit.x0,
