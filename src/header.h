@@ -352,6 +352,14 @@ dxf_header_read_parse_string
         int version_expression
 );
 int
+dxf_header_read_parser
+(
+        DxfFile *fp,
+        DxfHeader header,
+        char * temp_string,
+        int acad_version_number
+);
+int
 dxf_header_write
 (
         DxfFile *fp,

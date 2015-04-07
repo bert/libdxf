@@ -1232,8 +1232,8 @@ dxf_header_read_parse_n_double
 /*!
  * \brief Parses the header from a DXF file, with no particulary order.
  */
-static int
-dxf_read_header_parser
+int
+dxf_header_read_parser
 (
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
@@ -1746,7 +1746,7 @@ dxf_header_read
                 if (n == 9)
                 {
                         /* parses the header content and extract info to the header struct */
-                        ret = dxf_read_header_parser(fp, header,
+                        ret = dxf_header_read_parser(fp, header,
                                                      temp_string,
                                                      acad_version_number);
                         dxf_return_val_if_fail(ret, FALSE);
