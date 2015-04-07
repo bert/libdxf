@@ -1104,8 +1104,8 @@ dxf_header_write
         return (EXIT_SUCCESS);
 }
 
-static int
-dxf_read_header_parse_string
+int
+dxf_header_read_parse_string
 (
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
@@ -1254,7 +1254,7 @@ dxf_read_header_parser
                                          acad_version_number > AC1014);
         dxf_return(ret);
                 
-        ret = dxf_read_header_parse_string (fp, temp_string, "$DWGCODEPAGE",
+        ret = dxf_header_read_parse_string (fp, temp_string, "$DWGCODEPAGE",
                                             &header.DWGCodePage,
                                             acad_version_number >= AC1012);
         dxf_return(ret);
@@ -1355,17 +1355,17 @@ dxf_read_header_parser
                                               &header.TraceWid);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_string (fp, temp_string, "$TEXTSTYLE",
+        ret = dxf_header_read_parse_string (fp, temp_string, "$TEXTSTYLE",
                                             &header.TextStyle,
                                             TRUE);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_string (fp, temp_string, "$CLAYER",
+        ret = dxf_header_read_parse_string (fp, temp_string, "$CLAYER",
                                             &header.CLayer,
                                             TRUE);
         dxf_return(ret);
 
-        ret = dxf_read_header_parse_string (fp, temp_string, "$CELTYPE",
+        ret = dxf_header_read_parse_string (fp, temp_string, "$CELTYPE",
                                             &header.CELType,
                                             TRUE);
         dxf_return(ret);
@@ -1458,7 +1458,7 @@ dxf_read_header_parser
         fprintf (fp, "  9\n$DIMBLK1\n  1\n%s\n", header.DimBLK1);
         fprintf (fp, "  9\n$DIMBLK2\n  1\n%s\n", header.DimBLK2);
         */
-        ret = dxf_read_header_parse_string (fp, temp_string, "$DIMSTYLE",
+        ret = dxf_header_read_parse_string (fp, temp_string, "$DIMSTYLE",
                                             &header.DimSTYLE,
                                             TRUE);
         dxf_return(ret);
@@ -1574,7 +1574,7 @@ dxf_read_header_parser
                                          TRUE);
         dxf_return(ret);
         
-        ret = dxf_read_header_parse_string (fp, temp_string, "$HANDSEED",
+        ret = dxf_header_read_parse_string (fp, temp_string, "$HANDSEED",
                                             &header.HandSeed,
                                             TRUE);
         dxf_return(ret);
@@ -1725,7 +1725,7 @@ dxf_header_read
 
         /* first of all we MUST read the version number */
         dxf_read_scanf (fp, "%i\n%s\n", &n, temp_string);
-        ret = dxf_read_header_parse_string (fp, temp_string,
+        ret = dxf_header_read_parse_string (fp, temp_string,
                                             "$ACADVER", &header.AcadVer,
                                             TRUE);
         dxf_return_val_if_fail (ret, FALSE);
