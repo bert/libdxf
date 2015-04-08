@@ -106,10 +106,13 @@ static char *acad_version_string (int version_number)
 }
 
 /*!
- * \brief converts a version string the version number.
+ * \brief Converts a version string into the AutoCAD version number.
  *
+ * \return The AutoCAD version number when successful,
+ * 0 when an error occurs.
  */
-static int acad_version_from_string
+int
+acad_version_from_string
 (
         const char * version_string
                 /*!< Pointer to the version string. */
@@ -134,10 +137,24 @@ static int acad_version_from_string
                 return AC1017;
         if (strcmp ("AC1018", version_string) == 0)
                 return AC1018;
+        if (strcmp ("AC1019", version_string) == 0)
+                return AC1019;
+        if (strcmp ("AC1020", version_string) == 0)
+                return AC1020;
         if (strcmp ("AC1021", version_string) == 0)
                 return AC1021;
+        if (strcmp ("AC1022", version_string) == 0)
+                return AC1022;
+        if (strcmp ("AC1023", version_string) == 0)
+                return AC1023;
         if (strcmp ("AC1024", version_string) == 0)
                 return AC1024;
+        if (strcmp ("AC1025", version_string) == 0)
+                return AC1025;
+        if (strcmp ("AC1026", version_string) == 0)
+                return AC1026;
+        if (strcmp ("AC1027", version_string) == 0)
+                return AC1027;
         /* in the case that it is an invalid version */
 #if DEBUG
         DXF_DEBUG_END

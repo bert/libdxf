@@ -309,6 +309,11 @@ dxf_header
 } DxfHeader;
 
 
+int
+acad_version_from_string
+(
+        const char * version_string
+);
 DxfHeader *
 dxf_header_new ();
 int
