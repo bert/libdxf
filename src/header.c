@@ -31,8 +31,6 @@
  * <hr>
  */
 
-#include <stdarg.h>
-#include <time.h>
 #include "global.h"
 #include "file.h"
 #include "header.h"

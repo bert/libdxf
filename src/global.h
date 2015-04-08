@@ -51,6 +51,7 @@
 #include <getopt.h>
 #include <math.h>
 #include <errno.h>
+#include <time.h>
 
 /*
  * Standard gettext macros.
