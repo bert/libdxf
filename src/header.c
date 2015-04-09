@@ -78,8 +78,17 @@ dxf_header_new ()
         return (header);
 }
 
-
-static char *acad_version_string (int version_number)
+/*!
+ * \brief Convert the AutoCAD version number into a version string.
+ *
+ * \return Converted version string.
+ */
+static char *
+acad_version_string
+(
+        int version_number
+                /*!< AutoCAD version number. */
+)
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
