@@ -84,7 +84,7 @@ dxf_header_new ()
  * \return Converted version string.
  */
 static char *
-acad_version_string
+dxf_header_acad_version_to_string
 (
         int version_number
                 /*!< AutoCAD version number. */
@@ -186,7 +186,7 @@ dxf_header_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        header.AcadVer = acad_version_string (acad_version_number);
+        header.AcadVer = dxf_header_acad_version_to_string (acad_version_number);
         switch (acad_version_number)
         {
                 case AC1009: /* AutoCAD 12 */
@@ -493,7 +493,7 @@ dxf_header_init
                         header.ProjectName = strdup ("");
                 }
         }
-        header.AcadVer = strdup (acad_version_string (acad_version_number));
+        header.AcadVer = strdup (dxf_header_acad_version_to_string (acad_version_number));
         header.InsBase.x0 = 0.0;
         header.InsBase.y0 = 0.0;
         header.InsBase.z0 = 0.0;

@@ -314,6 +314,11 @@ acad_version_from_string
 (
         const char * version_string
 );
+static char *
+dxf_header_acad_version_to_string
+(
+        int version_number
+);
 DxfHeader *
 dxf_header_new ();
 int
