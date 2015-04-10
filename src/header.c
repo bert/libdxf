@@ -119,7 +119,7 @@ dxf_header_acad_version_to_string
  * 0 when an error occurs.
  */
 int
-acad_version_from_string
+dxf_header_acad_version_from_string
 (
         const char * version_string
                 /*!< Pointer to the version string. */
@@ -1756,7 +1756,7 @@ dxf_header_read
                                             TRUE);
         dxf_return_val_if_fail (ret, FALSE);
         /* turn the acad_version into an integer */
-        acad_version_number= acad_version_from_string (header.AcadVer);
+        acad_version_number = dxf_header_acad_version_from_string (header.AcadVer);
     
         /* \FIXME: stores the autocad version as int */
         header._AcadVer = acad_version_number;

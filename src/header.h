@@ -310,7 +310,7 @@ dxf_header
 
 
 int
-acad_version_from_string
+dxf_header_acad_version_from_string
 (
         const char * version_string
 );
