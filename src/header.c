@@ -83,7 +83,7 @@ dxf_header_new ()
  *
  * \return Converted version string.
  */
-static char *
+char *
 dxf_header_acad_version_to_string
 (
         int version_number
