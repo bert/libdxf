@@ -256,6 +256,8 @@ src/viewport.c
 src/viewport.h
 src/vport.c
 src/vport.h
+src/xline.c
+src/xline.h
 tests/.gitignore
 tests/Makefile.am
 tests/golden/arc_R12.dxf
