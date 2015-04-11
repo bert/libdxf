@@ -1752,17 +1752,16 @@ dxf_header_read
         /* first of all we MUST read the version number */
         dxf_read_scanf (fp, "%i\n%s\n", &n, temp_string);
         ret = dxf_header_read_parse_string (fp, temp_string,
-                                            "$ACADVER", &header.AcadVer,
-                                            TRUE);
+          "$ACADVER", &header.AcadVer, TRUE);
         dxf_return_val_if_fail (ret, FALSE);
         /* turn the acad_version into an integer */
         acad_version_number = dxf_header_acad_version_from_string (header.AcadVer);
     
-        /* \FIXME: stores the autocad version as int */
+        /*! \todo FIXME: stores the autocad version as int */
         header._AcadVer = acad_version_number;
     
         /* a loop to read all the header with no particulary order */
-        while (!feof(fp->fp))
+        while (!feof (fp->fp))
         {
                 /* reads the next header content */
                 dxf_read_scanf (fp, "%i\n%s\n", &n, temp_string);
@@ -1770,15 +1769,14 @@ dxf_header_read
                 if (n == 9)
                 {
                         /* parses the header content and extract info to the header struct */
-                        ret = dxf_header_read_parser(fp, header,
-                                                     temp_string,
-                                                     acad_version_number);
-                        dxf_return_val_if_fail(ret, FALSE);
+                        ret = dxf_header_read_parser (fp, header,
+                          temp_string, acad_version_number);
+                        dxf_return_val_if_fail (ret, FALSE);
                         if (ret != FOUND)
                                 return FALSE;
                 }
                 /* or it can be the end of the section */
-                else if (n == 0 && strcmp(temp_string, "ENDSEC") == 0)
+                else if (n == 0 && strcmp (temp_string, "ENDSEC") == 0)
                 {
 #if DEBUG
                         fprintf (stderr,
