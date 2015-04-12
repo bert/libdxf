@@ -37,6 +37,7 @@
 
 
 #include "3dface.h"
+#include "3dline.h"
 #include "3dsolid.h"
 #include "acad_proxy_entity.h"
 #include "appid.h"
@@ -74,6 +75,7 @@
 #include "mtext.h"
 #include "object.h"
 #include "oleframe.h"
+#include "ole2frame.h"
 #include "param.h"
 #include "point.h"
 #include "polyline.h"
@@ -88,6 +90,7 @@
 #include "tables.h"
 #include "text.h"
 #include "thumbnail.h"
+#include "tolerance.h"
 #include "trace.h"
 #include "ucs.h"
 #include "util.h"
@@ -95,6 +98,7 @@
 #include "view.h"
 #include "viewport.h"
 #include "vport.h"
+#include "xline.h"
 
 
 #endif /* LIBDXF_SRC_DXF_H */
