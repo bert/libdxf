@@ -142,6 +142,157 @@ dxf_xline_init
 
 
 /*!
+ * \brief Write DXF output to fp for a DXF \c XLINE entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occured.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_xline_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfXLine *xline
+                /*!< DXF xline entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("XLINE");
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if ((xline->x0 == xline->x1)
+                && (xline->y0 == xline->y1)
+                && (xline->z0 == xline->z1))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () start point and end point are identical for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, xline->id_code);
+                dxf_entity_skip (dxf_entity_name);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (xline->layer, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, xline->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0\n")),
+                  dxf_entity_name);
+                xline->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (xline->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", xline->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (xline->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", xline->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (xline->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", xline->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (xline->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", xline->layer);
+        if (strcmp (xline->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", xline->linetype);
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (xline->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", xline->elevation);
+        }
+        if (xline->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", xline->color);
+        }
+        if (xline->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", xline->linetype_scale);
+        }
+        if (xline->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", xline->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbXline\n");
+        }
+        if (xline->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", xline->thickness);
+        }
+        fprintf (fp->fp, " 10\n%f\n", xline->x0);
+        fprintf (fp->fp, " 20\n%f\n", xline->y0);
+        fprintf (fp->fp, " 30\n%f\n", xline->z0);
+        fprintf (fp->fp, " 11\n%f\n", xline->x1);
+        fprintf (fp->fp, " 21\n%f\n", xline->y1);
+        fprintf (fp->fp, " 31\n%f\n", xline->z1);
+        /* Clean up. */
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c XLINE and all it's
  * data fields.
  *

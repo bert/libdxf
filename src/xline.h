@@ -132,6 +132,12 @@ dxf_xline_init
         DxfXLine *xline
 );
 int
+dxf_xline_write
+(
+        DxfFile *fp,
+        DxfXLine *xline
+);
+int
 dxf_xline_free
 (
         DxfXLine *xline
