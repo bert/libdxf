@@ -126,6 +126,11 @@ dxf_xline
 
 DxfXLine *
 dxf_xline_new ();
+int
+dxf_xline_free
+(
+        DxfXLine *xline
+);
 
 
 #endif /* LIBDXF_SRC_XLINE_H */

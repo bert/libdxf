@@ -79,4 +79,48 @@ dxf_xline_new ()
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c XLINE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_xline_free
+(
+        DxfXLine *xline
+                /*!< Pointer to the memory occupied by the DXF \c XLINE
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (xline->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfXLine was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (xline->linetype);
+        free (xline->layer);
+        free (xline->dictionary_owner_soft);
+        free (xline->dictionary_owner_hard);
+        free (xline);
+        xline = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
