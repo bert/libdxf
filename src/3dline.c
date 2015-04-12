@@ -109,7 +109,7 @@ dxf_3dline_init
         if (line == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a Dxfedline struct.\n")),
+                  (_("Error in %s () could not allocate memory for a Dxf3dline struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -570,7 +570,7 @@ dxf_3dline_free
         if (line->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next DxfLine was not NULL.\n")),
+                (_("Error in %s () pointer to next Dxf3dline was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
