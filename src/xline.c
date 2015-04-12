@@ -80,6 +80,68 @@ dxf_xline_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in an \c XLINE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfXLine *
+dxf_xline_init
+(
+        DxfXLine *xline
+                /*!< DXF line entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                xline = dxf_xline_new ();
+        }
+        if (xline == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory for a DxfXLine struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        xline->id_code = 0;
+        xline->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        xline->layer = strdup (DXF_DEFAULT_LAYER);
+        xline->x0 = 0.0;
+        xline->y0 = 0.0;
+        xline->z0 = 0.0;
+        xline->x1 = 0.0;
+        xline->y1 = 0.0;
+        xline->z1 = 0.0;
+        xline->elevation = 0.0;
+        xline->thickness = 0.0;
+        xline->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        xline->visibility = DXF_DEFAULT_VISIBILITY;
+        xline->color = DXF_COLOR_BYLAYER;
+        xline->paperspace = DXF_MODELSPACE;
+        xline->dictionary_owner_soft = strdup ("");
+        xline->dictionary_owner_hard = strdup ("");
+        xline->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xline);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c XLINE and all it's
  * data fields.
  *

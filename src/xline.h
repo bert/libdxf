@@ -126,6 +126,11 @@ dxf_xline
 
 DxfXLine *
 dxf_xline_new ();
+DxfXLine *
+dxf_xline_init
+(
+        DxfXLine *xline
+);
 int
 dxf_xline_free
 (
