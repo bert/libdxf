@@ -101,6 +101,7 @@ libdxf_la_SOURCES = \
   dimension.h \
   dimension.c \
   dictionary.h \
+  dictionary.c \
   comment.h \
   comment.c \
   color.h \

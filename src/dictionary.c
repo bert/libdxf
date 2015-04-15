@@ -1,9 +1,9 @@
 /*!
- * \file dictionary.h
+ * \file dictionary.c
  *
  * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Header file for a DXF dictionary object (\c DICTIONARY).
+ * \brief Functions for a DXF dictionary object (\c DICTIONAY).
  *
  * \version The \c DICTIONARY object was introduced in DXF R13.
  *
@@ -34,15 +34,13 @@
  */
 
 
-#ifndef LIBDXF_SRC_DICTIONARY_H
-#define LIBDXF_SRC_DICTIONARY_H
-
-
-#include "global.h"
+#include "dictionary.h"
 
 
 /*!
- * \brief DXF definition of an AutoCAD dictionary object (\c DICTIONARY).
+ * \brief Allocate memory for a DXF \c DICTIONARY object.
+ *
+ * Fill the memory contents with zeros.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -50,26 +48,34 @@
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-typedef struct
-dxf_dictionary
-{
-        char *entry_name;
-                /*!< Entry name (one for each entry).\n
-                 * Group code = 3. */
-        char *entry_object_handle;
-                /*!< Handle of entry object (one for each entry).\n
-                 * Group code = 350. */
-        struct DxfDictionary *next;
-                /*!< Pointer to the next DxfDictionary.\n
-                 * \c NULL in the last DxfDictionary. */
-} DxfDictionary;
-
-
 DxfDictionary *
-dxf_dictionary_new ();
+dxf_dictionary_new ()
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfDictionary *dictionary = NULL;
+        size_t size;
+
+        size = sizeof (DxfDictionary);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dictionary = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfDictionary struct.\n")),
+                  __FUNCTION__);
+                dictionary = NULL;
+        }
+        else
+        {
+                memset (dictionary, 0, size);
+        }
+#ifdef DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dictionary);
+}
 
 
-#endif /* LIBDXF_SRC_DICTIONARY_H */
-
-
-/* EOF */
+/* EOF*/

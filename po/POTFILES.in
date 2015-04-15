@@ -30,6 +30,7 @@ src/color.c
 src/color.h
 src/comment.c
 src/comment.h
+src/dictionary.c
 src/dictionary.h
 src/dimension.c
 src/dimension.h
