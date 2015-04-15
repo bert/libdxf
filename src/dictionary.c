@@ -78,4 +78,47 @@ dxf_dictionary_new ()
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c DICTIONARY and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_dictionary_free
+(
+        DxfDictionary *dictionary
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c DICTIONARY object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dictionary->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfDictionary was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (dictionary->entry_name);
+        free (dictionary->entry_object_handle);
+        free (dictionary);
+        dictionary = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/

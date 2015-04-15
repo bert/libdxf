@@ -67,8 +67,12 @@ dxf_dictionary
 
 DxfDictionary *
 dxf_dictionary_new ();
-
-
+int
+dxf_dictionary_free
+(
+        DxfDictionary *dictionary
+)
+;
 #endif /* LIBDXF_SRC_DICTIONARY_H */
 
 
