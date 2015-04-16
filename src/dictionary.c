@@ -79,6 +79,57 @@ dxf_dictionary_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c DICTIONARY
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDictionary *
+dxf_dictionary_init
+(
+        DxfDictionary *dictionary
+                /*!< DXF \c DICTIONARY object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dictionary == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dictionary = dxf_dictionary_new ();
+        }
+        if (dictionary == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfDictionary struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dictionary->id_code = 0;
+        dictionary->entry_name = strdup ("");
+        dictionary->entry_object_handle = strdup ("");
+        dictionary->dictionary_owner_soft = strdup ("");
+        dictionary->dictionary_owner_hard = strdup ("");
+        dictionary->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dictionary);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c DICTIONARY and all it's
  * data fields.
  *

@@ -53,6 +53,19 @@
 typedef struct
 dxf_dictionary
 {
+        /* Members common for all DXF group objects. */
+        int id_code;
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n
+                 * Group code = 5. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
+        /* Specific members for a DXF dictionary. */
         char *entry_name;
                 /*!< Entry name (one for each entry).\n
                  * Group code = 3. */
@@ -67,6 +80,11 @@ dxf_dictionary
 
 DxfDictionary *
 dxf_dictionary_new ();
+DxfDictionary *
+dxf_dictionary_init
+(
+        DxfDictionary *dictionary
+);
 int
 dxf_dictionary_free
 (
