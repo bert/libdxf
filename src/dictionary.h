@@ -92,6 +92,12 @@ dxf_dictionary_read
         DxfDictionary *dictionary
 );
 int
+dxf_dictionary_write
+(
+        DxfFile *fp,
+        DxfDictionary *dictionary
+);
+int
 dxf_dictionary_free
 (
         DxfDictionary *dictionary
