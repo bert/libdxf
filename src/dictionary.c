@@ -411,6 +411,8 @@ dxf_dictionary_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
+        free (dictionary->dictionary_owner_soft);
+        free (dictionary->dictionary_owner_hard);
         free (dictionary->entry_name);
         free (dictionary->entry_object_handle);
         free (dictionary);
