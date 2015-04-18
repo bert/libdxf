@@ -80,6 +80,11 @@ dxf_dictionary_var
 
 DxfDictionaryVar *
 dxf_dictionary_var_new ();
+int
+dxf_dictionary_var_free
+(
+        DxfDictionaryVar *dictionary_var
+);
 
 
 #endif /* LIBDXF_SRC_DICTIONARYVAR_H */

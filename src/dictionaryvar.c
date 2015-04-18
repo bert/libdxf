@@ -78,4 +78,49 @@ dxf_dictionary_var_new ()
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c DICTIONARYVAR and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+int
+dxf_dictionary_var_free
+(
+        DxfDictionaryVar *dictionary_var
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c DICTIONARYVAR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dictionary_var->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfDictionaryVar was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (dictionary_var->dictionary_owner_soft);
+        free (dictionary_var->dictionary_owner_hard);
+        free (dictionary_var->value);
+        free (dictionary_var->object_schema_number);
+        free (dictionary_var);
+        dictionary_var = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
