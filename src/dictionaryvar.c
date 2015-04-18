@@ -1,9 +1,9 @@
 /*!
- * \file dictionaryvar.h
+ * \file dictionaryvar.c
  *
  * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Header file for a DXF dictionaryvar object (\c DICTIONARYVAR).
+ * \brief Functions for a DXF dictionaryvar object (\c DICTIONARYVAR).
  *
  * \version The \c DICTIONARYVAR object was introduced in DXF R14.
  *
@@ -34,15 +34,13 @@
  */
 
 
-#ifndef LIBDXF_SRC_DICTIONARYVAR_H
-#define LIBDXF_SRC_DICTIONARYVAR_H
-
-
-#include "global.h"
+#include "dictionaryvar.h"
 
 
 /*!
- * \brief DXF definition of an AutoCAD dictionaryvar object (\c DICTIONARYVAR).
+ * \brief Allocate memory for a DXF \c DICTIONARYVAR object.
+ *
+ * Fill the memory contents with zeros.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -50,39 +48,34 @@
  * \version According to DXF R13 (backward compatibility).
  * \version According to DXF R14.
  */
-typedef struct
-dxf_dictionary_var
-{
-        /* Members common for all DXF group objects. */
-        int id_code;
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file.\n
-                 * Group code = 5. */
-        char *dictionary_owner_soft;
-                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
-                 * Group code = 330. */
-        char *dictionary_owner_hard;
-                /*!< Hard owner ID/handle to owner dictionary (optional).\n
-                 * Group code = 360. */
-        /* Specific members for a DXF dictionaryvar. */
-        char *value;
-                /*!< Value of variable.\n
-                 * Group code = 1. */
-        char *object_schema_number;
-                /*!< Object schema number (currently set to 0).\n
-                 * Group code = 280. */
-        struct DxfDictionary *next;
-                /*!< Pointer to the next DxfDictionary.\n
-                 * \c NULL in the last DxfDictionary. */
-} DxfDictionaryVar;
-
-
 DxfDictionaryVar *
-dxf_dictionary_var_new ();
+dxf_dictionary_var_new ()
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfDictionaryVar *dictionary_var = NULL;
+        size_t size;
+
+        size = sizeof (DxfDictionaryVar);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dictionary_var = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfDictionaryVar struct.\n")),
+                  __FUNCTION__);
+                dictionary_var = NULL;
+        }
+        else
+        {
+                memset (dictionary_var, 0, size);
+        }
+#ifdef DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dictionary_var);
+}
 
 
-#endif /* LIBDXF_SRC_DICTIONARYVAR_H */
-
-
-/* EOF */
+/* EOF*/
