@@ -52,6 +52,7 @@
 #include "color.h"
 #include "comment.h"
 #include "dictionary.h"
+#include "dictionaryvar.h"
 #include "dimension.h"
 #include "dimstyle.h"
 #include "donut.h"
