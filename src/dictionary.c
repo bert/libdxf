@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Functions for a DXF dictionary object (\c DICTIONAY).
+ * \brief Functions for a DXF dictionary object (\c DICTIONARY).
  *
  * \version The \c DICTIONARY object was introduced in DXF R13.
  *
