@@ -158,8 +158,6 @@ dxf_dictionary_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i;
-        int j;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -185,8 +183,6 @@ dxf_dictionary_read
                 dictionary = dxf_dictionary_new ();
                 dictionary = dxf_dictionary_init (dictionary);
         }
-        i = 0;
-        j = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -201,13 +197,12 @@ dxf_dictionary_read
                         fclose (fp->fp);
                         return (NULL);
                 }
-                else if (strcmp (temp_string, "  3") == 0)
+                else if (strcmp (temp_string, "3") == 0)
                 {
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", dictionary->entry_name);
-                        j++;
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
