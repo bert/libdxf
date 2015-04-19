@@ -80,6 +80,11 @@ dxf_dictionary_var
 
 DxfDictionaryVar *
 dxf_dictionary_var_new ();
+DxfDictionaryVar *
+dxf_dictionary_var_init
+(
+        DxfDictionaryVar *dictionary_var
+);
 int
 dxf_dictionary_var_free
 (

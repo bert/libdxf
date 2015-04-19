@@ -79,6 +79,57 @@ dxf_dictionary_var_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c DICTIONARYVAR
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+DxfDictionaryVar *
+dxf_dictionary_var_init
+(
+        DxfDictionaryVar *dictionary_var
+                /*!< DXF \c DICTIONARYVAR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dictionary_var == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dictionary_var = dxf_dictionary_var_new ();
+        }
+        if (dictionary_var == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfDictionaryVar struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dictionary_var->id_code = 0;
+        dictionary_var->value = strdup ("");
+        dictionary_var->object_schema_number = strdup ("");
+        dictionary_var->dictionary_owner_soft = strdup ("");
+        dictionary_var->dictionary_owner_hard = strdup ("");
+        dictionary_var->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dictionary_var);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c DICTIONARYVAR and all it's
  * data fields.
  *
