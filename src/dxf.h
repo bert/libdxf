@@ -64,6 +64,7 @@
 #include "entity.h"
 #include "file.h"
 #include "global.h"
+#include "group.h"
 #include "hatch.h"
 #include "header.h"
 #include "helix.h"

@@ -187,6 +187,7 @@ src/entity.h
 src/file.c
 src/file.h
 src/global.h
+src/group.h
 src/hatch.c
 src/hatch.h
 src/header.c
