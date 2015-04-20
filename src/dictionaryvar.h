@@ -92,6 +92,12 @@ dxf_dictionary_var_read
         DxfDictionaryVar *dictionary_var
 );
 int
+dxf_dictionary_var_write
+(
+        DxfFile *fp,
+        DxfDictionaryVar *dictionary_var
+);
+int
 dxf_dictionary_var_free
 (
         DxfDictionaryVar *dictionary_var
