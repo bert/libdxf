@@ -80,6 +80,7 @@ libdxf_la_SOURCES = \
   hatch.h \
   hatch.c \
   group.h \
+  group.c \
   global.h \
   file.h \
   file.c \

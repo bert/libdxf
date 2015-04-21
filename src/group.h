@@ -93,6 +93,10 @@ dxf_group
 } DxfGroup;
 
 
+DxfGroup *
+dxf_group_new ();
+
+
 #endif /* LIBDXF_SRC_GROUP_H */
 
 

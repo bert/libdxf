@@ -58,6 +58,7 @@ src/entity.h
 src/file.c
 src/file.h
 src/global.h
+src/group.c
 src/group.h
 src/hatch.c
 src/hatch.h
