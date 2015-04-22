@@ -95,6 +95,11 @@ dxf_group
 
 DxfGroup *
 dxf_group_new ();
+int
+dxf_group_free
+(
+        DxfGroup *group
+);
 
 
 #endif /* LIBDXF_SRC_GROUP_H */
