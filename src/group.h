@@ -95,6 +95,11 @@ dxf_group
 
 DxfGroup *
 dxf_group_new ();
+DxfGroup *
+dxf_group_init
+(
+        DxfGroup *group
+);
 int
 dxf_group_free
 (

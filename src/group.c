@@ -79,6 +79,59 @@ dxf_group_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c GROUP
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfGroup *
+dxf_group_init
+(
+        DxfGroup *group
+                /*!< DXF \c GROUP object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (group == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                group = dxf_group_new ();
+        }
+        if (group == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfGroup struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        group->id_code = 0;
+        group->description = strdup ("");
+        group->handle_entity_in_group = strdup ("");
+        group->unnamed_flag = 0;
+        group->selectability_flag = 0;
+        group->dictionary_owner_soft = strdup ("");
+        group->dictionary_owner_hard = strdup ("");
+        group->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (group);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c GROUP and all it's
  * data fields.
  *
