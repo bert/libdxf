@@ -100,6 +100,12 @@ dxf_group_init
 (
         DxfGroup *group
 );
+DxfGroup *
+dxf_group_read
+(
+        DxfFile *fp,
+        DxfGroup *group
+);
 int
 dxf_group_free
 (
