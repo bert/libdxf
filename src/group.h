@@ -107,6 +107,12 @@ dxf_group_read
         DxfGroup *group
 );
 int
+dxf_group_write
+(
+        DxfFile *fp,
+        DxfGroup *group
+);
+int
 dxf_group_free
 (
         DxfGroup *group
