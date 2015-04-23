@@ -68,6 +68,7 @@
 #include "hatch.h"
 #include "header.h"
 #include "helix.h"
+#include "idbuffer.h"
 #include "image.h"
 #include "insert.h"
 #include "layer.h"

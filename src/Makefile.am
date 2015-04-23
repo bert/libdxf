@@ -73,6 +73,7 @@ libdxf_la_SOURCES = \
   insert.c \
   image.h \
   image.c \
+  idbuffer.h \
   helix.h \
   helix.c \
   header.h \
