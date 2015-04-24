@@ -78,4 +78,53 @@ dxf_idbuffer_new ()
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c IDBUFFER and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+int
+dxf_idbuffer_free
+(
+        DxfIdbuffer *idbuffer
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c IDBUFFER object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (idbuffer->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfIdbuffer was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (idbuffer->dictionary_owner_soft);
+        free (idbuffer->dictionary_owner_hard);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (idbuffer->entity_pointer[i]);
+        }
+        free (idbuffer);
+        idbuffer = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/

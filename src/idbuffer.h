@@ -78,6 +78,11 @@ dxf_idbuffer
 
 DxfIdbuffer *
 dxf_idbuffer_new ();
+int
+dxf_idbuffer_free
+(
+        DxfIdbuffer *idbuffer
+);
 
 
 #endif /* LIBDXF_SRC_IDBUFFER_H */
