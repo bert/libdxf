@@ -66,6 +66,7 @@ src/header.c
 src/header.h
 src/helix.c
 src/helix.h
+src/idbuffer.c
 src/idbuffer.h
 src/image.c
 src/image.h

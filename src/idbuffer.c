@@ -1,9 +1,9 @@
 /*!
- * \file idbuffer.h
+ * \file idbuffer.c
  *
  * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Header file for a DXF idbuffer object (\c IDBUFFER).
+ * \brief Functions for a DXF idbuffer object (\c IDBUFFER).
  *
  * \version The \c IDBUFFER object was introduced in DXF R14.
  *
@@ -34,15 +34,13 @@
  */
 
 
-#ifndef LIBDXF_SRC_IDBUFFER_H
-#define LIBDXF_SRC_IDBUFFER_H
-
-
-#include "global.h"
+#include "idbuffer.h"
 
 
 /*!
- * \brief DXF definition of an AutoCAD idbuffer object (\c IDBUFFER).
+ * \brief Allocate memory for a \c DxfIdbuffer.
+ *
+ * Fill the memory contents with zeros.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -50,37 +48,34 @@
  * \version According to DXF R13 (backward compatibility).
  * \version According to DXF R14.
  */
-typedef struct
-dxf_idbuffer
-{
-        /* Members common for all DXF group objects. */
-        int id_code;
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file.\n
-                 * Group code = 5. */
-        char *dictionary_owner_soft;
-                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
-                 * Group code = 330. */
-        char *dictionary_owner_hard;
-                /*!< Hard owner ID/handle to owner dictionary (optional).\n
-                 * Group code = 360. */
-        /* Specific members for a DXF idbuffer. */
-        char *entity_pointer[DXF_MAX_PARAM];
-                /*!< Soft pointer reference to entity (multiple entries
-                 * may exist).\n
-                 * Group code = 330. */
-        struct DxfIdbuffer *next;
-                /*!< Pointer to the next DxfIdbuffer.\n
-                 * \c NULL in the last DxfIdbuffer. */
-} DxfIdbuffer;
-
-
 DxfIdbuffer *
-dxf_idbuffer_new ();
+dxf_idbuffer_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfIdbuffer *idbuffer = NULL;
+        size_t size;
+
+        size = sizeof (DxfIdbuffer);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((idbuffer = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfIdbuffer struct.\n")),
+                  __FUNCTION__);
+                idbuffer = NULL;
+        }
+        else
+        {
+                memset (idbuffer, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (idbuffer);
+}
 
 
-#endif /* LIBDXF_SRC_IDBUFFER_H */
-
-
-/* EOF */
+/* EOF*/
