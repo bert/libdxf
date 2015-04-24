@@ -83,6 +83,12 @@ dxf_idbuffer_init
 (
         DxfIdbuffer *idbuffer
 );
+DxfIdbuffer *
+dxf_idbuffer_read
+(
+        DxfFile *fp,
+        DxfIdbuffer *idbuffer
+);
 int
 dxf_idbuffer_free
 (
