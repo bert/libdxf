@@ -71,6 +71,7 @@ libdxf_la_SOURCES = \
   layer.c \
   insert.h \
   insert.c \
+  imagedef.h \
   image.h \
   image.c \
   idbuffer.h \

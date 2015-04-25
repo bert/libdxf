@@ -70,6 +70,7 @@
 #include "helix.h"
 #include "idbuffer.h"
 #include "image.h"
+#include "imagedef.h"
 #include "insert.h"
 #include "layer.h"
 #include "leader.h"
