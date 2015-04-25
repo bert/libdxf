@@ -51,7 +51,7 @@
  * \version According to DXF R14.
  */
 typedef struct
-dxf_dictionary_var
+dxf_dictionaryvar
 {
         /* Members common for all DXF group objects. */
         int id_code;
@@ -79,28 +79,28 @@ dxf_dictionary_var
 
 
 DxfDictionaryVar *
-dxf_dictionary_var_new ();
+dxf_dictionaryvar_new ();
 DxfDictionaryVar *
-dxf_dictionary_var_init
+dxf_dictionaryvar_init
 (
-        DxfDictionaryVar *dictionary_var
+        DxfDictionaryVar *dictionaryvar
 );
 DxfDictionaryVar *
-dxf_dictionary_var_read
+dxf_dictionaryvar_read
 (
         DxfFile *fp,
-        DxfDictionaryVar *dictionary_var
+        DxfDictionaryVar *dictionaryvar
 );
 int
-dxf_dictionary_var_write
+dxf_dictionaryvar_write
 (
         DxfFile *fp,
-        DxfDictionaryVar *dictionary_var
+        DxfDictionaryVar *dictionaryvar
 );
 int
-dxf_dictionary_var_free
+dxf_dictionaryvar_free
 (
-        DxfDictionaryVar *dictionary_var
+        DxfDictionaryVar *dictionaryvar
 );
 
 

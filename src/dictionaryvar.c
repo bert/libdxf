@@ -49,32 +49,32 @@
  * \version According to DXF R14.
  */
 DxfDictionaryVar *
-dxf_dictionary_var_new ()
+dxf_dictionaryvar_new ()
 {
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfDictionaryVar *dictionary_var = NULL;
+        DxfDictionaryVar *dictionaryvar = NULL;
         size_t size;
 
         size = sizeof (DxfDictionaryVar);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dictionary_var = malloc (size)) == NULL)
+        if ((dictionaryvar = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfDictionaryVar struct.\n")),
                   __FUNCTION__);
-                dictionary_var = NULL;
+                dictionaryvar = NULL;
         }
         else
         {
-                memset (dictionary_var, 0, size);
+                memset (dictionaryvar, 0, size);
         }
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
-        return (dictionary_var);
+        return (dictionaryvar);
 }
 
 
@@ -92,9 +92,9 @@ dxf_dictionary_var_new ()
  * \version According to DXF R14.
  */
 DxfDictionaryVar *
-dxf_dictionary_var_init
+dxf_dictionaryvar_init
 (
-        DxfDictionaryVar *dictionary_var
+        DxfDictionaryVar *dictionaryvar
                 /*!< DXF \c DICTIONARYVAR object. */
 )
 {
@@ -102,30 +102,30 @@ dxf_dictionary_var_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dictionary_var == NULL)
+        if (dictionaryvar == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dictionary_var = dxf_dictionary_var_new ();
+                dictionaryvar = dxf_dictionaryvar_new ();
         }
-        if (dictionary_var == NULL)
+        if (dictionaryvar == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfDictionaryVar struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dictionary_var->id_code = 0;
-        dictionary_var->value = strdup ("");
-        dictionary_var->object_schema_number = strdup ("");
-        dictionary_var->dictionary_owner_soft = strdup ("");
-        dictionary_var->dictionary_owner_hard = strdup ("");
-        dictionary_var->next = NULL;
+        dictionaryvar->id_code = 0;
+        dictionaryvar->value = strdup ("");
+        dictionaryvar->object_schema_number = strdup ("");
+        dictionaryvar->dictionary_owner_soft = strdup ("");
+        dictionaryvar->dictionary_owner_hard = strdup ("");
+        dictionaryvar->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dictionary_var);
+        return (dictionaryvar);
 }
 
 
@@ -135,9 +135,9 @@ dxf_dictionary_var_init
  * The last line read from file contained the string "DICTIONARYVAR". \n
  * Now follows some data for the \c DICTIONARYVAR object, to be terminated
  * with a "  0" string announcing the following object. \n
- * While parsing the DXF file store data in \c dictionary_var. \n
+ * While parsing the DXF file store data in \c dictionaryvar. \n
  *
- * \return \c a pointer to \c dictionary_var.
+ * \return \c a pointer to \c dictionaryvar.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -146,11 +146,11 @@ dxf_dictionary_var_init
  * \version According to DXF R14.
  */
 DxfDictionaryVar *
-dxf_dictionary_var_read
+dxf_dictionaryvar_read
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
-        DxfDictionaryVar *dictionary_var
+        DxfDictionaryVar *dictionaryvar
                 /*!< DXF \c DICTIONARYVAR object. */
 )
 {
@@ -175,13 +175,13 @@ dxf_dictionary_var_read
                   (_("Warning in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
         }
-        if (dictionary_var == NULL)
+        if (dictionaryvar == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dictionary_var = dxf_dictionary_var_new ();
-                dictionary_var = dxf_dictionary_var_init (dictionary_var);
+                dictionaryvar = dxf_dictionaryvar_new ();
+                dictionaryvar = dxf_dictionaryvar_init (dictionaryvar);
         }
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -202,14 +202,14 @@ dxf_dictionary_var_read
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dictionary_var->value);
+                        fscanf (fp->fp, "%s\n", dictionaryvar->value);
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%x\n", &dictionary_var->id_code);
+                        fscanf (fp->fp, "%x\n", &dictionaryvar->id_code);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -230,21 +230,21 @@ dxf_dictionary_var_read
                         /* Now follows a string containing a handle to ae
                          * entry object. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dictionary_var->object_schema_number);
+                        fscanf (fp->fp, "%s\n", dictionaryvar->object_schema_number);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dictionary_var->dictionary_owner_soft);
+                        fscanf (fp->fp, "%s\n", dictionaryvar->dictionary_owner_soft);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
                         /* Now follows a string containing Hard owner
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", dictionary_var->dictionary_owner_hard);
+                        fscanf (fp->fp, "%s\n", dictionaryvar->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
@@ -265,7 +265,7 @@ dxf_dictionary_var_read
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dictionary_var);
+        return (dictionaryvar);
 }
 
 
@@ -282,11 +282,11 @@ dxf_dictionary_var_read
  * \version According to DXF R14.
  */
 int
-dxf_dictionary_var_write
+dxf_dictionaryvar_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfDictionaryVar *dictionary_var
+        DxfDictionaryVar *dictionaryvar
                 /*!< DXF \c DICTIONARYVAR object. */
 )
 {
@@ -305,7 +305,7 @@ dxf_dictionary_var_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (dictionary_var == NULL)
+        if (dictionaryvar == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
@@ -314,29 +314,29 @@ dxf_dictionary_var_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dictionary_var->value, "") == 0)
+        if (strcmp (dictionaryvar->value, "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty value string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dictionary_var->id_code);
+                  __FUNCTION__, dxf_entity_name, dictionaryvar->id_code);
         }
-        if (strcmp (dictionary_var->object_schema_number, "0") == 0)
+        if (strcmp (dictionaryvar->object_schema_number, "0") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty object schema number string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dictionary_var->id_code);
+                  __FUNCTION__, dxf_entity_name, dictionaryvar->id_code);
         }
         if (fp->acad_version_number < AutoCAD_14)
         {
                 fprintf (stderr,
                   (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dictionary_var->id_code);
+                  __FUNCTION__, dxf_entity_name, dictionaryvar->id_code);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dictionary_var->id_code != -1)
+        if (dictionaryvar->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dictionary_var->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dictionaryvar->id_code);
         }
         /*!
          * \todo for version R14.\n
@@ -348,26 +348,26 @@ dxf_dictionary_var_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dictionary_var->dictionary_owner_soft, "") != 0)
+        if ((strcmp (dictionaryvar->dictionary_owner_soft, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dictionary_var->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", dictionaryvar->dictionary_owner_soft);
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dictionary_var->dictionary_owner_hard, "") != 0)
+        if ((strcmp (dictionaryvar->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dictionary_var->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", dictionaryvar->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nDictionaryVariables\n");
         }
-        fprintf (fp->fp, "280\n%s\n", dictionary_var->object_schema_number);
-        fprintf (fp->fp, "  1\n%s\n", dictionary_var->value);
+        fprintf (fp->fp, "280\n%s\n", dictionaryvar->object_schema_number);
+        fprintf (fp->fp, "  1\n%s\n", dictionaryvar->value);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
@@ -391,9 +391,9 @@ dxf_dictionary_var_write
  * \version According to DXF R14.
  */
 int
-dxf_dictionary_var_free
+dxf_dictionaryvar_free
 (
-        DxfDictionaryVar *dictionary_var
+        DxfDictionaryVar *dictionaryvar
                 /*!< Pointer to the memory occupied by the DXF
                  * \c DICTIONARYVAR object. */
 )
@@ -402,19 +402,19 @@ dxf_dictionary_var_free
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dictionary_var->next != NULL)
+        if (dictionaryvar->next != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfDictionaryVar was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dictionary_var->dictionary_owner_soft);
-        free (dictionary_var->dictionary_owner_hard);
-        free (dictionary_var->value);
-        free (dictionary_var->object_schema_number);
-        free (dictionary_var);
-        dictionary_var = NULL;
+        free (dictionaryvar->dictionary_owner_soft);
+        free (dictionaryvar->dictionary_owner_hard);
+        free (dictionaryvar->value);
+        free (dictionaryvar->object_schema_number);
+        free (dictionaryvar);
+        dictionaryvar = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
