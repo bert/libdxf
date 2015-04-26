@@ -118,6 +118,10 @@ dxf_imagedef
 } DxfImagedef;
 
 
+DxfImagedef *
+dxf_imagedef_new ();
+
+
 #endif /* LIBDXF_SRC_IMAGEDEF_H */
 
 

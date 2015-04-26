@@ -199,6 +199,7 @@ src/idbuffer.c
 src/idbuffer.h
 src/image.c
 src/image.h
+src/imagedef.c
 src/imagedef.h
 src/insert.c
 src/insert.h
