@@ -120,13 +120,19 @@ dxf_imagedef
 
 DxfImagedef *
 dxf_imagedef_new ();
-int
-dxf_imagedef_free
+DxfImagedef *
+dxf_imagedef_init
 (
         DxfImagedef *imagedef
 );
 DxfImagedef *
-dxf_imagedef_init
+dxf_imagedef_read
+(
+        DxfFile *fp,
+        DxfImagedef *imagedef
+);
+int
+dxf_imagedef_free
 (
         DxfImagedef *imagedef
 );
