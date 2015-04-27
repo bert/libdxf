@@ -132,6 +132,12 @@ dxf_imagedef_read
         DxfImagedef *imagedef
 );
 int
+dxf_imagedef_write
+(
+        DxfFile *fp,
+        DxfImagedef *imagedef
+);
+int
 dxf_imagedef_free
 (
         DxfImagedef *imagedef

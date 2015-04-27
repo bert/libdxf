@@ -308,6 +308,7 @@ dxf_imagedef_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", imagedef->acad_image_dict_soft);
                         i++;
+                        /*! \todo Check for overrun of array index. */
                 }
                 else if ((strcmp (temp_string, "330") == 0)
                   && (i > 1))
@@ -345,6 +346,117 @@ dxf_imagedef_read
         DXF_DEBUG_END
 #endif
         return (imagedef);
+}
+
+
+/*!
+ * \brief Write DXF output to a file for a DXF \c IMAGEDEF object.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+int
+dxf_imagedef_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfImagedef *imagedef
+                /*!< DXF \c IMAGEDEF object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("IMAGEDEF");
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_14)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, imagedef->id_code);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (imagedef->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", imagedef->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (imagedef->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", imagedef->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", imagedef->acad_image_dict_soft);
+                i = 2;
+                while (strlen (imagedef->imagedef_reactor_soft[i]) > 0)
+                {
+                        fprintf (fp->fp, "330\n%s\n", imagedef->imagedef_reactor_soft[i]);
+                        i++;
+                        /*! \todo Check for overrun of array index. */
+                }
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (imagedef->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", imagedef->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbRasterImageDef\n");
+        }
+        fprintf (fp->fp, " 90\n%d\n", imagedef->class_version);
+        fprintf (fp->fp, "  1\n%s\n", imagedef->file_name);
+        fprintf (fp->fp, " 10\n%f\n", imagedef->x0);
+        fprintf (fp->fp, " 20\n%f\n", imagedef->y0);
+        fprintf (fp->fp, " 11\n%f\n", imagedef->x1);
+        fprintf (fp->fp, " 12\n%f\n", imagedef->y1);
+        fprintf (fp->fp, "280\n%d\n", imagedef->image_is_loaded_flag);
+        fprintf (fp->fp, "281\n%d\n", imagedef->resolution_units);
+        /* Clean up. */
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
 }
 
 
