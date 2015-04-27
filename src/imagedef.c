@@ -79,6 +79,70 @@ dxf_imagedef_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c IMAGEDEF
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+DxfImagedef *
+dxf_imagedef_init
+(
+        DxfImagedef *imagedef
+                /*!< DXF \c IMAGEDEF object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                imagedef = dxf_imagedef_new ();
+        }
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfImagedef struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        imagedef->id_code = 0;
+        imagedef->dictionary_owner_soft = strdup ("");
+        imagedef->dictionary_owner_hard = strdup ("");
+        imagedef->file_name = strdup ("");
+        imagedef->x0 = 0.0;
+        imagedef->y0 = 0.0;
+        imagedef->x1 = 0.0;
+        imagedef->y1 = 0.0;
+        imagedef->class_version = 0;
+        imagedef->image_is_loaded_flag = 0;
+        imagedef->resolution_units = 0;
+        imagedef->acad_image_dict_soft = strdup ("");
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                imagedef->imagedef_reactor_soft[i] = strdup ("");
+        }
+        imagedef->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c IMAGEDEF and all it's
  * data fields.
  *
