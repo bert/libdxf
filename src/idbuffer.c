@@ -242,6 +242,7 @@ dxf_idbuffer_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", idbuffer->entity_pointer[i]);
                         i++;
+                        /*! \todo Check for overrun of array index. */
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
@@ -364,6 +365,7 @@ dxf_idbuffer_write
         {
                 fprintf (fp->fp, "330\n%s\n", idbuffer->entity_pointer[i]);
                 i++;
+                /*! \todo Check for overrun of array index. */
         }
         /* Clean up. */
         free (dxf_entity_name);
