@@ -71,6 +71,7 @@
 #include "idbuffer.h"
 #include "image.h"
 #include "imagedef.h"
+#include "imagedef_reactor.h"
 #include "insert.h"
 #include "layer.h"
 #include "leader.h"
