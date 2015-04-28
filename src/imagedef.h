@@ -87,7 +87,6 @@ dxf_imagedef
                 /*!< Class version.\n
                  * 0 = R14 version.\n
                  * Group code = 90. */
-
         int image_is_loaded_flag;
                 /*!< Image-is-loaded flag.\n
                  * <ol>
