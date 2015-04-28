@@ -72,6 +72,7 @@ libdxf_la_SOURCES = \
   insert.h \
   insert.c \
   imagedef_reactor.h \
+  imagedef_reactor.c \
   imagedef.h \
   imagedef.c \
   image.h \

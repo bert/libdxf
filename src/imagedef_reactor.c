@@ -1,9 +1,9 @@
 /*!
- * \file imagedef_reactor.h
+ * \file imagedef_reactor.c
  *
  * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Header file for a DXF imagedef_reactor object (\c IMAGEDEF_REACTOR).
+ * \brief Functions for a DXF imagedef_reactor object (\c IMAGEDEF_REACTOR).
  *
  * \version The \c IMAGEDEF_REACTOR object was introduced in DXF R14.
  *
@@ -34,16 +34,13 @@
  */
 
 
-#ifndef LIBDXF_SRC_IMAGEDEF_REACTOR_H
-#define LIBDXF_SRC_IMAGEDEF_REACTOR_H
-
-
-#include "global.h"
+#include "imagedef_reactor.h"
 
 
 /*!
- * \brief DXF definition of an AutoCAD imagedef_reactor object
- * (\c IMAGEDEF_REACTOR).
+ * \brief Allocate memory for a \c DxfImagedefReactor.
+ *
+ * Fill the memory contents with zeros.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -51,40 +48,34 @@
  * \version According to DXF R13 (backward compatibility).
  * \version According to DXF R14.
  */
-typedef struct
-dxf_imagedef_reactor
-{
-        /* Members common for all DXF group objects. */
-        int id_code;
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file.\n
-                 * Group code = 5. */
-        char *dictionary_owner_soft;
-                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
-                 * Group code = 330. */
-        char *dictionary_owner_hard;
-                /*!< Hard owner ID/handle to owner dictionary (optional).\n
-                 * Group code = 360. */
-        /* Specific members for a DXF imagedef_reactor. */
-        int32_t class_version;
-                /*!< Class version.\n
-                 * 2 = R14 version.\n
-                 * Group code = 90. */
-        char *associated_image_object;
-                /*!< Object ID for associated image object.\n
-                 * Group code = 330. */
-        struct DxfImagedefReactor *next;
-                /*!< Pointer to the next DxfImagedefReactor.\n
-                 * \c NULL in the last DxfImagedefReactor. */
-} DxfImagedefReactor;
-
-
 DxfImagedefReactor *
-dxf_imagedef_reactor_new ();
+dxf_imagedef_reactor_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfImagedefReactor *imagedef_reactor = NULL;
+        size_t size;
+
+        size = sizeof (DxfImagedefReactor);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((imagedef_reactor = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfImagedefReactor struct.\n")),
+                  __FUNCTION__);
+                imagedef_reactor = NULL;
+        }
+        else
+        {
+                memset (imagedef_reactor, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef_reactor);
+}
 
 
-#endif /* LIBDXF_SRC_IMAGEDEF_REACTOR_H */
-
-
-/* EOF */
+/* EOF*/

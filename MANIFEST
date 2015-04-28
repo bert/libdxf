@@ -201,6 +201,7 @@ src/image.c
 src/image.h
 src/imagedef.c
 src/imagedef.h
+src/imagedef_reactor.c
 src/imagedef_reactor.h
 src/insert.c
 src/insert.h
