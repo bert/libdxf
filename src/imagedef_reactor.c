@@ -78,4 +78,48 @@ dxf_imagedef_reactor_new ()
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c IMAGEDEF_REACTOR and
+ * all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+int
+dxf_imagedef_reactor_free
+(
+        DxfImagedefReactor *imagedef_reactor
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c IMAGEDEF_REACTOR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef_reactor->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfImagedefReactor was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (imagedef_reactor->dictionary_owner_soft);
+        free (imagedef_reactor->dictionary_owner_hard);
+        free (imagedef_reactor->associated_image_object);
+        free (imagedef_reactor);
+        imagedef_reactor = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/

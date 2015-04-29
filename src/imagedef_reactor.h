@@ -82,6 +82,11 @@ dxf_imagedef_reactor
 
 DxfImagedefReactor *
 dxf_imagedef_reactor_new ();
+int
+dxf_imagedef_reactor_free
+(
+        DxfImagedefReactor *imagedef_reactor
+);
 
 
 #endif /* LIBDXF_SRC_IMAGEDEF_REACTOR_H */
