@@ -87,6 +87,12 @@ dxf_imagedef_reactor_init
 (
         DxfImagedefReactor *imagedef_reactor
 );
+DxfImagedefReactor *
+dxf_imagedef_reactor_read
+(
+        DxfFile *fp,
+        DxfImagedefReactor *imagedef_reactor
+);
 int
 dxf_imagedef_reactor_free
 (
