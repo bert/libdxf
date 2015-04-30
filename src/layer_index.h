@@ -86,6 +86,10 @@ dxf_layer_index
 } DxfLayerIndex;
 
 
+DxfLayerIndex *
+dxf_layer_index_new ();
+
+
 #endif /* LIBDXF_SRC_LAYER_INDEX_H */
 
 

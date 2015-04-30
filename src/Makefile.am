@@ -68,6 +68,7 @@ libdxf_la_SOURCES = \
   leader.c \
   leader.h \
   layer_index.h \
+  layer_index.c \
   layer.h \
   layer.c \
   insert.h \
