@@ -74,6 +74,7 @@
 #include "imagedef_reactor.h"
 #include "insert.h"
 #include "layer.h"
+#include "layer_index.h"
 #include "leader.h"
 #include "line.h"
 #include "ltype.h"

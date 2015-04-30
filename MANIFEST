@@ -207,6 +207,7 @@ src/insert.c
 src/insert.h
 src/layer.c
 src/layer.h
+src/layer_index.h
 src/leader.c
 src/leader.h
 src/line.c
