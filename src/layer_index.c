@@ -79,6 +79,64 @@ dxf_layer_index_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c LAYER_INDEX
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+DxfLayerIndex *
+dxf_layer_index_init
+(
+        DxfLayerIndex *layer_index
+                /*!< DXF \c LAYER_INDEX object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (layer_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                layer_index = dxf_layer_index_new ();
+        }
+        if (layer_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfLayerIndex struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        layer_index->id_code = 0;
+        layer_index->dictionary_owner_soft = strdup ("");
+        layer_index->dictionary_owner_hard = strdup ("");
+        layer_index->time_stamp = 0;
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                layer_index->layer_name[i] = strdup ("");
+                layer_index->number_of_entries[i] = 0;
+                layer_index->hard_owner_reference[i] = strdup ("");
+        }
+        layer_index->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer_index);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c LAYER_INDEX and all it's
  * data fields.
  *

@@ -88,6 +88,11 @@ dxf_layer_index
 
 DxfLayerIndex *
 dxf_layer_index_new ();
+DxfLayerIndex *
+dxf_layer_index_init
+(
+        DxfLayerIndex *layer_index
+);
 int
 dxf_layer_index_free
 (
