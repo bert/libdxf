@@ -142,7 +142,7 @@ dxf_idbuffer_init
  * \c ENTITY section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c idbuffer. \n
  *
- * \return \c a pointer to \c idbuffer.
+ * \return a pointer to \c idbuffer.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
