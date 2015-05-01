@@ -88,6 +88,11 @@ dxf_layer_index
 
 DxfLayerIndex *
 dxf_layer_index_new ();
+int
+dxf_layer_index_free
+(
+        DxfLayerIndex *layer_index
+);
 
 
 #endif /* LIBDXF_SRC_LAYER_INDEX_H */

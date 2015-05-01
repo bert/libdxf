@@ -78,4 +78,54 @@ dxf_layer_index_new ()
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c LAYER_INDEX and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+int
+dxf_layer_index_free
+(
+        DxfLayerIndex *layer_index
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c LAYER_INDEX object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (layer_index->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfLayerIndex was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (layer_index->dictionary_owner_soft);
+        free (layer_index->dictionary_owner_hard);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (layer_index->layer_name[i]);
+                free (layer_index->hard_owner_reference[i]);
+        }
+        free (layer_index);
+        layer_index = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
