@@ -137,6 +137,176 @@ dxf_layer_index_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF \c LAYER_INDEX object.
+ *
+ * The last line read from file contained the string "LAYER_INDEX". \n
+ * Now follows some data for the \c LAYER_INDEX, to be terminated with a
+ * "  0" string announcing the following entity, or the end of the
+ * \c ENTITY section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c layer_index. \n
+ *
+ * \return a pointer to \c layer_index.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+DxfLayerIndex *
+dxf_layer_index_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfLayerIndex *layer_index
+                /*!< DXF \c LAYER_INDEX object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+        int i;
+        int j;
+        int k;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
+                return (NULL);
+        }
+        if (fp->acad_version_number < AutoCAD_14)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+        }
+        if (layer_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                layer_index = dxf_layer_index_new ();
+                layer_index = dxf_layer_index_init (layer_index);
+        }
+        i = 0;
+        j = 0;
+        k = 0;
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        /* Clean up. */
+                        free (temp_string);
+                        fclose (fp->fp);
+                        return (NULL);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &layer_index->id_code);
+                }
+                if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing a layer name
+                         * (multiple entries may exist). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", layer_index->layer_name[i]);
+                        i++;
+                }
+                if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing a time stamp. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &layer_index->time_stamp);
+                }
+                if (strcmp (temp_string, "90") == 0)
+                {
+                        /* Now follows a string containing a number of
+                         * entries in the IDBUFFER list (multiple
+                         * entries may exist). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &layer_index->number_of_entries[j]);
+                        j++;
+                }
+                else if ((fp->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbIndex") != 0)
+                          && (strcmp (temp_string, "AcDbLayerIndex") != 0))
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", layer_index->dictionary_owner_soft);
+                }
+                else if ((strcmp (temp_string, "360") == 0)
+                  && (k == 0))
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", layer_index->dictionary_owner_hard);
+                        k++;
+                }
+                else if ((strcmp (temp_string, "360") == 0)
+                  && (k > 0))
+                {
+                        /* Now follows a string containing a Hard owner
+                         * reference IDBUFFER (multiple entries may
+                         * exist). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", layer_index->hard_owner_reference[k]);
+                        k++;
+                        /*! \todo Check for overrun of array index. */
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, (_("DXF comment: %s\n")), temp_string);
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                }
+        }
+        /* Clean up. */
+        free (temp_string);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer_index);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c LAYER_INDEX and all it's
  * data fields.
  *

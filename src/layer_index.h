@@ -93,6 +93,12 @@ dxf_layer_index_init
 (
         DxfLayerIndex *layer_index
 );
+DxfLayerIndex *
+dxf_layer_index_read
+(
+        DxfFile *fp,
+        DxfLayerIndex *layer_index
+);
 int
 dxf_layer_index_free
 (
