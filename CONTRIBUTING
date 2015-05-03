@@ -19,7 +19,8 @@ On Github:
 - Submit a ticket for your issue, assuming one does not already exist.
 - Clearly describe the issue including steps to reproduce when it is a bug.
 - Make sure you mention the earliest version that you know has the issue.
-- Fork the repository on GitHub
+- Fork the repository on GitHub if you are going to create a patch, and
+  do a "pull request", this is best done on a separate topic branch.
 Or on Launchpad:
 - Make sure you have a Launchpad account.
 - Sign the Code of Conduct.
