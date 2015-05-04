@@ -88,6 +88,7 @@ src/ltype.c
 src/ltype.h
 src/lwpolyline.c
 src/lwpolyline.h
+src/mline.h
 src/mtext.c
 src/mtext.h
 src/object.c
