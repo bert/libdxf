@@ -100,6 +100,12 @@ dxf_layer_index_read
         DxfLayerIndex *layer_index
 );
 int
+dxf_layer_index_write
+(
+        DxfFile *fp,
+        DxfLayerIndex *layer_index
+);
+int
 dxf_layer_index_free
 (
         DxfLayerIndex *layer_index

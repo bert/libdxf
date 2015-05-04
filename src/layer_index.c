@@ -235,7 +235,7 @@ dxf_layer_index_read
                 if (strcmp (temp_string, "90") == 0)
                 {
                         /* Now follows a string containing a number of
-                         * entries in the IDBUFFER list (multiple
+                         * entries in the LAYER_INDEX list (multiple
                          * entries may exist). */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &layer_index->number_of_entries[j]);
@@ -276,7 +276,7 @@ dxf_layer_index_read
                   && (k > 0))
                 {
                         /* Now follows a string containing a Hard owner
-                         * reference IDBUFFER (multiple entries may
+                         * reference LAYER_INDEX (multiple entries may
                          * exist). */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", layer_index->hard_owner_reference[k]);
@@ -303,6 +303,111 @@ dxf_layer_index_read
         DXF_DEBUG_END
 #endif
         return (layer_index);
+}
+
+
+/*!
+ * \brief Write DXF output to a file for a DXF \c LAYER_INDEX object.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+int
+dxf_layer_index_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfLayerIndex *layer_index
+                /*!< DXF \c LAYER_INDEX object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("LAYER_INDEX");
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (layer_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_14)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, layer_index->id_code);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (layer_index->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", layer_index->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (layer_index->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", layer_index->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (layer_index->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", layer_index->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbIndex\n");
+        }
+        fprintf (fp->fp, " 40\n%lf\n", layer_index->time_stamp);
+        i = 0;
+        while (strlen (layer_index->layer_name[i]) > 0)
+        {
+                fprintf (fp->fp, "  8\n%s\n", layer_index->layer_name[i]);
+                fprintf (fp->fp, "360\n%s\n", layer_index->hard_owner_reference[i]);
+                fprintf (fp->fp, " 90\n%d\n", layer_index->number_of_entries[i]);
+                i++;
+                /*! \todo Check for overrun of array index. */
+        }
+        /* Clean up. */
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
 }
 
 
