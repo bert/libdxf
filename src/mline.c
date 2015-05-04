@@ -81,4 +81,90 @@ dxf_mline_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a \c MLINE entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfMline *
+dxf_mline_init
+(
+        DxfMline *mline
+                /*!< DXF mline entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                mline = dxf_mline_new ();
+        }
+        if (mline == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory for a DxfMline struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        mline->id_code = 0;
+        mline->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        mline->layer = strdup (DXF_DEFAULT_LAYER);
+        mline->elevation = 0.0;
+        mline->thickness = 0.0;
+        mline->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        mline->visibility = DXF_DEFAULT_VISIBILITY;
+        mline->color = DXF_COLOR_BYLAYER;
+        mline->paperspace = DXF_MODELSPACE;
+        mline->dictionary_owner_soft = strdup ("");
+        mline->dictionary_owner_hard = strdup ("");
+        mline->style_name = strdup ("");
+        mline->x0 = 0.0;
+        mline->y0 = 0.0;
+        mline->z0 = 0.0;
+        mline->x1 = 0.0;
+        mline->y1 = 0.0;
+        mline->z1 = 0.0;
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                mline->x2[i] = 0.0;
+                mline->y2[i] = 0.0;
+                mline->z2[i] = 0.0;
+                mline->x3[i] = 0.0;
+                mline->y3[i] = 0.0;
+                mline->z3[i] = 0.0;
+                mline->element_parameters[i] = 0.0;
+                mline->area_fill_parameters[i] = 0.0;
+        }
+        mline->scale_factor = 1.0;
+        mline->justification = 0;
+        mline->flags = 0;
+        mline->number_of_vertices = 0;
+        mline->number_of_elements = 0;
+        mline->number_of_area_fill_parameters = 0;
+        mline->extr_x0 = 0.0;
+        mline->extr_y0 = 0.0;
+        mline->extr_z0 = 1.0;
+        mline->mlinestyle_dictionary = strdup ("");
+        mline->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */
