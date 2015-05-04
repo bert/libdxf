@@ -216,6 +216,10 @@ dxf_mline
 } DxfMline;
 
 
+DxfMline *
+dxf_mline_new ();
+
+
 #endif /* LIBDXF_SRC_MLINE_H */
 
 
