@@ -101,35 +101,35 @@ dxf_line
                  * Group code = 360. */
         /* Specific members for a DXF line. */
         double x0;
-                /*!< group code = 10\n
-                 * start point. */
+                /*!< X value of the start point.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * start point. */
+                /*!< Y value of the start point.\n
+                 * Group code = 20. */
         double z0;
-                /*!< group code = 30\n
-                 * start point. */
+                /*!< Z value of the start point.\n
+                 * Group code = 30. */
         double x1;
-                /*!< group code = 11\n
-                 * end point. */
+                /*!< X value of the end point.\n
+                 * Group code = 11. */
         double y1;
-                /*!< group code = 21\n
-                 * end point. */
+                /*!< Y value of the end point.\n
+                 * Group code = 21. */
         double z1;
-                /*!< group code = 31\n
-                 * end point. */
+                /*!< Z value of the end point.\n
+                 * Group code = 31. */
         double extr_x0;
-                /*!< group code = 210\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 0.0. */
+                /*!< X value of the extrusion direction.\n
+                 * Optional, if ommited defaults to 0.0.\n
+                 * Group code = 210. */
         double extr_y0;
-                /*!< group code = 220\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 0.0. */
+                /*!< Y value of the extrusion direction.\n
+                 * Optional, if ommited defaults to 0.0.\n
+                 * Group code = 220. */
         double extr_z0;
-                /*!< group code = 230\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 1.0. */
+                /*!< Z value of the extrusion direction.\n
+                 * Optional, if ommited defaults to 1.0.\n
+                 * Group code = 230. */
         struct DxfLine *next;
                 /*!< pointer to the next DxfLine.\n
                  * \c NULL in the last DxfLine. */
