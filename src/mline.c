@@ -167,4 +167,51 @@ dxf_mline_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c MLINE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_mline_free
+(
+        DxfMline *mline
+                /*!< Pointer to the memory occupied by the DXF \c MLINE
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfMline was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (mline->linetype);
+        free (mline->layer);
+        free (mline->dictionary_owner_soft);
+        free (mline->dictionary_owner_hard);
+        free (mline->style_name);
+        free (mline->mlinestyle_dictionary);
+        free (mline);
+        mline = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

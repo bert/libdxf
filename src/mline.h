@@ -223,6 +223,11 @@ dxf_mline_init
 (
         DxfMline *mline
 );
+int
+dxf_mline_free
+(
+        DxfMline *mline
+);
 
 
 #endif /* LIBDXF_SRC_MLINE_H */
