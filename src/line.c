@@ -230,42 +230,42 @@ dxf_line_read
                 else if (strcmp (temp_string, "10") == 0)
                 {
                         /* Now follows a string containing the
-                         * X-coordinate of the center point. */
+                         * X-coordinate of the start point. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &line->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
-                         * Y-coordinate of the center point. */
+                         * Y-coordinate of the start point. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &line->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
-                         * Z-coordinate of the center point. */
+                         * Z-coordinate of the start point. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &line->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
-                         * X-coordinate of the center point. */
+                         * X-coordinate of the end point. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &line->x1);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
-                         * Y-coordinate of the center point. */
+                         * Y-coordinate of the end point. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &line->y1);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
-                         * Z-coordinate of the center point. */
+                         * Z-coordinate of the end point. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &line->z1);
                 }
