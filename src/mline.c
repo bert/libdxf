@@ -135,11 +135,11 @@ dxf_mline_init
         mline->x0 = 0.0;
         mline->y0 = 0.0;
         mline->z0 = 0.0;
-        mline->x1 = 0.0;
-        mline->y1 = 0.0;
-        mline->z1 = 0.0;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
+                mline->x1[i] = 0.0;
+                mline->y1[i] = 0.0;
+                mline->z1[i] = 0.0;
                 mline->x2[i] = 0.0;
                 mline->y2[i] = 0.0;
                 mline->z2[i] = 0.0;

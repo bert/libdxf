@@ -117,15 +117,15 @@ dxf_mline
         double z0;
                 /*!< Z value of Start point (in WCS).\n
                  * Group code = 30. */
-        double x1;
+        double x1[DXF_MAX_PARAM];
                 /*!< X value of Vertex coordinates (multiple entries;
                  * one entry for each vertex).\n
                  * Group code = 11. */
-        double y1;
+        double y1[DXF_MAX_PARAM];
                 /*!< Y value of Vertex coordinates (multiple entries;
                  * one entry for each vertex).\n
                  * Group code = 21. */
-        double z1;
+        double z1[DXF_MAX_PARAM];
                 /*!< Z value of Vertex coordinates (multiple entries;
                  * one entry for each vertex).\n
                  * Group code = 31. */
