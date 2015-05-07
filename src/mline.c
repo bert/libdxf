@@ -168,6 +168,408 @@ dxf_mline_init
 
 
 /*!
+ * \brief Read data from a DXF file into an \c MLINE entity.
+ *
+ * The last line read from file contained the string "MLINE". \n
+ * Now follows some data for the \c MLINE, to be terminated with a
+ * "  0" string announcing the following entity, or the end of the
+ * \c ENTITY section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c mline.
+ *
+ * \return a pointer to \c mline.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfMline *
+dxf_mline_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfMline *mline
+                /*!< DXF mline entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+        int i;
+        int j;
+        int k;
+        int l;
+        int m;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
+                return (NULL);
+        }
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                mline = dxf_mline_new ();
+                mline = dxf_mline_init (mline);
+        }
+        i = 0;
+        j = 0;
+        k = 0;
+        l = 0;
+        m = 0;
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        fclose (fp->fp);
+                        /* Clean up. */
+                        free (temp_string);
+                        return (NULL);
+                }
+                if (strcmp (temp_string, "2") == 0)
+                {
+                        /* Now follows a string containing a string of
+                         * up to 32 characters with the name of the
+                         * style used for this mline. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mline->style_name);
+                }
+                if (strcmp (temp_string, "5") == 0)
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &mline->id_code);
+                }
+                else if (strcmp (temp_string, "6") == 0)
+                {
+                        /* Now follows a string containing a linetype
+                         * name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mline->linetype);
+                }
+                else if (strcmp (temp_string, "8") == 0)
+                {
+                        /* Now follows a string containing a layer name. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mline->layer);
+                }
+                else if (strcmp (temp_string, "10") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X value of the start point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->x0);
+                }
+                else if (strcmp (temp_string, "20") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y value of the start point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->y0);
+                }
+                else if (strcmp (temp_string, "30") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z value of the start point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->z0);
+                }
+                else if (strcmp (temp_string, "11") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X value of the vertex coordinates (multiple
+                         * entries; one entry for each vertex). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->x1[i]);
+                }
+                else if (strcmp (temp_string, "21") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y value of the vertex coordinates (multiple
+                         * entries; one entry for each vertex). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->y1[i]);
+                }
+                else if (strcmp (temp_string, "31") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z value of the vertex coordinates (multiple
+                         * entries; one entry for each vertex). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->z1[i]);
+                        i++;
+                }
+                else if (strcmp (temp_string, "12") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X value of the direction vector of segment
+                         * starting at this vertex (multiple
+                         * entries; one entry for each vertex). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->x2[j]);
+                }
+                else if (strcmp (temp_string, "22") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y value of the direction vector of segment
+                         * starting at this vertex (multiple
+                         * entries; one entry for each vertex). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->y2[j]);
+                }
+                else if (strcmp (temp_string, "32") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z value of the direction vector of segment
+                         * starting at this vertex (multiple
+                         * entries; one entry for each vertex). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->z2[j]);
+                        j++;
+                }
+                else if (strcmp (temp_string, "13") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X value of the direction vector of miter at
+                         * this vertex (multiple entries: one for each
+                         * vertex). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->x3[k]);
+                }
+                else if (strcmp (temp_string, "23") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y value of the direction vector of miter at
+                         * this vertex (multiple entries: one for each
+                         * vertex). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->y3[k]);
+                }
+                else if (strcmp (temp_string, "33") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z value of the direction vector of miter at
+                         * this vertex (multiple entries: one for each
+                         * vertex). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->z3[k]);
+                        j++;
+                }
+                else if ((fp->acad_version_number <= AutoCAD_11)
+                        && (strcmp (temp_string, "38") == 0))
+                {
+                        /* Now follows a string containing the
+                         * elevation. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->elevation);
+                }
+                else if (strcmp (temp_string, "39") == 0)
+                {
+                        /* Now follows a string containing the
+                         * thickness. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->thickness);
+                }
+                else if (strcmp (temp_string, "40") == 0)
+                {
+                        /* Now follows a string containing the scale
+                         * factor. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->scale_factor);
+                }
+                else if (strcmp (temp_string, "41") == 0)
+                {
+                        /* Now follows a string containing the element
+                         * parameters (repeats based on previous code 74). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->element_parameters[l]);
+                        l++;
+                }
+                else if (strcmp (temp_string, "42") == 0)
+                {
+                        /* Now follows a string containing the area fill
+                         * parameters (repeats based on previous code 75). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->area_fill_parameters[m]);
+                        m++;
+                }
+                else if (strcmp (temp_string, "48") == 0)
+                {
+                        /* Now follows a string containing the linetype
+                         * scale. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->linetype_scale);
+                }
+                else if (strcmp (temp_string, "60") == 0)
+                {
+                        /* Now follows a string containing the
+                         * visibility value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &mline->visibility);
+                }
+                else if (strcmp (temp_string, "62") == 0)
+                {
+                        /* Now follows a string containing the
+                         * color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mline->color);
+                }
+                else if (strcmp (temp_string, "67") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mline->paperspace);
+                }
+                else if (strcmp (temp_string, "70") == 0)
+                {
+                        /* Now follows a string containing the
+                         * justification value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mline->justification);
+                }
+                else if (strcmp (temp_string, "71") == 0)
+                {
+                        /* Now follows a string containing the flags
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mline->flags);
+                }
+                else if (strcmp (temp_string, "72") == 0)
+                {
+                        /* Now follows a string containing the number of
+                         * vertices value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mline->number_of_vertices);
+                }
+                else if (strcmp (temp_string, "73") == 0)
+                {
+                        /* Now follows a string containing the number of
+                         * elements in MLINESTYLE definition. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mline->number_of_elements);
+                }
+                else if (strcmp (temp_string, "74") == 0)
+                {
+                        /* Now follows a string containing the number of
+                         * parameters for this element (repeats for each
+                         * element in segment). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mline->number_of_parameters);
+                }
+                else if (strcmp (temp_string, "75") == 0)
+                {
+                        /* Now follows a string containing the number of
+                         * area fill parameters for this element
+                         * (repeats for each element in segment). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &mline->number_of_area_fill_parameters);
+                }
+                else if ((fp->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && ((strcmp (temp_string, "AcDbMline") != 0)))
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "210") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X value of the extrusion direction. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->extr_x0);
+                }
+                else if (strcmp (temp_string, "220") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y value of the extrusion direction. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->extr_y0);
+                }
+                else if (strcmp (temp_string, "230") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z value of the extrusion direction. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mline->extr_z0);
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing Soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mline->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "340") == 0)
+                {
+                        /* Now follows a string containing a
+                         * Pointer-handle/ID of MLINESTYLE dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mline->mlinestyle_dictionary);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", mline->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, "DXF comment: %s\n", temp_string);
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                }
+        }
+        /* Handle omitted members and/or illegal values. */
+        if (strcmp (mline->linetype, "") == 0)
+        {
+                mline->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (mline->layer, "") == 0)
+        {
+                mline->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        /* Clean up. */
+        free (temp_string);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c MLINE and all it's
  * data fields.
  *

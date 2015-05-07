@@ -223,6 +223,12 @@ dxf_mline_init
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_read
+(
+        DxfFile *fp,
+        DxfMline *mline
+);
 int
 dxf_mline_free
 (
