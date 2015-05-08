@@ -44,6 +44,17 @@
 /*!
  * \brief DXF definition of an AutoCAD mline entity.
  *
+ * \warning The 2 group codes in mline entities and mlinestyle objects
+ * are redundant fields.\n
+ * These groups should not be modified under any circumstances, although
+ * it is safe to read them and use their values.\n
+ * The correct fields to modify are:\n
+ * <b>Mline</b>: The 340 group in the same object, which indicates the
+ * proper \c MLINESTYLE object.\n
+ * <b>Mlinestyle</b>: The 3 group value in the \c MLINESTYLE dictionary,
+ * which precedes the 350 group that has the handle or entity name of
+ * the current \c MLINESTYLE. 
+ *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
  * \version According to DXF R12 (backward compatibility).
