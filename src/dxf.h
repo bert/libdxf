@@ -80,6 +80,7 @@
 #include "ltype.h"
 #include "lwpolyline.h"
 #include "mline.h"
+#include "mlinestyle.h"
 #include "mtext.h"
 #include "object.h"
 #include "oleframe.h"

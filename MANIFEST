@@ -219,6 +219,7 @@ src/lwpolyline.c
 src/lwpolyline.h
 src/mline.c
 src/mline.h
+src/mlinestyle.h
 src/mtext.c
 src/mtext.h
 src/object.c

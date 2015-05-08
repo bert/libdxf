@@ -59,6 +59,7 @@ libdxf_la_SOURCES = \
   object.c \
   mtext.h \
   mtext.c \
+  mlinestyle.h \
   mline.h \
   mline.c \
   lwpolyline.h \
