@@ -452,6 +452,16 @@ dxf_line_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
+        if (strcmp (line->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, line->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0\n")),
+                  dxf_entity_name);
+                line->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
         if (strcmp (line->layer, "") == 0)
         {
                 fprintf (stderr,
