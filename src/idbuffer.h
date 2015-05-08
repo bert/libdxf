@@ -53,7 +53,7 @@
 typedef struct
 dxf_idbuffer
 {
-        /* Members common for all DXF group objects. */
+        /* Members common for all DXF objects. */
         int id_code;
                 /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
