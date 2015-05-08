@@ -129,6 +129,10 @@ dxf_mlinestyle
 } DxfMlinestyle;
 
 
+DxfMlinestyle *
+dxf_mlinestyle_new ();
+
+
 #endif /* LIBDXF_SRC_MLINESTYLE_H */
 
 
