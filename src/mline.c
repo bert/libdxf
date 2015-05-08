@@ -570,6 +570,201 @@ dxf_mline_read
 
 
 /*!
+ * \brief Write DXF output to fp for a mline entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occured.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_mline_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfMline *mline
+                /*!< DXF mline entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("MLINE");
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (mline->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, mline->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0\n")),
+                  dxf_entity_name);
+                mline->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        if (strcmp (mline->layer, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, mline->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0\n")),
+                  dxf_entity_name);
+                mline->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (mline->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", mline->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (mline->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", mline->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (mline->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", mline->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (mline->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", mline->layer);
+        if (strcmp (mline->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", mline->linetype);
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (mline->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", mline->elevation);
+        }
+        if (mline->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", mline->color);
+        }
+        if (mline->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", mline->linetype_scale);
+        }
+        if (mline->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", mline->visibility);
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbMline\n");
+        }
+        if (mline->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", mline->thickness);
+        }
+        fprintf (fp->fp, "  2\n%s\n", mline->style_name);
+        fprintf (fp->fp, "340\n%s\n", mline->mlinestyle_dictionary);
+        fprintf (fp->fp, " 40\n%f\n", mline->scale_factor);
+        fprintf (fp->fp, " 70\n%d\n", mline->justification);
+        fprintf (fp->fp, " 71\n%d\n", mline->flags);
+        /*! \todo Check for correct number of vertices (prevent overrun of array/index). */
+        fprintf (fp->fp, " 72\n%d\n", mline->number_of_vertices);
+        /*! \todo Check for correct number of elements (prevent overrun of array/index). */
+        fprintf (fp->fp, " 73\n%d\n", mline->number_of_elements);
+        fprintf (fp->fp, " 10\n%f\n", mline->x0);
+        fprintf (fp->fp, " 20\n%f\n", mline->y0);
+        fprintf (fp->fp, " 30\n%f\n", mline->z0);
+        if ((fp->acad_version_number >= AutoCAD_12)
+                && (mline->extr_x0 != 0.0)
+                && (mline->extr_y0 != 0.0)
+                && (mline->extr_z0 != 1.0))
+        {
+                fprintf (fp->fp, "210\n%f\n", mline->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", mline->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", mline->extr_z0);
+        }
+        for (i = 0; i < mline->number_of_vertices; i++)
+        {
+                fprintf (fp->fp, " 11\n%f\n", mline->x1[i]);
+                fprintf (fp->fp, " 21\n%f\n", mline->y1[i]);
+                fprintf (fp->fp, " 31\n%f\n", mline->z1[i]);
+        }
+        for (i = 0; i < mline->number_of_vertices; i++)
+        {
+                fprintf (fp->fp, " 12\n%f\n", mline->x2[i]);
+                fprintf (fp->fp, " 22\n%f\n", mline->y2[i]);
+                fprintf (fp->fp, " 32\n%f\n", mline->z2[i]);
+        }
+        for (i = 0; i < mline->number_of_vertices; i++)
+        {
+                fprintf (fp->fp, " 13\n%f\n", mline->x3[i]);
+                fprintf (fp->fp, " 23\n%f\n", mline->y3[i]);
+                fprintf (fp->fp, " 33\n%f\n", mline->z3[i]);
+        }
+        /*! \todo Check for correct number of parameters (prevent overrun of array/index). */
+        fprintf (fp->fp, " 74\n%d\n", mline->number_of_parameters);
+        for (i = 0; i < mline->number_of_parameters; i++)
+        {
+                fprintf (fp->fp, " 41\n%f\n", mline->element_parameters[i]);
+        }
+        /*! \todo Check for correct number of area fill parameters (prevent overrun of array/index). */
+        fprintf (fp->fp, " 75\n%d\n", mline->number_of_area_fill_parameters);
+        for (i = 0; i < mline->number_of_area_fill_parameters; i++)
+        {
+                fprintf (fp->fp, " 42\n%f\n", mline->area_fill_parameters[i]);
+        }
+        /* Clean up. */
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c MLINE and all it's
  * data fields.
  *
