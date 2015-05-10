@@ -82,6 +82,70 @@ dxf_mlinestyle_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c MLINESTYLE
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfMlinestyle *
+dxf_mlinestyle_init
+(
+        DxfMlinestyle *mlinestyle
+                /*!< DXF \c MLINESTYLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                mlinestyle = dxf_mlinestyle_new ();
+        }
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfMlinestyle struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mlinestyle->name = strdup ("");
+        mlinestyle->description = strdup ("");
+        mlinestyle->id_code = 0;
+        mlinestyle->dictionary_owner_soft = strdup ("");
+        mlinestyle->dictionary_owner_hard = strdup ("");
+        mlinestyle->start_angle = 0.0;
+        mlinestyle->end_angle = 0.0;
+        mlinestyle->color = 256;
+        mlinestyle->flags = 0;
+        mlinestyle->number_of_elements = 0;
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                mlinestyle->element_linetype[i] = strdup ("");
+                mlinestyle->element_offset[i] = 0.0;
+                mlinestyle->element_color[i] = 0;
+        }
+        mlinestyle->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mlinestyle);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c MLINESTYLE and all it's
  * data fields.
  *
