@@ -81,4 +81,55 @@ dxf_mlinestyle_new ()
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c MLINESTYLE and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_mlinestyle_free
+(
+        DxfMlinestyle *mlinestyle
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c MLINESTYLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (mlinestyle->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfMlinestyle was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (mlinestyle->dictionary_owner_soft);
+        free (mlinestyle->dictionary_owner_hard);
+        free (mlinestyle->name);
+        free (mlinestyle->description);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (mlinestyle->element_linetype[i]);
+        }
+        free (mlinestyle);
+        mlinestyle = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
