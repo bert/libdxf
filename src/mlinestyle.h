@@ -136,6 +136,12 @@ dxf_mlinestyle_init
 (
         DxfMlinestyle *mlinestyle
 );
+DxfMlinestyle *
+dxf_mlinestyle_read
+(
+        DxfFile *fp,
+        DxfMlinestyle *mlinestyle
+);
 int
 dxf_mlinestyle_free
 (
