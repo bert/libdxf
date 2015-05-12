@@ -143,6 +143,12 @@ dxf_mlinestyle_read
         DxfMlinestyle *mlinestyle
 );
 int
+dxf_mlinestyle_write
+(
+        DxfFile *fp,
+        DxfMlinestyle *mlinestyle
+);
+int
 dxf_mlinestyle_free
 (
         DxfMlinestyle *mlinestyle

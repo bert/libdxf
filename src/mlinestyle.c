@@ -349,6 +349,115 @@ dxf_mlinestyle_read
 
 
 /*!
+ * \brief Write DXF output to a file for a DXF \c MLINESTYLE object.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_mlinestyle_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfMlinestyle *mlinestyle
+                /*!< DXF \c MLINESTYLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("MLINESTYLE");
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_14)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, mlinestyle->id_code);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (mlinestyle->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", mlinestyle->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (mlinestyle->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", mlinestyle->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (mlinestyle->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", mlinestyle->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbMlineStyle\n");
+        }
+        fprintf (fp->fp, "  2\n%s\n", mlinestyle->name);
+        fprintf (fp->fp, " 70\n%d\n", mlinestyle->flags);
+        fprintf (fp->fp, "  3\n%s\n", mlinestyle->description);
+        fprintf (fp->fp, " 62\n%d\n", mlinestyle->color);
+        fprintf (fp->fp, " 51\n%lf\n", mlinestyle->start_angle);
+        fprintf (fp->fp, " 52\n%lf\n", mlinestyle->end_angle);
+        fprintf (fp->fp, " 71\n%d\n", mlinestyle->number_of_elements);
+        for (i = 1; i < DXF_MAX_PARAM; i++)
+        {
+                fprintf (fp->fp, " 49\n%lf\n", mlinestyle->element_offset[i]);
+                fprintf (fp->fp, " 62\n%d\n", mlinestyle->element_color[i]);
+                fprintf (fp->fp, "  6\n%s\n", mlinestyle->element_linetype[i]);
+                /*! \todo Check for overrun of array index. */
+        }
+        /* Clean up. */
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c MLINESTYLE and all it's
  * data fields.
  *
