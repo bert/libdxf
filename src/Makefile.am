@@ -55,6 +55,7 @@ libdxf_la_SOURCES = \
   oleframe.c \
   ole2frame.h \
   ole2frame.c \
+  object_ptr.h \
   object.h \
   object.c \
   mtext.h \

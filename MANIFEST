@@ -225,6 +225,7 @@ src/mtext.c
 src/mtext.h
 src/object.c
 src/object.h
+src/object_ptr.h
 src/ole2frame.c
 src/ole2frame.h
 src/oleframe.c

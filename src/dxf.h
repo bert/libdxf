@@ -83,6 +83,7 @@
 #include "mlinestyle.h"
 #include "mtext.h"
 #include "object.h"
+#include "object_ptr.h"
 #include "oleframe.h"
 #include "ole2frame.h"
 #include "param.h"
