@@ -1,9 +1,9 @@
 /*!
- * \file object_ptr.h
+ * \file object_ptr.c
  *
  * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Header file for a DXF object_ptr object (\c OBJECT_PTR).
+ * \brief Functions for a DXF object_ptr object (\c OBJECT_PTR).
  *
  * \version The \c OBJECT_PTR object was introduced in DXF R14.
  *
@@ -34,15 +34,13 @@
  */
 
 
-#ifndef LIBDXF_SRC_OBJECT_PTR_H
-#define LIBDXF_SRC_OBJECT_PTR_H
-
-
-#include "global.h"
+#include "object_ptr.h"
 
 
 /*!
- * \brief DXF definition of an AutoCAD object_ptr object (\c OBJECT_PTR).
+ * \brief Allocate memory for a \c DxfObjectPtr.
+ *
+ * Fill the memory contents with zeros.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -50,36 +48,34 @@
  * \version According to DXF R13 (backward compatibility).
  * \version According to DXF R14.
  */
-typedef struct
-dxf_object_ptr
-{
-        /* Members common for all DXF objects. */
-        int id_code;
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file.\n
-                 * Group code = 5. */
-        char *dictionary_owner_soft;
-                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
-                 * Group code = 330. */
-        char *dictionary_owner_hard;
-                /*!< Hard owner ID/handle to owner dictionary (optional).\n
-                 * Group code = 360. */
-        /* Specific members for a DXF object_ptr. */
-        char *xdata[DXF_MAX_PARAM];
-                /*!< Begin ASE xdata (ACADASER13).\n
-                 * Group code = 1001. */
-        struct DxfObjectPtr *next;
-                /*!< Pointer to the next DxfObjectPtr.\n
-                 * \c NULL in the last DxfObjectPtr. */
-} DxfObjectPtr;
-
-
 DxfObjectPtr *
-dxf_object_ptr_new ();
+dxf_object_ptr_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfObjectPtr *object_ptr = NULL;
+        size_t size;
+
+        size = sizeof (DxfObjectPtr);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((object_ptr = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfObjectPtr struct.\n")),
+                  __FUNCTION__);
+                object_ptr = NULL;
+        }
+        else
+        {
+                memset (object_ptr, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object_ptr);
+}
 
 
-#endif /* LIBDXF_SRC_OBJECT_PR_H */
-
-
-/* EOF */
+/* EOF*/
