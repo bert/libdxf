@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-12 07:50+0200\n"
+"POT-Creation-Date: 2015-05-12 18:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,25 +30,30 @@ msgstr ""
 #: src/block.c:188 src/block_record.c:109 src/block_record.c:178
 #: src/body.c:110 src/body.c:193 src/circle.c:106 src/circle.c:187
 #: src/class.c:96 src/class.c:160 src/color.c:2232 src/comment.c:92
-#: src/dimension.c:112 src/dimension.c:223 src/dimstyle.c:110
-#: src/dimstyle.c:404 src/donut.c:103 src/ellipse.c:97 src/ellipse.c:177
-#: src/endblk.c:108 src/endblk.c:178 src/hatch.c:522 src/helix.c:101
-#: src/helix.c:206 src/image.c:107 src/image.c:205 src/insert.c:109
-#: src/insert.c:199 src/layer.c:101 src/layer.c:169 src/leader.c:113
-#: src/leader.c:223 src/line.c:108 src/line.c:191 src/ltype.c:108
-#: src/ltype.c:192 src/lwpolyline.c:95 src/lwpolyline.c:171 src/mtext.c:107
-#: src/mtext.c:214 src/object.c:96 src/ole2frame.c:108 src/ole2frame.c:199
-#: src/oleframe.c:102 src/oleframe.c:180 src/point.c:119 src/point.c:201
-#: src/polyline.c:105 src/polyline.c:196 src/ray.c:110 src/ray.c:191
-#: src/region.c:108 src/region.c:194 src/seqend.c:109 src/seqend.c:183
-#: src/shape.c:109 src/shape.c:194 src/solid.c:112 src/solid.c:201
-#: src/spline.c:303 src/spline.c:423 src/style.c:109 src/style.c:182
-#: src/table.c:109 src/table.c:174 src/tables.c:98 src/text.c:105
-#: src/text.c:199 src/thumbnail.c:137 src/thumbnail.c:219 src/tolerance.c:109
-#: src/tolerance.c:193 src/trace.c:109 src/trace.c:196 src/ucs.c:109
-#: src/ucs.c:186 src/vertex.c:105 src/vertex.c:187 src/view.c:109
-#: src/view.c:192 src/viewport.c:108 src/viewport.c:237 src/vport.c:112
-#: src/vport.c:216
+#: src/dictionary.c:108 src/dictionary.c:181 src/dictionaryvar.c:108
+#: src/dictionaryvar.c:181 src/dimension.c:112 src/dimension.c:223
+#: src/dimstyle.c:110 src/dimstyle.c:404 src/donut.c:103 src/ellipse.c:97
+#: src/ellipse.c:177 src/endblk.c:108 src/endblk.c:178 src/group.c:108
+#: src/group.c:183 src/hatch.c:522 src/helix.c:101 src/helix.c:206
+#: src/idbuffer.c:110 src/idbuffer.c:187 src/image.c:107 src/image.c:205
+#: src/imagedef.c:110 src/imagedef.c:196 src/imagedef_reactor.c:108
+#: src/imagedef_reactor.c:184 src/insert.c:109 src/insert.c:199
+#: src/layer.c:101 src/layer.c:169 src/layer_index.c:110 src/layer_index.c:192
+#: src/leader.c:113 src/leader.c:223 src/line.c:108 src/line.c:191
+#: src/ltype.c:108 src/ltype.c:192 src/lwpolyline.c:95 src/lwpolyline.c:171
+#: src/mline.c:112 src/mline.c:219 src/mlinestyle.c:113 src/mlinestyle.c:199
+#: src/mtext.c:107 src/mtext.c:214 src/object.c:96 src/ole2frame.c:108
+#: src/ole2frame.c:199 src/oleframe.c:102 src/oleframe.c:180 src/point.c:119
+#: src/point.c:201 src/polyline.c:105 src/polyline.c:196 src/ray.c:110
+#: src/ray.c:191 src/region.c:108 src/region.c:194 src/seqend.c:109
+#: src/seqend.c:183 src/shape.c:109 src/shape.c:194 src/solid.c:112
+#: src/solid.c:201 src/spline.c:303 src/spline.c:423 src/style.c:109
+#: src/style.c:182 src/table.c:109 src/table.c:174 src/tables.c:98
+#: src/text.c:105 src/text.c:199 src/thumbnail.c:137 src/thumbnail.c:219
+#: src/tolerance.c:109 src/tolerance.c:193 src/trace.c:109 src/trace.c:196
+#: src/ucs.c:109 src/ucs.c:186 src/vertex.c:105 src/vertex.c:187
+#: src/view.c:109 src/view.c:192 src/viewport.c:108 src/viewport.c:237
+#: src/vport.c:112 src/vport.c:216 src/xline.c:108 src/xline.c:188
 #, c-format
 msgid "Warning in %s () a NULL pointer was passed.\n"
 msgstr ""
@@ -60,15 +65,20 @@ msgstr ""
 #: src/attrib.c:524 src/block.c:179 src/block.c:386 src/block.c:547
 #: src/block_record.c:169 src/block_record.c:280 src/body.c:184 src/body.c:393
 #: src/circle.c:178 src/circle.c:407 src/class.c:151 src/class.c:303
-#: src/class.c:398 src/comment.c:138 src/dimension.c:214 src/dimension.c:683
-#: src/dimstyle.c:201 src/dimstyle.c:395 src/donut.c:174 src/ellipse.c:168
-#: src/ellipse.c:438 src/endblk.c:169 src/endblk.c:268 src/endsec.c:65
-#: src/endtab.c:65 src/file.c:70 src/file.c:152 src/file.c:189
-#: src/hatch.c:2324 src/helix.c:197 src/helix.c:650 src/image.c:196
-#: src/image.c:534 src/insert.c:190 src/insert.c:490 src/layer.c:160
-#: src/layer.c:333 src/leader.c:208 src/leader.c:592 src/line.c:182
+#: src/class.c:398 src/comment.c:138 src/dictionary.c:166 src/dictionary.c:302
+#: src/dictionaryvar.c:166 src/dictionaryvar.c:302 src/dimension.c:214
+#: src/dimension.c:683 src/dimstyle.c:201 src/dimstyle.c:395 src/donut.c:174
+#: src/ellipse.c:168 src/ellipse.c:438 src/endblk.c:169 src/endblk.c:268
+#: src/endsec.c:65 src/endtab.c:65 src/file.c:70 src/file.c:152 src/file.c:189
+#: src/group.c:168 src/group.c:317 src/hatch.c:2324 src/helix.c:197
+#: src/helix.c:650 src/idbuffer.c:172 src/idbuffer.c:308 src/image.c:196
+#: src/image.c:534 src/imagedef.c:181 src/imagedef.c:383
+#: src/imagedef_reactor.c:169 src/imagedef_reactor.c:311 src/insert.c:190
+#: src/insert.c:490 src/layer.c:160 src/layer.c:333 src/layer_index.c:177
+#: src/layer_index.c:340 src/leader.c:208 src/leader.c:592 src/line.c:182
 #: src/line.c:428 src/ltype.c:183 src/ltype.c:413 src/lwpolyline.c:162
-#: src/lwpolyline.c:423 src/mtext.c:205 src/mtext.c:546 src/ole2frame.c:190
+#: src/lwpolyline.c:423 src/mline.c:210 src/mline.c:603 src/mlinestyle.c:184
+#: src/mlinestyle.c:382 src/mtext.c:205 src/mtext.c:546 src/ole2frame.c:190
 #: src/ole2frame.c:471 src/oleframe.c:171 src/oleframe.c:387 src/point.c:192
 #: src/point.c:424 src/polyline.c:187 src/polyline.c:472 src/ray.c:182
 #: src/ray.c:407 src/region.c:185 src/region.c:391 src/section.c:60
@@ -80,7 +90,7 @@ msgstr ""
 #: src/tolerance.c:440 src/trace.c:187 src/trace.c:475 src/ucs.c:177
 #: src/ucs.c:377 src/vertex.c:178 src/vertex.c:447 src/view.c:183
 #: src/view.c:422 src/viewport.c:228 src/viewport.c:1049 src/vport.c:207
-#: src/vport.c:570
+#: src/vport.c:570 src/xline.c:179 src/xline.c:403
 #, c-format
 msgid "Error in %s () a NULL file pointer was passed.\n"
 msgstr ""
@@ -88,42 +98,53 @@ msgstr ""
 #: src/3dface.c:204 src/3dline.c:197 src/3dsolid.c:221
 #: src/acad_proxy_entity.c:228 src/appid.c:202 src/arc.c:204 src/attdef.c:212
 #: src/attrib.c:213 src/block.c:199 src/block_record.c:190 src/body.c:213
-#: src/circle.c:199 src/class.c:172 src/dimension.c:235 src/dimstyle.c:416
-#: src/ellipse.c:189 src/endblk.c:189 src/helix.c:219 src/image.c:219
-#: src/insert.c:211 src/layer.c:181 src/leader.c:236 src/line.c:203
-#: src/ltype.c:205 src/lwpolyline.c:184 src/mtext.c:226 src/ole2frame.c:212
-#: src/oleframe.c:193 src/point.c:213 src/polyline.c:208 src/ray.c:203
-#: src/region.c:206 src/seqend.c:195 src/shape.c:206 src/solid.c:213
-#: src/spline.c:444 src/style.c:194 src/table.c:186 src/text.c:211
-#: src/thumbnail.c:238 src/tolerance.c:205 src/trace.c:208 src/ucs.c:198
-#: src/vertex.c:199 src/view.c:204 src/viewport.c:249 src/viewport.c:389
-#: src/viewport.c:401 src/viewport.c:414 src/viewport.c:426 src/viewport.c:439
-#: src/viewport.c:450 src/viewport.c:466 src/viewport.c:481 src/viewport.c:496
-#: src/viewport.c:511 src/viewport.c:526 src/viewport.c:541 src/viewport.c:556
-#: src/viewport.c:572 src/viewport.c:588 src/viewport.c:604 src/viewport.c:620
-#: src/viewport.c:636 src/viewport.c:652 src/viewport.c:668 src/viewport.c:683
-#: src/viewport.c:699 src/viewport.c:715 src/viewport.c:731 src/viewport.c:747
-#: src/viewport.c:763 src/viewport.c:779 src/viewport.c:795 src/viewport.c:811
-#: src/viewport.c:827 src/viewport.c:843 src/viewport.c:859 src/viewport.c:875
-#: src/viewport.c:890 src/viewport.c:903 src/viewport.c:937 src/viewport.c:948
-#: src/viewport.c:961 src/viewport.c:973 src/viewport.c:986 src/vport.c:228
+#: src/circle.c:199 src/class.c:172 src/dictionary.c:193
+#: src/dictionaryvar.c:193 src/dimension.c:235 src/dimstyle.c:416
+#: src/ellipse.c:189 src/endblk.c:189 src/group.c:195 src/helix.c:219
+#: src/idbuffer.c:200 src/image.c:219 src/imagedef.c:209
+#: src/imagedef_reactor.c:197 src/insert.c:211 src/layer.c:181
+#: src/layer_index.c:207 src/leader.c:236 src/line.c:203 src/ltype.c:205
+#: src/lwpolyline.c:184 src/mline.c:236 src/mlinestyle.c:212 src/mtext.c:226
+#: src/ole2frame.c:212 src/oleframe.c:193 src/point.c:213 src/polyline.c:208
+#: src/ray.c:203 src/region.c:206 src/seqend.c:195 src/shape.c:206
+#: src/solid.c:213 src/spline.c:444 src/style.c:194 src/table.c:186
+#: src/text.c:211 src/thumbnail.c:238 src/tolerance.c:205 src/trace.c:208
+#: src/ucs.c:198 src/vertex.c:199 src/view.c:204 src/viewport.c:249
+#: src/viewport.c:389 src/viewport.c:401 src/viewport.c:414 src/viewport.c:426
+#: src/viewport.c:439 src/viewport.c:450 src/viewport.c:466 src/viewport.c:481
+#: src/viewport.c:496 src/viewport.c:511 src/viewport.c:526 src/viewport.c:541
+#: src/viewport.c:556 src/viewport.c:572 src/viewport.c:588 src/viewport.c:604
+#: src/viewport.c:620 src/viewport.c:636 src/viewport.c:652 src/viewport.c:668
+#: src/viewport.c:683 src/viewport.c:699 src/viewport.c:715 src/viewport.c:731
+#: src/viewport.c:747 src/viewport.c:763 src/viewport.c:779 src/viewport.c:795
+#: src/viewport.c:811 src/viewport.c:827 src/viewport.c:843 src/viewport.c:859
+#: src/viewport.c:875 src/viewport.c:890 src/viewport.c:903 src/viewport.c:937
+#: src/viewport.c:948 src/viewport.c:961 src/viewport.c:973 src/viewport.c:986
+#: src/vport.c:228 src/xline.c:200
 #, c-format
 msgid "Error in %s () while reading from: %s in line: %d.\n"
 msgstr ""
 
 #: src/3dface.c:371 src/3dline.c:321 src/3dsolid.c:326 src/3dsolid.c:340
 #: src/acad_proxy_entity.c:351 src/arc.c:327 src/attdef.c:432 src/attrib.c:426
-#: src/block.c:283 src/circle.c:309 src/dimension.c:580 src/dimstyle.c:633
-#: src/ellipse.c:340 src/helix.c:498 src/image.c:422 src/insert.c:389
-#: src/layer.c:227 src/leader.c:416 src/line.c:327 src/mtext.c:457
+#: src/block.c:283 src/circle.c:309 src/dictionary.c:224
+#: src/dictionaryvar.c:224 src/dimension.c:580 src/dimstyle.c:633
+#: src/ellipse.c:340 src/group.c:233 src/helix.c:498 src/idbuffer.c:224
+#: src/image.c:422 src/imagedef.c:276 src/imagedef_reactor.c:228
+#: src/insert.c:389 src/layer.c:227 src/layer_index.c:255 src/leader.c:416
+#: src/line.c:327 src/mline.c:494 src/mlinestyle.c:310 src/mtext.c:457
 #: src/ole2frame.c:383 src/oleframe.c:302 src/point.c:323 src/seqend.c:276
 #: src/shape.c:344 src/style.c:281 src/text.c:376 src/tolerance.c:335
 #: src/trace.c:374 src/ucs.c:306 src/vertex.c:367 src/view.c:351
+#: src/xline.c:323
 #, c-format
 msgid "Warning in %s () found a bad subclass marker in: %s in line: %d.\n"
 msgstr ""
 
-#: src/3dface.c:401 src/3dsolid.c:371 src/leader.c:540
+#: src/3dface.c:401 src/3dsolid.c:371 src/dictionary.c:254
+#: src/dictionaryvar.c:254 src/group.c:269 src/idbuffer.c:259
+#: src/imagedef.c:334 src/imagedef_reactor.c:262 src/layer_index.c:291
+#: src/leader.c:540 src/mlinestyle.c:333
 #, c-format
 msgid "DXF comment: %s\n"
 msgstr ""
@@ -131,14 +152,18 @@ msgstr ""
 #: src/3dface.c:406 src/3dline.c:370 src/3dsolid.c:376
 #: src/acad_proxy_entity.c:383 src/appid.c:254 src/arc.c:376 src/attdef.c:481
 #: src/attrib.c:475 src/block.c:320 src/block_record.c:242 src/body.c:331
-#: src/circle.c:358 src/class.c:243 src/dimension.c:629 src/ellipse.c:389
-#: src/endblk.c:222 src/helix.c:603 src/image.c:485 src/insert.c:438
-#: src/layer.c:282 src/leader.c:545 src/line.c:376 src/ltype.c:355
-#: src/lwpolyline.c:370 src/mtext.c:493 src/ole2frame.c:418 src/oleframe.c:337
+#: src/circle.c:358 src/class.c:243 src/dictionary.c:259
+#: src/dictionaryvar.c:259 src/dimension.c:629 src/ellipse.c:389
+#: src/endblk.c:222 src/group.c:274 src/helix.c:603 src/idbuffer.c:264
+#: src/image.c:485 src/imagedef.c:339 src/imagedef_reactor.c:267
+#: src/insert.c:438 src/layer.c:282 src/layer_index.c:296 src/leader.c:545
+#: src/line.c:376 src/ltype.c:355 src/lwpolyline.c:370 src/mline.c:550
+#: src/mlinestyle.c:338 src/mtext.c:493 src/ole2frame.c:418 src/oleframe.c:337
 #: src/polyline.c:419 src/ray.c:355 src/region.c:338 src/seqend.c:304
 #: src/shape.c:393 src/solid.c:424 src/spline.c:766 src/style.c:309
 #: src/table.c:224 src/thumbnail.c:271 src/tolerance.c:384 src/trace.c:423
 #: src/ucs.c:334 src/vertex.c:395 src/view.c:379 src/viewport.c:997
+#: src/xline.c:351
 #, c-format
 msgid ""
 "Warning in %s () unknown string tag found while reading from: %s in line: "
@@ -152,23 +177,26 @@ msgstr ""
 #: src/attdef.c:823 src/attdef.c:863 src/attdef.c:903 src/attdef.c:944
 #: src/attrib.c:533 src/block.c:395 src/block_record.c:298
 #: src/block_record.c:435 src/block_record.c:478 src/block_record.c:521
-#: src/body.c:402 src/circle.c:416 src/class.c:312 src/dimension.c:693
-#: src/dimension.c:995 src/dimstyle.c:210 src/donut.c:183 src/ellipse.c:456
-#: src/endblk.c:275 src/hatch.c:2342 src/hatch.c:2502 src/hatch.c:2509
+#: src/body.c:402 src/circle.c:416 src/class.c:312 src/dictionary.c:311
+#: src/dictionaryvar.c:311 src/dimension.c:693 src/dimension.c:995
+#: src/dimstyle.c:210 src/donut.c:183 src/ellipse.c:456 src/endblk.c:275
+#: src/group.c:326 src/hatch.c:2342 src/hatch.c:2502 src/hatch.c:2509
 #: src/hatch.c:2564 src/hatch.c:2571 src/hatch.c:2608 src/hatch.c:2615
 #: src/hatch.c:2737 src/hatch.c:2744 src/hatch.c:2993 src/hatch.c:3000
-#: src/helix.c:659 src/image.c:543 src/insert.c:499 src/layer.c:342
-#: src/layer.c:483 src/layer.c:518 src/layer.c:553 src/layer.c:590
-#: src/layer.c:626 src/layer.c:660 src/leader.c:601 src/line.c:437
+#: src/helix.c:659 src/idbuffer.c:317 src/image.c:543 src/imagedef.c:392
+#: src/imagedef_reactor.c:320 src/insert.c:499 src/layer.c:342 src/layer.c:483
+#: src/layer.c:518 src/layer.c:553 src/layer.c:590 src/layer.c:626
+#: src/layer.c:660 src/layer_index.c:349 src/leader.c:601 src/line.c:437
 #: src/ltype.c:422 src/ltype.c:648 src/ltype.c:685 src/ltype.c:720
-#: src/lwpolyline.c:432 src/mtext.c:555 src/ole2frame.c:480 src/oleframe.c:396
-#: src/point.c:433 src/polyline.c:481 src/ray.c:416 src/region.c:400
-#: src/section.c:158 src/seqend.c:373 src/shape.c:462 src/solid.c:485
-#: src/spline.c:828 src/style.c:377 src/style.c:507 src/style.c:548
-#: src/style.c:589 src/style.c:632 src/style.c:674 src/table.c:276
-#: src/table.c:329 src/tables.c:185 src/text.c:491 src/text.c:705
-#: src/thumbnail.c:342 src/tolerance.c:449 src/trace.c:484 src/ucs.c:386
-#: src/vertex.c:456 src/view.c:431 src/viewport.c:1058 src/vport.c:579
+#: src/lwpolyline.c:432 src/mline.c:612 src/mlinestyle.c:391 src/mtext.c:555
+#: src/ole2frame.c:480 src/oleframe.c:396 src/point.c:433 src/polyline.c:481
+#: src/ray.c:416 src/region.c:400 src/section.c:158 src/seqend.c:373
+#: src/shape.c:462 src/solid.c:485 src/spline.c:828 src/style.c:377
+#: src/style.c:507 src/style.c:548 src/style.c:589 src/style.c:632
+#: src/style.c:674 src/table.c:276 src/table.c:329 src/tables.c:185
+#: src/text.c:491 src/text.c:705 src/thumbnail.c:342 src/tolerance.c:449
+#: src/trace.c:484 src/ucs.c:386 src/vertex.c:456 src/view.c:431
+#: src/viewport.c:1058 src/vport.c:579 src/xline.c:412
 #, c-format
 msgid "Error in %s () a NULL pointer was passed.\n"
 msgstr ""
@@ -176,11 +204,11 @@ msgstr ""
 #: src/3dface.c:476 src/3dsolid.c:453 src/arc.c:507 src/attdef.c:567
 #: src/attrib.c:570 src/body.c:417 src/circle.c:434 src/donut.c:203
 #: src/ellipse.c:474 src/helix.c:685 src/image.c:558 src/insert.c:508
-#: src/leader.c:616 src/lwpolyline.c:447 src/mtext.c:570 src/ole2frame.c:495
-#: src/oleframe.c:411 src/point.c:442 src/polyline.c:517 src/ray.c:443
-#: src/region.c:415 src/seqend.c:382 src/shape.c:480 src/solid.c:494
-#: src/spline.c:843 src/tolerance.c:468 src/trace.c:493 src/vertex.c:465
-#: src/viewport.c:1067
+#: src/leader.c:616 src/line.c:458 src/lwpolyline.c:447 src/mline.c:621
+#: src/mtext.c:570 src/ole2frame.c:495 src/oleframe.c:411 src/point.c:442
+#: src/polyline.c:517 src/ray.c:443 src/region.c:415 src/seqend.c:382
+#: src/shape.c:480 src/solid.c:494 src/spline.c:843 src/tolerance.c:468
+#: src/trace.c:493 src/vertex.c:465 src/viewport.c:1067
 #, c-format
 msgid ""
 "Warning in %s () empty linetype string for the %s entity with id-code: %x\n"
@@ -201,11 +229,11 @@ msgstr ""
 #: src/3dface.c:486 src/3dline.c:449 src/3dsolid.c:463 src/arc.c:517
 #: src/attdef.c:577 src/block.c:450 src/body.c:427 src/circle.c:444
 #: src/dimension.c:702 src/donut.c:213 src/ellipse.c:484 src/insert.c:518
-#: src/leader.c:626 src/line.c:458 src/lwpolyline.c:457 src/mtext.c:580
-#: src/ole2frame.c:505 src/oleframe.c:421 src/point.c:452 src/polyline.c:527
-#: src/ray.c:453 src/region.c:425 src/seqend.c:392 src/shape.c:490
-#: src/solid.c:504 src/text.c:516 src/tolerance.c:478 src/trace.c:503
-#: src/vertex.c:475
+#: src/leader.c:626 src/line.c:468 src/lwpolyline.c:457 src/mline.c:631
+#: src/mtext.c:580 src/ole2frame.c:505 src/oleframe.c:421 src/point.c:452
+#: src/polyline.c:527 src/ray.c:453 src/region.c:425 src/seqend.c:392
+#: src/shape.c:490 src/solid.c:504 src/text.c:516 src/tolerance.c:478
+#: src/trace.c:503 src/vertex.c:475 src/xline.c:433
 #, c-format
 msgid ""
 "Warning in %s () empty layer string for the %s entity with id-code: %x\n"
@@ -230,14 +258,15 @@ msgstr ""
 msgid "Error in %s () could not allocate memory for a Dxf3dline struct.\n"
 msgstr ""
 
-#: src/3dline.c:439 src/line.c:448 src/ray.c:427
+#: src/3dline.c:439 src/line.c:448 src/ray.c:427 src/xline.c:423
 #, c-format
 msgid ""
 "Error in %s () start point and end point are identical for the %s entity "
 "with id-code: %x\n"
 msgstr ""
 
-#: src/3dline.c:452 src/line.c:461
+#: src/3dline.c:452 src/line.c:461 src/line.c:471 src/mline.c:624
+#: src/mline.c:634 src/xline.c:436
 #, c-format
 msgid "    %s entity is relocated to layer 0\n"
 msgstr ""
@@ -253,15 +282,20 @@ msgid "Error in %s () could not allocate memory for a Dxf3dsolid struct.\n"
 msgstr ""
 
 #: src/3dsolid.c:201 src/acad_proxy_entity.c:208 src/acad_proxy_entity.c:446
-#: src/appid.c:326 src/body.c:201 src/helix.c:679 src/image.c:552
-#: src/leader.c:217 src/mtext.c:564 src/ole2frame.c:489 src/oleframe.c:405
-#: src/spline.c:837 src/thumbnail.c:227 src/thumbnail.c:360
+#: src/appid.c:326 src/body.c:201 src/dictionary.c:175 src/dictionaryvar.c:175
+#: src/group.c:177 src/helix.c:679 src/idbuffer.c:181 src/image.c:552
+#: src/imagedef.c:190 src/imagedef_reactor.c:178 src/layer_index.c:186
+#: src/leader.c:217 src/mlinestyle.c:193 src/mtext.c:564 src/ole2frame.c:489
+#: src/oleframe.c:405 src/spline.c:837 src/thumbnail.c:227 src/thumbnail.c:360
 #, c-format
 msgid "Warning in %s () illegal DXF version for this entity.\n"
 msgstr ""
 
-#: src/3dsolid.c:447 src/body.c:411 src/dimstyle.c:243 src/leader.c:610
-#: src/lwpolyline.c:441 src/region.c:409
+#: src/3dsolid.c:447 src/body.c:411 src/dictionary.c:329
+#: src/dictionaryvar.c:332 src/dimstyle.c:243 src/group.c:353
+#: src/idbuffer.c:326 src/imagedef.c:401 src/imagedef_reactor.c:329
+#: src/layer_index.c:358 src/leader.c:610 src/lwpolyline.c:441
+#: src/mlinestyle.c:400 src/region.c:409
 #, c-format
 msgid ""
 "Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n"
@@ -674,6 +708,46 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfComment was not NULL.\n"
 msgstr ""
 
+#: src/dictionary.c:66 src/dictionary.c:115
+#, c-format
+msgid "Error in %s () could not allocate memory for a DxfDictionary struct.\n"
+msgstr ""
+
+#: src/dictionary.c:320
+#, c-format
+msgid ""
+"Error in %s () empty entry name string for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/dictionary.c:405
+#, c-format
+msgid "Error in %s () pointer to next DxfDictionary was not NULL.\n"
+msgstr ""
+
+#: src/dictionaryvar.c:66 src/dictionaryvar.c:115
+#, c-format
+msgid ""
+"Error in %s () could not allocate memory for a DxfDictionaryVar struct.\n"
+msgstr ""
+
+#: src/dictionaryvar.c:320
+#, c-format
+msgid ""
+"Warning in %s () empty value string for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/dictionaryvar.c:326
+#, c-format
+msgid ""
+"Warning in %s () empty object schema number string for the %s entity with id-"
+"code: %x\n"
+msgstr ""
+
+#: src/dictionaryvar.c:408
+#, c-format
+msgid "Error in %s () pointer to next DxfDictionaryVar was not NULL.\n"
+msgstr ""
+
 #: src/dimension.c:68 src/dimension.c:119
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfDimension struct.\n"
@@ -779,6 +853,29 @@ msgstr ""
 #: src/global.h:146
 #, c-format
 msgid "[File: %s: line: %d] Leaving %s () function.\n"
+msgstr ""
+
+#: src/group.c:66 src/group.c:115
+#, c-format
+msgid "Error in %s () could not allocate memory for a DxfGroup struct.\n"
+msgstr ""
+
+#: src/group.c:335
+#, c-format
+msgid ""
+"Error in %s () empty description string for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/group.c:344
+#, c-format
+msgid ""
+"Error in %s () empty string for handle entity in group for the %s entity "
+"with id-code: %x\n"
+msgstr ""
+
+#: src/group.c:431
+#, c-format
+msgid "Error in %s () pointer to next DxfGroup was not NULL.\n"
 msgstr ""
 
 #: src/hatch.c:62 src/hatch.c:529
@@ -1087,6 +1184,16 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfHelix was not NULL.\n"
 msgstr ""
 
+#: src/idbuffer.c:66 src/idbuffer.c:117
+#, c-format
+msgid "Error in %s () could not allocate memory for a DxfIdbuffer struct.\n"
+msgstr ""
+
+#: src/idbuffer.c:409
+#, c-format
+msgid "Error in %s () pointer to next DxfIdbuffer was not NULL.\n"
+msgstr ""
+
 #: src/image.c:67 src/image.c:114
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfImage struct.\n"
@@ -1095,6 +1202,27 @@ msgstr ""
 #: src/image.c:702
 #, c-format
 msgid "Error in %s () pointer to next DxfImage was not NULL.\n"
+msgstr ""
+
+#: src/imagedef.c:66 src/imagedef.c:117
+#, c-format
+msgid "Error in %s () could not allocate memory for a DxfImagedef struct.\n"
+msgstr ""
+
+#: src/imagedef.c:493
+#, c-format
+msgid "Error in %s () pointer to next DxfImagedef was not NULL.\n"
+msgstr ""
+
+#: src/imagedef_reactor.c:66 src/imagedef_reactor.c:115
+#, c-format
+msgid ""
+"Error in %s () could not allocate memory for a DxfImagedefReactor struct.\n"
+msgstr ""
+
+#: src/imagedef_reactor.c:409
+#, c-format
+msgid "Error in %s () pointer to next DxfImagedefReactor was not NULL.\n"
 msgstr ""
 
 #: src/insert.c:68 src/insert.c:116
@@ -1192,6 +1320,16 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfLayer was not NULL.\n"
 msgstr ""
 
+#: src/layer_index.c:66 src/layer_index.c:117
+#, c-format
+msgid "Error in %s () could not allocate memory for a DxfLayerIndex struct.\n"
+msgstr ""
+
+#: src/layer_index.c:444
+#, c-format
+msgid "Error in %s () pointer to next DxfLayerIndex was not NULL.\n"
+msgstr ""
+
 #: src/leader.c:120
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfLeader struct.\n"
@@ -1207,7 +1345,7 @@ msgstr ""
 msgid "Error in %s () could not allocate memory for a DxfLine struct.\n"
 msgstr ""
 
-#: src/line.c:585
+#: src/line.c:595
 #, c-format
 msgid "Error in %s () pointer to next DxfLine was not NULL.\n"
 msgstr ""
@@ -1255,6 +1393,26 @@ msgstr ""
 #: src/lwpolyline.c:586
 #, c-format
 msgid "Error in %s () pointer to next DxfLWPolyline was not NULL.\n"
+msgstr ""
+
+#: src/mline.c:69 src/mline.c:119
+#, c-format
+msgid "Error in %s () could not allocate memory for a DxfMline struct.\n"
+msgstr ""
+
+#: src/mline.c:795
+#, c-format
+msgid "Error in %s () pointer to next DxfMline was not NULL.\n"
+msgstr ""
+
+#: src/mlinestyle.c:69 src/mlinestyle.c:120
+#, c-format
+msgid "Error in %s () could not allocate memory for a DxfMlinestyle struct.\n"
+msgstr ""
+
+#: src/mlinestyle.c:490
+#, c-format
+msgid "Error in %s () pointer to next DxfMlinestyle was not NULL.\n"
 msgstr ""
 
 #: src/mtext.c:64 src/mtext.c:114
@@ -1670,7 +1828,12 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfVPort was not NULL.\n"
 msgstr ""
 
-#: src/xline.c:67
+#: src/xline.c:67 src/xline.c:115
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfXLine struct.\n"
+msgstr ""
+
+#: src/xline.c:551
+#, c-format
+msgid "Error in %s () pointer to next DxfXLine was not NULL.\n"
 msgstr ""
