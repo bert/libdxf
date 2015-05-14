@@ -89,7 +89,7 @@ dxf_object_ptr_free
 );
 
 
-#endif /* LIBDXF_SRC_OBJECT_PR_H */
+#endif /* LIBDXF_SRC_OBJECT_PTR_H */
 
 
 /* EOF */
