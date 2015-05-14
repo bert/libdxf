@@ -77,6 +77,11 @@ dxf_object_ptr
 
 DxfObjectPtr *
 dxf_object_ptr_new ();
+DxfObjectPtr *
+dxf_object_ptr_init
+(
+        DxfObjectPtr *object_ptr
+);
 int
 dxf_object_ptr_free
 (
