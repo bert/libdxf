@@ -77,6 +77,11 @@ dxf_object_ptr
 
 DxfObjectPtr *
 dxf_object_ptr_new ();
+int
+dxf_object_ptr_free
+(
+        DxfObjectPtr *object_ptr
+);
 
 
 #endif /* LIBDXF_SRC_OBJECT_PR_H */
