@@ -1,4 +1,4 @@
-======= ISSUES WITH LIBDXF =======
+======= ISSUES =======
 
 All issues, bug reports and feature requests should go into the Launchpad 
 bug tracker.
@@ -6,25 +6,6 @@ bug tracker.
 The Launchpad bug tracker is to be found at:
 
 https://bugs.launchpad.net/libdxf
-
-======= STATISTICS =======
-
-Statistics and other code metrics are to be found at:
-
-http://www.openhub.net/p/libdxf/
-
-======= DEPENDENCIES =======
-
-Building libdxf from scratch, either from a tarball or from the git
-repository, requires (at least):
-
-<to be determined>
-
-and any other dependency these packages may require.
-
-YMMV with lesser version numbers, these are the minimum versions I use to
-develop libdxf with.
-
 
 /* EOF */
 
