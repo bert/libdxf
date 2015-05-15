@@ -1,27 +1,630 @@
 Todo List
 
-Global dxf_thumbnail
-    Added static DxfThumbnail *dxf_thumnail = NULL; just to compile the whole library. 
+Global dxf_3dface_write (DxfFile *fp, Dxf3dface *face)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
 
-Global dxf_write_blocks (char *dxf_blocks_list, int acad_version_number)
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_3dline_write (DxfFile *fp, Dxf3dline *line)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_3dsolid_write (DxfFile *fp, Dxf3dsolid *solid)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_appid_write (DxfFile *fp, DxfAppid *appid)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_arc_write (DxfFile *fp, DxfArc *arc)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_attdef_write (DxfFile *fp, DxfAttdef *attdef)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_attrib_write (DxfFile *fp, DxfAttrib *attrib)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_block_read (DxfFile *fp, DxfBlock *block)
+
+    After reading information from the BLOCK entity up until the closing Group code 0, the pointer to the following ENDBLK entity needs to be stored in the current (last) DxfBlock struct member endblk.
+
+    Resolve this quick hack for preventing an empty block name string in a more elegant manner.
+
+Global dxf_block_record_write (DxfFile *fp, DxfBlockRecord *block_record)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_block_write (DxfFile *fp, DxfBlock *block)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_block_write_table (DxfFile *fp, DxfBlock *blocks_list)
     Add code here. 
 
-Global dxf_write_entities (char *dxf_entities_list, int acad_version_number)
+Global dxf_body_write (DxfFile *fp, DxfBody *body)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_circle_write (DxfFile *fp, DxfCircle *circle)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_dictionary_write (DxfFile *fp, DxfDictionary *dictionary)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_dictionaryvar_write (DxfFile *fp, DxfDictionaryVar *dictionaryvar)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_dimension_write (DxfFile *fp, DxfDimension *dimension)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_donut_write (DxfFile *fp, DxfDonut *donut)
+
+    Hook up this polyline to the list of polylines.
+
+    Hook up this vertex to the list of vertices.
+
+    Hook up this vertex to the list of vertices.
+
+    Hook up this seqend to the list of seqends.
+
+Global dxf_ellipse_write (DxfFile *fp, DxfEllipse *ellipse)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_endblk_read (DxfFile *fp, DxfEndblk *endblk)
+    After reading information from the BLOCK entity up until the closing Group code 0, the pointer to the following ENDBLK entity needs to be stored in the current (last) DxfBlock struct member endblk. 
+
+Global dxf_endblk_write (DxfFile *fp, DxfEndblk *endblk)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_entities_read_table (char *filename, FILE *fp, int line_number, char *dxf_entities_list, int acad_version_number)
     Add code here. 
 
-Global dxf_write_objects (char *dxf_objects_list, int acad_version_number)
+Global dxf_entities_write_table (char *dxf_entities_list, int acad_version_number)
     Add code here. 
 
-Global dxf_write_table (FILE *fp, int dxf_tables_list, int dxf_tables_list_iter, int acad_version_number)
+Global dxf_group_write (DxfFile *fp, DxfGroup *group)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_hatch_boundary_path_edge_spline_copy_control_points (DxfHatchBoundaryPathEdgeSpline *spline)
+    code needs to be checked !
+
+Global dxf_hatch_boundary_path_polyline_close_polyline (DxfHatchBoundaryPathPolyline *polyline)
+
+    How do we know what's the last id_code ? This should be taken from a global id_code counter.
+
+    How do we know what's the last id_code ? This should be taken from a global id_code counter.
+
+    add code here !
+
+Global dxf_hatch_pattern_init (DxfHatchPattern *pattern)
+    correction in: pattern->length = 0.0; 
+
+Global dxf_hatch_write (DxfFile *fp, DxfHatch *hatch)
+
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102.
+
+    Add code to write hatch pattern definition line data.
+
+    Add code to write hatch pattern seed points.
+
+Global dxf_header_read (DxfFile *fp, DxfHeader header)
+    FIXME: stores the autocad version as int 
+
+Global dxf_header_read_parser (DxfFile *fp, DxfHeader header, char *temp_string, int acad_version_number)
+
+    : add some kind of control to what we have already read and check if we read all header data.
+
+    FIXME: changed from AC1012 to AC1015
+
+Global dxf_helix_read (DxfFile *fp, DxfHelix *helix)
+    Parse the helix spline. 
+
+Global dxf_helix_write (DxfFile *fp, DxfHelix *helix)
+
+    Add code for creating a helix shaped spline.
+
+    Add code for writing a helix shaped spline to a DxfFile.
+
+Global dxf_idbuffer_read (DxfFile *fp, DxfIdbuffer *idbuffer)
+    Check for overrun of array index. 
+
+Global dxf_idbuffer_write (DxfFile *fp, DxfIdbuffer *idbuffer)
+
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102.
+
+    Check for overrun of array index.
+
+Global dxf_image_write (DxfFile *fp, DxfImage *image)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_imagedef_reactor_write (DxfFile *fp, DxfImagedefReactor *imagedef_reactor)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_imagedef_read (DxfFile *fp, DxfImagedef *imagedef)
+    Check for overrun of array index. 
+
+Global dxf_imagedef_write (DxfFile *fp, DxfImagedef *imagedef)
+
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102.
+
+    Check for overrun of array index.
+
+Global dxf_insert_read (DxfFile *fp, DxfInsert *insert)
+    After a set attributes_follow flag is detected, parsing of following entities should be implemented until the end of sequence marker (SEQEND) is encountered. 
+
+Global dxf_insert_write (DxfFile *fp, DxfInsert *insert)
+
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102.
+
+    After a set attributes_follow flag is detected, the writing of following entities should be implemented and an end of sequence marker (SEQEND) written.
+
+Global dxf_layer_index_read (DxfFile *fp, DxfLayerIndex *layer_index)
+    Check for overrun of array index. 
+
+Global dxf_layer_index_write (DxfFile *fp, DxfLayerIndex *layer_index)
+
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102.
+
+    Check for overrun of array index.
+
+Global dxf_layer_write (DxfFile *fp, DxfLayer *layer)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_leader_write (DxfFile *fp, DxfLeader *leader)
+
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102.
+
+    Xdata belonging to the application ID "ACAD" may follow.
+    This describes any dimension overrides that have been applied to this entity.
+
+Global dxf_line_write (DxfFile *fp, DxfLine *line)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_ltype_read (DxfFile *fp, DxfLType *ltype)
+    We are assuming that 49 is the first group code that is encountered for each element in the linetype definition.
+    This assumption breaks the "rule" of parsing the dxf file regardless the order in which group codes appear within an entity. 
+
+Global dxf_ltype_write (DxfFile *fp, DxfLType *ltype)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_lwpolyline_read (DxfFile *fp, DxfLWPolyline *lwpolyline)
+
+    The pointer administration needs to be checked for functionality.
+
+    Free memory to the last (unused) vertex in the linked list.
+
+Global dxf_lwpolyline_write (DxfFile *fp, DxfLWPolyline *lwpolyline)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_mline_write (DxfFile *fp, DxfMline *mline)
+
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102.
+
+    Check for correct number of vertices (prevent overrun of array/index).
+
+    Check for correct number of elements (prevent overrun of array/index).
+
+    Check for correct number of parameters (prevent overrun of array/index).
+
+    Check for correct number of area fill parameters (prevent overrun of array/index).
+
+Global dxf_mlinestyle_write (DxfFile *fp, DxfMlinestyle *mlinestyle)
+
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102.
+
+    Check for overrun of array index.
+
+Global dxf_mtext_write (DxfFile *fp, DxfMtext *mtext)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_object_init (DxfObject *dxf_object)
+    Add code for initialising a DxfParam. 
+
+Global dxf_object_write_objects (DxfFile *fp, DxfObject *dxf_objects_list)
+    Add code here. 
+
+Global dxf_ole2frame_write (DxfFile *fp, DxfOle2Frame *ole2frame)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_oleframe_write (DxfFile *fp, DxfOleFrame *oleframe)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_point_write (DxfFile *fp, DxfPoint *point)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_polyline_write (DxfFile *fp, DxfPolyline *polyline)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_ray_write (DxfFile *fp, DxfRay *ray)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_read_close (DxfFile *file)
+    FIXME: how to free other sub structures 
+
+Global dxf_read_init (const char *filename)
+    FIXME: dxf header and blocks need initialized ? dxf_header_init (file->dxf_header); dxf_block_init (file->dxf_block); 
+
+Global dxf_region_write (DxfFile *fp, DxfRegion *region)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_section_read (DxfFile *fp)
+
+    Invoke a function for parsing the CLASSES section.
+
+    Invoke a function for parsing the TABLES section.
+
+    Experimental usage of block_read
+
+    Invoke a function for parsing the OBJECTS section.
+
+    Invoke a function for parsing the THUMBNAIL section.
+
+Global dxf_seqend_write (DxfFile *fp, DxfSeqend *seqend)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_shape_write (DxfFile *fp, DxfShape *shape)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_solid_write (DxfFile *fp, DxfSolid *solid)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_spline_write (DxfFile *fp, DxfSpline *spline)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_style_write (DxfFile *fp, DxfStyle *style)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_tables_write (DxfFile *fp, DxfTables *tables)
     Add code here 
 
-Global dxf_write_table_struct (FILE *fp, DxfTable dxf_table)
-    Add code here 
+Global dxf_text_write (DxfFile *fp, DxfText *text)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
 
-Global dxf_write_thumbnail (DxfThumbnail *dxf_thumbnail, int acad_version_number)
-    Add code here 
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_tolerance_write (DxfFile *fp, DxfTolerance *tolerance)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_trace_write (DxfFile *fp, DxfTrace *trace)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_ucs_write (DxfFile *fp, DxfUcs *ucs)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_vertex_write (DxfFile *fp, DxfVertex *vertex)
+
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102.
+
+    Put thickness in the correct order.
+
+    We use a 3dPolylineVertex for now, it could have been a 2dVertex as well, in that case use:
+    fprintf (fp->fp, "100\nAcDb2dVertex\n");
+
+Global dxf_view_write (DxfFile *fp, DxfView *view)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_viewport::frozen_layers [DXF_MAX_LAYERS]
+    Implement the number of layers in a more efficient way.
+    A lot of memory is consumed by reserving for DXF_MAX_LAYERS instead of the actual existing number of layers.
+    Maybe this can be solved by dynamically allocating a reasonable number of layers during compile time, and (re-allocating) shrinking when the actual number of layers is known during run time. 
+
+Global dxf_viewport_init (DxfViewport *viewport)
+    Implement the number of layers in a more efficient way. A lot of memory is consumed by reserving for DXF_MAX_LAYERS instead of the actual existing number of layers. Maybe this can be solved by dynamically allocating a reasonable number of layers during compile time, and (re-allocating) shrinking when the actual number of layers is known during run time. 
+
+Global dxf_viewport_write (DxfFile *fp, DxfViewport *viewport)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_vport_write (DxfFile *fp, DxfVPort *vport)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
+
+Global dxf_xline_write (DxfFile *fp, DxfXLine *xline)
+    for version R14.
+    Implementing the start of application-defined group "{application_name", with Group code 102.
+    For example: "{ACAD_REACTORS" indicates the start of the AutoCAD persistent reactors group.
+
+    application-defined codes: Group codes and values within the 102 groups are application defined (optional).
+
+    End of group, "}" (optional), with Group code 102. 
 
 File point.c
-    Add a link to somewhere else.
+    Add a link to somewhere else. 
 
 # EOF #
