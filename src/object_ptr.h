@@ -89,6 +89,12 @@ dxf_object_ptr_read
         DxfObjectPtr *object_ptr
 );
 int
+dxf_object_ptr_write
+(
+        DxfFile *fp,
+        DxfObjectPtr *object_ptr
+);
+int
 dxf_object_ptr_free
 (
         DxfObjectPtr *object_ptr
