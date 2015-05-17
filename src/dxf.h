@@ -89,6 +89,7 @@
 #include "param.h"
 #include "point.h"
 #include "polyline.h"
+#include "rastervariables.h"
 #include "ray.h"
 #include "region.h"
 #include "section.h"

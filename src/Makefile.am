@@ -46,6 +46,7 @@ libdxf_la_SOURCES = \
   region.c \
   ray.h \
   ray.c \
+  rastervariables.h \
   polyline.h \
   polyline.c \
   point.h \
