@@ -109,6 +109,11 @@ dxf_rastervariables
 
 DxfRasterVariables *
 dxf_rastervariables_new ();
+DxfRasterVariables *
+dxf_rastervariables_init
+(
+        DxfRasterVariables *rastervariables
+);
 
 
 #endif /* LIBDXF_SRC_RASTERVARIABLES_H */

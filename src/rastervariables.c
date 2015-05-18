@@ -78,4 +78,57 @@ dxf_rastervariables_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a \c RASTERVARIABLES
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+DxfRasterVariables *
+dxf_rastervariables_init
+(
+        DxfRasterVariables *rastervariables
+                /*!< DXF \c RASTERVARIABLES object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rastervariables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                rastervariables = dxf_rastervariables_new ();
+        }
+        if (rastervariables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfRasterVariables struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        rastervariables->id_code = 0;
+        rastervariables->dictionary_owner_soft = strdup ("");
+        rastervariables->dictionary_owner_hard = strdup ("");
+        rastervariables->display_image_frame = 0;
+        rastervariables->display_quality = 0;
+        rastervariables->units = 0;
+        rastervariables->class_version = 0;
+        rastervariables->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rastervariables);
+}
+
+
 /* EOF*/
