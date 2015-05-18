@@ -236,6 +236,7 @@ src/point.c
 src/point.h
 src/polyline.c
 src/polyline.h
+src/rastervariables.c
 src/rastervariables.h
 src/ray.c
 src/ray.h
