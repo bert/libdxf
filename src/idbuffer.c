@@ -138,8 +138,8 @@ dxf_idbuffer_init
  *
  * The last line read from file contained the string "IDBUFFER". \n
  * Now follows some data for the \c IDBUFFER, to be terminated with a
- * "  0" string announcing the following entity, or the end of the
- * \c ENTITY section marker \c ENDSEC. \n
+ * "  0" string announcing the following object, or the end of the
+ * \c OBJECTS section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c idbuffer. \n
  *
  * \return a pointer to \c idbuffer.
