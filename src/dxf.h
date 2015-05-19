@@ -96,6 +96,7 @@
 #include "seqend.h"
 #include "shape.h"
 #include "solid.h"
+#include "sortentstable.h"
 #include "style.h"
 #include "table.h"
 #include "tables.h"
