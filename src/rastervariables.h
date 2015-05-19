@@ -114,6 +114,12 @@ dxf_rastervariables_init
 (
         DxfRasterVariables *rastervariables
 );
+DxfRasterVariables *
+dxf_rastervariables_read
+(
+        DxfFile *fp,
+        DxfRasterVariables *rastervariables
+);
 int
 dxf_rastervariables_free
 (
