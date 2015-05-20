@@ -35,6 +35,7 @@ libdxf_la_SOURCES = \
   spline.h \
   spline.c \
   sortentstable.h \
+  sortentstable.c \
   solid.h \
   solid.c \
   shape.h \
