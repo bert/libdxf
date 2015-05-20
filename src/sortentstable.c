@@ -78,4 +78,61 @@ dxf_sortentstable_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a \c SORTENTSTABLE
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+DxfSortentsTable *
+dxf_sortentstable_init
+(
+        DxfSortentsTable *sortentstable
+                /*!< DXF \c SORTENTSTABLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (sortentstable == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                sortentstable = dxf_sortentstable_new ();
+        }
+        if (sortentstable == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfSortentsTable struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        sortentstable->id_code = 0;
+        sortentstable->dictionary_owner_soft = strdup ("");
+        sortentstable->dictionary_owner_hard = strdup ("");
+        sortentstable->block_owner = strdup ("");
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                sortentstable->entity_owner[i] = strdup ("");
+                sortentstable->sort_handle[i] = 0;
+        }
+        sortentstable->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sortentstable);
+}
+
+
 /* EOF*/
