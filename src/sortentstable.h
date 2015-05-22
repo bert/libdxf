@@ -91,6 +91,11 @@ dxf_sortentstable_init
 (
         DxfSortentsTable *sortentstable
 );
+int
+dxf_sortentstable_free
+(
+        DxfSortentsTable *sortentstable
+);
 
 
 #endif /* LIBDXF_SRC_SORTENTSTABLE_H */
