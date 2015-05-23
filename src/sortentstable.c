@@ -301,6 +301,120 @@ dxf_sortentstable_read
 
 
 /*!
+ * \brief Write DXF output to a file for a DXF \c SORTENTSTABLE object.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+int
+dxf_sortentstable_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfSortentsTable *sortentstable
+                /*!< DXF \c SORTENTSTABLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("SORTENTSTABLE");
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (sortentstable == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_14)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, sortentstable->id_code);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (sortentstable->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", sortentstable->id_code);
+        }
+        /*!
+         * \todo [dxf_sortentstable_write]: for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (sortentstable->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", sortentstable->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (sortentstable->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", sortentstable->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbSortentsTable\n");
+        }
+        fprintf (fp->fp, "330\n%s\n", sortentstable->block_owner);
+        i = 0;
+        while (strlen (sortentstable->entity_owner[i]) > 0)
+        {
+                fprintf (fp->fp, "331\n%s\n", sortentstable->entity_owner[i]);
+                i++;
+                /*! \todo [dxf_sortentstable_write]:\n
+                 * Check for overrun of array index. */
+        }
+        for (i = 1; i < DXF_MAX_PARAM; i++)
+        {
+                /* For the stort_Handle index i has a range from 1 to
+                 * (DXF_MAX_PARAM - 1). */
+                fprintf (fp->fp, "  5\n%x\n", sortentstable->sort_handle[i]);
+                /*! \todo [dxf_sortentstable_write]:\n
+                 * We have to find a way to get an idea how many
+                 * handles contain a valid value, this for-loop will
+                 * lead to infated DXF files and structures. */
+        }
+        /* Clean up. */
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c SORTENTSTABLE and all
  * it's data fields.
  *

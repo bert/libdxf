@@ -98,6 +98,12 @@ dxf_sortentstable_read
         DxfSortentsTable *sortentstable
 );
 int
+dxf_sortentstable_write
+(
+        DxfFile *fp,
+        DxfSortentsTable *sortentstable
+);
+int
 dxf_sortentstable_free
 (
         DxfSortentsTable *sortentstable
