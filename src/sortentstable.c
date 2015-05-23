@@ -136,6 +136,171 @@ dxf_sortentstable_init
 
 
 /*!
+ * \brief Read data from a DXF file into a DXF \c SORTENTSTABLE object.
+ *
+ * The last line read from file contained the string "SORTENTSTABLE". \n
+ * Now follows some data for the \c SORTENTSTABLE, to be terminated with a
+ * "  0" string announcing the following object, or the end of the
+ * \c OBJECTS section marker \c ENDSEC. \n
+ * While parsing the DXF file store data in \c sortentstable. \n
+ *
+ * \return a pointer to \c sortentstable.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+DxfSortentsTable *
+dxf_sortentstable_read
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an input file (or device). */
+        DxfSortentsTable *sortentstable
+                /*!< DXF \c SORTENTSTABLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *temp_string = NULL;
+        int i;
+        int j;
+        int k;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (temp_string);
+                return (NULL);
+        }
+        if (fp->acad_version_number < AutoCAD_14)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+        }
+        if (sortentstable == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                sortentstable = dxf_sortentstable_new ();
+                sortentstable = dxf_sortentstable_init (sortentstable);
+        }
+        i = 0;
+        j = 0;
+        k = 0;
+        (fp->line_number)++;
+        fscanf (fp->fp, "%[^\n]", temp_string);
+        while (strcmp (temp_string, "0") != 0)
+        {
+                if (ferror (fp->fp))
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                        /* Clean up. */
+                        free (temp_string);
+                        fclose (fp->fp);
+                        return (NULL);
+                }
+                if ((strcmp (temp_string, "5") == 0)
+                  && (k == 0))
+                {
+                        /* Now follows a string containing a sequential
+                         * id number. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &sortentstable->id_code);
+                }
+                if ((strcmp (temp_string, "5") == 0)
+                  && (i > 0))
+                {
+                        /* Now follows a string containing a Sort handle
+                         * (zero or more entries may exist). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%x\n", &sortentstable->sort_handle[i]);
+                }
+                else if ((fp->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if (strcmp (temp_string, "AcDbSortentsTable") != 0)
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
+                else if ((strcmp (temp_string, "330") == 0)
+                  && (j == 0))
+                {
+                        /* Now follows a string containing a soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", sortentstable->dictionary_owner_soft);
+                        j++;
+                }
+                else if ((strcmp (temp_string, "330") == 0)
+                  && (j > 0))
+                {
+                        /* Now follows a string containing a soft pointer
+                         * ID/handle to owner (currently only the
+                         * *MODEL_SPACE or *PAPER_SPACE blocks). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", sortentstable->block_owner);
+                        j++;
+                        /*! \todo Check for overrun of array index. */
+                }
+                else if (strcmp (temp_string, "331") == 0)
+                {
+                        /* Now follows a string containing a soft pointer
+                         * ID/handle to an entity (zero or more entries
+                         * may exist). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", sortentstable->entity_owner[k]);
+                        k++;
+                        /*! \todo Check for overrun of array index. */
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing Hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", sortentstable->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "999") == 0)
+                {
+                        /* Now follows a string containing a comment. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        fprintf (stdout, (_("DXF comment: %s\n")), temp_string);
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
+                          __FUNCTION__, fp->filename, fp->line_number);
+                }
+        }
+        /* Clean up. */
+        free (temp_string);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (sortentstable);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c SORTENTSTABLE and all
  * it's data fields.
  *
