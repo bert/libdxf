@@ -359,7 +359,7 @@ dxf_sortentstable_write
                 fprintf (fp->fp, "  5\n%x\n", sortentstable->id_code);
         }
         /*!
-         * \todo [dxf_sortentstable_write]: for version R14.\n
+         * \todo for version R14.\n
          * Implementing the start of application-defined group
          * "{application_name", with Group code 102.\n
          * For example: "{ACAD_REACTORS" indicates the start of the
@@ -392,18 +392,16 @@ dxf_sortentstable_write
         {
                 fprintf (fp->fp, "331\n%s\n", sortentstable->entity_owner[i]);
                 i++;
-                /*! \todo [dxf_sortentstable_write]:\n
-                 * Check for overrun of array index. */
+                /*! \todo Check for overrun of array index. */
         }
         for (i = 1; i < DXF_MAX_PARAM; i++)
         {
                 /* For the stort_Handle index i has a range from 1 to
                  * (DXF_MAX_PARAM - 1). */
                 fprintf (fp->fp, "  5\n%x\n", sortentstable->sort_handle[i]);
-                /*! \todo [dxf_sortentstable_write]:\n
-                 * We have to find a way to get an idea how many
+                /*! \bug We have to find a way to get an idea how many
                  * handles contain a valid value, this for-loop will
-                 * lead to infated DXF files and structures. */
+                 * lead to inflated DXF files and structures. */
         }
         /* Clean up. */
         free (dxf_entity_name);
