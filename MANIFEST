@@ -256,6 +256,7 @@ src/solid.c
 src/solid.h
 src/sortentstable.c
 src/sortentstable.h
+src/spatial_filter.h
 src/spline.c
 src/spline.h
 src/style.c

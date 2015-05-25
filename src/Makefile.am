@@ -34,6 +34,7 @@ libdxf_la_SOURCES = \
   style.c \
   spline.h \
   spline.c \
+  spatial_filter.h \
   sortentstable.h \
   sortentstable.c \
   solid.h \
