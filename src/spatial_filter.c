@@ -79,6 +79,79 @@ dxf_spatial_filter_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a \c SPATIAL_FILTER
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+DxfSpatialFilter *
+dxf_spatial_filter_init
+(
+        DxfSpatialFilter *spatial_filter
+                /*!< DXF \c SPATIAL_FILTER object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                spatial_filter = dxf_spatial_filter_new ();
+        }
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfSpatialFilter struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spatial_filter->id_code = 0;
+        spatial_filter->dictionary_owner_soft = strdup ("");
+        spatial_filter->dictionary_owner_hard = strdup ("");
+        spatial_filter->x1 = 0.0;
+        spatial_filter->y1 = 0.0;
+        spatial_filter->z1 = 0.0;
+        spatial_filter->front_clipping_plane_distance = 0.0;
+        spatial_filter->back_clipping_plane_distance = 0.0;
+        spatial_filter->number_of_points = 0;
+        spatial_filter->clip_boundary_display_flag = 0;
+        spatial_filter->front_clipping_plane_flag = 0;
+        spatial_filter->back_clipping_plane_flag = 0;
+        spatial_filter->extr_x0 = 0.0;
+        spatial_filter->extr_y0 = 0.0;
+        spatial_filter->extr_z0 = 0.0;
+        for (i = 0; i < 12; i++)
+        {
+                spatial_filter->inverse_block_transformation[i] = 0.0;
+                spatial_filter->block_transformation[i] = 0.0;
+        }
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                spatial_filter->x0[i] = 0.0;
+                spatial_filter->y0[i] = 0.0;
+        }
+        spatial_filter->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_filter);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c SPATIAL_FILTER and all it's
  * data fields.
  *

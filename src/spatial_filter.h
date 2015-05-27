@@ -66,11 +66,11 @@ dxf_spatial_filter
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360. */
         /* Specific members for a DXF spatial_filter. */
-        double x0;
+        double x0[DXF_MAX_PARAM];
                 /*!< X-value of the clip boundary definition point (in
                  * OCS) (always 2 or more) based on an xref scale of 1.\n
                  * Group code = 10. */
-        double y0;
+        double y0[DXF_MAX_PARAM];
                 /*!< Y-value of the clip boundary definition point (in
                  * OCS) (always 2 or more) based on an xref scale of 1.\n
                  * Group code = 20. */
@@ -154,6 +154,11 @@ dxf_spatial_filter
 
 DxfSpatialFilter *
 dxf_spatial_filter_new ();
+DxfSpatialFilter *
+dxf_spatial_filter_init
+(
+        DxfSpatialFilter *spatial_filter
+);
 int
 dxf_spatial_filter_free
 (
