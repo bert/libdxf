@@ -154,6 +154,11 @@ dxf_spatial_filter
 
 DxfSpatialFilter *
 dxf_spatial_filter_new ();
+int
+dxf_spatial_filter_free
+(
+        DxfSpatialFilter *spatial_filter
+);
 
 
 #endif /* LIBDXF_SRC_SPATIAL_FILTER_H */
