@@ -60,7 +60,7 @@ dxf_spatial_filter
                  * file.\n
                  * Group code = 5. */
         char *dictionary_owner_soft;
-                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                /*!< Soft-pointer ID/handle to owner dictionary (SPATIAL).\n
                  * Group code = 330. */
         char *dictionary_owner_hard;
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
