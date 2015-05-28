@@ -417,6 +417,153 @@ dxf_spatial_filter_read
 
 
 /*!
+ * \brief Write DXF output to a file for a DXF \c SPATIAL_FILTER object.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+int
+dxf_spatial_filter_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfSpatialFilter *spatial_filter
+                /*!< DXF \c SPATIAL_FILTER object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("SPATIAL_FILTER");
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (spatial_filter->number_of_points < 2)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () number of the clip boundary definition points is too small.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("\tThe %s object with id-code %x is dropped from output.\n")),
+                  dxf_entity_name, spatial_filter->id_code);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_14)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, spatial_filter->id_code);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (spatial_filter->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", spatial_filter->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (spatial_filter->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", spatial_filter->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (spatial_filter->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", spatial_filter->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbFilter\n");
+                fprintf (fp->fp, "100\nAcDbSpatialFilter\n");
+        }
+        fprintf (fp->fp, " 70\n%d\n", spatial_filter->number_of_points);
+        for (i = 0; i < spatial_filter->number_of_points; i++)
+        {
+                fprintf (fp->fp, " 10\n%f\n", spatial_filter->x0[i]);
+                fprintf (fp->fp, " 20\n%f\n", spatial_filter->y0[i]);
+                /*! \warning We do rely on a correct number of clip
+                 * boundary definition points in the instnce of the
+                 * DxfSpatialFilter struct.\n
+                 * It is possible to run into a part of the array where
+                 * initial values (0.0) are present. */
+        }
+        if ((fp->acad_version_number >= AutoCAD_12)
+                && (spatial_filter->extr_x0 != 0.0)
+                && (spatial_filter->extr_y0 != 0.0)
+                && (spatial_filter->extr_z0 != 1.0))
+        {
+                fprintf (fp->fp, "210\n%f\n", spatial_filter->extr_x0);
+                fprintf (fp->fp, "220\n%f\n", spatial_filter->extr_y0);
+                fprintf (fp->fp, "230\n%f\n", spatial_filter->extr_z0);
+        }
+        fprintf (fp->fp, " 71\n%d\n", spatial_filter->clip_boundary_display_flag);
+        fprintf (fp->fp, " 72\n%d\n", spatial_filter->front_clipping_plane_flag);
+        if (spatial_filter->front_clipping_plane_flag)
+        {
+                fprintf (fp->fp, " 40\n%f\n", spatial_filter->front_clipping_plane_distance);
+        }
+        fprintf (fp->fp, " 73\n%d\n", spatial_filter->back_clipping_plane_flag);
+        if (spatial_filter->back_clipping_plane_flag)
+        {
+                fprintf (fp->fp, " 41\n%f\n", spatial_filter->back_clipping_plane_distance);
+        }
+        for (i = 0; i < 12; i++)
+        {
+                fprintf (fp->fp, " 40\n%f\n", spatial_filter->inverse_block_transformation[i]);
+        }
+        for (i = 0; i < 12; i++)
+        {
+                fprintf (fp->fp, " 40\n%f\n", spatial_filter->block_transformation[i]);
+        }
+        /* Clean up. */
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c SPATIAL_FILTER and all it's
  * data fields.
  *

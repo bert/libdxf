@@ -166,6 +166,12 @@ dxf_spatial_filter_read
         DxfSpatialFilter *spatial_filter
 );
 int
+dxf_spatial_filter_write
+(
+        DxfFile *fp,
+        DxfSpatialFilter *spatial_filter
+);
+int
 dxf_spatial_filter_free
 (
         DxfSpatialFilter *spatial_filter
