@@ -1,9 +1,9 @@
 /*!
- * \file spatial_index.h
+ * \file spatial_index.c
  *
  * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Header file for a DXF spatial_index object (\c SPATIAL_INDEX).
+ * \brief Functions for a DXF spatial_index object (\c SPATIAL_INDEX).
  *
  * \version The \c SPATIAL_INDEX object was introduced in DXF R14.
  *
@@ -34,15 +34,13 @@
  */
 
 
-#ifndef LIBDXF_SRC_SPATIAL_INDEX_H
-#define LIBDXF_SRC_SPATIAL_INDEX_H
-
-
-#include "global.h"
+#include "spatial_index.h"
 
 
 /*!
- * \brief DXF definition of an AutoCAD spatial_index object (\c SPATIAL_INDEX).
+ * \brief Allocate memory for a \c DxfSpatialIndex.
+ *
+ * Fill the memory contents with zeros.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -50,36 +48,34 @@
  * \version According to DXF R13 (backward compatibility).
  * \version According to DXF R14.
  */
-typedef struct
-dxf_spatial_index
-{
-        /* Members common for all DXF objects. */
-        int id_code;
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file.\n
-                 * Group code = 5. */
-        char *dictionary_owner_soft;
-                /*!< Soft-pointer ID/handle to owner dictionary.\n
-                 * Group code = 330. */
-        char *dictionary_owner_hard;
-                /*!< Hard owner ID/handle to owner dictionary (optional).\n
-                 * Group code = 360. */
-        /* Specific members for a DXF spatial_index. */
-        double time_stamp;
-                /*!< Timestamp (Julian date).\n
-                 * Group code = 40. */
-        struct DxfSpatialIndex *next;
-                /*!< Pointer to the next DxfSpatialIndex.\n
-                 * \c NULL in the last DxfSpatialIndex. */
-} DxfSpatialIndex;
-
-
 DxfSpatialIndex *
-dxf_spatial_index_new ();
+dxf_spatial_index_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfSpatialIndex *spatial_index = NULL;
+        size_t size;
+
+        size = sizeof (DxfSpatialIndex);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((spatial_index = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfSpatialIndex struct.\n")),
+                  __FUNCTION__);
+                spatial_index = NULL;
+        }
+        else
+        {
+                memset (spatial_index, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_index);
+}
 
 
-#endif /* LIBDXF_SRC_SPATIAL_INDEX_H */
-
-
-/* EOF */
+/* EOF*/
