@@ -98,6 +98,7 @@
 #include "solid.h"
 #include "sortentstable.h"
 #include "spatial_filter.h"
+#include "spatial_index.h"
 #include "style.h"
 #include "table.h"
 #include "tables.h"

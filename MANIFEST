@@ -258,6 +258,7 @@ src/sortentstable.c
 src/sortentstable.h
 src/spatial_filter.c
 src/spatial_filter.h
+src/spatial_index.h
 src/spline.c
 src/spline.h
 src/style.c
