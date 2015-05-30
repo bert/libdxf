@@ -82,6 +82,11 @@ dxf_spatial_index_init
 (
         DxfSpatialIndex *spatial_index
 );
+int
+dxf_spatial_index_free
+(
+        DxfSpatialIndex *spatial_index
+);
 
 
 #endif /* LIBDXF_SRC_SPATIAL_INDEX_H */

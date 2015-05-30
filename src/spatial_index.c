@@ -142,4 +142,47 @@ dxf_spatial_index_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c SPATIAL_INDEX and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+int
+dxf_spatial_index_free
+(
+        DxfSpatialIndex *spatial_index
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c SPATIAL_INDEX object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spatial_index->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfSpatialIndex was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (spatial_index->dictionary_owner_soft);
+        free (spatial_index->dictionary_owner_hard);
+        free (spatial_index);
+        spatial_index = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
