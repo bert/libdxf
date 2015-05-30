@@ -82,6 +82,12 @@ dxf_spatial_index_init
 (
         DxfSpatialIndex *spatial_index
 );
+DxfSpatialIndex *
+dxf_spatial_index_read
+(
+        DxfFile *fp,
+        DxfSpatialIndex *spatial_index
+);
 int
 dxf_spatial_index_free
 (
