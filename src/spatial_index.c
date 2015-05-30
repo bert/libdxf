@@ -78,4 +78,68 @@ dxf_spatial_index_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a \c SPATIAL_INDEX
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+DxfSpatialIndex *
+dxf_spatial_index_init
+(
+        DxfSpatialIndex *spatial_index
+                /*!< DXF \c SPATIAL_INDEX object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int JD;
+        float fraction_day;
+        time_t now;
+
+        /* Do some basic checks. */
+        if (spatial_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                spatial_index = dxf_spatial_index_new ();
+        }
+        if (spatial_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfSpatialIndex struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spatial_index->id_code = 0;
+        spatial_index->dictionary_owner_soft = strdup ("");
+        spatial_index->dictionary_owner_hard = strdup ("");
+        if (time (&now) != (time_t)(-1))
+        {
+                struct tm *current_time = localtime (&now);
+
+                /* Transform the current local gregorian date in a julian date.*/
+                JD = current_time->tm_mday - 32075 + 1461 * (current_time->tm_year + 6700 + (current_time->tm_mon - 13) / 12) / 4 + 367 * (current_time->tm_mon - 1 - (current_time->tm_mon - 13) / 12 * 12) / 12 - 3 * ((current_time->tm_year + 6800 + (current_time->tm_mon - 13) / 12) / 100) / 4;
+                /* Transform the current local clock time in fraction of day.*/
+                fraction_day = (current_time->tm_hour + (current_time->tm_min / 60.0) + (current_time->tm_sec / 3600.0)) / 24.0;
+                spatial_index->time_stamp = (double) (JD + fraction_day);
+        }
+        else spatial_index->time_stamp = 0.0;
+        spatial_index->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spatial_index);
+}
+
+
 /* EOF*/
