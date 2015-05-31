@@ -4,6 +4,7 @@ lib_LTLIBRARIES = \
   libdxf.la
 
 libdxf_la_SOURCES = \
+  xrecord.h \
   xline.h \
   xline.c \
   vport.h \

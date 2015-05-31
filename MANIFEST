@@ -290,6 +290,7 @@ src/vport.c
 src/vport.h
 src/xline.c
 src/xline.h
+src/xrecord.h
 tests/.gitignore
 tests/Makefile.am
 tests/golden/arc_R12.dxf

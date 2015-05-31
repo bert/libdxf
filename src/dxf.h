@@ -113,6 +113,7 @@
 #include "viewport.h"
 #include "vport.h"
 #include "xline.h"
+#include "xrecord.h"
 
 
 #endif /* LIBDXF_SRC_DXF_H */
