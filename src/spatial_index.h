@@ -89,6 +89,12 @@ dxf_spatial_index_read
         DxfSpatialIndex *spatial_index
 );
 int
+dxf_spatial_index_write
+(
+        DxfFile *fp,
+        DxfSpatialIndex *spatial_index
+);
+int
 dxf_spatial_index_free
 (
         DxfSpatialIndex *spatial_index
