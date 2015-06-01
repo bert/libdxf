@@ -90,6 +90,10 @@ dxf_xrecord
 } DxfXrecord;
 
 
+DxfXrecord *
+dxf_xrecord_new ();
+
+
 #endif /* LIBDXF_SRC_XRECORD_H */
 
 

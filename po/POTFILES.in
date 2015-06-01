@@ -157,4 +157,5 @@ src/vport.c
 src/vport.h
 src/xline.c
 src/xline.h
+src/xrecord.c
 src/xrecord.h
