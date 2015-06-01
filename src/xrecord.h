@@ -5,7 +5,7 @@
  *
  * \brief Header file for a DXF xrecord object (\c XRECORD).
  *
- * \version The \c XRECORD object was introduced in DXF R14.
+ * \version The \c XRECORD object was introduced in DXF R13.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -47,7 +47,7 @@
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
  * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R13.
  * \version According to DXF R14.
  */
 typedef struct
