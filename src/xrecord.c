@@ -78,4 +78,58 @@ dxf_xrecord_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a \c XRECORD
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfXrecord *
+dxf_xrecord_init
+(
+        DxfXrecord *xrecord
+                /*!< DXF \c XRECORD object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xrecord == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                xrecord = dxf_xrecord_new ();
+        }
+        if (xrecord == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfXrecord struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        xrecord->id_code = 0;
+        xrecord->dictionary_owner_soft = strdup ("");
+        xrecord->dictionary_owner_hard = strdup ("");
+        xrecord->I8 = 0;
+        xrecord->I16 = 0;
+        xrecord->I32 = 0;
+        xrecord->D = 0.0;
+        xrecord->F = 0.0;
+        xrecord->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (xrecord);
+}
+
+
 /* EOF*/

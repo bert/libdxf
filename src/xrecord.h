@@ -92,6 +92,11 @@ dxf_xrecord
 
 DxfXrecord *
 dxf_xrecord_new ();
+DxfXrecord *
+dxf_xrecord_init
+(
+        DxfXrecord *xrecord
+);
 
 
 #endif /* LIBDXF_SRC_XRECORD_H */
