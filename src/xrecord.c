@@ -132,4 +132,47 @@ dxf_xrecord_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c XRECORD and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_xrecord_free
+(
+        DxfXrecord *xrecord
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c XRECORD object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (xrecord->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfXrecord was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (xrecord->dictionary_owner_soft);
+        free (xrecord->dictionary_owner_hard);
+        free (xrecord);
+        xrecord = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
