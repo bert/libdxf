@@ -81,7 +81,7 @@ dxf_xrecord
         float F;
                 /*!< .\n
                  * Group codes = 140 ... 147. */
-        char S[DXF_MAX_STRING_LENGTH];
+        char *S;
                 /*!< string value.\n
                  * Group codes = 0 ... 9, 100, 102, 105, 300 ... 369. */
         struct DxfXrecord *next;
