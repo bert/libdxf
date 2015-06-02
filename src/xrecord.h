@@ -66,6 +66,8 @@ dxf_xrecord
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360. */
         /* Specific members for a DXF xrecord. */
+        int group_code;
+                /*!< Group code for the xrecord value (determines type). */
         int8_t I8;
                 /*!< 8-bit integer value.\n
                  * Group codes = 280 ... 289. */
