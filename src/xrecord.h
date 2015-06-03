@@ -99,6 +99,12 @@ dxf_xrecord_init
 (
         DxfXrecord *xrecord
 );
+DxfXrecord *
+dxf_xrecord_read
+(
+        DxfFile *fp,
+        DxfXrecord *xrecord
+);
 int
 dxf_xrecord_free
 (
