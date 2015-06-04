@@ -587,4 +587,37 @@ dxf_3dline_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c 3DLINE
+ * entities and all their data fields.
+ */
+void
+dxf_3dline_free_chain
+(
+        Dxf3dline *lines
+                /*!< pointer to the chain of DXF 3DLINE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (lines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (lines != NULL)
+        {
+                struct Dxf3dline *iter = lines->next;
+                dxf_3dline_free (lines->next);
+                dxf_3dline_free (lines);
+                lines = iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
