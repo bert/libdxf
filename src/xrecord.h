@@ -106,6 +106,12 @@ dxf_xrecord_read
         DxfXrecord *xrecord
 );
 int
+dxf_xrecord_write
+(
+        DxfFile *fp,
+        DxfXrecord *xrecord
+);
+int
 dxf_xrecord_free
 (
         DxfXrecord *xrecord
