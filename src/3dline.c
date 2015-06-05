@@ -590,6 +590,9 @@ dxf_3dline_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c 3DLINE
  * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
  */
 void
 dxf_3dline_free_chain
