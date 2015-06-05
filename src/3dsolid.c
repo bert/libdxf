@@ -621,4 +621,37 @@ dxf_3dsolid_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c 3DSOLID
+ * entities and all their data fields.
+ */
+void
+dxf_3dsolid_free_chain
+(
+        Dxf3dsolid *solids
+                /*!< pointer to the chain of DXF \c 3DSOLID entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (solids == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (solids != NULL)
+        {
+                struct Dxf3dsolid *iter = solids->next;
+                dxf_3dsolid_free (solids->next);
+                dxf_3dsolid_free (solids);
+                solids = iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

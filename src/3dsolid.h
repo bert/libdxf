@@ -150,6 +150,11 @@ dxf_3dsolid_free
 (
         Dxf3dsolid *solid
 );
+void
+dxf_3dsolid_free_chain
+(
+        Dxf3dsolid *solids
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
