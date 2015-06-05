@@ -624,6 +624,12 @@ dxf_3dsolid_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c 3DSOLID
  * entities and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  */
 void
 dxf_3dsolid_free_chain
