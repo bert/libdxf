@@ -128,6 +128,7 @@ dxf_object_write_objects
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfObject *dxf_objects_list
+                /*!< Pointer to a list of DXF objects. */
 )
 {
 #if DEBUG
