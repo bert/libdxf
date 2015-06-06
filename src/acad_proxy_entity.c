@@ -580,4 +580,44 @@ dxf_acad_proxy_entity_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c ACAD_PROXY_ENTITY
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ * \version According to DXF R2000.
+ */
+void
+dxf_acad_proxy_entity_free_chain
+(
+        DxfAcadProxyEntity *acad_proxy_entities
+                /*!< pointer to the chain of DXF ACAD_PROXY_ENTITY entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (acad_proxy_entities == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (acad_proxy_entities != NULL)
+        {
+                struct DxfAcadProxyEntity *iter = acad_proxy_entities->next;
+                dxf_acad_proxy_entity (acad_proxy_entities->next);
+                dxf_acad_proxy_entity (acad_proxy_entities);
+                acad_proxy_entities = iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
