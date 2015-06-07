@@ -415,6 +415,45 @@ dxf_appid_free
 
 
 /*!
+ * \brief Free the allocated memory for a chain of DXF \c APPID
+ * symbol table and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_appid_free_chain
+(
+        DxfAppid *appids
+                /*!< pointer to the chain of DXF \c APPID symbol tables. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (appids == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (appids != NULL)
+        {
+                struct DxfAppid *iter = appids->next;
+                dxf_appid_free (appids->next);
+                dxf_appid_free (appids);
+                appids = iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Test if xdata associated with this DXF \c APPID is not to be
  * written when \c SAVEASR12 is performed.
  *

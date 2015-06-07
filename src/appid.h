@@ -126,6 +126,11 @@ dxf_appid_free
 (
         DxfAppid *appid
 );
+void
+dxf_appid_free_chain
+(
+        DxfAppid *appids
+);
 int
 dxf_appid_is_xreferenced
 (
