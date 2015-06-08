@@ -151,6 +151,11 @@ dxf_appid_is_no_save_xdata
 (
         DxfAppid *appid
 );
+char *
+dxf_appid_get_application_name
+(
+        DxfAppid *appid
+);
 
 
 #endif /* LIBDXF_SRC_APPID_H */
