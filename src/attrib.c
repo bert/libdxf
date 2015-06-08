@@ -841,4 +841,44 @@ dxf_attrib_free_chain
 }
 
 
+/*!
+ * \brief Test if the attribute is invisible.
+ *
+ * \return \c TRUE when the attribute is invisible, or \c FALSE when the
+ * attribute is visible.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_attrib_is_invisible
+(
+        DxfAttrib *attrib
+                /*!< DXF \c ATTRIB entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (attrib->attr_flags, 0);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
