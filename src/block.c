@@ -603,4 +603,43 @@ dxf_block_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c BLOCK
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_block_free_chain
+(
+        DxfBlock *blocks
+                /*!< pointer to the chain of DXF \c BLOCK entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (blocks == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (blocks != NULL)
+        {
+                struct DxfBlock *iter = blocks->next;
+                dxf_block_free (blocks->next);
+                dxf_block_free (blocks);
+                blocks = iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

@@ -169,6 +169,11 @@ int dxf_block_free
 (
         DxfBlock *block
 );
+void
+dxf_block_free_chain
+(
+        DxfBlock *blocks
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_H */
