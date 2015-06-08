@@ -157,7 +157,15 @@ int dxf_arc_write
         DxfFile *fp,
         DxfArc *arc
 );
-int dxf_arc_free (DxfArc *arc);
+int dxf_arc_free
+(
+        DxfArc *arc
+);
+void
+dxf_arc_free_chain
+(
+        DxfArc *arcs
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */

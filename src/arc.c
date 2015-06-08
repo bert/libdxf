@@ -1,7 +1,7 @@
 /*!
  * \file arc.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF arc entity (\c ARC).
  *
@@ -659,6 +659,45 @@ dxf_arc_free
         DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c ARC
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_arc_free_chain
+(
+        DxfArc *arcs
+                /*!< pointer to the chain of DXF ARC entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (arcs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (arcs != NULL)
+        {
+                struct DxfArc *iter = arcs->next;
+                dxf_arc_free (arcs->next);
+                dxf_arc_free (arcs);
+                arcs = iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
 }
 
 
