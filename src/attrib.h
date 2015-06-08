@@ -261,6 +261,11 @@ dxf_attrib_is_invisible
 (
         DxfAttrib *attrib
 );
+int
+dxf_attrib_is_constant
+(
+        DxfAttrib *attrib
+);
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */
