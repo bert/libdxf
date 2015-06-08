@@ -793,6 +793,45 @@ dxf_attdef_free
 
 
 /*!
+ * \brief Free the allocated memory for a chain of DXF \c ATTDEF
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_attdef_free_chain
+(
+        DxfAttdef *attdefs
+                /*!< pointer to the chain of DXF \c ATTDEF entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (attdefs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (attdefs != NULL)
+        {
+                struct DxfAttdef *iter = attdefs->next;
+                dxf_attdef_free (attdefs->next);
+                dxf_attdef_free (attdefs);
+                attdefs = iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Test if the attribute definition is invisible.
  *
  * \return \c TRUE when the attribute definition is invisible,

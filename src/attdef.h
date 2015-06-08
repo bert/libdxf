@@ -245,6 +245,11 @@ dxf_attdef_free
 (
         DxfAttdef *attdef
 );
+void
+dxf_attdef_free_chain
+(
+        DxfAttdef *attdefs
+);
 int
 dxf_attdef_is_invisible
 (
