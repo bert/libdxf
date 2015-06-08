@@ -271,6 +271,11 @@ dxf_attrib_is_verification_required
 (
         DxfAttrib *attrib
 );
+int
+dxf_attrib_is_preset
+(
+        DxfAttrib *attrib
+);
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */
