@@ -174,6 +174,11 @@ dxf_block_free_chain
 (
         DxfBlock *blocks
 );
+int
+dxf_block_is_anonymous
+(
+        DxfBlock *block
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_H */
