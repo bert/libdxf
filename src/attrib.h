@@ -251,6 +251,11 @@ dxf_attrib_free
 (
         DxfAttrib *attrib
 );
+void
+dxf_attrib_free_chain
+(
+        DxfAttrib *attribs
+);
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */

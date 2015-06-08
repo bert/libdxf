@@ -802,4 +802,43 @@ dxf_attrib_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c ATTRIB
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_attrib_free_chain
+(
+        DxfAttrib *attribs
+                /*!< pointer to the chain of DXF ATTRIB entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (attribs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (attribs != NULL)
+        {
+                struct DxfAttrib *iter = attribs->next;
+                dxf_attrib_free (attribs->next);
+                dxf_attrib_free (attribs);
+                attribs = iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
