@@ -650,9 +650,9 @@ dxf_3dsolid_free_chain
         while (solids != NULL)
         {
                 struct Dxf3dsolid *iter = solids->next;
-                dxf_3dsolid_free (solids->next);
+                dxf_3dsolid_free ((Dxf3dsolid *) solids->next);
                 dxf_3dsolid_free (solids);
-                solids = iter;
+                solids = (Dxf3dsolid *) iter;
         }
 #if DEBUG
         DXF_DEBUG_END
