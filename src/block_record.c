@@ -403,6 +403,45 @@ dxf_block_record_free
 
 
 /*!
+ * \brief Free the allocated memory for a chain of DXF \c BLOCK_RECORD
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_block_record_free_chain
+(
+        DxfBlockRecord *block_records
+                /*!< pointer to the chain of DXF \c BLOCK_RECORD entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (block_records == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (block_records != NULL)
+        {
+                struct DxfBlockRecord *iter= block_records->next;
+                dxf_block_record_free ((DxfBlockRecord *) block_records->next);
+                dxf_block_record_free (block_records);
+                block_records = (DxfBlockRecord *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Test if this DXF \c BLOCK_RECORD is externally dependent on an
  * xref.
  *

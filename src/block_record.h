@@ -120,6 +120,11 @@ dxf_block_record_free
 (
         DxfBlockRecord *block_record
 );
+void
+dxf_block_record_free_chain
+(
+        DxfBlockRecord *block_records
+);
 int
 dxf_block_record_is_xreferenced
 (
