@@ -655,9 +655,9 @@ dxf_3dface_free_chain
         while (faces != NULL)
         {
                 struct Dxf3dface *iter = faces->next;
-                dxf_3dface_free (faces->next);
+                dxf_3dface_free ((Dxf3dface *) faces->next);
                 dxf_3dface_free (faces);
-                faces = iter;
+                faces = (Dxf3dface *) iter;
         }
 #if DEBUG
         DXF_DEBUG_END
