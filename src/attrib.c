@@ -831,9 +831,9 @@ dxf_attrib_free_chain
         while (attribs != NULL)
         {
                 struct DxfAttrib *iter = attribs->next;
-                dxf_attrib_free (attribs->next);
+                dxf_attrib_free ((DxfAttrib *) attribs->next);
                 dxf_attrib_free (attribs);
-                attribs = iter;
+                attribs = (DxfAttrib *) iter;
         }
 #if DEBUG
         DXF_DEBUG_END
