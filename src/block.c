@@ -762,4 +762,44 @@ dxf_block_is_xreferenced
 }
 
 
+/*!
+ * \brief Test if this DXF \c BLOCK is externally dependent on an xref.
+ *
+ * \return \c TRUE when \c BLOCK is externally dependent on an xref,
+ * or \c FALSE when \c BLOCK is not externally dependent on an xref.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_block_is_xdependent
+(
+        DxfBlock *block
+                /*!< DXF \c BLOCK entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (block == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (block->block_type, 4);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
