@@ -691,9 +691,9 @@ dxf_arc_free_chain
         while (arcs != NULL)
         {
                 struct DxfArc *iter = arcs->next;
-                dxf_arc_free (arcs->next);
+                dxf_arc_free ((DxfArc *) arcs->next);
                 dxf_arc_free (arcs);
-                arcs = iter;
+                arcs = (DxfArc *) iter;
         }
 #if DEBUG
         DXF_DEBUG_END
