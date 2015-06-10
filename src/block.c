@@ -722,4 +722,44 @@ dxf_block_has_attributes
 }
 
 
+/*!
+ * \brief Test if this DXF \c BLOCK is an external refence (Xref).
+ *
+ * \return \c TRUE when \c BLOCK is an external refence,
+ * or \c FALSE when \c BLOCK is not an external refence.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_block_is_xreferenced
+(
+        DxfBlock *block
+                /*!< DXF \c BLOCK entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (block == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (block->block_type, 2);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

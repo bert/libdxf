@@ -184,6 +184,11 @@ dxf_block_has_attributes
 (
         DxfBlock *block
 );
+int
+dxf_block_is_xreferenced
+(
+        DxfBlock *block
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_H */
