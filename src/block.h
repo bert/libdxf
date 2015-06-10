@@ -199,6 +199,11 @@ dxf_block_is_xresolved
 (
         DxfBlock *block
 );
+int
+dxf_block_is_referenced
+(
+        DxfBlock *block
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_H */
