@@ -443,9 +443,9 @@ dxf_appid_free_chain
         while (appids != NULL)
         {
                 struct DxfAppid *iter = appids->next;
-                dxf_appid_free (appids->next);
+                dxf_appid_free ((DxfAppid *) appids->next);
                 dxf_appid_free (appids);
-                appids = iter;
+                appids = (DxfAppid *) iter;
         }
 #if DEBUG
         DXF_DEBUG_END
