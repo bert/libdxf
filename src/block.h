@@ -194,6 +194,11 @@ dxf_block_is_xdependent
 (
         DxfBlock *block
 );
+int
+dxf_block_is_xresolved
+(
+        DxfBlock *block
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_H */
