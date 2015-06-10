@@ -640,7 +640,7 @@ void
 dxf_3dface_free_chain
 (
         Dxf3dface *faces
-                /*!< pointer to the chain of DXF 3DFACE entities. */
+                /*!< pointer to the chain of DXF \c 3DFACE entities. */
 )
 {
 #ifdef DEBUG
