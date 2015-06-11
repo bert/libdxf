@@ -577,4 +577,43 @@ dxf_body_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c BODY
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_body_free_chain
+(
+        DxfBody *bodies
+                /*!< pointer to the chain of DXF \c BODY entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (bodies == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (bodies != NULL)
+        {
+                struct DxfBody *iter = bodies->next;
+                dxf_body_free ((DxfBody *) bodies->next);
+                dxf_body_free (bodies);
+                bodies = (DxfBody *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

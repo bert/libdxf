@@ -141,6 +141,11 @@ dxf_body_free
 (
         DxfBody *body
 );
+void
+dxf_body_free_chain
+(
+        DxfBody *bodies
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
