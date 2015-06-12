@@ -583,4 +583,43 @@ dxf_circle_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c CIRCLE
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_circle_free_chain
+(
+        DxfCircle *circles
+                /*!< pointer to the chain of DXF \c CIRCLE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (circles == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (circles != NULL)
+        {
+                struct DxfCircle *iter = circles->next;
+                dxf_circle_free ((DxfCircle *) circles->next);
+                dxf_circle_free (circles);
+                circles = (DxfCircle *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

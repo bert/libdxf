@@ -148,6 +148,11 @@ int dxf_circle_free
 (
         DxfCircle *circle
 );
+void
+dxf_circle_free_chain
+(
+        DxfCircle *circles
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
