@@ -446,4 +446,43 @@ dxf_class_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c CLASS
+ * classes and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_class_free_chain
+(
+        DxfClass *classes
+                /*!< pointer to the chain of DXF \c CLASS classes. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (classes == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (classes != NULL)
+        {
+                struct DxfClass *iter = classes->next;
+                dxf_class_free ((DxfClass *) classes->next);
+                dxf_class_free (classes);
+                classes = (DxfClass *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

@@ -139,6 +139,11 @@ dxf_class_free
 (
         DxfClass *class
 );
+void
+dxf_class_free_chain
+(
+        DxfClass *classes
+);
 
 
 #endif /* LIBDXF_SRC_CLASS_H */
