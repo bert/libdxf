@@ -144,6 +144,11 @@ dxf_class_free_chain
 (
         DxfClass *classes
 );
+int
+dxf_class_is_editable
+(
+        DxfClass *class
+);
 
 
 #endif /* LIBDXF_SRC_CLASS_H */

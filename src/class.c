@@ -485,4 +485,45 @@ dxf_class_free_chain
 }
 
 
+/*!
+ * \brief Test if operations on this class record are allowed.
+ *
+ * \return \c TRUE when operations on this class record are allowed,
+ * or \c FALSE when operations on this class record are not allowed.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_class_is_editable
+(
+        DxfClass *class
+                /*!< DXF \c CLASS symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (class == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* The result is TRUE if the bit test returns FALSE (0).*/
+        result = !DXF_CHECK_BIT (class->proxy_cap_flag, 0);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
