@@ -65,12 +65,13 @@ dxf_class
         char *app_name;
                 /*!< group code = 3.\n
                  * Application name.\n
-                 * Posted in Alert box when a class definition listed in this
-                 * section is not currently loaded. */ 
+                 * Posted in Alert box when a class definition listed in
+                 * this section is not currently loaded. */ 
         int proxy_cap_flag;
                 /*!< group code = 90.\n
                  * Proxy capabilities flag.\n
-                 * Bit coded value that indicates the capabilities of this object as a proxy.\n
+                 * Bit coded value that indicates the capabilities of
+                 * this object as a proxy.\n
                  * 0 = No operations allowed (0).\n
                  * 1 = Erase allowed (0x1).\n
                  * 2 = Transform allowed (0x2).\n
@@ -146,6 +147,11 @@ dxf_class_free_chain
 );
 int
 dxf_class_is_editable
+(
+        DxfClass *class
+);
+int
+dxf_class_erase_allowed
 (
         DxfClass *class
 );
