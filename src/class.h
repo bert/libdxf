@@ -175,6 +175,11 @@ dxf_class_linetype_change_allowed
 (
         DxfClass *class
 );
+int
+dxf_class_linetype_scale_change_allowed
+(
+        DxfClass *class
+);
 
 
 #endif /* LIBDXF_SRC_CLASS_H */
