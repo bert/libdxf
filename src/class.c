@@ -486,10 +486,12 @@ dxf_class_free_chain
 
 
 /*!
- * \brief Test if operations on this class record are allowed.
+ * \brief Test if operations on this \c CLASS symbol table entry are
+ * allowed.
  *
- * \return \c TRUE when operations on this class record are allowed,
- * or \c FALSE when operations on this class record are not allowed.
+ * \return \c TRUE when operations on this \c CLASS symbol table entry
+ * are allowed, or \c FALSE when operations on this \c CLASS symbol
+ * table entry are not allowed.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -527,10 +529,11 @@ dxf_class_is_editable
 
 
 /*!
- * \brief Test if erasing on this class record is allowed.
+ * \brief Test if erasing on this \c CLASS symbol table entry is allowed.
  *
- * \return \c TRUE when erasing on this class record is allowed,
- * or \c FALSE when erasing on this class record is not allowed.
+ * \return \c TRUE when erasing on this \c CLASS symbol table entry is
+ * allowed, or \c FALSE when erasing on this \c CLASS symbol table entry
+ * is not allowed.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -567,10 +570,12 @@ dxf_class_erase_allowed
 
 
 /*!
- * \brief Test if transforming on this class record is allowed.
+ * \brief Test if transforming on this \c CLASS symbol table entry is
+ * allowed.
  *
- * \return \c TRUE when transforming on this class record is allowed,
- * or \c FALSE when transforming on this class record is not allowed.
+ * \return \c TRUE when transforming on this \c CLASS symbol table entry
+ * is allowed, or \c FALSE when transforming on this \c CLASS symbol
+ * table entry is not allowed.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -607,10 +612,12 @@ dxf_class_transform_allowed
 
 
 /*!
- * \brief Test if changing the color in this class record is allowed.
+ * \brief Test if changing the color in this \c CLASS symbol table entry
+ * is allowed.
  *
- * \return \c TRUE when changing the color in this class record is allowed,
- * or \c FALSE when changing the color in this class record is not allowed.
+ * \return \c TRUE when changing the color in this \c CLASS symbol table
+ * entry is allowed, or \c FALSE when changing the color in this
+ * \c CLASS symbol table entry is not allowed.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
