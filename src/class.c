@@ -653,4 +653,46 @@ dxf_class_color_change_allowed
 }
 
 
+/*!
+ * \brief Test if changing the layer in this \c CLASS symbol table entry
+ * is allowed.
+ *
+ * \return \c TRUE when changing the layer in this \c CLASS symbol table
+ * entry is allowed, or \c FALSE when changing the layer in this
+ * \c CLASS symbol table entry is not allowed.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_class_layer_change_allowed
+(
+        DxfClass *class
+                /*!< DXF \c CLASS symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (class == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = DXF_CHECK_BIT (class->proxy_cap_flag, 3);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
