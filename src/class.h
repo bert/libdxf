@@ -190,6 +190,11 @@ dxf_class_cloning_allowed
 (
         DxfClass *class
 );
+int
+dxf_class_lineweight_change_allowed
+(
+        DxfClass *class
+);
 
 
 #endif /* LIBDXF_SRC_CLASS_H */
