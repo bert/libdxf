@@ -101,8 +101,7 @@ int
 dxf_dictionary_free
 (
         DxfDictionary *dictionary
-)
-;
+);
 
 
 #endif /* LIBDXF_SRC_DICTIONARY_H */
