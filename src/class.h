@@ -200,6 +200,11 @@ dxf_class_plot_style_name_change_allowed
 (
         DxfClass *class
 );
+int
+dxf_class_is_R13_format_proxy
+(
+        DxfClass *class
+);
 
 
 #endif /* LIBDXF_SRC_CLASS_H */
