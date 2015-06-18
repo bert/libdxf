@@ -110,8 +110,11 @@
          * 0 (off). */
 #endif
 
-#define INTER_ACTIVE_PROMPT 1
-        /*!< \brief Toggle for an interactive prompt during run time. */
+#define INTER_ACTIVE_PROMPT 0
+        /*!< \brief Toggle for an interactive prompt during run time.
+         *
+         * If not already defined as a compiler directive the default value is
+         * 0 (off). */
 
 #ifndef TRUE
 #  define TRUE 1
