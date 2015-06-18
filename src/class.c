@@ -475,7 +475,6 @@ dxf_class_free_chain
         while (classes != NULL)
         {
                 struct DxfClass *iter = classes->next;
-                dxf_class_free ((DxfClass *) classes->next);
                 dxf_class_free (classes);
                 classes = (DxfClass *) iter;
         }

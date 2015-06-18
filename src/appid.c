@@ -443,7 +443,6 @@ dxf_appid_free_chain
         while (appids != NULL)
         {
                 struct DxfAppid *iter = appids->next;
-                dxf_appid_free ((DxfAppid *) appids->next);
                 dxf_appid_free (appids);
                 appids = (DxfAppid *) iter;
         }

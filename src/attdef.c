@@ -821,7 +821,6 @@ dxf_attdef_free_chain
         while (attdefs != NULL)
         {
                 struct DxfAttdef *iter = attdefs->next;
-                dxf_attdef_free ((DxfAttdef *) attdefs->next);
                 dxf_attdef_free (attdefs);
                 attdefs = (DxfAttdef *) iter;
         }

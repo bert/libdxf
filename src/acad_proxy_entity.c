@@ -610,7 +610,6 @@ dxf_acad_proxy_entity_free_chain
         while (acad_proxy_entities != NULL)
         {
                 struct DxfAcadProxyEntity *iter = acad_proxy_entities->next;
-                dxf_acad_proxy_entity_free ((DxfAcadProxyEntity *) acad_proxy_entities->next);
                 dxf_acad_proxy_entity_free (acad_proxy_entities);
                 acad_proxy_entities = (DxfAcadProxyEntity *) iter;
         }

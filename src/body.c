@@ -606,7 +606,6 @@ dxf_body_free_chain
         while (bodies != NULL)
         {
                 struct DxfBody *iter = bodies->next;
-                dxf_body_free ((DxfBody *) bodies->next);
                 dxf_body_free (bodies);
                 bodies = (DxfBody *) iter;
         }
