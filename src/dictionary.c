@@ -419,4 +419,42 @@ dxf_dictionary_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c DICTIONARY
+ * objects and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_dictionary_free_chain
+(
+        DxfDictionary *dictionaries
+                /*!< pointer to the chain of DXF \c DICTIONARY objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dictionaries == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (dictionaries != NULL)
+        {
+                struct DxfDictionary *iter = dictionaries->next;
+                dxf_dictionary_free (dictionaries);
+                dictionaries = (DxfDictionary *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/
