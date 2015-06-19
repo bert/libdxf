@@ -422,4 +422,42 @@ dxf_dictionaryvar_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c DICTIONARYVAR
+ * objects and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_dictionaryvar_free_chain
+(
+        DxfDictionaryVar *dictionaryvars
+                /*!< pointer to the chain of DXF \c DICTIONARYVAR objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dictionaryvars == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (dictionaryvars != NULL)
+        {
+                struct DxfDictionaryVar *iter = dictionaryvars->next;
+                dxf_dictionary_free (dictionaryvars);
+                dictionaryvars = (DxfDictionaryVar *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/

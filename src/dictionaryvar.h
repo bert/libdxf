@@ -102,6 +102,11 @@ dxf_dictionaryvar_free
 (
         DxfDictionaryVar *dictionaryvar
 );
+void
+dxf_dictionaryvar_free_chain
+(
+        DxfDictionaryVar *dictionaryvars
+);
 
 
 #endif /* LIBDXF_SRC_DICTIONARYVAR_H */
