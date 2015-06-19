@@ -968,6 +968,44 @@ dxf_dimension_free
 
 
 /*!
+ * \brief Free the allocated memory for a chain of DXF \c DIMENSION
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_dimension_free_chain
+(
+        DxfDimension *dimensions
+                /*!< pointer to the chain of DXF \c DIMENSION entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dimensions == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (dimensions != NULL)
+        {
+                struct DxfDimension *iter = dimensions->next;
+                dxf_dimension_free (dimensions);
+                dimensions = (DxfDimension *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Get the value of the \c flag of a DXF \c DIMENSION.
  *
  * \return The value of the \c flag, or -1 when an error occurred.

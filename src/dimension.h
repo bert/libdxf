@@ -324,6 +324,11 @@ dxf_dimension_free
 (
         DxfDimension *dimension
 );
+void
+dxf_dimension_free_chain
+(
+        DxfDimension *dimensions
+);
 int
 dxf_dimension_get_flag
 (
