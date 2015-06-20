@@ -1,7 +1,7 @@
 /*!
  * \file ellipse.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF ellipse entity (\c ELLIPSE).
  *
@@ -161,6 +161,11 @@ int
 dxf_ellipse_free
 (
         DxfEllipse *ellipse
+);
+void
+dxf_ellipse_free_chain
+(
+        DxfEllipse *ellipses
 );
 
 
