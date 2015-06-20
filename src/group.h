@@ -117,6 +117,11 @@ dxf_group_free
 (
         DxfGroup *group
 );
+void
+dxf_group_free_chain
+(
+        DxfGroup *groups
+);
 
 
 #endif /* LIBDXF_SRC_GROUP_H */

@@ -445,4 +445,42 @@ dxf_group_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c GROUP
+ * objects and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_group_free_chain
+(
+        DxfGroup *groups
+                /*!< pointer to the chain of DXF \c GROUP objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (groups == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (groups != NULL)
+        {
+                struct DxfGroup *iter = groups->next;
+                dxf_group_free (groups);
+                groups = (DxfGroup *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/
