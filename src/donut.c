@@ -341,4 +341,42 @@ dxf_donut_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF donut entities
+ * and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_donut_free_chain
+(
+        DxfDonut *donuts
+                /*!< pointer to the chain of DXF donut entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (donuts == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (donuts != NULL)
+        {
+                struct DxfDonut *iter = donuts->next;
+                dxf_donut_free (donuts);
+                donuts = (DxfDonut *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

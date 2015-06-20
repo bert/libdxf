@@ -149,6 +149,11 @@ dxf_donut_free
 (
         DxfDonut *donut
 );
+void
+dxf_donut_free_chain
+(
+        DxfDonut *donuts
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
