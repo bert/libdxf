@@ -831,6 +831,11 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point
 );
+void
+dxf_hatch_free_chain
+(
+        DxfHatch *hatches
+);
 
 
 #endif /* LIBDXF_SRC_HATCH_H */
