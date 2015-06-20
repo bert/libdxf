@@ -945,4 +945,43 @@ dxf_dimstyle_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c DIMSTYLE
+ * symbol table and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_dimstyle_free_chain
+(
+        DxfDimStyle *dimstyles
+                /*!< pointer to the chain of DXF \c DIMSTYLE symbol
+                 * tables. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dimstyles == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (dimstyles != NULL)
+        {
+                struct DxfDimStyle *iter = dimstyles->next;
+                dxf_dimstyle_free (dimstyles);
+                dimstyles = (DxfDimStyle *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

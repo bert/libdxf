@@ -335,6 +335,11 @@ int dxf_dimstyle_free
 (
         DxfDimStyle *dimstyle
 );
+void
+dxf_dimstyle_free_chain
+(
+        DxfDimStyle *dimstyles
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
