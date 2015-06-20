@@ -1,7 +1,7 @@
 /*!
  * \file tables.h
  *
- * \author Copyright (C) 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2014 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for of a DXF tables section (\c TABLES).
  *
@@ -66,7 +66,7 @@ dxf_tables
 {
         struct DxfAppid *appids;
                 /*!< Pointer to the first \c APPID symbol table entry. */
-        //struct DxfBlockRecord *block_records;
+        struct DxfBlockRecord *block_records;
                 /*!< Pointer to the first \c BLOCK_RECORD symbol table entry. */
         struct DxfDimStyle *dimstyles;
                 /*!< Pointer to the first \c DIMSTYLE symbol table entry. */
