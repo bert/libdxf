@@ -3582,4 +3582,43 @@ dxf_hatch_pattern_free_chain
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH pattern
+ * definition lines and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_pattern_def_line_free_chain
+(
+        DxfHatchPatternDefLine *hatch_pattern_def_lines
+                /*!< pointer to the chain of DXF \c HATCH pattern
+                 * definition lines. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (hatch_pattern_def_lines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_pattern_def_lines != NULL)
+        {
+                struct DxfHatchPatternDefLine *iter = hatch_pattern_def_lines->next;
+                dxf_hatch_pattern_def_line_free (hatch_pattern_def_lines);
+                hatch_pattern_def_lines = (DxfHatchPatternDefLine *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
