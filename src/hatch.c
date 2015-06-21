@@ -3776,4 +3776,43 @@ dxf_hatch_boundary_path_polyline_vertex_free_chain
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
+ * path edges and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_boundary_path_edge_free_chain
+(
+        DxfHatchBoundaryPathEdge *hatch_boundary_path_edges
+                /*!< pointer to the chain of DXF \c HATCH boundary path
+                 * edges. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (hatch_boundary_path_edges == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_boundary_path_edges != NULL)
+        {
+                struct DxfHatchBoundaryPathEdge *iter = hatch_boundary_path_edges->next;
+                dxf_hatch_boundary_path_edge_free (hatch_boundary_path_edges);
+                hatch_boundary_path_edges = (DxfHatchBoundaryPathEdge *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

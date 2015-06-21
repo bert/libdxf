@@ -866,6 +866,11 @@ dxf_hatch_boundary_path_polyline_vertex_free_chain
 (
         DxfHatchBoundaryPathPolylineVertex *hatch_boundary_path_polyline_vertices
 );
+void
+dxf_hatch_boundary_path_edge_free_chain
+(
+        DxfHatchBoundaryPathEdge *hatch_boundary_path_edges
+);
 
 
 #endif /* LIBDXF_SRC_HATCH_H */
