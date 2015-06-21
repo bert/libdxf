@@ -3698,4 +3698,43 @@ dxf_hatch_boundary_path_free_chain
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
+ * path polylines and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_boundary_path_polyline_free_chain
+(
+        DxfHatchBoundaryPathPolyline *hatch_boundary_path_polylines
+                /*!< pointer to the chain of DXF \c HATCH boundary path
+                 * polylines. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (hatch_boundary_path_polylines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_boundary_path_polylines != NULL)
+        {
+                struct DxfHatchBoundaryPathPolyline *iter = hatch_boundary_path_polylines->next;
+                dxf_hatch_boundary_path_polyline_free (hatch_boundary_path_polylines);
+                hatch_boundary_path_polylines = (DxfHatchBoundaryPathPolyline *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
