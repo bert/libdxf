@@ -141,6 +141,11 @@ dxf_imagedef_free
 (
         DxfImagedef *imagedef
 );
+void
+dxf_imagedef_free_chain
+(
+        DxfImagedef *imagedefs
+);
 
 
 #endif /* LIBDXF_SRC_IMAGEDEF_H */
