@@ -245,6 +245,11 @@ dxf_image_free
 (
         DxfImage *image
 );
+void
+dxf_image_free_chain
+(
+        DxfImage *images
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
