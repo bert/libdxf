@@ -886,6 +886,11 @@ dxf_hatch_boundary_path_edge_line_free_chain
 (
         DxfHatchBoundaryPathEdgeLine *hatch_boundary_path_edge_lines
 );
+void
+dxf_hatch_boundary_path_edge_spline_free_chain
+(
+        DxfHatchBoundaryPathEdgeSpline *hatch_boundary_path_edge_splines
+);
 
 
 #endif /* LIBDXF_SRC_HATCH_H */
