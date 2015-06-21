@@ -746,4 +746,42 @@ dxf_insert_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c INSERT
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_insert_free_chain
+(
+        DxfInsert *inserts
+                /*!< pointer to the chain of DXF \c INSERT entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (inserts == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (inserts != NULL)
+        {
+                struct DxfInsert *iter = inserts->next;
+                dxf_insert_free (inserts);
+                inserts = (DxfInsert *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

@@ -188,6 +188,11 @@ dxf_insert_free
 (
         DxfInsert *insert
 );
+void
+dxf_insert_free_chain
+(
+        DxfInsert *inserts
+);
 
 
 #endif /* LIBDXF_SRC_INSERT_H */
