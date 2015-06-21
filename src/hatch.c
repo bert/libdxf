@@ -3660,4 +3660,42 @@ dxf_hatch_pattern_seedpoint_free_chain
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
+ * paths and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_boundary_path_free_chain
+(
+        DxfHatchBoundaryPath *hatch_boundary_paths
+                /*!< pointer to the chain of DXF \c HATCH boundary paths. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (hatch_boundary_paths == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_boundary_paths != NULL)
+        {
+                struct DxfHatchBoundaryPath *iter = hatch_boundary_paths->next;
+                dxf_hatch_boundary_path_free (hatch_boundary_paths);
+                hatch_boundary_paths = (DxfHatchBoundaryPath *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

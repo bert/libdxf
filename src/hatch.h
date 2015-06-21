@@ -851,6 +851,11 @@ dxf_hatch_pattern_seedpoint_free_chain
 (
         DxfHatchPatternSeedPoint *hatch_pattern_seed_points
 );
+void
+dxf_hatch_boundary_path_free_chain
+(
+        DxfHatchBoundaryPath *hatch_boundary_paths
+);
 
 
 #endif /* LIBDXF_SRC_HATCH_H */
