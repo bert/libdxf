@@ -863,4 +863,43 @@ dxf_helix_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HELIX
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2007.
+ */
+void
+dxf_helix_free_chain
+(
+        DxfHelix *helices
+                /*!< pointer to the chain of DXF \c HELIX entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (helices == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (helices != NULL)
+        {
+                struct DxfHelix *iter = helices->next;
+                dxf_helix_free (helices);
+                helices = (DxfHelix *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/

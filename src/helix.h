@@ -239,6 +239,11 @@ dxf_helix_free
 (
         DxfHelix *helix
 );
+void
+dxf_helix_free_chain
+(
+        DxfHelix *helices
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
