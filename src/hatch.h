@@ -836,6 +836,11 @@ dxf_hatch_free_chain
 (
         DxfHatch *hatches
 );
+void
+dxf_hatch_pattern_free_chain
+(
+        DxfHatchPattern *hatch_patterns
+);
 
 
 #endif /* LIBDXF_SRC_HATCH_H */
