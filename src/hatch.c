@@ -3971,4 +3971,43 @@ dxf_hatch_boundary_path_edge_spline_free_chain
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
+ * path edge spline control points and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_boundary_path_edge_spline_control_point_free_chain
+(
+        DxfHatchBoundaryPathEdgeSplineCp *hatch_boundary_path_edge_spline_control_points
+                /*!< pointer to the chain of DXF \c HATCH boundary path
+                 * edge spline control points. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (hatch_boundary_path_edge_spline_control_points == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_boundary_path_edge_spline_control_points != NULL)
+        {
+                struct DxfHatchBoundaryPathEdgeSplineCp *iter = hatch_boundary_path_edge_spline_control_points->next;
+                dxf_hatch_boundary_path_edge_spline_control_point_free (hatch_boundary_path_edge_spline_control_points);
+                hatch_boundary_path_edge_spline_control_points = (DxfHatchBoundaryPathEdgeSplineCp *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
