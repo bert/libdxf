@@ -3621,4 +3621,43 @@ dxf_hatch_pattern_def_line_free_chain
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH pattern
+ * seed points and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_pattern_seedpoint_free_chain
+(
+        DxfHatchPatternSeedPoint *hatch_pattern_seed_points
+                /*!< pointer to the chain of DXF \c HATCH pattern seed
+                 * points. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (hatch_pattern_seed_points == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_pattern_seed_points != NULL)
+        {
+                struct DxfHatchPatternSeedPoint *iter = hatch_pattern_seed_points->next;
+                dxf_hatch_pattern_seedpoint_free (hatch_pattern_seed_points);
+                hatch_pattern_seed_points = (DxfHatchPatternSeedPoint *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

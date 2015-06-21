@@ -846,6 +846,11 @@ dxf_hatch_pattern_def_line_free_chain
 (
         DxfHatchPatternDefLine *hatch_pattern_def_lines
 );
+void
+dxf_hatch_pattern_seedpoint_free_chain
+(
+        DxfHatchPatternSeedPoint *hatch_pattern_seed_points
+);
 
 
 #endif /* LIBDXF_SRC_HATCH_H */
