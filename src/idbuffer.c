@@ -425,4 +425,42 @@ dxf_idbuffer_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c IDBUFFER
+ * objects and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_idbuffer_free_chain
+(
+        DxfIdbuffer *id_buffers
+                /*!< pointer to the chain of DXF \c IDBUFFER objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (id_buffers == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (id_buffers != NULL)
+        {
+                struct DxfIdbuffer *iter = id_buffers->next;
+                dxf_idbuffer_free (id_buffers);
+                id_buffers = (DxfIdbuffer *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/
