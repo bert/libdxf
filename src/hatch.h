@@ -876,6 +876,11 @@ dxf_hatch_boundary_path_edge_arc_free_chain
 (
         DxfHatchBoundaryPathEdgeArc *hatch_boundary_path_edge_arcs
 );
+void
+dxf_hatch_boundary_path_edge_ellipse_free_chain
+(
+        DxfHatchBoundaryPathEdgeEllipse *hatch_boundary_path_edge_ellipses
+);
 
 
 #endif /* LIBDXF_SRC_HATCH_H */

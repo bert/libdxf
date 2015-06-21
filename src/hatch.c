@@ -3854,4 +3854,43 @@ dxf_hatch_boundary_path_edge_arc_free_chain
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
+ * path edge ellipses and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_boundary_path_edge_ellipse_free_chain
+(
+        DxfHatchBoundaryPathEdgeEllipse *hatch_boundary_path_edge_ellipses
+                /*!< pointer to the chain of DXF \c HATCH boundary path
+                 * edge ellipses. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (hatch_boundary_path_edge_ellipses == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_boundary_path_edge_ellipses != NULL)
+        {
+                struct DxfHatchBoundaryPathEdgeEllipse *iter = hatch_boundary_path_edge_ellipses->next;
+                dxf_hatch_boundary_path_edge_ellipse_free (hatch_boundary_path_edge_ellipses);
+                hatch_boundary_path_edge_ellipses = (DxfHatchBoundaryPathEdgeEllipse *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
