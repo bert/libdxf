@@ -459,6 +459,44 @@ dxf_layer_free
 
 
 /*!
+ * \brief Free the allocated memory for a chain of DXF \c LAYER
+ * tables and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_layer_free_chain
+(
+        DxfLayer *layers
+                /*!< pointer to the chain of DXF \c LAYER tables. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (layers == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (layers != NULL)
+        {
+                struct DxfLayer *iter = layers->next;
+                dxf_layer_free (layers);
+                layers = (DxfLayer *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Test if layer is frozen.
  *
  * \return \c TRUE when layer is frozen, or \c FALSE when layer is

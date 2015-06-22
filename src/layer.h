@@ -119,6 +119,11 @@ dxf_layer_free
 (
         DxfLayer *layer
 );
+void
+dxf_layer_free_chain
+(
+        DxfLayer *layers
+);
 int
 dxf_layer_is_frozen
 (
