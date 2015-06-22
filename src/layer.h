@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Definition of a DXF layer table.
+ * \brief Header file for a DXF layer table (\c LAYER).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n

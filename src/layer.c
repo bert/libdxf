@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief DXF layer table.
+ * \brief Functions for a DXF layer table (\c LAYER).
  *
  * \note Xref-dependent layers are output during DXFOUT.\n
  * For these layers, the associated linetype name in the DXF file is
