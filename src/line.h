@@ -160,6 +160,11 @@ dxf_line_free
 (
         DxfLine *line
 );
+void
+dxf_line_free_chain
+(
+        DxfLine *lines
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
