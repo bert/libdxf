@@ -110,6 +110,11 @@ dxf_layer_index_free
 (
         DxfLayerIndex *layer_index
 );
+void
+dxf_layer_index_free_chain
+(
+        DxfLayerIndex *layer_indices
+);
 
 
 #endif /* LIBDXF_SRC_LAYER_INDEX_H */

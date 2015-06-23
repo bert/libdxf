@@ -461,4 +461,42 @@ dxf_layer_index_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c LAYER_INDEX
+ * objects and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_layer_index_free_chain
+(
+        DxfLayerIndex *layer_indices
+                /*!< pointer to the chain of DXF \c LAYER_INDEX objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (layer_indices == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (layer_indices != NULL)
+        {
+                struct DxfLayerIndex *iter = layer_indices->next;
+                dxf_layer_index_free (layer_indices);
+                layer_indices = (DxfLayerIndex *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/
