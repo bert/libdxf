@@ -255,6 +255,11 @@ dxf_leader_free
 (
         DxfLeader *leader
 );
+void
+dxf_leader_free_chain
+(
+        DxfLeader *leaders
+);
 
 
 #endif /* LIBDXF_SRC_LEADER_H */

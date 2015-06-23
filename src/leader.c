@@ -787,4 +787,42 @@ dxf_leader_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c LEADER
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_leader_free_chain
+(
+        DxfLeader *leaders
+                /*!< pointer to the chain of DXF \c LEADER entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (leaders == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (leaders != NULL)
+        {
+                struct DxfLeader *iter = leaders->next;
+                dxf_leader_free (leaders);
+                leaders = (DxfLeader *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
