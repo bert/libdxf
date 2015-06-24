@@ -165,6 +165,11 @@ int dxf_lwpolyline_free
 (
         DxfLWPolyline *lwpolyline
 );
+void
+dxf_lwpolyline_free_chain
+(
+        DxfLWPolyline *lwpolylines
+);
 
 
 #endif /* LIBDXF_SRC_LWPOLYLINE_H */

@@ -598,4 +598,42 @@ dxf_lwpolyline_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c LWPOLYLINE
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_lwpolyline_free_chain
+(
+        DxfLWPolyline *lwpolylines
+                /*!< pointer to the chain of DXF \c LWPOLYLINE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (lwpolylines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (lwpolylines != NULL)
+        {
+                struct DxfLWPolyline *iter = lwpolylines->next;
+                dxf_lwpolyline_free (lwpolylines);
+                lwpolylines = (DxfLWPolyline *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
