@@ -171,6 +171,11 @@ dxf_ltype_free
 (
         DxfLType *ltype
 );
+void
+dxf_ltype_free_chain
+(
+        DxfLType *ltypes
+);
 int
 dxf_ltype_is_xreferenced
 (

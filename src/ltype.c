@@ -729,4 +729,43 @@ dxf_ltype_is_referenced
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c LTYPE
+ * symbol table entries and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_ltype_free_chain
+(
+        DxfLType *ltypes
+                /*!< pointer to the chain of DXF \c LTYPE symbol table
+                 * entries. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (ltypes == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (ltypes != NULL)
+        {
+                struct DxfLType *iter = ltypes->next;
+                dxf_ltype_free (ltypes);
+                ltypes = (DxfLType *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
