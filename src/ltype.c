@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Functions for a DXF ltype entity (\c LTYPE).
+ * \brief Functions for a DXF ltype symbol table entry (\c LTYPE).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -78,7 +78,7 @@ dxf_ltype_new ()
 
 /*!
  * \brief Allocate memory and initialize data fields for a DXF \c LTYPE
- * entity.
+ * symbol table entry.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
@@ -93,7 +93,7 @@ DxfLType *
 dxf_ltype_init
 (
         DxfLType *ltype
-                /*!< DXF LType entity. */
+                /*!< DXF LType symbol table entry. */
 )
 {
 #if DEBUG
@@ -145,7 +145,7 @@ dxf_ltype_init
 
 
 /*!
- * \brief Read data from a DXF file into a DXF \c LTYPE entity.
+ * \brief Read data from a DXF file into a DXF \c LTYPE symbol table entry.
  *
  * The last line read from file contained the string "LTYPE". \n
  * Now follows some data for the \c LTYPE, to be terminated with a "  0"
@@ -167,7 +167,7 @@ dxf_ltype_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfLType *ltype
-                /*!< DXF ltype entity. */
+                /*!< DXF ltype symbol table entry. */
 )
 {
 #if DEBUG
@@ -380,7 +380,7 @@ dxf_ltype_read
 
 
 /*!
- * \brief Write DXF output to a file for a \c LTYPE entity.
+ * \brief Write DXF output to a file for a \c LTYPE symbol table entry.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -397,7 +397,7 @@ dxf_ltype_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfLType *ltype
-                /*!< DXF ltype entity. */
+                /*!< DXF ltype symbol table entry. */
 )
 {
 #if DEBUG
@@ -590,7 +590,7 @@ dxf_ltype_free
 (
         DxfLType *ltype
                 /*!< Pointer to the memory occupied by the DXF \c LTYPE
-                 * entity. */
+                 * symbol table entry. */
 )
 {
 #if DEBUG
@@ -633,7 +633,7 @@ int
 dxf_ltype_is_xreferenced
 (
         DxfLType *ltype
-                /*!< DXF ltype entity. */
+                /*!< DXF ltype symbol table entry. */
 )
 {
 #if DEBUG
@@ -670,7 +670,7 @@ int
 dxf_ltype_is_xresolved
 (
         DxfLType *ltype
-                /*!< DXF ltype entity. */
+                /*!< DXF ltype symbol table entry. */
 )
 {
 #if DEBUG
@@ -705,7 +705,7 @@ int
 dxf_ltype_is_referenced
 (
         DxfLType *ltype
-                /*!< DXF ltype entity. */
+                /*!< DXF ltype symbol table entry. */
 )
 {
 #if DEBUG

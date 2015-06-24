@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Header file for a DXF ltype entity (\c LTYPE).
+ * \brief Header file for a DXF ltype symbol table entry (\c LTYPE).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -40,7 +40,7 @@
 
 
 /*!
- * \brief DXF definition of an AutoCAD linetype.
+ * \brief DXF definition of an AutoCAD linetype symbol table entry.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
