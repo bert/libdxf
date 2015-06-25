@@ -418,6 +418,11 @@ dxf_lwpolyline_read
  * \brief Write DXF output to fp for a light weight polyline entity.
  *
  * \warning This entity requires AutoCAD version R14 or higher.
+ * When the \c follow_strict_version_rule flag is set to \c TRUE in the
+ * \c DxfFile struct, this entity will be skipped from file.
+ * When the \c follow_strict_version_rule flag is set to \c FALSE in the
+ * \c DxfFile struct, libdxf will write this entity to file and report
+ * with a warning message to \c stderr.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -462,7 +467,15 @@ dxf_lwpolyline_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (fp->acad_version_number < AutoCAD_14)
+        if ((fp->acad_version_number < AutoCAD_14)
+          && (fp->follow_strict_version_rules))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, lwpolyline->id_code);
+                return (EXIT_FAILURE);
+        }
+        else
         {
                 fprintf (stderr,
                   (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
