@@ -251,6 +251,11 @@ dxf_mline_free
 (
         DxfMline *mline
 );
+void
+dxf_mline_free_chain
+(
+        DxfMline *mlines
+);
 
 
 #endif /* LIBDXF_SRC_MLINE_H */

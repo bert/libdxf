@@ -811,4 +811,42 @@ dxf_mline_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c MLINE
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_mline_free_chain
+(
+        DxfMline *mlines
+                /*!< a pointer to the chain of DXF \c MLINE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (mlines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (mlines != NULL)
+        {
+                struct DxfMline *iter = mlines->next;
+                dxf_mline_free (mlines);
+                mlines = (DxfMline *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
