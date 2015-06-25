@@ -38,9 +38,17 @@
 
 
 /*!
- * \brief Allocate memory for a \c DxfLWPolyline.
+ * \brief Allocate memory for a DXF \c LWPOLYLINE entity.
  *
  * Fill the memory contents with zeros.
+ * 
+ * \return a pointer to the DXF \c LWPOLYLINE entity.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  */
 DxfLWPolyline *
 dxf_lwpolyline_new ()
@@ -73,16 +81,23 @@ dxf_lwpolyline_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in a \c LWPOLYLINE entity.
- * 
+ * \brief Allocate memory and initialize data fields in a DXF
+ * \c LWPOLYLINE entity.
+ *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  */
 DxfLWPolyline *
 dxf_lwpolyline_init
 (
         DxfLWPolyline *lwpolyline
-                /*!< DXF light weight polyline entity. */
+                /*!< a pointer to the DXF \c LWPOLYLINE entity. */
 )
 {
 #if DEBUG
@@ -139,6 +154,12 @@ dxf_lwpolyline_init
  * While parsing the DXF file store data in \c lwpolyline. \n
  *
  * \return a pointer to \c lwpolyline.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  */
 DxfLWPolyline *
 dxf_lwpolyline_read
@@ -146,7 +167,7 @@ dxf_lwpolyline_read
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfLWPolyline *lwpolyline
-                /*!< DXF light weight polyline entity. */
+                /*!< a pointer to the DXF \c LWPOLYLINE entity. */
 )
 {
 #if DEBUG
@@ -400,6 +421,12 @@ dxf_lwpolyline_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  */
 int
 dxf_lwpolyline_write
@@ -407,7 +434,7 @@ dxf_lwpolyline_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfLWPolyline *lwpolyline
-                /*!< DXF polyline entity. */
+                /*!< a pointer to the DXF \c LWPOLYLINE entity. */
 )
 {
 #if DEBUG
@@ -568,13 +595,18 @@ dxf_lwpolyline_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  */
 int
 dxf_lwpolyline_free
 (
         DxfLWPolyline *lwpolyline
-                /*!< Pointer to the memory occupied by the DXF \c LWPOLYLINE
-                 * entity. */
+                /*!< a pointer to the DXF \c LWPOLYLINE entity. */
 )
 {
 #if DEBUG
@@ -612,7 +644,7 @@ void
 dxf_lwpolyline_free_chain
 (
         DxfLWPolyline *lwpolylines
-                /*!< pointer to the chain of DXF \c LWPOLYLINE entities. */
+                /*!< a pointer to the chain of DXF \c LWPOLYLINE entities. */
 )
 {
 #ifdef DEBUG
