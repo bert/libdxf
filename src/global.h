@@ -169,6 +169,8 @@ dxf_file
         /*!< Last id code written to, or read from, file. */
     int acad_version_number;
         /*!< AutoCAD version number. */
+    int follow_strict_version_rules;
+        /*!< follow strict rules when writing to file. */
 } DxfFile;
 
 
