@@ -745,4 +745,42 @@ dxf_mtext_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c MTEXT
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_mtext_free_chain
+(
+        DxfMtext *mtexts
+                /*!< a pointer to the chain of DXF \c MTEXT entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (mtexts == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (mtexts != NULL)
+        {
+                struct DxfMtext *iter = mtexts->next;
+                dxf_mtext_free (mtexts);
+                mtexts = (DxfMtext *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

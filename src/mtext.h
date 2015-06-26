@@ -297,6 +297,11 @@ dxf_mtext_free
 (
         DxfMtext *mtext
 );
+void
+dxf_mtext_free_chain
+(
+        DxfMtext *mtexts
+);
 
 
 #endif /* LIBDXF_SRC_MTEXT_H */
