@@ -508,4 +508,42 @@ dxf_mlinestyle_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c MLINESTYLE
+ * objects and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_mlinestyle_free_chain
+(
+        DxfMlinestyle *mlinestyles
+                /*!< a pointer to the chain of DXF \c MLINESTYLE objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (mlinestyles == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (mlinestyles != NULL)
+        {
+                struct DxfMlinestyle *iter = mlinestyles->next;
+                dxf_mlinestyle_free (mlinestyles);
+                mlinestyles = (DxfMlinestyle *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

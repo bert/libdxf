@@ -153,6 +153,11 @@ dxf_mlinestyle_free
 (
         DxfMlinestyle *mlinestyle
 );
+void
+dxf_mlinestyle_free_chain
+(
+        DxfMlinestyle *mlinestyles
+);
 
 
 #endif /* LIBDXF_SRC_MLINESTYLE_H */
