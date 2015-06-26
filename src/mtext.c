@@ -518,6 +518,13 @@ dxf_mtext_read
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
+ * \warning This entity requires AutoCAD version R13 or higher.
+ * When the \c follow_strict_version_rules flag is set to \c TRUE in the
+ * \c DxfFile struct, this entity will be skipped from file.
+ * When the \c follow_strict_version_rules flag is set to \c FALSE in the
+ * \c DxfFile struct, libdxf will write this entity to file and report
+ * with a warning message to \c stderr.
+ *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
  * \version According to DXF R12 (backward compatibility).
@@ -558,11 +565,19 @@ dxf_mtext_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (fp->acad_version_number < AutoCAD_13)
+        if ((fp->acad_version_number < AutoCAD_13)
+          && (fp->follow_strict_version_rules))
         {
                 fprintf (stderr,
-                  (_("Warning in %s () illegal DXF version for this entity.\n")),
-                  __FUNCTION__);
+                  (_("Error in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, mtext->id_code);
+                return (EXIT_FAILURE);
+        }
+        else
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
+                  __FUNCTION__, dxf_entity_name, mtext->id_code);
         }
         if (strcmp (mtext->linetype, "") == 0)
         {
