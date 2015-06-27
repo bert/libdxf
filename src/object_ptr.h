@@ -99,6 +99,11 @@ dxf_object_ptr_free
 (
         DxfObjectPtr *object_ptr
 );
+void
+dxf_object_ptr_free_chain
+(
+        DxfObjectPtr *objectptrs
+);
 
 
 #endif /* LIBDXF_SRC_OBJECT_PTR_H */
