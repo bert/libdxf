@@ -135,6 +135,11 @@ dxf_oleframe_free
 (
         DxfOleFrame *oleframe
 );
+void
+dxf_oleframe_free_chain
+(
+        DxfOleFrame *oleframes
+);
 
 
 #endif /* LIBDXF_SRC_OLEFRAME_H */
