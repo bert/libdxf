@@ -92,7 +92,7 @@ DxfMtext *
 dxf_mtext_init
 (
         DxfMtext *mtext
-                /*!< DXF mtext entity. */
+                /*!< a pointer to the DXF mtext entity. */
 )
 {
 #if DEBUG
@@ -190,7 +190,7 @@ dxf_mtext_read
         DxfFile *fp,
                 /*!< DXF filepointer to the input file (or device). */
         DxfMtext *mtext
-                /*!< DXF mtext entity. */
+                /*!< a pointer to the DXF mtext entity. */
 )
 {
 #if DEBUG
@@ -537,7 +537,7 @@ dxf_mtext_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfMtext *mtext
-                /*!< DXF \c MTEXT entity. */
+                /*!< a pointer to the DXF \c MTEXT entity. */
 )
 {
 #if DEBUG
@@ -725,7 +725,7 @@ int
 dxf_mtext_free
 (
         DxfMtext *mtext
-                /*!< DXF mtext entity. */
+                /*!< a pointer to the DXF mtext entity. */
 )
 {
 #if DEBUG
