@@ -95,7 +95,7 @@ DxfObjectPtr *
 dxf_object_ptr_init
 (
         DxfObjectPtr *object_ptr
-                /*!< DXF \c OBJECT_PTR object. */
+                /*!< a pointer to the DXF \c OBJECT_PTR object. */
 )
 {
 #if DEBUG
@@ -156,7 +156,7 @@ dxf_object_ptr_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfObjectPtr *object_ptr
-                /*!< DXF \c OBJECT_PTR object. */
+                /*!< a pointer to the DXF \c OBJECT_PTR object. */
 )
 {
 #if DEBUG
@@ -273,7 +273,7 @@ dxf_object_ptr_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfObjectPtr *object_ptr
-                /*!< DXF \c OBJECT_PTR object. */
+                /*!< a pointer to the DXF \c OBJECT_PTR object. */
 )
 {
 #if DEBUG
@@ -370,7 +370,7 @@ int
 dxf_object_ptr_free
 (
         DxfObjectPtr *object_ptr
-                /*!< Pointer to the memory occupied by the DXF
+                /*!< a pointer to the memory occupied by the DXF
                  * \c OBJECT_PTR object. */
 )
 {
