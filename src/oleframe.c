@@ -87,7 +87,7 @@ DxfOleFrame *
 dxf_oleframe_init
 (
         DxfOleFrame *oleframe
-                /*!< DXF \c OLEFRAME entity. */
+                /*!< a pointer to the DXF \c OLEFRAME entity. */
 )
 {
 #if DEBUG
@@ -155,7 +155,7 @@ dxf_oleframe_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfOleFrame *oleframe
-                /*!< DXF \c OLEFRAME entity. */
+                /*!< a pointer to the DXF \c OLEFRAME entity. */
 )
 {
 #if DEBUG
@@ -371,7 +371,7 @@ dxf_oleframe_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfOleFrame *oleframe
-                /*!< DXF \c OLEFRAME entity. */
+                /*!< a pointer to the DXF \c OLEFRAME entity. */
 )
 {
 #if DEBUG
@@ -526,7 +526,7 @@ int
 dxf_oleframe_free
 (
         DxfOleFrame *oleframe
-                /*!< Pointer to the memory occupied by the DXF
+                /*!< a pointer to the  memory occupied by the DXF
                  * \c OLEFRAME entity. */
 )
 {
@@ -573,7 +573,7 @@ void
 dxf_oleframe_free_chain
 (
         DxfOleFrame *oleframes
-                /*!< pointer to the chain of DXF \c OLEFRAME entities. */
+                /*!< a pointer to the chain of DXF \c OLEFRAME entities. */
 )
 {
 #ifdef DEBUG
