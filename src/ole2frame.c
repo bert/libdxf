@@ -93,7 +93,7 @@ DxfOle2Frame *
 dxf_ole2frame_init
 (
         DxfOle2Frame *ole2frame
-                /*!< DXF \c OLEFRAME entity. */
+                /*!< a pointer to the DXF \c OLEFRAME entity. */
 )
 {
 #if DEBUG
@@ -174,7 +174,7 @@ dxf_ole2frame_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfOle2Frame *ole2frame
-                /*!< DXF \c OLE2FRAME entity. */
+                /*!< a pointer to the DXF \c OLE2FRAME entity. */
 )
 {
 #if DEBUG
@@ -455,7 +455,7 @@ dxf_ole2frame_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfOle2Frame *ole2frame
-                /*!< DXF \c OLE2FRAME entity. */
+                /*!< a pointer to the DXF \c OLE2FRAME entity. */
 )
 {
 #if DEBUG
@@ -622,7 +622,7 @@ int
 dxf_ole2frame_free
 (
         DxfOle2Frame *ole2frame
-                /*!< Pointer to the memory occupied by the DXF
+                /*!< a pointer to the memory occupied by the DXF
                  * \c OLE2FRAME entity. */
 )
 {
