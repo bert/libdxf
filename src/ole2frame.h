@@ -178,6 +178,11 @@ dxf_ole2frame_free
 (
         DxfOle2Frame *ole2frame
 );
+void
+dxf_ole2frame_free_chain
+(
+        DxfOle2Frame *ole2frames
+);
 
 
 #endif /* LIBDXF_SRC_OLE2FRAME_H */

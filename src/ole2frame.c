@@ -657,4 +657,42 @@ dxf_ole2frame_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c OLE2FRAME
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_ole2frame_free_chain
+(
+        DxfOle2Frame *ole2frames
+                /*!< a pointer to the chain of DXF \c OLE2FRAME entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (ole2frames == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (ole2frames != NULL)
+        {
+                struct DxfOle2Frame *iter = ole2frames->next;
+                dxf_ole2frame_free (ole2frames);
+                ole2frames = (DxfOle2Frame *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
