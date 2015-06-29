@@ -592,4 +592,42 @@ dxf_point_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c POINT
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_point_free_chain
+(
+        DxfPoint *points
+                /*!< pointer to the chain of DXF \c POINT entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (points == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (points != NULL)
+        {
+                struct DxfPoint *iter = points->next;
+                dxf_point_free (points);
+                points = (DxfPoint *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

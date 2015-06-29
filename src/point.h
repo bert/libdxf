@@ -162,6 +162,11 @@ dxf_point_free
 (
         DxfPoint *point
 );
+void
+dxf_point_free_chain
+(
+        DxfPoint *points
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
