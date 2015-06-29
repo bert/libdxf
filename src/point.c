@@ -106,7 +106,7 @@ DxfPoint *
 dxf_point_init
 (
         DxfPoint *point
-                /*!< DXF point entity. */
+                /*!< a pointer to the DXF \c POINT entity. */
 )
 {
 #if DEBUG
@@ -177,7 +177,7 @@ dxf_point_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfPoint *point
-                /*!< DXF ellipse entity. */
+                /*!< a pointer to the DXF \c POINT entity. */
 )
 {
 #if DEBUG
@@ -409,7 +409,7 @@ dxf_point_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfPoint *point
-                /*!< DXF point entity. */
+                /*!< a pointer to the DXF \c POINT entity. */
 )
 {
 #if DEBUG
@@ -565,7 +565,7 @@ int
 dxf_point_free
 (
         DxfPoint *point
-                /*!< Pointer to the memory occupied by the DXF \c POINT
+                /*!< a pointer to the memory occupied by the DXF \c POINT
                  * entity. */
 )
 {
@@ -606,7 +606,7 @@ void
 dxf_point_free_chain
 (
         DxfPoint *points
-                /*!< pointer to the chain of DXF \c POINT entities. */
+                /*!< a pointer to the chain of DXF \c POINT entities. */
 )
 {
 #ifdef DEBUG
