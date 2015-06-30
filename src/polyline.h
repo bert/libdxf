@@ -249,6 +249,11 @@ dxf_polyline_free
 (
         DxfPolyline *polyline
 );
+void
+dxf_polyline_free_chain
+(
+        DxfPolyline *polylines
+);
 
 
 #endif /* LIBDXF_SRC_POLYLINE_H */

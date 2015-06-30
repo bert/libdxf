@@ -686,4 +686,42 @@ dxf_polyline_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c POLYLINE
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_polyline_free_chain
+(
+        DxfPolyline *polylines
+                /*!< a pointer to the chain of DXF \c POLYLINE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (polylines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (polylines != NULL)
+        {
+                struct DxfPolyline *iter = polylines->next;
+                dxf_polyline_free (polylines);
+                polylines = (DxfPolyline *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
