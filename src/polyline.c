@@ -92,7 +92,7 @@ DxfPolyline *
 dxf_polyline_init
 (
         DxfPolyline *polyline
-                /*!< DXF polyline entity. */
+                /*!< a pointer to the DXF polyline entity. */
 )
 {
 #if DEBUG
@@ -172,7 +172,7 @@ dxf_polyline_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfPolyline *polyline
-                /*!< DXF polyline entity. */
+                /*!< a pointer to the DXF polyline entity. */
 )
 {
 #if DEBUG
@@ -456,7 +456,7 @@ dxf_polyline_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfPolyline *polyline
-                /*!< DXF polyline entity. */
+                /*!< a pointer to the DXF polyline entity. */
 )
 {
 #if DEBUG
@@ -661,7 +661,7 @@ int
 dxf_polyline_free
 (
         DxfPolyline *polyline
-                /*!< Pointer to the memory occupied by the DXF
+                /*!< a pointer to the memory occupied by the DXF
                  * \c POLYLINE entity. */
 )
 {
