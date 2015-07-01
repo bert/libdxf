@@ -131,6 +131,11 @@ dxf_rastervariables_free
 (
         DxfRasterVariables *rastervariables
 );
+void
+dxf_rastervariables_free_chain
+(
+        DxfRasterVariables *rastervariables
+);
 
 
 #endif /* LIBDXF_SRC_RASTERVARIABLES_H */
