@@ -95,7 +95,7 @@ DxfRasterVariables *
 dxf_rastervariables_init
 (
         DxfRasterVariables *rastervariables
-                /*!< DXF \c RASTERVARIABLES object. */
+                /*!< a pointer to the DXF \c RASTERVARIABLES object. */
 )
 {
 #if DEBUG
@@ -154,7 +154,7 @@ dxf_rastervariables_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfRasterVariables *rastervariables
-                /*!< DXF \c RASTERVARIABLES object. */
+                /*!< a pointer to the DXF \c RASTERVARIABLES object. */
 )
 {
 #if DEBUG
@@ -307,7 +307,7 @@ dxf_rastervariables_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfRasterVariables *rastervariables
-                /*!< DXF \c RASTERVARIABLES object. */
+                /*!< a pointer to the DXF \c RASTERVARIABLES object. */
 )
 {
 #if DEBUG
@@ -404,7 +404,7 @@ int
 dxf_rastervariables_free
 (
         DxfRasterVariables *rastervariables
-                /*!< Pointer to the memory occupied by the DXF
+                /*!< a pointer to the memory occupied by the DXF
                  * \c RASTERVARIABLES object. */
 )
 {
@@ -444,7 +444,7 @@ void
 dxf_rastervariables_free_chain
 (
         DxfRasterVariables *rastervariables
-                /*!< pointer to the chain of DXF \c RASTERVARIABLES
+                /*!< a pointer to the chain of DXF \c RASTERVARIABLES
                  * objects. */
 )
 {
