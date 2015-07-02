@@ -149,6 +149,11 @@ dxf_ray_free
 (
         DxfRay *ray
 );
+void
+dxf_ray_free_chain
+(
+        DxfRay *rays
+);
 
 
 #endif /* LIBDXF_SRC_RAY_H */
