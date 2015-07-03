@@ -145,6 +145,11 @@ dxf_region_free
 (
         DxfRegion *region
 );
+void
+dxf_region_free_chain
+(
+        DxfRegion *regions
+);
 
 
 #endif /* LIBDXF_SRC_REGION_H */
