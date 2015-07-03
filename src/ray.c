@@ -97,7 +97,7 @@ DxfRay *
 dxf_ray_init
 (
         DxfRay *ray
-                /*!< DXF line entity. */
+                /*!< a pointer to the DXF \c RAY entity. */
 )
 {
 #if DEBUG
@@ -167,7 +167,7 @@ dxf_ray_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfRay *ray
-                /*!< DXF ellipse entity. */
+                /*!< a pointer to the DXF \c RAY entity. */
 )
 {
 #if DEBUG
@@ -392,7 +392,7 @@ dxf_ray_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfRay *ray
-                /*!< DXF line entity. */
+                /*!< a pointer to the DXF \c RAY entity. */
 )
 {
 #if DEBUG
@@ -558,7 +558,7 @@ int
 dxf_ray_free
 (
         DxfRay *ray
-                /*!< Pointer to the memory occupied by the DXF \c RAY
+                /*!< a pointer to the memory occupied by the DXF \c RAY
                  * entity. */
 )
 {
