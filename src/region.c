@@ -93,7 +93,7 @@ DxfRegion *
 dxf_region_init
 (
         DxfRegion *region
-                /*!< DXF \c REGION entity. */
+                /*!< a pointer to the DXF \c REGION entity. */
 )
 {
 #if DEBUG
@@ -166,7 +166,7 @@ dxf_region_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfRegion *region
-                /*!< DXF \c REGION entity. */
+                /*!< a pointer to the DXF \c REGION entity. */
 )
 {
 #if DEBUG
@@ -375,7 +375,7 @@ dxf_region_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfRegion *region
-                /*!< DXF \c REGION entity. */
+                /*!< a pointer to the DXF \c REGION entity. */
 )
 {
 #if DEBUG
@@ -540,7 +540,7 @@ int
 dxf_region_free
 (
         DxfRegion *region
-                /*!< Pointer to the memory occupied by the DXF
+                /*!< a pointer to the memory occupied by the DXF
                  * \c REGION entity. */
 )
 {
