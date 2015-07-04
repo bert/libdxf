@@ -655,4 +655,42 @@ dxf_shape_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c SHAPE
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_shape_free_chain
+(
+        DxfShape *shapes
+                /*!< a pointer to the chain of DXF \c SHAPE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (shapes == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (shapes != NULL)
+        {
+                struct DxfShape *iter = shapes->next;
+                dxf_shape_free (shapes);
+                shapes = (DxfShape *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

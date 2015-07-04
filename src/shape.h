@@ -169,6 +169,11 @@ dxf_shape_free
 (
         DxfShape *shape
 );
+void
+dxf_shape_free_chain
+(
+        DxfShape *shapes
+);
 
 
 #endif /* LIBDXF_SRC_SHAPE_H */
