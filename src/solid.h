@@ -192,6 +192,11 @@ dxf_solid_free
 (
         DxfSolid *solid
 );
+void
+dxf_solid_free_chain
+(
+        DxfSolid *solids
+);
 
 
 #endif /* LIBDXF_SRC_SOLID_H */
