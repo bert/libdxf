@@ -96,7 +96,7 @@ DxfShape *
 dxf_shape_init
 (
         DxfShape *shape
-                /*!< DXF shape entity. */
+                /*!< a pointer to the DXF \c SHAPE entity. */
 )
 {
 #if DEBUG
@@ -169,7 +169,7 @@ dxf_shape_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfShape *shape
-                /*!< DXF shape entity. */
+                /*!< a pointer to the DXF \c SHAPE entity. */
 )
 {
 #if DEBUG
@@ -438,7 +438,7 @@ dxf_shape_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfShape *shape
-                /*!< DXF shape entity. */
+                /*!< a pointer to the DXF \c SHAPE entity. */
 )
 {
 #if DEBUG
@@ -627,7 +627,7 @@ int
 dxf_shape_free
 (
         DxfShape *shape
-                /*!< Pointer to the memory occupied by the DXF \c SHAPE
+                /*!< a pointer to the memory occupied by the DXF \c SHAPE
                  * entity. */
 )
 {
