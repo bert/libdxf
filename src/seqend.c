@@ -96,7 +96,7 @@ DxfSeqend *
 dxf_seqend_init
 (
         DxfSeqend *seqend
-                /*!< DXF seqend entity. */
+                /*!< a pointer to the DXF \c SEQEND entity. */
 )
 {
 #if DEBUG
@@ -159,7 +159,7 @@ dxf_seqend_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfSeqend *seqend
-                /*!< DXF \c SEQEND entity. */
+                /*!< a pointer to the DXF \c SEQEND entity. */
 )
 {
 #if DEBUG
@@ -349,7 +349,7 @@ dxf_seqend_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfSeqend *seqend
-                /*!< DXF \c SEQEND entity. */
+                /*!< a pointer to the DXF \c SEQEND entity. */
 )
 {
 #if DEBUG
@@ -484,7 +484,7 @@ int
 dxf_seqend_free
 (
         DxfSeqend *seqend
-                /*!< Pointer to the memory occupied by the DXF \c SEQEND
+                /*!< a pointer to the memory occupied by the DXF \c SEQEND
                  * entity. */
 )
 {
