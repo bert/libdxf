@@ -95,7 +95,7 @@ DxfSortentsTable *
 dxf_sortentstable_init
 (
         DxfSortentsTable *sortentstable
-                /*!< DXF \c SORTENTSTABLE object. */
+                /*!< a pointer to the DXF \c SORTENTSTABLE object. */
 )
 {
 #if DEBUG
@@ -158,7 +158,7 @@ dxf_sortentstable_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfSortentsTable *sortentstable
-                /*!< DXF \c SORTENTSTABLE object. */
+                /*!< a pointer to the DXF \c SORTENTSTABLE object. */
 )
 {
 #if DEBUG
@@ -318,7 +318,7 @@ dxf_sortentstable_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfSortentsTable *sortentstable
-                /*!< DXF \c SORTENTSTABLE object. */
+                /*!< a pointer to the DXF \c SORTENTSTABLE object. */
 )
 {
 #if DEBUG
@@ -429,7 +429,7 @@ int
 dxf_sortentstable_free
 (
         DxfSortentsTable *sortentstable
-                /*!< Pointer to the memory occupied by the DXF
+                /*!< a pointer to the memory occupied by the DXF
                  * \c SORTENTSTABLE object. */
 )
 {
