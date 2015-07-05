@@ -99,7 +99,7 @@ DxfSolid *
 dxf_solid_init
 (
         DxfSolid *solid
-                /*!< DXF solid entity. */
+                /*!< a pointer to the DXF \c SOLID entity. */
 )
 {
 #if DEBUG
@@ -177,7 +177,7 @@ dxf_solid_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfSolid *solid
-                /*!< DXF solid entity. */
+                /*!< a pointer to the DXF \c SOLID entity. */
 )
 {
 #if DEBUG
@@ -461,7 +461,7 @@ dxf_solid_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfSolid *solid
-                /*!< DXF solid entity. */
+                /*!< a pointer to the DXF \c SOLID entity. */
 )
 {
 #if DEBUG
@@ -624,7 +624,7 @@ int
 dxf_solid_free
 (
         DxfSolid *solid
-                /*!< Pointer to the memory occupied by the DXF \c SOLID
+                /*!< a pointer to the memory occupied by the DXF \c SOLID
                  * entity. */
 )
 {
