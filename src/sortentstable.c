@@ -462,4 +462,43 @@ dxf_sortentstable_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c SORTENTSTABLE
+ * objects and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_sortentstable_free_chain
+(
+        DxfSortentsTable *sortentstables
+                /*!< a pointer to the chain of DXF \c SORTENTSTABLE
+                 * objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (sortentstables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (sortentstables != NULL)
+        {
+                struct DxfSortentsTable *iter = sortentstables->next;
+                dxf_sortentstable_free (sortentstables);
+                sortentstables = (DxfSortentsTable *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/
