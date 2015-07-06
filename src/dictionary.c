@@ -95,7 +95,7 @@ DxfDictionary *
 dxf_dictionary_init
 (
         DxfDictionary *dictionary
-                /*!< DXF \c DICTIONARY object. */
+                /*!< a pointer to the DXF \c DICTIONARY object. */
 )
 {
 #if DEBUG
@@ -151,7 +151,7 @@ dxf_dictionary_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfDictionary *dictionary
-                /*!< DXF \c DICTIONARY object. */
+                /*!< a pointer to the DXF \c DICTIONARY object. */
 )
 {
 #if DEBUG
@@ -287,7 +287,7 @@ dxf_dictionary_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfDictionary *dictionary
-                /*!< DXF \c DICTIONARY object. */
+                /*!< a pointer to the DXF \c DICTIONARY object. */
 )
 {
 #if DEBUG
@@ -391,7 +391,7 @@ int
 dxf_dictionary_free
 (
         DxfDictionary *dictionary
-                /*!< Pointer to the memory occupied by the DXF
+                /*!< a pointer to the memory occupied by the DXF
                  * \c DICTIONARY object. */
 )
 {
@@ -433,7 +433,7 @@ void
 dxf_dictionary_free_chain
 (
         DxfDictionary *dictionaries
-                /*!< pointer to the chain of DXF \c DICTIONARY objects. */
+                /*!< a pointer to the chain of DXF \c DICTIONARY objects. */
 )
 {
 #ifdef DEBUG
