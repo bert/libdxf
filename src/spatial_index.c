@@ -95,7 +95,7 @@ DxfSpatialIndex *
 dxf_spatial_index_init
 (
         DxfSpatialIndex *spatial_index
-                /*!< DXF \c SPATIAL_INDEX object. */
+                /*!< a pointer to the DXF \c SPATIAL_INDEX object. */
 )
 {
 #if DEBUG
@@ -165,7 +165,7 @@ dxf_spatial_index_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfSpatialIndex *spatial_index
-                /*!< DXF \c SPATIAL_INDEX object. */
+                /*!< a pointer to the DXF \c SPATIAL_INDEX object. */
 )
 {
 #if DEBUG
@@ -301,7 +301,7 @@ dxf_spatial_index_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfSpatialIndex *spatial_index
-                /*!< DXF \c SPATIAL_INDEX object. */
+                /*!< a pointer to the DXF \c SPATIAL_INDEX object. */
 )
 {
 #if DEBUG
@@ -399,7 +399,7 @@ int
 dxf_spatial_index_free
 (
         DxfSpatialIndex *spatial_index
-                /*!< Pointer to the memory occupied by the DXF
+                /*!< a pointer to the memory occupied by the DXF
                  * \c SPATIAL_INDEX object. */
 )
 {
