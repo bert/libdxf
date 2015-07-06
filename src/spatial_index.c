@@ -425,4 +425,43 @@ dxf_spatial_index_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c SPATIAL_INDEX
+ * objects and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_spatial_index_free_chain
+(
+        DxfSpatialIndex *spatial_indices
+                /*!< a pointer to the chain of DXF \c SPATIAL_INDEX
+                 * objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (spatial_indices == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (spatial_indices != NULL)
+        {
+                struct DxfSpatialIndex *iter = spatial_indices->next;
+                dxf_spatial_index_free (spatial_indices);
+                spatial_indices = (DxfSpatialIndex *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/

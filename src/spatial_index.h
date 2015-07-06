@@ -99,6 +99,11 @@ dxf_spatial_index_free
 (
         DxfSpatialIndex *spatial_index
 );
+void
+dxf_spatial_index_free_chain
+(
+        DxfSpatialIndex *spatial_indices
+);
 
 
 #endif /* LIBDXF_SRC_SPATIAL_INDEX_H */
