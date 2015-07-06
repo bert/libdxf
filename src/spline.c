@@ -288,7 +288,7 @@ DxfSpline *
 dxf_spline_init
 (
         DxfSpline *spline
-                /*!< DXF spline entity. */
+                /*!< a pointer to the DXF \c SPLINE entity. */
 )
 {
 #if DEBUG
@@ -390,7 +390,7 @@ dxf_spline_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfSpline *spline
-                /*!< DXF \c SPLINE entity. */
+                /*!< a pointer to the DXF \c SPLINE entity. */
 )
 {
 #if DEBUG
@@ -803,7 +803,7 @@ dxf_spline_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfSpline *spline
-                /*!< DXF \c SPLINE entity. */
+                /*!< a pointer to the DXF \c SPLINE entity. */
 )
 {
 #if DEBUG
@@ -1009,7 +1009,7 @@ int
 dxf_spline_free
 (
         DxfSpline *spline
-                /*!< Pointer to the memory occupied by the DXF \c SPLINE
+                /*!< a pointer to the memory occupied by the DXF \c SPLINE
                  * entity. */
 )
 {
