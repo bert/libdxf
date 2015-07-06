@@ -96,7 +96,7 @@ DxfArc *
 dxf_arc_init
 (
         DxfArc *arc
-                /*!< DXF arc entity. */
+                /*!< a pointer to the DXF \c ARC entity. */
 )
 {
 #if DEBUG
@@ -168,7 +168,7 @@ dxf_arc_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfArc *arc
-                /*!< DXF \c ARC entity. */
+                /*!< a pointer to the DXF \c ARC entity. */
 )
 {
 #if DEBUG
@@ -413,7 +413,7 @@ dxf_arc_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfArc *arc
-                /*!< DXF \c ARC entity. */
+                /*!< a pointer to the DXF \c ARC entity. */
 )
 {
 #if DEBUG
@@ -635,7 +635,7 @@ int
 dxf_arc_free
 (
         DxfArc *arc
-                /*!< Pointer to the memory occupied by the DXF \c ARC
+                /*!< a pointer to the memory occupied by the DXF \c ARC
                  * entity. */
 )
 {
@@ -676,7 +676,7 @@ void
 dxf_arc_free_chain
 (
         DxfArc *arcs
-                /*!< pointer to the chain of DXF ARC entities. */
+                /*!< a pointer to the chain of DXF \c ARC entities. */
 )
 {
 #ifdef DEBUG
