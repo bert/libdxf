@@ -606,4 +606,42 @@ dxf_spatial_filter_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c SPATIAL_FILTER
+ * objects and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_spatial_filter_free_chain
+(
+        DxfSpatialFilter *spatial_filters
+                /*!< a pointer to the chain of DXF \c SPATIAL_FILTER objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (spatial_filters == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (spatial_filters != NULL)
+        {
+                struct DxfSpatialFilter *iter = spatial_filters->next;
+                dxf_spatial_filter_free (spatial_filters);
+                spatial_filters = (DxfSpatialFilter *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/
