@@ -95,7 +95,7 @@ DxfSpatialFilter *
 dxf_spatial_filter_init
 (
         DxfSpatialFilter *spatial_filter
-                /*!< DXF \c SPATIAL_FILTER object. */
+                /*!< a pointer to the DXF \c SPATIAL_FILTER object. */
 )
 {
 #if DEBUG
@@ -174,7 +174,7 @@ dxf_spatial_filter_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfSpatialFilter *spatial_filter
-                /*!< DXF \c SPATIAL_FILTER object. */
+                /*!< a pointer to the DXF \c SPATIAL_FILTER object. */
 )
 {
 #if DEBUG
@@ -434,7 +434,7 @@ dxf_spatial_filter_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfSpatialFilter *spatial_filter
-                /*!< DXF \c SPATIAL_FILTER object. */
+                /*!< a pointer to the DXF \c SPATIAL_FILTER object. */
 )
 {
 #if DEBUG
@@ -580,7 +580,7 @@ int
 dxf_spatial_filter_free
 (
         DxfSpatialFilter *spatial_filter
-                /*!< Pointer to the memory occupied by the DXF
+                /*!< a pointer to the memory occupied by the DXF
                  * \c SPATIAL_FILTER object. */
 )
 {
