@@ -721,4 +721,42 @@ dxf_text_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c TEXT
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_text_free_chain
+(
+        DxfText *texts
+                /*!< a pointer to the chain of DXF \c TEXT entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (texts == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (texts != NULL)
+        {
+                struct DxfText *iter = texts->next;
+                dxf_text_free (texts);
+                texts = (DxfText *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

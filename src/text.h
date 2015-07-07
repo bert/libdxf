@@ -230,6 +230,11 @@ dxf_text_free
 (
         DxfText *text
 );
+void
+dxf_text_free_chain
+(
+        DxfText *texts
+);
 
 
 #endif /* LIBDXF_SRC_TEXT_H */
