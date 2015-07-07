@@ -166,6 +166,11 @@ dxf_tolerance_free
 (
         DxfTolerance *tolerance
 );
+void
+dxf_tolerance_free_chain
+(
+        DxfTolerance *tolerances
+);
 
 
 #endif /* LIBDXF_SRC_TOLERANCE_H */
