@@ -92,7 +92,7 @@ DxfText *
 dxf_text_init
 (
         DxfText *text
-                /*!< DXF text entity. */
+                /*!< a pointer to the DXF \c TEXT entity. */
 )
 {
 #if DEBUG
@@ -174,7 +174,7 @@ dxf_text_read
         DxfFile *fp,
                 /*!< filepointer to the input file (or device). */
         DxfText *text
-                /*!< DXF text entity. */
+                /*!< a pointer to the DXF \c TEXT entity. */
 )
 {
 #if DEBUG
@@ -467,7 +467,7 @@ dxf_text_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfText *text
-                /*!< DXF text entity. */
+                /*!< a pointer to the DXF \c TEXT entity. */
 )
 {
 #if DEBUG
@@ -693,7 +693,8 @@ int
 dxf_text_free
 (
         DxfText *text
-                /*!< DXF text entity. */
+                /*!< a pointer to the memory occupied by the DXF \c TEXT
+                 * entity. */
 )
 {
 #if DEBUG
