@@ -93,7 +93,7 @@ DxfLType *
 dxf_ltype_init
 (
         DxfLType *ltype
-                /*!< DXF LType symbol table entry. */
+                /*!< a pointer to the DXF \c LTYPE symbol table entry. */
 )
 {
 #if DEBUG
@@ -167,7 +167,7 @@ dxf_ltype_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfLType *ltype
-                /*!< DXF ltype symbol table entry. */
+                /*!< a pointer to the DXF \c LTYPE symbol table entry. */
 )
 {
 #if DEBUG
@@ -397,7 +397,7 @@ dxf_ltype_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfLType *ltype
-                /*!< DXF ltype symbol table entry. */
+                /*!< a pointer to the DXF \c LTYPE symbol table entry. */
 )
 {
 #if DEBUG
@@ -589,7 +589,7 @@ int
 dxf_ltype_free
 (
         DxfLType *ltype
-                /*!< Pointer to the memory occupied by the DXF \c LTYPE
+                /*!< a pointer to the memory occupied by the DXF \c LTYPE
                  * symbol table entry. */
 )
 {
@@ -672,7 +672,7 @@ int
 dxf_ltype_is_xreferenced
 (
         DxfLType *ltype
-                /*!< DXF ltype symbol table entry. */
+                /*!< a pointer to the DXF \c LTYPE symbol table entry. */
 )
 {
 #if DEBUG
@@ -709,7 +709,7 @@ int
 dxf_ltype_is_xresolved
 (
         DxfLType *ltype
-                /*!< DXF ltype symbol table entry. */
+                /*!< a pointer to the DXF \c LTYPE symbol table entry. */
 )
 {
 #if DEBUG
@@ -744,7 +744,7 @@ int
 dxf_ltype_is_referenced
 (
         DxfLType *ltype
-                /*!< DXF ltype symbol table entry. */
+                /*!< a pointer to the DXF \c LTYPE symbol table entry. */
 )
 {
 #if DEBUG
