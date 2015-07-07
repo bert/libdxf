@@ -107,7 +107,7 @@ dxf_tables_init
                 return (NULL);
         }
         tables->appids = NULL;
-        //dxf_table->block_records = NULL;
+        tables->block_records = NULL;
         tables->dimstyles = NULL;
         tables->layers = NULL;
         tables->ltypes = NULL;
@@ -187,7 +187,7 @@ dxf_tables_free
                 return (EXIT_FAILURE);
         }
         free (tables->appids);
-        //free (tables->block_records);
+        free (tables->block_records);
         free (tables->dimstyles);
         free (tables->layers);
         free (tables->ltypes);
