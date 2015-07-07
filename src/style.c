@@ -96,7 +96,7 @@ DxfStyle *
 dxf_style_init
 (
         DxfStyle *style
-                /*!< DXF style entity. */
+                /*!< a pointer to the DXF \c STYLE symbol table entry. */
 )
 {
 #if DEBUG
@@ -158,7 +158,7 @@ dxf_style_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfStyle *style
-                /*!< DXF \c STYLE entity. */
+                /*!< a pointer to the DXF \c STYLE symbol table entry. */
 )
 {
 #if DEBUG
@@ -353,7 +353,7 @@ dxf_style_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfStyle *style
-                /*!< DXF \c STYLE entity. */
+                /*!< a pointer to the DXF \c STYLE symbol table entry. */
 )
 {
 #if DEBUG
@@ -450,8 +450,8 @@ int
 dxf_style_free
 (
         DxfStyle *style
-                /*!< Pointer to the memory occupied by the DXF \c STYLE
-                 * entity. */
+                /*!< a pointer to the memory occupied by the DXF \c STYLE
+                 * symbol table entry. */
 )
 {
 #if DEBUG
@@ -531,7 +531,7 @@ int
 dxf_style_is_shape_file
 (
         DxfStyle *style
-                /*!< DXF style entity. */
+                /*!< a pointer to the DXF \c STYLE symbol table entry. */
 )
 {
 #if DEBUG
@@ -572,7 +572,7 @@ int
 dxf_style_is_text_vertical
 (
         DxfStyle *style
-                /*!< DXF style entity. */
+                /*!< a pointer to the DXF \c STYLE symbol table entry. */
 )
 {
 #if DEBUG
@@ -613,7 +613,7 @@ int
 dxf_style_is_xreferenced
 (
         DxfStyle *style
-                /*!< DXF style entity. */
+                /*!< a pointer to the DXF \c STYLE symbol table entry. */
 )
 {
 #if DEBUG
@@ -656,7 +656,7 @@ int
 dxf_style_is_xresolved
 (
         DxfStyle *style
-                /*!< DXF style entity. */
+                /*!< a pointer to the DXF \c STYLE symbol table entry. */
 )
 {
 #if DEBUG
@@ -698,7 +698,7 @@ int
 dxf_style_is_referenced
 (
         DxfStyle *style
-                /*!< DXF style entity. */
+                /*!< a pointer to the DXF \c STYLE symbol table entry. */
 )
 {
 #if DEBUG
