@@ -477,6 +477,45 @@ dxf_style_free
 
 
 /*!
+ * \brief Free the allocated memory for a chain of DXF \c STYLE
+ * symbol table entries and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_style_free_chain
+(
+        DxfStyle *styles
+                /*!< a pointer to the chain of DXF \c STYLE symbol table
+                 * entries. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (styles == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (styles != NULL)
+        {
+                struct DxfStyle *iter = styles->next;
+                dxf_style_free (styles);
+                styles = (DxfStyle *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Test if a shape file should be loaded.
  *
  * \return \c TRUE when a shape file should be loaded,

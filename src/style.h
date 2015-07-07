@@ -146,6 +146,11 @@ dxf_style_free
 (
         DxfStyle *style
 );
+void
+dxf_style_free_chain
+(
+        DxfStyle *styles
+);
 int
 dxf_style_is_shape_file
 (
