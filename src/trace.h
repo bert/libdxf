@@ -181,6 +181,11 @@ dxf_trace_free
 (
         DxfTrace *trace
 );
+void
+dxf_trace_free_chain
+(
+        DxfTrace *traces
+);
 
 
 #endif /* LIBDXF_SRC_TRACE_H */

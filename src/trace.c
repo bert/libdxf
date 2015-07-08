@@ -650,4 +650,42 @@ dxf_trace_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c TRACE
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_trace_free_chain
+(
+        DxfTrace *traces
+                /*!< a pointer to the chain of DXF \c TRACE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (traces == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (traces != NULL)
+        {
+                struct DxfTrace *iter = traces->next;
+                dxf_trace_free (traces);
+                traces = (DxfTrace *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
