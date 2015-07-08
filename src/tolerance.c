@@ -96,7 +96,7 @@ DxfTolerance *
 dxf_tolerance_init
 (
         DxfTolerance *tolerance
-                /*!< DXF tolerance entity. */
+                /*!< a pointer to the DXF \c TOLERANCE entity. */
 )
 {
 #if DEBUG
@@ -169,7 +169,7 @@ dxf_tolerance_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfTolerance *tolerance
-                /*!< DXF \c TOLERANCE entity. */
+                /*!< a pointer to the DXF \c TOLERANCE entity. */
 )
 {
 #if DEBUG
@@ -425,7 +425,7 @@ dxf_tolerance_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfTolerance *tolerance
-                /*!< DXF \c TOLERANCE entity. */
+                /*!< a pointer to the DXF \c TOLERANCE entity. */
 )
 {
 #if DEBUG
@@ -593,7 +593,7 @@ int
 dxf_tolerance_free
 (
         DxfTolerance *tolerance
-                /*!< Pointer to the memory occupied by the DXF 
+                /*!< a pointer to the memory occupied by the DXF 
                  * \c TOLERANCE entity. */
 )
 {
