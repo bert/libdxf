@@ -96,7 +96,7 @@ DxfUcs *
 dxf_ucs_init
 (
         DxfUcs *ucs
-                /*!< DXF ucs entity. */
+                /*!< a pointer to the DXF \c UCS symbol table entry. */
 )
 {
 #if DEBUG
@@ -162,7 +162,7 @@ dxf_ucs_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfUcs *ucs
-                /*!< DXF UCS entity. */
+                /*!< a pointer to the DXF \c UCS symbol table entry. */
 )
 {
 #if DEBUG
@@ -362,7 +362,7 @@ dxf_ucs_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfUcs *ucs
-                /*!< DXF UCS entity. */
+                /*!< a pointer to the DXF \c UCS symbol table entry. */
 )
 {
 #if DEBUG
@@ -474,8 +474,8 @@ int
 dxf_ucs_free
 (
         DxfUcs *ucs
-                /*!< Pointer to the memory occupied by the DXF \c UCS
-                 * entity. */
+                /*!< a pointer to the memory occupied by the DXF \c UCS
+                 * symbol table entry. */
 )
 {
 #if DEBUG
@@ -514,7 +514,7 @@ void
 dxf_ucs_free_chain
 (
         DxfUcs *ucss
-                /*!< pointer to the chain of DXF \c UCS symbol table
+                /*!< a pointer to the chain of DXF \c UCS symbol table
                  * entries. */
 )
 {
