@@ -217,6 +217,11 @@ dxf_vertex_free
 (
         DxfVertex *vertex
 );
+void
+dxf_vertex_free_chain
+(
+        DxfVertex *vertices
+);
 
 
 #endif /* LIBDXF_SRC_VERTEX_H */

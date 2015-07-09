@@ -639,4 +639,42 @@ dxf_vertex_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c VERTEX
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_vertex_free_chain
+(
+        DxfVertex *vertices
+                /*!< a pointer to the chain of DXF \c VERTEX entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (vertices == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (vertices != NULL)
+        {
+                struct DxfVertex *iter = vertices->next;
+                dxf_vertex_free (vertices);
+                vertices = (DxfVertex *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
