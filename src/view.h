@@ -165,6 +165,11 @@ dxf_view_free
 (
         DxfView *view
 );
+void
+dxf_view_free_chain
+(
+        DxfView *views
+);
 
 
 #endif /* LIBDXF_SRC_VIEW_H */
