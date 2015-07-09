@@ -96,7 +96,7 @@ DxfTrace *
 dxf_trace_init
 (
         DxfTrace *trace
-                /*!< DXF trace entity. */
+                /*!< a pointer to the DXF \c TRACE entity. */
 )
 {
 #if DEBUG
@@ -172,7 +172,7 @@ dxf_trace_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfTrace *trace
-                /*!< DXF \c TRACE entity. */
+                /*!< a pointer to the DXF \c TRACE entity. */
 )
 {
 #if DEBUG
@@ -460,7 +460,7 @@ dxf_trace_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfTrace *trace
-                /*!< DXF trace entity. */
+                /*!< a pointer to the DXF \c TRACE entity. */
 )
 {
 #if DEBUG
@@ -623,7 +623,7 @@ int
 dxf_trace_free
 (
         DxfTrace *trace
-                /*!< Pointer to the memory occupied by the DXF \c TRACE
+                /*!< a pointer to the memory occupied by the DXF \c TRACE
                  * entity. */
 )
 {
