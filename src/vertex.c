@@ -92,7 +92,7 @@ DxfVertex *
 dxf_vertex_init
 (
         DxfVertex *vertex
-                /*!< DXF vertex entity. */
+                /*!< a pointer to the DXF \c VERTEX entity. */
 )
 {
 #if DEBUG
@@ -163,7 +163,7 @@ dxf_vertex_read
         DxfFile *fp,
                 /*!< filepointer to the input file (or device). */
         DxfVertex *vertex
-                /*!< DXF vertex entity. */
+                /*!< a pointer to the DXF \c VERTEX entity. */
 )
 {
 #if DEBUG
@@ -432,7 +432,7 @@ dxf_vertex_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfVertex *vertex
-                /*!< DXF vertex entity. */
+                /*!< a pointer to the DXF \c VERTEX entity. */
 )
 {
 #if DEBUG
@@ -613,7 +613,7 @@ int
 dxf_vertex_free
 (
         DxfVertex *vertex
-                /*!< DXF vertex entity. */
+                /*!< a pointer to the DXF \c VERTEX entity. */
 )
 {
 #if DEBUG
