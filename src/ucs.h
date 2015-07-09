@@ -146,6 +146,11 @@ dxf_ucs_free
 (
         DxfUcs *ucs
 );
+void
+dxf_ucs_free_chain
+(
+        DxfUcs *ucss
+);
 
 
 #endif /* LIBDXF_SRC_UCS_H */

@@ -500,4 +500,43 @@ dxf_ucs_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c UCS
+ * symbol table and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_ucs_free_chain
+(
+        DxfUcs *ucss
+                /*!< pointer to the chain of DXF \c UCS symbol table
+                 * entries. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (ucss == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (ucss != NULL)
+        {
+                struct DxfUcs *iter = ucss->next;
+                dxf_ucs_free (ucss);
+                ucss = (DxfUcs *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
