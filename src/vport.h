@@ -227,6 +227,11 @@ dxf_vport_free
 (
         DxfVPort *vport
 );
+void
+dxf_vport_free_chain
+(
+        DxfVPort *vports
+);
 
 
 #endif /* LIBDXF_SRC_VPORT_H */
