@@ -93,7 +93,7 @@ DxfViewport *
 dxf_viewport_init
 (
         DxfViewport *viewport
-                /*!< DXF viewport entity. */
+                /*!< a pointer to the DXF \c VIEWPORT entity. */
 )
 {
 #if DEBUG
@@ -213,7 +213,7 @@ dxf_viewport_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfViewport *viewport
-                /*!< DXF viewport entity. */
+                /*!< a pointer to the DXF \c VIEWPORT entity. */
 )
 {
 #if DEBUG
@@ -1034,7 +1034,7 @@ dxf_viewport_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfViewport *viewport
-                /*!< DXF viewport entity. */
+                /*!< a pointer to the DXF \c VIEWPORT entity. */
 )
 {
 #if DEBUG
@@ -1226,8 +1226,8 @@ int
 dxf_viewport_free
 (
         DxfViewport *viewport
-                /*!< Pointer to the memory occupied by the DXF \c VIEWPORT
-                 * entity. */
+                /*!< a pointer to the memory occupied by the DXF
+                 * \c VIEWPORT entity. */
 )
 {
 #if DEBUG
