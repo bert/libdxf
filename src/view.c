@@ -96,7 +96,7 @@ DxfView *
 dxf_view_init
 (
         DxfView *view
-                /*!< DXF View entity. */
+                /*!< a pointer to the DXF \c VIEW symbol table entry. */
 )
 {
 #if DEBUG
@@ -168,7 +168,7 @@ dxf_view_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfView *view
-                /*!< DXF VIEW entity. */
+                /*!< a pointer to the DXF \c VIEW symbol table entry. */
 )
 {
 #if DEBUG
@@ -407,7 +407,7 @@ dxf_view_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfView *view
-                /*!< DXF VIEW entity. */
+                /*!< a pointer to the DXF \c VIEW symbol table entry. */
 )
 {
 #if DEBUG
@@ -525,8 +525,7 @@ int
 dxf_view_free
 (
         DxfView *view
-                /*!< Pointer to the memory occupied by the DXF \c VIEW
-                 * entity. */
+                /*!< a pointer to the DXF \c VIEW symbol table entry. */
 )
 {
 #if DEBUG
