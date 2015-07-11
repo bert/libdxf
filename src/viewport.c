@@ -1266,4 +1266,43 @@ dxf_viewport_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c VIEWPORT
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_viewport_free_chain
+(
+        DxfViewport *viewports
+                /*!< a pointer to the chain of DXF \c VIEWPORT
+                 * entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (viewports == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (viewports != NULL)
+        {
+                struct DxfViewport *iter = viewports->next;
+                dxf_viewport_free (viewports);
+                viewports = (DxfViewport *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

@@ -307,6 +307,11 @@ dxf_viewport_free
 (
         DxfViewport *viewport
 );
+void
+dxf_viewport_free_chain
+(
+        DxfViewport *viewports
+);
 
 
 #endif /* LIBDXF_SRC_VIEWPORT_H */
