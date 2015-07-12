@@ -148,6 +148,11 @@ dxf_xline_free
 (
         DxfXLine *xline
 );
+void
+dxf_xline_free_chain
+(
+        DxfXLine *xlines
+);
 
 
 #endif /* LIBDXF_SRC_XLINE_H */

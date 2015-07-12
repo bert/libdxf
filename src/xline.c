@@ -565,4 +565,42 @@ dxf_xline_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c XLINE
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_xline_free_chain
+(
+        DxfXLine *xlines
+                /*!< pointer to the chain of DXF \c XLINE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (xlines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (xlines != NULL)
+        {
+                struct DxfXLine *iter = xlines->next;
+                dxf_xline_free (xlines);
+                xlines = (DxfXLine *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
