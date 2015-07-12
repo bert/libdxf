@@ -99,7 +99,7 @@ DxfVPort *
 dxf_vport_init
 (
         DxfVPort *vport
-                /*!< DXF Viewport symbol table entry. */
+                /*!< a pointer to the DXF \c VPORT symbol table entry. */
 )
 {
 #if DEBUG
@@ -192,7 +192,7 @@ dxf_vport_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfVPort *vport
-                /*!< DXF vport symbol table entry. */
+                /*!< a pointer to the DXF \c VPORT symbol table entry. */
 )
 {
 #if DEBUG
@@ -555,7 +555,7 @@ dxf_vport_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfVPort *vport
-                /*!< DXF VPORT symbol table entry. */
+                /*!< a pointer to the DXF \c VPORT symbol table entry. */
 )
 {
 #if DEBUG
@@ -693,7 +693,7 @@ int
 dxf_vport_free
 (
         DxfVPort *vport
-                /*!< Pointer to the memory occupied by the DXF \c VPORT
+                /*!< a pointer to the memory occupied by the DXF \c VPORT
                  * symbol table entry. */
 )
 {
