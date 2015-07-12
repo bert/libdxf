@@ -95,7 +95,7 @@ DxfXrecord *
 dxf_xrecord_init
 (
         DxfXrecord *xrecord
-                /*!< DXF \c XRECORD object. */
+                /*!< a pointer to the DXF \c XRECORD object. */
 )
 {
 #if DEBUG
@@ -155,7 +155,7 @@ dxf_xrecord_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfXrecord *xrecord
-                /*!< DXF \c XRECORD object. */
+                /*!< a pointer to the DXF \c XRECORD object. */
 )
 {
 #if DEBUG
@@ -341,7 +341,7 @@ dxf_xrecord_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfXrecord *xrecord
-                /*!< DXF \c XRECORD object. */
+                /*!< a pointer to the DXF \c XRECORD object. */
 )
 {
 #if DEBUG
@@ -487,7 +487,7 @@ int
 dxf_xrecord_free
 (
         DxfXrecord *xrecord
-                /*!< Pointer to the memory occupied by the DXF
+                /*!< a pointer to the memory occupied by the DXF
                  * \c XRECORD object. */
 )
 {
