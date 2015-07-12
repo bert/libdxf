@@ -116,6 +116,11 @@ dxf_xrecord_free
 (
         DxfXrecord *xrecord
 );
+void
+dxf_xrecord_free_chain
+(
+        DxfXrecord *xrecords
+);
 
 
 #endif /* LIBDXF_SRC_XRECORD_H */

@@ -513,4 +513,42 @@ dxf_xrecord_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c XRECORD
+ * objects and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_xrecord_free_chain
+(
+        DxfXrecord *xrecords
+                /*!< a pointer to the chain of DXF \c XRECORD objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (xrecords == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (xrecords != NULL)
+        {
+                struct DxfXrecord *iter = xrecords->next;
+                dxf_xrecord_free (xrecords);
+                xrecords = (DxfXrecord *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/
