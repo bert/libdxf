@@ -95,7 +95,7 @@ DxfXLine *
 dxf_xline_init
 (
         DxfXLine *xline
-                /*!< DXF line entity. */
+                /*!< a pointer to the DXF \c XLINE entity. */
 )
 {
 #if DEBUG
@@ -164,7 +164,7 @@ dxf_xline_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfXLine *xline
-                /*!< DXF line entity. */
+                /*!< a pointer to the DXF \c XLINE entity. */
 )
 {
 #if DEBUG
@@ -388,7 +388,7 @@ dxf_xline_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfXLine *xline
-                /*!< DXF xline entity. */
+                /*!< a pointer to the DXF \c XLINE entity. */
 )
 {
 #if DEBUG
@@ -538,7 +538,7 @@ int
 dxf_xline_free
 (
         DxfXLine *xline
-                /*!< Pointer to the memory occupied by the DXF \c XLINE
+                /*!< a pointer to the memory occupied by the DXF \c XLINE
                  * entity. */
 )
 {
@@ -579,7 +579,7 @@ void
 dxf_xline_free_chain
 (
         DxfXLine *xlines
-                /*!< pointer to the chain of DXF \c XLINE entities. */
+                /*!< a pointer to the chain of DXF \c XLINE entities. */
 )
 {
 #ifdef DEBUG
