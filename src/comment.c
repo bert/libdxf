@@ -221,4 +221,46 @@ dxf_comment_free_chain
 }
 
 
+/*!
+ * \brief Set the given string for a DXF \c COMMENT entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfComment *
+dxf_comment_set_value
+(
+        char *value,
+                /*!< the comment value (string) to be set.*/
+        DxfComment *comment
+                /*!< a pointer to the chain of DXF \c COMMENT entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (comment == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (comment->value != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to the member in DxfComment was not NULL.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        comment->value = strdup (value);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (comment);
+}
+
+
 /* EOF */

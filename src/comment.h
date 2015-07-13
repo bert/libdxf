@@ -82,6 +82,12 @@ dxf_comment_free_chain
 (
         DxfComment *comments
 );
+DxfComment *
+dxf_comment_set_value
+(
+        char *value,
+        DxfComment *comment
+);
 
 
 #endif /* LIBDXF_SRC_COMMENT_H */
