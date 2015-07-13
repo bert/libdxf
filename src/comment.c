@@ -79,7 +79,7 @@ DxfComment *
 dxf_comment_init
 (
         DxfComment *comment
-                /*!< DXF Comment entity. */
+                /*!< a pointer to the DXF \COMMENT entity. */
 )
 {
 #ifdef DEBUG
@@ -125,7 +125,7 @@ dxf_comment_write
         DxfFile *fp,
                 /*!< file pointer to output file (or device). */
         DxfComment *comment
-                /*!< DXF Comment entity. */
+                /*!< a pointer to the DXF \COMMENT entity. */
 )
 {
 #if DEBUG
@@ -159,7 +159,7 @@ int
 dxf_comment_free
 (
         DxfComment *comment
-                /*!< Pointer to the memory occupied by the DXF \c COMMENT
+                /*!< a pointer to the memory occupied by the DXF \c COMMENT
                  * entity. */
 )
 {
