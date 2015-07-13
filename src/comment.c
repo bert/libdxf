@@ -183,4 +183,42 @@ dxf_comment_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c COMMENT
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_comment_free_chain
+(
+        DxfComment *comments
+                /*!< a pointer to the chain of DXF \c COMMENT entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (comments == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (comments != NULL)
+        {
+                struct DxfComment *iter = comments->next;
+                dxf_comment_free (comments);
+                comments = (DxfComment *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

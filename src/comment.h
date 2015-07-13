@@ -77,6 +77,11 @@ dxf_comment_free
 (
         DxfComment *comment
 );
+void
+dxf_comment_free_chain
+(
+        DxfComment *comments
+);
 
 
 #endif /* LIBDXF_SRC_COMMENT_H */
