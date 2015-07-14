@@ -88,6 +88,11 @@ dxf_comment_set_value
         char *value,
         DxfComment *comment
 );
+char *
+dxf_comment_get_value
+(
+        DxfComment *comment
+);
 
 
 #endif /* LIBDXF_SRC_COMMENT_H */

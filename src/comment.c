@@ -263,4 +263,43 @@ dxf_comment_set_value
 }
 
 
+/*!
+ * \brief Get the value string from a DXF \c COMMENT entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_comment_get_value
+(
+        DxfComment *comment
+                /*!< a pointer to the chain of DXF \c COMMENT entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (comment == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (comment->value == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to the value member in DxfComment was NULL.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (comment->value);
+}
+
+
 /* EOF */
