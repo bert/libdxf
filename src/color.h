@@ -58,6 +58,9 @@ typedef struct
                 /*!< Unused, could be used for the alpha value (future). */
         char *name;
                 /*!< Name of the color. */
+        struct DxfRGBColor *next;
+                /*!< Pointer to the next DxfRGBColor.\n
+                 * \c NULL in the last DxfRGBColor. */
 } DxfRGBColor;
 
 
