@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief DXF comment entity (\c COMMENT).
+ * \brief Functions for a DXF comment entity (\c COMMENT).
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
