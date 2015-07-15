@@ -72,7 +72,7 @@ dxf_section_read
                         if (strcmp (temp_string, "HEADER") == 0)
                         {
                                 /* We have found the begin of the HEADER section. */
-                                dxf_header_read (fp, dxf_header);
+                                dxf_header_read (fp, &dxf_header);
                         }
                         else if (strcmp (temp_string, "CLASSES") == 0)
                         {

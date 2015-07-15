@@ -327,11 +327,11 @@ dxf_header_init
         DxfHeader *header,
         int acad_version_number
 );
-int
+DxfHeader *
 dxf_header_read
 (
         DxfFile *fp,
-        DxfHeader header
+        DxfHeader *header
 );
 int
 dxf_header_read_parse_int

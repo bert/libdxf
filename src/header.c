@@ -1854,12 +1854,12 @@ dxf_header_read_parser
 /*!
  * \brief Reads the header from a DXF file.
  */
-int
+DxfHeader *
 dxf_header_read
 (
         DxfFile *fp,
                 /*!< DXF file handle of input file (or device). */
-        DxfHeader header
+        DxfHeader *header
                 /*!< DXF header to be initialized.\n */
 )
 {
@@ -1869,16 +1869,39 @@ dxf_header_read
         char temp_string[255];
         int n, acad_version_number, ret;
 
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (header == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                header = dxf_header_new ();
+//                header = dxf_header_init (header, acad_version_number);
+        }
+        if (header == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfHeader struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         /* first of all we MUST read the version number */
         dxf_read_scanf (fp, "%i\n%s\n", &n, temp_string);
         ret = dxf_header_read_parse_string (fp, temp_string,
-          "$ACADVER", &header.AcadVer, TRUE);
+          "$ACADVER", &header->AcadVer, TRUE);
         dxf_return_val_if_fail (ret, FALSE);
         /* turn the acad_version into an integer */
-        acad_version_number = dxf_header_acad_version_from_string (header.AcadVer);
+        acad_version_number = dxf_header_acad_version_from_string (header->AcadVer);
     
         /*! \todo FIXME: stores the autocad version as int */
-        header._AcadVer = acad_version_number;
+        header->_AcadVer = acad_version_number;
     
         /* a loop to read all the header with no particulary order */
         while (!feof (fp->fp))
@@ -1889,7 +1912,7 @@ dxf_header_read
                 if (n == 9)
                 {
                         /* parses the header content and extract info to the header struct */
-                        ret = dxf_header_read_parser (fp, &header,
+                        ret = dxf_header_read_parser (fp, header,
                           temp_string, acad_version_number);
                         dxf_return_val_if_fail (ret, FALSE);
                         if (ret != FOUND)
@@ -1903,18 +1926,12 @@ dxf_header_read
                           (_("[File: %s: line: %d] read_header :: Section Ended.\n")),
                           __FILE__, __LINE__);
 #endif
-                        return TRUE;
                 }        
-                else
-                {
-                        return FALSE;
-                }
         }
-
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return FALSE;
+        return (header);
 }
 
 /* EOF */
