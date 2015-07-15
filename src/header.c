@@ -712,6 +712,15 @@ dxf_header_write_metric_new
 #endif
         int JD;
         float fraction_day;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         fprintf (fp->fp, "  0\nSECTION\n");
         fprintf (fp->fp, "  2\nHEADER\n");
         fprintf (fp->fp, "  9\n$ACADVER\n  1\nAC1014\n");
