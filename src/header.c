@@ -1295,7 +1295,30 @@ dxf_header_read_parse_n_double
         double tvar;
         va_list dlist;
 
-        /* test for header_var and version number. -3 makes it version agnostic */
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (temp_string == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer to temp_string was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (header_var == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer to header_var was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Test for header_var and version number.
+         * -3 makes it version agnostic */
         if (strcmp (temp_string, header_var) == 0  && version_expression)
         {
                 ret = FOUND;
