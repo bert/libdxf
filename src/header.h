@@ -321,10 +321,10 @@ dxf_header_acad_version_to_string
 );
 DxfHeader *
 dxf_header_new ();
-int
+DxfHeader *
 dxf_header_init
 (
-        DxfHeader header,
+        DxfHeader *header,
         int acad_version_number
 );
 int
