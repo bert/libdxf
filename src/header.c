@@ -128,6 +128,13 @@ dxf_header_acad_version_from_string
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        if (version_string == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (strcmp ("AC1006", version_string) == 0)
                 return AC1006;
         if (strcmp ("AC1009", version_string) == 0)
