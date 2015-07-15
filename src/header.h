@@ -373,7 +373,7 @@ int
 dxf_header_write
 (
         DxfFile *fp,
-        DxfHeader header
+        DxfHeader *header
 );
 int
 dxf_header_write_metric_new
