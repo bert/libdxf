@@ -365,7 +365,7 @@ int
 dxf_header_read_parser
 (
         DxfFile *fp,
-        DxfHeader header,
+        DxfHeader *header,
         char * temp_string,
         int acad_version_number
 );
