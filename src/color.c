@@ -2250,4 +2250,42 @@ dxf_RGB_color_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c COLOR
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+void
+dxf_RGB_color_free_chain
+(
+        DxfRGBColor *colors
+                /*!< a pointer to the chain of DXF \c COLOR entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (colors == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (colors != NULL)
+        {
+                struct DxfRGBColor *iter = colors->next;
+                dxf_RGB_color_free (colors);
+                colors = (DxfRGBColor *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

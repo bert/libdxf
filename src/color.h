@@ -95,6 +95,11 @@ dxf_RGB_color_free
 (
         DxfRGBColor *RGB_color
 );
+void
+dxf_RGB_color_free_chain
+(
+        DxfRGBColor *colors
+);
 
 
 #endif /* LIBDXF_SRC_COLOR_H */
