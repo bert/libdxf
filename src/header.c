@@ -1172,6 +1172,8 @@ dxf_header_write
         if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$DIMASSOC\n280\n%i\n", header->DimASSOC);
         if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$PROJECTNAME\n  1\n%s\n", header->ProjectName);
         dxf_endsec_write (fp);
+        /* Clean up. */
+        free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
