@@ -380,6 +380,11 @@ dxf_header_write_metric_new
 (
         DxfFile *fp
 );
+DxfHeader *
+dxf_header_free
+(
+        DxfHeader *header
+);
 
 
 #endif /* LIBDXF_SRC_HEADER_H */

@@ -36,6 +36,7 @@
 #include "header.h"
 #include "section.h"
 #include "util.h"
+#include "point.h"
 
 
 /*!
@@ -1935,5 +1936,98 @@ dxf_header_read
 #endif
         return (header);
 }
+
+
+/*!
+ * \brief Free the allocated memory for a DXF \c HEADER and all it's
+ * data fields.
+ *
+ * \return \c NULL when successful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfHeader *
+dxf_header_free
+(
+        DxfHeader *header
+                /*!< Pointer to the memory occupied by the DXF \c HEADER
+                 * entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (header == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to DxfHeader was NULL.\n")),
+                __FUNCTION__);
+              return (header);
+        }
+        free (header->AcadVer);
+        free (header->DWGCodePage);
+//        dxf_point_free ((struct DxfPoint) header->InsBase);
+//        dxf_point_free ((struct DxfPoint) header->ExtMin);
+//        dxf_point_free ((struct DxfPoint) header->ExtMax);
+//        dxf_point_free ((struct DxfPoint) header->LimMin);
+//        dxf_point_free ((struct DxfPoint) header->LimMax);
+        free (header->TextStyle);
+        free (header->CLayer);
+        free (header->CELType);
+        free (header->DimBLK);
+        free (header->DimPOST);
+        free (header->DimAPOST);
+        free (header->DimBLK1);
+        free (header->DimBLK2);
+        free (header->DimSTYLE);
+        free (header->DimTXSTY);
+        free (header->DimLDRBLK);
+        free (header->Menu);
+        free (header->HandSeed);
+        free (header->UCSBase);
+        free (header->UCSName);
+//        dxf_point_free ((struct DxfPoint) header->UCSOrg);
+//        dxf_point_free ((struct DxfPoint) header->UCSXDir);
+//        dxf_point_free ((struct DxfPoint) header->UCSYDir);
+        free (header->UCSOrthoRef);
+//        dxf_point_free ((struct DxfPoint) header->UCSOrgTop);
+//        dxf_point_free ((struct DxfPoint) header->UCSOrgBottom);
+//        dxf_point_free ((struct DxfPoint) header->UCSOrgLeft);
+//        dxf_point_free ((struct DxfPoint) header->UCSOrgRight);
+//        dxf_point_free ((struct DxfPoint) header->UCSOrgFront);
+//        dxf_point_free ((struct DxfPoint) header->UCSOrgBack);
+//        dxf_point_free ((struct DxfPoint) header->PUCSOrg);
+//        dxf_point_free ((struct DxfPoint) header->PUCSXDir);
+//        dxf_point_free ((struct DxfPoint) header->PUCSYDir);
+        free (header->PUCSOrthoRef);
+//        dxf_point_free ((struct DxfPoint) header->PUCSOrgTop);
+//        dxf_point_free ((struct DxfPoint) header->PUCSOrgBottom);
+//        dxf_point_free ((struct DxfPoint) header->PUCSOrgLeft);
+//        dxf_point_free ((struct DxfPoint) header->PUCSOrgRight);
+//        dxf_point_free ((struct DxfPoint) header->PUCSOrgFront);
+//        dxf_point_free ((struct DxfPoint) header->PUCSOrgBack);
+//        dxf_point_free ((struct DxfPoint) header->PInsBase);
+//        dxf_point_free ((struct DxfPoint) header->PExtMin);
+//        dxf_point_free ((struct DxfPoint) header->PExtMax);
+//        dxf_point_free ((struct DxfPoint) header->PLimMin);
+//        dxf_point_free ((struct DxfPoint) header->PLimMax);
+        free (header->CMLStyle);
+        free (header->HyperLinkBase);
+        free (header->StyleSheet);
+        free (header->FingerPrintGUID);
+        free (header->VersionGUID);
+        free (header->ProjectName);
+        free (header);
+        header = NULL;
+#ifdef DEBUG
+        DXF_DEBUG_END
+#endif
+        return (header);
+}
+
 
 /* EOF */
