@@ -822,7 +822,14 @@ dxf_hatch_boundary_path_polyline_vertex_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        vertex = dxf_hatch_boundary_path_polyline_vertex_new ();
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                vertex = dxf_hatch_boundary_path_polyline_vertex_new ();
+        }
         if (vertex == NULL)
         {
                 fprintf (stderr,
