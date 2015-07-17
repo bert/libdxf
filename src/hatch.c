@@ -639,7 +639,14 @@ dxf_hatch_pattern_def_line_init
 #endif
         int i;
 
-        def_line = dxf_hatch_pattern_def_line_new ();
+        /* Do some basic checks. */
+        if (def_line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                def_line = dxf_hatch_pattern_def_line_new ();
+        }
         if (def_line == NULL)
         {
                 fprintf (stderr,
