@@ -910,7 +910,14 @@ dxf_hatch_boundary_path_edge_arc_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        arc = dxf_hatch_boundary_path_edge_arc_new ();
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                arc = dxf_hatch_boundary_path_edge_arc_new ();
+        }
         if (arc == NULL)
         {
                 fprintf (stderr,
