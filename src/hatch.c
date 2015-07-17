@@ -776,7 +776,14 @@ dxf_hatch_boundary_path_polyline_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        polyline = dxf_hatch_boundary_path_polyline_new ();
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                polyline = dxf_hatch_boundary_path_polyline_new ();
+        }
         if (polyline == NULL)
         {
                 fprintf (stderr,
