@@ -733,7 +733,14 @@ dxf_hatch_boundary_path_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        path = dxf_hatch_boundary_path_new ();
+        /* Do some basic checks. */
+        if (path == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                path = dxf_hatch_boundary_path_new ();
+        }
         if (path == NULL)
         {
                 fprintf (stderr,
