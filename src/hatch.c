@@ -589,7 +589,14 @@ dxf_hatch_pattern_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        pattern = dxf_hatch_pattern_new ();
+        /* Do some basic checks. */
+        if (pattern == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                pattern = dxf_hatch_pattern_new ();
+        }
         if (pattern == NULL)
         {
                 fprintf (stderr,
