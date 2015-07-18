@@ -2348,6 +2348,8 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
         DXF_DEBUG_BEGIN
 #endif
         DxfHatchBoundaryPathEdgeSplineCp *control_point = NULL;
+
+        /* Do some basic checks. */
         if (spline == NULL)
         {
                 fprintf (stderr,
@@ -2440,6 +2442,7 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
 #endif
         int i;
 
+        /* Do some basic checks. */
         if (spline == NULL)
         {
                 fprintf (stderr,
