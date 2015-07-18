@@ -1526,10 +1526,18 @@ dxf_hatch_boundary_path_edge_spline_get_control_point
         DxfHatchBoundaryPathEdgeSplineCp *control_point = NULL;
         int i;
 
+        /* Do some basic checks. */
         if (spline == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (position <= 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received an invalid value in position.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
