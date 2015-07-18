@@ -2800,7 +2800,7 @@ dxf_hatch_boundary_path_write
                         /* Test for edge type or polylines type. */
                         if (path->edges != NULL)
                         {
-                                /* Write edges data. */
+                                /*! \todo Write edges data. */
                         }
                         else if (path->polylines != NULL)
                         {
