@@ -2963,6 +2963,7 @@ dxf_hatch_boundary_path_polyline_close_polyline
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (polyline == NULL)
         {
                 fprintf (stderr,
@@ -3092,6 +3093,7 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (polyline == NULL)
         {
                 fprintf (stderr,
@@ -3141,7 +3143,6 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
                 angle += dxf_hatch_boundary_path_polyline_vertex_angle (iter, next);
                 iter = next;
         }
-
         /* clean up. */
         dxf_hatch_boundary_path_polyline_vertex_free (p0);
         dxf_hatch_boundary_path_polyline_vertex_free (p1);
