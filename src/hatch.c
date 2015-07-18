@@ -3115,7 +3115,6 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-
         DxfHatchBoundaryPathPolylineVertex *p0;
         DxfHatchBoundaryPathPolylineVertex *p1;
         DxfHatchBoundaryPathPolylineVertex *iter;
@@ -3146,7 +3145,6 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
         /* clean up. */
         dxf_hatch_boundary_path_polyline_vertex_free (p0);
         dxf_hatch_boundary_path_polyline_vertex_free (p1);
-
         if (abs (angle) < M_PI)
                 return (OUTSIDE);
         else
