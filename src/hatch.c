@@ -2026,6 +2026,7 @@ dxf_hatch_boundary_path_edge_spline_insert_knot_value
 #endif
         int i;
 
+        /* Do some basic checks. */
         if (spline == NULL)
         {
                 fprintf (stderr,
@@ -2037,6 +2038,13 @@ dxf_hatch_boundary_path_edge_spline_insert_knot_value
         {
                 fprintf (stderr,
                   (_("Error in %s () resulted in a array pointer overflow.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (position <= 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received an invalid value in position.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
