@@ -957,7 +957,14 @@ dxf_hatch_boundary_path_edge_ellipse_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        ellipse = dxf_hatch_boundary_path_edge_ellipse_new ();
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                ellipse = dxf_hatch_boundary_path_edge_ellipse_new ();
+        }
         if (ellipse == NULL)
         {
                 fprintf (stderr,
