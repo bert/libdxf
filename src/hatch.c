@@ -2865,6 +2865,29 @@ dxf_hatch_boundary_path_polyline_vertex_angle
         double theta0;
         double theta1;
 
+        /* Do some basic checks. */
+        if (vertex_0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (vertex_1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if ((vertex_0->x0 == vertex_1->x0)
+          && (vertex_0->y0 == vertex_1->y0))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () identical coordinates were passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         x0 = vertex_0->x0;
         y0 = vertex_0->y0;
         x1 = vertex_1->x0;
