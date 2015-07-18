@@ -1206,6 +1206,7 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (spline == NULL)
         {
                 fprintf (stderr,
@@ -1295,6 +1296,7 @@ dxf_hatch_boundary_path_edge_spline_append_knot_value
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (spline == NULL)
         {
                 fprintf (stderr,
@@ -1392,6 +1394,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (spline == NULL)
         {
                 fprintf (stderr,
@@ -1470,6 +1473,7 @@ dxf_hatch_boundary_path_edge_spline_prepend_knot_value
 #endif
         int i;
 
+        /* Do some basic checks. */
         if (spline == NULL)
         {
                 fprintf (stderr,
