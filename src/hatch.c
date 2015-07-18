@@ -3152,7 +3152,7 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        /* This is a dead code path. */
+        /*! \todo This is a dead code path. */
         return (EXIT_FAILURE);
 }
 
