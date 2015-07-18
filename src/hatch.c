@@ -1053,7 +1053,14 @@ dxf_hatch_boundary_path_edge_spline_init
 #endif
         int i;
 
-        spline = dxf_hatch_boundary_path_edge_spline_new ();
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                spline = dxf_hatch_boundary_path_edge_spline_new ();
+        }
         if (spline == NULL)
         {
                 fprintf (stderr,
