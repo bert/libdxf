@@ -1884,10 +1884,25 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
 #endif
         int i;
 
+        /* Do some basic checks. */
         if (spline == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (position <= 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received an invalid value in position.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (position > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
