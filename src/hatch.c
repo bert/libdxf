@@ -3608,6 +3608,14 @@ dxf_hatch_boundary_path_edge_arc_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (arc->next != NULL)
         {
                 fprintf (stderr,
