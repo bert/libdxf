@@ -3821,6 +3821,7 @@ dxf_hatch_free_chain
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (hatches == NULL)
         {
                 fprintf (stderr,
@@ -3859,6 +3860,7 @@ dxf_hatch_pattern_free_chain
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (hatch_patterns == NULL)
         {
                 fprintf (stderr,
@@ -3898,6 +3900,7 @@ dxf_hatch_pattern_def_line_free_chain
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (hatch_pattern_def_lines == NULL)
         {
                 fprintf (stderr,
@@ -3937,6 +3940,7 @@ dxf_hatch_pattern_seedpoint_free_chain
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (hatch_pattern_seed_points == NULL)
         {
                 fprintf (stderr,
@@ -3975,6 +3979,7 @@ dxf_hatch_boundary_path_free_chain
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (hatch_boundary_paths == NULL)
         {
                 fprintf (stderr,
@@ -4014,6 +4019,7 @@ dxf_hatch_boundary_path_polyline_free_chain
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (hatch_boundary_path_polylines == NULL)
         {
                 fprintf (stderr,
@@ -4053,6 +4059,7 @@ dxf_hatch_boundary_path_polyline_vertex_free_chain
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (hatch_boundary_path_polyline_vertices == NULL)
         {
                 fprintf (stderr,
@@ -4092,6 +4099,7 @@ dxf_hatch_boundary_path_edge_free_chain
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (hatch_boundary_path_edges == NULL)
         {
                 fprintf (stderr,
@@ -4131,6 +4139,7 @@ dxf_hatch_boundary_path_edge_arc_free_chain
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (hatch_boundary_path_edge_arcs == NULL)
         {
                 fprintf (stderr,
@@ -4170,6 +4179,7 @@ dxf_hatch_boundary_path_edge_ellipse_free_chain
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (hatch_boundary_path_edge_ellipses == NULL)
         {
                 fprintf (stderr,
@@ -4209,6 +4219,7 @@ dxf_hatch_boundary_path_edge_line_free_chain
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (hatch_boundary_path_edge_lines == NULL)
         {
                 fprintf (stderr,
@@ -4248,6 +4259,7 @@ dxf_hatch_boundary_path_edge_spline_free_chain
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (hatch_boundary_path_edge_splines == NULL)
         {
                 fprintf (stderr,
@@ -4287,6 +4299,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_free_chain
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (hatch_boundary_path_edge_spline_control_points == NULL)
         {
                 fprintf (stderr,
