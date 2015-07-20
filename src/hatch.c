@@ -2630,11 +2630,25 @@ dxf_hatch_write
                 fprintf (fp->fp, " 77\n%d\n", hatch->pattern_double);
         }
         fprintf (fp->fp, " 78\n%d\n", hatch->number_of_pattern_def_lines);
-        /*! \todo Add code to write hatch pattern definition line data. */
+        DxfHatchPatternDefLine *line = NULL;
+        line = (DxfHatchPatternDefLine *) hatch->def_lines;
+        while (line != NULL)
+        {
+                dxf_hatch_pattern_def_line_write (fp, (DxfHatchPatternDefLine *) line);
+                line = (DxfHatchPatternDefLine *) line->next;
+        }
         fprintf (fp->fp, " 47\n%f\n", hatch->pixel_size);
         fprintf (fp->fp, " 98\n%d\n", hatch->number_of_seed_points);
-        /*! \todo Add code to write hatch pattern seed points. */
+        DxfHatchPatternSeedPoint *point = NULL;
+        point = (DxfHatchPatternSeedPoint *) hatch->seed_points;
+        while (point != NULL)
+        {
+                dxf_hatch_pattern_seedpoint_write (fp, (DxfHatchPatternSeedPoint *) point);
+                point = (DxfHatchPatternSeedPoint *) point->next;
+        }
         /* Clean up. */
+        dxf_hatch_pattern_def_line_free (line);
+        dxf_hatch_pattern_seedpoint_free (point);
         free (dxf_entity_name);
 #if DEBUG
         DXF_DEBUG_END
