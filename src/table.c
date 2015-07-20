@@ -117,8 +117,6 @@ dxf_table_init
                   __FUNCTION__);
                 return (NULL);
         }
-        table->table_name = strdup ("");
-        table->max_table_entries = 0;
         table->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -197,20 +195,6 @@ dxf_table_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%x\n", &table->id_code);
                 }
-                else if (strcmp (temp_string, "2") == 0)
-                {
-                        /* Now follows a string containing an application
-                         * name. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", table->table_name);
-                }
-                else if (strcmp (temp_string, "70") == 0)
-                {
-                        /* Now follows a string containing the
-                         * standard flag value. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &table->max_table_entries);
-                }
                 else if (strcmp (temp_string, "999") == 0)
                 {
                         /* Now follows a string containing a comment. */
@@ -281,7 +265,6 @@ dxf_table_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        fprintf (fp->fp, "  2\n%s\n", table->table_name);
         if (table->id_code != -1)
         {
                 fprintf (fp->fp, "  5\n%x\n", table->id_code);
@@ -290,7 +273,6 @@ dxf_table_write
         {
                 fprintf (fp->fp, "100\nAcDbSymbolTable\n");
         }
-        fprintf (fp->fp, " 70\n%d\n", table->max_table_entries);
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
@@ -337,7 +319,6 @@ dxf_table_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (table->table_name);
         free (table);
         table = NULL;
 #if DEBUG

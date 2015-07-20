@@ -64,6 +64,9 @@
 typedef struct
 dxf_tables
 {
+        int max_table_entries;
+                /*!< Maximum number of table entries that may follow.\n
+                 * Group code = 70. */
         struct DxfAppid *appids;
                 /*!< Pointer to the first \c APPID symbol table entry. */
         struct DxfBlockRecord *block_records;

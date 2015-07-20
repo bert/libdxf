@@ -106,6 +106,7 @@ dxf_tables_init
                   __FUNCTION__);
                 return (NULL);
         }
+        tables->max_table_entries = 0;
         tables->appids = NULL;
         tables->block_records = NULL;
         tables->dimstyles = NULL;

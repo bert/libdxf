@@ -75,12 +75,6 @@ dxf_table
                  * This is to be an unique (sequential) number in the DXF
                  * file.\n
                  * Group code = 5. */
-        char *table_name;
-                /*!< Table name.\n
-                 * Group code = 2. */
-        int max_table_entries;
-                /*!< Maximum number of table entries that may follow.\n
-                 * Group code = 70. */
         struct DxfTable *next;
                 /*!< Pointer to the next DxfTable.\n
                  * \c NULL in the last DxfTable. */
