@@ -5,26 +5,8 @@
  *
  * \brief Header file for of a DXF table entry (\c TABLE).
  *
- * The TABLES section contains several tables, each of which contain a
- * variable number of table entries.\n
- * \n
- * The order of the tables may change, but the LTYPE table will always
- * precede the LAYER table. Each table is introduced with a 0 group
- * with the label TABLE.\n
- * This is followed by a 2 group identifying the particular table
- * (VPORT, LTYPE, LAYER, STYLE, VIEW, DIMSTYLE, UCS or APPID) and a 70
- * group that specifies the maximum number of table entries that may
- * follow.\n
- * Table names are always output in uppercase characters.\n
- * \n
- * The tables in a drawing can contain deleted items, but these are not
- * written to the DXF file.\n
- * Thus, fewer table entries may follow the table header than are
- * indicated by the 70 group, so don't use the count in the 70 group as
- * an index to read in the table.\n
- * This group is provided so that a program which reads DXF files can
- * allocate an array large enough to hold all the table entries that
- * follow.\n
+ * \version The \c TABLE entity was introduced in DXF R2005.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
