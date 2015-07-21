@@ -5,6 +5,8 @@
  *
  * \brief Functions for a DXF table entry (\c TABLE).
  *
+ * \version The \c TABLE entity was introduced in DXF R2005.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
