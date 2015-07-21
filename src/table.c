@@ -45,11 +45,12 @@
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2005.
  */
 DxfTable *
 dxf_table_new ()
