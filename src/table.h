@@ -41,6 +41,197 @@
 
 
 /*!
+ * \brief DXF definition of a table entity cell.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2005.
+ */
+typedef struct
+dxf_table_cell
+{
+        char *text_string;
+                /*!< Text string in a cell.\n
+                 * If the string is shorter than 250 characters, all
+                 * characters appear in code 1.\n
+                 * If the string is longer than 250 characters, it is
+                 * divided into chunks of 250 characters.\n
+                 * The chunks are contained in one or more code 3 codes.\n
+                 * If code 3 codes are used, the last group is a code 1
+                 * and is shorter than 250 characters.\n
+                 * This value applies only to text-type cells and is
+                 * repeated, 1 value per cell.\n
+                 * Group code = 1. */
+        char *optional_text_string[DXF_MAX_PARAM];
+                /*!< Text string in a cell, in 250-character chunks;
+                 * optional.\n
+                 * This value applies only to text-type cells and is
+                 * repeated, 1 value per cell.\n
+                 * Group code = 3. */
+        char *text_style_name;
+                /*!< Text style name (string); override applied at the
+                 * cell level.\n
+                 * Group code = 7. */
+        int color_bg;
+                /*!< Value for the background (fill) color of cell
+                 * content; override applied at the cell level.\n
+                 * Group code = 63. */
+        int color_fg;
+                /*!< Value for the color of cell content; override
+                 * applied at the cell level.\n
+                 * Group code = 64. */
+        int border_color_right;
+                /*!< True color value for the right border of the cell;
+                 * override applied at the cell level.\n
+                 * Group code = 65. */
+        int border_color_bottom;
+                /*!< True color value for the bottom border of the cell;
+                 * override applied at the cell level.\n
+                 * Group code = 66. */
+        int border_color_left;
+                /*!< True color value for the left border of the cell;
+                 * override applied at the cell level.\n
+                 * Group code = 68. */
+        int border_color_top;
+                /*!< True color value for the top border of the cell;
+                 * override applied at the cell level.\n
+                 * Group code = 69. */
+        double text_height;
+                /*!< Text height value; override applied at the cell
+                 * level.\n
+                 * Group code = 140. */
+        double block_scale;
+                /*!< Block scale (real).\n
+                 * This value applies only to block-type cells and is
+                 * repeated, 1 value per cell.\n
+                 * Group code = 144. */
+        double block_rotation;
+                /*!< Rotation value (real; applicable for a block-type
+                 * cell and a text-type cell).\n
+                 * Group code = 145. */
+        int alignment;
+                /*!< Cell alignment value; override applied at the cell
+                 * level.\n
+                 * Group code = 170. */
+        int type;
+                /*!< Cell type; this value is repeated, 1 value per cell:
+                 * <ol>
+                 * <li value = "1"> Text type.</li>
+                 * <li value = "2"> Block type.</li>
+                 * </ol>
+                 * Group code = 171. */
+        int flag;
+                /*!< Cell flag value; this value is repeated, 1 value
+                 * per cell.\n
+                 * Group code = 172. */
+        int merged;
+                /*!< Cell merged value; this value is repeated, 1 value
+                 * per cell.\n
+                 * Group code = 173. */
+        int autofit;
+                /*!< Boolean flag indicating if the autofit option is
+                 * set for the cell; this value is repeated, 1 value per
+                 * cell.\n
+                 * Group code = 174. */
+        double border_width;
+                /*!< Cell border width (applicable only for merged
+                 * cells); this value is repeated, 1 value per cell.\n
+                 * Group code = 175. */
+        double border_height;
+                /*!< Cell border height (applicable only for merged
+                 * cells); this value is repeated, 1 value per cell.\n
+                 * Group code = 176. */
+        int override;
+                /*!< Cell override flag; this value is repeated, 1 value
+                 * per cell.\n
+                 * Group code = 177. */
+        int virtual_edge;
+                /*!< Flag value for a virtual edge.\n
+                 *
+                 * \note Group code 178 is a flag value for a virtual
+                 * edge.\n
+                 * A virtual edge is used when a grid line is shared by
+                 * two cells.\n
+                 * For example, if a table contains one row and two
+                 * columns and it contains cell A and cell B, the
+                 * central grid line contains the right edge of cell A
+                 * and the left edge of cell B.\n
+                 * One edge is real, and the other edge is virtual.\n
+                 * The virtual edge points to the real edge; both edges
+                 * have the same set of properties, including color,
+                 * lineweight, and visibility.\n
+                 *
+                 * Group code = 178. */
+        int number_of_block_attdefs;
+                /*!< Number of attribute definitions in the block table
+                 * record (applicable only to a block-type cell).\n
+                 * Group code = 179. */
+        double border_lineweight_right;
+                /*!< Lineweight for the right border of the cell;
+                 * override applied at the cell level.\n
+                 * Group code = 275. */
+        double border_lineweight_bottom;
+                /*!< Lineweight for the bottom border of the cell;
+                 * override applied at the cell level.\n
+                 * Group code = 276. */
+        double border_lineweight_left;
+                /*!< Lineweight for the left border of the cell;
+                 * override applied at the cell level.\n
+                 * Group code = 278. */
+        double border_lineweight_top;
+                /*!< Lineweight for the top border of the cell; override
+                 * applied at the cell level.\n
+                 * Group code = 279. */
+        int color_fill_override;
+                /*!< Boolean flag for whether the fill color is on;
+                 * override applied at the cell level.\n
+                 * Group code = 283. */
+        int border_visibilty_override_right;
+                /*!< Boolean flag for the visibility of the right border
+                 * of the cell; override applied at the cell level.\n
+                 * Group code = 285. */
+        int border_visibilty_override_bottom;
+                /*!< Boolean flag for the visibility of the bottom
+                 * border of the cell; override applied at the cell
+                 * level.\n
+                 * Group code = 286. */
+        int border_visibilty_override_left;
+                /*!< Boolean flag for the visibility of the left border
+                 * of the cell; override applied at the cell level.\n
+                 * Group code = 288. */
+        int border_visibilty_override_top;
+                /*!< Boolean flag for the visibility of the top border
+                 * of the cell; override applied at the cell level.\n
+                 * Group code = 289. */
+        char *attdef_text_string;
+                /*!< Text string value for an attribute definition,
+                 * repeated once per attribute definition and applicable
+                 * only for a block-type cell.\n
+                 * Group code = 300. */
+        char *attdef_soft_pointer;
+                /*!< Soft pointer ID of the attribute definition in the
+                 * block table record, referenced by group code 179
+                 * (applicable only for a block-type cell).\n
+                 * This value is repeated once per attribute definition.\n
+                 * Group code = 331. */
+        char *block_table_record_hard_pointer;
+                /*!< Hard-pointer ID of the block table record.\n
+                 * This value applies only to block-type cells and is
+                 * repeated, 1 value per cell.\n
+                 * Group code = 340. */
+        char *owning_block_pointer;
+                /*!< Hard pointer ID of the owning \c BLOCK record.\n
+                 * Group code = 343. */
+        struct DxfTableCell *next;
+                /*!< Pointer to the next DxfTableCell.\n
+                 * \c NULL in the last DxfTableCell. */
+} DxfTableCell;
+
+
+/*!
  * \brief DXF definition of a table entity.
  *
  * \version According to DXF R10 (backward compatibility).
@@ -117,36 +308,14 @@ dxf_table
                  * (optional).\n
                  * Group code = 360. */
         /* Specific members for a DXF table. */
-        char *cell_text_string[DXF_MAX_PARAM];
-                /*!< Text string in a cell.\n
-                 * If the string is shorter than 250 characters, all
-                 * characters appear in code 1.\n
-                 * If the string is longer than 250 characters, it is
-                 * divided into chunks of 250 characters.\n
-                 * The chunks are contained in one or more code 3 codes.\n
-                 * If code 3 codes are used, the last group is a code 1
-                 * and is shorter than 250 characters.\n
-                 * This value applies only to text-type cells and is
-                 * repeated, 1 value per cell.\n
-                 * Group code = 1. */
         char *block_name;
                 /*!< Block name; an anonymous block begins with a *T
                  * value.\n
                  * Group code = 2. */
-        char *cell_optional_text_string[DXF_MAX_PARAM];
-                /*!< Text string in a cell, in 250-character chunks;
-                 * optional.\n
-                 * This value applies only to text-type cells and is
-                 * repeated, 1 value per cell.\n
-                 * Group code = 3. */
         char *table_text_style_name;
                 /*!< Text style name (string); override applied at the
                  * table entity level.\n
                  * There may be one entry for each cell type.\n
-                 * Group code = 7. */
-        char *cell_text_style_name[DXF_MAX_PARAM];
-                /*!< Text style name (string); override applied at the
-                 * cell level.\n
                  * Group code = 7. */
         double x0;
                 /*!< X-value of the insertion point coordinate.\n
@@ -202,31 +371,6 @@ dxf_table
                 /*!< Color value for the vertical, right border lines;
                  * override applied at the table entity level.\n
                  * Group code = 69. */
-        int cell_color_bg[DXF_MAX_PARAM];
-                /*!< Value for the background (fill) color of cell
-                 * content; override applied at the cell level.\n
-                 * Group code = 63. */
-        int cell_color_fg[DXF_MAX_PARAM];
-                /*!< Value for the color of cell content; override
-                 * applied at the cell level.\n
-                 * Group code = 64. */
-        int cell_border_color_right[DXF_MAX_PARAM];
-                /*!< True color value for the right border of the cell;
-                 * override applied at the cell level.\n
-                 * Group code = 65. */
-        int cell_border_color_bottom[DXF_MAX_PARAM];
-                /*!< True color value for the bottom border of the cell;
-                 * override applied at the cell level.\n
-                 * Group code = 66. */
-        int cell_border_color_left[DXF_MAX_PARAM];
-                /*!< True color value for the left border of the cell;
-                 * override applied at the cell level.\n
-                 * Group code = 68. */
-        int cell_border_color_top[DXF_MAX_PARAM];
-                /*!< True color value for the top border of the cell;
-                 * override applied at the cell level.\n
-                 * Group code = 69. */
-
         int flow_direction;
                 /*!< Flow direction; override applied at the table
                  * entity level.\n
@@ -257,10 +401,6 @@ dxf_table
                  * entity level.\n
                  * There may be one entry for each cell type.\n
                  * Group code = 140. */
-        double cell_text_height[DXF_MAX_PARAM];
-                /*!< Text height value; override applied at the cell
-                 * level.\n
-                 * Group code = 140. */
         double row_height[DXF_MAX_PARAM];
                 /*!< Row height; this value is repeated, 1 value per
                  * row.\n
@@ -269,98 +409,13 @@ dxf_table
                 /*!< Column height; this value is repeated, 1 value per
                  * column.\n
                  * Group code = 142. */
-        double block_scale[DXF_MAX_PARAM];
-                /*!< Block scale (real).\n
-                 * This value applies only to block-type cells and is
-                 * repeated, 1 value per cell.\n
-                 * Group code = 144. */
-        double block_rotation;
-                /*!< Rotation value (real; applicable for a block-type
-                 * cell and a text-type cell).\n
-                 * Group code = 145. */
         int table_cell_alignment;
                 /*!< Cell alignment (integer); override applied at the
                  * table entity level.\n
                  * There may be one entry for each cell type.\n
                  * Group code = 170. */
-        int cell_alignment[DXF_MAX_PARAM];
-                /*!< Cell alignment value; override applied at the cell
-                 * level.\n
-                 * Group code = 170. */
-        int cell_type[DXF_MAX_PARAM];
-                /*!< Cell type; this value is repeated, 1 value per cell:
-                 * <ol>
-                 * <li value = "1"> Text type.</li>
-                 * <li value = "2"> Block type.</li>
-                 * </ol>
-                 * Group code = 171. */
-        int cell_flag[DXF_MAX_PARAM];
-                /*!< Cell flag value; this value is repeated, 1 value
-                 * per cell.\n
-                 * Group code = 172. */
-        int cell_merged[DXF_MAX_PARAM];
-                /*!< Cell merged value; this value is repeated, 1 value
-                 * per cell.\n
-                 * Group code = 173. */
-        int cell_autofit[DXF_MAX_PARAM];
-                /*!< Boolean flag indicating if the autofit option is
-                 * set for the cell; this value is repeated, 1 value per
-                 * cell.\n
-                 * Group code = 174. */
-        double cell_border_width[DXF_MAX_PARAM];
-                /*!< Cell border width (applicable only for merged
-                 * cells); this value is repeated, 1 value per cell.\n
-                 * Group code = 175. */
-        double cell_border_height[DXF_MAX_PARAM];
-                /*!< Cell border height (applicable only for merged
-                 * cells); this value is repeated, 1 value per cell.\n
-                 * Group code = 176. */
-        int cell_override[DXF_MAX_PARAM];
-                /*!< Cell override flag; this value is repeated, 1 value
-                 * per cell.\n
-                 * Group code = 177. */
-        int virtual_edge;
-                /*!< Flag value for a virtual edge.\n
-                 *
-                 * \note Group code 178 is a flag value for a virtual
-                 * edge.\n
-                 * A virtual edge is used when a grid line is shared by
-                 * two cells.\n
-                 * For example, if a table contains one row and two
-                 * columns and it contains cell A and cell B, the
-                 * central grid line contains the right edge of cell A
-                 * and the left edge of cell B.\n
-                 * One edge is real, and the other edge is virtual.\n
-                 * The virtual edge points to the real edge; both edges
-                 * have the same set of properties, including color,
-                 * lineweight, and visibility.\n
-                 *
-                 * Group code = 178. */
-        int number_of_block_attdefs;
-                /*!< Number of attribute definitions in the block table
-                 * record (applicable only to a block-type cell).\n
-                 * Group code = 179. */
-
         double table_cell_border_lineweight_right;
                 /*!< Group code = 274. */
-
-        double cell_border_lineweight_right[DXF_MAX_PARAM];
-                /*!< Lineweight for the right border of the cell;
-                 * override applied at the cell level.\n
-                 * Group code = 275. */
-        double cell_border_lineweight_bottom[DXF_MAX_PARAM];
-                /*!< Lineweight for the bottom border of the cell;
-                 * override applied at the cell level.\n
-                 * Group code = 276. */
-        double cell_border_lineweight_left[DXF_MAX_PARAM];
-                /*!< Lineweight for the left border of the cell;
-                 * override applied at the cell level.\n
-                 * Group code = 278. */
-        double cell_border_lineweight_top[DXF_MAX_PARAM];
-                /*!< Lineweight for the top border of the cell; override
-                 * applied at the cell level.\n
-                 * Group code = 279. */
-
         int suppress_table_title;
                 /*!< Flag for whether the title is suppressed; override
                  * applied at the table entity level.\n
@@ -379,49 +434,9 @@ dxf_table
                  * <li value = "1"> Enabled.</li>
                  * </ol>
                  * Group code = 283. */
-        int cell_color_fill_override[DXF_MAX_PARAM];
-                /*!< Boolean flag for whether the fill color is on;
-                 * override applied at the cell level.\n
-                 * Group code = 283. */
-        int cell_border_visibilty_override_right[DXF_MAX_PARAM];
-                /*!< Boolean flag for the visibility of the right border
-                 * of the cell; override applied at the cell level.\n
-                 * Group code = 285. */
-        int cell_border_visibilty_override_bottom[DXF_MAX_PARAM];
-                /*!< Boolean flag for the visibility of the bottom
-                 * border of the cell; override applied at the cell
-                 * level.\n
-                 * Group code = 286. */
-        int cell_border_visibilty_override_left[DXF_MAX_PARAM];
-                /*!< Boolean flag for the visibility of the left border
-                 * of the cell; override applied at the cell level.\n
-                 * Group code = 288. */
-        int cell_border_visibilty_override_top[DXF_MAX_PARAM];
-                /*!< Boolean flag for the visibility of the top border
-                 * of the cell; override applied at the cell level.\n
-                 * Group code = 289. */
-        char *attdef_text_string[DXF_MAX_PARAM];
-                /*!< Text string value for an attribute definition,
-                 * repeated once per attribute definition and applicable
-                 * only for a block-type cell.\n
-                 * Group code = 300. */
-        char *attdef_soft_pointer[DXF_MAX_PARAM];
-                /*!< Soft pointer ID of the attribute definition in the
-                 * block table record, referenced by group code 179
-                 * (applicable only for a block-type cell).\n
-                 * This value is repeated once per attribute definition.\n
-                 * Group code = 331. */
-        char *block_table_record_hard_pointer[DXF_MAX_PARAM];
-                /*!< Hard-pointer ID of the block table record.\n
-                 * This value applies only to block-type cells and is
-                 * repeated, 1 value per cell.\n
-                 * Group code = 340. */
         char *tablestyle_object_pointer;
                 /*!< Hard pointer ID of the \c TABLESTYLE object.\n
                  * Group code = 342. */
-        char *owning_block_pointer;
-                /*!< Hard pointer ID of the owning \c BLOCK record.\n
-                 * Group code = 343. */
         char *field_object_pointer;
                 /*!< Hard pointer ID of the \c FIELD object.\n
                  * This applies only to a text-type cell.\n
@@ -429,6 +444,9 @@ dxf_table
                  * only the ID of the \c FIELD object is saved.\n
                  * The text string (group codes 1 and 3) is ignored.\n
                  * Group code = 343. */
+        struct DxfTableCell *cells;
+                /*!< Pointer to the first DxfTableCell of a linked list
+                 * of table cells. */
         struct DxfTable *next;
                 /*!< Pointer to the next DxfTable.\n
                  * \c NULL in the last DxfTable. */
