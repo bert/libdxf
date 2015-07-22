@@ -134,11 +134,12 @@ dxf_table_new ()
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2005.
  */
 DxfTable *
 dxf_table_init
@@ -150,6 +151,8 @@ dxf_table_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        int i;
+
         /* Do some basic checks. */
         if (table == NULL)
         {
@@ -165,6 +168,56 @@ dxf_table_init
                   __FUNCTION__);
                 return (NULL);
         }
+        table->id_code = 0;
+        table->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        table->layer = strdup (DXF_DEFAULT_LAYER);
+        table->elevation = 0.0;
+        table->thickness = 0.0;
+        table->visibility = 0;
+        table->color = DXF_COLOR_BYLAYER;
+        table->paperspace = DXF_MODELSPACE;
+        table->number_of_image_bytes = 0;
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                table->binary_graphics_data[i] = strdup ("");
+                table->row_height[i] = 0.0;
+                table->column_height[i] = 0.0;
+        }
+        table->dictionary_owner_soft = strdup ("");
+        table->dictionary_owner_hard = strdup ("");
+        table->block_name = strdup ("");
+        table->table_text_style_name = strdup ("");
+        table->x0 = 0.0;
+        table->y0 = 0.0;
+        table->z0 = 0.0;
+        table->x1 = 0.0;
+        table->y1 = 0.0;
+        table->z1 = 0.0;
+        table->horizontal_cell_margin = 0.0;
+        table->vertical_cell_margin = 0.0;
+        table->table_cell_color_bg = 0;
+        table->table_cell_color_fg = 0;
+        table->table_cell_border_color_horizontal = DXF_COLOR_BYLAYER;
+        table->table_cell_border_color_bottom = DXF_COLOR_BYLAYER;
+        table->table_cell_border_color_vertical = DXF_COLOR_BYLAYER;
+        table->table_cell_border_color_right = DXF_COLOR_BYLAYER;
+        table->flow_direction = 0;
+        table->table_value_flag = 0;
+        table->number_of_rows = 0;
+        table->number_of_columns = 0;
+        table->override_flag = 0;
+        table->border_color_override_flag = 0;
+        table->border_lineweight_override_flag = 0;
+        table->border_visibility_override_flag = 0;
+        table->table_text_height = 0.0;
+        table->table_cell_alignment = 0;
+        table->table_cell_border_lineweight_right = 0.0;
+        table->suppress_table_title = 0;
+        table->suppress_header_row = 0;
+        table->table_cell_color_fill_override = 0;
+        table->tablestyle_object_pointer = strdup ("");
+        table->field_object_pointer = strdup ("");
+        table->cells = NULL;
         table->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
