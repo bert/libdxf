@@ -453,6 +453,8 @@ dxf_table
 } DxfTable;
 
 
+DxfTableCell *
+dxf_table_cell_new ();
 DxfTable *
 dxf_table_new ();
 DxfTable *

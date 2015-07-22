@@ -38,6 +38,51 @@
 
 
 /*!
+ * \brief Allocate memory for a DXF \c TABLE cell.
+ *
+ * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2005.
+ */
+DxfTableCell *
+dxf_table_cell_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfTableCell *cell = NULL;
+        size_t size;
+
+        size = sizeof (DxfTableCell);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((cell = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfTableCell struct.\n")),
+                  __FUNCTION__);
+                cell = NULL;
+        }
+        else
+        {
+                memset (cell, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (cell);
+}
+
+
+/*!
  * \brief Allocate memory for a DXF \c TABLE.
  *
  * Fill the memory contents with zeros.
