@@ -189,20 +189,20 @@ dxf_table_cell
                 /*!< Boolean flag for whether the fill color is on;
                  * override applied at the cell level.\n
                  * Group code = 283. */
-        int border_visibilty_override_right;
+        int border_visibility_override_right;
                 /*!< Boolean flag for the visibility of the right border
                  * of the cell; override applied at the cell level.\n
                  * Group code = 285. */
-        int border_visibilty_override_bottom;
+        int border_visibility_override_bottom;
                 /*!< Boolean flag for the visibility of the bottom
                  * border of the cell; override applied at the cell
                  * level.\n
                  * Group code = 286. */
-        int border_visibilty_override_left;
+        int border_visibility_override_left;
                 /*!< Boolean flag for the visibility of the left border
                  * of the cell; override applied at the cell level.\n
                  * Group code = 288. */
-        int border_visibilty_override_top;
+        int border_visibility_override_top;
                 /*!< Boolean flag for the visibility of the top border
                  * of the cell; override applied at the cell level.\n
                  * Group code = 289. */
