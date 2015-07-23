@@ -145,7 +145,7 @@ DxfTable *
 dxf_table_init
 (
         DxfTable *table
-                /*!< DXF table section. */
+                /*!< a pointer to a DXF \c TABLE entity. */
 )
 {
 #if DEBUG
@@ -249,7 +249,7 @@ dxf_table_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfTable *table
-                /*!< DXF table entity. */
+                /*!< a pointer to a DXF \c TABLE entity. */
 )
 {
 #if DEBUG
@@ -337,7 +337,7 @@ dxf_table_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfTable *table
-                /*!< DXF table section. */
+                /*!< a pointer to a DXF \c TABLE entity. */
 )
 {
 #if DEBUG
@@ -390,17 +390,18 @@ dxf_table_write
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2005.
  */
 int
 dxf_table_free
 (
         DxfTable *table
-                /*!< DXF table entity. */
+                /*!< a pointer to a DXF \c TABLE entity. */
 )
 {
 #if DEBUG
