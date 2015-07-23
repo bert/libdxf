@@ -1,7 +1,7 @@
 /*!
  * \file entity.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for DXF entities.
  *
@@ -53,16 +53,19 @@ dxf_entity_skip
         if (dxf_entity_name == NULL) return (EXIT_FAILURE);
         if (INTER_ACTIVE_PROMPT)
         {
-                fprintf (stderr, "    skip %s entity ? [Y/N]:\n", dxf_entity_name);
+                fprintf (stderr,
+                  (_("    skip %s entity ? [Y/N]:\n")), dxf_entity_name);
                 answer = getchar ();
                 if ((answer == 'Y') || (answer == 'y'))
                 {
-                        fprintf (stderr, "    OK, done.\n");
+                        fprintf (stderr,
+                          (_("    OK, done.\n")));
                 }
         }
         else
         {
-                fprintf (stderr, "    skipping %s entity.\n", dxf_entity_name);
+                fprintf (stderr,
+                  (_("    skipping %s entity.\n")), dxf_entity_name);
         }
 #if DEBUG
         DXF_DEBUG_END
