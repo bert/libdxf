@@ -489,6 +489,11 @@ dxf_table_free
 (
         DxfTable *table
 );
+void
+dxf_table_free_chain
+(
+        DxfTable *tables
+);
 
 
 #endif /* LIBDXF_SRC_TABLE_H */

@@ -593,4 +593,44 @@ dxf_table_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c TABLE
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2005.
+ */
+void
+dxf_table_free_chain
+(
+        DxfTable *tables
+                /*!< pointer to the chain of DXF \c TABLE entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (tables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (tables != NULL)
+        {
+                struct DxfTable *iter = tables->next;
+                dxf_table_free (tables);
+                tables = (DxfTable *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
