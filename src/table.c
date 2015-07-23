@@ -129,6 +129,93 @@ dxf_table_new ()
 
 /*!
  * \brief Allocate memory and initialize data fields in a DXF \c TABLE
+ * cell.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2005.
+ */
+DxfTableCell *
+dxf_table_cell_init
+(
+        DxfTableCell *cell
+                /*!< a pointer to a DXF \c TABLE cell. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (cell == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                cell = dxf_table_cell_new ();
+        }
+        if (cell == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfTableCell struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        cell->text_string = strdup ("");
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                cell->optional_text_string[i] = strdup ("");
+        }
+        cell->text_style_name = strdup (DXF_DEFAULT_TEXTSTYLE);
+        cell->color_bg = 0;
+        cell->color_fg = DXF_COLOR_BYLAYER;
+        cell->border_color_right = DXF_COLOR_BYLAYER;
+        cell->border_color_bottom = DXF_COLOR_BYLAYER;
+        cell->border_color_left = DXF_COLOR_BYLAYER;
+        cell->border_color_top = DXF_COLOR_BYLAYER;
+        cell->text_height = 1.0;
+        cell->block_scale = 1.0;
+        cell->block_rotation = 0.0;
+        cell->alignment = 0;
+        cell->type = 0;
+        cell->flag = 0;
+        cell->merged = 0;
+        cell->autofit = 0;
+        cell->border_width = 0.0;
+        cell->border_height = 0.0;
+        cell->override = 0;
+        cell->virtual_edge = 0;
+        cell->number_of_block_attdefs = 0;
+        cell->border_lineweight_right = 1.0;
+        cell->border_lineweight_bottom = 1.0;
+        cell->border_lineweight_left = 1.0;
+        cell->border_lineweight_top = 1.0;
+        cell->color_fill_override = 0;
+        cell->border_visibility_override_right = 0;
+        cell->border_visibility_override_bottom = 0;
+        cell->border_visibility_override_left = 0;
+        cell->border_visibility_override_top = 0;
+        cell->attdef_text_string = strdup ("");
+        cell->attdef_soft_pointer = strdup ("");
+        cell->block_table_record_hard_pointer = strdup ("");
+        cell->owning_block_pointer = strdup ("");
+        cell->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (cell);
+}
+
+
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c TABLE
  * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the

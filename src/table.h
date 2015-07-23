@@ -457,6 +457,11 @@ DxfTableCell *
 dxf_table_cell_new ();
 DxfTable *
 dxf_table_new ();
+DxfTableCell *
+dxf_table_cell_init
+(
+        DxfTableCell *cell
+);
 DxfTable *
 dxf_table_init
 (
