@@ -406,6 +406,9 @@ dxf_table_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        int i;
+
+        /* Do some basic checks. */
         if (table == NULL)
         {
                 fprintf (stderr,
@@ -420,6 +423,19 @@ dxf_table_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
+        free (table->linetype);
+        free (table->layer);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (table->binary_graphics_data[i]);
+        }
+        free (table->dictionary_owner_soft);
+        free (table->dictionary_owner_hard);
+        free (table->block_name);
+        free (table->table_text_style_name);
+        free (table->tablestyle_object_pointer);
+        free (table->field_object_pointer);
+//        dxf_table_cells_free_chain (table->cells);
         free (table);
         table = NULL;
 #if DEBUG
