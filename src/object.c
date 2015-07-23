@@ -1,7 +1,7 @@
 /*!
  * \file object.c
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for DXF objects.
  *
@@ -173,6 +173,39 @@ dxf_object_free
         DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c objects
+ * and all their data fields.
+ *
+ */
+void
+dxf_object_free_chain
+(
+        DxfObject *objects
+                /*!< a pointer to the chain of DXF \c objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (objects == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (objects != NULL)
+        {
+                struct DxfObject *iter = objects->next;
+                dxf_object_free (objects);
+                objects = (DxfObject *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
 }
 
 

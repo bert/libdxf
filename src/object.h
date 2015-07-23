@@ -1,7 +1,7 @@
 /*!
  * \file object.h
  *
- * \author Copyright (C) 2008 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF object entity functions.
  *
@@ -72,6 +72,11 @@ DxfObject *
 dxf_object_init
 (
         DxfObject *dxf_object
+);
+void
+dxf_object_free_chain
+(
+        DxfObject *objects
 );
 
 
