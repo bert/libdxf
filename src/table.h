@@ -480,6 +480,11 @@ dxf_table_write
         DxfTable *table
 );
 int
+dxf_table_cell_free
+(
+        DxfTableCell *cell
+);
+int
 dxf_table_free
 (
         DxfTable *table

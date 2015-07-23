@@ -471,6 +471,66 @@ dxf_table_write
 
 
 /*!
+ * \brief Free the allocated memory for a DXF \c TABLE cell and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2005.
+ */
+int
+dxf_table_cell_free
+(
+        DxfTableCell *cell
+                /*!< a pointer to a DXF \c TABLE cell. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (cell == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (cell->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfTableCell was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (cell->text_string);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (cell->optional_text_string[i]);
+        }
+        free (cell->text_style_name);
+        free (cell->attdef_text_string);
+        free (cell->attdef_soft_pointer);
+        free (cell->block_table_record_hard_pointer);
+        free (cell->owning_block_pointer);
+        free (cell);
+        cell = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a DXF \c TABLE and all it's
  * data fields.
  *
