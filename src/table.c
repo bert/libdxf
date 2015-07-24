@@ -343,6 +343,7 @@ dxf_table_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -362,6 +363,7 @@ dxf_table_read
                 table = dxf_table_new ();
                 table = dxf_table_init (table);
         }
+        i = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -376,12 +378,84 @@ dxf_table_read
                         free (temp_string);
                         return (NULL);
                 }
+                else if (strcmp (temp_string, "2") == 0)
+                {
+                        /* Now follows a string containing a block name;
+                         * an anonymous block begins with a *T value. */
+                        fscanf (fp->fp, "%s\n", table->block_name);
+                }
                 if (strcmp (temp_string, "5") == 0)
                 {
                         /* Now follows a string containing a sequential
                          * id number. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%x\n", &table->id_code);
+                }
+                else if (strcmp (temp_string, "10") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the insertion point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &table->x0);
+                }
+                else if (strcmp (temp_string, "20") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the insertion point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &table->y0);
+                }
+                else if (strcmp (temp_string, "30") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the insertion point. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &table->z0);
+                }
+                else if (strcmp (temp_string, "92") == 0)
+                {
+                        /* Now follows a string containing the
+                         * number of bytes in the proxy entity graphics. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &table->number_of_image_bytes);
+                }
+                else if ((fp->acad_version_number >= AutoCAD_13)
+                        && (strcmp (temp_string, "100") == 0))
+                {
+                        /* Now follows a string containing the
+                         * subclass marker value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", temp_string);
+                        if ((strcmp (temp_string, "AcDbEntity") != 0)
+                        && ((strcmp (temp_string, "AcDbBlockReference") != 0))
+                        && ((strcmp (temp_string, "AcDbBlockTable") != 0)))
+                        {
+                                fprintf (stderr,
+                                  (_("Warning in %s () found a bad subclass marker in: %s in line: %d.\n")),
+                                  __FUNCTION__, fp->filename, fp->line_number);
+                        }
+                }
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /* Now follows a string containing binary
+                         * graphics data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", table->binary_graphics_data[i]);
+                        i++;
+                }
+                else if (strcmp (temp_string, "330") == 0)
+                {
+                        /* Now follows a string containing a soft-pointer
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", table->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "360") == 0)
+                {
+                        /* Now follows a string containing a hard owner
+                         * ID/handle to owner dictionary. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", table->dictionary_owner_hard);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
