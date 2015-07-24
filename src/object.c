@@ -46,27 +46,27 @@ dxf_object_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfObject *dxf_object = NULL;
+        DxfObject *object = NULL;
         size_t size;
 
         size = sizeof (DxfObject);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((dxf_object = malloc (size)) == NULL)
+        if ((object = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfObject struct.\n")),
                   __FUNCTION__);
-                dxf_object = NULL;
+                object = NULL;
         }
         else
         {
-                memset (dxf_object, 0, size);
+                memset (object, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_object);
+        return (object);
 }
 
 
@@ -80,7 +80,7 @@ dxf_object_new ()
 DxfObject *
 dxf_object_init
 (
-        DxfObject *dxf_object
+        DxfObject *object
                 /*!< DXF object entity. */
 )
 {
@@ -90,30 +90,30 @@ dxf_object_init
         int i;
 
         /* Do some basic checks. */
-        if (dxf_object == NULL)
+        if (object == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                dxf_object = dxf_object_new ();
+                object = dxf_object_new ();
         }
-        if (dxf_object == NULL)
+        if (object == NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () could not allocate memory for a DxfObject struct.\n")),
                 __FUNCTION__);
               return (NULL);
         }
-        dxf_object->entity_type = UNKNOWN_ENTITY;
+        object->entity_type = UNKNOWN_ENTITY;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 /*! \todo Add code for initialising a DxfParam. */
         }
-        dxf_object->next = NULL;
+        object->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (dxf_object);
+        return (object);
 }
 
 
@@ -152,7 +152,7 @@ dxf_object_write_objects
 int
 dxf_object_free
 (
-        DxfObject *dxf_object
+        DxfObject *object
                 /*!< Pointer to the memory occupied by the DXF \c object
                  * entity. */
 )
@@ -160,15 +160,15 @@ dxf_object_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        if (dxf_object->next != NULL)
+        if (object->next != NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () pointer to next DxfObject was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (dxf_object);
-        dxf_object = NULL;
+        free (object);
+        object = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif

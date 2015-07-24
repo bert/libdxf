@@ -66,12 +66,12 @@ dxf_object_write_objects
 int
 dxf_object_free
 (
-        DxfObject *dxf_object
+        DxfObject *object
 );
 DxfObject *
 dxf_object_init
 (
-        DxfObject *dxf_object
+        DxfObject *object
 );
 void
 dxf_object_free_chain
