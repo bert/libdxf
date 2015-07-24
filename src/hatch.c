@@ -558,6 +558,7 @@ dxf_hatch_init
         hatch->paths = NULL;
         hatch->number_of_seed_points = 0;
         hatch->seed_points = NULL;
+        hatch->graphics_data_size = 0;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 hatch->binary_graphics_data[i] = strdup ("");
@@ -2599,9 +2600,9 @@ dxf_hatch_write
         {
                 fprintf (fp->fp, " 60\n%d\n", hatch->visibility);
         }
-        if (hatch->number_of_image_bytes > 0)
+        if (hatch->graphics_data_size > 0)
         {
-                fprintf (fp->fp, " 92\n%d\n", hatch->number_of_image_bytes);
+                fprintf (fp->fp, " 92\n%d\n", hatch->graphics_data_size);
         }
         i = 0;
         while (strlen (hatch->binary_graphics_data[i]) > 0)

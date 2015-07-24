@@ -438,7 +438,7 @@ dxf_hatch
                  * Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0). */
-        int number_of_image_bytes;
+        int graphics_data_size;
                 /*!< group code = 92\n
                  * The number of bytes in the image (and subsequent
                  * binary chunk records) (optional). */
