@@ -263,7 +263,7 @@ dxf_table_init
         table->visibility = 0;
         table->color = DXF_COLOR_BYLAYER;
         table->paperspace = DXF_MODELSPACE;
-        table->number_of_image_bytes = 0;
+        table->graphics_data_size = 0;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 table->binary_graphics_data[i] = strdup ("");
@@ -417,7 +417,7 @@ dxf_table_read
                         /* Now follows a string containing the
                          * number of bytes in the proxy entity graphics. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &table->number_of_image_bytes);
+                        fscanf (fp->fp, "%d\n", &table->graphics_data_size);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
