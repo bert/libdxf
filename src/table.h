@@ -416,10 +416,18 @@ dxf_table
                  * Group code = 170. */
         double table_cell_border_lineweight_right;
                 /*!< Group code = 274. */
+        int table_data_version;
+                /*!< Table data version number:\n
+                 * 0 = 2010.\n
+                 * Group code = 280.
+                 *
+                 * \warning Multiple entries with Group code 280. */
         int suppress_table_title;
                 /*!< Flag for whether the title is suppressed; override
                  * applied at the table entity level.\n
-                 * Group code = 280. */
+                 * Group code = 280.
+                 *
+                 * \warning Multiple entries with Group code 280. */
         int suppress_header_row;
                 /*!< Flag for whether the header row is suppressed;
                  * override applied at the table entity level.\n
