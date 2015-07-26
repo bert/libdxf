@@ -297,7 +297,9 @@ dxf_table
         int graphics_data_size;
                 /*!< The number of bytes in the image (and subsequent
                  * binary chunk records) (optional).\n
-                 * Group code = 92. */
+                 * Group code = 92.
+                 *
+                 * \warning Multiple entries with Group code 92. */
         char *binary_graphics_data[DXF_MAX_PARAM];
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
@@ -387,7 +389,9 @@ dxf_table
                  * Group code = 91. */
         int number_of_columns;
                 /*!< Number of columns.\n
-                 * Group code = 92. */
+                 * Group code = 92.
+                 *
+                 * \warning Multiple entries with Group code 92. */
         int override_flag;
                 /*!< Flag for an override.\n
                  * Group code = 93. */
