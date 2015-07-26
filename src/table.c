@@ -344,6 +344,9 @@ dxf_table_read
 #endif
         char *temp_string = NULL;
         int i;
+        int j;
+        int k;
+        int l;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -364,6 +367,9 @@ dxf_table_read
                 table = dxf_table_init (table);
         }
         i = 0;
+        j = 0;
+        k = 0;
+        l = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -398,12 +404,28 @@ dxf_table_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &table->x0);
                 }
+                else if (strcmp (temp_string, "11") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the horizontal direction
+                         * vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &table->x1);
+                }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the insertion point. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &table->y0);
+                }
+                else if (strcmp (temp_string, "21") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the horizontal direction
+                         * vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &table->y1);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
@@ -412,12 +434,72 @@ dxf_table_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &table->z0);
                 }
-                else if (strcmp (temp_string, "92") == 0)
+                else if (strcmp (temp_string, "31") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the horizontal direction
+                         * vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &table->z1);
+                }
+                else if (strcmp (temp_string, "90") == 0)
+                {
+                        /* Now follows a string containing the flag for
+                         * table value (unsigned integer). */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &table->table_value_flag);
+                }
+                else if (strcmp (temp_string, "91") == 0)
+                {
+                        /* Now follows a string containing the number of
+                         * rows. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &table->number_of_rows);
+                }
+                else if ((strcmp (temp_string, "92") == 0)
+                  && (i == 0))
                 {
                         /* Now follows a string containing the
                          * number of bytes in the proxy entity graphics. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &table->graphics_data_size);
+                        i++;
+                }
+                else if ((strcmp (temp_string, "92") == 0)
+                  && (i == 1))
+                {
+                        /* Now follows a string containing the number of
+                         * columns. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &table->number_of_columns);
+                }
+                else if (strcmp (temp_string, "93") == 0)
+                {
+                        /* Now follows a string containing the flag for
+                         * an override. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &table->override_flag);
+                }
+                else if (strcmp (temp_string, "94") == 0)
+                {
+                        /* Now follows a string containing the flag for
+                         * an override of the border color. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &table->border_color_override_flag);
+                }
+                else if (strcmp (temp_string, "95") == 0)
+                {
+                        /* Now follows a string containing the flag for
+                         * an override of the border lineweight. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &table->border_lineweight_override_flag);
+                }
+                else if (strcmp (temp_string, "96") == 0)
+                {
+                        /* Now follows a string containing the flag for
+                         * an override of the border visibility. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &table->border_visibility_override_flag);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
@@ -435,13 +517,29 @@ dxf_table_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
+                else if (strcmp (temp_string, "141") == 0)
+                {
+                        /* Now follows a string containing the row
+                         * height. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &table->row_height[k]);
+                        k++;
+                }
+                else if (strcmp (temp_string, "142") == 0)
+                {
+                        /* Now follows a string containing the column
+                         * height. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &table->column_height[l]);
+                        l++;
+                }
                 else if (strcmp (temp_string, "310") == 0)
                 {
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", table->binary_graphics_data[i]);
-                        i++;
+                        fscanf (fp->fp, "%s\n", table->binary_graphics_data[j]);
+                        j++;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -449,6 +547,20 @@ dxf_table_read
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", table->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "342") == 0)
+                {
+                        /* Now follows a string containing a hard pointer
+                         * ID of the TABLESTYLE object. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", table->tablestyle_object_pointer);
+                }
+                else if (strcmp (temp_string, "343") == 0)
+                {
+                        /* Now follows a string containing a hard pointer
+                         * ID of the owning BLOCK record. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", table->owning_block_pointer);
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
