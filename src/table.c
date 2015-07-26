@@ -205,7 +205,7 @@ dxf_table_cell_init
         cell->attdef_text_string = strdup ("");
         cell->attdef_soft_pointer = strdup ("");
         cell->block_table_record_hard_pointer = strdup ("");
-        cell->owning_block_pointer = strdup ("");
+        cell->field_object_pointer = strdup ("");
         cell->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -303,7 +303,7 @@ dxf_table_init
         table->suppress_header_row = 0;
         table->table_cell_color_fill_override = 0;
         table->tablestyle_object_pointer = strdup ("");
-        table->field_object_pointer = strdup ("");
+        table->owning_block_pointer = strdup ("");
         table->cells = NULL;
         table->next = NULL;
 #if DEBUG
@@ -594,7 +594,7 @@ dxf_table_cell_free
         free (cell->attdef_text_string);
         free (cell->attdef_soft_pointer);
         free (cell->block_table_record_hard_pointer);
-        free (cell->owning_block_pointer);
+        free (cell->field_object_pointer);
         free (cell);
         cell = NULL;
 #if DEBUG
@@ -656,7 +656,7 @@ dxf_table_free
         free (table->block_name);
         free (table->table_text_style_name);
         free (table->tablestyle_object_pointer);
-        free (table->field_object_pointer);
+        free (table->owning_block_pointer);
 //        dxf_table_cells_free_chain (table->cells);
         free (table);
         table = NULL;

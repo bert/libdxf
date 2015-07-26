@@ -222,9 +222,13 @@ dxf_table_cell
                  * This value applies only to block-type cells and is
                  * repeated, 1 value per cell.\n
                  * Group code = 340. */
-        char *owning_block_pointer;
-                /*!< Hard pointer ID of the owning \c BLOCK record.\n
-                 * Group code = 343. */
+        char *field_object_pointer;
+                /*!< Hard pointer ID of the \c FIELD object.\n
+                 * This applies only to a text-type cell.\n
+                 * If the text in the cell contains one or more fields,
+                 * only the ID of the \c FIELD object is saved.\n
+                 * The text string (group codes 1 and 3) is ignored.\n
+                 * Group code = 344. */
         struct DxfTableCell *next;
                 /*!< Pointer to the next DxfTableCell.\n
                  * \c NULL in the last DxfTableCell. */
@@ -445,12 +449,8 @@ dxf_table
         char *tablestyle_object_pointer;
                 /*!< Hard pointer ID of the \c TABLESTYLE object.\n
                  * Group code = 342. */
-        char *field_object_pointer;
-                /*!< Hard pointer ID of the \c FIELD object.\n
-                 * This applies only to a text-type cell.\n
-                 * If the text in the cell contains one or more fields,
-                 * only the ID of the \c FIELD object is saved.\n
-                 * The text string (group codes 1 and 3) is ignored.\n
+        char *owning_block_pointer;
+                /*!< Hard pointer ID of the owning \c BLOCK record.\n
                  * Group code = 343. */
         struct DxfTableCell *cells;
                 /*!< Pointer to the first DxfTableCell of a linked list
