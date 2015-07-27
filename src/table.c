@@ -689,7 +689,7 @@ dxf_table_write
         }
         for (i = 0; i < table->number_of_columns; i++)
         {
-                fprintf (fp->fp, "141\n%f\n", table->column_height[i]);
+                fprintf (fp->fp, "142\n%f\n", table->column_height[i]);
         }
 
         /* Clean up. */
