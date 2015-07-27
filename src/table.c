@@ -616,7 +616,8 @@ dxf_table_write
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *dxf_entity_name = strdup ("TABLE");
+        char *dxf_entity_name = strdup ("ACAD_TABLE");
+        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -643,10 +644,52 @@ dxf_table_write
         {
                 fprintf (fp->fp, "  5\n%x\n", table->id_code);
         }
+        fprintf (fp->fp, "330\n%s\n", table->dictionary_owner_soft);
         if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp->fp, "100\nAcDbSymbolTable\n");
+                fprintf (fp->fp, "100\nAcDbEntity\n");
         }
+        fprintf (fp->fp, " 92\n%d\n", table->graphics_data_size);
+        i = 0;
+        while (strlen (table->binary_graphics_data[i]) > 0)
+        {
+                fprintf (fp->fp, "310\n%s\n", table->binary_graphics_data[i]);
+                i++;
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbBlockReference\n");
+        }
+        fprintf (fp->fp, "  2\n%s\n", table->block_name);
+        fprintf (fp->fp, " 10\n%f\n", table->x0);
+        fprintf (fp->fp, " 20\n%f\n", table->y0);
+        fprintf (fp->fp, " 30\n%f\n", table->z0);
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbTable\n");
+        }
+        fprintf (fp->fp, "280\n%d\n", table->table_data_version);
+        fprintf (fp->fp, "342\n%s\n", table->tablestyle_object_pointer);
+        fprintf (fp->fp, "343\n%s\n", table->owning_block_pointer);
+        fprintf (fp->fp, " 11\n%f\n", table->x1);
+        fprintf (fp->fp, " 21\n%f\n", table->y1);
+        fprintf (fp->fp, " 31\n%f\n", table->z1);
+        fprintf (fp->fp, " 90\n%d\n", table->table_value_flag);
+        fprintf (fp->fp, " 91\n%d\n", table->number_of_rows);
+        fprintf (fp->fp, " 92\n%d\n", table->number_of_columns);
+        fprintf (fp->fp, " 93\n%d\n", table->override_flag);
+        fprintf (fp->fp, " 94\n%d\n", table->border_color_override_flag);
+        fprintf (fp->fp, " 95\n%d\n", table->border_lineweight_override_flag);
+        fprintf (fp->fp, " 96\n%d\n", table->border_visibility_override_flag);
+        for (i = 0; i < table->number_of_rows; i++)
+        {
+                fprintf (fp->fp, "141\n%f\n", table->row_height[i]);
+        }
+        for (i = 0; i < table->number_of_columns; i++)
+        {
+                fprintf (fp->fp, "141\n%f\n", table->column_height[i]);
+        }
+
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
