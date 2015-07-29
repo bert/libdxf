@@ -99,6 +99,12 @@ dxf_table_cell
                 /*!< True color value for the top border of the cell;
                  * override applied at the cell level.\n
                  * Group code = 69. */
+        int override_flag;
+                /*!< Cell override flag; this value is repeated, 1 value
+                 * per cell (from AutoCAD 2007).\n
+                 * Group code = 91.
+                 *
+                 * \warning Multiple entries with Group code 91. */
         double text_height;
                 /*!< Text height value; override applied at the cell
                  * level.\n
@@ -386,7 +392,9 @@ dxf_table
                  * Group code = 90. */
         int number_of_rows;
                 /*!< Number of rows.\n
-                 * Group code = 91. */
+                 * Group code = 91.
+                 *
+                 * \warning Multiple entries with Group code 91. */
         int number_of_columns;
                 /*!< Number of columns.\n
                  * Group code = 92.
