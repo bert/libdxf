@@ -172,6 +172,7 @@ dxf_table_cell_init
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 cell->optional_text_string[i] = strdup ("");
+                cell->attdef_soft_pointer[i] = strdup ("");
         }
         cell->text_style_name = strdup (DXF_DEFAULT_TEXTSTYLE);
         cell->color_bg = 0;
@@ -203,7 +204,6 @@ dxf_table_cell_init
         cell->border_visibility_override_left = 0;
         cell->border_visibility_override_top = 0;
         cell->attdef_text_string = strdup ("");
-        cell->attdef_soft_pointer = strdup ("");
         cell->block_table_record_hard_pointer = strdup ("");
         cell->field_object_pointer = strdup ("");
         cell->next = NULL;
@@ -814,10 +814,10 @@ dxf_table_cell_free
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 free (cell->optional_text_string[i]);
+                free (cell->attdef_soft_pointer[i]);
         }
         free (cell->text_style_name);
         free (cell->attdef_text_string);
-        free (cell->attdef_soft_pointer);
         free (cell->block_table_record_hard_pointer);
         free (cell->field_object_pointer);
         free (cell);

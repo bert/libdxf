@@ -217,7 +217,7 @@ dxf_table_cell
                  * repeated once per attribute definition and applicable
                  * only for a block-type cell.\n
                  * Group code = 300. */
-        char *attdef_soft_pointer;
+        char *attdef_soft_pointer[DXF_MAX_PARAM];
                 /*!< Soft pointer ID of the attribute definition in the
                  * block table record, referenced by group code 179
                  * (applicable only for a block-type cell).\n
