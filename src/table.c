@@ -594,7 +594,75 @@ dxf_table_read
 
 
 /*!
- * \brief Write DXF output to a file for a table section.
+ * \brief Write DXF output to a file for a DXF \c TABLE cell.
+ * 
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2005.
+ */
+int
+dxf_table_cell_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfTableCell *cell
+                /*!< a pointer to a DXF \c TABLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (cell == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "171\n%d\n", cell->type);
+        fprintf (fp->fp, "172\n%d\n", cell->flag);
+        fprintf (fp->fp, "173\n%d\n", cell->merged);
+        fprintf (fp->fp, "174\n%d\n", cell->autofit);
+        fprintf (fp->fp, "175\n%lf\n", cell->border_width);
+        fprintf (fp->fp, "176\n%lf\n", cell->border_height);
+        fprintf (fp->fp, " 91\n%d\n", cell->override_flag);
+        fprintf (fp->fp, "178\n%d\n", cell->virtual_edge);
+        fprintf (fp->fp, "145\n%lf\n", cell->block_rotation);
+        fprintf (fp->fp, "344\n%s\n", cell->field_object_pointer);
+        i = 0;
+        if (cell->optional_text_string[i] != NULL)
+        {
+                fprintf (fp->fp, "  2\n%s\n", cell->optional_text_string[i]);
+                i++;
+        }
+        fprintf (fp->fp, "  1\n%s\n", cell->text_string);
+
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Write DXF output to a file for a DXF \c TABLE entity.
  * 
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.

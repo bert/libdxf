@@ -494,6 +494,12 @@ dxf_table_read
         DxfTable *table
 );
 int
+dxf_table_cell_write
+(
+        DxfFile *fp,
+        DxfTableCell *cell
+);
+int
 dxf_table_write
 (
         DxfFile *fp,
