@@ -647,12 +647,35 @@ dxf_table_cell_write
         fprintf (fp->fp, "145\n%lf\n", cell->block_rotation);
         fprintf (fp->fp, "344\n%s\n", cell->field_object_pointer);
         i = 0;
-        if (cell->optional_text_string[i] != NULL)
+        while ((cell->optional_text_string[i] != NULL)
+          && (strcmp (cell->optional_text_string[i], "") != 0))
         {
                 fprintf (fp->fp, "  2\n%s\n", cell->optional_text_string[i]);
                 i++;
         }
         fprintf (fp->fp, "  1\n%s\n", cell->text_string);
+        fprintf (fp->fp, "340\n%s\n", cell->block_table_record_hard_pointer);
+        fprintf (fp->fp, "144\n%lf\n", cell->block_scale);
+        fprintf (fp->fp, "179\n%d\n", cell->number_of_block_attdefs);
+        i = 0;
+        while ((cell->attdef_soft_pointer[i] != NULL)
+          && (strcmp (cell->attdef_soft_pointer[i], "") != 0))
+        {
+                fprintf (fp->fp, "331\n%s\n", cell->attdef_soft_pointer[i]);
+                i++;
+        }
+        if (cell->number_of_block_attdefs < (i + 1))
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () more attdefs encountered than expected.\n")),
+                  __FUNCTION__);
+        }
+        else if (cell->number_of_block_attdefs > (i + 1))
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () less attdefs encountered than expected.\n")),
+                  __FUNCTION__);
+        }
 
 #if DEBUG
         DXF_DEBUG_END
