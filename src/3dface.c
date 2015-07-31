@@ -93,7 +93,7 @@ Dxf3dface *
 dxf_3dface_init
 (
         Dxf3dface *face
-                /*!< DXF 3dface entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -154,7 +154,7 @@ dxf_3dface_init
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
  *
- * \return a pointer to \c face.
+ * \return a pointer to a DXF \c 3DFACE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -166,9 +166,9 @@ Dxf3dface *
 dxf_3dface_read
 (
         DxfFile *fp,
-                /*!< DXF file pointer to an input file (or device). */
+                /*!< a DXF \c FILE pointer to an input file (or device). */
         Dxf3dface *face
-                /*!< DXF 3dface entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -441,9 +441,9 @@ int
 dxf_3dface_write
 (
         DxfFile *fp,
-                /*!< DXF file pointer to an output file (or device). */
+                /*!< a DXF \c FILE pointer to an output file (or device). */
         Dxf3dface *face
-                /*!< DXF 3D face entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -599,8 +599,8 @@ Dxf3dface *
 dxf_3dface_free
 (
         Dxf3dface *face
-                /*!< Pointer to the memory occupied by the DXF \c 3DFACE
-                 * entity. */
+                /*!< a pointer to the memory occupied by the DXF
+                 * \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -640,7 +640,7 @@ void
 dxf_3dface_free_chain
 (
         Dxf3dface *faces
-                /*!< pointer to the chain of DXF \c 3DFACE entities. */
+                /*!< a pointer to the chain of DXF \c 3DFACE entities. */
 )
 {
 #ifdef DEBUG
@@ -674,7 +674,7 @@ int
 dxf_3dface_is_first_edge_invisible
 (
         Dxf3dface *face
-                /*!< DXF 3dface entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
 )
 {
 #if DEBUG
@@ -708,7 +708,7 @@ int
 dxf_3dface_is_second_edge_invisible
 (
         Dxf3dface *face
-                /*!< DXF 3dface entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
 )
 {
 #if DEBUG
@@ -742,7 +742,7 @@ int
 dxf_3dface_is_third_edge_invisible
 (
         Dxf3dface *face
-                /*!< DXF 3dface entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
 )
 {
 #if DEBUG
@@ -776,7 +776,7 @@ int
 dxf_3dface_is_fourth_edge_invisible
 (
         Dxf3dface *face
-                /*!< DXF 3dface entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
 )
 {
 #if DEBUG
