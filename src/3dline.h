@@ -165,6 +165,11 @@ dxf_3dline_free_chain
 (
         Dxf3dline *lines
 );
+double
+dxf_3dline_get_length
+(
+        Dxf3dline *line
+);
 
 
 #endif /* LIBDXF_SRC_3DLINE_H */

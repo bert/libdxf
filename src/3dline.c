@@ -622,4 +622,44 @@ dxf_3dline_free_chain
 }
 
 
+/*!
+ * \brief Get the length of the line (straight distance between start
+ * point and end point).
+ *
+ * \return the length of the \c line in drawing units.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ */
+double
+dxf_3dline_get_length
+(
+        Dxf3dline *line
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double length;
+
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        length = sqrt
+        (
+          ((line->x1 - line->x0) * (line->x1 - line->x0))
+          + ((line->y1 - line->y0) * (line->y1 - line->y0))
+          + ((line->z1 - line->z0) * (line->z1 - line->z0))
+        );
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (length);
+}
+
+
 /* EOF */
