@@ -92,7 +92,7 @@ Dxf3dline *
 dxf_3dline_init
 (
         Dxf3dline *line
-                /*!< DXF 3D line entity. */
+                /*!< a pointer to a DXF \c 3DLINE entity. */
 )
 {
 #if DEBUG
@@ -159,9 +159,9 @@ Dxf3dline *
 dxf_3dline_read
 (
         DxfFile *fp,
-                /*!< DXF file pointer to an input file (or device). */
+                /*!< a DXF file pointer to an input file (or device). */
         Dxf3dline *line
-                /*!< DXF 3D line entity. */
+                /*!< a pointer to a DXF \c 3DLINE entity. */
 )
 {
 #if DEBUG
@@ -402,9 +402,9 @@ int
 dxf_3dline_write
 (
         DxfFile *fp,
-                /*!< DXF file pointer to an output file (or device). */
+                /*!< a DXF file pointer to an output file (or device). */
         Dxf3dline *line
-                /*!< DXF 3D line entity. */
+                /*!< a pointer to a DXF \c 3DLINE entity. */
 )
 {
 #if DEBUG
@@ -560,7 +560,7 @@ int
 dxf_3dline_free
 (
         Dxf3dline *line
-                /*!< Pointer to the memory occupied by the DXF \c 3DLINE
+                /*!< a pointer to the memory occupied by the DXF \c 3DLINE
                  * entity. */
 )
 {
@@ -598,7 +598,7 @@ void
 dxf_3dline_free_chain
 (
         Dxf3dline *lines
-                /*!< pointer to the chain of DXF 3DLINE entities. */
+                /*!< a pointer to the chain of DXF 3DLINE entities. */
 )
 {
 #ifdef DEBUG
