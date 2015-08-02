@@ -102,7 +102,7 @@ Dxf3dsolid *
 dxf_3dsolid_init
 (
         Dxf3dsolid *solid
-                /*!< DXF \c 3DSOLID entity. */
+                /*!< a pointer to a DXF \c 3DSOLID entity. */
 )
 {
 #if DEBUG
@@ -173,9 +173,9 @@ Dxf3dsolid *
 dxf_3dsolid_read
 (
         DxfFile *fp,
-                /*!< DXF file pointer to an input file (or device). */
+                /*!< a DXF file pointer to an input file (or device). */
         Dxf3dsolid *solid
-                /*!< DXF \c 3DSOLID entity. */
+                /*!< a pointer to a DXF \c 3DSOLID entity. */
 )
 {
 #if DEBUG
@@ -411,9 +411,9 @@ int
 dxf_3dsolid_write
 (
         DxfFile *fp,
-                /*!< DXF file pointer to an output file (or device). */
+                /*!< a DXF file pointer to an output file (or device). */
         Dxf3dsolid *solid
-                /*!< DXF \c 3DSOLID entity. */
+                /*!< a pointer to a DXF \c 3DSOLID entity. */
 )
 {
 #if DEBUG
@@ -586,7 +586,7 @@ int
 dxf_3dsolid_free
 (
         Dxf3dsolid *solid
-                /*!< Pointer to the memory occupied by the DXF
+                /*!< a pointer to the memory occupied by the DXF
                  * \c 3DSOLID entity. */
 )
 {
@@ -635,7 +635,7 @@ void
 dxf_3dsolid_free_chain
 (
         Dxf3dsolid *solids
-                /*!< pointer to the chain of DXF \c 3DSOLID entities. */
+                /*!< a pointer to the chain of DXF \c 3DSOLID entities. */
 )
 {
 #ifdef DEBUG
