@@ -110,7 +110,7 @@ DxfAcadProxyEntity *
 dxf_acad_proxy_entity_init
 (
         DxfAcadProxyEntity *acad_proxy_entity
-                /*!< DXF ACAD_PROXY_ENTITY table. */
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY table. */
 )
 {
 #if DEBUG
@@ -182,7 +182,7 @@ dxf_acad_proxy_entity_read
         DxfFile *fp,
                 /*!< DXF file pointer to an input file (or device). */
         DxfAcadProxyEntity *acad_proxy_entity
-                /*!< DXF ACAD_PROXY_ENTITY entity. */
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY table. */
 )
 {
 #if DEBUG
@@ -412,7 +412,7 @@ dxf_acad_proxy_entity_write
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
         DxfAcadProxyEntity *acad_proxy_entity
-                /*!< DXF \c ACAD_PROXY_ENTITY entity. */
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY table. */
 )
 {
 #if DEBUG
@@ -548,8 +548,8 @@ int
 dxf_acad_proxy_entity_free
 (
         DxfAcadProxyEntity *acad_proxy_entity
-                /*!< Pointer to the memory occupied by the DXF \c ACAD_PROXY_ENTITY
-                 * table. */
+                /*!< a pointer to the memory occupied by the DXF
+                 * \c ACAD_PROXY_ENTITY table. */
 )
 {
 #if DEBUG
@@ -595,7 +595,7 @@ void
 dxf_acad_proxy_entity_free_chain
 (
         DxfAcadProxyEntity *acad_proxy_entities
-                /*!< pointer to the chain of DXF ACAD_PROXY_ENTITY entities. */
+                /*!< a pointer to the chain of DXF ACAD_PROXY_ENTITY entities. */
 )
 {
 #ifdef DEBUG
