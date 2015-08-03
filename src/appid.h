@@ -136,6 +136,12 @@ dxf_appid_get_id_code
 (
         DxfAppid *appid
 );
+DxfAppid *
+dxf_appid_set_id_code
+(
+        DxfAppid *appid,
+        int id_code
+);
 int
 dxf_appid_is_xreferenced
 (

@@ -493,6 +493,45 @@ dxf_appid_get_id_code
 
 
 /*!
+ * \brief Set the ID code for this DXF \c APPID symbol table entry.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfAppid *
+dxf_appid_set_id_code
+(
+        DxfAppid *appid,
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
+        int id_code
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file.\n. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (appid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        appid->id_code = id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (appid);
+}
+
+
+/*!
  * \brief Test if xdata associated with this DXF \c APPID is not to be
  * written when \c SAVEASR12 is performed.
  *
