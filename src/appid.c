@@ -711,4 +711,44 @@ dxf_appid_set_application_name
 }
 
 
+/*!
+ * \brief Get the soft pointer to the dictionary owner from this DXF 
+ * \c APPID symbol table entry.
+ *
+ * \return soft pointer to the dictionary owner.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_appid_get_dictionary_owner_soft
+(
+        DxfAppid *appid
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (appid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = appid->dictionary_owner_soft;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

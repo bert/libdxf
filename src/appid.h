@@ -162,6 +162,11 @@ dxf_appid_set_application_name
         DxfAppid *appid,
         char *name
 );
+char *
+dxf_appid_get_dictionary_owner_soft
+(
+        DxfAppid *appid
+);
 
 
 #endif /* LIBDXF_SRC_APPID_H */
