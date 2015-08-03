@@ -108,7 +108,7 @@ DxfAppid *
 dxf_appid_init
 (
         DxfAppid *appid
-                /*!< DXF application id (\c APPID) symbol table entry. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -164,9 +164,9 @@ DxfAppid *
 dxf_appid_read
 (
         DxfFile *fp,
-                /*!< DXF file pointer to an input file (or device). */
+                /*!< a DXF file pointer to an input file (or device). */
         DxfAppid *appid
-                /*!< DXF application id (\c APPID) symbol table entry. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -278,9 +278,9 @@ int
 dxf_appid_write
 (
         DxfFile *fp,
-                /*!< DXF file pointer to an output file (or device). */
+                /*!< a DXF file pointer to an output file (or device). */
         DxfAppid *appid
-                /*!< DXF application id (\c APPID) symbol table entry. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -389,7 +389,7 @@ int
 dxf_appid_free
 (
         DxfAppid *appid
-                /*!< DXF application id (\c APPID) symbol table entry. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -428,7 +428,7 @@ void
 dxf_appid_free_chain
 (
         DxfAppid *appids
-                /*!< pointer to the chain of DXF application id
+                /*!< a pointer to a chain of DXF application id
                  * (\c APPID) symbol table entries. */
 )
 {
@@ -470,7 +470,7 @@ int
 dxf_appid_is_no_save_xdata
 (
         DxfAppid *appid
-                /*!< DXF application id (\c APPID) symbol table entry. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -510,7 +510,7 @@ int
 dxf_appid_is_xreferenced
 (
         DxfAppid *appid
-                /*!< DXF application id (\c APPID) symbol table entry. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -552,7 +552,7 @@ int
 dxf_appid_is_xresolved
 (
         DxfAppid *appid
-                /*!< DXF application id (\c APPID) symbol table entry. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -594,7 +594,7 @@ int
 dxf_appid_is_referenced
 (
         DxfAppid *appid
-                /*!< DXF application id (\c APPID) symbol table entry. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -634,7 +634,7 @@ char *
 dxf_appid_get_application_name
 (
         DxfAppid *appid
-                /*!< DXF application id (\c APPID) symbol table entry. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
 )
 {
 #if DEBUG
@@ -680,7 +680,7 @@ DxfAppid *
 dxf_appid_set_application_name
 (
         DxfAppid *appid,
-                /*!< DXF application id (\c APPID) symbol table entry. */
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
         char *name
                 /*!< application name. */
 )
