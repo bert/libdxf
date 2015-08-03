@@ -717,6 +717,8 @@ dxf_appid_set_application_name
  *
  * \return soft pointer to the dictionary owner.
  *
+ * \warning No checks are performed on the returned pointer (string).
+ *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
  * \version According to DXF R12.
@@ -756,6 +758,8 @@ dxf_appid_get_dictionary_owner_soft
  * \c APPID symbol table entry.
  *
  * \return hard pointer to the dictionary owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
