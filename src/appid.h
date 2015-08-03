@@ -132,6 +132,11 @@ dxf_appid_free_chain
         DxfAppid *appids
 );
 int
+dxf_appid_get_id_code
+(
+        DxfAppid *appid
+);
+int
 dxf_appid_is_xreferenced
 (
         DxfAppid *appid
