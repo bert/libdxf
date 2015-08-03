@@ -167,6 +167,11 @@ dxf_appid_get_dictionary_owner_soft
 (
         DxfAppid *appid
 );
+char *
+dxf_appid_get_dictionary_owner_hard
+(
+        DxfAppid *appid
+);
 
 
 #endif /* LIBDXF_SRC_APPID_H */
