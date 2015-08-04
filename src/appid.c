@@ -416,7 +416,7 @@ dxf_appid_free
 
 /*!
  * \brief Free the allocated memory for a chain of DXF \c APPID
- * symbol table and all their data fields.
+ * symbol table entries and all their data fields.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -428,8 +428,8 @@ void
 dxf_appid_free_chain
 (
         DxfAppid *appids
-                /*!< a pointer to a chain of DXF application id
-                 * (\c APPID) symbol table entries. */
+                /*!< a pointer to a chain of DXF \c APPID symbol table
+                 * entries. */
 )
 {
 #ifdef DEBUG
