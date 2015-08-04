@@ -532,6 +532,45 @@ dxf_appid_set_id_code
 
 
 /*!
+ * \brief Get the flag value from this DXF \c APPID symbol table entry.
+ *
+ * \return flag value.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_appid_get_flag
+(
+        DxfAppid *appid
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (appid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = appid->flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Test if xdata associated with this DXF \c APPID is not to be
  * written when \c SAVEASR12 is performed.
  *
