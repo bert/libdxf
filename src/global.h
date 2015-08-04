@@ -439,6 +439,18 @@ dxf_file
 #define DXF_CHECK_BIT(var,pos) ((var & (1 << pos)) == (1 << pos))
         /*!< \brief Test bit is set. */
 
+#define DXF_SYMBOL_TABLE_ENTRY_IS_EXTERNALLY_DEPENDANT 16
+        /*!< \brief The symbol table entry is externally dependant on an
+         * xref. */
+
+#define DXF_SYMBOL_TABLE_ENTRY_DEPENDENCY_IS_RESOLVED 32
+        /*!< \brief The symbol table entry external dependency on an
+         * xref has been successfully resolved. */
+
+#define DXF_SYMBOL_TABLE_ENTRY_IS_REFERENCED 64
+        /*!< \brief The symbol table entry is referenced by at least one
+         * entity in the drawing the last time the drawing was edited. */
+
 
 #endif /* LIBDXF_SRC_GLOBAL_H */
 
