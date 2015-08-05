@@ -73,7 +73,7 @@ dxf_3dline
                  * (default).\n
                  * Group code = 38. */
         double thickness;
-                /*!< Thickness of the arc in the local Z-direction.\n
+                /*!< Thickness of the 3dline in the local Z-direction.\n
                  * Defaults to 0.0 if ommitted in the DXF file.\n
                  * Group code = 39. */
         double linetype_scale;
