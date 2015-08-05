@@ -509,7 +509,7 @@ dxf_appid_set_id_code
         int id_code
                 /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file.\n. */
+                 * file. */
 )
 {
 #if DEBUG
@@ -585,7 +585,7 @@ dxf_appid_set_flag
         DxfAppid *appid,
                 /*!< a pointer to a DXF \c APPID symbol table entry. */
         int flag
-                /*!< the flag value to be set.\n */
+                /*!< the flag value to be set. */
 )
 {
 #if DEBUG
