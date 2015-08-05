@@ -668,6 +668,8 @@ dxf_3dline_get_length
  * \return \c NULL when failed, a pointer to the DXF \c 3DLINE entity
  * when successful.
  *
+ * \note Both DXF \c POINT entities need to be freed by the caller.
+ *
  * \version According to DXF R10.
  * \version According to DXF R11.
  */
