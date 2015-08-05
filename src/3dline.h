@@ -40,6 +40,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 /*!
@@ -169,6 +170,14 @@ double
 dxf_3dline_get_length
 (
         Dxf3dline *line
+);
+Dxf3dline *
+dxf_3dline_create_from_points
+(
+        DxfPoint *p1,
+        DxfPoint *p2,
+        int id_code,
+        int inheritance
 );
 
 

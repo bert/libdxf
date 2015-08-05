@@ -662,4 +662,143 @@ dxf_3dline_get_length
 }
 
 
+/*!
+ * \brief Create a DXF \c 3DLINE by means of two DXF \c POINT entities.
+ *
+ * \return \c NULL when failed, a pointer to the DXF \c 3DLINE entity
+ * when successful.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ */
+Dxf3dline *
+dxf_3dline_create_from_points
+(
+        DxfPoint *p1,
+                /*!< a pointer to a DXF \c POINT entity. */
+        DxfPoint *p2,
+                /*!< a pointer to a DXF \c POINT entity. */
+        int id_code,
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+        int inheritance
+                /*!< Inherit layer, linetype, color and other relevant
+                 * properties from either:
+                 * <ol>
+                 * <li value = "0"> Default (as initialised).</li>
+                 * <li value = "1"> Point 1.</li>
+                 * <li value = "2"> Point 2.</li>
+                 * </ol>
+                 */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        Dxf3dline *line = NULL;
+
+        /* Do some basic checks. */
+        if ((p1 == NULL) || (p2 == NULL))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if ((p1->x0 == p2->x0) && (p1->y0 == p2->y0) && (p1->z0 == p2->z0))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () points with identical coordinates were passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if ((inheritance < 0) || (inheritance > 2))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an illegal inherit value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line = dxf_3dline_init (line);
+        if (line == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a Dxf3dline struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        line->id_code = id_code;
+        line->x0 = p1->x0;
+        line->y0 = p1->y0;
+        line->z0 = p1->z0;
+        line->x1 = p2->x0;
+        line->y1 = p2->y0;
+        line->z1 = p2->z0;
+        switch (inheritance)
+        {
+                case 0:
+                        /* Do nothing. */
+                        break;
+                case 1:
+                        if (p1->linetype != NULL)
+                        {
+                                line->linetype = p1->linetype;
+                        }
+                        if (p1->layer != NULL)
+                        {
+                                line->layer = p1->layer;
+                        }
+                        line->thickness = p1->thickness;
+                        line->linetype_scale = p1->linetype_scale;
+                        line->visibility = p1->visibility;
+                        line->color = p1->color;
+                        line->paperspace = p1->paperspace;
+                        if (p1->dictionary_owner_soft != NULL)
+                        {
+                                line->dictionary_owner_soft = strdup (p1->dictionary_owner_soft);
+                        }
+                        if (p1->dictionary_owner_hard != NULL)
+                        {
+                                line->dictionary_owner_hard = strdup (p1->dictionary_owner_hard);
+                        }
+                        break;
+                case 2:
+                        if (p2->linetype != NULL)
+                        {
+                                line->linetype = p2->linetype;
+                        }
+                        if (p2->layer != NULL)
+                        {
+                                line->layer = p2->layer;
+                        }
+                        line->thickness = p2->thickness;
+                        line->linetype_scale = p2->linetype_scale;
+                        line->visibility = p2->visibility;
+                        line->color = p2->color;
+                        line->paperspace = p2->paperspace;
+                        if (p2->dictionary_owner_soft != NULL)
+                        {
+                                line->dictionary_owner_soft = strdup (p2->dictionary_owner_soft);
+                        }
+                        if (p2->dictionary_owner_hard != NULL)
+                        {
+                                line->dictionary_owner_hard = strdup (p2->dictionary_owner_hard);
+                        }
+                        break;
+                default:
+                        fprintf (stderr,
+                          (_("Warning in %s (): unknown option passed.\n")),
+                          __FUNCTION__);
+                        fprintf (stderr,
+                          (_("\tResolving to default.\n")));
+                        break;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* EOF */
