@@ -166,6 +166,11 @@ dxf_3dline_free_chain
 (
         Dxf3dline *lines
 );
+int
+dxf_3dline_get_id_code
+(
+        Dxf3dline *line
+);
 double
 dxf_3dline_get_length
 (
