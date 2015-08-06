@@ -171,6 +171,12 @@ dxf_3dline_get_id_code
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_id_code
+(
+        Dxf3dline *line,
+        int id_code
+);
 double
 dxf_3dline_get_length
 (
