@@ -581,7 +581,8 @@ dxf_appid_get_application_name
  * \warning No testing for the contents of the \c application_name
  * member of the \c DxfAppid struct is performed.\n
  *
- * \warning The passed \c name variable is not freed by this function.
+ * \warning The passed \c name variable is not freed by this function
+ * and needs to be freed by the caller.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
