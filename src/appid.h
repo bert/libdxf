@@ -142,6 +142,17 @@ dxf_appid_set_id_code
         DxfAppid *appid,
         int id_code
 );
+char *
+dxf_appid_get_application_name
+(
+        DxfAppid *appid
+);
+DxfAppid *
+dxf_appid_set_application_name
+(
+        DxfAppid *appid,
+        char *name
+);
 int
 dxf_appid_get_flag
 (
@@ -172,17 +183,6 @@ int
 dxf_appid_is_no_save_xdata
 (
         DxfAppid *appid
-);
-char *
-dxf_appid_get_application_name
-(
-        DxfAppid *appid
-);
-DxfAppid *
-dxf_appid_set_application_name
-(
-        DxfAppid *appid,
-        char *name
 );
 char *
 dxf_appid_get_dictionary_owner_soft

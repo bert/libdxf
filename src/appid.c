@@ -532,6 +532,99 @@ dxf_appid_set_id_code
 
 
 /*!
+ * \brief Get the application name from this DXF \c APPID symbol table
+ * entry.
+ *
+ * \return application name.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_appid_get_application_name
+(
+        DxfAppid *appid
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (appid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = appid->application_name;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Set the application name for this DXF \c APPID symbol table
+ * entry.
+ *
+ * \return a pointer to the DXF \c APPID symbol table entry if
+ * successful, a \c NULL when an error occurred.
+ *
+ * \warning No testing for the contents of the \c application_name
+ * member of the \c DxfAppid struct is performed.\n
+ *
+ * \warning The passed \c name variable is not freed by this function.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfAppid *
+dxf_appid_set_application_name
+(
+        DxfAppid *appid,
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
+        char *name
+                /*!< application name. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (appid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () the string name contained a NULL pointer.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        appid->application_name = strdup (name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (appid);
+}
+
+
+/*!
  * \brief Get the flag value from this DXF \c APPID symbol table entry.
  *
  * \return flag value.
@@ -769,99 +862,6 @@ dxf_appid_is_referenced
         DXF_DEBUG_END
 #endif
         return (result);
-}
-
-
-/*!
- * \brief Get the application name from this DXF \c APPID symbol table
- * entry.
- *
- * \return application name.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- */
-char *
-dxf_appid_get_application_name
-(
-        DxfAppid *appid
-                /*!< a pointer to a DXF \c APPID symbol table entry. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        char *result;
-
-        /* Do some basic checks. */
-        if (appid == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        result = appid->application_name;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (result);
-}
-
-
-/*!
- * \brief Set the application name for this DXF \c APPID symbol table
- * entry.
- *
- * \return a pointer to the DXF \c APPID symbol table entry if
- * successful, a \c NULL when an error occurred.
- *
- * \warning No testing for the contents of the \c application_name
- * member of the \c DxfAppid struct is performed.\n
- *
- * \warning The passed \c name variable is not freed by this function.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- */
-DxfAppid *
-dxf_appid_set_application_name
-(
-        DxfAppid *appid,
-                /*!< a pointer to a DXF \c APPID symbol table entry. */
-        char *name
-                /*!< application name. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (appid == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (name == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () the string name contained a NULL pointer.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        appid->application_name = strdup (name);
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (appid);
 }
 
 
