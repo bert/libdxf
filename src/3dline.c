@@ -643,11 +643,22 @@ dxf_3dline_get_length
 #endif
         double length;
 
+        /* Do some basic checks. */
         if (line == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                return (0.0);
+        }
+        if ((line->x0 == line->x1)
+          && (line->y0 == line->y1)
+          && (line->z0 == line->z1))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () endpoints with identical coordinates were passed.\n")),
+                  __FUNCTION__);
+                return (0.0);
         }
         length = sqrt
         (
