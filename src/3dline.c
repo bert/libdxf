@@ -629,7 +629,6 @@ dxf_3dline_free_chain
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
- *
  */
 int
 dxf_3dline_get_id_code
@@ -662,6 +661,8 @@ dxf_3dline_get_id_code
 /*!
  * \brief Set the ID code for this DXF \c 3DLINE entity.
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
  */
 Dxf3dline *
 dxf_3dline_set_id_code
@@ -700,7 +701,6 @@ dxf_3dline_set_id_code
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
- *
  */
 char *
 dxf_3dline_get_linetype
