@@ -193,6 +193,12 @@ dxf_3dline_get_layer
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_layer
+(
+        Dxf3dline *line,
+        char *layer
+);
 double
 dxf_3dline_get_length
 (
