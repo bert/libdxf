@@ -729,6 +729,13 @@ dxf_3dline_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
+        if (line->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the linetype member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         result = strdup (line->linetype);
 #if DEBUG
         DXF_DEBUG_END
