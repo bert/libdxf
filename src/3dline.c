@@ -813,6 +813,13 @@ dxf_3dline_get_layer
                   __FUNCTION__);
                 return (NULL);
         }
+        if (line->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         result = strdup (line->layer);
 #if DEBUG
         DXF_DEBUG_END
