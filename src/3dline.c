@@ -650,6 +650,13 @@ dxf_3dline_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (line->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         result = line->id_code;
 #if DEBUG
         DXF_DEBUG_END
