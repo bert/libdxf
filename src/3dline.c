@@ -742,7 +742,7 @@ dxf_3dline_set_linetype
         Dxf3dline *line,
                 /*!< a pointer to a DXF \c 3DLINE entity. */
         char *linetype
-                /*!< The string containing the linetype for the entity. */
+                /*!< a string containing the linetype for the entity. */
 )
 {
 #if DEBUG
