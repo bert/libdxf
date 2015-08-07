@@ -772,6 +772,42 @@ dxf_3dline_set_linetype
 
 
 /*!
+ * \brief Get the layer from this DXF \c 3DLINE entity.
+ *
+ * \return layer when sucessful, \c NULL when an error occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ */
+char *
+dxf_3dline_get_layer
+(
+        Dxf3dline *line
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (line->layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the length of the line (straight distance between start
  * point and end point).
  *

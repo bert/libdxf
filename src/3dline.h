@@ -188,6 +188,11 @@ dxf_3dline_set_linetype
         Dxf3dline *line,
         char *linetype
 );
+char *
+dxf_3dline_get_layer
+(
+        Dxf3dline *line
+);
 double
 dxf_3dline_get_length
 (
