@@ -200,6 +200,11 @@ dxf_3dline_set_layer
         char *layer
 );
 double
+dxf_3dline_get_elevation
+(
+        Dxf3dline *line
+);
+double
 dxf_3dline_get_length
 (
         Dxf3dline *line
