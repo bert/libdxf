@@ -872,7 +872,7 @@ dxf_3dline_set_layer
 /*!
  * \brief Get the elevation from this DXF \c 3DLINE entity.
  *
- * \return ID code.
+ * \return elevation.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
