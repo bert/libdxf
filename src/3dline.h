@@ -211,6 +211,11 @@ dxf_3dline_set_elevation
         double elevation
 );
 double
+dxf_3dline_get_thickness
+(
+        Dxf3dline *line
+);
+double
 dxf_3dline_get_length
 (
         Dxf3dline *line
