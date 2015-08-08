@@ -67,7 +67,7 @@ dxf_3dline
                  * Defaults to layer "0" if no valid layername is given.\n
                  * Group code = 8. */
         double elevation;
-                /*!< Elevation of the arc in the local Z-direction.\n
+                /*!< Elevation of the 3dline in the local Z-direction.\n
                  * Defaults to 0.0 if omitted in the DXF file, or prior
                  * to DXF version R12, or DXF_FLATLAND equals 0\n
                  * (default).\n
