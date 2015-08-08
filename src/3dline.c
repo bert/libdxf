@@ -913,6 +913,40 @@ dxf_3dline_get_elevation
 
 
 /*!
+ * \brief Set the elevation for this DXF \c 3DLINE entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ */
+Dxf3dline *
+dxf_3dline_set_elevation
+(
+        Dxf3dline *line,
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+        double elevation
+                /*!< the elevation to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the length of the line (straight distance between start
  * point and end point).
  *

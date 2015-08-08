@@ -204,6 +204,12 @@ dxf_3dline_get_elevation
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_elevation
+(
+        Dxf3dline *line,
+        double elevation
+);
 double
 dxf_3dline_get_length
 (
