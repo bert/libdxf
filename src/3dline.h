@@ -215,6 +215,12 @@ dxf_3dline_get_thickness
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_thickness
+(
+        Dxf3dline *line,
+        double thickness
+);
 double
 dxf_3dline_get_length
 (
