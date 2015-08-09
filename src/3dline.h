@@ -226,6 +226,12 @@ dxf_3dline_get_linetype_scale
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_linetype_scale
+(
+        Dxf3dline *line,
+        double linetype_scale
+);
 double
 dxf_3dline_get_length
 (

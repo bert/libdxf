@@ -1093,6 +1093,53 @@ dxf_3dline_get_linetype_scale
 
 
 /*!
+ * \brief Set the linetype scale for this DXF \c 3DLINE entity.
+ *
+ * \note The linetype scale was added in DXF R13 and is included for
+ * forward compatibility.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
+ */
+Dxf3dline *
+dxf_3dline_set_linetype_scale
+(
+        Dxf3dline *line,
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+        double linetype_scale
+                /*!< the linetype scale to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative linetype scale value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->linetype_scale = linetype_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the length of the line (straight distance between start
  * point and end point).
  *
