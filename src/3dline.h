@@ -237,6 +237,12 @@ dxf_3dline_get_visibility
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_visibility
+(
+        Dxf3dline *line,
+        double visibility
+);
 double
 dxf_3dline_get_length
 (

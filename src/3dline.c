@@ -1189,6 +1189,53 @@ dxf_3dline_get_visibility
 
 
 /*!
+ * \brief Set the visibility for this DXF \c 3DLINE entity.
+ *
+ * \note The visibility was added in DXF R13 and is included for
+ * forward compatibility.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
+ */
+Dxf3dline *
+dxf_3dline_set_visibility
+(
+        Dxf3dline *line,
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+        double visibility
+                /*!< the visibility to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (visibility < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative visibility value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->visibility = visibility;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the length of the line (straight distance between start
  * point and end point).
  *
