@@ -1049,7 +1049,7 @@ dxf_3dline_set_thickness
  * \return linetype scale.
  *
  * \note The linetype scale was added in DXF R13 and is included for
- * forward compability.
+ * forward compatibility.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
