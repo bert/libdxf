@@ -1080,7 +1080,7 @@ dxf_3dline_get_linetype_scale
         if (line->linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the thickness member.\n")),
+                  (_("Error in %s () a negative value was found in the linetype scale member.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
