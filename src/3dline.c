@@ -390,13 +390,19 @@ dxf_3dline_read
 
 
 /*!
- * \brief Write DXF output to fp for a 3D line entity.
+ * \brief Write DXF output to a file (or a device) for a 3D line entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occured.
  *
+ * \note For DXF version R12 and later, a DXF \c LINE entity is written
+ * to file (or device).
+ *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 int
 dxf_3dline_write
@@ -453,6 +459,10 @@ dxf_3dline_write
                   dxf_entity_name);
                 line->layer = strdup (DXF_DEFAULT_LAYER);
         }
+        if (fp->acad_version_number > AutoCAD_11)
+        {
+                dxf_entity_name = strdup ("LINE");
+        }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (line->id_code != -1)
@@ -487,7 +497,8 @@ dxf_3dline_write
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (line->paperspace == DXF_PAPERSPACE)
+        if ((line->paperspace == DXF_PAPERSPACE)
+          && (fp->acad_version_number >= AutoCAD_13))
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
@@ -506,11 +517,13 @@ dxf_3dline_write
         {
                 fprintf (fp->fp, " 62\n%d\n", line->color);
         }
-        if (line->linetype_scale != 1.0)
+        if ((line->linetype_scale != 1.0)
+          && (fp->acad_version_number >= AutoCAD_13))
         {
                 fprintf (fp->fp, " 48\n%f\n", line->linetype_scale);
         }
-        if (line->visibility != 0)
+        if ((line->visibility != 0)
+          && (fp->acad_version_number >= AutoCAD_13))
         {
                 fprintf (fp->fp, " 60\n%d\n", line->visibility);
         }
