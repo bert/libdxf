@@ -254,6 +254,11 @@ dxf_3dline_set_color
         Dxf3dline *line,
         int color
 );
+int
+dxf_3dline_get_paperspace
+(
+        Dxf3dline *line
+);
 double
 dxf_3dline_get_length
 (
