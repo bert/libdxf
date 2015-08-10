@@ -1198,7 +1198,7 @@ dxf_3dline_set_linetype_scale
  * \version According to DXF R13 (forward compatibility).
  * \version According to DXF R14 (forward compatibility).
  */
-double
+int16_t
 dxf_3dline_get_visibility
 (
         Dxf3dline *line
@@ -1208,7 +1208,7 @@ dxf_3dline_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
+        int16_t result;
 
         /* Do some basic checks. */
         if (line == NULL)
@@ -1218,7 +1218,7 @@ dxf_3dline_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (line->visibility < 0.0)
+        if (line->visibility < 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () a negative value was found in the visibility member.\n")),
@@ -1250,7 +1250,7 @@ dxf_3dline_set_visibility
 (
         Dxf3dline *line,
                 /*!< a pointer to a DXF \c 3DLINE entity. */
-        double visibility
+        int16_t visibility
                 /*!< the visibility to be set for the entity. */
 )
 {
@@ -1265,7 +1265,7 @@ dxf_3dline_set_visibility
                   __FUNCTION__);
                 return (NULL);
         }
-        if (visibility < 0.0)
+        if (visibility < 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () a negative visibility value was passed.\n")),

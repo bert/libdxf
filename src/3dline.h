@@ -232,7 +232,7 @@ dxf_3dline_set_linetype_scale
         Dxf3dline *line,
         double linetype_scale
 );
-double
+int16_t
 dxf_3dline_get_visibility
 (
         Dxf3dline *line
@@ -241,7 +241,7 @@ Dxf3dline *
 dxf_3dline_set_visibility
 (
         Dxf3dline *line,
-        double visibility
+        int16_t visibility
 );
 int
 dxf_3dline_get_color
