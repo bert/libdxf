@@ -248,6 +248,12 @@ dxf_3dline_get_color
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_color
+(
+        Dxf3dline *line,
+        int color
+);
 double
 dxf_3dline_get_length
 (

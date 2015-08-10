@@ -1281,6 +1281,51 @@ dxf_3dline_get_color
 
 
 /*!
+ * \brief Set the color for this DXF \c 3DLINE entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
+ */
+Dxf3dline *
+dxf_3dline_set_color
+(
+        Dxf3dline *line,
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+        int color
+                /*!< the color to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative color value was passed.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("\teffectively turning this layer off.\n")));
+        }
+        line->color = color;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the length of the line (straight distance between start
  * point and end point).
  *
