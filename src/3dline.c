@@ -48,6 +48,9 @@
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_new ()
@@ -87,6 +90,9 @@ dxf_3dline_new ()
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_init
@@ -154,6 +160,9 @@ dxf_3dline_init
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_read
@@ -568,6 +577,9 @@ dxf_3dline_write
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 int
 dxf_3dline_free
@@ -606,6 +618,9 @@ dxf_3dline_free
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 void
 dxf_3dline_free_chain
@@ -642,6 +657,9 @@ dxf_3dline_free_chain
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 int
 dxf_3dline_get_id_code
@@ -683,6 +701,9 @@ dxf_3dline_get_id_code
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_id_code
@@ -721,6 +742,9 @@ dxf_3dline_set_id_code
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 char *
 dxf_3dline_get_linetype
@@ -762,6 +786,9 @@ dxf_3dline_get_linetype
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_linetype
@@ -805,6 +832,9 @@ dxf_3dline_set_linetype
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 char *
 dxf_3dline_get_layer
@@ -846,6 +876,9 @@ dxf_3dline_get_layer
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_layer
@@ -889,6 +922,9 @@ dxf_3dline_set_layer
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 double
 dxf_3dline_get_elevation
@@ -930,6 +966,9 @@ dxf_3dline_get_elevation
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_elevation
@@ -966,6 +1005,9 @@ dxf_3dline_set_elevation
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 double
 dxf_3dline_get_thickness
@@ -1007,6 +1049,9 @@ dxf_3dline_get_thickness
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_thickness
@@ -1333,6 +1378,9 @@ dxf_3dline_set_color
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 double
 dxf_3dline_get_length
@@ -1386,6 +1434,9 @@ dxf_3dline_get_length
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_create_from_points
