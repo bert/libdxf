@@ -1360,7 +1360,7 @@ dxf_3dline_set_color
                   (_("Warning in %s () a negative color value was passed.\n")),
                   __FUNCTION__);
                 fprintf (stderr,
-                  (_("\teffectively turning this layer off.\n")));
+                  (_("\teffectively turning this entity it's visibility off.\n")));
         }
         line->color = color;
 #if DEBUG
