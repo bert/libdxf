@@ -1236,6 +1236,51 @@ dxf_3dline_set_visibility
 
 
 /*!
+ * \brief Get the color from this DXF \c 3DLINE entity.
+ *
+ * \return color.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
+ */
+int
+dxf_3dline_get_color
+(
+        Dxf3dline *line
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (line->color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the color member.\n")),
+                  __FUNCTION__);
+        }
+        result = line->color;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the length of the line (straight distance between start
  * point and end point).
  *

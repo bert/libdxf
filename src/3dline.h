@@ -243,6 +243,11 @@ dxf_3dline_set_visibility
         Dxf3dline *line,
         double visibility
 );
+int
+dxf_3dline_get_color
+(
+        Dxf3dline *line
+);
 double
 dxf_3dline_get_length
 (
