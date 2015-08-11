@@ -1825,6 +1825,12 @@ dxf_3dline_create_from_points
                 __FUNCTION__);
               return (NULL);
         }
+        if (id_code < 0)
+        {
+              fprintf (stderr,
+                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
+                __FUNCTION__);
+        }
         line->id_code = id_code;
         line->x0 = p1->x0;
         line->y0 = p1->y0;
