@@ -2004,7 +2004,7 @@ dxf_3dline_create_from_points
                         break;
                 default:
                         fprintf (stderr,
-                          (_("Warning in %s (): unknown option passed.\n")),
+                          (_("Warning in %s (): unknown inheritance option passed.\n")),
                           __FUNCTION__);
                         fprintf (stderr,
                           (_("\tResolving to default.\n")));
