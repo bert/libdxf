@@ -80,7 +80,11 @@ dxf_3dline
                 /*!< Linetype scale (optional).\n
                  * Group code = 48. */
         int16_t visibility;
-                /*!< Object visibility (optional): 0 = Visible; 1 = Invisible.\n
+                /*!< Object visibility (optional):
+                 * <ol>
+                 * <li value = "0"> Visible.</li>
+                 * <li value = "1"> Invisible.<.li>
+                 * </ol>
                  * Group code = 60. */
         int color;
                 /*!< Color of the entity.\n
