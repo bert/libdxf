@@ -269,6 +269,11 @@ dxf_3dline_set_paperspace
         Dxf3dline *line,
         int paperspace
 );
+char *
+dxf_3dline_get_dictionary_owner_soft
+(
+        Dxf3dline *line
+);
 double
 dxf_3dline_get_length
 (
