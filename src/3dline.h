@@ -279,6 +279,13 @@ dxf_3dline_get_dictionary_owner_hard
 (
         Dxf3dline *line
 );
+DxfPoint *
+dxf_3dline_get_start_point
+(
+        Dxf3dline *line,
+        int id_code,
+        int inheritance
+);
 double
 dxf_3dline_get_length
 (
