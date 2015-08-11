@@ -1436,6 +1436,60 @@ dxf_3dline_get_paperspace
 
 
 /*!
+ * \brief Set the paperspace flag for this DXF \c 3DLINE entity.
+ *
+ * \note the paperpspace flag was added in DXF R13 and is included for
+ * forward compatibility.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
+ */
+Dxf3dline *
+dxf_3dline_set_paperspace
+(
+        Dxf3dline *line,
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+        int paperspace
+                /*!< the paperspace flag value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative paperspace value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range paperspace value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->paperspace = paperspace;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the length of the line (straight distance between start
  * point and end point).
  *
