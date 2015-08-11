@@ -286,6 +286,13 @@ dxf_3dline_get_start_point
         int id_code,
         int inheritance
 );
+DxfPoint *
+dxf_3dline_get_end_point
+(
+        Dxf3dline *line,
+        int id_code,
+        int inheritance
+);
 double
 dxf_3dline_get_length
 (
