@@ -1225,6 +1225,13 @@ dxf_3dline_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (line->visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the visibility member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         result = line->visibility;
 #if DEBUG
         DXF_DEBUG_END
@@ -1269,6 +1276,13 @@ dxf_3dline_set_visibility
         {
                 fprintf (stderr,
                   (_("Error in %s () a negative visibility value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range visibility value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
