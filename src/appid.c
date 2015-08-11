@@ -900,7 +900,7 @@ dxf_appid_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = appid->dictionary_owner_soft;
+        result = strdup (appid->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -942,7 +942,7 @@ dxf_appid_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
-        result = appid->dictionary_owner_hard;
+        result = strdup (appid->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
 #endif
