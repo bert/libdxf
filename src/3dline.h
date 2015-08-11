@@ -274,6 +274,11 @@ dxf_3dline_get_dictionary_owner_soft
 (
         Dxf3dline *line
 );
+char *
+dxf_3dline_get_dictionary_owner_hard
+(
+        Dxf3dline *line
+);
 double
 dxf_3dline_get_length
 (
