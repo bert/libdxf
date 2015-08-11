@@ -942,6 +942,13 @@ dxf_appid_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
+        if (appid->dictionary_owner_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         result = strdup (appid->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
