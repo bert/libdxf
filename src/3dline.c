@@ -1814,6 +1814,119 @@ dxf_3dline_get_end_point
 
 
 /*!
+ * \brief Get the mid point of the DXF \c 3DLINE entity.
+ *
+ * \return the mid point.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
+ */
+DxfPoint *
+dxf_3dline_get_mid_point
+(
+        Dxf3dline *line,
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+        int id_code,
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+        int inheritance
+                /*!< Inherit layer, linetype, color and other relevant
+                 * properties from either:
+                 * <ol>
+                 * <li value = "0"> Default (as initialised).</li>
+                 * <li value = "1"> \c 3DLINE.</li>
+                 * </ol>
+                 */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *point = NULL;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if ((line->x0 == line->x1)
+          && (line->y0 == line->y1)
+          && (line->z0 == line->z1))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a 3DLINE with points with identical coordinates were passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point = dxf_point_init (point);
+        if (point == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        if (id_code < 0)
+        {
+              fprintf (stderr,
+                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
+                __FUNCTION__);
+        }
+        point->id_code = id_code;
+        point->x0 = (line->x0 + line->x1) / 2;
+        point->y0 = (line->y0 + line->y1) / 2;
+        point->z0 = (line->z0 + line->z1) / 2;
+        switch (inheritance)
+        {
+                case 0:
+                        /* Do nothing. */
+                        break;
+                case 1:
+                        if (line->linetype != NULL)
+                        {
+                                point->linetype = strdup (line->linetype);
+                        }
+                        if (line->layer != NULL)
+                        {
+                                point->layer = strdup (line->layer);
+                        }
+                        point->thickness = line->thickness;
+                        point->linetype_scale = line->linetype_scale;
+                        point->visibility = line->visibility;
+                        point->color = line->color;
+                        point->paperspace = line->paperspace;
+                        if (line->dictionary_owner_soft != NULL)
+                        {
+                                point->dictionary_owner_soft = strdup (line->dictionary_owner_soft);
+                        }
+                        if (line->dictionary_owner_hard != NULL)
+                        {
+                                point->dictionary_owner_hard = strdup (line->dictionary_owner_hard);
+                        }
+                        break;
+                default:
+                        fprintf (stderr,
+                          (_("Warning in %s (): unknown inheritance option passed.\n")),
+                          __FUNCTION__);
+                        fprintf (stderr,
+                          (_("\tResolving to default.\n")));
+                        break;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
+/*!
  * \brief Get the length of the line (straight distance between start
  * point and end point).
  *
