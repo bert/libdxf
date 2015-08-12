@@ -203,6 +203,12 @@ dxf_line_get_elevation
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_elevation
+(
+        DxfLine *line,
+        double elevation
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
