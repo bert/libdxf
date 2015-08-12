@@ -165,6 +165,11 @@ dxf_line_free_chain
 (
         DxfLine *lines
 );
+int
+dxf_line_get_id_code
+(
+        DxfLine *line
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
