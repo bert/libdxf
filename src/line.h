@@ -209,6 +209,11 @@ dxf_line_set_elevation
         DxfLine *line,
         double elevation
 );
+double
+dxf_line_get_thickness
+(
+        DxfLine *line
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
