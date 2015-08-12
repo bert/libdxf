@@ -214,6 +214,12 @@ dxf_line_get_thickness
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_thickness
+(
+        DxfLine *line,
+        double thickness
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
