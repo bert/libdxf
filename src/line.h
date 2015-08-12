@@ -192,6 +192,12 @@ dxf_line_get_layer
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_layer
+(
+        DxfLine *line,
+        char *layer
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
