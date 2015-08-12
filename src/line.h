@@ -187,6 +187,11 @@ dxf_line_set_linetype
         DxfLine *line,
         char *linetype
 );
+char *
+dxf_line_get_layer
+(
+        DxfLine *line
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
