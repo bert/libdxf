@@ -1131,4 +1131,48 @@ dxf_line_get_linetype_scale
 }
 
 
+/*!
+ * \brief Set the linetype scale for this DXF \c LINE entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfLine *
+dxf_line_set_linetype_scale
+(
+        DxfLine *line,
+                /*!< a pointer to a DXF \c LINE entity. */
+        double linetype_scale
+                /*!< the linetype scale to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative linetype scale value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->linetype_scale = linetype_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* EOF */

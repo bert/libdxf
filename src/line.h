@@ -225,6 +225,12 @@ dxf_line_get_linetype_scale
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_linetype_scale
+(
+        DxfLine *line,
+        double linetype_scale
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
