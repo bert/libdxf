@@ -170,6 +170,12 @@ dxf_line_get_id_code
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_id_code
+(
+        DxfLine *line,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */

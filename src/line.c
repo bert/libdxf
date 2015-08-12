@@ -693,4 +693,43 @@ dxf_line_get_id_code
 }
 
 
+/*!
+ * \brief Set the ID code for this DXF \c LINE entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfLine *
+dxf_line_set_id_code
+(
+        DxfLine *line,
+                /*!< a pointer to a DXF \c LINE entity. */
+        int id_code
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->id_code = id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* EOF */
