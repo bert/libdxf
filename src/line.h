@@ -198,6 +198,11 @@ dxf_line_set_layer
         DxfLine *line,
         char *layer
 );
+double
+dxf_line_get_elevation
+(
+        DxfLine *line
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
