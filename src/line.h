@@ -220,6 +220,11 @@ dxf_line_set_thickness
         DxfLine *line,
         double thickness
 );
+double
+dxf_line_get_linetype_scale
+(
+        DxfLine *line
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
