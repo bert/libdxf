@@ -296,6 +296,11 @@ dxf_line_get_mid_point
         int id_code,
         int inheritance
 );
+double
+dxf_line_get_length
+(
+        DxfLine *line
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */

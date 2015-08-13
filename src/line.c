@@ -1908,4 +1908,58 @@ dxf_line_get_mid_point
 }
 
 
+/*!
+ * \brief Get the length of the line (straight distance between start
+ * point and end point).
+ *
+ * \return the length of the \c line in drawing units.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+double
+dxf_line_get_length
+(
+        DxfLine *line
+                /*!< a pointer to a DXF \c LINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double length;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (0.0);
+        }
+        if ((line->x0 == line->x1)
+          && (line->y0 == line->y1)
+          && (line->z0 == line->z1))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () endpoints with identical coordinates were passed.\n")),
+                  __FUNCTION__);
+                return (0.0);
+        }
+        length = sqrt
+        (
+          ((line->x1 - line->x0) * (line->x1 - line->x0))
+          + ((line->y1 - line->y0) * (line->y1 - line->y0))
+          + ((line->z1 - line->z0) * (line->z1 - line->z0))
+        );
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (length);
+}
+
+
 /* EOF */
