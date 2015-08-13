@@ -269,6 +269,11 @@ dxf_line_get_dictionary_owner_soft
 (
         DxfLine *line
 );
+char *
+dxf_line_get_dictionary_owner_hard
+(
+        DxfLine *line
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
