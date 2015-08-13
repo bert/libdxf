@@ -236,6 +236,12 @@ dxf_line_get_visibility
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_visibility
+(
+        DxfLine *line,
+        int16_t visibility
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
