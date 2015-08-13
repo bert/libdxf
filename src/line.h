@@ -264,6 +264,11 @@ dxf_line_set_paperspace
         DxfLine *line,
         int paperspace
 );
+char *
+dxf_line_get_dictionary_owner_soft
+(
+        DxfLine *line
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
