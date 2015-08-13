@@ -301,6 +301,14 @@ dxf_line_get_length
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_create_from_points
+(
+        DxfPoint *p1,
+        DxfPoint *p2,
+        int id_code,
+        int inheritance
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
