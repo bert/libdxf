@@ -247,6 +247,12 @@ dxf_line_get_color
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_color
+(
+        DxfLine *line,
+        int color
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
