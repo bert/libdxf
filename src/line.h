@@ -37,6 +37,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 /*!
@@ -273,6 +274,13 @@ char *
 dxf_line_get_dictionary_owner_hard
 (
         DxfLine *line
+);
+DxfPoint *
+dxf_line_get_start_point
+(
+        DxfLine *line,
+        int id_code,
+        int inheritance
 );
 
 
