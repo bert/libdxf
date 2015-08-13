@@ -258,6 +258,12 @@ dxf_line_get_paperspace
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_paperspace
+(
+        DxfLine *line,
+        int paperspace
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
