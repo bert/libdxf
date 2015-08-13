@@ -231,6 +231,11 @@ dxf_line_set_linetype_scale
         DxfLine *line,
         double linetype_scale
 );
+int16_t
+dxf_line_get_visibility
+(
+        DxfLine *line
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
