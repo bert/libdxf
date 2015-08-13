@@ -253,6 +253,11 @@ dxf_line_set_color
         DxfLine *line,
         int color
 );
+int
+dxf_line_get_paperspace
+(
+        DxfLine *line
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */

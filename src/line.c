@@ -1369,4 +1369,55 @@ dxf_line_set_color
 }
 
 
+/*!
+ * \brief Get the paperspace flag value from this DXF \c LINE entity.
+ *
+ * \return paperspace flag value.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_line_get_paperspace
+(
+        DxfLine *line
+                /*!< a pointer to a DXF \c LINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (line->paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the paperspace member.\n")),
+                  __FUNCTION__);
+        }
+        if (line->paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
+                  __FUNCTION__);
+        }
+        result = line->paperspace;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
