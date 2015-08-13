@@ -242,6 +242,11 @@ dxf_line_set_visibility
         DxfLine *line,
         int16_t visibility
 );
+int
+dxf_line_get_color
+(
+        DxfLine *line
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
