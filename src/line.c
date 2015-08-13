@@ -1682,4 +1682,117 @@ dxf_line_get_start_point
 }
 
 
+/*!
+ * \brief Get the end point of the DXF \c LINE entity.
+ *
+ * \return the end point.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfPoint *
+dxf_line_get_end_point
+(
+        DxfLine *line,
+                /*!< a pointer to a DXF \c LINE entity. */
+        int id_code,
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+        int inheritance
+                /*!< Inherit layer, linetype, color and other relevant
+                 * properties from either:
+                 * <ol>
+                 * <li value = "0"> Default (as initialised).</li>
+                 * <li value = "1"> \c LINE.</li>
+                 * </ol>
+                 */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *p2 = NULL;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if ((line->x0 == line->x1)
+          && (line->y0 == line->y1)
+          && (line->z0 == line->z1))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a 3DLINE with points with identical coordinates were passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        p2 = dxf_point_init (p2);
+        if (p2 == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        if (id_code < 0)
+        {
+              fprintf (stderr,
+                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
+                __FUNCTION__);
+        }
+        p2->id_code = id_code;
+        p2->x0 = line->x0;
+        p2->y0 = line->y0;
+        p2->z0 = line->z0;
+        switch (inheritance)
+        {
+                case 0:
+                        /* Do nothing. */
+                        break;
+                case 1:
+                        if (line->linetype != NULL)
+                        {
+                                p2->linetype = strdup (line->linetype);
+                        }
+                        if (line->layer != NULL)
+                        {
+                                p2->layer = strdup (line->layer);
+                        }
+                        p2->thickness = line->thickness;
+                        p2->linetype_scale = line->linetype_scale;
+                        p2->visibility = line->visibility;
+                        p2->color = line->color;
+                        p2->paperspace = line->paperspace;
+                        if (line->dictionary_owner_soft != NULL)
+                        {
+                                p2->dictionary_owner_soft = strdup (line->dictionary_owner_soft);
+                        }
+                        if (line->dictionary_owner_hard != NULL)
+                        {
+                                p2->dictionary_owner_hard = strdup (line->dictionary_owner_hard);
+                        }
+                        break;
+                default:
+                        fprintf (stderr,
+                          (_("Warning in %s (): unknown inheritance option passed.\n")),
+                          __FUNCTION__);
+                        fprintf (stderr,
+                          (_("\tResolving to default.\n")));
+                        break;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (p2);
+}
+
+
 /* EOF */

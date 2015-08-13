@@ -282,6 +282,13 @@ dxf_line_get_start_point
         int id_code,
         int inheritance
 );
+DxfPoint *
+dxf_line_get_end_point
+(
+        DxfLine *line,
+        int id_code,
+        int inheritance
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
