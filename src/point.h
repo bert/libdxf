@@ -172,6 +172,12 @@ dxf_point_get_id_code
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_id_code
+(
+        DxfPoint *point,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
