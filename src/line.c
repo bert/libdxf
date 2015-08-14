@@ -724,6 +724,13 @@ dxf_line_set_id_code
                   __FUNCTION__);
                 return (NULL);
         }
+        if (id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an id-code negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         line->id_code = id_code;
 #if DEBUG
         DXF_DEBUG_END
