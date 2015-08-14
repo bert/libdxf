@@ -178,6 +178,11 @@ dxf_point_set_id_code
         DxfPoint *point,
         int id_code
 );
+char *
+dxf_point_get_linetype
+(
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
