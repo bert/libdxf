@@ -167,6 +167,11 @@ dxf_point_free_chain
 (
         DxfPoint *points
 );
+int
+dxf_point_get_id_code
+(
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
