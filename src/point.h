@@ -194,6 +194,12 @@ dxf_point_get_layer
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_layer
+(
+        DxfPoint *point,
+        char *layer
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
