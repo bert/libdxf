@@ -812,4 +812,50 @@ dxf_point_set_linetype
 }
 
 
+/*!
+ * \brief Get the layer from this DXF \c POINT entity.
+ *
+ * \return layer when sucessful, \c NULL when an error occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_point_get_layer
+(
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (point->layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
