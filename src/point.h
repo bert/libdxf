@@ -183,6 +183,12 @@ dxf_point_get_linetype
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_linetype
+(
+        DxfPoint *point,
+        char *linetype
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
