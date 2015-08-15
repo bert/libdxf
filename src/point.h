@@ -200,6 +200,11 @@ dxf_point_set_layer
         DxfPoint *point,
         char *layer
 );
+double
+dxf_point_get_elevation
+(
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
