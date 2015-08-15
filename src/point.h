@@ -205,6 +205,12 @@ dxf_point_get_elevation
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_elevation
+(
+        DxfPoint *point,
+        double elevation
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
