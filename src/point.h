@@ -216,6 +216,12 @@ dxf_point_get_thickness
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_thickness
+(
+        DxfPoint *point,
+        double thickness
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
