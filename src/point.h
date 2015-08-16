@@ -227,6 +227,12 @@ dxf_point_get_linetype_scale
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_linetype_scale
+(
+        DxfPoint *point,
+        double linetype_scale
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
