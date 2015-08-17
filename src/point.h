@@ -238,6 +238,12 @@ dxf_point_get_visibility
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_visibility
+(
+        DxfPoint *point,
+        int16_t visibility
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
