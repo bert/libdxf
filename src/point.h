@@ -244,6 +244,11 @@ dxf_point_set_visibility
         DxfPoint *point,
         int16_t visibility
 );
+int
+dxf_point_get_color
+(
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
