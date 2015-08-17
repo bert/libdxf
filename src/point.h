@@ -233,6 +233,11 @@ dxf_point_set_linetype_scale
         DxfPoint *point,
         double linetype_scale
 );
+int16_t
+dxf_point_get_visibility
+(
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
