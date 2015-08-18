@@ -281,6 +281,12 @@ dxf_point_get_angle_to_X
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_angle_to_X
+(
+        DxfPoint *point,
+        double angle_to_X
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
