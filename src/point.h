@@ -255,6 +255,11 @@ dxf_point_set_color
         DxfPoint *point,
         int color
 );
+int
+dxf_point_get_paperspace
+(
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
