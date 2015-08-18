@@ -249,6 +249,12 @@ dxf_point_get_color
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_color
+(
+        DxfPoint *point,
+        int color
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */

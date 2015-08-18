@@ -1314,4 +1314,49 @@ dxf_point_get_color
 }
 
 
+/*!
+ * \brief Set the color for a DXF \c POINT entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfPoint *
+dxf_point_set_color
+(
+        DxfPoint *point,
+                /*!< a pointer to a DXF \c POINT entity. */
+        int color
+                /*!< the color to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point->color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative color value was passed.\n")),
+                  __FUNCTION__);
+                fprintf (stderr,
+                  (_("\teffectively turning this entity it's visibility off.\n")));
+        }
+        point->color = color;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
 /* EOF */
