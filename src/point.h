@@ -271,6 +271,11 @@ dxf_point_get_dictionary_owner_soft
 (
         DxfPoint *point
 );
+char *
+dxf_point_get_dictionary_owner_hard
+(
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
