@@ -266,6 +266,11 @@ dxf_point_set_paperspace
         DxfPoint *point,
         int paperspace
 );
+char *
+dxf_point_get_dictionary_owner_soft
+(
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */

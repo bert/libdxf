@@ -1461,4 +1461,53 @@ dxf_point_set_paperspace
 }
 
 
+/*!
+ * \brief Get the soft pointer to the dictionary owner from a DXF 
+ * \c POINT entity.
+ *
+ * \return soft pointer to the dictionary owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_point_get_dictionary_owner_soft
+(
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point->dictionary_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (point->dictionary_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
