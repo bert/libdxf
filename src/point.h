@@ -276,6 +276,11 @@ dxf_point_get_dictionary_owner_hard
 (
         DxfPoint *point
 );
+double
+dxf_point_get_angle_to_X
+(
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
