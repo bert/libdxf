@@ -295,6 +295,12 @@ dxf_line_get_end_point
         int id_code,
         int inheritance
 );
+DxfLine *
+dxf_line_set_end_point
+(
+        DxfLine *line,
+        DxfPoint *point
+);
 DxfPoint *
 dxf_line_get_mid_point
 (

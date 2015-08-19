@@ -1851,6 +1851,54 @@ dxf_line_get_end_point
 
 
 /*!
+ * \brief Set the end point of the DXF \c LINE entity.
+ *
+ * \return a pointer to a DXF \c LINE entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfLine *
+dxf_line_set_end_point
+(
+        DxfLine *line,
+                /*!< a pointer to a DXF \c LINE entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->x1 = point->x0;
+        line->y1 = point->y0;
+        line->z1 = point->z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the mid point of the DXF \c LINE entity.
  *
  * \return the mid point.
