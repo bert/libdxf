@@ -287,6 +287,14 @@ dxf_point_set_angle_to_X
         DxfPoint *point,
         double angle_to_X
 );
+DxfPoint *
+dxf_point_set_extrusion_vector
+(
+        DxfPoint *point,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */

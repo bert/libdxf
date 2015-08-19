@@ -1635,4 +1635,47 @@ dxf_point_set_angle_to_X
 }
 
 
+/*!
+ * \brief Set the extrusion vector for a DXF \c POINT entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfPoint *
+dxf_point_set_extrusion_vector
+(
+        DxfPoint *point,
+                /*!< a pointer to a DXF \c POINT entity. */
+        double extr_x0,
+                /*!<  X-value of the extrusion direction. */
+        double extr_y0,
+                /*!<  Y-value of the extrusion direction. */
+        double extr_z0
+                /*!<  Z-value of the extrusion direction. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point->extr_x0 = extr_x0;
+        point->extr_y0 = extr_y0;
+        point->extr_z0 = extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
 /* EOF */
