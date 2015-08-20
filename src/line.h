@@ -308,6 +308,14 @@ dxf_line_get_mid_point
         int id_code,
         int inheritance
 );
+DxfLine *
+dxf_line_set_extrusion_vector
+(
+        DxfLine *line,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0
+);
 double
 dxf_line_get_length
 (
