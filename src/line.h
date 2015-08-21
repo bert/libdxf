@@ -308,6 +308,11 @@ dxf_line_get_mid_point
         int id_code,
         int inheritance
 );
+DxfPoint *
+dxf_line_get_extrusion_vector_as_point
+(
+        DxfLine *line
+);
 DxfLine *
 dxf_line_set_extrusion_vector
 (
