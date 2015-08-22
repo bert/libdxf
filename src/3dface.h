@@ -189,6 +189,12 @@ dxf_3dface_get_id_code
 (
         Dxf3dface *face
 );
+Dxf3dface *
+dxf_3dface_set_id_code
+(
+        Dxf3dface *face,
+        int id_code
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
