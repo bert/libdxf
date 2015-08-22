@@ -305,6 +305,14 @@ dxf_3dline_get_extrusion_vector_as_point
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_extrusion_vector
+(
+        Dxf3dline *line,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0
+);
 double
 dxf_3dline_get_length
 (
