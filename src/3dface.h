@@ -185,6 +185,11 @@ dxf_3dface_free_chain
         Dxf3dface *faces
 );
 int
+dxf_3dface_get_id_code
+(
+        Dxf3dface *face
+);
+int
 dxf_3dface_is_first_edge_invisible
 (
         Dxf3dface *face
