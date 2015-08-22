@@ -288,6 +288,11 @@ dxf_point_set_angle_to_X
         double angle_to_X
 );
 DxfPoint *
+dxf_point_get_extrusion_vector_as_point
+(
+        DxfPoint *point
+);
+DxfPoint *
 dxf_point_set_extrusion_vector
 (
         DxfPoint *point,
