@@ -206,6 +206,11 @@ dxf_3dface_set_linetype
         Dxf3dface *face,
         char *linetype
 );
+char *
+dxf_3dface_get_layer
+(
+        Dxf3dface *face
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
