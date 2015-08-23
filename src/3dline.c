@@ -953,13 +953,6 @@ dxf_3dline_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (line->elevation < 0.0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the elevation member.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
         result = line->elevation;
 #if DEBUG
         DXF_DEBUG_END
