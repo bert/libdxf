@@ -976,6 +976,43 @@ dxf_3dface_get_elevation
 
 
 /*!
+ * \brief Set the elevation for this DXF \c 3DFACE entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+Dxf3dface *
+dxf_3dface_set_elevation
+(
+        Dxf3dface *face,
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+        double elevation
+                /*!< the elevation to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        face->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (face);
+}
+
+
+/*!
  * \brief Test if the first edge of the DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
