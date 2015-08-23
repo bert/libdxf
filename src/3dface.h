@@ -217,6 +217,11 @@ dxf_3dface_set_layer
         Dxf3dface *face,
         char *layer
 );
+double
+dxf_3dface_get_elevation
+(
+        Dxf3dface *face
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
