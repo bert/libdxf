@@ -239,6 +239,11 @@ dxf_3dface_set_thickness
         Dxf3dface *face,
         double thickness
 );
+double
+dxf_3dface_get_linetype_scale
+(
+        Dxf3dface *face
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
