@@ -244,6 +244,12 @@ dxf_3dface_get_linetype_scale
 (
         Dxf3dface *face
 );
+Dxf3dface *
+dxf_3dface_set_linetype_scale
+(
+        Dxf3dface *face,
+        double linetype_scale
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
