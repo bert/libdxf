@@ -262,6 +262,11 @@ dxf_3dface_set_visibility
         int16_t visibility
 );
 int
+dxf_3dface_get_color
+(
+        Dxf3dface *face
+);
+int
 dxf_3dface_is_first_edge_invisible
 (
         Dxf3dface *face
