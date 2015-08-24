@@ -228,6 +228,11 @@ dxf_3dface_set_elevation
         Dxf3dface *face,
         double elevation
 );
+double
+dxf_3dface_get_thickness
+(
+        Dxf3dface *face
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
