@@ -277,6 +277,12 @@ dxf_3dface_get_paperspace
 (
         Dxf3dface *face
 );
+Dxf3dface *
+dxf_3dface_set_paperspace
+(
+        Dxf3dface *face,
+        int paperspace
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
