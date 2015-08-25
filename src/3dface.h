@@ -288,6 +288,11 @@ dxf_3dface_get_dictionary_owner_soft
 (
         Dxf3dface *face
 );
+char *
+dxf_3dface_get_dictionary_owner_hard
+(
+        Dxf3dface *face
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
