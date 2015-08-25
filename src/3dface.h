@@ -37,6 +37,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 /*!
@@ -292,6 +293,13 @@ char *
 dxf_3dface_get_dictionary_owner_hard
 (
         Dxf3dface *face
+);
+DxfPoint *
+dxf_3dface_get_base_point
+(
+        Dxf3dface *face,
+        int id_code,
+        int inheritance
 );
 int
 dxf_3dface_is_first_edge_invisible

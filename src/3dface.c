@@ -1587,6 +1587,110 @@ dxf_3dface_get_dictionary_owner_hard
 
 
 /*!
+ * \brief Get the base point of the DXF \c 3DFACE entity.
+ *
+ * \return the base point.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfPoint *
+dxf_3dface_get_base_point
+(
+        Dxf3dface *face,
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+        int id_code,
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+        int inheritance
+                /*!< Inherit layer, linetype, color and other relevant
+                 * properties from either:
+                 * <ol>
+                 * <li value = "0"> Default (as initialised).</li>
+                 * <li value = "1"> \c 3DFACE.</li>
+                 * </ol>
+                 */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *p1 = NULL;
+
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        p1 = dxf_point_init (p1);
+        if (p1 == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        if (id_code < 0)
+        {
+              fprintf (stderr,
+                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
+                __FUNCTION__);
+        }
+        p1->id_code = id_code;
+        p1->x0 = face->x0;
+        p1->y0 = face->y0;
+        p1->z0 = face->z0;
+        switch (inheritance)
+        {
+                case 0:
+                        /* Do nothing. */
+                        break;
+                case 1:
+                        if (face->linetype != NULL)
+                        {
+                                p1->linetype = strdup (face->linetype);
+                        }
+                        if (face->layer != NULL)
+                        {
+                                p1->layer = strdup (face->layer);
+                        }
+                        p1->thickness = face->thickness;
+                        p1->linetype_scale = face->linetype_scale;
+                        p1->visibility = face->visibility;
+                        p1->color = face->color;
+                        p1->paperspace = face->paperspace;
+                        if (face->dictionary_owner_soft != NULL)
+                        {
+                                p1->dictionary_owner_soft = strdup (face->dictionary_owner_soft);
+                        }
+                        if (face->dictionary_owner_hard != NULL)
+                        {
+                                p1->dictionary_owner_hard = strdup (face->dictionary_owner_hard);
+                        }
+                        break;
+                default:
+                        fprintf (stderr,
+                          (_("Warning in %s (): unknown inheritance option passed.\n")),
+                          __FUNCTION__);
+                        fprintf (stderr,
+                          (_("\tResolving to default.\n")));
+                        break;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (p1);
+}
+
+
+/*!
  * \brief Test if the first edge of the DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
