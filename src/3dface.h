@@ -273,6 +273,11 @@ dxf_3dface_set_color
         int color
 );
 int
+dxf_3dface_get_paperspace
+(
+        Dxf3dface *face
+);
+int
 dxf_3dface_is_first_edge_invisible
 (
         Dxf3dface *face
