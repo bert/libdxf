@@ -266,6 +266,12 @@ dxf_3dface_get_color
 (
         Dxf3dface *face
 );
+Dxf3dface *
+dxf_3dface_set_color
+(
+        Dxf3dface *face,
+        int color
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
