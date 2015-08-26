@@ -314,6 +314,12 @@ dxf_3dface_get_first_alignment_point
         int id_code,
         int inheritance
 );
+Dxf3dface *
+dxf_3dface_set_first_alignment_point
+(
+        Dxf3dface *face,
+        DxfPoint *point
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
