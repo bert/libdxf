@@ -301,6 +301,12 @@ dxf_3dface_get_base_point
         int id_code,
         int inheritance
 );
+Dxf3dface *
+dxf_3dface_set_base_point
+(
+        Dxf3dface *face,
+        DxfPoint *point
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
