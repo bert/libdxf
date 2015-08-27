@@ -333,6 +333,13 @@ dxf_3dface_set_second_alignment_point
         Dxf3dface *face,
         DxfPoint *point
 );
+DxfPoint *
+dxf_3dface_get_third_alignment_point
+(
+        Dxf3dface *face,
+        int id_code,
+        int inheritance
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
