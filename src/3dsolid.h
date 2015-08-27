@@ -155,6 +155,11 @@ dxf_3dsolid_free_chain
 (
         Dxf3dsolid *solids
 );
+int
+dxf_3dsolid_get_id_code
+(
+        Dxf3dsolid *solid
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
