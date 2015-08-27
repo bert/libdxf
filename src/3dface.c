@@ -2330,4 +2330,238 @@ dxf_3dface_is_fourth_edge_invisible
 }
 
 
+/*!
+ * \brief Create a DXF \c 3DFACE by means of at least three valid DXF
+ * \c POINT entities.
+ *
+ * \return a pointer to a DXF \c 3DFACE entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+Dxf3dface *
+dxf_3dface_create_from_points
+(
+        DxfPoint *p1,
+                /*!< a pointer to a DXF \c POINT entity. */
+        DxfPoint *p2,
+                /*!< a pointer to a DXF \c POINT entity. */
+        DxfPoint *p3,
+                /*!< a pointer to a DXF \c POINT entity. */
+        DxfPoint *p4,
+                /*!< a pointer to a DXF \c POINT entity. */
+        int id_code,
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+        int inheritance
+                /*!< Inherit layer, linetype, color and other relevant
+                 * properties from either:
+                 * <ol>
+                 * <li value = "0"> Default (as initialised).</li>
+                 * <li value = "1"> Point 1.</li>
+                 * <li value = "2"> Point 2.</li>
+                 * <li value = "3"> Point 3.</li>
+                 * <li value = "4"> Point 4.</li>
+                 * </ol>
+                 */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        Dxf3dface *face = NULL;
+
+        /* Do some basic checks. */
+        if (((p1 != NULL) && (p2 != NULL) && (p3 != NULL))
+          || ((p1 != NULL) && (p2 != NULL) && (p4 != NULL))
+          || ((p2 != NULL) && (p3 != NULL) && (p4 != NULL))
+          || ((p1 != NULL) && (p3 != NULL) && (p3 != NULL)))
+        {
+                /* Do nothing, we only need three valid points to form a
+                 * 3dface (test of all four valid permutations). */
+        }
+        else
+        {
+                fprintf (stderr,
+                  (_("Error in %s () to many NULL pointers were passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (id_code < 0)
+        {
+              fprintf (stderr,
+                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
+                __FUNCTION__);
+        }
+        if ((inheritance < 0) || (inheritance > 4))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an illegal inherit value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        face = dxf_3dface_init (face);
+        if (face == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a Dxf3dface struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        if (p1 != NULL)
+        {
+                face->x0 = p1->x0;
+                face->y0 = p1->y0;
+                face->z0 = p1->z0;
+        }
+        if (p2 != NULL)
+        {
+                face->x1 = p2->x0;
+                face->y1 = p2->y0;
+                face->z1 = p2->z0;
+        }
+        if (p3 != NULL)
+        {
+                face->x2 = p3->x0;
+                face->y2 = p3->y0;
+                face->z2 = p3->z0;
+        }
+        if (p4 != NULL)
+        {
+                face->x3 = p4->x0;
+                face->y3 = p4->y0;
+                face->z3 = p4->z0;
+        }
+        switch (inheritance)
+        {
+                case 0:
+                        /* Do nothing. */
+                        break;
+                case 1:
+                        if (p1 == NULL)
+                        {
+                                break;
+                        }
+                        if (p1->linetype != NULL)
+                        {
+                                face->linetype = strdup (p1->linetype);
+                        }
+                        if (p1->layer != NULL)
+                        {
+                                face->layer = strdup (p1->layer);
+                        }
+                        face->thickness = p1->thickness;
+                        face->linetype_scale = p1->linetype_scale;
+                        face->visibility = p1->visibility;
+                        face->color = p1->color;
+                        face->paperspace = p1->paperspace;
+                        if (p1->dictionary_owner_soft != NULL)
+                        {
+                                face->dictionary_owner_soft = strdup (p1->dictionary_owner_soft);
+                        }
+                        if (p1->dictionary_owner_hard != NULL)
+                        {
+                                face->dictionary_owner_hard = strdup (p1->dictionary_owner_hard);
+                        }
+                        break;
+                case 2:
+                        if (p2 == NULL)
+                        {
+                                break;
+                        }
+                        if (p2->linetype != NULL)
+                        {
+                                face->linetype = strdup (p2->linetype);
+                        }
+                        if (p2->layer != NULL)
+                        {
+                                face->layer = strdup (p2->layer);
+                        }
+                        face->thickness = p2->thickness;
+                        face->linetype_scale = p2->linetype_scale;
+                        face->visibility = p2->visibility;
+                        face->color = p2->color;
+                        face->paperspace = p2->paperspace;
+                        if (p2->dictionary_owner_soft != NULL)
+                        {
+                                face->dictionary_owner_soft = strdup (p2->dictionary_owner_soft);
+                        }
+                        if (p2->dictionary_owner_hard != NULL)
+                        {
+                                face->dictionary_owner_hard = strdup (p2->dictionary_owner_hard);
+                        }
+                        break;
+                case 3:
+                        if (p3 == NULL)
+                        {
+                                break;
+                        }
+                        if (p3->linetype != NULL)
+                        {
+                                face->linetype = strdup (p3->linetype);
+                        }
+                        if (p3->layer != NULL)
+                        {
+                                face->layer = strdup (p3->layer);
+                        }
+                        face->thickness = p3->thickness;
+                        face->linetype_scale = p3->linetype_scale;
+                        face->visibility = p3->visibility;
+                        face->color = p3->color;
+                        face->paperspace = p3->paperspace;
+                        if (p3->dictionary_owner_soft != NULL)
+                        {
+                                face->dictionary_owner_soft = strdup (p3->dictionary_owner_soft);
+                        }
+                        if (p3->dictionary_owner_hard != NULL)
+                        {
+                                face->dictionary_owner_hard = strdup (p3->dictionary_owner_hard);
+                        }
+                        break;
+                case 4:
+                        if (p4 == NULL)
+                        {
+                                break;
+                        }
+                        if (p4->linetype != NULL)
+                        {
+                                face->linetype = strdup (p4->linetype);
+                        }
+                        if (p4->layer != NULL)
+                        {
+                                face->layer = strdup (p4->layer);
+                        }
+                        face->thickness = p4->thickness;
+                        face->linetype_scale = p4->linetype_scale;
+                        face->visibility = p4->visibility;
+                        face->color = p4->color;
+                        face->paperspace = p4->paperspace;
+                        if (p1->dictionary_owner_soft != NULL)
+                        {
+                                face->dictionary_owner_soft = strdup (p4->dictionary_owner_soft);
+                        }
+                        if (p4->dictionary_owner_hard != NULL)
+                        {
+                                face->dictionary_owner_hard = strdup (p4->dictionary_owner_hard);
+                        }
+                        break;
+                default:
+                        fprintf (stderr,
+                          (_("Warning in %s (): unknown inheritance option passed.\n")),
+                          __FUNCTION__);
+                        fprintf (stderr,
+                          (_("\tResolving to default.\n")));
+                        break;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (face);
+}
+
+
 /* EOF */
