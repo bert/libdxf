@@ -166,6 +166,11 @@ dxf_3dsolid_set_id_code
         Dxf3dsolid *solid,
         int id_code
 );
+char *
+dxf_3dsolid_get_linetype
+(
+        Dxf3dsolid *solid
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
