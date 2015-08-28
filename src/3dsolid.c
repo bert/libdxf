@@ -664,9 +664,9 @@ dxf_3dsolid_free_chain
  *
  * \return ID code.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
