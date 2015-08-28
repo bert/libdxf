@@ -160,6 +160,12 @@ dxf_3dsolid_get_id_code
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_id_code
+(
+        Dxf3dsolid *solid,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
