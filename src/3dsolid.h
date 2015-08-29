@@ -177,6 +177,11 @@ dxf_3dsolid_set_linetype
         Dxf3dsolid *solid,
         char *linetype
 );
+char *
+dxf_3dsolid_get_layer
+(
+        Dxf3dsolid *solid
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
