@@ -193,6 +193,12 @@ dxf_3dsolid_get_elevation
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_elevation
+(
+        Dxf3dsolid *solid,
+        double elevation
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
