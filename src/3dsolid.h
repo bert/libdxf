@@ -182,6 +182,12 @@ dxf_3dsolid_get_layer
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_layer
+(
+        Dxf3dsolid *solid,
+        char *layer
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
