@@ -188,6 +188,11 @@ dxf_3dsolid_set_layer
         Dxf3dsolid *solid,
         char *layer
 );
+double
+dxf_3dsolid_get_elevation
+(
+        Dxf3dsolid *solid
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
