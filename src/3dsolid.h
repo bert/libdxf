@@ -204,6 +204,12 @@ dxf_3dsolid_get_thickness
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_thickness
+(
+        Dxf3dsolid *solid,
+        double thickness
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
