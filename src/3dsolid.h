@@ -210,6 +210,11 @@ dxf_3dsolid_set_thickness
         Dxf3dsolid *solid,
         double thickness
 );
+double
+dxf_3dsolid_get_linetype_scale
+(
+        Dxf3dsolid *solid
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
