@@ -199,6 +199,11 @@ dxf_3dsolid_set_elevation
         Dxf3dsolid *solid,
         double elevation
 );
+double
+dxf_3dsolid_get_thickness
+(
+        Dxf3dsolid *solid
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
