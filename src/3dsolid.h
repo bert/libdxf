@@ -248,6 +248,12 @@ dxf_3dsolid_get_paperspace
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_paperspace
+(
+        Dxf3dsolid *solid,
+        int paperspace
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
