@@ -259,6 +259,11 @@ dxf_3dsolid_get_dictionary_owner_soft
 (
         Dxf3dsolid *solid
 );
+char *
+dxf_3dsolid_get_dictionary_owner_hard
+(
+        Dxf3dsolid *solid
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
