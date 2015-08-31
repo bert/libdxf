@@ -215,6 +215,12 @@ dxf_3dsolid_get_linetype_scale
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_linetype_scale
+(
+        Dxf3dsolid *solid,
+        double linetype_scale
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
