@@ -1401,7 +1401,7 @@ int
 dxf_3dface_get_paperspace
 (
         Dxf3dface *face
-                /*!< a pointer to a DXF \c FACE entity. */
+                /*!< a pointer to a DXF \c 3DFACE entity. */
 )
 {
 #if DEBUG
