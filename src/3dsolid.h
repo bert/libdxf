@@ -237,6 +237,12 @@ dxf_3dsolid_get_color
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_color
+(
+        Dxf3dsolid *solid,
+        int color
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
