@@ -221,6 +221,11 @@ dxf_3dsolid_set_linetype_scale
         Dxf3dsolid *solid,
         double linetype_scale
 );
+int16_t
+dxf_3dsolid_get_visibility
+(
+        Dxf3dsolid *solid
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */

@@ -1187,4 +1187,57 @@ dxf_3dsolid_set_linetype_scale
 }
 
 
+/*!
+ * \brief Get the visibility from this DXF \c 3DSOLID entity.
+ *
+ * \return visibility.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int16_t
+dxf_3dsolid_get_visibility
+(
+        Dxf3dsolid *solid
+                /*!< a pointer to a DXF \c 3DSOLID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int16_t result;
+
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (solid->visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the visibility member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (solid->visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the visibility member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = solid->visibility;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
