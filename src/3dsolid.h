@@ -232,6 +232,11 @@ dxf_3dsolid_set_visibility
         Dxf3dsolid *solid,
         int16_t visibility
 );
+int
+dxf_3dsolid_get_color
+(
+        Dxf3dsolid *solid
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
