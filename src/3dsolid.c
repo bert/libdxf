@@ -1581,4 +1581,56 @@ dxf_3dsolid_get_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the modeler format version number from this DXF \c 3DSOLID
+ * entity.
+ *
+ * \return the modeler format version number.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_3dsolid_get_modeler_format_version_number
+(
+        Dxf3dsolid *solid
+                /*!< a pointer to a DXF \c 3DSOLID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (solid->modeler_format_version_number < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the modeler_format_version_number member.\n")),
+                  __FUNCTION__);
+        }
+        if (solid->modeler_format_version_number > DXF_MODELER_FORMAT_CURRENT_VERSION)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found in the modeler_format_version_number member.\n")),
+                  __FUNCTION__);
+        }
+        result = solid->modeler_format_version_number;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

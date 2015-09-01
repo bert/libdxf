@@ -371,6 +371,9 @@ dxf_file
         /*!< \brief Force compatibility with older versions (prior to
          * DXF R12) if nonzero, default value is 0. */
 
+#define DXF_MODELER_FORMAT_CURRENT_VERSION 1
+        /*!< \brief The current modeler format version. */
+
 #define DXF_MODELSPACE 0
         /*!< \brief This is where our hardware is going to live, default
          * value, can be ommitted in dxf output. */

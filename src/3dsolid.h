@@ -264,6 +264,11 @@ dxf_3dsolid_get_dictionary_owner_hard
 (
         Dxf3dsolid *solid
 );
+int
+dxf_3dsolid_get_modeler_format_version_number
+(
+        Dxf3dsolid *solid
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
