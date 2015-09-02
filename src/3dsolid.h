@@ -275,6 +275,11 @@ dxf_3dsolid_set_modeler_format_version_number
         Dxf3dsolid *solid,
         int modeler_format_version_number
 );
+char *
+dxf_3dsolid_get_history
+(
+        Dxf3dsolid *solid
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */

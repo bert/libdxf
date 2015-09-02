@@ -1686,4 +1686,52 @@ dxf_3dsolid_set_modeler_format_version_number
 }
 
 
+/*!
+ * \brief Get the pointer to the history from this DXF \c 3DSOLID entity.
+ *
+ * \return soft pointer to the history.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_3dsolid_get_history
+(
+        Dxf3dsolid *solid
+                /*!< a pointer to a DXF \c 3DSOLID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (solid->history ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (solid->history);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
