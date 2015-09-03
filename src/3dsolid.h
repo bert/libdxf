@@ -280,6 +280,12 @@ dxf_3dsolid_get_history
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_history
+(
+        Dxf3dsolid *solid,
+        char *history
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
