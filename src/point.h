@@ -271,6 +271,12 @@ dxf_point_get_dictionary_owner_soft
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_dictionary_owner_soft
+(
+        DxfPoint *point,
+        char *dictionary_owner_soft
+);
 char *
 dxf_point_get_dictionary_owner_hard
 (
