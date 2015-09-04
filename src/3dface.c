@@ -665,7 +665,7 @@ dxf_3dface_free_chain
 
 
 /*!
- * \brief Get the ID code from this DXF \c 3DFACE entity.
+ * \brief Get the ID code from a DXF \c 3DFACE entity.
  *
  * \return ID code.
  *
@@ -711,7 +711,7 @@ dxf_3dface_get_id_code
 
 
 /*!
- * \brief Set the ID code for this DXF \c 3DFACE entity.
+ * \brief Set the ID code for a DXF \c 3DFACE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -757,7 +757,7 @@ dxf_3dface_set_id_code
 
 
 /*!
- * \brief Get the linetype from this DXF \c 3DFACE entity.
+ * \brief Get the linetype from a DXF \c 3DFACE entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
  *
@@ -803,7 +803,7 @@ dxf_3dface_get_linetype
 
 
 /*!
- * \brief Set the linetype for this DXF \c 3DFACE entity.
+ * \brief Set the linetype for a DXF \c 3DFACE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -847,7 +847,7 @@ dxf_3dface_set_linetype
 
 
 /*!
- * \brief Get the layer from this DXF \c 3DFACE entity.
+ * \brief Get the layer from a DXF \c 3DFACE entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
  *
@@ -893,7 +893,7 @@ dxf_3dface_get_layer
 
 
 /*!
- * \brief Set the layer for this DXF \c 3DFACE entity.
+ * \brief Set the layer for a DXF \c 3DFACE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -937,7 +937,7 @@ dxf_3dface_set_layer
 
 
 /*!
- * \brief Get the elevation from this DXF \c 3DFACE entity.
+ * \brief Get the elevation a this DXF \c 3DFACE entity.
  *
  * \return elevation.
  *
@@ -976,7 +976,7 @@ dxf_3dface_get_elevation
 
 
 /*!
- * \brief Set the elevation for this DXF \c 3DFACE entity.
+ * \brief Set the elevation for a DXF \c 3DFACE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1013,7 +1013,7 @@ dxf_3dface_set_elevation
 
 
 /*!
- * \brief Get the thickness from this DXF \c 3DFACE entity.
+ * \brief Get the thickness from a DXF \c 3DFACE entity.
  *
  * \return thickness.
  *
@@ -1059,7 +1059,7 @@ dxf_3dface_get_thickness
 
 
 /*!
- * \brief Set the thickness for this DXF \c 3DFACE entity.
+ * \brief Set the thickness for a DXF \c 3DFACE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1103,7 +1103,7 @@ dxf_3dface_set_thickness
 
 
 /*!
- * \brief Get the linetype scale from this DXF \c 3DFACE entity.
+ * \brief Get the linetype scale from a DXF \c 3DFACE entity.
  *
  * \return linetype scale.
  *
@@ -1149,7 +1149,7 @@ dxf_3dface_get_linetype_scale
 
 
 /*!
- * \brief Set the linetype scale for this DXF \c 3DFACE entity.
+ * \brief Set the linetype scale for a DXF \c 3DFACE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1193,7 +1193,7 @@ dxf_3dface_set_linetype_scale
 
 
 /*!
- * \brief Get the visibility from this DXF \c 3DFACE entity.
+ * \brief Get the visibility from a DXF \c 3DFACE entity.
  *
  * \return visibility.
  *
@@ -1246,7 +1246,7 @@ dxf_3dface_get_visibility
 
 
 /*!
- * \brief Set the visibility for this DXF \c 3DFACE entity.
+ * \brief Set the visibility for a DXF \c 3DFACE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1297,7 +1297,7 @@ dxf_3dface_set_visibility
 
 
 /*!
- * \brief Get the color from this DXF \c 3DFACE entity.
+ * \brief Get the color from a DXF \c 3DFACE entity.
  *
  * \return color.
  *
@@ -1342,7 +1342,7 @@ dxf_3dface_get_color
 
 
 /*!
- * \brief Set the color for this DXF \c 3DFACE entity.
+ * \brief Set the color for a DXF \c 3DFACE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1387,7 +1387,7 @@ dxf_3dface_set_color
 
 
 /*!
- * \brief Get the paperspace flag value from this DXF \c 3DFACE entity.
+ * \brief Get the paperspace flag value from a DXF \c 3DFACE entity.
  *
  * \return paperspace flag value.
  *
@@ -1438,7 +1438,7 @@ dxf_3dface_get_paperspace
 
 
 /*!
- * \brief Set the paperspace flag for this DXF \c 3DFACE entity.
+ * \brief Set the paperspace flag for a DXF \c 3DFACE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1489,7 +1489,7 @@ dxf_3dface_set_paperspace
 
 
 /*!
- * \brief Get the soft pointer to the dictionary owner from this DXF 
+ * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c 3DFACE entity.
  *
  * \return soft pointer to the dictionary owner.
@@ -1538,7 +1538,7 @@ dxf_3dface_get_dictionary_owner_soft
 
 
 /*!
- * \brief Get the hard pointer to the dictionary owner from this DXF 
+ * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c 3DFACE entity.
  *
  * \return hard pointer to the dictionary owner.
@@ -1587,7 +1587,7 @@ dxf_3dface_get_dictionary_owner_hard
 
 
 /*!
- * \brief Get the base point of the DXF \c 3DFACE entity.
+ * \brief Get the base point of a DXF \c 3DFACE entity.
  *
  * \return the base point.
  *
@@ -1691,7 +1691,7 @@ dxf_3dface_get_base_point
 
 
 /*!
- * \brief Set the base point of the DXF \c 3DFACE entity.
+ * \brief Set the base point of a DXF \c 3DFACE entity.
  *
  * \return a pointer to a DXF \c 3DFACE entity.
  *
@@ -1739,7 +1739,7 @@ dxf_3dface_set_base_point
 
 
 /*!
- * \brief Get the first alignment point of the DXF \c 3DFACE entity.
+ * \brief Get the first alignment point of a DXF \c 3DFACE entity.
  *
  * \return the first alignment point.
  *
@@ -1843,7 +1843,7 @@ dxf_3dface_get_first_alignment_point
 
 
 /*!
- * \brief Set the first alignment point of the DXF \c 3DFACE entity.
+ * \brief Set the first alignment point of a DXF \c 3DFACE entity.
  *
  * \return a pointer to a DXF \c 3DFACE entity.
  *
@@ -1891,7 +1891,7 @@ dxf_3dface_set_first_alignment_point
 
 
 /*!
- * \brief Get the second alignment point of the DXF \c 3DFACE entity.
+ * \brief Get the second alignment point of a DXF \c 3DFACE entity.
  *
  * \return the second alignment point.
  *
@@ -1995,7 +1995,7 @@ dxf_3dface_get_second_alignment_point
 
 
 /*!
- * \brief Set the second alignment point of the DXF \c 3DFACE entity.
+ * \brief Set the second alignment point of a DXF \c 3DFACE entity.
  *
  * \return a pointer to a DXF \c 3DFACE entity.
  *
@@ -2043,7 +2043,7 @@ dxf_3dface_set_second_alignment_point
 
 
 /*!
- * \brief Get the third alignment point of the DXF \c 3DFACE entity.
+ * \brief Get the third alignment point of a DXF \c 3DFACE entity.
  *
  * \return the third alignment point.
  *
@@ -2147,7 +2147,7 @@ dxf_3dface_get_third_alignment_point
 
 
 /*!
- * \brief Set the third alignment point of the DXF \c 3DFACE entity.
+ * \brief Set the third alignment point of a DXF \c 3DFACE entity.
  *
  * \return a pointer to a DXF \c 3DFACE entity.
  *
@@ -2195,7 +2195,7 @@ dxf_3dface_set_third_alignment_point
 
 
 /*!
- * \brief Test if the first edge of the DXF \c 3DFACE is invisible.
+ * \brief Test if the first edge of a DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
  * visible.
@@ -2229,7 +2229,7 @@ dxf_3dface_is_first_edge_invisible
 
 
 /*!
- * \brief Test if the second edge of the DXF \c 3DFACE is invisible.
+ * \brief Test if the second edge of a DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
  * visible.
@@ -2263,7 +2263,7 @@ dxf_3dface_is_second_edge_invisible
 
 
 /*!
- * \brief Test if the third edge of the DXF \c 3DFACE is invisible.
+ * \brief Test if the third edge of a DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
  * visible.
@@ -2297,7 +2297,7 @@ dxf_3dface_is_third_edge_invisible
 
 
 /*!
- * \brief Test if the fourth edge of the DXF \c 3DFACE is invisible.
+ * \brief Test if the fourth edge of a DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
  * visible.
