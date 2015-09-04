@@ -1628,6 +1628,52 @@ dxf_3dsolid_get_dictionary_owner_hard
 
 
 /*!
+ * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
+ * \c 3DSOLID entity.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+Dxf3dsolid *
+dxf_3dsolid_set_dictionary_owner_hard
+(
+        Dxf3dsolid *solid,
+                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the \c
+                 * dictionary_owner_hard for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid);
+}
+
+
+/*!
  * \brief Get the modeler format version number from this DXF \c 3DSOLID
  * entity.
  *

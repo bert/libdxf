@@ -270,6 +270,12 @@ dxf_3dsolid_get_dictionary_owner_hard
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_dictionary_owner_hard
+(
+        Dxf3dsolid *solid,
+        char *dictionary_owner_hard
+);
 int
 dxf_3dsolid_get_modeler_format_version_number
 (
