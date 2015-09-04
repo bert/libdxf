@@ -36,7 +36,7 @@
 
 
 /*!
- * \brief Allocate memory for a DXF \c ARC.
+ * \brief Allocate memory for a DXF \c ARC entity.
  *
  * Fill the memory contents with zeros.
  *
@@ -619,7 +619,7 @@ dxf_arc_write
 
 
 /*!
- * \brief Free the allocated memory for a DXF \c ARC and all it's
+ * \brief Free the allocated memory for a DXF \c ARC entity and all it's
  * data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
