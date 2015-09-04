@@ -1546,9 +1546,9 @@ dxf_3dline_get_dictionary_owner_soft
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_dictionary_owner_soft
@@ -1641,9 +1641,9 @@ dxf_3dline_get_dictionary_owner_hard
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_dictionary_owner_hard
