@@ -1617,6 +1617,52 @@ dxf_line_get_dictionary_owner_hard
 
 
 /*!
+ * \brief Set the pointer to the dictionary_owner_hard for a DXF
+ * \c LINE entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfLine *
+dxf_line_set_dictionary_owner_hard
+(
+        DxfLine *line,
+                /*!< a pointer to a DXF \c LINE entity. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the
+                 * dictionary_owner_hard for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the start point of a DXF \c LINE entity.
  *
  * \return the start point.

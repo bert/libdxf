@@ -281,6 +281,12 @@ dxf_line_get_dictionary_owner_hard
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_dictionary_owner_hard
+(
+        DxfLine *line,
+        char *dictionary_owner_hard
+);
 DxfPoint *
 dxf_line_get_start_point
 (
