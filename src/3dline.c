@@ -39,7 +39,7 @@
 
 
 /*!
- * \brief Allocate memory for a \c Dxf3dline.
+ * \brief Allocate memory for a DXF \c 3DLINE entity.
  *
  * Fill the memory contents with zeros.
  * 
@@ -83,7 +83,8 @@ dxf_3dline_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in an \c 3DLINE entity.
+ * \brief Allocate memory and initialize data fields in a DXF \c 3DLINE
+ * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
@@ -148,7 +149,7 @@ dxf_3dline_init
 
 
 /*!
- * \brief Read data from a DXF file into an \c 3DLINE entity.
+ * \brief Read data from a DXF file into a DXF \c 3DLINE entity.
  *
  * The last line read from file contained the string "3DLINE". \n
  * Now follows some data for the \c 3DLINE, to be terminated with a
@@ -399,7 +400,8 @@ dxf_3dline_read
 
 
 /*!
- * \brief Write DXF output to a file (or a device) for a 3D line entity.
+ * \brief Write DXF output to a file (or a device) for a DXF \c 3DLINE
+ * entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occured.
@@ -569,8 +571,8 @@ dxf_3dline_write
 
 
 /*!
- * \brief Free the allocated memory for a DXF \c 3DLINE and all it's
- * data fields.
+ * \brief Free the allocated memory for a DXF \c 3DLINE entity and all
+ * it's data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -651,7 +653,7 @@ dxf_3dline_free_chain
 
 
 /*!
- * \brief Get the ID code from this DXF \c 3DLINE entity.
+ * \brief Get the ID code from a DXF \c 3DLINE entity.
  *
  * \return ID code.
  *
@@ -697,7 +699,7 @@ dxf_3dline_get_id_code
 
 
 /*!
- * \brief Set the ID code for this DXF \c 3DLINE entity.
+ * \brief Set the ID code for a DXF \c 3DLINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -743,7 +745,7 @@ dxf_3dline_set_id_code
 
 
 /*!
- * \brief Get the linetype from this DXF \c 3DLINE entity.
+ * \brief Get the linetype from a DXF \c 3DLINE entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
  *
@@ -789,7 +791,7 @@ dxf_3dline_get_linetype
 
 
 /*!
- * \brief Set the linetype for this DXF \c 3DLINE entity.
+ * \brief Set the linetype for a DXF \c 3DLINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -833,7 +835,7 @@ dxf_3dline_set_linetype
 
 
 /*!
- * \brief Get the layer from this DXF \c 3DLINE entity.
+ * \brief Get the layer from a DXF \c 3DLINE entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
  *
@@ -879,7 +881,7 @@ dxf_3dline_get_layer
 
 
 /*!
- * \brief Set the layer for this DXF \c 3DLINE entity.
+ * \brief Set the layer for a DXF \c 3DLINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -923,7 +925,7 @@ dxf_3dline_set_layer
 
 
 /*!
- * \brief Get the elevation from this DXF \c 3DLINE entity.
+ * \brief Get the elevation from a DXF \c 3DLINE entity.
  *
  * \return elevation.
  *
@@ -962,7 +964,7 @@ dxf_3dline_get_elevation
 
 
 /*!
- * \brief Set the elevation for this DXF \c 3DLINE entity.
+ * \brief Set the elevation for a DXF \c 3DLINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -999,7 +1001,7 @@ dxf_3dline_set_elevation
 
 
 /*!
- * \brief Get the thickness from this DXF \c 3DLINE entity.
+ * \brief Get the thickness from a DXF \c 3DLINE entity.
  *
  * \return thickness.
  *
@@ -1045,7 +1047,7 @@ dxf_3dline_get_thickness
 
 
 /*!
- * \brief Set the thickness for this DXF \c 3DLINE entity.
+ * \brief Set the thickness for a DXF \c 3DLINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1089,7 +1091,7 @@ dxf_3dline_set_thickness
 
 
 /*!
- * \brief Get the linetype scale from this DXF \c 3DLINE entity.
+ * \brief Get the linetype scale from a DXF \c 3DLINE entity.
  *
  * \return linetype scale.
  *
@@ -1138,7 +1140,7 @@ dxf_3dline_get_linetype_scale
 
 
 /*!
- * \brief Set the linetype scale for this DXF \c 3DLINE entity.
+ * \brief Set the linetype scale for a DXF \c 3DLINE entity.
  *
  * \note The linetype scale was added in DXF R13 and is included for
  * forward compatibility.
@@ -1185,7 +1187,7 @@ dxf_3dline_set_linetype_scale
 
 
 /*!
- * \brief Get the visibility from this DXF \c 3DLINE entity.
+ * \brief Get the visibility from a DXF \c 3DLINE entity.
  *
  * \return visibility.
  *
@@ -1241,7 +1243,7 @@ dxf_3dline_get_visibility
 
 
 /*!
- * \brief Set the visibility for this DXF \c 3DLINE entity.
+ * \brief Set the visibility for a DXF \c 3DLINE entity.
  *
  * \note The visibility was added in DXF R13 and is included for
  * forward compatibility.
@@ -1295,7 +1297,7 @@ dxf_3dline_set_visibility
 
 
 /*!
- * \brief Get the color from this DXF \c 3DLINE entity.
+ * \brief Get the color from a DXF \c 3DLINE entity.
  *
  * \return color.
  *
@@ -1340,7 +1342,7 @@ dxf_3dline_get_color
 
 
 /*!
- * \brief Set the color for this DXF \c 3DLINE entity.
+ * \brief Set the color for a DXF \c 3DLINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1385,7 +1387,7 @@ dxf_3dline_set_color
 
 
 /*!
- * \brief Get the paperspace flag value from this DXF \c 3DLINE entity.
+ * \brief Get the paperspace flag value from a DXF \c 3DLINE entity.
  *
  * \return paperspace flag value.
  *
@@ -1436,7 +1438,7 @@ dxf_3dline_get_paperspace
 
 
 /*!
- * \brief Set the paperspace flag for this DXF \c 3DLINE entity.
+ * \brief Set the paperspace flag for a DXF \c 3DLINE entity.
  *
  * \note the paperpspace flag was added in DXF R13 and is included for
  * forward compatibility.
@@ -1490,7 +1492,7 @@ dxf_3dline_set_paperspace
 
 
 /*!
- * \brief Get the soft pointer to the dictionary owner from this DXF 
+ * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c 3DLINE entity.
  *
  * \return soft pointer to the dictionary owner.
@@ -1539,7 +1541,7 @@ dxf_3dline_get_dictionary_owner_soft
 
 
 /*!
- * \brief Get the hard pointer to the dictionary owner from this DXF 
+ * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c 3DLINE entity.
  *
  * \return hard pointer to the dictionary owner.
@@ -1588,7 +1590,7 @@ dxf_3dline_get_dictionary_owner_hard
 
 
 /*!
- * \brief Get the start point of the DXF \c 3DLINE entity.
+ * \brief Get the start point of a DXF \c 3DLINE entity.
  *
  * \return the start point.
  *
@@ -1701,7 +1703,7 @@ dxf_3dline_get_start_point
 
 
 /*!
- * \brief Get the end point of the DXF \c 3DLINE entity.
+ * \brief Get the end point of a DXF \c 3DLINE entity.
  *
  * \return the end point.
  *
@@ -1814,7 +1816,7 @@ dxf_3dline_get_end_point
 
 
 /*!
- * \brief Get the mid point of the DXF \c 3DLINE entity.
+ * \brief Get the mid point of a DXF \c 3DLINE entity.
  *
  * \return the mid point.
  *
@@ -2031,8 +2033,8 @@ dxf_3dline_set_extrusion_vector
 
 
 /*!
- * \brief Get the length of the line (straight distance between start
- * point and end point).
+ * \brief Get the length of a DXF \c 3DLINE (straight distance between
+ * start point and end point).
  *
  * \return the length of the \c line in drawing units.
  *
