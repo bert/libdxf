@@ -282,6 +282,12 @@ dxf_point_get_dictionary_owner_hard
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_dictionary_owner_hard
+(
+        DxfPoint *point,
+        char *dictionary_owner_hard
+);
 double
 dxf_point_get_angle_to_X
 (
