@@ -706,7 +706,7 @@ dxf_3dsolid_get_id_code
 
 
 /*!
- * \brief Set the ID code for this DXF \c 3DSOLID entity.
+ * \brief Set the ID code for a DXF \c 3DSOLID entity.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -752,7 +752,7 @@ dxf_3dsolid_set_id_code
 
 
 /*!
- * \brief Get the linetype from this DXF \c 3DSOLID entity.
+ * \brief Get the linetype from a DXF \c 3DSOLID entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
  *
@@ -798,7 +798,7 @@ dxf_3dsolid_get_linetype
 
 
 /*!
- * \brief Set the linetype for this DXF \c 3DSOLID entity.
+ * \brief Set the linetype for a DXF \c 3DSOLID entity.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -842,7 +842,7 @@ dxf_3dsolid_set_linetype
 
 
 /*!
- * \brief Get the layer from this DXF \c 3DSOLID entity.
+ * \brief Get the layer from a DXF \c 3DSOLID entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
  *
@@ -888,7 +888,7 @@ dxf_3dsolid_get_layer
 
 
 /*!
- * \brief Set the layer for this DXF \c 3DSOLID entity.
+ * \brief Set the layer for a DXF \c 3DSOLID entity.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -932,7 +932,7 @@ dxf_3dsolid_set_layer
 
 
 /*!
- * \brief Get the elevation from this DXF \c 3DSOLID entity.
+ * \brief Get the elevation from a DXF \c 3DSOLID entity.
  *
  * \return elevation.
  *
@@ -971,7 +971,7 @@ dxf_3dsolid_get_elevation
 
 
 /*!
- * \brief Set the elevation for this DXF \c 3DSOLID entity.
+ * \brief Set the elevation for a DXF \c 3DSOLID entity.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1008,7 +1008,7 @@ dxf_3dsolid_set_elevation
 
 
 /*!
- * \brief Get the thickness from this DXF \c 3DSOLID entity.
+ * \brief Get the thickness from a DXF \c 3DSOLID entity.
  *
  * \return thickness.
  *
@@ -1054,7 +1054,7 @@ dxf_3dsolid_get_thickness
 
 
 /*!
- * \brief Set the thickness for this DXF \c 3DSOLID entity.
+ * \brief Set the thickness for a DXF \c 3DSOLID entity.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1098,7 +1098,7 @@ dxf_3dsolid_set_thickness
 
 
 /*!
- * \brief Get the linetype scale from this DXF \c 3DSOLID entity.
+ * \brief Get the linetype scale from a DXF \c 3DSOLID entity.
  *
  * \return linetype scale.
  *
@@ -1144,7 +1144,7 @@ dxf_3dsolid_get_linetype_scale
 
 
 /*!
- * \brief Set the linetype scale for this DXF \c 3DSOLID entity.
+ * \brief Set the linetype scale for a DXF \c 3DSOLID entity.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1188,7 +1188,7 @@ dxf_3dsolid_set_linetype_scale
 
 
 /*!
- * \brief Get the visibility from this DXF \c 3DSOLID entity.
+ * \brief Get the visibility from a DXF \c 3DSOLID entity.
  *
  * \return visibility.
  *
@@ -1241,7 +1241,7 @@ dxf_3dsolid_get_visibility
 
 
 /*!
- * \brief Set the visibility for this DXF \c 3DSOLID entity.
+ * \brief Set the visibility for a DXF \c 3DSOLID entity.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1292,7 +1292,7 @@ dxf_3dsolid_set_visibility
 
 
 /*!
- * \brief Get the color from this DXF \c 3DSOLID entity.
+ * \brief Get the color from a DXF \c 3DSOLID entity.
  *
  * \return color.
  *
@@ -1337,7 +1337,7 @@ dxf_3dsolid_get_color
 
 
 /*!
- * \brief Set the color for this DXF \c 3DSOLID entity.
+ * \brief Set the color for a DXF \c 3DSOLID entity.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1382,7 +1382,7 @@ dxf_3dsolid_set_color
 
 
 /*!
- * \brief Get the paperspace flag value from this DXF \c 3DSOLID entity.
+ * \brief Get the paperspace flag value from a DXF \c 3DSOLID entity.
  *
  * \return paperspace flag value.
  *
@@ -1433,7 +1433,7 @@ dxf_3dsolid_get_paperspace
 
 
 /*!
- * \brief Set the paperspace flag for this DXF \c 3DSOLID entity.
+ * \brief Set the paperspace flag for a DXF \c 3DSOLID entity.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1484,7 +1484,7 @@ dxf_3dsolid_set_paperspace
 
 
 /*!
- * \brief Get the soft pointer to the dictionary owner from this DXF 
+ * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c 3DSOLID entity.
  *
  * \return soft pointer to the dictionary owner.
@@ -1579,7 +1579,7 @@ dxf_3dsolid_set_dictionary_owner_soft
 
 
 /*!
- * \brief Get the hard pointer to the dictionary owner from this DXF 
+ * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c 3DSOLID entity.
  *
  * \return hard pointer to the dictionary owner.
@@ -1674,7 +1674,7 @@ dxf_3dsolid_set_dictionary_owner_hard
 
 
 /*!
- * \brief Get the modeler format version number from this DXF \c 3DSOLID
+ * \brief Get the modeler format version number from a DXF \c 3DSOLID
  * entity.
  *
  * \return the modeler format version number.
@@ -1726,7 +1726,7 @@ dxf_3dsolid_get_modeler_format_version_number
 
 
 /*!
- * \brief Set the modeler format version number for this DXF \c 3DSOLID
+ * \brief Set the modeler format version number for a DXF \c 3DSOLID
  * entity.
  *
  * \version According to DXF R10 (backward compatibility).
@@ -1779,7 +1779,7 @@ dxf_3dsolid_set_modeler_format_version_number
 
 
 /*!
- * \brief Get the pointer to the history from this DXF \c 3DSOLID entity.
+ * \brief Get the pointer to the history from a DXF \c 3DSOLID entity.
  *
  * \return soft pointer to the history.
  *
