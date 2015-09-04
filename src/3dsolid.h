@@ -259,6 +259,12 @@ dxf_3dsolid_get_dictionary_owner_soft
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_dictionary_owner_soft
+(
+        Dxf3dsolid *solid,
+        char *dictionary_owner_soft
+);
 char *
 dxf_3dsolid_get_dictionary_owner_hard
 (
