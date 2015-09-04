@@ -45,7 +45,7 @@
 
 
 /*!
- * \brief Allocate memory for a \c Dxf3dsolid.
+ * \brief Allocate memory for a DXF \c 3DSOLID.
  *
  * Fill the memory contents with zeros.
  *
