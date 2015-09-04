@@ -1633,6 +1633,52 @@ dxf_3dface_get_dictionary_owner_hard
 
 
 /*!
+ * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
+ * \c 3DFACE entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+Dxf3dface *
+dxf_3dface_set_dictionary_owner_hard
+(
+        Dxf3dface *face,
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the \c
+                 * dictionary_owner_hard for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        face->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (face);
+}
+
+
+/*!
  * \brief Get the base point of a DXF \c 3DFACE entity.
  *
  * \return the base point.

@@ -300,6 +300,12 @@ dxf_3dface_get_dictionary_owner_hard
 (
         Dxf3dface *face
 );
+Dxf3dface *
+dxf_3dface_set_dictionary_owner_hard
+(
+        Dxf3dface *face,
+        char *dictionary_owner_hard
+);
 DxfPoint *
 dxf_3dface_get_base_point
 (
