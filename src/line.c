@@ -36,7 +36,7 @@
 
 
 /*!
- * \brief Allocate memory for a \c DxfLine.
+ * \brief Allocate memory for a DXF \c LINE entity.
  *
  * Fill the memory contents with zeros.
  * 
@@ -80,7 +80,8 @@ dxf_line_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in an \c LINE entity.
+ * \brief Allocate memory and initialize data fields in a DXF \c LINE
+ * entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
@@ -145,7 +146,7 @@ dxf_line_init
 
 
 /*!
- * \brief Read data from a DXF file into an \c LINE entity.
+ * \brief Read data from a DXF file into a DXF \c LINE entity.
  *
  * The last line read from file contained the string "LINE". \n
  * Now follows some data for the \c LINE, to be terminated with a
@@ -396,7 +397,7 @@ dxf_line_read
 
 
 /*!
- * \brief Write DXF output to fp for a line entity.
+ * \brief Write DXF output to fp for a DXF \c LINE entity.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occured.
@@ -566,8 +567,8 @@ dxf_line_write
 
 
 /*!
- * \brief Free the allocated memory for a DXF \c LINE and all it's
- * data fields.
+ * \brief Free the allocated memory for a DXF \c LINE entity and all
+ * it's data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -648,7 +649,7 @@ dxf_line_free_chain
 
 
 /*!
- * \brief Get the ID code from this DXF \c LINE entity.
+ * \brief Get the ID code from a DXF \c LINE entity.
  *
  * \return ID code.
  *
@@ -694,7 +695,7 @@ dxf_line_get_id_code
 
 
 /*!
- * \brief Set the ID code for this DXF \c LINE entity.
+ * \brief Set the ID code for a DXF \c LINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -740,7 +741,7 @@ dxf_line_set_id_code
 
 
 /*!
- * \brief Get the linetype from this DXF \c LINE entity.
+ * \brief Get the linetype from a DXF \c LINE entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
  *
@@ -786,7 +787,7 @@ dxf_line_get_linetype
 
 
 /*!
- * \brief Set the linetype for this DXF \c LINE entity.
+ * \brief Set the linetype for a DXF \c LINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -830,7 +831,7 @@ dxf_line_set_linetype
 
 
 /*!
- * \brief Get the layer from this DXF \c LINE entity.
+ * \brief Get the layer from a DXF \c LINE entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
  *
@@ -876,7 +877,7 @@ dxf_line_get_layer
 
 
 /*!
- * \brief Set the layer for this DXF \c LINE entity.
+ * \brief Set the layer for a DXF \c LINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -920,7 +921,7 @@ dxf_line_set_layer
 
 
 /*!
- * \brief Get the elevation from this DXF \c LINE entity.
+ * \brief Get the elevation from a DXF \c LINE entity.
  *
  * \return elevation.
  *
@@ -959,7 +960,7 @@ dxf_line_get_elevation
 
 
 /*!
- * \brief Set the elevation for this DXF \c LINE entity.
+ * \brief Set the elevation for a DXF \c LINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -996,7 +997,7 @@ dxf_line_set_elevation
 
 
 /*!
- * \brief Get the thickness from this DXF \c LINE entity.
+ * \brief Get the thickness from a DXF \c LINE entity.
  *
  * \return thickness.
  *
@@ -1042,7 +1043,7 @@ dxf_line_get_thickness
 
 
 /*!
- * \brief Set the thickness for this DXF \c LINE entity.
+ * \brief Set the thickness for a DXF \c LINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1086,7 +1087,7 @@ dxf_line_set_thickness
 
 
 /*!
- * \brief Get the linetype scale from this DXF \c LINE entity.
+ * \brief Get the linetype scale from a DXF \c LINE entity.
  *
  * \return linetype scale.
  *
@@ -1132,7 +1133,7 @@ dxf_line_get_linetype_scale
 
 
 /*!
- * \brief Set the linetype scale for this DXF \c LINE entity.
+ * \brief Set the linetype scale for a DXF \c LINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1176,7 +1177,7 @@ dxf_line_set_linetype_scale
 
 
 /*!
- * \brief Get the visibility from this DXF \c LINE entity.
+ * \brief Get the visibility from a DXF \c LINE entity.
  *
  * \return visibility.
  *
@@ -1229,7 +1230,7 @@ dxf_line_get_visibility
 
 
 /*!
- * \brief Set the visibility for this DXF \c LINE entity.
+ * \brief Set the visibility for a DXF \c LINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1280,7 +1281,7 @@ dxf_line_set_visibility
 
 
 /*!
- * \brief Get the color from this DXF \c LINE entity.
+ * \brief Get the color from a DXF \c LINE entity.
  *
  * \return color.
  *
@@ -1325,7 +1326,7 @@ dxf_line_get_color
 
 
 /*!
- * \brief Set the color for this DXF \c LINE entity.
+ * \brief Set the color for a DXF \c LINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1370,7 +1371,7 @@ dxf_line_set_color
 
 
 /*!
- * \brief Get the paperspace flag value from this DXF \c LINE entity.
+ * \brief Get the paperspace flag value from a DXF \c LINE entity.
  *
  * \return paperspace flag value.
  *
@@ -1421,7 +1422,7 @@ dxf_line_get_paperspace
 
 
 /*!
- * \brief Set the paperspace flag for this DXF \c LINE entity.
+ * \brief Set the paperspace flag for a DXF \c LINE entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1472,7 +1473,7 @@ dxf_line_set_paperspace
 
 
 /*!
- * \brief Get the soft pointer to the dictionary owner from this DXF 
+ * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c LINE entity.
  *
  * \return soft pointer to the dictionary owner.
@@ -1521,7 +1522,7 @@ dxf_line_get_dictionary_owner_soft
 
 
 /*!
- * \brief Get the hard pointer to the dictionary owner from this DXF 
+ * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c LINE entity.
  *
  * \return hard pointer to the dictionary owner.
@@ -1570,7 +1571,7 @@ dxf_line_get_dictionary_owner_hard
 
 
 /*!
- * \brief Get the start point of the DXF \c LINE entity.
+ * \brief Get the start point of a DXF \c LINE entity.
  *
  * \return the start point.
  *
@@ -1683,7 +1684,7 @@ dxf_line_get_start_point
 
 
 /*!
- * \brief Set the start point of the DXF \c LINE entity.
+ * \brief Set the start point of a DXF \c LINE entity.
  *
  * \return a pointer to a DXF \c LINE entity.
  *
@@ -1731,7 +1732,7 @@ dxf_line_set_start_point
 
 
 /*!
- * \brief Get the end point of the DXF \c LINE entity.
+ * \brief Get the end point of a DXF \c LINE entity.
  *
  * \return the end point.
  *
@@ -1844,7 +1845,7 @@ dxf_line_get_end_point
 
 
 /*!
- * \brief Set the end point of the DXF \c LINE entity.
+ * \brief Set the end point of a DXF \c LINE entity.
  *
  * \return a pointer to a DXF \c LINE entity.
  *
@@ -1892,7 +1893,7 @@ dxf_line_set_end_point
 
 
 /*!
- * \brief Get the mid point of the DXF \c LINE entity.
+ * \brief Get the mid point of a DXF \c LINE entity.
  *
  * \return the mid point.
  *
@@ -2109,8 +2110,8 @@ dxf_line_set_extrusion_vector
 
 
 /*!
- * \brief Get the length of the line (straight distance between start
- * point and end point).
+ * \brief Get the length of a DXF \c LINE (straight distance between
+ * start point and end point).
  *
  * \return the length of the \c line in drawing units.
  *
