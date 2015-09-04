@@ -270,6 +270,12 @@ dxf_line_get_dictionary_owner_soft
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_dictionary_owner_soft
+(
+        DxfLine *line,
+        char *dictionary_owner_soft
+);
 char *
 dxf_line_get_dictionary_owner_hard
 (
