@@ -289,6 +289,12 @@ dxf_3dface_get_dictionary_owner_soft
 (
         Dxf3dface *face
 );
+Dxf3dface *
+dxf_3dface_set_dictionary_owner_soft
+(
+        Dxf3dface *face,
+        char *dictionary_owner_soft
+);
 char *
 dxf_3dface_get_dictionary_owner_hard
 (
