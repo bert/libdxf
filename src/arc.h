@@ -177,6 +177,11 @@ dxf_arc_set_id_code
         DxfArc *arc,
         int id_code
 );
+char *
+dxf_arc_get_linetype
+(
+        DxfArc *arc
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
