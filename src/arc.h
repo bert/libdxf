@@ -171,6 +171,12 @@ dxf_arc_get_id_code
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_id_code
+(
+        DxfArc *arc,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
