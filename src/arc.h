@@ -166,6 +166,11 @@ dxf_arc_free_chain
 (
         DxfArc *arcs
 );
+int
+dxf_arc_get_id_code
+(
+        DxfArc *arc
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
