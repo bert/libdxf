@@ -204,6 +204,12 @@ dxf_arc_get_elevation
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_elevation
+(
+        DxfArc *arc,
+        double elevation
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
