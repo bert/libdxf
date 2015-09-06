@@ -221,6 +221,11 @@ dxf_arc_set_thickness
         DxfArc *arc,
         double thickness
 );
+double
+dxf_arc_get_linetype_scale
+(
+        DxfArc *arc
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
