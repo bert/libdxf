@@ -215,6 +215,12 @@ dxf_arc_get_thickness
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_thickness
+(
+        DxfArc *arc,
+        double thickness
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
