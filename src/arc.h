@@ -188,6 +188,11 @@ dxf_arc_set_linetype
         DxfArc *arc,
         char *linetype
 );
+char *
+dxf_arc_get_layer
+(
+        DxfArc *arc
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
