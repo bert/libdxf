@@ -210,6 +210,11 @@ dxf_arc_set_elevation
         DxfArc *arc,
         double elevation
 );
+double
+dxf_arc_get_thickness
+(
+        DxfArc *arc
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
