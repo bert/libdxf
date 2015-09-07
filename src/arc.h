@@ -243,6 +243,11 @@ dxf_arc_set_visibility
         DxfArc *arc,
         int16_t visibility
 );
+int
+dxf_arc_get_color
+(
+        DxfArc *arc
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
