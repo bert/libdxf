@@ -1365,7 +1365,7 @@ dxf_3dsolid_set_color
                   __FUNCTION__);
                 return (NULL);
         }
-        if (solid->color < 0)
+        if (color < 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative color value was passed.\n")),
