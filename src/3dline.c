@@ -1370,7 +1370,7 @@ dxf_3dline_set_color
                   __FUNCTION__);
                 return (NULL);
         }
-        if (line->color < 0)
+        if (color < 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative color value was passed.\n")),
