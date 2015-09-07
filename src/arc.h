@@ -248,6 +248,12 @@ dxf_arc_get_color
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_color
+(
+        DxfArc *arc,
+        int color
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
