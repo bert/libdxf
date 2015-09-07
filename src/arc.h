@@ -226,6 +226,12 @@ dxf_arc_get_linetype_scale
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_linetype_scale
+(
+        DxfArc *arc,
+        double linetype_scale
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
