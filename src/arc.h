@@ -259,6 +259,12 @@ dxf_arc_get_paperspace
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_paperspace
+(
+        DxfArc *arc,
+        int paperspace
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
