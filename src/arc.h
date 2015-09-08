@@ -281,6 +281,12 @@ dxf_arc_get_dictionary_owner_hard
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_dictionary_owner_hard
+(
+        DxfArc *arc,
+        char *dictionary_owner_hard
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
