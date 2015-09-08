@@ -301,6 +301,11 @@ dxf_arc_set_start_point
         DxfArc *arc,
         DxfPoint *point
 );
+DxfPoint *
+dxf_arc_get_extrusion_vector_as_point
+(
+        DxfArc *arc
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
