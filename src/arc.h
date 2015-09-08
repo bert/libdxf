@@ -254,6 +254,11 @@ dxf_arc_set_color
         DxfArc *arc,
         int color
 );
+int
+dxf_arc_get_paperspace
+(
+        DxfArc *arc
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
