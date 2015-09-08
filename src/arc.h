@@ -295,6 +295,12 @@ dxf_arc_get_start_point
         int id_code,
         int inheritance
 );
+DxfArc *
+dxf_arc_set_start_point
+(
+        DxfArc *arc,
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
