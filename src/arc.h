@@ -37,6 +37,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 /*!
@@ -286,6 +287,13 @@ dxf_arc_set_dictionary_owner_hard
 (
         DxfArc *arc,
         char *dictionary_owner_hard
+);
+DxfPoint *
+dxf_arc_get_start_point
+(
+        DxfArc *arc,
+        int id_code,
+        int inheritance
 );
 
 
