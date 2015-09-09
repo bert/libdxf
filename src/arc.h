@@ -314,6 +314,11 @@ dxf_arc_set_extrusion_vector
         double extr_y0,
         double extr_z0
 );
+double
+dxf_arc_get_radius
+(
+        DxfArc *arc
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
