@@ -2014,4 +2014,55 @@ dxf_arc_get_radius
 }
 
 
+/*!
+ * \brief Set the radius for a DXF \c ARC entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfArc *
+dxf_arc_set_radius
+(
+        DxfArc *arc,
+                /*!< a pointer to a DXF \c ARC entity. */
+        double radius
+                /*!< the radius to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (radius < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative radius value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (radius == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a value of zero was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        arc->radius = radius;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc);
+}
+
+
 /* EOF*/
