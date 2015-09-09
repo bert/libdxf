@@ -1918,4 +1918,47 @@ dxf_arc_get_extrusion_vector_as_point
 }
 
 
+/*!
+ * \brief Set the extrusion vector for a DXF \c ARC entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfArc *
+dxf_arc_set_extrusion_vector
+(
+        DxfArc *arc,
+                /*!< a pointer to a DXF \c ARC entity. */
+        double extr_x0,
+                /*!<  X-value of the extrusion direction. */
+        double extr_y0,
+                /*!<  Y-value of the extrusion direction. */
+        double extr_z0
+                /*!<  Z-value of the extrusion direction. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        arc->extr_x0 = extr_x0;
+        arc->extr_y0 = extr_y0;
+        arc->extr_z0 = extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc);
+}
+
+
 /* EOF*/
