@@ -325,6 +325,11 @@ dxf_arc_set_radius
         DxfArc *arc,
         double radius
 );
+double
+dxf_arc_get_start_angle
+(
+        DxfArc *arc
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
