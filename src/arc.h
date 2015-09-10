@@ -336,6 +336,11 @@ dxf_arc_set_start_angle
         DxfArc *arc,
         double start_angle
 );
+double
+dxf_arc_get_end_angle
+(
+        DxfArc *arc
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
