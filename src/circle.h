@@ -158,6 +158,12 @@ dxf_circle_get_id_code
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_id_code
+(
+        DxfCircle *circle,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
