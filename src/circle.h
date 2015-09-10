@@ -153,6 +153,11 @@ dxf_circle_free_chain
 (
         DxfCircle *circles
 );
+int
+dxf_circle_get_id_code
+(
+        DxfCircle *circle
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
