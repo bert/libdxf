@@ -169,6 +169,12 @@ dxf_circle_get_linetype
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_linetype
+(
+        DxfCircle *circle,
+        char *linetype
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
