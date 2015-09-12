@@ -186,6 +186,11 @@ dxf_circle_set_layer
         DxfCircle *circle,
         char *layer
 );
+double
+dxf_circle_get_elevation
+(
+        DxfCircle *circle
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
