@@ -1059,4 +1059,50 @@ dxf_circle_set_thickness
 }
 
 
+/*!
+ * \brief Get the linetype scale from a DXF \c CIRCLE entity.
+ *
+ * \return linetype scale.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+double
+dxf_circle_get_linetype_scale
+(
+        DxfCircle *circle
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (circle->linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the linetype scale member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = circle->linetype_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

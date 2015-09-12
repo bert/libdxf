@@ -208,6 +208,11 @@ dxf_circle_set_thickness
         DxfCircle *circle,
         double thickness
 );
+double
+dxf_circle_get_linetype_scale
+(
+        DxfCircle *circle
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
