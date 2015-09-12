@@ -213,6 +213,12 @@ dxf_circle_get_linetype_scale
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_linetype_scale
+(
+        DxfCircle *circle,
+        double linetype_scale
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
