@@ -197,6 +197,11 @@ dxf_circle_set_elevation
         DxfCircle *circle,
         double elevation
 );
+double
+dxf_circle_get_thickness
+(
+        DxfCircle *circle
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
