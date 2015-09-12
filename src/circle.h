@@ -219,6 +219,11 @@ dxf_circle_set_linetype_scale
         DxfCircle *circle,
         double linetype_scale
 );
+int16_t
+dxf_circle_get_visibility
+(
+        DxfCircle *circle
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
