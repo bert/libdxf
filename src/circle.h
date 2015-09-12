@@ -180,6 +180,12 @@ dxf_circle_get_layer
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_layer
+(
+        DxfCircle *circle,
+        char *layer
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
