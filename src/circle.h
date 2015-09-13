@@ -224,6 +224,12 @@ dxf_circle_get_visibility
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_visibility
+(
+        DxfCircle *circle,
+        int16_t visibility
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
