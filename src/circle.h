@@ -241,6 +241,11 @@ dxf_circle_set_color
         DxfCircle *circle,
         int color
 );
+int
+dxf_circle_get_paperspace
+(
+        DxfCircle *circle
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
