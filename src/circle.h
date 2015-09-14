@@ -230,6 +230,11 @@ dxf_circle_set_visibility
         DxfCircle *circle,
         int16_t visibility
 );
+int
+dxf_circle_get_color
+(
+        DxfCircle *circle
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
