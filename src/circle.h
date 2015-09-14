@@ -235,6 +235,12 @@ dxf_circle_get_color
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_color
+(
+        DxfCircle *circle,
+        int color
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
