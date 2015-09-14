@@ -246,6 +246,12 @@ dxf_circle_get_paperspace
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_paperspace
+(
+        DxfCircle *circle,
+        int paperspace
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
