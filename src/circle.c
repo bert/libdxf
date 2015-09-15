@@ -1739,4 +1739,52 @@ dxf_circle_get_base_point
 }
 
 
+/*!
+ * \brief Set the base point of a DXF \c CIRCLE entity.
+ *
+ * \return a pointer to a DXF \c CIRCLE entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfCircle *
+dxf_circle_set_base_point
+(
+        DxfCircle *circle,
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        circle->x0 = point->x0;
+        circle->y0 = point->y0;
+        circle->z0 = point->z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (circle);
+}
+
+
 /* EOF */

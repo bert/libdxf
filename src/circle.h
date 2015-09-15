@@ -282,6 +282,12 @@ dxf_circle_get_base_point
         int id_code,
         int inheritance
 );
+DxfCircle *
+dxf_circle_set_base_point
+(
+        DxfCircle *circle,
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
