@@ -37,6 +37,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 /*!
@@ -273,6 +274,13 @@ dxf_circle_set_dictionary_owner_hard
 (
         DxfCircle *circle,
         char *dictionary_owner_hard
+);
+DxfPoint *
+dxf_circle_get_base_point
+(
+        DxfCircle *circle,
+        int id_code,
+        int inheritance
 );
 
 
