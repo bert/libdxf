@@ -268,6 +268,12 @@ dxf_circle_get_dictionary_owner_hard
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_dictionary_owner_hard
+(
+        DxfCircle *circle,
+        char *dictionary_owner_hard
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
