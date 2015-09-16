@@ -113,6 +113,15 @@ dxf_arc
         double z0;
                 /*!< Z-value of the starting point coordinate.\n
                  * Group code = 30. */
+        double radius;
+                /*!< Radius of the arc.\n
+                 * Group code = 40. */
+        double start_angle;
+                /*!< Start angle of the arc.\n
+                 * Group code = 50. */
+        double end_angle;
+                /*!< End angle of the arc.\n
+                 * Group code = 51. */
         double extr_x0;
                 /*!< X-value of the extrusion vector.\n
                  * Defaults to 0.0 if omitted in the DXF file.\n
@@ -125,15 +134,6 @@ dxf_arc
                 /*!< Z-value of the extrusion vector.\n
                  * Defaults to 1.0 if omitted in the DXF file.\n
                  * Group code = 230. */
-        double radius;
-                /*!< Radius of the arc.\n
-                 * Group code = 40. */
-        double start_angle;
-                /*!< Start angle of the arc.\n
-                 * Group code = 50. */
-        double end_angle;
-                /*!< End angle of the arc.\n
-                 * Group code = 51. */
         struct DxfArc *next;
                 /*!< Pointer to the next DxfArc.\n
                  * \c NULL in the last DxfArc. */
