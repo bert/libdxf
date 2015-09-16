@@ -293,6 +293,12 @@ dxf_circle_get_radius
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_radius
+(
+        DxfCircle *circle,
+        double radius
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */

@@ -1840,4 +1840,55 @@ dxf_circle_get_radius
 }
 
 
+/*!
+ * \brief Set the radius for a DXF \c CIRCLE entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfCircle *
+dxf_circle_set_radius
+(
+        DxfCircle *circle,
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+        double radius
+                /*!< the radius to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (radius < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative radius value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (radius == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a value of zero was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        circle->radius = radius;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (circle);
+}
+
+
 /* EOF */
