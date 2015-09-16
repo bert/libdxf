@@ -288,6 +288,11 @@ dxf_circle_set_base_point
         DxfCircle *circle,
         DxfPoint *point
 );
+double
+dxf_circle_get_radius
+(
+        DxfCircle *circle
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
