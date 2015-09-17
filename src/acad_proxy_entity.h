@@ -94,6 +94,12 @@ dxf_acad_proxy_entity
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67. */
+        char *dictionary_owner_soft;
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
+        char *dictionary_owner_hard;
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
         /* Specific members for a DXF acad_proxy_entity. */
         int original_custom_object_data_format;
                 /*!< Original custom object data format:\n

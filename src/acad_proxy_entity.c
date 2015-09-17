@@ -139,6 +139,8 @@ dxf_acad_proxy_entity_init
         acad_proxy_entity->color = DXF_COLOR_BYLAYER;
         acad_proxy_entity->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
         acad_proxy_entity->object_visability = 0;
+        acad_proxy_entity->dictionary_owner_soft = strdup ("");
+        acad_proxy_entity->dictionary_owner_hard = strdup ("");
         acad_proxy_entity->original_custom_object_data_format = 1;
         acad_proxy_entity->proxy_entity_class_id = DXF_DEFAULT_PROXY_ENTITY_ID;
         acad_proxy_entity->application_entity_class_id = 0;
@@ -460,6 +462,30 @@ dxf_acad_proxy_entity_write
         {
                 fprintf (fp->fp, "  5\n%x\n", acad_proxy_entity->id_code);
         }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (acad_proxy_entity->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", acad_proxy_entity->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (acad_proxy_entity->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", acad_proxy_entity->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
@@ -566,6 +592,8 @@ dxf_acad_proxy_entity_free
         }
         free (acad_proxy_entity->linetype);
         free (acad_proxy_entity->layer);
+        free (acad_proxy_entity->dictionary_owner_soft);
+        free (acad_proxy_entity->dictionary_owner_hard);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 free (acad_proxy_entity->binary_graphics_data[i]);
