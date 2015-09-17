@@ -184,6 +184,11 @@ dxf_acad_proxy_entity_set_id_code
         DxfAcadProxyEntity *acad_proxy_entity,
         int id_code
 );
+char *
+dxf_acad_proxy_entity_get_linetype
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */
