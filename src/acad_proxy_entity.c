@@ -652,9 +652,9 @@ dxf_acad_proxy_entity_free_chain
  *
  * \return ID code.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
@@ -696,9 +696,9 @@ dxf_acad_proxy_entity_get_id_code
 /*!
  * \brief Set the ID code for a DXF \c ACAD_PROXY_ENTITY entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
