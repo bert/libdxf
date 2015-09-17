@@ -299,6 +299,11 @@ dxf_circle_set_radius
         DxfCircle *circle,
         double radius
 );
+DxfPoint *
+dxf_circle_get_extrusion_vector_as_point
+(
+        DxfCircle *circle
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */

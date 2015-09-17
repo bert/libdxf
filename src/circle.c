@@ -1891,4 +1891,56 @@ dxf_circle_set_radius
 }
 
 
+/*!
+ * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
+ * \c CIRCLE entity.
+ *
+ * \return a DXF \c POINT containing the extrusion coordinates.
+ *
+ * \warning No other members are copied into the DXF \c POINT.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfPoint *
+dxf_circle_get_extrusion_vector_as_point
+(
+        DxfCircle *circle
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *point = NULL;
+
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point = dxf_point_init (point);
+        if (point == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        point->x0 = circle->extr_x0;
+        point->y0 = circle->extr_y0;
+        point->z0 = circle->extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
 /* EOF */
