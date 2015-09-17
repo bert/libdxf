@@ -647,4 +647,50 @@ dxf_acad_proxy_entity_free_chain
 }
 
 
+/*!
+ * \brief Get the ID code from a DXF \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return ID code.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_acad_proxy_entity_get_id_code
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (acad_proxy_entity->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = acad_proxy_entity->id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

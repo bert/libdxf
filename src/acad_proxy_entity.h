@@ -173,6 +173,11 @@ dxf_acad_proxy_entity_free_chain
 (
         DxfAcadProxyEntity *acad_proxy_entities
 );
+int
+dxf_acad_proxy_entity_get_id_code
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */
