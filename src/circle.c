@@ -1943,4 +1943,47 @@ dxf_circle_get_extrusion_vector_as_point
 }
 
 
+/*!
+ * \brief Set the extrusion vector for a DXF \c CIRCLE entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfCircle *
+dxf_circle_set_extrusion_vector
+(
+        DxfCircle *circle,
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+        double extr_x0,
+                /*!<  X-value of the extrusion direction. */
+        double extr_y0,
+                /*!<  Y-value of the extrusion direction. */
+        double extr_z0
+                /*!<  Z-value of the extrusion direction. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        circle->extr_x0 = extr_x0;
+        circle->extr_y0 = extr_y0;
+        circle->extr_z0 = extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (circle);
+}
+
+
 /* EOF */

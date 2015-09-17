@@ -304,6 +304,14 @@ dxf_circle_get_extrusion_vector_as_point
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_extrusion_vector
+(
+        DxfCircle *circle,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
