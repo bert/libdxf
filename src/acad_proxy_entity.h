@@ -195,6 +195,11 @@ dxf_acad_proxy_entity_set_linetype
         DxfAcadProxyEntity *acad_proxy_entity,
         char *linetype
 );
+char *
+dxf_acad_proxy_entity_get_layer
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */
