@@ -211,6 +211,12 @@ dxf_acad_proxy_entity_get_linetype_scale
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_linetype_scale
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+        double linetype_scale
+);
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */
