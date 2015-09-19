@@ -75,7 +75,7 @@ dxf_acad_proxy_entity
         double linetype_scale;
                 /*!< Linetype scale (optional).\n
                  * Group code = 48. */
-        int object_visability;
+        int visibility;
                 /*!< Object visibility (optional):\n
                  * <ol>
                  * <li value = "0"> Visible</li>
@@ -218,7 +218,7 @@ dxf_acad_proxy_entity_set_linetype_scale
         double linetype_scale
 );
 int16_t
-dxf_acad_proxy_entity_get_object_visibility
+dxf_acad_proxy_entity_get_visibility
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );

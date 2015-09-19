@@ -138,7 +138,7 @@ dxf_acad_proxy_entity_init
         acad_proxy_entity->layer = strdup (DXF_DEFAULT_LAYER);
         acad_proxy_entity->color = DXF_COLOR_BYLAYER;
         acad_proxy_entity->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        acad_proxy_entity->object_visability = 0;
+        acad_proxy_entity->visibility = 0;
         acad_proxy_entity->dictionary_owner_soft = strdup ("");
         acad_proxy_entity->dictionary_owner_hard = strdup ("");
         acad_proxy_entity->original_custom_object_data_format = 1;
@@ -267,7 +267,7 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing the object
                          * visability value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->object_visability);
+                        fscanf (fp->fp, "%d\n", &acad_proxy_entity->visibility);
                 }
                 else if (strcmp (temp_string, "62") == 0)
                 {
@@ -504,7 +504,7 @@ dxf_acad_proxy_entity_write
                 fprintf (fp->fp, " 62\n%d\n", acad_proxy_entity->color);
         }
         fprintf (fp->fp, " 48\n%f\n", acad_proxy_entity->linetype_scale);
-        fprintf (fp->fp, " 60\n%d\n", acad_proxy_entity->object_visability);
+        fprintf (fp->fp, " 60\n%d\n", acad_proxy_entity->visibility);
         if (fp->acad_version_number == AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbZombieEntity\n");
@@ -1021,7 +1021,7 @@ dxf_acad_proxy_entity_set_linetype_scale
  * \version According to DXF R14.
  */
 int16_t
-dxf_acad_proxy_entity_get_object_visibility
+dxf_acad_proxy_entity_get_visibility
 (
         DxfAcadProxyEntity *acad_proxy_entity
                 /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
@@ -1040,21 +1040,21 @@ dxf_acad_proxy_entity_get_object_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (acad_proxy_entity->object_visability < 0)
+        if (acad_proxy_entity->visibility < 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () a negative value was found in the visibility member.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (acad_proxy_entity->object_visability > 1)
+        if (acad_proxy_entity->visibility > 1)
         {
                 fprintf (stderr,
                   (_("Error in %s () an out of range value was found in the visibility member.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = acad_proxy_entity->object_visability;
+        result = acad_proxy_entity->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
