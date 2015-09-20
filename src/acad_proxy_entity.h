@@ -244,6 +244,12 @@ dxf_acad_proxy_entity_get_paperspace
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_paperspace
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+        int paperspace
+);
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */
