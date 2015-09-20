@@ -233,6 +233,12 @@ dxf_acad_proxy_entity_get_color
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_color
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+        int color
+);
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */
