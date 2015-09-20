@@ -139,8 +139,8 @@ dxf_acad_proxy_entity
                 /*!< An object ID (multiple entries can appear).\n
                  * Group code = 330 or 340 or 350 or 360. */
         struct DxfAcadProxyEntity *next;
-                /*!< Pointer to the next DxfLayer.\n
-                 * \c NULL in the last DxfLayer. */
+                /*!< Pointer to the next DxfAcadProxyEntity.\n
+                 * \c NULL in the last DxfAcadProxyEntity. */
 } DxfAcadProxyEntity;
 
 
