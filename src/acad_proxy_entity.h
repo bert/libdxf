@@ -277,6 +277,12 @@ dxf_acad_proxy_entity_get_original_custom_object_data_format
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_original_custom_object_data_format
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+        int original_custom_object_data_format
+);
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */
