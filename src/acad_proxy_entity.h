@@ -228,6 +228,11 @@ dxf_acad_proxy_entity_set_visibility
         DxfAcadProxyEntity *acad_proxy_entity,
         int16_t visibility
 );
+int
+dxf_acad_proxy_entity_get_color
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */
