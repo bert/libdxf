@@ -1203,4 +1203,56 @@ dxf_acad_proxy_entity_set_color
 }
 
 
+/*!
+ * \brief Get the paperspace flag value from a DXF \c ACAD_PROXY_ENTITY
+ * entity.
+ *
+ * \return paperspace flag value.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_acad_proxy_entity_get_paperspace
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (acad_proxy_entity->paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the paperspace member.\n")),
+                  __FUNCTION__);
+        }
+        if (acad_proxy_entity->paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
+                  __FUNCTION__);
+        }
+        result = acad_proxy_entity->paperspace;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
