@@ -1450,4 +1450,50 @@ dxf_acad_proxy_entity_get_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Set the pointer to the dictionary_owner_hard for a DXF
+ * \c ACAD_PROXY_ENTITY entity.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_dictionary_owner_hard
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the
+                 * dictionary_owner_hard for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        acad_proxy_entity->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (acad_proxy_entity);
+}
+
+
 /* EOF */
