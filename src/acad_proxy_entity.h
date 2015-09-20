@@ -261,6 +261,11 @@ dxf_acad_proxy_entity_set_dictionary_owner_soft
         DxfAcadProxyEntity *acad_proxy_entity,
         char *dictionary_owner_soft
 );
+char *
+dxf_acad_proxy_entity_get_dictionary_owner_hard
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */
