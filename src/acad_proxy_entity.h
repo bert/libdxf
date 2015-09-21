@@ -294,6 +294,11 @@ dxf_acad_proxy_entity_set_proxy_entity_class_id
         DxfAcadProxyEntity *acad_proxy_entity,
         int proxy_entity_class_id
 );
+int
+dxf_acad_proxy_entity_get_application_entity_class_id
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */

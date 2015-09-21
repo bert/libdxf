@@ -1692,4 +1692,50 @@ dxf_acad_proxy_entity_set_proxy_entity_class_id
 }
 
 
+/*!
+ * \brief Get the application entity class id value from a DXF
+ * \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return application entity class id value.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_acad_proxy_entity_get_application_entity_class_id
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (acad_proxy_entity->application_entity_class_id < 500)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an invalid value was found in the proxy_entity_class_id member.\n")),
+                  __FUNCTION__);
+        }
+        result = acad_proxy_entity->application_entity_class_id;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
