@@ -255,6 +255,12 @@ dxf_attdef_get_id_code
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_id_code
+(
+        DxfAttdef *attdef,
+        int id_code
+);
 int
 dxf_attdef_is_invisible
 (
