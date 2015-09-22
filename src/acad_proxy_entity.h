@@ -327,6 +327,11 @@ dxf_acad_proxy_entity_set_entity_data_size
         DxfAcadProxyEntity *acad_proxy_entity,
         int entity_data_size
 );
+ulong
+dxf_acad_proxy_entity_get_object_drawing_format
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */

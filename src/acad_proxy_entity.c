@@ -1970,4 +1970,52 @@ dxf_acad_proxy_entity_set_entity_data_size
 }
 
 
+/*!
+ * \brief Get the object drawing format value from a DXF
+ * \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return object drawing format value.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14 (backward compatibility).
+ * \version According to DXF R2000.
+ */
+ulong
+dxf_acad_proxy_entity_get_object_drawing_format
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        ulong result;
+
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (acad_proxy_entity->object_drawing_format < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid object drawing format value was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = acad_proxy_entity->object_drawing_format;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
