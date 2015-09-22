@@ -261,6 +261,11 @@ dxf_attdef_set_id_code
         DxfAttdef *attdef,
         int id_code
 );
+char *
+dxf_attdef_get_linetype
+(
+        DxfAttdef *attdef
+);
 int
 dxf_attdef_is_invisible
 (
