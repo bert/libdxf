@@ -251,6 +251,11 @@ dxf_attdef_free_chain
         DxfAttdef *attdefs
 );
 int
+dxf_attdef_get_id_code
+(
+        DxfAttdef *attdef
+);
+int
 dxf_attdef_is_invisible
 (
         DxfAttdef *attdef
