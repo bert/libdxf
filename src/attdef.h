@@ -288,6 +288,12 @@ dxf_attdef_get_elevation
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_elevation
+(
+        DxfAttdef *attdef,
+        double elevation
+);
 int
 dxf_attdef_is_invisible
 (
