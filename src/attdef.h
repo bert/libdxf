@@ -266,6 +266,12 @@ dxf_attdef_get_linetype
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_linetype
+(
+        DxfAttdef *attdef,
+        char *linetype
+);
 int
 dxf_attdef_is_invisible
 (
