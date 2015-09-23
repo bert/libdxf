@@ -283,6 +283,11 @@ dxf_attdef_set_layer
         DxfAttdef *attdef,
         char *layer
 );
+double
+dxf_attdef_get_elevation
+(
+        DxfAttdef *attdef
+);
 int
 dxf_attdef_is_invisible
 (
