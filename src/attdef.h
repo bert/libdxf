@@ -299,6 +299,12 @@ dxf_attdef_get_thickness
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_thickness
+(
+        DxfAttdef *attdef,
+        double thickness
+);
 int
 dxf_attdef_is_invisible
 (
