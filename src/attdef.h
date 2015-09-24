@@ -328,6 +328,11 @@ dxf_attdef_set_visibility
         int16_t visibility
 );
 int
+dxf_attdef_get_color
+(
+        DxfAttdef *attdef
+);
+int
 dxf_attdef_is_invisible
 (
         DxfAttdef *attdef
