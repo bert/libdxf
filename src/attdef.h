@@ -294,6 +294,11 @@ dxf_attdef_set_elevation
         DxfAttdef *attdef,
         double elevation
 );
+double
+dxf_attdef_get_thickness
+(
+        DxfAttdef *attdef
+);
 int
 dxf_attdef_is_invisible
 (
