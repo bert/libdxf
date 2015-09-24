@@ -316,6 +316,11 @@ dxf_attdef_set_linetype_scale
         DxfAttdef *attdef,
         double linetype_scale
 );
+int16_t
+dxf_attdef_get_visibility
+(
+        DxfAttdef *attdef
+);
 int
 dxf_attdef_is_invisible
 (
