@@ -321,6 +321,12 @@ dxf_attdef_get_visibility
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_visibility
+(
+        DxfAttdef *attdef,
+        int16_t visibility
+);
 int
 dxf_attdef_is_invisible
 (
