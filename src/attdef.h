@@ -332,6 +332,12 @@ dxf_attdef_get_color
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_color
+(
+        DxfAttdef *attdef,
+        int color
+);
 int
 dxf_attdef_is_invisible
 (
