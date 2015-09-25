@@ -339,6 +339,11 @@ dxf_attdef_set_color
         int color
 );
 int
+dxf_attdef_get_paperspace
+(
+        DxfAttdef *attdef
+);
+int
 dxf_attdef_is_invisible
 (
         DxfAttdef *attdef
