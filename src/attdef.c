@@ -1799,6 +1799,52 @@ dxf_attdef_get_dictionary_owner_hard
 
 
 /*!
+ * \brief Set the pointer to the dictionary_owner_hard for a DXF
+ * \c ATTDEF entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfAttdef *
+dxf_attdef_set_dictionary_owner_hard
+(
+        DxfAttdef *attdef,
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the
+                 * dictionary_owner_hard for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attdef->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attdef);
+}
+
+
+/*!
  * \brief Test if the attribute definition is invisible.
  *
  * \return \c TRUE when the attribute definition is invisible,
