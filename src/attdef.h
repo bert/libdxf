@@ -343,6 +343,12 @@ dxf_attdef_get_paperspace
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_paperspace
+(
+        DxfAttdef *attdef,
+        int paperspace
+);
 int
 dxf_attdef_is_invisible
 (
