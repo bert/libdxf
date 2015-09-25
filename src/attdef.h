@@ -349,6 +349,11 @@ dxf_attdef_set_paperspace
         DxfAttdef *attdef,
         int paperspace
 );
+char *
+dxf_attdef_get_dictionary_owner_soft
+(
+        DxfAttdef *attdef
+);
 int
 dxf_attdef_is_invisible
 (
