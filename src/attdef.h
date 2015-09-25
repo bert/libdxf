@@ -354,6 +354,12 @@ dxf_attdef_get_dictionary_owner_soft
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_dictionary_owner_soft
+(
+        DxfAttdef *attdef,
+        char *dictionary_owner_soft
+);
 int
 dxf_attdef_is_invisible
 (
