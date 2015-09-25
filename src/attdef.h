@@ -376,6 +376,12 @@ dxf_attdef_get_default_value
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_default_value
+(
+        DxfAttdef *attdef,
+        char *default_value
+);
 int
 dxf_attdef_is_invisible
 (
