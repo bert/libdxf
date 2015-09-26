@@ -382,6 +382,11 @@ dxf_attdef_set_default_value
         DxfAttdef *attdef,
         char *default_value
 );
+char *
+dxf_attdef_get_tag_value
+(
+        DxfAttdef *attdef
+);
 int
 dxf_attdef_is_invisible
 (

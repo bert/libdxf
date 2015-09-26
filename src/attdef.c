@@ -1938,6 +1938,54 @@ dxf_attdef_set_default_value
 
 
 /*!
+ * \brief Get the tag value from a DXF \c ATTDEF entity.
+ *
+ * \return tag value.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_attdef_get_tag_value
+(
+        DxfAttdef *attdef
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attdef->tag_value ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the tag_value member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (attdef->tag_value);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Test if the attribute definition is invisible.
  *
  * \return \c TRUE when the attribute definition is invisible,
