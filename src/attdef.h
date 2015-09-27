@@ -33,6 +33,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 #ifndef LIBDXF_SRC_ATTDEF_H
@@ -414,6 +415,13 @@ dxf_attdef_set_text_style
 (
         DxfAttdef *attdef,
         char *text_style
+);
+DxfPoint *
+dxf_attdef_get_start_point
+(
+        DxfAttdef *attdef,
+        int id_code,
+        int inheritance
 );
 int
 dxf_attdef_is_invisible
