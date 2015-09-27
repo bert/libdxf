@@ -393,6 +393,11 @@ dxf_attdef_set_tag_value
         DxfAttdef *attdef,
         char *tag_value
 );
+char *
+dxf_attdef_get_prompt_value
+(
+        DxfAttdef *attdef
+);
 int
 dxf_attdef_is_invisible
 (
