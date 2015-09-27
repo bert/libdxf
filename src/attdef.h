@@ -404,6 +404,11 @@ dxf_attdef_set_prompt_value
         DxfAttdef *attdef,
         char *prompt_value
 );
+char *
+dxf_attdef_get_text_style
+(
+        DxfAttdef *attdef
+);
 int
 dxf_attdef_is_invisible
 (

@@ -2124,6 +2124,54 @@ dxf_attdef_set_prompt_value
 
 
 /*!
+ * \brief Get the text style from a DXF \c ATTDEF entity.
+ *
+ * \return text style.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_attdef_get_text_style
+(
+        DxfAttdef *attdef
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attdef->text_style ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the tag_value member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (attdef->text_style);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Test if the attribute definition is invisible.
  *
  * \return \c TRUE when the attribute definition is invisible,
