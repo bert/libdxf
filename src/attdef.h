@@ -398,6 +398,12 @@ dxf_attdef_get_prompt_value
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_prompt_value
+(
+        DxfAttdef *attdef,
+        char *prompt_value
+);
 int
 dxf_attdef_is_invisible
 (
