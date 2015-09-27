@@ -409,6 +409,12 @@ dxf_attdef_get_text_style
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_text_style
+(
+        DxfAttdef *attdef,
+        char *text_style
+);
 int
 dxf_attdef_is_invisible
 (
