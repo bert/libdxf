@@ -2321,6 +2321,54 @@ dxf_attdef_get_start_point
 
 
 /*!
+ * \brief Set the start point of a DXF \c ATTDEF entity.
+ *
+ * \return a pointer to a DXF \c ATTDEF entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfAttdef *
+dxf_attdef_set_start_point
+(
+        DxfAttdef *attdef,
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attdef->x0 = point->x0;
+        attdef->y0 = point->y0;
+        attdef->z0 = point->z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attdef);
+}
+
+
+/*!
  * \brief Test if the attribute definition is invisible.
  *
  * \return \c TRUE when the attribute definition is invisible,
