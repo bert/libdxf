@@ -447,6 +447,12 @@ dxf_attdef_get_height
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_height
+(
+        DxfAttdef *attdef,
+        double height
+);
 int
 dxf_attdef_is_invisible
 (
