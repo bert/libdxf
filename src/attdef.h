@@ -442,6 +442,11 @@ dxf_attdef_set_alignment_point
         DxfAttdef *attdef,
         DxfPoint *point
 );
+double
+dxf_attdef_get_height
+(
+        DxfAttdef *attdef
+);
 int
 dxf_attdef_is_invisible
 (
