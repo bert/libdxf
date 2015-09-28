@@ -429,6 +429,13 @@ dxf_attdef_set_start_point
         DxfAttdef *attdef,
         DxfPoint *point
 );
+DxfPoint *
+dxf_attdef_get_alignment_point
+(
+        DxfAttdef *attdef,
+        int id_code,
+        int inheritance
+);
 int
 dxf_attdef_is_invisible
 (
