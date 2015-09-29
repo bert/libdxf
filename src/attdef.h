@@ -464,6 +464,11 @@ dxf_attdef_set_rel_x_scale
         DxfAttdef *attdef,
         double rel_x_scale
 );
+double
+dxf_attdef_get_rot_angle
+(
+        DxfAttdef *attdef
+);
 int
 dxf_attdef_is_invisible
 (
