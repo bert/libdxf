@@ -522,6 +522,12 @@ dxf_attdef_get_text_flags
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_text_flags
+(
+        DxfAttdef *attdef,
+        int text_flags
+);
 
 
 #endif /* LIBDXF_SRC_ATTDEF_H */

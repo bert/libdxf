@@ -3146,4 +3146,48 @@ dxf_attdef_get_text_flags
 }
 
 
+/*!
+ * \brief Set the text flags for a DXF \c ATTDEF entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfAttdef *
+dxf_attdef_set_text_flags
+(
+        DxfAttdef *attdef,
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+        int text_flags
+                /*!< the attribute flags to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (text_flags < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value in text flags was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attdef->text_flags = text_flags;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attdef);
+}
+
+
 /* EOF */
