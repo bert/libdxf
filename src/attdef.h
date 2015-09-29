@@ -491,6 +491,12 @@ dxf_attdef_get_attr_flags
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_attr_flags
+(
+        DxfAttdef *attdef,
+        int attr_flags
+);
 int
 dxf_attdef_is_invisible
 (
