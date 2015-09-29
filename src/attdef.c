@@ -2611,7 +2611,7 @@ dxf_attdef_set_height
 
 
 /*!
- * \brief Get the relative X scle from a DXF \c ATTDEF entity.
+ * \brief Get the relative X scale from a DXF \c ATTDEF entity.
  *
  * \return relative X scale.
  *
