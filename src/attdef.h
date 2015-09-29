@@ -469,6 +469,12 @@ dxf_attdef_get_rot_angle
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_rot_angle
+(
+        DxfAttdef *attdef,
+        double rot_angle
+);
 int
 dxf_attdef_is_invisible
 (
