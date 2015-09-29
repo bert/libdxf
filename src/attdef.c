@@ -2567,7 +2567,7 @@ dxf_attdef_get_height
 
 
 /*!
- * \brief Set the height for a DXF \c ATTDF entity.
+ * \brief Set the height for a DXF \c ATTDEF entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -2657,7 +2657,7 @@ dxf_attdef_get_rel_x_scale
 
 
 /*!
- * \brief Set the relative X scale for a DXF \c ATTDF entity.
+ * \brief Set the relative X scale for a DXF \c ATTDEF entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -2734,7 +2734,7 @@ dxf_attdef_get_rot_angle
 
 
 /*!
- * \brief Set the rotation angle for a DXF \c ATTDF entity.
+ * \brief Set the rotation angle for a DXF \c ATTDEF entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
