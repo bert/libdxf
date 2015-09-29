@@ -2598,7 +2598,7 @@ dxf_attdef_set_height
         if (height < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative thickness value was passed.\n")),
+                  (_("Error in %s () a negative height value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
