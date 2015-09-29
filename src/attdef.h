@@ -517,6 +517,11 @@ dxf_attdef_is_preset
 (
         DxfAttdef *attdef
 );
+int
+dxf_attdef_get_text_flags
+(
+        DxfAttdef *attdef
+);
 
 
 #endif /* LIBDXF_SRC_ATTDEF_H */

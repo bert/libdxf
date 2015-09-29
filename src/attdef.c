@@ -3100,4 +3100,50 @@ dxf_attdef_is_preset
 }
 
 
+/*!
+ * \brief Get the text flags from a DXF \c ATTDEF entity.
+ *
+ * \return text flags.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_attdef_get_text_flags
+(
+        DxfAttdef *attdef
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (attdef->text_flags < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the attr_flags member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = attdef->text_flags;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
