@@ -458,6 +458,12 @@ dxf_attdef_get_rel_x_scale
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_rel_x_scale
+(
+        DxfAttdef *attdef,
+        double rel_x_scale
+);
 int
 dxf_attdef_is_invisible
 (
