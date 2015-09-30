@@ -3236,4 +3236,48 @@ dxf_attdef_get_hor_align
 }
 
 
+/*!
+ * \brief Set the horizontal alignment for a DXF \c ATTDEF entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfAttdef *
+dxf_attdef_set_hor_align
+(
+        DxfAttdef *attdef,
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+        int hor_align
+                /*!< the horizontal alignment to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (hor_align < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value in horizontal alignment was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attdef->hor_align = hor_align;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attdef);
+}
+
+
 /* EOF */
