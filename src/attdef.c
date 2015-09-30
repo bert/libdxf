@@ -3134,7 +3134,7 @@ dxf_attdef_get_text_flags
         if (attdef->text_flags < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the attr_flags member.\n")),
+                  (_("Error in %s () a negative value was found in the text flags member.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
