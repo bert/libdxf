@@ -539,6 +539,11 @@ dxf_attdef_set_hor_align
         DxfAttdef *attdef,
         int hor_align
 );
+int
+dxf_attdef_get_field_length
+(
+        DxfAttdef *attdef
+);
 
 
 #endif /* LIBDXF_SRC_ATTDEF_H */
