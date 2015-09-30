@@ -3161,7 +3161,7 @@ dxf_attdef_set_text_flags
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
         int text_flags
-                /*!< the attribute flags to be set for the entity. */
+                /*!< the text flags to be set for the entity. */
 )
 {
 #if DEBUG
