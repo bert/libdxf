@@ -3203,6 +3203,13 @@ dxf_attdef_set_text_flags
                   __FUNCTION__);
                 return (NULL);
         }
+        if (text_flags > 4)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a invalid value in text flags was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         attdef->text_flags = text_flags;
 #if DEBUG
         DXF_DEBUG_END
