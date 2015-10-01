@@ -544,6 +544,12 @@ dxf_attdef_get_field_length
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_field_length
+(
+        DxfAttdef *attdef,
+        int field_length
+);
 
 
 #endif /* LIBDXF_SRC_ATTDEF_H */
