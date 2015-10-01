@@ -3256,6 +3256,13 @@ dxf_attdef_get_hor_align
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (attdef->hor_align > 5)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid value was found in the hor_align member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         result = attdef->hor_align;
 #if DEBUG
         DXF_DEBUG_END
