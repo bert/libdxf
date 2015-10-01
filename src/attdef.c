@@ -3152,6 +3152,13 @@ dxf_attdef_get_text_flags
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (attdef->text_flags > 4)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid value was found in the text flags member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         result = attdef->text_flags;
 #if DEBUG
         DXF_DEBUG_END
