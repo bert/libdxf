@@ -2938,6 +2938,13 @@ dxf_attdef_set_attr_flags
                   __FUNCTION__);
                 return (NULL);
         }
+        if (attr_flags > 8)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a invalid value in attribute flags was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         attdef->attr_flags = attr_flags;
 #if DEBUG
         DXF_DEBUG_END
