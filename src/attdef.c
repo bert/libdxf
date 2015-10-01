@@ -2887,6 +2887,13 @@ dxf_attdef_get_attr_flags
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (attdef->attr_flags > 8)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a invalid value was found in the attr_flags member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         result = attdef->attr_flags;
 #if DEBUG
         DXF_DEBUG_END
