@@ -3307,6 +3307,13 @@ dxf_attdef_set_hor_align
                   __FUNCTION__);
                 return (NULL);
         }
+        if (hor_align > 5)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid value in horizontal alignment was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         attdef->hor_align = hor_align;
 #if DEBUG
         DXF_DEBUG_END
