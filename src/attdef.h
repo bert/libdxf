@@ -550,6 +550,11 @@ dxf_attdef_set_field_length
         DxfAttdef *attdef,
         int field_length
 );
+int
+dxf_attdef_get_vert_align
+(
+        DxfAttdef *attdef
+);
 
 
 #endif /* LIBDXF_SRC_ATTDEF_H */
