@@ -561,6 +561,11 @@ dxf_attdef_set_vert_align
         DxfAttdef *attdef,
         int vert_align
 );
+DxfPoint *
+dxf_attdef_get_extrusion_vector_as_point
+(
+        DxfAttdef *attdef
+);
 
 
 #endif /* LIBDXF_SRC_ATTDEF_H */
