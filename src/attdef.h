@@ -566,6 +566,14 @@ dxf_attdef_get_extrusion_vector_as_point
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_extrusion_vector
+(
+        DxfAttdef *attdef,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0
+);
 
 
 #endif /* LIBDXF_SRC_ATTDEF_H */
