@@ -3469,4 +3469,55 @@ dxf_attdef_get_vert_align
 }
 
 
+/*!
+ * \brief Set the vertical text alignment for a DXF \c ATTDEF entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfAttdef *
+dxf_attdef_set_vert_align
+(
+        DxfAttdef *attdef,
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+        int vert_align
+                /*!< the vertical text alignment to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vert_align < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value in vertical alignment was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vert_align > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid value in vertical alignment was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attdef->vert_align = vert_align;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attdef);
+}
+
+
 /* EOF */

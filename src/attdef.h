@@ -555,6 +555,12 @@ dxf_attdef_get_vert_align
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_vert_align
+(
+        DxfAttdef *attdef,
+        int vert_align
+);
 
 
 #endif /* LIBDXF_SRC_ATTDEF_H */
