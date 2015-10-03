@@ -261,6 +261,12 @@ dxf_attrib_get_id_code
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_id_code
+(
+        DxfAttrib *attrib,
+        int id_code
+);
 int
 dxf_attrib_is_invisible
 (
