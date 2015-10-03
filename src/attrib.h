@@ -272,6 +272,12 @@ dxf_attrib_get_linetype
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_linetype
+(
+        DxfAttrib *attrib,
+        char *linetype
+);
 int
 dxf_attrib_is_invisible
 (
