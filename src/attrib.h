@@ -257,6 +257,11 @@ dxf_attrib_free_chain
         DxfAttrib *attribs
 );
 int
+dxf_attrib_get_id_code
+(
+        DxfAttrib *attrib
+);
+int
 dxf_attrib_is_invisible
 (
         DxfAttrib *attrib
