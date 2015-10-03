@@ -267,6 +267,11 @@ dxf_attrib_set_id_code
         DxfAttrib *attrib,
         int id_code
 );
+char *
+dxf_attrib_get_linetype
+(
+        DxfAttrib *attrib
+);
 int
 dxf_attrib_is_invisible
 (
