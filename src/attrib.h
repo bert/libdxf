@@ -289,6 +289,11 @@ dxf_attrib_set_layer
         DxfAttrib *attrib,
         char *layer
 );
+double
+dxf_attrib_get_elevation
+(
+        DxfAttrib *attrib
+);
 int
 dxf_attrib_is_invisible
 (
