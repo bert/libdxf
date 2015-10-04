@@ -1023,6 +1023,52 @@ dxf_attrib_set_linetype
 
 
 /*!
+ * \brief Get the layer from a DXF \c ATTRIB entity.
+ *
+ * \return layer when sucessful, \c NULL when an error occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_attrib_get_layer
+(
+        DxfAttrib *attrib
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attrib->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (attrib->layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Test if the attribute is invisible.
  *
  * \return \c TRUE when the attribute is invisible, or \c FALSE when the
