@@ -1225,7 +1225,7 @@ dxf_attdef_get_thickness
 
 
 /*!
- * \brief Set the thickness for a DXF \c ATTDF entity.
+ * \brief Set the thickness for a DXF \c ATTDEF entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
