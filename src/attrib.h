@@ -294,6 +294,12 @@ dxf_attrib_get_elevation
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_elevation
+(
+        DxfAttrib *attrib,
+        double elevation
+);
 int
 dxf_attrib_is_invisible
 (
