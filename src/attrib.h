@@ -300,6 +300,11 @@ dxf_attrib_set_elevation
         DxfAttrib *attrib,
         double elevation
 );
+double
+dxf_attrib_get_thickness
+(
+        DxfAttrib *attrib
+);
 int
 dxf_attrib_is_invisible
 (
