@@ -305,6 +305,12 @@ dxf_attrib_get_thickness
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_thickness
+(
+        DxfAttrib *attrib,
+        double thickness
+);
 int
 dxf_attrib_is_invisible
 (
