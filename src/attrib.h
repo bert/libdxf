@@ -283,6 +283,12 @@ dxf_attrib_get_layer
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_layer
+(
+        DxfAttrib *attrib,
+        char *layer
+);
 int
 dxf_attrib_is_invisible
 (
