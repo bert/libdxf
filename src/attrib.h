@@ -338,6 +338,12 @@ dxf_attrib_get_color
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_color
+(
+        DxfAttrib *attrib,
+        int color
+);
 int
 dxf_attrib_is_invisible
 (
