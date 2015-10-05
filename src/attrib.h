@@ -345,6 +345,11 @@ dxf_attrib_set_color
         int color
 );
 int
+dxf_attrib_get_paperspace
+(
+        DxfAttrib *attrib
+);
+int
 dxf_attrib_is_invisible
 (
         DxfAttrib *attrib
