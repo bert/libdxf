@@ -334,6 +334,11 @@ dxf_attrib_set_visibility
         int16_t visibility
 );
 int
+dxf_attrib_get_color
+(
+        DxfAttrib *attrib
+);
+int
 dxf_attrib_is_invisible
 (
         DxfAttrib *attrib
