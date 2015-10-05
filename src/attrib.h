@@ -322,6 +322,11 @@ dxf_attrib_set_linetype_scale
         DxfAttrib *attrib,
         double linetype_scale
 );
+int16_t
+dxf_attrib_get_visibility
+(
+        DxfAttrib *attrib
+);
 int
 dxf_attrib_is_invisible
 (
