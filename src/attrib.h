@@ -311,6 +311,11 @@ dxf_attrib_set_thickness
         DxfAttrib *attrib,
         double thickness
 );
+double
+dxf_attrib_get_linetype_scale
+(
+        DxfAttrib *attrib
+);
 int
 dxf_attrib_is_invisible
 (
