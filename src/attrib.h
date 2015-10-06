@@ -371,6 +371,12 @@ dxf_attrib_get_dictionary_owner_hard
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_dictionary_owner_hard
+(
+        DxfAttrib *attrib,
+        char *dictionary_owner_hard
+);
 int
 dxf_attrib_is_invisible
 (
