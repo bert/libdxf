@@ -77,7 +77,8 @@ dxf_attrib_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in a \c ATTRIB entity.
+ * \brief Allocate memory and initialize data fields in a DXF
+ * \c ATTRIB entity.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
