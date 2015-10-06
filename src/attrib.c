@@ -1665,6 +1665,55 @@ dxf_attrib_set_paperspace
 
 
 /*!
+ * \brief Get the soft pointer to the dictionary owner from a DXF 
+ * \c ATTRIB entity.
+ *
+ * \return soft pointer to the dictionary owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_attrib_get_dictionary_owner_soft
+(
+        DxfAttrib *attrib
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attrib->dictionary_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (attrib->dictionary_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Test if the attribute is invisible.
  *
  * \return \c TRUE when the attribute is invisible, or \c FALSE when the

@@ -355,6 +355,11 @@ dxf_attrib_set_paperspace
         DxfAttrib *attrib,
         int paperspace
 );
+char *
+dxf_attrib_get_dictionary_owner_soft
+(
+        DxfAttrib *attrib
+);
 int
 dxf_attrib_is_invisible
 (
