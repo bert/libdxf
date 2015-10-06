@@ -114,7 +114,7 @@ dxf_attrib_init
                   __FUNCTION__);
                 return (NULL);
         }
-        attrib->value = strdup ("");
+        attrib->default_value = strdup ("");
         attrib->tag_value = strdup ("");
         attrib->id_code = 0;
         attrib->linetype = strdup (DXF_DEFAULT_LINETYPE);
@@ -223,7 +223,7 @@ dxf_attrib_read
                         /* Now follows a string containing the attribute
                          * value. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", attrib->value);
+                        fscanf (fp->fp, "%s\n", attrib->default_value);
                 }
                 else if (strcmp (temp_string, "2") == 0)
                 {
@@ -537,7 +537,7 @@ dxf_attrib_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (attrib->value, "") == 0)
+        if (strcmp (attrib->default_value, "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () default value string is empty for the %s entity with id-code: %x.\n")),
@@ -678,7 +678,7 @@ dxf_attrib_write
         fprintf (fp->fp, " 20\n%f\n", attrib->y0);
         fprintf (fp->fp, " 30\n%f\n", attrib->z0);
         fprintf (fp->fp, " 40\n%f\n", attrib->height);
-        fprintf (fp->fp, "  1\n%s\n", attrib->value);
+        fprintf (fp->fp, "  1\n%s\n", attrib->default_value);
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbAttribute\n");
@@ -789,7 +789,7 @@ dxf_attrib_free
         }
         free (attrib->linetype);
         free (attrib->layer);
-        free (attrib->value);
+        free (attrib->default_value);
         free (attrib->tag_value);
         free (attrib->text_style);
         free (attrib->dictionary_owner_soft);
@@ -1888,14 +1888,14 @@ dxf_attrib_get_default_value
                   __FUNCTION__);
                 return (NULL);
         }
-        if (attrib->value ==  NULL)
+        if (attrib->default_value ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found in the default_value member.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (attrib->value);
+        result = strdup (attrib->default_value);
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -1940,7 +1940,7 @@ dxf_attrib_set_default_value
                   __FUNCTION__);
                 return (NULL);
         }
-        attrib->value = strdup (default_value);
+        attrib->default_value = strdup (default_value);
 #if DEBUG
         DXF_DEBUG_END
 #endif

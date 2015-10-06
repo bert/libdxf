@@ -107,7 +107,7 @@ dxf_attrib
                  * Stored and moved around as a 16-bit integer.\n
                  * Group code = 370. */
         /* Specific members for a DXF attrib. */
-        char *value;
+        char *default_value;
                 /*!< Default value (string).\n
                  * Group code = 1. */
         char *tag_value;
