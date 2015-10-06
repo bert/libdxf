@@ -382,6 +382,12 @@ dxf_attrib_get_default_value
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_default_value
+(
+        DxfAttrib *attrib,
+        char *default_value
+);
 int
 dxf_attrib_is_invisible
 (
