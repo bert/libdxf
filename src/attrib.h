@@ -349,6 +349,12 @@ dxf_attrib_get_paperspace
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_paperspace
+(
+        DxfAttrib *attrib,
+        int paperspace
+);
 int
 dxf_attrib_is_invisible
 (
