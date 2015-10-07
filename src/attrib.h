@@ -393,6 +393,12 @@ dxf_attrib_get_tag_value
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_tag_value
+(
+        DxfAttrib *attrib,
+        char *tag_value
+);
 int
 dxf_attrib_is_invisible
 (
