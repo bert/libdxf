@@ -404,6 +404,12 @@ dxf_attrib_get_text_style
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_text_style
+(
+        DxfAttrib *attrib,
+        char *text_style
+);
 int
 dxf_attrib_is_invisible
 (
