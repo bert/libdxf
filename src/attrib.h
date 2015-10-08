@@ -33,6 +33,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 #ifndef LIBDXF_SRC_ATTRIB_H
@@ -409,6 +410,13 @@ dxf_attrib_set_text_style
 (
         DxfAttrib *attrib,
         char *text_style
+);
+DxfPoint *
+dxf_attrib_get_start_point
+(
+        DxfAttrib *attrib,
+        int id_code,
+        int inheritance
 );
 int
 dxf_attrib_is_invisible
