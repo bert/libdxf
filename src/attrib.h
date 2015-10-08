@@ -437,6 +437,11 @@ dxf_attrib_set_alignment_point
         DxfAttrib *attrib,
         DxfPoint *point
 );
+double
+dxf_attrib_get_height
+(
+        DxfAttrib *attrib
+);
 int
 dxf_attrib_is_invisible
 (
