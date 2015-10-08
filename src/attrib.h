@@ -418,6 +418,12 @@ dxf_attrib_get_start_point
         int id_code,
         int inheritance
 );
+DxfAttrib *
+dxf_attrib_set_start_point
+(
+        DxfAttrib *attrib,
+        DxfPoint *point
+);
 int
 dxf_attrib_is_invisible
 (
