@@ -464,6 +464,12 @@ dxf_attrib_get_rot_angle
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_rot_angle
+(
+        DxfAttrib *attrib,
+        double rot_angle
+);
 int
 dxf_attrib_is_invisible
 (
