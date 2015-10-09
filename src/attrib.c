@@ -2529,6 +2529,52 @@ dxf_attrib_set_height
 
 
 /*!
+ * \brief Get the relative X scale from a DXF \c ATTRIB entity.
+ *
+ * \return relative X scale.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+double
+dxf_attrib_get_rel_x_scale
+(
+        DxfAttrib *attrib
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (attrib->height < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the rel_x_scale member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = attrib->rel_x_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Test if the attribute is invisible.
  *
  * \return \c TRUE when the attribute is invisible, or \c FALSE when the

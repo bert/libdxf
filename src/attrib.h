@@ -448,6 +448,11 @@ dxf_attrib_set_height
         DxfAttrib *attrib,
         double height
 );
+double
+dxf_attrib_get_rel_x_scale
+(
+        DxfAttrib *attrib
+);
 int
 dxf_attrib_is_invisible
 (
