@@ -459,6 +459,11 @@ dxf_attrib_set_rel_x_scale
         DxfAttrib *attrib,
         double rel_x_scale
 );
+double
+dxf_attrib_get_rot_angle
+(
+        DxfAttrib *attrib
+);
 int
 dxf_attrib_is_invisible
 (
