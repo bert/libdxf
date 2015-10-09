@@ -453,6 +453,12 @@ dxf_attrib_get_rel_x_scale
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_rel_x_scale
+(
+        DxfAttrib *attrib,
+        double rel_x_scale
+);
 int
 dxf_attrib_is_invisible
 (
