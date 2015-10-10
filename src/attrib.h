@@ -482,6 +482,11 @@ dxf_attrib_set_obl_angle
         double obl_angle
 );
 int
+dxf_attrib_get_attr_flags
+(
+        DxfAttrib *attrib
+);
+int
 dxf_attrib_is_invisible
 (
         DxfAttrib *attrib
