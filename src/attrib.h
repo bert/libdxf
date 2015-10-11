@@ -486,6 +486,12 @@ dxf_attrib_get_attr_flags
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_attr_flags
+(
+        DxfAttrib *attrib,
+        int attr_flags
+);
 int
 dxf_attrib_is_invisible
 (

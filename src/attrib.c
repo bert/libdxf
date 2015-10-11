@@ -2821,6 +2821,57 @@ dxf_attrib_get_attr_flags
 
 
 /*!
+ * \brief Set the attribute flags for a DXF \c ATTRIB entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfAttrib *
+dxf_attrib_set_attr_flags
+(
+        DxfAttrib *attrib,
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+        int attr_flags
+                /*!< the attribute flags to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attr_flags < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value in attribute flags was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attr_flags > 8)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a invalid value in attribute flags was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attrib->attr_flags = attr_flags;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attrib);
+}
+
+
+/*!
  * \brief Test if the attribute is invisible.
  *
  * \return \c TRUE when the attribute is invisible, or \c FALSE when the
