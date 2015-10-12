@@ -3287,4 +3287,50 @@ dxf_attrib_get_field_length
 }
 
 
+/*!
+ * \brief Set the field length for a DXF \c ATTRIB entity.
+ *
+ * \note Not currently used in DXF R14.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfAttrib *
+dxf_attrib_set_field_length
+(
+        DxfAttrib *attrib,
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+        int field_length
+                /*!< the field length to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (field_length < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value in field length was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attrib->field_length = field_length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attrib);
+}
+
+
 /* EOF */

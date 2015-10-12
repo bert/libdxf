@@ -539,6 +539,12 @@ dxf_attrib_get_field_length
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_field_length
+(
+        DxfAttrib *attrib,
+        int field_length
+);
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */
