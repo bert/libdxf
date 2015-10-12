@@ -534,6 +534,11 @@ dxf_attrib_set_hor_align
         DxfAttrib *attrib,
         int hor_align
 );
+int
+dxf_attrib_get_field_length
+(
+        DxfAttrib *attrib
+);
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */
