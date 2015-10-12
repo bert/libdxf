@@ -517,6 +517,12 @@ dxf_attrib_get_text_flags
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_text_flags
+(
+        DxfAttrib *attrib,
+        int text_flags
+);
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */

@@ -3084,4 +3084,55 @@ dxf_attrib_get_text_flags
 }
 
 
+/*!
+ * \brief Set the text flags for a DXF \c ATTRIB entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfAttrib *
+dxf_attrib_set_text_flags
+(
+        DxfAttrib *attrib,
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+        int text_flags
+                /*!< the text flags to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (text_flags < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value in text flags was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (text_flags > 4)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a invalid value in text flags was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attrib->text_flags = text_flags;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attrib);
+}
+
+
 /* EOF */
