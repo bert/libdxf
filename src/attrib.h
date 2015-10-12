@@ -528,6 +528,12 @@ dxf_attrib_get_hor_align
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_hor_align
+(
+        DxfAttrib *attrib,
+        int hor_align
+);
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */
