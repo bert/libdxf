@@ -523,6 +523,11 @@ dxf_attrib_set_text_flags
         DxfAttrib *attrib,
         int text_flags
 );
+int
+dxf_attrib_get_hor_align
+(
+        DxfAttrib *attrib
+);
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */

@@ -3135,4 +3135,57 @@ dxf_attrib_set_text_flags
 }
 
 
+/*!
+ * \brief Get the horizontal alignment from a DXF \c ATTRIB entity.
+ *
+ * \return horizontal alignment.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_attrib_get_hor_align
+(
+        DxfAttrib *attrib
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (attrib->hor_align < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the hor_align member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (attrib->hor_align > 5)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid value was found in the hor_align member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = attrib->hor_align;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
