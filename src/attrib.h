@@ -545,6 +545,11 @@ dxf_attrib_set_field_length
         DxfAttrib *attrib,
         int field_length
 );
+int
+dxf_attrib_get_vert_align
+(
+        DxfAttrib *attrib
+);
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */
