@@ -556,6 +556,11 @@ dxf_attrib_set_vert_align
         DxfAttrib *attrib,
         int vert_align
 );
+DxfPoint *
+dxf_attrib_get_extrusion_vector_as_point
+(
+        DxfAttrib *attrib
+);
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */
