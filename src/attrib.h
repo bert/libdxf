@@ -550,6 +550,12 @@ dxf_attrib_get_vert_align
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_vert_align
+(
+        DxfAttrib *attrib,
+        int vert_align
+);
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */
