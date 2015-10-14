@@ -175,6 +175,11 @@ dxf_block_free_chain
         DxfBlock *blocks
 );
 int
+dxf_block_get_id_code
+(
+        DxfBlock *block
+);
+int
 dxf_block_is_anonymous
 (
         DxfBlock *block

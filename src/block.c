@@ -642,6 +642,52 @@ dxf_block_free_chain
 
 
 /*!
+ * \brief Get the ID code from a DXF \c BLOCK entity.
+ *
+ * \return ID code.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_block_get_id_code
+(
+        DxfBlock *block
+                /*!< a pointer to a DXF \c BLOCK entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (block == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (block->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = block->id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Test if this block is anonymous.
  *
  * \return \c TRUE when this block is anonymous,
