@@ -179,6 +179,12 @@ dxf_block_get_xref_name
 (
         DxfBlock *block
 );
+DxfBlock *
+dxf_block_set_xref_name
+(
+        DxfBlock *block,
+        char *xref_name
+);
 int
 dxf_block_get_id_code
 (
