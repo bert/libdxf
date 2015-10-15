@@ -174,6 +174,11 @@ dxf_block_free_chain
 (
         DxfBlock *blocks
 );
+char *
+dxf_block_get_xref_name
+(
+        DxfBlock *block
+);
 int
 dxf_block_get_id_code
 (
