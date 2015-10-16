@@ -783,6 +783,51 @@ dxf_block_get_block_name
 
 
 /*!
+ * \brief Set the block name for a DXF \c BLOCK entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfBlock *
+dxf_block_set_block_name
+(
+        DxfBlock *block,
+                /*!< a pointer to a DXF \c BLOCK entity. */
+        char *block_name
+                /*!< a string containing the block name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (block_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        block->block_name = strdup (block_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block);
+}
+
+
+/*!
  * \brief Get the ID code from a DXF \c BLOCK entity.
  *
  * \return ID code.
