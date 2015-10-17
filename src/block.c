@@ -770,7 +770,7 @@ dxf_block_get_block_name
         if (block->block_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the xref_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found in the block_name member.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
