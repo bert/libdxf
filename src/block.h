@@ -201,6 +201,12 @@ dxf_block_get_block_name_additional
 (
         DxfBlock *block
 );
+DxfBlock *
+dxf_block_set_block_name_additional
+(
+        DxfBlock *block,
+        char *block_name_additional
+);
 int
 dxf_block_get_id_code
 (
