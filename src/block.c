@@ -828,6 +828,54 @@ dxf_block_set_block_name
 
 
 /*!
+ * \brief Get the additional block name from a DXF \c BLOCK entity.
+ *
+ * \return additional block name.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_block_get_block_name_additional
+(
+        DxfBlock *block
+                /*!< a pointer to a DXF \c BLOCK entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (block == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (block->block_name_additional ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the block_name_additional member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (block->block_name_additional);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the ID code from a DXF \c BLOCK entity.
  *
  * \return ID code.
