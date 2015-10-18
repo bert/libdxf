@@ -229,6 +229,11 @@ dxf_block_set_id_code
         DxfBlock *block,
         int id_code
 );
+char *
+dxf_block_get_layer
+(
+        DxfBlock *block
+);
 int
 dxf_block_is_anonymous
 (
