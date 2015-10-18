@@ -969,6 +969,51 @@ dxf_block_get_description
 
 
 /*!
+ * \brief Set the description for a DXF \c BLOCK entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfBlock *
+dxf_block_set_description
+(
+        DxfBlock *block,
+                /*!< a pointer to a DXF \c BLOCK entity. */
+        char *description
+                /*!< a string containing the description for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (description == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        block->description = strdup (description);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block);
+}
+
+
+/*!
  * \brief Get the ID code from a DXF \c BLOCK entity.
  *
  * \return ID code.

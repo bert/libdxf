@@ -212,6 +212,12 @@ dxf_block_get_description
 (
         DxfBlock *block
 );
+DxfBlock *
+dxf_block_set_description
+(
+        DxfBlock *block,
+        char *description
+);
 int
 dxf_block_get_id_code
 (
