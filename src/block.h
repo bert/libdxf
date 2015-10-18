@@ -39,6 +39,7 @@
 #include "global.h"
 #include "util.h"
 #include "endblk.h"
+#include "point.h"
 
 
 /*!
@@ -239,6 +240,13 @@ dxf_block_set_layer
 (
         DxfBlock *block,
         char *layer
+);
+DxfPoint *
+dxf_block_get_base_point
+(
+        DxfBlock *block,
+        int id_code,
+        int inheritance
 );
 int
 dxf_block_is_anonymous
