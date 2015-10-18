@@ -234,6 +234,12 @@ dxf_block_get_layer
 (
         DxfBlock *block
 );
+DxfBlock *
+dxf_block_set_layer
+(
+        DxfBlock *block,
+        char *layer
+);
 int
 dxf_block_is_anonymous
 (
