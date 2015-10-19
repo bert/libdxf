@@ -259,6 +259,12 @@ dxf_block_get_block_type
 (
         DxfBlock *block
 );
+DxfBlock *
+dxf_block_set_block_type
+(
+        DxfBlock *block,
+        int block_type
+);
 int
 dxf_block_is_anonymous
 (
