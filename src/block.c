@@ -1335,6 +1335,51 @@ dxf_block_set_base_point
 
 
 /*!
+ * \brief Get the block type from a DXF \c BLOCK entity.
+ *
+ * \return block type.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_block_get_block_type
+(
+        DxfBlock *block
+                /*!< a pointer to a DXF \c BLOCK entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (block == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (block->block_type < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the block_type member.\n")),
+                  __FUNCTION__);
+        }
+        result = block->block_type;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Test if this block is anonymous.
  *
  * \return \c TRUE when this block is anonymous,

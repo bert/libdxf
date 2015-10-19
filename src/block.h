@@ -255,6 +255,11 @@ dxf_block_set_base_point
         DxfPoint *point
 );
 int
+dxf_block_get_block_type
+(
+        DxfBlock *block
+);
+int
 dxf_block_is_anonymous
 (
         DxfBlock *block
