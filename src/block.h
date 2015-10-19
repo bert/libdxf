@@ -319,6 +319,11 @@ dxf_block_set_dictionary_owner_soft
         DxfBlock *block,
         char *dictionary_owner_soft
 );
+struct DxfEndblk *
+dxf_block_get_endblk
+(
+        DxfBlock *block
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_H */

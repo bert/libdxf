@@ -1854,4 +1854,53 @@ dxf_block_set_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Get the pointer to the end of block marker from a DXF 
+ * \c BLOCK entity.
+ *
+ * \return pointer to the end of block marker.
+ *
+ * \warning No checks are performed on the returned pointer.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+struct DxfEndblk *
+dxf_block_get_endblk
+(
+        DxfBlock *block
+                /*!< a pointer to a DXF \c BLOCK entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        struct DxfEndblk *result;
+
+        /* Do some basic checks. */
+        if (block == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (block->endblk ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the endblk member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (struct DxfEndblk *) block->endblk;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
