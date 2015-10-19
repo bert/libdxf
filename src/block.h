@@ -300,6 +300,14 @@ dxf_block_get_extrusion_vector_as_point
 (
         DxfBlock *block
 );
+DxfBlock *
+dxf_block_set_extrusion_vector
+(
+        DxfBlock *block,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_H */
