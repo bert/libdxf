@@ -1287,6 +1287,54 @@ dxf_block_get_base_point
 
 
 /*!
+ * \brief Set the base point of a DXF \c BLOCK entity.
+ *
+ * \return a pointer to a DXF \c BLOCK entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfBlock *
+dxf_block_set_base_point
+(
+        DxfBlock *block,
+                /*!< a pointer to a DXF \c BLOCK entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        block->x0 = point->x0;
+        block->y0 = point->y0;
+        block->z0 = point->z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block);
+}
+
+
+/*!
  * \brief Test if this block is anonymous.
  *
  * \return \c TRUE when this block is anonymous,

@@ -248,6 +248,12 @@ dxf_block_get_base_point
         int id_code,
         int inheritance
 );
+DxfBlock *
+dxf_block_set_base_point
+(
+        DxfBlock *block,
+        DxfPoint *point
+);
 int
 dxf_block_is_anonymous
 (
