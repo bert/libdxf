@@ -308,6 +308,11 @@ dxf_block_set_extrusion_vector
         double extr_y0,
         double extr_z0
 );
+char *
+dxf_block_get_dictionary_owner_soft
+(
+        DxfBlock *block
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_H */
