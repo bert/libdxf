@@ -313,6 +313,12 @@ dxf_block_get_dictionary_owner_soft
 (
         DxfBlock *block
 );
+DxfBlock *
+dxf_block_set_dictionary_owner_soft
+(
+        DxfBlock *block,
+        char *dictionary_owner_soft
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_H */
