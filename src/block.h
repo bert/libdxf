@@ -330,6 +330,11 @@ dxf_block_set_endblk
         DxfBlock *block,
         struct DxfEndblk *endblk
 );
+struct DxfBlock *
+dxf_block_get_next
+(
+        DxfBlock *block
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_H */
