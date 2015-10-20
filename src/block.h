@@ -335,6 +335,12 @@ dxf_block_get_next
 (
         DxfBlock *block
 );
+DxfBlock *
+dxf_block_set_next
+(
+        DxfBlock *block,
+        struct DxfBlock *next
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_H */
