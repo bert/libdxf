@@ -343,6 +343,12 @@ dxf_3dline_get_next
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_next
+(
+        Dxf3dline *line,
+        struct DxfLine *next
+);
 
 
 #endif /* LIBDXF_SRC_3DLINE_H */
