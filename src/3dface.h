@@ -388,6 +388,11 @@ dxf_3dface_create_from_points
         int id_code,
         int inheritance
 );
+struct Dxf3dface *
+dxf_3dface_get_next
+(
+        Dxf3dface *face
+);
 
 
 #endif /* LIBDXF_SRC_3DFACE_H */

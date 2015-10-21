@@ -2656,4 +2656,53 @@ dxf_3dface_create_from_points
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c 3DFACE entity from a DXF 
+ * \c 3DFACE entity.
+ *
+ * \return pointer to the next \c 3DFACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+struct Dxf3dface *
+dxf_3dface_get_next
+(
+        Dxf3dface *face
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        struct Dxf3dface *result;
+
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (face->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (struct Dxf3dface *) face->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
