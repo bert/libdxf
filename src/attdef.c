@@ -3664,4 +3664,49 @@ dxf_attdef_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c ATTDEF for a DXF \c ATTDEF
+ * entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfAttdef *
+dxf_attdef_set_next
+(
+        DxfAttdef *attdef,
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+        DxfAttdef *next
+                /*!< a pointer to the next \c ATTDEF for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attdef->next = (struct DxfAttdef *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attdef);
+}
+
+
 /* EOF */

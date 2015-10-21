@@ -579,6 +579,12 @@ dxf_attdef_get_next
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_next
+(
+        DxfAttdef *attdef,
+        DxfAttdef *next
+);
 
 
 #endif /* LIBDXF_SRC_ATTDEF_H */
