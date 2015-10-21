@@ -2342,7 +2342,7 @@ dxf_3dline_create_from_points
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-struct Dxf3dline *
+Dxf3dline *
 dxf_3dline_get_next
 (
         Dxf3dline *line
@@ -2352,7 +2352,7 @@ dxf_3dline_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        struct Dxf3dline *result;
+        Dxf3dline *result;
 
         /* Do some basic checks. */
         if (line == NULL)
@@ -2369,7 +2369,7 @@ dxf_3dline_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (struct Dxf3dline *) line->next;
+        result = (Dxf3dline *) line->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2392,7 +2392,7 @@ dxf_3dline_set_next
 (
         Dxf3dline *line,
                 /*!< a pointer to a DXF \c 3DLINE entity. */
-        struct Dxf3dline *next
+        Dxf3dline *next
                 /*!< a pointer to the next \c 3DLINE for the entity. */
 )
 {

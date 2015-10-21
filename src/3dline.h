@@ -338,7 +338,7 @@ dxf_3dline_create_from_points
         int id_code,
         int inheritance
 );
-struct Dxf3dline *
+Dxf3dline *
 dxf_3dline_get_next
 (
         Dxf3dline *line
@@ -347,7 +347,7 @@ Dxf3dline *
 dxf_3dline_set_next
 (
         Dxf3dline *line,
-        struct Dxf3dline *next
+        Dxf3dline *next
 );
 
 
