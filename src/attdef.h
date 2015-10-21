@@ -574,6 +574,11 @@ dxf_attdef_set_extrusion_vector
         double extr_y0,
         double extr_z0
 );
+DxfAttdef *
+dxf_attdef_get_next
+(
+        DxfAttdef *attdef
+);
 
 
 #endif /* LIBDXF_SRC_ATTDEF_H */
