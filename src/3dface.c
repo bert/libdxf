@@ -2670,7 +2670,7 @@ dxf_3dface_create_from_points
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-struct Dxf3dface *
+Dxf3dface *
 dxf_3dface_get_next
 (
         Dxf3dface *face
@@ -2680,7 +2680,7 @@ dxf_3dface_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        struct Dxf3dface *result;
+        Dxf3dface *result;
 
         /* Do some basic checks. */
         if (face == NULL)
@@ -2697,7 +2697,7 @@ dxf_3dface_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (struct Dxf3dface *) face->next;
+        result = (Dxf3dface *) face->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2720,7 +2720,7 @@ dxf_3dface_set_next
 (
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
-        struct Dxf3dface *next
+        Dxf3dface *next
                 /*!< a pointer to the next \c 3DFACE for the entity. */
 )
 {

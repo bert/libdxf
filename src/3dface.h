@@ -388,7 +388,7 @@ dxf_3dface_create_from_points
         int id_code,
         int inheritance
 );
-struct Dxf3dface *
+Dxf3dface *
 dxf_3dface_get_next
 (
         Dxf3dface *face
@@ -397,7 +397,7 @@ Dxf3dface *
 dxf_3dface_set_next
 (
         Dxf3dface *face,
-        struct Dxf3dface *next
+        Dxf3dface *next
 );
 
 
