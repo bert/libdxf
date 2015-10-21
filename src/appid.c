@@ -978,7 +978,7 @@ dxf_appid_get_dictionary_owner_hard
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-struct DxfAppid *
+DxfAppid *
 dxf_appid_get_next
 (
         DxfAppid *appid
@@ -988,7 +988,7 @@ dxf_appid_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        struct DxfAppid *result;
+        DxfAppid *result;
 
         /* Do some basic checks. */
         if (appid == NULL)
@@ -1005,7 +1005,7 @@ dxf_appid_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (struct DxfAppid *) appid->next;
+        result = (DxfAppid *) appid->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -1028,7 +1028,7 @@ dxf_appid_set_next
 (
         DxfAppid *appid,
                 /*!< a pointer to a DXF \c APPID entity. */
-        struct DxfAppid *next
+        DxfAppid *next
                 /*!< a pointer to the next \c APPID for the entity. */
 )
 {

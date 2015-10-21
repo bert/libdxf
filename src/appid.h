@@ -194,7 +194,7 @@ dxf_appid_get_dictionary_owner_hard
 (
         DxfAppid *appid
 );
-struct DxfAppid *
+DxfAppid *
 dxf_appid_get_next
 (
         DxfAppid *appid
@@ -203,7 +203,7 @@ DxfAppid *
 dxf_appid_set_next
 (
         DxfAppid *appid,
-        struct DxfAppid *next
+        DxfAppid *next
 );
 
 
