@@ -337,6 +337,12 @@ dxf_acad_proxy_entity_get_next
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_next
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+        struct DxfAcadProxyEntity *next
+);
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */
