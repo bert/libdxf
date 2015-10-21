@@ -332,6 +332,11 @@ dxf_acad_proxy_entity_get_object_drawing_format
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
+struct DxfAcadProxyEntity *
+dxf_acad_proxy_entity_get_next
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */

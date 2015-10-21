@@ -2018,4 +2018,53 @@ dxf_acad_proxy_entity_get_object_drawing_format
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c ACAD_PROXY_ENTITY entity from a
+ * DXF \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return pointer to the next \c ACAD_PROXY_ENTITY entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+struct DxfAcadProxyEntity *
+dxf_acad_proxy_entity_get_next
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        struct DxfAcadProxyEntity *result;
+
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (acad_proxy_entity->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (struct DxfAcadProxyEntity *) acad_proxy_entity->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
