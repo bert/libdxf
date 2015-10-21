@@ -2392,7 +2392,7 @@ dxf_3dline_set_next
 (
         Dxf3dline *line,
                 /*!< a pointer to a DXF \c 3DLINE entity. */
-        struct DxfLine *next
+        struct Dxf3dline *next
                 /*!< a pointer to the next \c 3DLINE for the entity. */
 )
 {
@@ -2414,7 +2414,7 @@ dxf_3dline_set_next
                   __FUNCTION__);
                 return (NULL);
         }
-        line->next = (struct DxfLine *) next;
+        line->next = (struct Dxf3dline *) next;
 #if DEBUG
         DXF_DEBUG_END
 #endif

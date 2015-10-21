@@ -135,9 +135,9 @@ dxf_3dline
                 /*!< group code = 230\n
                  * extrusion direction\n
                  * optional, if ommited defaults to 1.0. */
-        struct DxfLine *next;
-                /*!< pointer to the next DxfLine.\n
-                 * \c NULL in the last DxfLine. */
+        struct Dxf3dline *next;
+                /*!< pointer to the next Dxf3dline.\n
+                 * \c NULL in the last Dxf3dline. */
 } Dxf3dline;
 
 
@@ -347,7 +347,7 @@ Dxf3dline *
 dxf_3dline_set_next
 (
         Dxf3dline *line,
-        struct DxfLine *next
+        struct Dxf3dline *next
 );
 
 
