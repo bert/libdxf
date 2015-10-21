@@ -1013,4 +1013,49 @@ dxf_appid_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c APPID for a DXF \c APPID
+ * entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfAppid *
+dxf_appid_set_next
+(
+        DxfAppid *appid,
+                /*!< a pointer to a DXF \c APPID entity. */
+        struct DxfAppid *next
+                /*!< a pointer to the next \c APPID for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (appid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        appid->next = (struct DxfAppid *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (appid);
+}
+
+
 /* EOF*/

@@ -199,6 +199,12 @@ dxf_appid_get_next
 (
         DxfAppid *appid
 );
+DxfAppid *
+dxf_appid_set_next
+(
+        DxfAppid *appid,
+        struct DxfAppid *next
+);
 
 
 #endif /* LIBDXF_SRC_APPID_H */
