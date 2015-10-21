@@ -393,6 +393,12 @@ dxf_3dface_get_next
 (
         Dxf3dface *face
 );
+Dxf3dface *
+dxf_3dface_set_next
+(
+        Dxf3dface *face,
+        struct Dxf3dface *next
+);
 
 
 #endif /* LIBDXF_SRC_3DFACE_H */

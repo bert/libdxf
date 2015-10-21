@@ -2705,4 +2705,49 @@ dxf_3dface_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c 3DFACE for a DXF \c 3DFACE
+ * entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+Dxf3dface *
+dxf_3dface_set_next
+(
+        Dxf3dface *face,
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+        struct Dxf3dface *next
+                /*!< a pointer to the next \c 3DFACE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        face->next = (struct Dxf3dface *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (face);
+}
+
+
 /* EOF */
