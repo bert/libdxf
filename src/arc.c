@@ -2231,7 +2231,7 @@ dxf_arc_set_extrusion_vector
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-struct DxfArc *
+DxfArc *
 dxf_arc_get_next
 (
         DxfArc *arc
@@ -2241,7 +2241,7 @@ dxf_arc_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        struct DxfArc *result;
+        DxfArc *result;
 
         /* Do some basic checks. */
         if (arc == NULL)
@@ -2258,7 +2258,7 @@ dxf_arc_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (struct DxfArc *) arc->next;
+        result = (DxfArc *) arc->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2281,7 +2281,7 @@ dxf_arc_set_next
 (
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
-        struct DxfArc *next
+        DxfArc *next
                 /*!< a pointer to the next \c ARC for the entity. */
 )
 {

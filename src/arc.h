@@ -347,7 +347,7 @@ dxf_arc_set_end_angle
         DxfArc *arc,
         double end_angle
 );
-struct DxfArc *
+DxfArc *
 dxf_arc_get_next
 (
         DxfArc *arc
@@ -356,7 +356,7 @@ DxfArc *
 dxf_arc_set_next
 (
         DxfArc *arc,
-        struct DxfArc *next
+        DxfArc *next
 );
 
 
