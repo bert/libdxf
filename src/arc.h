@@ -352,6 +352,12 @@ dxf_arc_get_next
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_next
+(
+        DxfArc *arc,
+        struct DxfArc *next
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
