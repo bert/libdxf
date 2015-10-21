@@ -964,4 +964,53 @@ dxf_appid_get_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c APPID entity from a DXF 
+ * \c APPID entity.
+ *
+ * \return pointer to the next \c APPID entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+struct DxfAppid *
+dxf_appid_get_next
+(
+        DxfAppid *appid
+                /*!< a pointer to a DXF \c APPID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        struct DxfAppid *result;
+
+        /* Do some basic checks. */
+        if (appid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (appid->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (struct DxfAppid *) appid->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

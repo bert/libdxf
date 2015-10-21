@@ -194,6 +194,11 @@ dxf_appid_get_dictionary_owner_hard
 (
         DxfAppid *appid
 );
+struct DxfAppid *
+dxf_appid_get_next
+(
+        DxfAppid *appid
+);
 
 
 #endif /* LIBDXF_SRC_APPID_H */
