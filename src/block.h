@@ -330,7 +330,7 @@ dxf_block_set_endblk
         DxfBlock *block,
         struct DxfEndblk *endblk
 );
-struct DxfBlock *
+DxfBlock *
 dxf_block_get_next
 (
         DxfBlock *block
@@ -339,7 +339,7 @@ DxfBlock *
 dxf_block_set_next
 (
         DxfBlock *block,
-        struct DxfBlock *next
+        DxfBlock *next
 );
 
 

@@ -1963,7 +1963,7 @@ dxf_block_set_endblk
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-struct DxfBlock *
+DxfBlock *
 dxf_block_get_next
 (
         DxfBlock *block
@@ -1973,7 +1973,7 @@ dxf_block_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        struct DxfBlock *result;
+        DxfBlock *result;
 
         /* Do some basic checks. */
         if (block == NULL)
@@ -1990,7 +1990,7 @@ dxf_block_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (struct DxfBlock *) block->next;
+        result = (DxfBlock *) block->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2013,7 +2013,7 @@ dxf_block_set_next
 (
         DxfBlock *block,
                 /*!< a pointer to a DXF \c BLOCK entity. */
-        struct DxfBlock *next
+        DxfBlock *next
                 /*!< a pointer to the next DXF \c BLOCK for the entity. */
 )
 {
