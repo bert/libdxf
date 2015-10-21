@@ -298,7 +298,7 @@ dxf_3dsolid_set_history
         Dxf3dsolid *solid,
         char *history
 );
-struct Dxf3dsolid *
+Dxf3dsolid *
 dxf_3dsolid_get_next
 (
         Dxf3dsolid *solid
@@ -307,7 +307,7 @@ Dxf3dsolid *
 dxf_3dsolid_set_next
 (
         Dxf3dsolid *solid,
-        struct Dxf3dsolid *next
+        Dxf3dsolid *next
 );
 
 

@@ -1884,7 +1884,7 @@ dxf_3dsolid_set_history
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-struct Dxf3dsolid *
+Dxf3dsolid *
 dxf_3dsolid_get_next
 (
         Dxf3dsolid *solid
@@ -1894,7 +1894,7 @@ dxf_3dsolid_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        struct Dxf3dsolid *result;
+        Dxf3dsolid *result;
 
         /* Do some basic checks. */
         if (solid == NULL)
@@ -1911,7 +1911,7 @@ dxf_3dsolid_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (struct Dxf3dsolid *) solid->next;
+        result = (Dxf3dsolid *) solid->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -1934,7 +1934,7 @@ dxf_3dsolid_set_next
 (
         Dxf3dsolid *solid,
                 /*!< a pointer to a DXF \c 3SOLID entity. */
-        struct Dxf3dsolid *next
+        Dxf3dsolid *next
                 /*!< a pointer to the next \c 3DSOLID for the entity. */
 )
 {
