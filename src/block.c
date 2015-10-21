@@ -1855,10 +1855,10 @@ dxf_block_set_dictionary_owner_soft
 
 
 /*!
- * \brief Get the pointer to the end of block marker from a DXF 
- * \c BLOCK entity.
+ * \brief Get the pointer to the DXF \c ENDBLK (end of block) marker
+ * from a DXF \c BLOCK entity.
  *
- * \return pointer to the end of block marker.
+ * \return pointer to the DXF \c ENDBLK (end of block) marker.
  *
  * \warning No checks are performed on the returned pointer.
  *
@@ -1904,8 +1904,8 @@ dxf_block_get_endblk
 
 
 /*!
- * \brief Set the pointer to the end of block marker for a DXF
- * \c BLOCK entity.
+ * \brief Set the pointer to the DXF \c ENDBLK (end of block) marker for
+ * a DXF \c BLOCK entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1919,7 +1919,7 @@ dxf_block_set_endblk
         DxfBlock *block,
                 /*!< a pointer to a DXF \c BLOCK entity. */
         struct DxfEndblk *endblk
-                /*!< a pointerto the end of block marker for the
+                /*!< a pointerto the DXF \c ENDBLK (end of block) marker for the
                  * entity. */
 )
 {
@@ -1950,10 +1950,10 @@ dxf_block_set_endblk
 
 
 /*!
- * \brief Get the pointer to the next block entity from a DXF 
+ * \brief Get the pointer to the next DXF \c BLOCK entity from a DXF 
  * \c BLOCK entity.
  *
- * \return pointer to the next block entity.
+ * \return pointer to the next DXF \c BLOCK entity.
  *
  * \warning No checks are performed on the returned pointer.
  *
@@ -1999,7 +1999,8 @@ dxf_block_get_next
 
 
 /*!
- * \brief Set the pointer to the next block for a DXF \c BLOCK entity.
+ * \brief Set the pointer to the next DXF \c BLOCK for a DXF \c BLOCK
+ * entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -2013,7 +2014,7 @@ dxf_block_set_next
         DxfBlock *block,
                 /*!< a pointer to a DXF \c BLOCK entity. */
         struct DxfBlock *next
-                /*!< a pointer to the next block for the entity. */
+                /*!< a pointer to the next DXF \c BLOCK for the entity. */
 )
 {
 #if DEBUG
