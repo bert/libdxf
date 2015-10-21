@@ -338,6 +338,11 @@ dxf_3dline_create_from_points
         int id_code,
         int inheritance
 );
+struct Dxf3dline *
+dxf_3dline_get_next
+(
+        Dxf3dline *line
+);
 
 
 #endif /* LIBDXF_SRC_3DLINE_H */
