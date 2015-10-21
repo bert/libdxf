@@ -1919,4 +1919,49 @@ dxf_3dsolid_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c 3DSOLID for a DXF \c 3DSOLID
+ * entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+Dxf3dsolid *
+dxf_3dsolid_set_next
+(
+        Dxf3dsolid *solid,
+                /*!< a pointer to a DXF \c 3SOLID entity. */
+        struct Dxf3dsolid *next
+                /*!< a pointer to the next \c 3DSOLID for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->next = (struct Dxf3dsolid *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid);
+}
+
+
 /* EOF */

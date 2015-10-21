@@ -303,6 +303,12 @@ dxf_3dsolid_get_next
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_next
+(
+        Dxf3dsolid *solid,
+        struct Dxf3dsolid *next
+);
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
