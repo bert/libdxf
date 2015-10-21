@@ -332,7 +332,7 @@ dxf_acad_proxy_entity_get_object_drawing_format
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
-struct DxfAcadProxyEntity *
+DxfAcadProxyEntity *
 dxf_acad_proxy_entity_get_next
 (
         DxfAcadProxyEntity *acad_proxy_entity
@@ -341,7 +341,7 @@ DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_next
 (
         DxfAcadProxyEntity *acad_proxy_entity,
-        struct DxfAcadProxyEntity *next
+        DxfAcadProxyEntity *next
 );
 
 

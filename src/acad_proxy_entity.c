@@ -2032,7 +2032,7 @@ dxf_acad_proxy_entity_get_object_drawing_format
  * \version According to DXF R13.
  * \version According to DXF R14.
  */
-struct DxfAcadProxyEntity *
+DxfAcadProxyEntity *
 dxf_acad_proxy_entity_get_next
 (
         DxfAcadProxyEntity *acad_proxy_entity
@@ -2042,7 +2042,7 @@ dxf_acad_proxy_entity_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        struct DxfAcadProxyEntity *result;
+        DxfAcadProxyEntity *result;
 
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
@@ -2059,7 +2059,7 @@ dxf_acad_proxy_entity_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (struct DxfAcadProxyEntity *) acad_proxy_entity->next;
+        result = (DxfAcadProxyEntity *) acad_proxy_entity->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2082,7 +2082,7 @@ dxf_acad_proxy_entity_set_next
 (
         DxfAcadProxyEntity *acad_proxy_entity,
                 /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
-        struct DxfAcadProxyEntity *next
+        DxfAcadProxyEntity *next
                 /*!< a pointer to the next \c ACAD_PROXY_ENTITY for the entity. */
 )
 {
