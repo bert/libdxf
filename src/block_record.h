@@ -141,6 +141,12 @@ dxf_block_record_get_block_name
 (
         DxfBlockRecord *block_record
 );
+DxfBlockRecord *
+dxf_block_record_set_block_name
+(
+        DxfBlockRecord *block_record,
+        char *block_name
+);
 int
 dxf_block_record_is_xreferenced
 (
