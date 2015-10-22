@@ -574,6 +574,12 @@ dxf_attrib_get_next
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_next
+(
+        DxfAttrib *attrib,
+        DxfAttrib *next
+);
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */
