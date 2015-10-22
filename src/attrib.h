@@ -569,6 +569,11 @@ dxf_attrib_set_extrusion_vector
         double extr_y0,
         double extr_z0
 );
+DxfAttrib *
+dxf_attrib_get_next
+(
+        DxfAttrib *attrib
+);
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */
