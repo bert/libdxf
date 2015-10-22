@@ -130,6 +130,12 @@ dxf_block_record_get_id_code
 (
         DxfBlockRecord *block_record
 );
+DxfBlockRecord *
+dxf_block_record_set_id_code
+(
+        DxfBlockRecord *block_record,
+        int id_code
+);
 int
 dxf_block_record_is_xreferenced
 (
