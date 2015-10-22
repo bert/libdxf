@@ -533,6 +533,52 @@ dxf_block_record_set_id_code
 
 
 /*!
+ * \brief Get the block name from a DXF \c BLOCK_RECORD entity.
+ *
+ * \return block name when sucessful, \c NULL when an error occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_block_record_get_block_name
+(
+        DxfBlockRecord *block_record
+                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (block_record->block_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the block_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (block_record->block_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Test if this DXF \c BLOCK_RECORD is externally dependent on an
  * xref.
  *
