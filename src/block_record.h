@@ -126,6 +126,11 @@ dxf_block_record_free_chain
         DxfBlockRecord *block_records
 );
 int
+dxf_block_record_get_id_code
+(
+        DxfBlockRecord *block_record
+);
+int
 dxf_block_record_is_xreferenced
 (
         DxfBlockRecord *block_record
