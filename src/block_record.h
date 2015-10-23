@@ -189,6 +189,12 @@ dxf_block_record_get_dictionary_owner_hard
 (
         DxfBlockRecord *block_record
 );
+DxfBlockRecord *
+dxf_block_record_set_dictionary_owner_hard
+(
+        DxfBlockRecord *block_record,
+        char *dictionary_owner_hard
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_RECORD_H */
