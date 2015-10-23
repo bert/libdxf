@@ -173,6 +173,11 @@ dxf_block_record_is_referenced
 (
         DxfBlockRecord *block_record
 );
+char *
+dxf_block_record_get_dictionary_owner_soft
+(
+        DxfBlockRecord *block_record
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_RECORD_H */
