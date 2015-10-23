@@ -1095,4 +1095,49 @@ dxf_block_record_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c BLOCK_RECORD for a DXF
+ * \c BLOCK_RECORD entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfBlockRecord *
+dxf_block_record_set_next
+(
+        DxfBlockRecord *block_record,
+                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+        DxfBlockRecord *next
+                /*!< a pointer to the next \c BLOCK_RECORD for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        block_record->next = (struct DxfBlockRecord *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block_record);
+}
+
+
 /* EOF*/

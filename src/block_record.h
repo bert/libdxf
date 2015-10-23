@@ -200,6 +200,12 @@ dxf_block_record_get_next
 (
         DxfBlockRecord *block_record
 );
+DxfBlockRecord *
+dxf_block_record_set_next
+(
+        DxfBlockRecord *block_record,
+        DxfBlockRecord *next
+);
 
 
 #endif /* LIBDXF_SRC_BLOCK_RECORD_H */
