@@ -623,6 +623,59 @@ dxf_block_record_set_block_name
 
 
 /*!
+ * \brief Get the flag value from a DXF \c BLOCK_RECORD entity.
+ *
+ * \return flag value.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_block_record_get_flag
+(
+        DxfBlockRecord *block_record
+                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (block_record->flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the flag member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (block_record->flag > 64)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the flag member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = block_record->flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Test if this DXF \c BLOCK_RECORD is externally dependent on an
  * xref.
  *
