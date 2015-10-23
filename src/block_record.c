@@ -676,6 +676,59 @@ dxf_block_record_get_flag
 
 
 /*!
+ * \brief Set the flag value for a DXF \c BLOCK_RECORD entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfBlockRecord *
+dxf_block_record_set_flag
+(
+        DxfBlockRecord *block_record,
+                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+        int flag
+                /*!< This flag is for the benefit of AutoCAD commands;
+                 * it can be ignored by most programs that read DXF files,
+                 * and need not be set by programs that write DXF files. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative flag value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (flag > 64)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range flag value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        block_record->flag = flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block_record);
+}
+
+
+/*!
  * \brief Test if this DXF \c BLOCK_RECORD is externally dependent on an
  * xref.
  *

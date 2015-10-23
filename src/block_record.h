@@ -152,6 +152,12 @@ dxf_block_record_get_flag
 (
         DxfBlockRecord *block_record
 );
+DxfBlockRecord *
+dxf_block_record_set_flag
+(
+        DxfBlockRecord *block_record,
+        int flag
+);
 int
 dxf_block_record_is_xreferenced
 (
