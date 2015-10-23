@@ -1046,4 +1046,53 @@ dxf_block_record_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c BLOCK_RECORD entity from a DXF 
+ * \c BLOCK_RECORD entity.
+ *
+ * \return pointer to the next \c BLOCK_RECORD entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfBlockRecord *
+dxf_block_record_get_next
+(
+        DxfBlockRecord *block_record
+                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfBlockRecord *result;
+
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (block_record->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfBlockRecord *) block_record->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
