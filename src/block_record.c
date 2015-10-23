@@ -441,7 +441,7 @@ dxf_block_record_free_chain
 
 
 /*!
- * \brief Get the ID code from a DXF \c BLOCK_RECORD entity.
+ * \brief Get the ID code from a DXF \c BLOCK_RECORD symbol table entry.
  *
  * \return ID code.
  *
@@ -455,7 +455,8 @@ int
 dxf_block_record_get_id_code
 (
         DxfBlockRecord *block_record
-                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
 )
 {
 #if DEBUG
@@ -487,7 +488,7 @@ dxf_block_record_get_id_code
 
 
 /*!
- * \brief Set the ID code for a DXF \c BLOCK_RECORD entity.
+ * \brief Set the ID code for a DXF \c BLOCK_RECORD symbol table entry.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -499,7 +500,8 @@ DxfBlockRecord *
 dxf_block_record_set_id_code
 (
         DxfBlockRecord *block_record,
-                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
         int id_code
                 /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
@@ -533,7 +535,8 @@ dxf_block_record_set_id_code
 
 
 /*!
- * \brief Get the block name from a DXF \c BLOCK_RECORD entity.
+ * \brief Get the block name from a DXF \c BLOCK_RECORD symbol table
+ * entry.
  *
  * \return block name when sucessful, \c NULL when an error occurred.
  *
@@ -547,7 +550,8 @@ char *
 dxf_block_record_get_block_name
 (
         DxfBlockRecord *block_record
-                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
 )
 {
 #if DEBUG
@@ -579,7 +583,8 @@ dxf_block_record_get_block_name
 
 
 /*!
- * \brief Set the block name for a DXF \c BLOCK_RECORD entity.
+ * \brief Set the block name for a DXF \c BLOCK_RECORD symbol table
+ * entry.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -591,9 +596,11 @@ DxfBlockRecord *
 dxf_block_record_set_block_name
 (
         DxfBlockRecord *block_record,
-                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
         char *block_name
-                /*!< a string containing the block name for the entity. */
+                /*!< a string containing the block name for the symbol
+                 * table entry. */
 )
 {
 #if DEBUG
@@ -623,7 +630,8 @@ dxf_block_record_set_block_name
 
 
 /*!
- * \brief Get the flag value from a DXF \c BLOCK_RECORD entity.
+ * \brief Get the flag value from a DXF \c BLOCK_RECORD symbol table
+ * entry.
  *
  * \return flag value.
  *
@@ -637,7 +645,8 @@ int
 dxf_block_record_get_flag
 (
         DxfBlockRecord *block_record
-                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
 )
 {
 #if DEBUG
@@ -676,7 +685,8 @@ dxf_block_record_get_flag
 
 
 /*!
- * \brief Set the flag value for a DXF \c BLOCK_RECORD entity.
+ * \brief Set the flag value for a DXF \c BLOCK_RECORD symbol table
+ * entry.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -688,7 +698,8 @@ DxfBlockRecord *
 dxf_block_record_set_flag
 (
         DxfBlockRecord *block_record,
-                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
         int flag
                 /*!< This flag is for the benefit of AutoCAD commands;
                  * it can be ignored by most programs that read DXF files,
@@ -858,7 +869,7 @@ dxf_block_record_is_referenced
 
 /*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
- * \c BLOCK_RECORD entity.
+ * \c BLOCK_RECORD symbol table entry.
  *
  * \return soft pointer to the dictionary owner.
  *
@@ -874,7 +885,8 @@ char *
 dxf_block_record_get_dictionary_owner_soft
 (
         DxfBlockRecord *block_record
-                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
 )
 {
 #if DEBUG
@@ -907,7 +919,7 @@ dxf_block_record_get_dictionary_owner_soft
 
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
- * \c BLOCK_RECORD entity.
+ * \c BLOCK_RECORD symbol table entry.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -919,7 +931,8 @@ DxfBlockRecord *
 dxf_block_record_set_dictionary_owner_soft
 (
         DxfBlockRecord *block_record,
-                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
         char *dictionary_owner_soft
                 /*!< a string containing the pointer to the
                  * dictionary_owner_soft for the entity. */
@@ -953,7 +966,7 @@ dxf_block_record_set_dictionary_owner_soft
 
 /*!
  * \brief Get the hard pointer to the dictionary owner from a DXF 
- * \c BLOCK_RECORD entity.
+ * \c BLOCK_RECORD symbol table entry.
  *
  * \return hard pointer to the dictionary owner.
  *
@@ -969,7 +982,8 @@ char *
 dxf_block_record_get_dictionary_owner_hard
 (
         DxfBlockRecord *block_record
-                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
 )
 {
 #if DEBUG
@@ -1002,7 +1016,7 @@ dxf_block_record_get_dictionary_owner_hard
 
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
- * \c BLOCK_RECORD entity.
+ * \c BLOCK_RECORD symbol table entry.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1014,10 +1028,11 @@ DxfBlockRecord *
 dxf_block_record_set_dictionary_owner_hard
 (
         DxfBlockRecord *block_record,
-                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
         char *dictionary_owner_hard
                 /*!< a string containing the pointer to the
-                 * dictionary_owner_hard for the entity. */
+                 * dictionary_owner_hard for the symbol table entry. */
 )
 {
 #if DEBUG
@@ -1047,10 +1062,10 @@ dxf_block_record_set_dictionary_owner_hard
 
 
 /*!
- * \brief Get the pointer to the next \c BLOCK_RECORD entity from a DXF 
- * \c BLOCK_RECORD entity.
+ * \brief Get the pointer to the next \c BLOCK_RECORD symbol table entry
+ * from a DXF \c BLOCK_RECORD symbol table entry.
  *
- * \return pointer to the next \c BLOCK_RECORD entity.
+ * \return pointer to the next \c BLOCK_RECORD symbol table entry.
  *
  * \warning No checks are performed on the returned pointer.
  *
@@ -1064,7 +1079,8 @@ DxfBlockRecord *
 dxf_block_record_get_next
 (
         DxfBlockRecord *block_record
-                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
 )
 {
 #if DEBUG
@@ -1096,8 +1112,8 @@ dxf_block_record_get_next
 
 
 /*!
- * \brief Set the pointer to the next \c BLOCK_RECORD for a DXF
- * \c BLOCK_RECORD entity.
+ * \brief Set the pointer to the next \c BLOCK_RECORD symbol table entry
+ * for a DXF \c BLOCK_RECORD symbol table entry.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1109,9 +1125,10 @@ DxfBlockRecord *
 dxf_block_record_set_next
 (
         DxfBlockRecord *block_record,
-                /*!< a pointer to a DXF \c BLOCK_RECORD entity. */
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table entry. */
         DxfBlockRecord *next
-                /*!< a pointer to the next \c BLOCK_RECORD for the entity. */
+                /*!< a pointer to the next \c BLOCK_RECORD symbol table
+                 * entry for the symbol table entry. */
 )
 {
 #if DEBUG
