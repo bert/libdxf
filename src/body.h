@@ -157,6 +157,11 @@ dxf_body_set_id_code
         DxfBody *body,
         int id_code
 );
+char *
+dxf_body_get_linetype
+(
+        DxfBody *body
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
