@@ -146,6 +146,11 @@ dxf_body_free_chain
 (
         DxfBody *bodies
 );
+int
+dxf_body_get_id_code
+(
+        DxfBody *body
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
