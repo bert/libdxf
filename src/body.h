@@ -168,6 +168,11 @@ dxf_body_set_linetype
         DxfBody *body,
         char *linetype
 );
+char *
+dxf_body_get_layer
+(
+        DxfBody *body
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
