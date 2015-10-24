@@ -162,6 +162,12 @@ dxf_body_get_linetype
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_linetype
+(
+        DxfBody *body,
+        char *linetype
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
