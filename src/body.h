@@ -151,6 +151,12 @@ dxf_body_get_id_code
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_id_code
+(
+        DxfBody *body,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
