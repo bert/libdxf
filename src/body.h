@@ -179,6 +179,11 @@ dxf_body_set_layer
         DxfBody *body,
         char *layer
 );
+double
+dxf_body_get_elevation
+(
+        DxfBody *body
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
