@@ -190,6 +190,11 @@ dxf_body_set_elevation
         DxfBody *body,
         double elevation
 );
+double
+dxf_body_get_thickness
+(
+        DxfBody *body
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
