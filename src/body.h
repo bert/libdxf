@@ -173,6 +173,12 @@ dxf_body_get_layer
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_layer
+(
+        DxfBody *body,
+        char *layer
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
