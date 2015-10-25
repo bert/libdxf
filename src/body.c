@@ -926,4 +926,41 @@ dxf_body_get_elevation
 }
 
 
+/*!
+ * \brief Set the elevation for a DXF \c BODY entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfBody *
+dxf_body_set_elevation
+(
+        DxfBody *body,
+                /*!< a pointer to a DXF \c BODY entity. */
+        double elevation
+                /*!< the elevation to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (body == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        body->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (body);
+}
+
+
 /* EOF */

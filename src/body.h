@@ -184,6 +184,12 @@ dxf_body_get_elevation
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_elevation
+(
+        DxfBody *body,
+        double elevation
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
