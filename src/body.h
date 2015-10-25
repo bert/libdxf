@@ -195,6 +195,12 @@ dxf_body_get_thickness
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_thickness
+(
+        DxfBody *body,
+        double thickness
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
