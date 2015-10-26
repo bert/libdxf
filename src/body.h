@@ -239,6 +239,12 @@ dxf_body_get_paperspace
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_paperspace
+(
+        DxfBody *body,
+        int paperspace
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
