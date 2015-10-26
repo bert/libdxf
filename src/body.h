@@ -201,6 +201,11 @@ dxf_body_set_thickness
         DxfBody *body,
         double thickness
 );
+double
+dxf_body_get_linetype_scale
+(
+        DxfBody *body
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
