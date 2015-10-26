@@ -228,6 +228,12 @@ dxf_body_get_color
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_color
+(
+        DxfBody *body,
+        int color
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
