@@ -223,6 +223,11 @@ dxf_body_set_visibility
         DxfBody *body,
         int16_t visibility
 );
+int
+dxf_body_get_color
+(
+        DxfBody *body
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
