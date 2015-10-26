@@ -234,6 +234,11 @@ dxf_body_set_color
         DxfBody *body,
         int color
 );
+int
+dxf_body_get_paperspace
+(
+        DxfBody *body
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
