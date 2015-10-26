@@ -217,6 +217,12 @@ dxf_body_get_visibility
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_visibility
+(
+        DxfBody *body,
+        int16_t visibility
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
