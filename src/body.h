@@ -206,6 +206,12 @@ dxf_body_get_linetype_scale
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_linetype_scale
+(
+        DxfBody *body,
+        double linetype_scale
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
