@@ -212,6 +212,11 @@ dxf_body_set_linetype_scale
         DxfBody *body,
         double linetype_scale
 );
+int16_t
+dxf_body_get_visibility
+(
+        DxfBody *body
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
