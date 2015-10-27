@@ -261,6 +261,12 @@ dxf_body_get_dictionary_owner_hard
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_dictionary_owner_hard
+(
+        DxfBody *body,
+        char *dictionary_owner_hard
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
