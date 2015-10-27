@@ -245,6 +245,11 @@ dxf_body_set_paperspace
         DxfBody *body,
         int paperspace
 );
+char *
+dxf_body_get_dictionary_owner_soft
+(
+        DxfBody *body
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
