@@ -1629,4 +1629,57 @@ dxf_body_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the proprietary data from a DXF \c BODY entity.
+ *
+ * \return pointer to the proprietary data.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_body_get_proprietary_data
+(
+        DxfBody *body,
+                /*!< a pointer to a DXF \c BODY entity. */
+        char *data[DXF_MAX_PARAM]
+                /*!< an array containg the proprietary data. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (body == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        for (i = 1; i < DXF_MAX_PARAM; i++)
+        {
+                if (body->proprietary_data[i] ==  NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () a NULL pointer was found in the proprietary_data[%d] member.\n")),
+                          __FUNCTION__, i);
+                        return (EXIT_FAILURE);
+                }
+        data[i] = strdup (body->proprietary_data[i]);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

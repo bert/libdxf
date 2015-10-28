@@ -267,6 +267,12 @@ dxf_body_set_dictionary_owner_hard
         DxfBody *body,
         char *dictionary_owner_hard
 );
+int
+dxf_body_get_proprietary_data
+(
+        DxfBody *body,
+        char *data[DXF_MAX_PARAM]
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
