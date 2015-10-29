@@ -1836,4 +1836,50 @@ dxf_body_set_additional_proprietary_data
 }
 
 
+/*!
+ * \brief Get the modeler format version number from a DXF \c BODY entity.
+ *
+ * \return ID code.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_body_get_modeler_format_version_number
+(
+        DxfBody *body
+                /*!< a pointer to a DXF \c BODY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (body == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (body->modeler_format_version_number != 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid value was found in the modeler_format_version_number member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = body->modeler_format_version_number;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

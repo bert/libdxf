@@ -291,6 +291,11 @@ dxf_body_set_additional_proprietary_data
         DxfBody *body,
         char *additional_data[DXF_MAX_PARAM]
 );
+int
+dxf_body_get_modeler_format_version_number
+(
+        DxfBody *body
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
