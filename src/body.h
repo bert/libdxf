@@ -279,6 +279,12 @@ dxf_body_set_proprietary_data
         DxfBody *body,
         char *data[DXF_MAX_PARAM]
 );
+int
+dxf_body_get_additional_proprietary_data
+(
+        DxfBody *body,
+        char *additional_data[DXF_MAX_PARAM]
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
