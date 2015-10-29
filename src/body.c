@@ -1648,7 +1648,7 @@ dxf_body_get_proprietary_data
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
         char *data[DXF_MAX_PARAM]
-                /*!< an array containg the proprietary data. */
+                /*!< an array containing the proprietary data. */
 )
 {
 #if DEBUG
