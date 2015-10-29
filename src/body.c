@@ -1752,7 +1752,7 @@ dxf_body_get_additional_proprietary_data
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
         char *additional_data[DXF_MAX_PARAM]
-                /*!< an array containg the proprietary data. */
+                /*!< an array containg the additional proprietary data. */
 )
 {
 #if DEBUG
@@ -1773,7 +1773,7 @@ dxf_body_get_additional_proprietary_data
                 if (body->additional_proprietary_data[i] ==  NULL)
                 {
                         fprintf (stderr,
-                          (_("Error in %s () a NULL pointer was found in the proprietary_data[%d] member.\n")),
+                          (_("Error in %s () a NULL pointer was found in the additional_proprietary_data[%d] member.\n")),
                           __FUNCTION__, i);
                         return (EXIT_FAILURE);
                 }
