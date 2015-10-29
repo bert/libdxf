@@ -1786,4 +1786,55 @@ dxf_body_get_additional_proprietary_data
 }
 
 
+/*!
+ * \brief Set the pointer to the additional proprietary data for a DXF
+ * \c BODY entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfBody *
+dxf_body_set_additional_proprietary_data
+(
+        DxfBody *body,
+                /*!< a pointer to a DXF \c BODY entity. */
+        char *additional_data[DXF_MAX_PARAM]
+                /*!< an array containing the additional proprietary data
+                 * for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (body == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        for (i = 1; i < DXF_MAX_PARAM; i++)
+        {
+                if (additional_data[i] ==  NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () a NULL pointer was found in the additional data[%d] array.\n")),
+                          __FUNCTION__, i);
+                        return (NULL);
+                }
+                body->additional_proprietary_data[i] = strdup (additional_data[i]);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (body);
+}
+
+
 /* EOF */
