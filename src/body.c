@@ -1683,8 +1683,7 @@ dxf_body_get_proprietary_data
 
 
 /*!
- * \brief Set the pointer to the dictionary_owner_hard for a DXF
- * \c BODY entity.
+ * \brief Set the proprietary data for a DXF \c BODY entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1720,7 +1719,7 @@ dxf_body_set_proprietary_data
                 if (data[i] ==  NULL)
                 {
                         fprintf (stderr,
-                          (_("Error in %s () a NULL pointer was found in the proprietary_data[%d] member.\n")),
+                          (_("Error in %s () a NULL pointer was found in the proprietary_data[%d] array.\n")),
                           __FUNCTION__, i);
                         return (NULL);
                 }
