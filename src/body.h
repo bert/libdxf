@@ -296,6 +296,12 @@ dxf_body_get_modeler_format_version_number
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_modeler_format_version_number
+(
+        DxfBody *body,
+        int modeler_format_version_number
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */
