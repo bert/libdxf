@@ -307,6 +307,12 @@ dxf_body_get_next
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_next
+(
+        DxfBody *body,
+        DxfBody *next
+);
 
 
 #endif /* LIBDXF_SRC_BODY_H */

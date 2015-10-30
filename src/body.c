@@ -1975,4 +1975,49 @@ dxf_body_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c BODY for a DXF \c BODY
+ * entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfBody *
+dxf_body_set_next
+(
+        DxfBody *body,
+                /*!< a pointer to a DXF \c BODY entity. */
+        DxfBody *next
+                /*!< a pointer to the next \c BODY for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (body == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        body->next = (struct DxfBody *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (body);
+}
+
+
 /* EOF */
