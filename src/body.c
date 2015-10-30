@@ -1926,4 +1926,53 @@ dxf_body_set_modeler_format_version_number
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c BODY entity from a DXF 
+ * \c BODY entity.
+ *
+ * \return pointer to the next \c BODY entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfBody *
+dxf_body_get_next
+(
+        DxfBody *body
+                /*!< a pointer to a DXF \c BODY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfBody *result;
+
+        /* Do some basic checks. */
+        if (body == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (body->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfBody *) body->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
