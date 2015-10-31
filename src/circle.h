@@ -317,6 +317,12 @@ dxf_circle_get_next
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_next
+(
+        DxfCircle *circle,
+        DxfCircle *next
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */

@@ -2035,4 +2035,49 @@ dxf_circle_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c CIRCLE for a DXF \c CIRCLE
+ * entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfCircle *
+dxf_circle_set_next
+(
+        DxfCircle *circle,
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+        DxfCircle *next
+                /*!< a pointer to the next \c CIRCLE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        circle->next = (struct DxfCircle *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (circle);
+}
+
+
 /* EOF */
