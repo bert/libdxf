@@ -312,6 +312,11 @@ dxf_circle_set_extrusion_vector
         double extr_y0,
         double extr_z0
 );
+DxfCircle *
+dxf_circle_get_next
+(
+        DxfCircle *circle
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
