@@ -145,6 +145,11 @@ dxf_class_free_chain
 (
         DxfClass *classes
 );
+char *
+dxf_class_get_record_type
+(
+        DxfClass *class
+);
 int
 dxf_class_is_editable
 (
