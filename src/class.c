@@ -531,6 +531,50 @@ dxf_class_get_record_type
 
 
 /*!
+ * \brief Set the record type for a DXF \c CLASS entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfClass *
+dxf_class_set_record_type
+(
+        DxfClass *class,
+                /*!< a pointer to a DXF \c CLASS entity. */
+        char *record_type
+                /*!< a string containing the record type for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (class == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (record_type == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        class->record_type = strdup (record_type);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (class);
+}
+
+
+/*!
  * \brief Test if operations on this \c CLASS symbol table entry are
  * allowed.
  *

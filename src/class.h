@@ -150,6 +150,12 @@ dxf_class_get_record_type
 (
         DxfClass *class
 );
+DxfClass *
+dxf_class_set_record_type
+(
+        DxfClass *class,
+        char *record_type
+);
 int
 dxf_class_is_editable
 (
