@@ -1476,6 +1476,13 @@ dxf_class_get_was_a_proxy_flag
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (class->was_a_proxy_flag > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid value was found in the was_a_proxy_flag member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         result = class->was_a_proxy_flag;
 #if DEBUG
         DXF_DEBUG_END
