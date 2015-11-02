@@ -194,6 +194,12 @@ dxf_class_get_proxy_cap_flag
 (
         DxfClass *class
 );
+DxfClass *
+dxf_class_set_proxy_cap_flag
+(
+        DxfClass *class,
+        int proxy_cap_flag
+);
 int
 dxf_class_is_editable
 (

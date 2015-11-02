@@ -892,6 +892,50 @@ dxf_class_get_proxy_cap_flag
 
 
 /*!
+ * \brief Set the proxy_cap_flag for a DXF \c CLASS entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfClass *
+dxf_class_set_proxy_cap_flag
+(
+        DxfClass *class,
+                /*!< a pointer to a DXF \c CLASS entity. */
+        int proxy_cap_flag
+                /*!< Proxy capabilities flag. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (class == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (proxy_cap_flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative proxy_cap_flag value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        class->proxy_cap_flag = proxy_cap_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (class);
+}
+
+
+/*!
  * \brief Test if operations on this \c CLASS symbol table entry are
  * allowed.
  *
