@@ -172,6 +172,12 @@ dxf_class_get_class_name
 (
         DxfClass *class
 );
+DxfClass *
+dxf_class_set_class_name
+(
+        DxfClass *class,
+        char *class_name
+);
 int
 dxf_class_is_editable
 (
