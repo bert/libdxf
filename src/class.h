@@ -265,6 +265,12 @@ dxf_class_get_was_a_proxy_flag
 (
         DxfClass *class
 );
+DxfClass *
+dxf_class_set_was_a_proxy_flag
+(
+        DxfClass *class,
+        int was_a_proxy_flag
+);
 
 
 #endif /* LIBDXF_SRC_CLASS_H */
