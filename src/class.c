@@ -755,6 +755,52 @@ dxf_class_set_class_name
 
 
 /*!
+ * \brief Get the application name from a DXF \c CLASS entity.
+ *
+ * \return class name when sucessful, \c NULL when an error occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_class_get_app_name
+(
+        DxfClass *class
+                /*!< a pointer to a DXF \c CLASS entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (class == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (class->app_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the class name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (class->app_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Test if operations on this \c CLASS symbol table entry are
  * allowed.
  *
