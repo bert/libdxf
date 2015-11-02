@@ -1438,4 +1438,50 @@ dxf_class_is_R13_format_proxy
 }
 
 
+/*!
+ * \brief Get the was_a_proxy_flag from a DXF \c CLASS entity.
+ *
+ * \return was_a_proxy_flag.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_class_get_was_a_proxy_flag
+(
+        DxfClass *class
+                /*!< a pointer to a DXF \c CLASS entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (class == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (class->was_a_proxy_flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the was_a_proxy_flag member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = class->was_a_proxy_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

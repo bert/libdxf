@@ -260,6 +260,11 @@ dxf_class_is_R13_format_proxy
 (
         DxfClass *class
 );
+int
+dxf_class_get_was_a_proxy_flag
+(
+        DxfClass *class
+);
 
 
 #endif /* LIBDXF_SRC_CLASS_H */
