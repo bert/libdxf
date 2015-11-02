@@ -190,6 +190,11 @@ dxf_class_set_app_name
         char *app_name
 );
 int
+dxf_class_get_proxy_cap_flag
+(
+        DxfClass *class
+);
+int
 dxf_class_is_editable
 (
         DxfClass *class
