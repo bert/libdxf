@@ -109,6 +109,12 @@ dxf_comment_get_next
 (
         DxfComment *comment
 );
+DxfComment *
+dxf_comment_set_next
+(
+        DxfComment *comment,
+        DxfComment *next
+);
 
 
 #endif /* LIBDXF_SRC_COMMENT_H */

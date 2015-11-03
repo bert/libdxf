@@ -443,4 +443,49 @@ dxf_comment_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c COMMENT for a DXF \c COMMENT
+ * entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfComment *
+dxf_comment_set_next
+(
+        DxfComment *comment,
+                /*!< a pointer to a DXF \c COMMENT entity. */
+        DxfComment *next
+                /*!< a pointer to the next \c COMMENT for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (comment == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        comment->next = (struct DxfComment *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (comment);
+}
+
+
 /* EOF */
