@@ -82,6 +82,11 @@ dxf_comment_free_chain
 (
         DxfComment *comments
 );
+int
+dxf_comment_get_id_code
+(
+        DxfComment *comment
+);
 char *
 dxf_comment_get_value
 (
