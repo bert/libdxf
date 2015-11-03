@@ -82,15 +82,15 @@ dxf_comment_free_chain
 (
         DxfComment *comments
 );
+char *
+dxf_comment_get_value
+(
+        DxfComment *comment
+);
 DxfComment *
 dxf_comment_set_value
 (
         char *value,
-        DxfComment *comment
-);
-char *
-dxf_comment_get_value
-(
         DxfComment *comment
 );
 
