@@ -104,6 +104,11 @@ dxf_comment_set_value
         char *value,
         DxfComment *comment
 );
+DxfComment *
+dxf_comment_get_next
+(
+        DxfComment *comment
+);
 
 
 #endif /* LIBDXF_SRC_COMMENT_H */
