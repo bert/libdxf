@@ -287,6 +287,12 @@ dxf_class_get_next
 (
         DxfClass *class
 );
+DxfClass *
+dxf_class_set_next
+(
+        DxfClass *class,
+        DxfClass *next
+);
 
 
 #endif /* LIBDXF_SRC_CLASS_H */
