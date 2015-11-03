@@ -268,6 +268,52 @@ dxf_comment_get_id_code
 
 
 /*!
+ * \brief Set the ID code for a DXF \c COMMENT entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfComment *
+dxf_comment_set_id_code
+(
+        DxfComment *comment,
+                /*!< a pointer to a DXF \c COMMENT entity. */
+        int id_code
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (comment == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative id-code value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        comment->id_code = id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (comment);
+}
+
+
+/*!
  * \brief Get the value string from a DXF \c COMMENT entity.
  *
  * \version According to DXF R10.

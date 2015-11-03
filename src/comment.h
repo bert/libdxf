@@ -87,6 +87,12 @@ dxf_comment_get_id_code
 (
         DxfComment *comment
 );
+DxfComment *
+dxf_comment_set_id_code
+(
+        DxfComment *comment,
+        int id_code
+);
 char *
 dxf_comment_get_value
 (
