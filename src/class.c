@@ -1595,4 +1595,55 @@ dxf_class_get_is_an_entity_flag
 }
 
 
+/*!
+ * \brief Set the is_an_entity_flag for a DXF \c CLASS entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfClass *
+dxf_class_set_is_an_entity_flag
+(
+        DxfClass *class,
+                /*!< a pointer to a DXF \c CLASS entity. */
+        int is_an_entity_flag
+                /*!< Is-an-entity flag. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (class == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (is_an_entity_flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative is_an_entity_flag value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (is_an_entity_flag > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid is_an_entity_flag value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        class->is_an_entity_flag = is_an_entity_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (class);
+}
+
+
 /* EOF */

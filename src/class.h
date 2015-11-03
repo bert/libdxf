@@ -276,6 +276,12 @@ dxf_class_get_is_an_entity_flag
 (
         DxfClass *class
 );
+DxfClass *
+dxf_class_set_is_an_entity_flag
+(
+        DxfClass *class,
+        int is_an_entity_flag
+);
 
 
 #endif /* LIBDXF_SRC_CLASS_H */
