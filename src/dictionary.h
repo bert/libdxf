@@ -107,6 +107,11 @@ dxf_dictionary_free_chain
 (
         DxfDictionary *dictionaries
 );
+int
+dxf_dictionary_get_id_code
+(
+        DxfDictionary *dictionary
+);
 
 
 #endif /* LIBDXF_SRC_DICTIONARY_H */
