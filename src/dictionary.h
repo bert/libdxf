@@ -123,6 +123,12 @@ dxf_dictionary_get_dictionary_owner_soft
 (
         DxfDictionary *dictionary
 );
+DxfDictionary *
+dxf_dictionary_set_dictionary_owner_soft
+(
+        DxfDictionary *dictionary,
+        char *dictionary_owner_soft
+);
 
 
 #endif /* LIBDXF_SRC_DICTIONARY_H */
