@@ -162,6 +162,11 @@ dxf_dictionary_set_entry_object_handle
         DxfDictionary *dictionary,
         char *entry_object_handle
 );
+DxfDictionary *
+dxf_dictionary_get_next
+(
+        DxfDictionary *dictionary
+);
 
 
 #endif /* LIBDXF_SRC_DICTIONARY_H */
