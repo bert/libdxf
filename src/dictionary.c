@@ -739,4 +739,50 @@ dxf_dictionary_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the entry name from a DXF \c DICTIONARY object.
+ *
+ * \return entry name when sucessful, \c NULL when an error occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_dictionary_get_entry_name
+(
+        DxfDictionary *dictionary
+                /*!< a pointer to a DXF \c DICTIONARY object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (dictionary == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary->entry_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the entry_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (dictionary->entry_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
