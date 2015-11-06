@@ -875,4 +875,49 @@ dxf_dictionary_get_entry_object_handle
 }
 
 
+/*!
+ * \brief Set the entry object handle for a DXF \c DICTIONARY object.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDictionary *
+dxf_dictionary_set_entry_object_handle
+(
+        DxfDictionary *dictionary,
+                /*!< a pointer to a DXF \c DICTIONARY object. */
+        char *entry_object_handle
+                /*!< a string containing the entry object handle for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dictionary == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (entry_object_handle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dictionary->entry_object_handle = strdup (entry_object_handle);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dictionary);
+}
+
+
 /* EOF*/
