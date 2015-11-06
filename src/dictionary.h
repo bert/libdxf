@@ -134,6 +134,12 @@ dxf_dictionary_get_dictionary_owner_hard
 (
         DxfDictionary *dictionary
 );
+DxfDictionary *
+dxf_dictionary_set_dictionary_owner_hard
+(
+        DxfDictionary *dictionary,
+        char *dictionary_owner_hard
+);
 
 
 #endif /* LIBDXF_SRC_DICTIONARY_H */
