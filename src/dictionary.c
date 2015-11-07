@@ -969,4 +969,50 @@ dxf_dictionary_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c DICTIONARY object for a DXF
+ * \c DICTIONARY object.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDictionary *
+dxf_dictionary_set_next
+(
+        DxfDictionary *dictionary,
+                /*!< a pointer to a DXF \c DICTIONARY object. */
+        DxfDictionary *next
+                /*!< a pointer to the next \c DICTIONARY object for the
+                 * object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dictionary == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dictionary->next = (struct DxfDictionary *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dictionary);
+}
+
+
 /* EOF*/

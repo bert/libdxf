@@ -167,6 +167,12 @@ dxf_dictionary_get_next
 (
         DxfDictionary *dictionary
 );
+DxfDictionary *
+dxf_dictionary_set_next
+(
+        DxfDictionary *dictionary,
+        DxfDictionary *next
+);
 
 
 #endif /* LIBDXF_SRC_DICTIONARY_H */
