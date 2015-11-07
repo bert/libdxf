@@ -107,6 +107,11 @@ dxf_dictionaryvar_free_chain
 (
         DxfDictionaryVar *dictionaryvars
 );
+int
+dxf_dictionaryvar_get_id_code
+(
+        DxfDictionaryVar *dictionaryvar
+);
 
 
 #endif /* LIBDXF_SRC_DICTIONARYVAR_H */

@@ -460,4 +460,50 @@ dxf_dictionaryvar_free_chain
 }
 
 
+/*!
+ * \brief Get the ID code from a DXF \c DICTIONARYVAR object.
+ *
+ * \return ID code.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+int
+dxf_dictionaryvar_get_id_code
+(
+        DxfDictionaryVar *dictionaryvar
+                /*!< a pointer to a DXF \c DICTIONARYVAR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (dictionaryvar == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dictionaryvar->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = dictionaryvar->id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
