@@ -118,6 +118,11 @@ dxf_dictionaryvar_set_id_code
         DxfDictionaryVar *dictionaryvar,
         int id_code
 );
+char *
+dxf_dictionaryvar_get_dictionary_owner_soft
+(
+        DxfDictionaryVar *dictionaryvar
+);
 
 
 #endif /* LIBDXF_SRC_DICTIONARYVAR_H */
