@@ -167,6 +167,12 @@ dxf_dictionaryvar_get_next
 (
         DxfDictionaryVar *dictionaryvar
 );
+DxfDictionaryVar *
+dxf_dictionaryvar_set_next
+(
+        DxfDictionaryVar *dictionaryvar,
+        DxfDictionaryVar *next
+);
 
 
 #endif /* LIBDXF_SRC_DICTIONARYVAR_H */
