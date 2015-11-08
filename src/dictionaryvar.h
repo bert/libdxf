@@ -72,9 +72,9 @@ dxf_dictionaryvar
         char *object_schema_number;
                 /*!< Object schema number (currently set to 0).\n
                  * Group code = 280. */
-        struct DxfDictionary *next;
-                /*!< Pointer to the next DxfDictionary.\n
-                 * \c NULL in the last DxfDictionary. */
+        struct DxfDictionaryVar *next;
+                /*!< Pointer to the next DxfDictionaryVar.\n
+                 * \c NULL in the last DxfDictionaryVar. */
 } DxfDictionaryVar;
 
 

@@ -451,7 +451,7 @@ dxf_dictionaryvar_free_chain
         while (dictionaryvars != NULL)
         {
                 struct DxfDictionaryVar *iter = dictionaryvars->next;
-                dxf_dictionary_free (dictionaryvars);
+                dxf_dictionaryvar_free (dictionaryvars);
                 dictionaryvars = (DxfDictionaryVar *) iter;
         }
 #if DEBUG
