@@ -151,6 +151,11 @@ dxf_dictionaryvar_set_value
         DxfDictionaryVar *dictionaryvar,
         char *value
 );
+char *
+dxf_dictionaryvar_get_object_schema_number
+(
+        DxfDictionaryVar *dictionaryvar
+);
 
 
 #endif /* LIBDXF_SRC_DICTIONARYVAR_H */

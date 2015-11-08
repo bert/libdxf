@@ -832,4 +832,52 @@ dxf_dictionaryvar_set_value
 }
 
 
+/*!
+ * \brief Get the object schema number from a DXF \c DICTIONARYVAR
+ * object.
+ *
+ * \return object schema number when sucessful, \c NULL when an error
+ * occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+char *
+dxf_dictionaryvar_get_object_schema_number
+(
+        DxfDictionaryVar *dictionaryvar
+                /*!< a pointer to a DXF \c DICTIONARYVAR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (dictionaryvar == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionaryvar->object_schema_number ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the object_schema_number member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (dictionaryvar->object_schema_number);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
