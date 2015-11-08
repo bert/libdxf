@@ -145,6 +145,12 @@ dxf_dictionaryvar_get_value
 (
         DxfDictionaryVar *dictionaryvar
 );
+DxfDictionaryVar *
+dxf_dictionaryvar_set_value
+(
+        DxfDictionaryVar *dictionaryvar,
+        char *value
+);
 
 
 #endif /* LIBDXF_SRC_DICTIONARYVAR_H */
