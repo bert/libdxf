@@ -925,4 +925,53 @@ dxf_dictionaryvar_set_object_schema_number
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c DICTIONARYVAR object from a DXF 
+ * \c DICTIONARYVAR object.
+ *
+ * \return pointer to the next \c DICTIONARYVAR object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+DxfDictionaryVar *
+dxf_dictionaryvar_get_next
+(
+        DxfDictionaryVar *dictionaryvar
+                /*!< a pointer to a DXF \c DICTIONARYVAR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfDictionaryVar *result;
+
+        /* Do some basic checks. */
+        if (dictionaryvar == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionaryvar->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfDictionaryVar *) dictionaryvar->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
