@@ -339,6 +339,12 @@ dxf_dimension_get_id_code
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_id_code
+(
+        DxfDimension *dimension,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
