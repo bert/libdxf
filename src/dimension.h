@@ -345,6 +345,11 @@ dxf_dimension_set_id_code
         DxfDimension *dimension,
         int id_code
 );
+char *
+dxf_dimension_get_linetype
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
