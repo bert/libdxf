@@ -334,6 +334,11 @@ dxf_dimension_get_flag
 (
         DxfDimension *dimension
 );
+int
+dxf_dimension_get_id_code
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
