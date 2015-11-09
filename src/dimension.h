@@ -350,6 +350,12 @@ dxf_dimension_get_linetype
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_linetype
+(
+        DxfDimension *dimension,
+        char *linetype
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
