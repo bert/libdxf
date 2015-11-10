@@ -361,6 +361,12 @@ dxf_dimension_get_layer
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_layer
+(
+        DxfDimension *dimension,
+        char *layer
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
