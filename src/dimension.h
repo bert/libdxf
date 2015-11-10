@@ -394,6 +394,12 @@ dxf_dimension_get_linetype_scale
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_linetype_scale
+(
+        DxfDimension *dimension,
+        double linetype_scale
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
