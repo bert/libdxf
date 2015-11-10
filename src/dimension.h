@@ -372,6 +372,12 @@ dxf_dimension_get_elevation
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_elevation
+(
+        DxfDimension *dimension,
+        double elevation
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
