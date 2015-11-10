@@ -356,6 +356,11 @@ dxf_dimension_set_linetype
         DxfDimension *dimension,
         char *linetype
 );
+char *
+dxf_dimension_get_layer
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
