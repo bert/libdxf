@@ -383,6 +383,12 @@ dxf_dimension_get_thickness
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_thickness
+(
+        DxfDimension *dimension,
+        double thickness
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
