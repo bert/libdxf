@@ -389,6 +389,11 @@ dxf_dimension_set_thickness
         DxfDimension *dimension,
         double thickness
 );
+double
+dxf_dimension_get_linetype_scale
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
