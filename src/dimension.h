@@ -378,6 +378,11 @@ dxf_dimension_set_elevation
         DxfDimension *dimension,
         double elevation
 );
+double
+dxf_dimension_get_thickness
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
