@@ -405,6 +405,12 @@ dxf_dimension_get_visibility
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_visibility
+(
+        DxfDimension *dimension,
+        int16_t visibility
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
