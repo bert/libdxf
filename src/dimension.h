@@ -400,6 +400,11 @@ dxf_dimension_set_linetype_scale
         DxfDimension *dimension,
         double linetype_scale
 );
+int16_t
+dxf_dimension_get_visibility
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
