@@ -422,6 +422,11 @@ dxf_dimension_set_color
         DxfDimension *dimension,
         int color
 );
+int
+dxf_dimension_get_paperspace
+(
+        DxfDimension *dimension
+);
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
 
