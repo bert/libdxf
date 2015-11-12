@@ -1814,4 +1814,55 @@ dxf_dimension_get_paperspace
 }
 
 
+/*!
+ * \brief Set the paperspace flag for a DXF \c DIMENSION entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDimension *
+dxf_dimension_set_paperspace
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        int paperspace
+                /*!< the paperspace flag value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative paperspace value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range paperspace value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimension->paperspace = paperspace;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension);
+}
+
+
 /* EOF */

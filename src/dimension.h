@@ -427,6 +427,13 @@ dxf_dimension_get_paperspace
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_paperspace
+(
+        DxfDimension *dimension,
+        int paperspace
+);
+
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
 
