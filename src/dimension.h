@@ -416,7 +416,12 @@ dxf_dimension_get_color
 (
         DxfDimension *dimension
 );
-
+DxfDimension *
+dxf_dimension_set_color
+(
+        DxfDimension *dimension,
+        int color
+);
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
 
