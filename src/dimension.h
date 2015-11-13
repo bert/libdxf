@@ -449,6 +449,12 @@ dxf_dimension_get_dictionary_owner_hard
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_dictionary_owner_hard
+(
+        DxfDimension *dimension,
+        char *dictionary_owner_hard
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
