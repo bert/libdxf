@@ -460,6 +460,12 @@ dxf_dimension_get_dim_text
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_dim_text
+(
+        DxfDimension *dimension,
+        char *dim_text
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
