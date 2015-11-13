@@ -433,6 +433,11 @@ dxf_dimension_set_paperspace
         DxfDimension *dimension,
         int paperspace
 );
+char *
+dxf_dimension_get_dictionary_owner_soft
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
