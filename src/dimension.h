@@ -438,6 +438,12 @@ dxf_dimension_get_dictionary_owner_soft
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_dictionary_owner_soft
+(
+        DxfDimension *dimension,
+        char *dictionary_owner_soft
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
