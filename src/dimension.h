@@ -37,6 +37,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 /*!
@@ -487,6 +488,13 @@ dxf_dimension_set_dimstyle_name
 (
         DxfDimension *dimension,
         char *dimstyle_name
+);
+DxfPoint *
+dxf_dimension_get_definition_point
+(
+        DxfDimension *dimension,
+        int id_code,
+        int inheritance
 );
 
 
