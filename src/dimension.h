@@ -496,6 +496,12 @@ dxf_dimension_get_definition_point
         int id_code,
         int inheritance
 );
+DxfDimension *
+dxf_dimension_set_definition_point
+(
+        DxfDimension *dimension,
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
