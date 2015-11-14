@@ -482,6 +482,12 @@ dxf_dimension_get_dimstyle_name
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_dimstyle_name
+(
+        DxfDimension *dimension,
+        char *dimstyle_name
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
