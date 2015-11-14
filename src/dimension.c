@@ -1915,7 +1915,7 @@ dxf_dimension_get_dictionary_owner_soft
 
 
 /*!
- * \brief Set the pointer to the dictionary_owner_soft for a DXF
+ * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c DIMENSION entity.
  *
  * \version According to DXF R10.
@@ -1931,7 +1931,7 @@ dxf_dimension_set_dictionary_owner_soft
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         char *dictionary_owner_soft
                 /*!< a string containing the pointer to the
-                 * dictionary_owner_soft for the entity. */
+                 * \c dictionary_owner_soft for the entity. */
 )
 {
 #if DEBUG
@@ -2010,7 +2010,7 @@ dxf_dimension_get_dictionary_owner_hard
 
 
 /*!
- * \brief Set the pointer to the dictionary_owner_hard for a DXF
+ * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c DIMENSION entity.
  *
  * \version According to DXF R10.
@@ -2026,7 +2026,7 @@ dxf_dimension_set_dictionary_owner_hard
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         char *dictionary_owner_hard
                 /*!< a string containing the pointer to the
-                 * dictionary_owner_hard for the entity. */
+                 * \c dictionary_owner_hard for the entity. */
 )
 {
 #if DEBUG
@@ -2056,9 +2056,9 @@ dxf_dimension_set_dictionary_owner_hard
 
 
 /*!
- * \brief Get the dim_text from a DXF \c DIMENSION entity.
+ * \brief Get the \c dim_text from a DXF \c DIMENSION entity.
  *
- * \return dim_text when sucessful, \c NULL when an error occurred.
+ * \return \c dim_text when sucessful, \c NULL when an error occurred.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -2102,7 +2102,7 @@ dxf_dimension_get_dim_text
 
 
 /*!
- * \brief Set the dim_text for a DXF \c DIMENSION entity.
+ * \brief Set the \c dim_text for a DXF \c DIMENSION entity.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -2116,7 +2116,7 @@ dxf_dimension_set_dim_text
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         char *dim_text
-                /*!< a string containing the dim_text for the entity. */
+                /*!< a string containing the \c dim_text for the entity. */
 )
 {
 #if DEBUG
