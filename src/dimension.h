@@ -477,6 +477,11 @@ dxf_dimension_set_dimblock_name
         DxfDimension *dimension,
         char *dimblock_name
 );
+char *
+dxf_dimension_get_dimstyle_name
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */

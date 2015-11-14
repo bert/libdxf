@@ -2236,4 +2236,51 @@ dxf_dimension_set_dimblock_name
 }
 
 
+/*!
+ * \brief Get the \c dimstyle_name from a DXF \c DIMENSION entity.
+ *
+ * \return \c dimstyle_name when sucessful, \c NULL when an error
+ * occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_dimension_get_dimstyle_name
+(
+        DxfDimension *dimension
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimension->dimstyle_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the dimstyle_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (dimension->dimstyle_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
