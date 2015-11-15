@@ -528,6 +528,13 @@ dxf_dimension_set_x2
         DxfDimension *dimension,
         DxfPoint *point
 );
+DxfPoint *
+dxf_dimension_get_x3
+(
+        DxfDimension *dimension,
+        int id_code,
+        int inheritance
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
