@@ -522,6 +522,12 @@ dxf_dimension_get_dimension_block_translation_vector
         int id_code,
         int inheritance
 );
+DxfDimension *
+dxf_dimension_set_dimension_block_translation_vector
+(
+        DxfDimension *dimension,
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
