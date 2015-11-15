@@ -509,6 +509,12 @@ dxf_dimension_get_middle_point
         int id_code,
         int inheritance
 );
+DxfDimension *
+dxf_dimension_set_middle_point
+(
+        DxfDimension *dimension,
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
