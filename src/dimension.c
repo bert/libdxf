@@ -2340,7 +2340,7 @@ dxf_dimension_set_dimstyle_name
  * \version According to DXF R14.
  */
 DxfPoint *
-dxf_dimension_get_definition_point
+dxf_dimension_get_x0
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
@@ -2445,7 +2445,7 @@ dxf_dimension_get_definition_point
  * \version According to DXF R14.
  */
 DxfDimension *
-dxf_dimension_set_definition_point
+dxf_dimension_set_x0
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
@@ -2494,7 +2494,7 @@ dxf_dimension_set_definition_point
  * \version According to DXF R14.
  */
 DxfPoint *
-dxf_dimension_get_middle_point
+dxf_dimension_get_x1
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
@@ -2599,7 +2599,7 @@ dxf_dimension_get_middle_point
  * \version According to DXF R14.
  */
 DxfDimension *
-dxf_dimension_set_middle_point
+dxf_dimension_set_x1
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
@@ -2648,7 +2648,7 @@ dxf_dimension_set_middle_point
  * \version According to DXF R14.
  */
 DxfPoint *
-dxf_dimension_get_dimension_block_translation_vector
+dxf_dimension_get_x2
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
@@ -2753,7 +2753,7 @@ dxf_dimension_get_dimension_block_translation_vector
  * \version According to DXF R14.
  */
 DxfDimension *
-dxf_dimension_set_dimension_block_translation_vector
+dxf_dimension_set_x2
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */

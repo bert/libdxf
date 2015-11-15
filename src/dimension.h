@@ -490,40 +490,40 @@ dxf_dimension_set_dimstyle_name
         char *dimstyle_name
 );
 DxfPoint *
-dxf_dimension_get_definition_point
+dxf_dimension_get_x0
 (
         DxfDimension *dimension,
         int id_code,
         int inheritance
 );
 DxfDimension *
-dxf_dimension_set_definition_point
+dxf_dimension_set_x0
 (
         DxfDimension *dimension,
         DxfPoint *point
 );
 DxfPoint *
-dxf_dimension_get_middle_point
+dxf_dimension_get_x1
 (
         DxfDimension *dimension,
         int id_code,
         int inheritance
 );
 DxfDimension *
-dxf_dimension_set_middle_point
+dxf_dimension_set_x1
 (
         DxfDimension *dimension,
         DxfPoint *point
 );
 DxfPoint *
-dxf_dimension_get_dimension_block_translation_vector
+dxf_dimension_get_x2
 (
         DxfDimension *dimension,
         int id_code,
         int inheritance
 );
 DxfDimension *
-dxf_dimension_set_dimension_block_translation_vector
+dxf_dimension_set_x2
 (
         DxfDimension *dimension,
         DxfPoint *point
