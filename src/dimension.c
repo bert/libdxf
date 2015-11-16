@@ -3251,4 +3251,109 @@ dxf_dimension_set_x5
 }
 
 
+/*!
+ * \brief Get the point defining dimension arc for angular dimensions
+ * for a DXF \c DIMENSION entity.
+ *
+ * \return the point defining dimension arc for angular dimensions.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfPoint *
+dxf_dimension_get_x6
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        int id_code,
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+        int inheritance
+                /*!< Inherit layer, linetype, color and other relevant
+                 * properties from either:
+                 * <ol>
+                 * <li value = "0"> Default (as initialised).</li>
+                 * <li value = "1"> \c DIMENSION.</li>
+                 * </ol>
+                 */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *p1 = NULL;
+
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        p1 = dxf_point_init (p1);
+        if (p1 == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        if (id_code < 0)
+        {
+              fprintf (stderr,
+                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
+                __FUNCTION__);
+        }
+        p1->id_code = id_code;
+        p1->x0 = dimension->x6;
+        p1->y0 = dimension->y6;
+        p1->z0 = dimension->z6;
+        switch (inheritance)
+        {
+                case 0:
+                        /* Do nothing. */
+                        break;
+                case 1:
+                        if (dimension->linetype != NULL)
+                        {
+                                p1->linetype = strdup (dimension->linetype);
+                        }
+                        if (dimension->layer != NULL)
+                        {
+                                p1->layer = strdup (dimension->layer);
+                        }
+                        p1->thickness = dimension->thickness;
+                        p1->linetype_scale = dimension->linetype_scale;
+                        p1->visibility = dimension->visibility;
+                        p1->color = dimension->color;
+                        p1->paperspace = dimension->paperspace;
+                        if (dimension->dictionary_owner_soft != NULL)
+                        {
+                                p1->dictionary_owner_soft = strdup (dimension->dictionary_owner_soft);
+                        }
+                        if (dimension->dictionary_owner_hard != NULL)
+                        {
+                                p1->dictionary_owner_hard = strdup (dimension->dictionary_owner_hard);
+                        }
+                        break;
+                default:
+                        fprintf (stderr,
+                          (_("Warning in %s (): unknown inheritance option passed.\n")),
+                          __FUNCTION__);
+                        fprintf (stderr,
+                          (_("\tResolving to default.\n")));
+                        break;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (p1);
+}
+
+
 /* EOF */
