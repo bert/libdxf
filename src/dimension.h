@@ -591,6 +591,11 @@ dxf_dimension_set_leader_length
         DxfDimension *dimension,
         double leader_length
 );
+double
+dxf_dimension_get_text_line_spacing_factor
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
