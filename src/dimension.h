@@ -580,6 +580,11 @@ dxf_dimension_set_x6
         DxfDimension *dimension,
         DxfPoint *point
 );
+double
+dxf_dimension_get_leader_length
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
