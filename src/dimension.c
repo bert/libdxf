@@ -3202,4 +3202,53 @@ dxf_dimension_get_x5
 }
 
 
+/*!
+ * \brief Set the definition point for diameter, radius, and angular
+ * dimensions for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to a DXF \c DIMENSION entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDimension *
+dxf_dimension_set_x5
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimension->x5 = point->x0;
+        dimension->y5 = point->y0;
+        dimension->z5 = point->z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension);
+}
+
+
 /* EOF */
