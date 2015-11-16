@@ -585,6 +585,12 @@ dxf_dimension_get_leader_length
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_leader_length
+(
+        DxfDimension *dimension,
+        double leader_length
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
