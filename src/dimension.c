@@ -3558,7 +3558,7 @@ dxf_dimension_set_text_line_spacing_factor
 
 
 /*!
- * \brief Get the tactual measurement from a DXF \c DIMENSION entity.
+ * \brief Get the actual measurement from a DXF \c DIMENSION entity.
  *
  * \return actual_measurement.
  *
