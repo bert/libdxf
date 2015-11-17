@@ -630,6 +630,12 @@ dxf_dimension_get_hor_dir
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_hor_dir
+(
+        DxfDimension *dimension,
+        double hor_dir
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
