@@ -614,6 +614,11 @@ dxf_dimension_set_actual_measurement
         DxfDimension *dimension,
         double actual_measurement
 );
+double
+dxf_dimension_get_angle
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
