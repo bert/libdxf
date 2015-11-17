@@ -602,6 +602,12 @@ dxf_dimension_set_text_line_spacing_factor
         DxfDimension *dimension,
         double text_line_spacing_factor
 );
+double
+dxf_dimension_get_actual_measurement
+(
+        DxfDimension *dimension
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
