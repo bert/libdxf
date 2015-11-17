@@ -625,6 +625,11 @@ dxf_dimension_set_angle
         DxfDimension *dimension,
         double angle
 );
+double
+dxf_dimension_get_hor_dir
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
