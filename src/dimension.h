@@ -608,6 +608,12 @@ dxf_dimension_get_actual_measurement
         DxfDimension *dimension
                 /*!< a pointer to a DXF \c DIMENSION entity. */
 );
+DxfDimension *
+dxf_dimension_set_actual_measurement
+(
+        DxfDimension *dimension,
+        double actual_measurement
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
