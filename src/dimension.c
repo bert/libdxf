@@ -3976,4 +3976,40 @@ dxf_dimension_set_flag
 }
 
 
+/*!
+ * \brief Get the attachment point of a DXF \c DIMENSION.
+ *
+ * \return The attachment point, or -1 when an error occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ * \version According to DXF R2000.
+ */
+int
+dxf_dimension_get_attachment_point
+(
+        DxfDimension *dimension
+                /*!< Pointer to the DXF \c DIMENSION entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dimension == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+              return (-1);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension->attachment_point);
+}
+
+
 /* EOF */

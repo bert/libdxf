@@ -664,6 +664,11 @@ dxf_dimension_set_flag
         DxfDimension *dimension,
         int flag
 );
+int
+dxf_dimension_get_attachment_point
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
