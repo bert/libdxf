@@ -331,11 +331,6 @@ dxf_dimension_free_chain
         DxfDimension *dimensions
 );
 int
-dxf_dimension_get_flag
-(
-        DxfDimension *dimension
-);
-int
 dxf_dimension_get_id_code
 (
         DxfDimension *dimension
@@ -657,6 +652,11 @@ dxf_dimension_set_text_angle
 (
         DxfDimension *dimension,
         double text_angle
+);
+int
+dxf_dimension_get_flag
+(
+        DxfDimension *dimension
 );
 
 
