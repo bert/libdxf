@@ -652,6 +652,12 @@ dxf_dimension_get_text_angle
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_text_angle
+(
+        DxfDimension *dimension,
+        double text_angle
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
