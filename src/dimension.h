@@ -658,6 +658,12 @@ dxf_dimension_get_flag
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_flag
+(
+        DxfDimension *dimension,
+        int flag
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
