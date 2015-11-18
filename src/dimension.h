@@ -647,6 +647,11 @@ dxf_dimension_set_obl_angle
         DxfDimension *dimension,
         double obl_angle
 );
+double
+dxf_dimension_get_text_angle
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
