@@ -641,6 +641,12 @@ dxf_dimension_get_obl_angle
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_obl_angle
+(
+        DxfDimension *dimension,
+        double obl_angle
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
