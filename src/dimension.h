@@ -669,6 +669,12 @@ dxf_dimension_get_attachment_point
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_attachment_point
+(
+        DxfDimension *dimension,
+        int attachment_point
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
