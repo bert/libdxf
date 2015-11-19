@@ -3932,6 +3932,13 @@ dxf_dimension_get_flag
                   __FUNCTION__);
               return (-1);
         }
+        if (dimension->flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the flag member.\n")),
+                  __FUNCTION__);
+                return (-1);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3965,6 +3972,13 @@ dxf_dimension_set_flag
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the passed flag.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
