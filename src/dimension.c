@@ -4026,6 +4026,13 @@ dxf_dimension_get_attachment_point
                   __FUNCTION__);
                 return (-1);
         }
+        if (dimension->attachment_point > 9)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the attachment_point member.\n")),
+                  __FUNCTION__);
+                return (-1);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -4066,6 +4073,13 @@ dxf_dimension_set_attachment_point
         {
                 fprintf (stderr,
                   (_("Error in %s () a negative value was passed in the attachment_point.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attachment_point > 9)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was passed in the attachment_point.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
