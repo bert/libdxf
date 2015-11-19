@@ -686,6 +686,11 @@ dxf_dimension_set_text_line_spacing
         DxfDimension *dimension,
         int text_line_spacing
 );
+DxfPoint *
+dxf_dimension_get_extrusion_vector_as_point
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */

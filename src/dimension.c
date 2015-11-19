@@ -4192,4 +4192,56 @@ dxf_dimension_set_text_line_spacing
 }
 
 
+/*!
+ * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
+ * \c DIMENSION entity.
+ *
+ * \return a DXF \c POINT containing the extrusion coordinates.
+ *
+ * \warning No other members are copied into the DXF \c POINT.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfPoint *
+dxf_dimension_get_extrusion_vector_as_point
+(
+        DxfDimension *dimension
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *point = NULL;
+
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point = dxf_point_init (point);
+        if (point == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        point->x0 = dimension->extr_x0;
+        point->y0 = dimension->extr_y0;
+        point->z0 = dimension->extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
 /* EOF */
