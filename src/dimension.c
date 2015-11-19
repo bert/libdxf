@@ -4091,4 +4091,54 @@ dxf_dimension_set_attachment_point
 }
 
 
+/*!
+ * \brief Get the text line spacing of a DXF \c DIMENSION.
+ *
+ * \return The text line spacing, or -1 when an error occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ * \version According to DXF R2000.
+ */
+int
+dxf_dimension_get_text_line_spacing
+(
+        DxfDimension *dimension
+                /*!< Pointer to the DXF \c DIMENSION entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (dimension == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+              return (-1);
+        }
+        if (dimension->text_line_spacing < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the text_line_spacing member.\n")),
+                  __FUNCTION__);
+                return (-1);
+        }
+        if (dimension->text_line_spacing > 2)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the text_line_spacing member.\n")),
+                  __FUNCTION__);
+                return (-1);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension->text_line_spacing);
+}
+
+
 /* EOF */

@@ -675,6 +675,11 @@ dxf_dimension_set_attachment_point
         DxfDimension *dimension,
         int attachment_point
 );
+int
+dxf_dimension_get_text_line_spacing
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
