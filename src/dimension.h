@@ -691,6 +691,14 @@ dxf_dimension_get_extrusion_vector_as_point
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_extrusion_vector
+(
+        DxfDimension *dimension,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
