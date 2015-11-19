@@ -4141,4 +4141,55 @@ dxf_dimension_get_text_line_spacing
 }
 
 
+/*!
+ * \brief Set the text line spacing for a DXF \c DIMENSION entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDimension *
+dxf_dimension_set_text_line_spacing
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        int text_line_spacing
+                /*!< the text line spacing to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (text_line_spacing < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed in the text_line_spacing.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (text_line_spacing > 2)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was passed in the text_line_spacing.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimension->text_line_spacing = text_line_spacing;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension);
+}
+
+
 /* EOF */

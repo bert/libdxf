@@ -680,6 +680,12 @@ dxf_dimension_get_text_line_spacing
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_text_line_spacing
+(
+        DxfDimension *dimension,
+        int text_line_spacing
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
