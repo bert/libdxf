@@ -4019,6 +4019,13 @@ dxf_dimension_get_attachment_point
                   __FUNCTION__);
               return (-1);
         }
+        if (dimension->attachment_point < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the attachment_point member.\n")),
+                  __FUNCTION__);
+                return (-1);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -4052,6 +4059,13 @@ dxf_dimension_set_attachment_point
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attachment_point < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed in the attachment_point.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
