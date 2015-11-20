@@ -699,6 +699,11 @@ dxf_dimension_set_extrusion_vector
         double extr_y0,
         double extr_z0
 );
+DxfDimension *
+dxf_dimension_get_next
+(
+        DxfDimension *dimension
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
