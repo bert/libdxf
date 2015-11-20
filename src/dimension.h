@@ -704,6 +704,12 @@ dxf_dimension_get_next
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_next
+(
+        DxfDimension *dimension,
+        DxfDimension *next
+);
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
