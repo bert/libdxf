@@ -340,6 +340,11 @@ dxf_dimstyle_free_chain
 (
         DxfDimStyle *dimstyles
 );
+char *
+dxf_dimstyle_get_dimstyle_name
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */

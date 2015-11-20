@@ -984,4 +984,44 @@ dxf_dimstyle_free_chain
 }
 
 
+/*!
+ * \brief Get the dimstyle name from this DXF \c DIMSTYLE symbol
+ * table.
+ *
+ * \return dimstyle name.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_dimstyle_get_dimstyle_name
+(
+        DxfDimStyle *dimstyle
+                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (dimstyle->dimstyle_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
