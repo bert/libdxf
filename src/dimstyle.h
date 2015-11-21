@@ -356,6 +356,12 @@ dxf_dimstyle_get_dimpost
 (
         DxfDimStyle *dimstyle
 );
+DxfDimStyle *
+dxf_dimstyle_set_dimpost
+(
+        DxfDimStyle *dimstyle,
+        char *dimpost
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
