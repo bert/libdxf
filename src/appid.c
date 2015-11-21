@@ -563,7 +563,7 @@ dxf_appid_get_application_name
                   __FUNCTION__);
                 return (NULL);
         }
-        result = appid->application_name;
+        result = strdup (appid->application_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
