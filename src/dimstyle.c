@@ -1024,4 +1024,57 @@ dxf_dimstyle_get_dimstyle_name
 }
 
 
+/*!
+ * \brief Set the dimstyle name for this DXF \c DIMSTYLE symbol table.
+ *
+ * \return a pointer to the DXF \c DIMSTYLE symbol table if
+ * successful, a \c NULL when an error occurred.
+ *
+ * \warning No testing for the contents of the \c dimstyle_name
+ * member of the \c DxfDimstyle struct is performed.\n
+ *
+ * \warning The passed \c name variable is not freed by this function
+ * and needs to be freed by the caller.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDimStyle *
+dxf_dimstyle_set_dimstyle_name
+(
+        DxfDimStyle *dimstyle,
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
+        char *dimstyle_name
+                /*!< dimstyle name. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimstyle_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () the string name contained a NULL pointer.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimstyle->dimstyle_name = strdup (dimstyle_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimstyle);
+}
+
+
 /* EOF */
