@@ -1046,7 +1046,7 @@ DxfDimStyle *
 dxf_dimstyle_set_dimstyle_name
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c APPID symbol table entry. */
+                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
         char *dimstyle_name
                 /*!< dimstyle name. */
 )
