@@ -985,7 +985,7 @@ dxf_dimstyle_free_chain
 
 
 /*!
- * \brief Get the dimstyle name from this DXF \c DIMSTYLE symbol
+ * \brief Get the \c dimstyle_name from this DXF \c DIMSTYLE symbol
  * table.
  *
  * \return dimstyle name.
@@ -1025,7 +1025,8 @@ dxf_dimstyle_get_dimstyle_name
 
 
 /*!
- * \brief Set the dimstyle name for this DXF \c DIMSTYLE symbol table.
+ * \brief Set the \c dimstyle_name for this DXF \c DIMSTYLE symbol
+ * table.
  *
  * \return a pointer to the DXF \c DIMSTYLE symbol table if
  * successful, a \c NULL when an error occurred.
@@ -1078,8 +1079,8 @@ dxf_dimstyle_set_dimstyle_name
 
 
 /*!
- * \brief Get the dimpost string value from this DXF \c DIMSTYLE symbol
- * table.
+ * \brief Get the \c dimpost string value from this DXF \c DIMSTYLE
+ * symbol table.
  *
  * \return dimpost string value.
  *
@@ -1118,8 +1119,8 @@ dxf_dimstyle_get_dimpost
 
 
 /*!
- * \brief Set the dimpost string value for this DXF \c DIMSTYLE symbol
- * table.
+ * \brief Set the \c dimpost string value for this DXF \c DIMSTYLE
+ * symbol table.
  *
  * \return a pointer to the DXF \c DIMSTYLE symbol table if
  * successful, a \c NULL when an error occurred.
@@ -1172,8 +1173,8 @@ dxf_dimstyle_set_dimpost
 
 
 /*!
- * \brief Get the dimapost string value from this DXF \c DIMSTYLE symbol
- * table.
+ * \brief Get the \c dimapost string value from this DXF \c DIMSTYLE
+ * symbol table.
  *
  * \return dimapost string value.
  *
@@ -1212,8 +1213,8 @@ dxf_dimstyle_get_dimapost
 
 
 /*!
- * \brief Set the dimapost string value for this DXF \c DIMSTYLE symbol
- * table.
+ * \brief Set the \c dimapost string value for this DXF \c DIMSTYLE
+ * symbol table.
  *
  * \return a pointer to the DXF \c DIMSTYLE symbol table if
  * successful, a \c NULL when an error occurred.
