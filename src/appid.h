@@ -201,6 +201,12 @@ dxf_appid_get_dictionary_owner_hard
         DxfAppid *appid
 );
 DxfAppid *
+dxf_appid_set_dictionary_owner_hard
+(
+        DxfAppid *appid,
+        char *dictionary_owner_hard
+);
+DxfAppid *
 dxf_appid_get_next
 (
         DxfAppid *appid
