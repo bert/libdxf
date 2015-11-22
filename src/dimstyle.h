@@ -395,6 +395,11 @@ dxf_dimstyle_set_dimblk1
         DxfDimStyle *dimstyle,
         char *dimblk1
 );
+char *
+dxf_dimstyle_get_dimblk2
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
