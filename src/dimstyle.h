@@ -400,6 +400,12 @@ dxf_dimstyle_get_dimblk2
 (
         DxfDimStyle *dimstyle
 );
+DxfDimStyle *
+dxf_dimstyle_set_dimblk2
+(
+        DxfDimStyle *dimstyle,
+        char *dimblk2
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
