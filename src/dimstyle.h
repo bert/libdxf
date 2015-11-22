@@ -373,6 +373,11 @@ dxf_dimstyle_set_dimapost
         DxfDimStyle *dimstyle,
         char *dimapost
 );
+char *
+dxf_dimstyle_get_dimblk
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
