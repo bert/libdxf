@@ -1400,4 +1400,58 @@ dxf_dimstyle_get_dimblk1
 }
 
 
+/*!
+ * \brief Set the \c dimblk1 string value for this DXF \c DIMSTYLE symbol
+ * table.
+ *
+ * \return a pointer to the DXF \c DIMSTYLE symbol table if
+ * successful, a \c NULL when an error occurred.
+ *
+ * \warning No testing for the contents of the \c dimblk1 member of the
+ * \c DxfDimstyle struct is performed.\n
+ *
+ * \warning The passed \c dimblk1 variable is not freed by this function
+ * and needs to be freed by the caller.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDimStyle *
+dxf_dimstyle_set_dimblk1
+(
+        DxfDimStyle *dimstyle,
+                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+        char *dimblk1
+                /*!< dimblk1 string value. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimblk1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () the string contained a NULL pointer.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimstyle->dimblk1 = strdup (dimblk1);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimstyle);
+}
+
+
 /* EOF */
