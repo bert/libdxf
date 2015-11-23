@@ -417,6 +417,11 @@ dxf_dimstyle_set_dimscale
         DxfDimStyle *dimstyle,
         double dimscale
 );
+double
+dxf_dimstyle_get_dimasz
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
