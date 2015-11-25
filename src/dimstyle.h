@@ -444,6 +444,12 @@ dxf_dimstyle_get_dimdli
 (
         DxfDimStyle *dimstyle
 );
+DxfDimStyle *
+dxf_dimstyle_set_dimdli
+(
+        DxfDimStyle *dimstyle,
+        double dimdli
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
