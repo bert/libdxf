@@ -2108,4 +2108,43 @@ dxf_dimstyle_set_dimdle
 }
 
 
+/*!
+ * \brief Get the \c dimtp value from a DXF \c DIMSTYLE symbol table.
+ *
+ * \return dimtp value.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+double
+dxf_dimstyle_get_dimtp
+(
+        DxfDimStyle *dimstyle
+                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = dimstyle->dimtp;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
