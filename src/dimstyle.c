@@ -2147,4 +2147,41 @@ dxf_dimstyle_get_dimtp
 }
 
 
+/*!
+ * \brief Set the \c dimtp for a DXF \c DIMSTYLE entity.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDimStyle *
+dxf_dimstyle_set_dimtp
+(
+        DxfDimStyle *dimstyle,
+                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+        double dimtp
+                /*!< the dimtp to be set for the symbol table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimstyle->dimtp = dimtp;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimstyle);
+}
+
+
 /* EOF */
