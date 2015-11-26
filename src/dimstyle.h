@@ -461,6 +461,11 @@ dxf_dimstyle_set_dimexe
         DxfDimStyle *dimstyle,
         double dimexe
 );
+double
+dxf_dimstyle_get_dimrnd
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
