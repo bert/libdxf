@@ -2299,4 +2299,44 @@ dxf_dimstyle_get_flag
 }
 
 
+/*!
+ * \brief Set the flag value for this DXF \c DIMSTYLE symbol table.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDimStyle *
+dxf_dimstyle_set_flag
+(
+        DxfDimStyle *dimstyle,
+                /*!< a pointer to a DXF \c APPID symbol table entry. */
+        int flag
+                /*!< This flag is for the benefit of AutoCAD commands;
+                 * it can be ignored by most programs that read DXF
+                 * files, and need not be set by programs that write DXF
+                 * files. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimstyle->flag = flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimstyle);
+}
+
+
 /* EOF */
