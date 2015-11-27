@@ -516,6 +516,11 @@ dxf_dimstyle_set_flag
         DxfDimStyle *dimstyle,
         int flag
 );
+int
+dxf_dimstyle_get_dimtol
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
