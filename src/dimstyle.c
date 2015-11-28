@@ -985,10 +985,10 @@ dxf_dimstyle_free_chain
 
 
 /*!
- * \brief Get the \c dimstyle_name from this DXF \c DIMSTYLE symbol
- * table.
+ * \brief Get the dimension style name string value (\c dimstyle_name)
+ * from this DXF dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimstyle name.
+ * \return the dimension style name string value (\c dimstyle_name).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1000,7 +1000,8 @@ char *
 dxf_dimstyle_get_dimstyle_name
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -1025,8 +1026,8 @@ dxf_dimstyle_get_dimstyle_name
 
 
 /*!
- * \brief Set the \c dimstyle_name for this DXF \c DIMSTYLE symbol
- * table.
+ * \brief Set the dimension style name string value (\c dimstyle_name)
+ * for a DXF dimension style symbol table (\c DIMSTYLE).
  *
  * \return a pointer to the DXF \c DIMSTYLE symbol table if
  * successful, a \c NULL when an error occurred.
@@ -1034,8 +1035,8 @@ dxf_dimstyle_get_dimstyle_name
  * \warning No testing for the contents of the \c dimstyle_name
  * member of the \c DxfDimstyle struct is performed.\n
  *
- * \warning The passed \c name variable is not freed by this function
- * and needs to be freed by the caller.
+ * \warning The passed \c dimstyle_name variable is not freed by this
+ * function and needs to be freed by the caller.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1047,9 +1048,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimstyle_name
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         char *dimstyle_name
-                /*!< dimstyle name. */
+                /*!< a pointer to a dimension style name string value
+                 * (\c dimstyle_name). */
 )
 {
 #if DEBUG
@@ -1079,10 +1082,10 @@ dxf_dimstyle_set_dimstyle_name
 
 
 /*!
- * \brief Get the \c dimpost string value from this DXF \c DIMSTYLE
- * symbol table.
+ * \brief Get the general dimensioning suffix string value (\c dimpost)
+ * from this DXF dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimpost string value.
+ * \return the general dimensioning suffix string value (\c dimpost).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1094,7 +1097,8 @@ char *
 dxf_dimstyle_get_dimpost
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -1119,8 +1123,8 @@ dxf_dimstyle_get_dimpost
 
 
 /*!
- * \brief Set the \c dimpost string value for this DXF \c DIMSTYLE
- * symbol table.
+ * \brief Set the general dimensioning suffix string value (\c dimpost)
+ * for this DXF dimension style symbol table (\c DIMSTYLE).
  *
  * \return a pointer to the DXF \c DIMSTYLE symbol table if
  * successful, a \c NULL when an error occurred.
@@ -1141,9 +1145,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimpost
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         char *dimpost
-                /*!< dimpost string value. */
+                /*!< a pointer to a general dimensioning suffix string
+                 * value (\c dimpost). */
 )
 {
 #if DEBUG
@@ -1173,10 +1179,10 @@ dxf_dimstyle_set_dimpost
 
 
 /*!
- * \brief Get the \c dimapost string value from this DXF \c DIMSTYLE
- * symbol table.
+ * \brief Get the alternate dimensioning suffix string value
+ * (\c dimapost) from this DXF dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimapost string value.
+ * \return the alternate dimensioning suffix string value (\c dimapost).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1188,7 +1194,8 @@ char *
 dxf_dimstyle_get_dimapost
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -1213,8 +1220,8 @@ dxf_dimstyle_get_dimapost
 
 
 /*!
- * \brief Set the \c dimapost string value for this DXF \c DIMSTYLE
- * symbol table.
+ * \brief Set the alternate dimensioning suffix string value
+ * (\c dimapost) for this DXF dimension style symbol table (\c DIMSTYLE).
  *
  * \return a pointer to the DXF \c DIMSTYLE symbol table if
  * successful, a \c NULL when an error occurred.
@@ -1235,9 +1242,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimapost
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         char *dimapost
-                /*!< dimapost string value. */
+                /*!< a pointer to a alternate dimensioning suffix string
+                 * value (\c dimapost). */
 )
 {
 #if DEBUG
@@ -1267,10 +1276,10 @@ dxf_dimstyle_set_dimapost
 
 
 /*!
- * \brief Get the \c dimblk string value from this DXF \c DIMSTYLE symbol
- * table.
+ * \brief Get the arrow block name string value (\c dimblk) from this
+ * DXF dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimblk string value.
+ * \return the arrow block name string value (\c dimblk).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1282,7 +1291,8 @@ char *
 dxf_dimstyle_get_dimblk
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -1307,8 +1317,8 @@ dxf_dimstyle_get_dimblk
 
 
 /*!
- * \brief Set the \c dimblk string value for this DXF \c DIMSTYLE symbol
- * table.
+ * \brief Set the arrow block name string value (\c dimblk) for this DXF
+ * dimension style symbol table (\c DIMSTYLE).
  *
  * \return a pointer to the DXF \c DIMSTYLE symbol table if
  * successful, a \c NULL when an error occurred.
@@ -1329,9 +1339,10 @@ DxfDimStyle *
 dxf_dimstyle_set_dimblk
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         char *dimblk
-                /*!< dimblk string value. */
+                /*!< arrow block name string value (\c dimblk). */
 )
 {
 #if DEBUG
@@ -1361,10 +1372,10 @@ dxf_dimstyle_set_dimblk
 
 
 /*!
- * \brief Get the \c dimblk1 string value from this DXF \c DIMSTYLE symbol
- * table.
+ * \brief Get the first arrow block name string value (\c dimblk1) from
+ * this DXF dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimblk1 string value.
+ * \return the first arrow block name string value (\c dimblk1).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1376,7 +1387,8 @@ char *
 dxf_dimstyle_get_dimblk1
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -1401,8 +1413,8 @@ dxf_dimstyle_get_dimblk1
 
 
 /*!
- * \brief Set the \c dimblk1 string value for this DXF \c DIMSTYLE symbol
- * table.
+ * \brief Set the first arrow block name string value (\c dimblk1) for
+ * this DXF dimension style symbol table (\c DIMSTYLE).
  *
  * \return a pointer to the DXF \c DIMSTYLE symbol table if
  * successful, a \c NULL when an error occurred.
@@ -1423,9 +1435,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimblk1
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         char *dimblk1
-                /*!< dimblk1 string value. */
+                /*!< a pointer to the first arrow block name string
+                 * value (\c dimblk1). */
 )
 {
 #if DEBUG
@@ -1455,10 +1469,10 @@ dxf_dimstyle_set_dimblk1
 
 
 /*!
- * \brief Get the \c dimblk2 string value from this DXF \c DIMSTYLE symbol
- * table.
+ * \brief Get the second arrow block name string value (\c dimblk2) from
+ * this DXF dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimblk2 string value.
+ * \return the second arrow block name string value (\c dimblk2).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1470,7 +1484,8 @@ char *
 dxf_dimstyle_get_dimblk2
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -1495,8 +1510,8 @@ dxf_dimstyle_get_dimblk2
 
 
 /*!
- * \brief Set the \c dimblk2 string value for this DXF \c DIMSTYLE symbol
- * table.
+ * \brief Set the second arrow block name string value (\c dimblk2) for
+ * this DXF dimension style symbol table (\c DIMSTYLE).
  *
  * \return a pointer to the DXF \c DIMSTYLE symbol table if
  * successful, a \c NULL when an error occurred.
@@ -1517,9 +1532,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimblk2
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         char *dimblk2
-                /*!< dimblk2 string value. */
+                /*!< a pointer to the second arrow block name string
+                 * value (\c dimblk2). */
 )
 {
 #if DEBUG
@@ -1549,9 +1566,10 @@ dxf_dimstyle_set_dimblk2
 
 
 /*!
- * \brief Get the \c dimscale value from a DXF \c DIMSTYLE symbol table.
+ * \brief Get the overall dimensioning scale factor value (\c dimscale)
+ * from a DXF dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimscale value.
+ * \return the overall dimensioning scale factor value (\c dimscale).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1563,7 +1581,8 @@ double
 dxf_dimstyle_get_dimscale
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -1595,7 +1614,8 @@ dxf_dimstyle_get_dimscale
 
 
 /*!
- * \brief Set the \c dimscale for a DXF \c DIMSTYLE entity.
+ * \brief Set the overall dimensioning scale factor value (\c dimscale)
+ * for a DXF dimension style symbol table (\c DIMSTYLE).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1607,9 +1627,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimscale
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         double dimscale
-                /*!< the dimscale to be set for the symbol table. */
+                /*!< the overall dimensioning scale factor value
+                 * (\c dimscale) to be set for the symbol table. */
 )
 {
 #if DEBUG
@@ -1639,9 +1661,10 @@ dxf_dimstyle_set_dimscale
 
 
 /*!
- * \brief Get the \c dimasz value from a DXF \c DIMSTYLE symbol table.
+ * \brief Get the dimensioning arrow size value (\c dimasz) from a DXF
+ * dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimasz value.
+ * \return the dimensioning arrow size value (\c dimasz).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1653,7 +1676,8 @@ double
 dxf_dimstyle_get_dimasz
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -1685,7 +1709,8 @@ dxf_dimstyle_get_dimasz
 
 
 /*!
- * \brief Set the \c dimasz for a DXF \c DIMSTYLE entity.
+ * \brief Set the dimensioning arrow size value (\c dimasz) for a DXF
+ * dimension style symbol table (\c DIMSTYLE).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1697,9 +1722,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimasz
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         double dimasz
-                /*!< the dimasz to be set for the symbol table. */
+                /*!< the dimensioning arrow size value (\c dimasz) to be
+                 * set for the symbol table. */
 )
 {
 #if DEBUG
@@ -1729,9 +1756,10 @@ dxf_dimstyle_set_dimasz
 
 
 /*!
- * \brief Get the \c dimexo value from a DXF \c DIMSTYLE symbol table.
+ * \brief Get the extension line offset value (\c dimexo) from a DXF
+ * dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimexo value.
+ * \return the extension line offset value (\c dimexo).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1743,7 +1771,8 @@ double
 dxf_dimstyle_get_dimexo
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -1768,7 +1797,8 @@ dxf_dimstyle_get_dimexo
 
 
 /*!
- * \brief Set the \c dimexo for a DXF \c DIMSTYLE entity.
+ * \brief Set the extension line offset value (\c dimexo) for a DXF
+ * dimension style symbol table (\c DIMSTYLE).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1780,9 +1810,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimexo
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         double dimexo
-                /*!< the dimexo to be set for the symbol table. */
+                /*!< the extension line offset value (\c dimexo) to be
+                 * set for the symbol table. */
 )
 {
 #if DEBUG
@@ -1805,9 +1837,10 @@ dxf_dimstyle_set_dimexo
 
 
 /*!
- * \brief Get the \c dimdli value from a DXF \c DIMSTYLE symbol table.
+ * \brief Get the dimension line increment value (\c dimdli) from a DXF
+ * dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimdli value.
+ * \return the dimension line increment value (\c dimdli).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1819,7 +1852,8 @@ double
 dxf_dimstyle_get_dimdli
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -1844,7 +1878,8 @@ dxf_dimstyle_get_dimdli
 
 
 /*!
- * \brief Set the \c dimdli for a DXF \c DIMSTYLE entity.
+ * \brief Set the dimension line increment value (\c dimdli) for a DXF
+ * dimension style symbol table (\c DIMSTYLE).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1856,9 +1891,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimdli
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         double dimdli
-                /*!< the dimdli to be set for the symbol table. */
+                /*!< the dimension line increment value (\c dimdli) to
+                 * be set for the symbol table. */
 )
 {
 #if DEBUG
@@ -1881,9 +1918,10 @@ dxf_dimstyle_set_dimdli
 
 
 /*!
- * \brief Get the \c dimexe value from a DXF \c DIMSTYLE symbol table.
+ * \brief Get the extension line extension value (\c dimexe) from a DXF
+ * dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimexe value.
+ * \return the extension line extension value (\c dimexe).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1895,7 +1933,8 @@ double
 dxf_dimstyle_get_dimexe
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -1920,7 +1959,8 @@ dxf_dimstyle_get_dimexe
 
 
 /*!
- * \brief Set the \c dimexe for a DXF \c DIMSTYLE entity.
+ * \brief Set the extension line extension value (\c dimexe) for a DXF
+ * dimension style symbol table (\c DIMSTYLE).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1932,9 +1972,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimexe
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         double dimexe
-                /*!< the dimexe to be set for the symbol table. */
+                /*!< the extension line extension value (\c dimexe) to
+                 * be set for the symbol table. */
 )
 {
 #if DEBUG
@@ -1957,9 +1999,10 @@ dxf_dimstyle_set_dimexe
 
 
 /*!
- * \brief Get the \c dimrnd value from a DXF \c DIMSTYLE symbol table.
+ * \brief Get the rounding value for dimension distances (\c dimrnd)
+ * from a DXF dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimrnd value.
+ * \return the rounding value for dimension distances (\c dimrnd).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1971,7 +2014,8 @@ double
 dxf_dimstyle_get_dimrnd
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -1996,7 +2040,8 @@ dxf_dimstyle_get_dimrnd
 
 
 /*!
- * \brief Set the \c dimrnd for a DXF \c DIMSTYLE entity.
+ * \brief Set the rounding value for dimension distances (\c dimrnd)
+ * for a DXF dimension style symbol table (\c DIMSTYLE).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -2008,9 +2053,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimrnd
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         double dimrnd
-                /*!< the dimrnd to be set for the symbol table. */
+                /*!< the rounding value for dimension distances
+                 * (\c dimrnd) to be set for the symbol table. */
 )
 {
 #if DEBUG
@@ -2033,9 +2080,10 @@ dxf_dimstyle_set_dimrnd
 
 
 /*!
- * \brief Get the \c dimdle value from a DXF \c DIMSTYLE symbol table.
+ * \brief Get the dimension line extension value (\c dimdle) from a DXF
+ * dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimdle value.
+ * \return the dimension line extension value (\c dimdle).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -2047,7 +2095,8 @@ double
 dxf_dimstyle_get_dimdle
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -2072,7 +2121,8 @@ dxf_dimstyle_get_dimdle
 
 
 /*!
- * \brief Set the \c dimdle for a DXF \c DIMSTYLE entity.
+ * \brief Set the dimension line extension value (\c dimdle) for a DXF
+ * dimension style symbol table (\c DIMSTYLE).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -2084,9 +2134,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimdle
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         double dimdle
-                /*!< the dimdle to be set for the symbol table. */
+                /*!< the dimension line extension value (\c dimdle) to
+                 * be set for the symbol table. */
 )
 {
 #if DEBUG
@@ -2109,9 +2161,10 @@ dxf_dimstyle_set_dimdle
 
 
 /*!
- * \brief Get the \c dimtp value from a DXF \c DIMSTYLE symbol table.
+ * \brief Get the plus tolerance value (\c dimtp) from a DXF dimension
+ * style symbol table (\c DIMSTYLE).
  *
- * \return dimtp value.
+ * \return the plus tolerance value (\c dimtp).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -2123,7 +2176,8 @@ double
 dxf_dimstyle_get_dimtp
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -2148,7 +2202,8 @@ dxf_dimstyle_get_dimtp
 
 
 /*!
- * \brief Set the \c dimtp for a DXF \c DIMSTYLE entity.
+ * \brief Set the plus tolerance value (\c dimtp) for a DXF dimension
+ * style symbol table (\c DIMSTYLE).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -2160,9 +2215,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimtp
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         double dimtp
-                /*!< the dimtp to be set for the symbol table. */
+                /*!< the plus tolerance value (\c dimtp) to be set for
+                 * the symbol table. */
 )
 {
 #if DEBUG
@@ -2185,9 +2242,10 @@ dxf_dimstyle_set_dimtp
 
 
 /*!
- * \brief Get the \c dimtm value from a DXF \c DIMSTYLE symbol table.
+ * \brief Get the minus tolerance value (\c dimtm) from a DXF dimension
+ * style symbol table (\c DIMSTYLE).
  *
- * \return dimtm value.
+ * \return the minus tolerance value (\c dimtm).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -2199,7 +2257,8 @@ double
 dxf_dimstyle_get_dimtm
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -2224,7 +2283,8 @@ dxf_dimstyle_get_dimtm
 
 
 /*!
- * \brief Set the \c dimtm for a DXF \c DIMSTYLE entity.
+ * \brief Set the minus tolerance value (\c dimtm) for a DXF dimension
+ * style symbol table (\c DIMSTYLE).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -2236,9 +2296,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimtm
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         double dimtm
-                /*!< the dimtm to be set for the symbol table. */
+                /*!< the minus tolerance value (\c dimtm) to be set for
+                 * the symbol table. */
 )
 {
 #if DEBUG
@@ -2261,10 +2323,15 @@ dxf_dimstyle_set_dimtm
 
 
 /*!
- * \brief Get the flag value from a DXF \c DIMSTYLE symbol table.
+ * \brief Get the flag value (\c flag) from a DXF dimension style symbol
+ * table (\c DIMSTYLE).
  *
- * \return flag value.
+ * \return the flag value (\c flag).
  *
+ * \note This flag is for the benefit of AutoCAD commands;
+ * it can be ignored by most programs that read DXF files, and need not
+ * be set by programs that write DXF files.
+ * 
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
  * \version According to DXF R12 (backward compatibility).
@@ -2275,7 +2342,8 @@ int
 dxf_dimstyle_get_flag
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -2300,7 +2368,8 @@ dxf_dimstyle_get_flag
 
 
 /*!
- * \brief Set the flag value for this DXF \c DIMSTYLE symbol table.
+ * \brief Set the flag value (\c flag) for this DXF dimension style
+ * symbol table (\c DIMSTYLE).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -2312,9 +2381,11 @@ DxfDimStyle *
 dxf_dimstyle_set_flag
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c APPID symbol table entry. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         int flag
-                /*!< This flag is for the benefit of AutoCAD commands;
+                /*!< the flag value (\c flag).\n
+                 * \note This flag is for the benefit of AutoCAD commands;
                  * it can be ignored by most programs that read DXF
                  * files, and need not be set by programs that write DXF
                  * files. */
@@ -2340,9 +2411,10 @@ dxf_dimstyle_set_flag
 
 
 /*!
- * \brief Get the dimtol from a DXF \c DIMSTYLE symbol table.
+ * \brief Get the dimension tolerances value (\c dimtol) from a DXF
+ * dimension style symbol table (\c DIMSTYLE).
  *
- * \return dimtol value.
+ * \return the dimension tolerances value (\c dimtol).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -2354,7 +2426,8 @@ int
 dxf_dimstyle_get_dimtol
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
@@ -2379,7 +2452,8 @@ dxf_dimstyle_get_dimtol
 
 
 /*!
- * \brief Set the dimtol for this DXF \c DIMSTYLE symbol table.
+ * \brief Set the dimension tolerances value (\c dimtol) for this DXF
+ * dimension style symbol table (\c DIMSTYLE).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -2391,9 +2465,11 @@ DxfDimStyle *
 dxf_dimstyle_set_dimtol
 (
         DxfDimStyle *dimstyle,
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
         int dimtol
-                /*!< The dimtol to be set for the symbol table. */
+                /*!< the dimension tolerances value (\c dimtol) to be
+                 * set for the symbol table. */
 )
 {
 #if DEBUG
@@ -2416,10 +2492,10 @@ dxf_dimstyle_set_dimtol
 
 
 /*!
- * \brief Get the dimension limits (\c dimlim) from a DXF \c DIMSTYLE
- * symbol table.
+ * \brief Get the dimension limits value (\c dimlim) from a DXF dimension style
+ * symbol table (\c DIMSTYLE).
  *
- * \return \c dimlim value.
+ * \return the dimension limits value (\c dimlim).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -2431,7 +2507,8 @@ int
 dxf_dimstyle_get_dimlim
 (
         DxfDimStyle *dimstyle
-                /*!< a pointer to a DXF \c DIMSTYLE symbol table. */
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
 )
 {
 #if DEBUG
