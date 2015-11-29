@@ -2775,4 +2775,44 @@ dxf_dimstyle_get_dimse1
 }
 
 
+/*!
+ * \brief Set the first extension line suppressed value (\c dimse1) for
+ * this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDimStyle *
+dxf_dimstyle_set_dimse1
+(
+        DxfDimStyle *dimstyle,
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
+        int dimse1
+                /*!< the first extension line suppressed value
+                 * (\c dimse1) to be set for the symbol table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimstyle->dimse1 = dimse1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimstyle);
+}
+
+
 /* EOF */
