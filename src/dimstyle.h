@@ -560,6 +560,11 @@ dxf_dimstyle_set_dimtoh
         DxfDimStyle *dimstyle,
         int dimtoh
 );
+int
+dxf_dimstyle_get_dimse1
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
