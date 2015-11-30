@@ -3059,4 +3059,44 @@ dxf_dimstyle_set_dimzin
 }
 
 
+/*!
+ * \brief Get the ID code from this DXF dimenstion style symbol table
+ * (\c DIMSTYLE).
+ *
+ * \return ID code.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_dimstyle_get_id_code
+(
+        DxfDimStyle *dimstyle
+                /*!< a pointer to a DXF \c DIMSTYLE symbol table entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = dimstyle->id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

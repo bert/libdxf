@@ -604,6 +604,11 @@ dxf_dimstyle_set_dimzin
         DxfDimStyle *dimstyle,
         int dimzin
 );
+int
+dxf_dimstyle_get_id_code
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
