@@ -3523,7 +3523,7 @@ dxf_dimstyle_set_dimlfac
                  * (\c DIMSTYLE). */
         double dimlfac
                 /*!< the linear measurements scale factor value
-                 * (\c dimaltf) to be set for the symbol table. */
+                 * (\c dimlfac) to be set for the symbol table. */
 )
 {
 #if DEBUG
@@ -3603,7 +3603,7 @@ dxf_dimstyle_set_dimtvp
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
         double dimtvp
-                /*!< the text vertical position value (\c dimaltf) to be
+                /*!< the text vertical position value (\c dimtvp) to be
                  * set for the symbol table. */
 )
 {
