@@ -686,6 +686,12 @@ dxf_dimstyle_get_dimtfac
 (
         DxfDimStyle *dimstyle
 );
+DxfDimStyle *
+dxf_dimstyle_set_dimtfac
+(
+        DxfDimStyle *dimstyle,
+        double dimtfac
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
