@@ -3021,7 +3021,7 @@ dxf_dimstyle_get_dimzin
 
 /*!
  * \brief Set the zero suppression for "feet & inch" dimensions value
- * (\c dimZIN) for this DXF dimension style symbol table (\c DIMSTYLE).
+ * (\c dimzin) for this DXF dimension style symbol table (\c DIMSTYLE).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
