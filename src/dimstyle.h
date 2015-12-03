@@ -697,6 +697,12 @@ dxf_dimstyle_get_dimgap
 (
         DxfDimStyle *dimstyle
 );
+DxfDimStyle *
+dxf_dimstyle_set_dimgap
+(
+        DxfDimStyle *dimstyle,
+        double dimgap
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
