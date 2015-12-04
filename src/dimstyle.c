@@ -3846,7 +3846,7 @@ dxf_dimstyle_set_dimalt
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
         int dimalt
-                /*!< the alternate unit dimensioning value (\c dimzin)
+                /*!< the alternate unit dimensioning value (\c dimalt)
                  * to be set for the symbol table. */
 )
 {
