@@ -741,6 +741,12 @@ dxf_dimstyle_get_dimsah
 (
         DxfDimStyle *dimstyle
 );
+DxfDimStyle *
+dxf_dimstyle_set_dimsah
+(
+        DxfDimStyle *dimstyle,
+        int dimsah
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
