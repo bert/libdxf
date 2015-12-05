@@ -4113,4 +4113,45 @@ dxf_dimstyle_set_dimsah
 }
 
 
+/*!
+ * \brief Get the force text inside extensions value (\c dimtix) from a
+ * DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \return the force text inside extensions value (\c dimtix).
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_dimstyle_get_dimtix
+(
+        DxfDimStyle *dimstyle
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = dimstyle->dimtix;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
