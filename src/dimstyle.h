@@ -763,6 +763,12 @@ dxf_dimstyle_get_dimsoxd
 (
         DxfDimStyle *dimstyle
 );
+DxfDimStyle *
+dxf_dimstyle_set_dimsoxd
+(
+        DxfDimStyle *dimstyle,
+        int dimsoxd
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
