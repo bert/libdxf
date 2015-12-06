@@ -4254,7 +4254,7 @@ dxf_dimstyle_set_dimsoxd
                  * (\c DIMSTYLE). */
         int dimsoxd
                 /*!< the suppress outside-extensions dimension lines
-                 *  value (\c dimsoxd) to be set for the symbol table. */
+                 * value (\c dimsoxd) to be set for the symbol table. */
 )
 {
 #if DEBUG
