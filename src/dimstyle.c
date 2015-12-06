@@ -4334,7 +4334,7 @@ dxf_dimstyle_set_dimclrd
                 /*!< a pointer to a DXF dimension style symbol table
                  * (\c DIMSTYLE). */
         int dimclrd
-                /*!< the dimension line color value (\c dimsoxd) to be
+                /*!< the dimension line color value (\c dimclrd) to be
                  * set for the symbol table. */
 )
 {
@@ -4361,7 +4361,7 @@ dxf_dimstyle_set_dimclrd
  * \brief Get the dimension extension line color value (\c dimclre) from
  * a DXF dimension style symbol table (\c DIMSTYLE).
  *
- * \return the dimension entension line color value (\c dimclre).
+ * \return the dimension extension line color value (\c dimclre).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
