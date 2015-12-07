@@ -807,6 +807,12 @@ dxf_dimstyle_get_dimunit
 (
         DxfDimStyle *dimstyle
 );
+DxfDimStyle *
+dxf_dimstyle_set_dimunit
+(
+        DxfDimStyle *dimstyle,
+        int dimunit
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
