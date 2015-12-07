@@ -796,6 +796,12 @@ dxf_dimstyle_get_dimclrt
 (
         DxfDimStyle *dimstyle
 );
+DxfDimStyle *
+dxf_dimstyle_set_dimclrt
+(
+        DxfDimStyle *dimstyle,
+        int dimclrt
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
