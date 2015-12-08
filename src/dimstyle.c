@@ -4552,6 +4552,18 @@ dxf_dimstyle_get_dimunit
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (dimstyle->dimunit < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the dimunit member.\n")),
+                  __FUNCTION__);
+        }
+        if (dimstyle->dimunit > 4)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found in the dimunit member.\n")),
+                  __FUNCTION__);
+        }
         result = dimstyle->dimunit;
 #if DEBUG
         DXF_DEBUG_END
@@ -4591,6 +4603,18 @@ dxf_dimstyle_set_dimunit
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
+        }
+        if (dimunit < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed in the dimunit member.\n")),
+                  __FUNCTION__);
+        }
+        if (dimunit > 4)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed in the dimunit member.\n")),
+                  __FUNCTION__);
         }
         dimstyle->dimunit = dimunit;
 #if DEBUG
