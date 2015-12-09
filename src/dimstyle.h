@@ -868,6 +868,11 @@ dxf_dimstyle_set_dimaunit
         DxfDimStyle *dimstyle,
         int dimaunit
 );
+int
+dxf_dimstyle_get_dimjust
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
