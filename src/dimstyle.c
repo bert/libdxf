@@ -4918,4 +4918,46 @@ dxf_dimstyle_get_dimalttd
 }
 
 
+/*!
+ * \brief Set the number of decimal places for tolerance values of an
+ * alternate units dimension value (\c dimalttd) for this DXF dimension
+ * style symbol table (\c DIMSTYLE).
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDimStyle *
+dxf_dimstyle_set_dimalttd
+(
+        DxfDimStyle *dimstyle,
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
+        int dimalttd
+                /*!< the number of decimal places for tolerance values
+                 * of an alternate units dimension value (\c dimalttd)
+                 * to be set for the symbol table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimstyle->dimalttd = dimalttd;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimstyle);
+}
+
+
 /* EOF */
