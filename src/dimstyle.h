@@ -846,6 +846,11 @@ dxf_dimstyle_set_dimaltu
         DxfDimStyle *dimstyle,
         int dimaltu
 );
+int
+dxf_dimstyle_get_dimalttd
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
