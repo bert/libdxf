@@ -5099,6 +5099,18 @@ dxf_dimstyle_get_dimjust
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (dimstyle->dimjust < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the dimjust member.\n")),
+                  __FUNCTION__);
+        }
+        if (dimstyle->dimjust > 4)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found in the dimjust member.\n")),
+                  __FUNCTION__);
+        }
         result = dimstyle->dimjust;
 #if DEBUG
         DXF_DEBUG_END
@@ -5138,6 +5150,18 @@ dxf_dimstyle_set_dimjust
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
+        }
+        if (dimjust < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed in the dimjust variable.\n")),
+                  __FUNCTION__);
+        }
+        if (dimjust > 4)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed in the dimjust variable.\n")),
+                  __FUNCTION__);
         }
         dimstyle->dimjust = dimjust;
 #if DEBUG
