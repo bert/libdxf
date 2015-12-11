@@ -901,6 +901,11 @@ dxf_dimstyle_set_dimsd2
         DxfDimStyle *dimstyle,
         int dimsd2
 );
+int
+dxf_dimstyle_get_dimtolj
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
