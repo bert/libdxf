@@ -5313,13 +5313,13 @@ dxf_dimstyle_get_dimsd2
         if (dimstyle->dimsd2 < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the dimsd1 member.\n")),
+                  (_("Warning in %s () a negative value was found in the dimsd2 member.\n")),
                   __FUNCTION__);
         }
         if (dimstyle->dimsd2 > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the dimsd1 member.\n")),
+                  (_("Warning in %s () an out of range value was found in the dimsd2 member.\n")),
                   __FUNCTION__);
         }
         result = dimstyle->dimsd2;
