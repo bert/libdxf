@@ -879,6 +879,11 @@ dxf_dimstyle_set_dimjust
         DxfDimStyle *dimstyle,
         int dimjust
 );
+int
+dxf_dimstyle_get_dimsd1
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
