@@ -5204,13 +5204,13 @@ dxf_dimstyle_get_dimsd1
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (dimstyle->dimjust < 0)
+        if (dimstyle->dimsd1 < 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a negative value was found in the dimsd1 member.\n")),
                   __FUNCTION__);
         }
-        if (dimstyle->dimjust > 1)
+        if (dimstyle->dimsd1 > 1)
         {
                 fprintf (stderr,
                   (_("Warning in %s () an out of range value was found in the dimsd1 member.\n")),
