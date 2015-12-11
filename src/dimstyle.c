@@ -5435,4 +5435,56 @@ dxf_dimstyle_get_dimtolj
 }
 
 
+/*!
+ * \brief Set the vertical justification for tolerance value
+ * (\c dimtolj) for this DXF dimension style symbol table (\c DIMSTYLE).
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDimStyle *
+dxf_dimstyle_set_dimtolj
+(
+        DxfDimStyle *dimstyle,
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
+        int dimtolj
+                /*!< the vertical justification for tolerance value
+                 * (\c dimtolj) to be set for the symbol table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimtolj < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed in the dimtolj variable.\n")),
+                  __FUNCTION__);
+        }
+        if (dimtolj > 2)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed in the dimtolj variable.\n")),
+                  __FUNCTION__);
+        }
+        dimstyle->dimtolj = dimtolj;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimstyle);
+}
+
+
 /* EOF */

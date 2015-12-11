@@ -906,6 +906,12 @@ dxf_dimstyle_get_dimtolj
 (
         DxfDimStyle *dimstyle
 );
+DxfDimStyle *
+dxf_dimstyle_set_dimtolj
+(
+        DxfDimStyle *dimstyle,
+        int dimtolj
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
