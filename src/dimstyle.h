@@ -923,6 +923,11 @@ dxf_dimstyle_set_dimtzin
         DxfDimStyle *dimstyle,
         int dimtzin
 );
+int
+dxf_dimstyle_get_dimaltz
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */

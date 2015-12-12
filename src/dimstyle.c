@@ -5592,4 +5592,59 @@ dxf_dimstyle_set_dimtzin
 }
 
 
+/*!
+ * \brief Get the toggle suppression of zeros for alternate unit
+ * dimension value  (\c dimaltz) from a DXF dimension style symbol table
+ * (\c DIMSTYLE).
+ *
+ * \return the toggle suppression of zeros for alternate unit dimension
+ * value (\c dimaltz).
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_dimstyle_get_dimaltz
+(
+        DxfDimStyle *dimstyle
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dimstyle->dimaltz < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the dimaltz member.\n")),
+                  __FUNCTION__);
+        }
+        if (dimstyle->dimaltz > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found in the dimaltz member.\n")),
+                  __FUNCTION__);
+        }
+        result = dimstyle->dimaltz;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
