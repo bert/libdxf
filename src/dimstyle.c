@@ -5491,7 +5491,7 @@ dxf_dimstyle_set_dimtolj
  * \brief Get the suppression of zeros for tolerance value  (\c dimtzin)
  * from a DXF dimension style symbol table (\c DIMSTYLE).
  *
- * \return the Suppression of zeros for tolerance value (\c dimtzin).
+ * \return the suppression of zeros for tolerance value (\c dimtzin).
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
