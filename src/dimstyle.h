@@ -950,10 +950,11 @@ dxf_dimstyle_get_dimfit
 (
         DxfDimStyle *dimstyle
 );
-int
-dxf_dimstyle_get_dimfit
+DxfDimStyle *
+dxf_dimstyle_set_dimfit
 (
-        DxfDimStyle *dimstyle
+        DxfDimStyle *dimstyle,
+        int dimfit
 );
 
 
