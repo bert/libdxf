@@ -5880,7 +5880,7 @@ dxf_dimstyle_set_dimfit
                  * (\c DIMSTYLE). */
         int dimfit
                 /*!< the placement of text and arrowheads value
-                 * (\c dimaltz) to be set for the symbol table. */
+                 * (\c dimfit) to be set for the symbol table. */
 )
 {
 #if DEBUG
