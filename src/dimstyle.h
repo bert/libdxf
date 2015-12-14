@@ -950,6 +950,11 @@ dxf_dimstyle_get_dimfit
 (
         DxfDimStyle *dimstyle
 );
+int
+dxf_dimstyle_get_dimfit
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
