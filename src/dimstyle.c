@@ -335,7 +335,7 @@ dxf_dimstyle_write
                 fprintf (fp->fp, "272\n%d\n", dimstyle->dimtdec);
                 fprintf (fp->fp, "273\n%d\n", dimstyle->dimaltu);
                 fprintf (fp->fp, "274\n%d\n", dimstyle->dimalttd);
-                fprintf (fp->fp, "340\n%d\n", dimstyle->dimtxsty);
+                fprintf (fp->fp, "340\n%s\n", dimstyle->dimtxsty);
                 fprintf (fp->fp, "275\n%d\n", dimstyle->dimaunit);
                 fprintf (fp->fp, "280\n%d\n", dimstyle->dimjust);
                 fprintf (fp->fp, "281\n%d\n", dimstyle->dimsd1);
@@ -877,7 +877,7 @@ dxf_dimstyle_read
                         /* Now follows a string containing dimension
                          * text style. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%d\n", &dimstyle->dimtxsty);
+                        fscanf (fp->fp, "%s\n", dimstyle->dimtxsty);
                 }
         }
         /* Handle omitted members and/or illegal values. */

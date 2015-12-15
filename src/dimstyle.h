@@ -307,7 +307,7 @@ dxf_dimstyle
                  * <li value = "1"> controls the text position as well as
                  * the dimension line location.</li>
                  * </ol> */
-        int dimtxsty;
+        char *dimtxsty;
                 /*!< group code = 340\n
                  * Dimension text style. */
         struct DxfDimStyle *next;
