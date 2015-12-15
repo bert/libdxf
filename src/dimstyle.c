@@ -6061,4 +6061,51 @@ dxf_dimstyle_get_dimtxsty
 }
 
 
+/*!
+ * \brief Set the dimension text style value (\c dimtxsty) for this DXF
+ * dimension style symbol table (\c DIMSTYLE).
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDimStyle *
+dxf_dimstyle_set_dimtxsty
+(
+        DxfDimStyle *dimstyle,
+                /*!< a pointer to a DXF dimension style symbol table
+                 * (\c DIMSTYLE). */
+        char *dimtxsty
+                /*!< the dimension text style value (\c dimtxsty) to be
+                 * set for the symbol table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimtxsty == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimstyle->dimtxsty = strdup (dimtxsty);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimstyle);
+}
+
+
 /* EOF */
