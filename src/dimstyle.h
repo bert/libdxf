@@ -978,6 +978,11 @@ dxf_dimstyle_set_dimtxsty
         DxfDimStyle *dimstyle,
         char *dimtxsty
 );
+DxfDimStyle *
+dxf_dimstyle_get_next
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */

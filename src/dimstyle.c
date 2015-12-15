@@ -6108,4 +6108,54 @@ dxf_dimstyle_set_dimtxsty
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c DIMSTYLE dimension style symbol
+ * table from a DXF \c DIMSTYLE dimension style symbol table.
+ *
+ * \return pointer to the next \c DIMSTYLE dimension style symbol table.
+ *
+ * \warning No checks are performed on the returned pointer.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfDimStyle *
+dxf_dimstyle_get_next
+(
+        DxfDimStyle *dimstyle
+                /*!< a pointer to a DXF \c DIMSTYLE dimension style
+                 * symbol table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfDimStyle *result;
+
+        /* Do some basic checks. */
+        if (dimstyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimstyle->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfDimStyle *) dimstyle->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
