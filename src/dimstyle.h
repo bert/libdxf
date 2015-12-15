@@ -967,6 +967,11 @@ dxf_dimstyle_set_dimupt
         DxfDimStyle *dimstyle,
         int dimupt
 );
+char *
+dxf_dimstyle_get_dimtxsty
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
