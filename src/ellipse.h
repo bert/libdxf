@@ -172,6 +172,12 @@ dxf_ellipse_get_id_code
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_id_code
+(
+        DxfEllipse *ellipse,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
