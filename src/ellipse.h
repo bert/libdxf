@@ -178,6 +178,11 @@ dxf_ellipse_set_id_code
         DxfEllipse *ellipse,
         int id_code
 );
+char *
+dxf_ellipse_get_linetype
+(
+        DxfEllipse *ellipse
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */

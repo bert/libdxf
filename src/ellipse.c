@@ -747,4 +747,50 @@ dxf_ellipse_set_id_code
 }
 
 
+/*!
+ * \brief Get the linetype from a DXF \c ELLIPSE entity.
+ *
+ * \return linetype when sucessful, \c NULL when an error occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_ellipse_get_linetype
+(
+        DxfEllipse *ellipse
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ellipse->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the linetype member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (ellipse->linetype);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
