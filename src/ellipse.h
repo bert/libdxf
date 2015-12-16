@@ -167,6 +167,11 @@ dxf_ellipse_free_chain
 (
         DxfEllipse *ellipses
 );
+int
+dxf_ellipse_get_id_code
+(
+        DxfEllipse *ellipse
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
