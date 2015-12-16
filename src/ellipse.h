@@ -183,6 +183,12 @@ dxf_ellipse_get_linetype
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_linetype
+(
+        DxfEllipse *ellipse,
+        char *linetype
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
