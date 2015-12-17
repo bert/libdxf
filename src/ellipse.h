@@ -244,6 +244,11 @@ dxf_ellipse_set_visibility
         DxfEllipse *ellipse,
         int16_t visibility
 );
+int
+dxf_ellipse_get_color
+(
+        DxfEllipse *ellipse
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
