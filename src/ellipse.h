@@ -260,6 +260,12 @@ dxf_ellipse_get_paperspace
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_paperspace
+(
+        DxfEllipse *ellipse,
+        int paperspace
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
