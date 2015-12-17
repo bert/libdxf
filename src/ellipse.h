@@ -227,6 +227,12 @@ dxf_ellipse_get_linetype_scale
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_linetype_scale
+(
+        DxfEllipse *ellipse,
+        double linetype_scale
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */

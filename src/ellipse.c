@@ -1139,4 +1139,48 @@ dxf_ellipse_get_linetype_scale
 }
 
 
+/*!
+ * \brief Set the linetype scale for a DXF \c ELLIPSE entity.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfEllipse *
+dxf_ellipse_set_linetype_scale
+(
+        DxfEllipse *ellipse,
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
+        double linetype_scale
+                /*!< the linetype scale to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative linetype scale value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ellipse->linetype_scale = linetype_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse);
+}
+
+
 /* EOF */
