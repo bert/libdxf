@@ -200,6 +200,11 @@ dxf_ellipse_set_layer
         DxfEllipse *ellipse,
         char *layer
 );
+double
+dxf_ellipse_get_elevation
+(
+        DxfEllipse *ellipse
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
