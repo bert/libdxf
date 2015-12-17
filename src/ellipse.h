@@ -205,6 +205,12 @@ dxf_ellipse_get_elevation
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_elevation
+(
+        DxfEllipse *ellipse,
+        double elevation
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
