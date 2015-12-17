@@ -211,6 +211,11 @@ dxf_ellipse_set_elevation
         DxfEllipse *ellipse,
         double elevation
 );
+double
+dxf_ellipse_get_thickness
+(
+        DxfEllipse *ellipse
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
