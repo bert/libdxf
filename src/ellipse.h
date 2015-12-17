@@ -216,6 +216,12 @@ dxf_ellipse_get_thickness
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_thickness
+(
+        DxfEllipse *ellipse,
+        double thickness
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */

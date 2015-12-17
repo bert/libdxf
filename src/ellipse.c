@@ -1049,4 +1049,48 @@ dxf_ellipse_get_thickness
 }
 
 
+/*!
+ * \brief Set the thickness for a DXF \c ELLIPSE entity.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfEllipse *
+dxf_ellipse_set_thickness
+(
+        DxfEllipse *ellipse,
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
+        double thickness
+                /*!< the thickness to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (thickness < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative thickness value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ellipse->thickness = thickness;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse);
+}
+
+
 /* EOF */
