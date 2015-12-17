@@ -255,6 +255,11 @@ dxf_ellipse_set_color
         DxfEllipse *ellipse,
         int color
 );
+int
+dxf_ellipse_get_paperspace
+(
+        DxfEllipse *ellipse
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
