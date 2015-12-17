@@ -1093,4 +1093,50 @@ dxf_ellipse_set_thickness
 }
 
 
+/*!
+ * \brief Get the linetype scale from a DXF \c ELLIPSE entity.
+ *
+ * \return linetype scale.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+double
+dxf_ellipse_get_linetype_scale
+(
+        DxfEllipse *ellipse
+                /*!< a pointer to a DXF \c ARC entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (ellipse->linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the linetype scale member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = ellipse->linetype_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
