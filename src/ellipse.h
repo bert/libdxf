@@ -249,6 +249,12 @@ dxf_ellipse_get_color
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_color
+(
+        DxfEllipse *ellipse,
+        int color
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
