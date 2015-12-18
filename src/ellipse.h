@@ -266,6 +266,11 @@ dxf_ellipse_set_paperspace
         DxfEllipse *ellipse,
         int paperspace
 );
+char *
+dxf_ellipse_get_dictionary_owner_soft
+(
+        DxfEllipse *ellipse
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
