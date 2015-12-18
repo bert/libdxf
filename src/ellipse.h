@@ -107,13 +107,16 @@ dxf_ellipse
                  * base point. */
         double x1;
                 /*!< group code = 11\n
-                 * base point. */
+                 * X value of the endpoint of major axis, relative to
+                 * the center (in WCS). */
         double y1;
                 /*!< group code = 21\n
-                 * base point. */
+                 * Y value of the endpoint of major axis, relative to
+                 * the center (in WCS). */
         double z1;
                 /*!< group code = 31\n
-                 * base point. */
+                 * Z value of the endpoint of major axis, relative to
+                 * the center (in WCS). */
         double extr_x0;
                 /*!< group code = 210\n
                  * extrusion direction\n
