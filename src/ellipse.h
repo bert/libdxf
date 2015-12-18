@@ -282,6 +282,12 @@ dxf_ellipse_get_dictionary_owner_hard
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_dictionary_owner_hard
+(
+        DxfEllipse *ellipse,
+        char *dictionary_owner_hard
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
