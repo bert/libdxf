@@ -296,6 +296,12 @@ dxf_ellipse_get_base_point
         int id_code,
         int inheritance
 );
+DxfEllipse *
+dxf_ellipse_set_base_point
+(
+        DxfEllipse *ellipse,
+        DxfPoint *point
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
