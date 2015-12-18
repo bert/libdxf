@@ -37,6 +37,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 /*!
@@ -287,6 +288,13 @@ dxf_ellipse_set_dictionary_owner_hard
 (
         DxfEllipse *ellipse,
         char *dictionary_owner_hard
+);
+DxfPoint *
+dxf_ellipse_get_base_point
+(
+        DxfEllipse *ellipse,
+        int id_code,
+        int inheritance
 );
 
 
