@@ -305,6 +305,13 @@ dxf_ellipse_set_base_point
         DxfEllipse *ellipse,
         DxfPoint *point
 );
+DxfPoint *
+dxf_ellipse_get_end_point
+(
+        DxfEllipse *ellipse,
+        int id_code,
+        int inheritance
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
