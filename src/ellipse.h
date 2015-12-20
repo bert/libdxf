@@ -340,6 +340,11 @@ dxf_ellipse_set_start_angle
         DxfEllipse *ellipse,
         double start_angle
 );
+double
+dxf_ellipse_get_end_angle
+(
+        DxfEllipse *ellipse
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
