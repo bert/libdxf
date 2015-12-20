@@ -318,6 +318,11 @@ dxf_ellipse_set_end_point
         DxfEllipse *ellipse,
         DxfPoint *point
 );
+double
+dxf_ellipse_get_ratio
+(
+        DxfEllipse *ellipse
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
