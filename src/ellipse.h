@@ -356,6 +356,14 @@ dxf_ellipse_get_extrusion_vector_as_point
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_extrusion_vector
+(
+        DxfEllipse *ellipse,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
