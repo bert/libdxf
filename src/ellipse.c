@@ -2377,4 +2377,49 @@ dxf_ellipse_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c ELLIPSE for a DXF \c ELLIPSE
+ * entity.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfEllipse *
+dxf_ellipse_set_next
+(
+        DxfEllipse *ellipse,
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
+        DxfEllipse *next
+                /*!< a pointer to the next \c ELLIPSE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ellipse->next = (struct DxfEllipse *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse);
+}
+
+
 /* EOF */

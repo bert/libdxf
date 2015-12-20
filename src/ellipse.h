@@ -369,6 +369,12 @@ dxf_ellipse_get_next
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_next
+(
+        DxfEllipse *ellipse,
+        DxfEllipse *next
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
