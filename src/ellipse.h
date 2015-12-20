@@ -117,6 +117,13 @@ dxf_ellipse
                 /*!< group code = 31\n
                  * Z value of the endpoint of major axis, relative to
                  * the center (in WCS). */
+        double ratio;
+                /*!< group code = 40\n
+                 * ratio of minor axis to major axis. */
+        double start_angle;
+                /*!< group code = 41. */
+        double end_angle;
+                /*!< group code = 42. */
         double extr_x0;
                 /*!< group code = 210\n
                  * extrusion direction\n
@@ -129,13 +136,6 @@ dxf_ellipse
                 /*!< group code = 230\n
                  * extrusion direction\n
                  * optional, if ommited defaults to 1.0. */
-        double ratio;
-                /*!< group code = 40\n
-                 * ratio of minor axis to major axis. */
-        double start_angle;
-                /*!< group code = 41. */
-        double end_angle;
-                /*!< group code = 42. */
         struct DxfEllipse *next;
                 /*!< pointer to the next DxfEllipse.\n
                  * \c NULL in the last DxfEllipse. */
