@@ -329,6 +329,11 @@ dxf_ellipse_set_radius
         DxfEllipse *ellipse,
         double ratio
 );
+double
+dxf_ellipse_get_start_angle
+(
+        DxfEllipse *ellipse
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
