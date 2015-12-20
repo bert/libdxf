@@ -364,6 +364,11 @@ dxf_ellipse_set_extrusion_vector
         double extr_y0,
         double extr_z0
 );
+DxfEllipse *
+dxf_ellipse_get_next
+(
+        DxfEllipse *ellipse
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
