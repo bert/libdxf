@@ -323,6 +323,12 @@ dxf_ellipse_get_ratio
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_radius
+(
+        DxfEllipse *ellipse,
+        double ratio
+);
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
