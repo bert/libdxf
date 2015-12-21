@@ -131,6 +131,12 @@ dxf_endblk_get_dictionary_owner_soft
 (
         DxfEndblk *endblk
 );
+DxfEndblk *
+dxf_endblk_set_dictionary_owner_soft
+(
+        DxfEndblk *endblk,
+        char *dictionary_owner_soft
+);
 
 
 #endif /* LIBDXF_SRC_ENDBLK_H */
