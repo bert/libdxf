@@ -127,6 +127,12 @@ dxf_group_get_id_code
 (
         DxfGroup *group
 );
+DxfGroup *
+dxf_group_set_id_code
+(
+        DxfGroup *group,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_GROUP_H */
