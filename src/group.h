@@ -160,6 +160,12 @@ dxf_group_get_unnamed_flag
 (
         DxfGroup *group
 );
+DxfGroup *
+dxf_group_set_unnamed_flag
+(
+        DxfGroup *group,
+        int unnamed_flag
+);
 
 
 #endif /* LIBDXF_SRC_GROUP_H */
