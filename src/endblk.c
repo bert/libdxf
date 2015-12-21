@@ -431,4 +431,50 @@ dxf_endblk_set_id_code
 }
 
 
+/*!
+ * \brief Get the layer from a DxfEndblk (a DXF \c ENDBLK entity).
+ *
+ * \return layer when sucessful, \c NULL when an error occurred.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_endblk_get_layer
+(
+        DxfEndblk *endblk
+                /*!< a pointer to a DxfEndblk (a DXF \c ENDBLK entity). */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (endblk == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (endblk->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (endblk->layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
