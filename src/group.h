@@ -122,6 +122,11 @@ dxf_group_free_chain
 (
         DxfGroup *groups
 );
+int
+dxf_group_get_id_code
+(
+        DxfGroup *group
+);
 
 
 #endif /* LIBDXF_SRC_GROUP_H */
