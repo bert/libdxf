@@ -477,4 +477,48 @@ dxf_endblk_get_layer
 }
 
 
+/*!
+ * \brief Set the layer for a DxfEndblk (a DXF \c ENDBLK entity).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfEndblk *
+dxf_endblk_set_layer
+(
+        DxfEndblk *endblk,
+                /*!< a pointer to a DxfEndblk (a DXF \c ENDBLK entity). */
+        char *layer
+                /*!< a string containing the layer for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (endblk == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        endblk->layer = strdup (layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (endblk);
+}
+
+
 /* EOF */

@@ -120,6 +120,12 @@ dxf_endblk_get_layer
 (
         DxfEndblk *endblk
 );
+DxfEndblk *
+dxf_endblk_set_layer
+(
+        DxfEndblk *endblk,
+        char *layer
+);
 
 
 #endif /* LIBDXF_SRC_ENDBLK_H */
