@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-20 21:48+0100\n"
+"POT-Creation-Date: 2015-12-21 14:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -445,7 +445,9 @@ msgstr ""
 #: src/ellipse.c:1864 src/ellipse.c:1957 src/ellipse.c:1964 src/ellipse.c:2006
 #: src/ellipse.c:2058 src/ellipse.c:2111 src/ellipse.c:2148 src/ellipse.c:2187
 #: src/ellipse.c:2224 src/ellipse.c:2266 src/ellipse.c:2317 src/ellipse.c:2361
-#: src/ellipse.c:2406 src/ellipse.c:2413 src/endblk.c:275 src/group.c:326
+#: src/ellipse.c:2406 src/ellipse.c:2413 src/endblk.c:275 src/endblk.c:369
+#: src/endblk.c:415 src/endblk.c:461 src/endblk.c:505 src/endblk.c:512
+#: src/endblk.c:554 src/endblk.c:600 src/endblk.c:607 src/group.c:326
 #: src/hatch.c:2512 src/hatch.c:2686 src/hatch.c:2693 src/hatch.c:2748
 #: src/hatch.c:2755 src/hatch.c:2792 src/hatch.c:2799 src/hatch.c:2887
 #: src/hatch.c:2894 src/hatch.c:2944 src/hatch.c:2951 src/hatch.c:3199
@@ -546,7 +548,8 @@ msgstr ""
 #: src/acad_proxy_entity.c:684 src/arc.c:737 src/attdef.c:867 src/attrib.c:878
 #: src/block.c:1050 src/block_record.c:478 src/body.c:652 src/circle.c:658
 #: src/comment.c:258 src/dictionary.c:494 src/dictionaryvar.c:497
-#: src/dimension.c:1042 src/ellipse.c:692 src/line.c:685 src/point.c:667
+#: src/dimension.c:1042 src/ellipse.c:692 src/endblk.c:376 src/line.c:685
+#: src/point.c:667
 #, c-format
 msgid "Error in %s () a negative value was found in the id-code member.\n"
 msgstr ""
@@ -555,7 +558,8 @@ msgstr ""
 #: src/acad_proxy_entity.c:730 src/arc.c:783 src/attdef.c:913 src/attrib.c:924
 #: src/block.c:1096 src/block_record.c:525 src/body.c:698 src/circle.c:704
 #: src/comment.c:304 src/dictionary.c:540 src/dictionaryvar.c:543
-#: src/dimension.c:1088 src/ellipse.c:738 src/line.c:731 src/point.c:713
+#: src/dimension.c:1088 src/ellipse.c:738 src/endblk.c:422 src/line.c:731
+#: src/point.c:713
 #, c-format
 msgid "Error in %s () a negative id-code value was passed.\n"
 msgstr ""
@@ -571,7 +575,8 @@ msgstr ""
 #: src/3dface.c:883 src/3dline.c:871 src/3dsolid.c:878
 #: src/acad_proxy_entity.c:866 src/arc.c:919 src/attdef.c:1049
 #: src/attrib.c:1060 src/block.c:1142 src/body.c:834 src/circle.c:840
-#: src/dimension.c:1224 src/ellipse.c:874 src/line.c:867 src/point.c:849
+#: src/dimension.c:1224 src/ellipse.c:874 src/endblk.c:468 src/line.c:867
+#: src/point.c:849
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the layer member.\n"
 msgstr ""
@@ -702,7 +707,7 @@ msgstr ""
 #: src/attdef.c:1694 src/attrib.c:1705 src/block.c:1799 src/block_record.c:908
 #: src/body.c:1479 src/circle.c:1485 src/dictionary.c:589
 #: src/dictionaryvar.c:592 src/dimension.c:1869 src/ellipse.c:1519
-#: src/line.c:1512 src/point.c:1494
+#: src/endblk.c:561 src/line.c:1512 src/point.c:1494
 #, c-format
 msgid ""
 "Error in %s () a NULL pointer was found in the dictionary_owner_soft "
