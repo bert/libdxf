@@ -155,6 +155,11 @@ dxf_group_set_dictionary_owner_hard
         DxfGroup *group,
         char *dictionary_owner_hard
 );
+int
+dxf_group_get_unnamed_flag
+(
+        DxfGroup *group
+);
 
 
 #endif /* LIBDXF_SRC_GROUP_H */
