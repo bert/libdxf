@@ -138,6 +138,12 @@ dxf_group_get_dictionary_owner_soft
 (
         DxfGroup *group
 );
+DxfGroup *
+dxf_group_set_dictionary_owner_soft
+(
+        DxfGroup *group,
+        char *dictionary_owner_soft
+);
 
 
 #endif /* LIBDXF_SRC_GROUP_H */
