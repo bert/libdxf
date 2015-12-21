@@ -126,6 +126,11 @@ dxf_endblk_set_layer
         DxfEndblk *endblk,
         char *layer
 );
+char *
+dxf_endblk_get_dictionary_owner_soft
+(
+        DxfEndblk *endblk
+);
 
 
 #endif /* LIBDXF_SRC_ENDBLK_H */
