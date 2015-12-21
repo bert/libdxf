@@ -133,6 +133,11 @@ dxf_group_set_id_code
         DxfGroup *group,
         int id_code
 );
+char *
+dxf_group_get_dictionary_owner_soft
+(
+        DxfGroup *group
+);
 
 
 #endif /* LIBDXF_SRC_GROUP_H */
