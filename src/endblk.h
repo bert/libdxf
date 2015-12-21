@@ -104,6 +104,11 @@ int dxf_endblk_free
 (
         DxfEndblk *endblk
 );
+int
+dxf_endblk_get_id_code
+(
+        DxfEndblk *endblk
+);
 
 
 #endif /* LIBDXF_SRC_ENDBLK_H */
