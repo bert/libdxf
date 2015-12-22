@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-21 14:27+0100\n"
+"POT-Creation-Date: 2015-12-22 23:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -448,14 +448,19 @@ msgstr ""
 #: src/ellipse.c:2406 src/ellipse.c:2413 src/endblk.c:275 src/endblk.c:369
 #: src/endblk.c:415 src/endblk.c:461 src/endblk.c:505 src/endblk.c:512
 #: src/endblk.c:554 src/endblk.c:600 src/endblk.c:607 src/group.c:326
-#: src/hatch.c:2512 src/hatch.c:2686 src/hatch.c:2693 src/hatch.c:2748
-#: src/hatch.c:2755 src/hatch.c:2792 src/hatch.c:2799 src/hatch.c:2887
-#: src/hatch.c:2894 src/hatch.c:2944 src/hatch.c:2951 src/hatch.c:3199
-#: src/hatch.c:3206 src/hatch.c:3273 src/hatch.c:3327 src/hatch.c:3371
-#: src/hatch.c:3413 src/hatch.c:3455 src/hatch.c:3499 src/hatch.c:3542
-#: src/hatch.c:3584 src/hatch.c:3630 src/hatch.c:3672 src/hatch.c:3714
-#: src/hatch.c:3756 src/hatch.c:3799 src/header.c:942 src/helix.c:659
-#: src/idbuffer.c:317 src/image.c:543 src/imagedef.c:392
+#: src/group.c:513 src/group.c:559 src/group.c:608 src/group.c:654
+#: src/group.c:661 src/group.c:703 src/group.c:749 src/group.c:756
+#: src/group.c:795 src/group.c:844 src/group.c:889 src/group.c:938
+#: src/group.c:989 src/group.c:1033 src/group.c:1040 src/group.c:1080
+#: src/group.c:1125 src/group.c:1132 src/group.c:1174 src/group.c:1219
+#: src/group.c:1226 src/hatch.c:2512 src/hatch.c:2686 src/hatch.c:2693
+#: src/hatch.c:2748 src/hatch.c:2755 src/hatch.c:2792 src/hatch.c:2799
+#: src/hatch.c:2887 src/hatch.c:2894 src/hatch.c:2944 src/hatch.c:2951
+#: src/hatch.c:3199 src/hatch.c:3206 src/hatch.c:3273 src/hatch.c:3327
+#: src/hatch.c:3371 src/hatch.c:3413 src/hatch.c:3455 src/hatch.c:3499
+#: src/hatch.c:3542 src/hatch.c:3584 src/hatch.c:3630 src/hatch.c:3672
+#: src/hatch.c:3714 src/hatch.c:3756 src/hatch.c:3799 src/header.c:942
+#: src/helix.c:659 src/idbuffer.c:317 src/image.c:543 src/imagedef.c:392
 #: src/imagedef_reactor.c:320 src/insert.c:499 src/layer.c:342 src/layer.c:521
 #: src/layer.c:556 src/layer.c:591 src/layer.c:628 src/layer.c:664
 #: src/layer.c:698 src/layer_index.c:349 src/leader.c:601 src/line.c:438
@@ -548,8 +553,8 @@ msgstr ""
 #: src/acad_proxy_entity.c:684 src/arc.c:737 src/attdef.c:867 src/attrib.c:878
 #: src/block.c:1050 src/block_record.c:478 src/body.c:652 src/circle.c:658
 #: src/comment.c:258 src/dictionary.c:494 src/dictionaryvar.c:497
-#: src/dimension.c:1042 src/ellipse.c:692 src/endblk.c:376 src/line.c:685
-#: src/point.c:667
+#: src/dimension.c:1042 src/ellipse.c:692 src/endblk.c:376 src/group.c:520
+#: src/line.c:685 src/point.c:667
 #, c-format
 msgid "Error in %s () a negative value was found in the id-code member.\n"
 msgstr ""
@@ -558,8 +563,8 @@ msgstr ""
 #: src/acad_proxy_entity.c:730 src/arc.c:783 src/attdef.c:913 src/attrib.c:924
 #: src/block.c:1096 src/block_record.c:525 src/body.c:698 src/circle.c:704
 #: src/comment.c:304 src/dictionary.c:540 src/dictionaryvar.c:543
-#: src/dimension.c:1088 src/ellipse.c:738 src/endblk.c:422 src/line.c:731
-#: src/point.c:713
+#: src/dimension.c:1088 src/ellipse.c:738 src/endblk.c:422 src/group.c:566
+#: src/line.c:731 src/point.c:713
 #, c-format
 msgid "Error in %s () a negative id-code value was passed.\n"
 msgstr ""
@@ -707,7 +712,7 @@ msgstr ""
 #: src/attdef.c:1694 src/attrib.c:1705 src/block.c:1799 src/block_record.c:908
 #: src/body.c:1479 src/circle.c:1485 src/dictionary.c:589
 #: src/dictionaryvar.c:592 src/dimension.c:1869 src/ellipse.c:1519
-#: src/endblk.c:561 src/line.c:1512 src/point.c:1494
+#: src/endblk.c:561 src/group.c:615 src/line.c:1512 src/point.c:1494
 #, c-format
 msgid ""
 "Error in %s () a NULL pointer was found in the dictionary_owner_soft "
@@ -718,7 +723,8 @@ msgstr ""
 #: src/acad_proxy_entity.c:1441 src/appid.c:1001 src/arc.c:1659
 #: src/attdef.c:1789 src/attrib.c:1800 src/block_record.c:1005 src/body.c:1574
 #: src/circle.c:1580 src/dictionary.c:684 src/dictionaryvar.c:687
-#: src/dimension.c:1964 src/ellipse.c:1614 src/line.c:1607 src/point.c:1589
+#: src/dimension.c:1964 src/ellipse.c:1614 src/group.c:710 src/line.c:1607
+#: src/point.c:1589
 #, c-format
 msgid ""
 "Error in %s () a NULL pointer was found in the dictionary_owner_hard "
@@ -792,6 +798,7 @@ msgstr ""
 #: src/block_record.c:1102 src/body.c:1966 src/circle.c:2026 src/class.c:1686
 #: src/comment.c:434 src/dictionary.c:960 src/dictionaryvar.c:965
 #: src/dimension.c:4327 src/dimstyle.c:6149 src/ellipse.c:2368
+#: src/group.c:1181
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the next member.\n"
 msgstr ""
@@ -1348,7 +1355,7 @@ msgid ""
 "member.\n"
 msgstr ""
 
-#: src/block.c:959
+#: src/block.c:959 src/group.c:996
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the description member.\n"
 msgstr ""
@@ -2212,6 +2219,55 @@ msgstr ""
 #: src/group.c:431
 #, c-format
 msgid "Error in %s () pointer to next DxfGroup was not NULL.\n"
+msgstr ""
+
+#: src/group.c:802
+#, c-format
+msgid ""
+"Warning in %s () a negative value was found in the unnamed_flag member.\n"
+msgstr ""
+
+#: src/group.c:808
+#, c-format
+msgid ""
+"Warning in %s () an out of range value was found in the unnamed_flag "
+"member.\n"
+msgstr ""
+
+#: src/group.c:851
+#, c-format
+msgid "Warning in %s () a negative unnamed flag value was passed.\n"
+msgstr ""
+
+#: src/group.c:896
+#, c-format
+msgid ""
+"Warning in %s () a negative value was found in the selectability_flag "
+"member.\n"
+msgstr ""
+
+#: src/group.c:902
+#, c-format
+msgid ""
+"Warning in %s () an out of range value was found in the selectability_flag "
+"member.\n"
+msgstr ""
+
+#: src/group.c:945
+#, c-format
+msgid "Warning in %s () a negative selectability flag value was passed.\n"
+msgstr ""
+
+#: src/group.c:951
+#, c-format
+msgid "Warning in %s () an out of range selectability flag value was passed.\n"
+msgstr ""
+
+#: src/group.c:1087
+#, c-format
+msgid ""
+"Error in %s () a NULL pointer was found in the handle_entity_in_group "
+"member.\n"
 msgstr ""
 
 #: src/hatch.c:62 src/hatch.c:529
