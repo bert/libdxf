@@ -1141,4 +1141,53 @@ dxf_group_set_handle_entity_in_group
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c GROUP entity from a DXF 
+ * \c GROUP object.
+ *
+ * \return pointer to the next \c GROUP object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfGroup *
+dxf_group_get_next
+(
+        DxfGroup *group
+                /*!< a pointer to a DXF \c GROUP object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfGroup *result;
+
+        /* Do some basic checks. */
+        if (group == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (group->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfGroup *) group->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
