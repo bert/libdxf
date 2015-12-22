@@ -959,4 +959,50 @@ dxf_group_set_selectability_flag
 }
 
 
+/*!
+ * \brief Get the description from a DXF \c GROUP object.
+ *
+ * \return description when sucessful, \c NULL when an error occurred.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+char *
+dxf_group_get_description
+(
+        DxfGroup *group
+                /*!< a pointer to a DXF \c GROUP object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (group == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (group->description ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the description member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (group->description);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

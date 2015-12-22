@@ -177,6 +177,11 @@ dxf_group_set_selectability_flag
         DxfGroup *group,
         int selectability_flag
 );
+char *
+dxf_group_get_description
+(
+        DxfGroup *group
+);
 
 
 #endif /* LIBDXF_SRC_GROUP_H */
