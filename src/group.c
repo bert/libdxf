@@ -859,4 +859,55 @@ dxf_group_set_unnamed_flag
 }
 
 
+/*!
+ * \brief Get the selectability flag value from a DXF \c GROUP object.
+ *
+ * \return selectability flag.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_group_get_selectability_flag
+(
+        DxfGroup *group
+                /*!< a pointer to a DXF \c GROUP object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (group == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (group->selectability_flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the selectability_flag member.\n")),
+                  __FUNCTION__);
+        }
+        if (group->selectability_flag > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found in the selectability_flag member.\n")),
+                  __FUNCTION__);
+        }
+        result = group->selectability_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
