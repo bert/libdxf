@@ -204,6 +204,12 @@ dxf_group_get_next
 (
         DxfGroup *group
 );
+DxfGroup *
+dxf_group_set_next
+(
+        DxfGroup *group,
+        DxfGroup *next
+);
 
 
 #endif /* LIBDXF_SRC_GROUP_H */
