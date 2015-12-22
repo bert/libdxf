@@ -188,6 +188,11 @@ dxf_group_set_description
         DxfGroup *group,
         char *description
 );
+char *
+dxf_group_get_handle_entity_in_group
+(
+        DxfGroup *group
+);
 
 
 #endif /* LIBDXF_SRC_GROUP_H */
