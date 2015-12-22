@@ -193,6 +193,12 @@ dxf_group_get_handle_entity_in_group
 (
         DxfGroup *group
 );
+DxfGroup *
+dxf_group_set_handle_entity_in_group
+(
+        DxfGroup *group,
+        char *handle_entity_in_group
+);
 
 
 #endif /* LIBDXF_SRC_GROUP_H */

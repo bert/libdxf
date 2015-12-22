@@ -1096,4 +1096,49 @@ dxf_group_get_handle_entity_in_group
 }
 
 
+/*!
+ * \brief Set the handle of entity in group for a DXF \c GROUP object.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfGroup *
+dxf_group_set_handle_entity_in_group
+(
+        DxfGroup *group,
+                /*!< a pointer to a DXF \c GROUP object. */
+        char *handle_entity_in_group
+                /*!< a string containing the handle of entity in group
+                 * for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (group == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (handle_entity_in_group == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        group->handle_entity_in_group = strdup (handle_entity_in_group);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (group);
+}
+
+
 /* EOF*/
