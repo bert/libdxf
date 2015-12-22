@@ -182,6 +182,12 @@ dxf_group_get_description
 (
         DxfGroup *group
 );
+DxfGroup *
+dxf_group_set_description
+(
+        DxfGroup *group,
+        char *description
+);
 
 
 #endif /* LIBDXF_SRC_GROUP_H */
