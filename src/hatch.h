@@ -598,6 +598,27 @@ dxf_hatch_pattern_def_line_free_chain
 );
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_new ();
+DxfHatchPatternSeedPoint *
+dxf_hatch_pattern_seedpoint_init
+(
+        DxfHatchPatternSeedPoint *seedpoint
+);
+int
+dxf_hatch_pattern_seedpoint_write
+(
+        DxfFile *fp,
+        DxfHatchPatternSeedPoint *seedpoint
+);
+void
+dxf_hatch_pattern_seedpoint_free_chain
+(
+        DxfHatchPatternSeedPoint *hatch_pattern_seed_points
+);
+int
+dxf_hatch_boundary_path_free
+(
+        DxfHatchBoundaryPath *path
+);
 DxfHatchBoundaryPath *
 dxf_hatch_boundary_path_new ();
 DxfHatchBoundaryPathPolyline *
@@ -616,11 +637,6 @@ DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_new ();
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_control_point_new ();
-DxfHatchPatternSeedPoint *
-dxf_hatch_pattern_seedpoint_init
-(
-        DxfHatchPatternSeedPoint *seedpoint
-);
 DxfHatchBoundaryPath *
 dxf_hatch_boundary_path_init
 (
@@ -754,12 +770,6 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
         double *knot_values[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
 );
 int
-dxf_hatch_pattern_seedpoint_write
-(
-        DxfFile *fp,
-        DxfHatchPatternSeedPoint *seedpoint
-);
-int
 dxf_hatch_boundary_path_write
 (
         DxfFile *fp,
@@ -800,11 +810,6 @@ dxf_hatch_pattern_seedpoint_free
         DxfHatchPatternSeedPoint *seedpoint
 );
 int
-dxf_hatch_boundary_path_free
-(
-        DxfHatchBoundaryPath *path
-);
-int
 dxf_hatch_boundary_path_polyline_free
 (
         DxfHatchBoundaryPathPolyline *polyline
@@ -843,11 +848,6 @@ int
 dxf_hatch_boundary_path_edge_spline_control_point_free
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point
-);
-void
-dxf_hatch_pattern_seedpoint_free_chain
-(
-        DxfHatchPatternSeedPoint *hatch_pattern_seed_points
 );
 void
 dxf_hatch_boundary_path_free_chain
