@@ -2252,6 +2252,137 @@ dxf_hatch_boundary_path_edge_ellipse_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * boundary path edge ellipse entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatchBoundaryPathEdgeEllipse *
+dxf_hatch_boundary_path_edge_ellipse_init
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse
+                /*!< DXF hatch boundary path edge ellipse entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                ellipse = dxf_hatch_boundary_path_edge_ellipse_new ();
+        }
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeEllipse struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ellipse->id_code = 0;
+        ellipse->x0 = 0.0;
+        ellipse->y0 = 0.0;
+        ellipse->x1 = 0.0;
+        ellipse->y1 = 0.0;
+        ellipse->minor_axis = 0.0;
+        ellipse->start_angle = 0.0;
+        ellipse->end_angle = 0.0;
+        ellipse->is_ccw = 0;
+        ellipse->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a DXF \c HATCH boundary path
+ * edge ellipse and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_ellipse_free
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse
+                /*!< Pointer to the memory occupied by the DXF \c HATCH
+                 * boundary path edge ellipse entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (ellipse->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeEllipse was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (ellipse);
+        ellipse = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
+ * path edge ellipses and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_boundary_path_edge_ellipse_free_chain
+(
+        DxfHatchBoundaryPathEdgeEllipse *hatch_boundary_path_edge_ellipses
+                /*!< pointer to the chain of DXF \c HATCH boundary path
+                 * edge ellipses. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch_boundary_path_edge_ellipses == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_boundary_path_edge_ellipses != NULL)
+        {
+                struct DxfHatchBoundaryPathEdgeEllipse *iter = hatch_boundary_path_edge_ellipses->next;
+                dxf_hatch_boundary_path_edge_ellipse_free (hatch_boundary_path_edge_ellipses);
+                hatch_boundary_path_edge_ellipses = (DxfHatchBoundaryPathEdgeEllipse *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Allocate memory for a DXF \c HATCH boundary path edge line.
  *
  * Fill the memory contents with zeros.
@@ -2354,55 +2485,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_new ()
         DXF_DEBUG_END
 #endif
         return (control_point);
-}
-
-
-/*!
- * \brief Allocate memory and initialize data fields in a DXF \c HATCH
- * boundary path edge ellipse entity.
- * 
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
- */
-DxfHatchBoundaryPathEdgeEllipse *
-dxf_hatch_boundary_path_edge_ellipse_init
-(
-        DxfHatchBoundaryPathEdgeEllipse *ellipse
-                /*!< DXF hatch boundary path edge ellipse entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (ellipse == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                ellipse = dxf_hatch_boundary_path_edge_ellipse_new ();
-        }
-        if (ellipse == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeEllipse struct.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        ellipse->id_code = 0;
-        ellipse->x0 = 0.0;
-        ellipse->y0 = 0.0;
-        ellipse->x1 = 0.0;
-        ellipse->y1 = 0.0;
-        ellipse->minor_axis = 0.0;
-        ellipse->start_angle = 0.0;
-        ellipse->end_angle = 0.0;
-        ellipse->is_ccw = 0;
-        ellipse->next = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (ellipse);
 }
 
 
@@ -4098,48 +4180,6 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
 
 /*!
  * \brief Free the allocated memory for a DXF \c HATCH boundary path
- * edge ellipse and all it's data fields.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_boundary_path_edge_ellipse_free
-(
-        DxfHatchBoundaryPathEdgeEllipse *ellipse
-                /*!< Pointer to the memory occupied by the DXF \c HATCH
-                 * boundary path edge ellipse entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (ellipse == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (ellipse->next != NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeEllipse was not NULL.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        free (ellipse);
-        ellipse = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a DXF \c HATCH boundary path
  * edge line and all it's data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
@@ -4262,46 +4302,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
         DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
- * path edge ellipses and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
- */
-void
-dxf_hatch_boundary_path_edge_ellipse_free_chain
-(
-        DxfHatchBoundaryPathEdgeEllipse *hatch_boundary_path_edge_ellipses
-                /*!< pointer to the chain of DXF \c HATCH boundary path
-                 * edge ellipses. */
-)
-{
-#ifdef DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (hatch_boundary_path_edge_ellipses == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-        }
-        while (hatch_boundary_path_edge_ellipses != NULL)
-        {
-                struct DxfHatchBoundaryPathEdgeEllipse *iter = hatch_boundary_path_edge_ellipses->next;
-                dxf_hatch_boundary_path_edge_ellipse_free (hatch_boundary_path_edge_ellipses);
-                hatch_boundary_path_edge_ellipses = (DxfHatchBoundaryPathEdgeEllipse *) iter;
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
 }
 
 
