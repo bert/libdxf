@@ -1321,6 +1321,209 @@ dxf_hatch_boundary_path_polyline_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * boundary path polyline entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_polyline_init
+(
+        DxfHatchBoundaryPathPolyline *polyline
+                /*!< DXF hatch boundary path polyline entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                polyline = dxf_hatch_boundary_path_polyline_new ();
+        }
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathPolyline struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        polyline->id_code = 0;
+        polyline->bulge = 0.0;
+        polyline->has_bulge = 0;
+        polyline->is_closed = 0;
+        polyline->number_of_vertices = 0;
+        polyline->vertices = NULL;
+        polyline->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
+/*!
+ * \brief Write DXF output to a file for a hatch boundary path polyline.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_polyline_write
+(
+        DxfFile *fp,
+                /*!< file pointer to output file (or device). */
+        DxfHatchBoundaryPathPolyline *polyline
+                /*!< DXF hatch boundary path polyline entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchBoundaryPathPolylineVertex *iter;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        fprintf (fp->fp, " 72\n%d\n", polyline->has_bulge);
+        fprintf (fp->fp, " 73\n%d\n", polyline->is_closed);
+        fprintf (fp->fp, " 93\n%d\n", polyline->number_of_vertices);
+        /* draw hatch boundary vertices. */
+        iter = dxf_hatch_boundary_path_polyline_vertex_new ();
+        iter = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+        for (;;)
+        {
+                dxf_hatch_boundary_path_polyline_vertex_write
+                (
+                        fp,
+                        iter
+                );
+                iter = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+                if (iter == NULL)
+                {
+                        break;
+                }
+        }
+        /* test for closed polyline: close with first vertex. */
+        if (polyline->is_closed)
+        {
+                dxf_hatch_boundary_path_polyline_vertex_write
+                (
+                        fp,
+                        (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices
+                );
+        }
+        if (polyline->bulge != 0.0)
+        {
+                fprintf (fp->fp, " 42\n%f\n", polyline->bulge);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a DXF \c HATCH boundary path
+ * polyline and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_polyline_free
+(
+        DxfHatchBoundaryPathPolyline *polyline
+                /*!< Pointer to the memory occupied by the DXF \c HATCH
+                 * boundary path polyline entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPathPolyline was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (polyline->vertices);
+        free (polyline);
+        polyline = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
+ * path polylines and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_boundary_path_polyline_free_chain
+(
+        DxfHatchBoundaryPathPolyline *hatch_boundary_path_polylines
+                /*!< pointer to the chain of DXF \c HATCH boundary path
+                 * polylines. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch_boundary_path_polylines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_boundary_path_polylines != NULL)
+        {
+                struct DxfHatchBoundaryPathPolyline *iter = hatch_boundary_path_polylines->next;
+                dxf_hatch_boundary_path_polyline_free (hatch_boundary_path_polylines);
+                hatch_boundary_path_polylines = (DxfHatchBoundaryPathPolyline *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Allocate memory for a DXF \c HATCH boundary path polyline
  * vertex.
  *
@@ -1564,52 +1767,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_new ()
         DXF_DEBUG_END
 #endif
         return (control_point);
-}
-
-
-/*!
- * \brief Allocate memory and initialize data fields in a DXF \c HATCH
- * boundary path polyline entity.
- * 
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
- */
-DxfHatchBoundaryPathPolyline *
-dxf_hatch_boundary_path_polyline_init
-(
-        DxfHatchBoundaryPathPolyline *polyline
-                /*!< DXF hatch boundary path polyline entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (polyline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                polyline = dxf_hatch_boundary_path_polyline_new ();
-        }
-        if (polyline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathPolyline struct.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        polyline->id_code = 0;
-        polyline->bulge = 0.0;
-        polyline->has_bulge = 0;
-        polyline->is_closed = 0;
-        polyline->number_of_vertices = 0;
-        polyline->vertices = NULL;
-        polyline->next = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (polyline);
 }
 
 
@@ -3598,123 +3755,6 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
 
 
 /*!
- * \brief Write DXF output to a file for a hatch boundary path polyline.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_boundary_path_polyline_write
-(
-        DxfFile *fp,
-                /*!< file pointer to output file (or device). */
-        DxfHatchBoundaryPathPolyline *polyline
-                /*!< DXF hatch boundary path polyline entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        DxfHatchBoundaryPathPolylineVertex *iter;
-
-        /* Do some basic checks. */
-        if (fp == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (polyline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        fprintf (fp->fp, " 72\n%d\n", polyline->has_bulge);
-        fprintf (fp->fp, " 73\n%d\n", polyline->is_closed);
-        fprintf (fp->fp, " 93\n%d\n", polyline->number_of_vertices);
-        /* draw hatch boundary vertices. */
-        iter = dxf_hatch_boundary_path_polyline_vertex_new ();
-        iter = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
-        for (;;)
-        {
-                dxf_hatch_boundary_path_polyline_vertex_write
-                (
-                        fp,
-                        iter
-                );
-                iter = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
-                if (iter == NULL)
-                {
-                        break;
-                }
-        }
-        /* test for closed polyline: close with first vertex. */
-        if (polyline->is_closed)
-        {
-                dxf_hatch_boundary_path_polyline_vertex_write
-                (
-                        fp,
-                        (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices
-                );
-        }
-        if (polyline->bulge != 0.0)
-        {
-                fprintf (fp->fp, " 42\n%f\n", polyline->bulge);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a DXF \c HATCH boundary path
- * polyline and all it's data fields.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_boundary_path_polyline_free
-(
-        DxfHatchBoundaryPathPolyline *polyline
-                /*!< Pointer to the memory occupied by the DXF \c HATCH
-                 * boundary path polyline entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (polyline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (polyline->next != NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfHatchBoundaryPathPolyline was not NULL.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        free (polyline->vertices);
-        free (polyline);
-        polyline = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Free the allocated memory for a DXF \c HATCH boundary path
  * polyline vertex and all it's data fields.
  *
@@ -4010,46 +4050,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
         DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
- * path polylines and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
- */
-void
-dxf_hatch_boundary_path_polyline_free_chain
-(
-        DxfHatchBoundaryPathPolyline *hatch_boundary_path_polylines
-                /*!< pointer to the chain of DXF \c HATCH boundary path
-                 * polylines. */
-)
-{
-#ifdef DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (hatch_boundary_path_polylines == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-        }
-        while (hatch_boundary_path_polylines != NULL)
-        {
-                struct DxfHatchBoundaryPathPolyline *iter = hatch_boundary_path_polylines->next;
-                dxf_hatch_boundary_path_polyline_free (hatch_boundary_path_polylines);
-                hatch_boundary_path_polylines = (DxfHatchBoundaryPathPolyline *) iter;
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
 }
 
 

@@ -644,6 +644,27 @@ dxf_hatch_boundary_path_free_chain
 );
 DxfHatchBoundaryPathPolyline *
 dxf_hatch_boundary_path_polyline_new ();
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_polyline_init
+(
+        DxfHatchBoundaryPathPolyline *polyline
+);
+int
+dxf_hatch_boundary_path_polyline_write
+(
+        DxfFile *fp,
+        DxfHatchBoundaryPathPolyline *polyline
+);
+int
+dxf_hatch_boundary_path_polyline_free
+(
+        DxfHatchBoundaryPathPolyline *polyline
+);
+void
+dxf_hatch_boundary_path_polyline_free_chain
+(
+        DxfHatchBoundaryPathPolyline *hatch_boundary_path_polylines
+);
 DxfHatchBoundaryPathPolylineVertex *
 dxf_hatch_boundary_path_polyline_vertex_new ();
 DxfHatchBoundaryPathEdge *
@@ -658,11 +679,6 @@ DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_new ();
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_control_point_new ();
-DxfHatchBoundaryPathPolyline *
-dxf_hatch_boundary_path_polyline_init
-(
-        DxfHatchBoundaryPathPolyline *polyline
-);
 DxfHatchBoundaryPathPolylineVertex *
 dxf_hatch_boundary_path_polyline_vertex_init
 (
@@ -796,12 +812,6 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
         DxfHatchBoundaryPathPolyline *polyline,
         DxfPoint *point
 );
-int
-dxf_hatch_boundary_path_polyline_write
-(
-        DxfFile *fp,
-        DxfHatchBoundaryPathPolyline *polyline
-);
 double
 dxf_hatch_boundary_path_polyline_vertex_angle
 (
@@ -813,11 +823,6 @@ dxf_hatch_boundary_path_polyline_vertex_write
 (
         DxfFile *fp,
         DxfHatchBoundaryPathPolylineVertex *vertex
-);
-int
-dxf_hatch_boundary_path_polyline_free
-(
-        DxfHatchBoundaryPathPolyline *polyline
 );
 int
 dxf_hatch_boundary_path_polyline_vertex_free
@@ -853,11 +858,6 @@ int
 dxf_hatch_boundary_path_edge_spline_control_point_free
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point
-);
-void
-dxf_hatch_boundary_path_polyline_free_chain
-(
-        DxfHatchBoundaryPathPolyline *hatch_boundary_path_polylines
 );
 void
 dxf_hatch_boundary_path_polyline_vertex_free_chain
