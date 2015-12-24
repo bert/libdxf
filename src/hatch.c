@@ -2418,6 +2418,133 @@ dxf_hatch_boundary_path_edge_line_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * boundary path edge line entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatchBoundaryPathEdgeLine *
+dxf_hatch_boundary_path_edge_line_init
+(
+        DxfHatchBoundaryPathEdgeLine *line
+                /*!< DXF hatch boundary path edge line entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                line = dxf_hatch_boundary_path_edge_line_new ();
+        }
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeLine struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->id_code = 0;
+        line->x0 = 0.0;
+        line->y0 = 0.0;
+        line->x1 = 0.0;
+        line->y1 = 0.0;
+        line->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a DXF \c HATCH boundary path
+ * edge line and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_line_free
+(
+        DxfHatchBoundaryPathEdgeLine *line
+                /*!< Pointer to the memory occupied by the DXF \c HATCH
+                 * boundary path edge line entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (line->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeLine was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (line);
+        line = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
+ * path edge lines and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_boundary_path_edge_line_free_chain
+(
+        DxfHatchBoundaryPathEdgeLine *hatch_boundary_path_edge_lines
+                /*!< pointer to the chain of DXF \c HATCH boundary path
+                 * edge lines. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch_boundary_path_edge_lines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_boundary_path_edge_lines != NULL)
+        {
+                struct DxfHatchBoundaryPathEdgeLine *iter = hatch_boundary_path_edge_lines->next;
+                dxf_hatch_boundary_path_edge_line_free (hatch_boundary_path_edge_lines);
+                hatch_boundary_path_edge_lines = (DxfHatchBoundaryPathEdgeLine *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Allocate memory for a DXF \c HATCH boundary path edge spline.
  *
  * Fill the memory contents with zeros.
@@ -2485,51 +2612,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_new ()
         DXF_DEBUG_END
 #endif
         return (control_point);
-}
-
-
-/*!
- * \brief Allocate memory and initialize data fields in a DXF \c HATCH
- * boundary path edge line entity.
- * 
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
- */
-DxfHatchBoundaryPathEdgeLine *
-dxf_hatch_boundary_path_edge_line_init
-(
-        DxfHatchBoundaryPathEdgeLine *line
-                /*!< DXF hatch boundary path edge line entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                line = dxf_hatch_boundary_path_edge_line_new ();
-        }
-        if (line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeLine struct.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        line->id_code = 0;
-        line->x0 = 0.0;
-        line->y0 = 0.0;
-        line->x1 = 0.0;
-        line->y1 = 0.0;
-        line->next = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (line);
 }
 
 
@@ -4180,48 +4262,6 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
 
 /*!
  * \brief Free the allocated memory for a DXF \c HATCH boundary path
- * edge line and all it's data fields.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_boundary_path_edge_line_free
-(
-        DxfHatchBoundaryPathEdgeLine *line
-                /*!< Pointer to the memory occupied by the DXF \c HATCH
-                 * boundary path edge line entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (line->next != NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeLine was not NULL.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        free (line);
-        line = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a DXF \c HATCH boundary path
  * edge spline and all it's data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
@@ -4302,46 +4342,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
         DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
- * path edge lines and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
- */
-void
-dxf_hatch_boundary_path_edge_line_free_chain
-(
-        DxfHatchBoundaryPathEdgeLine *hatch_boundary_path_edge_lines
-                /*!< pointer to the chain of DXF \c HATCH boundary path
-                 * edge lines. */
-)
-{
-#ifdef DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (hatch_boundary_path_edge_lines == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-        }
-        while (hatch_boundary_path_edge_lines != NULL)
-        {
-                struct DxfHatchBoundaryPathEdgeLine *iter = hatch_boundary_path_edge_lines->next;
-                dxf_hatch_boundary_path_edge_line_free (hatch_boundary_path_edge_lines);
-                hatch_boundary_path_edge_lines = (DxfHatchBoundaryPathEdgeLine *) iter;
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
 }
 
 
