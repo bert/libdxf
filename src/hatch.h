@@ -575,6 +575,27 @@ dxf_hatch_pattern_free_chain
 );
 DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_new ();
+DxfHatchPatternDefLine *
+dxf_hatch_pattern_def_line_init
+(
+        DxfHatchPatternDefLine *def_line
+);
+int
+dxf_hatch_pattern_def_line_write
+(
+        DxfFile *fp,
+        DxfHatchPatternDefLine *def_line
+);
+int
+dxf_hatch_pattern_def_line_free
+(
+        DxfHatchPatternDefLine *def_line
+);
+void
+dxf_hatch_pattern_def_line_free_chain
+(
+        DxfHatchPatternDefLine *hatch_pattern_def_lines
+);
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_new ();
 DxfHatchBoundaryPath *
@@ -595,11 +616,6 @@ DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_new ();
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_control_point_new ();
-DxfHatchPatternDefLine *
-dxf_hatch_pattern_def_line_init
-(
-        DxfHatchPatternDefLine *def_line
-);
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_init
 (
@@ -738,14 +754,6 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
         double *knot_values[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
 );
 int
-dxf_hatch_pattern_def_line_write
-(
-        DxfFile *fp,
-                /*!< DXF file pointer to an output file (or device). */
-        DxfHatchPatternDefLine *def_line
-                /*!< DXF hatch pattern definition line. */
-);
-int
 dxf_hatch_pattern_seedpoint_write
 (
         DxfFile *fp,
@@ -785,11 +793,6 @@ dxf_hatch_boundary_path_polyline_vertex_write
 (
         DxfFile *fp,
         DxfHatchBoundaryPathPolylineVertex *vertex
-);
-int
-dxf_hatch_pattern_def_line_free
-(
-        DxfHatchPatternDefLine *def_line
 );
 int
 dxf_hatch_pattern_seedpoint_free
@@ -840,11 +843,6 @@ int
 dxf_hatch_boundary_path_edge_spline_control_point_free
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point
-);
-void
-dxf_hatch_pattern_def_line_free_chain
-(
-        DxfHatchPatternDefLine *hatch_pattern_def_lines
 );
 void
 dxf_hatch_pattern_seedpoint_free_chain

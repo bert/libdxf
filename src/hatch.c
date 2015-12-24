@@ -637,6 +637,205 @@ dxf_hatch_pattern_def_line_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * pattern definition line entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatchPatternDefLine *
+dxf_hatch_pattern_def_line_init
+(
+        DxfHatchPatternDefLine *def_line
+                /*!< DXF hatch pattern definition line entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (def_line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                def_line = dxf_hatch_pattern_def_line_new ();
+        }
+        if (def_line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfHatchPatternDefLine struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        def_line->id_code = 0;
+        def_line->angle = 0.0;
+        def_line->x0 = 0.0;
+        def_line->y0 = 0.0;
+        def_line->x1 = 0.0;
+        def_line->y1 = 0.0;
+        def_line->dash_items = DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS;
+        for (i = 0; i >= DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS; i++)
+        {
+                def_line->dash_length[i] = 0.0;
+        }
+        def_line->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (def_line);
+}
+
+
+/*!
+ * \brief Write DXF output to a file for a DXF \c HATCH pattern definition
+ * line.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_pattern_def_line_write
+(
+        DxfFile *fp,
+                /*!< DXF file pointer to an output file (or device). */
+        DxfHatchPatternDefLine *def_line
+                /*!< DXF hatch pattern definition line. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (def_line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, " 53\n%f\n", def_line->angle);
+        fprintf (fp->fp, " 43\n%f\n", def_line->x0);
+        fprintf (fp->fp, " 44\n%f\n", def_line->y0);
+        fprintf (fp->fp, " 45\n%f\n", def_line->x1);
+        fprintf (fp->fp, " 46\n%f\n", def_line->y1);
+        fprintf (fp->fp, " 79\n%d\n", def_line->dash_items);
+        if (def_line->dash_items > 0)
+        {
+                /* Draw hatch pattern definition line dash items. */
+                for (i = 1; i < def_line->dash_items; i++)
+                {
+                        fprintf (fp->fp, " 49\n%f\n", def_line->dash_length[i]);
+                }
+        }
+        else
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () no dash length found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a DXF \c HATCH pattern
+ * definition line and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_pattern_def_line_free
+(
+        DxfHatchPatternDefLine *def_line
+                /*!< Pointer to the memory occupied by the DXF \c HATCH
+                 * pattern definition line entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (def_line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (def_line->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfHatchPatternDefLine was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (def_line);
+        def_line = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH pattern
+ * definition lines and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_pattern_def_line_free_chain
+(
+        DxfHatchPatternDefLine *hatch_pattern_def_lines
+                /*!< pointer to the chain of DXF \c HATCH pattern
+                 * definition lines. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch_pattern_def_lines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_pattern_def_lines != NULL)
+        {
+                struct DxfHatchPatternDefLine *iter = hatch_pattern_def_lines->next;
+                dxf_hatch_pattern_def_line_free (hatch_pattern_def_lines);
+                hatch_pattern_def_lines = (DxfHatchPatternDefLine *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Allocate memory for a DXF \c HATCH pattern seedpoint.
  *
  * Fill the memory contents with zeros.
@@ -985,59 +1184,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_new ()
         DXF_DEBUG_END
 #endif
         return (control_point);
-}
-
-
-/*!
- * \brief Allocate memory and initialize data fields in a DXF \c HATCH
- * pattern definition line entity.
- * 
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
- */
-DxfHatchPatternDefLine *
-dxf_hatch_pattern_def_line_init
-(
-        DxfHatchPatternDefLine *def_line
-                /*!< DXF hatch pattern definition line entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int i;
-
-        /* Do some basic checks. */
-        if (def_line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                def_line = dxf_hatch_pattern_def_line_new ();
-        }
-        if (def_line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchPatternDefLine struct.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        def_line->id_code = 0;
-        def_line->angle = 0.0;
-        def_line->x0 = 0.0;
-        def_line->y0 = 0.0;
-        def_line->x1 = 0.0;
-        def_line->y1 = 0.0;
-        def_line->dash_items = DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS;
-        for (i = 0; i >= DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS; i++)
-        {
-                def_line->dash_length[i] = 0.0;
-        }
-        def_line->next = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (def_line);
 }
 
 
@@ -2837,70 +2983,6 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
 
 
 /*!
- * \brief Write DXF output to a file for a DXF \c HATCH pattern definition
- * line.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_pattern_def_line_write
-(
-        DxfFile *fp,
-                /*!< DXF file pointer to an output file (or device). */
-        DxfHatchPatternDefLine *def_line
-                /*!< DXF hatch pattern definition line. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int i;
-
-        /* Do some basic checks. */
-        if (fp == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (def_line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        /* Start writing output. */
-        fprintf (fp->fp, " 53\n%f\n", def_line->angle);
-        fprintf (fp->fp, " 43\n%f\n", def_line->x0);
-        fprintf (fp->fp, " 44\n%f\n", def_line->y0);
-        fprintf (fp->fp, " 45\n%f\n", def_line->x1);
-        fprintf (fp->fp, " 46\n%f\n", def_line->y1);
-        fprintf (fp->fp, " 79\n%d\n", def_line->dash_items);
-        if (def_line->dash_items > 0)
-        {
-                /* Draw hatch pattern definition line dash items. */
-                for (i = 1; i < def_line->dash_items; i++)
-                {
-                        fprintf (fp->fp, " 49\n%f\n", def_line->dash_length[i]);
-                }
-        }
-        else
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () no dash length found.\n")),
-                  __FUNCTION__);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Write DXF output to a file for a DXF \c HATCH pattern seed
  * point.
  *
@@ -3425,48 +3507,6 @@ dxf_hatch_boundary_path_polyline_write
 
 
 /*!
- * \brief Free the allocated memory for a DXF \c HATCH pattern
- * definition line and all it's data fields.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_pattern_def_line_free
-(
-        DxfHatchPatternDefLine *def_line
-                /*!< Pointer to the memory occupied by the DXF \c HATCH
-                 * pattern definition line entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (def_line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (def_line->next != NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfHatchPatternDefLine was not NULL.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        free (def_line);
-        def_line = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Free the allocated memory for a DXF \c HATCH pattern seedpoint
  * and all it's data fields.
  *
@@ -3891,46 +3931,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
         DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH pattern
- * definition lines and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
- */
-void
-dxf_hatch_pattern_def_line_free_chain
-(
-        DxfHatchPatternDefLine *hatch_pattern_def_lines
-                /*!< pointer to the chain of DXF \c HATCH pattern
-                 * definition lines. */
-)
-{
-#ifdef DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (hatch_pattern_def_lines == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-        }
-        while (hatch_pattern_def_lines != NULL)
-        {
-                struct DxfHatchPatternDefLine *iter = hatch_pattern_def_lines->next;
-                dxf_hatch_pattern_def_line_free (hatch_pattern_def_lines);
-                hatch_pattern_def_lines = (DxfHatchPatternDefLine *) iter;
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
 }
 
 
