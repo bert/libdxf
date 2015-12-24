@@ -2580,42 +2580,6 @@ dxf_hatch_boundary_path_edge_spline_new ()
 
 
 /*!
- * \brief Allocate memory for a DXF \c HATCH boundary path edge spline
- * control point.
- *
- * Fill the memory contents with zeros.
- */
-DxfHatchBoundaryPathEdgeSplineCp *
-dxf_hatch_boundary_path_edge_spline_control_point_new ()
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        DxfHatchBoundaryPathEdgeSplineCp *control_point = NULL;
-        size_t size;
-
-        size = sizeof (DxfHatchBoundaryPathEdgeSplineCp);
-        /* avoid malloc of 0 bytes */
-        if (size == 0) size = 1;
-        if ((control_point = malloc (size)) == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n")),
-                  __FUNCTION__);
-                control_point = NULL;
-        }
-        else
-        {
-                memset (control_point, 0, size);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (control_point);
-}
-
-
-/*!
  * \brief Allocate memory and initialize data fields in a DXF \c HATCH
  * boundary path edge spline entity.
  * 
@@ -2665,6 +2629,125 @@ dxf_hatch_boundary_path_edge_spline_init
         DXF_DEBUG_END
 #endif
         return (spline);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a DXF \c HATCH boundary path
+ * edge spline and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_free
+(
+        DxfHatchBoundaryPathEdgeSpline *spline
+                /*!< Pointer to the memory occupied by the DXF \c HATCH
+                 * boundary path edge spline entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (spline->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeSpline was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (spline->control_points);
+        free (spline);
+        spline = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
+ * path edge splines and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_boundary_path_edge_spline_free_chain
+(
+        DxfHatchBoundaryPathEdgeSpline *hatch_boundary_path_edge_splines
+                /*!< pointer to the chain of DXF \c HATCH boundary path
+                 * edge splines. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch_boundary_path_edge_splines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_boundary_path_edge_splines != NULL)
+        {
+                struct DxfHatchBoundaryPathEdgeSpline *iter = hatch_boundary_path_edge_splines->next;
+                dxf_hatch_boundary_path_edge_spline_free (hatch_boundary_path_edge_splines);
+                hatch_boundary_path_edge_splines = (DxfHatchBoundaryPathEdgeSpline *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
+ * \brief Allocate memory for a DXF \c HATCH boundary path edge spline
+ * control point.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfHatchBoundaryPathEdgeSplineCp *
+dxf_hatch_boundary_path_edge_spline_control_point_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchBoundaryPathEdgeSplineCp *control_point = NULL;
+        size_t size;
+
+        size = sizeof (DxfHatchBoundaryPathEdgeSplineCp);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((control_point = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n")),
+                  __FUNCTION__);
+                control_point = NULL;
+        }
+        else
+        {
+                memset (control_point, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (control_point);
 }
 
 
@@ -4262,49 +4345,6 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
 
 /*!
  * \brief Free the allocated memory for a DXF \c HATCH boundary path
- * edge spline and all it's data fields.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_boundary_path_edge_spline_free
-(
-        DxfHatchBoundaryPathEdgeSpline *spline
-                /*!< Pointer to the memory occupied by the DXF \c HATCH
-                 * boundary path edge spline entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (spline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (spline->next != NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeSpline was not NULL.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        free (spline->control_points);
-        free (spline);
-        spline = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a DXF \c HATCH boundary path
  * edge spline control point and all it's data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
@@ -4342,46 +4382,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
         DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
- * path edge splines and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
- */
-void
-dxf_hatch_boundary_path_edge_spline_free_chain
-(
-        DxfHatchBoundaryPathEdgeSpline *hatch_boundary_path_edge_splines
-                /*!< pointer to the chain of DXF \c HATCH boundary path
-                 * edge splines. */
-)
-{
-#ifdef DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (hatch_boundary_path_edge_splines == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-        }
-        while (hatch_boundary_path_edge_splines != NULL)
-        {
-                struct DxfHatchBoundaryPathEdgeSpline *iter = hatch_boundary_path_edge_splines->next;
-                dxf_hatch_boundary_path_edge_spline_free (hatch_boundary_path_edge_splines);
-                hatch_boundary_path_edge_splines = (DxfHatchBoundaryPathEdgeSpline *) iter;
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
 }
 
 

@@ -775,13 +775,23 @@ dxf_hatch_boundary_path_edge_line_free_chain
 );
 DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_new ();
-DxfHatchBoundaryPathEdgeSplineCp *
-dxf_hatch_boundary_path_edge_spline_control_point_new ();
 DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_init
 (
         DxfHatchBoundaryPathEdgeSpline *spline
 );
+int
+dxf_hatch_boundary_path_edge_spline_free
+(
+        DxfHatchBoundaryPathEdgeSpline *spline
+);
+void
+dxf_hatch_boundary_path_edge_spline_free_chain
+(
+        DxfHatchBoundaryPathEdgeSpline *hatch_boundary_path_edge_splines
+);
+DxfHatchBoundaryPathEdgeSplineCp *
+dxf_hatch_boundary_path_edge_spline_control_point_new ();
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_control_point_init
 (
@@ -886,19 +896,9 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
         DxfPoint *point
 );
 int
-dxf_hatch_boundary_path_edge_spline_free
-(
-        DxfHatchBoundaryPathEdgeSpline *spline
-);
-int
 dxf_hatch_boundary_path_edge_spline_control_point_free
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point
-);
-void
-dxf_hatch_boundary_path_edge_spline_free_chain
-(
-        DxfHatchBoundaryPathEdgeSpline *hatch_boundary_path_edge_splines
 );
 void
 dxf_hatch_boundary_path_edge_spline_control_point_free_chain
