@@ -471,6 +471,137 @@ dxf_hatch_pattern_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * pattern entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatchPattern *
+dxf_hatch_pattern_init
+(
+        DxfHatchPattern *pattern
+                /*!< DXF hatch pattern entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (pattern == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                pattern = dxf_hatch_pattern_new ();
+        }
+        if (pattern == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfHatchPattern struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        pattern->id_code = 0;
+        pattern->def_lines = 0;
+        pattern->lines = NULL;
+/*! \todo correction in:
+        pattern->length = 0.0;
+*/
+        pattern->number_of_seed_points = 0;
+        pattern->seed_points = NULL;
+        pattern->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (pattern);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a DXF \c HATCH pattern and all
+ * it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_pattern_free
+(
+        DxfHatchPattern *pattern
+                /*!< Pointer to the memory occupied by the DXF \c HATCH
+                 * pattern entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (pattern == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (pattern->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfHatchPattern was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (pattern->lines);
+        free (pattern->seed_points);
+        free (pattern);
+        pattern = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH patterns
+ * and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_pattern_free_chain
+(
+        DxfHatchPattern *hatch_patterns
+                /*!< pointer to the chain of DXF \c HATCH patterns. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch_patterns == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_patterns != NULL)
+        {
+                struct DxfHatchPattern *iter = hatch_patterns->next;
+                dxf_hatch_pattern_free (hatch_patterns);
+                hatch_patterns = (DxfHatchPattern *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Allocate memory for a DXF \c HATCH pattern definition line.
  *
  * Fill the memory contents with zeros.
@@ -854,54 +985,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_new ()
         DXF_DEBUG_END
 #endif
         return (control_point);
-}
-
-
-/*!
- * \brief Allocate memory and initialize data fields in a DXF \c HATCH
- * pattern entity.
- * 
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
- */
-DxfHatchPattern *
-dxf_hatch_pattern_init
-(
-        DxfHatchPattern *pattern
-                /*!< DXF hatch pattern entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (pattern == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                pattern = dxf_hatch_pattern_new ();
-        }
-        if (pattern == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchPattern struct.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        pattern->id_code = 0;
-        pattern->def_lines = 0;
-        pattern->lines = NULL;
-/*! \todo correction in:
-        pattern->length = 0.0;
-*/
-        pattern->number_of_seed_points = 0;
-        pattern->seed_points = NULL;
-        pattern->next = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (pattern);
 }
 
 
@@ -3342,50 +3425,6 @@ dxf_hatch_boundary_path_polyline_write
 
 
 /*!
- * \brief Free the allocated memory for a DXF \c HATCH pattern and all
- * it's data fields.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_pattern_free
-(
-        DxfHatchPattern *pattern
-                /*!< Pointer to the memory occupied by the DXF \c HATCH
-                 * pattern entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (pattern == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (pattern->next != NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfHatchPattern was not NULL.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        free (pattern->lines);
-        free (pattern->seed_points);
-        free (pattern);
-        pattern = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Free the allocated memory for a DXF \c HATCH pattern
  * definition line and all it's data fields.
  *
@@ -3852,45 +3891,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
         DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH patterns
- * and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
- */
-void
-dxf_hatch_pattern_free_chain
-(
-        DxfHatchPattern *hatch_patterns
-                /*!< pointer to the chain of DXF \c HATCH patterns. */
-)
-{
-#ifdef DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (hatch_patterns == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-        }
-        while (hatch_patterns != NULL)
-        {
-                struct DxfHatchPattern *iter = hatch_patterns->next;
-                dxf_hatch_pattern_free (hatch_patterns);
-                hatch_patterns = (DxfHatchPattern *) iter;
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
 }
 
 
