@@ -713,6 +713,32 @@ dxf_hatch_boundary_path_edge_free_chain
 );
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_new ();
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_init
+(
+        DxfHatchBoundaryPathEdgeArc *arc
+);
+int
+dxf_hatch_boundary_path_edge_arc_free
+(
+        DxfHatchBoundaryPathEdgeArc *arc
+);
+void
+dxf_hatch_boundary_path_edge_arc_free_chain
+(
+        DxfHatchBoundaryPathEdgeArc *hatch_boundary_path_edge_arcs
+);
+int
+dxf_hatch_boundary_path_edge_arc_get_id_code
+(
+        DxfHatchBoundaryPathEdgeArc *arc
+);
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_set_id_code
+(
+        DxfHatchBoundaryPathEdgeArc *arc,
+        int id_code
+);
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_new ();
 DxfHatchBoundaryPathEdgeLine *
@@ -721,11 +747,6 @@ DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_new ();
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_control_point_new ();
-DxfHatchBoundaryPathEdgeArc *
-dxf_hatch_boundary_path_edge_arc_init
-(
-        DxfHatchBoundaryPathEdgeArc *arc
-);
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_init
 (
@@ -845,11 +866,6 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
         DxfPoint *point
 );
 int
-dxf_hatch_boundary_path_edge_arc_free
-(
-        DxfHatchBoundaryPathEdgeArc *arc
-);
-int
 dxf_hatch_boundary_path_edge_ellipse_free
 (
         DxfHatchBoundaryPathEdgeEllipse *ellipse
@@ -870,11 +886,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
         DxfHatchBoundaryPathEdgeSplineCp *control_point
 );
 void
-dxf_hatch_boundary_path_edge_arc_free_chain
-(
-        DxfHatchBoundaryPathEdgeArc *hatch_boundary_path_edge_arcs
-);
-void
 dxf_hatch_boundary_path_edge_ellipse_free_chain
 (
         DxfHatchBoundaryPathEdgeEllipse *hatch_boundary_path_edge_ellipses
@@ -893,17 +904,6 @@ void
 dxf_hatch_boundary_path_edge_spline_control_point_free_chain
 (
         DxfHatchBoundaryPathEdgeSplineCp *hatch_boundary_path_edge_spline_control_points
-);
-int
-dxf_hatch_boundary_path_edge_arc_get_id_code
-(
-        DxfHatchBoundaryPathEdgeArc *arc
-);
-DxfHatchBoundaryPathEdgeArc *
-dxf_hatch_boundary_path_edge_arc_set_id_code
-(
-        DxfHatchBoundaryPathEdgeArc *arc,
-        int id_code
 );
 
 

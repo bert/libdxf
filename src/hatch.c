@@ -1996,6 +1996,227 @@ dxf_hatch_boundary_path_edge_arc_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * boundary path edge arc entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_init
+(
+        DxfHatchBoundaryPathEdgeArc *arc
+                /*!< DXF hatch boundary path edge arc entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                arc = dxf_hatch_boundary_path_edge_arc_new ();
+        }
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        arc->id_code = 0;
+        arc->x0 = 0.0;
+        arc->y0 = 0.0;
+        arc->radius = 0.0;
+        arc->start_angle = 0.0;
+        arc->end_angle = 0.0;
+        arc->is_ccw = 0;
+        arc->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a DXF \c HATCH boundary path
+ * edge arc and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_arc_free
+(
+        DxfHatchBoundaryPathEdgeArc *arc
+                /*!< Pointer to the memory occupied by the DXF \c HATCH
+                 * boundary path edge arc entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (arc->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeArc was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (arc);
+        arc = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
+ * path edge arcs and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_boundary_path_edge_arc_free_chain
+(
+        DxfHatchBoundaryPathEdgeArc *hatch_boundary_path_edge_arcs
+                /*!< pointer to the chain of DXF \c HATCH boundary path
+                 * edge arcs. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch_boundary_path_edge_arcs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatch_boundary_path_edge_arcs != NULL)
+        {
+                struct DxfHatchBoundaryPathEdgeArc *iter = hatch_boundary_path_edge_arcs->next;
+                dxf_hatch_boundary_path_edge_arc_free (hatch_boundary_path_edge_arcs);
+                hatch_boundary_path_edge_arcs = (DxfHatchBoundaryPathEdgeArc *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
+ * \brief Get the ID code from a DXF \c HATCH boundary path edge arc.
+ *
+ * \return ID code.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_hatch_boundary_path_edge_arc_get_id_code
+(
+        DxfHatchBoundaryPathEdgeArc *arc
+                /*!< a pointer to a DXF \c HATCH boundary path edge arc. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (arc->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the id_code member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = arc->id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Set the ID code for a DXF \c HATCH boundary path edge arc.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_set_id_code
+(
+        DxfHatchBoundaryPathEdgeArc *arc,
+                /*!< a pointer to a DXF \c HATCH boundary path edge arc. */
+        int id_code
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative id-code value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        arc->id_code = id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc);
+}
+
+
+/*!
  * \brief Allocate memory for a DXF \c HATCH boundary path edge ellipse.
  *
  * Fill the memory contents with zeros.
@@ -2133,53 +2354,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_new ()
         DXF_DEBUG_END
 #endif
         return (control_point);
-}
-
-
-/*!
- * \brief Allocate memory and initialize data fields in a DXF \c HATCH
- * boundary path edge arc entity.
- * 
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
- */
-DxfHatchBoundaryPathEdgeArc *
-dxf_hatch_boundary_path_edge_arc_init
-(
-        DxfHatchBoundaryPathEdgeArc *arc
-                /*!< DXF hatch boundary path edge arc entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (arc == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                arc = dxf_hatch_boundary_path_edge_arc_new ();
-        }
-        if (arc == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        arc->id_code = 0;
-        arc->x0 = 0.0;
-        arc->y0 = 0.0;
-        arc->radius = 0.0;
-        arc->start_angle = 0.0;
-        arc->end_angle = 0.0;
-        arc->is_ccw = 0;
-        arc->next = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (arc);
 }
 
 
@@ -3924,48 +4098,6 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
 
 /*!
  * \brief Free the allocated memory for a DXF \c HATCH boundary path
- * edge arc and all it's data fields.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_boundary_path_edge_arc_free
-(
-        DxfHatchBoundaryPathEdgeArc *arc
-                /*!< Pointer to the memory occupied by the DXF \c HATCH
-                 * boundary path edge arc entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (arc == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (arc->next != NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeArc was not NULL.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        free (arc);
-        arc = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a DXF \c HATCH boundary path
  * edge ellipse and all it's data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
@@ -4135,46 +4267,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
 
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
- * path edge arcs and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
- */
-void
-dxf_hatch_boundary_path_edge_arc_free_chain
-(
-        DxfHatchBoundaryPathEdgeArc *hatch_boundary_path_edge_arcs
-                /*!< pointer to the chain of DXF \c HATCH boundary path
-                 * edge arcs. */
-)
-{
-#ifdef DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (hatch_boundary_path_edge_arcs == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-        }
-        while (hatch_boundary_path_edge_arcs != NULL)
-        {
-                struct DxfHatchBoundaryPathEdgeArc *iter = hatch_boundary_path_edge_arcs->next;
-                dxf_hatch_boundary_path_edge_arc_free (hatch_boundary_path_edge_arcs);
-                hatch_boundary_path_edge_arcs = (DxfHatchBoundaryPathEdgeArc *) iter;
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-}
-
-
-/*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
  * path edge ellipses and all their data fields.
  *
  * \version According to DXF R10 (backward compatibility).
@@ -4330,98 +4422,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_free_chain
 #if DEBUG
         DXF_DEBUG_END
 #endif
-}
-
-
-/*!
- * \brief Get the ID code from a DXF \c HATCH boundary path edge arc.
- *
- * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- */
-int
-dxf_hatch_boundary_path_edge_arc_get_id_code
-(
-        DxfHatchBoundaryPathEdgeArc *arc
-                /*!< a pointer to a DXF \c HATCH boundary path edge arc. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int result;
-
-        /* Do some basic checks. */
-        if (arc == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (arc->id_code < 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id_code member.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        result = arc->id_code;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (result);
-}
-
-
-/*!
- * \brief Set the ID code for a DXF \c HATCH boundary path edge arc.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- */
-DxfHatchBoundaryPathEdgeArc *
-dxf_hatch_boundary_path_edge_arc_set_id_code
-(
-        DxfHatchBoundaryPathEdgeArc *arc,
-                /*!< a pointer to a DXF \c HATCH boundary path edge arc. */
-        int id_code
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (arc == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (id_code < 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a negative id-code value was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        arc->id_code = id_code;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (arc);
 }
 
 
