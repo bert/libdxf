@@ -75,6 +75,367 @@ dxf_hatch_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatch *
+dxf_hatch_init
+(
+        DxfHatch *hatch
+                /*!< DXF hatch entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                hatch = dxf_hatch_new ();
+        }
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfHatch struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->id_code = 0;
+        hatch->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        hatch->layer = strdup (DXF_DEFAULT_LAYER);
+        hatch->x0 = 0.0;
+        hatch->y0 = 0.0;
+        hatch->z0 = 0.0;
+        hatch->extr_x0 = 0.0;
+        hatch->extr_y0 = 0.0;
+        hatch->extr_z0 = 0.0;
+        hatch->thickness = 0.0;
+        hatch->pattern_scale = 1.0;
+        hatch->pixel_size = 1.0;
+        hatch->pattern_angle = 0.0;
+        hatch->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        hatch->visibility = DXF_DEFAULT_VISIBILITY;
+        hatch->color = DXF_COLOR_BYLAYER;
+        hatch->paperspace = DXF_MODELSPACE;
+        hatch->solid_fill = 0;
+        hatch->associative = 1;
+        hatch->hatch_style = 0;
+        hatch->hatch_pattern_type = 0;
+        hatch->pattern_double = 0;
+        hatch->number_of_pattern_def_lines = 0;
+        hatch->def_lines = NULL;
+        hatch->number_of_boundary_paths = 0;
+        hatch->paths = NULL;
+        hatch->number_of_seed_points = 0;
+        hatch->seed_points = NULL;
+        hatch->graphics_data_size = 0;
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                hatch->binary_graphics_data[i] = strdup ("");
+        }
+        hatch->dictionary_owner_soft = strdup ("");
+        hatch->dictionary_owner_hard = strdup ("");
+        hatch->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
+/*!
+ * \brief Write DXF output to a file for a hatch entity (\c HATCH).
+ */
+int
+dxf_hatch_write
+(
+        DxfFile *fp,
+                /*!< file pointer to output file (or device). */
+        DxfHatch *hatch
+                /*!< DXF hatch entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *dxf_entity_name = strdup ("HATCH");
+        int i;
+
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (fp->acad_version_number < AutoCAD_14)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () illegal DXF version for this entity.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (hatch->layer, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning: empty layer string for the %s entity with id-code: %x\n")),
+                        dxf_entity_name, hatch->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is relocated to layer 0")),
+                        dxf_entity_name);
+                hatch->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        if (strcmp (hatch->linetype, "") == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning: empty linetype string for the %s entity with id-code: %x\n")),
+                        dxf_entity_name, hatch->id_code);
+                fprintf (stderr,
+                  (_("    %s entity is reset to default linetype")),
+                        dxf_entity_name);
+                hatch->linetype = strdup (DXF_DEFAULT_LINETYPE);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
+        if (hatch->id_code != -1)
+        {
+                fprintf (fp->fp, "  5\n%x\n", hatch->id_code);
+        }
+        /*!
+         * \todo for version R14.\n
+         * Implementing the start of application-defined group
+         * "{application_name", with Group code 102.\n
+         * For example: "{ACAD_REACTORS" indicates the start of the
+         * AutoCAD persistent reactors group.\n\n
+         * application-defined codes: Group codes and values within the
+         * 102 groups are application defined (optional).\n\n
+         * End of group, "}" (optional), with Group code 102.
+         */
+        if ((strcmp (hatch->dictionary_owner_soft, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
+                fprintf (fp->fp, "330\n%s\n", hatch->dictionary_owner_soft);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if ((strcmp (hatch->dictionary_owner_hard, "") != 0)
+          && (fp->acad_version_number >= AutoCAD_14))
+        {
+                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
+                fprintf (fp->fp, "360\n%s\n", hatch->dictionary_owner_hard);
+                fprintf (fp->fp, "102\n}\n");
+        }
+        if (fp->acad_version_number >= AutoCAD_13)
+        {
+                fprintf (fp->fp, "100\nAcDbEntity\n");
+        }
+        if (hatch->paperspace == DXF_PAPERSPACE)
+        {
+                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
+        }
+        fprintf (fp->fp, "  8\n%s\n", hatch->layer);
+        if (strcmp (hatch->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        {
+                fprintf (fp->fp, "  6\n%s\n", hatch->linetype);
+        }
+        if ((fp->acad_version_number <= AutoCAD_11)
+          && DXF_FLATLAND
+          && (hatch->elevation != 0.0))
+        {
+                fprintf (fp->fp, " 38\n%f\n", hatch->elevation);
+        }
+        if (hatch->thickness != 0.0)
+        {
+                fprintf (fp->fp, " 39\n%f\n", hatch->thickness);
+        }
+        if (hatch->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", hatch->color);
+        }
+        if (hatch->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", hatch->linetype_scale);
+        }
+        if (hatch->visibility != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", hatch->visibility);
+        }
+        if (hatch->graphics_data_size > 0)
+        {
+                fprintf (fp->fp, " 92\n%d\n", hatch->graphics_data_size);
+        }
+        i = 0;
+        while (strlen (hatch->binary_graphics_data[i]) > 0)
+        {
+                fprintf (fp->fp, "310\n%s\n", hatch->binary_graphics_data[i]);
+                i++;
+        }
+        fprintf (fp->fp, "100\nAcDbHatch\n");
+        fprintf (fp->fp, " 10\n%f\n", hatch->x0);
+        fprintf (fp->fp, " 20\n%f\n", hatch->y0);
+        fprintf (fp->fp, " 30\n%f\n", hatch->z0);
+        fprintf (fp->fp, "210\n%f\n", hatch->extr_x0);
+        fprintf (fp->fp, "220\n%f\n", hatch->extr_y0);
+        fprintf (fp->fp, "230\n%f\n", hatch->extr_z0);
+        fprintf (fp->fp, "  2\n%s\n", hatch->pattern_name);
+        fprintf (fp->fp, " 70\n%d\n", hatch->solid_fill);
+        fprintf (fp->fp, " 71\n%d\n", hatch->associative);
+        fprintf (fp->fp, " 91\n%d\n", hatch->number_of_boundary_paths);
+        dxf_hatch_boundary_path_write (fp, (DxfHatchBoundaryPath *) hatch->paths);
+        fprintf (fp->fp, " 75\n%d\n", hatch->hatch_style);
+        fprintf (fp->fp, " 76\n%d\n", hatch->hatch_pattern_type);
+        if (!hatch->solid_fill)
+        {
+                fprintf (fp->fp, " 52\n%f\n", hatch->pattern_angle);
+                fprintf (fp->fp, " 41\n%f\n", hatch->pattern_scale);
+                fprintf (fp->fp, " 77\n%d\n", hatch->pattern_double);
+        }
+        fprintf (fp->fp, " 78\n%d\n", hatch->number_of_pattern_def_lines);
+        DxfHatchPatternDefLine *line = NULL;
+        line = (DxfHatchPatternDefLine *) hatch->def_lines;
+        while (line != NULL)
+        {
+                dxf_hatch_pattern_def_line_write (fp, (DxfHatchPatternDefLine *) line);
+                line = (DxfHatchPatternDefLine *) line->next;
+        }
+        fprintf (fp->fp, " 47\n%f\n", hatch->pixel_size);
+        fprintf (fp->fp, " 98\n%d\n", hatch->number_of_seed_points);
+        DxfHatchPatternSeedPoint *point = NULL;
+        point = (DxfHatchPatternSeedPoint *) hatch->seed_points;
+        while (point != NULL)
+        {
+                dxf_hatch_pattern_seedpoint_write (fp, (DxfHatchPatternSeedPoint *) point);
+                point = (DxfHatchPatternSeedPoint *) point->next;
+        }
+        /* Clean up. */
+        dxf_hatch_pattern_def_line_free (line);
+        dxf_hatch_pattern_seedpoint_free (point);
+        free (dxf_entity_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a DXF \c HATCH and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_free
+(
+        DxfHatch *hatch
+                /*!< Pointer to the memory occupied by the DXF \c HATCH
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (hatch->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfHatch was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (hatch->pattern_name);
+        free (hatch->linetype);
+        free (hatch->layer);
+        free (hatch->def_lines);
+        free (hatch->paths);
+        free (hatch->seed_points);
+        for (i = 0; i < DXF_MAX_PARAM; i++)
+        {
+                free (hatch->binary_graphics_data[i]);
+        }
+        free (hatch->dictionary_owner_soft);
+        free (hatch->dictionary_owner_hard);
+        free (hatch);
+        hatch = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH
+ * entities and all their data fields.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ */
+void
+dxf_hatch_free_chain
+(
+        DxfHatch *hatches
+                /*!< pointer to the chain of DXF \c HATCH entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatches == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (hatches != NULL)
+        {
+                struct DxfHatch *iter = hatches->next;
+                dxf_hatch_free (hatches);
+                hatches = (DxfHatch *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Allocate memory for a DXF \c HATCH pattern.
  *
  * Fill the memory contents with zeros.
@@ -493,83 +854,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_new ()
         DXF_DEBUG_END
 #endif
         return (control_point);
-}
-
-
-/*!
- * \brief Allocate memory and initialize data fields in a DXF \c HATCH
- * entity.
- * 
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
- */
-DxfHatch *
-dxf_hatch_init
-(
-        DxfHatch *hatch
-                /*!< DXF hatch entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int i;
-
-        /* Do some basic checks. */
-        if (hatch == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                hatch = dxf_hatch_new ();
-        }
-        if (hatch == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatch struct.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        hatch->id_code = 0;
-        hatch->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        hatch->layer = strdup (DXF_DEFAULT_LAYER);
-        hatch->x0 = 0.0;
-        hatch->y0 = 0.0;
-        hatch->z0 = 0.0;
-        hatch->extr_x0 = 0.0;
-        hatch->extr_y0 = 0.0;
-        hatch->extr_z0 = 0.0;
-        hatch->thickness = 0.0;
-        hatch->pattern_scale = 1.0;
-        hatch->pixel_size = 1.0;
-        hatch->pattern_angle = 0.0;
-        hatch->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        hatch->visibility = DXF_DEFAULT_VISIBILITY;
-        hatch->color = DXF_COLOR_BYLAYER;
-        hatch->paperspace = DXF_MODELSPACE;
-        hatch->solid_fill = 0;
-        hatch->associative = 1;
-        hatch->hatch_style = 0;
-        hatch->hatch_pattern_type = 0;
-        hatch->pattern_double = 0;
-        hatch->number_of_pattern_def_lines = 0;
-        hatch->def_lines = NULL;
-        hatch->number_of_boundary_paths = 0;
-        hatch->paths = NULL;
-        hatch->number_of_seed_points = 0;
-        hatch->seed_points = NULL;
-        hatch->graphics_data_size = 0;
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                hatch->binary_graphics_data[i] = strdup ("");
-        }
-        hatch->dictionary_owner_soft = strdup ("");
-        hatch->dictionary_owner_hard = strdup ("");
-        hatch->next = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (hatch);
 }
 
 
@@ -2470,195 +2754,6 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
 
 
 /*!
- * \brief Write DXF output to a file for a hatch entity (\c HATCH).
- */
-int
-dxf_hatch_write
-(
-        DxfFile *fp,
-                /*!< file pointer to output file (or device). */
-        DxfHatch *hatch
-                /*!< DXF hatch entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        char *dxf_entity_name = strdup ("HATCH");
-        int i;
-
-        /* Do some basic checks. */
-        if (fp == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL file pointer was passed.\n")),
-                  __FUNCTION__);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
-        if (fp->acad_version_number < AutoCAD_14)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () illegal DXF version for this entity.\n")),
-                  __FUNCTION__);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
-        if (hatch == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                /* Clean up. */
-                free (dxf_entity_name);
-                return (EXIT_FAILURE);
-        }
-        if (strcmp (hatch->layer, "") == 0)
-        {
-                fprintf (stderr,
-                  (_("Warning: empty layer string for the %s entity with id-code: %x\n")),
-                        dxf_entity_name, hatch->id_code);
-                fprintf (stderr,
-                  (_("    %s entity is relocated to layer 0")),
-                        dxf_entity_name);
-                hatch->layer = strdup (DXF_DEFAULT_LAYER);
-        }
-        if (strcmp (hatch->linetype, "") == 0)
-        {
-                fprintf (stderr,
-                  (_("Warning: empty linetype string for the %s entity with id-code: %x\n")),
-                        dxf_entity_name, hatch->id_code);
-                fprintf (stderr,
-                  (_("    %s entity is reset to default linetype")),
-                        dxf_entity_name);
-                hatch->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        }
-        /* Start writing output. */
-        fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (hatch->id_code != -1)
-        {
-                fprintf (fp->fp, "  5\n%x\n", hatch->id_code);
-        }
-        /*!
-         * \todo for version R14.\n
-         * Implementing the start of application-defined group
-         * "{application_name", with Group code 102.\n
-         * For example: "{ACAD_REACTORS" indicates the start of the
-         * AutoCAD persistent reactors group.\n\n
-         * application-defined codes: Group codes and values within the
-         * 102 groups are application defined (optional).\n\n
-         * End of group, "}" (optional), with Group code 102.
-         */
-        if ((strcmp (hatch->dictionary_owner_soft, "") != 0)
-          && (fp->acad_version_number >= AutoCAD_14))
-        {
-                fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", hatch->dictionary_owner_soft);
-                fprintf (fp->fp, "102\n}\n");
-        }
-        if ((strcmp (hatch->dictionary_owner_hard, "") != 0)
-          && (fp->acad_version_number >= AutoCAD_14))
-        {
-                fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", hatch->dictionary_owner_hard);
-                fprintf (fp->fp, "102\n}\n");
-        }
-        if (fp->acad_version_number >= AutoCAD_13)
-        {
-                fprintf (fp->fp, "100\nAcDbEntity\n");
-        }
-        if (hatch->paperspace == DXF_PAPERSPACE)
-        {
-                fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
-        }
-        fprintf (fp->fp, "  8\n%s\n", hatch->layer);
-        if (strcmp (hatch->linetype, DXF_DEFAULT_LINETYPE) != 0)
-        {
-                fprintf (fp->fp, "  6\n%s\n", hatch->linetype);
-        }
-        if ((fp->acad_version_number <= AutoCAD_11)
-          && DXF_FLATLAND
-          && (hatch->elevation != 0.0))
-        {
-                fprintf (fp->fp, " 38\n%f\n", hatch->elevation);
-        }
-        if (hatch->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", hatch->thickness);
-        }
-        if (hatch->color != DXF_COLOR_BYLAYER)
-        {
-                fprintf (fp->fp, " 62\n%d\n", hatch->color);
-        }
-        if (hatch->linetype_scale != 1.0)
-        {
-                fprintf (fp->fp, " 48\n%f\n", hatch->linetype_scale);
-        }
-        if (hatch->visibility != 0)
-        {
-                fprintf (fp->fp, " 60\n%d\n", hatch->visibility);
-        }
-        if (hatch->graphics_data_size > 0)
-        {
-                fprintf (fp->fp, " 92\n%d\n", hatch->graphics_data_size);
-        }
-        i = 0;
-        while (strlen (hatch->binary_graphics_data[i]) > 0)
-        {
-                fprintf (fp->fp, "310\n%s\n", hatch->binary_graphics_data[i]);
-                i++;
-        }
-        fprintf (fp->fp, "100\nAcDbHatch\n");
-        fprintf (fp->fp, " 10\n%f\n", hatch->x0);
-        fprintf (fp->fp, " 20\n%f\n", hatch->y0);
-        fprintf (fp->fp, " 30\n%f\n", hatch->z0);
-        fprintf (fp->fp, "210\n%f\n", hatch->extr_x0);
-        fprintf (fp->fp, "220\n%f\n", hatch->extr_y0);
-        fprintf (fp->fp, "230\n%f\n", hatch->extr_z0);
-        fprintf (fp->fp, "  2\n%s\n", hatch->pattern_name);
-        fprintf (fp->fp, " 70\n%d\n", hatch->solid_fill);
-        fprintf (fp->fp, " 71\n%d\n", hatch->associative);
-        fprintf (fp->fp, " 91\n%d\n", hatch->number_of_boundary_paths);
-        dxf_hatch_boundary_path_write (fp, (DxfHatchBoundaryPath *) hatch->paths);
-        fprintf (fp->fp, " 75\n%d\n", hatch->hatch_style);
-        fprintf (fp->fp, " 76\n%d\n", hatch->hatch_pattern_type);
-        if (!hatch->solid_fill)
-        {
-                fprintf (fp->fp, " 52\n%f\n", hatch->pattern_angle);
-                fprintf (fp->fp, " 41\n%f\n", hatch->pattern_scale);
-                fprintf (fp->fp, " 77\n%d\n", hatch->pattern_double);
-        }
-        fprintf (fp->fp, " 78\n%d\n", hatch->number_of_pattern_def_lines);
-        DxfHatchPatternDefLine *line = NULL;
-        line = (DxfHatchPatternDefLine *) hatch->def_lines;
-        while (line != NULL)
-        {
-                dxf_hatch_pattern_def_line_write (fp, (DxfHatchPatternDefLine *) line);
-                line = (DxfHatchPatternDefLine *) line->next;
-        }
-        fprintf (fp->fp, " 47\n%f\n", hatch->pixel_size);
-        fprintf (fp->fp, " 98\n%d\n", hatch->number_of_seed_points);
-        DxfHatchPatternSeedPoint *point = NULL;
-        point = (DxfHatchPatternSeedPoint *) hatch->seed_points;
-        while (point != NULL)
-        {
-                dxf_hatch_pattern_seedpoint_write (fp, (DxfHatchPatternSeedPoint *) point);
-                point = (DxfHatchPatternSeedPoint *) point->next;
-        }
-        /* Clean up. */
-        dxf_hatch_pattern_def_line_free (line);
-        dxf_hatch_pattern_seedpoint_free (point);
-        free (dxf_entity_name);
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Write DXF output to a file for a DXF \c HATCH pattern definition
  * line.
  *
@@ -3247,62 +3342,6 @@ dxf_hatch_boundary_path_polyline_write
 
 
 /*!
- * \brief Free the allocated memory for a DXF \c HATCH and all it's
- * data fields.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_free
-(
-        DxfHatch *hatch
-                /*!< Pointer to the memory occupied by the DXF \c HATCH
-                 * entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int i;
-
-        /* Do some basic checks. */
-        if (hatch == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (hatch->next != NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfHatch was not NULL.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        free (hatch->pattern_name);
-        free (hatch->linetype);
-        free (hatch->layer);
-        free (hatch->def_lines);
-        free (hatch->paths);
-        free (hatch->seed_points);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (hatch->binary_graphics_data[i]);
-        }
-        free (hatch->dictionary_owner_soft);
-        free (hatch->dictionary_owner_hard);
-        free (hatch);
-        hatch = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Free the allocated memory for a DXF \c HATCH pattern and all
  * it's data fields.
  *
@@ -3813,45 +3852,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
         DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH
- * entities and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
- */
-void
-dxf_hatch_free_chain
-(
-        DxfHatch *hatches
-                /*!< pointer to the chain of DXF \c HATCH entities. */
-)
-{
-#ifdef DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (hatches == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-        }
-        while (hatches != NULL)
-        {
-                struct DxfHatch *iter = hatches->next;
-                dxf_hatch_free (hatches);
-                hatches = (DxfHatch *) iter;
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
 }
 
 
