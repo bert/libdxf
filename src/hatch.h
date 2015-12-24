@@ -667,8 +667,50 @@ dxf_hatch_boundary_path_polyline_free_chain
 );
 DxfHatchBoundaryPathPolylineVertex *
 dxf_hatch_boundary_path_polyline_vertex_new ();
+DxfHatchBoundaryPathPolylineVertex *
+dxf_hatch_boundary_path_polyline_vertex_init
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex
+);
+int
+dxf_hatch_boundary_path_polyline_vertex_write
+(
+        DxfFile *fp,
+        DxfHatchBoundaryPathPolylineVertex *vertex
+);
+int
+dxf_hatch_boundary_path_polyline_vertex_free
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex
+);
+void
+dxf_hatch_boundary_path_polyline_vertex_free_chain
+(
+        DxfHatchBoundaryPathPolylineVertex *hatch_boundary_path_polyline_vertices
+);
+double
+dxf_hatch_boundary_path_polyline_vertex_angle
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex_0,
+        DxfHatchBoundaryPathPolylineVertex *vertex_1
+);
 DxfHatchBoundaryPathEdge *
 dxf_hatch_boundary_path_edge_new ();
+DxfHatchBoundaryPathEdge *
+dxf_hatch_boundary_path_edge_init
+(
+        DxfHatchBoundaryPathEdge *edge
+);
+int
+dxf_hatch_boundary_path_edge_free
+(
+        DxfHatchBoundaryPathEdge *edge
+);
+void
+dxf_hatch_boundary_path_edge_free_chain
+(
+        DxfHatchBoundaryPathEdge *hatch_boundary_path_edges
+);
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_new ();
 DxfHatchBoundaryPathEdgeEllipse *
@@ -679,16 +721,6 @@ DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_new ();
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_control_point_new ();
-DxfHatchBoundaryPathPolylineVertex *
-dxf_hatch_boundary_path_polyline_vertex_init
-(
-        DxfHatchBoundaryPathPolylineVertex *vertex
-);
-DxfHatchBoundaryPathEdge *
-dxf_hatch_boundary_path_edge_init
-(
-        DxfHatchBoundaryPathEdge *edge
-);
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_init
 (
@@ -812,28 +844,6 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
         DxfHatchBoundaryPathPolyline *polyline,
         DxfPoint *point
 );
-double
-dxf_hatch_boundary_path_polyline_vertex_angle
-(
-        DxfHatchBoundaryPathPolylineVertex *vertex_0,
-        DxfHatchBoundaryPathPolylineVertex *vertex_1
-);
-int
-dxf_hatch_boundary_path_polyline_vertex_write
-(
-        DxfFile *fp,
-        DxfHatchBoundaryPathPolylineVertex *vertex
-);
-int
-dxf_hatch_boundary_path_polyline_vertex_free
-(
-        DxfHatchBoundaryPathPolylineVertex *vertex
-);
-int
-dxf_hatch_boundary_path_edge_free
-(
-        DxfHatchBoundaryPathEdge *edge
-);
 int
 dxf_hatch_boundary_path_edge_arc_free
 (
@@ -858,16 +868,6 @@ int
 dxf_hatch_boundary_path_edge_spline_control_point_free
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point
-);
-void
-dxf_hatch_boundary_path_polyline_vertex_free_chain
-(
-        DxfHatchBoundaryPathPolylineVertex *hatch_boundary_path_polyline_vertices
-);
-void
-dxf_hatch_boundary_path_edge_free_chain
-(
-        DxfHatchBoundaryPathEdge *hatch_boundary_path_edges
 );
 void
 dxf_hatch_boundary_path_edge_arc_free_chain
