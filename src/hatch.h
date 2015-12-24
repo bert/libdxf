@@ -609,18 +609,39 @@ dxf_hatch_pattern_seedpoint_write
         DxfFile *fp,
         DxfHatchPatternSeedPoint *seedpoint
 );
+int
+dxf_hatch_pattern_seedpoint_free
+(
+        DxfHatchPatternSeedPoint *seedpoint
+);
 void
 dxf_hatch_pattern_seedpoint_free_chain
 (
         DxfHatchPatternSeedPoint *hatch_pattern_seed_points
+);
+DxfHatchBoundaryPath *
+dxf_hatch_boundary_path_new ();
+DxfHatchBoundaryPath *
+dxf_hatch_boundary_path_init
+(
+        DxfHatchBoundaryPath *path
+);
+int
+dxf_hatch_boundary_path_write
+(
+        DxfFile *fp,
+        DxfHatchBoundaryPath *path
 );
 int
 dxf_hatch_boundary_path_free
 (
         DxfHatchBoundaryPath *path
 );
-DxfHatchBoundaryPath *
-dxf_hatch_boundary_path_new ();
+void
+dxf_hatch_boundary_path_free_chain
+(
+        DxfHatchBoundaryPath *hatch_boundary_paths
+);
 DxfHatchBoundaryPathPolyline *
 dxf_hatch_boundary_path_polyline_new ();
 DxfHatchBoundaryPathPolylineVertex *
@@ -637,11 +658,6 @@ DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_new ();
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_control_point_new ();
-DxfHatchBoundaryPath *
-dxf_hatch_boundary_path_init
-(
-        DxfHatchBoundaryPath *path
-);
 DxfHatchBoundaryPathPolyline *
 dxf_hatch_boundary_path_polyline_init
 (
@@ -770,12 +786,6 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
         double *knot_values[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
 );
 int
-dxf_hatch_boundary_path_write
-(
-        DxfFile *fp,
-        DxfHatchBoundaryPath *path
-);
-int
 dxf_hatch_boundary_path_polyline_close_polyline
 (
         DxfHatchBoundaryPathPolyline *polyline
@@ -803,11 +813,6 @@ dxf_hatch_boundary_path_polyline_vertex_write
 (
         DxfFile *fp,
         DxfHatchBoundaryPathPolylineVertex *vertex
-);
-int
-dxf_hatch_pattern_seedpoint_free
-(
-        DxfHatchPatternSeedPoint *seedpoint
 );
 int
 dxf_hatch_boundary_path_polyline_free
@@ -848,11 +853,6 @@ int
 dxf_hatch_boundary_path_edge_spline_control_point_free
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point
-);
-void
-dxf_hatch_boundary_path_free_chain
-(
-        DxfHatchBoundaryPath *hatch_boundary_paths
 );
 void
 dxf_hatch_boundary_path_polyline_free_chain
