@@ -901,6 +901,12 @@ dxf_hatch_boundary_path_edge_arc_get_id_code
 (
         DxfHatchBoundaryPathEdgeArc *arc
 );
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_set_id_code
+(
+        DxfHatchBoundaryPathEdgeArc *arc,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_HATCH_H */
