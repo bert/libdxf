@@ -533,6 +533,7 @@ dxf_hatch
 } DxfHatch;
 
 
+/* dxf_hatch functions. */
 DxfHatch *
 dxf_hatch_new ();
 DxfHatch *
@@ -556,6 +557,7 @@ dxf_hatch_free_chain
 (
         DxfHatch *hatches
 );
+/* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
 DxfHatchPattern *
@@ -573,6 +575,7 @@ dxf_hatch_pattern_free_chain
 (
         DxfHatchPattern *hatch_patterns
 );
+/* dxf_hatch_pattern_def_line functions. */
 DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_new ();
 DxfHatchPatternDefLine *
@@ -596,6 +599,7 @@ dxf_hatch_pattern_def_line_free_chain
 (
         DxfHatchPatternDefLine *hatch_pattern_def_lines
 );
+/* dxf_hatch_pattern_seedpoint functions. */
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_new ();
 DxfHatchPatternSeedPoint *
@@ -619,6 +623,7 @@ dxf_hatch_pattern_seedpoint_free_chain
 (
         DxfHatchPatternSeedPoint *hatch_pattern_seed_points
 );
+/* dxf_hatch_boundary_path functions. */
 DxfHatchBoundaryPath *
 dxf_hatch_boundary_path_new ();
 DxfHatchBoundaryPath *
@@ -642,6 +647,7 @@ dxf_hatch_boundary_path_free_chain
 (
         DxfHatchBoundaryPath *hatch_boundary_paths
 );
+/* dxf_hatch_boundary_path_polyline functions. */
 DxfHatchBoundaryPathPolyline *
 dxf_hatch_boundary_path_polyline_new ();
 DxfHatchBoundaryPathPolyline *
@@ -665,6 +671,7 @@ dxf_hatch_boundary_path_polyline_free_chain
 (
         DxfHatchBoundaryPathPolyline *hatch_boundary_path_polylines
 );
+/* dxf_hatch_boundary_pathPolyline_vertex functions. */
 DxfHatchBoundaryPathPolylineVertex *
 dxf_hatch_boundary_path_polyline_vertex_new ();
 DxfHatchBoundaryPathPolylineVertex *
@@ -694,6 +701,7 @@ dxf_hatch_boundary_path_polyline_vertex_angle
         DxfHatchBoundaryPathPolylineVertex *vertex_0,
         DxfHatchBoundaryPathPolylineVertex *vertex_1
 );
+/* dxf_hatch_boundary_path_edge functions. */
 DxfHatchBoundaryPathEdge *
 dxf_hatch_boundary_path_edge_new ();
 DxfHatchBoundaryPathEdge *
@@ -711,6 +719,7 @@ dxf_hatch_boundary_path_edge_free_chain
 (
         DxfHatchBoundaryPathEdge *hatch_boundary_path_edges
 );
+/* dxf_hatch_boundary_path_edge_arc functions. */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_new ();
 DxfHatchBoundaryPathEdgeArc *
@@ -739,6 +748,7 @@ dxf_hatch_boundary_path_edge_arc_set_id_code
         DxfHatchBoundaryPathEdgeArc *arc,
         int id_code
 );
+/* dxf_hatch_boundary_path_edge_ellipse functions. */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_new ();
 DxfHatchBoundaryPathEdgeEllipse *
@@ -756,6 +766,7 @@ dxf_hatch_boundary_path_edge_ellipse_free_chain
 (
         DxfHatchBoundaryPathEdgeEllipse *hatch_boundary_path_edge_ellipses
 );
+/* dxf_hatch_boundary_path_edge_line functions. */
 DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_new ();
 DxfHatchBoundaryPathEdgeLine *
@@ -773,6 +784,7 @@ dxf_hatch_boundary_path_edge_line_free_chain
 (
         DxfHatchBoundaryPathEdgeLine *hatch_boundary_path_edge_lines
 );
+/* dxf_hatch_boundary_path_edge_spline functions. */
 DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_new ();
 DxfHatchBoundaryPathEdgeSpline *
@@ -790,6 +802,7 @@ dxf_hatch_boundary_path_edge_spline_free_chain
 (
         DxfHatchBoundaryPathEdgeSpline *hatch_boundary_path_edge_splines
 );
+/* dxf_hatch_boundary_path_edge_splie_control_point functions. */
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_control_point_new ();
 DxfHatchBoundaryPathEdgeSplineCp *

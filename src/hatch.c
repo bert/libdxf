@@ -39,6 +39,8 @@
 #include "hatch.h"
 
 
+/* dxf_hatch functions. */
+
 /*!
  * \brief Allocate memory for a DXF \c HATCH.
  *
@@ -435,6 +437,8 @@ dxf_hatch_free_chain
 }
 
 
+/* dxf_hatch_pattern functions. */
+
 /*!
  * \brief Allocate memory for a DXF \c HATCH pattern.
  *
@@ -600,6 +604,8 @@ dxf_hatch_pattern_free_chain
 #endif
 }
 
+
+/* dxf_hatch_pattern_def_line functions. */
 
 /*!
  * \brief Allocate memory for a DXF \c HATCH pattern definition line.
@@ -835,6 +841,8 @@ dxf_hatch_pattern_def_line_free_chain
 }
 
 
+/* dxf_hatch_pattern_seedpoint functions. */
+
 /*!
  * \brief Allocate memory for a DXF \c HATCH pattern seedpoint.
  *
@@ -1038,6 +1046,8 @@ dxf_hatch_pattern_seedpoint_free_chain
 #endif
 }
 
+
+/* dxf_hatch_boundary_path functions. */
 
 /*!
  * \brief Allocate memory for a DXF \c HATCH boundary path.
@@ -1285,6 +1295,8 @@ dxf_hatch_boundary_path_free_chain
 }
 
 
+/* dxf_hatch_boundary_path_polyline functions. */
+
 /*!
  * \brief Allocate memory for a DXF \c HATCH boundary path polyline.
  *
@@ -1522,6 +1534,8 @@ dxf_hatch_boundary_path_polyline_free_chain
 #endif
 }
 
+
+/* dxf_hatch_boundary_path_polyline_vertex functions. */
 
 /*!
  * \brief Allocate memory for a DXF \c HATCH boundary path polyline
@@ -1794,6 +1808,8 @@ dxf_hatch_boundary_path_polyline_vertex_angle
 }
 
 
+/* dxf_hatch_boundary_path_edge functions. */
+
 /*!
  * \brief Allocate memory for a DXF \c HATCH boundary path edge.
  *
@@ -1959,6 +1975,8 @@ dxf_hatch_boundary_path_edge_free_chain
 #endif
 }
 
+
+/* dxf_hatch_boundary_path_edge_arc functions. */
 
 /*!
  * \brief Allocate memory for a DXF \c HATCH boundary path edge arc.
@@ -2216,6 +2234,8 @@ dxf_hatch_boundary_path_edge_arc_set_id_code
 }
 
 
+/* dxf_hatch_boundary_path_edge_ellipse functions. */
+
 /*!
  * \brief Allocate memory for a DXF \c HATCH boundary path edge ellipse.
  *
@@ -2382,6 +2402,8 @@ dxf_hatch_boundary_path_edge_ellipse_free_chain
 }
 
 
+/* dxf_hatch_boundary_path_edge_line functions. */
+
 /*!
  * \brief Allocate memory for a DXF \c HATCH boundary path edge line.
  *
@@ -2543,6 +2565,8 @@ dxf_hatch_boundary_path_edge_line_free_chain
 #endif
 }
 
+
+/* dxf_hatch_boundary_path_edge_spline functions. */
 
 /*!
  * \brief Allocate memory for a DXF \c HATCH boundary path edge spline.
@@ -2714,6 +2738,8 @@ dxf_hatch_boundary_path_edge_spline_free_chain
 #endif
 }
 
+
+/* dxf_hatch_boundary_path_edge_splie_control_point functions. */
 
 /*!
  * \brief Allocate memory for a DXF \c HATCH boundary path edge spline
