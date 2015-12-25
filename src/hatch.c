@@ -1535,6 +1535,217 @@ dxf_hatch_boundary_path_polyline_free_chain
 }
 
 
+/*!
+ * \brief Test if a hatch boundary polyline is closed and add the missing
+ * vertex.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_polyline_close_polyline
+(
+        DxfHatchBoundaryPathPolyline *polyline
+                /*!< DXF hatch boundary path polyline entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () invalid pointer to polyline (NULL).\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->is_closed == 0)
+        {
+                /* iterate over all vertices until the last vertex,
+                 * append a new vertex with values of the first vertex,
+                 * and set the "is_closed" member to 1. */
+                DxfHatchBoundaryPathPolylineVertex *first;
+                DxfHatchBoundaryPathPolylineVertex *iter;
+                DxfHatchBoundaryPathPolylineVertex *next;
+                first = dxf_hatch_boundary_path_polyline_vertex_new ();
+                iter = dxf_hatch_boundary_path_polyline_vertex_new ();
+                next = dxf_hatch_boundary_path_polyline_vertex_new ();
+                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+                iter = first;
+                for (;;)
+                {
+                        if (iter->next == NULL)
+                        {
+                                next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+                                break;
+                        }
+                        iter = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+                }
+                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+                 /*! \todo How do we know what's the last id_code ?
+                  * This should be taken from a global id_code counter. */
+                next->id_code = iter->id_code + 1;
+                next->x0 = first->x0;
+                next->y0 = first->y0;
+                next->next = NULL;
+                iter->next = (struct DxfHatchBoundaryPathPolylineVertex *) next;
+                polyline->is_closed = 1;
+        }
+        else
+        {
+                /* iterate over all vertices until the last vertex,
+                 * test if the values of the last are identical with the
+                 * first vertex, if not: append a vertex with values of
+                 * the first vertex. */
+                DxfHatchBoundaryPathPolylineVertex *first;
+                DxfHatchBoundaryPathPolylineVertex *iter;
+                DxfHatchBoundaryPathPolylineVertex *next;
+                first = dxf_hatch_boundary_path_polyline_vertex_new ();
+                iter = dxf_hatch_boundary_path_polyline_vertex_new ();
+                next = dxf_hatch_boundary_path_polyline_vertex_new ();
+                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+                iter = first;
+                for (;;)
+                {
+                        if (iter->next == NULL)
+                        {
+                                next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+                                break;
+                        }
+                        iter = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+                }
+                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+                if (iter->x0 != first->x0 && iter->y0 != first->y0)
+                {
+                        /* the first vertex coordinates are identical to
+                         * the last vertex coordinates: do nothing and
+                         * leave. */
+                }
+                else
+                {
+                        /*! \todo How do we know what's the last id_code ?
+                         * This should be taken from a global id_code counter. */
+                        next->id_code = iter->id_code + 1;
+                        next->x0 = (double) first->x0;
+                        next->y0 = first->y0;
+                        next->next = NULL;
+                        iter->next = (struct DxfHatchBoundaryPathPolylineVertex *) next;
+                }
+                /*! \todo add code here ! */
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Compute if the coordinates of a point \c p lie inside or
+ * outside a DXF hatch boundary path polyline \c polyline entity.
+ *
+ * \author Paul Bourke <http://www.paulbourke.net/geometry/insidepoly/>\n
+ * Adapted for libDXF by Bert Timmerman <bert.timmerman@xs4all.nl>
+ *
+ * A solution by Philippe Reverdy is to compute the sum of the angles
+ * made between the test point and each pair of points making up the
+ * polygon.\n
+ * If this sum is (\f$ 2\pi \f$) then the point is an interior point,
+ * if 0 then the point is an exterior point.\n
+ * This also works for polygons with holes given the polygon is defined
+ * with a path made up of coincident edges into and out of the hole as
+ * is common practice in many CAD packages.\n
+ *
+ * \note For most of the "point-in-polygon" algorithms there is a
+ * pathological case if the point being queries lies exactly on a
+ * vertex.\n
+ * The easiest way to cope with this is to test that as a separate
+ * process and make your own decision as to whether you want to consider
+ * them inside or outside.
+ *
+ * \note It is assumed that the polygon is simple (does not intersect
+ * itself).
+ *
+ * \return \c INSIDE if an interior point, \c OUTSIDE if an exterior
+ * point, or \c EXIT_FAILURE if an error occurred.
+ */
+int
+dxf_hatch_boundary_path_polyline_point_inside_polyline
+(
+        DxfHatchBoundaryPathPolyline *polyline,
+                /*!< DXF hatch boundary path polyline entity. */
+        DxfPoint *point
+                /*!< The point to be tested for. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () invalid pointer to polyline (NULL).\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () invalid pointer to point (NULL).\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->is_closed != 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () polyline is not a closed polygon.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        DxfHatchBoundaryPathPolylineVertex *p0;
+        DxfHatchBoundaryPathPolylineVertex *p1;
+        DxfHatchBoundaryPathPolylineVertex *iter;
+        DxfHatchBoundaryPathPolylineVertex *next;
+        double angle;
+        p0 = dxf_hatch_boundary_path_polyline_vertex_new ();
+        p1 = dxf_hatch_boundary_path_polyline_vertex_new ();
+        iter = dxf_hatch_boundary_path_polyline_vertex_new ();
+        next = dxf_hatch_boundary_path_polyline_vertex_new ();
+        iter = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
+        next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+        angle = 0;
+        for (;;)
+        {
+                if (next == NULL)
+                {
+                        /* iter is the last vertex, no use to continue. */
+                        break;
+                }
+                next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+                p0->x0 = iter->x0 - point->x0;
+                p0->y0 = iter->y0 - point->y0;
+                p1->x0 = next->x0 - point->x0;
+                p1->y0 = next->y0 - point->y0;
+                angle += dxf_hatch_boundary_path_polyline_vertex_angle (iter, next);
+                iter = next;
+        }
+        /* clean up. */
+        dxf_hatch_boundary_path_polyline_vertex_free (p0);
+        dxf_hatch_boundary_path_polyline_vertex_free (p1);
+        if (abs (angle) < M_PI)
+                return (OUTSIDE);
+        else
+                return (INSIDE);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        /*! \todo This is a dead code path. */
+        return (EXIT_FAILURE);
+}
+
+
 /* dxf_hatch_boundary_path_polyline_vertex functions. */
 
 /*!
@@ -2739,88 +2950,6 @@ dxf_hatch_boundary_path_edge_spline_free_chain
 }
 
 
-/* dxf_hatch_boundary_path_edge_splie_control_point functions. */
-
-/*!
- * \brief Allocate memory for a DXF \c HATCH boundary path edge spline
- * control point.
- *
- * Fill the memory contents with zeros.
- */
-DxfHatchBoundaryPathEdgeSplineCp *
-dxf_hatch_boundary_path_edge_spline_control_point_new ()
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        DxfHatchBoundaryPathEdgeSplineCp *control_point = NULL;
-        size_t size;
-
-        size = sizeof (DxfHatchBoundaryPathEdgeSplineCp);
-        /* avoid malloc of 0 bytes */
-        if (size == 0) size = 1;
-        if ((control_point = malloc (size)) == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n")),
-                  __FUNCTION__);
-                control_point = NULL;
-        }
-        else
-        {
-                memset (control_point, 0, size);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (control_point);
-}
-
-
-/*!
- * \brief Allocate memory and initialize data fields in a DXF \c HATCH
- * boundary path edge spline control point entity.
- * 
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
- */
-DxfHatchBoundaryPathEdgeSplineCp *
-dxf_hatch_boundary_path_edge_spline_control_point_init
-(
-        DxfHatchBoundaryPathEdgeSplineCp *control_point
-                /*!< DXF hatch boundary path edge spline control point entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (control_point == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                control_point = dxf_hatch_boundary_path_edge_spline_control_point_new ();
-        }
-        if (control_point == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        control_point->id_code = 0;
-        control_point->x0 = 0.0;
-        control_point->y0 = 0.0;
-        control_point->weight = 0.0;
-        control_point->next = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (control_point);
-}
-
-
 /*!
  * \brief Append a control point to a \c HATCH boundary path edge spline
  * entity.
@@ -2964,53 +3093,6 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
 
 
 /*!
- * \brief Append a knot value to a \c HATCH boundary path edge spline
- * entity.
- *
- * After testing for a \c NULL pointer or an array pointer overflow,
- * both the knot value is appended and the \c number_of_knots is
- * increased by 1.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_boundary_path_edge_spline_append_knot_value
-(
-        DxfHatchBoundaryPathEdgeSpline *spline,
-                /*!< DXF \c HATCH boundary path edge spline entity. */
-        double knot_value
-                /*!< knot value. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (spline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if ((spline->number_of_knots + 1) > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
-        {
-                fprintf (stderr,
-                  (("Error in %s () resulted in a array pointer overflow.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        spline->knots[spline->number_of_knots + 1] = knot_value;
-        spline->number_of_knots++;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Prepend a control point to a \c HATCH boundary path edge spline
  * entity.
  *
@@ -3139,59 +3221,6 @@ dxf_hatch_boundary_path_edge_spline_prepend_control_point
 
 
 /*!
- * \brief Prepend a knot value to a \c HATCH boundary path edge spline
- * entity.
- *
- * After testing for a \c NULL pointer or an array pointer overflow, all
- * the \c knots[] values are shifted one position up, the knot value is
- * prepended and the \c number_of_knots is increased by 1.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_boundary_path_edge_spline_prepend_knot_value
-(
-        DxfHatchBoundaryPathEdgeSpline *spline,
-                /*!< DXF \c HATCH boundary path edge spline entity. */
-        double knot_value
-                /*!< knot value. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int i;
-
-        /* Do some basic checks. */
-        if (spline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if ((spline->number_of_knots + 1) > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () resulted in a array pointer overflow.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        for (i = spline->number_of_knots; i > 0; i--)
-        {
-                spline->knots[i + 1] = spline->knots[i];
-        }
-        spline->knots[0] = knot_value;
-        spline->number_of_knots++;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Get a control point to a \c HATCH boundary path edge spline
  * entity.
  *
@@ -3266,59 +3295,6 @@ dxf_hatch_boundary_path_edge_spline_get_control_point
         DXF_DEBUG_END
 #endif
         return (control_point);
-}
-
-
-/*!
- * \brief Get a knot value from a \c HATCH boundary path edge spline
- * entity.
- *
- * After testing for a \c NULL pointer or an array pointer overflow, the
- * desired knot value at \c position is returned.
- *
- * \return the knot value.
- */
-double
-dxf_hatch_boundary_path_edge_spline_get_knot_value
-(
-        DxfHatchBoundaryPathEdgeSpline *spline,
-                /*!< DXF \c HATCH boundary path edge spline entity. */
-        int position
-                /*!< position in the array of knot values [0 .. DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        double knot_value;
-
-        /* Do some basic checks. */
-        if (spline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (position <= 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () received an invalid value in position.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (position > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
-        {
-                fprintf (stderr,
-                  (_("Error in  %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        knot_value = spline->knots[position];
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (knot_value);
 }
 
 
@@ -3427,59 +3403,6 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
                 dxf_hatch_boundary_path_edge_spline_control_point_free (control_point);
                 control_point = NULL;
         }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Set a knot value to a \c HATCH boundary path edge spline entity.
- *
- * After testing for a \c NULL pointer or an array pointer overflow, the
- * desired knot value at \c position is set.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_boundary_path_edge_spline_set_knot_value
-(
-        DxfHatchBoundaryPathEdgeSpline *spline,
-                /*!< DXF \c HATCH boundary path edge spline entity. */
-        int position,
-                /*!< position in the array of knot values [0 .. DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]. */
-        double knot_value
-                /*!< knot value. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (spline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (position <= 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () received an invalid value in position.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (position > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        spline->knots[position] = knot_value;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3689,76 +3612,6 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
 
 
 /*!
- * \brief Insert a knot value into a \c HATCH boundary path edge spline
- * entity.
- *
- * After testing for a \c NULL pointer or an array pointer overflow, all
- * the knot values upwards of \c knots[\c position] are shifted one
- * position,  the knot value is inserted at \c knots[\c position] and
- * the  \c number_of_knots is increased by 1.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_boundary_path_edge_spline_insert_knot_value
-(
-        DxfHatchBoundaryPathEdgeSpline *spline,
-                /*!< DXF \c HATCH boundary path edge spline entity. */
-        int position,
-                /*!< position in the array of knot values [0 .. DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]. */
-        double knot_value
-                /*!< knot value. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int i;
-
-        /* Do some basic checks. */
-        if (spline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if ((spline->number_of_knots + 1) > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () resulted in a array pointer overflow.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (position <= 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () received an invalid value in position.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (position >= DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        for (i = spline->number_of_knots; i <= position; i--)
-        {
-                spline->knots[i + 1] = spline->knots[i];
-        }
-        spline->knots[position] = knot_value;
-        spline->number_of_knots++;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
  * \brief Remove a control point from a \c HATCH boundary path edge spline
  * entity.
  *
@@ -3855,79 +3708,6 @@ dxf_hatch_boundary_path_edge_spline_remove_control_point
                 /* clean up. */
                 dxf_hatch_boundary_path_edge_spline_control_point_free (iter);
         }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Remove a knot value from a \c HATCH boundary path edge spline
- * entity.
- *
- * After testing for a \c NULL pointer or an array pointer overflow, all
- * the knot values upwards of \c knots[\c position] are shifted one
- * position down, and the \c number_of_knots is decreased by 1.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_boundary_path_edge_spline_remove_knot_value
-(
-        DxfHatchBoundaryPathEdgeSpline *spline,
-                /*!< DXF \c HATCH boundary path edge spline entity. */
-        int position
-                /*!< position in the array of knot values [0 .. DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int i;
-
-        /* Do some basic checks. */
-        if (spline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (spline->number_of_knots > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () resulted in a array pointer overflow.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if ((spline->number_of_knots - 1) < 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () resulted in a array pointer underflow.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (position <= 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () received an invalid value in position.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (position >= DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        for (i = position; i >= spline->number_of_knots; i++)
-        {
-                spline->knots[i] = spline->knots[i + 1];
-        }
-        spline->number_of_knots--;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -4105,6 +3885,355 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
 
 
 /*!
+ * \brief Append a knot value to a \c HATCH boundary path edge spline
+ * entity.
+ *
+ * After testing for a \c NULL pointer or an array pointer overflow,
+ * both the knot value is appended and the \c number_of_knots is
+ * increased by 1.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_append_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+                /*!< DXF \c HATCH boundary path edge spline entity. */
+        double knot_value
+                /*!< knot value. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if ((spline->number_of_knots + 1) > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        {
+                fprintf (stderr,
+                  (("Error in %s () resulted in a array pointer overflow.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        spline->knots[spline->number_of_knots + 1] = knot_value;
+        spline->number_of_knots++;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Prepend a knot value to a \c HATCH boundary path edge spline
+ * entity.
+ *
+ * After testing for a \c NULL pointer or an array pointer overflow, all
+ * the \c knots[] values are shifted one position up, the knot value is
+ * prepended and the \c number_of_knots is increased by 1.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_prepend_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+                /*!< DXF \c HATCH boundary path edge spline entity. */
+        double knot_value
+                /*!< knot value. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if ((spline->number_of_knots + 1) > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () resulted in a array pointer overflow.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        for (i = spline->number_of_knots; i > 0; i--)
+        {
+                spline->knots[i + 1] = spline->knots[i];
+        }
+        spline->knots[0] = knot_value;
+        spline->number_of_knots++;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Get a knot value from a \c HATCH boundary path edge spline
+ * entity.
+ *
+ * After testing for a \c NULL pointer or an array pointer overflow, the
+ * desired knot value at \c position is returned.
+ *
+ * \return the knot value.
+ */
+double
+dxf_hatch_boundary_path_edge_spline_get_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+                /*!< DXF \c HATCH boundary path edge spline entity. */
+        int position
+                /*!< position in the array of knot values [0 .. DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double knot_value;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (position <= 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received an invalid value in position.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (position > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        {
+                fprintf (stderr,
+                  (_("Error in  %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        knot_value = spline->knots[position];
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (knot_value);
+}
+
+
+/*!
+ * \brief Set a knot value to a \c HATCH boundary path edge spline entity.
+ *
+ * After testing for a \c NULL pointer or an array pointer overflow, the
+ * desired knot value at \c position is set.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_set_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+                /*!< DXF \c HATCH boundary path edge spline entity. */
+        int position,
+                /*!< position in the array of knot values [0 .. DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]. */
+        double knot_value
+                /*!< knot value. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (position <= 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received an invalid value in position.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (position > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        spline->knots[position] = knot_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Insert a knot value into a \c HATCH boundary path edge spline
+ * entity.
+ *
+ * After testing for a \c NULL pointer or an array pointer overflow, all
+ * the knot values upwards of \c knots[\c position] are shifted one
+ * position,  the knot value is inserted at \c knots[\c position] and
+ * the  \c number_of_knots is increased by 1.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_insert_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+                /*!< DXF \c HATCH boundary path edge spline entity. */
+        int position,
+                /*!< position in the array of knot values [0 .. DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]. */
+        double knot_value
+                /*!< knot value. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if ((spline->number_of_knots + 1) > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () resulted in a array pointer overflow.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (position <= 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received an invalid value in position.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (position >= DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        for (i = spline->number_of_knots; i <= position; i--)
+        {
+                spline->knots[i + 1] = spline->knots[i];
+        }
+        spline->knots[position] = knot_value;
+        spline->number_of_knots++;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Remove a knot value from a \c HATCH boundary path edge spline
+ * entity.
+ *
+ * After testing for a \c NULL pointer or an array pointer overflow, all
+ * the knot values upwards of \c knots[\c position] are shifted one
+ * position down, and the \c number_of_knots is decreased by 1.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_remove_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+                /*!< DXF \c HATCH boundary path edge spline entity. */
+        int position
+                /*!< position in the array of knot values [0 .. DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (spline->number_of_knots > DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () resulted in a array pointer overflow.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if ((spline->number_of_knots - 1) < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () resulted in a array pointer underflow.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (position <= 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received an invalid value in position.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (position >= DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received a position greater than DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        for (i = position; i >= spline->number_of_knots; i++)
+        {
+                spline->knots[i] = spline->knots[i + 1];
+        }
+        spline->number_of_knots--;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Copy knot values from a \c HATCH boundary path edge spline
  * entity into an array.
  *
@@ -4158,214 +4287,85 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
 }
 
 
+/* dxf_hatch_boundary_path_edge_splie_control_point functions. */
+
 /*!
- * \brief Test if a hatch boundary polyline is closed and add the missing
- * vertex.
+ * \brief Allocate memory for a DXF \c HATCH boundary path edge spline
+ * control point.
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * Fill the memory contents with zeros.
  */
-int
-dxf_hatch_boundary_path_polyline_close_polyline
-(
-        DxfHatchBoundaryPathPolyline *polyline
-                /*!< DXF hatch boundary path polyline entity. */
-)
+DxfHatchBoundaryPathEdgeSplineCp *
+dxf_hatch_boundary_path_edge_spline_control_point_new ()
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        /* Do some basic checks. */
-        if (polyline == NULL)
+        DxfHatchBoundaryPathEdgeSplineCp *control_point = NULL;
+        size_t size;
+
+        size = sizeof (DxfHatchBoundaryPathEdgeSplineCp);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((control_point = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () invalid pointer to polyline (NULL).\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (polyline->is_closed == 0)
-        {
-                /* iterate over all vertices until the last vertex,
-                 * append a new vertex with values of the first vertex,
-                 * and set the "is_closed" member to 1. */
-                DxfHatchBoundaryPathPolylineVertex *first;
-                DxfHatchBoundaryPathPolylineVertex *iter;
-                DxfHatchBoundaryPathPolylineVertex *next;
-                first = dxf_hatch_boundary_path_polyline_vertex_new ();
-                iter = dxf_hatch_boundary_path_polyline_vertex_new ();
-                next = dxf_hatch_boundary_path_polyline_vertex_new ();
-                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
-                iter = first;
-                for (;;)
-                {
-                        if (iter->next == NULL)
-                        {
-                                next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
-                                break;
-                        }
-                        iter = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
-                }
-                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
-                 /*! \todo How do we know what's the last id_code ?
-                  * This should be taken from a global id_code counter. */
-                next->id_code = iter->id_code + 1;
-                next->x0 = first->x0;
-                next->y0 = first->y0;
-                next->next = NULL;
-                iter->next = (struct DxfHatchBoundaryPathPolylineVertex *) next;
-                polyline->is_closed = 1;
+                control_point = NULL;
         }
         else
         {
-                /* iterate over all vertices until the last vertex,
-                 * test if the values of the last are identical with the
-                 * first vertex, if not: append a vertex with values of
-                 * the first vertex. */
-                DxfHatchBoundaryPathPolylineVertex *first;
-                DxfHatchBoundaryPathPolylineVertex *iter;
-                DxfHatchBoundaryPathPolylineVertex *next;
-                first = dxf_hatch_boundary_path_polyline_vertex_new ();
-                iter = dxf_hatch_boundary_path_polyline_vertex_new ();
-                next = dxf_hatch_boundary_path_polyline_vertex_new ();
-                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
-                iter = first;
-                for (;;)
-                {
-                        if (iter->next == NULL)
-                        {
-                                next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
-                                break;
-                        }
-                        iter = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
-                }
-                first = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
-                if (iter->x0 != first->x0 && iter->y0 != first->y0)
-                {
-                        /* the first vertex coordinates are identical to
-                         * the last vertex coordinates: do nothing and
-                         * leave. */
-                }
-                else
-                {
-                        /*! \todo How do we know what's the last id_code ?
-                         * This should be taken from a global id_code counter. */
-                        next->id_code = iter->id_code + 1;
-                        next->x0 = (double) first->x0;
-                        next->y0 = first->y0;
-                        next->next = NULL;
-                        iter->next = (struct DxfHatchBoundaryPathPolylineVertex *) next;
-                }
-                /*! \todo add code here ! */
+                memset (control_point, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (control_point);
 }
 
 
 /*!
- * \brief Compute if the coordinates of a point \c p lie inside or
- * outside a DXF hatch boundary path polyline \c polyline entity.
- *
- * \author Paul Bourke <http://www.paulbourke.net/geometry/insidepoly/>\n
- * Adapted for libDXF by Bert Timmerman <bert.timmerman@xs4all.nl>
- *
- * A solution by Philippe Reverdy is to compute the sum of the angles
- * made between the test point and each pair of points making up the
- * polygon.\n
- * If this sum is (\f$ 2\pi \f$) then the point is an interior point,
- * if 0 then the point is an exterior point.\n
- * This also works for polygons with holes given the polygon is defined
- * with a path made up of coincident edges into and out of the hole as
- * is common practice in many CAD packages.\n
- *
- * \note For most of the "point-in-polygon" algorithms there is a
- * pathological case if the point being queries lies exactly on a
- * vertex.\n
- * The easiest way to cope with this is to test that as a separate
- * process and make your own decision as to whether you want to consider
- * them inside or outside.
- *
- * \note It is assumed that the polygon is simple (does not intersect
- * itself).
- *
- * \return \c INSIDE if an interior point, \c OUTSIDE if an exterior
- * point, or \c EXIT_FAILURE if an error occurred.
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * boundary path edge spline control point entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
  */
-int
-dxf_hatch_boundary_path_polyline_point_inside_polyline
+DxfHatchBoundaryPathEdgeSplineCp *
+dxf_hatch_boundary_path_edge_spline_control_point_init
 (
-        DxfHatchBoundaryPathPolyline *polyline,
-                /*!< DXF hatch boundary path polyline entity. */
-        DxfPoint *point
-                /*!< The point to be tested for. */
+        DxfHatchBoundaryPathEdgeSplineCp *control_point
+                /*!< DXF hatch boundary path edge spline control point entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (polyline == NULL)
+        if (control_point == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () invalid pointer to polyline (NULL).\n")),
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                control_point = dxf_hatch_boundary_path_edge_spline_control_point_new ();
         }
-        if (point == NULL)
+        if (control_point == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () invalid pointer to point (NULL).\n")),
+                  (_("Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeSplineCp struct.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
-        if (polyline->is_closed != 1)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () polyline is not a closed polygon.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        DxfHatchBoundaryPathPolylineVertex *p0;
-        DxfHatchBoundaryPathPolylineVertex *p1;
-        DxfHatchBoundaryPathPolylineVertex *iter;
-        DxfHatchBoundaryPathPolylineVertex *next;
-        double angle;
-        p0 = dxf_hatch_boundary_path_polyline_vertex_new ();
-        p1 = dxf_hatch_boundary_path_polyline_vertex_new ();
-        iter = dxf_hatch_boundary_path_polyline_vertex_new ();
-        next = dxf_hatch_boundary_path_polyline_vertex_new ();
-        iter = (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices;
-        next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
-        angle = 0;
-        for (;;)
-        {
-                if (next == NULL)
-                {
-                        /* iter is the last vertex, no use to continue. */
-                        break;
-                }
-                next = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
-                p0->x0 = iter->x0 - point->x0;
-                p0->y0 = iter->y0 - point->y0;
-                p1->x0 = next->x0 - point->x0;
-                p1->y0 = next->y0 - point->y0;
-                angle += dxf_hatch_boundary_path_polyline_vertex_angle (iter, next);
-                iter = next;
-        }
-        /* clean up. */
-        dxf_hatch_boundary_path_polyline_vertex_free (p0);
-        dxf_hatch_boundary_path_polyline_vertex_free (p1);
-        if (abs (angle) < M_PI)
-                return (OUTSIDE);
-        else
-                return (INSIDE);
+        control_point->id_code = 0;
+        control_point->x0 = 0.0;
+        control_point->y0 = 0.0;
+        control_point->weight = 0.0;
+        control_point->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        /*! \todo This is a dead code path. */
-        return (EXIT_FAILURE);
+        return (control_point);
 }
 
 

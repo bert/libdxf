@@ -671,6 +671,17 @@ dxf_hatch_boundary_path_polyline_free_chain
 (
         DxfHatchBoundaryPathPolyline *hatch_boundary_path_polylines
 );
+int
+dxf_hatch_boundary_path_polyline_close_polyline
+(
+        DxfHatchBoundaryPathPolyline *polyline
+);
+int
+dxf_hatch_boundary_path_polyline_point_inside_polyline
+(
+        DxfHatchBoundaryPathPolyline *polyline,
+        DxfPoint *point
+);
 /* dxf_hatch_boundary_pathPolyline_vertex functions. */
 DxfHatchBoundaryPathPolylineVertex *
 dxf_hatch_boundary_path_polyline_vertex_new ();
@@ -802,14 +813,6 @@ dxf_hatch_boundary_path_edge_spline_free_chain
 (
         DxfHatchBoundaryPathEdgeSpline *hatch_boundary_path_edge_splines
 );
-/* dxf_hatch_boundary_path_edge_splie_control_point functions. */
-DxfHatchBoundaryPathEdgeSplineCp *
-dxf_hatch_boundary_path_edge_spline_control_point_new ();
-DxfHatchBoundaryPathEdgeSplineCp *
-dxf_hatch_boundary_path_edge_spline_control_point_init
-(
-        DxfHatchBoundaryPathEdgeSplineCp *control_point
-);
 int
 dxf_hatch_boundary_path_edge_spline_append_control_point
 (
@@ -817,31 +820,13 @@ dxf_hatch_boundary_path_edge_spline_append_control_point
         DxfHatchBoundaryPathEdgeSplineCp *control_point
 );
 int
-dxf_hatch_boundary_path_edge_spline_append_knot_value
-(
-        DxfHatchBoundaryPathEdgeSpline *spline,
-        double knot_value
-);
-int
 dxf_hatch_boundary_path_edge_spline_prepend_control_point
 (
         DxfHatchBoundaryPathEdgeSpline *spline,
         DxfHatchBoundaryPathEdgeSplineCp *control_point
 );
-int
-dxf_hatch_boundary_path_edge_spline_prepend_knot_value
-(
-        DxfHatchBoundaryPathEdgeSpline *spline,
-        double knot_value
-);
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_get_control_point
-(
-        DxfHatchBoundaryPathEdgeSpline *spline,
-        int position
-);
-double
-dxf_hatch_boundary_path_edge_spline_get_knot_value
 (
         DxfHatchBoundaryPathEdgeSpline *spline,
         int position
@@ -854,13 +839,6 @@ dxf_hatch_boundary_path_edge_spline_set_control_point
         DxfHatchBoundaryPathEdgeSplineCp *control_point
 );
 int
-dxf_hatch_boundary_path_edge_spline_set_knot_value
-(
-        DxfHatchBoundaryPathEdgeSpline *spline,
-        int position,
-        double knot_value
-);
-int
 dxf_hatch_boundary_path_edge_spline_insert_control_point
 (
         DxfHatchBoundaryPathEdgeSpline *spline,
@@ -868,20 +846,7 @@ dxf_hatch_boundary_path_edge_spline_insert_control_point
         DxfHatchBoundaryPathEdgeSplineCp *control_point
 );
 int
-dxf_hatch_boundary_path_edge_spline_insert_knot_value
-(
-        DxfHatchBoundaryPathEdgeSpline *spline,
-        int position,
-        double knot_value
-);
-int
 dxf_hatch_boundary_path_edge_spline_remove_control_point
-(
-        DxfHatchBoundaryPathEdgeSpline *spline,
-        int position
-);
-int
-dxf_hatch_boundary_path_edge_spline_remove_knot_value
 (
         DxfHatchBoundaryPathEdgeSpline *spline,
         int position
@@ -892,21 +857,56 @@ dxf_hatch_boundary_path_edge_spline_copy_control_points
         DxfHatchBoundaryPathEdgeSpline *spline
 );
 int
+dxf_hatch_boundary_path_edge_spline_append_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+        double knot_value
+);
+int
+dxf_hatch_boundary_path_edge_spline_prepend_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+        double knot_value
+);
+double
+dxf_hatch_boundary_path_edge_spline_get_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+        int position
+);
+int
+dxf_hatch_boundary_path_edge_spline_set_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+        int position,
+        double knot_value
+);
+int
+dxf_hatch_boundary_path_edge_spline_insert_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+        int position,
+        double knot_value
+);
+int
+dxf_hatch_boundary_path_edge_spline_remove_knot_value
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+        int position
+);
+int
 dxf_hatch_boundary_path_edge_spline_copy_knot_values
 (
         DxfHatchBoundaryPathEdgeSpline *spline,
         double *knot_values[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
 );
-int
-dxf_hatch_boundary_path_polyline_close_polyline
+/* dxf_hatch_boundary_path_edge_splie_control_point functions. */
+DxfHatchBoundaryPathEdgeSplineCp *
+dxf_hatch_boundary_path_edge_spline_control_point_new ();
+DxfHatchBoundaryPathEdgeSplineCp *
+dxf_hatch_boundary_path_edge_spline_control_point_init
 (
-        DxfHatchBoundaryPathPolyline *polyline
-);
-int
-dxf_hatch_boundary_path_polyline_point_inside_polyline
-(
-        DxfHatchBoundaryPathPolyline *polyline,
-        DxfPoint *point
+        DxfHatchBoundaryPathEdgeSplineCp *control_point
 );
 int
 dxf_hatch_boundary_path_edge_spline_control_point_free
