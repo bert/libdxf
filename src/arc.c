@@ -1715,9 +1715,9 @@ dxf_arc_set_dictionary_owner_hard
 
 
 /*!
- * \brief Get the start point of a DXF \c ARC entity.
+ * \brief Get the center point of a DXF \c ARC entity.
  *
- * \return the start point.
+ * \return the center point.
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
@@ -1726,7 +1726,7 @@ dxf_arc_set_dictionary_owner_hard
  * \version According to DXF R14.
  */
 DxfPoint *
-dxf_arc_get_start_point
+dxf_arc_get_center_point
 (
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
@@ -1819,7 +1819,7 @@ dxf_arc_get_start_point
 
 
 /*!
- * \brief Set the start point of a DXF \c ARC entity.
+ * \brief Set the center point of a DXF \c ARC entity.
  *
  * \return a pointer to a DXF \c ARC entity.
  *
@@ -1830,7 +1830,7 @@ dxf_arc_get_start_point
  * \version According to DXF R14.
  */
 DxfArc *
-dxf_arc_set_start_point
+dxf_arc_set_center_point
 (
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */

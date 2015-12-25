@@ -289,14 +289,14 @@ dxf_arc_set_dictionary_owner_hard
         char *dictionary_owner_hard
 );
 DxfPoint *
-dxf_arc_get_start_point
+dxf_arc_get_center_point
 (
         DxfArc *arc,
         int id_code,
         int inheritance
 );
 DxfArc *
-dxf_arc_set_start_point
+dxf_arc_set_center_point
 (
         DxfArc *arc,
         DxfPoint *point
