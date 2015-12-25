@@ -2445,6 +2445,65 @@ dxf_hatch_boundary_path_edge_arc_set_id_code
 }
 
 
+/*!
+ * \brief Get the center point of a DXF \c HATCH boundary path edge arc.
+ *
+ * \return the center point.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfPoint *
+dxf_hatch_boundary_path_edge_arc_get_center_point
+(
+        DxfHatchBoundaryPathEdgeArc *arc,
+                /*!< a pointer to a DXF \c HATCH boundary path edge arc. */
+        int id_code
+                /*!< Identification number for the \c DXfPoint entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *p1 = NULL;
+
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        p1 = dxf_point_init (p1);
+        if (p1 == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        if (id_code < 0)
+        {
+              fprintf (stderr,
+                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
+                __FUNCTION__);
+        }
+        p1->id_code = id_code;
+        p1->x0 = arc->x0;
+        p1->y0 = arc->y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (p1);
+}
+
+
 /* dxf_hatch_boundary_path_edge_ellipse functions. */
 
 /*!

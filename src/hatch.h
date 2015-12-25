@@ -759,6 +759,12 @@ dxf_hatch_boundary_path_edge_arc_set_id_code
         DxfHatchBoundaryPathEdgeArc *arc,
         int id_code
 );
+DxfPoint *
+dxf_hatch_boundary_path_edge_arc_get_center_point
+(
+        DxfHatchBoundaryPathEdgeArc *arc,
+        int id_code
+);
 /* dxf_hatch_boundary_path_edge_ellipse functions. */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_new ();
