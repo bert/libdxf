@@ -2945,6 +2945,52 @@ dxf_hatch_boundary_path_edge_arc_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c HATCH boundary path edge arc
+ * for a DXF \c HATCH boundary path edge arc.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_set_next
+(
+        DxfHatchBoundaryPathEdgeArc *arc,
+                /*!< a pointer to a DXF \c HATCH boundary path edge arc. */
+        DxfHatchBoundaryPathEdgeArc *next
+                /*!< a pointer to the next \c HATCH boundary path edge
+                 * arc for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        arc->next = (struct DxfHatchBoundaryPathEdgeArc *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc);
+}
+
+
 /* dxf_hatch_boundary_path_edge_ellipse functions. */
 
 /*!

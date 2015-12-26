@@ -820,6 +820,12 @@ dxf_hatch_boundary_path_edge_arc_get_next
 (
         DxfHatchBoundaryPathEdgeArc *arc
 );
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_set_next
+(
+        DxfHatchBoundaryPathEdgeArc *arc,
+        DxfHatchBoundaryPathEdgeArc *next
+);
 /* dxf_hatch_boundary_path_edge_ellipse functions. */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_new ();
