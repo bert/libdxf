@@ -809,6 +809,12 @@ dxf_hatch_boundary_path_edge_arc_get_is_ccw
 (
         DxfHatchBoundaryPathEdgeArc *arc
 );
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_set_is_ccw
+(
+        DxfHatchBoundaryPathEdgeArc *arc,
+        int is_ccw
+);
 /* dxf_hatch_boundary_path_edge_ellipse functions. */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_new ();
