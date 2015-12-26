@@ -776,6 +776,12 @@ dxf_hatch_boundary_path_edge_arc_get_radius
 (
         DxfHatchBoundaryPathEdgeArc *arc
 );
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_set_radius
+(
+        DxfHatchBoundaryPathEdgeArc *arc,
+        double radius
+);
 /* dxf_hatch_boundary_path_edge_ellipse functions. */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_new ();
