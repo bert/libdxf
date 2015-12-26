@@ -798,6 +798,12 @@ dxf_hatch_boundary_path_edge_arc_get_end_angle
 (
         DxfHatchBoundaryPathEdgeArc *arc
 );
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_set_end_angle
+(
+        DxfHatchBoundaryPathEdgeArc *arc,
+        double end_angle
+);
 /* dxf_hatch_boundary_path_edge_ellipse functions. */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_new ();

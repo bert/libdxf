@@ -2770,6 +2770,43 @@ dxf_hatch_boundary_path_edge_arc_get_end_angle
 }
 
 
+/*!
+ * \brief Set the end angle for a DXF \c HATCH boundary path edge arc.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_set_end_angle
+(
+        DxfHatchBoundaryPathEdgeArc *arc,
+                /*!< a pointer to a DXF \c HATCH boundary path edge arc. */
+        double end_angle
+                /*!< the end angle to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        arc->end_angle = end_angle;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc);
+}
+
+
 /* dxf_hatch_boundary_path_edge_ellipse functions. */
 
 /*!
