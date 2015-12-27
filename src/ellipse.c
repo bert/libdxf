@@ -1670,9 +1670,9 @@ dxf_ellipse_set_dictionary_owner_hard
 
 
 /*!
- * \brief Get the base point of a DXF \c ELLIPSE entity.
+ * \brief Get the center point of a DXF \c ELLIPSE entity.
  *
- * \return the base point.
+ * \return the center point.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -1681,7 +1681,7 @@ dxf_ellipse_set_dictionary_owner_hard
  * \version According to DXF R14.
  */
 DxfPoint *
-dxf_ellipse_get_base_point
+dxf_ellipse_get_center_point
 (
         DxfEllipse *ellipse,
                 /*!< a pointer to a DXF \c ELLIPSE entity. */
@@ -1774,7 +1774,7 @@ dxf_ellipse_get_base_point
 
 
 /*!
- * \brief Set the base point of a DXF \c ELLIPSE entity.
+ * \brief Set the center point of a DXF \c ELLIPSE entity.
  *
  * \return a pointer to a DXF \c ELLIPSE entity.
  *
@@ -1785,7 +1785,7 @@ dxf_ellipse_get_base_point
  * \version According to DXF R14.
  */
 DxfEllipse *
-dxf_ellipse_set_base_point
+dxf_ellipse_set_center_point
 (
         DxfEllipse *ellipse,
                 /*!< a pointer to a DXF \c ELLIPSE entity. */

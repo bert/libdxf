@@ -98,13 +98,13 @@ dxf_ellipse
         /* Specific members for a DXF ellipse. */
         double x0;
                 /*!< group code = 10\n
-                 * base point. */
+                 * X value of the center point. */
         double y0;
                 /*!< group code = 20\n
-                 * base point. */
+                 * Y value of the center point. */
         double z0;
                 /*!< group code = 30\n
-                 * base point. */
+                 * Z value of the center point. */
         double x1;
                 /*!< group code = 11\n
                  * X value of the endpoint of major axis, relative to
@@ -293,14 +293,14 @@ dxf_ellipse_set_dictionary_owner_hard
         char *dictionary_owner_hard
 );
 DxfPoint *
-dxf_ellipse_get_base_point
+dxf_ellipse_get_center_point
 (
         DxfEllipse *ellipse,
         int id_code,
         int inheritance
 );
 DxfEllipse *
-dxf_ellipse_set_base_point
+dxf_ellipse_set_center_point
 (
         DxfEllipse *ellipse,
         DxfPoint *point
