@@ -50,92 +50,96 @@ dxf_ellipse
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< group code = 5\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                 * file.\n
+                 * Group code = 5. */
         char *linetype;
-                /*!< group code = 6\n
-                 * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-                /*!< group code = 8\n
-                 * Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
         double elevation;
-                /*!< group code = 38\n
-                 * Elevation of the arc in the local Z-direction.\n
+                /*!< Elevation of the arc in the local Z-direction.\n
                  * Defaults to 0.0 if omitted in the DXF file, or prior
-                 * to DXF version R12, or DXF_FLATLAND equals 0 (default). */
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default).\n
+                 * Group code = 38. */
         double thickness;
-                /*!< group code = 39\n
-                 * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                /*!< Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
         double linetype_scale;
-                /*!< group code = 48\n
-                 * Linetype scale (optional). */
+                /*!< Linetype scale (optional).\n
+                 * Group code = 48. */
         int16_t visibility;
-                /*!< group code = 60\n
-                 * Object visibility (optional): 0 = Visible; 1 = Invisible. */
+                /*!< Object visibility (optional):\n
+                 * <ol>
+                 * <li value = "0"> Visible</li>
+                 * <li value = "1"> Invisible</li>
+                 * </ol>
+                 * Group code = 60. */
         int color;
-                /*!< group code = 62\n
-                 * Color of the entity.\n
+                /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity. */
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
         int paperspace;
-                /*!< group code = 67\n
-                 * Entities are to be drawn on either \c PAPERSPACE or
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
-                 * Optional, defaults to \c DXF_MODELSPACE (0). */
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
         char *dictionary_owner_soft;
-                /*!< group code = 330\n
-                 * Soft-pointer ID/handle to owner dictionary (optional). */
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
         char *dictionary_owner_hard;
-                /*!< group code = 360\n
-                 * Hard owner ID/handle to owner dictionary (optional). */
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
         /* Specific members for a DXF ellipse. */
         double x0;
-                /*!< group code = 10\n
-                 * X value of the center point. */
+                /*!< X value of the center point.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * Y value of the center point. */
+                /*!< Y value of the center point.\n
+                 * Group code = 20. */
         double z0;
-                /*!< group code = 30\n
-                 * Z value of the center point. */
+                /*!< Z value of the center point.\n
+                 * Group code = 30. */
         double x1;
-                /*!< group code = 11\n
-                 * X value of the endpoint of major axis, relative to
-                 * the center (in WCS). */
+                /*!< X value of the endpoint of major axis, relative to
+                 * the center (in WCS).\n
+                 * Group code = 11. */
         double y1;
-                /*!< group code = 21\n
-                 * Y value of the endpoint of major axis, relative to
-                 * the center (in WCS). */
+                /*!< Y value of the endpoint of major axis, relative to
+                 * the center (in WCS).\n
+                 * Group code = 21. */
         double z1;
-                /*!< group code = 31\n
-                 * Z value of the endpoint of major axis, relative to
-                 * the center (in WCS). */
+                /*!< Z value of the endpoint of major axis, relative to
+                 * the center (in WCS).\n
+                 * Group code = 31. */
         double ratio;
-                /*!< group code = 40\n
-                 * ratio of minor axis to major axis. */
+                /*!< Ratio of minor axis to major axis.\n
+                 * Group code = 40. */
         double start_angle;
-                /*!< group code = 41. */
+                /*!< Group code = 41. */
         double end_angle;
-                /*!< group code = 42. */
+                /*!< Group code = 42. */
         double extr_x0;
-                /*!< group code = 210\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 0.0. */
+                /*!< X value of the extrusion direction.\n
+                 * Optional, if ommited defaults to 0.0.\n
+                 * Group code = 210. */
         double extr_y0;
-                /*!< group code = 220\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 0.0. */
+                /*!< Y value of the extrusion direction.\n
+                 * Optional, if ommited defaults to 0.0.\n
+                 * Group code = 220. */
         double extr_z0;
-                /*!< group code = 230\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 1.0. */
+                /*!< Z value of the extrusion direction.\n
+                 * Optional, if ommited defaults to 1.0.\n
+                 * Group code = 230. */
         struct DxfEllipse *next;
                 /*!< pointer to the next DxfEllipse.\n
                  * \c NULL in the last DxfEllipse. */
