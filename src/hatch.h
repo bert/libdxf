@@ -844,6 +844,11 @@ dxf_hatch_boundary_path_edge_ellipse_free_chain
 (
         DxfHatchBoundaryPathEdgeEllipse *hatch_boundary_path_edge_ellipses
 );
+int
+dxf_hatch_boundary_path_edge_ellipse_get_id_code
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse
+);
 /* dxf_hatch_boundary_path_edge_line functions. */
 DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_new ();
