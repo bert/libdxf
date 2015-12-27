@@ -3315,6 +3315,55 @@ dxf_hatch_boundary_path_edge_ellipse_get_center_point
 }
 
 
+/*!
+ * \brief Set the center point of a DXF \c HATCH boundary path edge
+ * ellipse.
+ *
+ * \return a pointer to a DXF \c HATCH boundary path edge ellipse.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfHatchBoundaryPathEdgeEllipse *
+dxf_hatch_boundary_path_edge_ellipse_set_center_point
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse,
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * ellipse. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ellipse->x0 = point->x0;
+        ellipse->y0 = point->y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse);
+}
+
+
 /* dxf_hatch_boundary_path_edge_line functions. */
 
 /*!
