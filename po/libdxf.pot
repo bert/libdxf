@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-22 23:12+0100\n"
+"POT-Creation-Date: 2015-12-26 23:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -39,14 +39,14 @@ msgstr ""
 #: src/dimension.c:993 src/dimstyle.c:110 src/dimstyle.c:404
 #: src/dimstyle.c:972 src/donut.c:103 src/donut.c:367 src/ellipse.c:97
 #: src/ellipse.c:177 src/ellipse.c:643 src/endblk.c:108 src/endblk.c:178
-#: src/group.c:108 src/group.c:183 src/group.c:471 src/hatch.c:522
-#: src/hatch.c:597 src/hatch.c:647 src/hatch.c:698 src/hatch.c:741
-#: src/hatch.c:784 src/hatch.c:830 src/hatch.c:873 src/hatch.c:918
-#: src/hatch.c:965 src/hatch.c:1014 src/hatch.c:1061 src/hatch.c:1112
-#: src/hatch.c:3843 src/hatch.c:3882 src/hatch.c:3922 src/hatch.c:3962
-#: src/hatch.c:4001 src/hatch.c:4041 src/hatch.c:4081 src/hatch.c:4121
-#: src/hatch.c:4161 src/hatch.c:4201 src/hatch.c:4241 src/hatch.c:4281
-#: src/hatch.c:4321 src/header.c:201 src/header.c:1886 src/helix.c:101
+#: src/group.c:108 src/group.c:183 src/group.c:471 src/hatch.c:102
+#: src/hatch.c:425 src/hatch.c:498 src/hatch.c:593 src/hatch.c:668
+#: src/hatch.c:829 src/hatch.c:902 src/hatch.c:1035 src/hatch.c:1108
+#: src/hatch.c:1283 src/hatch.c:1356 src/hatch.c:1523 src/hatch.c:1808
+#: src/hatch.c:1937 src/hatch.c:2080 src/hatch.c:2175 src/hatch.c:2248
+#: src/hatch.c:2341 src/hatch.c:3052 src/hatch.c:3147 src/hatch.c:3220
+#: src/hatch.c:3311 src/hatch.c:3386 src/hatch.c:3484 src/hatch.c:4895
+#: src/hatch.c:4985 src/header.c:201 src/header.c:1886 src/helix.c:101
 #: src/helix.c:206 src/helix.c:890 src/idbuffer.c:110 src/idbuffer.c:187
 #: src/idbuffer.c:451 src/image.c:107 src/image.c:205 src/image.c:744
 #: src/imagedef.c:110 src/imagedef.c:196 src/imagedef.c:537
@@ -100,7 +100,7 @@ msgstr ""
 #: src/dimension.c:683 src/dimstyle.c:201 src/dimstyle.c:395 src/donut.c:174
 #: src/ellipse.c:168 src/ellipse.c:438 src/endblk.c:169 src/endblk.c:268
 #: src/endsec.c:65 src/endtab.c:65 src/file.c:70 src/file.c:152 src/file.c:189
-#: src/group.c:168 src/group.c:317 src/hatch.c:2494 src/header.c:135
+#: src/group.c:168 src/group.c:317 src/hatch.c:178 src/header.c:135
 #: src/header.c:721 src/header.c:933 src/header.c:1240 src/header.c:1305
 #: src/header.c:1379 src/header.c:1879 src/helix.c:197 src/helix.c:650
 #: src/idbuffer.c:172 src/idbuffer.c:308 src/image.c:196 src/image.c:534
@@ -453,13 +453,17 @@ msgstr ""
 #: src/group.c:795 src/group.c:844 src/group.c:889 src/group.c:938
 #: src/group.c:989 src/group.c:1033 src/group.c:1040 src/group.c:1080
 #: src/group.c:1125 src/group.c:1132 src/group.c:1174 src/group.c:1219
-#: src/group.c:1226 src/hatch.c:2512 src/hatch.c:2686 src/hatch.c:2693
-#: src/hatch.c:2748 src/hatch.c:2755 src/hatch.c:2792 src/hatch.c:2799
-#: src/hatch.c:2887 src/hatch.c:2894 src/hatch.c:2944 src/hatch.c:2951
-#: src/hatch.c:3199 src/hatch.c:3206 src/hatch.c:3273 src/hatch.c:3327
-#: src/hatch.c:3371 src/hatch.c:3413 src/hatch.c:3455 src/hatch.c:3499
-#: src/hatch.c:3542 src/hatch.c:3584 src/hatch.c:3630 src/hatch.c:3672
-#: src/hatch.c:3714 src/hatch.c:3756 src/hatch.c:3799 src/header.c:942
+#: src/group.c:1226 src/hatch.c:196 src/hatch.c:369 src/hatch.c:547
+#: src/hatch.c:723 src/hatch.c:730 src/hatch.c:784 src/hatch.c:947
+#: src/hatch.c:954 src/hatch.c:990 src/hatch.c:1153 src/hatch.c:1160
+#: src/hatch.c:1237 src/hatch.c:1405 src/hatch.c:1412 src/hatch.c:1477
+#: src/hatch.c:1850 src/hatch.c:1857 src/hatch.c:1892 src/hatch.c:1985
+#: src/hatch.c:1992 src/hatch.c:2126 src/hatch.c:2296 src/hatch.c:2383
+#: src/hatch.c:2429 src/hatch.c:2479 src/hatch.c:2534 src/hatch.c:2541
+#: src/hatch.c:2581 src/hatch.c:2632 src/hatch.c:2685 src/hatch.c:2722
+#: src/hatch.c:2761 src/hatch.c:2798 src/hatch.c:2838 src/hatch.c:2881
+#: src/hatch.c:2929 src/hatch.c:2975 src/hatch.c:2982 src/hatch.c:3102
+#: src/hatch.c:3266 src/hatch.c:3438 src/hatch.c:4940 src/header.c:942
 #: src/helix.c:659 src/idbuffer.c:317 src/image.c:543 src/imagedef.c:392
 #: src/imagedef_reactor.c:320 src/insert.c:499 src/layer.c:342 src/layer.c:521
 #: src/layer.c:556 src/layer.c:591 src/layer.c:628 src/layer.c:664
@@ -564,7 +568,7 @@ msgstr ""
 #: src/block.c:1096 src/block_record.c:525 src/body.c:698 src/circle.c:704
 #: src/comment.c:304 src/dictionary.c:540 src/dictionaryvar.c:543
 #: src/dimension.c:1088 src/ellipse.c:738 src/endblk.c:422 src/group.c:566
-#: src/line.c:731 src/point.c:713
+#: src/hatch.c:2436 src/line.c:731 src/point.c:713
 #, c-format
 msgid "Error in %s () a negative id-code value was passed.\n"
 msgstr ""
@@ -739,9 +743,9 @@ msgstr ""
 #: src/dimension.c:2342 src/dimension.c:2496 src/dimension.c:2650
 #: src/dimension.c:2804 src/dimension.c:2958 src/dimension.c:3112
 #: src/dimension.c:3266 src/dimension.c:4233 src/ellipse.c:1719
-#: src/ellipse.c:1872 src/ellipse.c:2274 src/line.c:1721 src/line.c:1882
-#: src/line.c:2043 src/line.c:2147 src/point.c:78 src/point.c:126
-#: src/point.c:1761
+#: src/ellipse.c:1872 src/ellipse.c:2274 src/hatch.c:2487 src/line.c:1721
+#: src/line.c:1882 src/line.c:2043 src/line.c:2147 src/point.c:78
+#: src/point.c:126 src/point.c:1761
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfPoint struct.\n"
 msgstr ""
@@ -752,8 +756,8 @@ msgstr ""
 #: src/attrib.c:2191 src/attrib.c:2343 src/block.c:1252 src/circle.c:1692
 #: src/dimension.c:2349 src/dimension.c:2503 src/dimension.c:2657
 #: src/dimension.c:2811 src/dimension.c:2965 src/dimension.c:3119
-#: src/dimension.c:3273 src/ellipse.c:1726 src/ellipse.c:1879 src/line.c:1728
-#: src/line.c:1889 src/line.c:2050 src/line.c:2332
+#: src/dimension.c:3273 src/ellipse.c:1726 src/ellipse.c:1879 src/hatch.c:2494
+#: src/line.c:1728 src/line.c:1889 src/line.c:2050 src/line.c:2332
 #, c-format
 msgid "Warning in %s () passed id_code is smaller than 0.\n"
 msgstr ""
@@ -798,7 +802,7 @@ msgstr ""
 #: src/block_record.c:1102 src/body.c:1966 src/circle.c:2026 src/class.c:1686
 #: src/comment.c:434 src/dictionary.c:960 src/dictionaryvar.c:965
 #: src/dimension.c:4327 src/dimstyle.c:6149 src/ellipse.c:2368
-#: src/group.c:1181
+#: src/group.c:1181 src/hatch.c:2936
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the next member.\n"
 msgstr ""
@@ -1034,23 +1038,23 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfArc was not NULL.\n"
 msgstr ""
 
-#: src/arc.c:1903 src/circle.c:1824
+#: src/arc.c:1903 src/circle.c:1824 src/hatch.c:2588
 #, c-format
 msgid "Error in %s () a negative value was found in the radius member.\n"
 msgstr ""
 
-#: src/arc.c:1910 src/circle.c:1831
+#: src/arc.c:1910 src/circle.c:1831 src/hatch.c:2595
 #, c-format
 msgid "Error in %s () a value of zero was found in the radius member.\n"
 msgstr ""
 
-#: src/arc.c:1954 src/circle.c:1875
+#: src/arc.c:1954 src/circle.c:1875 src/hatch.c:2639
 #, c-format
 msgid "Error in %s () a negative radius value was passed.\n"
 msgstr ""
 
 #: src/arc.c:1961 src/circle.c:1882 src/dimstyle.c:1651 src/dimstyle.c:1746
-#: src/ellipse.c:2072
+#: src/ellipse.c:2072 src/hatch.c:2646
 #, c-format
 msgid "Error in %s () a value of zero was passed.\n"
 msgstr ""
@@ -1380,7 +1384,7 @@ msgstr ""
 msgid "Error in %s () could not allocate memory for a DxfBlockRecord struct.\n"
 msgstr ""
 
-#: src/block_record.c:289 src/ellipse.c:447 src/hatch.c:2503 src/ray.c:437
+#: src/block_record.c:289 src/ellipse.c:447 src/hatch.c:187 src/ray.c:437
 #, c-format
 msgid "Error in %s () illegal DXF version for this entity.\n"
 msgstr ""
@@ -2270,292 +2274,307 @@ msgid ""
 "member.\n"
 msgstr ""
 
-#: src/hatch.c:62 src/hatch.c:529
+#: src/hatch.c:64 src/hatch.c:109
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfHatch struct.\n"
 msgstr ""
 
-#: src/hatch.c:97 src/hatch.c:167
+#: src/hatch.c:205
+#, c-format
+msgid "Warning: empty layer string for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/hatch.c:208 src/vertex.c:478
+#, c-format
+msgid "    %s entity is relocated to layer 0"
+msgstr ""
+
+#: src/hatch.c:215
+#, c-format
+msgid "Warning: empty linetype string for the %s entity with id-code: %x\n"
+msgstr ""
+
+#: src/hatch.c:218 src/vertex.c:468
+#, c-format
+msgid "    %s entity is reset to default linetype"
+msgstr ""
+
+#: src/hatch.c:376
+#, c-format
+msgid "Error in %s () pointer to next DxfHatch was not NULL.\n"
+msgstr ""
+
+#: src/hatch.c:462 src/hatch.c:866
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a DxfHatchPatternSeedpoint "
 "struct.\n"
 msgstr ""
 
-#: src/hatch.c:132 src/hatch.c:654
+#: src/hatch.c:505
+#, c-format
+msgid ""
+"Error in %s () could not allocate memory for a DxfHatchPattern struct.\n"
+msgstr ""
+
+#: src/hatch.c:554
+#, c-format
+msgid "Error in %s () pointer to next DxfHatchPattern was not NULL.\n"
+msgstr ""
+
+#: src/hatch.c:630 src/hatch.c:675
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a DxfHatchPatternDefLine "
 "struct.\n"
 msgstr ""
 
-#: src/hatch.c:202 src/hatch.c:748
+#: src/hatch.c:752
 #, c-format
-msgid ""
-"Error in %s () could not allocate memory for a DxfHatchBoundaryPath struct.\n"
+msgid "Warning in %s () no dash length found.\n"
 msgstr ""
 
-#: src/hatch.c:237 src/hatch.c:791
+#: src/hatch.c:791
 #, c-format
-msgid ""
-"Error in %s () could not allocate memory for a DxfHatchBoundaryPathPolyline "
-"struct.\n"
+msgid "Error in %s () pointer to next DxfHatchPatternDefLine was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:273 src/hatch.c:837
-#, c-format
-msgid ""
-"Error in %s () could not allocate memory for a "
-"DxfHatchBoundaryPathPolylineVertex struct.\n"
-msgstr ""
-
-#: src/hatch.c:308 src/hatch.c:880
-#, c-format
-msgid ""
-"Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdge "
-"struct.\n"
-msgstr ""
-
-#: src/hatch.c:343 src/hatch.c:925
-#, c-format
-msgid ""
-"Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeArc "
-"struct.\n"
-msgstr ""
-
-#: src/hatch.c:378 src/hatch.c:972
-#, c-format
-msgid ""
-"Error in %s () could not allocate memory for a "
-"DxfHatchBoundaryPathEdgeEllipse struct.\n"
-msgstr ""
-
-#: src/hatch.c:413 src/hatch.c:1021
-#, c-format
-msgid ""
-"Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeLine "
-"struct.\n"
-msgstr ""
-
-#: src/hatch.c:448 src/hatch.c:1068
-#, c-format
-msgid ""
-"Error in %s () could not allocate memory for a "
-"DxfHatchBoundaryPathEdgeSpline struct.\n"
-msgstr ""
-
-#: src/hatch.c:484 src/hatch.c:1119
-#, c-format
-msgid ""
-"Error in %s () could not allocate memory for a "
-"DxfHatchBoundaryPathEdgeSplineCp struct.\n"
-msgstr ""
-
-#: src/hatch.c:604
-#, c-format
-msgid ""
-"Error in %s () could not allocate memory for a DxfHatchPattern struct.\n"
-msgstr ""
-
-#: src/hatch.c:705
+#: src/hatch.c:909
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a DxfHatchPatternSeedPoint "
 "struct.\n"
 msgstr ""
 
-#: src/hatch.c:1214 src/hatch.c:1304 src/hatch.c:1402 src/hatch.c:1481
-#: src/hatch.c:1534 src/hatch.c:1610 src/hatch.c:1671 src/hatch.c:1775
-#: src/hatch.c:1892 src/hatch.c:2034 src/hatch.c:2101 src/hatch.c:2205
-#: src/hatch.c:2357 src/hatch.c:2450
-#, c-format
-msgid ""
-"Error in %s () received a NULL pointer value in "
-"dxf_hatch_boundary_path_edge_spline.\n"
-msgstr ""
-
-#: src/hatch.c:1221 src/hatch.c:1409
-#, c-format
-msgid ""
-"Error in %s () received a NULL pointer value in "
-"dxf_hatch_boundary_path_edge_spline_cp.\n"
-msgstr ""
-
-#: src/hatch.c:1488 src/hatch.c:2041 src/hatch.c:2212 src/hatch.c:2457
-#, c-format
-msgid "Error in %s () resulted in a array pointer overflow.\n"
-msgstr ""
-
-#: src/hatch.c:1541 src/hatch.c:1617 src/hatch.c:1678 src/hatch.c:1782
-#: src/hatch.c:1899 src/hatch.c:2048 src/hatch.c:2108 src/hatch.c:2226
-#, c-format
-msgid "Error in %s () received an invalid value in position.\n"
-msgstr ""
-
-#: src/hatch.c:1552 src/hatch.c:1696 src/hatch.c:1920 src/hatch.c:2122
-#, c-format
-msgid "Error in %s () position is greater than the number of control points.\n"
-msgstr ""
-
-#: src/hatch.c:1624
-#, c-format
-msgid ""
-"Error in  %s () received a position greater than "
-"DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n"
-msgstr ""
-
-#: src/hatch.c:1685 src/hatch.c:1913
-#, c-format
-msgid "Error in %s () received a NULL pointer value in control_point.\n"
-msgstr ""
-
-#: src/hatch.c:1789 src/hatch.c:1906 src/hatch.c:2055 src/hatch.c:2115
-#: src/hatch.c:2233
-#, c-format
-msgid ""
-"Error in %s () received a position greater than "
-"DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n"
-msgstr ""
-
-#: src/hatch.c:2135
-#, c-format
-msgid "Error in %s () spline contins no control points.\n"
-msgstr ""
-
-#: src/hatch.c:2219
-#, c-format
-msgid "Error in %s () resulted in a array pointer underflow.\n"
-msgstr ""
-
-#: src/hatch.c:2370
-#, c-format
-msgid "Error in %s () spline contains no control points.\n"
-msgstr ""
-
-#: src/hatch.c:2521
-#, c-format
-msgid "Warning: empty layer string for the %s entity with id-code: %x\n"
-msgstr ""
-
-#: src/hatch.c:2524 src/vertex.c:478
-#, c-format
-msgid "    %s entity is relocated to layer 0"
-msgstr ""
-
-#: src/hatch.c:2531
-#, c-format
-msgid "Warning: empty linetype string for the %s entity with id-code: %x\n"
-msgstr ""
-
-#: src/hatch.c:2534 src/vertex.c:468
-#, c-format
-msgid "    %s entity is reset to default linetype"
-msgstr ""
-
-#: src/hatch.c:2715
-#, c-format
-msgid "Warning in %s () no dash length found.\n"
-msgstr ""
-
-#: src/hatch.c:2809
-#, c-format
-msgid "Information from %s () last boundary path encountered.\n"
-msgstr ""
-
-#: src/hatch.c:2841
-#, c-format
-msgid "Error in %s () unknown boundary path type encountered.\n"
-msgstr ""
-
-#: src/hatch.c:2902
-#, c-format
-msgid "Error in %s () identical coordinates were passed.\n"
-msgstr ""
-
-#: src/hatch.c:2985 src/hatch.c:3115
-#, c-format
-msgid "Error in %s () invalid pointer to polyline (NULL).\n"
-msgstr ""
-
-#: src/hatch.c:3122
-#, c-format
-msgid "Error in %s () invalid pointer to point (NULL).\n"
-msgstr ""
-
-#: src/hatch.c:3129
-#, c-format
-msgid "Error in %s () polyline is not a closed polygon.\n"
-msgstr ""
-
-#: src/hatch.c:3280
-#, c-format
-msgid "Error in %s () pointer to next DxfHatch was not NULL.\n"
-msgstr ""
-
-#: src/hatch.c:3334
-#, c-format
-msgid "Error in %s () pointer to next DxfHatchPattern was not NULL.\n"
-msgstr ""
-
-#: src/hatch.c:3378
-#, c-format
-msgid "Error in %s () pointer to next DxfHatchPatternDefLine was not NULL.\n"
-msgstr ""
-
-#: src/hatch.c:3420
+#: src/hatch.c:997
 #, c-format
 msgid "Error in %s () pointer to next DxfHatchPatternSeedPoint was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3462
+#: src/hatch.c:1072 src/hatch.c:1115
+#, c-format
+msgid ""
+"Error in %s () could not allocate memory for a DxfHatchBoundaryPath struct.\n"
+msgstr ""
+
+#: src/hatch.c:1170
+#, c-format
+msgid "Information from %s () last boundary path encountered.\n"
+msgstr ""
+
+#: src/hatch.c:1202
+#, c-format
+msgid "Error in %s () unknown boundary path type encountered.\n"
+msgstr ""
+
+#: src/hatch.c:1244
 #, c-format
 msgid "Error in %s () pointer to next DxfHatchBoundaryPath was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3506
+#: src/hatch.c:1320 src/hatch.c:1363
+#, c-format
+msgid ""
+"Error in %s () could not allocate memory for a DxfHatchBoundaryPathPolyline "
+"struct.\n"
+msgstr ""
+
+#: src/hatch.c:1484
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathPolyline was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3549
+#: src/hatch.c:1559 src/hatch.c:1689
+#, c-format
+msgid "Error in %s () invalid pointer to polyline (NULL).\n"
+msgstr ""
+
+#: src/hatch.c:1696
+#, c-format
+msgid "Error in %s () invalid pointer to point (NULL).\n"
+msgstr ""
+
+#: src/hatch.c:1703
+#, c-format
+msgid "Error in %s () polyline is not a closed polygon.\n"
+msgstr ""
+
+#: src/hatch.c:1772 src/hatch.c:1815
+#, c-format
+msgid ""
+"Error in %s () could not allocate memory for a "
+"DxfHatchBoundaryPathPolylineVertex struct.\n"
+msgstr ""
+
+#: src/hatch.c:1899
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathPolylineVertex was not "
 "NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3591
+#: src/hatch.c:2000
+#, c-format
+msgid "Error in %s () identical coordinates were passed.\n"
+msgstr ""
+
+#: src/hatch.c:2044 src/hatch.c:2087
+#, c-format
+msgid ""
+"Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdge "
+"struct.\n"
+msgstr ""
+
+#: src/hatch.c:2133
 #, c-format
 msgid "Error in %s () pointer to next DxfHatchBoundaryPathEdge was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3637
+#: src/hatch.c:2212 src/hatch.c:2255
+#, c-format
+msgid ""
+"Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeArc "
+"struct.\n"
+msgstr ""
+
+#: src/hatch.c:2303
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathEdgeArc was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3679
+#: src/hatch.c:2390
+#, c-format
+msgid "Error in %s () a negative value was found in the id_code member.\n"
+msgstr ""
+
+#: src/hatch.c:2845
+#, c-format
+msgid "Warning in %s () a negative value was found in the is_ccw member.\n"
+msgstr ""
+
+#: src/hatch.c:2888
+#, c-format
+msgid "Warning in %s () a negative is_ccw value was passed.\n"
+msgstr ""
+
+#: src/hatch.c:3016 src/hatch.c:3059
+#, c-format
+msgid ""
+"Error in %s () could not allocate memory for a "
+"DxfHatchBoundaryPathEdgeEllipse struct.\n"
+msgstr ""
+
+#: src/hatch.c:3109
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathEdgeEllipse was not "
 "NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3721
+#: src/hatch.c:3184 src/hatch.c:3227
+#, c-format
+msgid ""
+"Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeLine "
+"struct.\n"
+msgstr ""
+
+#: src/hatch.c:3273
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathEdgeLine was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3763
+#: src/hatch.c:3348 src/hatch.c:3393
+#, c-format
+msgid ""
+"Error in %s () could not allocate memory for a "
+"DxfHatchBoundaryPathEdgeSpline struct.\n"
+msgstr ""
+
+#: src/hatch.c:3445
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathEdgeSpline was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3806
+#: src/hatch.c:3578 src/hatch.c:3719 src/hatch.c:3798 src/hatch.c:3882
+#: src/hatch.c:4050 src/hatch.c:4189 src/hatch.c:4372 src/hatch.c:4460
+#: src/hatch.c:4509 src/hatch.c:4560 src/hatch.c:4613 src/hatch.c:4671
+#: src/hatch.c:4738 src/hatch.c:4814
+#, c-format
+msgid ""
+"Error in %s () received a NULL pointer value in "
+"dxf_hatch_boundary_path_edge_spline.\n"
+msgstr ""
+
+#: src/hatch.c:3585 src/hatch.c:3726
+#, c-format
+msgid ""
+"Error in %s () received a NULL pointer value in "
+"dxf_hatch_boundary_path_edge_spline_cp.\n"
+msgstr ""
+
+#: src/hatch.c:3805 src/hatch.c:3889 src/hatch.c:4057 src/hatch.c:4196
+#: src/hatch.c:4567 src/hatch.c:4620 src/hatch.c:4685 src/hatch.c:4759
+#, c-format
+msgid "Error in %s () received an invalid value in position.\n"
+msgstr ""
+
+#: src/hatch.c:3816 src/hatch.c:3907 src/hatch.c:4078 src/hatch.c:4210
+#, c-format
+msgid "Error in %s () position is greater than the number of control points.\n"
+msgstr ""
+
+#: src/hatch.c:3896 src/hatch.c:4071
+#, c-format
+msgid "Error in %s () received a NULL pointer value in control_point.\n"
+msgstr ""
+
+#: src/hatch.c:4064 src/hatch.c:4203 src/hatch.c:4627 src/hatch.c:4692
+#: src/hatch.c:4766
+#, c-format
+msgid ""
+"Error in %s () received a position greater than "
+"DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n"
+msgstr ""
+
+#: src/hatch.c:4223
+#, c-format
+msgid "Error in %s () spline contins no control points.\n"
+msgstr ""
+
+#: src/hatch.c:4385
+#, c-format
+msgid "Error in %s () spline contains no control points.\n"
+msgstr ""
+
+#: src/hatch.c:4516 src/hatch.c:4678 src/hatch.c:4745 src/hatch.c:4821
+#, c-format
+msgid "Error in %s () resulted in a array pointer overflow.\n"
+msgstr ""
+
+#: src/hatch.c:4574
+#, c-format
+msgid ""
+"Error in  %s () received a position greater than "
+"DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n"
+msgstr ""
+
+#: src/hatch.c:4752
+#, c-format
+msgid "Error in %s () resulted in a array pointer underflow.\n"
+msgstr ""
+
+#: src/hatch.c:4859 src/hatch.c:4902
+#, c-format
+msgid ""
+"Error in %s () could not allocate memory for a "
+"DxfHatchBoundaryPathEdgeSplineCp struct.\n"
+msgstr ""
+
+#: src/hatch.c:4947
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathEdgeSplineCp was not "
