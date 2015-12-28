@@ -885,6 +885,11 @@ dxf_hatch_boundary_path_edge_ellipse_set_end_point
         DxfHatchBoundaryPathEdgeEllipse *ellipse,
         DxfPoint *point
 );
+double
+dxf_hatch_boundary_path_edge_ellipse_get_ratio
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse
+);
 /* dxf_hatch_boundary_path_edge_line functions. */
 DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_new ();
