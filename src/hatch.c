@@ -3065,7 +3065,7 @@ dxf_hatch_boundary_path_edge_ellipse_init
         ellipse->y0 = 0.0;
         ellipse->x1 = 0.0;
         ellipse->y1 = 0.0;
-        ellipse->minor_axis = 0.0;
+        ellipse->ratio = 0.0;
         ellipse->start_angle = 0.0;
         ellipse->end_angle = 0.0;
         ellipse->is_ccw = 0;

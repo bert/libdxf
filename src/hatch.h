@@ -107,9 +107,8 @@ dxf_hatch_boundary_path_edge_ellipse
                 /*!< Y-value of end point coordinate of major axis
                  * (relative to center point.\n
                  * Group code = 21. */
-        double minor_axis;
-                /*!< Length of minor axis (percentage of major axis
-                 * length).\n
+        double ratio;
+                /*!< Ratio of minor axis to major axis.\n
                  * Group code = 40. */
         double start_angle;
                 /*!< Group code = 50. */
