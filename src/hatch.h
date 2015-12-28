@@ -57,13 +57,16 @@ typedef struct
 dxf_hatch_boundary_path_edge_arc
 {
         int id_code;
-                /*!< group code = 5. */
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the
+                 * DXF file.\n
+                 * Group code = 5. */
         double x0;
-                /*!< group code = 10\n
-                 * X-value of center point coordinate. */
+                /*!< X-value of the center point coordinate.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * Y-value of center point coordinate. */
+                /*!< Y-value of the center point coordinate.\n
+                 * Group code = 20. */
         double radius;
                 /*!< group code = 40. */
         double start_angle;
@@ -71,10 +74,10 @@ dxf_hatch_boundary_path_edge_arc
         double end_angle;
                 /*!< group code = 51. */
         int is_ccw;
-                /*!< group code = 73\n
-                 * arc is counterclockwise flag. */
+                /*!< Arc is counterclockwise flag.\n
+                 * Group code = 73. */
         struct DxfHatchBoundaryPathEdgeArc *next;
-                /*!< pointer to the next DxfHatchBoundaryPathEdgeArc.\n
+                /*!< Pointer to the next DxfHatchBoundaryPathEdgeArc.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeArc. */
 } DxfHatchBoundaryPathEdgeArc;
 
@@ -86,33 +89,37 @@ typedef struct
 dxf_hatch_boundary_path_edge_ellipse
 {
         int id_code;
-                /*!< group code = 5. */
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the
+                 * DXF file.\n
+                 * Group code = 5. */
         double x0;
-                /*!< group code = 10\n
-                 * X-value of center point coordinate. */
+                /*!< X-value of center point coordinate.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * Y-value of center point coordinate. */
+                /*!< Y-value of center point coordinate.\n
+                 * Group code = 20. */
         double x1;
-                /*!< group code = 11\n
-                 * X-value of end point coordinate of major axis (relative to
-                 * center point. */
+                /*!< X-value of end point coordinate of major axis
+                 * (relative to center point.\n
+                 * Group code = 11. */
         double y1;
-                /*!< group code = 21\n
-                 * Y-value of end point coordinate of major axis (relative to
-                 * center point. */
+                /*!< Y-value of end point coordinate of major axis
+                 * (relative to center point.\n
+                 * Group code = 21. */
         double minor_axis;
-                /*!< group code = 40\n
-                 * length of minor axis (percentage of major axis length). */
+                /*!< Length of minor axis (percentage of major axis
+                 * length).\n
+                 * Group code = 40. */
         double start_angle;
-                /*!< group code = 50. */
+                /*!< Group code = 50. */
         double end_angle;
-                /*!< group code = 51. */
+                /*!< Group code = 51. */
         int is_ccw;
-                /*!< group code = 73\n
-                 * ellipse is counterclockwise flag. */
+                /*!< Ellipse is counterclockwise flag.\n
+                 * Group code = 73. */
         struct DxfHatchBoundaryPathEdgeEllipse *next;
-                /*!< pointer to the next DxfHatchBoundaryPathEdgeEllipse.\n
+                /*!< Pointer to the next DxfHatchBoundaryPathEdgeEllipse.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeEllipse. */
 } DxfHatchBoundaryPathEdgeEllipse;
 
