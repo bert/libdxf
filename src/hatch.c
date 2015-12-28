@@ -3582,6 +3582,47 @@ dxf_hatch_boundary_path_edge_ellipse_set_ratio
 }
 
 
+/*!
+ * \brief Get the start angle from a DXF \c HATCH boundary path edge
+ * ellipse.
+ *
+ * \return start angle.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+double
+dxf_hatch_boundary_path_edge_ellipse_get_start_angle
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * ellipse. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = ellipse->start_angle;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_boundary_path_edge_line functions. */
 
 /*!
