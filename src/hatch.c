@@ -3529,6 +3529,59 @@ dxf_hatch_boundary_path_edge_ellipse_get_ratio
 }
 
 
+/*!
+ * \brief Set the ratio of minor axis to major axis for a DXF \c HATCH
+ * boundary path edge ellipse.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfHatchBoundaryPathEdgeEllipse *
+dxf_hatch_boundary_path_edge_ellipse_set_ratio
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse,
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * ellipse. */
+        double ratio
+                /*!< the ratio to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ratio < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative ratio value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ratio == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a value of zero was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ellipse->ratio = ratio;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse);
+}
+
+
 /* dxf_hatch_boundary_path_edge_line functions. */
 
 /*!
