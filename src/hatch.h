@@ -907,6 +907,11 @@ dxf_hatch_boundary_path_edge_ellipse_set_start_angle
         DxfHatchBoundaryPathEdgeEllipse *ellipse,
         double start_angle
 );
+double
+dxf_hatch_boundary_path_edge_ellipse_get_end_angle
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse
+);
 /* dxf_hatch_boundary_path_edge_line functions. */
 DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_new ();
