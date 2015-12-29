@@ -934,6 +934,12 @@ dxf_hatch_boundary_path_edge_ellipse_get_next
 (
         DxfHatchBoundaryPathEdgeEllipse *ellipse
 );
+DxfHatchBoundaryPathEdgeEllipse *
+dxf_hatch_boundary_path_edge_ellipse_set_next
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse,
+        DxfHatchBoundaryPathEdgeEllipse *next
+);
 /* dxf_hatch_boundary_path_edge_line functions. */
 DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_new ();
