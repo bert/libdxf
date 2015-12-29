@@ -4095,6 +4095,53 @@ dxf_hatch_boundary_path_edge_line_free_chain
 }
 
 
+/*!
+ * \brief Get the ID code from a DXF \c HATCH boundary path edge line.
+ *
+ * \return ID code.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+int
+dxf_hatch_boundary_path_edge_line_get_id_code
+(
+        DxfHatchBoundaryPathEdgeLine *line
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * line. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (line->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = line->id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_boundary_path_edge_spline functions. */
 
 /*!

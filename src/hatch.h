@@ -958,6 +958,11 @@ dxf_hatch_boundary_path_edge_line_free_chain
 (
         DxfHatchBoundaryPathEdgeLine *hatch_boundary_path_edge_lines
 );
+int
+dxf_hatch_boundary_path_edge_line_get_id_code
+(
+        DxfHatchBoundaryPathEdgeLine *line
+);
 /* dxf_hatch_boundary_path_edge_spline functions. */
 DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_new ();
