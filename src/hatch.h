@@ -923,6 +923,12 @@ dxf_hatch_boundary_path_edge_ellipse_get_is_ccw
 (
         DxfHatchBoundaryPathEdgeEllipse *ellipse
 );
+DxfHatchBoundaryPathEdgeEllipse *
+dxf_hatch_boundary_path_edge_ellipse_set_is_ccw
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse,
+        int is_ccw
+);
 /* dxf_hatch_boundary_path_edge_line functions. */
 DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_new ();

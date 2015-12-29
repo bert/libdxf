@@ -3789,6 +3789,51 @@ dxf_hatch_boundary_path_edge_ellipse_get_is_ccw
 }
 
 
+/*!
+ * \brief Set the is_ccw value for a DXF \c HATCH boundary path edge
+ * ellipse.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfHatchBoundaryPathEdgeEllipse *
+dxf_hatch_boundary_path_edge_ellipse_set_is_ccw
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse,
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * ellipse. */
+        int is_ccw
+                /*!< the is_ccw value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (is_ccw < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative is_ccw value was passed.\n")),
+                  __FUNCTION__);
+        }
+        ellipse->is_ccw = is_ccw;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse);
+}
+
+
 /* dxf_hatch_boundary_path_edge_line functions. */
 
 /*!
