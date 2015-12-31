@@ -981,6 +981,12 @@ dxf_hatch_boundary_path_edge_line_set_start_point
         DxfHatchBoundaryPathEdgeLine *line,
         DxfPoint *point
 );
+DxfPoint *
+dxf_hatch_boundary_path_edge_line_get_end_point
+(
+        DxfHatchBoundaryPathEdgeLine *line,
+        int id_code
+);
 /* dxf_hatch_boundary_path_edge_spline functions. */
 DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_new ();
