@@ -1890,9 +1890,9 @@ dxf_line_get_end_point
                 __FUNCTION__);
         }
         p2->id_code = id_code;
-        p2->x0 = line->x0;
-        p2->y0 = line->y0;
-        p2->z0 = line->z0;
+        p2->x0 = line->x1;
+        p2->y0 = line->y1;
+        p2->z0 = line->z1;
         switch (inheritance)
         {
                 case 0:
