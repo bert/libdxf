@@ -351,6 +351,12 @@ dxf_line_get_next
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_next
+(
+        DxfLine *line,
+        DxfLine *next
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
