@@ -1985,119 +1985,6 @@ dxf_line_set_end_point
 
 
 /*!
- * \brief Get the mid point of a DXF \c LINE entity.
- *
- * \return the mid point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- */
-DxfPoint *
-dxf_line_get_mid_point
-(
-        DxfLine *line,
-                /*!< a pointer to a DXF \c LINE entity. */
-        int id_code,
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file. */
-        int inheritance
-                /*!< Inherit layer, linetype, color and other relevant
-                 * properties from either:
-                 * <ol>
-                 * <li value = "0"> Default (as initialised).</li>
-                 * <li value = "1"> \c LINE.</li>
-                 * </ol>
-                 */
-)
-{
-#ifdef DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        DxfPoint *point = NULL;
-
-        /* Do some basic checks. */
-        if (line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if ((line->x0 == line->x1)
-          && (line->y0 == line->y1)
-          && (line->z0 == line->z1))
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a 3DLINE with points with identical coordinates were passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        point = dxf_point_init (point);
-        if (point == NULL)
-        {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        if (id_code < 0)
-        {
-              fprintf (stderr,
-                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
-                __FUNCTION__);
-        }
-        point->id_code = id_code;
-        point->x0 = (line->x0 + line->x1) / 2;
-        point->y0 = (line->y0 + line->y1) / 2;
-        point->z0 = (line->z0 + line->z1) / 2;
-        switch (inheritance)
-        {
-                case 0:
-                        /* Do nothing. */
-                        break;
-                case 1:
-                        if (line->linetype != NULL)
-                        {
-                                point->linetype = strdup (line->linetype);
-                        }
-                        if (line->layer != NULL)
-                        {
-                                point->layer = strdup (line->layer);
-                        }
-                        point->thickness = line->thickness;
-                        point->linetype_scale = line->linetype_scale;
-                        point->visibility = line->visibility;
-                        point->color = line->color;
-                        point->paperspace = line->paperspace;
-                        if (line->dictionary_owner_soft != NULL)
-                        {
-                                point->dictionary_owner_soft = strdup (line->dictionary_owner_soft);
-                        }
-                        if (line->dictionary_owner_hard != NULL)
-                        {
-                                point->dictionary_owner_hard = strdup (line->dictionary_owner_hard);
-                        }
-                        break;
-                default:
-                        fprintf (stderr,
-                          (_("Warning in %s (): unknown inheritance option passed.\n")),
-                          __FUNCTION__);
-                        fprintf (stderr,
-                          (_("\tResolving to default.\n")));
-                        break;
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (point);
-}
-
-
-/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c LINE entity.
  *
@@ -2202,8 +2089,215 @@ dxf_line_set_extrusion_vector
 
 
 /*!
- * \brief Get the length of a DXF \c LINE (straight distance between
- * start point and end point).
+ * \brief Get the pointer to the next \c LINE entity from a DXF 
+ * \c LINE entity.
+ *
+ * \return pointer to the next \c LINE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfLine *
+dxf_line_get_next
+(
+        DxfLine *line
+                /*!< a pointer to a DXF \c LINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfLine *result;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfLine *) line->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Set the pointer to the next \c LINE for a DXF \c LINE
+ * entity.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfLine *
+dxf_line_set_next
+(
+        DxfLine *line,
+                /*!< a pointer to a DXF \c LINE entity. */
+        DxfLine *next
+                /*!< a pointer to the next \c LINE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->next = (struct DxfLine *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
+ * \brief Calculate the mid point of a DXF \c LINE entity.
+ *
+ * \return the mid point.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfPoint *
+dxf_line_calculate_mid_point
+(
+        DxfLine *line,
+                /*!< a pointer to a DXF \c LINE entity. */
+        int id_code,
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+        int inheritance
+                /*!< Inherit layer, linetype, color and other relevant
+                 * properties from either:
+                 * <ol>
+                 * <li value = "0"> Default (as initialised).</li>
+                 * <li value = "1"> \c LINE.</li>
+                 * </ol>
+                 */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *point = NULL;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if ((line->x0 == line->x1)
+          && (line->y0 == line->y1)
+          && (line->z0 == line->z1))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a 3DLINE with points with identical coordinates were passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point = dxf_point_init (point);
+        if (point == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        if (id_code < 0)
+        {
+              fprintf (stderr,
+                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
+                __FUNCTION__);
+        }
+        point->id_code = id_code;
+        point->x0 = (line->x0 + line->x1) / 2;
+        point->y0 = (line->y0 + line->y1) / 2;
+        point->z0 = (line->z0 + line->z1) / 2;
+        switch (inheritance)
+        {
+                case 0:
+                        /* Do nothing. */
+                        break;
+                case 1:
+                        if (line->linetype != NULL)
+                        {
+                                point->linetype = strdup (line->linetype);
+                        }
+                        if (line->layer != NULL)
+                        {
+                                point->layer = strdup (line->layer);
+                        }
+                        point->thickness = line->thickness;
+                        point->linetype_scale = line->linetype_scale;
+                        point->visibility = line->visibility;
+                        point->color = line->color;
+                        point->paperspace = line->paperspace;
+                        if (line->dictionary_owner_soft != NULL)
+                        {
+                                point->dictionary_owner_soft = strdup (line->dictionary_owner_soft);
+                        }
+                        if (line->dictionary_owner_hard != NULL)
+                        {
+                                point->dictionary_owner_hard = strdup (line->dictionary_owner_hard);
+                        }
+                        break;
+                default:
+                        fprintf (stderr,
+                          (_("Warning in %s (): unknown inheritance option passed.\n")),
+                          __FUNCTION__);
+                        fprintf (stderr,
+                          (_("\tResolving to default.\n")));
+                        break;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
+/*!
+ * \brief Calculate the length of a DXF \c LINE (straight distance
+ * between start point and end point).
  *
  * \return the length of the \c line in drawing units.
  *
@@ -2214,7 +2308,7 @@ dxf_line_set_extrusion_vector
  * \version According to DXF R14.
  */
 double
-dxf_line_get_length
+dxf_line_calculate_length
 (
         DxfLine *line
                 /*!< a pointer to a DXF \c LINE entity. */
@@ -2398,100 +2492,6 @@ dxf_line_create_from_points
                           (_("\tResolving to default.\n")));
                         break;
         }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (line);
-}
-
-
-/*!
- * \brief Get the pointer to the next \c LINE entity from a DXF 
- * \c LINE entity.
- *
- * \return pointer to the next \c LINE entity.
- *
- * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- */
-DxfLine *
-dxf_line_get_next
-(
-        DxfLine *line
-                /*!< a pointer to a DXF \c LINE entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        DxfLine *result;
-
-        /* Do some basic checks. */
-        if (line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (line->next == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        result = (DxfLine *) line->next;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (result);
-}
-
-
-/*!
- * \brief Set the pointer to the next \c LINE for a DXF \c LINE
- * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- */
-DxfLine *
-dxf_line_set_next
-(
-        DxfLine *line,
-                /*!< a pointer to a DXF \c LINE entity. */
-        DxfLine *next
-                /*!< a pointer to the next \c LINE for the entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (next == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        line->next = (struct DxfLine *) next;
 #if DEBUG
         DXF_DEBUG_END
 #endif

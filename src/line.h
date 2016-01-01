@@ -314,13 +314,6 @@ dxf_line_set_end_point
         DxfPoint *point
 );
 DxfPoint *
-dxf_line_get_mid_point
-(
-        DxfLine *line,
-        int id_code,
-        int inheritance
-);
-DxfPoint *
 dxf_line_get_extrusion_vector_as_point
 (
         DxfLine *line
@@ -333,19 +326,6 @@ dxf_line_set_extrusion_vector
         double extr_y0,
         double extr_z0
 );
-double
-dxf_line_get_length
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_create_from_points
-(
-        DxfPoint *p1,
-        DxfPoint *p2,
-        int id_code,
-        int inheritance
-);
 DxfLine *
 dxf_line_get_next
 (
@@ -356,6 +336,26 @@ dxf_line_set_next
 (
         DxfLine *line,
         DxfLine *next
+);
+DxfPoint *
+dxf_line_calculate_mid_point
+(
+        DxfLine *line,
+        int id_code,
+        int inheritance
+);
+double
+dxf_line_calculate_length
+(
+        DxfLine *line
+);
+DxfLine *
+dxf_line_create_from_points
+(
+        DxfPoint *p1,
+        DxfPoint *p2,
+        int id_code,
+        int inheritance
 );
 
 
