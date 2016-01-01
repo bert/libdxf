@@ -159,12 +159,14 @@ dxf_hatch_boundary_path_edge_spline_cp
         int id_code;
                 /*!< group code = 5. */
         double x0;
-                /*!< group code = 10. */
+                /*!< X value of the coordinate of the control point.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20. */
+                /*!< Y value of the coordinate of the control point.\n
+                 * Group code = 20. */
         double weight;
-                /*!< group code = 42\n
-                 * optional, defaults to 1.0. */
+                /*!< Optional, defaults to 1.0.\n
+                 * Group code = 42. */
         struct DxfHatchBoundaryPathEdgeSplineCp *next;
                 /*!< pointer to the next DxfHatchBoundaryPathEdgeSplineCp.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeSplineCp. */
@@ -1126,6 +1128,11 @@ void
 dxf_hatch_boundary_path_edge_spline_control_point_free_chain
 (
         DxfHatchBoundaryPathEdgeSplineCp *hatch_boundary_path_edge_spline_control_points
+);
+int
+dxf_hatch_boundary_path_edge_spline_cp_get_id_code
+(
+        DxfHatchBoundaryPathEdgeSplineCp *control_point
 );
 
 
