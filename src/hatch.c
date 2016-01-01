@@ -4370,6 +4370,53 @@ dxf_hatch_boundary_path_edge_line_get_end_point
 }
 
 
+/*!
+ * \brief Set the end point of a DXF \c HATCH boundary path edge line.
+ *
+ * \return a pointer to a DXF \c HATCH boundary path edge line.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfHatchBoundaryPathEdgeLine *
+dxf_hatch_boundary_path_edge_line_set_end_point
+(
+        DxfHatchBoundaryPathEdgeLine *line,
+                /*!< a pointer to a DXF \c HATCH boundary path edge line. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->x1 = point->x0;
+        line->y1 = point->y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* dxf_hatch_boundary_path_edge_spline functions. */
 
 /*!
