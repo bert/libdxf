@@ -2405,4 +2405,53 @@ dxf_line_create_from_points
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c LINE entity from a DXF 
+ * \c LINE entity.
+ *
+ * \return pointer to the next \c LINE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfLine *
+dxf_line_get_next
+(
+        DxfLine *line
+                /*!< a pointer to a DXF \c LINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfLine *result;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfLine *) line->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

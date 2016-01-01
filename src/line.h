@@ -346,6 +346,11 @@ dxf_line_create_from_points
         int id_code,
         int inheritance
 );
+DxfLine *
+dxf_line_get_next
+(
+        DxfLine *line
+);
 
 
 #endif /* LIBDXF_SRC_LINE_H */
