@@ -1134,6 +1134,12 @@ dxf_hatch_boundary_path_edge_spline_cp_get_id_code
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point
 );
+DxfHatchBoundaryPathEdgeSplineCp *
+dxf_hatch_boundary_path_edge_spline_cp_set_id_code
+(
+        DxfHatchBoundaryPathEdgeSplineCp *control_point,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_HATCH_H */
