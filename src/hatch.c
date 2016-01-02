@@ -6392,4 +6392,39 @@ dxf_hatch_boundary_path_edge_spline_cp_set_point
 }
 
 
+/*!
+ * \brief Get the weight value from a \c HATCH boundary path edge spline
+ * control point.
+ *
+ * \return the weight value.
+ */
+double
+dxf_hatch_boundary_path_edge_spline_cp_get_weight
+(
+        DxfHatchBoundaryPathEdgeSplineCp *control_point
+                /*!< DXF \c HATCH boundary path edge spline control
+                 * point. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (control_point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () received a NULL pointer value in dxf_hatch_boundary_path_edge_spline.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = control_point->weight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
