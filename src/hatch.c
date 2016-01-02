@@ -6281,4 +6281,65 @@ dxf_hatch_boundary_path_edge_spline_cp_set_id_code
 }
 
 
+/*!
+ * \brief Get the point of a DXF \c HATCH boundary path spline control
+ * point.
+ *
+ * \return the point.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ */
+DxfPoint *
+dxf_hatch_boundary_path_edge_spline_cp_get_point
+(
+        DxfHatchBoundaryPathEdgeSplineCp *control_point,
+                /*!< a pointer to a DXF \c HATCH boundary path spline
+                 * control point. */
+        int id_code
+                /*!< Identification number for the \c DXfPoint entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *p1 = NULL;
+
+        /* Do some basic checks. */
+        if (control_point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        p1 = dxf_point_init (p1);
+        if (p1 == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        if (id_code < 0)
+        {
+              fprintf (stderr,
+                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
+                __FUNCTION__);
+        }
+        p1->id_code = id_code;
+        p1->x0 = control_point->x0;
+        p1->y0 = control_point->y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (p1);
+}
+
+
 /* EOF */
