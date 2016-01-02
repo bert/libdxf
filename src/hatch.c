@@ -6463,4 +6463,49 @@ dxf_hatch_boundary_path_edge_spline_cp_set_weight
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c HATCH boundary path edge arc
+ * from a DXF \c HATCH boundary path edge arc.
+ *
+ * \return pointer to the next \c HATCH boundary path edge spline
+ * control point.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchBoundaryPathEdgeSplineCp *
+dxf_hatch_boundary_path_edge_spline_cp_get_next
+(
+        DxfHatchBoundaryPathEdgeSplineCp *control_point
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * spline control point. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchBoundaryPathEdgeSplineCp *result;
+
+        /* Do some basic checks. */
+        if (control_point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (control_point->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHatchBoundaryPathEdgeSplineCp *) control_point->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

@@ -1163,6 +1163,11 @@ dxf_hatch_boundary_path_edge_spline_cp_set_weight
         DxfHatchBoundaryPathEdgeSplineCp *control_point,
         double weight
 );
+DxfHatchBoundaryPathEdgeSplineCp *
+dxf_hatch_boundary_path_edge_spline_cp_get_next
+(
+        DxfHatchBoundaryPathEdgeSplineCp *control_point
+);
 
 
 #endif /* LIBDXF_SRC_HATCH_H */
