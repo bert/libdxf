@@ -401,12 +401,6 @@ dxf_hatch_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH
  * entities and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_hatch_free_chain
@@ -569,12 +563,6 @@ dxf_hatch_pattern_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH patterns
  * and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_hatch_pattern_free_chain
@@ -804,12 +792,6 @@ dxf_hatch_pattern_def_line_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH pattern
  * definition lines and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_hatch_pattern_def_line_free_chain
@@ -1010,12 +992,6 @@ dxf_hatch_pattern_seedpoint_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH pattern
  * seed points and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_hatch_pattern_seedpoint_free_chain
@@ -1259,12 +1235,6 @@ dxf_hatch_boundary_path_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
  * paths and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_hatch_boundary_path_free_chain
@@ -1498,12 +1468,6 @@ dxf_hatch_boundary_path_polyline_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
  * path polylines and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_hatch_boundary_path_polyline_free_chain
@@ -1912,12 +1876,6 @@ dxf_hatch_boundary_path_polyline_vertex_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
  * path polyline vertices and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_hatch_boundary_path_polyline_vertex_free_chain
@@ -2150,12 +2108,6 @@ dxf_hatch_boundary_path_edge_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
  * path edges and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_hatch_boundary_path_edge_free_chain
@@ -2316,12 +2268,6 @@ dxf_hatch_boundary_path_edge_arc_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
  * path edge arcs and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_hatch_boundary_path_edge_arc_free_chain
@@ -2357,12 +2303,6 @@ dxf_hatch_boundary_path_edge_arc_free_chain
  * \brief Get the ID code from a DXF \c HATCH boundary path edge arc.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_hatch_boundary_path_edge_arc_get_id_code
@@ -2401,12 +2341,6 @@ dxf_hatch_boundary_path_edge_arc_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c HATCH boundary path edge arc.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_set_id_code
@@ -2581,12 +2515,6 @@ dxf_hatch_boundary_path_edge_arc_set_y0
  * \brief Get the center point of a DXF \c HATCH boundary path edge arc.
  *
  * \return the center point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_hatch_boundary_path_edge_arc_get_center_point
@@ -2640,12 +2568,6 @@ dxf_hatch_boundary_path_edge_arc_get_center_point
  * \brief Set the center point of a DXF \c HATCH boundary path edge arc.
  *
  * \return a pointer to a DXF \c HATCH boundary path edge arc.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_set_center_point
@@ -2687,12 +2609,6 @@ dxf_hatch_boundary_path_edge_arc_set_center_point
  * \brief Get the radius from a DXF \c HATCH boundary path edge arc.
  *
  * \return radius.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_hatch_boundary_path_edge_arc_get_radius
@@ -2738,12 +2654,6 @@ dxf_hatch_boundary_path_edge_arc_get_radius
 
 /*!
  * \brief Set the radius for a DXF \c HATCH boundary path edge arc.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_set_radius
@@ -2791,12 +2701,6 @@ dxf_hatch_boundary_path_edge_arc_set_radius
  * \brief Get the start angle from a DXF \c HATCH boundary path edge arc.
  *
  * \return start angle.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_hatch_boundary_path_edge_arc_get_start_angle
@@ -2828,12 +2732,6 @@ dxf_hatch_boundary_path_edge_arc_get_start_angle
 
 /*!
  * \brief Set the start angle for a DXF \c HATCH boundary path edge arc.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_set_start_angle
@@ -2867,12 +2765,6 @@ dxf_hatch_boundary_path_edge_arc_set_start_angle
  * \brief Get the end angle from a DXF \c HATCH boundary path edge arc.
  *
  * \return end angle.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_hatch_boundary_path_edge_arc_get_end_angle
@@ -2904,12 +2796,6 @@ dxf_hatch_boundary_path_edge_arc_get_end_angle
 
 /*!
  * \brief Set the end angle for a DXF \c HATCH boundary path edge arc.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_set_end_angle
@@ -2944,12 +2830,6 @@ dxf_hatch_boundary_path_edge_arc_set_end_angle
  * edge arc.
  *
  * \return arc is ccw value.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_hatch_boundary_path_edge_arc_get_is_ccw
@@ -2987,12 +2867,6 @@ dxf_hatch_boundary_path_edge_arc_get_is_ccw
 
 /*!
  * \brief Set the arc is ccw value for a DXF \c HATCH boundary path edge arc.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_set_is_ccw
@@ -3035,12 +2909,6 @@ dxf_hatch_boundary_path_edge_arc_set_is_ccw
  * \return pointer to the next \c HATCH boundary path edge arc.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_get_next
@@ -3080,12 +2948,6 @@ dxf_hatch_boundary_path_edge_arc_get_next
 /*!
  * \brief Set the pointer to the next \c HATCH boundary path edge arc
  * for a DXF \c HATCH boundary path edge arc.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_set_next
@@ -3254,12 +3116,6 @@ dxf_hatch_boundary_path_edge_ellipse_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
  * path edge ellipses and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_hatch_boundary_path_edge_ellipse_free_chain
@@ -3296,12 +3152,6 @@ dxf_hatch_boundary_path_edge_ellipse_free_chain
  * ellipse.
  *
  * \return ID code.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_hatch_boundary_path_edge_ellipse_get_id_code
@@ -3341,12 +3191,6 @@ dxf_hatch_boundary_path_edge_ellipse_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c HATCH boundary path edge ellipse.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_set_id_code
@@ -3391,12 +3235,6 @@ dxf_hatch_boundary_path_edge_ellipse_set_id_code
  * ellipse.
  *
  * \return the center point.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_hatch_boundary_path_edge_ellipse_get_center_point
@@ -3452,12 +3290,6 @@ dxf_hatch_boundary_path_edge_ellipse_get_center_point
  * ellipse.
  *
  * \return a pointer to a DXF \c HATCH boundary path edge ellipse.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_set_center_point
@@ -3501,12 +3333,6 @@ dxf_hatch_boundary_path_edge_ellipse_set_center_point
  * a DXF \c HATCH boundary path edge ellipse.
  *
  * \return the end point.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_hatch_boundary_path_edge_ellipse_get_end_point
@@ -3562,12 +3388,6 @@ dxf_hatch_boundary_path_edge_ellipse_get_end_point
  * a DXF \c HATCH boundary path edge ellipse.
  *
  * \return a pointer to a DXF \c HATCH boundary path edge ellipse.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_set_end_point
@@ -3611,12 +3431,6 @@ dxf_hatch_boundary_path_edge_ellipse_set_end_point
  * \c HATCH boundary path edge ellipse.
  *
  * \return ratio.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_hatch_boundary_path_edge_ellipse_get_ratio
@@ -3664,12 +3478,6 @@ dxf_hatch_boundary_path_edge_ellipse_get_ratio
 /*!
  * \brief Set the ratio of minor axis to major axis for a DXF \c HATCH
  * boundary path edge ellipse.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_set_ratio
@@ -3719,12 +3527,6 @@ dxf_hatch_boundary_path_edge_ellipse_set_ratio
  * ellipse.
  *
  * \return start angle.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_hatch_boundary_path_edge_ellipse_get_start_angle
@@ -3758,12 +3560,6 @@ dxf_hatch_boundary_path_edge_ellipse_get_start_angle
 /*!
  * \brief Set the start angle for a DXF \c HATCH boundary path edge
  * ellipse.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_set_start_angle
@@ -3799,12 +3595,6 @@ dxf_hatch_boundary_path_edge_ellipse_set_start_angle
  * ellipse.
  *
  * \return end angle.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_hatch_boundary_path_edge_ellipse_get_end_angle
@@ -3838,12 +3628,6 @@ dxf_hatch_boundary_path_edge_ellipse_get_end_angle
 /*!
  * \brief Set the end angle for a DXF \c HATCH boundary path edge
  * ellipse.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_set_end_angle
@@ -3879,12 +3663,6 @@ dxf_hatch_boundary_path_edge_ellipse_set_end_angle
  * ellipse.
  *
  * \return is_ ccw value.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_hatch_boundary_path_edge_ellipse_get_is_ccw
@@ -3924,12 +3702,6 @@ dxf_hatch_boundary_path_edge_ellipse_get_is_ccw
 /*!
  * \brief Set the is_ccw value for a DXF \c HATCH boundary path edge
  * ellipse.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_set_is_ccw
@@ -3973,12 +3745,6 @@ dxf_hatch_boundary_path_edge_ellipse_set_is_ccw
  * \return pointer to the next \c HATCH boundary path edge ellipse.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_get_next
@@ -4019,12 +3785,6 @@ dxf_hatch_boundary_path_edge_ellipse_get_next
 /*!
  * \brief Set the pointer to the next \c HATCH boundary path edge
  * ellipse for a DXF \c HATCH boundary path edge ellipse.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeEllipse *
 dxf_hatch_boundary_path_edge_ellipse_set_next
@@ -4190,12 +3950,6 @@ dxf_hatch_boundary_path_edge_line_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
  * path edge lines and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_hatch_boundary_path_edge_line_free_chain
@@ -4231,12 +3985,6 @@ dxf_hatch_boundary_path_edge_line_free_chain
  * \brief Get the ID code from a DXF \c HATCH boundary path edge line.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_hatch_boundary_path_edge_line_get_id_code
@@ -4276,12 +4024,6 @@ dxf_hatch_boundary_path_edge_line_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c HATCH boundary path edge line.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_set_id_code
@@ -4325,12 +4067,6 @@ dxf_hatch_boundary_path_edge_line_set_id_code
  * \brief Get the start point of a DXF \c HATCH boundary path edge line.
  *
  * \return the start point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_hatch_boundary_path_edge_line_get_start_point
@@ -4392,12 +4128,6 @@ dxf_hatch_boundary_path_edge_line_get_start_point
  * \brief Set the start point of a DXF \c HATCH boundary path edge line.
  *
  * \return a pointer to a DXF \c HATCH boundary path edge line.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_set_start_point
@@ -4439,12 +4169,6 @@ dxf_hatch_boundary_path_edge_line_set_start_point
  * \brief Get the end point of a DXF \c HATCH boundary path edge line.
  *
  * \return the end point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_hatch_boundary_path_edge_line_get_end_point
@@ -4506,12 +4230,6 @@ dxf_hatch_boundary_path_edge_line_get_end_point
  * \brief Set the end point of a DXF \c HATCH boundary path edge line.
  *
  * \return a pointer to a DXF \c HATCH boundary path edge line.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_set_end_point
@@ -4556,12 +4274,6 @@ dxf_hatch_boundary_path_edge_line_set_end_point
  * \return pointer to the next \c HATCH boundary path edge line.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_get_next
@@ -4601,12 +4313,6 @@ dxf_hatch_boundary_path_edge_line_get_next
 /*!
  * \brief Set the pointer to the next \c HATCH boundary path edge line
  * for a DXF \c HATCH boundary path edge line.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeLine *
 dxf_hatch_boundary_path_edge_line_set_next
@@ -4780,12 +4486,6 @@ dxf_hatch_boundary_path_edge_spline_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
  * path edge splines and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_hatch_boundary_path_edge_spline_free_chain
@@ -6281,12 +5981,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HATCH boundary
  * path edge spline control points and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_hatch_boundary_path_edge_spline_control_point_free_chain
@@ -6323,12 +6017,6 @@ dxf_hatch_boundary_path_edge_spline_control_point_free_chain
  * control point.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_hatch_boundary_path_edge_spline_cp_get_id_code
@@ -6368,12 +6056,6 @@ dxf_hatch_boundary_path_edge_spline_cp_get_id_code
 /*!
  * \brief Set the ID code for a DXF \c HATCH boundary path spline
  * control point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_cp_set_id_code
@@ -6418,12 +6100,6 @@ dxf_hatch_boundary_path_edge_spline_cp_set_id_code
  * point.
  *
  * \return the point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_hatch_boundary_path_edge_spline_cp_get_point
@@ -6480,12 +6156,6 @@ dxf_hatch_boundary_path_edge_spline_cp_get_point
  *
  * \return a pointer to a DXF \c HATCH boundary path spline control
  * point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_cp_set_point
