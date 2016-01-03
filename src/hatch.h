@@ -772,6 +772,12 @@ dxf_hatch_boundary_path_edge_arc_get_x0
 (
         DxfHatchBoundaryPathEdgeArc *arc
 );
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_set_x0
+(
+        DxfHatchBoundaryPathEdgeArc *arc,
+        double x0
+);
 DxfPoint *
 dxf_hatch_boundary_path_edge_arc_get_center_point
 (
