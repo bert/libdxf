@@ -2546,6 +2546,38 @@ dxf_hatch_boundary_path_edge_arc_get_y0
 
 
 /*!
+ * \brief Set the Y-value of the center point coordinate for a DXF
+ * \c HATCH boundary path edge arc.
+ */
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_set_y0
+(
+        DxfHatchBoundaryPathEdgeArc *arc,
+                /*!< a pointer to a DXF \c HATCH boundary path edge arc. */
+        double y0
+                /*!< the X-value of the center point coordinate to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        arc->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc);
+}
+
+
+/*!
  * \brief Get the center point of a DXF \c HATCH boundary path edge arc.
  *
  * \return the center point.
