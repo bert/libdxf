@@ -3300,6 +3300,41 @@ dxf_hatch_boundary_path_edge_ellipse_set_x0
 
 
 /*!
+ * \brief Get the Y-value of the center point coordinate from a DXF
+ * \c HATCH boundary path edge ellipse.
+ *
+ * \return y0.
+ */
+double
+dxf_hatch_boundary_path_edge_ellipse_get_y0
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * ellipse. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = ellipse->y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the center point of a DXF \c HATCH boundary path edge
  * ellipse.
  *

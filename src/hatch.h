@@ -896,6 +896,11 @@ dxf_hatch_boundary_path_edge_ellipse_set_x0
         DxfHatchBoundaryPathEdgeEllipse *ellipse,
         double x0
 );
+double
+dxf_hatch_boundary_path_edge_ellipse_get_y0
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse
+);
 DxfPoint *
 dxf_hatch_boundary_path_edge_ellipse_get_center_point
 (
