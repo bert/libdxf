@@ -1037,6 +1037,11 @@ dxf_hatch_boundary_path_edge_line_set_id_code
         DxfHatchBoundaryPathEdgeLine *line,
         int id_code
 );
+double
+dxf_hatch_boundary_path_edge_line_get_x0
+(
+        DxfHatchBoundaryPathEdgeLine *line
+);
 DxfPoint *
 dxf_hatch_boundary_path_edge_line_get_start_point
 (
