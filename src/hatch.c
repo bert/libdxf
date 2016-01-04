@@ -4441,6 +4441,39 @@ dxf_hatch_boundary_path_edge_line_get_y0
 
 
 /*!
+ * \brief Set the Y-value of the start point coordinate for a DXF
+ * \c HATCH boundary path edge line.
+ */
+DxfHatchBoundaryPathEdgeLine *
+dxf_hatch_boundary_path_edge_line_set_y0
+(
+        DxfHatchBoundaryPathEdgeLine *line,
+                /*!< a pointer to a DXF \c HATCH boundary path edge line. */
+        double y0
+                /*!< the Y-value of the center point coordinate to be
+                 * set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the start point of a DXF \c HATCH boundary path edge line.
  *
  * \return the start point.
