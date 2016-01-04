@@ -3502,6 +3502,40 @@ dxf_hatch_boundary_path_edge_ellipse_get_x1
 
 
 /*!
+ * \brief Set the X-value of the end point coordinate coordinate of the
+ * major axis for a DXF \c HATCH boundary path edge ellipse.
+ */
+DxfHatchBoundaryPathEdgeEllipse *
+dxf_hatch_boundary_path_edge_ellipse_set_x1
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse,
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * ellipse. */
+        double x1
+                /*!< the X-value of the end point coordinate coordinate
+                 * of the major axis to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ellipse->x1 = x1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse);
+}
+
+
+/*!
  * \brief Get the endpoint of the major axis (relative to the center) of
  * a DXF \c HATCH boundary path edge ellipse.
  *
