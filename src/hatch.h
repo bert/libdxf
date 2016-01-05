@@ -1082,6 +1082,11 @@ dxf_hatch_boundary_path_edge_line_set_x1
         DxfHatchBoundaryPathEdgeLine *line,
         double x1
 );
+double
+dxf_hatch_boundary_path_edge_line_get_y1
+(
+        DxfHatchBoundaryPathEdgeLine *line
+);
 DxfPoint *
 dxf_hatch_boundary_path_edge_line_get_end_point
 (
