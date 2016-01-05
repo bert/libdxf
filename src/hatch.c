@@ -4576,6 +4576,40 @@ dxf_hatch_boundary_path_edge_line_set_start_point
 
 
 /*!
+ * \brief Get the X-value of the end point coordinate from a DXF
+ * \c HATCH boundary path edge line.
+ *
+ * \return x1.
+ */
+double
+dxf_hatch_boundary_path_edge_line_get_x1
+(
+        DxfHatchBoundaryPathEdgeLine *line
+                /*!< a pointer to a DXF \c HATCH boundary path edge line. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = line->x1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the end point of a DXF \c HATCH boundary path edge line.
  *
  * \return the end point.
