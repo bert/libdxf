@@ -1266,6 +1266,12 @@ dxf_hatch_boundary_path_edge_spline_cp_get_y0
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point
 );
+DxfHatchBoundaryPathEdgeSplineCp *
+dxf_hatch_boundary_path_edge_spline_cp_set_y0
+(
+        DxfHatchBoundaryPathEdgeSplineCp *control_point,
+        double y0
+);
 DxfPoint *
 dxf_hatch_boundary_path_edge_spline_cp_get_point
 (
