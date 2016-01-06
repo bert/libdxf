@@ -1146,6 +1146,11 @@ dxf_hatch_boundary_path_edge_spline_set_id_code
         int id_code
 );
 int
+dxf_hatch_boundary_path_edge_spline_get_degree
+(
+        DxfHatchBoundaryPathEdgeSpline *spline
+);
+int
 dxf_hatch_boundary_path_edge_spline_append_control_point
 (
         DxfHatchBoundaryPathEdgeSpline *spline,
