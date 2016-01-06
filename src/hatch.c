@@ -6708,6 +6708,41 @@ dxf_hatch_boundary_path_edge_spline_cp_set_x0
 
 
 /*!
+ * \brief Get the Y-value of the coordinate from a DXF \c HATCH boundary
+ * path edge spline control point.
+ *
+ * \return y0.
+ */
+double
+dxf_hatch_boundary_path_edge_spline_cp_get_y0
+(
+        DxfHatchBoundaryPathEdgeSplineCp *control_point
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * spline control point. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (control_point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = control_point->y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the point of a DXF \c HATCH boundary path spline control
  * point.
  *
