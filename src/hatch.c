@@ -6607,7 +6607,8 @@ int
 dxf_hatch_boundary_path_edge_spline_cp_get_id_code
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point
-                /*!< a pointer to a DXF \c HATCH boundary path edge arc. */
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * splie control point. */
 )
 {
 #if DEBUG
@@ -6723,7 +6724,8 @@ DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_cp_set_x0
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point,
-                /*!< a pointer to a DXF \c HATCH boundary path edge line. */
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * spline control point. */
         double x0
                 /*!< the X-value of the coordinate to be set for the
                  * entity. */
@@ -6791,7 +6793,8 @@ DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_cp_set_y0
 (
         DxfHatchBoundaryPathEdgeSplineCp *control_point,
-                /*!< a pointer to a DXF \c HATCH boundary path edge line. */
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * spline control point. */
         double y0
                 /*!< the Y-value of the coordinate to be set for the
                  * entity. */
