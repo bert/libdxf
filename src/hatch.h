@@ -1172,6 +1172,12 @@ dxf_hatch_boundary_path_edge_spline_get_periodic
 (
         DxfHatchBoundaryPathEdgeSpline *spline
 );
+DxfHatchBoundaryPathEdgeSpline *
+dxf_hatch_boundary_path_edge_spline_set_periodic
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+        int periodic
+);
 int
 dxf_hatch_boundary_path_edge_spline_append_control_point
 (

@@ -5324,6 +5324,38 @@ dxf_hatch_boundary_path_edge_spline_get_periodic
 
 
 /*!
+ * \brief Set the periodic for a DXF \c HATCH boundary path spline.
+ */
+DxfHatchBoundaryPathEdgeSpline *
+dxf_hatch_boundary_path_edge_spline_set_periodic
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * spline. */
+        int periodic
+                /*!< periodic. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spline->periodic = periodic;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline);
+}
+
+
+/*!
  * \brief Append a control point to a \c HATCH boundary path edge spline
  * entity.
  *
