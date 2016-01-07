@@ -5249,13 +5249,6 @@ dxf_hatch_boundary_path_edge_spline_get_rational
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (spline->rational < 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the rational member.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
         result = spline->rational;
 #if DEBUG
         DXF_DEBUG_END
