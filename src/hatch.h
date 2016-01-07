@@ -1168,6 +1168,11 @@ dxf_hatch_boundary_path_edge_spline_set_rational
         int rational
 );
 int
+dxf_hatch_boundary_path_edge_spline_get_periodic
+(
+        DxfHatchBoundaryPathEdgeSpline *spline
+);
+int
 dxf_hatch_boundary_path_edge_spline_append_control_point
 (
         DxfHatchBoundaryPathEdgeSpline *spline,
