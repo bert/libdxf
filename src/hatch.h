@@ -130,21 +130,24 @@ typedef struct
 dxf_hatch_boundary_path_edge_line
 {
         int id_code;
-                /*!< group code = 5. */
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the
+                 * DXF file.\n
+                 * Group code = 5. */
         double x0;
-                /*!< group code = = 10\n
-                 * start point X-value. */
+                /*!< X-value of the coordinate of the start point.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * start point Y-value. */
+                /*!< Y-value of the coordinate of the start point.\n
+                 * Group code = 20. */
         double x1;
-                /*!< group code = 11\n
-                 * end point X-value. */
+                /*!< X-value of the coordinate of the end point.\n
+                 * Group code = 11. */
         double y1;
-                /*!< group code = 21\n
-                 * end point Y-value. */
+                /*!< Y-value of the coordinate of the end point.\n
+                 * Group code = 21. */
         struct DxfHatchBoundaryPathEdgeLine *next;
-                /*!< pointer to the next DxfHatchBoundaryPathEdgeLine.\n
+                /*!< Pointer to the next DxfHatchBoundaryPathEdgeLine.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeLine. */
 } DxfHatchBoundaryPathEdgeLine;
 
@@ -157,7 +160,10 @@ typedef struct
 dxf_hatch_boundary_path_edge_spline_cp
 {
         int id_code;
-                /*!< group code = 5. */
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the
+                 * DXF file.\n
+                 * Group code = 5. */
         double x0;
                 /*!< X value of the coordinate of the control point.\n
                  * Group code = 10. */
@@ -168,7 +174,7 @@ dxf_hatch_boundary_path_edge_spline_cp
                 /*!< Optional, defaults to 1.0.\n
                  * Group code = 42. */
         struct DxfHatchBoundaryPathEdgeSplineCp *next;
-                /*!< pointer to the next DxfHatchBoundaryPathEdgeSplineCp.\n
+                /*!< Pointer to the next DxfHatchBoundaryPathEdgeSplineCp.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeSplineCp. */
 } DxfHatchBoundaryPathEdgeSplineCp;
 
