@@ -5356,6 +5356,47 @@ dxf_hatch_boundary_path_edge_spline_set_periodic
 
 
 /*!
+ * \brief Get the number_of_knots from a DXF \c HATCH boundary path spline.
+ *
+ * \return number_of_knots.
+ */
+int
+dxf_hatch_boundary_path_edge_spline_get_number_of_knots
+(
+        DxfHatchBoundaryPathEdgeSpline *spline
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * spline. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (spline->number_of_knots < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative number_of_knots value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = spline->number_of_knots;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Append a control point to a \c HATCH boundary path edge spline
  * entity.
  *

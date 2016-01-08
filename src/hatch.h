@@ -1185,6 +1185,11 @@ dxf_hatch_boundary_path_edge_spline_set_periodic
         int periodic
 );
 int
+dxf_hatch_boundary_path_edge_spline_get_number_of_knots
+(
+        DxfHatchBoundaryPathEdgeSpline *spline
+);
+int
 dxf_hatch_boundary_path_edge_spline_append_control_point
 (
         DxfHatchBoundaryPathEdgeSpline *spline,
