@@ -194,21 +194,21 @@ dxf_hatch_boundary_path_edge_spline
         int periodic;
                 /*!< group code = 74. */
         int number_of_knots;
-                /*!< group code = 95\n
-                 * number of knots. */
+                /*!< Number of knots.\n
+                 * Group code = 95. */
         double knots[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS];
-                /*!< group code = 40\n
-                 * knot values control the shape of the curve as it
-                 * passes through the control points. */
+                /*!< Knot values control the shape of the curve as it
+                 * passes through the control points.\n
+                 * Group code = 40. */
         int number_of_control_points;
-                /*!< group code = 96\n
-                 * number of control points. */
+                /*!< Number of control points.\n
+                 * Group code = 96. */
         struct DxfHatchBoundaryPathEdgeSplineCp *control_points;
-                /*!< pointer to the first DxfHatchBoundaryPathEdgeSplineCp.\n
+                /*!< Pointer to the first DxfHatchBoundaryPathEdgeSplineCp.\n
                  * \c NULL if there is no DxfHatchBoundaryPathEdgeSplineCp
                  * in the DxfHatchBoundaryPathEdgeSpline. */
         struct DxfHatchBoundaryPathEdgeSpline *next;
-                /*!< pointer to the next DxfHatchBoundaryPathEdgeSpline.\n
+                /*!< Pointer to the next DxfHatchBoundaryPathEdgeSpline.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdgeSpline. */
 } DxfHatchBoundaryPathEdgeSpline;
 
