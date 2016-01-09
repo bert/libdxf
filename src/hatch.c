@@ -5553,6 +5553,46 @@ dxf_hatch_boundary_path_edge_spline_get_control_points
 
 
 /*!
+ * \brief Set the control_points for a DXF \c HATCH boundary
+ * path spline.
+ */
+DxfHatchBoundaryPathEdgeSpline *
+dxf_hatch_boundary_path_edge_spline_set_control_points
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * spline. */
+        DxfHatchBoundaryPathEdgeSplineCp *control_points
+                /*!< a pointer to the first control point. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (control_points == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spline->control_points = (struct DxfHatchBoundaryPathEdgeSplineCp *) control_points;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline);
+}
+
+
+/*!
  * \brief Append a control point to a \c HATCH boundary path edge spline
  * entity.
  *
