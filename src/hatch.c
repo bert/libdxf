@@ -5519,7 +5519,9 @@ dxf_hatch_boundary_path_edge_spline_set_number_of_control_points
 /*!
  * \brief Get the control points from a DXF \c HATCH boundary path spline.
  *
- * \return control points.
+ * \return a pointer to the first control point.
+ *
+ * \warning No low level copy is made of the series of control points.
  */
 struct DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_get_control_points
