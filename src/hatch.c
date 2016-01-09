@@ -5523,7 +5523,7 @@ dxf_hatch_boundary_path_edge_spline_set_number_of_control_points
  *
  * \warning No low level copy is made of the series of control points.
  */
-struct DxfHatchBoundaryPathEdgeSplineCp *
+DxfHatchBoundaryPathEdgeSplineCp *
 dxf_hatch_boundary_path_edge_spline_get_control_points
 (
         DxfHatchBoundaryPathEdgeSpline *spline
@@ -5534,7 +5534,7 @@ dxf_hatch_boundary_path_edge_spline_get_control_points
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        struct DxfHatchBoundaryPathEdgeSplineCp *result;
+        DxfHatchBoundaryPathEdgeSplineCp *result;
 
         /* Do some basic checks. */
         if (spline == NULL)
@@ -5544,7 +5544,7 @@ dxf_hatch_boundary_path_edge_spline_get_control_points
                   __FUNCTION__);
                 return (NULL);
         }
-        result = spline->control_points;
+        result = (DxfHatchBoundaryPathEdgeSplineCp *) spline->control_points;
 #if DEBUG
         DXF_DEBUG_END
 #endif
