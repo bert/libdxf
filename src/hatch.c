@@ -5722,6 +5722,45 @@ dxf_hatch_boundary_path_edge_spline_get_next
 
 
 /*!
+ * \brief Set the pointer to the next \c HATCH boundary path spline for
+ * a DXF \c HATCH boundary path spline.
+ */
+DxfHatchBoundaryPathEdgeSpline *
+dxf_hatch_boundary_path_edge_spline_set_next
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+                /*!< a pointer to a DXF \c HATCH boundary path spline. */
+        DxfHatchBoundaryPathEdgeSpline *next
+                /*!< a pointer to the next \c HATCH boundary path spline for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spline->next = (struct DxfHatchBoundaryPathEdgeSpline *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline);
+}
+
+
+/*!
  * \brief Append a control point to a \c HATCH boundary path edge spline
  * entity.
  *
