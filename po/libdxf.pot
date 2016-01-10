@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-01 20:10+0100\n"
+"POT-Creation-Date: 2016-01-10 21:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,13 +40,13 @@ msgstr ""
 #: src/dimstyle.c:972 src/donut.c:103 src/donut.c:367 src/ellipse.c:97
 #: src/ellipse.c:177 src/ellipse.c:643 src/endblk.c:108 src/endblk.c:178
 #: src/group.c:108 src/group.c:183 src/group.c:471 src/hatch.c:102
-#: src/hatch.c:425 src/hatch.c:498 src/hatch.c:593 src/hatch.c:668
-#: src/hatch.c:829 src/hatch.c:902 src/hatch.c:1035 src/hatch.c:1108
-#: src/hatch.c:1283 src/hatch.c:1356 src/hatch.c:1523 src/hatch.c:1808
-#: src/hatch.c:1937 src/hatch.c:2080 src/hatch.c:2175 src/hatch.c:2248
-#: src/hatch.c:2341 src/hatch.c:3052 src/hatch.c:3147 src/hatch.c:3992
-#: src/hatch.c:4083 src/hatch.c:4575 src/hatch.c:4673 src/hatch.c:6084
-#: src/hatch.c:6174 src/header.c:201 src/header.c:1886 src/helix.c:101
+#: src/hatch.c:419 src/hatch.c:492 src/hatch.c:581 src/hatch.c:656
+#: src/hatch.c:811 src/hatch.c:884 src/hatch.c:1011 src/hatch.c:1084
+#: src/hatch.c:1253 src/hatch.c:1326 src/hatch.c:1487 src/hatch.c:1772
+#: src/hatch.c:1895 src/hatch.c:2038 src/hatch.c:2127 src/hatch.c:2200
+#: src/hatch.c:2287 src/hatch.c:3046 src/hatch.c:3135 src/hatch.c:4160
+#: src/hatch.c:4245 src/hatch.c:4957 src/hatch.c:5049 src/hatch.c:7159
+#: src/hatch.c:7243 src/header.c:201 src/header.c:1886 src/helix.c:101
 #: src/helix.c:206 src/helix.c:890 src/idbuffer.c:110 src/idbuffer.c:187
 #: src/idbuffer.c:451 src/image.c:107 src/image.c:205 src/image.c:744
 #: src/imagedef.c:110 src/imagedef.c:196 src/imagedef.c:537
@@ -453,25 +453,38 @@ msgstr ""
 #: src/group.c:795 src/group.c:844 src/group.c:889 src/group.c:938
 #: src/group.c:989 src/group.c:1033 src/group.c:1040 src/group.c:1080
 #: src/group.c:1125 src/group.c:1132 src/group.c:1174 src/group.c:1219
-#: src/group.c:1226 src/hatch.c:196 src/hatch.c:369 src/hatch.c:547
-#: src/hatch.c:723 src/hatch.c:730 src/hatch.c:784 src/hatch.c:947
-#: src/hatch.c:954 src/hatch.c:990 src/hatch.c:1153 src/hatch.c:1160
-#: src/hatch.c:1237 src/hatch.c:1405 src/hatch.c:1412 src/hatch.c:1477
-#: src/hatch.c:1850 src/hatch.c:1857 src/hatch.c:1892 src/hatch.c:1985
-#: src/hatch.c:1992 src/hatch.c:2126 src/hatch.c:2296 src/hatch.c:2383
-#: src/hatch.c:2429 src/hatch.c:2479 src/hatch.c:2534 src/hatch.c:2541
-#: src/hatch.c:2581 src/hatch.c:2632 src/hatch.c:2685 src/hatch.c:2722
-#: src/hatch.c:2761 src/hatch.c:2798 src/hatch.c:2838 src/hatch.c:2881
-#: src/hatch.c:2929 src/hatch.c:2975 src/hatch.c:2982 src/hatch.c:3102
-#: src/hatch.c:3191 src/hatch.c:3238 src/hatch.c:3290 src/hatch.c:3347
-#: src/hatch.c:3354 src/hatch.c:3400 src/hatch.c:3457 src/hatch.c:3464
-#: src/hatch.c:3506 src/hatch.c:3559 src/hatch.c:3614 src/hatch.c:3653
-#: src/hatch.c:3694 src/hatch.c:3733 src/hatch.c:3774 src/hatch.c:3819
-#: src/hatch.c:3868 src/hatch.c:3915 src/hatch.c:3922 src/hatch.c:4038
-#: src/hatch.c:4126 src/hatch.c:4173 src/hatch.c:4223 src/hatch.c:4286
-#: src/hatch.c:4293 src/hatch.c:4337 src/hatch.c:4400 src/hatch.c:4407
-#: src/hatch.c:4450 src/hatch.c:4496 src/hatch.c:4503 src/hatch.c:4627
-#: src/hatch.c:6129 src/header.c:942 src/helix.c:659 src/idbuffer.c:317
+#: src/group.c:1226 src/hatch.c:196 src/hatch.c:369 src/hatch.c:541
+#: src/hatch.c:711 src/hatch.c:718 src/hatch.c:772 src/hatch.c:929
+#: src/hatch.c:936 src/hatch.c:972 src/hatch.c:1129 src/hatch.c:1136
+#: src/hatch.c:1213 src/hatch.c:1375 src/hatch.c:1382 src/hatch.c:1447
+#: src/hatch.c:1814 src/hatch.c:1821 src/hatch.c:1856 src/hatch.c:1943
+#: src/hatch.c:1950 src/hatch.c:2084 src/hatch.c:2248 src/hatch.c:2323
+#: src/hatch.c:2363 src/hatch.c:2404 src/hatch.c:2436 src/hatch.c:2470
+#: src/hatch.c:2502 src/hatch.c:2539 src/hatch.c:2588 src/hatch.c:2595
+#: src/hatch.c:2629 src/hatch.c:2674 src/hatch.c:2721 src/hatch.c:2752
+#: src/hatch.c:2785 src/hatch.c:2816 src/hatch.c:2850 src/hatch.c:2887
+#: src/hatch.c:2929 src/hatch.c:2969 src/hatch.c:2976 src/hatch.c:3096
+#: src/hatch.c:3173 src/hatch.c:3214 src/hatch.c:3256 src/hatch.c:3290
+#: src/hatch.c:3325 src/hatch.c:3359 src/hatch.c:3398 src/hatch.c:3449
+#: src/hatch.c:3456 src/hatch.c:3492 src/hatch.c:3526 src/hatch.c:3561
+#: src/hatch.c:3595 src/hatch.c:3634 src/hatch.c:3685 src/hatch.c:3692
+#: src/hatch.c:3728 src/hatch.c:3775 src/hatch.c:3824 src/hatch.c:3857
+#: src/hatch.c:3892 src/hatch.c:3925 src/hatch.c:3960 src/hatch.c:3999
+#: src/hatch.c:4042 src/hatch.c:4083 src/hatch.c:4090 src/hatch.c:4206
+#: src/hatch.c:4282 src/hatch.c:4323 src/hatch.c:4364 src/hatch.c:4397
+#: src/hatch.c:4431 src/hatch.c:4464 src/hatch.c:4501 src/hatch.c:4558
+#: src/hatch.c:4565 src/hatch.c:4600 src/hatch.c:4633 src/hatch.c:4667
+#: src/hatch.c:4700 src/hatch.c:4737 src/hatch.c:4794 src/hatch.c:4801
+#: src/hatch.c:4838 src/hatch.c:4878 src/hatch.c:4885 src/hatch.c:5009
+#: src/hatch.c:5086 src/hatch.c:5127 src/hatch.c:5168 src/hatch.c:5207
+#: src/hatch.c:5248 src/hatch.c:5280 src/hatch.c:5314 src/hatch.c:5346
+#: src/hatch.c:5380 src/hatch.c:5419 src/hatch.c:5464 src/hatch.c:5502
+#: src/hatch.c:5546 src/hatch.c:5586 src/hatch.c:5629 src/hatch.c:5662
+#: src/hatch.c:5669 src/hatch.c:5705 src/hatch.c:5744 src/hatch.c:5751
+#: src/hatch.c:7204 src/hatch.c:7281 src/hatch.c:7323 src/hatch.c:7365
+#: src/hatch.c:7399 src/hatch.c:7434 src/hatch.c:7468 src/hatch.c:7507
+#: src/hatch.c:7559 src/hatch.c:7566 src/hatch.c:7676 src/hatch.c:7718
+#: src/hatch.c:7725 src/header.c:942 src/helix.c:659 src/idbuffer.c:317
 #: src/image.c:543 src/imagedef.c:392 src/imagedef_reactor.c:320
 #: src/insert.c:499 src/layer.c:342 src/layer.c:521 src/layer.c:556
 #: src/layer.c:591 src/layer.c:628 src/layer.c:664 src/layer.c:698
@@ -566,7 +579,7 @@ msgstr ""
 #: src/block.c:1050 src/block_record.c:478 src/body.c:652 src/circle.c:658
 #: src/comment.c:258 src/dictionary.c:494 src/dictionaryvar.c:497
 #: src/dimension.c:1042 src/ellipse.c:692 src/endblk.c:376 src/group.c:520
-#: src/hatch.c:3198 src/hatch.c:4133 src/line.c:685 src/point.c:667
+#: src/hatch.c:3180 src/hatch.c:4289 src/line.c:685 src/point.c:667
 #, c-format
 msgid "Error in %s () a negative value was found in the id-code member.\n"
 msgstr ""
@@ -576,8 +589,8 @@ msgstr ""
 #: src/block.c:1096 src/block_record.c:525 src/body.c:698 src/circle.c:704
 #: src/comment.c:304 src/dictionary.c:540 src/dictionaryvar.c:543
 #: src/dimension.c:1088 src/ellipse.c:738 src/endblk.c:422 src/group.c:566
-#: src/hatch.c:2436 src/hatch.c:3245 src/hatch.c:4180 src/line.c:731
-#: src/point.c:713
+#: src/hatch.c:2370 src/hatch.c:3221 src/hatch.c:4330 src/hatch.c:5134
+#: src/hatch.c:7330 src/line.c:731 src/point.c:713
 #, c-format
 msgid "Error in %s () a negative id-code value was passed.\n"
 msgstr ""
@@ -752,10 +765,10 @@ msgstr ""
 #: src/dimension.c:2342 src/dimension.c:2496 src/dimension.c:2650
 #: src/dimension.c:2804 src/dimension.c:2958 src/dimension.c:3112
 #: src/dimension.c:3266 src/dimension.c:4233 src/ellipse.c:1719
-#: src/ellipse.c:1872 src/ellipse.c:2274 src/hatch.c:2487 src/hatch.c:3298
-#: src/hatch.c:3408 src/hatch.c:4239 src/hatch.c:4353 src/line.c:1721
-#: src/line.c:1882 src/line.c:2034 src/line.c:2241 src/point.c:78
-#: src/point.c:126 src/point.c:1761
+#: src/ellipse.c:1872 src/ellipse.c:2274 src/hatch.c:2547 src/hatch.c:3406
+#: src/hatch.c:3642 src/hatch.c:4517 src/hatch.c:4753 src/hatch.c:7515
+#: src/line.c:1721 src/line.c:1882 src/line.c:2034 src/line.c:2241
+#: src/point.c:78 src/point.c:126 src/point.c:1761
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfPoint struct.\n"
 msgstr ""
@@ -766,9 +779,10 @@ msgstr ""
 #: src/attrib.c:2191 src/attrib.c:2343 src/block.c:1252 src/circle.c:1692
 #: src/dimension.c:2349 src/dimension.c:2503 src/dimension.c:2657
 #: src/dimension.c:2811 src/dimension.c:2965 src/dimension.c:3119
-#: src/dimension.c:3273 src/ellipse.c:1726 src/ellipse.c:1879 src/hatch.c:2494
-#: src/hatch.c:3305 src/hatch.c:3415 src/hatch.c:4246 src/hatch.c:4360
-#: src/line.c:1728 src/line.c:1889 src/line.c:2248 src/line.c:2426
+#: src/dimension.c:3273 src/ellipse.c:1726 src/ellipse.c:1879 src/hatch.c:2554
+#: src/hatch.c:3413 src/hatch.c:3649 src/hatch.c:4524 src/hatch.c:4760
+#: src/hatch.c:7522 src/line.c:1728 src/line.c:1889 src/line.c:2248
+#: src/line.c:2426
 #, c-format
 msgid "Warning in %s () passed id_code is smaller than 0.\n"
 msgstr ""
@@ -813,8 +827,8 @@ msgstr ""
 #: src/block_record.c:1102 src/body.c:1966 src/circle.c:2026 src/class.c:1686
 #: src/comment.c:434 src/dictionary.c:960 src/dictionaryvar.c:965
 #: src/dimension.c:4327 src/dimstyle.c:6149 src/ellipse.c:2368
-#: src/group.c:1181 src/hatch.c:2936 src/hatch.c:3875 src/hatch.c:4457
-#: src/line.c:2128
+#: src/group.c:1181 src/hatch.c:2936 src/hatch.c:4049 src/hatch.c:4845
+#: src/hatch.c:5712 src/hatch.c:7683 src/line.c:2128
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the next member.\n"
 msgstr ""
@@ -843,7 +857,7 @@ msgid "Error in %s () pointer to next Dxf3dline was not NULL.\n"
 msgstr ""
 
 #: src/3dline.c:1732 src/3dline.c:1845 src/3dline.c:1958 src/3dline.c:2062
-#: src/hatch.c:4345 src/line.c:1874 src/line.c:2026 src/line.c:2233
+#: src/hatch.c:4745 src/line.c:1874 src/line.c:2026 src/line.c:2233
 #, c-format
 msgid ""
 "Error in %s () a 3DLINE with points with identical coordinates were passed.\n"
@@ -1050,23 +1064,23 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfArc was not NULL.\n"
 msgstr ""
 
-#: src/arc.c:1903 src/circle.c:1824 src/hatch.c:2588
+#: src/arc.c:1903 src/circle.c:1824 src/hatch.c:2636
 #, c-format
 msgid "Error in %s () a negative value was found in the radius member.\n"
 msgstr ""
 
-#: src/arc.c:1910 src/circle.c:1831 src/hatch.c:2595
+#: src/arc.c:1910 src/circle.c:1831 src/hatch.c:2643
 #, c-format
 msgid "Error in %s () a value of zero was found in the radius member.\n"
 msgstr ""
 
-#: src/arc.c:1954 src/circle.c:1875 src/hatch.c:2639
+#: src/arc.c:1954 src/circle.c:1875 src/hatch.c:2681
 #, c-format
 msgid "Error in %s () a negative radius value was passed.\n"
 msgstr ""
 
 #: src/arc.c:1961 src/circle.c:1882 src/dimstyle.c:1651 src/dimstyle.c:1746
-#: src/ellipse.c:2072 src/hatch.c:2646 src/hatch.c:3573
+#: src/ellipse.c:2072 src/hatch.c:2688 src/hatch.c:3789
 #, c-format
 msgid "Error in %s () a value of zero was passed.\n"
 msgstr ""
@@ -2155,17 +2169,17 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfEllipse was not NULL.\n"
 msgstr ""
 
-#: src/ellipse.c:2013 src/hatch.c:3513
+#: src/ellipse.c:2013 src/hatch.c:3735
 #, c-format
 msgid "Error in %s () a negative value was found in the ratio member.\n"
 msgstr ""
 
-#: src/ellipse.c:2020 src/hatch.c:3520
+#: src/ellipse.c:2020 src/hatch.c:3742
 #, c-format
 msgid "Error in %s () a value of zero was found in the ratio member.\n"
 msgstr ""
 
-#: src/ellipse.c:2065 src/hatch.c:3566
+#: src/ellipse.c:2065 src/hatch.c:3782
 #, c-format
 msgid "Error in %s () a negative ratio value was passed.\n"
 msgstr ""
@@ -2316,283 +2330,319 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfHatch was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:462 src/hatch.c:866
+#: src/hatch.c:456 src/hatch.c:848
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a DxfHatchPatternSeedpoint "
 "struct.\n"
 msgstr ""
 
-#: src/hatch.c:505
+#: src/hatch.c:499
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a DxfHatchPattern struct.\n"
 msgstr ""
 
-#: src/hatch.c:554
+#: src/hatch.c:548
 #, c-format
 msgid "Error in %s () pointer to next DxfHatchPattern was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:630 src/hatch.c:675
+#: src/hatch.c:618 src/hatch.c:663
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a DxfHatchPatternDefLine "
 "struct.\n"
 msgstr ""
 
-#: src/hatch.c:752
+#: src/hatch.c:740
 #, c-format
 msgid "Warning in %s () no dash length found.\n"
 msgstr ""
 
-#: src/hatch.c:791
+#: src/hatch.c:779
 #, c-format
 msgid "Error in %s () pointer to next DxfHatchPatternDefLine was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:909
+#: src/hatch.c:891
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a DxfHatchPatternSeedPoint "
 "struct.\n"
 msgstr ""
 
-#: src/hatch.c:997
+#: src/hatch.c:979
 #, c-format
 msgid "Error in %s () pointer to next DxfHatchPatternSeedPoint was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:1072 src/hatch.c:1115
+#: src/hatch.c:1048 src/hatch.c:1091
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a DxfHatchBoundaryPath struct.\n"
 msgstr ""
 
-#: src/hatch.c:1170
+#: src/hatch.c:1146
 #, c-format
 msgid "Information from %s () last boundary path encountered.\n"
 msgstr ""
 
-#: src/hatch.c:1202
+#: src/hatch.c:1178
 #, c-format
 msgid "Error in %s () unknown boundary path type encountered.\n"
 msgstr ""
 
-#: src/hatch.c:1244
+#: src/hatch.c:1220
 #, c-format
 msgid "Error in %s () pointer to next DxfHatchBoundaryPath was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:1320 src/hatch.c:1363
+#: src/hatch.c:1290 src/hatch.c:1333
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a DxfHatchBoundaryPathPolyline "
 "struct.\n"
 msgstr ""
 
-#: src/hatch.c:1484
+#: src/hatch.c:1454
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathPolyline was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:1559 src/hatch.c:1689
+#: src/hatch.c:1523 src/hatch.c:1653
 #, c-format
 msgid "Error in %s () invalid pointer to polyline (NULL).\n"
 msgstr ""
 
-#: src/hatch.c:1696
+#: src/hatch.c:1660
 #, c-format
 msgid "Error in %s () invalid pointer to point (NULL).\n"
 msgstr ""
 
-#: src/hatch.c:1703
+#: src/hatch.c:1667
 #, c-format
 msgid "Error in %s () polyline is not a closed polygon.\n"
 msgstr ""
 
-#: src/hatch.c:1772 src/hatch.c:1815
+#: src/hatch.c:1736 src/hatch.c:1779
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a "
 "DxfHatchBoundaryPathPolylineVertex struct.\n"
 msgstr ""
 
-#: src/hatch.c:1899
+#: src/hatch.c:1863
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathPolylineVertex was not "
 "NULL.\n"
 msgstr ""
 
-#: src/hatch.c:2000
+#: src/hatch.c:1958
 #, c-format
 msgid "Error in %s () identical coordinates were passed.\n"
 msgstr ""
 
-#: src/hatch.c:2044 src/hatch.c:2087
+#: src/hatch.c:2002 src/hatch.c:2045
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdge "
 "struct.\n"
 msgstr ""
 
-#: src/hatch.c:2133
+#: src/hatch.c:2091
 #, c-format
 msgid "Error in %s () pointer to next DxfHatchBoundaryPathEdge was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:2212 src/hatch.c:2255
+#: src/hatch.c:2164 src/hatch.c:2207
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeArc "
 "struct.\n"
 msgstr ""
 
-#: src/hatch.c:2303
+#: src/hatch.c:2255
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathEdgeArc was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:2390
+#: src/hatch.c:2330 src/hatch.c:5093 src/hatch.c:7288
 #, c-format
 msgid "Error in %s () a negative value was found in the id_code member.\n"
 msgstr ""
 
-#: src/hatch.c:2845 src/hatch.c:3781
+#: src/hatch.c:2857 src/hatch.c:3967
 #, c-format
 msgid "Warning in %s () a negative value was found in the is_ccw member.\n"
 msgstr ""
 
-#: src/hatch.c:2888 src/hatch.c:3826
+#: src/hatch.c:2894 src/hatch.c:4006
 #, c-format
 msgid "Warning in %s () a negative is_ccw value was passed.\n"
 msgstr ""
 
-#: src/hatch.c:3016 src/hatch.c:3059
+#: src/hatch.c:3010 src/hatch.c:3053
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a "
 "DxfHatchBoundaryPathEdgeEllipse struct.\n"
 msgstr ""
 
-#: src/hatch.c:3109
+#: src/hatch.c:3103
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathEdgeEllipse was not "
 "NULL.\n"
 msgstr ""
 
-#: src/hatch.c:3956 src/hatch.c:3999
+#: src/hatch.c:4124 src/hatch.c:4167
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a DxfHatchBoundaryPathEdgeLine "
 "struct.\n"
 msgstr ""
 
-#: src/hatch.c:4045
+#: src/hatch.c:4213
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathEdgeLine was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:4231 src/line.c:1713
+#: src/hatch.c:4509 src/line.c:1713
 #, c-format
 msgid ""
 "Error in %s () a LINE with points with identical coordinates were passed.\n"
 msgstr ""
 
-#: src/hatch.c:4537 src/hatch.c:4582
+#: src/hatch.c:4919 src/hatch.c:4964
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a "
 "DxfHatchBoundaryPathEdgeSpline struct.\n"
 msgstr ""
 
-#: src/hatch.c:4634
+#: src/hatch.c:5016
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathEdgeSpline was not NULL.\n"
 msgstr ""
 
-#: src/hatch.c:4767 src/hatch.c:4908 src/hatch.c:4987 src/hatch.c:5071
-#: src/hatch.c:5239 src/hatch.c:5378 src/hatch.c:5561 src/hatch.c:5649
-#: src/hatch.c:5698 src/hatch.c:5749 src/hatch.c:5802 src/hatch.c:5860
-#: src/hatch.c:5927 src/hatch.c:6003
+#: src/hatch.c:5175
+#, c-format
+msgid "Error in %s () a negative value was found in the degree member.\n"
+msgstr ""
+
+#: src/hatch.c:5214
+#, c-format
+msgid "Error in %s () a negative degree value was passed.\n"
+msgstr ""
+
+#: src/hatch.c:5387
+#, c-format
+msgid "Error in %s () a negative number_of_knots value was found.\n"
+msgstr ""
+
+#: src/hatch.c:5426
+#, c-format
+msgid "Error in %s () a negative number_of_knots value was passed.\n"
+msgstr ""
+
+#: src/hatch.c:5511
+#, c-format
+msgid ""
+"Error in %s () a NULL pointer was found in the knots array at element %d.\n"
+msgstr ""
+
+#: src/hatch.c:5553
+#, c-format
+msgid "Error in %s () a negative number_of_control_points value was found.\n"
+msgstr ""
+
+#: src/hatch.c:5593
+#, c-format
+msgid "Error in %s () a negative number_of_control_points value was passed.\n"
+msgstr ""
+
+#: src/hatch.c:5842 src/hatch.c:5983 src/hatch.c:6062 src/hatch.c:6146
+#: src/hatch.c:6314 src/hatch.c:6453 src/hatch.c:6636 src/hatch.c:6724
+#: src/hatch.c:6773 src/hatch.c:6824 src/hatch.c:6877 src/hatch.c:6935
+#: src/hatch.c:7002 src/hatch.c:7078 src/hatch.c:7602 src/hatch.c:7638
 #, c-format
 msgid ""
 "Error in %s () received a NULL pointer value in "
 "dxf_hatch_boundary_path_edge_spline.\n"
 msgstr ""
 
-#: src/hatch.c:4774 src/hatch.c:4915
+#: src/hatch.c:5849 src/hatch.c:5990
 #, c-format
 msgid ""
 "Error in %s () received a NULL pointer value in "
 "dxf_hatch_boundary_path_edge_spline_cp.\n"
 msgstr ""
 
-#: src/hatch.c:4994 src/hatch.c:5078 src/hatch.c:5246 src/hatch.c:5385
-#: src/hatch.c:5756 src/hatch.c:5809 src/hatch.c:5874 src/hatch.c:5948
+#: src/hatch.c:6069 src/hatch.c:6153 src/hatch.c:6321 src/hatch.c:6460
+#: src/hatch.c:6831 src/hatch.c:6884 src/hatch.c:6949 src/hatch.c:7023
 #, c-format
 msgid "Error in %s () received an invalid value in position.\n"
 msgstr ""
 
-#: src/hatch.c:5005 src/hatch.c:5096 src/hatch.c:5267 src/hatch.c:5399
+#: src/hatch.c:6080 src/hatch.c:6171 src/hatch.c:6342 src/hatch.c:6474
 #, c-format
 msgid "Error in %s () position is greater than the number of control points.\n"
 msgstr ""
 
-#: src/hatch.c:5085 src/hatch.c:5260
+#: src/hatch.c:6160 src/hatch.c:6335
 #, c-format
 msgid "Error in %s () received a NULL pointer value in control_point.\n"
 msgstr ""
 
-#: src/hatch.c:5253 src/hatch.c:5392 src/hatch.c:5816 src/hatch.c:5881
-#: src/hatch.c:5955
+#: src/hatch.c:6328 src/hatch.c:6467 src/hatch.c:6891 src/hatch.c:6956
+#: src/hatch.c:7030
 #, c-format
 msgid ""
 "Error in %s () received a position greater than "
 "DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n"
 msgstr ""
 
-#: src/hatch.c:5412
+#: src/hatch.c:6487
 #, c-format
 msgid "Error in %s () spline contins no control points.\n"
 msgstr ""
 
-#: src/hatch.c:5574
+#: src/hatch.c:6649
 #, c-format
 msgid "Error in %s () spline contains no control points.\n"
 msgstr ""
 
-#: src/hatch.c:5705 src/hatch.c:5867 src/hatch.c:5934 src/hatch.c:6010
+#: src/hatch.c:6780 src/hatch.c:6942 src/hatch.c:7009 src/hatch.c:7085
 #, c-format
 msgid "Error in %s () resulted in a array pointer overflow.\n"
 msgstr ""
 
-#: src/hatch.c:5763
+#: src/hatch.c:6838
 #, c-format
 msgid ""
 "Error in  %s () received a position greater than "
 "DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS.\n"
 msgstr ""
 
-#: src/hatch.c:5941
+#: src/hatch.c:7016
 #, c-format
 msgid "Error in %s () resulted in a array pointer underflow.\n"
 msgstr ""
 
-#: src/hatch.c:6048 src/hatch.c:6091
+#: src/hatch.c:7123 src/hatch.c:7166
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a "
 "DxfHatchBoundaryPathEdgeSplineCp struct.\n"
 msgstr ""
 
-#: src/hatch.c:6136
+#: src/hatch.c:7211
 #, c-format
 msgid ""
 "Error in %s () pointer to next DxfHatchBoundaryPathEdgeSplineCp was not "
