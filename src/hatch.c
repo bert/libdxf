@@ -5479,6 +5479,51 @@ dxf_hatch_boundary_path_edge_spline_get_knots
 
 
 /*!
+ * \brief Set the knot values for a DXF \c HATCH boundary path spline.
+ */
+DxfHatchBoundaryPathEdgeSpline *
+dxf_hatch_boundary_path_edge_spline_set_knots
+(
+        DxfHatchBoundaryPathEdgeSpline *spline,
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * spline. */
+        double knots[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
+                /*!< an array containing the additional proprietary data
+                 * for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        for (i = 1; i < DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS; i++)
+        {
+                if (&knots[i] ==  NULL)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () a NULL pointer was found in the knots array at element %d.\n")),
+                          __FUNCTION__, i);
+                        return (NULL);
+                }
+                spline->knots[i] = knots[i];
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline);
+}
+
+
+/*!
  * \brief Get the number_of_control_points from a DXF \c HATCH boundary path spline.
  *
  * \return number_of_control_points.
