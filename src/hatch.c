@@ -5448,8 +5448,8 @@ dxf_hatch_boundary_path_edge_spline_get_knots
         DxfHatchBoundaryPathEdgeSpline *spline,
                 /*!< a pointer to a DXF \c HATCH boundary path edge
                  * spline. */
-        double *knots[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
-                /*!< Knot values. */
+        double knots[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
+                /*!< array of knot values. */
 )
 {
 #if DEBUG
@@ -5465,11 +5465,9 @@ dxf_hatch_boundary_path_edge_spline_get_knots
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        /*! \todo This array of doubles probably needs proper memory
-         * allocation. */
         for (i = 1; i < DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS; i++)
         {
-                *knots[i] = spline->knots[i];
+                knots[i] = spline->knots[i];
         }
 #if DEBUG
         DXF_DEBUG_END

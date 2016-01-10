@@ -1199,7 +1199,7 @@ int
 dxf_hatch_boundary_path_edge_spline_get_knots
 (
         DxfHatchBoundaryPathEdgeSpline *spline,
-        double *knots[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
+        double knots[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]
 );
 DxfHatchBoundaryPathEdgeSpline *
 dxf_hatch_boundary_path_edge_spline_set_knots
