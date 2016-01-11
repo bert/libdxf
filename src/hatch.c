@@ -2112,7 +2112,7 @@ dxf_hatch_boundary_path_edge_free
 void
 dxf_hatch_boundary_path_edge_free_chain
 (
-        DxfHatchBoundaryPathEdge *hatch_boundary_path_edges
+        DxfHatchBoundaryPathEdge *edges
                 /*!< pointer to the chain of DXF \c HATCH boundary path
                  * edges. */
 )
@@ -2121,17 +2121,17 @@ dxf_hatch_boundary_path_edge_free_chain
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (hatch_boundary_path_edges == NULL)
+        if (edges == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
         }
-        while (hatch_boundary_path_edges != NULL)
+        while (edges != NULL)
         {
-                struct DxfHatchBoundaryPathEdge *iter = hatch_boundary_path_edges->next;
-                dxf_hatch_boundary_path_edge_free (hatch_boundary_path_edges);
-                hatch_boundary_path_edges = (DxfHatchBoundaryPathEdge *) iter;
+                struct DxfHatchBoundaryPathEdge *iter = edges->next;
+                dxf_hatch_boundary_path_edge_free (edges);
+                edges = (DxfHatchBoundaryPathEdge *) iter;
         }
 #if DEBUG
         DXF_DEBUG_END

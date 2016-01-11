@@ -742,7 +742,7 @@ dxf_hatch_boundary_path_edge_free
 void
 dxf_hatch_boundary_path_edge_free_chain
 (
-        DxfHatchBoundaryPathEdge *hatch_boundary_path_edges
+        DxfHatchBoundaryPathEdge *edges
 );
 int
 dxf_hatch_boundary_path_edge_get_id_code
