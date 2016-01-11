@@ -2219,6 +2219,55 @@ dxf_hatch_boundary_path_edge_set_id_code
 }
 
 
+/*!
+ * \brief Get the pointer to the first arc of a linked list of arcs from
+ * a DXF \c HATCH boundary path edge.
+ *
+ * \return pointer to the first arc.
+ */
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_get_arcs
+(
+        DxfHatchBoundaryPathEdge *edge
+                /*!< a pointer to a DXF \c HATCH boundary path edge. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchBoundaryPathEdgeArc *result = NULL;
+
+        /* Do some basic checks. */
+        if (edge == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (edge->arcs == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dxf_hatch_boundary_path_edge_arc_new (result);
+        if (result == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () can not allocate memory for a DxfHatchBoundaryPathEdgeArc struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHatchBoundaryPathEdgeArc *) edge->arcs;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_boundary_path_edge_arc functions. */
 
 /*!

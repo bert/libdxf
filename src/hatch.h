@@ -755,6 +755,11 @@ dxf_hatch_boundary_path_edge_set_id_code
         DxfHatchBoundaryPathEdge *edge,
         int id_code
 );
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_get_arcs
+(
+        DxfHatchBoundaryPathEdge *edge
+);
 /* dxf_hatch_boundary_path_edge_arc functions. */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_new ();
