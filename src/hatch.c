@@ -2486,6 +2486,55 @@ dxf_hatch_boundary_path_edge_set_lines
 }
 
 
+/*!
+ * \brief Get the pointer to the first spline of a linked list of
+ * splines from a DXF \c HATCH boundary path edge.
+ *
+ * \return pointer to the first spline.
+ */
+DxfHatchBoundaryPathEdgeSpline *
+dxf_hatch_boundary_path_edge_get_splines
+(
+        DxfHatchBoundaryPathEdge *edge
+                /*!< a pointer to a DXF \c HATCH boundary path edge. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchBoundaryPathEdgeSpline *result = NULL;
+
+        /* Do some basic checks. */
+        if (edge == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (edge->splines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dxf_hatch_boundary_path_edge_spline_new (result);
+        if (result == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () can not allocate memory for a DxfHatchBoundaryPathEdgeSpline struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHatchBoundaryPathEdgeSpline *) edge->splines;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_boundary_path_edge_arc functions. */
 
 /*!

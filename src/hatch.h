@@ -788,6 +788,11 @@ dxf_hatch_boundary_path_edge_set_lines
         DxfHatchBoundaryPathEdge *edge,
         DxfHatchBoundaryPathEdgeLine *lines
 );
+DxfHatchBoundaryPathEdgeSpline *
+dxf_hatch_boundary_path_edge_get_splines
+(
+        DxfHatchBoundaryPathEdge *edge
+);
 /* dxf_hatch_boundary_path_edge_arc functions. */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_new ();
