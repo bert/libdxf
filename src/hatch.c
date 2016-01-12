@@ -2456,8 +2456,8 @@ dxf_hatch_boundary_path_edge_set_lines
         DxfHatchBoundaryPathEdge *edge,
                 /*!< a pointer to a DXF \c HATCH boundary path edge. */
         DxfHatchBoundaryPathEdgeLine *lines
-                /*!< first ellipse of a linked list of lines for a
-                 * DXF \c HATCH boundary path edge. */
+                /*!< first line of a linked list of lines for a DXF
+                 * \c HATCH boundary path edge. */
 )
 {
 #if DEBUG
