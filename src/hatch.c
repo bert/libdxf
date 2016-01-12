@@ -2308,6 +2308,55 @@ dxf_hatch_boundary_path_edge_set_arcs
 }
 
 
+/*!
+ * \brief Get the pointer to the first ellipse of a linked list of
+ * ellipses from a DXF \c HATCH boundary path edge.
+ *
+ * \return pointer to the first ellipse.
+ */
+DxfHatchBoundaryPathEdgeEllipse *
+dxf_hatch_boundary_path_edge_get_ellipses
+(
+        DxfHatchBoundaryPathEdge *edge
+                /*!< a pointer to a DXF \c HATCH boundary path edge. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchBoundaryPathEdgeEllipse *result = NULL;
+
+        /* Do some basic checks. */
+        if (edge == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (edge->ellipses == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dxf_hatch_boundary_path_edge_ellipse_new (result);
+        if (result == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () can not allocate memory for a DxfHatchBoundaryPathEdgeEllipse struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHatchBoundaryPathEdgeEllipse *) edge->ellipses;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_boundary_path_edge_arc functions. */
 
 /*!
