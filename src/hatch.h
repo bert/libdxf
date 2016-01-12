@@ -771,6 +771,12 @@ dxf_hatch_boundary_path_edge_get_ellipses
 (
         DxfHatchBoundaryPathEdge *edge
 );
+DxfHatchBoundaryPathEdge *
+dxf_hatch_boundary_path_edge_set_ellipses
+(
+        DxfHatchBoundaryPathEdge *edge,
+        DxfHatchBoundaryPathEdgeEllipse *ellipses
+);
 /* dxf_hatch_boundary_path_edge_arc functions. */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_new ();

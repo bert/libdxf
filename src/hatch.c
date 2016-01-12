@@ -2357,6 +2357,46 @@ dxf_hatch_boundary_path_edge_get_ellipses
 }
 
 
+/*!
+ * \brief Set the pointer to the first ellipse of a linked list of
+ * ellipses for a DXF \c HATCH boundary path edge.
+ */
+DxfHatchBoundaryPathEdge *
+dxf_hatch_boundary_path_edge_set_ellipses
+(
+        DxfHatchBoundaryPathEdge *edge,
+                /*!< a pointer to a DXF \c HATCH boundary path edge. */
+        DxfHatchBoundaryPathEdgeEllipse *ellipses
+                /*!< first ellipse of a linked list of ellipses for a
+                 * DXF \c HATCH boundary path edge. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (edge == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ellipses == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        edge->ellipses = (struct DxfHatchBoundaryPathEdgeEllipse *) ellipses;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (edge);
+}
+
+
 /* dxf_hatch_boundary_path_edge_arc functions. */
 
 /*!
