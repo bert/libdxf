@@ -2446,6 +2446,46 @@ dxf_hatch_boundary_path_edge_get_lines
 }
 
 
+/*!
+ * \brief Set the pointer to the first line of a linked list of lines
+ * for a DXF \c HATCH boundary path edge.
+ */
+DxfHatchBoundaryPathEdge *
+dxf_hatch_boundary_path_edge_set_lines
+(
+        DxfHatchBoundaryPathEdge *edge,
+                /*!< a pointer to a DXF \c HATCH boundary path edge. */
+        DxfHatchBoundaryPathEdgeLine *lines
+                /*!< first ellipse of a linked list of lines for a
+                 * DXF \c HATCH boundary path edge. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (edge == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (lines == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        edge->lines = (struct DxfHatchBoundaryPathEdgeLine *) lines;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (edge);
+}
+
+
 /* dxf_hatch_boundary_path_edge_arc functions. */
 
 /*!
