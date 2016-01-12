@@ -2279,7 +2279,7 @@ dxf_hatch_boundary_path_edge_set_arcs
                 /*!< a pointer to a DXF \c HATCH boundary path edge. */
         DxfHatchBoundaryPathEdgeArc *arcs
                 /*!< first arc of a linked list of arcs for a DXF
-                 * \c HATCH boundary path edge arc. */
+                 * \c HATCH boundary path edge. */
 )
 {
 #if DEBUG
