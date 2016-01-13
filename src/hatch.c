@@ -2575,6 +2575,49 @@ dxf_hatch_boundary_path_edge_set_splines
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c HATCH boundary path edge from a
+ * DXF \c HATCH boundary path edge.
+ *
+ * \return pointer to the next \c HATCH boundary path edge.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchBoundaryPathEdge *
+dxf_hatch_boundary_path_edge_get_next
+(
+        DxfHatchBoundaryPathEdge *edge
+                /*!< a pointer to a DXF \c HATCH boundary path edge. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchBoundaryPathEdge *result;
+
+        /* Do some basic checks. */
+        if (edge == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (edge->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHatchBoundaryPathEdge *) edge->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_boundary_path_edge_arc functions. */
 
 /*!
