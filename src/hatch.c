@@ -2027,6 +2027,40 @@ dxf_hatch_boundary_path_polyline_vertex_get_x0
 
 
 /*!
+ * \brief Set the X-value of the coordinate for a DXF \c HATCH boundary
+ * path polyline vertex.
+ */
+DxfHatchBoundaryPathPolylineVertex *
+dxf_hatch_boundary_path_polyline_vertex_set_x0
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex,
+                /*!< a pointer to a DXF \c HATCH boundary path polyline
+                 * vertex. */
+        double x0
+                /*!< the X-value of the center point coordinate to be
+                 * set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vertex->x0 = x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex);
+}
+
+
+/*!
  * \brief Return the angle between two vertices on a plane (2D).
  *
  * The angle is from \c vertex_0 to \c vertex_1, positive is

@@ -736,6 +736,12 @@ dxf_hatch_boundary_path_polyline_vertex_get_x0
 (
         DxfHatchBoundaryPathPolylineVertex *vertex
 );
+DxfHatchBoundaryPathPolylineVertex *
+dxf_hatch_boundary_path_polyline_vertex_set_x0
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex,
+        double x0
+);
 double
 dxf_hatch_boundary_path_polyline_vertex_angle
 (
