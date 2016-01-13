@@ -804,6 +804,12 @@ dxf_hatch_boundary_path_edge_get_next
 (
         DxfHatchBoundaryPathEdge *edge
 );
+DxfHatchBoundaryPathEdge *
+dxf_hatch_boundary_path_edge_set_next
+(
+        DxfHatchBoundaryPathEdge *edge,
+        DxfHatchBoundaryPathEdge *next
+);
 /* dxf_hatch_boundary_path_edge_arc functions. */
 DxfHatchBoundaryPathEdgeArc *
 dxf_hatch_boundary_path_edge_arc_new ();

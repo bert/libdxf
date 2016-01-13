@@ -2618,6 +2618,46 @@ dxf_hatch_boundary_path_edge_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c HATCH boundary path edge for a
+ * DXF \c HATCH boundary path edge.
+ */
+DxfHatchBoundaryPathEdge *
+dxf_hatch_boundary_path_edge_set_next
+(
+        DxfHatchBoundaryPathEdge *edge,
+                /*!< a pointer to a DXF \c HATCH boundary path edge. */
+        DxfHatchBoundaryPathEdge *next
+                /*!< a pointer to the next \c HATCH boundary path edge
+                 * for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (edge == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        edge->next = (struct DxfHatchBoundaryPathEdge *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (edge);
+}
+
+
 /* dxf_hatch_boundary_path_edge_arc functions. */
 
 /*!
