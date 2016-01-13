@@ -720,6 +720,11 @@ dxf_hatch_boundary_path_polyline_vertex_free_chain
 (
         DxfHatchBoundaryPathPolylineVertex *hatch_boundary_path_polyline_vertices
 );
+int
+dxf_hatch_boundary_path_polyline_vertex_get_id_code
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex
+);
 double
 dxf_hatch_boundary_path_polyline_vertex_angle
 (
