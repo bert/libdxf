@@ -1992,6 +1992,41 @@ dxf_hatch_boundary_path_polyline_vertex_set_id_code
 
 
 /*!
+ * \brief Get the X-value of the coordinate from a DXF \c HATCH boundary
+ * path polyline vertex.
+ *
+ * \return x0.
+ */
+double
+dxf_hatch_boundary_path_polyline_vertex_get_x0
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex
+                /*!< a pointer to a DXF \c HATCH boundary path polyline
+                 * vertex. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = vertex->x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Return the angle between two vertices on a plane (2D).
  *
  * The angle is from \c vertex_0 to \c vertex_1, positive is
