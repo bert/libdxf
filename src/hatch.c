@@ -2037,8 +2037,8 @@ dxf_hatch_boundary_path_polyline_vertex_set_x0
                 /*!< a pointer to a DXF \c HATCH boundary path polyline
                  * vertex. */
         double x0
-                /*!< the X-value of the center point coordinate to be
-                 * set for the entity. */
+                /*!< the X-value of the coordinate to be set for the
+                 * entity. */
 )
 {
 #if DEBUG
