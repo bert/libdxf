@@ -2174,6 +2174,47 @@ dxf_hatch_boundary_path_polyline_vertex_get_next
 
 
 /*!
+ * \brief Set the pointer to the next \c HATCH boundary path polyline
+ * vertex for a DXF \c HATCH boundary path polyline vertex.
+ */
+DxfHatchBoundaryPathPolylineVertex *
+dxf_hatch_boundary_path_polyline_vertex_set_next
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex,
+                /*!< a pointer to a DXF \c HATCH boundary path polyline
+                 * vertex. */
+        DxfHatchBoundaryPathEdgeArc *next
+                /*!< a pointer to the next \c HATCH boundary path
+                 * polyline vertex for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vertex->next = (struct DxfHatchBoundaryPathPolylineVertex *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex);
+}
+
+
+/*!
  * \brief Return the angle between two vertices on a plane (2D).
  *
  * The angle is from \c vertex_0 to \c vertex_1, positive is
