@@ -1472,7 +1472,7 @@ dxf_hatch_boundary_path_polyline_free
 void
 dxf_hatch_boundary_path_polyline_free_chain
 (
-        DxfHatchBoundaryPathPolyline *hatch_boundary_path_polylines
+        DxfHatchBoundaryPathPolyline *polylines
                 /*!< pointer to the chain of DXF \c HATCH boundary path
                  * polylines. */
 )
@@ -1481,17 +1481,17 @@ dxf_hatch_boundary_path_polyline_free_chain
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (hatch_boundary_path_polylines == NULL)
+        if (polylines == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
         }
-        while (hatch_boundary_path_polylines != NULL)
+        while (polylines != NULL)
         {
-                struct DxfHatchBoundaryPathPolyline *iter = hatch_boundary_path_polylines->next;
-                dxf_hatch_boundary_path_polyline_free (hatch_boundary_path_polylines);
-                hatch_boundary_path_polylines = (DxfHatchBoundaryPathPolyline *) iter;
+                struct DxfHatchBoundaryPathPolyline *iter = polylines->next;
+                dxf_hatch_boundary_path_polyline_free (polylines);
+                polylines = (DxfHatchBoundaryPathPolyline *) iter;
         }
 #if DEBUG
         DXF_DEBUG_END
