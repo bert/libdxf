@@ -774,6 +774,12 @@ dxf_hatch_boundary_path_polyline_vertex_get_bulge
         DxfHatchBoundaryPathPolylineVertex *vertex
 );
 DxfHatchBoundaryPathPolylineVertex *
+dxf_hatch_boundary_path_polyline_vertex_set_bulge
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex,
+        double bulge
+);
+DxfHatchBoundaryPathPolylineVertex *
 dxf_hatch_boundary_path_polyline_vertex_get_next
 (
         DxfHatchBoundaryPathPolylineVertex *vertex

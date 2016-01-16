@@ -2245,6 +2245,39 @@ dxf_hatch_boundary_path_polyline_vertex_get_bulge
 
 
 /*!
+ * \brief Set the bulge value for a DXF \c HATCH boundary path polyline
+ * vertex.
+ */
+DxfHatchBoundaryPathPolylineVertex *
+dxf_hatch_boundary_path_polyline_vertex_set_bulge
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex,
+                /*!< a pointer to a DXF \c HATCH boundary path polyline
+                 * vertex. */
+        double bulge
+                /*!< the bulge value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vertex->bulge = bulge;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c HATCH boundary path polyline
  * vertex from a DXF \c HATCH boundary path polyline vertex.
  *
