@@ -701,6 +701,11 @@ dxf_hatch_boundary_path_polyline_set_id_code
         int id_code
 );
 int
+dxf_hatch_boundary_path_polyline_get_is_closed
+(
+        DxfHatchBoundaryPathPolyline *polyline
+);
+int
 dxf_hatch_boundary_path_polyline_close_polyline
 (
         DxfHatchBoundaryPathPolyline *polyline
