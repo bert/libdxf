@@ -1667,6 +1667,47 @@ dxf_hatch_boundary_path_polyline_set_is_closed
 
 
 /*!
+ * \brief Get the \c number_of_vertices value from a DXF \c HATCH
+ * boundary path polyline.
+ *
+ * \return \c number_of_vertices value.
+ */
+int
+dxf_hatch_boundary_path_polyline_get_number_of_vertices
+(
+        DxfHatchBoundaryPathPolyline *polyline
+                /*!< a pointer to a DXF \c HATCH boundary path polyline. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->number_of_vertices < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the is_closed member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = polyline->number_of_vertices;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Test if a hatch boundary polyline is closed and add the missing
  * vertex.
  *
