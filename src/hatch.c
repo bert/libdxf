@@ -1621,6 +1621,52 @@ dxf_hatch_boundary_path_polyline_get_is_closed
 
 
 /*!
+ * \brief Set the \c is_closed flag value for a DXF \c HATCH boundary
+ * path polyline.
+ */
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_polyline_set_is_closed
+(
+        DxfHatchBoundaryPathPolyline *polyline,
+                /*!< a pointer to a DXF \c HATCH boundary path polyline. */
+        int is_closed
+                /*!< \c is_closed flag value. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (is_closed < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (is_closed > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        polyline->is_closed = is_closed;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
+/*!
  * \brief Test if a hatch boundary polyline is closed and add the missing
  * vertex.
  *
