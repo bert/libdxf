@@ -1335,8 +1335,6 @@ dxf_hatch_boundary_path_polyline_init
                 return (NULL);
         }
         polyline->id_code = 0;
-        polyline->bulge = 0.0;
-        polyline->has_bulge = 0;
         polyline->is_closed = 0;
         polyline->number_of_vertices = 0;
         polyline->vertices = NULL;
@@ -1383,7 +1381,6 @@ dxf_hatch_boundary_path_polyline_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        fprintf (fp->fp, " 72\n%d\n", polyline->has_bulge);
         fprintf (fp->fp, " 73\n%d\n", polyline->is_closed);
         fprintf (fp->fp, " 93\n%d\n", polyline->number_of_vertices);
         /* draw hatch boundary vertices. */
@@ -1410,10 +1407,6 @@ dxf_hatch_boundary_path_polyline_write
                         fp,
                         (DxfHatchBoundaryPathPolylineVertex *) polyline->vertices
                 );
-        }
-        if (polyline->bulge != 0.0)
-        {
-                fprintf (fp->fp, " 42\n%f\n", polyline->bulge);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1863,6 +1856,8 @@ dxf_hatch_boundary_path_polyline_vertex_init
         vertex->id_code = 0;
         vertex->x0 = 0.0;
         vertex->y0 = 0.0;
+        vertex->bulge = 0.0;
+        vertex->has_bulge = 0;
         vertex->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -1904,6 +1899,11 @@ dxf_hatch_boundary_path_polyline_vertex_write
         }
         fprintf (fp->fp, " 10\n%f\n", vertex->x0);
         fprintf (fp->fp, " 20\n%f\n", vertex->y0);
+        fprintf (fp->fp, " 72\n%d\n", vertex->has_bulge);
+        if (vertex->has_bulge)
+        {
+                fprintf (fp->fp, " 42\n%f\n", vertex->bulge);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif

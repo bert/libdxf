@@ -254,13 +254,22 @@ typedef struct
 dxf_hatch_boundary_path_polyline_vertex
 {
         int id_code;
-                /*!< group code = 5.*/
+                /*!< Group code = 5.*/
         double x0;
-                /*!< group code = 10. */
+                /*!< Group code = 10. */
         double y0;
-                /*!< group code = 20. */
+                /*!< Group code = 20. */
+        double bulge;
+                /*!< Optional, default = 0.\n
+                 * Group code = 42. */
+        int has_bulge;
+                /*!< The segment formed by previous vertex and current
+                 * vertex has a bulge is set.\n
+                 * The first vertex of a polyline has no bulge by
+                 * definition.\n
+                 * Group code = 72. */
         struct DxfHatchBoundaryPathPolylineVertex *next;
-                /*!< pointer to the next DxfHatchBoundaryPathPolylineVertex.\n
+                /*!< Pointer to the next DxfHatchBoundaryPathPolylineVertex.\n
                  * \c NULL if the last DxfHatchBoundaryPathPolylineVertex. */
 } DxfHatchBoundaryPathPolylineVertex;
 
@@ -272,26 +281,21 @@ typedef struct
 dxf_hatch_boundary_path_polyline
 {
         int id_code;
-                /*!< group code = 5. */
-        double bulge;
-                /*!< group code = 42.\n
-                 * optional, default = 0. */
-        int has_bulge;
-                /*!< group code = 72. */
+                /*!< Group code = 5. */
         int is_closed;
-                /*!< group code = 73. */
+                /*!< Group code = 73. */
         int number_of_vertices;
-                /*!< group code = 93\n
-                 * number of polyline vertices in
-                 * DxfHatchBoundaryPathPolyline. */
+                /*!< Number of polyline vertices in
+                 * DxfHatchBoundaryPathPolyline.\n
+                 * Group code = 93. */
         struct DxfHatchBoundaryPathPolylineVertex *vertices;
-                /*!< pointer to the first
+                /*!< Pointer to the first
                  * DxfHatchBoundaryPathPolylineVertex.\n
                  * \c NULL if there is no
                  * DxfHatchBoundaryPathPolylineVertex in the
                  * DxfHatchBoundaryPathPolyline. */
         struct DxfHatchBoundaryPathPolyline *next;
-                /*!< pointer to the next DxfHatchBoundaryPathPolyline.\n
+                /*!< Pointer to the next DxfHatchBoundaryPathPolyline.\n
                  * \c NULL if the last DxfHatchBoundaryPathPolyline. */
 } DxfHatchBoundaryPathPolyline;
 
