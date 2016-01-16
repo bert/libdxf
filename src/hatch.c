@@ -1783,6 +1783,44 @@ dxf_hatch_boundary_path_polyline_get_vertices
 
 
 /*!
+ * \brief Set the vertices for a DXF \c HATCH boundary path polyline.
+ */
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_polyline_set_vertices
+(
+        DxfHatchBoundaryPathPolyline *polyline,
+                /*!< a pointer to a DXF \c HATCH boundary path polyline. */
+        DxfHatchBoundaryPathPolylineVertex *vertices
+                /*!< a pointer to the first vertex. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vertices == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        polyline->vertices = (struct DxfHatchBoundaryPathPolylineVertex *) vertices;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
+/*!
  * \brief Test if a hatch boundary polyline is closed and add the missing
  * vertex.
  *
