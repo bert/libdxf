@@ -2327,6 +2327,53 @@ dxf_hatch_boundary_path_polyline_vertex_get_has_bulge
 
 
 /*!
+ * \brief Set the \c has_bulge flag value for a DXF \c HATCH boundary
+ * path polyline vertex.
+ */
+DxfHatchBoundaryPathPolylineVertex *
+dxf_hatch_boundary_path_polyline_vertex_set_has_bulge
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex,
+                /*!< a pointer to a DXF \c HATCH boundary path polyline
+                 * vertex. */
+        int has_bulge
+                /*!< has_bulge flag value. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (has_bulge < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative has_bulge flag value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (has_bulge > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range has_bulge flag value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        vertex->has_bulge = has_bulge;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (vertex);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c HATCH boundary path polyline
  * vertex from a DXF \c HATCH boundary path polyline vertex.
  *
