@@ -716,6 +716,12 @@ dxf_hatch_boundary_path_polyline_get_number_of_vertices
 (
         DxfHatchBoundaryPathPolyline *polyline
 );
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_polyline_set_number_of_vertices
+(
+        DxfHatchBoundaryPathPolyline *polyline,
+        int number_of_vertices
+);
 int
 dxf_hatch_boundary_path_polyline_close_polyline
 (
