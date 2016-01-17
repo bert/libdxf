@@ -733,6 +733,17 @@ dxf_hatch_boundary_path_polyline_set_vertices
         DxfHatchBoundaryPathPolyline *polyline,
         DxfHatchBoundaryPathPolylineVertex *vertices
 );
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_polyline_get_next
+(
+        DxfHatchBoundaryPathPolyline *polyline
+);
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_polyline_set_next
+(
+        DxfHatchBoundaryPathPolyline *polyline,
+        DxfHatchBoundaryPathPolyline *next
+);
 int
 dxf_hatch_boundary_path_polyline_close_polyline
 (
