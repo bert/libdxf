@@ -1380,6 +1380,44 @@ dxf_hatch_boundary_path_get_edges
 }
 
 
+/*!
+ * \brief Set the edges for a DXF \c HATCH boundary path.
+ */
+DxfHatchBoundaryPath *
+dxf_hatch_boundary_path_set_edges
+(
+        DxfHatchBoundaryPath *path,
+                /*!< a pointer to a DXF \c HATCH boundary path. */
+        DxfHatchBoundaryPathEdge *edges
+                /*!< a pointer to the first edge. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (path == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (edges == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        path->edges = (struct DxfHatchBoundaryPathEdge *) edges;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (path);
+}
+
+
 /* dxf_hatch_boundary_path_polyline functions. */
 
 /*!
