@@ -670,6 +670,12 @@ dxf_hatch_boundary_path_get_id_code
 (
         DxfHatchBoundaryPath *path
 );
+DxfHatchBoundaryPath *
+dxf_hatch_boundary_path_set_id_code
+(
+        DxfHatchBoundaryPath *path,
+        int id_code
+);
 /* dxf_hatch_boundary_path_polyline functions. */
 DxfHatchBoundaryPathPolyline *
 dxf_hatch_boundary_path_polyline_new ();
