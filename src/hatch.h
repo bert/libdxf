@@ -843,7 +843,7 @@ DxfHatchBoundaryPathPolylineVertex *
 dxf_hatch_boundary_path_polyline_vertex_set_next
 (
         DxfHatchBoundaryPathPolylineVertex *vertex,
-        DxfHatchBoundaryPathEdgeArc *next
+        DxfHatchBoundaryPathPolylineVertex *next
 );
 double
 dxf_hatch_boundary_path_polyline_vertex_angle

@@ -2758,7 +2758,7 @@ dxf_hatch_boundary_path_polyline_vertex_set_next
         DxfHatchBoundaryPathPolylineVertex *vertex,
                 /*!< a pointer to a DXF \c HATCH boundary path polyline
                  * vertex. */
-        DxfHatchBoundaryPathEdgeArc *next
+        DxfHatchBoundaryPathPolylineVertex *next
                 /*!< a pointer to the next \c HATCH boundary path
                  * polyline vertex for the entity. */
 )
