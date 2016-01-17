@@ -1345,6 +1345,41 @@ dxf_hatch_boundary_path_set_id_code
 }
 
 
+/*!
+ * \brief Get the edges from a DXF \c HATCH boundary path.
+ *
+ * \return a pointer to the first edge.
+ *
+ * \warning No low level copy is made of the series of edges.
+ */
+DxfHatchBoundaryPathEdge *
+dxf_hatch_boundary_path_get_edges
+(
+        DxfHatchBoundaryPath *path
+                /*!< a pointer to a DXF \c HATCH boundary path. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchBoundaryPathEdge *result;
+
+        /* Do some basic checks. */
+        if (path == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHatchBoundaryPathEdge *) path->edges;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_boundary_path_polyline functions. */
 
 /*!
