@@ -692,6 +692,12 @@ dxf_hatch_boundary_path_get_polylines
 (
         DxfHatchBoundaryPath *path
 );
+DxfHatchBoundaryPath *
+dxf_hatch_boundary_path_set_polylines
+(
+        DxfHatchBoundaryPath *path,
+        DxfHatchBoundaryPathPolyline *polylines
+);
 /* dxf_hatch_boundary_path_polyline functions. */
 DxfHatchBoundaryPathPolyline *
 dxf_hatch_boundary_path_polyline_new ();
