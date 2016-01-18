@@ -1418,6 +1418,41 @@ dxf_hatch_boundary_path_set_edges
 }
 
 
+/*!
+ * \brief Get the polylines from a DXF \c HATCH boundary path.
+ *
+ * \return a pointer to the first plyline.
+ *
+ * \warning No low level copy is made of the series of polylines.
+ */
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_get_polylines
+(
+        DxfHatchBoundaryPath *path
+                /*!< a pointer to a DXF \c HATCH boundary path. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchBoundaryPathPolyline *result;
+
+        /* Do some basic checks. */
+        if (path == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHatchBoundaryPathPolyline *) path->polylines;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_boundary_path_polyline functions. */
 
 /*!

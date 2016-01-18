@@ -687,6 +687,11 @@ dxf_hatch_boundary_path_set_edges
         DxfHatchBoundaryPath *path,
         DxfHatchBoundaryPathEdge *edges
 );
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_get_polylines
+(
+        DxfHatchBoundaryPath *path
+);
 /* dxf_hatch_boundary_path_polyline functions. */
 DxfHatchBoundaryPathPolyline *
 dxf_hatch_boundary_path_polyline_new ();
