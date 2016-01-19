@@ -622,6 +622,12 @@ dxf_hatch_pattern_def_line_get_id_code
 (
         DxfHatchPatternDefLine *line
 );
+DxfHatchPatternDefLine *
+dxf_hatch_pattern_def_line_set_id_code
+(
+        DxfHatchPatternDefLine *line,
+        int id_code
+);
 /* dxf_hatch_pattern_seedpoint functions. */
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_new ();
