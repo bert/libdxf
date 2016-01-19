@@ -2091,9 +2091,9 @@ dxf_hatch_boundary_path_polyline_set_vertices
 
 /*!
  * \brief Get the pointer to the next \c HATCH boundary path polyline
- * vertex from a DXF \c HATCH boundary path polyline vertex.
+ * from a DXF \c HATCH boundary path polyline.
  *
- * \return pointer to the next \c HATCH boundary path polyline vertex.
+ * \return pointer to the next \c HATCH boundary path polyline.
  *
  * \warning No checks are performed on the returned pointer.
  */
