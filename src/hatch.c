@@ -1534,6 +1534,46 @@ dxf_hatch_boundary_path_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c HATCH boundary path for a DXF
+ * \c HATCH boundary path.
+ */
+DxfHatchBoundaryPath *
+dxf_hatch_boundary_path_set_next
+(
+        DxfHatchBoundaryPath *path,
+                /*!< a pointer to a DXF \c HATCH boundary path. */
+        DxfHatchBoundaryPath *next
+                /*!< a pointer to the next \c HATCH boundary path for
+                 * the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (path == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        path->next = (struct DxfHatchBoundaryPath *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (path);
+}
+
+
 /* dxf_hatch_boundary_path_polyline functions. */
 
 /*!
