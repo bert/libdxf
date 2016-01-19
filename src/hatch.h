@@ -221,27 +221,27 @@ typedef struct
 dxf_hatch_boundary_path_edge
 {
         int id_code;
-                /*!< group code = 5.\n
-                 * Treat the boundary path edge as if it were a single
-                 * (composite) entity. */
+                /*!< Treat the boundary path edge as if it were a single
+                 * (composite) entity.\n
+                 * Group code = 5. */
         struct DxfHatchBoundaryPathEdgeArc *arcs;
-                /*!< pointer to the first DxfHatchBoundaryPathEdgeArc.\n
+                /*!< Pointer to the first DxfHatchBoundaryPathEdgeArc.\n
                  * \c NULL if there is no DxfHatchBoundaryPathEdgeArc in
                  * the DxfHatchBoundaryPathEdge. */
         struct DxfHatchBoundaryPathEdgeEllipse *ellipses;
-                /*!< pointer to the first DxfHatchBoundaryPathEdgeEllipse.\n
+                /*!< Pointer to the first DxfHatchBoundaryPathEdgeEllipse.\n
                  * \c NULL if there is no DxfHatchBoundaryPathEdgeEllipse
                  * in the DxfHatchBoundaryPathEdge. */
         struct DxfHatchBoundaryPathEdgeLine * lines;
-                /*!< pointer to the first DxfHatchBoundaryPathEdgeLine.\n
+                /*!< Pointer to the first DxfHatchBoundaryPathEdgeLine.\n
                  * \c NULL if there is no DxfHatchBoundaryPathEdgeLine
                  * in the DxfHatchBoundaryPathEdge. */
         struct DxfHatchBoundaryPathEdgeSpline *splines;
-                /*!< pointer to the first DxfHatchBoundaryPathEdgeSpline.\n
+                /*!< Pointer to the first DxfHatchBoundaryPathEdgeSpline.\n
                  * \c NULL if there is no DxfHatchBoundaryPathEdgeSpline
                  * in the DxfHatchBoundaryPathEdge. */
         struct DxfHatchBoundaryPathEdge *next;
-                /*!< pointer to the next DxfHatchBoundaryPathEdge.\n
+                /*!< Pointer to the next DxfHatchBoundaryPathEdge.\n
                  * \c NULL if the last DxfHatchBoundaryPathEdge. */
 } DxfHatchBoundaryPathEdge;
 
@@ -308,19 +308,19 @@ typedef struct
 dxf_hatch_boundary_path
 {
         int id_code;
-                /*!< group code = 5.\n
-                 * Treat the boundary path as if it were a single
-                 * (composite) entity. */
+                /*!< Treat the boundary path as if it were a single
+                 * (composite) entity.\n
+                 * Group code = 5. */
         struct DxfHatchBoundaryPathEdge *edges;
-                /*!< pointer to the first DxfHatchBoundaryPathEdge.\n
+                /*!< Pointer to the first DxfHatchBoundaryPathEdge.\n
                  * \c NULL if there is no DxfHatchBoundaryPathEdge in
                  * the DxfHatchBoundaryPath. */
         struct DxfHatchBoundaryPathPolyline *polylines;
-                /*!< pointer to the first DxfHatchBoundaryPathPolyline.\n
+                /*!< Pointer to the first DxfHatchBoundaryPathPolyline.\n
                  * \c NULL if there is no DxfHatchBoundaryPathPolyline
                  * in the DxfHatchBoundaryPath. */
         struct DxfHatchBoundaryPath *next;
-                /*!< pointer to the next DxfHatchBoundaryPath.\n
+                /*!< Pointer to the next DxfHatchBoundaryPath.\n
                  * \c NULL if the last DxfHatchBoundaryPath. */
 } DxfHatchBoundaryPath;
 
@@ -334,29 +334,29 @@ dxf_hatch_pattern_def_line
         int id_code;
                 /*!< group code = 5. */
         double angle;
-                /*!< group code = 53\n
-                 * hatch pattern line angle. */
+                /*!< Hatch pattern line angle.\n
+                 * Group code = 53. */
         double x0;
-                /*!< group code = 43\n
-                 * hatch pattern line base point X-value. */
+                /*!< Hatch pattern line base point X-value.\n
+                 * Group code = 43. */
         double y0;
-                /*!< group code = 44\n
-                 * hatch pattern line base point Y-value. */
+                /*!< Hatch pattern line base point Y-value.\n
+                 * Group code = 44. */
         double x1;
-                /*!< group code = 45\n
-                 * hatch pattern line offset point X-value. */
+                /*!< Hatch pattern line offset point X-value.\n
+                 * Group code = 45. */
         double y1;
-                /*!< group code = 46\n
-                 * hatch pattern line offset point Y-value. */
+                /*!< Hatch pattern line offset point Y-value.\n
+                 * Group code = 46. */
         int dash_items;
-                /*!< group code = 79\n
-                 * number of hatch pattern definition line dash items. */
+                /*!< Number of hatch pattern definition line dash items.\n
+                 * Group code = 79. */
         double dash_length[DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS];
-                /*!< group code = 49\n
-                 * array of dash lengths for an array of hatch pattern
-                 * definition lines. */
+                /*!< Array of dash lengths for an array of hatch pattern
+                 * definition lines.\n
+                 * Group code = 49. */
         struct DxfHatchPatternDefLine *next;
-                /*!< pointer to the next DxfHatchPatternDefLine.\n
+                /*!< Pointer to the next DxfHatchPatternDefLine.\n
                  * \c NULL if the last DxfHatchPatternDefLine. */
 } DxfHatchPatternDefLine;
 
@@ -370,13 +370,13 @@ dxf_hatch_pattern_seedpoint
         int id_code;
                 /*!< group code = 5. */
         double x0;
-                /*!< group code = 10\n
-                 * seed point X-value. */
+                /*!< Seed point X-value.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * seed point Y-value. */
+                /*!< Seed point Y-value.\n
+                 * Group code = 20. */
         struct DxfHatchPatternSeedPoint *next;
-                /*!< pointer to the next DxfHatchSeedPoint.\n
+                /*!< Pointer to the next DxfHatchSeedPoint.\n
                  * \c NULL if the last DxfHatchSeedPoint. */
 } DxfHatchPatternSeedPoint;
 
@@ -390,21 +390,21 @@ dxf_hatch_pattern
         int id_code;
                 /*!< group code = 5. */
         int def_lines;
-                /*!< group code = 78\n
-                 * number of hatch pattern definition lines. */
+                /*!< Number of hatch pattern definition lines.\n
+                 * Group code = 78. */
         struct DxfHatchPatternDefLine *lines;
-                /*!< pointer to the first \c DxfHatchPatterDefLine. */
+                /*!< Pointer to the first \c DxfHatchPatterDefLine. */
         double **length;
-                /*!< group code = 49\n
-                 * array of dash lengths for an array of hatch pattern
-                 * definition lines. */
+                /*!< Array of dash lengths for an array of hatch pattern
+                 * definition lines.\n
+                 * Group code = 49. */
         int number_of_seed_points;
-                /*!< group code = 98\n
-                 * number of seed points. */
+                /*!< Number of seed points.\n
+                 * Group code = 98. */
         struct DxfHatchPatternSeedPoint *seed_points;
-                /*!< pointer to the first \c DxfHatchSeedPoint. */
+                /*!< Pointer to the first \c DxfHatchSeedPoint. */
         struct DxfHatchPattern *next;
-                /*!< pointer to the next DxfHatchPattern.\n
+                /*!< Pointer to the next DxfHatchPattern.\n
                  * \c NULL if the last DxfHatchPattern. */
 } DxfHatchPattern;
 
@@ -417,136 +417,140 @@ dxf_hatch
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< group code = 5\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                 * file.\n
+                 * Group code = 5. */
         char *linetype;
-                /*!< group code = 6\n
-                 * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-                /*!< group code = 8\n
-                 * Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
         double elevation;
-                /*!< group code = 38\n
-                 * Elevation of the arc in the local Z-direction.\n
+                /*!< Elevation of the arc in the local Z-direction.\n
                  * Defaults to 0.0 if omitted in the DXF file, or prior
-                 * to DXF version R12, or DXF_FLATLAND equals 0 (default). */
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default).\n
+                 * Group code = 38. */
         double thickness;
-                /*!< group code = 39\n
-                 * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                /*!< Thickness of the arc in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
         double linetype_scale;
-                /*!< group code = 48\n
-                 * Linetype scale (optional). */
+                /*!< Linetype scale (optional).\n
+                 * Group code = 48. */
         int16_t visibility;
-                /*!< group code = 60\n
-                 * Object visibility (optional): 0 = Visible; 1 = Invisible. */
+                /*!< Object visibility (optional):\n
+                 * <ol>
+                 * <li value = "0"> Visible</li>
+                 * <li value = "1"> Invisible</li>
+                 * </ol>
+                 * Group code = 60. */
         int color;
-                /*!< group code = 62\n
-                 * Color of the entity.\n
+                /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity. */
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
         int paperspace;
-                /*!< group code = 67\n
-                 * Entities are to be drawn on either \c PAPERSPACE or
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
-                 * Optional, defaults to \c DXF_MODELSPACE (0). */
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67. */
         int graphics_data_size;
-                /*!< group code = 92\n
-                 * The number of bytes in the image (and subsequent
-                 * binary chunk records) (optional). */
+                /*!< The number of bytes in the image (and subsequent
+                 * binary chunk records) (optional).\n
+                 * Group code = 92. */
         char *binary_graphics_data[DXF_MAX_PARAM];
-                /*!< group code = 310\n
-                 * Proxy entity graphics data.\n
+                /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
-                 * (optional). */
+                 * (optional).\n
+                 * Group code = 310. */
         char *dictionary_owner_soft;
-                /*!< group code = 330\n
-                 * Soft-pointer ID/handle to owner dictionary (optional). */
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330. */
         char *dictionary_owner_hard;
-                /*!< group code = 360\n
-                 * Hard owner ID/handle to owner dictionary (optional). */
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360. */
         /* Specific members for a DXF hatch. */
         char *pattern_name;
                 /*!< group code = 2. */
         double x0;
-                /*!< group code = 10\n
-                 * base point. */
+                /*!< Base point.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * base point. */
+                /*!< Base point.\n
+                 * Group code = 20. */
         double z0;
-                /*!< group code = 30\n
-                 * base point. */
+                /*!< Base point.\n
+                 * Group code = 30. */
         double pattern_scale;
-                /*!< group code 41\n
-                 * pattern fill only. */
+                /*!< Pattern fill only.\n
+                 * Group code 41. */
         double pixel_size;
                 /*!< group code 47 */
         double pattern_angle;
-                /*!< group code 52\n
-                 * pattern fill only. */
+                /*!< Pattern fill only.\n
+                 * Group code 52. */
         int solid_fill;
-                /*!< group code = 70\n
-                 * 0 = pattern fill\n
-                 * 1 = solid fill. */
+                /*!< 0 = pattern fill\n
+                 * 1 = solid fill.\n
+                 * Group code = 70. */
         int associative;
-                /*!< group code = 71\n
-                 * 0 = non-associative\n
-                 * 1 = associative. */
+                /*!< 0 = non-associative\n
+                 * 1 = associative.\n
+                 * Group code = 71. */
         int hatch_style;
-                /*!< group code = 75\n
-                 * 0 = hatch "odd parity" area (Normal style)\n
+                /*!< 0 = hatch "odd parity" area (Normal style)\n
                  * 1 = hatch outermost area only (Outer style)\n
-                 * 2 = hatch through entire area (Ignore style). */
+                 * 2 = hatch through entire area (Ignore style).\n
+                 * Group code = 75. */
         int hatch_pattern_type;
-                /*!< group code = 76\n
-                 * 0 = user defined\n
+                /*!< 0 = user defined\n
                  * 1 = predefined\n
-                 * 2 = custom. */
+                 * 2 = custom.\n
+                 * Group code = 76. */
         int pattern_double;
-                /*!< group code = 77\n
-                 * pattern fill only\n
+                /*!< Pattern fill only\n
                  * 0 = not double\n
-                 * 1 = double. */
+                 * 1 = double.\n
+                 * Group code = 77. */
         int number_of_pattern_def_lines;
-                /*!< group code = 78\n
-                 * number of pattern definition lines. */
+                /*!< Number of pattern definition lines.\n
+                 * Group code = 78. */
         int number_of_boundary_paths;
-                /*!< group code = 91\n
-                 * number of boundary paths (loops). */
+                /*!< Number of boundary paths (loops).\n
+                 * Group code = 91. */
         int number_of_seed_points;
-                /*!< group code = 98\n
-                 * number of seed points. */
+                /*!< Number of seed points.\n
+                 * Group code = 98. */
         double extr_x0;
-                /*!< group code = 210\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 0.0. */
+                /*!< Extrusion direction\n
+                 * optional, if omitted defaults to 0.0.\n
+                 * Group code = 210. */
         double extr_y0;
-                /*!< group code = 220\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 0.0. */
+                /*!< Extrusion direction\n
+                 * optional, if omitted defaults to 0.0.\n
+                 * Group code = 220. */
         double extr_z0;
-                /*!< group code = 230\n
-                 * extrusion direction\n
-                 * optional, if ommited defaults to 1.0. */
+                /*!< Extrusion direction\n
+                 * optional, if omitted defaults to 1.0.\n
+                 * Group code = 230. */
         struct DxfHatchBoundaryPath *paths;
-                /*!< pointer to the first DxfHatchBoundaryPath.\n
+                /*!< Pointer to the first DxfHatchBoundaryPath.\n
                  * \c NULL if there is no DxfHatchBoundaryPath in the
                  * DxfHatch. */
         struct DxfHatchPatternDefLine *def_lines;
-                /*!< pointer to the first DxfHatchPatternDefLine.\n
+                /*!< Pointer to the first DxfHatchPatternDefLine.\n
                  * \c NULL if there is no DxfHatchPatternDefLine in the
                  * DxfHatch. */
         struct DxfHatchPatternSeedPoint *seed_points;
-                /*!< pointer to the first DxfHatchSeedPoint. */
+                /*!< Pointer to the first DxfHatchSeedPoint. */
         struct DxfHatch *next;
-                /*!< pointer to the next DxfHatch.\n
+                /*!< Pointer to the next DxfHatch.\n
                  * \c NULL if the last DxfHatch. */
 } DxfHatch;
 
