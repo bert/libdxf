@@ -665,6 +665,11 @@ dxf_hatch_pattern_def_line_set_y0
         DxfHatchPatternDefLine *line,
         double y0
 );
+double
+dxf_hatch_pattern_def_line_get_x1
+(
+        DxfHatchPatternDefLine *line
+);
 /* dxf_hatch_pattern_seedpoint functions. */
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_new ();
