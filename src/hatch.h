@@ -692,6 +692,12 @@ dxf_hatch_pattern_def_line_get_dash_items
 (
         DxfHatchPatternDefLine *line
 );
+DxfHatchPatternDefLine *
+dxf_hatch_pattern_def_line_set_dash_items
+(
+        DxfHatchPatternDefLine *line,
+        int dash_items
+);
 /* dxf_hatch_pattern_seedpoint functions. */
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_new ();
