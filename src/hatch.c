@@ -1066,6 +1066,37 @@ dxf_hatch_pattern_def_line_get_y0
 }
 
 
+/*!
+ * \brief Set the base point Y-value for a DXF \c HATCH pattern def line.
+ */
+DxfHatchPatternDefLine *
+dxf_hatch_pattern_def_line_set_y0
+(
+        DxfHatchPatternDefLine *line,
+                /*!< a pointer to a DXF \c HATCH pattern def line. */
+        double y0
+                /*!< the base point Y-value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* dxf_hatch_pattern_seedpoint functions. */
 
 /*!
