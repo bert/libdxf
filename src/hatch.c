@@ -967,6 +967,40 @@ dxf_hatch_pattern_def_line_set_angle
 }
 
 
+/*!
+ * \brief Get the base point X-value from a DXF \c HATCH pattern def
+ * line.
+ *
+ * \return base point X-value.
+ */
+double
+dxf_hatch_pattern_def_line_get_x0
+(
+        DxfHatchPatternDefLine *line
+                /*!< a pointer to a DXF \c HATCH pattern def line. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = line->x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_pattern_seedpoint functions. */
 
 /*!
