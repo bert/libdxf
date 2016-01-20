@@ -903,6 +903,39 @@ dxf_hatch_pattern_def_line_set_id_code
 }
 
 
+/*!
+ * \brief Get the angle from a DXF \c HATCH pattern def line.
+ *
+ * \return angle.
+ */
+double
+dxf_hatch_pattern_def_line_get_angle
+(
+        DxfHatchPatternDefLine *line
+                /*!< a pointer to a DXF \c HATCH  pattern def line. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = line->angle;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_pattern_seedpoint functions. */
 
 /*!
