@@ -1131,6 +1131,38 @@ dxf_hatch_pattern_def_line_get_x1
 }
 
 
+/*!
+ * \brief Set the offset point X-value for a DXF \c HATCH pattern def
+ * line.
+ */
+DxfHatchPatternDefLine *
+dxf_hatch_pattern_def_line_set_x1
+(
+        DxfHatchPatternDefLine *line,
+                /*!< a pointer to a DXF \c HATCH pattern def line. */
+        double x1
+                /*!< the offset point X-value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->x1 = x1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* dxf_hatch_pattern_seedpoint functions. */
 
 /*!
