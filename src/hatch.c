@@ -912,7 +912,7 @@ double
 dxf_hatch_pattern_def_line_get_angle
 (
         DxfHatchPatternDefLine *line
-                /*!< a pointer to a DXF \c HATCH  pattern def line. */
+                /*!< a pointer to a DXF \c HATCH pattern def line. */
 )
 {
 #if DEBUG
