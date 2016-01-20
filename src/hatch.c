@@ -1229,6 +1229,47 @@ dxf_hatch_pattern_def_line_set_y1
 }
 
 
+/*!
+ * \brief Get the number of hatch pattern definition line dash items
+ * from a DXF \c HATCH pattern def line.
+ *
+ * \return number of hatch pattern definition line dash items.
+ */
+int
+dxf_hatch_pattern_def_line_get_dash_items
+(
+        DxfHatchPatternDefLine *line
+                /*!< a pointer to a DXF \c HATCH pattern def line. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (line->dash_items < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the dash_items member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = line->dash_items;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_pattern_seedpoint functions. */
 
 /*!
