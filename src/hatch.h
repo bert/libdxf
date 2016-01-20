@@ -637,6 +637,12 @@ dxf_hatch_pattern_def_line_get_angle
 (
         DxfHatchPatternDefLine *line
 );
+DxfHatchPatternDefLine *
+dxf_hatch_pattern_def_line_set_angle
+(
+        DxfHatchPatternDefLine *line,
+        double angle
+);
 /* dxf_hatch_pattern_seedpoint functions. */
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_new ();
