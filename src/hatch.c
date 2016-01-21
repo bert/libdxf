@@ -670,7 +670,7 @@ dxf_hatch_pattern_def_line_init
         def_line->y0 = 0.0;
         def_line->x1 = 0.0;
         def_line->y1 = 0.0;
-        def_line->dash_items = DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS;
+        def_line->number_of_dash_items = DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS;
         for (i = 0; i >= DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS; i++)
         {
                 def_line->dash_length[i] = 0.0;
@@ -725,11 +725,11 @@ dxf_hatch_pattern_def_line_write
         fprintf (fp->fp, " 44\n%f\n", def_line->y0);
         fprintf (fp->fp, " 45\n%f\n", def_line->x1);
         fprintf (fp->fp, " 46\n%f\n", def_line->y1);
-        fprintf (fp->fp, " 79\n%d\n", def_line->dash_items);
-        if (def_line->dash_items > 0)
+        fprintf (fp->fp, " 79\n%d\n", def_line->number_of_dash_items);
+        if (def_line->number_of_dash_items > 0)
         {
                 /* Draw hatch pattern definition line dash items. */
-                for (i = 1; i < def_line->dash_items; i++)
+                for (i = 1; i < def_line->number_of_dash_items; i++)
                 {
                         fprintf (fp->fp, " 49\n%f\n", def_line->dash_length[i]);
                 }
@@ -1236,7 +1236,7 @@ dxf_hatch_pattern_def_line_set_y1
  * \return number of hatch pattern definition line dash items.
  */
 int
-dxf_hatch_pattern_def_line_get_dash_items
+dxf_hatch_pattern_def_line_get_number_of_dash_items
 (
         DxfHatchPatternDefLine *line
                 /*!< a pointer to a DXF \c HATCH pattern def line. */
@@ -1255,14 +1255,14 @@ dxf_hatch_pattern_def_line_get_dash_items
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (line->dash_items < 0)
+        if (line->number_of_dash_items < 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () a negative value was found in the dash_items member.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = line->dash_items;
+        result = line->number_of_dash_items;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -1275,11 +1275,11 @@ dxf_hatch_pattern_def_line_get_dash_items
  * a DXF \c HATCH pattern def line.
  */
 DxfHatchPatternDefLine *
-dxf_hatch_pattern_def_line_set_dash_items
+dxf_hatch_pattern_def_line_set_number_of_dash_items
 (
         DxfHatchPatternDefLine *line,
                 /*!< a pointer to a DXF \c HATCH pattern def line. */
-        int dash_items
+        int number_of_dash_items
                 /*!< number of hatch pattern definition line dash items. */
 )
 {
@@ -1294,14 +1294,14 @@ dxf_hatch_pattern_def_line_set_dash_items
                   __FUNCTION__);
                 return (NULL);
         }
-        if (dash_items < 0)
+        if (number_of_dash_items < 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () a negative dash_items value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        line->dash_items = dash_items;
+        line->number_of_dash_items = number_of_dash_items;
 #if DEBUG
         DXF_DEBUG_END
 #endif

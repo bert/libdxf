@@ -348,7 +348,7 @@ dxf_hatch_pattern_def_line
         double y1;
                 /*!< Hatch pattern line offset point Y-value.\n
                  * Group code = 46. */
-        int dash_items;
+        int number_of_dash_items;
                 /*!< Number of hatch pattern definition line dash items.\n
                  * Group code = 79. */
         double dash_length[DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS];
@@ -688,15 +688,15 @@ dxf_hatch_pattern_def_line_set_y1
         double y1
 );
 int
-dxf_hatch_pattern_def_line_get_dash_items
+dxf_hatch_pattern_def_line_get_number_of_dash_items
 (
         DxfHatchPatternDefLine *line
 );
 DxfHatchPatternDefLine *
-dxf_hatch_pattern_def_line_set_dash_items
+dxf_hatch_pattern_def_line_set_number_of_dash_items
 (
         DxfHatchPatternDefLine *line,
-        int dash_items
+        int number_of_dash_items
 );
 int
 dxf_hatch_pattern_def_line_get_dash_length
