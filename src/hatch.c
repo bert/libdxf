@@ -1309,6 +1309,47 @@ dxf_hatch_pattern_def_line_set_dash_items
 }
 
 
+/*!
+ * \brief Get the dash length values from a DXF \c HATCH pattern def
+ * line.
+ *
+ * \return pointer to the dash length values.
+ *
+ * \warning No checks are performed on the returned pointer (double).
+ */
+int
+dxf_hatch_pattern_def_line_get_dash_length
+(
+        DxfHatchPatternDefLine *line,
+                /*!< a pointer to a DXF \c HATCH pattern def line. */
+        double dash_length[DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS]
+                /*!< array of dash length values. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        for (i = 1; i < DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS; i++)
+        {
+                dash_length[i] = line->dash_length[i];
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* dxf_hatch_pattern_seedpoint functions. */
 
 /*!
