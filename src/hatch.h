@@ -326,6 +326,22 @@ dxf_hatch_boundary_path
 
 
 /*!
+ * \brief DXF definition of an AutoCAD hatch pattern definition line
+ * dash.
+ */
+typedef struct
+dxf_hatch_pattern_def_line_dash
+{
+        double length;
+                /*!< Dash length for a hatch pattern definition line.\n
+                 * Group code = 49. */
+        struct DxfHatchPatternDefLineDash *next;
+                /*!< Pointer to the next DxfHatchPatternDefLineDash.\n
+                 * \c NULL if the last DxfHatchPatternDefLineDash. */
+} DxfHatchPatternDefLineDash;
+
+
+/*!
  * \brief DXF definition of an AutoCAD hatch pattern definition line.
  */
 typedef struct
