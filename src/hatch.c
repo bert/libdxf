@@ -593,6 +593,44 @@ dxf_hatch_pattern_free_chain
 }
 
 
+/* dxf_hatch_pattern_def_line_dash functions. */
+
+/*!
+ * \brief Allocate memory for a DXF \c HATCH pattern definition line
+ * dash.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfHatchPatternDefLineDash *
+dxf_hatch_pattern_def_line_dash_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchPatternDefLineDash *dash = NULL;
+        size_t size;
+
+        size = sizeof (DxfHatchPatternDefLineDash);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((dash = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfHatchPatternDefLineDash struct.\n")),
+                  __FUNCTION__);
+                dash = NULL;
+        }
+        else
+        {
+                memset (dash, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dash);
+}
+
+
 /* dxf_hatch_pattern_def_line functions. */
 
 /*!
