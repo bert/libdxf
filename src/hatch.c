@@ -666,6 +666,48 @@ dxf_hatch_pattern_def_line_dash_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c HATCH pattern
+ * definition line dash and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_hatch_pattern_def_line_dash_free
+(
+        DxfHatchPatternDefLineDash *dash
+                /*!< Pointer to the memory occupied by the DXF \c HATCH
+                 * pattern definition line dash entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dash == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dash->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfHatchPatternDefLineDash was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (dash);
+        dash = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* dxf_hatch_pattern_def_line functions. */
 
 /*!
