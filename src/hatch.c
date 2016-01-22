@@ -708,6 +708,40 @@ dxf_hatch_pattern_def_line_dash_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH pattern
+ * definition line dashes and all their data fields.
+ */
+void
+dxf_hatch_pattern_def_line_dash_free_chain
+(
+        DxfHatchPatternDefLineDash *dashes
+                /*!< pointer to the chain of DXF \c HATCH pattern
+                 * definition line dashes. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dashes == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (dashes != NULL)
+        {
+                struct DxfHatchPatternDefLineDash *iter = dashes->next;
+                dxf_hatch_pattern_def_line_dash_free (dashes);
+                dashes = (DxfHatchPatternDefLineDash *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* dxf_hatch_pattern_def_line functions. */
 
 /*!
