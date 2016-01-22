@@ -567,7 +567,7 @@ dxf_hatch_pattern_free
 void
 dxf_hatch_pattern_free_chain
 (
-        DxfHatchPattern *hatch_patterns
+        DxfHatchPattern *patterns
                 /*!< pointer to the chain of DXF \c HATCH patterns. */
 )
 {
@@ -575,17 +575,17 @@ dxf_hatch_pattern_free_chain
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (hatch_patterns == NULL)
+        if (patterns == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
         }
-        while (hatch_patterns != NULL)
+        while (patterns != NULL)
         {
-                struct DxfHatchPattern *iter = hatch_patterns->next;
-                dxf_hatch_pattern_free (hatch_patterns);
-                hatch_patterns = (DxfHatchPattern *) iter;
+                struct DxfHatchPattern *iter = patterns->next;
+                dxf_hatch_pattern_free (patterns);
+                patterns = (DxfHatchPattern *) iter;
         }
 #if DEBUG
         DXF_DEBUG_END

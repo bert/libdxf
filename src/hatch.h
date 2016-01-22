@@ -611,7 +611,7 @@ dxf_hatch_pattern_free
 void
 dxf_hatch_pattern_free_chain
 (
-        DxfHatchPattern *hatch_patterns
+        DxfHatchPattern *patterns
 );
 /* dxf_hatch_pattern_def_line_dash functions. */
 DxfHatchPatternDefLineDash *
