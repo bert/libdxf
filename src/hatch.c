@@ -631,6 +631,41 @@ dxf_hatch_pattern_def_line_dash_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF \c HATCH
+ * pattern definition line dash entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfHatchPatternDefLineDash *
+dxf_hatch_pattern_def_line_dash_init
+(
+        DxfHatchPatternDefLineDash *dash
+                /*!< DXF hatch pattern definition line dash entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (dash == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                dash = dxf_hatch_pattern_def_line_dash_new ();
+        }
+        dash->length = 0.0;
+        dash->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dash);
+}
+
+
 /* dxf_hatch_pattern_def_line functions. */
 
 /*!
