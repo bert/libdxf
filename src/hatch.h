@@ -367,10 +367,9 @@ dxf_hatch_pattern_def_line
         int number_of_dash_items;
                 /*!< Number of hatch pattern definition line dash items.\n
                  * Group code = 79. */
-        double dash_length[DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS];
-                /*!< Array of dash lengths for an array of hatch pattern
-                 * definition lines.\n
-                 * Group code = 49. */
+        struct DxfHatchPatternDefLineDash *dashes;
+                /*!< Pointer to the first dash.\n
+                 * \c NULL if the last DxfHatchPatternDefLineDash. */
         struct DxfHatchPatternDefLine *next;
                 /*!< Pointer to the next DxfHatchPatternDefLine.\n
                  * \c NULL if the last DxfHatchPatternDefLine. */
@@ -754,11 +753,10 @@ dxf_hatch_pattern_def_line_set_number_of_dash_items
         DxfHatchPatternDefLine *line,
         int number_of_dash_items
 );
-int
-dxf_hatch_pattern_def_line_get_dash_length
+DxfHatchPatternDefLineDash *
+dxf_hatch_pattern_def_line_get_dash
 (
-        DxfHatchPatternDefLine *line,
-        double dash_length[DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS]
+        DxfHatchPatternDefLine *line
 );
 /* dxf_hatch_pattern_seedpoint functions. */
 DxfHatchPatternSeedPoint *

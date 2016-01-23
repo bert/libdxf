@@ -944,8 +944,6 @@ dxf_hatch_pattern_def_line_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (def_line == NULL)
         {
@@ -967,11 +965,8 @@ dxf_hatch_pattern_def_line_init
         def_line->y0 = 0.0;
         def_line->x1 = 0.0;
         def_line->y1 = 0.0;
-        def_line->number_of_dash_items = DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS;
-        for (i = 0; i >= DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS; i++)
-        {
-                def_line->dash_length[i] = 0.0;
-        }
+        def_line->number_of_dash_items = 0;
+        def_line->dashes = NULL;
         def_line->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -999,8 +994,6 @@ dxf_hatch_pattern_def_line_write
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (fp == NULL)
         {
@@ -1026,9 +1019,12 @@ dxf_hatch_pattern_def_line_write
         if (def_line->number_of_dash_items > 0)
         {
                 /* Draw hatch pattern definition line dash items. */
-                for (i = 1; i < def_line->number_of_dash_items; i++)
+                DxfHatchPatternDefLineDash *dash;
+                dash = dxf_hatch_pattern_def_line_get_dash (def_line);
+                while (dash != NULL)
                 {
-                        fprintf (fp->fp, " 49\n%f\n", def_line->dash_length[i]);
+                        fprintf (fp->fp, " 49\n%f\n", dash->length);
+                        dash = dxf_hatch_pattern_def_line_dash_get_next (dash);
                 }
         }
         else
@@ -1607,26 +1603,24 @@ dxf_hatch_pattern_def_line_set_number_of_dash_items
 
 
 /*!
- * \brief Get the dash length values from a DXF \c HATCH pattern def
- * line.
+ * \brief Get a pointer to the first dash from a DXF \c HATCH pattern
+ * def line.
  *
- * \return pointer to the dash length values.
+ * \return pointer to the dash.
  *
- * \warning No checks are performed on the returned pointer (double).
+ * \warning No checks are performed on the returned pointer.
  */
-int
-dxf_hatch_pattern_def_line_get_dash_length
+DxfHatchPatternDefLineDash *
+dxf_hatch_pattern_def_line_get_dash
 (
-        DxfHatchPatternDefLine *line,
+        DxfHatchPatternDefLine *line
                 /*!< a pointer to a DXF \c HATCH pattern def line. */
-        double dash_length[DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS]
-                /*!< array of dash length values. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
+        DxfHatchPatternDefLineDash *result;
 
         /* Do some basic checks. */
         if (line == NULL)
@@ -1634,16 +1628,13 @@ dxf_hatch_pattern_def_line_get_dash_length
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
-        for (i = 1; i < DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS; i++)
-        {
-                dash_length[i] = line->dash_length[i];
-        }
+        result = (DxfHatchPatternDefLineDash *) line->dashes;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (result);
 }
 
 
