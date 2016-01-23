@@ -808,8 +808,8 @@ dxf_hatch_pattern_def_line_dash_set_length
 
 
 /*!
- * \brief Get the pointer to the next \c HATCH pattern def line dash from a DXF
- * \c HATCH pattern def line dash.
+ * \brief Get the pointer to the next \c HATCH pattern def line dash
+ * from a DXF \c HATCH pattern def line dash.
  *
  * \return pointer to the next \c HATCH pattern def line dash.
  *
