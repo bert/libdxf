@@ -636,6 +636,12 @@ dxf_hatch_pattern_def_line_dash_get_length
 (
         DxfHatchPatternDefLineDash *dash
 );
+DxfHatchPatternDefLineDash *
+dxf_hatch_pattern_def_line_dash_set_length
+(
+        DxfHatchPatternDefLineDash *dash,
+        double length
+);
 /* dxf_hatch_pattern_def_line functions. */
 DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_new ();

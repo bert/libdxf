@@ -776,6 +776,37 @@ dxf_hatch_pattern_def_line_dash_get_length
 }
 
 
+/*!
+ * \brief Set the length value for a DXF \c HATCH pattern def line dash.
+ */
+DxfHatchPatternDefLineDash *
+dxf_hatch_pattern_def_line_dash_set_length
+(
+        DxfHatchPatternDefLineDash *dash,
+                /*!< a pointer to a DXF \c HATCH pattern def line dash. */
+        double length
+                /*!< the length value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dash == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dash->length = length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dash);
+}
+
+
 /* dxf_hatch_pattern_def_line functions. */
 
 /*!
