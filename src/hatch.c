@@ -742,6 +742,40 @@ dxf_hatch_pattern_def_line_dash_free_chain
 }
 
 
+/*!
+ * \brief Get the length value from a DXF \c HATCH pattern def
+ * line dash.
+ *
+ * \return length value.
+ */
+double
+dxf_hatch_pattern_def_line_dash_get_length
+(
+        DxfHatchPatternDefLineDash *dash
+                /*!< a pointer to a DXF \c HATCH pattern def line dash. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (dash == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = dash->length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_pattern_def_line functions. */
 
 /*!
