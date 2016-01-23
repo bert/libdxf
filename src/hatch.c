@@ -850,6 +850,46 @@ dxf_hatch_pattern_def_line_dash_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c HATCH pattern def line dash for
+ * a DXF \c HATCH pattern def line dash.
+ */
+DxfHatchPatternDefLineDash *
+dxf_hatch_pattern_def_line_dash_set_next
+(
+        DxfHatchPatternDefLineDash *dash,
+                /*!< a pointer to a DXF \c HATCH pattern def line dash. */
+        DxfHatchPatternDefLineDash *next
+                /*!< a pointer to the next \c HATCH pattern def line
+                 * dash for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dash == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dash->next = (struct DxfHatchPatternDefLineDash *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dash);
+}
+
+
 /* dxf_hatch_pattern_def_line functions. */
 
 /*!
