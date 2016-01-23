@@ -658,23 +658,23 @@ dxf_hatch_pattern_def_line_new ();
 DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_init
 (
-        DxfHatchPatternDefLine *def_line
+        DxfHatchPatternDefLine *line
 );
 int
 dxf_hatch_pattern_def_line_write
 (
         DxfFile *fp,
-        DxfHatchPatternDefLine *def_line
+        DxfHatchPatternDefLine *line
 );
 int
 dxf_hatch_pattern_def_line_free
 (
-        DxfHatchPatternDefLine *def_line
+        DxfHatchPatternDefLine *line
 );
 void
 dxf_hatch_pattern_def_line_free_chain
 (
-        DxfHatchPatternDefLine *hatch_pattern_def_lines
+        DxfHatchPatternDefLine *lines
 );
 int
 dxf_hatch_pattern_def_line_get_id_code

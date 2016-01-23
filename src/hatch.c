@@ -903,27 +903,27 @@ dxf_hatch_pattern_def_line_new ()
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHatchPatternDefLine *def_line = NULL;
+        DxfHatchPatternDefLine *line = NULL;
         size_t size;
 
         size = sizeof (DxfHatchPatternDefLine);
         /* avoid malloc of 0 bytes */
         if (size == 0) size = 1;
-        if ((def_line = malloc (size)) == NULL)
+        if ((line = malloc (size)) == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfHatchPatternDefLine struct.\n")),
                   __FUNCTION__);
-                def_line = NULL;
+                line = NULL;
         }
         else
         {
-                memset (def_line, 0, size);
+                memset (line, 0, size);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (def_line);
+        return (line);
 }
 
 
@@ -937,7 +937,7 @@ dxf_hatch_pattern_def_line_new ()
 DxfHatchPatternDefLine *
 dxf_hatch_pattern_def_line_init
 (
-        DxfHatchPatternDefLine *def_line
+        DxfHatchPatternDefLine *line
                 /*!< DXF hatch pattern definition line entity. */
 )
 {
@@ -945,33 +945,33 @@ dxf_hatch_pattern_def_line_init
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (def_line == NULL)
+        if (line == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                def_line = dxf_hatch_pattern_def_line_new ();
+                line = dxf_hatch_pattern_def_line_new ();
         }
-        if (def_line == NULL)
+        if (line == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () could not allocate memory for a DxfHatchPatternDefLine struct.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        def_line->id_code = 0;
-        def_line->angle = 0.0;
-        def_line->x0 = 0.0;
-        def_line->y0 = 0.0;
-        def_line->x1 = 0.0;
-        def_line->y1 = 0.0;
-        def_line->number_of_dash_items = 0;
-        def_line->dashes = NULL;
-        def_line->next = NULL;
+        line->id_code = 0;
+        line->angle = 0.0;
+        line->x0 = 0.0;
+        line->y0 = 0.0;
+        line->x1 = 0.0;
+        line->y1 = 0.0;
+        line->number_of_dash_items = 0;
+        line->dashes = NULL;
+        line->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (def_line);
+        return (line);
 }
 
 
@@ -987,7 +987,7 @@ dxf_hatch_pattern_def_line_write
 (
         DxfFile *fp,
                 /*!< DXF file pointer to an output file (or device). */
-        DxfHatchPatternDefLine *def_line
+        DxfHatchPatternDefLine *line
                 /*!< DXF hatch pattern definition line. */
 )
 {
@@ -1002,7 +1002,7 @@ dxf_hatch_pattern_def_line_write
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (def_line == NULL)
+        if (line == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
@@ -1010,17 +1010,17 @@ dxf_hatch_pattern_def_line_write
                 return (EXIT_FAILURE);
         }
         /* Start writing output. */
-        fprintf (fp->fp, " 53\n%f\n", def_line->angle);
-        fprintf (fp->fp, " 43\n%f\n", def_line->x0);
-        fprintf (fp->fp, " 44\n%f\n", def_line->y0);
-        fprintf (fp->fp, " 45\n%f\n", def_line->x1);
-        fprintf (fp->fp, " 46\n%f\n", def_line->y1);
-        fprintf (fp->fp, " 79\n%d\n", def_line->number_of_dash_items);
-        if (def_line->number_of_dash_items > 0)
+        fprintf (fp->fp, " 53\n%f\n", line->angle);
+        fprintf (fp->fp, " 43\n%f\n", line->x0);
+        fprintf (fp->fp, " 44\n%f\n", line->y0);
+        fprintf (fp->fp, " 45\n%f\n", line->x1);
+        fprintf (fp->fp, " 46\n%f\n", line->y1);
+        fprintf (fp->fp, " 79\n%d\n", line->number_of_dash_items);
+        if (line->number_of_dash_items > 0)
         {
                 /* Draw hatch pattern definition line dash items. */
                 DxfHatchPatternDefLineDash *dash;
-                dash = dxf_hatch_pattern_def_line_get_dash (def_line);
+                dash = dxf_hatch_pattern_def_line_get_dash (line);
                 while (dash != NULL)
                 {
                         fprintf (fp->fp, " 49\n%f\n", dash->length);
@@ -1050,7 +1050,7 @@ dxf_hatch_pattern_def_line_write
 int
 dxf_hatch_pattern_def_line_free
 (
-        DxfHatchPatternDefLine *def_line
+        DxfHatchPatternDefLine *line
                 /*!< Pointer to the memory occupied by the DXF \c HATCH
                  * pattern definition line entity. */
 )
@@ -1059,22 +1059,22 @@ dxf_hatch_pattern_def_line_free
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (def_line == NULL)
+        if (line == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (def_line->next != NULL)
+        if (line->next != NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () pointer to next DxfHatchPatternDefLine was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (def_line);
-        def_line = NULL;
+        free (line);
+        line = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -1089,7 +1089,7 @@ dxf_hatch_pattern_def_line_free
 void
 dxf_hatch_pattern_def_line_free_chain
 (
-        DxfHatchPatternDefLine *hatch_pattern_def_lines
+        DxfHatchPatternDefLine *lines
                 /*!< pointer to the chain of DXF \c HATCH pattern
                  * definition lines. */
 )
@@ -1098,17 +1098,17 @@ dxf_hatch_pattern_def_line_free_chain
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (hatch_pattern_def_lines == NULL)
+        if (lines == NULL)
         {
                 fprintf (stderr,
                   (_("Warning in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
         }
-        while (hatch_pattern_def_lines != NULL)
+        while (lines != NULL)
         {
-                struct DxfHatchPatternDefLine *iter = hatch_pattern_def_lines->next;
-                dxf_hatch_pattern_def_line_free (hatch_pattern_def_lines);
-                hatch_pattern_def_lines = (DxfHatchPatternDefLine *) iter;
+                struct DxfHatchPatternDefLine *iter = lines->next;
+                dxf_hatch_pattern_def_line_free (lines);
+                lines = (DxfHatchPatternDefLine *) iter;
         }
 #if DEBUG
         DXF_DEBUG_END
