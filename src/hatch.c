@@ -2072,6 +2072,37 @@ dxf_hatch_pattern_seedpoint_get_y0
 }
 
 
+/*!
+ * \brief Set the Y-value for a DXF \c HATCH pattern seed point.
+ */
+DxfHatchPatternSeedPoint *
+dxf_hatch_pattern_seedpoint_set_y0
+(
+        DxfHatchPatternSeedPoint *point,
+                /*!< a pointer to a DXF \c HATCH pattern seed point. */
+        double y0
+                /*!< the Y-value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
 /* dxf_hatch_boundary_path functions. */
 
 /*!
