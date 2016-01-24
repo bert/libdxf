@@ -1738,6 +1738,46 @@ dxf_hatch_pattern_def_line_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c HATCH pattern def line for a
+ * DXF \c HATCH pattern def line.
+ */
+DxfHatchPatternDefLine *
+dxf_hatch_pattern_def_line_set_next
+(
+        DxfHatchPatternDefLine *line,
+                /*!< a pointer to a DXF \c HATCH pattern def line. */
+        DxfHatchPatternDefLine *next
+                /*!< a pointer to the next \c HATCH pattern def line
+                 * for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->next = (struct DxfHatchPatternDefLine *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* dxf_hatch_pattern_seedpoint functions. */
 
 /*!

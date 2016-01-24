@@ -769,6 +769,12 @@ dxf_hatch_pattern_def_line_get_next
 (
         DxfHatchPatternDefLine *line
 );
+DxfHatchPatternDefLine *
+dxf_hatch_pattern_def_line_set_next
+(
+        DxfHatchPatternDefLine *line,
+        DxfHatchPatternDefLine *next
+);
 /* dxf_hatch_pattern_seedpoint functions. */
 DxfHatchPatternSeedPoint *
 dxf_hatch_pattern_seedpoint_new ();
