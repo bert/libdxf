@@ -793,6 +793,12 @@ dxf_hatch_pattern_seedpoint_get_id_code
 (
         DxfHatchPatternSeedPoint *point
 );
+DxfHatchPatternSeedPoint *
+dxf_hatch_pattern_seedpoint_set_id_code
+(
+        DxfHatchPatternSeedPoint *point,
+        int id_code
+);
 /* dxf_hatch_boundary_path functions. */
 DxfHatchBoundaryPath *
 dxf_hatch_boundary_path_new ();
