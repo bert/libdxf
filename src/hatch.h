@@ -612,6 +612,11 @@ dxf_hatch_pattern_free_chain
 (
         DxfHatchPattern *patterns
 );
+int
+dxf_hatch_pattern_get_id_code
+(
+        DxfHatchPattern *pattern
+);
 /* dxf_hatch_pattern_def_line_dash functions. */
 DxfHatchPatternDefLineDash *
 dxf_hatch_pattern_def_line_dash_new ();
