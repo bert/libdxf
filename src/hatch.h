@@ -810,6 +810,11 @@ dxf_hatch_pattern_seedpoint_set_x0
         DxfHatchPatternSeedPoint *point,
         double x0
 );
+double
+dxf_hatch_pattern_seedpoint_get_y0
+(
+        DxfHatchPatternSeedPoint *point
+);
 /* dxf_hatch_boundary_path functions. */
 DxfHatchBoundaryPath *
 dxf_hatch_boundary_path_new ();
