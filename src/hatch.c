@@ -1020,7 +1020,7 @@ dxf_hatch_pattern_def_line_write
         {
                 /* Draw hatch pattern definition line dash items. */
                 DxfHatchPatternDefLineDash *dash;
-                dash = dxf_hatch_pattern_def_line_get_dash (line);
+                dash = dxf_hatch_pattern_def_line_get_dashes (line);
                 if (dash == NULL)
                 {
                         fprintf (stderr,
@@ -1618,7 +1618,7 @@ dxf_hatch_pattern_def_line_set_number_of_dash_items
  * \warning No checks are performed on the returned pointer.
  */
 DxfHatchPatternDefLineDash *
-dxf_hatch_pattern_def_line_get_dash
+dxf_hatch_pattern_def_line_get_dashes
 (
         DxfHatchPatternDefLine *line
                 /*!< a pointer to a DXF \c HATCH pattern def line. */

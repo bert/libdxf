@@ -754,7 +754,7 @@ dxf_hatch_pattern_def_line_set_number_of_dash_items
         int number_of_dash_items
 );
 DxfHatchPatternDefLineDash *
-dxf_hatch_pattern_def_line_get_dash
+dxf_hatch_pattern_def_line_get_dashes
 (
         DxfHatchPatternDefLine *line
 );
