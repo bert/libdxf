@@ -1645,6 +1645,45 @@ dxf_hatch_pattern_def_line_get_dash
 }
 
 
+/*!
+ * \brief Set the pointer for the first dash for a DXF \c HATCH pattern
+ * def line.
+ */
+DxfHatchPatternDefLine *
+dxf_hatch_pattern_def_line_set_dashes
+(
+        DxfHatchPatternDefLine *line,
+                /*!< a pointer to a DXF \c HATCH pattern def line. */
+        DxfHatchPatternDefLineDash *dashes
+                /*!< a pointer to the first dash. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dashes == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->dashes = (struct DxfHatchPatternDefLineDash *) dashes;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
 /* dxf_hatch_pattern_seedpoint functions. */
 
 /*!
