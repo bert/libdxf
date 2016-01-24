@@ -994,6 +994,8 @@ dxf_hatch_pattern_def_line_write
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        int i;
+
         /* Do some basic checks. */
         if (fp == NULL)
         {
@@ -1020,6 +1022,7 @@ dxf_hatch_pattern_def_line_write
         {
                 /* Draw hatch pattern definition line dash items. */
                 DxfHatchPatternDefLineDash *dash;
+                i = 0;
                 dash = dxf_hatch_pattern_def_line_get_dashes (line);
                 if (dash == NULL)
                 {
@@ -1031,7 +1034,15 @@ dxf_hatch_pattern_def_line_write
                 while (dash != NULL)
                 {
                         fprintf (fp->fp, " 49\n%f\n", dash->length);
+                        i++;
                         dash = dxf_hatch_pattern_def_line_dash_get_next (dash);
+                }
+                if (i >= line->number_of_dash_items)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () more dashes found than expected.\n")),
+                          __FUNCTION__);
+
                 }
         }
         else
