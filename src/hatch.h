@@ -788,6 +788,11 @@ dxf_hatch_pattern_seedpoint_free_chain
 (
         DxfHatchPatternSeedPoint *hatch_pattern_seed_points
 );
+int
+dxf_hatch_pattern_seedpoint_get_id_code
+(
+        DxfHatchPatternSeedPoint *point
+);
 /* dxf_hatch_boundary_path functions. */
 DxfHatchBoundaryPath *
 dxf_hatch_boundary_path_new ();

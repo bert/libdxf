@@ -1895,6 +1895,46 @@ dxf_hatch_pattern_seedpoint_free_chain
 }
 
 
+/*!
+ * \brief Get the ID code from a DXF \c HATCH pattern seed point.
+ *
+ * \return ID code.
+ */
+int
+dxf_hatch_pattern_seedpoint_get_id_code
+(
+        DxfHatchPatternSeedPoint *point
+                /*!< a pointer to a DXF \c HATCH pattern seed point. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (point->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the id_code member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = point->id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_boundary_path functions. */
 
 /*!
