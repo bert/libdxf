@@ -1021,6 +1021,13 @@ dxf_hatch_pattern_def_line_write
                 /* Draw hatch pattern definition line dash items. */
                 DxfHatchPatternDefLineDash *dash;
                 dash = dxf_hatch_pattern_def_line_get_dash (line);
+                if (dash == NULL)
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () no pointer to the first dash found.\n")),
+                          __FUNCTION__);
+
+                }
                 while (dash != NULL)
                 {
                         fprintf (fp->fp, " 49\n%f\n", dash->length);
