@@ -623,6 +623,11 @@ dxf_hatch_pattern_set_id_code
         DxfHatchPattern *pattern,
         int id_code
 );
+int
+dxf_hatch_pattern_get_number_of_def_lines
+(
+        DxfHatchPattern *pattern
+);
 /* dxf_hatch_pattern_def_line_dash functions. */
 DxfHatchPatternDefLineDash *
 dxf_hatch_pattern_def_line_dash_new ();
