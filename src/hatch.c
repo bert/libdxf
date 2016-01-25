@@ -714,6 +714,45 @@ dxf_hatch_pattern_get_number_of_def_lines
 }
 
 
+/*!
+ * \brief Set the number of hatch pattern definition lines for a DXF
+ * \c HATCH pattern.
+ */
+DxfHatchPattern *
+dxf_hatch_pattern_set_number_of_def_lines
+(
+        DxfHatchPattern *pattern,
+                /*!< a pointer to a DXF \c HATCH pattern. */
+        int number_of_def_lines
+                /*!< Number of hatch pattern definition lines. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (pattern == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (number_of_def_lines < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative number_of_def_lines value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        pattern->number_of_def_lines = number_of_def_lines;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (pattern);
+}
+
+
 /* dxf_hatch_pattern_def_line_dash functions. */
 
 /*!
