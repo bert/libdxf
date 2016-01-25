@@ -404,7 +404,7 @@ dxf_hatch_pattern
 {
         int id_code;
                 /*!< group code = 5. */
-        int def_lines;
+        int number_of_def_lines;
                 /*!< Number of hatch pattern definition lines.\n
                  * Group code = 78. */
         struct DxfHatchPatternDefLine *lines;

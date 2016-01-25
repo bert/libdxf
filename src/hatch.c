@@ -501,7 +501,7 @@ dxf_hatch_pattern_init
                 return (NULL);
         }
         pattern->id_code = 0;
-        pattern->def_lines = 0;
+        pattern->number_of_def_lines = 0;
         pattern->lines = NULL;
 /*! \todo correction in:
         pattern->length = 0.0;
