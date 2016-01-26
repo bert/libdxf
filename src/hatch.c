@@ -754,6 +754,42 @@ dxf_hatch_pattern_set_number_of_def_lines
 
 
 /*!
+ * \brief Get a pointer to the first definition line from a DXF \c HATCH
+ * pattern.
+ *
+ * \return pointer a pointer to the definition line.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchPatternDefLine *
+dxf_hatch_pattern_get_def_lines
+(
+        DxfHatchPattern *pattern
+                /*!< a pointer to a DXF \c HATCH pattern def line. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchPatternDefLine *result;
+
+        /* Do some basic checks. */
+        if (pattern == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHatchPatternDefLine *) pattern->def_lines;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the number of hatch pattern seed points from a DXF
  * \c HATCH pattern.
  *
