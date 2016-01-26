@@ -407,7 +407,7 @@ dxf_hatch_pattern
         int number_of_def_lines;
                 /*!< Number of hatch pattern definition lines.\n
                  * Group code = 78. */
-        struct DxfHatchPatternDefLine *lines;
+        struct DxfHatchPatternDefLine *def_lines;
                 /*!< Pointer to the first \c DxfHatchPatterDefLine. */
         double **length;
                 /*!< Array of dash lengths for an array of hatch pattern

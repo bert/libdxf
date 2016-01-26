@@ -502,7 +502,7 @@ dxf_hatch_pattern_init
         }
         pattern->id_code = 0;
         pattern->number_of_def_lines = 0;
-        pattern->lines = NULL;
+        pattern->def_lines = NULL;
 /*! \todo correction in:
         pattern->length = 0.0;
 */
@@ -549,7 +549,7 @@ dxf_hatch_pattern_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (pattern->lines);
+        free (pattern->def_lines);
         free (pattern->seed_points);
         free (pattern);
         pattern = NULL;
