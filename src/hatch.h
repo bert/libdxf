@@ -634,6 +634,11 @@ dxf_hatch_pattern_set_number_of_def_lines
         DxfHatchPattern *pattern,
         int number_of_def_lines
 );
+int
+dxf_hatch_pattern_get_number_of_seed_points
+(
+        DxfHatchPattern *pattern
+);
 /* dxf_hatch_pattern_def_line_dash functions. */
 DxfHatchPatternDefLineDash *
 dxf_hatch_pattern_def_line_dash_new ();

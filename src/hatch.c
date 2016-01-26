@@ -753,6 +753,47 @@ dxf_hatch_pattern_set_number_of_def_lines
 }
 
 
+/*!
+ * \brief Get the number of hatch pattern seed points from a DXF
+ * \c HATCH pattern.
+ *
+ * \return Number of hatch pattern seed points.
+ */
+int
+dxf_hatch_pattern_get_number_of_seed_points
+(
+        DxfHatchPattern *pattern
+                /*!< a pointer to a DXF \c HATCH pattern. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (pattern == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (pattern->number_of_seed_points < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the number_of_seed_points member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = pattern->number_of_seed_points;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_pattern_def_line_dash functions. */
 
 /*!
