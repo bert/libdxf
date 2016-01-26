@@ -833,6 +833,42 @@ dxf_hatch_pattern_set_number_of_seed_points
 }
 
 
+/*!
+ * \brief Get a pointer to the first seed point from a DXF \c HATCH
+ * pattern.
+ *
+ * \return pointer a pointer to the seed point.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchPatternSeedPoint *
+dxf_hatch_pattern_get_seed_points
+(
+        DxfHatchPattern *pattern
+                /*!< a pointer to a DXF \c HATCH pattern def line. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchPatternSeedPoint *result;
+
+        /* Do some basic checks. */
+        if (pattern == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHatchPatternSeedPoint *) pattern->seed_points;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_pattern_def_line_dash functions. */
 
 /*!
