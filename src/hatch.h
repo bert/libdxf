@@ -672,6 +672,12 @@ dxf_hatch_pattern_get_next
 (
         DxfHatchPattern *pattern
 );
+DxfHatchPattern *
+dxf_hatch_pattern_set_next
+(
+        DxfHatchPattern *pattern,
+        DxfHatchPatternDefLine *next
+);
 /* dxf_hatch_pattern_def_line_dash functions. */
 DxfHatchPatternDefLineDash *
 dxf_hatch_pattern_def_line_dash_new ();
