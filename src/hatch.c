@@ -503,9 +503,6 @@ dxf_hatch_pattern_init
         pattern->id_code = 0;
         pattern->number_of_def_lines = 0;
         pattern->def_lines = NULL;
-/*! \todo correction in:
-        pattern->length = 0.0;
-*/
         pattern->number_of_seed_points = 0;
         pattern->seed_points = NULL;
         pattern->next = NULL;

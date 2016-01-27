@@ -409,10 +409,6 @@ dxf_hatch_pattern
                  * Group code = 78. */
         struct DxfHatchPatternDefLine *def_lines;
                 /*!< Pointer to the first \c DxfHatchPatterDefLine. */
-        double **length;
-                /*!< Array of dash lengths for an array of hatch pattern
-                 * definition lines.\n
-                 * Group code = 49. */
         int number_of_seed_points;
                 /*!< Number of seed points.\n
                  * Group code = 98. */
