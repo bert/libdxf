@@ -983,6 +983,49 @@ dxf_hatch_pattern_set_seed_points
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c HATCH pattern from a DXF
+ * \c HATCH pattern def line.
+ *
+ * \return pointer to the next \c HATCH pattern.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchPattern *
+dxf_hatch_pattern_get_next
+(
+        DxfHatchPattern *pattern
+                /*!< a pointer to a DXF \c HATCH pattern. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchPattern *result;
+
+        /* Do some basic checks. */
+        if (pattern == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (pattern->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHatchPattern *) pattern->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_pattern_def_line_dash functions. */
 
 /*!
