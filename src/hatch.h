@@ -595,6 +595,12 @@ dxf_hatch_get_id_code
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_id_code
+(
+        DxfHatch *hatch,
+        int id_code
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
