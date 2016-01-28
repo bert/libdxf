@@ -511,6 +511,46 @@ dxf_hatch_set_id_code
 }
 
 
+/*!
+ * \brief Get the linetype from a DXF \c HATCH entity.
+ *
+ * \return linetype when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_hatch_get_linetype
+(
+        DxfHatch *hatch
+                /*!< a pointer to a DXF \c HATCH entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (hatch->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the linetype member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (hatch->linetype);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_pattern functions. */
 
 /*!

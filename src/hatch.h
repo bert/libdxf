@@ -601,6 +601,11 @@ dxf_hatch_set_id_code
         DxfHatch *hatch,
         int id_code
 );
+char *
+dxf_hatch_get_linetype
+(
+        DxfHatch *hatch
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
