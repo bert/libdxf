@@ -606,6 +606,12 @@ dxf_hatch_get_linetype
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_linetype
+(
+        DxfHatch *hatch,
+        char *linetype
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
