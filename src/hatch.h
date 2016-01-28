@@ -590,6 +590,11 @@ dxf_hatch_free_chain
 (
         DxfHatch *hatches
 );
+int
+dxf_hatch_get_id_code
+(
+        DxfHatch *hatch
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
