@@ -661,6 +661,12 @@ dxf_hatch_get_visibility
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_visibility
+(
+        DxfHatch *hatch,
+        int16_t visibility
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
