@@ -639,6 +639,12 @@ dxf_hatch_get_thickness
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_thickness
+(
+        DxfHatch *hatch,
+        double thickness
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
