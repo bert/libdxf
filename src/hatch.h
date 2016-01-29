@@ -634,6 +634,11 @@ dxf_hatch_set_elevation
         DxfHatch *hatch,
         double elevation
 );
+double
+dxf_hatch_get_thickness
+(
+        DxfHatch *hatch
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
