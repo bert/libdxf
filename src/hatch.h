@@ -683,6 +683,12 @@ dxf_hatch_get_paperspace
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_paperspace
+(
+        DxfHatch *hatch,
+        int paperspace
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
