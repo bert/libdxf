@@ -672,6 +672,12 @@ dxf_hatch_get_color
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_color
+(
+        DxfHatch *hatch,
+        int color
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
