@@ -645,6 +645,11 @@ dxf_hatch_set_thickness
         DxfHatch *hatch,
         double thickness
 );
+double
+dxf_hatch_get_linetype_scale
+(
+        DxfHatch *hatch
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
