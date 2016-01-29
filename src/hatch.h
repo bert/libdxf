@@ -650,6 +650,12 @@ dxf_hatch_get_linetype_scale
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_linetype_scale
+(
+        DxfHatch *hatch,
+        double linetype_scale
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();

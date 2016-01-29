@@ -849,6 +849,44 @@ dxf_hatch_get_linetype_scale
 }
 
 
+/*!
+ * \brief Set the linetype scale for a DXF \c HATCH entity.
+ */
+DxfHatch *
+dxf_hatch_set_linetype_scale
+(
+        DxfHatch *hatch,
+                /*!< a pointer to a DXF \c HATCH entity. */
+        double linetype_scale
+                /*!< the linetype scale to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative linetype scale value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->linetype_scale = linetype_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
 /* dxf_hatch_pattern functions. */
 
 /*!
