@@ -617,6 +617,12 @@ dxf_hatch_get_layer
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_layer
+(
+        DxfHatch *hatch,
+        char *layer
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
