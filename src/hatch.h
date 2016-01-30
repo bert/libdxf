@@ -689,6 +689,11 @@ dxf_hatch_set_paperspace
         DxfHatch *hatch,
         int paperspace
 );
+char *
+dxf_hatch_get_dictionary_owner_soft
+(
+        DxfHatch *hatch
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
