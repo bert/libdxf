@@ -694,6 +694,12 @@ dxf_hatch_get_graphics_data_size
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_graphics_data_size
+(
+        DxfHatch *hatch,
+        int graphics_data_size
+);
 char *
 dxf_hatch_get_dictionary_owner_soft
 (
