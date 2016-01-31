@@ -1485,6 +1485,40 @@ dxf_hatch_binary_graphics_data_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c HATCH binary
+ * graphics data entities and all their data fields.
+ */
+void
+dxf_hatch_binary_graphics_data_free_chain
+(
+        DxfHatchBinaryGraphicsData *data
+                /*!< pointer to the chain of DXF \c HATCH binary
+                 * graphics data entities. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (data != NULL)
+        {
+                struct DxfHatchBinaryGraphicsData *iter = data->next;
+                dxf_hatch_binary_graphics_data_free (data);
+                data = (DxfHatchBinaryGraphicsData *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* dxf_hatch_pattern functions. */
 
 
