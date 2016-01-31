@@ -1404,7 +1404,46 @@ dxf_hatch_set_dictionary_owner_hard
 }
 
 
+/* dxf_hatch_binary_graphics_data functions. */
+
+
+/*!
+ * \brief Allocate memory for a DXF \c HATCH binary graphics data.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfHatchBinaryGraphicsData *
+dxf_hatch_binary_graphics_data_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchBinaryGraphicsData *data = NULL;
+        size_t size;
+
+        size = sizeof (DxfHatchBinaryGraphicsData);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((data = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfHatchBinaryGraphicsData struct.\n")),
+                  __FUNCTION__);
+                data = NULL;
+        }
+        else
+        {
+                memset (data, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* dxf_hatch_pattern functions. */
+
 
 /*!
  * \brief Allocate memory for a DXF \c HATCH pattern.
