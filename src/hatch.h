@@ -752,6 +752,11 @@ dxf_hatch_binary_graphics_data_free_chain
 (
         DxfHatchBinaryGraphicsData *data
 );
+char *
+dxf_hatch_binary_graphics_data_get_data_line
+(
+        DxfHatchBinaryGraphicsData *data
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
