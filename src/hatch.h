@@ -700,6 +700,11 @@ dxf_hatch_set_dictionary_owner_soft
         DxfHatch *hatch,
         char *dictionary_owner_soft
 );
+char *
+dxf_hatch_get_dictionary_owner_hard
+(
+        DxfHatch *hatch
+);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *
 dxf_hatch_pattern_new ();
