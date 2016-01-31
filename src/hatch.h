@@ -421,6 +421,23 @@ dxf_hatch_pattern
 
 
 /*!
+ * \brief DXF definition of an AutoCAD hatch binary graphics data.
+ */
+typedef struct
+dxf_hatch_binary_graphics_data
+{
+        char *data_line;
+                /*!< Proxy entity graphics data.\n
+                 * Multiple lines of 256 characters maximum per line
+                 * (optional).\n
+                 * Group code = 310. */
+        struct DxfHatchBinaryGraphicsData *next;
+                /*!< Pointer to the next DxfHatchBinaryGraphicsData.\n
+                 * \c NULL if the last DxfHatchBinaryGraphicsData. */
+} DxfHatchBinaryGraphicsData;
+
+
+/*!
  * \brief DXF definition of an AutoCAD hatch entity.
  */
 typedef struct
