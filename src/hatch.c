@@ -1148,6 +1148,51 @@ dxf_hatch_set_paperspace
 
 
 /*!
+ * \brief Get the graphics data size value from a DXF \c HATCH entity.
+ *
+ * \return graphics data size flag value.
+ */
+int
+dxf_hatch_get_graphics_data_size
+(
+        DxfHatch *hatch
+                /*!< a pointer to a DXF \c HATCH entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (hatch->graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the graphics_data_size member.\n")),
+                  __FUNCTION__);
+        }
+        if (hatch->graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
+                  __FUNCTION__);
+        }
+        result = hatch->graphics_data_size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c HATCH entity.
  *

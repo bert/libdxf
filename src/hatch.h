@@ -689,6 +689,11 @@ dxf_hatch_set_paperspace
         DxfHatch *hatch,
         int paperspace
 );
+int
+dxf_hatch_get_graphics_data_size
+(
+        DxfHatch *hatch
+);
 char *
 dxf_hatch_get_dictionary_owner_soft
 (
