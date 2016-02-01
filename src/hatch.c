@@ -1435,6 +1435,44 @@ dxf_hatch_get_pattern_name
 }
 
 
+/*!
+ * \brief Set the pattern name for a DXF \c HATCH entity.
+ */
+DxfHatch *
+dxf_hatch_set_pattern_name
+(
+        DxfHatch *hatch,
+                /*!< a pointer to a DXF \c HATCH entity. */
+        char *pattern_name
+                /*!< a string containing the pattern_name for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (pattern_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->pattern_name = strdup (pattern_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 
