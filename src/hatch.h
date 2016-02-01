@@ -750,6 +750,11 @@ dxf_hatch_set_pattern_name
         DxfHatch *hatch,
         char *pattern_name
 );
+double
+dxf_hatch_get_x0
+(
+        DxfHatch *hatch
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();
