@@ -93,8 +93,6 @@ dxf_hatch_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -139,10 +137,7 @@ dxf_hatch_init
         hatch->number_of_seed_points = 0;
         hatch->seed_points = NULL;
         hatch->graphics_data_size = 0;
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                hatch->binary_graphics_data[i] = strdup ("");
-        }
+        hatch->binary_graphics_data = NULL;
         hatch->dictionary_owner_soft = strdup ("");
         hatch->dictionary_owner_hard = strdup ("");
         hatch->next = NULL;
@@ -169,7 +164,7 @@ dxf_hatch_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("HATCH");
-        int i;
+        DxfHatchBinaryGraphicsData *data;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -288,11 +283,12 @@ dxf_hatch_write
         {
                 fprintf (fp->fp, " 92\n%d\n", hatch->graphics_data_size);
         }
-        i = 0;
-        while (strlen (hatch->binary_graphics_data[i]) > 0)
+        data = (DxfHatchBinaryGraphicsData *) hatch->binary_graphics_data;
+        while (data != NULL)
         {
-                fprintf (fp->fp, "310\n%s\n", hatch->binary_graphics_data[i]);
-                i++;
+                struct DxfHatchBinaryGraphicsData *iter = (struct DxfHatchBinaryGraphicsData *) data->next;
+                fprintf (fp->fp, "310\n%s\n", data->data_line);
+                data = (DxfHatchBinaryGraphicsData *) iter;
         }
         fprintf (fp->fp, "100\nAcDbHatch\n");
         fprintf (fp->fp, " 10\n%f\n", hatch->x0);
@@ -360,8 +356,6 @@ dxf_hatch_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (hatch == NULL)
         {
@@ -383,10 +377,7 @@ dxf_hatch_free
         free (hatch->def_lines);
         free (hatch->paths);
         free (hatch->seed_points);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (hatch->binary_graphics_data[i]);
-        }
+        dxf_hatch_binary_graphics_data_free_chain ((DxfHatchBinaryGraphicsData *) hatch->binary_graphics_data);
         free (hatch->dictionary_owner_soft);
         free (hatch->dictionary_owner_hard);
         free (hatch);

@@ -492,7 +492,7 @@ dxf_hatch
                 /*!< The number of bytes in the image (and subsequent
                  * binary chunk records) (optional).\n
                  * Group code = 92. */
-        char *binary_graphics_data[DXF_MAX_PARAM];
+        struct DxfHatchBinaryGraphicsData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
