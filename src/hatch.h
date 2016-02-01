@@ -766,6 +766,12 @@ dxf_hatch_get_y0
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_y0
+(
+        DxfHatch *hatch,
+        double y0
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();
