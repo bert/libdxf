@@ -739,6 +739,11 @@ dxf_hatch_set_dictionary_owner_hard
         DxfHatch *hatch,
         char *dictionary_owner_hard
 );
+char *
+dxf_hatch_get_pattern_name
+(
+        DxfHatch *hatch
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();
