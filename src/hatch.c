@@ -1698,6 +1698,37 @@ dxf_hatch_get_pattern_scale
 }
 
 
+/*!
+ * \brief Set the pattern scale for a DXF \c HATCH.
+ */
+DxfHatch *
+dxf_hatch_set_pattern_scale
+(
+        DxfHatch *hatch,
+                /*!< a pointer to a DXF \c HATCH. */
+        double pattern_scale
+                /*!< the pattern scale to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->pattern_scale = pattern_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 

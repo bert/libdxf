@@ -788,6 +788,12 @@ dxf_hatch_get_pattern_scale
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_pattern_scale
+(
+        DxfHatch *hatch,
+        double pattern_scale
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();
