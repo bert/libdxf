@@ -783,6 +783,11 @@ dxf_hatch_set_z0
         DxfHatch *hatch,
         double z0
 );
+double
+dxf_hatch_get_pattern_scale
+(
+        DxfHatch *hatch
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();
