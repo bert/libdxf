@@ -1604,7 +1604,7 @@ dxf_hatch_set_y0
 /*!
  * \brief Get the base point Z-value from a DXF \c HATCH.
  *
- * \return base point Z
+ * \return base point Z-value.
  */
 double
 dxf_hatch_get_z0
