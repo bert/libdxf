@@ -777,6 +777,12 @@ dxf_hatch_get_z0
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_z0
+(
+        DxfHatch *hatch,
+        double z0
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();

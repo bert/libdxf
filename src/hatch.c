@@ -1634,6 +1634,37 @@ dxf_hatch_get_z0
 }
 
 
+/*!
+ * \brief Set the base point Z-value for a DXF \c HATCH.
+ */
+DxfHatch *
+dxf_hatch_set_z0
+(
+        DxfHatch *hatch,
+                /*!< a pointer to a DXF \c HATCH. */
+        double z0
+                /*!< the base point Z-value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->z0 = z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 
