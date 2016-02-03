@@ -810,6 +810,12 @@ dxf_hatch_get_pattern_angle
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_pattern_angle
+(
+        DxfHatch *hatch,
+        double pattern_angle
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();
