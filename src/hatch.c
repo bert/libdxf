@@ -1793,6 +1793,39 @@ dxf_hatch_set_pixel_size
 }
 
 
+/*!
+ * \brief Get the pattern angle from a DXF \c HATCH.
+ *
+ * \return pattern angle.
+ */
+double
+dxf_hatch_get_pattern_angle
+(
+        DxfHatch *hatch
+                /*!< a pointer to a DXF \c HATCH. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = hatch->pattern_angle;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 
