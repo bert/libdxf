@@ -1729,6 +1729,39 @@ dxf_hatch_set_pattern_scale
 }
 
 
+/*!
+ * \brief Get the pixel size from a DXF \c HATCH.
+ *
+ * \return pixel size.
+ */
+double
+dxf_hatch_get_pixel_size
+(
+        DxfHatch *hatch
+                /*!< a pointer to a DXF \c HATCH. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = hatch->pixel_size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 
