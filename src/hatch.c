@@ -9664,7 +9664,7 @@ dxf_hatch_boundary_path_edge_line_get_end_point
           && (line->y0 == line->y1))
         {
                 fprintf (stderr,
-                  (_("Error in %s () a 3DLINE with points with identical coordinates were passed.\n")),
+                  (_("Error in %s () a line with endpoints with identical coordinates was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
