@@ -1762,6 +1762,37 @@ dxf_hatch_get_pixel_size
 }
 
 
+/*!
+ * \brief Set the pixel size for a DXF \c HATCH.
+ */
+DxfHatch *
+dxf_hatch_set_pixel_size
+(
+        DxfHatch *hatch,
+                /*!< a pointer to a DXF \c HATCH. */
+        double pixel_size
+                /*!< the pixel size to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->pixel_size = pixel_size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 
