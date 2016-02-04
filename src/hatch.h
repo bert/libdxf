@@ -827,6 +827,11 @@ dxf_hatch_set_solid_fill
         DxfHatch *hatch,
         int solid_fill
 );
+int
+dxf_hatch_get_associative
+(
+        DxfHatch *hatch
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();

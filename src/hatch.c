@@ -1949,6 +1949,53 @@ dxf_hatch_set_solid_fill
 }
 
 
+/*!
+ * \brief Get the associative flag value from a DXF \c HATCH.
+ *
+ * \return associative flag value.
+ */
+int
+dxf_hatch_get_associative
+(
+        DxfHatch *hatch
+                /*!< a pointer to a DXF \c HATCH. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (hatch->associative < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the associative member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (hatch->associative > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the associative member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = hatch->associative;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 
