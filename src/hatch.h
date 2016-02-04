@@ -838,6 +838,11 @@ dxf_hatch_set_associative
         DxfHatch *hatch,
         int associative
 );
+int
+dxf_hatch_get_hatch_style
+(
+        DxfHatch *hatch
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();
