@@ -1857,6 +1857,53 @@ dxf_hatch_set_pattern_angle
 }
 
 
+/*!
+ * \brief Get the solid fill flag value from a DXF \c HATCH.
+ *
+ * \return solid fill flag value.
+ */
+int
+dxf_hatch_get_solid_fill
+(
+        DxfHatch *hatch
+                /*!< a pointer to a DXF \c HATCH. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (hatch->solid_fill < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the solid_fill member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (hatch->solid_fill > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the solid_fill member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = hatch->solid_fill;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 
