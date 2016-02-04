@@ -1996,6 +1996,51 @@ dxf_hatch_get_associative
 }
 
 
+/*!
+ * \brief Set the associative flag value for a DXF \c HATCH.
+ */
+DxfHatch *
+dxf_hatch_set_associative
+(
+        DxfHatch *hatch,
+                /*!< a pointer to a DXF \c HATCH pattern. */
+        int associative
+                /*!< the associative flag value for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (associative < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative associative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (associative > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range associative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->associative = associative;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 
