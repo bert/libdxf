@@ -821,6 +821,12 @@ dxf_hatch_get_solid_fill
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_solid_fill
+(
+        DxfHatch *hatch,
+        int solid_fill
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();
