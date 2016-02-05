@@ -849,6 +849,11 @@ dxf_hatch_set_hatch_style
         DxfHatch *hatch,
         int hatch_style
 );
+int
+dxf_hatch_get_hatch_pattern_type
+(
+        DxfHatch *hatch
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();

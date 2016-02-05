@@ -2133,6 +2133,53 @@ dxf_hatch_set_hatch_style
 }
 
 
+/*!
+ * \brief Get the hatch_pattern_type flag value from a DXF \c HATCH.
+ *
+ * \return hatch_pattern_type flag value.
+ */
+int
+dxf_hatch_get_hatch_pattern_type
+(
+        DxfHatch *hatch
+                /*!< a pointer to a DXF \c HATCH. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (hatch->hatch_pattern_type < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the hatch_pattern_type member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (hatch->hatch_pattern_type > 2)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the hatch_pattern_type member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = hatch->hatch_pattern_type;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 
