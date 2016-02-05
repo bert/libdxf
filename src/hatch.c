@@ -2272,6 +2272,51 @@ dxf_hatch_get_pattern_double
 }
 
 
+/*!
+ * \brief Set the pattern_double flag value for a DXF \c HATCH.
+ */
+DxfHatch *
+dxf_hatch_set_pattern_double
+(
+        DxfHatch *hatch,
+                /*!< a pointer to a DXF \c HATCH pattern. */
+        int pattern_double
+                /*!< the pattern_double flag value for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (pattern_double < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative pattern_double value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (pattern_double > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range pattern_double value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->pattern_double = pattern_double;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 

@@ -865,6 +865,12 @@ dxf_hatch_get_pattern_double
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_pattern_double
+(
+        DxfHatch *hatch,
+        int pattern_double
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();
