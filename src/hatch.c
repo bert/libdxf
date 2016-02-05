@@ -2350,6 +2350,37 @@ dxf_hatch_get_extr_x0
 }
 
 
+/*!
+ * \brief Set the X-value of the extrusion direction for a DXF \c HATCH.
+ */
+DxfHatch *
+dxf_hatch_set_extr_x0
+(
+        DxfHatch *hatch,
+                /*!< a pointer to a DXF \c HATCH. */
+        double extr_x0
+                /*!< the X-value of the extrusion direction to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->extr_x0 = extr_x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 
