@@ -2509,6 +2509,48 @@ dxf_hatch_set_extr_z0
 }
 
 
+/*!
+ * \brief Get the boundary path from a DXF \c HATCH.
+ *
+ * \return pointer to the \c HATCH boundary path.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchBoundaryPath *
+dxf_hatch_get_boundary_path
+(
+        DxfHatch *hatch
+                /*!< a pointer to a DXF \c HATCH. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchBoundaryPath *result;
+
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (hatch->paths == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the paths member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHatchBoundaryPath *) hatch->paths;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 
