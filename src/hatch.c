@@ -2381,6 +2381,39 @@ dxf_hatch_set_extr_x0
 }
 
 
+/*!
+ * \brief Get the Y-value of the extrusion direction from a DXF \c HATCH.
+ *
+ * \return Y-value.
+ */
+double
+dxf_hatch_get_extr_y0
+(
+        DxfHatch *hatch
+                /*!< a pointer to a DXF \c HATCH. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = hatch->extr_y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 
