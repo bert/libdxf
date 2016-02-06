@@ -905,7 +905,7 @@ dxf_hatch_set_extr_z0
         double extr_z0
 );
 DxfHatchBoundaryPath *
-dxf_hatch_get_boundary_path
+dxf_hatch_get_boundary_paths
 (
         DxfHatch *hatch
 );

@@ -2510,14 +2510,14 @@ dxf_hatch_set_extr_z0
 
 
 /*!
- * \brief Get the boundary path from a DXF \c HATCH.
+ * \brief Get the first boundary path from a DXF \c HATCH.
  *
- * \return pointer to the \c HATCH boundary path.
+ * \return pointer to the first boundary path.
  *
  * \warning No checks are performed on the returned pointer.
  */
 DxfHatchBoundaryPath *
-dxf_hatch_get_boundary_path
+dxf_hatch_get_boundary_paths
 (
         DxfHatch *hatch
                 /*!< a pointer to a DXF \c HATCH. */
