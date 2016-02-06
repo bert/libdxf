@@ -2551,6 +2551,44 @@ dxf_hatch_get_boundary_path
 }
 
 
+/*!
+ * \brief Set the first boundary path for a DXF \c HATCH.
+ */
+DxfHatch *
+dxf_hatch_set_boundary_paths
+(
+        DxfHatch *hatch,
+                /*!< a pointer to a DXF \c HATCH. */
+        DxfHatchBoundaryPath *paths
+                /*!< the first boundary path to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paths == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        hatch->paths = (struct DxfHatchBoundaryPath *) paths;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (hatch);
+}
+
+
 /* dxf_hatch_binary_graphics_data functions. */
 
 
