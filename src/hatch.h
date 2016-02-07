@@ -919,6 +919,11 @@ dxf_hatch_set_boundary_paths
         DxfHatch *hatch,
         DxfHatchBoundaryPath *paths
 );
+DxfHatchPattern *
+dxf_hatch_get_patterns
+(
+        DxfHatch *hatch
+);
 DxfHatch *
 dxf_hatch_get_next
 (

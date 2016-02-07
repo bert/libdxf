@@ -2592,6 +2592,48 @@ dxf_hatch_set_boundary_paths
 
 
 /*!
+ * \brief Get the first pattern from a DXF \c HATCH.
+ *
+ * \return pointer to the first pattern.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchPattern *
+dxf_hatch_get_patterns
+(
+        DxfHatch *hatch
+                /*!< a pointer to a DXF \c HATCH. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchPattern *result;
+
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (hatch->patterns == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the patterns member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHatchPattern *) hatch->patterns;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c HATCH entity from a DXF 
  * \c HATCH entity.
  *
