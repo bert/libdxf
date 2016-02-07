@@ -919,6 +919,11 @@ dxf_hatch_set_boundary_paths
         DxfHatch *hatch,
         DxfHatchBoundaryPath *paths
 );
+DxfHatch *
+dxf_hatch_get_next
+(
+        DxfHatch *hatch
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();
