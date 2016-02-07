@@ -924,6 +924,12 @@ dxf_hatch_get_next
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_next
+(
+        DxfHatch *hatch,
+        DxfHatch *next
+);
 /* dxf_hatch_binary_graphics_data functions. */
 DxfHatchBinaryGraphicsData *
 dxf_hatch_binary_graphics_data_new ();
