@@ -138,6 +138,7 @@ dxf_hatch_init
         hatch->seed_points = NULL;
         hatch->graphics_data_size = 0;
         hatch->binary_graphics_data = NULL;
+        hatch->patterns = NULL;
         hatch->dictionary_owner_soft = strdup ("");
         hatch->dictionary_owner_hard = strdup ("");
         hatch->next = NULL;
@@ -378,6 +379,7 @@ dxf_hatch_free
         free (hatch->paths);
         free (hatch->seed_points);
         dxf_hatch_binary_graphics_data_free_chain ((DxfHatchBinaryGraphicsData *) hatch->binary_graphics_data);
+        dxf_hatch_pattern_free_chain ((DxfHatchPattern *) hatch->patterns);
         free (hatch->dictionary_owner_soft);
         free (hatch->dictionary_owner_hard);
         free (hatch);

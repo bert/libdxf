@@ -571,6 +571,10 @@ dxf_hatch
                 /*!< Pointer to the first DxfHatchBoundaryPath.\n
                  * \c NULL if there is no DxfHatchBoundaryPath in the
                  * DxfHatch. */
+        struct DxfHatchPattern *patterns;
+                /*!< Pointer to the first DxfHatchPattern.\n
+                 * \c NULL if there is no DxfHatchPattern in the
+                 * DxfHatch. */
         struct DxfHatchPatternDefLine *def_lines;
                 /*!< Pointer to the first DxfHatchPatternDefLine.\n
                  * \c NULL if there is no DxfHatchPatternDefLine in the
