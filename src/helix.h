@@ -1,7 +1,7 @@
 /*!
  * \file helix.h
  *
- * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF helix entity (\c HELIX).
  *
@@ -243,6 +243,11 @@ void
 dxf_helix_free_chain
 (
         DxfHelix *helices
+);
+int
+dxf_helix_get_id_code
+(
+        DxfHelix *helix
 );
 
 

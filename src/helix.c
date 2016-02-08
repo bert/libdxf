@@ -1,7 +1,7 @@
 /*!
  * \file helix.c
  *
- * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF helix entity (\c HELIX).
  *
@@ -899,6 +899,46 @@ dxf_helix_free_chain
 #if DEBUG
         DXF_DEBUG_END
 #endif
+}
+
+
+/*!
+ * \brief Get the ID code from a DXF \c HELIX.
+ *
+ * \return ID code.
+ */
+int
+dxf_helix_get_id_code
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (helix->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the id_code member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = helix->id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
 }
 
 
