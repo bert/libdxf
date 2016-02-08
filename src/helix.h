@@ -249,6 +249,12 @@ dxf_helix_get_id_code
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_id_code
+(
+        DxfHelix *helix,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
