@@ -165,7 +165,9 @@ dxf_hatch_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("HATCH");
-        DxfHatchBinaryGraphicsData *data;
+        DxfHatchBinaryGraphicsData *data = NULL;
+        DxfHatchPatternDefLine *line = NULL;
+        DxfHatchPatternSeedPoint *point = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -312,7 +314,6 @@ dxf_hatch_write
                 fprintf (fp->fp, " 77\n%d\n", hatch->pattern_double);
         }
         fprintf (fp->fp, " 78\n%d\n", hatch->number_of_pattern_def_lines);
-        DxfHatchPatternDefLine *line = NULL;
         line = (DxfHatchPatternDefLine *) hatch->def_lines;
         while (line != NULL)
         {
@@ -321,7 +322,6 @@ dxf_hatch_write
         }
         fprintf (fp->fp, " 47\n%f\n", hatch->pixel_size);
         fprintf (fp->fp, " 98\n%d\n", hatch->number_of_seed_points);
-        DxfHatchPatternSeedPoint *point = NULL;
         point = (DxfHatchPatternSeedPoint *) hatch->seed_points;
         while (point != NULL)
         {
