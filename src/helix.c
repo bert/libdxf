@@ -982,4 +982,44 @@ dxf_helix_set_id_code
 }
 
 
+/*!
+ * \brief Get the linetype from a DXF \c HHELIX entity.
+ *
+ * \return linetype when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_helix_get_linetype
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (helix->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the linetype member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (helix->linetype);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

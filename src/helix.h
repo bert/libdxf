@@ -255,6 +255,11 @@ dxf_helix_set_id_code
         DxfHelix *helix,
         int id_code
 );
+char *
+dxf_helix_get_linetype
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
