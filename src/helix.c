@@ -1163,6 +1163,12 @@ dxf_helix_get_thickness
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (helix->thickness < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the thickness member.\n")),
+                  __FUNCTION__);
+        }
         result = helix->thickness;
 #if DEBUG
         DXF_DEBUG_END
