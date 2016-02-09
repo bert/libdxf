@@ -266,6 +266,11 @@ dxf_helix_set_linetype
         DxfHelix *helix,
         char *linetype
 );
+char *
+dxf_helix_get_layer
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
