@@ -282,6 +282,12 @@ dxf_helix_get_thickness
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_thickness
+(
+        DxfHelix *helix,
+        double thickness
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */

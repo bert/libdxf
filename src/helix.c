@@ -1171,4 +1171,41 @@ dxf_helix_get_thickness
 }
 
 
+/*!
+ * \brief Set the thickness for a DXF \c HELIX entity.
+ */
+DxfHelix *
+dxf_helix_set_thickness
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX entity. */
+        double thickness
+                /*!< the thickness to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (thickness < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative thickness value was passed.\n")),
+                  __FUNCTION__);
+        }
+        helix->thickness = thickness;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/
