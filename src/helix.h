@@ -271,6 +271,12 @@ dxf_helix_get_layer
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_layer
+(
+        DxfHelix *helix,
+        char *layer
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
