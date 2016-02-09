@@ -288,6 +288,11 @@ dxf_helix_set_thickness
         DxfHelix *helix,
         double thickness
 );
+double
+dxf_helix_get_linetype_scale
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
