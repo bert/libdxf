@@ -304,6 +304,12 @@ dxf_helix_get_visibility
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_visibility
+(
+        DxfHelix *helix,
+        int16_t visibility
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
