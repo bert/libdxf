@@ -315,6 +315,12 @@ dxf_helix_get_color
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_color
+(
+        DxfHelix *helix,
+        int color
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
