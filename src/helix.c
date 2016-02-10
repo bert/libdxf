@@ -1254,4 +1254,42 @@ dxf_helix_get_linetype_scale
 }
 
 
+/*!
+ * \brief Set the linetype scale for a DXF \c HELIX entity.
+ */
+DxfHelix *
+dxf_helix_set_linetype_scale
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX entity. */
+        double linetype_scale
+                /*!< the linetype scale to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative linetype scale value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->linetype_scale = linetype_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/
