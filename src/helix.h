@@ -310,6 +310,11 @@ dxf_helix_set_visibility
         DxfHelix *helix,
         int16_t visibility
 );
+int
+dxf_helix_get_color
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */

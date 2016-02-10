@@ -1384,4 +1384,43 @@ dxf_helix_set_visibility
 }
 
 
+/*!
+ * \brief Get the color from a DXF \c HELIX entity.
+ *
+ * \return color.
+ */
+int
+dxf_helix_get_color
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (helix->color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the color member.\n")),
+                  __FUNCTION__);
+        }
+        result = helix->color;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
