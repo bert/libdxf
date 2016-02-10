@@ -299,6 +299,11 @@ dxf_helix_set_linetype_scale
         DxfHelix *helix,
         double linetype_scale
 );
+int16_t
+dxf_helix_get_visibility
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
