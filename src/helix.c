@@ -1462,4 +1462,49 @@ dxf_helix_set_color
 }
 
 
+/*!
+ * \brief Get the paperspace flag value from a DXF \c HELIX entity.
+ *
+ * \return paperspace flag value.
+ */
+int
+dxf_helix_get_paperspace
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (helix->paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the paperspace member.\n")),
+                  __FUNCTION__);
+        }
+        if (helix->paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
+                  __FUNCTION__);
+        }
+        result = helix->paperspace;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

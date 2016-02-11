@@ -321,6 +321,11 @@ dxf_helix_set_color
         DxfHelix *helix,
         int color
 );
+int
+dxf_helix_get_paperspace
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
