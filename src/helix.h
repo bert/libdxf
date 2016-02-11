@@ -332,6 +332,11 @@ dxf_helix_set_paperspace
         DxfHelix *helix,
         int paperspace
 );
+int
+dxf_helix_get_graphics_data_size
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
