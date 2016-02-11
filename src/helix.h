@@ -343,6 +343,11 @@ dxf_helix_set_graphics_data_size
         DxfHelix *helix,
         int graphics_data_size
 );
+int16_t
+dxf_helix_get_shadow_mode
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */

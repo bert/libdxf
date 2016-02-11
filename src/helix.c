@@ -1643,4 +1643,51 @@ dxf_helix_set_graphics_data_size
 }
 
 
+/*!
+ * \brief Get the shadow mode from a DXF \c HELIX entity.
+ *
+ * \return shadow mode.
+ */
+int16_t
+dxf_helix_get_shadow_mode
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int16_t result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (helix->shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the shadow_mode member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (helix->shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the shadow_mode member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = helix->shadow_mode;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
