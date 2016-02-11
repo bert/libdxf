@@ -1507,4 +1507,49 @@ dxf_helix_get_paperspace
 }
 
 
+/*!
+ * \brief Set the paperspace flag for a DXF \c HELIX entity.
+ */
+DxfHelix *
+dxf_helix_set_paperspace
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX entity. */
+        int paperspace
+                /*!< the paperspace flag value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative paperspace value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range paperspace value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->paperspace = paperspace;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/

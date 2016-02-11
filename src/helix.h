@@ -326,6 +326,12 @@ dxf_helix_get_paperspace
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_paperspace
+(
+        DxfHelix *helix,
+        int paperspace
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
