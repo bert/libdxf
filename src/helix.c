@@ -1597,4 +1597,50 @@ dxf_helix_get_graphics_data_size
 }
 
 
+/*!
+ * \brief Set the graphics data size value for a DXF \c HELIX entity.
+ */
+DxfHelix *
+dxf_helix_set_graphics_data_size
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX entity. */
+        int graphics_data_size
+                /*!< the graphics data size value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative graphics_data_size value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a zero graphics_data_size value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->graphics_data_size = graphics_data_size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/

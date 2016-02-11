@@ -337,6 +337,12 @@ dxf_helix_get_graphics_data_size
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_graphics_data_size
+(
+        DxfHelix *helix,
+        int graphics_data_size
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
