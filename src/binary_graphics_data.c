@@ -225,4 +225,47 @@ dxf_binary_graphics_data_set_data_line
 }
 
 
+/*!
+ * \brief Get the pointer to the next binary graphics data entity from a
+ * binary graphics data entity.
+ *
+ * \return pointer to the next binary graphics data entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryGraphicsData *
+dxf_binary_graphics_data_get_next
+(
+        DxfBinaryGraphicsData *data
+                /*!< a pointer to a binary graphics data entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfBinaryGraphicsData *result;
+
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfBinaryGraphicsData *) data->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

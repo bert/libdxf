@@ -79,6 +79,11 @@ dxf_binary_graphics_data_set_data_line
         DxfBinaryGraphicsData *data,
         char *data_line
 );
+DxfBinaryGraphicsData *
+dxf_binary_graphics_data_get_next
+(
+        DxfBinaryGraphicsData *data
+);
 
 
 #endif /* LIBDXF_SRC_BINARY_GRAPHICS_DATA_H */
