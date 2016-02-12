@@ -289,9 +289,8 @@ dxf_hatch_write
         data = (DxfBinaryGraphicsData *) hatch->binary_graphics_data;
         while (data != NULL)
         {
-                struct DxfBinaryGraphicsData *iter = (struct DxfBinaryGraphicsData *) data->next;
                 fprintf (fp->fp, "310\n%s\n", data->data_line);
-                data = (DxfBinaryGraphicsData *) iter;
+                data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (data);
         }
         fprintf (fp->fp, "100\nAcDbHatch\n");
         fprintf (fp->fp, " 10\n%f\n", hatch->x0);
