@@ -268,4 +268,44 @@ dxf_binary_graphics_data_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next binary graphics data for a binary
+ * graphics data entity.
+ */
+DxfBinaryGraphicsData *
+dxf_binary_graphics_data_set_next
+(
+        DxfBinaryGraphicsData *data,
+                /*!< a pointer to a binary graphics data entity. */
+        DxfBinaryGraphicsData *next
+                /*!< a pointer to the next binary graphics data for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->next = (struct DxfBinaryGraphicsData *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF */
