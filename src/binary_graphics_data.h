@@ -56,6 +56,31 @@ dxf_binary_graphics_data
 } DxfBinaryGraphicsData;
 
 
+DxfBinaryGraphicsData *
+dxf_binary_graphics_data_new ();
+int
+dxf_binary_graphics_data_free
+(
+        DxfBinaryGraphicsData *data
+);
+void
+dxf_binary_graphics_data_free_chain
+(
+        DxfBinaryGraphicsData *data
+);
+char *
+dxf_binary_graphics_data_get_data_line
+(
+        DxfBinaryGraphicsData *data
+);
+DxfBinaryGraphicsData *
+dxf_binary_graphics_data_set_data_line
+(
+        DxfBinaryGraphicsData *data,
+        char *data_line
+);
+
+
 #endif /* LIBDXF_SRC_BINARY_GRAPHICS_DATA_H */
 
 

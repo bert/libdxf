@@ -145,6 +145,7 @@ libdxf_la_SOURCES = \
   block.h \
   block.c \
   binary_graphics_data.h \
+  binary_graphics_data.c \
   attrib.h \
   attrib.c \
   attdef.h \

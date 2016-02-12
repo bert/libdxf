@@ -44,6 +44,7 @@
 
 #include "global.h"
 #include "point.h"
+#include "binary_graphics_data.h"
 
 
 #define DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS 16
@@ -421,23 +422,6 @@ dxf_hatch_pattern
 
 
 /*!
- * \brief DXF definition of an AutoCAD hatch binary graphics data.
- */
-typedef struct
-dxf_hatch_binary_graphics_data
-{
-        char *data_line;
-                /*!< Proxy entity graphics data.\n
-                 * Multiple lines of 256 characters maximum per line
-                 * (optional).\n
-                 * Group code = 310. */
-        struct DxfHatchBinaryGraphicsData *next;
-                /*!< Pointer to the next DxfHatchBinaryGraphicsData.\n
-                 * \c NULL if the last DxfHatchBinaryGraphicsData. */
-} DxfHatchBinaryGraphicsData;
-
-
-/*!
  * \brief DXF definition of an AutoCAD hatch entity.
  */
 typedef struct
@@ -492,7 +476,7 @@ dxf_hatch
                 /*!< The number of bytes in the image (and subsequent
                  * binary chunk records) (optional).\n
                  * Group code = 92. */
-        struct DxfHatchBinaryGraphicsData *binary_graphics_data;
+        struct DxfBinaryGraphicsData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
@@ -940,30 +924,6 @@ dxf_hatch_set_next
 (
         DxfHatch *hatch,
         DxfHatch *next
-);
-/* dxf_hatch_binary_graphics_data functions. */
-DxfHatchBinaryGraphicsData *
-dxf_hatch_binary_graphics_data_new ();
-int
-dxf_hatch_binary_graphics_data_free
-(
-        DxfHatchBinaryGraphicsData *data
-);
-void
-dxf_hatch_binary_graphics_data_free_chain
-(
-        DxfHatchBinaryGraphicsData *data
-);
-char *
-dxf_hatch_binary_graphics_data_get_data_line
-(
-        DxfHatchBinaryGraphicsData *data
-);
-DxfHatchBinaryGraphicsData *
-dxf_hatch_binary_graphics_data_set_data_line
-(
-        DxfHatchBinaryGraphicsData *data,
-        char *data_line
 );
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *

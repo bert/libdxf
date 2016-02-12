@@ -165,7 +165,7 @@ dxf_hatch_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("HATCH");
-        DxfHatchBinaryGraphicsData *data = NULL;
+        DxfBinaryGraphicsData *data = NULL;
         DxfHatchPatternDefLine *line = NULL;
         DxfHatchPatternSeedPoint *point = NULL;
 
@@ -286,12 +286,12 @@ dxf_hatch_write
         {
                 fprintf (fp->fp, " 92\n%d\n", hatch->graphics_data_size);
         }
-        data = (DxfHatchBinaryGraphicsData *) hatch->binary_graphics_data;
+        data = (DxfBinaryGraphicsData *) hatch->binary_graphics_data;
         while (data != NULL)
         {
-                struct DxfHatchBinaryGraphicsData *iter = (struct DxfHatchBinaryGraphicsData *) data->next;
+                struct DxfBinaryGraphicsData *iter = (struct DxfBinaryGraphicsData *) data->next;
                 fprintf (fp->fp, "310\n%s\n", data->data_line);
-                data = (DxfHatchBinaryGraphicsData *) iter;
+                data = (DxfBinaryGraphicsData *) iter;
         }
         fprintf (fp->fp, "100\nAcDbHatch\n");
         fprintf (fp->fp, " 10\n%f\n", hatch->x0);
@@ -378,7 +378,7 @@ dxf_hatch_free
         free (hatch->def_lines);
         free (hatch->paths);
         free (hatch->seed_points);
-        dxf_hatch_binary_graphics_data_free_chain ((DxfHatchBinaryGraphicsData *) hatch->binary_graphics_data);
+        dxf_binary_graphics_data_free_chain ((DxfBinaryGraphicsData *) hatch->binary_graphics_data);
         dxf_hatch_pattern_free_chain ((DxfHatchPattern *) hatch->patterns);
         free (hatch->dictionary_owner_soft);
         free (hatch->dictionary_owner_hard);
@@ -2748,203 +2748,6 @@ dxf_hatch_set_next
         DXF_DEBUG_END
 #endif
         return (hatch);
-}
-
-
-/* dxf_hatch_binary_graphics_data functions. */
-
-
-/*!
- * \brief Allocate memory for a DXF \c HATCH binary graphics data.
- *
- * Fill the memory contents with zeros.
- */
-DxfHatchBinaryGraphicsData *
-dxf_hatch_binary_graphics_data_new ()
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        DxfHatchBinaryGraphicsData *data = NULL;
-        size_t size;
-
-        size = sizeof (DxfHatchBinaryGraphicsData);
-        /* avoid malloc of 0 bytes */
-        if (size == 0) size = 1;
-        if ((data = malloc (size)) == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchBinaryGraphicsData struct.\n")),
-                  __FUNCTION__);
-                data = NULL;
-        }
-        else
-        {
-                memset (data, 0, size);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (data);
-}
-
-
-/*!
- * \brief Free the allocated memory for a DXF \c HATCH binary graphics
- * data and all it's data fields.
- *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
- */
-int
-dxf_hatch_binary_graphics_data_free
-(
-        DxfHatchBinaryGraphicsData *data
-                /*!< Pointer to the memory occupied by the DXF \c HATCH
-                 * binary graphics data entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (data->next != NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfHatch was not NULL.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        free (data->data_line);
-        free (data);
-        data = NULL;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
-}
-
-
-/*!
- * \brief Free the allocated memory for a chain of DXF \c HATCH binary
- * graphics data entities and all their data fields.
- */
-void
-dxf_hatch_binary_graphics_data_free_chain
-(
-        DxfHatchBinaryGraphicsData *data
-                /*!< pointer to the chain of DXF \c HATCH binary
-                 * graphics data entities. */
-)
-{
-#ifdef DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-        }
-        while (data != NULL)
-        {
-                struct DxfHatchBinaryGraphicsData *iter = data->next;
-                dxf_hatch_binary_graphics_data_free (data);
-                data = (DxfHatchBinaryGraphicsData *) iter;
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-}
-
-
-/*!
- * \brief Get the data_line from a DXF \c HATCH binary graphics data
- * entity.
- *
- * \return data_line when sucessful, \c NULL when an error occurred.
- */
-char *
-dxf_hatch_binary_graphics_data_get_data_line
-(
-        DxfHatchBinaryGraphicsData *data
-                /*!< a pointer to a DXF \c HATCH binary graphics data
-                 * entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        char *result = NULL;
-
-        /* Do some basic checks. */
-        if (data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (data->data_line ==  NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the data_line member.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        result = strdup (data->data_line);
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (result);
-}
-
-
-/*!
- * \brief Set the data_line for a DXF \c HATCH binary graphics data
- * entity.
- */
-DxfHatchBinaryGraphicsData *
-dxf_hatch_binary_graphics_data_set_data_line
-(
-        DxfHatchBinaryGraphicsData *data,
-                /*!< a pointer to a DXF \c HATCH binary graphics data
-                 * entity. */
-        char *data_line
-                /*!< a string containing the data_line for the entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (data_line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        data->data_line = strdup (data_line);
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (data);
 }
 
 
