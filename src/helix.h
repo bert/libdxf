@@ -348,6 +348,12 @@ dxf_helix_get_shadow_mode
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_shadow_mode
+(
+        DxfHelix *helix,
+        int16_t shadow_mode
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
