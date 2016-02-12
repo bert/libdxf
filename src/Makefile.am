@@ -138,12 +138,13 @@ libdxf_la_SOURCES = \
   class.c \
   circle.h \
   circle.c \
+  body.h \
+  body.c \
   block_record.h \
   block_record.c \
   block.h \
   block.c \
-  body.h \
-  body.c \
+  binary_graphics_data.h \
   attrib.h \
   attrib.c \
   attdef.h \
