@@ -38,6 +38,7 @@
 
 #include "global.h"
 #include "spline.h"
+#include "binary_graphics_data.h"
 
 
 /*!
@@ -101,7 +102,7 @@ dxf_helix
                  * <li value = "2"> Receives shadows.</li>
                  * <li value = "3"> Ignores shadows.</li>
                  * </ol> */
-        char *binary_graphics_data[DXF_MAX_PARAM];
+        struct DxfBinaryGraphicsData *binary_graphics_data;
                 /*!< group code = 310\n
                  * Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line

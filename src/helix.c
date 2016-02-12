@@ -92,8 +92,6 @@ dxf_helix_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -135,10 +133,7 @@ dxf_helix_init
         helix->constraint_type = 0;
         helix->shadow_mode = 0;
         helix->handedness = 0;
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                helix->binary_graphics_data[i] = strdup ("");
-        }
+        helix->binary_graphics_data = NULL;
         helix->dictionary_owner_hard = strdup ("");
         helix->material = strdup ("");
         helix->dictionary_owner_soft = strdup ("");
@@ -532,8 +527,10 @@ dxf_helix_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", helix->binary_graphics_data[i]);
-                        i++;
+                        /*! \todo parse binary graphics data. */
+/*
+                        fscanf (fp->fp, "%s\n", helix->binary_graphics_data);
+ */
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -642,6 +639,7 @@ dxf_helix_write
 #endif
         char *dxf_entity_name = strdup ("HELIX");
         int i;
+        DxfBinaryGraphicsData *data = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -734,11 +732,11 @@ dxf_helix_write
                 fprintf (fp->fp, " 60\n%d\n", helix->visibility);
         }
         fprintf (fp->fp, " 92\n%d\n", helix->graphics_data_size);
-        i = 0;
-        while (strlen (helix->binary_graphics_data[i]) > 0)
+        data = (DxfBinaryGraphicsData *) helix->binary_graphics_data;
+        while (data != NULL)
         {
-                fprintf (fp->fp, "310\n%s\n", helix->binary_graphics_data[i]);
-                i++;
+                fprintf (fp->fp, "310\n%s\n", data->data_line);
+                data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (data);
         }
         fprintf (fp->fp, "370\n%d\n", helix->lineweight);
         fprintf (fp->fp, "420\n%ld\n", helix->color_value);
@@ -834,8 +832,6 @@ dxf_helix_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         if (helix->next != NULL)
         {
               fprintf (stderr,
@@ -845,10 +841,7 @@ dxf_helix_free
         }
         free (helix->linetype);
         free (helix->layer);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (helix->binary_graphics_data[i]);
-        }
+        dxf_binary_graphics_data_free_chain ((DxfBinaryGraphicsData *) helix->binary_graphics_data);
         free (helix->dictionary_owner_hard);
         free (helix->material);
         free (helix->dictionary_owner_soft);
