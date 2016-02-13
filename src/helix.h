@@ -366,6 +366,11 @@ dxf_helix_set_dictionary_owner_soft
         DxfHelix *helix,
         char *dictionary_owner_soft
 );
+int16_t
+dxf_helix_get_lineweight
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
