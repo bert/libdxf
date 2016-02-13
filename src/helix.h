@@ -355,6 +355,11 @@ dxf_helix_set_shadow_mode
         DxfHelix *helix,
         int16_t shadow_mode
 );
+char *
+dxf_helix_get_dictionary_owner_soft
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
