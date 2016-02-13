@@ -2717,7 +2717,7 @@ dxf_hatch_get_patterns
  * \brief Set the first pattern for a DXF \c HATCH.
  */
 DxfHatch *
-dxf_hatch_set_paterns
+dxf_hatch_set_patterns
 (
         DxfHatch *hatch,
                 /*!< a pointer to a DXF \c HATCH. */

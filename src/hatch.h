@@ -920,7 +920,7 @@ dxf_hatch_get_patterns
         DxfHatch *hatch
 );
 DxfHatch *
-dxf_hatch_set_paterns
+dxf_hatch_set_patterns
 (
         DxfHatch *hatch,
         DxfHatchPattern *patterns
