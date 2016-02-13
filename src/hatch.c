@@ -1229,6 +1229,49 @@ dxf_hatch_set_graphics_data_size
 
 
 /*!
+ * \brief Get the pointer to the binary graphics data from a DXF 
+ * \c HATCH entity.
+ *
+ * \return pointer to the binary graphics data.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+DxfBinaryGraphicsData *
+dxf_hatch_get_binary_graphics_data
+(
+        DxfHatch *hatch
+                /*!< a pointer to a DXF \c HATCH entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfBinaryGraphicsData *result;
+
+        /* Do some basic checks. */
+        if (hatch == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (hatch->binary_graphics_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the binary_graphics_data member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfBinaryGraphicsData *) hatch->binary_graphics_data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c HATCH entity.
  *
