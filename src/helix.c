@@ -133,7 +133,7 @@ dxf_helix_init
         helix->constraint_type = 0;
         helix->shadow_mode = 0;
         helix->handedness = 0;
-        helix->binary_graphics_data = NULL;
+        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) helix->binary_graphics_data);
         helix->dictionary_owner_hard = strdup ("");
         helix->material = strdup ("");
         helix->dictionary_owner_soft = strdup ("");
