@@ -131,14 +131,14 @@ dxf_hatch_init
         hatch->hatch_pattern_type = 0;
         hatch->pattern_double = 0;
         hatch->number_of_pattern_def_lines = 0;
-        hatch->def_lines = NULL;
+        dxf_hatch_pattern_def_line_init ((DxfHatchPatternDefLine *) hatch->def_lines);
         hatch->number_of_boundary_paths = 0;
-        hatch->paths = NULL;
+        dxf_hatch_boundary_path_init ((DxfHatchBoundaryPath *) hatch->paths);
         hatch->number_of_seed_points = 0;
-        hatch->seed_points = NULL;
+        dxf_hatch_pattern_seedpoint_init ((DxfHatchPatternSeedPoint *) hatch->seed_points);
         hatch->graphics_data_size = 0;
         dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) hatch->binary_graphics_data);
-        hatch->patterns = NULL;
+        dxf_hatch_pattern_init ((DxfHatchPattern *) hatch->patterns);
         hatch->dictionary_owner_soft = strdup ("");
         hatch->dictionary_owner_hard = strdup ("");
         hatch->next = NULL;
