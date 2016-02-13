@@ -2822,9 +2822,9 @@ dxf_hatch_pattern_init
         }
         pattern->id_code = 0;
         pattern->number_of_def_lines = 0;
-        pattern->def_lines = NULL;
+        dxf_hatch_pattern_def_line_init ((DxfHatchPatternDefLine *) pattern->def_lines);
         pattern->number_of_seed_points = 0;
-        pattern->seed_points = NULL;
+        dxf_hatch_pattern_seedpoint_init ((DxfHatchPatternSeedPoint *) pattern->seed_points);
         pattern->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
