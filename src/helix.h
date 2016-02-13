@@ -360,6 +360,12 @@ dxf_helix_get_dictionary_owner_soft
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_dictionary_owner_soft
+(
+        DxfHelix *helix,
+        char *dictionary_owner_soft
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
