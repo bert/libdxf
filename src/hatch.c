@@ -137,7 +137,7 @@ dxf_hatch_init
         hatch->number_of_seed_points = 0;
         hatch->seed_points = NULL;
         hatch->graphics_data_size = 0;
-        hatch->binary_graphics_data = NULL;
+        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) hatch->binary_graphics_data);
         hatch->patterns = NULL;
         hatch->dictionary_owner_soft = strdup ("");
         hatch->dictionary_owner_hard = strdup ("");
