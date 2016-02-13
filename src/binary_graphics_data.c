@@ -112,6 +112,41 @@ dxf_binary_graphics_data_init
 
 
 /*!
+ * \brief Write DXF output to fp for a binary graphics data entity.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_binary_graphics_data_write
+(
+        DxfFile *fp,
+                /*!< file pointer to output file (or device). */
+        DxfBinaryGraphicsData *data
+                /*!< a pointer to the binary graphics data entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "310\n%s\n", data->data_line);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Free the allocated memory for a binary graphics data entity
  * and all it's data fields.
  *

@@ -64,6 +64,12 @@ dxf_binary_graphics_data_init
         DxfBinaryGraphicsData *data
 );
 int
+dxf_binary_graphics_data_write
+(
+        DxfFile *fp,
+        DxfBinaryGraphicsData *data
+);
+int
 dxf_binary_graphics_data_free
 (
         DxfBinaryGraphicsData *data
