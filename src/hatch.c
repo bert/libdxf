@@ -5129,8 +5129,8 @@ dxf_hatch_boundary_path_init
                 return (NULL);
         }
         path->id_code = 0;
-        path->edges = NULL;
-        path->polylines = NULL;
+        dxf_hatch_boundary_path_edge_init ((DxfHatchBoundaryPathEdge *) path->edges);
+        dxf_hatch_boundary_path_polyline_init ((DxfHatchBoundaryPathPolyline *) path->polylines);
         path->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
