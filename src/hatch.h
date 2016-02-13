@@ -710,6 +710,12 @@ dxf_hatch_get_binary_graphics_data
 (
         DxfHatch *hatch
 );
+DxfHatch *
+dxf_hatch_set_binary_graphics_data
+(
+        DxfHatch *hatch,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_hatch_get_dictionary_owner_soft
 (
