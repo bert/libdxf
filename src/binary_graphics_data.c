@@ -71,6 +71,47 @@ dxf_binary_graphics_data_new ()
 
 
 /*!
+ * \brief Allocate memory and initialize data fields in a binary
+ * graphics data entity.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfBinaryGraphicsData *
+dxf_binary_graphics_data_init
+(
+        DxfBinaryGraphicsData *data
+                /*!< a pointer to the binary graphics data entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                data = dxf_binary_graphics_data_new ();
+        }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfBinaryGraphicsData struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->data_line = strdup ("");
+        data->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
+/*!
  * \brief Free the allocated memory for a binary graphics data entity
  * and all it's data fields.
  *

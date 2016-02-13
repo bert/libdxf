@@ -58,6 +58,11 @@ dxf_binary_graphics_data
 
 DxfBinaryGraphicsData *
 dxf_binary_graphics_data_new ();
+DxfBinaryGraphicsData *
+dxf_binary_graphics_data_init
+(
+        DxfBinaryGraphicsData *data
+);
 int
 dxf_binary_graphics_data_free
 (
