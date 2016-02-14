@@ -410,6 +410,11 @@ dxf_helix_set_color_name
         DxfHelix *helix,
         char *color_name
 );
+long
+dxf_helix_get_transparency
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
