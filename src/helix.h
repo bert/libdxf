@@ -377,6 +377,11 @@ dxf_helix_set_lineweight
         DxfHelix *helix,
         int16_t lineweight
 );
+char *
+dxf_helix_get_plot_style_name
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */

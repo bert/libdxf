@@ -1875,4 +1875,45 @@ dxf_helix_set_lineweight
 }
 
 
+/*!
+ * \brief Get the plot_style_name from a DXF \c HELIX entity.
+ *
+ * \return plot_style_name when sucessful, \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_helix_get_plot_style_name
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (helix->plot_style_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (helix->plot_style_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
