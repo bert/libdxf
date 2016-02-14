@@ -382,6 +382,12 @@ dxf_helix_get_plot_style_name
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_plot_style_name
+(
+        DxfHelix *helix,
+        char *plot_style_name
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
