@@ -2060,4 +2060,42 @@ dxf_helix_get_color_name
 }
 
 
+/*!
+ * \brief Set the color_name for a DXF \c HELIX entity.
+ */
+DxfHelix *
+dxf_helix_set_color_name
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX entity. */
+        char *color_name
+                /*!< a string containing the color_name for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (color_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->color_name = strdup (color_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/
