@@ -2195,4 +2195,36 @@ dxf_helix_get_x0
 }
 
 
+/*!
+ * \brief Set the axis base point X-value for a DXF \c HELIX.
+ */
+DxfHelix *
+dxf_helix_set_x0
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX. */
+        double x0
+                /*!< the axis base point X-value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->x0 = x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/
