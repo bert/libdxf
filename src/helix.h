@@ -448,6 +448,12 @@ dxf_helix_get_z0
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_z0
+(
+        DxfHelix *helix,
+        double z0
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
