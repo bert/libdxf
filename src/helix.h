@@ -443,6 +443,11 @@ dxf_helix_set_y0
         DxfHelix *helix,
         double y0
 );
+double
+dxf_helix_get_z0
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */

@@ -2292,4 +2292,37 @@ dxf_helix_set_y0
 }
 
 
+/*!
+ * \brief Get the axis base point Z-value from a DXF \c HELIX.
+ *
+ * \return axis base point Z-value.
+ */
+double
+dxf_helix_get_z0
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = helix->z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
