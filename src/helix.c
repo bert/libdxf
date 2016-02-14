@@ -2019,4 +2019,45 @@ dxf_helix_set_color_value
 }
 
 
+/*!
+ * \brief Get the color_name from a DXF \c HELIX entity.
+ *
+ * \return color_name when sucessful, \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_helix_get_color_name
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (helix->color_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (helix->color_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
