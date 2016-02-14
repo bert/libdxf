@@ -1988,4 +1988,35 @@ dxf_helix_get_color_value
 }
 
 
+/*!
+ * \brief Set the color_value for a DXF \c HELIX entity.
+ */
+DxfHelix *
+dxf_helix_set_color_value
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX entity. */
+        long color_value
+                /*!< the color_value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->color_value = color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/
