@@ -415,6 +415,12 @@ dxf_helix_get_transparency
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_transparency
+(
+        DxfHelix *helix,
+        long transparency
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
