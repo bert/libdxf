@@ -1955,4 +1955,37 @@ dxf_helix_set_plot_style_name
 }
 
 
+/*!
+ * \brief Get the color_value from a DXF \c HELIX entity.
+ *
+ * \return color_value.
+ */
+long
+dxf_helix_get_color_value
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        long result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = helix->color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

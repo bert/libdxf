@@ -388,6 +388,11 @@ dxf_helix_set_plot_style_name
         DxfHelix *helix,
         char *plot_style_name
 );
+long
+dxf_helix_get_color_value
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
