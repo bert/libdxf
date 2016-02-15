@@ -520,6 +520,11 @@ dxf_helix_set_z2
         DxfHelix *helix,
         double z2
 );
+double
+dxf_helix_get_radius
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
