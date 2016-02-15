@@ -2712,4 +2712,36 @@ dxf_helix_get_z2
 }
 
 
+/*!
+ * \brief Set the axis vector point Z-value for a DXF \c HELIX.
+ */
+DxfHelix *
+dxf_helix_set_z2
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX. */
+        double z2
+                /*!< the axis vector point Z-value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->z2 = z2;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/
