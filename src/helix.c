@@ -2358,9 +2358,9 @@ dxf_helix_set_z0
 
 
 /*!
- * \brief Get the axis vector point X-value from a DXF \c HELIX.
+ * \brief Get the start point X-value from a DXF \c HELIX.
  *
- * \return axis vector point X-value.
+ * \return start point X-value.
  */
 double
 dxf_helix_get_x1
@@ -2391,7 +2391,7 @@ dxf_helix_get_x1
 
 
 /*!
- * \brief Set the axis vector point X-value for a DXF \c HELIX.
+ * \brief Set the start point X-value for a DXF \c HELIX.
  */
 DxfHelix *
 dxf_helix_set_x1
@@ -2399,8 +2399,7 @@ dxf_helix_set_x1
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double x1
-                /*!< the axis vector point X-value to be set for the
-                 * entity. */
+                /*!< the start point X-value to be set for the entity. */
 )
 {
 #if DEBUG
@@ -2423,9 +2422,9 @@ dxf_helix_set_x1
 
 
 /*!
- * \brief Get the axis vector point Y-value from a DXF \c HELIX.
+ * \brief Get the start point Y-value from a DXF \c HELIX.
  *
- * \return axis vector point Y-value.
+ * \return start point Y-value.
  */
 double
 dxf_helix_get_y1
@@ -2456,7 +2455,7 @@ dxf_helix_get_y1
 
 
 /*!
- * \brief Set the axis vector point Y-value for a DXF \c HELIX.
+ * \brief Set the start point Y-value for a DXF \c HELIX.
  */
 DxfHelix *
 dxf_helix_set_y1
@@ -2464,8 +2463,7 @@ dxf_helix_set_y1
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double y1
-                /*!< the axis vector point Y-value to be set for the
-                 * entity. */
+                /*!< the start point Y-value to be set for the entity. */
 )
 {
 #if DEBUG
@@ -2488,9 +2486,9 @@ dxf_helix_set_y1
 
 
 /*!
- * \brief Get the axis vector point Z-value from a DXF \c HELIX.
+ * \brief Get the start point Z-value from a DXF \c HELIX.
  *
- * \return axis vector point Z-value.
+ * \return start point Z-value.
  */
 double
 dxf_helix_get_z1
@@ -2521,7 +2519,7 @@ dxf_helix_get_z1
 
 
 /*!
- * \brief Set the axis vector point Z-value for a DXF \c HELIX.
+ * \brief Set the start point Z-value for a DXF \c HELIX.
  */
 DxfHelix *
 dxf_helix_set_z1
@@ -2529,8 +2527,7 @@ dxf_helix_set_z1
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double z1
-                /*!< the axis vector point Z-value to be set for the
-                 * entity. */
+                /*!< the start point Z-value to be set for the entity. */
 )
 {
 #if DEBUG
