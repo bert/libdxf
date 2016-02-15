@@ -492,6 +492,12 @@ dxf_helix_get_x2
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_x2
+(
+        DxfHelix *helix,
+        double x2
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
