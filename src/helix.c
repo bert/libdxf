@@ -2552,4 +2552,37 @@ dxf_helix_set_z1
 }
 
 
+/*!
+ * \brief Get the axis vector point X-value from a DXF \c HELIX.
+ *
+ * \return axis vector point X-value.
+ */
+double
+dxf_helix_get_x2
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = helix->x2;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
