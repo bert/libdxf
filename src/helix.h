@@ -470,6 +470,12 @@ dxf_helix_get_y1
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_y1
+(
+        DxfHelix *helix,
+        double y1
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */

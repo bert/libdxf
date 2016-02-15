@@ -2455,4 +2455,36 @@ dxf_helix_get_y1
 }
 
 
+/*!
+ * \brief Set the axis vector point Y-value for a DXF \c HELIX.
+ */
+DxfHelix *
+dxf_helix_set_y1
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX. */
+        double y1
+                /*!< the axis vector point Y-value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->y1 = y1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/
