@@ -547,6 +547,12 @@ dxf_helix_get_turn_height
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_turn_height
+(
+        DxfHelix *helix,
+        double turn_height
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
