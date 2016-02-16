@@ -542,6 +542,11 @@ dxf_helix_set_number_of_turns
         DxfHelix *helix,
         double number_of_turns
 );
+double
+dxf_helix_get_turn_height
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
