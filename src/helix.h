@@ -525,6 +525,12 @@ dxf_helix_get_radius
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_radius
+(
+        DxfHelix *helix,
+        double radius
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
