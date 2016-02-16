@@ -2841,4 +2841,35 @@ dxf_helix_get_number_of_turns
 }
 
 
+/*!
+ * \brief Set the number_of_turns for a DXF \c HELIX.
+ */
+DxfHelix *
+dxf_helix_set_number_of_turns
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX. */
+        double number_of_turns
+                /*!< the number_of_turns to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->number_of_turns = number_of_turns;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/
