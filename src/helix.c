@@ -2808,4 +2808,37 @@ dxf_helix_set_radius
 }
 
 
+/*!
+ * \brief Get the number_of_turns from a DXF \c HELIX entity.
+ *
+ * \return number_of_turns.
+ */
+double
+dxf_helix_get_number_of_turns
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = helix->number_of_turns;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

@@ -531,6 +531,11 @@ dxf_helix_set_radius
         DxfHelix *helix,
         double radius
 );
+double
+dxf_helix_get_number_of_turns
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
