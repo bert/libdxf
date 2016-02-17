@@ -120,6 +120,8 @@ libdxf_la_SOURCES = \
   endblk.c \
   ellipse.h \
   ellipse.c \
+  drawing.h \
+  drawing.c \
   donut.h \
   donut.c \
   dimstyle.h \

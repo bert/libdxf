@@ -42,6 +42,8 @@ src/dimstyle.c
 src/dimstyle.h
 src/donut.c
 src/donut.h
+src/drawing.c
+src/drawing.h
 src/dxf.h
 src/ellipse.c
 src/ellipse.h
