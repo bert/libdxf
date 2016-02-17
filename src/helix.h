@@ -575,6 +575,11 @@ dxf_helix_set_maintainance_release_number
         DxfHelix *helix,
         long maintainance_release_number
 );
+int
+dxf_helix_get_constraint_type
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */

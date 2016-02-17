@@ -3065,4 +3065,51 @@ dxf_helix_set_maintainance_release_number
 }
 
 
+/*!
+ * \brief Get the constraint_type from a DXF \c HELIX.
+ *
+ * \return constraint_type.
+ */
+int
+dxf_helix_get_constraint_type
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (helix->constraint_type < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the constraint_type member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (helix->constraint_type > 2)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid value was found in the constraint_type member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = helix->constraint_type;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
