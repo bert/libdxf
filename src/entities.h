@@ -58,6 +58,58 @@
 #include "global.h"
 
 
+/*!
+ * \brief Definition of a DXF entity container.
+ */
+typedef struct dxf_entities_struct
+{
+    struct Dxf3dface *dface_list;
+    struct Dxf3dsolid *dsolid_list;
+    struct dXfAcadProxyEntity *acad_proxy_entity_list;
+    struct DxfArc *arc_list;
+    struct DxfAttdef *attdef_list;
+    struct DxfAttrib *attrib_list;
+    struct DxfBody *body_list;
+    struct DxfCircle *circle_list;
+    struct DxfDimension *dimension_list;
+    struct DxfEllipse *ellipse_list;
+    struct DxfHatch *hatch_list;
+    struct DxfHelix *helix_list;
+    struct DxfImage *image_list;
+    struct DxfInsert *insert_list;
+    struct DxfLeader *leader_list;
+    //struct DxfLight *light_list;
+    struct DxfLine *line_list;
+    struct DxfLWPolyline *lw_polyline_list;
+    //struct DxfMesh *mesh_list;
+    struct DxfMline *mline_list;
+    //struct DxfMleader *mleader_list;
+    //struct DxfMLeaderStyle *mleaderstyle_list;
+    struct DxfMtext *mtext_list;
+    struct DxfOleFrame *oleframe_list;
+    struct DxfOle2Frame *ole2frame_list;
+    struct DxfPoint *point_list;
+    struct DxfPolyline *polyline_list;
+    struct DxfRay *ray_list;
+    struct DxfRegion *region_list;
+    //struct DxfSection *section_list;
+    struct DxfShape *shape_list;
+    struct DxfSolid *solid_list;
+    struct DxfSpline *spline_list;
+    //struct DxfSun *sun_list;
+    //struct DxfSurface *surface_list;
+    struct DxfTable *table_list;
+    struct DxfText *text_list;
+    struct DxfTolerance *tolerance_list;
+    struct DxfTrace *trace_list;
+    //struct DxfUnderlay *underlay_list;
+    struct DxfVertex *vertex_list;
+    struct DxfViewport *viewport_list;
+    //struct DxfWipeout *wipeout_list;
+    //struct DxfXline *xline_list;
+} DxfEntities;
+
+
 int
 dxf_entities_read_table
 (
