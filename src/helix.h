@@ -558,6 +558,12 @@ dxf_helix_get_major_release_number
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_major_release_number
+(
+        DxfHelix *helix,
+        long major_release_number
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
