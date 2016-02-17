@@ -2936,4 +2936,37 @@ dxf_helix_set_turn_height
 }
 
 
+/*!
+ * \brief Get the major_release_number from a DXF \c HELIX entity.
+ *
+ * \return major_release_number.
+ */
+long
+dxf_helix_get_major_release_number
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        long result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = helix->major_release_number;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

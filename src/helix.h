@@ -553,6 +553,11 @@ dxf_helix_set_turn_height
         DxfHelix *helix,
         double turn_height
 );
+long
+dxf_helix_get_major_release_number
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
