@@ -569,6 +569,12 @@ dxf_helix_get_maintainance_release_number
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_maintainance_release_number
+(
+        DxfHelix *helix,
+        long maintainance_release_number
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */

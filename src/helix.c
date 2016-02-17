@@ -3033,4 +3033,36 @@ dxf_helix_get_maintainance_release_number
 }
 
 
+/*!
+ * \brief Set the maintainance_release_number for a DXF \c HELIX.
+ */
+DxfHelix *
+dxf_helix_set_maintainance_release_number
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX. */
+        long maintainance_release_number
+                /*!< the maintainance_release_number to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->maintainance_release_number = maintainance_release_number;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/
