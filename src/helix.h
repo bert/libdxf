@@ -580,6 +580,12 @@ dxf_helix_get_constraint_type
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_constraint_type
+(
+        DxfHelix *helix,
+        int constraint_type
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
