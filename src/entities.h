@@ -65,7 +65,7 @@ typedef struct dxf_entities_struct
 {
     struct Dxf3dface *dface_list;
     struct Dxf3dsolid *dsolid_list;
-    struct dXfAcadProxyEntity *acad_proxy_entity_list;
+    struct DxfAcadProxyEntity *acad_proxy_entity_list;
     struct DxfArc *arc_list;
     struct DxfAttdef *attdef_list;
     struct DxfAttrib *attrib_list;
