@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-15 21:56+0100\n"
+"POT-Creation-Date: 2016-02-17 17:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -548,7 +548,10 @@ msgstr ""
 #: src/helix.c:2316 src/helix.c:2348 src/helix.c:2381 src/helix.c:2412
 #: src/helix.c:2445 src/helix.c:2476 src/helix.c:2509 src/helix.c:2540
 #: src/helix.c:2573 src/helix.c:2605 src/helix.c:2638 src/helix.c:2670
-#: src/helix.c:2703 src/helix.c:2735 src/idbuffer.c:317 src/image.c:543
+#: src/helix.c:2703 src/helix.c:2735 src/helix.c:2768 src/helix.c:2799
+#: src/helix.c:2832 src/helix.c:2863 src/helix.c:2896 src/helix.c:2927
+#: src/helix.c:2960 src/helix.c:2991 src/helix.c:3024 src/helix.c:3056
+#: src/helix.c:3089 src/helix.c:3134 src/idbuffer.c:317 src/image.c:543
 #: src/imagedef.c:392 src/imagedef_reactor.c:320 src/insert.c:499
 #: src/layer.c:342 src/layer.c:521 src/layer.c:556 src/layer.c:591
 #: src/layer.c:628 src/layer.c:664 src/layer.c:698 src/layer_index.c:349
@@ -2260,6 +2263,11 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfDonut was not NULL.\n"
 msgstr ""
 
+#: src/drawing.c:61
+#, c-format
+msgid "Error in %s () could not allocate memory for a DxfDrawing struct.\n"
+msgstr ""
+
 #: src/ellipse.c:61 src/ellipse.c:104
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfEllipse struct.\n"
@@ -3130,6 +3138,28 @@ msgstr ""
 #: src/helix.c:2051
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the color_name member.\n"
+msgstr ""
+
+#: src/helix.c:3096
+#, c-format
+msgid ""
+"Error in %s () a negative value was found in the constraint_type member.\n"
+msgstr ""
+
+#: src/helix.c:3103
+#, c-format
+msgid ""
+"Error in %s () an invalid value was found in the constraint_type member.\n"
+msgstr ""
+
+#: src/helix.c:3141
+#, c-format
+msgid "Error in %s () a negative constraint_type value was passed.\n"
+msgstr ""
+
+#: src/helix.c:3148
+#, c-format
+msgid "Error in %s () an invalid constraint_type value was passed.\n"
 msgstr ""
 
 #: src/idbuffer.c:66 src/idbuffer.c:117
