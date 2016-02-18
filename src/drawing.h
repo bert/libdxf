@@ -72,6 +72,12 @@ dxf_drawing
 
 DxfDrawing *
 dxf_drawing_new ();
+DxfDrawing *
+dxf_drawing_init
+(
+        DxfDrawing *drawing,
+        int acad_version_number
+);
 
 
 #endif /* LIBDXF_SRC_DRAWING_H */

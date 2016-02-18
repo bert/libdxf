@@ -73,4 +73,50 @@ dxf_drawing_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF drawing.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfDrawing *
+dxf_drawing_init
+(
+        DxfDrawing *drawing,
+                /*!< a pointer to the drawing. */
+        int acad_version_number
+                /*!< AutoCAD version number.\n */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                drawing = dxf_drawing_new ();
+        }
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfDrawing struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dxf_header_init ((DxfHeader *) drawing->header, acad_version_number);
+        dxf_class_init ((DxfClass *) drawing->class_list);
+        dxf_block_init ((DxfBlock *) drawing->block_list);
+        //dxf_entities_init ((DxfEntities *) drawing->entities_list);
+        dxf_object_init ((DxfObject *) drawing->object_list);
+        dxf_thumbnail_init ((DxfThumbnail *) drawing->thumbnail);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (drawing);
+}
+
+
 /* EOF*/
