@@ -119,4 +119,37 @@ dxf_drawing_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF drawing and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_drawing_free
+(
+        DxfDrawing *drawing
+                /*!< a pointer to the memory occupied by the DXF
+                 * drawing. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        dxf_header_free ((DxfHeader *) drawing->header);
+        dxf_class_free_chain ((DxfClass *) drawing->class_list);
+        dxf_block_free_chain ((DxfBlock *) drawing->block_list);
+        //dxf_entities_free_chain ((DxfEntities *) drawing->entities_list);
+        dxf_object_free_chain ((DxfObject *) drawing->object_list);
+        dxf_thumbnail_free ((DxfThumbnail *) drawing->thumbnail);
+        free (drawing);
+        drawing = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
