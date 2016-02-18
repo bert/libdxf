@@ -152,4 +152,44 @@ dxf_drawing_free
 }
 
 
+/*!
+ * \brief Get the header from a DXF drawing.
+ *
+ * \return header when sucessful, \c NULL when an error occurred.
+ */
+DxfHeader *
+dxf_drawing_get_header
+(
+        DxfDrawing *drawing
+                /*!< a pointer to a DXF drawing. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHeader *result = NULL;
+
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (drawing->header ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHeader *) drawing->header;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

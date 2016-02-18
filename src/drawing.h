@@ -83,6 +83,11 @@ dxf_drawing_free
 (
         DxfDrawing *drawing
 );
+DxfHeader *
+dxf_drawing_get_header
+(
+        DxfDrawing *drawing
+);
 
 
 #endif /* LIBDXF_SRC_DRAWING_H */
