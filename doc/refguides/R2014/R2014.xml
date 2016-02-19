@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<book>
+  <bookinfo>
+    <title>DXF Reference R2014.</title>
+
+    <author>
+      <firstname/>
+
+      <surname/>
+    </author>
+
+    <pubdate>March 2013.</pubdate>
+
+    <copyright>
+      <year>2013</year>
+
+      <holder>Autodesk Inc.</holder>
+    </copyright>
+  </bookinfo>
+
+  <preface>
+    <title>Preface.</title>
+
+    <para>© <emphasis role="bold">2013 Autodesk, Inc. All Rights
+    Reserved.</emphasis> Except as otherwise permitted by Autodesk, Inc., this
+    publication, or parts thereof, may not be reproduced in any form, by any
+    method, for any purpose.</para>
+
+    <para/>
+
+    <para>Certain materials included in this publication are reprinted with
+    the permission of the copyright holder.</para>
+
+    <para/>
+
+    <para><emphasis role="bold">Trademarks</emphasis></para>
+
+    <para>The following are registered trademarks or trademarks of Autodesk,
+    Inc., and/or its subsidiaries and/or affiliates in the USA and other
+    countries: 123D, 3ds Max, Algor, Alias, Alias (swirl design/logo),
+    AliasStudio, ATC, AUGI, AutoCAD, AutoCAD Learning Assistance, AutoCAD LT,
+    AutoCAD Simulator, AutoCAD SQL Extension, AutoCAD SQL Interface, Autodesk,
+    Autodesk Homestyler, Autodesk Intent, Autodesk Inventor, Autodesk
+    MapGuide, Autodesk Streamline, AutoLISP, AutoSketch, AutoSnap, AutoTrack,
+    Backburner, Backdraft, Beast, Beast (design/logo) Built with ObjectARX
+    (design/logo), Burn, Buzzsaw, CAiCE, CFdesign, Civil 3D, Cleaner, Cleaner
+    Central, ClearScale, Colour Warper, Combustion, Communication
+    Specification, Constructware, Content Explorer, Creative Bridge, Dancing
+    Baby (image), DesignCenter, Design Doctor, Designer's Toolkit, DesignKids,
+    DesignProf, DesignServer, DesignStudio, Design Web Format, Discreet, DWF,
+    DWG, DWG (design/logo), DWG Extreme, DWG TrueConvert, DWG TrueView, DWFX,
+    DXF, Ecotect, Evolver, Exposure, Extending the Design Team, Face Robot,
+    FBX, Fempro, Fire, Flame, Flare, Flint, FMDesktop, Freewheel, GDX Driver,
+    Green Building Studio, Heads-up Design, Heidi, Homestyler, HumanIK, IDEA
+    Server, i-drop, Illuminate Labs AB (design/logo), ImageModeler, iMOUT,
+    Incinerator, Inferno, Instructables, Instructables (stylized robot
+    design/logo),Inventor, Inventor LT, Kynapse, Kynogon, LandXplorer,
+    LiquidLight, LiquidLight (design/logo), Lustre, MatchMover, Maya,
+    Mechanical Desktop, Moldflow, Moldflow Plastics Advisers, Moldflow
+    Plastics Insight, Moldflow Plastics Xpert, Moondust, MotionBuilder,
+    Movimento, MPA, MPA (design/logo), MPI, MPI (design/logo), MPX, MPX
+    (design/logo), Mudbox, Multi-Master Editing, Navisworks, ObjectARX,
+    ObjectDBX, Opticore, Pipeplus, Pixlr, Pixlr-o-matic, PolarSnap,
+    PortfolioWall, Powered with Autodesk Technology, Productstream,
+    ProMaterials, RasterDWG, RealDWG, Real-time Roto, Recognize, Render Queue,
+    Retimer, Reveal, Revit, RiverCAD, Robot, Scaleform, Scaleform GFx,
+    Showcase, Show Me, ShowMotion, SketchBook, Smoke, Softimage, Softimage|XSI
+    (design/logo), Sparks, SteeringWheels, Stitcher, Stone, StormNET,
+    Tinkerbox, ToolClip, Topobase, Toxik, TrustedDWG, U-Vis, ViewCube, Visual,
+    Visual LISP, Voice Reality, Volo, Vtour, WaterNetworks, Wire, Wiretap,
+    WiretapCentral, XSI.</para>
+
+    <para/>
+
+    <para>All other brand names, product names or trademarks belong to their
+    respective holders.</para>
+
+    <para/>
+
+    <para><emphasis role="bold">Disclaimer</emphasis></para>
+
+    <para>THIS PUBLICATION AND THE INFORMATION CONTAINED HEREIN IS MADE
+    AVAILABLE BY AUTODESK, INC. "AS IS." AUTODESK, INC. DISCLAIMS ALL
+    WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY
+    IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE
+    REGARDING THESE MATERIALS.</para>
+  </preface>
+
+  <chapter>
+    <title>DXF Reference.</title>
+
+    <section>
+      <title>DXF Format.</title>
+
+      <section>
+        <title>About the DXF Format (DXF).</title>
+
+        <para>The DXF<superscript>TM</superscript> format is a tagged data
+        representation of all the information contained ® in an AutoCAD
+        drawing file. Tagged data means that each data element in the file is
+        preceded by an integer number that is called a group code. A group
+        code's value indicates what type of data element follows. This value
+        also indicates the meaning of a data element for a given object (or
+        record) type. Virtually all user-specified information in a drawing
+        file can be represented in DXF format.</para>
+      </section>
+
+      <section>
+        <title>About DXF Formatting Conventions.</title>
+
+        <para>Each group code listed in the DXF reference topics is presented
+        by a numeric group code value and a description. All group codes can
+        apply to DXFTM files, applications (AutoLISP or ObjectARX), or both.
+        When the description of a code is different for applications and DXF
+        files (or applies to only one or the other), the description is
+        preceded by the following indicators:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><emphasis role="bold">APP.</emphasis> Application-specific
+            description.</para>
+          </listitem>
+
+          <listitem>
+            <para><emphasis role="bold">DXF.</emphasis> DXF file-specific
+            description.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>If the description is common to both DXF files and applications,
+        no indicator is provided.</para>
+
+        <para>Optional codes are indicated as “optional” in the
+        description.</para>
+      </section>
+
+      <section>
+        <title>About Object and Entity Codes (DXF).</title>
+
+        <para>In the DXF<superscript>TM</superscript> format, the definition
+        of objects differs from entities: objects have no graphical
+        representation and entities do. For example, dictionaries are objects,
+        and not entities. Entities are also referred to as graphical objects
+        while objects are referred to as nongraphical objects.</para>
+
+        <para>Entities appear in both the BLOCK and ENTITIES sections of the
+        DXF file. The use of group codes in the two sections is
+        identical.</para>
+
+        <para>Some group codes that define an entity always appear; others are
+        optional and appear only if their values differ from the
+        defaults.</para>
+
+        <para>Do not write programs that rely on the order given here. The end
+        of an entity is indicated by the next 0 group, which begins the next
+        entity or indicates the end of the section.<note>
+            <para>Accommodating DXF files from future releases of AutoCAD will
+            be easier if you write your DXF processing program in a
+            table-driven way, ignore undefined group codes, and make no
+            assumptions about the order of group codes in an entity. With each
+            new AutoCAD release, new group codes will be added to entities to
+            accommodate additional features.</para>
+          </note></para>
+      </section>
+
+      <section>
+        <title>Group Code Value Types Reference (DXF).</title>
+
+        <para>Group codes define the type of the associated value as an
+        integer, a floating-point number, or a string, according to the
+        following table of group code ranges.<table align="left">
+            <title>Group code value types.</title>
+
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry>Code range</entry>
+
+                  <entry>Group value type</entry>
+                </row>
+              </thead>
+
+              <tbody>
+                <row>
+                  <entry>0 ... 9</entry>
+
+                  <entry>String (with the introduction of extended symbol
+                  names in AutoCAD 2000, the 255-character limit has been
+                  increased to 2049 single-byte characters not including the
+                  newline at the end of the line).</entry>
+                </row>
+
+                <row>
+                  <entry>10 ... 39</entry>
+
+                  <entry>Double precision 3D point value.</entry>
+                </row>
+
+                <row>
+                  <entry>40 ... 59</entry>
+
+                  <entry>Double-precision floating-point value.</entry>
+                </row>
+
+                <row>
+                  <entry>60 ... 79</entry>
+
+                  <entry>16-bit integer value.</entry>
+                </row>
+
+                <row>
+                  <entry>90 ... 99</entry>
+
+                  <entry>32-bit integer value.</entry>
+                </row>
+
+                <row>
+                  <entry>100</entry>
+
+                  <entry>String (255 characters maximum; less for Unicode
+                  strings).</entry>
+                </row>
+
+                <row>
+                  <entry>102</entry>
+
+                  <entry>String (255 characters maximum; less for Unicode
+                  strings).</entry>
+                </row>
+
+                <row>
+                  <entry>105</entry>
+
+                  <entry>String representing hexadecimal (hex) handle
+                  value.</entry>
+                </row>
+
+                <row>
+                  <entry>110 ... 119</entry>
+
+                  <entry>Double precision floating-point value.</entry>
+                </row>
+
+                <row>
+                  <entry>120 ... 129</entry>
+
+                  <entry>Double precision floating-point value.</entry>
+                </row>
+
+                <row>
+                  <entry>130 ... 139</entry>
+
+                  <entry>Double precision floating-point value.</entry>
+                </row>
+
+                <row>
+                  <entry>140 ... 149</entry>
+
+                  <entry>Double precision scalar floating-point value.</entry>
+                </row>
+
+                <row>
+                  <entry>160 ... 169</entry>
+
+                  <entry>64-bit integer value.</entry>
+                </row>
+
+                <row>
+                  <entry>170 ... 179</entry>
+
+                  <entry>16-bit integer value.</entry>
+                </row>
+
+                <row>
+                  <entry>210 ... 239</entry>
+
+                  <entry>Double precision floating-point value.</entry>
+                </row>
+
+                <row>
+                  <entry>270 ... 279</entry>
+
+                  <entry>16-bit integer value.</entry>
+                </row>
+
+                <row>
+                  <entry>280 ... 289</entry>
+
+                  <entry>16-bit integer value.</entry>
+                </row>
+
+                <row>
+                  <entry>290 ... 299</entry>
+
+                  <entry>Boolean flag value.</entry>
+                </row>
+
+                <row>
+                  <entry>300 ... 309</entry>
+
+                  <entry>Arbitrary text string.</entry>
+                </row>
+
+                <row>
+                  <entry>310 ... 319</entry>
+
+                  <entry>String representing hex. value of binary
+                  chunk.</entry>
+                </row>
+
+                <row>
+                  <entry>320 ... 329</entry>
+
+                  <entry>String representing hex handle value.</entry>
+                </row>
+
+                <row>
+                  <entry>330 ... 369</entry>
+
+                  <entry>String representing hex object IDs.</entry>
+                </row>
+
+                <row>
+                  <entry>370 ... 379</entry>
+
+                  <entry>16-bit integer value.</entry>
+                </row>
+
+                <row>
+                  <entry>380 ... 389</entry>
+
+                  <entry>16-bit integer value.</entry>
+                </row>
+
+                <row>
+                  <entry>390 ... 399</entry>
+
+                  <entry>String representing hex handle value.</entry>
+                </row>
+
+                <row>
+                  <entry>400 ... 409</entry>
+
+                  <entry>16-bit integer value.</entry>
+                </row>
+
+                <row>
+                  <entry>410 ... 419</entry>
+
+                  <entry>String.</entry>
+                </row>
+
+                <row>
+                  <entry>420 ... 429</entry>
+
+                  <entry>32-bit integer value.</entry>
+                </row>
+
+                <row>
+                  <entry>430 ... 439</entry>
+
+                  <entry>String.</entry>
+                </row>
+
+                <row>
+                  <entry>440 ... 449</entry>
+
+                  <entry>32-bit integer value.</entry>
+                </row>
+
+                <row>
+                  <entry>450 ... 459</entry>
+
+                  <entry>Long.</entry>
+                </row>
+
+                <row>
+                  <entry>460 ... 469</entry>
+
+                  <entry>Double precision floating-point value.</entry>
+                </row>
+
+                <row>
+                  <entry>470 ... 479</entry>
+
+                  <entry>String.</entry>
+                </row>
+
+                <row>
+                  <entry>480 ... 481</entry>
+
+                  <entry>String representing hex handle value.</entry>
+                </row>
+
+                <row>
+                  <entry>999</entry>
+
+                  <entry>Comment (string).</entry>
+                </row>
+
+                <row>
+                  <entry>1000 ... 1009</entry>
+
+                  <entry>String (same limits as indicated with 0-9 code
+                  range).</entry>
+                </row>
+
+                <row>
+                  <entry>1010 ... 1059</entry>
+
+                  <entry>Double-precision floating-point value.</entry>
+                </row>
+
+                <row>
+                  <entry>1060 ... 1070</entry>
+
+                  <entry>16-bit integer value.</entry>
+                </row>
+
+                <row>
+                  <entry>1071</entry>
+
+                  <entry>32-bit integer value.</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table></para>
+      </section>
+    </section>
+  </chapter>
+</book>

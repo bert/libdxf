@@ -61,6 +61,7 @@ doc/refguides/R10/Makefile
 doc/refguides/R12/Makefile
 doc/refguides/R13/Makefile
 doc/refguides/R14/Makefile
+doc/refguides/R2014/Makefile
 po/Makefile.in
 src/Makefile
 tests/Makefile
