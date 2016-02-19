@@ -155,7 +155,7 @@ dxf_drawing_free
 /*!
  * \brief Get the header from a DXF drawing.
  *
- * \return header when sucessful, \c NULL when an error occurred.
+ * \return \c header when successful, \c NULL when an error occurred.
  */
 DxfHeader *
 dxf_drawing_get_header
@@ -194,6 +194,9 @@ dxf_drawing_get_header
 
 /*!
  * \brief Set the header for a libDXF drawing.
+ *
+ * \return a pointer to the libDXF drawing when OK, \c NULL when an
+ * error occurred.
  */
 DxfDrawing *
 dxf_drawing_set_header
