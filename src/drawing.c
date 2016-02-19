@@ -180,7 +180,7 @@ dxf_drawing_get_header
         if (drawing->header ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  (_("Error in %s () a NULL pointer was found in the header member.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
