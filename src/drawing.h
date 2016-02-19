@@ -94,6 +94,11 @@ dxf_drawing_set_header
         DxfDrawing *drawing,
         DxfHeader *header
 );
+DxfClass *
+dxf_drawing_get_class_list
+(
+        DxfDrawing *drawing
+);
 
 
 #endif /* LIBDXF_SRC_DRAWING_H */

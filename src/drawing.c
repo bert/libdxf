@@ -231,4 +231,44 @@ dxf_drawing_set_header
 }
 
 
+/*!
+ * \brief Get the first entry to the Classes list from a DXF drawing.
+ *
+ * \return \c class_list when sucessful, \c NULL when an error occurred.
+ */
+DxfClass *
+dxf_drawing_get_class_list
+(
+        DxfDrawing *drawing
+                /*!< a pointer to a DXF drawing. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfClass *result = NULL;
+
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (drawing->class_list ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the class_list member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfClass *) drawing->class_list;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
