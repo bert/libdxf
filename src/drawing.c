@@ -243,7 +243,7 @@ DxfClass *
 dxf_drawing_get_class_list
 (
         DxfDrawing *drawing
-                /*!< a pointer to a DXF drawing. */
+                /*!< a pointer to a libDXF drawing. */
 )
 {
 #if DEBUG
