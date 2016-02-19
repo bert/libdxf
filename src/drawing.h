@@ -51,7 +51,7 @@
  * \brief Definition of a DXF drawing.
  */
 typedef struct
-dxf_drawing
+dxf_drawing_struct
 {
     struct DxfHeader *header;
         /*!< Header data.*/
