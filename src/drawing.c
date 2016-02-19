@@ -36,7 +36,7 @@
 
 
 /*!
- * \brief Allocate memory for a DXF \c drawing.
+ * \brief Allocate memory for a libDXF \c drawing.
  *
  * Fill the memory contents with zeros.
  *
@@ -74,7 +74,7 @@ dxf_drawing_new ()
 
 
 /*!
- * \brief Allocate memory and initialize data fields in a DXF drawing.
+ * \brief Allocate memory and initialize data fields in a libDXF drawing.
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
@@ -83,7 +83,7 @@ DxfDrawing *
 dxf_drawing_init
 (
         DxfDrawing *drawing,
-                /*!< a pointer to the drawing. */
+                /*!< a pointer to the libDXF drawing. */
         int acad_version_number
                 /*!< AutoCAD version number.\n */
 )
@@ -120,7 +120,7 @@ dxf_drawing_init
 
 
 /*!
- * \brief Free the allocated memory for a DXF drawing and all it's
+ * \brief Free the allocated memory for a libDXF drawing and all it's
  * data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
@@ -130,7 +130,7 @@ int
 dxf_drawing_free
 (
         DxfDrawing *drawing
-                /*!< a pointer to the memory occupied by the DXF
+                /*!< a pointer to the memory occupied by the libDXF
                  * drawing. */
 )
 {
@@ -153,7 +153,7 @@ dxf_drawing_free
 
 
 /*!
- * \brief Get the header from a DXF drawing.
+ * \brief Get the header from a libDXF drawing.
  *
  * \return \c header when successful, \c NULL when an error occurred.
  */
@@ -161,7 +161,7 @@ DxfHeader *
 dxf_drawing_get_header
 (
         DxfDrawing *drawing
-                /*!< a pointer to a DXF drawing. */
+                /*!< a pointer to a libDXF drawing. */
 )
 {
 #if DEBUG
@@ -235,7 +235,7 @@ dxf_drawing_set_header
 
 
 /*!
- * \brief Get the first entry to the Classes list from a DXF drawing.
+ * \brief Get the first entry to the Classes list from a libDXF drawing.
  *
  * \return \c class_list when sucessful, \c NULL when an error occurred.
  */
