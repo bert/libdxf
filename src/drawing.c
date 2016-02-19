@@ -316,4 +316,44 @@ dxf_drawing_set_class_list
 }
 
 
+/*!
+ * \brief Get the first entry to the Tables list from a libDXF drawing.
+ *
+ * \return \c tables_list when sucessful, \c NULL when an error occurred.
+ */
+DxfTables *
+dxf_drawing_get_tables_list
+(
+        DxfDrawing *drawing
+                /*!< a pointer to a libDXF drawing. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfTables *result = NULL;
+
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (drawing->tables_list ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the tables_list member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfTables *) drawing->tables_list;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

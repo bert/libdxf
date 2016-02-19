@@ -105,6 +105,11 @@ dxf_drawing_set_class_list
         DxfDrawing *drawing,
         DxfClass *class_list
 );
+DxfTables *
+dxf_drawing_get_tables_list
+(
+        DxfDrawing *drawing
+);
 
 
 #endif /* LIBDXF_SRC_DRAWING_H */
