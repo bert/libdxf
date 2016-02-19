@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Prototypes for a DXF drawing.
+ * \brief Prototypes for a libDXF drawing.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n

@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Functions for a DXF drawing.
+ * \brief Functions for a libDXF drawing.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n

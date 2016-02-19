@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2012 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief List of all dxf header files for convenient inclusion.
+ * \brief List of all libDXF header files for convenient inclusion.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
