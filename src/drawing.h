@@ -88,6 +88,12 @@ dxf_drawing_get_header
 (
         DxfDrawing *drawing
 );
+DxfDrawing *
+dxf_drawing_set_header
+(
+        DxfDrawing *drawing,
+        DxfHeader *header
+);
 
 
 #endif /* LIBDXF_SRC_DRAWING_H */

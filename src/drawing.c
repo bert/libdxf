@@ -192,4 +192,43 @@ dxf_drawing_get_header
 }
 
 
+/*!
+ * \brief Set the header for a libDXF drawing.
+ */
+DxfDrawing *
+dxf_drawing_set_header
+(
+        DxfDrawing *drawing,
+                /*!< a pointer to a libDXF drawing. */
+        DxfHeader *header
+                /*!< a string containing the header for the libDXF
+                 * drawing. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (header == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        drawing->header = (struct DxfHeader *) header;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (drawing);
+}
+
+
 /* EOF*/
