@@ -143,6 +143,12 @@ dxf_drawing_get_object_list
 (
         DxfDrawing *drawing
 );
+DxfDrawing *
+dxf_drawing_set_object_list
+(
+        DxfDrawing *drawing,
+        DxfObject *object_list
+);
 
 
 #endif /* LIBDXF_SRC_DRAWING_H */
