@@ -127,6 +127,11 @@ dxf_drawing_set_block_list
         DxfDrawing *drawing,
         DxfBlock *block_list
 );
+DxfEntities *
+dxf_drawing_get_entities_list
+(
+        DxfDrawing *drawing
+);
 
 
 #endif /* LIBDXF_SRC_DRAWING_H */

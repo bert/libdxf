@@ -480,4 +480,45 @@ dxf_drawing_set_block_list
 }
 
 
+/*!
+ * \brief Get the first entry to the Entities list from a libDXF drawing.
+ *
+ * \return \c entities_list when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfEntities *
+dxf_drawing_get_entities_list
+(
+        DxfDrawing *drawing
+                /*!< a pointer to a libDXF drawing. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfEntities *result = NULL;
+
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (drawing->entities_list ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the entities_list member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfEntities *) drawing->entities_list;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
