@@ -116,6 +116,11 @@ dxf_drawing_set_tables_list
         DxfDrawing *drawing,
         DxfTables *tables_list
 );
+DxfBlock *
+dxf_drawing_get_block_list
+(
+        DxfDrawing *drawing
+);
 
 
 #endif /* LIBDXF_SRC_DRAWING_H */

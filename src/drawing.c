@@ -398,4 +398,44 @@ dxf_drawing_set_tables_list
 }
 
 
+/*!
+ * \brief Get the first entry to the Block list from a libDXF drawing.
+ *
+ * \return \c block_list when sucessful, \c NULL when an error occurred.
+ */
+DxfBlock *
+dxf_drawing_get_block_list
+(
+        DxfDrawing *drawing
+                /*!< a pointer to a libDXF drawing. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfBlock *result = NULL;
+
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (drawing->block_list ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the block_list member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfBlock *) drawing->block_list;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
