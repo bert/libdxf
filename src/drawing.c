@@ -563,4 +563,45 @@ dxf_drawing_set_entities_list
 }
 
 
+/*!
+ * \brief Get the first entry to the Object list from a libDXF drawing.
+ *
+ * \return \c object_list when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfObject *
+dxf_drawing_get_object_list
+(
+        DxfDrawing *drawing
+                /*!< a pointer to a libDXF drawing. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfObject *result = NULL;
+
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (drawing->object_list ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the object_list member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfObject *) drawing->object_list;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

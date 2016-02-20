@@ -138,6 +138,11 @@ dxf_drawing_set_entities_list
         DxfDrawing *drawing,
         DxfEntities *entities_list
 );
+DxfObject *
+dxf_drawing_get_object_list
+(
+        DxfDrawing *drawing
+);
 
 
 #endif /* LIBDXF_SRC_DRAWING_H */
