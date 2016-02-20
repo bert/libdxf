@@ -121,6 +121,12 @@ dxf_drawing_get_block_list
 (
         DxfDrawing *drawing
 );
+DxfDrawing *
+dxf_drawing_set_block_list
+(
+        DxfDrawing *drawing,
+        DxfBlock *block_list
+);
 
 
 #endif /* LIBDXF_SRC_DRAWING_H */

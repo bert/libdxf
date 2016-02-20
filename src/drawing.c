@@ -438,4 +438,46 @@ dxf_drawing_get_block_list
 }
 
 
+/*!
+ * \brief Set the first entry to the Block list for a libDXF drawing.
+ *
+ * \return a pointer to the libDXF drawing when OK, \c NULL when an
+ * error occurred.
+ */
+DxfDrawing *
+dxf_drawing_set_block_list
+(
+        DxfDrawing *drawing,
+                /*!< a pointer to a libDXF drawing. */
+        DxfBlock *block_list
+                /*!< a pointer containing the first entry to the Block
+                 * list for the libDXF drawing. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (block_list == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        drawing->block_list = (struct DxfBlock *) block_list;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (drawing);
+}
+
+
 /* EOF*/
