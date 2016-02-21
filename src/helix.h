@@ -45,7 +45,7 @@
  * \brief Definition of an AutoCAD helix entity (\c HELIX).
  */
 typedef struct
-dxf_helix
+dxf_helix_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
