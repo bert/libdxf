@@ -613,6 +613,12 @@ dxf_helix_get_next
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_next
+(
+        DxfHelix *helix,
+        DxfHelix *next
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */

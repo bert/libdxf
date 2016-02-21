@@ -3370,4 +3370,43 @@ dxf_helix_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c HELIX for a DXF \c HELIX
+ * entity.
+ */
+DxfHelix *
+dxf_helix_set_next
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX entity. */
+        DxfHelix *next
+                /*!< a pointer to the next \c HELIX for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->next = (struct DxfHelix *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/
