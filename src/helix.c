@@ -3157,4 +3157,51 @@ dxf_helix_set_constraint_type
 }
 
 
+/*!
+ * \brief Get the \c handedness from a DXF \c HELIX.
+ *
+ * \return \c handedness.
+ */
+int
+dxf_helix_get_handedness
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (helix->handedness < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the handedness member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (helix->handedness > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid value was found in the handedness member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = helix->handedness;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

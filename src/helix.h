@@ -586,6 +586,11 @@ dxf_helix_set_constraint_type
         DxfHelix *helix,
         int constraint_type
 );
+int
+dxf_helix_get_handedness
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
