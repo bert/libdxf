@@ -591,6 +591,12 @@ dxf_helix_get_handedness
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_handedness
+(
+        DxfHelix *helix,
+        int handedness
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */

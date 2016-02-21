@@ -3204,4 +3204,49 @@ dxf_helix_get_handedness
 }
 
 
+/*!
+ * \brief Set the \c handedness for a DXF \c HELIX.
+ */
+DxfHelix *
+dxf_helix_set_handedness
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX. */
+        int handedness
+                /*!< \c handedness. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (handedness < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative handedness value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (handedness > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid handedness value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->handedness = handedness;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/
