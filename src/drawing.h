@@ -154,6 +154,12 @@ dxf_drawing_get_thumbnail
 (
         DxfDrawing *drawing
 );
+DxfDrawing *
+dxf_drawing_set_thumbnail
+(
+        DxfDrawing *drawing,
+        DxfThumbnail *thumbnail
+);
 
 
 #endif /* LIBDXF_SRC_DRAWING_H */
