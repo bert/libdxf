@@ -3289,4 +3289,42 @@ dxf_helix_get_spline
 }
 
 
+/*!
+ * \brief Set the \c spline for a DXF \c HELIX.
+ */
+DxfHelix *
+dxf_helix_set_spline
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX. */
+        DxfSpline *spline
+                /*!< \c spline. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->spline = (DxfSpline *) spline;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
 /* EOF*/
