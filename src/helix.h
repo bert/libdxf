@@ -608,6 +608,11 @@ dxf_helix_set_spline
         DxfHelix *helix,
         DxfSpline *spline
 );
+DxfHelix *
+dxf_helix_get_next
+(
+        DxfHelix *helix
+);
 
 
 #endif /* LIBDXF_SRC_HELIX_H */

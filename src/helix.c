@@ -3327,4 +3327,47 @@ dxf_helix_set_spline
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c HELIX entity from a DXF 
+ * \c HELIX entity.
+ *
+ * \return pointer to the next \c HELIX entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHelix *
+dxf_helix_get_next
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHelix *result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (helix->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHelix *) helix->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
