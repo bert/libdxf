@@ -142,7 +142,7 @@ dxf_helix_init
         helix->color_value = 0;
         helix->color_name = strdup ("");
         helix->transparency = 0;
-        dxf_spline_init (helix->spline);
+        helix->spline = (DxfSpline *) dxf_spline_init (helix->spline);
         helix->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
