@@ -646,4 +646,44 @@ dxf_drawing_set_object_list
 }
 
 
+/*!
+ * \brief Get the thumbnail from a libDXF drawing.
+ *
+ * \return \c thumbnail when sucessful, \c NULL when an error occurred.
+ */
+DxfThumbnail *
+dxf_drawing_get_thumbnail
+(
+        DxfDrawing *drawing
+                /*!< a pointer to a libDXF drawing. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfThumbnail *result = NULL;
+
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (drawing->thumbnail ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the thumbnail member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfThumbnail *) drawing->thumbnail;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

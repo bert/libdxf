@@ -149,6 +149,11 @@ dxf_drawing_set_object_list
         DxfDrawing *drawing,
         DxfObject *object_list
 );
+DxfThumbnail *
+dxf_drawing_get_thumbnail
+(
+        DxfDrawing *drawing
+);
 
 
 #endif /* LIBDXF_SRC_DRAWING_H */
