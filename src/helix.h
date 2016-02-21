@@ -207,7 +207,7 @@ dxf_helix
                  * <li value = "0"> Left.</li>
                  * <li value = "1"> Right</li>
                  * </ol> */
-        DxfSpline spline;
+        DxfSpline *spline;
                 /*!< pointer to the first DxfSpline.\n
                  * \c NULL if the last DxfSpline. */
         struct DxfHelix *next;

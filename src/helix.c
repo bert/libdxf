@@ -142,7 +142,7 @@ dxf_helix_init
         helix->color_value = 0;
         helix->color_name = strdup ("");
         helix->transparency = 0;
-        dxf_spline_init (&helix->spline);
+        dxf_spline_init (helix->spline);
         helix->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -404,13 +404,13 @@ dxf_helix_read
                                                 /* Now follows a string containing a linetype
                                                  * name. */
                                                 (fp->line_number)++;
-                                                fscanf (fp->fp, "%s\n", helix->spline.linetype);
+                                                fscanf (fp->fp, "%s\n", helix->spline->linetype);
                                         }
                                         else if (strcmp (temp_string, "8") == 0)
                                         {
                                                 /* Now follows a string containing a layer name. */
                                                 (fp->line_number)++;
-                                                fscanf (fp->fp, "%s\n", helix->spline.layer);
+                                                fscanf (fp->fp, "%s\n", helix->spline->layer);
                                         }
                                         else if (strcmp (temp_string, "10") == 0)
                                         {
@@ -418,7 +418,7 @@ dxf_helix_read
                                                  * X-value of the control point coordinate
                                                  * (multiple entries). */
                                                 (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline.x0[i_x0]);
+                                                fscanf (fp->fp, "%lf\n", &helix->spline->x0[i_x0]);
                                                 i_x0++;
                                         }
                                         else if (strcmp (temp_string, "20") == 0)
@@ -427,7 +427,7 @@ dxf_helix_read
                                                  * Y-coordinate of control point coordinate
                                                  * (multiple entries). */
                                                 (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline.y0[i_y0]);
+                                                fscanf (fp->fp, "%lf\n", &helix->spline->y0[i_y0]);
                                                 i_y0++;
                                         }
                                         else if (strcmp (temp_string, "30") == 0)
@@ -436,41 +436,41 @@ dxf_helix_read
                                                  * Z-coordinate of the control point coordinate
                                                  * (multiple entries). */
                                                 (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline.z0[i_z0]);
+                                                fscanf (fp->fp, "%lf\n", &helix->spline->z0[i_z0]);
                                                 i_z0++;
                                         }
                                         else if (strcmp (temp_string, "40") == 0)
                                         {
                                                 /* Now follows a knot value (one entry per knot, multiple entries). */
                                                 (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline.knot_value[i_knot_value]);
+                                                fscanf (fp->fp, "%lf\n", &helix->spline->knot_value[i_knot_value]);
                                                 i_knot_value++;
                                         }
                                         else if (strcmp (temp_string, "41") == 0)
                                         {
                                                 /* Now follows a weight value (one entry per knot, multiple entries). */
                                                 (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline.weight_value[i_weight_value]);
+                                                fscanf (fp->fp, "%lf\n", &helix->spline->weight_value[i_weight_value]);
                                                 i_weight_value++;
                 }
                                         else if (strcmp (temp_string, "42") == 0)
                                         {
                                                 /* Now follows a knot tolerance value. */
                                                 (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline.knot_tolerance);
+                                                fscanf (fp->fp, "%lf\n", &helix->spline->knot_tolerance);
                                                 i_knot_value++;
                                         }
                                         else if (strcmp (temp_string, "43") == 0)
                                         {
                                                 /* Now follows a control point tolerance value. */
                                                 (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline.control_point_tolerance);
+                                                fscanf (fp->fp, "%lf\n", &helix->spline->control_point_tolerance);
                                         }
                                         else if (strcmp (temp_string, "44") == 0)
                                         {
                                                 /* Now follows a fit point tolerance value. */
                                                 (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline.fit_tolerance);
+                                                fscanf (fp->fp, "%lf\n", &helix->spline->fit_tolerance);
                                         }
                                         else if (strcmp (temp_string, "999") == 0)
                                         {
@@ -746,46 +746,46 @@ dxf_helix_write
         fprintf (fp->fp, "284\n%d\n", helix->shadow_mode);
         /* Create a helix shaped spline and write to a DxfFile. */
         /*! \todo Add code for creating a helix shaped spline. */
-        dxf_spline_init (&helix->spline);
-        helix->spline.flag = 0;
-        helix->spline.degree = 3;
+        dxf_spline_init (helix->spline);
+        helix->spline->flag = 0;
+        helix->spline->degree = 3;
         /*! \todo Add code for writing a helix shaped spline to a DxfFile. */
         fprintf (fp->fp, "100\nAcDbSpline\n");
-        fprintf (fp->fp, " 70\n%d\n", helix->spline.flag);
-        fprintf (fp->fp, " 71\n%d\n", helix->spline.degree);
-        fprintf (fp->fp, " 72\n%d\n", helix->spline.number_of_knots);
-        fprintf (fp->fp, " 73\n%d\n", helix->spline.number_of_control_points);
-        fprintf (fp->fp, " 74\n%d\n", helix->spline.number_of_fit_points);
-        fprintf (fp->fp, " 42\n%f\n", helix->spline.knot_tolerance);
-        fprintf (fp->fp, " 43\n%f\n", helix->spline.control_point_tolerance);
-        fprintf (fp->fp, " 12\n%f\n", helix->spline.x2);
-        fprintf (fp->fp, " 22\n%f\n", helix->spline.y2);
-        fprintf (fp->fp, " 32\n%f\n", helix->spline.z2);
-        fprintf (fp->fp, " 13\n%f\n", helix->spline.x3);
-        fprintf (fp->fp, " 23\n%f\n", helix->spline.y3);
-        fprintf (fp->fp, " 33\n%f\n", helix->spline.z3);
-        for (i = 0; i < helix->spline.number_of_knots; i++)
+        fprintf (fp->fp, " 70\n%d\n", helix->spline->flag);
+        fprintf (fp->fp, " 71\n%d\n", helix->spline->degree);
+        fprintf (fp->fp, " 72\n%d\n", helix->spline->number_of_knots);
+        fprintf (fp->fp, " 73\n%d\n", helix->spline->number_of_control_points);
+        fprintf (fp->fp, " 74\n%d\n", helix->spline->number_of_fit_points);
+        fprintf (fp->fp, " 42\n%f\n", helix->spline->knot_tolerance);
+        fprintf (fp->fp, " 43\n%f\n", helix->spline->control_point_tolerance);
+        fprintf (fp->fp, " 12\n%f\n", helix->spline->x2);
+        fprintf (fp->fp, " 22\n%f\n", helix->spline->y2);
+        fprintf (fp->fp, " 32\n%f\n", helix->spline->z2);
+        fprintf (fp->fp, " 13\n%f\n", helix->spline->x3);
+        fprintf (fp->fp, " 23\n%f\n", helix->spline->y3);
+        fprintf (fp->fp, " 33\n%f\n", helix->spline->z3);
+        for (i = 0; i < helix->spline->number_of_knots; i++)
         {
-                fprintf (fp->fp, " 40\n%f\n", helix->spline.knot_value[i]);
+                fprintf (fp->fp, " 40\n%f\n", helix->spline->knot_value[i]);
         }
-        if (helix->spline.number_of_fit_points != 0)
+        if (helix->spline->number_of_fit_points != 0)
         {
-        for (i = 0; i < helix->spline.number_of_fit_points; i++)
+        for (i = 0; i < helix->spline->number_of_fit_points; i++)
                 {
-                        fprintf (fp->fp, " 41\n%f\n", helix->spline.weight_value[i]);
+                        fprintf (fp->fp, " 41\n%f\n", helix->spline->weight_value[i]);
                 }
         }
-        for (i = 0; i < helix->spline.number_of_control_points; i++)
+        for (i = 0; i < helix->spline->number_of_control_points; i++)
         {
-                fprintf (fp->fp, " 10\n%f\n", helix->spline.x0[i]);
-                fprintf (fp->fp, " 20\n%f\n", helix->spline.y0[i]);
-                fprintf (fp->fp, " 30\n%f\n", helix->spline.z0[i]);
+                fprintf (fp->fp, " 10\n%f\n", helix->spline->x0[i]);
+                fprintf (fp->fp, " 20\n%f\n", helix->spline->y0[i]);
+                fprintf (fp->fp, " 30\n%f\n", helix->spline->z0[i]);
         }
-        for (i = 0; i < helix->spline.number_of_fit_points; i++)
+        for (i = 0; i < helix->spline->number_of_fit_points; i++)
         {
-                fprintf (fp->fp, " 11\n%f\n", helix->spline.x1[i]);
-                fprintf (fp->fp, " 21\n%f\n", helix->spline.y1[i]);
-                fprintf (fp->fp, " 31\n%f\n", helix->spline.z1[i]);
+                fprintf (fp->fp, " 11\n%f\n", helix->spline->x1[i]);
+                fprintf (fp->fp, " 21\n%f\n", helix->spline->y1[i]);
+                fprintf (fp->fp, " 31\n%f\n", helix->spline->z1[i]);
         }
         /* Continue writing helix entity parameters. */
         fprintf (fp->fp, "100\nAcDbHelix\n");
