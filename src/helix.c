@@ -86,7 +86,7 @@ DxfHelix *
 dxf_helix_init
 (
         DxfHelix *helix
-                /*!< DXF helix entity. */
+                /*!< DXF \c HELIX entity. */
 )
 {
 #if DEBUG
@@ -160,7 +160,8 @@ dxf_helix_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c helix. \n
  *
- * \return a pointer to \c helix.
+ * \return a pointer to \c helix when successful, \c NULL when an error
+ * occurred.
  */
 DxfHelix *
 dxf_helix_read
@@ -452,7 +453,7 @@ dxf_helix_read
                                                 (fp->line_number)++;
                                                 fscanf (fp->fp, "%lf\n", &helix->spline->weight_value[i_weight_value]);
                                                 i_weight_value++;
-                }
+                                        }
                                         else if (strcmp (temp_string, "42") == 0)
                                         {
                                                 /* Now follows a knot tolerance value. */
@@ -859,19 +860,13 @@ dxf_helix_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c HELIX
  * entities and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2007.
  */
 void
 dxf_helix_free_chain
 (
         DxfHelix *helices
-                /*!< pointer to the chain of DXF \c HELIX entities. */
+                /*!< pointer to the first entry in a chain of DXF
+                 * \c HELIX entities. */
 )
 {
 #ifdef DEBUG
@@ -896,9 +891,10 @@ dxf_helix_free_chain
 
 
 /*!
- * \brief Get the ID code from a DXF \c HELIX.
+ * \brief Get the \c id_code from a DXF \c HELIX.
  *
- * \return ID code.
+ * \return \c id_code when successful, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_helix_get_id_code
@@ -936,7 +932,10 @@ dxf_helix_get_id_code
 
 
 /*!
- * \brief Set the ID code for a DXF \c HELIX.
+ * \brief Set the \c id_code for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_id_code
@@ -976,9 +975,9 @@ dxf_helix_set_id_code
 
 
 /*!
- * \brief Get the linetype from a DXF \c HHELIX entity.
+ * \brief Get the \c linetype from a DXF \c HELIX entity.
  *
- * \return linetype when sucessful, \c NULL when an error occurred.
+ * \return \c linetype when sucessful, or \c NULL when an error occurred.
  */
 char *
 dxf_helix_get_linetype
@@ -1016,7 +1015,10 @@ dxf_helix_get_linetype
 
 
 /*!
- * \brief Set the linetype for a DXF \c HELIX entity.
+ * \brief Set the \c linetype for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_linetype
@@ -1024,7 +1026,7 @@ dxf_helix_set_linetype
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
         char *linetype
-                /*!< a string containing the linetype for the entity. */
+                /*!< a string containing the \c linetype for the entity. */
 )
 {
 #if DEBUG
@@ -1054,9 +1056,9 @@ dxf_helix_set_linetype
 
 
 /*!
- * \brief Get the layer from a DXF \c HELIX entity.
+ * \brief Get the \c layer from a DXF \c HELIX entity.
  *
- * \return layer when sucessful, \c NULL when an error occurred.
+ * \return \c layer when sucessful, or \c NULL when an error occurred.
  */
 char *
 dxf_helix_get_layer
@@ -1094,7 +1096,10 @@ dxf_helix_get_layer
 
 
 /*!
- * \brief Set the layer for a DXF \c HELIX entity.
+ * \brief Set the \c layer for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_layer
@@ -1102,7 +1107,7 @@ dxf_helix_set_layer
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
         char *layer
-                /*!< a string containing the layer for the entity. */
+                /*!< a string containing the \c layer for the entity. */
 )
 {
 #if DEBUG
@@ -1132,9 +1137,10 @@ dxf_helix_set_layer
 
 
 /*!
- * \brief Get the thickness from a DXF \c HELIX entity.
+ * \brief Get the \c thickness from a DXF \c HELIX entity.
  *
- * \return thickness.
+ * \return \c thickness when successful, or \c EXIT_FAILURE when an
+ * error occurred.
  */
 double
 dxf_helix_get_thickness
@@ -1171,7 +1177,10 @@ dxf_helix_get_thickness
 
 
 /*!
- * \brief Set the thickness for a DXF \c HELIX entity.
+ * \brief Set the \c thickness for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_thickness
@@ -1179,7 +1188,7 @@ dxf_helix_set_thickness
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
         double thickness
-                /*!< the thickness to be set for the entity. */
+                /*!< the \c thickness to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1208,9 +1217,10 @@ dxf_helix_set_thickness
 
 
 /*!
- * \brief Get the linetype scale from a DXF \c HELIX entity.
+ * \brief Get the \c linetype_scale from a DXF \c HELIX entity.
  *
- * \return linetype scale.
+ * \return \c linetype_scale when successful, or \c EXIT_FAILURE when an
+ * error occurred.
  */
 double
 dxf_helix_get_linetype_scale
@@ -1248,7 +1258,10 @@ dxf_helix_get_linetype_scale
 
 
 /*!
- * \brief Set the linetype scale for a DXF \c HELIX entity.
+ * \brief Set the \c linetype_scale for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_linetype_scale
@@ -1256,7 +1269,7 @@ dxf_helix_set_linetype_scale
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
         double linetype_scale
-                /*!< the linetype scale to be set for the entity. */
+                /*!< the \c linetype_scale to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1286,9 +1299,10 @@ dxf_helix_set_linetype_scale
 
 
 /*!
- * \brief Get the visibility from a DXF \c HELIX entity.
+ * \brief Get the \c visibility from a DXF \c HELIX entity.
  *
- * \return visibility.
+ * \return \c visibility when successful, or \c EXIT_FAILURE when an
+ * error occurred.
  */
 int16_t
 dxf_helix_get_visibility
@@ -1333,7 +1347,10 @@ dxf_helix_get_visibility
 
 
 /*!
- * \brief Set the visibility for a DXF \c HELIX entity.
+ * \brief Set the \c visibility for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_visibility
@@ -1341,7 +1358,7 @@ dxf_helix_set_visibility
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
         int16_t visibility
-                /*!< the visibility to be set for the entity. */
+                /*!< the \c visibility to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1378,9 +1395,10 @@ dxf_helix_set_visibility
 
 
 /*!
- * \brief Get the color from a DXF \c HELIX entity.
+ * \brief Get the \c color from a DXF \c HELIX entity.
  *
- * \return color.
+ * \return \c color when successful, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_helix_get_color
@@ -1417,7 +1435,10 @@ dxf_helix_get_color
 
 
 /*!
- * \brief Set the color for a DXF \c HELIX entity.
+ * \brief Set the \c color for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_color
@@ -1425,7 +1446,7 @@ dxf_helix_set_color
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
         int color
-                /*!< the color to be set for the entity. */
+                /*!< the \c color to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1456,9 +1477,10 @@ dxf_helix_set_color
 
 
 /*!
- * \brief Get the paperspace flag value from a DXF \c HELIX entity.
+ * \brief Get the \c paperspace flag value from a DXF \c HELIX entity.
  *
- * \return paperspace flag value.
+ * \return \c paperspace flag value when successful, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 int
 dxf_helix_get_paperspace
@@ -1501,7 +1523,10 @@ dxf_helix_get_paperspace
 
 
 /*!
- * \brief Set the paperspace flag for a DXF \c HELIX entity.
+ * \brief Set the \c paperspace flag for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_paperspace
@@ -1509,7 +1534,8 @@ dxf_helix_set_paperspace
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
         int paperspace
-                /*!< the paperspace flag value to be set for the entity. */
+                /*!< the \c paperspace flag value to be set for the
+                 * entity. */
 )
 {
 #if DEBUG
@@ -1546,9 +1572,10 @@ dxf_helix_set_paperspace
 
 
 /*!
- * \brief Get the graphics data size value from a DXF \c HELIX entity.
+ * \brief Get the \c graphics_data_size value from a DXF \c HELIX entity.
  *
- * \return graphics data size flag value.
+ * \return \c graphics_data_size flag value when successful, or
+ * \c EXIT_FAILURE when an error occurred.
  */
 int
 dxf_helix_get_graphics_data_size
@@ -1591,7 +1618,10 @@ dxf_helix_get_graphics_data_size
 
 
 /*!
- * \brief Set the graphics data size value for a DXF \c HELIX entity.
+ * \brief Set the \c graphics_data_size value for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_graphics_data_size
@@ -1599,7 +1629,7 @@ dxf_helix_set_graphics_data_size
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
         int graphics_data_size
-                /*!< the graphics data size value to be set for the
+                /*!< the \c graphics_data_size value to be set for the
                  * entity. */
 )
 {
@@ -1637,9 +1667,10 @@ dxf_helix_set_graphics_data_size
 
 
 /*!
- * \brief Get the shadow mode from a DXF \c HELIX entity.
+ * \brief Get the \c shadow_mode from a DXF \c HELIX entity.
  *
- * \return shadow mode.
+ * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
+ * error occurred.
  */
 int16_t
 dxf_helix_get_shadow_mode
@@ -1684,7 +1715,10 @@ dxf_helix_get_shadow_mode
 
 
 /*!
- * \brief Set the shadow mode for a DXF \c HELIX entity.
+ * \brief Set the \c shadow_mode for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_shadow_mode
@@ -1729,10 +1763,11 @@ dxf_helix_set_shadow_mode
 
 
 /*!
- * \brief Get the soft pointer to the dictionary owner from a DXF 
+ * \brief Get the pointer to the \c dictionary_owner_soft from a DXF 
  * \c HELIX entity.
  *
- * \return soft pointer to the dictionary owner.
+ * \return pointer to the \c dictionary_owner_soft, or \c NULL when an
+ * error occurred.
  *
  * \warning No checks are performed on the returned pointer (string).
  */
@@ -1772,8 +1807,11 @@ dxf_helix_get_dictionary_owner_soft
 
 
 /*!
- * \brief Set the pointer to the dictionary_owner_soft for a DXF
+ * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_dictionary_owner_soft
@@ -1782,7 +1820,7 @@ dxf_helix_set_dictionary_owner_soft
                 /*!< a pointer to a DXF \c HELIX entity. */
         char *dictionary_owner_soft
                 /*!< a string containing the pointer to the
-                 * dictionary_owner_soft for the entity. */
+                 * \c dictionary_owner_soft for the entity. */
 )
 {
 #if DEBUG
@@ -1812,9 +1850,10 @@ dxf_helix_set_dictionary_owner_soft
 
 
 /*!
- * \brief Get the visibility from a DXF \c HELIX entity.
+ * \brief Get the \c lineweight from a DXF \c HELIX entity.
  *
- * \return lineweight.
+ * \return \c lineweight when successful, or \c EXIT_FAILURE when an
+ * error occurred.
  */
 int16_t
 dxf_helix_get_lineweight
@@ -1845,7 +1884,10 @@ dxf_helix_get_lineweight
 
 
 /*!
- * \brief Set the lineweight for a DXF \c HELIX entity.
+ * \brief Set the \c lineweight for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_lineweight
@@ -1853,7 +1895,7 @@ dxf_helix_set_lineweight
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
         int16_t lineweight
-                /*!< the lineweight to be set for the entity. */
+                /*!< the \c lineweight to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1876,9 +1918,9 @@ dxf_helix_set_lineweight
 
 
 /*!
- * \brief Get the plot_style_name from a DXF \c HELIX entity.
+ * \brief Get the \c plot_style_name from a DXF \c HELIX entity.
  *
- * \return plot_style_name when sucessful, \c NULL when an error
+ * \return \c plot_style_name when sucessful, or \c NULL when an error
  * occurred.
  */
 char *
@@ -1917,7 +1959,10 @@ dxf_helix_get_plot_style_name
 
 
 /*!
- * \brief Set the plot_style_name for a DXF \c HELIX entity.
+ * \brief Set the \c plot_style_name for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_plot_style_name
@@ -1925,7 +1970,7 @@ dxf_helix_set_plot_style_name
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
         char *plot_style_name
-                /*!< a string containing the plot_style_name for the
+                /*!< a string containing the \c plot_style_name for the
                  * entity. */
 )
 {
@@ -1956,9 +2001,10 @@ dxf_helix_set_plot_style_name
 
 
 /*!
- * \brief Get the color_value from a DXF \c HELIX entity.
+ * \brief Get the \c color_value from a DXF \c HELIX entity.
  *
- * \return color_value.
+ * \return \c color_value when successful, or \c EXIT_FAILURE when an
+ * error occurred.
  */
 long
 dxf_helix_get_color_value
@@ -1989,7 +2035,10 @@ dxf_helix_get_color_value
 
 
 /*!
- * \brief Set the color_value for a DXF \c HELIX entity.
+ * \brief Set the \c color_value for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_color_value
@@ -1997,7 +2046,7 @@ dxf_helix_set_color_value
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
         long color_value
-                /*!< the color_value to be set for the entity. */
+                /*!< the \c color_value to be set for the entity. */
 )
 {
 #if DEBUG
@@ -2020,9 +2069,9 @@ dxf_helix_set_color_value
 
 
 /*!
- * \brief Get the color_name from a DXF \c HELIX entity.
+ * \brief Get the \c color_name from a DXF \c HELIX entity.
  *
- * \return color_name when sucessful, \c NULL when an error
+ * \return \c color_name when sucessful, or \c NULL when an error
  * occurred.
  */
 char *
@@ -2061,7 +2110,10 @@ dxf_helix_get_color_name
 
 
 /*!
- * \brief Set the color_name for a DXF \c HELIX entity.
+ * \brief Set the \c color_name for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_color_name
@@ -2069,7 +2121,8 @@ dxf_helix_set_color_name
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
         char *color_name
-                /*!< a string containing the color_name for the entity. */
+                /*!< a string containing the \c color_name for the
+                 * entity. */
 )
 {
 #if DEBUG
@@ -2099,9 +2152,10 @@ dxf_helix_set_color_name
 
 
 /*!
- * \brief Get the transparency from a DXF \c HELIX entity.
+ * \brief Get the \c transparency from a DXF \c HELIX entity.
  *
- * \return transparency.
+ * \return \c transparency when successful, or \c EXIT_FAILURE when an
+ * error occurred.
  */
 long
 dxf_helix_get_transparency
@@ -2132,7 +2186,10 @@ dxf_helix_get_transparency
 
 
 /*!
- * \brief Set the transparency for a DXF \c HELIX entity.
+ * \brief Set the \c transparency for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_transparency
@@ -2140,7 +2197,7 @@ dxf_helix_set_transparency
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX entity. */
         long transparency
-                /*!< the transparency to be set for the entity. */
+                /*!< the \c transparency to be set for the entity. */
 )
 {
 #if DEBUG
@@ -2163,9 +2220,10 @@ dxf_helix_set_transparency
 
 
 /*!
- * \brief Get the axis base point X-value from a DXF \c HELIX.
+ * \brief Get the axis base point X-value \c x0 from a DXF \c HELIX.
  *
- * \return axis base point X-value.
+ * \return axis base point X-value \c x0 when successful, or
+ * \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_helix_get_x0
@@ -2196,7 +2254,10 @@ dxf_helix_get_x0
 
 
 /*!
- * \brief Set the axis base point X-value for a DXF \c HELIX.
+ * \brief Set the axis base point X-value \c x0 for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_x0
@@ -2204,7 +2265,7 @@ dxf_helix_set_x0
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double x0
-                /*!< the axis base point X-value to be set for the
+                /*!< the axis base point X-value \c x0 to be set for the
                  * entity. */
 )
 {
@@ -2228,9 +2289,10 @@ dxf_helix_set_x0
 
 
 /*!
- * \brief Get the axis base point Y-value from a DXF \c HELIX.
+ * \brief Get the axis base point Y-value \c y0 from a DXF \c HELIX.
  *
- * \return axis base point Y-value.
+ * \return axis base point Y-value \c y0 when successful, or
+ * \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_helix_get_y0
@@ -2261,7 +2323,10 @@ dxf_helix_get_y0
 
 
 /*!
- * \brief Set the axis base point Y-value for a DXF \c HELIX.
+ * \brief Set the axis base point Y-value \c y0 for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_y0
@@ -2269,7 +2334,7 @@ dxf_helix_set_y0
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double y0
-                /*!< the axis base point Y-value to be set for the
+                /*!< the axis base point Y-value \c y0 to be set for the
                  * entity. */
 )
 {
@@ -2293,9 +2358,10 @@ dxf_helix_set_y0
 
 
 /*!
- * \brief Get the axis base point Z-value from a DXF \c HELIX.
+ * \brief Get the axis base point Z-value \c z0 from a DXF \c HELIX.
  *
- * \return axis base point Z-value.
+ * \return axis base point Z-value \c z0 when successful, or
+ * \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_helix_get_z0
@@ -2326,7 +2392,10 @@ dxf_helix_get_z0
 
 
 /*!
- * \brief Set the axis base point Z-value for a DXF \c HELIX.
+ * \brief Set the axis base point Z-value \c z0 for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_z0
@@ -2334,7 +2403,7 @@ dxf_helix_set_z0
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double z0
-                /*!< the axis base point Z-value to be set for the
+                /*!< the axis base point Z-value \c z0 to be set for the
                  * entity. */
 )
 {
@@ -2358,9 +2427,10 @@ dxf_helix_set_z0
 
 
 /*!
- * \brief Get the start point X-value from a DXF \c HELIX.
+ * \brief Get the start point X-value \c x1 from a DXF \c HELIX.
  *
- * \return start point X-value.
+ * \return start point X-value \c x1 when successful, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_helix_get_x1
@@ -2391,7 +2461,10 @@ dxf_helix_get_x1
 
 
 /*!
- * \brief Set the start point X-value for a DXF \c HELIX.
+ * \brief Set the start point X-value \c x1 for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_x1
@@ -2399,7 +2472,8 @@ dxf_helix_set_x1
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double x1
-                /*!< the start point X-value to be set for the entity. */
+                /*!< the start point X-value \c x1 to be set for the
+                 * entity. */
 )
 {
 #if DEBUG
@@ -2422,9 +2496,10 @@ dxf_helix_set_x1
 
 
 /*!
- * \brief Get the start point Y-value from a DXF \c HELIX.
+ * \brief Get the start point Y-value \c y1 from a DXF \c HELIX.
  *
- * \return start point Y-value.
+ * \return start point Y-value \c y1 when successful, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_helix_get_y1
@@ -2455,7 +2530,10 @@ dxf_helix_get_y1
 
 
 /*!
- * \brief Set the start point Y-value for a DXF \c HELIX.
+ * \brief Set the start point Y-value \c y1 for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_y1
@@ -2463,7 +2541,7 @@ dxf_helix_set_y1
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double y1
-                /*!< the start point Y-value to be set for the entity. */
+                /*!< the start point Y-value \c y1 to be set for the entity. */
 )
 {
 #if DEBUG
@@ -2486,9 +2564,10 @@ dxf_helix_set_y1
 
 
 /*!
- * \brief Get the start point Z-value from a DXF \c HELIX.
+ * \brief Get the start point Z-value \c z1 from a DXF \c HELIX.
  *
- * \return start point Z-value.
+ * \return start point Z-value \c z1 when successful, or \c EXIT_FAILURE
+ * when an rror occurred.
  */
 double
 dxf_helix_get_z1
@@ -2519,7 +2598,10 @@ dxf_helix_get_z1
 
 
 /*!
- * \brief Set the start point Z-value for a DXF \c HELIX.
+ * \brief Set the start point Z-value \c z1 for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_z1
@@ -2527,7 +2609,8 @@ dxf_helix_set_z1
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double z1
-                /*!< the start point Z-value to be set for the entity. */
+                /*!< the start point Z-value \c z1 to be set for the
+                 * entity. */
 )
 {
 #if DEBUG
@@ -2550,9 +2633,10 @@ dxf_helix_set_z1
 
 
 /*!
- * \brief Get the axis vector point X-value from a DXF \c HELIX.
+ * \brief Get the axis vector point X-value \c x2 from a DXF \c HELIX.
  *
- * \return axis vector point X-value.
+ * \return axis vector point X-value \c x2 when successful, or
+ * \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_helix_get_x2
@@ -2583,7 +2667,10 @@ dxf_helix_get_x2
 
 
 /*!
- * \brief Set the axis vector point X-value for a DXF \c HELIX.
+ * \brief Set the axis vector point X-value \c x2 for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_x2
@@ -2591,7 +2678,7 @@ dxf_helix_set_x2
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double x2
-                /*!< the axis vector point X-value to be set for the
+                /*!< the axis vector point X-value \c x2 to be set for the
                  * entity. */
 )
 {
@@ -2615,9 +2702,10 @@ dxf_helix_set_x2
 
 
 /*!
- * \brief Get the axis vector point Y-value from a DXF \c HELIX.
+ * \brief Get the axis vector point Y-value \c y2 from a DXF \c HELIX.
  *
- * \return axis vector point Y-value.
+ * \return axis vector point Y-value \c y2 when successful, or
+ * \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_helix_get_y2
@@ -2648,7 +2736,10 @@ dxf_helix_get_y2
 
 
 /*!
- * \brief Set the axis vector point Y-value for a DXF \c HELIX.
+ * \brief Set the axis vector point Y-value \c y2 for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_y2
@@ -2656,8 +2747,8 @@ dxf_helix_set_y2
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double y2
-                /*!< the axis vector point Y-value to be set for the
-                 * entity. */
+                /*!< the axis vector point Y-value \c y2 to be set for
+                 * the entity. */
 )
 {
 #if DEBUG
@@ -2680,9 +2771,10 @@ dxf_helix_set_y2
 
 
 /*!
- * \brief Get the axis vector point Z-value from a DXF \c HELIX.
+ * \brief Get the axis vector point Z-value \c z2 from a DXF \c HELIX.
  *
- * \return axis vector point Z-value.
+ * \return axis vector point Z-value \c z2 when successful, or
+ * \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_helix_get_z2
@@ -2713,7 +2805,10 @@ dxf_helix_get_z2
 
 
 /*!
- * \brief Set the axis vector point Z-value for a DXF \c HELIX.
+ * \brief Set the axis vector point Z-value \c z2 for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_z2
@@ -2721,8 +2816,8 @@ dxf_helix_set_z2
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double z2
-                /*!< the axis vector point Z-value to be set for the
-                 * entity. */
+                /*!< the axis vector point Z-value \c z2 to be set for
+                 * the entity. */
 )
 {
 #if DEBUG
@@ -2745,9 +2840,10 @@ dxf_helix_set_z2
 
 
 /*!
- * \brief Get the radius from a DXF \c HELIX entity.
+ * \brief Get the \c radius from a DXF \c HELIX entity.
  *
- * \return radius.
+ * \return \c radius when successful, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 double
 dxf_helix_get_radius
@@ -2778,7 +2874,10 @@ dxf_helix_get_radius
 
 
 /*!
- * \brief Set the radius for a DXF \c HELIX.
+ * \brief Set the \c radius for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_radius
@@ -2786,7 +2885,7 @@ dxf_helix_set_radius
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double radius
-                /*!< the radius to be set for the entity. */
+                /*!< the \c radius to be set for the entity. */
 )
 {
 #if DEBUG
@@ -2809,9 +2908,10 @@ dxf_helix_set_radius
 
 
 /*!
- * \brief Get the number_of_turns from a DXF \c HELIX entity.
+ * \brief Get the \c number_of_turns from a DXF \c HELIX entity.
  *
- * \return number_of_turns.
+ * \return \c number_of_turns when successful, or \c EXIT_FAILURE when
+ * an error occurred.
  */
 double
 dxf_helix_get_number_of_turns
@@ -2842,7 +2942,10 @@ dxf_helix_get_number_of_turns
 
 
 /*!
- * \brief Set the number_of_turns for a DXF \c HELIX.
+ * \brief Set the \c number_of_turns for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_number_of_turns
@@ -2850,7 +2953,7 @@ dxf_helix_set_number_of_turns
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double number_of_turns
-                /*!< the number_of_turns to be set for the entity. */
+                /*!< the \c number_of_turns to be set for the entity. */
 )
 {
 #if DEBUG
@@ -2873,9 +2976,10 @@ dxf_helix_set_number_of_turns
 
 
 /*!
- * \brief Get the turn_height from a DXF \c HELIX entity.
+ * \brief Get the \c turn_height from a DXF \c HELIX entity.
  *
- * \return turn_height.
+ * \return \c turn_height when successful, or \c EXIT_FAILURE when an
+ * error occurred.
  */
 double
 dxf_helix_get_turn_height
@@ -2906,7 +3010,10 @@ dxf_helix_get_turn_height
 
 
 /*!
- * \brief Set the turn_height for a DXF \c HELIX.
+ * \brief Set the \c turn_height for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_turn_height
@@ -2914,7 +3021,7 @@ dxf_helix_set_turn_height
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         double turn_height
-                /*!< the turn_height to be set for the entity. */
+                /*!< the \c turn_height to be set for the entity. */
 )
 {
 #if DEBUG
@@ -2937,9 +3044,10 @@ dxf_helix_set_turn_height
 
 
 /*!
- * \brief Get the major_release_number from a DXF \c HELIX entity.
+ * \brief Get the \c major_release_number from a DXF \c HELIX entity.
  *
- * \return major_release_number.
+ * \return \c major_release_number when successful, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 long
 dxf_helix_get_major_release_number
@@ -2970,7 +3078,10 @@ dxf_helix_get_major_release_number
 
 
 /*!
- * \brief Set the major_release_number for a DXF \c HELIX.
+ * \brief Set the \c major_release_number for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_major_release_number
@@ -2978,7 +3089,8 @@ dxf_helix_set_major_release_number
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         long major_release_number
-                /*!< the major_release_number to be set for the entity. */
+                /*!< the \c major_release_number to be set for the
+                 * entity. */
 )
 {
 #if DEBUG
@@ -3001,9 +3113,11 @@ dxf_helix_set_major_release_number
 
 
 /*!
- * \brief Get the maintainance_release_number from a DXF \c HELIX entity.
+ * \brief Get the \c maintainance_release_number from a DXF \c HELIX
+ * entity.
  *
- * \return maintainance_release_number.
+ * \return \c maintainance_release_number when successful, or
+ * \c EXIT_FAILURE when an error occurred.
  */
 long
 dxf_helix_get_maintainance_release_number
@@ -3034,7 +3148,10 @@ dxf_helix_get_maintainance_release_number
 
 
 /*!
- * \brief Set the maintainance_release_number for a DXF \c HELIX.
+ * \brief Set the \c maintainance_release_number for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_maintainance_release_number
@@ -3042,8 +3159,8 @@ dxf_helix_set_maintainance_release_number
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         long maintainance_release_number
-                /*!< the maintainance_release_number to be set for the
-                 * entity. */
+                /*!< the \c maintainance_release_number to be set for
+                 * the entity. */
 )
 {
 #if DEBUG
@@ -3066,9 +3183,10 @@ dxf_helix_set_maintainance_release_number
 
 
 /*!
- * \brief Get the constraint_type from a DXF \c HELIX.
+ * \brief Get the \c constraint_type from a DXF \c HELIX.
  *
- * \return constraint_type.
+ * \return \c constraint_type when successful, or \c EXIT_FAILURE when
+ * an error occurred.
  */
 int
 dxf_helix_get_constraint_type
@@ -3113,7 +3231,10 @@ dxf_helix_get_constraint_type
 
 
 /*!
- * \brief Set the constraint_type for a DXF \c HELIX.
+ * \brief Set the \c constraint_type for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_constraint_type
@@ -3121,7 +3242,7 @@ dxf_helix_set_constraint_type
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         int constraint_type
-                /*!< constraint_type. */
+                /*!< the \c constraint_type to be set for the entity. */
 )
 {
 #if DEBUG
@@ -3160,7 +3281,8 @@ dxf_helix_set_constraint_type
 /*!
  * \brief Get the \c handedness from a DXF \c HELIX.
  *
- * \return \c handedness.
+ * \return \c handedness when successful, or \c EXIT_FAILURE when an
+ * error occurred.
  */
 int
 dxf_helix_get_handedness
@@ -3206,6 +3328,9 @@ dxf_helix_get_handedness
 
 /*!
  * \brief Set the \c handedness for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_handedness
@@ -3213,7 +3338,7 @@ dxf_helix_set_handedness
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         int handedness
-                /*!< \c handedness. */
+                /*!< the \c handedness to be set for the entity. */
 )
 {
 #if DEBUG
@@ -3252,7 +3377,8 @@ dxf_helix_set_handedness
 /*!
  * \brief Get the \c spline from a DXF \c HELIX.
  *
- * \return \c spline.
+ * \return \c spline when successful, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 DxfSpline *
 dxf_helix_get_spline
@@ -3291,6 +3417,9 @@ dxf_helix_get_spline
 
 /*!
  * \brief Set the \c spline for a DXF \c HELIX.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_spline
@@ -3298,7 +3427,7 @@ dxf_helix_set_spline
         DxfHelix *helix,
                 /*!< a pointer to a DXF \c HELIX. */
         DxfSpline *spline
-                /*!< \c spline. */
+                /*!< the \c spline to be set for the entity. */
 )
 {
 #if DEBUG
@@ -3373,6 +3502,9 @@ dxf_helix_get_next
 /*!
  * \brief Set the pointer to the next \c HELIX for a DXF \c HELIX
  * entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_next
