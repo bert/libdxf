@@ -291,6 +291,11 @@ dxf_spline_free_chain
 (
         DxfSpline *splines
 );
+int
+dxf_spline_get_id_code
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */

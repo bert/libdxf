@@ -1052,4 +1052,45 @@ dxf_spline_free_chain
 }
 
 
+/*!
+ * \brief Get the \c id_code from a DXF \c SPLINE.
+ *
+ * \return \c id_code when successful, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_spline_get_id_code
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (spline->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the id_code member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = spline->id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
