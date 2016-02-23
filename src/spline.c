@@ -1,7 +1,7 @@
 /*!
  * \file spline.c
  * 
- * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * 
  * \brief Functions for a DXF spline entity (\c SPLINE).
  *
@@ -196,7 +196,12 @@
  *
  * \image html dxf_spline_last_tangent_point.png
  *
- * 
+ * \version According to DXF R10 (backward compatibility). 
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -234,12 +239,6 @@
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility). 
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfSpline *
 dxf_spline_new ()
@@ -277,12 +276,6 @@ dxf_spline_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility). 
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfSpline *
 dxf_spline_init
@@ -376,13 +369,7 @@ dxf_spline_init
  * section marker \c ENDSEC. \n
  * While parsing the DXF file store data in \c spline. \n
  *
- * \return a pointer to \c spline.
- *
- * \version According to DXF R10 (backward compatibility). 
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c spline, or \c NULL when an error occurred.
  */
 DxfSpline *
 dxf_spline_read
@@ -790,12 +777,6 @@ dxf_spline_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_spline_write
@@ -998,12 +979,6 @@ dxf_spline_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility). 
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_spline_free
@@ -1048,12 +1023,6 @@ dxf_spline_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c SPLINE
  * entities and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility). 
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_spline_free_chain
