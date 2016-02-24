@@ -307,6 +307,12 @@ dxf_spline_get_linetype
 (
         DxfSpline *spline
 );
+DxfSpline *
+dxf_spline_set_linetype
+(
+        DxfSpline *spline,
+        char *linetype
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
