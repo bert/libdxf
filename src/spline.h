@@ -318,6 +318,12 @@ dxf_spline_get_layer
 (
         DxfSpline *spline
 );
+DxfSpline *
+dxf_spline_set_layer
+(
+        DxfSpline *spline,
+        char *layer
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
