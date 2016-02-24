@@ -1135,4 +1135,44 @@ dxf_spline_set_id_code
 }
 
 
+/*!
+ * \brief Get the \c linetype from a DXF \c SPLINE entity.
+ *
+ * \return \c linetype when sucessful, or \c NULL when an error occurred.
+ */
+char *
+dxf_spline_get_linetype
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spline->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the linetype member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (spline->linetype);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
