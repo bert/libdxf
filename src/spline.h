@@ -296,6 +296,12 @@ dxf_spline_get_id_code
 (
         DxfSpline *spline
 );
+DxfSpline *
+dxf_spline_set_id_code
+(
+        DxfSpline *spline,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
