@@ -348,6 +348,11 @@ dxf_spline_set_thickness
         double thickness
                 /*!< the \c thickness to be set for the entity. */
 );
+double
+dxf_spline_get_linetype_scale
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
