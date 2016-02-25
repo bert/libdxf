@@ -335,6 +335,11 @@ dxf_spline_set_elevation
         DxfSpline *spline,
         double elevation
 );
+double
+dxf_spline_get_thickness
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
