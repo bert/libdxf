@@ -1297,4 +1297,38 @@ dxf_spline_set_layer
 }
 
 
+/*!
+ * \brief Get the \c elevation from a DXF \c SPLINE entity.
+ *
+ * \return \c elevation when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+double
+dxf_spline_get_elevation
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = spline->elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

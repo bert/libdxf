@@ -324,6 +324,11 @@ dxf_spline_set_layer
         DxfSpline *spline,
         char *layer
 );
+double
+dxf_spline_get_elevation
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
