@@ -340,6 +340,14 @@ dxf_spline_get_thickness
 (
         DxfSpline *spline
 );
+DxfSpline *
+dxf_spline_set_thickness
+(
+        DxfSpline *spline,
+                /*!< a pointer to a DXF \c SPLINE entity. */
+        double thickness
+                /*!< the \c thickness to be set for the entity. */
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
