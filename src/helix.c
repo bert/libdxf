@@ -1121,7 +1121,7 @@ dxf_helix_set_layer
                   __FUNCTION__);
                 return (NULL);
         }
-        if (helix == NULL)
+        if (layer == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
