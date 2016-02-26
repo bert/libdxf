@@ -381,6 +381,11 @@ dxf_spline_set_color
         DxfSpline *spline,
         int color
 );
+int
+dxf_spline_get_paperspace
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
