@@ -1623,4 +1623,44 @@ dxf_spline_set_visibility
 }
 
 
+/*!
+ * \brief Get the \c color from a DXF \c SPLINE entity.
+ *
+ * \return \c color when successful, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_spline_get_color
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (spline->color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the color member.\n")),
+                  __FUNCTION__);
+        }
+        result = spline->color;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

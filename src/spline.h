@@ -370,6 +370,11 @@ dxf_spline_set_visibility
         DxfSpline *spline,
         int16_t visibility
 );
+int
+dxf_spline_get_color
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
