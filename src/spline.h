@@ -353,6 +353,12 @@ dxf_spline_get_linetype_scale
 (
         DxfSpline *spline
 );
+DxfSpline *
+dxf_spline_set_linetype_scale
+(
+        DxfSpline *spline,
+        double linetype_scale
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
