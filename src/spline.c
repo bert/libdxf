@@ -1527,4 +1527,52 @@ dxf_spline_set_linetype_scale
 }
 
 
+/*!
+ * \brief Get the \c visibility from a DXF \c SPLINE entity.
+ *
+ * \return \c visibility when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int16_t
+dxf_spline_get_visibility
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int16_t result;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (spline->visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the visibility member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (spline->visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the visibility member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = spline->visibility;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
