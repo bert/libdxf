@@ -315,6 +315,7 @@ dxf_spline_init
         spline->paperspace = DXF_MODELSPACE;
         spline->graphics_data_size = 0;
         spline->shadow_mode = 0;
+        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) spline->binary_graphics_data);
         spline->dictionary_owner_soft = strdup ("");
         spline->material = strdup ("");
         spline->dictionary_owner_hard = strdup ("");
@@ -325,7 +326,6 @@ dxf_spline_init
         spline->transparency = 0;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                spline->binary_graphics_data[i] = strdup ("");
                 spline->x0[i] = 0.0;
                 spline->y0[i] = 0.0;
                 spline->z0[i] = 0.0;
@@ -392,7 +392,7 @@ dxf_spline_read
         int i_z1;
         int i_knot_value;
         int i_weight_value;
-        int i_graphics_data_size;
+        DxfBinaryGraphicsData *binary_graphics_data = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -420,7 +420,7 @@ dxf_spline_read
         i_z1 = 0;
         i_knot_value = 0;
         i_weight_value = 0;
-        i_graphics_data_size = 0;
+        binary_graphics_data = (DxfBinaryGraphicsData *) spline->binary_graphics_data;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -682,8 +682,9 @@ dxf_spline_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", spline->binary_graphics_data[i_graphics_data_size]);
-                        i_graphics_data_size++;
+                        fscanf (fp->fp, "%s\n", binary_graphics_data->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) binary_graphics_data->next);
+                        binary_graphics_data = (DxfBinaryGraphicsData *) binary_graphics_data->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -792,6 +793,7 @@ dxf_spline_write
 #endif
         char *dxf_entity_name = strdup ("SPLINE");
         int i;
+        DxfBinaryGraphicsData *binary_graphics_data = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -839,6 +841,7 @@ dxf_spline_write
                 spline->layer = DXF_DEFAULT_LAYER;
         }
         /* Start writing output. */
+        binary_graphics_data = (DxfBinaryGraphicsData *) spline->binary_graphics_data;
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (spline->id_code != -1)
         {
@@ -907,11 +910,10 @@ dxf_spline_write
                 fprintf (fp->fp, " 60\n%d\n", spline->visibility);
         }
         fprintf (fp->fp, " 92\n%d\n", spline->graphics_data_size);
-        i = 0;
-        while (strlen (spline->binary_graphics_data[i]) > 0)
+        while (binary_graphics_data != NULL)
         {
-                fprintf (fp->fp, "310\n%s\n", spline->binary_graphics_data[i]);
-                i++;
+                fprintf (fp->fp, "310\n%s\n", binary_graphics_data->data_line);
+                binary_graphics_data = (DxfBinaryGraphicsData *) binary_graphics_data->next;
         }
         fprintf (fp->fp, "420\n%ld\n", spline->color_value);
         fprintf (fp->fp, "430\n%s\n", spline->color_name);
@@ -991,8 +993,6 @@ dxf_spline_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         if (spline->next != NULL)
         {
               fprintf (stderr,
@@ -1007,10 +1007,7 @@ dxf_spline_free
         free (spline->dictionary_owner_hard);
         free (spline->plot_style_name);
         free (spline->color_name);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (spline->binary_graphics_data[i]);
-        }
+        dxf_binary_graphics_data_free_chain (spline->binary_graphics_data);
         free (spline);
         spline = NULL;
 #if DEBUG

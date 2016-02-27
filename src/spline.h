@@ -37,6 +37,7 @@
 
 
 #include "global.h"
+#include "binary_graphics_data.h"
 
 
 #define DXF_SPLINE_KNOT_TOLERANCE_DEFAULT 0.0000001
@@ -115,7 +116,7 @@ dxf_spline_struct
                  * <li value = "3"> Ignores shadows.</li>
                  * </ol>\n
                  * Group code = 284. */
-        char *binary_graphics_data[DXF_MAX_PARAM];
+        DxfBinaryGraphicsData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
