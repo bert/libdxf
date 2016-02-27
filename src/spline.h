@@ -386,6 +386,12 @@ dxf_spline_get_paperspace
 (
         DxfSpline *spline
 );
+DxfSpline *
+dxf_spline_set_paperspace
+(
+        DxfSpline *spline,
+        int paperspace
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
