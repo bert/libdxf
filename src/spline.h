@@ -39,6 +39,11 @@
 #include "global.h"
 
 
+#define DXF_SPLINE_KNOT_TOLERANCE_DEFAULT 0.0000001
+#define DXF_SPLINE_CONTROL_POINT_TOLERANCE_DEFAULT 0.0000001
+#define DXF_SPLINE_FIT_TOLERANCE_DEFAULT 0.0000000001
+
+
 /*!
  * \brief Definition of an AutoCAD spline entity (\c SPLINE).
  *

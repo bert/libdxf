@@ -344,9 +344,9 @@ dxf_spline_init
         spline->extr_x0 = 0.0;
         spline->extr_y0 = 0.0;
         spline->extr_z0 = 0.0;
-        spline->knot_tolerance = 0.0;
-        spline->control_point_tolerance = 0.0;
-        spline->fit_tolerance = 0.0;
+        spline->knot_tolerance = DXF_SPLINE_KNOT_TOLERANCE_DEFAULT;
+        spline->control_point_tolerance = DXF_SPLINE_CONTROL_POINT_TOLERANCE_DEFAULT;
+        spline->fit_tolerance = DXF_SPLINE_FIT_TOLERANCE_DEFAULT;
         spline->flag = 0;
         spline->degree = 0;
         spline->number_of_knots = 0;
