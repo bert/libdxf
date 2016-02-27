@@ -397,6 +397,12 @@ dxf_spline_get_graphics_data_size
 (
         DxfSpline *spline
 );
+DxfSpline *
+dxf_spline_set_graphics_data_size
+(
+        DxfSpline *spline,
+        int graphics_data_size
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
