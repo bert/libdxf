@@ -177,14 +177,6 @@ dxf_helix_read
 #endif
         char *temp_string = NULL;
         int i;
-        int i_x0;
-        int i_y0;
-        int i_z0;
-        int i_x1;
-        int i_y1;
-        int i_z1;
-        int i_knot_value;
-        int i_weight_value;
         DxfBinaryGraphicsData *binary_graphics_data = NULL;
 
         /* Do some basic checks. */
@@ -389,105 +381,7 @@ dxf_helix_read
                         fscanf (fp->fp, "%s\n", temp_string);
                         if ((strcmp (temp_string, "AcDbSpline") == 0))
                         {
-                                /*! \todo Parse the helix spline. */
-                                i_x0 = 0;
-                                i_y0 = 0;
-                                i_z0 = 0;
-                                i_x1 = 0;
-                                i_y1 = 0;
-                                i_z1 = 0;
-                                i_knot_value = 0;
-                                i_weight_value = 0;
-                                (fp->line_number)++;
-                                fscanf (fp->fp, "%[^\n]", temp_string);
-                                while (strcmp (temp_string, "0") != 0)
-                                {
-                                        if (strcmp (temp_string, "6") == 0)
-                                        {
-                                                /* Now follows a string containing a linetype
-                                                 * name. */
-                                                (fp->line_number)++;
-                                                fscanf (fp->fp, "%s\n", helix->spline->linetype);
-                                        }
-                                        else if (strcmp (temp_string, "8") == 0)
-                                        {
-                                                /* Now follows a string containing a layer name. */
-                                                (fp->line_number)++;
-                                                fscanf (fp->fp, "%s\n", helix->spline->layer);
-                                        }
-                                        else if (strcmp (temp_string, "10") == 0)
-                                        {
-                                                /* Now follows a string containing the
-                                                 * X-value of the control point coordinate
-                                                 * (multiple entries). */
-                                                (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline->x0[i_x0]);
-                                                i_x0++;
-                                        }
-                                        else if (strcmp (temp_string, "20") == 0)
-                                        {
-                                                /* Now follows a string containing the
-                                                 * Y-coordinate of control point coordinate
-                                                 * (multiple entries). */
-                                                (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline->y0[i_y0]);
-                                                i_y0++;
-                                        }
-                                        else if (strcmp (temp_string, "30") == 0)
-                                        {
-                                                /* Now follows a string containing the
-                                                 * Z-coordinate of the control point coordinate
-                                                 * (multiple entries). */
-                                                (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline->z0[i_z0]);
-                                                i_z0++;
-                                        }
-                                        else if (strcmp (temp_string, "40") == 0)
-                                        {
-                                                /* Now follows a knot value (one entry per knot, multiple entries). */
-                                                (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline->knot_value[i_knot_value]);
-                                                i_knot_value++;
-                                        }
-                                        else if (strcmp (temp_string, "41") == 0)
-                                        {
-                                                /* Now follows a weight value (one entry per knot, multiple entries). */
-                                                (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline->weight_value[i_weight_value]);
-                                                i_weight_value++;
-                                        }
-                                        else if (strcmp (temp_string, "42") == 0)
-                                        {
-                                                /* Now follows a knot tolerance value. */
-                                                (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline->knot_tolerance);
-                                                i_knot_value++;
-                                        }
-                                        else if (strcmp (temp_string, "43") == 0)
-                                        {
-                                                /* Now follows a control point tolerance value. */
-                                                (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline->control_point_tolerance);
-                                        }
-                                        else if (strcmp (temp_string, "44") == 0)
-                                        {
-                                                /* Now follows a fit point tolerance value. */
-                                                (fp->line_number)++;
-                                                fscanf (fp->fp, "%lf\n", &helix->spline->fit_tolerance);
-                                        }
-                                        else if (strcmp (temp_string, "999") == 0)
-                                        {
-                                                /* Now follows a string containing a comment. */
-                                                (fp->line_number)++;
-                                                fscanf (fp->fp, "%s\n", temp_string);
-                                                fprintf (stdout, "DXF comment: %s\n", temp_string);
-                                        }
-                                        else
-                                        {
-                                                fprintf (stderr, "Warning: in dxf_spline_read () unknown string tag found while reading from: %s in line: %d.\n",
-                                                        fp->filename, fp->line_number);
-                                        }
-                                }
+                                helix->spline = dxf_spline_read (fp, helix->spline);
                         }
                         else if ((strcmp (temp_string, "AcDbEntity") != 0)
                                 && ((strcmp (temp_string, "AcDbHelix") != 0)))
