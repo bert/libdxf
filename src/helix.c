@@ -185,6 +185,7 @@ dxf_helix_read
         int i_z1;
         int i_knot_value;
         int i_weight_value;
+        DxfBinaryGraphicsData *binary_graphics_data = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -205,6 +206,7 @@ dxf_helix_read
                 helix = dxf_helix_init (helix);
         }
         i = 0;
+        binary_graphics_data = (DxfBinaryGraphicsData *) helix->binary_graphics_data;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -528,10 +530,9 @@ dxf_helix_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        /*! \todo parse binary graphics data. */
-/*
-                        fscanf (fp->fp, "%s\n", helix->binary_graphics_data);
- */
+                        fscanf (fp->fp, "%s\n", binary_graphics_data->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) binary_graphics_data->next);
+                        binary_graphics_data = (DxfBinaryGraphicsData *) binary_graphics_data->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -640,7 +641,7 @@ dxf_helix_write
 #endif
         char *dxf_entity_name = strdup ("HELIX");
         int i;
-        DxfBinaryGraphicsData *data = NULL;
+        DxfBinaryGraphicsData *binary_graphics_data = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -733,11 +734,11 @@ dxf_helix_write
                 fprintf (fp->fp, " 60\n%d\n", helix->visibility);
         }
         fprintf (fp->fp, " 92\n%d\n", helix->graphics_data_size);
-        data = (DxfBinaryGraphicsData *) helix->binary_graphics_data;
-        while (data != NULL)
+        binary_graphics_data = (DxfBinaryGraphicsData *) helix->binary_graphics_data;
+        while (binary_graphics_data != NULL)
         {
-                fprintf (fp->fp, "310\n%s\n", data->data_line);
-                data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (data);
+                fprintf (fp->fp, "310\n%s\n", binary_graphics_data->data_line);
+                binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (binary_graphics_data);
         }
         fprintf (fp->fp, "370\n%d\n", helix->lineweight);
         fprintf (fp->fp, "420\n%ld\n", helix->color_value);
