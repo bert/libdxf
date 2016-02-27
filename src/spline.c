@@ -1800,4 +1800,50 @@ dxf_spline_set_paperspace
 }
 
 
+/*!
+ * \brief Get the \c graphics_data_size value from a DXF \c SPLINE entity.
+ *
+ * \return \c graphics_data_size flag value when successful, or
+ * \c EXIT_FAILURE when an error occurred.
+ */
+int
+dxf_spline_get_graphics_data_size
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (spline->graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the graphics_data_size member.\n")),
+                  __FUNCTION__);
+        }
+        if (spline->graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
+                  __FUNCTION__);
+        }
+        result = spline->graphics_data_size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
