@@ -1988,4 +1988,47 @@ dxf_spline_set_shadow_mode
 }
 
 
+/*!
+ * \brief Get the pointer to the binary graphics data from a DXF 
+ * \c SPLINE entity.
+ *
+ * \return pointer to the binary graphics data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryGraphicsData *
+dxf_spline_get_binary_graphics_data
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfBinaryGraphicsData *result;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spline->binary_graphics_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the binary_graphics_data member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfBinaryGraphicsData *) spline->binary_graphics_data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

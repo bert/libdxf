@@ -420,6 +420,11 @@ dxf_spline_set_shadow_mode
         DxfSpline *spline,
         int16_t shadow_mode
 );
+DxfBinaryGraphicsData *
+dxf_spline_get_binary_graphics_data
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
