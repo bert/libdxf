@@ -1807,6 +1807,46 @@ dxf_helix_get_binary_graphics_data
 
 
 /*!
+ * \brief Set the pointer to the binary_graphics_data for a DXF
+ * \c HELIX entity.
+ */
+DxfHelix *
+dxf_helix_set_binary_graphics_data
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX entity. */
+        DxfBinaryGraphicsData *data
+                /*!< a string containing the pointer to the
+                 * binary_graphics_data for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->binary_graphics_data = (struct DxfBinaryGraphicsData *) data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
+/*!
  * \brief Get the pointer to the \c dictionary_owner_soft from a DXF 
  * \c HELIX entity.
  *

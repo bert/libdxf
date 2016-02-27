@@ -367,6 +367,12 @@ dxf_helix_get_binary_graphics_data
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_binary_graphics_data
+(
+        DxfHelix *helix,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_helix_get_dictionary_owner_soft
 (
