@@ -425,6 +425,12 @@ dxf_spline_get_binary_graphics_data
 (
         DxfSpline *spline
 );
+DxfSpline *
+dxf_spline_set_binary_graphics_data
+(
+        DxfSpline *spline,
+        DxfBinaryGraphicsData *data
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
