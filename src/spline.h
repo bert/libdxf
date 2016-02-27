@@ -408,6 +408,12 @@ dxf_spline_get_shadow_mode
 (
         DxfSpline *spline
 );
+DxfSpline *
+dxf_spline_set_shadow_mode
+(
+        DxfSpline *spline,
+        int16_t shadow_mode
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
