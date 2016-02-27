@@ -403,6 +403,11 @@ dxf_spline_set_graphics_data_size
         DxfSpline *spline,
         int graphics_data_size
 );
+int16_t
+dxf_spline_get_shadow_mode
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */

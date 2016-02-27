@@ -1895,4 +1895,52 @@ dxf_spline_set_graphics_data_size
 }
 
 
+/*!
+ * \brief Get the \c shadow_mode from a DXF \c SPLINE entity.
+ *
+ * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int16_t
+dxf_spline_get_shadow_mode
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int16_t result;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (spline->shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the shadow_mode member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (spline->shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the shadow_mode member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = spline->shadow_mode;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
