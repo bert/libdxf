@@ -1764,6 +1764,49 @@ dxf_helix_set_shadow_mode
 
 
 /*!
+ * \brief Get the pointer to the binary graphics data from a DXF 
+ * \c HELIX entity.
+ *
+ * \return pointer to the binary graphics data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryGraphicsData *
+dxf_helix_get_binary_graphics_data
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfBinaryGraphicsData *result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (helix->binary_graphics_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the binary_graphics_data member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfBinaryGraphicsData *) helix->binary_graphics_data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the pointer to the \c dictionary_owner_soft from a DXF 
  * \c HELIX entity.
  *

@@ -362,6 +362,11 @@ dxf_helix_set_shadow_mode
         DxfHelix *helix,
         int16_t shadow_mode
 );
+DxfBinaryGraphicsData *
+dxf_helix_get_binary_graphics_data
+(
+        DxfHelix *helix
+);
 char *
 dxf_helix_get_dictionary_owner_soft
 (
