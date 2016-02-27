@@ -1234,7 +1234,7 @@ dxf_hatch_set_graphics_data_size
  *
  * \return pointer to the binary graphics data.
  *
- * \warning No checks are performed on the returned pointer (string).
+ * \warning No checks are performed on the returned pointer.
  */
 DxfBinaryGraphicsData *
 dxf_hatch_get_binary_graphics_data
