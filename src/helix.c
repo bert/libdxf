@@ -746,12 +746,10 @@ dxf_helix_write
         fprintf (fp->fp, "440\n%ld\n", helix->transparency);
         fprintf (fp->fp, "390\n%s\n", helix->plot_style_name);
         fprintf (fp->fp, "284\n%d\n", helix->shadow_mode);
-        /* Create a helix shaped spline and write to a DxfFile. */
-        /*! \todo Add code for creating a helix shaped spline. */
-        dxf_spline_init (helix->spline);
+        /* Write a spline to a DxfFile. */
+        helix->spline = dxf_helix_get_spline (helix);
         helix->spline->flag = 0;
         helix->spline->degree = 3;
-        /*! \todo Add code for writing a helix shaped spline to a DxfFile. */
         fprintf (fp->fp, "100\nAcDbSpline\n");
         fprintf (fp->fp, " 70\n%d\n", helix->spline->flag);
         fprintf (fp->fp, " 71\n%d\n", helix->spline->degree);
