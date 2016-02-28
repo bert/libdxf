@@ -2076,7 +2076,7 @@ dxf_spline_set_binary_graphics_data
 
 
 /*!
- * \brief Get the soft pointer to the dictionary owner from a DXF 
+ * \brief Get the pointer to the \c dictionary_owner_soft from a DXF
  * \c SPLINE entity.
  *
  * \return a pointer to \c dictionary_owner_soft when successful, or
@@ -2163,7 +2163,7 @@ dxf_spline_set_dictionary_owner_soft
 
 
 /*!
- * \brief Get the \c material from a DXF \c SPLINE entity.
+ * \brief Get the pointer to the \c material from a DXF \c SPLINE entity.
  *
  * \return a pointer to \c material when successful, or \c NULL when an
  * error occurred.
@@ -2248,7 +2248,8 @@ dxf_spline_set_material
 
 
 /*!
- * \brief Get the \c dictionary_owner_hard from a DXF \c SPLINE entity.
+ * \brief Get the pointer to the \c dictionary_owner_hard from a DXF
+ * \c SPLINE entity.
  *
  * \return a pointer to \c dictionary_owner_hard when successful, or
  * \c NULL when an error occurred.
