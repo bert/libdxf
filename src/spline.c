@@ -2247,4 +2247,47 @@ dxf_spline_set_material
 }
 
 
+/*!
+ * \brief Get the \c dictionary_owner_hard from a DXF \c SPLINE entity.
+ *
+ * \return a pointer to \c dictionary_owner_hard when successful, or
+ * \c NULL when an error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_spline_get_dictionary_owner_hard
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spline->dictionary_owner_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (spline->dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

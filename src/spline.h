@@ -453,6 +453,11 @@ dxf_spline_set_material
         DxfSpline *spline,
         char *material
 );
+char *
+dxf_spline_get_dictionary_owner_hard
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
