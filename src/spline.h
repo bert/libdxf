@@ -436,6 +436,12 @@ dxf_spline_get_dictionary_owner_soft
 (
         DxfSpline *spline
 );
+DxfSpline *
+dxf_spline_set_dictionary_owner_soft
+(
+        DxfSpline *spline,
+        char *dictionary_owner_soft
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
