@@ -2063,7 +2063,7 @@ dxf_spline_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        spline->binary_graphics_data = (struct DxfBinaryGraphicsData *) data;
+        spline->binary_graphics_data = (DxfBinaryGraphicsData *) data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
