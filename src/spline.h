@@ -469,6 +469,12 @@ dxf_spline_get_lineweight
 (
         DxfSpline *spline
 );
+DxfSpline *
+dxf_spline_set_lineweight
+(
+        DxfSpline *spline,
+        int16_t lineweight
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
