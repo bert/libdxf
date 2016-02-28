@@ -2157,4 +2157,47 @@ dxf_spline_set_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Get the \c material from a DXF \c SPLINE entity.
+ *
+ * \return \c material when successful, or \c NULL when an error
+ * occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_spline_get_material
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spline->material ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (spline->material);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
