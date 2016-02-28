@@ -431,6 +431,11 @@ dxf_spline_set_binary_graphics_data
         DxfSpline *spline,
         DxfBinaryGraphicsData *data
 );
+char *
+dxf_spline_get_dictionary_owner_soft
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
