@@ -447,6 +447,12 @@ dxf_spline_get_material
 (
         DxfSpline *spline
 );
+DxfSpline *
+dxf_spline_set_material
+(
+        DxfSpline *spline,
+        char *material
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
