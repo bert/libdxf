@@ -2334,4 +2334,38 @@ dxf_spline_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the \c lineweight from a DXF \c SPLINE entity.
+ *
+ * \return \c lineweight when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int16_t
+dxf_spline_get_lineweight
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int16_t result;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = spline->lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

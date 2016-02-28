@@ -464,6 +464,11 @@ dxf_spline_set_dictionary_owner_hard
         DxfSpline *spline,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_spline_get_lineweight
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
