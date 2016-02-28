@@ -1989,10 +1989,11 @@ dxf_spline_set_shadow_mode
 
 
 /*!
- * \brief Get the pointer to the binary graphics data from a DXF 
+ * \brief Get the pointer to the \c binary_graphics_data from a DXF 
  * \c SPLINE entity.
  *
- * \return pointer to the binary graphics data.
+ * \return a pointer to the \c binary_graphics_data when successful, or
+ * \c NULL when an error occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
@@ -2032,8 +2033,11 @@ dxf_spline_get_binary_graphics_data
 
 
 /*!
- * \brief Set the pointer to the binary_graphics_data for a DXF
+ * \brief Set the pointer to the \c binary_graphics_data for a DXF
  * \c SPLINE entity.
+ *
+ * \return a pointer to \c spline when successful, or \c NULL when an
+ * error occurred.
  */
 DxfSpline *
 dxf_spline_set_binary_graphics_data
@@ -2075,7 +2079,8 @@ dxf_spline_set_binary_graphics_data
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c SPLINE entity.
  *
- * \return soft pointer to the dictionary owner.
+ * \return a pointer to \c dictionary_owner_soft when successful, or
+ * \c NULL when an error occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
@@ -2115,7 +2120,7 @@ dxf_spline_get_dictionary_owner_soft
 
 
 /*!
- * \brief Set the pointer to the dictionary_owner_soft for a DXF
+ * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c SPLINE entity.
  *
  * \return a pointer to \c spline when successful, or \c NULL when an
@@ -2127,7 +2132,7 @@ dxf_spline_set_dictionary_owner_soft
         DxfSpline *spline,
                 /*!< a pointer to a DXF \c SPLINE entity. */
         char *dictionary_owner_soft
-                /*!< a string containing the pointer to the
+                /*!< a string containing the pointer to the \c
                  * dictionary_owner_soft for the entity. */
 )
 {
@@ -2160,8 +2165,8 @@ dxf_spline_set_dictionary_owner_soft
 /*!
  * \brief Get the \c material from a DXF \c SPLINE entity.
  *
- * \return \c material when successful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c material when successful, or \c NULL when an
+ * error occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
