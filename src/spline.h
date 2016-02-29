@@ -480,6 +480,12 @@ dxf_spline_get_plot_style_name
 (
         DxfSpline *spline
 );
+DxfSpline *
+dxf_spline_set_plot_style_name
+(
+        DxfSpline *spline,
+        char *plot_style_name
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
