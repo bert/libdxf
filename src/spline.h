@@ -475,6 +475,11 @@ dxf_spline_set_lineweight
         DxfSpline *spline,
         int16_t lineweight
 );
+char *
+dxf_spline_get_plot_style_name
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
