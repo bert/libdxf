@@ -2553,4 +2553,45 @@ dxf_spline_set_color_value
 }
 
 
+/*!
+ * \brief Get the \c color_name from a DXF \c SPLINE entity.
+ *
+ * \return \c color_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_spline_get_color_name
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spline->color_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (spline->color_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */
