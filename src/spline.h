@@ -508,6 +508,11 @@ dxf_spline_set_color_name
         DxfSpline *spline,
         char *color_name
 );
+long
+dxf_spline_get_transparency
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
