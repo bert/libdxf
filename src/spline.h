@@ -486,6 +486,11 @@ dxf_spline_set_plot_style_name
         DxfSpline *spline,
         char *plot_style_name
 );
+long
+dxf_spline_get_color_value
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
