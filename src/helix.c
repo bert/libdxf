@@ -536,6 +536,9 @@ dxf_helix_write
         char *dxf_entity_name = strdup ("HELIX");
         int i;
         DxfBinaryGraphicsData *binary_graphics_data = NULL;
+        DxfSpline *spline = NULL;
+        DxfPoint *p0 = NULL;
+        DxfPoint *p1 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -641,45 +644,49 @@ dxf_helix_write
         fprintf (fp->fp, "390\n%s\n", helix->plot_style_name);
         fprintf (fp->fp, "284\n%d\n", helix->shadow_mode);
         /* Write a spline to a DxfFile. */
-        helix->spline = dxf_helix_get_spline (helix);
-        helix->spline->flag = 0;
-        helix->spline->degree = 3;
+        spline = dxf_helix_get_spline (helix);
+        spline->flag = 0;
+        spline->degree = 3;
         fprintf (fp->fp, "100\nAcDbSpline\n");
-        fprintf (fp->fp, " 70\n%d\n", helix->spline->flag);
-        fprintf (fp->fp, " 71\n%d\n", helix->spline->degree);
-        fprintf (fp->fp, " 72\n%d\n", helix->spline->number_of_knots);
-        fprintf (fp->fp, " 73\n%d\n", helix->spline->number_of_control_points);
-        fprintf (fp->fp, " 74\n%d\n", helix->spline->number_of_fit_points);
-        fprintf (fp->fp, " 42\n%f\n", helix->spline->knot_tolerance);
-        fprintf (fp->fp, " 43\n%f\n", helix->spline->control_point_tolerance);
-        fprintf (fp->fp, " 12\n%f\n", helix->spline->x2);
-        fprintf (fp->fp, " 22\n%f\n", helix->spline->y2);
-        fprintf (fp->fp, " 32\n%f\n", helix->spline->z2);
-        fprintf (fp->fp, " 13\n%f\n", helix->spline->x3);
-        fprintf (fp->fp, " 23\n%f\n", helix->spline->y3);
-        fprintf (fp->fp, " 33\n%f\n", helix->spline->z3);
-        for (i = 0; i < helix->spline->number_of_knots; i++)
+        fprintf (fp->fp, " 70\n%d\n", spline->flag);
+        fprintf (fp->fp, " 71\n%d\n", spline->degree);
+        fprintf (fp->fp, " 72\n%d\n", spline->number_of_knots);
+        fprintf (fp->fp, " 73\n%d\n", spline->number_of_control_points);
+        fprintf (fp->fp, " 74\n%d\n", spline->number_of_fit_points);
+        fprintf (fp->fp, " 42\n%f\n", spline->knot_tolerance);
+        fprintf (fp->fp, " 43\n%f\n", spline->control_point_tolerance);
+        fprintf (fp->fp, " 12\n%f\n", spline->x2);
+        fprintf (fp->fp, " 22\n%f\n", spline->y2);
+        fprintf (fp->fp, " 32\n%f\n", spline->z2);
+        fprintf (fp->fp, " 13\n%f\n", spline->x3);
+        fprintf (fp->fp, " 23\n%f\n", spline->y3);
+        fprintf (fp->fp, " 33\n%f\n", spline->z3);
+        for (i = 0; i < spline->number_of_knots; i++)
         {
-                fprintf (fp->fp, " 40\n%f\n", helix->spline->knot_value[i]);
+                fprintf (fp->fp, " 40\n%f\n", spline->knot_value[i]);
         }
-        if (helix->spline->number_of_fit_points != 0)
+        if (spline->number_of_fit_points != 0)
         {
-        for (i = 0; i < helix->spline->number_of_fit_points; i++)
+        for (i = 0; i < spline->number_of_fit_points; i++)
                 {
-                        fprintf (fp->fp, " 41\n%f\n", helix->spline->weight_value[i]);
+                        fprintf (fp->fp, " 41\n%f\n", spline->weight_value[i]);
                 }
         }
-        for (i = 0; i < helix->spline->number_of_control_points; i++)
+        p0 = (DxfPoint *) spline->p0;
+        while (p0 != NULL)
         {
-                fprintf (fp->fp, " 10\n%f\n", helix->spline->x0[i]);
-                fprintf (fp->fp, " 20\n%f\n", helix->spline->y0[i]);
-                fprintf (fp->fp, " 30\n%f\n", helix->spline->z0[i]);
+                fprintf (fp->fp, " 10\n%f\n", p0->x0);
+                fprintf (fp->fp, " 20\n%f\n", p0->y0);
+                fprintf (fp->fp, " 30\n%f\n", p0->z0);
+                p0 = (DxfPoint *) p0->next;
         }
-        for (i = 0; i < helix->spline->number_of_fit_points; i++)
+        p1 = (DxfPoint *) spline->p1;
+        while (p1 != NULL)
         {
-                fprintf (fp->fp, " 11\n%f\n", helix->spline->x1[i]);
-                fprintf (fp->fp, " 21\n%f\n", helix->spline->y1[i]);
-                fprintf (fp->fp, " 31\n%f\n", helix->spline->z1[i]);
+                fprintf (fp->fp, " 11\n%f\n", helix->spline->p1->x0);
+                fprintf (fp->fp, " 21\n%f\n", helix->spline->p1->y0);
+                fprintf (fp->fp, " 31\n%f\n", helix->spline->p1->z0);
+                p1 = (DxfPoint *) p1->next;
         }
         /* Continue writing helix entity parameters. */
         fprintf (fp->fp, "100\nAcDbHelix\n");
