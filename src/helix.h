@@ -384,6 +384,11 @@ dxf_helix_set_dictionary_owner_soft
         DxfHelix *helix,
         char *dictionary_owner_soft
 );
+char *
+dxf_helix_get_material
+(
+        DxfHelix *helix
+);
 int16_t
 dxf_helix_get_lineweight
 (

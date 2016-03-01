@@ -1833,6 +1833,49 @@ dxf_helix_set_dictionary_owner_soft
 
 
 /*!
+ * \brief Get the pointer to the \c material from a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c material when successful, or \c NULL when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_helix_get_material
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (helix->material ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the material member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (helix->material);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the \c lineweight from a DXF \c HELIX entity.
  *
  * \return \c lineweight when successful, or \c EXIT_FAILURE when an
