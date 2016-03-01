@@ -324,14 +324,10 @@ dxf_spline_init
         spline->color_value = 0;
         spline->color_name = strdup ("");
         spline->transparency = 0;
+        spline->p0 = dxf_point_init (spline->p0);
+        spline->p1 = dxf_point_init (spline->p1);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                spline->x0[i] = 0.0;
-                spline->y0[i] = 0.0;
-                spline->z0[i] = 0.0;
-                spline->x1[i] = 0.0;
-                spline->y1[i] = 0.0;
-                spline->z1[i] = 0.0;
                 spline->knot_value[i] = 0.0;
                 spline->weight_value[i] = 0.0;
         }
@@ -393,6 +389,8 @@ dxf_spline_read
         int i_knot_value;
         int i_weight_value;
         DxfBinaryGraphicsData *binary_graphics_data = NULL;
+        DxfPoint *p0 = NULL;
+        DxfPoint *p1 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -421,6 +419,8 @@ dxf_spline_read
         i_knot_value = 0;
         i_weight_value = 0;
         binary_graphics_data = (DxfBinaryGraphicsData *) spline->binary_graphics_data;
+        p0 = (DxfPoint *) spline->p0;
+        p1 = (DxfPoint *) spline->p1;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -461,8 +461,7 @@ dxf_spline_read
                          * X-value of the control point coordinate
                          * (multiple entries). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->x0[i_x0]);
-                        i_x0++;
+                        fscanf (fp->fp, "%lf\n", &p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
@@ -470,8 +469,7 @@ dxf_spline_read
                          * Y-coordinate of control point coordinate
                          * (multiple entries). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->y0[i_y0]);
-                        i_y0++;
+                        fscanf (fp->fp, "%lf\n", &p0->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
@@ -479,8 +477,8 @@ dxf_spline_read
                          * Z-coordinate of the control point coordinate
                          * (multiple entries). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->z0[i_z0]);
-                        i_z0++;
+                        fscanf (fp->fp, "%lf\n", &p0->z0);
+                        dxf_point_init ((DxfPoint *) p0->next);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
@@ -488,8 +486,7 @@ dxf_spline_read
                          * X-coordinate of the fit point coordinate
                          * (multiple entries). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->x1[i_x1]);
-                        i_x1++;
+                        fscanf (fp->fp, "%lf\n", &p1->x0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
@@ -497,8 +494,7 @@ dxf_spline_read
                          * Y-coordinate of the fit point coordinate
                          * (multiple entries). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->y1[i_y1]);
-                        i_y1++;
+                        fscanf (fp->fp, "%lf\n", &p1->y0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
@@ -506,8 +502,8 @@ dxf_spline_read
                          * Z-coordinate of the fit point coordinate
                          * (multiple entries). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->z1[i_z1]);
-                        i_z1++;
+                        fscanf (fp->fp, "%lf\n", &p1->z0);
+                        dxf_point_init ((DxfPoint *) p1->next);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
@@ -794,6 +790,8 @@ dxf_spline_write
         char *dxf_entity_name = strdup ("SPLINE");
         int i;
         DxfBinaryGraphicsData *binary_graphics_data = NULL;
+        DxfPoint *p0 = NULL;
+        DxfPoint *p1 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -842,6 +840,8 @@ dxf_spline_write
         }
         /* Start writing output. */
         binary_graphics_data = (DxfBinaryGraphicsData *) spline->binary_graphics_data;
+        p0 = (DxfPoint *) spline->p0;
+        p1 = (DxfPoint *) spline->p1;
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (spline->id_code != -1)
         {
@@ -954,17 +954,19 @@ dxf_spline_write
                         fprintf (fp->fp, " 41\n%f\n", spline->weight_value[i]);
                 }
         }
-        for (i = 0; i < spline->number_of_control_points; i++)
+        while (spline->p0 != NULL)
         {
-                fprintf (fp->fp, " 10\n%f\n", spline->x0[i]);
-                fprintf (fp->fp, " 20\n%f\n", spline->y0[i]);
-                fprintf (fp->fp, " 30\n%f\n", spline->z0[i]);
+                fprintf (fp->fp, " 10\n%f\n", p0->x0);
+                fprintf (fp->fp, " 20\n%f\n", p0->y0);
+                fprintf (fp->fp, " 30\n%f\n", p0->z0);
+                p0 = (DxfPoint *) p0->next;
         }
-        for (i = 0; i < spline->number_of_fit_points; i++)
+        while (spline->p1 != NULL)
         {
-                fprintf (fp->fp, " 11\n%f\n", spline->x1[i]);
-                fprintf (fp->fp, " 21\n%f\n", spline->y1[i]);
-                fprintf (fp->fp, " 31\n%f\n", spline->z1[i]);
+                fprintf (fp->fp, " 11\n%f\n", p1->x0);
+                fprintf (fp->fp, " 21\n%f\n", p1->y0);
+                fprintf (fp->fp, " 31\n%f\n", p1->z0);
+                p1 = (DxfPoint *) p1->next;
         }
         /* Clean up. */
         free (dxf_entity_name);

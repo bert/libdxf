@@ -38,6 +38,7 @@
 
 #include "global.h"
 #include "binary_graphics_data.h"
+#include "point.h"
 
 
 #define DXF_SPLINE_KNOT_TOLERANCE_DEFAULT 0.0000001
@@ -164,30 +165,12 @@ dxf_spline_struct
                  * class-level transparency data.\n
                  * Group code = 440. */
         /* Specific members for a DXF spline. */
-        double x0[DXF_MAX_PARAM];
-                /*!< X-value of the control point coordinate
-                 * (multiple entries).\n
-                 * Group code = 10. */
-        double y0[DXF_MAX_PARAM];
-                /*!< Y-value of the control point coordinate
-                 * (multiple entries).\n
-                 * Group code = 20. */
-        double z0[DXF_MAX_PARAM];
-                /*!< Z-value of the control point coordinate
-                 * (multiple entries).\n
-                 * Group code = 30. */
-        double x1[DXF_MAX_PARAM];
-                /*!< X-value of the fit point coordinate
-                 * (multiple entries).\n
-                 * Group code = 11. */
-        double y1[DXF_MAX_PARAM];
-                /*!< Y-value of the fit point coordinate
-                 * (multiple entries).\n
-                 * Group code = 21. */
-        double z1[DXF_MAX_PARAM];
-                /*!< Z-value of the fit point coordinate
-                 * (multiple entries).\n
-                 * Group code = 31. */
+        DxfPoint *p0;
+                /*! Control point (multiple entries).\n
+                 * Group codes = 10, 20 and 30.*/
+        DxfPoint *p1;
+                /*! Fit point (multiple entries).\n
+                 * Group codes = 11, 21 and 31.*/
         double x2;
                 /*!< X-value of the start tangent,
                  * may be omitted (in WCS).\n
