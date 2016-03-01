@@ -667,7 +667,7 @@ dxf_helix_write
         }
         if (spline->number_of_fit_points != 0)
         {
-        for (i = 0; i < spline->number_of_fit_points; i++)
+                for (i = 0; i < spline->number_of_fit_points; i++)
                 {
                         fprintf (fp->fp, " 41\n%f\n", spline->weight_value[i]);
                 }
