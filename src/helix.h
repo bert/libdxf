@@ -389,6 +389,12 @@ dxf_helix_get_material
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_material
+(
+        DxfHelix *helix,
+        char *material
+);
 int16_t
 dxf_helix_get_lineweight
 (

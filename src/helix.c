@@ -1876,6 +1876,48 @@ dxf_helix_get_material
 
 
 /*!
+ * \brief Set the pointer to the \c material for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfHelix *
+dxf_helix_set_material
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX entity. */
+        char *material
+                /*!< a string containing the pointer to the \c
+                 * material for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (material == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->material = strdup (material);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
+/*!
  * \brief Get the \c lineweight from a DXF \c HELIX entity.
  *
  * \return \c lineweight when successful, or \c EXIT_FAILURE when an
