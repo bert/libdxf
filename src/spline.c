@@ -2751,4 +2751,48 @@ dxf_spline_get_p0
 }
 
 
+/*!
+ * \brief Set the first control pont \c p0 for a DXF \c SPLINE entity.
+ *
+ * \c p0 is the first control point in a single linked list.
+ *
+ * \return a pointer to \c spline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfSpline *
+dxf_spline_set_p0
+(
+        DxfSpline *spline,
+                /*!< a pointer to a DXF \c SPLINE entity. */
+        DxfPoint *p0
+                /*!< a control point \c p0 (multiple entries) for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        spline->p0 = (DxfPoint *) p0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (spline);
+}
+
+
 /* EOF */
