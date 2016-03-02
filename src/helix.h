@@ -400,6 +400,12 @@ dxf_helix_get_dictionary_owner_hard
 (
         DxfHelix *helix
 );
+DxfHelix *
+dxf_helix_set_dictionary_owner_hard
+(
+        DxfHelix *helix,
+        char *dictionary_owner_hard
+);
 int16_t
 dxf_helix_get_lineweight
 (

@@ -1962,6 +1962,49 @@ dxf_helix_get_dictionary_owner_hard
 
 
 /*!
+ * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
+ * \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfHelix *
+dxf_helix_set_dictionary_owner_hard
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX entity. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the \c
+                 * dictionary_owner_hard for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
+/*!
  * \brief Get the \c lineweight from a DXF \c HELIX entity.
  *
  * \return \c lineweight when successful, or \c EXIT_FAILURE when an
