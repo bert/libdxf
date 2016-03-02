@@ -2795,4 +2795,47 @@ dxf_spline_set_p0
 }
 
 
+/*!
+ * \brief Get the first fit point \c p1 from a DXF \c SPLINE entity.
+ *
+ * \c p1 is the first fit point in a single linked list.
+ *
+ * \return fit point \c p1 when sucessful, or \c NULL when an error
+ * occurred.
+ */
+DxfPoint *
+dxf_spline_get_p1
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *result = NULL;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spline->p1 ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the p1 member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfPoint *) spline->p1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

@@ -505,6 +505,11 @@ dxf_spline_set_p0
         DxfSpline *spline,
         DxfPoint *p0
 );
+DxfPoint *
+dxf_spline_get_p1
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
