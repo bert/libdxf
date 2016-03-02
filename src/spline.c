@@ -479,6 +479,7 @@ dxf_spline_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &p0->z0);
                         dxf_point_init ((DxfPoint *) p0->next);
+                        p0 = (DxfPoint *) p0->next;
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
@@ -504,6 +505,7 @@ dxf_spline_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &p1->z0);
                         dxf_point_init ((DxfPoint *) p1->next);
+                        p1 = (DxfPoint *) p1->next;
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
