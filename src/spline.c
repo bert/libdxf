@@ -2708,4 +2708,47 @@ dxf_spline_set_transparency
 }
 
 
+/*!
+ * \brief Get the first control point \c p0 from a DXF \c SPLINE entity.
+ *
+ * \c p0 is the first control point in a single linked list.
+ *
+ * \return control_point \c p0 when sucessful, or \c NULL when an error
+ * occurred.
+ */
+DxfPoint *
+dxf_spline_get_p0
+(
+        DxfSpline *spline
+                /*!< a pointer to a DXF \c SPLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *result = NULL;
+
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spline->p0 ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfPoint *) spline->p0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

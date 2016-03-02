@@ -494,6 +494,11 @@ dxf_spline_set_transparency
         DxfSpline *spline,
         long transparency
 );
+DxfPoint *
+dxf_spline_get_p0
+(
+        DxfSpline *spline
+);
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
