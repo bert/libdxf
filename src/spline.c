@@ -331,9 +331,7 @@ dxf_spline_init
                 spline->knot_value[i] = 0.0;
                 spline->weight_value[i] = 0.0;
         }
-        spline->x2 = 0.0;
-        spline->y2 = 0.0;
-        spline->z2 = 0.0;
+        spline->p2 = dxf_point_init (spline->p2);
         spline->x3 = 0.0;
         spline->y3 = 0.0;
         spline->z3 = 0.0;
@@ -391,6 +389,7 @@ dxf_spline_read
         DxfBinaryGraphicsData *binary_graphics_data = NULL;
         DxfPoint *p0 = NULL;
         DxfPoint *p1 = NULL;
+        DxfPoint *p2 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -421,6 +420,7 @@ dxf_spline_read
         binary_graphics_data = (DxfBinaryGraphicsData *) spline->binary_graphics_data;
         p0 = (DxfPoint *) spline->p0;
         p1 = (DxfPoint *) spline->p1;
+        p2 = (DxfPoint *) spline->p2;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -511,7 +511,7 @@ dxf_spline_read
                          * X-coordinate of the start tangent,
                          * may be omitted (in WCS). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->x2);
+                        fscanf (fp->fp, "%lf\n", &p2->x0);
                 }
                 else if (strcmp (temp_string, "22") == 0)
                 {
@@ -519,7 +519,7 @@ dxf_spline_read
                          * Y-coordinate of the start tangent,
                          * may be omitted (in WCS). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->y2);
+                        fscanf (fp->fp, "%lf\n", &p2->y0);
                 }
                 else if (strcmp (temp_string, "32") == 0)
                 {
@@ -527,7 +527,7 @@ dxf_spline_read
                          * Z-coordinate of the start tangent,
                          * may be omitted (in WCS). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->z2);
+                        fscanf (fp->fp, "%lf\n", &p2->z0);
                 }
                 else if (strcmp (temp_string, "13") == 0)
                 {
@@ -792,6 +792,7 @@ dxf_spline_write
         DxfBinaryGraphicsData *binary_graphics_data = NULL;
         DxfPoint *p0 = NULL;
         DxfPoint *p1 = NULL;
+        DxfPoint *p2 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -842,6 +843,7 @@ dxf_spline_write
         binary_graphics_data = (DxfBinaryGraphicsData *) spline->binary_graphics_data;
         p0 = (DxfPoint *) spline->p0;
         p1 = (DxfPoint *) spline->p1;
+        p2 = (DxfPoint *) spline->p2;
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (spline->id_code != -1)
         {
@@ -937,9 +939,9 @@ dxf_spline_write
         fprintf (fp->fp, " 74\n%d\n", spline->number_of_fit_points);
         fprintf (fp->fp, " 42\n%f\n", spline->knot_tolerance);
         fprintf (fp->fp, " 43\n%f\n", spline->control_point_tolerance);
-        fprintf (fp->fp, " 12\n%f\n", spline->x2);
-        fprintf (fp->fp, " 22\n%f\n", spline->y2);
-        fprintf (fp->fp, " 32\n%f\n", spline->z2);
+        fprintf (fp->fp, " 12\n%f\n", p2->x0);
+        fprintf (fp->fp, " 22\n%f\n", p2->y0);
+        fprintf (fp->fp, " 32\n%f\n", p2->z0);
         fprintf (fp->fp, " 13\n%f\n", spline->x3);
         fprintf (fp->fp, " 23\n%f\n", spline->y3);
         fprintf (fp->fp, " 33\n%f\n", spline->z3);

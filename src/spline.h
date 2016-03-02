@@ -171,18 +171,10 @@ dxf_spline_struct
         DxfPoint *p1;
                 /*! Fit point (multiple entries).\n
                  * Group codes = 11, 21 and 31.*/
-        double x2;
-                /*!< X-value of the start tangent,
-                 * may be omitted (in WCS).\n
-                 * Group code = 12. */
-        double y2;
-                /*!< Y-value of the start tangent,
-                 * may be omitted (in WCS).\n
-                 * Group code = 22. */
-        double z2;
-                /*!< Z-value of the start tangent,
-                 * may be omitted (in WCS).\n
-                 * Group code = 32. */
+        DxfPoint *p2;
+                /*! Start tangent point.\n
+                 * May be omitted (in WCS).\n
+                 * Group codes = 12, 22 and 32.*/
         double x3;
                 /*!< X-value of the end tangent,
                  * may be omitted (in WCS).\n

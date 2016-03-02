@@ -539,6 +539,7 @@ dxf_helix_write
         DxfSpline *spline = NULL;
         DxfPoint *p0 = NULL;
         DxfPoint *p1 = NULL;
+        DxfPoint *p2 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -644,6 +645,7 @@ dxf_helix_write
         fprintf (fp->fp, "390\n%s\n", helix->plot_style_name);
         fprintf (fp->fp, "284\n%d\n", helix->shadow_mode);
         /* Write a spline to a DxfFile. */
+        p2 = (DxfPoint *) spline->p2;
         spline = dxf_helix_get_spline (helix);
         spline->flag = 0;
         spline->degree = 3;
@@ -655,9 +657,9 @@ dxf_helix_write
         fprintf (fp->fp, " 74\n%d\n", spline->number_of_fit_points);
         fprintf (fp->fp, " 42\n%f\n", spline->knot_tolerance);
         fprintf (fp->fp, " 43\n%f\n", spline->control_point_tolerance);
-        fprintf (fp->fp, " 12\n%f\n", spline->x2);
-        fprintf (fp->fp, " 22\n%f\n", spline->y2);
-        fprintf (fp->fp, " 32\n%f\n", spline->z2);
+        fprintf (fp->fp, " 12\n%f\n", p2->x0);
+        fprintf (fp->fp, " 22\n%f\n", p2->y0);
+        fprintf (fp->fp, " 32\n%f\n", p2->z0);
         fprintf (fp->fp, " 13\n%f\n", spline->x3);
         fprintf (fp->fp, " 23\n%f\n", spline->y3);
         fprintf (fp->fp, " 33\n%f\n", spline->z3);
