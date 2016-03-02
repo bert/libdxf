@@ -2713,7 +2713,7 @@ dxf_spline_set_transparency
  *
  * \c p0 is the first control point in a single linked list.
  *
- * \return control_point \c p0 when sucessful, or \c NULL when an error
+ * \return control point \c p0 when sucessful, or \c NULL when an error
  * occurred.
  */
 DxfPoint *
@@ -2739,7 +2739,7 @@ dxf_spline_get_p0
         if (spline->p0 ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found in the p0 member.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
