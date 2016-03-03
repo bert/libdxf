@@ -917,7 +917,7 @@ dxf_spline_write
         while (binary_graphics_data != NULL)
         {
                 fprintf (fp->fp, "310\n%s\n", binary_graphics_data->data_line);
-                binary_graphics_data = (DxfBinaryGraphicsData *) binary_graphics_data->next;
+                binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (binary_graphics_data);
         }
         fprintf (fp->fp, "420\n%ld\n", spline->color_value);
         fprintf (fp->fp, "430\n%s\n", spline->color_name);
