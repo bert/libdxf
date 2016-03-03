@@ -953,14 +953,14 @@ dxf_spline_write
                 fprintf (fp->fp, " 10\n%f\n", p0->x0);
                 fprintf (fp->fp, " 20\n%f\n", p0->y0);
                 fprintf (fp->fp, " 30\n%f\n", p0->z0);
-                p0 = (DxfPoint *) p0->next;
+                p0 = (DxfPoint *) dxf_point_get_next (p0);
         }
         while (spline->p1 != NULL)
         {
                 fprintf (fp->fp, " 11\n%f\n", p1->x0);
                 fprintf (fp->fp, " 21\n%f\n", p1->y0);
                 fprintf (fp->fp, " 31\n%f\n", p1->z0);
-                p1 = (DxfPoint *) p1->next;
+                p1 = (DxfPoint *) dxf_point_get_next (p1);
         }
         /* Clean up. */
         free (dxf_entity_name);
