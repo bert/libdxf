@@ -1,7 +1,7 @@
 /*!
  * \file point.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF point entity (\c POINT).
  *
@@ -1812,6 +1812,49 @@ dxf_point_set_extrusion_vector
         DXF_DEBUG_END
 #endif
         return (point);
+}
+
+
+/*!
+ * \brief Get the pointer to the next \c POINT entity from a DXF 
+ * \c POINT entity.
+ *
+ * \return pointer to the next \c POINT entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfPoint *
+dxf_point_get_next
+(
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *result;
+
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfPoint *) point->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
 }
 
 

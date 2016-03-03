@@ -1,7 +1,7 @@
 /*!
  * \file point.h
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF point entity (\c POINT).
  *
@@ -311,6 +311,11 @@ dxf_point_set_extrusion_vector
         double extr_x0,
         double extr_y0,
         double extr_z0
+);
+DxfPoint *
+dxf_point_get_next
+(
+        DxfPoint *point
 );
 
 
