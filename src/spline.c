@@ -376,12 +376,6 @@ dxf_spline_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i_x0;
-        int i_y0;
-        int i_z0;
-        int i_x1;
-        int i_y1;
-        int i_z1;
         int i_knot_value;
         int i_weight_value;
         DxfBinaryGraphicsData *binary_graphics_data = NULL;
@@ -408,12 +402,6 @@ dxf_spline_read
                 spline = dxf_spline_new ();
                 spline = dxf_spline_init (spline);
         }
-        i_x0 = 0;
-        i_y0 = 0;
-        i_z0 = 0;
-        i_x1 = 0;
-        i_y1 = 0;
-        i_z1 = 0;
         i_knot_value = 0;
         i_weight_value = 0;
         binary_graphics_data = (DxfBinaryGraphicsData *) spline->binary_graphics_data;
