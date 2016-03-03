@@ -332,9 +332,7 @@ dxf_spline_init
                 spline->weight_value[i] = 0.0;
         }
         spline->p2 = dxf_point_init (spline->p2);
-        spline->x3 = 0.0;
-        spline->y3 = 0.0;
-        spline->z3 = 0.0;
+        spline->p3 = dxf_point_init (spline->p3);
         spline->extr_x0 = 0.0;
         spline->extr_y0 = 0.0;
         spline->extr_z0 = 0.0;
@@ -390,6 +388,7 @@ dxf_spline_read
         DxfPoint *p0 = NULL;
         DxfPoint *p1 = NULL;
         DxfPoint *p2 = NULL;
+        DxfPoint *p3 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -421,6 +420,7 @@ dxf_spline_read
         p0 = (DxfPoint *) spline->p0;
         p1 = (DxfPoint *) spline->p1;
         p2 = (DxfPoint *) spline->p2;
+        p3 = (DxfPoint *) spline->p3;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -537,7 +537,7 @@ dxf_spline_read
                          * X-coordinate of the end tangent,
                          * may be omitted (in WCS). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->x3);
+                        fscanf (fp->fp, "%lf\n", &p3->x0);
                 }
                 else if (strcmp (temp_string, "23") == 0)
                 {
@@ -545,7 +545,7 @@ dxf_spline_read
                          * Y-coordinate of the end tangent,
                          * may be omitted (in WCS). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->y3);
+                        fscanf (fp->fp, "%lf\n", &p3->y0);
                 }
                 else if (strcmp (temp_string, "33") == 0)
                 {
@@ -553,7 +553,7 @@ dxf_spline_read
                          * Z-coordinate of the end tangent,
                          * may be omitted (in WCS). */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &spline->z3);
+                        fscanf (fp->fp, "%lf\n", &p3->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
@@ -795,6 +795,7 @@ dxf_spline_write
         DxfPoint *p0 = NULL;
         DxfPoint *p1 = NULL;
         DxfPoint *p2 = NULL;
+        DxfPoint *p3 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -846,6 +847,7 @@ dxf_spline_write
         p0 = (DxfPoint *) spline->p0;
         p1 = (DxfPoint *) spline->p1;
         p2 = (DxfPoint *) spline->p2;
+        p3 = (DxfPoint *) spline->p3;
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (spline->id_code != -1)
         {
@@ -944,9 +946,9 @@ dxf_spline_write
         fprintf (fp->fp, " 12\n%f\n", p2->x0);
         fprintf (fp->fp, " 22\n%f\n", p2->y0);
         fprintf (fp->fp, " 32\n%f\n", p2->z0);
-        fprintf (fp->fp, " 13\n%f\n", spline->x3);
-        fprintf (fp->fp, " 23\n%f\n", spline->y3);
-        fprintf (fp->fp, " 33\n%f\n", spline->z3);
+        fprintf (fp->fp, " 13\n%f\n", p3->x0);
+        fprintf (fp->fp, " 23\n%f\n", p3->y0);
+        fprintf (fp->fp, " 33\n%f\n", p3->z0);
         for (i = 0; i < spline->number_of_knots; i++)
         {
                 fprintf (fp->fp, " 40\n%f\n", spline->knot_value[i]);

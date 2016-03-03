@@ -175,18 +175,10 @@ dxf_spline_struct
                 /*! Start tangent point.\n
                  * May be omitted (in WCS).\n
                  * Group codes = 12, 22 and 32.*/
-        double x3;
-                /*!< X-value of the end tangent,
-                 * may be omitted (in WCS).\n
-                 * Group code = 13. */
-        double y3;
-                /*!< Y-value of the end tangent,
-                 * may be omitted (in WCS).\n
-                 * Group code = 23. */
-        double z3;
-                /*!< Z-value of the end tangent,
-                 * may be omitted (in WCS).\n
-                 * Group code = 33. */
+        DxfPoint *p3;
+                /*!< End tangent point.\n
+                 * May be omitted (in WCS).\n
+                 * Group codes = 13, 23 and 33. */
         double knot_value[DXF_MAX_PARAM];
                 /*!< Knot value (one entry per knot, multiple entries).\n
                  * Group code = 40. */
