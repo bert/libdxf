@@ -1858,4 +1858,46 @@ dxf_point_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c POINT for a DXF \c POINT
+ * entity.
+ *
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfPoint *
+dxf_point_set_next
+(
+        DxfPoint *point,
+                /*!< a pointer to a DXF \c POINT entity. */
+        DxfPoint *next
+                /*!< a pointer to the next \c POINT for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point->next = (struct DxfPoint *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
 /* EOF */

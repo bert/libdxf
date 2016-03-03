@@ -317,6 +317,12 @@ dxf_point_get_next
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_next
+(
+        DxfPoint *point,
+        DxfPoint *next
+);
 
 
 #endif /* LIBDXF_SRC_POINT_H */
