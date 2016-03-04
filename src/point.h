@@ -328,6 +328,12 @@ dxf_point_get_graphics_data_size
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_graphics_data_size
+(
+        DxfPoint *point,
+        int graphics_data_size
+);
 char *
 dxf_point_get_dictionary_owner_soft
 (
