@@ -389,6 +389,11 @@ dxf_point_set_dictionary_owner_hard
         DxfPoint *point,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_point_get_lineweight
+(
+        DxfPoint *point
+);
 double
 dxf_point_get_angle_to_X
 (
