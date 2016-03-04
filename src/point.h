@@ -334,6 +334,11 @@ dxf_point_set_graphics_data_size
         DxfPoint *point,
         int graphics_data_size
 );
+int16_t
+dxf_point_get_shadow_mode
+(
+        DxfPoint *point
+);
 char *
 dxf_point_get_dictionary_owner_soft
 (
