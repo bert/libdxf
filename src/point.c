@@ -1598,6 +1598,54 @@ dxf_point_get_shadow_mode
 
 
 /*!
+ * \brief Set the \c shadow_mode for a DXF \c POINT entity.
+ *
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfPoint *
+dxf_point_set_shadow_mode
+(
+        DxfPoint *point,
+                /*!< a pointer to a DXF \c POINT entity. */
+        int16_t shadow_mode
+                /*!< the \c shadow mode to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative shadow_mode value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range shadow_mode value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point->shadow_mode = shadow_mode;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c POINT entity.
  *

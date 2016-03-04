@@ -339,6 +339,12 @@ dxf_point_get_shadow_mode
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_shadow_mode
+(
+        DxfPoint *point,
+        int16_t shadow_mode
+);
 char *
 dxf_point_get_dictionary_owner_soft
 (
