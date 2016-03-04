@@ -323,6 +323,11 @@ dxf_point_set_paperspace
         DxfPoint *point,
         int paperspace
 );
+int
+dxf_point_get_graphics_data_size
+(
+        DxfPoint *point
+);
 char *
 dxf_point_get_dictionary_owner_soft
 (
