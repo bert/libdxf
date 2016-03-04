@@ -368,6 +368,11 @@ dxf_point_set_dictionary_owner_soft
         char *dictionary_owner_soft
 );
 char *
+dxf_point_get_material
+(
+        DxfPoint *point
+);
+char *
 dxf_point_get_dictionary_owner_hard
 (
         DxfPoint *point
