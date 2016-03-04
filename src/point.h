@@ -350,6 +350,12 @@ dxf_point_get_binary_graphics_data
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_binary_graphics_data
+(
+        DxfPoint *point,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_point_get_dictionary_owner_soft
 (
