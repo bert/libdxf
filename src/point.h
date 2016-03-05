@@ -405,6 +405,12 @@ dxf_point_get_plot_style_name
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_plot_style_name
+(
+        DxfPoint *point,
+        char *plot_style_name
+);
 double
 dxf_point_get_angle_to_X
 (
