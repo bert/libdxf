@@ -394,6 +394,12 @@ dxf_point_get_lineweight
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_lineweight
+(
+        DxfPoint *point,
+        int16_t lineweight
+);
 double
 dxf_point_get_angle_to_X
 (

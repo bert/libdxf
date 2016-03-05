@@ -2042,6 +2042,40 @@ dxf_point_get_lineweight
 
 
 /*!
+ * \brief Set the \c lineweight for a DXF \c POINT entity.
+ *
+ * \return a pointer to \c point successful, or \c NULL when an
+ * error occurred.
+ */
+DxfPoint *
+dxf_point_set_lineweight
+(
+        DxfPoint *point,
+                /*!< a pointer to a DXF \c POINT entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
+/*!
  * \brief Get the angle_to_X from a DXF \c POINT entity.
  *
  * \return angle_to_X.
