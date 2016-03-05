@@ -2076,6 +2076,47 @@ dxf_point_set_lineweight
 
 
 /*!
+ * \brief Get the \c plot_style_name from a DXF \c POINT entity.
+ *
+ * \return \c plot_style_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_point_get_plot_style_name
+(
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point->plot_style_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (point->plot_style_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the angle_to_X from a DXF \c POINT entity.
  *
  * \return angle_to_X.
