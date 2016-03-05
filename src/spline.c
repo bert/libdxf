@@ -2367,7 +2367,7 @@ dxf_spline_get_lineweight
 /*!
  * \brief Set the \c lineweight for a DXF \c SPLINE entity.
  *
- * \return a pointer to \c helix when successful, or \c NULL when an
+ * \return a pointer to \c spline when successful, or \c NULL when an
  * error occurred.
  */
 DxfSpline *
@@ -2518,7 +2518,7 @@ dxf_spline_get_color_value
 /*!
  * \brief Set the \c color_value for a DXF \c SPLINE entity.
  *
- * \return a pointer to \c helix when successful, or \c NULL when an
+ * \return a pointer to \c spline when successful, or \c NULL when an
  * error occurred.
  */
 DxfSpline *
