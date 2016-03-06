@@ -427,6 +427,12 @@ dxf_point_get_color_name
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_color_name
+(
+        DxfPoint *point,
+        char *color_name
+);
 double
 dxf_point_get_angle_to_X
 (
