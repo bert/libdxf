@@ -411,6 +411,11 @@ dxf_point_set_plot_style_name
         DxfPoint *point,
         char *plot_style_name
 );
+long
+dxf_point_get_color_value
+(
+        DxfPoint *point
+);
 double
 dxf_point_get_angle_to_X
 (
