@@ -433,6 +433,11 @@ dxf_point_set_color_name
         DxfPoint *point,
         char *color_name
 );
+long
+dxf_point_get_transparency
+(
+        DxfPoint *point
+);
 double
 dxf_point_get_angle_to_X
 (
