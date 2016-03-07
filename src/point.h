@@ -438,6 +438,12 @@ dxf_point_get_transparency
 (
         DxfPoint *point
 );
+DxfPoint *
+dxf_point_set_transparency
+(
+        DxfPoint *point,
+        long transparency
+);
 double
 dxf_point_get_angle_to_X
 (
