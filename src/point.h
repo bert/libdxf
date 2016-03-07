@@ -467,6 +467,11 @@ dxf_point_set_y0
         double y0
 );
 double
+dxf_point_get_z0
+(
+        DxfPoint *point
+);
+double
 dxf_point_get_angle_to_X
 (
         DxfPoint *point
