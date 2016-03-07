@@ -19,6 +19,13 @@
  *
  * \todo Add a link to somewhere else.
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ * \version According to DXF R2014.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -53,12 +60,6 @@
  * \brief Allocate memory for a \c DxfPoint.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_point_new ()
@@ -95,12 +96,6 @@ dxf_point_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_point_init
@@ -164,12 +159,6 @@ dxf_point_init
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_point_read
@@ -396,12 +385,6 @@ dxf_point_read
  * 
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_point_write
@@ -554,12 +537,6 @@ dxf_point_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_point_free
@@ -595,12 +572,6 @@ dxf_point_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c POINT
  * entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_point_free_chain
@@ -631,15 +602,9 @@ dxf_point_free_chain
 
 
 /*!
- * \brief Get the ID code from this DXF \c POINT entity.
+ * \brief Get the \c id_code from this DXF \c POINT entity.
  *
- * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return \c id_code.
  */
 int
 dxf_point_get_id_code
@@ -677,13 +642,10 @@ dxf_point_get_id_code
 
 
 /*!
- * \brief Set the ID code for this DXF \c POINT entity.
+ * \brief Set the \c id_code for this DXF \c POINT entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
  */
 DxfPoint *
 dxf_point_set_id_code
@@ -723,15 +685,9 @@ dxf_point_set_id_code
 
 
 /*!
- * \brief Get the linetype from this DXF \c POINT entity.
+ * \brief Get the \c linetype from this DXF \c POINT entity.
  *
- * \return linetype when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return \c linetype when sucessful, \c NULL when an error occurred.
  */
 char *
 dxf_point_get_linetype
@@ -769,13 +725,10 @@ dxf_point_get_linetype
 
 
 /*!
- * \brief Set the linetype for a DXF \c POINT entity.
+ * \brief Set the \c linetype for a DXF \c POINT entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
  */
 DxfPoint *
 dxf_point_set_linetype
@@ -783,7 +736,7 @@ dxf_point_set_linetype
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
         char *linetype
-                /*!< a string containing the linetype for the entity. */
+                /*!< a string containing the \c linetype for the entity. */
 )
 {
 #if DEBUG
@@ -813,15 +766,9 @@ dxf_point_set_linetype
 
 
 /*!
- * \brief Get the layer from this DXF \c POINT entity.
+ * \brief Get the \c layer from this DXF \c POINT entity.
  *
- * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return \c layer when sucessful, \c NULL when an error occurred.
  */
 char *
 dxf_point_get_layer
@@ -859,13 +806,10 @@ dxf_point_get_layer
 
 
 /*!
- * \brief Set the layer for a DXF \c POINT entity.
+ * \brief Set the \c layer for a DXF \c POINT entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
  */
 DxfPoint *
 dxf_point_set_layer
@@ -873,7 +817,7 @@ dxf_point_set_layer
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
         char *layer
-                /*!< a string containing the layer for the entity. */
+                /*!< a string containing the \c layer for the entity. */
 )
 {
 #if DEBUG
@@ -903,15 +847,9 @@ dxf_point_set_layer
 
 
 /*!
- * \brief Get the elevation from a DXF \c POINT entity.
+ * \brief Get the \c elevation from a DXF \c POINT entity.
  *
- * \return elevation.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return \c elevation.
  */
 double
 dxf_point_get_elevation
@@ -942,13 +880,10 @@ dxf_point_get_elevation
 
 
 /*!
- * \brief Set the elevation for a DXF \c POINT entity.
+ * \brief Set the \c elevation for a DXF \c POINT entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
  */
 DxfPoint *
 dxf_point_set_elevation
@@ -956,7 +891,7 @@ dxf_point_set_elevation
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
         double elevation
-                /*!< the elevation to be set for the entity. */
+                /*!< the \c elevation to be set for the entity. */
 )
 {
 #if DEBUG
@@ -979,15 +914,9 @@ dxf_point_set_elevation
 
 
 /*!
- * \brief Get the thickness from a DXF \c POINT entity.
+ * \brief Get the \c thickness from a DXF \c POINT entity.
  *
- * \return thickness.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return \c thickness.
  */
 double
 dxf_point_get_thickness
@@ -1025,13 +954,10 @@ dxf_point_get_thickness
 
 
 /*!
- * \brief Set the thickness for a DXF \c POINT entity.
+ * \brief Set the \c thickness for a DXF \c POINT entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
  */
 DxfPoint *
 dxf_point_set_thickness
@@ -1039,7 +965,7 @@ dxf_point_set_thickness
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
         double thickness
-                /*!< the thickness to be set for the entity. */
+                /*!< the \c thickness to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1069,15 +995,9 @@ dxf_point_set_thickness
 
 
 /*!
- * \brief Get the linetype scale from this DXF \c POINT entity.
+ * \brief Get the \c linetype_scale from this DXF \c POINT entity.
  *
- * \return linetype scale.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return \c linetype_scale.
  */
 double
 dxf_point_get_linetype_scale
@@ -1115,13 +1035,10 @@ dxf_point_get_linetype_scale
 
 
 /*!
- * \brief Set the linetype scale for a DXF \c POINT entity.
+ * \brief Set the \c linetype_scale for a DXF \c POINT entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
  */
 DxfPoint *
 dxf_point_set_linetype_scale
@@ -1129,7 +1046,7 @@ dxf_point_set_linetype_scale
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
         double linetype_scale
-                /*!< the linetype scale to be set for the entity. */
+                /*!< the \c linetype_scale to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1159,15 +1076,9 @@ dxf_point_set_linetype_scale
 
 
 /*!
- * \brief Get the visibility from a DXF \c POINT entity.
+ * \brief Get the \c visibility from a DXF \c POINT entity.
  *
- * \return visibility.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return \c visibility.
  */
 int16_t
 dxf_point_get_visibility
@@ -1212,13 +1123,10 @@ dxf_point_get_visibility
 
 
 /*!
- * \brief Set the visibility for a DXF \c POINT entity.
+ * \brief Set the \c visibility for a DXF \c POINT entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
  */
 DxfPoint *
 dxf_point_set_visibility
@@ -1226,7 +1134,7 @@ dxf_point_set_visibility
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
         int16_t visibility
-                /*!< the visibility to be set for the entity. */
+                /*!< the \c visibility to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1263,15 +1171,9 @@ dxf_point_set_visibility
 
 
 /*!
- * \brief Get the color from a DXF \c POINT entity.
+ * \brief Get the \c color from a DXF \c POINT entity.
  *
- * \return color.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return \c color.
  */
 int
 dxf_point_get_color
@@ -1308,13 +1210,10 @@ dxf_point_get_color
 
 
 /*!
- * \brief Set the color for a DXF \c POINT entity.
+ * \brief Set the \c color for a DXF \c POINT entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
  */
 DxfPoint *
 dxf_point_set_color
@@ -1322,7 +1221,7 @@ dxf_point_set_color
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
         int color
-                /*!< the color to be set for the entity. */
+                /*!< the \c color to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1353,15 +1252,9 @@ dxf_point_set_color
 
 
 /*!
- * \brief Get the paperspace flag value from a DXF \c POINT entity.
+ * \brief Get the \c paperspace flag value from a DXF \c POINT entity.
  *
- * \return paperspace flag value.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return \c paperspace flag value.
  */
 int
 dxf_point_get_paperspace
@@ -1404,13 +1297,10 @@ dxf_point_get_paperspace
 
 
 /*!
- * \brief Set the paperspace flag for this DXF \c POINT entity.
+ * \brief Set the \c paperspace flag for this DXF \c POINT entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
  */
 DxfPoint *
 dxf_point_set_paperspace
@@ -1418,7 +1308,7 @@ dxf_point_set_paperspace
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
         int paperspace
-                /*!< the paperspace flag value to be set for the entity. */
+                /*!< the \c paperspace flag value to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1733,18 +1623,12 @@ dxf_point_set_binary_graphics_data
 
 
 /*!
- * \brief Get the soft pointer to the dictionary owner from a DXF 
+ * \brief Get the pointer to the \c dictionary_owner_soft from a DXF 
  * \c POINT entity.
  *
- * \return soft pointer to the dictionary owner.
+ * \return pointer to the \c dictionary_owner_soft.
  *
- * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \warning No checks are performed on the returned pointer.
  */
 char *
 dxf_point_get_dictionary_owner_soft
@@ -1782,14 +1666,11 @@ dxf_point_get_dictionary_owner_soft
 
 
 /*!
- * \brief Set the pointer to the dictionary_owner_soft for a DXF
+ * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c POINT entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
  */
 DxfPoint *
 dxf_point_set_dictionary_owner_soft
@@ -1798,7 +1679,7 @@ dxf_point_set_dictionary_owner_soft
                 /*!< a pointer to a DXF \c POINT entity. */
         char *dictionary_owner_soft
                 /*!< a string containing the pointer to the
-                 * dictionary_owner_soft for the entity. */
+                 * \c dictionary_owner_soft for the entity. */
 )
 {
 #if DEBUG
@@ -1913,18 +1794,12 @@ dxf_point_set_material
 
 
 /*!
- * \brief Get the hard pointer to the dictionary owner from a DXF 
+ * \brief Get the pointer to the \c dictionary_owner_hard from a DXF 
  * \c POINT entity.
  *
- * \return hard pointer to the dictionary owner.
+ * \return pointer to the \c dictionary_owner_hard.
  *
- * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \warning No checks are performed on the returned pointer.
  */
 char *
 dxf_point_get_dictionary_owner_hard
@@ -1962,14 +1837,11 @@ dxf_point_get_dictionary_owner_hard
 
 
 /*!
- * \brief Set the pointer to the dictionary_owner_hard for a DXF
+ * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c POINT entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
  */
 DxfPoint *
 dxf_point_set_dictionary_owner_hard
@@ -1978,7 +1850,7 @@ dxf_point_set_dictionary_owner_hard
                 /*!< a pointer to a DXF \c POINT entity. */
         char *dictionary_owner_hard
                 /*!< a string containing the pointer to the
-                 * dictionary_owner_hard for the entity. */
+                 * \c dictionary_owner_hard for the entity. */
 )
 {
 #if DEBUG
@@ -2270,7 +2142,7 @@ dxf_point_get_color_name
 /*!
  * \brief Set the \c color_name for a DXF \c POINT entity.
  *
- * \return a pointer to \c spline when successful, or \c NULL when an
+ * \return a pointer to \c point when successful, or \c NULL when an
  * error occurred.
  */
 DxfPoint *
@@ -2582,15 +2454,9 @@ dxf_point_set_z0
 
 
 /*!
- * \brief Get the angle_to_X from a DXF \c POINT entity.
+ * \brief Get the \c angle_to_X from a DXF \c POINT entity.
  *
- * \return angle_to_X.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return \c angle_to_X.
  */
 double
 dxf_point_get_angle_to_X
@@ -2621,13 +2487,10 @@ dxf_point_get_angle_to_X
 
 
 /*!
- * \brief Set the angle_to_X for a DXF \c POINT entity.
+ * \brief Set the \c angle_to_X for a DXF \c POINT entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
  */
 DxfPoint *
 dxf_point_set_angle_to_X
@@ -2635,7 +2498,7 @@ dxf_point_set_angle_to_X
         DxfPoint *point,
                 /*!< a pointer to a DXF \c POINT entity. */
         double angle_to_X
-                /*!< the angle_to_X to be set for the entity. */
+                /*!< the \c angle_to_X to be set for the entity. */
 )
 {
 #if DEBUG
@@ -2664,12 +2527,6 @@ dxf_point_set_angle_to_X
  * \return a DXF \c POINT containing the extrusion coordinates.
  *
  * \warning No other members are copied into the DXF \c POINT.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_point_get_extrusion_vector_as_point
@@ -2712,11 +2569,8 @@ dxf_point_get_extrusion_vector_as_point
 /*!
  * \brief Set the extrusion vector for a DXF \c POINT entity.
  *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
  */
 DxfPoint *
 dxf_point_set_extrusion_vector

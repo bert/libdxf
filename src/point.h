@@ -175,7 +175,7 @@ dxf_point_struct
         double angle_to_X;
                 /*!< group code 50.\n
                  * Angle of the X axis for the UCS in effect when the
-                 * point was drawn (optional, default = 0); used when
+                 * point was drawn (optional, default = 0.0); used when
                  * \c PDMODE is nonzero. */
         double extr_x0;
                 /*!< group code = 210\n
