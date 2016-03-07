@@ -2479,6 +2479,41 @@ dxf_point_get_y0
 
 
 /*!
+ * \brief Set the Y coordinate value \c y0 for a DXF \c POINT entity.
+ *
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfPoint *
+dxf_point_set_y0
+(
+        DxfPoint *point,
+                /*!< a pointer to a DXF \c POINT entity. */
+        double y0
+                /*!< the Y coordinate value \c y0 to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
+/*!
  * \brief Get the angle_to_X from a DXF \c POINT entity.
  *
  * \return angle_to_X.
