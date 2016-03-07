@@ -2378,6 +2378,39 @@ dxf_point_set_transparency
 
 
 /*!
+ * \brief Get the X coordinate value \x0 from a DXF \c POINT entity.
+ *
+ * \return \c x0.
+ */
+double
+dxf_point_get_x0
+(
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double result;
+
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = point->x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the angle_to_X from a DXF \c POINT entity.
  *
  * \return angle_to_X.
