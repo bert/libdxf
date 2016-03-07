@@ -2547,6 +2547,41 @@ dxf_point_get_z0
 
 
 /*!
+ * \brief Set the Z coordinate value \c z0 for a DXF \c POINT entity.
+ *
+ * \return a pointer to \c point when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfPoint *
+dxf_point_set_z0
+(
+        DxfPoint *point,
+                /*!< a pointer to a DXF \c POINT entity. */
+        double z0
+                /*!< the Z coordinate value \c z0 to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point->z0 = z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
+/*!
  * \brief Get the angle_to_X from a DXF \c POINT entity.
  *
  * \return angle_to_X.
