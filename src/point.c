@@ -2378,7 +2378,7 @@ dxf_point_set_transparency
 
 
 /*!
- * \brief Get the X coordinate value \x0 from a DXF \c POINT entity.
+ * \brief Get the X coordinate value \c x0 from a DXF \c POINT entity.
  *
  * \return \c x0.
  */
