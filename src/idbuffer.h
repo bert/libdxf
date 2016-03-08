@@ -1,7 +1,7 @@
 /*!
  * \file idbuffer.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF idbuffer object (\c IDBUFFER).
  *
@@ -104,6 +104,11 @@ void
 dxf_idbuffer_free_chain
 (
         DxfIdbuffer *id_buffers
+);
+int
+dxf_idbuffer_get_id_code
+(
+        DxfIdbuffer *idbuffer
 );
 
 
