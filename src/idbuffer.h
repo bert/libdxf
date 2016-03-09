@@ -110,6 +110,12 @@ dxf_idbuffer_get_id_code
 (
         DxfIdbuffer *idbuffer
 );
+DxfIdbuffer *
+dxf_idbuffer_set_id_code
+(
+        DxfIdbuffer *idbuffer,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_IDBUFFER_H */
