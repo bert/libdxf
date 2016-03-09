@@ -547,4 +547,48 @@ dxf_idbuffer_set_id_code
 }
 
 
+/*!
+ * \brief Get the pointer to the \c dictionary_owner_soft from a DXF
+ * \c IDBUFFER object.
+ *
+ * \return a pointer to \c dictionary_owner_soft when successful, or
+ * \c NULL when an error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_idbuffer_get_dictionary_owner_soft
+(
+        DxfIdbuffer *idbuffer
+                /*!< a pointer to a DXF \c IDBUFFER object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (idbuffer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (idbuffer->dictionary_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (idbuffer->dictionary_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
