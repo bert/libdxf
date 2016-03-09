@@ -7,6 +7,12 @@
  *
  * \version The \c IDBUFFER object was introduced in DXF R14.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -41,12 +47,6 @@
  * \brief Allocate memory for a \c DxfIdbuffer.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfIdbuffer *
 dxf_idbuffer_new ()
@@ -84,12 +84,6 @@ dxf_idbuffer_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfIdbuffer *
 dxf_idbuffer_init
@@ -143,12 +137,6 @@ dxf_idbuffer_init
  * While parsing the DXF file store data in \c idbuffer. \n
  *
  * \return a pointer to \c idbuffer.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfIdbuffer *
 dxf_idbuffer_read
@@ -279,12 +267,6 @@ dxf_idbuffer_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_idbuffer_write
@@ -377,17 +359,11 @@ dxf_idbuffer_write
 
 
 /*!
- * \brief Free the allocated memory for a DXF \c IDBUFFER and all it's
- * data fields.
+ * \brief Free the allocated memory for a DXF \c IDBUFFER object and all
+ * it's data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_idbuffer_free
@@ -428,12 +404,6 @@ dxf_idbuffer_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c IDBUFFER
  * objects and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_idbuffer_free_chain
@@ -464,7 +434,7 @@ dxf_idbuffer_free_chain
 
 
 /*!
- * \brief Get the \c id_code from a DXF \c IDBUFFER.
+ * \brief Get the \c id_code from a DXF \c IDBUFFER object.
  *
  * \return \c id_code when successful, or \c EXIT_FAILURE when an error
  * occurred.
@@ -505,7 +475,7 @@ dxf_idbuffer_get_id_code
 
 
 /*!
- * \brief Set the \c id_code for a DXF \c IDBUFFER
+ * \brief Set the \c id_code for a DXF \c IDBUFFER object.
  *
  * \return a pointer to \c idbuffer when successful, or \c NULL when an
  * error occurred.
