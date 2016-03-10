@@ -691,4 +691,47 @@ dxf_idbuffer_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c HELIX entity from a DXF 
+ * \c IDBUFFER object.
+ *
+ * \return pointer to the next \c IDBUFFER object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfIdbuffer *
+dxf_idbuffer_get_next
+(
+        DxfIdbuffer *idbuffer
+                /*!< a pointer to a DXF \c IDBUFFER object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfIdbuffer *result;
+
+        /* Do some basic checks. */
+        if (idbuffer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (idbuffer->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfIdbuffer *) idbuffer->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
