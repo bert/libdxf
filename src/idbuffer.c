@@ -648,4 +648,47 @@ dxf_idbuffer_get_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
+ * \c IDBUFFER object.
+ *
+ * \return a pointer to \c idbuffer when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfIdbuffer *
+dxf_idbuffer_set_dictionary_owner_hard
+(
+        DxfIdbuffer *idbuffer,
+                /*!< a pointer to a DXF \c IDBUFFER object. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the \c
+                 * dictionary_owner_hard for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (idbuffer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        idbuffer->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (idbuffer);
+}
+
+
 /* EOF*/
