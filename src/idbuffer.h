@@ -42,6 +42,22 @@
 
 
 /*!
+ * \brief DXF definition of a single linked list of entity pointers.
+ */
+typedef struct
+dxf_idbuffer_entity_pointer_struct
+{
+        char *soft_pointer;
+                /*!< Soft pointer reference to entity (multiple entries
+                 * may exist).\n
+                 * Group code = 330. */
+        struct DxfIdbufferEntityPointer *next;
+                /*!< Pointer to the next DxfIdbufferEntityPointer.\n
+                 * \c NULL in the last DxfIdbufferEntityPointer. */
+} DxfIdbufferEntityPointer;
+
+
+/*!
  * \brief DXF definition of an AutoCAD idbuffer object (\c IDBUFFER).
  *
  * \version According to DXF R10 (backward compatibility).
