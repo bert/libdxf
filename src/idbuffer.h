@@ -127,6 +127,11 @@ dxf_idbuffer_set_dictionary_owner_soft
         DxfIdbuffer *idbuffer,
         char *dictionary_owner_soft
 );
+char *
+dxf_idbuffer_get_dictionary_owner_hard
+(
+        DxfIdbuffer *idbuffer
+);
 
 
 #endif /* LIBDXF_SRC_IDBUFFER_H */
