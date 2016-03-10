@@ -159,6 +159,12 @@ dxf_idbuffer_get_next
 (
         DxfIdbuffer *idbuffer
 );
+DxfIdbuffer *
+dxf_idbuffer_set_next
+(
+        DxfIdbuffer *idbuffer,
+        DxfIdbuffer *next
+);
 
 
 #endif /* LIBDXF_SRC_IDBUFFER_H */

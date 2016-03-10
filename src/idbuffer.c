@@ -734,4 +734,46 @@ dxf_idbuffer_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c IDBUFFER for a DXF \c IDBUFFER
+ * object.
+ *
+ * \return a pointer to \c idbuffer when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfIdbuffer *
+dxf_idbuffer_set_next
+(
+        DxfIdbuffer *idbuffer,
+                /*!< a pointer to a DXF \c IDBUFFER object. */
+        DxfIdbuffer *next
+                /*!< a pointer to the next \c IDBUFFER for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (idbuffer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        idbuffer->next = (struct DxfIdbuffer *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (idbuffer);
+}
+
+
 /* EOF*/
