@@ -921,4 +921,48 @@ dxf_idbuffer_entity_pointer_free_chain
 }
 
 
+/*!
+ * \brief Get the pointer to the \c soft_pointer from a DXF
+ * \c DxfIdbufferEntityPointer object.
+ *
+ * \return a pointer to \c soft_pointer when successful, or
+ * \c NULL when an error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_idbuffer_entity_pointer_get_soft_pointer
+(
+        DxfIdbufferEntityPointer *entity_pointer
+                /*!< a pointer to a DXF \c IDBUFFER object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result;
+
+        /* Do some basic checks. */
+        if (entity_pointer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (entity_pointer->soft_pointer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the soft_pointer member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (entity_pointer->soft_pointer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/

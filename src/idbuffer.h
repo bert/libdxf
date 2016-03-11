@@ -182,6 +182,11 @@ dxf_idbuffer_entity_pointer_free_chain
 (
         DxfIdbufferEntityPointer *entity_pointers
 );
+char *
+dxf_idbuffer_entity_pointer_get_soft_pointer
+(
+        DxfIdbufferEntityPointer *entity_pointer
+);
 
 
 #endif /* LIBDXF_SRC_IDBUFFER_H */
