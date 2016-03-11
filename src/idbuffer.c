@@ -776,4 +776,39 @@ dxf_idbuffer_set_next
 }
 
 
+/*!
+ * \brief Allocate memory for a \c DxfIdbufferEntityPointer.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfIdbufferEntityPointer *
+dxf_idbuffer_entity_pointer_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfIdbufferEntityPointer *entity_pointer = NULL;
+        size_t size;
+
+        size = sizeof (DxfIdbufferEntityPointer);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((entity_pointer = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfIdbufferEntityPointer struct.\n")),
+                  __FUNCTION__);
+                entity_pointer = NULL;
+        }
+        else
+        {
+                memset (entity_pointer, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (entity_pointer);
+}
+
+
 /* EOF*/
