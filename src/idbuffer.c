@@ -811,4 +811,45 @@ dxf_idbuffer_entity_pointer_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a
+ * \c DxfIdbufferEntityPointer struct.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfIdbufferEntityPointer *
+dxf_idbuffer_entity_pointer_init
+(
+        DxfIdbufferEntityPointer *entity_pointer
+                /*!< DXF \c DxfIdbufferEntityPointer struct. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (entity_pointer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                entity_pointer = dxf_idbuffer_entity_pointer_new ();
+        }
+        if (entity_pointer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfIdbufferEntityPointer struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        entity_pointer->soft_pointer = strdup ("");
+        entity_pointer->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (entity_pointer);
+}
+
+
 /* EOF*/
