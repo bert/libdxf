@@ -852,4 +852,40 @@ dxf_idbuffer_entity_pointer_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF
+ * \c DxfIdbufferEntityPointer struct and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_idbuffer_entity_pointer_free
+(
+        DxfIdbufferEntityPointer *entity_pointer
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c DxfIdbufferEntityPointer struct. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (entity_pointer->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfIdbufferEntityPointer was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (entity_pointer->soft_pointer);
+        free (entity_pointer);
+        entity_pointer = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF*/
