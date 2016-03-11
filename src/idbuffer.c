@@ -888,4 +888,37 @@ dxf_idbuffer_entity_pointer_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF
+ * \c DxfIdbufferEntityPointer structs and all their data fields.
+ */
+void
+dxf_idbuffer_entity_pointer_free_chain
+(
+        DxfIdbufferEntityPointer *entity_pointers
+                /*!< pointer to the chain of DXF
+                 * \c DxfIdbufferEntityPointer structs. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (entity_pointers == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (entity_pointers != NULL)
+        {
+                struct DxfIdbufferEntityPointer *iter = entity_pointers->next;
+                dxf_idbuffer_entity_pointer_free (entity_pointers);
+                entity_pointers = (DxfIdbufferEntityPointer *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF*/
