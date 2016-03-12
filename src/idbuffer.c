@@ -1008,4 +1008,47 @@ dxf_idbuffer_soft_pointer_set_soft_pointer
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c DxfIdbufferEntityPointer object
+ * from a DXF \c DxfIdbufferEntityPointer object.
+ *
+ * \return pointer to the next \c DxfIdbufferEntityPointer object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfIdbufferEntityPointer *
+dxf_idbuffer_entity_pointer_get_next
+(
+        DxfIdbufferEntityPointer *entity_pointer
+                /*!< a pointer to a DXF \c DxfIdbufferEntityPointer object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfIdbufferEntityPointer *result;
+
+        /* Do some basic checks. */
+        if (entity_pointer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (entity_pointer->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfIdbufferEntityPointer *) entity_pointer->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF*/
