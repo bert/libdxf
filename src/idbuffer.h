@@ -82,9 +82,10 @@ dxf_idbuffer
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360. */
         /* Specific members for a DXF idbuffer. */
-        char *entity_pointer[DXF_MAX_PARAM];
+        DxfIdbufferEntityPointer *entity_pointer;
                 /*!< Soft pointer reference to entity (multiple entries
                  * may exist).\n
+                 * Pointer to the first entry of a single linked list.\n
                  * Group code = 330. */
         struct DxfIdbuffer *next;
                 /*!< Pointer to the next DxfIdbuffer.\n

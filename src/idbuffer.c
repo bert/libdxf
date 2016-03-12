@@ -95,8 +95,6 @@ dxf_idbuffer_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (idbuffer == NULL)
         {
@@ -115,10 +113,7 @@ dxf_idbuffer_init
         idbuffer->id_code = 0;
         idbuffer->dictionary_owner_soft = strdup ("");
         idbuffer->dictionary_owner_hard = strdup ("");
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                idbuffer->entity_pointer[i] = strdup ("");
-        }
+        idbuffer->entity_pointer = (DxfIdbufferEntityPointer *) dxf_idbuffer_entity_pointer_init (idbuffer->entity_pointer);
         idbuffer->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -152,6 +147,7 @@ dxf_idbuffer_read
 #endif
         char *temp_string = NULL;
         int i;
+        DxfIdbufferEntityPointer *entity_pointer = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -178,6 +174,7 @@ dxf_idbuffer_read
                 idbuffer = dxf_idbuffer_init (idbuffer);
         }
         i = 0;
+        entity_pointer = (DxfIdbufferEntityPointer *) dxf_idbuffer_entity_pointer_init (entity_pointer);
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -228,9 +225,9 @@ dxf_idbuffer_read
                         /* Now follows a string containing a Soft
                          * pointer reference to entity. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", idbuffer->entity_pointer[i]);
-                        i++;
-                        /*! \todo Check for overrun of array index. */
+                        fscanf (fp->fp, "%s\n", entity_pointer->soft_pointer);
+                        dxf_idbuffer_entity_pointer_init ((DxfIdbufferEntityPointer *) entity_pointer->next);
+                        entity_pointer = (DxfIdbufferEntityPointer *) entity_pointer->next;
                 }
                 else if (strcmp (temp_string, "360") == 0)
                 {
@@ -281,7 +278,7 @@ dxf_idbuffer_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("IDBUFFER");
-        int i;
+        DxfIdbufferEntityPointer * entity_pointer = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -342,12 +339,11 @@ dxf_idbuffer_write
         {
                 fprintf (fp->fp, "100\nAcDbIdBuffer\n");
         }
-        i = 0;
-        while (strlen (idbuffer->entity_pointer[i]) > 0)
+        entity_pointer = (DxfIdbufferEntityPointer *) idbuffer->entity_pointer;
+        while (idbuffer->entity_pointer != NULL)
         {
-                fprintf (fp->fp, "330\n%s\n", idbuffer->entity_pointer[i]);
-                i++;
-                /*! \todo Check for overrun of array index. */
+                fprintf (fp->fp, "330\n%s\n", entity_pointer->soft_pointer);
+                entity_pointer = dxf_idbuffer_entity_pointer_get_next (entity_pointer);
         }
         /* Clean up. */
         free (dxf_entity_name);
@@ -376,8 +372,6 @@ dxf_idbuffer_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (idbuffer->next != NULL)
         {
@@ -388,10 +382,7 @@ dxf_idbuffer_free
         }
         free (idbuffer->dictionary_owner_soft);
         free (idbuffer->dictionary_owner_hard);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (idbuffer->entity_pointer[i]);
-        }
+        dxf_idbuffer_entity_pointer_free_chain ((DxfIdbufferEntityPointer *) idbuffer->entity_pointer);
         free (idbuffer);
         idbuffer = NULL;
 #if DEBUG
