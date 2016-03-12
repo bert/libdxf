@@ -187,6 +187,12 @@ dxf_idbuffer_entity_pointer_get_soft_pointer
 (
         DxfIdbufferEntityPointer *entity_pointer
 );
+DxfIdbufferEntityPointer *
+dxf_idbuffer_soft_pointer_set_soft_pointer
+(
+        DxfIdbufferEntityPointer *entity_pointer,
+        char *soft_pointer
+);
 
 
 #endif /* LIBDXF_SRC_IDBUFFER_H */
