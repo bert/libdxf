@@ -317,9 +317,7 @@ DxfSpline *
 dxf_spline_set_thickness
 (
         DxfSpline *spline,
-                /*!< a pointer to a DXF \c SPLINE entity. */
         double thickness
-                /*!< the \c thickness to be set for the entity. */
 );
 double
 dxf_spline_get_linetype_scale
