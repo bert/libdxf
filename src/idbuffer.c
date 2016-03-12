@@ -1051,4 +1051,48 @@ dxf_idbuffer_entity_pointer_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c DxfIdbufferEntityPointer object
+ * for a DXF \c DxfIdbufferEntityPointer object.
+ *
+ * \return a pointer to \c entity_pointer when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfIdbufferEntityPointer*
+dxf_idbuffer_entity_pointer_set_next
+(
+        DxfIdbufferEntityPointer *entity_pointer,
+                /*!< a pointer to a DXF \c DxfIdbufferEntityPointer
+                 * object. */
+        DxfIdbufferEntityPointer *next
+                /*!< a pointer to the next \c DxfIdbufferEntityPointer
+                 * object for the DxfIdbufferEntityPointer object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (entity_pointer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        entity_pointer->next = (struct DxfIdbufferEntityPointer *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (entity_pointer);
+}
+
+
 /* EOF*/

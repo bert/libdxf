@@ -198,6 +198,12 @@ dxf_idbuffer_entity_pointer_get_next
 (
         DxfIdbufferEntityPointer *entity_pointer
 );
+DxfIdbufferEntityPointer *
+dxf_idbuffer_entity_pointer_set_next
+(
+        DxfIdbufferEntityPointer *entity_pointer,
+        DxfIdbufferEntityPointer *next
+);
 
 
 #endif /* LIBDXF_SRC_IDBUFFER_H */
