@@ -255,6 +255,12 @@ dxf_image_get_id_code
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_id_code
+(
+        DxfImage *image,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
