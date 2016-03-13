@@ -795,7 +795,7 @@ dxf_helix_free_chain
 
 
 /*!
- * \brief Get the \c id_code from a DXF \c HELIX.
+ * \brief Get the \c id_code from a DXF \c HELIX entity.
  *
  * \return \c id_code when successful, or \c EXIT_FAILURE when an error
  * occurred.
@@ -804,7 +804,7 @@ int
 dxf_helix_get_id_code
 (
         DxfHelix *helix
-                /*!< a pointer to a DXF \c HELIX. */
+                /*!< a pointer to a DXF \c HELIX entity. */
 )
 {
 #if DEBUG
@@ -836,7 +836,7 @@ dxf_helix_get_id_code
 
 
 /*!
- * \brief Set the \c id_code for a DXF \c HELIX.
+ * \brief Set the \c id_code for a DXF \c HELIX entity.
  *
  * \return a pointer to \c helix when successful, or \c NULL when an
  * error occurred.
@@ -845,7 +845,7 @@ DxfHelix *
 dxf_helix_set_id_code
 (
         DxfHelix *helix,
-                /*!< a pointer to a DXF \c HELIX. */
+                /*!< a pointer to a DXF \c HELIX entity. */
         int id_code
                 /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
