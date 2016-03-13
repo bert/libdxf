@@ -283,6 +283,11 @@ dxf_image_set_layer
         DxfImage *image,
         char *layer
 );
+double
+dxf_image_get_elevation
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
