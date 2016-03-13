@@ -961,4 +961,45 @@ dxf_image_get_layer
 }
 
 
+/*!
+ * \brief Set the \c layer for a DXF \c IMAGE entity.
+ *
+ * \return a pointer to \c image when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImage *
+dxf_image_set_layer
+(
+        DxfImage *image,
+                /*!< a pointer to a DXF \c IMAGE entity. */
+        char *layer
+                /*!< a string containing the \c layer for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        image->layer = strdup (layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image);
+}
+
+
 /* EOF*/
