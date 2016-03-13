@@ -294,6 +294,11 @@ dxf_image_set_elevation
         DxfImage *image,
         double elevation
 );
+double
+dxf_image_get_thickness
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
