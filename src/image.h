@@ -261,6 +261,11 @@ dxf_image_set_id_code
         DxfImage *image,
         int id_code
 );
+char *
+dxf_image_get_linetype
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
