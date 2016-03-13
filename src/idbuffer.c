@@ -440,8 +440,6 @@ dxf_idbuffer_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (idbuffer == NULL)
         {
@@ -457,11 +455,10 @@ dxf_idbuffer_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = idbuffer->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (idbuffer->id_code);
 }
 
 
@@ -527,8 +524,6 @@ dxf_idbuffer_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (idbuffer == NULL)
         {
@@ -544,11 +539,10 @@ dxf_idbuffer_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (idbuffer->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (idbuffer->dictionary_owner_soft));
 }
 
 
@@ -614,8 +608,6 @@ dxf_idbuffer_get_dictionary_owner_hard
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (idbuffer == NULL)
         {
@@ -631,11 +623,10 @@ dxf_idbuffer_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (idbuffer->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (idbuffer->dictionary_owner_hard));
 }
 
 
@@ -700,8 +691,6 @@ dxf_idbuffer_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfIdbuffer *result;
-
         /* Do some basic checks. */
         if (idbuffer == NULL)
         {
@@ -717,11 +706,10 @@ dxf_idbuffer_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfIdbuffer *) idbuffer->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfIdbuffer *) idbuffer->next);
 }
 
 
@@ -931,8 +919,6 @@ dxf_idbuffer_entity_pointer_get_soft_pointer
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (entity_pointer == NULL)
         {
@@ -948,11 +934,10 @@ dxf_idbuffer_entity_pointer_get_soft_pointer
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (entity_pointer->soft_pointer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (entity_pointer->soft_pointer));
 }
 
 
@@ -1017,8 +1002,6 @@ dxf_idbuffer_entity_pointer_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfIdbufferEntityPointer *result;
-
         /* Do some basic checks. */
         if (entity_pointer == NULL)
         {
@@ -1034,11 +1017,10 @@ dxf_idbuffer_entity_pointer_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfIdbufferEntityPointer *) entity_pointer->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfIdbufferEntityPointer *) entity_pointer->next);
 }
 
 
