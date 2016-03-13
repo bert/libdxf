@@ -1061,8 +1061,6 @@ dxf_spline_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -1078,11 +1076,10 @@ dxf_spline_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = spline->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->id_code);
 }
 
 
@@ -1143,8 +1140,6 @@ dxf_spline_get_linetype
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -1160,11 +1155,10 @@ dxf_spline_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (spline->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (spline->linetype));
 }
 
 
@@ -1224,8 +1218,6 @@ dxf_spline_get_layer
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -1241,11 +1233,10 @@ dxf_spline_get_layer
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (spline->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (spline->layer));
 }
 
 
@@ -1306,8 +1297,6 @@ dxf_spline_get_elevation
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -1316,11 +1305,10 @@ dxf_spline_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = spline->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->elevation);
 }
 
 
@@ -1374,8 +1362,6 @@ dxf_spline_get_thickness
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -1390,11 +1376,10 @@ dxf_spline_get_thickness
                   (_("Warning in %s () a negative value was found in the thickness member.\n")),
                   __FUNCTION__);
         }
-        result = spline->thickness;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->thickness);
 }
 
 
@@ -1454,8 +1439,6 @@ dxf_spline_get_linetype_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -1471,11 +1454,10 @@ dxf_spline_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = spline->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->linetype_scale);
 }
 
 
@@ -1536,8 +1518,6 @@ dxf_spline_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -1560,11 +1540,10 @@ dxf_spline_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = spline->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->visibility);
 }
 
 
@@ -1632,8 +1611,6 @@ dxf_spline_get_color
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -1648,11 +1625,10 @@ dxf_spline_get_color
                   (_("Warning in %s () a negative value was found in the color member.\n")),
                   __FUNCTION__);
         }
-        result = spline->color;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->color);
 }
 
 
@@ -1714,8 +1690,6 @@ dxf_spline_get_paperspace
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -1736,11 +1710,10 @@ dxf_spline_get_paperspace
                   (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
                   __FUNCTION__);
         }
-        result = spline->paperspace;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->paperspace);
 }
 
 
@@ -1809,8 +1782,6 @@ dxf_spline_get_graphics_data_size
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -1831,11 +1802,10 @@ dxf_spline_get_graphics_data_size
                   (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
                   __FUNCTION__);
         }
-        result = spline->graphics_data_size;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->graphics_data_size);
 }
 
 
@@ -1904,8 +1874,6 @@ dxf_spline_get_shadow_mode
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -1928,11 +1896,10 @@ dxf_spline_get_shadow_mode
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = spline->shadow_mode;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->shadow_mode);
 }
 
 
@@ -2003,8 +1970,6 @@ dxf_spline_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfBinaryGraphicsData *result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -2020,11 +1985,10 @@ dxf_spline_get_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfBinaryGraphicsData *) spline->binary_graphics_data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfBinaryGraphicsData *) spline->binary_graphics_data);
 }
 
 
@@ -2090,8 +2054,6 @@ dxf_spline_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -2107,11 +2069,10 @@ dxf_spline_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (spline->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (spline->dictionary_owner_soft));
 }
 
 
@@ -2176,8 +2137,6 @@ dxf_spline_get_material
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -2193,11 +2152,10 @@ dxf_spline_get_material
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (spline->material);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (spline->material));
 }
 
 
@@ -2262,8 +2220,6 @@ dxf_spline_get_dictionary_owner_hard
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -2279,11 +2235,10 @@ dxf_spline_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (spline->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (spline->dictionary_owner_hard));
 }
 
 
@@ -2346,8 +2301,6 @@ dxf_spline_get_lineweight
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -2356,11 +2309,10 @@ dxf_spline_get_lineweight
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = spline->lineweight;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->lineweight);
 }
 
 
@@ -2414,8 +2366,6 @@ dxf_spline_get_plot_style_name
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -2431,11 +2381,10 @@ dxf_spline_get_plot_style_name
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (spline->plot_style_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (spline->plot_style_name));
 }
 
 
@@ -2497,8 +2446,6 @@ dxf_spline_get_color_value
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        long result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -2507,11 +2454,10 @@ dxf_spline_get_color_value
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = spline->color_value;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->color_value);
 }
 
 
@@ -2565,8 +2511,6 @@ dxf_spline_get_color_name
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -2582,11 +2526,10 @@ dxf_spline_get_color_name
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (spline->color_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (spline->color_name));
 }
 
 
@@ -2648,8 +2591,6 @@ dxf_spline_get_transparency
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        long result;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -2658,11 +2599,10 @@ dxf_spline_get_transparency
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = spline->transparency;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (spline->transparency);
 }
 
 
@@ -2718,8 +2658,6 @@ dxf_spline_get_p0
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfPoint *result = NULL;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -2735,11 +2673,10 @@ dxf_spline_get_p0
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfPoint *) spline->p0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfPoint *) spline->p0);
 }
 
 
@@ -2805,8 +2742,6 @@ dxf_spline_get_p1
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfPoint *result = NULL;
-
         /* Do some basic checks. */
         if (spline == NULL)
         {
@@ -2822,11 +2757,10 @@ dxf_spline_get_p1
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfPoint *) spline->p1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfPoint *) spline->p1);
 }
 
 
