@@ -266,6 +266,12 @@ dxf_image_get_linetype
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_linetype
+(
+        DxfImage *image,
+        char *linetype
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */

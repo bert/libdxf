@@ -880,4 +880,45 @@ dxf_image_get_linetype
 }
 
 
+/*!
+ * \brief Set the \c linetype for a DXF \c IMAGE entity.
+ *
+ * \return a pointer to \c image when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImage *
+dxf_image_set_linetype
+(
+        DxfImage *image,
+                /*!< a pointer to a DXF \c IMAGE entity. */
+        char *linetype
+                /*!< a string containing the \c linetype for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        image->linetype = strdup (linetype);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image);
+}
+
+
 /* EOF*/
