@@ -810,8 +810,6 @@ dxf_helix_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -827,11 +825,10 @@ dxf_helix_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->id_code);
 }
 
 
@@ -893,8 +890,6 @@ dxf_helix_get_linetype
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -910,11 +905,10 @@ dxf_helix_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (helix->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (helix->linetype));
 }
 
 
@@ -974,8 +968,6 @@ dxf_helix_get_layer
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -991,11 +983,10 @@ dxf_helix_get_layer
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (helix->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (helix->layer));
 }
 
 
@@ -1056,8 +1047,6 @@ dxf_helix_get_thickness
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -1072,11 +1061,10 @@ dxf_helix_get_thickness
                   (_("Warning in %s () a negative value was found in the thickness member.\n")),
                   __FUNCTION__);
         }
-        result = helix->thickness;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->thickness);
 }
 
 
@@ -1136,8 +1124,6 @@ dxf_helix_get_linetype_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -1153,11 +1139,10 @@ dxf_helix_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->linetype_scale);
 }
 
 
@@ -1218,8 +1203,6 @@ dxf_helix_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -1242,11 +1225,10 @@ dxf_helix_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->visibility);
 }
 
 
@@ -1314,8 +1296,6 @@ dxf_helix_get_color
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -1330,11 +1310,10 @@ dxf_helix_get_color
                   (_("Warning in %s () a negative value was found in the color member.\n")),
                   __FUNCTION__);
         }
-        result = helix->color;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->color);
 }
 
 
@@ -1396,8 +1375,6 @@ dxf_helix_get_paperspace
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -1418,11 +1395,10 @@ dxf_helix_get_paperspace
                   (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
                   __FUNCTION__);
         }
-        result = helix->paperspace;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->paperspace);
 }
 
 
@@ -1491,8 +1467,6 @@ dxf_helix_get_graphics_data_size
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -1513,11 +1487,10 @@ dxf_helix_get_graphics_data_size
                   (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
                   __FUNCTION__);
         }
-        result = helix->graphics_data_size;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->graphics_data_size);
 }
 
 
@@ -1586,8 +1559,6 @@ dxf_helix_get_shadow_mode
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -1610,11 +1581,10 @@ dxf_helix_get_shadow_mode
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->shadow_mode;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->shadow_mode);
 }
 
 
@@ -1684,8 +1654,6 @@ dxf_helix_get_binary_graphics_data
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfBinaryGraphicsData *result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -1701,11 +1669,10 @@ dxf_helix_get_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfBinaryGraphicsData *) helix->binary_graphics_data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfBinaryGraphicsData *) helix->binary_graphics_data);
 }
 
 
@@ -1768,8 +1735,6 @@ dxf_helix_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -1785,11 +1750,10 @@ dxf_helix_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (helix->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (helix->dictionary_owner_soft));
 }
 
 
@@ -1854,8 +1818,6 @@ dxf_helix_get_material
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -1871,11 +1833,10 @@ dxf_helix_get_material
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (helix->material);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (helix->material));
 }
 
 
@@ -1940,8 +1901,6 @@ dxf_helix_get_dictionary_owner_hard
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -1957,11 +1916,10 @@ dxf_helix_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (helix->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (helix->dictionary_owner_hard));
 }
 
 
@@ -2024,8 +1982,6 @@ dxf_helix_get_lineweight
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2034,11 +1990,10 @@ dxf_helix_get_lineweight
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->lineweight;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->lineweight);
 }
 
 
@@ -2092,8 +2047,6 @@ dxf_helix_get_plot_style_name
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2109,11 +2062,10 @@ dxf_helix_get_plot_style_name
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (helix->plot_style_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (helix->plot_style_name));
 }
 
 
@@ -2175,8 +2127,6 @@ dxf_helix_get_color_value
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        long result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2185,11 +2135,10 @@ dxf_helix_get_color_value
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->color_value;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->color_value);
 }
 
 
@@ -2243,8 +2192,6 @@ dxf_helix_get_color_name
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2260,11 +2207,10 @@ dxf_helix_get_color_name
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (helix->color_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (helix->color_name));
 }
 
 
@@ -2326,8 +2272,6 @@ dxf_helix_get_transparency
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        long result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2336,11 +2280,10 @@ dxf_helix_get_transparency
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->transparency;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->transparency);
 }
 
 
@@ -2394,8 +2337,6 @@ dxf_helix_get_x0
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2404,11 +2345,10 @@ dxf_helix_get_x0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->x0);
 }
 
 
@@ -2463,8 +2403,6 @@ dxf_helix_get_y0
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2473,11 +2411,10 @@ dxf_helix_get_y0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->y0);
 }
 
 
@@ -2532,8 +2469,6 @@ dxf_helix_get_z0
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2542,11 +2477,10 @@ dxf_helix_get_z0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->z0);
 }
 
 
@@ -2601,8 +2535,6 @@ dxf_helix_get_x1
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2611,11 +2543,10 @@ dxf_helix_get_x1
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->x1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->x1);
 }
 
 
@@ -2670,8 +2601,6 @@ dxf_helix_get_y1
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2680,11 +2609,10 @@ dxf_helix_get_y1
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->y1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->y1);
 }
 
 
@@ -2738,8 +2666,6 @@ dxf_helix_get_z1
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2748,11 +2674,10 @@ dxf_helix_get_z1
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->z1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->z1);
 }
 
 
@@ -2807,8 +2732,6 @@ dxf_helix_get_x2
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2817,11 +2740,10 @@ dxf_helix_get_x2
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->x2;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->x2);
 }
 
 
@@ -2876,8 +2798,6 @@ dxf_helix_get_y2
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2886,11 +2806,10 @@ dxf_helix_get_y2
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->y2;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->y2);
 }
 
 
@@ -2945,8 +2864,6 @@ dxf_helix_get_z2
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -2955,11 +2872,10 @@ dxf_helix_get_z2
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->z2;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->z2);
 }
 
 
@@ -3014,8 +2930,6 @@ dxf_helix_get_radius
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -3024,11 +2938,10 @@ dxf_helix_get_radius
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->radius;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->radius);
 }
 
 
@@ -3082,8 +2995,6 @@ dxf_helix_get_number_of_turns
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -3092,11 +3003,10 @@ dxf_helix_get_number_of_turns
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->number_of_turns;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->number_of_turns);
 }
 
 
@@ -3150,8 +3060,6 @@ dxf_helix_get_turn_height
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -3160,11 +3068,10 @@ dxf_helix_get_turn_height
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->turn_height;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->turn_height);
 }
 
 
@@ -3218,8 +3125,6 @@ dxf_helix_get_major_release_number
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        long result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -3228,11 +3133,10 @@ dxf_helix_get_major_release_number
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->major_release_number;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->major_release_number);
 }
 
 
@@ -3288,8 +3192,6 @@ dxf_helix_get_maintainance_release_number
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        long result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -3298,11 +3200,10 @@ dxf_helix_get_maintainance_release_number
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->maintainance_release_number;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->maintainance_release_number);
 }
 
 
@@ -3357,8 +3258,6 @@ dxf_helix_get_constraint_type
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -3381,11 +3280,10 @@ dxf_helix_get_constraint_type
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->constraint_type;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->constraint_type);
 }
 
 
@@ -3453,8 +3351,6 @@ dxf_helix_get_handedness
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -3477,11 +3373,10 @@ dxf_helix_get_handedness
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = helix->handedness;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (helix->handedness);
 }
 
 
@@ -3549,8 +3444,6 @@ dxf_helix_get_spline
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfSpline *result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -3566,11 +3459,10 @@ dxf_helix_get_spline
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfSpline *) helix->spline;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfSpline *) helix->spline);
 }
 
 
@@ -3633,8 +3525,6 @@ dxf_helix_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfHelix *result;
-
         /* Do some basic checks. */
         if (helix == NULL)
         {
@@ -3650,11 +3540,10 @@ dxf_helix_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfHelix *) helix->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfHelix *) helix->next);
 }
 
 
