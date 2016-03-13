@@ -288,6 +288,12 @@ dxf_image_get_elevation
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_elevation
+(
+        DxfImage *image,
+        double elevation
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
