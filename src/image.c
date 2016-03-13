@@ -1,7 +1,7 @@
 /*!
  * \file image.c
  *
- * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF image entity (\c IMAGE).
  *
@@ -753,6 +753,47 @@ dxf_image_free_chain
 #if DEBUG
         DXF_DEBUG_END
 #endif
+}
+
+
+/*!
+ * \brief Get the \c id_code from a DXF \c IMAGE entity.
+ *
+ * \return \c id_code when successful, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_image_get_id_code
+(
+        DxfImage *image
+                /*!< a pointer to a DXF \c IMAGE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result;
+
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (image->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the id_code member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        result = image->id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
 }
 
 
