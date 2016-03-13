@@ -1,7 +1,7 @@
 /*!
  * \file 3dface.c
  *
- * \author Copyright (C) 2010 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D face entity (\c 3DFACE).
  *
@@ -685,8 +685,6 @@ dxf_3dface_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -702,11 +700,10 @@ dxf_3dface_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = face->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (face->id_code);
 }
 
 
@@ -777,8 +774,6 @@ dxf_3dface_get_linetype
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -794,11 +789,10 @@ dxf_3dface_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (face->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (face->linetype));
 }
 
 
@@ -867,8 +861,6 @@ dxf_3dface_get_layer
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -884,11 +876,10 @@ dxf_3dface_get_layer
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (face->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (face->layer));
 }
 
 
@@ -957,8 +948,6 @@ dxf_3dface_get_elevation
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -967,11 +956,10 @@ dxf_3dface_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = face->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (face->elevation);
 }
 
 
@@ -1033,8 +1021,6 @@ dxf_3dface_get_thickness
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -1050,11 +1036,10 @@ dxf_3dface_get_thickness
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = face->thickness;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (face->thickness);
 }
 
 
@@ -1123,8 +1108,6 @@ dxf_3dface_get_linetype_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -1140,11 +1123,10 @@ dxf_3dface_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = face->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (face->linetype_scale);
 }
 
 
@@ -1213,8 +1195,6 @@ dxf_3dface_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -1237,11 +1217,10 @@ dxf_3dface_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = face->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (face->visibility);
 }
 
 
@@ -1317,8 +1296,6 @@ dxf_3dface_get_color
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -1333,11 +1310,10 @@ dxf_3dface_get_color
                   (_("Warning in %s () a negative value was found in the color member.\n")),
                   __FUNCTION__);
         }
-        result = face->color;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (face->color);
 }
 
 
@@ -1407,8 +1383,6 @@ dxf_3dface_get_paperspace
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -1429,11 +1403,10 @@ dxf_3dface_get_paperspace
                   (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
                   __FUNCTION__);
         }
-        result = face->paperspace;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (face->paperspace);
 }
 
 
@@ -1512,8 +1485,6 @@ dxf_3dface_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -1529,11 +1500,10 @@ dxf_3dface_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (face->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (face->dictionary_owner_soft));
 }
 
 
@@ -1607,8 +1577,6 @@ dxf_3dface_get_dictionary_owner_hard
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -1624,11 +1592,10 @@ dxf_3dface_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (face->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (face->dictionary_owner_hard));
 }
 
 
@@ -2302,8 +2269,6 @@ dxf_3dface_is_first_edge_invisible
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result = FALSE;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -2312,11 +2277,10 @@ dxf_3dface_is_first_edge_invisible
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = (DXF_CHECK_BIT (face->flag, 0));
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (DXF_CHECK_BIT (face->flag, 0));
 }
 
 
@@ -2336,8 +2300,6 @@ dxf_3dface_is_second_edge_invisible
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result = FALSE;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -2346,11 +2308,10 @@ dxf_3dface_is_second_edge_invisible
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = (DXF_CHECK_BIT (face->flag, 1));
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (DXF_CHECK_BIT (face->flag, 1));
 }
 
 
@@ -2370,8 +2331,6 @@ dxf_3dface_is_third_edge_invisible
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result = FALSE;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -2380,11 +2339,10 @@ dxf_3dface_is_third_edge_invisible
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = (DXF_CHECK_BIT (face->flag, 2));
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (DXF_CHECK_BIT (face->flag, 2));
 }
 
 
@@ -2404,8 +2362,6 @@ dxf_3dface_is_fourth_edge_invisible
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result = FALSE;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -2414,11 +2370,10 @@ dxf_3dface_is_fourth_edge_invisible
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = (DXF_CHECK_BIT (face->flag, 3));
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (DXF_CHECK_BIT (face->flag, 3));
 }
 
 
@@ -2680,8 +2635,6 @@ dxf_3dface_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        Dxf3dface *result;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -2697,11 +2650,10 @@ dxf_3dface_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (Dxf3dface *) face->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((Dxf3dface *) face->next);
 }
 
 
