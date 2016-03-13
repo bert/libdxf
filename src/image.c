@@ -772,8 +772,6 @@ dxf_image_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (image == NULL)
         {
@@ -789,11 +787,10 @@ dxf_image_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = image->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (image->id_code);
 }
 
 
@@ -855,8 +852,6 @@ dxf_image_get_linetype
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (image == NULL)
         {
@@ -872,11 +867,10 @@ dxf_image_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (image->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (image->linetype));
 }
 
 
@@ -936,8 +930,6 @@ dxf_image_get_layer
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (image == NULL)
         {
@@ -953,11 +945,10 @@ dxf_image_get_layer
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (image->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (image->layer));
 }
 
 
@@ -1018,8 +1009,6 @@ dxf_image_get_elevation
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (image == NULL)
         {
@@ -1028,11 +1017,10 @@ dxf_image_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = image->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (image->elevation);
 }
 
 
@@ -1086,8 +1074,6 @@ dxf_image_get_thickness
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (image == NULL)
         {
@@ -1102,11 +1088,10 @@ dxf_image_get_thickness
                   (_("Warning in %s () a negative value was found in the thickness member.\n")),
                   __FUNCTION__);
         }
-        result = image->thickness;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (image->thickness);
 }
 
 
