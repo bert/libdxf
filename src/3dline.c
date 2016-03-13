@@ -1,7 +1,7 @@
 /*!
  * \file 3dline.c
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D line entity (\c 3DLINE).
  *
@@ -673,8 +673,6 @@ dxf_3dline_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -690,11 +688,10 @@ dxf_3dline_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = line->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->id_code);
 }
 
 
@@ -765,8 +762,6 @@ dxf_3dline_get_linetype
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -782,11 +777,10 @@ dxf_3dline_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (line->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (line->linetype));
 }
 
 
@@ -855,8 +849,6 @@ dxf_3dline_get_layer
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -872,11 +864,10 @@ dxf_3dline_get_layer
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (line->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (line->layer));
 }
 
 
@@ -945,8 +936,6 @@ dxf_3dline_get_elevation
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -955,11 +944,10 @@ dxf_3dline_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = line->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->elevation);
 }
 
 
@@ -1021,8 +1009,6 @@ dxf_3dline_get_thickness
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1038,11 +1024,10 @@ dxf_3dline_get_thickness
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = line->thickness;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->thickness);
 }
 
 
@@ -1114,8 +1099,6 @@ dxf_3dline_get_linetype_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1131,11 +1114,10 @@ dxf_3dline_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = line->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->linetype_scale);
 }
 
 
@@ -1210,8 +1192,6 @@ dxf_3dline_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1234,11 +1214,10 @@ dxf_3dline_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = line->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->visibility);
 }
 
 
@@ -1317,8 +1296,6 @@ dxf_3dline_get_color
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1333,11 +1310,10 @@ dxf_3dline_get_color
                   (_("Warning in %s () a negative value was found in the color member.\n")),
                   __FUNCTION__);
         }
-        result = line->color;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->color);
 }
 
 
@@ -1407,8 +1383,6 @@ dxf_3dline_get_paperspace
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1429,11 +1403,10 @@ dxf_3dline_get_paperspace
                   (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
                   __FUNCTION__);
         }
-        result = line->paperspace;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->paperspace);
 }
 
 
@@ -1515,8 +1488,6 @@ dxf_3dline_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1532,11 +1503,10 @@ dxf_3dline_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (line->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (line->dictionary_owner_soft));
 }
 
 
@@ -1610,8 +1580,6 @@ dxf_3dline_get_dictionary_owner_hard
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1627,11 +1595,10 @@ dxf_3dline_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (line->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (line->dictionary_owner_hard));
 }
 
 
@@ -2146,8 +2113,6 @@ dxf_3dline_get_length
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double length;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -2165,16 +2130,15 @@ dxf_3dline_get_length
                   __FUNCTION__);
                 return (0.0);
         }
-        length = sqrt
-        (
-          ((line->x1 - line->x0) * (line->x1 - line->x0))
-          + ((line->y1 - line->y0) * (line->y1 - line->y0))
-          + ((line->z1 - line->z0) * (line->z1 - line->z0))
-        );
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (length);
+        return (sqrt (
+                       ((line->x1 - line->x0) * (line->x1 - line->x0))
+                     + ((line->y1 - line->y0) * (line->y1 - line->y0))
+                     + ((line->z1 - line->z0) * (line->z1 - line->z0))
+                     )
+               );
 }
 
 
@@ -2352,8 +2316,6 @@ dxf_3dline_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        Dxf3dline *result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -2369,11 +2331,10 @@ dxf_3dline_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (Dxf3dline *) line->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((Dxf3dline *) line->next);
 }
 
 
