@@ -305,6 +305,11 @@ dxf_image_set_thickness
         DxfImage *image,
         double thickness
 );
+double
+dxf_image_get_linetype_scale
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */

@@ -1135,4 +1135,42 @@ dxf_image_set_thickness
 }
 
 
+/*!
+ * \brief Get the \c linetype_scale from a DXF \c IMAGE entity.
+ *
+ * \return \c linetype_scale when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+double
+dxf_image_get_linetype_scale
+(
+        DxfImage *image
+                /*!< a pointer to a DXF \c IMAGE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (image->linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the linetype scale member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image->linetype_scale);
+}
+
+
 /* EOF*/
