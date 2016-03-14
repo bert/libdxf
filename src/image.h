@@ -310,6 +310,12 @@ dxf_image_get_linetype_scale
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_linetype_scale
+(
+        DxfImage *image,
+        double linetype_scale
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
