@@ -316,6 +316,11 @@ dxf_image_set_linetype_scale
         DxfImage *image,
         double linetype_scale
 );
+int16_t
+dxf_image_get_visibility
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
