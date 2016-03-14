@@ -299,6 +299,12 @@ dxf_image_get_thickness
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_thickness
+(
+        DxfImage *image,
+        double thickness
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
