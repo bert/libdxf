@@ -321,6 +321,12 @@ dxf_image_get_visibility
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_visibility
+(
+        DxfImage *image,
+        int16_t visibility
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
