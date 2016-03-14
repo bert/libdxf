@@ -1344,4 +1344,4 @@ dxf_image_get_color
 }
 
 
-/* EOF*/
+/* EOF */
