@@ -343,6 +343,12 @@ dxf_image_get_paperspace
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_paperspace
+(
+        DxfImage *image,
+        int paperspace
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
