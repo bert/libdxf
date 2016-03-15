@@ -354,6 +354,12 @@ dxf_image_get_dictionary_owner_soft
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_dictionary_owner_soft
+(
+        DxfImage *image,
+        char *dictionary_owner_soft
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
