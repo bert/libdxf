@@ -349,6 +349,11 @@ dxf_image_set_paperspace
         DxfImage *image,
         int paperspace
 );
+char *
+dxf_image_get_dictionary_owner_soft
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
