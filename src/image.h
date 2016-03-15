@@ -338,6 +338,11 @@ dxf_image_set_color
         DxfImage *image,
         int color
 );
+int
+dxf_image_get_paperspace
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
