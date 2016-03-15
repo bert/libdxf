@@ -332,6 +332,12 @@ dxf_image_get_color
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_color
+(
+        DxfImage *image,
+        int color
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
