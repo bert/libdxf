@@ -2681,7 +2681,7 @@ dxf_spline_get_p0
 
 
 /*!
- * \brief Set the first control pont \c p0 for a DXF \c SPLINE entity.
+ * \brief Set the first control point \c p0 for a DXF \c SPLINE entity.
  *
  * \c p0 is the first control point in a single linked list.
  *
@@ -2765,7 +2765,7 @@ dxf_spline_get_p1
 
 
 /*!
- * \brief Set the first fit pont \c p1 for a DXF \c SPLINE entity.
+ * \brief Set the first fit point \c p1 for a DXF \c SPLINE entity.
  *
  * \c p1 is the first fit point in a single linked list.
  *
