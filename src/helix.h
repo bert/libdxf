@@ -39,6 +39,7 @@
 #include "global.h"
 #include "spline.h"
 #include "binary_graphics_data.h"
+#include "point.h"
 
 
 /*!
@@ -154,15 +155,9 @@ dxf_helix_struct
                  * class-level transparency data.\n
                  * Group code = 440. */
         /* Specific members for a DXF helix. */
-        double x0;
-                /*!< X-value of the axis base point coordinate.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Y-value of the axis base point coordinate.\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Z-value of the axis base point coordinate.\n
-                 * Group code = 30. */
+        DxfPoint *p0;
+                /*!< Axis base point coordinate.\n
+                 * Group codes = 10, 20 and 30.*/
         double x1;
                 /*!< X-value of the start point coordinate.\n
                  * Group code = 11. */
@@ -466,7 +461,7 @@ dxf_helix_get_x0
 (
         DxfHelix *helix
 );
-DxfHelix *
+int
 dxf_helix_set_x0
 (
         DxfHelix *helix,
@@ -477,7 +472,7 @@ dxf_helix_get_y0
 (
         DxfHelix *helix
 );
-DxfHelix *
+int
 dxf_helix_set_y0
 (
         DxfHelix *helix,
@@ -488,7 +483,7 @@ dxf_helix_get_z0
 (
         DxfHelix *helix
 );
-DxfHelix *
+int
 dxf_helix_set_z0
 (
         DxfHelix *helix,

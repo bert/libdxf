@@ -110,9 +110,7 @@ dxf_helix_init
         helix->id_code = 0;
         helix->linetype = strdup (DXF_DEFAULT_LINETYPE);
         helix->layer = strdup (DXF_DEFAULT_LAYER);
-        helix->x0 = 0.0;
-        helix->y0 = 0.0;
-        helix->z0 = 0.0;
+        helix->p0 = dxf_point_init (helix->p0);
         helix->x1 = 0.0;
         helix->y1 = 0.0;
         helix->z1 = 0.0;
@@ -178,6 +176,7 @@ dxf_helix_read
         char *temp_string = NULL;
         int i;
         DxfBinaryGraphicsData *binary_graphics_data = NULL;
+        DxfPoint *p0 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -199,6 +198,7 @@ dxf_helix_read
         }
         i = 0;
         binary_graphics_data = (DxfBinaryGraphicsData *) helix->binary_graphics_data;
+        p0 = (DxfPoint *) helix->p0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -238,21 +238,21 @@ dxf_helix_read
                         /* Now follows a string containing the
                          * X-coordinate of the axis base point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &helix->x0);
+                        fscanf (fp->fp, "%lf\n", &p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the axis base point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &helix->y0);
+                        fscanf (fp->fp, "%lf\n", &p0->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the axis base point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &helix->z0);
+                        fscanf (fp->fp, "%lf\n", &p0->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
@@ -541,6 +541,7 @@ dxf_helix_write
         DxfPoint *p1 = NULL;
         DxfPoint *p2 = NULL;
         DxfPoint *p3 = NULL;
+        DxfPoint *helix_p0 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -693,12 +694,13 @@ dxf_helix_write
                 p1 = (DxfPoint *) p1->next;
         }
         /* Continue writing helix entity parameters. */
+        helix_p0 = (DxfPoint *) helix->p0;
         fprintf (fp->fp, "100\nAcDbHelix\n");
         fprintf (fp->fp, " 90\n%ld\n", helix->major_release_number);
         fprintf (fp->fp, " 91\n%ld\n", helix->maintainance_release_number);
-        fprintf (fp->fp, " 10\n%f\n", helix->x0);
-        fprintf (fp->fp, " 20\n%f\n", helix->y0);
-        fprintf (fp->fp, " 30\n%f\n", helix->z0);
+        fprintf (fp->fp, " 10\n%f\n", helix_p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", helix_p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", helix_p0->z0);
         fprintf (fp->fp, " 11\n%f\n", helix->x1);
         fprintf (fp->fp, " 21\n%f\n", helix->y1);
         fprintf (fp->fp, " 31\n%f\n", helix->z1);
@@ -752,6 +754,7 @@ dxf_helix_free
         free (helix->dictionary_owner_soft);
         free (helix->plot_style_name);
         free (helix->color_name);
+        dxf_point_free (helix->p0);
         free (helix);
         helix = NULL;
 #if DEBUG
@@ -2345,20 +2348,21 @@ dxf_helix_get_x0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        DxfPoint *p0 = (DxfPoint *) helix->p0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (helix->x0);
+        return (p0->x0);
 }
 
 
 /*!
  * \brief Set the axis base point X-value \c x0 for a DXF \c HELIX.
  *
- * \return a pointer to \c helix when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-DxfHelix *
+int
 dxf_helix_set_x0
 (
         DxfHelix *helix,
@@ -2377,13 +2381,14 @@ dxf_helix_set_x0
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
-        helix->x0 = x0;
+        DxfPoint *p0 = (DxfPoint *) helix->p0;
+        p0->x0 = x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (helix);
+        return (EXIT_SUCCESS);
 }
 
 
@@ -2411,20 +2416,21 @@ dxf_helix_get_y0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        DxfPoint *p0 = (DxfPoint *) helix->p0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (helix->y0);
+        return (p0->y0);
 }
 
 
 /*!
  * \brief Set the axis base point Y-value \c y0 for a DXF \c HELIX.
  *
- * \return a pointer to \c helix when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-DxfHelix *
+int
 dxf_helix_set_y0
 (
         DxfHelix *helix,
@@ -2443,13 +2449,14 @@ dxf_helix_set_y0
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
-        helix->y0 = y0;
+        DxfPoint *p0 = (DxfPoint *) helix->p0;
+        p0->y0 = y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (helix);
+        return (EXIT_SUCCESS);
 }
 
 
@@ -2477,20 +2484,21 @@ dxf_helix_get_z0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        DxfPoint *p0 = (DxfPoint *) helix->p0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (helix->z0);
+        return (p0->z0);
 }
 
 
 /*!
  * \brief Set the axis base point Z-value \c z0 for a DXF \c HELIX.
  *
- * \return a pointer to \c helix when successful, or \c NULL when an
- * error occurred.
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
  */
-DxfHelix *
+int
 dxf_helix_set_z0
 (
         DxfHelix *helix,
@@ -2509,13 +2517,14 @@ dxf_helix_set_z0
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
+                return (EXIT_FAILURE);
         }
-        helix->z0 = z0;
+        DxfPoint *p0 = (DxfPoint *) helix->p0;
+        p0->z0 = z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (helix);
+        return (EXIT_SUCCESS);
 }
 
 
