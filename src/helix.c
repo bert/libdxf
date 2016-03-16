@@ -2325,6 +2325,44 @@ dxf_helix_set_transparency
 
 
 /*!
+ * \brief Get the axis base point \c p0 from a DXF \c HELIX entity.
+ *
+ * \return axis base point \c p0 when sucessful, or \c NULL when an
+ * error occurred.
+ */
+DxfPoint *
+dxf_helix_get_p0
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (helix->p0 ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the p0 member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfPoint *) helix->p0);
+}
+
+
+/*!
  * \brief Get the axis base point X-value \c x0 from a DXF \c HELIX.
  *
  * \return axis base point X-value \c x0 when successful, or

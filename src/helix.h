@@ -456,6 +456,11 @@ dxf_helix_set_transparency
         DxfHelix *helix,
         long transparency
 );
+DxfPoint *
+dxf_helix_get_p0
+(
+        DxfHelix *helix
+);
 double
 dxf_helix_get_x0
 (
