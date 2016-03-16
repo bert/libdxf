@@ -2438,10 +2438,10 @@ dxf_helix_get_x0
 /*!
  * \brief Set the axis base point X-value \c x0 for a DXF \c HELIX.
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
-int
+DxfHelix *
 dxf_helix_set_x0
 (
         DxfHelix *helix,
@@ -2460,14 +2460,14 @@ dxf_helix_set_x0
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
         DxfPoint *p0 = (DxfPoint *) helix->p0;
         p0->x0 = x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (helix);
 }
 
 
@@ -2506,10 +2506,10 @@ dxf_helix_get_y0
 /*!
  * \brief Set the axis base point Y-value \c y0 for a DXF \c HELIX.
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
-int
+DxfHelix *
 dxf_helix_set_y0
 (
         DxfHelix *helix,
@@ -2528,14 +2528,14 @@ dxf_helix_set_y0
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
         DxfPoint *p0 = (DxfPoint *) helix->p0;
         p0->y0 = y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (helix);
 }
 
 
@@ -2574,10 +2574,10 @@ dxf_helix_get_z0
 /*!
  * \brief Set the axis base point Z-value \c z0 for a DXF \c HELIX.
  *
- * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
- * occurred.
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
-int
+DxfHelix *
 dxf_helix_set_z0
 (
         DxfHelix *helix,
@@ -2596,14 +2596,14 @@ dxf_helix_set_z0
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
         DxfPoint *p0 = (DxfPoint *) helix->p0;
         p0->z0 = z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return (helix);
 }
 
 

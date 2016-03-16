@@ -472,7 +472,7 @@ dxf_helix_get_x0
 (
         DxfHelix *helix
 );
-int
+DxfHelix *
 dxf_helix_set_x0
 (
         DxfHelix *helix,
@@ -483,7 +483,7 @@ dxf_helix_get_y0
 (
         DxfHelix *helix
 );
-int
+DxfHelix *
 dxf_helix_set_y0
 (
         DxfHelix *helix,
@@ -494,7 +494,7 @@ dxf_helix_get_z0
 (
         DxfHelix *helix
 );
-int
+DxfHelix *
 dxf_helix_set_z0
 (
         DxfHelix *helix,
