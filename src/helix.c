@@ -2363,6 +2363,47 @@ dxf_helix_get_p0
 
 
 /*!
+ * \brief Set the axis base point \c p0 for a DXF \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfHelix *
+dxf_helix_set_p0
+(
+        DxfHelix *helix,
+                /*!< a pointer to a DXF \c HELIX entity. */
+        DxfPoint *p0
+                /*!< an axis base point \c p0 for the * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        helix->p0 = (DxfPoint *) p0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (helix);
+}
+
+
+/*!
  * \brief Get the axis base point X-value \c x0 from a DXF \c HELIX.
  *
  * \return axis base point X-value \c x0 when successful, or
