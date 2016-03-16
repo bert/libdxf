@@ -537,10 +537,10 @@ dxf_helix_write
         int i;
         DxfBinaryGraphicsData *binary_graphics_data = NULL;
         DxfSpline *spline = NULL;
-        DxfPoint *p0 = NULL;
-        DxfPoint *p1 = NULL;
-        DxfPoint *p2 = NULL;
-        DxfPoint *p3 = NULL;
+        DxfPoint *spline_p0 = NULL;
+        DxfPoint *spline_p1 = NULL;
+        DxfPoint *spline_p2 = NULL;
+        DxfPoint *spline_p3 = NULL;
         DxfPoint *helix_p0 = NULL;
 
         /* Do some basic checks. */
@@ -647,10 +647,10 @@ dxf_helix_write
         fprintf (fp->fp, "390\n%s\n", helix->plot_style_name);
         fprintf (fp->fp, "284\n%d\n", helix->shadow_mode);
         /* Write a spline to a DxfFile. */
-        p0 = (DxfPoint *) spline->p0;
-        p1 = (DxfPoint *) spline->p1;
-        p2 = (DxfPoint *) spline->p2;
-        p3 = (DxfPoint *) spline->p3;
+        spline_p0 = (DxfPoint *) spline->p0;
+        spline_p1 = (DxfPoint *) spline->p1;
+        spline_p2 = (DxfPoint *) spline->p2;
+        spline_p3 = (DxfPoint *) spline->p3;
         spline = dxf_helix_get_spline (helix);
         spline->flag = 0;
         spline->degree = 3;
@@ -662,12 +662,12 @@ dxf_helix_write
         fprintf (fp->fp, " 74\n%d\n", spline->number_of_fit_points);
         fprintf (fp->fp, " 42\n%f\n", spline->knot_tolerance);
         fprintf (fp->fp, " 43\n%f\n", spline->control_point_tolerance);
-        fprintf (fp->fp, " 12\n%f\n", p2->x0);
-        fprintf (fp->fp, " 22\n%f\n", p2->y0);
-        fprintf (fp->fp, " 32\n%f\n", p2->z0);
-        fprintf (fp->fp, " 13\n%f\n", p3->x0);
-        fprintf (fp->fp, " 23\n%f\n", p3->y0);
-        fprintf (fp->fp, " 33\n%f\n", p3->z0);
+        fprintf (fp->fp, " 12\n%f\n", spline_p2->x0);
+        fprintf (fp->fp, " 22\n%f\n", spline_p2->y0);
+        fprintf (fp->fp, " 32\n%f\n", spline_p2->z0);
+        fprintf (fp->fp, " 13\n%f\n", spline_p3->x0);
+        fprintf (fp->fp, " 23\n%f\n", spline_p3->y0);
+        fprintf (fp->fp, " 33\n%f\n", spline_p3->z0);
         for (i = 0; i < spline->number_of_knots; i++)
         {
                 fprintf (fp->fp, " 40\n%f\n", spline->knot_value[i]);
@@ -679,19 +679,19 @@ dxf_helix_write
                         fprintf (fp->fp, " 41\n%f\n", spline->weight_value[i]);
                 }
         }
-        while (p0 != NULL)
+        while (spline_p0 != NULL)
         {
-                fprintf (fp->fp, " 10\n%f\n", p0->x0);
-                fprintf (fp->fp, " 20\n%f\n", p0->y0);
-                fprintf (fp->fp, " 30\n%f\n", p0->z0);
-                p0 = (DxfPoint *) p0->next;
+                fprintf (fp->fp, " 10\n%f\n", spline_p0->x0);
+                fprintf (fp->fp, " 20\n%f\n", spline_p0->y0);
+                fprintf (fp->fp, " 30\n%f\n", spline_p0->z0);
+                spline_p0 = (DxfPoint *) spline_p0->next;
         }
-        while (p1 != NULL)
+        while (spline_p1 != NULL)
         {
-                fprintf (fp->fp, " 11\n%f\n", helix->spline->p1->x0);
-                fprintf (fp->fp, " 21\n%f\n", helix->spline->p1->y0);
-                fprintf (fp->fp, " 31\n%f\n", helix->spline->p1->z0);
-                p1 = (DxfPoint *) p1->next;
+                fprintf (fp->fp, " 11\n%f\n", spline_p1->x0);
+                fprintf (fp->fp, " 21\n%f\n", spline_p1->y0);
+                fprintf (fp->fp, " 31\n%f\n", spline_p1->z0);
+                spline_p1 = (DxfPoint *) spline_p1->next;
         }
         /* Continue writing helix entity parameters. */
         helix_p0 = (DxfPoint *) helix->p0;
