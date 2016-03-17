@@ -494,6 +494,11 @@ dxf_helix_set_z0
         DxfHelix *helix,
         double z0
 );
+DxfPoint *
+dxf_helix_get_p1
+(
+        DxfHelix *helix
+);
 double
 dxf_helix_get_x1
 (

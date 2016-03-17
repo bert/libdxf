@@ -2605,6 +2605,44 @@ dxf_helix_set_z0
 
 
 /*!
+ * \brief Get the start point \c p1 from a DXF \c HELIX entity.
+ *
+ * \return start point \c p1 when sucessful, or \c NULL when an error
+ * occurred.
+ */
+DxfPoint *
+dxf_helix_get_p1
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (helix->p1 ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the p1 member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfPoint *) helix->p1);
+}
+
+
+/*!
  * \brief Get the start point X-value \c x1 from a DXF \c HELIX.
  *
  * \return start point X-value \c x1 when successful, or \c EXIT_FAILURE
