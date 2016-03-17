@@ -158,15 +158,9 @@ dxf_helix_struct
         DxfPoint *p0;
                 /*!< Axis base point coordinate.\n
                  * Group codes = 10, 20 and 30.*/
-        double x1;
-                /*!< X-value of the start point coordinate.\n
-                 * Group code = 11. */
-        double y1;
-                /*!< Y-value of the start point coordinate.\n
-                 * Group code = 21. */
-        double z1;
-                /*!< Z-value of the start point coordinate.\n
-                 * Group code = 31. */
+        DxfPoint *p1;
+                /*!< Start point.\n
+                 * Group code = 11, 21 and 31. */
         double x2;
                 /*!< X-value of the axis vector point coordinate.\n
                  * Group code = 12. */

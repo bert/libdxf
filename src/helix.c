@@ -111,9 +111,7 @@ dxf_helix_init
         helix->linetype = strdup (DXF_DEFAULT_LINETYPE);
         helix->layer = strdup (DXF_DEFAULT_LAYER);
         helix->p0 = dxf_point_init (helix->p0);
-        helix->x1 = 0.0;
-        helix->y1 = 0.0;
-        helix->z1 = 0.0;
+        helix->p1 = dxf_point_init (helix->p1);
         helix->x2 = 0.0;
         helix->y2 = 0.0;
         helix->z2 = 0.0;
@@ -177,6 +175,7 @@ dxf_helix_read
         int i;
         DxfBinaryGraphicsData *binary_graphics_data = NULL;
         DxfPoint *p0 = NULL;
+        DxfPoint *p1 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -199,6 +198,7 @@ dxf_helix_read
         i = 0;
         binary_graphics_data = (DxfBinaryGraphicsData *) helix->binary_graphics_data;
         p0 = (DxfPoint *) helix->p0;
+        p1 = (DxfPoint *) helix->p1;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -259,21 +259,21 @@ dxf_helix_read
                         /* Now follows a string containing the
                          * X-coordinate of the start point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &helix->x1);
+                        fscanf (fp->fp, "%lf\n", &p1->x0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the start point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &helix->y1);
+                        fscanf (fp->fp, "%lf\n", &p1->y0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the start point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &helix->z1);
+                        fscanf (fp->fp, "%lf\n", &p1->z0);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
@@ -542,6 +542,7 @@ dxf_helix_write
         DxfPoint *spline_p2 = NULL;
         DxfPoint *spline_p3 = NULL;
         DxfPoint *helix_p0 = NULL;
+        DxfPoint *helix_p1 = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -695,15 +696,16 @@ dxf_helix_write
         }
         /* Continue writing helix entity parameters. */
         helix_p0 = (DxfPoint *) helix->p0;
+        helix_p1 = (DxfPoint *) helix->p1;
         fprintf (fp->fp, "100\nAcDbHelix\n");
         fprintf (fp->fp, " 90\n%ld\n", helix->major_release_number);
         fprintf (fp->fp, " 91\n%ld\n", helix->maintainance_release_number);
         fprintf (fp->fp, " 10\n%f\n", helix_p0->x0);
         fprintf (fp->fp, " 20\n%f\n", helix_p0->y0);
         fprintf (fp->fp, " 30\n%f\n", helix_p0->z0);
-        fprintf (fp->fp, " 11\n%f\n", helix->x1);
-        fprintf (fp->fp, " 21\n%f\n", helix->y1);
-        fprintf (fp->fp, " 31\n%f\n", helix->z1);
+        fprintf (fp->fp, " 11\n%f\n", helix_p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", helix_p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", helix_p1->z0);
         fprintf (fp->fp, " 12\n%f\n", helix->x2);
         fprintf (fp->fp, " 22\n%f\n", helix->y2);
         fprintf (fp->fp, " 32\n%f\n", helix->z2);
@@ -755,6 +757,7 @@ dxf_helix_free
         free (helix->plot_style_name);
         free (helix->color_name);
         dxf_point_free (helix->p0);
+        dxf_point_free (helix->p1);
         free (helix);
         helix = NULL;
 #if DEBUG
@@ -2634,7 +2637,7 @@ dxf_helix_get_x1
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (helix->x1);
+        return (helix->p1->x0);
 }
 
 
@@ -2665,7 +2668,7 @@ dxf_helix_set_x1
                   __FUNCTION__);
                 return (NULL);
         }
-        helix->x1 = x1;
+        helix->p1->x0 = x1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2700,7 +2703,7 @@ dxf_helix_get_y1
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (helix->y1);
+        return (helix->p1->y0);
 }
 
 
@@ -2730,7 +2733,7 @@ dxf_helix_set_y1
                   __FUNCTION__);
                 return (NULL);
         }
-        helix->y1 = y1;
+        helix->p1->y0 = y1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2765,7 +2768,7 @@ dxf_helix_get_z1
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (helix->z1);
+        return (helix->p1->z0);
 }
 
 
@@ -2796,7 +2799,7 @@ dxf_helix_set_z1
                   __FUNCTION__);
                 return (NULL);
         }
-        helix->z1 = z1;
+        helix->p1->z0 = z1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
