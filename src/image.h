@@ -416,6 +416,11 @@ dxf_image_set_graphics_data_size
         DxfImage *spline,
         int graphics_data_size
 );
+int16_t
+dxf_image_get_shadow_mode
+(
+        DxfImage *image
+);
 char *
 dxf_image_get_dictionary_owner_soft
 (
