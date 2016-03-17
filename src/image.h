@@ -432,6 +432,12 @@ dxf_image_get_binary_graphics_data
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_binary_graphics_data
+(
+        DxfImage *image,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_image_get_dictionary_owner_soft
 (
