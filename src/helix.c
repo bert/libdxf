@@ -2430,11 +2430,10 @@ dxf_helix_get_x0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        DxfPoint *p0 = (DxfPoint *) helix->p0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (p0->x0);
+        return (helix->p0->x0);
 }
 
 
@@ -2465,8 +2464,7 @@ dxf_helix_set_x0
                   __FUNCTION__);
                 return (NULL);
         }
-        DxfPoint *p0 = (DxfPoint *) helix->p0;
-        p0->x0 = x0;
+        helix->p0->x0 = x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2498,11 +2496,10 @@ dxf_helix_get_y0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        DxfPoint *p0 = (DxfPoint *) helix->p0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (p0->y0);
+        return (helix->p0->y0);
 }
 
 
@@ -2533,8 +2530,7 @@ dxf_helix_set_y0
                   __FUNCTION__);
                 return (NULL);
         }
-        DxfPoint *p0 = (DxfPoint *) helix->p0;
-        p0->y0 = y0;
+        helix->p0->y0 = y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2566,11 +2562,10 @@ dxf_helix_get_z0
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        DxfPoint *p0 = (DxfPoint *) helix->p0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (p0->z0);
+        return (helix->p0->z0);
 }
 
 
@@ -2601,8 +2596,7 @@ dxf_helix_set_z0
                   __FUNCTION__);
                 return (NULL);
         }
-        DxfPoint *p0 = (DxfPoint *) helix->p0;
-        p0->z0 = z0;
+        helix->p0->z0 = z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
