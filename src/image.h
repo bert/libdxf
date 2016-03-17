@@ -410,6 +410,12 @@ dxf_image_get_graphics_data_size
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_graphics_data_size
+(
+        DxfImage *spline,
+        int graphics_data_size
+);
 char *
 dxf_image_get_dictionary_owner_soft
 (
