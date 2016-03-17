@@ -427,6 +427,11 @@ dxf_image_set_shadow_mode
         DxfImage *image,
         int16_t shadow_mode
 );
+DxfBinaryGraphicsData *
+dxf_image_get_binary_graphics_data
+(
+        DxfImage *image
+);
 char *
 dxf_image_get_dictionary_owner_soft
 (
