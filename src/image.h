@@ -454,6 +454,12 @@ dxf_image_get_material
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_material
+(
+        DxfImage *image,
+        char *material
+);
 char *
 dxf_image_get_dictionary_owner_hard
 (
