@@ -471,6 +471,11 @@ dxf_image_set_dictionary_owner_hard
         DxfImage *image,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_image_get_lineweight
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
