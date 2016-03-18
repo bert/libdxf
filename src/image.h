@@ -487,6 +487,12 @@ dxf_image_get_plot_style_name
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_plot_style_name
+(
+        DxfImage *image,
+        char *plot_style_name
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
