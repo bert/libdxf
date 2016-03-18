@@ -2063,4 +2063,42 @@ dxf_image_set_lineweight
 }
 
 
+/*!
+ * \brief Get the \c plot_style_name from a DXF \c IMAGE entity.
+ *
+ * \return \c plot_style_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_image_get_plot_style_name
+(
+        DxfImage *image
+                /*!< a pointer to a DXF \c IMAGE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (image->plot_style_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (image->plot_style_name));
+}
+
+
 /* EOF */
