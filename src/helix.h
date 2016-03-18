@@ -107,7 +107,7 @@ dxf_helix_struct
                  * <li value = "3"> Ignores shadows.</li>
                  * </ol>\n
                  * Group code = 284. */
-        struct DxfBinaryGraphicsData *binary_graphics_data;
+        DxfBinaryGraphicsData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
