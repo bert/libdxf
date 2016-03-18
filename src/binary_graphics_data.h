@@ -43,7 +43,7 @@
  * \brief DXF definition of an AutoCAD binary graphics data.
  */
 typedef struct
-dxf_binary_graphics_data
+dxf_binary_graphics_data_struct
 {
         char *data_line;
                 /*!< Proxy entity graphics data.\n
