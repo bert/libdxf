@@ -493,6 +493,11 @@ dxf_image_set_plot_style_name
         DxfImage *image,
         char *plot_style_name
 );
+long
+dxf_image_get_color_value
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
