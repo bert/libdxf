@@ -476,6 +476,12 @@ dxf_image_get_lineweight
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_lineweight
+(
+        DxfImage *image,
+        int16_t lineweight
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
