@@ -156,20 +156,14 @@ dxf_helix_struct
                  * Group code = 440. */
         /* Specific members for a DXF helix. */
         DxfPoint *p0;
-                /*!< Axis base point coordinate.\n
+                /*!< Axis base point.\n
                  * Group codes = 10, 20 and 30.*/
         DxfPoint *p1;
                 /*!< Start point.\n
-                 * Group code = 11, 21 and 31. */
-        double x2;
-                /*!< X-value of the axis vector point coordinate.\n
-                 * Group code = 12. */
-        double y2;
-                /*!< Y-value of the axis vector point coordinate.\n
-                 * Group code = 22. */
-        double z2;
-                /*!< Z-value of the axis vector point coordinate.\n
-                 * Group code = 32. */
+                 * Group codes = 11, 21 and 31. */
+        DxfPoint *p2;
+                /*!< Axis vector point.\n
+                 * Group codes = 12, 22 and 32. */
         double radius;
                 /*!< Radius of the arc.\n
                  * Group code = 40. */

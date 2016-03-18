@@ -112,9 +112,7 @@ dxf_helix_init
         helix->layer = strdup (DXF_DEFAULT_LAYER);
         helix->p0 = dxf_point_init (helix->p0);
         helix->p1 = dxf_point_init (helix->p1);
-        helix->x2 = 0.0;
-        helix->y2 = 0.0;
-        helix->z2 = 0.0;
+        helix->p2 = dxf_point_init (helix->p2);
         helix->thickness = 0.0;
         helix->radius = 0.0;
         helix->number_of_turns = 0.0;
@@ -280,21 +278,21 @@ dxf_helix_read
                         /* Now follows a string containing the
                          * X-coordinate of the axis vector point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &helix->x2);
+                        fscanf (fp->fp, "%lf\n", &helix->p2->x0);
                 }
                 else if (strcmp (temp_string, "22") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the axis vector point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &helix->y2);
+                        fscanf (fp->fp, "%lf\n", &helix->p2->y0);
                 }
                 else if (strcmp (temp_string, "32") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the axis vector point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &helix->z2);
+                        fscanf (fp->fp, "%lf\n", &helix->p2->z0);
                 }
                 else if (strcmp (temp_string, "39") == 0)
                 {
@@ -706,9 +704,9 @@ dxf_helix_write
         fprintf (fp->fp, " 11\n%f\n", helix_p1->x0);
         fprintf (fp->fp, " 21\n%f\n", helix_p1->y0);
         fprintf (fp->fp, " 31\n%f\n", helix_p1->z0);
-        fprintf (fp->fp, " 12\n%f\n", helix->x2);
-        fprintf (fp->fp, " 22\n%f\n", helix->y2);
-        fprintf (fp->fp, " 32\n%f\n", helix->z2);
+        fprintf (fp->fp, " 12\n%f\n", helix->p2->x0);
+        fprintf (fp->fp, " 22\n%f\n", helix->p2->y0);
+        fprintf (fp->fp, " 32\n%f\n", helix->p2->z0);
         fprintf (fp->fp, " 40\n%f\n", helix->radius);
         fprintf (fp->fp, " 41\n%f\n", helix->number_of_turns);
         fprintf (fp->fp, " 42\n%f\n", helix->turn_height);
@@ -2907,7 +2905,7 @@ dxf_helix_get_x2
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (helix->x2);
+        return (helix->p2->x0);
 }
 
 
@@ -2938,7 +2936,7 @@ dxf_helix_set_x2
                   __FUNCTION__);
                 return (NULL);
         }
-        helix->x2 = x2;
+        helix->p2->x0 = x2;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2973,7 +2971,7 @@ dxf_helix_get_y2
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (helix->y2);
+        return (helix->p2->y0);
 }
 
 
@@ -3004,7 +3002,7 @@ dxf_helix_set_y2
                   __FUNCTION__);
                 return (NULL);
         }
-        helix->y2 = y2;
+        helix->p2->y0 = y2;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3039,7 +3037,7 @@ dxf_helix_get_z2
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (helix->z2);
+        return (helix->p2->z0);
 }
 
 
@@ -3070,7 +3068,7 @@ dxf_helix_set_z2
                   __FUNCTION__);
                 return (NULL);
         }
-        helix->z2 = z2;
+        helix->p2->z0 = z2;
 #if DEBUG
         DXF_DEBUG_END
 #endif
