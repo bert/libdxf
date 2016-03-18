@@ -450,6 +450,11 @@ dxf_image_set_dictionary_owner_soft
         char *dictionary_owner_soft
 );
 char *
+dxf_image_get_material
+(
+        DxfImage *image
+);
+char *
 dxf_image_get_dictionary_owner_hard
 (
         DxfImage *image
