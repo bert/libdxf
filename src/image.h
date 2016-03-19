@@ -509,6 +509,12 @@ dxf_image_get_color_name
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_color_name
+(
+        DxfImage *image,
+        char *color_name
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
