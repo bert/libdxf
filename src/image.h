@@ -515,6 +515,11 @@ dxf_image_set_color_name
         DxfImage *image,
         char *color_name
 );
+long
+dxf_image_get_transparency
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
