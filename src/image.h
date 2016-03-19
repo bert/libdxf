@@ -504,6 +504,11 @@ dxf_image_set_color_value
         DxfImage *image,
         long color_value
 );
+char *
+dxf_image_get_color_name
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
