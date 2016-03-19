@@ -520,6 +520,12 @@ dxf_image_get_transparency
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_transparency
+(
+        DxfImage *image,
+        long transparency
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
