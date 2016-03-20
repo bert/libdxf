@@ -2638,4 +2638,40 @@ dxf_image_get_number_of_clip_boundary_vertices
 }
 
 
+/*!
+ * \brief Set the \c number_of_clip_boundary_vertices for a DXF \c IMAGE
+ * entity.
+ *
+ * \return a pointer to \c image when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImage *
+dxf_image_set_number_of_clip_boundary_vertices
+(
+        DxfImage *image,
+                /*!< a pointer to a DXF \c IMAGE entity. */
+        long number_of_clip_boundary_vertices
+                /*!< the \c number_of_clip_boundary_vertices to be set
+                 * for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        image->number_of_clip_boundary_vertices = number_of_clip_boundary_vertices;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image);
+}
+
+
 /* EOF */

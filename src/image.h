@@ -564,6 +564,12 @@ dxf_image_get_number_of_clip_boundary_vertices
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_number_of_clip_boundary_vertices
+(
+        DxfImage *image,
+        long number_of_clip_boundary_vertices
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
