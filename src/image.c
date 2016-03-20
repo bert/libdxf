@@ -2491,4 +2491,54 @@ dxf_image_get_clipping_boundary_type
 }
 
 
+/*!
+ * \brief Set the \c clipping_boundary_type value for a DXF \c IMAGE
+ * entity.
+ *
+ * \return a pointer to \c image when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImage *
+dxf_image_set_clipping_boundary_type
+(
+        DxfImage *image,
+                /*!< a pointer to a DXF \c IMAGE entity. */
+        int clipping_boundary_type
+                /*!< the \c clipping_boundary_type value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (clipping_boundary_type < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative clipping_boundary_type value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (clipping_boundary_type > 2)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range clipping_boundary_type value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        image->clipping_boundary_type = clipping_boundary_type;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image);
+}
+
+
 /* EOF */

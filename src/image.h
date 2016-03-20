@@ -542,6 +542,12 @@ dxf_image_get_clipping_boundary_type
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_clipping_boundary_type
+(
+        DxfImage *image,
+        int clipping_boundary_type
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
