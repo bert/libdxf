@@ -548,6 +548,11 @@ dxf_image_set_clipping_boundary_type
         DxfImage *image,
         int clipping_boundary_type
 );
+long
+dxf_image_get_class_version
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */

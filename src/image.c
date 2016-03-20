@@ -2541,4 +2541,35 @@ dxf_image_set_clipping_boundary_type
 }
 
 
+/*!
+ * \brief Get the \c class_version from a DXF \c IMAGE entity.
+ *
+ * \return \c class_version when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+long
+dxf_image_get_class_version
+(
+        DxfImage *image
+                /*!< a pointer to a DXF \c IMAGE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image->class_version);
+}
+
+
 /* EOF */
