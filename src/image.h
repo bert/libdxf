@@ -553,6 +553,12 @@ dxf_image_get_class_version
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_class_version
+(
+        DxfImage *image,
+        long class_version
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
