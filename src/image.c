@@ -2447,4 +2447,48 @@ dxf_image_set_image_display_properties
 }
 
 
+/*!
+ * \brief Get the \c clipping_boundary_type value from a DXF \c IMAGE
+ * entity.
+ *
+ * \return \c clipping_boundary_type value when successful, or
+ * \c EXIT_FAILURE when an error occurred.
+ */
+int
+dxf_image_get_clipping_boundary_type
+(
+        DxfImage *image
+                /*!< a pointer to a DXF \c IMAGE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (image->clipping_boundary_type < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the clipping_boundary_type member.\n")),
+                  __FUNCTION__);
+        }
+        if (image->clipping_boundary_type > 2)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found in the clipping_boundary_type member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image->clipping_boundary_type);
+}
+
+
 /* EOF */

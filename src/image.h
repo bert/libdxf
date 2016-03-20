@@ -537,6 +537,11 @@ dxf_image_set_image_display_properties
         DxfImage *image,
         int image_display_properties
 );
+int
+dxf_image_get_clipping_boundary_type
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
