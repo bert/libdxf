@@ -559,6 +559,11 @@ dxf_image_set_class_version
         DxfImage *image,
         long class_version
 );
+long
+dxf_image_get_number_of_clip_boundary_vertices
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
