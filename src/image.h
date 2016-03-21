@@ -592,6 +592,11 @@ dxf_image_set_brightness
         DxfImage *image,
         int brightness
 );
+int
+dxf_image_get_contrast
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
