@@ -2939,7 +2939,7 @@ dxf_image_set_contrast
         if (contrast > 100)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range brightness value was passed.\n")),
+                  (_("Error in %s () an out of range contrast value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
