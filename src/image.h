@@ -581,6 +581,11 @@ dxf_image_set_clipping_state
         DxfImage *image,
         int clipping_state
 );
+int
+dxf_image_get_brightness
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
