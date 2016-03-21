@@ -597,6 +597,12 @@ dxf_image_get_contrast
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_contrast
+(
+        DxfImage *image,
+        int contrast
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
