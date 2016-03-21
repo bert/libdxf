@@ -2994,4 +2994,52 @@ dxf_image_get_fade
 }
 
 
+/*!
+ * \brief Set the \c fade value for a DXF \c IMAGE entity.
+ *
+ * \return a pointer to \c image when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImage *
+dxf_image_set_fade
+(
+        DxfImage *image,
+                /*!< a pointer to a DXF \c IMAGE entity. */
+        int fade
+                /*!< the \c fade value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (fade < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative fade value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (fade > 100)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range fade value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        image->fade = fade;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image);
+}
+
+
 /* EOF */
