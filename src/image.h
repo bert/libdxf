@@ -614,6 +614,11 @@ dxf_image_set_fade
         DxfImage *image,
         int fade
 );
+char *
+dxf_image_get_imagedef_object
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
