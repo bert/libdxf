@@ -2718,4 +2718,54 @@ dxf_image_get_clipping_state
 }
 
 
+/*!
+ * \brief Set the \c clipping_state flag value for a DXF \c IMAGE
+ * entity.
+ *
+ * \return a pointer to \c image when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImage *
+dxf_image_set_clipping_state
+(
+        DxfImage *image,
+                /*!< a pointer to a DXF \c IMAGE entity. */
+        int clipping_state
+                /*!< the \c clipping_state flag value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (clipping_state < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative clipping_state value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (clipping_state > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range clipping_state value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        image->clipping_state = clipping_state;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image);
+}
+
+
 /* EOF */

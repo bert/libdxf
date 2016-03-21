@@ -575,6 +575,12 @@ dxf_image_get_clipping_state
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_clipping_state
+(
+        DxfImage *image,
+        int clipping_state
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
