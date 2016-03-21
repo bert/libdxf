@@ -603,6 +603,11 @@ dxf_image_set_contrast
         DxfImage *image,
         int contrast
 );
+int
+dxf_image_get_fade
+(
+        DxfImage *image
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */

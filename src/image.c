@@ -2951,4 +2951,47 @@ dxf_image_set_contrast
 }
 
 
+/*!
+ * \brief Get the \c fade value from a DXF \c IMAGE entity.
+ *
+ * \return \c fade value when successful, or
+ * \c EXIT_FAILURE when an error occurred.
+ */
+int
+dxf_image_get_fade
+(
+        DxfImage *image
+                /*!< a pointer to a DXF \c IMAGE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (image->fade < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the fade member.\n")),
+                  __FUNCTION__);
+        }
+        if (image->fade > 100)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found in the fade member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image->fade);
+}
+
+
 /* EOF */
