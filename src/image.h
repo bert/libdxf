@@ -619,6 +619,12 @@ dxf_image_get_imagedef_object
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_imagedef_object
+(
+        DxfImage *image,
+        char *imagedef_object
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
