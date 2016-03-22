@@ -641,6 +641,12 @@ dxf_image_get_next
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_next
+(
+        DxfImage *image,
+        DxfImage *next
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
