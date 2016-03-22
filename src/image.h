@@ -630,6 +630,12 @@ dxf_image_get_imagedef_reactor_object
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_imagedef_reactor_object
+(
+        DxfImage *image,
+        char *imagedef_reactor_object
+);
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */

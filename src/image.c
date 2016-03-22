@@ -3160,4 +3160,46 @@ dxf_image_get_imagedef_reactor_object
 }
 
 
+/*!
+ * \brief Set the \c imagedef_reactor_object for a DXF \c IMAGE entity.
+ *
+ * \return a pointer to \c image when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImage *
+dxf_image_set_imagedef_reactor_object
+(
+        DxfImage *image,
+                /*!< a pointer to a DXF \c IMAGE entity. */
+        char *imagedef_reactor_object
+                /*!< a string containing the \c imagedef_reactor_object
+                 * for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (imagedef_reactor_object == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        image->imagedef_reactor_object = strdup (imagedef_reactor_object);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image);
+}
+
+
 /* EOF */
