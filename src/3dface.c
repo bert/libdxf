@@ -1558,7 +1558,7 @@ dxf_3dface_set_p0
  * \return the first alignment point.
  */
 DxfPoint *
-dxf_3dface_get_first_alignment_point
+dxf_3dface_get_p1
 (
         Dxf3dface *face
                 /*!< a pointer to a DXF \c 3DFACE entity. */
@@ -1588,7 +1588,7 @@ dxf_3dface_get_first_alignment_point
  * \return a pointer to a DXF \c 3DFACE entity.
  */
 Dxf3dface *
-dxf_3dface_set_first_alignment_point
+dxf_3dface_set_p1
 (
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
