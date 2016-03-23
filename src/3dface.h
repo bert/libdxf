@@ -1,9 +1,15 @@
 /*!
  * \file 3dface.h
  *
- * \author Copyright (C) 2010 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF 3D face entity (\c 3DFACE).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -38,19 +44,14 @@
 
 #include "global.h"
 #include "point.h"
+#include "binary_graphics_data.h"
 
 
 /*!
  * \brief DXF definition of an AutoCAD 3D face entity (\c 3DFACE).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
-dxf_3dface
+dxf_3dface_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
@@ -97,6 +98,30 @@ dxf_3dface
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67. */
+        int graphics_data_size;
+                /*!< Number of bytes in the proxy entity graphics
+                 * represented in the sub-sequent 310 groups, which are
+                 * binary chunk records (optional).\n
+                 * Group code = 92.
+                 *
+                 * \warning On some 64 bit workstations output is
+                 * generated with group code "160", thus omitting group
+                 * code "92".
+                 */
+        int16_t shadow_mode;
+                /*!< Shadow mode:\n
+                 * <ol>
+                 * <li value = "0"> Casts and receives shadows.</li>
+                 * <li value = "1"> Casts shadows.</li>
+                 * <li value = "2"> Receives shadows.</li>
+                 * <li value = "3"> Ignores shadows.</li>
+                 * </ol>\n
+                 * Group code = 284. */
+        DxfBinaryGraphicsData *binary_graphics_data;
+                /*!< Proxy entity graphics data.\n
+                 * Multiple lines of 256 characters maximum per line
+                 * (optional).\n
+                 * Group code = 310. */
         char *dictionary_owner_soft;
                 /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
                  * Group code = 330. */

@@ -1907,12 +1907,6 @@ dxf_3dface_set_second_alignment_point
  * \brief Get the third alignment point of a DXF \c 3DFACE entity.
  *
  * \return the third alignment point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_3dface_get_third_alignment_point
@@ -2011,12 +2005,6 @@ dxf_3dface_get_third_alignment_point
  * \brief Set the third alignment point of a DXF \c 3DFACE entity.
  *
  * \return a pointer to a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_third_alignment_point
@@ -2184,12 +2172,6 @@ dxf_3dface_is_fourth_edge_invisible
  * \c POINT entities.
  *
  * \return a pointer to a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_create_from_points
@@ -2420,12 +2402,6 @@ dxf_3dface_create_from_points
  * \return pointer to the next \c 3DFACE entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_get_next
@@ -2462,12 +2438,6 @@ dxf_3dface_get_next
 /*!
  * \brief Set the pointer to the next \c 3DFACE for a DXF \c 3DFACE
  * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_next
