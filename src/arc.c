@@ -1,9 +1,15 @@
 /*!
  * \file arc.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF arc entity (\c ARC).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -42,12 +48,6 @@
  *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_new ()
@@ -85,12 +85,6 @@ dxf_arc_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_init
@@ -155,12 +149,6 @@ dxf_arc_init
  * While parsing the DXF file store data in \c arc. \n
  *
  * \return a pointer to \c arc.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_read
@@ -400,12 +388,6 @@ dxf_arc_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_arc_write
@@ -624,12 +606,6 @@ dxf_arc_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_arc_free
@@ -665,12 +641,6 @@ dxf_arc_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c ARC
  * entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_arc_free_chain
@@ -704,12 +674,6 @@ dxf_arc_free_chain
  * \brief Get the ID code from a DXF \c ARC entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_arc_get_id_code
@@ -748,12 +712,6 @@ dxf_arc_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_id_code
@@ -796,12 +754,6 @@ dxf_arc_set_id_code
  * \brief Get the linetype from a DXF \c ARC entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_arc_get_linetype
@@ -840,12 +792,6 @@ dxf_arc_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_linetype
@@ -886,12 +832,6 @@ dxf_arc_set_linetype
  * \brief Get the layer from a DXF \c ARC entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_arc_get_layer
@@ -930,12 +870,6 @@ dxf_arc_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_layer
@@ -976,12 +910,6 @@ dxf_arc_set_layer
  * \brief Get the elevation from a DXF \c ARC entity.
  *
  * \return elevation.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_arc_get_elevation
@@ -1013,12 +941,6 @@ dxf_arc_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_elevation
@@ -1052,12 +974,6 @@ dxf_arc_set_elevation
  * \brief Get the thickness from a DXF \c ARC entity.
  *
  * \return thickness.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_arc_get_thickness
@@ -1096,12 +1012,6 @@ dxf_arc_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_thickness
@@ -1142,12 +1052,6 @@ dxf_arc_set_thickness
  * \brief Get the linetype scale from a DXF \c ARC entity.
  *
  * \return linetype scale.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_arc_get_linetype_scale
@@ -1186,12 +1090,6 @@ dxf_arc_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_linetype_scale
@@ -1232,12 +1130,6 @@ dxf_arc_set_linetype_scale
  * \brief Get the visibility from a DXF \c ARC entity.
  *
  * \return visibility.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int16_t
 dxf_arc_get_visibility
@@ -1283,12 +1175,6 @@ dxf_arc_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_visibility
@@ -1336,12 +1222,6 @@ dxf_arc_set_visibility
  * \brief Get the color from a DXF \c ARC entity.
  *
  * \return color.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_arc_get_color
@@ -1379,12 +1259,6 @@ dxf_arc_get_color
 
 /*!
  * \brief Set the color for a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_color
@@ -1426,12 +1300,6 @@ dxf_arc_set_color
  * \brief Get the paperspace flag value from a DXF \c ARC entity.
  *
  * \return paperspace flag value.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_arc_get_paperspace
@@ -1475,12 +1343,6 @@ dxf_arc_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_paperspace
@@ -1531,12 +1393,6 @@ dxf_arc_set_paperspace
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_arc_get_dictionary_owner_soft
@@ -1576,12 +1432,6 @@ dxf_arc_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_dictionary_owner_soft
@@ -1626,12 +1476,6 @@ dxf_arc_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_arc_get_dictionary_owner_hard
@@ -1671,12 +1515,6 @@ dxf_arc_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_dictionary_owner_hard
@@ -1718,12 +1556,6 @@ dxf_arc_set_dictionary_owner_hard
  * \brief Get the center point of a DXF \c ARC entity.
  *
  * \return the center point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_arc_get_center_point
@@ -1822,12 +1654,6 @@ dxf_arc_get_center_point
  * \brief Set the center point of a DXF \c ARC entity.
  *
  * \return a pointer to a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_center_point
@@ -1870,12 +1696,6 @@ dxf_arc_set_center_point
  * \brief Get the radius from a DXF \c ARC entity.
  *
  * \return radius.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_arc_get_radius
@@ -1921,12 +1741,6 @@ dxf_arc_get_radius
 
 /*!
  * \brief Set the radius for a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_radius
@@ -1974,12 +1788,6 @@ dxf_arc_set_radius
  * \brief Get the start angle from a DXF \c ARC entity.
  *
  * \return start angle.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_arc_get_start_angle
@@ -2011,12 +1819,6 @@ dxf_arc_get_start_angle
 
 /*!
  * \brief Set the start angle for a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_start_angle
@@ -2050,12 +1852,6 @@ dxf_arc_set_start_angle
  * \brief Get the end angle from a DXF \c ARC entity.
  *
  * \return end angle.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_arc_get_end_angle
@@ -2087,12 +1883,6 @@ dxf_arc_get_end_angle
 
 /*!
  * \brief Set the end angle for a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_end_angle
@@ -2129,12 +1919,6 @@ dxf_arc_set_end_angle
  * \return a DXF \c POINT containing the extrusion coordinates.
  *
  * \warning No other members are copied into the DXF \c POINT.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_arc_get_extrusion_vector_as_point
@@ -2176,12 +1960,6 @@ dxf_arc_get_extrusion_vector_as_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c ARC entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_extrusion_vector
@@ -2224,12 +2002,6 @@ dxf_arc_set_extrusion_vector
  * \return pointer to the next \c ARC entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_get_next
@@ -2269,12 +2041,6 @@ dxf_arc_get_next
 /*!
  * \brief Set the pointer to the next \c ARC for a DXF \c ARC
  * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfArc *
 dxf_arc_set_next
