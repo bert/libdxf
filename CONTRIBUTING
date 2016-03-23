@@ -225,6 +225,18 @@ You may need to cope with some of the following issues:
     especially pre-ANSI compilers.
     The long double type is not supported by many compilers.
 
+For a non-glib way choose:
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void foo (int i);
+
+#ifdef __cplusplus
+}
+#endif
+
 
 Header guards
 -------------
