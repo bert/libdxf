@@ -132,15 +132,9 @@ dxf_3dface_struct
         DxfPoint *p0;
                 /*!< Base point.\n
                  * Group codes = 10, 20 and 30.*/
-        double x1;
-                /*!< X-value of the first alignment point.\n
-                 * Group code = 11. */
-        double y1;
-                /*!< Y-value of the first alignment point.\n
-                 * Group code = 21. */
-        double z1;
-                /*!< Z-value of the first alignment point.\n
-                 * Group code = 31. */
+        DxfPoint *p1;
+                /*!< First alignment point.\n
+                 * Group codes = 11, 21 and 31. */
         double x2;
                 /*!< X-value of the second alignment point.\n
                  * Group code = 12. */
@@ -339,9 +333,7 @@ dxf_3dface_set_base_point
 DxfPoint *
 dxf_3dface_get_first_alignment_point
 (
-        Dxf3dface *face,
-        int id_code,
-        int inheritance
+        Dxf3dface *face
 );
 Dxf3dface *
 dxf_3dface_set_first_alignment_point
