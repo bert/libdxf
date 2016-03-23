@@ -5,6 +5,12 @@
  *
  * \brief Functions for a DXF 3D face entity (\c 3DFACE).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -39,12 +45,6 @@
  * \brief Allocate memory for a DXF \c 3DFACE entity.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_new ()
@@ -82,12 +82,6 @@ dxf_3dface_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_init
@@ -155,12 +149,6 @@ dxf_3dface_init
  * section marker \c ENDSEC. \n
  *
  * \return a pointer to a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_read
@@ -430,12 +418,6 @@ dxf_3dface_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_3dface_write
@@ -588,12 +570,6 @@ dxf_3dface_write
  *
  * \return \c NULL when successful, or pointer to \c face when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_free
@@ -629,12 +605,6 @@ dxf_3dface_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c 3DFACE
  * entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_3dface_free_chain
@@ -668,12 +638,6 @@ dxf_3dface_free_chain
  * \brief Get the ID code from a DXF \c 3DFACE entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_3dface_get_id_code
@@ -709,12 +673,6 @@ dxf_3dface_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_id_code
@@ -757,12 +715,6 @@ dxf_3dface_set_id_code
  * \brief Get the linetype from a DXF \c 3DFACE entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_3dface_get_linetype
@@ -798,12 +750,6 @@ dxf_3dface_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_linetype
@@ -844,12 +790,6 @@ dxf_3dface_set_linetype
  * \brief Get the layer from a DXF \c 3DFACE entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_3dface_get_layer
@@ -885,12 +825,6 @@ dxf_3dface_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_layer
@@ -931,12 +865,6 @@ dxf_3dface_set_layer
  * \brief Get the elevation a this DXF \c 3DFACE entity.
  *
  * \return elevation.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_3dface_get_elevation
@@ -965,12 +893,6 @@ dxf_3dface_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_elevation
@@ -1004,12 +926,6 @@ dxf_3dface_set_elevation
  * \brief Get the thickness from a DXF \c 3DFACE entity.
  *
  * \return thickness.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_3dface_get_thickness
@@ -1045,12 +961,6 @@ dxf_3dface_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_thickness
@@ -1091,12 +1001,6 @@ dxf_3dface_set_thickness
  * \brief Get the linetype scale from a DXF \c 3DFACE entity.
  *
  * \return linetype scale.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_3dface_get_linetype_scale
@@ -1132,12 +1036,6 @@ dxf_3dface_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_linetype_scale
@@ -1178,12 +1076,6 @@ dxf_3dface_set_linetype_scale
  * \brief Get the visibility from a DXF \c 3DFACE entity.
  *
  * \return visibility.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int16_t
 dxf_3dface_get_visibility
@@ -1226,12 +1118,6 @@ dxf_3dface_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_visibility
@@ -1279,12 +1165,6 @@ dxf_3dface_set_visibility
  * \brief Get the color from a DXF \c 3DFACE entity.
  *
  * \return color.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_3dface_get_color
@@ -1319,12 +1199,6 @@ dxf_3dface_get_color
 
 /*!
  * \brief Set the color for a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_color
@@ -1366,12 +1240,6 @@ dxf_3dface_set_color
  * \brief Get the paperspace flag value from a DXF \c 3DFACE entity.
  *
  * \return paperspace flag value.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_3dface_get_paperspace
@@ -1412,12 +1280,6 @@ dxf_3dface_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_paperspace
@@ -1468,12 +1330,6 @@ dxf_3dface_set_paperspace
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_3dface_get_dictionary_owner_soft
@@ -1510,12 +1366,6 @@ dxf_3dface_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_dictionary_owner_soft
@@ -1560,12 +1410,6 @@ dxf_3dface_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_3dface_get_dictionary_owner_hard
@@ -1602,12 +1446,6 @@ dxf_3dface_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_dictionary_owner_hard
@@ -1649,12 +1487,6 @@ dxf_3dface_set_dictionary_owner_hard
  * \brief Get the base point of a DXF \c 3DFACE entity.
  *
  * \return the base point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_3dface_get_base_point
@@ -1753,12 +1585,6 @@ dxf_3dface_get_base_point
  * \brief Set the base point of a DXF \c 3DFACE entity.
  *
  * \return a pointer to a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_base_point
@@ -1801,12 +1627,6 @@ dxf_3dface_set_base_point
  * \brief Get the first alignment point of a DXF \c 3DFACE entity.
  *
  * \return the first alignment point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_3dface_get_first_alignment_point
@@ -1905,12 +1725,6 @@ dxf_3dface_get_first_alignment_point
  * \brief Set the first alignment point of a DXF \c 3DFACE entity.
  *
  * \return a pointer to a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_first_alignment_point
@@ -1953,12 +1767,6 @@ dxf_3dface_set_first_alignment_point
  * \brief Get the second alignment point of a DXF \c 3DFACE entity.
  *
  * \return the second alignment point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_3dface_get_second_alignment_point
@@ -2057,12 +1865,6 @@ dxf_3dface_get_second_alignment_point
  * \brief Set the second alignment point of a DXF \c 3DFACE entity.
  *
  * \return a pointer to a DXF \c 3DFACE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dface *
 dxf_3dface_set_second_alignment_point
