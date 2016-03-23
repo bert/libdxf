@@ -1487,7 +1487,7 @@ dxf_3dface_set_dictionary_owner_hard
  * \return the base point.
  */
 DxfPoint *
-dxf_3dface_get_base_point
+dxf_3dface_get_p0
 (
         Dxf3dface *face
                 /*!< a pointer to a DXF \c 3DFACE entity. */
@@ -1518,7 +1518,7 @@ dxf_3dface_get_base_point
  * \return a pointer to a DXF \c 3DFACE entity.
  */
 Dxf3dface *
-dxf_3dface_set_base_point
+dxf_3dface_set_p0
 (
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
