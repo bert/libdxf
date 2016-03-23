@@ -129,15 +129,9 @@ dxf_3dface_struct
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360. */
         /* Specific members for a DXF 3D face. */
-        double x0;
-                /*!< X-value of the base point.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Y-value of the base point.\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Z-value of the base point.\n
-                 * Group code = 30. */
+        DxfPoint *p0;
+                /*!< Base point.\n
+                 * Group codes = 10, 20 and 30.*/
         double x1;
                 /*!< X-value of the first alignment point.\n
                  * Group code = 11. */
@@ -334,9 +328,7 @@ dxf_3dface_set_dictionary_owner_hard
 DxfPoint *
 dxf_3dface_get_base_point
 (
-        Dxf3dface *face,
-        int id_code,
-        int inheritance
+        Dxf3dface *face
 );
 Dxf3dface *
 dxf_3dface_set_base_point
