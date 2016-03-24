@@ -114,9 +114,7 @@ dxf_3dface_init
         face->p0 = dxf_point_init (face->p0);
         face->p1 = dxf_point_init (face->p1);
         face->p2 = dxf_point_init (face->p2);
-        face->x3 = 0.0;
-        face->y3 = 0.0;
-        face->z3 = 0.0;
+        face->p3 = dxf_point_init (face->p3);
         face->elevation = 0.0;
         face->thickness = 0.0;
         face->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
@@ -278,21 +276,21 @@ dxf_3dface_read
                         /* Now follows a string containing the
                          * X-coordinate of the fourth point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &face->x3);
+                        fscanf (fp->fp, "%lf\n", &face->p3->x0);
                 }
                 else if (strcmp (temp_string, "23") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the fourth point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &face->y3);
+                        fscanf (fp->fp, "%lf\n", &face->p3->y0);
                 }
                 else if (strcmp (temp_string, "33") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the fourth point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &face->z3);
+                        fscanf (fp->fp, "%lf\n", &face->p3->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                   && DXF_FLATLAND
@@ -545,9 +543,9 @@ dxf_3dface_write
         fprintf (fp->fp, " 12\n%f\n", face->p2->x0);
         fprintf (fp->fp, " 22\n%f\n", face->p2->y0);
         fprintf (fp->fp, " 32\n%f\n", face->p2->z0);
-        fprintf (fp->fp, " 13\n%f\n", face->x3);
-        fprintf (fp->fp, " 23\n%f\n", face->y3);
-        fprintf (fp->fp, " 33\n%f\n", face->z3);
+        fprintf (fp->fp, " 13\n%f\n", face->p3->x0);
+        fprintf (fp->fp, " 23\n%f\n", face->p3->y0);
+        fprintf (fp->fp, " 33\n%f\n", face->p3->z0);
         fprintf (fp->fp, " 70\n%d\n", face->flag);
         /* Clean up. */
         free (dxf_entity_name);
@@ -1696,29 +1694,15 @@ dxf_3dface_set_p2
  * \return the third alignment point.
  */
 DxfPoint *
-dxf_3dface_get_third_alignment_point
+dxf_3dface_get_p3
 (
-        Dxf3dface *face,
+        Dxf3dface *face
                 /*!< a pointer to a DXF \c 3DFACE entity. */
-        int id_code,
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file. */
-        int inheritance
-                /*!< Inherit layer, linetype, color and other relevant
-                 * properties from either:
-                 * <ol>
-                 * <li value = "0"> Default (as initialised).</li>
-                 * <li value = "1"> \c 3DFACE.</li>
-                 * </ol>
-                 */
 )
 {
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfPoint *p4 = NULL;
-
         /* Do some basic checks. */
         if (face == NULL)
         {
@@ -1727,64 +1711,10 @@ dxf_3dface_get_third_alignment_point
                   __FUNCTION__);
                 return (NULL);
         }
-        p4 = dxf_point_init (p4);
-        if (p4 == NULL)
-        {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        if (id_code < 0)
-        {
-              fprintf (stderr,
-                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
-                __FUNCTION__);
-        }
-        p4->id_code = id_code;
-        p4->x0 = face->x3;
-        p4->y0 = face->y3;
-        p4->z0 = face->z3;
-        switch (inheritance)
-        {
-                case 0:
-                        /* Do nothing. */
-                        break;
-                case 1:
-                        if (face->linetype != NULL)
-                        {
-                                p4->linetype = strdup (face->linetype);
-                        }
-                        if (face->layer != NULL)
-                        {
-                                p4->layer = strdup (face->layer);
-                        }
-                        p4->thickness = face->thickness;
-                        p4->linetype_scale = face->linetype_scale;
-                        p4->visibility = face->visibility;
-                        p4->color = face->color;
-                        p4->paperspace = face->paperspace;
-                        if (face->dictionary_owner_soft != NULL)
-                        {
-                                p4->dictionary_owner_soft = strdup (face->dictionary_owner_soft);
-                        }
-                        if (face->dictionary_owner_hard != NULL)
-                        {
-                                p4->dictionary_owner_hard = strdup (face->dictionary_owner_hard);
-                        }
-                        break;
-                default:
-                        fprintf (stderr,
-                          (_("Warning in %s (): unknown inheritance option passed.\n")),
-                          __FUNCTION__);
-                        fprintf (stderr,
-                          (_("\tResolving to default.\n")));
-                        break;
-        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (p4);
+        return (face->p3);
 }
 
 
@@ -1794,7 +1724,7 @@ dxf_3dface_get_third_alignment_point
  * \return a pointer to a DXF \c 3DFACE entity.
  */
 Dxf3dface *
-dxf_3dface_set_third_alignment_point
+dxf_3dface_set_p3
 (
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
@@ -1820,9 +1750,7 @@ dxf_3dface_set_third_alignment_point
                   __FUNCTION__);
                 return (NULL);
         }
-        face->x3 = point->x0;
-        face->y3 = point->y0;
-        face->z3 = point->z0;
+        face->p3 = (DxfPoint *) point;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2044,9 +1972,7 @@ dxf_3dface_create_from_points
         }
         if (p4 != NULL)
         {
-                face->x3 = p4->x0;
-                face->y3 = p4->y0;
-                face->z3 = p4->z0;
+                face->p3 = (DxfPoint *) p4;
         }
         switch (inheritance)
         {
