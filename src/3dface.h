@@ -374,10 +374,10 @@ dxf_3dface_is_fourth_edge_invisible
 Dxf3dface *
 dxf_3dface_create_from_points
 (
+        DxfPoint *p0,
         DxfPoint *p1,
         DxfPoint *p2,
         DxfPoint *p3,
-        DxfPoint *p4,
         int id_code,
         int inheritance
 );

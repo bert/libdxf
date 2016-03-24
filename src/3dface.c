@@ -1891,13 +1891,13 @@ dxf_3dface_is_fourth_edge_invisible
 Dxf3dface *
 dxf_3dface_create_from_points
 (
+        DxfPoint *p0,
+                /*!< a pointer to a DXF \c POINT entity. */
         DxfPoint *p1,
                 /*!< a pointer to a DXF \c POINT entity. */
         DxfPoint *p2,
                 /*!< a pointer to a DXF \c POINT entity. */
         DxfPoint *p3,
-                /*!< a pointer to a DXF \c POINT entity. */
-        DxfPoint *p4,
                 /*!< a pointer to a DXF \c POINT entity. */
         int id_code,
                 /*!< Identification number for the entity.\n
@@ -1922,10 +1922,9 @@ dxf_3dface_create_from_points
         Dxf3dface *face = NULL;
 
         /* Do some basic checks. */
-        if (((p1 != NULL) && (p2 != NULL) && (p3 != NULL))
-          || ((p1 != NULL) && (p2 != NULL) && (p4 != NULL))
-          || ((p2 != NULL) && (p3 != NULL) && (p4 != NULL))
-          || ((p1 != NULL) && (p3 != NULL) && (p3 != NULL)))
+        if (((p0 != NULL) && (p1 != NULL) && (p2 != NULL))
+          || ((p0 != NULL) && (p1 != NULL) && (p3 != NULL))
+          || ((p1 != NULL) && (p2 != NULL) && (p3 != NULL)))
         {
                 /* Do nothing, we only need three valid points to form a
                  * 3dface (test of all four valid permutations). */
@@ -1960,19 +1959,19 @@ dxf_3dface_create_from_points
         }
         if (p1 != NULL)
         {
-                face->p0 = (DxfPoint *) p1;
+                face->p0 = (DxfPoint *) p0;
         }
         if (p2 != NULL)
         {
-                face->p1 = (DxfPoint *) p2;
+                face->p1 = (DxfPoint *) p1;
         }
         if (p3 != NULL)
         {
-                face->p2 = (DxfPoint *) p3;
+                face->p2 = (DxfPoint *) p2;
         }
-        if (p4 != NULL)
+        if (p3 != NULL)
         {
-                face->p3 = (DxfPoint *) p4;
+                face->p3 = (DxfPoint *) p3;
         }
         switch (inheritance)
         {
@@ -1980,6 +1979,33 @@ dxf_3dface_create_from_points
                         /* Do nothing. */
                         break;
                 case 1:
+                        if (p0 == NULL)
+                        {
+                                break;
+                        }
+                        if (p0->linetype != NULL)
+                        {
+                                face->linetype = strdup (p0->linetype);
+                        }
+                        if (p0->layer != NULL)
+                        {
+                                face->layer = strdup (p0->layer);
+                        }
+                        face->thickness = p0->thickness;
+                        face->linetype_scale = p0->linetype_scale;
+                        face->visibility = p0->visibility;
+                        face->color = p0->color;
+                        face->paperspace = p0->paperspace;
+                        if (p0->dictionary_owner_soft != NULL)
+                        {
+                                face->dictionary_owner_soft = strdup (p0->dictionary_owner_soft);
+                        }
+                        if (p0->dictionary_owner_hard != NULL)
+                        {
+                                face->dictionary_owner_hard = strdup (p0->dictionary_owner_hard);
+                        }
+                        break;
+                case 2:
                         if (p1 == NULL)
                         {
                                 break;
@@ -2006,7 +2032,7 @@ dxf_3dface_create_from_points
                                 face->dictionary_owner_hard = strdup (p1->dictionary_owner_hard);
                         }
                         break;
-                case 2:
+                case 3:
                         if (p2 == NULL)
                         {
                                 break;
@@ -2033,7 +2059,7 @@ dxf_3dface_create_from_points
                                 face->dictionary_owner_hard = strdup (p2->dictionary_owner_hard);
                         }
                         break;
-                case 3:
+                case 4:
                         if (p3 == NULL)
                         {
                                 break;
@@ -2058,33 +2084,6 @@ dxf_3dface_create_from_points
                         if (p3->dictionary_owner_hard != NULL)
                         {
                                 face->dictionary_owner_hard = strdup (p3->dictionary_owner_hard);
-                        }
-                        break;
-                case 4:
-                        if (p4 == NULL)
-                        {
-                                break;
-                        }
-                        if (p4->linetype != NULL)
-                        {
-                                face->linetype = strdup (p4->linetype);
-                        }
-                        if (p4->layer != NULL)
-                        {
-                                face->layer = strdup (p4->layer);
-                        }
-                        face->thickness = p4->thickness;
-                        face->linetype_scale = p4->linetype_scale;
-                        face->visibility = p4->visibility;
-                        face->color = p4->color;
-                        face->paperspace = p4->paperspace;
-                        if (p1->dictionary_owner_soft != NULL)
-                        {
-                                face->dictionary_owner_soft = strdup (p4->dictionary_owner_soft);
-                        }
-                        if (p4->dictionary_owner_hard != NULL)
-                        {
-                                face->dictionary_owner_hard = strdup (p4->dictionary_owner_hard);
                         }
                         break;
                 default:
