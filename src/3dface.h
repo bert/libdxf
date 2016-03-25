@@ -329,6 +329,11 @@ dxf_3dface_set_x0
         Dxf3dface *face,
         double x0
 );
+double
+dxf_3dface_get_y0
+(
+        Dxf3dface *face
+);
 DxfPoint *
 dxf_3dface_get_p1
 (
