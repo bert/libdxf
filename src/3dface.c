@@ -1987,10 +1987,10 @@ dxf_3dface_create_from_points
                  * properties from either:
                  * <ol>
                  * <li value = "0"> Default (as initialised).</li>
-                 * <li value = "1"> Point 1.</li>
-                 * <li value = "2"> Point 2.</li>
-                 * <li value = "3"> Point 3.</li>
-                 * <li value = "4"> Point 4.</li>
+                 * <li value = "1"> Point p0.</li>
+                 * <li value = "2"> Point p1.</li>
+                 * <li value = "3"> Point p2.</li>
+                 * <li value = "4"> Point p3.</li>
                  * </ol>
                  */
 )
