@@ -1859,7 +1859,7 @@ dxf_3dface_set_p1
  * \brief Get the X-value of the first alignment point of a DXF
  * \c 3DFACE entity.
  *
- * \return the base point.
+ * \return the X-value of the first alignment point.
  */
 double
 dxf_3dface_get_x1
@@ -1940,7 +1940,7 @@ dxf_3dface_set_x1
  * \brief Get the Y-value of the first alignment point of a DXF
  * \c 3DFACE entity.
  *
- * \return the base point.
+ * \return the Y-value of the first alignment point.
  */
 double
 dxf_3dface_get_y1
