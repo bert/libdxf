@@ -1737,6 +1737,48 @@ dxf_3dface_get_x1
 
 
 /*!
+ * \brief Set the X-value of the first alignment point of a DXF
+ * \c 3DFACE entity.
+ *
+ * \return a pointer to a DXF \c 3DFACE entity.
+ */
+Dxf3dface *
+dxf_3dface_set_x1
+(
+        Dxf3dface *face,
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+        double x1
+                /*!< the X-value of the first alignment point of a DXF
+                 * \c 3DFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (face->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        face->p1->x0 = x1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (face);
+}
+
+
+/*!
  * \brief Get the second alignment point of a DXF \c 3DFACE entity.
  *
  * \return the second alignment point.
