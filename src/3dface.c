@@ -1551,7 +1551,7 @@ dxf_3dface_set_p0
 /*!
  * \brief Get the X-value of the base point of a DXF \c 3DFACE entity.
  *
- * \return the base point.
+ * \return the X-value of the base point.
  */
 double
 dxf_3dface_get_x0
@@ -1630,7 +1630,7 @@ dxf_3dface_set_x0
 /*!
  * \brief Get the Y-value of the base point of a DXF \c 3DFACE entity.
  *
- * \return the base point.
+ * \return the Y-value of the base point.
  */
 double
 dxf_3dface_get_y0
