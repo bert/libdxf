@@ -411,6 +411,12 @@ dxf_3dface_get_x2
 (
         Dxf3dface *face
 );
+Dxf3dface *
+dxf_3dface_set_x2
+(
+        Dxf3dface *face,
+        double x2
+);
 DxfPoint *
 dxf_3dface_get_p3
 (
