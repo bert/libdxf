@@ -461,6 +461,11 @@ dxf_3dface_set_x3
         Dxf3dface *face,
         double x3
 );
+double
+dxf_3dface_get_y3
+(
+        Dxf3dface *face
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
