@@ -2602,6 +2602,48 @@ dxf_3dface_get_y3
 
 
 /*!
+ * \brief Set the Y-value of the third alignment point of a DXF
+ * \c 3DFACE entity.
+ *
+ * \return a pointer to a DXF \c 3DFACE entity.
+ */
+Dxf3dface *
+dxf_3dface_set_y3
+(
+        Dxf3dface *face,
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+        double y3
+                /*!< the Y-value of the third alignment point of a DXF
+                 * \c 3DFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (face->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        face->p3->y0 = y3;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (face);
+}
+
+
+/*!
  * \brief Test if the first edge of a DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
