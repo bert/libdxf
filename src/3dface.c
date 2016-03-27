@@ -2644,6 +2644,45 @@ dxf_3dface_set_y3
 
 
 /*!
+ * \brief Get the Z-value of the third alignment point of a DXF
+ * \c 3DFACE entity.
+ *
+ * \return the Z-value of the third alignment point.
+ */
+double
+dxf_3dface_get_z3
+(
+        Dxf3dface *face
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (face->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (face->p3->z0);
+}
+
+
+/*!
  * \brief Test if the first edge of a DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
