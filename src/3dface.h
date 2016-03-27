@@ -477,6 +477,12 @@ dxf_3dface_get_z3
 (
         Dxf3dface *face
 );
+Dxf3dface *
+dxf_3dface_set_z3
+(
+        Dxf3dface *face,
+        double z3
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
