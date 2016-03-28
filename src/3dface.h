@@ -296,6 +296,11 @@ dxf_3dface_set_graphics_data_size
         Dxf3dface *face,
         int graphics_data_size
 );
+int16_t
+dxf_3dface_get_shadow_mode
+(
+        Dxf3dface *face
+);
 char *
 dxf_3dface_get_dictionary_owner_soft
 (
