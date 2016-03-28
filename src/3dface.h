@@ -307,6 +307,11 @@ dxf_3dface_set_shadow_mode
         Dxf3dface *face,
         int16_t shadow_mode
 );
+DxfBinaryGraphicsData *
+dxf_3dface_get_binary_graphics_data
+(
+        Dxf3dface *face
+);
 char *
 dxf_3dface_get_dictionary_owner_soft
 (
