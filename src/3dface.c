@@ -1318,6 +1318,50 @@ dxf_3dface_set_paperspace
 
 
 /*!
+ * \brief Get the \c graphics_data_size value from a DXF \c 3DFACE
+ * entity.
+ *
+ * \return \c graphics_data_size value when successful, or
+ * \c EXIT_FAILURE when an error occurred.
+ */
+int
+dxf_3dface_get_graphics_data_size
+(
+        Dxf3dface *face
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (face->graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the graphics_data_size member.\n")),
+                  __FUNCTION__);
+        }
+        if (face->graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (face->graphics_data_size);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c 3DFACE entity.
  *

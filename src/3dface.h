@@ -285,6 +285,11 @@ dxf_3dface_set_paperspace
         Dxf3dface *face,
         int paperspace
 );
+int
+dxf_3dface_get_graphics_data_size
+(
+        Dxf3dface *face
+);
 char *
 dxf_3dface_get_dictionary_owner_soft
 (
