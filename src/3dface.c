@@ -1544,6 +1544,46 @@ dxf_3dface_get_binary_graphics_data
 
 
 /*!
+ * \brief Set the pointer to the binary_graphics_data for a DXF
+ * \c 3DFACE entity.
+ */
+Dxf3dface *
+dxf_3dface_set_binary_graphics_data
+(
+        Dxf3dface *face,
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+        DxfBinaryGraphicsData *data
+                /*!< a string containing the pointer to the
+                 * binary_graphics_data for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        face->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (face);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c 3DFACE entity.
  *
