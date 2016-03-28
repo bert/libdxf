@@ -1438,7 +1438,7 @@ dxf_helix_set_paperspace
 /*!
  * \brief Get the \c graphics_data_size value from a DXF \c HELIX entity.
  *
- * \return \c graphics_data_size flag value when successful, or
+ * \return \c graphics_data_size value when successful, or
  * \c EXIT_FAILURE when an error occurred.
  */
 int
