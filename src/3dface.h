@@ -405,6 +405,11 @@ dxf_3dface_set_color_value
         Dxf3dface *face,
         long color_value
 );
+char *
+dxf_3dface_get_color_name
+(
+        Dxf3dface *face
+);
 DxfPoint *
 dxf_3dface_get_p0
 (
