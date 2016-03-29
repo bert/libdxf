@@ -394,6 +394,11 @@ dxf_3dface_set_plot_style_name
         Dxf3dface *face,
         char *plot_style_name
 );
+long
+dxf_3dface_get_color_value
+(
+        Dxf3dface *face
+);
 DxfPoint *
 dxf_3dface_get_p0
 (
