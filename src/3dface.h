@@ -372,6 +372,11 @@ dxf_3dface_set_dictionary_owner_hard
         Dxf3dface *face,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_3dface_get_lineweight
+(
+        Dxf3dface *face
+);
 DxfPoint *
 dxf_3dface_get_p0
 (
