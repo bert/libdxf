@@ -388,6 +388,12 @@ dxf_3dface_get_plot_style_name
 (
         Dxf3dface *face
 );
+Dxf3dface *
+dxf_3dface_set_plot_style_name
+(
+        Dxf3dface *face,
+        char *plot_style_name
+);
 DxfPoint *
 dxf_3dface_get_p0
 (
