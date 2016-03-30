@@ -331,6 +331,12 @@ dxf_3dline_get_graphics_data_size
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_graphics_data_size
+(
+        Dxf3dline *line,
+        int graphics_data_size
+);
 char *
 dxf_3dline_get_dictionary_owner_soft
 (
