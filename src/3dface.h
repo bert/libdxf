@@ -416,6 +416,11 @@ dxf_3dface_set_color_name
         Dxf3dface *face,
         char *color_name
 );
+long
+dxf_3dface_get_transparency
+(
+        Dxf3dface *face
+);
 DxfPoint *
 dxf_3dface_get_p0
 (
