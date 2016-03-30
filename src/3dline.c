@@ -1465,6 +1465,100 @@ dxf_3dline_set_paperspace
 
 
 /*!
+ * \brief Get the \c graphics_data_size value from a DXF \c 3DLINE
+ * entity.
+ *
+ * \return \c graphics_data_size value when successful, or
+ * \c EXIT_FAILURE when an error occurred.
+ */
+int
+dxf_3dline_get_graphics_data_size
+(
+        Dxf3dline *line
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (line->graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the graphics_data_size member.\n")),
+                  __FUNCTION__);
+        }
+        if (line->graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line->graphics_data_size);
+}
+
+
+/*!
+ * \brief Set the \c graphics_data_size value for a DXF \c 3DLINE
+ * entity.
+ *
+ * \return a pointer to \c line when successful, or \c NULL when an
+ * error occurred.
+ */
+Dxf3dline *
+dxf_3dline_set_graphics_data_size
+(
+        Dxf3dline *line,
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+        int graphics_data_size
+                /*!< the \c graphics_data_size value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative graphics_data_size value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a zero graphics_data_size value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->graphics_data_size = graphics_data_size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c 3DLINE entity.
  *
