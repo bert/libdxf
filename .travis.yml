@@ -1,9 +1,20 @@
 language: c
 
-compiler: gcc
+os:
+  - linux
+
+compiler:
+  - gcc
+  - clang
+
+addons:
+  apt:
+    packages:
+      - graphviz
 
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install -y xmlto
 
 script: scripts/build.sh
+
