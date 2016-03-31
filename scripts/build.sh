@@ -1,6 +1,7 @@
 #!/bin/sh
 make distclean
 autoreconf
+./autogen.sh
 ./configure
 make
 make -C po update-po
