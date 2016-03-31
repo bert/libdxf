@@ -7,3 +7,5 @@ The code base is still incomplete and is not debugged to an acceptable level.
 
 You are always welcome to help with patches or bug reports :-)
 
+Travis-CI Status: [![Build Status](https://travis-ci.org/bert/libdxf.svg?branch=master)](https://travis-ci.org/bert/libdxf)
+
