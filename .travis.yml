@@ -2,6 +2,4 @@ language: c
 
 compiler: gcc
 
-script: autoreconf
-	./configure
-	make
+script: scripts/build.sh
