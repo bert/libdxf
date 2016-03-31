@@ -58,7 +58,7 @@ fi
 }
 
 (grep "^AM_GLIB_GNU_GETTEXT" $srcdir/configure.ac >/dev/null) && {
-  (grep "sed.*POTFILES" $srcdir/configure.in) > /dev/null || \
+  (grep "sed.*POTFILES" $srcdir/configure.ac) > /dev/null || \
   (glib-gettextize --version) < /dev/null > /dev/null 2>&1 || {
     echo
     echo "**Error**: You must have \`glib' installed."
