@@ -1,6 +1,6 @@
 #!/bin/sh
 make distclean
-autoreconf
+#autoreconf
 ./autogen.sh
 ./configure
 make
