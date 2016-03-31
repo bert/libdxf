@@ -342,6 +342,12 @@ dxf_3dline_get_shadow_mode
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_shadow_mode
+(
+        Dxf3dline *line,
+        int16_t shadow_mode
+);
 char *
 dxf_3dline_get_dictionary_owner_soft
 (
