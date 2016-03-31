@@ -1,3 +1,7 @@
 language: c
+
 compiler: gcc
-script: autoreconf && ./configure && make
+
+script: autoreconf
+	./configure
+	make
