@@ -125,6 +125,10 @@ dxf_3dface_struct
         char *dictionary_owner_soft;
                 /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
                  * Group code = 330. */
+        char *material;
+                /*!< Hard-pointer ID/handle to material object (present if
+                 * not BYLAYER).\n
+                 * Group code = 347. */
         char *dictionary_owner_hard;
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360. */
