@@ -348,6 +348,11 @@ dxf_3dline_set_shadow_mode
         Dxf3dline *line,
         int16_t shadow_mode
 );
+DxfBinaryGraphicsData *
+dxf_3dline_get_binary_graphics_data
+(
+        Dxf3dline *line
+);
 char *
 dxf_3dline_get_dictionary_owner_soft
 (
