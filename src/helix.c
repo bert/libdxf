@@ -1663,6 +1663,9 @@ dxf_helix_get_binary_graphics_data
 /*!
  * \brief Set the pointer to the binary_graphics_data for a DXF
  * \c HELIX entity.
+ *
+ * \return a pointer to \c helix when successful, or \c NULL when an
+ * error occurred.
  */
 DxfHelix *
 dxf_helix_set_binary_graphics_data
