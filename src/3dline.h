@@ -379,6 +379,12 @@ dxf_3dline_get_material
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_material
+(
+        Dxf3dline *line,
+        char *material
+);
 char *
 dxf_3dline_get_dictionary_owner_hard
 (
