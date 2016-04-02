@@ -949,6 +949,7 @@ dxf_header_write
         fprintf (fp->fp, "  9\n$ACADVER\n  1\n%s\n", header->AcadVer);
         if (fp->acad_version_number >= AC1014) fprintf (fp->fp, "  9\n$ACADMAINTVER\n 70\n%i\n", header->AcadMaintVer);
         if (fp->acad_version_number >= AC1012) fprintf (fp->fp, "  9\n$DWGCODEPAGE\n  3\n%s\n", header->DWGCodePage);
+        if (fp->acad_version_number >= AC1018) fprintf (fp->fp, "  9\n$LASTSAVEDBY\n  1\n%s\n", getenv("USER"));
         fprintf (fp->fp, "  9\n$INSBASE\n 10\n%f\n 20\n%f\n 30\n%f\n", header->InsBase.x0, header->InsBase.y0, header->InsBase.z0);
         fprintf (fp->fp, "  9\n$EXTMIN\n 10\n%f\n 20\n%f\n 30\n%f\n", header->ExtMin.x0, header->ExtMin.y0, header->ExtMin.z0);
         fprintf (fp->fp, "  9\n$EXTMAX\n 10\n%f\n 20\n%f\n 30\n%f\n", header->ExtMax.x0, header->ExtMax.y0, header->ExtMax.z0);
