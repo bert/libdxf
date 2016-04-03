@@ -3766,10 +3766,10 @@ dxf_3dface_create_from_points
                  * properties from either:
                  * <ol>
                  * <li value = "0"> Default (as initialised).</li>
-                 * <li value = "1"> Point p0.</li>
-                 * <li value = "2"> Point p1.</li>
-                 * <li value = "3"> Point p2.</li>
-                 * <li value = "4"> Point p3.</li>
+                 * <li value = "1"> Point \c p0.</li>
+                 * <li value = "2"> Point \c p1.</li>
+                 * <li value = "3"> Point \c p2.</li>
+                 * <li value = "4"> Point \c p3.</li>
                  * </ol>
                  */
 )
@@ -3785,7 +3785,7 @@ dxf_3dface_create_from_points
           || ((p1 != NULL) && (p2 != NULL) && (p3 != NULL)))
         {
                 /* Do nothing, we only need three valid points to form a
-                 * 3dface (test of all four valid permutations). */
+                 * 3dface (test of all three valid permutations). */
         }
         else
         {
