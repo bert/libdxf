@@ -392,6 +392,12 @@ dxf_3dline_get_p0
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_p0
+(
+        Dxf3dline *line,
+        DxfPoint *point
+);
 DxfPoint *
 dxf_3dline_get_p1
 (
