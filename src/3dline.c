@@ -124,9 +124,7 @@ dxf_3dline_init
         line->linetype = strdup (DXF_DEFAULT_LINETYPE);
         line->layer = strdup (DXF_DEFAULT_LAYER);
         line->p0 = dxf_point_init (line->p0);
-        line->x1 = 0.0;
-        line->y1 = 0.0;
-        line->z1 = 0.0;
+        line->p1 = dxf_point_init (line->p1);
         line->extr_x0 = 0.0;
         line->extr_y0 = 0.0;
         line->extr_z0 = 0.0;
@@ -255,21 +253,21 @@ dxf_3dline_read
                         /* Now follows a string containing the
                          * X-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &line->x1);
+                        fscanf (fp->fp, "%lf\n", &line->p1->x0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &line->y1);
+                        fscanf (fp->fp, "%lf\n", &line->p1->y0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the center point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &line->z1);
+                        fscanf (fp->fp, "%lf\n", &line->p1->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
@@ -446,9 +444,9 @@ dxf_3dline_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if ((line->p0->x0 == line->x1)
-                && (line->p0->y0 == line->y1)
-                && (line->p0->z0 == line->z1))
+        if ((line->p0->x0 == line->p1->x0)
+                && (line->p0->y0 == line->p1->y0)
+                && (line->p0->z0 == line->p1->z0))
         {
                 fprintf (stderr,
                   (_("Error in %s () start point and end point are identical for the %s entity with id-code: %x\n")),
@@ -547,9 +545,9 @@ dxf_3dline_write
         fprintf (fp->fp, " 10\n%f\n", line->p0->x0);
         fprintf (fp->fp, " 20\n%f\n", line->p0->y0);
         fprintf (fp->fp, " 30\n%f\n", line->p0->z0);
-        fprintf (fp->fp, " 11\n%f\n", line->x1);
-        fprintf (fp->fp, " 21\n%f\n", line->y1);
-        fprintf (fp->fp, " 31\n%f\n", line->z1);
+        fprintf (fp->fp, " 11\n%f\n", line->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", line->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", line->p1->z0);
         if ((fp->acad_version_number >= AutoCAD_12)
                 && (line->extr_x0 != 0.0)
                 && (line->extr_y0 != 0.0)
@@ -604,6 +602,7 @@ dxf_3dline_free
         free (line->dictionary_owner_soft);
         free (line->dictionary_owner_hard);
         dxf_point_free (line->p0);
+        dxf_point_free (line->p1);
         free (line);
         line = NULL;
 #if DEBUG
@@ -2037,40 +2036,20 @@ dxf_3dline_get_p0
 
 
 /*!
- * \brief Get the end point of a DXF \c 3DLINE entity.
+ * \brief Get the end point \c p1 of a DXF \c 3DLINE entity.
  *
- * \return the end point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
+ * \return the end point \c p1.
  */
 DxfPoint *
-dxf_3dline_get_end_point
+dxf_3dline_get_p1
 (
-        Dxf3dline *line,
+        Dxf3dline *line
                 /*!< a pointer to a DXF \c 3DLINE entity. */
-        int id_code,
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file. */
-        int inheritance
-                /*!< Inherit layer, linetype, color and other relevant
-                 * properties from either:
-                 * <ol>
-                 * <li value = "0"> Default (as initialised).</li>
-                 * <li value = "1"> \c 3DLINE.</li>
-                 * </ol>
-                 */
 )
 {
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfPoint *p2 = NULL;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -2079,73 +2058,25 @@ dxf_3dline_get_end_point
                   __FUNCTION__);
                 return (NULL);
         }
-        if ((line->p0->x0 == line->x1)
-          && (line->p0->y0 == line->y1)
-          && (line->p0->z0 == line->z1))
+        if (line->p1 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a 3DLINE with points with identical coordinates were passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        p2 = dxf_point_init (p2);
-        if (p2 == NULL)
+        if ((line->p0->x0 == line->p1->x0)
+          && (line->p0->y0 == line->p1->y0)
+          && (line->p0->z0 == line->p1->z0))
         {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        if (id_code < 0)
-        {
-              fprintf (stderr,
-                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
-                __FUNCTION__);
-        }
-        p2->id_code = id_code;
-        p2->x0 = line->p0->x0;
-        p2->y0 = line->p0->y0;
-        p2->z0 = line->p0->z0;
-        switch (inheritance)
-        {
-                case 0:
-                        /* Do nothing. */
-                        break;
-                case 1:
-                        if (line->linetype != NULL)
-                        {
-                                p2->linetype = strdup (line->linetype);
-                        }
-                        if (line->layer != NULL)
-                        {
-                                p2->layer = strdup (line->layer);
-                        }
-                        p2->thickness = line->thickness;
-                        p2->linetype_scale = line->linetype_scale;
-                        p2->visibility = line->visibility;
-                        p2->color = line->color;
-                        p2->paperspace = line->paperspace;
-                        if (line->dictionary_owner_soft != NULL)
-                        {
-                                p2->dictionary_owner_soft = strdup (line->dictionary_owner_soft);
-                        }
-                        if (line->dictionary_owner_hard != NULL)
-                        {
-                                p2->dictionary_owner_hard = strdup (line->dictionary_owner_hard);
-                        }
-                        break;
-                default:
-                        fprintf (stderr,
-                          (_("Warning in %s (): unknown inheritance option passed.\n")),
-                          __FUNCTION__);
-                        fprintf (stderr,
-                          (_("\tResolving to default.\n")));
-                        break;
+                fprintf (stderr,
+                  (_("Warning in %s () a 3DLINE with points with identical coordinates were passed.\n")),
+                  __FUNCTION__);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (p2);
+        return (line->p1);
 }
 
 
@@ -2192,9 +2123,9 @@ dxf_3dline_get_mid_point
                   __FUNCTION__);
                 return (NULL);
         }
-        if ((line->p0->x0 == line->x1)
-          && (line->p0->y0 == line->y1)
-          && (line->p0->z0 == line->z1))
+        if ((line->p0->x0 == line->p1->x0)
+          && (line->p0->y0 == line->p1->y0)
+          && (line->p0->z0 == line->p1->z0))
         {
                 fprintf (stderr,
                   (_("Error in %s () a 3DLINE with points with identical coordinates were passed.\n")),
@@ -2216,9 +2147,9 @@ dxf_3dline_get_mid_point
                 __FUNCTION__);
         }
         point->id_code = id_code;
-        point->x0 = (line->p0->x0 + line->x1) / 2;
-        point->y0 = (line->p0->y0 + line->y1) / 2;
-        point->z0 = (line->p0->z0 + line->z1) / 2;
+        point->x0 = (line->p0->x0 + line->p1->x0) / 2;
+        point->y0 = (line->p0->y0 + line->p1->y0) / 2;
+        point->z0 = (line->p0->z0 + line->p1->z0) / 2;
         switch (inheritance)
         {
                 case 0:
@@ -2296,9 +2227,9 @@ dxf_3dline_get_extrusion_vector_as_point
                   __FUNCTION__);
                 return (NULL);
         }
-        if ((line->p0->x0 == line->x1)
-          && (line->p0->y0 == line->y1)
-          && (line->p0->z0 == line->z1))
+        if ((line->p0->x0 == line->p1->x0)
+          && (line->p0->y0 == line->p1->y0)
+          && (line->p0->z0 == line->p1->z0))
         {
                 fprintf (stderr,
                   (_("Error in %s () a 3DLINE with points with identical coordinates were passed.\n")),
@@ -2396,9 +2327,9 @@ dxf_3dline_get_length
                   __FUNCTION__);
                 return (0.0);
         }
-        if ((line->p0->x0 == line->x1)
-          && (line->p0->y0 == line->y1)
-          && (line->p0->z0 == line->z1))
+        if ((line->p0->x0 == line->p1->x0)
+          && (line->p0->y0 == line->p1->y0)
+          && (line->p0->z0 == line->p1->z0))
         {
                 fprintf (stderr,
                   (_("Error in %s () endpoints with identical coordinates were passed.\n")),
@@ -2409,9 +2340,9 @@ dxf_3dline_get_length
         DXF_DEBUG_END
 #endif
         return (sqrt (
-                       ((line->x1 - line->p0->x0) * (line->x1 - line->p0->x0))
-                     + ((line->y1 - line->p0->y0) * (line->y1 - line->p0->y0))
-                     + ((line->z1 - line->p0->z0) * (line->z1 - line->p0->z0))
+                       ((line->p1->x0 - line->p0->x0) * (line->p1->x0 - line->p0->x0))
+                     + ((line->p1->y0 - line->p0->y0) * (line->p1->y0 - line->p0->y0))
+                     + ((line->p1->z0 - line->p0->z0) * (line->p1->z0 - line->p0->z0))
                      )
                );
 }
@@ -2498,9 +2429,9 @@ dxf_3dline_create_from_points
         line->p0->x0 = p1->x0;
         line->p0->y0 = p1->y0;
         line->p0->z0 = p1->z0;
-        line->x1 = p2->x0;
-        line->y1 = p2->y0;
-        line->z1 = p2->z0;
+        line->p1->x0 = p2->x0;
+        line->p1->y0 = p2->y0;
+        line->p1->z0 = p2->z0;
         switch (inheritance)
         {
                 case 0:

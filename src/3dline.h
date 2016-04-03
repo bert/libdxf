@@ -169,15 +169,9 @@ dxf_3dline_struct
         DxfPoint *p0;
                 /*!< Start point.\n
                  * Group codes = 10, 20 and 30.*/
-        double x1;
-                /*!< group code = 11\n
-                 * end point. */
-        double y1;
-                /*!< group code = 21\n
-                 * end point. */
-        double z1;
-                /*!< group code = 31\n
-                 * end point. */
+        DxfPoint *p1;
+                /*!< End point.\n
+                 * Group codes = 11, 21 and 31. */
         double extr_x0;
                 /*!< group code = 210\n
                  * extrusion direction\n
@@ -396,11 +390,9 @@ dxf_3dline_get_p0
         Dxf3dline *line
 );
 DxfPoint *
-dxf_3dline_get_end_point
+dxf_3dline_get_p1
 (
-        Dxf3dline *line,
-        int id_code,
-        int inheritance
+        Dxf3dline *line
 );
 DxfPoint *
 dxf_3dline_get_mid_point
