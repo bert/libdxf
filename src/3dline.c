@@ -8,6 +8,12 @@
  * \warning This entity type is used in DXF versions R10 and R11 only,
  * it was obsoleted and removed in DXF version R12.
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -45,12 +51,6 @@
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_new ()
@@ -88,12 +88,6 @@ dxf_3dline_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_init
@@ -154,12 +148,6 @@ dxf_3dline_init
  * While parsing the DXF file store data in \c line.
  *
  * \return a pointer to \c line.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_read
@@ -404,12 +392,6 @@ dxf_3dline_read
  *
  * \note For DXF version R12 and later, a DXF \c LINE entity is written
  * to file (or device).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 int
 dxf_3dline_write
@@ -572,12 +554,6 @@ dxf_3dline_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 int
 dxf_3dline_free
@@ -615,12 +591,6 @@ dxf_3dline_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c 3DLINE
  * entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 void
 dxf_3dline_free_chain
@@ -654,12 +624,6 @@ dxf_3dline_free_chain
  * \brief Get the ID code from a DXF \c 3DLINE entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 int
 dxf_3dline_get_id_code
@@ -695,12 +659,6 @@ dxf_3dline_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c 3DLINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_id_code
@@ -743,12 +701,6 @@ dxf_3dline_set_id_code
  * \brief Get the linetype from a DXF \c 3DLINE entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 char *
 dxf_3dline_get_linetype
@@ -784,12 +736,6 @@ dxf_3dline_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c 3DLINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_linetype
@@ -830,12 +776,6 @@ dxf_3dline_set_linetype
  * \brief Get the layer from a DXF \c 3DLINE entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 char *
 dxf_3dline_get_layer
@@ -871,12 +811,6 @@ dxf_3dline_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c 3DLINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_layer
@@ -917,12 +851,6 @@ dxf_3dline_set_layer
  * \brief Get the elevation from a DXF \c 3DLINE entity.
  *
  * \return elevation.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 double
 dxf_3dline_get_elevation
@@ -951,12 +879,6 @@ dxf_3dline_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c 3DLINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_elevation
@@ -990,12 +912,6 @@ dxf_3dline_set_elevation
  * \brief Get the thickness from a DXF \c 3DLINE entity.
  *
  * \return thickness.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 double
 dxf_3dline_get_thickness
@@ -1031,12 +947,6 @@ dxf_3dline_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c 3DLINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_thickness
@@ -1080,12 +990,6 @@ dxf_3dline_set_thickness
  *
  * \note The linetype scale was added in DXF R13 and is included for
  * forward compatibility.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 double
 dxf_3dline_get_linetype_scale
@@ -1124,12 +1028,6 @@ dxf_3dline_get_linetype_scale
  *
  * \note The linetype scale was added in DXF R13 and is included for
  * forward compatibility.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_linetype_scale
@@ -1173,12 +1071,6 @@ dxf_3dline_set_linetype_scale
  *
  * \note The visibility was added in DXF R13 and is included for
  * forward compatibility.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 int16_t
 dxf_3dline_get_visibility
@@ -1224,12 +1116,6 @@ dxf_3dline_get_visibility
  *
  * \note The visibility was added in DXF R13 and is included for
  * forward compatibility.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_visibility
@@ -1277,12 +1163,6 @@ dxf_3dline_set_visibility
  * \brief Get the color from a DXF \c 3DLINE entity.
  *
  * \return color.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 int
 dxf_3dline_get_color
@@ -1317,12 +1197,6 @@ dxf_3dline_get_color
 
 /*!
  * \brief Set the color for a DXF \c 3DLINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_color
@@ -1364,12 +1238,6 @@ dxf_3dline_set_color
  * \brief Get the paperspace flag value from a DXF \c 3DLINE entity.
  *
  * \return paperspace flag value.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 int
 dxf_3dline_get_paperspace
@@ -1413,12 +1281,6 @@ dxf_3dline_get_paperspace
  *
  * \note the paperpspace flag was added in DXF R13 and is included for
  * forward compatibility.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_paperspace
@@ -1739,12 +1601,6 @@ dxf_3dline_set_binary_graphics_data
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 char *
 dxf_3dline_get_dictionary_owner_soft
@@ -1781,12 +1637,6 @@ dxf_3dline_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c 3DLINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_dictionary_owner_soft
@@ -1913,12 +1763,6 @@ dxf_3dline_set_material
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 char *
 dxf_3dline_get_dictionary_owner_hard
@@ -1955,12 +1799,6 @@ dxf_3dline_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c 3DLINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_set_dictionary_owner_hard
@@ -2084,12 +1922,6 @@ dxf_3dline_get_p1
  * \brief Get the mid point of a DXF \c 3DLINE entity.
  *
  * \return the mid point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 DxfPoint *
 dxf_3dline_get_mid_point
@@ -2200,12 +2032,6 @@ dxf_3dline_get_mid_point
  * \return a DXF \c POINT containing the extrusion coordinates.
  *
  * \warning No other members are copied into the DXF \c POINT.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_3dline_get_extrusion_vector_as_point
@@ -2256,12 +2082,6 @@ dxf_3dline_get_extrusion_vector_as_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c 3DLINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dline *
 dxf_3dline_set_extrusion_vector
@@ -2302,12 +2122,6 @@ dxf_3dline_set_extrusion_vector
  * start point and end point).
  *
  * \return the length of the \c line in drawing units.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 double
 dxf_3dline_get_length
@@ -2355,12 +2169,6 @@ dxf_3dline_get_length
  * when successful.
  *
  * \warning Both DXF \c POINT entities need to be freed by the caller.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12 (forward compatibility).
- * \version According to DXF R13 (forward compatibility).
- * \version According to DXF R14 (forward compatibility).
  */
 Dxf3dline *
 dxf_3dline_create_from_points
@@ -2505,12 +2313,6 @@ dxf_3dline_create_from_points
  * \return pointer to the next \c 3DLINE entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dline *
 dxf_3dline_get_next
@@ -2547,12 +2349,6 @@ dxf_3dline_get_next
 /*!
  * \brief Set the pointer to the next \c 3DLINE for a DXF \c 3DLINE
  * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dline *
 dxf_3dline_set_next
