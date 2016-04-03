@@ -2274,6 +2274,47 @@ dxf_3dline_get_x1
 
 
 /*!
+ * \brief Set the X-value of the end point of a DXF \c 3DLINE entity.
+ *
+ * \return a pointer to a DXF \c 3DLINE entity.
+ */
+Dxf3dline *
+dxf_3dline_set_x1
+(
+        Dxf3dline *line,
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+        double x1
+                /*!< the X-value of the end point of a DXF \c 3DLINE
+                 * entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->p1->x0 = x1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c 3DLINE entity.
  *
