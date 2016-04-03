@@ -8,6 +8,12 @@
  * \warning This entity type is used in DXF versions R10 and R11 only,
  * it was obsoleted and removed in DXF version R12.
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12 (forward compatibility).
+ * \version According to DXF R13 (forward compatibility).
+ * \version According to DXF R14 (forward compatibility).
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -46,9 +52,6 @@
 
 /*!
  * \brief DXF definition of an AutoCAD line entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
  */
 typedef struct
 dxf_3dline_struct
