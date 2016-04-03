@@ -1874,7 +1874,7 @@ dxf_3dline_get_p0
 
 
 /*!
- * \brief Set the base point of a DXF \c 3DLINE entity.
+ * \brief Set the start point of a DXF \c 3DLINE entity.
  *
  * \return a pointer to a DXF \c 3DLINE entity.
  */
