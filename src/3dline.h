@@ -166,15 +166,9 @@ dxf_3dline_struct
                  * class-level transparency data.\n
                  * Group code = 440. */
         /* Specific members for a DXF line. */
-        double x0;
-                /*!< group code = 10\n
-                 * start point. */
-        double y0;
-                /*!< group code = 20\n
-                 * start point. */
-        double z0;
-                /*!< group code = 30\n
-                 * start point. */
+        DxfPoint *p0;
+                /*!< Start point.\n
+                 * Group codes = 10, 20 and 30.*/
         double x1;
                 /*!< group code = 11\n
                  * end point. */
@@ -397,11 +391,9 @@ dxf_3dline_set_dictionary_owner_hard
         char *dictionary_owner_hard
 );
 DxfPoint *
-dxf_3dline_get_start_point
+dxf_3dline_get_p0
 (
-        Dxf3dline *line,
-        int id_code,
-        int inheritance
+        Dxf3dline *line
 );
 DxfPoint *
 dxf_3dline_get_end_point
