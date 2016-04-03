@@ -2031,6 +2031,47 @@ dxf_3dline_get_y0
 
 
 /*!
+ * \brief Set the Y-value of the start point of a DXF \c 3DLINE entity.
+ *
+ * \return a pointer to a DXF \c 3DLINE entity.
+ */
+Dxf3dline *
+dxf_3dline_set_y0
+(
+        Dxf3dline *line,
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+        double y0
+                /*!< the Y-value of the start point of a DXF \c 3DLINE
+                 * entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->p0->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the end point \c p1 of a DXF \c 3DLINE entity.
  *
  * \return the end point \c p1.
