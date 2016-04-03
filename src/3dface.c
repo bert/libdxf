@@ -2204,6 +2204,13 @@ dxf_3dface_get_p0
                   __FUNCTION__);
                 return (NULL);
         }
+        if (face->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2505,6 +2512,13 @@ dxf_3dface_get_p1
 #endif
         /* Do some basic checks. */
         if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (face->p1 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
@@ -2824,6 +2838,13 @@ dxf_3dface_get_p2
                   __FUNCTION__);
                 return (NULL);
         }
+        if (face->p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -3131,6 +3152,13 @@ dxf_3dface_get_p3
 #endif
         /* Do some basic checks. */
         if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (face->p3 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
