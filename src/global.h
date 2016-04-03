@@ -1,7 +1,7 @@
 /*!
  * \file global.h
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  *
  * \brief  This is a global header file for a library with functions to
  * generate a dxf file.
@@ -77,6 +77,8 @@
 #  define N_(String) (String)
 #endif
 
+
+#include "dbg.h"
 #include "entity.h"
 
 

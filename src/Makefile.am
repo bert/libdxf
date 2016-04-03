@@ -132,6 +132,7 @@ libdxf_la_SOURCES = \
   dictionaryvar.c \
   dictionary.h \
   dictionary.c \
+  dbg.h \
   comment.h \
   comment.c \
   color.h \

@@ -165,6 +165,7 @@ src/color.c
 src/color.h
 src/comment.c
 src/comment.h
+src/dbg.h
 src/dictionary.c
 src/dictionary.h
 src/dictionaryvar.c
