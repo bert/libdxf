@@ -629,6 +629,17 @@ dxf_3dface_set_flag
         Dxf3dface *face,
         int flag
 );
+Dxf3dface *
+dxf_3dface_get_next
+(
+        Dxf3dface *face
+);
+Dxf3dface *
+dxf_3dface_set_next
+(
+        Dxf3dface *face,
+        Dxf3dface *next
+);
 int
 dxf_3dface_is_first_edge_invisible
 (
@@ -658,17 +669,6 @@ dxf_3dface_create_from_points
         DxfPoint *p3,
         int id_code,
         int inheritance
-);
-Dxf3dface *
-dxf_3dface_get_next
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_next
-(
-        Dxf3dface *face,
-        Dxf3dface *next
 );
 
 
