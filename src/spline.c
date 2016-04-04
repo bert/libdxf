@@ -904,6 +904,9 @@ dxf_spline_write
                 fprintf (fp->fp, " 60\n%d\n", spline->visibility);
         }
         fprintf (fp->fp, " 92\n%d\n", spline->graphics_data_size);
+        /*!
+         * \todo On 64 bit machines use group code 160.
+         */
         while (binary_graphics_data != NULL)
         {
                 fprintf (fp->fp, "310\n%s\n", binary_graphics_data->data_line);
