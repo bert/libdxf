@@ -2806,9 +2806,9 @@ dxf_3dline_get_length
 Dxf3dline *
 dxf_3dline_create_from_points
 (
-        DxfPoint *p1,
+        DxfPoint *p0,
                 /*!< a pointer to a DXF \c POINT entity. */
-        DxfPoint *p2,
+        DxfPoint *p1,
                 /*!< a pointer to a DXF \c POINT entity. */
         int id_code,
                 /*!< Identification number for the entity.\n
@@ -2819,8 +2819,8 @@ dxf_3dline_create_from_points
                  * properties from either:
                  * <ol>
                  * <li value = "0"> Default (as initialised).</li>
-                 * <li value = "1"> Point 1.</li>
-                 * <li value = "2"> Point 2.</li>
+                 * <li value = "1"> Point 0.</li>
+                 * <li value = "2"> Point 1.</li>
                  * </ol>
                  */
 )
@@ -2831,14 +2831,14 @@ dxf_3dline_create_from_points
         Dxf3dline *line = NULL;
 
         /* Do some basic checks. */
-        if ((p1 == NULL) || (p2 == NULL))
+        if ((p0 == NULL) || (p1 == NULL))
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        if ((p1->x0 == p2->x0) && (p1->y0 == p2->y0) && (p1->z0 == p2->z0))
+        if ((p0->x0 == p1->x0) && (p0->y0 == p1->y0) && (p0->z0 == p1->z0))
         {
                 fprintf (stderr,
                   (_("Error in %s () points with identical coordinates were passed.\n")),
@@ -2867,18 +2867,41 @@ dxf_3dline_create_from_points
                 __FUNCTION__);
         }
         line->id_code = id_code;
-        line->p0->x0 = p1->x0;
-        line->p0->y0 = p1->y0;
-        line->p0->z0 = p1->z0;
-        line->p1->x0 = p2->x0;
-        line->p1->y0 = p2->y0;
-        line->p1->z0 = p2->z0;
+        line->p0->x0 = p0->x0;
+        line->p0->y0 = p0->y0;
+        line->p0->z0 = p0->z0;
+        line->p1->x0 = p1->x0;
+        line->p1->y0 = p1->y0;
+        line->p1->z0 = p1->z0;
         switch (inheritance)
         {
                 case 0:
                         /* Do nothing. */
                         break;
                 case 1:
+                        if (p0->linetype != NULL)
+                        {
+                                line->linetype = p0->linetype;
+                        }
+                        if (p0->layer != NULL)
+                        {
+                                line->layer = p0->layer;
+                        }
+                        line->thickness = p0->thickness;
+                        line->linetype_scale = p0->linetype_scale;
+                        line->visibility = p0->visibility;
+                        line->color = p0->color;
+                        line->paperspace = p0->paperspace;
+                        if (p0->dictionary_owner_soft != NULL)
+                        {
+                                line->dictionary_owner_soft = strdup (p0->dictionary_owner_soft);
+                        }
+                        if (p0->dictionary_owner_hard != NULL)
+                        {
+                                line->dictionary_owner_hard = strdup (p0->dictionary_owner_hard);
+                        }
+                        break;
+                case 2:
                         if (p1->linetype != NULL)
                         {
                                 line->linetype = p1->linetype;
@@ -2899,29 +2922,6 @@ dxf_3dline_create_from_points
                         if (p1->dictionary_owner_hard != NULL)
                         {
                                 line->dictionary_owner_hard = strdup (p1->dictionary_owner_hard);
-                        }
-                        break;
-                case 2:
-                        if (p2->linetype != NULL)
-                        {
-                                line->linetype = p2->linetype;
-                        }
-                        if (p2->layer != NULL)
-                        {
-                                line->layer = p2->layer;
-                        }
-                        line->thickness = p2->thickness;
-                        line->linetype_scale = p2->linetype_scale;
-                        line->visibility = p2->visibility;
-                        line->color = p2->color;
-                        line->paperspace = p2->paperspace;
-                        if (p2->dictionary_owner_soft != NULL)
-                        {
-                                line->dictionary_owner_soft = strdup (p2->dictionary_owner_soft);
-                        }
-                        if (p2->dictionary_owner_hard != NULL)
-                        {
-                                line->dictionary_owner_hard = strdup (p2->dictionary_owner_hard);
                         }
                         break;
                 default:
