@@ -171,7 +171,6 @@ dxf_helix_read
 #endif
         char *temp_string = NULL;
         int i;
-        DxfBinaryGraphicsData *binary_graphics_data = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -192,7 +191,6 @@ dxf_helix_read
                 helix = dxf_helix_init (helix);
         }
         i = 0;
-        binary_graphics_data = (DxfBinaryGraphicsData *) helix->binary_graphics_data;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -418,9 +416,9 @@ dxf_helix_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", binary_graphics_data->data_line);
-                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) binary_graphics_data->next);
-                        binary_graphics_data = (DxfBinaryGraphicsData *) binary_graphics_data->next;
+                        fscanf (fp->fp, "%s\n", helix->binary_graphics_data->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) helix->binary_graphics_data->next);
+                        helix->binary_graphics_data = (DxfBinaryGraphicsData *) helix->binary_graphics_data->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
