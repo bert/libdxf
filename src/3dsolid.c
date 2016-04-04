@@ -1,7 +1,7 @@
 /*!
  * \file 3dsolid.c
  *
- * \author Copyright (C) 2012 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D solid entity (\c 3DSOLID).
  *
@@ -13,6 +13,12 @@
  * software. \n
  * When writing DXF data to file with versions before DXF R13 a warning
  * message is given.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -48,12 +54,6 @@
  * \brief Allocate memory for a DXF \c 3DSOLID.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_new ()
@@ -91,12 +91,6 @@ dxf_3dsolid_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_init
@@ -162,12 +156,6 @@ dxf_3dsolid_init
  * While parsing the DXF file store data in \c solid. \n
  *
  * \return \c a pointer to \c solid.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_read
@@ -400,12 +388,6 @@ dxf_3dsolid_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_3dsolid_write
@@ -575,12 +557,6 @@ dxf_3dsolid_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_3dsolid_free
@@ -624,12 +600,6 @@ dxf_3dsolid_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c 3DSOLID
  * entities and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_3dsolid_free_chain
@@ -663,12 +633,6 @@ dxf_3dsolid_free_chain
  * \brief Get the ID code from a DXF \c 3DSOLID entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_3dsolid_get_id_code
@@ -707,12 +671,6 @@ dxf_3dsolid_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c 3DSOLID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_id_code
@@ -755,12 +713,6 @@ dxf_3dsolid_set_id_code
  * \brief Get the linetype from a DXF \c 3DSOLID entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_3dsolid_get_linetype
@@ -799,12 +751,6 @@ dxf_3dsolid_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c 3DSOLID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_linetype
@@ -845,12 +791,6 @@ dxf_3dsolid_set_linetype
  * \brief Get the layer from a DXF \c 3DSOLID entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_3dsolid_get_layer
@@ -889,12 +829,6 @@ dxf_3dsolid_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c 3DSOLID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_layer
@@ -935,12 +869,6 @@ dxf_3dsolid_set_layer
  * \brief Get the elevation from a DXF \c 3DSOLID entity.
  *
  * \return elevation.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_3dsolid_get_elevation
@@ -972,12 +900,6 @@ dxf_3dsolid_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c 3DSOLID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_elevation
@@ -1011,12 +933,6 @@ dxf_3dsolid_set_elevation
  * \brief Get the thickness from a DXF \c 3DSOLID entity.
  *
  * \return thickness.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_3dsolid_get_thickness
@@ -1055,12 +971,6 @@ dxf_3dsolid_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c 3DSOLID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_thickness
@@ -1101,12 +1011,6 @@ dxf_3dsolid_set_thickness
  * \brief Get the linetype scale from a DXF \c 3DSOLID entity.
  *
  * \return linetype scale.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_3dsolid_get_linetype_scale
@@ -1145,12 +1049,6 @@ dxf_3dsolid_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c 3DSOLID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_linetype_scale
@@ -1191,12 +1089,6 @@ dxf_3dsolid_set_linetype_scale
  * \brief Get the visibility from a DXF \c 3DSOLID entity.
  *
  * \return visibility.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int16_t
 dxf_3dsolid_get_visibility
@@ -1242,12 +1134,6 @@ dxf_3dsolid_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c 3DSOLID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_visibility
@@ -1295,12 +1181,6 @@ dxf_3dsolid_set_visibility
  * \brief Get the color from a DXF \c 3DSOLID entity.
  *
  * \return color.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_3dsolid_get_color
@@ -1338,12 +1218,6 @@ dxf_3dsolid_get_color
 
 /*!
  * \brief Set the color for a DXF \c 3DSOLID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_color
@@ -1385,12 +1259,6 @@ dxf_3dsolid_set_color
  * \brief Get the paperspace flag value from a DXF \c 3DSOLID entity.
  *
  * \return paperspace flag value.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_3dsolid_get_paperspace
@@ -1434,12 +1302,6 @@ dxf_3dsolid_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c 3DSOLID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_paperspace
@@ -1490,12 +1352,6 @@ dxf_3dsolid_set_paperspace
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_3dsolid_get_dictionary_owner_soft
@@ -1535,12 +1391,6 @@ dxf_3dsolid_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c 3DSOLID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_dictionary_owner_soft
@@ -1585,12 +1435,6 @@ dxf_3dsolid_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_3dsolid_get_dictionary_owner_hard
@@ -1630,12 +1474,6 @@ dxf_3dsolid_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c 3DSOLID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_dictionary_owner_hard
@@ -1678,12 +1516,6 @@ dxf_3dsolid_set_dictionary_owner_hard
  * entity.
  *
  * \return the modeler format version number.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_3dsolid_get_modeler_format_version_number
@@ -1728,12 +1560,6 @@ dxf_3dsolid_get_modeler_format_version_number
 /*!
  * \brief Set the modeler format version number for a DXF \c 3DSOLID
  * entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_modeler_format_version_number
@@ -1784,12 +1610,6 @@ dxf_3dsolid_set_modeler_format_version_number
  * \return soft pointer to the history.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_3dsolid_get_history
@@ -1828,12 +1648,6 @@ dxf_3dsolid_get_history
 
 /*!
  * \brief Set the pointer to the history for a DXF \c 3DSOLID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_history
@@ -1877,12 +1691,6 @@ dxf_3dsolid_set_history
  * \return pointer to the next \c 3DSOLID entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_get_next
@@ -1922,12 +1730,6 @@ dxf_3dsolid_get_next
 /*!
  * \brief Set the pointer to the next \c 3DSOLID for a DXF \c 3DSOLID
  * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 Dxf3dsolid *
 dxf_3dsolid_set_next
