@@ -18,3 +18,14 @@ before_install:
 
 script: scripts/build.sh
 
+# blacklist
+branches:
+  except:
+    - gh-pages
+
+# whitelist
+branches:
+  only:
+    - master
+    - devel
+
