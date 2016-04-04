@@ -309,6 +309,13 @@ dxf_3dsolid_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &solid->modeler_format_version_number);
                 }
+                else if (strcmp (temp_string, "92") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &solid->graphics_data_size);
+                }
                 else if ((fp->acad_version_number >= AutoCAD_13)
                         && (strcmp (temp_string, "100") == 0))
                 {
@@ -337,12 +344,42 @@ dxf_3dsolid_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
+                else if (strcmp (temp_string, "160") == 0)
+                {
+                        /* Now follows a string containing the
+                         * paperspace value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%d\n", &solid->graphics_data_size);
+                }
+                else if (strcmp (temp_string, "284") == 0)
+                {
+                        /* Now follows a string containing the shadow
+                         * mode value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &solid->shadow_mode);
+                }
+                else if (strcmp (temp_string, "310") == 0)
+                {
+                        /* Now follows a string containing binary
+                         * graphics data. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", solid->binary_graphics_data->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) solid->binary_graphics_data->next);
+                        solid->binary_graphics_data = (DxfBinaryGraphicsData *) solid->binary_graphics_data->next;
+                }
                 else if (strcmp (temp_string, "330") == 0)
                 {
                         /* Now follows a string containing Soft-pointer
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", solid->dictionary_owner_soft);
+                }
+                else if (strcmp (temp_string, "347") == 0)
+                {
+                        /* Now follows a string containing a
+                         * hard-pointer ID/handle to material object. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", solid->material);
                 }
                 else if ((fp->acad_version_number >= AutoCAD_2008)
                         && (strcmp (temp_string, "350") == 0))
@@ -358,6 +395,40 @@ dxf_3dsolid_read
                          * ID/handle to owner dictionary. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", solid->dictionary_owner_hard);
+                }
+                else if (strcmp (temp_string, "370") == 0)
+                {
+                        /* Now follows a string containing the lineweight
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%hd\n", &solid->lineweight);
+                }
+                else if (strcmp (temp_string, "390") == 0)
+                {
+                        /* Now follows a string containing a plot style
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", solid->plot_style_name);
+                }
+                else if (strcmp (temp_string, "420") == 0)
+                {
+                        /* Now follows a string containing a color value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &solid->color_value);
+                }
+                else if (strcmp (temp_string, "430") == 0)
+                {
+                        /* Now follows a string containing a color
+                         * name value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%s\n", solid->color_name);
+                }
+                else if (strcmp (temp_string, "440") == 0)
+                {
+                        /* Now follows a string containing a transparency
+                         * value. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%ld\n", &solid->transparency);
                 }
                 else if (strcmp (temp_string, "999") == 0)
                 {
