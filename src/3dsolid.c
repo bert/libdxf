@@ -119,7 +119,6 @@ dxf_3dsolid_init
                   __FUNCTION__);
                 return (NULL);
         }
-        solid->modeler_format_version_number = 0;
         solid->id_code = 0;
         solid->linetype = strdup (DXF_DEFAULT_LINETYPE);
         solid->layer = strdup (DXF_DEFAULT_LAYER);
@@ -129,15 +128,24 @@ dxf_3dsolid_init
         solid->visibility = DXF_DEFAULT_VISIBILITY;
         solid->color = DXF_COLOR_BYLAYER;
         solid->paperspace = DXF_MODELSPACE;
-        solid->modeler_format_version_number = 1;
-        solid->history = strdup ("");
+        solid->graphics_data_size = 0;
+        solid->shadow_mode = 0;
+        solid->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (solid->binary_graphics_data);
+        solid->dictionary_owner_soft = strdup ("");
+        solid->material = strdup ("");
+        solid->dictionary_owner_hard = strdup ("");
+        solid->lineweight = 0;
+        solid->plot_style_name = strdup ("");
+        solid->color_value = 0;
+        solid->color_name = strdup ("");
+        solid->transparency = 0;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 solid->proprietary_data[i] = strdup ("");
                 solid->additional_proprietary_data[i] = strdup ("");
         }
-        solid->dictionary_owner_soft = strdup ("");
-        solid->dictionary_owner_hard = strdup ("");
+        solid->modeler_format_version_number = 1;
+        solid->history = strdup ("");
         solid->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
