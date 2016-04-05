@@ -609,11 +609,15 @@ dxf_helix_write
         {
                 fprintf (fp->fp, " 62\n%d\n", helix->color);
         }
+        fprintf (fp->fp, "370\n%d\n", helix->lineweight);
         if (helix->thickness != 0.0)
         {
                 fprintf (fp->fp, " 39\n%f\n", helix->thickness);
         }
-        fprintf (fp->fp, " 48\n%f\n", helix->linetype_scale);
+        if (helix->linetype_scale != 1.0)
+        {
+                fprintf (fp->fp, " 48\n%f\n", helix->linetype_scale);
+        }
         if (helix->visibility != 0)
         {
                 fprintf (fp->fp, " 60\n%d\n", helix->visibility);
@@ -627,7 +631,6 @@ dxf_helix_write
                 fprintf (fp->fp, "310\n%s\n", helix->binary_graphics_data->data_line);
                 helix->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (helix->binary_graphics_data);
         }
-        fprintf (fp->fp, "370\n%d\n", helix->lineweight);
         fprintf (fp->fp, "420\n%ld\n", helix->color_value);
         fprintf (fp->fp, "430\n%s\n", helix->color_name);
         fprintf (fp->fp, "440\n%ld\n", helix->transparency);
