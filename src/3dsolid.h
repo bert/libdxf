@@ -320,6 +320,12 @@ dxf_3dsolid_get_graphics_data_size
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_graphics_data_size
+(
+        Dxf3dsolid *solid,
+        int graphics_data_size
+);
 char *
 dxf_3dsolid_get_dictionary_owner_soft
 (
