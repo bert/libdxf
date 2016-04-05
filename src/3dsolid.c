@@ -571,10 +571,15 @@ dxf_3dsolid_write
         {
                 fprintf (fp->fp, "  6\n%s\n", solid->linetype);
         }
+        if (strcmp (solid->material, "") != 0)
+        {
+                fprintf (fp->fp, "347\n%s\n", solid->material);
+        }
         if (solid->color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp->fp, " 62\n%d\n", solid->color);
         }
+        fprintf (fp->fp, "370\n%d\n", solid->lineweight);
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
           && (solid->elevation != 0.0))
@@ -593,6 +598,20 @@ dxf_3dsolid_write
         {
                 fprintf (fp->fp, " 60\n%d\n", solid->visibility);
         }
+        fprintf (fp->fp, " 92\n%d\n", solid->graphics_data_size);
+        /*!
+         * \todo On 64 bit machines use group code 160.
+         */
+        while (solid->binary_graphics_data != NULL)
+        {
+                fprintf (fp->fp, "310\n%s\n", solid->binary_graphics_data->data_line);
+                solid->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (solid->binary_graphics_data);
+        }
+        fprintf (fp->fp, "420\n%ld\n", solid->color_value);
+        fprintf (fp->fp, "430\n%s\n", solid->color_name);
+        fprintf (fp->fp, "440\n%ld\n", solid->transparency);
+        fprintf (fp->fp, "390\n%s\n", solid->plot_style_name);
+        fprintf (fp->fp, "284\n%d\n", solid->shadow_mode);
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbModelerGeometry\n");
