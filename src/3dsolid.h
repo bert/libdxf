@@ -315,6 +315,11 @@ dxf_3dsolid_set_paperspace
         Dxf3dsolid *solid,
         int paperspace
 );
+int
+dxf_3dsolid_get_graphics_data_size
+(
+        Dxf3dsolid *solid
+);
 char *
 dxf_3dsolid_get_dictionary_owner_soft
 (
