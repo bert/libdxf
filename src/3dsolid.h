@@ -337,6 +337,11 @@ dxf_3dsolid_set_shadow_mode
         Dxf3dsolid *solid,
         int16_t shadow_mode
 );
+DxfBinaryGraphicsData *
+dxf_3dsolid_get_binary_graphics_data
+(
+        Dxf3dsolid *solid
+);
 char *
 dxf_3dsolid_get_dictionary_owner_soft
 (
