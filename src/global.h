@@ -105,6 +105,8 @@
         /*!< \brief Decide if we have UNIX or MSDOS. */
 #endif
 
+/* In general it is possible to check for 64-bit with the architecture
+ * builtins of GCC, e.g. with: */
 #if defined (__alpha__)\
   || defined (__ia64__)\
   || defined (__ppc64__)\
@@ -114,6 +116,7 @@
         /*!< For specific parts when building 64 bit targets. */
 #endif
 
+/* For other platforms check the length of word size: */
 #if (__WORDSIZE == 64)
 #define BUILD_64 1
         /*!< For specific parts when building 64 bit targets. */
