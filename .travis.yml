@@ -29,3 +29,6 @@ branches:
     - master
     - devel
 
+notifications:
+  - email: true
+
