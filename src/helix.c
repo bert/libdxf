@@ -622,10 +622,11 @@ dxf_helix_write
         {
                 fprintf (fp->fp, " 60\n%d\n", helix->visibility);
         }
+#ifdef BUILD_64
+        fprintf (fp->fp, "160\n%d\n", helix->graphics_data_size);
+#else
         fprintf (fp->fp, " 92\n%d\n", helix->graphics_data_size);
-        /*!
-         * \todo On 64 bit machines use group code 160.
-         */
+#endif
         while (helix->binary_graphics_data != NULL)
         {
                 fprintf (fp->fp, "310\n%s\n", helix->binary_graphics_data->data_line);
