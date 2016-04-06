@@ -52,6 +52,7 @@
 #include <math.h>
 #include <errno.h>
 #include <time.h>
+#include <limits.h>
 
 /*
  * Standard gettext macros.
@@ -102,6 +103,20 @@
 #ifdef MSDOS
 #  undef UNIX
         /*!< \brief Decide if we have UNIX or MSDOS. */
+#endif
+
+#if defined (__alpha__)\
+  || defined (__ia64__)\
+  || defined (__ppc64__)\
+  || defined (__s390x__)\
+  || defined (__x86_64__)
+#define BUILD_64 1
+        /*!< For specific parts when building 64 bit targets. */
+#endif
+
+#if (__WORDSIZE == 64)
+#define BUILD_64 1
+        /*!< For specific parts when building 64 bit targets. */
 #endif
 
 #ifndef DEBUG
