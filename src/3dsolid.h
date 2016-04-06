@@ -331,6 +331,12 @@ dxf_3dsolid_get_shadow_mode
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_shadow_mode
+(
+        Dxf3dsolid *solid,
+        int16_t shadow_mode
+);
 char *
 dxf_3dsolid_get_dictionary_owner_soft
 (
