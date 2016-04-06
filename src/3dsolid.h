@@ -326,6 +326,11 @@ dxf_3dsolid_set_graphics_data_size
         Dxf3dsolid *solid,
         int graphics_data_size
 );
+int16_t
+dxf_3dsolid_get_shadow_mode
+(
+        Dxf3dsolid *solid
+);
 char *
 dxf_3dsolid_get_dictionary_owner_soft
 (
