@@ -342,6 +342,12 @@ dxf_3dsolid_get_binary_graphics_data
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_binary_graphics_data
+(
+        Dxf3dsolid *solid,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_3dsolid_get_dictionary_owner_soft
 (
