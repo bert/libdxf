@@ -2030,6 +2030,44 @@ dxf_3dsolid_set_lineweight
 
 
 /*!
+ * \brief Get the \c plot_style_name from a DXF \c 3DSOLID entity.
+ *
+ * \return \c plot_style_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_3dsolid_get_plot_style_name
+(
+        Dxf3dsolid *solid
+                /*!< a pointer to a DXF \c 3DSOLID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (solid->plot_style_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (solid->plot_style_name));
+}
+
+
+/*!
  * \brief Get the modeler format version number from a DXF \c 3DSOLID
  * entity.
  *
