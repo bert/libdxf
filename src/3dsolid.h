@@ -386,6 +386,12 @@ dxf_3dsolid_get_lineweight
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_lineweight
+(
+        Dxf3dsolid *solid,
+        int16_t lineweight
+);
 int
 dxf_3dsolid_get_modeler_format_version_number
 (
