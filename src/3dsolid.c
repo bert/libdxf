@@ -2068,6 +2068,48 @@ dxf_3dsolid_get_plot_style_name
 
 
 /*!
+ * \brief Set the \c plot_style_name for a DXF \c 3DSOLID entity.
+ *
+ * \return a pointer to \c solid when successful, or \c NULL when an
+ * error occurred.
+ */
+Dxf3dsolid *
+dxf_3dsolid_set_plot_style_name
+(
+        Dxf3dsolid *solid,
+                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        char *plot_style_name
+                /*!< a string containing the \c plot_style_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (plot_style_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->plot_style_name = strdup (plot_style_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid);
+}
+
+
+/*!
  * \brief Get the modeler format version number from a DXF \c 3DSOLID
  * entity.
  *
