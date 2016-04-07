@@ -403,6 +403,11 @@ dxf_3dsolid_set_plot_style_name
         Dxf3dsolid *solid,
         char *plot_style_name
 );
+long
+dxf_3dsolid_get_color_value
+(
+        Dxf3dsolid *solid
+);
 int
 dxf_3dsolid_get_modeler_format_version_number
 (
