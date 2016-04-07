@@ -370,6 +370,12 @@ dxf_3dsolid_get_material
         Dxf3dsolid *solid
 );
 Dxf3dsolid *
+dxf_3dsolid_set_material
+(
+        Dxf3dsolid *solid,
+        char *material
+);
+Dxf3dsolid *
 dxf_3dsolid_set_dictionary_owner_hard
 (
         Dxf3dsolid *solid,
