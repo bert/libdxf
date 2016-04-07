@@ -408,6 +408,12 @@ dxf_3dsolid_get_color_value
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_color_value
+(
+        Dxf3dsolid *solid,
+        long color_value
+);
 int
 dxf_3dsolid_get_modeler_format_version_number
 (
