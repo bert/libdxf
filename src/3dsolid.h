@@ -425,6 +425,11 @@ dxf_3dsolid_set_color_name
         Dxf3dsolid *solid,
         char *color_name
 );
+long
+dxf_3dsolid_get_transparency
+(
+        Dxf3dsolid *solid
+);
 int
 dxf_3dsolid_get_modeler_format_version_number
 (
