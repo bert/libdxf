@@ -112,6 +112,8 @@ src/point.c
 src/point.h
 src/polyline.c
 src/polyline.h
+src/proprietary_data.c
+src/proprietary_data.h
 src/rastervariables.c
 src/rastervariables.h
 src/ray.c

@@ -56,6 +56,8 @@ libdxf_la_SOURCES = \
   ray.c \
   rastervariables.h \
   rastervariables.c \
+  proprietary_data.h \
+  proprietary_data.c \
   polyline.h \
   polyline.c \
   point.h \
