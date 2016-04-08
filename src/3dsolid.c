@@ -102,8 +102,6 @@ dxf_3dsolid_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -139,11 +137,7 @@ dxf_3dsolid_init
         solid->color_value = 0;
         solid->color_name = strdup ("");
         solid->transparency = 0;
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                solid->proprietary_data[i] = strdup ("");
-                solid->additional_proprietary_data[i] = strdup ("");
-        }
+        solid->proprietary_data = NULL;
         solid->modeler_format_version_number = 1;
         solid->history = strdup ("");
         solid->next = NULL;
@@ -226,7 +220,7 @@ dxf_3dsolid_read
                         /* Now follows a string containing proprietary
                          * data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->proprietary_data[i]);
+                        fscanf (fp->fp, "%s\n", solid->proprietary_data->data_line);
                         i++;
                 }
                 else if (strcmp (temp_string, "  3") == 0)
@@ -626,9 +620,9 @@ dxf_3dsolid_write
                 fprintf (fp->fp, " 70\n%d\n", solid->modeler_format_version_number);
         }
         i = 0;
-        while (strlen (solid->proprietary_data[i]) > 0)
+        while (strlen (solid->proprietary_data->data_line) > 0)
         {
-                fprintf (fp->fp, "  1\n%s\n", solid->proprietary_data[i]);
+                fprintf (fp->fp, "  1\n%s\n", solid->proprietary_data->data_line);
                 i++;
         }
         i = 0;
@@ -682,7 +676,6 @@ dxf_3dsolid_free
         free (solid->layer);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                free (solid->proprietary_data[i]);
                 free (solid->additional_proprietary_data[i]);
         }
         free (solid->dictionary_owner_soft);
@@ -690,6 +683,7 @@ dxf_3dsolid_free
         free (solid->dictionary_owner_hard);
         free (solid->plot_style_name);
         free (solid->color_name);
+        free (solid->proprietary_data->data_line);
         free (solid);
         solid = NULL;
 #if DEBUG

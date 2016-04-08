@@ -46,6 +46,7 @@
 
 #include "global.h"
 #include "binary_graphics_data.h"
+#include "proprietary_data.h"
 
 
 /*!
@@ -166,7 +167,7 @@ dxf_3dsolid
                  * class-level transparency data.\n
                  * Group code = 440. */
         /* Specific members for a DXF 3D solid. */
-        char *proprietary_data[DXF_MAX_PARAM];
+        DxfProprietaryData *proprietary_data;
                 /*!< Proprietary data (multiple lines < 255 characters
                  * each).\n
                  * Group code = 1. */
