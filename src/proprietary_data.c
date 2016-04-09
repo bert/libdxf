@@ -132,7 +132,7 @@ dxf_proprietary_data_get_order
         if (data->order < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the i member.\n")),
+                  (_("Error in %s () a negative value was found in the order member.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
