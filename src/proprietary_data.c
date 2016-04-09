@@ -216,4 +216,41 @@ dxf_proprietary_data_set_order
 }
 
 
+/*!
+ * \brief Get the \c data_line from a DXF \c DxfProprietaryData object.
+ *
+ * \return \c data_line when sucessful, or \c NULL when an error occurred.
+ */
+char *
+dxf_proprietary_data_get_data_line
+(
+        DxfProprietaryData *data
+                /*!< a pointer to a DXF \c DxfProprietaryData object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data->data_line ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the data_line member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (data->data_line));
+}
+
+
 /* EOF */
