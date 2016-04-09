@@ -36,6 +36,41 @@
 
 
 /*!
+ * \brief Allocate memory for a DXF \c proprietary_data entity.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfProprietaryData *
+dxf_proprietary_data_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfProprietaryData *data = NULL;
+        size_t size;
+
+        size = sizeof (DxfProprietaryData);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((data = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfProprietaryData struct.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        else
+        {
+                memset (data, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
+/*!
  * \brief Get the incremental counter \c order from a DXF \c proprietary_data entity.
  *
  * \return incremental counter \c order.

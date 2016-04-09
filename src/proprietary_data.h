@@ -58,6 +58,8 @@ dxf_proprietary_data_struct
 } DxfProprietaryData;
 
 
+DxfProprietaryData *
+dxf_proprietary_data_new ();
 int
 dxf_proprietary_data_get_order
 (
