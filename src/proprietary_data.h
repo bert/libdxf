@@ -65,6 +65,11 @@ dxf_proprietary_data_free
 (
         DxfProprietaryData *data
 );
+void
+dxf_proprietary_data_free_chain
+(
+        DxfProprietaryData *datas
+);
 int
 dxf_proprietary_data_get_order
 (

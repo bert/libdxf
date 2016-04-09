@@ -107,6 +107,39 @@ dxf_proprietary_data_free
 
 
 /*!
+ * \brief Free the allocated memory for a chain of DXF
+ * \c DxfProprietaryData objects and all their data fields.
+ */
+void
+dxf_proprietary_data_free_chain
+(
+        DxfProprietaryData *datas
+                /*!< a pointer to the chain of DXF \c DxfProprietaryData
+                 * objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (datas == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (datas != NULL)
+        {
+                struct DxfProprietaryData *iter = datas->next;
+                dxf_proprietary_data_free (datas);
+                datas = (DxfProprietaryData *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
+/*!
  * \brief Get the incremental counter \c order from a DXF
  * \c DxfProprietaryData object.
  *
