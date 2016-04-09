@@ -45,7 +45,7 @@
 typedef struct
 dxf_proprietary_data_struct
 {
-        int i;
+        int order;
                 /*!< Incremental counter for storing order of data lines. */
         char *data_line;
                 /*!< Proprietary data.\n
