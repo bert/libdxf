@@ -177,4 +177,43 @@ dxf_proprietary_data_get_order
 }
 
 
+/*!
+ * \brief Set the incremental counter \c order for a DXF
+ * \c DxfProprietaryData object.
+ */
+DxfProprietaryData *
+dxf_proprietary_data_set_order
+(
+        DxfProprietaryData *data,
+                /*!< a pointer to a DXF \c DxfProprietaryData object. */
+        int order
+                /*!< incremental counter \c order. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (order < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative order value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->order = order;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF */

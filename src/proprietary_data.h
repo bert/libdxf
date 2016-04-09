@@ -75,6 +75,12 @@ dxf_proprietary_data_get_order
 (
         DxfProprietaryData *data
 );
+DxfProprietaryData *
+dxf_proprietary_data_set_order
+(
+        DxfProprietaryData *data,
+        int order
+);
 
 
 #endif /* LIBDXF_SRC_PROPRIETARY_DATA_H */
