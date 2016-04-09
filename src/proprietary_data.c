@@ -36,7 +36,7 @@
 
 
 /*!
- * \brief Allocate memory for a DXF \c proprietary_data entity.
+ * \brief Allocate memory for a DXF \c DxfProprietaryData object.
  *
  * Fill the memory contents with zeros.
  */
@@ -107,7 +107,8 @@ dxf_proprietary_data_free
 
 
 /*!
- * \brief Get the incremental counter \c order from a DXF \c proprietary_data entity.
+ * \brief Get the incremental counter \c order from a DXF
+ * \c DxfProprietaryData object.
  *
  * \return incremental counter \c order.
  */
@@ -115,7 +116,7 @@ int
 dxf_proprietary_data_get_order
 (
         DxfProprietaryData *data
-                /*!< a pointer to a DXF \c proprietary_data entity. */
+                /*!< a pointer to a DXF \c DxfProprietaryData entity. */
 )
 {
 #if DEBUG
