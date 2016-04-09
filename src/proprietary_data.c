@@ -35,4 +35,41 @@
 #include "proprietary_data.h"
 
 
+/*!
+ * \brief Get the incremental counter \c order from a DXF \c proprietary_data entity.
+ *
+ * \return incremental counter \c order.
+ */
+int
+dxf_proprietary_data_get_order
+(
+        DxfProprietaryData *data
+                /*!< a pointer to a DXF \c proprietary_data entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (data->order < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the i member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data->order);
+}
+
+
 /* EOF */

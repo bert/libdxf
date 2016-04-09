@@ -58,6 +58,13 @@ dxf_proprietary_data_struct
 } DxfProprietaryData;
 
 
+int
+dxf_proprietary_data_get_order
+(
+        DxfProprietaryData *data
+);
+
+
 #endif /* LIBDXF_SRC_PROPRIETARY_DATA_H */
 
 
