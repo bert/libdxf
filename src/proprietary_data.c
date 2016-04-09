@@ -71,6 +71,42 @@ dxf_proprietary_data_new ()
 
 
 /*!
+ * \brief Free the allocated memory for a DXF \c DxfProprietaryData
+ * object and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_proprietary_data_free
+(
+        DxfProprietaryData *data
+                /*!< a pointer to the memory occupied by the DXF
+                 * \c DxfProprietaryData object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next DxfProprietaryData was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (data->data_line);
+        free (data);
+        data = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Get the incremental counter \c order from a DXF \c proprietary_data entity.
  *
  * \return incremental counter \c order.

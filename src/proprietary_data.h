@@ -61,6 +61,11 @@ dxf_proprietary_data_struct
 DxfProprietaryData *
 dxf_proprietary_data_new ();
 int
+dxf_proprietary_data_free
+(
+        DxfProprietaryData *data
+);
+int
 dxf_proprietary_data_get_order
 (
         DxfProprietaryData *data
