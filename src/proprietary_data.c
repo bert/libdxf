@@ -294,4 +294,44 @@ dxf_proprietary_data_set_data_line
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c DxfProprietaryData object from
+ * a DXF \c DxfProprietaryData object.
+ *
+ * \return pointer to the next \c DxfProprietaryData object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfProprietaryData *
+dxf_proprietary_data_get_next
+(
+        DxfProprietaryData *data
+                /*!< a pointer to a DXF \c DxfProprietaryData object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfProprietaryData *) data->next);
+}
+
+
 /* EOF */
