@@ -86,6 +86,12 @@ dxf_proprietary_data_get_data_line
 (
         DxfProprietaryData *data
 );
+DxfProprietaryData *
+dxf_proprietary_data_set_data_line
+(
+        DxfProprietaryData *data,
+        char *data_line
+);
 
 
 #endif /* LIBDXF_SRC_PROPRIETARY_DATA_H */
