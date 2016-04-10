@@ -334,4 +334,47 @@ dxf_proprietary_data_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c DxfProprietaryData object for a
+ * DXF \c DxfProprietaryData object.
+ *
+ * \return a pointer to \c data when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfProprietaryData *
+dxf_proprietary_data_set_next
+(
+        DxfProprietaryData *data,
+                /*!< a pointer to a DXF \c DxfProprietaryData object. */
+        DxfProprietaryData *next
+                /*!< a pointer to the next \c DxfProprietaryData object
+                 * for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->next = (struct DxfProprietaryData *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF */

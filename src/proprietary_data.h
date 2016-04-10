@@ -97,6 +97,12 @@ dxf_proprietary_data_get_next
 (
         DxfProprietaryData *data
 );
+DxfProprietaryData *
+dxf_proprietary_data_set_next
+(
+        DxfProprietaryData *data,
+        DxfProprietaryData *next
+);
 
 
 #endif /* LIBDXF_SRC_PROPRIETARY_DATA_H */
