@@ -137,7 +137,7 @@ dxf_3dsolid_init
         solid->color_value = 0;
         solid->color_name = strdup ("");
         solid->transparency = 0;
-        solid->proprietary_data = NULL;
+        solid->proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_init (solid->proprietary_data);;
         solid->modeler_format_version_number = 1;
         solid->history = strdup ("");
         solid->next = NULL;
