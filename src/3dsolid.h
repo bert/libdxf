@@ -171,7 +171,7 @@ dxf_3dsolid
                 /*!< Proprietary data (multiple lines < 255 characters
                  * each).\n
                  * Group code = 1. */
-        char *additional_proprietary_data[DXF_MAX_PARAM];
+        DxfProprietaryData *additional_proprietary_data;
                 /*!< Additional lines of proprietary data if previous
                  * group 1 string is greater than 255 characters
                  * (optional).\n

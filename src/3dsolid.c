@@ -138,6 +138,7 @@ dxf_3dsolid_init
         solid->color_name = strdup ("");
         solid->transparency = 0;
         solid->proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_init (solid->proprietary_data);;
+        solid->additional_proprietary_data = (DxfProprietaryData *) dxf_proprietary_data_init (solid->additional_proprietary_data);;
         solid->modeler_format_version_number = 1;
         solid->history = strdup ("");
         solid->next = NULL;
@@ -228,7 +229,7 @@ dxf_3dsolid_read
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->additional_proprietary_data[j]);
+                        fscanf (fp->fp, "%s\n", solid->additional_proprietary_data->data_line);
                         j++;
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -626,9 +627,9 @@ dxf_3dsolid_write
                 i++;
         }
         i = 0;
-        while (strlen (solid->additional_proprietary_data[i]) > 0)
+        while (strlen (solid->additional_proprietary_data->data_line) > 0)
         {
-                fprintf (fp->fp, "  3\n%s\n", solid->additional_proprietary_data[i]);
+                fprintf (fp->fp, "  3\n%s\n", solid->additional_proprietary_data->data_line);
                 i++;
         }
         if (fp->acad_version_number >= AutoCAD_2008)
@@ -662,8 +663,6 @@ dxf_3dsolid_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (solid->next != NULL)
         {
@@ -674,16 +673,13 @@ dxf_3dsolid_free
         }
         free (solid->linetype);
         free (solid->layer);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (solid->additional_proprietary_data[i]);
-        }
         free (solid->dictionary_owner_soft);
         free (solid->material);
         free (solid->dictionary_owner_hard);
         free (solid->plot_style_name);
         free (solid->color_name);
-        free (solid->proprietary_data->data_line);
+        dxf_proprietary_data_free (solid->proprietary_data);
+        dxf_proprietary_data_free (solid->additional_proprietary_data);
         free (solid);
         solid = NULL;
 #if DEBUG
