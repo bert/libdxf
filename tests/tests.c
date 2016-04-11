@@ -1,6 +1,8 @@
 /*!
  * \file tests.c
- * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.\n
+ *
+ * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
+ *
  * \brief Tests for libdxf.
  *
  * <hr>
@@ -32,12 +34,13 @@
 #include <string.h>
 #include "includes.h"
 
+/*!
+ * \brief Reads a dxf file using libdxf form examples dir.
+ *
+ * \version According to DXF R2000.
+ */
 int main (void)
 {
-    /*
-     * Reads a dxf file using libdxf form examples dir.
-     */
-    /* Version 2000 */
     if (dxf_file_read ("../examples/qcad-example_R2000.dxf"))
         fprintf (stdout, "TESTS: R2000 exited with error\n");
     else
