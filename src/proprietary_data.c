@@ -336,6 +336,50 @@ dxf_proprietary_data_set_line
 
 
 /*!
+ * \brief Get the length of the line from a DXF \c DxfProprietaryData
+ * object.
+ *
+ * \return length.
+ */
+int
+dxf_proprietary_data_get_length
+(
+        DxfProprietaryData *data
+                /*!< a pointer to a DXF \c DxfProprietaryData entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (data->length < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the length member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (data->length == 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a zero value was found in the length member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data->length);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c DxfProprietaryData object from
  * a DXF \c DxfProprietaryData object.
  *

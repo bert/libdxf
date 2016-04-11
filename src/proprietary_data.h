@@ -100,6 +100,11 @@ dxf_proprietary_data_set_line
         DxfProprietaryData *data,
         char *line
 );
+int
+dxf_proprietary_data_get_length
+(
+        DxfProprietaryData *data
+);
 DxfProprietaryData *
 dxf_proprietary_data_get_next
 (
