@@ -102,7 +102,7 @@ dxf_proprietary_data_init
                 __FUNCTION__);
               return (NULL);
         }
-        data->data_line = strdup ("");
+        data->line = strdup ("");
         data->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -137,7 +137,7 @@ dxf_proprietary_data_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (data->data_line);
+        free (data->line);
         free (data);
         data = NULL;
 #if DEBUG
@@ -258,12 +258,12 @@ dxf_proprietary_data_set_order
 
 
 /*!
- * \brief Get the \c data_line from a DXF \c DxfProprietaryData object.
+ * \brief Get the \c line from a DXF \c DxfProprietaryData object.
  *
- * \return \c data_line when sucessful, or \c NULL when an error occurred.
+ * \return \c line when sucessful, or \c NULL when an error occurred.
  */
 char *
-dxf_proprietary_data_get_data_line
+dxf_proprietary_data_get_line
 (
         DxfProprietaryData *data
                 /*!< a pointer to a DXF \c DxfProprietaryData object. */
@@ -280,33 +280,33 @@ dxf_proprietary_data_get_data_line
                   __FUNCTION__);
                 return (NULL);
         }
-        if (data->data_line ==  NULL)
+        if (data->line ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the data_line member.\n")),
+                  (_("Error in %s () a NULL pointer was found in the line member.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (strdup (data->data_line));
+        return (strdup (data->line));
 }
 
 
 /*!
- * \brief Set the \c data_line for a DXF \c DxfProprietaryData object.
+ * \brief Set the \c line for a DXF \c DxfProprietaryData object.
  *
  * \return a pointer to \c data when successful, or \c NULL when an
  * error occurred.
  */
 DxfProprietaryData *
-dxf_proprietary_data_set_data_line
+dxf_proprietary_data_set_line
 (
         DxfProprietaryData *data,
                 /*!< a pointer to a DXF \c DxfProprietaryData object. */
-        char *data_line
-                /*!< a string containing the \c data_line for the object. */
+        char *line
+                /*!< a string containing the \c line for the object. */
 )
 {
 #if DEBUG
@@ -320,14 +320,14 @@ dxf_proprietary_data_set_data_line
                   __FUNCTION__);
                 return (NULL);
         }
-        if (data_line == NULL)
+        if (line == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        data->data_line = strdup (data_line);
+        data->line = strdup (line);
 #if DEBUG
         DXF_DEBUG_END
 #endif

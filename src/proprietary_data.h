@@ -47,11 +47,14 @@ dxf_proprietary_data_struct
 {
         int order;
                 /*!< Incremental counter for storing order of data lines. */
-        char *data_line;
+        char *line;
                 /*!< Proprietary data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
                  * Group code = 1. */
+        int length;
+                /*!< Length of the line of characters.\n
+                 * May not exceed \c DXF_MAX_STRING_LENGTH . */
         struct DxfProprietaryData *next;
                 /*!< Pointer to the next DxfProprietaryData.\n
                  * \c NULL if the last DxfProprietaryData. */
@@ -87,15 +90,15 @@ dxf_proprietary_data_set_order
         int order
 );
 char *
-dxf_proprietary_data_get_data_line
+dxf_proprietary_data_get_line
 (
         DxfProprietaryData *data
 );
 DxfProprietaryData *
-dxf_proprietary_data_set_data_line
+dxf_proprietary_data_set_line
 (
         DxfProprietaryData *data,
-        char *data_line
+        char *line
 );
 DxfProprietaryData *
 dxf_proprietary_data_get_next

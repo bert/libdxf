@@ -221,7 +221,7 @@ dxf_3dsolid_read
                         /* Now follows a string containing proprietary
                          * data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->proprietary_data->data_line);
+                        fscanf (fp->fp, "%s\n", solid->proprietary_data->line);
                         i++;
                 }
                 else if (strcmp (temp_string, "  3") == 0)
@@ -229,7 +229,7 @@ dxf_3dsolid_read
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", solid->additional_proprietary_data->data_line);
+                        fscanf (fp->fp, "%s\n", solid->additional_proprietary_data->line);
                         j++;
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -621,15 +621,15 @@ dxf_3dsolid_write
                 fprintf (fp->fp, " 70\n%d\n", solid->modeler_format_version_number);
         }
         i = 0;
-        while (strlen (solid->proprietary_data->data_line) > 0)
+        while (strlen (solid->proprietary_data->line) > 0)
         {
-                fprintf (fp->fp, "  1\n%s\n", solid->proprietary_data->data_line);
+                fprintf (fp->fp, "  1\n%s\n", solid->proprietary_data->line);
                 i++;
         }
         i = 0;
-        while (strlen (solid->additional_proprietary_data->data_line) > 0)
+        while (strlen (solid->additional_proprietary_data->line) > 0)
         {
-                fprintf (fp->fp, "  3\n%s\n", solid->additional_proprietary_data->data_line);
+                fprintf (fp->fp, "  3\n%s\n", solid->additional_proprietary_data->line);
                 i++;
         }
         if (fp->acad_version_number >= AutoCAD_2008)
