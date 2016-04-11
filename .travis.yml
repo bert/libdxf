@@ -28,6 +28,7 @@ branches:
   only:
     - master
     - devel
+    - tests
 
 notifications:
   recipients:
