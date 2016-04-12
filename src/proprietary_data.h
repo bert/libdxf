@@ -106,6 +106,12 @@ dxf_proprietary_data_get_length
         DxfProprietaryData *data
 );
 DxfProprietaryData *
+dxf_proprietary_data_set_length
+(
+        DxfProprietaryData *data,
+        int length
+);
+DxfProprietaryData *
 dxf_proprietary_data_get_next
 (
         DxfProprietaryData *data
