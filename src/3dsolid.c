@@ -222,10 +222,10 @@ dxf_3dsolid_read
                          * data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", solid->proprietary_data->line);
-                        dxf_proprietary_data_init ((DxfProprietaryData *) solid->proprietary_data->next);
-                        solid->proprietary_data = (DxfProprietaryData *) solid->proprietary_data->next;
                         solid->proprietary_data->order = i;
                         i++;
+                        dxf_proprietary_data_init ((DxfProprietaryData *) solid->proprietary_data->next);
+                        solid->proprietary_data = (DxfProprietaryData *) solid->proprietary_data->next;
                 }
                 else if (strcmp (temp_string, "  3") == 0)
                 {
@@ -233,10 +233,10 @@ dxf_3dsolid_read
                          * proprietary data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", solid->additional_proprietary_data->line);
-                        dxf_proprietary_data_init ((DxfProprietaryData *) solid->additional_proprietary_data->next);
-                        solid->additional_proprietary_data = (DxfProprietaryData *) solid->additional_proprietary_data->next;
                         solid->additional_proprietary_data->order = i;
                         i++;
+                        dxf_proprietary_data_init ((DxfProprietaryData *) solid->additional_proprietary_data->next);
+                        solid->additional_proprietary_data = (DxfProprietaryData *) solid->additional_proprietary_data->next;
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
