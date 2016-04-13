@@ -386,7 +386,7 @@ dxf_helix_read
                 else if (strcmp (temp_string, "160") == 0)
                 {
                         /* Now follows a string containing the
-                         * paperspace value. */
+                         * graphics data size value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &helix->graphics_data_size);
                 }
