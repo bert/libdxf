@@ -122,8 +122,17 @@ dxf_3dface_init
         face->color = DXF_COLOR_BYLAYER;
         face->paperspace = DXF_MODELSPACE;
         face->flag = 0;
+        face->graphics_data_size = 0;
+        face->shadow_mode = 0;
+        face->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (face->binary_graphics_data);
         face->dictionary_owner_soft = strdup ("");
+        face->material = strdup ("");
         face->dictionary_owner_hard = strdup ("");
+        face->lineweight = 0;
+        face->plot_style_name = strdup ("");
+        face->color_value = 0;
+        face->color_name = strdup ("");
+        face->transparency = 0;
         face->next = NULL;
 #ifdef DEBUG
         DXF_DEBUG_END
