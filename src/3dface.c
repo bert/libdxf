@@ -684,9 +684,14 @@ dxf_3dface_free
         free (face->linetype);
         free (face->layer);
         free (face->dictionary_owner_soft);
+        free (face->material);
         free (face->dictionary_owner_hard);
+        free (face->plot_style_name);
+        free (face->color_name);
         dxf_point_free (face->p0);
         dxf_point_free (face->p1);
+        dxf_point_free (face->p2);
+        dxf_point_free (face->p3);
         free (face);
         face = NULL;
 #ifdef DEBUG
