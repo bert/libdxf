@@ -507,10 +507,15 @@ dxf_3dface_write
         {
                 fprintf (fp->fp, "  6\n%s\n", face->linetype);
         }
+        if (strcmp (face->material, "") != 0)
+        {
+                fprintf (fp->fp, "347\n%s\n", face->material);
+        }
         if (face->color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp->fp, " 62\n%d\n", face->color);
         }
+        fprintf (fp->fp, "370\n%d\n", face->lineweight);
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
           && (face->elevation != 0.0))
@@ -530,6 +535,21 @@ dxf_3dface_write
         {
                 fprintf (fp->fp, " 60\n%d\n", face->visibility);
         }
+#ifdef BUILD_64
+        fprintf (fp->fp, "160\n%d\n", face->graphics_data_size);
+#else
+        fprintf (fp->fp, " 92\n%d\n", face->graphics_data_size);
+#endif
+        while (face->binary_graphics_data != NULL)
+        {
+                fprintf (fp->fp, "310\n%s\n", face->binary_graphics_data->data_line);
+                face->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (face->binary_graphics_data);
+        }
+        fprintf (fp->fp, "420\n%ld\n", face->color_value);
+        fprintf (fp->fp, "430\n%s\n", face->color_name);
+        fprintf (fp->fp, "440\n%ld\n", face->transparency);
+        fprintf (fp->fp, "390\n%s\n", face->plot_style_name);
+        fprintf (fp->fp, "284\n%d\n", face->shadow_mode);
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbFace\n");
