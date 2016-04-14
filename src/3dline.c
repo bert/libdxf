@@ -128,8 +128,17 @@ dxf_3dline_init
         line->visibility = DXF_DEFAULT_VISIBILITY;
         line->color = DXF_COLOR_BYLAYER;
         line->paperspace = DXF_MODELSPACE;
+        line->graphics_data_size = 0;
+        line->shadow_mode = 0;
+        line->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (line->binary_graphics_data);
         line->dictionary_owner_soft = strdup ("");
+        line->material = strdup ("");
         line->dictionary_owner_hard = strdup ("");
+        line->lineweight = 0;
+        line->plot_style_name = strdup ("");
+        line->color_value = 0;
+        line->color_name = strdup ("");
+        line->transparency = 0;
         line->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
