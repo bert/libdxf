@@ -580,7 +580,10 @@ dxf_3dsolid_write
         {
                 fprintf (fp->fp, " 62\n%d\n", solid->color);
         }
-        fprintf (fp->fp, "370\n%d\n", solid->lineweight);
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", solid->lineweight);
+        }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
           && (solid->elevation != 0.0))
@@ -599,15 +602,18 @@ dxf_3dsolid_write
         {
                 fprintf (fp->fp, " 60\n%d\n", solid->visibility);
         }
-#ifdef BUILD_64
-        fprintf (fp->fp, "160\n%d\n", solid->graphics_data_size);
-#else
-        fprintf (fp->fp, " 92\n%d\n", solid->graphics_data_size);
-#endif
-        while (solid->binary_graphics_data != NULL)
+        if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, "310\n%s\n", solid->binary_graphics_data->data_line);
-                solid->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (solid->binary_graphics_data);
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", solid->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", solid->graphics_data_size);
+#endif
+                while (solid->binary_graphics_data != NULL)
+                {
+                        fprintf (fp->fp, "310\n%s\n", solid->binary_graphics_data->data_line);
+                        solid->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (solid->binary_graphics_data);
+                }
         }
         fprintf (fp->fp, "420\n%ld\n", solid->color_value);
         fprintf (fp->fp, "430\n%s\n", solid->color_name);
