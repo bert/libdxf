@@ -313,7 +313,7 @@ dxf_3dsolid_read
                 else if (strcmp (temp_string, "92") == 0)
                 {
                         /* Now follows a string containing the
-                         * paperspace value. */
+                         * graphics data size value. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &solid->graphics_data_size);
                 }
