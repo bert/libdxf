@@ -615,9 +615,12 @@ dxf_3dsolid_write
                         solid->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (solid->binary_graphics_data);
                 }
         }
-        fprintf (fp->fp, "420\n%ld\n", solid->color_value);
-        fprintf (fp->fp, "430\n%s\n", solid->color_name);
-        fprintf (fp->fp, "440\n%ld\n", solid->transparency);
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", solid->color_value);
+                fprintf (fp->fp, "430\n%s\n", solid->color_name);
+                fprintf (fp->fp, "440\n%ld\n", solid->transparency);
+        }
         fprintf (fp->fp, "390\n%s\n", solid->plot_style_name);
         fprintf (fp->fp, "284\n%d\n", solid->shadow_mode);
         if (fp->acad_version_number >= AutoCAD_13)
