@@ -587,7 +587,8 @@ dxf_3dface_write
         {
                 fprintf (fp->fp, "  6\n%s\n", face->linetype);
         }
-        if (strcmp (face->material, "") != 0)
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (face->material, "") != 0))
         {
                 fprintf (fp->fp, "347\n%s\n", face->material);
         }
