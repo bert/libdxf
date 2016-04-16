@@ -572,7 +572,8 @@ dxf_3dsolid_write
         {
                 fprintf (fp->fp, "  6\n%s\n", solid->linetype);
         }
-        if (strcmp (solid->material, "") != 0)
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (solid->material, "") != 0))
         {
                 fprintf (fp->fp, "347\n%s\n", solid->material);
         }
