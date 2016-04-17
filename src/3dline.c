@@ -624,6 +624,11 @@ dxf_3dline_write
                 fprintf (fp->fp, "430\n%s\n", line->color_name);
                 fprintf (fp->fp, "440\n%ld\n", line->transparency);
         }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", line->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", line->shadow_mode);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbLine\n");
