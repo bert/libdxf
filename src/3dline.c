@@ -613,6 +613,12 @@ dxf_3dline_write
                         line->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (line->binary_graphics_data);
                 }
         }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", line->color_value);
+                fprintf (fp->fp, "430\n%s\n", line->color_name);
+                fprintf (fp->fp, "440\n%ld\n", line->transparency);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbLine\n");
