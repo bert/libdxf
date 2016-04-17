@@ -582,6 +582,11 @@ dxf_3dline_write
         {
                 fprintf (fp->fp, " 38\n%f\n", line->elevation);
         }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (line->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", line->material);
+        }
         if (line->color != DXF_COLOR_BYLAYER)
         {
                 fprintf (fp->fp, " 62\n%d\n", line->color);
