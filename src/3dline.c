@@ -586,6 +586,10 @@ dxf_3dline_write
         {
                 fprintf (fp->fp, " 62\n%d\n", line->color);
         }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", line->lineweight);
+        }
         if ((line->linetype_scale != 1.0)
           && (fp->acad_version_number >= AutoCAD_13))
         {
