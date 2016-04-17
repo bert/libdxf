@@ -596,6 +596,19 @@ dxf_3dline_write
         {
                 fprintf (fp->fp, " 60\n%d\n", line->visibility);
         }
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", line->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", line->graphics_data_size);
+#endif
+                while (line->binary_graphics_data != NULL)
+                {
+                        fprintf (fp->fp, "310\n%s\n", line->binary_graphics_data->data_line);
+                        line->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (line->binary_graphics_data);
+                }
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbLine\n");
