@@ -638,8 +638,11 @@ dxf_3dface_write
                 fprintf (fp->fp, "430\n%s\n", face->color_name);
                 fprintf (fp->fp, "440\n%ld\n", face->transparency);
         }
-        fprintf (fp->fp, "390\n%s\n", face->plot_style_name);
-        fprintf (fp->fp, "284\n%d\n", face->shadow_mode);
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", face->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", face->shadow_mode);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbFace\n");
