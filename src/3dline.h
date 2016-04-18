@@ -409,6 +409,11 @@ dxf_3dline_set_plot_style_name
         Dxf3dline *line,
         char *plot_style_name
 );
+long
+dxf_3dline_get_color_value
+(
+        Dxf3dline *line
+);
 DxfPoint *
 dxf_3dline_get_p0
 (
