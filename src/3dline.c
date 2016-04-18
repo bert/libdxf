@@ -1953,6 +1953,37 @@ dxf_3dline_set_dictionary_owner_hard
 
 
 /*!
+ * \brief Get the \c lineweight from a DXF \c 3DLINE entity.
+ *
+ * \return \c lineweight when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int16_t
+dxf_3dline_get_lineweight
+(
+        Dxf3dline *line
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line->lineweight);
+}
+
+
+/*!
  * \brief Get the start point \c p0 of a DXF \c 3DLINE entity.
  *
  * \return the start point \c p0.
