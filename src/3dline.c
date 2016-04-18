@@ -2018,6 +2018,44 @@ dxf_3dline_set_lineweight
 
 
 /*!
+ * \brief Get the \c plot_style_name from a DXF \c 3DLINE entity.
+ *
+ * \return \c plot_style_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_3dline_get_plot_style_name
+(
+        Dxf3dline *line
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->plot_style_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (line->plot_style_name));
+}
+
+
+/*!
  * \brief Get the start point \c p0 of a DXF \c 3DLINE entity.
  *
  * \return the start point \c p0.
