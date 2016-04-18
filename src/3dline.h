@@ -403,6 +403,12 @@ dxf_3dline_get_plot_style_name
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_plot_style_name
+(
+        Dxf3dline *line,
+        char *plot_style_name
+);
 DxfPoint *
 dxf_3dline_get_p0
 (
