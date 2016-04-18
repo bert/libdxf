@@ -392,6 +392,12 @@ dxf_3dline_get_lineweight
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_lineweight
+(
+        Dxf3dline *line,
+        int16_t lineweight
+);
 DxfPoint *
 dxf_3dline_get_p0
 (
