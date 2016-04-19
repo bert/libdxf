@@ -89,7 +89,7 @@ dxf_3dline_struct
                 /*!< Object visibility (optional):
                  * <ol>
                  * <li value = "0"> Visible.</li>
-                 * <li value = "1"> Invisible.<.li>
+                 * <li value = "1"> Invisible.</li>
                  * </ol>
                  * Group code = 60.\n
                  * \since Introduced in version R13. */
