@@ -438,6 +438,12 @@ dxf_3dline_get_color_name
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_color_name
+(
+        Dxf3dline *line,
+        char *color_name
+);
 DxfPoint *
 dxf_3dline_get_p0
 (
