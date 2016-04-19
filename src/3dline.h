@@ -444,6 +444,11 @@ dxf_3dline_set_color_name
         Dxf3dline *line,
         char *color_name
 );
+long
+dxf_3dline_get_transparency
+(
+        Dxf3dline *line
+);
 DxfPoint *
 dxf_3dline_get_p0
 (
