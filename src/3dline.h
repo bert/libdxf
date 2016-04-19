@@ -433,6 +433,11 @@ dxf_3dline_set_color_value
         Dxf3dline *line,
         long color_value
 );
+char *
+dxf_3dline_get_color_name
+(
+        Dxf3dline *line
+);
 DxfPoint *
 dxf_3dline_get_p0
 (
