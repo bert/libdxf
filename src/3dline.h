@@ -449,6 +449,12 @@ dxf_3dline_get_transparency
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_transparency
+(
+        Dxf3dline *line,
+        long transparency
+);
 DxfPoint *
 dxf_3dline_get_p0
 (
