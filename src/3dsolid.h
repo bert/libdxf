@@ -195,7 +195,8 @@ dxf_3dsolid
                  * Group code = 70. */
         char *history;
                 /*!< Soft-owner ID / handle to history object.\n
-                 * Group code = 350. */
+                 * Group code = 350.\n
+                 * \since Introduced in R2008. */
         struct Dxf3dsolid *next;
                 /*!< Pointer to the next Dxf3dsolid.\n
                  * \c NULL in the last Dxf3dsolid. */
