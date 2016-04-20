@@ -100,7 +100,8 @@ dxf_3dface_struct
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
-                 * Group code = 67. */
+                 * Group code = 67.\n
+                 * \since Introduced in version R13. */
         int graphics_data_size;
                 /*!< Number of bytes in the proxy entity graphics
                  * represented in the sub-sequent 310 groups, which are
