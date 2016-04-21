@@ -112,8 +112,7 @@ dxf_3dsolid
                  * \since Introduced in version R2000.\n
                  * \warning On some 64 bit workstations output is
                  * generated with group code "160", thus omitting group
-                 * code "92".
-                 */
+                 * code "92". */
         int16_t shadow_mode;
                 /*!< Shadow mode:\n
                  * <ol>
