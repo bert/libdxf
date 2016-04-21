@@ -1,14 +1,22 @@
 /*!
  * \file acad_proxy_entity.h
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF acad_proxy_entity entity
  * (\c ACAD_PROXY_ENTITY).
  *
- * \version The \c ACAD_ZOMBIE_ENTITY entity was introduced in DXF R13.
- * \version The \c ACAD_ZOMBIE_ENTITY entity was renamed to 
+ * \since The \c ACAD_ZOMBIE_ENTITY entity was introduced in DXF R13.
+ *
+ * \note The \c ACAD_ZOMBIE_ENTITY entity was renamed to 
  * \c ACAD_PROXY_ENTITY in DXF R14.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ * \version According to DXF R2000.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -47,13 +55,6 @@
 /*!
  * \brief DXF definition of an AutoCAD acad_proxy_entity entity
  * (\c ACAD_PROXY_ENTITY).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 typedef struct
 dxf_acad_proxy_entity
@@ -74,14 +75,16 @@ dxf_acad_proxy_entity
                  * Group code = 8. */
         double linetype_scale;
                 /*!< Linetype scale (optional).\n
-                 * Group code = 48. */
+                 * Group code = 48.\n
+                 * \since Introduced in version R13. */
         int visibility;
                 /*!< Object visibility (optional):\n
                  * <ol>
                  * <li value = "0"> Visible</li>
                  * <li value = "1"> Invisible</li>
                  * </ol>
-                 * Group code = 60. */
+                 * Group code = 60.\n
+                 * \since Introduced in version R13. */
         int color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
@@ -93,13 +96,16 @@ dxf_acad_proxy_entity
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
-                 * Group code = 67. */
+                 * Group code = 67.\n
+                 * \since Introduced in version R13. */
         char *dictionary_owner_soft;
                 /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
-                 * Group code = 330. */
+                 * Group code = 330.\n
+                 * \since Introduced in version R14. */
         char *dictionary_owner_hard;
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
-                 * Group code = 360. */
+                 * Group code = 360.\n
+                 * \since Introduced in version R14. */
         /* Specific members for a DXF acad_proxy_entity. */
         int original_custom_object_data_format;
                 /*!< Original custom object data format:\n
