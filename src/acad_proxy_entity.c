@@ -1,7 +1,7 @@
 /*!
  * \file acad_proxy_entity.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF acad_proxy_entity entity
  * (\c ACAD_PROXY_ENTITY).
@@ -146,9 +146,9 @@ dxf_acad_proxy_entity_init
         acad_proxy_entity->application_entity_class_id = 0;
         acad_proxy_entity->graphics_data_size = 0;
         acad_proxy_entity->object_drawing_format = 0;
+        acad_proxy_entity->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (acad_proxy_entity->binary_graphics_data);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                acad_proxy_entity->binary_graphics_data[i] = strdup ("");
                 acad_proxy_entity->object_id[i] = strdup ("");
         }
         acad_proxy_entity->next = NULL;
@@ -359,8 +359,9 @@ dxf_acad_proxy_entity_read
                         /* Now follows a string containing binary
                          * graphics data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", acad_proxy_entity->binary_graphics_data[i]);
-                        i++;
+                        fscanf (fp->fp, "%s\n", acad_proxy_entity->binary_graphics_data->data_line);
+                        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) acad_proxy_entity->binary_graphics_data->next);
+                        acad_proxy_entity->binary_graphics_data = (DxfBinaryGraphicsData *) acad_proxy_entity->binary_graphics_data->next;
                 }
                 else if ((strcmp (temp_string, "330") == 0)
                   || (strcmp (temp_string, "340") == 0)
@@ -519,19 +520,20 @@ dxf_acad_proxy_entity_write
         }
         fprintf (fp->fp, " 90\n%d\n", acad_proxy_entity->proxy_entity_class_id);
         fprintf (fp->fp, " 91\n%d\n", acad_proxy_entity->application_entity_class_id);
-        fprintf (fp->fp, " 92\n%d\n", acad_proxy_entity->graphics_data_size);
-        i = 0;
-        while (strlen (acad_proxy_entity->binary_graphics_data[i]) > 0)
+        if (fp->acad_version_number >= AutoCAD_14)
         {
-                fprintf (fp->fp, "310\n%s\n", acad_proxy_entity->binary_graphics_data[i]);
-                i++;
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", acad_proxy_entity->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", acad_proxy_entity->graphics_data_size);
+#endif
+                while (acad_proxy_entity->binary_graphics_data != NULL)
+                {
+                        fprintf (fp->fp, "310\n%s\n", acad_proxy_entity->binary_graphics_data->data_line);
+                        acad_proxy_entity->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (acad_proxy_entity->binary_graphics_data);
+                }
         }
         fprintf (fp->fp, " 93\n%d\n", acad_proxy_entity->entity_data_size);
-        while (strlen (acad_proxy_entity->binary_graphics_data[i]) > 0)
-        {
-                fprintf (fp->fp, "310\n%s\n", acad_proxy_entity->binary_graphics_data[i]);
-                i++;
-        }
         i = 0;
         while (strlen (acad_proxy_entity->object_id[i]) > 0)
         {
@@ -594,9 +596,9 @@ dxf_acad_proxy_entity_free
         free (acad_proxy_entity->layer);
         free (acad_proxy_entity->dictionary_owner_soft);
         free (acad_proxy_entity->dictionary_owner_hard);
+        dxf_binary_graphics_data_free_chain (acad_proxy_entity->binary_graphics_data);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                free (acad_proxy_entity->binary_graphics_data[i]);
                 free (acad_proxy_entity->object_id[i]);
         }
         free (acad_proxy_entity);

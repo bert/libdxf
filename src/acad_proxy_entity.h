@@ -50,6 +50,7 @@
 
 
 #include "global.h"
+#include "binary_graphics_data.h"
 
 
 /*!
@@ -57,7 +58,7 @@
  * (\c ACAD_PROXY_ENTITY).
  */
 typedef struct
-dxf_acad_proxy_entity
+dxf_acad_proxy_entity_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
@@ -102,10 +103,52 @@ dxf_acad_proxy_entity
                 /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
                  * Group code = 330.\n
                  * \since Introduced in version R14. */
+        char *material;
+                /*!< Hard-pointer ID/handle to material object (present if
+                 * not BYLAYER).\n
+                 * Group code = 347.\n
+                 * \since Introduced in version R2008. */
         char *dictionary_owner_hard;
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360.\n
                  * \since Introduced in version R14. */
+        int16_t lineweight;
+                /*!< Lineweight enum value.\n
+                 * Stored and moved around as a 16-bit integer.\n
+                 * Group code = 370.\n
+                 * \since Introduced in version R2002. */
+        char *plot_style_name;
+                /*!< Hard pointer ID / handle of PlotStyleName object.\n
+                 * Group code = 390.\n
+                 * \since Introduced in version R2009. */
+        long color_value;
+                /*!< A 24-bit color value that should be dealt with in
+                 * terms of bytes with values of 0 to 255.\n
+                 * The lowest byte is the blue value, the middle byte is
+                 * the green value, and the third byte is the red value.\n
+                 * The top byte is always 0.\n
+                 * The group code cannot be used by custom entities for
+                 * their own data because the group code is reserved for
+                 * AcDbEntity, class-level color data and AcDbEntity,
+                 * class-level transparency data.\n
+                 * Group code = 420.\n
+                 * \since Introduced in version R2004. */
+        char *color_name;
+                /*!< Color name.\n
+                 * The group code cannot be used by custom entities for
+                 * their own data because the group code is reserved for
+                 * AcDbEntity, class-level color data and AcDbEntity,
+                 * class-level transparency data.\n
+                 * Group code = 430.\n
+                 * \since Introduced in version R2004. */
+        long transparency;
+                /*!< Transparency value.\n
+                 * The group code cannot be used by custom entities for
+                 * their own data because the group code is reserved for
+                 * AcDbEntity, class-level color data and AcDbEntity,
+                 * class-level transparency data.\n
+                 * Group code = 440.\n
+                 * \since Introduced in version R2004. */
         /* Specific members for a DXF acad_proxy_entity. */
         int original_custom_object_data_format;
                 /*!< Original custom object data format:\n
@@ -113,8 +156,8 @@ dxf_acad_proxy_entity
                  * <li value = "0"> DWG format</li>
                  * <li value = "1"> DXF format</li>
                  * </ol>
-                 * Added in AutoCAD release 2000.\n
-                 * Group code = 70. */
+                 * Group code = 70.\n
+                 * \since Introduced in version R2000. */
         int proxy_entity_class_id;
                 /*!< Always 498.\n
                  * Group code = 90. */
@@ -126,7 +169,11 @@ dxf_acad_proxy_entity
                  * Group code = 91. */
         int graphics_data_size;
                 /*!< Size of graphics data in bytes.\n
-                 * Group code = 92. */
+                 * Group code = 92.\n
+                 * \since Introduced in version R14.\n
+                 * \warning On some 64 bit workstations output is
+                 * generated with group code "160", thus omitting group
+                 * code "92". */
         int entity_data_size;
                 /*!< Size of entity data in bits.\n
                  * Group code = 93. */
@@ -137,10 +184,18 @@ dxf_acad_proxy_entity
                  * High word is MaintenanceReleaseVersion.
                  * Added in AutoCAD release 2000.\n
                  * Group code = 95. */
-        char *binary_graphics_data[DXF_MAX_PARAM];
-                /*!< Binary graphics data (multiple entries can appear)
+        DxfBinaryGraphicsData *binary_graphics_data;
+                /*!< Proxy entity graphics data.\n
+                 * Multiple lines of 256 characters maximum per line
                  * (optional).\n
-                 * Group code = 310. */
+                 * Group code = 310.\n
+                 * \since Introduced in version R14. */
+/*        DxfBinaryEntityData *binary_entity_data;
+                /*!< Binary entity data.\n
+                 * Multiple lines of 256 characters maximum per line
+                 * (optional).\n
+                 * Group code = 310.\n
+                 * \since Introduced in version R14. */
         char *object_id[DXF_MAX_PARAM];
                 /*!< An object ID (multiple entries can appear).\n
                  * Group code = 330 or 340 or 350 or 360. */
