@@ -17,6 +17,13 @@
  * When writing DXF data to file with versions before DXF R13 a warning
  * message is given.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ * \version According to DXF R2000.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -54,13 +61,6 @@
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_new ()
@@ -98,13 +98,6 @@ dxf_acad_proxy_entity_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_init
@@ -170,13 +163,6 @@ dxf_acad_proxy_entity_init
  * While parsing the DXF file store data in \c dxf_acad_proxy_entity. \n
  *
  * \return a pointer to \c acad_proxy_entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_read
@@ -401,13 +387,6 @@ dxf_acad_proxy_entity_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 int
 dxf_acad_proxy_entity_write
@@ -564,13 +543,6 @@ dxf_acad_proxy_entity_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 int
 dxf_acad_proxy_entity_free
@@ -613,13 +585,6 @@ dxf_acad_proxy_entity_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c ACAD_PROXY_ENTITY
  * entities and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 void
 dxf_acad_proxy_entity_free_chain
@@ -653,12 +618,6 @@ dxf_acad_proxy_entity_free_chain
  * \brief Get the ID code from a DXF \c ACAD_PROXY_ENTITY entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_acad_proxy_entity_get_id_code
@@ -697,12 +656,6 @@ dxf_acad_proxy_entity_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_id_code
@@ -745,12 +698,6 @@ dxf_acad_proxy_entity_set_id_code
  * \brief Get the linetype from a DXF \c ACAD_PROXY_ENTITY entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_acad_proxy_entity_get_linetype
@@ -789,12 +736,6 @@ dxf_acad_proxy_entity_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_linetype
@@ -835,12 +776,6 @@ dxf_acad_proxy_entity_set_linetype
  * \brief Get the layer from a DXF \c ACAD_PROXY_ENTITY entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_acad_proxy_entity_get_layer
@@ -879,12 +814,6 @@ dxf_acad_proxy_entity_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_layer
@@ -925,12 +854,6 @@ dxf_acad_proxy_entity_set_layer
  * \brief Get the linetype scale from a DXF \c ACAD_PROXY_ENTITY entity.
  *
  * \return linetype scale.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_acad_proxy_entity_get_linetype_scale
@@ -969,12 +892,6 @@ dxf_acad_proxy_entity_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_linetype_scale
@@ -1015,12 +932,6 @@ dxf_acad_proxy_entity_set_linetype_scale
  * \brief Get the object visibility from a DXF \c ACAD_PROXY_ENTITY entity.
  *
  * \return object visibility.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int16_t
 dxf_acad_proxy_entity_get_visibility
@@ -1066,12 +977,6 @@ dxf_acad_proxy_entity_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_visibility
@@ -1119,12 +1024,6 @@ dxf_acad_proxy_entity_set_visibility
  * \brief Get the color from a DXF \c ACAD_PROXY_ENTITY entity.
  *
  * \return color.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_acad_proxy_entity_get_color
@@ -1162,12 +1061,6 @@ dxf_acad_proxy_entity_get_color
 
 /*!
  * \brief Set the color for a DXF \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_color
@@ -1210,12 +1103,6 @@ dxf_acad_proxy_entity_set_color
  * entity.
  *
  * \return paperspace flag value.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_acad_proxy_entity_get_paperspace
@@ -1259,12 +1146,6 @@ dxf_acad_proxy_entity_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_paperspace
@@ -1315,12 +1196,6 @@ dxf_acad_proxy_entity_set_paperspace
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_acad_proxy_entity_get_dictionary_owner_soft
@@ -1360,12 +1235,6 @@ dxf_acad_proxy_entity_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_dictionary_owner_soft
@@ -1410,12 +1279,6 @@ dxf_acad_proxy_entity_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_acad_proxy_entity_get_dictionary_owner_hard
@@ -1455,12 +1318,6 @@ dxf_acad_proxy_entity_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_dictionary_owner_hard
@@ -1503,12 +1360,6 @@ dxf_acad_proxy_entity_set_dictionary_owner_hard
  * \c ACAD_PROXY_ENTITY entity.
  *
  * \return original custom object data format value.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_acad_proxy_entity_get_original_custom_object_data_format
@@ -1553,12 +1404,6 @@ dxf_acad_proxy_entity_get_original_custom_object_data_format
 /*!
  * \brief Set the original custom object data format value for a DXF
  * \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_original_custom_object_data_format
@@ -1607,12 +1452,6 @@ dxf_acad_proxy_entity_set_original_custom_object_data_format
  * \c ACAD_PROXY_ENTITY entity.
  *
  * \return proxy entity class id value.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_acad_proxy_entity_get_proxy_entity_class_id
@@ -1651,12 +1490,6 @@ dxf_acad_proxy_entity_get_proxy_entity_class_id
 /*!
  * \brief Set the proxy entity class id value for a DXF
  * \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_proxy_entity_class_id
@@ -1699,12 +1532,6 @@ dxf_acad_proxy_entity_set_proxy_entity_class_id
  * \c ACAD_PROXY_ENTITY entity.
  *
  * \return application entity class id value.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_acad_proxy_entity_get_application_entity_class_id
@@ -1743,12 +1570,6 @@ dxf_acad_proxy_entity_get_application_entity_class_id
 /*!
  * \brief Set the application entity class id value for a DXF
  * \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_application_entity_class_id
@@ -1791,12 +1612,6 @@ dxf_acad_proxy_entity_set_application_entity_class_id
  * \c ACAD_PROXY_ENTITY entity.
  *
  * \return graphics data size value.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_acad_proxy_entity_get_graphics_data_size
@@ -1836,12 +1651,6 @@ dxf_acad_proxy_entity_get_graphics_data_size
 /*!
  * \brief Set the graphics data size value for a DXF
  * \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_graphics_data_size
@@ -1884,12 +1693,6 @@ dxf_acad_proxy_entity_set_graphics_data_size
  * \c ACAD_PROXY_ENTITY entity.
  *
  * \return entity data size value.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_acad_proxy_entity_get_entity_data_size
@@ -1929,12 +1732,6 @@ dxf_acad_proxy_entity_get_entity_data_size
 /*!
  * \brief Set the entity data size value for a DXF
  * \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_entity_data_size
@@ -1977,13 +1774,6 @@ dxf_acad_proxy_entity_set_entity_data_size
  * \c ACAD_PROXY_ENTITY entity.
  *
  * \return object drawing format value.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14 (backward compatibility).
- * \version According to DXF R2000.
  */
 ulong
 dxf_acad_proxy_entity_get_object_drawing_format
@@ -2027,12 +1817,6 @@ dxf_acad_proxy_entity_get_object_drawing_format
  * \return pointer to the next \c ACAD_PROXY_ENTITY entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_get_next
@@ -2072,12 +1856,6 @@ dxf_acad_proxy_entity_get_next
 /*!
  * \brief Set the pointer to the next \c ACAD_PROXY_ENTITY for a DXF
  * \c ACAD_PROXY_ENTITY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_next
