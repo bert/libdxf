@@ -339,6 +339,47 @@ dxf_binary_graphics_data_get_length
 
 
 /*!
+ * \brief Set the \c length for a binary graphics data entity.
+ *
+ * \return a pointer to \c data when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfBinaryGraphicsData *
+dxf_binary_graphics_data_set_length
+(
+        DxfBinaryGraphicsData *data,
+                /*!< a pointer to a binary graphics data entity. */
+        int length
+                /*!< Length to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (length < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative length value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->length = length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
+/*!
  * \brief Get the pointer to the next binary graphics data entity from a
  * binary graphics data entity.
  *

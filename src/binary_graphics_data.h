@@ -98,6 +98,12 @@ dxf_binary_graphics_data_get_length
         DxfBinaryGraphicsData *data
 );
 DxfBinaryGraphicsData *
+dxf_binary_graphics_data_set_length
+(
+        DxfBinaryGraphicsData *data,
+        int length
+);
+DxfBinaryGraphicsData *
 dxf_binary_graphics_data_get_next
 (
         DxfBinaryGraphicsData *data
