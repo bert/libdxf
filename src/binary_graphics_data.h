@@ -40,16 +40,18 @@
 
 
 /*!
- * \brief DXF definition of an AutoCAD binary graphics data.
+ * \brief DXF definition of an AutoCAD binary graphics data object.
  */
 typedef struct
 dxf_binary_graphics_data_struct
 {
         char *data_line;
-                /*!< Proxy entity graphics data.\n
+                /*!< Binary graphics data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
                  * Group code = 310. */
+        int length;
+                /*!< Length of the data_line member. */
         struct DxfBinaryGraphicsData *next;
                 /*!< Pointer to the next DxfBinaryGraphicsData.\n
                  * \c NULL if the last DxfBinaryGraphicsData. */
