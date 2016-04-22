@@ -92,6 +92,11 @@ dxf_binary_graphics_data_set_data_line
         DxfBinaryGraphicsData *data,
         char *data_line
 );
+int
+dxf_binary_graphics_data_get_length
+(
+        DxfBinaryGraphicsData *data
+);
 DxfBinaryGraphicsData *
 dxf_binary_graphics_data_get_next
 (

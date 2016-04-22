@@ -302,6 +302,43 @@ dxf_binary_graphics_data_set_data_line
 
 
 /*!
+ * \brief Get the \c length from a binary graphics data entity.
+ *
+ * \return \c length.
+ */
+int
+dxf_binary_graphics_data_get_length
+(
+        DxfBinaryGraphicsData *data
+                /*!< a pointer to a binary graphics data entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (data->length < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the length member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data->length);
+}
+
+
+/*!
  * \brief Get the pointer to the next binary graphics data entity from a
  * binary graphics data entity.
  *
