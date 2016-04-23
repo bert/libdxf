@@ -45,6 +45,9 @@
  * \brief Allocate memory for a DXF \c 3DFACE entity.
  *
  * Fill the memory contents with zeros.
+ *
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
  */
 Dxf3dface *
 dxf_3dface_new ()
@@ -80,8 +83,8 @@ dxf_3dface_new ()
  * \brief Allocate memory and initialize data fields in a DXF \c 3DFACE
  * entity.
  *
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ * \return \c NULL when an error occurred, a pointer to the initialized
+ * memory when succesful.
  */
 Dxf3dface *
 dxf_3dface_init
@@ -149,7 +152,8 @@ dxf_3dface_init
  * string announcing the following entity, or the end of the \c ENTITY
  * section marker \c ENDSEC. \n
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to a DXF \c 3DFACE entity, or \c NULL when an error
+ * occurred.
  */
 Dxf3dface *
 dxf_3dface_read
