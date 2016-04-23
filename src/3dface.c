@@ -691,6 +691,13 @@ dxf_3dface_free
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (face->next != NULL)
         {
               fprintf (stderr,
