@@ -759,9 +759,9 @@ dxf_3dface_free_chain
 
 
 /*!
- * \brief Get the ID code from a DXF \c 3DFACE entity.
+ * \brief Get the \c id_code from a DXF \c 3DFACE entity.
  *
- * \return ID code.
+ * \return \c id_code.
  */
 int
 dxf_3dface_get_id_code
@@ -784,9 +784,8 @@ dxf_3dface_get_id_code
         if (face->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  (_("Warning in %s () a negative value was found in the id-code member.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -796,7 +795,10 @@ dxf_3dface_get_id_code
 
 
 /*!
- * \brief Set the ID code for a DXF \c 3DFACE entity.
+ * \brief Set the \c id_code for a DXF \c 3DFACE entity.
+ *
+ * \return a pointer to \c face when sucessful, \c NULL when an error
+ * occurred.
  */
 Dxf3dface *
 dxf_3dface_set_id_code
@@ -823,9 +825,8 @@ dxf_3dface_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative id-code value was passed.\n")),
+                  (_("Warning in %s () a negative id-code value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         face->id_code = id_code;
 #if DEBUG
@@ -838,7 +839,8 @@ dxf_3dface_set_id_code
 /*!
  * \brief Get the linetype from a DXF \c 3DFACE entity.
  *
- * \return linetype when sucessful, \c NULL when an error occurred.
+ * \return a pointer to \c linetype when sucessful, \c NULL when an
+ * error occurred.
  */
 char *
 dxf_3dface_get_linetype
@@ -873,7 +875,13 @@ dxf_3dface_get_linetype
 
 
 /*!
- * \brief Set the linetype for a DXF \c 3DFACE entity.
+ * \brief Set the \c linetype for a DXF \c 3DFACE entity.
+ *
+ * \return a pointer to \c face when sucessful, \c NULL when an error
+ * occurred.
+ *
+ * \warning The passed \c linetype variable is not freed by this
+ * function.
  */
 Dxf3dface *
 dxf_3dface_set_linetype
@@ -881,7 +889,7 @@ dxf_3dface_set_linetype
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         char *linetype
-                /*!< a string containing the linetype for the entity. */
+                /*!< a string containing the \c linetype for the entity. */
 )
 {
 #if DEBUG
@@ -911,9 +919,10 @@ dxf_3dface_set_linetype
 
 
 /*!
- * \brief Get the layer from a DXF \c 3DFACE entity.
+ * \brief Get the \c layer from a DXF \c 3DFACE entity.
  *
- * \return layer when sucessful, \c NULL when an error occurred.
+ * \return a pointer to \c layer when sucessful, \c NULL when an error
+ * occurred.
  */
 char *
 dxf_3dface_get_layer
@@ -948,7 +957,12 @@ dxf_3dface_get_layer
 
 
 /*!
- * \brief Set the layer for a DXF \c 3DFACE entity.
+ * \brief Set the \c layer for a DXF \c 3DFACE entity.
+ *
+ * \return a pointer to \c face when sucessful, \c NULL when an error
+ * occurred.
+ *
+ * \warning The passed \c layer variable is not freed by this function.
  */
 Dxf3dface *
 dxf_3dface_set_layer
@@ -956,7 +970,7 @@ dxf_3dface_set_layer
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         char *layer
-                /*!< a string containing the layer for the entity. */
+                /*!< a string containing the \c layer for the entity. */
 )
 {
 #if DEBUG
@@ -986,9 +1000,9 @@ dxf_3dface_set_layer
 
 
 /*!
- * \brief Get the elevation a this DXF \c 3DFACE entity.
+ * \brief Get the \c elevation a this DXF \c 3DFACE entity.
  *
- * \return elevation.
+ * \return \c elevation.
  */
 double
 dxf_3dface_get_elevation
@@ -1016,7 +1030,10 @@ dxf_3dface_get_elevation
 
 
 /*!
- * \brief Set the elevation for a DXF \c 3DFACE entity.
+ * \brief Set the \c elevation for a DXF \c 3DFACE entity.
+ *
+ * \return a pointer to \c face when sucessful, \c NULL when an error
+ * occurred.
  */
 Dxf3dface *
 dxf_3dface_set_elevation
@@ -1024,7 +1041,7 @@ dxf_3dface_set_elevation
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double elevation
-                /*!< the elevation to be set for the entity. */
+                /*!< the \c elevation to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1047,9 +1064,9 @@ dxf_3dface_set_elevation
 
 
 /*!
- * \brief Get the thickness from a DXF \c 3DFACE entity.
+ * \brief Get the \c thickness from a DXF \c 3DFACE entity.
  *
- * \return thickness.
+ * \return \c thickness.
  */
 double
 dxf_3dface_get_thickness
@@ -1072,9 +1089,8 @@ dxf_3dface_get_thickness
         if (face->thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the thickness member.\n")),
+                  (_("Warning in %s () a negative value was found in the thickness member.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1084,7 +1100,10 @@ dxf_3dface_get_thickness
 
 
 /*!
- * \brief Set the thickness for a DXF \c 3DFACE entity.
+ * \brief Set the \c thickness for a DXF \c 3DFACE entity.
+ *
+ * \return a pointer to \c face when sucessful, \c NULL when an error
+ * occurred.
  */
 Dxf3dface *
 dxf_3dface_set_thickness
@@ -1092,7 +1111,7 @@ dxf_3dface_set_thickness
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double thickness
-                /*!< the thickness to be set for the entity. */
+                /*!< the \c thickness to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1109,9 +1128,8 @@ dxf_3dface_set_thickness
         if (thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative thickness value was passed.\n")),
+                  (_("Warning in %s () a negative thickness value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         face->thickness = thickness;
 #if DEBUG
@@ -1122,9 +1140,9 @@ dxf_3dface_set_thickness
 
 
 /*!
- * \brief Get the linetype scale from a DXF \c 3DFACE entity.
+ * \brief Get the \c linetype_scale from a DXF \c 3DFACE entity.
  *
- * \return linetype scale.
+ * \return \c linetype_scale.
  */
 double
 dxf_3dface_get_linetype_scale
@@ -1147,9 +1165,8 @@ dxf_3dface_get_linetype_scale
         if (face->linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the linetype scale member.\n")),
+                  (_("Warning in %s () a negative value was found in the linetype_scale member.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -1159,7 +1176,10 @@ dxf_3dface_get_linetype_scale
 
 
 /*!
- * \brief Set the linetype scale for a DXF \c 3DFACE entity.
+ * \brief Set the \c linetype_scale for a DXF \c 3DFACE entity.
+ *
+ * \return a pointer to \c face when sucessful, \c NULL when an error
+ * occurred.
  */
 Dxf3dface *
 dxf_3dface_set_linetype_scale
@@ -1167,7 +1187,7 @@ dxf_3dface_set_linetype_scale
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double linetype_scale
-                /*!< the linetype scale to be set for the entity. */
+                /*!< the \c linetype_scale to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1184,9 +1204,8 @@ dxf_3dface_set_linetype_scale
         if (linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative linetype scale value was passed.\n")),
+                  (_("Warning in %s () a negative linetype_scale value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         face->linetype_scale = linetype_scale;
 #if DEBUG
@@ -1197,9 +1216,9 @@ dxf_3dface_set_linetype_scale
 
 
 /*!
- * \brief Get the visibility from a DXF \c 3DFACE entity.
+ * \brief Get the \c visibility from a DXF \c 3DFACE entity.
  *
- * \return visibility.
+ * \return \c visibility.
  */
 int16_t
 dxf_3dface_get_visibility
@@ -1241,7 +1260,10 @@ dxf_3dface_get_visibility
 
 
 /*!
- * \brief Set the visibility for a DXF \c 3DFACE entity.
+ * \brief Set the \c visibility for a DXF \c 3DFACE entity.
+ *
+ * \return a pointer to \c face when sucessful, \c NULL when an error
+ * occurred.
  */
 Dxf3dface *
 dxf_3dface_set_visibility
@@ -1286,9 +1308,9 @@ dxf_3dface_set_visibility
 
 
 /*!
- * \brief Get the color from a DXF \c 3DFACE entity.
+ * \brief Get the \c color from a DXF \c 3DFACE entity.
  *
- * \return color.
+ * \return \c color.
  */
 int
 dxf_3dface_get_color
@@ -1322,7 +1344,10 @@ dxf_3dface_get_color
 
 
 /*!
- * \brief Set the color for a DXF \c 3DFACE entity.
+ * \brief Set the \c color for a DXF \c 3DFACE entity.
+ *
+ * \return a pointer to \c face when sucessful, \c NULL when an error
+ * occurred.
  */
 Dxf3dface *
 dxf_3dface_set_color
@@ -1330,7 +1355,7 @@ dxf_3dface_set_color
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         int color
-                /*!< the color to be set for the entity. */
+                /*!< the \c color to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1361,9 +1386,9 @@ dxf_3dface_set_color
 
 
 /*!
- * \brief Get the paperspace flag value from a DXF \c 3DFACE entity.
+ * \brief Get the \c paperspace flag value from a DXF \c 3DFACE entity.
  *
- * \return paperspace flag value.
+ * \return \c paperspace flag value.
  */
 int
 dxf_3dface_get_paperspace
@@ -1403,7 +1428,10 @@ dxf_3dface_get_paperspace
 
 
 /*!
- * \brief Set the paperspace flag for a DXF \c 3DFACE entity.
+ * \brief Set the \c paperspace flag for a DXF \c 3DFACE entity.
+ *
+ * \return a pointer to \c face when sucessful, \c NULL when an error
+ * occurred.
  */
 Dxf3dface *
 dxf_3dface_set_paperspace
@@ -1411,7 +1439,7 @@ dxf_3dface_set_paperspace
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         int paperspace
-                /*!< the paperspace flag value to be set for the entity. */
+                /*!< the \c paperspace flag value to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1528,9 +1556,8 @@ dxf_3dface_set_graphics_data_size
         if (graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a zero graphics_data_size value was passed.\n")),
+                  (_("Warning in %s () a zero graphics_data_size value was passed.\n")),
                   __FUNCTION__);
-                return (NULL);
         }
         face->graphics_data_size = graphics_data_size;
 #if DEBUG
@@ -1634,10 +1661,10 @@ dxf_3dface_set_shadow_mode
 
 
 /*!
- * \brief Get the pointer to the binary graphics data from a DXF 
+ * \brief Get the pointer to the \c binary_graphics_data from a DXF 
  * \c 3DFACE entity.
  *
- * \return pointer to the binary graphics data.
+ * \return pointer to the \c binary_graphics_data.
  *
  * \warning No checks are performed on the returned pointer.
  */
@@ -1674,7 +1701,7 @@ dxf_3dface_get_binary_graphics_data
 
 
 /*!
- * \brief Set the pointer to the binary_graphics_data for a DXF
+ * \brief Set the pointer to the \c binary_graphics_data for a DXF
  * \c 3DFACE entity.
  */
 Dxf3dface *
@@ -1684,7 +1711,7 @@ dxf_3dface_set_binary_graphics_data
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         DxfBinaryGraphicsData *data
                 /*!< a string containing the pointer to the
-                 * binary_graphics_data for the entity. */
+                 * \c binary_graphics_data for the entity. */
 )
 {
 #if DEBUG
@@ -1714,12 +1741,12 @@ dxf_3dface_set_binary_graphics_data
 
 
 /*!
- * \brief Get the soft pointer to the dictionary owner from a DXF 
- * \c 3DFACE entity.
+ * \brief Get the soft pointer to the \c dictionary_owner_soft from a
+ * DXF \c 3DFACE entity.
  *
- * \return soft pointer to the dictionary owner.
+ * \return a pointer to the \c dictionary_owner_soft.
  *
- * \warning No checks are performed on the returned pointer (string).
+ * \warning No checks are performed on the returned pointer.
  */
 char *
 dxf_3dface_get_dictionary_owner_soft
@@ -1754,7 +1781,7 @@ dxf_3dface_get_dictionary_owner_soft
 
 
 /*!
- * \brief Set the pointer to the dictionary_owner_soft for a DXF
+ * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c 3DFACE entity.
  */
 Dxf3dface *
@@ -1764,7 +1791,7 @@ dxf_3dface_set_dictionary_owner_soft
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         char *dictionary_owner_soft
                 /*!< a string containing the pointer to the
-                 * dictionary_owner_soft for the entity. */
+                 * \c dictionary_owner_soft for the entity. */
 )
 {
 #if DEBUG
@@ -1876,12 +1903,12 @@ dxf_3dface_set_material
 
 
 /*!
- * \brief Get the hard pointer to the dictionary owner from a DXF 
+ * \brief Get the pointer to the \c dictionary_owner_hard from a DXF 
  * \c 3DFACE entity.
  *
- * \return hard pointer to the dictionary owner.
+ * \return a pointer to the \c dictionary_owner_hard.
  *
- * \warning No checks are performed on the returned pointer (string).
+ * \warning No checks are performed on the returned pointer.
  */
 char *
 dxf_3dface_get_dictionary_owner_hard
@@ -1918,6 +1945,9 @@ dxf_3dface_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c 3DFACE entity.
+ *
+ * \return a pointer to \c face when sucessful, \c NULL when an error
+ * occurred.
  */
 Dxf3dface *
 dxf_3dface_set_dictionary_owner_hard
@@ -2023,8 +2053,8 @@ dxf_3dface_set_lineweight
 /*!
  * \brief Get the \c plot_style_name from a DXF \c 3DFACE entity.
  *
- * \return \c plot_style_name when sucessful, or \c NULL when an error
- * occurred.
+ * \return a pointer to \c plot_style_name when sucessful, or \c NULL
+ * when an error occurred.
  */
 char *
 dxf_3dface_get_plot_style_name
@@ -2313,7 +2343,7 @@ dxf_3dface_set_transparency
 /*!
  * \brief Get the base point of a DXF \c 3DFACE entity.
  *
- * \return the base point.
+ * \return the base point \c p0.
  */
 DxfPoint *
 dxf_3dface_get_p0
@@ -2349,9 +2379,10 @@ dxf_3dface_get_p0
 
 
 /*!
- * \brief Set the base point of a DXF \c 3DFACE entity.
+ * \brief Set the base point \c p0 of a DXF \c 3DFACE entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_p0
@@ -2389,9 +2420,10 @@ dxf_3dface_set_p0
 
 
 /*!
- * \brief Get the X-value of the base point of a DXF \c 3DFACE entity.
+ * \brief Get the X-value of the base point \c x0 of a DXF \c 3DFACE
+ * entity.
  *
- * \return the X-value of the base point.
+ * \return the X-value of the base point \c x0.
  */
 double
 dxf_3dface_get_x0
@@ -2427,9 +2459,11 @@ dxf_3dface_get_x0
 
 
 /*!
- * \brief Set the X-value of the base point of a DXF \c 3DFACE entity.
+ * \brief Set the X-value of the base point \c x0 of a DXF \c 3DFACE
+ * entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_x0
@@ -2437,8 +2471,8 @@ dxf_3dface_set_x0
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double x0
-                /*!< the X-value of the base point of a DXF \c 3DFACE
-                 * entity. */
+                /*!< the X-value of the base point \c x0 of a DXF
+                 * \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -2468,9 +2502,10 @@ dxf_3dface_set_x0
 
 
 /*!
- * \brief Get the Y-value of the base point of a DXF \c 3DFACE entity.
+ * \brief Get the Y-value of the base point \c y0 of a DXF \c 3DFACE
+ * entity.
  *
- * \return the Y-value of the base point.
+ * \return the Y-value of the base point \c y0.
  */
 double
 dxf_3dface_get_y0
@@ -2506,9 +2541,11 @@ dxf_3dface_get_y0
 
 
 /*!
- * \brief Set the Y-value of the base point of a DXF \c 3DFACE entity.
+ * \brief Set the Y-value of the base point \c y0 of a DXF \c 3DFACE
+ * entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_y0
@@ -2516,8 +2553,8 @@ dxf_3dface_set_y0
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double y0
-                /*!< the Y-value of the base point of a DXF \c 3DFACE
-                 * entity. */
+                /*!< the Y-value of the base point \c y0 of a DXF
+                 * \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -2547,9 +2584,10 @@ dxf_3dface_set_y0
 
 
 /*!
- * \brief Get the Z-value of the base point of a DXF \c 3DFACE entity.
+ * \brief Get the Z-value of the base point \c z0 of a DXF \c 3DFACE
+ * entity.
  *
- * \return the Z-value of the base point.
+ * \return the Z-value of the base point \c z0.
  */
 double
 dxf_3dface_get_z0
@@ -2585,9 +2623,11 @@ dxf_3dface_get_z0
 
 
 /*!
- * \brief Set the Z-value of the base point of a DXF \c 3DFACE entity.
+ * \brief Set the Z-value of the base point \c z0 of a DXF \c 3DFACE
+ * entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_z0
@@ -2595,8 +2635,8 @@ dxf_3dface_set_z0
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double z0
-                /*!< the Z-value of the base point of a DXF \c 3DFACE
-                 * entity. */
+                /*!< the Z-value of the base point \c z0 of a DXF
+                 * \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -2626,9 +2666,9 @@ dxf_3dface_set_z0
 
 
 /*!
- * \brief Get the first alignment point of a DXF \c 3DFACE entity.
+ * \brief Get the first alignment point \c p1 of a DXF \c 3DFACE entity.
  *
- * \return the first alignment point.
+ * \return the first alignment point \c p1.
  */
 DxfPoint *
 dxf_3dface_get_p1
@@ -2663,9 +2703,10 @@ dxf_3dface_get_p1
 
 
 /*!
- * \brief Set the first alignment point of a DXF \c 3DFACE entity.
+ * \brief Set the first alignment point \c p1 of a DXF \c 3DFACE entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_p1
@@ -2703,10 +2744,10 @@ dxf_3dface_set_p1
 
 
 /*!
- * \brief Get the X-value of the first alignment point of a DXF
+ * \brief Get the X-value of the first alignment point \c x1 of a DXF
  * \c 3DFACE entity.
  *
- * \return the X-value of the first alignment point.
+ * \return the X-value of the first alignment point \c x1.
  */
 double
 dxf_3dface_get_x1
@@ -2742,10 +2783,11 @@ dxf_3dface_get_x1
 
 
 /*!
- * \brief Set the X-value of the first alignment point of a DXF
+ * \brief Set the X-value of the first alignment point \c x1 of a DXF
  * \c 3DFACE entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_x1
@@ -2753,8 +2795,8 @@ dxf_3dface_set_x1
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double x1
-                /*!< the X-value of the first alignment point of a DXF
-                 * \c 3DFACE entity. */
+                /*!< the X-value of the first alignment point \c x1 of a
+                 * DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -2784,10 +2826,10 @@ dxf_3dface_set_x1
 
 
 /*!
- * \brief Get the Y-value of the first alignment point of a DXF
+ * \brief Get the Y-value of the first alignment point \c y1 of a DXF
  * \c 3DFACE entity.
  *
- * \return the Y-value of the first alignment point.
+ * \return the Y-value of the first alignment point \c y1.
  */
 double
 dxf_3dface_get_y1
@@ -2823,10 +2865,11 @@ dxf_3dface_get_y1
 
 
 /*!
- * \brief Set the Y-value of the first alignment point of a DXF
+ * \brief Set the Y-value of the first alignment point \c y1 of a DXF
  * \c 3DFACE entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_y1
@@ -2834,8 +2877,8 @@ dxf_3dface_set_y1
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double y1
-                /*!< the Y-value of the first alignment point of a DXF
-                 * \c 3DFACE entity. */
+                /*!< the Y-value of the first alignment point \c y1 of a
+                 * DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -2865,10 +2908,10 @@ dxf_3dface_set_y1
 
 
 /*!
- * \brief Get the Z-value of the first alignment point of a DXF
+ * \brief Get the Z-value of the first alignment point \c z1 of a DXF
  * \c 3DFACE entity.
  *
- * \return the Z-value of the first alignment point.
+ * \return the Z-value of the first alignment point \c z1.
  */
 double
 dxf_3dface_get_z1
@@ -2904,10 +2947,11 @@ dxf_3dface_get_z1
 
 
 /*!
- * \brief Set the Z-value of the first alignment point of a DXF
+ * \brief Set the Z-value of the first alignment point \c z1 of a DXF
  * \c 3DFACE entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_z1
@@ -2915,8 +2959,8 @@ dxf_3dface_set_z1
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double z1
-                /*!< the Z-value of the first alignment point of a DXF
-                 * \c 3DFACE entity. */
+                /*!< the Z-value of the first alignment point \c z1 of a
+                 * DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -2946,9 +2990,9 @@ dxf_3dface_set_z1
 
 
 /*!
- * \brief Get the second alignment point of a DXF \c 3DFACE entity.
+ * \brief Get the second alignment point \c p2 of a DXF \c 3DFACE entity.
  *
- * \return the second alignment point.
+ * \return the second alignment point \c p2.
  */
 DxfPoint *
 dxf_3dface_get_p2
@@ -2983,9 +3027,10 @@ dxf_3dface_get_p2
 
 
 /*!
- * \brief Set the second alignment point of a DXF \c 3DFACE entity.
+ * \brief Set the second alignment point \c p2 of a DXF \c 3DFACE entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_p2
@@ -3023,10 +3068,10 @@ dxf_3dface_set_p2
 
 
 /*!
- * \brief Get the X-value of the second alignment point of a DXF
+ * \brief Get the X-value of the second alignment point \c x2 of a DXF
  * \c 3DFACE entity.
  *
- * \return the X-value of the second alignment point.
+ * \return the X-value of the second alignment point \c x2.
  */
 double
 dxf_3dface_get_x2
@@ -3062,10 +3107,11 @@ dxf_3dface_get_x2
 
 
 /*!
- * \brief Set the X-value of the second alignment point of a DXF
+ * \brief Set the X-value of the second alignment point \c x2 of a DXF
  * \c 3DFACE entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_x2
@@ -3073,8 +3119,8 @@ dxf_3dface_set_x2
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double x2
-                /*!< the X-value of the second alignment point of a DXF
-                 * \c 3DFACE entity. */
+                /*!< the X-value of the second alignment point \c x2 of
+                 * a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -3104,10 +3150,10 @@ dxf_3dface_set_x2
 
 
 /*!
- * \brief Get the Y-value of the second alignment point of a DXF
+ * \brief Get the Y-value of the second alignment point \c y2 of a DXF
  * \c 3DFACE entity.
  *
- * \return the Y-value of the second alignment point.
+ * \return the Y-value of the second alignment point \c y2.
  */
 double
 dxf_3dface_get_y2
@@ -3143,10 +3189,11 @@ dxf_3dface_get_y2
 
 
 /*!
- * \brief Set the Y-value of the second alignment point of a DXF
+ * \brief Set the Y-value of the second alignment point \c y2 of a DXF
  * \c 3DFACE entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_y2
@@ -3154,8 +3201,8 @@ dxf_3dface_set_y2
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double y2
-                /*!< the Y-value of the second alignment point of a DXF
-                 * \c 3DFACE entity. */
+                /*!< the Y-value of the second alignment point \c y2 of
+                 * a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -3185,10 +3232,10 @@ dxf_3dface_set_y2
 
 
 /*!
- * \brief Get the Z-value of the second alignment point of a DXF
+ * \brief Get the Z-value of the second alignment point \c z2 of a DXF
  * \c 3DFACE entity.
  *
- * \return the Z-value of the second alignment point.
+ * \return the Z-value of the second alignment point \c z2.
  */
 double
 dxf_3dface_get_z2
@@ -3224,10 +3271,11 @@ dxf_3dface_get_z2
 
 
 /*!
- * \brief Set the Z-value of the second alignment point of a DXF
+ * \brief Set the Z-value of the second alignment point \c z2 of a DXF
  * \c 3DFACE entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_z2
@@ -3235,8 +3283,8 @@ dxf_3dface_set_z2
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double z2
-                /*!< the Z-value of the second alignment point of a DXF
-                 * \c 3DFACE entity. */
+                /*!< the Z-value of the second alignment point \c z2 of
+                 * a DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -3266,9 +3314,9 @@ dxf_3dface_set_z2
 
 
 /*!
- * \brief Get the third alignment point of a DXF \c 3DFACE entity.
+ * \brief Get the third alignment point \c p3 of a DXF \c 3DFACE entity.
  *
- * \return the third alignment point.
+ * \return the third alignment point \c p3.
  */
 DxfPoint *
 dxf_3dface_get_p3
@@ -3303,9 +3351,10 @@ dxf_3dface_get_p3
 
 
 /*!
- * \brief Set the third alignment point of a DXF \c 3DFACE entity.
+ * \brief Set the third alignment point \c p3 of a DXF \c 3DFACE entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_p3
@@ -3343,10 +3392,10 @@ dxf_3dface_set_p3
 
 
 /*!
- * \brief Get the X-value of the third alignment point of a DXF
+ * \brief Get the X-value of the third alignment point \c x3 of a DXF
  * \c 3DFACE entity.
  *
- * \return the X-value of the third alignment point.
+ * \return the X-value of the third alignment point \c x3.
  */
 double
 dxf_3dface_get_x3
@@ -3382,10 +3431,11 @@ dxf_3dface_get_x3
 
 
 /*!
- * \brief Set the X-value of the third alignment point of a DXF
+ * \brief Set the X-value of the third alignment point \c x3 of a DXF
  * \c 3DFACE entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_x3
@@ -3393,8 +3443,8 @@ dxf_3dface_set_x3
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double x3
-                /*!< the X-value of the third alignment point of a DXF
-                 * \c 3DFACE entity. */
+                /*!< the X-value of the third alignment point \c x3 of a
+                 * DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -3424,10 +3474,10 @@ dxf_3dface_set_x3
 
 
 /*!
- * \brief Get the Y-value of the third alignment point of a DXF
+ * \brief Get the Y-value of the third alignment point \c y3 of a DXF
  * \c 3DFACE entity.
  *
- * \return the Y-value of the third alignment point.
+ * \return the Y-value of the third alignment point \c y3.
  */
 double
 dxf_3dface_get_y3
@@ -3463,10 +3513,11 @@ dxf_3dface_get_y3
 
 
 /*!
- * \brief Set the Y-value of the third alignment point of a DXF
+ * \brief Set the Y-value of the third alignment point \c y3 of a DXF
  * \c 3DFACE entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_y3
@@ -3474,8 +3525,8 @@ dxf_3dface_set_y3
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double y3
-                /*!< the Y-value of the third alignment point of a DXF
-                 * \c 3DFACE entity. */
+                /*!< the Y-value of the third alignment point \c y3 of a
+                 * DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -3505,10 +3556,10 @@ dxf_3dface_set_y3
 
 
 /*!
- * \brief Get the Z-value of the third alignment point of a DXF
+ * \brief Get the Z-value of the third alignment point \c z3 of a DXF
  * \c 3DFACE entity.
  *
- * \return the Z-value of the third alignment point.
+ * \return the Z-value of the third alignment point \c z3.
  */
 double
 dxf_3dface_get_z3
@@ -3544,10 +3595,11 @@ dxf_3dface_get_z3
 
 
 /*!
- * \brief Set the Z-value of the third alignment point of a DXF
+ * \brief Set the Z-value of the third alignment point \c z3 of a DXF
  * \c 3DFACE entity.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_z3
@@ -3555,8 +3607,8 @@ dxf_3dface_set_z3
         Dxf3dface *face,
                 /*!< a pointer to a DXF \c 3DFACE entity. */
         double z3
-                /*!< the Z-value of the third alignment point of a DXF
-                 * \c 3DFACE entity. */
+                /*!< the Z-value of the third alignment point \c z3 of a
+                 * DXF \c 3DFACE entity. */
 )
 {
 #ifdef DEBUG
@@ -3631,6 +3683,9 @@ dxf_3dface_get_flag
 
 /*!
  * \brief Set the flag value for a DXF \c 3DFACE entity.
+ *
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_flag
@@ -3710,6 +3765,9 @@ dxf_3dface_get_next
 /*!
  * \brief Set the pointer to the next \c 3DFACE for a DXF \c 3DFACE
  * entity.
+ *
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_set_next
@@ -3874,7 +3932,8 @@ dxf_3dface_is_fourth_edge_invisible
  * \brief Create a DXF \c 3DFACE by means of at least three valid DXF
  * \c POINT entities.
  *
- * \return a pointer to a DXF \c 3DFACE entity.
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
  */
 Dxf3dface *
 dxf_3dface_create_from_points
