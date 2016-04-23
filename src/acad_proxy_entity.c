@@ -642,7 +642,7 @@ dxf_acad_proxy_entity_get_id_code
         if (acad_proxy_entity->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  (_("Error in %s () a negative value was found in the id_code member.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -682,7 +682,7 @@ dxf_acad_proxy_entity_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative id-code value was passed.\n")),
+                  (_("Error in %s () a negative id_code value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
