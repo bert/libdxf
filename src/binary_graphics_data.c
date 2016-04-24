@@ -55,7 +55,7 @@ dxf_binary_graphics_data_new ()
         if ((data = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfHatchBinaryGraphicsData struct.\n")),
+                  (_("Error in %s () could not allocate memory for a DxfBinaryGraphicsData struct.\n")),
                   __FUNCTION__);
                 data = NULL;
         }
@@ -175,7 +175,7 @@ dxf_binary_graphics_data_free
         if (data->next != NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfHatch was not NULL.\n")),
+                  (_("Error in %s () pointer to next DxfBinaryGraphicsData was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
