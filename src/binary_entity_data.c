@@ -40,7 +40,7 @@
  *
  * Fill the memory contents with zeros.
  */
-DxfBinaryEntityData
+DxfBinaryEntityData *
 dxf_binary_entity_data_new ()
 {
 #if DEBUG

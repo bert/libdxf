@@ -58,7 +58,7 @@ dxf_binary_entity_data_struct
 } DxfBinaryEntityData;
 
 
-DxfBinaryEntityData
+DxfBinaryEntityData *
 dxf_binary_entity_data_new ();
 
 
