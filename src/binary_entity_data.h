@@ -60,6 +60,11 @@ dxf_binary_entity_data_struct
 
 DxfBinaryEntityData *
 dxf_binary_entity_data_new ();
+DxfBinaryEntityData *
+dxf_binary_entity_data_init
+(
+        DxfBinaryEntityData *data
+);
 
 
 #endif /* LIBDXF_SRC_BINARY_ENTITY_DATA_H */
