@@ -191,14 +191,14 @@ dxf_binary_graphics_data_free
 
 /*!
  * \brief Free the allocated memory for a chain of binary graphics data
- * entities and all their data fields.
+ * objects and all their data fields.
  */
 void
 dxf_binary_graphics_data_free_chain
 (
         DxfBinaryGraphicsData *data
                 /*!< pointer to the chain of DXF \c HATCH binary
-                 * graphics data entities. */
+                 * graphics data objects. */
 )
 {
 #ifdef DEBUG
