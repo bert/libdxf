@@ -35,4 +35,39 @@
 #include "binary_entity_data.h"
 
 
+/*!
+ * \brief Allocate memory for a binary entity data object.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfBinaryEntityData
+dxf_binary_entity_data_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfBinaryEntityData *data = NULL;
+        size_t size;
+
+        size = sizeof (DxfBinaryEntityData);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((data = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfBinaryEntityData struct.\n")),
+                  __FUNCTION__);
+                data = NULL;
+        }
+        else
+        {
+                memset (data, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF */
