@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Header file for a DXF binary graphics data entity.
+ * \brief Header file for a DXF binary graphics data object.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n

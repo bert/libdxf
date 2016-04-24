@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Functions for a DXF binary graphics data entity.
+ * \brief Functions for a DXF binary graphics data object.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -36,7 +36,7 @@
 
 
 /*!
- * \brief Allocate memory for a binary graphics data entity.
+ * \brief Allocate memory for a binary graphics data object.
  *
  * Fill the memory contents with zeros.
  */
@@ -81,7 +81,7 @@ DxfBinaryGraphicsData *
 dxf_binary_graphics_data_init
 (
         DxfBinaryGraphicsData *data
-                /*!< a pointer to the binary graphics data entity. */
+                /*!< a pointer to the binary graphics data object. */
 )
 {
 #if DEBUG
@@ -112,7 +112,7 @@ dxf_binary_graphics_data_init
 
 
 /*!
- * \brief Write DXF output to fp for a binary graphics data entity.
+ * \brief Write DXF output to fp for a binary graphics data object.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
@@ -123,7 +123,7 @@ dxf_binary_graphics_data_write
         DxfFile *fp,
                 /*!< file pointer to output file (or device). */
         DxfBinaryGraphicsData *data
-                /*!< a pointer to the binary graphics data entity. */
+                /*!< a pointer to the binary graphics data object. */
 )
 {
 #if DEBUG
@@ -147,7 +147,7 @@ dxf_binary_graphics_data_write
 
 
 /*!
- * \brief Free the allocated memory for a binary graphics data entity
+ * \brief Free the allocated memory for a binary graphics data object
  * and all it's data fields.
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
@@ -224,7 +224,7 @@ dxf_binary_graphics_data_free_chain
 
 
 /*!
- * \brief Get the data_line from a binary graphics data entity.
+ * \brief Get the data_line from a binary graphics data object.
  *
  * \return data_line when sucessful, \c NULL when an error occurred.
  */
@@ -232,7 +232,7 @@ char *
 dxf_binary_graphics_data_get_data_line
 (
         DxfBinaryGraphicsData *data
-                /*!< a pointer to a binary graphics data entity. */
+                /*!< a pointer to a binary graphics data object. */
 )
 {
 #if DEBUG
@@ -264,13 +264,13 @@ dxf_binary_graphics_data_get_data_line
 
 
 /*!
- * \brief Set the data_line for a binary graphics data entity.
+ * \brief Set the data_line for a binary graphics data object.
  */
 DxfBinaryGraphicsData *
 dxf_binary_graphics_data_set_data_line
 (
         DxfBinaryGraphicsData *data,
-                /*!< a pointer to a binary graphics data entity. */
+                /*!< a pointer to a binary graphics data object. */
         char *data_line
                 /*!< a string containing the data_line for the entity. */
 )
@@ -302,7 +302,7 @@ dxf_binary_graphics_data_set_data_line
 
 
 /*!
- * \brief Get the \c length from a binary graphics data entity.
+ * \brief Get the \c length from a binary graphics data object.
  *
  * \return \c length.
  */
@@ -310,7 +310,7 @@ int
 dxf_binary_graphics_data_get_length
 (
         DxfBinaryGraphicsData *data
-                /*!< a pointer to a binary graphics data entity. */
+                /*!< a pointer to a binary graphics data object. */
 )
 {
 #if DEBUG
@@ -339,7 +339,7 @@ dxf_binary_graphics_data_get_length
 
 
 /*!
- * \brief Set the \c length for a binary graphics data entity.
+ * \brief Set the \c length for a binary graphics data object.
  *
  * \return a pointer to \c data when sucessful, \c NULL when an error
  * occurred.
@@ -348,7 +348,7 @@ DxfBinaryGraphicsData *
 dxf_binary_graphics_data_set_length
 (
         DxfBinaryGraphicsData *data,
-                /*!< a pointer to a binary graphics data entity. */
+                /*!< a pointer to a binary graphics data object. */
         int length
                 /*!< Length to be set for the entity. */
 )
@@ -380,10 +380,10 @@ dxf_binary_graphics_data_set_length
 
 
 /*!
- * \brief Get the pointer to the next binary graphics data entity from a
- * binary graphics data entity.
+ * \brief Get the pointer to the next binary graphics data object from a
+ * binary graphics data object.
  *
- * \return pointer to the next binary graphics data entity.
+ * \return pointer to the next binary graphics data object.
  *
  * \warning No checks are performed on the returned pointer.
  */
@@ -391,7 +391,7 @@ DxfBinaryGraphicsData *
 dxf_binary_graphics_data_get_next
 (
         DxfBinaryGraphicsData *data
-                /*!< a pointer to a binary graphics data entity. */
+                /*!< a pointer to a binary graphics data object. */
 )
 {
 #if DEBUG
@@ -430,7 +430,7 @@ DxfBinaryGraphicsData *
 dxf_binary_graphics_data_set_next
 (
         DxfBinaryGraphicsData *data,
-                /*!< a pointer to a binary graphics data entity. */
+                /*!< a pointer to a binary graphics data object. */
         DxfBinaryGraphicsData *next
                 /*!< a pointer to the next binary graphics data for the
                  * entity. */
