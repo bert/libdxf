@@ -146,4 +146,47 @@ dxf_binary_entity_data_write
 }
 
 
+/*!
+ * \brief Free the allocated memory for a binary entity data object
+ * and all it's data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_binary_entity_data_free
+(
+        DxfBinaryEntityData *data
+                /*!< Pointer to the memory occupied by the binary
+                 * entity data entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (data->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfBinaryEntityData was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (data->data_line);
+        free (data);
+        data = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

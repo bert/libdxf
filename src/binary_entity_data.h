@@ -71,6 +71,11 @@ dxf_binary_entity_data_write
         DxfFile *fp,
         DxfBinaryEntityData *data
 );
+int
+dxf_binary_entity_data_free
+(
+        DxfBinaryEntityData *data
+);
 
 
 #endif /* LIBDXF_SRC_BINARY_ENTITY_DATA_H */
