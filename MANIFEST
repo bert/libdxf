@@ -151,6 +151,10 @@ src/attdef.c
 src/attdef.h
 src/attrib.c
 src/attrib.h
+src/binary_entity_data.c
+src/binary_entity_data.h
+src/binary_graphics_data.c
+src/binary_graphics_data.h
 src/block.c
 src/block.h
 src/block_record.c
