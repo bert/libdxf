@@ -189,4 +189,38 @@ dxf_binary_entity_data_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of binary entity data
+ * bobjects and all their data fields.
+ */
+void
+dxf_binary_entity_data_free_chain
+(
+        DxfBinaryEntityData *data
+                /*!< pointer to the chain of DXF \c HATCH binary
+                 * entity data objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (data != NULL)
+        {
+                struct DxfBinaryEntityData *iter = data->next;
+                dxf_binary_entity_data_free (data);
+                data = (DxfBinaryEntityData *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
