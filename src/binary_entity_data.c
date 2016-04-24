@@ -111,4 +111,39 @@ dxf_binary_entity_data_init
 }
 
 
+/*!
+ * \brief Write DXF output to fp for a binary entity data object.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_binary_entity_data_write
+(
+        DxfFile *fp,
+                /*!< file pointer to output file (or device). */
+        DxfBinaryEntityData *data
+                /*!< a pointer to the binary entity data object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (fp == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL file pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        /* Start writing output. */
+        fprintf (fp->fp, "310\n%s\n", data->data_line);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
