@@ -379,4 +379,44 @@ dxf_binary_entity_data_set_length
 }
 
 
+/*!
+ * \brief Get the pointer to the next binary entity data object from a
+ * binary entity data object.
+ *
+ * \return pointer to the next binary entity data object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryEntityData *
+dxf_binary_entity_data_get_next
+(
+        DxfBinaryEntityData *data
+                /*!< a pointer to a binary entity data object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBinaryEntityData *) data->next);
+}
+
+
 /* EOF */

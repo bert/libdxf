@@ -103,6 +103,11 @@ dxf_binary_entity_data_set_length
         DxfBinaryEntityData *data,
         int length
 );
+DxfBinaryEntityData *
+dxf_binary_entity_data_get_next
+(
+        DxfBinaryEntityData *data
+);
 
 
 #endif /* LIBDXF_SRC_BINARY_ENTITY_DATA_H */
