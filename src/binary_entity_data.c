@@ -223,4 +223,44 @@ dxf_binary_entity_data_free_chain
 }
 
 
+/*!
+ * \brief Get the data_line from a binary entity data object.
+ *
+ * \return data_line when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_binary_entity_data_get_data_line
+(
+        DxfBinaryEntityData *data
+                /*!< a pointer to a binary entity data object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        char *result = NULL;
+
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data->data_line ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the data_line member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = strdup (data->data_line);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
 /* EOF */

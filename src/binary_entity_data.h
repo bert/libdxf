@@ -81,6 +81,11 @@ dxf_binary_entity_data_free_chain
 (
         DxfBinaryEntityData *data
 );
+char *
+dxf_binary_entity_data_get_data_line
+(
+        DxfBinaryEntityData *data
+);
 
 
 #endif /* LIBDXF_SRC_BINARY_ENTITY_DATA_H */
