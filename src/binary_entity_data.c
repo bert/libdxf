@@ -419,4 +419,44 @@ dxf_binary_entity_data_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next binary entity data for a binary
+ * entity data entity.
+ */
+DxfBinaryEntityData *
+dxf_binary_entity_data_set_next
+(
+        DxfBinaryEntityData *data,
+                /*!< a pointer to a binary entity data object. */
+        DxfBinaryEntityData *next
+                /*!< a pointer to the next binary entity data for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->next = (struct DxfBinaryEntityData *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF */

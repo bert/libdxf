@@ -108,6 +108,12 @@ dxf_binary_entity_data_get_next
 (
         DxfBinaryEntityData *data
 );
+DxfBinaryEntityData *
+dxf_binary_entity_data_set_next
+(
+        DxfBinaryEntityData *data,
+        DxfBinaryEntityData *next
+);
 
 
 #endif /* LIBDXF_SRC_BINARY_ENTITY_DATA_H */
