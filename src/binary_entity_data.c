@@ -263,4 +263,42 @@ dxf_binary_entity_data_get_data_line
 }
 
 
+/*!
+ * \brief Set the data_line for a binary entity data object.
+ */
+DxfBinaryEntityData *
+dxf_binary_entity_data_set_data_line
+(
+        DxfBinaryEntityData *data,
+                /*!< a pointer to a binary entity data object. */
+        char *data_line
+                /*!< a string containing the data_line for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data_line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        data->data_line = strdup (data_line);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (data);
+}
+
+
 /* EOF */
