@@ -397,8 +397,6 @@ dxf_binary_graphics_data_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfBinaryGraphicsData *result;
-
         /* Do some basic checks. */
         if (data == NULL)
         {
@@ -414,11 +412,10 @@ dxf_binary_graphics_data_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfBinaryGraphicsData *) data->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfBinaryGraphicsData *) data->next);
 }
 
 
