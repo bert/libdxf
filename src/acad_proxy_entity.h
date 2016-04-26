@@ -50,6 +50,7 @@
 
 
 #include "global.h"
+#include "binary_entity_data.h"
 #include "binary_graphics_data.h"
 
 
@@ -190,7 +191,7 @@ dxf_acad_proxy_entity_struct
                  * (optional).\n
                  * Group code = 310.\n
                  * \since Introduced in version R14. */
-/*        DxfBinaryEntityData *binary_entity_data;
+        DxfBinaryEntityData *binary_entity_data;
                 /*!< Binary entity data.\n
                  * Multiple lines of 256 characters maximum per line
                  * (optional).\n
