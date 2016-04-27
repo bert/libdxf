@@ -75,6 +75,16 @@ dxf_acad_proxy_entity_struct
                 /*!< Layer on which the entity is drawn.\n
                  * Defaults to layer "0" if no valid layername is given.\n
                  * Group code = 8. */
+        double elevation;
+                /*!< Elevation of the entity in the local Z-direction.\n
+                 * Defaults to 0.0 if omitted in the DXF file, or prior
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default).\n
+                 * Group code = 38.\n
+                 * \deprecated As of version R11. */
+        double thickness;
+                /*!< Thickness of the entity in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
         double linetype_scale;
                 /*!< Linetype scale (optional).\n
                  * Group code = 48.\n
@@ -100,6 +110,16 @@ dxf_acad_proxy_entity_struct
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
                  * Group code = 67.\n
                  * \since Introduced in version R13. */
+        int16_t shadow_mode;
+                /*!< Shadow mode:\n
+                 * <ol>
+                 * <li value = "0"> Casts and receives shadows.</li>
+                 * <li value = "1"> Casts shadows.</li>
+                 * <li value = "2"> Receives shadows.</li>
+                 * <li value = "3"> Ignores shadows.</li>
+                 * </ol>\n
+                 * Group code = 284.\n
+                 * \since Introduced in version R2009. */
         char *dictionary_owner_soft;
                 /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
                  * Group code = 330.\n
