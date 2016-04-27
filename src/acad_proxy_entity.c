@@ -129,10 +129,13 @@ dxf_acad_proxy_entity_init
         acad_proxy_entity->id_code = 0;
         acad_proxy_entity->linetype = strdup (DXF_DEFAULT_LINETYPE);
         acad_proxy_entity->layer = strdup (DXF_DEFAULT_LAYER);
+        acad_proxy_entity->elevation = 0.0;
+        acad_proxy_entity->thickness = 0.0;
         acad_proxy_entity->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
         acad_proxy_entity->visibility = 0;
         acad_proxy_entity->color = DXF_COLOR_BYLAYER;
         acad_proxy_entity->paperspace = DXF_PAPERSPACE;
+        acad_proxy_entity->shadow_mode = 0;
         acad_proxy_entity->dictionary_owner_soft = strdup ("");
         acad_proxy_entity->material = strdup ("");
         acad_proxy_entity->dictionary_owner_hard = strdup ("");
