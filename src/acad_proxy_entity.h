@@ -293,6 +293,12 @@ dxf_acad_proxy_entity_get_elevation
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_elevation
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+        double elevation
+);
 double
 dxf_acad_proxy_entity_get_linetype_scale
 (
