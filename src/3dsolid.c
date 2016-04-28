@@ -258,9 +258,7 @@ dxf_3dsolid_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", solid->layer);
                 }
-                else if ((fp->acad_version_number <= AutoCAD_11)
-                  && DXF_FLATLAND
-                  && (strcmp (temp_string, "38") == 0))
+                else if (strcmp (temp_string, "38") == 0)
                 {
                         /* Now follows a string containing the
                          * elevation. */
@@ -302,8 +300,7 @@ dxf_3dsolid_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &solid->paperspace);
                 }
-                else if ((fp->acad_version_number >= AutoCAD_13)
-                        && (strcmp (temp_string, "70") == 0))
+                else if (strcmp (temp_string, "70") == 0)
                 {
                         /* Now follows a string containing the modeler
                          * format version number. */
@@ -317,8 +314,7 @@ dxf_3dsolid_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &solid->graphics_data_size);
                 }
-                else if ((fp->acad_version_number >= AutoCAD_13)
-                        && (strcmp (temp_string, "100") == 0))
+                else if (strcmp (temp_string, "100") == 0)
                 {
                         /* Now follows a string containing the
                          * subclass marker value. */
@@ -331,8 +327,7 @@ dxf_3dsolid_read
                                   __FUNCTION__, fp->filename, fp->line_number);
                         }
                 }
-                else if ((fp->acad_version_number >= AutoCAD_2008)
-                        && (strcmp (temp_string, "100") == 0))
+                else if (strcmp (temp_string, "100") == 0)
                 {
                         /* Now follows a string containing the
                          * subclass marker value. */
@@ -382,8 +377,7 @@ dxf_3dsolid_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", solid->material);
                 }
-                else if ((fp->acad_version_number >= AutoCAD_2008)
-                        && (strcmp (temp_string, "350") == 0))
+                else if (strcmp (temp_string, "350") == 0)
                 {
                         /* Now follows a string containing a handle to a
                          * history object. */
