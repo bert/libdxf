@@ -1074,6 +1074,46 @@ dxf_acad_proxy_entity_get_thickness
 
 
 /*!
+ * \brief Set the \c thickness for a DXF \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return a pointer to \c acad_proxy_entity when sucessful, \c NULL
+ * when an error occurred.
+ */
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_thickness
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+        double thickness
+                /*!< the \c thickness to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (thickness < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative thickness value was passed.\n")),
+                  __FUNCTION__);
+        }
+        acad_proxy_entity->thickness = thickness;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (acad_proxy_entity);
+}
+
+
+/*!
  * \brief Get the linetype scale from a DXF \c ACAD_PROXY_ENTITY entity.
  *
  * \return linetype scale.

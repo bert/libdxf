@@ -304,6 +304,12 @@ dxf_acad_proxy_entity_get_thickness
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_thickness
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+        double thickness
+);
 double
 dxf_acad_proxy_entity_get_linetype_scale
 (
