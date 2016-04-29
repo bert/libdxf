@@ -359,6 +359,12 @@ dxf_acad_proxy_entity_get_shadow_mode
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_shadow_mode
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+        int16_t shadow_mode
+);
 char *
 dxf_acad_proxy_entity_get_dictionary_owner_soft
 (

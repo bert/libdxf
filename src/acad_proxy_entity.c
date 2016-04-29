@@ -1498,6 +1498,54 @@ dxf_acad_proxy_entity_get_shadow_mode
 
 
 /*!
+ * \brief Set the \c shadow_mode for a DXF \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return a pointer to \c acad_proxy_entity when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_shadow_mode
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+        int16_t shadow_mode
+                /*!< the shadow mode to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative shadow_mode value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range shadow_mode value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        acad_proxy_entity->shadow_mode = shadow_mode;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (acad_proxy_entity);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c ACAD_PROXY_ENTITY entity.
  *
