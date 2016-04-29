@@ -354,6 +354,11 @@ dxf_acad_proxy_entity_set_paperspace
         DxfAcadProxyEntity *acad_proxy_entity,
         int paperspace
 );
+int16_t
+dxf_acad_proxy_entity_get_shadow_mode
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 char *
 dxf_acad_proxy_entity_get_dictionary_owner_soft
 (
