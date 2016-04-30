@@ -1669,6 +1669,49 @@ dxf_acad_proxy_entity_get_material
 
 
 /*!
+ * \brief Set the pointer to the \c material for a DXF
+ * \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return a pointer to \c acad_proxy_entity when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_material
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+        char *material
+                /*!< a string containing the pointer to the \c
+                 * material for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (material == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        acad_proxy_entity->material = strdup (material);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (acad_proxy_entity);
+}
+
+
+/*!
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c ACAD_PROXY_ENTITY entity.
  *
