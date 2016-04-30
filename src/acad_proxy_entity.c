@@ -1826,6 +1826,40 @@ dxf_acad_proxy_entity_get_lineweight
 
 
 /*!
+ * \brief Set the \c lineweight for a DXF \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_lineweight
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        acad_proxy_entity->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (acad_proxy_entity);
+}
+
+
+/*!
  * \brief Get the original custom object data format value from a DXF
  * \c ACAD_PROXY_ENTITY entity.
  *
