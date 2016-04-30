@@ -370,6 +370,11 @@ dxf_acad_proxy_entity_get_dictionary_owner_soft
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
+char *
+dxf_acad_proxy_entity_get_material
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_set_dictionary_owner_soft
 (
