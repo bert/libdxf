@@ -1899,6 +1899,48 @@ dxf_acad_proxy_entity_get_plot_style_name
 
 
 /*!
+ * \brief Set the \c plot_style_name for a DXF \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return a pointer to \c acad_proxy_entity when successful, or \c NULL
+ * when an error occurred.
+ */
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_plot_style_name
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+        char *plot_style_name
+                /*!< a string containing the \c plot_style_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (plot_style_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        acad_proxy_entity->plot_style_name = strdup (plot_style_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (acad_proxy_entity);
+}
+
+
+/*!
  * \brief Get the original custom object data format value from a DXF
  * \c ACAD_PROXY_ENTITY entity.
  *

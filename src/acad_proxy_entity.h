@@ -414,6 +414,12 @@ dxf_acad_proxy_entity_get_plot_style_name
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_plot_style_name
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+        char *plot_style_name
+);
 int
 dxf_acad_proxy_entity_get_original_custom_object_data_format
 (
