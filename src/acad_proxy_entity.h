@@ -409,6 +409,11 @@ dxf_acad_proxy_entity_set_lineweight
         DxfAcadProxyEntity *acad_proxy_entity,
         int16_t lineweight
 );
+char *
+dxf_acad_proxy_entity_get_plot_style_name
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 int
 dxf_acad_proxy_entity_get_original_custom_object_data_format
 (
