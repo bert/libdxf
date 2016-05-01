@@ -425,6 +425,12 @@ dxf_acad_proxy_entity_get_color_value
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_color_value
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+        long color_value
+);
 int
 dxf_acad_proxy_entity_get_original_custom_object_data_format
 (
