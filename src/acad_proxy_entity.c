@@ -2006,6 +2006,44 @@ dxf_acad_proxy_entity_set_color_value
 
 
 /*!
+ * \brief Get the \c color_name from a DXF \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return \c color_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_acad_proxy_entity_get_color_name
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (acad_proxy_entity->color_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (acad_proxy_entity->color_name));
+}
+
+
+/*!
  * \brief Get the original custom object data format value from a DXF
  * \c ACAD_PROXY_ENTITY entity.
  *
