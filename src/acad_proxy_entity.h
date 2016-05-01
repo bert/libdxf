@@ -442,6 +442,11 @@ dxf_acad_proxy_entity_set_color_name
         DxfAcadProxyEntity *acad_proxy_entity,
         char *color_name
 );
+long
+dxf_acad_proxy_entity_get_transparency
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 int
 dxf_acad_proxy_entity_get_original_custom_object_data_format
 (
