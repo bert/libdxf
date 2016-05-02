@@ -447,6 +447,12 @@ dxf_acad_proxy_entity_get_transparency
 (
         DxfAcadProxyEntity *acad_proxy_entity
 );
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_transparency
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+        long transparency
+);
 int
 dxf_acad_proxy_entity_get_original_custom_object_data_format
 (

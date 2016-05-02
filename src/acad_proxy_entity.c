@@ -2117,6 +2117,40 @@ dxf_acad_proxy_entity_get_transparency
 
 
 /*!
+ * \brief Set the \c transparency for a DXF \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return a pointer to \c acad_proxy_entity when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_transparency
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+        long transparency
+                /*!< the \c transparency to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        acad_proxy_entity->transparency = transparency;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (acad_proxy_entity);
+}
+
+
+/*!
  * \brief Get the original custom object data format value from a DXF
  * \c ACAD_PROXY_ENTITY entity.
  *
