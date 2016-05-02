@@ -751,8 +751,6 @@ dxf_3dsolid_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -768,11 +766,10 @@ dxf_3dsolid_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = solid->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (solid->id_code);
 }
 
 
@@ -831,8 +828,6 @@ dxf_3dsolid_get_linetype
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -848,11 +843,10 @@ dxf_3dsolid_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (solid->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (solid->linetype));
 }
 
 
@@ -909,8 +903,6 @@ dxf_3dsolid_get_layer
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -926,11 +918,10 @@ dxf_3dsolid_get_layer
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (solid->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (solid->layer));
 }
 
 
@@ -987,8 +978,6 @@ dxf_3dsolid_get_elevation
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -997,11 +986,10 @@ dxf_3dsolid_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = solid->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (solid->elevation);
 }
 
 
@@ -1051,8 +1039,6 @@ dxf_3dsolid_get_thickness
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -1068,11 +1054,10 @@ dxf_3dsolid_get_thickness
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = solid->thickness;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (solid->thickness);
 }
 
 
@@ -1129,8 +1114,6 @@ dxf_3dsolid_get_linetype_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -1146,11 +1129,10 @@ dxf_3dsolid_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = solid->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (solid->linetype_scale);
 }
 
 
@@ -1207,8 +1189,6 @@ dxf_3dsolid_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -1231,11 +1211,10 @@ dxf_3dsolid_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = solid->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (solid->visibility);
 }
 
 
@@ -1299,8 +1278,6 @@ dxf_3dsolid_get_color
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -1315,11 +1292,10 @@ dxf_3dsolid_get_color
                   (_("Warning in %s () a negative value was found in the color member.\n")),
                   __FUNCTION__);
         }
-        result = solid->color;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (solid->color);
 }
 
 
@@ -1377,8 +1353,6 @@ dxf_3dsolid_get_paperspace
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -1399,11 +1373,10 @@ dxf_3dsolid_get_paperspace
                   (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
                   __FUNCTION__);
         }
-        result = solid->paperspace;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (solid->paperspace);
 }
 
 
@@ -1738,8 +1711,6 @@ dxf_3dsolid_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -1755,11 +1726,10 @@ dxf_3dsolid_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (solid->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (solid->dictionary_owner_soft));
 }
 
 
@@ -1904,8 +1874,6 @@ dxf_3dsolid_get_dictionary_owner_hard
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -1921,11 +1889,10 @@ dxf_3dsolid_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (solid->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (solid->dictionary_owner_hard));
 }
 
 
@@ -2474,8 +2441,6 @@ dxf_3dsolid_get_history
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -2491,11 +2456,10 @@ dxf_3dsolid_get_history
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (solid->history);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (solid->history));
 }
 
 
@@ -2555,8 +2519,6 @@ dxf_3dsolid_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        Dxf3dsolid *result;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -2572,11 +2534,10 @@ dxf_3dsolid_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (Dxf3dsolid *) solid->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((Dxf3dsolid *) solid->next);
 }
 
 
