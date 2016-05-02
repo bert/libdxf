@@ -203,8 +203,8 @@ dxf_acad_proxy_entity_struct
                  * (a 32-bit unsigned integer):\n
                  * Low word is AcDbDwgVersion.\n
                  * High word is MaintenanceReleaseVersion.
-                 * Added in AutoCAD release 2000.\n
-                 * Group code = 95. */
+                 * Group code = 95.\n
+                 * \since Introduced in version R2000. */
         DxfBinaryGraphicsData *binary_graphics_data;
                 /*!< Proxy entity graphics data.\n
                  * Multiple lines of 256 characters maximum per line
