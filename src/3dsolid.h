@@ -451,6 +451,11 @@ dxf_3dsolid_set_transparency
         Dxf3dsolid *solid,
         long transparency
 );
+DxfProprietaryData *
+dxf_3dsolid_get_proprietary_data
+(
+        Dxf3dsolid *solid
+);
 int
 dxf_3dsolid_get_modeler_format_version_number
 (
