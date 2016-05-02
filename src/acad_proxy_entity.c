@@ -2166,8 +2166,6 @@ dxf_acad_proxy_entity_get_original_custom_object_data_format
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
         {
@@ -2188,11 +2186,10 @@ dxf_acad_proxy_entity_get_original_custom_object_data_format
                   (_("Warning in %s () an out of range value was found in the original_custom_object_data_format member.\n")),
                   __FUNCTION__);
         }
-        result = acad_proxy_entity->original_custom_object_data_format;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (acad_proxy_entity->original_custom_object_data_format);
 }
 
 
@@ -2258,8 +2255,6 @@ dxf_acad_proxy_entity_get_proxy_entity_class_id
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
         {
@@ -2274,11 +2269,10 @@ dxf_acad_proxy_entity_get_proxy_entity_class_id
                   (_("Warning in %s () an invalid value was found in the proxy_entity_class_id member.\n")),
                   __FUNCTION__);
         }
-        result = acad_proxy_entity->proxy_entity_class_id;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (acad_proxy_entity->proxy_entity_class_id);
 }
 
 
@@ -2338,8 +2332,6 @@ dxf_acad_proxy_entity_get_application_entity_class_id
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
         {
@@ -2354,11 +2346,10 @@ dxf_acad_proxy_entity_get_application_entity_class_id
                   (_("Warning in %s () an invalid value was found in the proxy_entity_class_id member.\n")),
                   __FUNCTION__);
         }
-        result = acad_proxy_entity->application_entity_class_id;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (acad_proxy_entity->application_entity_class_id);
 }
 
 
@@ -2418,8 +2409,6 @@ dxf_acad_proxy_entity_get_graphics_data_size
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
         {
@@ -2435,11 +2424,10 @@ dxf_acad_proxy_entity_get_graphics_data_size
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = acad_proxy_entity->graphics_data_size;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (acad_proxy_entity->graphics_data_size);
 }
 
 
@@ -2499,8 +2487,6 @@ dxf_acad_proxy_entity_get_entity_data_size
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
         {
@@ -2516,11 +2502,10 @@ dxf_acad_proxy_entity_get_entity_data_size
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = acad_proxy_entity->entity_data_size;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (acad_proxy_entity->entity_data_size);
 }
 
 
@@ -2580,8 +2565,6 @@ dxf_acad_proxy_entity_get_object_drawing_format
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        ulong result;
-
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
         {
@@ -2597,11 +2580,10 @@ dxf_acad_proxy_entity_get_object_drawing_format
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = acad_proxy_entity->object_drawing_format;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (acad_proxy_entity->object_drawing_format);
 }
 
 
@@ -2623,8 +2605,6 @@ dxf_acad_proxy_entity_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfAcadProxyEntity *result;
-
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
         {
@@ -2640,11 +2620,10 @@ dxf_acad_proxy_entity_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfAcadProxyEntity *) acad_proxy_entity->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfAcadProxyEntity *) acad_proxy_entity->next);
 }
 
 
