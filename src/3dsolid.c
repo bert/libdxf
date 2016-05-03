@@ -2370,6 +2370,46 @@ dxf_3dsolid_set_proprietary_data
 
 
 /*!
+ * \brief Get the pointer to the \c additional_proprietary_data from a
+ * DXF \c 3DSOLID entity.
+ *
+ * \return pointer to the \c additional_proprietary_data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfProprietaryData *
+dxf_3dsolid_get_additional_proprietary_data
+(
+        Dxf3dsolid *solid
+                /*!< a pointer to a DXF \c 3DSOLID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (solid->additional_proprietary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the proprietary_data member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfProprietaryData *) solid->additional_proprietary_data);
+}
+
+
+/*!
  * \brief Get the modeler format version number from a DXF \c 3DSOLID
  * entity.
  *
