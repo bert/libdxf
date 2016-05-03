@@ -2332,6 +2332,44 @@ dxf_3dsolid_get_proprietary_data
 
 
 /*!
+ * \brief Set the \c proprietary_data for a DXF \c 3DSOLID entity.
+ */
+Dxf3dsolid *
+dxf_3dsolid_set_proprietary_data
+(
+        Dxf3dsolid *solid,
+                /*!< a pointer to a DXF \c 3DSOLID entity. */
+        DxfProprietaryData *proprietary_data
+                /*!< the \c proprietary_data to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (proprietary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        solid->proprietary_data = proprietary_data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (solid);
+}
+
+
+/*!
  * \brief Get the modeler format version number from a DXF \c 3DSOLID
  * entity.
  *
