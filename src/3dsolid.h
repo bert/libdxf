@@ -467,6 +467,12 @@ dxf_3dsolid_get_additional_proprietary_data
 (
         Dxf3dsolid *solid
 );
+Dxf3dsolid *
+dxf_3dsolid_set_additional_proprietary_data
+(
+        Dxf3dsolid *solid,
+        DxfProprietaryData *additional_proprietary_data
+);
 int
 dxf_3dsolid_get_modeler_format_version_number
 (
