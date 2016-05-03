@@ -476,7 +476,7 @@ dxf_3dsolid_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("3DSOLID");
-        int i;
+        DxfProprietaryData *iter = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -633,17 +633,17 @@ dxf_3dsolid_write
         {
                 fprintf (fp->fp, " 70\n%d\n", solid->modeler_format_version_number);
         }
-        i = 0;
-        while (strlen (solid->proprietary_data->line) > 0)
+        iter = (DxfProprietaryData *) solid->proprietary_data;
+        while (iter != NULL)
         {
-                fprintf (fp->fp, "  1\n%s\n", solid->proprietary_data->line);
-                i++;
+                fprintf (fp->fp, "  1\n%s\n", iter->line);
+                iter = (DxfProprietaryData *) iter->next;
         }
-        i = 0;
-        while (strlen (solid->additional_proprietary_data->line) > 0)
+        iter = (DxfProprietaryData *) solid->additional_proprietary_data;
+        while (iter != NULL)
         {
-                fprintf (fp->fp, "  3\n%s\n", solid->additional_proprietary_data->line);
-                i++;
+                fprintf (fp->fp, "  3\n%s\n", iter->line);
+                iter = (DxfProprietaryData *) iter->next;
         }
         if (fp->acad_version_number >= AutoCAD_2008)
         {
