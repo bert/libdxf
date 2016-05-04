@@ -524,25 +524,25 @@ dxf_3dface_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (face->linetype, "") == 0)
+        if ((strcmp (face->layer, "") == 0) || (face->layer == NULL))
         {
                 fprintf (stderr,
-                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, face->id_code);
-                fprintf (stderr,
-                  (_("\t%s entity is reset to default linetype")),
-                  dxf_entity_name);
-                face->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        }
-        if (strcmp (face->layer, "") == 0)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
+                  (_("Warning in %s () invalid layer string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, face->id_code);
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
                 face->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        if (face->linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () invalid linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, face->id_code);
+                fprintf (stderr,
+                  (_("\t%s linetype is set to %s\n")),
+                  dxf_entity_name, DXF_DEFAULT_LINETYPE);
+                face->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
