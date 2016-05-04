@@ -122,6 +122,11 @@ dxf_proprietary_data_set_next
         DxfProprietaryData *data,
         DxfProprietaryData *next
 );
+int
+dxf_proprietary_data_test_length
+(
+        DxfProprietaryData *data
+);
 
 
 #endif /* LIBDXF_SRC_PROPRIETARY_DATA_H */
