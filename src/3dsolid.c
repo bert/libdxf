@@ -477,6 +477,8 @@ dxf_3dsolid_write
 #endif
         char *dxf_entity_name = strdup ("3DSOLID");
         DxfProprietaryData *iter = NULL;
+        DxfProprietaryData *additional_iter = NULL;
+        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -524,6 +526,7 @@ dxf_3dsolid_write
                 solid->layer = strdup (DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
+        i = 1;
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (solid->id_code != -1)
         {
@@ -634,16 +637,21 @@ dxf_3dsolid_write
                 fprintf (fp->fp, " 70\n%d\n", solid->modeler_format_version_number);
         }
         iter = (DxfProprietaryData *) solid->proprietary_data;
-        while (iter != NULL)
+        additional_iter = (DxfProprietaryData *) solid->additional_proprietary_data;
+        while ((iter != NULL) || (additional_iter != NULL))
         {
-                fprintf (fp->fp, "  1\n%s\n", iter->line);
-                iter = (DxfProprietaryData *) iter->next;
-        }
-        iter = (DxfProprietaryData *) solid->additional_proprietary_data;
-        while (iter != NULL)
-        {
-                fprintf (fp->fp, "  3\n%s\n", iter->line);
-                iter = (DxfProprietaryData *) iter->next;
+                if (iter->order == i)
+                {
+                        fprintf (fp->fp, "  1\n%s\n", iter->line);
+                        iter = (DxfProprietaryData *) iter->next;
+                        i++;
+                }
+                if (additional_iter->order == i)
+                {
+                        fprintf (fp->fp, "  3\n%s\n", additional_iter->line);
+                        additional_iter = (DxfProprietaryData *) additional_iter->next;
+                        i++;
+                }
         }
         if (fp->acad_version_number >= AutoCAD_2008)
         {
