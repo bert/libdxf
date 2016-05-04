@@ -515,7 +515,7 @@ dxf_3dline_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (line->layer, "") == 0)
+        if ((strcmp (line->layer, "") == 0) || (line->layer == NULL))
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
@@ -524,6 +524,16 @@ dxf_3dline_write
                   (_("    %s entity is relocated to layer 0\n")),
                   dxf_entity_name);
                 line->layer = strdup (DXF_DEFAULT_LAYER);
+        }
+        if (line->linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
+                  __FUNCTION__, dxf_entity_name, line->id_code);
+                fprintf (stderr,
+                  (_("    %s linetype is set to %s\n")),
+                  dxf_entity_name, DXF_DEFAULT_LINETYPE);
+                line->linetype = strdup (DXF_DEFAULT_LINETYPE);
         }
         if (fp->acad_version_number > AutoCAD_11)
         {
