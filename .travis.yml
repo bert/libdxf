@@ -12,6 +12,7 @@ addons:
   apt:
     packages:
       - graphviz
+      - doxygen
 
 before_install:
   - sudo apt-get -qq update
