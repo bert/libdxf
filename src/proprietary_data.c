@@ -508,6 +508,9 @@ dxf_proprietary_data_set_next
  * \return \c EXIT_SUCCESS when the found length in the \c line member
  * matched the value in the \c length member, and \c EXIT_FAILURE when
  * an error occurred.
+ *
+ * \note This function does not alter the contents of the DXF
+ * \c DxfProprietaryData object.
  */
 int
 dxf_proprietary_data_test_length
@@ -540,6 +543,13 @@ dxf_proprietary_data_test_length
         {
                 fprintf (stderr,
                   (_("Error in %s () a value of 0 was found in the length member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (data->length < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the length member.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
