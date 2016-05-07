@@ -114,32 +114,32 @@ dxf_3dline_init
                 __FUNCTION__);
               return (NULL);
         }
-        line->id_code = 0;
-        line->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        line->layer = strdup (DXF_DEFAULT_LAYER);
-        line->p0 = dxf_point_init (line->p0);
-        line->p1 = dxf_point_init (line->p1);
+        dxf_3dline_set_id_code (line, 0);
+        dxf_3dline_set_linetype (line, strdup (DXF_DEFAULT_LINETYPE));
+        dxf_3dline_set_layer (line, strdup (DXF_DEFAULT_LAYER));
+        dxf_3dline_set_p0 (line, dxf_point_init (line->p0));
+        dxf_3dline_set_p1 (line, dxf_point_init (line->p1));
         line->extr_x0 = 0.0;
         line->extr_y0 = 0.0;
         line->extr_z0 = 0.0;
-        line->elevation = 0.0;
-        line->thickness = 0.0;
-        line->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        line->visibility = DXF_DEFAULT_VISIBILITY;
-        line->color = DXF_COLOR_BYLAYER;
-        line->paperspace = DXF_MODELSPACE;
-        line->graphics_data_size = 0;
-        line->shadow_mode = 0;
+        dxf_3dline_set_elevation (line, 0.0);
+        dxf_3dline_set_thickness (line, 0.0);
+        dxf_3dline_set_linetype_scale (line, DXF_DEFAULT_LINETYPE_SCALE);
+        dxf_3dline_set_visibility (line, DXF_DEFAULT_VISIBILITY);
+        dxf_3dline_set_color (line, DXF_COLOR_BYLAYER);
+        dxf_3dline_set_paperspace (line, DXF_MODELSPACE);
+        dxf_3dline_set_graphics_data_size (line, 0);
+        dxf_3dline_set_shadow_mode (line, 0);
         line->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (line->binary_graphics_data);
-        line->dictionary_owner_soft = strdup ("");
-        line->material = strdup ("");
-        line->dictionary_owner_hard = strdup ("");
-        line->lineweight = 0;
-        line->plot_style_name = strdup ("");
-        line->color_value = 0;
-        line->color_name = strdup ("");
-        line->transparency = 0;
-        line->next = NULL;
+        dxf_3dline_set_dictionary_owner_soft (line, strdup (""));
+        dxf_3dline_set_material (line, strdup (""));
+        dxf_3dline_set_dictionary_owner_hard (line, strdup (""));
+        dxf_3dline_set_lineweight (line, 0);
+        dxf_3dline_set_plot_style_name (line, strdup (""));
+        dxf_3dline_set_color_value (line, 0);
+        dxf_3dline_set_color_name (line, strdup (""));
+        dxf_3dline_set_transparency (line, 0);
+        dxf_3dline_set_next (line, NULL);
 #if DEBUG
         DXF_DEBUG_END
 #endif
