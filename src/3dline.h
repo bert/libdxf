@@ -548,6 +548,12 @@ dxf_3dline_get_extr_x0
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_extr_x0
+(
+        Dxf3dline *line,
+        double extr_x0
+);
 DxfPoint *
 dxf_3dline_get_extrusion_vector_as_point
 (
