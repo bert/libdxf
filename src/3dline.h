@@ -565,6 +565,11 @@ dxf_3dline_set_extr_y0
         Dxf3dline *line,
         double extr_y0
 );
+double
+dxf_3dline_get_extr_z0
+(
+        Dxf3dline *line
+);
 DxfPoint *
 dxf_3dline_get_extrusion_vector_as_point
 (
