@@ -3162,6 +3162,85 @@ dxf_3dline_set_extr_z0
 
 
 /*!
+ * \brief Get the pointer to the next \c 3DLINE entity from a DXF 
+ * \c 3DLINE entity.
+ *
+ * \return pointer to the next \c 3DLINE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+Dxf3dline *
+dxf_3dline_get_next
+(
+        Dxf3dline *line
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((Dxf3dline *) line->next);
+}
+
+
+/*!
+ * \brief Set the pointer to the next \c 3DLINE for a DXF \c 3DLINE
+ * entity.
+ */
+Dxf3dline *
+dxf_3dline_set_next
+(
+        Dxf3dline *line,
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+        Dxf3dline *next
+                /*!< a pointer to the next \c 3DLINE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->next = (struct Dxf3dline *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c 3DLINE entity.
  *
@@ -3246,85 +3325,6 @@ dxf_3dline_set_extrusion_vector
         line->extr_x0 = extr_x0;
         line->extr_y0 = extr_y0;
         line->extr_z0 = extr_z0;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (line);
-}
-
-
-/*!
- * \brief Get the pointer to the next \c 3DLINE entity from a DXF 
- * \c 3DLINE entity.
- *
- * \return pointer to the next \c 3DLINE entity.
- *
- * \warning No checks are performed on the returned pointer.
- */
-Dxf3dline *
-dxf_3dline_get_next
-(
-        Dxf3dline *line
-                /*!< a pointer to a DXF \c 3DLINE entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (line->next == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return ((Dxf3dline *) line->next);
-}
-
-
-/*!
- * \brief Set the pointer to the next \c 3DLINE for a DXF \c 3DLINE
- * entity.
- */
-Dxf3dline *
-dxf_3dline_set_next
-(
-        Dxf3dline *line,
-                /*!< a pointer to a DXF \c 3DLINE entity. */
-        Dxf3dline *next
-                /*!< a pointer to the next \c 3DLINE for the entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (next == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        line->next = (struct Dxf3dline *) next;
 #if DEBUG
         DXF_DEBUG_END
 #endif

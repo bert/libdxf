@@ -576,6 +576,17 @@ dxf_3dline_set_extr_z0
         Dxf3dline *line,
         double extr_z0
 );
+Dxf3dline *
+dxf_3dline_get_next
+(
+        Dxf3dline *line
+);
+Dxf3dline *
+dxf_3dline_set_next
+(
+        Dxf3dline *line,
+        Dxf3dline *next
+);
 DxfPoint *
 dxf_3dline_get_extrusion_vector_as_point
 (
@@ -588,17 +599,6 @@ dxf_3dline_set_extrusion_vector
         double extr_x0,
         double extr_y0,
         double extr_z0
-);
-Dxf3dline *
-dxf_3dline_get_next
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_next
-(
-        Dxf3dline *line,
-        Dxf3dline *next
 );
 DxfPoint *
 dxf_3dline_get_mid_point
