@@ -632,8 +632,11 @@ dxf_3dface_write
                 {
                         DxfBinaryGraphicsData *iter;
                         iter = dxf_3dface_get_binary_graphics_data (face);
-                        fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
-                        iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
+                                iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
+                        }
                 }
         }
         if (fp->acad_version_number >= AutoCAD_2004)
