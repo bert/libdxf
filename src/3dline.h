@@ -570,6 +570,12 @@ dxf_3dline_get_extr_z0
 (
         Dxf3dline *line
 );
+Dxf3dline *
+dxf_3dline_set_extr_z0
+(
+        Dxf3dline *line,
+        double extr_z0
+);
 DxfPoint *
 dxf_3dline_get_extrusion_vector_as_point
 (

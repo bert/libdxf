@@ -3126,6 +3126,42 @@ dxf_3dline_get_extr_z0
 
 
 /*!
+ * \brief Set the Z-value of the extrusion vector of a DXF \c 3DLINE
+ * entity.
+ *
+ * \return a pointer to a DXF \c 3DLINE entity when successful, \c NULL
+ * when an error occurred.
+ */
+Dxf3dline *
+dxf_3dline_set_extr_z0
+(
+        Dxf3dline *line,
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+        double extr_z0
+                /*!< the Z-value of the extrusion vector of a DXF
+                 * \c 3DLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->extr_z0 = extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c 3DLINE entity.
  *
