@@ -628,7 +628,7 @@ dxf_3dface_write
 #else
                 fprintf (fp->fp, " 92\n%d\n", dxf_3dface_get_graphics_data_size (face));
 #endif
-                if (face->binary_graphics_data != NULL)
+                if (dxf_3dface_get_binary_graphics_data (face) != NULL)
                 {
                         DxfBinaryGraphicsData *iter;
                         iter = dxf_3dface_get_binary_graphics_data (face);
