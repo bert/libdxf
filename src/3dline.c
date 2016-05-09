@@ -119,9 +119,9 @@ dxf_3dline_init
         dxf_3dline_set_layer (line, strdup (DXF_DEFAULT_LAYER));
         dxf_3dline_set_p0 (line, dxf_point_init (line->p0));
         dxf_3dline_set_p1 (line, dxf_point_init (line->p1));
-        line->extr_x0 = 0.0;
-        line->extr_y0 = 0.0;
-        line->extr_z0 = 0.0;
+        dxf_3dline_set_extr_x0 (line, 0.0);
+        dxf_3dline_set_extr_y0 (line, 0.0);
+        dxf_3dline_set_extr_z0 (line, 0.0);
         dxf_3dline_set_elevation (line, 0.0);
         dxf_3dline_set_thickness (line, 0.0);
         dxf_3dline_set_linetype_scale (line, DXF_DEFAULT_LINETYPE_SCALE);
