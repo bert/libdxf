@@ -657,13 +657,13 @@ dxf_3dline_write
         fprintf (fp->fp, " 21\n%f\n", dxf_3dline_get_y1 (line));
         fprintf (fp->fp, " 31\n%f\n", dxf_3dline_get_z1 (line));
         if ((fp->acad_version_number >= AutoCAD_12)
-                && (line->extr_x0 != 0.0)
-                && (line->extr_y0 != 0.0)
-                && (line->extr_z0 != 1.0))
+                && (dxf_3dline_get_extr_x0 (line) != 0.0)
+                && (dxf_3dline_get_extr_y0 (line) != 0.0)
+                && (dxf_3dline_get_extr_z0 (line) != 1.0))
         {
-                fprintf (fp->fp, "210\n%f\n", line->extr_x0);
-                fprintf (fp->fp, "220\n%f\n", line->extr_y0);
-                fprintf (fp->fp, "230\n%f\n", line->extr_z0);
+                fprintf (fp->fp, "210\n%f\n", dxf_3dline_get_extr_x0 (line));
+                fprintf (fp->fp, "220\n%f\n", dxf_3dline_get_extr_y0 (line));
+                fprintf (fp->fp, "230\n%f\n", dxf_3dline_get_extr_z0 (line));
         }
         /* Clean up. */
         free (dxf_entity_name);
