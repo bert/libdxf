@@ -530,6 +530,11 @@ dxf_acad_proxy_entity_set_binary_graphics_data
         DxfAcadProxyEntity *acad_proxy_entity,
         DxfBinaryGraphicsData *data
 );
+DxfBinaryEntityData *
+dxf_acad_proxy_entity_get_binary_entity_data
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_get_next
 (
