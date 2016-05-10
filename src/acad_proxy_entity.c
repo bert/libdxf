@@ -2685,7 +2685,7 @@ dxf_acad_proxy_entity_set_binary_graphics_data
                   __FUNCTION__);
                 return (NULL);
         }
-        if (acad_proxy_entity == NULL)
+        if (data == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
