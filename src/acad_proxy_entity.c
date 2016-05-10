@@ -2621,6 +2621,46 @@ dxf_acad_proxy_entity_set_object_drawing_format
 
 
 /*!
+ * \brief Get the pointer to the \c binary_graphics_data from a DXF 
+ * \c ACAD_PROXY_ENTITY entity.
+ *
+ * \return pointer to the \c binary_graphics_data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryGraphicsData *
+dxf_acad_proxy_entity_get_binary_graphics_data
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (acad_proxy_entity->binary_graphics_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the binary_graphics_data member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBinaryGraphicsData *) acad_proxy_entity->binary_graphics_data);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c ACAD_PROXY_ENTITY entity from a
  * DXF \c ACAD_PROXY_ENTITY entity.
  *

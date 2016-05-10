@@ -519,6 +519,11 @@ dxf_acad_proxy_entity_set_object_drawing_format
         DxfAcadProxyEntity *acad_proxy_entity,
         ulong object_drawing_format
 );
+DxfBinaryGraphicsData *
+dxf_acad_proxy_entity_get_binary_graphics_data
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 DxfAcadProxyEntity *
 dxf_acad_proxy_entity_get_next
 (
