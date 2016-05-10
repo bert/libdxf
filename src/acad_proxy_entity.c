@@ -156,7 +156,7 @@ dxf_acad_proxy_entity_init
         {
                 acad_proxy_entity->object_id[i] = strdup ("");
         }
-        acad_proxy_entity->next = NULL;
+        dxf_acad_proxy_entity_set_next (acad_proxy_entity, NULL);
 #if DEBUG
         DXF_DEBUG_END
 #endif
