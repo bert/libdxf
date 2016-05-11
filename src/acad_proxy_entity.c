@@ -518,9 +518,22 @@ dxf_acad_proxy_entity_write
         }
         if (fp->acad_version_number < AutoCAD_13)
         {
-                fprintf (stderr,
-                  (_("Warning in %s () illegal DXF version for this entity.\n")),
-                  __FUNCTION__);
+                if (fp->follow_strict_version_rules)
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () illegal DXF version for this entity.\n")),
+                          __FUNCTION__);
+                        fprintf (stderr,
+                          (_("\t entity %s with ID code %d is omitted from output.\n")),
+                          dxf_entity_name, dxf_acad_proxy_entity_get_id_code (acad_proxy_entity));
+                        return (EXIT_FAILURE);
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Warning in %s () illegal DXF version for this entity.\n")),
+                          __FUNCTION__);
+                }
         }
         if (fp->acad_version_number <= AutoCAD_13)
         {
