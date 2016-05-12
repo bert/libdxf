@@ -103,6 +103,7 @@ src/mtext.c
 src/mtext.h
 src/object.c
 src/object.h
+src/object_id.c
 src/object_id.h
 src/object_ptr.c
 src/object_ptr.h

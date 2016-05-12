@@ -70,6 +70,7 @@ libdxf_la_SOURCES = \
   object_ptr.h \
   object_ptr.c \
   object_id.h \
+  object_id.c \
   object.h \
   object.c \
   mtext.h \

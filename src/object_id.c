@@ -1,9 +1,9 @@
 /*!
- * \file object_id.h
+ * \file object_id.c
  *
  * \author Copyright (C) 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Header file for a DXF object id functions.
+ * \brief Functions for DXF object ids.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -27,39 +27,47 @@
  * exchange of drawing files between various Computer Aided Drafting
  * programs.\n
  * DXF is an industry standard designed by Autodesk(TM).\n
- * For more details see http://www.autodesk.com .
+ * For more details see http://www.autodesk.com.\n\n
  * <hr>
  */
 
 
-#ifndef LIBDXF_SRC_OBJECT_ID_H
-#define LIBDXF_SRC_OBJECT_ID_H
-
-
-#include "global.h"
+#include "object_id.h"
 
 
 /*!
- * \brief DXF definition of an object id.
+ * \brief Allocate memory for a DXF \c object_id.
+ *
+ * Fill the memory contents with zeros.
  */
-typedef struct
-dxf_object_is_struct
-{
-        char *data;
-                /*!< Pointer to the id. */
-        int length;
-                /*!< Length of the data member. */
-        struct DxfObjectId *next;
-                /*!< Pointer to the next DxfObjectId.\n
-                 * \c NULL in the last DxfObjectId. */
-} DxfObjectId;
-
-
 DxfObjectId *
-dxf_object_id_new ();
+dxf_object_id_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfObjectId *object_id = NULL;
+        size_t size;
 
-
-#endif /* LIBDXF_SRC_OBJECT_ID_H */
+        size = sizeof (DxfObjectId);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((object_id = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfObjectId struct.\n")),
+                  __FUNCTION__);
+                object_id = NULL;
+        }
+        else
+        {
+                memset (object_id, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object_id);
+}
 
 
 /* EOF */
