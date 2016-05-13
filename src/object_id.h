@@ -62,6 +62,11 @@ dxf_object_id_init
 (
         DxfObjectId *object_id
 );
+int
+dxf_object_id_free
+(
+        DxfObjectId *object_id
+);
 
 
 #endif /* LIBDXF_SRC_OBJECT_ID_H */

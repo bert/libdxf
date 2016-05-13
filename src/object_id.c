@@ -111,4 +111,39 @@ dxf_object_id_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c object_id and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_object_id_free
+(
+        DxfObjectId *object_id
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c object_id. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (object_id->next != NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next DxfObject was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        free (object_id->data);
+        free (object_id);
+        object_id = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */
