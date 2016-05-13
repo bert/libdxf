@@ -70,4 +70,45 @@ dxf_object_id_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a DXF
+ * \c object_id.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfObjectId *
+dxf_object_id_init
+(
+        DxfObjectId *object_id
+                /*!< DXF object_id. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_id == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                object_id = dxf_object_id_new ();
+        }
+        if (object_id == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory for a DxfObjectId struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        object_id->data = strdup ("");
+        object_id->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object_id);
+}
+
+
 /* EOF */

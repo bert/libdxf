@@ -57,6 +57,11 @@ dxf_object_is_struct
 
 DxfObjectId *
 dxf_object_id_new ();
+DxfObjectId *
+dxf_object_id_init
+(
+        DxfObjectId *object_id
+);
 
 
 #endif /* LIBDXF_SRC_OBJECT_ID_H */
