@@ -146,4 +146,36 @@ dxf_object_id_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c object_ids
+ * and all their data fields.
+ */
+void
+dxf_object_id_free_chain
+(
+        DxfObjectId *object_ids
+                /*!< a pointer to the chain of DXF \c object_ids. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (object_ids == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (object_ids != NULL)
+        {
+                struct DxfObjectId *iter = object_ids->next;
+                dxf_object_id_free (object_ids);
+                object_ids = (DxfObjectId *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */
