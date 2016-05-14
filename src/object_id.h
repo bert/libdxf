@@ -77,6 +77,12 @@ dxf_object_id_get_data
 (
         DxfObjectId *object_id
 );
+DxfObjectId *
+dxf_object_id_set_data
+(
+        DxfObjectId *object_id,
+        char *data
+);
 
 
 #endif /* LIBDXF_SRC_OBJECT_ID_H */

@@ -215,4 +215,42 @@ dxf_object_id_get_data
 }
 
 
+/*!
+ * \brief Set the \c data for a DXF \c object_id.
+ */
+DxfObjectId *
+dxf_object_id_set_data
+(
+        DxfObjectId *object_id,
+                /*!< a pointer to a DXF \c object_id. */
+        char *data
+                /*!< a string containing the \c data for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_id == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        object_id->data = strdup (data);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object_id);
+}
+
+
 /* EOF */
