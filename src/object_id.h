@@ -72,6 +72,11 @@ dxf_object_id_free_chain
 (
         DxfObjectId *object_ids
 );
+char *
+dxf_object_id_get_data
+(
+        DxfObjectId *object_id
+);
 
 
 #endif /* LIBDXF_SRC_OBJECT_ID_H */

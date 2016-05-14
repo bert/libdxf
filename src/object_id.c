@@ -178,4 +178,41 @@ dxf_object_id_free_chain
 }
 
 
+/*!
+ * \brief Get the \c data from a DXF \c object_id.
+ *
+ * \return \c data when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_object_id_get_data
+(
+        DxfObjectId *object_id
+                /*!< a pointer to a DXF \c object_id. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_id == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (object_id->data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the data member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (object_id->data));
+}
+
+
 /* EOF */
