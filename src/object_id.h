@@ -99,6 +99,12 @@ dxf_object_id_get_next
 (
         DxfObjectId *object_id
 );
+DxfObjectId *
+dxf_object_id_set_next
+(
+        DxfObjectId *object_id,
+        DxfObjectId *next
+);
 
 
 #endif /* LIBDXF_SRC_OBJECT_ID_H */
