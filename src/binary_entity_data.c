@@ -238,8 +238,6 @@ dxf_binary_entity_data_get_data_line
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (data == NULL)
         {
@@ -255,11 +253,10 @@ dxf_binary_entity_data_get_data_line
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (data->data_line);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (data->data_line));
 }
 
 
