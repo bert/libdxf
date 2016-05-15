@@ -253,4 +253,41 @@ dxf_object_id_set_data
 }
 
 
+/*!
+ * \brief Get the \c length from a DXF \c object_id.
+ *
+ * \return \c length.
+ */
+int
+dxf_object_id_get_length
+(
+        DxfObjectId *object_id
+                /*!< a pointer to a DXF \c object_id. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_id == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (object_id->length < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the length member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object_id->length);
+}
+
+
 /* EOF */

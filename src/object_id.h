@@ -83,6 +83,11 @@ dxf_object_id_set_data
         DxfObjectId *object_id,
         char *data
 );
+int
+dxf_object_id_get_length
+(
+        DxfObjectId *object_id
+);
 
 
 #endif /* LIBDXF_SRC_OBJECT_ID_H */
