@@ -94,6 +94,11 @@ dxf_object_id_set_length
         DxfObjectId *object_id,
         int length
 );
+DxfObjectId *
+dxf_object_id_get_next
+(
+        DxfObjectId *object_id
+);
 
 
 #endif /* LIBDXF_SRC_OBJECT_ID_H */

@@ -331,4 +331,44 @@ dxf_object_id_set_length
 }
 
 
+/*!
+ * \brief Get the pointer to the next DXF \c object_id from a DXF
+ * \c object_id.
+ *
+ * \return pointer to the next \c object_id.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfObjectId *
+dxf_object_id_get_next
+(
+        DxfObjectId *object_id
+                /*!< a pointer to a DXF \ object_id. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_id == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (object_id->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfObjectId *) object_id->next);
+}
+
+
 /* EOF */
