@@ -290,4 +290,45 @@ dxf_object_id_get_length
 }
 
 
+/*!
+ * \brief Set the \c length for a DXF \c object_id.
+ *
+ * \return a pointer to \c object_id when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfObjectId *
+dxf_object_id_set_length
+(
+        DxfObjectId *object_id,
+                /*!< a pointer to a DXF \c object_id. */
+        int length
+                /*!< Length to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_id == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (length < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative length value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        object_id->length = length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object_id);
+}
+
+
 /* EOF */
