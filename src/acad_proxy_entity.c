@@ -1584,8 +1584,6 @@ dxf_acad_proxy_entity_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
         {
@@ -1601,11 +1599,10 @@ dxf_acad_proxy_entity_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (acad_proxy_entity->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (acad_proxy_entity->dictionary_owner_soft));
 }
 
 
