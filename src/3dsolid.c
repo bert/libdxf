@@ -2473,8 +2473,6 @@ dxf_3dsolid_get_modeler_format_version_number
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (solid == NULL)
         {
@@ -2495,11 +2493,10 @@ dxf_3dsolid_get_modeler_format_version_number
                   (_("Warning in %s () an out of range value was found in the modeler_format_version_number member.\n")),
                   __FUNCTION__);
         }
-        result = solid->modeler_format_version_number;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (solid->modeler_format_version_number);
 }
 
 
