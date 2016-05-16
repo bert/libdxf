@@ -1161,8 +1161,6 @@ dxf_acad_proxy_entity_get_linetype_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
         {
@@ -1178,11 +1176,10 @@ dxf_acad_proxy_entity_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = acad_proxy_entity->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (acad_proxy_entity->linetype_scale);
 }
 
 
