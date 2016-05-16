@@ -640,8 +640,6 @@ dxf_appid_get_flag
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (appid == NULL)
         {
@@ -650,11 +648,10 @@ dxf_appid_get_flag
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = appid->flag;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (appid->flag);
 }
 
 
