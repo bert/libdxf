@@ -869,8 +869,6 @@ dxf_appid_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (appid == NULL)
         {
@@ -886,11 +884,10 @@ dxf_appid_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (appid->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (appid->dictionary_owner_soft));
 }
 
 
