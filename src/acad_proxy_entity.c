@@ -1401,8 +1401,6 @@ dxf_acad_proxy_entity_get_paperspace
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
         {
@@ -1423,11 +1421,10 @@ dxf_acad_proxy_entity_get_paperspace
                   (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
                   __FUNCTION__);
         }
-        result = acad_proxy_entity->paperspace;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (acad_proxy_entity->paperspace);
 }
 
 
