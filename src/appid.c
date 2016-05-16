@@ -1,7 +1,7 @@
 /*!
  * \file appid.c
  *
- * \author Copyright (C) 2009 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF application identity symbol table entry
  * (\c APPID).
@@ -474,8 +474,6 @@ dxf_appid_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (appid == NULL)
         {
@@ -484,11 +482,10 @@ dxf_appid_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = appid->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (appid->id_code);
 }
 
 
