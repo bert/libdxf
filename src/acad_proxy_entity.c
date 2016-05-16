@@ -1236,8 +1236,6 @@ dxf_acad_proxy_entity_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
         {
@@ -1260,11 +1258,10 @@ dxf_acad_proxy_entity_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = acad_proxy_entity->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (acad_proxy_entity->visibility);
 }
 
 
