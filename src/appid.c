@@ -550,8 +550,6 @@ dxf_appid_get_application_name
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (appid == NULL)
         {
@@ -560,11 +558,10 @@ dxf_appid_get_application_name
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (appid->application_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (appid->application_name));
 }
 
 
