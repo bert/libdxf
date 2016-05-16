@@ -871,8 +871,6 @@ dxf_acad_proxy_entity_get_linetype
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
         {
@@ -888,11 +886,10 @@ dxf_acad_proxy_entity_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (acad_proxy_entity->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (acad_proxy_entity->linetype));
 }
 
 
