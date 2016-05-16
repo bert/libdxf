@@ -791,8 +791,6 @@ dxf_appid_is_xresolved
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result = FALSE;
-
         /* Do some basic checks. */
         if (appid == NULL)
         {
@@ -801,12 +799,11 @@ dxf_appid_is_xresolved
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ((DXF_CHECK_BIT (appid->flag, 4))
-          && (DXF_CHECK_BIT (appid->flag, 5)));
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DXF_CHECK_BIT (appid->flag, 4))
+          && (DXF_CHECK_BIT (appid->flag, 5)));
 }
 
 
