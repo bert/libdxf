@@ -197,8 +197,8 @@ void
 dxf_binary_graphics_data_free_chain
 (
         DxfBinaryGraphicsData *data
-                /*!< pointer to the chain of DXF \c HATCH binary
-                 * graphics data objects. */
+                /*!< pointer to the chain of DXF \c binary graphics data
+                 * objects. */
 )
 {
 #ifdef DEBUG
