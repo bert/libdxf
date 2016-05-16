@@ -1053,8 +1053,6 @@ dxf_appid_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfAppid *result;
-
         /* Do some basic checks. */
         if (appid == NULL)
         {
@@ -1070,11 +1068,10 @@ dxf_appid_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfAppid *) appid->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfAppid *) appid->next);
 }
 
 
