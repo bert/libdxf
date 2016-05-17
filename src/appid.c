@@ -20,6 +20,12 @@
  * When writing DXF data to file with versions before DXF R12 a warning
  * message is given.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -54,12 +60,6 @@
  * \brief Allocate memory for a DXF \c APPID symbol table entry.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAppid *
 dxf_appid_new ()
@@ -97,12 +97,6 @@ dxf_appid_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAppid *
 dxf_appid_init
@@ -153,12 +147,6 @@ dxf_appid_init
  * While parsing the DXF file store data in \c appid. \n
  *
  * \return a pointer to \c appid.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAppid *
 dxf_appid_read
@@ -267,12 +255,6 @@ dxf_appid_read
 /*!
  * \brief Write DXF output to a file for a DXF \c APPID symbol table
  * entry.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_appid_write
@@ -378,12 +360,6 @@ dxf_appid_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_appid_free
@@ -417,12 +393,6 @@ dxf_appid_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c APPID
  * symbol table entries and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_appid_free_chain
@@ -457,12 +427,6 @@ dxf_appid_free_chain
  * \brief Get the ID code from this DXF \c APPID symbol table entry.
  *
  * \return ID code.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_appid_get_id_code
@@ -491,12 +455,6 @@ dxf_appid_get_id_code
 
 /*!
  * \brief Set the ID code for this DXF \c APPID symbol table entry.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAppid *
 dxf_appid_set_id_code
@@ -533,12 +491,6 @@ dxf_appid_set_id_code
  * entry.
  *
  * \return application name.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_appid_get_application_name
@@ -577,12 +529,6 @@ dxf_appid_get_application_name
  *
  * \warning The passed \c name variable is not freed by this function
  * and needs to be freed by the caller.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAppid *
 dxf_appid_set_application_name
@@ -623,12 +569,6 @@ dxf_appid_set_application_name
  * \brief Get the flag value from this DXF \c APPID symbol table entry.
  *
  * \return flag value.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_appid_get_flag
@@ -657,12 +597,6 @@ dxf_appid_get_flag
 
 /*!
  * \brief Set the flag for this DXF \c APPID symbol table entry.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAppid *
 dxf_appid_set_flag
@@ -698,12 +632,6 @@ dxf_appid_set_flag
  *
  * \return \c TRUE when not to be written,
  * or \c FALSE when to be written.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_appid_is_no_save_xdata
@@ -735,12 +663,6 @@ dxf_appid_is_no_save_xdata
  *
  * \return \c TRUE when \c APPID is externally dependent on an xref,
  * or \c FALSE when \c APPID is not externally dependent on an xref.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_appid_is_xreferenced
@@ -774,12 +696,6 @@ dxf_appid_is_xreferenced
  * \return \c TRUE when \c APPID is externally dependent on a xref and
  * has been successfully resolved, or \c FALSE when \c APPID is not
  * externally dependent on a xref and has not been successfully resolved.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_appid_is_xresolved
@@ -813,12 +729,6 @@ dxf_appid_is_xresolved
  *
  * \return \c TRUE when \c APPID is internally referenced by an entity,
  * or \c FALSE when \c APPID is not internally referenced by an entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_appid_is_referenced
@@ -852,12 +762,6 @@ dxf_appid_is_referenced
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_appid_get_dictionary_owner_soft
@@ -894,12 +798,6 @@ dxf_appid_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c APPID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAppid *
 dxf_appid_set_dictionary_owner_soft
@@ -944,12 +842,6 @@ dxf_appid_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_appid_get_dictionary_owner_hard
@@ -986,12 +878,6 @@ dxf_appid_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c APPID entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAppid *
 dxf_appid_set_dictionary_owner_hard
@@ -1036,12 +922,6 @@ dxf_appid_set_dictionary_owner_hard
  * \return pointer to the next \c APPID entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAppid *
 dxf_appid_get_next
@@ -1078,12 +958,6 @@ dxf_appid_get_next
 /*!
  * \brief Set the pointer to the next \c APPID for a DXF \c APPID
  * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAppid *
 dxf_appid_set_next
