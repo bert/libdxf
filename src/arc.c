@@ -762,8 +762,6 @@ dxf_arc_get_linetype
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (arc == NULL)
         {
@@ -779,11 +777,10 @@ dxf_arc_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (arc->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (arc->linetype));
 }
 
 
