@@ -685,8 +685,6 @@ dxf_arc_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (arc == NULL)
         {
@@ -702,11 +700,10 @@ dxf_arc_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = arc->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (arc->id_code);
 }
 
 
