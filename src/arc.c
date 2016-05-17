@@ -1123,8 +1123,6 @@ dxf_arc_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (arc == NULL)
         {
@@ -1147,11 +1145,10 @@ dxf_arc_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = arc->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (arc->visibility);
 }
 
 
