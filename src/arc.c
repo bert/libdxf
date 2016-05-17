@@ -912,8 +912,6 @@ dxf_arc_get_elevation
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (arc == NULL)
         {
@@ -922,11 +920,10 @@ dxf_arc_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = arc->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (arc->elevation);
 }
 
 
