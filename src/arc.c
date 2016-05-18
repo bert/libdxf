@@ -1674,8 +1674,6 @@ dxf_arc_get_radius
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (arc == NULL)
         {
@@ -1698,11 +1696,10 @@ dxf_arc_get_radius
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = arc->radius;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (arc->radius);
 }
 
 
