@@ -851,8 +851,6 @@ dxf_attdef_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -868,11 +866,10 @@ dxf_attdef_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attdef->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (attdef->id_code);
 }
 
 
