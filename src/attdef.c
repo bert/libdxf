@@ -1743,8 +1743,6 @@ dxf_attdef_get_dictionary_owner_hard
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -1760,11 +1758,10 @@ dxf_attdef_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (attdef->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (attdef->dictionary_owner_hard));
 }
 
 
