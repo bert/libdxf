@@ -1274,8 +1274,6 @@ dxf_attdef_get_linetype_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -1291,11 +1289,10 @@ dxf_attdef_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attdef->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (attdef->linetype_scale);
 }
 
 
