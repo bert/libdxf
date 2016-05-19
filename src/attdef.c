@@ -1114,8 +1114,6 @@ dxf_attdef_get_elevation
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -1124,11 +1122,10 @@ dxf_attdef_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attdef->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (attdef->elevation);
 }
 
 
