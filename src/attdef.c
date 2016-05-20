@@ -3164,8 +3164,6 @@ dxf_attdef_get_hor_align
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -3188,11 +3186,10 @@ dxf_attdef_get_hor_align
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attdef->hor_align;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (attdef->hor_align);
 }
 
 
