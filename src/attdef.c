@@ -2583,8 +2583,6 @@ dxf_attdef_get_rel_x_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -2600,11 +2598,10 @@ dxf_attdef_get_rel_x_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attdef->rel_x_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (attdef->rel_x_scale);
 }
 
 
