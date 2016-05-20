@@ -2738,8 +2738,6 @@ dxf_attdef_get_obl_angle
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -2748,12 +2746,11 @@ dxf_attdef_get_obl_angle
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attdef->obl_angle;
-        /*! \todo Unify the oblique angle. */
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        /*! \todo Unify the oblique angle. */
+        return (attdef->obl_angle);
 }
 
 
