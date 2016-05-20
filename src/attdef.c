@@ -2014,8 +2014,6 @@ dxf_attdef_get_prompt_value
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -2031,11 +2029,10 @@ dxf_attdef_get_prompt_value
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (attdef->prompt_value);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (attdef->prompt_value));
 }
 
 
