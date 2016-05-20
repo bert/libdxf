@@ -5,6 +5,12 @@
  *
  * \brief Functions for a DXF attribute definition entity (\c ATTDEF).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -39,12 +45,6 @@
  * \brief Allocate memory for a \c DxfAttdef.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_new ()
@@ -81,12 +81,6 @@ dxf_attdef_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_init
@@ -163,12 +157,6 @@ dxf_attdef_init
  * While parsing the DXF file store data in \c dxf_attdef. \n
  *
  * \return a pointer to \c attdef.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_read
@@ -502,12 +490,6 @@ dxf_attdef_read
 
 /*!
  * \brief Write DXF output to fp for a attribute definition entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_write
@@ -751,12 +733,6 @@ dxf_attdef_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_free
@@ -795,12 +771,6 @@ dxf_attdef_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c ATTDEF
  * entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_attdef_free_chain
@@ -834,12 +804,6 @@ dxf_attdef_free_chain
  * \brief Get the ID code from a DXF \c ATTDEF entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_get_id_code
@@ -875,12 +839,6 @@ dxf_attdef_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_id_code
@@ -923,12 +881,6 @@ dxf_attdef_set_id_code
  * \brief Get the linetype from a DXF \c ATTDEF entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_attdef_get_linetype
@@ -964,12 +916,6 @@ dxf_attdef_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_linetype
@@ -1010,12 +956,6 @@ dxf_attdef_set_linetype
  * \brief Get the layer from a DXF \c ATTDEF entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_attdef_get_layer
@@ -1051,12 +991,6 @@ dxf_attdef_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_layer
@@ -1097,12 +1031,6 @@ dxf_attdef_set_layer
  * \brief Get the elevation from a DXF \c ATTDEF entity.
  *
  * \return elevation.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_attdef_get_elevation
@@ -1131,12 +1059,6 @@ dxf_attdef_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_elevation
@@ -1170,12 +1092,6 @@ dxf_attdef_set_elevation
  * \brief Get the thickness from a DXF \c ATTDEF entity.
  *
  * \return thickness.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_attdef_get_thickness
@@ -1211,12 +1127,6 @@ dxf_attdef_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_thickness
@@ -1257,12 +1167,6 @@ dxf_attdef_set_thickness
  * \brief Get the linetype scale from a DXF \c ATTDEF entity.
  *
  * \return linetype scale.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_attdef_get_linetype_scale
@@ -1298,12 +1202,6 @@ dxf_attdef_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_linetype_scale
@@ -1344,12 +1242,6 @@ dxf_attdef_set_linetype_scale
  * \brief Get the visibility from a DXF \c ATTDEF entity.
  *
  * \return visibility.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int16_t
 dxf_attdef_get_visibility
@@ -1392,12 +1284,6 @@ dxf_attdef_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_visibility
@@ -1445,12 +1331,6 @@ dxf_attdef_set_visibility
  * \brief Get the color from a DXF \c ATTDEF entity.
  *
  * \return color.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_get_color
@@ -1485,12 +1365,6 @@ dxf_attdef_get_color
 
 /*!
  * \brief Set the color for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_color
@@ -1532,12 +1406,6 @@ dxf_attdef_set_color
  * \brief Get the paperspace flag value from a DXF \c ATTDEF entity.
  *
  * \return paperspace flag value.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_get_paperspace
@@ -1578,12 +1446,6 @@ dxf_attdef_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_paperspace
@@ -1634,12 +1496,6 @@ dxf_attdef_set_paperspace
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_attdef_get_dictionary_owner_soft
@@ -1676,12 +1532,6 @@ dxf_attdef_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_dictionary_owner_soft
@@ -1726,12 +1576,6 @@ dxf_attdef_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_attdef_get_dictionary_owner_hard
@@ -1768,12 +1612,6 @@ dxf_attdef_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_dictionary_owner_hard
@@ -1817,12 +1655,6 @@ dxf_attdef_set_dictionary_owner_hard
  * \return default value.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_attdef_get_default_value
@@ -1858,12 +1690,6 @@ dxf_attdef_get_default_value
 
 /*!
  * \brief Set the default value for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_default_value
@@ -1907,12 +1733,6 @@ dxf_attdef_set_default_value
  * \return tag value.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_attdef_get_tag_value
@@ -1948,12 +1768,6 @@ dxf_attdef_get_tag_value
 
 /*!
  * \brief Set the tag value for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_tag_value
@@ -1997,12 +1811,6 @@ dxf_attdef_set_tag_value
  * \return prompt value.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_attdef_get_prompt_value
@@ -2038,12 +1846,6 @@ dxf_attdef_get_prompt_value
 
 /*!
  * \brief Set the prompt value for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_prompt_value
@@ -2087,12 +1889,6 @@ dxf_attdef_set_prompt_value
  * \return text style.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_attdef_get_text_style
@@ -2128,12 +1924,6 @@ dxf_attdef_get_text_style
 
 /*!
  * \brief Set the text style for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_text_style
@@ -2175,12 +1965,6 @@ dxf_attdef_set_text_style
  * \brief Get the start point of a DXF \c ATTDEF entity.
  *
  * \return the start point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_attdef_get_start_point
@@ -2279,12 +2063,6 @@ dxf_attdef_get_start_point
  * \brief Set the start point of a DXF \c ATTDEF entity.
  *
  * \return a pointer to a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_start_point
@@ -2327,12 +2105,6 @@ dxf_attdef_set_start_point
  * \brief Get the alignment point of a DXF \c ATTDEF entity.
  *
  * \return the alignment point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_attdef_get_alignment_point
@@ -2431,12 +2203,6 @@ dxf_attdef_get_alignment_point
  * \brief Set the alignment point of a DXF \c ATTDEF entity.
  *
  * \return a pointer to a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_alignment_point
@@ -2479,12 +2245,6 @@ dxf_attdef_set_alignment_point
  * \brief Get the height from a DXF \c ATTDEF entity.
  *
  * \return height.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_attdef_get_height
@@ -2520,12 +2280,6 @@ dxf_attdef_get_height
 
 /*!
  * \brief Set the height for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_height
@@ -2566,12 +2320,6 @@ dxf_attdef_set_height
  * \brief Get the relative X scale from a DXF \c ATTDEF entity.
  *
  * \return relative X scale.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_attdef_get_rel_x_scale
@@ -2607,12 +2355,6 @@ dxf_attdef_get_rel_x_scale
 
 /*!
  * \brief Set the relative X scale for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_rel_x_scale
@@ -2646,12 +2388,6 @@ dxf_attdef_set_rel_x_scale
  * \brief Get the rotation angle from a DXF \c ATTDEF entity.
  *
  * \return rotation angle.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_attdef_get_rot_angle
@@ -2681,12 +2417,6 @@ dxf_attdef_get_rot_angle
 
 /*!
  * \brief Set the rotation angle for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_rot_angle
@@ -2721,12 +2451,6 @@ dxf_attdef_set_rot_angle
  * \brief Get the oblique angle from a DXF \c ATTDEF entity.
  *
  * \return oblique angle.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_attdef_get_obl_angle
@@ -2756,12 +2480,6 @@ dxf_attdef_get_obl_angle
 
 /*!
  * \brief Set the oblique angle for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_obl_angle
@@ -2796,12 +2514,6 @@ dxf_attdef_set_obl_angle
  * \brief Get the attribute flags from a DXF \c ATTDEF entity.
  *
  * \return attribute flags.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_get_attr_flags
@@ -2844,12 +2556,6 @@ dxf_attdef_get_attr_flags
 
 /*!
  * \brief Set the attribute flags for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_attr_flags
@@ -2898,12 +2604,6 @@ dxf_attdef_set_attr_flags
  *
  * \return \c TRUE when the attribute definition is invisible,
  * or \c FALSE when the attribute definition is visible.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_is_invisible
@@ -2935,12 +2635,6 @@ dxf_attdef_is_invisible
  *
  * \return \c TRUE when the attribute definition is a constant,
  * or \c FALSE when the attribute definition is not a constant.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_is_constant
@@ -2972,12 +2666,6 @@ dxf_attdef_is_constant
  *
  * \return \c TRUE when the input needs to be verified,
  * or \c FALSE when the input needs not to be verified.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_is_verification_required
@@ -3010,12 +2698,6 @@ dxf_attdef_is_verification_required
  *
  * \return \c TRUE when the attributre definition is preset,
  * or \c FALSE when the attribute definition is not preset.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_is_preset
@@ -3046,12 +2728,6 @@ dxf_attdef_is_preset
  * \brief Get the text flags from a DXF \c ATTDEF entity.
  *
  * \return text flags.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_get_text_flags
@@ -3094,12 +2770,6 @@ dxf_attdef_get_text_flags
 
 /*!
  * \brief Set the text flags for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_text_flags
@@ -3147,12 +2817,6 @@ dxf_attdef_set_text_flags
  * \brief Get the horizontal alignment from a DXF \c ATTDEF entity.
  *
  * \return horizontal alignment.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_get_hor_align
@@ -3195,12 +2859,6 @@ dxf_attdef_get_hor_align
 
 /*!
  * \brief Set the horizontal alignment for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_hor_align
@@ -3250,12 +2908,6 @@ dxf_attdef_set_hor_align
  * \return field length.
  *
  * \note Not currently used in DXF R14.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_get_field_length
@@ -3293,12 +2945,6 @@ dxf_attdef_get_field_length
  * \brief Set the field length for a DXF \c ATTDEF entity.
  *
  * \note Not currently used in DXF R14.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_field_length
@@ -3339,12 +2985,6 @@ dxf_attdef_set_field_length
  * \brief Get the vertical text alignment from a DXF \c ATTDEF entity.
  *
  * \return horizontal alignment.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_attdef_get_vert_align
@@ -3387,12 +3027,6 @@ dxf_attdef_get_vert_align
 
 /*!
  * \brief Set the vertical text alignment for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_vert_align
@@ -3443,12 +3077,6 @@ dxf_attdef_set_vert_align
  * \return a DXF \c POINT containing the extrusion coordinates.
  *
  * \warning No other members are copied into the DXF \c POINT.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_attdef_get_extrusion_vector_as_point
@@ -3490,12 +3118,6 @@ dxf_attdef_get_extrusion_vector_as_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c ATTDEF entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_extrusion_vector
@@ -3538,12 +3160,6 @@ dxf_attdef_set_extrusion_vector
  * \return pointer to the next \c ATTDEF entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_get_next
@@ -3580,12 +3196,6 @@ dxf_attdef_get_next
 /*!
  * \brief Set the pointer to the next \c ATTDEF for a DXF \c ATTDEF
  * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfAttdef *
 dxf_attdef_set_next
