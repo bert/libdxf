@@ -2104,8 +2104,6 @@ dxf_attdef_get_text_style
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -2121,11 +2119,10 @@ dxf_attdef_get_text_style
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (attdef->text_style);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (attdef->text_style));
 }
 
 
