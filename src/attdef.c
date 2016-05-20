@@ -3267,8 +3267,6 @@ dxf_attdef_get_field_length
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -3284,11 +3282,10 @@ dxf_attdef_get_field_length
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attdef->field_length;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (attdef->field_length);
 }
 
 
