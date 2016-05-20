@@ -3555,8 +3555,6 @@ dxf_attdef_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfAttdef *result;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -3572,11 +3570,10 @@ dxf_attdef_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfAttdef *) attdef->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfAttdef *) attdef->next);
 }
 
 
