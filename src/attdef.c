@@ -3027,8 +3027,6 @@ dxf_attdef_is_preset
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result = FALSE;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -3037,11 +3035,10 @@ dxf_attdef_is_preset
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (attdef->attr_flags, 3);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (DXF_CHECK_BIT (attdef->attr_flags, 3));
 }
 
 
