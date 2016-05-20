@@ -3356,8 +3356,6 @@ dxf_attdef_get_vert_align
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -3380,11 +3378,10 @@ dxf_attdef_get_vert_align
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attdef->vert_align;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (attdef->vert_align);
 }
 
 
