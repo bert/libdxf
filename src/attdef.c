@@ -2663,8 +2663,6 @@ dxf_attdef_get_rot_angle
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -2673,12 +2671,11 @@ dxf_attdef_get_rot_angle
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attdef->rot_angle;
-        /*! \todo Unify the rotation angle. */
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        /*! \todo Unify the rotation angle. */
+        return (attdef->rot_angle);
 }
 
 
