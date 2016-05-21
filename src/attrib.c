@@ -1662,8 +1662,6 @@ dxf_attrib_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -1679,11 +1677,10 @@ dxf_attrib_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (attrib->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (attrib->dictionary_owner_soft));
 }
 
 
