@@ -2910,8 +2910,6 @@ dxf_attrib_is_verification_required
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result = FALSE;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -2920,11 +2918,10 @@ dxf_attrib_is_verification_required
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (attrib->attr_flags, 2);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (DXF_CHECK_BIT (attrib->attr_flags, 2));
 }
 
 
