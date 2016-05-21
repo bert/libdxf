@@ -2504,8 +2504,6 @@ dxf_attrib_get_rel_x_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -2521,11 +2519,10 @@ dxf_attrib_get_rel_x_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attrib->rel_x_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (attrib->rel_x_scale);
 }
 
 
