@@ -2584,8 +2584,6 @@ dxf_attrib_get_rot_angle
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -2594,12 +2592,11 @@ dxf_attrib_get_rot_angle
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attrib->rot_angle;
-        /*! \todo Unify the rotation angle. */
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        /*! \todo Unify the rotation angle. */
+        return (attrib->rot_angle);
 }
 
 
