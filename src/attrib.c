@@ -2983,8 +2983,6 @@ dxf_attrib_get_text_flags
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -3007,11 +3005,10 @@ dxf_attrib_get_text_flags
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attrib->text_flags;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (attrib->text_flags);
 }
 
 
