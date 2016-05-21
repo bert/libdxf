@@ -1372,8 +1372,6 @@ dxf_attrib_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -1396,11 +1394,10 @@ dxf_attrib_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attrib->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (attrib->visibility);
 }
 
 
