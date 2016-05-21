@@ -1845,8 +1845,6 @@ dxf_attrib_get_default_value
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -1862,11 +1860,10 @@ dxf_attrib_get_default_value
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (attrib->default_value);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (attrib->default_value));
 }
 
 
