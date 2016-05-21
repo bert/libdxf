@@ -1,7 +1,7 @@
 /*!
  * \file attrib.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief DXF attribute entity (\c ATTRIB).
  *
@@ -862,8 +862,6 @@ dxf_attrib_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -879,11 +877,10 @@ dxf_attrib_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attrib->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (attrib->id_code);
 }
 
 
