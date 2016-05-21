@@ -3475,8 +3475,6 @@ dxf_attrib_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfAttrib *result;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -3492,11 +3490,10 @@ dxf_attrib_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfAttrib *) attrib->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfAttrib *) attrib->next);
 }
 
 
