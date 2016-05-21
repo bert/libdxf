@@ -1038,8 +1038,6 @@ dxf_attrib_get_layer
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -1055,11 +1053,10 @@ dxf_attrib_get_layer
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (attrib->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (attrib->layer));
 }
 
 
