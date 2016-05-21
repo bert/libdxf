@@ -3187,8 +3187,6 @@ dxf_attrib_get_field_length
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -3204,11 +3202,10 @@ dxf_attrib_get_field_length
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = attrib->field_length;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (attrib->field_length);
 }
 
 
