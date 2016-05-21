@@ -951,8 +951,6 @@ dxf_attrib_get_linetype
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -968,11 +966,10 @@ dxf_attrib_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (attrib->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (attrib->linetype));
 }
 
 
