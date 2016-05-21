@@ -2025,8 +2025,6 @@ dxf_attrib_get_text_style
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -2042,11 +2040,10 @@ dxf_attrib_get_text_style
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (attrib->text_style);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (attrib->text_style));
 }
 
 
