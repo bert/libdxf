@@ -69,7 +69,7 @@
  * filename of the External Reference.\n
  */
 typedef struct
-dxf_block
+dxf_block_struct
 {
         char *xref_name;
                 /*!< Xref path name.\n
