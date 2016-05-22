@@ -50,7 +50,7 @@
  * \brief DXF definition of an AutoCAD attribute entity (\c ATTRIB).
  */
 typedef struct
-dxf_attrib
+dxf_attrib_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
