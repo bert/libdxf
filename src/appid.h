@@ -49,7 +49,7 @@
 
 
 /*!
- * \brief Definition of an AutoCAD application identification
+ * \brief DXF Definition of an AutoCAD application identification
  * (\c APPID).
  *
  * This table entry contains a name for an application
