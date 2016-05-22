@@ -53,7 +53,7 @@
  * \brief DXF definition of an AutoCAD 3D solid entity (\c 3DSOLID).
  */
 typedef struct
-dxf_3dsolid
+dxf_3dsolid_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
