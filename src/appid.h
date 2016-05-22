@@ -1,7 +1,7 @@
 /*!
  * \file appid.h
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF application identity symbol table entry
  * (\c APPID).
@@ -62,7 +62,7 @@
  * \version According to DXF R14.
  */
 typedef struct
-dxf_appid
+dxf_appid_struct
 {
         int id_code;
                 /*!< Identification number for the entity.\n
