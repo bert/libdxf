@@ -51,7 +51,7 @@
  * (\c ATTDEF).
  */
 typedef struct
-dxf_attdef
+dxf_attdef_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
