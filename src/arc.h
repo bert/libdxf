@@ -1,7 +1,7 @@
 /*!
  * \file arc.h
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF arc entity (\c ARC).
  *
@@ -50,7 +50,7 @@
  * \version According to DXF R14.
  */
 typedef struct
-dxf_arc
+dxf_arc_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
