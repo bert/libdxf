@@ -664,8 +664,6 @@ dxf_block_get_xref_name
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (block == NULL)
         {
@@ -681,11 +679,10 @@ dxf_block_get_xref_name
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (block->xref_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (block->xref_name));
 }
 
 
