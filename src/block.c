@@ -934,8 +934,6 @@ dxf_block_get_description
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (block == NULL)
         {
@@ -951,11 +949,10 @@ dxf_block_get_description
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (block->description);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (block->description));
 }
 
 
