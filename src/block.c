@@ -754,8 +754,6 @@ dxf_block_get_block_name
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (block == NULL)
         {
@@ -771,11 +769,10 @@ dxf_block_get_block_name
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (block->block_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (block->block_name));
 }
 
 
