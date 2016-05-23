@@ -1461,8 +1461,6 @@ dxf_block_has_attributes
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result = FALSE;
-
         /* Do some basic checks. */
         if (block == NULL)
         {
@@ -1471,11 +1469,10 @@ dxf_block_has_attributes
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (block->block_type, 1);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (DXF_CHECK_BIT (block->block_type, 1));
 }
 
 
