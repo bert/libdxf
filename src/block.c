@@ -1337,8 +1337,6 @@ dxf_block_get_block_type
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (block == NULL)
         {
@@ -1353,11 +1351,10 @@ dxf_block_get_block_type
                   (_("Warning in %s () a negative value was found in the block_type member.\n")),
                   __FUNCTION__);
         }
-        result = block->block_type;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (block->block_type);
 }
 
 
