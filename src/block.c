@@ -1744,8 +1744,6 @@ dxf_block_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (block == NULL)
         {
@@ -1761,11 +1759,10 @@ dxf_block_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (block->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (block->dictionary_owner_soft));
 }
 
 
