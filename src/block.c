@@ -1928,8 +1928,6 @@ dxf_block_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfBlock *result;
-
         /* Do some basic checks. */
         if (block == NULL)
         {
@@ -1945,11 +1943,10 @@ dxf_block_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfBlock *) block->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfBlock *) block->next);
 }
 
 
