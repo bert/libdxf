@@ -1836,8 +1836,6 @@ dxf_block_get_endblk
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        struct DxfEndblk *result;
-
         /* Do some basic checks. */
         if (block == NULL)
         {
@@ -1853,11 +1851,10 @@ dxf_block_get_endblk
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (struct DxfEndblk *) block->endblk;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((struct DxfEndblk *) block->endblk);
 }
 
 
