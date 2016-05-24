@@ -5,6 +5,12 @@
  *
  * \brief Functions for a DXF block entity (\c BLOCK).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -40,12 +46,6 @@
  * (a DXF \c BLOCK entity).
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_new ()
@@ -83,12 +83,6 @@ dxf_block_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_init
@@ -146,12 +140,6 @@ dxf_block_init
  * While parsing the DXF file store data in \c dxf_block. \n
  *
  * \return a pointer to \c block.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  *
  * \todo After reading information from the \c BLOCK entity up until the
  * closing Group code 0, the pointer to the following \c ENDBLK entity
@@ -357,12 +345,6 @@ dxf_block_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_write
@@ -563,12 +545,6 @@ dxf_block_write_table
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_free
@@ -606,12 +582,6 @@ dxf_block_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c BLOCK
  * entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_block_free_chain
@@ -647,12 +617,6 @@ dxf_block_free_chain
  * \return xref name.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_block_get_xref_name
@@ -688,12 +652,6 @@ dxf_block_get_xref_name
 
 /*!
  * \brief Set the xref name for a DXF \c BLOCK entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_set_xref_name
@@ -737,12 +695,6 @@ dxf_block_set_xref_name
  * \return block name.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_block_get_block_name
@@ -778,12 +730,6 @@ dxf_block_get_block_name
 
 /*!
  * \brief Set the block name for a DXF \c BLOCK entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_set_block_name
@@ -827,12 +773,6 @@ dxf_block_set_block_name
  * \return additional block name.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_block_get_block_name_additional
@@ -868,12 +808,6 @@ dxf_block_get_block_name_additional
 
 /*!
  * \brief Set the additional block name for a DXF \c BLOCK entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_set_block_name_additional
@@ -917,12 +851,6 @@ dxf_block_set_block_name_additional
  * \return description.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_block_get_description
@@ -958,12 +886,6 @@ dxf_block_get_description
 
 /*!
  * \brief Set the description for a DXF \c BLOCK entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_set_description
@@ -1005,12 +927,6 @@ dxf_block_set_description
  * \brief Get the ID code from a DXF \c BLOCK entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_get_id_code
@@ -1046,12 +962,6 @@ dxf_block_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c BLOCK entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_set_id_code
@@ -1094,12 +1004,6 @@ dxf_block_set_id_code
  * \brief Get the layer from a DXF \c BLOCK entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_block_get_layer
@@ -1135,12 +1039,6 @@ dxf_block_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c BLOCK entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_set_layer
@@ -1181,12 +1079,6 @@ dxf_block_set_layer
  * \brief Get the base point of a DXF \c BLOCK entity.
  *
  * \return the base point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_block_get_base_point
@@ -1272,12 +1164,6 @@ dxf_block_get_base_point
  * \brief Set the base point of a DXF \c BLOCK entity.
  *
  * \return a pointer to a DXF \c BLOCK entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_set_base_point
@@ -1320,12 +1206,6 @@ dxf_block_set_base_point
  * \brief Get the block type from a DXF \c BLOCK entity.
  *
  * \return block type.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_get_block_type
@@ -1360,12 +1240,6 @@ dxf_block_get_block_type
 
 /*!
  * \brief Set the blcok type for a DXF \c BLOCK entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_set_block_type
@@ -1407,12 +1281,6 @@ dxf_block_set_block_type
  *
  * \return \c TRUE when this block is anonymous,
  * or \c FALSE when this block is not anonymous.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_is_anonymous
@@ -1444,12 +1312,6 @@ dxf_block_is_anonymous
  *
  * \return \c TRUE when this block has attributes,
  * or \c FALSE when this block has no attributes.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_has_attributes
@@ -1481,12 +1343,6 @@ dxf_block_has_attributes
  *
  * \return \c TRUE when \c BLOCK is an external refence,
  * or \c FALSE when \c BLOCK is not an external refence.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_is_xreferenced
@@ -1518,12 +1374,6 @@ dxf_block_is_xreferenced
  *
  * \return \c TRUE when \c BLOCK is externally dependent on an xref,
  * or \c FALSE when \c BLOCK is not externally dependent on an xref.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_is_xdependent
@@ -1556,12 +1406,6 @@ dxf_block_is_xdependent
  *
  * \return \c TRUE when \c BLOCK is a resolved xref,
  * or \c FALSE when \c BLOCK is not a resolved xref.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_is_xresolved
@@ -1593,12 +1437,6 @@ dxf_block_is_xresolved
  *
  * \return \c TRUE when \c BLOCK is referenced,
  * or \c FALSE when \c BLOCK is not referenced.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_is_referenced
@@ -1632,12 +1470,6 @@ dxf_block_is_referenced
  * \return a DXF \c POINT containing the extrusion coordinates.
  *
  * \warning No other members are copied into the DXF \c POINT.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_block_get_extrusion_vector_as_point
@@ -1679,12 +1511,6 @@ dxf_block_get_extrusion_vector_as_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c BLOCK entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_set_extrusion_vector
@@ -1727,12 +1553,6 @@ dxf_block_set_extrusion_vector
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_block_get_dictionary_owner_soft
@@ -1769,12 +1589,6 @@ dxf_block_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c BLOCK entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_set_dictionary_owner_soft
@@ -1819,12 +1633,6 @@ dxf_block_set_dictionary_owner_soft
  * \return pointer to the DXF \c ENDBLK (end of block) marker.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 struct DxfEndblk *
 dxf_block_get_endblk
@@ -1861,12 +1669,6 @@ dxf_block_get_endblk
 /*!
  * \brief Set the pointer to the DXF \c ENDBLK (end of block) marker for
  * a DXF \c BLOCK entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_set_endblk
@@ -1911,12 +1713,6 @@ dxf_block_set_endblk
  * \return pointer to the next DXF \c BLOCK entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_get_next
@@ -1953,12 +1749,6 @@ dxf_block_get_next
 /*!
  * \brief Set the pointer to the next DXF \c BLOCK for a DXF \c BLOCK
  * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlock *
 dxf_block_set_next
