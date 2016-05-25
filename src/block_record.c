@@ -719,8 +719,6 @@ dxf_block_record_is_xresolved
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result = FALSE;
-
         /* Do some basic checks. */
         if (block_record == NULL)
         {
@@ -729,12 +727,11 @@ dxf_block_record_is_xresolved
                   __FUNCTION__);
                 return (-1);
         }
-        result = ((DXF_CHECK_BIT (block_record->flag, 4))
-          && (DXF_CHECK_BIT (block_record->flag, 5)));
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DXF_CHECK_BIT (block_record->flag, 4))
+          && (DXF_CHECK_BIT (block_record->flag, 5)));
 }
 
 
