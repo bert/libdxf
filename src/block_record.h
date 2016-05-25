@@ -6,7 +6,13 @@
  * \brief Header file for a DXF block record symbol table entry
  * (\c BLOCK_RECORD).
  *
- * \version The \c BLOCK_RECORD table was introduced in DXF R13.
+ * \since The \c BLOCK_RECORD table was introduced in DXF R13.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -48,12 +54,6 @@
  *
  * This table entry contains an entry to a block registered within a
  * drawing.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
 dxf_block_record_struct

@@ -1,12 +1,18 @@
 /*!
  * \file block_record.c
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF block record symbol table entry
  * (\c BLOCK_RECORD).
  *
- * \version The \c BLOCK_RECORD table was introduced in DXF R13.
+ * \since The \c BLOCK_RECORD table was introduced in DXF R13.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -42,12 +48,6 @@
  * \brief Allocate memory for a DXF \c BLOCK_RECORD symbol table entry.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlockRecord *
 dxf_block_record_new ()
@@ -85,12 +85,6 @@ dxf_block_record_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlockRecord *
 dxf_block_record_init
@@ -141,12 +135,6 @@ dxf_block_record_init
  * While parsing the DXF file store data in \c block_record. \n
  *
  * \return a pointer to \c block_record.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlockRecord *
 dxf_block_record_read
@@ -255,9 +243,6 @@ dxf_block_record_read
 /*!
  * \brief Write DXF output to a file for a DXF \c BLOCK_RECORD symbol table
  * entry.
- *
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_record_write
@@ -366,12 +351,6 @@ dxf_block_record_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_record_free
@@ -405,12 +384,6 @@ dxf_block_record_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c BLOCK_RECORD
  * entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_block_record_free_chain
@@ -444,12 +417,6 @@ dxf_block_record_free_chain
  * \brief Get the ID code from a DXF \c BLOCK_RECORD symbol table entry.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_record_get_id_code
@@ -489,12 +456,6 @@ dxf_block_record_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c BLOCK_RECORD symbol table entry.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlockRecord *
 dxf_block_record_set_id_code
@@ -539,12 +500,6 @@ dxf_block_record_set_id_code
  * entry.
  *
  * \return block name when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_block_record_get_block_name
@@ -585,12 +540,6 @@ dxf_block_record_get_block_name
 /*!
  * \brief Set the block name for a DXF \c BLOCK_RECORD symbol table
  * entry.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlockRecord *
 dxf_block_record_set_block_name
@@ -634,12 +583,6 @@ dxf_block_record_set_block_name
  * entry.
  *
  * \return flag value.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_record_get_flag
@@ -687,12 +630,6 @@ dxf_block_record_get_flag
 /*!
  * \brief Set the flag value for a DXF \c BLOCK_RECORD symbol table
  * entry.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlockRecord *
 dxf_block_record_set_flag
@@ -746,12 +683,6 @@ dxf_block_record_set_flag
  * \return \c TRUE when \c BLOCK_RECORD is externally dependent on an
  * xref, or \c FALSE when \c BLOCK_RECORD is not externally dependent on
  * an xref, or (-1) when an error occured.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_record_is_xreferenced
@@ -789,12 +720,6 @@ dxf_block_record_is_xreferenced
  * xref and has been successfully resolved, or \c FALSE when
  * \c BLOCK_RECORD is not externally dependent on a xref and has not
  * been successfully resolved, or (-1) when an error occured.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_record_is_xresolved
@@ -832,12 +757,6 @@ dxf_block_record_is_xresolved
  * \return \c TRUE when \c BLOCK_RECORD is internally referenced by an
  * entity, or \c FALSE when \c BLOCK_RECORD is not internally referenced
  * by an entity, or (-1) when an error occured.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_block_record_is_referenced
@@ -874,12 +793,6 @@ dxf_block_record_is_referenced
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_block_record_get_dictionary_owner_soft
@@ -920,12 +833,6 @@ dxf_block_record_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c BLOCK_RECORD symbol table entry.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlockRecord *
 dxf_block_record_set_dictionary_owner_soft
@@ -971,12 +878,6 @@ dxf_block_record_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_block_record_get_dictionary_owner_hard
@@ -1017,12 +918,6 @@ dxf_block_record_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c BLOCK_RECORD symbol table entry.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlockRecord *
 dxf_block_record_set_dictionary_owner_hard
@@ -1068,12 +963,6 @@ dxf_block_record_set_dictionary_owner_hard
  * \return pointer to the next \c BLOCK_RECORD symbol table entry.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlockRecord *
 dxf_block_record_get_next
@@ -1114,12 +1003,6 @@ dxf_block_record_get_next
 /*!
  * \brief Set the pointer to the next \c BLOCK_RECORD symbol table entry
  * for a DXF \c BLOCK_RECORD symbol table entry.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBlockRecord *
 dxf_block_record_set_next
