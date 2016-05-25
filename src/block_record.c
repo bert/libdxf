@@ -429,8 +429,6 @@ dxf_block_record_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (block_record == NULL)
         {
@@ -446,11 +444,10 @@ dxf_block_record_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = block_record->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (block_record->id_code);
 }
 
 
