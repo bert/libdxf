@@ -589,8 +589,6 @@ dxf_block_record_get_flag
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (block_record == NULL)
         {
@@ -613,11 +611,10 @@ dxf_block_record_get_flag
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = block_record->flag;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (block_record->flag);
 }
 
 
