@@ -1,7 +1,7 @@
 /*!
  * \file block_record.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 .. 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF block record symbol table entry
  * (\c BLOCK_RECORD).
@@ -56,7 +56,7 @@
  * \version According to DXF R14.
  */
 typedef struct
-dxf_block_record
+dxf_block_record_struct
 {
         int id_code;
                 /*!< Identification number for the entity.\n
