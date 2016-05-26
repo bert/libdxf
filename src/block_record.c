@@ -951,8 +951,6 @@ dxf_block_record_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfBlockRecord *result;
-
         /* Do some basic checks. */
         if (block_record == NULL)
         {
@@ -968,11 +966,10 @@ dxf_block_record_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfBlockRecord *) block_record->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfBlockRecord *) block_record->next);
 }
 
 
