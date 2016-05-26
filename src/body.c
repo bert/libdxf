@@ -1710,8 +1710,6 @@ dxf_body_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfBody *result;
-
         /* Do some basic checks. */
         if (body == NULL)
         {
@@ -1727,11 +1725,10 @@ dxf_body_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfBody *) body->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfBody *) body->next);
 }
 
 
