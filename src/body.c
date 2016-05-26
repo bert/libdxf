@@ -752,8 +752,6 @@ dxf_body_get_layer
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (body == NULL)
         {
@@ -769,11 +767,10 @@ dxf_body_get_layer
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (body->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (body->layer));
 }
 
 
