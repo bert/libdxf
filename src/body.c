@@ -600,8 +600,6 @@ dxf_body_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (body == NULL)
         {
@@ -617,11 +615,10 @@ dxf_body_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = body->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (body->id_code);
 }
 
 
