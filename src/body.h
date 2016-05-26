@@ -1,7 +1,7 @@
 /*!
  * \file body.h
  *
- * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF body entity (\c BODY).
  *
@@ -49,7 +49,7 @@
  * \version According to DXF R14.
  */
 typedef struct
-dxf_body
+dxf_body_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
