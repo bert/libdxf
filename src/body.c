@@ -1202,8 +1202,6 @@ dxf_body_get_paperspace
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (body == NULL)
         {
@@ -1224,11 +1222,10 @@ dxf_body_get_paperspace
                   (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
                   __FUNCTION__);
         }
-        result = body->paperspace;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (body->paperspace);
 }
 
 
