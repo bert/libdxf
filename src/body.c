@@ -7,6 +7,12 @@
  *
  * \warning The \c BODY entity requires AutoCAD version R13 or higher.\n
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -41,12 +47,6 @@
  * \brief Allocate memory for a \c DxfBody.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_new ()
@@ -84,12 +84,6 @@ dxf_body_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_init
@@ -154,12 +148,6 @@ dxf_body_init
  * While parsing the DXF file store data in \c body. \n
  *
  * \return a pointer to \c body.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_read
@@ -364,12 +352,6 @@ dxf_body_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred while reading from the input file.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_body_write
@@ -531,12 +513,6 @@ dxf_body_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_body_free
@@ -580,12 +556,6 @@ dxf_body_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c BODY
  * entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_body_free_chain
@@ -619,12 +589,6 @@ dxf_body_free_chain
  * \brief Get the ID code from a DXF \c BODY entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_body_get_id_code
@@ -663,12 +627,6 @@ dxf_body_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_id_code
@@ -711,12 +669,6 @@ dxf_body_set_id_code
  * \brief Get the linetype from a DXF \c BODY entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_body_get_linetype
@@ -755,12 +707,6 @@ dxf_body_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_linetype
@@ -801,12 +747,6 @@ dxf_body_set_linetype
  * \brief Get the layer from a DXF \c BODY entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_body_get_layer
@@ -845,12 +785,6 @@ dxf_body_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_layer
@@ -891,12 +825,6 @@ dxf_body_set_layer
  * \brief Get the elevation from a DXF \c BODY entity.
  *
  * \return elevation.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_body_get_elevation
@@ -928,12 +856,6 @@ dxf_body_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_elevation
@@ -967,12 +889,6 @@ dxf_body_set_elevation
  * \brief Get the thickness from a DXF \c BODY entity.
  *
  * \return thickness.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_body_get_thickness
@@ -1011,12 +927,6 @@ dxf_body_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_thickness
@@ -1057,12 +967,6 @@ dxf_body_set_thickness
  * \brief Get the linetype scale from a DXF \c BODY entity.
  *
  * \return linetype scale.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_body_get_linetype_scale
@@ -1101,12 +1005,6 @@ dxf_body_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_linetype_scale
@@ -1147,12 +1045,6 @@ dxf_body_set_linetype_scale
  * \brief Get the visibility from a DXF \c BODY entity.
  *
  * \return visibility.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int16_t
 dxf_body_get_visibility
@@ -1198,12 +1090,6 @@ dxf_body_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_visibility
@@ -1251,12 +1137,6 @@ dxf_body_set_visibility
  * \brief Get the color from a DXF \c BODY entity.
  *
  * \return color.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_body_get_color
@@ -1294,12 +1174,6 @@ dxf_body_get_color
 
 /*!
  * \brief Set the color for a DXF \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_color
@@ -1341,12 +1215,6 @@ dxf_body_set_color
  * \brief Get the paperspace flag value from a DXF \c BODY entity.
  *
  * \return paperspace flag value.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_body_get_paperspace
@@ -1390,12 +1258,6 @@ dxf_body_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_paperspace
@@ -1446,12 +1308,6 @@ dxf_body_set_paperspace
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_body_get_dictionary_owner_soft
@@ -1491,12 +1347,6 @@ dxf_body_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_dictionary_owner_soft
@@ -1541,12 +1391,6 @@ dxf_body_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_body_get_dictionary_owner_hard
@@ -1586,12 +1430,6 @@ dxf_body_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_dictionary_owner_hard
@@ -1635,12 +1473,6 @@ dxf_body_set_dictionary_owner_hard
  * \return pointer to the proprietary data.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_body_get_proprietary_data
@@ -1684,12 +1516,6 @@ dxf_body_get_proprietary_data
 
 /*!
  * \brief Set the proprietary data for a DXF \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_proprietary_data
@@ -1738,12 +1564,6 @@ dxf_body_set_proprietary_data
  * \return pointer to the additional proprietary data.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_body_get_additional_proprietary_data
@@ -1788,12 +1608,6 @@ dxf_body_get_additional_proprietary_data
 /*!
  * \brief Set the pointer to the additional proprietary data for a DXF
  * \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_additional_proprietary_data
@@ -1840,12 +1654,6 @@ dxf_body_set_additional_proprietary_data
  * \brief Get the modeler format version number from a DXF \c BODY entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_body_get_modeler_format_version_number
@@ -1884,12 +1692,6 @@ dxf_body_get_modeler_format_version_number
 
 /*!
  * \brief Set the modeler format version number for a DXF \c BODY entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_modeler_format_version_number
@@ -1933,12 +1735,6 @@ dxf_body_set_modeler_format_version_number
  * \return pointer to the next \c BODY entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_get_next
@@ -1978,12 +1774,6 @@ dxf_body_get_next
 /*!
  * \brief Set the pointer to the next \c BODY for a DXF \c BODY
  * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfBody *
 dxf_body_set_next
