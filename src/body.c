@@ -1038,8 +1038,6 @@ dxf_body_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (body == NULL)
         {
@@ -1062,11 +1060,10 @@ dxf_body_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = body->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (body->visibility);
 }
 
 
