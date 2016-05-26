@@ -1632,8 +1632,6 @@ dxf_body_get_modeler_format_version_number
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (body == NULL)
         {
@@ -1649,11 +1647,10 @@ dxf_body_get_modeler_format_version_number
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = body->modeler_format_version_number;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (body->modeler_format_version_number);
 }
 
 
