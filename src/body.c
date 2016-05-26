@@ -963,8 +963,6 @@ dxf_body_get_linetype_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (body == NULL)
         {
@@ -980,11 +978,10 @@ dxf_body_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = body->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (body->linetype_scale);
 }
 
 
