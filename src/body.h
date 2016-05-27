@@ -43,6 +43,7 @@
 
 
 #include "global.h"
+#include "proprietary_data.h"
 
 
 /*!
@@ -99,7 +100,7 @@ dxf_body_struct
                 /*!< group code = 360\n
                  * Hard owner ID/handle to owner dictionary (optional). */
         /* Specific members for a DXF body. */
-        char *proprietary_data[DXF_MAX_PARAM];
+        DxfProprietaryData *proprietary_data;
                 /*!< group code = 1\n
                  * Proprietary data (multiple lines < 255 characters
                  * each).*/
@@ -267,17 +268,16 @@ dxf_body_set_dictionary_owner_hard
         DxfBody *body,
         char *dictionary_owner_hard
 );
-int
+DxfProprietaryData *
 dxf_body_get_proprietary_data
 (
-        DxfBody *body,
-        char *data[DXF_MAX_PARAM]
+        DxfBody *body
 );
 DxfBody *
 dxf_body_set_proprietary_data
 (
         DxfBody *body,
-        char *data[DXF_MAX_PARAM]
+        DxfProprietaryData *proprietary_data
 );
 int
 dxf_body_get_additional_proprietary_data

@@ -123,9 +123,9 @@ dxf_body_init
         body->color = DXF_COLOR_BYLAYER;
         body->paperspace = DXF_MODELSPACE;
         body->modeler_format_version_number = 1;
+        body->proprietary_data->line = strdup ("");
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                body->proprietary_data[i] = strdup ("");
                 body->additional_proprietary_data[i] = strdup ("");
         }
         body->dictionary_owner_soft = strdup ("");
@@ -162,7 +162,6 @@ dxf_body_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i;
         int j;
 
         /* Do some basic checks. */
@@ -189,7 +188,6 @@ dxf_body_read
                   (_("Warning in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
         }
-        i = 0;
         j = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
@@ -210,8 +208,7 @@ dxf_body_read
                         /* Now follows a string containing proprietary
                          * data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", body->proprietary_data[i]);
-                        i++;
+                        fscanf (fp->fp, "%s\n", body->proprietary_data->line);
                 }
                 else if (strcmp (temp_string, "  3") == 0)
                 {
@@ -487,10 +484,9 @@ dxf_body_write
                 fprintf (fp->fp, " 70\n%d\n", body->modeler_format_version_number);
         }
         i = 0;
-        while (strlen (body->proprietary_data[i]) > 0)
+        while (strlen (body->proprietary_data->line) > 0)
         {
-                fprintf (fp->fp, "  1\n%s\n", body->proprietary_data[i]);
-                i++;
+                fprintf (fp->fp, "  1\n%s\n", body->proprietary_data->line);
         }
         i = 0;
         while (strlen (body->additional_proprietary_data[i]) > 0)
@@ -537,9 +533,9 @@ dxf_body_free
         }
         free (body->linetype);
         free (body->layer);
+        dxf_proprietary_data_free_chain (body->proprietary_data);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                free (body->proprietary_data[i]);
                 free (body->additional_proprietary_data[i]);
         }
         free (body->dictionary_owner_soft);
@@ -1435,49 +1431,42 @@ dxf_body_set_dictionary_owner_hard
 
 
 /*!
- * \brief Get the proprietary data from a DXF \c BODY entity.
+ * \brief Get the pointer to the \c proprietary_data from a DXF \c BODY
+ * entity.
  *
- * \return pointer to the proprietary data.
+ * \return pointer to the \c proprietary_data.
  *
- * \warning No checks are performed on the returned pointer (string).
+ * \warning No checks are performed on the returned pointer.
  */
-int
+DxfProprietaryData *
 dxf_body_get_proprietary_data
 (
-        DxfBody *body,
+        DxfBody *body
                 /*!< a pointer to a DXF \c BODY entity. */
-        char *data[DXF_MAX_PARAM]
-                /*!< an array containing the proprietary data. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (body == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
-        for (i = 1; i < DXF_MAX_PARAM; i++)
+        if (body->proprietary_data ==  NULL)
         {
-                if (body->proprietary_data[i] ==  NULL)
-                {
-                        fprintf (stderr,
-                          (_("Error in %s () a NULL pointer was found in the proprietary_data[%d] member.\n")),
-                          __FUNCTION__, i);
-                        return (EXIT_FAILURE);
-                }
-        data[i] = strdup (body->proprietary_data[i]);
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the proprietary_data member.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return ((DxfProprietaryData *) body->proprietary_data);
 }
 
 
@@ -1489,16 +1478,14 @@ dxf_body_set_proprietary_data
 (
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
-        char *data[DXF_MAX_PARAM]
-                /*!< an array containing the proprietary data for the
-                 * entity. */
+        DxfProprietaryData *proprietary_data
+                /*!< a pointer to a linked list containing the
+                 * \c proprietary_data for the entity. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (body == NULL)
         {
@@ -1507,17 +1494,14 @@ dxf_body_set_proprietary_data
                   __FUNCTION__);
                 return (NULL);
         }
-        for (i = 1; i < DXF_MAX_PARAM; i++)
+        if (proprietary_data == NULL)
         {
-                if (data[i] ==  NULL)
-                {
-                        fprintf (stderr,
-                          (_("Error in %s () a NULL pointer was found in the proprietary_data[%d] array.\n")),
-                          __FUNCTION__, i);
-                        return (NULL);
-                }
-        body->proprietary_data[i] = strdup (data[i]);
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
+        body->proprietary_data = proprietary_data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
