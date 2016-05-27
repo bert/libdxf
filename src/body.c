@@ -123,7 +123,7 @@ dxf_body_init
         body->color = DXF_COLOR_BYLAYER;
         body->paperspace = DXF_MODELSPACE;
         body->modeler_format_version_number = 1;
-        body->proprietary_data->line = strdup ("");
+        dxf_body_set_proprietary_data (body, (DxfProprietaryData *) dxf_proprietary_data_init (body->proprietary_data));
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 body->additional_proprietary_data[i] = strdup ("");
