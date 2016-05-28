@@ -104,7 +104,7 @@ dxf_body_struct
                 /*!< group code = 1\n
                  * Proprietary data (multiple lines < 255 characters
                  * each).*/
-        char *additional_proprietary_data[DXF_MAX_PARAM];
+        DxfProprietaryData *additional_proprietary_data;
                 /*!< group code = 3\n
                  * Additional lines of proprietary data if previous
                  * group 1 string is greater than 255 characters
@@ -283,13 +283,13 @@ int
 dxf_body_get_additional_proprietary_data
 (
         DxfBody *body,
-        char *additional_data[DXF_MAX_PARAM]
+        DxfProprietaryData *additional_data
 );
 DxfBody *
 dxf_body_set_additional_proprietary_data
 (
         DxfBody *body,
-        char *additional_data[DXF_MAX_PARAM]
+        DxfProprietaryData *additional_proprietary_data
 );
 int
 dxf_body_get_modeler_format_version_number

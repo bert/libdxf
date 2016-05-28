@@ -95,8 +95,6 @@ dxf_body_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (body == NULL)
         {
@@ -124,10 +122,7 @@ dxf_body_init
         body->paperspace = DXF_MODELSPACE;
         body->modeler_format_version_number = 1;
         dxf_body_set_proprietary_data (body, (DxfProprietaryData *) dxf_proprietary_data_init (body->proprietary_data));
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                body->additional_proprietary_data[i] = strdup ("");
-        }
+        dxf_body_set_proprietary_data (body, (DxfProprietaryData *) dxf_proprietary_data_init (body->additional_proprietary_data));
         body->dictionary_owner_soft = strdup ("");
         body->dictionary_owner_hard = strdup ("");
         body->next = NULL;
@@ -215,7 +210,7 @@ dxf_body_read
                         /* Now follows a string containing additional
                          * proprietary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", body->additional_proprietary_data[j]);
+                        fscanf (fp->fp, "%s\n", body->additional_proprietary_data->line);
                         j++;
                 }
                 if (strcmp (temp_string, "5") == 0)
@@ -363,7 +358,6 @@ dxf_body_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("BODY");
-        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -483,16 +477,13 @@ dxf_body_write
         {
                 fprintf (fp->fp, " 70\n%d\n", body->modeler_format_version_number);
         }
-        i = 0;
         while (strlen (body->proprietary_data->line) > 0)
         {
                 fprintf (fp->fp, "  1\n%s\n", body->proprietary_data->line);
         }
-        i = 0;
-        while (strlen (body->additional_proprietary_data[i]) > 0)
+        while (strlen (body->additional_proprietary_data->line) > 0)
         {
-                fprintf (fp->fp, "  3\n%s\n", body->additional_proprietary_data[i]);
-                i++;
+                fprintf (fp->fp, "  3\n%s\n", body->additional_proprietary_data->line);
         }
         /* Clean up. */
         free (dxf_entity_name);
@@ -521,8 +512,6 @@ dxf_body_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (body->next != NULL)
         {
@@ -534,10 +523,7 @@ dxf_body_free
         free (body->linetype);
         free (body->layer);
         dxf_proprietary_data_free_chain (body->proprietary_data);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (body->additional_proprietary_data[i]);
-        }
+        dxf_proprietary_data_free_chain (body->additional_proprietary_data);
         free (body->dictionary_owner_soft);
         free (body->dictionary_owner_hard);
         free (body);
@@ -1510,9 +1496,9 @@ dxf_body_set_proprietary_data
 
 
 /*!
- * \brief Get the additional proprietary data from a DXF \c BODY entity.
+ * \brief Get the \c additional_proprietary_data from a DXF \c BODY entity.
  *
- * \return pointer to the additional proprietary data.
+ * \return pointer to the \c additional_proprietary_data.
  *
  * \warning No checks are performed on the returned pointer (string).
  */
@@ -1521,15 +1507,13 @@ dxf_body_get_additional_proprietary_data
 (
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
-        char *additional_data[DXF_MAX_PARAM]
-                /*!< an array containg the additional proprietary data. */
+        DxfProprietaryData *additional_data
+                /*!< a pointer to the \c additional_proprietary_data. */
 )
 {
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (body == NULL)
         {
@@ -1538,17 +1522,14 @@ dxf_body_get_additional_proprietary_data
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        for (i = 1; i < DXF_MAX_PARAM; i++)
+        if (body->additional_proprietary_data ==  NULL)
         {
-                if (body->additional_proprietary_data[i] ==  NULL)
-                {
-                        fprintf (stderr,
-                          (_("Error in %s () a NULL pointer was found in the additional_proprietary_data[%d] member.\n")),
-                          __FUNCTION__, i);
-                        return (EXIT_FAILURE);
-                }
-        additional_data[i] = strdup (body->additional_proprietary_data[i]);
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
+        additional_data = (DxfProprietaryData *) body->additional_proprietary_data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -1565,7 +1546,7 @@ dxf_body_set_additional_proprietary_data
 (
         DxfBody *body,
                 /*!< a pointer to a DXF \c BODY entity. */
-        char *additional_data[DXF_MAX_PARAM]
+        DxfProprietaryData *additional_proprietary_data
                 /*!< an array containing the additional proprietary data
                  * for the entity. */
 )
@@ -1573,8 +1554,6 @@ dxf_body_set_additional_proprietary_data
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (body == NULL)
         {
@@ -1583,17 +1562,14 @@ dxf_body_set_additional_proprietary_data
                   __FUNCTION__);
                 return (NULL);
         }
-        for (i = 1; i < DXF_MAX_PARAM; i++)
+        if (additional_proprietary_data ==  NULL)
         {
-                if (additional_data[i] ==  NULL)
-                {
-                        fprintf (stderr,
-                          (_("Error in %s () a NULL pointer was found in the additional data[%d] array.\n")),
-                          __FUNCTION__, i);
-                        return (NULL);
-                }
-                body->additional_proprietary_data[i] = strdup (additional_data[i]);
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
+        body->additional_proprietary_data = additional_proprietary_data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
