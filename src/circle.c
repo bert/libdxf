@@ -905,8 +905,6 @@ dxf_circle_get_elevation
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (circle == NULL)
         {
@@ -915,11 +913,10 @@ dxf_circle_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = circle->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (circle->elevation);
 }
 
 
