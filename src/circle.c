@@ -1,7 +1,7 @@
 /*!
  * \file circle.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF circle entity (\c CIRCLE).
  *
@@ -642,8 +642,6 @@ dxf_circle_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (circle == NULL)
         {
@@ -659,11 +657,10 @@ dxf_circle_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = circle->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (circle->id_code);
 }
 
 
