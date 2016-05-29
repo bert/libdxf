@@ -157,7 +157,7 @@ dxf_body_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int j;
+        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -183,7 +183,7 @@ dxf_body_read
                   (_("Warning in %s () illegal DXF version for this entity.\n")),
                   __FUNCTION__);
         }
-        j = 0;
+        i = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -204,6 +204,10 @@ dxf_body_read
                          * data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", body->proprietary_data->line);
+                        body->proprietary_data->order = i;
+                        i++;
+                        dxf_proprietary_data_init ((DxfProprietaryData *) body->proprietary_data->next);
+                        body->proprietary_data = (DxfProprietaryData *) body->proprietary_data->next;
                 }
                 else if (strcmp (temp_string, "  3") == 0)
                 {
@@ -211,7 +215,10 @@ dxf_body_read
                          * proprietary data. */
                         (fp->line_number)++;
                         fscanf (fp->fp, "%s\n", body->additional_proprietary_data->line);
-                        j++;
+                        body->additional_proprietary_data->order = i;
+                        i++;
+                        dxf_proprietary_data_init ((DxfProprietaryData *) body->additional_proprietary_data->next);
+                        body->additional_proprietary_data = (DxfProprietaryData *) body->additional_proprietary_data->next;
                 }
                 if (strcmp (temp_string, "5") == 0)
                 {
