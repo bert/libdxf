@@ -1253,8 +1253,6 @@ dxf_circle_get_color
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (circle == NULL)
         {
@@ -1269,11 +1267,10 @@ dxf_circle_get_color
                   (_("Warning in %s () a negative value was found in the color member.\n")),
                   __FUNCTION__);
         }
-        result = circle->color;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (circle->color);
 }
 
 
