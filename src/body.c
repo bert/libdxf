@@ -110,7 +110,6 @@ dxf_body_init
                   __FUNCTION__);
                 return (NULL);
         }
-        body->modeler_format_version_number = 0;
         body->id_code = 0;
         body->linetype = strdup (DXF_DEFAULT_LINETYPE);
         body->layer = strdup (DXF_DEFAULT_LAYER);
@@ -120,11 +119,11 @@ dxf_body_init
         body->visibility = DXF_DEFAULT_VISIBILITY;
         body->color = DXF_COLOR_BYLAYER;
         body->paperspace = DXF_MODELSPACE;
-        body->modeler_format_version_number = 1;
-        dxf_body_set_proprietary_data (body, (DxfProprietaryData *) dxf_proprietary_data_init (body->proprietary_data));
-        dxf_body_set_proprietary_data (body, (DxfProprietaryData *) dxf_proprietary_data_init (body->additional_proprietary_data));
         body->dictionary_owner_soft = strdup ("");
         body->dictionary_owner_hard = strdup ("");
+        dxf_body_set_proprietary_data (body, (DxfProprietaryData *) dxf_proprietary_data_init (body->proprietary_data));
+        dxf_body_set_proprietary_data (body, (DxfProprietaryData *) dxf_proprietary_data_init (body->additional_proprietary_data));
+        body->modeler_format_version_number = 1;
         body->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
