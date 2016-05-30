@@ -5,6 +5,12 @@
  *
  * \brief Functions for a DXF circle entity (\c CIRCLE).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -39,12 +45,6 @@
  * \brief Allocate memory for a DXF \c CIRCLE.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_new ()
@@ -82,12 +82,6 @@ dxf_circle_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_init
@@ -150,12 +144,6 @@ dxf_circle_init
  * While parsing the DXF file store data in \c circle. \n
  *
  * \return a pointer to \c circle.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_read
@@ -379,12 +367,6 @@ dxf_circle_read
 
 /*!
  * \brief Write DXF output to file for a DXF \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_circle_write
@@ -545,12 +527,6 @@ dxf_circle_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_circle_free
@@ -586,12 +562,6 @@ dxf_circle_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c CIRCLE
  * entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_circle_free_chain
@@ -625,12 +595,6 @@ dxf_circle_free_chain
  * \brief Get the ID code from a DXF \c CIRCLE entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_circle_get_id_code
@@ -666,12 +630,6 @@ dxf_circle_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_id_code
@@ -714,12 +672,6 @@ dxf_circle_set_id_code
  * \brief Get the linetype from a DXF \c CIRCLE entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_circle_get_linetype
@@ -755,12 +707,6 @@ dxf_circle_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_linetype
@@ -801,12 +747,6 @@ dxf_circle_set_linetype
  * \brief Get the layer from a DXF \c CIRCLE entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_circle_get_layer
@@ -842,12 +782,6 @@ dxf_circle_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_layer
@@ -888,12 +822,6 @@ dxf_circle_set_layer
  * \brief Get the elevation from a DXF \c CIRCLE entity.
  *
  * \return elevation.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_circle_get_elevation
@@ -922,12 +850,6 @@ dxf_circle_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_elevation
@@ -961,12 +883,6 @@ dxf_circle_set_elevation
  * \brief Get the thickness from a DXF \c CIRCLE entity.
  *
  * \return thickness.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_circle_get_thickness
@@ -1002,12 +918,6 @@ dxf_circle_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_thickness
@@ -1048,12 +958,6 @@ dxf_circle_set_thickness
  * \brief Get the linetype scale from a DXF \c CIRCLE entity.
  *
  * \return linetype scale.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_circle_get_linetype_scale
@@ -1089,12 +993,6 @@ dxf_circle_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_linetype_scale
@@ -1135,12 +1033,6 @@ dxf_circle_set_linetype_scale
  * \brief Get the visibility from a DXF \c CIRCLE entity.
  *
  * \return visibility.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int16_t
 dxf_circle_get_visibility
@@ -1183,12 +1075,6 @@ dxf_circle_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_visibility
@@ -1236,12 +1122,6 @@ dxf_circle_set_visibility
  * \brief Get the color from a DXF \c CIRCLE entity.
  *
  * \return color.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_circle_get_color
@@ -1276,12 +1156,6 @@ dxf_circle_get_color
 
 /*!
  * \brief Set the color for a DXF \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_color
@@ -1323,12 +1197,6 @@ dxf_circle_set_color
  * \brief Get the paperspace flag value from a DXF \c CIRCLE entity.
  *
  * \return paperspace flag value.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_circle_get_paperspace
@@ -1369,12 +1237,6 @@ dxf_circle_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_paperspace
@@ -1425,12 +1287,6 @@ dxf_circle_set_paperspace
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_circle_get_dictionary_owner_soft
@@ -1467,12 +1323,6 @@ dxf_circle_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_dictionary_owner_soft
@@ -1517,12 +1367,6 @@ dxf_circle_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_circle_get_dictionary_owner_hard
@@ -1559,12 +1403,6 @@ dxf_circle_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_dictionary_owner_hard
@@ -1606,12 +1444,6 @@ dxf_circle_set_dictionary_owner_hard
  * \brief Get the base point of a DXF \c CIRCLE entity.
  *
  * \return the base point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_circle_get_base_point
@@ -1710,12 +1542,6 @@ dxf_circle_get_base_point
  * \brief Set the base point of a DXF \c CIRCLE entity.
  *
  * \return a pointer to a DXF \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_base_point
@@ -1758,12 +1584,6 @@ dxf_circle_set_base_point
  * \brief Get the radius from a DXF \c CIRCLE entity.
  *
  * \return radius.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_circle_get_radius
@@ -1806,12 +1626,6 @@ dxf_circle_get_radius
 
 /*!
  * \brief Set the radius for a DXF \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_radius
@@ -1862,12 +1676,6 @@ dxf_circle_set_radius
  * \return a DXF \c POINT containing the extrusion coordinates.
  *
  * \warning No other members are copied into the DXF \c POINT.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_circle_get_extrusion_vector_as_point
@@ -1909,12 +1717,6 @@ dxf_circle_get_extrusion_vector_as_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c CIRCLE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_extrusion_vector
@@ -1957,12 +1759,6 @@ dxf_circle_set_extrusion_vector
  * \return pointer to the next \c CIRCLE entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_get_next
@@ -1999,12 +1795,6 @@ dxf_circle_get_next
 /*!
  * \brief Set the pointer to the next \c CIRCLE for a DXF \c CIRCLE
  * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfCircle *
 dxf_circle_set_next
