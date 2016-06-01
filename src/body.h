@@ -319,6 +319,12 @@ dxf_body_get_graphics_data_size
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_graphics_data_size
+(
+        DxfBody *body,
+        int graphics_data_size
+);
 char *
 dxf_body_get_dictionary_owner_soft
 (
