@@ -341,6 +341,12 @@ dxf_body_get_binary_graphics_data
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_binary_graphics_data
+(
+        DxfBody *body,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_body_get_dictionary_owner_soft
 (
