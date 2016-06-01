@@ -330,6 +330,12 @@ dxf_body_get_shadow_mode
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_shadow_mode
+(
+        DxfBody *body,
+        int16_t shadow_mode
+);
 char *
 dxf_body_get_dictionary_owner_soft
 (
