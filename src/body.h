@@ -325,6 +325,11 @@ dxf_body_set_graphics_data_size
         DxfBody *body,
         int graphics_data_size
 );
+int16_t
+dxf_body_get_shadow_mode
+(
+        DxfBody *body
+);
 char *
 dxf_body_get_dictionary_owner_soft
 (
