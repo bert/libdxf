@@ -314,6 +314,11 @@ dxf_body_set_paperspace
         DxfBody *body,
         int paperspace
 );
+int
+dxf_body_get_graphics_data_size
+(
+        DxfBody *body
+);
 char *
 dxf_body_get_dictionary_owner_soft
 (
