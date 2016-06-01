@@ -1308,7 +1308,7 @@ dxf_body_get_graphics_data_size
 /*!
  * \brief Set the \c graphics_data_size value for a DXF \c BODY entity.
  *
- * \return a pointer to \c solid when successful, or \c NULL when an
+ * \return a pointer to \c body when successful, or \c NULL when an
  * error occurred.
  */
 DxfBody *
