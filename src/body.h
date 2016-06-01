@@ -336,6 +336,11 @@ dxf_body_set_shadow_mode
         DxfBody *body,
         int16_t shadow_mode
 );
+DxfBinaryGraphicsData *
+dxf_body_get_binary_graphics_data
+(
+        DxfBody *body
+);
 char *
 dxf_body_get_dictionary_owner_soft
 (

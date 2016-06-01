@@ -1448,6 +1448,46 @@ dxf_body_set_shadow_mode
 
 
 /*!
+ * \brief Get the pointer to the binary graphics data from a DXF 
+ * \c BODY entity.
+ *
+ * \return pointer to the binary graphics data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryGraphicsData *
+dxf_body_get_binary_graphics_data
+(
+        DxfBody *body
+                /*!< a pointer to a DXF \c BODY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (body == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (body->binary_graphics_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the binary_graphics_data member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBinaryGraphicsData *) body->binary_graphics_data);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c BODY entity.
  *
