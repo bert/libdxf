@@ -363,6 +363,12 @@ dxf_body_get_material
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_material
+(
+        DxfBody *body,
+        char *material
+);
 char *
 dxf_body_get_dictionary_owner_hard
 (
