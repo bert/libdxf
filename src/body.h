@@ -385,6 +385,12 @@ dxf_body_get_lineweight
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_lineweight
+(
+        DxfBody *body,
+        int16_t lineweight
+);
 DxfProprietaryData *
 dxf_body_get_proprietary_data
 (
