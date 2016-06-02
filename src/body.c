@@ -1774,6 +1774,37 @@ dxf_body_set_dictionary_owner_hard
 
 
 /*!
+ * \brief Get the \c lineweight from a DXF \c BODY entity.
+ *
+ * \return \c lineweight when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int16_t
+dxf_body_get_lineweight
+(
+        DxfBody *body
+                /*!< a pointer to a DXF \c BODY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (body == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (body->lineweight);
+}
+
+
+/*!
  * \brief Get the pointer to the \c proprietary_data from a DXF \c BODY
  * entity.
  *

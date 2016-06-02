@@ -380,6 +380,11 @@ dxf_body_set_dictionary_owner_hard
         DxfBody *body,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_body_get_lineweight
+(
+        DxfBody *body
+);
 DxfProprietaryData *
 dxf_body_get_proprietary_data
 (
