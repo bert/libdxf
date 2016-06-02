@@ -391,6 +391,11 @@ dxf_body_set_lineweight
         DxfBody *body,
         int16_t lineweight
 );
+char *
+dxf_body_get_plot_style_name
+(
+        DxfBody *body
+);
 DxfProprietaryData *
 dxf_body_get_proprietary_data
 (
