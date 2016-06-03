@@ -402,6 +402,11 @@ dxf_body_set_plot_style_name
         DxfBody *body,
         char *plot_style_name
 );
+long
+dxf_body_get_color_value
+(
+        DxfBody *body
+);
 DxfProprietaryData *
 dxf_body_get_proprietary_data
 (
