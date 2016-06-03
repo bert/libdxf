@@ -1877,6 +1877,48 @@ dxf_body_get_plot_style_name
 
 
 /*!
+ * \brief Set the \c plot_style_name for a DXF \c BODY entity.
+ *
+ * \return a pointer to \c body when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfBody *
+dxf_body_set_plot_style_name
+(
+        DxfBody *body,
+                /*!< a pointer to a DXF \c BODY entity. */
+        char *plot_style_name
+                /*!< a string containing the \c plot_style_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (body == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (plot_style_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        body->plot_style_name = strdup (plot_style_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (body);
+}
+
+
+/*!
  * \brief Get the pointer to the \c proprietary_data from a DXF \c BODY
  * entity.
  *

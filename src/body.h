@@ -396,6 +396,12 @@ dxf_body_get_plot_style_name
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_plot_style_name
+(
+        DxfBody *body,
+        char *plot_style_name
+);
 DxfProprietaryData *
 dxf_body_get_proprietary_data
 (
