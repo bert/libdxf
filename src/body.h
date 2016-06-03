@@ -424,6 +424,11 @@ dxf_body_set_color_name
         DxfBody *body,
         char *color_name
 );
+long
+dxf_body_get_transparency
+(
+        DxfBody *body
+);
 DxfProprietaryData *
 dxf_body_get_proprietary_data
 (
