@@ -429,6 +429,12 @@ dxf_body_get_transparency
 (
         DxfBody *body
 );
+DxfBody *
+dxf_body_set_transparency
+(
+        DxfBody *body,
+        long transparency
+);
 DxfProprietaryData *
 dxf_body_get_proprietary_data
 (
