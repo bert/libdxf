@@ -413,6 +413,11 @@ dxf_body_set_color_value
         DxfBody *body,
         long color_value
 );
+char *
+dxf_body_get_color_name
+(
+        DxfBody *body
+);
 DxfProprietaryData *
 dxf_body_get_proprietary_data
 (
