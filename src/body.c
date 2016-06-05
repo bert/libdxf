@@ -373,6 +373,9 @@ dxf_body_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("BODY");
+        DxfProprietaryData *iter = NULL;
+        DxfProprietaryData *additional_iter = NULL;
+        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -397,33 +400,34 @@ dxf_body_write
         {
                 fprintf (stderr,
                   (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, body->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_body_get_id_code (body));
         }
-        if (strcmp (body->linetype, "") == 0)
+        if (strcmp (dxf_body_get_linetype (body), "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, body->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_body_get_id_code (body));
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                body->layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_body_set_linetype (body, strdup (DXF_DEFAULT_LAYER));
         }
-        if (strcmp (body->layer, "") == 0)
+        if (strcmp (dxf_body_get_layer (body), "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, body->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_body_get_id_code (body));
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
-                body->layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_body_set_layer (body, strdup (DXF_DEFAULT_LAYER));
         }
         /* Start writing output. */
+        i = 1;
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (body->id_code != -1)
+        if (dxf_body_get_id_code (body) != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", body->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_body_get_id_code (body));
         }
         /*!
          * \todo for version R14.\n
@@ -435,54 +439,54 @@ dxf_body_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (body->dictionary_owner_soft, "") != 0)
+        if ((strcmp (dxf_body_get_dictionary_owner_soft (body), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", body->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", dxf_body_get_dictionary_owner_soft (body));
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (body->dictionary_owner_hard, "") != 0)
+        if ((strcmp (dxf_body_get_dictionary_owner_hard (body), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", body->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", dxf_body_get_dictionary_owner_hard (body));
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (body->paperspace == DXF_PAPERSPACE)
+        if (dxf_body_get_paperspace (body) == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", body->layer);
-        if (strcmp (body->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", dxf_body_get_layer (body));
+        if (strcmp (dxf_body_get_linetype (body), DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", body->linetype);
+                fprintf (fp->fp, "  6\n%s\n", dxf_body_get_linetype (body));
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (body->elevation != 0.0))
+          && (dxf_body_get_elevation (body) != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", body->elevation);
+                fprintf (fp->fp, " 38\n%f\n", dxf_body_get_elevation (body));
         }
-        if (body->thickness != 0.0)
+        if (dxf_body_get_thickness (body) != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", body->thickness);
+                fprintf (fp->fp, " 39\n%f\n", dxf_body_get_thickness (body));
         }
-        if (body->linetype_scale != 1.0)
+        if (dxf_body_get_linetype_scale (body) != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", body->linetype_scale);
+                fprintf (fp->fp, " 48\n%f\n", dxf_body_get_linetype_scale (body));
         }
-        if (body->visibility != 0)
+        if (dxf_body_get_visibility (body) != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", body->visibility);
+                fprintf (fp->fp, " 60\n%d\n", dxf_body_get_visibility (body));
         }
-        if (body->color != DXF_COLOR_BYLAYER)
+        if (dxf_body_get_color (body) != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", body->color);
+                fprintf (fp->fp, " 62\n%d\n", dxf_body_get_color (body));
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -490,15 +494,24 @@ dxf_body_write
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
-                fprintf (fp->fp, " 70\n%d\n", body->modeler_format_version_number);
+                fprintf (fp->fp, " 70\n%d\n", dxf_body_get_modeler_format_version_number (body));
         }
-        while (strlen (body->proprietary_data->line) > 0)
+        iter = (DxfProprietaryData *) dxf_body_get_proprietary_data (body);
+        additional_iter = (DxfProprietaryData *) dxf_body_get_additional_proprietary_data (body);
+        while ((iter != NULL) || (additional_iter != NULL))
         {
-                fprintf (fp->fp, "  1\n%s\n", body->proprietary_data->line);
-        }
-        while (strlen (body->additional_proprietary_data->line) > 0)
-        {
-                fprintf (fp->fp, "  3\n%s\n", body->additional_proprietary_data->line);
+                if (iter->order == i)
+                {
+                        fprintf (fp->fp, "  1\n%s\n", dxf_proprietary_data_get_line (iter));
+                        iter = (DxfProprietaryData *) dxf_proprietary_data_get_next (iter);
+                        i++;
+                }
+                if (additional_iter->order == i)
+                {
+                        fprintf (fp->fp, "  3\n%s\n", dxf_proprietary_data_get_line (additional_iter));
+                        additional_iter = (DxfProprietaryData *) dxf_proprietary_data_get_next (additional_iter);
+                        i++;
+                }
         }
         /* Clean up. */
         free (dxf_entity_name);
