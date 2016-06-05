@@ -2223,13 +2223,11 @@ dxf_body_set_proprietary_data
  *
  * \warning No checks are performed on the returned pointer (string).
  */
-int
+DxfProprietaryData *
 dxf_body_get_additional_proprietary_data
 (
-        DxfBody *body,
+        DxfBody *body
                 /*!< a pointer to a DXF \c BODY entity. */
-        DxfProprietaryData *additional_data
-                /*!< a pointer to the \c additional_proprietary_data. */
 )
 {
 #if DEBUG
@@ -2241,20 +2239,19 @@ dxf_body_get_additional_proprietary_data
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
         if (body->additional_proprietary_data ==  NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (NULL);
         }
-        additional_data = (DxfProprietaryData *) body->additional_proprietary_data;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (EXIT_SUCCESS);
+        return ((DxfProprietaryData *) body->additional_proprietary_data);
 }
 
 

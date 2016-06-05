@@ -446,11 +446,10 @@ dxf_body_set_proprietary_data
         DxfBody *body,
         DxfProprietaryData *proprietary_data
 );
-int
+DxfProprietaryData *
 dxf_body_get_additional_proprietary_data
 (
-        DxfBody *body,
-        DxfProprietaryData *additional_data
+        DxfBody *body
 );
 DxfBody *
 dxf_body_set_additional_proprietary_data
