@@ -331,6 +331,11 @@ dxf_circle_set_paperspace
         DxfCircle *circle,
         int paperspace
 );
+int
+dxf_circle_get_graphics_data_size
+(
+        DxfCircle *circle
+);
 char *
 dxf_circle_get_dictionary_owner_soft
 (
