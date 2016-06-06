@@ -178,16 +178,17 @@ dxf_circle_struct
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF circle. */
         double x0;
-                /*!< group code = 10\n
-                 * base point. */
+                /*!< X coordinate of the base point.\n
+                 * Group code = 10. */
         double y0;
-                /*!< group code = 20\n
-                 * base point. */
+                /*!< Y coordinate of the base point.\n
+                 * Group code = 20. */
         double z0;
-                /*!< group code = 30\n
-                 * base point. */
+                /*!< Z coordinate of the base point.\n
+                 * Group code = 30. */
         double radius;
-                /*!< group code = 40. */
+                /*!< Radius.\n
+                 * Group code = 40. */
         double extr_x0;
                 /*!< X-value of the extrusion vector.\n
                  * Defaults to 0.0 if ommitted in the DXF file.\n
@@ -201,7 +202,7 @@ dxf_circle_struct
                  * Defaults to 1.0 if ommitted in the DXF file.\n
                  * Group code = 230. */
         struct DxfCircle *next;
-                /*!< pointer to the next DxfCircle.\n
+                /*!< Pointer to the next DxfCircle.\n
                  * \c NULL in the last DxfCircle. */
 } DxfCircle;
 
