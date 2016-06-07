@@ -44,7 +44,7 @@
 
 #include "global.h"
 #include "point.h"
-
+#include "binary_graphics_data.h"
 
 /*!
  * \brief DXF definition of a circle entity (\c CIRCLE).
@@ -352,6 +352,11 @@ dxf_circle_set_shadow_mode
 (
         DxfCircle *circle,
         int16_t shadow_mode
+);
+DxfBinaryGraphicsData *
+dxf_circle_get_binary_graphics_data
+(
+        DxfCircle *circle
 );
 char *
 dxf_circle_get_dictionary_owner_soft
