@@ -376,6 +376,11 @@ dxf_circle_set_dictionary_owner_soft
         char *dictionary_owner_soft
 );
 char *
+dxf_circle_get_material
+(
+        DxfCircle *circle
+);
+char *
 dxf_circle_get_dictionary_owner_hard
 (
         DxfCircle *circle
