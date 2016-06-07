@@ -347,6 +347,12 @@ dxf_circle_get_shadow_mode
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_shadow_mode
+(
+        DxfCircle *circle,
+        int16_t shadow_mode
+);
 char *
 dxf_circle_get_dictionary_owner_soft
 (
