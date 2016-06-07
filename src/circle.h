@@ -358,6 +358,12 @@ dxf_circle_get_binary_graphics_data
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_binary_graphics_data
+(
+        DxfCircle *circle,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_circle_get_dictionary_owner_soft
 (
