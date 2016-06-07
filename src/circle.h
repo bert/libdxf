@@ -342,6 +342,11 @@ dxf_circle_set_graphics_data_size
         DxfCircle *circle,
         int graphics_data_size
 );
+int16_t
+dxf_circle_get_shadow_mode
+(
+        DxfCircle *circle
+);
 char *
 dxf_circle_get_dictionary_owner_soft
 (
