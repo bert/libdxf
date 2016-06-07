@@ -336,6 +336,12 @@ dxf_circle_get_graphics_data_size
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_graphics_data_size
+(
+        DxfCircle *circle,
+        int graphics_data_size
+);
 char *
 dxf_circle_get_dictionary_owner_soft
 (
