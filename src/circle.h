@@ -380,6 +380,12 @@ dxf_circle_get_material
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_material
+(
+        DxfCircle *circle,
+        char *material
+);
 char *
 dxf_circle_get_dictionary_owner_hard
 (

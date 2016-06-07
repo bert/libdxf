@@ -1671,6 +1671,48 @@ dxf_circle_get_material
 
 
 /*!
+ * \brief Set the pointer to the \c material for a DXF \c CIRCLE entity.
+ *
+ * \return a pointer to \c circle when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfCircle *
+dxf_circle_set_material
+(
+        DxfCircle *circle,
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+        char *material
+                /*!< a string containing the pointer to the \c
+                 * material for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (material == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        circle->material = strdup (material);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (circle);
+}
+
+
+/*!
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c CIRCLE entity.
  *
