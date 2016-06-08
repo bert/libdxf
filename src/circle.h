@@ -408,6 +408,11 @@ dxf_circle_set_lineweight
         DxfCircle *circle,
         int16_t lineweight
 );
+char *
+dxf_circle_get_plot_style_name
+(
+        DxfCircle *circle
+);
 DxfPoint *
 dxf_circle_get_base_point
 (
