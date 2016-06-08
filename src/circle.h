@@ -402,6 +402,12 @@ dxf_circle_get_lineweight
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_lineweight
+(
+        DxfCircle *circle,
+        int16_t lineweight
+);
 DxfPoint *
 dxf_circle_get_base_point
 (
