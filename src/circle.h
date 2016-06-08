@@ -397,6 +397,11 @@ dxf_circle_set_dictionary_owner_hard
         DxfCircle *circle,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_circle_get_lineweight
+(
+        DxfCircle *circle
+);
 DxfPoint *
 dxf_circle_get_base_point
 (
