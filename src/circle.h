@@ -419,6 +419,11 @@ dxf_circle_set_plot_style_name
         DxfCircle *circle,
         char *plot_style_name
 );
+long
+dxf_circle_get_color_value
+(
+        DxfCircle *circle
+);
 DxfPoint *
 dxf_circle_get_base_point
 (
