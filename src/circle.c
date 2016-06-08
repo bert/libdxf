@@ -2041,6 +2041,48 @@ dxf_circle_get_color_name
 
 
 /*!
+ * \brief Set the \c color_name for a DXF \c CIRCLE entity.
+ *
+ * \return a pointer to \c circle when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfCircle *
+dxf_circle_set_color_name
+(
+        DxfCircle *circle,
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+        char *color_name
+                /*!< a string containing the \c color_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (color_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        circle->color_name = strdup (color_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (circle);
+}
+
+
+/*!
  * \brief Get the base point of a DXF \c CIRCLE entity.
  *
  * \return the base point.

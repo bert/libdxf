@@ -435,6 +435,12 @@ dxf_circle_get_color_name
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_color_name
+(
+        DxfCircle *circle,
+        char *color_name
+);
 DxfPoint *
 dxf_circle_get_base_point
 (
