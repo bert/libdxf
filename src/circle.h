@@ -446,6 +446,12 @@ dxf_circle_get_transparency
 (
         DxfCircle *circle
 );
+DxfCircle *
+dxf_circle_set_transparency
+(
+        DxfCircle *circle,
+        long transparency
+);
 DxfPoint *
 dxf_circle_get_base_point
 (
