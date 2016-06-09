@@ -441,6 +441,11 @@ dxf_circle_set_color_name
         DxfCircle *circle,
         char *color_name
 );
+long
+dxf_circle_get_transparency
+(
+        DxfCircle *circle
+);
 DxfPoint *
 dxf_circle_get_base_point
 (

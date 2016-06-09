@@ -2083,6 +2083,37 @@ dxf_circle_set_color_name
 
 
 /*!
+ * \brief Get the \c transparency from a DXF \c CIRCLE entity.
+ *
+ * \return \c transparency when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+long
+dxf_circle_get_transparency
+(
+        DxfCircle *circle
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (circle->transparency);
+}
+
+
+/*!
  * \brief Get the base point of a DXF \c CIRCLE entity.
  *
  * \return the base point.
