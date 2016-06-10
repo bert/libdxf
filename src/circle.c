@@ -2148,12 +2148,12 @@ dxf_circle_set_transparency
 
 
 /*!
- * \brief Get the base point of a DXF \c CIRCLE entity.
+ * \brief Get the base point \c p0 of a DXF \c CIRCLE entity.
  *
  * \return the base point.
  */
 DxfPoint *
-dxf_circle_get_base_point
+dxf_circle_get_p0
 (
         DxfCircle *circle,
                 /*!< a pointer to a DXF \c CIRCLE entity. */
@@ -2246,12 +2246,12 @@ dxf_circle_get_base_point
 
 
 /*!
- * \brief Set the base point of a DXF \c CIRCLE entity.
+ * \brief Set the base point \c p0 of a DXF \c CIRCLE entity.
  *
  * \return a pointer to a DXF \c CIRCLE entity.
  */
 DxfCircle *
-dxf_circle_set_base_point
+dxf_circle_set_p0
 (
         DxfCircle *circle,
                 /*!< a pointer to a DXF \c CIRCLE entity. */

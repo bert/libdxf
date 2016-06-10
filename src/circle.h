@@ -456,14 +456,14 @@ dxf_circle_set_transparency
         long transparency
 );
 DxfPoint *
-dxf_circle_get_base_point
+dxf_circle_get_p0
 (
         DxfCircle *circle,
         int id_code,
         int inheritance
 );
 DxfCircle *
-dxf_circle_set_base_point
+dxf_circle_set_p0
 (
         DxfCircle *circle,
         DxfPoint *point
