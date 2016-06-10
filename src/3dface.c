@@ -2358,7 +2358,6 @@ dxf_3dface_get_p0
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-
         /* Do some basic checks. */
         if (face == NULL)
         {
