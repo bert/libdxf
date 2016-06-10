@@ -2216,9 +2216,7 @@ dxf_circle_set_p0
                   __FUNCTION__);
                 return (NULL);
         }
-        circle->x0 = point->x0;
-        circle->y0 = point->y0;
-        circle->z0 = point->z0;
+        circle->p0 = (DxfPoint *) point;
 #if DEBUG
         DXF_DEBUG_END
 #endif
