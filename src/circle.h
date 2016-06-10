@@ -177,6 +177,9 @@ dxf_circle_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF circle. */
+        DxfPoint *p0;
+                /*!< Base point.\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< X coordinate of the base point.\n
                  * Group code = 10. */
