@@ -458,9 +458,7 @@ dxf_circle_set_transparency
 DxfPoint *
 dxf_circle_get_p0
 (
-        DxfCircle *circle,
-        int id_code,
-        int inheritance
+        DxfCircle *circle
 );
 DxfCircle *
 dxf_circle_set_p0

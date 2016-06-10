@@ -2155,27 +2155,13 @@ dxf_circle_set_transparency
 DxfPoint *
 dxf_circle_get_p0
 (
-        DxfCircle *circle,
+        DxfCircle *circle
                 /*!< a pointer to a DXF \c CIRCLE entity. */
-        int id_code,
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file. */
-        int inheritance
-                /*!< Inherit layer, linetype, color and other relevant
-                 * properties from either:
-                 * <ol>
-                 * <li value = "0"> Default (as initialised).</li>
-                 * <li value = "1"> \c ARC.</li>
-                 * </ol>
-                 */
 )
 {
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfPoint *p1 = NULL;
-
         /* Do some basic checks. */
         if (circle == NULL)
         {
@@ -2184,64 +2170,17 @@ dxf_circle_get_p0
                   __FUNCTION__);
                 return (NULL);
         }
-        p1 = dxf_point_init (p1);
-        if (p1 == NULL)
+        if (circle->p0 == NULL)
         {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        if (id_code < 0)
-        {
-              fprintf (stderr,
-                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
-                __FUNCTION__);
-        }
-        p1->id_code = id_code;
-        p1->x0 = circle->x0;
-        p1->y0 = circle->y0;
-        p1->z0 = circle->z0;
-        switch (inheritance)
-        {
-                case 0:
-                        /* Do nothing. */
-                        break;
-                case 1:
-                        if (circle->linetype != NULL)
-                        {
-                                p1->linetype = strdup (circle->linetype);
-                        }
-                        if (circle->layer != NULL)
-                        {
-                                p1->layer = strdup (circle->layer);
-                        }
-                        p1->thickness = circle->thickness;
-                        p1->linetype_scale = circle->linetype_scale;
-                        p1->visibility = circle->visibility;
-                        p1->color = circle->color;
-                        p1->paperspace = circle->paperspace;
-                        if (circle->dictionary_owner_soft != NULL)
-                        {
-                                p1->dictionary_owner_soft = strdup (circle->dictionary_owner_soft);
-                        }
-                        if (circle->dictionary_owner_hard != NULL)
-                        {
-                                p1->dictionary_owner_hard = strdup (circle->dictionary_owner_hard);
-                        }
-                        break;
-                default:
-                        fprintf (stderr,
-                          (_("Warning in %s (): unknown inheritance option passed.\n")),
-                          __FUNCTION__);
-                        fprintf (stderr,
-                          (_("\tResolving to default.\n")));
-                        break;
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (p1);
+        return (circle->p0);
 }
 
 
