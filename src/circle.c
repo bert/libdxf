@@ -111,9 +111,7 @@ dxf_circle_init
         circle->id_code = 0;
         circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
         circle->layer = strdup (DXF_DEFAULT_LAYER);
-        circle->x0 = 0.0;
-        circle->y0 = 0.0;
-        circle->z0 = 0.0;
+        dxf_circle_set_p0 (circle, dxf_point_new ());
         circle->extr_x0 = 0.0;
         circle->extr_y0 = 0.0;
         circle->extr_z0 = 0.0;
