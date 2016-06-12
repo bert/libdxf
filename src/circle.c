@@ -2223,6 +2223,45 @@ dxf_circle_set_p0
 
 
 /*!
+ * \brief Get the X-value of the base point \c x0 of a DXF \c CIRCLE
+ * entity.
+ *
+ * \return the X-value of the base point \c x0.
+ */
+double
+dxf_circle_get_x0
+(
+        DxfCircle *circle
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (circle->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (circle->p0->x0);
+}
+
+
+/*!
  * \brief Get the radius from a DXF \c CIRCLE entity.
  *
  * \return radius.

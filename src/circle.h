@@ -467,6 +467,11 @@ dxf_circle_set_p0
         DxfPoint *point
 );
 double
+dxf_circle_get_x0
+(
+        DxfCircle *circle
+);
+double
 dxf_circle_get_radius
 (
         DxfCircle *circle
