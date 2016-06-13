@@ -497,9 +497,9 @@ dxf_circle_write
         {
                 fprintf (fp->fp, " 39\n%f\n", dxf_circle_get_thickness (circle));
         }
-        fprintf (fp->fp, " 10\n%f\n", circle->x0);
-        fprintf (fp->fp, " 20\n%f\n", circle->y0);
-        fprintf (fp->fp, " 30\n%f\n", circle->z0);
+        fprintf (fp->fp, " 10\n%f\n", dxf_circle_get_x0 (circle));
+        fprintf (fp->fp, " 20\n%f\n", dxf_circle_get_y0 (circle));
+        fprintf (fp->fp, " 30\n%f\n", dxf_circle_get_z0 (circle));
         fprintf (fp->fp, " 40\n%f\n", dxf_circle_get_radius (circle));
         if ((fp->acad_version_number >= AutoCAD_12)
                 && (circle->extr_x0 != 0.0)
