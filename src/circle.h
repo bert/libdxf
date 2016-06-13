@@ -489,6 +489,11 @@ dxf_circle_set_y0
         double y0
 );
 double
+dxf_circle_get_z0
+(
+        DxfCircle *circle
+);
+double
 dxf_circle_get_radius
 (
         DxfCircle *circle
