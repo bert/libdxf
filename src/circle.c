@@ -2426,6 +2426,49 @@ dxf_circle_get_z0
 
 
 /*!
+ * \brief Set the Z-value of the base point \c z0 of a DXF \c CIRCLE
+ * entity.
+ *
+ * \return a pointer to \c circle when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfCircle *
+dxf_circle_set_z0
+(
+        DxfCircle *circle,
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+        double z0
+                /*!< the Z-value of the base point \c z0 of a DXF
+                 * \c CIRCLE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (circle->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        circle->p0->z0 = z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (circle);
+}
+
+
+/*!
  * \brief Get the radius from a DXF \c CIRCLE entity.
  *
  * \return radius.
