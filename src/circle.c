@@ -2344,6 +2344,49 @@ dxf_circle_get_y0
 
 
 /*!
+ * \brief Set the Y-value of the base point \c y0 of a DXF \c CIRCLE
+ * entity.
+ *
+ * \return a pointer to \c circle when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfCircle *
+dxf_circle_set_y0
+(
+        DxfCircle *circle,
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+        double y0
+                /*!< the Y-value of the base point \c y0 of a DXF
+                 * \c CIRCLE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (circle->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        circle->p0->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (circle);
+}
+
+
+/*!
  * \brief Get the radius from a DXF \c CIRCLE entity.
  *
  * \return radius.
