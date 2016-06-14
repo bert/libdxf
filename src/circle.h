@@ -515,6 +515,12 @@ dxf_circle_set_extrusion_vector
         double extr_z0
 );
 DxfCircle *
+dxf_circle_set_extr_x0
+(
+        DxfCircle *circle,
+        double extr_x0
+);
+DxfCircle *
 dxf_circle_get_next
 (
         DxfCircle *circle

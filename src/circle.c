@@ -2650,6 +2650,37 @@ dxf_circle_set_extrusion_vector
 
 
 /*!
+ * \brief Set the \c extr_x0 for a DXF \c CIRCLE entity.
+ */
+DxfCircle *
+dxf_circle_set_extr_x0
+(
+        DxfCircle *circle,
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+        double extr_x0
+                /*!< the \c extr_x0 to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        circle->extr_x0 = extr_x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (circle);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c CIRCLE entity from a DXF 
  * \c CIRCLE entity.
  *
