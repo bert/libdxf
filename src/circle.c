@@ -108,23 +108,32 @@ dxf_circle_init
                 __FUNCTION__);
               return (NULL);
         }
-        circle->id_code = 0;
-        circle->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        circle->layer = strdup (DXF_DEFAULT_LAYER);
+        dxf_circle_set_id_code (circle, 0);
+        dxf_circle_set_linetype (circle, strdup (DXF_DEFAULT_LINETYPE));
+        dxf_circle_set_layer (circle, strdup (DXF_DEFAULT_LAYER));
+        dxf_circle_set_elevation (circle, 0.0);
+        dxf_circle_set_thickness (circle, 0.0);
+        dxf_circle_set_linetype_scale (circle, DXF_DEFAULT_LINETYPE_SCALE);
+        dxf_circle_set_visibility (circle, DXF_DEFAULT_VISIBILITY);
+        dxf_circle_set_color (circle, DXF_COLOR_BYLAYER);
+        dxf_circle_set_paperspace (circle, DXF_MODELSPACE);
+        dxf_circle_set_graphics_data_size (circle, 0);
+        dxf_circle_set_shadow_mode (circle, 0);
+        dxf_circle_set_binary_graphics_data (circle, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
+        dxf_circle_set_dictionary_owner_soft (circle, strdup (""));
+        dxf_circle_set_material (circle, strdup (""));
+        dxf_circle_set_dictionary_owner_hard (circle, strdup (""));
+        dxf_circle_set_lineweight (circle, 0);
+        dxf_circle_set_plot_style_name (circle, strdup (""));
+        dxf_circle_set_color_value (circle, 0);
+        dxf_circle_set_color_name (circle, strdup (""));
+        dxf_circle_set_transparency (circle, 0);
         dxf_circle_set_p0 (circle, dxf_point_new ());
+        dxf_circle_set_radius (circle, 0.0);
         circle->extr_x0 = 0.0;
         circle->extr_y0 = 0.0;
         circle->extr_z0 = 0.0;
-        circle->elevation = 0.0;
-        circle->thickness = 0.0;
-        circle->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        circle->visibility = DXF_DEFAULT_VISIBILITY;
-        circle->radius = 0.0;
-        circle->color = DXF_COLOR_BYLAYER;
-        circle->paperspace = DXF_MODELSPACE;
-        circle->dictionary_owner_soft = strdup ("");
-        circle->dictionary_owner_hard = strdup ("");
-        circle->next = NULL;
+        dxf_circle_set_next (circle, NULL);
 #if DEBUG
         DXF_DEBUG_END
 #endif
