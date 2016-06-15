@@ -2712,6 +2712,37 @@ dxf_circle_set_extr_y0
 
 
 /*!
+ * \brief Set the \c extr_z0 for a DXF \c CIRCLE entity.
+ */
+DxfCircle *
+dxf_circle_set_extr_z0
+(
+        DxfCircle *circle,
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+        double extr_z0
+                /*!< the \c extr_z0 to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        circle->extr_z0 = extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (circle);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c CIRCLE entity from a DXF 
  * \c CIRCLE entity.
  *
