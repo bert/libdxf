@@ -521,6 +521,12 @@ dxf_circle_set_extr_x0
         double extr_x0
 );
 DxfCircle *
+dxf_circle_set_extr_y0
+(
+        DxfCircle *circle,
+        double extr_y0
+);
+DxfCircle *
 dxf_circle_get_next
 (
         DxfCircle *circle
