@@ -42,6 +42,7 @@
 #define LIBDXF_SRC_CIRCLE_H
 
 
+#include <math.h>
 #include "global.h"
 #include "point.h"
 #include "binary_graphics_data.h"
@@ -557,6 +558,11 @@ dxf_circle_set_next
 (
         DxfCircle *circle,
         DxfCircle *next
+);
+double
+dxf_circle_get_area
+(
+        DxfCircle *circle
 );
 
 
