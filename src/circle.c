@@ -2999,4 +2999,70 @@ dxf_circle_get_circumference
 }
 
 
+/*!
+ * \brief Test if a DXF \c POINT lies within, on top or outside a DXF
+ * \c CIRCLE entity.
+ *
+ * \return \c INSIDE if the point lies inside the circle,
+ * \c OUTSIDE if the point lies outside the circle,
+ * \c ON_EDGE if the point lies on top the circle.
+ *
+ * \note A two-dimensional circle on a plane wit z = 0.0.
+ */
+int
+dxf_circle_test_point_in_circle
+(
+        DxfPoint *point,
+                /*!< a pointer to a DXF \c POINT entity. */
+        DxfCircle *circle
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+)
+{
+        double dy;
+        double dx;
+
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (circle->radius < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the radius member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (circle->radius == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a value of zero was found in the radius member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        dx = circle->p0->x0 - point->x0;
+        dy = circle->p0->y0 - point->y0;
+        /* "<" to not include the edge */
+        if (dx * dx + dy * dy < circle->radius * circle->radius)
+                return (INSIDE);
+        /* ">" to not include the edge */
+        else if (dx * dx + dy * dy > circle->radius * circle->radius)
+                return (OUTSIDE);
+        /* "==" to detect on edge */
+        else if (dx * dx + dy * dy == circle->radius * circle->radius)
+                return (ON_EDGE);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        /* dead code */
+        return (EXIT_FAILURE);
+}
+
+
 /* EOF */

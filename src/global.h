@@ -151,6 +151,11 @@
         /*!< \brief Inside is 3. */
 #endif
 
+#ifndef ON_EDGE
+#  define ON_EDGE 4
+        /*!< \brief On the edge is 4. */
+#endif
+
 #ifndef FALSE
 #  define FALSE 0
         /*!< \brief False is 0. */

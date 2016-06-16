@@ -569,6 +569,12 @@ dxf_circle_get_circumference
 (
         DxfCircle *circle
 );
+int
+dxf_circle_test_point_in_circle
+(
+        DxfPoint *point,
+        DxfCircle *circle
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
