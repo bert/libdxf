@@ -564,6 +564,11 @@ dxf_circle_get_area
 (
         DxfCircle *circle
 );
+double
+dxf_circle_get_circumference
+(
+        DxfCircle *circle
+);
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
