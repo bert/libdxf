@@ -511,6 +511,11 @@ dxf_dimension_set_paperspace
         DxfDimension *dimension,
         int paperspace
 );
+int
+dxf_dimension_get_graphics_data_size
+(
+        DxfDimension *dimension
+);
 char *
 dxf_dimension_get_dictionary_owner_soft
 (
