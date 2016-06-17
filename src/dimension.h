@@ -51,7 +51,7 @@
  * \brief DXF definition of an AutoCAD dimension.
  */
 typedef struct
-dxf_dimension
+dxf_dimension_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
