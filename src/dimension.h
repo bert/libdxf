@@ -373,6 +373,11 @@ dxf_dimension_struct
                 /*!< Z-value of the extrusion vector.\n
                  * Defaults to 1.0 if ommitted in the DXF file.\n
                  * Group code = 230. */
+        int16_t version_number;
+                /*!< Version number:\n
+                 * 0 = 2010.\n
+                 * Group code = 280.\n
+                 * \since Introduced in version R2010. */
         struct DxfDimension *next;
                 /*!< pointer to the next DxfDimension.\n
                  * \c NULL in the last DxfDimension. */
