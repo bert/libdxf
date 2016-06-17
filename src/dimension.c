@@ -1,9 +1,16 @@
 /*!
  * \file dimension.c
  *
- * \author Copyright (C) 2012 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dimension entity (\c DIMENSION).
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ * \version According to DXF R2000.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -42,13 +49,6 @@
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 DxfDimension *
 dxf_dimension_new ()
@@ -86,13 +86,6 @@ dxf_dimension_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 DxfDimension *
 dxf_dimension_init
@@ -185,13 +178,6 @@ dxf_dimension_init
  * \c ENTITY section marker \c ENDSEC. \n
  *
  * \return a pointer to \c dimension.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 DxfDimension *
 dxf_dimension_read
@@ -653,13 +639,6 @@ dxf_dimension_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 int
 dxf_dimension_write
@@ -925,13 +904,6 @@ dxf_dimension_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 int
 dxf_dimension_free
@@ -970,12 +942,6 @@ dxf_dimension_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c DIMENSION
  * entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_dimension_free_chain
@@ -1009,12 +975,6 @@ dxf_dimension_free_chain
  * \brief Get the ID code from a DXF \c DIMENSION entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_dimension_get_id_code
@@ -1053,12 +1013,6 @@ dxf_dimension_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_id_code
@@ -1101,12 +1055,6 @@ dxf_dimension_set_id_code
  * \brief Get the linetype from a DXF \c DIMENSION entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_dimension_get_linetype
@@ -1145,12 +1093,6 @@ dxf_dimension_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_linetype
@@ -1191,12 +1133,6 @@ dxf_dimension_set_linetype
  * \brief Get the layer from a DXF \c DIMENSION entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_dimension_get_layer
@@ -1235,12 +1171,6 @@ dxf_dimension_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_layer
@@ -1281,12 +1211,6 @@ dxf_dimension_set_layer
  * \brief Get the elevation from a DXF \c DIMENSION entity.
  *
  * \return elevation.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_dimension_get_elevation
@@ -1318,12 +1242,6 @@ dxf_dimension_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_elevation
@@ -1357,12 +1275,6 @@ dxf_dimension_set_elevation
  * \brief Get the thickness from a DXF \c DIMENSION entity.
  *
  * \return thickness.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_dimension_get_thickness
@@ -1401,12 +1313,6 @@ dxf_dimension_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_thickness
@@ -1447,12 +1353,6 @@ dxf_dimension_set_thickness
  * \brief Get the linetype scale from a DXF \c DIMENSION entity.
  *
  * \return linetype scale.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_dimension_get_linetype_scale
@@ -1491,12 +1391,6 @@ dxf_dimension_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_linetype_scale
@@ -1537,12 +1431,6 @@ dxf_dimension_set_linetype_scale
  * \brief Get the visibility from a DXF \c DIMENSION entity.
  *
  * \return visibility.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int16_t
 dxf_dimension_get_visibility
@@ -1588,12 +1476,6 @@ dxf_dimension_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_visibility
@@ -1641,12 +1523,6 @@ dxf_dimension_set_visibility
  * \brief Get the color from a DXF \c DIMENSION entity.
  *
  * \return color.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_dimension_get_color
@@ -1684,12 +1560,6 @@ dxf_dimension_get_color
 
 /*!
  * \brief Set the color for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_color
@@ -1731,12 +1601,6 @@ dxf_dimension_set_color
  * \brief Get the paperspace flag value from a DXF \c DIMENSION entity.
  *
  * \return paperspace flag value.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_dimension_get_paperspace
@@ -1780,12 +1644,6 @@ dxf_dimension_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_paperspace
@@ -1836,12 +1694,6 @@ dxf_dimension_set_paperspace
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_dimension_get_dictionary_owner_soft
@@ -1881,12 +1733,6 @@ dxf_dimension_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_dictionary_owner_soft
@@ -1931,12 +1777,6 @@ dxf_dimension_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_dimension_get_dictionary_owner_hard
@@ -1976,12 +1816,6 @@ dxf_dimension_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_dictionary_owner_hard
@@ -2023,12 +1857,6 @@ dxf_dimension_set_dictionary_owner_hard
  * \brief Get the \c dim_text from a DXF \c DIMENSION entity.
  *
  * \return \c dim_text when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_dimension_get_dim_text
@@ -2067,12 +1895,6 @@ dxf_dimension_get_dim_text
 
 /*!
  * \brief Set the \c dim_text for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_dim_text
@@ -2114,12 +1936,6 @@ dxf_dimension_set_dim_text
  *
  * \return \c dimblock_name when sucessful, \c NULL when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_dimension_get_dimblock_name
@@ -2158,12 +1974,6 @@ dxf_dimension_get_dimblock_name
 
 /*!
  * \brief Set the \c dimblock_name for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_dimblock_name
@@ -2205,12 +2015,6 @@ dxf_dimension_set_dimblock_name
  *
  * \return \c dimstyle_name when sucessful, \c NULL when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_dimension_get_dimstyle_name
@@ -2249,12 +2053,6 @@ dxf_dimension_get_dimstyle_name
 
 /*!
  * \brief Set the \c dimstyle_name for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_dimstyle_name
@@ -2296,12 +2094,6 @@ dxf_dimension_set_dimstyle_name
  * \c DIMENSION entity.
  *
  * \return the definition point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_dimension_get_x0
@@ -2401,12 +2193,6 @@ dxf_dimension_get_x0
  * \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_x0
@@ -2450,12 +2236,6 @@ dxf_dimension_set_x0
  * \c DIMENSION entity.
  *
  * \return the middle point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_dimension_get_x1
@@ -2555,12 +2335,6 @@ dxf_dimension_get_x1
  * \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_x1
@@ -2604,12 +2378,6 @@ dxf_dimension_set_x1
  * \c DIMENSION entity.
  *
  * \return the dimension block translation vector.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_dimension_get_x2
@@ -2709,12 +2477,6 @@ dxf_dimension_get_x2
  * \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_x2
@@ -2758,12 +2520,6 @@ dxf_dimension_set_x2
  * a DXF \c DIMENSION entity.
  *
  * \return the definition point for linear and angular dimensions.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_dimension_get_x3
@@ -2863,12 +2619,6 @@ dxf_dimension_get_x3
  * a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_x3
@@ -2912,12 +2662,6 @@ dxf_dimension_set_x3
  * a DXF \c DIMENSION entity.
  *
  * \return the definition point for linear and angular dimensions.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_dimension_get_x4
@@ -3017,12 +2761,6 @@ dxf_dimension_get_x4
  * a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_x4
@@ -3066,12 +2804,6 @@ dxf_dimension_set_x4
  * dimensions for a DXF \c DIMENSION entity.
  *
  * \return the definition point for linear and angular dimensions.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_dimension_get_x5
@@ -3171,12 +2903,6 @@ dxf_dimension_get_x5
  * dimensions for a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_x5
@@ -3220,12 +2946,6 @@ dxf_dimension_set_x5
  * for a DXF \c DIMENSION entity.
  *
  * \return the point defining dimension arc for angular dimensions.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_dimension_get_x6
@@ -3325,12 +3045,6 @@ dxf_dimension_get_x6
  * for a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_x6
@@ -3373,12 +3087,6 @@ dxf_dimension_set_x6
  * \brief Get the leader length from a DXF \c DIMENSION entity.
  *
  * \return leader length.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_dimension_get_leader_length
@@ -3410,12 +3118,6 @@ dxf_dimension_get_leader_length
 
 /*!
  * \brief Set the leader length for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_leader_length
@@ -3449,12 +3151,6 @@ dxf_dimension_set_leader_length
  * \brief Get the text line spacing factor from a DXF \c DIMENSION entity.
  *
  * \return text line spacing factor.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_dimension_get_text_line_spacing_factor
@@ -3486,12 +3182,6 @@ dxf_dimension_get_text_line_spacing_factor
 
 /*!
  * \brief Set the text line spacing factor for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_text_line_spacing_factor
@@ -3525,12 +3215,6 @@ dxf_dimension_set_text_line_spacing_factor
  * \brief Get the actual measurement from a DXF \c DIMENSION entity.
  *
  * \return actual_measurement.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_dimension_get_actual_measurement
@@ -3562,12 +3246,6 @@ dxf_dimension_get_actual_measurement
 
 /*!
  * \brief Set the actual measurement for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_actual_measurement
@@ -3602,12 +3280,6 @@ dxf_dimension_set_actual_measurement
  * dimensions from a DXF \c DIMENSION entity.
  *
  * \return angle.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_dimension_get_angle
@@ -3640,12 +3312,6 @@ dxf_dimension_get_angle
 /*!
  * \brief Set the angle of rotated, horizontal, or vertical linear
  * dimensions for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_angle
@@ -3679,12 +3345,6 @@ dxf_dimension_set_angle
  * \brief Get the horizontal direction from a DXF \c DIMENSION entity.
  *
  * \return horizontal direction.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_dimension_get_hor_dir
@@ -3716,12 +3376,6 @@ dxf_dimension_get_hor_dir
 
 /*!
  * \brief Set the horizontal direction for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_hor_dir
@@ -3755,12 +3409,6 @@ dxf_dimension_set_hor_dir
  * \brief Get the oblique angle from a DXF \c DIMENSION entity.
  *
  * \return oblique angle.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_dimension_get_obl_angle
@@ -3792,12 +3440,6 @@ dxf_dimension_get_obl_angle
 
 /*!
  * \brief Set the oblique angle for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_obl_angle
@@ -3831,12 +3473,6 @@ dxf_dimension_set_obl_angle
  * \brief Get the text angle from a DXF \c DIMENSION entity.
  *
  * \return text angle.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_dimension_get_text_angle
@@ -3868,12 +3504,6 @@ dxf_dimension_get_text_angle
 
 /*!
  * \brief Set the text angle for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_text_angle
@@ -3907,13 +3537,6 @@ dxf_dimension_set_text_angle
  * \brief Get the value of the \c flag of a DXF \c DIMENSION.
  *
  * \return The value of the \c flag, or -1 when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 int
 dxf_dimension_get_flag
@@ -3948,12 +3571,6 @@ dxf_dimension_get_flag
 
 /*!
  * \brief Set the flag for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_flag
@@ -3994,13 +3611,6 @@ dxf_dimension_set_flag
  * \brief Get the attachment point of a DXF \c DIMENSION.
  *
  * \return The attachment point, or -1 when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 int
 dxf_dimension_get_attachment_point
@@ -4042,12 +3652,6 @@ dxf_dimension_get_attachment_point
 
 /*!
  * \brief Set the attachment point for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_attachment_point
@@ -4095,13 +3699,6 @@ dxf_dimension_set_attachment_point
  * \brief Get the text line spacing of a DXF \c DIMENSION.
  *
  * \return The text line spacing, or -1 when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
- * \version According to DXF R2000.
  */
 int
 dxf_dimension_get_text_line_spacing
@@ -4143,12 +3740,6 @@ dxf_dimension_get_text_line_spacing
 
 /*!
  * \brief Set the text line spacing for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_text_line_spacing
@@ -4199,12 +3790,6 @@ dxf_dimension_set_text_line_spacing
  * \return a DXF \c POINT containing the extrusion coordinates.
  *
  * \warning No other members are copied into the DXF \c POINT.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_dimension_get_extrusion_vector_as_point
@@ -4246,12 +3831,6 @@ dxf_dimension_get_extrusion_vector_as_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c DIMENSION entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_extrusion_vector
@@ -4294,12 +3873,6 @@ dxf_dimension_set_extrusion_vector
  * \return pointer to the next \c DIMENSION entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_get_next
@@ -4339,12 +3912,6 @@ dxf_dimension_get_next
 /*!
  * \brief Set the pointer to the next \c DIMENSION for a DXF \c DIMENSION
  * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDimension *
 dxf_dimension_set_next
