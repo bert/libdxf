@@ -522,6 +522,11 @@ dxf_dimension_set_graphics_data_size
         DxfDimension *dimension,
         int graphics_data_size
 );
+int16_t
+dxf_dimension_get_shadow_mode
+(
+        DxfDimension *dimension
+);
 char *
 dxf_dimension_get_dictionary_owner_soft
 (
