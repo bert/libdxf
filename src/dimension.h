@@ -516,6 +516,12 @@ dxf_dimension_get_graphics_data_size
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_graphics_data_size
+(
+        DxfDimension *dimension,
+        int graphics_data_size
+);
 char *
 dxf_dimension_get_dictionary_owner_soft
 (
