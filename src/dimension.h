@@ -527,6 +527,12 @@ dxf_dimension_get_shadow_mode
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_shadow_mode
+(
+        DxfDimension *dimension,
+        int16_t shadow_mode
+);
 char *
 dxf_dimension_get_dictionary_owner_soft
 (
