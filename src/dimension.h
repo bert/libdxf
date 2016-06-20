@@ -557,6 +557,11 @@ dxf_dimension_set_dictionary_owner_soft
         char *dictionary_owner_soft
 );
 char *
+dxf_dimension_get_material
+(
+        DxfDimension *dimension
+);
+char *
 dxf_dimension_get_dictionary_owner_hard
 (
         DxfDimension *dimension
