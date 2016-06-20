@@ -45,6 +45,7 @@
 
 #include "global.h"
 #include "point.h"
+#include "binary_graphics_data.h"
 
 
 /*!
@@ -532,6 +533,11 @@ dxf_dimension_set_shadow_mode
 (
         DxfDimension *dimension,
         int16_t shadow_mode
+);
+DxfBinaryGraphicsData *
+dxf_dimension_get_binary_graphics_data
+(
+        DxfDimension *dimension
 );
 char *
 dxf_dimension_get_dictionary_owner_soft
