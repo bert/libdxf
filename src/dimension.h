@@ -539,6 +539,12 @@ dxf_dimension_get_binary_graphics_data
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_binary_graphics_data
+(
+        DxfDimension *dimension,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_dimension_get_dictionary_owner_soft
 (
