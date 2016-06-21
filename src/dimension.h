@@ -561,6 +561,12 @@ dxf_dimension_get_material
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_material
+(
+        DxfDimension *dimension,
+        char *material
+);
 char *
 dxf_dimension_get_dictionary_owner_hard
 (
