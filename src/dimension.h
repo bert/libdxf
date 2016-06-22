@@ -578,6 +578,11 @@ dxf_dimension_set_dictionary_owner_hard
         DxfDimension *dimension,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_dimension_get_lineweight
+(
+        DxfDimension *dimension
+);
 char *
 dxf_dimension_get_dim_text
 (
