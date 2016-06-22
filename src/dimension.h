@@ -583,6 +583,12 @@ dxf_dimension_get_lineweight
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_lineweight
+(
+        DxfDimension *dimension,
+        int16_t lineweight
+);
 char *
 dxf_dimension_get_dim_text
 (
