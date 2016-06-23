@@ -590,6 +590,11 @@ dxf_dimension_set_lineweight
         int16_t lineweight
 );
 char *
+dxf_dimension_get_plot_style_name
+(
+        DxfDimension *dimension
+);
+char *
 dxf_dimension_get_dim_text
 (
         DxfDimension *dimension
