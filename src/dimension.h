@@ -594,6 +594,12 @@ dxf_dimension_get_plot_style_name
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_plot_style_name
+(
+        DxfDimension *dimension,
+        char *plot_style_name
+);
 char *
 dxf_dimension_get_dim_text
 (

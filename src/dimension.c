@@ -2305,6 +2305,48 @@ dxf_dimension_get_plot_style_name
 
 
 /*!
+ * \brief Set the \c plot_style_name for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfDimension *
+dxf_dimension_set_plot_style_name
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        char *plot_style_name
+                /*!< a string containing the \c plot_style_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (plot_style_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimension->plot_style_name = strdup (plot_style_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension);
+}
+
+
+/*!
  * \brief Get the \c dim_text from a DXF \c DIMENSION entity.
  *
  * \return \c dim_text when sucessful, \c NULL when an error occurred.
