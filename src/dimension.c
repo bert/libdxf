@@ -2492,6 +2492,37 @@ dxf_dimension_set_color_name
 
 
 /*!
+ * \brief Get the \c transparency from a DXF \c DIMENSION entity.
+ *
+ * \return \c transparency when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+long
+dxf_dimension_get_transparency
+(
+        DxfDimension *dimension
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension->transparency);
+}
+
+
+/*!
  * \brief Get the \c dim_text from a DXF \c DIMENSION entity.
  *
  * \return \c dim_text when sucessful, \c NULL when an error occurred.

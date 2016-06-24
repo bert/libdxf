@@ -622,6 +622,11 @@ dxf_dimension_set_color_name
         DxfDimension *dimension,
         char *color_name
 );
+long
+dxf_dimension_get_transparency
+(
+        DxfDimension *dimension
+);
 char *
 dxf_dimension_get_dim_text
 (
