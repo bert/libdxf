@@ -600,6 +600,11 @@ dxf_dimension_set_plot_style_name
         DxfDimension *dimension,
         char *plot_style_name
 );
+long
+dxf_dimension_get_color_value
+(
+        DxfDimension *dimension
+);
 char *
 dxf_dimension_get_dim_text
 (
