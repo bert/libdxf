@@ -605,6 +605,12 @@ dxf_dimension_get_color_value
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_color_value
+(
+        DxfDimension *dimension,
+        long color_value
+);
 char *
 dxf_dimension_get_dim_text
 (
