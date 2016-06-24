@@ -627,6 +627,12 @@ dxf_dimension_get_transparency
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_transparency
+(
+        DxfDimension *dimension,
+        long transparency
+);
 char *
 dxf_dimension_get_dim_text
 (

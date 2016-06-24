@@ -2523,6 +2523,40 @@ dxf_dimension_get_transparency
 
 
 /*!
+ * \brief Set the \c transparency for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfDimension *
+dxf_dimension_set_transparency
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        long transparency
+                /*!< the \c transparency to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimension->transparency = transparency;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension);
+}
+
+
+/*!
  * \brief Get the \c dim_text from a DXF \c DIMENSION entity.
  *
  * \return \c dim_text when sucessful, \c NULL when an error occurred.
