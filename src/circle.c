@@ -2912,9 +2912,9 @@ dxf_circle_set_next
 
 
 /*!
- * \brief Get the \area from a DXF \c CIRCLE entity.
+ * \brief Get the \c area from a DXF \c CIRCLE entity.
  *
- * \return \area.
+ * \return \c area.
  */
 double
 dxf_circle_get_area
@@ -2956,9 +2956,9 @@ dxf_circle_get_area
 
 
 /*!
- * \brief Get the \circumference from a DXF \c CIRCLE entity.
+ * \brief Get the \c circumference from a DXF \c CIRCLE entity.
  *
- * \return \circumference.
+ * \return \c circumference.
  */
 double
 dxf_circle_get_circumference
