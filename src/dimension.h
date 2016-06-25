@@ -708,7 +708,7 @@ DxfDimension *
 dxf_dimension_set_x0
 (
         DxfDimension *dimension,
-        DxfPoint *point
+        double x0
 );
 DxfPoint *
 dxf_dimension_get_x1

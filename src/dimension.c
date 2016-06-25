@@ -2921,8 +2921,8 @@ dxf_dimension_set_x0
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        DxfPoint *point
-                /*!< a pointer to a DXF \c POINT entity. */
+        double x0
+                /*!< the X-value \c x0 of the definition point. */
 )
 {
 #ifdef DEBUG
@@ -2936,16 +2936,14 @@ dxf_dimension_set_x0
                   __FUNCTION__);
                 return (NULL);
         }
-        if (point == NULL)
+        if (dimension->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dimension->x0 = point->x0;
-        dimension->y0 = point->y0;
-        dimension->z0 = point->z0;
+        dimension->p0->x0 = x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
