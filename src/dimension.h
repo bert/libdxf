@@ -193,6 +193,28 @@ dxf_dimension_struct
         char *dimstyle_name;
                 /*!< Dimension style name.\n
                  * Group code = 3.  */
+        DxfPoint *p0;
+                /*!< Definition point for all dimension types.\n
+                 * Group codes = 10, 20 and 30.*/
+        DxfPoint *p1;
+                /*!< Middle point of dimension text.\n
+                 * Group codes = 11, 21 and 31. */
+        DxfPoint *p2;
+                /*!< Dimension block translation vector.\n
+                 * Group codes = 12, 22 and 32. */
+        DxfPoint *p3;
+                /*!< Definition point for linear and angular dimensions.\n
+                 * Group codes = 13, 23 and 33. */
+        DxfPoint *p4;
+                /*!< Definition point for linear and angular dimensions.\n
+                 * Group codes = 14, 24 and 34. */
+        DxfPoint *p5;
+                /*!< Definition point for diameter, radius, and angular
+                 * dimensions.\n
+                 * Group codes = 15, 25 and 35. */
+        DxfPoint *p6;
+                /*!< Point defining dimension arc for angular dimensions.\n
+                 * Group codes = 16, 26 and 36. */
         double x0;
                 /*!< X-value of the definition point for all dimension
                  * types.\n
