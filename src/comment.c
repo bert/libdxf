@@ -5,6 +5,12 @@
  *
  * \brief Functions for a DXF comment entity (\c COMMENT).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -186,12 +192,6 @@ dxf_comment_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c COMMENT
  * entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_comment_free_chain
@@ -225,12 +225,6 @@ dxf_comment_free_chain
  * \brief Get the ID code from a DXF \c COMMENT entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_comment_get_id_code
@@ -269,12 +263,6 @@ dxf_comment_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c COMMENT entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfComment *
 dxf_comment_set_id_code
@@ -315,12 +303,6 @@ dxf_comment_set_id_code
 
 /*!
  * \brief Get the value string from a DXF \c COMMENT entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_comment_get_value
@@ -354,12 +336,6 @@ dxf_comment_get_value
 
 /*!
  * \brief Set the given string for a DXF \c COMMENT entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfComment *
 dxf_comment_set_value
@@ -401,12 +377,6 @@ dxf_comment_set_value
  * \return pointer to the next \c COMMENT entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfComment *
 dxf_comment_get_next
@@ -446,12 +416,6 @@ dxf_comment_get_next
 /*!
  * \brief Set the pointer to the next \c COMMENT for a DXF \c COMMENT
  * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfComment *
 dxf_comment_set_next
