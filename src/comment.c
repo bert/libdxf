@@ -1,7 +1,7 @@
 /*!
  * \file comment.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF comment entity (\c COMMENT).
  *
@@ -79,7 +79,7 @@ DxfComment *
 dxf_comment_init
 (
         DxfComment *comment
-                /*!< a pointer to the DXF \COMMENT entity. */
+                /*!< a pointer to the DXF \c COMMENT entity. */
 )
 {
 #ifdef DEBUG
@@ -125,7 +125,7 @@ dxf_comment_write
         DxfFile *fp,
                 /*!< file pointer to output file (or device). */
         DxfComment *comment
-                /*!< a pointer to the DXF \COMMENT entity. */
+                /*!< a pointer to the DXF \c COMMENT entity. */
 )
 {
 #if DEBUG
