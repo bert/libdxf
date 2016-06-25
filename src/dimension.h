@@ -689,6 +689,11 @@ dxf_dimension_set_dimstyle_name
         char *dimstyle_name
 );
 DxfPoint *
+dxf_dimension_get_p0
+(
+        DxfDimension *dimension
+);
+DxfPoint *
 dxf_dimension_get_x0
 (
         DxfDimension *dimension,

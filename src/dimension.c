@@ -2793,6 +2793,44 @@ dxf_dimension_set_dimstyle_name
 
 
 /*!
+ * \brief Get the definition point \c p0 for all dimension types of a DXF
+ * \c DIMENSION entity.
+ *
+ * \return the definition point \c p0.
+ */
+DxfPoint *
+dxf_dimension_get_p0
+(
+        DxfDimension *dimension
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimension->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension->p0);
+}
+
+
+/*!
  * \brief Get the definition point for all dimension types of a DXF
  * \c DIMENSION entity.
  *
