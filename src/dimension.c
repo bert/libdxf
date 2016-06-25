@@ -2831,6 +2831,48 @@ dxf_dimension_get_p0
 
 
 /*!
+ * \brief Set the definition point \c p0 for all dimension types of a
+ * DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfDimension *
+dxf_dimension_set_p0
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        DxfPoint *p0
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimension->p0 = (DxfPoint *) p0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension);
+}
+
+
+/*!
  * \brief Get the definition point for all dimension types of a DXF
  * \c DIMENSION entity.
  *
