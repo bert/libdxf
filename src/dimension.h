@@ -710,6 +710,11 @@ dxf_dimension_set_x0
         DxfDimension *dimension,
         double x0
 );
+double
+dxf_dimension_get_y0
+(
+        DxfDimension *dimension
+);
 DxfPoint *
 dxf_dimension_get_x1
 (
