@@ -2911,8 +2911,8 @@ dxf_dimension_get_x0
 
 
 /*!
- * \brief Set the definition point for all dimension types of a DXF
- * \c DIMENSION entity.
+ * \brief Set the X-coordinate value \c x0 of the definition point for
+ * all dimension types of a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
  */
@@ -2922,7 +2922,8 @@ dxf_dimension_set_x0
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         double x0
-                /*!< the X-value \c x0 of the definition point. */
+                /*!< the X-coordinate value \c x0 of the definition
+                 * point. */
 )
 {
 #ifdef DEBUG
@@ -2990,8 +2991,8 @@ dxf_dimension_get_y0
 
 
 /*!
- * \brief Set the Y-coordinate value of the definition point for all
- * dimension types of a DXF \c DIMENSION entity.
+ * \brief Set the Y-coordinate value \c y0 of the definition point for
+ * all dimension types of a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
  */
@@ -3001,7 +3002,8 @@ dxf_dimension_set_y0
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         double y0
-                /*!< the Y-value \c y0 of the definition point. */
+                /*!< the Y-coordinate value \c y0 of the definition
+                 * point. */
 )
 {
 #ifdef DEBUG
@@ -3069,8 +3071,8 @@ dxf_dimension_get_z0
 
 
 /*!
- * \brief Set the Z-coordinate value \c z0 of the definition point for all
- * dimension types of a DXF \c DIMENSION entity.
+ * \brief Set the Z-coordinate value \c z0 of the definition point for
+ * all dimension types of a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
  */
@@ -3080,7 +3082,8 @@ dxf_dimension_set_z0
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         double z0
-                /*!< the Z-value \c z0 of the definition point. */
+                /*!< the Z-coordiante value \c z0 of the definition
+                 * point. */
 )
 {
 #ifdef DEBUG
