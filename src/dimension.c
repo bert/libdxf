@@ -2873,10 +2873,10 @@ dxf_dimension_set_p0
 
 
 /*!
- * \brief Get the definition point for all dimension types of a DXF
- * \c DIMENSION entity.
+ * \brief Get the X-coordinate value \c x0 of the definition point for
+ * all dimension types of a DXF \c DIMENSION entity.
  *
- * \return the definition point.
+ * \return the X-coordinate value \c x0 of the definition point.
  */
 double
 dxf_dimension_get_x0
