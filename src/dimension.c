@@ -3113,6 +3113,44 @@ dxf_dimension_set_z0
 
 
 /*!
+ * \brief Get the middle point of the dimension text \c p1 for all
+ * dimension types of a DXF \c DIMENSION entity.
+ *
+ * \return the definition point \c p1.
+ */
+DxfPoint *
+dxf_dimension_get_p1
+(
+        DxfDimension *dimension
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimension->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension->p1);
+}
+
+
+/*!
  * \brief Get the middle point for all dimension types of a DXF
  * \c DIMENSION entity.
  *
