@@ -743,12 +743,10 @@ dxf_dimension_set_p1
         DxfDimension *dimension,
         DxfPoint *p1
 );
-DxfPoint *
+double
 dxf_dimension_get_x1
 (
-        DxfDimension *dimension,
-        int id_code,
-        int inheritance
+        DxfDimension *dimension
 );
 DxfDimension *
 dxf_dimension_set_x1
