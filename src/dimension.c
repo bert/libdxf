@@ -3232,8 +3232,8 @@ dxf_dimension_get_x1
 
 
 /*!
- * \brief Set the middle point for all dimension types of a DXF
- * \c DIMENSION entity.
+ * \brief Set the X-coordinate value \c x1 of the middle point for all
+ * dimension types of a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
  */
@@ -3242,8 +3242,8 @@ dxf_dimension_set_x1
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        DxfPoint *point
-                /*!< a pointer to a DXF \c POINT entity. */
+        double x1
+                /*!< the X-coordinate value \c x1 of the middle point. */
 )
 {
 #ifdef DEBUG
@@ -3257,16 +3257,14 @@ dxf_dimension_set_x1
                   __FUNCTION__);
                 return (NULL);
         }
-        if (point == NULL)
+        if (dimension->p1 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dimension->x1 = point->x0;
-        dimension->y1 = point->y0;
-        dimension->z1 = point->z0;
+        dimension->p1->x0 = x1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
