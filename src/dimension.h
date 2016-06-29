@@ -777,6 +777,11 @@ dxf_dimension_set_z1
         double z1
 );
 DxfPoint *
+dxf_dimension_get_p2
+(
+        DxfDimension *dimension
+);
+DxfPoint *
 dxf_dimension_get_x2
 (
         DxfDimension *dimension,
