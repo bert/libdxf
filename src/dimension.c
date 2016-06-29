@@ -3392,6 +3392,47 @@ dxf_dimension_get_z1
 
 
 /*!
+ * \brief Set the Z-coordinate value \c z1 of the middle point for all
+ * dimension types of a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to a DXF \c DIMENSION entity.
+ */
+DxfDimension *
+dxf_dimension_set_z1
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        double z1
+                /*!< the Z-coordinate value \c z1 of the middle point. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimension->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimension->p1->z0 = z1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension);
+}
+
+
+/*!
  * \brief Get the dimension block translation vector for a DXF
  * \c DIMENSION entity.
  *

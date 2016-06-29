@@ -770,6 +770,12 @@ dxf_dimension_get_z1
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_z1
+(
+        DxfDimension *dimension,
+        double z1
+);
 DxfPoint *
 dxf_dimension_get_x2
 (
