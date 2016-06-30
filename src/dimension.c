@@ -3471,6 +3471,48 @@ dxf_dimension_get_p2
 
 
 /*!
+ * \brief Set the definition point \c p2 for linear and angular
+ * dimensions of a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfDimension *
+dxf_dimension_set_p2
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        DxfPoint *p2
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimension->p2 = (DxfPoint *) p2;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension);
+}
+
+
+/*!
  * \brief Get the dimension block translation vector for a DXF
  * \c DIMENSION entity.
  *
