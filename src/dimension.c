@@ -3551,18 +3551,20 @@ dxf_dimension_get_x2
 
 
 /*!
- * \brief Set the dimension block translation vector for a DXF
- * \c DIMENSION entity.
+ * \brief Set the X-value \c x2 of the definition point for linear and
+ * angular dimensions of a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_x2
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        DxfPoint *point
-                /*!< a pointer to a DXF \c POINT entity. */
+        double x2
+                /*!< the X-coordinate value \c x2 of the definition
+                 * point. */
 )
 {
 #ifdef DEBUG
@@ -3576,16 +3578,14 @@ dxf_dimension_set_x2
                   __FUNCTION__);
                 return (NULL);
         }
-        if (point == NULL)
+        if (dimension->p2 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dimension->x2 = point->x0;
-        dimension->y2 = point->y0;
-        dimension->z2 = point->z0;
+        dimension->p2->x0 = x2;
 #if DEBUG
         DXF_DEBUG_END
 #endif
