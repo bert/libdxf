@@ -3632,6 +3632,49 @@ dxf_dimension_get_y2
 
 
 /*!
+ * \brief Set the Y-value \c y2 of the definition point for linear and
+ * angular dimensions of a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfDimension *
+dxf_dimension_set_y2
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        double y2
+                /*!< the Y-coordinate value \c y2 of the definition
+                 * point. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimension->p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimension->p2->y0 = y2;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension);
+}
+
+
+/*!
  * \brief Get the definition point for linear and angular dimensions for
  * a DXF \c DIMENSION entity.
  *

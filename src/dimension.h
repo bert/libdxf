@@ -803,6 +803,12 @@ dxf_dimension_get_y2
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_y2
+(
+        DxfDimension *dimension,
+        double y2
+);
 DxfPoint *
 dxf_dimension_get_x3
 (
