@@ -842,6 +842,11 @@ dxf_dimension_set_x3
         DxfDimension *dimension,
         double x3
 );
+double
+dxf_dimension_get_y3
+(
+        DxfDimension *dimension
+);
 DxfPoint *
 dxf_dimension_get_x4
 (
