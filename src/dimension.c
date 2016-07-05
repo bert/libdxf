@@ -2873,10 +2873,10 @@ dxf_dimension_set_p0
 
 
 /*!
- * \brief Get the X-coordinate value \c x0 of the definition point for
- * all dimension types of a DXF \c DIMENSION entity.
+ * \brief Get the X-value \c x0 of the definition point for all
+ * dimension types of a DXF \c DIMENSION entity.
  *
- * \return the X-coordinate value \c x0 of the definition point.
+ * \return the X-value \c x0 of the definition point.
  */
 double
 dxf_dimension_get_x0
@@ -2911,8 +2911,8 @@ dxf_dimension_get_x0
 
 
 /*!
- * \brief Set the X-coordinate value \c x0 of the definition point for
- * all dimension types of a DXF \c DIMENSION entity.
+ * \brief Set the X-value \c x0 of the definition point for all
+ * dimension types of a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
  */
@@ -2922,8 +2922,7 @@ dxf_dimension_set_x0
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         double x0
-                /*!< the X-coordinate value \c x0 of the definition
-                 * point. */
+                /*!< the X-value \c x0 of the definition point. */
 )
 {
 #ifdef DEBUG
@@ -2953,10 +2952,10 @@ dxf_dimension_set_x0
 
 
 /*!
- * \brief Get the Y-coordinate value \c y0 of the definition point for
- * all dimension types of a DXF \c DIMENSION entity.
+ * \brief Get the Y-value \c y0 of the definition point for all
+ * dimension types of a DXF \c DIMENSION entity.
  *
- * \return the Y-coordinate value \c y0 of the definition point.
+ * \return the Y-value \c y0 of the definition point.
  */
 double
 dxf_dimension_get_y0
@@ -2991,8 +2990,8 @@ dxf_dimension_get_y0
 
 
 /*!
- * \brief Set the Y-coordinate value \c y0 of the definition point for
- * all dimension types of a DXF \c DIMENSION entity.
+ * \brief Set the Y-value \c y0 of the definition point for all
+ * dimension types of a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
  */
@@ -3002,8 +3001,7 @@ dxf_dimension_set_y0
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         double y0
-                /*!< the Y-coordinate value \c y0 of the definition
-                 * point. */
+                /*!< the Y-value \c y0 of the definition point. */
 )
 {
 #ifdef DEBUG
@@ -3033,10 +3031,10 @@ dxf_dimension_set_y0
 
 
 /*!
- * \brief Get the Z-coordinate value \c z0 of the definition point for
- * all dimension types of a DXF \c DIMENSION entity.
+ * \brief Get the Z-value \c z0 of the definition point for all
+ * dimension types of a DXF \c DIMENSION entity.
  *
- * \return the Z-coordinate value \c z0 of the definition point.
+ * \return the Z-value \c z0 of the definition point.
  */
 double
 dxf_dimension_get_z0
@@ -3071,8 +3069,8 @@ dxf_dimension_get_z0
 
 
 /*!
- * \brief Set the Z-coordinate value \c z0 of the definition point for
- * all dimension types of a DXF \c DIMENSION entity.
+ * \brief Set the Z-value \c z0 of the definition point for all
+ * dimension types of a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
  */
@@ -3082,8 +3080,7 @@ dxf_dimension_set_z0
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         double z0
-                /*!< the Z-coordiante value \c z0 of the definition
-                 * point. */
+                /*!< the Z-value \c z0 of the definition point. */
 )
 {
 #ifdef DEBUG
@@ -3113,7 +3110,7 @@ dxf_dimension_set_z0
 
 
 /*!
- * \brief Get the middle point of the dimension text \c p1 for all
+ * \brief Get the middle point \c p1 of the dimension text for all
  * dimension types of a DXF \c DIMENSION entity.
  *
  * \return the definition point \c p1.
@@ -3151,7 +3148,7 @@ dxf_dimension_get_p1
 
 
 /*!
- * \brief Set the middle point of the dimension text \c p1 for all
+ * \brief Set the middle point \c p1 of the dimension text for all
  * dimension types of a DXF \c DIMENSION entity.
  *
  * \return a pointer to \c dimension when successful, or \c NULL when an
@@ -3193,11 +3190,10 @@ dxf_dimension_set_p1
 
 
 /*!
- * \brief Get the X-coordinate value \c x1 of the middle point of the
- * dimension text for all dimension types of a DXF \c DIMENSION
- * entity.
+ * \brief Get the X-value \c x1 of the middle point of the dimension
+ * text for all dimension types of a DXF \c DIMENSION entity.
  *
- * \return the X-coordinate value \c x1 of the middle point.
+ * \return the X-value \c x1 of the middle point.
  */
 double
 dxf_dimension_get_x1
@@ -3232,8 +3228,8 @@ dxf_dimension_get_x1
 
 
 /*!
- * \brief Set the X-coordinate value \c x1 of the middle point for all
- * dimension types of a DXF \c DIMENSION entity.
+ * \brief Set the X-value \c x1 of the middle point for all dimension
+ * types of a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
  */
@@ -3243,7 +3239,7 @@ dxf_dimension_set_x1
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         double x1
-                /*!< the X-coordinate value \c x1 of the middle point. */
+                /*!< the X-value \c x1 of the middle point. */
 )
 {
 #ifdef DEBUG
@@ -3273,11 +3269,10 @@ dxf_dimension_set_x1
 
 
 /*!
- * \brief Get the Y-coordinate value \c y1 of the middle point of the
- * dimension text for all dimension types of a DXF \c DIMENSION
- * entity.
+ * \brief Get the Y-value \c y1 of the middle point of the dimension
+ * text for all dimension types of a DXF \c DIMENSION entity.
  *
- * \return the Y-coordinate value \c y1 of the middle point.
+ * \return the Y-value \c y1 of the middle point.
  */
 double
 dxf_dimension_get_y1
@@ -3312,7 +3307,7 @@ dxf_dimension_get_y1
 
 
 /*!
- * \brief Set the Y-coordinate value \c y1 of the middle point for all
+ * \brief Set the Y-value \c y1 of the middle point for all
  * dimension types of a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
@@ -3323,7 +3318,7 @@ dxf_dimension_set_y1
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         double y1
-                /*!< the Y-coordinate value \c y1 of the middle point. */
+                /*!< the Y-value \c y1 of the middle point. */
 )
 {
 #ifdef DEBUG
@@ -3353,11 +3348,11 @@ dxf_dimension_set_y1
 
 
 /*!
- * \brief Get the Z-coordinate value \c z1 of the middle point of the
+ * \brief Get the Z-value \c z1 of the middle point of the
  * dimension text for all dimension types of a DXF \c DIMENSION
  * entity.
  *
- * \return the Z-coordinate value \c z1 of the middle point.
+ * \return the Z-value \c z1 of the middle point.
  */
 double
 dxf_dimension_get_z1
@@ -3392,8 +3387,8 @@ dxf_dimension_get_z1
 
 
 /*!
- * \brief Set the Z-coordinate value \c z1 of the middle point for all
- * dimension types of a DXF \c DIMENSION entity.
+ * \brief Set the Z-value \c z1 of the middle point for all dimension
+ * types of a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
  */
@@ -3563,8 +3558,7 @@ dxf_dimension_set_x2
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         double x2
-                /*!< the X-coordinate value \c x2 of the definition
-                 * point. */
+                /*!< the X-value \c x2 of the definition point. */
 )
 {
 #ifdef DEBUG
@@ -3725,8 +3719,7 @@ dxf_dimension_set_z2
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         double z2
-                /*!< the Z-coordinate value \c z2 of the definition
-                 * point. */
+                /*!< the Z-value \c z2 of the definition point. */
 )
 {
 #ifdef DEBUG
@@ -3836,7 +3829,7 @@ dxf_dimension_set_p3
 
 
 /*!
- * \brief Get the X-value of the definition point \c x3  for a linear
+ * \brief Get the X-value \c x3 of the definition point for a linear
  * and angular dimensions for a DXF \c DIMENSION entity.
  *
  * \return the X-value \c x3 of the definition point.
