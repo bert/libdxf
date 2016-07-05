@@ -831,12 +831,10 @@ dxf_dimension_set_p3
         DxfDimension *dimension,
         DxfPoint *p3
 );
-DxfPoint *
+double
 dxf_dimension_get_x3
 (
-        DxfDimension *dimension,
-        int id_code,
-        int inheritance
+        DxfDimension *dimension
 );
 DxfDimension *
 dxf_dimension_set_x3
