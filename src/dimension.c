@@ -4069,6 +4069,44 @@ dxf_dimension_set_z3
 
 
 /*!
+ * \brief Get the definition point \c p4 for linear and angular
+ * dimensions for a DXF \c DIMENSION entity.
+ *
+ * \return the definition point \c p4.
+ */
+DxfPoint *
+dxf_dimension_get_p4
+(
+        DxfDimension *dimension
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimension->p4 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension->p4);
+}
+
+
+/*!
  * \brief Get the definition point for linear and angular dimensions for
  * a DXF \c DIMENSION entity.
  *
