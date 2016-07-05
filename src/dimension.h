@@ -869,6 +869,12 @@ dxf_dimension_get_p4
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_p4
+(
+        DxfDimension *dimension,
+        DxfPoint *p4
+);
 DxfPoint *
 dxf_dimension_get_x4
 (
