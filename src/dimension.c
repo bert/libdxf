@@ -3434,7 +3434,7 @@ dxf_dimension_set_z1
 
 /*!
  * \brief Get the definition point \c p2 for linear and angular
- * dimensions \c p2 of a DXF \c DIMENSION entity.
+ * dimensions of a DXF \c DIMENSION entity.
  *
  * \return the definition point \c p2.
  */
