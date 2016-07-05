@@ -3874,8 +3874,8 @@ dxf_dimension_get_x3
 
 
 /*!
- * \brief Set the definition point for linear and angular dimensions for
- * a DXF \c DIMENSION entity.
+ * \brief Set the X-value \c x3 of the definition point for linear and
+ * angular dimensions for a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
  */
@@ -3884,8 +3884,9 @@ dxf_dimension_set_x3
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        DxfPoint *point
-                /*!< a pointer to a DXF \c POINT entity. */
+        double x3
+                /*!< the X-coordinate value \c x3 of the definition
+                 * point. */
 )
 {
 #ifdef DEBUG
@@ -3899,16 +3900,14 @@ dxf_dimension_set_x3
                   __FUNCTION__);
                 return (NULL);
         }
-        if (point == NULL)
+        if (dimension->p3 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dimension->x3 = point->x0;
-        dimension->y3 = point->y0;
-        dimension->z3 = point->z0;
+        dimension->p3->x0 = x3;
 #if DEBUG
         DXF_DEBUG_END
 #endif
