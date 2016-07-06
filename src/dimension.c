@@ -4307,6 +4307,44 @@ dxf_dimension_set_y4
 
 
 /*!
+ * \brief Get the Z-value \c z4 of the definition point for a linear
+ * and angular dimensions for a DXF \c DIMENSION entity.
+ *
+ * \return the Z-value \c z4 of the definition point.
+ */
+double
+dxf_dimension_get_z4
+(
+        DxfDimension *dimension
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (dimension->p4 == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension->p4->z0);
+}
+
+
+/*!
  * \brief Get the definition point for diameter, radius, and angular
  * dimensions for a DXF \c DIMENSION entity.
  *
