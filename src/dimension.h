@@ -875,12 +875,10 @@ dxf_dimension_set_p4
         DxfDimension *dimension,
         DxfPoint *p4
 );
-DxfPoint *
+double
 dxf_dimension_get_x4
 (
-        DxfDimension *dimension,
-        int id_code,
-        int inheritance
+        DxfDimension *dimension
 );
 DxfDimension *
 dxf_dimension_set_x4
