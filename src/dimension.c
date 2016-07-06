@@ -4187,8 +4187,8 @@ dxf_dimension_get_x4
 
 
 /*!
- * \brief Set the definition point \c x4 for linear and angular
- * dimensions for a DXF \c DIMENSION entity.
+ * \brief Set the X-value \c x4 of the definition point for linear and
+ * angular dimensions for a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
  */
@@ -4198,8 +4198,7 @@ dxf_dimension_set_x4
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
         double x4
-                /*!< the X-coordinate value \c x4 of the definition
-                 * point. */
+                /*!< the X-value \c x4 of the definition point. */
 )
 {
 #ifdef DEBUG
