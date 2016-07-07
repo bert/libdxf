@@ -4386,6 +4386,44 @@ dxf_dimension_set_z4
 
 
 /*!
+ * \brief Get the definition point \c p5 for diameter, radius, and
+ * angular dimensions for a DXF \c DIMENSION entity.
+ *
+ * \return the definition point \c p5.
+ */
+DxfPoint *
+dxf_dimension_get_p5
+(
+        DxfDimension *dimension
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimension->p5 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension->p5);
+}
+
+
+/*!
  * \brief Get the definition point for diameter, radius, and angular
  * dimensions for a DXF \c DIMENSION entity.
  *
