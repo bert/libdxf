@@ -913,6 +913,12 @@ dxf_dimension_get_p5
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_p5
+(
+        DxfDimension *dimension,
+        DxfPoint *p5
+);
 DxfPoint *
 dxf_dimension_get_x5
 (
