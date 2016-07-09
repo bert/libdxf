@@ -4504,8 +4504,8 @@ dxf_dimension_get_x5
 
 
 /*!
- * \brief Set the definition point for diameter, radius, and angular
- * dimensions for a DXF \c DIMENSION entity.
+ * \brief Set the X-value \c x5 of the definition point for diameter,
+ * radius, and angular dimensions for a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
  */
@@ -4514,8 +4514,8 @@ dxf_dimension_set_x5
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        DxfPoint *point
-                /*!< a pointer to a DXF \c POINT entity. */
+        double x5
+                /*!< the X-value \c x5 of the definition point. */
 )
 {
 #ifdef DEBUG
@@ -4529,16 +4529,14 @@ dxf_dimension_set_x5
                   __FUNCTION__);
                 return (NULL);
         }
-        if (point == NULL)
+        if (dimension->p5 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dimension->x5 = point->x0;
-        dimension->y5 = point->y0;
-        dimension->z5 = point->z0;
+        dimension->p5->x0 = x5;
 #if DEBUG
         DXF_DEBUG_END
 #endif
