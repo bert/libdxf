@@ -941,6 +941,11 @@ dxf_dimension_set_y5
         DxfDimension *dimension,
         double y5
 );
+double
+dxf_dimension_get_z5
+(
+        DxfDimension *dimension
+);
 DxfPoint *
 dxf_dimension_get_x6
 (
