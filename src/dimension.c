@@ -4662,6 +4662,47 @@ dxf_dimension_get_z5
 
 
 /*!
+ * \brief Set the Z-value \c z5 of the definition point for diameter,
+ * radius, and angular dimensions for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to a DXF \c DIMENSION entity.
+ */
+DxfDimension *
+dxf_dimension_set_z5
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        double z5
+                /*!< the Z-value \c z5 of the definition point. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimension->p5 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimension->p5->z0 = z5;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension);
+}
+
+
+/*!
  * \brief Get the point defining dimension arc for angular dimensions
  * for a DXF \c DIMENSION entity.
  *
