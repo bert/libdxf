@@ -963,12 +963,10 @@ dxf_dimension_set_p6
         DxfDimension *dimension,
         DxfPoint *p6
 );
-DxfPoint *
+double
 dxf_dimension_get_x6
 (
-        DxfDimension *dimension,
-        int id_code,
-        int inheritance
+        DxfDimension *dimension
 );
 DxfDimension *
 dxf_dimension_set_x6
