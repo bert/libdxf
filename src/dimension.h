@@ -957,6 +957,12 @@ dxf_dimension_get_p6
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_p6
+(
+        DxfDimension *dimension,
+        DxfPoint *p6
+);
 DxfPoint *
 dxf_dimension_get_x6
 (
