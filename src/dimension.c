@@ -4703,6 +4703,44 @@ dxf_dimension_set_z5
 
 
 /*!
+ * \brief Get the definition point \c p6 defining the dimension arc for
+ * angular dimensions for a DXF \c DIMENSION entity.
+ *
+ * \return the definition point \c p6.
+ */
+DxfPoint *
+dxf_dimension_get_p6
+(
+        DxfDimension *dimension
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimension->p6 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension->p6);
+}
+
+
+/*!
  * \brief Get the point defining dimension arc for angular dimensions
  * for a DXF \c DIMENSION entity.
  *
