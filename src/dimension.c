@@ -4821,8 +4821,8 @@ dxf_dimension_get_x6
 
 
 /*!
- * \brief Set the point defining dimension arc for angular dimensions
- * for a DXF \c DIMENSION entity.
+ * \brief Set the X-value \c x6 of the point defining the dimension arc
+ * for angular dimensions for a DXF \c DIMENSION entity.
  *
  * \return a pointer to a DXF \c DIMENSION entity.
  */
@@ -4831,8 +4831,8 @@ dxf_dimension_set_x6
 (
         DxfDimension *dimension,
                 /*!< a pointer to a DXF \c DIMENSION entity. */
-        DxfPoint *point
-                /*!< a pointer to a DXF \c POINT entity. */
+        double x6
+                /*!< the X-value \c x6 of the definition point. */
 )
 {
 #ifdef DEBUG
@@ -4846,16 +4846,14 @@ dxf_dimension_set_x6
                   __FUNCTION__);
                 return (NULL);
         }
-        if (point == NULL)
+        if (dimension->p6 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        dimension->x6 = point->x0;
-        dimension->y6 = point->y0;
-        dimension->z6 = point->z0;
+        dimension->p6->x0 = x6;
 #if DEBUG
         DXF_DEBUG_END
 #endif
