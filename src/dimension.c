@@ -4900,6 +4900,47 @@ dxf_dimension_get_y6
 
 
 /*!
+ * \brief Set the Y-value \c y6 of the point defining the dimension arc
+ * for angular dimensions for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to a DXF \c DIMENSION entity.
+ */
+DxfDimension *
+dxf_dimension_set_y6
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        double y6
+                /*!< the Y-value \c y6 of the definition point. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimension->p6 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimension->p6->y0 = y6;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension);
+}
+
+
+/*!
  * \brief Get the leader length from a DXF \c DIMENSION entity.
  *
  * \return leader length.
