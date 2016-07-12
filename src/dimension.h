@@ -986,6 +986,11 @@ dxf_dimension_set_y6
         double y6
 );
 double
+dxf_dimension_get_z6
+(
+        DxfDimension *dimension
+);
+double
 dxf_dimension_get_leader_length
 (
         DxfDimension *dimension
