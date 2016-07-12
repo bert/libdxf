@@ -4979,6 +4979,47 @@ dxf_dimension_get_z6
 
 
 /*!
+ * \brief Set the Z-value \c z6 of the point defining the dimension arc
+ * for angular dimensions for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to a DXF \c DIMENSION entity.
+ */
+DxfDimension *
+dxf_dimension_set_z6
+(
+        DxfDimension *dimension,
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+        double z6
+                /*!< the Z-value \c z6 of the definition point. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimension->p6 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        dimension->p6->z0 = z6;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension);
+}
+
+
+/*!
  * \brief Get the leader length from a DXF \c DIMENSION entity.
  *
  * \return leader length.

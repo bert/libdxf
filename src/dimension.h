@@ -990,6 +990,12 @@ dxf_dimension_get_z6
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_z6
+(
+        DxfDimension *dimension,
+        double z6
+);
 double
 dxf_dimension_get_leader_length
 (
