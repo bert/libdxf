@@ -5720,6 +5720,37 @@ dxf_dimension_set_text_line_spacing
 
 
 /*!
+ * \brief Get the X-value \c extr_x0 of the extrusion vector of a DXF
+ * \c DIMENSION entity.
+ *
+ * \return the X-value \c x0 of the definition point.
+ */
+double
+dxf_dimension_get_extr_x0
+(
+        DxfDimension *dimension
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dimension->extr_x0);
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c DIMENSION entity.
  *

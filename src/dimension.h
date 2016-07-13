@@ -1107,6 +1107,11 @@ dxf_dimension_set_text_line_spacing
         DxfDimension *dimension,
         int text_line_spacing
 );
+double
+dxf_dimension_get_extr_x0
+(
+        DxfDimension *dimension
+);
 DxfPoint *
 dxf_dimension_get_extrusion_vector_as_point
 (
