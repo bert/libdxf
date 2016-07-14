@@ -5723,7 +5723,7 @@ dxf_dimension_set_text_line_spacing
  * \brief Get the X-value \c extr_x0 of the extrusion vector of a DXF
  * \c DIMENSION entity.
  *
- * \return the X-value \c x0 of the definition point.
+ * \return the X-value \c extr_x0 of the extrusion vector.
  */
 double
 dxf_dimension_get_extr_x0
