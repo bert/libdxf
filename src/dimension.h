@@ -1123,6 +1123,12 @@ dxf_dimension_get_extr_y0
 (
         DxfDimension *dimension
 );
+DxfDimension *
+dxf_dimension_set_extr_y0
+(
+        DxfDimension *dimension,
+        double extr_y0
+);
 DxfPoint *
 dxf_dimension_get_extrusion_vector_as_point
 (
