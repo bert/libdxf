@@ -667,7 +667,6 @@ dxf_dimension_write
         }
         if (dimension == NULL)
         {
-                return (EXIT_FAILURE);
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
@@ -675,21 +674,31 @@ dxf_dimension_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dimension->layer, "") == 0)
+        if ((dxf_dimension_get_flag (dimension) > 6)
+          || (dxf_dimension_get_flag (dimension) < 0))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range flag value was detected.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (strcmp (dxf_dimension_get_layer (dimension), "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dimension->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_dimension_get_id_code (dimension));
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
-                dimension->layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_dimension_set_layer (dimension, strdup (DXF_DEFAULT_LAYER));
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dimension->id_code != -1)
+        if (dxf_dimension_get_id_code (dimension) != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dimension->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_dimension_get_id_code (dimension));
         }
         /*!
          * \todo for version R14.\n
@@ -701,193 +710,193 @@ dxf_dimension_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dimension->dictionary_owner_soft, "") != 0)
+        if ((strcmp (dxf_dimension_get_dictionary_owner_soft (dimension), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dimension->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", dxf_dimension_get_dictionary_owner_soft (dimension));
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dimension->dictionary_owner_hard, "") != 0)
+        if ((strcmp (dxf_dimension_get_dictionary_owner_hard (dimension), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dimension->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", dxf_dimension_get_dictionary_owner_hard (dimension));
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (dimension->paperspace == DXF_PAPERSPACE)
+        if (dxf_dimension_get_paperspace (dimension) == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", dimension->layer);
-        if (strcmp (dimension->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", dxf_dimension_get_layer (dimension));
+        if (strcmp (dxf_dimension_get_linetype (dimension), DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", dimension->linetype);
+                fprintf (fp->fp, "  6\n%s\n", dxf_dimension_get_linetype (dimension));
         }
-        if (dimension->color != DXF_COLOR_BYLAYER)
+        if (dxf_dimension_get_color (dimension) != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", dimension->color);
+                fprintf (fp->fp, " 62\n%d\n", dxf_dimension_get_color (dimension));
         }
-        if (dimension->linetype_scale != 1.0)
+        if (dxf_dimension_get_linetype_scale (dimension) != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", dimension->linetype_scale);
+                fprintf (fp->fp, " 48\n%f\n", dxf_dimension_get_linetype_scale (dimension));
         }
-        if (dimension->visibility != 0)
+        if (dxf_dimension_get_visibility (dimension) != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", dimension->visibility);
+                fprintf (fp->fp, " 60\n%d\n", dxf_dimension_get_visibility (dimension));
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbDimension\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", dimension->dimblock_name);
-        fprintf (fp->fp, " 10\n%f\n", dimension->x0);
-        fprintf (fp->fp, " 20\n%f\n", dimension->y0);
-        fprintf (fp->fp, " 30\n%f\n", dimension->z0);
-        fprintf (fp->fp, " 11\n%f\n", dimension->x1);
-        fprintf (fp->fp, " 21\n%f\n", dimension->y1);
-        fprintf (fp->fp, " 31\n%f\n", dimension->z1);
-        fprintf (fp->fp, " 70\n%d\n", dimension->flag);
+        fprintf (fp->fp, "  2\n%s\n", dxf_dimension_get_dimblock_name (dimension));
+        fprintf (fp->fp, " 10\n%f\n", dxf_dimension_get_x0 (dimension));
+        fprintf (fp->fp, " 20\n%f\n", dxf_dimension_get_y0 (dimension));
+        fprintf (fp->fp, " 30\n%f\n", dxf_dimension_get_z0 (dimension));
+        fprintf (fp->fp, " 11\n%f\n", dxf_dimension_get_x1 (dimension));
+        fprintf (fp->fp, " 21\n%f\n", dxf_dimension_get_y1 (dimension));
+        fprintf (fp->fp, " 31\n%f\n", dxf_dimension_get_z1 (dimension));
+        fprintf (fp->fp, " 70\n%d\n", dxf_dimension_get_flag (dimension));
         if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, " 71\n%d\n", dimension->attachment_point);
-                fprintf (fp->fp, " 72\n%d\n", dimension->text_line_spacing);
-                fprintf (fp->fp, " 41\n%f\n", dimension->text_line_spacing_factor);
-                fprintf (fp->fp, " 42\n%f\n", dimension->actual_measurement);
+                fprintf (fp->fp, " 71\n%d\n", dxf_dimension_get_attachment_point (dimension));
+                fprintf (fp->fp, " 72\n%d\n", dxf_dimension_get_text_line_spacing (dimension));
+                fprintf (fp->fp, " 41\n%f\n", dxf_dimension_get_text_line_spacing_factor (dimension));
+                fprintf (fp->fp, " 42\n%f\n", dxf_dimension_get_actual_measurement (dimension));
         }
-        fprintf (fp->fp, "  1\n%s\n", dimension->dim_text);
-        fprintf (fp->fp, " 53\n%f\n", dimension->text_angle);
-        fprintf (fp->fp, " 51\n%f\n", dimension->hor_dir);
-        fprintf (fp->fp, "210\n%fn", dimension->extr_x0);
-        fprintf (fp->fp, "220\n%fn", dimension->extr_y0);
-        fprintf (fp->fp, "230\n%fn", dimension->extr_z0);
-        fprintf (fp->fp, "  3\n%s\n", dimension->dimstyle_name);
+        fprintf (fp->fp, "  1\n%s\n", dxf_dimension_get_dim_text (dimension));
+        fprintf (fp->fp, " 53\n%f\n", dxf_dimension_get_text_angle (dimension));
+        fprintf (fp->fp, " 51\n%f\n", dxf_dimension_get_hor_dir (dimension));
+        fprintf (fp->fp, "210\n%fn", dxf_dimension_get_extr_x0 (dimension));
+        fprintf (fp->fp, "220\n%fn", dxf_dimension_get_extr_y0 (dimension));
+        fprintf (fp->fp, "230\n%fn", dxf_dimension_get_extr_z0 (dimension));
+        fprintf (fp->fp, "  3\n%s\n", dxf_dimension_get_dimstyle_name (dimension));
         /* Rotated, horizontal, or vertical dimension. */
-        if (dimension->flag == 0)
+        if (dxf_dimension_get_flag (dimension) == 0)
         {
                 if (fp->acad_version_number >= AutoCAD_13)
                 {
                         fprintf (fp->fp, "100\nAcDbAlignedDimension\n");
                 }
-                fprintf (fp->fp, " 12\n%f\n", dimension->x2);
-                fprintf (fp->fp, " 22\n%f\n", dimension->y2);
-                fprintf (fp->fp, " 32\n%f\n", dimension->z2);
-                fprintf (fp->fp, " 13\n%f\n", dimension->x3);
-                fprintf (fp->fp, " 23\n%f\n", dimension->y3);
-                fprintf (fp->fp, " 33\n%f\n", dimension->z3);
-                fprintf (fp->fp, " 14\n%f\n", dimension->x4);
-                fprintf (fp->fp, " 24\n%f\n", dimension->y4);
-                fprintf (fp->fp, " 34\n%f\n", dimension->z4);
-                fprintf (fp->fp, " 50\n%f\n", dimension->angle);
-                fprintf (fp->fp, " 52\n%f\n", dimension->obl_angle);
+                fprintf (fp->fp, " 12\n%f\n", dxf_dimension_get_x2 (dimension));
+                fprintf (fp->fp, " 22\n%f\n", dxf_dimension_get_y2 (dimension));
+                fprintf (fp->fp, " 32\n%f\n", dxf_dimension_get_z2 (dimension));
+                fprintf (fp->fp, " 13\n%f\n", dxf_dimension_get_x3 (dimension));
+                fprintf (fp->fp, " 23\n%f\n", dxf_dimension_get_y3 (dimension));
+                fprintf (fp->fp, " 33\n%f\n", dxf_dimension_get_z3 (dimension));
+                fprintf (fp->fp, " 14\n%f\n", dxf_dimension_get_x4 (dimension));
+                fprintf (fp->fp, " 24\n%f\n", dxf_dimension_get_y4 (dimension));
+                fprintf (fp->fp, " 34\n%f\n", dxf_dimension_get_z4 (dimension));
+                fprintf (fp->fp, " 50\n%f\n", dxf_dimension_get_angle (dimension));
+                fprintf (fp->fp, " 52\n%f\n", dxf_dimension_get_obl_angle (dimension));
                 if (fp->acad_version_number >= AutoCAD_13)
                 {
                         fprintf (fp->fp, "100\nAcDbRotatedDimension\n");
                 }
         }
         /* Aligned dimension. */
-        if (dimension->flag == 1)
+        else if (dxf_dimension_get_flag (dimension) == 1)
         {
                 if (fp->acad_version_number >= AutoCAD_13)
                 {
                         fprintf (fp->fp, "100\nAcDbAlignedDimension\n");
                 }
-                fprintf (fp->fp, " 12\n%f\n", dimension->x2);
-                fprintf (fp->fp, " 22\n%f\n", dimension->y2);
-                fprintf (fp->fp, " 32\n%f\n", dimension->z2);
-                fprintf (fp->fp, " 13\n%f\n", dimension->x3);
-                fprintf (fp->fp, " 23\n%f\n", dimension->y3);
-                fprintf (fp->fp, " 33\n%f\n", dimension->z3);
-                fprintf (fp->fp, " 14\n%f\n", dimension->x4);
-                fprintf (fp->fp, " 24\n%f\n", dimension->y4);
-                fprintf (fp->fp, " 34\n%f\n", dimension->z4);
-                fprintf (fp->fp, " 50\n%f\n", dimension->angle);
+                fprintf (fp->fp, " 12\n%f\n", dxf_dimension_get_x2 (dimension));
+                fprintf (fp->fp, " 22\n%f\n", dxf_dimension_get_y2 (dimension));
+                fprintf (fp->fp, " 32\n%f\n", dxf_dimension_get_z2 (dimension));
+                fprintf (fp->fp, " 13\n%f\n", dxf_dimension_get_x3 (dimension));
+                fprintf (fp->fp, " 23\n%f\n", dxf_dimension_get_y3 (dimension));
+                fprintf (fp->fp, " 33\n%f\n", dxf_dimension_get_z3 (dimension));
+                fprintf (fp->fp, " 14\n%f\n", dxf_dimension_get_x4 (dimension));
+                fprintf (fp->fp, " 24\n%f\n", dxf_dimension_get_y4 (dimension));
+                fprintf (fp->fp, " 34\n%f\n", dxf_dimension_get_z4 (dimension));
+                fprintf (fp->fp, " 50\n%f\n", dxf_dimension_get_angle (dimension));
         }
         /* Angular dimension. */
-        if (dimension->flag == 2)
+        else if (dxf_dimension_get_flag (dimension) == 2)
         {
                 if (fp->acad_version_number >= AutoCAD_13)
                 {
                         fprintf (fp->fp, "100\nAcDb3PointAngularDimension\n");
                 }
-                fprintf (fp->fp, " 13\n%f\n", dimension->x3);
-                fprintf (fp->fp, " 23\n%f\n", dimension->y3);
-                fprintf (fp->fp, " 33\n%f\n", dimension->z3);
-                fprintf (fp->fp, " 14\n%f\n", dimension->x4);
-                fprintf (fp->fp, " 24\n%f\n", dimension->y4);
-                fprintf (fp->fp, " 34\n%f\n", dimension->z4);
-                fprintf (fp->fp, " 15\n%f\n", dimension->x5);
-                fprintf (fp->fp, " 25\n%f\n", dimension->y5);
-                fprintf (fp->fp, " 35\n%f\n", dimension->z5);
-                fprintf (fp->fp, " 16\n%f\n", dimension->x6);
-                fprintf (fp->fp, " 26\n%f\n", dimension->y6);
-                fprintf (fp->fp, " 36\n%f\n", dimension->z6);
+                fprintf (fp->fp, " 13\n%f\n", dxf_dimension_get_x3 (dimension));
+                fprintf (fp->fp, " 23\n%f\n", dxf_dimension_get_y3 (dimension));
+                fprintf (fp->fp, " 33\n%f\n", dxf_dimension_get_z3 (dimension));
+                fprintf (fp->fp, " 14\n%f\n", dxf_dimension_get_x4 (dimension));
+                fprintf (fp->fp, " 24\n%f\n", dxf_dimension_get_y4 (dimension));
+                fprintf (fp->fp, " 34\n%f\n", dxf_dimension_get_z4 (dimension));
+                fprintf (fp->fp, " 15\n%f\n", dxf_dimension_get_x5 (dimension));
+                fprintf (fp->fp, " 25\n%f\n", dxf_dimension_get_y5 (dimension));
+                fprintf (fp->fp, " 35\n%f\n", dxf_dimension_get_z5 (dimension));
+                fprintf (fp->fp, " 16\n%f\n", dxf_dimension_get_x6 (dimension));
+                fprintf (fp->fp, " 26\n%f\n", dxf_dimension_get_y6 (dimension));
+                fprintf (fp->fp, " 36\n%f\n", dxf_dimension_get_z6 (dimension));
         }
         /* Diameter dimension. */
-        if (dimension->flag == 3)
+        else if (dxf_dimension_get_flag (dimension) == 3)
         {
                 if (fp->acad_version_number >= AutoCAD_13)
                 {
                         fprintf (fp->fp, "100\nAcDbDiametricDimension\n");
                 }
-                fprintf (fp->fp, " 15\n%f\n", dimension->x5);
-                fprintf (fp->fp, " 25\n%f\n", dimension->y5);
-                fprintf (fp->fp, " 35\n%f\n", dimension->z5);
-                fprintf (fp->fp, " 40\n%f\n", dimension->leader_length);
+                fprintf (fp->fp, " 15\n%f\n", dxf_dimension_get_x5 (dimension));
+                fprintf (fp->fp, " 25\n%f\n", dxf_dimension_get_y5 (dimension));
+                fprintf (fp->fp, " 35\n%f\n", dxf_dimension_get_z5 (dimension));
+                fprintf (fp->fp, " 40\n%f\n", dxf_dimension_get_leader_length (dimension));
         }
         /* Radius dimension. */
-        if (dimension->flag == 4)
+        else if (dxf_dimension_get_flag (dimension) == 4)
         {
                 if (fp->acad_version_number >= AutoCAD_13)
                 {
                         fprintf (fp->fp, "100\nAcDbRadialDimension\n");
                 }
-                fprintf (fp->fp, " 15\n%f\n", dimension->x5);
-                fprintf (fp->fp, " 25\n%f\n", dimension->y5);
-                fprintf (fp->fp, " 35\n%f\n", dimension->z5);
-                fprintf (fp->fp, " 40\n%f\n", dimension->leader_length);
+                fprintf (fp->fp, " 15\n%f\n", dxf_dimension_get_x5 (dimension));
+                fprintf (fp->fp, " 25\n%f\n", dxf_dimension_get_y5 (dimension));
+                fprintf (fp->fp, " 35\n%f\n", dxf_dimension_get_z5 (dimension));
+                fprintf (fp->fp, " 40\n%f\n", dxf_dimension_get_leader_length (dimension));
         }
         /* Angular 3-point dimension. */
-        if (dimension->flag == 5)
+        else if (dxf_dimension_get_flag (dimension) == 5)
         {
                 if (fp->acad_version_number >= AutoCAD_13)
                 {
                         fprintf (fp->fp, "100\nAcDb3PointAngularDimension\n");
                 }
-                fprintf (fp->fp, " 13\n%f\n", dimension->x3);
-                fprintf (fp->fp, " 23\n%f\n", dimension->y3);
-                fprintf (fp->fp, " 33\n%f\n", dimension->z3);
-                fprintf (fp->fp, " 14\n%f\n", dimension->x4);
-                fprintf (fp->fp, " 24\n%f\n", dimension->y4);
-                fprintf (fp->fp, " 34\n%f\n", dimension->z4);
-                fprintf (fp->fp, " 15\n%f\n", dimension->x5);
-                fprintf (fp->fp, " 25\n%f\n", dimension->y5);
-                fprintf (fp->fp, " 35\n%f\n", dimension->z5);
-                fprintf (fp->fp, " 16\n%f\n", dimension->x6);
-                fprintf (fp->fp, " 26\n%f\n", dimension->y6);
-                fprintf (fp->fp, " 36\n%f\n", dimension->z6);
+                fprintf (fp->fp, " 13\n%f\n", dxf_dimension_get_x3 (dimension));
+                fprintf (fp->fp, " 23\n%f\n", dxf_dimension_get_y3 (dimension));
+                fprintf (fp->fp, " 33\n%f\n", dxf_dimension_get_z3 (dimension));
+                fprintf (fp->fp, " 14\n%f\n", dxf_dimension_get_x4 (dimension));
+                fprintf (fp->fp, " 24\n%f\n", dxf_dimension_get_y4 (dimension));
+                fprintf (fp->fp, " 34\n%f\n", dxf_dimension_get_z4 (dimension));
+                fprintf (fp->fp, " 15\n%f\n", dxf_dimension_get_x5 (dimension));
+                fprintf (fp->fp, " 25\n%f\n", dxf_dimension_get_y5 (dimension));
+                fprintf (fp->fp, " 35\n%f\n", dxf_dimension_get_z5 (dimension));
+                fprintf (fp->fp, " 16\n%f\n", dxf_dimension_get_x6 (dimension));
+                fprintf (fp->fp, " 26\n%f\n", dxf_dimension_get_y6 (dimension));
+                fprintf (fp->fp, " 36\n%f\n", dxf_dimension_get_z6 (dimension));
         }
         /* Ordinate dimension. */
-        if (dimension->flag == 6)
+        else if (dxf_dimension_get_flag (dimension) == 6)
         {
                 if (fp->acad_version_number >= AutoCAD_13)
                 {
                         fprintf (fp->fp, "100\nAcDbOrdinateDimension\n");
                 }
-                fprintf (fp->fp, " 13\n%f\n", dimension->x3);
-                fprintf (fp->fp, " 23\n%f\n", dimension->y3);
-                fprintf (fp->fp, " 33\n%f\n", dimension->z3);
-                fprintf (fp->fp, " 14\n%f\n", dimension->x4);
-                fprintf (fp->fp, " 24\n%f\n", dimension->y4);
-                fprintf (fp->fp, " 34\n%f\n", dimension->z4);
+                fprintf (fp->fp, " 13\n%f\n", dxf_dimension_get_x3 (dimension));
+                fprintf (fp->fp, " 23\n%f\n", dxf_dimension_get_y3 (dimension));
+                fprintf (fp->fp, " 33\n%f\n", dxf_dimension_get_z3 (dimension));
+                fprintf (fp->fp, " 14\n%f\n", dxf_dimension_get_x4 (dimension));
+                fprintf (fp->fp, " 24\n%f\n", dxf_dimension_get_y4 (dimension));
+                fprintf (fp->fp, " 34\n%f\n", dxf_dimension_get_z4 (dimension));
         }
-        if (dimension->thickness != 0.0)
+        if (dxf_dimension_get_thickness (dimension) != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", dimension->thickness);
+                fprintf (fp->fp, " 39\n%f\n", dxf_dimension_get_thickness (dimension));
         }
         /* Clean up. */
         free (dxf_entity_name);
