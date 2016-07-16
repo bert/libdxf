@@ -272,7 +272,7 @@ dxf_dimension_read
                          * X-value of the definition point for all
                          * dimension types. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->x0);
+                        fscanf (fp->fp, "%lf\n", &dimension->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
@@ -280,7 +280,7 @@ dxf_dimension_read
                          * Y-value of the definition point for all
                          * dimension types. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->y0);
+                        fscanf (fp->fp, "%lf\n", &dimension->p0->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
@@ -288,28 +288,28 @@ dxf_dimension_read
                          * Z-value of the definition point for all
                          * dimension types. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->z0);
+                        fscanf (fp->fp, "%lf\n", &dimension->p0->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the middle point of dimension text. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->x1);
+                        fscanf (fp->fp, "%lf\n", &dimension->p1->x0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the middle point of dimension text. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->y1);
+                        fscanf (fp->fp, "%lf\n", &dimension->p1->y0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the middle point of dimension text. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->z1);
+                        fscanf (fp->fp, "%lf\n", &dimension->p1->z0);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
@@ -317,7 +317,7 @@ dxf_dimension_read
                          * X-value of the dimension block translation
                          * vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->x2);
+                        fscanf (fp->fp, "%lf\n", &dimension->p2->x0);
                 }
                 else if (strcmp (temp_string, "22") == 0)
                 {
@@ -325,7 +325,7 @@ dxf_dimension_read
                          * Y-value of the dimension block translation
                          * vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->y2);
+                        fscanf (fp->fp, "%lf\n", &dimension->p2->y0);
                 }
                 else if (strcmp (temp_string, "32") == 0)
                 {
@@ -333,7 +333,7 @@ dxf_dimension_read
                          * Z-value of the dimension block translation
                          * vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->z2);
+                        fscanf (fp->fp, "%lf\n", &dimension->p2->z0);
                 }
                 else if (strcmp (temp_string, "13") == 0)
                 {
@@ -341,7 +341,7 @@ dxf_dimension_read
                          * X-value of the definition point for linear and
                          * angular dimensions. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->x3);
+                        fscanf (fp->fp, "%lf\n", &dimension->p3->x0);
                 }
                 else if (strcmp (temp_string, "23") == 0)
                 {
@@ -349,7 +349,7 @@ dxf_dimension_read
                          * Y-value of the definition point for linear and
                          * angular dimensions. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->y3);
+                        fscanf (fp->fp, "%lf\n", &dimension->p3->y0);
                 }
                 else if (strcmp (temp_string, "33") == 0)
                 {
@@ -357,7 +357,7 @@ dxf_dimension_read
                          * Z-value of the definition point for linear and
                          * angular dimensions. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->z3);
+                        fscanf (fp->fp, "%lf\n", &dimension->p3->z0);
                 }
                 else if (strcmp (temp_string, "14") == 0)
                 {
@@ -365,7 +365,7 @@ dxf_dimension_read
                          * X-value of the definition point for linear and
                          * angular dimensions. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->x4);
+                        fscanf (fp->fp, "%lf\n", &dimension->p4->x0);
                 }
                 else if (strcmp (temp_string, "24") == 0)
                 {
@@ -373,7 +373,7 @@ dxf_dimension_read
                          * Y-value of the definition point for linear and
                          * angular dimensions. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->y4);
+                        fscanf (fp->fp, "%lf\n", &dimension->p4->y0);
                 }
                 else if (strcmp (temp_string, "34") == 0)
                 {
@@ -381,7 +381,7 @@ dxf_dimension_read
                          * Z-value of the definition point for linear and
                          * angular dimensions. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->z4);
+                        fscanf (fp->fp, "%lf\n", &dimension->p4->z0);
                 }
                 else if (strcmp (temp_string, "15") == 0)
                 {
@@ -389,7 +389,7 @@ dxf_dimension_read
                          * X-value of the definition point for diameter,
                          * radius, and angular dimensions. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->x5);
+                        fscanf (fp->fp, "%lf\n", &dimension->p5->x0);
                 }
                 else if (strcmp (temp_string, "25") == 0)
                 {
@@ -397,7 +397,7 @@ dxf_dimension_read
                          * Y-value of the definition point for diameter,
                          * radius, and angular dimensions. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->y5);
+                        fscanf (fp->fp, "%lf\n", &dimension->p5->y0);
                 }
                 else if (strcmp (temp_string, "35") == 0)
                 {
@@ -405,7 +405,7 @@ dxf_dimension_read
                          * Z-value of the definition point for diameter,
                          * radius, and angular dimensions. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->z5);
+                        fscanf (fp->fp, "%lf\n", &dimension->p5->z0);
                 }
                 else if (strcmp (temp_string, "16") == 0)
                 {
@@ -413,7 +413,7 @@ dxf_dimension_read
                          * X-value of the point defining dimension arc for
                          * angular dimensions. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->x6);
+                        fscanf (fp->fp, "%lf\n", &dimension->p6->x0);
                 }
                 else if (strcmp (temp_string, "26") == 0)
                 {
@@ -421,7 +421,7 @@ dxf_dimension_read
                          * Y-value of the point defining dimension arc for
                          * angular dimensions. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->y6);
+                        fscanf (fp->fp, "%lf\n", &dimension->p6->y0);
                 }
                 else if (strcmp (temp_string, "36") == 0)
                 {
@@ -429,7 +429,7 @@ dxf_dimension_read
                          * Z-value of the point defining dimension arc for
                          * angular dimensions. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &dimension->z5);
+                        fscanf (fp->fp, "%lf\n", &dimension->p6->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
