@@ -965,12 +965,13 @@ dxf_dimension_free_chain
         if (dimensions == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+                return;
         }
         while (dimensions != NULL)
         {
-                struct DxfDimension *iter = dimensions->next;
+                DxfDimension *iter = (DxfDimension *) dxf_dimension_get_next (dimensions);
                 dxf_dimension_free (dimensions);
                 dimensions = (DxfDimension *) iter;
         }
