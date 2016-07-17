@@ -46,7 +46,7 @@
  * \brief Allocate memory for a DXF \c DIMENSION.
  *
  * Fill the memory contents with zeros.
- * 
+ *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  */
@@ -83,9 +83,9 @@ dxf_dimension_new ()
 /*!
  * \brief Allocate memory and initialize data fields in a DXF \c
  * DIMENSION entity.
- * 
- * \return \c NULL when no memory was allocated, a pointer to the
- * allocated memory when succesful.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_init
@@ -177,7 +177,8 @@ dxf_dimension_init
  * "  0" string announcing the following entity, or the end of the
  * \c ENTITY section marker \c ENDSEC. \n
  *
- * \return a pointer to \c dimension.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_read
@@ -980,9 +981,9 @@ dxf_dimension_free_chain
 
 
 /*!
- * \brief Get the ID code from a DXF \c DIMENSION entity.
+ * \brief Get the \c id_code from a DXF \c DIMENSION entity.
  *
- * \return ID code.
+ * \return \c id_code, or \c EXIT_FAILURE when an error occurred.
  */
 int
 dxf_dimension_get_id_code
@@ -1021,6 +1022,9 @@ dxf_dimension_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_id_code
@@ -1060,9 +1064,9 @@ dxf_dimension_set_id_code
 
 
 /*!
- * \brief Get the linetype from a DXF \c DIMENSION entity.
+ * \brief Get the \c linetype from a DXF \c DIMENSION entity.
  *
- * \return linetype when sucessful, \c NULL when an error occurred.
+ * \return \c linetype when sucessful, \c NULL when an error occurred.
  */
 char *
 dxf_dimension_get_linetype
@@ -1101,6 +1105,9 @@ dxf_dimension_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_linetype
@@ -1138,9 +1145,9 @@ dxf_dimension_set_linetype
 
 
 /*!
- * \brief Get the layer from a DXF \c DIMENSION entity.
+ * \brief Get the \c layer from a DXF \c DIMENSION entity.
  *
- * \return layer when sucessful, \c NULL when an error occurred.
+ * \return \c layer when sucessful, \c NULL when an error occurred.
  */
 char *
 dxf_dimension_get_layer
@@ -1179,6 +1186,9 @@ dxf_dimension_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_layer
@@ -1216,9 +1226,9 @@ dxf_dimension_set_layer
 
 
 /*!
- * \brief Get the elevation from a DXF \c DIMENSION entity.
+ * \brief Get the \c elevation from a DXF \c DIMENSION entity.
  *
- * \return elevation.
+ * \return \c elevation, or \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_dimension_get_elevation
@@ -1250,6 +1260,9 @@ dxf_dimension_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_elevation
@@ -1280,9 +1293,9 @@ dxf_dimension_set_elevation
 
 
 /*!
- * \brief Get the thickness from a DXF \c DIMENSION entity.
+ * \brief Get the \c thickness from a DXF \c DIMENSION entity.
  *
- * \return thickness.
+ * \return \c thickness, or \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_dimension_get_thickness
@@ -1321,6 +1334,9 @@ dxf_dimension_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_thickness
@@ -1358,9 +1374,9 @@ dxf_dimension_set_thickness
 
 
 /*!
- * \brief Get the linetype scale from a DXF \c DIMENSION entity.
+ * \brief Get the \c linetype_scale from a DXF \c DIMENSION entity.
  *
- * \return linetype scale.
+ * \return \c linetype_scale, or \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_dimension_get_linetype_scale
@@ -1399,6 +1415,9 @@ dxf_dimension_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_linetype_scale
@@ -1436,9 +1455,9 @@ dxf_dimension_set_linetype_scale
 
 
 /*!
- * \brief Get the visibility from a DXF \c DIMENSION entity.
+ * \brief Get the \c visibility from a DXF \c DIMENSION entity.
  *
- * \return visibility.
+ * \return \c visibility, or \c EXIT_FAILURE when an error occurred.
  */
 int16_t
 dxf_dimension_get_visibility
@@ -1484,6 +1503,9 @@ dxf_dimension_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_visibility
@@ -1528,9 +1550,9 @@ dxf_dimension_set_visibility
 
 
 /*!
- * \brief Get the color from a DXF \c DIMENSION entity.
+ * \brief Get the \c color from a DXF \c DIMENSION entity.
  *
- * \return color.
+ * \return \c color, or \c EXIT_FAILURE when an error occurred.
  */
 int
 dxf_dimension_get_color
@@ -1568,6 +1590,9 @@ dxf_dimension_get_color
 
 /*!
  * \brief Set the color for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_color
@@ -1606,9 +1631,10 @@ dxf_dimension_set_color
 
 
 /*!
- * \brief Get the paperspace flag value from a DXF \c DIMENSION entity.
+ * \brief Get the \c paperspace flag value from a DXF \c DIMENSION entity.
  *
- * \return paperspace flag value.
+ * \return \c paperspace flag value, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 int
 dxf_dimension_get_paperspace
@@ -1652,6 +1678,9 @@ dxf_dimension_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_paperspace
@@ -1884,7 +1913,8 @@ dxf_dimension_set_shadow_mode
  * \brief Get the pointer to the \c binary_graphics_data from a DXF 
  * \c DIMENSION entity.
  *
- * \return pointer to the \c binary_graphics_data.
+ * \return pointer to the \c binary_graphics_data, or \c NULL when an
+ * error occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
@@ -1923,6 +1953,9 @@ dxf_dimension_get_binary_graphics_data
 /*!
  * \brief Set the pointer to the \c binary_graphics_data for a DXF
  * \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_binary_graphics_data
@@ -1961,10 +1994,11 @@ dxf_dimension_set_binary_graphics_data
 
 
 /*!
- * \brief Get the soft pointer to the dictionary owner from a DXF 
+ * \brief Get the pointer to the \c dictionary_owner_soft from a DXF 
  * \c DIMENSION entity.
  *
- * \return soft pointer to the dictionary owner.
+ * \return pointer to the \c dictionary_owner_soft, or \c NULL when an
+ * error occurred.
  *
  * \warning No checks are performed on the returned pointer (string).
  */
@@ -2006,6 +2040,9 @@ dxf_dimension_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_dictionary_owner_soft
@@ -2087,7 +2124,7 @@ dxf_dimension_get_material
  * \brief Set the pointer to the \c material for a DXF \c DIMENSION
  * entity.
  *
- * \return a pointer to \c face when successful, or \c NULL when an
+ * \return a pointer to \c dimension when successful, or \c NULL when an
  * error occurred.
  */
 DxfDimension *
@@ -2127,10 +2164,11 @@ dxf_dimension_set_material
 
 
 /*!
- * \brief Get the hard pointer to the dictionary owner from a DXF 
+ * \brief Get the pointer to the \c dictionary_owner_hard from a DXF 
  * \c DIMENSION entity.
  *
- * \return hard pointer to the dictionary owner.
+ * \return pointer to the \c dictionary_owner_hard, or \c NULL when an
+ * error occurred.
  *
  * \warning No checks are performed on the returned pointer (string).
  */
@@ -2172,6 +2210,9 @@ dxf_dimension_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_dictionary_owner_hard
@@ -2388,7 +2429,7 @@ dxf_dimension_get_color_value
 /*!
  * \brief Set the \c color_value for a DXF \c DIMENSION entity.
  *
- * \return a pointer to \c face when successful, or \c NULL when an
+ * \return a pointer to \c dimension when successful, or \c NULL when an
  * error occurred.
  */
 DxfDimension *
@@ -2567,7 +2608,8 @@ dxf_dimension_set_transparency
 /*!
  * \brief Get the \c dim_text from a DXF \c DIMENSION entity.
  *
- * \return \c dim_text when sucessful, \c NULL when an error occurred.
+ * \return \c dim_text when sucessful, or \c NULL when an error
+ * occurred.
  */
 char *
 dxf_dimension_get_dim_text
@@ -2606,6 +2648,9 @@ dxf_dimension_get_dim_text
 
 /*!
  * \brief Set the \c dim_text for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_dim_text
@@ -2645,7 +2690,7 @@ dxf_dimension_set_dim_text
 /*!
  * \brief Get the \c dimblock_name from a DXF \c DIMENSION entity.
  *
- * \return \c dimblock_name when sucessful, \c NULL when an error
+ * \return \c dimblock_name when sucessful, or \c NULL when an error
  * occurred.
  */
 char *
@@ -2685,6 +2730,9 @@ dxf_dimension_get_dimblock_name
 
 /*!
  * \brief Set the \c dimblock_name for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_dimblock_name
@@ -2724,7 +2772,7 @@ dxf_dimension_set_dimblock_name
 /*!
  * \brief Get the \c dimstyle_name from a DXF \c DIMENSION entity.
  *
- * \return \c dimstyle_name when sucessful, \c NULL when an error
+ * \return \c dimstyle_name when sucessful, or \c NULL when an error
  * occurred.
  */
 char *
@@ -2764,6 +2812,9 @@ dxf_dimension_get_dimstyle_name
 
 /*!
  * \brief Set the \c dimstyle_name for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_dimstyle_name
@@ -2801,10 +2852,11 @@ dxf_dimension_set_dimstyle_name
 
 
 /*!
- * \brief Get the definition point \c p0 for all dimension types of a DXF
- * \c DIMENSION entity.
+ * \brief Get the definition point \c p0 for all dimension types of a
+ * DXF \c DIMENSION entity.
  *
- * \return the definition point \c p0.
+ * \return the definition point \c p0, or \c NULL when an error
+ * occurred.
  */
 DxfPoint *
 dxf_dimension_get_p0
@@ -2884,7 +2936,8 @@ dxf_dimension_set_p0
  * \brief Get the X-value \c x0 of the definition point for all
  * dimension types of a DXF \c DIMENSION entity.
  *
- * \return the X-value \c x0 of the definition point.
+ * \return the X-value \c x0 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_x0
@@ -2922,7 +2975,8 @@ dxf_dimension_get_x0
  * \brief Set the X-value \c x0 of the definition point for all
  * dimension types of a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_x0
@@ -2963,7 +3017,8 @@ dxf_dimension_set_x0
  * \brief Get the Y-value \c y0 of the definition point for all
  * dimension types of a DXF \c DIMENSION entity.
  *
- * \return the Y-value \c y0 of the definition point.
+ * \return the Y-value \c y0 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_y0
@@ -3001,7 +3056,8 @@ dxf_dimension_get_y0
  * \brief Set the Y-value \c y0 of the definition point for all
  * dimension types of a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_y0
@@ -3042,7 +3098,8 @@ dxf_dimension_set_y0
  * \brief Get the Z-value \c z0 of the definition point for all
  * dimension types of a DXF \c DIMENSION entity.
  *
- * \return the Z-value \c z0 of the definition point.
+ * \return the Z-value \c z0 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_z0
@@ -3080,7 +3137,8 @@ dxf_dimension_get_z0
  * \brief Set the Z-value \c z0 of the definition point for all
  * dimension types of a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_z0
@@ -3121,7 +3179,8 @@ dxf_dimension_set_z0
  * \brief Get the middle point \c p1 of the dimension text for all
  * dimension types of a DXF \c DIMENSION entity.
  *
- * \return the definition point \c p1.
+ * \return the definition point \c p1, or \c NULL when an error
+ * occurred.
  */
 DxfPoint *
 dxf_dimension_get_p1
@@ -3201,7 +3260,8 @@ dxf_dimension_set_p1
  * \brief Get the X-value \c x1 of the middle point of the dimension
  * text for all dimension types of a DXF \c DIMENSION entity.
  *
- * \return the X-value \c x1 of the middle point.
+ * \return the X-value \c x1 of the middle point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_x1
@@ -3239,7 +3299,8 @@ dxf_dimension_get_x1
  * \brief Set the X-value \c x1 of the middle point for all dimension
  * types of a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_x1
@@ -3280,7 +3341,8 @@ dxf_dimension_set_x1
  * \brief Get the Y-value \c y1 of the middle point of the dimension
  * text for all dimension types of a DXF \c DIMENSION entity.
  *
- * \return the Y-value \c y1 of the middle point.
+ * \return the Y-value \c y1 of the middle point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_y1
@@ -3318,7 +3380,8 @@ dxf_dimension_get_y1
  * \brief Set the Y-value \c y1 of the middle point for all
  * dimension types of a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_y1
@@ -3360,7 +3423,8 @@ dxf_dimension_set_y1
  * dimension text for all dimension types of a DXF \c DIMENSION
  * entity.
  *
- * \return the Z-value \c z1 of the middle point.
+ * \return the Z-value \c z1 of the middle point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_z1
@@ -3398,7 +3462,8 @@ dxf_dimension_get_z1
  * \brief Set the Z-value \c z1 of the middle point for all dimension
  * types of a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_z1
@@ -3439,7 +3504,8 @@ dxf_dimension_set_z1
  * \brief Get the definition point \c p2 for linear and angular
  * dimensions of a DXF \c DIMENSION entity.
  *
- * \return the definition point \c p2.
+ * \return the definition point \c p2, or \c NULL when an error
+ * occurred.
  */
 DxfPoint *
 dxf_dimension_get_p2
@@ -3519,7 +3585,8 @@ dxf_dimension_set_p2
  * \brief Get the X-value \c x2 of the definition point for linear and
  * angular dimensions of a DXF \c DIMENSION entity.
  *
- * \return the X-value \c x2 of the definition point.
+ * \return the X-value \c x2 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_x2
@@ -3599,7 +3666,8 @@ dxf_dimension_set_x2
  * \brief Get the Y-value \c y2 of the definition point for linear and
  * angular dimensions of a DXF \c DIMENSION entity.
  *
- * \return the Y-value \c y2 of the definition point.
+ * \return the Y-value \c y2 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_y2
@@ -3680,7 +3748,8 @@ dxf_dimension_set_y2
  * \brief Get the Z-value \c z2 of the definition point for linear and
  * angular dimensions of a DXF \c DIMENSION entity.
  *
- * \return the Z-value \c z2 of the definition point.
+ * \return the Z-value \c z2 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_z2
@@ -3760,7 +3829,8 @@ dxf_dimension_set_z2
  * \brief Get the definition point \c p3 for linear and angular
  * dimensions for a DXF \c DIMENSION entity.
  *
- * \return the definition point \c p3.
+ * \return the definition point \c p3, or \c NULL when an error
+ * occurred.
  */
 DxfPoint *
 dxf_dimension_get_p3
@@ -3840,7 +3910,8 @@ dxf_dimension_set_p3
  * \brief Get the X-value \c x3 of the definition point for a linear
  * and angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the X-value \c x3 of the definition point.
+ * \return the X-value \c x3 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_x3
@@ -3878,7 +3949,8 @@ dxf_dimension_get_x3
  * \brief Set the X-value \c x3 of the definition point for linear and
  * angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_x3
@@ -3920,7 +3992,8 @@ dxf_dimension_set_x3
  * \brief Get the Y-value \c y3 of the definition point for a linear
  * and angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the Y-value \c y3 of the definition point.
+ * \return the Y-value \c y3 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_y3
@@ -3958,7 +4031,8 @@ dxf_dimension_get_y3
  * \brief Set the Y-value \c y3 of the definition point for linear and
  * angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_y3
@@ -4000,7 +4074,8 @@ dxf_dimension_set_y3
  * \brief Get the Z-value \c z3 of the definition point for a linear
  * and angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the Z-value \c z3 of the definition point.
+ * \return the Z-value \c z3 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_z3
@@ -4038,7 +4113,8 @@ dxf_dimension_get_z3
  * \brief Set the Z-value \c z3 of the definition point for linear and
  * angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_z3
@@ -4080,7 +4156,8 @@ dxf_dimension_set_z3
  * \brief Get the definition point \c p4 for linear and angular
  * dimensions for a DXF \c DIMENSION entity.
  *
- * \return the definition point \c p4.
+ * \return the definition point \c p4, or \c NULL when an error
+ * occurred.
  */
 DxfPoint *
 dxf_dimension_get_p4
@@ -4160,7 +4237,8 @@ dxf_dimension_set_p4
  * \brief Get the X-value \c x4 of the definition point for a linear
  * and angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the X-value \c x4 of the definition point.
+ * \return the X-value \c x4 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_x4
@@ -4198,7 +4276,8 @@ dxf_dimension_get_x4
  * \brief Set the X-value \c x4 of the definition point for linear and
  * angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_x4
@@ -4239,7 +4318,8 @@ dxf_dimension_set_x4
  * \brief Get the Y-value \c y4 of the definition point for a linear
  * and angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the Y-value \c y4 of the definition point.
+ * \return the Y-value \c y4 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_y4
@@ -4277,7 +4357,8 @@ dxf_dimension_get_y4
  * \brief Set the Y-value \c y4 of the definition point for linear and
  * angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_y4
@@ -4318,7 +4399,8 @@ dxf_dimension_set_y4
  * \brief Get the Z-value \c z4 of the definition point for a linear
  * and angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the Z-value \c z4 of the definition point.
+ * \return the Z-value \c z4 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_z4
@@ -4356,7 +4438,8 @@ dxf_dimension_get_z4
  * \brief Set the Z-value \c z4 of the definition point for linear and
  * angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_z4
@@ -4397,7 +4480,8 @@ dxf_dimension_set_z4
  * \brief Get the definition point \c p5 for diameter, radius, and
  * angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the definition point \c p5.
+ * \return the definition point \c p5, or \c NULL when an error
+ * occurred.
  */
 DxfPoint *
 dxf_dimension_get_p5
@@ -4477,7 +4561,8 @@ dxf_dimension_set_p5
  * \brief Get the X-value \c x5 of the definition point for diameter,
  * radius, and angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the X-value \c x5 of the definition point.
+ * \return the X-value \c x5 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_x5
@@ -4515,7 +4600,8 @@ dxf_dimension_get_x5
  * \brief Set the X-value \c x5 of the definition point for diameter,
  * radius, and angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_x5
@@ -4556,7 +4642,8 @@ dxf_dimension_set_x5
  * \brief Get the Y-value \c y5 of the definition point for diameter,
  * radius, and angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the Y-value \c y5 of the definition point.
+ * \return the Y-value \c y5 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_y5
@@ -4594,7 +4681,8 @@ dxf_dimension_get_y5
  * \brief Set the Y-value \c y5 of the definition point for diameter,
  * radius, and angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_y5
@@ -4635,7 +4723,8 @@ dxf_dimension_set_y5
  * \brief Get the Z-value \c z5 of the definition point for diameter,
  * radius, and angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the Z-value \c z5 of the definition point.
+ * \return the Z-value \c z5 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_z5
@@ -4673,7 +4762,8 @@ dxf_dimension_get_z5
  * \brief Set the Z-value \c z5 of the definition point for diameter,
  * radius, and angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_z5
@@ -4714,7 +4804,8 @@ dxf_dimension_set_z5
  * \brief Get the definition point \c p6 defining the dimension arc for
  * angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the definition point \c p6.
+ * \return the definition point \c p6, or \c NULL when an error
+ * occurred.
  */
 DxfPoint *
 dxf_dimension_get_p6
@@ -4794,7 +4885,8 @@ dxf_dimension_set_p6
  * \brief Get the X-value \c x6 of the definition point defining the
  * dimension arc for angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the X-value \c x6 of the definition point.
+ * \return the X-value \c x6 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_x6
@@ -4832,7 +4924,8 @@ dxf_dimension_get_x6
  * \brief Set the X-value \c x6 of the point defining the dimension arc
  * for angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_x6
@@ -4873,7 +4966,8 @@ dxf_dimension_set_x6
  * \brief Get the Y-value \c y6 of the definition point defining the
  * dimension arc for angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the Y-value \c y6 of the definition point.
+ * \return the Y-value \c y6 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_y6
@@ -4911,7 +5005,8 @@ dxf_dimension_get_y6
  * \brief Set the Y-value \c y6 of the point defining the dimension arc
  * for angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_y6
@@ -4952,7 +5047,8 @@ dxf_dimension_set_y6
  * \brief Get the Z-value \c z6 of the definition point defining the
  * dimension arc for angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return the Z-value \c z6 of the definition point.
+ * \return the Z-value \c z6 of the definition point, or \c EXIT_FAILURE
+ * when an error occurred.
  */
 double
 dxf_dimension_get_z6
@@ -4990,7 +5086,8 @@ dxf_dimension_get_z6
  * \brief Set the Z-value \c z6 of the point defining the dimension arc
  * for angular dimensions for a DXF \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_z6
@@ -5028,9 +5125,9 @@ dxf_dimension_set_z6
 
 
 /*!
- * \brief Get the leader length from a DXF \c DIMENSION entity.
+ * \brief Get the \c leader_length from a DXF \c DIMENSION entity.
  *
- * \return leader length.
+ * \return \c leader_length, or \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_dimension_get_leader_length
@@ -5061,7 +5158,10 @@ dxf_dimension_get_leader_length
 
 
 /*!
- * \brief Set the leader length for a DXF \c DIMENSION entity.
+ * \brief Set the \c leader_length for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_leader_length
@@ -5092,9 +5192,11 @@ dxf_dimension_set_leader_length
 
 
 /*!
- * \brief Get the text line spacing factor from a DXF \c DIMENSION entity.
+ * \brief Get the \c text_line_spacing factor from a DXF \c DIMENSION
+ * entity.
  *
- * \return text line spacing factor.
+ * \return \c text_line_spacing factor, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 double
 dxf_dimension_get_text_line_spacing_factor
@@ -5125,7 +5227,11 @@ dxf_dimension_get_text_line_spacing_factor
 
 
 /*!
- * \brief Set the text line spacing factor for a DXF \c DIMENSION entity.
+ * \brief Set the \c text_line_spacing factor for a DXF \c DIMENSION
+ * entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_text_line_spacing_factor
@@ -5156,9 +5262,10 @@ dxf_dimension_set_text_line_spacing_factor
 
 
 /*!
- * \brief Get the actual measurement from a DXF \c DIMENSION entity.
+ * \brief Get the \c actual_measurement from a DXF \c DIMENSION entity.
  *
- * \return actual_measurement.
+ * \return \c actual_measurement, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 double
 dxf_dimension_get_actual_measurement
@@ -5189,7 +5296,10 @@ dxf_dimension_get_actual_measurement
 
 
 /*!
- * \brief Set the actual measurement for a DXF \c DIMENSION entity.
+ * \brief Set the \c actual_measurement for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_actual_measurement
@@ -5220,10 +5330,10 @@ dxf_dimension_set_actual_measurement
 
 
 /*!
- * \brief Get the angle of rotated, horizontal, or vertical linear
+ * \brief Get the \c angle of rotated, horizontal, or vertical linear
  * dimensions from a DXF \c DIMENSION entity.
  *
- * \return angle.
+ * \return \c angle, or \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_dimension_get_angle
@@ -5254,8 +5364,11 @@ dxf_dimension_get_angle
 
 
 /*!
- * \brief Set the angle of rotated, horizontal, or vertical linear
+ * \brief Set the \c angle of rotated, horizontal, or vertical linear
  * dimensions for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_angle
@@ -5286,9 +5399,11 @@ dxf_dimension_set_angle
 
 
 /*!
- * \brief Get the horizontal direction from a DXF \c DIMENSION entity.
+ * \brief Get the horizontal direction \c hor_dir from a DXF
+ * \c DIMENSION entity.
  *
- * \return horizontal direction.
+ * \return horizontal direction \c hor_dir, or \c EXIT_FAILURE when an
+ * error occurred.
  */
 double
 dxf_dimension_get_hor_dir
@@ -5319,7 +5434,11 @@ dxf_dimension_get_hor_dir
 
 
 /*!
- * \brief Set the horizontal direction for a DXF \c DIMENSION entity.
+ * \brief Set the horizontal direction \c hor_dir for a DXF
+ * \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_hor_dir
@@ -5350,9 +5469,11 @@ dxf_dimension_set_hor_dir
 
 
 /*!
- * \brief Get the oblique angle from a DXF \c DIMENSION entity.
+ * \brief Get the oblique angle \c obl_angle from a DXF \c DIMENSION
+ * entity.
  *
- * \return oblique angle.
+ * \return oblique angle \c obl_angle, or \c EXIT_FAILURE when an error
+ * occurred.
  */
 double
 dxf_dimension_get_obl_angle
@@ -5383,7 +5504,11 @@ dxf_dimension_get_obl_angle
 
 
 /*!
- * \brief Set the oblique angle for a DXF \c DIMENSION entity.
+ * \brief Set the oblique angle \c obl_angle for a DXF \c DIMENSION
+ * entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_obl_angle
@@ -5414,9 +5539,9 @@ dxf_dimension_set_obl_angle
 
 
 /*!
- * \brief Get the text angle from a DXF \c DIMENSION entity.
+ * \brief Get the \c text_angle from a DXF \c DIMENSION entity.
  *
- * \return text angle.
+ * \return \c text_angle, or \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_dimension_get_text_angle
@@ -5447,7 +5572,10 @@ dxf_dimension_get_text_angle
 
 
 /*!
- * \brief Set the text angle for a DXF \c DIMENSION entity.
+ * \brief Set the \c text_angle for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_text_angle
@@ -5514,7 +5642,10 @@ dxf_dimension_get_flag
 
 
 /*!
- * \brief Set the flag for a DXF \c DIMENSION entity.
+ * \brief Set the \c flag for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_flag
@@ -5552,9 +5683,9 @@ dxf_dimension_set_flag
 
 
 /*!
- * \brief Get the attachment point of a DXF \c DIMENSION.
+ * \brief Get the \c attachment_point of a DXF \c DIMENSION.
  *
- * \return The attachment point, or -1 when an error occurred.
+ * \return The \c attachment_point, or -1 when an error occurred.
  */
 int
 dxf_dimension_get_attachment_point
@@ -5595,7 +5726,10 @@ dxf_dimension_get_attachment_point
 
 
 /*!
- * \brief Set the attachment point for a DXF \c DIMENSION entity.
+ * \brief Set the \c attachment_point for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_attachment_point
@@ -5640,9 +5774,9 @@ dxf_dimension_set_attachment_point
 
 
 /*!
- * \brief Get the text line spacing of a DXF \c DIMENSION.
+ * \brief Get the \c text_line_spacing of a DXF \c DIMENSION.
  *
- * \return The text line spacing, or -1 when an error occurred.
+ * \return The \c text_line_spacing, or -1 when an error occurred.
  */
 int
 dxf_dimension_get_text_line_spacing
@@ -5684,6 +5818,9 @@ dxf_dimension_get_text_line_spacing
 
 /*!
  * \brief Set the text line spacing for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_text_line_spacing
@@ -5731,7 +5868,8 @@ dxf_dimension_set_text_line_spacing
  * \brief Get the X-value \c extr_x0 of the extrusion vector of a DXF
  * \c DIMENSION entity.
  *
- * \return the X-value \c extr_x0 of the extrusion vector.
+ * \return the X-value \c extr_x0 of the extrusion vector, or
+ * \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_dimension_get_extr_x0
@@ -5762,7 +5900,8 @@ dxf_dimension_get_extr_x0
  * \brief Set the X-value \c extr_x0 of the extrusion vector of a DXF
  * \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_extr_x0
@@ -5796,7 +5935,8 @@ dxf_dimension_set_extr_x0
  * \brief Get the Y-value \c extr_y0 of the extrusion vector of a DXF
  * \c DIMENSION entity.
  *
- * \return the Y-value \c extr_y0 of the extrusion vector.
+ * \return the Y-value \c extr_y0 of the extrusion vector, or
+ * \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_dimension_get_extr_y0
@@ -5827,7 +5967,8 @@ dxf_dimension_get_extr_y0
  * \brief Set the Y-value \c extr_y0 of the extrusion vector of a DXF
  * \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_extr_y0
@@ -5861,7 +6002,8 @@ dxf_dimension_set_extr_y0
  * \brief Get the Z-value \c extr_z0 of the extrusion vector of a DXF
  * \c DIMENSION entity.
  *
- * \return the Z-value \c extr_z0 of the extrusion vector.
+ * \return the Z-value \c extr_z0 of the extrusion vector, or
+ * \c EXIT_FAILURE when an error occurred.
  */
 double
 dxf_dimension_get_extr_z0
@@ -5892,7 +6034,8 @@ dxf_dimension_get_extr_z0
  * \brief Set the Z-value \c extr_z0 of the extrusion vector of a DXF
  * \c DIMENSION entity.
  *
- * \return a pointer to a DXF \c DIMENSION entity.
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_extr_z0
@@ -5926,7 +6069,8 @@ dxf_dimension_set_extr_z0
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c DIMENSION entity.
  *
- * \return a DXF \c POINT containing the extrusion coordinates.
+ * \return a DXF \c POINT containing the extrusion coordinates, or
+ * \c NULL when an error occurred.
  *
  * \warning No other members are copied into the DXF \c POINT.
  */
@@ -5969,7 +6113,10 @@ dxf_dimension_get_extrusion_vector_as_point
 
 
 /*!
- * \brief Set the extrusion vector for a DXF \c DIMENSION entity.
+ * \brief Set the extrusion vector values for a DXF \c DIMENSION entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_extrusion_vector
@@ -6009,7 +6156,8 @@ dxf_dimension_set_extrusion_vector
  * \brief Get the pointer to the next \c DIMENSION entity from a DXF 
  * \c DIMENSION entity.
  *
- * \return pointer to the next \c DIMENSION entity.
+ * \return pointer to the next \c DIMENSION entity, or \c NULL when an
+ * error occurred.
  *
  * \warning No checks are performed on the returned pointer.
  */
@@ -6051,6 +6199,9 @@ dxf_dimension_get_next
 /*!
  * \brief Set the pointer to the next \c DIMENSION for a DXF \c DIMENSION
  * entity.
+ *
+ * \return a pointer to \c dimension when successful, or \c NULL when an
+ * error occurred.
  */
 DxfDimension *
 dxf_dimension_set_next
