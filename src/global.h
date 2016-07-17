@@ -161,6 +161,11 @@
         /*!< \brief False is 0. */
 #endif
 
+#ifndef DXF_ERROR
+#  define DXF_ERROR -1
+        /*!< \brief A DXF error is -1. */
+#endif
+
 #define DXF_DEBUG_BEGIN \
         fprintf (stderr, \
           (_("[File: %s: line: %d] Entering %s () function.\n")), \
