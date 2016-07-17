@@ -995,8 +995,6 @@ dxf_dimension_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -1012,11 +1010,10 @@ dxf_dimension_get_id_code
                   __FUNCTION__);
                 return (DXF_ERROR);
         }
-        result = dimension->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->id_code);
 }
 
 
@@ -1078,8 +1075,6 @@ dxf_dimension_get_linetype
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -1095,11 +1090,10 @@ dxf_dimension_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dimension->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dimension->linetype));
 }
 
 
@@ -1159,8 +1153,6 @@ dxf_dimension_get_layer
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -1176,11 +1168,10 @@ dxf_dimension_get_layer
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dimension->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dimension->layer));
 }
 
 
@@ -1240,8 +1231,6 @@ dxf_dimension_get_elevation
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -1250,11 +1239,10 @@ dxf_dimension_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimension->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->elevation);
 }
 
 
@@ -1307,8 +1295,6 @@ dxf_dimension_get_thickness
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -1324,11 +1310,10 @@ dxf_dimension_get_thickness
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimension->thickness;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->thickness);
 }
 
 
@@ -1388,8 +1373,6 @@ dxf_dimension_get_linetype_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -1405,11 +1388,10 @@ dxf_dimension_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimension->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->linetype_scale);
 }
 
 
@@ -1469,8 +1451,6 @@ dxf_dimension_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -1493,11 +1473,10 @@ dxf_dimension_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimension->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->visibility);
 }
 
 
@@ -1564,8 +1543,6 @@ dxf_dimension_get_color
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -1580,11 +1557,10 @@ dxf_dimension_get_color
                   (_("Warning in %s () a negative value was found in the color member.\n")),
                   __FUNCTION__);
         }
-        result = dimension->color;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->color);
 }
 
 
@@ -1646,8 +1622,6 @@ dxf_dimension_get_paperspace
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -1668,11 +1642,10 @@ dxf_dimension_get_paperspace
                   (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
                   __FUNCTION__);
         }
-        result = dimension->paperspace;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->paperspace);
 }
 
 
@@ -2012,8 +1985,6 @@ dxf_dimension_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -2029,11 +2000,10 @@ dxf_dimension_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dimension->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dimension->dictionary_owner_soft));
 }
 
 
@@ -2182,8 +2152,6 @@ dxf_dimension_get_dictionary_owner_hard
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -2199,11 +2167,10 @@ dxf_dimension_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dimension->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dimension->dictionary_owner_hard));
 }
 
 
@@ -2621,8 +2588,6 @@ dxf_dimension_get_dim_text
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -2638,11 +2603,10 @@ dxf_dimension_get_dim_text
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dimension->dim_text);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dimension->dim_text));
 }
 
 
@@ -2703,8 +2667,6 @@ dxf_dimension_get_dimblock_name
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -2720,11 +2682,10 @@ dxf_dimension_get_dimblock_name
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dimension->dimblock_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dimension->dimblock_name));
 }
 
 
@@ -2785,8 +2746,6 @@ dxf_dimension_get_dimstyle_name
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -2802,11 +2761,10 @@ dxf_dimension_get_dimstyle_name
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dimension->dimstyle_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dimension->dimstyle_name));
 }
 
 
@@ -5139,8 +5097,6 @@ dxf_dimension_get_leader_length
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -5149,11 +5105,10 @@ dxf_dimension_get_leader_length
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimension->leader_length;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->leader_length);
 }
 
 
@@ -5208,8 +5163,6 @@ dxf_dimension_get_text_line_spacing_factor
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -5218,11 +5171,10 @@ dxf_dimension_get_text_line_spacing_factor
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimension->text_line_spacing_factor;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->text_line_spacing_factor);
 }
 
 
@@ -5277,8 +5229,6 @@ dxf_dimension_get_actual_measurement
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -5287,11 +5237,10 @@ dxf_dimension_get_actual_measurement
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimension->actual_measurement;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->actual_measurement);
 }
 
 
@@ -5345,8 +5294,6 @@ dxf_dimension_get_angle
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -5355,11 +5302,10 @@ dxf_dimension_get_angle
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimension->angle;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->angle);
 }
 
 
@@ -5415,8 +5361,6 @@ dxf_dimension_get_hor_dir
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -5425,11 +5369,10 @@ dxf_dimension_get_hor_dir
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimension->hor_dir;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->hor_dir);
 }
 
 
@@ -5485,8 +5428,6 @@ dxf_dimension_get_obl_angle
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -5495,11 +5436,10 @@ dxf_dimension_get_obl_angle
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimension->obl_angle;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->obl_angle);
 }
 
 
@@ -5553,8 +5493,6 @@ dxf_dimension_get_text_angle
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -5563,11 +5501,10 @@ dxf_dimension_get_text_angle
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimension->text_angle;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimension->text_angle);
 }
 
 
@@ -6172,8 +6109,6 @@ dxf_dimension_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfDimension *result;
-
         /* Do some basic checks. */
         if (dimension == NULL)
         {
@@ -6189,11 +6124,10 @@ dxf_dimension_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfDimension *) dimension->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfDimension *) dimension->next);
 }
 
 
