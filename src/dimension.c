@@ -983,7 +983,7 @@ dxf_dimension_free_chain
 /*!
  * \brief Get the \c id_code from a DXF \c DIMENSION entity.
  *
- * \return \c id_code, or \c EXIT_FAILURE when an error occurred.
+ * \return \c id_code, or \c DXF_ERROR when an error occurred.
  */
 int
 dxf_dimension_get_id_code
@@ -1003,14 +1003,14 @@ dxf_dimension_get_id_code
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (DXF_ERROR);
         }
         if (dimension->id_code < 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () a negative value was found in the id-code member.\n")),
                   __FUNCTION__);
-                return (EXIT_FAILURE);
+                return (DXF_ERROR);
         }
         result = dimension->id_code;
 #if DEBUG
@@ -5608,7 +5608,8 @@ dxf_dimension_set_text_angle
 /*!
  * \brief Get the value of the \c flag of a DXF \c DIMENSION.
  *
- * \return The value of the \c flag, or -1 when an error occurred.
+ * \return The value of the \c flag, or \c DXF_ERROR when an error
+ * occurred.
  */
 int
 dxf_dimension_get_flag
@@ -5625,14 +5626,14 @@ dxf_dimension_get_flag
               fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-              return (-1);
+              return (DXF_ERROR);
         }
         if (dimension->flag < 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () a negative value was found in the flag member.\n")),
                   __FUNCTION__);
-                return (-1);
+                return (DXF_ERROR);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -5685,7 +5686,7 @@ dxf_dimension_set_flag
 /*!
  * \brief Get the \c attachment_point of a DXF \c DIMENSION.
  *
- * \return The \c attachment_point, or -1 when an error occurred.
+ * \return The \c attachment_point, or \c DXF_ERROR when an error occurred.
  */
 int
 dxf_dimension_get_attachment_point
@@ -5702,21 +5703,21 @@ dxf_dimension_get_attachment_point
               fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-              return (-1);
+              return (DXF_ERROR);
         }
         if (dimension->attachment_point < 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () a negative value was found in the attachment_point member.\n")),
                   __FUNCTION__);
-                return (-1);
+              return (DXF_ERROR);
         }
         if (dimension->attachment_point > 9)
         {
                 fprintf (stderr,
                   (_("Error in %s () an out of range value was found in the attachment_point member.\n")),
                   __FUNCTION__);
-                return (-1);
+              return (DXF_ERROR);
         }
 #if DEBUG
         DXF_DEBUG_END
@@ -5776,7 +5777,7 @@ dxf_dimension_set_attachment_point
 /*!
  * \brief Get the \c text_line_spacing of a DXF \c DIMENSION.
  *
- * \return The \c text_line_spacing, or -1 when an error occurred.
+ * \return The \c text_line_spacing, or \c DXF_ERROR when an error occurred.
  */
 int
 dxf_dimension_get_text_line_spacing
@@ -5793,21 +5794,21 @@ dxf_dimension_get_text_line_spacing
               fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
-              return (-1);
+              return (DXF_ERROR);
         }
         if (dimension->text_line_spacing < 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () a negative value was found in the text_line_spacing member.\n")),
                   __FUNCTION__);
-                return (-1);
+              return (DXF_ERROR);
         }
         if (dimension->text_line_spacing > 2)
         {
                 fprintf (stderr,
                   (_("Error in %s () an out of range value was found in the text_line_spacing member.\n")),
                   __FUNCTION__);
-                return (-1);
+              return (DXF_ERROR);
         }
 #if DEBUG
         DXF_DEBUG_END
