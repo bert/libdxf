@@ -1,7 +1,7 @@
 /*!
  * \file dictionary.c
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dictionary object (\c DICTIONARY).
  *
@@ -478,8 +478,6 @@ dxf_dictionary_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (dictionary == NULL)
         {
@@ -495,11 +493,10 @@ dxf_dictionary_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dictionary->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dictionary->id_code);
 }
 
 
@@ -573,8 +570,6 @@ dxf_dictionary_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (dictionary == NULL)
         {
@@ -590,11 +585,10 @@ dxf_dictionary_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dictionary->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dictionary->dictionary_owner_soft));
 }
 
 
@@ -668,8 +662,6 @@ dxf_dictionary_get_dictionary_owner_hard
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (dictionary == NULL)
         {
@@ -685,11 +677,10 @@ dxf_dictionary_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dictionary->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dictionary->dictionary_owner_hard));
 }
 
 
@@ -760,8 +751,6 @@ dxf_dictionary_get_entry_name
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (dictionary == NULL)
         {
@@ -777,11 +766,10 @@ dxf_dictionary_get_entry_name
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dictionary->entry_name);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dictionary->entry_name));
 }
 
 
@@ -850,8 +838,6 @@ dxf_dictionary_get_entry_object_handle
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (dictionary == NULL)
         {
@@ -867,11 +853,10 @@ dxf_dictionary_get_entry_object_handle
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dictionary->entry_object_handle);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dictionary->entry_object_handle));
 }
 
 
@@ -944,8 +929,6 @@ dxf_dictionary_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfDictionary *result;
-
         /* Do some basic checks. */
         if (dictionary == NULL)
         {
@@ -961,11 +944,10 @@ dxf_dictionary_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfDictionary *) dictionary->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfDictionary *) dictionary->next);
 }
 
 
