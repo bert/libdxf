@@ -7,6 +7,12 @@
  *
  * \version The \c DICTIONARY object was introduced in DXF R13.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -41,12 +47,6 @@
  * \brief Allocate memory for a DXF \c DICTIONARY object.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDictionary *
 dxf_dictionary_new ()
@@ -84,12 +84,6 @@ dxf_dictionary_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDictionary *
 dxf_dictionary_init
@@ -138,12 +132,6 @@ dxf_dictionary_init
  * While parsing the DXF file store data in \c dictionary. \n
  *
  * \return \c a pointer to \c dictionary.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDictionary *
 dxf_dictionary_read
@@ -274,12 +262,6 @@ dxf_dictionary_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_dictionary_write
@@ -380,12 +362,6 @@ dxf_dictionary_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_dictionary_free
@@ -422,12 +398,6 @@ dxf_dictionary_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c DICTIONARY
  * objects and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_dictionary_free_chain
@@ -461,12 +431,6 @@ dxf_dictionary_free_chain
  * \brief Get the ID code from a DXF \c DICTIONARY object.
  *
  * \return ID code.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_dictionary_get_id_code
@@ -502,12 +466,6 @@ dxf_dictionary_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c DICTIONARY object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDictionary *
 dxf_dictionary_set_id_code
@@ -553,12 +511,6 @@ dxf_dictionary_set_id_code
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_dictionary_get_dictionary_owner_soft
@@ -595,12 +547,6 @@ dxf_dictionary_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c DICTIONARY object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDictionary *
 dxf_dictionary_set_dictionary_owner_soft
@@ -645,12 +591,6 @@ dxf_dictionary_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_dictionary_get_dictionary_owner_hard
@@ -687,12 +627,6 @@ dxf_dictionary_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c DICTIONARY object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDictionary *
 dxf_dictionary_set_dictionary_owner_hard
@@ -734,12 +668,6 @@ dxf_dictionary_set_dictionary_owner_hard
  * \brief Get the entry name from a DXF \c DICTIONARY object.
  *
  * \return entry name when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_dictionary_get_entry_name
@@ -775,12 +703,6 @@ dxf_dictionary_get_entry_name
 
 /*!
  * \brief Set the entry name for a DXF \c DICTIONARY object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDictionary *
 dxf_dictionary_set_entry_name
@@ -821,12 +743,6 @@ dxf_dictionary_set_entry_name
  * \brief Get the entry object handle from a DXF \c DICTIONARY object.
  *
  * \return entry object handle when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_dictionary_get_entry_object_handle
@@ -862,12 +778,6 @@ dxf_dictionary_get_entry_object_handle
 
 /*!
  * \brief Set the entry object handle for a DXF \c DICTIONARY object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDictionary *
 dxf_dictionary_set_entry_object_handle
@@ -912,12 +822,6 @@ dxf_dictionary_set_entry_object_handle
  * \return pointer to the next \c DICTIONARY object.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDictionary *
 dxf_dictionary_get_next
@@ -954,12 +858,6 @@ dxf_dictionary_get_next
 /*!
  * \brief Set the pointer to the next \c DICTIONARY object for a DXF
  * \c DICTIONARY object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfDictionary *
 dxf_dictionary_set_next
