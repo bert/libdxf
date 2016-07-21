@@ -1,11 +1,17 @@
 /*!
  * \file dictionaryvar.c
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dictionaryvar object (\c DICTIONARYVAR).
  *
- * \version The \c DICTIONARYVAR object was introduced in DXF R14.
+ * \since The \c DICTIONARYVAR object was introduced in DXF R14.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -41,12 +47,6 @@
  * \brief Allocate memory for a DXF \c DICTIONARYVAR object.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfDictionaryVar *
 dxf_dictionaryvar_new ()
@@ -84,12 +84,6 @@ dxf_dictionaryvar_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfDictionaryVar *
 dxf_dictionaryvar_init
@@ -138,12 +132,6 @@ dxf_dictionaryvar_init
  * While parsing the DXF file store data in \c dictionaryvar. \n
  *
  * \return \c a pointer to \c dictionaryvar.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfDictionaryVar *
 dxf_dictionaryvar_read
@@ -274,12 +262,6 @@ dxf_dictionaryvar_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_dictionaryvar_write
@@ -383,12 +365,6 @@ dxf_dictionaryvar_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_dictionaryvar_free
@@ -425,12 +401,6 @@ dxf_dictionaryvar_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c DICTIONARYVAR
  * objects and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_dictionaryvar_free_chain
@@ -464,12 +434,6 @@ dxf_dictionaryvar_free_chain
  * \brief Get the ID code from a DXF \c DICTIONARYVAR object.
  *
  * \return ID code.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_dictionaryvar_get_id_code
@@ -508,12 +472,6 @@ dxf_dictionaryvar_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c DICTIONARYVAR object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfDictionaryVar *
 dxf_dictionaryvar_set_id_code
@@ -559,12 +517,6 @@ dxf_dictionaryvar_set_id_code
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 char *
 dxf_dictionaryvar_get_dictionary_owner_soft
@@ -604,12 +556,6 @@ dxf_dictionaryvar_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c DICTIONARYVAR object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfDictionaryVar *
 dxf_dictionaryvar_set_dictionary_owner_soft
@@ -654,12 +600,6 @@ dxf_dictionaryvar_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 char *
 dxf_dictionaryvar_get_dictionary_owner_hard
@@ -699,12 +639,6 @@ dxf_dictionaryvar_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c DICTIONARYVAR object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfDictionaryVar *
 dxf_dictionaryvar_set_dictionary_owner_hard
@@ -746,12 +680,6 @@ dxf_dictionaryvar_set_dictionary_owner_hard
  * \brief Get the value from a DXF \c DICTIONARYVAR object.
  *
  * \return value when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 char *
 dxf_dictionaryvar_get_value
@@ -790,12 +718,6 @@ dxf_dictionaryvar_get_value
 
 /*!
  * \brief Set the entry name for a DXF \c DICTIONARYVAR object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfDictionaryVar *
 dxf_dictionaryvar_set_value
@@ -838,12 +760,6 @@ dxf_dictionaryvar_set_value
  *
  * \return object schema number when sucessful, \c NULL when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 char *
 dxf_dictionaryvar_get_object_schema_number
@@ -882,12 +798,6 @@ dxf_dictionaryvar_get_object_schema_number
 
 /*!
  * \brief Set the object schema number for a DXF \c DICTIONARYVAR object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfDictionaryVar *
 dxf_dictionaryvar_set_object_schema_number
@@ -932,12 +842,6 @@ dxf_dictionaryvar_set_object_schema_number
  * \return pointer to the next \c DICTIONARYVAR object.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfDictionaryVar *
 dxf_dictionaryvar_get_next
@@ -977,12 +881,6 @@ dxf_dictionaryvar_get_next
 /*!
  * \brief Set the pointer to the next \c DICTIONARYVAR object for a DXF
  * \c DICTIONARYVAR object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfDictionaryVar *
 dxf_dictionaryvar_set_next

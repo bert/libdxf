@@ -1,11 +1,17 @@
 /*!
  * \file dictionaryvar.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF dictionaryvar object (\c DICTIONARYVAR).
  *
- * \version The \c DICTIONARYVAR object was introduced in DXF R14.
+ * \since The \c DICTIONARYVAR object was introduced in DXF R14.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -43,12 +49,6 @@
 
 /*!
  * \brief DXF definition of an AutoCAD dictionaryvar object (\c DICTIONARYVAR).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 typedef struct
 dxf_dictionaryvar
