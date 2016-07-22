@@ -110,12 +110,12 @@ dxf_dictionaryvar_init
                   __FUNCTION__);
                 return (NULL);
         }
-        dictionaryvar->id_code = 0;
-        dictionaryvar->value = strdup ("");
-        dictionaryvar->object_schema_number = strdup ("");
-        dictionaryvar->dictionary_owner_soft = strdup ("");
-        dictionaryvar->dictionary_owner_hard = strdup ("");
-        dictionaryvar->next = NULL;
+        dxf_dictionaryvar_set_id_code (dictionaryvar, 0);
+        dxf_dictionaryvar_set_value (dictionaryvar, strdup (""));
+        dxf_dictionaryvar_set_object_schema_number (dictionaryvar, strdup (""));
+        dxf_dictionaryvar_set_dictionary_owner_soft (dictionaryvar, strdup (""));
+        dxf_dictionaryvar_set_dictionary_owner_hard (dictionaryvar, strdup (""));
+        dxf_dictionaryvar_set_next (dictionaryvar, NULL);
 #if DEBUG
         DXF_DEBUG_END
 #endif
