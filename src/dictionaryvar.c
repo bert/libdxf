@@ -378,17 +378,17 @@ dxf_dictionaryvar_free
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
-        if (dictionaryvar->next != NULL)
+        if (dxf_dictionaryvar_get_next (dictionaryvar) != NULL)
         {
               fprintf (stderr,
                 (_("Error in %s () pointer to next DxfDictionaryVar was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dictionaryvar->dictionary_owner_soft);
-        free (dictionaryvar->dictionary_owner_hard);
-        free (dictionaryvar->value);
-        free (dictionaryvar->object_schema_number);
+        free (dxf_dictionaryvar_get_dictionary_owner_soft (dictionaryvar));
+        free (dxf_dictionaryvar_get_dictionary_owner_hard (dictionaryvar));
+        free (dxf_dictionaryvar_get_value (dictionaryvar));
+        free (dxf_dictionaryvar_get_object_schema_number (dictionaryvar));
         free (dictionaryvar);
         dictionaryvar = NULL;
 #if DEBUG
