@@ -296,29 +296,29 @@ dxf_dictionaryvar_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dictionaryvar->value, "") == 0)
+        if (strcmp (dxf_dictionaryvar_get_value (dictionaryvar), "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty value string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dictionaryvar->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_dictionaryvar_get_id_code (dictionaryvar));
         }
-        if (strcmp (dictionaryvar->object_schema_number, "0") == 0)
+        if (strcmp (dxf_dictionaryvar_get_object_schema_number (dictionaryvar), "0") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty object schema number string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, dictionaryvar->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_dictionaryvar_get_id_code (dictionaryvar));
         }
         if (fp->acad_version_number < AutoCAD_14)
         {
                 fprintf (stderr,
                   (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, dictionaryvar->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_dictionaryvar_get_id_code (dictionaryvar));
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (dictionaryvar->id_code != -1)
+        if (dxf_dictionaryvar_get_id_code (dictionaryvar) != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", dictionaryvar->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_dictionaryvar_get_id_code (dictionaryvar));
         }
         /*!
          * \todo for version R14.\n
@@ -330,26 +330,26 @@ dxf_dictionaryvar_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (dictionaryvar->dictionary_owner_soft, "") != 0)
+        if ((strcmp (dxf_dictionaryvar_get_dictionary_owner_soft (dictionaryvar), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", dictionaryvar->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", dxf_dictionaryvar_get_dictionary_owner_soft (dictionaryvar));
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (dictionaryvar->dictionary_owner_hard, "") != 0)
+        if ((strcmp (dxf_dictionaryvar_get_dictionary_owner_hard (dictionaryvar), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", dictionaryvar->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", dxf_dictionaryvar_get_dictionary_owner_hard (dictionaryvar));
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nDictionaryVariables\n");
         }
-        fprintf (fp->fp, "280\n%s\n", dictionaryvar->object_schema_number);
-        fprintf (fp->fp, "  1\n%s\n", dictionaryvar->value);
+        fprintf (fp->fp, "280\n%s\n", dxf_dictionaryvar_get_object_schema_number (dictionaryvar));
+        fprintf (fp->fp, "  1\n%s\n", dxf_dictionaryvar_get_value (dictionaryvar));
         /* Clean up. */
         free (dxf_entity_name);
 #if DEBUG
