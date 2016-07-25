@@ -49,7 +49,7 @@
  * \brief DXF definition of an AutoCAD dimensioning style.
  */
 typedef struct
-dxf_dimstyle
+dxf_dimstyle_struct
 {
         char *dimstyle_name;
                 /*!< group code = 2\n
