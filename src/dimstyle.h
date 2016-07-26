@@ -52,53 +52,56 @@ typedef struct
 dxf_dimstyle_struct
 {
         char *dimstyle_name;
-                /*!< group code = 2\n
-                 * dimension style name. */
+                /*!< Dimension style name.\n
+                 * Group code = 2. */
         char *dimpost;
-                /*!< group code = 3\n
-                 * general dimensioning suffix. */
+                /*!< General dimensioning suffix.\n
+                 * Group code = 3. */
         char *dimapost;
-                /*!< group code = 4\n
-                 * alternate dimensioning suffix. */
+                /*!< Alternate dimensioning suffix.\n
+                 * Group code = 4. */
         char *dimblk;
-                /*!< group code = 5\n
-                 * arrow block name, until R2000. */
+                /*!< Arrow block name, until R2000.\n
+                 * Group code = 5. */
         char *dimblk1;
-                /*!< group code = 6\n
-                 * first arrow block name, until R2000. */
+                /*!< First arrow block name, until R2000.\n
+                 * Group code = 6. */
         char *dimblk2;
-                /*!< group code = 7\n
-                 * second arrow block name, until R2000. */
+                /*!< Second arrow block name, until R2000.\n
+                 * Group code = 7. */
         double dimscale;
-                /*!< group code = 40\n
-                 * overall dimensioning scale factor. */
+                /*!< Overall dimensioning scale factor.\n
+                 * Group code = 40. */
         double dimasz;
-                /*!< group code = 41\n
-                 * dimensioning arrow size. */
+                /*!< Dimensioning arrow size.\n
+                 * Group code = 41. */
         double dimexo;
-                /*!< group code = 42\n
-                 * extension line offset. */
+                /*!< Extension line offset.\n
+                 * Group code = 42. */
         double dimdli;
-                /*!< group code = 43\n
-                 * dimension line increment. */
+                /*!< Dimension line increment.\n
+                 * Group code = 43. */
         double dimexe;
-                /*!< group code = 44\n
-                 * extension line extension. */
+                /*!< Extension line extension.\n
+                 * Group code = 44. */
         double dimrnd;
-                /*!< group code = 45\n
-                 * rounding value for dimension distances. */
+                /*!< Rounding value for dimension distances.\n
+                 * Group code = 45. */
         double dimdle;
-                /*!< group code = 46\n
-                 * dimension line extension. */
+                /*!< Dimension line extension.\n
+                 * Group code = 46. */
         double dimtp;
-                /*!< group code = 47\n
-                 * plus tolerance. */
+                /*!< Plus tolerance.\n
+                 * Group code = 47. */
         double dimtm;
-                /*!< group code = 48\n
-                 * minus tolerance. */
+                /*!< Minus tolerance.\n
+                 * Group code = 48. */
         int flag;
-                /*!< group code = 70\n
-                 * bit coded:\n
+                /*!< This flag is for the benefit of AutoCAD commands;
+                 * it can be ignored by most programs that read DXF
+                 * files, and need not be set by programs that write DXF
+                 * files.\n
+                 * Bit coded:\n
                  * <ol>
                  * <li value = "16"> if set, table entry is externally dependent on an
                  *      Xref.</li>
@@ -108,68 +111,66 @@ dxf_dimstyle_struct
                  *      one entity in the drawing the last time the drawing
                  *      was edited.</li>
                  * </ol>
-                 * This flag is for the benefit of AutoCAD commands; it can
-                 * be ignored by most programs that read DXF files, and need
-                 * not be set by programs that write DXF files. */
+                 * Group code = 70. */
         int dimtol;
-                /*!< group code = 71\n
-                 * dimension tolerances generated if nonzero. */
+                /*!< Dimension tolerances generated if nonzero.\n
+                 * Group code = 71. */
         int dimlim;
-                /*!< group code = 72\n
-                 * dimension limits generated if nonzero. */
+                /*!< Dimension limits generated if nonzero.\n
+                 * Group code = 72. */
         int dimtih;
-                /*!< group code = 73\n
-                 * text inside horizontal if nonzero. */
+                /*!< Text inside horizontal if nonzero.\n
+                 * Group code = 73. */
         int dimtoh;
-                /*!< group code = 74\n
-                 * text outside horizontal if nonzero. */
+                /*!< Text outside horizontal if nonzero.\n
+                 * Group code = 74. */
         int dimse1;
-                /*!< group code = 75\n
-                 * first extension line suppressed if nonzero. */
+                /*!< First extension line suppressed if nonzero.\n
+                 * Group code = 75. */
         int dimse2;
-                /*!< group code = 76\n
-                 * second extension line suppressed if nonzero. */
+                /*!< Second extension line suppressed if nonzero.\n
+                 * Group code = 76. */
         int dimtad;
-                /*!< group code = 77\n
-                 * text above dimension line if nonzero. */
+                /*!< Text above dimension line if nonzero.\n
+                 * Group code = 77. */
         int dimzin;
-                /*!< group code = 78\n
-                 * zero suppression for "feet & inch" dimensions. */
+                /*!< Zero suppression for "feet & inch" dimensions.\n
+                 * Group code = 78. */
         int id_code;
-                /*!< group code = 105\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the
-                 * DXF file. */
+                 * DXF file.\n
+                 * Group code = 105. */
         double dimtxt;
-                /*!< group code = 140\n
-                 * dimensioning text height. */
+                /*!< Dimensioning text height.\n
+                 * Group code = 140. */
         double dimcen;
-                /*!< group code = 141\n
-                 * size of center mark/lines. */
+                /*!< Size of center mark/lines.\n
+                 * Group code = 141. */
         double dimtsz;
-                /*!< group code = 142\n
-                 * dimensioning tick size: 0 = no ticks. */
+                /*!< Dimensioning tick size: 0 = no ticks.\n
+                 * Group code = 142. */
         double dimaltf;
-                /*!< group code = 143\n
-                 * alternate unit scale factor. */
+                /*!< Alternate unit scale factor.\n
+                 * Group code = 143. */
         double dimlfac;
-                /*!< group code = 144\n
-                 * linear measurements scale factor. */
+                /*!< Linear measurements scale factor.\n
+                 * Group code = 144. */
         double dimtvp;
-                /*!< group code = 145\n
-                 * text vertical position. */
+                /*!< Text vertical position.\n
+                 * Group code = 145. */
         double dimtfac;
-                /*!< group code = 146\n
-                 * dimension tolerance display scale factor. */
+                /*!< Dimension tolerance display scale factor.\n
+                 * Group code = 146. */
         double dimgap;
-                /*!< group code = 147\n
-                 * dimension line gap. */
+                /*!< Dimension line gap.\n
+                 * Group code = 147. */
         int dimalt;
-                /*!< group code = 170\n
-                 * alternate unit dimensioning performed if nonzero. */
+                /*!< Alternate unit dimensioning performed if nonzero.\n
+                 * Group code = 170. */
         int dimaltd;
-                /*!< group code = 171\n
-                 * alternate unit decimal places. */
+                /*!< Alternate unit decimal places.\n
+                 * Group code = 171. */
         int dimtofl;
                 /*!< group code = 172\n
                  * if text outside extensions, force line extensions between
