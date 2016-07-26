@@ -172,72 +172,72 @@ dxf_dimstyle_struct
                 /*!< Alternate unit decimal places.\n
                  * Group code = 171. */
         int dimtofl;
-                /*!< group code = 172\n
-                 * if text outside extensions, force line extensions between
-                 * extensions if nonzero. */
+                /*!< If text outside extensions, force line extensions
+                 * between extensions if nonzero.\n
+                 * Group code = 172. */
         int dimsah;
-                /*!< group code = 173\n
-                 * use separate arrow blocks if nonzero. */
+                /*!< Use separate arrow blocks if nonzero.\n
+                 * Group code = 173. */
         int dimtix;
-                /*!< group code = 174\n
-                 * force text inside extensions if nonzero. */
+                /*!< Force text inside extensions if nonzero.\n
+                 * Group code = 174. */
         int dimsoxd;
-                /*!< group code = 175\n
-                 * suppress outside-extensions dimension lines if nonzero. */
+                /*!< Suppress outside-extensions dimension lines if
+                 * nonzero.\n
+                 * Group code = 175. */
         int dimclrd;
-                /*!< group code = 176\n
-                 * dimension line color. */
+                /*!< Dimension line color.\n
+                 * Group code = 176. */
         int dimclre;
-                /*!< group code = 177\n
-                 * dimension extension line color. */
+                /*!< Dimension extension line color.\n
+                 * Group code = 177. */
         int dimclrt;
-                /*!< group code = 178\n
-                 * dimension text color. */
+                /*!< Dimension text color.\n
+                 * Group code = 178. */
         int dimunit;
-                /*!< group code = 270\n
-                 * Units format for all dimension style family members
+                /*!< Units format for all dimension style family members
                  * except angular:\n
                  * <ol>
                  * <li value = "1"> Scientific,</li>
                  * <li value = "2"> Decimal,</li>
                  * <li value = "3"> Engineering,</li>
                  * <li value = "4"> Architectural.</li>
-                 * </ol> */
+                 * </ol>
+                 * Group code = 270. */
         int dimdec;
-                /*!< group code = 271\n
-                 * Number of decimal places for the tolerance values of
-                 * a primary units dimension. */
+                /*!< Number of decimal places for the tolerance values
+                 * of a primary units dimension.\n
+                 * Group code = 271. */
         int dimtdec;
-                /*!< group code = 272\n
-                 * Number of decimal places to display the tolerance
-                 * values. */
+                /*!< Number of decimal places to display the tolerance
+                 * values.\n
+                 * Group code = 272. */
         int dimaltu;
-                /*!< group code = 273\n
-                 * Units format for alternate units of all dimension
+                /*!< Units format for alternate units of all dimension
                  * style family members except angular:
                  * <ol>
                  * <li value = "1"> Scientific,</li>
                  * <li value = "2"> Decimal,</li>
                  * <li value = "3"> Engineering,</li>
                  * <li value = "4"> Architectural.</li>
-                 * </ol> */
+                 * </ol>
+                 * Group code = 273. */
         int dimalttd;
-                /*!< group code = 274\n
-                 * Number of decimal places for tolerance values of an
-                 * alternate units dimension. */
+                /*!< Number of decimal places for tolerance values of an
+                 * alternate units dimension.\n
+                 * Group code = 274. */
         int dimaunit;
-                /*!< group code = 275\n
-                 * Angle format for angular dimensions:\n
+                /*!< Angle format for angular dimensions:\n
                  * <ol>
                  * <li value = "0"> Decimal degrees,</li>
                  * <li value = "1"> Degrees/minutes/seconds,</li>
                  * <li value = "2"> Gradians,</li>
                  * <li value = "3"> Radians,</li>
                  * <li value = "4"> Surveyor's units.</li>
-                 * </ol> */
+                 * </ol>
+                 * Group code = 275. */
         int dimjust;
-                /*!< group code = 280\n
-                 * Horizontal dimension text position:\n
+                /*!< Horizontal dimension text position:\n
                  * <ol>
                  * <li value = "0"> above dimension line and
                  * center-justified between extension lines,</li>
@@ -249,70 +249,71 @@ dxf_dimstyle_struct
                  * extension line,</li>
                  * <li value = "4"> above and center-justified to second
                  * extension line.</li>
-                 * </ol> */
+                 * </ol>
+                 * Group code = 280. */
         int dimsd1;
-                /*!< group code = 281\n
-                 * Suppression of first extension line:\n
+                /*!< Suppression of first extension line:\n
                  * <ol>
                  * <li value = "0"> not suppressed,</li>
                  * <li value = "1"> suppressed.</li>
-                 * </ol> */
+                 * </ol>
+                 * Group code = 281. */
         int dimsd2;
-                /*!< group code = 282\n
-                 * Suppression of second extension line:\n
+                /*!< Suppression of second extension line:\n
                  * <ol>
                  * <li value = "0"> not suppressed,</li>
                  * <li value = "1"> suppressed.</li>
-                 * </ol> */
+                 * </ol>
+                 * Group code = 282. */
         int dimtolj;
-                /*!< group code = 283\n
-                 * Vertical justification for tolerance values:\n
+                /*!< Vertical justification for tolerance values:\n
                  * <ol>
                  * <li value = "0"> Top,</li>
                  * <li value = "1"> Middle,</li>
                  * <li value = "2"> Bottom.</li>
-                 * </ol> */
+                 * </ol>
+                 * Group code = 283. */
         int dimtzin;
-                /*!< group code = 284\n
-                 * Suppression of zeros for tolerance values:\n
+                /*!< Suppression of zeros for tolerance values:\n
                  * <ol>
                  * <li value = "0"> not suppressed,</li>
                  * <li value = "1"> suppressed.</li>
-                 * </ol> */
+                 * </ol>
+                 * Group code = 284. */
         int dimaltz;
-                /*!< group code = 285\n
-                 * Toggles suppression of zeros for alternate unit
+                /*!< Toggles suppression of zeros for alternate unit
                  * dimension values:\n
                  * <ol>
                  * <li value = "0"> zeros not suppressed,</li>
                  * <li value = "1"> zeros suppressed.</li>
-                 * </ol> */
+                 * </ol>
+                 * Group code = 285. */
         int dimalttz;
-                /*!< group code = 286\n
-                 * Toggles suppression of zeros for tolerance values:\n
+                /*!< Toggles suppression of zeros for tolerance values:\n
                  * <ol>
                  * <li value = "0"> zeros not suppressed,</li>
                  * <li value = "1"> zeros suppressed.</li>
-                 * </ol> */
+                 * </ol>
+                 * Group code = 286. */
         int dimfit;
-                /*!< group code = 287\n
-                 * Placement of text and arrowheads; Possible values:\n
+                /*!< Placement of text and arrowheads; Possible values:\n
                  * 0 through 3 (see appendix A, "System Variables," in
-                 * the AutoCAD Command Reference). */
+                 * the AutoCAD Command Reference).\n
+                 * Group code = 287. */
         int dimupt;
-                /*!< group code = 288\n
-                 * Cursor functionality for user positioned text:\n
+                /*!< Cursor functionality for user positioned text:\n
                  * <ol>
                  * <li value = "0"> controls only the dimension line
                  * location,</li>
                  * <li value = "1"> controls the text position as well as
                  * the dimension line location.</li>
-                 * </ol> */
+                 * </ol>
+                 * Group code = 288. */
         char *dimtxsty;
-                /*!< group code = 340\n
-                 * Dimension text style. */
+                /*!< Dimension text style.\n
+                 * Group code = 340. */
         struct DxfDimStyle *next;
-                /*!< pointer to the next DxfDimStyle.\n
+                /*!< Pointer to the next DxfDimStyle.\n
                  * \c NULL in the last DxfDimStyle. */
 } DxfDimStyle;
 
