@@ -154,6 +154,11 @@ dxf_donut_free_chain
 (
         DxfDonut *donuts
 );
+int
+dxf_donut_get_id_code
+(
+        DxfDonut *donut
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
