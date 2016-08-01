@@ -159,6 +159,12 @@ dxf_donut_get_id_code
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_id_code
+(
+        DxfDonut *donut,
+        int id_code
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
