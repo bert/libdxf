@@ -539,4 +539,42 @@ dxf_donut_set_linetype
 }
 
 
+/*!
+ * \brief Get the \c layer from a libDXF \c donut entity.
+ *
+ * \return a pointer to \c layer when sucessful, \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_donut_get_layer
+(
+        DxfDonut *donut
+                /*!< a pointer to a libDXF \c donut entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (donut->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (donut->layer));
+}
+
+
 /* EOF */
