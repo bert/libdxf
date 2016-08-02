@@ -165,6 +165,11 @@ dxf_donut_set_id_code
         DxfDonut *donut,
         int id_code
 );
+char *
+dxf_donut_get_linetype
+(
+        DxfDonut *donut
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */

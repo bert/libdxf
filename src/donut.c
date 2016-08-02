@@ -457,4 +457,42 @@ dxf_donut_set_id_code
 }
 
 
+/*!
+ * \brief Get the linetype from a libDXF \c donut entity.
+ *
+ * \return a pointer to \c linetype when sucessful, \c NULL when an
+ * error occurred.
+ */
+char *
+dxf_donut_get_linetype
+(
+        DxfDonut *donut
+                /*!< a pointer to a libDXF \c donut entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (donut->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the linetype member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (donut->linetype));
+}
+
+
 /* EOF */
