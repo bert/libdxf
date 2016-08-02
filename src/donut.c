@@ -495,4 +495,48 @@ dxf_donut_get_linetype
 }
 
 
+/*!
+ * \brief Set the \c linetype for a libDXF \c donut entity.
+ *
+ * \return a pointer to \c donut when sucessful, \c NULL when an error
+ * occurred.
+ *
+ * \warning The passed \c linetype variable is not freed by this
+ * function.
+ */
+DxfDonut *
+dxf_donut_set_linetype
+(
+        DxfDonut *donut,
+                /*!< a pointer to a libDXF \c donut entity. */
+        char *linetype
+                /*!< a string containing the \c linetype for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        donut->linetype = strdup (linetype);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut);
+}
+
+
 /* EOF */

@@ -170,6 +170,12 @@ dxf_donut_get_linetype
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_linetype
+(
+        DxfDonut *donut,
+        char *linetype
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
