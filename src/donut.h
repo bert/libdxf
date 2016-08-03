@@ -181,6 +181,12 @@ dxf_donut_get_layer
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_layer
+(
+        DxfDonut *donut,
+        char *layer
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
