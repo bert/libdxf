@@ -684,4 +684,40 @@ dxf_donut_set_elevation
 }
 
 
+/*!
+ * \brief Get the \c thickness from a libDXF \c donut entity.
+ *
+ * \return \c thickness.
+ */
+double
+dxf_donut_get_thickness
+(
+        DxfDonut *donut
+                /*!< a pointer to a libDXF \c donut entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (donut->thickness < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the thickness member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut->thickness);
+}
+
+
 /* EOF */
