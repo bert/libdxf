@@ -203,6 +203,12 @@ dxf_donut_get_thickness
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_thickness
+(
+        DxfDonut *donut,
+        double thickness
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
