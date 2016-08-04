@@ -192,6 +192,12 @@ dxf_donut_get_elevation
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_elevation
+(
+        DxfDonut *donut,
+        double elevation
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */

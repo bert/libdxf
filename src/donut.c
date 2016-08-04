@@ -650,4 +650,38 @@ dxf_donut_get_elevation
 }
 
 
+/*!
+ * \brief Set the \c elevation for a libDXF \c donut entity.
+ *
+ * \return a pointer to \c donut when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfDonut *
+dxf_donut_set_elevation
+(
+        DxfDonut *donut,
+                /*!< a pointer to a libDXF \c donut entity. */
+        double elevation
+                /*!< the \c elevation to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        donut->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut);
+}
+
+
 /* EOF */
