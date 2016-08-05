@@ -214,6 +214,12 @@ dxf_donut_get_linetype_scale
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_linetype_scale
+(
+        DxfDonut *donut,
+        double linetype_scale
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
