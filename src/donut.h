@@ -220,6 +220,11 @@ dxf_donut_set_linetype_scale
         DxfDonut *donut,
         double linetype_scale
 );
+int16_t
+dxf_donut_get_visibility
+(
+        DxfDonut *donut
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
