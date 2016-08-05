@@ -209,6 +209,11 @@ dxf_donut_set_thickness
         DxfDonut *donut,
         double thickness
 );
+double
+dxf_donut_get_linetype_scale
+(
+        DxfDonut *donut
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */

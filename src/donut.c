@@ -760,4 +760,40 @@ dxf_donut_set_thickness
 }
 
 
+/*!
+ * \brief Get the \c linetype_scale from a libDXF \c donut entity.
+ *
+ * \return \c linetype_scale.
+ */
+double
+dxf_donut_get_linetype_scale
+(
+        DxfDonut *donut
+                /*!< a pointer to a libDXF \c donut entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (donut->linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the linetype_scale member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut->linetype_scale);
+}
+
+
 /* EOF */
