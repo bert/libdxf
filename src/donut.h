@@ -225,6 +225,12 @@ dxf_donut_get_visibility
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_visibility
+(
+        DxfDonut *donut,
+        int16_t visibility
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */

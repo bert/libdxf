@@ -880,4 +880,52 @@ dxf_donut_get_visibility
 }
 
 
+/*!
+ * \brief Set the \c visibility for a libDXF \c donut entity.
+ *
+ * \return a pointer to \c donut when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfDonut *
+dxf_donut_set_visibility
+(
+        DxfDonut *donut,
+                /*!< a pointer to a libDXF \c donut entity. */
+        int16_t visibility
+                /*!< the visibility to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative visibility value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range visibility value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        donut->visibility = visibility;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut);
+}
+
+
 /* EOF */
