@@ -236,6 +236,12 @@ dxf_donut_get_color
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_color
+(
+        DxfDonut *donut,
+        int color
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
