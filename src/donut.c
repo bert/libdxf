@@ -928,4 +928,40 @@ dxf_donut_set_visibility
 }
 
 
+/*!
+ * \brief Get the \c color from a libDXF \c donut entity.
+ *
+ * \return \c color.
+ */
+int
+dxf_donut_get_color
+(
+        DxfDonut *donut
+                /*!< a pointer to a libDXF \c donut entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (donut->color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the color member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut->color);
+}
+
+
 /* EOF */
