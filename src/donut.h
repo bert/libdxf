@@ -242,6 +242,11 @@ dxf_donut_set_color
         DxfDonut *donut,
         int color
 );
+int
+dxf_donut_get_paperspace
+(
+        DxfDonut *donut
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */

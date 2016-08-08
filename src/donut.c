@@ -1006,4 +1006,47 @@ dxf_donut_set_color
 }
 
 
+/*!
+ * \brief Get the \c paperspace flag value from a libDXF \c donut
+ * entity.
+ *
+ * \return \c paperspace flag value.
+ */
+int
+dxf_donut_get_paperspace
+(
+        DxfDonut *donut
+                /*!< a pointer to a libDXF \c donut entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (donut->paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the paperspace member.\n")),
+                  __FUNCTION__);
+        }
+        if (donut->paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut->paperspace);
+}
+
+
 /* EOF */
