@@ -1049,4 +1049,52 @@ dxf_donut_get_paperspace
 }
 
 
+/*!
+ * \brief Set the \c paperspace flag for a libDXF \c donut entity.
+ *
+ * \return a pointer to \c donut when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfDonut *
+dxf_donut_set_paperspace
+(
+        DxfDonut *donut,
+                /*!< a pointer to a libDXF \c donut entity. */
+        int paperspace
+                /*!< the \c paperspace flag value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative paperspace value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range paperspace value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        donut->paperspace = paperspace;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut);
+}
+
+
 /* EOF */

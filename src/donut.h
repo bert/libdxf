@@ -247,6 +247,12 @@ dxf_donut_get_paperspace
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_paperspace
+(
+        DxfDonut *donut,
+        int paperspace
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
