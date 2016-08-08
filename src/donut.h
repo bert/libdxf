@@ -1,7 +1,7 @@
 /*!
  * \file donut.h
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a libDXF donut entity.
  *
@@ -52,7 +52,7 @@
  * \warning This is not an official AutoCAD entity.
  */
 typedef struct
-dxf_donut
+dxf_donut_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
