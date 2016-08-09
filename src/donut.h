@@ -253,6 +253,11 @@ dxf_donut_set_paperspace
         DxfDonut *donut,
         int paperspace
 );
+char *
+dxf_donut_get_dictionary_owner_soft
+(
+        DxfDonut *donut
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */

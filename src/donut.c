@@ -1,7 +1,7 @@
 /*!
  * \file donut.c
  * 
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * 
  * \brief Functions for a libDXF donut entity.
  *
@@ -1094,6 +1094,46 @@ dxf_donut_set_paperspace
         DXF_DEBUG_END
 #endif
         return (donut);
+}
+
+
+/*!
+ * \brief Get the soft pointer to the \c dictionary_owner_soft from a
+ * libDXF \c donut entity.
+ *
+ * \return a pointer to the \c dictionary_owner_soft.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_donut_get_dictionary_owner_soft
+(
+        DxfDonut *donut
+                /*!< a pointer to a libDXF \c donut entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (donut->dictionary_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (donut->dictionary_owner_soft));
 }
 
 
