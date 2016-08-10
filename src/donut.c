@@ -1217,4 +1217,47 @@ dxf_donut_get_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Set the pointer to the \c dictionary_owner_hard for a libDXF
+ * \c donut entity.
+ *
+ * \return a pointer to \c donut when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfDonut *
+dxf_donut_set_dictionary_owner_hard
+(
+        DxfDonut *donut,
+                /*!< a pointer to a libDXF \c donut entity. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the \c
+                 * dictionary_owner_hard for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        donut->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut);
+}
+
+
 /* EOF */
