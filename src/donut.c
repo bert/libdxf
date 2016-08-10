@@ -124,9 +124,9 @@ dxf_donut_init
         donut->dictionary_owner_soft = strdup ("");
         donut->dictionary_owner_hard = strdup ("");
         /* Specific members for a libDXF donut. */
-        donut->x0 = 0.0;
-        donut->y0 = 0.0;
-        donut->z0 = 0.0;
+        donut->p0->x0 = 0.0;
+        donut->p0->y0 = 0.0;
+        donut->p0->z0 = 0.0;
         donut->outside_diameter = 0.0;
         donut->inside_diameter = 0.0;
         donut->next = NULL;
@@ -225,9 +225,9 @@ dxf_donut_write
         polyline->id_code = id_code;
         polyline->linetype = donut->linetype;
         polyline->layer = donut->layer;
-        polyline->x0 = donut->x0;
-        polyline->y0 = donut->y0;
-        polyline->z0 = donut->z0;
+        polyline->x0 = donut->p0->x0;
+        polyline->y0 = donut->p0->y0;
+        polyline->z0 = donut->p0->z0;
         polyline->thickness = donut->thickness;
         polyline->start_width = 0.5 * start_width;
         polyline->end_width = 0.5 * end_width;
@@ -250,9 +250,9 @@ dxf_donut_write
         vertex_1->id_code = id_code;
         vertex_1->layer = donut->layer;
         vertex_1->linetype = donut->linetype;
-        vertex_1->x0 = donut->x0 - (0.25 * (donut->outside_diameter + donut->inside_diameter));
-        vertex_1->y0 = donut->y0;
-        vertex_1->z0 = donut->z0;
+        vertex_1->x0 = donut->p0->x0 - (0.25 * (donut->outside_diameter + donut->inside_diameter));
+        vertex_1->y0 = donut->p0->y0;
+        vertex_1->z0 = donut->p0->z0;
         vertex_1->thickness = donut->thickness;
         vertex_1->start_width = 0.5 * start_width;
         vertex_1->end_width = 0.5 * end_width;
@@ -271,9 +271,9 @@ dxf_donut_write
         vertex_2->id_code = id_code;
         vertex_2->layer = donut->layer;
         vertex_2->linetype = donut->linetype;
-        vertex_2->x0 = donut->x0 + (0.25 * (donut->outside_diameter + donut->inside_diameter));
-        vertex_2->y0 = donut->y0;
-        vertex_2->z0 = donut->z0;
+        vertex_2->x0 = donut->p0->x0 + (0.25 * (donut->outside_diameter + donut->inside_diameter));
+        vertex_2->y0 = donut->p0->y0;
+        vertex_2->z0 = donut->p0->z0;
         vertex_2->thickness = donut->thickness;
         vertex_2->start_width = 0.5 * start_width;
         vertex_2->end_width = 0.5 * end_width;

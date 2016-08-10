@@ -110,21 +110,6 @@ dxf_donut_struct
         DxfPoint *p0;
                 /*!< Insertion point for the center of the donut.\n
                  * Group codes = 10, 20 and 30.*/
-        double x0;
-                /*!< X value of the insertion point for the center of
-                 * the donut.\n
-                 * If omitted defaults to 0.0.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Y value of the insertion point for the center of
-                 * the donut.\n
-                 * If omitted defaults to 0.0.\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Z value of the insertion point for the center of
-                 * the donut.\n
-                 * If omitted defaults to 0.0.\n
-                 * Group code = 30. */
         double outside_diameter;
                 /*!< Outside diameter. */
         double inside_diameter;
