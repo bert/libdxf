@@ -1177,4 +1177,44 @@ dxf_donut_set_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Get the pointer to the \c dictionary_owner_hard from a libDXF 
+ * \c donut entity.
+ *
+ * \return a pointer to the \c dictionary_owner_hard.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_donut_get_dictionary_owner_hard
+(
+        DxfDonut *donut
+                /*!< a pointer to a libDXF \c donut entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (donut->dictionary_owner_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (donut->dictionary_owner_hard));
+}
+
+
 /* EOF */
