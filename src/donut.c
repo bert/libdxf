@@ -1260,4 +1260,41 @@ dxf_donut_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the insertion point of a libDXF \c donut entity.
+ *
+ * \return the insertion point \c p0.
+ */
+DxfPoint *
+dxf_donut_get_p0
+(
+        DxfDonut *donut
+                /*!< a pointer to a libDXF \c donut entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (donut->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut->p0);
+}
+
+
 /* EOF */

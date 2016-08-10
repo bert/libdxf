@@ -264,6 +264,11 @@ dxf_donut_set_dictionary_owner_hard
         DxfDonut *donut,
         char *dictionary_owner_hard
 );
+DxfPoint *
+dxf_donut_get_p0
+(
+        DxfDonut *donut
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
