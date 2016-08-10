@@ -39,6 +39,7 @@
 
 
 #include "global.h"
+#include "point.h"
 #include "polyline.h"
 #include "vertex.h"
 #include "seqend.h"
@@ -106,6 +107,9 @@ dxf_donut_struct
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360. */
         /* Specific members for a libDXF donut. */
+        DxfPoint *p0;
+                /*!< Insertion point for the center of the donut.\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< X value of the insertion point for the center of
                  * the donut.\n
