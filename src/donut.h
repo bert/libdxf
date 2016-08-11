@@ -275,6 +275,11 @@ dxf_donut_set_p0
         DxfDonut *donut,
         DxfPoint *p0
 );
+double
+dxf_donut_get_x0
+(
+        DxfDonut *donut
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
