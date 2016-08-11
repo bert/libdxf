@@ -280,6 +280,12 @@ dxf_donut_get_x0
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_x0
+(
+        DxfDonut *donut,
+        double x0
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
