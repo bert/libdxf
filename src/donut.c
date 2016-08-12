@@ -1420,4 +1420,43 @@ dxf_donut_set_x0
 }
 
 
+/*!
+ * \brief Get the Y-value of the insertion point \c y0 of a libDXF
+ * \c donut entity.
+ *
+ * \return the Y-value of the insertion point \c y0.
+ */
+double
+dxf_donut_get_y0
+(
+        DxfDonut *donut
+                /*!< a pointer to a libDXF \c donut entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (donut->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut->p0->y0);
+}
+
+
 /* EOF */
