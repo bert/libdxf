@@ -291,6 +291,12 @@ dxf_donut_get_y0
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_y0
+(
+        DxfDonut *donut,
+        double y0
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
