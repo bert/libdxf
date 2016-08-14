@@ -1584,4 +1584,35 @@ dxf_donut_set_z0
 }
 
 
+/*!
+ * \brief Get the \c outside_diameter of a libDXF \c donut entity.
+ *
+ * \return the \c outside_diameter.
+ */
+double
+dxf_donut_get_outside_diameter
+(
+        DxfDonut *donut
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut->outside_diameter);
+}
+
+
 /* EOF */

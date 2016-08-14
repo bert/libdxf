@@ -308,10 +308,14 @@ dxf_donut_set_z0
         DxfDonut *donut,
         double z0
 );
+double
+dxf_donut_get_outside_diameter
+(
+        DxfDonut *donut
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
 
 
 /* EOF */
-
