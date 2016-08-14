@@ -1681,4 +1681,39 @@ dxf_donut_get_inside_diameter
 }
 
 
+/*!
+ * \brief Set the \c inside_diameter of a libDXF \c donut entity.
+ *
+ * \return a pointer to \c donut when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfDonut *
+dxf_donut_set_inside_diameter
+(
+        DxfDonut *donut,
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+        double inside_diameter
+                /*!< the \c inside_diameter of a libDXF \c donut
+                 * entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        donut->inside_diameter = inside_diameter;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut);
+}
+
+
 /* EOF */

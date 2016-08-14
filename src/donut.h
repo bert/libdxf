@@ -324,6 +324,12 @@ dxf_donut_get_inside_diameter
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_inside_diameter
+(
+        DxfDonut *donut,
+        double inside_diameter
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
