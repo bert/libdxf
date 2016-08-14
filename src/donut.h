@@ -330,6 +330,11 @@ dxf_donut_set_inside_diameter
         DxfDonut *donut,
         double inside_diameter
 );
+DxfDonut *
+dxf_donut_get_next
+(
+        DxfDonut *donut
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
