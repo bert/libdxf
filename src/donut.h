@@ -302,6 +302,12 @@ dxf_donut_get_z0
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_z0
+(
+        DxfDonut *donut,
+        double z0
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
