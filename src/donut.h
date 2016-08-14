@@ -313,6 +313,12 @@ dxf_donut_get_outside_diameter
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_outside_diameter
+(
+        DxfDonut *donut,
+        double outside_diameter
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
