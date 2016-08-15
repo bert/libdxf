@@ -1756,4 +1756,46 @@ dxf_donut_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c donut for a libDXF \c donut
+ * entity.
+ *
+ * \return a pointer to \c donut when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfDonut *
+dxf_donut_set_next
+(
+        DxfDonut *donut,
+                /*!< a pointer to a libDXF \c donut entity. */
+        DxfDonut *next
+                /*!< a pointer to the next \c donut for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        donut->next = (struct DxfDonut *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut);
+}
+
+
 /* EOF */

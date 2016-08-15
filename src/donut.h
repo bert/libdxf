@@ -335,6 +335,12 @@ dxf_donut_get_next
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_next
+(
+        DxfDonut *donut,
+        DxfDonut *next
+);
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
