@@ -315,6 +315,11 @@ dxf_donut_set_paperspace
         DxfDonut *donut,
         int paperspace
 );
+int
+dxf_donut_get_graphics_data_size
+(
+        DxfDonut *donut
+);
 char *
 dxf_donut_get_dictionary_owner_soft
 (
