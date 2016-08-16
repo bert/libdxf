@@ -1142,6 +1142,54 @@ dxf_donut_get_graphics_data_size
 
 
 /*!
+ * \brief Set the \c graphics_data_size value for a libDXF \c donut entity.
+ *
+ * \return a pointer to \c donut when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfDonut *
+dxf_donut_set_graphics_data_size
+(
+        DxfDonut *donut,
+                /*!< a pointer to a libDXF \c donut entity. */
+        int graphics_data_size
+                /*!< the \c graphics_data_size value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative graphics_data_size value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero graphics_data_size value was passed.\n")),
+                  __FUNCTION__);
+        }
+        donut->graphics_data_size = graphics_data_size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut);
+}
+
+
+/*!
  * \brief Get the soft pointer to the \c dictionary_owner_soft from a
  * libDXF \c donut entity.
  *

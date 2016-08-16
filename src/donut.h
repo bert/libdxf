@@ -320,6 +320,12 @@ dxf_donut_get_graphics_data_size
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_graphics_data_size
+(
+        DxfDonut *donut,
+        int graphics_data_size
+);
 char *
 dxf_donut_get_dictionary_owner_soft
 (
