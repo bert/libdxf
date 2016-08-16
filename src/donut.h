@@ -326,6 +326,11 @@ dxf_donut_set_graphics_data_size
         DxfDonut *donut,
         int graphics_data_size
 );
+int16_t
+dxf_donut_get_shadow_mode
+(
+        DxfDonut *donut
+);
 char *
 dxf_donut_get_dictionary_owner_soft
 (
