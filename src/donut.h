@@ -40,6 +40,7 @@
 
 #include "global.h"
 #include "point.h"
+#include "binary_graphics_data.h"
 #include "polyline.h"
 #include "vertex.h"
 #include "seqend.h"
@@ -336,6 +337,11 @@ dxf_donut_set_shadow_mode
 (
         DxfDonut *donut,
         int16_t shadow_mode
+);
+DxfBinaryGraphicsData *
+dxf_donut_get_binary_graphics_data
+(
+        DxfDonut *donut
 );
 char *
 dxf_donut_get_dictionary_owner_soft
