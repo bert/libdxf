@@ -1664,7 +1664,7 @@ dxf_3dface_set_shadow_mode
 
 
 /*!
- * \brief Get the pointer to the \c binary_graphics_data from a DXF 
+ * \brief Get the pointer to the \c binary_graphics_data from a DXF
  * \c 3DFACE entity.
  *
  * \return pointer to the \c binary_graphics_data.
