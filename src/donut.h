@@ -331,6 +331,12 @@ dxf_donut_get_shadow_mode
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_shadow_mode
+(
+        DxfDonut *donut,
+        int16_t shadow_mode
+);
 char *
 dxf_donut_get_dictionary_owner_soft
 (
