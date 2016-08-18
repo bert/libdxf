@@ -343,6 +343,12 @@ dxf_donut_get_binary_graphics_data
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_binary_graphics_data
+(
+        DxfDonut *donut,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_donut_get_dictionary_owner_soft
 (
