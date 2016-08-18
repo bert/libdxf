@@ -404,6 +404,11 @@ dxf_donut_set_plot_style_name
         DxfDonut *donut,
         char *plot_style_name
 );
+long
+dxf_donut_get_color_value
+(
+        DxfDonut *donut
+);
 DxfPoint *
 dxf_donut_get_p0
 (
