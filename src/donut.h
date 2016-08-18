@@ -371,6 +371,11 @@ dxf_donut_set_material
         DxfDonut *donut,
         char *material
 );
+int16_t
+dxf_donut_get_lineweight
+(
+        DxfDonut *donut
+);
 char *
 dxf_donut_get_dictionary_owner_hard
 (

@@ -1610,6 +1610,37 @@ dxf_donut_set_dictionary_owner_hard
 
 
 /*!
+ * \brief Get the \c lineweight from a libDXF \c donut entity.
+ *
+ * \return \c lineweight when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int16_t
+dxf_donut_get_lineweight
+(
+        DxfDonut *donut
+                /*!< a pointer to a libDXF \c donut entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut->lineweight);
+}
+
+
+/*!
  * \brief Get the insertion point of a libDXF \c donut entity.
  *
  * \return the insertion point \c p0.
