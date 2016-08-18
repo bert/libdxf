@@ -420,6 +420,12 @@ dxf_donut_get_color_name
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_color_name
+(
+        DxfDonut *donut,
+        char *color_name
+);
 DxfPoint *
 dxf_donut_get_p0
 (

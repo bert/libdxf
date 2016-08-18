@@ -1858,6 +1858,48 @@ dxf_donut_get_color_name
 
 
 /*!
+ * \brief Set the \c color_name for a libDXF \c donut entity.
+ *
+ * \return a pointer to \c donut when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfDonut *
+dxf_donut_set_color_name
+(
+        DxfDonut *donut,
+                /*!< a pointer to a libDXF \c donut entity. */
+        char *color_name
+                /*!< a string containing the \c color_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (color_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        donut->color_name = strdup (color_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut);
+}
+
+
+/*!
  * \brief Get the insertion point of a libDXF \c donut entity.
  *
  * \return the insertion point \c p0.
