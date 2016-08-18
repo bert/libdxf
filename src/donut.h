@@ -361,6 +361,11 @@ dxf_donut_set_dictionary_owner_soft
         char *dictionary_owner_soft
 );
 char *
+dxf_donut_get_material
+(
+        DxfDonut *donut
+);
+char *
 dxf_donut_get_dictionary_owner_hard
 (
         DxfDonut *donut
