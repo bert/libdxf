@@ -371,6 +371,17 @@ dxf_donut_set_material
         DxfDonut *donut,
         char *material
 );
+char *
+dxf_donut_get_dictionary_owner_hard
+(
+        DxfDonut *donut
+);
+DxfDonut *
+dxf_donut_set_dictionary_owner_hard
+(
+        DxfDonut *donut,
+        char *dictionary_owner_hard
+);
 int16_t
 dxf_donut_get_lineweight
 (
@@ -386,17 +397,6 @@ char *
 dxf_donut_get_plot_style_name
 (
         DxfDonut *donut
-);
-char *
-dxf_donut_get_dictionary_owner_hard
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_dictionary_owner_hard
-(
-        DxfDonut *donut,
-        char *dictionary_owner_hard
 );
 DxfPoint *
 dxf_donut_get_p0
