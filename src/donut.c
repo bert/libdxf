@@ -1484,6 +1484,49 @@ dxf_donut_get_material
 
 
 /*!
+ * \brief Set the pointer to the \c material for a libDXF \c donut
+ * entity.
+ *
+ * \return a pointer to \c donut when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfDonut *
+dxf_donut_set_material
+(
+        DxfDonut *donut,
+                /*!< a pointer to a libDXF \c donut entity. */
+        char *material
+                /*!< a string containing the pointer to the \c
+                 * material for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (material == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        donut->material = strdup (material);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut);
+}
+
+
+/*!
  * \brief Get the pointer to the \c dictionary_owner_hard from a libDXF 
  * \c donut entity.
  *

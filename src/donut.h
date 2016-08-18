@@ -365,6 +365,12 @@ dxf_donut_get_material
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_material
+(
+        DxfDonut *donut,
+        char *material
+);
 char *
 dxf_donut_get_dictionary_owner_hard
 (
