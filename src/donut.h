@@ -415,6 +415,11 @@ dxf_donut_set_color_value
         DxfDonut *donut,
         long color_value
 );
+char *
+dxf_donut_get_color_name
+(
+        DxfDonut *donut
+);
 DxfPoint *
 dxf_donut_get_p0
 (
