@@ -1641,6 +1641,40 @@ dxf_donut_get_lineweight
 
 
 /*!
+ * \brief Set the \c lineweight for a libDXF \c donut entity.
+ *
+ * \return a pointer to \c donut when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfDonut *
+dxf_donut_set_lineweight
+(
+        DxfDonut *donut,
+                /*!< a pointer to a libDXF \c donut entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        donut->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (donut);
+}
+
+
+/*!
  * \brief Get the insertion point of a libDXF \c donut entity.
  *
  * \return the insertion point \c p0.

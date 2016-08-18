@@ -376,6 +376,12 @@ dxf_donut_get_lineweight
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_lineweight
+(
+        DxfDonut *donut,
+        int16_t lineweight
+);
 char *
 dxf_donut_get_dictionary_owner_hard
 (
