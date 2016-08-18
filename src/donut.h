@@ -398,6 +398,12 @@ dxf_donut_get_plot_style_name
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_plot_style_name
+(
+        DxfDonut *donut,
+        char *plot_style_name
+);
 DxfPoint *
 dxf_donut_get_p0
 (
