@@ -426,6 +426,11 @@ dxf_donut_set_color_name
         DxfDonut *donut,
         char *color_name
 );
+long
+dxf_donut_get_transparency
+(
+        DxfDonut *donut
+);
 DxfPoint *
 dxf_donut_get_p0
 (
