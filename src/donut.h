@@ -431,6 +431,12 @@ dxf_donut_get_transparency
 (
         DxfDonut *donut
 );
+DxfDonut *
+dxf_donut_set_transparency
+(
+        DxfDonut *donut,
+        long transparency
+);
 DxfPoint *
 dxf_donut_get_p0
 (
