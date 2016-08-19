@@ -112,24 +112,33 @@ dxf_donut_init
                 return (NULL);
         }
         /* Members common for all DXF drawable entities. */
-        donut->id_code = 0;
-        donut->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        donut->layer = strdup (DXF_DEFAULT_LAYER);
-        donut->elevation = 0.0;
-        donut->thickness = 0.0;
-        donut->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        donut->visibility = DXF_DEFAULT_VISIBILITY;
-        donut->color = DXF_COLOR_BYLAYER;
-        donut->paperspace = DXF_MODELSPACE;
-        donut->dictionary_owner_soft = strdup ("");
-        donut->dictionary_owner_hard = strdup ("");
+        dxf_donut_set_id_code (donut, 0);
+        dxf_donut_set_linetype (donut, strdup (DXF_DEFAULT_LINETYPE));
+        dxf_donut_set_layer (donut, strdup (DXF_DEFAULT_LAYER));
+        dxf_donut_set_elevation (donut, 0.0);
+        dxf_donut_set_thickness (donut, 0.0);
+        dxf_donut_set_linetype_scale (donut, DXF_DEFAULT_LINETYPE_SCALE);
+        dxf_donut_set_visibility (donut, DXF_DEFAULT_VISIBILITY);
+        dxf_donut_set_color (donut, DXF_COLOR_BYLAYER);
+        dxf_donut_set_paperspace (donut, DXF_MODELSPACE);
+        dxf_donut_set_graphics_data_size (donut, 0);
+        dxf_donut_set_shadow_mode (donut, 0);
+        dxf_donut_set_binary_graphics_data (donut, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
+        dxf_donut_set_dictionary_owner_soft (donut, strdup (""));
+        dxf_donut_set_material (donut, strdup (""));
+        dxf_donut_set_dictionary_owner_hard (donut, strdup (""));
+        dxf_donut_set_lineweight (donut, 0);
+        dxf_donut_set_plot_style_name (donut, strdup (""));
+        dxf_donut_set_color_value (donut, 0);
+        dxf_donut_set_color_name (donut, strdup (""));
+        dxf_donut_set_transparency (donut, 0);
         /* Specific members for a libDXF donut. */
-        donut->p0->x0 = 0.0;
-        donut->p0->y0 = 0.0;
-        donut->p0->z0 = 0.0;
-        donut->outside_diameter = 0.0;
-        donut->inside_diameter = 0.0;
-        donut->next = NULL;
+        dxf_donut_set_x0 (donut, 0.0);
+        dxf_donut_set_y0 (donut, 0.0);
+        dxf_donut_set_z0 (donut, 0.0);
+        dxf_donut_set_outside_diameter (donut, 0.0);
+        dxf_donut_set_inside_diameter (donut, 0.0);
+        dxf_donut_set_next (donut, NULL);
 #if DEBUG
         DXF_DEBUG_END
 #endif
