@@ -365,6 +365,11 @@ dxf_ellipse_set_graphics_data_size
         DxfEllipse *ellipse,
         int graphics_data_size
 );
+int16_t
+dxf_ellipse_get_shadow_mode
+(
+        DxfEllipse *ellipse
+);
 char *
 dxf_ellipse_get_dictionary_owner_soft
 (
