@@ -359,6 +359,12 @@ dxf_ellipse_get_graphics_data_size
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_graphics_data_size
+(
+        DxfEllipse *ellipse,
+        int graphics_data_size
+);
 char *
 dxf_ellipse_get_dictionary_owner_soft
 (

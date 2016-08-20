@@ -1524,6 +1524,55 @@ dxf_ellipse_get_graphics_data_size
 
 
 /*!
+ * \brief Set the \c graphics_data_size value for a DXF \c ELLIPSE
+ * entity.
+ *
+ * \return a pointer to \c ellipse when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfEllipse *
+dxf_ellipse_set_graphics_data_size
+(
+        DxfEllipse *ellipse,
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
+        int graphics_data_size
+                /*!< the \c graphics_data_size value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative graphics_data_size value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero graphics_data_size value was passed.\n")),
+                  __FUNCTION__);
+        }
+        ellipse->graphics_data_size = graphics_data_size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c ELLIPSE entity.
  *
