@@ -1,7 +1,7 @@
 /*!
  * \file ellipse.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF ellipse entity (\c ELLIPSE).
  *
@@ -108,6 +108,14 @@ dxf_ellipse_init
         ellipse->id_code = 0;
         ellipse->linetype = strdup (DXF_DEFAULT_LINETYPE);
         ellipse->layer = strdup (DXF_DEFAULT_LAYER);
+        ellipse->elevation = 0.0;
+        ellipse->thickness = 0.0;
+        ellipse->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
+        ellipse->visibility = DXF_DEFAULT_VISIBILITY;
+        ellipse->color = DXF_COLOR_BYLAYER;
+        ellipse->paperspace = DXF_MODELSPACE;
+        ellipse->dictionary_owner_soft = strdup ("");
+        ellipse->dictionary_owner_hard = strdup ("");
         ellipse->x0 = 0.0;
         ellipse->y0 = 0.0;
         ellipse->z0 = 0.0;
@@ -117,17 +125,9 @@ dxf_ellipse_init
         ellipse->extr_x0 = 0.0;
         ellipse->extr_y0 = 0.0;
         ellipse->extr_z0 = 0.0;
-        ellipse->elevation = 0.0;
-        ellipse->thickness = 0.0;
-        ellipse->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
-        ellipse->visibility = DXF_DEFAULT_VISIBILITY;
         ellipse->ratio = 0.0;
         ellipse->start_angle = 0.0;
         ellipse->end_angle = 0.0;
-        ellipse->color = DXF_COLOR_BYLAYER;
-        ellipse->paperspace = DXF_MODELSPACE;
-        ellipse->dictionary_owner_soft = strdup ("");
-        ellipse->dictionary_owner_hard = strdup ("");
         ellipse->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
