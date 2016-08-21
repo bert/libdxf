@@ -381,6 +381,12 @@ dxf_ellipse_get_binary_graphics_data
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_binary_graphics_data
+(
+        DxfEllipse *ellipse,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_ellipse_get_dictionary_owner_soft
 (
