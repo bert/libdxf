@@ -376,6 +376,11 @@ dxf_ellipse_set_shadow_mode
         DxfEllipse *ellipse,
         int16_t shadow_mode
 );
+DxfBinaryGraphicsData *
+dxf_ellipse_get_binary_graphics_data
+(
+        DxfEllipse *ellipse
+);
 char *
 dxf_ellipse_get_dictionary_owner_soft
 (
