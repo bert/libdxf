@@ -403,6 +403,12 @@ dxf_ellipse_get_material
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_material
+(
+        DxfEllipse *ellipse,
+        char *material
+);
 char *
 dxf_ellipse_get_dictionary_owner_hard
 (
