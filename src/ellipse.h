@@ -420,6 +420,11 @@ dxf_ellipse_set_dictionary_owner_hard
         DxfEllipse *ellipse,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_ellipse_get_lineweight
+(
+        DxfEllipse *ellipse
+);
 DxfPoint *
 dxf_ellipse_get_center_point
 (
