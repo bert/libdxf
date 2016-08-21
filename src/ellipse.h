@@ -399,6 +399,11 @@ dxf_ellipse_set_dictionary_owner_soft
         char *dictionary_owner_soft
 );
 char *
+dxf_ellipse_get_material
+(
+        DxfEllipse *ellipse
+);
+char *
 dxf_ellipse_get_dictionary_owner_hard
 (
         DxfEllipse *ellipse
