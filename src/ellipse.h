@@ -370,6 +370,12 @@ dxf_ellipse_get_shadow_mode
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_shadow_mode
+(
+        DxfEllipse *ellipse,
+        int16_t shadow_mode
+);
 char *
 dxf_ellipse_get_dictionary_owner_soft
 (

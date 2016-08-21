@@ -1618,6 +1618,54 @@ dxf_ellipse_get_shadow_mode
 
 
 /*!
+ * \brief Set the \c shadow_mode for a DXF \c ELLIPSE entity.
+ *
+ * \return a pointer to \c ellipse when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfEllipse *
+dxf_ellipse_set_shadow_mode
+(
+        DxfEllipse *ellipse,
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
+        int16_t shadow_mode
+                /*!< the shadow mode to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative shadow_mode value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range shadow_mode value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ellipse->shadow_mode = shadow_mode;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c ELLIPSE entity.
  *
