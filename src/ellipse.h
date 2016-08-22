@@ -436,6 +436,12 @@ dxf_ellipse_get_plot_style_name
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_plot_style_name
+(
+        DxfEllipse *ellipse,
+        char *plot_style_name
+);
 DxfPoint *
 dxf_ellipse_get_center_point
 (
