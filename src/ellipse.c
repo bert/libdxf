@@ -2049,6 +2049,40 @@ dxf_ellipse_get_lineweight
 
 
 /*!
+ * \brief Set the \c lineweight for a DXF \c ELLIPSE entity.
+ *
+ * \return a pointer to \c ellipse when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfEllipse *
+dxf_ellipse_set_lineweight
+(
+        DxfEllipse *ellipse,
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ellipse->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse);
+}
+
+
+/*!
  * \brief Get the center point of a DXF \c ELLIPSE entity.
  *
  * \return the center point.

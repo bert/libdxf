@@ -425,6 +425,12 @@ dxf_ellipse_get_lineweight
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_lineweight
+(
+        DxfEllipse *ellipse,
+        int16_t lineweight
+);
 DxfPoint *
 dxf_ellipse_get_center_point
 (
