@@ -2228,6 +2228,44 @@ dxf_ellipse_set_color_value
 
 
 /*!
+ * \brief Get the \c color_name from a DXF \c ELLIPSE entity.
+ *
+ * \return \c color_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_ellipse_get_color_name
+(
+        DxfEllipse *ellipse
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ellipse->color_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (ellipse->color_name));
+}
+
+
+/*!
  * \brief Get the center point of a DXF \c ELLIPSE entity.
  *
  * \return the center point.
