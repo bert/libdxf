@@ -447,6 +447,12 @@ dxf_ellipse_get_color_value
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_color_value
+(
+        DxfEllipse *ellipse,
+        long color_value
+);
 DxfPoint *
 dxf_ellipse_get_center_point
 (
