@@ -38,6 +38,7 @@
 
 #include "global.h"
 #include "point.h"
+#include "binary_graphics_data.h"
 
 
 /*!
