@@ -464,6 +464,11 @@ dxf_ellipse_set_color_name
         DxfEllipse *ellipse,
         char *color_name
 );
+long
+dxf_ellipse_get_transparency
+(
+        DxfEllipse *ellipse
+);
 DxfPoint *
 dxf_ellipse_get_center_point
 (
