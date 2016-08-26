@@ -504,6 +504,11 @@ dxf_ellipse_set_x0
         DxfEllipse *ellipse,
         double x0
 );
+double
+dxf_ellipse_get_y0
+(
+        DxfEllipse *ellipse
+);
 DxfPoint *
 dxf_ellipse_get_end_point
 (
