@@ -5,6 +5,12 @@
  *
  * \brief Functions for a DXF ellipse entity (\c ELLIPSE).
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -620,12 +626,6 @@ dxf_ellipse_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c ELLIPSE
  * entities and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_ellipse_free_chain
@@ -659,12 +659,6 @@ dxf_ellipse_free_chain
  * \brief Get the ID code from a DXF \c ELLIPSE entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_ellipse_get_id_code
@@ -703,12 +697,6 @@ dxf_ellipse_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_id_code
@@ -751,12 +739,6 @@ dxf_ellipse_set_id_code
  * \brief Get the linetype from a DXF \c ELLIPSE entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_ellipse_get_linetype
@@ -795,12 +777,6 @@ dxf_ellipse_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_linetype
@@ -841,12 +817,6 @@ dxf_ellipse_set_linetype
  * \brief Get the layer from a DXF \c ELLIPSE entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_ellipse_get_layer
@@ -885,12 +855,6 @@ dxf_ellipse_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_layer
@@ -931,12 +895,6 @@ dxf_ellipse_set_layer
  * \brief Get the elevation from a DXF \c ELLIPSE entity.
  *
  * \return elevation.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_ellipse_get_elevation
@@ -968,12 +926,6 @@ dxf_ellipse_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_elevation
@@ -1007,12 +959,6 @@ dxf_ellipse_set_elevation
  * \brief Get the thickness from a DXF \c ELLIPSE entity.
  *
  * \return thickness.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_ellipse_get_thickness
@@ -1051,12 +997,6 @@ dxf_ellipse_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_thickness
@@ -1097,12 +1037,6 @@ dxf_ellipse_set_thickness
  * \brief Get the linetype scale from a DXF \c ELLIPSE entity.
  *
  * \return linetype scale.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_ellipse_get_linetype_scale
@@ -1141,12 +1075,6 @@ dxf_ellipse_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_linetype_scale
@@ -1187,12 +1115,6 @@ dxf_ellipse_set_linetype_scale
  * \brief Get the visibility from a DXF \c ELLIPSE entity.
  *
  * \return visibility.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int16_t
 dxf_ellipse_get_visibility
@@ -1238,12 +1160,6 @@ dxf_ellipse_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_visibility
@@ -1291,12 +1207,6 @@ dxf_ellipse_set_visibility
  * \brief Get the color from a DXF \c ELLIPSE entity.
  *
  * \return color.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_ellipse_get_color
@@ -1334,12 +1244,6 @@ dxf_ellipse_get_color
 
 /*!
  * \brief Set the color for a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_color
@@ -1381,12 +1285,6 @@ dxf_ellipse_set_color
  * \brief Get the paperspace flag value from a DXF \c ELLIPSE entity.
  *
  * \return paperspace flag value.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_ellipse_get_paperspace
@@ -1430,12 +1328,6 @@ dxf_ellipse_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_paperspace
@@ -1752,12 +1644,6 @@ dxf_ellipse_set_binary_graphics_data
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_ellipse_get_dictionary_owner_soft
@@ -1797,12 +1683,6 @@ dxf_ellipse_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_dictionary_owner_soft
@@ -1929,12 +1809,6 @@ dxf_ellipse_set_material
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_ellipse_get_dictionary_owner_hard
@@ -1974,12 +1848,6 @@ dxf_ellipse_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_dictionary_owner_hard
@@ -2376,12 +2244,6 @@ dxf_ellipse_set_transparency
  * \brief Get the center point \c p0 of a DXF \c ELLIPSE entity.
  *
  * \return the center point \c p0.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_ellipse_get_p0
@@ -2419,12 +2281,6 @@ dxf_ellipse_get_p0
  * \brief Set the center point of a DXF \c ELLIPSE entity.
  *
  * \return a pointer to a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_center_point
@@ -2468,12 +2324,6 @@ dxf_ellipse_set_center_point
  * a DXF \c ELLIPSE entity.
  *
  * \return the end point.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_ellipse_get_end_point
@@ -2573,12 +2423,6 @@ dxf_ellipse_get_end_point
  * a DXF \c ELLIPSE entity.
  *
  * \return a pointer to a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_end_point
@@ -2622,12 +2466,6 @@ dxf_ellipse_set_end_point
  * \c ELLIPSE entity.
  *
  * \return ratio.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_ellipse_get_ratio
@@ -2674,12 +2512,6 @@ dxf_ellipse_get_ratio
 /*!
  * \brief Set the ratio of minor axis to major axis for a DXF \c ELLIPSE
  * entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_radius
@@ -2727,12 +2559,6 @@ dxf_ellipse_set_radius
  * \brief Get the start angle from a DXF \c ELLIPSE entity.
  *
  * \return start angle.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_ellipse_get_start_angle
@@ -2764,12 +2590,6 @@ dxf_ellipse_get_start_angle
 
 /*!
  * \brief Set the start angle for a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_start_angle
@@ -2803,12 +2623,6 @@ dxf_ellipse_set_start_angle
  * \brief Get the end angle from a DXF \c ELLIPSE entity.
  *
  * \return end angle.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_ellipse_get_end_angle
@@ -2840,12 +2654,6 @@ dxf_ellipse_get_end_angle
 
 /*!
  * \brief Set the end angle for a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_end_angle
@@ -2882,12 +2690,6 @@ dxf_ellipse_set_end_angle
  * \return a DXF \c POINT containing the extrusion coordinates.
  *
  * \warning No other members are copied into the DXF \c POINT.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_ellipse_get_extrusion_vector_as_point
@@ -2929,12 +2731,6 @@ dxf_ellipse_get_extrusion_vector_as_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c ELLIPSE entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_extrusion_vector
@@ -2977,12 +2773,6 @@ dxf_ellipse_set_extrusion_vector
  * \return pointer to the next \c ELLIPSE entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_get_next
@@ -3022,12 +2812,6 @@ dxf_ellipse_get_next
 /*!
  * \brief Set the pointer to the next \c ELLIPSE for a DXF \c ELLIPSE
  * entity.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfEllipse *
 dxf_ellipse_set_next
