@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-12 22:15+0200\n"
+"POT-Creation-Date: 2016-08-26 22:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/3dface.c:67 src/3dface.c:110 src/3dface.c:4006
+#: src/3dface.c:67 src/3dface.c:110 src/3dface.c:4005
 #, c-format
 msgid "Error in %s () could not allocate memory for a Dxf3dface struct.\n"
 msgstr ""
@@ -25,50 +25,49 @@ msgstr ""
 #: src/3dface.c:103 src/3dface.c:185 src/3dface.c:749 src/3dline.c:106
 #: src/3dline.c:188 src/3dline.c:738 src/3dsolid.c:109 src/3dsolid.c:197
 #: src/3dsolid.c:733 src/acad_proxy_entity.c:118 src/acad_proxy_entity.c:216
-#: src/acad_proxy_entity.c:767 src/appid.c:121 src/appid.c:190 src/appid.c:441
-#: src/arc.c:103 src/arc.c:180 src/arc.c:658 src/attdef.c:105 src/attdef.c:200
-#: src/attdef.c:818 src/attrib.c:106 src/attrib.c:202 src/attrib.c:829
+#: src/acad_proxy_entity.c:767 src/appid.c:115 src/appid.c:178 src/appid.c:411
+#: src/arc.c:103 src/arc.c:180 src/arc.c:658 src/attdef.c:99 src/attdef.c:188
+#: src/attdef.c:788 src/attrib.c:100 src/attrib.c:190 src/attrib.c:799
 #: src/binary_entity_data.c:94 src/binary_entity_data.c:211
 #: src/binary_graphics_data.c:94 src/binary_graphics_data.c:211
-#: src/block.c:107 src/block.c:188 src/block.c:629 src/block_record.c:109
-#: src/block_record.c:178 src/block_record.c:428 src/body.c:110 src/body.c:193
-#: src/body.c:603 src/circle.c:106 src/circle.c:187 src/circle.c:609
+#: src/block.c:101 src/block.c:176 src/block.c:599 src/block_record.c:103
+#: src/block_record.c:166 src/block_record.c:401 src/body.c:102 src/body.c:183
+#: src/body.c:583 src/circle.c:100 src/circle.c:182 src/circle.c:586
 #: src/class.c:96 src/class.c:160 src/class.c:472 src/color.c:2232
-#: src/color.c:2276 src/comment.c:92 src/comment.c:209 src/comment.c:338
-#: src/comment.c:379 src/dictionary.c:108 src/dictionary.c:181
-#: src/dictionary.c:445 src/dictionaryvar.c:108 src/dictionaryvar.c:181
-#: src/dictionaryvar.c:448 src/dimension.c:112 src/dimension.c:223
-#: src/dimension.c:993 src/dimstyle.c:110 src/dimstyle.c:404
-#: src/dimstyle.c:972 src/donut.c:103 src/donut.c:367 src/drawing.c:98
-#: src/ellipse.c:97 src/ellipse.c:177 src/ellipse.c:643 src/endblk.c:108
-#: src/endblk.c:178 src/group.c:108 src/group.c:183 src/group.c:471
-#: src/hatch.c:100 src/hatch.c:411 src/hatch.c:2895 src/hatch.c:2981
-#: src/hatch.c:3529 src/hatch.c:3603 src/hatch.c:3824 src/hatch.c:3995
-#: src/hatch.c:4712 src/hatch.c:4839 src/hatch.c:5203 src/hatch.c:5372
-#: src/hatch.c:5754 src/hatch.c:5908 src/hatch.c:6604 src/hatch.c:6734
-#: src/hatch.c:7348 src/hatch.c:7437 src/hatch.c:8029 src/hatch.c:8116
-#: src/hatch.c:8875 src/hatch.c:8964 src/hatch.c:9989 src/hatch.c:10074
-#: src/hatch.c:10786 src/hatch.c:10878 src/hatch.c:12988 src/hatch.c:13072
-#: src/header.c:201 src/header.c:1887 src/helix.c:99 src/helix.c:188
-#: src/helix.c:771 src/idbuffer.c:102 src/idbuffer.c:171 src/idbuffer.c:412
-#: src/idbuffer.c:814 src/idbuffer.c:888 src/image.c:107 src/image.c:205
-#: src/image.c:744 src/imagedef.c:110 src/imagedef.c:196 src/imagedef.c:537
-#: src/imagedef_reactor.c:108 src/imagedef_reactor.c:184
-#: src/imagedef_reactor.c:449 src/insert.c:109 src/insert.c:199
-#: src/insert.c:772 src/layer.c:101 src/layer.c:169 src/layer.c:484
-#: src/layer_index.c:110 src/layer_index.c:192 src/layer_index.c:487
-#: src/leader.c:113 src/leader.c:223 src/leader.c:813 src/line.c:109
-#: src/line.c:192 src/line.c:636 src/ltype.c:108 src/ltype.c:192
-#: src/ltype.c:650 src/lwpolyline.c:110 src/lwpolyline.c:192
+#: src/color.c:2276 src/comment.c:98 src/comment.c:209 src/comment.c:320
+#: src/comment.c:355 src/dictionary.c:102 src/dictionary.c:169
+#: src/dictionary.c:415 src/dictionaryvar.c:102 src/dictionaryvar.c:169
+#: src/dictionaryvar.c:418 src/dimension.c:105 src/dimension.c:210
+#: src/dimstyle.c:104 src/dimstyle.c:386 src/dimstyle.c:942 src/donut.c:103
+#: src/donut.c:376 src/drawing.c:98 src/ellipse.c:103 src/ellipse.c:183
+#: src/ellipse.c:643 src/endblk.c:108 src/endblk.c:178 src/group.c:108
+#: src/group.c:183 src/group.c:471 src/hatch.c:100 src/hatch.c:411
+#: src/hatch.c:2895 src/hatch.c:2981 src/hatch.c:3529 src/hatch.c:3603
+#: src/hatch.c:3824 src/hatch.c:3995 src/hatch.c:4712 src/hatch.c:4839
+#: src/hatch.c:5203 src/hatch.c:5372 src/hatch.c:5754 src/hatch.c:5908
+#: src/hatch.c:6604 src/hatch.c:6734 src/hatch.c:7348 src/hatch.c:7437
+#: src/hatch.c:8029 src/hatch.c:8116 src/hatch.c:8875 src/hatch.c:8964
+#: src/hatch.c:9989 src/hatch.c:10074 src/hatch.c:10786 src/hatch.c:10878
+#: src/hatch.c:12988 src/hatch.c:13072 src/header.c:201 src/header.c:1887
+#: src/helix.c:99 src/helix.c:188 src/helix.c:771 src/idbuffer.c:102
+#: src/idbuffer.c:171 src/idbuffer.c:412 src/idbuffer.c:814 src/idbuffer.c:888
+#: src/image.c:107 src/image.c:205 src/image.c:744 src/imagedef.c:110
+#: src/imagedef.c:196 src/imagedef.c:537 src/imagedef_reactor.c:108
+#: src/imagedef_reactor.c:184 src/imagedef_reactor.c:449 src/insert.c:109
+#: src/insert.c:199 src/insert.c:772 src/layer.c:101 src/layer.c:169
+#: src/layer.c:484 src/layer_index.c:110 src/layer_index.c:192
+#: src/layer_index.c:487 src/leader.c:113 src/leader.c:223 src/leader.c:813
+#: src/line.c:109 src/line.c:192 src/line.c:636 src/ltype.c:108
+#: src/ltype.c:192 src/ltype.c:650 src/lwpolyline.c:110 src/lwpolyline.c:192
 #: src/lwpolyline.c:669 src/mline.c:112 src/mline.c:219 src/mline.c:858
 #: src/mlinestyle.c:113 src/mlinestyle.c:199 src/mlinestyle.c:549
 #: src/mtext.c:107 src/mtext.c:214 src/mtext.c:786 src/object.c:96
-#: src/object.c:197 src/object_ptr.c:110 src/object_ptr.c:187
-#: src/object_ptr.c:428 src/ole2frame.c:108 src/ole2frame.c:199
-#: src/ole2frame.c:683 src/oleframe.c:102 src/oleframe.c:180
-#: src/oleframe.c:585 src/point.c:114 src/point.c:190 src/point.c:589
-#: src/polyline.c:105 src/polyline.c:196 src/polyline.c:712
-#: src/proprietary_data.c:94 src/proprietary_data.c:168
+#: src/object.c:197 src/object_id.c:94 src/object_id.c:166
+#: src/object_ptr.c:110 src/object_ptr.c:187 src/object_ptr.c:428
+#: src/ole2frame.c:108 src/ole2frame.c:199 src/ole2frame.c:683
+#: src/oleframe.c:102 src/oleframe.c:180 src/oleframe.c:585 src/point.c:114
+#: src/point.c:190 src/point.c:589 src/polyline.c:105 src/polyline.c:196
+#: src/polyline.c:712 src/proprietary_data.c:94 src/proprietary_data.c:168
 #: src/rastervariables.c:108 src/rastervariables.c:185
 #: src/rastervariables.c:457 src/ray.c:110 src/ray.c:191 src/ray.c:611
 #: src/region.c:108 src/region.c:194 src/region.c:600 src/seqend.c:109
@@ -94,17 +93,17 @@ msgstr ""
 
 #: src/3dface.c:176 src/3dface.c:512 src/3dline.c:179 src/3dline.c:491
 #: src/3dsolid.c:182 src/3dsolid.c:487 src/acad_proxy_entity.c:201
-#: src/acad_proxy_entity.c:504 src/appid.c:181 src/appid.c:295 src/arc.c:171
-#: src/arc.c:410 src/attdef.c:191 src/attdef.c:530 src/attrib.c:193
-#: src/attrib.c:525 src/binary_entity_data.c:136
-#: src/binary_graphics_data.c:136 src/block.c:179 src/block.c:386
-#: src/block.c:547 src/block_record.c:169 src/block_record.c:280
-#: src/body.c:184 src/body.c:393 src/circle.c:178 src/circle.c:407
-#: src/class.c:151 src/class.c:303 src/class.c:398 src/comment.c:138
-#: src/dictionary.c:166 src/dictionary.c:302 src/dictionaryvar.c:166
-#: src/dictionaryvar.c:302 src/dimension.c:214 src/dimension.c:683
-#: src/dimstyle.c:201 src/dimstyle.c:395 src/donut.c:174 src/ellipse.c:168
-#: src/ellipse.c:438 src/endblk.c:169 src/endblk.c:268 src/endsec.c:65
+#: src/acad_proxy_entity.c:504 src/appid.c:169 src/appid.c:277 src/arc.c:171
+#: src/arc.c:410 src/attdef.c:179 src/attdef.c:512 src/attrib.c:181
+#: src/attrib.c:507 src/binary_entity_data.c:136
+#: src/binary_graphics_data.c:136 src/block.c:167 src/block.c:368
+#: src/block.c:529 src/block_record.c:157 src/block_record.c:265
+#: src/body.c:174 src/body.c:384 src/circle.c:173 src/circle.c:396
+#: src/class.c:151 src/class.c:303 src/class.c:398 src/comment.c:144
+#: src/dictionary.c:154 src/dictionary.c:284 src/dictionaryvar.c:154
+#: src/dictionaryvar.c:284 src/dimension.c:201 src/dimension.c:661
+#: src/dimstyle.c:189 src/dimstyle.c:377 src/donut.c:183 src/ellipse.c:174
+#: src/ellipse.c:444 src/endblk.c:169 src/endblk.c:268 src/endsec.c:65
 #: src/endtab.c:65 src/file.c:70 src/file.c:152 src/file.c:189 src/group.c:168
 #: src/group.c:317 src/hatch.c:176 src/header.c:135 src/header.c:721
 #: src/header.c:933 src/header.c:1241 src/header.c:1306 src/header.c:1380
@@ -138,11 +137,11 @@ msgid "Error in %s () a NULL file pointer was passed.\n"
 msgstr ""
 
 #: src/3dface.c:197 src/3dline.c:200 src/3dsolid.c:212
-#: src/acad_proxy_entity.c:230 src/appid.c:202 src/arc.c:192 src/attdef.c:212
-#: src/attrib.c:214 src/block.c:199 src/block_record.c:190 src/body.c:213
-#: src/circle.c:199 src/class.c:172 src/dictionary.c:193
-#: src/dictionaryvar.c:193 src/dimension.c:235 src/dimstyle.c:416
-#: src/ellipse.c:189 src/endblk.c:189 src/group.c:195 src/helix.c:201
+#: src/acad_proxy_entity.c:230 src/appid.c:190 src/arc.c:192 src/attdef.c:200
+#: src/attrib.c:202 src/block.c:187 src/block_record.c:178 src/body.c:202
+#: src/circle.c:194 src/class.c:172 src/dictionary.c:181
+#: src/dictionaryvar.c:181 src/dimension.c:222 src/dimstyle.c:398
+#: src/ellipse.c:195 src/endblk.c:189 src/group.c:195 src/helix.c:201
 #: src/idbuffer.c:185 src/image.c:219 src/imagedef.c:209
 #: src/imagedef_reactor.c:197 src/insert.c:211 src/layer.c:181
 #: src/layer_index.c:207 src/leader.c:236 src/line.c:204 src/ltype.c:205
@@ -170,10 +169,10 @@ msgid "Error in %s () while reading from: %s in line: %d.\n"
 msgstr ""
 
 #: src/3dface.c:374 src/3dline.c:328 src/3dsolid.c:326 src/3dsolid.c:339
-#: src/acad_proxy_entity.c:370 src/arc.c:315 src/attdef.c:432 src/attrib.c:427
-#: src/block.c:283 src/circle.c:309 src/dictionary.c:224
-#: src/dictionaryvar.c:224 src/dimension.c:580 src/dimstyle.c:633
-#: src/ellipse.c:340 src/group.c:233 src/helix.c:382 src/idbuffer.c:209
+#: src/acad_proxy_entity.c:370 src/arc.c:315 src/attdef.c:420 src/attrib.c:415
+#: src/block.c:271 src/circle.c:304 src/dictionary.c:212
+#: src/dictionaryvar.c:212 src/dimension.c:565 src/dimstyle.c:615
+#: src/ellipse.c:346 src/group.c:233 src/helix.c:382 src/idbuffer.c:209
 #: src/image.c:422 src/imagedef.c:276 src/imagedef_reactor.c:228
 #: src/insert.c:389 src/layer.c:227 src/layer_index.c:255 src/leader.c:416
 #: src/line.c:328 src/mline.c:494 src/mlinestyle.c:310 src/mtext.c:457
@@ -187,8 +186,8 @@ msgstr ""
 msgid "Warning in %s () found a bad subclass marker in: %s in line: %d.\n"
 msgstr ""
 
-#: src/3dface.c:461 src/3dsolid.c:433 src/dictionary.c:254
-#: src/dictionaryvar.c:254 src/group.c:269 src/idbuffer.c:244
+#: src/3dface.c:461 src/3dsolid.c:433 src/dictionary.c:242
+#: src/dictionaryvar.c:242 src/group.c:269 src/idbuffer.c:244
 #: src/imagedef.c:334 src/imagedef_reactor.c:262 src/layer_index.c:291
 #: src/leader.c:540 src/mlinestyle.c:333 src/object_ptr.c:233
 #: src/rastervariables.c:274 src/sortentstable.c:285 src/spatial_filter.c:401
@@ -198,10 +197,10 @@ msgid "DXF comment: %s\n"
 msgstr ""
 
 #: src/3dface.c:466 src/3dline.c:441 src/3dsolid.c:438
-#: src/acad_proxy_entity.c:466 src/appid.c:254 src/arc.c:364 src/attdef.c:481
-#: src/attrib.c:476 src/block.c:320 src/block_record.c:242 src/body.c:331
-#: src/circle.c:358 src/class.c:243 src/dictionary.c:259
-#: src/dictionaryvar.c:259 src/dimension.c:629 src/ellipse.c:389
+#: src/acad_proxy_entity.c:466 src/appid.c:242 src/arc.c:364 src/attdef.c:469
+#: src/attrib.c:464 src/block.c:308 src/block_record.c:230 src/body.c:326
+#: src/circle.c:353 src/class.c:243 src/dictionary.c:247
+#: src/dictionaryvar.c:247 src/dimension.c:614 src/ellipse.c:395
 #: src/endblk.c:222 src/group.c:274 src/helix.c:488 src/idbuffer.c:249
 #: src/image.c:485 src/imagedef.c:339 src/imagedef_reactor.c:267
 #: src/insert.c:438 src/layer.c:282 src/layer_index.c:296 src/leader.c:545
@@ -232,25 +231,25 @@ msgstr ""
 #: src/3dface.c:1972 src/3dface.c:1979 src/3dface.c:2011 src/3dface.c:2044
 #: src/3dface.c:2076 src/3dface.c:2117 src/3dface.c:2124 src/3dface.c:2156
 #: src/3dface.c:2189 src/3dface.c:2221 src/3dface.c:2262 src/3dface.c:2269
-#: src/3dface.c:2301 src/3dface.c:2334 src/3dface.c:2366 src/3dface.c:2373
-#: src/3dface.c:2406 src/3dface.c:2413 src/3dface.c:2446 src/3dface.c:2453
-#: src/3dface.c:2488 src/3dface.c:2495 src/3dface.c:2528 src/3dface.c:2535
-#: src/3dface.c:2570 src/3dface.c:2577 src/3dface.c:2610 src/3dface.c:2617
-#: src/3dface.c:2652 src/3dface.c:2659 src/3dface.c:2690 src/3dface.c:2697
-#: src/3dface.c:2730 src/3dface.c:2737 src/3dface.c:2770 src/3dface.c:2777
-#: src/3dface.c:2812 src/3dface.c:2819 src/3dface.c:2852 src/3dface.c:2859
-#: src/3dface.c:2894 src/3dface.c:2901 src/3dface.c:2934 src/3dface.c:2941
-#: src/3dface.c:2976 src/3dface.c:2983 src/3dface.c:3014 src/3dface.c:3021
-#: src/3dface.c:3054 src/3dface.c:3061 src/3dface.c:3094 src/3dface.c:3101
-#: src/3dface.c:3136 src/3dface.c:3143 src/3dface.c:3176 src/3dface.c:3183
-#: src/3dface.c:3218 src/3dface.c:3225 src/3dface.c:3258 src/3dface.c:3265
-#: src/3dface.c:3300 src/3dface.c:3307 src/3dface.c:3338 src/3dface.c:3345
-#: src/3dface.c:3378 src/3dface.c:3385 src/3dface.c:3418 src/3dface.c:3425
-#: src/3dface.c:3460 src/3dface.c:3467 src/3dface.c:3500 src/3dface.c:3507
-#: src/3dface.c:3542 src/3dface.c:3549 src/3dface.c:3582 src/3dface.c:3589
-#: src/3dface.c:3624 src/3dface.c:3631 src/3dface.c:3662 src/3dface.c:3709
-#: src/3dface.c:3750 src/3dface.c:3791 src/3dface.c:3798 src/3dface.c:3830
-#: src/3dface.c:3861 src/3dface.c:3892 src/3dface.c:3923 src/3dline.c:500
+#: src/3dface.c:2301 src/3dface.c:2334 src/3dface.c:2365 src/3dface.c:2372
+#: src/3dface.c:2405 src/3dface.c:2412 src/3dface.c:2445 src/3dface.c:2452
+#: src/3dface.c:2487 src/3dface.c:2494 src/3dface.c:2527 src/3dface.c:2534
+#: src/3dface.c:2569 src/3dface.c:2576 src/3dface.c:2609 src/3dface.c:2616
+#: src/3dface.c:2651 src/3dface.c:2658 src/3dface.c:2689 src/3dface.c:2696
+#: src/3dface.c:2729 src/3dface.c:2736 src/3dface.c:2769 src/3dface.c:2776
+#: src/3dface.c:2811 src/3dface.c:2818 src/3dface.c:2851 src/3dface.c:2858
+#: src/3dface.c:2893 src/3dface.c:2900 src/3dface.c:2933 src/3dface.c:2940
+#: src/3dface.c:2975 src/3dface.c:2982 src/3dface.c:3013 src/3dface.c:3020
+#: src/3dface.c:3053 src/3dface.c:3060 src/3dface.c:3093 src/3dface.c:3100
+#: src/3dface.c:3135 src/3dface.c:3142 src/3dface.c:3175 src/3dface.c:3182
+#: src/3dface.c:3217 src/3dface.c:3224 src/3dface.c:3257 src/3dface.c:3264
+#: src/3dface.c:3299 src/3dface.c:3306 src/3dface.c:3337 src/3dface.c:3344
+#: src/3dface.c:3377 src/3dface.c:3384 src/3dface.c:3417 src/3dface.c:3424
+#: src/3dface.c:3459 src/3dface.c:3466 src/3dface.c:3499 src/3dface.c:3506
+#: src/3dface.c:3541 src/3dface.c:3548 src/3dface.c:3581 src/3dface.c:3588
+#: src/3dface.c:3623 src/3dface.c:3630 src/3dface.c:3661 src/3dface.c:3708
+#: src/3dface.c:3749 src/3dface.c:3790 src/3dface.c:3797 src/3dface.c:3829
+#: src/3dface.c:3860 src/3dface.c:3891 src/3dface.c:3922 src/3dline.c:500
 #: src/3dline.c:772 src/3dline.c:811 src/3dline.c:849 src/3dline.c:886
 #: src/3dline.c:893 src/3dline.c:924 src/3dline.c:961 src/3dline.c:968
 #: src/3dline.c:999 src/3dline.c:1029 src/3dline.c:1060 src/3dline.c:1097
@@ -288,133 +287,150 @@ msgstr ""
 #: src/3dsolid.c:2113 src/3dsolid.c:2146 src/3dsolid.c:2178 src/3dsolid.c:2219
 #: src/3dsolid.c:2226 src/3dsolid.c:2258 src/3dsolid.c:2291 src/3dsolid.c:2325
 #: src/3dsolid.c:2362 src/3dsolid.c:2369 src/3dsolid.c:2403 src/3dsolid.c:2441
-#: src/3dsolid.c:2448 src/3dsolid.c:2482 src/3dsolid.c:2527 src/3dsolid.c:2574
-#: src/3dsolid.c:2611 src/3dsolid.c:2618 src/3dsolid.c:2652 src/3dsolid.c:2690
-#: src/3dsolid.c:2697 src/acad_proxy_entity.c:513 src/acad_proxy_entity.c:803
-#: src/acad_proxy_entity.c:843 src/acad_proxy_entity.c:883
-#: src/acad_proxy_entity.c:921 src/acad_proxy_entity.c:928
-#: src/acad_proxy_entity.c:961 src/acad_proxy_entity.c:999
-#: src/acad_proxy_entity.c:1006 src/acad_proxy_entity.c:1037
-#: src/acad_proxy_entity.c:1070 src/acad_proxy_entity.c:1101
-#: src/acad_proxy_entity.c:1140 src/acad_proxy_entity.c:1179
-#: src/acad_proxy_entity.c:1217 src/acad_proxy_entity.c:1257
-#: src/acad_proxy_entity.c:1302 src/acad_proxy_entity.c:1349
-#: src/acad_proxy_entity.c:1386 src/acad_proxy_entity.c:1428
-#: src/acad_proxy_entity.c:1471 src/acad_proxy_entity.c:1517
-#: src/acad_proxy_entity.c:1564 src/acad_proxy_entity.c:1614
-#: src/acad_proxy_entity.c:1654 src/acad_proxy_entity.c:1661
-#: src/acad_proxy_entity.c:1695 src/acad_proxy_entity.c:1737
-#: src/acad_proxy_entity.c:1744 src/acad_proxy_entity.c:1780
-#: src/acad_proxy_entity.c:1820 src/acad_proxy_entity.c:1827
-#: src/acad_proxy_entity.c:1859 src/acad_proxy_entity.c:1892
-#: src/acad_proxy_entity.c:1925 src/acad_proxy_entity.c:1966
-#: src/acad_proxy_entity.c:1973 src/acad_proxy_entity.c:2005
-#: src/acad_proxy_entity.c:2038 src/acad_proxy_entity.c:2070
-#: src/acad_proxy_entity.c:2111 src/acad_proxy_entity.c:2118
-#: src/acad_proxy_entity.c:2150 src/acad_proxy_entity.c:2183
-#: src/acad_proxy_entity.c:2215 src/acad_proxy_entity.c:2258
-#: src/acad_proxy_entity.c:2304 src/acad_proxy_entity.c:2342
-#: src/acad_proxy_entity.c:2381 src/acad_proxy_entity.c:2419
-#: src/acad_proxy_entity.c:2458 src/acad_proxy_entity.c:2497
-#: src/acad_proxy_entity.c:2536 src/acad_proxy_entity.c:2575
-#: src/acad_proxy_entity.c:2614 src/acad_proxy_entity.c:2653
-#: src/acad_proxy_entity.c:2687 src/acad_proxy_entity.c:2726
-#: src/acad_proxy_entity.c:2733 src/acad_proxy_entity.c:2767
-#: src/acad_proxy_entity.c:2806 src/acad_proxy_entity.c:2813
-#: src/acad_proxy_entity.c:2847 src/acad_proxy_entity.c:2885
-#: src/acad_proxy_entity.c:2892 src/appid.c:304 src/appid.c:483
-#: src/appid.c:522 src/appid.c:562 src/appid.c:609 src/appid.c:655
-#: src/appid.c:692 src/appid.c:733 src/appid.c:773 src/appid.c:815
-#: src/appid.c:857 src/appid.c:899 src/appid.c:945 src/appid.c:952
-#: src/appid.c:994 src/appid.c:1040 src/appid.c:1047 src/appid.c:1089
-#: src/appid.c:1134 src/appid.c:1141 src/arc.c:419 src/arc.c:694 src/arc.c:734
-#: src/arc.c:774 src/arc.c:812 src/arc.c:819 src/arc.c:852 src/arc.c:890
-#: src/arc.c:897 src/arc.c:930 src/arc.c:961 src/arc.c:994 src/arc.c:1032
-#: src/arc.c:1072 src/arc.c:1110 src/arc.c:1150 src/arc.c:1195 src/arc.c:1242
-#: src/arc.c:1279 src/arc.c:1320 src/arc.c:1363 src/arc.c:1413 src/arc.c:1453
-#: src/arc.c:1460 src/arc.c:1496 src/arc.c:1536 src/arc.c:1543 src/arc.c:1588
-#: src/arc.c:1674 src/arc.c:1681 src/arc.c:1716 src/arc.c:1761 src/arc.c:1808
-#: src/arc.c:1839 src/arc.c:1872 src/arc.c:1903 src/arc.c:1939 src/arc.c:1984
-#: src/arc.c:2022 src/arc.c:2061 src/arc.c:2068 src/attdef.c:539
-#: src/attdef.c:860 src/attdef.c:906 src/attdef.c:952 src/attdef.c:996
-#: src/attdef.c:1003 src/attdef.c:1042 src/attdef.c:1086 src/attdef.c:1093
-#: src/attdef.c:1132 src/attdef.c:1169 src/attdef.c:1208 src/attdef.c:1252
-#: src/attdef.c:1298 src/attdef.c:1342 src/attdef.c:1388 src/attdef.c:1439
-#: src/attdef.c:1492 src/attdef.c:1535 src/attdef.c:1582 src/attdef.c:1631
-#: src/attdef.c:1687 src/attdef.c:1733 src/attdef.c:1740 src/attdef.c:1782
-#: src/attdef.c:1828 src/attdef.c:1835 src/attdef.c:1876 src/attdef.c:1921
-#: src/attdef.c:1928 src/attdef.c:1969 src/attdef.c:2014 src/attdef.c:2021
-#: src/attdef.c:2062 src/attdef.c:2107 src/attdef.c:2114 src/attdef.c:2155
-#: src/attdef.c:2200 src/attdef.c:2207 src/attdef.c:2258 src/attdef.c:2350
-#: src/attdef.c:2357 src/attdef.c:2410 src/attdef.c:2502 src/attdef.c:2509
-#: src/attdef.c:2550 src/attdef.c:2594 src/attdef.c:2640 src/attdef.c:2684
-#: src/attdef.c:2723 src/attdef.c:2761 src/attdef.c:2801 src/attdef.c:2839
-#: src/attdef.c:2879 src/attdef.c:2930 src/attdef.c:2984 src/attdef.c:3024
-#: src/attdef.c:3064 src/attdef.c:3105 src/attdef.c:3144 src/attdef.c:3195
-#: src/attdef.c:3248 src/attdef.c:3299 src/attdef.c:3354 src/attdef.c:3400
-#: src/attdef.c:3446 src/attdef.c:3497 src/attdef.c:3553 src/attdef.c:3604
-#: src/attdef.c:3648 src/attdef.c:3693 src/attdef.c:3700 src/attrib.c:534
-#: src/attrib.c:871 src/attrib.c:917 src/attrib.c:963 src/attrib.c:1007
-#: src/attrib.c:1014 src/attrib.c:1053 src/attrib.c:1097 src/attrib.c:1104
-#: src/attrib.c:1143 src/attrib.c:1180 src/attrib.c:1219 src/attrib.c:1263
-#: src/attrib.c:1309 src/attrib.c:1353 src/attrib.c:1399 src/attrib.c:1450
-#: src/attrib.c:1503 src/attrib.c:1546 src/attrib.c:1593 src/attrib.c:1642
-#: src/attrib.c:1698 src/attrib.c:1744 src/attrib.c:1751 src/attrib.c:1793
-#: src/attrib.c:1839 src/attrib.c:1846 src/attrib.c:1887 src/attrib.c:1932
-#: src/attrib.c:1939 src/attrib.c:1980 src/attrib.c:2025 src/attrib.c:2032
-#: src/attrib.c:2073 src/attrib.c:2118 src/attrib.c:2125 src/attrib.c:2176
-#: src/attrib.c:2268 src/attrib.c:2275 src/attrib.c:2328 src/attrib.c:2420
-#: src/attrib.c:2427 src/attrib.c:2468 src/attrib.c:2512 src/attrib.c:2558
-#: src/attrib.c:2602 src/attrib.c:2641 src/attrib.c:2679 src/attrib.c:2719
-#: src/attrib.c:2757 src/attrib.c:2797 src/attrib.c:2848 src/attrib.c:2902
-#: src/attrib.c:2942 src/attrib.c:2982 src/attrib.c:3022 src/attrib.c:3061
-#: src/attrib.c:3112 src/attrib.c:3165 src/attrib.c:3216 src/attrib.c:3271
-#: src/attrib.c:3317 src/attrib.c:3363 src/attrib.c:3414 src/attrib.c:3470
-#: src/attrib.c:3521 src/attrib.c:3565 src/attrib.c:3610 src/attrib.c:3617
-#: src/binary_entity_data.c:171 src/binary_entity_data.c:247
-#: src/binary_entity_data.c:285 src/binary_entity_data.c:292
-#: src/binary_entity_data.c:323 src/binary_entity_data.c:363
-#: src/binary_entity_data.c:404 src/binary_entity_data.c:443
-#: src/binary_entity_data.c:450 src/binary_graphics_data.c:171
-#: src/binary_graphics_data.c:247 src/binary_graphics_data.c:285
-#: src/binary_graphics_data.c:292 src/binary_graphics_data.c:323
-#: src/binary_graphics_data.c:363 src/binary_graphics_data.c:404
-#: src/binary_graphics_data.c:443 src/binary_graphics_data.c:450
-#: src/block.c:395 src/block.c:673 src/block.c:718 src/block.c:725
-#: src/block.c:766 src/block.c:811 src/block.c:818 src/block.c:859
-#: src/block.c:904 src/block.c:911 src/block.c:952 src/block.c:997
-#: src/block.c:1004 src/block.c:1043 src/block.c:1089 src/block.c:1135
-#: src/block.c:1179 src/block.c:1186 src/block.c:1237 src/block.c:1316
-#: src/block.c:1323 src/block.c:1364 src/block.c:1407 src/block.c:1454
-#: src/block.c:1494 src/block.c:1534 src/block.c:1574 src/block.c:1615
-#: src/block.c:1655 src/block.c:1697 src/block.c:1748 src/block.c:1792
-#: src/block.c:1838 src/block.c:1845 src/block.c:1887 src/block.c:1933
-#: src/block.c:1940 src/block.c:1982 src/block.c:2027 src/block.c:2034
-#: src/block_record.c:298 src/block_record.c:471 src/block_record.c:518
-#: src/block_record.c:566 src/block_record.c:613 src/block_record.c:620
-#: src/block_record.c:661 src/block_record.c:716 src/block_record.c:772
-#: src/block_record.c:815 src/block_record.c:858 src/block_record.c:901
-#: src/block_record.c:948 src/block_record.c:955 src/block_record.c:998
-#: src/block_record.c:1045 src/block_record.c:1052 src/block_record.c:1095
-#: src/block_record.c:1141 src/block_record.c:1148 src/body.c:402
-#: src/body.c:645 src/body.c:691 src/body.c:737 src/body.c:781 src/body.c:788
-#: src/body.c:827 src/body.c:871 src/body.c:878 src/body.c:917 src/body.c:954
-#: src/body.c:993 src/body.c:1037 src/body.c:1083 src/body.c:1127
-#: src/body.c:1173 src/body.c:1224 src/body.c:1277 src/body.c:1320
-#: src/body.c:1367 src/body.c:1416 src/body.c:1472 src/body.c:1518
-#: src/body.c:1525 src/body.c:1567 src/body.c:1613 src/body.c:1620
-#: src/body.c:1663 src/body.c:1713 src/body.c:1766 src/body.c:1817
-#: src/body.c:1866 src/body.c:1910 src/body.c:1959 src/body.c:2004
-#: src/body.c:2011 src/circle.c:416 src/circle.c:651 src/circle.c:697
-#: src/circle.c:743 src/circle.c:787 src/circle.c:794 src/circle.c:833
-#: src/circle.c:877 src/circle.c:884 src/circle.c:923 src/circle.c:960
-#: src/circle.c:999 src/circle.c:1043 src/circle.c:1089 src/circle.c:1133
-#: src/circle.c:1179 src/circle.c:1230 src/circle.c:1283 src/circle.c:1326
-#: src/circle.c:1373 src/circle.c:1422 src/circle.c:1478 src/circle.c:1524
-#: src/circle.c:1531 src/circle.c:1573 src/circle.c:1619 src/circle.c:1626
-#: src/circle.c:1677 src/circle.c:1769 src/circle.c:1776 src/circle.c:1817
-#: src/circle.c:1868 src/circle.c:1924 src/circle.c:1975 src/circle.c:2019
-#: src/circle.c:2064 src/circle.c:2071 src/class.c:312 src/class.c:514
+#: src/3dsolid.c:2448 src/3dsolid.c:2480 src/3dsolid.c:2524 src/3dsolid.c:2571
+#: src/3dsolid.c:2608 src/3dsolid.c:2615 src/3dsolid.c:2649 src/3dsolid.c:2687
+#: src/3dsolid.c:2694 src/acad_proxy_entity.c:513 src/acad_proxy_entity.c:801
+#: src/acad_proxy_entity.c:840 src/acad_proxy_entity.c:878
+#: src/acad_proxy_entity.c:915 src/acad_proxy_entity.c:922
+#: src/acad_proxy_entity.c:953 src/acad_proxy_entity.c:990
+#: src/acad_proxy_entity.c:997 src/acad_proxy_entity.c:1028
+#: src/acad_proxy_entity.c:1061 src/acad_proxy_entity.c:1092
+#: src/acad_proxy_entity.c:1131 src/acad_proxy_entity.c:1168
+#: src/acad_proxy_entity.c:1205 src/acad_proxy_entity.c:1243
+#: src/acad_proxy_entity.c:1287 src/acad_proxy_entity.c:1332
+#: src/acad_proxy_entity.c:1368 src/acad_proxy_entity.c:1408
+#: src/acad_proxy_entity.c:1450 src/acad_proxy_entity.c:1496
+#: src/acad_proxy_entity.c:1543 src/acad_proxy_entity.c:1591
+#: src/acad_proxy_entity.c:1630 src/acad_proxy_entity.c:1637
+#: src/acad_proxy_entity.c:1671 src/acad_proxy_entity.c:1713
+#: src/acad_proxy_entity.c:1720 src/acad_proxy_entity.c:1754
+#: src/acad_proxy_entity.c:1793 src/acad_proxy_entity.c:1800
+#: src/acad_proxy_entity.c:1832 src/acad_proxy_entity.c:1865
+#: src/acad_proxy_entity.c:1898 src/acad_proxy_entity.c:1939
+#: src/acad_proxy_entity.c:1946 src/acad_proxy_entity.c:1978
+#: src/acad_proxy_entity.c:2011 src/acad_proxy_entity.c:2043
+#: src/acad_proxy_entity.c:2084 src/acad_proxy_entity.c:2091
+#: src/acad_proxy_entity.c:2123 src/acad_proxy_entity.c:2156
+#: src/acad_proxy_entity.c:2188 src/acad_proxy_entity.c:2231
+#: src/acad_proxy_entity.c:2277 src/acad_proxy_entity.c:2315
+#: src/acad_proxy_entity.c:2354 src/acad_proxy_entity.c:2392
+#: src/acad_proxy_entity.c:2431 src/acad_proxy_entity.c:2470
+#: src/acad_proxy_entity.c:2509 src/acad_proxy_entity.c:2548
+#: src/acad_proxy_entity.c:2587 src/acad_proxy_entity.c:2626
+#: src/acad_proxy_entity.c:2660 src/acad_proxy_entity.c:2699
+#: src/acad_proxy_entity.c:2706 src/acad_proxy_entity.c:2740
+#: src/acad_proxy_entity.c:2779 src/acad_proxy_entity.c:2786
+#: src/acad_proxy_entity.c:2820 src/acad_proxy_entity.c:2858
+#: src/acad_proxy_entity.c:2865 src/appid.c:286 src/appid.c:445
+#: src/appid.c:477 src/appid.c:509 src/appid.c:549 src/appid.c:587
+#: src/appid.c:617 src/appid.c:650 src/appid.c:681 src/appid.c:714
+#: src/appid.c:747 src/appid.c:780 src/appid.c:819 src/appid.c:826
+#: src/appid.c:860 src/appid.c:899 src/appid.c:906 src/appid.c:940
+#: src/appid.c:978 src/appid.c:985 src/arc.c:419 src/arc.c:692 src/arc.c:731
+#: src/arc.c:769 src/arc.c:806 src/arc.c:813 src/arc.c:844 src/arc.c:881
+#: src/arc.c:888 src/arc.c:919 src/arc.c:949 src/arc.c:980 src/arc.c:1017
+#: src/arc.c:1055 src/arc.c:1092 src/arc.c:1130 src/arc.c:1174 src/arc.c:1219
+#: src/arc.c:1255 src/arc.c:1294 src/arc.c:1336 src/arc.c:1384 src/arc.c:1423
+#: src/arc.c:1430 src/arc.c:1464 src/arc.c:1503 src/arc.c:1510 src/arc.c:1555
+#: src/arc.c:1641 src/arc.c:1648 src/arc.c:1681 src/arc.c:1725 src/arc.c:1770
+#: src/arc.c:1800 src/arc.c:1831 src/arc.c:1861 src/arc.c:1897 src/arc.c:1942
+#: src/arc.c:1978 src/arc.c:2016 src/arc.c:2023 src/attdef.c:521
+#: src/attdef.c:822 src/attdef.c:861 src/attdef.c:899 src/attdef.c:936
+#: src/attdef.c:943 src/attdef.c:974 src/attdef.c:1011 src/attdef.c:1018
+#: src/attdef.c:1049 src/attdef.c:1079 src/attdef.c:1110 src/attdef.c:1147
+#: src/attdef.c:1185 src/attdef.c:1222 src/attdef.c:1260 src/attdef.c:1304
+#: src/attdef.c:1349 src/attdef.c:1385 src/attdef.c:1424 src/attdef.c:1466
+#: src/attdef.c:1514 src/attdef.c:1553 src/attdef.c:1560 src/attdef.c:1594
+#: src/attdef.c:1633 src/attdef.c:1640 src/attdef.c:1673 src/attdef.c:1711
+#: src/attdef.c:1718 src/attdef.c:1751 src/attdef.c:1789 src/attdef.c:1796
+#: src/attdef.c:1829 src/attdef.c:1867 src/attdef.c:1874 src/attdef.c:1907
+#: src/attdef.c:1945 src/attdef.c:1952 src/attdef.c:1997 src/attdef.c:2083
+#: src/attdef.c:2090 src/attdef.c:2137 src/attdef.c:2223 src/attdef.c:2230
+#: src/attdef.c:2263 src/attdef.c:2300 src/attdef.c:2338 src/attdef.c:2375
+#: src/attdef.c:2406 src/attdef.c:2437 src/attdef.c:2469 src/attdef.c:2500
+#: src/attdef.c:2532 src/attdef.c:2576 src/attdef.c:2622 src/attdef.c:2653
+#: src/attdef.c:2684 src/attdef.c:2716 src/attdef.c:2746 src/attdef.c:2790
+#: src/attdef.c:2835 src/attdef.c:2879 src/attdef.c:2926 src/attdef.c:2965
+#: src/attdef.c:3003 src/attdef.c:3047 src/attdef.c:3097 src/attdef.c:3142
+#: src/attdef.c:3178 src/attdef.c:3216 src/attdef.c:3223 src/attrib.c:516
+#: src/attrib.c:833 src/attrib.c:872 src/attrib.c:910 src/attrib.c:947
+#: src/attrib.c:954 src/attrib.c:985 src/attrib.c:1022 src/attrib.c:1029
+#: src/attrib.c:1060 src/attrib.c:1090 src/attrib.c:1121 src/attrib.c:1158
+#: src/attrib.c:1196 src/attrib.c:1233 src/attrib.c:1271 src/attrib.c:1315
+#: src/attrib.c:1360 src/attrib.c:1396 src/attrib.c:1435 src/attrib.c:1477
+#: src/attrib.c:1525 src/attrib.c:1564 src/attrib.c:1571 src/attrib.c:1605
+#: src/attrib.c:1644 src/attrib.c:1651 src/attrib.c:1684 src/attrib.c:1722
+#: src/attrib.c:1729 src/attrib.c:1762 src/attrib.c:1800 src/attrib.c:1807
+#: src/attrib.c:1840 src/attrib.c:1878 src/attrib.c:1885 src/attrib.c:1930
+#: src/attrib.c:2016 src/attrib.c:2023 src/attrib.c:2070 src/attrib.c:2156
+#: src/attrib.c:2163 src/attrib.c:2196 src/attrib.c:2233 src/attrib.c:2271
+#: src/attrib.c:2308 src/attrib.c:2339 src/attrib.c:2370 src/attrib.c:2402
+#: src/attrib.c:2433 src/attrib.c:2465 src/attrib.c:2509 src/attrib.c:2555
+#: src/attrib.c:2586 src/attrib.c:2617 src/attrib.c:2648 src/attrib.c:2678
+#: src/attrib.c:2722 src/attrib.c:2767 src/attrib.c:2811 src/attrib.c:2858
+#: src/attrib.c:2897 src/attrib.c:2935 src/attrib.c:2979 src/attrib.c:3029
+#: src/attrib.c:3074 src/attrib.c:3110 src/attrib.c:3148 src/attrib.c:3155
+#: src/binary_entity_data.c:171 src/binary_entity_data.c:245
+#: src/binary_entity_data.c:282 src/binary_entity_data.c:289
+#: src/binary_entity_data.c:320 src/binary_entity_data.c:360
+#: src/binary_entity_data.c:401 src/binary_entity_data.c:440
+#: src/binary_entity_data.c:447 src/binary_graphics_data.c:171
+#: src/binary_graphics_data.c:245 src/binary_graphics_data.c:282
+#: src/binary_graphics_data.c:289 src/binary_graphics_data.c:320
+#: src/binary_graphics_data.c:360 src/binary_graphics_data.c:401
+#: src/binary_graphics_data.c:440 src/binary_graphics_data.c:447
+#: src/block.c:377 src/block.c:635 src/block.c:673 src/block.c:680
+#: src/block.c:713 src/block.c:751 src/block.c:758 src/block.c:791
+#: src/block.c:829 src/block.c:836 src/block.c:869 src/block.c:907
+#: src/block.c:914 src/block.c:945 src/block.c:984 src/block.c:1022
+#: src/block.c:1059 src/block.c:1066 src/block.c:1111 src/block.c:1184
+#: src/block.c:1191 src/block.c:1224 src/block.c:1260 src/block.c:1299
+#: src/block.c:1330 src/block.c:1361 src/block.c:1392 src/block.c:1424
+#: src/block.c:1455 src/block.c:1490 src/block.c:1535 src/block.c:1571
+#: src/block.c:1610 src/block.c:1617 src/block.c:1651 src/block.c:1690
+#: src/block.c:1697 src/block.c:1731 src/block.c:1769 src/block.c:1776
+#: src/block_record.c:283 src/block_record.c:436 src/block_record.c:476
+#: src/block_record.c:516 src/block_record.c:556 src/block_record.c:563
+#: src/block_record.c:596 src/block_record.c:644 src/block_record.c:692
+#: src/block_record.c:726 src/block_record.c:760 src/block_record.c:794
+#: src/block_record.c:834 src/block_record.c:841 src/block_record.c:876
+#: src/block_record.c:916 src/block_record.c:923 src/block_record.c:958
+#: src/block_record.c:997 src/block_record.c:1004 src/body.c:393
+#: src/body.c:617 src/body.c:656 src/body.c:694 src/body.c:731 src/body.c:738
+#: src/body.c:769 src/body.c:806 src/body.c:813 src/body.c:844 src/body.c:874
+#: src/body.c:905 src/body.c:942 src/body.c:980 src/body.c:1017
+#: src/body.c:1055 src/body.c:1099 src/body.c:1144 src/body.c:1180
+#: src/body.c:1219 src/body.c:1261 src/body.c:1307 src/body.c:1353
+#: src/body.c:1399 src/body.c:1446 src/body.c:1494 src/body.c:1536
+#: src/body.c:1543 src/body.c:1577 src/body.c:1616 src/body.c:1623
+#: src/body.c:1658 src/body.c:1699 src/body.c:1706 src/body.c:1740
+#: src/body.c:1779 src/body.c:1786 src/body.c:1818 src/body.c:1851
+#: src/body.c:1883 src/body.c:1924 src/body.c:1931 src/body.c:1963
+#: src/body.c:1996 src/body.c:2028 src/body.c:2069 src/body.c:2076
+#: src/body.c:2108 src/body.c:2141 src/body.c:2175 src/body.c:2213
+#: src/body.c:2220 src/body.c:2253 src/body.c:2292 src/body.c:2299
+#: src/body.c:2330 src/body.c:2367 src/body.c:2408 src/body.c:2446
+#: src/body.c:2453 src/circle.c:405 src/circle.c:620 src/circle.c:659
+#: src/circle.c:697 src/circle.c:734 src/circle.c:741 src/circle.c:772
+#: src/circle.c:809 src/circle.c:816 src/circle.c:847 src/circle.c:877
+#: src/circle.c:908 src/circle.c:945 src/circle.c:983 src/circle.c:1020
+#: src/circle.c:1058 src/circle.c:1102 src/circle.c:1147 src/circle.c:1183
+#: src/circle.c:1222 src/circle.c:1264 src/circle.c:1311 src/circle.c:1357
+#: src/circle.c:1403 src/circle.c:1450 src/circle.c:1498 src/circle.c:1540
+#: src/circle.c:1547 src/circle.c:1581 src/circle.c:1620 src/circle.c:1627
+#: src/circle.c:1662 src/circle.c:1703 src/circle.c:1710 src/circle.c:1744
+#: src/circle.c:1783 src/circle.c:1790 src/circle.c:1822 src/circle.c:1855
+#: src/circle.c:1887 src/circle.c:1928 src/circle.c:1935 src/circle.c:1967
+#: src/circle.c:2000 src/circle.c:2032 src/circle.c:2073 src/circle.c:2080
+#: src/circle.c:2112 src/circle.c:2145 src/circle.c:2176 src/circle.c:2183
+#: src/circle.c:2215 src/circle.c:2222 src/circle.c:2255 src/circle.c:2262
+#: src/circle.c:2297 src/circle.c:2304 src/circle.c:2337 src/circle.c:2344
+#: src/circle.c:2379 src/circle.c:2386 src/circle.c:2419 src/circle.c:2426
+#: src/circle.c:2461 src/circle.c:2468 src/circle.c:2499 src/circle.c:2543
+#: src/circle.c:2593 src/circle.c:2638 src/circle.c:2671 src/circle.c:2701
+#: src/circle.c:2732 src/circle.c:2762 src/circle.c:2793 src/circle.c:2823
+#: src/circle.c:2857 src/circle.c:2895 src/circle.c:2902 src/circle.c:2933
+#: src/circle.c:2977 src/circle.c:3031 src/class.c:312 src/class.c:514
 #: src/class.c:558 src/class.c:565 src/class.c:604 src/class.c:648
 #: src/class.c:655 src/class.c:694 src/class.c:738 src/class.c:745
 #: src/class.c:784 src/class.c:829 src/class.c:836 src/class.c:875
@@ -423,265 +439,316 @@ msgstr ""
 #: src/class.c:1262 src/class.c:1303 src/class.c:1345 src/class.c:1387
 #: src/class.c:1429 src/class.c:1468 src/class.c:1519 src/class.c:1572
 #: src/class.c:1623 src/class.c:1679 src/class.c:1724 src/class.c:1731
-#: src/comment.c:251 src/comment.c:297 src/comment.c:427 src/comment.c:472
-#: src/comment.c:479 src/dictionary.c:311 src/dictionary.c:487
-#: src/dictionary.c:533 src/dictionary.c:582 src/dictionary.c:628
-#: src/dictionary.c:635 src/dictionary.c:677 src/dictionary.c:723
-#: src/dictionary.c:730 src/dictionary.c:769 src/dictionary.c:813
-#: src/dictionary.c:820 src/dictionary.c:859 src/dictionary.c:904
-#: src/dictionary.c:911 src/dictionary.c:953 src/dictionary.c:999
-#: src/dictionary.c:1006 src/dictionaryvar.c:311 src/dictionaryvar.c:490
-#: src/dictionaryvar.c:536 src/dictionaryvar.c:585 src/dictionaryvar.c:631
-#: src/dictionaryvar.c:638 src/dictionaryvar.c:680 src/dictionaryvar.c:726
-#: src/dictionaryvar.c:733 src/dictionaryvar.c:772 src/dictionaryvar.c:816
-#: src/dictionaryvar.c:823 src/dictionaryvar.c:864 src/dictionaryvar.c:909
-#: src/dictionaryvar.c:916 src/dictionaryvar.c:958 src/dictionaryvar.c:1004
-#: src/dictionaryvar.c:1011 src/dimension.c:693 src/dimension.c:1035
-#: src/dimension.c:1081 src/dimension.c:1127 src/dimension.c:1171
-#: src/dimension.c:1178 src/dimension.c:1217 src/dimension.c:1261
-#: src/dimension.c:1268 src/dimension.c:1307 src/dimension.c:1344
-#: src/dimension.c:1383 src/dimension.c:1427 src/dimension.c:1473
-#: src/dimension.c:1517 src/dimension.c:1563 src/dimension.c:1614
-#: src/dimension.c:1667 src/dimension.c:1710 src/dimension.c:1757
-#: src/dimension.c:1806 src/dimension.c:1862 src/dimension.c:1908
-#: src/dimension.c:1915 src/dimension.c:1957 src/dimension.c:2003
-#: src/dimension.c:2010 src/dimension.c:2049 src/dimension.c:2093
-#: src/dimension.c:2100 src/dimension.c:2140 src/dimension.c:2184
-#: src/dimension.c:2191 src/dimension.c:2231 src/dimension.c:2275
-#: src/dimension.c:2282 src/dimension.c:2334 src/dimension.c:2427
-#: src/dimension.c:2434 src/dimension.c:2488 src/dimension.c:2581
-#: src/dimension.c:2588 src/dimension.c:2642 src/dimension.c:2735
-#: src/dimension.c:2742 src/dimension.c:2796 src/dimension.c:2889
-#: src/dimension.c:2896 src/dimension.c:2950 src/dimension.c:3043
-#: src/dimension.c:3050 src/dimension.c:3104 src/dimension.c:3197
-#: src/dimension.c:3204 src/dimension.c:3258 src/dimension.c:3351
-#: src/dimension.c:3358 src/dimension.c:3399 src/dimension.c:3436
-#: src/dimension.c:3475 src/dimension.c:3512 src/dimension.c:3551
-#: src/dimension.c:3588 src/dimension.c:3628 src/dimension.c:3666
-#: src/dimension.c:3705 src/dimension.c:3742 src/dimension.c:3781
-#: src/dimension.c:3818 src/dimension.c:3857 src/dimension.c:3894
-#: src/dimension.c:3931 src/dimension.c:3974 src/dimension.c:4018
-#: src/dimension.c:4068 src/dimension.c:4119 src/dimension.c:4169
-#: src/dimension.c:4225 src/dimension.c:4276 src/dimension.c:4320
-#: src/dimension.c:4365 src/dimension.c:4372 src/dimstyle.c:210
-#: src/dimstyle.c:1016 src/dimstyle.c:1065 src/dimstyle.c:1113
-#: src/dimstyle.c:1162 src/dimstyle.c:1210 src/dimstyle.c:1259
-#: src/dimstyle.c:1307 src/dimstyle.c:1355 src/dimstyle.c:1403
-#: src/dimstyle.c:1452 src/dimstyle.c:1500 src/dimstyle.c:1549
-#: src/dimstyle.c:1597 src/dimstyle.c:1644 src/dimstyle.c:1692
-#: src/dimstyle.c:1739 src/dimstyle.c:1787 src/dimstyle.c:1827
-#: src/dimstyle.c:1868 src/dimstyle.c:1908 src/dimstyle.c:1949
-#: src/dimstyle.c:1989 src/dimstyle.c:2030 src/dimstyle.c:2070
-#: src/dimstyle.c:2111 src/dimstyle.c:2151 src/dimstyle.c:2192
-#: src/dimstyle.c:2232 src/dimstyle.c:2273 src/dimstyle.c:2313
-#: src/dimstyle.c:2358 src/dimstyle.c:2401 src/dimstyle.c:2442
-#: src/dimstyle.c:2482 src/dimstyle.c:2523 src/dimstyle.c:2563
-#: src/dimstyle.c:2604 src/dimstyle.c:2644 src/dimstyle.c:2685
-#: src/dimstyle.c:2725 src/dimstyle.c:2766 src/dimstyle.c:2806
-#: src/dimstyle.c:2847 src/dimstyle.c:2887 src/dimstyle.c:2928
-#: src/dimstyle.c:2968 src/dimstyle.c:3010 src/dimstyle.c:3050
-#: src/dimstyle.c:3090 src/dimstyle.c:3131 src/dimstyle.c:3172
-#: src/dimstyle.c:3212 src/dimstyle.c:3253 src/dimstyle.c:3293
-#: src/dimstyle.c:3334 src/dimstyle.c:3374 src/dimstyle.c:3415
-#: src/dimstyle.c:3455 src/dimstyle.c:3496 src/dimstyle.c:3536
-#: src/dimstyle.c:3577 src/dimstyle.c:3617 src/dimstyle.c:3658
-#: src/dimstyle.c:3698 src/dimstyle.c:3739 src/dimstyle.c:3779
-#: src/dimstyle.c:3820 src/dimstyle.c:3860 src/dimstyle.c:3901
-#: src/dimstyle.c:3941 src/dimstyle.c:3983 src/dimstyle.c:4023
-#: src/dimstyle.c:4064 src/dimstyle.c:4104 src/dimstyle.c:4145
-#: src/dimstyle.c:4185 src/dimstyle.c:4227 src/dimstyle.c:4267
-#: src/dimstyle.c:4308 src/dimstyle.c:4348 src/dimstyle.c:4389
-#: src/dimstyle.c:4429 src/dimstyle.c:4470 src/dimstyle.c:4510
-#: src/dimstyle.c:4551 src/dimstyle.c:4603 src/dimstyle.c:4658
-#: src/dimstyle.c:4700 src/dimstyle.c:4743 src/dimstyle.c:4785
-#: src/dimstyle.c:4826 src/dimstyle.c:4866 src/dimstyle.c:4909
-#: src/dimstyle.c:4951 src/dimstyle.c:4993 src/dimstyle.c:5045
-#: src/dimstyle.c:5098 src/dimstyle.c:5150 src/dimstyle.c:5203
-#: src/dimstyle.c:5255 src/dimstyle.c:5309 src/dimstyle.c:5361
-#: src/dimstyle.c:5414 src/dimstyle.c:5466 src/dimstyle.c:5519
-#: src/dimstyle.c:5571 src/dimstyle.c:5626 src/dimstyle.c:5680
-#: src/dimstyle.c:5735 src/dimstyle.c:5788 src/dimstyle.c:5841
-#: src/dimstyle.c:5893 src/dimstyle.c:5947 src/dimstyle.c:5999
-#: src/dimstyle.c:6052 src/dimstyle.c:6092 src/dimstyle.c:6099
-#: src/dimstyle.c:6142 src/dimstyle.c:6189 src/dimstyle.c:6196 src/donut.c:183
-#: src/drawing.c:176 src/drawing.c:218 src/drawing.c:225 src/drawing.c:258
-#: src/drawing.c:300 src/drawing.c:307 src/drawing.c:340 src/drawing.c:382
-#: src/drawing.c:389 src/drawing.c:422 src/drawing.c:464 src/drawing.c:471
-#: src/drawing.c:505 src/drawing.c:547 src/drawing.c:554 src/drawing.c:588
-#: src/drawing.c:630 src/drawing.c:637 src/drawing.c:670 src/drawing.c:712
-#: src/drawing.c:719 src/ellipse.c:456 src/ellipse.c:685 src/ellipse.c:731
-#: src/ellipse.c:777 src/ellipse.c:821 src/ellipse.c:828 src/ellipse.c:867
-#: src/ellipse.c:911 src/ellipse.c:918 src/ellipse.c:957 src/ellipse.c:994
-#: src/ellipse.c:1033 src/ellipse.c:1077 src/ellipse.c:1123 src/ellipse.c:1167
-#: src/ellipse.c:1213 src/ellipse.c:1264 src/ellipse.c:1317 src/ellipse.c:1360
-#: src/ellipse.c:1407 src/ellipse.c:1456 src/ellipse.c:1512 src/ellipse.c:1558
-#: src/ellipse.c:1565 src/ellipse.c:1607 src/ellipse.c:1653 src/ellipse.c:1660
-#: src/ellipse.c:1711 src/ellipse.c:1803 src/ellipse.c:1810 src/ellipse.c:1864
-#: src/ellipse.c:1957 src/ellipse.c:1964 src/ellipse.c:2006 src/ellipse.c:2058
-#: src/ellipse.c:2111 src/ellipse.c:2148 src/ellipse.c:2187 src/ellipse.c:2224
-#: src/ellipse.c:2266 src/ellipse.c:2317 src/ellipse.c:2361 src/ellipse.c:2406
-#: src/ellipse.c:2413 src/endblk.c:275 src/endblk.c:369 src/endblk.c:415
-#: src/endblk.c:461 src/endblk.c:505 src/endblk.c:512 src/endblk.c:554
-#: src/endblk.c:600 src/endblk.c:607 src/group.c:326 src/group.c:513
-#: src/group.c:559 src/group.c:608 src/group.c:654 src/group.c:661
-#: src/group.c:703 src/group.c:749 src/group.c:756 src/group.c:795
-#: src/group.c:844 src/group.c:889 src/group.c:938 src/group.c:989
-#: src/group.c:1033 src/group.c:1040 src/group.c:1080 src/group.c:1125
-#: src/group.c:1132 src/group.c:1174 src/group.c:1219 src/group.c:1226
-#: src/hatch.c:194 src/hatch.c:363 src/hatch.c:447 src/hatch.c:487
-#: src/hatch.c:527 src/hatch.c:565 src/hatch.c:572 src/hatch.c:605
-#: src/hatch.c:643 src/hatch.c:650 src/hatch.c:683 src/hatch.c:714
-#: src/hatch.c:747 src/hatch.c:784 src/hatch.c:823 src/hatch.c:861
-#: src/hatch.c:901 src/hatch.c:946 src/hatch.c:993 src/hatch.c:1030
-#: src/hatch.c:1071 src/hatch.c:1114 src/hatch.c:1161 src/hatch.c:1205
-#: src/hatch.c:1255 src/hatch.c:1295 src/hatch.c:1302 src/hatch.c:1338
-#: src/hatch.c:1378 src/hatch.c:1385 src/hatch.c:1421 src/hatch.c:1461
-#: src/hatch.c:1468 src/hatch.c:1501 src/hatch.c:1539 src/hatch.c:1546
-#: src/hatch.c:1579 src/hatch.c:1610 src/hatch.c:1643 src/hatch.c:1674
-#: src/hatch.c:1707 src/hatch.c:1738 src/hatch.c:1771 src/hatch.c:1802
-#: src/hatch.c:1835 src/hatch.c:1866 src/hatch.c:1899 src/hatch.c:1930
-#: src/hatch.c:1963 src/hatch.c:2008 src/hatch.c:2055 src/hatch.c:2100
-#: src/hatch.c:2147 src/hatch.c:2192 src/hatch.c:2239 src/hatch.c:2284
-#: src/hatch.c:2331 src/hatch.c:2376 src/hatch.c:2423 src/hatch.c:2454
-#: src/hatch.c:2487 src/hatch.c:2518 src/hatch.c:2551 src/hatch.c:2582
-#: src/hatch.c:2617 src/hatch.c:2655 src/hatch.c:2662 src/hatch.c:2697
-#: src/hatch.c:2735 src/hatch.c:2742 src/hatch.c:2778 src/hatch.c:2817
-#: src/hatch.c:2824 src/hatch.c:2941 src/hatch.c:3017 src/hatch.c:3057
-#: src/hatch.c:3098 src/hatch.c:3137 src/hatch.c:3180 src/hatch.c:3212
-#: src/hatch.c:3219 src/hatch.c:3253 src/hatch.c:3292 src/hatch.c:3335
-#: src/hatch.c:3367 src/hatch.c:3374 src/hatch.c:3410 src/hatch.c:3450
-#: src/hatch.c:3457 src/hatch.c:3564 src/hatch.c:3640 src/hatch.c:3671
-#: src/hatch.c:3707 src/hatch.c:3747 src/hatch.c:3754 src/hatch.c:3876
-#: src/hatch.c:3883 src/hatch.c:3956 src/hatch.c:4031 src/hatch.c:4071
-#: src/hatch.c:4111 src/hatch.c:4142 src/hatch.c:4176 src/hatch.c:4207
-#: src/hatch.c:4241 src/hatch.c:4272 src/hatch.c:4306 src/hatch.c:4338
-#: src/hatch.c:4372 src/hatch.c:4404 src/hatch.c:4438 src/hatch.c:4477
-#: src/hatch.c:4520 src/hatch.c:4552 src/hatch.c:4559 src/hatch.c:4595
-#: src/hatch.c:4635 src/hatch.c:4642 src/hatch.c:4757 src/hatch.c:4764
-#: src/hatch.c:4800 src/hatch.c:4875 src/hatch.c:4915 src/hatch.c:4955
-#: src/hatch.c:4986 src/hatch.c:5019 src/hatch.c:5050 src/hatch.c:5086
-#: src/hatch.c:5126 src/hatch.c:5133 src/hatch.c:5248 src/hatch.c:5255
-#: src/hatch.c:5332 src/hatch.c:5408 src/hatch.c:5448 src/hatch.c:5490
-#: src/hatch.c:5521 src/hatch.c:5528 src/hatch.c:5563 src/hatch.c:5594
-#: src/hatch.c:5601 src/hatch.c:5637 src/hatch.c:5677 src/hatch.c:5684
-#: src/hatch.c:5801 src/hatch.c:5808 src/hatch.c:5868 src/hatch.c:5944
-#: src/hatch.c:5984 src/hatch.c:6025 src/hatch.c:6071 src/hatch.c:6119
-#: src/hatch.c:6158 src/hatch.c:6201 src/hatch.c:6232 src/hatch.c:6239
-#: src/hatch.c:6275 src/hatch.c:6315 src/hatch.c:6322 src/hatch.c:6648
-#: src/hatch.c:6655 src/hatch.c:6695 src/hatch.c:6772 src/hatch.c:6814
-#: src/hatch.c:6856 src/hatch.c:6890 src/hatch.c:6925 src/hatch.c:6959
-#: src/hatch.c:6994 src/hatch.c:7027 src/hatch.c:7062 src/hatch.c:7109
-#: src/hatch.c:7160 src/hatch.c:7201 src/hatch.c:7208 src/hatch.c:7253
-#: src/hatch.c:7260 src/hatch.c:7394 src/hatch.c:7473 src/hatch.c:7513
-#: src/hatch.c:7554 src/hatch.c:7561 src/hatch.c:7602 src/hatch.c:7609
-#: src/hatch.c:7643 src/hatch.c:7650 src/hatch.c:7691 src/hatch.c:7698
-#: src/hatch.c:7732 src/hatch.c:7739 src/hatch.c:7780 src/hatch.c:7787
-#: src/hatch.c:7821 src/hatch.c:7828 src/hatch.c:7869 src/hatch.c:7876
-#: src/hatch.c:7912 src/hatch.c:7952 src/hatch.c:7959 src/hatch.c:8077
-#: src/hatch.c:8152 src/hatch.c:8192 src/hatch.c:8233 src/hatch.c:8265
-#: src/hatch.c:8299 src/hatch.c:8331 src/hatch.c:8368 src/hatch.c:8417
-#: src/hatch.c:8424 src/hatch.c:8458 src/hatch.c:8503 src/hatch.c:8550
-#: src/hatch.c:8581 src/hatch.c:8614 src/hatch.c:8645 src/hatch.c:8679
-#: src/hatch.c:8716 src/hatch.c:8758 src/hatch.c:8798 src/hatch.c:8805
-#: src/hatch.c:8925 src/hatch.c:9002 src/hatch.c:9043 src/hatch.c:9085
-#: src/hatch.c:9119 src/hatch.c:9154 src/hatch.c:9188 src/hatch.c:9227
-#: src/hatch.c:9278 src/hatch.c:9285 src/hatch.c:9321 src/hatch.c:9355
-#: src/hatch.c:9390 src/hatch.c:9424 src/hatch.c:9463 src/hatch.c:9514
-#: src/hatch.c:9521 src/hatch.c:9557 src/hatch.c:9604 src/hatch.c:9653
-#: src/hatch.c:9686 src/hatch.c:9721 src/hatch.c:9754 src/hatch.c:9789
-#: src/hatch.c:9828 src/hatch.c:9871 src/hatch.c:9912 src/hatch.c:9919
-#: src/hatch.c:10035 src/hatch.c:10111 src/hatch.c:10152 src/hatch.c:10193
-#: src/hatch.c:10226 src/hatch.c:10260 src/hatch.c:10293 src/hatch.c:10330
-#: src/hatch.c:10387 src/hatch.c:10394 src/hatch.c:10429 src/hatch.c:10462
-#: src/hatch.c:10496 src/hatch.c:10529 src/hatch.c:10566 src/hatch.c:10623
-#: src/hatch.c:10630 src/hatch.c:10667 src/hatch.c:10707 src/hatch.c:10714
-#: src/hatch.c:10838 src/hatch.c:10915 src/hatch.c:10956 src/hatch.c:10997
-#: src/hatch.c:11036 src/hatch.c:11077 src/hatch.c:11109 src/hatch.c:11143
-#: src/hatch.c:11175 src/hatch.c:11209 src/hatch.c:11248 src/hatch.c:11293
-#: src/hatch.c:11331 src/hatch.c:11375 src/hatch.c:11415 src/hatch.c:11458
-#: src/hatch.c:11491 src/hatch.c:11498 src/hatch.c:11534 src/hatch.c:11573
-#: src/hatch.c:11580 src/hatch.c:13033 src/hatch.c:13110 src/hatch.c:13152
-#: src/hatch.c:13194 src/hatch.c:13228 src/hatch.c:13263 src/hatch.c:13297
-#: src/hatch.c:13336 src/hatch.c:13388 src/hatch.c:13395 src/hatch.c:13505
-#: src/hatch.c:13547 src/hatch.c:13554 src/header.c:942 src/helix.c:544
-#: src/helix.c:806 src/helix.c:848 src/helix.c:886 src/helix.c:926
-#: src/helix.c:933 src/helix.c:964 src/helix.c:1004 src/helix.c:1011
-#: src/helix.c:1043 src/helix.c:1082 src/helix.c:1120 src/helix.c:1160
-#: src/helix.c:1199 src/helix.c:1246 src/helix.c:1292 src/helix.c:1331
-#: src/helix.c:1371 src/helix.c:1417 src/helix.c:1463 src/helix.c:1509
-#: src/helix.c:1555 src/helix.c:1602 src/helix.c:1650 src/helix.c:1692
-#: src/helix.c:1699 src/helix.c:1734 src/helix.c:1776 src/helix.c:1783
-#: src/helix.c:1817 src/helix.c:1858 src/helix.c:1865 src/helix.c:1900
-#: src/helix.c:1942 src/helix.c:1949 src/helix.c:1981 src/helix.c:2014
-#: src/helix.c:2046 src/helix.c:2087 src/helix.c:2094 src/helix.c:2126
-#: src/helix.c:2159 src/helix.c:2191 src/helix.c:2232 src/helix.c:2239
-#: src/helix.c:2271 src/helix.c:2304 src/helix.c:2336 src/helix.c:2376
-#: src/helix.c:2383 src/helix.c:2415 src/helix.c:2449 src/helix.c:2481
-#: src/helix.c:2515 src/helix.c:2547 src/helix.c:2581 src/helix.c:2613
-#: src/helix.c:2653 src/helix.c:2660 src/helix.c:2692 src/helix.c:2726
-#: src/helix.c:2758 src/helix.c:2791 src/helix.c:2823 src/helix.c:2857
-#: src/helix.c:2889 src/helix.c:2923 src/helix.c:2955 src/helix.c:2989
-#: src/helix.c:3021 src/helix.c:3055 src/helix.c:3087 src/helix.c:3120
-#: src/helix.c:3152 src/helix.c:3185 src/helix.c:3217 src/helix.c:3250
-#: src/helix.c:3282 src/helix.c:3316 src/helix.c:3349 src/helix.c:3383
-#: src/helix.c:3415 src/helix.c:3462 src/helix.c:3508 src/helix.c:3555
-#: src/helix.c:3601 src/helix.c:3608 src/helix.c:3641 src/helix.c:3648
-#: src/helix.c:3682 src/helix.c:3723 src/helix.c:3730 src/idbuffer.c:296
-#: src/idbuffer.c:447 src/idbuffer.c:489 src/idbuffer.c:531 src/idbuffer.c:573
-#: src/idbuffer.c:580 src/idbuffer.c:615 src/idbuffer.c:657 src/idbuffer.c:664
-#: src/idbuffer.c:698 src/idbuffer.c:739 src/idbuffer.c:746 src/idbuffer.c:926
-#: src/idbuffer.c:968 src/idbuffer.c:975 src/idbuffer.c:1009
-#: src/idbuffer.c:1052 src/idbuffer.c:1059 src/image.c:543 src/image.c:779
-#: src/image.c:821 src/image.c:859 src/image.c:899 src/image.c:906
-#: src/image.c:937 src/image.c:977 src/image.c:984 src/image.c:1016
-#: src/image.c:1049 src/image.c:1081 src/image.c:1120 src/image.c:1158
-#: src/image.c:1198 src/image.c:1237 src/image.c:1284 src/image.c:1330
-#: src/image.c:1369 src/image.c:1409 src/image.c:1455 src/image.c:1502
-#: src/image.c:1548 src/image.c:1594 src/image.c:1641 src/image.c:1690
-#: src/image.c:1732 src/image.c:1739 src/image.c:1774 src/image.c:1816
-#: src/image.c:1823 src/image.c:1857 src/image.c:1898 src/image.c:1905
-#: src/image.c:1940 src/image.c:1982 src/image.c:1989 src/image.c:2021
-#: src/image.c:2054 src/image.c:2086 src/image.c:2127 src/image.c:2134
-#: src/image.c:2166 src/image.c:2199 src/image.c:2231 src/image.c:2272
-#: src/image.c:2279 src/image.c:2311 src/image.c:2344 src/image.c:2377
-#: src/image.c:2424 src/image.c:2471 src/image.c:2518 src/image.c:2564
-#: src/image.c:2597 src/image.c:2630 src/image.c:2665 src/image.c:2698
-#: src/image.c:2745 src/image.c:2791 src/image.c:2837 src/image.c:2883
-#: src/image.c:2928 src/image.c:2974 src/image.c:3019 src/image.c:3065
-#: src/image.c:3106 src/image.c:3113 src/image.c:3145 src/image.c:3186
-#: src/image.c:3193 src/image.c:3227 src/image.c:3265 src/image.c:3272
-#: src/imagedef.c:392 src/imagedef_reactor.c:320 src/insert.c:499
-#: src/layer.c:342 src/layer.c:521 src/layer.c:556 src/layer.c:591
-#: src/layer.c:628 src/layer.c:664 src/layer.c:698 src/layer_index.c:349
-#: src/leader.c:601 src/line.c:438 src/line.c:678 src/line.c:724
-#: src/line.c:770 src/line.c:814 src/line.c:821 src/line.c:860 src/line.c:904
-#: src/line.c:911 src/line.c:950 src/line.c:987 src/line.c:1026
-#: src/line.c:1070 src/line.c:1116 src/line.c:1160 src/line.c:1206
-#: src/line.c:1257 src/line.c:1310 src/line.c:1353 src/line.c:1400
-#: src/line.c:1449 src/line.c:1505 src/line.c:1551 src/line.c:1558
-#: src/line.c:1600 src/line.c:1646 src/line.c:1653 src/line.c:1704
-#: src/line.c:1805 src/line.c:1812 src/line.c:1865 src/line.c:1966
-#: src/line.c:1973 src/line.c:2017 src/line.c:2077 src/line.c:2121
-#: src/line.c:2166 src/line.c:2173 src/line.c:2224 src/line.c:2326
-#: src/line.c:2397 src/ltype.c:422 src/ltype.c:687 src/ltype.c:724
-#: src/ltype.c:759 src/lwpolyline.c:464 src/mline.c:619 src/mlinestyle.c:398
-#: src/mtext.c:562 src/object_ptr.c:298 src/ole2frame.c:480 src/oleframe.c:396
-#: src/point.c:416 src/point.c:625 src/point.c:668 src/point.c:708
-#: src/point.c:749 src/point.c:756 src/point.c:789 src/point.c:830
-#: src/point.c:837 src/point.c:870 src/point.c:904 src/point.c:937
-#: src/point.c:978 src/point.c:1018 src/point.c:1059 src/point.c:1099
-#: src/point.c:1147 src/point.c:1194 src/point.c:1234 src/point.c:1275
-#: src/point.c:1321 src/point.c:1369 src/point.c:1416 src/point.c:1464
-#: src/point.c:1512 src/point.c:1563 src/point.c:1606 src/point.c:1613
-#: src/point.c:1649 src/point.c:1692 src/point.c:1699 src/point.c:1735
-#: src/point.c:1777 src/point.c:1784 src/point.c:1820 src/point.c:1863
-#: src/point.c:1870 src/point.c:1904 src/point.c:1938 src/point.c:1972
-#: src/point.c:2014 src/point.c:2021 src/point.c:2055 src/point.c:2089
-#: src/point.c:2123 src/point.c:2165 src/point.c:2172 src/point.c:2206
-#: src/point.c:2240 src/point.c:2273 src/point.c:2308 src/point.c:2341
-#: src/point.c:2376 src/point.c:2409 src/point.c:2444 src/point.c:2477
-#: src/point.c:2511 src/point.c:2547 src/point.c:2595 src/point.c:2633
-#: src/point.c:2675 src/point.c:2682 src/polyline.c:481
+#: src/comment.c:245 src/comment.c:285 src/comment.c:397 src/comment.c:436
+#: src/comment.c:443 src/dictionary.c:293 src/dictionary.c:449
+#: src/dictionary.c:488 src/dictionary.c:529 src/dictionary.c:568
+#: src/dictionary.c:575 src/dictionary.c:609 src/dictionary.c:648
+#: src/dictionary.c:655 src/dictionary.c:686 src/dictionary.c:723
+#: src/dictionary.c:730 src/dictionary.c:761 src/dictionary.c:799
+#: src/dictionary.c:806 src/dictionary.c:840 src/dictionary.c:879
+#: src/dictionary.c:886 src/dictionaryvar.c:293 src/dictionaryvar.c:454
+#: src/dictionaryvar.c:494 src/dictionaryvar.c:537 src/dictionaryvar.c:577
+#: src/dictionaryvar.c:584 src/dictionaryvar.c:620 src/dictionaryvar.c:660
+#: src/dictionaryvar.c:667 src/dictionaryvar.c:700 src/dictionaryvar.c:738
+#: src/dictionaryvar.c:745 src/dictionaryvar.c:780 src/dictionaryvar.c:819
+#: src/dictionaryvar.c:826 src/dictionaryvar.c:862 src/dictionaryvar.c:902
+#: src/dictionaryvar.c:909 src/dimension.c:670 src/dimension.c:967
+#: src/dimension.c:1002 src/dimension.c:1044 src/dimension.c:1082
+#: src/dimension.c:1122 src/dimension.c:1129 src/dimension.c:1160
+#: src/dimension.c:1200 src/dimension.c:1207 src/dimension.c:1238
+#: src/dimension.c:1271 src/dimension.c:1302 src/dimension.c:1342
+#: src/dimension.c:1380 src/dimension.c:1420 src/dimension.c:1458
+#: src/dimension.c:1505 src/dimension.c:1550 src/dimension.c:1589
+#: src/dimension.c:1629 src/dimension.c:1674 src/dimension.c:1721
+#: src/dimension.c:1767 src/dimension.c:1812 src/dimension.c:1859
+#: src/dimension.c:1908 src/dimension.c:1950 src/dimension.c:1957
+#: src/dimension.c:1992 src/dimension.c:2034 src/dimension.c:2041
+#: src/dimension.c:2075 src/dimension.c:2117 src/dimension.c:2124
+#: src/dimension.c:2159 src/dimension.c:2201 src/dimension.c:2208
+#: src/dimension.c:2240 src/dimension.c:2273 src/dimension.c:2305
+#: src/dimension.c:2346 src/dimension.c:2353 src/dimension.c:2385
+#: src/dimension.c:2418 src/dimension.c:2450 src/dimension.c:2491
+#: src/dimension.c:2498 src/dimension.c:2530 src/dimension.c:2563
+#: src/dimension.c:2595 src/dimension.c:2635 src/dimension.c:2642
+#: src/dimension.c:2674 src/dimension.c:2714 src/dimension.c:2721
+#: src/dimension.c:2753 src/dimension.c:2793 src/dimension.c:2800
+#: src/dimension.c:2833 src/dimension.c:2840 src/dimension.c:2874
+#: src/dimension.c:2881 src/dimension.c:2914 src/dimension.c:2955
+#: src/dimension.c:2995 src/dimension.c:3036 src/dimension.c:3076
+#: src/dimension.c:3117 src/dimension.c:3157 src/dimension.c:3164
+#: src/dimension.c:3198 src/dimension.c:3205 src/dimension.c:3238
+#: src/dimension.c:3279 src/dimension.c:3319 src/dimension.c:3360
+#: src/dimension.c:3401 src/dimension.c:3442 src/dimension.c:3482
+#: src/dimension.c:3489 src/dimension.c:3523 src/dimension.c:3530
+#: src/dimension.c:3563 src/dimension.c:3604 src/dimension.c:3644
+#: src/dimension.c:3686 src/dimension.c:3726 src/dimension.c:3767
+#: src/dimension.c:3807 src/dimension.c:3814 src/dimension.c:3848
+#: src/dimension.c:3855 src/dimension.c:3888 src/dimension.c:3930
+#: src/dimension.c:3970 src/dimension.c:4012 src/dimension.c:4052
+#: src/dimension.c:4094 src/dimension.c:4134 src/dimension.c:4175
+#: src/dimension.c:4182 src/dimension.c:4215 src/dimension.c:4256
+#: src/dimension.c:4296 src/dimension.c:4337 src/dimension.c:4377
+#: src/dimension.c:4418 src/dimension.c:4458 src/dimension.c:4499
+#: src/dimension.c:4506 src/dimension.c:4539 src/dimension.c:4580
+#: src/dimension.c:4620 src/dimension.c:4661 src/dimension.c:4701
+#: src/dimension.c:4742 src/dimension.c:4782 src/dimension.c:4823
+#: src/dimension.c:4830 src/dimension.c:4863 src/dimension.c:4904
+#: src/dimension.c:4944 src/dimension.c:4985 src/dimension.c:5025
+#: src/dimension.c:5066 src/dimension.c:5104 src/dimension.c:5137
+#: src/dimension.c:5170 src/dimension.c:5204 src/dimension.c:5236
+#: src/dimension.c:5269 src/dimension.c:5301 src/dimension.c:5335
+#: src/dimension.c:5368 src/dimension.c:5402 src/dimension.c:5435
+#: src/dimension.c:5469 src/dimension.c:5500 src/dimension.c:5533
+#: src/dimension.c:5564 src/dimension.c:5604 src/dimension.c:5641
+#: src/dimension.c:5688 src/dimension.c:5732 src/dimension.c:5779
+#: src/dimension.c:5826 src/dimension.c:5860 src/dimension.c:5893
+#: src/dimension.c:5927 src/dimension.c:5960 src/dimension.c:5994
+#: src/dimension.c:6031 src/dimension.c:6079 src/dimension.c:6116
+#: src/dimension.c:6157 src/dimension.c:6164 src/dimstyle.c:198
+#: src/dimstyle.c:980 src/dimstyle.c:1023 src/dimstyle.c:1065
+#: src/dimstyle.c:1108 src/dimstyle.c:1150 src/dimstyle.c:1193
+#: src/dimstyle.c:1235 src/dimstyle.c:1277 src/dimstyle.c:1319
+#: src/dimstyle.c:1362 src/dimstyle.c:1404 src/dimstyle.c:1447
+#: src/dimstyle.c:1489 src/dimstyle.c:1530 src/dimstyle.c:1572
+#: src/dimstyle.c:1613 src/dimstyle.c:1655 src/dimstyle.c:1689
+#: src/dimstyle.c:1724 src/dimstyle.c:1758 src/dimstyle.c:1793
+#: src/dimstyle.c:1827 src/dimstyle.c:1862 src/dimstyle.c:1896
+#: src/dimstyle.c:1931 src/dimstyle.c:1965 src/dimstyle.c:2000
+#: src/dimstyle.c:2034 src/dimstyle.c:2069 src/dimstyle.c:2103
+#: src/dimstyle.c:2142 src/dimstyle.c:2179 src/dimstyle.c:2214
+#: src/dimstyle.c:2248 src/dimstyle.c:2283 src/dimstyle.c:2317
+#: src/dimstyle.c:2352 src/dimstyle.c:2386 src/dimstyle.c:2421
+#: src/dimstyle.c:2455 src/dimstyle.c:2490 src/dimstyle.c:2524
+#: src/dimstyle.c:2559 src/dimstyle.c:2593 src/dimstyle.c:2628
+#: src/dimstyle.c:2662 src/dimstyle.c:2698 src/dimstyle.c:2732
+#: src/dimstyle.c:2766 src/dimstyle.c:2801 src/dimstyle.c:2836
+#: src/dimstyle.c:2870 src/dimstyle.c:2905 src/dimstyle.c:2939
+#: src/dimstyle.c:2974 src/dimstyle.c:3008 src/dimstyle.c:3043
+#: src/dimstyle.c:3077 src/dimstyle.c:3112 src/dimstyle.c:3146
+#: src/dimstyle.c:3181 src/dimstyle.c:3215 src/dimstyle.c:3250
+#: src/dimstyle.c:3284 src/dimstyle.c:3319 src/dimstyle.c:3353
+#: src/dimstyle.c:3388 src/dimstyle.c:3422 src/dimstyle.c:3457
+#: src/dimstyle.c:3491 src/dimstyle.c:3527 src/dimstyle.c:3561
+#: src/dimstyle.c:3596 src/dimstyle.c:3630 src/dimstyle.c:3665
+#: src/dimstyle.c:3699 src/dimstyle.c:3735 src/dimstyle.c:3769
+#: src/dimstyle.c:3804 src/dimstyle.c:3838 src/dimstyle.c:3873
+#: src/dimstyle.c:3907 src/dimstyle.c:3942 src/dimstyle.c:3976
+#: src/dimstyle.c:4011 src/dimstyle.c:4057 src/dimstyle.c:4106
+#: src/dimstyle.c:4142 src/dimstyle.c:4179 src/dimstyle.c:4215
+#: src/dimstyle.c:4250 src/dimstyle.c:4284 src/dimstyle.c:4321
+#: src/dimstyle.c:4357 src/dimstyle.c:4393 src/dimstyle.c:4439
+#: src/dimstyle.c:4486 src/dimstyle.c:4532 src/dimstyle.c:4579
+#: src/dimstyle.c:4625 src/dimstyle.c:4673 src/dimstyle.c:4719
+#: src/dimstyle.c:4766 src/dimstyle.c:4812 src/dimstyle.c:4859
+#: src/dimstyle.c:4905 src/dimstyle.c:4954 src/dimstyle.c:5002
+#: src/dimstyle.c:5051 src/dimstyle.c:5098 src/dimstyle.c:5145
+#: src/dimstyle.c:5191 src/dimstyle.c:5239 src/dimstyle.c:5285
+#: src/dimstyle.c:5332 src/dimstyle.c:5366 src/dimstyle.c:5373
+#: src/dimstyle.c:5410 src/dimstyle.c:5451 src/dimstyle.c:5458 src/donut.c:192
+#: src/donut.c:410 src/donut.c:451 src/donut.c:489 src/donut.c:532
+#: src/donut.c:539 src/donut.c:571 src/donut.c:613 src/donut.c:620
+#: src/donut.c:651 src/donut.c:684 src/donut.c:715 src/donut.c:754
+#: src/donut.c:791 src/donut.c:830 src/donut.c:867 src/donut.c:914
+#: src/donut.c:959 src/donut.c:998 src/donut.c:1038 src/donut.c:1083
+#: src/donut.c:1130 src/donut.c:1176 src/donut.c:1221 src/donut.c:1268
+#: src/donut.c:1315 src/donut.c:1355 src/donut.c:1362 src/donut.c:1396
+#: src/donut.c:1435 src/donut.c:1442 src/donut.c:1477 src/donut.c:1519
+#: src/donut.c:1526 src/donut.c:1560 src/donut.c:1602 src/donut.c:1609
+#: src/donut.c:1641 src/donut.c:1674 src/donut.c:1706 src/donut.c:1747
+#: src/donut.c:1754 src/donut.c:1786 src/donut.c:1819 src/donut.c:1851
+#: src/donut.c:1892 src/donut.c:1899 src/donut.c:1931 src/donut.c:1964
+#: src/donut.c:1995 src/donut.c:2002 src/donut.c:2035 src/donut.c:2042
+#: src/donut.c:2075 src/donut.c:2082 src/donut.c:2117 src/donut.c:2124
+#: src/donut.c:2157 src/donut.c:2164 src/donut.c:2199 src/donut.c:2206
+#: src/donut.c:2239 src/donut.c:2246 src/donut.c:2281 src/donut.c:2288
+#: src/donut.c:2320 src/donut.c:2354 src/donut.c:2386 src/donut.c:2420
+#: src/donut.c:2454 src/donut.c:2495 src/donut.c:2502 src/drawing.c:176
+#: src/drawing.c:218 src/drawing.c:225 src/drawing.c:258 src/drawing.c:300
+#: src/drawing.c:307 src/drawing.c:340 src/drawing.c:382 src/drawing.c:389
+#: src/drawing.c:422 src/drawing.c:464 src/drawing.c:471 src/drawing.c:505
+#: src/drawing.c:547 src/drawing.c:554 src/drawing.c:588 src/drawing.c:630
+#: src/drawing.c:637 src/drawing.c:670 src/drawing.c:712 src/drawing.c:719
+#: src/ellipse.c:462 src/ellipse.c:679 src/ellipse.c:719 src/ellipse.c:759
+#: src/ellipse.c:797 src/ellipse.c:804 src/ellipse.c:837 src/ellipse.c:875
+#: src/ellipse.c:882 src/ellipse.c:915 src/ellipse.c:946 src/ellipse.c:979
+#: src/ellipse.c:1017 src/ellipse.c:1057 src/ellipse.c:1095 src/ellipse.c:1135
+#: src/ellipse.c:1180 src/ellipse.c:1227 src/ellipse.c:1264 src/ellipse.c:1305
+#: src/ellipse.c:1348 src/ellipse.c:1395 src/ellipse.c:1442 src/ellipse.c:1487
+#: src/ellipse.c:1534 src/ellipse.c:1582 src/ellipse.c:1621 src/ellipse.c:1628
+#: src/ellipse.c:1664 src/ellipse.c:1704 src/ellipse.c:1711 src/ellipse.c:1745
+#: src/ellipse.c:1786 src/ellipse.c:1793 src/ellipse.c:1829 src/ellipse.c:1869
+#: src/ellipse.c:1876 src/ellipse.c:1908 src/ellipse.c:1941 src/ellipse.c:1973
+#: src/ellipse.c:2014 src/ellipse.c:2021 src/ellipse.c:2053 src/ellipse.c:2086
+#: src/ellipse.c:2118 src/ellipse.c:2159 src/ellipse.c:2166 src/ellipse.c:2198
+#: src/ellipse.c:2231 src/ellipse.c:2262 src/ellipse.c:2301 src/ellipse.c:2308
+#: src/ellipse.c:2341 src/ellipse.c:2348 src/ellipse.c:2393 src/ellipse.c:2480
+#: src/ellipse.c:2487 src/ellipse.c:2523 src/ellipse.c:2569 src/ellipse.c:2616
+#: src/ellipse.c:2647 src/ellipse.c:2680 src/ellipse.c:2711 src/ellipse.c:2747
+#: src/ellipse.c:2792 src/ellipse.c:2830 src/ellipse.c:2869 src/ellipse.c:2876
+#: src/endblk.c:275 src/endblk.c:369 src/endblk.c:415 src/endblk.c:461
+#: src/endblk.c:505 src/endblk.c:512 src/endblk.c:554 src/endblk.c:600
+#: src/endblk.c:607 src/group.c:326 src/group.c:513 src/group.c:559
+#: src/group.c:608 src/group.c:654 src/group.c:661 src/group.c:703
+#: src/group.c:749 src/group.c:756 src/group.c:795 src/group.c:844
+#: src/group.c:889 src/group.c:938 src/group.c:989 src/group.c:1033
+#: src/group.c:1040 src/group.c:1080 src/group.c:1125 src/group.c:1132
+#: src/group.c:1174 src/group.c:1219 src/group.c:1226 src/hatch.c:194
+#: src/hatch.c:363 src/hatch.c:447 src/hatch.c:487 src/hatch.c:527
+#: src/hatch.c:565 src/hatch.c:572 src/hatch.c:605 src/hatch.c:643
+#: src/hatch.c:650 src/hatch.c:683 src/hatch.c:714 src/hatch.c:747
+#: src/hatch.c:784 src/hatch.c:823 src/hatch.c:861 src/hatch.c:901
+#: src/hatch.c:946 src/hatch.c:993 src/hatch.c:1030 src/hatch.c:1071
+#: src/hatch.c:1114 src/hatch.c:1161 src/hatch.c:1205 src/hatch.c:1255
+#: src/hatch.c:1295 src/hatch.c:1302 src/hatch.c:1338 src/hatch.c:1378
+#: src/hatch.c:1385 src/hatch.c:1421 src/hatch.c:1461 src/hatch.c:1468
+#: src/hatch.c:1501 src/hatch.c:1539 src/hatch.c:1546 src/hatch.c:1579
+#: src/hatch.c:1610 src/hatch.c:1643 src/hatch.c:1674 src/hatch.c:1707
+#: src/hatch.c:1738 src/hatch.c:1771 src/hatch.c:1802 src/hatch.c:1835
+#: src/hatch.c:1866 src/hatch.c:1899 src/hatch.c:1930 src/hatch.c:1963
+#: src/hatch.c:2008 src/hatch.c:2055 src/hatch.c:2100 src/hatch.c:2147
+#: src/hatch.c:2192 src/hatch.c:2239 src/hatch.c:2284 src/hatch.c:2331
+#: src/hatch.c:2376 src/hatch.c:2423 src/hatch.c:2454 src/hatch.c:2487
+#: src/hatch.c:2518 src/hatch.c:2551 src/hatch.c:2582 src/hatch.c:2617
+#: src/hatch.c:2655 src/hatch.c:2662 src/hatch.c:2697 src/hatch.c:2735
+#: src/hatch.c:2742 src/hatch.c:2778 src/hatch.c:2817 src/hatch.c:2824
+#: src/hatch.c:2941 src/hatch.c:3017 src/hatch.c:3057 src/hatch.c:3098
+#: src/hatch.c:3137 src/hatch.c:3180 src/hatch.c:3212 src/hatch.c:3219
+#: src/hatch.c:3253 src/hatch.c:3292 src/hatch.c:3335 src/hatch.c:3367
+#: src/hatch.c:3374 src/hatch.c:3410 src/hatch.c:3450 src/hatch.c:3457
+#: src/hatch.c:3564 src/hatch.c:3640 src/hatch.c:3671 src/hatch.c:3707
+#: src/hatch.c:3747 src/hatch.c:3754 src/hatch.c:3876 src/hatch.c:3883
+#: src/hatch.c:3956 src/hatch.c:4031 src/hatch.c:4071 src/hatch.c:4111
+#: src/hatch.c:4142 src/hatch.c:4176 src/hatch.c:4207 src/hatch.c:4241
+#: src/hatch.c:4272 src/hatch.c:4306 src/hatch.c:4338 src/hatch.c:4372
+#: src/hatch.c:4404 src/hatch.c:4438 src/hatch.c:4477 src/hatch.c:4520
+#: src/hatch.c:4552 src/hatch.c:4559 src/hatch.c:4595 src/hatch.c:4635
+#: src/hatch.c:4642 src/hatch.c:4757 src/hatch.c:4764 src/hatch.c:4800
+#: src/hatch.c:4875 src/hatch.c:4915 src/hatch.c:4955 src/hatch.c:4986
+#: src/hatch.c:5019 src/hatch.c:5050 src/hatch.c:5086 src/hatch.c:5126
+#: src/hatch.c:5133 src/hatch.c:5248 src/hatch.c:5255 src/hatch.c:5332
+#: src/hatch.c:5408 src/hatch.c:5448 src/hatch.c:5490 src/hatch.c:5521
+#: src/hatch.c:5528 src/hatch.c:5563 src/hatch.c:5594 src/hatch.c:5601
+#: src/hatch.c:5637 src/hatch.c:5677 src/hatch.c:5684 src/hatch.c:5801
+#: src/hatch.c:5808 src/hatch.c:5868 src/hatch.c:5944 src/hatch.c:5984
+#: src/hatch.c:6025 src/hatch.c:6071 src/hatch.c:6119 src/hatch.c:6158
+#: src/hatch.c:6201 src/hatch.c:6232 src/hatch.c:6239 src/hatch.c:6275
+#: src/hatch.c:6315 src/hatch.c:6322 src/hatch.c:6648 src/hatch.c:6655
+#: src/hatch.c:6695 src/hatch.c:6772 src/hatch.c:6814 src/hatch.c:6856
+#: src/hatch.c:6890 src/hatch.c:6925 src/hatch.c:6959 src/hatch.c:6994
+#: src/hatch.c:7027 src/hatch.c:7062 src/hatch.c:7109 src/hatch.c:7160
+#: src/hatch.c:7201 src/hatch.c:7208 src/hatch.c:7253 src/hatch.c:7260
+#: src/hatch.c:7394 src/hatch.c:7473 src/hatch.c:7513 src/hatch.c:7554
+#: src/hatch.c:7561 src/hatch.c:7602 src/hatch.c:7609 src/hatch.c:7643
+#: src/hatch.c:7650 src/hatch.c:7691 src/hatch.c:7698 src/hatch.c:7732
+#: src/hatch.c:7739 src/hatch.c:7780 src/hatch.c:7787 src/hatch.c:7821
+#: src/hatch.c:7828 src/hatch.c:7869 src/hatch.c:7876 src/hatch.c:7912
+#: src/hatch.c:7952 src/hatch.c:7959 src/hatch.c:8077 src/hatch.c:8152
+#: src/hatch.c:8192 src/hatch.c:8233 src/hatch.c:8265 src/hatch.c:8299
+#: src/hatch.c:8331 src/hatch.c:8368 src/hatch.c:8417 src/hatch.c:8424
+#: src/hatch.c:8458 src/hatch.c:8503 src/hatch.c:8550 src/hatch.c:8581
+#: src/hatch.c:8614 src/hatch.c:8645 src/hatch.c:8679 src/hatch.c:8716
+#: src/hatch.c:8758 src/hatch.c:8798 src/hatch.c:8805 src/hatch.c:8925
+#: src/hatch.c:9002 src/hatch.c:9043 src/hatch.c:9085 src/hatch.c:9119
+#: src/hatch.c:9154 src/hatch.c:9188 src/hatch.c:9227 src/hatch.c:9278
+#: src/hatch.c:9285 src/hatch.c:9321 src/hatch.c:9355 src/hatch.c:9390
+#: src/hatch.c:9424 src/hatch.c:9463 src/hatch.c:9514 src/hatch.c:9521
+#: src/hatch.c:9557 src/hatch.c:9604 src/hatch.c:9653 src/hatch.c:9686
+#: src/hatch.c:9721 src/hatch.c:9754 src/hatch.c:9789 src/hatch.c:9828
+#: src/hatch.c:9871 src/hatch.c:9912 src/hatch.c:9919 src/hatch.c:10035
+#: src/hatch.c:10111 src/hatch.c:10152 src/hatch.c:10193 src/hatch.c:10226
+#: src/hatch.c:10260 src/hatch.c:10293 src/hatch.c:10330 src/hatch.c:10387
+#: src/hatch.c:10394 src/hatch.c:10429 src/hatch.c:10462 src/hatch.c:10496
+#: src/hatch.c:10529 src/hatch.c:10566 src/hatch.c:10623 src/hatch.c:10630
+#: src/hatch.c:10667 src/hatch.c:10707 src/hatch.c:10714 src/hatch.c:10838
+#: src/hatch.c:10915 src/hatch.c:10956 src/hatch.c:10997 src/hatch.c:11036
+#: src/hatch.c:11077 src/hatch.c:11109 src/hatch.c:11143 src/hatch.c:11175
+#: src/hatch.c:11209 src/hatch.c:11248 src/hatch.c:11293 src/hatch.c:11331
+#: src/hatch.c:11375 src/hatch.c:11415 src/hatch.c:11458 src/hatch.c:11491
+#: src/hatch.c:11498 src/hatch.c:11534 src/hatch.c:11573 src/hatch.c:11580
+#: src/hatch.c:13033 src/hatch.c:13110 src/hatch.c:13152 src/hatch.c:13194
+#: src/hatch.c:13228 src/hatch.c:13263 src/hatch.c:13297 src/hatch.c:13336
+#: src/hatch.c:13388 src/hatch.c:13395 src/hatch.c:13505 src/hatch.c:13547
+#: src/hatch.c:13554 src/header.c:942 src/helix.c:544 src/helix.c:806
+#: src/helix.c:848 src/helix.c:886 src/helix.c:926 src/helix.c:933
+#: src/helix.c:964 src/helix.c:1004 src/helix.c:1011 src/helix.c:1043
+#: src/helix.c:1082 src/helix.c:1120 src/helix.c:1160 src/helix.c:1199
+#: src/helix.c:1246 src/helix.c:1292 src/helix.c:1331 src/helix.c:1371
+#: src/helix.c:1417 src/helix.c:1463 src/helix.c:1509 src/helix.c:1555
+#: src/helix.c:1602 src/helix.c:1650 src/helix.c:1692 src/helix.c:1699
+#: src/helix.c:1734 src/helix.c:1776 src/helix.c:1783 src/helix.c:1817
+#: src/helix.c:1858 src/helix.c:1865 src/helix.c:1900 src/helix.c:1942
+#: src/helix.c:1949 src/helix.c:1981 src/helix.c:2014 src/helix.c:2046
+#: src/helix.c:2087 src/helix.c:2094 src/helix.c:2126 src/helix.c:2159
+#: src/helix.c:2191 src/helix.c:2232 src/helix.c:2239 src/helix.c:2271
+#: src/helix.c:2304 src/helix.c:2336 src/helix.c:2376 src/helix.c:2383
+#: src/helix.c:2415 src/helix.c:2449 src/helix.c:2481 src/helix.c:2515
+#: src/helix.c:2547 src/helix.c:2581 src/helix.c:2613 src/helix.c:2653
+#: src/helix.c:2660 src/helix.c:2692 src/helix.c:2726 src/helix.c:2758
+#: src/helix.c:2791 src/helix.c:2823 src/helix.c:2857 src/helix.c:2889
+#: src/helix.c:2923 src/helix.c:2955 src/helix.c:2989 src/helix.c:3021
+#: src/helix.c:3055 src/helix.c:3087 src/helix.c:3120 src/helix.c:3152
+#: src/helix.c:3185 src/helix.c:3217 src/helix.c:3250 src/helix.c:3282
+#: src/helix.c:3316 src/helix.c:3349 src/helix.c:3383 src/helix.c:3415
+#: src/helix.c:3462 src/helix.c:3508 src/helix.c:3555 src/helix.c:3601
+#: src/helix.c:3608 src/helix.c:3641 src/helix.c:3648 src/helix.c:3682
+#: src/helix.c:3723 src/helix.c:3730 src/idbuffer.c:296 src/idbuffer.c:447
+#: src/idbuffer.c:489 src/idbuffer.c:531 src/idbuffer.c:573 src/idbuffer.c:580
+#: src/idbuffer.c:615 src/idbuffer.c:657 src/idbuffer.c:664 src/idbuffer.c:698
+#: src/idbuffer.c:739 src/idbuffer.c:746 src/idbuffer.c:926 src/idbuffer.c:968
+#: src/idbuffer.c:975 src/idbuffer.c:1009 src/idbuffer.c:1052
+#: src/idbuffer.c:1059 src/image.c:543 src/image.c:779 src/image.c:821
+#: src/image.c:859 src/image.c:899 src/image.c:906 src/image.c:937
+#: src/image.c:977 src/image.c:984 src/image.c:1016 src/image.c:1049
+#: src/image.c:1081 src/image.c:1120 src/image.c:1158 src/image.c:1198
+#: src/image.c:1237 src/image.c:1284 src/image.c:1330 src/image.c:1369
+#: src/image.c:1409 src/image.c:1455 src/image.c:1502 src/image.c:1548
+#: src/image.c:1594 src/image.c:1641 src/image.c:1690 src/image.c:1732
+#: src/image.c:1739 src/image.c:1774 src/image.c:1816 src/image.c:1823
+#: src/image.c:1857 src/image.c:1898 src/image.c:1905 src/image.c:1940
+#: src/image.c:1982 src/image.c:1989 src/image.c:2021 src/image.c:2054
+#: src/image.c:2086 src/image.c:2127 src/image.c:2134 src/image.c:2166
+#: src/image.c:2199 src/image.c:2231 src/image.c:2272 src/image.c:2279
+#: src/image.c:2311 src/image.c:2344 src/image.c:2377 src/image.c:2424
+#: src/image.c:2471 src/image.c:2518 src/image.c:2564 src/image.c:2597
+#: src/image.c:2630 src/image.c:2665 src/image.c:2698 src/image.c:2745
+#: src/image.c:2791 src/image.c:2837 src/image.c:2883 src/image.c:2928
+#: src/image.c:2974 src/image.c:3019 src/image.c:3065 src/image.c:3106
+#: src/image.c:3113 src/image.c:3145 src/image.c:3186 src/image.c:3193
+#: src/image.c:3227 src/image.c:3265 src/image.c:3272 src/imagedef.c:392
+#: src/imagedef_reactor.c:320 src/insert.c:499 src/layer.c:342 src/layer.c:521
+#: src/layer.c:556 src/layer.c:591 src/layer.c:628 src/layer.c:664
+#: src/layer.c:698 src/layer_index.c:349 src/leader.c:601 src/line.c:438
+#: src/line.c:678 src/line.c:724 src/line.c:770 src/line.c:814 src/line.c:821
+#: src/line.c:860 src/line.c:904 src/line.c:911 src/line.c:950 src/line.c:987
+#: src/line.c:1026 src/line.c:1070 src/line.c:1116 src/line.c:1160
+#: src/line.c:1206 src/line.c:1257 src/line.c:1310 src/line.c:1353
+#: src/line.c:1400 src/line.c:1449 src/line.c:1505 src/line.c:1551
+#: src/line.c:1558 src/line.c:1600 src/line.c:1646 src/line.c:1653
+#: src/line.c:1704 src/line.c:1805 src/line.c:1812 src/line.c:1865
+#: src/line.c:1966 src/line.c:1973 src/line.c:2017 src/line.c:2077
+#: src/line.c:2121 src/line.c:2166 src/line.c:2173 src/line.c:2224
+#: src/line.c:2326 src/line.c:2397 src/ltype.c:422 src/ltype.c:687
+#: src/ltype.c:724 src/ltype.c:759 src/lwpolyline.c:464 src/mline.c:619
+#: src/mlinestyle.c:398 src/mtext.c:562 src/object_id.c:200
+#: src/object_id.c:237 src/object_id.c:244 src/object_id.c:275
+#: src/object_id.c:315 src/object_id.c:356 src/object_id.c:395
+#: src/object_id.c:402 src/object_ptr.c:298 src/ole2frame.c:480
+#: src/oleframe.c:396 src/point.c:416 src/point.c:625 src/point.c:668
+#: src/point.c:708 src/point.c:749 src/point.c:756 src/point.c:789
+#: src/point.c:830 src/point.c:837 src/point.c:870 src/point.c:904
+#: src/point.c:937 src/point.c:978 src/point.c:1018 src/point.c:1059
+#: src/point.c:1099 src/point.c:1147 src/point.c:1194 src/point.c:1234
+#: src/point.c:1275 src/point.c:1321 src/point.c:1369 src/point.c:1416
+#: src/point.c:1464 src/point.c:1512 src/point.c:1563 src/point.c:1606
+#: src/point.c:1613 src/point.c:1649 src/point.c:1692 src/point.c:1699
+#: src/point.c:1735 src/point.c:1777 src/point.c:1784 src/point.c:1820
+#: src/point.c:1863 src/point.c:1870 src/point.c:1904 src/point.c:1938
+#: src/point.c:1972 src/point.c:2014 src/point.c:2021 src/point.c:2055
+#: src/point.c:2089 src/point.c:2123 src/point.c:2165 src/point.c:2172
+#: src/point.c:2206 src/point.c:2240 src/point.c:2273 src/point.c:2308
+#: src/point.c:2341 src/point.c:2376 src/point.c:2409 src/point.c:2444
+#: src/point.c:2477 src/point.c:2511 src/point.c:2547 src/point.c:2595
+#: src/point.c:2633 src/point.c:2675 src/point.c:2682 src/polyline.c:481
 #: src/proprietary_data.c:203 src/proprietary_data.c:241
 #: src/proprietary_data.c:279 src/proprietary_data.c:319
 #: src/proprietary_data.c:326 src/proprietary_data.c:358
@@ -720,8 +787,8 @@ msgid ""
 "Warning in %s () invalid layer string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/3dface.c:534 src/3dsolid.c:524 src/arc.c:502 src/attdef.c:580
-#: src/body.c:430 src/circle.c:447 src/dimension.c:705 src/ellipse.c:487
+#: src/3dface.c:534 src/3dsolid.c:524 src/arc.c:502 src/attdef.c:562
+#: src/body.c:421 src/circle.c:436 src/dimension.c:692 src/ellipse.c:493
 #: src/leader.c:629 src/mtext.c:598 src/ole2frame.c:508 src/oleframe.c:424
 #: src/point.c:439 src/region.c:428 src/seqend.c:395 src/shape.c:493
 #: src/solid.c:507 src/text.c:519 src/tolerance.c:481 src/trace.c:506
@@ -745,230 +812,241 @@ msgstr ""
 msgid "Error in %s () pointer to next Dxf3dface was not NULL.\n"
 msgstr ""
 
-#: src/3dface.c:790
+#: src/3dface.c:790 src/donut.c:417
 #, c-format
 msgid "Warning in %s () a negative value was found in the id-code member.\n"
 msgstr ""
 
-#: src/3dface.c:831
+#: src/3dface.c:831 src/donut.c:458
 #, c-format
 msgid "Warning in %s () a negative id-code value was passed.\n"
 msgstr ""
 
 #: src/3dface.c:869 src/3dline.c:856 src/3dsolid.c:851
-#: src/acad_proxy_entity.c:890 src/arc.c:781 src/attdef.c:959 src/attrib.c:970
-#: src/body.c:744 src/circle.c:750 src/dimension.c:1134 src/ellipse.c:784
-#: src/hatch.c:534 src/helix.c:893 src/image.c:866 src/line.c:777
-#: src/point.c:715 src/spline.c:1157
+#: src/acad_proxy_entity.c:885 src/arc.c:776 src/attdef.c:906 src/attrib.c:917
+#: src/body.c:701 src/circle.c:704 src/dimension.c:1089 src/donut.c:496
+#: src/ellipse.c:766 src/hatch.c:534 src/helix.c:893 src/image.c:866
+#: src/line.c:777 src/point.c:715 src/spline.c:1157
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the linetype member.\n"
 msgstr ""
 
 #: src/3dface.c:951 src/3dline.c:931 src/3dsolid.c:926
-#: src/acad_proxy_entity.c:968 src/arc.c:859 src/attdef.c:1049
-#: src/attrib.c:1060 src/block.c:1142 src/body.c:834 src/circle.c:840
-#: src/dimension.c:1224 src/ellipse.c:874 src/endblk.c:468 src/hatch.c:612
+#: src/acad_proxy_entity.c:960 src/arc.c:851 src/attdef.c:981 src/attrib.c:992
+#: src/block.c:1029 src/body.c:776 src/circle.c:779 src/dimension.c:1167
+#: src/donut.c:578 src/ellipse.c:844 src/endblk.c:468 src/hatch.c:612
 #: src/helix.c:971 src/image.c:944 src/line.c:867 src/point.c:796
 #: src/spline.c:1235
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the layer member.\n"
 msgstr ""
 
-#: src/3dface.c:1095 src/acad_proxy_entity.c:1108 src/hatch.c:754
-#: src/helix.c:1050 src/image.c:1088 src/spline.c:1379
+#: src/3dface.c:1095 src/acad_proxy_entity.c:1099 src/donut.c:722
+#: src/hatch.c:754 src/helix.c:1050 src/image.c:1088 src/spline.c:1379
 #, c-format
 msgid "Warning in %s () a negative value was found in the thickness member.\n"
 msgstr ""
 
-#: src/3dface.c:1134 src/acad_proxy_entity.c:1147 src/hatch.c:791
-#: src/helix.c:1089 src/image.c:1127 src/spline.c:1418
+#: src/3dface.c:1134 src/acad_proxy_entity.c:1138 src/donut.c:761
+#: src/hatch.c:791 src/helix.c:1089 src/image.c:1127 src/spline.c:1418
 #, c-format
 msgid "Warning in %s () a negative thickness value was passed.\n"
 msgstr ""
 
-#: src/3dface.c:1171
+#: src/3dface.c:1171 src/donut.c:798
 #, c-format
 msgid ""
 "Warning in %s () a negative value was found in the linetype_scale member.\n"
 msgstr ""
 
-#: src/3dface.c:1210
+#: src/3dface.c:1210 src/donut.c:837
 #, c-format
 msgid "Warning in %s () a negative linetype_scale value was passed.\n"
 msgstr ""
 
 #: src/3dface.c:1247 src/3dline.c:1226 src/3dsolid.c:1212
-#: src/acad_proxy_entity.c:1264 src/arc.c:1157 src/attdef.c:1395
-#: src/attrib.c:1406 src/body.c:1180 src/circle.c:1186 src/dimension.c:1570
-#: src/ellipse.c:1220 src/hatch.c:908 src/helix.c:1206 src/image.c:1244
-#: src/line.c:1213 src/point.c:1106 src/spline.c:1535
+#: src/acad_proxy_entity.c:1250 src/arc.c:1137 src/attdef.c:1267
+#: src/attrib.c:1278 src/body.c:1062 src/circle.c:1065 src/dimension.c:1465
+#: src/donut.c:874 src/ellipse.c:1142 src/hatch.c:908 src/helix.c:1206
+#: src/image.c:1244 src/line.c:1213 src/point.c:1106 src/spline.c:1535
 #, c-format
 msgid "Error in %s () a negative value was found in the visibility member.\n"
 msgstr ""
 
 #: src/3dface.c:1254 src/3dline.c:1233 src/3dsolid.c:1219
-#: src/acad_proxy_entity.c:1271 src/arc.c:1164 src/attdef.c:1402
-#: src/attrib.c:1413 src/body.c:1187 src/circle.c:1193 src/dimension.c:1577
-#: src/ellipse.c:1227 src/hatch.c:915 src/helix.c:1213 src/image.c:1251
-#: src/line.c:1220 src/point.c:1113 src/spline.c:1542
+#: src/acad_proxy_entity.c:1257 src/arc.c:1144 src/attdef.c:1274
+#: src/attrib.c:1285 src/body.c:1069 src/circle.c:1072 src/dimension.c:1472
+#: src/donut.c:881 src/ellipse.c:1149 src/hatch.c:915 src/helix.c:1213
+#: src/image.c:1251 src/line.c:1220 src/point.c:1113 src/spline.c:1542
 #, c-format
 msgid ""
 "Error in %s () an out of range value was found in the visibility member.\n"
 msgstr ""
 
 #: src/3dface.c:1294 src/3dline.c:1273 src/3dsolid.c:1256
-#: src/acad_proxy_entity.c:1309 src/arc.c:1202 src/attdef.c:1446
-#: src/attrib.c:1457 src/body.c:1231 src/circle.c:1237 src/dimension.c:1621
-#: src/ellipse.c:1271 src/hatch.c:953 src/helix.c:1253 src/image.c:1291
-#: src/line.c:1264 src/point.c:1154 src/spline.c:1582
+#: src/acad_proxy_entity.c:1294 src/arc.c:1181 src/attdef.c:1311
+#: src/attrib.c:1322 src/body.c:1106 src/circle.c:1109 src/dimension.c:1512
+#: src/donut.c:921 src/ellipse.c:1187 src/hatch.c:953 src/helix.c:1253
+#: src/image.c:1291 src/line.c:1264 src/point.c:1154 src/spline.c:1582
 #, c-format
 msgid "Error in %s () a negative visibility value was passed.\n"
 msgstr ""
 
 #: src/3dface.c:1301 src/3dline.c:1280 src/3dsolid.c:1263
-#: src/acad_proxy_entity.c:1316 src/arc.c:1209 src/attdef.c:1453
-#: src/attrib.c:1464 src/body.c:1238 src/circle.c:1244 src/dimension.c:1628
-#: src/ellipse.c:1278 src/hatch.c:960 src/helix.c:1260 src/image.c:1298
-#: src/line.c:1271 src/point.c:1161 src/spline.c:1589
+#: src/acad_proxy_entity.c:1301 src/arc.c:1188 src/attdef.c:1318
+#: src/attrib.c:1329 src/body.c:1113 src/circle.c:1116 src/dimension.c:1519
+#: src/donut.c:928 src/ellipse.c:1194 src/hatch.c:960 src/helix.c:1260
+#: src/image.c:1298 src/line.c:1271 src/point.c:1161 src/spline.c:1589
 #, c-format
 msgid "Error in %s () an out of range visibility value was passed.\n"
 msgstr ""
 
 #: src/3dface.c:1339 src/3dline.c:1318 src/3dsolid.c:1301
-#: src/acad_proxy_entity.c:1356 src/arc.c:1249 src/attdef.c:1499
-#: src/attrib.c:1510 src/body.c:1284 src/circle.c:1290 src/dimension.c:1674
-#: src/ellipse.c:1324 src/hatch.c:1000 src/helix.c:1299 src/image.c:1337
-#: src/line.c:1317 src/point.c:1201 src/spline.c:1628
+#: src/acad_proxy_entity.c:1339 src/arc.c:1226 src/attdef.c:1356
+#: src/attrib.c:1367 src/body.c:1151 src/circle.c:1154 src/dimension.c:1557
+#: src/donut.c:966 src/ellipse.c:1234 src/hatch.c:1000 src/helix.c:1299
+#: src/image.c:1337 src/line.c:1317 src/point.c:1201 src/spline.c:1628
 #, c-format
 msgid "Warning in %s () a negative value was found in the color member.\n"
 msgstr ""
 
 #: src/3dface.c:1378 src/3dline.c:1354 src/3dsolid.c:1337
-#: src/acad_proxy_entity.c:1393 src/arc.c:1286 src/attdef.c:1542
-#: src/attrib.c:1553 src/body.c:1327 src/circle.c:1333 src/dimension.c:1717
-#: src/ellipse.c:1367 src/hatch.c:1037 src/helix.c:1338 src/image.c:1376
-#: src/line.c:1360 src/point.c:1241 src/spline.c:1667
+#: src/acad_proxy_entity.c:1375 src/arc.c:1262 src/attdef.c:1392
+#: src/attrib.c:1403 src/body.c:1187 src/circle.c:1190 src/dimension.c:1596
+#: src/donut.c:1005 src/ellipse.c:1271 src/hatch.c:1037 src/helix.c:1338
+#: src/image.c:1376 src/line.c:1360 src/point.c:1241 src/spline.c:1667
 #, c-format
 msgid "Warning in %s () a negative color value was passed.\n"
 msgstr ""
 
 #: src/3dface.c:1381 src/3dline.c:1357 src/3dsolid.c:1340
-#: src/acad_proxy_entity.c:1396 src/arc.c:1289 src/attdef.c:1545
-#: src/attrib.c:1556 src/body.c:1330 src/circle.c:1336 src/dimension.c:1720
-#: src/ellipse.c:1370 src/hatch.c:1040 src/helix.c:1341 src/image.c:1379
-#: src/line.c:1363 src/point.c:1244 src/spline.c:1670
+#: src/acad_proxy_entity.c:1378 src/arc.c:1265 src/attdef.c:1395
+#: src/attrib.c:1406 src/body.c:1190 src/circle.c:1193 src/dimension.c:1599
+#: src/donut.c:1008 src/ellipse.c:1274 src/hatch.c:1040 src/helix.c:1341
+#: src/image.c:1379 src/line.c:1363 src/point.c:1244 src/spline.c:1670
 #, c-format
 msgid "\teffectively turning this entity it's visibility off.\n"
 msgstr ""
 
 #: src/3dface.c:1417 src/3dline.c:1393 src/3dsolid.c:1376
-#: src/acad_proxy_entity.c:1435 src/arc.c:1327 src/attdef.c:1589
-#: src/attrib.c:1600 src/body.c:1374 src/circle.c:1380 src/dimension.c:1764
-#: src/ellipse.c:1414 src/hatch.c:1078 src/helix.c:1378 src/image.c:1416
-#: src/line.c:1407 src/point.c:1282 src/spline.c:1707
+#: src/acad_proxy_entity.c:1415 src/arc.c:1301 src/attdef.c:1431
+#: src/attrib.c:1442 src/body.c:1226 src/circle.c:1229 src/dimension.c:1636
+#: src/donut.c:1045 src/ellipse.c:1312 src/hatch.c:1078 src/helix.c:1378
+#: src/image.c:1416 src/line.c:1407 src/point.c:1282 src/spline.c:1707
 #, c-format
 msgid "Warning in %s () a negative value was found in the paperspace member.\n"
 msgstr ""
 
 #: src/3dface.c:1423 src/3dline.c:1399 src/3dsolid.c:1382
-#: src/acad_proxy_entity.c:1441 src/arc.c:1333 src/attdef.c:1595
-#: src/attrib.c:1606 src/body.c:1380 src/circle.c:1386 src/dimension.c:1770
-#: src/ellipse.c:1420 src/hatch.c:1084 src/helix.c:1384 src/image.c:1422
-#: src/line.c:1413 src/point.c:1288 src/spline.c:1713
+#: src/acad_proxy_entity.c:1421 src/arc.c:1307 src/attdef.c:1437
+#: src/attrib.c:1448 src/body.c:1232 src/circle.c:1235 src/dimension.c:1642
+#: src/donut.c:1051 src/ellipse.c:1318 src/hatch.c:1084 src/helix.c:1384
+#: src/image.c:1422 src/line.c:1413 src/point.c:1288 src/spline.c:1713
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the paperspace member.\n"
 msgstr ""
 
 #: src/3dface.c:1462 src/3dline.c:1438 src/3dsolid.c:1418
-#: src/acad_proxy_entity.c:1478 src/arc.c:1370 src/attdef.c:1638
-#: src/attrib.c:1649 src/body.c:1423 src/circle.c:1429 src/dimension.c:1813
-#: src/ellipse.c:1463 src/hatch.c:1121 src/helix.c:1424 src/image.c:1462
-#: src/line.c:1456 src/point.c:1328 src/spline.c:1753
+#: src/acad_proxy_entity.c:1457 src/arc.c:1343 src/attdef.c:1473
+#: src/attrib.c:1484 src/body.c:1268 src/circle.c:1271 src/dimension.c:1681
+#: src/donut.c:1090 src/ellipse.c:1355 src/hatch.c:1121 src/helix.c:1424
+#: src/image.c:1462 src/line.c:1456 src/point.c:1328 src/spline.c:1753
 #, c-format
 msgid "Error in %s () a negative paperspace value was passed.\n"
 msgstr ""
 
-#: src/3dface.c:1469 src/3dline.c:1445 src/3dsolid.c:1425 src/3dsolid.c:2541
-#: src/acad_proxy_entity.c:1485 src/arc.c:1377 src/attdef.c:1645
-#: src/attrib.c:1656 src/body.c:1430 src/circle.c:1436 src/dimension.c:1820
-#: src/ellipse.c:1470 src/hatch.c:1128 src/helix.c:1431 src/image.c:1469
-#: src/line.c:1463 src/point.c:1335 src/spline.c:1760
+#: src/3dface.c:1469 src/3dline.c:1445 src/3dsolid.c:1425 src/3dsolid.c:2538
+#: src/acad_proxy_entity.c:1464 src/arc.c:1350 src/attdef.c:1480
+#: src/attrib.c:1491 src/body.c:1275 src/circle.c:1278 src/dimension.c:1688
+#: src/donut.c:1097 src/ellipse.c:1362 src/hatch.c:1128 src/helix.c:1431
+#: src/image.c:1469 src/line.c:1463 src/point.c:1335 src/spline.c:1760
 #, c-format
 msgid "Error in %s () an out of range paperspace value was passed.\n"
 msgstr ""
 
-#: src/3dface.c:1509 src/3dline.c:1485 src/3dsolid.c:1464 src/hatch.c:1168
-#: src/helix.c:1470 src/image.c:1509 src/point.c:1376 src/spline.c:1799
+#: src/3dface.c:1509 src/3dline.c:1485 src/3dsolid.c:1464 src/body.c:1314
+#: src/circle.c:1318 src/dimension.c:1728 src/donut.c:1137 src/ellipse.c:1402
+#: src/hatch.c:1168 src/helix.c:1470 src/image.c:1509 src/point.c:1376
+#: src/spline.c:1799
 #, c-format
 msgid ""
 "Warning in %s () a negative value was found in the graphics_data_size "
 "member.\n"
 msgstr ""
 
-#: src/3dface.c:1515 src/3dline.c:1491 src/3dsolid.c:1470 src/hatch.c:1174
-#: src/helix.c:1476 src/image.c:1515 src/point.c:1382 src/spline.c:1805
+#: src/3dface.c:1515 src/3dline.c:1491 src/3dsolid.c:1470 src/body.c:1320
+#: src/circle.c:1324 src/dimension.c:1734 src/donut.c:1143 src/ellipse.c:1408
+#: src/hatch.c:1174 src/helix.c:1476 src/image.c:1515 src/point.c:1382
+#: src/spline.c:1805
 #, c-format
 msgid ""
 "Warning in %s () a zero value was found in the graphics_data_size member.\n"
 msgstr ""
 
-#: src/3dface.c:1555 src/3dline.c:1532 src/3dsolid.c:1510 src/hatch.c:1212
-#: src/helix.c:1516 src/image.c:1555 src/point.c:1423 src/spline.c:1845
+#: src/3dface.c:1555 src/3dline.c:1532 src/3dsolid.c:1510 src/body.c:1360
+#: src/circle.c:1364 src/dimension.c:1774 src/donut.c:1183 src/ellipse.c:1449
+#: src/hatch.c:1212 src/helix.c:1516 src/image.c:1555 src/point.c:1423
+#: src/spline.c:1845
 #, c-format
 msgid "Error in %s () a negative graphics_data_size value was passed.\n"
 msgstr ""
 
-#: src/3dface.c:1562
+#: src/3dface.c:1562 src/dimension.c:1781 src/donut.c:1190 src/ellipse.c:1456
 #, c-format
 msgid "Warning in %s () a zero graphics_data_size value was passed.\n"
 msgstr ""
 
 #: src/3dface.c:1600 src/3dline.c:1578 src/3dsolid.c:1556
-#: src/acad_proxy_entity.c:1524 src/helix.c:1562 src/image.c:1601
-#: src/point.c:1471 src/spline.c:1891
+#: src/acad_proxy_entity.c:1503 src/body.c:1406 src/circle.c:1410
+#: src/dimension.c:1819 src/donut.c:1228 src/ellipse.c:1494 src/helix.c:1562
+#: src/image.c:1601 src/point.c:1471 src/spline.c:1891
 #, c-format
 msgid "Error in %s () a negative value was found in the shadow_mode member.\n"
 msgstr ""
 
 #: src/3dface.c:1607 src/3dline.c:1585 src/3dsolid.c:1563
-#: src/acad_proxy_entity.c:1531 src/helix.c:1569 src/image.c:1608
-#: src/point.c:1478 src/spline.c:1898
+#: src/acad_proxy_entity.c:1510 src/body.c:1413 src/circle.c:1417
+#: src/dimension.c:1826 src/donut.c:1235 src/ellipse.c:1501 src/helix.c:1569
+#: src/image.c:1608 src/point.c:1478 src/spline.c:1898
 #, c-format
 msgid ""
 "Error in %s () an out of range value was found in the shadow_mode member.\n"
 msgstr ""
 
 #: src/3dface.c:1647 src/3dline.c:1625 src/3dsolid.c:1603
-#: src/acad_proxy_entity.c:1571 src/helix.c:1609 src/image.c:1648
-#: src/point.c:1519 src/spline.c:1938
+#: src/acad_proxy_entity.c:1550 src/body.c:1453 src/circle.c:1457
+#: src/dimension.c:1866 src/donut.c:1275 src/ellipse.c:1541 src/helix.c:1609
+#: src/image.c:1648 src/point.c:1519 src/spline.c:1938
 #, c-format
 msgid "Error in %s () a negative shadow_mode value was passed.\n"
 msgstr ""
 
 #: src/3dface.c:1654 src/3dline.c:1632 src/3dsolid.c:1610
-#: src/acad_proxy_entity.c:1578 src/helix.c:1616 src/image.c:1655
-#: src/point.c:1526 src/spline.c:1945
+#: src/acad_proxy_entity.c:1557 src/body.c:1460 src/circle.c:1464
+#: src/dimension.c:1873 src/donut.c:1282 src/ellipse.c:1548 src/helix.c:1616
+#: src/image.c:1655 src/point.c:1526 src/spline.c:1945
 #, c-format
 msgid "Error in %s () an out of range shadow_mode value was passed.\n"
 msgstr ""
 
 #: src/3dface.c:1695 src/3dline.c:1673 src/3dsolid.c:1651
-#: src/acad_proxy_entity.c:2694 src/hatch.c:1262 src/helix.c:1657
-#: src/image.c:1697 src/point.c:1570 src/spline.c:1987
+#: src/acad_proxy_entity.c:2667 src/body.c:1501 src/circle.c:1505
+#: src/dimension.c:1915 src/donut.c:1322 src/ellipse.c:1589 src/hatch.c:1262
+#: src/helix.c:1657 src/image.c:1697 src/point.c:1570 src/spline.c:1987
 #, c-format
 msgid ""
 "Error in %s () a NULL pointer was found in the binary_graphics_data member.\n"
 msgstr ""
 
-#: src/3dface.c:1775 src/3dline.c:1756 src/3dsolid.c:1734 src/3dsolid.c:2581
-#: src/acad_proxy_entity.c:1621 src/appid.c:906 src/arc.c:1420
-#: src/attdef.c:1694 src/attrib.c:1705 src/block.c:1799 src/block_record.c:908
-#: src/body.c:1479 src/circle.c:1485 src/dictionary.c:589
-#: src/dictionaryvar.c:592 src/dimension.c:1869 src/ellipse.c:1519
-#: src/endblk.c:561 src/group.c:615 src/hatch.c:1345 src/helix.c:1741
-#: src/idbuffer.c:538 src/image.c:1781 src/line.c:1512 src/point.c:1656
-#: src/spline.c:2071
+#: src/3dface.c:1775 src/3dline.c:1756 src/3dsolid.c:1734 src/3dsolid.c:2578
+#: src/acad_proxy_entity.c:1598 src/appid.c:787 src/arc.c:1391
+#: src/attdef.c:1521 src/attrib.c:1532 src/block.c:1578 src/block_record.c:801
+#: src/body.c:1584 src/circle.c:1588 src/dictionary.c:536
+#: src/dictionaryvar.c:544 src/dimension.c:1999 src/donut.c:1403
+#: src/ellipse.c:1671 src/endblk.c:561 src/group.c:615 src/hatch.c:1345
+#: src/helix.c:1741 src/idbuffer.c:538 src/image.c:1781 src/line.c:1512
+#: src/point.c:1656 src/spline.c:2071
 #, c-format
 msgid ""
 "Error in %s () a NULL pointer was found in the dictionary_owner_soft "
@@ -976,19 +1054,20 @@ msgid ""
 msgstr ""
 
 #: src/3dface.c:1855 src/3dline.c:1836 src/3dsolid.c:1815
-#: src/acad_proxy_entity.c:1702 src/helix.c:1824 src/image.c:1864
-#: src/point.c:1742 src/spline.c:2154
+#: src/acad_proxy_entity.c:1678 src/body.c:1665 src/circle.c:1669
+#: src/dimension.c:2082 src/donut.c:1484 src/ellipse.c:1752 src/helix.c:1824
+#: src/image.c:1864 src/point.c:1742 src/spline.c:2154
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the material member.\n"
 msgstr ""
 
 #: src/3dface.c:1937 src/3dline.c:1918 src/3dsolid.c:1897
-#: src/acad_proxy_entity.c:1787 src/appid.c:1001 src/arc.c:1503
-#: src/attdef.c:1789 src/attrib.c:1800 src/block_record.c:1005 src/body.c:1574
-#: src/circle.c:1580 src/dictionary.c:684 src/dictionaryvar.c:687
-#: src/dimension.c:1964 src/ellipse.c:1614 src/group.c:710 src/hatch.c:1428
-#: src/helix.c:1907 src/idbuffer.c:622 src/image.c:1947 src/line.c:1607
-#: src/point.c:1827 src/spline.c:2237
+#: src/acad_proxy_entity.c:1761 src/appid.c:867 src/arc.c:1471
+#: src/attdef.c:1601 src/attrib.c:1612 src/block_record.c:883 src/body.c:1747
+#: src/circle.c:1751 src/dictionary.c:616 src/dictionaryvar.c:627
+#: src/dimension.c:2166 src/donut.c:1567 src/ellipse.c:1836 src/group.c:710
+#: src/hatch.c:1428 src/helix.c:1907 src/idbuffer.c:622 src/image.c:1947
+#: src/line.c:1607 src/point.c:1827 src/spline.c:2237
 #, c-format
 msgid ""
 "Error in %s () a NULL pointer was found in the dictionary_owner_hard "
@@ -996,34 +1075,36 @@ msgid ""
 msgstr ""
 
 #: src/3dface.c:2083 src/3dline.c:2061 src/3dsolid.c:2040
-#: src/acad_proxy_entity.c:1932 src/helix.c:2053 src/image.c:2093
-#: src/point.c:1979 src/spline.c:2383
+#: src/acad_proxy_entity.c:1905 src/body.c:1890 src/circle.c:1894
+#: src/dimension.c:2312 src/donut.c:1713 src/ellipse.c:1980 src/helix.c:2053
+#: src/image.c:2093 src/point.c:1979 src/spline.c:2383
 #, c-format
 msgid ""
 "Error in %s () a NULL pointer was found in the plot_style_name member.\n"
 msgstr ""
 
 #: src/3dface.c:2228 src/3dline.c:2206 src/3dsolid.c:2185
-#: src/acad_proxy_entity.c:2077 src/helix.c:2198 src/image.c:2238
-#: src/point.c:2130 src/spline.c:2528
+#: src/acad_proxy_entity.c:2050 src/body.c:2035 src/circle.c:2039
+#: src/dimension.c:2457 src/donut.c:1858 src/ellipse.c:2125 src/helix.c:2198
+#: src/image.c:2238 src/point.c:2130 src/spline.c:2528
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the color_name member.\n"
 msgstr ""
 
-#: src/3dface.c:3669 src/block_record.c:668 src/dimension.c:3938
+#: src/3dface.c:3668 src/block_record.c:603 src/dimension.c:5571
 #, c-format
 msgid "Error in %s () a negative value was found in the flag member.\n"
 msgstr ""
 
-#: src/3dface.c:3676 src/block_record.c:675
+#: src/3dface.c:3675 src/block_record.c:610
 #, c-format
 msgid "Error in %s () an out of range value was found in the flag member.\n"
 msgstr ""
 
-#: src/3dface.c:3716 src/3dline.c:818 src/3dsolid.c:813 src/arc.c:741
-#: src/attdef.c:913 src/attrib.c:924 src/block.c:1096 src/block_record.c:525
-#: src/body.c:698 src/circle.c:704 src/comment.c:304 src/dictionary.c:540
-#: src/dictionaryvar.c:543 src/dimension.c:1088 src/ellipse.c:738
+#: src/3dface.c:3715 src/3dline.c:818 src/3dsolid.c:813 src/arc.c:738
+#: src/attdef.c:868 src/attrib.c:879 src/block.c:991 src/block_record.c:483
+#: src/body.c:663 src/circle.c:666 src/comment.c:292 src/dictionary.c:495
+#: src/dictionaryvar.c:501 src/dimension.c:1051 src/ellipse.c:726
 #: src/endblk.c:422 src/group.c:566 src/hatch.c:494 src/hatch.c:3064
 #: src/hatch.c:4078 src/hatch.c:4922 src/hatch.c:5455 src/hatch.c:5991
 #: src/hatch.c:6821 src/hatch.c:7520 src/hatch.c:8199 src/hatch.c:9050
@@ -1034,62 +1115,53 @@ msgstr ""
 msgid "Error in %s () a negative id-code value was passed.\n"
 msgstr ""
 
-#: src/3dface.c:3757 src/3dline.c:3193 src/3dsolid.c:2659
-#: src/acad_proxy_entity.c:2854 src/appid.c:1096 src/arc.c:2029
-#: src/attdef.c:3655 src/attrib.c:3572 src/binary_entity_data.c:411
-#: src/binary_graphics_data.c:411 src/block.c:1989 src/block_record.c:1102
-#: src/body.c:1966 src/circle.c:2026 src/class.c:1686 src/comment.c:434
-#: src/dictionary.c:960 src/dictionaryvar.c:965 src/dimension.c:4327
-#: src/dimstyle.c:6149 src/ellipse.c:2368 src/group.c:1181 src/hatch.c:2785
-#: src/hatch.c:3417 src/hatch.c:3714 src/hatch.c:4602 src/hatch.c:5093
-#: src/hatch.c:5644 src/hatch.c:6282 src/hatch.c:7167 src/hatch.c:7919
-#: src/hatch.c:8765 src/hatch.c:9878 src/hatch.c:10674 src/hatch.c:11541
-#: src/hatch.c:13512 src/helix.c:3689 src/idbuffer.c:705 src/idbuffer.c:1016
-#: src/image.c:3234 src/line.c:2128 src/point.c:2640
-#: src/proprietary_data.c:450
+#: src/3dface.c:3756 src/3dline.c:3193 src/3dsolid.c:2656
+#: src/acad_proxy_entity.c:2827 src/appid.c:947 src/arc.c:1985
+#: src/attdef.c:3185 src/attrib.c:3117 src/binary_entity_data.c:408
+#: src/binary_graphics_data.c:408 src/block.c:1738 src/block_record.c:965
+#: src/body.c:2415 src/circle.c:2864 src/class.c:1686 src/comment.c:404
+#: src/dictionary.c:847 src/dictionaryvar.c:869 src/dimension.c:6123
+#: src/dimstyle.c:5417 src/donut.c:2461 src/ellipse.c:2837 src/group.c:1181
+#: src/hatch.c:2785 src/hatch.c:3417 src/hatch.c:3714 src/hatch.c:4602
+#: src/hatch.c:5093 src/hatch.c:5644 src/hatch.c:6282 src/hatch.c:7167
+#: src/hatch.c:7919 src/hatch.c:8765 src/hatch.c:9878 src/hatch.c:10674
+#: src/hatch.c:11541 src/hatch.c:13512 src/helix.c:3689 src/idbuffer.c:705
+#: src/idbuffer.c:1016 src/image.c:3234 src/line.c:2128 src/object_id.c:363
+#: src/point.c:2640 src/proprietary_data.c:450
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the next member.\n"
 msgstr ""
 
-#: src/3dface.c:3985
+#: src/3dface.c:3984
 #, c-format
 msgid "Error in %s () to many NULL pointers were passed.\n"
 msgstr ""
 
-#: src/3dface.c:3992 src/3dline.c:3392 src/3dline.c:3555 src/arc.c:1603
-#: src/attdef.c:2273 src/attdef.c:2425 src/attrib.c:2191 src/attrib.c:2343
-#: src/block.c:1252 src/circle.c:1692 src/dimension.c:2349
-#: src/dimension.c:2503 src/dimension.c:2657 src/dimension.c:2811
-#: src/dimension.c:2965 src/dimension.c:3119 src/dimension.c:3273
-#: src/ellipse.c:1726 src/ellipse.c:1879 src/hatch.c:8383 src/hatch.c:9242
+#: src/3dface.c:3991 src/3dline.c:3392 src/3dline.c:3555 src/arc.c:1570
+#: src/attdef.c:2012 src/attdef.c:2152 src/attrib.c:1945 src/attrib.c:2085
+#: src/block.c:1126 src/ellipse.c:2408 src/hatch.c:8383 src/hatch.c:9242
 #: src/hatch.c:9478 src/hatch.c:10353 src/hatch.c:10589 src/hatch.c:13351
 #: src/line.c:1728 src/line.c:1889 src/line.c:2248 src/line.c:2426
 #, c-format
 msgid "Warning in %s () passed id_code is smaller than 0.\n"
 msgstr ""
 
-#: src/3dface.c:3998 src/3dline.c:3540 src/line.c:2411
+#: src/3dface.c:3997 src/3dline.c:3540 src/line.c:2411
 #, c-format
 msgid "Error in %s () an illegal inherit value was passed.\n"
 msgstr ""
 
-#: src/3dface.c:4141 src/3dline.c:3429 src/3dline.c:3618 src/arc.c:1640
-#: src/attdef.c:2310 src/attdef.c:2462 src/attrib.c:2228 src/attrib.c:2380
-#: src/block.c:1276 src/circle.c:1729 src/dimension.c:2386
-#: src/dimension.c:2540 src/dimension.c:2694 src/dimension.c:2848
-#: src/dimension.c:3002 src/dimension.c:3156 src/dimension.c:3310
-#: src/ellipse.c:1763 src/ellipse.c:1916 src/line.c:1765 src/line.c:1926
+#: src/3dface.c:4140 src/3dline.c:3429 src/3dline.c:3618 src/arc.c:1607
+#: src/attdef.c:2049 src/attdef.c:2189 src/attrib.c:1982 src/attrib.c:2122
+#: src/block.c:1150 src/ellipse.c:2445 src/line.c:1765 src/line.c:1926
 #: src/line.c:2285 src/line.c:2489
 #, c-format
 msgid "Warning in %s (): unknown inheritance option passed.\n"
 msgstr ""
 
-#: src/3dface.c:4144 src/3dline.c:3432 src/3dline.c:3621 src/arc.c:1643
-#: src/attdef.c:2313 src/attdef.c:2465 src/attrib.c:2231 src/attrib.c:2383
-#: src/block.c:1279 src/circle.c:1732 src/dimension.c:2389
-#: src/dimension.c:2543 src/dimension.c:2697 src/dimension.c:2851
-#: src/dimension.c:3005 src/dimension.c:3159 src/dimension.c:3313
-#: src/ellipse.c:1766 src/ellipse.c:1919 src/line.c:1768 src/line.c:1929
+#: src/3dface.c:4143 src/3dline.c:3432 src/3dline.c:3621 src/arc.c:1610
+#: src/attdef.c:2052 src/attdef.c:2192 src/attrib.c:1985 src/attrib.c:2125
+#: src/block.c:1153 src/ellipse.c:2448 src/line.c:1768 src/line.c:1929
 #: src/line.c:2288 src/line.c:2492
 #, c-format
 msgid "\tResolving to default.\n"
@@ -1118,33 +1190,33 @@ msgstr ""
 msgid "Error in %s () pointer to next Dxf3dline was not NULL.\n"
 msgstr ""
 
-#: src/3dline.c:779 src/3dsolid.c:774 src/arc.c:701 src/attdef.c:867
-#: src/attrib.c:878 src/block.c:1050 src/block_record.c:478 src/body.c:652
-#: src/circle.c:658 src/comment.c:258 src/dictionary.c:494
-#: src/dictionaryvar.c:497 src/dimension.c:1042 src/ellipse.c:692
+#: src/3dline.c:779 src/3dsolid.c:774 src/arc.c:699 src/attdef.c:829
+#: src/attrib.c:840 src/block.c:952 src/block_record.c:443 src/body.c:624
+#: src/circle.c:627 src/comment.c:252 src/dictionary.c:456
+#: src/dictionaryvar.c:461 src/dimension.c:1009 src/ellipse.c:686
 #: src/endblk.c:376 src/group.c:520 src/hatch.c:9009 src/hatch.c:10118
 #: src/line.c:685 src/point.c:632
 #, c-format
 msgid "Error in %s () a negative value was found in the id-code member.\n"
 msgstr ""
 
-#: src/3dline.c:1067 src/3dsolid.c:1062 src/arc.c:1001 src/attdef.c:1215
-#: src/attrib.c:1226 src/body.c:1000 src/circle.c:1006 src/dimension.c:1390
-#: src/ellipse.c:1040 src/line.c:1033 src/point.c:944
+#: src/3dline.c:1067 src/3dsolid.c:1062 src/arc.c:987 src/attdef.c:1117
+#: src/attrib.c:1128 src/body.c:912 src/circle.c:915 src/dimension.c:1309
+#: src/ellipse.c:986 src/line.c:1033 src/point.c:944
 #, c-format
 msgid "Error in %s () a negative value was found in the thickness member.\n"
 msgstr ""
 
-#: src/3dline.c:1104 src/3dsolid.c:1099 src/arc.c:1039 src/attdef.c:1259
-#: src/attrib.c:1270 src/body.c:1044 src/circle.c:1050 src/dimension.c:1434
-#: src/ellipse.c:1084 src/line.c:1077 src/point.c:985
+#: src/3dline.c:1104 src/3dsolid.c:1099 src/arc.c:1024 src/attdef.c:1154
+#: src/attrib.c:1165 src/body.c:949 src/circle.c:952 src/dimension.c:1349
+#: src/ellipse.c:1024 src/line.c:1077 src/point.c:985
 #, c-format
 msgid "Error in %s () a negative thickness value was passed.\n"
 msgstr ""
 
-#: src/3dline.c:1145 src/3dsolid.c:1137 src/acad_proxy_entity.c:1186
-#: src/arc.c:1079 src/attdef.c:1305 src/attrib.c:1316 src/body.c:1090
-#: src/circle.c:1096 src/dimension.c:1480 src/ellipse.c:1130 src/hatch.c:830
+#: src/3dline.c:1145 src/3dsolid.c:1137 src/acad_proxy_entity.c:1175
+#: src/arc.c:1062 src/attdef.c:1192 src/attrib.c:1203 src/body.c:987
+#: src/circle.c:990 src/dimension.c:1387 src/ellipse.c:1064 src/hatch.c:830
 #: src/helix.c:1127 src/image.c:1165 src/line.c:1123 src/point.c:1025
 #: src/spline.c:1456
 #, c-format
@@ -1152,17 +1224,18 @@ msgid ""
 "Error in %s () a negative value was found in the linetype scale member.\n"
 msgstr ""
 
-#: src/3dline.c:1185 src/3dsolid.c:1174 src/acad_proxy_entity.c:1224
-#: src/arc.c:1117 src/attdef.c:1349 src/attrib.c:1360 src/body.c:1134
-#: src/circle.c:1140 src/dimension.c:1524 src/ellipse.c:1174 src/hatch.c:868
+#: src/3dline.c:1185 src/3dsolid.c:1174 src/acad_proxy_entity.c:1212
+#: src/arc.c:1099 src/attdef.c:1229 src/attrib.c:1240 src/body.c:1024
+#: src/circle.c:1027 src/dimension.c:1427 src/ellipse.c:1102 src/hatch.c:868
 #: src/helix.c:1167 src/image.c:1205 src/line.c:1167 src/point.c:1066
 #: src/spline.c:1496
 #, c-format
 msgid "Error in %s () a negative linetype scale value was passed.\n"
 msgstr ""
 
-#: src/3dline.c:1539 src/3dsolid.c:1517 src/hatch.c:1219 src/helix.c:1523
-#: src/image.c:1562 src/point.c:1430 src/spline.c:1852
+#: src/3dline.c:1539 src/3dsolid.c:1517 src/body.c:1367 src/circle.c:1371
+#: src/hatch.c:1219 src/helix.c:1523 src/image.c:1562 src/point.c:1430
+#: src/spline.c:1852
 #, c-format
 msgid "Error in %s () a zero graphics_data_size value was passed.\n"
 msgstr ""
@@ -1181,14 +1254,11 @@ msgid ""
 "Error in %s () a 3DLINE with points with identical coordinates were passed.\n"
 msgstr ""
 
-#: src/3dline.c:3284 src/3dline.c:3385 src/arc.c:1596 src/arc.c:1947
-#: src/attdef.c:2266 src/attdef.c:2418 src/attdef.c:3561 src/attrib.c:2184
-#: src/attrib.c:2336 src/attrib.c:3478 src/block.c:1245 src/block.c:1705
-#: src/circle.c:1685 src/circle.c:1932 src/dimension.c:2342
-#: src/dimension.c:2496 src/dimension.c:2650 src/dimension.c:2804
-#: src/dimension.c:2958 src/dimension.c:3112 src/dimension.c:3266
-#: src/dimension.c:4233 src/ellipse.c:1719 src/ellipse.c:1872
-#: src/ellipse.c:2274 src/hatch.c:8376 src/hatch.c:9235 src/hatch.c:9471
+#: src/3dline.c:3284 src/3dline.c:3385 src/arc.c:1563 src/arc.c:1905
+#: src/attdef.c:2005 src/attdef.c:2145 src/attdef.c:3105 src/attrib.c:1938
+#: src/attrib.c:2078 src/attrib.c:3037 src/block.c:1119 src/block.c:1498
+#: src/circle.c:2601 src/dimension.c:6039 src/ellipse.c:2401
+#: src/ellipse.c:2755 src/hatch.c:8376 src/hatch.c:9235 src/hatch.c:9471
 #: src/hatch.c:10346 src/hatch.c:10582 src/hatch.c:13344 src/line.c:1721
 #: src/line.c:1882 src/line.c:2034 src/line.c:2241 src/point.c:79
 #: src/point.c:121 src/point.c:2555
@@ -1212,7 +1282,7 @@ msgid "Error in %s () could not allocate memory for a Dxf3dsolid struct.\n"
 msgstr ""
 
 #: src/3dsolid.c:191 src/acad_proxy_entity.c:210 src/acad_proxy_entity.c:534
-#: src/appid.c:326 src/body.c:201 src/dictionary.c:175 src/dictionaryvar.c:175
+#: src/appid.c:308 src/body.c:191 src/dictionary.c:163 src/dictionaryvar.c:163
 #: src/group.c:177 src/helix.c:564 src/idbuffer.c:165 src/image.c:552
 #: src/imagedef.c:190 src/imagedef_reactor.c:178 src/layer_index.c:186
 #: src/leader.c:217 src/mlinestyle.c:193 src/object_ptr.c:181
@@ -1223,8 +1293,8 @@ msgstr ""
 msgid "Warning in %s () illegal DXF version for this entity.\n"
 msgstr ""
 
-#: src/3dsolid.c:505 src/body.c:411 src/dictionary.c:329
-#: src/dictionaryvar.c:332 src/dimstyle.c:243 src/group.c:353
+#: src/3dsolid.c:505 src/body.c:402 src/dictionary.c:311
+#: src/dictionaryvar.c:314 src/dimstyle.c:231 src/group.c:353
 #: src/idbuffer.c:305 src/imagedef.c:401 src/imagedef_reactor.c:329
 #: src/layer_index.c:358 src/leader.c:610 src/lwpolyline.c:481 src/mline.c:636
 #: src/mlinestyle.c:415 src/mtext.c:579 src/object_ptr.c:307
@@ -1235,8 +1305,8 @@ msgid ""
 "Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n"
 msgstr ""
 
-#: src/3dsolid.c:511 src/arc.c:489 src/attdef.c:567 src/attrib.c:571
-#: src/body.c:417 src/circle.c:434 src/donut.c:203 src/ellipse.c:474
+#: src/3dsolid.c:511 src/arc.c:489 src/attdef.c:549 src/attrib.c:553
+#: src/body.c:408 src/circle.c:423 src/donut.c:212 src/ellipse.c:480
 #: src/helix.c:570 src/image.c:558 src/insert.c:508 src/leader.c:616
 #: src/line.c:459 src/lwpolyline.c:487 src/mline.c:642 src/mtext.c:585
 #: src/ole2frame.c:495 src/oleframe.c:411 src/point.c:425 src/polyline.c:517
@@ -1248,8 +1318,8 @@ msgid ""
 "Warning in %s () empty linetype string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/3dsolid.c:514 src/arc.c:492 src/attdef.c:570 src/attrib.c:574
-#: src/body.c:420 src/circle.c:437 src/donut.c:206 src/ellipse.c:477
+#: src/3dsolid.c:514 src/arc.c:492 src/attdef.c:552 src/attrib.c:556
+#: src/body.c:411 src/circle.c:426 src/donut.c:215 src/ellipse.c:483
 #: src/helix.c:573 src/image.c:561 src/insert.c:511 src/layer.c:363
 #: src/leader.c:619 src/lwpolyline.c:490 src/mtext.c:588 src/ole2frame.c:498
 #: src/oleframe.c:414 src/point.c:428 src/polyline.c:520 src/ray.c:446
@@ -1259,9 +1329,9 @@ msgstr ""
 msgid "\t%s entity is reset to default linetype"
 msgstr ""
 
-#: src/3dsolid.c:521 src/arc.c:499 src/attdef.c:577 src/block.c:450
-#: src/body.c:427 src/circle.c:444 src/dimension.c:702 src/donut.c:213
-#: src/ellipse.c:484 src/insert.c:518 src/leader.c:626 src/line.c:469
+#: src/3dsolid.c:521 src/arc.c:499 src/attdef.c:559 src/block.c:432
+#: src/body.c:418 src/circle.c:433 src/dimension.c:689 src/donut.c:222
+#: src/ellipse.c:490 src/insert.c:518 src/leader.c:626 src/line.c:469
 #: src/lwpolyline.c:497 src/mline.c:652 src/mtext.c:595 src/ole2frame.c:505
 #: src/oleframe.c:421 src/point.c:435 src/polyline.c:527 src/ray.c:453
 #: src/region.c:425 src/seqend.c:392 src/shape.c:490 src/solid.c:504
@@ -1277,27 +1347,27 @@ msgstr ""
 msgid "Error in %s () pointer to next Dxf3dsolid was not NULL.\n"
 msgstr ""
 
-#: src/3dsolid.c:2332 src/3dsolid.c:2410
+#: src/3dsolid.c:2332 src/3dsolid.c:2410 src/body.c:2182
 #, c-format
 msgid ""
 "Error in %s () a NULL pointer was found in the proprietary_data member.\n"
 msgstr ""
 
-#: src/3dsolid.c:2489
+#: src/3dsolid.c:2487
 #, c-format
 msgid ""
 "Warning in %s () a negative value was found in the "
 "modeler_format_version_number member.\n"
 msgstr ""
 
-#: src/3dsolid.c:2495
+#: src/3dsolid.c:2493
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the "
 "modeler_format_version_number member.\n"
 msgstr ""
 
-#: src/3dsolid.c:2534
+#: src/3dsolid.c:2531
 #, c-format
 msgid ""
 "Error in %s () a negative modeler_format_version_number value was passed.\n"
@@ -1329,7 +1399,7 @@ msgid ""
 "line: %d.\n"
 msgstr ""
 
-#: src/acad_proxy_entity.c:524 src/block_record.c:289 src/ellipse.c:447
+#: src/acad_proxy_entity.c:524 src/block_record.c:274 src/ellipse.c:453
 #: src/hatch.c:185 src/ray.c:437
 #, c-format
 msgid "Error in %s () illegal DXF version for this entity.\n"
@@ -1345,7 +1415,7 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfAcadProxyEntity was not NULL.\n"
 msgstr ""
 
-#: src/acad_proxy_entity.c:810 src/hatch.c:454 src/hatch.c:3024
+#: src/acad_proxy_entity.c:808 src/hatch.c:454 src/hatch.c:3024
 #: src/hatch.c:4038 src/hatch.c:4882 src/hatch.c:5415 src/hatch.c:5951
 #: src/hatch.c:6779 src/hatch.c:7480 src/hatch.c:8159 src/hatch.c:10922
 #: src/hatch.c:13117 src/helix.c:813 src/idbuffer.c:454 src/image.c:786
@@ -1354,97 +1424,97 @@ msgstr ""
 msgid "Error in %s () a negative value was found in the id_code member.\n"
 msgstr ""
 
-#: src/acad_proxy_entity.c:850
+#: src/acad_proxy_entity.c:847
 #, c-format
 msgid "Error in %s () a negative id_code value was passed.\n"
 msgstr ""
 
-#: src/acad_proxy_entity.c:2222
+#: src/acad_proxy_entity.c:2195
 #, c-format
 msgid ""
 "Warning in %s () a negative value was found in the "
 "original_custom_object_data_format member.\n"
 msgstr ""
 
-#: src/acad_proxy_entity.c:2228
+#: src/acad_proxy_entity.c:2201
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the "
 "original_custom_object_data_format member.\n"
 msgstr ""
 
-#: src/acad_proxy_entity.c:2265
+#: src/acad_proxy_entity.c:2238
 #, c-format
 msgid ""
 "Error in %s () a negative original custom object data format value was "
 "passed.\n"
 msgstr ""
 
-#: src/acad_proxy_entity.c:2272
+#: src/acad_proxy_entity.c:2245
 #, c-format
 msgid ""
 "Error in %s () an out of range original custom object data format value was "
 "passed.\n"
 msgstr ""
 
-#: src/acad_proxy_entity.c:2311 src/acad_proxy_entity.c:2388
+#: src/acad_proxy_entity.c:2284 src/acad_proxy_entity.c:2361
 #, c-format
 msgid ""
 "Warning in %s () an invalid value was found in the proxy_entity_class_id "
 "member.\n"
 msgstr ""
 
-#: src/acad_proxy_entity.c:2349 src/acad_proxy_entity.c:2426
+#: src/acad_proxy_entity.c:2322 src/acad_proxy_entity.c:2399
 #, c-format
 msgid "Error in %s () an invalid value was passed.\n"
 msgstr ""
 
-#: src/acad_proxy_entity.c:2465 src/acad_proxy_entity.c:2504
-#: src/acad_proxy_entity.c:2582
+#: src/acad_proxy_entity.c:2438 src/acad_proxy_entity.c:2477
+#: src/acad_proxy_entity.c:2555
 #, c-format
 msgid "Error in %s () an invalid graphics data size value was passed.\n"
 msgstr ""
 
-#: src/acad_proxy_entity.c:2543
+#: src/acad_proxy_entity.c:2516
 #, c-format
 msgid "Error in %s () an invalid entity data size value was passed.\n"
 msgstr ""
 
-#: src/acad_proxy_entity.c:2621
+#: src/acad_proxy_entity.c:2594
 #, c-format
 msgid "Error in %s () an invalid object drawing format value was passed.\n"
 msgstr ""
 
-#: src/acad_proxy_entity.c:2774
+#: src/acad_proxy_entity.c:2747
 #, c-format
 msgid ""
 "Error in %s () a NULL pointer was found in the binary_entity_data member.\n"
 msgstr ""
 
-#: src/appid.c:79 src/appid.c:128
+#: src/appid.c:79 src/appid.c:122
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfAppid struct.\n"
 msgstr ""
 
-#: src/appid.c:314 src/block_record.c:308
+#: src/appid.c:296 src/block_record.c:293
 #, c-format
 msgid ""
 "Error in %s empty block name string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/appid.c:317 src/block.c:407 src/block.c:419 src/block.c:434
-#: src/block_record.c:311 src/ltype.c:434 src/ucs.c:399 src/view.c:444
+#: src/appid.c:299 src/block.c:389 src/block.c:401 src/block.c:416
+#: src/block_record.c:296 src/ltype.c:434 src/ucs.c:399 src/view.c:444
 #: src/vport.c:592
 #, c-format
 msgid "\t%s entity is discarded from output.\n"
 msgstr ""
 
-#: src/appid.c:401
+#: src/appid.c:377
 #, c-format
 msgid "Error in %s () pointer to next DxfAppid was not NULL.\n"
 msgstr ""
 
-#: src/appid.c:616 src/dimstyle.c:1072 src/dimstyle.c:1169 src/dimstyle.c:1266
+#: src/appid.c:556 src/dimstyle.c:1030 src/dimstyle.c:1115 src/dimstyle.c:1200
 #, c-format
 msgid "Warning in %s () the string name contained a NULL pointer.\n"
 msgstr ""
@@ -1471,245 +1541,247 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfArc was not NULL.\n"
 msgstr ""
 
-#: src/arc.c:1723 src/circle.c:1824 src/hatch.c:8465
+#: src/arc.c:1688 src/circle.c:2506 src/circle.c:2940 src/circle.c:2984
+#: src/circle.c:3038 src/hatch.c:8465
 #, c-format
 msgid "Error in %s () a negative value was found in the radius member.\n"
 msgstr ""
 
-#: src/arc.c:1730 src/circle.c:1831 src/hatch.c:8472
+#: src/arc.c:1695 src/circle.c:2513 src/circle.c:2947 src/circle.c:2991
+#: src/circle.c:3045 src/hatch.c:8472
 #, c-format
 msgid "Error in %s () a value of zero was found in the radius member.\n"
 msgstr ""
 
-#: src/arc.c:1768 src/circle.c:1875 src/hatch.c:8510
+#: src/arc.c:1732 src/circle.c:2550 src/hatch.c:8510
 #, c-format
 msgid "Error in %s () a negative radius value was passed.\n"
 msgstr ""
 
-#: src/arc.c:1775 src/circle.c:1882 src/dimstyle.c:1651 src/dimstyle.c:1746
-#: src/ellipse.c:2072 src/hatch.c:8517 src/hatch.c:9618
+#: src/arc.c:1739 src/circle.c:2557 src/dimstyle.c:1537 src/dimstyle.c:1620
+#: src/ellipse.c:2583 src/hatch.c:8517 src/hatch.c:9618
 #, c-format
 msgid "Error in %s () a value of zero was passed.\n"
 msgstr ""
 
-#: src/attdef.c:64 src/attdef.c:112
+#: src/attdef.c:64 src/attdef.c:106
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfAttdef struct.\n"
 msgstr ""
 
-#: src/attdef.c:548
+#: src/attdef.c:530
 #, c-format
 msgid ""
 "Error in %s () default tag value string is empty for the %s entity with id-"
 "code: %x.\n"
 msgstr ""
 
-#: src/attdef.c:557 src/attrib.c:561
+#: src/attdef.c:539 src/attrib.c:543
 #, c-format
 msgid ""
 "Warning in %s () text style string is empty for the %s entity with id-code: "
 "%x.\n"
 msgstr ""
 
-#: src/attdef.c:560 src/attrib.c:564
+#: src/attdef.c:542 src/attrib.c:546
 #, c-format
 msgid "\tdefault text style STANDARD applied to %s entity.\n"
 msgstr ""
 
-#: src/attdef.c:587 src/attrib.c:591
+#: src/attdef.c:569 src/attrib.c:573
 #, c-format
 msgid ""
 "Warning in %s () height has a value of 0.0 for the %s entity with id-code: "
 "%x.\n"
 msgstr ""
 
-#: src/attdef.c:590 src/attrib.c:594
+#: src/attdef.c:572 src/attrib.c:576
 #, c-format
 msgid "\tdefault height of 1.0 applied to %s entity.\n"
 msgstr ""
 
-#: src/attdef.c:597 src/attrib.c:601
+#: src/attdef.c:579 src/attrib.c:583
 #, c-format
 msgid ""
 "Warning in %s () relative X-scale factor has a value of 0.0 for the %s "
 "entity with id-code: %x.\n"
 msgstr ""
 
-#: src/attdef.c:600 src/attrib.c:604 src/insert.c:531
+#: src/attdef.c:582 src/attrib.c:586 src/insert.c:531
 #, c-format
 msgid "\tdefault relative X-scale of 1.0 applied to %s entity.\n"
 msgstr ""
 
-#: src/attdef.c:718 src/attrib.c:727
+#: src/attdef.c:700 src/attrib.c:709
 #, c-format
 msgid ""
 "Warning in %s () insertion point and alignment point are identical for the "
 "%s entity with id-code: %x.\n"
 msgstr ""
 
-#: src/attdef.c:721
+#: src/attdef.c:703
 #, c-format
 msgid "\tdefault justification applied to %s entity.\n"
 msgstr ""
 
-#: src/attdef.c:774
+#: src/attdef.c:750
 #, c-format
 msgid "Error in %s () pointer to next DxfAttdef was not NULL.\n"
 msgstr ""
 
-#: src/attdef.c:1883 src/attrib.c:1894
+#: src/attdef.c:1680 src/attrib.c:1691
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the default_value member.\n"
 msgstr ""
 
-#: src/attdef.c:1976 src/attdef.c:2069 src/attdef.c:2162 src/attrib.c:1987
-#: src/attrib.c:2080
+#: src/attdef.c:1758 src/attdef.c:1836 src/attdef.c:1914 src/attrib.c:1769
+#: src/attrib.c:1847
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the tag_value member.\n"
 msgstr ""
 
-#: src/attdef.c:2557 src/attrib.c:2475
+#: src/attdef.c:2270 src/attrib.c:2203
 #, c-format
 msgid "Error in %s () a negative value was found in the height member.\n"
 msgstr ""
 
-#: src/attdef.c:2601 src/attrib.c:2519
+#: src/attdef.c:2307 src/attrib.c:2240
 #, c-format
 msgid "Error in %s () a negative height value was passed.\n"
 msgstr ""
 
-#: src/attdef.c:2647 src/attrib.c:2565
+#: src/attdef.c:2345 src/attrib.c:2278
 #, c-format
 msgid "Error in %s () a negative value was found in the rel_x_scale member.\n"
 msgstr ""
 
-#: src/attdef.c:2886 src/attrib.c:2804
+#: src/attdef.c:2539 src/attrib.c:2472
 #, c-format
 msgid "Error in %s () a negative value was found in the attr_flags member.\n"
 msgstr ""
 
-#: src/attdef.c:2893 src/attrib.c:2811
+#: src/attdef.c:2546 src/attrib.c:2479
 #, c-format
 msgid "Error in %s () an invalid value was found in the attr_flags member.\n"
 msgstr ""
 
-#: src/attdef.c:2937 src/attrib.c:2855
+#: src/attdef.c:2583 src/attrib.c:2516
 #, c-format
 msgid "Error in %s () a negative value in attribute flags was passed.\n"
 msgstr ""
 
-#: src/attdef.c:2944 src/attrib.c:2862
+#: src/attdef.c:2590 src/attrib.c:2523
 #, c-format
 msgid "Error in %s () a invalid value in attribute flags was passed.\n"
 msgstr ""
 
-#: src/attdef.c:3151 src/attrib.c:3068
+#: src/attdef.c:2753 src/attrib.c:2685
 #, c-format
 msgid "Error in %s () a negative value was found in the text flags member.\n"
 msgstr ""
 
-#: src/attdef.c:3158 src/attrib.c:3075
+#: src/attdef.c:2760 src/attrib.c:2692
 #, c-format
 msgid "Error in %s () an invalid value was found in the text flags member.\n"
 msgstr ""
 
-#: src/attdef.c:3202 src/attrib.c:3119
+#: src/attdef.c:2797 src/attrib.c:2729
 #, c-format
 msgid "Error in %s () a negative value in text flags was passed.\n"
 msgstr ""
 
-#: src/attdef.c:3209 src/attrib.c:3126
+#: src/attdef.c:2804 src/attrib.c:2736
 #, c-format
 msgid "Error in %s () a invalid value in text flags was passed.\n"
 msgstr ""
 
-#: src/attdef.c:3255 src/attrib.c:3172
+#: src/attdef.c:2842 src/attrib.c:2774
 #, c-format
 msgid "Error in %s () a negative value was found in the hor_align member.\n"
 msgstr ""
 
-#: src/attdef.c:3262 src/attrib.c:3179
+#: src/attdef.c:2849 src/attrib.c:2781
 #, c-format
 msgid "Error in %s () an invalid value was found in the hor_align member.\n"
 msgstr ""
 
-#: src/attdef.c:3306 src/attrib.c:3223
+#: src/attdef.c:2886 src/attrib.c:2818
 #, c-format
 msgid "Error in %s () a negative value in horizontal alignment was passed.\n"
 msgstr ""
 
-#: src/attdef.c:3313 src/attrib.c:3230
+#: src/attdef.c:2893 src/attrib.c:2825
 #, c-format
 msgid "Error in %s () an invalid value in horizontal alignment was passed.\n"
 msgstr ""
 
-#: src/attdef.c:3361 src/attrib.c:3278
+#: src/attdef.c:2933 src/attrib.c:2865
 #, c-format
 msgid "Error in %s () a negative value was found in the field_length member.\n"
 msgstr ""
 
-#: src/attdef.c:3407 src/attrib.c:3324
+#: src/attdef.c:2972 src/attrib.c:2904
 #, c-format
 msgid "Error in %s () a negative value in field length was passed.\n"
 msgstr ""
 
-#: src/attdef.c:3453 src/attrib.c:3370
+#: src/attdef.c:3010 src/attrib.c:2942
 #, c-format
 msgid "Error in %s () a negative value was found in the vert_align member.\n"
 msgstr ""
 
-#: src/attdef.c:3460 src/attrib.c:3377
+#: src/attdef.c:3017 src/attrib.c:2949
 #, c-format
 msgid "Error in %s () an invalid value was found in the vert_align member.\n"
 msgstr ""
 
-#: src/attdef.c:3504 src/attrib.c:3421
+#: src/attdef.c:3054 src/attrib.c:2986
 #, c-format
 msgid "Error in %s () a negative value in vertical alignment was passed.\n"
 msgstr ""
 
-#: src/attdef.c:3511 src/attrib.c:3428
+#: src/attdef.c:3061 src/attrib.c:2993
 #, c-format
 msgid "Error in %s () an invalid value in vertical alignment was passed.\n"
 msgstr ""
 
-#: src/attrib.c:64 src/attrib.c:113
+#: src/attrib.c:64 src/attrib.c:107
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfAttrib struct.\n"
 msgstr ""
 
-#: src/attrib.c:543
+#: src/attrib.c:525
 #, c-format
 msgid ""
 "Error in %s () default value string is empty for the %s entity with id-code: "
 "%x.\n"
 msgstr ""
 
-#: src/attrib.c:552
+#: src/attrib.c:534
 #, c-format
 msgid ""
 "Error in %s () tag value string is empty for the %s entity with id-code: "
 "%x.\n"
 msgstr ""
 
-#: src/attrib.c:581 src/helix.c:580 src/image.c:568 src/spline.c:826
+#: src/attrib.c:563 src/helix.c:580 src/image.c:568 src/spline.c:826
 #: src/viewport.c:1077
 #, c-format
 msgid ""
 "Warning in %s () empty layer string for the %s entity with id-code: %x.\n"
 msgstr ""
 
-#: src/attrib.c:584
+#: src/attrib.c:566
 #, c-format
 msgid "\t%s entity is relocated to the default layer.\n"
 msgstr ""
 
-#: src/attrib.c:730
+#: src/attrib.c:712
 #, c-format
 msgid "    default justification applied to %s entity\n"
 msgstr ""
 
-#: src/attrib.c:786
+#: src/attrib.c:762
 #, c-format
 msgid "Error in %s () pointer to next DxfAttrib was not NULL.\n"
 msgstr ""
@@ -1725,19 +1797,19 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfBinaryEntityData was not NULL.\n"
 msgstr ""
 
-#: src/binary_entity_data.c:254 src/binary_graphics_data.c:254
+#: src/binary_entity_data.c:252 src/binary_graphics_data.c:252
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the data_line member.\n"
 msgstr ""
 
-#: src/binary_entity_data.c:330 src/binary_graphics_data.c:330
-#: src/proprietary_data.c:365 src/proprietary_data.c:552
+#: src/binary_entity_data.c:327 src/binary_graphics_data.c:327
+#: src/object_id.c:282 src/proprietary_data.c:365 src/proprietary_data.c:552
 #, c-format
 msgid "Error in %s () a negative value was found in the length member.\n"
 msgstr ""
 
-#: src/binary_entity_data.c:370 src/binary_graphics_data.c:370
-#: src/proprietary_data.c:409
+#: src/binary_entity_data.c:367 src/binary_graphics_data.c:367
+#: src/object_id.c:322 src/proprietary_data.c:409
 #, c-format
 msgid "Error in %s () a negative length value was passed.\n"
 msgstr ""
@@ -1754,196 +1826,191 @@ msgstr ""
 msgid "Error in %s () pointer to next DxfBinaryGraphicsData was not NULL.\n"
 msgstr ""
 
-#: src/block.c:65 src/block.c:114
+#: src/block.c:65 src/block.c:108
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfBlock struct.\n"
 msgstr ""
 
-#: src/block.c:340
+#: src/block.c:328
 #, c-format
 msgid ""
 "Warning in %s () illegal block type value found while reading from: %s in "
 "line: %d.\n"
 msgstr ""
 
-#: src/block.c:343
+#: src/block.c:331
 #, c-format
 msgid "\tblock type value is reset to 1.\n"
 msgstr ""
 
-#: src/block.c:404
+#: src/block.c:386
 #, c-format
 msgid ""
 "Error in %s () empty block name string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/block.c:416
+#: src/block.c:398
 #, c-format
 msgid ""
 "Error in %s () NULL pointer to endblk was passed or the %s entity with id-"
 "code: %x\n"
 msgstr ""
 
-#: src/block.c:431
+#: src/block.c:413
 #, c-format
 msgid ""
 "Error in %s () empty xref path name string for the %s entity with id-code: "
 "%x\n"
 msgstr ""
 
-#: src/block.c:443
+#: src/block.c:425
 #, c-format
 msgid ""
 "Warning in %s () NULL pointer to description string for the %s entity with "
 "id-code: %x\n"
 msgstr ""
 
-#: src/block.c:453 src/insert.c:521
+#: src/block.c:435 src/insert.c:521
 #, c-format
 msgid "\t%s entity is relocated to layer 0.\n"
 msgstr ""
 
-#: src/block.c:460
+#: src/block.c:442
 #, c-format
 msgid ""
 "Warning in %s () NULL pointer to soft owner object string for the %s entity "
 "with id-code: %x\n"
 msgstr ""
 
-#: src/block.c:587
+#: src/block.c:563
 #, c-format
 msgid "Error in %s () pointer to next DxfBlock was not NULL.\n"
 msgstr ""
 
-#: src/block.c:680
+#: src/block.c:642
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the xref_name member.\n"
 msgstr ""
 
-#: src/block.c:773 src/block_record.c:573
+#: src/block.c:720 src/block_record.c:523
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the block_name member.\n"
 msgstr ""
 
-#: src/block.c:866
+#: src/block.c:798
 #, c-format
 msgid ""
 "Error in %s () a NULL pointer was found in the block_name_additional "
 "member.\n"
 msgstr ""
 
-#: src/block.c:959 src/group.c:996
+#: src/block.c:876 src/group.c:996
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the description member.\n"
 msgstr ""
 
-#: src/block.c:1371
+#: src/block.c:1231
 #, c-format
 msgid "Warning in %s () a negative value was found in the block_type member.\n"
 msgstr ""
 
-#: src/block.c:1414
+#: src/block.c:1267
 #, c-format
 msgid "Error in %s () a negative block type value was passed.\n"
 msgstr ""
 
-#: src/block.c:1894
+#: src/block.c:1658
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the endblk member.\n"
 msgstr ""
 
-#: src/block_record.c:67 src/block_record.c:116
+#: src/block_record.c:67 src/block_record.c:110
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfBlockRecord struct.\n"
 msgstr ""
 
-#: src/block_record.c:389
+#: src/block_record.c:368
 #, c-format
 msgid "Error in %s () pointer to next DxfBlockRecord was not NULL.\n"
 msgstr ""
 
-#: src/block_record.c:723
+#: src/block_record.c:651
 #, c-format
 msgid "Error in %s () a negative flag value was passed.\n"
 msgstr ""
 
-#: src/block_record.c:730
+#: src/block_record.c:658
 #, c-format
 msgid "Error in %s () an out of range flag value was passed.\n"
 msgstr ""
 
-#: src/body.c:66 src/body.c:117
+#: src/body.c:66 src/body.c:109
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfBody struct.\n"
 msgstr ""
 
-#: src/body.c:347
+#: src/body.c:342
 #, c-format
 msgid ""
 "Warning: in %s () illegal modeler format version number found while reading "
 "from: %s in line: %d.\n"
 msgstr ""
 
-#: src/body.c:350
+#: src/body.c:345
 #, c-format
 msgid "\tmodeler format version number is reset to 1.\n"
 msgstr ""
 
-#: src/body.c:558
+#: src/body.c:547
 #, c-format
 msgid "Error in %s () pointer to next DxfBody was not NULL.\n"
 msgstr ""
 
-#: src/body.c:1672
+#: src/body.c:2260 src/dimension.c:2921 src/dimension.c:2962
+#: src/dimension.c:3002 src/dimension.c:3043 src/dimension.c:3083
+#: src/dimension.c:3124 src/dimension.c:3245 src/dimension.c:3286
+#: src/dimension.c:3326 src/dimension.c:3367 src/dimension.c:3408
+#: src/dimension.c:3449 src/dimension.c:3570 src/dimension.c:3611
+#: src/dimension.c:3651 src/dimension.c:3693 src/dimension.c:3733
+#: src/dimension.c:3774 src/dimension.c:3895 src/dimension.c:3937
+#: src/dimension.c:3977 src/dimension.c:4019 src/dimension.c:4059
+#: src/dimension.c:4101 src/dimension.c:4141 src/dimension.c:4222
+#: src/dimension.c:4263 src/dimension.c:4303 src/dimension.c:4344
+#: src/dimension.c:4384 src/dimension.c:4425 src/dimension.c:4465
+#: src/dimension.c:4546 src/dimension.c:4587 src/dimension.c:4627
+#: src/dimension.c:4668 src/dimension.c:4708 src/dimension.c:4749
+#: src/dimension.c:4789 src/dimension.c:4870 src/dimension.c:4911
+#: src/dimension.c:4951 src/dimension.c:4992 src/dimension.c:5032
+#: src/dimension.c:5073 src/ellipse.c:2269
 #, c-format
-msgid ""
-"Error in %s () a NULL pointer was found in the proprietary_data[%d] member.\n"
+msgid "Error in %s () a NULL pointer was found.\n"
 msgstr ""
 
-#: src/body.c:1722
-#, c-format
-msgid ""
-"Error in %s () a NULL pointer was found in the proprietary_data[%d] array.\n"
-msgstr ""
-
-#: src/body.c:1775
-#, c-format
-msgid ""
-"Error in %s () a NULL pointer was found in the additional_proprietary_data"
-"[%d] member.\n"
-msgstr ""
-
-#: src/body.c:1826
-#, c-format
-msgid ""
-"Error in %s () a NULL pointer was found in the additional data[%d] array.\n"
-msgstr ""
-
-#: src/body.c:1873
+#: src/body.c:2337
 #, c-format
 msgid ""
 "Error in %s () an invalid value was found in the "
 "modeler_format_version_number member.\n"
 msgstr ""
 
-#: src/body.c:1917
+#: src/body.c:2374
 #, c-format
 msgid ""
 "Error in %s () an invalid modeler format version number value was passed.\n"
 msgstr ""
 
-#: src/circle.c:64 src/circle.c:113
+#: src/circle.c:64 src/circle.c:107
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfCircle struct.\n"
 msgstr ""
 
-#: src/circle.c:425
+#: src/circle.c:414
 #, c-format
 msgid ""
 "Error in %s () radius value equals 0.0 for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/circle.c:569
+#: src/circle.c:552
 #, c-format
 msgid "ERROR in %s () pointer to next DxfCircle was not NULL.\n"
 msgstr ""
@@ -2114,450 +2181,455 @@ msgstr ""
 msgid "Warning in %s () a NULL pointer to a DxfRGBColor name was passed.\n"
 msgstr ""
 
-#: src/comment.c:56 src/comment.c:99
+#: src/comment.c:62 src/comment.c:105
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfComment struct.\n"
 msgstr ""
 
-#: src/comment.c:172
+#: src/comment.c:178
 #, c-format
 msgid "Error in %s () pointer to next DxfComment was not NULL.\n"
 msgstr ""
 
-#: src/comment.c:344
+#: src/comment.c:326
 #, c-format
 msgid "Error in %s () pointer to the value member in DxfComment was NULL.\n"
 msgstr ""
 
-#: src/comment.c:385
+#: src/comment.c:361
 #, c-format
 msgid "Error in %s () pointer to the member in DxfComment was not NULL.\n"
 msgstr ""
 
-#: src/dictionary.c:66 src/dictionary.c:115
+#: src/dictionary.c:66 src/dictionary.c:109
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfDictionary struct.\n"
 msgstr ""
 
-#: src/dictionary.c:320
+#: src/dictionary.c:302
 #, c-format
 msgid ""
 "Error in %s () empty entry name string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/dictionary.c:405
+#: src/dictionary.c:381
 #, c-format
 msgid "Error in %s () pointer to next DxfDictionary was not NULL.\n"
 msgstr ""
 
-#: src/dictionary.c:776
+#: src/dictionary.c:693
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the entry_name member.\n"
 msgstr ""
 
-#: src/dictionary.c:866
+#: src/dictionary.c:768
 #, c-format
 msgid ""
 "Error in %s () a NULL pointer was found in the entry_object_handle member.\n"
 msgstr ""
 
-#: src/dictionaryvar.c:66 src/dictionaryvar.c:115
+#: src/dictionaryvar.c:66 src/dictionaryvar.c:109
 #, c-format
 msgid ""
 "Error in %s () could not allocate memory for a DxfDictionaryVar struct.\n"
 msgstr ""
 
-#: src/dictionaryvar.c:320
+#: src/dictionaryvar.c:302
 #, c-format
 msgid ""
 "Warning in %s () empty value string for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/dictionaryvar.c:326
+#: src/dictionaryvar.c:308
 #, c-format
 msgid ""
 "Warning in %s () empty object schema number string for the %s entity with id-"
 "code: %x\n"
 msgstr ""
 
-#: src/dictionaryvar.c:408
+#: src/dictionaryvar.c:384
 #, c-format
 msgid "Error in %s () pointer to next DxfDictionaryVar was not NULL.\n"
 msgstr ""
 
-#: src/dictionaryvar.c:779
+#: src/dictionaryvar.c:707
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the value member.\n"
 msgstr ""
 
-#: src/dictionaryvar.c:871
+#: src/dictionaryvar.c:787
 #, c-format
 msgid ""
 "Error in %s () a NULL pointer was found in the object_schema_number member.\n"
 msgstr ""
 
-#: src/dimension.c:68 src/dimension.c:119
+#: src/dimension.c:68 src/dimension.c:112
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfDimension struct.\n"
 msgstr ""
 
-#: src/dimension.c:950
+#: src/dimension.c:680
+#, c-format
+msgid "Error in %s () an out of range flag value was detected.\n"
+msgstr ""
+
+#: src/dimension.c:930
 #, c-format
 msgid "Error in %s () pointer to next DxfDimension was not NULL.\n"
 msgstr ""
 
-#: src/dimension.c:2056
+#: src/dimension.c:2602
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the dim_text member.\n"
 msgstr ""
 
-#: src/dimension.c:2147
+#: src/dimension.c:2681
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the dimblock_name member.\n"
 msgstr ""
 
-#: src/dimension.c:2238
+#: src/dimension.c:2760
 #, c-format
 msgid "Error in %s () a NULL pointer was found in the dimstyle_name member.\n"
 msgstr ""
 
-#: src/dimension.c:3981
+#: src/dimension.c:5611
 #, c-format
 msgid "Error in %s () a negative value was found in the passed flag.\n"
 msgstr ""
 
-#: src/dimension.c:4025
+#: src/dimension.c:5648
 #, c-format
 msgid ""
 "Error in %s () a negative value was found in the attachment_point member.\n"
 msgstr ""
 
-#: src/dimension.c:4032
+#: src/dimension.c:5655
 #, c-format
 msgid ""
 "Error in %s () an out of range value was found in the attachment_point "
 "member.\n"
 msgstr ""
 
-#: src/dimension.c:4075
+#: src/dimension.c:5695
 #, c-format
 msgid "Error in %s () a negative value was passed in the attachment_point.\n"
 msgstr ""
 
-#: src/dimension.c:4082
+#: src/dimension.c:5702
 #, c-format
 msgid ""
 "Error in %s () an out of range value was passed in the attachment_point.\n"
 msgstr ""
 
-#: src/dimension.c:4126
+#: src/dimension.c:5739
 #, c-format
 msgid ""
 "Error in %s () a negative value was found in the text_line_spacing member.\n"
 msgstr ""
 
-#: src/dimension.c:4133
+#: src/dimension.c:5746
 #, c-format
 msgid ""
 "Error in %s () an out of range value was found in the text_line_spacing "
 "member.\n"
 msgstr ""
 
-#: src/dimension.c:4176
+#: src/dimension.c:5786
 #, c-format
 msgid "Error in %s () a negative value was passed in the text_line_spacing.\n"
 msgstr ""
 
-#: src/dimension.c:4183
+#: src/dimension.c:5793
 #, c-format
 msgid ""
 "Error in %s () an out of range value was passed in the text_line_spacing.\n"
 msgstr ""
 
-#: src/dimstyle.c:67 src/dimstyle.c:117
+#: src/dimstyle.c:67 src/dimstyle.c:111
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfDimStyle struct.\n"
 msgstr ""
 
-#: src/dimstyle.c:219
+#: src/dimstyle.c:207
 #, c-format
 msgid "Error in %s () dimstyle_name value is empty for the %s entity.\n"
 msgstr ""
 
-#: src/dimstyle.c:222 src/dimstyle.c:234
+#: src/dimstyle.c:210 src/dimstyle.c:222
 #, c-format
 msgid "\tskipping %s table.\n"
 msgstr ""
 
-#: src/dimstyle.c:231
+#: src/dimstyle.c:219
 #, c-format
 msgid "Error in %s () dimstyle_name value is NULL for the %s entity.\n"
 msgstr ""
 
-#: src/dimstyle.c:887
+#: src/dimstyle.c:869
 #, c-format
 msgid "Error in %s () dimstyle_name value is empty.\n"
 msgstr ""
 
-#: src/dimstyle.c:929
+#: src/dimstyle.c:905
 #, c-format
 msgid "Error in %s () pointer to next DxfDimStyle was not NULL.\n"
 msgstr ""
 
-#: src/dimstyle.c:1362 src/dimstyle.c:1459 src/dimstyle.c:1556
+#: src/dimstyle.c:1284 src/dimstyle.c:1369 src/dimstyle.c:1454
 #, c-format
 msgid "Warning in %s () the string contained a NULL pointer.\n"
 msgstr ""
 
-#: src/dimstyle.c:1604
+#: src/dimstyle.c:1496
 #, c-format
 msgid "Error in %s () a value of zero was found in the dimscale member.\n"
 msgstr ""
 
-#: src/dimstyle.c:1699
+#: src/dimstyle.c:1579
 #, c-format
 msgid "Error in %s () a value of zero was found in the dimasz member.\n"
 msgstr ""
 
-#: src/dimstyle.c:4558
+#: src/dimstyle.c:4018
 #, c-format
 msgid "Warning in %s () a negative value was found in the dimunit member.\n"
 msgstr ""
 
-#: src/dimstyle.c:4564
+#: src/dimstyle.c:4024
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the dimunit member.\n"
 msgstr ""
 
-#: src/dimstyle.c:4610
+#: src/dimstyle.c:4064
 #, c-format
 msgid "Warning in %s () a negative value was passed in the dimunit member.\n"
 msgstr ""
 
-#: src/dimstyle.c:4616
+#: src/dimstyle.c:4070
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was passed in the dimunit member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5000
+#: src/dimstyle.c:4400
 #, c-format
 msgid "Warning in %s () a negative value was found in the dimaunit member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5006
+#: src/dimstyle.c:4406
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the dimaunit member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5052
+#: src/dimstyle.c:4446
 #, c-format
 msgid ""
 "Warning in %s () a negative value was passed in the dimaunit variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5058
+#: src/dimstyle.c:4452
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was passed in the dimaunit variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5105
+#: src/dimstyle.c:4493
 #, c-format
 msgid "Warning in %s () a negative value was found in the dimjust member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5111
+#: src/dimstyle.c:4499
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the dimjust member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5157
+#: src/dimstyle.c:4539
 #, c-format
 msgid "Warning in %s () a negative value was passed in the dimjust variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5163
+#: src/dimstyle.c:4545
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was passed in the dimjust variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5210
+#: src/dimstyle.c:4586
 #, c-format
 msgid "Warning in %s () a negative value was found in the dimsd1 member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5216
+#: src/dimstyle.c:4592
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the dimsd1 member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5262
+#: src/dimstyle.c:4632
 #, c-format
 msgid "Warning in %s () a negative value was passed in the dimsd1 variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5268
+#: src/dimstyle.c:4638
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was passed in the dimsd1 variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5316
+#: src/dimstyle.c:4680
 #, c-format
 msgid "Warning in %s () a negative value was found in the dimsd2 member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5322
+#: src/dimstyle.c:4686
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the dimsd2 member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5368
+#: src/dimstyle.c:4726
 #, c-format
 msgid "Warning in %s () a negative value was passed in the dimsd2 variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5374
+#: src/dimstyle.c:4732
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was passed in the dimsd2 variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5421
+#: src/dimstyle.c:4773
 #, c-format
 msgid "Warning in %s () a negative value was found in the dimtolj member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5427
+#: src/dimstyle.c:4779
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the dimtolj member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5473
+#: src/dimstyle.c:4819
 #, c-format
 msgid "Warning in %s () a negative value was passed in the dimtolj variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5479
+#: src/dimstyle.c:4825
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was passed in the dimtolj variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5526
+#: src/dimstyle.c:4866
 #, c-format
 msgid "Warning in %s () a negative value was found in the dimtzin member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5532
+#: src/dimstyle.c:4872
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the dimtzin member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5578
+#: src/dimstyle.c:4912
 #, c-format
 msgid "Warning in %s () a negative value was passed in the dimtzin variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5584
+#: src/dimstyle.c:4918
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was passed in the dimtzin variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5633
+#: src/dimstyle.c:4961
 #, c-format
 msgid "Warning in %s () a negative value was found in the dimaltz member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5639
+#: src/dimstyle.c:4967
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the dimaltz member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5687
+#: src/dimstyle.c:5009
 #, c-format
 msgid "Warning in %s () a negative value was passed in the dimaltz variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5693
+#: src/dimstyle.c:5015
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was passed in the dimaltz variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5742
+#: src/dimstyle.c:5058
 #, c-format
 msgid "Warning in %s () a negative value was found in the dimalttz member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5748
+#: src/dimstyle.c:5064
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the dimalttz member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5795
+#: src/dimstyle.c:5105
 #, c-format
 msgid ""
 "Warning in %s () a negative value was passed in the dimalttz variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5801
+#: src/dimstyle.c:5111
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was passed in the dimalttz variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5848
+#: src/dimstyle.c:5152
 #, c-format
 msgid "Warning in %s () a negative value was found in the dimfit member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5854
+#: src/dimstyle.c:5158
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the dimfit member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5900
+#: src/dimstyle.c:5198
 #, c-format
 msgid "Warning in %s () a negative value was passed in the dimfit variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5906
+#: src/dimstyle.c:5204
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was passed in the dimfit variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:5954
+#: src/dimstyle.c:5246
 #, c-format
 msgid "Warning in %s () a negative value was found in the dimupt member.\n"
 msgstr ""
 
-#: src/dimstyle.c:5960
+#: src/dimstyle.c:5252
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was found in the dimupt member.\n"
 msgstr ""
 
-#: src/dimstyle.c:6006
+#: src/dimstyle.c:5292
 #, c-format
 msgid "Warning in %s () a negative value was passed in the dimupt variable.\n"
 msgstr ""
 
-#: src/dimstyle.c:6012
+#: src/dimstyle.c:5298
 #, c-format
 msgid ""
 "Warning in %s () an out of range value was passed in the dimupt variable.\n"
@@ -2568,19 +2640,19 @@ msgstr ""
 msgid "Error in %s () could not allocate memory for a DxfDonut struct.\n"
 msgstr ""
 
-#: src/donut.c:192
+#: src/donut.c:201
 #, c-format
 msgid ""
 "Error in %s () outside diameter is smaller than the inside diameter for the "
 "%s entity with id-code: %x\n"
 msgstr ""
 
-#: src/donut.c:216 src/lwpolyline.c:500 src/polyline.c:530 src/ray.c:456
+#: src/donut.c:225 src/lwpolyline.c:500 src/polyline.c:530 src/ray.c:456
 #, c-format
 msgid "\t%s entity is relocated to layer 0\n"
 msgstr ""
 
-#: src/donut.c:327
+#: src/donut.c:336
 #, c-format
 msgid "Error in %s () pointer to next DxfDonut was not NULL.\n"
 msgstr ""
@@ -2625,33 +2697,33 @@ msgstr ""
 msgid "Error in %s () a NULL pointer was found in the thumbnail member.\n"
 msgstr ""
 
-#: src/ellipse.c:61 src/ellipse.c:104
+#: src/ellipse.c:67 src/ellipse.c:110
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfEllipse struct.\n"
 msgstr ""
 
-#: src/ellipse.c:465
+#: src/ellipse.c:471
 #, c-format
 msgid ""
 "Error in %s () ratio value equals 0.0 for the %s entity with id-code: %x\n"
 msgstr ""
 
-#: src/ellipse.c:603
+#: src/ellipse.c:609
 #, c-format
 msgid "Error in %s () pointer to next DxfEllipse was not NULL.\n"
 msgstr ""
 
-#: src/ellipse.c:2013 src/hatch.c:9564
+#: src/ellipse.c:2530 src/hatch.c:9564
 #, c-format
 msgid "Error in %s () a negative value was found in the ratio member.\n"
 msgstr ""
 
-#: src/ellipse.c:2020 src/hatch.c:9571
+#: src/ellipse.c:2537 src/hatch.c:9571
 #, c-format
 msgid "Error in %s () a value of zero was found in the ratio member.\n"
 msgstr ""
 
-#: src/ellipse.c:2065 src/hatch.c:9611
+#: src/ellipse.c:2576 src/hatch.c:9611
 #, c-format
 msgid "Error in %s () a negative ratio value was passed.\n"
 msgstr ""
@@ -2687,7 +2759,7 @@ msgid ""
 "Warning: unexpected string encountered while reading line %d from: %s.\n"
 msgstr ""
 
-#: src/global.h:161
+#: src/global.h:171
 #, c-format
 msgid "[File: %s: line: %d] Entering %s () function.\n"
 msgstr ""
@@ -2695,7 +2767,7 @@ msgstr ""
 #. !< \brief Verbose debugging output to \c stderr.
 #. *
 #. * Compile with -DDEBUG compiler directive enabled.
-#: src/global.h:169
+#: src/global.h:179
 #, c-format
 msgid "[File: %s: line: %d] Leaving %s () function.\n"
 msgstr ""
@@ -3893,14 +3965,19 @@ msgstr ""
 msgid "Error in %s () could not allocate memory for a DxfObject struct.\n"
 msgstr ""
 
-#: src/object.c:166
+#: src/object.c:166 src/object_id.c:135
 #, c-format
 msgid "Error in %s () pointer to next DxfObject was not NULL.\n"
 msgstr ""
 
-#: src/object_id.c:58
+#: src/object_id.c:58 src/object_id.c:101
 #, c-format
 msgid "Error in %s () could not allocate memory for a DxfObjectId struct.\n"
+msgstr ""
+
+#: src/object_id.c:207
+#, c-format
+msgid "Error in %s () a NULL pointer was found in the data member.\n"
 msgstr ""
 
 #: src/object_ptr.c:66 src/object_ptr.c:117
