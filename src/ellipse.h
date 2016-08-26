@@ -477,11 +477,9 @@ dxf_ellipse_set_transparency
         long transparency
 );
 DxfPoint *
-dxf_ellipse_get_center_point
+dxf_ellipse_get_p0
 (
-        DxfEllipse *ellipse,
-        int id_code,
-        int inheritance
+        DxfEllipse *ellipse
 );
 DxfEllipse *
 dxf_ellipse_set_center_point

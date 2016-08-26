@@ -2373,9 +2373,9 @@ dxf_ellipse_set_transparency
 
 
 /*!
- * \brief Get the center point of a DXF \c ELLIPSE entity.
+ * \brief Get the center point \c p0 of a DXF \c ELLIPSE entity.
  *
- * \return the center point.
+ * \return the center point \c p0.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
@@ -2384,29 +2384,15 @@ dxf_ellipse_set_transparency
  * \version According to DXF R14.
  */
 DxfPoint *
-dxf_ellipse_get_center_point
+dxf_ellipse_get_p0
 (
-        DxfEllipse *ellipse,
+        DxfEllipse *ellipse
                 /*!< a pointer to a DXF \c ELLIPSE entity. */
-        int id_code,
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file. */
-        int inheritance
-                /*!< Inherit layer, linetype, color and other relevant
-                 * properties from either:
-                 * <ol>
-                 * <li value = "0"> Default (as initialised).</li>
-                 * <li value = "1"> \c ELLIPSE.</li>
-                 * </ol>
-                 */
 )
 {
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfPoint *p1 = NULL;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -2415,64 +2401,17 @@ dxf_ellipse_get_center_point
                   __FUNCTION__);
                 return (NULL);
         }
-        p1 = dxf_point_init (p1);
-        if (p1 == NULL)
+        if (ellipse->p0 == NULL)
         {
               fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                 __FUNCTION__);
               return (NULL);
-        }
-        if (id_code < 0)
-        {
-              fprintf (stderr,
-                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
-                __FUNCTION__);
-        }
-        p1->id_code = id_code;
-        p1->x0 = ellipse->x0;
-        p1->y0 = ellipse->y0;
-        p1->z0 = ellipse->z0;
-        switch (inheritance)
-        {
-                case 0:
-                        /* Do nothing. */
-                        break;
-                case 1:
-                        if (ellipse->linetype != NULL)
-                        {
-                                p1->linetype = strdup (ellipse->linetype);
-                        }
-                        if (ellipse->layer != NULL)
-                        {
-                                p1->layer = strdup (ellipse->layer);
-                        }
-                        p1->thickness = ellipse->thickness;
-                        p1->linetype_scale = ellipse->linetype_scale;
-                        p1->visibility = ellipse->visibility;
-                        p1->color = ellipse->color;
-                        p1->paperspace = ellipse->paperspace;
-                        if (ellipse->dictionary_owner_soft != NULL)
-                        {
-                                p1->dictionary_owner_soft = strdup (ellipse->dictionary_owner_soft);
-                        }
-                        if (ellipse->dictionary_owner_hard != NULL)
-                        {
-                                p1->dictionary_owner_hard = strdup (ellipse->dictionary_owner_hard);
-                        }
-                        break;
-                default:
-                        fprintf (stderr,
-                          (_("Warning in %s (): unknown inheritance option passed.\n")),
-                          __FUNCTION__);
-                        fprintf (stderr,
-                          (_("\tResolving to default.\n")));
-                        break;
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (p1);
+        return (ellipse->p0);
 }
 
 
