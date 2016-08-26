@@ -470,6 +470,12 @@ dxf_ellipse_get_transparency
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_transparency
+(
+        DxfEllipse *ellipse,
+        long transparency
+);
 DxfPoint *
 dxf_ellipse_get_center_point
 (
