@@ -2278,16 +2278,16 @@ dxf_ellipse_get_p0
 
 
 /*!
- * \brief Set the center point of a DXF \c ELLIPSE entity.
+ * \brief Set the center point \c p0 of a DXF \c ELLIPSE entity.
  *
  * \return a pointer to a DXF \c ELLIPSE entity.
  */
 DxfEllipse *
-dxf_ellipse_set_center_point
+dxf_ellipse_set_p0
 (
         DxfEllipse *ellipse,
                 /*!< a pointer to a DXF \c ELLIPSE entity. */
-        DxfPoint *point
+        DxfPoint *p0
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -2302,16 +2302,14 @@ dxf_ellipse_set_center_point
                   __FUNCTION__);
                 return (NULL);
         }
-        if (point == NULL)
+        if (p0 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        ellipse->x0 = point->x0;
-        ellipse->y0 = point->y0;
-        ellipse->z0 = point->z0;
+        ellipse->p0 = (DxfPoint *) p0;
 #if DEBUG
         DXF_DEBUG_END
 #endif

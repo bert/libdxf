@@ -488,10 +488,10 @@ dxf_ellipse_get_p0
         DxfEllipse *ellipse
 );
 DxfEllipse *
-dxf_ellipse_set_center_point
+dxf_ellipse_set_p0
 (
         DxfEllipse *ellipse,
-        DxfPoint *point
+        DxfPoint *p0
 );
 DxfPoint *
 dxf_ellipse_get_end_point
