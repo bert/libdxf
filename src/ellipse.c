@@ -2439,6 +2439,49 @@ dxf_ellipse_get_y0
 
 
 /*!
+ * \brief Set the Y-value of the center point \c y0 of a DXF \c ELLIPSE
+ * entity.
+ *
+ * \return a pointer to \c ellipse when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfEllipse *
+dxf_ellipse_set_y0
+(
+        DxfEllipse *ellipse,
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
+        double y0
+                /*!< the Y-value of the center point \c y0 of a DXF
+                 * \c ELLIPSE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ellipse->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ellipse->p0->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse);
+}
+
+
+/*!
  * \brief Get the endpoint of the major axis (relative to the center) of
  * a DXF \c ELLIPSE entity.
  *
