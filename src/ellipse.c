@@ -2595,17 +2595,17 @@ dxf_ellipse_get_p1
 
 
 /*!
- * \brief Set the endpoint of the major axis (relative to the center) of
- * a DXF \c ELLIPSE entity.
+ * \brief Set the endpoint of the major axis \c p1 (relative to the
+ * center) of a DXF \c ELLIPSE entity.
  *
  * \return a pointer to a DXF \c ELLIPSE entity.
  */
 DxfEllipse *
-dxf_ellipse_set_end_point
+dxf_ellipse_set_p1
 (
         DxfEllipse *ellipse,
                 /*!< a pointer to a DXF \c ELLIPSE entity. */
-        DxfPoint *point
+        DxfPoint *p1
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -2620,16 +2620,14 @@ dxf_ellipse_set_end_point
                   __FUNCTION__);
                 return (NULL);
         }
-        if (point == NULL)
+        if (p1 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        ellipse->x1 = point->x0;
-        ellipse->y1 = point->y0;
-        ellipse->z1 = point->z0;
+        ellipse->p1 = p1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
