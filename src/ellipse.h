@@ -527,11 +527,9 @@ dxf_ellipse_set_z0
         double z0
 );
 DxfPoint *
-dxf_ellipse_get_end_point
+dxf_ellipse_get_p1
 (
-        DxfEllipse *ellipse,
-        int id_code,
-        int inheritance
+        DxfEllipse *ellipse
 );
 DxfEllipse *
 dxf_ellipse_set_end_point
