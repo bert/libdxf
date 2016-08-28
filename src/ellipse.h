@@ -538,6 +538,11 @@ dxf_ellipse_set_p1
         DxfPoint *p1
 );
 double
+dxf_ellipse_get_x1
+(
+        DxfEllipse *ellipse
+);
+double
 dxf_ellipse_get_ratio
 (
         DxfEllipse *ellipse

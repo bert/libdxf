@@ -2636,6 +2636,45 @@ dxf_ellipse_set_p1
 
 
 /*!
+ * \brief Get the X-value \c x1 of the endpoint of the major axis
+ * (relative to the center) of a DXF \c ELLIPSE entity.
+ *
+ * \return the X-value of the point \c x1.
+ */
+double
+dxf_ellipse_get_x1
+(
+        DxfEllipse *ellipse
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (ellipse->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse->p1->x0);
+}
+
+
+/*!
  * \brief Get the ratio of minor axis to major axis from a DXF
  * \c ELLIPSE entity.
  *
