@@ -542,6 +542,12 @@ dxf_ellipse_get_x1
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_x1
+(
+        DxfEllipse *ellipse,
+        double x1
+);
 double
 dxf_ellipse_get_ratio
 (
