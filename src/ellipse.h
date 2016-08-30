@@ -576,6 +576,12 @@ dxf_ellipse_get_ratio
         DxfEllipse *ellipse
 );
 DxfEllipse *
+dxf_ellipse_set_ratio
+(
+        DxfEllipse *ellipse,
+        double ratio
+);
+DxfEllipse *
 dxf_ellipse_set_radius
 (
         DxfEllipse *ellipse,
