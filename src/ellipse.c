@@ -2961,52 +2961,6 @@ dxf_ellipse_set_ratio
 
 
 /*!
- * \brief Set the ratio of minor axis to major axis for a DXF \c ELLIPSE
- * entity.
- */
-DxfEllipse *
-dxf_ellipse_set_radius
-(
-        DxfEllipse *ellipse,
-                /*!< a pointer to a DXF \c ELLIPSE entity. */
-        double ratio
-                /*!< the ratio to be set for the entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (ellipse == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (ratio < 0.0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a negative ratio value was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (ratio == 0.0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a value of zero was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        ellipse->ratio = ratio;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (ellipse);
-}
-
-
-/*!
  * \brief Get the start angle from a DXF \c ELLIPSE entity.
  *
  * \return start angle.

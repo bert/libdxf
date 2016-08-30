@@ -581,12 +581,6 @@ dxf_ellipse_set_ratio
         DxfEllipse *ellipse,
         double ratio
 );
-DxfEllipse *
-dxf_ellipse_set_radius
-(
-        DxfEllipse *ellipse,
-        double ratio
-);
 double
 dxf_ellipse_get_start_angle
 (
