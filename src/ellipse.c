@@ -656,9 +656,9 @@ dxf_ellipse_free_chain
 
 
 /*!
- * \brief Get the ID code from a DXF \c ELLIPSE entity.
+ * \brief Get the \c id_code from a DXF \c ELLIPSE entity.
  *
- * \return ID code.
+ * \return \c id_code.
  */
 int
 dxf_ellipse_get_id_code
@@ -670,8 +670,6 @@ dxf_ellipse_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -687,11 +685,10 @@ dxf_ellipse_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ellipse->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (ellipse->id_code);
 }
 
 
