@@ -2882,7 +2882,7 @@ dxf_ellipse_set_z1
  * \brief Get the ratio of minor axis to major axis from a DXF
  * \c ELLIPSE entity.
  *
- * \return ratio.
+ * \return \c ratio.
  */
 double
 dxf_ellipse_get_ratio
@@ -2894,8 +2894,6 @@ dxf_ellipse_get_ratio
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -2918,11 +2916,10 @@ dxf_ellipse_get_ratio
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ellipse->ratio;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (ellipse->ratio);
 }
 
 
