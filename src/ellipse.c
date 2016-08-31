@@ -897,8 +897,6 @@ dxf_ellipse_get_elevation
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -907,11 +905,10 @@ dxf_ellipse_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ellipse->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (ellipse->elevation);
 }
 
 
