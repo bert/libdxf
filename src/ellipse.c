@@ -822,8 +822,6 @@ dxf_ellipse_get_layer
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -839,11 +837,10 @@ dxf_ellipse_get_layer
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (ellipse->layer);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (ellipse->layer));
 }
 
 
