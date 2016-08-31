@@ -3000,8 +3000,6 @@ dxf_ellipse_get_end_angle
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -3010,11 +3008,10 @@ dxf_ellipse_get_end_angle
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ellipse->end_angle;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (ellipse->end_angle);
 }
 
 
