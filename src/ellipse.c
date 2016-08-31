@@ -1790,8 +1790,6 @@ dxf_ellipse_get_dictionary_owner_hard
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -1807,11 +1805,10 @@ dxf_ellipse_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (ellipse->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (ellipse->dictionary_owner_hard));
 }
 
 
