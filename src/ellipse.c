@@ -1272,8 +1272,6 @@ dxf_ellipse_get_paperspace
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -1294,11 +1292,10 @@ dxf_ellipse_get_paperspace
                   (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
                   __FUNCTION__);
         }
-        result = ellipse->paperspace;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (ellipse->paperspace);
 }
 
 
