@@ -958,8 +958,6 @@ dxf_ellipse_get_thickness
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -975,11 +973,10 @@ dxf_ellipse_get_thickness
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ellipse->thickness;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (ellipse->thickness);
 }
 
 
