@@ -1108,8 +1108,6 @@ dxf_ellipse_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (ellipse == NULL)
         {
@@ -1132,11 +1130,10 @@ dxf_ellipse_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = ellipse->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (ellipse->visibility);
 }
 
 
