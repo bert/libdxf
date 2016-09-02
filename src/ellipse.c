@@ -3057,6 +3057,38 @@ dxf_ellipse_set_end_angle
 
 
 /*!
+ * \brief Get the X-value of the extrusion vector of a DXF \c ELLIPSE
+ * entity.
+ *
+ * \return the X-value of the extrusion vector.
+ */
+double
+dxf_ellipse_get_extr_x0
+(
+        DxfEllipse *ellipse
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ellipse->extr_x0);
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c ELLIPSE entity.
  *

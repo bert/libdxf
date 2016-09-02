@@ -603,6 +603,11 @@ dxf_ellipse_set_end_angle
         DxfEllipse *ellipse,
         double end_angle
 );
+double
+dxf_ellipse_get_extr_x0
+(
+        DxfEllipse *ellipse
+);
 DxfPoint *
 dxf_ellipse_get_extrusion_vector_as_point
 (
