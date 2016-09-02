@@ -117,8 +117,16 @@ dxf_3dline_init
         dxf_3dline_set_id_code (line, 0);
         dxf_3dline_set_linetype (line, strdup (DXF_DEFAULT_LINETYPE));
         dxf_3dline_set_layer (line, strdup (DXF_DEFAULT_LAYER));
-        dxf_3dline_set_p0 (line, dxf_point_init (line->p0));
-        dxf_3dline_set_p1 (line, dxf_point_init (line->p1));
+        dxf_3dline_set_p0 (line, dxf_point_new ());
+        dxf_point_init ((DxfPoint *) dxf_3dline_get_p0 (line));
+        dxf_3dline_set_x0 (line, 0.0);
+        dxf_3dline_set_y0 (line, 0.0);
+        dxf_3dline_set_z0 (line, 0.0);
+        dxf_3dline_set_p1 (line, dxf_point_new ());
+        dxf_point_init ((DxfPoint *) dxf_3dline_get_p1 (line));
+        dxf_3dline_set_x1 (line, 0.0);
+        dxf_3dline_set_y1 (line, 0.0);
+        dxf_3dline_set_z1 (line, 0.0);
         dxf_3dline_set_extr_x0 (line, 0.0);
         dxf_3dline_set_extr_y0 (line, 0.0);
         dxf_3dline_set_extr_z0 (line, 0.0);
