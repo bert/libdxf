@@ -1,4 +1,5 @@
-======= DEPENDENCIES =======
+Dependencies
+============
 
 Building libdxf from scratch, either from a tarball or from the git
 repository, requires (at least):
