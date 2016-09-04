@@ -630,6 +630,12 @@ dxf_ellipse_get_extr_z0
 (
         DxfEllipse *ellipse
 );
+DxfEllipse *
+dxf_ellipse_set_extr_z0
+(
+        DxfEllipse *ellipse,
+        double extr_z0
+);
 DxfPoint *
 dxf_ellipse_get_extrusion_vector_as_point
 (
