@@ -642,6 +642,12 @@ dxf_ellipse_get_extrusion_vector_as_point
         DxfEllipse *ellipse
 );
 DxfEllipse *
+dxf_ellipse_set_extrusion_vector_from_point
+(
+        DxfEllipse *ellipse,
+        DxfPoint *point
+);
+DxfEllipse *
 dxf_ellipse_set_extrusion_vector
 (
         DxfEllipse *ellipse,
