@@ -3304,6 +3304,47 @@ dxf_3dline_get_extrusion_vector_as_point
 
 
 /*!
+ * \brief Set the extrusion vector from a DXF \c POINT for a DXF
+ * \c 3DLINE entity.
+ */
+Dxf3dline *
+dxf_3dline_set_extrusion_vector_from_point
+(
+        Dxf3dline *line,
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->extr_x0 = (double) point->x0;
+        line->extr_y0 = (double) point->y0;
+        line->extr_z0 = (double) point->z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Set the extrusion vector for a DXF \c 3DLINE entity.
  */
 Dxf3dline *
