@@ -144,6 +144,9 @@ dxf_ellipse_init
         dxf_ellipse_set_ratio (ellipse, 0.0);
         dxf_ellipse_set_start_angle (ellipse, 0.0);
         dxf_ellipse_set_end_angle (ellipse, 0.0);
+        dxf_ellipse_set_extr_x0 (ellipse, 0.0);
+        dxf_ellipse_set_extr_y0 (ellipse, 0.0);
+        dxf_ellipse_set_extr_z0 (ellipse, 0.0);
         dxf_ellipse_set_next (ellipse, NULL);
 #if DEBUG
         DXF_DEBUG_END
