@@ -1917,6 +1917,47 @@ dxf_arc_get_extrusion_vector_as_point
 
 
 /*!
+ * \brief Set the extrusion vector from a DXF \c POINT for a DXF \c ARC
+ * entity.
+ */
+DxfArc *
+dxf_arc_set_extrusion_vector_from_point
+(
+        DxfArc *arc,
+                /*!< a pointer to a DXF \c ARC entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        arc->extr_x0 = (double) point->x0;
+        arc->extr_y0 = (double) point->y0;
+        arc->extr_z0 = (double) point->z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc);
+}
+
+
+/*!
  * \brief Set the extrusion vector for a DXF \c ARC entity.
  */
 DxfArc *

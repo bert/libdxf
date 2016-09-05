@@ -307,6 +307,12 @@ dxf_arc_get_extrusion_vector_as_point
         DxfArc *arc
 );
 DxfArc *
+dxf_arc_set_extrusion_vector_from_point
+(
+        DxfArc *arc,
+        DxfPoint *point
+);
+DxfArc *
 dxf_arc_set_extrusion_vector
 (
         DxfArc *arc,
