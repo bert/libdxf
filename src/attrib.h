@@ -562,6 +562,12 @@ dxf_attrib_get_extrusion_vector_as_point
         DxfAttrib *attrib
 );
 DxfAttrib *
+dxf_attrib_set_extrusion_vector_from_point
+(
+        DxfAttrib *attrib,
+        DxfPoint *point
+);
+DxfAttrib *
 dxf_attrib_set_extrusion_vector
 (
         DxfAttrib *attrib,
