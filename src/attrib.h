@@ -598,6 +598,11 @@ dxf_attrib_set_p0
         DxfAttrib *attrib,
         DxfPoint *p0
 );
+double
+dxf_attrib_get_x0
+(
+        DxfAttrib *attrib
+);
 DxfPoint *
 dxf_attrib_get_alignment_point
 (
