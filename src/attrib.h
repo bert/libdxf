@@ -452,6 +452,12 @@ dxf_attrib_get_binary_graphics_data
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_binary_graphics_data
+(
+        DxfAttrib *attrib,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_attrib_get_dictionary_owner_soft
 (
