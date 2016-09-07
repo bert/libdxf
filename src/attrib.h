@@ -513,6 +513,11 @@ dxf_attrib_set_plot_style_name
         DxfAttrib *attrib,
         char *plot_style_name
 );
+long
+dxf_attrib_get_color_value
+(
+        DxfAttrib *attrib
+);
 char *
 dxf_attrib_get_default_value
 (
