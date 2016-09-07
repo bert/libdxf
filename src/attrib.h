@@ -507,6 +507,12 @@ dxf_attrib_get_plot_style_name
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_plot_style_name
+(
+        DxfAttrib *attrib,
+        char *plot_style_name
+);
 char *
 dxf_attrib_get_default_value
 (
