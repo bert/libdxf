@@ -491,6 +491,11 @@ dxf_attrib_set_dictionary_owner_hard
         DxfAttrib *attrib,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_attrib_get_lineweight
+(
+        DxfAttrib *attrib
+);
 char *
 dxf_attrib_get_default_value
 (
