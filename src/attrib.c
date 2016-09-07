@@ -2635,16 +2635,16 @@ dxf_attrib_get_p0
 
 
 /*!
- * \brief Set the start point of a DXF \c ATTRIB entity.
+ * \brief Set the text start point \c p0 of a DXF \c ATTRIB entity.
  *
  * \return a pointer to a DXF \c ATTRIB entity.
  */
 DxfAttrib *
-dxf_attrib_set_start_point
+dxf_attrib_set_p0
 (
         DxfAttrib *attrib,
                 /*!< a pointer to a DXF \c ATTRIB entity. */
-        DxfPoint *point
+        DxfPoint *p0
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -2659,16 +2659,14 @@ dxf_attrib_set_start_point
                   __FUNCTION__);
                 return (NULL);
         }
-        if (point == NULL)
+        if (p0 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        attrib->x0 = point->x0;
-        attrib->y0 = point->y0;
-        attrib->z0 = point->z0;
+        attrib->p0 = p0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
