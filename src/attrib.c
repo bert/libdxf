@@ -2074,6 +2074,44 @@ dxf_attrib_set_lineweight
 
 
 /*!
+ * \brief Get the \c plot_style_name from a DXF \c ATTRIB entity.
+ *
+ * \return a pointer to \c plot_style_name when sucessful, or \c NULL
+ * when an error occurred.
+ */
+char *
+dxf_attrib_get_plot_style_name
+(
+        DxfAttrib *attrib
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attrib->plot_style_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (attrib->plot_style_name));
+}
+
+
+/*!
  * \brief Get the default value from a DXF \c ATTRIB entity.
  *
  * \return default value.

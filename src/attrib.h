@@ -503,6 +503,11 @@ dxf_attrib_set_lineweight
         int16_t lineweight
 );
 char *
+dxf_attrib_get_plot_style_name
+(
+        DxfAttrib *attrib
+);
+char *
 dxf_attrib_get_default_value
 (
         DxfAttrib *attrib
