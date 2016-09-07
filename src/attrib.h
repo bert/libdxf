@@ -562,26 +562,6 @@ dxf_attrib_set_attr_flags
         int attr_flags
 );
 int
-dxf_attrib_is_invisible
-(
-        DxfAttrib *attrib
-);
-int
-dxf_attrib_is_constant
-(
-        DxfAttrib *attrib
-);
-int
-dxf_attrib_is_verification_required
-(
-        DxfAttrib *attrib
-);
-int
-dxf_attrib_is_preset
-(
-        DxfAttrib *attrib
-);
-int
 dxf_attrib_get_text_flags
 (
         DxfAttrib *attrib
@@ -654,6 +634,26 @@ dxf_attrib_set_next
 (
         DxfAttrib *attrib,
         DxfAttrib *next
+);
+int
+dxf_attrib_is_invisible
+(
+        DxfAttrib *attrib
+);
+int
+dxf_attrib_is_constant
+(
+        DxfAttrib *attrib
+);
+int
+dxf_attrib_is_verification_required
+(
+        DxfAttrib *attrib
+);
+int
+dxf_attrib_is_preset
+(
+        DxfAttrib *attrib
 );
 
 
