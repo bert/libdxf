@@ -186,6 +186,14 @@ dxf_attrib_struct
         char *text_style;
                 /*!< Text style name (optional, default = STANDARD).\n
                  * Group code = 7. */
+        DxfPoint *p0;
+                /*!< Text start point (in OCS).\n
+                 * Group codes = 10, 20 and 30.*/
+        DxfPoint *p1;
+                /*!< Alignment point (in OCS).\n
+                 * Only present if a 72 or 74 group is present and
+                 * nonzero.\n
+                 * Group codes = 11, 21 and 31. */
         double x0;
                 /*!< X-value of text start point (in OCS).\n
                  * Group code = 10. */
