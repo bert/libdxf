@@ -441,6 +441,12 @@ dxf_attrib_get_shadow_mode
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_shadow_mode
+(
+        DxfAttrib *attrib,
+        int16_t shadow_mode
+);
 char *
 dxf_attrib_get_dictionary_owner_soft
 (
