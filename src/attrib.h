@@ -430,6 +430,12 @@ dxf_attrib_get_graphics_data_size
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_graphics_data_size
+(
+        DxfAttrib *attrib,
+        int graphics_data_size
+);
 char *
 dxf_attrib_get_dictionary_owner_soft
 (
