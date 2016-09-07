@@ -1887,6 +1887,48 @@ dxf_attrib_get_material
 
 
 /*!
+ * \brief Set the pointer to the \c material for a DXF \c ATTRIB entity.
+ *
+ * \return a pointer to \c attrib when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfAttrib *
+dxf_attrib_set_material
+(
+        DxfAttrib *attrib,
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+        char *material
+                /*!< a string containing the pointer to the \c
+                 * material for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (material == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attrib->material = strdup (material);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attrib);
+}
+
+
+/*!
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c ATTRIB entity.
  *

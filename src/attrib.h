@@ -474,6 +474,12 @@ dxf_attrib_get_material
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_material
+(
+        DxfAttrib *attrib,
+        char *material
+);
 char *
 dxf_attrib_get_dictionary_owner_hard
 (
