@@ -1866,7 +1866,7 @@ dxf_ellipse_set_dictionary_owner_hard
 
 
 /*!
- * \brief Get the \c lineweight from a DXF \c ELIPSE entity.
+ * \brief Get the \c lineweight from a DXF \c ELLIPSE entity.
  *
  * \return \c lineweight when successful, or \c EXIT_FAILURE when an
  * error occurred.
