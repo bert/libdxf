@@ -2185,6 +2185,40 @@ dxf_attrib_get_color_value
 
 
 /*!
+ * \brief Set the \c color_value for a DXF \c ATTRIB entity.
+ *
+ * \return a pointer to \c attrib when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfAttrib *
+dxf_attrib_set_color_value
+(
+        DxfAttrib *attrib,
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+        long color_value
+                /*!< the \c color_value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attrib->color_value = color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attrib);
+}
+
+
+/*!
  * \brief Get the default value from a DXF \c ATTRIB entity.
  *
  * \return default value.
