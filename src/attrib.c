@@ -140,7 +140,7 @@ dxf_attrib_init
         attrib->extr_z0 = 0.0;
         attrib->dictionary_owner_soft = strdup("");
         attrib->dictionary_owner_hard = strdup("");
-        attrib->line_weight = 0;
+        attrib->lineweight = 0;
         attrib->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
