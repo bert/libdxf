@@ -2598,9 +2598,9 @@ dxf_attrib_set_text_style
 
 
 /*!
- * \brief Get the start point of a DXF \c ATTRIB entity.
+ * \brief Get the text start point \c p0 of a DXF \c ATTRIB entity.
  *
- * \return the start point.
+ * \return the text start point \c p0.
  */
 DxfPoint *
 dxf_attrib_get_p0
