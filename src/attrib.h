@@ -496,6 +496,12 @@ dxf_attrib_get_lineweight
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_lineweight
+(
+        DxfAttrib *attrib,
+        int16_t lineweight
+);
 char *
 dxf_attrib_get_default_value
 (
