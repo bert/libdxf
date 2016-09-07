@@ -525,6 +525,11 @@ dxf_attrib_set_color_value
         long color_value
 );
 char *
+dxf_attrib_get_color_name
+(
+        DxfAttrib *attrib
+);
+char *
 dxf_attrib_get_default_value
 (
         DxfAttrib *attrib
