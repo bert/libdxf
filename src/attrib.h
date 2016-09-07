@@ -540,6 +540,12 @@ dxf_attrib_get_transparency
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_transparency
+(
+        DxfAttrib *attrib,
+        long transparency
+);
 char *
 dxf_attrib_get_default_value
 (
