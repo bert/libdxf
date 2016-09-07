@@ -2299,6 +2299,37 @@ dxf_attrib_set_color_name
 
 
 /*!
+ * \brief Get the \c transparency from a DXF \c ATTRIB entity.
+ *
+ * \return \c transparency when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+long
+dxf_attrib_get_transparency
+(
+        DxfAttrib *attrib
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attrib->transparency);
+}
+
+
+/*!
  * \brief Get the default value from a DXF \c ATTRIB entity.
  *
  * \return default value.
