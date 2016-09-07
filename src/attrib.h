@@ -470,6 +470,11 @@ dxf_attrib_set_dictionary_owner_soft
         char *dictionary_owner_soft
 );
 char *
+dxf_attrib_get_material
+(
+        DxfAttrib *attrib
+);
+char *
 dxf_attrib_get_dictionary_owner_hard
 (
         DxfAttrib *attrib
