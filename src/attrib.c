@@ -2603,29 +2603,15 @@ dxf_attrib_set_text_style
  * \return the start point.
  */
 DxfPoint *
-dxf_attrib_get_start_point
+dxf_attrib_get_p0
 (
-        DxfAttrib *attrib,
+        DxfAttrib *attrib
                 /*!< a pointer to a DXF \c ATTRIB entity. */
-        int id_code,
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file. */
-        int inheritance
-                /*!< Inherit layer, linetype, color and other relevant
-                 * properties from either:
-                 * <ol>
-                 * <li value = "0"> Default (as initialised).</li>
-                 * <li value = "1"> \c ATTRIB.</li>
-                 * </ol>
-                 */
 )
 {
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfPoint *p1 = NULL;
-
         /* Do some basic checks. */
         if (attrib == NULL)
         {
@@ -2634,64 +2620,17 @@ dxf_attrib_get_start_point
                   __FUNCTION__);
                 return (NULL);
         }
-        p1 = dxf_point_init (p1);
-        if (p1 == NULL)
+        if (attrib->p0 == NULL)
         {
               fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                 __FUNCTION__);
               return (NULL);
-        }
-        if (id_code < 0)
-        {
-              fprintf (stderr,
-                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
-                __FUNCTION__);
-        }
-        p1->id_code = id_code;
-        p1->x0 = attrib->x0;
-        p1->y0 = attrib->y0;
-        p1->z0 = attrib->z0;
-        switch (inheritance)
-        {
-                case 0:
-                        /* Do nothing. */
-                        break;
-                case 1:
-                        if (attrib->linetype != NULL)
-                        {
-                                p1->linetype = strdup (attrib->linetype);
-                        }
-                        if (attrib->layer != NULL)
-                        {
-                                p1->layer = strdup (attrib->layer);
-                        }
-                        p1->thickness = attrib->thickness;
-                        p1->linetype_scale = attrib->linetype_scale;
-                        p1->visibility = attrib->visibility;
-                        p1->color = attrib->color;
-                        p1->paperspace = attrib->paperspace;
-                        if (attrib->dictionary_owner_soft != NULL)
-                        {
-                                p1->dictionary_owner_soft = strdup (attrib->dictionary_owner_soft);
-                        }
-                        if (attrib->dictionary_owner_hard != NULL)
-                        {
-                                p1->dictionary_owner_hard = strdup (attrib->dictionary_owner_hard);
-                        }
-                        break;
-                default:
-                        fprintf (stderr,
-                          (_("Warning in %s (): unknown inheritance option passed.\n")),
-                          __FUNCTION__);
-                        fprintf (stderr,
-                          (_("\tResolving to default.\n")));
-                        break;
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (p1);
+        return (attrib->p0);
 }
 
 

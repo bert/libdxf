@@ -588,11 +588,9 @@ dxf_attrib_set_text_style
         char *text_style
 );
 DxfPoint *
-dxf_attrib_get_start_point
+dxf_attrib_get_p0
 (
-        DxfAttrib *attrib,
-        int id_code,
-        int inheritance
+        DxfAttrib *attrib
 );
 DxfAttrib *
 dxf_attrib_set_start_point
