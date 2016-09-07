@@ -2325,7 +2325,7 @@ dxf_ellipse_get_x0
         if (ellipse->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
