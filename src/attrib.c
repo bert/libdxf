@@ -2958,16 +2958,16 @@ dxf_attrib_get_p1
 
 
 /*!
- * \brief Set the alignment point of a DXF \c ATTRIB entity.
+ * \brief Set the alignment point \c p1 of a DXF \c ATTRIB entity.
  *
  * \return a pointer to a DXF \c ATTRIB entity.
  */
 DxfAttrib *
-dxf_attrib_set_alignment_point
+dxf_attrib_set_p1
 (
         DxfAttrib *attrib,
                 /*!< a pointer to a DXF \c ATTRIB entity. */
-        DxfPoint *point
+        DxfPoint *p1
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -2982,16 +2982,14 @@ dxf_attrib_set_alignment_point
                   __FUNCTION__);
                 return (NULL);
         }
-        if (point == NULL)
+        if (p1 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        attrib->x1 = point->x0;
-        attrib->y1 = point->y0;
-        attrib->z1 = point->z0;
+        attrib->p1 = p1;
 #if DEBUG
         DXF_DEBUG_END
 #endif

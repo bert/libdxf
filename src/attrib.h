@@ -637,10 +637,10 @@ dxf_attrib_get_p1
         DxfAttrib *attrib
 );
 DxfAttrib *
-dxf_attrib_set_alignment_point
+dxf_attrib_set_p1
 (
         DxfAttrib *attrib,
-        DxfPoint *point
+        DxfPoint *p1
 );
 double
 dxf_attrib_get_height
