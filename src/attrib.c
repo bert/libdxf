@@ -2796,6 +2796,49 @@ dxf_attrib_get_y0
 
 
 /*!
+ * \brief Set the Y-value of the text start point \c y0 of a DXF
+ * \c ATTRIB entity.
+ *
+ * \return a pointer to \c attrib when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfAttrib *
+dxf_attrib_set_y0
+(
+        DxfAttrib *attrib,
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+        double y0
+                /*!< the Y-value of the text start point \c y0 of a DXF
+                 * \c ATTRIB entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attrib->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attrib->p0->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attrib);
+}
+
+
+/*!
  * \brief Get the alignment point of a DXF \c ATTRIB entity.
  *
  * \return the alignment point.
