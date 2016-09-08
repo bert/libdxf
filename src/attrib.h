@@ -625,6 +625,12 @@ dxf_attrib_get_z0
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_z0
+(
+        DxfAttrib *attrib,
+        double z0
+);
 DxfPoint *
 dxf_attrib_get_alignment_point
 (
