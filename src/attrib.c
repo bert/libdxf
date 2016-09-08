@@ -2921,7 +2921,7 @@ dxf_attrib_set_z0
 
 
 /*!
- * \brief Get the alignment point of a DXF \c ATTRIB entity.
+ * \brief Get the alignment point \c p1 of a DXF \c ATTRIB entity.
  *
  * \return the alignment point.
  */
