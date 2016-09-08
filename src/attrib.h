@@ -632,11 +632,9 @@ dxf_attrib_set_z0
         double z0
 );
 DxfPoint *
-dxf_attrib_get_alignment_point
+dxf_attrib_get_p1
 (
-        DxfAttrib *attrib,
-        int id_code,
-        int inheritance
+        DxfAttrib *attrib
 );
 DxfAttrib *
 dxf_attrib_set_alignment_point
