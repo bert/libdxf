@@ -665,6 +665,11 @@ dxf_attrib_set_y1
         double y1
 );
 double
+dxf_attrib_get_z1
+(
+        DxfAttrib *attrib
+);
+double
 dxf_attrib_get_height
 (
         DxfAttrib *attrib

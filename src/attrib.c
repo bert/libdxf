@@ -3160,6 +3160,45 @@ dxf_attrib_set_y1
 
 
 /*!
+ * \brief Get the Z-value \c z1 of the alignment point of a DXF
+ * \c ATTRIB entity.
+ *
+ * \return the Y-value of the point \c z1.
+ */
+double
+dxf_attrib_get_z1
+(
+        DxfAttrib *attrib
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (attrib->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attrib->p1->z0);
+}
+
+
+/*!
  * \brief Get the height from a DXF \c ATTRIB entity.
  *
  * \return height.
