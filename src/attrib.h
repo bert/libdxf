@@ -643,6 +643,11 @@ dxf_attrib_set_p1
         DxfPoint *p1
 );
 double
+dxf_attrib_get_x1
+(
+        DxfAttrib *attrib
+);
+double
 dxf_attrib_get_height
 (
         DxfAttrib *attrib
