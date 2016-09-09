@@ -3118,6 +3118,48 @@ dxf_attrib_get_y1
 
 
 /*!
+ * \brief Set the Y-value \c y1 of the alignment point of a DXF
+ * \c ATTRIB entity.
+ *
+ * \return a pointer to \c attrib when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfAttrib *
+dxf_attrib_set_y1
+(
+        DxfAttrib *attrib,
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+        double y1
+                /*!< the Y-value \c y1 of a DXF \c ATTRIB entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attrib->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attrib->p1->y0 = y1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attrib);
+}
+
+
+/*!
  * \brief Get the height from a DXF \c ATTRIB entity.
  *
  * \return height.
