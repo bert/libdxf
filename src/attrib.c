@@ -3037,6 +3037,48 @@ dxf_attrib_get_x1
 
 
 /*!
+ * \brief Set the X-value \c x1 of the alinment point of a DXF
+ * \c ATTRIB entity.
+ *
+ * \return a pointer to \c attrib when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfAttrib *
+dxf_attrib_set_x1
+(
+        DxfAttrib *attrib,
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+        double x1
+                /*!< the X-value \c x1 of a DXF \c ATTRIB entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attrib->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attrib->p1->x0 = x1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attrib);
+}
+
+
+/*!
  * \brief Get the height from a DXF \c ATTRIB entity.
  *
  * \return height.
