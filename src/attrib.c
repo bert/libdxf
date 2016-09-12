@@ -3986,6 +3986,42 @@ dxf_attrib_get_extr_x0
 
 
 /*!
+ * \brief Set the X-value of the extrusion vector of a DXF \c ATTRIB
+ * entity.
+ *
+ * \return a pointer to a DXF \c ATTRIB entity when successful, \c NULL
+ * when an error occurred.
+ */
+DxfAttrib *
+dxf_attrib_set_extr_x0
+(
+        DxfAttrib *attrib,
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+        double extr_x0
+                /*!< the X-value of the extrusion vector of a DXF
+                 * \c ATTRIB entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attrib->extr_x0 = extr_x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attrib);
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c ATTRIB entity.
  *
