@@ -3954,6 +3954,38 @@ dxf_attrib_set_vert_align
 
 
 /*!
+ * \brief Get the X-value of the extrusion vector of a DXF \c ATTRIB
+ * entity.
+ *
+ * \return the X-value of the extrusion vector.
+ */
+double
+dxf_attrib_get_extr_x0
+(
+        DxfAttrib *attrib
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attrib->extr_x0);
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c ATTRIB entity.
  *
