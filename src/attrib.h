@@ -785,6 +785,11 @@ dxf_attrib_set_extr_x0
         DxfAttrib *attrib,
         double extr_x0
 );
+double
+dxf_attrib_get_extr_y0
+(
+        DxfAttrib *attrib
+);
 DxfPoint *
 dxf_attrib_get_extrusion_vector_as_point
 (
