@@ -259,42 +259,42 @@ dxf_attrib_read
                         /* Now follows a string containing the
                          * X-coordinate of the start point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &attrib->x0);
+                        fscanf (fp->fp, "%lf\n", &attrib->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the start point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &attrib->y0);
+                        fscanf (fp->fp, "%lf\n", &attrib->p0->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the start point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &attrib->z0);
+                        fscanf (fp->fp, "%lf\n", &attrib->p0->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the align point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &attrib->x1);
+                        fscanf (fp->fp, "%lf\n", &attrib->p1->x0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the align point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &attrib->y1);
+                        fscanf (fp->fp, "%lf\n", &attrib->p1->y0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the align point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &attrib->z1);
+                        fscanf (fp->fp, "%lf\n", &attrib->p1->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
@@ -665,9 +665,9 @@ dxf_attrib_write
         {
                 fprintf (fp->fp, " 39\n%f\n", attrib->thickness);
         }
-        fprintf (fp->fp, " 10\n%f\n", attrib->x0);
-        fprintf (fp->fp, " 20\n%f\n", attrib->y0);
-        fprintf (fp->fp, " 30\n%f\n", attrib->z0);
+        fprintf (fp->fp, " 10\n%f\n", attrib->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", attrib->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", attrib->p0->z0);
         fprintf (fp->fp, " 40\n%f\n", attrib->height);
         fprintf (fp->fp, "  1\n%s\n", attrib->default_value);
         if (fp->acad_version_number >= AutoCAD_13)
@@ -710,9 +710,9 @@ dxf_attrib_write
         }
         if ((attrib->hor_align != 0) || (attrib->vert_align != 0))
         {
-                if ((attrib->x0 == attrib->x1)
-                        && (attrib->y0 == attrib->y1)
-                        && (attrib->z0 == attrib->z1))
+                if ((attrib->p0->x0 == attrib->p1->x0)
+                        && (attrib->p0->y0 == attrib->p1->y0)
+                        && (attrib->p0->z0 == attrib->p1->z0))
                 {
                         fprintf (stderr,
                           (_("Warning in %s () insertion point and alignment point are identical for the %s entity with id-code: %x.\n")),
@@ -725,9 +725,9 @@ dxf_attrib_write
                 }
                 else
                 {
-                        fprintf (fp->fp, " 11\n%f\n", attrib->x1);
-                        fprintf (fp->fp, " 21\n%f\n", attrib->y1);
-                        fprintf (fp->fp, " 31\n%f\n", attrib->z1);
+                        fprintf (fp->fp, " 11\n%f\n", attrib->p1->x0);
+                        fprintf (fp->fp, " 21\n%f\n", attrib->p1->y0);
+                        fprintf (fp->fp, " 31\n%f\n", attrib->p1->z0);
                 }
         }
         if ((fp->acad_version_number >= AutoCAD_12)
