@@ -801,6 +801,12 @@ dxf_attrib_get_extr_z0
 (
         DxfAttrib *attrib
 );
+DxfAttrib *
+dxf_attrib_set_extr_z0
+(
+        DxfAttrib *attrib,
+        double extr_z0
+);
 DxfPoint *
 dxf_attrib_get_extrusion_vector_as_point
 (
