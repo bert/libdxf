@@ -194,30 +194,6 @@ dxf_attrib_struct
                  * Only present if a 72 or 74 group is present and
                  * nonzero.\n
                  * Group codes = 11, 21 and 31. */
-        double x0;
-                /*!< X-value of text start point (in OCS).\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Y-value of text start point (in OCS).\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Z-value of text start point (in OCS).\n
-                 * Group code = 30. */
-        double x1;
-                /*!< X-value of alignment point (in OCS).\n
-                 * Present only if 72 or 74 group is present and
-                 * nonzero.\n
-                 * Group code = 11. */
-        double y1;
-                /*!< Y-value of alignment point (in OCS).\n
-                 * Present only if 72 or 74 group is present and
-                 * nonzero.\n
-                 * Group code = 21. */
-        double z1;
-                /*!< Z-value of alignment point (in OCS).\n
-                 * Present only if 72 or 74 group is present and
-                 * nonzero.\n
-                 * Group code = 31. */
         double height;
                 /*!< Text height.\n
                  * Group code = 40. */
