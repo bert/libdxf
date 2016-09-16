@@ -146,9 +146,9 @@ dxf_attrib_init
         dxf_attrib_set_hor_align (attrib, 0);
         dxf_attrib_set_field_length (attrib, 0);
         dxf_attrib_set_vert_align (attrib, 0);
-        attrib->extr_x0 = 0.0;
-        attrib->extr_y0 = 0.0;
-        attrib->extr_z0 = 0.0;
+        dxf_attrib_set_extr_x0 (attrib, 0.0);
+        dxf_attrib_set_extr_y0 (attrib, 0.0);
+        dxf_attrib_set_extr_z0 (attrib, 0.0);
         dxf_attrib_set_lineweight (attrib, 0);
         dxf_attrib_set_next (attrib, NULL);
 #if DEBUG
