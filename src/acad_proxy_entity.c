@@ -732,7 +732,10 @@ dxf_acad_proxy_entity_free
         free (acad_proxy_entity->linetype);
         free (acad_proxy_entity->layer);
         free (acad_proxy_entity->dictionary_owner_soft);
+        free (acad_proxy_entity->material);
         free (acad_proxy_entity->dictionary_owner_hard);
+        free (acad_proxy_entity->plot_style_name);
+        free (acad_proxy_entity->color_name);
         dxf_binary_graphics_data_free_chain (acad_proxy_entity->binary_graphics_data);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
