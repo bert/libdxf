@@ -340,6 +340,11 @@ dxf_arc_set_paperspace
         DxfArc *arc,
         int paperspace
 );
+int
+dxf_arc_get_graphics_data_size
+(
+        DxfArc *arc
+);
 char *
 dxf_arc_get_dictionary_owner_soft
 (

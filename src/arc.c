@@ -1369,6 +1369,49 @@ dxf_arc_set_paperspace
 
 
 /*!
+ * \brief Get the \c graphics_data_size value from a DXF \c ARC entity.
+ *
+ * \return \c graphics_data_size value when successful, or
+ * \c EXIT_FAILURE when an error occurred.
+ */
+int
+dxf_arc_get_graphics_data_size
+(
+        DxfArc *arc
+                /*!< a pointer to a DXF \c ARC entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (arc->graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the graphics_data_size member.\n")),
+                  __FUNCTION__);
+        }
+        if (arc->graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc->graphics_data_size);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c ARC entity.
  *
