@@ -406,6 +406,11 @@ dxf_arc_set_dictionary_owner_hard
         DxfArc *arc,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_arc_get_lineweight
+(
+        DxfArc *arc
+);
 DxfPoint *
 dxf_arc_get_center_point
 (
