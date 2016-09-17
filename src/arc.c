@@ -2051,6 +2051,40 @@ dxf_arc_get_color_value
 
 
 /*!
+ * \brief Set the \c color_value for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfArc *
+dxf_arc_set_color_value
+(
+        DxfArc *arc,
+                /*!< a pointer to a DXF \c ARC entity. */
+        long color_value
+                /*!< the \c color_value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        arc->color_value = color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc);
+}
+
+
+/*!
  * \brief Get the center point of a DXF \c ARC entity.
  *
  * \return the center point.
