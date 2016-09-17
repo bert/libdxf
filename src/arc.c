@@ -2020,6 +2020,37 @@ dxf_arc_set_plot_style_name
 
 
 /*!
+ * \brief Get the \c color_value from a DXF \c ARC entity.
+ *
+ * \return \c color_value when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+long
+dxf_arc_get_color_value
+(
+        DxfArc *arc
+                /*!< a pointer to a DXF \c ARC entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc->color_value);
+}
+
+
+/*!
  * \brief Get the center point of a DXF \c ARC entity.
  *
  * \return the center point.

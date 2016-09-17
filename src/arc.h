@@ -428,6 +428,11 @@ dxf_arc_set_plot_style_name
         DxfArc *arc,
         char *plot_style_name
 );
+long
+dxf_arc_get_color_value
+(
+        DxfArc *arc
+);
 DxfPoint *
 dxf_arc_get_center_point
 (
