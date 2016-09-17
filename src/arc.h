@@ -367,6 +367,12 @@ dxf_arc_get_binary_graphics_data
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_binary_graphics_data
+(
+        DxfArc *arc,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_arc_get_dictionary_owner_soft
 (
