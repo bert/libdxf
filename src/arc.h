@@ -345,6 +345,12 @@ dxf_arc_get_graphics_data_size
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_graphics_data_size
+(
+        DxfArc *arc,
+        int graphics_data_size
+);
 char *
 dxf_arc_get_dictionary_owner_soft
 (
