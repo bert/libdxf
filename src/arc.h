@@ -422,6 +422,12 @@ dxf_arc_get_plot_style_name
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_plot_style_name
+(
+        DxfArc *arc,
+        char *plot_style_name
+);
 DxfPoint *
 dxf_arc_get_center_point
 (
