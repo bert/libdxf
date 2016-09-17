@@ -417,6 +417,11 @@ dxf_arc_set_lineweight
         DxfArc *arc,
         int16_t lineweight
 );
+char *
+dxf_arc_get_plot_style_name
+(
+        DxfArc *arc
+);
 DxfPoint *
 dxf_arc_get_center_point
 (
