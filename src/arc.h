@@ -351,6 +351,11 @@ dxf_arc_set_graphics_data_size
         DxfArc *arc,
         int graphics_data_size
 );
+int16_t
+dxf_arc_get_shadow_mode
+(
+        DxfArc *arc
+);
 char *
 dxf_arc_get_dictionary_owner_soft
 (
