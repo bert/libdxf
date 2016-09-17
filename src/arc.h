@@ -385,6 +385,11 @@ dxf_arc_set_dictionary_owner_soft
         char *dictionary_owner_soft
 );
 char *
+dxf_arc_get_material
+(
+        DxfArc *arc
+);
+char *
 dxf_arc_get_dictionary_owner_hard
 (
         DxfArc *arc
