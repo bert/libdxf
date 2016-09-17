@@ -356,6 +356,12 @@ dxf_arc_get_shadow_mode
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_shadow_mode
+(
+        DxfArc *arc,
+        int16_t shadow_mode
+);
 char *
 dxf_arc_get_dictionary_owner_soft
 (

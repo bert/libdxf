@@ -1505,6 +1505,54 @@ dxf_arc_get_shadow_mode
 
 
 /*!
+ * \brief Set the \c shadow_mode for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfArc *
+dxf_arc_set_shadow_mode
+(
+        DxfArc *arc,
+                /*!< a pointer to a DXF \c ARC entity. */
+        int16_t shadow_mode
+                /*!< the shadow mode to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative shadow_mode value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range shadow_mode value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        arc->shadow_mode = shadow_mode;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c ARC entity.
  *
