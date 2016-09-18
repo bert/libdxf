@@ -465,11 +465,9 @@ dxf_arc_set_transparency
         long transparency
 );
 DxfPoint *
-dxf_arc_get_center_point
+dxf_arc_get_p0
 (
-        DxfArc *arc,
-        int id_code,
-        int inheritance
+        DxfArc *arc
 );
 DxfArc *
 dxf_arc_set_center_point
