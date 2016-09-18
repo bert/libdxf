@@ -2465,7 +2465,7 @@ dxf_3dface_get_x0
         if (face->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -2507,7 +2507,7 @@ dxf_3dface_set_x0
         if (face->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
