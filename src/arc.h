@@ -470,10 +470,10 @@ dxf_arc_get_p0
         DxfArc *arc
 );
 DxfArc *
-dxf_arc_set_center_point
+dxf_arc_set_p0
 (
         DxfArc *arc,
-        DxfPoint *point
+        DxfPoint *p0
 );
 DxfPoint *
 dxf_arc_get_extrusion_vector_as_point
