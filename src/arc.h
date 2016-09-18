@@ -178,6 +178,9 @@ dxf_arc_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF arc. */
+        DxfPoint *p0;
+                /*!< Center point.\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< X-value of the starting point coordinate.\n
                  * Group code = 10. */
