@@ -508,36 +508,6 @@ dxf_arc_set_z0
         DxfArc *arc,
         double z0
 );
-DxfPoint *
-dxf_arc_get_extrusion_vector_as_point
-(
-        DxfArc *arc
-);
-double
-dxf_arc_get_extr_x0
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_extr_x0
-(
-        DxfArc *arc,
-        double extr_x0
-);
-DxfArc *
-dxf_arc_set_extrusion_vector_from_point
-(
-        DxfArc *arc,
-        DxfPoint *point
-);
-DxfArc *
-dxf_arc_set_extrusion_vector
-(
-        DxfArc *arc,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0
-);
 double
 dxf_arc_get_radius
 (
@@ -570,6 +540,36 @@ dxf_arc_set_end_angle
 (
         DxfArc *arc,
         double end_angle
+);
+DxfPoint *
+dxf_arc_get_extrusion_vector_as_point
+(
+        DxfArc *arc
+);
+double
+dxf_arc_get_extr_x0
+(
+        DxfArc *arc
+);
+DxfArc *
+dxf_arc_set_extr_x0
+(
+        DxfArc *arc,
+        double extr_x0
+);
+DxfArc *
+dxf_arc_set_extrusion_vector_from_point
+(
+        DxfArc *arc,
+        DxfPoint *point
+);
+DxfArc *
+dxf_arc_set_extrusion_vector
+(
+        DxfArc *arc,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0
 );
 DxfArc *
 dxf_arc_get_next
