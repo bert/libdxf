@@ -439,6 +439,11 @@ dxf_arc_set_color_value
         DxfArc *arc,
         long color_value
 );
+char *
+dxf_arc_get_color_name
+(
+        DxfArc *arc
+);
 DxfPoint *
 dxf_arc_get_center_point
 (
