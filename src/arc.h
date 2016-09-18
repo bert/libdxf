@@ -491,6 +491,12 @@ dxf_arc_get_y0
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_y0
+(
+        DxfArc *arc,
+        double y0
+);
 DxfPoint *
 dxf_arc_get_extrusion_vector_as_point
 (
