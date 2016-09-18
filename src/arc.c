@@ -2382,7 +2382,7 @@ dxf_arc_set_x0
 
 
 /*!
- * \brief Get the Y-value of the center point \c x0 of a DXF \c ARC
+ * \brief Get the Y-value of the center point \c y0 of a DXF \c ARC
  * entity.
  *
  * \return the Y-value of the center point \c y0.
