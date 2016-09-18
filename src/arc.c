@@ -2196,6 +2196,40 @@ dxf_arc_get_transparency
 
 
 /*!
+ * \brief Set the \c transparency for a DXF \c ARC entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfArc *
+dxf_arc_set_transparency
+(
+        DxfArc *arc,
+                /*!< a pointer to a DXF \c ARC entity. */
+        long transparency
+                /*!< the \c transparency to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        arc->transparency = transparency;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc);
+}
+
+
+/*!
  * \brief Get the center point of a DXF \c ARC entity.
  *
  * \return the center point.

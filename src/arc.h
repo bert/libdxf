@@ -455,6 +455,12 @@ dxf_arc_get_transparency
 (
         DxfArc *arc
 );
+DxfArc *
+dxf_arc_set_transparency
+(
+        DxfArc *arc,
+        long transparency
+);
 DxfPoint *
 dxf_arc_get_center_point
 (
