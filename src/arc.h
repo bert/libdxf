@@ -450,6 +450,11 @@ dxf_arc_set_color_name
         DxfArc *arc,
         char *color_name
 );
+long
+dxf_arc_get_transparency
+(
+        DxfArc *arc
+);
 DxfPoint *
 dxf_arc_get_center_point
 (
