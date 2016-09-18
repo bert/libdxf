@@ -2503,6 +2503,49 @@ dxf_arc_get_z0
 
 
 /*!
+ * \brief Set the Z-value of the center point \c z0 of a DXF \c ARC
+ * entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfArc *
+dxf_arc_set_z0
+(
+        DxfArc *arc,
+                /*!< a pointer to a DXF \c ARC entity. */
+        double z0
+                /*!< the Z-value of the center point \c z0 of a DXF
+                 * \c ARC entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (arc->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        arc->p0->z0 = z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc);
+}
+
+
+/*!
  * \brief Get the radius from a DXF \c ARC entity.
  *
  * \return radius.
