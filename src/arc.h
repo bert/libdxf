@@ -568,6 +568,11 @@ dxf_arc_set_extr_y0
         DxfArc *arc,
         double extr_y0
 );
+double
+dxf_arc_get_extr_z0
+(
+        DxfArc *arc
+);
 DxfArc *
 dxf_arc_set_extrusion_vector_from_point
 (

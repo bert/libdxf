@@ -2939,6 +2939,38 @@ dxf_arc_set_extr_y0
 
 
 /*!
+ * \brief Get the Z-value of the extrusion vector \c extr_z0 of a DXF
+ * \c ARC entity.
+ *
+ * \return the Z-value of the extrusion vector \c extr_z0.
+ */
+double
+dxf_arc_get_extr_z0
+(
+        DxfArc *arc
+                /*!< a pointer to a DXF \c ARC entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc->extr_z0);
+}
+
+
+/*!
  * \brief Set the extrusion vector from a DXF \c POINT for a DXF \c ARC
  * entity.
  */
