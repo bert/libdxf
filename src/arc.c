@@ -637,7 +637,11 @@ dxf_arc_free
         free (arc->linetype);
         free (arc->layer);
         free (arc->dictionary_owner_soft);
+        free (arc->material);
         free (arc->dictionary_owner_hard);
+        free (arc->plot_style_name);
+        free (arc->color_name);
+        dxf_point_free (arc->p0);
         free (arc);
         arc = NULL;
 #if DEBUG
