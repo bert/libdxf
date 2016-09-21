@@ -431,92 +431,92 @@ dxf_arc_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (arc->start_angle == arc->end_angle)
+        if (dxf_arc_get_start_angle (arc) == dxf_arc_get_end_angle (arc))
         {
                 fprintf (stderr,
                   (_("Error in %s () start angle and end angle are identical for the %s entity with id-code: %x.\n")),
-                    __FUNCTION__, dxf_entity_name, arc->id_code);
+                    __FUNCTION__, dxf_entity_name, dxf_arc_get_id_code (arc));
                 fprintf (stderr,
                   (_("\tskipping %s entity.\n")), dxf_entity_name);
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (arc->start_angle > 360.0)
+        if (dxf_arc_get_start_angle (arc)> 360.0)
         {
                 fprintf (stderr, "Error in dxf_arc_write () start angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, arc->id_code);
+                        dxf_entity_name, dxf_arc_get_id_code (arc));
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (arc->start_angle < 0.0)
+        if (dxf_arc_get_start_angle (arc) < 0.0)
         {
                 fprintf (stderr, "Error in dxf_arc_write () start angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, arc->id_code);
+                        dxf_entity_name, dxf_arc_get_id_code (arc));
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (arc->end_angle > 360.0)
+        if (dxf_arc_get_end_angle (arc) > 360.0)
         {
                 fprintf (stderr, "Error in dxf_arc_write () end angle is greater than 360 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, arc->id_code);
+                        dxf_entity_name, dxf_arc_get_id_code (arc));
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (arc->end_angle < 0.0)
+        if (dxf_arc_get_end_angle (arc) < 0.0)
         {
                 fprintf (stderr, "Error in dxf_arc_write () end angle is lesser than 0 degrees for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, arc->id_code);
+                        dxf_entity_name, dxf_arc_get_id_code (arc));
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (arc->radius == 0.0)
+        if (dxf_arc_get_radius (arc) == 0.0)
         {
                 fprintf (stderr, "Error in dxf_arc_write () radius value equals 0.0 for the %s entity with id-code: %x.\n",
-                        dxf_entity_name, arc->id_code);
+                        dxf_entity_name, dxf_arc_get_id_code (arc));
                 fprintf (stderr, "\tskipping %s entity.\n",
                         dxf_entity_name);
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (arc->linetype, "") == 0)
+        if (strcmp (dxf_arc_get_linetype (arc), "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, arc->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_arc_get_id_code (arc));
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                arc->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                dxf_arc_set_linetype (arc, strdup (DXF_DEFAULT_LINETYPE));
         }
-        if (strcmp (arc->layer, "") == 0)
+        if (strcmp (dxf_arc_get_layer (arc), "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, arc->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_arc_get_id_code (arc));
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0")),
                   dxf_entity_name);
-                arc->layer = DXF_DEFAULT_LAYER;
+                dxf_arc_set_layer (arc, DXF_DEFAULT_LAYER);
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (arc->id_code != -1)
+        if (dxf_arc_get_id_code (arc) != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", arc->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_arc_get_id_code (arc));
         }
         /*!
          * \todo for version R14.\n
@@ -528,77 +528,77 @@ dxf_arc_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (arc->dictionary_owner_soft, "") != 0)
+        if ((strcmp (dxf_arc_get_dictionary_owner_soft (arc), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", arc->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", dxf_arc_get_dictionary_owner_soft (arc));
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (arc->dictionary_owner_hard, "") != 0)
+        if ((strcmp (dxf_arc_get_dictionary_owner_hard (arc), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", arc->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", dxf_arc_get_dictionary_owner_hard (arc));
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (arc->paperspace == DXF_PAPERSPACE)
+        if (dxf_arc_get_paperspace (arc) == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", arc->layer);
-        if (strcmp (arc->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", dxf_arc_get_layer (arc));
+        if (strcmp (dxf_arc_get_linetype (arc), DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", arc->linetype);
+                fprintf (fp->fp, "  6\n%s\n", dxf_arc_get_linetype (arc));
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (arc->elevation != 0.0))
+          && (dxf_arc_get_elevation (arc) != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", arc->elevation);
+                fprintf (fp->fp, " 38\n%f\n", dxf_arc_get_elevation (arc));
         }
-        if (arc->color != DXF_COLOR_BYLAYER)
+        if (dxf_arc_get_color (arc) != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", arc->color);
+                fprintf (fp->fp, " 62\n%d\n", dxf_arc_get_color (arc));
         }
-        if (arc->linetype_scale != 1.0)
+        if (dxf_arc_get_linetype_scale (arc) != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", arc->linetype_scale);
+                fprintf (fp->fp, " 48\n%f\n", dxf_arc_get_linetype_scale (arc));
         }
-        if (arc->visibility != 0)
+        if (dxf_arc_get_visibility (arc) != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", arc->visibility);
+                fprintf (fp->fp, " 60\n%d\n", dxf_arc_get_visibility (arc));
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbCircle\n");
         }
-        if (arc->thickness != 0.0)
+        if (dxf_arc_get_thickness (arc) != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", arc->thickness);
+                fprintf (fp->fp, " 39\n%f\n", dxf_arc_get_thickness (arc));
         }
-        fprintf (fp->fp, " 10\n%f\n", arc->x0);
-        fprintf (fp->fp, " 20\n%f\n", arc->y0);
-        fprintf (fp->fp, " 30\n%f\n", arc->z0);
-        fprintf (fp->fp, " 40\n%f\n", arc->radius);
+        fprintf (fp->fp, " 10\n%f\n", dxf_arc_get_x0 (arc));
+        fprintf (fp->fp, " 20\n%f\n", dxf_arc_get_y0 (arc));
+        fprintf (fp->fp, " 30\n%f\n", dxf_arc_get_z0 (arc));
+        fprintf (fp->fp, " 40\n%f\n", dxf_arc_get_radius (arc));
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbArc\n");
         }
-        fprintf (fp->fp, " 50\n%f\n", arc->start_angle);
-        fprintf (fp->fp, " 51\n%f\n", arc->end_angle);
+        fprintf (fp->fp, " 50\n%f\n", dxf_arc_get_start_angle (arc));
+        fprintf (fp->fp, " 51\n%f\n", dxf_arc_get_end_angle (arc));
         if ((fp->acad_version_number >= AutoCAD_12)
-                && (arc->extr_x0 != 0.0)
-                && (arc->extr_y0 != 0.0)
-                && (arc->extr_z0 != 1.0))
+                && (dxf_arc_get_extr_x0 (arc) != 0.0)
+                && (dxf_arc_get_extr_y0 (arc) != 0.0)
+                && (dxf_arc_get_extr_z0 (arc) != 1.0))
         {
-                fprintf (fp->fp, "210\n%f\n", arc->extr_x0);
-                fprintf (fp->fp, "220\n%f\n", arc->extr_y0);
-                fprintf (fp->fp, "230\n%f\n", arc->extr_z0);
+                fprintf (fp->fp, "210\n%f\n", dxf_arc_get_extr_x0 (arc));
+                fprintf (fp->fp, "220\n%f\n", dxf_arc_get_extr_y0 (arc));
+                fprintf (fp->fp, "230\n%f\n", dxf_arc_get_extr_z0 (arc));
         }
         /* Clean up. */
         free (dxf_entity_name);
