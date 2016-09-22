@@ -595,6 +595,11 @@ dxf_arc_set_next
         DxfArc *arc,
         DxfArc *next
 );
+double
+dxf_arc_get_length
+(
+        DxfArc *arc
+);
 
 
 #endif /* LIBDXF_SRC_ARC_H */
