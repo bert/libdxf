@@ -181,15 +181,6 @@ dxf_arc_struct
         DxfPoint *p0;
                 /*!< Center point.\n
                  * Group codes = 10, 20 and 30.*/
-        double x0;
-                /*!< X-value of the starting point coordinate.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Y-value of the starting point coordinate.\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Z-value of the starting point coordinate.\n
-                 * Group code = 30. */
         double radius;
                 /*!< Radius of the arc.\n
                  * Group code = 40. */
