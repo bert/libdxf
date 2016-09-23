@@ -92,6 +92,9 @@ dxf_block_struct
                 /*!< Layer on which the entity is drawn.\n
                  * Defaults to layer "0" if no valid layername is given.\n
                  * Group code = 8. */
+        DxfPoint *p0;
+                /*!< Base point.\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< Base point, X-value.\n
                  * Group code = 10. */
