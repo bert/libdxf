@@ -245,11 +245,9 @@ dxf_block_set_layer
         char *layer
 );
 DxfPoint *
-dxf_block_get_base_point
+dxf_block_get_p0
 (
-        DxfBlock *block,
-        int id_code,
-        int inheritance
+        DxfBlock *block
 );
 DxfBlock *
 dxf_block_set_base_point
