@@ -476,9 +476,9 @@ dxf_block_write
         }
         fprintf (fp->fp, "  2\n%s\n", block->block_name);
         fprintf (fp->fp, " 70\n%d\n", block->block_type);
-        fprintf (fp->fp, " 10\n%f\n", block->x0);
-        fprintf (fp->fp, " 20\n%f\n", block->y0);
-        fprintf (fp->fp, " 30\n%f\n", block->z0);
+        fprintf (fp->fp, " 10\n%f\n", block->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", block->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", block->p0->z0);
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "  3\n%s\n", block->block_name);
