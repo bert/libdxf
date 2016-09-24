@@ -95,15 +95,6 @@ dxf_block_struct
         DxfPoint *p0;
                 /*!< Base point.\n
                  * Group codes = 10, 20 and 30.*/
-        double x0;
-                /*!< Base point, X-value.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Base point, Y-value.\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Base point, Z-value.\n
-                 * Group code = 30. */
         int block_type;
                 /*!< Bit coded:\n
                  * <ol>
