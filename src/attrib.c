@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief DXF attribute entity (\c ATTRIB).
+ * \brief Functions for a DXF attribute entity (\c ATTRIB).
  *
  * \version According to DXF R10.
  * \version According to DXF R11.
