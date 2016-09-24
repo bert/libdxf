@@ -277,6 +277,11 @@ dxf_block_set_y0
         DxfBlock *block,
         double y0
 );
+double
+dxf_block_get_z0
+(
+        DxfBlock *block
+);
 int
 dxf_block_get_block_type
 (
