@@ -255,6 +255,11 @@ dxf_block_set_p0
         DxfBlock *block,
         DxfPoint *p0
 );
+double
+dxf_block_get_x0
+(
+        DxfBlock *block
+);
 int
 dxf_block_get_block_type
 (
