@@ -115,9 +115,10 @@ dxf_block_init
         block->id_code = 0;
         block->description = strdup ("");
         block->layer = strdup (DXF_DEFAULT_LAYER);
-        block->x0 = 0.0;
-        block->y0 = 0.0;
-        block->z0 = 0.0;
+        dxf_point_init ((DxfPoint *) dxf_block_get_p0 (block));
+        block->p0->x0 = 0.0;
+        block->p0->y0 = 0.0;
+        block->p0->z0 = 0.0;
         block->block_type = 0; /* 0 = invalid type */
         block->dictionary_owner_soft = strdup ("");
         block->endblk = (struct DxfEndblk *) dxf_endblk_new ();
