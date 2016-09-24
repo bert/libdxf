@@ -282,6 +282,12 @@ dxf_block_get_z0
 (
         DxfBlock *block
 );
+DxfBlock *
+dxf_block_set_z0
+(
+        DxfBlock *block,
+        double z0
+);
 int
 dxf_block_get_block_type
 (
