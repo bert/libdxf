@@ -250,10 +250,10 @@ dxf_block_get_p0
         DxfBlock *block
 );
 DxfBlock *
-dxf_block_set_base_point
+dxf_block_set_p0
 (
         DxfBlock *block,
-        DxfPoint *point
+        DxfPoint *p0
 );
 int
 dxf_block_get_block_type
