@@ -244,14 +244,14 @@ dxf_block_read
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
-                        && (block->z0 = 0.0))
+                        && (block->p0->z0 = 0.0))
                 {
                         /* Elevation is a pre AutoCAD R11 variable
                          * so additional testing for the version should
                          * probably be added.
                          * Now follows a string containing the
                          * elevation. */
-                        fscanf (fp->fp, "%lf\n", &block->z0);
+                        fscanf (fp->fp, "%lf\n", &block->p0->z0);
                 }
                 else if (strcmp (temp_string, "70") == 0)
                 {
