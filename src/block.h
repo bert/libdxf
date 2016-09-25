@@ -325,6 +325,12 @@ dxf_block_get_extr_x0
 (
         DxfBlock *block
 );
+DxfBlock *
+dxf_block_set_extr_x0
+(
+        DxfBlock *block,
+        double extr_x0
+);
 DxfPoint *
 dxf_block_get_extrusion_vector_as_point
 (
