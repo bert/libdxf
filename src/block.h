@@ -320,6 +320,11 @@ dxf_block_is_referenced
 (
         DxfBlock *block
 );
+double
+dxf_block_get_extr_x0
+(
+        DxfBlock *block
+);
 DxfPoint *
 dxf_block_get_extrusion_vector_as_point
 (
