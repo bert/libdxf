@@ -1829,6 +1829,42 @@ dxf_block_get_extr_z0
 
 
 /*!
+ * \brief Set the Z-value of the extrusion vector \c extr_z0 of a DXF
+ * \c BLOCK entity.
+ *
+ * \return a pointer to \c block when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfBlock *
+dxf_block_set_extr_z0
+(
+        DxfBlock *block,
+                /*!< a pointer to a DXF \c BLOCK entity. */
+        double extr_z0
+                /*!< the Z-value of the extrusion vector \c extr_z0 of a
+                 * DXF \c BLOCK entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        block->extr_z0 = extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (block);
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c BLOCK entity.
  *
