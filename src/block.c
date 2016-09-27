@@ -318,22 +318,22 @@ dxf_block_read
          * \todo Resolve this quick hack for preventing an empty block
          * name string in a more elegant manner.
          */
-        if (strcmp (block->block_name, "") == 0)
+        if (strcmp (dxf_block_get_block_name (block), "") == 0)
         {
                 sprintf (block->block_name, "%i", block->id_code);
         }
-        if (strcmp (block->layer, "") == 0)
+        if (strcmp (dxf_block_get_layer (block), "") == 0)
         {
-                block->layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_block_set_layer (block, strdup (DXF_DEFAULT_LAYER));
         }
-        if (block->block_type == 0)
+        if (dxf_block_get_block_type (block) == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () illegal block type value found while reading from: %s in line: %d.\n")),
                   __FUNCTION__, fp->filename, fp->line_number);
                 fprintf (stderr,
                   (_("\tblock type value is reset to 1.\n")));
-                block->block_type = 1;
+                dxf_block_set_block_type (block, 1);
         }
         /* Clean up. */
         free (temp_string);
