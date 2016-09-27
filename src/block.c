@@ -109,20 +109,23 @@ dxf_block_init
                   __FUNCTION__);
                 return (NULL);
         }
-        block->xref_name = strdup ("");
-        block->block_name = strdup ("");
-        block->block_name_additional = strdup ("");
-        block->id_code = 0;
-        block->description = strdup ("");
-        block->layer = strdup (DXF_DEFAULT_LAYER);
-        dxf_point_init ((DxfPoint *) dxf_block_get_p0 (block));
-        block->p0->x0 = 0.0;
-        block->p0->y0 = 0.0;
-        block->p0->z0 = 0.0;
-        block->block_type = 0; /* 0 = invalid type */
-        block->dictionary_owner_soft = strdup ("");
-        block->endblk = (struct DxfEndblk *) dxf_endblk_new ();
-        block->next = NULL;
+        dxf_block_set_xref_name (block, strdup (""));
+        dxf_block_set_block_name (block, strdup (""));
+        dxf_block_set_block_name_additional (block, strdup (""));
+        dxf_block_set_description (block, strdup (""));
+        dxf_block_set_id_code (block, 0);
+        dxf_block_set_layer (block, strdup (DXF_DEFAULT_LAYER));
+        dxf_block_set_p0 (block, dxf_point_init (NULL));
+        dxf_block_set_x0 (block, 0.0);
+        dxf_block_set_y0 (block, 0.0);
+        dxf_block_set_z0 (block, 0.0);
+        dxf_block_set_block_type (block, 0); /* 0 = invalid type */
+        dxf_block_set_extr_x0 (block, 0.0);
+        dxf_block_set_extr_y0 (block, 0.0);
+        dxf_block_set_extr_z0 (block, 1.0);
+        dxf_block_set_dictionary_owner_soft (block, strdup (""));
+        dxf_block_set_endblk (block, (struct DxfEndblk *) dxf_endblk_new ());
+        dxf_block_set_next (block, NULL);
 #if DEBUG
         DXF_DEBUG_END
 #endif
