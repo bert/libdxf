@@ -136,7 +136,7 @@ dxf_attdef_init
         attdef->vert_align = 0;
         attdef->extr_x0 = 0.0;
         attdef->extr_y0 = 0.0;
-        attdef->extr_z0 = 0.0;
+        attdef->extr_z0 = 1.0;
         attdef->dictionary_owner_soft = strdup ("");
         attdef->dictionary_owner_hard = strdup ("");
         attdef->next = NULL;
