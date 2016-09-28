@@ -427,6 +427,12 @@ dxf_attdef_get_graphics_data_size
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_graphics_data_size
+(
+        DxfAttdef *attdef,
+        int graphics_data_size
+);
 char *
 dxf_attdef_get_dictionary_owner_soft
 (
