@@ -140,7 +140,7 @@ dxf_arc_init
         dxf_arc_set_end_angle (arc, 0.0);
         dxf_arc_set_extr_x0 (arc, 0.0);
         dxf_arc_set_extr_y0 (arc, 0.0);
-        dxf_arc_set_extr_z0 (arc, 0.0);
+        dxf_arc_set_extr_z0 (arc, 1.0);
         dxf_arc_set_next (arc, NULL);
 #if DEBUG
         DXF_DEBUG_END
