@@ -449,6 +449,12 @@ dxf_attdef_get_binary_graphics_data
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_binary_graphics_data
+(
+        DxfAttdef *attdef,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_attdef_get_dictionary_owner_soft
 (
