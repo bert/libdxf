@@ -44,6 +44,8 @@
 #include "arc.h"
 #include "attdef.h"
 #include "attrib.h"
+#include "binary_entity_data.h"
+#include "binary_graphics_data.h"
 #include "block.h"
 #include "block_record.h"
 #include "body.h"
