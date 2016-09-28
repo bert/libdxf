@@ -444,6 +444,11 @@ dxf_attdef_set_shadow_mode
         DxfAttdef *attdef,
         int16_t shadow_mode
 );
+DxfBinaryGraphicsData *
+dxf_attdef_get_binary_graphics_data
+(
+        DxfAttdef *attdef
+);
 char *
 dxf_attdef_get_dictionary_owner_soft
 (
