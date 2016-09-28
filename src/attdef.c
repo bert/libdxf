@@ -1628,6 +1628,54 @@ dxf_attdef_get_shadow_mode
 
 
 /*!
+ * \brief Set the \c shadow_mode for a DXF \c ATTDEF entity.
+ *
+ * \return a pointer to \c attdef when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfAttdef *
+dxf_attdef_set_shadow_mode
+(
+        DxfAttdef *attdef,
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+        int16_t shadow_mode
+                /*!< the shadow mode to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative shadow_mode value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range shadow_mode value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attdef->shadow_mode = shadow_mode;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attdef);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c ATTDEF entity.
  *

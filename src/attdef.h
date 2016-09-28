@@ -438,6 +438,12 @@ dxf_attdef_get_shadow_mode
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_shadow_mode
+(
+        DxfAttdef *attdef,
+        int16_t shadow_mode
+);
 char *
 dxf_attdef_get_dictionary_owner_soft
 (
