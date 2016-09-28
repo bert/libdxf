@@ -40,6 +40,7 @@
 
 #include "global.h"
 #include "point.h"
+#include "binary_graphics_data.h"
 
 
 #ifndef LIBDXF_SRC_ATTDEF_H
@@ -85,7 +86,8 @@ dxf_attdef_struct
                  * <li value = "0"> Visible</li>
                  * <li value = "1"> Invisible</li>
                  * </ol>
-                 * Group code = 60. */
+                 * Group code = 60.\n
+                 * \since Introduced in version R13. */
         int color;
                 /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
@@ -97,13 +99,83 @@ dxf_attdef_struct
                 /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
                  * Optional, defaults to \c DXF_MODELSPACE (0).\n
-                 * Group code = 67. */
+                 * Group code = 67.\n
+                 * \since Introduced in version R13. */
+        int graphics_data_size;
+                /*!< Number of bytes in the proxy entity graphics
+                 * represented in the sub-sequent 310 groups, which are
+                 * binary chunk records (optional).\n
+                 * Group code = 92.\n
+                 * \since Introduced in version R2000.\n
+                 * \warning On some 64 bit workstations output is
+                 * generated with group code "160", thus omitting group
+                 * code "92". */
+        int16_t shadow_mode;
+                /*!< Shadow mode:\n
+                 * <ol>
+                 * <li value = "0"> Casts and receives shadows.</li>
+                 * <li value = "1"> Casts shadows.</li>
+                 * <li value = "2"> Receives shadows.</li>
+                 * <li value = "3"> Ignores shadows.</li>
+                 * </ol>\n
+                 * Group code = 284.\n
+                 * \since Introduced in version R2009. */
+        DxfBinaryGraphicsData *binary_graphics_data;
+                /*!< Proxy entity graphics data.\n
+                 * Multiple lines of 256 characters maximum per line
+                 * (optional).\n
+                 * Group code = 310.\n
+                 * \since Introduced in version R2000. */
         char *dictionary_owner_soft;
                 /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
-                 * Group code = 330. */
+                 * Group code = 330.\n
+                 * \since Introduced in version R14. */
+        char *material;
+                /*!< Hard-pointer ID/handle to material object (present if
+                 * not BYLAYER).\n
+                 * Group code = 347.\n
+                 * \since Introduced in version R2008. */
         char *dictionary_owner_hard;
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
-                 * Group code = 360. */
+                 * Group code = 360.\n
+                 * \since Introduced in version R14. */
+        int16_t lineweight;
+                /*!< Lineweight enum value.\n
+                 * Stored and moved around as a 16-bit integer.\n
+                 * Group code = 370.\n
+                 * \since Introduced in version R2002. */
+        char *plot_style_name;
+                /*!< Hard pointer ID / handle of PlotStyleName object.\n
+                 * Group code = 390.\n
+                 * \since Introduced in version R2009. */
+        long color_value;
+                /*!< A 24-bit color value that should be dealt with in
+                 * terms of bytes with values of 0 to 255.\n
+                 * The lowest byte is the blue value, the middle byte is
+                 * the green value, and the third byte is the red value.\n
+                 * The top byte is always 0.\n
+                 * The group code cannot be used by custom entities for
+                 * their own data because the group code is reserved for
+                 * AcDbEntity, class-level color data and AcDbEntity,
+                 * class-level transparency data.\n
+                 * Group code = 420.\n
+                 * \since Introduced in version R2004. */
+        char *color_name;
+                /*!< Color name.\n
+                 * The group code cannot be used by custom entities for
+                 * their own data because the group code is reserved for
+                 * AcDbEntity, class-level color data and AcDbEntity,
+                 * class-level transparency data.\n
+                 * Group code = 430.\n
+                 * \since Introduced in version R2004. */
+        long transparency;
+                /*!< Transparency value.\n
+                 * The group code cannot be used by custom entities for
+                 * their own data because the group code is reserved for
+                 * AcDbEntity, class-level color data and AcDbEntity,
+                 * class-level transparency data.\n
+                 * Group code = 440.\n
+                 * \since Introduced in version R2004. */
         /* Specific members for a DXF attdef. */
         char *default_value;
                 /*!< Default value for the attribute.\n
