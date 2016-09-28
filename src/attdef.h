@@ -433,6 +433,11 @@ dxf_attdef_set_graphics_data_size
         DxfAttdef *attdef,
         int graphics_data_size
 );
+int16_t
+dxf_attdef_get_shadow_mode
+(
+        DxfAttdef *attdef
+);
 char *
 dxf_attdef_get_dictionary_owner_soft
 (
