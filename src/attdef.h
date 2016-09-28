@@ -422,6 +422,11 @@ dxf_attdef_set_paperspace
         DxfAttdef *attdef,
         int paperspace
 );
+int
+dxf_attdef_get_graphics_data_size
+(
+        DxfAttdef *attdef
+);
 char *
 dxf_attdef_get_dictionary_owner_soft
 (
