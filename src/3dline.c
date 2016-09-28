@@ -129,7 +129,7 @@ dxf_3dline_init
         dxf_3dline_set_z1 (line, 0.0);
         dxf_3dline_set_extr_x0 (line, 0.0);
         dxf_3dline_set_extr_y0 (line, 0.0);
-        dxf_3dline_set_extr_z0 (line, 0.0);
+        dxf_3dline_set_extr_z0 (line, 1.0);
         dxf_3dline_set_elevation (line, 0.0);
         dxf_3dline_set_thickness (line, 0.0);
         dxf_3dline_set_linetype_scale (line, DXF_DEFAULT_LINETYPE_SCALE);
