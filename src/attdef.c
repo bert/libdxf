@@ -1876,6 +1876,48 @@ dxf_attdef_get_material
 
 
 /*!
+ * \brief Set the pointer to the \c material for a DXF \c ATTDEF entity.
+ *
+ * \return a pointer to \c attdef when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfAttdef *
+dxf_attdef_set_material
+(
+        DxfAttdef *attdef,
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+        char *material
+                /*!< a string containing the pointer to the \c
+                 * material for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (material == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attdef->material = strdup (material);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attdef);
+}
+
+
+/*!
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c ATTDEF entity.
  *
