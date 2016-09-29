@@ -504,6 +504,12 @@ dxf_attdef_get_plot_style_name
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_plot_style_name
+(
+        DxfAttdef *attdef,
+        char *plot_style_name
+);
 char *
 dxf_attdef_get_default_value
 (
