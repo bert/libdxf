@@ -522,6 +522,11 @@ dxf_attdef_set_color_value
         long color_value
 );
 char *
+dxf_attdef_get_color_name
+(
+        DxfAttdef *attdef
+);
+char *
 dxf_attdef_get_default_value
 (
         DxfAttdef *attdef
