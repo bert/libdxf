@@ -488,6 +488,11 @@ dxf_attdef_set_dictionary_owner_hard
         DxfAttdef *attdef,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_attdef_get_lineweight
+(
+        DxfAttdef *attdef
+);
 char *
 dxf_attdef_get_default_value
 (

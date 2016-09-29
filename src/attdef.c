@@ -1998,6 +1998,37 @@ dxf_attdef_set_dictionary_owner_hard
 
 
 /*!
+ * \brief Get the \c lineweight from a DXF \c ATTDEF entity.
+ *
+ * \return \c lineweight when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int16_t
+dxf_attdef_get_lineweight
+(
+        DxfAttdef *attdef
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attdef->lineweight);
+}
+
+
+/*!
  * \brief Get the default value from a DXF \c ATTDEF entity.
  *
  * \return default value.
