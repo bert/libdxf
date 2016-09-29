@@ -500,6 +500,11 @@ dxf_attdef_set_lineweight
         int16_t lineweight
 );
 char *
+dxf_attdef_get_plot_style_name
+(
+        DxfAttdef *attdef
+);
+char *
 dxf_attdef_get_default_value
 (
         DxfAttdef *attdef
