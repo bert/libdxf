@@ -510,6 +510,11 @@ dxf_attdef_set_plot_style_name
         DxfAttdef *attdef,
         char *plot_style_name
 );
+long
+dxf_attdef_get_color_value
+(
+        DxfAttdef *attdef
+);
 char *
 dxf_attdef_get_default_value
 (
