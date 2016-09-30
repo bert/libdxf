@@ -1,7 +1,7 @@
 /*!
  * \file lwpolyline.h
  *
- * \author Copyright (C) 2010 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF light weight polyline entity (\c LWPOLYLINE).
  *
@@ -40,6 +40,11 @@
 
 #include "global.h"
 #include "vertex.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -170,6 +175,11 @@ dxf_lwpolyline_free_chain
 (
         DxfLWPolyline *lwpolylines
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_LWPOLYLINE_H */
