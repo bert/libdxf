@@ -3999,8 +3999,8 @@ dxf_attrib_get_extr_x0
  * \brief Set the X-value of the extrusion vector of a DXF \c ATTRIB
  * entity.
  *
- * \return a pointer to a DXF \c ATTRIB entity when successful, \c NULL
- * when an error occurred.
+ * \return a pointer to \c attrib when successful, \c NULL when an error
+ * occurred.
  */
 DxfAttrib *
 dxf_attrib_set_extr_x0
@@ -4067,8 +4067,8 @@ dxf_attrib_get_extr_y0
  * \brief Set the Y-value of the extrusion vector of a DXF \c ATTRIB
  * entity.
  *
- * \return a pointer to a DXF \c ATTRIB entity when successful, \c NULL
- * when an error occurred.
+ * \return a pointer to \c attrib when successful, \c NULL when an error
+ * occurred.
  */
 DxfAttrib *
 dxf_attrib_set_extr_y0
@@ -4135,8 +4135,8 @@ dxf_attrib_get_extr_z0
  * \brief Set the Z-value of the extrusion vector of a DXF \c ATTRIB
  * entity.
  *
- * \return a pointer to a DXF \c ATTRIB entity when successful, \c NULL
- * when an error occurred.
+ * \return a pointer to \c attrib when successful, \c NULL when an error
+ * occurred.
  */
 DxfAttrib *
 dxf_attrib_set_extr_z0
