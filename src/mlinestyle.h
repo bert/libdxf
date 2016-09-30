@@ -1,7 +1,7 @@
 /*!
  * \file mlinestyle.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF mlinestyle object (\c MLINESTYLE).
  *
@@ -39,6 +39,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -158,6 +163,11 @@ dxf_mlinestyle_free_chain
 (
         DxfMlinestyle *mlinestyles
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_MLINESTYLE_H */
