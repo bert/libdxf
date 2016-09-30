@@ -1,7 +1,7 @@
 /*!
  * \file dictionary.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF dictionary object (\c DICTIONARY).
  *
@@ -45,6 +45,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -173,6 +178,11 @@ dxf_dictionary_set_next
         DxfDictionary *dictionary,
         DxfDictionary *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_DICTIONARY_H */
