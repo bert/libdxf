@@ -131,6 +131,7 @@ dxf_arc_init
         dxf_arc_set_color_value (arc, 0);
         dxf_arc_set_color_name (arc, strdup (""));
         dxf_arc_set_transparency (arc, 0);
+        dxf_arc_set_p0 (arc, dxf_point_new ());
         dxf_point_init ((DxfPoint *) dxf_arc_get_p0 (arc));
         dxf_arc_set_x0 (arc, 0.0);
         dxf_arc_set_y0 (arc, 0.0);
