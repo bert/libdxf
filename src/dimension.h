@@ -48,6 +48,11 @@
 #include "binary_graphics_data.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD dimension.
  */
@@ -1086,6 +1091,11 @@ dxf_dimension_set_next
         DxfDimension *dimension,
         DxfDimension *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_DIMENSION_H */
