@@ -3806,6 +3806,41 @@ dxf_attdef_get_extr_x0
 
 
 /*!
+ * \brief Set the X-value of the extrusion vector of a DXF \c ATTDEF
+ * entity.
+ *
+ * \return a pointer to \c attdef when successful, \c NULL when an error
+ * occurred.
+ */
+DxfAttdef *
+dxf_attdef_set_extr_x0
+(
+        DxfAttdef *attdef,
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+        double extr_x0
+                /*!< the X-value of the extrusion vector of the entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attdef->extr_x0 = extr_x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attdef);
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c ATTDEF entity.
  *
