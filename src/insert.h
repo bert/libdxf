@@ -1,7 +1,7 @@
 /*!
  * \file insert.h
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF insert entity (\c INSERT).
  *
@@ -41,6 +41,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -193,6 +198,11 @@ dxf_insert_free_chain
 (
         DxfInsert *inserts
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_INSERT_H */
