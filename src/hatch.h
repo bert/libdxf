@@ -47,6 +47,11 @@
 #include "binary_graphics_data.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #define DXF_MAX_HATCH_PATTERN_DEF_LINE_DASH_ITEMS 16
 #define DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS 64
 
@@ -2257,6 +2262,11 @@ dxf_hatch_boundary_path_edge_spline_cp_set_next
         DxfHatchBoundaryPathEdgeSplineCp *control_point,
         DxfHatchBoundaryPathEdgeSplineCp *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_HATCH_H */
