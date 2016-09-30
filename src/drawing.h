@@ -47,6 +47,11 @@
 #include "thumbnail.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief Definition of a DXF drawing.
  */
@@ -160,6 +165,11 @@ dxf_drawing_set_thumbnail
         DxfDrawing *drawing,
         DxfThumbnail *thumbnail
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_DRAWING_H */
