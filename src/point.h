@@ -39,6 +39,11 @@
 #include "binary_graphics_data.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD point entity.
  *
@@ -512,6 +517,11 @@ dxf_point_set_next
         DxfPoint *point,
         DxfPoint *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_POINT_H */
