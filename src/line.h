@@ -40,6 +40,11 @@
 #include "point.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD line entity.
  *
@@ -357,6 +362,11 @@ dxf_line_create_from_points
         int id_code,
         int inheritance
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_LINE_H */
