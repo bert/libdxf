@@ -44,6 +44,11 @@
 #include "binary_graphics_data.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief Definition of an AutoCAD image entity (\c IMAGE).
  *
@@ -647,6 +652,11 @@ dxf_image_set_next
         DxfImage *image,
         DxfImage *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_IMAGE_H */
