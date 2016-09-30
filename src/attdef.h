@@ -611,11 +611,9 @@ dxf_attdef_set_p0
         DxfPoint *p0
 );
 DxfPoint *
-dxf_attdef_get_alignment_point
+dxf_attdef_get_p1
 (
-        DxfAttdef *attdef,
-        int id_code,
-        int inheritance
+        DxfAttdef *attdef
 );
 DxfAttdef *
 dxf_attdef_set_alignment_point
