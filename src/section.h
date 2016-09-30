@@ -1,7 +1,7 @@
 /*!
  * \file section.h
  *
- * \author Copyright (C) 2010 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF section entity (\c SECTION).
  *
@@ -43,8 +43,18 @@
 #include "block.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 int dxf_section_read (DxfFile *fp);
 int dxf_section_write (DxfFile *fp, char *section_name);
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_SECTION_H */
