@@ -615,6 +615,12 @@ dxf_attdef_get_x0
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_x0
+(
+        DxfAttdef *attdef,
+        double x0
+);
 DxfPoint *
 dxf_attdef_get_p1
 (
