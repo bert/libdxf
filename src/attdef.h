@@ -605,10 +605,10 @@ dxf_attdef_get_p0
         DxfAttdef *attdef
 );
 DxfAttdef *
-dxf_attdef_set_start_point
+dxf_attdef_set_p0
 (
         DxfAttdef *attdef,
-        DxfPoint *point
+        DxfPoint *p0
 );
 DxfPoint *
 dxf_attdef_get_alignment_point
