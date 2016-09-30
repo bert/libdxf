@@ -47,6 +47,11 @@
 #define LIBDXF_SRC_ATTRIB_H
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD attribute entity (\c ATTRIB).
  */
@@ -833,6 +838,11 @@ dxf_attrib_is_preset
 (
         DxfAttrib *attrib
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_ATTRIB_H */
