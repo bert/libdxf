@@ -761,6 +761,11 @@ dxf_attdef_set_extr_y0
         DxfAttdef *attdef,
         double extr_y0
 );
+double
+dxf_attdef_get_extr_z0
+(
+        DxfAttdef *attdef
+);
 DxfPoint *
 dxf_attdef_get_extrusion_vector_as_point
 (
