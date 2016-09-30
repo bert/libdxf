@@ -45,6 +45,11 @@
 #include "global.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD comment entity (\c COMMENT).
  */
@@ -121,6 +126,11 @@ dxf_comment_set_next
         DxfComment *comment,
         DxfComment *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_COMMENT_H */
