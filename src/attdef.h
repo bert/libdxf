@@ -532,6 +532,11 @@ dxf_attdef_set_color_name
         DxfAttdef *attdef,
         char *color_name
 );
+long
+dxf_attdef_get_transparency
+(
+        DxfAttdef *attdef
+);
 char *
 dxf_attdef_get_default_value
 (
