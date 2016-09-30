@@ -1,7 +1,7 @@
 /*!
  * \file xrecord.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF xrecord object (\c XRECORD).
  *
@@ -39,6 +39,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -121,6 +126,11 @@ dxf_xrecord_free_chain
 (
         DxfXrecord *xrecords
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_XRECORD_H */
