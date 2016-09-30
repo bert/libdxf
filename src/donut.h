@@ -46,6 +46,11 @@
 #include "seqend.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief Definition of a libDXF donut entity.
  *
@@ -514,6 +519,11 @@ dxf_donut_set_next
         DxfDonut *donut,
         DxfDonut *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_DONUT_H */
