@@ -1,7 +1,7 @@
 /*!
  * \file entities.h
  *
- * \author Copyright (C) 2012 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF entities section (\c ENTITIES).
  *
@@ -56,6 +56,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -125,6 +130,11 @@ dxf_entities_write_table
         char *dxf_entities_list,
         int acad_version_number
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_ENTITIES_H */
