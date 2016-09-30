@@ -1,7 +1,7 @@
 /*!
  * \file tables.h
  *
- * \author Copyright (C) 2014 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2014 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for of a DXF tables section (\c TABLES).
  *
@@ -58,6 +58,11 @@
 #include "global.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of a tables section.
  */
@@ -106,6 +111,11 @@ dxf_tables_free
 (
         DxfTables *tables
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_TABLES_H */
