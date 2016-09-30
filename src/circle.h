@@ -47,6 +47,12 @@
 #include "point.h"
 #include "binary_graphics_data.h"
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of a circle entity (\c CIRCLE).
  */
@@ -575,6 +581,11 @@ dxf_circle_test_point_in_circle
         DxfPoint *point,
         DxfCircle *circle
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_CIRCLE_H */
