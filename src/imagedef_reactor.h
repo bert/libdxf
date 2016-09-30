@@ -1,7 +1,7 @@
 /*!
  * \file imagedef_reactor.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF imagedef_reactor object (\c IMAGEDEF_REACTOR).
  *
@@ -39,6 +39,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -109,6 +114,11 @@ dxf_imagedef_reactor_free_chain
 (
         DxfImagedefReactor *imagedef_reactors
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_IMAGEDEF_REACTOR_H */
