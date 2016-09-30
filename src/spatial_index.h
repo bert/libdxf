@@ -1,7 +1,7 @@
 /*!
  * \file spatial_index.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF spatial_index object (\c SPATIAL_INDEX).
  *
@@ -39,6 +39,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -104,6 +109,11 @@ dxf_spatial_index_free_chain
 (
         DxfSpatialIndex *spatial_indices
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_SPATIAL_INDEX_H */
