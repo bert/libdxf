@@ -1,7 +1,7 @@
 /*!
  * \file file.h
  *
- * \author Copyright (C) 2010 ... 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2010 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  *
  * \brief Header for the handling of DXF files.
  *
@@ -49,12 +49,22 @@
 #include "util.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 int
 dxf_file_read (char *filename);
 int
 dxf_file_write (DxfFile *fp, DxfHeader dxf_header, DxfClass dxf_classes_list, DxfTable dxf_tables_list);
 int
 dxf_file_write_eof (DxfFile *fp);
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_FILE_H */
