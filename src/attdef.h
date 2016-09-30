@@ -47,6 +47,11 @@
 #define LIBDXF_SRC_ATTDEF_H
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD attribute definition entity
  * (\c ATTDEF).
@@ -802,6 +807,11 @@ dxf_attdef_set_next
         DxfAttdef *attdef,
         DxfAttdef *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_ATTDEF_H */
