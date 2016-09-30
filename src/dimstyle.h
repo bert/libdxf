@@ -45,6 +45,11 @@
 #include "global.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD dimensioning style.
  */
@@ -991,6 +996,11 @@ dxf_dimstyle_set_next
         DxfDimStyle *dimstyle,
         DxfDimStyle *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_DIMSTYLE_H */
