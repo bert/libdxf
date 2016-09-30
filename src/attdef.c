@@ -2665,34 +2665,20 @@ dxf_attdef_set_text_style
 
 
 /*!
- * \brief Get the start point of a DXF \c ATTDEF entity.
+ * \brief Get the first alignment point \c p0 of a DXF \c ATTDEF entity.
  *
- * \return the start point.
+ * \return the first alignment point \c p0.
  */
 DxfPoint *
-dxf_attdef_get_start_point
+dxf_attdef_get_p0
 (
-        DxfAttdef *attdef,
+        DxfAttdef *attdef
                 /*!< a pointer to a DXF \c ATTDEF entity. */
-        int id_code,
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file. */
-        int inheritance
-                /*!< Inherit layer, linetype, color and other relevant
-                 * properties from either:
-                 * <ol>
-                 * <li value = "0"> Default (as initialised).</li>
-                 * <li value = "1"> \c ATTDEF.</li>
-                 * </ol>
-                 */
 )
 {
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfPoint *p1 = NULL;
-
         /* Do some basic checks. */
         if (attdef == NULL)
         {
@@ -2701,64 +2687,17 @@ dxf_attdef_get_start_point
                   __FUNCTION__);
                 return (NULL);
         }
-        p1 = dxf_point_init (p1);
-        if (p1 == NULL)
+        if (attdef->p0 == NULL)
         {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        if (id_code < 0)
-        {
-              fprintf (stderr,
-                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
-                __FUNCTION__);
-        }
-        p1->id_code = id_code;
-        p1->x0 = attdef->x0;
-        p1->y0 = attdef->y0;
-        p1->z0 = attdef->z0;
-        switch (inheritance)
-        {
-                case 0:
-                        /* Do nothing. */
-                        break;
-                case 1:
-                        if (attdef->linetype != NULL)
-                        {
-                                p1->linetype = strdup (attdef->linetype);
-                        }
-                        if (attdef->layer != NULL)
-                        {
-                                p1->layer = strdup (attdef->layer);
-                        }
-                        p1->thickness = attdef->thickness;
-                        p1->linetype_scale = attdef->linetype_scale;
-                        p1->visibility = attdef->visibility;
-                        p1->color = attdef->color;
-                        p1->paperspace = attdef->paperspace;
-                        if (attdef->dictionary_owner_soft != NULL)
-                        {
-                                p1->dictionary_owner_soft = strdup (attdef->dictionary_owner_soft);
-                        }
-                        if (attdef->dictionary_owner_hard != NULL)
-                        {
-                                p1->dictionary_owner_hard = strdup (attdef->dictionary_owner_hard);
-                        }
-                        break;
-                default:
-                        fprintf (stderr,
-                          (_("Warning in %s (): unknown inheritance option passed.\n")),
-                          __FUNCTION__);
-                        fprintf (stderr,
-                          (_("\tResolving to default.\n")));
-                        break;
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
         }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (p1);
+        return (attdef->p0);
 }
 
 

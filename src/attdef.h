@@ -600,11 +600,9 @@ dxf_attdef_set_text_style
         char *text_style
 );
 DxfPoint *
-dxf_attdef_get_start_point
+dxf_attdef_get_p0
 (
-        DxfAttdef *attdef,
-        int id_code,
-        int inheritance
+        DxfAttdef *attdef
 );
 DxfAttdef *
 dxf_attdef_set_start_point
