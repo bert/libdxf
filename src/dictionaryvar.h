@@ -47,6 +47,11 @@
 #include "global.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD dictionaryvar object (\c DICTIONARYVAR).
  */
@@ -173,6 +178,11 @@ dxf_dictionaryvar_set_next
         DxfDictionaryVar *dictionaryvar,
         DxfDictionaryVar *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_DICTIONARYVAR_H */
