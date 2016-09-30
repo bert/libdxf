@@ -48,6 +48,11 @@
 #include "global.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief Definition of an AutoCAD block record symbol table entry
  * (\c BLOCK_RECORD).
@@ -206,6 +211,11 @@ dxf_block_record_set_next
         DxfBlockRecord *block_record,
         DxfBlockRecord *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_BLOCK_RECORD_H */
