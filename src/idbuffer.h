@@ -47,6 +47,11 @@
 #include "global.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of a single linked list of entity pointers.
  */
@@ -205,6 +210,11 @@ dxf_idbuffer_entity_pointer_set_next
         DxfIdbufferEntityPointer *entity_pointer,
         DxfIdbufferEntityPointer *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_IDBUFFER_H */
