@@ -131,9 +131,13 @@ dxf_attrib_init
         dxf_attrib_set_transparency (attrib, 0);
         dxf_attrib_set_default_value (attrib, strdup (""));
         dxf_attrib_set_tag_value (attrib, strdup (""));
+        dxf_attrib_set_p0 (attrib, dxf_point_new ());
+        dxf_point_init ((DxfPoint *) dxf_attrib_get_p0 (attrib));
         dxf_attrib_set_x0 (attrib, 0.0);
         dxf_attrib_set_y0 (attrib, 0.0);
         dxf_attrib_set_z0 (attrib, 0.0);
+        dxf_attrib_set_p1 (attrib, dxf_point_new ());
+        dxf_point_init ((DxfPoint *) dxf_attrib_get_p1 (attrib));
         dxf_attrib_set_x1 (attrib, 0.0);
         dxf_attrib_set_y1 (attrib, 0.0);
         dxf_attrib_set_z1 (attrib, 0.0);
