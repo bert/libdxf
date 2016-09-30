@@ -1,7 +1,7 @@
 /*!
  * \file object.h
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF object entity functions.
  *
@@ -38,6 +38,11 @@
 
 #include "global.h"
 #include "param.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -78,6 +83,11 @@ dxf_object_free_chain
 (
         DxfObject *objects
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_OBJECT_H */
