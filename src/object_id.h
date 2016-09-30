@@ -39,6 +39,11 @@
 #include "global.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an object id.
  */
@@ -105,6 +110,11 @@ dxf_object_id_set_next
         DxfObjectId *object_id,
         DxfObjectId *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_OBJECT_ID_H */
