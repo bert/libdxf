@@ -1,7 +1,7 @@
 /*!
  * \file object_ptr.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF object_ptr object (\c OBJECT_PTR).
  *
@@ -39,6 +39,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -104,6 +109,11 @@ dxf_object_ptr_free_chain
 (
         DxfObjectPtr *objectptrs
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_OBJECT_PTR_H */
