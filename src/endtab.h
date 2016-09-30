@@ -1,7 +1,7 @@
 /*!
  * \file endtab.h
  *
- * \author Copyright (C) 2014 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2014 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF end of table marker (\c ENDTAB).
  *
@@ -38,11 +38,21 @@
 #include "global.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 int
 dxf_endtab_write
 (
         DxfFile *fp
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_ENDTAB_H */
