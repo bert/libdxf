@@ -49,6 +49,11 @@
 #include "proprietary_data.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD 3D solid entity (\c 3DSOLID).
  */
@@ -506,6 +511,11 @@ dxf_3dsolid_set_next
         Dxf3dsolid *solid,
         Dxf3dsolid *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_3DSOLID_H */
