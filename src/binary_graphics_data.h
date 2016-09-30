@@ -39,6 +39,11 @@
 #include "global.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD binary graphics data object.
  */
@@ -114,6 +119,11 @@ dxf_binary_graphics_data_set_next
         DxfBinaryGraphicsData *data,
         DxfBinaryGraphicsData *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_BINARY_GRAPHICS_DATA_H */
