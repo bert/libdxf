@@ -1,7 +1,7 @@
 /*!
  * \file class.h
  *
- * \author Copyright (C) 2009 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF class entity (\c CLASS).
  *
@@ -38,6 +38,12 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 /*!
  * \brief DXF definition of a class entity (\c CLASS).
@@ -293,6 +299,11 @@ dxf_class_set_next
         DxfClass *class,
         DxfClass *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_CLASS_H */
