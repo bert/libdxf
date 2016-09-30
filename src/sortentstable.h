@@ -1,7 +1,7 @@
 /*!
  * \file sortentstable.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF sortentstable object (\c SORTENTSTABLE).
  *
@@ -39,6 +39,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -113,6 +118,11 @@ dxf_sortentstable_free_chain
 (
         DxfSortentsTable *sortentstables
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_SORTENTSTABLE_H */
