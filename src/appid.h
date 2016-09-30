@@ -48,6 +48,11 @@
 #include "global.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF Definition of an AutoCAD application identification
  * (\c APPID).
@@ -217,6 +222,11 @@ dxf_appid_set_next
         DxfAppid *appid,
         DxfAppid *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_APPID_H */
