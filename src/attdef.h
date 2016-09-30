@@ -537,6 +537,12 @@ dxf_attdef_get_transparency
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_transparency
+(
+        DxfAttdef *attdef,
+        long transparency
+);
 char *
 dxf_attdef_get_default_value
 (
