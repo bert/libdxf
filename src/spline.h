@@ -41,6 +41,11 @@
 #include "point.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #define DXF_SPLINE_KNOT_TOLERANCE_DEFAULT 0.0000001
 #define DXF_SPLINE_CONTROL_POINT_TOLERANCE_DEFAULT 0.0000001
 #define DXF_SPLINE_FIT_TOLERANCE_DEFAULT 0.0000000001
@@ -506,6 +511,11 @@ dxf_spline_set_p1
         DxfSpline *spline,
         DxfPoint *p1
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_SPLINE_H */
