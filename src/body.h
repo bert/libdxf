@@ -47,6 +47,11 @@
 #include "proprietary_data.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD body entity (\c BODY).
  */
@@ -491,6 +496,11 @@ dxf_body_set_next
         DxfBody *body,
         DxfBody *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_BODY_H */
