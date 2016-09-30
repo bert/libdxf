@@ -616,10 +616,10 @@ dxf_attdef_get_p1
         DxfAttdef *attdef
 );
 DxfAttdef *
-dxf_attdef_set_alignment_point
+dxf_attdef_set_p1
 (
         DxfAttdef *attdef,
-        DxfPoint *point
+        DxfPoint *p1
 );
 double
 dxf_attdef_get_height

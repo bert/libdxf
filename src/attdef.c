@@ -2780,16 +2780,17 @@ dxf_attdef_get_p1
 
 
 /*!
- * \brief Set the alignment point of a DXF \c ATTDEF entity.
+ * \brief Set the second alignment point \c p1 of a DXF \c ATTDEF entity.
  *
- * \return a pointer to a DXF \c ATTDEF entity.
+ * \return a pointer to \c attdef when successful, \c NULL when an error
+ * occurred.
  */
 DxfAttdef *
-dxf_attdef_set_alignment_point
+dxf_attdef_set_p1
 (
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
-        DxfPoint *point
+        DxfPoint *p1
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -2804,16 +2805,14 @@ dxf_attdef_set_alignment_point
                   __FUNCTION__);
                 return (NULL);
         }
-        if (point == NULL)
+        if (p1 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        attdef->x1 = point->x0;
-        attdef->y1 = point->y0;
-        attdef->z1 = point->z0;
+        attdef->p1 = p1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
