@@ -47,6 +47,11 @@
 #include "binary_graphics_data.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief Definition of an AutoCAD ellipse entity (\c ELLIPSE).
  *
@@ -666,6 +671,11 @@ dxf_ellipse_set_next
         DxfEllipse *ellipse,
         DxfEllipse *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_ELLIPSE_H */
