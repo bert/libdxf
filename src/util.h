@@ -3,7 +3,7 @@
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
- * \author Copyright (C) 2010 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief LIBDXF coding utilities, header file.
  *
@@ -41,6 +41,11 @@
 #include "file.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*! Macro to return if the expression is false */
 #define dxf_return_val_if_fail(expr, val) if (!expr) return val;
 
@@ -65,6 +70,11 @@ int dxf_read_line (char * temp_string, DxfFile *fp);
 int dxf_read_scanf (DxfFile *fp, const char *template, ...);
 DxfFile *dxf_read_init (const char *filename);
 void dxf_read_close (DxfFile *file);
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_UTIL_H */
