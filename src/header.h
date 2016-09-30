@@ -1,7 +1,7 @@
 /*!
  * \file header.h
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  *
  * \brief Definition of a DXF header section.
  *
@@ -39,6 +39,12 @@
 #include "global.h"
 #include "point.h"
 #include "endsec.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 
 typedef struct
 dxf_header
@@ -385,6 +391,11 @@ dxf_header_free
 (
         DxfHeader *header
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_HEADER_H */
