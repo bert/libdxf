@@ -48,6 +48,11 @@
 #include "point.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD block entity.
  *
@@ -399,6 +404,11 @@ dxf_block_set_next
         DxfBlock *block,
         DxfBlock *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_BLOCK_H */
