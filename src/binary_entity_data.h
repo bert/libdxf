@@ -39,6 +39,11 @@
 #include "global.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD binary entity data object.
  */
@@ -114,6 +119,11 @@ dxf_binary_entity_data_set_next
         DxfBinaryEntityData *data,
         DxfBinaryEntityData *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_BINARY_ENTITY_DATA_H */
