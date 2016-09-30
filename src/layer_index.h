@@ -1,7 +1,7 @@
 /*!
  * \file layer_index.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF layer index object (\c LAYER_INDEX).
  *
@@ -39,6 +39,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -115,6 +120,11 @@ dxf_layer_index_free_chain
 (
         DxfLayerIndex *layer_indices
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_LAYER_INDEX_H */
