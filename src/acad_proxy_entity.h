@@ -54,6 +54,11 @@
 #include "binary_graphics_data.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD acad_proxy_entity entity
  * (\c ACAD_PROXY_ENTITY).
@@ -552,6 +557,11 @@ dxf_acad_proxy_entity_set_next
         DxfAcadProxyEntity *acad_proxy_entity,
         DxfAcadProxyEntity *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_ACAD_PROXY_ENTITY_H */
