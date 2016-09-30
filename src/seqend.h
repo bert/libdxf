@@ -1,7 +1,7 @@
 /*!
  * \file seqend.h
  *
- * \author Copyright (C) 2010 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF end of sequence marker (\c SEQEND).
  *
@@ -37,6 +37,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -138,6 +143,11 @@ dxf_seqend_free
 (
         DxfSeqend *seqend
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_SEQEND_H */
