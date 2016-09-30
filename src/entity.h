@@ -1,7 +1,7 @@
 /*!
  * \file entity.h
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for DXF entities.
  *
@@ -34,6 +34,11 @@
 
 #ifndef LIBDXF_SRC_ENTITY_H
 #define LIBDXF_SRC_ENTITY_H
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -94,6 +99,11 @@ dxf_entity_skip
 (
         char *dxf_entity_name
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_ENTITY_H */
