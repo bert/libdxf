@@ -1,7 +1,7 @@
 /*!
  * \file rastervariables.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF rastervariables object (\c RASTERVARIABLES).
  *
@@ -39,6 +39,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -136,6 +141,11 @@ dxf_rastervariables_free_chain
 (
         DxfRasterVariables *rastervariables
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_RASTERVARIABLES_H */
