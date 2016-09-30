@@ -42,6 +42,11 @@
 #include "point.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief Definition of an AutoCAD helix entity (\c HELIX).
  */
@@ -664,6 +669,11 @@ dxf_helix_set_next
         DxfHelix *helix,
         DxfHelix *next
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_HELIX_H */
