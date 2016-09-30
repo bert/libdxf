@@ -1,7 +1,7 @@
 /*!
  * \file ole2frame.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF ole2frame entity (\c OLE2FRAME).
  *
@@ -37,6 +37,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -183,6 +188,11 @@ dxf_ole2frame_free_chain
 (
         DxfOle2Frame *ole2frames
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_OLE2FRAME_H */
