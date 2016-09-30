@@ -1,7 +1,7 @@
 /*!
  * \file spatial_filter.h
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF spatial_filter object (\c SPATIAL_FILTER).
  *
@@ -39,6 +39,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -181,6 +186,11 @@ dxf_spatial_filter_free_chain
 (
         DxfSpatialFilter *spatial_filters
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_SPATIAL_FILTER_H */
