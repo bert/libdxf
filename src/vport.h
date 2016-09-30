@@ -1,7 +1,7 @@
 /*!
  * \file vport.h
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF Viewport symbol table entry (\c VPORT).
  *
@@ -37,6 +37,11 @@
 
 
 #include "global.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -232,6 +237,11 @@ dxf_vport_free_chain
 (
         DxfVPort *vports
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_VPORT_H */
