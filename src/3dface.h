@@ -47,6 +47,11 @@
 #include "binary_graphics_data.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD 3D face entity (\c 3DFACE).
  */
@@ -683,6 +688,11 @@ dxf_3dface_create_from_points
         int id_code,
         int inheritance
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_3DFACE_H */
