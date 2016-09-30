@@ -192,6 +192,13 @@ dxf_attdef_struct
                  * the attribute.\n
                  * Defaults to \c STANDARD if  omitted in the DXF file.\n
                  * Group code = 7. */
+        DxfPoint *p0;
+                /*!< First alignment point (in OCS).\n
+                 * Group codes = 10, 20 and 30.*/
+        DxfPoint *p1;
+                /*!< Second alignment point (in OCS)(optional).\n
+                 * Meaningful only if 72 or 74 group values are nonzero.\n
+                 * Group codes = 11, 21 and 31. */
         double x0;
                 /*!< X-value of the starting point coordinate.\n
                  * Group code = 10. */
