@@ -39,6 +39,11 @@
 #include "global.h"
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 /*!
  * \brief DXF definition of an AutoCAD Proprietary data entity.
  */
@@ -127,6 +132,11 @@ dxf_proprietary_data_test_length
 (
         DxfProprietaryData *data
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_PROPRIETARY_DATA_H */
