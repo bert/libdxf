@@ -1,7 +1,7 @@
 /*!
  * \file endblk.h
  *
- * \author Copyright (C) 2014 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2014 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF end of block marker entity (\c ENDBLK).
  *
@@ -38,6 +38,11 @@
 
 #include "global.h"
 #include "util.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 
 /*!
@@ -137,6 +142,11 @@ dxf_endblk_set_dictionary_owner_soft
         DxfEndblk *endblk,
         char *dictionary_owner_soft
 );
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_ENDBLK_H */
