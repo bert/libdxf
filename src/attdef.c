@@ -2876,8 +2876,8 @@ dxf_attdef_set_y0
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
         double y0
-                /*!< the Y-value of the text start point \c y0 of a DXF
-                 * \c ATTDEF entity. */
+                /*!< the Y-value of the first alignment point \c y0 of a
+                 * DXF \c ATTDEF entity. */
 )
 {
 #ifdef DEBUG
@@ -2958,8 +2958,8 @@ dxf_attdef_set_z0
         DxfAttdef *attdef,
                 /*!< a pointer to a DXF \c ATTDEF entity. */
         double z0
-                /*!< the Z-value of the text start point \c z0 of a DXF
-                 * \c ATTDEF entity. */
+                /*!< the Z-value of the fisrt alignment point \c z0 of a
+                 * DXF \c ATTDEF entity. */
 )
 {
 #ifdef DEBUG
