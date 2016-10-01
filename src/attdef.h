@@ -670,6 +670,12 @@ dxf_attdef_get_y1
 (
         DxfAttdef *attdef
 );
+DxfAttdef *
+dxf_attdef_set_y1
+(
+        DxfAttdef *attdef,
+        double y1
+);
 double
 dxf_attdef_get_height
 (
