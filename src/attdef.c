@@ -3149,6 +3149,45 @@ dxf_attdef_set_x1
 
 
 /*!
+ * \brief Get the Y-value of the second alignment point \c y1 of a DXF
+ * \c ATTDEF entity.
+ *
+ * \return the Y-value of the second alignment point \c y1.
+ */
+double
+dxf_attdef_get_y1
+(
+        DxfAttdef *attdef
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (attdef->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attdef->p1->y0);
+}
+
+
+/*!
  * \brief Get the height from a DXF \c ATTDEF entity.
  *
  * \return height.
