@@ -2946,6 +2946,49 @@ dxf_attdef_get_z0
 
 
 /*!
+ * \brief Set the Z-value of the first alignment point \c z0 of a DXF
+ * \c ATTDEF entity.
+ *
+ * \return a pointer to \c attdef when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfAttdef *
+dxf_attdef_set_z0
+(
+        DxfAttdef *attdef,
+                /*!< a pointer to a DXF \c ATTDEF entity. */
+        double z0
+                /*!< the Z-value of the text start point \c z0 of a DXF
+                 * \c ATTDEF entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attdef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attdef->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        attdef->p0->z0 = z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (attdef);
+}
+
+
+/*!
  * \brief Get the second alignment point \c p1 of a DXF \c ATTDEF entity.
  *
  * \return the second alignment point \c p1.
