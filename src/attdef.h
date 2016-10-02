@@ -204,24 +204,6 @@ dxf_attdef_struct
                 /*!< Second alignment point (in OCS)(optional).\n
                  * Meaningful only if 72 or 74 group values are nonzero.\n
                  * Group codes = 11, 21 and 31. */
-        double x0;
-                /*!< X-value of the starting point coordinate.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Y-value of the starting point coordinate.\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Z-value of the starting point coordinate.\n
-                 * Group code = 30. */
-        double x1;
-                /*!< X-value of the alignment point coordinate.\n
-                 * Group code = 11. */
-        double y1;
-                /*!< Y-value of the alignment point coordinate.\n
-                 * Group code = 21. */
-        double z1;
-                /*!< Z-value of the alignment point coordinate.\n
-                 * Group code = 31. */
         double height;
                 /*!< Character height of the attribute value.\n
                  * Group code = 40. */
