@@ -115,7 +115,8 @@ dxf_block_init
         dxf_block_set_description (block, strdup (""));
         dxf_block_set_id_code (block, 0);
         dxf_block_set_layer (block, strdup (DXF_DEFAULT_LAYER));
-        dxf_block_set_p0 (block, dxf_point_init (NULL));
+        dxf_block_set_p0 (block, dxf_point_new (NULL));
+        dxf_point_init ((DxfPoint *) dxf_block_get_p0 (block));
         dxf_block_set_x0 (block, 0.0);
         dxf_block_set_y0 (block, 0.0);
         dxf_block_set_z0 (block, 0.0);
