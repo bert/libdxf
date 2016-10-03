@@ -111,12 +111,12 @@ dxf_block_record_init
                   __FUNCTION__);
                 return (NULL);
         }
-        block_record->id_code = 0;
-        block_record->block_name = strdup ("");
-        block_record->flag = 0;
-        block_record->dictionary_owner_soft = strdup ("");
-        block_record->dictionary_owner_hard = strdup ("");
-        block_record->next = NULL;
+        dxf_block_record_set_id_code (block_record, 0);
+        dxf_block_record_set_block_name (block_record, strdup (""));
+        dxf_block_record_set_flag (block_record, 0);
+        dxf_block_record_set_dictionary_owner_soft (block_record, strdup (""));
+        dxf_block_record_set_dictionary_owner_hard (block_record, strdup (""));
+        dxf_block_record_set_next (block_record, NULL);
 #if DEBUG
         DXF_DEBUG_END
 #endif
