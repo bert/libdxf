@@ -120,6 +120,7 @@ dxf_circle_init
         dxf_circle_set_graphics_data_size (circle, 0);
         dxf_circle_set_shadow_mode (circle, 0);
         dxf_circle_set_binary_graphics_data (circle, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
+        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_circle_get_binary_graphics_data (circle));
         dxf_circle_set_dictionary_owner_soft (circle, strdup (""));
         dxf_circle_set_material (circle, strdup (""));
         dxf_circle_set_dictionary_owner_hard (circle, strdup (""));
@@ -129,6 +130,7 @@ dxf_circle_init
         dxf_circle_set_color_name (circle, strdup (""));
         dxf_circle_set_transparency (circle, 0);
         dxf_circle_set_p0 (circle, dxf_point_new ());
+        dxf_point_init ((DxfPoint *) dxf_circle_get_p0 (circle));
         dxf_circle_set_radius (circle, 0.0);
         dxf_circle_set_extr_x0 (circle, 0.0);
         dxf_circle_set_extr_y0 (circle, 0.0);
