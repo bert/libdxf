@@ -144,6 +144,7 @@ dxf_3dface_init
         dxf_3dface_set_graphics_data_size (face, 0);
         dxf_3dface_set_shadow_mode (face, 0);
         dxf_3dface_set_binary_graphics_data (face, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
+        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_3dface_get_binary_graphics_data (face));
         dxf_3dface_set_dictionary_owner_soft (face, strdup (""));
         dxf_3dface_set_material (face, strdup (""));
         dxf_3dface_set_dictionary_owner_hard (face, strdup (""));
