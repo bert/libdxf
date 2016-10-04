@@ -138,7 +138,8 @@ dxf_3dline_init
         dxf_3dline_set_paperspace (line, DXF_MODELSPACE);
         dxf_3dline_set_graphics_data_size (line, 0);
         dxf_3dline_set_shadow_mode (line, 0);
-        line->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (line->binary_graphics_data);
+        dxf_3dline_set_binary_graphics_data (line, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
+        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_3dline_get_binary_graphics_data (line));
         dxf_3dline_set_dictionary_owner_soft (line, strdup (""));
         dxf_3dline_set_material (line, strdup (""));
         dxf_3dline_set_dictionary_owner_hard (line, strdup (""));
