@@ -123,12 +123,12 @@ dxf_appid_init
                   __FUNCTION__);
                 return (NULL);
         }
-        appid->id_code = 0;
-        appid->application_name = strdup ("");
-        appid->flag = 0;
-        appid->dictionary_owner_soft = strdup ("");
-        appid->dictionary_owner_hard = strdup ("");
-        appid->next = NULL;
+        dxf_appid_set_id_code (appid, 0);
+        dxf_appid_set_application_name (appid, strdup (""));
+        dxf_appid_set_flag (appid, 0);
+        dxf_appid_set_dictionary_owner_soft (appid, strdup (""));
+        dxf_appid_set_dictionary_owner_hard (appid, strdup (""));
+        dxf_appid_set_next (appid, NULL);
 #if DEBUG
         DXF_DEBUG_END
 #endif
