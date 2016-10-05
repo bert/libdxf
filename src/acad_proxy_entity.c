@@ -151,7 +151,7 @@ dxf_acad_proxy_entity_init
         dxf_acad_proxy_entity_set_entity_data_size (acad_proxy_entity, 0);
         dxf_acad_proxy_entity_set_object_drawing_format (acad_proxy_entity, 0);
         dxf_acad_proxy_entity_set_binary_graphics_data (acad_proxy_entity, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
-        dxf_binary_graphics_data_init (dxf_acad_proxy_entity_get_binary_graphics_data (acad_proxy_entity));
+        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_acad_proxy_entity_get_binary_graphics_data (acad_proxy_entity));
         dxf_acad_proxy_entity_set_binary_entity_data (acad_proxy_entity, (DxfBinaryEntityData *) dxf_binary_entity_data_new ());
         dxf_binary_entity_data_init (dxf_acad_proxy_entity_get_binary_entity_data (acad_proxy_entity));
         for (i = 0; i < DXF_MAX_PARAM; i++)
