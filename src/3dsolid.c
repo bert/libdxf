@@ -128,7 +128,8 @@ dxf_3dsolid_init
         dxf_3dsolid_set_paperspace (solid, DXF_MODELSPACE);
         dxf_3dsolid_set_graphics_data_size (solid, 0);
         dxf_3dsolid_set_shadow_mode (solid, 0);
-        dxf_3dsolid_set_binary_graphics_data (solid, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (solid->binary_graphics_data));
+        dxf_3dsolid_set_binary_graphics_data (solid, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
+        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_3dsolid_get_binary_graphics_data (solid));
         dxf_3dsolid_set_dictionary_owner_soft (solid, strdup (""));
         dxf_3dsolid_set_material (solid, strdup (""));
         dxf_3dsolid_set_dictionary_owner_hard (solid, strdup (""));
