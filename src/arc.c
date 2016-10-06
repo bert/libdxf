@@ -123,6 +123,7 @@ dxf_arc_init
         dxf_arc_set_graphics_data_size (arc, 0);
         dxf_arc_set_shadow_mode (arc, 0);
         dxf_arc_set_binary_graphics_data (arc, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
+        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_arc_get_binary_graphics_data (arc));
         dxf_arc_set_dictionary_owner_soft (arc, strdup (""));
         dxf_arc_set_material (arc, strdup (""));
         dxf_arc_set_dictionary_owner_hard (arc, strdup (""));
