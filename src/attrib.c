@@ -121,6 +121,7 @@ dxf_attrib_init
         dxf_attrib_set_graphics_data_size (attrib, 0);
         dxf_attrib_set_shadow_mode (attrib, 0);
         dxf_attrib_set_binary_graphics_data (attrib, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
+        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_attrib_get_binary_graphics_data (attrib));
         dxf_attrib_set_dictionary_owner_soft (attrib, strdup(""));
         dxf_attrib_set_material (attrib, strdup (""));
         dxf_attrib_set_dictionary_owner_hard (attrib, strdup(""));
