@@ -119,6 +119,7 @@ dxf_attdef_init
         dxf_attdef_set_graphics_data_size (attdef, 0);
         dxf_attdef_set_shadow_mode (attdef, 0);
         dxf_attdef_set_binary_graphics_data (attdef, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ());
+        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_attdef_get_binary_graphics_data (attdef));
         dxf_attdef_set_dictionary_owner_soft (attdef, strdup (""));
         dxf_attdef_set_material (attdef, strdup (""));
         dxf_attdef_set_dictionary_owner_hard (attdef, strdup (""));
