@@ -122,6 +122,7 @@ dxf_body_init
         dxf_body_set_graphics_data_size (body, 0);
         dxf_body_set_shadow_mode (body, 0);
         dxf_body_set_binary_graphics_data (body, (DxfBinaryGraphicsData *) dxf_binary_graphics_data_init (body->binary_graphics_data));
+        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_body_get_binary_graphics_data (body));
         dxf_body_set_dictionary_owner_soft (body, strdup (""));
         dxf_body_set_material (body, strdup (""));
         dxf_body_set_dictionary_owner_hard (body, strdup (""));
