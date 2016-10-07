@@ -245,7 +245,7 @@ dxf_class_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (class->record_type, "") == 0)
+        if (strcmp (dxf_class_get_record_type (class), "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () empty record type string after reading from: %s before line: %d.\n")),
@@ -253,14 +253,14 @@ dxf_class_read
                 return (NULL);
 
         }
-        if (strcmp (class->record_name, "") == 0)
+        if (strcmp (dxf_class_get_record_name (class), "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () empty record name string after reading from: %s before line: %d.\n")),
                   __FUNCTION__, fp->filename, fp->line_number);
                 return (NULL);
         }
-        if (strcmp (class->class_name, "") == 0)
+        if (strcmp (dxf_class_get_class_name (class), "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () empty class name string after reading from: %s before line: %d.\n")),
