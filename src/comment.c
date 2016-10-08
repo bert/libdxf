@@ -126,10 +126,10 @@ dxf_comment_init
  * edited.
  *
  * Multi-line comments are implemented as a single linked list of
- * DxfComment structs.
+ * DxfComment structs.\n
  * A pointer to the next comment is stored in the \c next member of the
- * DXF \cCOMMENT struct.
- * This function writes comment to the file descriptor until a \c NULL
+ * DXF \c COMMENT struct.\n
+ * This function writes comments to the file descriptor until a \c NULL
  * pointer is encountered.
  */
 int
