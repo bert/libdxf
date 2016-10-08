@@ -56,7 +56,7 @@ extern "C" {
  * \brief DXF definition of an AutoCAD dictionaryvar object (\c DICTIONARYVAR).
  */
 typedef struct
-dxf_dictionaryvar
+dxf_dictionaryvar_struct
 {
         /* Members common for all DXF group objects. */
         int id_code;
