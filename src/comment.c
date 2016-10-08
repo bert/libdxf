@@ -317,13 +317,14 @@ dxf_comment_get_value
         if (comment == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+              return (NULL);
         }
         if (comment->value == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to the value member in DxfComment was NULL.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                 __FUNCTION__);
               return (NULL);
         }
