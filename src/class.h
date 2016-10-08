@@ -53,7 +53,7 @@ extern "C" {
  * AutoCAD DXF release 2000.
  */
 typedef struct
-dxf_class
+dxf_class_struct
 {
         char *record_type;
                 /*!< group code  = 0.\n
