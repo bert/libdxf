@@ -296,7 +296,7 @@ dxf_dictionary_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (dictionary->entry_name, "") == 0)
+        if (strcmp (dxf_dictionary_get_entry_name (dictionary), "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () empty entry name string for the %s entity with id-code: %x\n")),
