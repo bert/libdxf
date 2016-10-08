@@ -616,13 +616,13 @@ dxf_dimension_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dimension->linetype, "") == 0)
+        if (strcmp (dxf_dimension_get_linetype (dimension), "") == 0)
         {
-                dimension->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                dxf_dimension_set_linetype (dimension, strdup (DXF_DEFAULT_LINETYPE));
         }
-        if (strcmp (dimension->layer, "") == 0)
+        if (strcmp (dxf_dimension_get_layer (dimension), "") == 0)
         {
-                dimension->layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_dimension_set_layer (dimension, strdup (DXF_DEFAULT_LAYER));
         }
         /* Clean up. */
         free (temp_string);
