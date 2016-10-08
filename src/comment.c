@@ -106,9 +106,9 @@ dxf_comment_init
                   __FUNCTION__);
                 return (NULL);
         }
-        comment->id_code = 0;
-        comment->value = strdup ("");
-        comment->next = NULL;
+        dxf_comment_set_id_code (comment, 0);
+        dxf_comment_set_value (comment, strdup (""));
+        dxf_comment_set_next (comment, NULL);
 #ifdef DEBUG
         DXF_DEBUG_END
 #endif
