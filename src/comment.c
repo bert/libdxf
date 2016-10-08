@@ -352,13 +352,14 @@ dxf_comment_set_value
         if (comment == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
+              return (NULL);
         }
-        if (comment->value != NULL)
+        if (value != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to the member in DxfComment was not NULL.\n")),
+                  (_("Error in %s () a NULL pointer was passed.\n")),
                 __FUNCTION__);
               return (NULL);
         }
