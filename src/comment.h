@@ -54,7 +54,7 @@ extern "C" {
  * \brief DXF definition of an AutoCAD comment entity (\c COMMENT).
  */
 typedef struct
-dxf_comment
+dxf_comment_struct
 {
         int id_code;
                 /*!< group code = 5\n
