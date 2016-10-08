@@ -112,8 +112,8 @@ dxf_comment_get_value
 DxfComment *
 dxf_comment_set_value
 (
-        char *value,
-        DxfComment *comment
+        DxfComment *comment,
+        char *value
 );
 DxfComment *
 dxf_comment_get_next

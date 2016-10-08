@@ -340,10 +340,10 @@ dxf_comment_get_value
 DxfComment *
 dxf_comment_set_value
 (
-        char *value,
-                /*!< the comment value (string) to be set.*/
-        DxfComment *comment
+        DxfComment *comment,
                 /*!< a pointer to the chain of DXF \c COMMENT entities. */
+        char *value
+                /*!< the comment value (string) to be set.*/
 )
 {
 #ifdef DEBUG
