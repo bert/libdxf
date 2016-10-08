@@ -146,7 +146,12 @@ dxf_comment_write
                 return (EXIT_FAILURE);
         }
         /* Start writing output. */
-        fprintf (fp->fp, "999\n%s\n", comment->value);
+        DxfComment *iter = (DxfComment *) comment;
+        while (dxf_comment_get_value (iter) != NULL)
+        {
+                fprintf (fp->fp, "999\n%s\n", dxf_comment_get_value (iter));
+                iter = dxf_comment_get_next (iter);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
