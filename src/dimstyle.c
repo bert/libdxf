@@ -863,7 +863,7 @@ dxf_dimstyle_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (dimstyle->dimstyle_name, "") == 0)
+        if (strcmp (dxf_dimstyle_get_dimstyle_name (dimstyle), "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () dimstyle_name value is empty.\n")),
