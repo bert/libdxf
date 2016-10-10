@@ -725,18 +725,18 @@ dxf_3dface_free
                 __FUNCTION__);
               return (face);
         }
-        free (face->linetype);
-        free (face->layer);
-        dxf_binary_graphics_data_free_chain (face->binary_graphics_data);
-        free (face->dictionary_owner_soft);
-        free (face->material);
-        free (face->dictionary_owner_hard);
-        free (face->plot_style_name);
-        free (face->color_name);
-        dxf_point_free (face->p0);
-        dxf_point_free (face->p1);
-        dxf_point_free (face->p2);
-        dxf_point_free (face->p3);
+        free (dxf_3dface_get_linetype (face));
+        free (dxf_3dface_get_layer (face));
+        dxf_binary_graphics_data_free_chain (dxf_3dface_get_binary_graphics_data (face));
+        free (dxf_3dface_get_dictionary_owner_soft (face));
+        free (dxf_3dface_get_material (face));
+        free (dxf_3dface_get_dictionary_owner_hard (face));
+        free (dxf_3dface_get_plot_style_name (face));
+        free (dxf_3dface_get_color_name (face));
+        dxf_point_free (dxf_3dface_get_p0 (face));
+        dxf_point_free (dxf_3dface_get_p1 (face));
+        dxf_point_free (dxf_3dface_get_p2 (face));
+        dxf_point_free (dxf_3dface_get_p3 (face));
         free (face);
         face = NULL;
 #ifdef DEBUG
