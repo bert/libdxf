@@ -328,8 +328,8 @@ dxf_endblk_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        free (endblk->layer);
-        free (endblk->dictionary_owner_soft);
+        free (dxf_endblk_get_layer (endblk));
+        free (dxf_endblk_get_dictionary_owner_soft (endblk));
         free (endblk);
         endblk = NULL;
 #if DEBUG
