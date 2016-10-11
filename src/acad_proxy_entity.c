@@ -729,14 +729,14 @@ dxf_acad_proxy_entity_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (acad_proxy_entity->linetype);
-        free (acad_proxy_entity->layer);
-        free (acad_proxy_entity->dictionary_owner_soft);
-        free (acad_proxy_entity->material);
-        free (acad_proxy_entity->dictionary_owner_hard);
-        free (acad_proxy_entity->plot_style_name);
-        free (acad_proxy_entity->color_name);
-        dxf_binary_graphics_data_free_chain (acad_proxy_entity->binary_graphics_data);
+        free (dxf_acad_proxy_entity_get_linetype (acad_proxy_entity));
+        free (dxf_acad_proxy_entity_get_layer (acad_proxy_entity));
+        free (dxf_acad_proxy_entity_get_dictionary_owner_soft (acad_proxy_entity));
+        free (dxf_acad_proxy_entity_get_material (acad_proxy_entity));
+        free (dxf_acad_proxy_entity_get_dictionary_owner_hard (acad_proxy_entity));
+        free (dxf_acad_proxy_entity_get_plot_style_name (acad_proxy_entity));
+        free (dxf_acad_proxy_entity_get_color_name (acad_proxy_entity));
+        dxf_binary_graphics_data_free_chain (dxf_acad_proxy_entity_get_binary_graphics_data (acad_proxy_entity));
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
                 free (acad_proxy_entity->object_id[i]);
