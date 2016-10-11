@@ -694,17 +694,17 @@ dxf_3dsolid_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (solid->linetype);
-        free (solid->layer);
-        dxf_binary_graphics_data_free_chain (solid->binary_graphics_data);
-        free (solid->dictionary_owner_soft);
-        free (solid->material);
-        free (solid->dictionary_owner_hard);
-        free (solid->plot_style_name);
-        free (solid->color_name);
-        dxf_proprietary_data_free_chain (solid->proprietary_data);
-        dxf_proprietary_data_free_chain (solid->additional_proprietary_data);
-        free (solid->history);
+        free (dxf_3dsolid_get_linetype (solid));
+        free (dxf_3dsolid_get_layer (solid));
+        dxf_binary_graphics_data_free_chain (dxf_3dsolid_get_binary_graphics_data (solid));
+        free (dxf_3dsolid_get_dictionary_owner_soft (solid));
+        free (dxf_3dsolid_get_material (solid));
+        free (dxf_3dsolid_get_dictionary_owner_hard (solid));
+        free (dxf_3dsolid_get_plot_style_name (solid));
+        free (dxf_3dsolid_get_color_name (solid));
+        dxf_proprietary_data_free_chain (dxf_3dsolid_get_proprietary_data (solid));
+        dxf_proprietary_data_free_chain (dxf_3dsolid_get_additional_proprietary_data (solid));
+        free (dxf_3dsolid_get_history (solid));
         free (solid);
         solid = NULL;
 #if DEBUG
