@@ -48,7 +48,7 @@ extern "C" {
  * \brief DXF definition of an object id.
  */
 typedef struct
-dxf_object_is_struct
+dxf_object_id_struct
 {
         char *data;
                 /*!< Pointer to the id. */
