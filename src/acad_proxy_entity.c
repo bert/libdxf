@@ -109,8 +109,6 @@ dxf_acad_proxy_entity_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (acad_proxy_entity == NULL)
         {
@@ -154,10 +152,7 @@ dxf_acad_proxy_entity_init
         dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_acad_proxy_entity_get_binary_graphics_data (acad_proxy_entity));
         dxf_acad_proxy_entity_set_binary_entity_data (acad_proxy_entity, (DxfBinaryEntityData *) dxf_binary_entity_data_new ());
         dxf_binary_entity_data_init (dxf_acad_proxy_entity_get_binary_entity_data (acad_proxy_entity));
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                acad_proxy_entity->object_id[i] = strdup ("");
-        }
+        acad_proxy_entity->object_id->data = strdup ("");
         dxf_acad_proxy_entity_set_next (acad_proxy_entity, NULL);
 #if DEBUG
         DXF_DEBUG_END
@@ -402,7 +397,7 @@ dxf_acad_proxy_entity_read
                 {
                         /* Now follows a string containing an object id. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", acad_proxy_entity->object_id[j]);
+                        fscanf (fp->fp, "%s\n", acad_proxy_entity->object_id->data);
                         j++;
                 }
                 else if (strcmp (temp_string, "347") == 0)
@@ -679,9 +674,9 @@ dxf_acad_proxy_entity_write
         fprintf (fp->fp, " 93\n%d\n", dxf_acad_proxy_entity_get_entity_data_size (acad_proxy_entity));
         /*! \todo Write object_id to file in a proper way. */
         i = 0;
-        while (strlen (acad_proxy_entity->object_id[i]) > 0)
+        while (strlen (acad_proxy_entity->object_id->data) > 0)
         {
-                fprintf (fp->fp, "330\n%s\n", acad_proxy_entity->object_id[i]);
+                fprintf (fp->fp, "330\n%s\n", acad_proxy_entity->object_id->data);
                 i++;
         }
         fprintf (fp->fp, " 94\n  0\n");
@@ -739,7 +734,7 @@ dxf_acad_proxy_entity_free
         dxf_binary_graphics_data_free_chain (dxf_acad_proxy_entity_get_binary_graphics_data (acad_proxy_entity));
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                free (acad_proxy_entity->object_id[i]);
+                free (acad_proxy_entity->object_id);
         }
         free (acad_proxy_entity);
         acad_proxy_entity = NULL;

@@ -52,6 +52,7 @@
 #include "global.h"
 #include "binary_entity_data.h"
 #include "binary_graphics_data.h"
+#include "object_id.h"
 
 
 #ifdef __cplusplus
@@ -222,7 +223,7 @@ dxf_acad_proxy_entity_struct
                  * (optional).\n
                  * Group code = 310.\n
                  * \since Introduced in version R14. */
-        char *object_id[DXF_MAX_PARAM];
+        DxfObjectId *object_id;
                 /*!< An object ID (multiple entries can appear).\n
                  * Group code = 330 or 340 or 350 or 360. */
         struct DxfAcadProxyEntity *next;
