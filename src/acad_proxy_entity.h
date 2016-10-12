@@ -553,6 +553,12 @@ dxf_acad_proxy_entity_get_object_id
         DxfAcadProxyEntity *acad_proxy_entity
 );
 DxfAcadProxyEntity *
+dxf_acad_proxy_entity_set_object_id
+(
+        DxfAcadProxyEntity *acad_proxy_entity,
+        DxfObjectId *object_id
+);
+DxfAcadProxyEntity *
 dxf_acad_proxy_entity_get_next
 (
         DxfAcadProxyEntity *acad_proxy_entity
