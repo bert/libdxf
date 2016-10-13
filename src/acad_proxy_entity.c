@@ -152,7 +152,8 @@ dxf_acad_proxy_entity_init
         dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_acad_proxy_entity_get_binary_graphics_data (acad_proxy_entity));
         dxf_acad_proxy_entity_set_binary_entity_data (acad_proxy_entity, (DxfBinaryEntityData *) dxf_binary_entity_data_new ());
         dxf_binary_entity_data_init (dxf_acad_proxy_entity_get_binary_entity_data (acad_proxy_entity));
-        acad_proxy_entity->object_id->data = strdup ("");
+        dxf_acad_proxy_entity_set_object_id (acad_proxy_entity, (DxfObjectId *) dxf_object_id_new ());
+        dxf_object_id_set_data (dxf_acad_proxy_entity_get_object_id (acad_proxy_entity), strdup (""));
         dxf_acad_proxy_entity_set_next (acad_proxy_entity, NULL);
 #if DEBUG
         DXF_DEBUG_END
