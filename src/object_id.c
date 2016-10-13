@@ -179,6 +179,46 @@ dxf_object_id_free_chain
 
 
 /*!
+ * \brief Get the \c group_code from a DXF \c object_id.
+ *
+ * \return \c group_code.
+ */
+int
+dxf_object_id_get_group_code
+(
+        DxfObjectId *object_id
+                /*!< a pointer to a DXF \c object_id. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_id == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if ((object_id->group_code != 330)
+          && (object_id->group_code != 340)
+          && (object_id->group_code != 350)
+          && (object_id->group_code != 360))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid value was found in the group_code member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object_id->group_code);
+}
+
+
+/*!
  * \brief Get the \c data from a DXF \c object_id.
  *
  * \return \c data when sucessful, \c NULL when an error occurred.

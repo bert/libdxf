@@ -80,6 +80,11 @@ dxf_object_id_free_chain
 (
         DxfObjectId *object_ids
 );
+int
+dxf_object_id_get_group_code
+(
+        DxfObjectId *object_id
+);
 char *
 dxf_object_id_get_data
 (
