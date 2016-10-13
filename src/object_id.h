@@ -50,6 +50,9 @@ extern "C" {
 typedef struct
 dxf_object_id_struct
 {
+        int group_code;
+                /*!< Group code of the id.\n
+                 * Group code can be 330 or 340 or 350 or 360. */
         char *data;
                 /*!< Pointer to the id. */
         int length;
