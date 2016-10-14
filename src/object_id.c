@@ -219,6 +219,50 @@ dxf_object_id_get_group_code
 
 
 /*!
+ * \brief Set the \c group_code for a DXF \c object_id.
+ *
+ * \return a pointer to \c object_id when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfObjectId *
+dxf_object_id_set_group_code
+(
+        DxfObjectId *object_id,
+                /*!< a pointer to a DXF \c object_id. */
+        int group_code
+                /*!< the \c group_code to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_id == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if ((group_code != 330)
+          && (group_code != 340)
+          && (group_code != 350)
+          && (group_code != 360))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid group_code value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        object_id->group_code = group_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object_id);
+}
+
+
+/*!
  * \brief Get the \c data from a DXF \c object_id.
  *
  * \return \c data when sucessful, \c NULL when an error occurred.
