@@ -672,7 +672,6 @@ dxf_acad_proxy_entity_write
                 }
         }
         fprintf (fp->fp, " 93\n%d\n", dxf_acad_proxy_entity_get_entity_data_size (acad_proxy_entity));
-        /*! \todo Write object_id to file in a proper way. */
         if (dxf_object_id_get_data (dxf_acad_proxy_entity_get_object_id (acad_proxy_entity)) != NULL)
         {
                 DxfObjectId *object_id_iter;
