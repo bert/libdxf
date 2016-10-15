@@ -119,6 +119,11 @@ dxf_binary_entity_data_set_next
         DxfBinaryEntityData *data,
         DxfBinaryEntityData *next
 );
+DxfBinaryEntityData *
+dxf_binary_entity_data_get_last
+(
+        DxfBinaryEntityData *data
+);
 
 
 #ifdef __cplusplus

@@ -456,4 +456,49 @@ dxf_binary_entity_data_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last binary entity data object from a
+ * linked list of binary entity data objects.
+ *
+ * \return pointer to the last binary entity data object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryEntityData *
+dxf_binary_entity_data_get_last
+(
+        DxfBinaryEntityData *data
+                /*!< a pointer to a binary entity data object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfBinaryEntityData *) data);
+        }
+        DxfBinaryEntityData *iter = (DxfBinaryEntityData *) data->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfBinaryEntityData *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBinaryEntityData *) data->next);
+}
+
+
 /* EOF */
