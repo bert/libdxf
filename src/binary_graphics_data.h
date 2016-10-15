@@ -119,6 +119,11 @@ dxf_binary_graphics_data_set_next
         DxfBinaryGraphicsData *data,
         DxfBinaryGraphicsData *next
 );
+DxfBinaryGraphicsData *
+dxf_binary_graphics_data_get_last
+(
+        DxfBinaryGraphicsData *data
+);
 
 
 #ifdef __cplusplus
