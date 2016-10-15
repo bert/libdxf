@@ -495,4 +495,49 @@ dxf_object_id_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last DXF \c object_id from a linked
+ * list of DXF \c object_id.
+ *
+ * \return pointer to the last \c object_id.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfObjectId *
+dxf_object_id_get_last
+(
+        DxfObjectId *object_id
+                /*!< a pointer to a DXF \ object_id. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_id == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (object_id->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfObjectId *) object_id);
+        }
+        DxfObjectId *iter = (DxfObjectId *) object_id->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfObjectId *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfObjectId *) iter);
+}
+
+
 /* EOF */

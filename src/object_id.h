@@ -124,6 +124,11 @@ dxf_object_id_set_next
         DxfObjectId *object_id,
         DxfObjectId *next
 );
+DxfObjectId *
+dxf_object_id_get_last
+(
+        DxfObjectId *object_id
+);
 
 
 #ifdef __cplusplus
