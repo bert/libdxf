@@ -73,7 +73,7 @@ dxf_object_id_new ()
 /*!
  * \brief Allocate memory and initialize data fields in a DXF
  * \c object_id.
- * 
+ *
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
  */
