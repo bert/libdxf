@@ -2972,4 +2972,49 @@ dxf_acad_proxy_entity_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c ACAD_PROXY_ENTITY entity from a
+ * linked list of DXF \c ACAD_PROXY_ENTITY entities.
+ *
+ * \return pointer to the last \c ACAD_PROXY_ENTITY entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_get_last
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+                /*!< a pointer to a DXF \c ACAD_PROXY_ENTITY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (acad_proxy_entity->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfAcadProxyEntity *) acad_proxy_entity);
+        }
+        DxfAcadProxyEntity *iter = (DxfAcadProxyEntity *) acad_proxy_entity->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfAcadProxyEntity *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfAcadProxyEntity *) iter);
+}
+
+
 /* EOF */

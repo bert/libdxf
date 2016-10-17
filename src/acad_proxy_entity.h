@@ -569,6 +569,11 @@ dxf_acad_proxy_entity_set_next
         DxfAcadProxyEntity *acad_proxy_entity,
         DxfAcadProxyEntity *next
 );
+DxfAcadProxyEntity *
+dxf_acad_proxy_entity_get_last
+(
+        DxfAcadProxyEntity *acad_proxy_entity
+);
 
 
 #ifdef __cplusplus
