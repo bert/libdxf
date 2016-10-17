@@ -187,8 +187,8 @@ dxf_acad_proxy_entity_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i; /* flags whether group code 330 has been parsed a first time. */
-        int j; /* index for object_id[]. */
+        int i; /* flags whether group code 330, 340, 350 or 360 has been
+                * parsed for a first time. */
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -215,7 +215,6 @@ dxf_acad_proxy_entity_read
                 acad_proxy_entity = dxf_acad_proxy_entity_init (acad_proxy_entity);
         }
         i = 0;
-        j = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -391,15 +390,28 @@ dxf_acad_proxy_entity_read
                         fscanf (fp->fp, "%s\n", acad_proxy_entity->dictionary_owner_soft);
                         i++;
                 }
-                else if (((strcmp (temp_string, "330") == 0) && (i > 0))
+                else if ((strcmp (temp_string, "330") == 0)
                   || (strcmp (temp_string, "340") == 0)
                   || (strcmp (temp_string, "350") == 0)
                   || (strcmp (temp_string, "360") == 0))
                 {
-                        /* Now follows a string containing an object id. */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", acad_proxy_entity->object_id->data);
-                        j++;
+                        if (!i) /* For the very first object_id. */
+                        {
+                                dxf_object_id_set_group_code (acad_proxy_entity->object_id, atoi (temp_string));
+                                /* Now follows a string containing an object id line of data. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", acad_proxy_entity->object_id->data);
+                        }
+                        else /* For following object_id's. */
+                        {
+                                DxfObjectId *iter = dxf_object_id_get_last ((DxfObjectId *) acad_proxy_entity->object_id);
+                                iter = dxf_object_id_init ((DxfObjectId *) iter->next);
+                                dxf_object_id_set_group_code (iter, atoi (temp_string));
+                                /* Now follows a string containing an object id line of data. */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%s\n", iter->data);
+                        }
+                        i++;
                 }
                 else if (strcmp (temp_string, "347") == 0)
                 {
@@ -466,6 +478,9 @@ dxf_acad_proxy_entity_read
         /* Clean up. */
         free (temp_string);
 #if DEBUG
+        fprintf (stderr,
+          (_("Information from %s() read %d object_id's from %s.\n")),
+          __FUNCTION__, i, fp->filename);
         DXF_DEBUG_END
 #endif
         return (acad_proxy_entity);
