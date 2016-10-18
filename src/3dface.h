@@ -658,6 +658,11 @@ dxf_3dface_set_next
         Dxf3dface *face,
         Dxf3dface *next
 );
+Dxf3dface *
+dxf_3dface_get_last
+(
+        Dxf3dface *face
+);
 int
 dxf_3dface_is_first_edge_invisible
 (

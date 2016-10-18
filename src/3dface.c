@@ -3824,6 +3824,51 @@ dxf_3dface_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c 3DFACE entity from a linked
+ * list of DXF \c 3DFACE entities.
+ *
+ * \return pointer to the last \c 3DFACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+Dxf3dface *
+dxf_3dface_get_last
+(
+        Dxf3dface *face
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (face->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((Dxf3dface *) face);
+        }
+        Dxf3dface *iter = (Dxf3dface *) face->next;
+        while (iter->next != NULL)
+        {
+                iter = (Dxf3dface *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((Dxf3dface *) iter);
+}
+
+
+/*!
  * \brief Test if the first edge of a DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
