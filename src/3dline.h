@@ -592,6 +592,11 @@ dxf_3dline_set_next
         Dxf3dline *line,
         Dxf3dline *next
 );
+Dxf3dline *
+dxf_3dline_get_last
+(
+        Dxf3dline *line
+);
 DxfPoint *
 dxf_3dline_get_extrusion_vector_as_point
 (

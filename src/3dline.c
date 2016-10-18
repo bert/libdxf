@@ -3250,6 +3250,51 @@ dxf_3dline_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c 3DLINE entity from a linked
+ * list of DXF \c 3DLINE entities.
+ *
+ * \return pointer to the last \c 3DLINE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+Dxf3dline *
+dxf_3dline_get_last
+(
+        Dxf3dline *line
+                /*!< a pointer to a DXF \c 3DLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((Dxf3dline *) line);
+        }
+        Dxf3dline *iter = (Dxf3dline *) line->next;
+        while (iter->next != NULL)
+        {
+                iter = (Dxf3dline *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((Dxf3dline *) iter);
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c 3DLINE entity.
  *
