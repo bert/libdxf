@@ -511,6 +511,11 @@ dxf_3dsolid_set_next
         Dxf3dsolid *solid,
         Dxf3dsolid *next
 );
+Dxf3dsolid *
+dxf_3dsolid_get_last
+(
+        Dxf3dsolid *solid
+);
 
 
 #ifdef __cplusplus

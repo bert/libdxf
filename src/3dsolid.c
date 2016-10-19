@@ -2704,4 +2704,49 @@ dxf_3dsolid_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c 3DSOLID entity from a linked
+ * list of DXF \c 3DSOLID entity.
+ *
+ * \return pointer to the last \c 3DSOLID entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+Dxf3dsolid *
+dxf_3dsolid_get_last
+(
+        Dxf3dsolid *solid
+                /*!< a pointer to a DXF \c 3DSOLID entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (solid == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (solid->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((Dxf3dsolid *) solid);
+        }
+        Dxf3dsolid *iter = (Dxf3dsolid *) solid->next;
+        while (iter->next != NULL)
+        {
+                iter = (Dxf3dsolid *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((Dxf3dsolid *) iter);
+}
+
+
 /* EOF */
