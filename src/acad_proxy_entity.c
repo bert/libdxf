@@ -3001,7 +3001,7 @@ dxf_acad_proxy_entity_get_last
         if (acad_proxy_entity->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
                   __FUNCTION__);
                 return ((DxfAcadProxyEntity *) acad_proxy_entity);
         }
