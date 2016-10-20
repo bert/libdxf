@@ -222,6 +222,11 @@ dxf_appid_set_next
         DxfAppid *appid,
         DxfAppid *next
 );
+DxfAppid *
+dxf_appid_get_last
+(
+        DxfAppid *appid
+);
 
 
 #ifdef __cplusplus
