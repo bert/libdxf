@@ -3278,7 +3278,7 @@ dxf_3dline_get_last
         if (line->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
                   __FUNCTION__);
                 return ((Dxf3dline *) line);
         }
