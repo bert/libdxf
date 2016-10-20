@@ -3178,6 +3178,51 @@ dxf_arc_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c ARC entity from a linked list
+ * of DXF \c ARC entities.
+ *
+ * \return pointer to the last \c ARC entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfArc *
+dxf_arc_get_last
+(
+        DxfArc *arc
+                /*!< a pointer to a DXF \c ARC entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (arc->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfArc *) arc);
+        }
+        DxfArc *iter = (DxfArc *) arc->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfArc *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfArc *) iter);
+}
+
+
+/*!
  * \brief Calculate the length of a DXF \c ARC entity.
  *
  * \return the length.

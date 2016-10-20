@@ -600,6 +600,11 @@ dxf_arc_set_next
         DxfArc *arc,
         DxfArc *next
 );
+DxfArc *
+dxf_arc_get_last
+(
+        DxfArc *arc
+);
 double
 dxf_arc_get_length
 (
