@@ -851,6 +851,11 @@ dxf_attdef_set_next
         DxfAttdef *attdef,
         DxfAttdef *next
 );
+DxfAttdef *
+dxf_attdef_get_last
+(
+        DxfAttdef *attdef
+);
 
 
 #ifdef __cplusplus
