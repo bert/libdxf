@@ -537,6 +537,11 @@ dxf_arc_set_end_angle
         DxfArc *arc,
         double end_angle
 );
+double
+dxf_arc_get_length
+(
+        DxfArc *arc
+);
 DxfPoint *
 dxf_arc_get_extrusion_vector_as_point
 (
@@ -602,11 +607,6 @@ dxf_arc_set_next
 );
 DxfArc *
 dxf_arc_get_last
-(
-        DxfArc *arc
-);
-double
-dxf_arc_get_length
 (
         DxfArc *arc
 );

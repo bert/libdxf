@@ -2771,6 +2771,51 @@ dxf_arc_set_end_angle
 
 
 /*!
+ * \brief Calculate the length of a DXF \c ARC entity.
+ *
+ * \return the length.
+ */
+double
+dxf_arc_get_length
+(
+        DxfArc *arc
+                /*!< a pointer to a DXF \c ARC entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (arc->radius == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a radius of 0.0 was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (arc->radius < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a radius smaller than 0.0 was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (arc->radius * ((arc->end_angle - arc->start_angle) / 360.0));
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c ARC entity.
  *
@@ -3219,51 +3264,6 @@ dxf_arc_get_last
         DXF_DEBUG_END
 #endif
         return ((DxfArc *) iter);
-}
-
-
-/*!
- * \brief Calculate the length of a DXF \c ARC entity.
- *
- * \return the length.
- */
-double
-dxf_arc_get_length
-(
-        DxfArc *arc
-                /*!< a pointer to a DXF \c ARC entity. */
-)
-{
-#ifdef DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-
-        /* Do some basic checks. */
-        if (arc == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (arc->radius == 0.0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a radius of 0.0 was found.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (arc->radius < 0.0)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a radius smaller than 0.0 was found.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (arc->radius * ((arc->end_angle - arc->start_angle) / 360.0));
 }
 
 
