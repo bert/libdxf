@@ -3742,133 +3742,6 @@ dxf_3dface_set_flag
 
 
 /*!
- * \brief Get the pointer to the next \c 3DFACE entity from a DXF 
- * \c 3DFACE entity.
- *
- * \return pointer to the next \c 3DFACE entity.
- *
- * \warning No checks are performed on the returned pointer.
- */
-Dxf3dface *
-dxf_3dface_get_next
-(
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (face == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (face->next == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return ((Dxf3dface *) face->next);
-}
-
-
-/*!
- * \brief Set the pointer to the next \c 3DFACE for a DXF \c 3DFACE
- * entity.
- *
- * \return a pointer to \c face when successful, or \c NULL when an
- * error occurred.
- */
-Dxf3dface *
-dxf_3dface_set_next
-(
-        Dxf3dface *face,
-                /*!< a pointer to a DXF \c 3DFACE entity. */
-        Dxf3dface *next
-                /*!< a pointer to the next \c 3DFACE for the entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (face == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (next == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        face->next = (struct Dxf3dface *) next;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (face);
-}
-
-
-/*!
- * \brief Get the pointer to the last \c 3DFACE entity from a linked
- * list of DXF \c 3DFACE entities.
- *
- * \return pointer to the last \c 3DFACE entity.
- *
- * \warning No checks are performed on the returned pointer.
- */
-Dxf3dface *
-dxf_3dface_get_last
-(
-        Dxf3dface *face
-                /*!< a pointer to a DXF \c 3DFACE entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (face == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (face->next == NULL)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
-                  __FUNCTION__);
-                return ((Dxf3dface *) face);
-        }
-        Dxf3dface *iter = (Dxf3dface *) face->next;
-        while (iter->next != NULL)
-        {
-                iter = (Dxf3dface *) iter->next;
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return ((Dxf3dface *) iter);
-}
-
-
-/*!
  * \brief Test if the first edge of a DXF \c 3DFACE is invisible.
  *
  * \return \c TRUE when the edge is invisible, or \c FALSE when the edge is
@@ -4209,6 +4082,133 @@ dxf_3dface_create_from_points
         DXF_DEBUG_END
 #endif
         return (face);
+}
+
+
+/*!
+ * \brief Get the pointer to the next \c 3DFACE entity from a DXF 
+ * \c 3DFACE entity.
+ *
+ * \return pointer to the next \c 3DFACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+Dxf3dface *
+dxf_3dface_get_next
+(
+        Dxf3dface *face
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (face->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((Dxf3dface *) face->next);
+}
+
+
+/*!
+ * \brief Set the pointer to the next \c 3DFACE for a DXF \c 3DFACE
+ * entity.
+ *
+ * \return a pointer to \c face when successful, or \c NULL when an
+ * error occurred.
+ */
+Dxf3dface *
+dxf_3dface_set_next
+(
+        Dxf3dface *face,
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+        Dxf3dface *next
+                /*!< a pointer to the next \c 3DFACE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        face->next = (struct Dxf3dface *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (face);
+}
+
+
+/*!
+ * \brief Get the pointer to the last \c 3DFACE entity from a linked
+ * list of DXF \c 3DFACE entities.
+ *
+ * \return pointer to the last \c 3DFACE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+Dxf3dface *
+dxf_3dface_get_last
+(
+        Dxf3dface *face
+                /*!< a pointer to a DXF \c 3DFACE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (face == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (face->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((Dxf3dface *) face);
+        }
+        Dxf3dface *iter = (Dxf3dface *) face->next;
+        while (iter->next != NULL)
+        {
+                iter = (Dxf3dface *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((Dxf3dface *) iter);
 }
 
 
