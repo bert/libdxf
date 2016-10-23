@@ -3619,6 +3619,130 @@ dxf_attrib_set_attr_flags
 
 
 /*!
+ * \brief Test if the attribute is invisible.
+ *
+ * \return \c TRUE when the attribute is invisible, or \c FALSE when the
+ * attribute is visible.
+ */
+int
+dxf_attrib_is_invisible
+(
+        DxfAttrib *attrib
+                /*!< DXF \c ATTRIB entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (DXF_CHECK_BIT (attrib->attr_flags, 0));
+}
+
+
+/*!
+ * \brief Test if the attribute is a constant attribute.
+ *
+ * \return \c TRUE when the attribute is a constant, or \c FALSE when
+ * the attribute is not a constant attribute.
+ */
+int
+dxf_attrib_is_constant
+(
+        DxfAttrib *attrib
+                /*!< DXF \c ATTRIB entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (DXF_CHECK_BIT (attrib->attr_flags, 1));
+}
+
+
+/*!
+ * \brief Test if the attribute input needs to be verified.
+ *
+ * \return \c TRUE when the input needs to be verified,
+ * or \c FALSE when the input needs not to be verified.
+ */
+int
+dxf_attrib_is_verification_required
+(
+        DxfAttrib *attrib
+                /*!< DXF \c ATTRIB entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (DXF_CHECK_BIT (attrib->attr_flags, 2));
+}
+
+
+/*!
+ * \brief Test if the attribute is preset (no prompt during insertion).
+ *
+ * \return \c TRUE when the attribute is preset,
+ * or \c FALSE when the attribute is not preset.
+ */
+int
+dxf_attrib_is_preset
+(
+        DxfAttrib *attrib
+                /*!< DXF \c ATTRIB entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (DXF_CHECK_BIT (attrib->attr_flags, 3));
+}
+
+
+/*!
  * \brief Get the text flags from a DXF \c ATTRIB entity.
  *
  * \return text flags.
@@ -4413,130 +4537,6 @@ dxf_attrib_get_last
         DXF_DEBUG_END
 #endif
         return ((DxfAttrib *) iter);
-}
-
-
-/*!
- * \brief Test if the attribute is invisible.
- *
- * \return \c TRUE when the attribute is invisible, or \c FALSE when the
- * attribute is visible.
- */
-int
-dxf_attrib_is_invisible
-(
-        DxfAttrib *attrib
-                /*!< DXF \c ATTRIB entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (attrib == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (DXF_CHECK_BIT (attrib->attr_flags, 0));
-}
-
-
-/*!
- * \brief Test if the attribute is a constant attribute.
- *
- * \return \c TRUE when the attribute is a constant, or \c FALSE when
- * the attribute is not a constant attribute.
- */
-int
-dxf_attrib_is_constant
-(
-        DxfAttrib *attrib
-                /*!< DXF \c ATTRIB entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (attrib == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (DXF_CHECK_BIT (attrib->attr_flags, 1));
-}
-
-
-/*!
- * \brief Test if the attribute input needs to be verified.
- *
- * \return \c TRUE when the input needs to be verified,
- * or \c FALSE when the input needs not to be verified.
- */
-int
-dxf_attrib_is_verification_required
-(
-        DxfAttrib *attrib
-                /*!< DXF \c ATTRIB entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (attrib == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (DXF_CHECK_BIT (attrib->attr_flags, 2));
-}
-
-
-/*!
- * \brief Test if the attribute is preset (no prompt during insertion).
- *
- * \return \c TRUE when the attribute is preset,
- * or \c FALSE when the attribute is not preset.
- */
-int
-dxf_attrib_is_preset
-(
-        DxfAttrib *attrib
-                /*!< DXF \c ATTRIB entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (attrib == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (DXF_CHECK_BIT (attrib->attr_flags, 3));
 }
 
 
