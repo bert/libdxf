@@ -818,6 +818,11 @@ dxf_attrib_set_next
         DxfAttrib *attrib,
         DxfAttrib *next
 );
+DxfAttrib *
+dxf_attrib_get_last
+(
+        DxfAttrib *attrib
+);
 int
 dxf_attrib_is_invisible
 (

@@ -4372,6 +4372,51 @@ dxf_attrib_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c ATTRIB entity from a linked
+ * list of DXF \c ATTRIB entities.
+ *
+ * \return pointer to the last \c ATTRIB entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfAttrib *
+dxf_attrib_get_last
+(
+        DxfAttrib *attrib
+                /*!< a pointer to a DXF \c ATTRIB entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (attrib == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (attrib->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfAttrib *) attrib);
+        }
+        DxfAttrib *iter = (DxfAttrib *) attrib->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfAttrib *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfAttrib *) iter);
+}
+
+
+/*!
  * \brief Test if the attribute is invisible.
  *
  * \return \c TRUE when the attribute is invisible, or \c FALSE when the
