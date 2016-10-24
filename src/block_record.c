@@ -1013,4 +1013,50 @@ dxf_block_record_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c BLOCK_RECORD symbol table entry
+ * from a linked list of DXF \c BLOCK_RECORD symbol table entries.
+ *
+ * \return pointer to the last \c BLOCK_RECORD symbol table entry.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBlockRecord *
+dxf_block_record_get_last
+(
+        DxfBlockRecord *block_record
+                /*!< a pointer to a DXF \c BLOCK_RECORD symbol table
+                 * entry. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block_record == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (block_record->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfBlockRecord *) block_record);
+        }
+        DxfBlockRecord *iter = (DxfBlockRecord *) block_record->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfBlockRecord *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBlockRecord *) iter);
+}
+
+
 /* EOF*/

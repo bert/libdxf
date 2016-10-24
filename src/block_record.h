@@ -211,6 +211,11 @@ dxf_block_record_set_next
         DxfBlockRecord *block_record,
         DxfBlockRecord *next
 );
+DxfBlockRecord *
+dxf_block_record_get_last
+(
+        DxfBlockRecord *block_record
+);
 
 
 #ifdef __cplusplus
