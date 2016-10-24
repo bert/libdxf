@@ -404,6 +404,11 @@ dxf_block_set_next
         DxfBlock *block,
         DxfBlock *next
 );
+DxfBlock *
+dxf_block_get_last
+(
+        DxfBlock *block
+);
 
 
 #ifdef __cplusplus

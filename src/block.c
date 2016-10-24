@@ -2190,4 +2190,49 @@ dxf_block_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last DXF \c BLOCK entity from a linked
+ * list of DXF \c BLOCK entities.
+ *
+ * \return pointer to the last DXF \c BLOCK entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBlock *
+dxf_block_get_last
+(
+        DxfBlock *block
+                /*!< a pointer to a DXF \c BLOCK entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (block == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (block->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfBlock *) block);
+        }
+        DxfBlock *iter = (DxfBlock *) block->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfBlock *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBlock *) iter);
+}
+
+
 /* EOF */
