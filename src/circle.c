@@ -2835,85 +2835,6 @@ dxf_circle_set_extr_z0
 
 
 /*!
- * \brief Get the pointer to the next \c CIRCLE entity from a DXF 
- * \c CIRCLE entity.
- *
- * \return pointer to the next \c CIRCLE entity.
- *
- * \warning No checks are performed on the returned pointer.
- */
-DxfCircle *
-dxf_circle_get_next
-(
-        DxfCircle *circle
-                /*!< a pointer to a DXF \c CIRCLE entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (circle == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (circle->next == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return ((DxfCircle *) circle->next);
-}
-
-
-/*!
- * \brief Set the pointer to the next \c CIRCLE for a DXF \c CIRCLE
- * entity.
- */
-DxfCircle *
-dxf_circle_set_next
-(
-        DxfCircle *circle,
-                /*!< a pointer to a DXF \c CIRCLE entity. */
-        DxfCircle *next
-                /*!< a pointer to the next \c CIRCLE for the entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (circle == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (next == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        circle->next = (struct DxfCircle *) next;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (circle);
-}
-
-
-/*!
  * \brief Get the \c area from a DXF \c CIRCLE entity.
  *
  * \return \c area.
@@ -3064,6 +2985,85 @@ dxf_circle_test_point_in_circle
 #endif
         /* dead code */
         return (EXIT_FAILURE);
+}
+
+
+/*!
+ * \brief Get the pointer to the next \c CIRCLE entity from a DXF 
+ * \c CIRCLE entity.
+ *
+ * \return pointer to the next \c CIRCLE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfCircle *
+dxf_circle_get_next
+(
+        DxfCircle *circle
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (circle->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfCircle *) circle->next);
+}
+
+
+/*!
+ * \brief Set the pointer to the next \c CIRCLE for a DXF \c CIRCLE
+ * entity.
+ */
+DxfCircle *
+dxf_circle_set_next
+(
+        DxfCircle *circle,
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+        DxfCircle *next
+                /*!< a pointer to the next \c CIRCLE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        circle->next = (struct DxfCircle *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (circle);
 }
 
 

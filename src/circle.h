@@ -554,17 +554,6 @@ dxf_circle_set_extr_z0
         DxfCircle *circle,
         double extr_z0
 );
-DxfCircle *
-dxf_circle_get_next
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_next
-(
-        DxfCircle *circle,
-        DxfCircle *next
-);
 double
 dxf_circle_get_area
 (
@@ -580,6 +569,17 @@ dxf_circle_test_point_in_circle
 (
         DxfPoint *point,
         DxfCircle *circle
+);
+DxfCircle *
+dxf_circle_get_next
+(
+        DxfCircle *circle
+);
+DxfCircle *
+dxf_circle_set_next
+(
+        DxfCircle *circle,
+        DxfCircle *next
 );
 
 
