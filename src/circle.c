@@ -3067,4 +3067,49 @@ dxf_circle_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c CIRCLE entity from a linked
+ * list of DXF \c CIRCLE entities.
+ *
+ * \return pointer to the last \c CIRCLE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfCircle *
+dxf_circle_get_last
+(
+        DxfCircle *circle
+                /*!< a pointer to a DXF \c CIRCLE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (circle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (circle->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfCircle *) circle);
+        }
+        DxfCircle *iter = (DxfCircle *) circle->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfCircle *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfCircle *) iter);
+}
+
+
 /* EOF */

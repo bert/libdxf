@@ -581,6 +581,11 @@ dxf_circle_set_next
         DxfCircle *circle,
         DxfCircle *next
 );
+DxfCircle *
+dxf_circle_get_last
+(
+        DxfCircle *circle
+);
 
 
 #ifdef __cplusplus
