@@ -496,6 +496,11 @@ dxf_body_set_next
         DxfBody *body,
         DxfBody *next
 );
+DxfBody *
+dxf_body_get_last
+(
+        DxfBody *body
+);
 
 
 #ifdef __cplusplus
