@@ -7,6 +7,12 @@
  *
  * \htmlinclude "../doc/class.html"
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -449,12 +455,6 @@ dxf_class_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c CLASS
  * classes and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_class_free_chain
@@ -488,12 +488,6 @@ dxf_class_free_chain
  * \brief Get the record type from a DXF \c CLASS entity.
  *
  * \return record type when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_class_get_record_type
@@ -532,12 +526,6 @@ dxf_class_get_record_type
 
 /*!
  * \brief Set the record type for a DXF \c CLASS entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfClass *
 dxf_class_set_record_type
@@ -578,12 +566,6 @@ dxf_class_set_record_type
  * \brief Get the record name from a DXF \c CLASS entity.
  *
  * \return record name when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_class_get_record_name
@@ -622,12 +604,6 @@ dxf_class_get_record_name
 
 /*!
  * \brief Set the record name for a DXF \c CLASS entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfClass *
 dxf_class_set_record_name
@@ -668,12 +644,6 @@ dxf_class_set_record_name
  * \brief Get the class name from a DXF \c CLASS entity.
  *
  * \return class name when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_class_get_class_name
@@ -712,12 +682,6 @@ dxf_class_get_class_name
 
 /*!
  * \brief Set the class name for a DXF \c CLASS entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfClass *
 dxf_class_set_class_name
@@ -758,12 +722,6 @@ dxf_class_set_class_name
  * \brief Get the application name from a DXF \c CLASS entity.
  *
  * \return class name when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_class_get_app_name
@@ -802,12 +760,6 @@ dxf_class_get_app_name
 
 /*!
  * \brief Set the application name for a DXF \c CLASS entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfClass *
 dxf_class_set_app_name
@@ -849,12 +801,6 @@ dxf_class_set_app_name
  * \brief Get the proxy_cap_flag from a DXF \c CLASS entity.
  *
  * \return proxy_cap_flag.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_get_proxy_cap_flag
@@ -893,12 +839,6 @@ dxf_class_get_proxy_cap_flag
 
 /*!
  * \brief Set the proxy_cap_flag for a DXF \c CLASS entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfClass *
 dxf_class_set_proxy_cap_flag
@@ -942,12 +882,6 @@ dxf_class_set_proxy_cap_flag
  * \return \c TRUE when operations on this \c CLASS symbol table entry
  * are allowed, or \c FALSE when operations on this \c CLASS symbol
  * table entry are not allowed.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_is_editable
@@ -984,12 +918,6 @@ dxf_class_is_editable
  * \return \c TRUE when erasing on this \c CLASS symbol table entry is
  * allowed, or \c FALSE when erasing on this \c CLASS symbol table entry
  * is not allowed.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_erase_allowed
@@ -1026,12 +954,6 @@ dxf_class_erase_allowed
  * \return \c TRUE when transforming on this \c CLASS symbol table entry
  * is allowed, or \c FALSE when transforming on this \c CLASS symbol
  * table entry is not allowed.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_transform_allowed
@@ -1068,12 +990,6 @@ dxf_class_transform_allowed
  * \return \c TRUE when changing the color in this \c CLASS symbol table
  * entry is allowed, or \c FALSE when changing the color in this
  * \c CLASS symbol table entry is not allowed.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_color_change_allowed
@@ -1110,12 +1026,6 @@ dxf_class_color_change_allowed
  * \return \c TRUE when changing the layer in this \c CLASS symbol table
  * entry is allowed, or \c FALSE when changing the layer in this
  * \c CLASS symbol table entry is not allowed.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_layer_change_allowed
@@ -1152,12 +1062,6 @@ dxf_class_layer_change_allowed
  * \return \c TRUE when changing the linetype in this \c CLASS symbol table
  * entry is allowed, or \c FALSE when changing the linetype in this
  * \c CLASS symbol table entry is not allowed.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_linetype_change_allowed
@@ -1194,12 +1098,6 @@ dxf_class_linetype_change_allowed
  * \return \c TRUE when changing the linetype scale in this \c CLASS
  * symbol table entry is allowed, or \c FALSE when changing the linetype
  * scale in this \c CLASS symbol table entry is not allowed.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_linetype_scale_change_allowed
@@ -1236,12 +1134,6 @@ dxf_class_linetype_scale_change_allowed
  * \return \c TRUE when changing the visibility in this \c CLASS symbol
  * table entry is allowed, or \c FALSE when changing the visibility in
  * this \c CLASS symbol table entry is not allowed.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_visibility_change_allowed
@@ -1277,12 +1169,6 @@ dxf_class_visibility_change_allowed
  * \return \c TRUE when cloning of this \c CLASS symbol table entry is
  * allowed, or \c FALSE when cloning of this \c CLASS symbol table entry
  * is not allowed.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_cloning_allowed
@@ -1319,12 +1205,6 @@ dxf_class_cloning_allowed
  * \return \c TRUE when changing the line weight in this \c CLASS symbol
  * table entry is allowed, or \c FALSE when changing the line weight in
  * this \c CLASS symbol table entry is not allowed.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_lineweight_change_allowed
@@ -1361,12 +1241,6 @@ dxf_class_lineweight_change_allowed
  * \return \c TRUE when changing the plot style name in this \c CLASS
  * symbol table entry is allowed, or \c FALSE when changing the plot
  * style name in this \c CLASS symbol table entry is not allowed.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_plot_style_name_change_allowed
@@ -1403,12 +1277,6 @@ dxf_class_plot_style_name_change_allowed
  * \return \c TRUE when this \c CLASS symbol table entry is a R13 format
  * proxy, or \c FALSE when this \c CLASS symbol table entry is not a R13
  * format proxy.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_is_R13_format_proxy
@@ -1442,12 +1310,6 @@ dxf_class_is_R13_format_proxy
  * \brief Get the was_a_proxy_flag from a DXF \c CLASS entity.
  *
  * \return was_a_proxy_flag.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_get_was_a_proxy_flag
@@ -1493,12 +1355,6 @@ dxf_class_get_was_a_proxy_flag
 
 /*!
  * \brief Set the was_a_proxy_flag for a DXF \c CLASS entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfClass *
 dxf_class_set_was_a_proxy_flag
@@ -1546,12 +1402,6 @@ dxf_class_set_was_a_proxy_flag
  * \brief Get the is_an_entity_flag value from a DXF \c CLASS entity.
  *
  * \return is_an_entity_flag value.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_class_get_is_an_entity_flag
@@ -1597,12 +1447,6 @@ dxf_class_get_is_an_entity_flag
 
 /*!
  * \brief Set the is_an_entity_flag for a DXF \c CLASS entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfClass *
 dxf_class_set_is_an_entity_flag
@@ -1653,12 +1497,6 @@ dxf_class_set_is_an_entity_flag
  * \return pointer to the next \c CLASS entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfClass *
 dxf_class_get_next
@@ -1698,12 +1536,6 @@ dxf_class_get_next
 /*!
  * \brief Set the pointer to the next \c CLASS for a DXF \c CLASS
  * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfClass *
 dxf_class_set_next
