@@ -402,8 +402,6 @@ dxf_comment_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfComment *result;
-
         /* Do some basic checks. */
         if (comment == NULL)
         {
@@ -419,11 +417,10 @@ dxf_comment_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfComment *) comment->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfComment *) comment->next);
 }
 
 
