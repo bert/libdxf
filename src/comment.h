@@ -126,6 +126,11 @@ dxf_comment_set_next
         DxfComment *comment,
         DxfComment *next
 );
+DxfComment *
+dxf_comment_get_last
+(
+        DxfComment *comment
+);
 
 
 #ifdef __cplusplus
