@@ -43,6 +43,11 @@
 #include <string.h>
 
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+
 #ifdef NDEBUG
 #define debug(M, ...)
 #else
@@ -109,6 +114,11 @@
  * error jump goes off, but the message isn't printed.
  */
 #define check_debug(A, M, ...) if(!(A)) { debug(M, ##__VA_ARGS__); errno=0; goto error; }
+
+
+#ifdef __cplusplus
+}
+#endif
 
 
 #endif /* LIBDXF_SRC_DBG_H */
