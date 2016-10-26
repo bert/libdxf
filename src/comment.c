@@ -248,8 +248,6 @@ dxf_comment_get_id_code
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (comment == NULL)
         {
@@ -265,11 +263,10 @@ dxf_comment_get_id_code
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = comment->id_code;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (comment->id_code);
 }
 
 
