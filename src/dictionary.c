@@ -895,4 +895,49 @@ dxf_dictionary_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c DICTIONARY object from a linked
+ * list of DXF \c DICTIONARY objects.
+ *
+ * \return pointer to the last \c DICTIONARY object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfDictionary *
+dxf_dictionary_get_last
+(
+        DxfDictionary *dictionary
+                /*!< a pointer to a DXF \c DICTIONARY object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dictionary == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfDictionary *) dictionary);
+        }
+        DxfDictionary *iter = (DxfDictionary *) dictionary->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfDictionary *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfDictionary *) dictionary->next);
+}
+
+
 /* EOF*/
