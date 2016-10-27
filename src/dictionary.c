@@ -382,10 +382,10 @@ dxf_dictionary_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (dictionary->dictionary_owner_soft);
-        free (dictionary->dictionary_owner_hard);
-        free (dictionary->entry_name);
-        free (dictionary->entry_object_handle);
+        free (dxf_dictionary_get_dictionary_owner_soft (dictionary));
+        free (dxf_dictionary_get_dictionary_owner_hard (dictionary));
+        free (dxf_dictionary_get_entry_name (dictionary));
+        free (dxf_dictionary_get_entry_object_handle (dictionary));
         free (dictionary);
         dictionary = NULL;
 #if DEBUG
