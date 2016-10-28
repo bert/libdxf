@@ -528,8 +528,6 @@ dxf_dictionaryvar_get_dictionary_owner_soft
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (dictionaryvar == NULL)
         {
@@ -545,11 +543,10 @@ dxf_dictionaryvar_get_dictionary_owner_soft
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dictionaryvar->dictionary_owner_soft);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dictionaryvar->dictionary_owner_soft));
 }
 
 
