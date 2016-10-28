@@ -853,8 +853,6 @@ dxf_dictionaryvar_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfDictionaryVar *result;
-
         /* Do some basic checks. */
         if (dictionaryvar == NULL)
         {
@@ -870,11 +868,10 @@ dxf_dictionaryvar_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfDictionaryVar *) dictionaryvar->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfDictionaryVar *) dictionaryvar->next);
 }
 
 
