@@ -771,8 +771,6 @@ dxf_dictionaryvar_get_object_schema_number
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (dictionaryvar == NULL)
         {
@@ -788,11 +786,10 @@ dxf_dictionaryvar_get_object_schema_number
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dictionaryvar->object_schema_number);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dictionaryvar->object_schema_number));
 }
 
 
