@@ -691,8 +691,6 @@ dxf_dictionaryvar_get_value
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (dictionaryvar == NULL)
         {
@@ -708,11 +706,10 @@ dxf_dictionaryvar_get_value
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dictionaryvar->value);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dictionaryvar->value));
 }
 
 
