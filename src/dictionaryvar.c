@@ -611,8 +611,6 @@ dxf_dictionaryvar_get_dictionary_owner_hard
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (dictionaryvar == NULL)
         {
@@ -628,11 +626,10 @@ dxf_dictionaryvar_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dictionaryvar->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dictionaryvar->dictionary_owner_hard));
 }
 
 
