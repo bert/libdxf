@@ -918,4 +918,49 @@ dxf_dictionaryvar_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c DICTIONARYVAR object from a
+ * linked list of DXF \c DICTIONARYVAR objects.
+ *
+ * \return pointer to the last \c DICTIONARYVAR object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfDictionaryVar *
+dxf_dictionaryvar_get_last
+(
+        DxfDictionaryVar *dictionaryvar
+                /*!< a pointer to a DXF \c DICTIONARYVAR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dictionaryvar == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionaryvar->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfDictionaryVar *) dictionaryvar);
+        }
+        DxfDictionaryVar *iter = (DxfDictionaryVar *) dictionaryvar->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfDictionaryVar *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfDictionaryVar *) iter);
+}
+
+
 /* EOF*/

@@ -178,6 +178,11 @@ dxf_dictionaryvar_set_next
         DxfDictionaryVar *dictionaryvar,
         DxfDictionaryVar *next
 );
+DxfDictionaryVar *
+dxf_dictionaryvar_get_last
+(
+        DxfDictionaryVar *dictionaryvar
+);
 
 
 #ifdef __cplusplus
