@@ -6173,4 +6173,50 @@ dxf_dimension_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c DIMENSION entity from a linked
+ * list of DXF \c DIMENSION entities.
+ *
+ * \return pointer to the last \c DIMENSION entity, or \c NULL when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfDimension *
+dxf_dimension_get_last
+(
+        DxfDimension *dimension
+                /*!< a pointer to a DXF \c DIMENSION entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dimension == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimension->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfDimension *) dimension);
+        }
+        DxfDimension *iter = (DxfDimension *) dimension->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfDimension *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfDimension *) iter);
+}
+
+
 /* EOF */

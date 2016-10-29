@@ -1091,6 +1091,11 @@ dxf_dimension_set_next
         DxfDimension *dimension,
         DxfDimension *next
 );
+DxfDimension *
+dxf_dimension_get_last
+(
+        DxfDimension *dimension
+);
 
 
 #ifdef __cplusplus
