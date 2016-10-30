@@ -5042,8 +5042,6 @@ dxf_dimstyle_get_dimalttz
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -5064,11 +5062,10 @@ dxf_dimstyle_get_dimalttz
                   (_("Warning in %s () an out of range value was found in the dimalttz member.\n")),
                   __FUNCTION__);
         }
-        result = dimstyle->dimalttz;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimalttz);
 }
 
 
