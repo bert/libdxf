@@ -5136,8 +5136,6 @@ dxf_dimstyle_get_dimfit
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -5158,11 +5156,10 @@ dxf_dimstyle_get_dimfit
                   (_("Warning in %s () an out of range value was found in the dimfit member.\n")),
                   __FUNCTION__);
         }
-        result = dimstyle->dimfit;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimfit);
 }
 
 
