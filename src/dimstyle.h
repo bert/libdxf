@@ -996,6 +996,11 @@ dxf_dimstyle_set_next
         DxfDimStyle *dimstyle,
         DxfDimStyle *next
 );
+DxfDimStyle *
+dxf_dimstyle_get_last
+(
+        DxfDimStyle *dimstyle
+);
 
 
 #ifdef __cplusplus
