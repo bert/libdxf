@@ -5323,8 +5323,6 @@ dxf_dimstyle_get_dimtxsty
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -5333,11 +5331,10 @@ dxf_dimstyle_get_dimtxsty
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dimstyle->dimtxsty);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dimstyle->dimtxsty));
 }
 
 
