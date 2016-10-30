@@ -4850,8 +4850,6 @@ dxf_dimstyle_get_dimtzin
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -4872,11 +4870,10 @@ dxf_dimstyle_get_dimtzin
                   (_("Warning in %s () an out of range value was found in the dimtzin member.\n")),
                   __FUNCTION__);
         }
-        result = dimstyle->dimtzin;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimtzin);
 }
 
 
