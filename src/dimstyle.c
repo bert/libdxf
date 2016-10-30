@@ -5401,8 +5401,6 @@ dxf_dimstyle_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfDimStyle *result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -5418,11 +5416,10 @@ dxf_dimstyle_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfDimStyle *) dimstyle->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfDimStyle *) dimstyle->next);
 }
 
 
