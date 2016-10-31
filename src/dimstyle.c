@@ -4002,8 +4002,6 @@ dxf_dimstyle_get_dimunit
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -4024,11 +4022,10 @@ dxf_dimstyle_get_dimunit
                   (_("Warning in %s () an out of range value was found in the dimunit member.\n")),
                   __FUNCTION__);
         }
-        result = dimstyle->dimunit;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimunit);
 }
 
 
