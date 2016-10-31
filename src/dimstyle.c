@@ -4477,8 +4477,6 @@ dxf_dimstyle_get_dimjust
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -4499,11 +4497,10 @@ dxf_dimstyle_get_dimjust
                   (_("Warning in %s () an out of range value was found in the dimjust member.\n")),
                   __FUNCTION__);
         }
-        result = dimstyle->dimjust;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimjust);
 }
 
 
