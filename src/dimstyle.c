@@ -4170,8 +4170,6 @@ dxf_dimstyle_get_dimtdec
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -4180,11 +4178,10 @@ dxf_dimstyle_get_dimtdec
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimstyle->dimtdec;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimtdec);
 }
 
 
