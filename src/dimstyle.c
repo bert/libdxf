@@ -4664,8 +4664,6 @@ dxf_dimstyle_get_dimsd2
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -4686,11 +4684,10 @@ dxf_dimstyle_get_dimsd2
                   (_("Warning in %s () an out of range value was found in the dimsd2 member.\n")),
                   __FUNCTION__);
         }
-        result = dimstyle->dimsd2;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimsd2);
 }
 
 
