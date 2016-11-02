@@ -3726,8 +3726,6 @@ dxf_dimstyle_get_dimsoxd
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -3736,11 +3734,10 @@ dxf_dimstyle_get_dimsoxd
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimstyle->dimsoxd;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimsoxd);
 }
 
 
