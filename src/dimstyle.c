@@ -3172,8 +3172,6 @@ dxf_dimstyle_get_dimtvp
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -3182,11 +3180,10 @@ dxf_dimstyle_get_dimtvp
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimstyle->dimtvp;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimtvp);
 }
 
 
