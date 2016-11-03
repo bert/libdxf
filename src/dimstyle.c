@@ -3241,8 +3241,6 @@ dxf_dimstyle_get_dimtfac
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -3251,11 +3249,10 @@ dxf_dimstyle_get_dimtfac
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimstyle->dimtfac;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimtfac);
 }
 
 
