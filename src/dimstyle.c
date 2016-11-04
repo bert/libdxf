@@ -1135,8 +1135,6 @@ dxf_dimstyle_get_dimapost
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -1145,11 +1143,10 @@ dxf_dimstyle_get_dimapost
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (dimstyle->dimapost);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (dimstyle->dimapost));
 }
 
 
