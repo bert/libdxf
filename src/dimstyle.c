@@ -2827,8 +2827,6 @@ dxf_dimstyle_get_dimtxt
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -2837,11 +2835,10 @@ dxf_dimstyle_get_dimtxt
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimstyle->dimtxt;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimtxt);
 }
 
 
