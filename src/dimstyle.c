@@ -1542,8 +1542,6 @@ dxf_dimstyle_get_dimasz
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -1559,11 +1557,10 @@ dxf_dimstyle_get_dimasz
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimstyle->dimasz;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimasz);
 }
 
 
