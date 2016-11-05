@@ -1462,8 +1462,6 @@ dxf_dimstyle_get_dimscale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -1479,11 +1477,10 @@ dxf_dimstyle_get_dimscale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimstyle->dimscale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimscale);
 }
 
 
