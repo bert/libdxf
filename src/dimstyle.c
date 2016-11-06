@@ -1952,8 +1952,6 @@ dxf_dimstyle_get_dimtp
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -1962,11 +1960,10 @@ dxf_dimstyle_get_dimtp
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimstyle->dimtp;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimtp);
 }
 
 
