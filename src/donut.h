@@ -519,6 +519,11 @@ dxf_donut_set_next
         DxfDonut *donut,
         DxfDonut *next
 );
+DxfDonut *
+dxf_donut_get_last
+(
+        DxfDonut *donut
+);
 
 
 #ifdef __cplusplus

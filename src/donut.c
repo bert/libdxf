@@ -2511,4 +2511,49 @@ dxf_donut_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c donut entity from a linked list
+ * of libDXF \c donut entities.
+ *
+ * \return pointer to the last \c donut entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfDonut *
+dxf_donut_get_last
+(
+        DxfDonut *donut
+                /*!< a pointer to a libDXF \c donut entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (donut == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (donut->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfDonut *) donut);
+        }
+        DxfDonut *iter = (DxfDonut *) donut->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfDonut *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfDonut *) iter);
+}
+
+
 /* EOF */
