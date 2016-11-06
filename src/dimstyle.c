@@ -2620,8 +2620,6 @@ dxf_dimstyle_get_dimzin
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -2630,11 +2628,10 @@ dxf_dimstyle_get_dimzin
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimstyle->dimzin;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimzin);
 }
 
 
