@@ -2018,8 +2018,6 @@ dxf_dimstyle_get_dimtm
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -2028,11 +2026,10 @@ dxf_dimstyle_get_dimtm
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimstyle->dimtm;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimtm);
 }
 
 
