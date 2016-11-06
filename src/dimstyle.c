@@ -1754,8 +1754,6 @@ dxf_dimstyle_get_dimexe
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (dimstyle == NULL)
         {
@@ -1764,11 +1762,10 @@ dxf_dimstyle_get_dimexe
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = dimstyle->dimexe;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (dimstyle->dimexe);
 }
 
 
