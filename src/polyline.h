@@ -342,6 +342,12 @@ dxf_polyline_get_id_code
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_id_code
+(
+        DxfPolyline *polyline,
+        int id_code
+);
 
 
 #ifdef __cplusplus
