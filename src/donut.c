@@ -195,7 +195,7 @@ dxf_donut_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (donut->outside_diameter > donut->inside_diameter)
+        if (dxf_donut_get_outside_diameter (donut) > dxf_donut_get_inside_diameter (donut))
         {
                 fprintf (stderr,
                   (_("Error in %s () outside diameter is smaller than the inside diameter for the %s entity with id-code: %x\n")),
@@ -204,19 +204,19 @@ dxf_donut_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        start_width = 0.5 * (donut->outside_diameter - donut->inside_diameter);
-        end_width = 0.5 * (donut->outside_diameter - donut->inside_diameter);
-        if (strcmp (donut->linetype, "") == 0)
+        start_width = 0.5 * (dxf_donut_get_outside_diameter (donut) - dxf_donut_get_inside_diameter (donut));
+        end_width = 0.5 * (dxf_donut_get_outside_diameter (donut) - dxf_donut_get_inside_diameter (donut));
+        if (strcmp (dxf_donut_get_linetype (donut), "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, donut->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_donut_get_id_code (donut));
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                donut->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                dxf_donut_set_linetype (donut, strdup (DXF_DEFAULT_LINETYPE));
         }
-        if (strcmp (donut->layer, "") == 0)
+        if (strcmp (dxf_donut_get_layer (donut), "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
@@ -224,7 +224,7 @@ dxf_donut_write
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0\n")),
                   dxf_entity_name);
-                donut->layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_donut_set_layer (donut, strdup (DXF_DEFAULT_LAYER));
         }
         /* Create and write a polyline primitive. */
         dxf_polyline_new (polyline);
@@ -232,17 +232,17 @@ dxf_donut_write
         id_code = fp->last_id_code;
         id_code++;
         polyline->id_code = id_code;
-        polyline->linetype = donut->linetype;
-        polyline->layer = donut->layer;
-        polyline->x0 = donut->p0->x0;
-        polyline->y0 = donut->p0->y0;
-        polyline->z0 = donut->p0->z0;
-        polyline->thickness = donut->thickness;
+        polyline->linetype = dxf_donut_get_linetype (donut);
+        polyline->layer = dxf_donut_get_layer (donut);
+        polyline->x0 = dxf_donut_get_x0 (donut);
+        polyline->y0 = dxf_donut_get_y0 (donut);
+        polyline->z0 = dxf_donut_get_z0 (donut);
+        polyline->thickness = dxf_donut_get_thickness (donut);
         polyline->start_width = 0.5 * start_width;
         polyline->end_width = 0.5 * end_width;
-        polyline->color = donut->color;
+        polyline->color = dxf_donut_get_color (donut);
         polyline->vertices_follow = 1;
-        polyline->paperspace = donut->paperspace;
+        polyline->paperspace = dxf_donut_get_paperspace (donut);
         polyline->flag = 1;
         polyline->polygon_mesh_M_vertex_count = 0;
         polyline->polygon_mesh_N_vertex_count = 0;
@@ -257,18 +257,18 @@ dxf_donut_write
         id_code = fp->last_id_code;
         id_code++;
         vertex_1->id_code = id_code;
-        vertex_1->layer = donut->layer;
-        vertex_1->linetype = donut->linetype;
-        vertex_1->x0 = donut->p0->x0 - (0.25 * (donut->outside_diameter + donut->inside_diameter));
-        vertex_1->y0 = donut->p0->y0;
-        vertex_1->z0 = donut->p0->z0;
-        vertex_1->thickness = donut->thickness;
+        vertex_1->layer = dxf_donut_get_layer (donut);
+        vertex_1->linetype = dxf_donut_get_linetype (donut);
+        vertex_1->x0 = dxf_donut_get_x0 (donut) - (0.25 * (dxf_donut_get_outside_diameter (donut) + dxf_donut_get_inside_diameter (donut)));
+        vertex_1->y0 = dxf_donut_get_y0 (donut);
+        vertex_1->z0 = dxf_donut_get_z0 (donut);
+        vertex_1->thickness = dxf_donut_get_thickness (donut);
         vertex_1->start_width = 0.5 * start_width;
         vertex_1->end_width = 0.5 * end_width;
         vertex_1->bulge = 1;
         vertex_1->curve_fit_tangent_direction = 0.0;
-        vertex_1->color = donut->color;
-        vertex_1->paperspace = donut->paperspace;
+        vertex_1->color = dxf_donut_get_color (donut);
+        vertex_1->paperspace = dxf_donut_get_paperspace (donut);
         vertex_1->flag = 0;
         dxf_vertex_write (fp, vertex_1);
         /*! \todo Hook up this vertex to the list of vertices. */
@@ -278,18 +278,18 @@ dxf_donut_write
         id_code = fp->last_id_code;
         id_code++;
         vertex_2->id_code = id_code;
-        vertex_2->layer = donut->layer;
-        vertex_2->linetype = donut->linetype;
-        vertex_2->x0 = donut->p0->x0 + (0.25 * (donut->outside_diameter + donut->inside_diameter));
-        vertex_2->y0 = donut->p0->y0;
-        vertex_2->z0 = donut->p0->z0;
-        vertex_2->thickness = donut->thickness;
+        vertex_2->layer = dxf_donut_get_layer (donut);
+        vertex_2->linetype = dxf_donut_get_linetype (donut);
+        vertex_2->x0 = dxf_donut_get_x0 (donut) + (0.25 * (dxf_donut_get_outside_diameter (donut) + dxf_donut_get_inside_diameter (donut)));
+        vertex_2->y0 = dxf_donut_get_y0 (donut);
+        vertex_2->z0 = dxf_donut_get_z0 (donut);
+        vertex_2->thickness = dxf_donut_get_thickness (donut);
         vertex_2->start_width = 0.5 * start_width;
         vertex_2->end_width = 0.5 * end_width;
         vertex_2->bulge = 1;
         vertex_2->curve_fit_tangent_direction = 0.0;
-        vertex_2->color = donut->color;
-        vertex_2->paperspace = donut->paperspace;
+        vertex_2->color = dxf_donut_get_color (donut);
+        vertex_2->paperspace = dxf_donut_get_paperspace (donut);
         vertex_2->flag = 0;
         dxf_vertex_write (fp, vertex_2);
         /*! \todo Hook up this vertex to the list of vertices. */
@@ -299,8 +299,8 @@ dxf_donut_write
         id_code = fp->last_id_code;
         id_code++;
         seqend->id_code = id_code;
-        seqend->layer = donut->layer;
-        seqend->linetype = donut->linetype;
+        seqend->layer = dxf_donut_get_layer (donut);
+        seqend->linetype = dxf_donut_get_linetype (donut);
         dxf_seqend_write (fp, seqend);
         /*! \todo Hook up this seqend to the list of seqends. */
         /* Clean up. */
