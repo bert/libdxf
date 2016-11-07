@@ -1,7 +1,7 @@
 /*!
  * \file polyline.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF polyline entity (\c POLYLINE).
  *
@@ -721,6 +721,42 @@ dxf_polyline_free_chain
 #if DEBUG
         DXF_DEBUG_END
 #endif
+}
+
+
+/*!
+ * \brief Get the \c id_code from a libDXF \c POLYLINE entity.
+ *
+ * \return \c id_code.
+ */
+int
+dxf_polyline_get_id_code
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a libDXF \c POLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the id-code member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline->id_code);
 }
 
 

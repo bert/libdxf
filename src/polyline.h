@@ -337,6 +337,11 @@ dxf_polyline_free_chain
 (
         DxfPolyline *polylines
 );
+int
+dxf_polyline_get_id_code
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
