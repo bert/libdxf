@@ -375,6 +375,12 @@ dxf_polyline_get_elevation
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_elevation
+(
+        DxfPolyline *polyline,
+        double elevation
+);
 
 
 #ifdef __cplusplus
