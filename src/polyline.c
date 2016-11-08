@@ -922,4 +922,47 @@ dxf_polyline_get_layer
 }
 
 
+/*!
+ * \brief Set the \c layer for a libDXF \c POLYLINE entity.
+ *
+ * \return a pointer to \c polyline when sucessful, \c NULL when an error
+ * occurred.
+ *
+ * \warning The passed \c layer variable is not freed by this function.
+ */
+DxfPolyline *
+dxf_polyline_set_layer
+(
+        DxfPolyline *polyline,
+                /*!< a pointer to a libDXF \c POLYLINE entity. */
+        char *layer
+                /*!< a string containing the \c layer for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        polyline->layer = strdup (layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
 /* EOF */

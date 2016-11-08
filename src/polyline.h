@@ -364,6 +364,12 @@ dxf_polyline_get_layer
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_layer
+(
+        DxfPolyline *polyline,
+        char *layer
+);
 
 
 #ifdef __cplusplus
