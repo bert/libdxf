@@ -381,6 +381,11 @@ dxf_polyline_set_elevation
         DxfPolyline *polyline,
         double elevation
 );
+double
+dxf_polyline_get_thickness
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
