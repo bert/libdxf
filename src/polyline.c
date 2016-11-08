@@ -884,4 +884,42 @@ dxf_polyline_set_linetype
 }
 
 
+/*!
+ * \brief Get the \c layer from a libDXF \c POLYLINE entity.
+ *
+ * \return a pointer to \c layer when sucessful, \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_polyline_get_layer
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a libDXF \c POLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (polyline->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (polyline->layer));
+}
+
+
 /* EOF */

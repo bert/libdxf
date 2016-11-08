@@ -359,6 +359,11 @@ dxf_polyline_set_linetype
         DxfPolyline *polyline,
         char *linetype
 );
+char *
+dxf_polyline_get_layer
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
