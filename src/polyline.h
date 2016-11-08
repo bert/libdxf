@@ -391,6 +391,12 @@ dxf_polyline_get_linetype_scale
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_linetype_scale
+(
+        DxfPolyline *polyline,
+        double linetype_scale
+);
 
 
 #ifdef __cplusplus
