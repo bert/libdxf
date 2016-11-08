@@ -370,6 +370,11 @@ dxf_polyline_set_layer
         DxfPolyline *polyline,
         char *layer
 );
+double
+dxf_polyline_get_elevation
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
