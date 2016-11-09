@@ -1181,4 +1181,48 @@ dxf_polyline_set_linetype_scale
 }
 
 
+/*!
+ * \brief Get the \c visibility from a libDXF \c POLYLINE entity.
+ *
+ * \return \c visibility.
+ */
+int16_t
+dxf_polyline_get_visibility
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a libDXF \c POLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the visibility member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the visibility member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline->visibility);
+}
+
+
 /* EOF */
