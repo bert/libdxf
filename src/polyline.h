@@ -408,6 +408,11 @@ dxf_polyline_set_visibility
         DxfPolyline *polyline,
         int16_t visibility
 );
+int
+dxf_polyline_get_color
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
