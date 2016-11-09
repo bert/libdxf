@@ -402,6 +402,12 @@ dxf_polyline_get_visibility
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_visibility
+(
+        DxfPolyline *polyline,
+        int16_t visibility
+);
 
 
 #ifdef __cplusplus

@@ -1225,4 +1225,52 @@ dxf_polyline_get_visibility
 }
 
 
+/*!
+ * \brief Set the \c visibility for a libDXF \c POLYLINE entity.
+ *
+ * \return a pointer to \c polyline when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfPolyline *
+dxf_polyline_set_visibility
+(
+        DxfPolyline *polyline,
+                /*!< a pointer to a libDXF \c POLYLINE entity. */
+        int16_t visibility
+                /*!< the visibility to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative visibility value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range visibility value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        polyline->visibility = visibility;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
 /* EOF */
