@@ -419,6 +419,11 @@ dxf_polyline_set_color
         DxfPolyline *polyline,
         int color
 );
+int
+dxf_polyline_get_paperspace
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
