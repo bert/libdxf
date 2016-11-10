@@ -413,6 +413,12 @@ dxf_polyline_get_color
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_color
+(
+        DxfPolyline *polyline,
+        int color
+);
 
 
 #ifdef __cplusplus
