@@ -1442,4 +1442,48 @@ dxf_polyline_set_paperspace
 }
 
 
+/*!
+ * \brief Get the \c graphics_data_size value from a libDXF \c POLYLINE
+ * entity.
+ *
+ * \return \c graphics_data_size value when successful, or
+ * \c EXIT_FAILURE when an error occurred.
+ */
+int
+dxf_polyline_get_graphics_data_size
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a libDXF \c POLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the graphics_data_size member.\n")),
+                  __FUNCTION__);
+        }
+        if (polyline->graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline->graphics_data_size);
+}
+
+
 /* EOF */

@@ -430,6 +430,11 @@ dxf_polyline_set_paperspace
         DxfPolyline *polyline,
         int paperspace
 );
+int
+dxf_polyline_get_graphics_data_size
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
