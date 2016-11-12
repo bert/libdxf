@@ -1290,6 +1290,7 @@ dxf_donut_set_shadow_mode
         return (donut);
 }
 
+
 /*!
  * \brief Get the pointer to the \c binary_graphics_data from a libDXF
  * \c donut entity.
@@ -1328,7 +1329,6 @@ dxf_donut_get_binary_graphics_data
 #endif
         return ((DxfBinaryGraphicsData *) donut->binary_graphics_data);
 }
-
 
 
 /*!
