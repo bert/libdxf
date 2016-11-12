@@ -457,6 +457,12 @@ dxf_polyline_get_binary_graphics_data
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_binary_graphics_data
+(
+        DxfPolyline *polyline,
+        DxfBinaryGraphicsData *data
+);
 
 
 #ifdef __cplusplus
