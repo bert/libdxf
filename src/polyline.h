@@ -441,6 +441,11 @@ dxf_polyline_set_graphics_data_size
         DxfPolyline *polyline,
         int graphics_data_size
 );
+int16_t
+dxf_polyline_get_shadow_mode
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus

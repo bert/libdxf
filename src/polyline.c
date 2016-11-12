@@ -1535,4 +1535,49 @@ dxf_polyline_set_graphics_data_size
 }
 
 
+/*!
+ * \brief Get the \c shadow_mode from a libDXF \c POLYLINE entity.
+ *
+ * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int16_t
+dxf_polyline_get_shadow_mode
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a libDXF \c POLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the shadow_mode member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the shadow_mode member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline->shadow_mode);
+}
+
+
 /* EOF */
