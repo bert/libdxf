@@ -446,6 +446,12 @@ dxf_polyline_get_shadow_mode
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_shadow_mode
+(
+        DxfPolyline *polyline,
+        int16_t shadow_mode
+);
 
 
 #ifdef __cplusplus
