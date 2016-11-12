@@ -452,6 +452,11 @@ dxf_polyline_set_shadow_mode
         DxfPolyline *polyline,
         int16_t shadow_mode
 );
+DxfBinaryGraphicsData *
+dxf_polyline_get_binary_graphics_data
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
