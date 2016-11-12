@@ -435,6 +435,12 @@ dxf_polyline_get_graphics_data_size
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_graphics_data_size
+(
+        DxfPolyline *polyline,
+        int graphics_data_size
+);
 
 
 #ifdef __cplusplus
