@@ -468,6 +468,12 @@ dxf_polyline_get_dictionary_owner_soft
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_dictionary_owner_soft
+(
+        DxfPolyline *polyline,
+        char *dictionary_owner_soft
+);
 
 
 #ifdef __cplusplus
