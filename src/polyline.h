@@ -463,6 +463,11 @@ dxf_polyline_set_binary_graphics_data
         DxfPolyline *polyline,
         DxfBinaryGraphicsData *data
 );
+char *
+dxf_polyline_get_dictionary_owner_soft
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
