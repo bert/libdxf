@@ -474,6 +474,11 @@ dxf_polyline_set_dictionary_owner_soft
         DxfPolyline *polyline,
         char *dictionary_owner_soft
 );
+char *
+dxf_polyline_get_material
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
