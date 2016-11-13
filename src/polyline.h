@@ -479,6 +479,12 @@ dxf_polyline_get_material
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_material
+(
+        DxfPolyline *polyline,
+        char *material
+);
 
 
 #ifdef __cplusplus
