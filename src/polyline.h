@@ -490,6 +490,12 @@ dxf_polyline_get_dictionary_owner_hard
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_dictionary_owner_hard
+(
+        DxfPolyline *polyline,
+        char *dictionary_owner_hard
+);
 
 
 #ifdef __cplusplus
