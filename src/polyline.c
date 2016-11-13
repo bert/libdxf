@@ -1955,4 +1955,35 @@ dxf_polyline_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the \c lineweight from a libDXF \c POLYLINE entity.
+ *
+ * \return \c lineweight when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int16_t
+dxf_polyline_get_lineweight
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a libDXF \c POLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline->lineweight);
+}
+
+
 /* EOF */
