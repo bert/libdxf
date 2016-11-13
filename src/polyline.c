@@ -1872,4 +1872,44 @@ dxf_polyline_set_material
 }
 
 
+/*!
+ * \brief Get the pointer to the \c dictionary_owner_hard from a libDXF 
+ * \c POLYLINE entity.
+ *
+ * \return a pointer to the \c dictionary_owner_hard.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_polyline_get_dictionary_owner_hard
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a libDXF \c POLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (polyline->dictionary_owner_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (polyline->dictionary_owner_hard));
+}
+
+
 /* EOF */

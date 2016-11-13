@@ -485,6 +485,11 @@ dxf_polyline_set_material
         DxfPolyline *polyline,
         char *material
 );
+char *
+dxf_polyline_get_dictionary_owner_hard
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
