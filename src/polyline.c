@@ -2131,4 +2131,38 @@ dxf_polyline_get_color_value
 }
 
 
+/*!
+ * \brief Set the \c color_value for a libDXF \c POLYLINE entity.
+ *
+ * \return a pointer to \c polyline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfPolyline *
+dxf_polyline_set_color_value
+(
+        DxfPolyline *polyline,
+                /*!< a pointer to a libDXF \c POLYLINE entity. */
+        long color_value
+                /*!< the \c color_value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        polyline->color_value = color_value;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
 /* EOF */

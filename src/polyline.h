@@ -523,6 +523,12 @@ dxf_polyline_get_color_value
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_color_value
+(
+        DxfPolyline *polyline,
+        long color_value
+);
 
 
 #ifdef __cplusplus
