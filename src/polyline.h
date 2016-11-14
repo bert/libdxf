@@ -518,6 +518,11 @@ dxf_polyline_set_plot_style_name
         DxfPolyline *polyline,
         char *plot_style_name
 );
+long
+dxf_polyline_get_color_value
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
