@@ -512,6 +512,12 @@ dxf_polyline_get_plot_style_name
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_plot_style_name
+(
+        DxfPolyline *polyline,
+        char *plot_style_name
+);
 
 
 #ifdef __cplusplus
