@@ -507,6 +507,11 @@ dxf_polyline_set_lineweight
         DxfPolyline *polyline,
         int16_t lineweight
 );
+char *
+dxf_polyline_get_plot_style_name
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
