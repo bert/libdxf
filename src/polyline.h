@@ -534,6 +534,12 @@ dxf_polyline_get_color_name
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_color_name
+(
+        DxfPolyline *polyline,
+        char *color_name
+);
 
 
 #ifdef __cplusplus
