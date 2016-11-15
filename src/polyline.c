@@ -2165,4 +2165,42 @@ dxf_polyline_set_color_value
 }
 
 
+/*!
+ * \brief Get the \c color_name from a libDXF \c POLYLINE entity.
+ *
+ * \return \c color_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_polyline_get_color_name
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a libDXF \c POLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (polyline->color_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (polyline->color_name));
+}
+
+
 /* EOF */
