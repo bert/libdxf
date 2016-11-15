@@ -540,6 +540,11 @@ dxf_polyline_set_color_name
         DxfPolyline *polyline,
         char *color_name
 );
+long
+dxf_polyline_get_transparency
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
