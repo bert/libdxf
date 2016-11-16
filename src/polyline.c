@@ -2310,4 +2310,41 @@ dxf_polyline_set_transparency
 }
 
 
+/*!
+ * \brief Get the insertion point of a libDXF \c POLYLINE entity.
+ *
+ * \return the insertion point \c p0.
+ */
+DxfPoint *
+dxf_polyline_get_p0
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a libDXF \c POLYLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (polyline->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline->p0);
+}
+
+
 /* EOF */

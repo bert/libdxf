@@ -555,6 +555,11 @@ dxf_polyline_set_transparency
         DxfPolyline *polyline,
         long transparency
 );
+DxfPoint *
+dxf_polyline_get_p0
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
