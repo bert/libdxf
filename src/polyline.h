@@ -39,6 +39,7 @@
 #include "global.h"
 #include "binary_graphics_data.h"
 #include "vertex.h"
+#include "point.h"
 
 
 #ifdef __cplusplus
@@ -226,6 +227,9 @@ dxf_polyline_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF polyline. */
+        DxfPoint *p0;
+                /*!< Insertion point for the polyline.\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< group code = 10\n
                  * defaults to 0.0. */
@@ -236,24 +240,23 @@ dxf_polyline_struct
                 /*!< group code = 30\n
                  * default elevation for vertices. */
         double start_width;
-                /*!< group code = 40\n
-                 * optional, defaults to 0.0\n
-                 * the default widths apply to any vertex that doesn't supply
-                 * widths.\n */
+                /*!< Optional, defaults to 0.0\n
+                 * The default widths apply to any vertex that doesn't supply
+                 * widths.\n
+                 * Group code = 40. */
         double end_width;
-                /*!< group code = 41\n
-                 * optional, defaults to 0.0\n
-                 * the default widths apply to any vertex that doesn't supply
-                 * widths.\n */
+                /*!< Optional, defaults to 0.0\n
+                 * The default widths apply to any vertex that doesn't supply
+                 * widths.\n
+                 * Group code = 41. */
         int vertices_follow;
-                /*!< group code = 66\n
-                 * always 1\n
+                /*!< Always 1\n
                  * The "vertices follow" flag is always 1, indicating that a
                  * series of Vertex entities is expected to follow the
-                 * \c Polyline, terminated by a "sequence end" entity. */
+                 * \c Polyline, terminated by a "sequence end" entity.\n
+                 * Group code = 66. */
         int flag;
-                /*!< group code = 70\n
-                 * optional, defaults to 0\n
+                /*!< Optional, defaults to 0\n
                  * bit coded:\n
                  * 1 = This is a closed Polyline (or a polygon mesh closed in
                  * the M direction)\n
@@ -264,39 +267,40 @@ dxf_polyline_struct
                  * 32 = The polygon mesh is closed in the N direction\n
                  * 64 = This Polyline is a polyface mesh\n
                  * 128 = The linetype pattern is generated continuously
-                 *       around the vertices of this Polyline\n. */
+                 *       around the vertices of this Polyline\n.
+                 * Group code = 70. */
         int polygon_mesh_M_vertex_count;
-                /*!< group code = 71\n
-                 * optional, defaults to 0. */
+                /*!< Optional, defaults to 0.\n
+                 * Group code = 71. */
         int polygon_mesh_N_vertex_count;
-                /*!< group code = 72\n
-                 * optional, defaults to 0. */
+                /*!< Optional, defaults to 0.\n
+                 * Group code = 72. */
         int smooth_M_surface_density;
-                /*!< group code = 73\n
-                 * optional, defaults to 0. */
+                /*!< Optional, defaults to 0.\n
+                 * Group code = 73. */
         int smooth_N_surface_density;
-                /*!< group code = 74\n
-                 * optional, defaults to 0. */
+                /*!< Optional, defaults to 0.\n
+                 * Group code = 74. */
         int surface_type;
-                /*!< group code = 75\n
-                 * optional, defaults to 0\n
+                /*!< Optional, defaults to 0\n
                  * bit coded:\n
                  * 0 = no smooth surface fitted\n
                  * 5 = quadratic B-spline surface\n
                  * 6 = cubic B-spline surface\n
-                 * 8 = Bezier surface. */
+                 * 8 = Bezier surface.\n
+                 * Group code = 75. */
         double extr_x0;
-                /*!< group code = 210\n
-                 * Extrusion direction (optional; default = 0, 0, 1)\n
+                /*!< Extrusion direction (optional; default = 0, 0, 1)\n
                  * DXF: X value;\n
                  * APP: 3D vector\n
-                 * Defaults to 0.0 if ommitted in the DXF file. */
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 210. */
         double extr_y0;
-                /*!< group code = 220
-                 * DXF: Y value of extrusion direction (optional). */
+                /*!< DXF: Y value of extrusion direction (optional).\n
+                 * Group code = 220. */
         double extr_z0;
-                /*!< group code = 230
-                 * DXF: Z value of extrusion direction (optional). */
+                /*!< DXF: Z value of extrusion direction (optional).\n
+                 * Group code = 230. */
         struct DxfVertex *vertices;
                 /*!< Pointer to the first DxfVertex of the polyline.\n
                  * \c NULL in the last DxfVertex.\n
