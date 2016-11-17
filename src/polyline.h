@@ -560,6 +560,12 @@ dxf_polyline_get_p0
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_p0
+(
+        DxfPolyline *polyline,
+        DxfPoint *p0
+);
 
 
 #ifdef __cplusplus

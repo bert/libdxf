@@ -2347,4 +2347,45 @@ dxf_polyline_get_p0
 }
 
 
+/*!
+ * \brief Set the insertion point \c p0 of a libDXF \c POLYLINE entity.
+ *
+ * \return a pointer to \c polyline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfPolyline *
+dxf_polyline_set_p0
+(
+        DxfPolyline *polyline,
+                /*!< a pointer to a libDXF \c POLYLINE entity. */
+        DxfPoint *p0
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        polyline->p0 = (DxfPoint *) p0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
 /* EOF */
