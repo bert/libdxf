@@ -2388,4 +2388,43 @@ dxf_polyline_set_p0
 }
 
 
+/*!
+ * \brief Get the X-value of the insertion point \c x0 of a DXF
+ * \c POLYLINE entity.
+ *
+ * \return the X-value of the insertion point \c x0.
+ */
+double
+dxf_polyline_get_x0
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a libDXF \c donut entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline->p0->x0);
+}
+
+
 /* EOF */
