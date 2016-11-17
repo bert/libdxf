@@ -725,7 +725,7 @@ dxf_polyline_free_chain
 
 
 /*!
- * \brief Get the \c id_code from a libDXF \c POLYLINE entity.
+ * \brief Get the \c id_code from a DXF \c POLYLINE entity.
  *
  * \return \c id_code.
  */
@@ -733,7 +733,7 @@ int
 dxf_polyline_get_id_code
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -761,7 +761,7 @@ dxf_polyline_get_id_code
 
 
 /*!
- * \brief Set the \c id_code for a libDXF \c POLYLINE entity.
+ * \brief Set the \c id_code for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when sucessful, \c NULL when an error
  * occurred.
@@ -770,7 +770,7 @@ DxfPolyline *
 dxf_polyline_set_id_code
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         int id_code
                 /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
@@ -803,7 +803,7 @@ dxf_polyline_set_id_code
 
 
 /*!
- * \brief Get the linetype from a libDXF \c POLYLINE entity.
+ * \brief Get the linetype from a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c linetype when sucessful, \c NULL when an
  * error occurred.
@@ -812,7 +812,7 @@ char *
 dxf_polyline_get_linetype
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -841,7 +841,7 @@ dxf_polyline_get_linetype
 
 
 /*!
- * \brief Set the \c linetype for a libDXF \c POLYLINE entity.
+ * \brief Set the \c linetype for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when sucessful, \c NULL when an error
  * occurred.
@@ -853,7 +853,7 @@ DxfPolyline *
 dxf_polyline_set_linetype
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         char *linetype
                 /*!< a string containing the \c linetype for the entity. */
 )
@@ -885,7 +885,7 @@ dxf_polyline_set_linetype
 
 
 /*!
- * \brief Get the \c layer from a libDXF \c POLYLINE entity.
+ * \brief Get the \c layer from a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c layer when sucessful, \c NULL when an error
  * occurred.
@@ -894,7 +894,7 @@ char *
 dxf_polyline_get_layer
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -923,7 +923,7 @@ dxf_polyline_get_layer
 
 
 /*!
- * \brief Set the \c layer for a libDXF \c POLYLINE entity.
+ * \brief Set the \c layer for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when sucessful, \c NULL when an error
  * occurred.
@@ -934,7 +934,7 @@ DxfPolyline *
 dxf_polyline_set_layer
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         char *layer
                 /*!< a string containing the \c layer for the entity. */
 )
@@ -966,7 +966,7 @@ dxf_polyline_set_layer
 
 
 /*!
- * \brief Get the \c elevation a this libDXF \c POLYLINE entity.
+ * \brief Get the \c elevation a this DXF \c POLYLINE entity.
  *
  * \return \c elevation.
  */
@@ -974,7 +974,7 @@ double
 dxf_polyline_get_elevation
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -996,7 +996,7 @@ dxf_polyline_get_elevation
 
 
 /*!
- * \brief Set the \c elevation for a libDXF \c POLYLINE entity.
+ * \brief Set the \c elevation for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when sucessful, \c NULL when an error
  * occurred.
@@ -1005,7 +1005,7 @@ DxfPolyline *
 dxf_polyline_set_elevation
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         double elevation
                 /*!< the \c elevation to be set for the entity. */
 )
@@ -1030,7 +1030,7 @@ dxf_polyline_set_elevation
 
 
 /*!
- * \brief Get the \c thickness from a libDXF \c POLYLINE entity.
+ * \brief Get the \c thickness from a DXF \c POLYLINE entity.
  *
  * \return \c thickness.
  */
@@ -1038,7 +1038,7 @@ double
 dxf_polyline_get_thickness
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -1066,7 +1066,7 @@ dxf_polyline_get_thickness
 
 
 /*!
- * \brief Set the \c thickness for a libDXF \c POLYLINE entity.
+ * \brief Set the \c thickness for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when sucessful, \c NULL when an error
  * occurred.
@@ -1075,7 +1075,7 @@ DxfPolyline *
 dxf_polyline_set_thickness
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         double thickness
                 /*!< the \c thickness to be set for the entity. */
 )
@@ -1106,7 +1106,7 @@ dxf_polyline_set_thickness
 
 
 /*!
- * \brief Get the \c linetype_scale from a libDXF \c POLYLINE entity.
+ * \brief Get the \c linetype_scale from a DXF \c POLYLINE entity.
  *
  * \return \c linetype_scale.
  */
@@ -1114,7 +1114,7 @@ double
 dxf_polyline_get_linetype_scale
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -1142,7 +1142,7 @@ dxf_polyline_get_linetype_scale
 
 
 /*!
- * \brief Set the \c linetype_scale for a libDXF \c POLYLINE entity.
+ * \brief Set the \c linetype_scale for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when sucessful, \c NULL when an error
  * occurred.
@@ -1151,7 +1151,7 @@ DxfPolyline *
 dxf_polyline_set_linetype_scale
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         double linetype_scale
                 /*!< the \c linetype_scale to be set for the entity. */
 )
@@ -1182,7 +1182,7 @@ dxf_polyline_set_linetype_scale
 
 
 /*!
- * \brief Get the \c visibility from a libDXF \c POLYLINE entity.
+ * \brief Get the \c visibility from a DXF \c POLYLINE entity.
  *
  * \return \c visibility.
  */
@@ -1190,7 +1190,7 @@ int16_t
 dxf_polyline_get_visibility
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -1226,7 +1226,7 @@ dxf_polyline_get_visibility
 
 
 /*!
- * \brief Set the \c visibility for a libDXF \c POLYLINE entity.
+ * \brief Set the \c visibility for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when sucessful, \c NULL when an error
  * occurred.
@@ -1235,7 +1235,7 @@ DxfPolyline *
 dxf_polyline_set_visibility
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         int16_t visibility
                 /*!< the visibility to be set for the entity. */
 )
@@ -1274,7 +1274,7 @@ dxf_polyline_set_visibility
 
 
 /*!
- * \brief Get the \c color from a libDXF \c POLYLINE entity.
+ * \brief Get the \c color from a DXF \c POLYLINE entity.
  *
  * \return \c color.
  */
@@ -1282,7 +1282,7 @@ int
 dxf_polyline_get_color
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -1310,7 +1310,7 @@ dxf_polyline_get_color
 
 
 /*!
- * \brief Set the \c color for a libDXF \c POLYLINE entity.
+ * \brief Set the \c color for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when sucessful, \c NULL when an error
  * occurred.
@@ -1319,7 +1319,7 @@ DxfPolyline *
 dxf_polyline_set_color
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         int color
                 /*!< the \c color to be set for the entity. */
 )
@@ -1352,7 +1352,7 @@ dxf_polyline_set_color
 
 
 /*!
- * \brief Get the \c paperspace flag value from a libDXF \c POLYLINE
+ * \brief Get the \c paperspace flag value from a DXF \c POLYLINE
  * entity.
  *
  * \return \c paperspace flag value.
@@ -1361,7 +1361,7 @@ int
 dxf_polyline_get_paperspace
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -1395,7 +1395,7 @@ dxf_polyline_get_paperspace
 
 
 /*!
- * \brief Set the \c paperspace flag for a libDXF \c POLYLINE entity.
+ * \brief Set the \c paperspace flag for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when sucessful, \c NULL when an error
  * occurred.
@@ -1404,7 +1404,7 @@ DxfPolyline *
 dxf_polyline_set_paperspace
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         int paperspace
                 /*!< the \c paperspace flag value to be set for the entity. */
 )
@@ -1443,7 +1443,7 @@ dxf_polyline_set_paperspace
 
 
 /*!
- * \brief Get the \c graphics_data_size value from a libDXF \c POLYLINE
+ * \brief Get the \c graphics_data_size value from a DXF \c POLYLINE
  * entity.
  *
  * \return \c graphics_data_size value when successful, or
@@ -1453,7 +1453,7 @@ int
 dxf_polyline_get_graphics_data_size
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -1487,7 +1487,7 @@ dxf_polyline_get_graphics_data_size
 
 
 /*!
- * \brief Set the \c graphics_data_size value for a libDXF \c POLYLINE
+ * \brief Set the \c graphics_data_size value for a DXF \c POLYLINE
  * entity.
  *
  * \return a pointer to \c polyline when successful, or \c NULL when an
@@ -1497,7 +1497,7 @@ DxfPolyline *
 dxf_polyline_set_graphics_data_size
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         int graphics_data_size
                 /*!< the \c graphics_data_size value to be set for the
                  * entity. */
@@ -1536,7 +1536,7 @@ dxf_polyline_set_graphics_data_size
 
 
 /*!
- * \brief Get the \c shadow_mode from a libDXF \c POLYLINE entity.
+ * \brief Get the \c shadow_mode from a DXF \c POLYLINE entity.
  *
  * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
  * error occurred.
@@ -1545,7 +1545,7 @@ int16_t
 dxf_polyline_get_shadow_mode
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -1581,7 +1581,7 @@ dxf_polyline_get_shadow_mode
 
 
 /*!
- * \brief Set the \c shadow_mode for a libDXF \c POLYLINE entity.
+ * \brief Set the \c shadow_mode for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when successful, or \c NULL when an
  * error occurred.
@@ -1590,7 +1590,7 @@ DxfPolyline *
 dxf_polyline_set_shadow_mode
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         int16_t shadow_mode
                 /*!< the shadow mode to be set for the entity. */
 )
@@ -1629,7 +1629,7 @@ dxf_polyline_set_shadow_mode
 
 
 /*!
- * \brief Get the pointer to the \c binary_graphics_data from a libDXF
+ * \brief Get the pointer to the \c binary_graphics_data from a DXF
  * \c POLYLINE entity.
  *
  * \return pointer to the \c binary_graphics_data.
@@ -1640,7 +1640,7 @@ DxfBinaryGraphicsData *
 dxf_polyline_get_binary_graphics_data
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -1669,14 +1669,14 @@ dxf_polyline_get_binary_graphics_data
 
 
 /*!
- * \brief Set the pointer to the \c binary_graphics_data for a libDXF
+ * \brief Set the pointer to the \c binary_graphics_data for a DXF
  * \c POLYLINE entity.
  */
 DxfPolyline *
 dxf_polyline_set_binary_graphics_data
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         DxfBinaryGraphicsData *data
                 /*!< a string containing the pointer to the
                  * \c binary_graphics_data for the entity. */
@@ -1710,7 +1710,7 @@ dxf_polyline_set_binary_graphics_data
 
 /*!
  * \brief Get the soft pointer to the \c dictionary_owner_soft from a
- * libDXF \c POLYLINE entity.
+ * DXF \c POLYLINE entity.
  *
  * \return a pointer to the \c dictionary_owner_soft.
  *
@@ -1720,7 +1720,7 @@ char *
 dxf_polyline_get_dictionary_owner_soft
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -1749,14 +1749,14 @@ dxf_polyline_get_dictionary_owner_soft
 
 
 /*!
- * \brief Set the pointer to the \c dictionary_owner_soft for a libDXF
+ * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c POLYLINE entity.
  */
 DxfPolyline *
 dxf_polyline_set_dictionary_owner_soft
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         char *dictionary_owner_soft
                 /*!< a string containing the pointer to the
                  * \c dictionary_owner_soft for the entity. */
@@ -1789,7 +1789,7 @@ dxf_polyline_set_dictionary_owner_soft
 
 
 /*!
- * \brief Get the pointer to the \c material from a libDXF \c POLYLINE
+ * \brief Get the pointer to the \c material from a DXF \c POLYLINE
  * entity.
  *
  * \return a pointer to \c material when successful, or \c NULL when an
@@ -1801,7 +1801,7 @@ char *
 dxf_polyline_get_material
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -1830,7 +1830,7 @@ dxf_polyline_get_material
 
 
 /*!
- * \brief Set the pointer to the \c material for a libDXF \c POLYLINE
+ * \brief Set the pointer to the \c material for a DXF \c POLYLINE
  * entity.
  *
  * \return a pointer to \c polyline when successful, or \c NULL when an
@@ -1840,7 +1840,7 @@ DxfPolyline *
 dxf_polyline_set_material
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         char *material
                 /*!< a string containing the pointer to the \c
                  * material for the entity. */
@@ -1873,7 +1873,7 @@ dxf_polyline_set_material
 
 
 /*!
- * \brief Get the pointer to the \c dictionary_owner_hard from a libDXF 
+ * \brief Get the pointer to the \c dictionary_owner_hard from a DXF 
  * \c POLYLINE entity.
  *
  * \return a pointer to the \c dictionary_owner_hard.
@@ -1884,7 +1884,7 @@ char *
 dxf_polyline_get_dictionary_owner_hard
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -1913,7 +1913,7 @@ dxf_polyline_get_dictionary_owner_hard
 
 
 /*!
- * \brief Set the pointer to the \c dictionary_owner_hard for a libDXF
+ * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when sucessful, \c NULL when an error
@@ -1923,7 +1923,7 @@ DxfPolyline *
 dxf_polyline_set_dictionary_owner_hard
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         char *dictionary_owner_hard
                 /*!< a string containing the pointer to the \c
                  * dictionary_owner_hard for the entity. */
@@ -1956,7 +1956,7 @@ dxf_polyline_set_dictionary_owner_hard
 
 
 /*!
- * \brief Get the \c lineweight from a libDXF \c POLYLINE entity.
+ * \brief Get the \c lineweight from a DXF \c POLYLINE entity.
  *
  * \return \c lineweight when successful, or \c EXIT_FAILURE when an
  * error occurred.
@@ -1965,7 +1965,7 @@ int16_t
 dxf_polyline_get_lineweight
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -1987,7 +1987,7 @@ dxf_polyline_get_lineweight
 
 
 /*!
- * \brief Set the \c lineweight for a libDXF \c POLYLINE entity.
+ * \brief Set the \c lineweight for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when successful, or \c NULL when an
  * error occurred.
@@ -1996,7 +1996,7 @@ DxfPolyline *
 dxf_polyline_set_lineweight
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         int16_t lineweight
                 /*!< the \c lineweight to be set for the entity. */
 )
@@ -2021,7 +2021,7 @@ dxf_polyline_set_lineweight
 
 
 /*!
- * \brief Get the \c plot_style_name from a libDXF \c POLYLINE entity.
+ * \brief Get the \c plot_style_name from a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c plot_style_name when sucessful, or \c NULL
  * when an error occurred.
@@ -2030,7 +2030,7 @@ char *
 dxf_polyline_get_plot_style_name
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -2059,7 +2059,7 @@ dxf_polyline_get_plot_style_name
 
 
 /*!
- * \brief Set the \c plot_style_name for a libDXF \c POLYLINE entity.
+ * \brief Set the \c plot_style_name for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when successful, or \c NULL when an
  * error occurred.
@@ -2068,7 +2068,7 @@ DxfPolyline *
 dxf_polyline_set_plot_style_name
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         char *plot_style_name
                 /*!< a string containing the \c plot_style_name for the
                  * entity. */
@@ -2101,7 +2101,7 @@ dxf_polyline_set_plot_style_name
 
 
 /*!
- * \brief Get the \c color_value from a libDXF \c POLYLINE entity.
+ * \brief Get the \c color_value from a DXF \c POLYLINE entity.
  *
  * \return \c color_value when successful, or \c EXIT_FAILURE when an
  * error occurred.
@@ -2110,7 +2110,7 @@ long
 dxf_polyline_get_color_value
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -2132,7 +2132,7 @@ dxf_polyline_get_color_value
 
 
 /*!
- * \brief Set the \c color_value for a libDXF \c POLYLINE entity.
+ * \brief Set the \c color_value for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when successful, or \c NULL when an
  * error occurred.
@@ -2141,7 +2141,7 @@ DxfPolyline *
 dxf_polyline_set_color_value
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         long color_value
                 /*!< the \c color_value to be set for the entity. */
 )
@@ -2166,7 +2166,7 @@ dxf_polyline_set_color_value
 
 
 /*!
- * \brief Get the \c color_name from a libDXF \c POLYLINE entity.
+ * \brief Get the \c color_name from a DXF \c POLYLINE entity.
  *
  * \return \c color_name when sucessful, or \c NULL when an error
  * occurred.
@@ -2175,7 +2175,7 @@ char *
 dxf_polyline_get_color_name
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -2204,7 +2204,7 @@ dxf_polyline_get_color_name
 
 
 /*!
- * \brief Set the \c color_name for a libDXF \c POLYLINE entity.
+ * \brief Set the \c color_name for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when successful, or \c NULL when an
  * error occurred.
@@ -2213,7 +2213,7 @@ DxfPolyline *
 dxf_polyline_set_color_name
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         char *color_name
                 /*!< a string containing the \c color_name for the
                  * entity. */
@@ -2246,7 +2246,7 @@ dxf_polyline_set_color_name
 
 
 /*!
- * \brief Get the \c transparency from a libDXF \c POLYLINE entity.
+ * \brief Get the \c transparency from a DXF \c POLYLINE entity.
  *
  * \return \c transparency when successful, or \c EXIT_FAILURE when an
  * error occurred.
@@ -2255,7 +2255,7 @@ long
 dxf_polyline_get_transparency
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #if DEBUG
@@ -2277,7 +2277,7 @@ dxf_polyline_get_transparency
 
 
 /*!
- * \brief Set the \c transparency for a libDXF \c POLYLINE entity.
+ * \brief Set the \c transparency for a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when successful, or \c NULL when an
  * error occurred.
@@ -2286,7 +2286,7 @@ DxfPolyline *
 dxf_polyline_set_transparency
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         long transparency
                 /*!< the \c transparency to be set for the entity. */
 )
@@ -2311,7 +2311,7 @@ dxf_polyline_set_transparency
 
 
 /*!
- * \brief Get the insertion point of a libDXF \c POLYLINE entity.
+ * \brief Get the insertion point of a DXF \c POLYLINE entity.
  *
  * \return the insertion point \c p0.
  */
@@ -2319,7 +2319,7 @@ DxfPoint *
 dxf_polyline_get_p0
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #ifdef DEBUG
@@ -2348,7 +2348,7 @@ dxf_polyline_get_p0
 
 
 /*!
- * \brief Set the insertion point \c p0 of a libDXF \c POLYLINE entity.
+ * \brief Set the insertion point \c p0 of a DXF \c POLYLINE entity.
  *
  * \return a pointer to \c polyline when successful, or \c NULL when an
  * error occurred.
@@ -2357,7 +2357,7 @@ DxfPolyline *
 dxf_polyline_set_p0
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a libDXF \c POLYLINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         DxfPoint *p0
                 /*!< a pointer to a DXF \c POINT entity. */
 )
@@ -2398,7 +2398,7 @@ double
 dxf_polyline_get_x0
 (
         DxfPolyline *polyline
-                /*!< a pointer to a libDXF \c donut entity. */
+                /*!< a pointer to a DXF \c donut entity. */
 )
 {
 #ifdef DEBUG
