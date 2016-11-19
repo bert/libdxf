@@ -428,6 +428,648 @@
             </tgroup>
           </table></para>
       </section>
+
+      <section>
+        <title>DXF Group Codes in Numerical Order Reference.</title>
+
+        <para>The following table gives the group code or group code range
+        accompanied by an explanation of the group code value.</para>
+
+        <para>In the table, “fixed” indicates that the group code always has
+        the same purpose.</para>
+
+        <para>If a group code isn't fixed, its purpose depends on the
+        context.</para>
+
+        <table>
+          <title>Group codes by number.</title>
+
+          <tgroup cols="2">
+            <thead>
+              <row>
+                <entry>Group code</entry>
+
+                <entry>Description</entry>
+              </row>
+            </thead>
+
+            <tbody>
+              <row>
+                <entry>-5</entry>
+
+                <entry>APP: persistent reactor chain.</entry>
+              </row>
+
+              <row>
+                <entry>-4</entry>
+
+                <entry>APP: conditional operator (used only with <emphasis
+                role="bold">ssget</emphasis>).</entry>
+              </row>
+
+              <row>
+                <entry>-3</entry>
+
+                <entry>APP: extended data (XDATA) sentinel (fixed).</entry>
+              </row>
+
+              <row>
+                <entry>-2</entry>
+
+                <entry>APP: entity name reference (fixed).</entry>
+              </row>
+
+              <row>
+                <entry>-1</entry>
+
+                <entry>APP: entity name. The name changes each time a drawing
+                is opened. It is never saved (fixed).</entry>
+              </row>
+
+              <row>
+                <entry>0</entry>
+
+                <entry>Text string indicating the entity type (fixed).</entry>
+              </row>
+
+              <row>
+                <entry>1</entry>
+
+                <entry>Primary text value for an entity.</entry>
+              </row>
+
+              <row>
+                <entry>2</entry>
+
+                <entry>Name (attribute tag, block name, and so on).</entry>
+              </row>
+
+              <row>
+                <entry>3-4</entry>
+
+                <entry>Other text or name values.</entry>
+              </row>
+
+              <row>
+                <entry>5</entry>
+
+                <entry>Entity handle; text string of up to 16 hexadecimal
+                digits (fixed).</entry>
+              </row>
+
+              <row>
+                <entry>6</entry>
+
+                <entry>Linetype name (fixed).</entry>
+              </row>
+
+              <row>
+                <entry>7</entry>
+
+                <entry>Text style name (fixed).</entry>
+              </row>
+
+              <row>
+                <entry>8</entry>
+
+                <entry>Layer name (fixed).</entry>
+              </row>
+
+              <row>
+                <entry>9</entry>
+
+                <entry>DXF: variable name identifier (used only in HEADER
+                section of the DXF file).</entry>
+              </row>
+
+              <row>
+                <entry>10</entry>
+
+                <entry>Primary point; this is the start point of a line or
+                text entity, center of a circle, and so on DXF: X value of the
+                primary point (followed by Y and Z value codes 20 and 30) APP:
+                3D point (list of three reals).</entry>
+              </row>
+
+              <row>
+                <entry>11-18</entry>
+
+                <entry>Other points DXF: X value of other points (followed by
+                Y value codes 21-28 and Z value codes 31-38) APP: 3D point
+                (list of three reals).</entry>
+              </row>
+
+              <row>
+                <entry>20, 30</entry>
+
+                <entry>DXF: Y and Z values of the primary point.</entry>
+              </row>
+
+              <row>
+                <entry>21-28, 31-37</entry>
+
+                <entry>DXF: Y and Z values of other points.</entry>
+              </row>
+
+              <row>
+                <entry>38</entry>
+
+                <entry>DXF: entity's elevation if nonzero.</entry>
+              </row>
+
+              <row>
+                <entry>39</entry>
+
+                <entry>Entity's thickness if nonzero (fixed).</entry>
+              </row>
+
+              <row>
+                <entry>40-48</entry>
+
+                <entry>Double-precision floating-point values (text height,
+                scale factors, and so on).</entry>
+              </row>
+
+              <row>
+                <entry>48</entry>
+
+                <entry>Linetype scale; double precision floating point scalar
+                value; default value is defined for all entity types.</entry>
+              </row>
+
+              <row>
+                <entry>49</entry>
+
+                <entry>Repeated double-precision floating-point value.
+                Multiple 49 groups may appear in one entity for
+                variable-length tables (such as the dash lengths in the LTYPE
+                table). A 7x group always appears before the first 49 group to
+                specify the table length.</entry>
+              </row>
+
+              <row>
+                <entry>50-58</entry>
+
+                <entry>Angles (output in degrees to DXF files and radians
+                through AutoLISP and ObjectARX applications).</entry>
+              </row>
+
+              <row>
+                <entry>60</entry>
+
+                <entry>Entity visibility; integer value; absence or 0
+                indicates visibility; 1 indicates invisibility.</entry>
+              </row>
+
+              <row>
+                <entry>62</entry>
+
+                <entry>Color number (fixed).</entry>
+              </row>
+
+              <row>
+                <entry>66</entry>
+
+                <entry>“Entities follow” flag (fixed).</entry>
+              </row>
+
+              <row>
+                <entry>67</entry>
+
+                <entry>Space—that is, model or paper space (fixed).</entry>
+              </row>
+
+              <row>
+                <entry>68</entry>
+
+                <entry>APP: identifies whether viewport is on but fully off
+                screen; is not active or is off.</entry>
+              </row>
+
+              <row>
+                <entry>69</entry>
+
+                <entry>APP: viewport identification number.</entry>
+              </row>
+
+              <row>
+                <entry>70-78</entry>
+
+                <entry>Integer values, such as repeat counts, flag bits, or
+                modes.</entry>
+              </row>
+
+              <row>
+                <entry>90-99</entry>
+
+                <entry>32-bit integer values.</entry>
+              </row>
+
+              <row>
+                <entry>100</entry>
+
+                <entry>Subclass data marker (with derived class name as a
+                string). Required for all objects and entity classes that are
+                derived from another concrete class. The subclass data marker
+                segregates data defined by different classes in the
+                inheritance chain for the same object. This is in addition to
+                the requirement for DXF names for each distinct concrete class
+                derived from ObjectARX (see Subclass Markers).</entry>
+              </row>
+
+              <row>
+                <entry>102</entry>
+
+                <entry>Control string, followed by “{&lt;arbitrary name&gt;”
+                or “}”. Similar to the xdata 1002 group code, except that when
+                the string begins with “{“, it can be followed by an arbitrary
+                string whose in- terpretation is up to the application. The
+                only other control string allowed is “}” as a group
+                terminator. AutoCAD does not interpret these strings except
+                during drawing audit operations. They are for application
+                use.</entry>
+              </row>
+
+              <row>
+                <entry>105</entry>
+
+                <entry>Object handle for DIMVAR symbol table entry.</entry>
+              </row>
+
+              <row>
+                <entry>110</entry>
+
+                <entry>UCS origin (appears only if code 72 is set to 1) DXF: X
+                value; APP: 3D point.</entry>
+              </row>
+
+              <row>
+                <entry>111</entry>
+
+                <entry>UCS X-axis (appears only if code 72 is set to 1) DXF: X
+                value; APP: 3D vector.</entry>
+              </row>
+
+              <row>
+                <entry>112</entry>
+
+                <entry>UCS Y-axis (appears only if code 72 is set to 1) DXF: X
+                value; APP: 3D vector.</entry>
+              </row>
+
+              <row>
+                <entry>120-122</entry>
+
+                <entry>DXF: Y value of UCS origin, UCS X-axis, and UCS
+                Y-axis.</entry>
+              </row>
+
+              <row>
+                <entry>130-132</entry>
+
+                <entry>DXF: Z value of UCS origin, UCS X-axis, and UCS
+                Y-axis.</entry>
+              </row>
+
+              <row>
+                <entry>140-149</entry>
+
+                <entry>Double-precision floating-point values (points,
+                elevation, and DIMSTYLE settings, for example).</entry>
+              </row>
+
+              <row>
+                <entry>170-179</entry>
+
+                <entry>16-bit integer values, such as flag bits representing
+                DIMSTYLE settings.</entry>
+              </row>
+
+              <row>
+                <entry>210</entry>
+
+                <entry>Extrusion direction (fixed) DXF: X value of extrusion
+                direction APP: 3D extrusion direction vector.</entry>
+              </row>
+
+              <row>
+                <entry>220, 230</entry>
+
+                <entry>DXF: Y and Z values of the extrusion direction.</entry>
+              </row>
+
+              <row>
+                <entry>270-279</entry>
+
+                <entry>16-bit integer values.</entry>
+              </row>
+
+              <row>
+                <entry>280-289</entry>
+
+                <entry>16-bit integer value.</entry>
+              </row>
+
+              <row>
+                <entry>290-299</entry>
+
+                <entry>Boolean flag value.</entry>
+              </row>
+
+              <row>
+                <entry>300-309</entry>
+
+                <entry>Arbitrary text strings.</entry>
+              </row>
+
+              <row>
+                <entry>310-319</entry>
+
+                <entry>Arbitrary binary chunks with same representation and
+                limits as 1004 group codes: hexadecimal strings of up to 254
+                characters represent data chunks of up to 127 bytes.</entry>
+              </row>
+
+              <row>
+                <entry>320-329</entry>
+
+                <entry>Arbitrary object handles; handle values that are taken
+                “as is”. They are not translated during INSERT and XREF
+                operations.</entry>
+              </row>
+
+              <row>
+                <entry>330-339</entry>
+
+                <entry>Soft-pointer handle; arbitrary soft pointers to other
+                objects within same DXF file or drawing. Translated during
+                INSERT and XREF operations.</entry>
+              </row>
+
+              <row>
+                <entry>340-349</entry>
+
+                <entry>Hard-pointer handle; arbitrary hard pointers to other
+                objects within same DXF file or drawing. Translated during
+                INSERT and XREF operations.</entry>
+              </row>
+
+              <row>
+                <entry>350-359</entry>
+
+                <entry>Soft-owner handle; arbitrary soft ownership links to
+                other objects within same DXF file or drawing. Translated
+                during INSERT and XREF operations.</entry>
+              </row>
+
+              <row>
+                <entry>360-369</entry>
+
+                <entry>Hard-owner handle; arbitrary hard ownership links to
+                other objects within same DXF file or drawing. Translated
+                during INSERT and XREF operations.</entry>
+              </row>
+
+              <row>
+                <entry>370-379</entry>
+
+                <entry>Lineweight enum value (AcDb::LineWeight). Stored and
+                moved around as a 16-bit integer. Custom non-entity objects
+                may use the full range, but entity classes only use 371-379
+                DXF group codes in their representation, because AutoCAD and
+                AutoLISP both always assume a 370 group code is the entity's
+                lineweight. This allows 370 to behave like other “common”
+                entity fields.</entry>
+              </row>
+
+              <row>
+                <entry>380-389</entry>
+
+                <entry>PlotStyleName type enum (AcDb::PlotStyleNameType).
+                Stored and moved around as a 16-bit integer. Custom non-entity
+                objects may use the full range, but entity classes only use
+                381-389 DXF group codes in their representation, for the same
+                reason as the Lineweight range above.</entry>
+              </row>
+
+              <row>
+                <entry>390-399</entry>
+
+                <entry>String representing handle value of the PlotStyleName
+                object, basically a hard pointer, but has a different range to
+                make backward compatibility easier to deal with. Stored and
+                moved around as an object ID (a handle in DXF files) and a
+                special type in AutoLISP. Custom non-entity objects may use
+                the full range, but entity classes only use 391-399 DXF group
+                codes in their representation, for the same reason as the
+                lineweight range above.</entry>
+              </row>
+
+              <row>
+                <entry>400-409</entry>
+
+                <entry>16-bit integers.</entry>
+              </row>
+
+              <row>
+                <entry>410-419</entry>
+
+                <entry>String.</entry>
+              </row>
+
+              <row>
+                <entry>420-427</entry>
+
+                <entry>32-bit integer value. When used with True Color; a
+                32-bit integer representing a 24-bit color value. The
+                high-order byte (8 bits) is 0, the low-order byte an unsigned
+                char holding the Blue value (0-255), then the Green value, and
+                the next-to-high order byte is the Red Value. Converting this
+                integer value to hexadecimal yields the following bit mask:
+                0x00RRGGBB. For example, a true color with Red==200,
+                Green==100 and Blue==50 is 0x00C86432, and in DXF, in decimal,
+                13132850.</entry>
+              </row>
+
+              <row>
+                <entry>430-437</entry>
+
+                <entry>String; when used for True Color, a string representing
+                the name of the color.</entry>
+              </row>
+
+              <row>
+                <entry>440-447</entry>
+
+                <entry>32-bit integer value. When used for True Color, the
+                transparency value.</entry>
+              </row>
+
+              <row>
+                <entry>450-459</entry>
+
+                <entry>Long.</entry>
+              </row>
+
+              <row>
+                <entry>460-469</entry>
+
+                <entry>Double-precision floating-point value.</entry>
+              </row>
+
+              <row>
+                <entry>470-479</entry>
+
+                <entry>String.</entry>
+              </row>
+
+              <row>
+                <entry>480-481</entry>
+
+                <entry>Hard-pointer handle; arbitrary hard pointers to other
+                objects within same DXF file or drawing. Translated during
+                INSERT and XREF operations.</entry>
+              </row>
+
+              <row>
+                <entry>999</entry>
+
+                <entry>DXF: The 999 group code indicates that the line
+                following it is a comment string. SAVEAS does not include such
+                groups in a DXF output file, but OPEN honors them and ignores
+                the comments. You can use the 999 group to include comments in
+                a DXF file that you have edited.</entry>
+              </row>
+
+              <row>
+                <entry>1000</entry>
+
+                <entry>ASCII string (up to 255 bytes long) in extended
+                data.</entry>
+              </row>
+
+              <row>
+                <entry>1001</entry>
+
+                <entry>Registered application name (ASCII string up to 31
+                bytes long) for extended data.</entry>
+              </row>
+
+              <row>
+                <entry>1002</entry>
+
+                <entry>Extended data control string (“{” or “}”).</entry>
+              </row>
+
+              <row>
+                <entry>1003</entry>
+
+                <entry>Extended data layer name.</entry>
+              </row>
+
+              <row>
+                <entry>1004</entry>
+
+                <entry>Chunk of bytes (up to 127 bytes long) in extended
+                data.</entry>
+              </row>
+
+              <row>
+                <entry>1005</entry>
+
+                <entry>Entity handle in extended data; text string of up to 16
+                hexadecimal digits.</entry>
+              </row>
+
+              <row>
+                <entry>1010</entry>
+
+                <entry>A point in extended data. DXF: X value (followed by
+                1020 and 1030 groups) APP: 3D point.</entry>
+              </row>
+
+              <row>
+                <entry>1020, 1030</entry>
+
+                <entry>DXF: Y and Z values of a point.</entry>
+              </row>
+
+              <row>
+                <entry>1011</entry>
+
+                <entry>A 3D world space position in extended data DXF: X value
+                (followed by 1021 and 1031 groups) APP: 3D point.</entry>
+              </row>
+
+              <row>
+                <entry>1021, 1031</entry>
+
+                <entry>DXF: Y and Z values of a world space position.</entry>
+              </row>
+
+              <row>
+                <entry>1012</entry>
+
+                <entry>A 3D world space displacement in extended data DXF: X
+                value (followed by 1022 and 1032 groups) APP: 3D
+                vector.</entry>
+              </row>
+
+              <row>
+                <entry>1022, 1032</entry>
+
+                <entry>DXF: Y and Z values of a world space
+                displacement.</entry>
+              </row>
+
+              <row>
+                <entry>1013</entry>
+
+                <entry>A 3D world space direction in extended data DXF: X
+                value (followed by 1022 and 1032 groups) APP: 3D
+                vector.</entry>
+              </row>
+
+              <row>
+                <entry>1023, 1033</entry>
+
+                <entry>DXF: Y and Z values of a world space direction.</entry>
+              </row>
+
+              <row>
+                <entry>1040</entry>
+
+                <entry>Extended data double-precision floating-point
+                value.</entry>
+              </row>
+
+              <row>
+                <entry>1041</entry>
+
+                <entry>Extended data distance value.</entry>
+              </row>
+
+              <row>
+                <entry>1042</entry>
+
+                <entry>Extended data scale factor.</entry>
+              </row>
+
+              <row>
+                <entry>1070</entry>
+
+                <entry>Extended data 16-bit signed integer.</entry>
+              </row>
+
+              <row>
+                <entry>1071</entry>
+
+                <entry>Extended data 32-bit signed long.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
     </section>
   </chapter>
 </book>
