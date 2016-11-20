@@ -2470,4 +2470,43 @@ dxf_polyline_set_x0
 }
 
 
+/*!
+ * \brief Get the Y-value of the insertion point \c y0 of a DXF
+ * \c POLYLINE entity.
+ *
+ * \return the Y-value of the insertion point \c y0.
+ */
+double
+dxf_polyline_get_y0
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a DXF \c POLYLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline->p0->y0);
+}
+
+
 /* EOF */
