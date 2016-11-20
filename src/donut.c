@@ -2225,7 +2225,7 @@ double
 dxf_donut_get_z0
 (
         DxfDonut *donut
-                /*!< a pointer to a DXF \c 3DFACE entity. */
+                /*!< a pointer to a libDXF \c donut entity. */
 )
 {
 #ifdef DEBUG
