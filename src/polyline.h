@@ -582,6 +582,12 @@ dxf_polyline_get_y0
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_y0
+(
+        DxfPolyline *polyline,
+        double y0
+);
 
 
 #ifdef __cplusplus
