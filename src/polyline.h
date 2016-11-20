@@ -593,6 +593,12 @@ dxf_polyline_get_z0
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_z0
+(
+        DxfPolyline *polyline,
+        double z0
+);
 
 
 #ifdef __cplusplus
