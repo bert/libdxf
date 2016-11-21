@@ -5,6 +5,12 @@
  *
  * \brief Header file for a DXF polyline entity (\c PLINE).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -92,12 +98,6 @@ extern "C" {
  * with an index that appears after it in the database.\n
  * Programs that read polyface meshes from \c DXF would be wise to be as
  * tolerant of odd vertex and face ordering as AutoCAD is.\n
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
 dxf_polyline_struct
