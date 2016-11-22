@@ -2641,4 +2641,44 @@ dxf_polyline_get_start_width
 }
 
 
+/*!
+ * \brief Set the \c start_width of a DXF \c POLYLINE entity.
+ *
+ * \return a pointer to \c polyline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfPolyline *
+dxf_polyline_set_start_width
+(
+        DxfPolyline *polyline,
+                /*!< a pointer to a DXF \c POLYLINE entity. */
+        double start_width
+                /*!< the \c start_width of a DXF \c polyline entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (start_width < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a start_width smaller than 0.0 was passed.\n")),
+                  __FUNCTION__);
+        }
+        polyline->start_width = start_width;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
 /* EOF */
