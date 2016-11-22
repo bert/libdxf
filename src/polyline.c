@@ -2574,7 +2574,7 @@ dxf_polyline_set_z0
         DxfPolyline *polyline,
                 /*!< a pointer to a DXF \c POLYLINE entity. */
         double z0
-                /*!< the Z-value of the insertion point \c y0 of a
+                /*!< the Z-value of the insertion point \c z0 of a
                  * DXF \c polyline entity. */
 )
 {
