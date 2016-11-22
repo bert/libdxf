@@ -599,6 +599,11 @@ dxf_polyline_set_z0
         DxfPolyline *polyline,
         double z0
 );
+double
+dxf_polyline_get_start_width
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
