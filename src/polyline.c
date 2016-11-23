@@ -2794,4 +2794,44 @@ dxf_polyline_get_vertices_follow
 }
 
 
+/*!
+ * \brief Set the \c vertices_follow for a DXF \c POLYLINE entity.
+ *
+ * \return a pointer to \c polyline when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfPolyline *
+dxf_polyline_set_vertices_follow
+(
+        DxfPolyline *polyline,
+                /*!< a pointer to a DXF \c POLYLINE entity. */
+        int vertices_follow
+                /*!< \c vertices_follow. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vertices_follow < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative vertices_follow value was passed.\n")),
+                  __FUNCTION__);
+        }
+        polyline->vertices_follow = vertices_follow;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
 /* EOF */

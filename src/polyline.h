@@ -626,6 +626,12 @@ dxf_polyline_get_vertices_follow
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_vertices_follow
+(
+        DxfPolyline *polyline,
+        int vertices_follow
+);
 
 
 #ifdef __cplusplus
