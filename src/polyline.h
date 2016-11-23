@@ -615,6 +615,12 @@ dxf_polyline_get_end_width
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_end_width
+(
+        DxfPolyline *polyline,
+        double end_width
+);
 
 
 #ifdef __cplusplus

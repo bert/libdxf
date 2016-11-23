@@ -2718,4 +2718,44 @@ dxf_polyline_get_end_width
 }
 
 
+/*!
+ * \brief Set the \c end_width of a DXF \c POLYLINE entity.
+ *
+ * \return a pointer to \c polyline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfPolyline *
+dxf_polyline_set_end_width
+(
+        DxfPolyline *polyline,
+                /*!< a pointer to a DXF \c POLYLINE entity. */
+        double end_width
+                /*!< the \c end_width of a DXF \c polyline entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (end_width < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an end_width smaller than 0.0 was passed.\n")),
+                  __FUNCTION__);
+        }
+        polyline->end_width = end_width;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
 /* EOF */
