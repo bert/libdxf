@@ -2758,4 +2758,40 @@ dxf_polyline_set_end_width
 }
 
 
+/*!
+ * \brief Get the \c vertices_follow from a DXF \c POLYLINE entity.
+ *
+ * \return \c vertices_follow.
+ */
+int
+dxf_polyline_get_vertices_follow
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a DXF \c POLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->vertices_follow < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the vertices_follow member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline->vertices_follow);
+}
+
+
 /* EOF */

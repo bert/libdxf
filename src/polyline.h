@@ -621,6 +621,11 @@ dxf_polyline_set_end_width
         DxfPolyline *polyline,
         double end_width
 );
+int
+dxf_polyline_get_vertices_follow
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
