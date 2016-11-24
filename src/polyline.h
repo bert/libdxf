@@ -632,6 +632,11 @@ dxf_polyline_set_vertices_follow
         DxfPolyline *polyline,
         int vertices_follow
 );
+int
+dxf_polyline_get_flag
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus

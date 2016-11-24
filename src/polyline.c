@@ -2834,4 +2834,46 @@ dxf_polyline_set_vertices_follow
 }
 
 
+/*!
+ * \brief Get the \c flag from a DXF \c POLYLINE entity.
+ *
+ * \return \c flag.
+ */
+int
+dxf_polyline_get_flag
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a DXF \c POLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (polyline->flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the flag member.\n")),
+                  __FUNCTION__);
+        }
+        if (polyline->flag > 255)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found in the flag member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline->flag);
+}
+
+
 /* EOF */
