@@ -643,6 +643,11 @@ dxf_polyline_set_flag
         DxfPolyline *polyline,
         int flag
 );
+int
+dxf_polyline_get_polygon_mesh_M_vertex_count
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
