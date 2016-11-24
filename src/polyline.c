@@ -2876,4 +2876,50 @@ dxf_polyline_get_flag
 }
 
 
+/*!
+ * \brief Set the \c flag for a DXF \c POLYLINE entity.
+ *
+ * \return a pointer to \c polyline when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfPolyline *
+dxf_polyline_set_flag
+(
+        DxfPolyline *polyline,
+                /*!< a pointer to a DXF \c POLYLINE entity. */
+        int flag
+                /*!< \c flag. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (flag > 255)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        polyline->flag = flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
 /* EOF */

@@ -637,6 +637,12 @@ dxf_polyline_get_flag
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_flag
+(
+        DxfPolyline *polyline,
+        int flag
+);
 
 
 #ifdef __cplusplus
