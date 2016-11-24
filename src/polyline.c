@@ -2951,12 +2951,6 @@ dxf_polyline_get_polygon_mesh_M_vertex_count
                   (_("Warning in %s () a negative value was found in the polygon_mesh_M_vertex_count member.\n")),
                   __FUNCTION__);
         }
-        if (polyline->polygon_mesh_M_vertex_count > 255)
-        {
-                fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the polygon_mesh_M_vertex_count member.\n")),
-                  __FUNCTION__);
-        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
