@@ -3112,4 +3112,45 @@ dxf_polyline_get_smooth_M_surface_density
 }
 
 
+/*!
+ * \brief Set the \c smooth_M_surface_density for a DXF \c POLYLINE
+ * entity.
+ *
+ * \return a pointer to \c polyline when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfPolyline *
+dxf_polyline_set_smooth_M_surface_density
+(
+        DxfPolyline *polyline,
+                /*!< a pointer to a DXF \c POLYLINE entity. */
+        int smooth_M_surface_density
+                /*!< \c smooth_M_surface_density. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (smooth_M_surface_density < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        polyline->smooth_M_surface_density = smooth_M_surface_density;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
 /* EOF */
