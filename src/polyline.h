@@ -659,6 +659,12 @@ dxf_polyline_get_polygon_mesh_N_vertex_count
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_polygon_mesh_N_vertex_count
+(
+        DxfPolyline *polyline,
+        int polygon_mesh_N_vertex_count
+);
 
 
 #ifdef __cplusplus
