@@ -665,6 +665,11 @@ dxf_polyline_set_polygon_mesh_N_vertex_count
         DxfPolyline *polyline,
         int polygon_mesh_N_vertex_count
 );
+int
+dxf_polyline_get_smooth_M_surface_density
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
