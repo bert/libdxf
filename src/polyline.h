@@ -681,6 +681,12 @@ dxf_polyline_get_smooth_N_surface_density
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_smooth_N_surface_density
+(
+        DxfPolyline *polyline,
+        int smooth_N_surface_density
+);
 
 
 #ifdef __cplusplus
