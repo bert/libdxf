@@ -3180,7 +3180,7 @@ dxf_polyline_get_smooth_N_surface_density
         if (polyline->smooth_N_surface_density < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the smooth_M_surface_density member.\n")),
+                  (_("Warning in %s () a negative value was found in the smooth_N_surface_density member.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
