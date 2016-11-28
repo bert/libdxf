@@ -692,6 +692,12 @@ dxf_polyline_get_surface_type
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_surface_type
+(
+        DxfPolyline *polyline,
+        int surface_type
+);
 
 
 #ifdef __cplusplus

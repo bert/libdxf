@@ -3267,4 +3267,44 @@ dxf_polyline_get_surface_type
 }
 
 
+/*!
+ * \brief Set the \c surface_type for a DXF \c POLYLINE entity.
+ *
+ * \return a pointer to \c polyline when sucessful, \c NULL when an error
+ * occurred.
+ */
+DxfPolyline *
+dxf_polyline_set_surface_type
+(
+        DxfPolyline *polyline,
+                /*!< a pointer to a DXF \c POLYLINE entity. */
+        int surface_type
+                /*!< \c surface_type. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (surface_type < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        polyline->surface_type = surface_type;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
 /* EOF */
