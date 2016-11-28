@@ -698,6 +698,11 @@ dxf_polyline_set_surface_type
         DxfPolyline *polyline,
         int surface_type
 );
+double
+dxf_polyline_get_extr_x0
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
