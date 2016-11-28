@@ -3339,4 +3339,40 @@ dxf_polyline_get_extr_x0
 }
 
 
+/*!
+ * \brief Set the X-value of the extrusion vector of a DXF \c POLYLINE
+ * entity.
+ *
+ * \return a pointer to a DXF \c POLYLINE entity when successful, \c NULL
+ * when an error occurred.
+ */
+DxfPolyline *
+dxf_polyline_set_extr_x0
+(
+        DxfPolyline *polyline,
+                /*!< a pointer to a DXF \c POLYLINE entity. */
+        double extr_x0
+                /*!< the X-value of the extrusion vector of a DXF
+                 * \c POLYLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        polyline->extr_x0 = extr_x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
 /* EOF */
