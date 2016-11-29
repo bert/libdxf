@@ -714,6 +714,12 @@ dxf_polyline_get_extr_y0
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_extr_y0
+(
+        DxfPolyline *polyline,
+        double extr_y0
+);
 
 
 #ifdef __cplusplus
