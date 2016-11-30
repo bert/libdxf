@@ -725,6 +725,12 @@ dxf_polyline_get_extr_z0
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_extr_z0
+(
+        DxfPolyline *polyline,
+        double extr_z0
+);
 
 
 #ifdef __cplusplus
