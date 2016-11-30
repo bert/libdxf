@@ -720,6 +720,11 @@ dxf_polyline_set_extr_y0
         DxfPolyline *polyline,
         double extr_y0
 );
+double
+dxf_polyline_get_extr_z0
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
