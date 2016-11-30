@@ -731,6 +731,11 @@ dxf_polyline_set_extr_z0
         DxfPolyline *polyline,
         double extr_z0
 );
+DxfVertex *
+dxf_polyline_get_vertices
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
