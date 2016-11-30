@@ -3551,4 +3551,44 @@ dxf_polyline_get_vertices
 }
 
 
+/*!
+ * \brief Set the pointer to the first vertex of a linked list of
+ * \c vertices for a DXF \c POLYLINE entity.
+ */
+DxfPolyline *
+dxf_polyline_set_vertices
+(
+        DxfPolyline *polyline,
+                /*!< a pointer to a DXF \c LINE entity. */
+        DxfVertex *vertices
+                /*!< a pointer to the first vertex of a linked list of
+                 * \c vertices. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vertices == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        polyline->vertices = (struct DxfVertex *) vertices;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
 /* EOF */
