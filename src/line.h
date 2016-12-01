@@ -55,7 +55,7 @@ extern "C" {
  * \brief DXF definition of an AutoCAD line entity.
  */
 typedef struct
-dxf_line
+dxf_line_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
