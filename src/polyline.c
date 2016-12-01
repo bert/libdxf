@@ -578,7 +578,10 @@ dxf_polyline_write
         {
                 fprintf (fp->fp, "100\nAcDb3dPolyline\n");
         }
-        fprintf (fp->fp, " 66\n%d\n", polyline->vertices_follow);
+        if (fp->acad_version_number < AutoCAD_2002)
+        {
+                fprintf (fp->fp, " 66\n%d\n", polyline->vertices_follow);
+        }
         fprintf (fp->fp, " 10\n%f\n", polyline->x0);
         fprintf (fp->fp, " 20\n%f\n", polyline->y0);
         fprintf (fp->fp, " 30\n%f\n", polyline->z0);
