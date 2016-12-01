@@ -3631,4 +3631,43 @@ dxf_polyline_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c POLYLINE for a DXF \c POLYLINE
+ * entity.
+ */
+DxfPolyline *
+dxf_polyline_set_next
+(
+        DxfPolyline *polyline,
+                /*!< a pointer to a DXF \c POLYLINE entity. */
+        DxfPolyline *next
+                /*!< a pointer to the next \c POLYLINE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        polyline->next = (struct DxfPolyline *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
+}
+
+
 /* EOF */
