@@ -5,6 +5,12 @@
  *
  * \brief Functions for a DXF line entity (\c LINE).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -42,12 +48,6 @@
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_new ()
@@ -85,12 +85,6 @@ dxf_line_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_init
@@ -155,12 +149,6 @@ dxf_line_init
  * While parsing the DXF file store data in \c line.
  *
  * \return a pointer to \c line.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_read
@@ -401,12 +389,6 @@ dxf_line_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occured.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_line_write
@@ -572,12 +554,6 @@ dxf_line_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_line_free
@@ -613,12 +589,6 @@ dxf_line_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c LINE
  * entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_line_free_chain
@@ -652,12 +622,6 @@ dxf_line_free_chain
  * \brief Get the ID code from a DXF \c LINE entity.
  *
  * \return ID code.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_line_get_id_code
@@ -696,12 +660,6 @@ dxf_line_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_id_code
@@ -744,12 +702,6 @@ dxf_line_set_id_code
  * \brief Get the linetype from a DXF \c LINE entity.
  *
  * \return linetype when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_line_get_linetype
@@ -788,12 +740,6 @@ dxf_line_get_linetype
 
 /*!
  * \brief Set the linetype for a DXF \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_linetype
@@ -834,12 +780,6 @@ dxf_line_set_linetype
  * \brief Get the layer from a DXF \c LINE entity.
  *
  * \return layer when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_line_get_layer
@@ -878,12 +818,6 @@ dxf_line_get_layer
 
 /*!
  * \brief Set the layer for a DXF \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_layer
@@ -924,12 +858,6 @@ dxf_line_set_layer
  * \brief Get the elevation from a DXF \c LINE entity.
  *
  * \return elevation.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_line_get_elevation
@@ -961,12 +889,6 @@ dxf_line_get_elevation
 
 /*!
  * \brief Set the elevation for a DXF \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_elevation
@@ -1000,12 +922,6 @@ dxf_line_set_elevation
  * \brief Get the thickness from a DXF \c LINE entity.
  *
  * \return thickness.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_line_get_thickness
@@ -1044,12 +960,6 @@ dxf_line_get_thickness
 
 /*!
  * \brief Set the thickness for a DXF \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_thickness
@@ -1090,12 +1000,6 @@ dxf_line_set_thickness
  * \brief Get the linetype scale from a DXF \c LINE entity.
  *
  * \return linetype scale.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_line_get_linetype_scale
@@ -1134,12 +1038,6 @@ dxf_line_get_linetype_scale
 
 /*!
  * \brief Set the linetype scale for a DXF \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_linetype_scale
@@ -1180,12 +1078,6 @@ dxf_line_set_linetype_scale
  * \brief Get the visibility from a DXF \c LINE entity.
  *
  * \return visibility.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int16_t
 dxf_line_get_visibility
@@ -1231,12 +1123,6 @@ dxf_line_get_visibility
 
 /*!
  * \brief Set the visibility for a DXF \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_visibility
@@ -1284,12 +1170,6 @@ dxf_line_set_visibility
  * \brief Get the color from a DXF \c LINE entity.
  *
  * \return color.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_line_get_color
@@ -1327,12 +1207,6 @@ dxf_line_get_color
 
 /*!
  * \brief Set the color for a DXF \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_color
@@ -1374,12 +1248,6 @@ dxf_line_set_color
  * \brief Get the paperspace flag value from a DXF \c LINE entity.
  *
  * \return paperspace flag value.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_line_get_paperspace
@@ -1423,12 +1291,6 @@ dxf_line_get_paperspace
 
 /*!
  * \brief Set the paperspace flag for a DXF \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_paperspace
@@ -1479,12 +1341,6 @@ dxf_line_set_paperspace
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_line_get_dictionary_owner_soft
@@ -1524,12 +1380,6 @@ dxf_line_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_dictionary_owner_soft
@@ -1574,12 +1424,6 @@ dxf_line_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_line_get_dictionary_owner_hard
@@ -1619,12 +1463,6 @@ dxf_line_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_dictionary_owner_hard
@@ -1666,12 +1504,6 @@ dxf_line_set_dictionary_owner_hard
  * \brief Get the start point of a DXF \c LINE entity.
  *
  * \return the start point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_line_get_start_point
@@ -1779,12 +1611,6 @@ dxf_line_get_start_point
  * \brief Set the start point of a DXF \c LINE entity.
  *
  * \return a pointer to a DXF \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_start_point
@@ -1827,12 +1653,6 @@ dxf_line_set_start_point
  * \brief Get the end point of a DXF \c LINE entity.
  *
  * \return the end point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_line_get_end_point
@@ -1940,12 +1760,6 @@ dxf_line_get_end_point
  * \brief Set the end point of a DXF \c LINE entity.
  *
  * \return a pointer to a DXF \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_end_point
@@ -1991,12 +1805,6 @@ dxf_line_set_end_point
  * \return a DXF \c POINT containing the extrusion coordinates.
  *
  * \warning No other members are copied into the DXF \c POINT.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_line_get_extrusion_vector_as_point
@@ -2047,12 +1855,6 @@ dxf_line_get_extrusion_vector_as_point
 
 /*!
  * \brief Set the extrusion vector for a DXF \c LINE entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_extrusion_vector
@@ -2095,12 +1897,6 @@ dxf_line_set_extrusion_vector
  * \return pointer to the next \c LINE entity.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_get_next
@@ -2140,12 +1936,6 @@ dxf_line_get_next
 /*!
  * \brief Set the pointer to the next \c LINE for a DXF \c LINE
  * entity.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_set_next
@@ -2186,12 +1976,6 @@ dxf_line_set_next
  * \brief Calculate the mid point of a DXF \c LINE entity.
  *
  * \return the mid point.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfPoint *
 dxf_line_calculate_mid_point
@@ -2300,12 +2084,6 @@ dxf_line_calculate_mid_point
  * between start point and end point).
  *
  * \return the length of the \c line in drawing units.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 double
 dxf_line_calculate_length
@@ -2356,12 +2134,6 @@ dxf_line_calculate_length
  * when successful.
  *
  * \warning Both DXF \c POINT entities need to be freed by the caller.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLine *
 dxf_line_create_from_points
