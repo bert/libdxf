@@ -742,6 +742,11 @@ dxf_polyline_set_vertices
         DxfPolyline *polyline,
         DxfVertex *vertices
 );
+DxfPolyline *
+dxf_polyline_get_next
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus
