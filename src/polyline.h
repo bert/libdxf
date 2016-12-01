@@ -254,7 +254,8 @@ dxf_polyline_struct
                  * The "vertices follow" flag is always 1, indicating that a
                  * series of Vertex entities is expected to follow the
                  * \c Polyline, terminated by a "sequence end" entity.\n
-                 * Group code = 66. */
+                 * Group code = 66.\n
+                 * \deprecated As of version 2002. */
         int flag;
                 /*!< Optional, defaults to 0\n
                  * bit coded:\n
