@@ -710,8 +710,6 @@ dxf_line_get_linetype
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result = NULL;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -727,11 +725,10 @@ dxf_line_get_linetype
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (line->linetype);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (line->linetype));
 }
 
 
