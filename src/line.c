@@ -1235,8 +1235,6 @@ dxf_line_get_paperspace
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1257,11 +1255,10 @@ dxf_line_get_paperspace
                   (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
                   __FUNCTION__);
         }
-        result = line->paperspace;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->paperspace);
 }
 
 
