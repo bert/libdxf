@@ -375,11 +375,9 @@ dxf_line_set_dictionary_owner_hard
         char *dictionary_owner_hard
 );
 DxfPoint *
-dxf_line_get_start_point
+dxf_line_get_p0
 (
-        DxfLine *line,
-        int id_code,
-        int inheritance
+        DxfLine *line
 );
 DxfLine *
 dxf_line_set_start_point

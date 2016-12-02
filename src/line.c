@@ -1468,34 +1468,20 @@ dxf_line_set_dictionary_owner_hard
 
 
 /*!
- * \brief Get the start point of a DXF \c LINE entity.
+ * \brief Get the start point \p0 of a DXF \c LINE entity.
  *
- * \return the start point.
+ * \return the start point \c p0.
  */
 DxfPoint *
-dxf_line_get_start_point
+dxf_line_get_p0
 (
-        DxfLine *line,
+        DxfLine *line
                 /*!< a pointer to a DXF \c LINE entity. */
-        int id_code,
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file. */
-        int inheritance
-                /*!< Inherit layer, linetype, color and other relevant
-                 * properties from either:
-                 * <ol>
-                 * <li value = "0"> Default (as initialised).</li>
-                 * <li value = "1"> \c LINE.</li>
-                 * </ol>
-                 */
 )
 {
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfPoint *p1 = NULL;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1504,73 +1490,10 @@ dxf_line_get_start_point
                   __FUNCTION__);
                 return (NULL);
         }
-        if ((line->x0 == line->x1)
-          && (line->y0 == line->y1)
-          && (line->z0 == line->z1))
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a LINE with points with identical coordinates were passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        p1 = dxf_point_init (p1);
-        if (p1 == NULL)
-        {
-              fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
-                __FUNCTION__);
-              return (NULL);
-        }
-        if (id_code < 0)
-        {
-              fprintf (stderr,
-                  (_("Warning in %s () passed id_code is smaller than 0.\n")),
-                __FUNCTION__);
-        }
-        p1->id_code = id_code;
-        p1->x0 = line->x0;
-        p1->y0 = line->y0;
-        p1->z0 = line->z0;
-        switch (inheritance)
-        {
-                case 0:
-                        /* Do nothing. */
-                        break;
-                case 1:
-                        if (line->linetype != NULL)
-                        {
-                                p1->linetype = strdup (line->linetype);
-                        }
-                        if (line->layer != NULL)
-                        {
-                                p1->layer = strdup (line->layer);
-                        }
-                        p1->thickness = line->thickness;
-                        p1->linetype_scale = line->linetype_scale;
-                        p1->visibility = line->visibility;
-                        p1->color = line->color;
-                        p1->paperspace = line->paperspace;
-                        if (line->dictionary_owner_soft != NULL)
-                        {
-                                p1->dictionary_owner_soft = strdup (line->dictionary_owner_soft);
-                        }
-                        if (line->dictionary_owner_hard != NULL)
-                        {
-                                p1->dictionary_owner_hard = strdup (line->dictionary_owner_hard);
-                        }
-                        break;
-                default:
-                        fprintf (stderr,
-                          (_("Warning in %s (): unknown inheritance option passed.\n")),
-                          __FUNCTION__);
-                        fprintf (stderr,
-                          (_("\tResolving to default.\n")));
-                        break;
-        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (p1);
+        return ((DxfPoint *) line->p0);
 }
 
 
