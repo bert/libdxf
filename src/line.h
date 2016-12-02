@@ -182,6 +182,12 @@ dxf_line_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF line. */
+        DxfPoint *p0;
+                /*!< Start point for the line.\n
+                 * Group codes = 10, 20 and 30.*/
+        DxfPoint *p1;
+                /*!< End point for the line.\n
+                 * Group codes = 11, 21 and 31.*/
         double x0;
                 /*!< X value of the start point.\n
                  * Group code = 10. */
