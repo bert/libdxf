@@ -1875,8 +1875,6 @@ dxf_line_get_next
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        DxfLine *result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1892,11 +1890,10 @@ dxf_line_get_next
                   __FUNCTION__);
                 return (NULL);
         }
-        result = (DxfLine *) line->next;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return ((DxfLine *) line->next);
 }
 
 
