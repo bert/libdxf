@@ -1405,8 +1405,6 @@ dxf_line_get_dictionary_owner_hard
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        char *result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1422,11 +1420,10 @@ dxf_line_get_dictionary_owner_hard
                   __FUNCTION__);
                 return (NULL);
         }
-        result = strdup (line->dictionary_owner_hard);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (strdup (line->dictionary_owner_hard));
 }
 
 
