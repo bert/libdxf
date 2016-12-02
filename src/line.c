@@ -1071,8 +1071,6 @@ dxf_line_get_visibility
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int16_t result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1095,11 +1093,10 @@ dxf_line_get_visibility
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = line->visibility;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->visibility);
 }
 
 
