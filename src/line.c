@@ -1160,8 +1160,6 @@ dxf_line_get_color
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1176,11 +1174,10 @@ dxf_line_get_color
                   (_("Warning in %s () a negative value was found in the color member.\n")),
                   __FUNCTION__);
         }
-        result = line->color;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->color);
 }
 
 
