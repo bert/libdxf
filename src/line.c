@@ -996,8 +996,6 @@ dxf_line_get_linetype_scale
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -1013,11 +1011,10 @@ dxf_line_get_linetype_scale
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = line->linetype_scale;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->linetype_scale);
 }
 
 
