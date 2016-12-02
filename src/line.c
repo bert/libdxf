@@ -860,8 +860,6 @@ dxf_line_get_elevation
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        double result;
-
         /* Do some basic checks. */
         if (line == NULL)
         {
@@ -870,11 +868,10 @@ dxf_line_get_elevation
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = line->elevation;
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (line->elevation);
 }
 
 
