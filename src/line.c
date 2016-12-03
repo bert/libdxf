@@ -1490,6 +1490,13 @@ dxf_line_get_p0
                   __FUNCTION__);
                 return (NULL);
         }
+        if (line->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
