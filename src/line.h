@@ -43,6 +43,7 @@
 
 
 #include "global.h"
+#include "binary_graphics_data.h"
 #include "point.h"
 
 
@@ -373,6 +374,11 @@ dxf_line_set_shadow_mode
 (
         DxfLine *line,
         int16_t shadow_mode
+);
+DxfBinaryGraphicsData *
+dxf_line_get_binary_graphics_data
+(
+        DxfLine *line
 );
 char *
 dxf_line_get_dictionary_owner_soft
