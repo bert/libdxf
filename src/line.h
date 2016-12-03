@@ -380,10 +380,10 @@ dxf_line_get_p0
         DxfLine *line
 );
 DxfLine *
-dxf_line_set_start_point
+dxf_line_set_p0
 (
         DxfLine *line,
-        DxfPoint *point
+        DxfPoint *p0
 );
 DxfPoint *
 dxf_line_get_end_point
