@@ -380,6 +380,12 @@ dxf_line_get_binary_graphics_data
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_binary_graphics_data
+(
+        DxfLine *line,
+        DxfBinaryGraphicsData *data
+);
 char *
 dxf_line_get_dictionary_owner_soft
 (
