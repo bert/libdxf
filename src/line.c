@@ -1468,7 +1468,7 @@ dxf_line_set_dictionary_owner_hard
 
 
 /*!
- * \brief Get the start point \p0 of a DXF \c LINE entity.
+ * \brief Get the start point \c p0 of a DXF \c LINE entity.
  *
  * \return the start point \c p0.
  */
