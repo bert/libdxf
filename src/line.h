@@ -419,6 +419,11 @@ dxf_line_set_dictionary_owner_hard
         DxfLine *line,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_line_get_lineweight
+(
+        DxfLine *line
+);
 DxfPoint *
 dxf_line_get_p0
 (
