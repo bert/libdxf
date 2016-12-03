@@ -368,6 +368,12 @@ dxf_line_get_shadow_mode
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_shadow_mode
+(
+        DxfLine *line,
+        int16_t shadow_mode
+);
 char *
 dxf_line_get_dictionary_owner_soft
 (
