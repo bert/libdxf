@@ -1401,6 +1401,51 @@ dxf_line_set_graphics_data_size
 
 
 /*!
+ * \brief Get the \c shadow_mode from a DXF \c LINE entity.
+ *
+ * \return \c shadow_mode when successful, or \c EXIT_FAILURE when an
+ * error occurred.
+ */
+int16_t
+dxf_line_get_shadow_mode
+(
+        DxfLine *line
+                /*!< a pointer to a DXF \c LINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (line->shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the shadow_mode member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (line->shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the shadow_mode member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line->shadow_mode);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c LINE entity.
  *

@@ -363,6 +363,11 @@ dxf_line_set_graphics_data_size
         DxfLine *line,
         int graphics_data_size
 );
+int16_t
+dxf_line_get_shadow_mode
+(
+        DxfLine *line
+);
 char *
 dxf_line_get_dictionary_owner_soft
 (
