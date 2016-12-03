@@ -386,11 +386,9 @@ dxf_line_set_p0
         DxfPoint *p0
 );
 DxfPoint *
-dxf_line_get_end_point
+dxf_line_get_p1
 (
-        DxfLine *line,
-        int id_code,
-        int inheritance
+        DxfLine *line
 );
 DxfLine *
 dxf_line_set_end_point
