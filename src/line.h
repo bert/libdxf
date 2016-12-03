@@ -402,6 +402,12 @@ dxf_line_get_material
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_material
+(
+        DxfLine *line,
+        char *material
+);
 char *
 dxf_line_get_dictionary_owner_hard
 (
