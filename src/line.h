@@ -391,10 +391,10 @@ dxf_line_get_p1
         DxfLine *line
 );
 DxfLine *
-dxf_line_set_end_point
+dxf_line_set_p1
 (
         DxfLine *line,
-        DxfPoint *point
+        DxfPoint *p1
 );
 DxfPoint *
 dxf_line_get_extrusion_vector_as_point

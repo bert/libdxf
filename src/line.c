@@ -1568,16 +1568,16 @@ dxf_line_get_p1
 
 
 /*!
- * \brief Set the end point of a DXF \c LINE entity.
+ * \brief Set the end point \c p1 of a DXF \c LINE entity.
  *
  * \return a pointer to a DXF \c LINE entity.
  */
 DxfLine *
-dxf_line_set_end_point
+dxf_line_set_p1
 (
         DxfLine *line,
                 /*!< a pointer to a DXF \c LINE entity. */
-        DxfPoint *point
+        DxfPoint *p1
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -1592,16 +1592,14 @@ dxf_line_set_end_point
                   __FUNCTION__);
                 return (NULL);
         }
-        if (point == NULL)
+        if (p1 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        line->x1 = point->x0;
-        line->y1 = point->y0;
-        line->z1 = point->z0;
+        line->p1 = p1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
