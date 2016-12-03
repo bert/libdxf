@@ -352,6 +352,11 @@ dxf_line_set_paperspace
         DxfLine *line,
         int paperspace
 );
+int
+dxf_line_get_graphics_data_size
+(
+        DxfLine *line
+);
 char *
 dxf_line_get_dictionary_owner_soft
 (
