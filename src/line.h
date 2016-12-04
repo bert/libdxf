@@ -435,6 +435,12 @@ dxf_line_get_plot_style_name
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_plot_style_name
+(
+        DxfLine *line,
+        char *plot_style_name
+);
 DxfPoint *
 dxf_line_get_p0
 (
