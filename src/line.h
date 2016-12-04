@@ -430,6 +430,11 @@ dxf_line_set_lineweight
         DxfLine *line,
         int16_t lineweight
 );
+char *
+dxf_line_get_plot_style_name
+(
+        DxfLine *line
+);
 DxfPoint *
 dxf_line_get_p0
 (
