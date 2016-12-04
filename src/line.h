@@ -441,6 +441,11 @@ dxf_line_set_plot_style_name
         DxfLine *line,
         char *plot_style_name
 );
+long
+dxf_line_get_color_value
+(
+        DxfLine *line
+);
 DxfPoint *
 dxf_line_get_p0
 (
