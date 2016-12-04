@@ -424,6 +424,12 @@ dxf_line_get_lineweight
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_lineweight
+(
+        DxfLine *line,
+        int16_t lineweight
+);
 DxfPoint *
 dxf_line_get_p0
 (

@@ -1849,6 +1849,40 @@ dxf_line_get_lineweight
 
 
 /*!
+ * \brief Set the \c lineweight for a DXF \c LINE entity.
+ *
+ * \return a pointer to \c line when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLine *
+dxf_line_set_lineweight
+(
+        DxfLine *line,
+                /*!< a pointer to a DXF \c LINE entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the start point \c p0 of a DXF \c LINE entity.
  *
  * \return the start point \c p0.
