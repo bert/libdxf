@@ -446,6 +446,12 @@ dxf_line_get_color_value
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_color_value
+(
+        DxfLine *line,
+        long color_value
+);
 DxfPoint *
 dxf_line_get_p0
 (
