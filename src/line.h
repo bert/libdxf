@@ -490,6 +490,12 @@ dxf_line_get_x0
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_x0
+(
+        DxfLine *line,
+        double x0
+);
 DxfPoint *
 dxf_line_get_p1
 (
