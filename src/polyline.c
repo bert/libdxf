@@ -2371,7 +2371,7 @@ double
 dxf_polyline_get_x0
 (
         DxfPolyline *polyline
-                /*!< a pointer to a DXF \c donut entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
 )
 {
 #ifdef DEBUG
