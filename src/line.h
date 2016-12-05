@@ -485,6 +485,11 @@ dxf_line_set_p0
         DxfLine *line,
         DxfPoint *p0
 );
+double
+dxf_line_get_x0
+(
+        DxfLine *line
+);
 DxfPoint *
 dxf_line_get_p1
 (
