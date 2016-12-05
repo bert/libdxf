@@ -457,6 +457,12 @@ dxf_line_get_color_name
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_color_name
+(
+        DxfLine *line,
+        char *color_name
+);
 DxfPoint *
 dxf_line_get_p0
 (
