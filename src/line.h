@@ -468,6 +468,12 @@ dxf_line_get_transparency
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_transparency
+(
+        DxfLine *line,
+        long transparency
+);
 DxfPoint *
 dxf_line_get_p0
 (
