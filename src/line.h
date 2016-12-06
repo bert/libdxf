@@ -529,6 +529,11 @@ dxf_line_set_p1
         DxfLine *line,
         DxfPoint *p1
 );
+double
+dxf_line_get_x1
+(
+        DxfLine *line
+);
 DxfPoint *
 dxf_line_get_extrusion_vector_as_point
 (
