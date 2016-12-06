@@ -501,6 +501,12 @@ dxf_line_get_y0
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_y0
+(
+        DxfLine *line,
+        double y0
+);
 DxfPoint *
 dxf_line_get_p1
 (
