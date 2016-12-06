@@ -512,6 +512,12 @@ dxf_line_get_z0
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_z0
+(
+        DxfLine *line,
+        double z0
+);
 DxfPoint *
 dxf_line_get_p1
 (
