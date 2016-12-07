@@ -2819,6 +2819,38 @@ dxf_line_set_z1
 
 
 /*!
+ * \brief Get the X-value of the extrusion vector of a DXF \c LINE
+ * entity.
+ *
+ * \return the X-value of the extrusion vector.
+ */
+double
+dxf_line_get_extr_x0
+(
+        DxfLine *line
+                /*!< a pointer to a DXF \c LINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line->extr_x0);
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c LINE entity.
  *
