@@ -2694,6 +2694,49 @@ dxf_line_get_y1
 
 
 /*!
+ * \brief Set the Y-value of the end point \c y1 of a DXF \c LINE
+ * entity.
+ *
+ * \return a pointer to \c line when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLine *
+dxf_line_set_y1
+(
+        DxfLine *line,
+                /*!< a pointer to a DXF \c LINE entity. */
+        double y1
+                /*!< the Y-value of the end point \c y1 of a DXF
+                 * \c line entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->p1->y0 = y1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c LINE entity.
  *
