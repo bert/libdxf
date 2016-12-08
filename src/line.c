@@ -2919,6 +2919,42 @@ dxf_line_get_extr_y0
 
 
 /*!
+ * \brief Set the Y-value of the extrusion vector of a DXF \c LINE
+ * entity.
+ *
+ * \return a pointer to a DXF \c LINE entity when successful, \c NULL
+ * when an error occurred.
+ */
+DxfLine *
+dxf_line_set_extr_y0
+(
+        DxfLine *line,
+                /*!< a pointer to a DXF \c LINE entity. */
+        double extr_y0
+                /*!< the Y-value of the extrusion vector of a DXF
+                 * \c LINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        line->extr_y0 = extr_y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (line);
+}
+
+
+/*!
  * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
  * \c LINE entity.
  *
