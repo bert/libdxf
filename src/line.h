@@ -589,6 +589,12 @@ dxf_line_get_extr_z0
 (
         DxfLine *line
 );
+DxfLine *
+dxf_line_set_extr_z0
+(
+        DxfLine *line,
+        double extr_z0
+);
 DxfPoint *
 dxf_line_get_extrusion_vector_as_point
 (
