@@ -3424,7 +3424,7 @@ dxf_polyline_set_extr_y0
                 /*!< a pointer to a DXF \c POLYLINE entity. */
         double extr_y0
                 /*!< the Y-value of the extrusion vector of a DXF
-                 * \c 3DLINE entity. */
+                 * \c POLYLINE entity. */
 )
 {
 #ifdef DEBUG
