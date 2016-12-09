@@ -505,9 +505,9 @@ dxf_line_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if ((line->x0 == line->x1)
-                && (line->y0 == line->y1)
-                && (line->z0 == line->z1))
+        if ((line->p0->x0 == line->p1->x0)
+                && (line->p0->y0 == line->p1->y0)
+                && (line->p0->z0 == line->p1->z0))
         {
                 fprintf (stderr,
                   (_("Error in %s () start point and end point are identical for the %s entity with id-code: %x\n")),
@@ -580,15 +580,28 @@ dxf_line_write
         {
                 fprintf (fp->fp, "  6\n%s\n", line->linetype);
         }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (line->material, "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", line->material);
+        }
+        if (line->color != DXF_COLOR_BYLAYER)
+        {
+                fprintf (fp->fp, " 62\n%d\n", line->color);
+        }
+        if (fp->acad_version_number >= AutoCAD_2002)
+        {
+                fprintf (fp->fp, "370\n%d\n", line->lineweight);
+        }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
           && (line->elevation != 0.0))
         {
                 fprintf (fp->fp, " 38\n%f\n", line->elevation);
         }
-        if (line->color != DXF_COLOR_BYLAYER)
+        if (line->thickness != 0.0)
         {
-                fprintf (fp->fp, " 62\n%d\n", line->color);
+                fprintf (fp->fp, " 39\n%f\n", line->thickness);
         }
         if (line->linetype_scale != 1.0)
         {
@@ -598,20 +611,46 @@ dxf_line_write
         {
                 fprintf (fp->fp, " 60\n%d\n", line->visibility);
         }
+        if ((fp->acad_version_number >= AutoCAD_2000)
+          && (line->graphics_data_size > 0))
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", line->graphics_data_size);
+#else
+                fprintf (fp->fp, " 92\n%d\n", line->graphics_data_size);
+#endif
+                if (line->binary_graphics_data != NULL)
+                {
+                        DxfBinaryGraphicsData *iter;
+                        iter = dxf_line_get_binary_graphics_data (line);
+                        while (iter != NULL)
+                        {
+                                fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (iter));
+                                iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (iter);
+                        }
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", line->color_value);
+                fprintf (fp->fp, "430\n%s\n", line->color_name);
+                fprintf (fp->fp, "440\n%ld\n", line->transparency);
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", line->plot_style_name);
+                fprintf (fp->fp, "284\n%d\n", line->shadow_mode);
+        }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbLine\n");
         }
-        if (line->thickness != 0.0)
-        {
-                fprintf (fp->fp, " 39\n%f\n", line->thickness);
-        }
-        fprintf (fp->fp, " 10\n%f\n", line->x0);
-        fprintf (fp->fp, " 20\n%f\n", line->y0);
-        fprintf (fp->fp, " 30\n%f\n", line->z0);
-        fprintf (fp->fp, " 11\n%f\n", line->x1);
-        fprintf (fp->fp, " 21\n%f\n", line->y1);
-        fprintf (fp->fp, " 31\n%f\n", line->z1);
+        fprintf (fp->fp, " 10\n%f\n", line->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", line->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", line->p0->z0);
+        fprintf (fp->fp, " 11\n%f\n", line->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", line->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", line->p1->z0);
         if ((fp->acad_version_number >= AutoCAD_12)
                 && (line->extr_x0 != 0.0)
                 && (line->extr_y0 != 0.0)
