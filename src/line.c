@@ -3447,9 +3447,9 @@ dxf_line_calculate_length
                   __FUNCTION__);
                 return (0.0);
         }
-        if ((line->x0 == line->x1)
-          && (line->y0 == line->y1)
-          && (line->z0 == line->z1))
+        if ((line->p0->x0 == line->p1->x0)
+          && (line->p0->y0 == line->p1->y0)
+          && (line->p0->z0 == line->p1->z0))
         {
                 fprintf (stderr,
                   (_("Error in %s () endpoints with identical coordinates were passed.\n")),
@@ -3458,9 +3458,9 @@ dxf_line_calculate_length
         }
         length = sqrt
         (
-          ((line->x1 - line->x0) * (line->x1 - line->x0))
-          + ((line->y1 - line->y0) * (line->y1 - line->y0))
-          + ((line->z1 - line->z0) * (line->z1 - line->z0))
+          ((line->p1->x0 - line->p0->x0) * (line->p1->x0 - line->p0->x0))
+          + ((line->p1->y0 - line->p0->y0) * (line->p1->y0 - line->p0->y0))
+          + ((line->p1->z0 - line->p0->z0) * (line->p1->z0 - line->p0->z0))
         );
 #if DEBUG
         DXF_DEBUG_END
