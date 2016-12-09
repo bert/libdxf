@@ -3171,9 +3171,9 @@ dxf_line_get_extrusion_vector_as_point
                   __FUNCTION__);
                 return (NULL);
         }
-        if ((line->x0 == line->x1)
-          && (line->y0 == line->y1)
-          && (line->z0 == line->z1))
+        if ((line->p0->x0 == line->p1->x0)
+          && (line->p0->y0 == line->p1->y0)
+          && (line->p0->z0 == line->p1->z0))
         {
                 fprintf (stderr,
                   (_("Error in %s () a 3DLINE with points with identical coordinates were passed.\n")),
