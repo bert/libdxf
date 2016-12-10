@@ -3541,12 +3541,12 @@ dxf_line_create_from_points
                 __FUNCTION__);
         }
         line->id_code = id_code;
-        line->x0 = p1->x0;
-        line->y0 = p1->y0;
-        line->z0 = p1->z0;
-        line->x1 = p2->x0;
-        line->y1 = p2->y0;
-        line->z1 = p2->z0;
+        line->p0->x0 = p1->x0;
+        line->p0->y0 = p1->y0;
+        line->p0->z0 = p1->z0;
+        line->p1->x0 = p2->x0;
+        line->p1->y0 = p2->y0;
+        line->p1->z0 = p2->z0;
         switch (inheritance)
         {
                 case 0:
@@ -3566,14 +3566,33 @@ dxf_line_create_from_points
                         line->visibility = p1->visibility;
                         line->color = p1->color;
                         line->paperspace = p1->paperspace;
+                        line->graphics_data_size = p1->graphics_data_size;
+                        line-> shadow_mode = p1->shadow_mode;
+                        /*! \todo Do a deep copy of \c binary_graphics_data. */
+                        line->binary_graphics_data = p1->binary_graphics_data;
                         if (p1->dictionary_owner_soft != NULL)
                         {
                                 line->dictionary_owner_soft = strdup (p1->dictionary_owner_soft);
+                        }
+                        if (p1->material != NULL)
+                        {
+                                line->material = strdup (p1->material);
                         }
                         if (p1->dictionary_owner_hard != NULL)
                         {
                                 line->dictionary_owner_hard = strdup (p1->dictionary_owner_hard);
                         }
+                        line->lineweight = p1->lineweight;
+                        if (p1->plot_style_name != NULL)
+                        {
+                                line->plot_style_name = strdup (p1->plot_style_name);
+                        }
+                        line->color_value = p1->color_value;
+                        if (p1->color_name != NULL)
+                        {
+                                line->color_name = strdup (p1->color_name);
+                        }
+                        line->transparency = p1->transparency;
                         break;
                 case 2:
                         if (p2->linetype != NULL)
@@ -3589,14 +3608,33 @@ dxf_line_create_from_points
                         line->visibility = p2->visibility;
                         line->color = p2->color;
                         line->paperspace = p2->paperspace;
+                        line->graphics_data_size = p2->graphics_data_size;
+                        line-> shadow_mode = p2->shadow_mode;
+                        /*! \todo Do a deep copy of \c binary_graphics_data. */
+                        line->binary_graphics_data = p2->binary_graphics_data;
                         if (p2->dictionary_owner_soft != NULL)
                         {
                                 line->dictionary_owner_soft = strdup (p2->dictionary_owner_soft);
+                        }
+                        if (p2->material != NULL)
+                        {
+                                line->material = strdup (p2->material);
                         }
                         if (p2->dictionary_owner_hard != NULL)
                         {
                                 line->dictionary_owner_hard = strdup (p2->dictionary_owner_hard);
                         }
+                        line->lineweight = p2->lineweight;
+                        if (p2->plot_style_name != NULL)
+                        {
+                                line->plot_style_name = strdup (p2->plot_style_name);
+                        }
+                        line->color_value = p2->color_value;
+                        if (p2->color_name != NULL)
+                        {
+                                line->color_name = strdup (p2->color_name);
+                        }
+                        line->transparency = p2->transparency;
                         break;
                 default:
                         fprintf (stderr,
