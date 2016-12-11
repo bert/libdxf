@@ -110,18 +110,31 @@ dxf_polyline_init
         polyline->id_code = 0;
         polyline->linetype = strdup (DXF_DEFAULT_LINETYPE);
         polyline->layer = strdup (DXF_DEFAULT_LAYER);
-        polyline->x0 = 0.0;
-        polyline->y0 = 0.0;
-        polyline->z0 = 0.0;
         polyline->elevation = 0.0;
         polyline->thickness = 0.0;
         polyline->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
         polyline->visibility = DXF_DEFAULT_VISIBILITY;
+        polyline->color = DXF_COLOR_BYLAYER;
+        polyline->paperspace = DXF_MODELSPACE;
+        polyline->graphics_data_size = 0;
+        polyline->shadow_mode = 0;
+        polyline->binary_graphics_data = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_new ();
+        polyline->dictionary_owner_soft = strdup ("");
+        polyline->material = strdup ("");
+        polyline->dictionary_owner_hard = strdup ("");
+        polyline->lineweight = 0;
+        polyline->plot_style_name = strdup ("");
+        polyline->color_value = 0;
+        polyline->color_name = strdup ("");
+        polyline->transparency = 0;
+        polyline->p0 = (DxfPoint *) dxf_point_new ();
+        polyline->p0 = dxf_point_init ((DxfPoint *) polyline->p0);
+        polyline->p0->x0 = 0.0;
+        polyline->p0->y0 = 0.0;
+        polyline->p0->z0 = 0.0;
         polyline->start_width = 0.0;
         polyline->end_width = 0.0;
         polyline->vertices_follow = 1;
-        polyline->color = DXF_COLOR_BYLAYER;
-        polyline->paperspace = DXF_MODELSPACE;
         polyline->flag = 0;
         polyline->polygon_mesh_M_vertex_count = 0;
         polyline->polygon_mesh_N_vertex_count = 0;
@@ -131,8 +144,8 @@ dxf_polyline_init
         polyline->extr_x0 = 0.0;
         polyline->extr_y0 = 0.0;
         polyline->extr_z0 = 0.0;
-        polyline->dictionary_owner_soft = strdup ("");
-        polyline->dictionary_owner_hard = strdup ("");
+        polyline->vertices = (DxfVertex *) dxf_vertex_new ();
+        polyline->vertices = dxf_vertex_init ((DxfVertex *) polyline->vertices);
         polyline->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
