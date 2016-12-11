@@ -3599,7 +3599,7 @@ dxf_polyline_set_vertices
                   __FUNCTION__);
                 return (NULL);
         }
-        polyline->vertices = (struct DxfVertex *) vertices;
+        polyline->vertices = (DxfVertex *) vertices;
 #if DEBUG
         DXF_DEBUG_END
 #endif

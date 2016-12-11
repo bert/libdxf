@@ -302,7 +302,7 @@ dxf_polyline_struct
         double extr_z0;
                 /*!< DXF: Z value of extrusion direction (optional).\n
                  * Group code = 230. */
-        struct DxfVertex *vertices;
+        DxfVertex *vertices;
                 /*!< Pointer to the first DxfVertex of the polyline.\n
                  * \c NULL in the last DxfVertex.\n
                  * \note Not all members of the DxfVertex struct are
