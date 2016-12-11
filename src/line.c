@@ -271,9 +271,7 @@ dxf_line_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &line->p1->z0);
                 }
-                else if ((fp->acad_version_number <= AutoCAD_11)
-                        && (strcmp (temp_string, "38") == 0)
-                        && (line->elevation != 0.0))
+                else if (strcmp (temp_string, "38") == 0)
                 {
                         /* Now follows a string containing the
                          * elevation. */
@@ -322,8 +320,7 @@ dxf_line_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &line->graphics_data_size);
                 }
-                else if ((fp->acad_version_number >= AutoCAD_13)
-                        && (strcmp (temp_string, "100") == 0))
+                else if (strcmp (temp_string, "100") == 0)
                 {
                         /* Now follows a string containing the
                          * subclass marker value. */
