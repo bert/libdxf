@@ -391,6 +391,12 @@ dxf_polyline_get_thickness
 (
         DxfPolyline *polyline
 );
+DxfPolyline *
+dxf_polyline_set_thickness
+(
+        DxfPolyline *polyline,
+        double thickness
+);
 double
 dxf_polyline_get_linetype_scale
 (
