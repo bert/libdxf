@@ -254,9 +254,7 @@ dxf_polyline_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &polyline->z0);
                 }
-                else if ((fp->acad_version_number <= AutoCAD_11)
-                        && (strcmp (temp_string, "38") == 0)
-                        && (polyline->elevation != 0.0))
+                else if (strcmp (temp_string, "38") == 0)
                 {
                         /* Now follows a string containing the
                          * elevation. */
@@ -361,8 +359,7 @@ dxf_polyline_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%d\n", &polyline->surface_type);
                 }
-                else if ((fp->acad_version_number >= AutoCAD_12)
-                        && (strcmp (temp_string, "100") == 0))
+                else if (strcmp (temp_string, "100") == 0)
                 {
                         /* Subclass markers are post AutoCAD R12
                          * variable so additional testing for the
