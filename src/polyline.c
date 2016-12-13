@@ -419,13 +419,13 @@ dxf_polyline_read
                 }
         }
         /* Handle omitted members and/or illegal values. */
-        if (strcmp (polyline->linetype, "") == 0)
+        if (strcmp (dxf_polyline_get_linetype (polyline), "") == 0)
         {
-                polyline->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                dxf_polyline_set_linetype (polyline, strdup (DXF_DEFAULT_LINETYPE));
         }
-        if (strcmp (polyline->layer, "") == 0)
+        if (strcmp (dxf_polyline_get_layer (polyline), "") == 0)
         {
-                polyline->layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_polyline_set_layer (polyline, strdup (DXF_DEFAULT_LAYER));
         }
         /* Clean up. */
         free (temp_string);
