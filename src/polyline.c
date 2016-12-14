@@ -666,6 +666,14 @@ dxf_polyline_free
         }
         free (polyline->linetype);
         free (polyline->layer);
+        free (polyline->binary_graphics_data);
+        free (polyline->dictionary_owner_soft);
+        free (polyline->material);
+        free (polyline->dictionary_owner_hard);
+        free (polyline->plot_style_name);
+        free (polyline->color_name);
+        free (polyline->p0);
+        free (polyline->vertices);
         free (polyline);
         polyline = NULL;
 #if DEBUG
