@@ -476,58 +476,58 @@ dxf_polyline_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (polyline->x0 != 0.0)
+        if (dxf_polyline_get_x0 (polyline) != 0.0)
         {
                 fprintf (stderr,
                   (_("Error in %s () start point has an invalid X-value for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, polyline->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_polyline_get_id_code (polyline));
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (polyline->y0 != 0.0)
+        if (dxf_polyline_get_y0 (polyline) != 0.0)
         {
                 fprintf (stderr,
                   (_("Error in %s () start point has an invalid Y-value for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, polyline->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_polyline_get_id_code (polyline));
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (polyline->vertices_follow != 1)
+        if (dxf_polyline_get_vertices_follow (polyline) != 1)
         {
                 fprintf (stderr,
                   (_("Error in %s () vertices follow flag has an invalid value for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, polyline->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_polyline_get_id_code (polyline));
                 /* Clean up. */
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (polyline->linetype, "") == 0)
+        if (strcmp (dxf_polyline_get_linetype (polyline), "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, polyline->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_polyline_get_id_code (polyline));
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                polyline->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                dxf_polyline_set_linetype (polyline, strdup (DXF_DEFAULT_LINETYPE));
         }
-        if (strcmp (polyline->layer, "") == 0)
+        if (strcmp (dxf_polyline_get_layer (polyline), "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, polyline->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_polyline_get_id_code (polyline));
                 fprintf (stderr,
                   (_("\t%s entity is relocated to layer 0\n")),
                   dxf_entity_name);
-                polyline->layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_polyline_set_layer (polyline, strdup (DXF_DEFAULT_LAYER));
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (polyline->id_code != -1)
+        if (dxf_polyline_get_id_code (polyline) != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", polyline->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_polyline_get_id_code (polyline));
         }
         /*!
          * \todo for version R14.\n
@@ -543,46 +543,46 @@ dxf_polyline_write
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", polyline->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", dxf_polyline_get_dictionary_owner_soft (polyline));
                 fprintf (fp->fp, "102\n}\n");
         }
         if ((strcmp (polyline->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", polyline->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", dxf_polyline_get_dictionary_owner_hard (polyline));
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (polyline->paperspace == DXF_PAPERSPACE)
+        if (dxf_polyline_get_paperspace (polyline) == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", polyline->layer);
-        if (strcmp (polyline->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", dxf_polyline_get_layer (polyline));
+        if (strcmp (dxf_polyline_get_linetype (polyline), DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", polyline->linetype);
+                fprintf (fp->fp, "  6\n%s\n", dxf_polyline_get_linetype (polyline));
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (polyline->elevation != 0.0))
+          && (dxf_polyline_get_elevation (polyline) != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", polyline->elevation);
+                fprintf (fp->fp, " 38\n%f\n", dxf_polyline_get_elevation (polyline));
         }
-        if (polyline->color != DXF_COLOR_BYLAYER)
+        if (dxf_polyline_get_color (polyline) != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", polyline->color);
+                fprintf (fp->fp, " 62\n%d\n", dxf_polyline_get_color (polyline));
         }
-        if (polyline->linetype_scale != 1.0)
+        if (dxf_polyline_get_linetype_scale (polyline) != 1.0)
         {
-                fprintf (fp->fp, " 48\n%f\n", polyline->linetype_scale);
+                fprintf (fp->fp, " 48\n%f\n", dxf_polyline_get_linetype_scale (polyline));
         }
-        if (polyline->visibility != 0)
+        if (dxf_polyline_get_visibility (polyline) != 0)
         {
-                fprintf (fp->fp, " 60\n%d\n", polyline->visibility);
+                fprintf (fp->fp, " 60\n%d\n", dxf_polyline_get_visibility (polyline));
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -590,40 +590,40 @@ dxf_polyline_write
         }
         if (fp->acad_version_number < AutoCAD_2002)
         {
-                fprintf (fp->fp, " 66\n%d\n", polyline->vertices_follow);
+                fprintf (fp->fp, " 66\n%d\n", dxf_polyline_get_vertices_follow (polyline));
         }
-        fprintf (fp->fp, " 10\n%f\n", polyline->x0);
-        fprintf (fp->fp, " 20\n%f\n", polyline->y0);
-        fprintf (fp->fp, " 30\n%f\n", polyline->z0);
-        if (polyline->thickness != 0.0)
+        fprintf (fp->fp, " 10\n%f\n", dxf_polyline_get_x0 (polyline));
+        fprintf (fp->fp, " 20\n%f\n", dxf_polyline_get_y0 (polyline));
+        fprintf (fp->fp, " 30\n%f\n", dxf_polyline_get_z0 (polyline));
+        if (dxf_polyline_get_thickness (polyline) != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", polyline->thickness);
+                fprintf (fp->fp, " 39\n%f\n", dxf_polyline_get_thickness (polyline));
         }
-        fprintf (fp->fp, " 70\n%d\n", polyline->flag);
-        if (polyline->start_width != 0.0)
+        fprintf (fp->fp, " 70\n%d\n", dxf_polyline_get_flag (polyline));
+        if (dxf_polyline_get_start_width (polyline) != 0.0)
         {
-                fprintf (fp->fp, " 40\n%f\n", polyline->start_width);
+                fprintf (fp->fp, " 40\n%f\n", dxf_polyline_get_start_width (polyline));
         }
-        if (polyline->end_width != 0.0)
+        if (dxf_polyline_get_end_width (polyline) != 0.0)
         {
-                fprintf (fp->fp, " 41\n%f\n", polyline->end_width);
+                fprintf (fp->fp, " 41\n%f\n", dxf_polyline_get_end_width (polyline));
         }
-        fprintf (fp->fp, " 71\n%d\n", polyline->polygon_mesh_M_vertex_count);
-        fprintf (fp->fp, " 72\n%d\n", polyline->polygon_mesh_N_vertex_count);
-        fprintf (fp->fp, " 73\n%d\n", polyline->smooth_M_surface_density);
-        fprintf (fp->fp, " 74\n%d\n", polyline->smooth_N_surface_density);
-        fprintf (fp->fp, " 75\n%d\n", polyline->surface_type);
+        fprintf (fp->fp, " 71\n%d\n", dxf_polyline_get_polygon_mesh_M_vertex_count (polyline));
+        fprintf (fp->fp, " 72\n%d\n", dxf_polyline_get_polygon_mesh_N_vertex_count (polyline));
+        fprintf (fp->fp, " 73\n%d\n", dxf_polyline_get_smooth_M_surface_density (polyline));
+        fprintf (fp->fp, " 74\n%d\n", dxf_polyline_get_smooth_N_surface_density (polyline));
+        fprintf (fp->fp, " 75\n%d\n", dxf_polyline_get_surface_type (polyline));
         if ((fp->acad_version_number >= AutoCAD_12)
-                && (polyline->extr_x0 != 0.0)
-                && (polyline->extr_y0 != 0.0)
-                && (polyline->extr_z0 != 1.0))
+                && (dxf_polyline_get_extr_x0 (polyline) != 0.0)
+                && (dxf_polyline_get_extr_y0 (polyline) != 0.0)
+                && (dxf_polyline_get_extr_z0 (polyline) != 1.0))
         {
-                fprintf (fp->fp, "210\n%f\n", polyline->extr_x0);
-                fprintf (fp->fp, "220\n%f\n", polyline->extr_y0);
-                fprintf (fp->fp, "230\n%f\n", polyline->extr_z0);
+                fprintf (fp->fp, "210\n%f\n", dxf_polyline_get_extr_x0 (polyline));
+                fprintf (fp->fp, "220\n%f\n", dxf_polyline_get_extr_y0 (polyline));
+                fprintf (fp->fp, "230\n%f\n", dxf_polyline_get_extr_z0 (polyline));
         }
         /* Start of writing (multiple) vertices. */
-        iter = (DxfVertex *) polyline->vertices;
+        iter = (DxfVertex *) dxf_polyline_get_vertices (polyline);
         while (iter != NULL)
         {
                 dxf_vertex_write (fp, iter);
