@@ -238,21 +238,21 @@ dxf_polyline_read
                         /* Now follows a string containing the
                          * X-coordinate of the primary point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &polyline->x0);
+                        fscanf (fp->fp, "%lf\n", &polyline->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the primary point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &polyline->y0);
+                        fscanf (fp->fp, "%lf\n", &polyline->p0->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the primary point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &polyline->z0);
+                        fscanf (fp->fp, "%lf\n", &polyline->p0->z0);
                 }
                 else if (strcmp (temp_string, "38") == 0)
                 {
