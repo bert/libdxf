@@ -664,16 +664,16 @@ dxf_polyline_free
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        free (polyline->linetype);
-        free (polyline->layer);
-        free (polyline->binary_graphics_data);
-        free (polyline->dictionary_owner_soft);
-        free (polyline->material);
-        free (polyline->dictionary_owner_hard);
-        free (polyline->plot_style_name);
-        free (polyline->color_name);
-        free (polyline->p0);
-        free (polyline->vertices);
+        free (dxf_polyline_get_linetype (polyline));
+        free (dxf_polyline_get_layer (polyline));
+        dxf_binary_graphics_data_free_chain (dxf_polyline_get_binary_graphics_data (polyline));
+        free (dxf_polyline_get_dictionary_owner_soft (polyline));
+        free (dxf_polyline_get_material (polyline));
+        free (dxf_polyline_get_dictionary_owner_hard (polyline));
+        free (dxf_polyline_get_plot_style_name (polyline));
+        free (dxf_polyline_get_color_name (polyline));
+        dxf_point_free (dxf_polyline_get_p0 (polyline));
+        dxf_vertex_free_chain (dxf_polyline_get_vertices (polyline));
         free (polyline);
         polyline = NULL;
 #if DEBUG
