@@ -229,16 +229,9 @@ dxf_polyline_struct
         /* Specific members for a DXF polyline. */
         DxfPoint *p0;
                 /*!< Insertion point for the polyline.\n
+                 * The \c z0 value of \c p0 is the default elevation for
+                 * vertices.\n
                  * Group codes = 10, 20 and 30.*/
-        double x0;
-                /*!< group code = 10\n
-                 * defaults to 0.0. */
-        double y0;
-                /*!< group code = 20\n
-                 * defaults to 0.0. */
-        double z0;
-                /*!< group code = 30\n
-                 * default elevation for vertices. */
         double start_width;
                 /*!< Optional, defaults to 0.0\n
                  * The default widths apply to any vertex that doesn't supply
