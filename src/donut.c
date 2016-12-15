@@ -234,9 +234,9 @@ dxf_donut_write
         polyline->id_code = id_code;
         polyline->linetype = dxf_donut_get_linetype (donut);
         polyline->layer = dxf_donut_get_layer (donut);
-        polyline->x0 = dxf_donut_get_x0 (donut);
-        polyline->y0 = dxf_donut_get_y0 (donut);
-        polyline->z0 = dxf_donut_get_z0 (donut);
+        polyline->p0->x0 = dxf_donut_get_x0 (donut);
+        polyline->p0->y0 = dxf_donut_get_y0 (donut);
+        polyline->p0->z0 = dxf_donut_get_z0 (donut);
         polyline->thickness = dxf_donut_get_thickness (donut);
         polyline->start_width = 0.5 * start_width;
         polyline->end_width = 0.5 * end_width;
