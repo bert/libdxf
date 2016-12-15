@@ -191,7 +191,7 @@ dxf_comment_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (comment->value);
+        free (dxf_comment_get_value (comment));
         free (comment);
         comment = NULL;
 #ifdef DEBUG
