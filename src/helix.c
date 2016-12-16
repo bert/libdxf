@@ -741,6 +741,7 @@ dxf_helix_free
         free (helix->color_name);
         dxf_point_free (helix->p0);
         dxf_point_free (helix->p1);
+        dxf_point_free (helix->p2);
         free (helix);
         helix = NULL;
 #if DEBUG
