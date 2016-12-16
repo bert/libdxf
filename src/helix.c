@@ -2867,6 +2867,44 @@ dxf_helix_set_z1
 
 
 /*!
+ * \brief Get the axis vector point \c p2 from a DXF \c HELIX entity.
+ *
+ * \return the axis vector point \c p2 when sucessful, or \c NULL when
+ * an error occurred.
+ */
+DxfPoint *
+dxf_helix_get_p2
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (helix->p2 ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the p2 member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfPoint *) helix->p2);
+}
+
+
+/*!
  * \brief Get the axis vector point X-value \c x2 from a DXF \c HELIX.
  *
  * \return axis vector point X-value \c x2 when successful, or
