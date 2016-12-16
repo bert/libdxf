@@ -194,7 +194,7 @@ dxf_idbuffer_entity_pointer_get_soft_pointer
         DxfIdbufferEntityPointer *entity_pointer
 );
 DxfIdbufferEntityPointer *
-dxf_idbuffer_soft_pointer_set_soft_pointer
+dxf_idbuffer_entity_pointer_set_soft_pointer
 (
         DxfIdbufferEntityPointer *entity_pointer,
         char *soft_pointer
