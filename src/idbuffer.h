@@ -160,6 +160,11 @@ dxf_idbuffer_set_dictionary_owner_hard
         DxfIdbuffer *idbuffer,
         char *dictionary_owner_hard
 );
+DxfIdbufferEntityPointer *
+dxf_idbuffer_get_entity_pointer
+(
+        DxfIdbuffer *idbuffer
+);
 DxfIdbuffer *
 dxf_idbuffer_get_next
 (

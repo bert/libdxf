@@ -674,6 +674,46 @@ dxf_idbuffer_set_dictionary_owner_hard
 
 
 /*!
+ * \brief Get the pointer to the first entity_pointer of a linked list
+ * of \c entity_pointer from a DXF \c IDBUFFER object.
+ *
+ * \return pointer to the first \c entity_pointer of a linked list.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfIdbufferEntityPointer *
+dxf_idbuffer_get_entity_pointer
+(
+        DxfIdbuffer *idbuffer
+                /*!< a pointer to a DXF \c IDBUFFER object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (idbuffer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (idbuffer->entity_pointer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the entity_pointer member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfIdbufferEntityPointer *) idbuffer->entity_pointer);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c HELIX entity from a DXF 
  * \c IDBUFFER object.
  *
