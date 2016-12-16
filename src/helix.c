@@ -731,17 +731,17 @@ dxf_helix_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (helix->linetype);
-        free (helix->layer);
-        dxf_binary_graphics_data_free_chain ((DxfBinaryGraphicsData *) helix->binary_graphics_data);
-        free (helix->dictionary_owner_hard);
-        free (helix->material);
-        free (helix->dictionary_owner_soft);
-        free (helix->plot_style_name);
-        free (helix->color_name);
-        dxf_point_free (helix->p0);
-        dxf_point_free (helix->p1);
-        dxf_point_free (helix->p2);
+        free (dxf_helix_get_linetype (helix));
+        free (dxf_helix_get_layer (helix));
+        dxf_binary_graphics_data_free_chain ((DxfBinaryGraphicsData *) dxf_helix_get_binary_graphics_data (helix));
+        free (dxf_helix_get_dictionary_owner_hard (helix));
+        free (dxf_helix_get_material (helix));
+        free (dxf_helix_get_dictionary_owner_soft (helix));
+        free (dxf_helix_get_plot_style_name (helix));
+        free (dxf_helix_get_color_name (helix));
+        dxf_point_free (dxf_helix_get_p0 (helix));
+        dxf_point_free (dxf_helix_get_p1 (helix));
+        dxf_point_free (dxf_helix_get_p2 (helix));
         free (helix);
         helix = NULL;
 #if DEBUG
