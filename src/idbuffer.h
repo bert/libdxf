@@ -166,6 +166,12 @@ dxf_idbuffer_get_entity_pointer
         DxfIdbuffer *idbuffer
 );
 DxfIdbuffer *
+dxf_idbuffer_set_entity_pointer
+(
+        DxfIdbuffer *idbuffer,
+        DxfIdbufferEntityPointer *entity_pointer
+);
+DxfIdbuffer *
 dxf_idbuffer_get_next
 (
         DxfIdbuffer *idbuffer
