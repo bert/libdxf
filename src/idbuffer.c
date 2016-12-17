@@ -196,8 +196,7 @@ dxf_idbuffer_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%x\n", &idbuffer->id_code);
                 }
-                else if ((fp->acad_version_number >= AutoCAD_13)
-                        && (strcmp (temp_string, "100") == 0))
+                else if (strcmp (temp_string, "100") == 0)
                 {
                         /* Now follows a string containing the
                          * subclass marker value. */
