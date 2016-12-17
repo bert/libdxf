@@ -303,13 +303,13 @@ dxf_idbuffer_write
         {
                 fprintf (stderr,
                   (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, idbuffer->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_idbuffer_get_id_code (idbuffer));
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (idbuffer->id_code != -1)
+        if (dxf_idbuffer_get_id_code (idbuffer) != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", idbuffer->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_idbuffer_get_id_code (idbuffer));
         }
         /*!
          * \todo for version R14.\n
@@ -325,25 +325,25 @@ dxf_idbuffer_write
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", idbuffer->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", dxf_idbuffer_get_dictionary_owner_soft (idbuffer));
                 fprintf (fp->fp, "102\n}\n");
         }
         if ((strcmp (idbuffer->dictionary_owner_hard, "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", idbuffer->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", dxf_idbuffer_get_dictionary_owner_hard (idbuffer));
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbIdBuffer\n");
         }
-        entity_pointer = (DxfIdbufferEntityPointer *) idbuffer->entity_pointer;
+        entity_pointer = (DxfIdbufferEntityPointer *) dxf_idbuffer_get_entity_pointer (idbuffer);
         while (idbuffer->entity_pointer != NULL)
         {
-                fprintf (fp->fp, "330\n%s\n", entity_pointer->soft_pointer);
-                entity_pointer = dxf_idbuffer_entity_pointer_get_next (entity_pointer);
+                fprintf (fp->fp, "330\n%s\n", dxf_idbuffer_entity_pointer_get_soft_pointer (dxf_idbuffer_get_entity_pointer (idbuffer)));
+                entity_pointer = dxf_idbuffer_entity_pointer_get_next (dxf_idbuffer_get_entity_pointer (idbuffer));
         }
         /* Clean up. */
         free (dxf_entity_name);
