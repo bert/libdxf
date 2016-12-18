@@ -379,9 +379,9 @@ dxf_idbuffer_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (idbuffer->dictionary_owner_soft);
-        free (idbuffer->dictionary_owner_hard);
-        dxf_idbuffer_entity_pointer_free_chain ((DxfIdbufferEntityPointer *) idbuffer->entity_pointer);
+        free (dxf_idbuffer_get_dictionary_owner_soft (idbuffer));
+        free (dxf_idbuffer_get_dictionary_owner_hard (idbuffer));
+        dxf_idbuffer_entity_pointer_free_chain ((DxfIdbufferEntityPointer *) dxf_idbuffer_get_entity_pointer (idbuffer));
         free (idbuffer);
         idbuffer = NULL;
 #if DEBUG
