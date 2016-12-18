@@ -413,7 +413,7 @@ dxf_idbuffer_free_chain
         }
         while (id_buffers != NULL)
         {
-                struct DxfIdbuffer *iter = id_buffers->next;
+                DxfIdbuffer *iter = (DxfIdbuffer *) dxf_idbuffer_get_next (id_buffers);
                 dxf_idbuffer_free (id_buffers);
                 id_buffers = (DxfIdbuffer *) iter;
         }
