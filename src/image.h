@@ -557,6 +557,11 @@ dxf_image_set_transparency
         DxfImage *image,
         long transparency
 );
+DxfPoint *
+dxf_image_get_p0
+(
+        DxfImage *image
+);
 int
 dxf_image_get_image_display_properties
 (
