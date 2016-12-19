@@ -568,6 +568,11 @@ dxf_image_set_p0
         DxfImage *image,
         DxfPoint *p0
 );
+double
+dxf_image_get_x0
+(
+        DxfImage *image
+);
 int
 dxf_image_get_image_display_properties
 (
