@@ -42,6 +42,7 @@
 
 #include "global.h"
 #include "binary_graphics_data.h"
+#include "point.h"
 
 
 #ifdef __cplusplus
@@ -164,6 +165,31 @@ dxf_image_struct
                  * class-level transparency data.\n
                  * Group code = 440. */
         /* Specific members for a DXF image. */
+        DxfPoint *p0;
+                /*!< Insertion point.\n
+                 * Group codes = 10, 20 and 30.*/
+        DxfPoint *p1;
+                /*!< U-vector of a single pixel (points
+                 * along the visual bottom of the image, starting at the
+                 * insertion point) (in OCS).\n
+                 * Group codes = 11, 21 and 31.*/
+        DxfPoint *p2;
+                /*!< V-vector of a single pixel (points
+                 * along the visual left side of the image, starting at
+                 * the insertion point) (in OCS).\n
+                 * Group codes = 12, 22 and 32.*/
+        DxfPoint *p3;
+                /*!< U- and V-value of image size in pixels.\n
+                 * Group codes = 13 and 23.*/
+        DxfPoint *p4;
+                /*!< Rectangular clip boundary type, two opposite
+                 * corners must be specified.\n
+                 * Default is (-0.5,-0.5), (size.x-0.5, size.y-0.5).</li>
+                 * <li>For polygonal clip boundary type, three or more
+                 * vertices must be specified.\n
+                 * Polygonal vertices must be listed sequentially.</li>
+                 * </ul>\n
+                 * Group codes = 14 and 24.*/
         double x0;
                 /*!< X-value of the insertion point coordinate.\n
                  * Group code = 10. */
