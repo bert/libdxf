@@ -584,6 +584,12 @@ dxf_image_get_y0
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_y0
+(
+        DxfImage *image,
+        double y0
+);
 int
 dxf_image_get_image_display_properties
 (
