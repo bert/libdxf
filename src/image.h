@@ -645,6 +645,11 @@ dxf_image_set_z1
         DxfImage *image,
         double z1
 );
+DxfPoint *
+dxf_image_get_p2
+(
+        DxfImage *image
+);
 int
 dxf_image_get_image_display_properties
 (
