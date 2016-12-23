@@ -2973,6 +2973,49 @@ dxf_image_get_z1
 
 
 /*!
+ * \brief Set the U-vector of a single pixel \c z1 of a DXF \c IMAGE
+ * entity.
+ *
+ * \return a pointer to \c image when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImage *
+dxf_image_set_z1
+(
+        DxfImage *image,
+                /*!< a pointer to a DXF \c IMAGE entity. */
+        double z1
+                /*!< the U-vector of a single pixel \c z1 of a DXF
+                 * \c IMAGE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (image->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        image->p1->z0 = z1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image);
+}
+
+
+/*!
  * \brief Get the \c image_display_properties value from a DXF \c IMAGE
  * entity.
  *
