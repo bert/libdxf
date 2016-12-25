@@ -683,6 +683,12 @@ dxf_image_get_z2
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_z2
+(
+        DxfImage *image,
+        double z2
+);
 int
 dxf_image_get_image_display_properties
 (
