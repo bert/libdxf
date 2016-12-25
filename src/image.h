@@ -672,6 +672,12 @@ dxf_image_get_y2
 (
         DxfImage *image
 );
+DxfImage *
+dxf_image_set_y2
+(
+        DxfImage *image,
+        double y2
+);
 int
 dxf_image_get_image_display_properties
 (
