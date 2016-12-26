@@ -3584,6 +3584,44 @@ dxf_image_set_y3
 
 
 /*!
+ * \brief Get the clip boundary vertex (in OCS) (multiple entries) \c p4
+ * of a DXF \c IMAGE entity.
+ *
+ * \return the clip boundary vertex (in OCS) (multiple entries) \c p4.
+ */
+DxfPoint *
+dxf_image_get_p4
+(
+        DxfImage *image
+                /*!< a pointer to a DXF \c IMAGE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (image->p4 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image->p4);
+}
+
+
+/*!
  * \brief Get the \c image_display_properties value from a DXF \c IMAGE
  * entity.
  *
