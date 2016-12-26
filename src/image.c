@@ -3420,6 +3420,45 @@ dxf_image_set_p3
 
 
 /*!
+ * \brief Get the U-value of the image in pixel size \c x3 of a
+ * DXF \c IMAGE entity.
+ *
+ * \return the U-value of the image in pixel size \c x3.
+ */
+double
+dxf_image_get_x3
+(
+        DxfImage *image
+                /*!< a pointer to a DXF \c IMAGE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (image == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (image->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (image->p3->x0);
+}
+
+
+/*!
  * \brief Get the \c image_display_properties value from a DXF \c IMAGE
  * entity.
  *

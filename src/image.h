@@ -700,6 +700,11 @@ dxf_image_set_p3
         DxfImage *image,
         DxfPoint *p3
 );
+double
+dxf_image_get_x3
+(
+        DxfImage *image
+);
 int
 dxf_image_get_image_display_properties
 (
