@@ -733,6 +733,11 @@ dxf_image_set_p4
         DxfImage *image,
         DxfPoint *p4
 );
+double
+dxf_image_get_x4
+(
+        DxfImage *image
+);
 int
 dxf_image_get_image_display_properties
 (
