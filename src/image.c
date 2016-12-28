@@ -2770,10 +2770,10 @@ dxf_image_set_p1
 
 
 /*!
- * \brief Get the U-vector of a single pixel \c x1 of a DXF \c IMAGE
- * entity.
+ * \brief Get the X-value of the U-vector of a single pixel \c x1 of a
+ * DXF \c IMAGE entity.
  *
- * \return the U-vector of a single pixel \c x1.
+ * \return the X-value of the U-vector of a single pixel \c x1.
  */
 double
 dxf_image_get_x1
@@ -2809,8 +2809,8 @@ dxf_image_get_x1
 
 
 /*!
- * \brief Set the U-vector of a single pixel \c x1 of a DXF \c IMAGE
- * entity.
+ * \brief Set the X-value of the U-vector of a single pixel \c x1 of a
+ * DXF \c IMAGE entity.
  *
  * \return a pointer to \c image when successful, or \c NULL when an
  * error occurred.
@@ -2821,8 +2821,8 @@ dxf_image_set_x1
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
         double x1
-                /*!< the U-vector of a single pixel \c x1 of a DXF
-                 * \c IMAGE entity. */
+                /*!< the X-value of the U-vector of a single pixel \c x1
+                 * of a DXF \c IMAGE entity. */
 )
 {
 #ifdef DEBUG
@@ -2852,10 +2852,10 @@ dxf_image_set_x1
 
 
 /*!
- * \brief Get the U-vector of a single pixel \c y1 of a DXF \c IMAGE
- * entity.
+ * \brief Get the Y-value of the U-vector of a single pixel \c y1 of a
+ * DXF \c IMAGE entity.
  *
- * \return the U-vector of a single pixel \c y1.
+ * \return the Y-value of the U-vector of a single pixel \c y1.
  */
 double
 dxf_image_get_y1
@@ -2891,8 +2891,8 @@ dxf_image_get_y1
 
 
 /*!
- * \brief Set the U-vector of a single pixel \c y1 of a DXF \c IMAGE
- * entity.
+ * \brief Set the Y-value of the U-vector of a single pixel \c y1 of a
+ * DXF \c IMAGE entity.
  *
  * \return a pointer to \c image when successful, or \c NULL when an
  * error occurred.
@@ -2903,8 +2903,8 @@ dxf_image_set_y1
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
         double y1
-                /*!< the U-vector of a single pixel \c y1 of a DXF
-                 * \c IMAGE entity. */
+                /*!< the Y value of the U-vector of a single pixel \c y1
+                 * of a DXF \c IMAGE entity. */
 )
 {
 #ifdef DEBUG
@@ -2934,10 +2934,10 @@ dxf_image_set_y1
 
 
 /*!
- * \brief Get the U-vector of a single pixel \c z1 of a DXF \c IMAGE
- * entity.
+ * \brief Get the Z-value of the U-vector of a single pixel \c z1 of a
+ * DXF \c IMAGE entity.
  *
- * \return the U-vector of a single pixel \c z1.
+ * \return the Z-value of the U-vector of a single pixel \c z1.
  */
 double
 dxf_image_get_z1
@@ -2973,8 +2973,8 @@ dxf_image_get_z1
 
 
 /*!
- * \brief Set the U-vector of a single pixel \c z1 of a DXF \c IMAGE
- * entity.
+ * \brief Set the Z-value of the U-vector of a single pixel \c z1 of a
+ * DXF \c IMAGE entity.
  *
  * \return a pointer to \c image when successful, or \c NULL when an
  * error occurred.
@@ -2985,8 +2985,8 @@ dxf_image_set_z1
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
         double z1
-                /*!< the U-vector of a single pixel \c z1 of a DXF
-                 * \c IMAGE entity. */
+                /*!< the Z-value of the U-vector of a single pixel \c z1
+                 * of a DXF \c IMAGE entity. */
 )
 {
 #ifdef DEBUG
@@ -3095,10 +3095,10 @@ dxf_image_set_p2
 
 
 /*!
- * \brief Get the V-vector of a single pixel \c x2 of a DXF \c IMAGE
- * entity.
+ * \brief Get the X-value of the V-vector of a single pixel \c x2 of a
+ * DXF \c IMAGE entity.
  *
- * \return the V-vector of a single pixel \c x2.
+ * \return the X-value of the V-vector of a single pixel \c x2.
  */
 double
 dxf_image_get_x2
@@ -3134,8 +3134,8 @@ dxf_image_get_x2
 
 
 /*!
- * \brief Set the V-vector of a single pixel \c x2 of a DXF \c IMAGE
- * entity.
+ * \brief Set the X-value of the V-vector of a single pixel \c x2 of a
+ * DXF \c IMAGE entity.
  *
  * \return a pointer to \c image when successful, or \c NULL when an
  * error occurred.
@@ -3146,8 +3146,8 @@ dxf_image_set_x2
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
         double x2
-                /*!< the V-vector of a single pixel \c x2 of a DXF
-                 * \c IMAGE entity. */
+                /*!< the X-value of the V-vector of a single pixel \c x2
+                 * of a DXF \c IMAGE entity. */
 )
 {
 #ifdef DEBUG
@@ -3177,10 +3177,10 @@ dxf_image_set_x2
 
 
 /*!
- * \brief Get the V-vector of a single pixel \c y2 of a DXF \c IMAGE
- * entity.
+ * \brief Get the Y-value of the V-vector of a single pixel \c y2 of a
+ * DXF \c IMAGE entity.
  *
- * \return the V-vector of a single pixel \c y2.
+ * \return the Y-value of the V-vector of a single pixel \c y2.
  */
 double
 dxf_image_get_y2
@@ -3216,8 +3216,8 @@ dxf_image_get_y2
 
 
 /*!
- * \brief Set the V-vector of a single pixel \c y2 of a DXF \c IMAGE
- * entity.
+ * \brief Set the Y-value of the V-vector of a single pixel \c y2 of a
+ * DXF \c IMAGE entity.
  *
  * \return a pointer to \c image when successful, or \c NULL when an
  * error occurred.
@@ -3228,8 +3228,8 @@ dxf_image_set_y2
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
         double y2
-                /*!< the V-vector of a single pixel \c y2 of a DXF
-                 * \c IMAGE entity. */
+                /*!< the Y-value of the V-vector of a single pixel \c y2
+                 * of a DXF \c IMAGE entity. */
 )
 {
 #ifdef DEBUG
@@ -3259,10 +3259,10 @@ dxf_image_set_y2
 
 
 /*!
- * \brief Get the V-vector of a single pixel \c z2 of a DXF \c IMAGE
- * entity.
+ * \brief Get the Z-value of the V-vector of a single pixel \c z2 of a
+ * DXF \c IMAGE entity.
  *
- * \return the V-vector of a single pixel \c z2.
+ * \return the Z-value of the V-vector of a single pixel \c z2.
  */
 double
 dxf_image_get_z2
@@ -3298,8 +3298,8 @@ dxf_image_get_z2
 
 
 /*!
- * \brief Set the V-vector of a single pixel \c z2 of a DXF \c IMAGE
- * entity.
+ * \brief Set the Z-value of the V-vector of a single pixel \c z2 of a
+ * DXF \c IMAGE entity.
  *
  * \return a pointer to \c image when successful, or \c NULL when an
  * error occurred.
@@ -3310,8 +3310,8 @@ dxf_image_set_z2
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
         double z2
-                /*!< the V-vector of a single pixel \c z2 of a DXF
-                 * \c IMAGE entity. */
+                /*!< the Z-value of the V-vector of a single pixel \c z2
+                 * of a DXF \c IMAGE entity. */
 )
 {
 #ifdef DEBUG
@@ -3663,10 +3663,11 @@ dxf_image_set_p4
 
 
 /*!
- * \brief Get the clip boundary vertex (in OCS) (multiple entries) \c x4
- * of a DXF \c IMAGE entity.
+ * \brief Get the X-value of the clip boundary vertex (in OCS) (multiple
+ * entries) \c x4 of a DXF \c IMAGE entity.
  *
- * \return the clip boundary vertex (in OCS) (multiple entries) \c x4.
+ * \return the X-value of the clip boundary vertex (in OCS) (multiple
+ * entries) \c x4.
  */
 double
 dxf_image_get_x4
@@ -3702,8 +3703,8 @@ dxf_image_get_x4
 
 
 /*!
- * \brief Set the clip boundary vertex (in OCS) (multiple entries) \c x4
- * of a DXF \c IMAGE entity.
+ * \brief Set the X-value of the clip boundary vertex (in OCS) (multiple
+ * entries) \c x4 of a DXF \c IMAGE entity.
  *
  * \return a pointer to \c image when successful, or \c NULL when an
  * error occurred.
@@ -3714,8 +3715,8 @@ dxf_image_set_x4
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
         double x4
-                /*!< the clip boundary vertex (in OCS) (multiple
-                 * entries) \c x4 of a DXF \c IMAGE entity. */
+                /*!< the X-value of the clip boundary vertex (in OCS)
+                 * (multiple entries) \c x4 of a DXF \c IMAGE entity. */
 )
 {
 #ifdef DEBUG
@@ -3745,10 +3746,11 @@ dxf_image_set_x4
 
 
 /*!
- * \brief Get the clip boundary vertex (in OCS) (multiple entries) \c y4
- * of a DXF \c IMAGE entity.
+ * \brief Get the Y-value of the clip boundary vertex (in OCS) (multiple
+ * entries) \c y4 of a DXF \c IMAGE entity.
  *
- * \return the clip boundary vertex (in OCS) (multiple entries) \c y4.
+ * \return the Y-value of the clip boundary vertex (in OCS) (multiple
+ * entries) \c y4.
  */
 double
 dxf_image_get_y4
@@ -3784,8 +3786,8 @@ dxf_image_get_y4
 
 
 /*!
- * \brief Set the clip boundary vertex (in OCS) (multiple entries) \c y4
- * of a DXF \c IMAGE entity.
+ * \brief Set the Y-value of the clip boundary vertex (in OCS) (multiple
+ * entries) \c y4 of a DXF \c IMAGE entity.
  *
  * \return a pointer to \c image when successful, or \c NULL when an
  * error occurred.
@@ -3796,8 +3798,8 @@ dxf_image_set_y4
         DxfImage *image,
                 /*!< a pointer to a DXF \c IMAGE entity. */
         double y4
-                /*!< the clip boundary vertex (in OCS) (multiple
-                 * entries) \c y4 of a DXF \c IMAGE entity. */
+                /*!< the Y-value of the clip boundary vertex (in OCS)
+                 * (multiple entries) \c y4 of a DXF \c IMAGE entity. */
 )
 {
 #ifdef DEBUG
