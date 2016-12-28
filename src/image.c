@@ -187,8 +187,6 @@ dxf_image_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i;
-        int j;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -208,8 +206,6 @@ dxf_image_read
                 image = dxf_image_new ();
                 image = dxf_image_init (image);
         }
-        i = 0;
-        j = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -249,93 +245,93 @@ dxf_image_read
                         /* Now follows a string containing the
                          * X-value of the insertion point coordinate. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &image->x0);
+                        fscanf (fp->fp, "%lf\n", &image->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the insertion point coordinate. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &image->y0);
+                        fscanf (fp->fp, "%lf\n", &image->p0->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the insertion point coordinate. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &image->z1);
+                        fscanf (fp->fp, "%lf\n", &image->p0->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the U-vector of a single pixel. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &image->x1);
+                        fscanf (fp->fp, "%lf\n", &image->p1->x0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the U-vector of a single pixel. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &image->y1);
+                        fscanf (fp->fp, "%lf\n", &image->p1->y0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the U-vector of a single pixel. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &image->z1);
+                        fscanf (fp->fp, "%lf\n", &image->p1->z0);
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of the V-vector of a single pixel. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &image->x2);
+                        fscanf (fp->fp, "%lf\n", &image->p2->x0);
                 }
                 else if (strcmp (temp_string, "22") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the V-vector of a single pixel. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &image->y2);
+                        fscanf (fp->fp, "%lf\n", &image->p2->y0);
                 }
                 else if (strcmp (temp_string, "32") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the V-vector of a single pixel. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &image->z2);
+                        fscanf (fp->fp, "%lf\n", &image->p2->z0);
                 }
                 else if (strcmp (temp_string, "13") == 0)
                 {
                         /* Now follows a string containing the
                          * U-value of image size in pixels. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &image->x3);
+                        fscanf (fp->fp, "%lf\n", &image->p3->x0);
                 }
                 else if (strcmp (temp_string, "23") == 0)
                 {
                         /* Now follows a string containing the
                          * V-value of image size in pixels. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &image->y3);
+                        fscanf (fp->fp, "%lf\n", &image->p3->y0);
                 }
                 else if (strcmp (temp_string, "14") == 0)
                 {
                         /* Now follows a string containing the
                          * X-value of a clip boundary vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &image->x4[i]);
-                        i++;
+                        /*! \todo Store subsequent x4 values in the single linked list of points. */
+                        fscanf (fp->fp, "%lf\n", &image->p4->x0);
                 }
                 else if (strcmp (temp_string, "24") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of a clip boundary vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &image->y4[j]);
-                        j++;
+                        /*! \todo Store subsequent y4 values in the single linked list of points. */
+                        fscanf (fp->fp, "%lf\n", &image->p4->y0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
