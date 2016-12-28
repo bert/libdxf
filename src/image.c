@@ -98,8 +98,6 @@ dxf_image_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (image == NULL)
         {
@@ -136,26 +134,15 @@ dxf_image_init
         image->color_name = strdup ("");
         image->transparency = 0;
         image->p0 = (DxfPoint *) dxf_point_new ();
+        image->p0 = (DxfPoint *) dxf_point_init (image->p0);
         image->p1 = (DxfPoint *) dxf_point_new ();
+        image->p1 = (DxfPoint *) dxf_point_init (image->p1);
         image->p2 = (DxfPoint *) dxf_point_new ();
+        image->p2 = (DxfPoint *) dxf_point_init (image->p2);
         image->p3 = (DxfPoint *) dxf_point_new ();
+        image->p3 = (DxfPoint *) dxf_point_init (image->p3);
         image->p4 = (DxfPoint *) dxf_point_new ();
-        image->x0 = 0.0;
-        image->y0 = 0.0;
-        image->z0 = 0.0;
-        image->x1 = 0.0;
-        image->y1 = 0.0;
-        image->z1 = 0.0;
-        image->x2 = 0.0;
-        image->y2 = 0.0;
-        image->z2 = 0.0;
-        image->x3 = 0.0;
-        image->y3 = 0.0;
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                image->x4[i] = 0.0;
-                image->y4[i] = 0.0;
-        }
+        image->p4 = (DxfPoint *) dxf_point_init (image->p4);
         image->image_display_properties = 0;
         image->clipping_boundary_type = 0;
         image->class_version = 0;
