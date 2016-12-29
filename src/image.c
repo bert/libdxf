@@ -187,6 +187,8 @@ dxf_image_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        DxfPoint *iter = NULL;
+        int next_x4;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -206,6 +208,8 @@ dxf_image_read
                 image = dxf_image_new ();
                 image = dxf_image_init (image);
         }
+        iter = (DxfPoint *) image->p4;
+        next_x4 = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -322,16 +326,22 @@ dxf_image_read
                         /* Now follows a string containing the
                          * X-value of a clip boundary vertex. */
                         (fp->line_number)++;
-                        /*! \todo Store subsequent x4 values in the single linked list of points. */
-                        fscanf (fp->fp, "%lf\n", &image->p4->x0);
+                        if (next_x4)
+                        {
+                                iter->next = (struct DxfPoint *) dxf_point_new ();
+                                iter->next = (struct DxfPoint *) dxf_point_init ((DxfPoint *) iter->next);
+                                iter = (DxfPoint *) iter->next;
+                                next_x4 = 0;
+                        }
+                        fscanf (fp->fp, "%lf\n", &iter->x0);
                 }
                 else if (strcmp (temp_string, "24") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of a clip boundary vertex. */
                         (fp->line_number)++;
-                        /*! \todo Store subsequent y4 values in the single linked list of points. */
-                        fscanf (fp->fp, "%lf\n", &image->p4->y0);
+                        fscanf (fp->fp, "%lf\n", &iter->y0);
+                        next_x4 = 1;
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0)
