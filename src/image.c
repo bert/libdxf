@@ -522,7 +522,7 @@ dxf_image_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("IMAGE");
-        int i;
+        DxfPoint *iter = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -639,17 +639,17 @@ dxf_image_write
                 fprintf (fp->fp, " 39\n%f\n", image->thickness);
         }
         fprintf (fp->fp, " 90\n%ld\n", image->class_version);
-        fprintf (fp->fp, " 10\n%f\n", image->x0);
-        fprintf (fp->fp, " 20\n%f\n", image->y0);
-        fprintf (fp->fp, " 30\n%f\n", image->z0);
-        fprintf (fp->fp, " 11\n%f\n", image->x1);
-        fprintf (fp->fp, " 21\n%f\n", image->y1);
-        fprintf (fp->fp, " 31\n%f\n", image->z1);
-        fprintf (fp->fp, " 12\n%f\n", image->x2);
-        fprintf (fp->fp, " 22\n%f\n", image->y2);
-        fprintf (fp->fp, " 32\n%f\n", image->z2);
-        fprintf (fp->fp, " 13\n%f\n", image->x3);
-        fprintf (fp->fp, " 23\n%f\n", image->y3);
+        fprintf (fp->fp, " 10\n%f\n", image->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", image->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", image->p0->z0);
+        fprintf (fp->fp, " 11\n%f\n", image->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", image->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", image->p1->z0);
+        fprintf (fp->fp, " 12\n%f\n", image->p2->x0);
+        fprintf (fp->fp, " 22\n%f\n", image->p2->y0);
+        fprintf (fp->fp, " 32\n%f\n", image->p2->z0);
+        fprintf (fp->fp, " 13\n%f\n", image->p3->x0);
+        fprintf (fp->fp, " 23\n%f\n", image->p3->y0);
         fprintf (fp->fp, "340\n%s\n", image->imagedef_object);
         fprintf (fp->fp, " 70\n%d\n", image->image_display_properties);
         fprintf (fp->fp, "280\n%d\n", image->clipping_state);
@@ -659,10 +659,12 @@ dxf_image_write
         fprintf (fp->fp, "360\n%s\n", image->imagedef_reactor_object);
         fprintf (fp->fp, " 71\n%d\n", image->clipping_boundary_type);
         fprintf (fp->fp, " 91\n%ld\n", image->number_of_clip_boundary_vertices);
-        for (i = 0; i < image->number_of_clip_boundary_vertices; i++)
+        iter = (DxfPoint *) image->p4;
+        while (iter != NULL)
         {
-                fprintf (fp->fp, " 14\n%f\n", image->x4[i]);
-                fprintf (fp->fp, " 24\n%f\n", image->y4[i]);
+                fprintf (fp->fp, " 14\n%f\n", iter->x0);
+                fprintf (fp->fp, " 24\n%f\n", iter->y0);
+                iter = (DxfPoint *) iter->next;
         }
         /* Clean up. */
         free (dxf_entity_name);
