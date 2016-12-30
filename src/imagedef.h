@@ -58,7 +58,7 @@ extern "C" {
  * \brief DXF definition of an AutoCAD imagedef object (\c IMAGEDEF).
  */
 typedef struct
-dxf_imagedef
+dxf_imagedef_struct
 {
         /* Members common for all DXF group objects. */
         int id_code;
