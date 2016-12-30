@@ -718,10 +718,19 @@ dxf_image_free
         }
         free (image->linetype);
         free (image->layer);
+        dxf_binary_graphics_data_free_chain (image->binary_graphics_data);
+        free (image->dictionary_owner_soft);
+        free (image->material);
+        free (image->dictionary_owner_hard);
+        free (image->plot_style_name);
+        free (image->color_name);
+        dxf_point_free (image->p0);
+        dxf_point_free (image->p1);
+        dxf_point_free (image->p2);
+        dxf_point_free (image->p3);
+        dxf_point_free_chain (image->p4);
         free (image->imagedef_object);
         free (image->imagedef_reactor_object);
-        free (image->dictionary_owner_soft);
-        free (image->dictionary_owner_hard);
         free (image);
         image = NULL;
 #if DEBUG
