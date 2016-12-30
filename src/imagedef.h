@@ -153,6 +153,11 @@ dxf_imagedef_free_chain
 (
         DxfImagedef *imagedefs
 );
+int
+dxf_imagedef_get_id_code
+(
+        DxfImagedef *imagedef
+);
 
 
 #ifdef __cplusplus
