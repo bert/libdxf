@@ -5,7 +5,15 @@
  *
  * \brief Header file for a DXF imagedef object (\c IMAGEDEF).
  *
- * \version The \c IMAGEDEF object was introduced in DXF R14.
+ * \since The \c IMAGEDEF object was introduced in DXF R14.
+ *
+ * \warning The \c IMAGEDEF object requires AutoCAD version R14 or higher.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -48,12 +56,6 @@ extern "C" {
 
 /*!
  * \brief DXF definition of an AutoCAD imagedef object (\c IMAGEDEF).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 typedef struct
 dxf_imagedef
