@@ -164,6 +164,11 @@ dxf_imagedef_set_id_code
         DxfImagedef *imagedef,
         int id_code
 );
+char *
+dxf_imagedef_get_dictionary_owner_soft
+(
+        DxfImagedef *imagedef
+);
 
 
 #ifdef __cplusplus
