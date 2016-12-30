@@ -158,6 +158,12 @@ dxf_imagedef_get_id_code
 (
         DxfImagedef *imagedef
 );
+DxfImagedef *
+dxf_imagedef_set_id_code
+(
+        DxfImagedef *imagedef,
+        int id_code
+);
 
 
 #ifdef __cplusplus

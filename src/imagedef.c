@@ -559,4 +559,47 @@ dxf_imagedef_get_id_code
 }
 
 
+/*!
+ * \brief Set the \c id_code for a DXF \c IMAGEDEF object.
+ *
+ * \return a pointer to \c imagedef when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImagedef *
+dxf_imagedef_set_id_code
+(
+        DxfImagedef *imagedef,
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+        int id_code
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative id-code value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        imagedef->id_code = id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef);
+}
+
+
 /* EOF*/
