@@ -5,9 +5,17 @@
  *
  * \brief Functions for a DXF image entity (\c IMAGE).
  *
+ * \since The \c IMAGE object was introduced in DXF R14.
+ *
  * \warning The image entity requires AutoCAD version R14 or higher.\n
  *
  * \htmlinclude "image.html"
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -46,8 +54,6 @@
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R14.
  */
 DxfImage *
 dxf_image_new ()
@@ -85,8 +91,6 @@ dxf_image_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R14.
  */
 DxfImage *
 dxf_image_init
@@ -172,8 +176,6 @@ dxf_image_init
  * While parsing the DXF file store data in \c image. \n
  *
  * \return a pointer to \c image.
- *
- * \version According to DXF R14.
  */
 DxfImage *
 dxf_image_read
@@ -517,8 +519,6 @@ dxf_image_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R14.
  */
 int
 dxf_image_write
@@ -695,8 +695,6 @@ dxf_image_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R14.
  */
 int
 dxf_image_free
@@ -743,12 +741,6 @@ dxf_image_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c IMAGE
  * entities and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_image_free_chain
