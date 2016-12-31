@@ -686,4 +686,45 @@ dxf_imagedef_set_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Get the pointer to the \c dictionary_owner_hard from a DXF
+ * \c IMAGEDEF object.
+ *
+ * \return a pointer to \c dictionary_owner_hard when successful, or
+ * \c NULL when an error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_imagedef_get_dictionary_owner_hard
+(
+        DxfImagedef *imagedef
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (imagedef->dictionary_owner_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (imagedef->dictionary_owner_hard));
+}
+
+
 /* EOF*/

@@ -175,6 +175,11 @@ dxf_imagedef_set_dictionary_owner_soft
         DxfImagedef *imagedef,
         char *dictionary_owner_soft
 );
+char *
+dxf_imagedef_get_dictionary_owner_hard
+(
+        DxfImagedef *imagedef
+);
 
 
 #ifdef __cplusplus
