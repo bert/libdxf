@@ -191,6 +191,12 @@ dxf_imagedef_get_file_name
 (
         DxfImagedef *imagedef
 );
+DxfImagedef *
+dxf_imagedef_set_file_name
+(
+        DxfImagedef *imagedef,
+        char *file_name
+);
 
 
 #ifdef __cplusplus
