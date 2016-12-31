@@ -180,6 +180,12 @@ dxf_imagedef_get_dictionary_owner_hard
 (
         DxfImagedef *imagedef
 );
+DxfImagedef *
+dxf_imagedef_set_dictionary_owner_hard
+(
+        DxfImagedef *imagedef,
+        char *dictionary_owner_hard
+);
 
 
 #ifdef __cplusplus
