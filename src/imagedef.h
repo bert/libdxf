@@ -186,6 +186,11 @@ dxf_imagedef_set_dictionary_owner_hard
         DxfImagedef *imagedef,
         char *dictionary_owner_hard
 );
+char *
+dxf_imagedef_get_file_name
+(
+        DxfImagedef *imagedef
+);
 
 
 #ifdef __cplusplus

@@ -770,4 +770,41 @@ dxf_imagedef_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the \c file_name from a DXF \c IMAGEDEF object.
+ *
+ * \return \c file_name when sucessful, or \c NULL when an error occurred.
+ */
+char *
+dxf_imagedef_get_file_name
+(
+        DxfImagedef *imagedef
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (imagedef->file_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the file_name member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (imagedef->file_name));
+}
+
+
 /* EOF*/
