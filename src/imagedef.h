@@ -1,7 +1,7 @@
 /*!
  * \file imagedef.h
  *
- * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF imagedef object (\c IMAGEDEF).
  *
@@ -47,6 +47,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 #ifdef __cplusplus
@@ -76,6 +77,13 @@ dxf_imagedef_struct
         char *file_name;
                 /*!< File name of image.\n
                  * Group code = 1. */
+        DxfPoint *p0;
+                /*!< Image size in pixels (U and V values).\n
+                 * Group codes = 10 and 20.*/
+        DxfPoint *p1;
+                /*!< Default size of one pixel in AutoCAD units (U and V
+                 * values).\n
+                 * Group codes = 11 and 21.*/
         double x0;
                 /*!< Image size in pixels. DXF: U value; APP: 2D point
                  * (U and V values).\n
