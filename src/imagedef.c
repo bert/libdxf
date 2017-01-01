@@ -849,4 +849,41 @@ dxf_imagedef_set_file_name
 }
 
 
+/*!
+ * \brief Get the image size in pixels \c p0 of a DXF \c IMAGEDEF object.
+ *
+ * \return the image size in pixels \c p0.
+ */
+DxfPoint *
+dxf_imagedef_get_p0
+(
+        DxfImagedef *imagedef
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (imagedef->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef->p0);
+}
+
+
 /* EOF*/

@@ -205,6 +205,11 @@ dxf_imagedef_set_file_name
         DxfImagedef *imagedef,
         char *file_name
 );
+DxfPoint *
+dxf_imagedef_get_p0
+(
+        DxfImagedef *imagedef
+);
 
 
 #ifdef __cplusplus
