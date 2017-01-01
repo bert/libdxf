@@ -210,6 +210,12 @@ dxf_imagedef_get_p0
 (
         DxfImagedef *imagedef
 );
+DxfImagedef *
+dxf_imagedef_set_p0
+(
+        DxfImagedef *imagedef,
+        DxfPoint *p0
+);
 
 
 #ifdef __cplusplus
