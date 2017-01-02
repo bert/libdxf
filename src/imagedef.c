@@ -1008,4 +1008,43 @@ dxf_imagedef_set_x0
 }
 
 
+/*!
+ * \brief Get the V-value of the image size in pixels \c y0 of a DXF
+ * \c IMAGEDEF object.
+ *
+ * \return the V-value of the image size in pixels \c y0.
+ */
+double
+dxf_imagedef_get_y0
+(
+        DxfImagedef *imagedef
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (imagedef->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef->p0->y0);
+}
+
+
 /* EOF*/

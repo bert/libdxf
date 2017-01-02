@@ -227,6 +227,11 @@ dxf_imagedef_set_x0
         DxfImagedef *imagedef,
         double x0
 );
+double
+dxf_imagedef_get_y0
+(
+        DxfImagedef *imagedef
+);
 
 
 #ifdef __cplusplus
