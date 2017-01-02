@@ -1128,4 +1128,45 @@ dxf_imagedef_get_p1
 }
 
 
+/*!
+ * \brief Set the default size of one pixel in AutoCAD units (U and V
+ * values) \c p1 of a DXF \c IMAGEDEF object.
+ *
+ * \return a pointer to a DXF \c IMAGEDEF object.
+ */
+DxfImagedef *
+dxf_imagedef_set_p1
+(
+        DxfImagedef *imagedef,
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+        DxfPoint *p1
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        imagedef->p1 = p1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef);
+}
+
+
 /* EOF*/
