@@ -238,6 +238,11 @@ dxf_imagedef_set_y0
         DxfImagedef *imagedef,
         double y0
 );
+DxfPoint *
+dxf_imagedef_get_p1
+(
+        DxfImagedef *imagedef
+);
 
 
 #ifdef __cplusplus
