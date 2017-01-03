@@ -271,6 +271,11 @@ dxf_imagedef_set_y1
         DxfImagedef *imagedef,
         double y1
 );
+int32_t
+dxf_imagedef_get_class_version
+(
+        DxfImagedef *imagedef
+);
 
 
 #ifdef __cplusplus
