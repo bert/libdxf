@@ -276,6 +276,12 @@ dxf_imagedef_get_class_version
 (
         DxfImagedef *imagedef
 );
+DxfImagedef *
+dxf_imagedef_set_class_version
+(
+        DxfImagedef *imagedef,
+        int32_t class_version
+);
 
 
 #ifdef __cplusplus
