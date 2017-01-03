@@ -249,6 +249,11 @@ dxf_imagedef_set_p1
         DxfImagedef *imagedef,
         DxfPoint *p1
 );
+double
+dxf_imagedef_get_x1
+(
+        DxfImagedef *imagedef
+);
 
 
 #ifdef __cplusplus
