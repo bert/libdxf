@@ -1171,8 +1171,7 @@ dxf_imagedef_set_p1
 
 /*!
  * \brief Get the U-value of the default size of one pixel in AutoCAD
- * units (U value) \c x1 of a DXF
- * \c IMAGEDEF object.
+ * units \c x1 of a DXF \c IMAGEDEF object.
  *
  * \return the U-value of the default size of one pixel \c x1.
  */
