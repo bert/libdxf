@@ -265,6 +265,12 @@ dxf_imagedef_get_y1
 (
         DxfImagedef *imagedef
 );
+DxfImagedef *
+dxf_imagedef_set_y1
+(
+        DxfImagedef *imagedef,
+        double y1
+);
 
 
 #ifdef __cplusplus

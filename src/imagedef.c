@@ -1290,4 +1290,47 @@ dxf_imagedef_get_y1
 }
 
 
+/*!
+ * \brief Set the V-value of the default size of one pixel in AutoCAD
+ * units \c y1 of a DXF \c IMAGEDEF object.
+ *
+ * \return a pointer to \c imagedef when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImagedef *
+dxf_imagedef_set_y1
+(
+        DxfImagedef *imagedef,
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+        double y1
+                /*!< the V-value of the default size of one pixel in
+                 * AutoCAD units \c y1 of a DXF \c IMAGEDEF object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (imagedef->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        imagedef->p1->y0 = y1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef);
+}
+
+
 /* EOF*/
