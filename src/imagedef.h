@@ -282,6 +282,11 @@ dxf_imagedef_set_class_version
         DxfImagedef *imagedef,
         int32_t class_version
 );
+int
+dxf_imagedef_get_image_is_loaded_flag
+(
+        DxfImagedef *imagedef
+);
 
 
 #ifdef __cplusplus
