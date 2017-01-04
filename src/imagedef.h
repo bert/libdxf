@@ -287,6 +287,12 @@ dxf_imagedef_get_image_is_loaded_flag
 (
         DxfImagedef *imagedef
 );
+DxfImagedef *
+dxf_imagedef_set_image_is_loaded_flag
+(
+        DxfImagedef *imagedef,
+        int image_is_loaded_flag
+);
 
 
 #ifdef __cplusplus

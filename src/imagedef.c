@@ -1471,4 +1471,52 @@ dxf_imagedef_get_image_is_loaded_flag
 }
 
 
+/*!
+ * \brief Set the \c image_is_loaded_flag for a DXF \c IMAGEDEF object.
+ *
+ * \return a pointer to \c imagedef when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImagedef *
+dxf_imagedef_set_image_is_loaded_flag
+(
+        DxfImagedef *imagedef,
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+        int image_is_loaded_flag
+                /*!< \c image_is_loaded_flag. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (image_is_loaded_flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative image_is_loaded_flag value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (image_is_loaded_flag > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range image_is_loaded_flag value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        imagedef->image_is_loaded_flag = image_is_loaded_flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef);
+}
+
+
 /* EOF*/
