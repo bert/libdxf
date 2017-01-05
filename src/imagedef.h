@@ -298,6 +298,12 @@ dxf_imagedef_get_resolution_units
 (
         DxfImagedef *imagedef
 );
+DxfImagedef *
+dxf_imagedef_set_resolution_units
+(
+        DxfImagedef *imagedef,
+        int resolution_units
+);
 
 
 #ifdef __cplusplus
