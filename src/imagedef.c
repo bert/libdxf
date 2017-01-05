@@ -1696,4 +1696,44 @@ dxf_imagedef_set_acad_image_dict_soft
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c IMAGEDEF object from a DXF 
+ * \c IMAGEDEF object.
+ *
+ * \return pointer to the next \c IMAGEDEF object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfImagedef *
+dxf_imagedef_get_next
+(
+        DxfImagedef *imagedef
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (imagedef->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfImagedef *) imagedef->next);
+}
+
+
 /* EOF*/

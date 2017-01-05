@@ -333,6 +333,11 @@ dxf_imagedef_set_acad_image_dict_soft
         DxfImagedef *imagedef,
         char *acad_image_dict_soft
 );
+DxfImagedef *
+dxf_imagedef_get_next
+(
+        DxfImagedef *imagedef
+);
 
 
 #ifdef __cplusplus
