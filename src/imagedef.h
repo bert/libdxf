@@ -304,6 +304,11 @@ dxf_imagedef_set_resolution_units
         DxfImagedef *imagedef,
         int resolution_units
 );
+char *
+dxf_imagedef_get_acad_image_dict_soft
+(
+        DxfImagedef *imagedef
+);
 
 
 #ifdef __cplusplus

@@ -1612,4 +1612,45 @@ dxf_imagedef_set_resolution_units
 }
 
 
+/*!
+ * \brief Get the pointer to the \c acad_image_dict_soft from a DXF
+ * \c IMAGEDEF object.
+ *
+ * \return a pointer to \c acad_image_dict_soft when successful, or
+ * \c NULL when an error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_imagedef_get_acad_image_dict_soft
+(
+        DxfImagedef *imagedef
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (imagedef->acad_image_dict_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the acad_image_dict_soft member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (imagedef->acad_image_dict_soft));
+}
+
+
 /* EOF*/
