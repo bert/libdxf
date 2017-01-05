@@ -293,6 +293,11 @@ dxf_imagedef_set_image_is_loaded_flag
         DxfImagedef *imagedef,
         int image_is_loaded_flag
 );
+int
+dxf_imagedef_get_resolution_units
+(
+        DxfImagedef *imagedef
+);
 
 
 #ifdef __cplusplus
