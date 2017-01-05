@@ -1560,7 +1560,7 @@ dxf_imagedef_get_resolution_units
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (imagedef->image_is_loaded_flag);
+        return (imagedef->resolution_units);
 }
 
 
