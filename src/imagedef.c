@@ -1653,4 +1653,47 @@ dxf_imagedef_get_acad_image_dict_soft
 }
 
 
+/*!
+ * \brief Set the pointer to the \c acad_image_dict_soft for a DXF
+ * \c IMAGEDEF object.
+ *
+ * \return a pointer to \c imagedef when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImagedef *
+dxf_imagedef_set_acad_image_dict_soft
+(
+        DxfImagedef *imagedef,
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+        char *acad_image_dict_soft
+                /*!< a string containing the pointer to the \c
+                 * acad_image_dict_soft for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (acad_image_dict_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        imagedef->acad_image_dict_soft = strdup (acad_image_dict_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef);
+}
+
+
 /* EOF*/
