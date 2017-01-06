@@ -338,6 +338,12 @@ dxf_imagedef_get_next
 (
         DxfImagedef *imagedef
 );
+DxfImagedef *
+dxf_imagedef_set_next
+(
+        DxfImagedef *imagedef,
+        DxfImagedef *next
+);
 
 
 #ifdef __cplusplus

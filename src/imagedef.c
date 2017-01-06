@@ -1736,4 +1736,43 @@ dxf_imagedef_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c IMAGEDEF for a DXF \c IMAGEDEF
+ * object.
+ */
+DxfImagedef *
+dxf_imagedef_set_next
+(
+        DxfImagedef *imagedef,
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+        DxfImagedef *next
+                /*!< a pointer to the next \c IMAGEDEF for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        imagedef->next = (struct DxfImagedef *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef);
+}
+
+
 /* EOF*/
