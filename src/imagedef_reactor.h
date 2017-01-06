@@ -1,7 +1,7 @@
 /*!
  * \file imagedef_reactor.h
  *
- * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF imagedef_reactor object (\c IMAGEDEF_REACTOR).
  *
@@ -79,6 +79,8 @@ dxf_imagedef_reactor
         char *associated_image_object;
                 /*!< Object ID for associated image object.\n
                  * Group code = 330. */
+        int associated_image_object_length;
+                /*!< Length of the associated image object data. */
         struct DxfImagedefReactor *next;
                 /*!< Pointer to the next DxfImagedefReactor.\n
                  * \c NULL in the last DxfImagedefReactor. */
