@@ -48,6 +48,7 @@
 
 #include "global.h"
 #include "point.h"
+#include "imagedef_reactor.h"
 
 
 #ifdef __cplusplus
@@ -125,6 +126,11 @@ dxf_imagedef_struct
         char *imagedef_reactor_soft[DXF_MAX_PARAM];
                 /*!< Soft-pointer ID/handle to IMAGEDEF_REACTOR object
                  * (multiple entries; one for each instance).\n
+                 * Group code = 330. */
+        DxfImagedefReactor *imagedef_reactor;
+                /*!< Pointer to the first DxfImagedefReactor in a linked
+                 * list.\n
+                 * Mmultiple entries; one for each instance.\n
                  * Group code = 330. */
         struct DxfImagedef *next;
                 /*!< Pointer to the next DxfImagedef.\n
