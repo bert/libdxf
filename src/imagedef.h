@@ -321,6 +321,11 @@ dxf_imagedef_set_acad_image_dict_soft
         DxfImagedef *imagedef,
         char *acad_image_dict_soft
 );
+DxfImagedefReactor *
+dxf_imagedef_get_imagedef_reactor
+(
+        DxfImagedef *imagedef
+);
 DxfImagedef *
 dxf_imagedef_get_next
 (

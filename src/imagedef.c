@@ -1737,6 +1737,46 @@ dxf_imagedef_get_next
 
 
 /*!
+ * \brief Get the pointer to the first \c imagedef_reactor object in a
+ * linked list, from a DXF \c IMAGEDEF object.
+ *
+ * \return pointer to the \c imagedef_reactor object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfImagedefReactor *
+dxf_imagedef_get_imagedef_reactor
+(
+        DxfImagedef *imagedef
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (imagedef->imagedef_reactor == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the imagedef_reactor member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfImagedefReactor *) imagedef->imagedef_reactor);
+}
+
+
+/*!
  * \brief Set the pointer to the next \c IMAGEDEF for a DXF \c IMAGEDEF
  * object.
  */
