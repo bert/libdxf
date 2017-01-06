@@ -56,24 +56,6 @@ extern "C" {
 
 
 /*!
- * \brief DXF definition of an AutoCAD imagedef reactor soft object.
- */
-typedef struct
-dxf_imagedef_reactor_soft_struct
-{
-        char *data;
-                /*!< DxfImagedefReactorSoft data.\n
-                 * Multiple lines of 256 characters maximum per line
-                 * (optional). */
-        int length;
-                /*!< Length of the data member. */
-        struct DxfImagedefReactorSoft *next;
-                /*!< Pointer to the next DxfImagedefReactorSoft.\n
-                 * \c NULL if the last DxfImagedefReactorSoft. */
-} DxfImagedefReactorSoft;
-
-
-/*!
  * \brief DXF definition of an AutoCAD imagedef object (\c IMAGEDEF).
  */
 typedef struct
