@@ -97,8 +97,6 @@ dxf_imagedef_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (imagedef == NULL)
         {
@@ -118,18 +116,16 @@ dxf_imagedef_init
         imagedef->dictionary_owner_soft = strdup ("");
         imagedef->dictionary_owner_hard = strdup ("");
         imagedef->file_name = strdup ("");
-        imagedef->x0 = 0.0;
-        imagedef->y0 = 0.0;
-        imagedef->x1 = 0.0;
-        imagedef->y1 = 0.0;
+        imagedef->p0->x0 = 0.0;
+        imagedef->p0->y0 = 0.0;
+        imagedef->p1->x0 = 0.0;
+        imagedef->p1->y0 = 0.0;
         imagedef->class_version = 0;
         imagedef->image_is_loaded_flag = 0;
         imagedef->resolution_units = 0;
         imagedef->acad_image_dict_soft = strdup ("");
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                imagedef->imagedef_reactor_soft[i] = strdup ("");
-        }
+        imagedef->imagedef_reactor = dxf_imagedef_reactor_new ();
+        imagedef->imagedef_reactor->associated_image_object = strdup("");
         imagedef->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
