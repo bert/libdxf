@@ -130,7 +130,7 @@ dxf_imagedef_struct
         DxfImagedefReactor *imagedef_reactor;
                 /*!< Pointer to the first DxfImagedefReactor in a linked
                  * list.\n
-                 * Mmultiple entries; one for each instance.\n
+                 * Multiple entries; one for each instance.\n
                  * Group code = 330. */
         struct DxfImagedef *next;
                 /*!< Pointer to the next DxfImagedef.\n
