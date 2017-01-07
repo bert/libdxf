@@ -327,6 +327,12 @@ dxf_imagedef_get_imagedef_reactor
         DxfImagedef *imagedef
 );
 DxfImagedef *
+dxf_imagedef_set_imagedef_reactor
+(
+        DxfImagedef *imagedef,
+        DxfImagedefReactor *imagedef_reactor
+);
+DxfImagedef *
 dxf_imagedef_get_next
 (
         DxfImagedef *imagedef
