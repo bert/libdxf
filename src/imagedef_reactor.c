@@ -1,11 +1,20 @@
 /*!
  * \file imagedef_reactor.c
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF imagedef_reactor object (\c IMAGEDEF_REACTOR).
  *
- * \version The \c IMAGEDEF_REACTOR object was introduced in DXF R14.
+ * \since The \c IMAGEDEF_REACTOR object was introduced in DXF R14.
+ *
+ * \warning The \c IMAGEDEF_REACTOR object requires AutoCAD version R14
+ * or higher.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -41,12 +50,6 @@
  * \brief Allocate memory for a \c DxfImagedefReactor.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfImagedefReactor *
 dxf_imagedef_reactor_new ()
@@ -84,12 +87,6 @@ dxf_imagedef_reactor_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfImagedefReactor *
 dxf_imagedef_reactor_init
@@ -140,12 +137,6 @@ dxf_imagedef_reactor_init
  * While parsing the DXF file store data in \c imagedef_reactor. \n
  *
  * \return \c a pointer to \c imagedef_reactor.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfImagedefReactor *
 dxf_imagedef_reactor_read
@@ -283,12 +274,6 @@ dxf_imagedef_reactor_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_imagedef_reactor_write
@@ -384,12 +369,6 @@ dxf_imagedef_reactor_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_imagedef_reactor_free
@@ -425,12 +404,6 @@ dxf_imagedef_reactor_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c IMAGEDEF_REACTOR
  * objects and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_imagedef_reactor_free_chain

@@ -5,7 +5,16 @@
  *
  * \brief Header file for a DXF imagedef_reactor object (\c IMAGEDEF_REACTOR).
  *
- * \version The \c IMAGEDEF_REACTOR object was introduced in DXF R14.
+ * \since The \c IMAGEDEF_REACTOR object was introduced in DXF R14.
+ *
+ * \warning The \c IMAGEDEF_REACTOR object requires AutoCAD version R14
+ * or higher.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -49,12 +58,6 @@ extern "C" {
 /*!
  * \brief DXF definition of an AutoCAD imagedef_reactor object
  * (\c IMAGEDEF_REACTOR).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 typedef struct
 dxf_imagedef_reactor
