@@ -434,4 +434,42 @@ dxf_imagedef_reactor_free_chain
 }
 
 
+/*!
+ * \brief Get the \c id_code from a DXF \c IMAGEDEF_REACTOR object.
+ *
+ * \return \c id_code when successful, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_imagedef_reactor_get_id_code
+(
+        DxfImagedefReactor *imagedef_reactor
+                /*!< a pointer to a DXF \c IMAGEDEF_REACTOR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef_reactor == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (imagedef_reactor->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the id_code member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef_reactor->id_code);
+}
+
+
 /* EOF*/

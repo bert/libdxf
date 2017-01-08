@@ -119,6 +119,11 @@ dxf_imagedef_reactor_free_chain
 (
         DxfImagedefReactor *imagedef_reactors
 );
+int
+dxf_imagedef_reactor_get_id_code
+(
+        DxfImagedefReactor *imagedef_reactor
+);
 
 
 #ifdef __cplusplus
