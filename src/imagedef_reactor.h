@@ -124,6 +124,12 @@ dxf_imagedef_reactor_get_id_code
 (
         DxfImagedefReactor *imagedef_reactor
 );
+DxfImagedefReactor *
+dxf_imagedef_reactor_set_id_code
+(
+        DxfImagedefReactor *imagedef_reactor,
+        int id_code
+);
 
 
 #ifdef __cplusplus
