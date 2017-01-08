@@ -515,4 +515,45 @@ dxf_imagedef_reactor_set_id_code
 }
 
 
+/*!
+ * \brief Get the pointer to the \c dictionary_owner_soft from a DXF
+ * \c IMAGEDEF_REACTOR object.
+ *
+ * \return a pointer to \c dictionary_owner_soft when successful, or
+ * \c NULL when an error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_imagedef_reactor_get_dictionary_owner_soft
+(
+        DxfImagedefReactor *imagedef_reactor
+                /*!< a pointer to a DXF \c IMAGEDEF_REACTOR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef_reactor == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (imagedef_reactor->dictionary_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (imagedef_reactor->dictionary_owner_soft));
+}
+
+
 /* EOF*/

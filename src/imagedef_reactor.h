@@ -130,6 +130,11 @@ dxf_imagedef_reactor_set_id_code
         DxfImagedefReactor *imagedef_reactor,
         int id_code
 );
+char *
+dxf_imagedef_reactor_get_dictionary_owner_soft
+(
+        DxfImagedefReactor *imagedef_reactor
+);
 
 
 #ifdef __cplusplus
