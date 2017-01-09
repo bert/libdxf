@@ -141,6 +141,11 @@ dxf_imagedef_reactor_set_dictionary_owner_soft
         DxfImagedefReactor *imagedef_reactor,
         char *dictionary_owner_soft
 );
+char *
+dxf_imagedef_reactor_get_dictionary_owner_hard
+(
+        DxfImagedefReactor *imagedef_reactor
+);
 
 
 #ifdef __cplusplus
