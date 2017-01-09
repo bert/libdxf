@@ -146,6 +146,12 @@ dxf_imagedef_reactor_get_dictionary_owner_hard
 (
         DxfImagedefReactor *imagedef_reactor
 );
+DxfImagedefReactor *
+dxf_imagedef_reactor_set_dictionary_owner_hard
+(
+        DxfImagedefReactor *imagedef_reactor,
+        char *dictionary_owner_hard
+);
 
 
 #ifdef __cplusplus
