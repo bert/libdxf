@@ -168,6 +168,12 @@ dxf_imagedef_reactor_get_associated_image_object
 (
         DxfImagedefReactor *imagedef_reactor
 );
+DxfImagedefReactor *
+dxf_imagedef_reactor_set_associated_image_object
+(
+        DxfImagedefReactor *imagedef_reactor,
+        char *associated_image_object
+);
 
 
 #ifdef __cplusplus
