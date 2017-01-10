@@ -163,6 +163,11 @@ dxf_imagedef_reactor_set_class_version
         DxfImagedefReactor *imagedef_reactor,
         int32_t class_version
 );
+char *
+dxf_imagedef_reactor_get_associated_image_object
+(
+        DxfImagedefReactor *imagedef_reactor
+);
 
 
 #ifdef __cplusplus

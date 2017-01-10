@@ -776,4 +776,45 @@ dxf_imagedef_reactor_set_class_version
 }
 
 
+/*!
+ * \brief Get the pointer to the \c associated_image_object from a DXF
+ * \c IMAGEDEF_REACTOR object.
+ *
+ * \return a pointer to \c associated_image_object when successful, or
+ * \c NULL when an error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_imagedef_reactor_get_associated_image_object
+(
+        DxfImagedefReactor *imagedef_reactor
+                /*!< a pointer to a DXF \c IMAGEDEF_REACTOR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef_reactor == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (imagedef_reactor->associated_image_object ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the associated_image_object member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (imagedef_reactor->associated_image_object));
+}
+
+
 /* EOF*/
