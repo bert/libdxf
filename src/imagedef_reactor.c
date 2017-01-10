@@ -728,4 +728,52 @@ dxf_imagedef_reactor_get_class_version
 }
 
 
+/*!
+ * \brief Set the \c class_version for a DXF \c IMAGEDEF_REACTOR object.
+ *
+ * \return a pointer to \c imagedef_reactor when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImagedefReactor *
+dxf_imagedef_reactor_set_class_version
+(
+        DxfImagedefReactor *imagedef_reactor,
+                /*!< a pointer to a DXF \c IMAGE_REACTOR entity. */
+        int32_t class_version
+                /*!< the \c class_version to be set for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef_reactor == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (class_version < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative class_version value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (class_version > 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range class_version value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        imagedef_reactor->class_version = class_version;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef_reactor);
+}
+
+
 /* EOF*/
