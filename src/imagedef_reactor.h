@@ -60,7 +60,7 @@ extern "C" {
  * (\c IMAGEDEF_REACTOR).
  */
 typedef struct
-dxf_imagedef_reactor
+dxf_imagedef_reactor_struct
 {
         /* Members common for all DXF group objects. */
         int id_code;
