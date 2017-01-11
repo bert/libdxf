@@ -899,4 +899,46 @@ dxf_imagedef_reactor_get_associated_image_object_length
 }
 
 
+/*!
+ * \brief Set the \c associated_image_object_length for a DXF \c IMAGEDEF_REACTOR object.
+ *
+ * \return a pointer to \c imagedef_reactor when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfImagedefReactor *
+dxf_imagedef_reactor_set_associated_image_object_length
+(
+        DxfImagedefReactor *imagedef_reactor,
+                /*!< a pointer to a DXF \c IMAGEDEF_REACTOR object. */
+        int associated_image_object_length
+                /*!< The \c associated_image_object_length for the
+                 * object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef_reactor == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (associated_image_object_length < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative associated_image_object_length value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        imagedef_reactor->associated_image_object_length = associated_image_object_length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef_reactor);
+}
+
+
 /* EOF*/
