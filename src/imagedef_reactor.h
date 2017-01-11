@@ -190,6 +190,12 @@ dxf_imagedef_reactor_get_next
 (
         DxfImagedefReactor *imagedef_reactor
 );
+DxfImagedefReactor *
+dxf_imagedef_reactor_set_next
+(
+        DxfImagedefReactor *imagedef_reactor,
+        DxfImagedefReactor *next
+);
 
 
 #ifdef __cplusplus

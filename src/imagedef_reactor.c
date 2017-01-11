@@ -981,4 +981,44 @@ dxf_imagedef_reactor_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c IMAGEDEF_REACTOR for a DXF
+ * \c IMAGEDEF_REACTOR object.
+ */
+DxfImagedefReactor *
+dxf_imagedef_reactor_set_next
+(
+        DxfImagedefReactor *imagedef_reactor,
+                /*!< a pointer to a DXF \c IMAGEDEF_REACTOR object. */
+        DxfImagedefReactor *next
+                /*!< a pointer to the next \c IMAGEDEF_REACTOR for the
+                 * object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef_reactor == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        imagedef_reactor->next = (struct DxfImagedefReactor *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (imagedef_reactor);
+}
+
+
 /* EOF*/
