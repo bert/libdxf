@@ -941,4 +941,44 @@ dxf_imagedef_reactor_set_associated_image_object_length
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c IMAGEDEF_REACTOR object from a
+ * DXF \c IMAGEDEF_REACTOR object.
+ *
+ * \return pointer to the next \c IMAGEDEF_REACTOR object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfImagedefReactor *
+dxf_imagedef_reactor_get_next
+(
+        DxfImagedefReactor *imagedef_reactor
+                /*!< a pointer to a DXF \c IMAGEDEF_REACTOR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef_reactor == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (imagedef_reactor->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfImagedefReactor *) imagedef_reactor->next);
+}
+
+
 /* EOF*/

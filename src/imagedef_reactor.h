@@ -185,6 +185,11 @@ dxf_imagedef_reactor_set_associated_image_object_length
         DxfImagedefReactor *imagedef_reactor,
         int associated_image_object_length
 );
+DxfImagedefReactor *
+dxf_imagedef_reactor_get_next
+(
+        DxfImagedefReactor *imagedef_reactor
+);
 
 
 #ifdef __cplusplus
