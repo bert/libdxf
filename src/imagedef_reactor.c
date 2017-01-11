@@ -116,8 +116,9 @@ dxf_imagedef_reactor_init
         imagedef_reactor->id_code = 0;
         imagedef_reactor->dictionary_owner_soft = strdup ("");
         imagedef_reactor->dictionary_owner_hard = strdup ("");
-        imagedef_reactor->class_version = 0;
+        imagedef_reactor->class_version = 2;
         imagedef_reactor->associated_image_object = strdup ("");
+        imagedef_reactor->associated_image_object_length = 0;
         imagedef_reactor->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
