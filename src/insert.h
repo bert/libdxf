@@ -41,6 +41,8 @@
 
 
 #include "global.h"
+#include "point.h"
+#include "binary_graphics_data.h"
 
 
 #ifdef __cplusplus
@@ -63,54 +65,134 @@ dxf_insert_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
-                /*!< group code = 5\n
-                 * Identification number for the entity.\n
+                /*!< Identification number for the entity.\n
                  * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                 * file.\n
+                 * Group code = 5. */
         char *linetype;
-                /*!< group code = 6\n
-                 * The linetype of the entity.\n
-                 * Defaults to \c BYLAYER if ommitted in the DXF file. */
+                /*!< The linetype of the entity.\n
+                 * Defaults to \c BYLAYER if ommitted in the DXF file.\n
+                 * Group code = 6. */
         char *layer;
-                /*!< group code = 8\n
-                 * Layer on which the entity is drawn.\n
-                 * Defaults to layer "0" if no valid layername is given. */
+                /*!< Layer on which the entity is drawn.\n
+                 * Defaults to layer "0" if no valid layername is given.\n
+                 * Group code = 8. */
         double elevation;
-                /*!< group code = 38\n
-                 * Elevation of the arc in the local Z-direction.\n
+                /*!< Elevation of the entity in the local Z-direction.\n
                  * Defaults to 0.0 if omitted in the DXF file, or prior
-                 * to DXF version R12, or DXF_FLATLAND equals 0 (default). */
+                 * to DXF version R12, or DXF_FLATLAND equals 0 (default).\n
+                 * Group code = 38.\n
+                 * \deprecated As of version R11. */
         double thickness;
-                /*!< group code = 39\n
-                 * Thickness of the arc in the local Z-direction.\n
-                 * Defaults to 0.0 if omitted in the DXF file. */
+                /*!< Thickness of the entity in the local Z-direction.\n
+                 * Defaults to 0.0 if ommitted in the DXF file.\n
+                 * Group code = 39. */
         double linetype_scale;
-                /*!< group code = 48\n
-                 * Linetype scale (optional). */
+                /*!< Linetype scale (optional).\n
+                 * Group code = 48.\n
+                 * \since Introduced in version R13. */
         int16_t visibility;
-                /*!< group code = 60\n
-                 * Object visibility (optional): 0 = Visible; 1 = Invisible. */
+                /*!< Object visibility (optional):\n
+                 * <ol>
+                 * <li value = "0"> Visible</li>
+                 * <li value = "1"> Invisible</li>
+                 * </ol>
+                 * Group code = 60.\n
+                 * \since Introduced in version R13. */
         int color;
-                /*!< group code = 62\n
-                 * Color of the entity.\n
+                /*!< Color of the entity.\n
                  * Defaults to \c BYLAYER if ommitted in the DXF file.\n
                  * Note that entities encapsulated in a block with the
                  * color \c BYBLOCK are represented in the "native" color of
-                 * the \c BLOCK entity. */
+                 * the \c BLOCK entity.\n
+                 * Group code = 62. */
         int paperspace;
-                /*!< group code = 67\n
-                 * Entities are to be drawn on either \c PAPERSPACE or
+                /*!< Entities are to be drawn on either \c PAPERSPACE or
                  * \c MODELSPACE.\n
-                 * Optional, defaults to \c DXF_MODELSPACE (0). */
+                 * Optional, defaults to \c DXF_MODELSPACE (0).\n
+                 * Group code = 67.\n
+                 * \since Introduced in version R13. */
+        int graphics_data_size;
+                /*!< Number of bytes in the proxy entity graphics
+                 * represented in the sub-sequent 310 groups, which are
+                 * binary chunk records (optional).\n
+                 * Group code = 92.\n
+                 * \since Introduced in version R2000.\n
+                 * \warning On some 64 bit workstations output is
+                 * generated with group code "160", thus omitting group
+                 * code "92". */
+        int16_t shadow_mode;
+                /*!< Shadow mode:\n
+                 * <ol>
+                 * <li value = "0"> Casts and receives shadows.</li>
+                 * <li value = "1"> Casts shadows.</li>
+                 * <li value = "2"> Receives shadows.</li>
+                 * <li value = "3"> Ignores shadows.</li>
+                 * </ol>\n
+                 * Group code = 284.\n
+                 * \since Introduced in version R2009. */
+        DxfBinaryGraphicsData *binary_graphics_data;
+                /*!< Proxy entity graphics data.\n
+                 * Multiple lines of 256 characters maximum per line
+                 * (optional).\n
+                 * Group code = 310.\n
+                 * \since Introduced in version R2000. */
         char *dictionary_owner_soft;
-                /*!< group code = 330\n
-                 * Soft-pointer ID/handle to owner dictionary (optional). */
+                /*!< Soft-pointer ID/handle to owner dictionary (optional).\n
+                 * Group code = 330.\n
+                 * \since Introduced in version R14. */
+        char *material;
+                /*!< Hard-pointer ID/handle to material object (present if
+                 * not BYLAYER).\n
+                 * Group code = 347.\n
+                 * \since Introduced in version R2008. */
         char *dictionary_owner_hard;
-                /*!< group code = 360\n
-                 * Hard owner ID/handle to owner dictionary (optional). */
+                /*!< Hard owner ID/handle to owner dictionary (optional).\n
+                 * Group code = 360.\n
+                 * \since Introduced in version R14. */
+        int16_t lineweight;
+                /*!< Lineweight enum value.\n
+                 * Stored and moved around as a 16-bit integer.\n
+                 * Group code = 370.\n
+                 * \since Introduced in version R2002. */
+        char *plot_style_name;
+                /*!< Hard pointer ID / handle of PlotStyleName object.\n
+                 * Group code = 390.\n
+                 * \since Introduced in version R2009. */
+        long color_value;
+                /*!< A 24-bit color value that should be dealt with in
+                 * terms of bytes with values of 0 to 255.\n
+                 * The lowest byte is the blue value, the middle byte is
+                 * the green value, and the third byte is the red value.\n
+                 * The top byte is always 0.\n
+                 * The group code cannot be used by custom entities for
+                 * their own data because the group code is reserved for
+                 * AcDbEntity, class-level color data and AcDbEntity,
+                 * class-level transparency data.\n
+                 * Group code = 420.\n
+                 * \since Introduced in version R2004. */
+        char *color_name;
+                /*!< Color name.\n
+                 * The group code cannot be used by custom entities for
+                 * their own data because the group code is reserved for
+                 * AcDbEntity, class-level color data and AcDbEntity,
+                 * class-level transparency data.\n
+                 * Group code = 430.\n
+                 * \since Introduced in version R2004. */
+        long transparency;
+                /*!< Transparency value.\n
+                 * The group code cannot be used by custom entities for
+                 * their own data because the group code is reserved for
+                 * AcDbEntity, class-level color data and AcDbEntity,
+                 * class-level transparency data.\n
+                 * Group code = 440.\n
+                 * \since Introduced in version R2004. */
         /* Specific members for a DXF insert. */
         char *block_name;
                 /*!< group code = 2. */
+        DxfPoint *p0;
+                /*!< Base point.\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< group code = 10\n
                  * base point. */
@@ -121,36 +203,45 @@ dxf_insert_struct
                 /*!< group code = 30\n
                  * base point. */
         double rel_x_scale;
-                /*!< group code = 41\n
-                 * optional, defaults to 1.0. */
+                /*!< Relative scale along the X-axis.\n
+                 * Optional, defaults to 1.0.\n
+                 * Group code = 41. */
         double rel_y_scale;
-                /*!< group code = 42\n
-                 * optional, defaults to 1.0. */
+                /*!< Relative scale along the Y-axis.\n
+                 * Optional, defaults to 1.0.\n
+                 * Group code = 42. */
         double rel_z_scale;
-                /*!< group code = 43\n
-                 * optional, defaults to 1.0. */
+                /*!< Relative scale along the Z-axis.\n
+                 * Optional, defaults to 1.0.\n
+                 * Group code = 43. */
         double column_spacing;
-                /*!< group code = 44\n
-                 * optional, defaults to 0.0. */
+                /*!< Column spacing.\n
+                 * Optional, defaults to 0.0.\n
+                 * Group code = 44. */
         double row_spacing;
-                /*!< group code = 45\n
-                 * optional, defaults to 0.0. */
+                /*!< Row spacing.\n
+                 * Optional, defaults to 0.0.\n
+                 * Group code = 45. */
         double rot_angle;
-                /*!< group code = 50\n
-                 * optional, defaults to 0.0. */
+                /*!< Rotation angle.\n
+                 * Optional, defaults to 0.0.\n
+                 * Group code = 50. */
         int attributes_follow;
-                /*!< group code = 66\n
-                 * optional, defaults to 0\n
+                /*!< Attributes follow flag.\n
+                 * Optional, defaults to 0\n
                  * If the value of the "Attributes follow" flag is 1,
                  * a series of Attribute (Attrib) entities is expected to
                  * follow the Insert, terminated by a sequence end (Seqend)
-                 * entity. */
+                 * entity.\n
+                 * Group code = 66. */
         int columns;
-                /*!< group code = 70\n
-                 * optional, defaults to 1. */
+                /*!< Number of columns.\n
+                 * Optional, defaults to 1.\n
+                 * Group code = 70. */
         int rows;
-                /*!< group code = 71\n
-                 * optional, defaults to 1. */
+                /*!< Number of rows.\n
+                 * Optional, defaults to 1.\n
+                 * Group code = 71. */
         double extr_x0;
                 /*!< X-value of the extrusion vector.\n
                  * Defaults to 0.0 if ommitted in the DXF file.\n
