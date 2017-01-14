@@ -1,7 +1,7 @@
 /*!
  * \file insert.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF insert entity (\c INSERT).
  *
@@ -9,6 +9,13 @@
  * Whilst a \c BLOCK only resides in the block table only once as a
  * definition, an \c INSERT entity can insert blocks as singlular entities
  * and also as [rectanglar, polar] arrays in the drawing.
+ *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -43,12 +50,6 @@
  * \brief Allocate memory for a \c DxfInsert.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfInsert *
 dxf_insert_new ()
@@ -85,12 +86,6 @@ dxf_insert_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfInsert *
 dxf_insert_init
@@ -162,12 +157,6 @@ dxf_insert_init
  * While parsing the DXF file store data in \c insert. \n
  *
  * \return a pointer to \c insert.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfInsert *
 dxf_insert_read
@@ -462,12 +451,6 @@ dxf_insert_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_insert_write
@@ -707,12 +690,6 @@ dxf_insert_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_insert_free
@@ -749,12 +726,6 @@ dxf_insert_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c INSERT
  * entities and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_insert_free_chain
