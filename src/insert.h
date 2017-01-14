@@ -1,7 +1,7 @@
 /*!
  * \file insert.h
  *
- * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF insert entity (\c INSERT).
  *
@@ -59,7 +59,7 @@ extern "C" {
  * \version According to DXF R14.
  */
 typedef struct
-dxf_insert
+dxf_insert_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
