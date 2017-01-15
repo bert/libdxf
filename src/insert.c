@@ -755,4 +755,41 @@ dxf_insert_free_chain
 }
 
 
+/*!
+ * \brief Get the ID code from a DXF \c INSERT entity.
+ *
+ * \return ID code.
+ */
+int
+dxf_insert_get_id_code
+(
+        DxfInsert *insert
+                /*!< a pointer to a DXF \c INSERT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (insert->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert->id_code);
+}
+
+
 /* EOF */

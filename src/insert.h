@@ -290,6 +290,11 @@ dxf_insert_free_chain
 (
         DxfInsert *inserts
 );
+int
+dxf_insert_get_id_code
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
