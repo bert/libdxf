@@ -295,6 +295,12 @@ dxf_insert_get_id_code
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_id_code
+(
+        DxfInsert *insert,
+        int id_code
+);
 
 
 #ifdef __cplusplus
