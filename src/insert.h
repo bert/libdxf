@@ -301,6 +301,11 @@ dxf_insert_set_id_code
         DxfInsert *insert,
         int id_code
 );
+char *
+dxf_insert_get_linetype
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus

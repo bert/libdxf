@@ -832,4 +832,41 @@ dxf_insert_set_id_code
 }
 
 
+/*!
+ * \brief Get the linetype from a DXF \c INSERT entity.
+ *
+ * \return linetype when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_insert_get_linetype
+(
+        DxfInsert *insert
+                /*!< a pointer to a DXF \c INSERT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (insert->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the linetype member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (insert->linetype));
+}
+
+
 /* EOF */
