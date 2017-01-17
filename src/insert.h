@@ -306,6 +306,12 @@ dxf_insert_get_linetype
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_linetype
+(
+        DxfInsert *insert,
+        char *linetype
+);
 
 
 #ifdef __cplusplus
