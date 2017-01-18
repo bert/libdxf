@@ -317,6 +317,12 @@ dxf_insert_get_layer
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_layer
+(
+        DxfInsert *insert,
+        char *layer
+);
 
 
 #ifdef __cplusplus
