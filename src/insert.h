@@ -328,6 +328,12 @@ dxf_insert_get_elevation
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_elevation
+(
+        DxfInsert *insert,
+        double elevation
+);
 
 
 #ifdef __cplusplus
