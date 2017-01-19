@@ -982,4 +982,34 @@ dxf_insert_set_layer
 }
 
 
+/*!
+ * \brief Get the elevation from a DXF \c INSERT entity.
+ *
+ * \return elevation.
+ */
+double
+dxf_insert_get_elevation
+(
+        DxfInsert *insert
+                /*!< a pointer to a DXF \c INSERT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert->elevation);
+}
+
+
 /* EOF */

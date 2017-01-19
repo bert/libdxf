@@ -323,6 +323,11 @@ dxf_insert_set_layer
         DxfInsert *insert,
         char *layer
 );
+double
+dxf_insert_get_elevation
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
