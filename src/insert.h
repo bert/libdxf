@@ -339,6 +339,12 @@ dxf_insert_get_thickness
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_thickness
+(
+        DxfInsert *insert,
+        double thickness
+);
 
 
 #ifdef __cplusplus
