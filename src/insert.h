@@ -345,6 +345,11 @@ dxf_insert_set_thickness
         DxfInsert *insert,
         double thickness
 );
+double
+dxf_insert_get_linetype_scale
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
