@@ -334,6 +334,11 @@ dxf_insert_set_elevation
         DxfInsert *insert,
         double elevation
 );
+double
+dxf_insert_get_thickness
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
