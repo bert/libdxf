@@ -378,6 +378,11 @@ dxf_insert_set_color
         DxfInsert *insert,
         int color
 );
+int
+dxf_insert_get_paperspace
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
