@@ -350,6 +350,12 @@ dxf_insert_get_linetype_scale
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_linetype_scale
+(
+        DxfInsert *insert,
+        double linetype_scale
+);
 
 
 #ifdef __cplusplus
