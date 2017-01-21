@@ -1193,4 +1193,48 @@ dxf_insert_set_linetype_scale
 }
 
 
+/*!
+ * \brief Get the visibility from a DXF \c INSERT entity.
+ *
+ * \return visibility.
+ */
+int16_t
+dxf_insert_get_visibility
+(
+        DxfInsert *insert
+                /*!< a pointer to a DXF \c INSERT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (insert->visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the visibility member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (insert->visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the visibility member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert->visibility);
+}
+
+
 /* EOF */

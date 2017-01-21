@@ -356,6 +356,11 @@ dxf_insert_set_linetype_scale
         DxfInsert *insert,
         double linetype_scale
 );
+int16_t
+dxf_insert_get_visibility
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
