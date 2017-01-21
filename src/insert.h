@@ -367,6 +367,11 @@ dxf_insert_set_visibility
         DxfInsert *insert,
         int16_t visibility
 );
+int
+dxf_insert_get_color
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus

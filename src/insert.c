@@ -1282,4 +1282,40 @@ dxf_insert_set_visibility
 }
 
 
+/*!
+ * \brief Get the color from a DXF \c INSERT entity.
+ *
+ * \return color.
+ */
+int
+dxf_insert_get_color
+(
+        DxfInsert *insert
+                /*!< a pointer to a DXF \c INSERT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (insert->color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found in the color member.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert->color);
+}
+
+
 /* EOF */
