@@ -1237,4 +1237,49 @@ dxf_insert_get_visibility
 }
 
 
+/*!
+ * \brief Set the visibility for a DXF \c INSERT entity.
+ */
+DxfInsert *
+dxf_insert_set_visibility
+(
+        DxfInsert *insert,
+                /*!< a pointer to a DXF \c INSERT entity. */
+        int16_t visibility
+                /*!< the visibility to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative visibility value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range visibility value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        insert->visibility = visibility;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert);
+}
+
+
 /* EOF */
