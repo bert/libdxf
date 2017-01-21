@@ -372,6 +372,12 @@ dxf_insert_get_color
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_color
+(
+        DxfInsert *insert,
+        int color
+);
 
 
 #ifdef __cplusplus
