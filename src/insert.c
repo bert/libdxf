@@ -1399,4 +1399,49 @@ dxf_insert_get_paperspace
 }
 
 
+/*!
+ * \brief Set the paperspace flag for a DXF \c INSERT entity.
+ */
+DxfInsert *
+dxf_insert_set_paperspace
+(
+        DxfInsert *insert,
+                /*!< a pointer to a DXF \c INSERT entity. */
+        int paperspace
+                /*!< the paperspace flag value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative paperspace value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range paperspace value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        insert->paperspace = paperspace;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert);
+}
+
+
 /* EOF */

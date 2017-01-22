@@ -383,6 +383,12 @@ dxf_insert_get_paperspace
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_paperspace
+(
+        DxfInsert *insert,
+        int paperspace
+);
 
 
 #ifdef __cplusplus
