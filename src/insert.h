@@ -400,6 +400,11 @@ dxf_insert_set_graphics_data_size
         DxfInsert *insert,
         int graphics_data_size
 );
+int16_t
+dxf_insert_get_shadow_mode
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
