@@ -411,6 +411,11 @@ dxf_insert_set_shadow_mode
         DxfInsert *insert,
         int16_t shadow_mode
 );
+DxfBinaryGraphicsData *
+dxf_insert_get_binary_graphics_data
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
