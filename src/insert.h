@@ -394,6 +394,12 @@ dxf_insert_get_graphics_data_size
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_graphics_data_size
+(
+        DxfInsert *insert,
+        int graphics_data_size
+);
 
 
 #ifdef __cplusplus
