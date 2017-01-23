@@ -416,6 +416,12 @@ dxf_insert_get_binary_graphics_data
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_binary_graphics_data
+(
+        DxfInsert *insert,
+        DxfBinaryGraphicsData *data
+);
 
 
 #ifdef __cplusplus
