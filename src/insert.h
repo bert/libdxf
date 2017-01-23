@@ -405,6 +405,12 @@ dxf_insert_get_shadow_mode
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_shadow_mode
+(
+        DxfInsert *insert,
+        int16_t shadow_mode
+);
 
 
 #ifdef __cplusplus
