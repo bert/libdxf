@@ -438,6 +438,12 @@ dxf_insert_get_material
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_material
+(
+        DxfInsert *insert,
+        char *material
+);
 
 
 #ifdef __cplusplus
