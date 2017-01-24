@@ -433,6 +433,11 @@ dxf_insert_set_dictionary_owner_soft
         DxfInsert *insert,
         char *dictionary_owner_soft
 );
+char *
+dxf_insert_get_material
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
