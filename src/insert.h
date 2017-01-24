@@ -427,6 +427,12 @@ dxf_insert_get_dictionary_owner_soft
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_dictionary_owner_soft
+(
+        DxfInsert *insert,
+        char *dictionary_owner_soft
+);
 
 
 #ifdef __cplusplus
