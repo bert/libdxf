@@ -466,6 +466,11 @@ dxf_insert_set_lineweight
         DxfInsert *insert,
         int16_t lineweight
 );
+char *
+dxf_insert_get_plot_style_name
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
