@@ -460,6 +460,12 @@ dxf_insert_get_lineweight
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_lineweight
+(
+        DxfInsert *insert,
+        int16_t lineweight
+);
 
 
 #ifdef __cplusplus
