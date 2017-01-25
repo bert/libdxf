@@ -444,6 +444,11 @@ dxf_insert_set_material
         DxfInsert *insert,
         char *material
 );
+char *
+dxf_insert_get_dictionary_owner_hard
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
