@@ -455,6 +455,11 @@ dxf_insert_set_dictionary_owner_hard
         DxfInsert *insert,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_insert_get_lineweight
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
