@@ -477,6 +477,11 @@ dxf_insert_set_plot_style_name
         DxfInsert *insert,
         char *plot_style_name
 );
+long
+dxf_insert_get_color_value
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
