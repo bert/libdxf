@@ -488,6 +488,11 @@ dxf_insert_set_color_value
         DxfInsert *insert,
         long color_value
 );
+char *
+dxf_insert_get_color_name
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
