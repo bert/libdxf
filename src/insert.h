@@ -499,6 +499,11 @@ dxf_insert_set_color_name
         DxfInsert *insert,
         char *color_name
 );
+long
+dxf_insert_get_transparency
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
