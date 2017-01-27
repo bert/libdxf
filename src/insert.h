@@ -504,6 +504,12 @@ dxf_insert_get_transparency
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_transparency
+(
+        DxfInsert *insert,
+        long transparency
+);
 
 
 #ifdef __cplusplus
