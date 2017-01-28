@@ -510,6 +510,11 @@ dxf_insert_set_transparency
         DxfInsert *insert,
         long transparency
 );
+char *
+dxf_insert_get_block_name
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
