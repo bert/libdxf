@@ -2585,4 +2585,47 @@ dxf_insert_get_y0
 }
 
 
+/*!
+ * \brief Set the Y-value of the base point \c y0 of a DXF \c INSERT
+ * entity.
+ *
+ * \return a pointer to \c insert when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfInsert *
+dxf_insert_set_y0
+(
+        DxfInsert *insert,
+                /*!< a pointer to a DXF \c INSERT entity. */
+        double y0
+                /*!< the Y-value of the base point \c y0 of a DXF
+                 * \c INSERT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (insert->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        insert->p0->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert);
+}
+
+
 /* EOF */
