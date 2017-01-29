@@ -543,6 +543,11 @@ dxf_insert_set_x0
         DxfInsert *insert,
         double x0
 );
+double
+dxf_insert_get_y0
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
