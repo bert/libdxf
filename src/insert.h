@@ -532,6 +532,11 @@ dxf_insert_set_p0
         DxfInsert *insert,
         DxfPoint *p0
 );
+double
+dxf_insert_get_x0
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
