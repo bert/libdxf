@@ -537,6 +537,12 @@ dxf_insert_get_x0
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_x0
+(
+        DxfInsert *insert,
+        double x0
+);
 
 
 #ifdef __cplusplus
