@@ -521,6 +521,11 @@ dxf_insert_set_block_name
         DxfInsert *insert,
         char *block_name
 );
+DxfPoint *
+dxf_insert_get_p0
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus

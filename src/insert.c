@@ -2387,4 +2387,41 @@ dxf_insert_set_block_name
 }
 
 
+/*!
+ * \brief Get the base point \c p0 of a DXF \c INSERT entity.
+ *
+ * \return the base point \c p0.
+ */
+DxfPoint *
+dxf_insert_get_p0
+(
+        DxfInsert *insert
+                /*!< a pointer to a DXF \c INSERT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (insert->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert->p0);
+}
+
+
 /* EOF */
