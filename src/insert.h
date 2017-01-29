@@ -515,6 +515,12 @@ dxf_insert_get_block_name
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_block_name
+(
+        DxfInsert *insert,
+        char *block_name
+);
 
 
 #ifdef __cplusplus
