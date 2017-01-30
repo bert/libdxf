@@ -554,6 +554,11 @@ dxf_insert_set_y0
         DxfInsert *insert,
         double y0
 );
+double
+dxf_insert_get_z0
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
