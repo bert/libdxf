@@ -581,6 +581,12 @@ dxf_insert_get_rel_y_scale
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_rel_y_scale
+(
+        DxfInsert *insert,
+        double rel_y_scale
+);
 
 
 #ifdef __cplusplus

@@ -2828,4 +2828,46 @@ dxf_insert_get_rel_y_scale
 }
 
 
+/*!
+ * \brief Set the relative Y scale factor \c rel_y_scale of a DXF
+ * \c INSERT entity.
+ *
+ * \return a pointer to \c insert when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfInsert *
+dxf_insert_set_rel_y_scale
+(
+        DxfInsert *insert,
+                /*!< a pointer to a DXF \c INSERT entity. */
+        double rel_y_scale
+                /*!< the relative Y scale factor \c rel_y_scale of a DXF
+                 * \c INSERT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (rel_y_scale == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero value was passed.\n")),
+                  __FUNCTION__);
+        }
+        insert->rel_y_scale = rel_y_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert);
+}
+
+
 /* EOF */
