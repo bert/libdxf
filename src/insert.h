@@ -565,6 +565,11 @@ dxf_insert_set_z0
         DxfInsert *insert,
         double z0
 );
+double
+dxf_insert_get_rel_x_scale
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
