@@ -2870,4 +2870,42 @@ dxf_insert_set_rel_y_scale
 }
 
 
+/*!
+ * \brief Get the releative Z scale factor \c rel_z_scale of a DXF
+ * \c INSERT entity.
+ *
+ * \return the relative Z scale factor \c rel_z_scale.
+ */
+double
+dxf_insert_get_rel_z_scale
+(
+        DxfInsert *insert
+                /*!< a pointer to a DXF \c INSERT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (insert->rel_z_scale == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert->rel_z_scale);
+}
+
+
 /* EOF */
