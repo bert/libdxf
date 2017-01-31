@@ -559,6 +559,12 @@ dxf_insert_get_z0
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_z0
+(
+        DxfInsert *insert,
+        double z0
+);
 
 
 #ifdef __cplusplus
