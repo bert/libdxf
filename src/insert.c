@@ -2975,10 +2975,10 @@ dxf_insert_get_column_spacing
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (insert->column_spacing == 0.0)
+        if (insert->column_spacing < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a zero value was found.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
