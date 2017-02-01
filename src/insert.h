@@ -592,6 +592,12 @@ dxf_insert_get_rel_z_scale
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_rel_z_scale
+(
+        DxfInsert *insert,
+        double rel_z_scale
+);
 
 
 #ifdef __cplusplus
