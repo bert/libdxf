@@ -609,6 +609,11 @@ dxf_insert_set_column_spacing
         DxfInsert *insert,
         double column_spacing
 );
+double
+dxf_insert_get_row_spacing
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
