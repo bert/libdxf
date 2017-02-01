@@ -598,6 +598,11 @@ dxf_insert_set_rel_z_scale
         DxfInsert *insert,
         double rel_z_scale
 );
+double
+dxf_insert_get_column_spacing
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus

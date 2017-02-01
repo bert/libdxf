@@ -2950,4 +2950,42 @@ dxf_insert_set_rel_z_scale
 }
 
 
+/*!
+ * \brief Get the column spacing value \c column_spacing of a DXF
+ * \c INSERT entity.
+ *
+ * \return the column spacing value \c column_spacing.
+ */
+double
+dxf_insert_get_column_spacing
+(
+        DxfInsert *insert
+                /*!< a pointer to a DXF \c INSERT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (insert->column_spacing == 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert->column_spacing);
+}
+
+
 /* EOF */
