@@ -620,6 +620,17 @@ dxf_insert_set_row_spacing
         DxfInsert *insert,
         double row_spacing
 );
+double
+dxf_insert_get_rot_angle
+(
+        DxfInsert *insert
+);
+DxfInsert *
+dxf_insert_set_rot_angle
+(
+        DxfInsert *insert,
+        double rot_angle
+);
 
 
 #ifdef __cplusplus
