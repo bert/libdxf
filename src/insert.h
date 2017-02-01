@@ -614,6 +614,12 @@ dxf_insert_get_row_spacing
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_row_spacing
+(
+        DxfInsert *insert,
+        double row_spacing
+);
 
 
 #ifdef __cplusplus

@@ -3067,4 +3067,46 @@ dxf_insert_get_row_spacing
 }
 
 
+/*!
+ * \brief Set the row spacing value \c row_spacing of a DXF
+ * \c INSERT entity.
+ *
+ * \return a pointer to \c insert when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfInsert *
+dxf_insert_set_row_spacing
+(
+        DxfInsert *insert,
+                /*!< a pointer to a DXF \c INSERT entity. */
+        double row_spacing
+                /*!< the row spacing value \c row_spacing for a DXF
+                 * \c INSERT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (row_spacing < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        insert->row_spacing = row_spacing;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert);
+}
+
+
 /* EOF */
