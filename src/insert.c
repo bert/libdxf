@@ -2988,4 +2988,46 @@ dxf_insert_get_column_spacing
 }
 
 
+/*!
+ * \brief Set the column spacing value \c column_spacing of a DXF
+ * \c INSERT entity.
+ *
+ * \return a pointer to \c insert when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfInsert *
+dxf_insert_set_column_spacing
+(
+        DxfInsert *insert,
+                /*!< a pointer to a DXF \c INSERT entity. */
+        double column_spacing
+                /*!< the column spacing value \c column_spacing of a DXF
+                 * \c INSERT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (column_spacing < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        insert->column_spacing = column_spacing;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert);
+}
+
+
 /* EOF */
