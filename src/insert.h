@@ -636,6 +636,12 @@ dxf_insert_get_attributes_follow
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_attributes_follow
+(
+        DxfInsert *insert,
+        int attributes_follow
+);
 
 
 #ifdef __cplusplus
