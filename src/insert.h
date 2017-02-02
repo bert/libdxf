@@ -642,6 +642,11 @@ dxf_insert_set_attributes_follow
         DxfInsert *insert,
         int attributes_follow
 );
+int
+dxf_insert_get_columns
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
