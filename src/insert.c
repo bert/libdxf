@@ -3198,4 +3198,49 @@ dxf_insert_set_rot_angle
 }
 
 
+/*!
+ * \brief Get the attributes follow \c attributes_follow from a DXF
+ * \c INSERT entity.
+ *
+ * \return attributes follow \c attributes_follow value.
+ */
+int
+dxf_insert_get_attributes_follow
+(
+        DxfInsert *insert
+                /*!< a pointer to a DXF \c INSERT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (insert->attributes_follow < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the attributes_folow member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (insert->attributes_follow > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found in the attributes_folow member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert->attributes_follow);
+}
+
+
 /* EOF */

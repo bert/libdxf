@@ -631,6 +631,11 @@ dxf_insert_set_rot_angle
         DxfInsert *insert,
         double rot_angle
 );
+int
+dxf_insert_get_attributes_follow
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
