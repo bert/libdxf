@@ -647,6 +647,12 @@ dxf_insert_get_columns
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_columns
+(
+        DxfInsert *insert,
+        int columns
+);
 
 
 #ifdef __cplusplus
