@@ -653,6 +653,11 @@ dxf_insert_set_columns
         DxfInsert *insert,
         int columns
 );
+int
+dxf_insert_get_rows
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
