@@ -3404,4 +3404,42 @@ dxf_insert_get_rows
 }
 
 
+/*!
+ * \brief Set the number of rows \c rows for a DXF \c INSERT entity.
+ */
+DxfInsert *
+dxf_insert_set_rows
+(
+        DxfInsert *insert,
+                /*!< a pointer to a DXF \c INSERT entity. */
+        int rows
+                /*!< Number of rows value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (rows < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        insert->rows = rows;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert);
+}
+
+
 /* EOF */
