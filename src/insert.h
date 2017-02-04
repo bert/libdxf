@@ -664,6 +664,11 @@ dxf_insert_set_rows
         DxfInsert *insert,
         int rows
 );
+double
+dxf_insert_get_extr_x0
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus
