@@ -680,6 +680,12 @@ dxf_insert_get_extr_y0
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_extr_y0
+(
+        DxfInsert *insert,
+        double extr_y0
+);
 
 
 #ifdef __cplusplus
