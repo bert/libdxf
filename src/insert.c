@@ -3474,4 +3474,40 @@ dxf_insert_get_extr_x0
 }
 
 
+/*!
+ * \brief Set the X-value of the extrusion vector \c extr_x0 of a DXF
+ * \c INSERT entity.
+ *
+ * \return a pointer to \c insert when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfInsert *
+dxf_insert_set_extr_x0
+(
+        DxfInsert *insert,
+                /*!< a pointer to a DXF \c INSERT entity. */
+        double extr_x0
+                /*!< the X-value of the extrusion vector \c extr_x0 of a
+                 * DXF \c ARC entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        insert->extr_x0 = extr_x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert);
+}
+
+
 /* EOF */
