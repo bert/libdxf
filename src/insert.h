@@ -691,6 +691,12 @@ dxf_insert_get_extr_z0
 (
         DxfInsert *insert
 );
+DxfInsert *
+dxf_insert_set_extr_z0
+(
+        DxfInsert *insert,
+        double extr_z0
+);
 
 
 #ifdef __cplusplus
