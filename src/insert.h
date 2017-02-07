@@ -711,6 +711,11 @@ dxf_insert_set_extrusion_vector
         double extr_y0,
         double extr_z0
 );
+DxfInsert *
+dxf_insert_get_next
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus

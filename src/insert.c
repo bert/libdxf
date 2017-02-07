@@ -3724,4 +3724,44 @@ dxf_insert_set_extrusion_vector
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c INSERT entity from a DXF 
+ * \c INSERT entity.
+ *
+ * \return pointer to the next \c INSERT entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfInsert *
+dxf_insert_get_next
+(
+        DxfInsert *insert
+                /*!< a pointer to a DXF \c INSERT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (insert->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfInsert *) insert->next);
+}
+
+
 /* EOF */
