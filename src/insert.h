@@ -697,6 +697,12 @@ dxf_insert_set_extr_z0
         DxfInsert *insert,
         double extr_z0
 );
+DxfInsert *
+dxf_insert_set_extrusion_vector_from_point
+(
+        DxfInsert *insert,
+        DxfPoint *point
+);
 
 
 #ifdef __cplusplus
