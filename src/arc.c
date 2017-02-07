@@ -633,7 +633,7 @@ dxf_arc_free
         if (arc->next != NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfArc was not NULL.\n")),
+                  (_("Error in %s () pointer to next was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3249,7 +3249,7 @@ dxf_arc_get_last
         if (arc->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((DxfArc *) arc);
         }
