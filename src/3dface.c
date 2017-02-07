@@ -64,7 +64,7 @@ dxf_3dface_new ()
         if ((face = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a Dxf3dface struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 face = NULL;
         }
@@ -107,7 +107,7 @@ dxf_3dface_init
         if (face == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a Dxf3dface struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -721,7 +721,7 @@ dxf_3dface_free
         if (face->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next Dxf3dface was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (face);
         }
@@ -804,7 +804,7 @@ dxf_3dface_get_id_code
         if (face->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the id-code member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -845,7 +845,7 @@ dxf_3dface_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative id-code value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         face->id_code = id_code;
@@ -883,7 +883,7 @@ dxf_3dface_get_linetype
         if (face->linetype ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the linetype member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -965,7 +965,7 @@ dxf_3dface_get_layer
         if (face->layer ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1109,7 +1109,7 @@ dxf_3dface_get_thickness
         if (face->thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the thickness member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1148,7 +1148,7 @@ dxf_3dface_set_thickness
         if (thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative thickness value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         face->thickness = thickness;
@@ -1185,7 +1185,7 @@ dxf_3dface_get_linetype_scale
         if (face->linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the linetype_scale member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1224,7 +1224,7 @@ dxf_3dface_set_linetype_scale
         if (linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative linetype_scale value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
         face->linetype_scale = linetype_scale;
@@ -1261,14 +1261,14 @@ dxf_3dface_get_visibility
         if (face->visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the visibility member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (face->visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the visibility member.\n")),
+                  (_("Error in %s () an out of range value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1308,14 +1308,14 @@ dxf_3dface_set_visibility
         if (visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative visibility value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range visibility value was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1353,7 +1353,7 @@ dxf_3dface_get_color
         if (face->color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the color member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1392,10 +1392,8 @@ dxf_3dface_set_color
         if (color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative color value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                fprintf (stderr,
-                  (_("\teffectively turning this entity it's visibility off.\n")));
         }
         face->color = color;
 #if DEBUG
@@ -1431,13 +1429,13 @@ dxf_3dface_get_paperspace
         if (face->paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the paperspace member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (face->paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1476,14 +1474,14 @@ dxf_3dface_set_paperspace
         if (paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative paperspace value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range paperspace value was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1523,13 +1521,13 @@ dxf_3dface_get_graphics_data_size
         if (face->graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (face->graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a zero value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1569,14 +1567,14 @@ dxf_3dface_set_graphics_data_size
         if (graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative graphics_data_size value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a zero graphics_data_size value was passed.\n")),
+                  (_("Warning in %s () a zero value was passed.\n")),
                   __FUNCTION__);
         }
         face->graphics_data_size = graphics_data_size;
@@ -1614,14 +1612,14 @@ dxf_3dface_get_shadow_mode
         if (face->shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the shadow_mode member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (face->shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the shadow_mode member.\n")),
+                  (_("Error in %s () an out of range value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1661,14 +1659,14 @@ dxf_3dface_set_shadow_mode
         if (shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative shadow_mode value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range shadow_mode value was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1709,7 +1707,7 @@ dxf_3dface_get_binary_graphics_data
         if (face->binary_graphics_data ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the binary_graphics_data member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1789,7 +1787,7 @@ dxf_3dface_get_dictionary_owner_soft
         if (face->dictionary_owner_soft ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1869,7 +1867,7 @@ dxf_3dface_get_material
         if (face->material ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the material member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1951,7 +1949,7 @@ dxf_3dface_get_dictionary_owner_hard
         if (face->dictionary_owner_hard ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2097,7 +2095,7 @@ dxf_3dface_get_plot_style_name
         if (face->plot_style_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2242,7 +2240,7 @@ dxf_3dface_get_color_name
         if (face->color_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2386,7 +2384,7 @@ dxf_3dface_get_p0
         if (face->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2548,7 +2546,7 @@ dxf_3dface_get_y0
         if (face->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -2590,7 +2588,7 @@ dxf_3dface_set_y0
         if (face->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2630,7 +2628,7 @@ dxf_3dface_get_z0
         if (face->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -2672,7 +2670,7 @@ dxf_3dface_set_z0
         if (face->p0 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2710,7 +2708,7 @@ dxf_3dface_get_p1
         if (face->p1 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2790,7 +2788,7 @@ dxf_3dface_get_x1
         if (face->p1 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -2832,7 +2830,7 @@ dxf_3dface_set_x1
         if (face->p1 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2872,7 +2870,7 @@ dxf_3dface_get_y1
         if (face->p1 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -2914,7 +2912,7 @@ dxf_3dface_set_y1
         if (face->p1 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2954,7 +2952,7 @@ dxf_3dface_get_z1
         if (face->p1 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -2996,7 +2994,7 @@ dxf_3dface_set_z1
         if (face->p1 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3034,7 +3032,7 @@ dxf_3dface_get_p2
         if (face->p2 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3114,7 +3112,7 @@ dxf_3dface_get_x2
         if (face->p2 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3156,7 +3154,7 @@ dxf_3dface_set_x2
         if (face->p2 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3196,7 +3194,7 @@ dxf_3dface_get_y2
         if (face->p2 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3238,7 +3236,7 @@ dxf_3dface_set_y2
         if (face->p2 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3278,7 +3276,7 @@ dxf_3dface_get_z2
         if (face->p2 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3320,7 +3318,7 @@ dxf_3dface_set_z2
         if (face->p2 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3358,7 +3356,7 @@ dxf_3dface_get_p3
         if (face->p3 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3438,7 +3436,7 @@ dxf_3dface_get_x3
         if (face->p3 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3480,7 +3478,7 @@ dxf_3dface_set_x3
         if (face->p3 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3520,7 +3518,7 @@ dxf_3dface_get_y3
         if (face->p3 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3562,7 +3560,7 @@ dxf_3dface_set_y3
         if (face->p3 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3602,7 +3600,7 @@ dxf_3dface_get_z3
         if (face->p3 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3644,7 +3642,7 @@ dxf_3dface_set_z3
         if (face->p3 == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3682,14 +3680,14 @@ dxf_3dface_get_flag
         if (face->flag < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the flag member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (face->flag > 15)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the flag member.\n")),
+                  (_("Error in %s () an out of range value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3729,7 +3727,7 @@ dxf_3dface_set_flag
         if (flag < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative id-code value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3937,7 +3935,7 @@ dxf_3dface_create_from_points
         if (face == NULL)
         {
               fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a Dxf3dface struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -4114,7 +4112,7 @@ dxf_3dface_get_next
         if (face->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -4196,7 +4194,7 @@ dxf_3dface_get_last
         if (face->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((Dxf3dface *) face);
         }
