@@ -1,7 +1,7 @@
 /*!
  * \file 3dline.c
  *
- * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D line entity (\c 3DLINE).
  *
@@ -3626,7 +3626,7 @@ dxf_3dline_get_next
         if (line->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3705,7 +3705,7 @@ dxf_3dline_get_last
         if (line->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((Dxf3dline *) line);
         }
