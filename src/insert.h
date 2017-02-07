@@ -703,6 +703,14 @@ dxf_insert_set_extrusion_vector_from_point
         DxfInsert *insert,
         DxfPoint *point
 );
+DxfInsert *
+dxf_insert_set_extrusion_vector
+(
+        DxfInsert *insert,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0
+);
 
 
 #ifdef __cplusplus
