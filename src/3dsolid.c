@@ -70,7 +70,7 @@ dxf_3dsolid_new ()
         if ((solid = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a Dxf3dsolid struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -113,7 +113,7 @@ dxf_3dsolid_init
         if (solid == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a Dxf3dsolid struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -690,7 +690,7 @@ dxf_3dsolid_free
         if (solid->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next Dxf3dsolid was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
@@ -772,7 +772,7 @@ dxf_3dsolid_get_id_code
         if (solid->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -811,7 +811,7 @@ dxf_3dsolid_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative id-code value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -849,7 +849,7 @@ dxf_3dsolid_get_linetype
         if (solid->linetype ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the linetype member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -924,7 +924,7 @@ dxf_3dsolid_get_layer
         if (solid->layer ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1060,7 +1060,7 @@ dxf_3dsolid_get_thickness
         if (solid->thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the thickness member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1097,7 +1097,7 @@ dxf_3dsolid_set_thickness
         if (thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative thickness value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1135,7 +1135,7 @@ dxf_3dsolid_get_linetype_scale
         if (solid->linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the linetype scale member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1172,7 +1172,7 @@ dxf_3dsolid_set_linetype_scale
         if (linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative linetype scale value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1210,14 +1210,14 @@ dxf_3dsolid_get_visibility
         if (solid->visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the visibility member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (solid->visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the visibility member.\n")),
+                  (_("Error in %s () an out of range value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1254,14 +1254,14 @@ dxf_3dsolid_set_visibility
         if (visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative visibility value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range visibility value was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1299,7 +1299,7 @@ dxf_3dsolid_get_color
         if (solid->color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the color member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1335,10 +1335,8 @@ dxf_3dsolid_set_color
         if (color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative color value was passed.\n")),
+                  (_("Warning in %s () a negativevalue was passed.\n")),
                   __FUNCTION__);
-                fprintf (stderr,
-                  (_("\teffectively turning this entity it's visibility off.\n")));
         }
         solid->color = color;
 #if DEBUG
@@ -1374,13 +1372,13 @@ dxf_3dsolid_get_paperspace
         if (solid->paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the paperspace member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (solid->paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1416,14 +1414,14 @@ dxf_3dsolid_set_paperspace
         if (paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative paperspace value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range paperspace value was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1462,13 +1460,13 @@ dxf_3dsolid_get_graphics_data_size
         if (solid->graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (solid->graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a zero value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1508,14 +1506,14 @@ dxf_3dsolid_set_graphics_data_size
         if (graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative graphics_data_size value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a zero graphics_data_size value was passed.\n")),
+                  (_("Error in %s () a zero value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1554,14 +1552,14 @@ dxf_3dsolid_get_shadow_mode
         if (solid->shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the shadow_mode member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (solid->shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the shadow_mode member.\n")),
+                  (_("Error in %s () an out of range value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1601,14 +1599,14 @@ dxf_3dsolid_set_shadow_mode
         if (shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative shadow_mode value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range shadow_mode value was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1649,7 +1647,7 @@ dxf_3dsolid_get_binary_graphics_data
         if (solid->binary_graphics_data ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the binary_graphics_data member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1732,7 +1730,7 @@ dxf_3dsolid_get_dictionary_owner_soft
         if (solid->dictionary_owner_soft ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1813,7 +1811,7 @@ dxf_3dsolid_get_material
         if (solid->material ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the material member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1895,7 +1893,7 @@ dxf_3dsolid_get_dictionary_owner_hard
         if (solid->dictionary_owner_hard ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2038,7 +2036,7 @@ dxf_3dsolid_get_plot_style_name
         if (solid->plot_style_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2183,7 +2181,7 @@ dxf_3dsolid_get_color_name
         if (solid->color_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2330,7 +2328,7 @@ dxf_3dsolid_get_proprietary_data
         if (solid->proprietary_data == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the proprietary_data member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2408,7 +2406,7 @@ dxf_3dsolid_get_additional_proprietary_data
         if (solid->additional_proprietary_data == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the proprietary_data member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2485,13 +2483,13 @@ dxf_3dsolid_get_modeler_format_version_number
         if (solid->modeler_format_version_number < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the modeler_format_version_number member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (solid->modeler_format_version_number > DXF_MODELER_FORMAT_CURRENT_VERSION)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the modeler_format_version_number member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -2529,14 +2527,14 @@ dxf_3dsolid_set_modeler_format_version_number
         if (modeler_format_version_number < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative modeler_format_version_number value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (modeler_format_version_number > DXF_MODELER_FORMAT_CURRENT_VERSION)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range paperspace value was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2576,7 +2574,7 @@ dxf_3dsolid_get_history
         if (solid->history ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2654,7 +2652,7 @@ dxf_3dsolid_get_next
         if (solid->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2733,7 +2731,7 @@ dxf_3dsolid_get_last
         if (solid->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((Dxf3dsolid *) solid);
         }
