@@ -3764,4 +3764,43 @@ dxf_insert_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c INSERT for a DXF \c INSERT
+ * entity.
+ */
+DxfInsert *
+dxf_insert_set_next
+(
+        DxfInsert *insert,
+                /*!< a pointer to a DXF \c INSERT entity. */
+        DxfInsert *next
+                /*!< a pointer to the next \c INSERT for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        insert->next = (struct DxfInsert *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (insert);
+}
+
+
 /* EOF */
