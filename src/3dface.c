@@ -1,7 +1,8 @@
 /*!
  * \file 3dface.c
  *
- * \author Copyright (C) 2010 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010, 2012, 2013, 2014,2015, 2016, 2017 by Bert
+ * Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF 3D face entity (\c 3DFACE).
  *
