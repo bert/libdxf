@@ -722,6 +722,11 @@ dxf_insert_set_next
         DxfInsert *insert,
         DxfInsert *next
 );
+DxfInsert *
+dxf_insert_get_last
+(
+        DxfInsert *insert
+);
 
 
 #ifdef __cplusplus

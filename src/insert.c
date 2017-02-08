@@ -3803,4 +3803,49 @@ dxf_insert_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c INSERT entity from a linked
+ * list of DXF \c INSERT entities.
+ *
+ * \return pointer to the last \c INSERT entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfInsert *
+dxf_insert_get_last
+(
+        DxfInsert *insert
+                /*!< a pointer to a DXF \c INSERT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (insert == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (insert->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfInsert *) insert);
+        }
+        DxfInsert *iter = (DxfInsert *) insert->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfInsert *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfInsert *) iter);
+}
+
+
 /* EOF */
