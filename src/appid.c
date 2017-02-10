@@ -76,7 +76,7 @@ dxf_appid_new ()
         if ((appid = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfAppid struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 appid = NULL;
         }
@@ -119,7 +119,7 @@ dxf_appid_init
         if (appid == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfAppid struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -293,7 +293,7 @@ dxf_appid_write
           || (strcmp (dxf_appid_get_application_name (appid), "") == 0))
         {
                 fprintf (stderr,
-                  (_("Error in %s empty block name string for the %s entity with id-code: %x\n")),
+                  (_("Error in %s empty string for the %s entity with id-code: %x\n")),
                   __FUNCTION__, dxf_entity_name, dxf_appid_get_id_code (appid));
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
@@ -374,7 +374,7 @@ dxf_appid_free
         if (appid->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next DxfAppid was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
@@ -784,7 +784,7 @@ dxf_appid_get_dictionary_owner_soft
         if (appid->dictionary_owner_soft ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -864,7 +864,7 @@ dxf_appid_get_dictionary_owner_hard
         if (appid->dictionary_owner_hard ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -944,7 +944,7 @@ dxf_appid_get_next
         if (appid->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1023,7 +1023,7 @@ dxf_appid_get_last
         if (appid->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Warning in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((DxfAppid *) appid);
         }
