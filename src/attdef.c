@@ -1,7 +1,7 @@
 /*!
  * \file attdef.c
  *
- * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF attribute definition entity (\c ATTDEF).
  *
@@ -61,7 +61,7 @@ dxf_attdef_new ()
         if ((attdef = malloc (size)) == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfAttdef struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                   __FUNCTION__);
                 attdef = NULL;
         }
@@ -103,7 +103,7 @@ dxf_attdef_init
         if (attdef == NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () could not allocate memory for a DxfAttdef struct.\n")),
+                (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -762,7 +762,7 @@ dxf_attdef_free
         if (attdef->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next DxfAttdef was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
@@ -841,7 +841,7 @@ dxf_attdef_get_id_code
         if (attdef->id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the id-code member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -880,7 +880,7 @@ dxf_attdef_set_id_code
         if (id_code < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative id-code value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -918,7 +918,7 @@ dxf_attdef_get_linetype
         if (attdef->linetype ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the linetype member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -993,7 +993,7 @@ dxf_attdef_get_layer
         if (attdef->layer ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the layer member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1129,7 +1129,7 @@ dxf_attdef_get_thickness
         if (attdef->thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the thickness member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1166,7 +1166,7 @@ dxf_attdef_set_thickness
         if (thickness < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative thickness value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1204,7 +1204,7 @@ dxf_attdef_get_linetype_scale
         if (attdef->linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the linetype scale member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1241,7 +1241,7 @@ dxf_attdef_set_linetype_scale
         if (linetype_scale < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative linetype scale value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1279,14 +1279,14 @@ dxf_attdef_get_visibility
         if (attdef->visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the visibility member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (attdef->visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the visibility member.\n")),
+                  (_("Error in %s () an out of range value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1323,14 +1323,14 @@ dxf_attdef_set_visibility
         if (visibility < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative visibility value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (visibility > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range visibility value was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1368,7 +1368,7 @@ dxf_attdef_get_color
         if (attdef->color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the color member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1404,10 +1404,8 @@ dxf_attdef_set_color
         if (color < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative color value was passed.\n")),
+                  (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
-                fprintf (stderr,
-                  (_("\teffectively turning this entity it's visibility off.\n")));
         }
         attdef->color = color;
 #if DEBUG
@@ -1443,13 +1441,13 @@ dxf_attdef_get_paperspace
         if (attdef->paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the paperspace member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (attdef->paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () an out of range value was found in the paperspace member.\n")),
+                  (_("Warning in %s () an out of range value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1485,14 +1483,14 @@ dxf_attdef_set_paperspace
         if (paperspace < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative paperspace value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (paperspace > 1)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range paperspace value was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1532,13 +1530,13 @@ dxf_attdef_get_graphics_data_size
         if (attdef->graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a negative value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a negative value was found.\n")),
                   __FUNCTION__);
         }
         if (attdef->graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a zero value was found in the graphics_data_size member.\n")),
+                  (_("Warning in %s () a zero value was found.\n")),
                   __FUNCTION__);
         }
 #if DEBUG
@@ -1579,14 +1577,14 @@ dxf_attdef_set_graphics_data_size
         if (graphics_data_size < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative graphics_data_size value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (graphics_data_size == 0)
         {
                 fprintf (stderr,
-                  (_("Warning in %s () a zero graphics_data_size value was passed.\n")),
+                  (_("Warning in %s () a value was passed.\n")),
                   __FUNCTION__);
         }
         attdef->graphics_data_size = graphics_data_size;
@@ -1624,14 +1622,14 @@ dxf_attdef_get_shadow_mode
         if (attdef->shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the shadow_mode member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (attdef->shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range value was found in the shadow_mode member.\n")),
+                  (_("Error in %s () an out of range value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -1671,14 +1669,14 @@ dxf_attdef_set_shadow_mode
         if (shadow_mode < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative shadow_mode value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (shadow_mode > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an out of range shadow_mode value was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1719,7 +1717,7 @@ dxf_attdef_get_binary_graphics_data
         if (attdef->binary_graphics_data ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the binary_graphics_data member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1799,7 +1797,7 @@ dxf_attdef_get_dictionary_owner_soft
         if (attdef->dictionary_owner_soft ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_soft member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1879,7 +1877,7 @@ dxf_attdef_get_material
         if (attdef->material ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the material member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -1961,7 +1959,7 @@ dxf_attdef_get_dictionary_owner_hard
         if (attdef->dictionary_owner_hard ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the dictionary_owner_hard member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2104,7 +2102,7 @@ dxf_attdef_get_plot_style_name
         if (attdef->plot_style_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the plot_style_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2249,7 +2247,7 @@ dxf_attdef_get_color_name
         if (attdef->color_name ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the color_name member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2395,7 +2393,7 @@ dxf_attdef_get_default_value
         if (attdef->default_value ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the default_value member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2473,7 +2471,7 @@ dxf_attdef_get_tag_value
         if (attdef->tag_value ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the tag_value member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2551,7 +2549,7 @@ dxf_attdef_get_prompt_value
         if (attdef->prompt_value ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the tag_value member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -2629,7 +2627,7 @@ dxf_attdef_get_text_style
         if (attdef->text_style ==  NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the tag_value member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3353,7 +3351,7 @@ dxf_attdef_get_height
         if (attdef->height < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the height member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3390,7 +3388,7 @@ dxf_attdef_set_height
         if (height < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative height value was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3428,7 +3426,7 @@ dxf_attdef_get_rel_x_scale
         if (attdef->height < 0.0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the rel_x_scale member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3622,14 +3620,14 @@ dxf_attdef_get_attr_flags
         if (attdef->attr_flags < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the attr_flags member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (attdef->attr_flags > 8)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid value was found in the attr_flags member.\n")),
+                  (_("Error in %s () an out of range value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3666,14 +3664,14 @@ dxf_attdef_set_attr_flags
         if (attr_flags < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value in attribute flags was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (attr_flags > 8)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a invalid value in attribute flags was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3836,14 +3834,14 @@ dxf_attdef_get_text_flags
         if (attdef->text_flags < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the text flags member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (attdef->text_flags > 4)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid value was found in the text flags member.\n")),
+                  (_("Error in %s () an out of range value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3880,14 +3878,14 @@ dxf_attdef_set_text_flags
         if (text_flags < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value in text flags was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (text_flags > 4)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a invalid value in text flags was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -3925,14 +3923,14 @@ dxf_attdef_get_hor_align
         if (attdef->hor_align < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the hor_align member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (attdef->hor_align > 5)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid value was found in the hor_align member.\n")),
+                  (_("Error in %s () an invalid value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -3969,14 +3967,14 @@ dxf_attdef_set_hor_align
         if (hor_align < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value in horizontal alignment was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (hor_align > 5)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid value in horizontal alignment was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -4016,7 +4014,7 @@ dxf_attdef_get_field_length
         if (attdef->field_length < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the field_length member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -4055,7 +4053,7 @@ dxf_attdef_set_field_length
         if (field_length < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value in field length was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -4093,14 +4091,14 @@ dxf_attdef_get_vert_align
         if (attdef->vert_align < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the vert_align member.\n")),
+                  (_("Error in %s () a negative value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
         if (attdef->vert_align > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid value was found in the vert_align member.\n")),
+                  (_("Error in %s () an out of range value was found.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
@@ -4137,14 +4135,14 @@ dxf_attdef_set_vert_align
         if (vert_align < 0)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a negative value in vertical alignment was passed.\n")),
+                  (_("Error in %s () a negative value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
         if (vert_align > 3)
         {
                 fprintf (stderr,
-                  (_("Error in %s () an invalid value in vertical alignment was passed.\n")),
+                  (_("Error in %s () an out of range value was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -4391,7 +4389,7 @@ dxf_attdef_get_extrusion_vector_as_point
         if (point == NULL)
         {
               fprintf (stderr,
-                  (_("Error in %s () could not allocate memory for a DxfPoint struct.\n")),
+                  (_("Error in %s () could not allocate memory.\n")),
                 __FUNCTION__);
               return (NULL);
         }
@@ -4512,7 +4510,7 @@ dxf_attdef_get_next
         if (attdef->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
@@ -4591,7 +4589,7 @@ dxf_attdef_get_last
         if (attdef->next == NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 return ((DxfAttdef *) attdef);
         }
