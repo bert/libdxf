@@ -195,15 +195,6 @@ dxf_insert_struct
         DxfPoint *p0;
                 /*!< Base point.\n
                  * Group codes = 10, 20 and 30.*/
-        double x0;
-                /*!< group code = 10\n
-                 * base point. */
-        double y0;
-                /*!< group code = 20\n
-                 * base point. */
-        double z0;
-                /*!< group code = 30\n
-                 * base point. */
         double rel_x_scale;
                 /*!< Relative scale along the X-axis.\n
                  * Optional, defaults to 1.0.\n
