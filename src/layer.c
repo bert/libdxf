@@ -575,6 +575,43 @@ dxf_layer_set_id_code
 
 
 /*!
+ * \brief Get the \c layer_name from a DXF \c LAYER entity.
+ *
+ * \return \c layer_name when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_layer_get_layer_name
+(
+        DxfLayer *layer
+                /*!< a pointer to a DXF \c LAYER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer->layer_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (layer->layer_name));
+}
+
+
+/*!
  * \brief Test if layer is frozen.
  *
  * \return \c TRUE when layer is frozen, or \c FALSE when layer is
