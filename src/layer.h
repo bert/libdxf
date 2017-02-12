@@ -143,6 +143,12 @@ dxf_layer_get_id_code
 (
         DxfLayer *layer
 );
+DxfLayer *
+dxf_layer_set_id_code
+(
+        DxfLayer *layer,
+        int id_code
+);
 int
 dxf_layer_is_frozen
 (
