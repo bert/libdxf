@@ -52,7 +52,7 @@ extern "C" {
  * \version According to DXF R14.
  */
 typedef struct
-dxf_layer
+dxf_layer_struct
 {
         int id_code;
                 /*!< Identification number for the entity.\n
