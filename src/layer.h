@@ -60,43 +60,51 @@ dxf_layer_struct
                  * file.\n
                  * Group code = 5. */
         char *layer_name;
-                /*!< group code = 2. */
+                /*!< Layer name.\n
+                 * Group code = 2. */
         char *linetype;
-                /*!< group code = 6\n
-                 * For these layers, the associated linetype name in the DXF
-                 * file is always CONTINUOUS. */
+                /*!< For these layers, the associated linetype name in the DXF
+                 * file is always CONTINUOUS.\
+                 * Group code = 6. */
         int color;
-                /*!< group code = 62\n
-                 * if negative, layer is off. */
+                /*!< Color.\n
+                 * If negative, layer is off.\n
+                 * Group code = 62. */
         int flag;
-                /*!< group code = 70\n
-                 * bit coded:\n
-                 * 0 = on and thawed\n
-                 * 1 = if set, layer is frozen\n
-                 * 2 = if set, layer is frozen by default in new viewports\n
-                 * 4 = if set, layer is locked\n
-                 * 8 = unused\n
-                 * 128 = unused. */
+                /*!< Flag.\n
+                 * Bit coded:\n
+                 * <ol>
+                 * <li value="0"> on and thawed</li>
+                 * <li value="1"> if set, layer is frozen</li>
+                 * <li value="2"> if set, layer is frozen by default in
+                 *   new viewports</li>
+                 * <li value="4"> if set, layer is locked</li>
+                 * <li value="8"> unused</li>
+                 * <li value="128"> unused</li>
+                 * </ol>
+                 * Group code = 70. */
         int plotting_flag;
-                /*!< group code = 290\n
-                 * Boolean, if set to 0, do not plot this layer. */
+                /*!< Plotting flag.\n
+                 * Boolean, if set to 0, do not plot this layer.\n
+                 * Group code = 290. */
         char *dictionary_owner_soft;
-                /*!< group code = 330\n
-                 * Soft-pointer ID/handle to owner dictionary (optional). */
+                /*!< Soft-pointer ID/handle to owner dictionary
+                 * (optional).\n
+                 * Group code = 330. */
         char *material;
-                /*!< group code = 347\n
-                 * Hard-pointer ID / handle to Material object */
+                /*!< Hard-pointer ID / handle to Material object.\n
+                 * Group code = 347. */
         char *dictionary_owner_hard;
                 /*!< group code = 360\n
                  * Hard owner ID/handle to owner dictionary (optional). */
         int16_t lineweight;
-                /*!< group code = 370\n
-                 * Lineweight enum value. */
+                /*!< Lineweight enum value.\n
+                 * Group code = 370. */
         char *plot_style_name;
-                /*!< group code = 390\n
-                 * Hard pointer ID / handle of PlotStyleName object. */
+                /*!< Hard pointer ID / handle of PlotStyleName object.\n
+                 * Group code = 390. */
         struct DxfLayer *next;
-                /*!< pointer to the next DxfLayer.\n
+                /*!< Pointer to the next DxfLayer.\n
                  * \c NULL in the last DxfLayer. */
 } DxfLayer;
 
@@ -129,6 +137,11 @@ void
 dxf_layer_free_chain
 (
         DxfLayer *layers
+);
+int
+dxf_layer_get_id_code
+(
+        DxfLayer *layer
 );
 int
 dxf_layer_is_frozen
