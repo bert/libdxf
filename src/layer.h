@@ -154,6 +154,12 @@ dxf_layer_get_layer_name
 (
         DxfLayer *layer
 );
+DxfLayer *
+dxf_layer_set_layer_name
+(
+        DxfLayer *layer,
+        char *layer_name
+);
 int
 dxf_layer_is_frozen
 (

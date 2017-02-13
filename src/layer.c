@@ -612,6 +612,45 @@ dxf_layer_get_layer_name
 
 
 /*!
+ * \brief Set the \c layer_name for a DXF \c LAYER entity.
+ */
+DxfLayer *
+dxf_layer_set_layer_name
+(
+        DxfLayer *layer,
+                /*!< a pointer to a DXF \c LAYER entity. */
+        char *layer_name
+                /*!< a string containing the \c layer_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        layer->layer_name = strdup (layer_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer);
+}
+
+
+/*!
  * \brief Test if layer is frozen.
  *
  * \return \c TRUE when layer is frozen, or \c FALSE when layer is
