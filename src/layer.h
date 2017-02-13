@@ -165,6 +165,12 @@ dxf_layer_get_linetype
 (
         DxfLayer *layer
 );
+DxfLayer *
+dxf_layer_set_linetype
+(
+        DxfLayer *layer,
+        char *linetype
+);
 int
 dxf_layer_is_frozen
 (
