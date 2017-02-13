@@ -160,6 +160,11 @@ dxf_layer_set_layer_name
         DxfLayer *layer,
         char *layer_name
 );
+char *
+dxf_layer_get_linetype
+(
+        DxfLayer *layer
+);
 int
 dxf_layer_is_frozen
 (

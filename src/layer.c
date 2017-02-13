@@ -651,6 +651,43 @@ dxf_layer_set_layer_name
 
 
 /*!
+ * \brief Get the linetype from a DXF \c LAYER entity.
+ *
+ * \return linetype when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_layer_get_linetype
+(
+        DxfLayer *layer
+                /*!< a pointer to a DXF \c LAYER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (layer->linetype));
+}
+
+
+/*!
  * \brief Test if layer is frozen.
  *
  * \return \c TRUE when layer is frozen, or \c FALSE when layer is
