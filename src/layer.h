@@ -176,6 +176,12 @@ dxf_layer_get_color
 (
         DxfLayer *layer
 );
+DxfLayer *
+dxf_layer_set_color
+(
+        DxfLayer *layer,
+        int color
+);
 int
 dxf_layer_is_frozen
 (
