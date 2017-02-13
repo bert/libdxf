@@ -172,6 +172,11 @@ dxf_layer_set_linetype
         char *linetype
 );
 int
+dxf_layer_get_color
+(
+        DxfLayer *layer
+);
+int
 dxf_layer_is_frozen
 (
         DxfLayer *layer
