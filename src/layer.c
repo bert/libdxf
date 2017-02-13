@@ -836,6 +836,44 @@ dxf_layer_get_flag
 
 
 /*!
+ * \brief Set the \c flag for a DXF \c LAYER entity.
+ */
+DxfLayer *
+dxf_layer_set_flag
+(
+        DxfLayer *layer,
+                /*!< a pointer to a DXF \c LAYER entity. */
+        int flag
+                /*!< a \c flag value for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        layer->flag = flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer);
+}
+
+
+/*!
  * \brief Test if layer is frozen.
  *
  * \return \c TRUE when layer is frozen, or \c FALSE when layer is

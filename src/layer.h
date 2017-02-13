@@ -187,6 +187,12 @@ dxf_layer_get_flag
 (
         DxfLayer *layer
 );
+DxfLayer *
+dxf_layer_set_flag
+(
+        DxfLayer *layer,
+        int flag
+);
 int
 dxf_layer_is_frozen
 (
