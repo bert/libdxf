@@ -799,6 +799,43 @@ dxf_layer_set_color
 
 
 /*!
+ * \brief Get the \c flag from a DXF \c LAYER entity.
+ *
+ * \return \c flag.
+ */
+int
+dxf_layer_get_flag
+(
+        DxfLayer *layer
+                /*!< a pointer to a DXF \c LAYER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (layer->flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer->flag);
+}
+
+
+/*!
  * \brief Test if layer is frozen.
  *
  * \return \c TRUE when layer is frozen, or \c FALSE when layer is

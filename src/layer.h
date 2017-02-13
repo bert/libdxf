@@ -183,6 +183,11 @@ dxf_layer_set_color
         int color
 );
 int
+dxf_layer_get_flag
+(
+        DxfLayer *layer
+);
+int
 dxf_layer_is_frozen
 (
         DxfLayer *layer
