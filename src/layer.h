@@ -234,6 +234,11 @@ dxf_layer_set_plotting_flag
         DxfLayer *layer,
         int plotting_flag
 );
+char *
+dxf_layer_get_dictionary_owner_soft
+(
+        DxfLayer *layer
+);
 
 
 #ifdef __cplusplus
