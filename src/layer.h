@@ -228,6 +228,12 @@ dxf_layer_get_plotting_flag
 (
         DxfLayer *layer
 );
+DxfLayer *
+dxf_layer_set_plotting_flag
+(
+        DxfLayer *layer,
+        int plotting_flag
+);
 
 
 #ifdef __cplusplus
