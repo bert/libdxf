@@ -239,6 +239,12 @@ dxf_layer_get_dictionary_owner_soft
 (
         DxfLayer *layer
 );
+DxfLayer *
+dxf_layer_set_dictionary_owner_soft
+(
+        DxfLayer *layer,
+        char *dictionary_owner_soft
+);
 
 
 #ifdef __cplusplus
