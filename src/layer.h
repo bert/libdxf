@@ -250,6 +250,12 @@ dxf_layer_get_material
 (
         DxfLayer *layer
 );
+DxfLayer *
+dxf_layer_set_material
+(
+        DxfLayer *layer,
+        char *material
+);
 
 
 #ifdef __cplusplus
