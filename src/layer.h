@@ -183,6 +183,11 @@ dxf_layer_set_color
         int color
 );
 int
+dxf_layer_is_off
+(
+        DxfLayer *layer
+);
+int
 dxf_layer_get_flag
 (
         DxfLayer *layer
@@ -215,11 +220,6 @@ dxf_layer_is_xresolved
 );
 int
 dxf_layer_is_referenced
-(
-        DxfLayer *layer
-);
-int
-dxf_layer_is_off
 (
         DxfLayer *layer
 );

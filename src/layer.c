@@ -799,6 +799,40 @@ dxf_layer_set_color
 
 
 /*!
+ * \brief Test if layer is off.
+ *
+ * \return \c TRUE when layer is off, or \c FALSE when layer is on, or
+ * (-1) when an error occurred.
+ */
+int
+dxf_layer_is_off
+(
+        DxfLayer *layer
+                /*!< DXF \c LAYER table. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int result = FALSE;
+
+        /* Do some basic checks. */
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (-1);
+        }
+        result = (layer->color < 0);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
  * \brief Get the \c flag from a DXF \c LAYER entity.
  *
  * \return \c flag.
@@ -1043,40 +1077,6 @@ dxf_layer_is_referenced
                 return (-1);
         }
         result = DXF_CHECK_BIT (layer->flag, 6);
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (result);
-}
-
-
-/*!
- * \brief Test if layer is off.
- *
- * \return \c TRUE when layer is off, or \c FALSE when layer is on, or
- * (-1) when an error occurred.
- */
-int
-dxf_layer_is_off
-(
-        DxfLayer *layer
-                /*!< DXF \c LAYER table. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int result = FALSE;
-
-        /* Do some basic checks. */
-        if (layer == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (-1);
-        }
-        result = (layer->color < 0);
 #if DEBUG
         DXF_DEBUG_END
 #endif
