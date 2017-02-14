@@ -223,6 +223,11 @@ dxf_layer_is_off
 (
         DxfLayer *layer
 );
+int
+dxf_layer_get_plotting_flag
+(
+        DxfLayer *layer
+);
 
 
 #ifdef __cplusplus
