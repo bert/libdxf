@@ -1321,4 +1321,44 @@ dxf_layer_set_material
 }
 
 
+/*!
+ * \brief Get the hard pointer to the dictionary owner from a DXF 
+ * \c LAYER entity.
+ *
+ * \return hard pointer to the dictionary owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_layer_get_dictionary_owner_hard
+(
+        DxfLayer *layer
+                /*!< a pointer to a DXF \c LAYER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer->dictionary_owner_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (layer->dictionary_owner_hard));
+}
+
+
 /* EOF */

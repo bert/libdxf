@@ -256,6 +256,11 @@ dxf_layer_set_material
         DxfLayer *layer,
         char *material
 );
+char *
+dxf_layer_get_dictionary_owner_hard
+(
+        DxfLayer *layer
+);
 
 
 #ifdef __cplusplus
