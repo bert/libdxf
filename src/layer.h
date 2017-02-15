@@ -283,6 +283,12 @@ dxf_layer_get_plot_style_name
 (
         DxfLayer *layer
 );
+DxfLayer *
+dxf_layer_set_plot_style_name
+(
+        DxfLayer *layer,
+        char *plot_style_name
+);
 
 
 #ifdef __cplusplus
