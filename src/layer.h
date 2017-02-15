@@ -267,6 +267,11 @@ dxf_layer_set_dictionary_owner_hard
         DxfLayer *layer,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_layer_get_lineweight
+(
+        DxfLayer *layer
+);
 
 
 #ifdef __cplusplus
