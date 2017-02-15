@@ -272,6 +272,12 @@ dxf_layer_get_lineweight
 (
         DxfLayer *layer
 );
+DxfLayer *
+dxf_layer_set_lineweight
+(
+        DxfLayer *layer,
+        int16_t lineweight
+);
 
 
 #ifdef __cplusplus

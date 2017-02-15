@@ -1432,4 +1432,38 @@ dxf_layer_get_lineweight
 }
 
 
+/*!
+ * \brief Set the \c lineweight for a DXF \c LAYER entity.
+ *
+ * \return a pointer to \c layer when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLayer *
+dxf_layer_set_lineweight
+(
+        DxfLayer *layer,
+                /*!< a pointer to a DXF \c LAYER entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        layer->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer);
+}
+
+
 /* EOF */
