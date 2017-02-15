@@ -261,6 +261,12 @@ dxf_layer_get_dictionary_owner_hard
 (
         DxfLayer *layer
 );
+DxfLayer *
+dxf_layer_set_dictionary_owner_hard
+(
+        DxfLayer *layer,
+        char *dictionary_owner_hard
+);
 
 
 #ifdef __cplusplus
