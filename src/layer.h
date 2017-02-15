@@ -278,6 +278,11 @@ dxf_layer_set_lineweight
         DxfLayer *layer,
         int16_t lineweight
 );
+char *
+dxf_layer_get_plot_style_name
+(
+        DxfLayer *layer
+);
 
 
 #ifdef __cplusplus
