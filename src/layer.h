@@ -300,6 +300,11 @@ dxf_layer_set_next
         DxfLayer *layer,
         DxfLayer *next
 );
+DxfLayer *
+dxf_layer_free_get_last
+(
+        DxfLayer *layer
+);
 
 
 #ifdef __cplusplus

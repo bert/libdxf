@@ -1625,4 +1625,49 @@ dxf_layer_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c LAYER entity from a linked list
+ * of DXF \c LAYER entities.
+ *
+ * \return pointer to the last \c LAYER entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfLayer *
+dxf_layer_free_get_last
+(
+        DxfLayer *layer
+                /*!< a pointer to a DXF \c LAYER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfLayer *) layer);
+        }
+        DxfLayer *iter = (DxfLayer *) layer->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfLayer *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfLayer *) iter);
+}
+
+
 /* EOF */
