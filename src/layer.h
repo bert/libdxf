@@ -289,6 +289,11 @@ dxf_layer_set_plot_style_name
         DxfLayer *layer,
         char *plot_style_name
 );
+DxfLayer *
+dxf_layer_get_next
+(
+        DxfLayer *layer
+);
 
 
 #ifdef __cplusplus
