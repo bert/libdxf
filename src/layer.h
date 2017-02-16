@@ -294,6 +294,12 @@ dxf_layer_get_next
 (
         DxfLayer *layer
 );
+DxfLayer *
+dxf_layer_set_next
+(
+        DxfLayer *layer,
+        DxfLayer *next
+);
 
 
 #ifdef __cplusplus

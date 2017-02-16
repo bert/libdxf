@@ -1586,4 +1586,43 @@ dxf_layer_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c LAYER for a DXF \c LAYER
+ * entity.
+ */
+DxfLayer *
+dxf_layer_set_next
+(
+        DxfLayer *layer,
+                /*!< a pointer to a DXF \c LAYER entity. */
+        DxfLayer *next
+                /*!< a pointer to the next \c LAYER for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        layer->next = (struct DxfLayer *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer);
+}
+
+
 /* EOF */
