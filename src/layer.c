@@ -346,7 +346,7 @@ dxf_layer_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (layer->layer_name, "") == 0)
+        if (strcmp (dxf_layer_get_layer_name (layer), "") == 0)
         {
                 fprintf (stderr,
                   (_("Error in %s () empty layer string for the %s table.\n")),
@@ -355,7 +355,7 @@ dxf_layer_write
                 free (dxf_entity_name);
                 return (EXIT_FAILURE);
         }
-        if (strcmp (layer->linetype, "") == 0)
+        if (strcmp (dxf_layer_get_linetype (layer), "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s layer\n")),
@@ -363,13 +363,13 @@ dxf_layer_write
                 fprintf (stderr,
                   (_("\t%s entity is reset to default linetype")),
                   dxf_entity_name);
-                layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                dxf_layer_set_linetype (layer, strdup (DXF_DEFAULT_LINETYPE));
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (layer->id_code != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", layer->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_layer_get_id_code (layer));
         }
         /*!
          * \todo for version R14.\n
@@ -381,11 +381,11 @@ dxf_layer_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (layer->dictionary_owner_soft, "") != 0)
+        if ((strcmp (dxf_layer_get_dictionary_owner_soft (layer), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", layer->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", dxf_layer_get_dictionary_owner_soft (layer));
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_14)
@@ -396,19 +396,19 @@ dxf_layer_write
         {
                 fprintf (fp->fp, "100\nAcDbLayerTableRecord\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", layer->layer_name);
-        fprintf (fp->fp, " 70\n%d\n", layer->flag);
-        fprintf (fp->fp, " 62\n%d\n", layer->color);
-        fprintf (fp->fp, "  6\n%s\n", layer->linetype);
+        fprintf (fp->fp, "  2\n%s\n", dxf_layer_get_layer_name (layer));
+        fprintf (fp->fp, " 70\n%d\n", dxf_layer_get_flag (layer));
+        fprintf (fp->fp, " 62\n%d\n", dxf_layer_get_color (layer));
+        fprintf (fp->fp, "  6\n%s\n", dxf_layer_get_linetype (layer));
         if (fp->acad_version_number >= AutoCAD_2000)
         {
-                fprintf (fp->fp, "290\n%d\n", layer->plotting_flag);
-                fprintf (fp->fp, "370\n%hd\n", layer->lineweight);
-                fprintf (fp->fp, "390\n%s\n", layer->plot_style_name);
+                fprintf (fp->fp, "290\n%d\n", dxf_layer_get_plotting_flag (layer));
+                fprintf (fp->fp, "370\n%hd\n", dxf_layer_get_lineweight (layer));
+                fprintf (fp->fp, "390\n%s\n", dxf_layer_get_plot_style_name (layer));
         }
         if (fp->acad_version_number >= AutoCAD_2007)
         {
-                fprintf (fp->fp, "347\n%s\n", layer->material);
+                fprintf (fp->fp, "347\n%s\n", dxf_layer_get_material (layer));
         }
         /* Clean up. */
         free (dxf_entity_name);
