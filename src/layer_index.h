@@ -1,7 +1,7 @@
 /*!
  * \file layer_index.h
  *
- * \author Copyright (C) 2015 ... 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF layer index object (\c LAYER_INDEX).
  *
@@ -119,6 +119,11 @@ void
 dxf_layer_index_free_chain
 (
         DxfLayerIndex *layer_indices
+);
+int
+dxf_layer_index_get_id_code
+(
+        DxfLayerIndex *layer_index
 );
 
 
