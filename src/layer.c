@@ -444,12 +444,12 @@ dxf_layer_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (layer->layer_name);
-        free (layer->linetype);
-        free (layer->dictionary_owner_soft);
-        free (layer->material);
-        free (layer->dictionary_owner_hard);
-        free (layer->plot_style_name);
+        free (dxf_layer_get_layer_name (layer));
+        free (dxf_layer_get_linetype (layer));
+        free (dxf_layer_get_dictionary_owner_soft (layer));
+        free (dxf_layer_get_material (layer));
+        free (dxf_layer_get_dictionary_owner_hard (layer));
+        free (dxf_layer_get_plot_style_name (layer));
         free (layer);
         layer = NULL;
 #if DEBUG
