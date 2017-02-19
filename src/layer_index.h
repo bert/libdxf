@@ -1,7 +1,7 @@
 /*!
  * \file layer_index.h
  *
- * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015 ... 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF layer index object (\c LAYER_INDEX).
  *
@@ -56,7 +56,7 @@ extern "C" {
  * \version According to DXF R14.
  */
 typedef struct
-dxf_layer_index
+dxf_layer_index_struct
 {
         /* Members common for all DXF group objects. */
         int id_code;
