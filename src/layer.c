@@ -110,18 +110,18 @@ dxf_layer_init
                 __FUNCTION__);
               return (NULL);
         }
-        layer->id_code = 0;
-        layer->layer_name = strdup ("");
-        layer->linetype = strdup (DXF_DEFAULT_LINETYPE);
-        layer->color = DXF_COLOR_BYLAYER;
-        layer->flag = 0;
-        layer->plotting_flag = 0;
-        layer->dictionary_owner_soft = strdup ("");
-        layer->material = strdup ("");
-        layer->dictionary_owner_hard = strdup ("");
-        layer->lineweight = 0;
-        layer->plot_style_name = strdup ("");
-        layer->next = NULL;
+        dxf_layer_set_id_code (layer, 0);
+        dxf_layer_set_layer_name (layer, strdup (""));
+        dxf_layer_set_linetype (layer, strdup (DXF_DEFAULT_LINETYPE));
+        dxf_layer_set_color (layer, DXF_COLOR_BYLAYER);
+        dxf_layer_set_flag (layer, 0);
+        dxf_layer_set_plotting_flag (layer, 0);
+        dxf_layer_set_dictionary_owner_soft (layer, strdup (""));
+        dxf_layer_set_material (layer, strdup (""));
+        dxf_layer_set_dictionary_owner_hard (layer, strdup (""));
+        dxf_layer_set_lineweight (layer, 0);
+        dxf_layer_set_plot_style_name (layer, strdup (""));
+        dxf_layer_set_next (layer, NULL);
 #if DEBUG
         DXF_DEBUG_END
 #endif
