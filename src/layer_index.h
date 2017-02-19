@@ -125,6 +125,12 @@ dxf_layer_index_get_id_code
 (
         DxfLayerIndex *layer_index
 );
+DxfLayerIndex *
+dxf_layer_index_set_id_code
+(
+        DxfLayerIndex *layer_index,
+        int id_code
+);
 
 
 #ifdef __cplusplus
