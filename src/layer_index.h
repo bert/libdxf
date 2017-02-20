@@ -131,6 +131,11 @@ dxf_layer_index_set_id_code
         DxfLayerIndex *layer_index,
         int id_code
 );
+char *
+dxf_layer_index_get_dictionary_owner_soft
+(
+        DxfLayerIndex *layer_index
+);
 
 
 #ifdef __cplusplus
