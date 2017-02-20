@@ -136,6 +136,12 @@ dxf_layer_index_get_dictionary_owner_soft
 (
         DxfLayerIndex *layer_index
 );
+DxfLayerIndex *
+dxf_layer_index_set_dictionary_owner_soft
+(
+        DxfLayerIndex *layer_index,
+        char *dictionary_owner_soft
+);
 
 
 #ifdef __cplusplus
