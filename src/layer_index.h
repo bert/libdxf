@@ -153,6 +153,11 @@ dxf_layer_index_set_dictionary_owner_hard
         DxfLayerIndex *layer_index,
         char *dictionary_owner_hard
 );
+double
+dxf_layer_index_get_time_stamp
+(
+        DxfLayerIndex *layer_index
+);
 
 
 #ifdef __cplusplus
