@@ -5,7 +5,13 @@
  *
  * \brief Header file for a DXF layer index object (\c LAYER_INDEX).
  *
- * \version The \c LAYER_INDEX object was introduced in DXF R14.
+ * \since The \c LAYER_INDEX object was introduced in DXF R14.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -48,12 +54,6 @@ extern "C" {
 
 /*!
  * \brief DXF definition of an AutoCAD idbuffer object (\c LAYER_INDEX).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 typedef struct
 dxf_layer_index_struct
