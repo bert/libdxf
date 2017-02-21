@@ -773,4 +773,42 @@ dxf_layer_index_get_time_stamp
 }
 
 
+/*!
+ * \brief Set the radius for a DXF \c LAYER_INDEX object.
+ */
+DxfLayerIndex *
+dxf_layer_index_set_time_stamp
+(
+        DxfLayerIndex *layer_index,
+                /*!< a pointer to a DXF \c LAYER_INDEX object. */
+        double time_stamp
+                /*!< the time_stamp to be set for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (time_stamp < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        layer_index->time_stamp = time_stamp;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer_index);
+}
+
+
 /* EOF*/

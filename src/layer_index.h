@@ -158,6 +158,12 @@ dxf_layer_index_get_time_stamp
 (
         DxfLayerIndex *layer_index
 );
+DxfLayerIndex *
+dxf_layer_index_set_time_stamp
+(
+        DxfLayerIndex *layer_index,
+        double time_stamp
+);
 
 
 #ifdef __cplusplus
