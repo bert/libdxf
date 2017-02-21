@@ -169,6 +169,12 @@ dxf_layer_index_get_next
 (
         DxfLayerIndex *layer_index
 );
+DxfLayerIndex *
+dxf_layer_index_set_next
+(
+        DxfLayerIndex *layer_index,
+        DxfLayerIndex *next
+);
 
 
 #ifdef __cplusplus

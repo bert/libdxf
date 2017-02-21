@@ -851,4 +851,44 @@ dxf_layer_index_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c LAYER_INDEX object for a DXF
+ * \c LAYER_INDEX object.
+ */
+DxfLayerIndex *
+dxf_layer_index_set_next
+(
+        DxfLayerIndex *layer_index,
+                /*!< a pointer to a DXF \c LAYER_INDEX object. */
+        DxfLayerIndex *next
+                /*!< a pointer to the next \c LAYER_INDEX object for the
+                 * object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        layer_index->next = (struct DxfLayerIndex *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer_index);
+}
+
+
 /* EOF*/
