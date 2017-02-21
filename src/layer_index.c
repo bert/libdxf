@@ -811,4 +811,44 @@ dxf_layer_index_set_time_stamp
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c LAYER_INDEX object from a DXF 
+ * \c LAYER_INDEX object.
+ *
+ * \return pointer to the next \c LAYER_INDEX object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfLayerIndex *
+dxf_layer_index_get_next
+(
+        DxfLayerIndex *layer_index
+                /*!< a pointer to a DXF \c LAYER_INDEX object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer_index->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfLayerIndex *) layer_index->next);
+}
+
+
 /* EOF*/
