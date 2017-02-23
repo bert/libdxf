@@ -283,6 +283,12 @@ dxf_leader_get_linetype
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_linetype
+(
+        DxfLeader *leader,
+        char *linetype
+);
 
 
 #ifdef __cplusplus

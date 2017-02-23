@@ -915,4 +915,42 @@ dxf_leader_get_linetype
 }
 
 
+/*!
+ * \brief Set the linetype for a DXF \c LEADER entity.
+ */
+DxfLeader *
+dxf_leader_set_linetype
+(
+        DxfLeader *leader,
+                /*!< a pointer to a DXF \c LEADER entity. */
+        char *linetype
+                /*!< a string containing the linetype for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        leader->linetype = strdup (linetype);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
 /* EOF */
