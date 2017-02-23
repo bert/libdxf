@@ -267,6 +267,11 @@ dxf_leader_free_chain
 (
         DxfLeader *leaders
 );
+int
+dxf_leader_get_id_code
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
