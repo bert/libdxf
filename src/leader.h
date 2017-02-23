@@ -294,6 +294,12 @@ dxf_leader_get_layer
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_layer
+(
+        DxfLeader *leader,
+        char *layer
+);
 
 
 #ifdef __cplusplus
