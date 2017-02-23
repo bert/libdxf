@@ -272,6 +272,12 @@ dxf_leader_get_id_code
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_id_code
+(
+        DxfLeader *leader,
+        int id_code
+);
 
 
 #ifdef __cplusplus

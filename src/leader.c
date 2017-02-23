@@ -838,4 +838,44 @@ dxf_leader_get_id_code
 }
 
 
+/*!
+ * \brief Set the ID code for a DXF \c LEADER entity.
+ */
+DxfLeader *
+dxf_leader_set_id_code
+(
+        DxfLeader *leader,
+                /*!< a pointer to a DXF \c LEADER entity. */
+        int id_code
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        leader->id_code = id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
 /* EOF */
