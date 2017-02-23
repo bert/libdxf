@@ -278,6 +278,11 @@ dxf_leader_set_id_code
         DxfLeader *leader,
         int id_code
 );
+char *
+dxf_leader_get_linetype
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
