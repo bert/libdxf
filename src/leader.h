@@ -327,6 +327,12 @@ dxf_leader_get_linetype_scale
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_linetype_scale
+(
+        DxfLeader *leader,
+        double linetype_scale
+);
 
 
 #ifdef __cplusplus
