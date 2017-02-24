@@ -322,6 +322,11 @@ dxf_leader_set_thickness
         DxfLeader *leader,
         double thickness
 );
+double
+dxf_leader_get_linetype_scale
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
