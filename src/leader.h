@@ -305,6 +305,12 @@ dxf_leader_get_elevation
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_elevation
+(
+        DxfLeader *leader,
+        double elevation
+);
 
 
 #ifdef __cplusplus

@@ -1058,4 +1058,35 @@ dxf_leader_get_elevation
 }
 
 
+/*!
+ * \brief Set the elevation for a DXF \c LEADER entity.
+ */
+DxfLeader *
+dxf_leader_set_elevation
+(
+        DxfLeader *leader,
+                /*!< a pointer to a DXF \c LEADER entity. */
+        double elevation
+                /*!< the elevation to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        leader->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
 /* EOF */
