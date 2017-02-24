@@ -311,6 +311,11 @@ dxf_leader_set_elevation
         DxfLeader *leader,
         double elevation
 );
+double
+dxf_leader_get_thickness
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
