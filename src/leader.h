@@ -316,6 +316,12 @@ dxf_leader_get_thickness
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_thickness
+(
+        DxfLeader *leader,
+        double thickness
+);
 
 
 #ifdef __cplusplus
