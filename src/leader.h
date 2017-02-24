@@ -300,6 +300,11 @@ dxf_leader_set_layer
         DxfLeader *leader,
         char *layer
 );
+double
+dxf_leader_get_elevation
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
