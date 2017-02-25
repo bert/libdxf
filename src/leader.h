@@ -344,6 +344,11 @@ dxf_leader_set_visibility
         DxfLeader *leader,
         int16_t visibility
 );
+int
+dxf_leader_get_color
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
