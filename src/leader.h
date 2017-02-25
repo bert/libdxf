@@ -333,6 +333,11 @@ dxf_leader_set_linetype_scale
         DxfLeader *leader,
         double linetype_scale
 );
+int16_t
+dxf_leader_get_visibility
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus

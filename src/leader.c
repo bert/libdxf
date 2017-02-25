@@ -1239,4 +1239,48 @@ dxf_leader_set_linetype_scale
 }
 
 
+/*!
+ * \brief Get the visibility from a DXF \c LEADER entity.
+ *
+ * \return visibility.
+ */
+int16_t
+dxf_leader_get_visibility
+(
+        DxfLeader *leader
+                /*!< a pointer to a DXF \c LEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (leader->visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (leader->visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader->visibility);
+}
+
+
 /* EOF */
