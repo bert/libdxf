@@ -338,6 +338,12 @@ dxf_leader_get_visibility
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_visibility
+(
+        DxfLeader *leader,
+        int16_t visibility
+);
 
 
 #ifdef __cplusplus
