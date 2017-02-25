@@ -349,6 +349,12 @@ dxf_leader_get_color
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_color
+(
+        DxfLeader *leader,
+        int color
+);
 
 
 #ifdef __cplusplus
