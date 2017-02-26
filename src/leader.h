@@ -360,6 +360,12 @@ dxf_leader_get_paperspace
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_paperspace
+(
+        DxfLeader *leader,
+        int paperspace
+);
 
 
 #ifdef __cplusplus
