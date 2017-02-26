@@ -371,6 +371,12 @@ dxf_leader_get_dictionary_owner_soft
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_dictionary_owner_soft
+(
+        DxfLeader *leader,
+        char *dictionary_owner_soft
+);
 
 
 #ifdef __cplusplus
