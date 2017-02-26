@@ -355,6 +355,11 @@ dxf_leader_set_color
         DxfLeader *leader,
         int color
 );
+int
+dxf_leader_get_paperspace
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
