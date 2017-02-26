@@ -366,6 +366,11 @@ dxf_leader_set_paperspace
         DxfLeader *leader,
         int paperspace
 );
+char *
+dxf_leader_get_dictionary_owner_soft
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
