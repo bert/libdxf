@@ -1648,4 +1648,42 @@ dxf_leader_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the \c dimenion_style_name from a DXF \c LEADER entity.
+ *
+ * \return \c dimension_style_name when sucessful, \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_leader_get_dimension_style_name
+(
+        DxfLeader *leader
+                /*!< a pointer to a DXF \c LEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (leader->dimension_style_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (leader->dimension_style_name));
+}
+
+
 /* EOF */

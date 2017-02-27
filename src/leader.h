@@ -388,6 +388,11 @@ dxf_leader_set_dictionary_owner_hard
         DxfLeader *leader,
         char *dictionary_owner_hard
 );
+char *
+dxf_leader_get_dimension_style_name
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
