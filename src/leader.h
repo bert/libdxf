@@ -404,6 +404,11 @@ dxf_leader_set_dimension_style_name
         DxfLeader *leader,
         char *dimension_style_name
 );
+DxfPoint *
+dxf_leader_get_p0
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus

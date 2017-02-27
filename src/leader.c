@@ -1725,4 +1725,41 @@ dxf_leader_set_dimension_style_name
 }
 
 
+/*!
+ * \brief Get the vertex coordinates \c p0 of a DXF \c LEADER entity.
+ *
+ * \return the vertex coordinates \c p0.
+ */
+DxfPoint *
+dxf_leader_get_p0
+(
+        DxfLeader *leader
+                /*!< a pointer to a DXF \c LEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (leader->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader->p0);
+}
+
+
 /* EOF */
