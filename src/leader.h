@@ -393,6 +393,12 @@ dxf_leader_get_dimension_style_name
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_dimension_style_name
+(
+        DxfLeader *leader,
+        char *dimension_style_name
+);
 
 
 #ifdef __cplusplus

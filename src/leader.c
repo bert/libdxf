@@ -1686,4 +1686,43 @@ dxf_leader_get_dimension_style_name
 }
 
 
+/*!
+ * \brief Set the \c dimension_style_name for a DXF \c LEADER entity.
+ */
+DxfLeader *
+dxf_leader_set_dimension_style_name
+(
+        DxfLeader *leader,
+                /*!< a pointer to a DXF \c LEADER entity. */
+        char *dimension_style_name
+                /*!< a string containing the \c dimension_style_name for
+                 * the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dimension_style_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        leader->layer = strdup (dimension_style_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
 /* EOF */
