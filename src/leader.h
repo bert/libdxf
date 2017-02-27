@@ -45,6 +45,7 @@
 
 
 #include "global.h"
+#include "point.h"
 
 
 #ifdef __cplusplus
@@ -113,6 +114,10 @@ dxf_leader_struct
         char *dimension_style_name;
                 /*!< Dimension style name.\n
                  * Group code = 3. */
+        DxfPoint *p0;
+                /*!< Vertex coordinates (single linked list, one entry
+                 * for each vertex).\n
+                 * Group codes = 10, 20 and 30.*/
         double x0[DXF_MAX_PARAM];
                 /*!< X-value of the Vertex coordinates (one entry for
                  * each vertex).\n
