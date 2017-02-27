@@ -1608,4 +1608,44 @@ dxf_leader_get_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Set the pointer to the dictionary_owner_hard for a DXF
+ * \c LEADER entity.
+ */
+DxfLeader *
+dxf_leader_set_dictionary_owner_hard
+(
+        DxfLeader *leader,
+                /*!< a pointer to a DXF \c LEADER entity. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the
+                 * dictionary_owner_hard for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        leader->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
 /* EOF */
