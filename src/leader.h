@@ -415,6 +415,11 @@ dxf_leader_set_p0
         DxfLeader *leader,
         DxfPoint *p0
 );
+double
+dxf_leader_get_x0
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
