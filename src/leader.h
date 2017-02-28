@@ -420,6 +420,12 @@ dxf_leader_get_x0
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_x0
+(
+        DxfLeader *leader,
+        double x0
+);
 
 
 #ifdef __cplusplus
