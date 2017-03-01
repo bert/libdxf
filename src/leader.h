@@ -426,6 +426,11 @@ dxf_leader_set_x0
         DxfLeader *leader,
         double x0
 );
+double
+dxf_leader_get_y0
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
