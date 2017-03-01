@@ -1923,4 +1923,47 @@ dxf_leader_get_y0
 }
 
 
+/*!
+ * \brief Set the Y-value of the vertex coordinates \c y0 of a DXF
+ * \c LEADER entity.
+ *
+ * \return a pointer to \c leader when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLeader *
+dxf_leader_set_y0
+(
+        DxfLeader *leader,
+                /*!< a pointer to a DXF \c LEADER entity. */
+        double y0
+                /*!< the Y-value of the vertex coordinates \c y0 of a
+                 * DXF \c LEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (leader->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        leader->p0->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
 /* EOF */
