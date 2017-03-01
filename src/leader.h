@@ -442,6 +442,12 @@ dxf_leader_get_z0
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_z0
+(
+        DxfLeader *leader,
+        double z0
+);
 
 
 #ifdef __cplusplus
