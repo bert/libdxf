@@ -448,6 +448,11 @@ dxf_leader_set_z0
         DxfLeader *leader,
         double z0
 );
+double
+dxf_leader_get_text_annotation_height
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
