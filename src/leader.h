@@ -470,6 +470,11 @@ dxf_leader_set_text_annotation_width
         DxfLeader *leader,
         double text_annotation_width
 );
+int
+dxf_leader_get_arrow_head_flag
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
