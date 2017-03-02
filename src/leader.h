@@ -464,6 +464,12 @@ dxf_leader_get_text_annotation_width
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_text_annotation_width
+(
+        DxfLeader *leader,
+        double text_annotation_width
+);
 
 
 #ifdef __cplusplus
