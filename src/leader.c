@@ -2126,4 +2126,41 @@ dxf_leader_set_text_annotation_height
 }
 
 
+/*!
+ * \brief Get the \c text_annotation_width of a DXF \c LEADER entity.
+ *
+ * \return the \c text_annotation_width.
+ */
+double
+dxf_leader_get_text_annotation_width
+(
+        DxfLeader *leader
+                /*!< a pointer to a DXF \c LEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (leader->text_annotation_width < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader->text_annotation_width);
+}
+
+
 /* EOF */
