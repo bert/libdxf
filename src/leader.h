@@ -475,6 +475,12 @@ dxf_leader_get_arrow_head_flag
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_arrow_head_flag
+(
+        DxfLeader *leader,
+        int arrow_head_flag
+);
 
 
 #ifdef __cplusplus
