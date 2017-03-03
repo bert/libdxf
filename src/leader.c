@@ -2293,4 +2293,48 @@ dxf_leader_set_arrow_head_flag
 }
 
 
+/*!
+ * \brief Get the \c path_type from a DXF \c LEADER entity.
+ *
+ * \return \c path_type.
+ */
+int
+dxf_leader_get_path_type
+(
+        DxfLeader *leader
+                /*!< a pointer to a DXF \c LEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (leader->path_type < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (leader->path_type > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader->path_type);
+}
+
+
 /* EOF */

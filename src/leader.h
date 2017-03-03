@@ -481,6 +481,11 @@ dxf_leader_set_arrow_head_flag
         DxfLeader *leader,
         int arrow_head_flag
 );
+int
+dxf_leader_get_path_type
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
