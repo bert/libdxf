@@ -497,6 +497,12 @@ dxf_leader_get_creation_flag
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_creation_flag
+(
+        DxfLeader *leader,
+        int creation_flag
+);
 
 
 #ifdef __cplusplus
