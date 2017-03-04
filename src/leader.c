@@ -2257,7 +2257,7 @@ dxf_leader_set_arrow_head_flag
         DxfLeader *leader,
                 /*!< a pointer to a DXF \c LEADER entity. */
         int arrow_head_flag
-                /*!< The \c arrow_head_flag to be set. */
+                /*!< the \c arrow_head_flag to be set. */
 )
 {
 #if DEBUG
