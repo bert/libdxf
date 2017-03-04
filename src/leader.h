@@ -486,6 +486,12 @@ dxf_leader_get_path_type
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_path_type
+(
+        DxfLeader *leader,
+        int path_type
+);
 
 
 #ifdef __cplusplus
