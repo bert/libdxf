@@ -492,6 +492,11 @@ dxf_leader_set_path_type
         DxfLeader *leader,
         int path_type
 );
+int
+dxf_leader_get_creation_flag
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus

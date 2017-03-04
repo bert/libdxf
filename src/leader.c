@@ -2382,4 +2382,48 @@ dxf_leader_set_path_type
 }
 
 
+/*!
+ * \brief Get the \c creation_flag from a DXF \c LEADER entity.
+ *
+ * \return \c creation_flag.
+ */
+int
+dxf_leader_get_creation_flag
+(
+        DxfLeader *leader
+                /*!< a pointer to a DXF \c LEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (leader->creation_flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (leader->creation_flag > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader->creation_flag);
+}
+
+
 /* EOF */
