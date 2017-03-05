@@ -519,6 +519,12 @@ dxf_leader_get_hookline_flag
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_hookline_flag
+(
+        DxfLeader *leader,
+        int hookline_flag
+);
 
 
 #ifdef __cplusplus
