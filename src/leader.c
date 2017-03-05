@@ -2649,4 +2649,41 @@ dxf_leader_set_hookline_flag
 }
 
 
+/*!
+ * \brief Get the \c number_vertices from a DXF \c LEADER entity.
+ *
+ * \return \c number_vertices.
+ */
+int
+dxf_leader_get_number_vertices
+(
+        DxfLeader *leader
+                /*!< a pointer to a DXF \c LEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (leader->number_vertices < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader->number_vertices);
+}
+
+
 /* EOF */

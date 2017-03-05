@@ -525,6 +525,11 @@ dxf_leader_set_hookline_flag
         DxfLeader *leader,
         int hookline_flag
 );
+int
+dxf_leader_get_number_vertices
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
