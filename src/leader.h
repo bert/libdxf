@@ -503,6 +503,11 @@ dxf_leader_set_creation_flag
         DxfLeader *leader,
         int creation_flag
 );
+int
+dxf_leader_get_hookline_direction_flag
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
