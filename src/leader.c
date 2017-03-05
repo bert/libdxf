@@ -2686,4 +2686,42 @@ dxf_leader_get_number_vertices
 }
 
 
+/*!
+ * \brief Set the \c number_vertices for a DXF \c LEADER entity.
+ */
+DxfLeader *
+dxf_leader_set_number_vertices
+(
+        DxfLeader *leader,
+                /*!< a pointer to a DXF \c LEADER entity. */
+        int number_vertices
+                /*!< the \c number_vertices to be set. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (number_vertices < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        leader->number_vertices = number_vertices;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
 /* EOF */

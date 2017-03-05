@@ -530,6 +530,12 @@ dxf_leader_get_number_vertices
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_number_vertices
+(
+        DxfLeader *leader,
+        int number_vertices
+);
 
 
 #ifdef __cplusplus
