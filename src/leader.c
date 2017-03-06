@@ -2760,4 +2760,41 @@ dxf_leader_get_leader_color
 }
 
 
+/*!
+ * \brief Set the \c leader_color for a DXF \c LEADER entity.
+ */
+DxfLeader *
+dxf_leader_set_leader_color
+(
+        DxfLeader *leader,
+                /*!< a pointer to a DXF \c LEADER entity. */
+        int leader_color
+                /*!< the \c leader_color to be set. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (leader_color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        leader->leader_color = leader_color;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
 /* EOF */

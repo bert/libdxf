@@ -541,6 +541,12 @@ dxf_leader_get_leader_color
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_leader_color
+(
+        DxfLeader *leader,
+        int leader_color
+);
 
 
 #ifdef __cplusplus
