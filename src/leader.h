@@ -552,6 +552,12 @@ dxf_leader_get_extr_x0
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_extr_x0
+(
+        DxfLeader *leader,
+        double extr_x0
+);
 
 
 #ifdef __cplusplus
