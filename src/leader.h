@@ -536,6 +536,11 @@ dxf_leader_set_number_vertices
         DxfLeader *leader,
         int number_vertices
 );
+int
+dxf_leader_get_leader_color
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
