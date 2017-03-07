@@ -188,15 +188,15 @@ dxf_leader_struct
         int leader_color;
                 /*!< Color to use if leader's DIMCLRD=BYBLOCK.\n
                  * Group code = 77. */
-        double x_extr;
+        double extr_x0;
                 /*!< X-value of the extrusion vector.\n
                  * Defaults to 0.0 if omitted in the DXF file.\n
                  * Group code = 210. */
-        double y_extr;
+        double extr_y0;
                 /*!< Y-value of the extrusion vector.\n
                  * Defaults to 0.0 if omitted in the DXF file.\n
                  * Group code = 220. */
-        double z_extr;
+        double extr_z0;
                 /*!< Z-value of the extrusion vector.\n
                  * Defaults to 1.0 if omitted in the DXF file.\n
                  * Group code = 230. */

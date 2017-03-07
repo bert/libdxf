@@ -124,9 +124,9 @@ dxf_leader_init
                 leader->y0[i] = 0.0;
                 leader->z0[i] = 0.0;
         }
-        leader->x_extr = 0.0;
-        leader->y_extr = 0.0;
-        leader->z_extr = 0.0;
+        leader->extr_x0 = 0.0;
+        leader->extr_y0 = 0.0;
+        leader->extr_z0 = 0.0;
         leader->elevation = 0.0;
         leader->thickness = 0.0;
         leader->linetype_scale = DXF_DEFAULT_LINETYPE_SCALE;
@@ -410,21 +410,21 @@ dxf_leader_read
                         /* Now follows a string containing the
                          * X-value of the extrusion vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &leader->x_extr);
+                        fscanf (fp->fp, "%lf\n", &leader->extr_x0);
                 }
                 else if (strcmp (temp_string, "220") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-value of the extrusion vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &leader->y_extr);
+                        fscanf (fp->fp, "%lf\n", &leader->extr_y0);
                 }
                 else if (strcmp (temp_string, "230") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-value of the extrusion vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &leader->z_extr);
+                        fscanf (fp->fp, "%lf\n", &leader->extr_z0);
                 }
                 else if (strcmp (temp_string, "211") == 0)
                 {
@@ -704,9 +704,9 @@ dxf_leader_write
         }
         fprintf (fp->fp, " 77\n%d\n", leader->leader_color);
         fprintf (fp->fp, "340\n%s\n", leader->annotation_reference_hard);
-        fprintf (fp->fp, "210\n%f\n", leader->x_extr);
-        fprintf (fp->fp, "220\n%f\n", leader->y_extr);
-        fprintf (fp->fp, "230\n%f\n", leader->z_extr);
+        fprintf (fp->fp, "210\n%f\n", leader->extr_x0);
+        fprintf (fp->fp, "220\n%f\n", leader->extr_y0);
+        fprintf (fp->fp, "230\n%f\n", leader->extr_z0);
         fprintf (fp->fp, "211\n%f\n", leader->x1);
         fprintf (fp->fp, "221\n%f\n", leader->y1);
         fprintf (fp->fp, "231\n%f\n", leader->z1);
@@ -2825,7 +2825,7 @@ dxf_leader_get_extr_x0
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (leader->x_extr);
+        return (leader->extr_x0);
 }
 
 
@@ -2857,7 +2857,7 @@ dxf_leader_set_extr_x0
                   __FUNCTION__);
                 return (NULL);
         }
-        leader->x_extr = extr_x0;
+        leader->extr_x0 = extr_x0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2893,7 +2893,7 @@ dxf_leader_get_extr_y0
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (leader->y_extr);
+        return (leader->extr_y0);
 }
 
 
@@ -2925,7 +2925,7 @@ dxf_leader_set_extr_y0
                   __FUNCTION__);
                 return (NULL);
         }
-        leader->y_extr = extr_y0;
+        leader->extr_y0 = extr_y0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
@@ -2961,7 +2961,7 @@ dxf_leader_get_extr_z0
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (leader->z_extr);
+        return (leader->extr_z0);
 }
 
 
@@ -2993,7 +2993,7 @@ dxf_leader_set_extr_z0
                   __FUNCTION__);
                 return (NULL);
         }
-        leader->z_extr = extr_z0;
+        leader->extr_z0 = extr_z0;
 #if DEBUG
         DXF_DEBUG_END
 #endif
