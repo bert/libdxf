@@ -569,6 +569,11 @@ dxf_leader_set_extr_y0
         DxfLeader *leader,
         double extr_y0
 );
+double
+dxf_leader_get_extr_z0
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
