@@ -200,6 +200,9 @@ dxf_leader_struct
                 /*!< Z-value of the extrusion vector.\n
                  * Defaults to 1.0 if omitted in the DXF file.\n
                  * Group code = 230. */
+        DxfPoint *p1;
+                /*!< The "Horizontal" direction for leader.\n
+                 * Group codes = 211, 221 and 231. */
         double x1;
                 /*!< X-value of the "Horizontal" direction for leader.\n
                  * Group code = 211. */
