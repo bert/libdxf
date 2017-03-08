@@ -610,6 +610,12 @@ dxf_leader_get_y1
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_y1
+(
+        DxfLeader *leader,
+        double y1
+);
 
 
 #ifdef __cplusplus
