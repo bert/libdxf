@@ -605,6 +605,11 @@ dxf_leader_set_x1
         DxfLeader *leader,
         double x1
 );
+double
+dxf_leader_get_y1
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
