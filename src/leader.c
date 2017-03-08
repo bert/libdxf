@@ -3001,4 +3001,42 @@ dxf_leader_set_extr_z0
 }
 
 
+/*!
+ * \brief Get the "Horizontal" direction for leader \c p1 of a DXF
+ * \c LEADER entity.
+ *
+ * \return  \c p1.
+ */
+DxfPoint *
+dxf_leader_get_p1
+(
+        DxfLeader *leader
+                /*!< a pointer to a DXF \c LEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (leader->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader->p1);
+}
+
+
 /* EOF */
