@@ -3405,4 +3405,44 @@ dxf_leader_set_p2
 }
 
 
+/*!
+ * \brief Get the X-value of the Block reference insertion point offset
+ * from the last leader vertex \c x2 of a DXF \c LEADER entity.
+ *
+ * \return the X-value of the Block reference insertion point offset
+ * from the last leader vertex \c x2.
+ */
+double
+dxf_leader_get_x2
+(
+        DxfLeader *leader
+                /*!< a pointer to a DXF \c LEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (leader->p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader->p2->x0);
+}
+
+
 /* EOF */
