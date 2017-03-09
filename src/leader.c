@@ -3364,4 +3364,45 @@ dxf_leader_get_p2
 }
 
 
+/*!
+ * \brief Set the Block reference insertion point offset from the last
+ * leader vertex \c p2 of a DXF \c LEADER entity.
+ *
+ * \return a pointer to a DXF \c LEADER entity.
+ */
+DxfLeader *
+dxf_leader_set_p2
+(
+        DxfLeader *leader,
+                /*!< a pointer to a DXF \c ARC entity. */
+        DxfPoint *p2
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        leader->p2 = p2;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
 /* EOF */

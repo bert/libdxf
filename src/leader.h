@@ -636,6 +636,12 @@ dxf_leader_get_p2
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_p2
+(
+        DxfLeader *leader,
+        DxfPoint *p2
+);
 
 
 #ifdef __cplusplus
