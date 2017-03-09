@@ -212,6 +212,10 @@ dxf_leader_struct
         double z1;
                 /*!< Z-value of the "Horizontal" direction for leader.\n
                  * Group code = 231. */
+        DxfPoint *p2;
+                /*!< The Block reference insertion point offset from the
+                 * last leader vertex.\n
+                 * Group code = 212, 222, 232. */
         double x2;
                 /*!< X-value of the Block reference insertion point
                  * offset from last leader vertex.\n
