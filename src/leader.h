@@ -228,6 +228,10 @@ dxf_leader_struct
                 /*!< Z-value of the Block reference insertion point
                  * offset from last leader vertex.\n
                  * Group code = 232. */
+        DxfPoint *p3;
+                /*!< the Annotation placement point offset from last
+                 * leader vertex.\n
+                 * Group codes = 213, 223 and 233. */
         double x3;
                 /*!< X-value of the Annotation placement point offset
                  * from last leader vertex.\n
