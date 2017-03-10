@@ -658,6 +658,12 @@ dxf_leader_get_y2
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_y2
+(
+        DxfLeader *leader,
+        double y2
+);
 
 
 #ifdef __cplusplus
