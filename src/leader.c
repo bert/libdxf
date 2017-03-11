@@ -4028,4 +4028,44 @@ dxf_leader_get_annotation_reference_hard
 }
 
 
+/*!
+ * \brief Set the pointer to the \c annotation_reference_hard for a DXF
+ * \c LEADER entity.
+ */
+DxfLeader *
+dxf_leader_set_annotation_reference_hard
+(
+        DxfLeader *leader,
+                /*!< a pointer to a DXF \c LEADER entity. */
+        char *annotation_reference_hard
+                /*!< a string containing the pointer to the \c
+                 * annotation_reference_hard for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (annotation_reference_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        leader->annotation_reference_hard = strdup (annotation_reference_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
 /* EOF */

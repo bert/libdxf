@@ -728,6 +728,12 @@ dxf_leader_get_annotation_reference_hard
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_annotation_reference_hard
+(
+        DxfLeader *leader,
+        char *annotation_reference_hard
+);
 
 
 #ifdef __cplusplus
