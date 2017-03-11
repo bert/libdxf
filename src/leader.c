@@ -3904,4 +3904,44 @@ dxf_leader_set_y3
 }
 
 
+/*!
+ * \brief Get the Z-value of the Annotation placement point offset from
+ * the last leader vertex \c z3 of a DXF \c LEADER entity.
+ *
+ * \return the Z-value of the Annotation placement point offset from the
+ * last leader vertex \c z3.
+ */
+double
+dxf_leader_get_z3
+(
+        DxfLeader *leader
+                /*!< a pointer to a DXF \c LEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (leader->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader->p3->z0);
+}
+
+
 /* EOF */
