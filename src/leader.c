@@ -3776,4 +3776,48 @@ dxf_leader_get_x3
 }
 
 
+/*!
+ * \brief Set the X-value of the Annotation placement point offset from
+ * the last leader vertex \c x3 of a DXF \c LEADER entity.
+ *
+ * \return a pointer to \c leader when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLeader *
+dxf_leader_set_x3
+(
+        DxfLeader *leader,
+                /*!< a pointer to a DXF \c LEADER entity. */
+        double x3
+                /*!< the X-value of the Annotation placement point
+                 * offset from the last leader vertex \c x3 of a DXF
+                 * \c LEADER entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (leader->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        leader->p3->x0 = x3;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (leader);
+}
+
+
 /* EOF */
