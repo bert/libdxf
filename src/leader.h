@@ -701,6 +701,11 @@ dxf_leader_set_x3
         DxfLeader *leader,
         double x3
 );
+double
+dxf_leader_get_y3
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
