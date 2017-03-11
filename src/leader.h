@@ -723,6 +723,11 @@ dxf_leader_set_z3
         DxfLeader *leader,
         double z3
 );
+char *
+dxf_leader_get_annotation_reference_hard
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus

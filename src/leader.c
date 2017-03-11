@@ -3988,4 +3988,44 @@ dxf_leader_set_z3
 }
 
 
+/*!
+ * \brief Get the \c annotation_reference_hard from a DXF \c LEADER
+ * entity.
+ *
+ * \return \c annotation_reference_hard.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_leader_get_annotation_reference_hard
+(
+        DxfLeader *leader
+                /*!< a pointer to a DXF \c LEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (leader->annotation_reference_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (leader->annotation_reference_hard));
+}
+
+
 /* EOF */
