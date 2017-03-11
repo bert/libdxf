@@ -690,6 +690,11 @@ dxf_leader_set_p3
         DxfLeader *leader,
         DxfPoint *p3
 );
+double
+dxf_leader_get_x3
+(
+        DxfLeader *leader
+);
 
 
 #ifdef __cplusplus
