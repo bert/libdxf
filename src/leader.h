@@ -739,6 +739,12 @@ dxf_leader_get_next
 (
         DxfLeader *leader
 );
+DxfLeader *
+dxf_leader_set_next
+(
+        DxfLeader *leader,
+        DxfLeader *next
+);
 
 
 #ifdef __cplusplus
