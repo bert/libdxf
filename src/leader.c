@@ -4068,4 +4068,44 @@ dxf_leader_set_annotation_reference_hard
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c LEADER entity from a DXF 
+ * \c LEADER entity.
+ *
+ * \return pointer to the next \c LEADER entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfLeader *
+dxf_leader_get_next
+(
+        DxfLeader *leader
+                /*!< a pointer to a DXF \c LEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (leader->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfLeader *) leader->next);
+}
+
+
 /* EOF */
