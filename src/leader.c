@@ -571,6 +571,7 @@ dxf_leader_write
 #endif
         char *dxf_entity_name = strdup ("LEADER");
         int i;
+        DxfPoint *iter;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -586,6 +587,15 @@ dxf_leader_write
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (leader->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
                   __FUNCTION__);
                 /* Clean up. */
                 free (dxf_entity_name);
@@ -695,12 +705,21 @@ dxf_leader_write
         fprintf (fp->fp, " 40\n%f\n", leader->text_annotation_height);
         fprintf (fp->fp, " 41\n%f\n", leader->text_annotation_width);
         fprintf (fp->fp, " 76\n%d\n", leader->number_vertices);
-        for (i = 0; i < leader->number_vertices; i++)
+        iter = (DxfPoint *) leader->p0;
+        i = 1;
+        while (iter->next != NULL)
         {
-                fprintf (fp->fp, " 10\n%f\n", leader->x0[i]);
-                fprintf (fp->fp, " 20\n%f\n", leader->y0[i]);
-                fprintf (fp->fp, " 30\n%f\n", leader->z0[i]);
+                fprintf (fp->fp, " 10\n%f\n", iter->x0);
+                fprintf (fp->fp, " 20\n%f\n", iter->y0);
+                fprintf (fp->fp, " 30\n%f\n", iter->z0);
+                iter = (DxfPoint *) iter->next;
+                i++;
         }
+        if (i != leader->number_vertices)
+                fprintf (stderr,
+                  (_("Warning in %s () actual number of vertices differs from number_vertices value in struct.\n")),
+                  __FUNCTION__);
+
         fprintf (fp->fp, " 77\n%d\n", leader->leader_color);
         fprintf (fp->fp, "340\n%s\n", leader->annotation_reference_hard);
         fprintf (fp->fp, "210\n%f\n", leader->extr_x0);
