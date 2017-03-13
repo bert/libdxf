@@ -4147,4 +4147,49 @@ dxf_leader_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c LEADER entity from a linked list
+ * of DXF \c LEADER entities.
+ *
+ * \return pointer to the last \c LEADER entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfLeader *
+dxf_leader_get_last
+(
+        DxfLeader *leader
+                /*!< a pointer to a DXF \c LEADER entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (leader->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfLeader *) leader);
+        }
+        DxfLeader *iter = (DxfLeader *) leader->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfLeader *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfLeader *) iter);
+}
+
+
 /* EOF */
