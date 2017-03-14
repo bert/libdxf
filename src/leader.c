@@ -716,10 +716,11 @@ dxf_leader_write
                 i++;
         }
         if (i != leader->number_vertices)
+        {
                 fprintf (stderr,
                   (_("Warning in %s () actual number of vertices differs from number_vertices value in struct.\n")),
                   __FUNCTION__);
-
+        }
         fprintf (fp->fp, " 77\n%d\n", leader->leader_color);
         fprintf (fp->fp, "340\n%s\n", leader->annotation_reference_hard);
         fprintf (fp->fp, "210\n%f\n", leader->extr_x0);
