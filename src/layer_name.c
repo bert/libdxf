@@ -1,9 +1,17 @@
 /*!
- * \file layer_name.h
+ * \file layer_name.c
  *
  * \author Copyright (C) 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief Header file for a DXF layer name object.
+ * \brief Functions for a DXF layer name object.
+ *
+ * \since The \c LAYER_NAME object was introduced in DXF R14.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -32,47 +40,42 @@
  */
 
 
-#ifndef LIBDXF_SRC_LAYER_NAME_H
-#define LIBDXF_SRC_LAYER_NAME_H
-
-
-#include "global.h"
-
-
-#ifdef __cplusplus
-extern "C" {
-#endif
+#include "layer_name.h"
 
 
 /*!
- * \brief DXF definition of an AutoCAD layer name object.
+ * \brief Allocate memory for a \c DxfLayerName.
+ *
+ * Fill the memory contents with zeros.
  */
-typedef struct
-dxf_layer_name_struct
-{
-        char *name;
-                /*!< Layer name.\n
-                 * Multiple lines of 256 characters maximum per line
-                 * (optional).\n
-                 * Group code = 8. */
-        int length;
-                /*!< Length of the \c name member. */
-        struct DxfLayerName *next;
-                /*!< Pointer to the next DxfLayerName.\n
-                 * \c NULL if the last DxfLayerName. */
-} DxfLayerName;
-
-
 DxfLayerName *
-dxf_layer_name_new ();
-
-
-#ifdef __cplusplus
-}
+dxf_layer_name_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
 #endif
+        DxfLayerName *layer_name = NULL;
+        size_t size;
 
-
-#endif /* LIBDXF_SRC_LAYER_NAME_H */
+        size = sizeof (DxfLayerName);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((layer_name = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                layer_name = NULL;
+        }
+        else
+        {
+                memset (layer_name, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer_name);
+}
 
 
 /* EOF */
