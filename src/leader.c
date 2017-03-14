@@ -725,15 +725,15 @@ dxf_leader_write
         fprintf (fp->fp, "210\n%f\n", leader->extr_x0);
         fprintf (fp->fp, "220\n%f\n", leader->extr_y0);
         fprintf (fp->fp, "230\n%f\n", leader->extr_z0);
-        fprintf (fp->fp, "211\n%f\n", leader->x1);
-        fprintf (fp->fp, "221\n%f\n", leader->y1);
-        fprintf (fp->fp, "231\n%f\n", leader->z1);
-        fprintf (fp->fp, "212\n%f\n", leader->x2);
-        fprintf (fp->fp, "222\n%f\n", leader->y2);
-        fprintf (fp->fp, "232\n%f\n", leader->z2);
-        fprintf (fp->fp, "213\n%f\n", leader->x3);
-        fprintf (fp->fp, "223\n%f\n", leader->y3);
-        fprintf (fp->fp, "233\n%f\n", leader->z3);
+        fprintf (fp->fp, "211\n%f\n", leader->p1->x0);
+        fprintf (fp->fp, "221\n%f\n", leader->p1->y0);
+        fprintf (fp->fp, "231\n%f\n", leader->p1->z0);
+        fprintf (fp->fp, "212\n%f\n", leader->p2->x0);
+        fprintf (fp->fp, "222\n%f\n", leader->p2->y0);
+        fprintf (fp->fp, "232\n%f\n", leader->p2->z0);
+        fprintf (fp->fp, "213\n%f\n", leader->p3->x0);
+        fprintf (fp->fp, "223\n%f\n", leader->p3->y0);
+        fprintf (fp->fp, "233\n%f\n", leader->p3->z0);
         /*! \todo Xdata belonging to the application ID "ACAD" may
          * follow.\n This describes any dimension overrides that have
          * been applied to this entity. */
