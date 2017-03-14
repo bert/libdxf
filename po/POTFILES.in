@@ -87,6 +87,7 @@ src/layer.c
 src/layer.h
 src/layer_index.c
 src/layer_index.h
+src/layer_name.h
 src/leader.c
 src/leader.h
 src/line.c
