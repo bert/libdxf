@@ -186,6 +186,7 @@ dxf_leader_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        DxfPoint *iter;
         int i;
 
         /* Do some basic checks. */
@@ -212,7 +213,8 @@ dxf_leader_read
                 leader = dxf_leader_new ();
                 leader = dxf_leader_init (leader);
         }
-        i = 0;
+        i = 0; /* Number of found vertices. */
+        iter = (DxfPoint *) leader->p0; /* Pointer to first vertex */
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -263,8 +265,13 @@ dxf_leader_read
                                 /* Now follows a string containing the X-value
                                  * of the Vertex coordinates (one entry for each
                                  * vertex). */
+                                if (i > 0) /* Create a pointer for the next vertex. */
+                                {
+                                        dxf_point_init ((DxfPoint *) iter->next);
+                                        iter = (DxfPoint *) iter->next;
+                                }
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%lf\n", &leader->x0[i]);
+                                fscanf (fp->fp, "%lf\n", &iter->x0);
                         }
                         else if (strcmp (temp_string, "20") == 0)
                         {
@@ -272,7 +279,7 @@ dxf_leader_read
                                  * of the Vertex coordinates (one entry for each
                                  * vertex). */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%lf\n", &leader->y0[i]);
+                                fscanf (fp->fp, "%lf\n", &iter->y0);
                         }
                         else if (strcmp (temp_string, "30") == 0)
                         {
@@ -280,8 +287,8 @@ dxf_leader_read
                                  * of the Vertex coordinates (one entry for each
                                  * vertex). */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%lf\n", &leader->z0[i]);
-                                i++;
+                                fscanf (fp->fp, "%lf\n", &iter->z0);
+                                i++; /* Increase the number of found vertices. */
                         }
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
@@ -431,7 +438,7 @@ dxf_leader_read
                          * X-value of the "Horizontal" direction for
                          * leader. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &leader->x1);
+                        fscanf (fp->fp, "%lf\n", &leader->p1->x0);
                 }
                 else if (strcmp (temp_string, "221") == 0)
                 {
@@ -439,7 +446,7 @@ dxf_leader_read
                          * Y-value of the "Horizontal" direction for
                          * leader. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &leader->y1);
+                        fscanf (fp->fp, "%lf\n", &leader->p1->y0);
                 }
                 else if (strcmp (temp_string, "231") == 0)
                 {
@@ -447,7 +454,7 @@ dxf_leader_read
                          * Z-value of the "Horizontal" direction for
                          * leader. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &leader->z1);
+                        fscanf (fp->fp, "%lf\n", &leader->p1->z0);
                 }
                 else if (strcmp (temp_string, "212") == 0)
                 {
@@ -455,7 +462,7 @@ dxf_leader_read
                          * X-value of the Block reference insertion
                          * point offset from last leader vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &leader->x2);
+                        fscanf (fp->fp, "%lf\n", &leader->p2->x0);
                 }
                 else if (strcmp (temp_string, "222") == 0)
                 {
@@ -463,7 +470,7 @@ dxf_leader_read
                          * Y-value of the Block reference insertion
                          * point offset from last leader vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &leader->y2);
+                        fscanf (fp->fp, "%lf\n", &leader->p2->y0);
                 }
                 else if (strcmp (temp_string, "232") == 0)
                 {
@@ -471,7 +478,7 @@ dxf_leader_read
                          * Z-value of the Block reference insertion
                          * point offset from last leader vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &leader->z2);
+                        fscanf (fp->fp, "%lf\n", &leader->p2->z0);
                 }
                 else if (strcmp (temp_string, "213") == 0)
                 {
@@ -479,7 +486,7 @@ dxf_leader_read
                          * X-value of the Annotation placement point
                          * offset from last leader vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &leader->x3);
+                        fscanf (fp->fp, "%lf\n", &leader->p3->x0);
                 }
                 else if (strcmp (temp_string, "223") == 0)
                 {
@@ -487,7 +494,7 @@ dxf_leader_read
                          * Y-value of the Annotation placement point
                          * offset from last leader vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &leader->y3);
+                        fscanf (fp->fp, "%lf\n", &leader->p3->y0);
                 }
                 else if (strcmp (temp_string, "233") == 0)
                 {
@@ -495,7 +502,7 @@ dxf_leader_read
                          * Z-value of the Annotation placement point
                          * offset from last leader vertex. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &leader->z3);
+                        fscanf (fp->fp, "%lf\n", &leader->p3->z0);
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -532,6 +539,12 @@ dxf_leader_read
                           (_("Warning in %s () unknown string tag found while reading from: %s in line: %d.\n")),
                           __FUNCTION__, fp->filename, fp->line_number);
                 }
+        }
+        if (i != leader->number_vertices)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () actual number of vertices differs from number_vertices value in struct.\n")),
+                  __FUNCTION__);
         }
         /* Handle omitted members and/or illegal values. */
         if (strcmp (leader->linetype, "") == 0)
