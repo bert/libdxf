@@ -52,8 +52,7 @@ dxf_layer_name_struct
 {
         char *name;
                 /*!< Layer name.\n
-                 * Multiple lines of 256 characters maximum per line
-                 * (optional).\n
+                 * 256 characters maximum.\n
                  * Group code = 8. */
         int length;
                 /*!< Length of the \c name member. */
