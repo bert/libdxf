@@ -120,4 +120,40 @@ dxf_layer_name_init
 }
 
 
+/*!
+ * \brief Free the allocated memory for a DXF \c LAYER_NAME and all it's
+ * data fields.
+ *
+ * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+int
+dxf_layer_name_free
+(
+        DxfLayerName *layer_name
+                /*!< Pointer to the memory occupied by the DXF
+                 * \c LAYER_NAME object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer_name->next != NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () pointer to next was not NULL.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
+        free (layer_name->name);
+        free (layer_name);
+        layer_name = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 /* EOF */

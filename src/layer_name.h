@@ -69,6 +69,11 @@ dxf_layer_name_init
 (
         DxfLayerName *layer_name
 );
+int
+dxf_layer_name_free
+(
+        DxfLayerName *layer_name
+);
 
 
 #ifdef __cplusplus
