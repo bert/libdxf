@@ -65,6 +65,11 @@ dxf_layer_name_struct
 
 DxfLayerName *
 dxf_layer_name_new ();
+DxfLayerName *
+dxf_layer_name_init
+(
+        DxfLayerName *layer_name
+);
 
 
 #ifdef __cplusplus

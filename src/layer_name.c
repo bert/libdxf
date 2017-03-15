@@ -78,4 +78,46 @@ dxf_layer_name_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a \c LAYER_NAME
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfLayerName *
+dxf_layer_name_init
+(
+        DxfLayerName *layer_name
+                /*!< DXF \c LAYER_NAME object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                layer_name = dxf_layer_name_new ();
+        }
+        if (layer_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        layer_name->name = strdup ("");
+        layer_name->length = 0;
+        layer_name->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer_name);
+}
+
+
 /* EOF */
