@@ -84,6 +84,12 @@ dxf_layer_name_get_name
 (
         DxfLayerName *layer_name
 );
+DxfLayerName *
+dxf_layer_name_set_name
+(
+        DxfLayerName *layer_name,
+        char *name
+);
 
 
 #ifdef __cplusplus

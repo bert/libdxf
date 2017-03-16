@@ -227,4 +227,42 @@ dxf_layer_name_get_name
 }
 
 
+/*!
+ * \brief Set the \c name for a DXF \c LAYER_NAME object.
+ */
+DxfLayerName *
+dxf_layer_name_set_name
+(
+        DxfLayerName *layer_name,
+                /*!< a pointer to a DXF \c LAYER_NAME object. */
+        char *name
+                /*!< a string containing the \c name for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        layer_name->name = strdup (name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer_name);
+}
+
+
 /* EOF */
