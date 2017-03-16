@@ -95,6 +95,12 @@ dxf_layer_name_get_length
 (
         DxfLayerName *layer_name
 );
+DxfLayerName *
+dxf_layer_name_set_length
+(
+        DxfLayerName *layer_name,
+        int length
+);
 
 
 #ifdef __cplusplus

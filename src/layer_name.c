@@ -303,4 +303,43 @@ dxf_layer_name_get_length
 }
 
 
+/*!
+ * \brief Set the \c length of the \c name member for a DXF
+ * \c LAYER_NAME object.
+ */
+DxfLayerName *
+dxf_layer_name_set_length
+(
+        DxfLayerName *layer_name,
+                /*!< a pointer to a DXF \c LAYER_NAME object. */
+        int length
+                /*!< \c length. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (length < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        layer_name->length = length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer_name);
+}
+
+
 /* EOF */
