@@ -156,4 +156,36 @@ dxf_layer_name_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DXF \c LAYER_NAME
+ * objects and all their data fields.
+ */
+void
+dxf_layer_name_free_chain
+(
+        DxfLayerName *layer_names
+                /*!< pointer to the chain of DXF \c LAYER_NAME objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (layer_names == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+        }
+        while (layer_names != NULL)
+        {
+                struct DxfLayerName *iter = layer_names->next;
+                dxf_layer_name_free (layer_names);
+                layer_names = (DxfLayerName *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+}
+
+
 /* EOF */

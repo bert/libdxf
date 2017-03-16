@@ -74,6 +74,11 @@ dxf_layer_name_free
 (
         DxfLayerName *layer_name
 );
+void
+dxf_layer_name_free_chain
+(
+        DxfLayerName *layer_names
+);
 
 
 #ifdef __cplusplus
