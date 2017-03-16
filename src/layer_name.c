@@ -188,4 +188,43 @@ dxf_layer_name_free_chain
 }
 
 
+/*!
+ * \brief Get the \c name from a DXF \c LAYER_NAME object.
+ *
+ * \return \c name.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_layer_name_get_name
+(
+        DxfLayerName *layer_name
+                /*!< a pointer to a DXF \c LAYER_NAME object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer_name->name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (layer_name->name));
+}
+
+
 /* EOF */
