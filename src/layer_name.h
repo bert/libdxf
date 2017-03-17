@@ -106,6 +106,12 @@ dxf_layer_name_get_next
 (
         DxfLayerName *layer_name
 );
+DxfLayerName *
+dxf_layer_name_set_next
+(
+        DxfLayerName *layer_name,
+        DxfLayerName *next
+);
 
 
 #ifdef __cplusplus

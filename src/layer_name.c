@@ -382,4 +382,44 @@ dxf_layer_name_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c LAYER_NAME object for a DXF
+ * \c LAYER_NAME object.
+ */
+DxfLayerName *
+dxf_layer_name_set_next
+(
+        DxfLayerName *layer_name,
+                /*!< a pointer to a DXF \c LAYER_NAME object. */
+        DxfLayerName *next
+                /*!< a pointer to the next \c LAYER_NAME object for the
+                 * object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (layer_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        layer_name->next = (struct DxfLayerName *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (layer_name);
+}
+
+
 /* EOF */
