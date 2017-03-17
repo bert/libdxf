@@ -112,6 +112,11 @@ dxf_layer_name_set_next
         DxfLayerName *layer_name,
         DxfLayerName *next
 );
+DxfLayerName *
+dxf_layer_name_get_last
+(
+        DxfLayerName *layer_name
+);
 
 
 #ifdef __cplusplus
