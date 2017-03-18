@@ -64,6 +64,7 @@
 
 
 #include "global.h"
+#include "layer_name.h"
 
 
 #ifdef __cplusplus
@@ -90,7 +91,7 @@ dxf_layer_index_struct
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360. */
         /* Specific members for a DXF idbuffer. */
-        char *layer_name[DXF_MAX_PARAM];
+        DxfLayerName *layer_name;
                 /*!< Layer name (multiple entries may exist).\n
                  * Group code = 8. */
         double time_stamp;

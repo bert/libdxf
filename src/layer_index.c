@@ -135,9 +135,11 @@ dxf_layer_index_init
         layer_index->dictionary_owner_soft = strdup ("");
         layer_index->dictionary_owner_hard = strdup ("");
         layer_index->time_stamp = 0;
+        layer_index->layer_name = (DxfLayerName *) dxf_layer_name_new ();
+        layer_index->layer_name = (DxfLayerName *) dxf_layer_name_init (layer_index->layer_name);
+        layer_index->layer_name->name = strdup ("");
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                layer_index->layer_name[i] = strdup ("");
                 layer_index->number_of_entries[i] = 0;
                 layer_index->hard_owner_reference[i] = strdup ("");
         }
@@ -173,6 +175,7 @@ dxf_layer_index_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
+        DxfLayerName *iter;
         int i;
         int j;
         int k;
@@ -204,6 +207,7 @@ dxf_layer_index_read
         i = 0;
         j = 0;
         k = 0;
+        iter = (DxfLayerName *) layer_index->layer_name; /* Pointer to first entry. */
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -229,9 +233,14 @@ dxf_layer_index_read
                 {
                         /* Now follows a string containing a layer name
                          * (multiple entries may exist). */
+                        if (i > 0) /* Create a pointer for the next entry. */
+                        {
+                                dxf_layer_name_init ((DxfLayerName *) iter->next);
+                                iter = (DxfLayerName *) iter->next;
+                        }
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", layer_index->layer_name[i]);
-                        i++;
+                        fscanf (fp->fp, "%s\n", iter->name);
+                        i++; /* Increase number of entries. */
                 }
                 if (strcmp (temp_string, "40") == 0)
                 {
@@ -332,6 +341,7 @@ dxf_layer_index_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("LAYER_INDEX");
+        DxfLayerName *iter;
         int i;
 
         /* Do some basic checks. */
@@ -394,10 +404,17 @@ dxf_layer_index_write
                 fprintf (fp->fp, "100\nAcDbIndex\n");
         }
         fprintf (fp->fp, " 40\n%lf\n", layer_index->time_stamp);
+        iter = (DxfLayerName *) layer_index->layer_name;
         i = 0;
-        while (strlen (layer_index->layer_name[i]) > 0)
+        while (strlen (iter->name) > 0)
         {
-                fprintf (fp->fp, "  8\n%s\n", layer_index->layer_name[i]);
+                fprintf (fp->fp, "  8\n%s\n", iter->name);
+                iter = (DxfLayerName *) iter->next;
+                i++;
+        }
+        i = 0;
+        while (strlen (layer_index->layer_name->name) > 0)
+        {
                 fprintf (fp->fp, "360\n%s\n", layer_index->hard_owner_reference[i]);
                 fprintf (fp->fp, " 90\n%d\n", layer_index->number_of_entries[i]);
                 i++;
@@ -442,9 +459,9 @@ dxf_layer_index_free
         }
         free (layer_index->dictionary_owner_soft);
         free (layer_index->dictionary_owner_hard);
+        dxf_layer_name_free_chain (layer_index->layer_name);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                free (layer_index->layer_name[i]);
                 free (layer_index->hard_owner_reference[i]);
         }
         free (layer_index);
