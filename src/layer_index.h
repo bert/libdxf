@@ -5,6 +5,25 @@
  *
  * \brief Header file for a DXF layer index object (\c LAYER_INDEX).
  *
+ * A layer index is a list showing which objects are on which layers.
+ *
+ * This list is used when the program is referencing the drawing in
+ * conjunction with demand loading to determine which objects need to be
+ * read in and displayed.
+ *
+ * Objects on frozen layers in a referenced drawing are not read in if
+ * the referenced drawing has a layer index and is being demand loaded.
+ *
+ * Layer indexes are best used in drawings that will be used as xrefs in
+ * other drawings where demand loading is enabled.
+ *
+ * Drawings that are not going to be used as xrefs or partially opened
+ * will not benefit from layer and spatial indexing or demand loading.
+ *
+ * \note To receive the maximum benefit of demand loading, it is
+ * recommended that you save any drawings that are used as xrefs with
+ * layer and spatial indexes.
+ *
  * \since The \c LAYER_INDEX object was introduced in DXF R14.
  *
  * \version According to DXF R10 (backward compatibility).
