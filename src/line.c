@@ -3320,6 +3320,51 @@ dxf_line_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c LINE entity from a linked list
+ * of DXF \c LINE entities.
+ *
+ * \return pointer to the last \c LINE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfLine *
+dxf_line_get_last
+(
+        DxfLine *line
+                /*!< a pointer to a DXF \c LINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfLine *) line);
+        }
+        DxfLine *iter = (DxfLine *) line->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfLine *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfLine *) iter);
+}
+
+
+/*!
  * \brief Calculate the mid point of a DXF \c LINE entity.
  *
  * \return the mid point.

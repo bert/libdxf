@@ -601,6 +601,11 @@ dxf_line_set_next
         DxfLine *line,
         DxfLine *next
 );
+DxfLine *
+dxf_line_get_last
+(
+        DxfLine *line
+);
 DxfPoint *
 dxf_line_calculate_mid_point
 (
