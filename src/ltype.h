@@ -1,7 +1,7 @@
 /*!
  * \file ltype.h
  *
- * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF ltype symbol table entry (\c LTYPE).
  *
@@ -54,7 +54,7 @@ extern "C" {
  * \version According to DXF R14.
  */
 typedef struct
-dxf_ltype
+dxf_ltype_struct
 {
         int id_code;
                 /*!< Entity handle; text string of up to 16 hexadecimal
