@@ -193,6 +193,11 @@ dxf_ltype_set_id_code
         DxfLType *ltype,
         int id_code
 );
+char *
+dxf_ltype_get_linetype_name
+(
+        DxfLType *ltype
+);
 int
 dxf_ltype_is_xreferenced
 (

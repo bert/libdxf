@@ -741,6 +741,44 @@ dxf_ltype_set_id_code
 
 
 /*!
+ * \brief Get the \c linetype_name from a DXF \c LTYPE entity.
+ *
+ * \return \c linetype_name when sucessful, \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_ltype_get_linetype_name
+(
+        DxfLType *ltype
+                /*!< a pointer to a DXF \c LTYPE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ltype->linetype_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (ltype->linetype_name));
+}
+
+
+/*!
  * \brief Test if ltype is externally dependent on an xref.
  *
  * \return \c TRUE when ltype is externally dependent on an xref,
