@@ -701,6 +701,46 @@ dxf_ltype_get_id_code
 
 
 /*!
+ * \brief Set the ID code for a DXF \c LTYPE entity.
+ */
+DxfLType *
+dxf_ltype_set_id_code
+(
+        DxfLType *ltype,
+                /*!< a pointer to a DXF \c LTYPE entity. */
+        int id_code
+                /*!< Identification number for the entity.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ltype->id_code = id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ltype);
+}
+
+
+/*!
  * \brief Test if ltype is externally dependent on an xref.
  *
  * \return \c TRUE when ltype is externally dependent on an xref,
