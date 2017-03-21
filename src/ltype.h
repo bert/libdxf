@@ -183,6 +183,11 @@ dxf_ltype_free_chain
         DxfLType *ltypes
 );
 int
+dxf_ltype_get_id_code
+(
+        DxfLType *ltype
+);
+int
 dxf_ltype_is_xreferenced
 (
         DxfLType *ltype
