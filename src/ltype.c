@@ -1,7 +1,8 @@
 /*!
  * \file ltype.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2012, 2014, 2015, 2017
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF ltype symbol table entry (\c LTYPE).
  *
