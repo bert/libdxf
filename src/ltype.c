@@ -925,6 +925,38 @@ dxf_ltype_get_total_pattern_length
 
 
 /*!
+ * \brief Set the \c total_pattern_length for a DXF \c LTYPE entity.
+ */
+DxfLType *
+dxf_ltype_set_total_pattern_length
+(
+        DxfLType *ltype,
+                /*!< a pointer to a DXF \c LTYPE entity. */
+        double total_pattern_length
+                /*!< the \c total_pattern_length to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ltype->total_pattern_length = total_pattern_length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ltype);
+}
+
+
+/*!
  * \brief Test if ltype is externally dependent on an xref.
  *
  * \return \c TRUE when ltype is externally dependent on an xref,

@@ -220,6 +220,12 @@ dxf_ltype_get_total_pattern_length
 (
         DxfLType *ltype
 );
+DxfLType *
+dxf_ltype_set_total_pattern_length
+(
+        DxfLType *ltype,
+        double total_pattern_length
+);
 int
 dxf_ltype_is_xreferenced
 (
