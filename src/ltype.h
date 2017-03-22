@@ -231,6 +231,12 @@ dxf_ltype_get_flag
 (
         DxfLType *ltype
 );
+DxfLType *
+dxf_ltype_set_flag
+(
+        DxfLType *ltype,
+        int flag
+);
 int
 dxf_ltype_is_xreferenced
 (
