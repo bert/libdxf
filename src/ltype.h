@@ -227,6 +227,11 @@ dxf_ltype_set_total_pattern_length
         double total_pattern_length
 );
 int
+dxf_ltype_get_flag
+(
+        DxfLType *ltype
+);
+int
 dxf_ltype_is_xreferenced
 (
         DxfLType *ltype
