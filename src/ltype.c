@@ -856,6 +856,45 @@ dxf_ltype_get_description
 
 
 /*!
+ * \brief Set the \c description for a DXF \c LTYPE entity.
+ */
+DxfLType *
+dxf_ltype_set_description
+(
+        DxfLType *ltype,
+                /*!< a pointer to a DXF \c LTYPE entity. */
+        char *description
+                /*!< a string containing the \c description for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (description == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ltype->description = strdup (description);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ltype);
+}
+
+
+/*!
  * \brief Test if ltype is externally dependent on an xref.
  *
  * \return \c TRUE when ltype is externally dependent on an xref,

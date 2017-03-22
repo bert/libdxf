@@ -209,6 +209,12 @@ dxf_ltype_get_description
 (
         DxfLType *ltype
 );
+DxfLType *
+dxf_ltype_set_description
+(
+        DxfLType *ltype,
+        char *description
+);
 int
 dxf_ltype_is_xreferenced
 (
