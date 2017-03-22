@@ -1174,4 +1174,42 @@ dxf_ltype_get_alignment
 }
 
 
+/*!
+ * \brief Set the \c alignment for a DXF \c LTYPE entity.
+ */
+DxfLType *
+dxf_ltype_set_alignment
+(
+        DxfLType *ltype,
+                /*!< a pointer to a DXF \c ARC entity. */
+        int alignment
+                /*!< alignment to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (alignment != 65)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ltype->alignment = alignment;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ltype);
+}
+
+
 /* EOF */

@@ -257,6 +257,12 @@ dxf_ltype_get_alignment
 (
         DxfLType *ltype
 );
+DxfLType *
+dxf_ltype_set_alignment
+(
+        DxfLType *ltype,
+        int alignment
+);
 
 
 #ifdef __cplusplus
