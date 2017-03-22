@@ -252,6 +252,11 @@ dxf_ltype_is_referenced
 (
         DxfLType *ltype
 );
+int
+dxf_ltype_get_alignment
+(
+        DxfLType *ltype
+);
 
 
 #ifdef __cplusplus

@@ -1137,4 +1137,41 @@ dxf_ltype_is_referenced
 }
 
 
+/*!
+ * \brief Get the \c alignment from a DXF \c LTYPE entity.
+ *
+ * \return \c alignment.
+ */
+int
+dxf_ltype_get_alignment
+(
+        DxfLType *ltype
+                /*!< a pointer to a DXF \c LTYPE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (ltype->alignment != 65)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an invalid value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ltype->alignment);
+}
+
+
 /* EOF */
