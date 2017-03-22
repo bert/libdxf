@@ -215,6 +215,11 @@ dxf_ltype_set_description
         DxfLType *ltype,
         char *description
 );
+double
+dxf_ltype_get_total_pattern_length
+(
+        DxfLType *ltype
+);
 int
 dxf_ltype_is_xreferenced
 (
