@@ -204,6 +204,11 @@ dxf_ltype_set_linetype_name
         DxfLType *ltype,
         char *linetype_name
 );
+char *
+dxf_ltype_get_description
+(
+        DxfLType *ltype
+);
 int
 dxf_ltype_is_xreferenced
 (
