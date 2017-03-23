@@ -268,6 +268,12 @@ dxf_ltype_get_number_of_linetype_elements
 (
         DxfLType *ltype
 );
+DxfLType *
+dxf_ltype_set_number_of_linetype_elements
+(
+        DxfLType *ltype,
+        int number_of_linetype_elements
+);
 
 
 #ifdef __cplusplus

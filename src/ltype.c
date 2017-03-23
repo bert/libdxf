@@ -1249,4 +1249,43 @@ dxf_ltype_get_number_of_linetype_elements
 }
 
 
+/*!
+ * \brief Set the \c number_of_linetype_elements for a DXF \c LTYPE entity.
+ */
+DxfLType *
+dxf_ltype_set_number_of_linetype_elements
+(
+        DxfLType *ltype,
+                /*!< a pointer to a DXF \c ARC entity. */
+        int number_of_linetype_elements
+                /*!< \c number_of_linetype_elements to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (number_of_linetype_elements < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ltype->number_of_linetype_elements = number_of_linetype_elements;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ltype);
+}
+
+
 /* EOF */
