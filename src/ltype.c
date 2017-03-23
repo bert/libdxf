@@ -1212,4 +1212,41 @@ dxf_ltype_set_alignment
 }
 
 
+/*!
+ * \brief Get the \c number_of_linetype_elements from a DXF \c LTYPE entity.
+ *
+ * \return \c number_of_linetype_elements.
+ */
+int
+dxf_ltype_get_number_of_linetype_elements
+(
+        DxfLType *ltype
+                /*!< a pointer to a DXF \c LTYPE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (ltype->number_of_linetype_elements < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ltype->number_of_linetype_elements);
+}
+
+
 /* EOF */

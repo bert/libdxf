@@ -263,6 +263,11 @@ dxf_ltype_set_alignment
         DxfLType *ltype,
         int alignment
 );
+int
+dxf_ltype_get_number_of_linetype_elements
+(
+        DxfLType *ltype
+);
 
 
 #ifdef __cplusplus
