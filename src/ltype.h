@@ -279,6 +279,12 @@ dxf_ltype_get_dictionary_owner_soft
 (
         DxfLType *ltype
 );
+DxfLType *
+dxf_ltype_set_dictionary_owner_soft
+(
+        DxfLType *ltype,
+        char *dictionary_owner_soft
+);
 char *
 dxf_ltype_get_dictionary_owner_hard
 (
