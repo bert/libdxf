@@ -275,6 +275,11 @@ dxf_ltype_set_number_of_linetype_elements
         int number_of_linetype_elements
 );
 char *
+dxf_ltype_get_dictionary_owner_soft
+(
+        DxfLType *ltype
+);
+char *
 dxf_ltype_get_dictionary_owner_hard
 (
         DxfLType *ltype
