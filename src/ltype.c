@@ -1448,4 +1448,44 @@ dxf_ltype_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c LTYPE entity from a DXF 
+ * \c LTYPE entity.
+ *
+ * \return pointer to the next \c LTYPE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfLType *
+dxf_ltype_get_next
+(
+        DxfLType *ltype
+                /*!< a pointer to a DXF \c LTYPE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ltype->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfLType *) ltype->next);
+}
+
+
 /* EOF */

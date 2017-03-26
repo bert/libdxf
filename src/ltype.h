@@ -296,6 +296,11 @@ dxf_ltype_set_dictionary_owner_hard
         DxfLType *ltype,
         char *dictionary_owner_hard
 );
+DxfLType *
+dxf_ltype_get_next
+(
+        DxfLType *ltype
+);
 
 
 #ifdef __cplusplus
