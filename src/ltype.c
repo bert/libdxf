@@ -943,6 +943,55 @@ dxf_ltype_get_complex_text_string
 
 
 /*!
+ * \brief Set the \c complex_text_string for index \c i for a DXF
+ * \c LTYPE entity.
+ */
+DxfLType *
+dxf_ltype_set_complex_text_string
+(
+        DxfLType *ltype,
+                /*!< a pointer to a DXF \c LTYPE entity. */
+        int i,
+                /*!< index. */
+        char *complex_text_string
+                /*!< a string containing the \c complex_text_string for
+                 * index \c i of the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (i < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative index was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (complex_text_string == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ltype->complex_text_string[i] = strdup (complex_text_string);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ltype);
+}
+
+
+/*!
  * \brief Get the \c total_pattern_length from a DXF \c LTYPE entity.
  *
  * \return \c total_pattern_length.
