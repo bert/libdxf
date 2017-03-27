@@ -307,6 +307,11 @@ dxf_ltype_set_next
         DxfLType *ltype,
         DxfLType *next
 );
+DxfLType *
+dxf_ltype_get_last
+(
+        DxfLType *ltype
+);
 
 
 #ifdef __cplusplus

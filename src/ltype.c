@@ -1527,4 +1527,49 @@ dxf_ltype_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c LTYPE entity from a linked list
+ * of DXF \c LTYPE entities.
+ *
+ * \return pointer to the last \c LTYPE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfLType *
+dxf_ltype_get_last
+(
+        DxfLType *ltype
+                /*!< a pointer to a DXF \c LTYPE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ltype->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfLType *) ltype);
+        }
+        DxfLType *iter = (DxfLType *) ltype->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfLType *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfLType *) iter);
+}
+
+
 /* EOF */
