@@ -215,6 +215,12 @@ dxf_ltype_set_description
         DxfLType *ltype,
         char *description
 );
+char *
+dxf_ltype_get_complex_text_string
+(
+        DxfLType *ltype,
+        int i
+);
 double
 dxf_ltype_get_total_pattern_length
 (
