@@ -976,6 +976,13 @@ dxf_ltype_set_complex_text_string
                   __FUNCTION__);
                 return (NULL);
         }
+        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range index was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (complex_text_string == NULL)
         {
                 fprintf (stderr,
