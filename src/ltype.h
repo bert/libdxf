@@ -245,6 +245,13 @@ dxf_ltype_get_complex_x_offset
         DxfLType *ltype,
         int i
 );
+DxfLType *
+dxf_ltype_set_complex_x_offset
+(
+        DxfLType *ltype,
+        int i,
+        double complex_x_offset
+);
 int
 dxf_ltype_get_flag
 (
