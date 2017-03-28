@@ -239,6 +239,12 @@ dxf_ltype_set_total_pattern_length
         DxfLType *ltype,
         double total_pattern_length
 );
+double
+dxf_ltype_get_complex_x_offset
+(
+        DxfLType *ltype,
+        int i
+);
 int
 dxf_ltype_get_flag
 (

@@ -1054,6 +1054,53 @@ dxf_ltype_set_total_pattern_length
 
 
 /*!
+ * \brief Get the \c complex_x_offset indexed by \c i from a DXF
+ * \c LTYPE entity.
+ *
+ * \return \c complex_x_offset when sucessful.
+ */
+double
+dxf_ltype_get_complex_x_offset
+(
+        DxfLType *ltype,
+                /*!< a pointer to a DXF \c LTYPE entity. */
+        int i
+                /*!< index. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (i < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative index was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range index was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ltype->complex_x_offset[i]);
+}
+
+
+/*!
  * \brief Get the \c flag from a DXF \c LTYPE entity.
  *
  * \return \c flag.
