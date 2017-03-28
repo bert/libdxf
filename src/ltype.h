@@ -265,6 +265,12 @@ dxf_ltype_set_complex_y_offset
         int i,
         double complex_y_offset
 );
+double
+dxf_ltype_get_complex_scale
+(
+        DxfLType *ltype,
+        int i
+);
 int
 dxf_ltype_get_flag
 (
