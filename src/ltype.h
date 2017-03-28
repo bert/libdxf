@@ -284,6 +284,13 @@ dxf_ltype_get_dash_length
         DxfLType *ltype,
         int i
 );
+DxfLType *
+dxf_ltype_set_dash_length
+(
+        DxfLType *ltype,
+        int i,
+        double dash_length
+);
 int
 dxf_ltype_get_flag
 (
