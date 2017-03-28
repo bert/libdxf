@@ -278,6 +278,12 @@ dxf_ltype_set_complex_scale
         int i,
         double complex_scale
 );
+double
+dxf_ltype_get_dash_length
+(
+        DxfLType *ltype,
+        int i
+);
 int
 dxf_ltype_get_flag
 (
