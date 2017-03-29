@@ -297,6 +297,13 @@ dxf_ltype_get_complex_rotation
         DxfLType *ltype,
         int i
 );
+DxfLType *
+dxf_ltype_set_complex_rotation
+(
+        DxfLType *ltype,
+        int i,
+        double complex_rotation
+);
 int
 dxf_ltype_get_flag
 (
