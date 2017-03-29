@@ -291,6 +291,12 @@ dxf_ltype_set_dash_length
         int i,
         double dash_length
 );
+double
+dxf_ltype_get_complex_rotation
+(
+        DxfLType *ltype,
+        int i
+);
 int
 dxf_ltype_get_flag
 (
