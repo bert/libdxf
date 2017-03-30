@@ -6,6 +6,12 @@
  *
  * \brief Functions for a DXF ltype symbol table entry (\c LTYPE).
  *
+ * \version According to DXF R10.
+ * \version According to DXF R11.
+ * \version According to DXF R12.
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -40,12 +46,6 @@
  * \brief Allocate memory for a \c DxfLType.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLType *
 dxf_ltype_new ()
@@ -83,12 +83,6 @@ dxf_ltype_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLType *
 dxf_ltype_init
@@ -155,12 +149,6 @@ dxf_ltype_init
  * While parsing the DXF file store data in \c ltype. \n
  *
  * \return a pointer to \c ltype.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfLType *
 dxf_ltype_read
@@ -385,12 +373,6 @@ dxf_ltype_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_ltype_write
@@ -579,12 +561,6 @@ dxf_ltype_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_ltype_free
@@ -627,12 +603,6 @@ dxf_ltype_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c LTYPE
  * symbol table entries and all their data fields.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_ltype_free_chain
