@@ -358,6 +358,13 @@ dxf_ltype_get_complex_element
         DxfLType *ltype,
         int i
 );
+DxfLType *
+dxf_ltype_set_complex_element
+(
+        DxfLType *ltype,
+        int i,
+        int complex_element
+);
 char *
 dxf_ltype_get_dictionary_owner_soft
 (
