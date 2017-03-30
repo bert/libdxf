@@ -122,7 +122,7 @@ dxf_ltype_init
         ltype->description = strdup ("");
         ltype->total_pattern_length = 0.0;
         ltype->number_of_linetype_elements = 1;
-        for ((i = 0); (i < ltype->number_of_linetype_elements); i++)
+        for ((i = 0); (i <= DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS); i++)
         {
                 ltype->complex_text_string[i] = strdup ("");
                 ltype->complex_x_offset[i] = 0.0;
