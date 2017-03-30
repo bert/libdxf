@@ -1976,6 +1976,53 @@ dxf_ltype_set_complex_element
 
 
 /*!
+ * \brief Get the \c complex_shape_number indexed by \c i from a DXF
+ * \c LTYPE entity.
+ *
+ * \return \c complex_shape_number when sucessful.
+ */
+int
+dxf_ltype_get_complex_shape_number
+(
+        DxfLType *ltype,
+                /*!< a pointer to a DXF \c LTYPE entity. */
+        int i
+                /*!< index. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (i < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative index was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range index was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ltype->complex_shape_number[i]);
+}
+
+
+/*!
  * \brief Get the soft pointer to the dictionary owner from a DXF 
  * \c LTYPE entity.
  *
