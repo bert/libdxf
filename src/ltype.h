@@ -395,6 +395,13 @@ dxf_ltype_get_complex_style_pointer
         DxfLType *ltype,
         int i
 );
+DxfLType *
+dxf_ltype_set_complex_style_pointer
+(
+        DxfLType *ltype,
+        int i,
+        char *complex_style_pointer
+);
 char *
 dxf_ltype_get_dictionary_owner_hard
 (

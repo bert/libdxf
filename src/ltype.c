@@ -2207,6 +2207,62 @@ dxf_ltype_get_complex_style_pointer
 
 
 /*!
+ * \brief Set the \c complex_style_pointer for index \c i for a DXF
+ * \c LTYPE entity.
+ */
+DxfLType *
+dxf_ltype_set_complex_style_pointer
+(
+        DxfLType *ltype,
+                /*!< a pointer to a DXF \c LTYPE entity. */
+        int i,
+                /*!< index. */
+        char *complex_style_pointer
+                /*!< a string containing the \c complex_style_pointer
+                 * for index \c i of the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (i < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative index was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (i > DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range index was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (complex_style_pointer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ltype->complex_style_pointer[i] = strdup (complex_style_pointer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ltype);
+}
+
+
+/*!
  * \brief Get the hard pointer to the dictionary owner from a DXF 
  * \c LTYPE entity.
  *
