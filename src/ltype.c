@@ -412,7 +412,7 @@ dxf_ltype_write
         {
                 fprintf (stderr,
                   (_("Warning in %s (): empty linetype name string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, ltype->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_ltype_get_id_code (ltype));
                 fprintf (stderr,
                   (_("\t%s entity is discarded from output.\n")),
                   dxf_entity_name);
@@ -422,9 +422,9 @@ dxf_ltype_write
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (ltype->id_code != -1)
+        if (dxf_ltype_get_id_code (ltype) != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", ltype->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_ltype_get_id_code (ltype));
         }
         /*!
          * \todo for version R14.\n
@@ -436,18 +436,18 @@ dxf_ltype_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (ltype->dictionary_owner_soft, "") != 0)
+        if ((strcmp (dxf_ltype_get_dictionary_owner_soft (ltype), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", ltype->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", dxf_ltype_get_dictionary_owner_soft (ltype));
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (ltype->dictionary_owner_hard, "") != 0)
+        if ((strcmp (dxf_ltype_get_dictionary_owner_hard (ltype), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", ltype->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", dxf_ltype_get_dictionary_owner_hard (ltype));
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_14)
@@ -455,94 +455,94 @@ dxf_ltype_write
                 fprintf (fp->fp, "100\nAcDbSymbolTableRecord\n");
                 fprintf (fp->fp, "100\nAcDbLinetypeTableRecord\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", ltype->linetype_name);
-        fprintf (fp->fp, " 70\n%d\n", ltype->flag);
+        fprintf (fp->fp, "  2\n%s\n", dxf_ltype_get_linetype_name (ltype));
+        fprintf (fp->fp, " 70\n%d\n", dxf_ltype_get_flag (ltype));
         if (ltype->description)
         {
-                fprintf (fp->fp, "  3\n%s\n", ltype->description);
+                fprintf (fp->fp, "  3\n%s\n", dxf_ltype_get_description (ltype));
         }
         else
         {
                 fprintf (fp->fp, "  3\n\n");
         }
-        fprintf (fp->fp, " 72\n%d\n", ltype->alignment);
-        fprintf (fp->fp, " 73\n%d\n", ltype->number_of_linetype_elements);
-        fprintf (fp->fp, " 40\n%f\n", ltype->total_pattern_length);
-        for ((i = 0); (i < ltype->number_of_linetype_elements); i++)
+        fprintf (fp->fp, " 72\n%d\n", dxf_ltype_get_alignment (ltype));
+        fprintf (fp->fp, " 73\n%d\n", dxf_ltype_get_number_of_linetype_elements (ltype));
+        fprintf (fp->fp, " 40\n%f\n", dxf_ltype_get_total_pattern_length (ltype));
+        for ((i = 0); (i < dxf_ltype_get_number_of_linetype_elements (ltype)); i++)
         {
-                fprintf (fp->fp, " 49\n%f\n", ltype->dash_length[i]);
-                fprintf (fp->fp, " 74\n%d\n", ltype->complex_element[i]);
-                switch (ltype->complex_element[i])
+                fprintf (fp->fp, " 49\n%f\n", dxf_ltype_get_dash_length (ltype, i));
+                fprintf (fp->fp, " 74\n%d\n", dxf_ltype_get_complex_element (ltype, i));
+                switch (dxf_ltype_get_complex_element (ltype, i))
                 {
                         case 0:
                                 /* No embedded shape/text. */
-                                fprintf (fp->fp, " 44\n%f\n", ltype->complex_x_offset[i]);
-                                fprintf (fp->fp, " 45\n%f\n", ltype->complex_y_offset[i]);
-                                fprintf (fp->fp, " 46\n%f\n", ltype->complex_scale[i]);
+                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
+                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
+                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
                                 fprintf (fp->fp, " 75\n0\n");
                                 break;
                         case 1:
                                 /* Specify an absolute rotation. */
-                                fprintf (fp->fp, " 44\n%f\n", ltype->complex_x_offset[i]);
-                                fprintf (fp->fp, " 45\n%f\n", ltype->complex_y_offset[i]);
-                                fprintf (fp->fp, " 46\n%f\n", ltype->complex_scale[i]);
+                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
+                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
+                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
                                 fprintf (fp->fp, " 75\n0\n");
-                                fprintf (fp->fp, "340\n%s\n", ltype->complex_style_pointer[i]);
+                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
                         case 2:
                                 /*
                                  * The complex is a text string.
                                  * Use a relative rotation angle.
                                  */
-                                fprintf (fp->fp, "  9\n%s\n", ltype->complex_text_string[i]);
-                                fprintf (fp->fp, " 44\n%f\n", ltype->complex_x_offset[i]);
-                                fprintf (fp->fp, " 45\n%f\n", ltype->complex_y_offset[i]);
-                                fprintf (fp->fp, " 46\n%f\n", ltype->complex_scale[i]);
-                                fprintf (fp->fp, " 50\n%f\n", ltype->complex_rotation[i]);
+                                fprintf (fp->fp, "  9\n%s\n", dxf_ltype_get_complex_text_string (ltype, i));
+                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
+                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
+                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
+                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
                                 fprintf (fp->fp, " 75\n0\n");
-                                fprintf (fp->fp, "340\n%s\n", ltype->complex_style_pointer[i]);
+                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
                         case 3:
                                 /*
                                  * The complex is a text string.
                                  * Use an absolute rotation angle.
                                  */
-                                fprintf (fp->fp, "  9\n%s\n", ltype->complex_text_string[i]);
-                                fprintf (fp->fp, " 44\n%f\n", ltype->complex_x_offset[i]);
-                                fprintf (fp->fp, " 45\n%f\n", ltype->complex_y_offset[i]);
-                                fprintf (fp->fp, " 46\n%f\n", ltype->complex_scale[i]);
-                                fprintf (fp->fp, " 50\n%f\n", ltype->complex_rotation[i]);
+                                fprintf (fp->fp, "  9\n%s\n", dxf_ltype_get_complex_text_string (ltype, i));
+                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
+                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
+                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
+                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
                                 fprintf (fp->fp, " 75\n0\n");
-                                fprintf (fp->fp, "340\n%s\n", ltype->complex_style_pointer[i]);
+                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
                         case 4:
                                 /*
                                  * The complex is a shape.
                                  * Use a relative rotation angle.
                                  */
-                                fprintf (fp->fp, " 44\n%f\n", ltype->complex_x_offset[i]);
-                                fprintf (fp->fp, " 45\n%f\n", ltype->complex_y_offset[i]);
-                                fprintf (fp->fp, " 46\n%f\n", ltype->complex_scale[i]);
-                                fprintf (fp->fp, " 50\n%f\n", ltype->complex_rotation[i]);
-                                fprintf (fp->fp, " 75\n%d\n", ltype->complex_shape_number[i]);
-                                fprintf (fp->fp, "340\n%s\n", ltype->complex_style_pointer[i]);
+                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
+                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
+                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
+                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
+                                fprintf (fp->fp, " 75\n%d\n", dxf_ltype_get_complex_shape_number (ltype, i));
+                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
                         case 5:
                                 /*
                                  * The complex is a shape.
                                  * Use an absolute rotation angle.
                                  */
-                                fprintf (fp->fp, " 44\n%f\n", ltype->complex_x_offset[i]);
-                                fprintf (fp->fp, " 45\n%f\n", ltype->complex_y_offset[i]);
-                                fprintf (fp->fp, " 46\n%f\n", ltype->complex_scale[i]);
-                                fprintf (fp->fp, " 50\n%f\n", ltype->complex_rotation[i]);
-                                fprintf (fp->fp, " 75\n%d\n", ltype->complex_shape_number[i]);
-                                fprintf (fp->fp, "340\n%s\n", ltype->complex_style_pointer[i]);
+                                fprintf (fp->fp, " 44\n%f\n", dxf_ltype_get_complex_x_offset (ltype, i));
+                                fprintf (fp->fp, " 45\n%f\n", dxf_ltype_get_complex_y_offset (ltype, i));
+                                fprintf (fp->fp, " 46\n%f\n", dxf_ltype_get_complex_scale (ltype, i));
+                                fprintf (fp->fp, " 50\n%f\n", dxf_ltype_get_complex_rotation (ltype, i));
+                                fprintf (fp->fp, " 75\n%d\n", dxf_ltype_get_complex_shape_number (ltype, i));
+                                fprintf (fp->fp, "340\n%s\n", dxf_ltype_get_complex_style_pointer (ltype, i));
                                 break;
                         default:
                                 fprintf (stderr,
                                   (_("Warning in %s (): unknown complex element code for the %s entity with id-code: %x\n")),
-                                  __FUNCTION__, dxf_entity_name, ltype->id_code);
+                                  __FUNCTION__, dxf_entity_name, dxf_ltype_get_id_code (ltype));
                                 break;
                 }
         }
