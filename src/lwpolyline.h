@@ -52,7 +52,7 @@ extern "C" {
  * \brief Definition of a DXF light weight polyline entity.
  */
 typedef struct
-dxf_lwpolyline
+dxf_lwpolyline_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
