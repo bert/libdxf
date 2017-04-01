@@ -111,27 +111,27 @@ dxf_ltype_init
                 __FUNCTION__);
               return (NULL);
         }
-        ltype->id_code = 0;
-        ltype->linetype_name = strdup ("");
-        ltype->description = strdup ("");
-        ltype->total_pattern_length = 0.0;
-        ltype->number_of_linetype_elements = 1;
+        dxf_ltype_set_id_code (ltype, 0);
+        dxf_ltype_set_linetype_name (ltype, strdup (""));
+        dxf_ltype_set_description (ltype, strdup (""));
+        dxf_ltype_set_total_pattern_length (ltype, 0.0);
+        dxf_ltype_set_number_of_linetype_elements (ltype, 0);
         for ((i = 0); (i <= DXF_MAX_NUMBER_OF_DASH_LENGTH_ITEMS); i++)
         {
-                ltype->complex_text_string[i] = strdup ("");
-                ltype->complex_x_offset[i] = 0.0;
-                ltype->complex_y_offset[i] = 0.0;
-                ltype->complex_scale[i] = 0.0;
-                ltype->dash_length[i] = 0.0;
-                ltype->complex_rotation[i] = 0.0;
-                ltype->complex_element[i] = 1;
-                ltype->complex_shape_number[i] = 0;
-                ltype->complex_style_pointer[i] = strdup ("");
+                dxf_ltype_set_complex_text_string (ltype, i, strdup (""));
+                dxf_ltype_set_complex_x_offset (ltype, i, 0.0);
+                dxf_ltype_set_complex_y_offset (ltype, i, 0.0);
+                dxf_ltype_set_complex_scale (ltype, i, 0.0);
+                dxf_ltype_set_dash_length (ltype, i, 0.0);
+                dxf_ltype_set_complex_rotation (ltype, i, 0.0);
+                dxf_ltype_set_complex_element (ltype, i, 1);
+                dxf_ltype_set_complex_shape_number (ltype, i, 0);
+                dxf_ltype_set_complex_style_pointer (ltype, i, strdup (""));
         }
-        ltype->flag = 0;
-        ltype->alignment = 65;
-        ltype->dictionary_owner_soft = strdup ("");
-        ltype->dictionary_owner_hard = strdup ("");
+        dxf_ltype_set_flag (ltype, 0);
+        dxf_ltype_set_alignment (ltype, 65);
+        dxf_ltype_set_dictionary_owner_soft (ltype, strdup (""));
+        dxf_ltype_set_dictionary_owner_hard (ltype, strdup (""));
 #if DEBUG
         DXF_DEBUG_END
 #endif
