@@ -181,6 +181,12 @@ dxf_lwpolyline_get_id_code
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_id_code
+(
+        DxfLWPolyline *lwpolyline,
+        int id_code
+);
 
 
 #ifdef __cplusplus
