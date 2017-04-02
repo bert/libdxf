@@ -176,6 +176,11 @@ dxf_lwpolyline_free_chain
 (
         DxfLWPolyline *lwpolylines
 );
+int
+dxf_lwpolyline_get_id_code
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
