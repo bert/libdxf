@@ -198,6 +198,11 @@ dxf_lwpolyline_set_linetype
         DxfLWPolyline *lwpolyline,
         char *linetype
 );
+char *
+dxf_lwpolyline_get_layer
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
