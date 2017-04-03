@@ -796,4 +796,42 @@ dxf_lwpolyline_get_linetype
 }
 
 
+/*!
+ * \brief Set the linetype for a DXF \c LWPOLYLINE entity.
+ */
+DxfLWPolyline *
+dxf_lwpolyline_set_linetype
+(
+        DxfLWPolyline *lwpolyline,
+                /*!< a pointer to a DXF \c LWPOLYLINE entity. */
+        char *linetype
+                /*!< a string containing the linetype for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lwpolyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        lwpolyline->linetype = strdup (linetype);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lwpolyline);
+}
+
+
 /* EOF */
