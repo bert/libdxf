@@ -203,6 +203,12 @@ dxf_lwpolyline_get_layer
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_layer
+(
+        DxfLWPolyline *lwpolyline,
+        char *layer
+);
 
 
 #ifdef __cplusplus
