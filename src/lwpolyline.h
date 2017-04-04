@@ -242,6 +242,11 @@ dxf_lwpolyline_set_linetype_scale
         DxfLWPolyline *lwpolyline,
         double linetype_scale
 );
+int16_t
+dxf_lwpolyline_get_visibility
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
