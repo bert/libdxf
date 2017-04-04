@@ -220,6 +220,11 @@ dxf_lwpolyline_set_elevation
         DxfLWPolyline *lwpolyline,
         double elevation
 );
+double
+dxf_lwpolyline_get_thickness
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
