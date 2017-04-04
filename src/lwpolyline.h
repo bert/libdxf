@@ -236,6 +236,12 @@ dxf_lwpolyline_get_linetype_scale
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_linetype_scale
+(
+        DxfLWPolyline *lwpolyline,
+        double linetype_scale
+);
 
 
 #ifdef __cplusplus
