@@ -214,6 +214,12 @@ dxf_lwpolyline_get_elevation
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_elevation
+(
+        DxfLWPolyline *lwpolyline,
+        double elevation
+);
 
 
 #ifdef __cplusplus
