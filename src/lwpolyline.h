@@ -231,6 +231,11 @@ dxf_lwpolyline_set_thickness
         DxfLWPolyline *lwpolyline,
         double thickness
 );
+double
+dxf_lwpolyline_get_linetype_scale
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
