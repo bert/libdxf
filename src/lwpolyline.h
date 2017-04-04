@@ -209,6 +209,11 @@ dxf_lwpolyline_set_layer
         DxfLWPolyline *lwpolyline,
         char *layer
 );
+double
+dxf_lwpolyline_get_elevation
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
