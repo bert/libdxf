@@ -354,6 +354,12 @@ dxf_lwpolyline_get_graphics_data_size
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_graphics_data_size
+(
+        DxfLWPolyline *lwpolyline,
+        int graphics_data_size
+);
 
 
 #ifdef __cplusplus

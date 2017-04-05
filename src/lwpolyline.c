@@ -1413,4 +1413,53 @@ dxf_lwpolyline_get_graphics_data_size
 }
 
 
+/*!
+ * \brief Set the \c graphics_data_size value for a DXF \c LWPOLYLINE
+ * entity.
+ *
+ * \return a pointer to \c arc when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLWPolyline *
+dxf_lwpolyline_set_graphics_data_size
+(
+        DxfLWPolyline *lwpolyline,
+                /*!< a pointer to a DXF \c LWPOLYLINE entity. */
+        int graphics_data_size
+                /*!< the \c graphics_data_size value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lwpolyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero value was passed.\n")),
+                  __FUNCTION__);
+        }
+        lwpolyline->graphics_data_size = graphics_data_size;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lwpolyline);
+}
+
+
 /* EOF */
