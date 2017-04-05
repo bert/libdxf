@@ -1245,4 +1245,41 @@ dxf_lwpolyline_get_color
 }
 
 
+/*!
+ * \brief Set the color for a DXF \c LWPOLYLINE entity.
+ */
+DxfLWPolyline *
+dxf_lwpolyline_set_color
+(
+        DxfLWPolyline *lwpolyline,
+                /*!< a pointer to a DXF \c LWPOLYLINE entity. */
+        int color
+                /*!< the color to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lwpolyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        lwpolyline->color = color;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lwpolyline);
+}
+
+
 /* EOF */

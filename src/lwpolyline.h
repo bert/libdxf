@@ -258,6 +258,12 @@ dxf_lwpolyline_get_color
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_color
+(
+        DxfLWPolyline *lwpolyline,
+        int color
+);
 
 
 #ifdef __cplusplus
