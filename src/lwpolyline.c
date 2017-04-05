@@ -1164,4 +1164,49 @@ dxf_lwpolyline_get_visibility
 }
 
 
+/*!
+ * \brief Set the visibility for a DXF \c LWPOLYLINE entity.
+ */
+DxfLWPolyline *
+dxf_lwpolyline_set_visibility
+(
+        DxfLWPolyline *lwpolyline,
+                /*!< a pointer to a DXF \c LWPOLYLINE entity. */
+        int16_t visibility
+                /*!< the visibility to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lwpolyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        lwpolyline->visibility = visibility;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lwpolyline);
+}
+
+
 /* EOF */

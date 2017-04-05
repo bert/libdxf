@@ -247,6 +247,12 @@ dxf_lwpolyline_get_visibility
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_visibility
+(
+        DxfLWPolyline *lwpolyline,
+        int16_t visibility
+);
 
 
 #ifdef __cplusplus
