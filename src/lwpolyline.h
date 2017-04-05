@@ -253,6 +253,11 @@ dxf_lwpolyline_set_visibility
         DxfLWPolyline *lwpolyline,
         int16_t visibility
 );
+int
+dxf_lwpolyline_get_color
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
