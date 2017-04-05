@@ -349,6 +349,11 @@ dxf_lwpolyline_set_paperspace
         DxfLWPolyline *lwpolyline,
         int paperspace
 );
+int
+dxf_lwpolyline_get_graphics_data_size
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
