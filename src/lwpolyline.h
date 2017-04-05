@@ -264,6 +264,11 @@ dxf_lwpolyline_set_color
         DxfLWPolyline *lwpolyline,
         int color
 );
+int
+dxf_lwpolyline_get_paperspace
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
