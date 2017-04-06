@@ -376,6 +376,12 @@ dxf_lwpolyline_get_binary_graphics_data
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_binary_graphics_data
+(
+        DxfLWPolyline *lwpolyline,
+        DxfBinaryGraphicsData *data
+);
 
 
 #ifdef __cplusplus
