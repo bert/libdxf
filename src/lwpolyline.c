@@ -1417,8 +1417,8 @@ dxf_lwpolyline_get_graphics_data_size
  * \brief Set the \c graphics_data_size value for a DXF \c LWPOLYLINE
  * entity.
  *
- * \return a pointer to \c arc when successful, or \c NULL when an
- * error occurred.
+ * \return a pointer to \c lwpolyline when successful, or \c NULL when
+ * an error occurred.
  */
 DxfLWPolyline *
 dxf_lwpolyline_set_graphics_data_size
