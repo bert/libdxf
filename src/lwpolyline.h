@@ -360,6 +360,11 @@ dxf_lwpolyline_set_graphics_data_size
         DxfLWPolyline *lwpolyline,
         int graphics_data_size
 );
+int16_t
+dxf_lwpolyline_get_shadow_mode
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
