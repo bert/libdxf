@@ -365,6 +365,12 @@ dxf_lwpolyline_get_shadow_mode
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_shadow_mode
+(
+        DxfLWPolyline *lwpolyline,
+        int16_t shadow_mode
+);
 
 
 #ifdef __cplusplus

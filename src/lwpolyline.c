@@ -1507,4 +1507,52 @@ dxf_lwpolyline_get_shadow_mode
 }
 
 
+/*!
+ * \brief Set the \c shadow_mode for a DXF \c LWPOLYLINE entity.
+ *
+ * \return a pointer to \c lwpolyline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLWPolyline *
+dxf_lwpolyline_set_shadow_mode
+(
+        DxfLWPolyline *lwpolyline,
+                /*!< a pointer to a DXF \c LWPOLYLINE entity. */
+        int16_t shadow_mode
+                /*!< the shadow mode to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lwpolyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (shadow_mode > 3)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        lwpolyline->shadow_mode = shadow_mode;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lwpolyline);
+}
+
+
 /* EOF */
