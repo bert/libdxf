@@ -71,13 +71,13 @@ dxf_lwpolyline_struct
                  * Defaults to layer "0" if no valid layername is given.\n
                  * Group code = 8. */
         double elevation;
-                /*!< Elevation of the arc in the local Z-direction.\n
+                /*!< Elevation of the lwpolyline in the local Z-direction.\n
                  * Defaults to 0.0 if omitted in the DXF file, or prior
                  * to DXF version R12, or DXF_FLATLAND equals 0 (default).\n
                  * Group code = 38.\n
                  * \deprecated As of version R11. */
         double thickness;
-                /*!< Thickness of the arc in the local Z-direction.\n
+                /*!< Thickness of the lwpolyline in the local Z-direction.\n
                  * Defaults to 0.0 if ommitted in the DXF file.\n
                  * Group code = 39. */
         double linetype_scale;
