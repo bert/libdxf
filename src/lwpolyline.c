@@ -1715,4 +1715,44 @@ dxf_lwpolyline_set_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Get the pointer to the \c material from a DXF \c LWPOLYLINE entity.
+ *
+ * \return a pointer to \c material when successful, or \c NULL when an
+ * error occurred.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+char *
+dxf_lwpolyline_get_material
+(
+        DxfLWPolyline *lwpolyline
+                /*!< a pointer to a DXF \c LWPOLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lwpolyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (lwpolyline->material ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (lwpolyline->material));
+}
+
+
 /* EOF */

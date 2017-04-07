@@ -393,6 +393,11 @@ dxf_lwpolyline_set_dictionary_owner_soft
         DxfLWPolyline *lwpolyline,
         char *dictionary_owner_soft
 );
+char *
+dxf_lwpolyline_get_material
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
