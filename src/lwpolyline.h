@@ -382,6 +382,11 @@ dxf_lwpolyline_set_binary_graphics_data
         DxfLWPolyline *lwpolyline,
         DxfBinaryGraphicsData *data
 );
+char *
+dxf_lwpolyline_get_dictionary_owner_soft
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus

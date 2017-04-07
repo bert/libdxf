@@ -1635,4 +1635,44 @@ dxf_lwpolyline_set_binary_graphics_data
 }
 
 
+/*!
+ * \brief Get the soft pointer to the dictionary owner from a DXF 
+ * \c LWPOLYLINE entity.
+ *
+ * \return soft pointer to the dictionary owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_lwpolyline_get_dictionary_owner_soft
+(
+        DxfLWPolyline *lwpolyline
+                /*!< a pointer to a DXF \c LWPOLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lwpolyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (lwpolyline->dictionary_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (lwpolyline->dictionary_owner_soft));
+}
+
+
 /* EOF */
