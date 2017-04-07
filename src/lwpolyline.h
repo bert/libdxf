@@ -409,6 +409,12 @@ dxf_lwpolyline_get_dictionary_owner_hard
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_dictionary_owner_hard
+(
+        DxfLWPolyline *lwpolyline,
+        char *dictionary_owner_hard
+);
 
 
 #ifdef __cplusplus
