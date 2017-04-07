@@ -398,6 +398,12 @@ dxf_lwpolyline_get_material
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_material
+(
+        DxfLWPolyline *lwpolyline,
+        char *material
+);
 
 
 #ifdef __cplusplus
