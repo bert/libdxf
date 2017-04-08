@@ -453,6 +453,12 @@ dxf_lwpolyline_get_color_name
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_color_name
+(
+        DxfLWPolyline *lwpolyline,
+        char *color_name
+);
 
 
 #ifdef __cplusplus

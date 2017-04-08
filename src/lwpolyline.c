@@ -2126,4 +2126,46 @@ dxf_lwpolyline_get_color_name
 }
 
 
+/*!
+ * \brief Set the \c color_name for a DXF \c LWPOLYLINE entity.
+ *
+ * \return a pointer to \c lwpolyline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfLWPolyline *
+dxf_lwpolyline_set_color_name
+(
+        DxfLWPolyline *lwpolyline,
+                /*!< a pointer to a DXF \c LWPOLYLINE entity. */
+        char *color_name
+                /*!< a string containing the \c color_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lwpolyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (color_name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        lwpolyline->color_name = strdup (color_name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lwpolyline);
+}
+
+
 /* EOF */
