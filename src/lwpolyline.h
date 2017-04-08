@@ -420,6 +420,12 @@ dxf_lwpolyline_get_lineweight
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_lineweight
+(
+        DxfLWPolyline *lwpolyline,
+        int16_t lineweight
+);
 
 
 #ifdef __cplusplus
