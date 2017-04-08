@@ -415,6 +415,11 @@ dxf_lwpolyline_set_dictionary_owner_hard
         DxfLWPolyline *lwpolyline,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_lwpolyline_get_lineweight
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
