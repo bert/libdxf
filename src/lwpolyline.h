@@ -431,6 +431,12 @@ dxf_lwpolyline_get_plot_style_name
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_plot_style_name
+(
+        DxfLWPolyline *lwpolyline,
+        char *plot_style_name
+);
 
 
 #ifdef __cplusplus
