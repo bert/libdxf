@@ -464,6 +464,12 @@ dxf_lwpolyline_get_transparency
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_transparency
+(
+        DxfLWPolyline *lwpolyline,
+        long transparency
+);
 
 
 #ifdef __cplusplus
