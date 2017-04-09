@@ -459,6 +459,11 @@ dxf_lwpolyline_set_color_name
         DxfLWPolyline *lwpolyline,
         char *color_name
 );
+long
+dxf_lwpolyline_get_transparency
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
