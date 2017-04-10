@@ -492,6 +492,11 @@ dxf_lwpolyline_set_flag
         DxfLWPolyline *lwpolyline,
         int flag
 );
+int
+dxf_lwpolyline_get_number_vertices
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
