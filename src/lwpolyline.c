@@ -2349,4 +2349,42 @@ dxf_lwpolyline_get_flag
 }
 
 
+/*!
+ * \brief Set the \c flag value for a DXF \c LWPOLYLINE entity.
+ */
+DxfLWPolyline *
+dxf_lwpolyline_set_flag
+(
+        DxfLWPolyline *lwpolyline,
+                /*!< a pointer to a DXF \c LWPOLYLINE entity. */
+        int flag
+                /*!< \c flag value for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lwpolyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (flag < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        lwpolyline->flag = flag;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lwpolyline);
+}
+
+
 /* EOF */

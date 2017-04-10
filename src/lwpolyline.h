@@ -486,6 +486,12 @@ dxf_lwpolyline_get_flag
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_flag
+(
+        DxfLWPolyline *lwpolyline,
+        int flag
+);
 
 
 #ifdef __cplusplus
