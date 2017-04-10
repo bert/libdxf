@@ -475,6 +475,12 @@ dxf_lwpolyline_get_constant_width
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_constant_width
+(
+        DxfLWPolyline *lwpolyline,
+        double constant_width
+);
 
 
 #ifdef __cplusplus
