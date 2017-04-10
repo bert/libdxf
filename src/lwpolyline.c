@@ -2271,8 +2271,8 @@ dxf_lwpolyline_get_constant_width
 
 
 /*!
- * \brief Set the Z-value of the center point \c z0 of a DXF \c LWPOLYLINE
- * entity.
+ * \brief Set the Z-value of the center point \c z0 of a DXF
+ * \c LWPOLYLINE entity.
  *
  * \return a pointer to \c lwpolyline when successful, or \c NULL when
  * an error occurred.
@@ -2283,7 +2283,8 @@ dxf_lwpolyline_set_constant_width
         DxfLWPolyline *lwpolyline,
                 /*!< a pointer to a DXF \c LWPOLYLINE entity. */
         double constant_width
-                /*!< the \c constant_width of a DXF \c LWPOLYLINE entity. */
+                /*!< the \c constant_width of a DXF \c LWPOLYLINE
+                 * entity. */
 )
 {
 #ifdef DEBUG
