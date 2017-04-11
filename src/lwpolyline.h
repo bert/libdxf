@@ -503,6 +503,11 @@ dxf_lwpolyline_set_number_vertices
         DxfLWPolyline *lwpolyline,
         int number_vertices
 );
+double
+dxf_lwpolyline_get_extr_x0
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
