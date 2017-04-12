@@ -514,6 +514,11 @@ dxf_lwpolyline_set_extr_x0
         DxfLWPolyline *lwpolyline,
         double extr_x0
 );
+double
+dxf_lwpolyline_get_extr_y0
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
