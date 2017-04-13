@@ -2739,7 +2739,7 @@ dxf_lwpolyline_set_vertices
                   __FUNCTION__);
                 return (NULL);
         }
-        lwpolyline->vertices = (DxfVertex *) vertices;
+        lwpolyline->vertices = (struct DxfVertex *) vertices;
 #if DEBUG
         DXF_DEBUG_END
 #endif
