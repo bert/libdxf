@@ -552,6 +552,12 @@ dxf_lwpolyline_get_next
 (
         DxfLWPolyline *lwpolyline
 );
+DxfLWPolyline *
+dxf_lwpolyline_set_next
+(
+        DxfLWPolyline *lwpolyline,
+        DxfLWPolyline *next
+);
 
 
 #ifdef __cplusplus
