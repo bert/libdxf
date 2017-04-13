@@ -3580,7 +3580,7 @@ DxfPolyline *
 dxf_polyline_set_vertices
 (
         DxfPolyline *polyline,
-                /*!< a pointer to a DXF \c LINE entity. */
+                /*!< a pointer to a DXF \c POLYLINE entity. */
         DxfVertex *vertices
                 /*!< a pointer to the first vertex of a linked list of
                  * \c vertices. */
@@ -3614,7 +3614,7 @@ dxf_polyline_set_vertices
 
 /*!
  * \brief Get the pointer to the next \c POLYLINE entity from a DXF 
- * \c LINE entity.
+ * \c POLYLINE entity.
  *
  * \return pointer to the next \c POLYLINE entity.
  *
