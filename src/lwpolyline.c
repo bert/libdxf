@@ -2631,4 +2631,40 @@ dxf_lwpolyline_get_extr_z0
 }
 
 
+/*!
+ * \brief Set the Z-value of the extrusion vector \c extr_z0 of a DXF
+ * \c LWPOLYLINE entity.
+ *
+ * \return a pointer to \c lwpolyline when successful, or \c NULL when
+ * an error occurred.
+ */
+DxfLWPolyline *
+dxf_lwpolyline_set_extr_z0
+(
+        DxfLWPolyline *lwpolyline,
+                /*!< a pointer to a DXF \c LWPOLYLINE entity. */
+        double extr_z0
+                /*!< the Z-value of the extrusion vector \c extr_z0 of a
+                 * DXF \c LWPOLYLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lwpolyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        lwpolyline->extr_z0 = extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (lwpolyline);
+}
+
+
 /* EOF */
