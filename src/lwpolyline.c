@@ -2667,4 +2667,44 @@ dxf_lwpolyline_set_extr_z0
 }
 
 
+/*!
+ * \brief Get the pointer to the first vertex of a linked list of
+ * \c vertices from a DXF \c LWPOLYLINE entity.
+ *
+ * \return pointer to the first vertex of a linked list of \c vertices.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfVertex *
+dxf_lwpolyline_get_vertices
+(
+        DxfLWPolyline *lwpolyline
+                /*!< a pointer to a DXF \c LWPOLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (lwpolyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (lwpolyline->vertices == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the vertices member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfVertex *) lwpolyline->vertices);
+}
+
+
 /* EOF */

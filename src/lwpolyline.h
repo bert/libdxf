@@ -536,6 +536,11 @@ dxf_lwpolyline_set_extr_z0
         DxfLWPolyline *lwpolyline,
         double extr_z0
 );
+DxfVertex *
+dxf_lwpolyline_get_vertices
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
