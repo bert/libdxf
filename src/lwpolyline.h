@@ -547,6 +547,11 @@ dxf_lwpolyline_set_vertices
         DxfLWPolyline *lwpolyline,
         DxfVertex *vertices
 );
+DxfLWPolyline *
+dxf_lwpolyline_get_next
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
