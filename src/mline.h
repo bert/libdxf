@@ -67,7 +67,7 @@ extern "C" {
  * the current \c MLINESTYLE. 
  */
 typedef struct
-dxf_mline
+dxf_mline_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
