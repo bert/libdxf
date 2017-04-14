@@ -753,6 +753,11 @@ dxf_polyline_set_next
         DxfPolyline *polyline,
         DxfPolyline *next
 );
+DxfPolyline *
+dxf_polyline_get_last
+(
+        DxfPolyline *polyline
+);
 
 
 #ifdef __cplusplus

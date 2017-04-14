@@ -3691,4 +3691,49 @@ dxf_polyline_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c POLYLINE entity from a linked
+ * list of DXF \c POLYLINE entities.
+ *
+ * \return pointer to the last \c POLYLINE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfPolyline *
+dxf_polyline_get_last
+(
+        DxfPolyline *polyline
+                /*!< a pointer to a DXF \c POLYLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (polyline->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfPolyline *) polyline);
+        }
+        DxfPolyline *iter = (DxfPolyline *) polyline->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfPolyline *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfPolyline *) iter);
+}
+
+
 /* EOF */
