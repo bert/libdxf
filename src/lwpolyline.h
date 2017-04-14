@@ -558,6 +558,11 @@ dxf_lwpolyline_set_next
         DxfLWPolyline *lwpolyline,
         DxfLWPolyline *next
 );
+DxfLWPolyline *
+dxf_lwpolyline_get_last
+(
+        DxfLWPolyline *lwpolyline
+);
 
 
 #ifdef __cplusplus
