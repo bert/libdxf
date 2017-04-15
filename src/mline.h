@@ -388,6 +388,12 @@ dxf_mline_get_thickness
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_thickness
+(
+        DxfMline *mline,
+        double thickness
+);
 
 
 #ifdef __cplusplus
