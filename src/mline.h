@@ -383,6 +383,11 @@ dxf_mline_set_elevation
         DxfMline *mline,
         double elevation
 );
+double
+dxf_mline_get_thickness
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus

@@ -1128,4 +1128,41 @@ dxf_mline_set_elevation
 }
 
 
+/*!
+ * \brief Get the \c thickness from a DXF \c MLINE entity.
+ *
+ * \return \c thickness.
+ */
+double
+dxf_mline_get_thickness
+(
+        DxfMline *mline
+                /*!< a pointer to a DXF \c MLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mline->thickness < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline->thickness);
+}
+
+
 /* EOF */
