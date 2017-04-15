@@ -366,6 +366,12 @@ dxf_mline_get_layer
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_layer
+(
+        DxfMline *mline,
+        char *layer
+);
 
 
 #ifdef __cplusplus

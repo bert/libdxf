@@ -1029,4 +1029,42 @@ dxf_mline_get_layer
 }
 
 
+/*!
+ * \brief Set the layer for a DXF \c MLINE entity.
+ */
+DxfMline *
+dxf_mline_set_layer
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        char *layer
+                /*!< a string containing the layer for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->layer = strdup (layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */
