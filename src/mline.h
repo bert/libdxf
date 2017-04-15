@@ -394,6 +394,11 @@ dxf_mline_set_thickness
         DxfMline *mline,
         double thickness
 );
+double
+dxf_mline_get_linetype_scale
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
