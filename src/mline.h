@@ -372,6 +372,11 @@ dxf_mline_set_layer
         DxfMline *mline,
         char *layer
 );
+double
+dxf_mline_get_elevation
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
