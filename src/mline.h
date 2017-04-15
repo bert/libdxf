@@ -350,6 +350,11 @@ dxf_mline_set_id_code
         DxfMline *mline,
         int id_code
 );
+char *
+dxf_mline_get_linetype
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus

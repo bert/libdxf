@@ -917,4 +917,41 @@ dxf_mline_set_id_code
 }
 
 
+/*!
+ * \brief Get the linetype from a DXF \c MLINE entity.
+ *
+ * \return linetype when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_mline_get_linetype
+(
+        DxfMline *mline
+                /*!< a pointer to a DXF \c MLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mline->linetype ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (mline->linetype));
+}
+
+
 /* EOF */
