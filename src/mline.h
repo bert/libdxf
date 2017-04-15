@@ -361,6 +361,11 @@ dxf_mline_set_linetype
         DxfMline *mline,
         char *linetype
 );
+char *
+dxf_mline_get_layer
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
