@@ -410,6 +410,12 @@ dxf_mline_get_visibility
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_visibility
+(
+        DxfMline *mline,
+        int16_t visibility
+);
 
 
 #ifdef __cplusplus

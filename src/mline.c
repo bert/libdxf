@@ -1322,4 +1322,49 @@ dxf_mline_get_visibility
 }
 
 
+/*!
+ * \brief Set the \c visibility for a DXF \c MLINE entity.
+ */
+DxfMline *
+dxf_mline_set_visibility
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        int16_t visibility
+                /*!< the \c visibility to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (visibility < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (visibility > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->visibility = visibility;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */
