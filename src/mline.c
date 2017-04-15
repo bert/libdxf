@@ -1204,9 +1204,9 @@ dxf_mline_set_thickness
 
 
 /*!
- * \brief Get the \c linetype scale from a DXF \c MLINE entity.
+ * \brief Get the \c linetype_scale from a DXF \c MLINE entity.
  *
- * \return \c linetype scale.
+ * \return \c linetype_scale.
  */
 double
 dxf_mline_get_linetype_scale
