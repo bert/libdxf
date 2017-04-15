@@ -377,6 +377,12 @@ dxf_mline_get_elevation
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_elevation
+(
+        DxfMline *mline,
+        double elevation
+);
 
 
 #ifdef __cplusplus

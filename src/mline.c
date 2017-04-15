@@ -1097,4 +1097,35 @@ dxf_mline_get_elevation
 }
 
 
+/*!
+ * \brief Set the \c elevation for a DXF \c MLINE entity.
+ */
+DxfMline *
+dxf_mline_set_elevation
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        double elevation
+                /*!< the \c elevation to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */
