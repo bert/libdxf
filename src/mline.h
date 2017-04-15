@@ -344,6 +344,12 @@ dxf_mline_get_id_code
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_id_code
+(
+        DxfMline *mline,
+        int id_code
+);
 
 
 #ifdef __cplusplus
