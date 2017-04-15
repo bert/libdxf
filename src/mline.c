@@ -840,4 +840,41 @@ dxf_mline_free_chain
 }
 
 
+/*!
+ * \brief Get the ID code from a DXF \c MLINE entity.
+ *
+ * \return ID code.
+ */
+int
+dxf_mline_get_id_code
+(
+        DxfMline *mline
+                /*!< a pointer to a DXF \c MLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mline->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline->id_code);
+}
+
+
 /* EOF */

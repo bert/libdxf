@@ -339,6 +339,11 @@ dxf_mline_free_chain
 (
         DxfMline *mlines
 );
+int
+dxf_mline_get_id_code
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
