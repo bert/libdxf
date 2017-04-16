@@ -416,6 +416,11 @@ dxf_mline_set_visibility
         DxfMline *mline,
         int16_t visibility
 );
+int
+dxf_mline_get_color
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
