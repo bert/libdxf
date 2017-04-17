@@ -471,6 +471,11 @@ dxf_mline_set_binary_graphics_data
         DxfMline *mline,
         DxfBinaryGraphicsData *data
 );
+char *
+dxf_mline_get_dictionary_owner_soft
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
