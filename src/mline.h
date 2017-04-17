@@ -454,6 +454,12 @@ dxf_mline_get_shadow_mode
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_shadow_mode
+(
+        DxfMline *mline,
+        int16_t shadow_mode
+);
 
 
 #ifdef __cplusplus
