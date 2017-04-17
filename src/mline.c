@@ -1403,4 +1403,41 @@ dxf_mline_get_color
 }
 
 
+/*!
+ * \brief Set the \c color for a DXF \c MLINE entity.
+ */
+DxfMline *
+dxf_mline_set_color
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        int color
+                /*!< the \c color to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        mline->color = color;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */
