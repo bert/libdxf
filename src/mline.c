@@ -1751,4 +1751,44 @@ dxf_mline_get_binary_graphics_data
 }
 
 
+/*!
+ * \brief Set the pointer to the \c binary_graphics_data for a DXF
+ * \c MLINE entity.
+ */
+DxfMline *
+dxf_mline_set_binary_graphics_data
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        DxfBinaryGraphicsData *data
+                /*!< a string containing the pointer to the
+                 * \c binary_graphics_data for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->binary_graphics_data = (DxfBinaryGraphicsData *) data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */

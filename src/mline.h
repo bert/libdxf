@@ -465,6 +465,12 @@ dxf_mline_get_binary_graphics_data
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_binary_graphics_data
+(
+        DxfMline *mline,
+        DxfBinaryGraphicsData *data
+);
 
 
 #ifdef __cplusplus
