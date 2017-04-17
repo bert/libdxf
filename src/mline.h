@@ -476,6 +476,11 @@ dxf_mline_get_dictionary_owner_soft
 (
         DxfMline *mline
 );
+char *
+dxf_mline_get_material
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
