@@ -460,6 +460,11 @@ dxf_mline_set_shadow_mode
         DxfMline *mline,
         int16_t shadow_mode
 );
+DxfBinaryGraphicsData *
+dxf_mline_get_binary_graphics_data
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
