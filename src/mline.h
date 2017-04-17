@@ -443,6 +443,12 @@ dxf_mline_get_graphics_data_size
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_graphics_data_size
+(
+        DxfMline *mline,
+        int graphics_data_size
+);
 
 
 #ifdef __cplusplus
