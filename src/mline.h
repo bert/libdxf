@@ -427,6 +427,11 @@ dxf_mline_set_color
         DxfMline *mline,
         int color
 );
+int
+dxf_mline_get_paperspace
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
