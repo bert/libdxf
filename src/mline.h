@@ -449,6 +449,11 @@ dxf_mline_set_graphics_data_size
         DxfMline *mline,
         int graphics_data_size
 );
+int16_t
+dxf_mline_get_shadow_mode
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
