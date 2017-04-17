@@ -432,6 +432,12 @@ dxf_mline_get_paperspace
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_paperspace
+(
+        DxfMline *mline,
+        int paperspace
+);
 
 
 #ifdef __cplusplus

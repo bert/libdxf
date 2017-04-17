@@ -1482,4 +1482,49 @@ dxf_mline_get_paperspace
 }
 
 
+/*!
+ * \brief Set the \c paperspace flag for a DXF \c MLINE entity.
+ */
+DxfMline *
+dxf_mline_set_paperspace
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        int paperspace
+                /*!< the \c paperspace flag value to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->paperspace = paperspace;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */
