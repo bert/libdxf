@@ -487,6 +487,11 @@ dxf_mline_set_material
         DxfMline *mline,
         char *material
 );
+char *
+dxf_mline_get_dictionary_owner_hard
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
