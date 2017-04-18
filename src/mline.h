@@ -503,6 +503,12 @@ dxf_mline_get_lineweight
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_lineweight
+(
+        DxfMline *mline,
+        int16_t lineweight
+);
 
 
 #ifdef __cplusplus
