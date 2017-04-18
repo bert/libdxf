@@ -492,6 +492,12 @@ dxf_mline_get_dictionary_owner_hard
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_dictionary_owner_hard
+(
+        DxfMline *mline,
+        char *dictionary_owner_hard
+);
 
 
 #ifdef __cplusplus
