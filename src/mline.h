@@ -498,6 +498,11 @@ dxf_mline_set_dictionary_owner_hard
         DxfMline *mline,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_mline_get_lineweight
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
