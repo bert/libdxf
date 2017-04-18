@@ -1911,4 +1911,46 @@ dxf_mline_get_material
 }
 
 
+/*!
+ * \brief Set the pointer to the \c material for a DXF \c MLINE entity.
+ *
+ * \return a pointer to \c mline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMline *
+dxf_mline_set_material
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        char *material
+                /*!< a string containing the pointer to the \c
+                 * material for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (material == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->material = strdup (material);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */

@@ -481,6 +481,12 @@ dxf_mline_get_material
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_material
+(
+        DxfMline *mline,
+        char *material
+);
 
 
 #ifdef __cplusplus
