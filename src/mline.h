@@ -547,6 +547,12 @@ dxf_mline_get_transparency
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_transparency
+(
+        DxfMline *mline,
+        long transparency
+);
 
 
 #ifdef __cplusplus
