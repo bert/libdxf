@@ -509,6 +509,11 @@ dxf_mline_set_lineweight
         DxfMline *mline,
         int16_t lineweight
 );
+char *
+dxf_mline_get_plot_style_name
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
