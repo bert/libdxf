@@ -542,6 +542,11 @@ dxf_mline_set_color_name
         DxfMline *mline,
         char *color_name
 );
+long
+dxf_mline_get_transparency
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
