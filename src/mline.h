@@ -520,6 +520,11 @@ dxf_mline_set_plot_style_name
         DxfMline *mline,
         char *plot_style_name
 );
+long
+dxf_mline_get_color_value
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
