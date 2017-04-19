@@ -514,6 +514,12 @@ dxf_mline_get_plot_style_name
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_plot_style_name
+(
+        DxfMline *mline,
+        char *plot_style_name
+);
 
 
 #ifdef __cplusplus
