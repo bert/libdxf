@@ -531,6 +531,11 @@ dxf_mline_set_color_value
         DxfMline *mline,
         long color_value
 );
+char *
+dxf_mline_get_color_name
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
