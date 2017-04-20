@@ -2468,4 +2468,41 @@ dxf_mline_set_style_name
 }
 
 
+/*!
+ * \brief Get the start point \c p0 of a DXF \c MLINE entity.
+ *
+ * \return the start point \c p0.
+ */
+DxfPoint *
+dxf_mline_get_p0
+(
+        DxfMline *mline
+                /*!< a pointer to a DXF \c MLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mline->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline->p0);
+}
+
+
 /* EOF */

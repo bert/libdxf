@@ -567,6 +567,11 @@ dxf_mline_set_style_name
         DxfMline *mline,
         char *style_name
 );
+DxfPoint *
+dxf_mline_get_p0
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
