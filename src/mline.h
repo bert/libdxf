@@ -558,6 +558,12 @@ dxf_mline_get_style_name
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_style_name
+(
+        DxfMline *mline,
+        char *style_name
+);
 
 
 #ifdef __cplusplus
