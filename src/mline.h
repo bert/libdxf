@@ -202,6 +202,9 @@ dxf_mline_struct
                  * An entry for this style must exist in the MLINESTYLE
                  * dictionary.\n
                  * Group code = 2. */
+        DxfPoint *p0;
+                /*!< Start point (in WCS).\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< X value of Start point (in WCS).\n
                  * Group code = 10. */
