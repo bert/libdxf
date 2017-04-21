@@ -214,6 +214,10 @@ dxf_mline_struct
         double z0;
                 /*!< Z value of Start point (in WCS).\n
                  * Group code = 30. */
+        DxfPoint *p1;
+                /*!< Vertex coordinates (multiple entries in a linked
+                 * list; one entry for each vertex).\n
+                 * Group codes = 11, 21 and 31.*/
         double x1[DXF_MAX_PARAM];
                 /*!< X value of Vertex coordinates (multiple entries;
                  * one entry for each vertex).\n
