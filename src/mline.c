@@ -2597,7 +2597,7 @@ dxf_mline_set_x0
         DxfMline *mline,
                 /*!< a pointer to a DXF \c MLINE entity. */
         double x0
-                /*!< the X-value of the center point \c x0 of a DXF
+                /*!< the X-value of the start point \c x0 of a DXF
                  * \c MLINE entity. */
 )
 {
