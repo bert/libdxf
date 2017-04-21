@@ -600,6 +600,11 @@ dxf_mline_set_y0
         DxfMline *mline,
         double y0
 );
+double
+dxf_mline_get_z0
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
