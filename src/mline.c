@@ -2829,4 +2829,45 @@ dxf_mline_get_p1
 }
 
 
+/*!
+ * \brief Set the first entry of a linked list of vertices \c p1 of a
+ * DXF \c MLINE entity.
+ *
+ * \return a pointer to a DXF \c MLINE entity.
+ */
+DxfMline *
+dxf_mline_set_p1
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        DxfPoint *p1
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->p1 = p1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */

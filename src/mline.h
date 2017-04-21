@@ -620,6 +620,12 @@ dxf_mline_get_p1
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_p1
+(
+        DxfMline *mline,
+        DxfPoint *p1
+);
 
 
 #ifdef __cplusplus
