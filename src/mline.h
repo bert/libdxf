@@ -615,6 +615,11 @@ dxf_mline_set_z0
         DxfMline *mline,
         double z0
 );
+DxfPoint *
+dxf_mline_get_p1
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
