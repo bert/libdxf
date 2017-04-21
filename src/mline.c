@@ -2584,4 +2584,47 @@ dxf_mline_get_x0
 }
 
 
+/*!
+ * \brief Set the X-value of the start point \c x0 of a DXF \c MLINE
+ * entity.
+ *
+ * \return a pointer to \c mline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMline *
+dxf_mline_set_x0
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        double x0
+                /*!< the X-value of the center point \c x0 of a DXF
+                 * \c MLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mline->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->p0->x0 = x0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */

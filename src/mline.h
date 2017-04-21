@@ -583,6 +583,12 @@ dxf_mline_get_x0
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_x0
+(
+        DxfMline *mline,
+        double x0
+);
 
 
 #ifdef __cplusplus
