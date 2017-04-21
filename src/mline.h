@@ -594,6 +594,12 @@ dxf_mline_get_y0
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_y0
+(
+        DxfMline *mline,
+        double y0
+);
 
 
 #ifdef __cplusplus
