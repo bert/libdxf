@@ -3036,4 +3036,44 @@ dxf_mline_set_y1
 }
 
 
+/*!
+ * \brief Get the Z-value of the first entry of a linked list of
+ * vertices \c z1 of a DXF \c MLINE entity.
+ *
+ * \return the Z-value of the first entry of a linked list of vertices
+ * \c z1.
+ */
+double
+dxf_mline_get_z1
+(
+        DxfMline *mline
+                /*!< a pointer to a DXF \c MLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mline->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline->p1->z0);
+}
+
+
 /* EOF */
