@@ -123,17 +123,30 @@ dxf_mline_init
         mline->visibility = DXF_DEFAULT_VISIBILITY;
         mline->color = DXF_COLOR_BYLAYER;
         mline->paperspace = DXF_MODELSPACE;
+        mline->graphics_data_size =0;
+        mline->shadow_mode = 0;
+        mline->binary_graphics_data = dxf_binary_graphics_data_new ();
         mline->dictionary_owner_soft = strdup ("");
+        mline->material = strdup ("");
         mline->dictionary_owner_hard = strdup ("");
+        mline->lineweight = 0;
+        mline->plot_style_name = strdup ("");
+        mline->color_value = 0;
+        mline->color_name = strdup ("");
+        mline->transparency = 0;
         mline->style_name = strdup ("");
-        mline->x0 = 0.0;
-        mline->y0 = 0.0;
-        mline->z0 = 0.0;
+        dxf_mline_set_p0 (mline, dxf_point_new ());
+        dxf_point_init ((DxfPoint *) dxf_mline_get_p0 (mline));
+        mline->p0->x0 = 0.0;
+        mline->p0->y0 = 0.0;
+        mline->p0->z0 = 0.0;
+        dxf_mline_set_p1 (mline, dxf_point_new ());
+        dxf_point_init ((DxfPoint *) dxf_mline_get_p1 (mline));
+        mline->p1->x0 = 0.0;
+        mline->p1->y0 = 0.0;
+        mline->p1->z0 = 0.0;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                mline->x1[i] = 0.0;
-                mline->y1[i] = 0.0;
-                mline->z1[i] = 0.0;
                 mline->x2[i] = 0.0;
                 mline->y2[i] = 0.0;
                 mline->z2[i] = 0.0;
