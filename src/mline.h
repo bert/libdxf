@@ -230,6 +230,10 @@ dxf_mline_struct
                 /*!< Z value of Vertex coordinates (multiple entries;
                  * one entry for each vertex).\n
                  * Group code = 31. */
+        DxfPoint *p2;
+                /*!< Direction vector of segment starting at this vertex
+                 * (multiple entries; one for each vertex).\n
+                 * Group codes = 12, 22 and 32.*/
         double x2[DXF_MAX_PARAM];
                 /*!< X value of the Direction vector of segment starting
                  * at this vertex (multiple entries; one for each vertex).\n
