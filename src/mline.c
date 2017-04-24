@@ -629,33 +629,33 @@ dxf_mline_write
         {
                 fprintf (stderr,
                   (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, mline->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_mline_get_id_code (mline));
         }
-        if (strcmp (mline->linetype, "") == 0)
+        if (strcmp (dxf_mline_get_linetype (mline), "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty linetype string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, mline->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_mline_get_id_code (mline));
                 fprintf (stderr,
                   (_("    %s entity is relocated to layer 0\n")),
                   dxf_entity_name);
-                mline->linetype = strdup (DXF_DEFAULT_LINETYPE);
+                dxf_mline_set_linetype (mline, strdup (DXF_DEFAULT_LINETYPE));
         }
-        if (strcmp (mline->layer, "") == 0)
+        if (strcmp (dxf_mline_get_layer (mline), "") == 0)
         {
                 fprintf (stderr,
                   (_("Warning in %s () empty layer string for the %s entity with id-code: %x\n")),
-                  __FUNCTION__, dxf_entity_name, mline->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_mline_get_id_code (mline));
                 fprintf (stderr,
                   (_("    %s entity is relocated to layer 0\n")),
                   dxf_entity_name);
-                mline->layer = strdup (DXF_DEFAULT_LAYER);
+                dxf_mline_set_layer (mline, strdup (DXF_DEFAULT_LAYER));
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (mline->id_code != -1)
+        if (dxf_mline_get_id_code (mline) != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", mline->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_mline_get_id_code (mline));
         }
         /*!
          * \todo for version R14.\n
@@ -671,46 +671,80 @@ dxf_mline_write
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", mline->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", dxf_mline_get_dictionary_owner_soft (mline));
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (mline->dictionary_owner_hard, "") != 0)
+        if ((strcmp (dxf_mline_get_dictionary_owner_hard (mline), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", mline->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", dxf_mline_get_dictionary_owner_hard (mline));
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbEntity\n");
         }
-        if (mline->paperspace == DXF_PAPERSPACE)
+        if (dxf_mline_get_paperspace (mline) == DXF_PAPERSPACE)
         {
                 fprintf (fp->fp, " 67\n%d\n", DXF_PAPERSPACE);
         }
-        fprintf (fp->fp, "  8\n%s\n", mline->layer);
-        if (strcmp (mline->linetype, DXF_DEFAULT_LINETYPE) != 0)
+        fprintf (fp->fp, "  8\n%s\n", dxf_mline_get_layer (mline));
+        if (strcmp (dxf_mline_get_linetype (mline), DXF_DEFAULT_LINETYPE) != 0)
         {
-                fprintf (fp->fp, "  6\n%s\n", mline->linetype);
+                fprintf (fp->fp, "  6\n%s\n", dxf_mline_get_linetype (mline));
+        }
+        if ((fp->acad_version_number >= AutoCAD_2008)
+          && (strcmp (dxf_mline_get_material (mline), "") != 0))
+        {
+                fprintf (fp->fp, "347\n%s\n", dxf_mline_get_material (mline));
         }
         if ((fp->acad_version_number <= AutoCAD_11)
           && DXF_FLATLAND
-          && (mline->elevation != 0.0))
+          && (dxf_mline_get_elevation (mline) != 0.0))
         {
-                fprintf (fp->fp, " 38\n%f\n", mline->elevation);
+                fprintf (fp->fp, " 38\n%f\n", dxf_mline_get_elevation (mline));
         }
-        if (mline->color != DXF_COLOR_BYLAYER)
+        if (dxf_mline_get_color (mline) != DXF_COLOR_BYLAYER)
         {
-                fprintf (fp->fp, " 62\n%d\n", mline->color);
+                fprintf (fp->fp, " 62\n%d\n", dxf_mline_get_color (mline));
         }
-        if (mline->linetype_scale != 1.0)
+        if (fp->acad_version_number >= AutoCAD_2002)
         {
-                fprintf (fp->fp, " 48\n%f\n", mline->linetype_scale);
+                fprintf (fp->fp, "370\n%d\n", dxf_mline_get_lineweight (mline));
         }
-        if (mline->visibility != 0)
+        if (dxf_mline_get_linetype_scale (mline) != 1.0)
         {
-                fprintf (fp->fp, " 60\n%d\n", mline->visibility);
+                fprintf (fp->fp, " 48\n%f\n", dxf_mline_get_linetype_scale (mline));
+        }
+        if (dxf_mline_get_visibility (mline) != 0)
+        {
+                fprintf (fp->fp, " 60\n%d\n", dxf_mline_get_visibility (mline));
+        }
+        if (fp->acad_version_number >= AutoCAD_2000)
+        {
+#ifdef BUILD_64
+                fprintf (fp->fp, "160\n%d\n", dxf_mline_get_graphics_data_size (mline));
+#else
+                fprintf (fp->fp, " 92\n%d\n", dxf_mline_get_graphics_data_size (mline));
+#endif
+                DxfBinaryGraphicsData *bgd_iter = (DxfBinaryGraphicsData *) dxf_mline_get_binary_graphics_data (mline);
+                while (dxf_binary_graphics_data_get_data_line (bgd_iter) != NULL)
+                {
+                        fprintf (fp->fp, "310\n%s\n", dxf_binary_graphics_data_get_data_line (bgd_iter));
+                        bgd_iter = (DxfBinaryGraphicsData *) dxf_binary_graphics_data_get_next (bgd_iter);
+                }
+        }
+        if (fp->acad_version_number >= AutoCAD_2004)
+        {
+                fprintf (fp->fp, "420\n%ld\n", dxf_mline_get_color_value (mline));
+                fprintf (fp->fp, "430\n%s\n", dxf_mline_get_color_name (mline));
+                fprintf (fp->fp, "440\n%ld\n", dxf_mline_get_transparency (mline));
+        }
+        if (fp->acad_version_number >= AutoCAD_2009)
+        {
+                fprintf (fp->fp, "390\n%s\n", dxf_mline_get_plot_style_name (mline));
+                fprintf (fp->fp, "284\n%d\n", dxf_mline_get_shadow_mode (mline));
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
@@ -718,9 +752,9 @@ dxf_mline_write
         }
         if (mline->thickness != 0.0)
         {
-                fprintf (fp->fp, " 39\n%f\n", mline->thickness);
+                fprintf (fp->fp, " 39\n%f\n", dxf_mline_get_thickness (mline));
         }
-        fprintf (fp->fp, "  2\n%s\n", mline->style_name);
+        fprintf (fp->fp, "  2\n%s\n", dxf_mline_get_style_name (mline));
         fprintf (fp->fp, "340\n%s\n", mline->mlinestyle_dictionary);
         fprintf (fp->fp, " 40\n%f\n", mline->scale_factor);
         fprintf (fp->fp, " 70\n%d\n", mline->justification);
@@ -729,9 +763,9 @@ dxf_mline_write
         fprintf (fp->fp, " 72\n%d\n", mline->number_of_vertices);
         /*! \todo Check for correct number of elements (prevent overrun of array/index). */
         fprintf (fp->fp, " 73\n%d\n", mline->number_of_elements);
-        fprintf (fp->fp, " 10\n%f\n", mline->x0);
-        fprintf (fp->fp, " 20\n%f\n", mline->y0);
-        fprintf (fp->fp, " 30\n%f\n", mline->z0);
+        fprintf (fp->fp, " 10\n%f\n", mline->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", mline->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", mline->p0->z0);
         if ((fp->acad_version_number >= AutoCAD_12)
                 && (mline->extr_x0 != 0.0)
                 && (mline->extr_y0 != 0.0)
