@@ -3204,4 +3204,45 @@ dxf_mline_get_p2
 }
 
 
+/*!
+ * \brief Set the first entry of a linked list of direction vector
+ * vertices \c p2 of a DXF \c MLINE entity.
+ *
+ * \return a pointer to a DXF \c MLINE entity.
+ */
+DxfMline *
+dxf_mline_set_p2
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        DxfPoint *p2
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p2 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->p2 = p2;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */

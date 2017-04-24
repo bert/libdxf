@@ -662,6 +662,12 @@ dxf_mline_get_p2
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_p2
+(
+        DxfMline *mline,
+        DxfPoint *p2
+);
 
 
 #ifdef __cplusplus
