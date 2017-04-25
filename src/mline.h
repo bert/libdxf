@@ -237,6 +237,10 @@ dxf_mline_struct
                 /*!< Z value of the Direction vector of segment starting
                  * at this vertex (multiple entries; one for each vertex).\n
                  * Group code = 32. */
+        DxfPoint *p3;
+                /*!< Direction vector of miter at this vertex
+                 * (multiple entries; one for each vertex).\n
+                 * Group codes = 13, 23 and 33.*/
         double x3[DXF_MAX_PARAM];
                 /*!< X value of the Direction vector of miter at this
                  * vertex (multiple entries: one for each vertex).\n
