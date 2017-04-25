@@ -701,6 +701,12 @@ dxf_mline_get_p3
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_p3
+(
+        DxfMline *mline,
+        DxfPoint *p3
+);
 
 
 #ifdef __cplusplus
