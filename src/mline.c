@@ -842,9 +842,16 @@ dxf_mline_free
         }
         free (mline->linetype);
         free (mline->layer);
+        dxf_binary_graphics_data_free (mline->binary_graphics_data);
         free (mline->dictionary_owner_soft);
+        free (mline->material);
         free (mline->dictionary_owner_hard);
+        free (mline->plot_style_name);
+        free (mline->color_name);
         free (mline->style_name);
+        dxf_point_free (mline->p0);
+        dxf_point_free_chain (mline->p1);
+        dxf_point_free_chain (mline->p2);
         free (mline->mlinestyle_dictionary);
         free (mline);
         mline = NULL;
