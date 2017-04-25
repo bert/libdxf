@@ -673,6 +673,12 @@ dxf_mline_get_x2
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_x2
+(
+        DxfMline *mline,
+        double x2
+);
 
 
 #ifdef __cplusplus
