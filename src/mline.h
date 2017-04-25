@@ -745,6 +745,12 @@ dxf_mline_get_scale_factor
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_scale_factor
+(
+        DxfMline *mline,
+        double scale_factor
+);
 
 
 #ifdef __cplusplus

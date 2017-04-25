@@ -3872,4 +3872,38 @@ dxf_mline_get_scale_factor
 }
 
 
+/*!
+ * \brief Set the \c scale_factor of a DXF \c MLINE entity.
+ *
+ * \return a pointer to \c mline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMline *
+dxf_mline_set_scale_factor
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        double scale_factor
+                /*!< the \c scale_factor to be set for the entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->scale_factor = scale_factor;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */
