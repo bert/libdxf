@@ -1,7 +1,8 @@
 /*!
  * \file global.h
  *
- * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
+ * \author Copyright (C) 2008, 2009, 2010, 2012, 2013, 2014, 2015, 2016,
+ * 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.\n
  *
  * \brief  This is a global header file for a library with functions to
  * generate a dxf file.
@@ -187,7 +188,7 @@
  * \brief DXF definition of a DXF file.
  */
 typedef struct
-dxf_file
+dxf_file_struct
 {
     FILE *fp;
         /*!< File handle. */
