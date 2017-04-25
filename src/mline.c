@@ -3504,4 +3504,42 @@ dxf_mline_set_z2
 }
 
 
+/*!
+ * \brief Get the first entry of a linked list vertices of the direction
+ * vector of the miter at this vertex \c p3 of a DXF \c MLINE entity.
+ *
+ * \return the first entry of a linked list of vertices \c p3.
+ */
+DxfPoint *
+dxf_mline_get_p3
+(
+        DxfMline *mline
+                /*!< a pointer to a DXF \c MLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mline->p3 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline->p3);
+}
+
+
 /* EOF */
