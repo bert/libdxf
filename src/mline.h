@@ -729,6 +729,11 @@ dxf_mline_set_y3
         DxfMline *mline,
         double y3
 );
+double
+dxf_mline_get_z3
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
