@@ -205,15 +205,6 @@ dxf_mline_struct
         DxfPoint *p0;
                 /*!< Start point (in WCS).\n
                  * Group codes = 10, 20 and 30.*/
-        double x0;
-                /*!< X value of Start point (in WCS).\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Y value of Start point (in WCS).\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Z value of Start point (in WCS).\n
-                 * Group code = 30. */
         DxfPoint *p1;
                 /*!< Vertex coordinates (multiple entries in a linked
                  * list; one entry for each vertex).\n
