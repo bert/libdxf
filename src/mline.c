@@ -274,21 +274,21 @@ dxf_mline_read
                         /* Now follows a string containing the
                          * X value of the start point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mline->x0);
+                        fscanf (fp->fp, "%lf\n", &mline->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y value of the start point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mline->y0);
+                        fscanf (fp->fp, "%lf\n", &mline->p0->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z value of the start point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mline->z0);
+                        fscanf (fp->fp, "%lf\n", &mline->p0->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
