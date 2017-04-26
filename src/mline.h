@@ -756,6 +756,12 @@ dxf_mline_get_element_parameters
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_element_parameters
+(
+        DxfMline *mline,
+        double *element_parameters
+);
 
 
 #ifdef __cplusplus
