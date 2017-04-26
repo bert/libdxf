@@ -767,6 +767,12 @@ dxf_mline_get_area_fill_parameters
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_area_fill_parameters
+(
+        DxfMline *mline,
+        double *area_fill_parameters
+);
 
 
 #ifdef __cplusplus
