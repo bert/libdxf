@@ -4321,4 +4321,41 @@ dxf_mline_set_number_of_vertices
 }
 
 
+/*!
+ * \brief Get the \c number_of_elements from a DXF \c MLINE entity.
+ *
+ * \return \c number_of_elements.
+ */
+int
+dxf_mline_get_number_of_elements
+(
+        DxfMline *mline
+                /*!< a pointer to a DXF \c MLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mline->number_of_elements < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline->number_of_elements);
+}
+
+
 /* EOF */
