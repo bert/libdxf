@@ -784,6 +784,11 @@ dxf_mline_set_justification
         DxfMline *mline,
         int justification
 );
+int
+dxf_mline_get_flags
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
