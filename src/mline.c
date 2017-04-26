@@ -3973,4 +3973,35 @@ dxf_mline_set_element_parameters
 }
 
 
+/*!
+ * \brief Get the \c area_fill_parameters array of a DXF \c MLINE entity.
+ *
+ * \return poniter to the \c area_fill_parameters array.
+ */
+double
+dxf_mline_get_area_fill_parameters
+(
+        DxfMline *mline
+                /*!< a pointer to a DXF \c MLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (*(mline->area_fill_parameters));
+}
+
+
 /* EOF */
