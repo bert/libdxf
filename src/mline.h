@@ -789,6 +789,12 @@ dxf_mline_get_flags
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_flags
+(
+        DxfMline *mline,
+        int flags
+);
 
 
 #ifdef __cplusplus
