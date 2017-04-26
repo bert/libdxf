@@ -778,6 +778,12 @@ dxf_mline_get_justification
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_justification
+(
+        DxfMline *mline,
+        int justification
+);
 
 
 #ifdef __cplusplus
