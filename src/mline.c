@@ -3972,6 +3972,13 @@ dxf_mline_set_element_parameters
                   __FUNCTION__);
                 return (NULL);
         }
+        if (element_parameters == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         *(mline->element_parameters) = *element_parameters;
 #if DEBUG
         DXF_DEBUG_END
