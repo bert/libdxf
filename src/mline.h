@@ -800,6 +800,12 @@ dxf_mline_get_number_of_vertices
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_number_of_vertices
+(
+        DxfMline *mline,
+        int number_of_vertices
+);
 
 
 #ifdef __cplusplus
