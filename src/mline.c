@@ -4068,4 +4068,48 @@ dxf_mline_set_area_fill_parameters
 }
 
 
+/*!
+ * \brief Get the \c justification from a DXF \c MLINE entity.
+ *
+ * \return \c justification.
+ */
+int
+dxf_mline_get_justification
+(
+        DxfMline *mline
+                /*!< a pointer to a DXF \c MLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mline->justification < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mline->justification > 2)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline->justification);
+}
+
+
 /* EOF */

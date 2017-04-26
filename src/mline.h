@@ -773,6 +773,11 @@ dxf_mline_set_area_fill_parameters
         DxfMline *mline,
         double *area_fill_parameters
 );
+int
+dxf_mline_get_justification
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
