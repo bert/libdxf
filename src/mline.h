@@ -795,6 +795,11 @@ dxf_mline_set_flags
         DxfMline *mline,
         int flags
 );
+int
+dxf_mline_get_number_of_vertices
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
