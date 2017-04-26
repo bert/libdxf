@@ -4053,6 +4053,13 @@ dxf_mline_set_area_fill_parameters
                   __FUNCTION__);
                 return (NULL);
         }
+        if (area_fill_parameters == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         *(mline->area_fill_parameters) = *area_fill_parameters;
 #if DEBUG
         DXF_DEBUG_END
