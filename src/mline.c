@@ -3865,6 +3865,13 @@ dxf_mline_get_scale_factor
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (mline->element_parameters == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
