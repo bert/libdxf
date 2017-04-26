@@ -3916,7 +3916,7 @@ dxf_mline_set_scale_factor
 /*!
  * \brief Get the \c element_parameters array of a DXF \c MLINE entity.
  *
- * \return poniter to the \c element_parameters array.
+ * \return pointer to the \c element_parameters array.
  */
 double
 dxf_mline_get_element_parameters
@@ -3997,7 +3997,7 @@ dxf_mline_set_element_parameters
 /*!
  * \brief Get the \c area_fill_parameters array of a DXF \c MLINE entity.
  *
- * \return poniter to the \c area_fill_parameters array.
+ * \return pointer to the \c area_fill_parameters array.
  */
 double
 dxf_mline_get_area_fill_parameters
