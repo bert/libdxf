@@ -822,6 +822,12 @@ dxf_mline_get_number_of_parameters
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_number_of_parameters
+(
+        DxfMline *mline,
+        int number_of_parameters
+);
 
 
 #ifdef __cplusplus

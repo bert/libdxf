@@ -4433,4 +4433,42 @@ dxf_mline_get_number_of_parameters
 }
 
 
+/*!
+ * \brief Set the \c number_of_parameters for a DXF \c MLINE entity.
+ */
+DxfMline *
+dxf_mline_set_number_of_parameters
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        int number_of_parameters
+                /*!< the \c number_of_parameters to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (number_of_parameters < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->number_of_parameters = number_of_parameters;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */
