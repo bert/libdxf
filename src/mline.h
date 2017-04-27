@@ -828,6 +828,11 @@ dxf_mline_set_number_of_parameters
         DxfMline *mline,
         int number_of_parameters
 );
+int
+dxf_mline_get_number_of_area_fill_parameters
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
