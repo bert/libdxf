@@ -4549,4 +4549,36 @@ dxf_mline_set_number_of_area_fill_parameters
 }
 
 
+/*!
+ * \brief Get the X-value of the extrusion vector \c extr_x0 of a DXF
+ * \c MLINE entity.
+ *
+ * \return the X-value of the extrusion vector \c extr_x0.
+ */
+double
+dxf_mline_get_extr_x0
+(
+        DxfMline *mline
+                /*!< a pointer to a DXF \c MLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline->extr_x0);
+}
+
+
 /* EOF */
