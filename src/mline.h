@@ -839,6 +839,11 @@ dxf_mline_set_number_of_area_fill_parameters
         DxfMline *mline,
         int number_of_area_fill_parameters
 );
+DxfPoint *
+dxf_mline_get_extrusion_vector_as_point
+(
+        DxfMline *mline
+);
 double
 dxf_mline_get_extr_x0
 (

@@ -4550,6 +4550,52 @@ dxf_mline_set_number_of_area_fill_parameters
 
 
 /*!
+ * \brief Get the extrusion vector as a DXF \c POINT entity from a DXF
+ * \c MLINE entity.
+ *
+ * \return a DXF \c POINT containing the extrusion coordinates.
+ *
+ * \warning No other members are copied into the DXF \c POINT.
+ */
+DxfPoint *
+dxf_mline_get_extrusion_vector_as_point
+(
+        DxfMline *mline
+                /*!< a pointer to a DXF \c MLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfPoint *point = NULL;
+
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        point = dxf_point_init (point);
+        if (point == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () could not allocate memory.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        point->x0 = mline->extr_x0;
+        point->y0 = mline->extr_y0;
+        point->z0 = mline->extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (point);
+}
+
+
+/*!
  * \brief Get the X-value of the extrusion vector \c extr_x0 of a DXF
  * \c MLINE entity.
  *
