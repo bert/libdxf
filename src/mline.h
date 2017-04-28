@@ -844,6 +844,12 @@ dxf_mline_get_extr_x0
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_extr_x0
+(
+        DxfMline *mline,
+        double extr_x0
+);
 
 
 #ifdef __cplusplus
