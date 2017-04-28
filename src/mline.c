@@ -4799,4 +4799,45 @@ dxf_mline_set_extr_z0
 }
 
 
+/*!
+ * \brief Set the extrusion vector from a DXF \c POINT for a DXF
+ * \c MLINE entity.
+ */
+DxfMline *
+dxf_mline_set_extrusion_vector_from_point
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->extr_x0 = (double) point->x0;
+        mline->extr_y0 = (double) point->y0;
+        mline->extr_z0 = (double) point->z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */

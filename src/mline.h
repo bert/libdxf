@@ -877,6 +877,12 @@ dxf_mline_set_extr_z0
         DxfMline *mline,
         double extr_z0
 );
+DxfMline *
+dxf_mline_set_extrusion_vector_from_point
+(
+        DxfMline *mline,
+        DxfPoint *point
+);
 
 
 #ifdef __cplusplus
