@@ -861,6 +861,11 @@ dxf_mline_set_extr_y0
         DxfMline *mline,
         double extr_y0
 );
+double
+dxf_mline_get_extr_z0
+(
+        DxfMline *mline
+);
 
 
 #ifdef __cplusplus
