@@ -4649,4 +4649,40 @@ dxf_mline_get_extr_y0
 }
 
 
+/*!
+ * \brief Set the Y-value of the extrusion vector \c extr_y0 of a DXF
+ * \c MLINE entity.
+ *
+ * \return a pointer to \c mline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMline *
+dxf_mline_set_extr_y0
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        double extr_y0
+                /*!< the Y-value of the extrusion vector \c extr_y0 of a
+                 * DXF \c MLINE entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->extr_y0 = extr_y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */
