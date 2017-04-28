@@ -883,6 +883,14 @@ dxf_mline_set_extrusion_vector_from_point
         DxfMline *mline,
         DxfPoint *point
 );
+DxfMline *
+dxf_mline_set_extrusion_vector
+(
+        DxfMline *mline,
+        double extr_x0,
+        double extr_y0,
+        double extr_z0
+);
 
 
 #ifdef __cplusplus
