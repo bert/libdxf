@@ -4877,4 +4877,44 @@ dxf_mline_set_extrusion_vector
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c MLINE entity from a DXF 
+ * \c MLINE entity.
+ *
+ * \return pointer to the next \c MLINE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfMline *
+dxf_mline_get_next
+(
+        DxfMline *mline
+                /*!< a pointer to a DXF \c MLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mline->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfMline *) mline->next);
+}
+
+
 /* EOF */
