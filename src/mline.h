@@ -896,6 +896,12 @@ dxf_mline_get_next
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_next
+(
+        DxfMline *mline,
+        DxfMline *next
+);
 
 
 #ifdef __cplusplus

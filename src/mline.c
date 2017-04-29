@@ -4917,4 +4917,43 @@ dxf_mline_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c MLINE for a DXF \c MLINE
+ * entity.
+ */
+DxfMline *
+dxf_mline_set_next
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        DxfMline *next
+                /*!< a pointer to the next \c MLINE for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->next = (struct DxfMline *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
 /* EOF */
