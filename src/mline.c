@@ -4956,4 +4956,49 @@ dxf_mline_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c MLINE entity from a linked list
+ * of DXF \c MLINE entities.
+ *
+ * \return pointer to the last \c MLINE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfMline *
+dxf_mline_get_last
+(
+        DxfMline *mline
+                /*!< a pointer to a DXF \c MLINE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mline->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfMline *) mline);
+        }
+        DxfMline *iter = (DxfMline *) mline->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfMline *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfMline *) iter);
+}
+
+
 /* EOF */
