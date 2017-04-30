@@ -145,14 +145,18 @@ dxf_mline_init
         mline->p1->x0 = 0.0;
         mline->p1->y0 = 0.0;
         mline->p1->z0 = 0.0;
+        dxf_mline_set_p2 (mline, dxf_point_new ());
+        dxf_point_init ((DxfPoint *) dxf_mline_get_p2 (mline));
+        mline->p2->x0 = 0.0;
+        mline->p2->y0 = 0.0;
+        mline->p2->z0 = 0.0;
+        dxf_mline_set_p3 (mline, dxf_point_new ());
+        dxf_point_init ((DxfPoint *) dxf_mline_get_p3 (mline));
+        mline->p3->x0 = 0.0;
+        mline->p3->y0 = 0.0;
+        mline->p3->z0 = 0.0;
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                mline->x2[i] = 0.0;
-                mline->y2[i] = 0.0;
-                mline->z2[i] = 0.0;
-                mline->x3[i] = 0.0;
-                mline->y3[i] = 0.0;
-                mline->z3[i] = 0.0;
                 mline->element_parameters[i] = 0.0;
                 mline->area_fill_parameters[i] = 0.0;
         }
