@@ -897,6 +897,11 @@ dxf_mline_set_extrusion_vector
         double extr_y0,
         double extr_z0
 );
+char *
+dxf_mline_get_mlinestyle_dictionary
+(
+        DxfMline *mline
+);
 DxfMline *
 dxf_mline_get_next
 (
