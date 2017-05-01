@@ -482,6 +482,12 @@ dxf_mline_get_dictionary_owner_soft
 (
         DxfMline *mline
 );
+DxfMline *
+dxf_mline_set_dictionary_owner_soft
+(
+        DxfMline *mline,
+        char *dictionary_owner_soft
+);
 char *
 dxf_mline_get_material
 (
