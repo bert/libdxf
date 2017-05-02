@@ -645,6 +645,24 @@ dxf_mline_write
                   dxf_entity_name);
                 dxf_mline_set_layer (mline, strdup (DXF_DEFAULT_LAYER));
         }
+        if (dxf_mline_get_number_of_parameters (mline) >= (DXF_MAX_PARAM - 1))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () too many parameters.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
+        if (dxf_mline_get_number_of_area_fill_parameters (mline) >= (DXF_MAX_PARAM - 1))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () too many area fill parameters.\n")),
+                  __FUNCTION__);
+                /* Clean up. */
+                free (dxf_entity_name);
+                return (EXIT_FAILURE);
+        }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
         if (dxf_mline_get_id_code (mline) != -1)
@@ -753,9 +771,7 @@ dxf_mline_write
         fprintf (fp->fp, " 40\n%f\n", dxf_mline_get_scale_factor (mline));
         fprintf (fp->fp, " 70\n%d\n", dxf_mline_get_justification (mline));
         fprintf (fp->fp, " 71\n%d\n", dxf_mline_get_flags (mline));
-        /*! \todo Check for correct number of vertices (prevent overrun of array/index). */
         fprintf (fp->fp, " 72\n%d\n", dxf_mline_get_number_of_vertices (mline));
-        /*! \todo Check for correct number of elements (prevent overrun of array/index). */
         fprintf (fp->fp, " 73\n%d\n", dxf_mline_get_number_of_elements (mline));
         fprintf (fp->fp, " 10\n%f\n", dxf_mline_get_x0 (mline));
         fprintf (fp->fp, " 20\n%f\n", dxf_mline_get_y0 (mline));
@@ -817,13 +833,11 @@ dxf_mline_write
                   (_("Warning in %s () actual number of vertices differs from number_of_vertices value in struct.\n")),
                   __FUNCTION__);
         }
-        /*! \todo Check for correct number of parameters (prevent overrun of array/index). */
         fprintf (fp->fp, " 74\n%d\n", mline->number_of_parameters);
         for (i = 0; i < mline->number_of_parameters; i++)
         {
                 fprintf (fp->fp, " 41\n%f\n", mline->element_parameters[i]);
         }
-        /*! \todo Check for correct number of area fill parameters (prevent overrun of array/index). */
         fprintf (fp->fp, " 75\n%d\n", mline->number_of_area_fill_parameters);
         for (i = 0; i < mline->number_of_area_fill_parameters; i++)
         {
