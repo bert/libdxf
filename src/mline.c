@@ -590,6 +590,7 @@ dxf_mline_write
 #endif
         char *dxf_entity_name = strdup ("MLINE");
         int i;
+        DxfPoint *iter;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -753,38 +754,68 @@ dxf_mline_write
         fprintf (fp->fp, " 70\n%d\n", dxf_mline_get_justification (mline));
         fprintf (fp->fp, " 71\n%d\n", dxf_mline_get_flags (mline));
         /*! \todo Check for correct number of vertices (prevent overrun of array/index). */
-        fprintf (fp->fp, " 72\n%d\n", mline->number_of_vertices);
+        fprintf (fp->fp, " 72\n%d\n", dxf_mline_get_number_of_vertices (mline));
         /*! \todo Check for correct number of elements (prevent overrun of array/index). */
-        fprintf (fp->fp, " 73\n%d\n", mline->number_of_elements);
-        fprintf (fp->fp, " 10\n%f\n", mline->p0->x0);
-        fprintf (fp->fp, " 20\n%f\n", mline->p0->y0);
-        fprintf (fp->fp, " 30\n%f\n", mline->p0->z0);
+        fprintf (fp->fp, " 73\n%d\n", dxf_mline_get_number_of_elements (mline));
+        fprintf (fp->fp, " 10\n%f\n", dxf_mline_get_x0 (mline));
+        fprintf (fp->fp, " 20\n%f\n", dxf_mline_get_y0 (mline));
+        fprintf (fp->fp, " 30\n%f\n", dxf_mline_get_z0 (mline));
         if ((fp->acad_version_number >= AutoCAD_12)
-                && (mline->extr_x0 != 0.0)
-                && (mline->extr_y0 != 0.0)
-                && (mline->extr_z0 != 1.0))
+                && (dxf_mline_get_extr_x0 (mline) != 0.0)
+                && (dxf_mline_get_extr_y0 (mline) != 0.0)
+                && (dxf_mline_get_extr_z0 (mline) != 1.0))
         {
-                fprintf (fp->fp, "210\n%f\n", mline->extr_x0);
-                fprintf (fp->fp, "220\n%f\n", mline->extr_y0);
-                fprintf (fp->fp, "230\n%f\n", mline->extr_z0);
+                fprintf (fp->fp, "210\n%f\n", dxf_mline_get_extr_x0 (mline));
+                fprintf (fp->fp, "220\n%f\n", dxf_mline_get_extr_y0 (mline));
+                fprintf (fp->fp, "230\n%f\n", dxf_mline_get_extr_z0 (mline));
         }
-        for (i = 0; i < mline->number_of_vertices; i++)
+        iter = (DxfPoint *) mline->p1;
+        i = 1;
+        while (iter->next != NULL)
         {
-                fprintf (fp->fp, " 11\n%f\n", mline->x1[i]);
-                fprintf (fp->fp, " 21\n%f\n", mline->y1[i]);
-                fprintf (fp->fp, " 31\n%f\n", mline->z1[i]);
+                fprintf (fp->fp, " 11\n%f\n", iter->x0);
+                fprintf (fp->fp, " 21\n%f\n", iter->y0);
+                fprintf (fp->fp, " 31\n%f\n", iter->z0);
+                iter = (DxfPoint *) iter->next;
+                i++;
         }
-        for (i = 0; i < mline->number_of_vertices; i++)
+        if (i != mline->number_of_vertices)
         {
-                fprintf (fp->fp, " 12\n%f\n", mline->x2[i]);
-                fprintf (fp->fp, " 22\n%f\n", mline->y2[i]);
-                fprintf (fp->fp, " 32\n%f\n", mline->z2[i]);
+                fprintf (stderr,
+                  (_("Warning in %s () actual number of vertices differs from number_of_vertices value in struct.\n")),
+                  __FUNCTION__);
         }
-        for (i = 0; i < mline->number_of_vertices; i++)
+        iter = (DxfPoint *) mline->p2;
+        i = 1;
+        while (iter->next != NULL)
         {
-                fprintf (fp->fp, " 13\n%f\n", mline->x3[i]);
-                fprintf (fp->fp, " 23\n%f\n", mline->y3[i]);
-                fprintf (fp->fp, " 33\n%f\n", mline->z3[i]);
+                fprintf (fp->fp, " 12\n%f\n", iter->x0);
+                fprintf (fp->fp, " 22\n%f\n", iter->y0);
+                fprintf (fp->fp, " 32\n%f\n", iter->z0);
+                iter = (DxfPoint *) iter->next;
+                i++;
+        }
+        if (i != mline->number_of_vertices)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () actual number of vertices differs from number_of_vertices value in struct.\n")),
+                  __FUNCTION__);
+        }
+        iter = (DxfPoint *) mline->p3;
+        i = 1;
+        while (iter->next != NULL)
+        {
+                fprintf (fp->fp, " 13\n%f\n", iter->x0);
+                fprintf (fp->fp, " 23\n%f\n", iter->y0);
+                fprintf (fp->fp, " 33\n%f\n", iter->z0);
+                iter = (DxfPoint *) iter->next;
+                i++;
+        }
+        if (i != mline->number_of_vertices)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () actual number of vertices differs from number_of_vertices value in struct.\n")),
+                  __FUNCTION__);
         }
         /*! \todo Check for correct number of parameters (prevent overrun of array/index). */
         fprintf (fp->fp, " 74\n%d\n", mline->number_of_parameters);
