@@ -126,6 +126,7 @@ dxf_mline_init
         dxf_mline_set_graphics_data_size (mline, 0);
         dxf_mline_set_shadow_mode (mline, 0);
         dxf_mline_set_binary_graphics_data (mline, dxf_binary_graphics_data_new ());
+        dxf_binary_graphics_data_init ((DxfBinaryGraphicsData *) dxf_mline_get_binary_graphics_data (mline));
         dxf_mline_set_dictionary_owner_soft (mline, strdup (""));
         dxf_mline_set_material (mline, strdup (""));
         dxf_mline_set_dictionary_owner_hard (mline, strdup (""));
@@ -747,10 +748,10 @@ dxf_mline_write
                 fprintf (fp->fp, " 39\n%f\n", dxf_mline_get_thickness (mline));
         }
         fprintf (fp->fp, "  2\n%s\n", dxf_mline_get_style_name (mline));
-        fprintf (fp->fp, "340\n%s\n", mline->mlinestyle_dictionary);
-        fprintf (fp->fp, " 40\n%f\n", mline->scale_factor);
-        fprintf (fp->fp, " 70\n%d\n", mline->justification);
-        fprintf (fp->fp, " 71\n%d\n", mline->flags);
+        fprintf (fp->fp, "340\n%s\n", dxf_mline_get_mlinestyle_dictionary (mline));
+        fprintf (fp->fp, " 40\n%f\n", dxf_mline_get_scale_factor (mline));
+        fprintf (fp->fp, " 70\n%d\n", dxf_mline_get_justification (mline));
+        fprintf (fp->fp, " 71\n%d\n", dxf_mline_get_flags (mline));
         /*! \todo Check for correct number of vertices (prevent overrun of array/index). */
         fprintf (fp->fp, " 72\n%d\n", mline->number_of_vertices);
         /*! \todo Check for correct number of elements (prevent overrun of array/index). */
