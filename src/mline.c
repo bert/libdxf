@@ -4908,6 +4908,48 @@ dxf_mline_get_mlinestyle_dictionary
 
 
 /*!
+ * \brief Set the \c mlinestyle_dictionary for a DXF \c MLINE entity.
+ *
+ * \return a pointer to \c mline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMline *
+dxf_mline_set_mlinestyle_dictionary
+(
+        DxfMline *mline,
+                /*!< a pointer to a DXF \c MLINE entity. */
+        char *mlinestyle_dictionary
+                /*!< a string containing the \c mlinestyle_dictionary
+                 * for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mlinestyle_dictionary == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mline->mlinestyle_dictionary = strdup (mlinestyle_dictionary);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mline);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c MLINE entity from a DXF 
  * \c MLINE entity.
  *

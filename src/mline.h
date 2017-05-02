@@ -903,6 +903,12 @@ dxf_mline_get_mlinestyle_dictionary
         DxfMline *mline
 );
 DxfMline *
+dxf_mline_set_mlinestyle_dictionary
+(
+        DxfMline *mline,
+        char *mlinestyle_dictionary
+);
+DxfMline *
 dxf_mline_get_next
 (
         DxfMline *mline
