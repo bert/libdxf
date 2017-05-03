@@ -196,6 +196,7 @@ dxf_mline_read
         int k;
         int l;
         int m;
+        DxfPoint *iter;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -215,11 +216,12 @@ dxf_mline_read
                 mline = dxf_mline_new ();
                 mline = dxf_mline_init (mline);
         }
-        i = 0;
         j = 0;
         k = 0;
         l = 0;
         m = 0;
+        i = 0; /* Number of found vertices in linked list p1. */
+        iter = (DxfPoint *) mline->p1; /* Pointer to first vertex p1. */
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -283,30 +285,40 @@ dxf_mline_read
                         (fp->line_number)++;
                         fscanf (fp->fp, "%lf\n", &mline->p0->z0);
                 }
-                else if (strcmp (temp_string, "11") == 0)
+                else if ((strcmp (temp_string, "11") == 0)
+                  || (strcmp (temp_string, "21") == 0)
+                  || (strcmp (temp_string, "31") == 0))
                 {
-                        /* Now follows a string containing the
-                         * X value of the vertex coordinates (multiple
-                         * entries; one entry for each vertex). */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mline->x1[i]);
-                }
-                else if (strcmp (temp_string, "21") == 0)
-                {
-                        /* Now follows a string containing the
-                         * Y value of the vertex coordinates (multiple
-                         * entries; one entry for each vertex). */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mline->y1[i]);
-                }
-                else if (strcmp (temp_string, "31") == 0)
-                {
-                        /* Now follows a string containing the
-                         * Z value of the vertex coordinates (multiple
-                         * entries; one entry for each vertex). */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mline->z1[i]);
-                        i++;
+                        if (strcmp (temp_string, "11") == 0)
+                        {
+                                /* Now follows a string containing the X-value
+                                 * of the Vertex coordinates (one entry for each
+                                 * vertex). */
+                                if (i > 0) /* Create a pointer for the next vertex. */
+                                {
+                                        dxf_point_init ((DxfPoint *) iter->next);
+                                        iter = (DxfPoint *) iter->next;
+                                }
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%lf\n", &iter->x0);
+                        }
+                        else if (strcmp (temp_string, "21") == 0)
+                        {
+                                /* Now follows a string containing the Y-value
+                                 * of the Vertex coordinates (one entry for each
+                                 * vertex). */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%lf\n", &iter->y0);
+                        }
+                        else if (strcmp (temp_string, "31") == 0)
+                        {
+                                /* Now follows a string containing the Z-value
+                                 * of the Vertex coordinates (one entry for each
+                                 * vertex). */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%lf\n", &iter->z0);
+                                i++; /* Increase the number of found vertices. */
+                        }
                 }
                 else if (strcmp (temp_string, "12") == 0)
                 {
