@@ -196,7 +196,8 @@ dxf_mline_read
         int k;
         int l;
         int m;
-        DxfPoint *iter;
+        DxfPoint *iter_p1;
+        DxfPoint *iter_p2;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -216,12 +217,13 @@ dxf_mline_read
                 mline = dxf_mline_new ();
                 mline = dxf_mline_init (mline);
         }
-        j = 0;
         k = 0;
         l = 0;
         m = 0;
         i = 0; /* Number of found vertices in linked list p1. */
-        iter = (DxfPoint *) mline->p1; /* Pointer to first vertex p1. */
+        iter_p1 = (DxfPoint *) mline->p1; /* Pointer to first vertex p1. */
+        j = 0; /* Number of found direction vectors in linked list p2. */
+        iter_p2 = (DxfPoint *) mline->p2; /* Pointer to first direction vector p2. */
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -296,11 +298,11 @@ dxf_mline_read
                                  * vertex). */
                                 if (i > 0) /* Create a pointer for the next vertex. */
                                 {
-                                        dxf_point_init ((DxfPoint *) iter->next);
-                                        iter = (DxfPoint *) iter->next;
+                                        dxf_point_init ((DxfPoint *) iter_p1->next);
+                                        iter_p1 = (DxfPoint *) iter_p1->next;
                                 }
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%lf\n", &iter->x0);
+                                fscanf (fp->fp, "%lf\n", &iter_p1->x0);
                         }
                         else if (strcmp (temp_string, "21") == 0)
                         {
@@ -308,7 +310,7 @@ dxf_mline_read
                                  * of the Vertex coordinates (one entry for each
                                  * vertex). */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%lf\n", &iter->y0);
+                                fscanf (fp->fp, "%lf\n", &iter_p1->y0);
                         }
                         else if (strcmp (temp_string, "31") == 0)
                         {
@@ -316,37 +318,44 @@ dxf_mline_read
                                  * of the Vertex coordinates (one entry for each
                                  * vertex). */
                                 (fp->line_number)++;
-                                fscanf (fp->fp, "%lf\n", &iter->z0);
+                                fscanf (fp->fp, "%lf\n", &iter_p1->z0);
                                 i++; /* Increase the number of found vertices. */
                         }
                 }
-                else if (strcmp (temp_string, "12") == 0)
+                else if ((strcmp (temp_string, "12") == 0)
+                  || (strcmp (temp_string, "22") == 0)
+                  || (strcmp (temp_string, "32") == 0))
                 {
-                        /* Now follows a string containing the
-                         * X value of the direction vector of segment
-                         * starting at this vertex (multiple
-                         * entries; one entry for each vertex). */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mline->x2[j]);
-                }
-                else if (strcmp (temp_string, "22") == 0)
-                {
-                        /* Now follows a string containing the
-                         * Y value of the direction vector of segment
-                         * starting at this vertex (multiple
-                         * entries; one entry for each vertex). */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mline->y2[j]);
-                }
-                else if (strcmp (temp_string, "32") == 0)
-                {
-                        /* Now follows a string containing the
-                         * Z value of the direction vector of segment
-                         * starting at this vertex (multiple
-                         * entries; one entry for each vertex). */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mline->z2[j]);
-                        j++;
+                        if (strcmp (temp_string, "12") == 0)
+                        {
+                                /* Now follows a string containing the X-value
+                                 * of the Direction vector (one entry for each
+                                 * vector). */
+                                if (j > 0) /* Create a pointer for the next vector. */
+                                {
+                                        dxf_point_init ((DxfPoint *) iter_p2->next);
+                                        iter_p2 = (DxfPoint *) iter_p2->next;
+                                }
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%lf\n", &iter_p2->x0);
+                        }
+                        else if (strcmp (temp_string, "22") == 0)
+                        {
+                                /* Now follows a string containing the Y-value
+                                 * of the Direction vector (one entry for each
+                                 * vector). */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%lf\n", &iter_p2->y0);
+                        }
+                        else if (strcmp (temp_string, "32") == 0)
+                        {
+                                /* Now follows a string containing the Z-value
+                                 * of the Direction vector (one entry for each
+                                 * vector). */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%lf\n", &iter_p2->z0);
+                                j++; /* Increase the number of found vectors. */
+                        }
                 }
                 else if (strcmp (temp_string, "13") == 0)
                 {
