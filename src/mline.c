@@ -198,6 +198,7 @@ dxf_mline_read
         int m;
         DxfPoint *iter_p1;
         DxfPoint *iter_p2;
+        DxfPoint *iter_p3;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -217,13 +218,14 @@ dxf_mline_read
                 mline = dxf_mline_new ();
                 mline = dxf_mline_init (mline);
         }
-        k = 0;
         l = 0;
         m = 0;
         i = 0; /* Number of found vertices in linked list p1. */
         iter_p1 = (DxfPoint *) mline->p1; /* Pointer to first vertex p1. */
         j = 0; /* Number of found direction vectors in linked list p2. */
         iter_p2 = (DxfPoint *) mline->p2; /* Pointer to first direction vector p2. */
+        k = 0;
+        iter_p3 = (DxfPoint *) mline->p3; /* Pointer to first direction vector p3. */
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -357,33 +359,40 @@ dxf_mline_read
                                 j++; /* Increase the number of found vectors. */
                         }
                 }
-                else if (strcmp (temp_string, "13") == 0)
+                else if ((strcmp (temp_string, "13") == 0)
+                  || (strcmp (temp_string, "23") == 0)
+                  || (strcmp (temp_string, "33") == 0))
                 {
-                        /* Now follows a string containing the
-                         * X value of the direction vector of miter at
-                         * this vertex (multiple entries: one for each
-                         * vertex). */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mline->x3[k]);
-                }
-                else if (strcmp (temp_string, "23") == 0)
-                {
-                        /* Now follows a string containing the
-                         * Y value of the direction vector of miter at
-                         * this vertex (multiple entries: one for each
-                         * vertex). */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mline->y3[k]);
-                }
-                else if (strcmp (temp_string, "33") == 0)
-                {
-                        /* Now follows a string containing the
-                         * Z value of the direction vector of miter at
-                         * this vertex (multiple entries: one for each
-                         * vertex). */
-                        (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mline->z3[k]);
-                        j++;
+                        if (strcmp (temp_string, "13") == 0)
+                        {
+                                /* Now follows a string containing the X-value
+                                 * of the Direction vector (one entry for each
+                                 * vector). */
+                                if (k > 0) /* Create a pointer for the next vector. */
+                                {
+                                        dxf_point_init ((DxfPoint *) iter_p3->next);
+                                        iter_p3 = (DxfPoint *) iter_p3->next;
+                                }
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%lf\n", &iter_p3->x0);
+                        }
+                        else if (strcmp (temp_string, "23") == 0)
+                        {
+                                /* Now follows a string containing the Y-value
+                                 * of the Direction vector (one entry for each
+                                 * vector). */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%lf\n", &iter_p3->y0);
+                        }
+                        else if (strcmp (temp_string, "33") == 0)
+                        {
+                                /* Now follows a string containing the Z-value
+                                 * of the Direction vector (one entry for each
+                                 * vector). */
+                                (fp->line_number)++;
+                                fscanf (fp->fp, "%lf\n", &iter_p3->z0);
+                                k++; /* Increase the number of found vectors. */
+                        }
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0))
