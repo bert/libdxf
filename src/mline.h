@@ -209,50 +209,14 @@ dxf_mline_struct
                 /*!< Vertex coordinates (multiple entries in a linked
                  * list; one entry for each vertex).\n
                  * Group codes = 11, 21 and 31.*/
-        double x1[DXF_MAX_PARAM];
-                /*!< X value of Vertex coordinates (multiple entries;
-                 * one entry for each vertex).\n
-                 * Group code = 11. */
-        double y1[DXF_MAX_PARAM];
-                /*!< Y value of Vertex coordinates (multiple entries;
-                 * one entry for each vertex).\n
-                 * Group code = 21. */
-        double z1[DXF_MAX_PARAM];
-                /*!< Z value of Vertex coordinates (multiple entries;
-                 * one entry for each vertex).\n
-                 * Group code = 31. */
         DxfPoint *p2;
                 /*!< Direction vector of segment starting at this vertex
                  * (multiple entries; one for each vertex).\n
                  * Group codes = 12, 22 and 32.*/
-        double x2[DXF_MAX_PARAM];
-                /*!< X value of the Direction vector of segment starting
-                 * at this vertex (multiple entries; one for each vertex).\n
-                 * Group code = 12. */
-        double y2[DXF_MAX_PARAM];
-                /*!< Y value of the Direction vector of segment starting
-                 * at this vertex (multiple entries; one for each vertex).\n
-                 * Group code = 22. */
-        double z2[DXF_MAX_PARAM];
-                /*!< Z value of the Direction vector of segment starting
-                 * at this vertex (multiple entries; one for each vertex).\n
-                 * Group code = 32. */
         DxfPoint *p3;
                 /*!< Direction vector of miter at this vertex
                  * (multiple entries; one for each vertex).\n
                  * Group codes = 13, 23 and 33.*/
-        double x3[DXF_MAX_PARAM];
-                /*!< X value of the Direction vector of miter at this
-                 * vertex (multiple entries: one for each vertex).\n
-                 * Group code = 13. */
-        double y3[DXF_MAX_PARAM];
-                /*!< Y value of the Direction vector of miter at this
-                 * vertex (multiple entries: one for each vertex).\n
-                 * Group code = 23. */
-        double z3[DXF_MAX_PARAM];
-                /*!< Z value of the Direction vector of miter at this
-                 * vertex (multiple entries: one for each vertex).\n
-                 * Group code = 33. */
         double scale_factor;
                 /*!< Scale factor.\n
                  * Group code = 40. */
