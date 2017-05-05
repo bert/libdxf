@@ -920,6 +920,7 @@ dxf_mline_free
         dxf_point_free (mline->p0);
         dxf_point_free_chain (mline->p1);
         dxf_point_free_chain (mline->p2);
+        dxf_point_free_chain (mline->p3);
         free (mline->mlinestyle_dictionary);
         free (mline);
         mline = NULL;
