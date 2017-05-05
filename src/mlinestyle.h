@@ -1,7 +1,7 @@
 /*!
  * \file mlinestyle.h
  *
- * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF mlinestyle object (\c MLINESTYLE).
  *
@@ -67,7 +67,7 @@ extern "C" {
  * \version According to DXF R14.
  */
 typedef struct
-dxf_mlinestyle
+dxf_mlinestyle_struct
 {
         /* Members common for all DXF objects. */
         int id_code;
