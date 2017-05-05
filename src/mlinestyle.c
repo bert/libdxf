@@ -5,7 +5,13 @@
  *
  * \brief Functions for a DXF mlinestyle object (\c MLINESTYLE).
  *
- * \version The \c MLINESTYLE object was introduced in DXF R13.
+ * \since The \c MLINESTYLE object was introduced in DXF R13.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -44,12 +50,6 @@
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfMlinestyle *
 dxf_mlinestyle_new ()
@@ -87,12 +87,6 @@ dxf_mlinestyle_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfMlinestyle *
 dxf_mlinestyle_init
@@ -155,12 +149,6 @@ dxf_mlinestyle_init
  * While parsing the DXF file store data in \c mlinestyle. \n
  *
  * \return a pointer to \c mlinestyle.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfMlinestyle *
 dxf_mlinestyle_read
@@ -360,12 +348,6 @@ dxf_mlinestyle_read
  * When the \c follow_strict_version_rules flag is set to \c FALSE in the
  * \c DxfFile struct, libdxf will write this entity to file and report
  * with a warning message to \c stderr.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_mlinestyle_write
@@ -478,12 +460,6 @@ dxf_mlinestyle_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_mlinestyle_free
@@ -526,12 +502,6 @@ dxf_mlinestyle_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c MLINESTYLE
  * objects and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_mlinestyle_free_chain

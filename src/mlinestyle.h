@@ -5,7 +5,13 @@
  *
  * \brief Header file for a DXF mlinestyle object (\c MLINESTYLE).
  *
- * \version The \c MLINESTYLE object was introduced in DXF R13.
+ * \since The \c MLINESTYLE object was introduced in DXF R13.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -59,12 +65,6 @@ extern "C" {
  * <b>Mlinestyle</b>: The 3 group value in the \c MLINESTYLE dictionary,
  * which precedes the 350 group that has the handle or entity name of
  * the current \c MLINESTYLE. 
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 typedef struct
 dxf_mlinestyle_struct
