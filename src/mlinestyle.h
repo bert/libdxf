@@ -168,6 +168,12 @@ dxf_mlinestyle_get_id_code
 (
         DxfMlinestyle *mlinestyle
 );
+DxfMlinestyle *
+dxf_mlinestyle_set_id_code
+(
+        DxfMlinestyle *mlinestyle,
+        int id_code
+);
 
 
 #ifdef __cplusplus
