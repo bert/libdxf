@@ -1,7 +1,7 @@
 /*!
  * \file mlinestyle.c
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF mlinestyle object (\c MLINESTYLE).
  *
@@ -558,6 +558,43 @@ dxf_mlinestyle_free_chain
 #if DEBUG
         DXF_DEBUG_END
 #endif
+}
+
+
+/*!
+ * \brief Get the ID code from a DXF \c MLINESTYLE object.
+ *
+ * \return \c id_code.
+ */
+int
+dxf_mlinestyle_get_id_code
+(
+        DxfMlinestyle *mlinestyle
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mlinestyle->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mlinestyle->id_code);
 }
 
 

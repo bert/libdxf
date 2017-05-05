@@ -163,6 +163,11 @@ dxf_mlinestyle_free_chain
 (
         DxfMlinestyle *mlinestyles
 );
+int
+dxf_mlinestyle_get_id_code
+(
+        DxfMlinestyle *mlinestyle
+);
 
 
 #ifdef __cplusplus
