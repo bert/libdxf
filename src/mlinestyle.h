@@ -179,6 +179,12 @@ dxf_mlinestyle_get_dictionary_owner_soft
 (
         DxfMlinestyle *mlinestyle
 );
+DxfMlinestyle *
+dxf_mlinestyle_set_dictionary_owner_soft
+(
+        DxfMlinestyle *mlinestyle,
+        char *dictionary_owner_soft
+);
 
 
 #ifdef __cplusplus
