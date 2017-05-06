@@ -174,6 +174,11 @@ dxf_mlinestyle_set_id_code
         DxfMlinestyle *mlinestyle,
         int id_code
 );
+char *
+dxf_mlinestyle_get_dictionary_owner_soft
+(
+        DxfMlinestyle *mlinestyle
+);
 
 
 #ifdef __cplusplus
