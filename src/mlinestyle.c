@@ -728,4 +728,44 @@ dxf_mlinestyle_get_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Set the pointer to the dictionary_owner_hard for a DXF
+ * \c MLINESTYLE object.
+ */
+DxfMlinestyle *
+dxf_mlinestyle_set_dictionary_owner_hard
+(
+        DxfMlinestyle *mlinestyle,
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+        char *dictionary_owner_hard
+                /*!< a string containing the pointer to the
+                 * dictionary_owner_hard for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_hard == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mlinestyle->dictionary_owner_hard = strdup (dictionary_owner_hard);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mlinestyle);
+}
+
+
 /* EOF */
