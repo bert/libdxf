@@ -201,6 +201,12 @@ dxf_mlinestyle_get_name
 (
         DxfMlinestyle *mlinestyle
 );
+DxfMlinestyle *
+dxf_mlinestyle_set_name
+(
+        DxfMlinestyle *mlinestyle,
+        char *name
+);
 
 
 #ifdef __cplusplus

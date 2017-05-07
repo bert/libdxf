@@ -807,4 +807,42 @@ dxf_mlinestyle_get_name
 }
 
 
+/*!
+ * \brief Set the \c name for a DXF \c MLINESTYLE object.
+ */
+DxfMlinestyle *
+dxf_mlinestyle_set_name
+(
+        DxfMlinestyle *mlinestyle,
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+        char *name
+                /*!< a string containing the \c name for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (name == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mlinestyle->name = strdup (name);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mlinestyle);
+}
+
+
 /* EOF */
