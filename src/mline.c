@@ -4006,7 +4006,7 @@ dxf_mline_get_element_parameters
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        if (mline->area_fill_parameters == NULL)
+        if (mline->element_parameters == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was found.\n")),
