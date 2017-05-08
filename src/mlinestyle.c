@@ -1042,4 +1042,47 @@ dxf_mlinestyle_get_element_offset
 }
 
 
+/*!
+ * \brief Set the pointer of \c element_parameters array of a DXF
+ * \c MLINESTYLE object.
+ *
+ * \return a pointer to \c mline when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMlinestyle *
+dxf_mlinestyle_set_element_offset
+(
+        DxfMlinestyle *mlinestyle,
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+        double *element_offset
+                /*!< the pointer to the \c element_offset array to
+                 * be set for the object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (element_offset == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        *(mlinestyle->element_offset) = *element_offset;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mlinestyle);
+}
+
+
 /* EOF */
