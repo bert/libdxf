@@ -923,4 +923,45 @@ dxf_mlinestyle_set_description
 }
 
 
+/*!
+ * \brief Get the \c element_linetype from a DXF \c MLINESTYLE object.
+ *
+ * \return \c element_linetype.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_mlinestyle_get_ith_element_linetype
+(
+        DxfMlinestyle *mlinestyle,
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+        int i
+                /*!< an index for the array of element linetypes. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mlinestyle->element_linetype[i] ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (mlinestyle->element_linetype[i]));
+}
+
+
 /* EOF */
