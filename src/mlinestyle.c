@@ -1004,4 +1004,42 @@ dxf_mlinestyle_set_ith_element_linetype
 }
 
 
+/*!
+ * \brief Get the \c element_offset array of a DXF \c MLINESTYLE object.
+ *
+ * \return pointer to the \c element_offset array.
+ */
+double
+dxf_mlinestyle_get_element_offset
+(
+        DxfMlinestyle *mlinestyle
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mlinestyle->element_offset == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (*(mlinestyle->element_offset));
+}
+
+
 /* EOF */

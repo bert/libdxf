@@ -231,6 +231,11 @@ dxf_mlinestyle_set_ith_element_linetype
         char *element_linetype,
         int i
 );
+double
+dxf_mlinestyle_get_element_offset
+(
+        DxfMlinestyle *mlinestyle
+);
 
 
 #ifdef __cplusplus
