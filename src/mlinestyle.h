@@ -212,6 +212,12 @@ dxf_mlinestyle_get_description
 (
         DxfMlinestyle *mlinestyle
 );
+DxfMlinestyle *
+dxf_mlinestyle_set_description
+(
+        DxfMlinestyle *mlinestyle,
+        char *description
+);
 
 
 #ifdef __cplusplus
