@@ -1116,7 +1116,7 @@ dxf_mlinestyle_get_start_angle
 
 
 /*!
- * \brief Set the start angle for a DXF \c MLINESTYLE object.
+ * \brief Set the \c start_angle for a DXF \c MLINESTYLE object.
  */
 DxfMlinestyle *
 dxf_mlinestyle_set_start_angle
@@ -1124,7 +1124,7 @@ dxf_mlinestyle_set_start_angle
         DxfMlinestyle *mlinestyle,
                 /*!< a pointer to a DXF \c MLINESTYLE object. */
         double start_angle
-                /*!< the start angle to be set for the object. */
+                /*!< the \c start_angle to be set for the object. */
 )
 {
 #if DEBUG
