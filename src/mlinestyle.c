@@ -1115,4 +1115,35 @@ dxf_mlinestyle_get_start_angle
 }
 
 
+/*!
+ * \brief Set the start angle for a DXF \c MLINESTYLE object.
+ */
+DxfMlinestyle *
+dxf_mlinestyle_set_start_angle
+(
+        DxfMlinestyle *mlinestyle,
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+        double start_angle
+                /*!< the start angle to be set for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mlinestyle->start_angle = start_angle;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mlinestyle);
+}
+
+
 /* EOF */

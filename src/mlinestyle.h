@@ -247,6 +247,12 @@ dxf_mlinestyle_get_start_angle
 (
         DxfMlinestyle *mlinestyle
 );
+DxfMlinestyle *
+dxf_mlinestyle_set_start_angle
+(
+        DxfMlinestyle *mlinestyle,
+        double start_angle
+);
 
 
 #ifdef __cplusplus
