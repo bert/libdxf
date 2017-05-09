@@ -1146,4 +1146,34 @@ dxf_mlinestyle_set_start_angle
 }
 
 
+/*!
+ * \brief Get the \c end_angle from a DXF \c MLINESTYLE object.
+ *
+ * \return \c end_angle.
+ */
+double
+dxf_mlinestyle_get_end_angle
+(
+        DxfMlinestyle *mlinestyle
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mlinestyle->end_angle);
+}
+
+
 /* EOF */
