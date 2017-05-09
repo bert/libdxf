@@ -258,6 +258,12 @@ dxf_mlinestyle_get_end_angle
 (
         DxfMlinestyle *mlinestyle
 );
+DxfMlinestyle *
+dxf_mlinestyle_set_end_angle
+(
+        DxfMlinestyle *mlinestyle,
+        double end_angle
+);
 
 
 #ifdef __cplusplus
