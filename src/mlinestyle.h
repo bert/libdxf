@@ -242,6 +242,11 @@ dxf_mlinestyle_set_element_offset
         DxfMlinestyle *mlinestyle,
         double *element_offset
 );
+double
+dxf_mlinestyle_get_start_angle
+(
+        DxfMlinestyle *mlinestyle
+);
 
 
 #ifdef __cplusplus
