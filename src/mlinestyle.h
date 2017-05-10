@@ -264,6 +264,11 @@ dxf_mlinestyle_set_end_angle
         DxfMlinestyle *mlinestyle,
         double end_angle
 );
+int
+dxf_mlinestyle_get_color
+(
+        DxfMlinestyle *mlinestyle
+);
 
 
 #ifdef __cplusplus
