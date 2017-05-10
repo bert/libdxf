@@ -973,7 +973,8 @@ dxf_mlinestyle_set_ith_element_linetype
         DxfMlinestyle *mlinestyle,
                 /*!< a pointer to a DXF \c MLINESTYLE object. */
         char *element_linetype,
-                /*!< a string containing the \c name for the object. */
+                /*!< a string containing the \c element_linetype for the
+                 * object. */
         int i
                 /*!< an index for the array of element linetypes. */
 )
