@@ -1280,4 +1280,36 @@ dxf_mlinestyle_set_color
 }
 
 
+/*!
+ * \brief Get the i-th \c element_color from a DXF \c MLINESTYLE object.
+ *
+ * \return \c element_color.
+ */
+int
+dxf_mlinestyle_get_ith_element_color
+(
+        DxfMlinestyle *mlinestyle,
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+        int i
+                /*!< an index for the array of element colors. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mlinestyle->element_color[i]);
+}
+
+
 /* EOF */
