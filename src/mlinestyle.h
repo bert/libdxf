@@ -269,6 +269,12 @@ dxf_mlinestyle_get_color
 (
         DxfMlinestyle *mlinestyle
 );
+DxfMlinestyle *
+dxf_mlinestyle_set_color
+(
+        DxfMlinestyle *mlinestyle,
+        int color
+);
 
 
 #ifdef __cplusplus
