@@ -288,6 +288,11 @@ dxf_mlinestyle_set_ith_element_color
         int element_color,
         int i
 );
+int
+dxf_mlinestyle_get_flags
+(
+        DxfMlinestyle *mlinestyle
+);
 
 
 #ifdef __cplusplus
