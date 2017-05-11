@@ -1441,4 +1441,41 @@ dxf_mlinestyle_set_flags
 }
 
 
+/*!
+ * \brief Get the \c number_of_elements from a DXF \c MLINESTYLE object.
+ *
+ * \return \c number_of_elements.
+ */
+int
+dxf_mlinestyle_get_number_of_elements
+(
+        DxfMlinestyle *mlinestyle
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mlinestyle->number_of_elements < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mlinestyle->number_of_elements);
+}
+
+
 /* EOF */
