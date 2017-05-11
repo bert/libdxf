@@ -1478,4 +1478,42 @@ dxf_mlinestyle_get_number_of_elements
 }
 
 
+/*!
+ * \brief Set the \c number_of_elements for a DXF \c MLINESTYLE object.
+ */
+DxfMlinestyle *
+dxf_mlinestyle_set_number_of_elements
+(
+        DxfMlinestyle *mlinestyle,
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+        int number_of_elements
+                /*!< the \c number_of_elements to be set for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (number_of_elements < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mlinestyle->number_of_elements = number_of_elements;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mlinestyle);
+}
+
+
 /* EOF */
