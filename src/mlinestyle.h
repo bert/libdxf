@@ -293,6 +293,12 @@ dxf_mlinestyle_get_flags
 (
         DxfMlinestyle *mlinestyle
 );
+DxfMlinestyle *
+dxf_mlinestyle_set_flags
+(
+        DxfMlinestyle *mlinestyle,
+        int flags
+);
 
 
 #ifdef __cplusplus
