@@ -315,6 +315,12 @@ dxf_mlinestyle_get_next
 (
         DxfMlinestyle *mlinestyle
 );
+DxfMlinestyle *
+dxf_mlinestyle_set_next
+(
+        DxfMlinestyle *mlinestyle,
+        DxfMlinestyle *next
+);
 
 
 #ifdef __cplusplus
