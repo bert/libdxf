@@ -1516,4 +1516,44 @@ dxf_mlinestyle_set_number_of_elements
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c MLINESTYLE object from a DXF 
+ * \c MLINESTYLE object.
+ *
+ * \return pointer to the next \c MLINESTYLE object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfMlinestyle *
+dxf_mlinestyle_get_next
+(
+        DxfMlinestyle *mlinestyle
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mlinestyle->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfMlinestyle *) mlinestyle->next);
+}
+
+
 /* EOF */

@@ -310,6 +310,11 @@ dxf_mlinestyle_set_number_of_elements
         DxfMlinestyle *mlinestyle,
         int number_of_elements
 );
+DxfMlinestyle *
+dxf_mlinestyle_get_next
+(
+        DxfMlinestyle *mlinestyle
+);
 
 
 #ifdef __cplusplus
