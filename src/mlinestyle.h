@@ -305,6 +305,11 @@ dxf_mlinestyle_flag_is_fill_on
         DxfMlinestyle *mlinestyle
 );
 int
+dxf_mlinestyle_flag_is_display_miters
+(
+        DxfMlinestyle *mlinestyle
+);
+int
 dxf_mlinestyle_get_number_of_elements
 (
         DxfMlinestyle *mlinestyle
