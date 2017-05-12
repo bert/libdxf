@@ -321,6 +321,11 @@ dxf_mlinestyle_set_next
         DxfMlinestyle *mlinestyle,
         DxfMlinestyle *next
 );
+DxfMlinestyle *
+dxf_mlinestyle_get_last
+(
+        DxfMlinestyle *mlinestyle
+);
 
 
 #ifdef __cplusplus

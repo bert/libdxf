@@ -1595,4 +1595,49 @@ dxf_mlinestyle_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c MLINESTYLE object from a linked
+ * list of DXF \c MLINESTYLE object.
+ *
+ * \return pointer to the last \c MLINESTYLE object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfMlinestyle *
+dxf_mlinestyle_get_last
+(
+        DxfMlinestyle *mlinestyle
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mlinestyle->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfMlinestyle *) mlinestyle);
+        }
+        DxfMlinestyle *iter = (DxfMlinestyle *) mlinestyle->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfMlinestyle *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfMlinestyle *) iter);
+}
+
+
 /* EOF */
