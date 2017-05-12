@@ -310,6 +310,11 @@ dxf_mlinestyle_flag_is_display_miters
         DxfMlinestyle *mlinestyle
 );
 int
+dxf_mlinestyle_flag_is_start_square_end_cap
+(
+        DxfMlinestyle *mlinestyle
+);
+int
 dxf_mlinestyle_get_number_of_elements
 (
         DxfMlinestyle *mlinestyle
