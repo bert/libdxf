@@ -1601,6 +1601,38 @@ dxf_mlinestyle_flag_is_start_round_outer_arcs_cap
 
 
 /*!
+ * \brief Test if the \c mlinestyle has its \c flag set to
+ * \c end_square_end_cap.
+ *
+ * \return \c TRUE when the \c flag is set to \c end_square_end_cap,
+ * or \c FALSE when the \c flag is not set to \c end_square_end_cap.
+ */
+int
+dxf_mlinestyle_flag_is_end_square_end_cap
+(
+        DxfMlinestyle *mlinestyle
+                /*!< DXF \c MLINESTYLE object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (DXF_CHECK_BIT (mlinestyle->flags, 8));
+}
+
+
+/*!
  * \brief Get the \c number_of_elements from a DXF \c MLINESTYLE object.
  *
  * \return \c number_of_elements.

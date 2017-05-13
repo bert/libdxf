@@ -325,6 +325,11 @@ dxf_mlinestyle_flag_is_start_round_outer_arcs_cap
         DxfMlinestyle *mlinestyle
 );
 int
+dxf_mlinestyle_flag_is_end_square_end_cap
+(
+        DxfMlinestyle *mlinestyle
+);
+int
 dxf_mlinestyle_get_number_of_elements
 (
         DxfMlinestyle *mlinestyle
