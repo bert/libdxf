@@ -243,6 +243,12 @@ dxf_mlinestyle_set_element_offset
         double *element_offset
 );
 double
+dxf_mlinestyle_get_ith_element_offset
+(
+        DxfMlinestyle *mlinestyle,
+        int i
+);
+double
 dxf_mlinestyle_get_start_angle
 (
         DxfMlinestyle *mlinestyle
