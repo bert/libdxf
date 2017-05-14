@@ -1119,6 +1119,47 @@ dxf_mlinestyle_get_ith_element_offset
 
 
 /*!
+ * \brief Set the i-th \c element_offset for a DXF \c MLINESTYLE object.
+ */
+DxfMlinestyle *
+dxf_mlinestyle_set_ith_element_offset
+(
+        DxfMlinestyle *mlinestyle,
+                /*!< a pointer to a DXF \c MLINESTYLE object. */
+        double element_offset,
+                /*!< a double containing the i-th \c element_offset for
+                 * the object. */
+        int i
+                /*!< an index for the array of element offsets. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (i < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative array index was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mlinestyle->element_offset[i] = element_offset;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mlinestyle);
+}
+
+
+/*!
  * \brief Get the \s start_angle from a DXF \c MLINESTYLE object.
  *
  * \return \c start_angle.
