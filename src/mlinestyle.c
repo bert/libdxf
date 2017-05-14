@@ -1150,6 +1150,13 @@ dxf_mlinestyle_set_ith_element_offset
                   __FUNCTION__);
                 return (NULL);
         }
+        if (i > DXF_MAX_PARAM)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range array index was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         mlinestyle->element_offset[i] = element_offset;
 #if DEBUG
         DXF_DEBUG_END
