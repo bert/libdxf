@@ -1437,6 +1437,20 @@ dxf_mlinestyle_set_ith_element_color
                   (_("Warning in %s () a negative value was passed.\n")),
                   __FUNCTION__);
         }
+        if (i < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative array index was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (i > DXF_MAX_PARAM)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range array index was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         mlinestyle->element_color[i] = element_color;
 #if DEBUG
         DXF_DEBUG_END
