@@ -388,20 +388,20 @@ dxf_mlinestyle_write
         {
                 fprintf (stderr,
                   (_("Error in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, mlinestyle->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_mlinestyle_get_id_code (mlinestyle));
                 return (EXIT_FAILURE);
         }
         else
         {
                 fprintf (stderr,
                   (_("Warning in %s () illegal DXF version for this %s entity with id-code: %x.\n")),
-                  __FUNCTION__, dxf_entity_name, mlinestyle->id_code);
+                  __FUNCTION__, dxf_entity_name, dxf_mlinestyle_get_id_code (mlinestyle));
         }
         /* Start writing output. */
         fprintf (fp->fp, "  0\n%s\n", dxf_entity_name);
-        if (mlinestyle->id_code != -1)
+        if (dxf_mlinestyle_get_id_code (mlinestyle) != -1)
         {
-                fprintf (fp->fp, "  5\n%x\n", mlinestyle->id_code);
+                fprintf (fp->fp, "  5\n%x\n", dxf_mlinestyle_get_id_code (mlinestyle));
         }
         /*!
          * \todo for version R14.\n
@@ -413,37 +413,36 @@ dxf_mlinestyle_write
          * 102 groups are application defined (optional).\n\n
          * End of group, "}" (optional), with Group code 102.
          */
-        if ((strcmp (mlinestyle->dictionary_owner_soft, "") != 0)
+        if ((strcmp (dxf_mlinestyle_get_dictionary_owner_soft (mlinestyle), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_REACTORS\n");
-                fprintf (fp->fp, "330\n%s\n", mlinestyle->dictionary_owner_soft);
+                fprintf (fp->fp, "330\n%s\n", dxf_mlinestyle_get_dictionary_owner_soft (mlinestyle));
                 fprintf (fp->fp, "102\n}\n");
         }
-        if ((strcmp (mlinestyle->dictionary_owner_hard, "") != 0)
+        if ((strcmp (dxf_mlinestyle_get_dictionary_owner_hard (mlinestyle), "") != 0)
           && (fp->acad_version_number >= AutoCAD_14))
         {
                 fprintf (fp->fp, "102\n{ACAD_XDICTIONARY\n");
-                fprintf (fp->fp, "360\n%s\n", mlinestyle->dictionary_owner_hard);
+                fprintf (fp->fp, "360\n%s\n", dxf_mlinestyle_get_dictionary_owner_hard (mlinestyle));
                 fprintf (fp->fp, "102\n}\n");
         }
         if (fp->acad_version_number >= AutoCAD_13)
         {
                 fprintf (fp->fp, "100\nAcDbMlineStyle\n");
         }
-        fprintf (fp->fp, "  2\n%s\n", mlinestyle->name);
-        fprintf (fp->fp, " 70\n%d\n", mlinestyle->flags);
-        fprintf (fp->fp, "  3\n%s\n", mlinestyle->description);
-        fprintf (fp->fp, " 62\n%d\n", mlinestyle->color);
-        fprintf (fp->fp, " 51\n%lf\n", mlinestyle->start_angle);
-        fprintf (fp->fp, " 52\n%lf\n", mlinestyle->end_angle);
-        fprintf (fp->fp, " 71\n%d\n", mlinestyle->number_of_elements);
+        fprintf (fp->fp, "  2\n%s\n", dxf_mlinestyle_get_name (mlinestyle));
+        fprintf (fp->fp, " 70\n%d\n", dxf_mlinestyle_get_flags (mlinestyle));
+        fprintf (fp->fp, "  3\n%s\n", dxf_mlinestyle_get_description (mlinestyle));
+        fprintf (fp->fp, " 62\n%d\n", dxf_mlinestyle_get_color (mlinestyle));
+        fprintf (fp->fp, " 51\n%lf\n", dxf_mlinestyle_get_start_angle (mlinestyle));
+        fprintf (fp->fp, " 52\n%lf\n", dxf_mlinestyle_get_end_angle (mlinestyle));
+        fprintf (fp->fp, " 71\n%d\n", dxf_mlinestyle_get_number_of_elements (mlinestyle));
         for (i = 1; i < DXF_MAX_PARAM; i++)
         {
-                fprintf (fp->fp, " 49\n%lf\n", mlinestyle->element_offset[i]);
-                fprintf (fp->fp, " 62\n%d\n", mlinestyle->element_color[i]);
-                fprintf (fp->fp, "  6\n%s\n", mlinestyle->element_linetype[i]);
-                /*! \todo Check for overrun of array index. */
+                fprintf (fp->fp, " 49\n%lf\n", dxf_mlinestyle_get_ith_element_offset (mlinestyle, i));
+                fprintf (fp->fp, " 62\n%d\n", dxf_mlinestyle_get_ith_element_color (mlinestyle, i));
+                fprintf (fp->fp, "  6\n%s\n", dxf_mlinestyle_get_ith_element_linetype (mlinestyle, i));
         }
         /* Clean up. */
         free (dxf_entity_name);
