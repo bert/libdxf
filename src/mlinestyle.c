@@ -1385,6 +1385,20 @@ dxf_mlinestyle_get_ith_element_color
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (i < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative array index was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (i > DXF_MAX_PARAM)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range array index was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
