@@ -949,6 +949,20 @@ dxf_mlinestyle_get_ith_element_linetype
                   __FUNCTION__);
                 return (NULL);
         }
+        if (i < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative array index was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (i > DXF_MAX_PARAM)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () an out of range array index was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
         if (mlinestyle->element_linetype[i] ==  NULL)
         {
                 fprintf (stderr,
