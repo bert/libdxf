@@ -481,13 +481,13 @@ dxf_mlinestyle_free
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
-        free (mlinestyle->dictionary_owner_soft);
-        free (mlinestyle->dictionary_owner_hard);
-        free (mlinestyle->name);
-        free (mlinestyle->description);
+        free (dxf_mlinestyle_get_dictionary_owner_soft (mlinestyle));
+        free (dxf_mlinestyle_get_dictionary_owner_hard (mlinestyle));
+        free (dxf_mlinestyle_get_name (mlinestyle));
+        free (dxf_mlinestyle_get_description (mlinestyle));
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                free (mlinestyle->element_linetype[i]);
+                free (dxf_mlinestyle_get_ith_element_linetype (mlinestyle, 1));
         }
         free (mlinestyle);
         mlinestyle = NULL;
