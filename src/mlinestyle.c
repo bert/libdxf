@@ -115,23 +115,23 @@ dxf_mlinestyle_init
                   __FUNCTION__);
                 return (NULL);
         }
-        mlinestyle->name = strdup ("");
-        mlinestyle->description = strdup ("");
-        mlinestyle->id_code = 0;
-        mlinestyle->dictionary_owner_soft = strdup ("");
-        mlinestyle->dictionary_owner_hard = strdup ("");
-        mlinestyle->start_angle = 0.0;
-        mlinestyle->end_angle = 0.0;
-        mlinestyle->color = 256;
-        mlinestyle->flags = 0;
-        mlinestyle->number_of_elements = 0;
+        dxf_mlinestyle_set_name (mlinestyle, strdup (""));
+        dxf_mlinestyle_set_description (mlinestyle, strdup (""));
+        dxf_mlinestyle_set_id_code (mlinestyle, 0);
+        dxf_mlinestyle_set_dictionary_owner_soft (mlinestyle, strdup (""));
+        dxf_mlinestyle_set_dictionary_owner_hard (mlinestyle, strdup (""));
+        dxf_mlinestyle_set_start_angle (mlinestyle, 0.0);
+        dxf_mlinestyle_set_end_angle (mlinestyle, 0.0);
+        dxf_mlinestyle_set_color (mlinestyle, DXF_COLOR_BYLAYER);
+        dxf_mlinestyle_set_flags (mlinestyle, 0);
+        dxf_mlinestyle_set_number_of_elements (mlinestyle, 0);
         for (i = 0; i < DXF_MAX_PARAM; i++)
         {
-                mlinestyle->element_linetype[i] = strdup ("");
-                mlinestyle->element_offset[i] = 0.0;
-                mlinestyle->element_color[i] = 0;
+                dxf_mlinestyle_set_ith_element_linetype (mlinestyle, strdup (""), i);
+                dxf_mlinestyle_set_ith_element_offset (mlinestyle, 0.0, i);
+                dxf_mlinestyle_set_ith_element_color (mlinestyle, 0, i);
         }
-        mlinestyle->next = NULL;
+        dxf_mlinestyle_set_next (mlinestyle, NULL);
 #if DEBUG
         DXF_DEBUG_END
 #endif
