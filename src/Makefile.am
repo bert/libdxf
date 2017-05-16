@@ -176,4 +176,7 @@ libdxf_la_SOURCES = \
 
 libdxf_la_CFLAGS = -Wall
 
-EXTRA_DIST= dxf.h
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA=libdxf.pc.in
+
+EXTRA_DIST= dxf.h libdxf.pc.in
