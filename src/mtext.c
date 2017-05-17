@@ -1026,4 +1026,35 @@ dxf_mtext_get_elevation
 }
 
 
+/*!
+ * \brief Set the \c elevation for a DXF \c MTEXT entity.
+ */
+DxfMtext *
+dxf_mtext_set_elevation
+(
+        DxfMtext *mtext,
+                /*!< a pointer to a DXF \c MTEXT entity. */
+        double elevation
+                /*!< the \c elevation to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mtext->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext);
+}
+
+
 /* EOF */

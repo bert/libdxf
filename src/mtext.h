@@ -346,6 +346,12 @@ dxf_mtext_get_elevation
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_elevation
+(
+        DxfMtext *mtext,
+        double elevation
+);
 
 
 #ifdef __cplusplus
