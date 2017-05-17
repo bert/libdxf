@@ -352,6 +352,11 @@ dxf_mtext_set_elevation
         DxfMtext *mtext,
         double elevation
 );
+double
+dxf_mtext_get_thickness
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
