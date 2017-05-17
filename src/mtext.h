@@ -335,6 +335,12 @@ dxf_mtext_get_layer
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_layer
+(
+        DxfMtext *mtext,
+        char *layer
+);
 
 
 #ifdef __cplusplus
