@@ -308,6 +308,11 @@ dxf_mtext_free_chain
 (
         DxfMtext *mtexts
 );
+int
+dxf_mtext_get_id_code
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus

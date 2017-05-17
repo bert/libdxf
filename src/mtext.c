@@ -769,4 +769,41 @@ dxf_mtext_free_chain
 }
 
 
+/*!
+ * \brief Get the \c id_code from a DXF \c MTEXT entity.
+ *
+ * \return \c id_code.
+ */
+int
+dxf_mtext_get_id_code
+(
+        DxfMtext *mtext
+                /*!< a pointer to a DXF \c MTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mtext->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext->id_code);
+}
+
+
 /* EOF */
