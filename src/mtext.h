@@ -341,6 +341,11 @@ dxf_mtext_set_layer
         DxfMtext *mtext,
         char *layer
 );
+double
+dxf_mtext_get_elevation
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
