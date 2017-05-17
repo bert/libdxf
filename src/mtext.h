@@ -313,6 +313,12 @@ dxf_mtext_get_id_code
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_id_code
+(
+        DxfMtext *mtext,
+        int id_code
+);
 
 
 #ifdef __cplusplus
