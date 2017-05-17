@@ -319,6 +319,11 @@ dxf_mtext_set_id_code
         DxfMtext *mtext,
         int id_code
 );
+char *
+dxf_mtext_get_linetype
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
