@@ -1169,4 +1169,42 @@ dxf_mtext_get_linetype_scale
 }
 
 
+/*!
+ * \brief Set the \c linetype_scale for a DXF \c MTEXT entity.
+ */
+DxfMtext *
+dxf_mtext_set_linetype_scale
+(
+        DxfMtext *mtext,
+                /*!< a pointer to a DXF \c MTEXT entity. */
+        double linetype_scale
+                /*!< the \c linetype_scale to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (linetype_scale < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mtext->linetype_scale = linetype_scale;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext);
+}
+
+
 /* EOF */

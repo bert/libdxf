@@ -368,6 +368,12 @@ dxf_mtext_get_linetype_scale
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_linetype_scale
+(
+        DxfMtext *mtext,
+        double linetype_scale
+);
 
 
 #ifdef __cplusplus
