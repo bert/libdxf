@@ -363,6 +363,11 @@ dxf_mtext_set_thickness
         DxfMtext *mtext,
         double thickness
 );
+double
+dxf_mtext_get_linetype_scale
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
