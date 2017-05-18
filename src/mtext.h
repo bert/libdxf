@@ -357,6 +357,12 @@ dxf_mtext_get_thickness
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_thickness
+(
+        DxfMtext *mtext,
+        double thickness
+);
 
 
 #ifdef __cplusplus
