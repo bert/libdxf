@@ -374,6 +374,11 @@ dxf_mtext_set_linetype_scale
         DxfMtext *mtext,
         double linetype_scale
 );
+int16_t
+dxf_mtext_get_visibility
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
