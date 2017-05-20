@@ -379,6 +379,12 @@ dxf_mtext_get_visibility
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_visibility
+(
+        DxfMtext *mtext,
+        int16_t visibility
+);
 
 
 #ifdef __cplusplus
