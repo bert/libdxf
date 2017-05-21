@@ -385,6 +385,11 @@ dxf_mtext_set_visibility
         DxfMtext *mtext,
         int16_t visibility
 );
+int
+dxf_mtext_get_color
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
