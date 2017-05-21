@@ -396,6 +396,11 @@ dxf_mtext_set_color
         DxfMtext *mtext,
         int color
 );
+int
+dxf_mtext_get_paperspace
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
