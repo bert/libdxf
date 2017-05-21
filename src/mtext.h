@@ -390,6 +390,12 @@ dxf_mtext_get_color
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_color
+(
+        DxfMtext *mtext,
+        int color
+);
 
 
 #ifdef __cplusplus
