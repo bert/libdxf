@@ -496,6 +496,11 @@ dxf_mtext_set_graphics_data_size
         DxfMtext *mtext,
         int graphics_data_size
 );
+int16_t
+dxf_mtext_get_shadow_mode
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
