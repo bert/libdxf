@@ -490,6 +490,12 @@ dxf_mtext_get_graphics_data_size
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_graphics_data_size
+(
+        DxfMtext *mtext,
+        int graphics_data_size
+);
 
 
 #ifdef __cplusplus
