@@ -501,6 +501,12 @@ dxf_mtext_get_shadow_mode
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_shadow_mode
+(
+        DxfMtext *mtext,
+        int16_t shadow_mode
+);
 
 
 #ifdef __cplusplus
