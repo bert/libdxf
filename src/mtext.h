@@ -485,6 +485,11 @@ dxf_mtext_set_paperspace
         DxfMtext *mtext,
         int paperspace
 );
+int
+dxf_mtext_get_graphics_data_size
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
