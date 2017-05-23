@@ -512,6 +512,12 @@ dxf_mtext_get_binary_graphics_data
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_binary_graphics_data
+(
+        DxfMtext *mtext,
+        DxfBinaryGraphicsData *data
+);
 
 
 #ifdef __cplusplus
