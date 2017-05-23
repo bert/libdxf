@@ -523,6 +523,12 @@ dxf_mtext_get_dictionary_owner_soft
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_dictionary_owner_soft
+(
+        DxfMtext *mtext,
+        char *dictionary_owner_soft
+);
 
 
 #ifdef __cplusplus
