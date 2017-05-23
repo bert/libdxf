@@ -507,6 +507,11 @@ dxf_mtext_set_shadow_mode
         DxfMtext *mtext,
         int16_t shadow_mode
 );
+DxfBinaryGraphicsData *
+dxf_mtext_get_binary_graphics_data
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
