@@ -518,6 +518,11 @@ dxf_mtext_set_binary_graphics_data
         DxfMtext *mtext,
         DxfBinaryGraphicsData *data
 );
+char *
+dxf_mtext_get_dictionary_owner_soft
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
