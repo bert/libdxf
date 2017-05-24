@@ -534,6 +534,12 @@ dxf_mtext_get_material
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_material
+(
+        DxfMtext *mtext,
+        char *material
+);
 
 
 #ifdef __cplusplus
