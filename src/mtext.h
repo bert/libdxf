@@ -545,6 +545,12 @@ dxf_mtext_get_dictionary_owner_hard
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_dictionary_owner_hard
+(
+        DxfMtext *mtext,
+        char *dictionary_owner_hard
+);
 
 
 #ifdef __cplusplus
