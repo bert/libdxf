@@ -1882,4 +1882,44 @@ dxf_mtext_set_material
 }
 
 
+/*!
+ * \brief Get the hard pointer to the dictionary owner from a DXF 
+ * \c MTEXT entity.
+ *
+ * \return hard pointer to the dictionary owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_mtext_get_dictionary_owner_hard
+(
+        DxfMtext *mtext
+                /*!< a pointer to a DXF \c MTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mtext->dictionary_owner_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (mtext->dictionary_owner_hard));
+}
+
+
 /* EOF */

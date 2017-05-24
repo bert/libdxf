@@ -540,6 +540,11 @@ dxf_mtext_set_material
         DxfMtext *mtext,
         char *material
 );
+char *
+dxf_mtext_get_dictionary_owner_hard
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
