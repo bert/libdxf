@@ -1993,4 +1993,38 @@ dxf_mtext_get_lineweight
 }
 
 
+/*!
+ * \brief Set the \c lineweight for a DXF \c MTEXT entity.
+ *
+ * \return a pointer to \c mtext when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMtext *
+dxf_mtext_set_lineweight
+(
+        DxfMtext *mtext,
+                /*!< a pointer to a DXF \c MTEXT entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mtext->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext);
+}
+
+
 /* EOF */

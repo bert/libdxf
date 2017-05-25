@@ -556,6 +556,12 @@ dxf_mtext_get_lineweight
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_lineweight
+(
+        DxfMtext *mtext,
+        int16_t lineweight
+);
 
 
 #ifdef __cplusplus
