@@ -567,6 +567,12 @@ dxf_mtext_get_plot_style_name
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_plot_style_name
+(
+        DxfMtext *mtext,
+        char *plot_style_name
+);
 
 
 #ifdef __cplusplus
