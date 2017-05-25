@@ -584,6 +584,11 @@ dxf_mtext_set_color_value
         DxfMtext *mtext,
         long color_value
 );
+char *
+dxf_mtext_get_color_name
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
