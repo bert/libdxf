@@ -551,6 +551,11 @@ dxf_mtext_set_dictionary_owner_hard
         DxfMtext *mtext,
         char *dictionary_owner_hard
 );
+int16_t
+dxf_mtext_get_lineweight
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
