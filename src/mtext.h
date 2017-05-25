@@ -573,6 +573,11 @@ dxf_mtext_set_plot_style_name
         DxfMtext *mtext,
         char *plot_style_name
 );
+long
+dxf_mtext_get_color_value
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
