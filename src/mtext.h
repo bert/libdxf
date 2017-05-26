@@ -595,6 +595,11 @@ dxf_mtext_set_color_name
         DxfMtext *mtext,
         char *color_name
 );
+long
+dxf_mtext_get_transparency
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
