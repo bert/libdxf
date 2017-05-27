@@ -606,6 +606,11 @@ dxf_mtext_set_transparency
         DxfMtext *mtext,
         long transparency
 );
+char *
+dxf_mtext_get_text_value
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
