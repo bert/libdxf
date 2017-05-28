@@ -2397,4 +2397,42 @@ dxf_mtext_set_text_value
 }
 
 
+/*!
+ * \brief Get the \c text_style from a DXF \c MTEXT entity.
+ *
+ * \return \c text_style when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_mtext_get_text_style
+(
+        DxfMtext *mtext
+                /*!< a pointer to a DXF \c MTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mtext->text_style ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (mtext->text_style));
+}
+
+
 /* EOF */

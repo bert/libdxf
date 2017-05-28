@@ -617,6 +617,11 @@ dxf_mtext_set_text_value
         DxfMtext *mtext,
         char *text_value
 );
+char *
+dxf_mtext_get_text_style
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
