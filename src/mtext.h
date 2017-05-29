@@ -44,6 +44,7 @@
 
 
 #include "global.h"
+#include "point.h"
 #include "binary_graphics_data.h"
 
 
@@ -201,6 +202,9 @@ dxf_mtext_struct
                 /*!< Text style.\n
                  * Optional, defaults to \c STANDARD.\n
                  * Group code = 7. */
+        DxfPoint *p0;
+                /*!< Insertion point.\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< Insertion point.\n
                  * Group code = 10. */
