@@ -626,6 +626,12 @@ dxf_mtext_get_text_style
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_text_style
+(
+        DxfMtext *mtext,
+        char *text_style
+);
 
 
 #ifdef __cplusplus
