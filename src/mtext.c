@@ -2477,4 +2477,41 @@ dxf_mtext_set_text_style
 }
 
 
+/*!
+ * \brief Get the insertion point \c p0 of a DXF \c MTEXT entity.
+ *
+ * \return the insertion point \c p0.
+ */
+DxfPoint *
+dxf_mtext_get_p0
+(
+        DxfMtext *mtext
+                /*!< a pointer to a DXF \c MTEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mtext->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext->p0);
+}
+
+
 /* EOF */
