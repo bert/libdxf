@@ -659,6 +659,12 @@ dxf_mtext_get_y0
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_y0
+(
+        DxfMtext *mtext,
+        double y0
+);
 
 
 #ifdef __cplusplus
