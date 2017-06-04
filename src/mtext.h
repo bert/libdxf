@@ -686,6 +686,11 @@ dxf_mtext_set_z0
         DxfMtext *mtext,
         double z0
 );
+DxfPoint *
+dxf_mtext_get_p1
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
