@@ -2757,4 +2757,47 @@ dxf_mtext_get_z0
 }
 
 
+/*!
+ * \brief Set the Z-value of the insertion point \c z0 of a DXF \c MTEXT
+ * entity.
+ *
+ * \return a pointer to \c mtext when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMtext *
+dxf_mtext_set_z0
+(
+        DxfMtext *mtext,
+                /*!< a pointer to a DXF \c MTEXT entity. */
+        double z0
+                /*!< the Z-value of the insertion point \c z0 of a DXF
+                 * \c MTEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mtext->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mtext->p0->z0 = z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext);
+}
+
+
 /* EOF */

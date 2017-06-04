@@ -670,6 +670,12 @@ dxf_mtext_get_z0
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_z0
+(
+        DxfMtext *mtext,
+        double z0
+);
 
 
 #ifdef __cplusplus
