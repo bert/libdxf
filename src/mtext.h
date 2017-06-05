@@ -697,6 +697,11 @@ dxf_mtext_set_p1
         DxfMtext *mtext,
         DxfPoint *p1
 );
+double
+dxf_mtext_get_x1
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
