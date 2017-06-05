@@ -2916,4 +2916,47 @@ dxf_mtext_get_x1
 }
 
 
+/*!
+ * \brief Set the X-value of the direction vector \c x0 of a DXF
+ * \c MTEXT entity.
+ *
+ * \return a pointer to \c mtext when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMtext *
+dxf_mtext_set_x1
+(
+        DxfMtext *mtext,
+                /*!< a pointer to a DXF \c MTEXT entity. */
+        double x1
+                /*!< the X-value of the direction vector \c x0 of a DXF
+                 * \c MTEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mtext->p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mtext->p1->x0 = x1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext);
+}
+
+
 /* EOF */

@@ -702,6 +702,12 @@ dxf_mtext_get_x1
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_x1
+(
+        DxfMtext *mtext,
+        double x1
+);
 
 
 #ifdef __cplusplus
