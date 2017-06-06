@@ -2917,7 +2917,7 @@ dxf_mtext_get_x1
 
 
 /*!
- * \brief Set the X-value of the direction vector \c x0 of a DXF
+ * \brief Set the X-value of the direction vector \c x1 of a DXF
  * \c MTEXT entity.
  *
  * \return a pointer to \c mtext when successful, or \c NULL when an
@@ -2929,7 +2929,7 @@ dxf_mtext_set_x1
         DxfMtext *mtext,
                 /*!< a pointer to a DXF \c MTEXT entity. */
         double x1
-                /*!< the X-value of the direction vector \c x0 of a DXF
+                /*!< the X-value of the direction vector \c x1 of a DXF
                  * \c MTEXT entity. */
 )
 {
