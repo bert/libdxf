@@ -3123,4 +3123,36 @@ dxf_mtext_set_z1
 }
 
 
+/*!
+ * \brief Get the nominal (initial) text \c height of a DXF \c MTEXT
+ * entity.
+ *
+ * \return the nominal (initial) \c height.
+ */
+double
+dxf_mtext_get_height
+(
+        DxfMtext *mtext
+                /*!< a pointer to a DXF \c MTEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext->height);
+}
+
+
 /* EOF */

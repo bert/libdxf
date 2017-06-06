@@ -730,6 +730,11 @@ dxf_mtext_set_z1
         DxfMtext *mtext,
         double z1
 );
+double
+dxf_mtext_get_height
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
