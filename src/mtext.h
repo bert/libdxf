@@ -719,6 +719,11 @@ dxf_mtext_set_y1
         DxfMtext *mtext,
         double y1
 );
+double
+dxf_mtext_get_z1
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
