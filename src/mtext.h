@@ -741,6 +741,11 @@ dxf_mtext_set_height
         DxfMtext *mtext,
         double height
 );
+double
+dxf_mtext_get_rectangle_width
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
