@@ -3148,6 +3148,12 @@ dxf_mtext_get_height
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
+        if (mtext->height < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
 #if DEBUG
         DXF_DEBUG_END
 #endif
