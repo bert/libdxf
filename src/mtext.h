@@ -735,6 +735,12 @@ dxf_mtext_get_height
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_height
+(
+        DxfMtext *mtext,
+        double height
+);
 
 
 #ifdef __cplusplus
