@@ -3127,7 +3127,7 @@ dxf_mtext_set_z1
  * \brief Get the nominal (initial) text \c height of a DXF \c MTEXT
  * entity.
  *
- * \return the nominal (initial) \c height.
+ * \return the nominal (initial) text \c height.
  */
 double
 dxf_mtext_get_height
