@@ -746,6 +746,12 @@ dxf_mtext_get_rectangle_width
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_rectangle_width
+(
+        DxfMtext *mtext,
+        double rectangle_width
+);
 
 
 #ifdef __cplusplus
