@@ -768,6 +768,12 @@ dxf_mtext_get_rectangle_height
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_rectangle_height
+(
+        DxfMtext *mtext,
+        double rectangle_height
+);
 
 
 #ifdef __cplusplus

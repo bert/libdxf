@@ -3396,4 +3396,44 @@ dxf_mtext_get_rectangle_height
 }
 
 
+/*!
+ * \brief Set the \c rectangle_height of a DXF \c MTEXT entity.
+ *
+ * \return a pointer to \c mtext when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfMtext *
+dxf_mtext_set_rectangle_height
+(
+        DxfMtext *mtext,
+                /*!< a pointer to a DXF \c MTEXT entity. */
+        double rectangle_height
+                /*!< the  \c rectangle_height of a DXF \c MTEXT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (rectangle_height < 0.0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        mtext->rectangle_height = rectangle_height;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext);
+}
+
+
 /* EOF */
