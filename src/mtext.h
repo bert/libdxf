@@ -757,6 +757,12 @@ dxf_mtext_get_horizontal_width
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_horizontal_width
+(
+        DxfMtext *mtext,
+        double horizontal_width
+);
 
 
 #ifdef __cplusplus
