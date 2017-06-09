@@ -779,6 +779,12 @@ dxf_mtext_get_spacing_factor
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_spacing_factor
+(
+        DxfMtext *mtext,
+        double spacing_factor
+);
 
 
 #ifdef __cplusplus
