@@ -796,6 +796,11 @@ dxf_mtext_set_box_scale
         DxfMtext *mtext,
         double box_scale
 );
+double
+dxf_mtext_get_column_width
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
