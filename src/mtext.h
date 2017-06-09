@@ -801,6 +801,12 @@ dxf_mtext_get_column_width
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_column_width
+(
+        DxfMtext *mtext,
+        double column_width
+);
 
 
 #ifdef __cplusplus
