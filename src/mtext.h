@@ -790,6 +790,12 @@ dxf_mtext_get_box_scale
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_box_scale
+(
+        DxfMtext *mtext,
+        double box_scale
+);
 
 
 #ifdef __cplusplus
