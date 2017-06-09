@@ -785,6 +785,11 @@ dxf_mtext_set_spacing_factor
         DxfMtext *mtext,
         double spacing_factor
 );
+double
+dxf_mtext_get_box_scale
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
