@@ -774,6 +774,11 @@ dxf_mtext_set_rectangle_height
         DxfMtext *mtext,
         double rectangle_height
 );
+double
+dxf_mtext_get_spacing_factor
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
