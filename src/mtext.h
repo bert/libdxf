@@ -812,6 +812,12 @@ dxf_mtext_get_column_gutter
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_column_gutter
+(
+        DxfMtext *mtext,
+        double column_gutter
+);
 
 
 #ifdef __cplusplus
