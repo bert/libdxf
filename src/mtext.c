@@ -3254,7 +3254,7 @@ dxf_mtext_set_rectangle_width
         DxfMtext *mtext,
                 /*!< a pointer to a DXF \c MTEXT entity. */
         double rectangle_width
-                /*!< the  \c rectangle_width of a DXF \c MTEXT entity. */
+                /*!< the \c rectangle_width of a DXF \c MTEXT entity. */
 )
 {
 #ifdef DEBUG
@@ -3331,7 +3331,7 @@ dxf_mtext_set_horizontal_width
         DxfMtext *mtext,
                 /*!< a pointer to a DXF \c MTEXT entity. */
         double horizontal_width
-                /*!< the  \c horizontal_width of a DXF \c MTEXT entity. */
+                /*!< the \c horizontal_width of a DXF \c MTEXT entity. */
 )
 {
 #ifdef DEBUG
@@ -3408,7 +3408,7 @@ dxf_mtext_set_rectangle_height
         DxfMtext *mtext,
                 /*!< a pointer to a DXF \c MTEXT entity. */
         double rectangle_height
-                /*!< the  \c rectangle_height of a DXF \c MTEXT entity. */
+                /*!< the \c rectangle_height of a DXF \c MTEXT entity. */
 )
 {
 #ifdef DEBUG
@@ -3485,7 +3485,7 @@ dxf_mtext_set_spacing_factor
         DxfMtext *mtext,
                 /*!< a pointer to a DXF \c MTEXT entity. */
         double spacing_factor
-                /*!< the  \c spacing_factor of a DXF \c MTEXT entity. */
+                /*!< the \c spacing_factor of a DXF \c MTEXT entity. */
 )
 {
 #ifdef DEBUG
@@ -3562,7 +3562,7 @@ dxf_mtext_set_box_scale
         DxfMtext *mtext,
                 /*!< a pointer to a DXF \c MTEXT entity. */
         double box_scale
-                /*!< the  \c box_scale of a DXF \c MTEXT entity. */
+                /*!< the \c box_scale of a DXF \c MTEXT entity. */
 )
 {
 #ifdef DEBUG
@@ -3639,7 +3639,7 @@ dxf_mtext_set_column_width
         DxfMtext *mtext,
                 /*!< a pointer to a DXF \c MTEXT entity. */
         double column_width
-                /*!< the  \c column_width of a DXF \c MTEXT entity. */
+                /*!< the \c column_width of a DXF \c MTEXT entity. */
 )
 {
 #ifdef DEBUG
