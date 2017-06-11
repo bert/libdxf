@@ -823,6 +823,12 @@ dxf_mtext_get_column_heights
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_column_heights
+(
+        DxfMtext *mtext,
+        double column_heights
+);
 
 
 #ifdef __cplusplus
