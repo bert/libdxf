@@ -818,6 +818,11 @@ dxf_mtext_set_column_gutter
         DxfMtext *mtext,
         double column_gutter
 );
+double
+dxf_mtext_get_column_heights
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
