@@ -829,6 +829,11 @@ dxf_mtext_set_column_heights
         DxfMtext *mtext,
         double column_heights
 );
+double
+dxf_mtext_get_rot_angle
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
