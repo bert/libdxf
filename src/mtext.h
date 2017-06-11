@@ -834,6 +834,12 @@ dxf_mtext_get_rot_angle
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_rot_angle
+(
+        DxfMtext *mtext,
+        double rot_angle
+);
 
 
 #ifdef __cplusplus
