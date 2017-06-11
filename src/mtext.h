@@ -840,6 +840,11 @@ dxf_mtext_set_rot_angle
         DxfMtext *mtext,
         double rot_angle
 );
+int
+dxf_mtext_get_background_color
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
