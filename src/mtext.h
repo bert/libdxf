@@ -867,6 +867,12 @@ dxf_mtext_get_drawing_direction
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_drawing_direction
+(
+        DxfMtext *mtext,
+        int drawing_direction
+);
 
 
 #ifdef __cplusplus
