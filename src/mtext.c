@@ -3922,4 +3922,41 @@ dxf_mtext_get_background_color
 }
 
 
+/*!
+ * \brief Set the \c background_color for a DXF \c MTEXT entity.
+ */
+DxfMtext *
+dxf_mtext_set_background_color
+(
+        DxfMtext *mtext,
+                /*!< a pointer to a DXF \c MTEXT entity. */
+        int background_color
+                /*!< the \c background_color to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (background_color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        mtext->background_color = background_color;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext);
+}
+
+
 /* EOF */
