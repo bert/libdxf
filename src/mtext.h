@@ -862,6 +862,11 @@ dxf_mtext_set_attachment_point
         DxfMtext *mtext,
         int attachment_point
 );
+int
+dxf_mtext_get_drawing_direction
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
