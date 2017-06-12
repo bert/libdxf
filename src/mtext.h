@@ -851,6 +851,11 @@ dxf_mtext_set_background_color
         DxfMtext *mtext,
         int background_color
 );
+int
+dxf_mtext_get_attachment_point
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
