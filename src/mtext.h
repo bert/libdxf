@@ -856,6 +856,12 @@ dxf_mtext_get_attachment_point
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_attachment_point
+(
+        DxfMtext *mtext,
+        int attachment_point
+);
 
 
 #ifdef __cplusplus
