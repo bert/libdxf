@@ -878,6 +878,12 @@ dxf_mtext_get_spacing_style
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_spacing_style
+(
+        DxfMtext *mtext,
+        int spacing_style
+);
 
 
 #ifdef __cplusplus
