@@ -4129,4 +4129,46 @@ dxf_mtext_set_drawing_direction
 }
 
 
+/*!
+ * \brief Get the \c spacing_style from a DXF \c MTEXT entity.
+ *
+ * \return \c spacing_style.
+ */
+int
+dxf_mtext_get_spacing_style
+(
+        DxfMtext *mtext
+                /*!< a pointer to a DXF \c MTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mtext->spacing_style < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (mtext->spacing_style > 2)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext->spacing_style);
+}
+
+
 /* EOF */

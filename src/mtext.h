@@ -873,6 +873,11 @@ dxf_mtext_set_drawing_direction
         DxfMtext *mtext,
         int drawing_direction
 );
+int
+dxf_mtext_get_spacing_style
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
