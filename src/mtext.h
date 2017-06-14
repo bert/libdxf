@@ -884,6 +884,11 @@ dxf_mtext_set_spacing_style
         DxfMtext *mtext,
         int spacing_style
 );
+int
+dxf_mtext_get_column_type
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
