@@ -900,6 +900,12 @@ dxf_mtext_get_column_count
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_column_count
+(
+        DxfMtext *mtext,
+        int column_count
+);
 
 
 #ifdef __cplusplus
