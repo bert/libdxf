@@ -911,6 +911,12 @@ dxf_mtext_get_column_flow
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_column_flow
+(
+        DxfMtext *mtext,
+        int column_flow
+);
 
 
 #ifdef __cplusplus
