@@ -889,6 +889,12 @@ dxf_mtext_get_column_type
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_column_type
+(
+        DxfMtext *mtext,
+        int column_type
+);
 
 
 #ifdef __cplusplus

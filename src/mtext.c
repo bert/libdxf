@@ -4250,4 +4250,41 @@ dxf_mtext_get_column_type
 }
 
 
+/*!
+ * \brief Set the \c column_type for a DXF \c MTEXT entity.
+ */
+DxfMtext *
+dxf_mtext_set_column_type
+(
+        DxfMtext *mtext,
+                /*!< a pointer to a DXF \c MTEXT entity. */
+        int column_type
+                /*!< the \c column_type to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (column_type < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        mtext->column_type = column_type;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext);
+}
+
+
 /* EOF */
