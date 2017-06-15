@@ -922,6 +922,12 @@ dxf_mtext_get_column_autoheight
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_column_autoheight
+(
+        DxfMtext *mtext,
+        int column_autoheight
+);
 
 
 #ifdef __cplusplus

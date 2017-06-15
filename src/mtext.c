@@ -4469,4 +4469,41 @@ dxf_mtext_get_column_autoheight
 }
 
 
+/*!
+ * \brief Set the \c column_autoheight for a DXF \c MTEXT entity.
+ */
+DxfMtext *
+dxf_mtext_set_column_autoheight
+(
+        DxfMtext *mtext,
+                /*!< a pointer to a DXF \c MTEXT entity. */
+        int column_autoheight
+                /*!< the \c column_autoheight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (column_autoheight < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        mtext->column_autoheight = column_autoheight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext);
+}
+
+
 /* EOF */
