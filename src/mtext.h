@@ -917,6 +917,11 @@ dxf_mtext_set_column_flow
         DxfMtext *mtext,
         int column_flow
 );
+int
+dxf_mtext_get_column_autoheight
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus

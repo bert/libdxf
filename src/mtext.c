@@ -4433,4 +4433,40 @@ dxf_mtext_set_column_flow
 }
 
 
+/*!
+ * \brief Get the \c column_autoheight from a DXF \c MTEXT entity.
+ *
+ * \return \c column_autoheight.
+ */
+int
+dxf_mtext_get_column_autoheight
+(
+        DxfMtext *mtext
+                /*!< a pointer to a DXF \c MTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mtext->column_autoheight < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext->column_autoheight);
+}
+
+
 /* EOF */
