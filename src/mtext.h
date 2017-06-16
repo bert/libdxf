@@ -928,6 +928,11 @@ dxf_mtext_set_column_autoheight
         DxfMtext *mtext,
         int column_autoheight
 );
+int
+dxf_mtext_get_background_fill
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus

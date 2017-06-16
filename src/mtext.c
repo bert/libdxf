@@ -4506,4 +4506,46 @@ dxf_mtext_set_column_autoheight
 }
 
 
+/*!
+ * \brief Get the \c background_fill from a DXF \c MTEXT entity.
+ *
+ * \return \c background_fill.
+ */
+int
+dxf_mtext_get_background_fill
+(
+        DxfMtext *mtext
+                /*!< a pointer to a DXF \c MTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (mtext->background_fill < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (mtext->background_fill > 2)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext->background_fill);
+}
+
+
 /* EOF */
