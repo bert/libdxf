@@ -933,6 +933,12 @@ dxf_mtext_get_background_fill
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_background_fill
+(
+        DxfMtext *mtext,
+        int background_fill
+);
 
 
 #ifdef __cplusplus
