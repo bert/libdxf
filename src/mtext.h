@@ -966,6 +966,12 @@ dxf_mtext_get_extr_z0
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_extr_z0
+(
+        DxfMtext *mtext,
+        double extr_z0
+);
 
 
 #ifdef __cplusplus
