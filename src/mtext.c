@@ -4836,4 +4836,41 @@ dxf_mtext_set_extrusion_vector_from_point
 }
 
 
+/*!
+ * \brief Set the extrusion vector for a DXF \c MTEXT entity.
+ */
+DxfMtext *
+dxf_mtext_set_extrusion_vector
+(
+        DxfMtext *mtext,
+                /*!< a pointer to a DXF \c MTEXT entity. */
+        double extr_x0,
+                /*!<  X-value of the extrusion direction. */
+        double extr_y0,
+                /*!<  Y-value of the extrusion direction. */
+        double extr_z0
+                /*!<  Z-value of the extrusion direction. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mtext->extr_x0 = extr_x0;
+        mtext->extr_y0 = extr_y0;
+        mtext->extr_z0 = extr_z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext);
+}
+
+
 /* EOF */
