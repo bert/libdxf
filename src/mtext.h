@@ -1002,6 +1002,12 @@ dxf_mtext_get_background_color_name
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_background_color_name
+(
+        DxfMtext *mtext,
+        char *background_color_name
+);
 
 
 #ifdef __cplusplus
