@@ -5116,4 +5116,43 @@ dxf_mtext_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c MTEXT for a DXF \c MTEXT
+ * entity.
+ */
+DxfMtext *
+dxf_mtext_set_next
+(
+        DxfMtext *mtext,
+                /*!< a pointer to a DXF \c MTEXT entity. */
+        DxfMtext *next
+                /*!< a pointer to the next \c MTEXT for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mtext->next = (struct DxfMtext *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext);
+}
+
+
 /* EOF */
