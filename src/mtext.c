@@ -5076,4 +5076,44 @@ dxf_mtext_set_background_transparency
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c MTEXT entity from a DXF 
+ * \c MTEXT entity.
+ *
+ * \return pointer to the next \c MTEXT entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfMtext *
+dxf_mtext_get_next
+(
+        DxfMtext *mtext
+                /*!< a pointer to a DXF \c MTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mtext->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfMtext *) mtext->next);
+}
+
+
 /* EOF */

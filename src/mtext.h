@@ -1019,6 +1019,11 @@ dxf_mtext_set_background_transparency
         DxfMtext *mtext,
         int32_t background_transparency
 );
+DxfMtext *
+dxf_mtext_get_next
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
