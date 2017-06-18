@@ -986,6 +986,11 @@ dxf_mtext_set_extrusion_vector
         double extr_y0,
         double extr_z0
 );
+int32_t
+dxf_mtext_get_background_color_rgb
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus

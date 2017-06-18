@@ -4873,4 +4873,34 @@ dxf_mtext_set_extrusion_vector
 }
 
 
+/*!
+ * \brief Get the \c background_color_rgb from a DXF \c MTEXT entity.
+ *
+ * \return \c background_color_rgb.
+ */
+int32_t
+dxf_mtext_get_background_color_rgb
+(
+        DxfMtext *mtext
+                /*!< a pointer to a DXF \c MTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext->background_color_rgb);
+}
+
+
 /* EOF */
