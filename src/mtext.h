@@ -972,6 +972,12 @@ dxf_mtext_set_extr_z0
         DxfMtext *mtext,
         double extr_z0
 );
+DxfMtext *
+dxf_mtext_set_extrusion_vector_from_point
+(
+        DxfMtext *mtext,
+        DxfPoint *point
+);
 
 
 #ifdef __cplusplus
