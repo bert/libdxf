@@ -997,6 +997,11 @@ dxf_mtext_set_background_color_rgb
         DxfMtext *mtext,
         int32_t background_color_rgb
 );
+char *
+dxf_mtext_get_background_color_name
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus
