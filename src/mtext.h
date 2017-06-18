@@ -955,6 +955,12 @@ dxf_mtext_get_extr_y0
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_extr_y0
+(
+        DxfMtext *mtext,
+        double extr_y0
+);
 
 
 #ifdef __cplusplus
