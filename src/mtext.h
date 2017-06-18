@@ -1013,6 +1013,12 @@ dxf_mtext_get_background_transparency
 (
         DxfMtext *mtext
 );
+DxfMtext *
+dxf_mtext_set_background_transparency
+(
+        DxfMtext *mtext,
+        int32_t background_transparency
+);
 
 
 #ifdef __cplusplus
