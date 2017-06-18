@@ -4903,4 +4903,35 @@ dxf_mtext_get_background_color_rgb
 }
 
 
+/*!
+ * \brief Set the \c background_color_rgb for a DXF \c MTEXT entity.
+ */
+DxfMtext *
+dxf_mtext_set_background_color_rgb
+(
+        DxfMtext *mtext,
+                /*!< a pointer to a DXF \c MTEXT entity. */
+        int32_t background_color_rgb
+                /*!< the \c background_color_rgb to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        mtext->background_color_rgb = background_color_rgb;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (mtext);
+}
+
+
 /* EOF */
