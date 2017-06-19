@@ -265,21 +265,42 @@ dxf_mtext_read
                         /* Now follows a string containing the
                          * X-coordinate of the insertion point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mtext->x0);
+                        fscanf (fp->fp, "%lf\n", &mtext->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the insertion point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mtext->y0);
+                        fscanf (fp->fp, "%lf\n", &mtext->p0->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the insertion point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &mtext->z0);
+                        fscanf (fp->fp, "%lf\n", &mtext->p0->z0);
+                }
+                else if (strcmp (temp_string, "11") == 0)
+                {
+                        /* Now follows a string containing the
+                         * X-coordinate of the direction vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mtext->p1->x0);
+                }
+                else if (strcmp (temp_string, "21") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Y-coordinate of the direction vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mtext->p1->y0);
+                }
+                else if (strcmp (temp_string, "31") == 0)
+                {
+                        /* Now follows a string containing the
+                         * Z-coordinate of the direction vector. */
+                        (fp->line_number)++;
+                        fscanf (fp->fp, "%lf\n", &mtext->p1->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                   && DXF_FLATLAND
