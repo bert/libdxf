@@ -1030,6 +1030,11 @@ dxf_mtext_set_next
         DxfMtext *mtext,
         DxfMtext *next
 );
+DxfMtext *
+dxf_mtext_get_last
+(
+        DxfMtext *mtext
+);
 
 
 #ifdef __cplusplus

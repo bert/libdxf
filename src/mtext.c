@@ -5155,4 +5155,49 @@ dxf_mtext_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c MTEXT entity from a linked list
+ * of DXF \c MTEXT entities.
+ *
+ * \return pointer to the last \c MTEXT entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfMtext *
+dxf_mtext_get_last
+(
+        DxfMtext *mtext
+                /*!< a pointer to a DXF \c MTEXT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (mtext == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (mtext->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfMtext *) mtext);
+        }
+        DxfMtext *iter = (DxfMtext *) mtext->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfMtext *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfMtext *) iter);
+}
+
+
 /* EOF */
