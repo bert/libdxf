@@ -205,15 +205,6 @@ dxf_mtext_struct
         DxfPoint *p0;
                 /*!< Insertion point.\n
                  * Group codes = 10, 20 and 30.*/
-        double x0;
-                /*!< Insertion point.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Insertion point.\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Insertion point.\n
-                 * Group code = 30. */
         DxfPoint *p1;
                 /*!< Direction vector, expressed in World Coordinate
                  * System (WCS).\n
@@ -224,24 +215,6 @@ dxf_mtext_struct
                  * This is provided as a convenience for conversions
                  * from text objects.\n
                  * Group codes = 11, 21 and 31.*/
-        double x1;
-                /*!< X-axis direction vector, expressed in World
-                 * Coordinate System (WCS).\n
-                 * A group code 50 (rotation angle in radians) passed as
-                 * DXF input is converted to the equivalent direction
-                 * vector (if both a code 50 and codes 11, 21, 31 are
-                 * passed, the last one wins).\n
-                 * This is provided as a convenience for conversions
-                 * from text objects.\n
-                 * Group code = 11. */
-        double y1;
-                /*!< X-axis direction vector, expressed in World
-                 * Coordinate System (WCS).\n
-                 * Group code = 21. */
-        double z1;
-                /*!< X-axis direction vector, expressed in World
-                 * Coordinate System (WCS).\n
-                 * Group code = 31. */
         double height;
                 /*!< Nominal (initial) text height.\n
                  * Group code = 40. */
