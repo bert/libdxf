@@ -672,9 +672,9 @@ dxf_mtext_write
         {
                 fprintf (fp->fp, "100\nAcDbMText\n");
         }
-        fprintf (fp->fp, " 10\n%f\n", mtext->x0);
-        fprintf (fp->fp, " 20\n%f\n", mtext->y0);
-        fprintf (fp->fp, " 30\n%f\n", mtext->z0);
+        fprintf (fp->fp, " 10\n%f\n", mtext->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", mtext->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", mtext->p0->z0);
         fprintf (fp->fp, " 40\n%f\n", mtext->height);
         fprintf (fp->fp, " 41\n%f\n", mtext->rectangle_width);
         fprintf (fp->fp, " 71\n%d\n", mtext->attachment_point);
@@ -697,9 +697,9 @@ dxf_mtext_write
                 fprintf (fp->fp, "220\n%f\n", mtext->extr_y0);
                 fprintf (fp->fp, "230\n%f\n", mtext->extr_z0);
         }
-        fprintf (fp->fp, " 11\n%f\n", mtext->x1);
-        fprintf (fp->fp, " 21\n%f\n", mtext->y1);
-        fprintf (fp->fp, " 31\n%f\n", mtext->z1);
+        fprintf (fp->fp, " 11\n%f\n", mtext->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", mtext->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", mtext->p1->z0);
         fprintf (fp->fp, " 42\n%f\n", mtext->horizontal_width);
         fprintf (fp->fp, " 43\n%f\n", mtext->rectangle_height);
         fprintf (fp->fp, " 50\n%f\n", mtext->rot_angle);
