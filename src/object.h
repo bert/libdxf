@@ -50,7 +50,7 @@ extern "C" {
  * \brief DXF definition of an object.
  */
 typedef struct
-dxf_object
+dxf_object_struct
 {
         DxfEntityType entity_type;
                 /*!< dxf entity type. */
