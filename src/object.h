@@ -84,6 +84,11 @@ dxf_object_free_chain
 (
         DxfObject *objects
 );
+DxfEntityType *
+dxf_object_get_entity_type
+(
+        DxfObject *object
+);
 
 
 #ifdef __cplusplus
