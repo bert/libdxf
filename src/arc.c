@@ -3143,7 +3143,7 @@ dxf_arc_set_extrusion_vector
 
 
 /*!
- * \brief Get the pointer to the next \c ARC entity from a DXF 
+ * \brief Get the pointer to the next \c ARC entity from a DXF
  * \c ARC entity.
  *
  * \return pointer to the next \c ARC entity.
