@@ -89,6 +89,12 @@ dxf_object_get_entity_type
 (
         DxfObject *object
 );
+DxfObject *
+dxf_object_set_entity_type
+(
+        DxfObject *object,
+        DxfEntityType entity_type
+);
 
 
 #ifdef __cplusplus

@@ -248,4 +248,43 @@ dxf_object_get_entity_type
 }
 
 
+/*!
+ * \brief Set the \c entity_type to the DXF \c OBJECT entity.
+ */
+DxfObject *
+dxf_object_set_entity_type
+(
+        DxfObject *object,
+                /*!< an DXF \c OBJECT entity. */
+        DxfEntityType entity_type
+                /*!< a pointer to the \c entity_type for the DXF
+                 * \c OBJECT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (entity_type == 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        object->entity_type = entity_type;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object);
+}
+
+
 /* EOF */
