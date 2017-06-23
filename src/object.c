@@ -327,4 +327,43 @@ dxf_object_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c OBJECT for a DXF \c OBJECT
+ * entity.
+ */
+DxfObject *
+dxf_object_set_next
+(
+        DxfObject *object,
+                /*!< a pointer to a DXF \c OBJECT entity. */
+        DxfObject *next
+                /*!< a pointer to the next \c OBJECT for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        object->next = (struct DxfObject *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object);
+}
+
+
 /* EOF */

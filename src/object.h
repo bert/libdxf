@@ -100,6 +100,12 @@ dxf_object_get_next
 (
         DxfObject *object
 );
+DxfObject *
+dxf_object_set_next
+(
+        DxfObject *object,
+        DxfObject *next
+);
 
 
 #ifdef __cplusplus
