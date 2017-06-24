@@ -205,6 +205,22 @@ dxf_file_struct
 } DxfFile;
 
 
+/*!
+ * \brief DXF definition of a single linked list of char.
+ */
+typedef struct
+dxf_char_struct
+{
+    char *value;
+        /*!< Store the char value (string) here. */
+    int length;
+        /*!< Length of the stored char value (string). */
+    struct DxfChar *next;
+        /*!< Pointer to the next DxfChar.\n
+         * \c NULL if the last DxfChar. */
+} DxfChar;
+
+
 /* AutoCAD(TM) versions by name */
 #define AutoCAD_1_0 0
         /*!< \brief AutoCAD Version 1.0. */
