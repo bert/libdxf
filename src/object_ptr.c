@@ -1,11 +1,17 @@
 /*!
  * \file object_ptr.c
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF object_ptr object (\c OBJECT_PTR).
  *
- * \version The \c OBJECT_PTR object was introduced in DXF R14.
+ * \since The \c OBJECT_PTR object was introduced in DXF R14.
+ *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13 (backward compatibility).
+ * \version According to DXF R14.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
@@ -41,12 +47,6 @@
  * \brief Allocate memory for a \c DxfObjectPtr.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfObjectPtr *
 dxf_object_ptr_new ()
@@ -84,12 +84,6 @@ dxf_object_ptr_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfObjectPtr *
 dxf_object_ptr_init
@@ -143,12 +137,6 @@ dxf_object_ptr_init
  * While parsing the DXF file store data in \c object_ptr. \n
  *
  * \return a pointer to \c object_ptr.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 DxfObjectPtr *
 dxf_object_ptr_read
@@ -260,12 +248,6 @@ dxf_object_ptr_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_object_ptr_write
@@ -359,12 +341,6 @@ dxf_object_ptr_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 int
 dxf_object_ptr_free
@@ -405,12 +381,6 @@ dxf_object_ptr_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c OBJECT_PTR
  * objects and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13 (backward compatibility).
- * \version According to DXF R14.
  */
 void
 dxf_object_ptr_free_chain
