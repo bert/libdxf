@@ -1208,7 +1208,7 @@ dxf_mlinestyle_set_ith_element_offset
 
 
 /*!
- * \brief Get the \s start_angle from a DXF \c MLINESTYLE object.
+ * \brief Get the \c start_angle from a DXF \c MLINESTYLE object.
  *
  * \return \c start_angle.
  */
