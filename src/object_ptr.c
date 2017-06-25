@@ -410,4 +410,41 @@ dxf_object_ptr_free_chain
 }
 
 
+/*!
+ * \brief Get the \c id_code from a DXF \c OBJECT_PTR object.
+ *
+ * \return \c id_code.
+ */
+int
+dxf_object_ptr_get_id_code
+(
+        DxfObjectPtr *object_ptr
+                /*!< a pointer to a DXF \c OBJECT_PTR entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_ptr == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (object_ptr->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object_ptr->id_code);
+}
+
+
 /* EOF*/

@@ -109,6 +109,11 @@ dxf_object_ptr_free_chain
 (
         DxfObjectPtr *objectptrs
 );
+int
+dxf_object_ptr_get_id_code
+(
+        DxfObjectPtr *object_ptr
+);
 
 
 #ifdef __cplusplus
