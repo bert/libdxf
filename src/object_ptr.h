@@ -120,6 +120,11 @@ dxf_object_ptr_set_id_code
         DxfObjectPtr *object_ptr,
         int id_code
 );
+char *
+dxf_object_ptr_get_dictionary_owner_soft
+(
+        DxfObjectPtr *object_ptr
+);
 
 
 #ifdef __cplusplus
