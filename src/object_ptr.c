@@ -419,7 +419,7 @@ int
 dxf_object_ptr_get_id_code
 (
         DxfObjectPtr *object_ptr
-                /*!< a pointer to a DXF \c OBJECT_PTR entity. */
+                /*!< a pointer to a DXF \c OBJECT_PTR object. */
 )
 {
 #if DEBUG
