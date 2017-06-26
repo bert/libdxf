@@ -447,4 +447,44 @@ dxf_object_ptr_get_id_code
 }
 
 
+/*!
+ * \brief Set the \c id_code for a DXF \c OBJECT_PTR object.
+ */
+DxfObjectPtr *
+dxf_object_ptr_set_id_code
+(
+        DxfObjectPtr *object_ptr,
+                /*!< a pointer to a DXF \c OBJECT_PTR object. */
+        int id_code
+                /*!< Identification number for the object.\n
+                 * This is to be an unique (sequential) number in the DXF
+                 * file. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_ptr == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        object_ptr->id_code = id_code;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object_ptr);
+}
+
+
 /* EOF*/

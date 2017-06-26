@@ -114,6 +114,12 @@ dxf_object_ptr_get_id_code
 (
         DxfObjectPtr *object_ptr
 );
+DxfObjectPtr *
+dxf_object_ptr_set_id_code
+(
+        DxfObjectPtr *object_ptr,
+        int id_code
+);
 
 
 #ifdef __cplusplus
