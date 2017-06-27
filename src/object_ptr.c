@@ -647,4 +647,44 @@ dxf_object_ptr_set_dictionary_owner_hard
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c OBJECT_PTR object from a DXF 
+ * \c OBJECT_PTR object.
+ *
+ * \return pointer to the next \c OBJECT_PTR object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfObjectPtr *
+dxf_object_ptr_get_next
+(
+        DxfObjectPtr *object_ptr
+                /*!< a pointer to a DXF \c OBJECT_PTR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_ptr == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (object_ptr->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfObjectPtr *) object_ptr->next);
+}
+
+
 /* EOF*/
