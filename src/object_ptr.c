@@ -527,4 +527,44 @@ dxf_object_ptr_get_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
+ * \c OBJECT_PTR object.
+ */
+DxfObjectPtr *
+dxf_object_ptr_set_dictionary_owner_soft
+(
+        DxfObjectPtr *object_ptr,
+                /*!< a pointer to a DXF \c OBJECT_PTR object. */
+        char *dictionary_owner_soft
+                /*!< a string containing the pointer to the
+                 * dictionary_owner_soft for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_ptr == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        object_ptr->dictionary_owner_soft = strdup (dictionary_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object_ptr);
+}
+
+
 /* EOF*/
