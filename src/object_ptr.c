@@ -567,4 +567,44 @@ dxf_object_ptr_set_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Get the hard pointer to the dictionary owner from a DXF 
+ * \c OBJECT_PTR object.
+ *
+ * \return hard pointer to the dictionary owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_object_ptr_get_dictionary_owner_hard
+(
+        DxfObjectPtr *object_ptr
+                /*!< a pointer to a DXF \c OBJECT_PTR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_ptr == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (object_ptr->dictionary_owner_hard ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (object_ptr->dictionary_owner_hard));
+}
+
+
 /* EOF*/

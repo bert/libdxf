@@ -131,6 +131,11 @@ dxf_object_ptr_set_dictionary_owner_soft
         DxfObjectPtr *object_ptr,
         char *dictionary_owner_soft
 );
+char *
+dxf_object_ptr_get_dictionary_owner_hard
+(
+        DxfObjectPtr *object_ptr
+);
 
 
 #ifdef __cplusplus
