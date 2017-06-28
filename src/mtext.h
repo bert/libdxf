@@ -344,670 +344,127 @@ dxf_mtext_struct
 } DxfMtext;
 
 
-DxfMtext *
-dxf_mtext_new ();
-DxfMtext *
-dxf_mtext_init
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_read
-(
-        DxfFile *fp,
-        DxfMtext *mtext
-);
-int
-dxf_mtext_write
-(
-        DxfFile *fp,
-        DxfMtext *mtext
-);
-int
-dxf_mtext_free
-(
-        DxfMtext *mtext
-);
-void
-dxf_mtext_free_chain
-(
-        DxfMtext *mtexts
-);
-int
-dxf_mtext_get_id_code
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_id_code
-(
-        DxfMtext *mtext,
-        int id_code
-);
-char *
-dxf_mtext_get_linetype
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_linetype
-(
-        DxfMtext *mtext,
-        char *linetype
-);
-char *
-dxf_mtext_get_layer
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_layer
-(
-        DxfMtext *mtext,
-        char *layer
-);
-double
-dxf_mtext_get_elevation
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_elevation
-(
-        DxfMtext *mtext,
-        double elevation
-);
-double
-dxf_mtext_get_thickness
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_thickness
-(
-        DxfMtext *mtext,
-        double thickness
-);
-double
-dxf_mtext_get_linetype_scale
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_linetype_scale
-(
-        DxfMtext *mtext,
-        double linetype_scale
-);
-int16_t
-dxf_mtext_get_visibility
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_visibility
-(
-        DxfMtext *mtext,
-        int16_t visibility
-);
-int
-dxf_mtext_get_color
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_color
-(
-        DxfMtext *mtext,
-        int color
-);
-int
-dxf_mtext_get_paperspace
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_paperspace
-(
-        DxfMtext *mtext,
-        int paperspace
-);
-int
-dxf_mtext_get_graphics_data_size
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_graphics_data_size
-(
-        DxfMtext *mtext,
-        int graphics_data_size
-);
-int16_t
-dxf_mtext_get_shadow_mode
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_shadow_mode
-(
-        DxfMtext *mtext,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_mtext_get_binary_graphics_data
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_binary_graphics_data
-(
-        DxfMtext *mtext,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_mtext_get_dictionary_owner_soft
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_dictionary_owner_soft
-(
-        DxfMtext *mtext,
-        char *dictionary_owner_soft
-);
-char *
-dxf_mtext_get_material
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_material
-(
-        DxfMtext *mtext,
-        char *material
-);
-char *
-dxf_mtext_get_dictionary_owner_hard
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_dictionary_owner_hard
-(
-        DxfMtext *mtext,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_mtext_get_lineweight
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_lineweight
-(
-        DxfMtext *mtext,
-        int16_t lineweight
-);
-char *
-dxf_mtext_get_plot_style_name
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_plot_style_name
-(
-        DxfMtext *mtext,
-        char *plot_style_name
-);
-long
-dxf_mtext_get_color_value
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_color_value
-(
-        DxfMtext *mtext,
-        long color_value
-);
-char *
-dxf_mtext_get_color_name
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_color_name
-(
-        DxfMtext *mtext,
-        char *color_name
-);
-long
-dxf_mtext_get_transparency
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_transparency
-(
-        DxfMtext *mtext,
-        long transparency
-);
-char *
-dxf_mtext_get_text_value
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_text_value
-(
-        DxfMtext *mtext,
-        char *text_value
-);
-char *
-dxf_mtext_get_text_style
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_text_style
-(
-        DxfMtext *mtext,
-        char *text_style
-);
-DxfPoint *
-dxf_mtext_get_p0
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_p0
-(
-        DxfMtext *mtext,
-        DxfPoint *p0
-);
-double
-dxf_mtext_get_x0
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_x0
-(
-        DxfMtext *mtext,
-        double x0
-);
-double
-dxf_mtext_get_y0
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_y0
-(
-        DxfMtext *mtext,
-        double y0
-);
-double
-dxf_mtext_get_z0
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_z0
-(
-        DxfMtext *mtext,
-        double z0
-);
-DxfPoint *
-dxf_mtext_get_p1
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_p1
-(
-        DxfMtext *mtext,
-        DxfPoint *p1
-);
-double
-dxf_mtext_get_x1
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_x1
-(
-        DxfMtext *mtext,
-        double x1
-);
-double
-dxf_mtext_get_y1
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_y1
-(
-        DxfMtext *mtext,
-        double y1
-);
-double
-dxf_mtext_get_z1
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_z1
-(
-        DxfMtext *mtext,
-        double z1
-);
-double
-dxf_mtext_get_height
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_height
-(
-        DxfMtext *mtext,
-        double height
-);
-double
-dxf_mtext_get_rectangle_width
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_rectangle_width
-(
-        DxfMtext *mtext,
-        double rectangle_width
-);
-double
-dxf_mtext_get_horizontal_width
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_horizontal_width
-(
-        DxfMtext *mtext,
-        double horizontal_width
-);
-double
-dxf_mtext_get_rectangle_height
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_rectangle_height
-(
-        DxfMtext *mtext,
-        double rectangle_height
-);
-double
-dxf_mtext_get_spacing_factor
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_spacing_factor
-(
-        DxfMtext *mtext,
-        double spacing_factor
-);
-double
-dxf_mtext_get_box_scale
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_box_scale
-(
-        DxfMtext *mtext,
-        double box_scale
-);
-double
-dxf_mtext_get_column_width
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_column_width
-(
-        DxfMtext *mtext,
-        double column_width
-);
-double
-dxf_mtext_get_column_gutter
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_column_gutter
-(
-        DxfMtext *mtext,
-        double column_gutter
-);
-double
-dxf_mtext_get_column_heights
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_column_heights
-(
-        DxfMtext *mtext,
-        double column_heights
-);
-double
-dxf_mtext_get_rot_angle
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_rot_angle
-(
-        DxfMtext *mtext,
-        double rot_angle
-);
-int
-dxf_mtext_get_background_color
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_background_color
-(
-        DxfMtext *mtext,
-        int background_color
-);
-int
-dxf_mtext_get_attachment_point
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_attachment_point
-(
-        DxfMtext *mtext,
-        int attachment_point
-);
-int
-dxf_mtext_get_drawing_direction
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_drawing_direction
-(
-        DxfMtext *mtext,
-        int drawing_direction
-);
-int
-dxf_mtext_get_spacing_style
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_spacing_style
-(
-        DxfMtext *mtext,
-        int spacing_style
-);
-int
-dxf_mtext_get_column_type
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_column_type
-(
-        DxfMtext *mtext,
-        int column_type
-);
-int
-dxf_mtext_get_column_count
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_column_count
-(
-        DxfMtext *mtext,
-        int column_count
-);
-int
-dxf_mtext_get_column_flow
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_column_flow
-(
-        DxfMtext *mtext,
-        int column_flow
-);
-int
-dxf_mtext_get_column_autoheight
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_column_autoheight
-(
-        DxfMtext *mtext,
-        int column_autoheight
-);
-int
-dxf_mtext_get_background_fill
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_background_fill
-(
-        DxfMtext *mtext,
-        int background_fill
-);
-double
-dxf_mtext_get_extr_x0
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_extr_x0
-(
-        DxfMtext *mtext,
-        double extr_x0
-);
-double
-dxf_mtext_get_extr_y0
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_extr_y0
-(
-        DxfMtext *mtext,
-        double extr_y0
-);
-double
-dxf_mtext_get_extr_z0
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_extr_z0
-(
-        DxfMtext *mtext,
-        double extr_z0
-);
-DxfMtext *
-dxf_mtext_set_extrusion_vector_from_point
-(
-        DxfMtext *mtext,
-        DxfPoint *point
-);
-DxfMtext *
-dxf_mtext_set_extrusion_vector
-(
-        DxfMtext *mtext,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0
-);
-int32_t
-dxf_mtext_get_background_color_rgb
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_background_color_rgb
-(
-        DxfMtext *mtext,
-        int32_t background_color_rgb
-);
-char *
-dxf_mtext_get_background_color_name
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_background_color_name
-(
-        DxfMtext *mtext,
-        char *background_color_name
-);
-int32_t
-dxf_mtext_get_background_transparency
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_background_transparency
-(
-        DxfMtext *mtext,
-        int32_t background_transparency
-);
-DxfMtext *
-dxf_mtext_get_next
-(
-        DxfMtext *mtext
-);
-DxfMtext *
-dxf_mtext_set_next
-(
-        DxfMtext *mtext,
-        DxfMtext *next
-);
-DxfMtext *
-dxf_mtext_get_last
-(
-        DxfMtext *mtext
-);
+DxfMtext *dxf_mtext_new ();
+DxfMtext *dxf_mtext_init (DxfMtext *mtext);
+DxfMtext *dxf_mtext_read (DxfFile *fp, DxfMtext *mtext);
+int dxf_mtext_write (DxfFile *fp, DxfMtext *mtext);
+int dxf_mtext_free (DxfMtext *mtext);
+void dxf_mtext_free_chain (DxfMtext *mtexts);
+int dxf_mtext_get_id_code (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_id_code (DxfMtext *mtext, int id_code);
+char *dxf_mtext_get_linetype (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_linetype (DxfMtext *mtext, char *linetype);
+char *dxf_mtext_get_layer (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_layer (DxfMtext *mtext, char *layer);
+double dxf_mtext_get_elevation (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_elevation (DxfMtext *mtext, double elevation);
+double dxf_mtext_get_thickness (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_thickness (DxfMtext *mtext, double thickness);
+double dxf_mtext_get_linetype_scale (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_linetype_scale (DxfMtext *mtext, double linetype_scale);
+int16_t dxf_mtext_get_visibility (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_visibility (DxfMtext *mtext, int16_t visibility);
+int dxf_mtext_get_color (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_color (DxfMtext *mtext, int color);
+int dxf_mtext_get_paperspace (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_paperspace (DxfMtext *mtext, int paperspace);
+int dxf_mtext_get_graphics_data_size (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_graphics_data_size (DxfMtext *mtext, int graphics_data_size);
+int16_t dxf_mtext_get_shadow_mode (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_shadow_mode (DxfMtext *mtext, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_mtext_get_binary_graphics_data (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_binary_graphics_data (DxfMtext *mtext, DxfBinaryGraphicsData *data);
+char *dxf_mtext_get_dictionary_owner_soft (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_dictionary_owner_soft (DxfMtext *mtext, char *dictionary_owner_soft);
+char *dxf_mtext_get_material (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_material (DxfMtext *mtext, char *material);
+char *dxf_mtext_get_dictionary_owner_hard (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_dictionary_owner_hard (DxfMtext *mtext, char *dictionary_owner_hard);
+int16_t dxf_mtext_get_lineweight (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_lineweight (DxfMtext *mtext, int16_t lineweight);
+char *dxf_mtext_get_plot_style_name (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_plot_style_name (DxfMtext *mtext, char *plot_style_name);
+long dxf_mtext_get_color_value (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_color_value (DxfMtext *mtext, long color_value);
+char *dxf_mtext_get_color_name (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_color_name (DxfMtext *mtext, char *color_name);
+long dxf_mtext_get_transparency (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_transparency (DxfMtext *mtext, long transparency);
+char *dxf_mtext_get_text_value (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_text_value (DxfMtext *mtext, char *text_value);
+char *dxf_mtext_get_text_style (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_text_style (DxfMtext *mtext, char *text_style);
+DxfPoint *dxf_mtext_get_p0 (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_p0 (DxfMtext *mtext, DxfPoint *p0);
+double dxf_mtext_get_x0 (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_x0 (DxfMtext *mtext, double x0);
+double dxf_mtext_get_y0 (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_y0 (DxfMtext *mtext, double y0);
+double dxf_mtext_get_z0 (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_z0 (DxfMtext *mtext, double z0);
+DxfPoint *dxf_mtext_get_p1 (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_p1 (DxfMtext *mtext, DxfPoint *p1);
+double dxf_mtext_get_x1 (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_x1 (DxfMtext *mtext, double x1);
+double dxf_mtext_get_y1 (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_y1 (DxfMtext *mtext, double y1);
+double dxf_mtext_get_z1 (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_z1 (DxfMtext *mtext, double z1);
+double dxf_mtext_get_height (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_height (DxfMtext *mtext, double height);
+double dxf_mtext_get_rectangle_width (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_rectangle_width (DxfMtext *mtext, double rectangle_width);
+double dxf_mtext_get_horizontal_width (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_horizontal_width (DxfMtext *mtext, double horizontal_width);
+double dxf_mtext_get_rectangle_height (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_rectangle_height (DxfMtext *mtext, double rectangle_height);
+double dxf_mtext_get_spacing_factor (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_spacing_factor (DxfMtext *mtext, double spacing_factor);
+double dxf_mtext_get_box_scale (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_box_scale (DxfMtext *mtext, double box_scale);
+double dxf_mtext_get_column_width (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_column_width (DxfMtext *mtext, double column_width);
+double dxf_mtext_get_column_gutter (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_column_gutter (DxfMtext *mtext, double column_gutter);
+double dxf_mtext_get_column_heights (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_column_heights (DxfMtext *mtext, double column_heights);
+double dxf_mtext_get_rot_angle (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_rot_angle (DxfMtext *mtext, double rot_angle);
+int dxf_mtext_get_background_color (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_background_color (DxfMtext *mtext, int background_color);
+int dxf_mtext_get_attachment_point (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_attachment_point (DxfMtext *mtext, int attachment_point);
+int dxf_mtext_get_drawing_direction (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_drawing_direction (DxfMtext *mtext, int drawing_direction);
+int dxf_mtext_get_spacing_style (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_spacing_style (DxfMtext *mtext, int spacing_style);
+int dxf_mtext_get_column_type (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_column_type (DxfMtext *mtext, int column_type);
+int dxf_mtext_get_column_count (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_column_count (DxfMtext *mtext, int column_count);
+int dxf_mtext_get_column_flow (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_column_flow (DxfMtext *mtext, int column_flow);
+int dxf_mtext_get_column_autoheight (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_column_autoheight (DxfMtext *mtext, int column_autoheight);
+int dxf_mtext_get_background_fill (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_background_fill (DxfMtext *mtext, int background_fill);
+double dxf_mtext_get_extr_x0 (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_extr_x0 (DxfMtext *mtext, double extr_x0);
+double dxf_mtext_get_extr_y0 (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_extr_y0 (DxfMtext *mtext, double extr_y0);
+double dxf_mtext_get_extr_z0 (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_extr_z0 (DxfMtext *mtext, double extr_z0);
+DxfMtext *dxf_mtext_set_extrusion_vector_from_point (DxfMtext *mtext, DxfPoint *point);
+DxfMtext *dxf_mtext_set_extrusion_vector (DxfMtext *mtext, double extr_x0, double extr_y0, double extr_z0);
+int32_t dxf_mtext_get_background_color_rgb (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_background_color_rgb (DxfMtext *mtext, int32_t background_color_rgb);
+char *dxf_mtext_get_background_color_name (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_background_color_name (DxfMtext *mtext, char *background_color_name);
+int32_t dxf_mtext_get_background_transparency (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_background_transparency (DxfMtext *mtext, int32_t background_transparency);
+DxfMtext *dxf_mtext_get_next (DxfMtext *mtext);
+DxfMtext *dxf_mtext_set_next (DxfMtext *mtext, DxfMtext *next);
+DxfMtext *dxf_mtext_get_last (DxfMtext *mtext);
 
 
 #ifdef __cplusplus
