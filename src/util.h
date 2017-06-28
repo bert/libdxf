@@ -3,7 +3,8 @@
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
- * \author Copyright (C) 2010 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010, 2014, 2015, 2016, 2017
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief LIBDXF coding utilities, header file.
  *
@@ -63,6 +64,7 @@ enum return_state { FAIL = 0, SUCCESS, FOUND };
 	}
 
 
+DxfChar *dxf_char_new ();
 int dxf_read_is_double (int type);
 int dxf_read_is_int (int type);
 int dxf_read_is_string (int type);

@@ -3,7 +3,8 @@
  *
  * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
  *
- * \author Copyright (C) 2010 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010, 2012, 2015, 2017
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief LIBDXF coding utilities.
  *
@@ -36,6 +37,41 @@
 
 #include <stdarg.h>
 #include "util.h"
+
+
+/*!
+ * \brief Allocate memory for a \c DxfChar.
+ *
+ * Fill the memory contents with zeros.
+ */
+DxfChar *
+dxf_char_new ()
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfChar *c = NULL;
+        size_t size;
+
+        size = sizeof (DxfChar);
+        /* avoid malloc of 0 bytes */
+        if (size == 0) size = 1;
+        if ((c = malloc (size)) == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () could not allocate memory for a DxfChar struct.\n")),
+                  __FUNCTION__);
+                c = NULL;
+        }
+        else
+        {
+                memset (c, 0, size);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (c);
+}
 
 
 int
