@@ -95,8 +95,6 @@ dxf_object_ptr_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (object_ptr == NULL)
         {
@@ -115,10 +113,9 @@ dxf_object_ptr_init
         object_ptr->id_code = 0;
         object_ptr->dictionary_owner_soft = strdup ("");
         object_ptr->dictionary_owner_hard = strdup ("");
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                object_ptr->xdata[i] = strdup ("");
-        }
+        object_ptr->xdata->value = NULL;
+        object_ptr->xdata->length = 0;
+        object_ptr->xdata->next = NULL;
         object_ptr->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -151,7 +148,6 @@ dxf_object_ptr_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -177,7 +173,6 @@ dxf_object_ptr_read
                 object_ptr = dxf_object_ptr_new ();
                 object_ptr = dxf_object_ptr_init (object_ptr);
         }
-        i = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -224,8 +219,10 @@ dxf_object_ptr_read
                 {
                         /* Now follows a string containing extended data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", object_ptr->xdata[i]);
-                        i++;
+                        fscanf (fp->fp, "%s\n", object_ptr->xdata->value);
+                        object_ptr->xdata->length = strlen (object_ptr->xdata->value);
+                        /*! \todo Set pointer to xdata->next for
+                         * following xdata object. */
                 }
                 else
                 {
@@ -262,7 +259,6 @@ dxf_object_ptr_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("OBJECT_PTR");
-        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -319,12 +315,10 @@ dxf_object_ptr_write
                 fprintf (fp->fp, "360\n%s\n", object_ptr->dictionary_owner_hard);
                 fprintf (fp->fp, "102\n}\n");
         }
-        i = 0;
-        while (strlen (object_ptr->xdata[i]) > 0)
+        while (object_ptr->xdata->value != NULL)
         {
-                fprintf (fp->fp, "1001\n%s\n", object_ptr->xdata[i]);
-                i++;
-                /*! \todo Check for overrun of array index. */
+                fprintf (fp->fp, "1001\n%s\n", object_ptr->xdata->value);
+                /*! \todo Write the complete linked list of char values. */
         }
         /* Clean up. */
         free (dxf_entity_name);
@@ -353,7 +347,7 @@ dxf_object_ptr_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
+        struct DxfChar *iter = NULL;
 
         /* Do some basic checks. */
         if (object_ptr->next != NULL)
@@ -365,12 +359,20 @@ dxf_object_ptr_free
         }
         free (object_ptr->dictionary_owner_soft);
         free (object_ptr->dictionary_owner_hard);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
+        while (object_ptr->xdata->value != NULL)
         {
-                free (object_ptr->xdata[i]);
+                iter = (struct DxfChar *) object_ptr->xdata->next;
+                free (object_ptr->xdata->value);
+                free (object_ptr->xdata);
+                if (iter != NULL)
+                {
+                        object_ptr->xdata = (DxfChar *) iter;
+                }
         }
         free (object_ptr);
+        free (iter);
         object_ptr = NULL;
+        iter = NULL;
 #if DEBUG
         DXF_DEBUG_END
 #endif

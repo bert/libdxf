@@ -71,7 +71,7 @@ dxf_object_ptr_struct
                 /*!< Hard owner ID/handle to owner dictionary (optional).\n
                  * Group code = 360. */
         /* Specific members for a DXF object_ptr. */
-        char *xdata[DXF_MAX_PARAM];
+        DxfChar *xdata;
                 /*!< Begin ASE xdata (ACADASER13).\n
                  * Group code = 1001. */
         struct DxfObjectPtr *next;
