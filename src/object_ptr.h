@@ -147,6 +147,12 @@ dxf_object_ptr_get_next
 (
         DxfObjectPtr *object_ptr
 );
+DxfObjectPtr *
+dxf_object_ptr_set_next
+(
+        DxfObjectPtr *object_ptr,
+        DxfObjectPtr *next
+);
 
 
 #ifdef __cplusplus

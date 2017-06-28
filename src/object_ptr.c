@@ -687,4 +687,44 @@ dxf_object_ptr_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c OBJECT_PTR object for a DXF
+ * \c OBJECT_PTR object.
+ */
+DxfObjectPtr *
+dxf_object_ptr_set_next
+(
+        DxfObjectPtr *object_ptr,
+                /*!< a pointer to a DXF \c OBJECT_PTR object. */
+        DxfObjectPtr *next
+                /*!< a pointer to the next \c OBJECT_PTR object for the
+                 * object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_ptr == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        object_ptr->next = (struct DxfObjectPtr *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (object_ptr);
+}
+
+
 /* EOF*/
