@@ -727,4 +727,49 @@ dxf_object_ptr_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c OBJECT_PTR object from a linked
+ * list of DXF \c OBJECT_PTR objects.
+ *
+ * \return pointer to the last \c OBJECT_PTR object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfObjectPtr *
+dxf_object_ptr_get_last
+(
+        DxfObjectPtr *object_ptr
+                /*!< a pointer to a DXF \c OBJECT_PTR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (object_ptr == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (object_ptr->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfObjectPtr *) object_ptr);
+        }
+        DxfObjectPtr *iter = (DxfObjectPtr *) object_ptr->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfObjectPtr *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfObjectPtr *) iter);
+}
+
+
 /* EOF*/
