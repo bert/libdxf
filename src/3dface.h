@@ -1,7 +1,8 @@
 /*!
  * \file 3dface.h
  *
- * \author Copyright (C) 2010 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2010, 2012, 2013, 2014, 2015 2016, 2017
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF 3D face entity (\c 3DFACE).
  *
@@ -211,488 +212,94 @@ dxf_3dface_struct
 } Dxf3dface;
 
 
-Dxf3dface *
-dxf_3dface_new ();
-Dxf3dface *
-dxf_3dface_init
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_read
-(
-        DxfFile *fp,
-        Dxf3dface *face
-);
-int
-dxf_3dface_write
-(
-        DxfFile *fp,
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_free
-(
-        Dxf3dface *face
-);
-void
-dxf_3dface_free_chain
-(
-        Dxf3dface *faces
-);
-int
-dxf_3dface_get_id_code
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_id_code
-(
-        Dxf3dface *face,
-        int id_code
-);
-char *
-dxf_3dface_get_linetype
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_linetype
-(
-        Dxf3dface *face,
-        char *linetype
-);
-char *
-dxf_3dface_get_layer
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_layer
-(
-        Dxf3dface *face,
-        char *layer
-);
-double
-dxf_3dface_get_elevation
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_elevation
-(
-        Dxf3dface *face,
-        double elevation
-);
-double
-dxf_3dface_get_thickness
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_thickness
-(
-        Dxf3dface *face,
-        double thickness
-);
-double
-dxf_3dface_get_linetype_scale
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_linetype_scale
-(
-        Dxf3dface *face,
-        double linetype_scale
-);
-int16_t
-dxf_3dface_get_visibility
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_visibility
-(
-        Dxf3dface *face,
-        int16_t visibility
-);
-int
-dxf_3dface_get_color
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_color
-(
-        Dxf3dface *face,
-        int color
-);
-int
-dxf_3dface_get_paperspace
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_paperspace
-(
-        Dxf3dface *face,
-        int paperspace
-);
-int
-dxf_3dface_get_graphics_data_size
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_graphics_data_size
-(
-        Dxf3dface *face,
-        int graphics_data_size
-);
-int16_t
-dxf_3dface_get_shadow_mode
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_shadow_mode
-(
-        Dxf3dface *face,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_3dface_get_binary_graphics_data
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_binary_graphics_data
-(
-        Dxf3dface *face,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_3dface_get_dictionary_owner_soft
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_dictionary_owner_soft
-(
-        Dxf3dface *face,
-        char *dictionary_owner_soft
-);
-char *
-dxf_3dface_get_material
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_material
-(
-        Dxf3dface *face,
-        char *material
-);
-char *
-dxf_3dface_get_dictionary_owner_hard
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_dictionary_owner_hard
-(
-        Dxf3dface *face,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_3dface_get_lineweight
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_lineweight
-(
-        Dxf3dface *face,
-        int16_t lineweight
-);
-char *
-dxf_3dface_get_plot_style_name
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_plot_style_name
-(
-        Dxf3dface *face,
-        char *plot_style_name
-);
-long
-dxf_3dface_get_color_value
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_color_value
-(
-        Dxf3dface *face,
-        long color_value
-);
-char *
-dxf_3dface_get_color_name
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_color_name
-(
-        Dxf3dface *face,
-        char *color_name
-);
-long
-dxf_3dface_get_transparency
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_transparency
-(
-        Dxf3dface *face,
-        long transparency
-);
-DxfPoint *
-dxf_3dface_get_p0
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_p0
-(
-        Dxf3dface *face,
-        DxfPoint *point
-);
-double
-dxf_3dface_get_x0
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_x0
-(
-        Dxf3dface *face,
-        double x0
-);
-double
-dxf_3dface_get_y0
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_y0
-(
-        Dxf3dface *face,
-        double y0
-);
-double
-dxf_3dface_get_z0
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_z0
-(
-        Dxf3dface *face,
-        double z0
-);
-DxfPoint *
-dxf_3dface_get_p1
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_p1
-(
-        Dxf3dface *face,
-        DxfPoint *point
-);
-double
-dxf_3dface_get_x1
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_x1
-(
-        Dxf3dface *face,
-        double x1
-);
-double
-dxf_3dface_get_y1
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_y1
-(
-        Dxf3dface *face,
-        double y1
-);
-double
-dxf_3dface_get_z1
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_z1
-(
-        Dxf3dface *face,
-        double z1
-);
-DxfPoint *
-dxf_3dface_get_p2
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_p2
-(
-        Dxf3dface *face,
-        DxfPoint *point
-);
-double
-dxf_3dface_get_x2
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_x2
-(
-        Dxf3dface *face,
-        double x2
-);
-double
-dxf_3dface_get_y2
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_y2
-(
-        Dxf3dface *face,
-        double y2
-);
-double
-dxf_3dface_get_z2
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_z2
-(
-        Dxf3dface *face,
-        double z2
-);
-DxfPoint *
-dxf_3dface_get_p3
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_p3
-(
-        Dxf3dface *face,
-        DxfPoint *point
-);
-double
-dxf_3dface_get_x3
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_x3
-(
-        Dxf3dface *face,
-        double x3
-);
-double
-dxf_3dface_get_y3
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_y3
-(
-        Dxf3dface *face,
-        double y3
-);
-double
-dxf_3dface_get_z3
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_z3
-(
-        Dxf3dface *face,
-        double z3
-);
-int
-dxf_3dface_get_flag
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_flag
-(
-        Dxf3dface *face,
-        int flag
-);
-int
-dxf_3dface_is_first_edge_invisible
-(
-        Dxf3dface *face
-);
-int
-dxf_3dface_is_second_edge_invisible
-(
-        Dxf3dface *face
-);
-int
-dxf_3dface_is_third_edge_invisible
-(
-        Dxf3dface *face
-);
-int
-dxf_3dface_is_fourth_edge_invisible
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_create_from_points
-(
-        DxfPoint *p0,
-        DxfPoint *p1,
-        DxfPoint *p2,
-        DxfPoint *p3,
-        int id_code,
-        int inheritance
-);
-Dxf3dface *
-dxf_3dface_get_next
-(
-        Dxf3dface *face
-);
-Dxf3dface *
-dxf_3dface_set_next
-(
-        Dxf3dface *face,
-        Dxf3dface *next
-);
-Dxf3dface *
-dxf_3dface_get_last
-(
-        Dxf3dface *face
-);
+Dxf3dface *dxf_3dface_new ();
+Dxf3dface *dxf_3dface_init (Dxf3dface *face);
+Dxf3dface *dxf_3dface_read (DxfFile *fp, Dxf3dface *face);
+int dxf_3dface_write (DxfFile *fp, Dxf3dface *face);
+Dxf3dface *dxf_3dface_free (Dxf3dface *face);
+void dxf_3dface_free_chain (Dxf3dface *faces);
+int dxf_3dface_get_id_code (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_id_code (Dxf3dface *face, int id_code);
+char *dxf_3dface_get_linetype (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_linetype (Dxf3dface *face, char *linetype);
+char *dxf_3dface_get_layer (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_layer (Dxf3dface *face, char *layer);
+double dxf_3dface_get_elevation (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_elevation (Dxf3dface *face, double elevation);
+double dxf_3dface_get_thickness (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_thickness (Dxf3dface *face, double thickness);
+double dxf_3dface_get_linetype_scale (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_linetype_scale (Dxf3dface *face, double linetype_scale);
+int16_t dxf_3dface_get_visibility (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_visibility (Dxf3dface *face, int16_t visibility);
+int dxf_3dface_get_color (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_color (Dxf3dface *face, int color);
+int dxf_3dface_get_paperspace (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_paperspace (Dxf3dface *face, int paperspace);
+int dxf_3dface_get_graphics_data_size (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_graphics_data_size (Dxf3dface *face, int graphics_data_size);
+int16_t dxf_3dface_get_shadow_mode (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_shadow_mode (Dxf3dface *face, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_3dface_get_binary_graphics_data (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_binary_graphics_data (Dxf3dface *face, DxfBinaryGraphicsData *data);
+char *dxf_3dface_get_dictionary_owner_soft (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_dictionary_owner_soft (Dxf3dface *face, char *dictionary_owner_soft);
+char *dxf_3dface_get_material (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_material (Dxf3dface *face, char *material);
+char *dxf_3dface_get_dictionary_owner_hard (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_dictionary_owner_hard (Dxf3dface *face, char *dictionary_owner_hard);
+int16_t dxf_3dface_get_lineweight (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_lineweight (Dxf3dface *face, int16_t lineweight);
+char *dxf_3dface_get_plot_style_name (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_plot_style_name (Dxf3dface *face, char *plot_style_name);
+long dxf_3dface_get_color_value (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_color_value (Dxf3dface *face, long color_value);
+char *dxf_3dface_get_color_name (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_color_name (Dxf3dface *face, char *color_name);
+long dxf_3dface_get_transparency (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_transparency (Dxf3dface *face, long transparency);
+DxfPoint *dxf_3dface_get_p0 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_p0 (Dxf3dface *face, DxfPoint *point);
+double dxf_3dface_get_x0 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_x0 (Dxf3dface *face, double x0);
+double dxf_3dface_get_y0 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_y0 (Dxf3dface *face, double y0);
+double dxf_3dface_get_z0 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_z0 (Dxf3dface *face, double z0);
+DxfPoint *dxf_3dface_get_p1 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_p1 (Dxf3dface *face, DxfPoint *point);
+double dxf_3dface_get_x1 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_x1 (Dxf3dface *face, double x1);
+double dxf_3dface_get_y1 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_y1 (Dxf3dface *face, double y1);
+double dxf_3dface_get_z1 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_z1 (Dxf3dface *face, double z1);
+DxfPoint *dxf_3dface_get_p2 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_p2 (Dxf3dface *face, DxfPoint *point);
+double dxf_3dface_get_x2 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_x2 (Dxf3dface *face, double x2);
+double dxf_3dface_get_y2 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_y2 (Dxf3dface *face, double y2);
+double dxf_3dface_get_z2 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_z2 (Dxf3dface *face, double z2);
+DxfPoint *dxf_3dface_get_p3 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_p3 (Dxf3dface *face, DxfPoint *point);
+double dxf_3dface_get_x3 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_x3 (Dxf3dface *face, double x3);
+double dxf_3dface_get_y3 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_y3 (Dxf3dface *face, double y3);
+double dxf_3dface_get_z3 (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_z3 (Dxf3dface *face, double z3);
+int dxf_3dface_get_flag (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_flag (Dxf3dface *face, int flag);
+int dxf_3dface_is_first_edge_invisible (Dxf3dface *face);
+int dxf_3dface_is_second_edge_invisible (Dxf3dface *face);
+int dxf_3dface_is_third_edge_invisible (Dxf3dface *face);
+int dxf_3dface_is_fourth_edge_invisible (Dxf3dface *face);
+Dxf3dface *dxf_3dface_create_from_points (DxfPoint *p0, DxfPoint *p1, DxfPoint *p2, DxfPoint *p3, int id_code, int inheritance);
+Dxf3dface *dxf_3dface_get_next (Dxf3dface *face);
+Dxf3dface *dxf_3dface_set_next (Dxf3dface *face, Dxf3dface *next);
+Dxf3dface *dxf_3dface_get_last (Dxf3dface *face);
 
 
 #ifdef __cplusplus
