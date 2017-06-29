@@ -74,6 +74,48 @@ dxf_char_new ()
 }
 
 
+/*!
+ * \brief Allocate memory and initialize data fields in a \c DxfChar
+ * object.
+ * 
+ * \return \c NULL when no memory was allocated, a pointer to the
+ * allocated memory when succesful.
+ */
+DxfChar *
+dxf_char_init
+(
+        DxfChar *c
+                /*!< a pointer to the DxfChar object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (c == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                c = dxf_char_new ();
+        }
+        if (c == NULL)
+        {
+              fprintf (stderr,
+                (_("Error in %s () could not allocate memory for a DxfChar struct.\n")),
+                __FUNCTION__);
+              return (NULL);
+        }
+        c->value = strdup ("");
+        c->length = 0;
+        c->next = NULL;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (c);
+}
+
+
 int
 dxf_read_is_double (int type)
 {
