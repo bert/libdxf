@@ -6,7 +6,7 @@
  * \author Copyright (C) 2010, 2012, 2015, 2017
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
- * \brief LIBDXF coding utilities.
+ * \brief Functions for libDXF coding utilities.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
