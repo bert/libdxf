@@ -211,431 +211,83 @@ dxf_3dline_struct
 } Dxf3dline;
 
 
-Dxf3dline *
-dxf_3dline_new ();
-Dxf3dline *
-dxf_3dline_init
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_read
-(
-        DxfFile *fp,
-        Dxf3dline *line
-);
-int
-dxf_3dline_write
-(
-        DxfFile *fp,
-        Dxf3dline *line
-);
-int
-dxf_3dline_free
-(
-        Dxf3dline *line
-);
-void
-dxf_3dline_free_chain
-(
-        Dxf3dline *lines
-);
-int
-dxf_3dline_get_id_code
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_id_code
-(
-        Dxf3dline *line,
-        int id_code
-);
-char *
-dxf_3dline_get_linetype
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_linetype
-(
-        Dxf3dline *line,
-        char *linetype
-);
-char *
-dxf_3dline_get_layer
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_layer
-(
-        Dxf3dline *line,
-        char *layer
-);
-double
-dxf_3dline_get_elevation
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_elevation
-(
-        Dxf3dline *line,
-        double elevation
-);
-double
-dxf_3dline_get_thickness
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_thickness
-(
-        Dxf3dline *line,
-        double thickness
-);
-double
-dxf_3dline_get_linetype_scale
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_linetype_scale
-(
-        Dxf3dline *line,
-        double linetype_scale
-);
-int16_t
-dxf_3dline_get_visibility
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_visibility
-(
-        Dxf3dline *line,
-        int16_t visibility
-);
-int
-dxf_3dline_get_color
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_color
-(
-        Dxf3dline *line,
-        int color
-);
-int
-dxf_3dline_get_paperspace
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_paperspace
-(
-        Dxf3dline *line,
-        int paperspace
-);
-int
-dxf_3dline_get_graphics_data_size
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_graphics_data_size
-(
-        Dxf3dline *line,
-        int graphics_data_size
-);
-int16_t
-dxf_3dline_get_shadow_mode
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_shadow_mode
-(
-        Dxf3dline *line,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_3dline_get_binary_graphics_data
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_binary_graphics_data
-(
-        Dxf3dline *line,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_3dline_get_dictionary_owner_soft
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_dictionary_owner_soft
-(
-        Dxf3dline *line,
-        char *dictionary_owner_soft
-);
-char *
-dxf_3dline_get_material
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_material
-(
-        Dxf3dline *line,
-        char *material
-);
-char *
-dxf_3dline_get_dictionary_owner_hard
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_dictionary_owner_hard
-(
-        Dxf3dline *line,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_3dline_get_lineweight
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_lineweight
-(
-        Dxf3dline *line,
-        int16_t lineweight
-);
-char *
-dxf_3dline_get_plot_style_name
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_plot_style_name
-(
-        Dxf3dline *line,
-        char *plot_style_name
-);
-long
-dxf_3dline_get_color_value
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_color_value
-(
-        Dxf3dline *line,
-        long color_value
-);
-char *
-dxf_3dline_get_color_name
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_color_name
-(
-        Dxf3dline *line,
-        char *color_name
-);
-long
-dxf_3dline_get_transparency
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_transparency
-(
-        Dxf3dline *line,
-        long transparency
-);
-DxfPoint *
-dxf_3dline_get_p0
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_p0
-(
-        Dxf3dline *line,
-        DxfPoint *point
-);
-double
-dxf_3dline_get_x0
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_x0
-(
-        Dxf3dline *line,
-        double x0
-);
-double
-dxf_3dline_get_y0
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_y0
-(
-        Dxf3dline *line,
-        double y0
-);
-double
-dxf_3dline_get_z0
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_z0
-(
-        Dxf3dline *line,
-        double z0
-);
-DxfPoint *
-dxf_3dline_get_p1
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_p1
-(
-        Dxf3dline *line,
-        DxfPoint *point
-);
-double
-dxf_3dline_get_x1
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_x1
-(
-        Dxf3dline *line,
-        double x1
-);
-double
-dxf_3dline_get_y1
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_y1
-(
-        Dxf3dline *line,
-        double y1
-);
-double
-dxf_3dline_get_z1
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_z1
-(
-        Dxf3dline *line,
-        double z1
-);
-double
-dxf_3dline_get_extr_x0
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_extr_x0
-(
-        Dxf3dline *line,
-        double extr_x0
-);
-double
-dxf_3dline_get_extr_y0
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_extr_y0
-(
-        Dxf3dline *line,
-        double extr_y0
-);
-double
-dxf_3dline_get_extr_z0
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_extr_z0
-(
-        Dxf3dline *line,
-        double extr_z0
-);
-DxfPoint *
-dxf_3dline_get_extrusion_vector_as_point
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_extrusion_vector_from_point
-(
-        Dxf3dline *line,
-        DxfPoint *point
-);
-Dxf3dline *
-dxf_3dline_set_extrusion_vector
-(
-        Dxf3dline *line,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0
-);
-DxfPoint *
-dxf_3dline_get_mid_point
-(
-        Dxf3dline *line,
-        int id_code,
-        int inheritance
-);
-double
-dxf_3dline_get_length
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_create_from_points
-(
-        DxfPoint *p0,
-        DxfPoint *p1,
-        int id_code,
-        int inheritance
-);
-Dxf3dline *
-dxf_3dline_get_next
-(
-        Dxf3dline *line
-);
-Dxf3dline *
-dxf_3dline_set_next
-(
-        Dxf3dline *line,
-        Dxf3dline *next
-);
-Dxf3dline *
-dxf_3dline_get_last
-(
-        Dxf3dline *line
-);
+Dxf3dline *dxf_3dline_new ();
+Dxf3dline *dxf_3dline_init (Dxf3dline *line);
+Dxf3dline *dxf_3dline_read (DxfFile *fp, Dxf3dline *line);
+int dxf_3dline_write (DxfFile *fp, Dxf3dline *line);
+int dxf_3dline_free (Dxf3dline *line);
+void dxf_3dline_free_chain (Dxf3dline *lines);
+int dxf_3dline_get_id_code (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_id_code (Dxf3dline *line, int id_code);
+char *dxf_3dline_get_linetype (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_linetype (Dxf3dline *line, char *linetype);
+char *dxf_3dline_get_layer (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_layer (Dxf3dline *line, char *layer);
+double dxf_3dline_get_elevation (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_elevation (Dxf3dline *line, double elevation);
+double dxf_3dline_get_thickness (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_thickness (Dxf3dline *line, double thickness);
+double dxf_3dline_get_linetype_scale (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_linetype_scale (Dxf3dline *line, double linetype_scale);
+int16_t dxf_3dline_get_visibility (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_visibility (Dxf3dline *line, int16_t visibility);
+int dxf_3dline_get_color (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_color (Dxf3dline *line, int color);
+int dxf_3dline_get_paperspace (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_paperspace (Dxf3dline *line, int paperspace);
+int dxf_3dline_get_graphics_data_size (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_graphics_data_size (Dxf3dline *line, int graphics_data_size);
+int16_t dxf_3dline_get_shadow_mode (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_shadow_mode (Dxf3dline *line, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_3dline_get_binary_graphics_data (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_binary_graphics_data (Dxf3dline *line, DxfBinaryGraphicsData *data);
+char *dxf_3dline_get_dictionary_owner_soft (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_dictionary_owner_soft (Dxf3dline *line, char *dictionary_owner_soft);
+char *dxf_3dline_get_material (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_material (Dxf3dline *line, char *material);
+char *dxf_3dline_get_dictionary_owner_hard (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_dictionary_owner_hard (Dxf3dline *line, char *dictionary_owner_hard);
+int16_t dxf_3dline_get_lineweight (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_lineweight (Dxf3dline *line, int16_t lineweight);
+char *dxf_3dline_get_plot_style_name (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_plot_style_name (Dxf3dline *line, char *plot_style_name);
+long dxf_3dline_get_color_value (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_color_value (Dxf3dline *line, long color_value);
+char *dxf_3dline_get_color_name (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_color_name (Dxf3dline *line, char *color_name);
+long dxf_3dline_get_transparency (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_transparency (Dxf3dline *line, long transparency);
+DxfPoint *dxf_3dline_get_p0 (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_p0 (Dxf3dline *line, DxfPoint *point);
+double dxf_3dline_get_x0 (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_x0 (Dxf3dline *line, double x0);
+double dxf_3dline_get_y0 (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_y0 (Dxf3dline *line, double y0);
+double dxf_3dline_get_z0 (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_z0 (Dxf3dline *line, double z0);
+DxfPoint *dxf_3dline_get_p1 (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_p1 (Dxf3dline *line, DxfPoint *point);
+double dxf_3dline_get_x1 (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_x1 (Dxf3dline *line, double x1);
+double dxf_3dline_get_y1 (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_y1 (Dxf3dline *line, double y1);
+double dxf_3dline_get_z1 (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_z1 (Dxf3dline *line, double z1);
+double dxf_3dline_get_extr_x0 (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_extr_x0 (Dxf3dline *line, double extr_x0);
+double dxf_3dline_get_extr_y0 (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_extr_y0 (Dxf3dline *line, double extr_y0);
+double dxf_3dline_get_extr_z0 (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_extr_z0 (Dxf3dline *line, double extr_z0);
+DxfPoint *dxf_3dline_get_extrusion_vector_as_point (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_extrusion_vector_from_point (Dxf3dline *line, DxfPoint *point);
+Dxf3dline *dxf_3dline_set_extrusion_vector (Dxf3dline *line, double extr_x0, double extr_y0, double extr_z0);
+DxfPoint *dxf_3dline_get_mid_point (Dxf3dline *line, int id_code, int inheritance);
+double dxf_3dline_get_length (Dxf3dline *line);
+Dxf3dline *dxf_3dline_create_from_points (DxfPoint *p0, DxfPoint *p1, int id_code, int inheritance);
+Dxf3dline *dxf_3dline_get_next (Dxf3dline *line);
+Dxf3dline *dxf_3dline_set_next (Dxf3dline *line, Dxf3dline *next);
+Dxf3dline *dxf_3dline_get_last (Dxf3dline *line);
 
 
 #ifdef __cplusplus
