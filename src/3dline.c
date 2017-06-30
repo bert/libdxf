@@ -2697,7 +2697,7 @@ dxf_3dline_set_p1
 (
         Dxf3dline *line,
                 /*!< a pointer to a DXF \c 3DLINE entity. */
-        DxfPoint *point
+        DxfPoint *p1
                 /*!< a pointer to a DXF \c POINT entity. */
 )
 {
@@ -2712,14 +2712,14 @@ dxf_3dline_set_p1
                   __FUNCTION__);
                 return (NULL);
         }
-        if (point == NULL)
+        if (p1 == NULL)
         {
                 fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
                   __FUNCTION__);
                 return (NULL);
         }
-        line->p1 = (DxfPoint *) point;
+        line->p1 = (DxfPoint *) p1;
 #if DEBUG
         DXF_DEBUG_END
 #endif
