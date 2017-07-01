@@ -214,403 +214,79 @@ dxf_arc_struct
 } DxfArc;
 
 
-DxfArc *
-dxf_arc_new ();
-DxfArc *
-dxf_arc_init
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_read
-(
-        DxfFile *fp,
-        DxfArc *arc
-);
-int dxf_arc_write
-(
-        DxfFile *fp,
-        DxfArc *arc
-);
-int dxf_arc_free
-(
-        DxfArc *arc
-);
-void
-dxf_arc_free_chain
-(
-        DxfArc *arcs
-);
-int
-dxf_arc_get_id_code
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_id_code
-(
-        DxfArc *arc,
-        int id_code
-);
-char *
-dxf_arc_get_linetype
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_linetype
-(
-        DxfArc *arc,
-        char *linetype
-);
-char *
-dxf_arc_get_layer
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_layer
-(
-        DxfArc *arc,
-        char *layer
-);
-double
-dxf_arc_get_elevation
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_elevation
-(
-        DxfArc *arc,
-        double elevation
-);
-double
-dxf_arc_get_thickness
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_thickness
-(
-        DxfArc *arc,
-        double thickness
-);
-double
-dxf_arc_get_linetype_scale
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_linetype_scale
-(
-        DxfArc *arc,
-        double linetype_scale
-);
-int16_t
-dxf_arc_get_visibility
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_visibility
-(
-        DxfArc *arc,
-        int16_t visibility
-);
-int
-dxf_arc_get_color
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_color
-(
-        DxfArc *arc,
-        int color
-);
-int
-dxf_arc_get_paperspace
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_paperspace
-(
-        DxfArc *arc,
-        int paperspace
-);
-int
-dxf_arc_get_graphics_data_size
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_graphics_data_size
-(
-        DxfArc *arc,
-        int graphics_data_size
-);
-int16_t
-dxf_arc_get_shadow_mode
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_shadow_mode
-(
-        DxfArc *arc,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_arc_get_binary_graphics_data
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_binary_graphics_data
-(
-        DxfArc *arc,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_arc_get_dictionary_owner_soft
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_dictionary_owner_soft
-(
-        DxfArc *arc,
-        char *dictionary_owner_soft
-);
-char *
-dxf_arc_get_material
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_material
-(
-        DxfArc *arc,
-        char *material
-);
-char *
-dxf_arc_get_dictionary_owner_hard
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_dictionary_owner_hard
-(
-        DxfArc *arc,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_arc_get_lineweight
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_lineweight
-(
-        DxfArc *arc,
-        int16_t lineweight
-);
-char *
-dxf_arc_get_plot_style_name
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_plot_style_name
-(
-        DxfArc *arc,
-        char *plot_style_name
-);
-long
-dxf_arc_get_color_value
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_color_value
-(
-        DxfArc *arc,
-        long color_value
-);
-char *
-dxf_arc_get_color_name
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_color_name
-(
-        DxfArc *arc,
-        char *color_name
-);
-long
-dxf_arc_get_transparency
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_transparency
-(
-        DxfArc *arc,
-        long transparency
-);
-DxfPoint *
-dxf_arc_get_p0
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_p0
-(
-        DxfArc *arc,
-        DxfPoint *p0
-);
-double
-dxf_arc_get_x0
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_x0
-(
-        DxfArc *arc,
-        double x0
-);
-double
-dxf_arc_get_y0
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_y0
-(
-        DxfArc *arc,
-        double y0
-);
-double
-dxf_arc_get_z0
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_z0
-(
-        DxfArc *arc,
-        double z0
-);
-double
-dxf_arc_get_radius
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_radius
-(
-        DxfArc *arc,
-        double radius
-);
-double
-dxf_arc_get_start_angle
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_start_angle
-(
-        DxfArc *arc,
-        double start_angle
-);
-double
-dxf_arc_get_end_angle
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_end_angle
-(
-        DxfArc *arc,
-        double end_angle
-);
-double
-dxf_arc_get_length
-(
-        DxfArc *arc
-);
-DxfPoint *
-dxf_arc_get_extrusion_vector_as_point
-(
-        DxfArc *arc
-);
-double
-dxf_arc_get_extr_x0
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_extr_x0
-(
-        DxfArc *arc,
-        double extr_x0
-);
-double
-dxf_arc_get_extr_y0
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_extr_y0
-(
-        DxfArc *arc,
-        double extr_y0
-);
-double
-dxf_arc_get_extr_z0
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_extr_z0
-(
-        DxfArc *arc,
-        double extr_z0
-);
-DxfArc *
-dxf_arc_set_extrusion_vector_from_point
-(
-        DxfArc *arc,
-        DxfPoint *point
-);
-DxfArc *
-dxf_arc_set_extrusion_vector
-(
-        DxfArc *arc,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0
-);
-DxfArc *
-dxf_arc_get_next
-(
-        DxfArc *arc
-);
-DxfArc *
-dxf_arc_set_next
-(
-        DxfArc *arc,
-        DxfArc *next
-);
-DxfArc *
-dxf_arc_get_last
-(
-        DxfArc *arc
-);
+DxfArc *dxf_arc_new ();
+DxfArc *dxf_arc_init (DxfArc *arc);
+DxfArc *dxf_arc_read (DxfFile *fp, DxfArc *arc);
+int dxf_arc_write (DxfFile *fp, DxfArc *arc);
+int dxf_arc_free (DxfArc *arc);
+void dxf_arc_free_chain (DxfArc *arcs);
+int dxf_arc_get_id_code (DxfArc *arc);
+DxfArc *dxf_arc_set_id_code (DxfArc *arc, int id_code);
+char *dxf_arc_get_linetype (DxfArc *arc);
+DxfArc *dxf_arc_set_linetype (DxfArc *arc, char *linetype);
+char *dxf_arc_get_layer (DxfArc *arc);
+DxfArc *dxf_arc_set_layer (DxfArc *arc, char *layer);
+double dxf_arc_get_elevation (DxfArc *arc);
+DxfArc *dxf_arc_set_elevation (DxfArc *arc, double elevation);
+double dxf_arc_get_thickness (DxfArc *arc);
+DxfArc *dxf_arc_set_thickness (DxfArc *arc, double thickness);
+double dxf_arc_get_linetype_scale (DxfArc *arc);
+DxfArc *dxf_arc_set_linetype_scale (DxfArc *arc, double linetype_scale);
+int16_t dxf_arc_get_visibility (DxfArc *arc);
+DxfArc *dxf_arc_set_visibility (DxfArc *arc, int16_t visibility);
+int dxf_arc_get_color (DxfArc *arc);
+DxfArc *dxf_arc_set_color (DxfArc *arc, int color);
+int dxf_arc_get_paperspace (DxfArc *arc);
+DxfArc *dxf_arc_set_paperspace (DxfArc *arc, int paperspace);
+int dxf_arc_get_graphics_data_size (DxfArc *arc);
+DxfArc *dxf_arc_set_graphics_data_size (DxfArc *arc, int graphics_data_size);
+int16_t dxf_arc_get_shadow_mode (DxfArc *arc);
+DxfArc *dxf_arc_set_shadow_mode (DxfArc *arc, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_arc_get_binary_graphics_data (DxfArc *arc);
+DxfArc *dxf_arc_set_binary_graphics_data (DxfArc *arc, DxfBinaryGraphicsData *data);
+char *dxf_arc_get_dictionary_owner_soft (DxfArc *arc);
+DxfArc *dxf_arc_set_dictionary_owner_soft (DxfArc *arc, char *dictionary_owner_soft);
+char *dxf_arc_get_material (DxfArc *arc);
+DxfArc *dxf_arc_set_material (DxfArc *arc, char *material);
+char *dxf_arc_get_dictionary_owner_hard (DxfArc *arc);
+DxfArc *dxf_arc_set_dictionary_owner_hard (DxfArc *arc, char *dictionary_owner_hard);
+int16_t dxf_arc_get_lineweight (DxfArc *arc);
+DxfArc *dxf_arc_set_lineweight (DxfArc *arc, int16_t lineweight);
+char *dxf_arc_get_plot_style_name (DxfArc *arc);
+DxfArc *dxf_arc_set_plot_style_name (DxfArc *arc, char *plot_style_name);
+long dxf_arc_get_color_value (DxfArc *arc);
+DxfArc *dxf_arc_set_color_value (DxfArc *arc, long color_value);
+char *dxf_arc_get_color_name (DxfArc *arc);
+DxfArc *dxf_arc_set_color_name (DxfArc *arc, char *color_name);
+long dxf_arc_get_transparency (DxfArc *arc);
+DxfArc *dxf_arc_set_transparency (DxfArc *arc, long transparency);
+DxfPoint *dxf_arc_get_p0 (DxfArc *arc);
+DxfArc *dxf_arc_set_p0 (DxfArc *arc, DxfPoint *p0);
+double dxf_arc_get_x0 (DxfArc *arc);
+DxfArc *dxf_arc_set_x0 (DxfArc *arc, double x0);
+double dxf_arc_get_y0 (DxfArc *arc);
+DxfArc *dxf_arc_set_y0 (DxfArc *arc, double y0);
+double dxf_arc_get_z0 (DxfArc *arc);
+DxfArc *dxf_arc_set_z0 (DxfArc *arc, double z0);
+double dxf_arc_get_radius (DxfArc *arc);
+DxfArc *dxf_arc_set_radius (DxfArc *arc, double radius);
+double dxf_arc_get_start_angle (DxfArc *arc);
+DxfArc *dxf_arc_set_start_angle (DxfArc *arc, double start_angle);
+double dxf_arc_get_end_angle (DxfArc *arc);
+DxfArc *dxf_arc_set_end_angle (DxfArc *arc, double end_angle);
+double dxf_arc_get_length (DxfArc *arc);
+DxfPoint *dxf_arc_get_extrusion_vector_as_point (DxfArc *arc);
+double dxf_arc_get_extr_x0 (DxfArc *arc);
+DxfArc *dxf_arc_set_extr_x0 (DxfArc *arc, double extr_x0);
+double dxf_arc_get_extr_y0 (DxfArc *arc);
+DxfArc *dxf_arc_set_extr_y0 (DxfArc *arc, double extr_y0);
+double dxf_arc_get_extr_z0 (DxfArc *arc);
+DxfArc *dxf_arc_set_extr_z0 (DxfArc *arc, double extr_z0);
+DxfArc *dxf_arc_set_extrusion_vector_from_point (DxfArc *arc, DxfPoint *point);
+DxfArc *dxf_arc_set_extrusion_vector (DxfArc *arc, double extr_x0, double extr_y0, double extr_z0);
+DxfArc *dxf_arc_get_next (DxfArc *arc);
+DxfArc *dxf_arc_set_next (DxfArc *arc, DxfArc *next);
+DxfArc *dxf_arc_get_last (DxfArc *arc);
 
 
 #ifdef __cplusplus
