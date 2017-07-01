@@ -1,7 +1,8 @@
 /*!
  * \file 3dsolid.h
  *
- * \author Copyright (C) 2012 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2012, 2013, 2014, 2015, 2016, 2017
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF 3D solid entity (\c 3DSOLID).
  *
@@ -207,315 +208,63 @@ dxf_3dsolid_struct
 } Dxf3dsolid;
 
 
-Dxf3dsolid *
-dxf_3dsolid_new ();
-Dxf3dsolid *
-dxf_3dsolid_init
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_read
-(
-        DxfFile *fp,
-        Dxf3dsolid *solid
-);
-int
-dxf_3dsolid_write
-(
-        DxfFile *fp,
-        Dxf3dsolid *solid
-);
-int
-dxf_3dsolid_free
-(
-        Dxf3dsolid *solid
-);
-void
-dxf_3dsolid_free_chain
-(
-        Dxf3dsolid *solids
-);
-int
-dxf_3dsolid_get_id_code
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_id_code
-(
-        Dxf3dsolid *solid,
-        int id_code
-);
-char *
-dxf_3dsolid_get_linetype
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_linetype
-(
-        Dxf3dsolid *solid,
-        char *linetype
-);
-char *
-dxf_3dsolid_get_layer
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_layer
-(
-        Dxf3dsolid *solid,
-        char *layer
-);
-double
-dxf_3dsolid_get_elevation
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_elevation
-(
-        Dxf3dsolid *solid,
-        double elevation
-);
-double
-dxf_3dsolid_get_thickness
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_thickness
-(
-        Dxf3dsolid *solid,
-        double thickness
-);
-double
-dxf_3dsolid_get_linetype_scale
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_linetype_scale
-(
-        Dxf3dsolid *solid,
-        double linetype_scale
-);
-int16_t
-dxf_3dsolid_get_visibility
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_visibility
-(
-        Dxf3dsolid *solid,
-        int16_t visibility
-);
-int
-dxf_3dsolid_get_color
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_color
-(
-        Dxf3dsolid *solid,
-        int color
-);
-int
-dxf_3dsolid_get_paperspace
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_paperspace
-(
-        Dxf3dsolid *solid,
-        int paperspace
-);
-int
-dxf_3dsolid_get_graphics_data_size
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_graphics_data_size
-(
-        Dxf3dsolid *solid,
-        int graphics_data_size
-);
-int16_t
-dxf_3dsolid_get_shadow_mode
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_shadow_mode
-(
-        Dxf3dsolid *solid,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_3dsolid_get_binary_graphics_data
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_binary_graphics_data
-(
-        Dxf3dsolid *solid,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_3dsolid_get_dictionary_owner_soft
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_dictionary_owner_soft
-(
-        Dxf3dsolid *solid,
-        char *dictionary_owner_soft
-);
-char *
-dxf_3dsolid_get_material
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_material
-(
-        Dxf3dsolid *solid,
-        char *material
-);
-char *
-dxf_3dsolid_get_dictionary_owner_hard
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_dictionary_owner_hard
-(
-        Dxf3dsolid *solid,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_3dsolid_get_lineweight
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_lineweight
-(
-        Dxf3dsolid *solid,
-        int16_t lineweight
-);
-char *
-dxf_3dsolid_get_plot_style_name
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_plot_style_name
-(
-        Dxf3dsolid *solid,
-        char *plot_style_name
-);
-long
-dxf_3dsolid_get_color_value
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_color_value
-(
-        Dxf3dsolid *solid,
-        long color_value
-);
-char *
-dxf_3dsolid_get_color_name
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_color_name
-(
-        Dxf3dsolid *solid,
-        char *color_name
-);
-long
-dxf_3dsolid_get_transparency
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_transparency
-(
-        Dxf3dsolid *solid,
-        long transparency
-);
-DxfProprietaryData *
-dxf_3dsolid_get_proprietary_data
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_proprietary_data
-(
-        Dxf3dsolid *solid,
-        DxfProprietaryData *proprietary_data
-);
-DxfProprietaryData *
-dxf_3dsolid_get_additional_proprietary_data
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_additional_proprietary_data
-(
-        Dxf3dsolid *solid,
-        DxfProprietaryData *additional_proprietary_data
-);
-int
-dxf_3dsolid_get_modeler_format_version_number
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_modeler_format_version_number
-(
-        Dxf3dsolid *solid,
-        int modeler_format_version_number
-);
-char *
-dxf_3dsolid_get_history
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_history
-(
-        Dxf3dsolid *solid,
-        char *history
-);
-Dxf3dsolid *
-dxf_3dsolid_get_next
-(
-        Dxf3dsolid *solid
-);
-Dxf3dsolid *
-dxf_3dsolid_set_next
-(
-        Dxf3dsolid *solid,
-        Dxf3dsolid *next
-);
-Dxf3dsolid *
-dxf_3dsolid_get_last
-(
-        Dxf3dsolid *solid
-);
+Dxf3dsolid *dxf_3dsolid_new ();
+Dxf3dsolid *dxf_3dsolid_init (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_read (DxfFile *fp, Dxf3dsolid *solid);
+int dxf_3dsolid_write (DxfFile *fp, Dxf3dsolid *solid);
+int dxf_3dsolid_free (Dxf3dsolid *solid);
+void dxf_3dsolid_free_chain (Dxf3dsolid *solids);
+int dxf_3dsolid_get_id_code (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_id_code (Dxf3dsolid *solid, int id_code);
+char *dxf_3dsolid_get_linetype (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_linetype (Dxf3dsolid *solid, char *linetype);
+char *dxf_3dsolid_get_layer (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_layer (Dxf3dsolid *solid, char *layer);
+double dxf_3dsolid_get_elevation (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_elevation (Dxf3dsolid *solid, double elevation);
+double dxf_3dsolid_get_thickness (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_thickness (Dxf3dsolid *solid, double thickness);
+double dxf_3dsolid_get_linetype_scale (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_linetype_scale (Dxf3dsolid *solid, double linetype_scale);
+int16_t dxf_3dsolid_get_visibility (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_visibility (Dxf3dsolid *solid, int16_t visibility);
+int dxf_3dsolid_get_color (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_color (Dxf3dsolid *solid, int color);
+int dxf_3dsolid_get_paperspace (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_paperspace (Dxf3dsolid *solid, int paperspace);
+int dxf_3dsolid_get_graphics_data_size (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_graphics_data_size (Dxf3dsolid *solid, int graphics_data_size);
+int16_t dxf_3dsolid_get_shadow_mode (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_shadow_mode (Dxf3dsolid *solid, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_3dsolid_get_binary_graphics_data (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_binary_graphics_data (Dxf3dsolid *solid, DxfBinaryGraphicsData *data);
+char *dxf_3dsolid_get_dictionary_owner_soft (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_dictionary_owner_soft (Dxf3dsolid *solid, char *dictionary_owner_soft);
+char *dxf_3dsolid_get_material (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_material (Dxf3dsolid *solid, char *material);
+char *dxf_3dsolid_get_dictionary_owner_hard (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_dictionary_owner_hard (Dxf3dsolid *solid, char *dictionary_owner_hard);
+int16_t dxf_3dsolid_get_lineweight (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_lineweight (Dxf3dsolid *solid, int16_t lineweight);
+char *dxf_3dsolid_get_plot_style_name (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_plot_style_name (Dxf3dsolid *solid, char *plot_style_name);
+long dxf_3dsolid_get_color_value (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_color_value (Dxf3dsolid *solid, long color_value);
+char *dxf_3dsolid_get_color_name (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_color_name (Dxf3dsolid *solid, char *color_name);
+long dxf_3dsolid_get_transparency (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_transparency (Dxf3dsolid *solid, long transparency);
+DxfProprietaryData *dxf_3dsolid_get_proprietary_data (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_proprietary_data (Dxf3dsolid *solid, DxfProprietaryData *proprietary_data);
+DxfProprietaryData *dxf_3dsolid_get_additional_proprietary_data (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_additional_proprietary_data (Dxf3dsolid *solid, DxfProprietaryData *additional_proprietary_data);
+int dxf_3dsolid_get_modeler_format_version_number (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_modeler_format_version_number (Dxf3dsolid *solid, int modeler_format_version_number);
+char *dxf_3dsolid_get_history (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_history (Dxf3dsolid *solid, char *history);
+Dxf3dsolid *dxf_3dsolid_get_next (Dxf3dsolid *solid);
+Dxf3dsolid *dxf_3dsolid_set_next (Dxf3dsolid *solid, Dxf3dsolid *next);
+Dxf3dsolid *dxf_3dsolid_get_last (Dxf3dsolid *solid);
 
 
 #ifdef __cplusplus
