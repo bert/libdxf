@@ -1,8 +1,8 @@
 /*!
  * \file arc.h
  *
- * \author Copyright (C) 2008, 20019, 2010, 2012, 2103, 2014, 2015,
- * 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2009, 2010, 2012, 2103, 2014, 2015, 2016,
+ * 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF arc entity (\c ARC).
  *
