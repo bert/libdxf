@@ -1,7 +1,8 @@
 /*!
  * \file acad_proxy_entity.h
  *
- * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF acad_proxy_entity entity
  * (\c ACAD_PROXY_ENTITY).
@@ -232,348 +233,69 @@ dxf_acad_proxy_entity_struct
 } DxfAcadProxyEntity;
 
 
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_new ();
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_init
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_read
-(
-        DxfFile *fp,
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-int
-dxf_acad_proxy_entity_write
-(
-        DxfFile *fp,
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-int
-dxf_acad_proxy_entity_free
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-void
-dxf_acad_proxy_entity_free_chain
-(
-        DxfAcadProxyEntity *acad_proxy_entities
-);
-int
-dxf_acad_proxy_entity_get_id_code
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_id_code
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        int id_code
-);
-char *
-dxf_acad_proxy_entity_get_linetype
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_linetype
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        char *linetype
-);
-char *
-dxf_acad_proxy_entity_get_layer
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_layer
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        char *layer
-);
-double
-dxf_acad_proxy_entity_get_elevation
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_elevation
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        double elevation
-);
-double
-dxf_acad_proxy_entity_get_thickness
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_thickness
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        double thickness
-);
-double
-dxf_acad_proxy_entity_get_linetype_scale
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_linetype_scale
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        double linetype_scale
-);
-int16_t
-dxf_acad_proxy_entity_get_visibility
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_visibility
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        int16_t visibility
-);
-int
-dxf_acad_proxy_entity_get_color
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_color
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        int color
-);
-int
-dxf_acad_proxy_entity_get_paperspace
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_paperspace
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        int paperspace
-);
-int16_t
-dxf_acad_proxy_entity_get_shadow_mode
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_shadow_mode
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        int16_t shadow_mode
-);
-char *
-dxf_acad_proxy_entity_get_dictionary_owner_soft
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_dictionary_owner_soft
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        char *dictionary_owner_soft
-);
-char *
-dxf_acad_proxy_entity_get_material
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_material
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        char *material
-);
-char *
-dxf_acad_proxy_entity_get_dictionary_owner_hard
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_dictionary_owner_hard
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_acad_proxy_entity_get_lineweight
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_lineweight
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        int16_t lineweight
-);
-char *
-dxf_acad_proxy_entity_get_plot_style_name
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_plot_style_name
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        char *plot_style_name
-);
-long
-dxf_acad_proxy_entity_get_color_value
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_color_value
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        long color_value
-);
-char *
-dxf_acad_proxy_entity_get_color_name
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_color_name
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        char *color_name
-);
-long
-dxf_acad_proxy_entity_get_transparency
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_transparency
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        long transparency
-);
-int
-dxf_acad_proxy_entity_get_original_custom_object_data_format
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_original_custom_object_data_format
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        int original_custom_object_data_format
-);
-int
-dxf_acad_proxy_entity_get_proxy_entity_class_id
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_proxy_entity_class_id
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        int proxy_entity_class_id
-);
-int
-dxf_acad_proxy_entity_get_application_entity_class_id
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_application_entity_class_id
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        int application_entity_class_id
-);
-int
-dxf_acad_proxy_entity_get_graphics_data_size
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_graphics_data_size
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        int graphics_data_size
-);
-int
-dxf_acad_proxy_entity_get_entity_data_size
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_entity_data_size
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        int entity_data_size
-);
-ulong
-dxf_acad_proxy_entity_get_object_drawing_format
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_object_drawing_format
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        ulong object_drawing_format
-);
-DxfBinaryGraphicsData *
-dxf_acad_proxy_entity_get_binary_graphics_data
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_binary_graphics_data
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        DxfBinaryGraphicsData *data
-);
-DxfBinaryEntityData *
-dxf_acad_proxy_entity_get_binary_entity_data
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_binary_entity_data
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        DxfBinaryEntityData *data
-);
-DxfObjectId *
-dxf_acad_proxy_entity_get_object_id
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_object_id
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        DxfObjectId *object_id
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_get_next
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_set_next
-(
-        DxfAcadProxyEntity *acad_proxy_entity,
-        DxfAcadProxyEntity *next
-);
-DxfAcadProxyEntity *
-dxf_acad_proxy_entity_get_last
-(
-        DxfAcadProxyEntity *acad_proxy_entity
-);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_new ();
+DxfAcadProxyEntity *dxf_acad_proxy_entity_init (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_read (DxfFile *fp, DxfAcadProxyEntity *acad_proxy_entity);
+int dxf_acad_proxy_entity_write (DxfFile *fp, DxfAcadProxyEntity *acad_proxy_entity);
+int dxf_acad_proxy_entity_free (DxfAcadProxyEntity *acad_proxy_entity);
+void dxf_acad_proxy_entity_free_chain (DxfAcadProxyEntity *acad_proxy_entities);
+int dxf_acad_proxy_entity_get_id_code (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_id_code (DxfAcadProxyEntity *acad_proxy_entity, int id_code);
+char *dxf_acad_proxy_entity_get_linetype (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_linetype (DxfAcadProxyEntity *acad_proxy_entity, char *linetype);
+char *dxf_acad_proxy_entity_get_layer (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_layer (DxfAcadProxyEntity *acad_proxy_entity, char *layer);
+double dxf_acad_proxy_entity_get_elevation (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_elevation (DxfAcadProxyEntity *acad_proxy_entity, double elevation);
+double dxf_acad_proxy_entity_get_thickness (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_thickness (DxfAcadProxyEntity *acad_proxy_entity, double thickness);
+double dxf_acad_proxy_entity_get_linetype_scale (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_linetype_scale (DxfAcadProxyEntity *acad_proxy_entity, double linetype_scale);
+int16_t dxf_acad_proxy_entity_get_visibility (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_visibility (DxfAcadProxyEntity *acad_proxy_entity, int16_t visibility);
+int dxf_acad_proxy_entity_get_color (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_color (DxfAcadProxyEntity *acad_proxy_entity, int color);
+int dxf_acad_proxy_entity_get_paperspace (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_paperspace (DxfAcadProxyEntity *acad_proxy_entity, int paperspace);
+int16_t dxf_acad_proxy_entity_get_shadow_mode (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_shadow_mode (DxfAcadProxyEntity *acad_proxy_entity, int16_t shadow_mode);
+char *dxf_acad_proxy_entity_get_dictionary_owner_soft (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_dictionary_owner_soft (DxfAcadProxyEntity *acad_proxy_entity, char *dictionary_owner_soft);
+char *dxf_acad_proxy_entity_get_material (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_material (DxfAcadProxyEntity *acad_proxy_entity, char *material);
+char *dxf_acad_proxy_entity_get_dictionary_owner_hard (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_dictionary_owner_hard (DxfAcadProxyEntity *acad_proxy_entity, char *dictionary_owner_hard);
+int16_t dxf_acad_proxy_entity_get_lineweight (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_lineweight (DxfAcadProxyEntity *acad_proxy_entity, int16_t lineweight);
+char *dxf_acad_proxy_entity_get_plot_style_name (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_plot_style_name (DxfAcadProxyEntity *acad_proxy_entity, char *plot_style_name);
+long dxf_acad_proxy_entity_get_color_value (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_color_value (DxfAcadProxyEntity *acad_proxy_entity, long color_value);
+char *dxf_acad_proxy_entity_get_color_name (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_color_name (DxfAcadProxyEntity *acad_proxy_entity, char *color_name);
+long dxf_acad_proxy_entity_get_transparency (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_transparency (DxfAcadProxyEntity *acad_proxy_entity, long transparency);
+int dxf_acad_proxy_entity_get_original_custom_object_data_format (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_original_custom_object_data_format (DxfAcadProxyEntity *acad_proxy_entity, int original_custom_object_data_format);
+int dxf_acad_proxy_entity_get_proxy_entity_class_id (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_proxy_entity_class_id (DxfAcadProxyEntity *acad_proxy_entity, int proxy_entity_class_id);
+int dxf_acad_proxy_entity_get_application_entity_class_id (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_application_entity_class_id (DxfAcadProxyEntity *acad_proxy_entity, int application_entity_class_id);
+int dxf_acad_proxy_entity_get_graphics_data_size (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_graphics_data_size (DxfAcadProxyEntity *acad_proxy_entity, int graphics_data_size);
+int dxf_acad_proxy_entity_get_entity_data_size (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_entity_data_size (DxfAcadProxyEntity *acad_proxy_entity, int entity_data_size);
+ulong dxf_acad_proxy_entity_get_object_drawing_format (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_object_drawing_format (DxfAcadProxyEntity *acad_proxy_entity, ulong object_drawing_format);
+DxfBinaryGraphicsData *dxf_acad_proxy_entity_get_binary_graphics_data (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_binary_graphics_data (DxfAcadProxyEntity *acad_proxy_entity, DxfBinaryGraphicsData *data);
+DxfBinaryEntityData *dxf_acad_proxy_entity_get_binary_entity_data (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_binary_entity_data (DxfAcadProxyEntity *acad_proxy_entity, DxfBinaryEntityData *data);
+DxfObjectId *dxf_acad_proxy_entity_get_object_id (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_object_id (DxfAcadProxyEntity *acad_proxy_entity, DxfObjectId *object_id);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_get_next (DxfAcadProxyEntity *acad_proxy_entity);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_set_next (DxfAcadProxyEntity *acad_proxy_entity, DxfAcadProxyEntity *next);
+DxfAcadProxyEntity *dxf_acad_proxy_entity_get_last (DxfAcadProxyEntity *acad_proxy_entity);
 
 
 #ifdef __cplusplus
