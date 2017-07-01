@@ -289,574 +289,110 @@ dxf_attdef_struct
 } DxfAttdef;
 
 
-DxfAttdef *
-dxf_attdef_new ();
-DxfAttdef *
-dxf_attdef_init
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_read
-(
-        DxfFile *fp,
-        DxfAttdef *attdef
-);
-int
-dxf_attdef_write
-(
-        DxfFile *fp,
-        DxfAttdef *attdef
-);
-int
-dxf_attdef_free
-(
-        DxfAttdef *attdef
-);
-void
-dxf_attdef_free_chain
-(
-        DxfAttdef *attdefs
-);
-int
-dxf_attdef_get_id_code
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_id_code
-(
-        DxfAttdef *attdef,
-        int id_code
-);
-char *
-dxf_attdef_get_linetype
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_linetype
-(
-        DxfAttdef *attdef,
-        char *linetype
-);
-char *
-dxf_attdef_get_layer
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_layer
-(
-        DxfAttdef *attdef,
-        char *layer
-);
-double
-dxf_attdef_get_elevation
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_elevation
-(
-        DxfAttdef *attdef,
-        double elevation
-);
-double
-dxf_attdef_get_thickness
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_thickness
-(
-        DxfAttdef *attdef,
-        double thickness
-);
-double
-dxf_attdef_get_linetype_scale
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_linetype_scale
-(
-        DxfAttdef *attdef,
-        double linetype_scale
-);
-int16_t
-dxf_attdef_get_visibility
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_visibility
-(
-        DxfAttdef *attdef,
-        int16_t visibility
-);
-int
-dxf_attdef_get_color
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_color
-(
-        DxfAttdef *attdef,
-        int color
-);
-int
-dxf_attdef_get_paperspace
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_paperspace
-(
-        DxfAttdef *attdef,
-        int paperspace
-);
-int
-dxf_attdef_get_graphics_data_size
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_graphics_data_size
-(
-        DxfAttdef *attdef,
-        int graphics_data_size
-);
-int16_t
-dxf_attdef_get_shadow_mode
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_shadow_mode
-(
-        DxfAttdef *attdef,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_attdef_get_binary_graphics_data
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_binary_graphics_data
-(
-        DxfAttdef *attdef,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_attdef_get_dictionary_owner_soft
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_dictionary_owner_soft
-(
-        DxfAttdef *attdef,
-        char *dictionary_owner_soft
-);
-char *
-dxf_attdef_get_material
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_material
-(
-        DxfAttdef *attdef,
-        char *material
-);
-char *
-dxf_attdef_get_dictionary_owner_hard
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_dictionary_owner_hard
-(
-        DxfAttdef *attdef,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_attdef_get_lineweight
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_lineweight
-(
-        DxfAttdef *attdef,
-        int16_t lineweight
-);
-char *
-dxf_attdef_get_plot_style_name
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_plot_style_name
-(
-        DxfAttdef *attdef,
-        char *plot_style_name
-);
-long
-dxf_attdef_get_color_value
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_color_value
-(
-        DxfAttdef *attdef,
-        long color_value
-);
-char *
-dxf_attdef_get_color_name
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_color_name
-(
-        DxfAttdef *attdef,
-        char *color_name
-);
-long
-dxf_attdef_get_transparency
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_transparency
-(
-        DxfAttdef *attdef,
-        long transparency
-);
-char *
-dxf_attdef_get_default_value
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_default_value
-(
-        DxfAttdef *attdef,
-        char *default_value
-);
-char *
-dxf_attdef_get_tag_value
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_tag_value
-(
-        DxfAttdef *attdef,
-        char *tag_value
-);
-char *
-dxf_attdef_get_prompt_value
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_prompt_value
-(
-        DxfAttdef *attdef,
-        char *prompt_value
-);
-char *
-dxf_attdef_get_text_style
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_text_style
-(
-        DxfAttdef *attdef,
-        char *text_style
-);
-DxfPoint *
-dxf_attdef_get_p0
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_p0
-(
-        DxfAttdef *attdef,
-        DxfPoint *p0
-);
-double
-dxf_attdef_get_x0
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_x0
-(
-        DxfAttdef *attdef,
-        double x0
-);
-double
-dxf_attdef_get_y0
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_y0
-(
-        DxfAttdef *attdef,
-        double y0
-);
-double
-dxf_attdef_get_z0
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_z0
-(
-        DxfAttdef *attdef,
-        double z0
-);
-DxfPoint *
-dxf_attdef_get_p1
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_p1
-(
-        DxfAttdef *attdef,
-        DxfPoint *p1
-);
-double
-dxf_attdef_get_x1
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_x1
-(
-        DxfAttdef *attdef,
-        double x1
-);
-double
-dxf_attdef_get_y1
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_y1
-(
-        DxfAttdef *attdef,
-        double y1
-);
-double
-dxf_attdef_get_z1
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_z1
-(
-        DxfAttdef *attdef,
-        double z1
-);
-double
-dxf_attdef_get_height
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_height
-(
-        DxfAttdef *attdef,
-        double height
-);
-double
-dxf_attdef_get_rel_x_scale
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_rel_x_scale
-(
-        DxfAttdef *attdef,
-        double rel_x_scale
-);
-double
-dxf_attdef_get_rot_angle
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_rot_angle
-(
-        DxfAttdef *attdef,
-        double rot_angle
-);
-double
-dxf_attdef_get_obl_angle
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_obl_angle
-(
-        DxfAttdef *attdef,
-        double obl_angle
-);
-int
-dxf_attdef_get_attr_flags
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_attr_flags
-(
-        DxfAttdef *attdef,
-        int attr_flags
-);
-int
-dxf_attdef_is_invisible
-(
-        DxfAttdef *attdef
-);
-int
-dxf_attdef_is_constant
-(
-        DxfAttdef *attdef
-);
-int
-dxf_attdef_is_verification_required
-(
-        DxfAttdef *attdef
-);
-int
-dxf_attdef_is_preset
-(
-        DxfAttdef *attdef
-);
-int
-dxf_attdef_get_text_flags
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_text_flags
-(
-        DxfAttdef *attdef,
-        int text_flags
-);
-int
-dxf_attdef_get_hor_align
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_hor_align
-(
-        DxfAttdef *attdef,
-        int hor_align
-);
-int
-dxf_attdef_get_field_length
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_field_length
-(
-        DxfAttdef *attdef,
-        int field_length
-);
-int
-dxf_attdef_get_vert_align
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_vert_align
-(
-        DxfAttdef *attdef,
-        int vert_align
-);
-double
-dxf_attdef_get_extr_x0
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_extr_x0
-(
-        DxfAttdef *attdef,
-        double extr_x0
-);
-double
-dxf_attdef_get_extr_y0
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_extr_y0
-(
-        DxfAttdef *attdef,
-        double extr_y0
-);
-double
-dxf_attdef_get_extr_z0
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_extr_z0
-(
-        DxfAttdef *attdef,
-        double extr_z0
-);
-DxfPoint *
-dxf_attdef_get_extrusion_vector_as_point
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_extrusion_vector_from_point
-(
-        DxfAttdef *attdef,
-        DxfPoint *point
-);
-DxfAttdef *
-dxf_attdef_set_extrusion_vector
-(
-        DxfAttdef *attdef,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0
-);
-DxfAttdef *
-dxf_attdef_get_next
-(
-        DxfAttdef *attdef
-);
-DxfAttdef *
-dxf_attdef_set_next
-(
-        DxfAttdef *attdef,
-        DxfAttdef *next
-);
-DxfAttdef *
-dxf_attdef_get_last
-(
-        DxfAttdef *attdef
-);
+DxfAttdef *dxf_attdef_new ();
+DxfAttdef *dxf_attdef_init (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_read (DxfFile *fp, DxfAttdef *attdef);
+int dxf_attdef_write (DxfFile *fp, DxfAttdef *attdef);
+int dxf_attdef_free (DxfAttdef *attdef);
+void dxf_attdef_free_chain (DxfAttdef *attdefs);
+int dxf_attdef_get_id_code (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_id_code (DxfAttdef *attdef, int id_code);
+char *dxf_attdef_get_linetype (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_linetype (DxfAttdef *attdef, char *linetype);
+char *dxf_attdef_get_layer (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_layer (DxfAttdef *attdef, char *layer);
+double dxf_attdef_get_elevation (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_elevation (DxfAttdef *attdef, double elevation);
+double dxf_attdef_get_thickness (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_thickness (DxfAttdef *attdef, double thickness);
+double dxf_attdef_get_linetype_scale (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_linetype_scale (DxfAttdef *attdef, double linetype_scale);
+int16_t dxf_attdef_get_visibility (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_visibility (DxfAttdef *attdef, int16_t visibility);
+int dxf_attdef_get_color (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_color (DxfAttdef *attdef, int color);
+int dxf_attdef_get_paperspace (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_paperspace (DxfAttdef *attdef, int paperspace);
+int dxf_attdef_get_graphics_data_size (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_graphics_data_size (DxfAttdef *attdef, int graphics_data_size);
+int16_t dxf_attdef_get_shadow_mode (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_shadow_mode (DxfAttdef *attdef, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_attdef_get_binary_graphics_data (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_binary_graphics_data (DxfAttdef *attdef, DxfBinaryGraphicsData *data);
+char *dxf_attdef_get_dictionary_owner_soft (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_dictionary_owner_soft (DxfAttdef *attdef, char *dictionary_owner_soft);
+char *dxf_attdef_get_material (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_material (DxfAttdef *attdef, char *material);
+char *dxf_attdef_get_dictionary_owner_hard (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_dictionary_owner_hard (DxfAttdef *attdef, char *dictionary_owner_hard);
+int16_t dxf_attdef_get_lineweight (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_lineweight (DxfAttdef *attdef, int16_t lineweight);
+char *dxf_attdef_get_plot_style_name (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_plot_style_name (DxfAttdef *attdef, char *plot_style_name);
+long dxf_attdef_get_color_value (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_color_value (DxfAttdef *attdef, long color_value);
+char *dxf_attdef_get_color_name (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_color_name (DxfAttdef *attdef, char *color_name);
+long dxf_attdef_get_transparency (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_transparency (DxfAttdef *attdef, long transparency);
+char *dxf_attdef_get_default_value (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_default_value (DxfAttdef *attdef, char *default_value);
+char *dxf_attdef_get_tag_value (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_tag_value (DxfAttdef *attdef, char *tag_value);
+char *dxf_attdef_get_prompt_value (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_prompt_value (DxfAttdef *attdef, char *prompt_value);
+char *dxf_attdef_get_text_style (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_text_style (DxfAttdef *attdef, char *text_style);
+DxfPoint *dxf_attdef_get_p0 (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_p0 (DxfAttdef *attdef, DxfPoint *p0);
+double dxf_attdef_get_x0 (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_x0 (DxfAttdef *attdef, double x0);
+double dxf_attdef_get_y0 (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_y0 (DxfAttdef *attdef, double y0);
+double dxf_attdef_get_z0 (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_z0 (DxfAttdef *attdef, double z0);
+DxfPoint *dxf_attdef_get_p1 (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_p1 (DxfAttdef *attdef, DxfPoint *p1);
+double dxf_attdef_get_x1 (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_x1 (DxfAttdef *attdef, double x1);
+double dxf_attdef_get_y1 (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_y1 (DxfAttdef *attdef, double y1);
+double dxf_attdef_get_z1 (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_z1 (DxfAttdef *attdef, double z1);
+double dxf_attdef_get_height (DxfAttdef *attdef);
+DxfAttdef * dxf_attdef_set_height (DxfAttdef *attdef, double height);
+double dxf_attdef_get_rel_x_scale (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_rel_x_scale (DxfAttdef *attdef, double rel_x_scale);
+double dxf_attdef_get_rot_angle (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_rot_angle (DxfAttdef *attdef, double rot_angle);
+double dxf_attdef_get_obl_angle (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_obl_angle (DxfAttdef *attdef, double obl_angle);
+int dxf_attdef_get_attr_flags (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_attr_flags (DxfAttdef *attdef, int attr_flags);
+int dxf_attdef_is_invisible (DxfAttdef *attdef);
+int dxf_attdef_is_constant (DxfAttdef *attdef);
+int dxf_attdef_is_verification_required (DxfAttdef *attdef);
+int dxf_attdef_is_preset (DxfAttdef *attdef);
+int dxf_attdef_get_text_flags (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_text_flags (DxfAttdef *attdef, int text_flags);
+int dxf_attdef_get_hor_align (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_hor_align (DxfAttdef *attdef, int hor_align);
+int dxf_attdef_get_field_length (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_field_length (DxfAttdef *attdef, int field_length);
+int dxf_attdef_get_vert_align (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_vert_align (DxfAttdef *attdef, int vert_align);
+double dxf_attdef_get_extr_x0 (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_extr_x0 (DxfAttdef *attdef, double extr_x0);
+double dxf_attdef_get_extr_y0 (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_extr_y0 (DxfAttdef *attdef, double extr_y0);
+double dxf_attdef_get_extr_z0 (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_extr_z0 (DxfAttdef *attdef, double extr_z0);
+DxfPoint *dxf_attdef_get_extrusion_vector_as_point (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_extrusion_vector_from_point (DxfAttdef *attdef, DxfPoint *point);
+DxfAttdef *dxf_attdef_set_extrusion_vector (DxfAttdef *attdef, double extr_x0, double extr_y0, double extr_z0);
+DxfAttdef *dxf_attdef_get_next (DxfAttdef *attdef);
+DxfAttdef *dxf_attdef_set_next (DxfAttdef *attdef, DxfAttdef *next);
+DxfAttdef *dxf_attdef_get_last (DxfAttdef *attdef);
 
 
 #ifdef __cplusplus
