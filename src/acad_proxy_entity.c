@@ -1,7 +1,8 @@
 /*!
  * \file acad_proxy_entity.c
  *
- * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF acad_proxy_entity entity
  * (\c ACAD_PROXY_ENTITY).
