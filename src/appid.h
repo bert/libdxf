@@ -108,126 +108,29 @@ dxf_appid_struct
 } DxfAppid;
 
 
-DxfAppid *
-dxf_appid_new ();
-DxfAppid *
-dxf_appid_init
-(
-        DxfAppid *appid
-);
-DxfAppid *
-dxf_appid_read
-(
-        DxfFile *fp,
-        DxfAppid *appid
-);
-int
-dxf_appid_write
-(
-        DxfFile *fp,
-        DxfAppid* appid
-);
-int
-dxf_appid_free
-(
-        DxfAppid *appid
-);
-void
-dxf_appid_free_chain
-(
-        DxfAppid *appids
-);
-int
-dxf_appid_get_id_code
-(
-        DxfAppid *appid
-);
-DxfAppid *
-dxf_appid_set_id_code
-(
-        DxfAppid *appid,
-        int id_code
-);
-char *
-dxf_appid_get_application_name
-(
-        DxfAppid *appid
-);
-DxfAppid *
-dxf_appid_set_application_name
-(
-        DxfAppid *appid,
-        char *name
-);
-int
-dxf_appid_get_flag
-(
-        DxfAppid *appid
-);
-DxfAppid *
-dxf_appid_set_flag
-(
-        DxfAppid *appid,
-        int flag
-);
-int
-dxf_appid_is_xreferenced
-(
-        DxfAppid *appid
-);
-int
-dxf_appid_is_xresolved
-(
-        DxfAppid *appid
-);
-int
-dxf_appid_is_referenced
-(
-        DxfAppid *appid
-);
-int
-dxf_appid_is_no_save_xdata
-(
-        DxfAppid *appid
-);
-char *
-dxf_appid_get_dictionary_owner_soft
-(
-        DxfAppid *appid
-);
-DxfAppid *
-dxf_appid_set_dictionary_owner_soft
-(
-        DxfAppid *appid,
-        char *dictionary_owner_soft
-);
-char *
-dxf_appid_get_dictionary_owner_hard
-(
-        DxfAppid *appid
-);
-DxfAppid *
-dxf_appid_set_dictionary_owner_hard
-(
-        DxfAppid *appid,
-        char *dictionary_owner_hard
-);
-DxfAppid *
-dxf_appid_get_next
-(
-        DxfAppid *appid
-);
-DxfAppid *
-dxf_appid_set_next
-(
-        DxfAppid *appid,
-        DxfAppid *next
-);
-DxfAppid *
-dxf_appid_get_last
-(
-        DxfAppid *appid
-);
+DxfAppid *dxf_appid_new ();
+DxfAppid *dxf_appid_init (DxfAppid *appid);
+DxfAppid *dxf_appid_read (DxfFile *fp, DxfAppid *appid);
+int dxf_appid_write (DxfFile *fp, DxfAppid* appid);
+int dxf_appid_free (DxfAppid *appid);
+void dxf_appid_free_chain (DxfAppid *appids);
+int dxf_appid_get_id_code (DxfAppid *appid);
+DxfAppid *dxf_appid_set_id_code (DxfAppid *appid, int id_code);
+char *dxf_appid_get_application_name (DxfAppid *appid);
+DxfAppid *dxf_appid_set_application_name (DxfAppid *appid, char *name);
+int dxf_appid_get_flag (DxfAppid *appid);
+DxfAppid *dxf_appid_set_flag (DxfAppid *appid, int flag);
+int dxf_appid_is_xreferenced (DxfAppid *appid);
+int dxf_appid_is_xresolved (DxfAppid *appid);
+int dxf_appid_is_referenced (DxfAppid *appid);
+int dxf_appid_is_no_save_xdata (DxfAppid *appid);
+char *dxf_appid_get_dictionary_owner_soft (DxfAppid *appid);
+DxfAppid *dxf_appid_set_dictionary_owner_soft (DxfAppid *appid, char *dictionary_owner_soft);
+char *dxf_appid_get_dictionary_owner_hard (DxfAppid *appid);
+DxfAppid *dxf_appid_set_dictionary_owner_hard (DxfAppid *appid, char *dictionary_owner_hard);
+DxfAppid *dxf_appid_get_next (DxfAppid *appid);
+DxfAppid *dxf_appid_set_next (DxfAppid *appid, DxfAppid *next);
+DxfAppid *dxf_appid_get_last (DxfAppid *appid);
 
 
 #ifdef __cplusplus
