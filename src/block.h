@@ -144,274 +144,56 @@ dxf_block_struct
 
 
 DxfBlock *dxf_block_new ();
-DxfBlock *dxf_block_init
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_read
-(
-        DxfFile *fp,
-        DxfBlock *block
-);
-int dxf_block_write
-(
-        DxfFile *fp,
-        DxfBlock *block
-);
-int dxf_block_write_endblk
-(
-        DxfFile *fp
-);
-int dxf_block_write_table
-(
-        DxfFile *fp,
-        DxfBlock *blocks_list
-);
-int dxf_block_free
-(
-        DxfBlock *block
-);
-void
-dxf_block_free_chain
-(
-        DxfBlock *blocks
-);
-char *
-dxf_block_get_xref_name
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_xref_name
-(
-        DxfBlock *block,
-        char *xref_name
-);
-char *
-dxf_block_get_block_name
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_block_name
-(
-        DxfBlock *block,
-        char *block_name
-);
-char *
-dxf_block_get_block_name_additional
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_block_name_additional
-(
-        DxfBlock *block,
-        char *block_name_additional
-);
-char *
-dxf_block_get_description
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_description
-(
-        DxfBlock *block,
-        char *description
-);
-int
-dxf_block_get_id_code
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_id_code
-(
-        DxfBlock *block,
-        int id_code
-);
-char *
-dxf_block_get_layer
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_layer
-(
-        DxfBlock *block,
-        char *layer
-);
-DxfPoint *
-dxf_block_get_p0
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_p0
-(
-        DxfBlock *block,
-        DxfPoint *p0
-);
-double
-dxf_block_get_x0
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_x0
-(
-        DxfBlock *block,
-        double x0
-);
-double
-dxf_block_get_y0
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_y0
-(
-        DxfBlock *block,
-        double y0
-);
-double
-dxf_block_get_z0
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_z0
-(
-        DxfBlock *block,
-        double z0
-);
-int
-dxf_block_get_block_type
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_block_type
-(
-        DxfBlock *block,
-        int block_type
-);
-int
-dxf_block_is_anonymous
-(
-        DxfBlock *block
-);
-int
-dxf_block_has_attributes
-(
-        DxfBlock *block
-);
-int
-dxf_block_is_xreferenced
-(
-        DxfBlock *block
-);
-int
-dxf_block_is_xdependent
-(
-        DxfBlock *block
-);
-int
-dxf_block_is_xresolved
-(
-        DxfBlock *block
-);
-int
-dxf_block_is_referenced
-(
-        DxfBlock *block
-);
-double
-dxf_block_get_extr_x0
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_extr_x0
-(
-        DxfBlock *block,
-        double extr_x0
-);
-double
-dxf_block_get_extr_y0
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_extr_y0
-(
-        DxfBlock *block,
-        double extr_y0
-);
-double
-dxf_block_get_extr_z0
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_extr_z0
-(
-        DxfBlock *block,
-        double extr_z0
-);
-DxfPoint *
-dxf_block_get_extrusion_vector_as_point
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_extrusion_vector
-(
-        DxfBlock *block,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0
-);
-char *
-dxf_block_get_dictionary_owner_soft
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_dictionary_owner_soft
-(
-        DxfBlock *block,
-        char *dictionary_owner_soft
-);
-struct DxfEndblk *
-dxf_block_get_endblk
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_endblk
-(
-        DxfBlock *block,
-        struct DxfEndblk *endblk
-);
-DxfBlock *
-dxf_block_get_next
-(
-        DxfBlock *block
-);
-DxfBlock *
-dxf_block_set_next
-(
-        DxfBlock *block,
-        DxfBlock *next
-);
-DxfBlock *
-dxf_block_get_last
-(
-        DxfBlock *block
-);
+DxfBlock *dxf_block_init (DxfBlock *block);
+DxfBlock *dxf_block_read (DxfFile *fp, DxfBlock *block);
+int dxf_block_write (DxfFile *fp, DxfBlock *block);
+int dxf_block_write_endblk (DxfFile *fp);
+int dxf_block_write_table (DxfFile *fp, DxfBlock *blocks_list);
+int dxf_block_free (DxfBlock *block);
+void dxf_block_free_chain (DxfBlock *blocks);
+char *dxf_block_get_xref_name (DxfBlock *block);
+DxfBlock *dxf_block_set_xref_name (DxfBlock *block, char *xref_name);
+char *dxf_block_get_block_name (DxfBlock *block);
+DxfBlock *dxf_block_set_block_name (DxfBlock *block, char *block_name);
+char *dxf_block_get_block_name_additional (DxfBlock *block);
+DxfBlock *dxf_block_set_block_name_additional (DxfBlock *block, char *block_name_additional);
+char *dxf_block_get_description (DxfBlock *block);
+DxfBlock *dxf_block_set_description (DxfBlock *block, char *description);
+int dxf_block_get_id_code (DxfBlock *block);
+DxfBlock *dxf_block_set_id_code (DxfBlock *block, int id_code);
+char *dxf_block_get_layer (DxfBlock *block);
+DxfBlock *dxf_block_set_layer (DxfBlock *block, char *layer);
+DxfPoint *dxf_block_get_p0 (DxfBlock *block);
+DxfBlock *dxf_block_set_p0 (DxfBlock *block, DxfPoint *p0);
+double dxf_block_get_x0 (DxfBlock *block);
+DxfBlock *dxf_block_set_x0 (DxfBlock *block, double x0);
+double dxf_block_get_y0 (DxfBlock *block);
+DxfBlock *dxf_block_set_y0 (DxfBlock *block, double y0);
+double dxf_block_get_z0 (DxfBlock *block);
+DxfBlock *dxf_block_set_z0 (DxfBlock *block, double z0);
+int dxf_block_get_block_type (DxfBlock *block);
+DxfBlock *dxf_block_set_block_type (DxfBlock *block, int block_type);
+int dxf_block_is_anonymous (DxfBlock *block);
+int dxf_block_has_attributes (DxfBlock *block);
+int dxf_block_is_xreferenced (DxfBlock *block);
+int dxf_block_is_xdependent (DxfBlock *block);
+int dxf_block_is_xresolved (DxfBlock *block);
+int dxf_block_is_referenced (DxfBlock *block);
+double dxf_block_get_extr_x0 (DxfBlock *block);
+DxfBlock *dxf_block_set_extr_x0 (DxfBlock *block, double extr_x0);
+double dxf_block_get_extr_y0 (DxfBlock *block);
+DxfBlock *dxf_block_set_extr_y0 (DxfBlock *block, double extr_y0);
+double dxf_block_get_extr_z0 (DxfBlock *block);
+DxfBlock *dxf_block_set_extr_z0 (DxfBlock *block, double extr_z0);
+DxfPoint *dxf_block_get_extrusion_vector_as_point (DxfBlock *block);
+DxfBlock *dxf_block_set_extrusion_vector (DxfBlock *block, double extr_x0, double extr_y0, double extr_z0);
+char *dxf_block_get_dictionary_owner_soft (DxfBlock *block);
+DxfBlock *dxf_block_set_dictionary_owner_soft (DxfBlock *block, char *dictionary_owner_soft);
+struct DxfEndblk *dxf_block_get_endblk (DxfBlock *block);
+DxfBlock *dxf_block_set_endblk (DxfBlock *block, struct DxfEndblk *endblk);
+DxfBlock *dxf_block_get_next (DxfBlock *block);
+DxfBlock *dxf_block_set_next (DxfBlock *block, DxfBlock *next);
+DxfBlock *dxf_block_get_last (DxfBlock *block);
 
 
 #ifdef __cplusplus
