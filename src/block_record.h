@@ -101,121 +101,28 @@ dxf_block_record_struct
 } DxfBlockRecord;
 
 
-DxfBlockRecord *
-dxf_block_record_new ();
-DxfBlockRecord *
-dxf_block_record_init
-(
-        DxfBlockRecord *block_record
-);
-DxfBlockRecord *
-dxf_block_record_read
-(
-        DxfFile *fp,
-        DxfBlockRecord *block_record
-);
-int
-dxf_block_record_write
-(
-        DxfFile *fp,
-        DxfBlockRecord *block_record
-);
-int
-dxf_block_record_free
-(
-        DxfBlockRecord *block_record
-);
-void
-dxf_block_record_free_chain
-(
-        DxfBlockRecord *block_records
-);
-int
-dxf_block_record_get_id_code
-(
-        DxfBlockRecord *block_record
-);
-DxfBlockRecord *
-dxf_block_record_set_id_code
-(
-        DxfBlockRecord *block_record,
-        int id_code
-);
-char *
-dxf_block_record_get_block_name
-(
-        DxfBlockRecord *block_record
-);
-DxfBlockRecord *
-dxf_block_record_set_block_name
-(
-        DxfBlockRecord *block_record,
-        char *block_name
-);
-int
-dxf_block_record_get_flag
-(
-        DxfBlockRecord *block_record
-);
-DxfBlockRecord *
-dxf_block_record_set_flag
-(
-        DxfBlockRecord *block_record,
-        int flag
-);
-int
-dxf_block_record_is_xreferenced
-(
-        DxfBlockRecord *block_record
-);
-int
-dxf_block_record_is_xresolved
-(
-        DxfBlockRecord *block_record
-);
-int
-dxf_block_record_is_referenced
-(
-        DxfBlockRecord *block_record
-);
-char *
-dxf_block_record_get_dictionary_owner_soft
-(
-        DxfBlockRecord *block_record
-);
-DxfBlockRecord *
-dxf_block_record_set_dictionary_owner_soft
-(
-        DxfBlockRecord *block_record,
-        char *dictionary_owner_soft
-);
-char *
-dxf_block_record_get_dictionary_owner_hard
-(
-        DxfBlockRecord *block_record
-);
-DxfBlockRecord *
-dxf_block_record_set_dictionary_owner_hard
-(
-        DxfBlockRecord *block_record,
-        char *dictionary_owner_hard
-);
-DxfBlockRecord *
-dxf_block_record_get_next
-(
-        DxfBlockRecord *block_record
-);
-DxfBlockRecord *
-dxf_block_record_set_next
-(
-        DxfBlockRecord *block_record,
-        DxfBlockRecord *next
-);
-DxfBlockRecord *
-dxf_block_record_get_last
-(
-        DxfBlockRecord *block_record
-);
+DxfBlockRecord *dxf_block_record_new ();
+DxfBlockRecord *dxf_block_record_init (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_read (DxfFile *fp, DxfBlockRecord *block_record);
+int dxf_block_record_write (DxfFile *fp, DxfBlockRecord *block_record);
+int dxf_block_record_free (DxfBlockRecord *block_record);
+void dxf_block_record_free_chain (DxfBlockRecord *block_records);
+int dxf_block_record_get_id_code (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_id_code (DxfBlockRecord *block_record, int id_code);
+char *dxf_block_record_get_block_name (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_block_name (DxfBlockRecord *block_record, char *block_name);
+int dxf_block_record_get_flag (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_flag (DxfBlockRecord *block_record, int flag);
+int dxf_block_record_is_xreferenced (DxfBlockRecord *block_record);
+int dxf_block_record_is_xresolved (DxfBlockRecord *block_record);
+int dxf_block_record_is_referenced (DxfBlockRecord *block_record);
+char *dxf_block_record_get_dictionary_owner_soft (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_dictionary_owner_soft (DxfBlockRecord *block_record, char *dictionary_owner_soft);
+char *dxf_block_record_get_dictionary_owner_hard (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_dictionary_owner_hard (DxfBlockRecord *block_record, char *dictionary_owner_hard);
+DxfBlockRecord *dxf_block_record_get_next (DxfBlockRecord *block_record);
+DxfBlockRecord *dxf_block_record_set_next (DxfBlockRecord *block_record, DxfBlockRecord *next);
+DxfBlockRecord *dxf_block_record_get_last (DxfBlockRecord *block_record);
 
 
 #ifdef __cplusplus
