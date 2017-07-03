@@ -204,304 +204,61 @@ dxf_body_struct
 } DxfBody;
 
 
-DxfBody *
-dxf_body_new ();
-DxfBody *
-dxf_body_init
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_read
-(
-        DxfFile *fp,
-        DxfBody *body
-);
-int
-dxf_body_write
-(
-        DxfFile *fp,
-        DxfBody *body
-);
-int
-dxf_body_free
-(
-        DxfBody *body
-);
-void
-dxf_body_free_chain
-(
-        DxfBody *bodies
-);
-int
-dxf_body_get_id_code
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_id_code
-(
-        DxfBody *body,
-        int id_code
-);
-char *
-dxf_body_get_linetype
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_linetype
-(
-        DxfBody *body,
-        char *linetype
-);
-char *
-dxf_body_get_layer
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_layer
-(
-        DxfBody *body,
-        char *layer
-);
-double
-dxf_body_get_elevation
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_elevation
-(
-        DxfBody *body,
-        double elevation
-);
-double
-dxf_body_get_thickness
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_thickness
-(
-        DxfBody *body,
-        double thickness
-);
-double
-dxf_body_get_linetype_scale
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_linetype_scale
-(
-        DxfBody *body,
-        double linetype_scale
-);
-int16_t
-dxf_body_get_visibility
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_visibility
-(
-        DxfBody *body,
-        int16_t visibility
-);
-int
-dxf_body_get_color
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_color
-(
-        DxfBody *body,
-        int color
-);
-int
-dxf_body_get_paperspace
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_paperspace
-(
-        DxfBody *body,
-        int paperspace
-);
-int
-dxf_body_get_graphics_data_size
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_graphics_data_size
-(
-        DxfBody *body,
-        int graphics_data_size
-);
-int16_t
-dxf_body_get_shadow_mode
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_shadow_mode
-(
-        DxfBody *body,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_body_get_binary_graphics_data
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_binary_graphics_data
-(
-        DxfBody *body,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_body_get_dictionary_owner_soft
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_dictionary_owner_soft
-(
-        DxfBody *body,
-        char *dictionary_owner_soft
-);
-char *
-dxf_body_get_material
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_material
-(
-        DxfBody *body,
-        char *material
-);
-char *
-dxf_body_get_dictionary_owner_hard
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_dictionary_owner_hard
-(
-        DxfBody *body,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_body_get_lineweight
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_lineweight
-(
-        DxfBody *body,
-        int16_t lineweight
-);
-char *
-dxf_body_get_plot_style_name
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_plot_style_name
-(
-        DxfBody *body,
-        char *plot_style_name
-);
-long
-dxf_body_get_color_value
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_color_value
-(
-        DxfBody *body,
-        long color_value
-);
-char *
-dxf_body_get_color_name
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_color_name
-(
-        DxfBody *body,
-        char *color_name
-);
-long
-dxf_body_get_transparency
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_transparency
-(
-        DxfBody *body,
-        long transparency
-);
-DxfProprietaryData *
-dxf_body_get_proprietary_data
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_proprietary_data
-(
-        DxfBody *body,
-        DxfProprietaryData *proprietary_data
-);
-DxfProprietaryData *
-dxf_body_get_additional_proprietary_data
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_additional_proprietary_data
-(
-        DxfBody *body,
-        DxfProprietaryData *additional_proprietary_data
-);
-int
-dxf_body_get_modeler_format_version_number
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_modeler_format_version_number
-(
-        DxfBody *body,
-        int modeler_format_version_number
-);
-DxfBody *
-dxf_body_get_next
-(
-        DxfBody *body
-);
-DxfBody *
-dxf_body_set_next
-(
-        DxfBody *body,
-        DxfBody *next
-);
-DxfBody *
-dxf_body_get_last
-(
-        DxfBody *body
-);
+DxfBody *dxf_body_new ();
+DxfBody *dxf_body_init (DxfBody *body);
+DxfBody *dxf_body_read (DxfFile *fp, DxfBody *body);
+int dxf_body_write (DxfFile *fp, DxfBody *body);
+int dxf_body_free (DxfBody *body);
+void dxf_body_free_chain (DxfBody *bodies);
+int dxf_body_get_id_code (DxfBody *body);
+DxfBody *dxf_body_set_id_code (DxfBody *body, int id_code);
+char *dxf_body_get_linetype (DxfBody *body);
+DxfBody *dxf_body_set_linetype (DxfBody *body, char *linetype);
+char *dxf_body_get_layer (DxfBody *body);
+DxfBody *dxf_body_set_layer (DxfBody *body, char *layer);
+double dxf_body_get_elevation (DxfBody *body);
+DxfBody *dxf_body_set_elevation (DxfBody *body, double elevation);
+double dxf_body_get_thickness (DxfBody *body);
+DxfBody *dxf_body_set_thickness (DxfBody *body, double thickness);
+double dxf_body_get_linetype_scale (DxfBody *body);
+DxfBody *dxf_body_set_linetype_scale (DxfBody *body, double linetype_scale);
+int16_t dxf_body_get_visibility (DxfBody *body);
+DxfBody *dxf_body_set_visibility (DxfBody *body, int16_t visibility);
+int dxf_body_get_color (DxfBody *body);
+DxfBody *dxf_body_set_color (DxfBody *body, int color);
+int dxf_body_get_paperspace (DxfBody *body);
+DxfBody *dxf_body_set_paperspace (DxfBody *body, int paperspace);
+int dxf_body_get_graphics_data_size (DxfBody *body);
+DxfBody *dxf_body_set_graphics_data_size (DxfBody *body, int graphics_data_size);
+int16_t dxf_body_get_shadow_mode (DxfBody *body);
+DxfBody *dxf_body_set_shadow_mode (DxfBody *body, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_body_get_binary_graphics_data (DxfBody *body);
+DxfBody *dxf_body_set_binary_graphics_data (DxfBody *body, DxfBinaryGraphicsData *data);
+char *dxf_body_get_dictionary_owner_soft (DxfBody *body);
+DxfBody *dxf_body_set_dictionary_owner_soft (DxfBody *body, char *dictionary_owner_soft);
+char *dxf_body_get_material (DxfBody *body);
+DxfBody *dxf_body_set_material (DxfBody *body, char *material);
+char *dxf_body_get_dictionary_owner_hard (DxfBody *body);
+DxfBody *dxf_body_set_dictionary_owner_hard (DxfBody *body, char *dictionary_owner_hard);
+int16_t dxf_body_get_lineweight (DxfBody *body);
+DxfBody *dxf_body_set_lineweight (DxfBody *body, int16_t lineweight);
+char *dxf_body_get_plot_style_name (DxfBody *body);
+DxfBody *dxf_body_set_plot_style_name (DxfBody *body, char *plot_style_name);
+long dxf_body_get_color_value (DxfBody *body);
+DxfBody *dxf_body_set_color_value (DxfBody *body, long color_value);
+char *dxf_body_get_color_name (DxfBody *body);
+DxfBody *dxf_body_set_color_name (DxfBody *body, char *color_name);
+long dxf_body_get_transparency (DxfBody *body);
+DxfBody *dxf_body_set_transparency (DxfBody *body, long transparency);
+DxfProprietaryData *dxf_body_get_proprietary_data (DxfBody *body);
+DxfBody *dxf_body_set_proprietary_data (DxfBody *body, DxfProprietaryData *proprietary_data);
+DxfProprietaryData *dxf_body_get_additional_proprietary_data (DxfBody *body);
+DxfBody *dxf_body_set_additional_proprietary_data (DxfBody *body, DxfProprietaryData *additional_proprietary_data);
+int dxf_body_get_modeler_format_version_number (DxfBody *body);
+DxfBody *dxf_body_set_modeler_format_version_number (DxfBody *body, int modeler_format_version_number);
+DxfBody *dxf_body_get_next (DxfBody *body);
+DxfBody *dxf_body_set_next (DxfBody *body, DxfBody *next);
+DxfBody *dxf_body_get_last (DxfBody *body);
 
 
 #ifdef __cplusplus
