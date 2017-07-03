@@ -212,383 +212,75 @@ dxf_circle_struct
 
 
 DxfCircle *dxf_circle_new ();
-DxfCircle *dxf_circle_init
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_read
-(
-        DxfFile *fp,
-        DxfCircle *circle
-);
-int dxf_circle_write
-(
-        DxfFile *fp,
-        DxfCircle *circle
-);
-int dxf_circle_free
-(
-        DxfCircle *circle
-);
-void
-dxf_circle_free_chain
-(
-        DxfCircle *circles
-);
-int
-dxf_circle_get_id_code
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_id_code
-(
-        DxfCircle *circle,
-        int id_code
-);
-char *
-dxf_circle_get_linetype
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_linetype
-(
-        DxfCircle *circle,
-        char *linetype
-);
-char *
-dxf_circle_get_layer
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_layer
-(
-        DxfCircle *circle,
-        char *layer
-);
-double
-dxf_circle_get_elevation
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_elevation
-(
-        DxfCircle *circle,
-        double elevation
-);
-double
-dxf_circle_get_thickness
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_thickness
-(
-        DxfCircle *circle,
-        double thickness
-);
-double
-dxf_circle_get_linetype_scale
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_linetype_scale
-(
-        DxfCircle *circle,
-        double linetype_scale
-);
-int16_t
-dxf_circle_get_visibility
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_visibility
-(
-        DxfCircle *circle,
-        int16_t visibility
-);
-int
-dxf_circle_get_color
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_color
-(
-        DxfCircle *circle,
-        int color
-);
-int
-dxf_circle_get_paperspace
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_paperspace
-(
-        DxfCircle *circle,
-        int paperspace
-);
-int
-dxf_circle_get_graphics_data_size
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_graphics_data_size
-(
-        DxfCircle *circle,
-        int graphics_data_size
-);
-int16_t
-dxf_circle_get_shadow_mode
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_shadow_mode
-(
-        DxfCircle *circle,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_circle_get_binary_graphics_data
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_binary_graphics_data
-(
-        DxfCircle *circle,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_circle_get_dictionary_owner_soft
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_dictionary_owner_soft
-(
-        DxfCircle *circle,
-        char *dictionary_owner_soft
-);
-char *
-dxf_circle_get_material
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_material
-(
-        DxfCircle *circle,
-        char *material
-);
-char *
-dxf_circle_get_dictionary_owner_hard
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_dictionary_owner_hard
-(
-        DxfCircle *circle,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_circle_get_lineweight
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_lineweight
-(
-        DxfCircle *circle,
-        int16_t lineweight
-);
-char *
-dxf_circle_get_plot_style_name
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_plot_style_name
-(
-        DxfCircle *circle,
-        char *plot_style_name
-);
-long
-dxf_circle_get_color_value
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_color_value
-(
-        DxfCircle *circle,
-        long color_value
-);
-char *
-dxf_circle_get_color_name
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_color_name
-(
-        DxfCircle *circle,
-        char *color_name
-);
-long
-dxf_circle_get_transparency
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_transparency
-(
-        DxfCircle *circle,
-        long transparency
-);
-DxfPoint *
-dxf_circle_get_p0
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_p0
-(
-        DxfCircle *circle,
-        DxfPoint *point
-);
-double
-dxf_circle_get_x0
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_x0
-(
-        DxfCircle *circle,
-        double x0
-);
-double
-dxf_circle_get_y0
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_y0
-(
-        DxfCircle *circle,
-        double y0
-);
-double
-dxf_circle_get_z0
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_z0
-(
-        DxfCircle *circle,
-        double z0
-);
-double
-dxf_circle_get_radius
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_radius
-(
-        DxfCircle *circle,
-        double radius
-);
-DxfPoint *
-dxf_circle_get_extrusion_vector_as_point
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_extrusion_vector
-(
-        DxfCircle *circle,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0
-);
-double
-dxf_circle_get_extr_x0
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_extr_x0
-(
-        DxfCircle *circle,
-        double extr_x0
-);
-double
-dxf_circle_get_extr_y0
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_extr_y0
-(
-        DxfCircle *circle,
-        double extr_y0
-);
-double
-dxf_circle_get_extr_z0
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_extr_z0
-(
-        DxfCircle *circle,
-        double extr_z0
-);
-double
-dxf_circle_get_area
-(
-        DxfCircle *circle
-);
-double
-dxf_circle_get_circumference
-(
-        DxfCircle *circle
-);
-int
-dxf_circle_test_point_in_circle
-(
-        DxfPoint *point,
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_get_next
-(
-        DxfCircle *circle
-);
-DxfCircle *
-dxf_circle_set_next
-(
-        DxfCircle *circle,
-        DxfCircle *next
-);
-DxfCircle *
-dxf_circle_get_last
-(
-        DxfCircle *circle
-);
+DxfCircle *dxf_circle_init (DxfCircle *circle);
+DxfCircle *dxf_circle_read (DxfFile *fp, DxfCircle *circle);
+int dxf_circle_write (DxfFile *fp, DxfCircle *circle);
+int dxf_circle_free (DxfCircle *circle);
+void dxf_circle_free_chain (DxfCircle *circles);
+int dxf_circle_get_id_code (DxfCircle *circle);
+DxfCircle *dxf_circle_set_id_code (DxfCircle *circle, int id_code);
+char *dxf_circle_get_linetype (DxfCircle *circle);
+DxfCircle *dxf_circle_set_linetype (DxfCircle *circle, char *linetype);
+char *dxf_circle_get_layer (DxfCircle *circle);
+DxfCircle *dxf_circle_set_layer (DxfCircle *circle, char *layer);
+double dxf_circle_get_elevation (DxfCircle *circle);
+DxfCircle *dxf_circle_set_elevation (DxfCircle *circle, double elevation);
+double dxf_circle_get_thickness (DxfCircle *circle);
+DxfCircle *dxf_circle_set_thickness (DxfCircle *circle, double thickness);
+double dxf_circle_get_linetype_scale (DxfCircle *circle);
+DxfCircle *dxf_circle_set_linetype_scale (DxfCircle *circle, double linetype_scale);
+int16_t dxf_circle_get_visibility (DxfCircle *circle);
+DxfCircle *dxf_circle_set_visibility (DxfCircle *circle, int16_t visibility);
+int dxf_circle_get_color (DxfCircle *circle);
+DxfCircle *dxf_circle_set_color (DxfCircle *circle, int color);
+int dxf_circle_get_paperspace (DxfCircle *circle);
+DxfCircle *dxf_circle_set_paperspace (DxfCircle *circle, int paperspace);
+int dxf_circle_get_graphics_data_size (DxfCircle *circle);
+DxfCircle *dxf_circle_set_graphics_data_size (DxfCircle *circle, int graphics_data_size);
+int16_t dxf_circle_get_shadow_mode (DxfCircle *circle);
+DxfCircle *dxf_circle_set_shadow_mode (DxfCircle *circle, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_circle_get_binary_graphics_data (DxfCircle *circle);
+DxfCircle *dxf_circle_set_binary_graphics_data (DxfCircle *circle, DxfBinaryGraphicsData *data);
+char *dxf_circle_get_dictionary_owner_soft (DxfCircle *circle);
+DxfCircle *dxf_circle_set_dictionary_owner_soft (DxfCircle *circle, char *dictionary_owner_soft);
+char *dxf_circle_get_material (DxfCircle *circle);
+DxfCircle *dxf_circle_set_material (DxfCircle *circle, char *material);
+char *dxf_circle_get_dictionary_owner_hard (DxfCircle *circle);
+DxfCircle *dxf_circle_set_dictionary_owner_hard (DxfCircle *circle, char *dictionary_owner_hard);
+int16_t dxf_circle_get_lineweight (DxfCircle *circle);
+DxfCircle *dxf_circle_set_lineweight (DxfCircle *circle, int16_t lineweight);
+char *dxf_circle_get_plot_style_name (DxfCircle *circle);
+DxfCircle *dxf_circle_set_plot_style_name (DxfCircle *circle, char *plot_style_name);
+long dxf_circle_get_color_value (DxfCircle *circle);
+DxfCircle *dxf_circle_set_color_value (DxfCircle *circle, long color_value);
+char *dxf_circle_get_color_name (DxfCircle *circle);
+DxfCircle *dxf_circle_set_color_name (DxfCircle *circle, char *color_name);
+long dxf_circle_get_transparency (DxfCircle *circle);
+DxfCircle *dxf_circle_set_transparency (DxfCircle *circle, long transparency);
+DxfPoint *dxf_circle_get_p0 (DxfCircle *circle);
+DxfCircle *dxf_circle_set_p0 (DxfCircle *circle, DxfPoint *point);
+double dxf_circle_get_x0 (DxfCircle *circle);
+DxfCircle *dxf_circle_set_x0 (DxfCircle *circle, double x0);
+double dxf_circle_get_y0 (DxfCircle *circle);
+DxfCircle *dxf_circle_set_y0 (DxfCircle *circle, double y0);
+double dxf_circle_get_z0 (DxfCircle *circle);
+DxfCircle *dxf_circle_set_z0 (DxfCircle *circle, double z0);
+double dxf_circle_get_radius (DxfCircle *circle);
+DxfCircle * dxf_circle_set_radius (DxfCircle *circle, double radius);
+DxfPoint *dxf_circle_get_extrusion_vector_as_point (DxfCircle *circle);
+DxfCircle *dxf_circle_set_extrusion_vector (DxfCircle *circle, double extr_x0, double extr_y0, double extr_z0);
+double dxf_circle_get_extr_x0 (DxfCircle *circle);
+DxfCircle *dxf_circle_set_extr_x0 (DxfCircle *circle, double extr_x0);
+double dxf_circle_get_extr_y0 (DxfCircle *circle);
+DxfCircle *dxf_circle_set_extr_y0 (DxfCircle *circle, double extr_y0);
+double dxf_circle_get_extr_z0 (DxfCircle *circle);
+DxfCircle *dxf_circle_set_extr_z0 (DxfCircle *circle, double extr_z0);
+double dxf_circle_get_area (DxfCircle *circle);
+double dxf_circle_get_circumference (DxfCircle *circle);
+int dxf_circle_test_point_in_circle (DxfPoint *point, DxfCircle *circle);
+DxfCircle *dxf_circle_get_next (DxfCircle *circle);
+DxfCircle *dxf_circle_set_next (DxfCircle *circle, DxfCircle *next);
+DxfCircle *dxf_circle_get_last (DxfCircle *circle);
 
 
 #ifdef __cplusplus
