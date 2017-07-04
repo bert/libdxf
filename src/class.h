@@ -126,188 +126,41 @@ dxf_class_struct
 } DxfClass;
 
 
-DxfClass *
-dxf_class_new ();
-DxfClass *
-dxf_class_init
-(
-        DxfClass *class
-);
-DxfClass *
-dxf_class_read
-(
-        DxfFile *fp,
-        DxfClass *class
-);
-int
-dxf_class_write
-(
-        DxfFile *fp,
-        DxfClass *class
-);
-int
-dxf_class_write_endclass
-(
-        DxfFile *fp
-);
-int
-dxf_class_free
-(
-        DxfClass *class
-);
-void
-dxf_class_free_chain
-(
-        DxfClass *classes
-);
-char *
-dxf_class_get_record_type
-(
-        DxfClass *class
-);
-DxfClass *
-dxf_class_set_record_type
-(
-        DxfClass *class,
-        char *record_type
-);
-char *
-dxf_class_get_record_name
-(
-        DxfClass *class
-);
-DxfClass *
-dxf_class_set_record_name
-(
-        DxfClass *class,
-        char *record_name
-);
-char *
-dxf_class_get_class_name
-(
-        DxfClass *class
-);
-DxfClass *
-dxf_class_set_class_name
-(
-        DxfClass *class,
-        char *class_name
-);
-char *
-dxf_class_get_app_name
-(
-        DxfClass *class
-);
-DxfClass *
-dxf_class_set_app_name
-(
-        DxfClass *class,
-        char *app_name
-);
-int
-dxf_class_get_proxy_cap_flag
-(
-        DxfClass *class
-);
-DxfClass *
-dxf_class_set_proxy_cap_flag
-(
-        DxfClass *class,
-        int proxy_cap_flag
-);
-int
-dxf_class_is_editable
-(
-        DxfClass *class
-);
-int
-dxf_class_erase_allowed
-(
-        DxfClass *class
-);
-int
-dxf_class_transform_allowed
-(
-        DxfClass *class
-);
-int
-dxf_class_color_change_allowed
-(
-        DxfClass *class
-);
-int
-dxf_class_layer_change_allowed
-(
-        DxfClass *class
-);
-int
-dxf_class_linetype_change_allowed
-(
-        DxfClass *class
-);
-int
-dxf_class_linetype_scale_change_allowed
-(
-        DxfClass *class
-);
-int
-dxf_class_visibility_change_allowed
-(
-        DxfClass *class
-);
-int
-dxf_class_cloning_allowed
-(
-        DxfClass *class
-);
-int
-dxf_class_lineweight_change_allowed
-(
-        DxfClass *class
-);
-int
-dxf_class_plot_style_name_change_allowed
-(
-        DxfClass *class
-);
-int
-dxf_class_is_R13_format_proxy
-(
-        DxfClass *class
-);
-int
-dxf_class_get_was_a_proxy_flag
-(
-        DxfClass *class
-);
-DxfClass *
-dxf_class_set_was_a_proxy_flag
-(
-        DxfClass *class,
-        int was_a_proxy_flag
-);
-int
-dxf_class_get_is_an_entity_flag
-(
-        DxfClass *class
-);
-DxfClass *
-dxf_class_set_is_an_entity_flag
-(
-        DxfClass *class,
-        int is_an_entity_flag
-);
-DxfClass *
-dxf_class_get_next
-(
-        DxfClass *class
-);
-DxfClass *
-dxf_class_set_next
-(
-        DxfClass *class,
-        DxfClass *next
-);
+DxfClass *dxf_class_new ();
+DxfClass *dxf_class_init (DxfClass *class);
+DxfClass *dxf_class_read (DxfFile *fp, DxfClass *class);
+int dxf_class_write (DxfFile *fp, DxfClass *class);
+int dxf_class_write_endclass (DxfFile *fp);
+int dxf_class_free (DxfClass *class);
+void dxf_class_free_chain (DxfClass *classes);
+char *dxf_class_get_record_type (DxfClass *class);
+DxfClass *dxf_class_set_record_type (DxfClass *class, char *record_type);
+char *dxf_class_get_record_name (DxfClass *class);
+DxfClass *dxf_class_set_record_name (DxfClass *class, char *record_name);
+char *dxf_class_get_class_name (DxfClass *class);
+DxfClass *dxf_class_set_class_name (DxfClass *class, char *class_name);
+char *dxf_class_get_app_name (DxfClass *class);
+DxfClass *dxf_class_set_app_name (DxfClass *class, char *app_name);
+int dxf_class_get_proxy_cap_flag (DxfClass *class);
+DxfClass *dxf_class_set_proxy_cap_flag (DxfClass *class, int proxy_cap_flag);
+int dxf_class_is_editable (DxfClass *class);
+int dxf_class_erase_allowed (DxfClass *class);
+int dxf_class_transform_allowed (DxfClass *class);
+int dxf_class_color_change_allowed (DxfClass *class);
+int dxf_class_layer_change_allowed (DxfClass *class);
+int dxf_class_linetype_change_allowed (DxfClass *class);
+int dxf_class_linetype_scale_change_allowed (DxfClass *class);
+int dxf_class_visibility_change_allowed (DxfClass *class);
+int dxf_class_cloning_allowed (DxfClass *class);
+int dxf_class_lineweight_change_allowed (DxfClass *class);
+int dxf_class_plot_style_name_change_allowed (DxfClass *class);
+int dxf_class_is_R13_format_proxy (DxfClass *class);
+int dxf_class_get_was_a_proxy_flag (DxfClass *class);
+DxfClass * dxf_class_set_was_a_proxy_flag (DxfClass *class, int was_a_proxy_flag);
+int dxf_class_get_is_an_entity_flag (DxfClass *class);
+DxfClass *dxf_class_set_is_an_entity_flag (DxfClass *class, int is_an_entity_flag);
+DxfClass *dxf_class_get_next (DxfClass *class);
+DxfClass *dxf_class_set_next (DxfClass *class, DxfClass *next);
 
 
 #ifdef __cplusplus
