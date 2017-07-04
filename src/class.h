@@ -161,6 +161,7 @@ int dxf_class_get_is_an_entity_flag (DxfClass *class);
 DxfClass *dxf_class_set_is_an_entity_flag (DxfClass *class, int is_an_entity_flag);
 DxfClass *dxf_class_get_next (DxfClass *class);
 DxfClass *dxf_class_set_next (DxfClass *class, DxfClass *next);
+DxfClass *dxf_class_get_last (DxfClass *class);
 
 
 #ifdef __cplusplus

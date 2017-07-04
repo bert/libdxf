@@ -1575,4 +1575,49 @@ dxf_class_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c CLASS from a linked list of
+ * DXF \c CLASS.
+ *
+ * \return pointer to the last \c CLASS.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfClass *
+dxf_class_get_last
+(
+        DxfClass *class
+                /*!< a pointer to a DXF \c CLASS. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (class == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (class->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfClass *) class);
+        }
+        DxfClass *iter = (DxfClass *) class->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfClass *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfClass *) iter);
+}
+
+
 /* EOF */
