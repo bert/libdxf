@@ -71,67 +71,18 @@ dxf_comment_struct
 } DxfComment;
 
 
-DxfComment *
-dxf_comment_new ();
-DxfComment *
-dxf_comment_init
-(
-        DxfComment *comment
-);
-int
-dxf_comment_write
-(
-        DxfFile *fp,
-        DxfComment *comment
-);
-int
-dxf_comment_free
-(
-        DxfComment *comment
-);
-void
-dxf_comment_free_chain
-(
-        DxfComment *comments
-);
-int
-dxf_comment_get_id_code
-(
-        DxfComment *comment
-);
-DxfComment *
-dxf_comment_set_id_code
-(
-        DxfComment *comment,
-        int id_code
-);
-char *
-dxf_comment_get_value
-(
-        DxfComment *comment
-);
-DxfComment *
-dxf_comment_set_value
-(
-        DxfComment *comment,
-        char *value
-);
-DxfComment *
-dxf_comment_get_next
-(
-        DxfComment *comment
-);
-DxfComment *
-dxf_comment_set_next
-(
-        DxfComment *comment,
-        DxfComment *next
-);
-DxfComment *
-dxf_comment_get_last
-(
-        DxfComment *comment
-);
+DxfComment *dxf_comment_new ();
+DxfComment *dxf_comment_init (DxfComment *comment);
+int dxf_comment_write (DxfFile *fp, DxfComment *comment);
+int dxf_comment_free (DxfComment *comment);
+void dxf_comment_free_chain (DxfComment *comments);
+int dxf_comment_get_id_code (DxfComment *comment);
+DxfComment *dxf_comment_set_id_code (DxfComment *comment, int id_code);
+char *dxf_comment_get_value (DxfComment *comment);
+DxfComment *dxf_comment_set_value (DxfComment *comment, char *value);
+DxfComment *dxf_comment_get_next (DxfComment *comment);
+DxfComment *dxf_comment_set_next (DxfComment *comment, DxfComment *next);
+DxfComment *dxf_comment_get_last (DxfComment *comment);
 
 
 #ifdef __cplusplus
