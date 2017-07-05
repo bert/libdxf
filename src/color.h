@@ -70,42 +70,13 @@ typedef struct
 } DxfRGBColor;
 
 
-char *
-dxf_RGB_color_get_name
-(
-        int RGB_color_hex_triplet
-);
-DxfRGBColor *
-dxf_RGB_color_new ();
-DxfRGBColor *
-dxf_RGB_color_set
-(
-        int red,
-        int green,
-        int blue
-);
-int
-dxf_ACI_init
-(
-        DxfRGBColor *ACI[DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS]
-);
-int
-dxf_RGB_to_triplet
-(
-        int red,
-        int green,
-        int blue
-);
-int
-dxf_RGB_color_free
-(
-        DxfRGBColor *RGB_color
-);
-void
-dxf_RGB_color_free_chain
-(
-        DxfRGBColor *colors
-);
+char *dxf_RGB_color_get_name (int RGB_color_hex_triplet);
+DxfRGBColor *dxf_RGB_color_new ();
+DxfRGBColor *dxf_RGB_color_set (int red, int green, int blue);
+int dxf_ACI_init (DxfRGBColor *ACI[DXF_COLOR_INDEX_MAX_NUMBER_OF_COLORS]);
+int dxf_RGB_to_triplet (int red, int green, int blue);
+int dxf_RGB_color_free (DxfRGBColor *RGB_color);
+void dxf_RGB_color_free_chain (DxfRGBColor *colors);
 
 
 #ifdef __cplusplus
