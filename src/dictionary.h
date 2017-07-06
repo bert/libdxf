@@ -83,106 +83,25 @@ dxf_dictionary_struct
 } DxfDictionary;
 
 
-DxfDictionary *
-dxf_dictionary_new ();
-DxfDictionary *
-dxf_dictionary_init
-(
-        DxfDictionary *dictionary
-);
-DxfDictionary *
-dxf_dictionary_read
-(
-        DxfFile *fp,
-        DxfDictionary *dictionary
-);
-int
-dxf_dictionary_write
-(
-        DxfFile *fp,
-        DxfDictionary *dictionary
-);
-int
-dxf_dictionary_free
-(
-        DxfDictionary *dictionary
-);
-void
-dxf_dictionary_free_chain
-(
-        DxfDictionary *dictionaries
-);
-int
-dxf_dictionary_get_id_code
-(
-        DxfDictionary *dictionary
-);
-DxfDictionary *
-dxf_dictionary_set_id_code
-(
-        DxfDictionary *dictionary,
-        int id_code
-);
-char *
-dxf_dictionary_get_dictionary_owner_soft
-(
-        DxfDictionary *dictionary
-);
-DxfDictionary *
-dxf_dictionary_set_dictionary_owner_soft
-(
-        DxfDictionary *dictionary,
-        char *dictionary_owner_soft
-);
-char *
-dxf_dictionary_get_dictionary_owner_hard
-(
-        DxfDictionary *dictionary
-);
-DxfDictionary *
-dxf_dictionary_set_dictionary_owner_hard
-(
-        DxfDictionary *dictionary,
-        char *dictionary_owner_hard
-);
-char *
-dxf_dictionary_get_entry_name
-(
-        DxfDictionary *dictionary
-);
-DxfDictionary *
-dxf_dictionary_set_entry_name
-(
-        DxfDictionary *dictionary,
-        char *entry_name
-);
-char *
-dxf_dictionary_get_entry_object_handle
-(
-        DxfDictionary *dictionary
-);
-DxfDictionary *
-dxf_dictionary_set_entry_object_handle
-(
-        DxfDictionary *dictionary,
-        char *entry_object_handle
-);
-DxfDictionary *
-dxf_dictionary_get_next
-(
-        DxfDictionary *dictionary
-);
-DxfDictionary *
-dxf_dictionary_set_next
-(
-        DxfDictionary *dictionary,
-        DxfDictionary *next
-);
-DxfDictionary *
-dxf_dictionary_get_last
-(
-        DxfDictionary *dictionary
-);
+DxfDictionary *dxf_dictionary_new ();
+DxfDictionary *dxf_dictionary_init (DxfDictionary *dictionary);
+DxfDictionary *dxf_dictionary_read (DxfFile *fp, DxfDictionary *dictionary);
+int dxf_dictionary_write (DxfFile *fp, DxfDictionary *dictionary);
+int dxf_dictionary_free (DxfDictionary *dictionary);
+void dxf_dictionary_free_chain (DxfDictionary *dictionaries);
+int dxf_dictionary_get_id_code (DxfDictionary *dictionary);
+DxfDictionary *dxf_dictionary_set_id_code (DxfDictionary *dictionary, int id_code);
+char *dxf_dictionary_get_dictionary_owner_soft (DxfDictionary *dictionary);
+DxfDictionary *dxf_dictionary_set_dictionary_owner_soft (DxfDictionary *dictionary, char *dictionary_owner_soft);
+char *dxf_dictionary_get_dictionary_owner_hard (DxfDictionary *dictionary);
+DxfDictionary *dxf_dictionary_set_dictionary_owner_hard (DxfDictionary *dictionary, char *dictionary_owner_hard);
+char *dxf_dictionary_get_entry_name (DxfDictionary *dictionary);
+DxfDictionary *dxf_dictionary_set_entry_name (DxfDictionary *dictionary, char *entry_name);
+char *dxf_dictionary_get_entry_object_handle (DxfDictionary *dictionary);
+DxfDictionary *dxf_dictionary_set_entry_object_handle (DxfDictionary *dictionary, char *entry_object_handle);
+DxfDictionary *dxf_dictionary_get_next (DxfDictionary *dictionary);
+DxfDictionary *dxf_dictionary_set_next (DxfDictionary *dictionary, DxfDictionary *next);
+DxfDictionary *dxf_dictionary_get_last (DxfDictionary *dictionary);
 
 
 #ifdef __cplusplus
