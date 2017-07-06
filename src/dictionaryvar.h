@@ -84,106 +84,25 @@ dxf_dictionaryvar_struct
 } DxfDictionaryVar;
 
 
-DxfDictionaryVar *
-dxf_dictionaryvar_new ();
-DxfDictionaryVar *
-dxf_dictionaryvar_init
-(
-        DxfDictionaryVar *dictionaryvar
-);
-DxfDictionaryVar *
-dxf_dictionaryvar_read
-(
-        DxfFile *fp,
-        DxfDictionaryVar *dictionaryvar
-);
-int
-dxf_dictionaryvar_write
-(
-        DxfFile *fp,
-        DxfDictionaryVar *dictionaryvar
-);
-int
-dxf_dictionaryvar_free
-(
-        DxfDictionaryVar *dictionaryvar
-);
-void
-dxf_dictionaryvar_free_chain
-(
-        DxfDictionaryVar *dictionaryvars
-);
-int
-dxf_dictionaryvar_get_id_code
-(
-        DxfDictionaryVar *dictionaryvar
-);
-DxfDictionaryVar *
-dxf_dictionaryvar_set_id_code
-(
-        DxfDictionaryVar *dictionaryvar,
-        int id_code
-);
-char *
-dxf_dictionaryvar_get_dictionary_owner_soft
-(
-        DxfDictionaryVar *dictionaryvar
-);
-DxfDictionaryVar *
-dxf_dictionaryvar_set_dictionary_owner_soft
-(
-        DxfDictionaryVar *dictionaryvar,
-        char *dictionary_owner_soft
-);
-char *
-dxf_dictionaryvar_get_dictionary_owner_hard
-(
-        DxfDictionaryVar *dictionaryvar
-);
-DxfDictionaryVar *
-dxf_dictionaryvar_set_dictionary_owner_hard
-(
-        DxfDictionaryVar *dictionaryvar,
-        char *dictionary_owner_hard
-);
-char *
-dxf_dictionaryvar_get_value
-(
-        DxfDictionaryVar *dictionaryvar
-);
-DxfDictionaryVar *
-dxf_dictionaryvar_set_value
-(
-        DxfDictionaryVar *dictionaryvar,
-        char *value
-);
-char *
-dxf_dictionaryvar_get_object_schema_number
-(
-        DxfDictionaryVar *dictionaryvar
-);
-DxfDictionaryVar *
-dxf_dictionaryvar_set_object_schema_number
-(
-        DxfDictionaryVar *dictionaryvar,
-        char *object_schema_number
-);
-DxfDictionaryVar *
-dxf_dictionaryvar_get_next
-(
-        DxfDictionaryVar *dictionaryvar
-);
-DxfDictionaryVar *
-dxf_dictionaryvar_set_next
-(
-        DxfDictionaryVar *dictionaryvar,
-        DxfDictionaryVar *next
-);
-DxfDictionaryVar *
-dxf_dictionaryvar_get_last
-(
-        DxfDictionaryVar *dictionaryvar
-);
+DxfDictionaryVar *dxf_dictionaryvar_new ();
+DxfDictionaryVar *dxf_dictionaryvar_init (DxfDictionaryVar *dictionaryvar);
+DxfDictionaryVar *dxf_dictionaryvar_read (DxfFile *fp, DxfDictionaryVar *dictionaryvar);
+int dxf_dictionaryvar_write (DxfFile *fp, DxfDictionaryVar *dictionaryvar);
+int dxf_dictionaryvar_free (DxfDictionaryVar *dictionaryvar);
+void dxf_dictionaryvar_free_chain (DxfDictionaryVar *dictionaryvars);
+int dxf_dictionaryvar_get_id_code (DxfDictionaryVar *dictionaryvar);
+DxfDictionaryVar *dxf_dictionaryvar_set_id_code (DxfDictionaryVar *dictionaryvar, int id_code);
+char *dxf_dictionaryvar_get_dictionary_owner_soft (DxfDictionaryVar *dictionaryvar);
+DxfDictionaryVar *dxf_dictionaryvar_set_dictionary_owner_soft (DxfDictionaryVar *dictionaryvar, char *dictionary_owner_soft);
+char *dxf_dictionaryvar_get_dictionary_owner_hard (DxfDictionaryVar *dictionaryvar);
+DxfDictionaryVar *dxf_dictionaryvar_set_dictionary_owner_hard (DxfDictionaryVar *dictionaryvar, char *dictionary_owner_hard);
+char *dxf_dictionaryvar_get_value (DxfDictionaryVar *dictionaryvar);
+DxfDictionaryVar *dxf_dictionaryvar_set_value (DxfDictionaryVar *dictionaryvar, char *value);
+char *dxf_dictionaryvar_get_object_schema_number (DxfDictionaryVar *dictionaryvar);
+DxfDictionaryVar *dxf_dictionaryvar_set_object_schema_number (DxfDictionaryVar *dictionaryvar, char *object_schema_number);
+DxfDictionaryVar *dxf_dictionaryvar_get_next (DxfDictionaryVar *dictionaryvar);
+DxfDictionaryVar *dxf_dictionaryvar_set_next (DxfDictionaryVar *dictionaryvar, DxfDictionaryVar *next);
+DxfDictionaryVar *dxf_dictionaryvar_get_last (DxfDictionaryVar *dictionaryvar);
 
 
 #ifdef __cplusplus
