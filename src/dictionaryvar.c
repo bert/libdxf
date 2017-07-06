@@ -1,7 +1,8 @@
 /*!
  * \file dictionaryvar.c
  *
- * \author Copyright (C) 2015 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2016, 2017
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF dictionaryvar object (\c DICTIONARYVAR).
  *
