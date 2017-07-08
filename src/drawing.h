@@ -1,7 +1,7 @@
 /*!
  * \file drawing.h
  *
- * \author Copyright (C) 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Prototypes for a libDXF drawing.
  *
@@ -75,96 +75,23 @@ dxf_drawing_struct
 } DxfDrawing;
 
 
-DxfDrawing *
-dxf_drawing_new ();
-DxfDrawing *
-dxf_drawing_init
-(
-        DxfDrawing *drawing,
-        int acad_version_number
-);
-int
-dxf_drawing_free
-(
-        DxfDrawing *drawing
-);
-DxfHeader *
-dxf_drawing_get_header
-(
-        DxfDrawing *drawing
-);
-DxfDrawing *
-dxf_drawing_set_header
-(
-        DxfDrawing *drawing,
-        DxfHeader *header
-);
-DxfClass *
-dxf_drawing_get_class_list
-(
-        DxfDrawing *drawing
-);
-DxfDrawing *
-dxf_drawing_set_class_list
-(
-        DxfDrawing *drawing,
-        DxfClass *class_list
-);
-DxfTables *
-dxf_drawing_get_tables_list
-(
-        DxfDrawing *drawing
-);
-DxfDrawing *
-dxf_drawing_set_tables_list
-(
-        DxfDrawing *drawing,
-        DxfTables *tables_list
-);
-DxfBlock *
-dxf_drawing_get_block_list
-(
-        DxfDrawing *drawing
-);
-DxfDrawing *
-dxf_drawing_set_block_list
-(
-        DxfDrawing *drawing,
-        DxfBlock *block_list
-);
-DxfEntities *
-dxf_drawing_get_entities_list
-(
-        DxfDrawing *drawing
-);
-DxfDrawing *
-dxf_drawing_set_entities_list
-(
-        DxfDrawing *drawing,
-        DxfEntities *entities_list
-);
-DxfObject *
-dxf_drawing_get_object_list
-(
-        DxfDrawing *drawing
-);
-DxfDrawing *
-dxf_drawing_set_object_list
-(
-        DxfDrawing *drawing,
-        DxfObject *object_list
-);
-DxfThumbnail *
-dxf_drawing_get_thumbnail
-(
-        DxfDrawing *drawing
-);
-DxfDrawing *
-dxf_drawing_set_thumbnail
-(
-        DxfDrawing *drawing,
-        DxfThumbnail *thumbnail
-);
+DxfDrawing *dxf_drawing_new ();
+DxfDrawing *dxf_drawing_init (DxfDrawing *drawing, int acad_version_number);
+int dxf_drawing_free (DxfDrawing *drawing);
+DxfHeader *dxf_drawing_get_header (DxfDrawing *drawing);
+DxfDrawing *dxf_drawing_set_header (DxfDrawing *drawing, DxfHeader *header);
+DxfClass *dxf_drawing_get_class_list (DxfDrawing *drawing);
+DxfDrawing *dxf_drawing_set_class_list (DxfDrawing *drawing, DxfClass *class_list);
+DxfTables *dxf_drawing_get_tables_list (DxfDrawing *drawing);
+DxfDrawing *dxf_drawing_set_tables_list (DxfDrawing *drawing, DxfTables *tables_list);
+DxfBlock *dxf_drawing_get_block_list (DxfDrawing *drawing);
+DxfDrawing *dxf_drawing_set_block_list (DxfDrawing *drawing, DxfBlock *block_list);
+DxfEntities *dxf_drawing_get_entities_list (DxfDrawing *drawing);
+DxfDrawing *dxf_drawing_set_entities_list (DxfDrawing *drawing, DxfEntities *entities_list);
+DxfObject *dxf_drawing_get_object_list (DxfDrawing *drawing);
+DxfDrawing *dxf_drawing_set_object_list (DxfDrawing *drawing, DxfObject *object_list);
+DxfThumbnail *dxf_drawing_get_thumbnail (DxfDrawing *drawing);
+DxfDrawing *dxf_drawing_set_thumbnail (DxfDrawing *drawing, DxfThumbnail *thumbnail);
 
 
 #ifdef __cplusplus
