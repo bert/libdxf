@@ -92,57 +92,16 @@ dxf_endblk_struct
 
 
 DxfEndblk *dxf_endblk_new ();
-DxfEndblk *dxf_endblk_init
-(
-        DxfEndblk *endblk
-);
-DxfEndblk *dxf_endblk_read
-(
-        DxfFile *fp,
-        DxfEndblk *endblk
-);
-int dxf_endblk_write
-(
-        DxfFile *fp,
-        DxfEndblk *endblk
-);
-int dxf_endblk_free
-(
-        DxfEndblk *endblk
-);
-int
-dxf_endblk_get_id_code
-(
-        DxfEndblk *endblk
-);
-DxfEndblk *
-dxf_endblk_set_id_code
-(
-        DxfEndblk *endblk,
-        int id_code
-);
-char *
-dxf_endblk_get_layer
-(
-        DxfEndblk *endblk
-);
-DxfEndblk *
-dxf_endblk_set_layer
-(
-        DxfEndblk *endblk,
-        char *layer
-);
-char *
-dxf_endblk_get_dictionary_owner_soft
-(
-        DxfEndblk *endblk
-);
-DxfEndblk *
-dxf_endblk_set_dictionary_owner_soft
-(
-        DxfEndblk *endblk,
-        char *dictionary_owner_soft
-);
+DxfEndblk *dxf_endblk_init (DxfEndblk *endblk);
+DxfEndblk *dxf_endblk_read (DxfFile *fp, DxfEndblk *endblk);
+int dxf_endblk_write (DxfFile *fp, DxfEndblk *endblk);
+int dxf_endblk_free (DxfEndblk *endblk);
+int dxf_endblk_get_id_code (DxfEndblk *endblk);
+DxfEndblk *dxf_endblk_set_id_code (DxfEndblk *endblk, int id_code);
+char *dxf_endblk_get_layer (DxfEndblk *endblk);
+DxfEndblk *dxf_endblk_set_layer (DxfEndblk *endblk, char *layer);
+char *dxf_endblk_get_dictionary_owner_soft (DxfEndblk *endblk);
+DxfEndblk *dxf_endblk_set_dictionary_owner_soft (DxfEndblk *endblk, char *dictionary_owner_soft);
 
 
 #ifdef __cplusplus
