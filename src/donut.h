@@ -200,331 +200,66 @@ dxf_donut_struct
 } DxfDonut;
 
 
-DxfDonut *
-dxf_donut_new ();
-DxfDonut *
-dxf_donut_init
-(
-        DxfDonut *donut
-);
-int
-dxf_donut_write
-(
-        DxfFile *fp,
-        DxfDonut *donut
-);
-int
-dxf_donut_free
-(
-        DxfDonut *donut
-);
-void
-dxf_donut_free_chain
-(
-        DxfDonut *donuts
-);
-int
-dxf_donut_get_id_code
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_id_code
-(
-        DxfDonut *donut,
-        int id_code
-);
-char *
-dxf_donut_get_linetype
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_linetype
-(
-        DxfDonut *donut,
-        char *linetype
-);
-char *
-dxf_donut_get_layer
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_layer
-(
-        DxfDonut *donut,
-        char *layer
-);
-double
-dxf_donut_get_elevation
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_elevation
-(
-        DxfDonut *donut,
-        double elevation
-);
-double
-dxf_donut_get_thickness
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_thickness
-(
-        DxfDonut *donut,
-        double thickness
-);
-double
-dxf_donut_get_linetype_scale
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_linetype_scale
-(
-        DxfDonut *donut,
-        double linetype_scale
-);
-int16_t
-dxf_donut_get_visibility
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_visibility
-(
-        DxfDonut *donut,
-        int16_t visibility
-);
-int
-dxf_donut_get_color
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_color
-(
-        DxfDonut *donut,
-        int color
-);
-int
-dxf_donut_get_paperspace
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_paperspace
-(
-        DxfDonut *donut,
-        int paperspace
-);
-int
-dxf_donut_get_graphics_data_size
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_graphics_data_size
-(
-        DxfDonut *donut,
-        int graphics_data_size
-);
-int16_t
-dxf_donut_get_shadow_mode
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_shadow_mode
-(
-        DxfDonut *donut,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_donut_get_binary_graphics_data
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_binary_graphics_data
-(
-        DxfDonut *donut,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_donut_get_dictionary_owner_soft
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_dictionary_owner_soft
-(
-        DxfDonut *donut,
-        char *dictionary_owner_soft
-);
-char *
-dxf_donut_get_material
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_material
-(
-        DxfDonut *donut,
-        char *material
-);
-char *
-dxf_donut_get_dictionary_owner_hard
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_dictionary_owner_hard
-(
-        DxfDonut *donut,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_donut_get_lineweight
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_lineweight
-(
-        DxfDonut *donut,
-        int16_t lineweight
-);
-char *
-dxf_donut_get_plot_style_name
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_plot_style_name
-(
-        DxfDonut *donut,
-        char *plot_style_name
-);
-long
-dxf_donut_get_color_value
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_color_value
-(
-        DxfDonut *donut,
-        long color_value
-);
-char *
-dxf_donut_get_color_name
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_color_name
-(
-        DxfDonut *donut,
-        char *color_name
-);
-long
-dxf_donut_get_transparency
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_transparency
-(
-        DxfDonut *donut,
-        long transparency
-);
-DxfPoint *
-dxf_donut_get_p0
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_p0
-(
-        DxfDonut *donut,
-        DxfPoint *p0
-);
-double
-dxf_donut_get_x0
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_x0
-(
-        DxfDonut *donut,
-        double x0
-);
-double
-dxf_donut_get_y0
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_y0
-(
-        DxfDonut *donut,
-        double y0
-);
-double
-dxf_donut_get_z0
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_z0
-(
-        DxfDonut *donut,
-        double z0
-);
-double
-dxf_donut_get_outside_diameter
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_outside_diameter
-(
-        DxfDonut *donut,
-        double outside_diameter
-);
-double
-dxf_donut_get_inside_diameter
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_inside_diameter
-(
-        DxfDonut *donut,
-        double inside_diameter
-);
-DxfDonut *
-dxf_donut_get_next
-(
-        DxfDonut *donut
-);
-DxfDonut *
-dxf_donut_set_next
-(
-        DxfDonut *donut,
-        DxfDonut *next
-);
-DxfDonut *
-dxf_donut_get_last
-(
-        DxfDonut *donut
-);
+DxfDonut *dxf_donut_new ();
+DxfDonut *dxf_donut_init (DxfDonut *donut);
+int dxf_donut_write (DxfFile *fp, DxfDonut *donut);
+int dxf_donut_free (DxfDonut *donut);
+void dxf_donut_free_chain (DxfDonut *donuts);
+int dxf_donut_get_id_code (DxfDonut *donut);
+DxfDonut *dxf_donut_set_id_code (DxfDonut *donut, int id_code);
+char *dxf_donut_get_linetype (DxfDonut *donut);
+DxfDonut *dxf_donut_set_linetype (DxfDonut *donut, char *linetype);
+char *dxf_donut_get_layer (DxfDonut *donut);
+DxfDonut *dxf_donut_set_layer (DxfDonut *donut, char *layer);
+double dxf_donut_get_elevation (DxfDonut *donut);
+DxfDonut *dxf_donut_set_elevation (DxfDonut *donut, double elevation);
+double dxf_donut_get_thickness (DxfDonut *donut);
+DxfDonut *dxf_donut_set_thickness (DxfDonut *donut, double thickness);
+double dxf_donut_get_linetype_scale (DxfDonut *donut);
+DxfDonut *dxf_donut_set_linetype_scale (DxfDonut *donut, double linetype_scale);
+int16_t dxf_donut_get_visibility (DxfDonut *donut);
+DxfDonut *dxf_donut_set_visibility (DxfDonut *donut, int16_t visibility);
+int dxf_donut_get_color (DxfDonut *donut);
+DxfDonut *dxf_donut_set_color (DxfDonut *donut, int color);
+int dxf_donut_get_paperspace (DxfDonut *donut);
+DxfDonut *dxf_donut_set_paperspace (DxfDonut *donut, int paperspace);
+int dxf_donut_get_graphics_data_size (DxfDonut *donut);
+DxfDonut *dxf_donut_set_graphics_data_size (DxfDonut *donut, int graphics_data_size);
+int16_t dxf_donut_get_shadow_mode (DxfDonut *donut);
+DxfDonut *dxf_donut_set_shadow_mode (DxfDonut *donut, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_donut_get_binary_graphics_data (DxfDonut *donut);
+DxfDonut *dxf_donut_set_binary_graphics_data (DxfDonut *donut, DxfBinaryGraphicsData *data);
+char *dxf_donut_get_dictionary_owner_soft (DxfDonut *donut);
+DxfDonut *dxf_donut_set_dictionary_owner_soft (DxfDonut *donut, char *dictionary_owner_soft);
+char *dxf_donut_get_material (DxfDonut *donut);
+DxfDonut *dxf_donut_set_material (DxfDonut *donut, char *material);
+char *dxf_donut_get_dictionary_owner_hard (DxfDonut *donut);
+DxfDonut *dxf_donut_set_dictionary_owner_hard (DxfDonut *donut, char *dictionary_owner_hard);
+int16_t dxf_donut_get_lineweight (DxfDonut *donut);
+DxfDonut *dxf_donut_set_lineweight (DxfDonut *donut, int16_t lineweight);
+char *dxf_donut_get_plot_style_name (DxfDonut *donut);
+DxfDonut *dxf_donut_set_plot_style_name (DxfDonut *donut, char *plot_style_name);
+long dxf_donut_get_color_value (DxfDonut *donut);
+DxfDonut *dxf_donut_set_color_value (DxfDonut *donut, long color_value);
+char *dxf_donut_get_color_name (DxfDonut *donut);
+DxfDonut *dxf_donut_set_color_name (DxfDonut *donut, char *color_name);
+long dxf_donut_get_transparency (DxfDonut *donut);
+DxfDonut *dxf_donut_set_transparency (DxfDonut *donut, long transparency);
+DxfPoint *dxf_donut_get_p0 (DxfDonut *donut);
+DxfDonut *dxf_donut_set_p0 (DxfDonut *donut, DxfPoint *p0);
+double dxf_donut_get_x0 (DxfDonut *donut);
+DxfDonut *dxf_donut_set_x0 (DxfDonut *donut, double x0);
+double dxf_donut_get_y0 (DxfDonut *donut);
+DxfDonut *dxf_donut_set_y0 (DxfDonut *donut, double y0);
+double dxf_donut_get_z0 (DxfDonut *donut);
+DxfDonut *dxf_donut_set_z0 (DxfDonut *donut, double z0);
+double dxf_donut_get_outside_diameter (DxfDonut *donut);
+DxfDonut *dxf_donut_set_outside_diameter (DxfDonut *donut, double outside_diameter);
+double dxf_donut_get_inside_diameter (DxfDonut *donut);
+DxfDonut *dxf_donut_set_inside_diameter (DxfDonut *donut, double inside_diameter);
+DxfDonut *dxf_donut_get_next (DxfDonut *donut);
+DxfDonut *dxf_donut_set_next (DxfDonut *donut, DxfDonut *next);
+DxfDonut *dxf_donut_get_last (DxfDonut *donut);
 
 
 #ifdef __cplusplus
