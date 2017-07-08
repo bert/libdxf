@@ -3467,4 +3467,49 @@ dxf_ellipse_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c ELLIPSE entity from a linked list
+ * of DXF \c ELLIPSE entities.
+ *
+ * \return pointer to the last \c ELLIPSE entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfEllipse *
+dxf_ellipse_get_last
+(
+        DxfEllipse *ellipse
+                /*!< a pointer to a DXF \c ELLIPSE entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ellipse->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfEllipse *) ellipse);
+        }
+        DxfEllipse *iter = (DxfEllipse *) ellipse->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfEllipse *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfEllipse *) iter);
+}
+
+
 /* EOF */

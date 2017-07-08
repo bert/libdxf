@@ -318,6 +318,7 @@ DxfEllipse *dxf_ellipse_set_extrusion_vector_from_point (DxfEllipse *ellipse, Dx
 DxfEllipse *dxf_ellipse_set_extrusion_vector (DxfEllipse *ellipse, double extr_x0, double extr_y0, double extr_z0);
 DxfEllipse *dxf_ellipse_get_next (DxfEllipse *ellipse);
 DxfEllipse *dxf_ellipse_set_next (DxfEllipse *ellipse, DxfEllipse *next);
+DxfEllipse *dxf_ellipse_get_last (DxfEllipse *ellipse);
 
 
 #ifdef __cplusplus
