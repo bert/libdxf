@@ -336,767 +336,144 @@ dxf_dimension_struct
 
 
 DxfDimension *dxf_dimension_new ();
-DxfDimension *
-dxf_dimension_init
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_read
-(
-        DxfFile *fp,
-        DxfDimension *dimension
-);
-int
-dxf_dimension_write
-(
-        DxfFile *fp,
-        DxfDimension *dimension
-);
-int
-dxf_dimension_free
-(
-        DxfDimension *dimension
-);
-void
-dxf_dimension_free_chain
-(
-        DxfDimension *dimensions
-);
-int
-dxf_dimension_get_id_code
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_id_code
-(
-        DxfDimension *dimension,
-        int id_code
-);
-char *
-dxf_dimension_get_linetype
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_linetype
-(
-        DxfDimension *dimension,
-        char *linetype
-);
-char *
-dxf_dimension_get_layer
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_layer
-(
-        DxfDimension *dimension,
-        char *layer
-);
-double
-dxf_dimension_get_elevation
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_elevation
-(
-        DxfDimension *dimension,
-        double elevation
-);
-double
-dxf_dimension_get_thickness
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_thickness
-(
-        DxfDimension *dimension,
-        double thickness
-);
-double
-dxf_dimension_get_linetype_scale
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_linetype_scale
-(
-        DxfDimension *dimension,
-        double linetype_scale
-);
-int16_t
-dxf_dimension_get_visibility
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_visibility
-(
-        DxfDimension *dimension,
-        int16_t visibility
-);
-int
-dxf_dimension_get_color
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_color
-(
-        DxfDimension *dimension,
-        int color
-);
-int
-dxf_dimension_get_paperspace
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_paperspace
-(
-        DxfDimension *dimension,
-        int paperspace
-);
-int
-dxf_dimension_get_graphics_data_size
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_graphics_data_size
-(
-        DxfDimension *dimension,
-        int graphics_data_size
-);
-int16_t
-dxf_dimension_get_shadow_mode
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_shadow_mode
-(
-        DxfDimension *dimension,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_dimension_get_binary_graphics_data
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_binary_graphics_data
-(
-        DxfDimension *dimension,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_dimension_get_dictionary_owner_soft
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_dictionary_owner_soft
-(
-        DxfDimension *dimension,
-        char *dictionary_owner_soft
-);
-char *
-dxf_dimension_get_material
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_material
-(
-        DxfDimension *dimension,
-        char *material
-);
-char *
-dxf_dimension_get_dictionary_owner_hard
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_dictionary_owner_hard
-(
-        DxfDimension *dimension,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_dimension_get_lineweight
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_lineweight
-(
-        DxfDimension *dimension,
-        int16_t lineweight
-);
-char *
-dxf_dimension_get_plot_style_name
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_plot_style_name
-(
-        DxfDimension *dimension,
-        char *plot_style_name
-);
-long
-dxf_dimension_get_color_value
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_color_value
-(
-        DxfDimension *dimension,
-        long color_value
-);
-char *
-dxf_dimension_get_color_name
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_color_name
-(
-        DxfDimension *dimension,
-        char *color_name
-);
-long
-dxf_dimension_get_transparency
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_transparency
-(
-        DxfDimension *dimension,
-        long transparency
-);
-char *
-dxf_dimension_get_dim_text
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_dim_text
-(
-        DxfDimension *dimension,
-        char *dim_text
-);
-char *
-dxf_dimension_get_dimblock_name
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_dimblock_name
-(
-        DxfDimension *dimension,
-        char *dimblock_name
-);
-char *
-dxf_dimension_get_dimstyle_name
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_dimstyle_name
-(
-        DxfDimension *dimension,
-        char *dimstyle_name
-);
-DxfPoint *
-dxf_dimension_get_p0
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_p0
-(
-        DxfDimension *dimension,
-        DxfPoint *p0
-);
-double
-dxf_dimension_get_x0
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_x0
-(
-        DxfDimension *dimension,
-        double x0
-);
-double
-dxf_dimension_get_y0
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_y0
-(
-        DxfDimension *dimension,
-        double y0
-);
-double
-dxf_dimension_get_z0
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_z0
-(
-        DxfDimension *dimension,
-        double z0
-);
-DxfPoint *
-dxf_dimension_get_p1
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_p1
-(
-        DxfDimension *dimension,
-        DxfPoint *p1
-);
-double
-dxf_dimension_get_x1
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_x1
-(
-        DxfDimension *dimension,
-        double x1
-);
-double
-dxf_dimension_get_y1
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_y1
-(
-        DxfDimension *dimension,
-        double y1
-);
-double
-dxf_dimension_get_z1
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_z1
-(
-        DxfDimension *dimension,
-        double z1
-);
-DxfPoint *
-dxf_dimension_get_p2
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_p2
-(
-        DxfDimension *dimension,
-        DxfPoint *p2
-);
-double
-dxf_dimension_get_x2
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_x2
-(
-        DxfDimension *dimension,
-        double x2
-);
-double
-dxf_dimension_get_y2
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_y2
-(
-        DxfDimension *dimension,
-        double y2
-);
-double
-dxf_dimension_get_z2
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_z2
-(
-        DxfDimension *dimension,
-        double z2
-);
-DxfPoint *
-dxf_dimension_get_p3
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_p3
-(
-        DxfDimension *dimension,
-        DxfPoint *p3
-);
-double
-dxf_dimension_get_x3
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_x3
-(
-        DxfDimension *dimension,
-        double x3
-);
-double
-dxf_dimension_get_y3
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_y3
-(
-        DxfDimension *dimension,
-        double y3
-);
-double
-dxf_dimension_get_z3
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_z3
-(
-        DxfDimension *dimension,
-        double z3
-);
-DxfPoint *
-dxf_dimension_get_p4
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_p4
-(
-        DxfDimension *dimension,
-        DxfPoint *p4
-);
-double
-dxf_dimension_get_x4
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_x4
-(
-        DxfDimension *dimension,
-        double x4
-);
-double
-dxf_dimension_get_y4
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_y4
-(
-        DxfDimension *dimension,
-        double y4
-);
-double
-dxf_dimension_get_z4
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_z4
-(
-        DxfDimension *dimension,
-        double z4
-);
-DxfPoint *
-dxf_dimension_get_p5
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_p5
-(
-        DxfDimension *dimension,
-        DxfPoint *p5
-);
-double
-dxf_dimension_get_x5
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_x5
-(
-        DxfDimension *dimension,
-        double x5
-);
-double
-dxf_dimension_get_y5
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_y5
-(
-        DxfDimension *dimension,
-        double y5
-);
-double
-dxf_dimension_get_z5
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_z5
-(
-        DxfDimension *dimension,
-        double z5
-);
-DxfPoint *
-dxf_dimension_get_p6
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_p6
-(
-        DxfDimension *dimension,
-        DxfPoint *p6
-);
-double
-dxf_dimension_get_x6
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_x6
-(
-        DxfDimension *dimension,
-        double x6
-);
-double
-dxf_dimension_get_y6
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_y6
-(
-        DxfDimension *dimension,
-        double y6
-);
-double
-dxf_dimension_get_z6
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_z6
-(
-        DxfDimension *dimension,
-        double z6
-);
-double
-dxf_dimension_get_leader_length
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_leader_length
-(
-        DxfDimension *dimension,
-        double leader_length
-);
-double
-dxf_dimension_get_text_line_spacing_factor
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_text_line_spacing_factor
-(
-        DxfDimension *dimension,
-        double text_line_spacing_factor
-);
-double
-dxf_dimension_get_actual_measurement
-(
-        DxfDimension *dimension
-                /*!< a pointer to a DXF \c DIMENSION entity. */
-);
-DxfDimension *
-dxf_dimension_set_actual_measurement
-(
-        DxfDimension *dimension,
-        double actual_measurement
-);
-double
-dxf_dimension_get_angle
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_angle
-(
-        DxfDimension *dimension,
-        double angle
-);
-double
-dxf_dimension_get_hor_dir
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_hor_dir
-(
-        DxfDimension *dimension,
-        double hor_dir
-);
-double
-dxf_dimension_get_obl_angle
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_obl_angle
-(
-        DxfDimension *dimension,
-        double obl_angle
-);
-double
-dxf_dimension_get_text_angle
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_text_angle
-(
-        DxfDimension *dimension,
-        double text_angle
-);
-int
-dxf_dimension_get_flag
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_flag
-(
-        DxfDimension *dimension,
-        int flag
-);
-int
-dxf_dimension_get_attachment_point
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_attachment_point
-(
-        DxfDimension *dimension,
-        int attachment_point
-);
-int
-dxf_dimension_get_text_line_spacing
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_text_line_spacing
-(
-        DxfDimension *dimension,
-        int text_line_spacing
-);
-double
-dxf_dimension_get_extr_x0
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_extr_x0
-(
-        DxfDimension *dimension,
-        double extr_x0
-);
-double
-dxf_dimension_get_extr_y0
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_extr_y0
-(
-        DxfDimension *dimension,
-        double extr_y0
-);
-double
-dxf_dimension_get_extr_z0
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_extr_z0
-(
-        DxfDimension *dimension,
-        double extr_z0
-);
-DxfPoint *
-dxf_dimension_get_extrusion_vector_as_point
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_extrusion_vector
-(
-        DxfDimension *dimension,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0
-);
-DxfDimension *
-dxf_dimension_get_next
-(
-        DxfDimension *dimension
-);
-DxfDimension *
-dxf_dimension_set_next
-(
-        DxfDimension *dimension,
-        DxfDimension *next
-);
-DxfDimension *
-dxf_dimension_get_last
-(
-        DxfDimension *dimension
-);
+DxfDimension *dxf_dimension_init (DxfDimension *dimension);
+DxfDimension *dxf_dimension_read (DxfFile *fp, DxfDimension *dimension);
+int dxf_dimension_write (DxfFile *fp, DxfDimension *dimension);
+int dxf_dimension_free (DxfDimension *dimension);
+void dxf_dimension_free_chain (DxfDimension *dimensions);
+int dxf_dimension_get_id_code (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_id_code (DxfDimension *dimension, int id_code);
+char *dxf_dimension_get_linetype (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_linetype (DxfDimension *dimension, char *linetype);
+char *dxf_dimension_get_layer (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_layer (DxfDimension *dimension, char *layer);
+double dxf_dimension_get_elevation (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_elevation (DxfDimension *dimension, double elevation);
+double dxf_dimension_get_thickness (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_thickness (DxfDimension *dimension, double thickness);
+double dxf_dimension_get_linetype_scale (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_linetype_scale (DxfDimension *dimension, double linetype_scale);
+int16_t dxf_dimension_get_visibility (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_visibility (DxfDimension *dimension, int16_t visibility);
+int dxf_dimension_get_color (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_color (DxfDimension *dimension, int color);
+int dxf_dimension_get_paperspace (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_paperspace (DxfDimension *dimension, int paperspace);
+int dxf_dimension_get_graphics_data_size (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_graphics_data_size (DxfDimension *dimension, int graphics_data_size);
+int16_t dxf_dimension_get_shadow_mode (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_shadow_mode (DxfDimension *dimension, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_dimension_get_binary_graphics_data (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_binary_graphics_data (DxfDimension *dimension, DxfBinaryGraphicsData *data);
+char *dxf_dimension_get_dictionary_owner_soft (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_dictionary_owner_soft (DxfDimension *dimension, char *dictionary_owner_soft);
+char *dxf_dimension_get_material (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_material (DxfDimension *dimension, char *material);
+char *dxf_dimension_get_dictionary_owner_hard (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_dictionary_owner_hard (DxfDimension *dimension, char *dictionary_owner_hard);
+int16_t dxf_dimension_get_lineweight (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_lineweight (DxfDimension *dimension, int16_t lineweight);
+char *dxf_dimension_get_plot_style_name (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_plot_style_name (DxfDimension *dimension, char *plot_style_name);
+long dxf_dimension_get_color_value (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_color_value (DxfDimension *dimension, long color_value);
+char *dxf_dimension_get_color_name (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_color_name (DxfDimension *dimension, char *color_name);
+long dxf_dimension_get_transparency (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_transparency (DxfDimension *dimension, long transparency);
+char *dxf_dimension_get_dim_text (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_dim_text (DxfDimension *dimension, char *dim_text);
+char *dxf_dimension_get_dimblock_name (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_dimblock_name (DxfDimension *dimension, char *dimblock_name);
+char *dxf_dimension_get_dimstyle_name (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_dimstyle_name (DxfDimension *dimension, char *dimstyle_name);
+DxfPoint *dxf_dimension_get_p0 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_p0 (DxfDimension *dimension, DxfPoint *p0);
+double dxf_dimension_get_x0 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_x0 (DxfDimension *dimension, double x0);
+double dxf_dimension_get_y0 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_y0 (DxfDimension *dimension, double y0);
+double dxf_dimension_get_z0 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_z0 (DxfDimension *dimension, double z0);
+DxfPoint *dxf_dimension_get_p1 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_p1 (DxfDimension *dimension, DxfPoint *p1);
+double dxf_dimension_get_x1 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_x1 (DxfDimension *dimension, double x1);
+double dxf_dimension_get_y1 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_y1 (DxfDimension *dimension, double y1);
+double dxf_dimension_get_z1 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_z1 (DxfDimension *dimension, double z1);
+DxfPoint *dxf_dimension_get_p2 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_p2 (DxfDimension *dimension, DxfPoint *p2);
+double dxf_dimension_get_x2 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_x2 (DxfDimension *dimension, double x2);
+double dxf_dimension_get_y2 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_y2 (DxfDimension *dimension, double y2);
+double dxf_dimension_get_z2 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_z2 (DxfDimension *dimension, double z2);
+DxfPoint *dxf_dimension_get_p3 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_p3 (DxfDimension *dimension, DxfPoint *p3);
+double dxf_dimension_get_x3 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_x3 (DxfDimension *dimension, double x3);
+double dxf_dimension_get_y3 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_y3 (DxfDimension *dimension, double y3);
+double dxf_dimension_get_z3 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_z3 (DxfDimension *dimension, double z3);
+DxfPoint *dxf_dimension_get_p4 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_p4 (DxfDimension *dimension, DxfPoint *p4);
+double dxf_dimension_get_x4 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_x4 (DxfDimension *dimension, double x4);
+double dxf_dimension_get_y4 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_y4 (DxfDimension *dimension, double y4);
+double dxf_dimension_get_z4 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_z4 (DxfDimension *dimension, double z4);
+DxfPoint *dxf_dimension_get_p5 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_p5 (DxfDimension *dimension, DxfPoint *p5);
+double dxf_dimension_get_x5 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_x5 (DxfDimension *dimension, double x5);
+double dxf_dimension_get_y5 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_y5 (DxfDimension *dimension, double y5);
+double dxf_dimension_get_z5 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_z5 (DxfDimension *dimension, double z5);
+DxfPoint *dxf_dimension_get_p6 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_p6 (DxfDimension *dimension, DxfPoint *p6);
+double dxf_dimension_get_x6 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_x6 (DxfDimension *dimension, double x6);
+double dxf_dimension_get_y6 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_y6 (DxfDimension *dimension, double y6);
+double dxf_dimension_get_z6 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_z6 (DxfDimension *dimension, double z6);
+double dxf_dimension_get_leader_length (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_leader_length (DxfDimension *dimension, double leader_length);
+double dxf_dimension_get_text_line_spacing_factor (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_text_line_spacing_factor (DxfDimension *dimension, double text_line_spacing_factor);
+double dxf_dimension_get_actual_measurement (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_actual_measurement (DxfDimension *dimension, double actual_measurement);
+double dxf_dimension_get_angle (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_angle (DxfDimension *dimension, double angle);
+double dxf_dimension_get_hor_dir (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_hor_dir (DxfDimension *dimension, double hor_dir);
+double dxf_dimension_get_obl_angle (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_obl_angle (DxfDimension *dimension, double obl_angle);
+double dxf_dimension_get_text_angle (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_text_angle (DxfDimension *dimension, double text_angle);
+int dxf_dimension_get_flag (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_flag (DxfDimension *dimension, int flag);
+int dxf_dimension_get_attachment_point (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_attachment_point (DxfDimension *dimension, int attachment_point);
+int dxf_dimension_get_text_line_spacing (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_text_line_spacing (DxfDimension *dimension, int text_line_spacing);
+double dxf_dimension_get_extr_x0 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_extr_x0 (DxfDimension *dimension, double extr_x0);
+double dxf_dimension_get_extr_y0 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_extr_y0 (DxfDimension *dimension, double extr_y0);
+double dxf_dimension_get_extr_z0 (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_extr_z0 (DxfDimension *dimension, double extr_z0);
+DxfPoint *dxf_dimension_get_extrusion_vector_as_point (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_extrusion_vector (DxfDimension *dimension, double extr_x0, double extr_y0, double extr_z0);
+DxfDimension *dxf_dimension_get_next (DxfDimension *dimension);
+DxfDimension *dxf_dimension_set_next (DxfDimension *dimension, DxfDimension *next);
+DxfDimension *dxf_dimension_get_last (DxfDimension *dimension);
 
 
 #ifdef __cplusplus
