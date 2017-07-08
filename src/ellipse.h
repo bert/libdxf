@@ -239,439 +239,85 @@ dxf_ellipse_struct
 } DxfEllipse;
 
 
-DxfEllipse *
-dxf_ellipse_new ();
-DxfEllipse *
-dxf_ellipse_init
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_read
-(
-        DxfFile *fp,
-        DxfEllipse *ellipse
-);
-int
-dxf_ellipse_write
-(
-        DxfFile *fp,
-        DxfEllipse *ellipse
-);
-int
-dxf_ellipse_free
-(
-        DxfEllipse *ellipse
-);
-void
-dxf_ellipse_free_chain
-(
-        DxfEllipse *ellipses
-);
-int
-dxf_ellipse_get_id_code
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_id_code
-(
-        DxfEllipse *ellipse,
-        int id_code
-);
-char *
-dxf_ellipse_get_linetype
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_linetype
-(
-        DxfEllipse *ellipse,
-        char *linetype
-);
-char *
-dxf_ellipse_get_layer
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_layer
-(
-        DxfEllipse *ellipse,
-        char *layer
-);
-double
-dxf_ellipse_get_elevation
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_elevation
-(
-        DxfEllipse *ellipse,
-        double elevation
-);
-double
-dxf_ellipse_get_thickness
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_thickness
-(
-        DxfEllipse *ellipse,
-        double thickness
-);
-double
-dxf_ellipse_get_linetype_scale
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_linetype_scale
-(
-        DxfEllipse *ellipse,
-        double linetype_scale
-);
-int16_t
-dxf_ellipse_get_visibility
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_visibility
-(
-        DxfEllipse *ellipse,
-        int16_t visibility
-);
-int
-dxf_ellipse_get_color
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_color
-(
-        DxfEllipse *ellipse,
-        int color
-);
-int
-dxf_ellipse_get_paperspace
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_paperspace
-(
-        DxfEllipse *ellipse,
-        int paperspace
-);
-int
-dxf_ellipse_get_graphics_data_size
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_graphics_data_size
-(
-        DxfEllipse *ellipse,
-        int graphics_data_size
-);
-int16_t
-dxf_ellipse_get_shadow_mode
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_shadow_mode
-(
-        DxfEllipse *ellipse,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_ellipse_get_binary_graphics_data
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_binary_graphics_data
-(
-        DxfEllipse *ellipse,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_ellipse_get_dictionary_owner_soft
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_dictionary_owner_soft
-(
-        DxfEllipse *ellipse,
-        char *dictionary_owner_soft
-);
-char *
-dxf_ellipse_get_material
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_material
-(
-        DxfEllipse *ellipse,
-        char *material
-);
-char *
-dxf_ellipse_get_dictionary_owner_hard
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_dictionary_owner_hard
-(
-        DxfEllipse *ellipse,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_ellipse_get_lineweight
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_lineweight
-(
-        DxfEllipse *ellipse,
-        int16_t lineweight
-);
-char *
-dxf_ellipse_get_plot_style_name
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_plot_style_name
-(
-        DxfEllipse *ellipse,
-        char *plot_style_name
-);
-long
-dxf_ellipse_get_color_value
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_color_value
-(
-        DxfEllipse *ellipse,
-        long color_value
-);
-char *
-dxf_ellipse_get_color_name
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_color_name
-(
-        DxfEllipse *ellipse,
-        char *color_name
-);
-long
-dxf_ellipse_get_transparency
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_transparency
-(
-        DxfEllipse *ellipse,
-        long transparency
-);
-DxfPoint *
-dxf_ellipse_get_p0
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_p0
-(
-        DxfEllipse *ellipse,
-        DxfPoint *p0
-);
-double
-dxf_ellipse_get_x0
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_x0
-(
-        DxfEllipse *ellipse,
-        double x0
-);
-double
-dxf_ellipse_get_y0
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_y0
-(
-        DxfEllipse *ellipse,
-        double y0
-);
-double
-dxf_ellipse_get_z0
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_z0
-(
-        DxfEllipse *ellipse,
-        double z0
-);
-DxfPoint *
-dxf_ellipse_get_p1
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_p1
-(
-        DxfEllipse *ellipse,
-        DxfPoint *p1
-);
-double
-dxf_ellipse_get_x1
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_x1
-(
-        DxfEllipse *ellipse,
-        double x1
-);
-double
-dxf_ellipse_get_y1
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_y1
-(
-        DxfEllipse *ellipse,
-        double y1
-);
-double
-dxf_ellipse_get_z1
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_z1
-(
-        DxfEllipse *ellipse,
-        double z1
-);
-double
-dxf_ellipse_get_ratio
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_ratio
-(
-        DxfEllipse *ellipse,
-        double ratio
-);
-double
-dxf_ellipse_get_start_angle
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_start_angle
-(
-        DxfEllipse *ellipse,
-        double start_angle
-);
-double
-dxf_ellipse_get_end_angle
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_end_angle
-(
-        DxfEllipse *ellipse,
-        double end_angle
-);
-double
-dxf_ellipse_get_extr_x0
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_extr_x0
-(
-        DxfEllipse *ellipse,
-        double extr_x0
-);
-double
-dxf_ellipse_get_extr_y0
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_extr_y0
-(
-        DxfEllipse *ellipse,
-        double extr_y0
-);
-double
-dxf_ellipse_get_extr_z0
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_extr_z0
-(
-        DxfEllipse *ellipse,
-        double extr_z0
-);
-DxfPoint *
-dxf_ellipse_get_extrusion_vector_as_point
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_extrusion_vector_from_point
-(
-        DxfEllipse *ellipse,
-        DxfPoint *point
-);
-DxfEllipse *
-dxf_ellipse_set_extrusion_vector
-(
-        DxfEllipse *ellipse,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0
-);
-DxfEllipse *
-dxf_ellipse_get_next
-(
-        DxfEllipse *ellipse
-);
-DxfEllipse *
-dxf_ellipse_set_next
-(
-        DxfEllipse *ellipse,
-        DxfEllipse *next
-);
+DxfEllipse *dxf_ellipse_new ();
+DxfEllipse *dxf_ellipse_init (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_read (DxfFile *fp, DxfEllipse *ellipse);
+int dxf_ellipse_write (DxfFile *fp, DxfEllipse *ellipse);
+int dxf_ellipse_free (DxfEllipse *ellipse);
+void dxf_ellipse_free_chain (DxfEllipse *ellipses);
+int dxf_ellipse_get_id_code (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_id_code (DxfEllipse *ellipse, int id_code);
+char *dxf_ellipse_get_linetype (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_linetype (DxfEllipse *ellipse, char *linetype);
+char *dxf_ellipse_get_layer (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_layer (DxfEllipse *ellipse, char *layer);
+double dxf_ellipse_get_elevation (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_elevation (DxfEllipse *ellipse, double elevation);
+double dxf_ellipse_get_thickness (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_thickness (DxfEllipse *ellipse, double thickness);
+double dxf_ellipse_get_linetype_scale (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_linetype_scale (DxfEllipse *ellipse, double linetype_scale);
+int16_t dxf_ellipse_get_visibility (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_visibility (DxfEllipse *ellipse, int16_t visibility);
+int dxf_ellipse_get_color (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_color (DxfEllipse *ellipse, int color);
+int dxf_ellipse_get_paperspace (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_paperspace (DxfEllipse *ellipse, int paperspace);
+int dxf_ellipse_get_graphics_data_size (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_graphics_data_size (DxfEllipse *ellipse, int graphics_data_size);
+int16_t dxf_ellipse_get_shadow_mode (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_shadow_mode (DxfEllipse *ellipse, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_ellipse_get_binary_graphics_data (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_binary_graphics_data (DxfEllipse *ellipse, DxfBinaryGraphicsData *data);
+char *dxf_ellipse_get_dictionary_owner_soft (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_dictionary_owner_soft (DxfEllipse *ellipse, char *dictionary_owner_soft);
+char *dxf_ellipse_get_material (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_material (DxfEllipse *ellipse, char *material);
+char *dxf_ellipse_get_dictionary_owner_hard (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_dictionary_owner_hard (DxfEllipse *ellipse, char *dictionary_owner_hard);
+int16_t dxf_ellipse_get_lineweight (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_lineweight (DxfEllipse *ellipse, int16_t lineweight);
+char *dxf_ellipse_get_plot_style_name (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_plot_style_name (DxfEllipse *ellipse, char *plot_style_name);
+long dxf_ellipse_get_color_value (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_color_value (DxfEllipse *ellipse, long color_value);
+char *dxf_ellipse_get_color_name (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_color_name (DxfEllipse *ellipse, char *color_name);
+long dxf_ellipse_get_transparency (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_transparency (DxfEllipse *ellipse, long transparency);
+DxfPoint *dxf_ellipse_get_p0 (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_p0 (DxfEllipse *ellipse, DxfPoint *p0);
+double dxf_ellipse_get_x0 (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_x0 (DxfEllipse *ellipse, double x0);
+double dxf_ellipse_get_y0 (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_y0 (DxfEllipse *ellipse, double y0);
+double dxf_ellipse_get_z0 (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_z0 (DxfEllipse *ellipse, double z0);
+DxfPoint *dxf_ellipse_get_p1 (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_p1 (DxfEllipse *ellipse, DxfPoint *p1);
+double dxf_ellipse_get_x1 (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_x1 (DxfEllipse *ellipse, double x1);
+double dxf_ellipse_get_y1 (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_y1 (DxfEllipse *ellipse, double y1);
+double dxf_ellipse_get_z1 (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_z1 (DxfEllipse *ellipse, double z1);
+double dxf_ellipse_get_ratio (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_ratio (DxfEllipse *ellipse, double ratio);
+double dxf_ellipse_get_start_angle (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_start_angle (DxfEllipse *ellipse, double start_angle);
+double dxf_ellipse_get_end_angle (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_end_angle (DxfEllipse *ellipse, double end_angle);
+double dxf_ellipse_get_extr_x0 (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_extr_x0 (DxfEllipse *ellipse, double extr_x0);
+double dxf_ellipse_get_extr_y0 (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_extr_y0 (DxfEllipse *ellipse, double extr_y0);
+double dxf_ellipse_get_extr_z0 (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_extr_z0 (DxfEllipse *ellipse, double extr_z0);
+DxfPoint *dxf_ellipse_get_extrusion_vector_as_point (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_extrusion_vector_from_point (DxfEllipse *ellipse, DxfPoint *point);
+DxfEllipse *dxf_ellipse_set_extrusion_vector (DxfEllipse *ellipse, double extr_x0, double extr_y0, double extr_z0);
+DxfEllipse *dxf_ellipse_get_next (DxfEllipse *ellipse);
+DxfEllipse *dxf_ellipse_set_next (DxfEllipse *ellipse, DxfEllipse *next);
 
 
 #ifdef __cplusplus
