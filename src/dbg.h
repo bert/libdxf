@@ -6,12 +6,12 @@
  * \brief Zed's Awesome Debug Macros.
  *
  * Exerpt from "Learn C the hard way",
- * <a href="http://c.learncodethehardway.org/book/ex20.html">
+ * <a href="https://learncodethehardway.org/c/">
  * Exercise 20: Zed's Awesome Debug Macros</a> 
  * by Zed A. Shaw <help@learncodethehardway.org>.
  *
- * Adapted for libdxf by Bert Timmerman <bert.timmerman@xs4all.nl>
- * Copyright (C) 2016.
+ * Adaptation for libdxf: Copyright (C) 2016, 2017 by
+ * Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
