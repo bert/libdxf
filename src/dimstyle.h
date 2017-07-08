@@ -325,683 +325,130 @@ dxf_dimstyle_struct
 
 
 DxfDimStyle *dxf_dimstyle_new ();
-DxfDimStyle *dxf_dimstyle_init
-(
-        DxfDimStyle *dimstyle
-);
-int dxf_dimstyle_write
-(
-        DxfFile *fp,
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *dxf_dimstyle_read
-(
-        DxfFile *fp,
-        DxfDimStyle *dimstyle
-);
-int dxf_dimstyle_free
-(
-        DxfDimStyle *dimstyle
-);
-void
-dxf_dimstyle_free_chain
-(
-        DxfDimStyle *dimstyles
-);
-char *
-dxf_dimstyle_get_dimstyle_name
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimstyle_name
-(
-        DxfDimStyle *dimstyle,
-        char *dimstyle_name
-);
-char *
-dxf_dimstyle_get_dimpost
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimpost
-(
-        DxfDimStyle *dimstyle,
-        char *dimpost
-);
-char *
-dxf_dimstyle_get_dimapost
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimapost
-(
-        DxfDimStyle *dimstyle,
-        char *dimapost
-);
-char *
-dxf_dimstyle_get_dimblk
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimblk
-(
-        DxfDimStyle *dimstyle,
-        char *dimblk
-);
-char *
-dxf_dimstyle_get_dimblk1
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimblk1
-(
-        DxfDimStyle *dimstyle,
-        char *dimblk1
-);
-char *
-dxf_dimstyle_get_dimblk2
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimblk2
-(
-        DxfDimStyle *dimstyle,
-        char *dimblk2
-);
-double
-dxf_dimstyle_get_dimscale
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimscale
-(
-        DxfDimStyle *dimstyle,
-        double dimscale
-);
-double
-dxf_dimstyle_get_dimasz
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimasz
-(
-        DxfDimStyle *dimstyle,
-        double dimasz
-);
-double
-dxf_dimstyle_get_dimexo
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimexo
-(
-        DxfDimStyle *dimstyle,
-        double dimexo
-);
-double
-dxf_dimstyle_get_dimdli
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimdli
-(
-        DxfDimStyle *dimstyle,
-        double dimdli
-);
-double
-dxf_dimstyle_get_dimexe
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimexe
-(
-        DxfDimStyle *dimstyle,
-        double dimexe
-);
-double
-dxf_dimstyle_get_dimrnd
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimrnd
-(
-        DxfDimStyle *dimstyle,
-        double dimrnd
-);
-double
-dxf_dimstyle_get_dimdle
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimdle
-(
-        DxfDimStyle *dimstyle,
-        double dimdle
-);
-double
-dxf_dimstyle_get_dimtp
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtp
-(
-        DxfDimStyle *dimstyle,
-        double dimtp
-);
-double
-dxf_dimstyle_get_dimtm
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtm
-(
-        DxfDimStyle *dimstyle,
-        double dimtm
-);
-int
-dxf_dimstyle_get_flag
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_flag
-(
-        DxfDimStyle *dimstyle,
-        int flag
-);
-int
-dxf_dimstyle_get_dimtol
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtol
-(
-        DxfDimStyle *dimstyle,
-        int dimtol
-);
-int
-dxf_dimstyle_get_dimlim
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimlim
-(
-        DxfDimStyle *dimstyle,
-        int dimlim
-);
-int
-dxf_dimstyle_get_dimtih
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtih
-(
-        DxfDimStyle *dimstyle,
-        int dimtih
-);
-int
-dxf_dimstyle_get_dimtoh
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtoh
-(
-        DxfDimStyle *dimstyle,
-        int dimtoh
-);
-int
-dxf_dimstyle_get_dimse1
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimse1
-(
-        DxfDimStyle *dimstyle,
-        int dimse1
-);
-int
-dxf_dimstyle_get_dimse2
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimse2
-(
-        DxfDimStyle *dimstyle,
-        int dimse2
-);
-int
-dxf_dimstyle_get_dimtad
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtad
-(
-        DxfDimStyle *dimstyle,
-        int dimtad
-);
-int
-dxf_dimstyle_get_dimzin
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimzin
-(
-        DxfDimStyle *dimstyle,
-        int dimzin
-);
-int
-dxf_dimstyle_get_id_code
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_id_code
-(
-        DxfDimStyle *dimstyle,
-        int id_code
-);
-double
-dxf_dimstyle_get_dimtxt
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtxt
-(
-        DxfDimStyle *dimstyle,
-        double dimtxt
-);
-double
-dxf_dimstyle_get_dimcen
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimcen
-(
-        DxfDimStyle *dimstyle,
-        double dimcen
-);
-double
-dxf_dimstyle_get_dimtsz
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtsz
-(
-        DxfDimStyle *dimstyle,
-        double dimtsz
-);
-double
-dxf_dimstyle_get_dimaltf
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimaltf
-(
-        DxfDimStyle *dimstyle,
-        double dimaltf
-);
-double
-dxf_dimstyle_get_dimlfac
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimlfac
-(
-        DxfDimStyle *dimstyle,
-        double dimlfac
-);
-double
-dxf_dimstyle_get_dimtvp
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtvp
-(
-        DxfDimStyle *dimstyle,
-        double dimtvp
-);
-double
-dxf_dimstyle_get_dimtfac
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtfac
-(
-        DxfDimStyle *dimstyle,
-        double dimtfac
-);
-double
-dxf_dimstyle_get_dimgap
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimgap
-(
-        DxfDimStyle *dimstyle,
-        double dimgap
-);
-int
-dxf_dimstyle_get_dimalt
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimalt
-(
-        DxfDimStyle *dimstyle,
-        int dimalt
-);
-int
-dxf_dimstyle_get_dimaltd
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimaltd
-(
-        DxfDimStyle *dimstyle,
-        int dimaltd
-);
-int
-dxf_dimstyle_get_dimtofl
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtofl
-(
-        DxfDimStyle *dimstyle,
-        int dimtofl
-);
-int
-dxf_dimstyle_get_dimsah
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimsah
-(
-        DxfDimStyle *dimstyle,
-        int dimsah
-);
-int
-dxf_dimstyle_get_dimtix
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtix
-(
-        DxfDimStyle *dimstyle,
-        int dimtix
-);
-int
-dxf_dimstyle_get_dimsoxd
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimsoxd
-(
-        DxfDimStyle *dimstyle,
-        int dimsoxd
-);
-int
-dxf_dimstyle_get_dimclrd
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimclrd
-(
-        DxfDimStyle *dimstyle,
-        int dimclrd
-);
-int
-dxf_dimstyle_get_dimclre
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimclre
-(
-        DxfDimStyle *dimstyle,
-        int dimclre
-);
-int
-dxf_dimstyle_get_dimclrt
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimclrt
-(
-        DxfDimStyle *dimstyle,
-        int dimclrt
-);
-int
-dxf_dimstyle_get_dimunit
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimunit
-(
-        DxfDimStyle *dimstyle,
-        int dimunit
-);
-int
-dxf_dimstyle_get_dimdec
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimdec
-(
-        DxfDimStyle *dimstyle,
-        int dimdec
-);
-int
-dxf_dimstyle_get_dimtdec
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtdec
-(
-        DxfDimStyle *dimstyle,
-        int dimtdec
-);
-int
-dxf_dimstyle_get_dimaltu
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimaltu
-(
-        DxfDimStyle *dimstyle,
-        int dimaltu
-);
-int
-dxf_dimstyle_get_dimalttd
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimalttd
-(
-        DxfDimStyle *dimstyle,
-        int dimalttd
-);
-int
-dxf_dimstyle_get_dimaunit
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimaunit
-(
-        DxfDimStyle *dimstyle,
-        int dimaunit
-);
-int
-dxf_dimstyle_get_dimjust
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimjust
-(
-        DxfDimStyle *dimstyle,
-        int dimjust
-);
-int
-dxf_dimstyle_get_dimsd1
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimsd1
-(
-        DxfDimStyle *dimstyle,
-        int dimsd1
-);
-int
-dxf_dimstyle_get_dimsd2
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimsd2
-(
-        DxfDimStyle *dimstyle,
-        int dimsd2
-);
-int
-dxf_dimstyle_get_dimtolj
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtolj
-(
-        DxfDimStyle *dimstyle,
-        int dimtolj
-);
-int
-dxf_dimstyle_get_dimtzin
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtzin
-(
-        DxfDimStyle *dimstyle,
-        int dimtzin
-);
-int
-dxf_dimstyle_get_dimaltz
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimaltz
-(
-        DxfDimStyle *dimstyle,
-        int dimaltz
-);
-int
-dxf_dimstyle_get_dimalttz
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimalttz
-(
-        DxfDimStyle *dimstyle,
-        int dimalttz
-);
-int
-dxf_dimstyle_get_dimfit
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimfit
-(
-        DxfDimStyle *dimstyle,
-        int dimfit
-);
-int
-dxf_dimstyle_get_dimupt
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimupt
-(
-        DxfDimStyle *dimstyle,
-        int dimupt
-);
-char *
-dxf_dimstyle_get_dimtxsty
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_dimtxsty
-(
-        DxfDimStyle *dimstyle,
-        char *dimtxsty
-);
-DxfDimStyle *
-dxf_dimstyle_get_next
-(
-        DxfDimStyle *dimstyle
-);
-DxfDimStyle *
-dxf_dimstyle_set_next
-(
-        DxfDimStyle *dimstyle,
-        DxfDimStyle *next
-);
-DxfDimStyle *
-dxf_dimstyle_get_last
-(
-        DxfDimStyle *dimstyle
-);
+DxfDimStyle *dxf_dimstyle_init (DxfDimStyle *dimstyle);
+int dxf_dimstyle_write (DxfFile *fp, DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_read (DxfFile *fp, DxfDimStyle *dimstyle);
+int dxf_dimstyle_free (DxfDimStyle *dimstyle);
+void dxf_dimstyle_free_chain (DxfDimStyle *dimstyles);
+char *dxf_dimstyle_get_dimstyle_name (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimstyle_name (DxfDimStyle *dimstyle, char *dimstyle_name);
+char *dxf_dimstyle_get_dimpost (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimpost (DxfDimStyle *dimstyle, char *dimpost);
+char *dxf_dimstyle_get_dimapost (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimapost (DxfDimStyle *dimstyle, char *dimapost);
+char *dxf_dimstyle_get_dimblk (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimblk (DxfDimStyle *dimstyle, char *dimblk);
+char *dxf_dimstyle_get_dimblk1 (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimblk1 (DxfDimStyle *dimstyle, char *dimblk1);
+char *dxf_dimstyle_get_dimblk2 (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimblk2 (DxfDimStyle *dimstyle, char *dimblk2);
+double dxf_dimstyle_get_dimscale (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimscale (DxfDimStyle *dimstyle, double dimscale);
+double dxf_dimstyle_get_dimasz (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimasz (DxfDimStyle *dimstyle, double dimasz);
+double dxf_dimstyle_get_dimexo (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimexo (DxfDimStyle *dimstyle, double dimexo);
+double dxf_dimstyle_get_dimdli (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimdli (DxfDimStyle *dimstyle, double dimdli);
+double dxf_dimstyle_get_dimexe (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimexe (DxfDimStyle *dimstyle, double dimexe);
+double dxf_dimstyle_get_dimrnd (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimrnd (DxfDimStyle *dimstyle, double dimrnd);
+double dxf_dimstyle_get_dimdle (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimdle (DxfDimStyle *dimstyle, double dimdle);
+double dxf_dimstyle_get_dimtp (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtp (DxfDimStyle *dimstyle, double dimtp);
+double dxf_dimstyle_get_dimtm (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtm (DxfDimStyle *dimstyle, double dimtm);
+int dxf_dimstyle_get_flag (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_flag (DxfDimStyle *dimstyle, int flag);
+int dxf_dimstyle_get_dimtol (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtol (DxfDimStyle *dimstyle, int dimtol);
+int dxf_dimstyle_get_dimlim (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimlim (DxfDimStyle *dimstyle, int dimlim);
+int dxf_dimstyle_get_dimtih (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtih (DxfDimStyle *dimstyle, int dimtih);
+int dxf_dimstyle_get_dimtoh (DxfDimStyle *dimstyle);
+DxfDimStyle * dxf_dimstyle_set_dimtoh (DxfDimStyle *dimstyle, int dimtoh);
+int dxf_dimstyle_get_dimse1 (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimse1 (DxfDimStyle *dimstyle, int dimse1);
+int dxf_dimstyle_get_dimse2 (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimse2 (DxfDimStyle *dimstyle, int dimse2);
+int dxf_dimstyle_get_dimtad (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtad (DxfDimStyle *dimstyle, int dimtad);
+int dxf_dimstyle_get_dimzin (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimzin (DxfDimStyle *dimstyle, int dimzin);
+int dxf_dimstyle_get_id_code (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_id_code (DxfDimStyle *dimstyle, int id_code);
+double dxf_dimstyle_get_dimtxt (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtxt (DxfDimStyle *dimstyle, double dimtxt);
+double dxf_dimstyle_get_dimcen (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimcen (DxfDimStyle *dimstyle, double dimcen);
+double dxf_dimstyle_get_dimtsz (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtsz (DxfDimStyle *dimstyle, double dimtsz);
+double dxf_dimstyle_get_dimaltf (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimaltf (DxfDimStyle *dimstyle, double dimaltf);
+double dxf_dimstyle_get_dimlfac (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimlfac (DxfDimStyle *dimstyle, double dimlfac);
+double dxf_dimstyle_get_dimtvp (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtvp (DxfDimStyle *dimstyle, double dimtvp);
+double dxf_dimstyle_get_dimtfac (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtfac (DxfDimStyle *dimstyle, double dimtfac);
+double dxf_dimstyle_get_dimgap (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimgap (DxfDimStyle *dimstyle, double dimgap);
+int dxf_dimstyle_get_dimalt (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimalt (DxfDimStyle *dimstyle, int dimalt);
+int dxf_dimstyle_get_dimaltd (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimaltd (DxfDimStyle *dimstyle, int dimaltd);
+int dxf_dimstyle_get_dimtofl (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtofl (DxfDimStyle *dimstyle, int dimtofl);
+int dxf_dimstyle_get_dimsah (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimsah (DxfDimStyle *dimstyle, int dimsah);
+int dxf_dimstyle_get_dimtix (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtix (DxfDimStyle *dimstyle, int dimtix);
+int dxf_dimstyle_get_dimsoxd (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimsoxd (DxfDimStyle *dimstyle, int dimsoxd);
+int dxf_dimstyle_get_dimclrd (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimclrd (DxfDimStyle *dimstyle, int dimclrd);
+int dxf_dimstyle_get_dimclre (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimclre (DxfDimStyle *dimstyle, int dimclre);
+int dxf_dimstyle_get_dimclrt (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimclrt (DxfDimStyle *dimstyle, int dimclrt);
+int dxf_dimstyle_get_dimunit (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimunit (DxfDimStyle *dimstyle, int dimunit);
+int dxf_dimstyle_get_dimdec (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimdec (DxfDimStyle *dimstyle, int dimdec);
+int dxf_dimstyle_get_dimtdec (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtdec (DxfDimStyle *dimstyle, int dimtdec);
+int dxf_dimstyle_get_dimaltu (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimaltu (DxfDimStyle *dimstyle, int dimaltu);
+int dxf_dimstyle_get_dimalttd (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimalttd (DxfDimStyle *dimstyle, int dimalttd);
+int dxf_dimstyle_get_dimaunit (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimaunit (DxfDimStyle *dimstyle, int dimaunit);
+int dxf_dimstyle_get_dimjust (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimjust (DxfDimStyle *dimstyle, int dimjust);
+int dxf_dimstyle_get_dimsd1 (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimsd1 (DxfDimStyle *dimstyle, int dimsd1);
+int dxf_dimstyle_get_dimsd2 (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimsd2 (DxfDimStyle *dimstyle, int dimsd2);
+int dxf_dimstyle_get_dimtolj (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtolj (DxfDimStyle *dimstyle, int dimtolj);
+int dxf_dimstyle_get_dimtzin (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtzin (DxfDimStyle *dimstyle, int dimtzin);
+int dxf_dimstyle_get_dimaltz (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimaltz (DxfDimStyle *dimstyle, int dimaltz);
+int dxf_dimstyle_get_dimalttz (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimalttz (DxfDimStyle *dimstyle, int dimalttz);
+int dxf_dimstyle_get_dimfit (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimfit (DxfDimStyle *dimstyle, int dimfit);
+int dxf_dimstyle_get_dimupt (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimupt (DxfDimStyle *dimstyle, int dimupt);
+char *dxf_dimstyle_get_dimtxsty (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_dimtxsty (DxfDimStyle *dimstyle, char *dimtxsty);
+DxfDimStyle *dxf_dimstyle_get_next (DxfDimStyle *dimstyle);
+DxfDimStyle *dxf_dimstyle_set_next (DxfDimStyle *dimstyle, DxfDimStyle *next);
+DxfDimStyle *dxf_dimstyle_get_last (DxfDimStyle *dimstyle);
 
 
 #ifdef __cplusplus
