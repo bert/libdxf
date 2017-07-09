@@ -1109,4 +1109,49 @@ dxf_group_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c GROUP object from a linked list
+ * of DXF \c GROUP objects.
+ *
+ * \return pointer to the last \c GROUP object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfGroup *
+dxf_group_get_last
+(
+        DxfGroup *group
+                /*!< a pointer to a DXF \c GROUP object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (group == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (group->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfGroup *) group);
+        }
+        DxfGroup *iter = (DxfGroup *) group->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfGroup *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfGroup *) iter);
+}
+
+
 /* EOF*/

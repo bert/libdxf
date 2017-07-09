@@ -120,6 +120,7 @@ char *dxf_group_get_handle_entity_in_group (DxfGroup *group);
 DxfGroup *dxf_group_set_handle_entity_in_group (DxfGroup *group, char *handle_entity_in_group);
 DxfGroup *dxf_group_get_next (DxfGroup *group);
 DxfGroup *dxf_group_set_next (DxfGroup *group, DxfGroup *next);
+DxfGroup *dxf_group_get_last (DxfGroup *group);
 
 
 #ifdef __cplusplus
