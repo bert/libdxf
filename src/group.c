@@ -1,11 +1,11 @@
 /*!
  * \file group.c
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF group object (\c GROUP).
  *
- * \version The \c GROUP object was introduced in DXF R13.
+ * \since The \c GROUP object was introduced in DXF R13.
  *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
