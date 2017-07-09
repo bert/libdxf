@@ -7,6 +7,12 @@
  *
  * \since The \c GROUP object was introduced in DXF R13.
  *
+ * \version According to DXF R10 (backward compatibility).
+ * \version According to DXF R11 (backward compatibility).
+ * \version According to DXF R12 (backward compatibility).
+ * \version According to DXF R13.
+ * \version According to DXF R14.
+ *
  * <hr>
  * <h1><b>Copyright Notices.</b></h1>\n
  * This program is free software; you can redistribute it and/or modify
@@ -41,12 +47,6 @@
  * \brief Allocate memory for a \c DxfGroup.
  *
  * Fill the memory contents with zeros.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfGroup *
 dxf_group_new ()
@@ -84,12 +84,6 @@ dxf_group_new ()
  * 
  * \return \c NULL when no memory was allocated, a pointer to the
  * allocated memory when succesful.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfGroup *
 dxf_group_init
@@ -140,12 +134,6 @@ dxf_group_init
  * While parsing the DXF file store data in \c group. \n
  *
  * \return \c a pointer to \c group object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfGroup *
 dxf_group_read
@@ -289,12 +277,6 @@ dxf_group_read
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_group_write
@@ -406,12 +388,6 @@ dxf_group_write
  *
  * \return \c EXIT_SUCCESS when done, or \c EXIT_FAILURE when an error
  * occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_group_free
@@ -448,12 +424,6 @@ dxf_group_free
 /*!
  * \brief Free the allocated memory for a chain of DXF \c GROUP
  * objects and all their data fields.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 void
 dxf_group_free_chain
@@ -487,12 +457,6 @@ dxf_group_free_chain
  * \brief Get the ID code from a DXF \c GROUP object.
  *
  * \return ID code.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_group_get_id_code
@@ -531,12 +495,6 @@ dxf_group_get_id_code
 
 /*!
  * \brief Set the ID code for a DXF \c GROUP object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfGroup *
 dxf_group_set_id_code
@@ -582,12 +540,6 @@ dxf_group_set_id_code
  * \return soft pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_group_get_dictionary_owner_soft
@@ -627,12 +579,6 @@ dxf_group_get_dictionary_owner_soft
 /*!
  * \brief Set the pointer to the dictionary_owner_soft for a DXF
  * \c GROUP object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfGroup *
 dxf_group_set_dictionary_owner_soft
@@ -677,12 +623,6 @@ dxf_group_set_dictionary_owner_soft
  * \return hard pointer to the dictionary owner.
  *
  * \warning No checks are performed on the returned pointer (string).
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_group_get_dictionary_owner_hard
@@ -722,12 +662,6 @@ dxf_group_get_dictionary_owner_hard
 /*!
  * \brief Set the pointer to the dictionary_owner_hard for a DXF
  * \c GROUP object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfGroup *
 dxf_group_set_dictionary_owner_hard
@@ -769,12 +703,6 @@ dxf_group_set_dictionary_owner_hard
  * \brief Get the unnamed flag value from a DXF \c GROUP object.
  *
  * \return unnamed flag.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_group_get_unnamed_flag
@@ -818,12 +746,6 @@ dxf_group_get_unnamed_flag
 
 /*!
  * \brief Set the unnamed flag value for a DXF \c GROUP object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfGroup *
 dxf_group_set_unnamed_flag
@@ -863,12 +785,6 @@ dxf_group_set_unnamed_flag
  * \brief Get the selectability flag value from a DXF \c GROUP object.
  *
  * \return selectability flag.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 int
 dxf_group_get_selectability_flag
@@ -912,12 +828,6 @@ dxf_group_get_selectability_flag
 
 /*!
  * \brief Set the selectability flag value for a DXF \c GROUP object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfGroup *
 dxf_group_set_selectability_flag
@@ -963,12 +873,6 @@ dxf_group_set_selectability_flag
  * \brief Get the description from a DXF \c GROUP object.
  *
  * \return description when sucessful, \c NULL when an error occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_group_get_description
@@ -1007,12 +911,6 @@ dxf_group_get_description
 
 /*!
  * \brief Set the description for a DXF \c GROUP object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfGroup *
 dxf_group_set_description
@@ -1054,12 +952,6 @@ dxf_group_set_description
  *
  * \return Handle of entity in group when sucessful, \c NULL when an
  * error occurred.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 char *
 dxf_group_get_handle_entity_in_group
@@ -1098,12 +990,6 @@ dxf_group_get_handle_entity_in_group
 
 /*!
  * \brief Set the handle of entity in group for a DXF \c GROUP object.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfGroup *
 dxf_group_set_handle_entity_in_group
@@ -1148,12 +1034,6 @@ dxf_group_set_handle_entity_in_group
  * \return pointer to the next \c GROUP object.
  *
  * \warning No checks are performed on the returned pointer.
- *
- * \version According to DXF R10 (backward compatibility).
- * \version According to DXF R11 (backward compatibility).
- * \version According to DXF R12 (backward compatibility).
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfGroup *
 dxf_group_get_next
@@ -1193,12 +1073,6 @@ dxf_group_get_next
 /*!
  * \brief Set the pointer to the next \c GROUP for a DXF \c GROUP
  * object.
- *
- * \version According to DXF R10.
- * \version According to DXF R11.
- * \version According to DXF R12.
- * \version According to DXF R13.
- * \version According to DXF R14.
  */
 DxfGroup *
 dxf_group_set_next
