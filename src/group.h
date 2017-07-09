@@ -98,123 +98,28 @@ dxf_group
 } DxfGroup;
 
 
-DxfGroup *
-dxf_group_new ();
-DxfGroup *
-dxf_group_init
-(
-        DxfGroup *group
-);
-DxfGroup *
-dxf_group_read
-(
-        DxfFile *fp,
-        DxfGroup *group
-);
-int
-dxf_group_write
-(
-        DxfFile *fp,
-        DxfGroup *group
-);
-int
-dxf_group_free
-(
-        DxfGroup *group
-);
-void
-dxf_group_free_chain
-(
-        DxfGroup *groups
-);
-int
-dxf_group_get_id_code
-(
-        DxfGroup *group
-);
-DxfGroup *
-dxf_group_set_id_code
-(
-        DxfGroup *group,
-        int id_code
-);
-char *
-dxf_group_get_dictionary_owner_soft
-(
-        DxfGroup *group
-);
-DxfGroup *
-dxf_group_set_dictionary_owner_soft
-(
-        DxfGroup *group,
-        char *dictionary_owner_soft
-);
-char *
-dxf_group_get_dictionary_owner_hard
-(
-        DxfGroup *group
-);
-DxfGroup *
-dxf_group_set_dictionary_owner_hard
-(
-        DxfGroup *group,
-        char *dictionary_owner_hard
-);
-int
-dxf_group_get_unnamed_flag
-(
-        DxfGroup *group
-);
-DxfGroup *
-dxf_group_set_unnamed_flag
-(
-        DxfGroup *group,
-        int unnamed_flag
-);
-int
-dxf_group_get_selectability_flag
-(
-        DxfGroup *group
-);
-DxfGroup *
-dxf_group_set_selectability_flag
-(
-        DxfGroup *group,
-        int selectability_flag
-);
-char *
-dxf_group_get_description
-(
-        DxfGroup *group
-);
-DxfGroup *
-dxf_group_set_description
-(
-        DxfGroup *group,
-        char *description
-);
-char *
-dxf_group_get_handle_entity_in_group
-(
-        DxfGroup *group
-);
-DxfGroup *
-dxf_group_set_handle_entity_in_group
-(
-        DxfGroup *group,
-        char *handle_entity_in_group
-);
-DxfGroup *
-dxf_group_get_next
-(
-        DxfGroup *group
-);
-DxfGroup *
-dxf_group_set_next
-(
-        DxfGroup *group,
-        DxfGroup *next
-);
+DxfGroup *dxf_group_new ();
+DxfGroup *dxf_group_init (DxfGroup *group);
+DxfGroup *dxf_group_read (DxfFile *fp, DxfGroup *group);
+int dxf_group_write (DxfFile *fp, DxfGroup *group);
+int dxf_group_free (DxfGroup *group);
+void dxf_group_free_chain (DxfGroup *groups);
+int dxf_group_get_id_code (DxfGroup *group);
+DxfGroup *dxf_group_set_id_code (DxfGroup *group, int id_code);
+char *dxf_group_get_dictionary_owner_soft (DxfGroup *group);
+DxfGroup *dxf_group_set_dictionary_owner_soft (DxfGroup *group, char *dictionary_owner_soft);
+char *dxf_group_get_dictionary_owner_hard (DxfGroup *group);
+DxfGroup *dxf_group_set_dictionary_owner_hard (DxfGroup *group, char *dictionary_owner_hard);
+int dxf_group_get_unnamed_flag (DxfGroup *group);
+DxfGroup *dxf_group_set_unnamed_flag (DxfGroup *group, int unnamed_flag);
+int dxf_group_get_selectability_flag (DxfGroup *group);
+DxfGroup *dxf_group_set_selectability_flag (DxfGroup *group, int selectability_flag);
+char *dxf_group_get_description (DxfGroup *group);
+DxfGroup *dxf_group_set_description (DxfGroup *group, char *description);
+char *dxf_group_get_handle_entity_in_group (DxfGroup *group);
+DxfGroup *dxf_group_set_handle_entity_in_group (DxfGroup *group, char *handle_entity_in_group);
+DxfGroup *dxf_group_get_next (DxfGroup *group);
+DxfGroup *dxf_group_set_next (DxfGroup *group, DxfGroup *next);
 
 
 #ifdef __cplusplus
