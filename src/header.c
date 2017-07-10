@@ -1,7 +1,12 @@
 /*!
  * \file header.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008, 2010, 2011, 2014, 2015, 2017
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ *
+ * \author Copyright (C) 2010 by Luis Matos <gass@otiliamatos.ath.cx>.
+ *
+ * \author Copyright (C) 2013, 2016 by Paolo Caroni <kenren89@gmail.com>.
  *
  * \brief DXF header section.
  *
