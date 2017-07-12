@@ -5,7 +5,7 @@
  *
  * \brief Header file for a DXF idbuffer object (\c IDBUFFER).
  *
- * \version The \c IDBUFFER object was introduced in DXF R14.
+ * \since The \c IDBUFFER object was introduced in DXF R14.
  *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
