@@ -212,475 +212,92 @@ dxf_helix_struct
 } DxfHelix;
 
 
-DxfHelix *
-dxf_helix_new ();
-DxfHelix *
-dxf_helix_init
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_read
-(
-        DxfFile *fp,
-        DxfHelix *helix
-);
-int
-dxf_helix_write
-(
-        DxfFile *fp,
-        DxfHelix *helix
-);
-int
-dxf_helix_free
-(
-        DxfHelix *helix
-);
-void
-dxf_helix_free_chain
-(
-        DxfHelix *helices
-);
-int
-dxf_helix_get_id_code
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_id_code
-(
-        DxfHelix *helix,
-        int id_code
-);
-char *
-dxf_helix_get_linetype
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_linetype
-(
-        DxfHelix *helix,
-        char *linetype
-);
-char *
-dxf_helix_get_layer
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_layer
-(
-        DxfHelix *helix,
-        char *layer
-);
-double
-dxf_helix_get_thickness
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_thickness
-(
-        DxfHelix *helix,
-        double thickness
-);
-double
-dxf_helix_get_linetype_scale
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_linetype_scale
-(
-        DxfHelix *helix,
-        double linetype_scale
-);
-int16_t
-dxf_helix_get_visibility
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_visibility
-(
-        DxfHelix *helix,
-        int16_t visibility
-);
-int
-dxf_helix_get_color
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_color
-(
-        DxfHelix *helix,
-        int color
-);
-int
-dxf_helix_get_paperspace
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_paperspace
-(
-        DxfHelix *helix,
-        int paperspace
-);
-int
-dxf_helix_get_graphics_data_size
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_graphics_data_size
-(
-        DxfHelix *helix,
-        int graphics_data_size
-);
-int16_t
-dxf_helix_get_shadow_mode
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_shadow_mode
-(
-        DxfHelix *helix,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_helix_get_binary_graphics_data
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_binary_graphics_data
-(
-        DxfHelix *helix,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_helix_get_dictionary_owner_soft
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_dictionary_owner_soft
-(
-        DxfHelix *helix,
-        char *dictionary_owner_soft
-);
-char *
-dxf_helix_get_material
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_material
-(
-        DxfHelix *helix,
-        char *material
-);
-char *
-dxf_helix_get_dictionary_owner_hard
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_dictionary_owner_hard
-(
-        DxfHelix *helix,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_helix_get_lineweight
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_lineweight
-(
-        DxfHelix *helix,
-        int16_t lineweight
-);
-char *
-dxf_helix_get_plot_style_name
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_plot_style_name
-(
-        DxfHelix *helix,
-        char *plot_style_name
-);
-long
-dxf_helix_get_color_value
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_color_value
-(
-        DxfHelix *helix,
-        long color_value
-);
-char *
-dxf_helix_get_color_name
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_color_name
-(
-        DxfHelix *helix,
-        char *color_name
-);
-long
-dxf_helix_get_transparency
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_transparency
-(
-        DxfHelix *helix,
-        long transparency
-);
-DxfPoint *
-dxf_helix_get_p0
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_p0
-(
-        DxfHelix *helix,
-        DxfPoint *p0
-);
-double
-dxf_helix_get_x0
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_x0
-(
-        DxfHelix *helix,
-        double x0
-);
-double
-dxf_helix_get_y0
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_y0
-(
-        DxfHelix *helix,
-        double y0
-);
-double
-dxf_helix_get_z0
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_z0
-(
-        DxfHelix *helix,
-        double z0
-);
-DxfPoint *
-dxf_helix_get_p1
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_p1
-(
-        DxfHelix *helix,
-        DxfPoint *p1
-);
-double
-dxf_helix_get_x1
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_x1
-(
-        DxfHelix *helix,
-        double x1
-);
-double
-dxf_helix_get_y1
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_y1
-(
-        DxfHelix *helix,
-        double y1
-);
-double
-dxf_helix_get_z1
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_z1
-(
-        DxfHelix *helix,
-        double z1
-);
-DxfPoint *
-dxf_helix_get_p2
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_p2
-(
-        DxfHelix *helix,
-        DxfPoint *p2
-);
-double
-dxf_helix_get_x2
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_x2
-(
-        DxfHelix *helix,
-        double x2
-);
-double
-dxf_helix_get_y2
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_y2
-(
-        DxfHelix *helix,
-        double y2
-);
-double
-dxf_helix_get_z2
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_z2
-(
-        DxfHelix *helix,
-        double z2
-);
-double
-dxf_helix_get_radius
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_radius
-(
-        DxfHelix *helix,
-        double radius
-);
-double
-dxf_helix_get_number_of_turns
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_number_of_turns
-(
-        DxfHelix *helix,
-        double number_of_turns
-);
-double
-dxf_helix_get_turn_height
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_turn_height
-(
-        DxfHelix *helix,
-        double turn_height
-);
-long
-dxf_helix_get_major_release_number
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_major_release_number
-(
-        DxfHelix *helix,
-        long major_release_number
-);
-long
-dxf_helix_get_maintainance_release_number
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_maintainance_release_number
-(
-        DxfHelix *helix,
-        long maintainance_release_number
-);
-int
-dxf_helix_get_constraint_type
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_constraint_type
-(
-        DxfHelix *helix,
-        int constraint_type
-);
-int
-dxf_helix_get_handedness
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_handedness
-(
-        DxfHelix *helix,
-        int handedness
-);
-DxfSpline *
-dxf_helix_get_spline
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_spline
-(
-        DxfHelix *helix,
-        DxfSpline *spline
-);
-DxfHelix *
-dxf_helix_get_next
-(
-        DxfHelix *helix
-);
-DxfHelix *
-dxf_helix_set_next
-(
-        DxfHelix *helix,
-        DxfHelix *next
-);
+DxfHelix *dxf_helix_new ();
+DxfHelix *dxf_helix_init (DxfHelix *helix);
+DxfHelix *dxf_helix_read (DxfFile *fp, DxfHelix *helix);
+int dxf_helix_write (DxfFile *fp, DxfHelix *helix);
+int dxf_helix_free (DxfHelix *helix);
+void dxf_helix_free_chain (DxfHelix *helices);
+int dxf_helix_get_id_code (DxfHelix *helix);
+DxfHelix *dxf_helix_set_id_code (DxfHelix *helix, int id_code);
+char *dxf_helix_get_linetype (DxfHelix *helix);
+DxfHelix *dxf_helix_set_linetype (DxfHelix *helix, char *linetype);
+char *dxf_helix_get_layer (DxfHelix *helix);
+DxfHelix *dxf_helix_set_layer (DxfHelix *helix, char *layer);
+double dxf_helix_get_thickness (DxfHelix *helix);
+DxfHelix *dxf_helix_set_thickness (DxfHelix *helix, double thickness);
+double dxf_helix_get_linetype_scale (DxfHelix *helix);
+DxfHelix *dxf_helix_set_linetype_scale (DxfHelix *helix, double linetype_scale);
+int16_t dxf_helix_get_visibility (DxfHelix *helix);
+DxfHelix *dxf_helix_set_visibility (DxfHelix *helix, int16_t visibility);
+int dxf_helix_get_color (DxfHelix *helix);
+DxfHelix *dxf_helix_set_color (DxfHelix *helix, int color);
+int dxf_helix_get_paperspace (DxfHelix *helix);
+DxfHelix *dxf_helix_set_paperspace (DxfHelix *helix, int paperspace);
+int dxf_helix_get_graphics_data_size (DxfHelix *helix);
+DxfHelix *dxf_helix_set_graphics_data_size (DxfHelix *helix, int graphics_data_size);
+int16_t dxf_helix_get_shadow_mode (DxfHelix *helix);
+DxfHelix *dxf_helix_set_shadow_mode (DxfHelix *helix, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_helix_get_binary_graphics_data (DxfHelix *helix);
+DxfHelix *dxf_helix_set_binary_graphics_data (DxfHelix *helix, DxfBinaryGraphicsData *data);
+char *dxf_helix_get_dictionary_owner_soft (DxfHelix *helix);
+DxfHelix *dxf_helix_set_dictionary_owner_soft (DxfHelix *helix, char *dictionary_owner_soft);
+char *dxf_helix_get_material (DxfHelix *helix);
+DxfHelix *dxf_helix_set_material (DxfHelix *helix, char *material);
+char *dxf_helix_get_dictionary_owner_hard (DxfHelix *helix);
+DxfHelix *dxf_helix_set_dictionary_owner_hard (DxfHelix *helix, char *dictionary_owner_hard);
+int16_t dxf_helix_get_lineweight (DxfHelix *helix);
+DxfHelix *dxf_helix_set_lineweight (DxfHelix *helix, int16_t lineweight);
+char *dxf_helix_get_plot_style_name (DxfHelix *helix);
+DxfHelix *dxf_helix_set_plot_style_name (DxfHelix *helix, char *plot_style_name);
+long dxf_helix_get_color_value (DxfHelix *helix);
+DxfHelix *dxf_helix_set_color_value (DxfHelix *helix, long color_value);
+char *dxf_helix_get_color_name (DxfHelix *helix);
+DxfHelix *dxf_helix_set_color_name (DxfHelix *helix, char *color_name);
+long dxf_helix_get_transparency (DxfHelix *helix);
+DxfHelix *dxf_helix_set_transparency (DxfHelix *helix, long transparency);
+DxfPoint *dxf_helix_get_p0 (DxfHelix *helix);
+DxfHelix *dxf_helix_set_p0 (DxfHelix *helix, DxfPoint *p0);
+double dxf_helix_get_x0 (DxfHelix *helix);
+DxfHelix *dxf_helix_set_x0 (DxfHelix *helix, double x0);
+double dxf_helix_get_y0 (DxfHelix *helix);
+DxfHelix *dxf_helix_set_y0 (DxfHelix *helix, double y0);
+double dxf_helix_get_z0 (DxfHelix *helix);
+DxfHelix *dxf_helix_set_z0 (DxfHelix *helix, double z0);
+DxfPoint *dxf_helix_get_p1 (DxfHelix *helix);
+DxfHelix *dxf_helix_set_p1 (DxfHelix *helix, DxfPoint *p1);
+double dxf_helix_get_x1 (DxfHelix *helix);
+DxfHelix *dxf_helix_set_x1 (DxfHelix *helix, double x1);
+double dxf_helix_get_y1 (DxfHelix *helix);
+DxfHelix *dxf_helix_set_y1 (DxfHelix *helix, double y1);
+double dxf_helix_get_z1 (DxfHelix *helix);
+DxfHelix *dxf_helix_set_z1 (DxfHelix *helix, double z1);
+DxfPoint *dxf_helix_get_p2 (DxfHelix *helix);
+DxfHelix *dxf_helix_set_p2 (DxfHelix *helix, DxfPoint *p2);
+double dxf_helix_get_x2 (DxfHelix *helix);
+DxfHelix *dxf_helix_set_x2 (DxfHelix *helix, double x2);
+double dxf_helix_get_y2 (DxfHelix *helix);
+DxfHelix *dxf_helix_set_y2 (DxfHelix *helix, double y2);
+double dxf_helix_get_z2 (DxfHelix *helix);
+DxfHelix *dxf_helix_set_z2 (DxfHelix *helix, double z2);
+double dxf_helix_get_radius (DxfHelix *helix);
+DxfHelix *dxf_helix_set_radius (DxfHelix *helix, double radius);
+double dxf_helix_get_number_of_turns (DxfHelix *helix);
+DxfHelix *dxf_helix_set_number_of_turns (DxfHelix *helix, double number_of_turns);
+double dxf_helix_get_turn_height (DxfHelix *helix);
+DxfHelix *dxf_helix_set_turn_height (DxfHelix *helix, double turn_height);
+long dxf_helix_get_major_release_number (DxfHelix *helix);
+DxfHelix *dxf_helix_set_major_release_number (DxfHelix *helix, long major_release_number);
+long dxf_helix_get_maintainance_release_number (DxfHelix *helix);
+DxfHelix *dxf_helix_set_maintainance_release_number (DxfHelix *helix, long maintainance_release_number);
+int dxf_helix_get_constraint_type (DxfHelix *helix);
+DxfHelix *dxf_helix_set_constraint_type (DxfHelix *helix, int constraint_type);
+int dxf_helix_get_handedness (DxfHelix *helix);
+DxfHelix *dxf_helix_set_handedness (DxfHelix *helix, int handedness);
+DxfSpline *dxf_helix_get_spline (DxfHelix *helix);
+DxfHelix *dxf_helix_set_spline (DxfHelix *helix, DxfSpline *spline);
+DxfHelix *dxf_helix_get_next (DxfHelix *helix);
+DxfHelix *dxf_helix_set_next (DxfHelix *helix, DxfHelix *next);
 
 
 #ifdef __cplusplus
