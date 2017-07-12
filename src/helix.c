@@ -3821,4 +3821,49 @@ dxf_helix_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c HELIX entity from a linked list of
+ * DXF \c HELIX entity.
+ *
+ * \return pointer to the last \c HELIX entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHelix *
+dxf_helix_get_last
+(
+        DxfHelix *helix
+                /*!< a pointer to a DXF \c HELIX entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (helix == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (helix->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfHelix *) helix);
+        }
+        DxfHelix *iter = (DxfHelix *) helix->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfHelix *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfHelix *) iter);
+}
+
+
 /* EOF*/

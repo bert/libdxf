@@ -298,6 +298,7 @@ DxfSpline *dxf_helix_get_spline (DxfHelix *helix);
 DxfHelix *dxf_helix_set_spline (DxfHelix *helix, DxfSpline *spline);
 DxfHelix *dxf_helix_get_next (DxfHelix *helix);
 DxfHelix *dxf_helix_set_next (DxfHelix *helix, DxfHelix *next);
+DxfHelix *dxf_helix_get_last (DxfHelix *helix);
 
 
 #ifdef __cplusplus
