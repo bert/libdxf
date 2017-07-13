@@ -647,6 +647,7 @@ DxfHatchPattern *dxf_hatch_get_patterns (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_patterns (DxfHatch *hatch, DxfHatchPattern *patterns);
 DxfHatch *dxf_hatch_get_next (DxfHatch *hatch);
 DxfHatch *dxf_hatch_set_next (DxfHatch *hatch, DxfHatch *next);
+DxfHatch *dxf_hatch_get_last (DxfHatch *hatch);
 /* dxf_hatch_pattern functions. */
 DxfHatchPattern *dxf_hatch_pattern_new ();
 DxfHatchPattern *dxf_hatch_pattern_init (DxfHatchPattern *pattern);
