@@ -838,6 +838,51 @@ dxf_idbuffer_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c IDBUFFER object from a linked
+ * list of DXF \c IDBUFFER objects.
+ *
+ * \return pointer to the last \c IDBUFFER object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfIdbuffer *
+dxf_idbuffer_get_last
+(
+        DxfIdbuffer *idbuffer
+                /*!< a pointer to a DXF \c IDBUFFER object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (idbuffer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (idbuffer->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfIdbuffer *) idbuffer);
+        }
+        DxfIdbuffer *iter = (DxfIdbuffer *) idbuffer->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfIdbuffer *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfIdbuffer *) iter);
+}
+
+
+/*!
  * \brief Allocate memory for a \c DxfIdbufferEntityPointer.
  *
  * Fill the memory contents with zeros.
