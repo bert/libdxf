@@ -123,6 +123,7 @@ char *dxf_idbuffer_entity_pointer_get_soft_pointer (DxfIdbufferEntityPointer *en
 DxfIdbufferEntityPointer *dxf_idbuffer_entity_pointer_set_soft_pointer (DxfIdbufferEntityPointer *entity_pointer, char *soft_pointer);
 DxfIdbufferEntityPointer *dxf_idbuffer_entity_pointer_get_next (DxfIdbufferEntityPointer *entity_pointer);
 DxfIdbufferEntityPointer *dxf_idbuffer_entity_pointer_set_next (DxfIdbufferEntityPointer *entity_pointer, DxfIdbufferEntityPointer *next);
+DxfIdbufferEntityPointer *dxf_idbuffer_entity_pointer_get_last (DxfIdbufferEntityPointer *entity_pointer);
 
 
 #ifdef __cplusplus
