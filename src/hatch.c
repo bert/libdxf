@@ -3856,6 +3856,51 @@ dxf_hatch_pattern_def_line_dash_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c HATCH pattern def line dash
+ * from a linked list of DXF \c HATCH pattern def line dashes.
+ *
+ * \return pointer to the last \c HATCH pattern def line dash.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchPatternDefLineDash *
+dxf_hatch_pattern_def_line_dash_get_last
+(
+        DxfHatchPatternDefLineDash *dash
+                /*!< a pointer to a DXF \c HATCH pattern def line dash. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (dash == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dash->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfHatchPatternDefLineDash *) dash);
+        }
+        DxfHatchPatternDefLineDash *iter = (DxfHatchPatternDefLineDash *) dash->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfHatchPatternDefLineDash *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfHatchPatternDefLineDash *) iter);
+}
+
+
 /* dxf_hatch_pattern_def_line functions. */
 
 /*!
