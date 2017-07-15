@@ -665,6 +665,7 @@ DxfHatchPatternSeedPoint *dxf_hatch_pattern_get_seed_points (DxfHatchPattern *pa
 DxfHatchPattern *dxf_hatch_pattern_set_seed_points (DxfHatchPattern *pattern, DxfHatchPatternSeedPoint *seed_points);
 DxfHatchPattern *dxf_hatch_pattern_get_next (DxfHatchPattern *pattern);
 DxfHatchPattern *dxf_hatch_pattern_set_next (DxfHatchPattern *pattern, DxfHatchPatternDefLine *next);
+DxfHatchPattern *dxf_hatch_pattern_get_last (DxfHatchPattern *pattern);
 /* dxf_hatch_pattern_def_line_dash functions. */
 DxfHatchPatternDefLineDash *dxf_hatch_pattern_def_line_dash_new ();
 DxfHatchPatternDefLineDash *dxf_hatch_pattern_def_line_dash_init (DxfHatchPatternDefLineDash *dash);

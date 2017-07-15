@@ -3514,6 +3514,51 @@ dxf_hatch_pattern_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c HATCH pattern from a
+ * linked list of DXF \c HATCH patterns.
+ *
+ * \return pointer to the last \c HATCH pattern.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchPattern *
+dxf_hatch_pattern_get_last
+(
+        DxfHatchPattern *pattern
+                /*!< a pointer to a DXF \c HATCH pattern. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (pattern == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (pattern->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfHatchPattern *) pattern);
+        }
+        DxfHatchPattern *iter = (DxfHatchPattern *) pattern->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfHatchPattern *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfHatchPattern *) iter);
+}
+
+
 /* dxf_hatch_pattern_def_line_dash functions. */
 
 /*!
