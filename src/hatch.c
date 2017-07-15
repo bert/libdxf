@@ -3475,8 +3475,8 @@ dxf_hatch_pattern_get_next
 
 
 /*!
- * \brief Set the pointer to the next \c HATCH pattern def line for a
- * DXF \c HATCH pattern def line.
+ * \brief Set the pointer to the next \c HATCH pattern for a
+ * DXF \c HATCH pattern.
  */
 DxfHatchPattern *
 dxf_hatch_pattern_set_next
