@@ -98,134 +98,31 @@ dxf_idbuffer
 } DxfIdbuffer;
 
 
-DxfIdbuffer *
-dxf_idbuffer_new ();
-DxfIdbuffer *
-dxf_idbuffer_init
-(
-        DxfIdbuffer *idbuffer
-);
-DxfIdbuffer *
-dxf_idbuffer_read
-(
-        DxfFile *fp,
-        DxfIdbuffer *idbuffer
-);
-int
-dxf_idbuffer_write
-(
-        DxfFile *fp,
-        DxfIdbuffer *idbuffer
-);
-int
-dxf_idbuffer_free
-(
-        DxfIdbuffer *idbuffer
-);
-void
-dxf_idbuffer_free_chain
-(
-        DxfIdbuffer *id_buffers
-);
-int
-dxf_idbuffer_get_id_code
-(
-        DxfIdbuffer *idbuffer
-);
-DxfIdbuffer *
-dxf_idbuffer_set_id_code
-(
-        DxfIdbuffer *idbuffer,
-        int id_code
-);
-char *
-dxf_idbuffer_get_dictionary_owner_soft
-(
-        DxfIdbuffer *idbuffer
-);
-DxfIdbuffer *
-dxf_idbuffer_set_dictionary_owner_soft
-(
-        DxfIdbuffer *idbuffer,
-        char *dictionary_owner_soft
-);
-char *
-dxf_idbuffer_get_dictionary_owner_hard
-(
-        DxfIdbuffer *idbuffer
-);
-DxfIdbuffer *
-dxf_idbuffer_set_dictionary_owner_hard
-(
-        DxfIdbuffer *idbuffer,
-        char *dictionary_owner_hard
-);
-DxfIdbufferEntityPointer *
-dxf_idbuffer_get_entity_pointer
-(
-        DxfIdbuffer *idbuffer
-);
-DxfIdbuffer *
-dxf_idbuffer_set_entity_pointer
-(
-        DxfIdbuffer *idbuffer,
-        DxfIdbufferEntityPointer *entity_pointer
-);
-DxfIdbuffer *
-dxf_idbuffer_get_next
-(
-        DxfIdbuffer *idbuffer
-);
-DxfIdbuffer *
-dxf_idbuffer_set_next
-(
-        DxfIdbuffer *idbuffer,
-        DxfIdbuffer *next
-);
-DxfIdbuffer *
-dxf_idbuffer_get_last
-(
-        DxfIdbuffer *idbuffer
-);
-DxfIdbufferEntityPointer *
-dxf_idbuffer_entity_pointer_new ();
-DxfIdbufferEntityPointer *
-dxf_idbuffer_entity_pointer_init
-(
-        DxfIdbufferEntityPointer *entity_pointer
-);
-int
-dxf_idbuffer_entity_pointer_free
-(
-        DxfIdbufferEntityPointer *entity_pointer
-);
-void
-dxf_idbuffer_entity_pointer_free_chain
-(
-        DxfIdbufferEntityPointer *entity_pointers
-);
-char *
-dxf_idbuffer_entity_pointer_get_soft_pointer
-(
-        DxfIdbufferEntityPointer *entity_pointer
-);
-DxfIdbufferEntityPointer *
-dxf_idbuffer_entity_pointer_set_soft_pointer
-(
-        DxfIdbufferEntityPointer *entity_pointer,
-        char *soft_pointer
-);
-DxfIdbufferEntityPointer *
-dxf_idbuffer_entity_pointer_get_next
-(
-        DxfIdbufferEntityPointer *entity_pointer
-);
-DxfIdbufferEntityPointer *
-dxf_idbuffer_entity_pointer_set_next
-(
-        DxfIdbufferEntityPointer *entity_pointer,
-        DxfIdbufferEntityPointer *next
-);
+DxfIdbuffer *dxf_idbuffer_new ();
+DxfIdbuffer *dxf_idbuffer_init (DxfIdbuffer *idbuffer);
+DxfIdbuffer *dxf_idbuffer_read (DxfFile *fp, DxfIdbuffer *idbuffer);
+int dxf_idbuffer_write (DxfFile *fp, DxfIdbuffer *idbuffer);
+int dxf_idbuffer_free (DxfIdbuffer *idbuffer);
+void dxf_idbuffer_free_chain (DxfIdbuffer *id_buffers);
+int dxf_idbuffer_get_id_code (DxfIdbuffer *idbuffer);
+DxfIdbuffer *dxf_idbuffer_set_id_code (DxfIdbuffer *idbuffer, int id_code);
+char *dxf_idbuffer_get_dictionary_owner_soft (DxfIdbuffer *idbuffer);
+DxfIdbuffer *dxf_idbuffer_set_dictionary_owner_soft (DxfIdbuffer *idbuffer, char *dictionary_owner_soft);
+char *dxf_idbuffer_get_dictionary_owner_hard (DxfIdbuffer *idbuffer);
+DxfIdbuffer *dxf_idbuffer_set_dictionary_owner_hard (DxfIdbuffer *idbuffer, char *dictionary_owner_hard);
+DxfIdbufferEntityPointer *dxf_idbuffer_get_entity_pointer (DxfIdbuffer *idbuffer);
+DxfIdbuffer *dxf_idbuffer_set_entity_pointer (DxfIdbuffer *idbuffer, DxfIdbufferEntityPointer *entity_pointer);
+DxfIdbuffer *dxf_idbuffer_get_next (DxfIdbuffer *idbuffer);
+DxfIdbuffer *dxf_idbuffer_set_next (DxfIdbuffer *idbuffer, DxfIdbuffer *next);
+DxfIdbuffer *dxf_idbuffer_get_last (DxfIdbuffer *idbuffer);
+DxfIdbufferEntityPointer *dxf_idbuffer_entity_pointer_new ();
+DxfIdbufferEntityPointer *dxf_idbuffer_entity_pointer_init (DxfIdbufferEntityPointer *entity_pointer);
+int dxf_idbuffer_entity_pointer_free (DxfIdbufferEntityPointer *entity_pointer);
+void dxf_idbuffer_entity_pointer_free_chain (DxfIdbufferEntityPointer *entity_pointers);
+char *dxf_idbuffer_entity_pointer_get_soft_pointer (DxfIdbufferEntityPointer *entity_pointer);
+DxfIdbufferEntityPointer *dxf_idbuffer_entity_pointer_set_soft_pointer (DxfIdbufferEntityPointer *entity_pointer, char *soft_pointer);
+DxfIdbufferEntityPointer *dxf_idbuffer_entity_pointer_get_next (DxfIdbufferEntityPointer *entity_pointer);
+DxfIdbufferEntityPointer *dxf_idbuffer_entity_pointer_set_next (DxfIdbufferEntityPointer *entity_pointer, DxfIdbufferEntityPointer *next);
 
 
 #ifdef __cplusplus
