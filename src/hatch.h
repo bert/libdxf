@@ -715,6 +715,7 @@ double dxf_hatch_pattern_seedpoint_get_y0 (DxfHatchPatternSeedPoint *point);
 DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint_set_y0 (DxfHatchPatternSeedPoint *point, double y0);
 DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint_get_next (DxfHatchPatternSeedPoint *point);
 DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint_set_next (DxfHatchPatternSeedPoint *point, DxfHatchPatternSeedPoint *next);
+DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint_get_last (DxfHatchPatternSeedPoint *point);
 /* dxf_hatch_boundary_path functions. */
 DxfHatchBoundaryPath *dxf_hatch_boundary_path_new ();
 DxfHatchBoundaryPath *dxf_hatch_boundary_path_init (DxfHatchBoundaryPath *path);

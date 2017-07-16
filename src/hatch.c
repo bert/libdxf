@@ -5325,6 +5325,51 @@ dxf_hatch_pattern_seedpoint_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c HATCH pattern seed point from a
+ * linked list of DXF \c HATCH pattern seed points.
+ *
+ * \return pointer to the last \c HATCH pattern seed point.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchPatternSeedPoint *
+dxf_hatch_pattern_seedpoint_get_last
+(
+        DxfHatchPatternSeedPoint *point
+                /*!< a pointer to a DXF \c HATCH pattern seed point. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfHatchPatternSeedPoint *) point);
+        }
+        DxfHatchPatternSeedPoint *iter = (DxfHatchPatternSeedPoint *) point->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfHatchPatternSeedPoint *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfHatchPatternSeedPoint *) iter);
+}
+
+
 /* dxf_hatch_boundary_path functions. */
 
 /*!
