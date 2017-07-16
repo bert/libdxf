@@ -4789,6 +4789,51 @@ dxf_hatch_pattern_def_line_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c HATCH pattern def line from a
+ * linked list of DXF \c HATCH pattern def lines.
+ *
+ * \return pointer to the last \c HATCH pattern def line.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchPatternDefLine *
+dxf_hatch_pattern_def_line_get_last
+(
+        DxfHatchPatternDefLine *line
+                /*!< a pointer to a DXF \c HATCH pattern def line. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfHatchPatternDefLine *) line);
+        }
+        DxfHatchPatternDefLine *iter = (DxfHatchPatternDefLine *) line->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfHatchPatternDefLine *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfHatchPatternDefLine *) iter);
+}
+
+
 /* dxf_hatch_pattern_seedpoint functions. */
 
 /*!

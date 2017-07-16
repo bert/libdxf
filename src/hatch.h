@@ -700,6 +700,7 @@ DxfHatchPatternDefLineDash *dxf_hatch_pattern_def_line_get_dashes (DxfHatchPatte
 DxfHatchPatternDefLine *dxf_hatch_pattern_def_line_set_dashes (DxfHatchPatternDefLine *line, DxfHatchPatternDefLineDash *dashes);
 DxfHatchPatternDefLine *dxf_hatch_pattern_def_line_get_next (DxfHatchPatternDefLine *line);
 DxfHatchPatternDefLine *dxf_hatch_pattern_def_line_set_next (DxfHatchPatternDefLine *line, DxfHatchPatternDefLine *next);
+DxfHatchPatternDefLine *dxf_hatch_pattern_def_line_get_last (DxfHatchPatternDefLine *line);
 /* dxf_hatch_pattern_seedpoint functions. */
 DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint_new ();
 DxfHatchPatternSeedPoint *dxf_hatch_pattern_seedpoint_init (DxfHatchPatternSeedPoint *seedpoint);
