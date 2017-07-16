@@ -7406,6 +7406,76 @@ dxf_hatch_boundary_path_polyline_vertex_set_has_bulge
 
 
 /*!
+ * \brief Return the angle between two vertices on a plane (2D).
+ *
+ * The angle is from \c vertex_0 to \c vertex_1, positive is
+ * counterclockwise (CCW).
+ *
+ * \return The angle value is in the range (\f$ -\pi \cdots \pi \f$) in
+ * radians.
+ */
+double
+dxf_hatch_boundary_path_polyline_vertex_angle
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex_0,
+                /*!< The first vertex (of the pair). */
+        DxfHatchBoundaryPathPolylineVertex *vertex_1
+                /*!< The second vertex (of the pair). */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        double x0;
+        double y0;
+        double x1;
+        double y1;
+        double dtheta;
+        double theta0;
+        double theta1;
+
+        /* Do some basic checks. */
+        if (vertex_0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (vertex_1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if ((vertex_0->x0 == vertex_1->x0)
+          && (vertex_0->y0 == vertex_1->y0))
+        {
+                fprintf (stderr,
+                  (_("Error in %s () identical coordinates were passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        x0 = vertex_0->x0;
+        y0 = vertex_0->y0;
+        x1 = vertex_1->x0;
+        y1 = vertex_1->y0;
+        theta0 = atan2 (y0, x0);
+        theta1 = atan2 (y1, x1);
+        dtheta = theta1 - theta0;
+        while (dtheta > M_PI)
+                dtheta -= 2 * M_PI;
+        while (dtheta < -M_PI)
+        dtheta += 2 * M_PI;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (dtheta);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c HATCH boundary path polyline
  * vertex from a DXF \c HATCH boundary path polyline vertex.
  *
@@ -7534,76 +7604,6 @@ dxf_hatch_boundary_path_polyline_vertex_get_last
         DXF_DEBUG_END
 #endif
         return ((DxfHatchBoundaryPathPolylineVertex *) iter);
-}
-
-
-/*!
- * \brief Return the angle between two vertices on a plane (2D).
- *
- * The angle is from \c vertex_0 to \c vertex_1, positive is
- * counterclockwise (CCW).
- *
- * \return The angle value is in the range (\f$ -\pi \cdots \pi \f$) in
- * radians.
- */
-double
-dxf_hatch_boundary_path_polyline_vertex_angle
-(
-        DxfHatchBoundaryPathPolylineVertex *vertex_0,
-                /*!< The first vertex (of the pair). */
-        DxfHatchBoundaryPathPolylineVertex *vertex_1
-                /*!< The second vertex (of the pair). */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        double x0;
-        double y0;
-        double x1;
-        double y1;
-        double dtheta;
-        double theta0;
-        double theta1;
-
-        /* Do some basic checks. */
-        if (vertex_0 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (vertex_1 == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if ((vertex_0->x0 == vertex_1->x0)
-          && (vertex_0->y0 == vertex_1->y0))
-        {
-                fprintf (stderr,
-                  (_("Error in %s () identical coordinates were passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        x0 = vertex_0->x0;
-        y0 = vertex_0->y0;
-        x1 = vertex_1->x0;
-        y1 = vertex_1->y0;
-        theta0 = atan2 (y0, x0);
-        theta1 = atan2 (y1, x1);
-        dtheta = theta1 - theta0;
-        while (dtheta > M_PI)
-                dtheta -= 2 * M_PI;
-        while (dtheta < -M_PI)
-        dtheta += 2 * M_PI;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (dtheta);
 }
 
 
