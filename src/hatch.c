@@ -7491,6 +7491,53 @@ dxf_hatch_boundary_path_polyline_vertex_set_next
 
 
 /*!
+ * \brief Get the pointer to the last \c HATCH boundary path polyline
+ * vertex from a linked list of DXF \c HATCH boundary path polyline
+ * vertices.
+ *
+ * \return pointer to the last \c HATCH boundary path polyline vertex.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchBoundaryPathPolylineVertex *
+dxf_hatch_boundary_path_polyline_vertex_get_last
+(
+        DxfHatchBoundaryPathPolylineVertex *vertex
+                /*!< a pointer to a DXF \c HATCH boundary path polyline
+                 * vertex. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (vertex == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (vertex->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfHatchBoundaryPathPolylineVertex *) vertex);
+        }
+        DxfHatchBoundaryPathPolylineVertex *iter = (DxfHatchBoundaryPathPolylineVertex *) vertex->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfHatchBoundaryPathPolylineVertex *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfHatchBoundaryPathPolylineVertex *) iter);
+}
+
+
+/*!
  * \brief Return the angle between two vertices on a plane (2D).
  *
  * The angle is from \c vertex_0 to \c vertex_1, positive is
