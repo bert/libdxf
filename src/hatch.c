@@ -9224,6 +9224,51 @@ dxf_hatch_boundary_path_edge_arc_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c HATCH boundary path edge arc
+ * from a linked list of DXF \c HATCH boundary path edge arcs.
+ *
+ * \return pointer to the last \c HATCH boundary path edge arc.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchBoundaryPathEdgeArc *
+dxf_hatch_boundary_path_edge_arc_get_last
+(
+        DxfHatchBoundaryPathEdgeArc *arc
+                /*!< a pointer to a DXF \c HATCH boundary path edge arc. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (arc == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (arc->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfHatchBoundaryPathEdgeArc *) arc);
+        }
+        DxfHatchBoundaryPathEdgeArc *iter = (DxfHatchBoundaryPathEdgeArc *) arc->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfHatchBoundaryPathEdgeArc *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfHatchBoundaryPathEdgeArc *) iter);
+}
+
+
 /* dxf_hatch_boundary_path_edge_ellipse functions. */
 
 /*!
