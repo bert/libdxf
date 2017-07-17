@@ -749,6 +749,7 @@ int dxf_hatch_boundary_path_polyline_close_polyline (DxfHatchBoundaryPathPolylin
 int dxf_hatch_boundary_path_polyline_point_inside_polyline (DxfHatchBoundaryPathPolyline *polyline, DxfPoint *point);
 DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline_get_next (DxfHatchBoundaryPathPolyline *polyline);
 DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline_set_next (DxfHatchBoundaryPathPolyline *polyline, DxfHatchBoundaryPathPolyline *next);
+DxfHatchBoundaryPathPolyline *dxf_hatch_boundary_path_polyline_get_last (DxfHatchBoundaryPathPolyline *polyline);
 /* dxf_hatch_boundary_pathPolyline_vertex functions. */
 DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex_new ();
 DxfHatchBoundaryPathPolylineVertex *dxf_hatch_boundary_path_polyline_vertex_init (DxfHatchBoundaryPathPolylineVertex *vertex);

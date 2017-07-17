@@ -6815,6 +6815,51 @@ dxf_hatch_boundary_path_polyline_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c HATCH boundary path polyline
+ * from a linked list of DXF \c HATCH boundary path polylines.
+ *
+ * \return pointer to the last \c HATCH boundary path polyline.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_polyline_get_last
+(
+        DxfHatchBoundaryPathPolyline *polyline
+                /*!< a pointer to a DXF \c HATCH boundary path polyline. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (polyline->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfHatchBoundaryPathPolyline *) polyline);
+        }
+        DxfHatchBoundaryPathPolyline *iter = (DxfHatchBoundaryPathPolyline *) polyline->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfHatchBoundaryPathPolyline *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfHatchBoundaryPathPolyline *) iter);
+}
+
+
 /* dxf_hatch_boundary_path_polyline_vertex functions. */
 
 /*!
