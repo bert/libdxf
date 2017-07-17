@@ -6522,89 +6522,6 @@ dxf_hatch_boundary_path_polyline_set_vertices
 
 
 /*!
- * \brief Get the pointer to the next \c HATCH boundary path polyline
- * from a DXF \c HATCH boundary path polyline.
- *
- * \return pointer to the next \c HATCH boundary path polyline.
- *
- * \warning No checks are performed on the returned pointer.
- */
-DxfHatchBoundaryPathPolyline *
-dxf_hatch_boundary_path_polyline_get_next
-(
-        DxfHatchBoundaryPathPolyline *polyline
-                /*!< a pointer to a DXF \c HATCH boundary path polyline. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        DxfHatchBoundaryPathPolyline *result;
-
-        /* Do some basic checks. */
-        if (polyline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (polyline->next == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        result = (DxfHatchBoundaryPathPolyline *) polyline->next;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (result);
-}
-
-
-/*!
- * \brief Set the pointer to the next \c HATCH boundary path polyline
- * for a DXF \c HATCH boundary path polyline.
- */
-DxfHatchBoundaryPathPolyline *
-dxf_hatch_boundary_path_polyline_set_next
-(
-        DxfHatchBoundaryPathPolyline *polyline,
-                /*!< a pointer to a DXF \c HATCH boundary path polyline. */
-        DxfHatchBoundaryPathPolyline *next
-                /*!< a pointer to the next \c HATCH boundary path
-                 * polyline for the entity. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        /* Do some basic checks. */
-        if (polyline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (next == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        polyline->next = (struct DxfHatchBoundaryPathPolyline *) next;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (polyline);
-}
-
-
-/*!
  * \brief Test if a hatch boundary polyline is closed and add the missing
  * vertex.
  *
@@ -6812,6 +6729,89 @@ dxf_hatch_boundary_path_polyline_point_inside_polyline
 #endif
         /*! \todo This is a dead code path. */
         return (EXIT_FAILURE);
+}
+
+
+/*!
+ * \brief Get the pointer to the next \c HATCH boundary path polyline
+ * from a DXF \c HATCH boundary path polyline.
+ *
+ * \return pointer to the next \c HATCH boundary path polyline.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_polyline_get_next
+(
+        DxfHatchBoundaryPathPolyline *polyline
+                /*!< a pointer to a DXF \c HATCH boundary path polyline. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        DxfHatchBoundaryPathPolyline *result;
+
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (polyline->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        result = (DxfHatchBoundaryPathPolyline *) polyline->next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (result);
+}
+
+
+/*!
+ * \brief Set the pointer to the next \c HATCH boundary path polyline
+ * for a DXF \c HATCH boundary path polyline.
+ */
+DxfHatchBoundaryPathPolyline *
+dxf_hatch_boundary_path_polyline_set_next
+(
+        DxfHatchBoundaryPathPolyline *polyline,
+                /*!< a pointer to a DXF \c HATCH boundary path polyline. */
+        DxfHatchBoundaryPathPolyline *next
+                /*!< a pointer to the next \c HATCH boundary path
+                 * polyline for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (polyline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        polyline->next = (struct DxfHatchBoundaryPathPolyline *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (polyline);
 }
 
 
