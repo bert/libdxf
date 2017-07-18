@@ -11225,6 +11225,51 @@ dxf_hatch_boundary_path_edge_line_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c HATCH boundary path edge line
+ * from a linked list of DXF \c HATCH boundary path edge line.
+ *
+ * \return pointer to the last \c HATCH boundary path edge line.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchBoundaryPathEdgeLine *
+dxf_hatch_boundary_path_edge_line_get_last
+(
+        DxfHatchBoundaryPathEdgeLine *line
+                /*!< a pointer to a DXF \c HATCH boundary path edge line. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (line->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfHatchBoundaryPathEdgeLine *) line);
+        }
+        DxfHatchBoundaryPathEdgeLine *iter = (DxfHatchBoundaryPathEdgeLine *) line->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfHatchBoundaryPathEdgeLine *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfHatchBoundaryPathEdgeLine *) iter);
+}
+
+
 /* dxf_hatch_boundary_path_edge_spline functions. */
 
 /*!

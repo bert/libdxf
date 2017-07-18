@@ -863,6 +863,7 @@ DxfPoint *dxf_hatch_boundary_path_edge_line_get_end_point (DxfHatchBoundaryPathE
 DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line_set_end_point (DxfHatchBoundaryPathEdgeLine *line, DxfPoint *point);
 DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line_get_next (DxfHatchBoundaryPathEdgeLine *line);
 DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line_set_next (DxfHatchBoundaryPathEdgeLine *line, DxfHatchBoundaryPathEdgeLine *next);
+DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line_get_last (DxfHatchBoundaryPathEdgeLine *line);
 /* dxf_hatch_boundary_path_edge_spline functions. */
 DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_new ();
 DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_init (DxfHatchBoundaryPathEdgeSpline *spline);
