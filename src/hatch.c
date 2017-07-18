@@ -10383,6 +10383,53 @@ dxf_hatch_boundary_path_edge_ellipse_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c HATCH boundary path edge
+ * ellipse from a linked list of DXF \c HATCH boundary path edge
+ * ellipse.
+ *
+ * \return pointer to the last \c HATCH boundary path edge ellipse.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchBoundaryPathEdgeEllipse *
+dxf_hatch_boundary_path_edge_ellipse_get_last
+(
+        DxfHatchBoundaryPathEdgeEllipse *ellipse
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * ellipse. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ellipse == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ellipse->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfHatchBoundaryPathEdgeEllipse *) ellipse);
+        }
+        DxfHatchBoundaryPathEdgeEllipse *iter = (DxfHatchBoundaryPathEdgeEllipse *) ellipse->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfHatchBoundaryPathEdgeEllipse *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfHatchBoundaryPathEdgeEllipse *) iter);
+}
+
+
 /* dxf_hatch_boundary_path_edge_line functions. */
 
 /*!

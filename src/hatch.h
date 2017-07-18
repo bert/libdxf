@@ -841,6 +841,7 @@ int dxf_hatch_boundary_path_edge_ellipse_get_is_ccw (DxfHatchBoundaryPathEdgeEll
 DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse_set_is_ccw (DxfHatchBoundaryPathEdgeEllipse *ellipse, int is_ccw);
 DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse_get_next (DxfHatchBoundaryPathEdgeEllipse *ellipse);
 DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse_set_next (DxfHatchBoundaryPathEdgeEllipse *ellipse, DxfHatchBoundaryPathEdgeEllipse *next);
+DxfHatchBoundaryPathEdgeEllipse *dxf_hatch_boundary_path_edge_ellipse_get_last (DxfHatchBoundaryPathEdgeEllipse *ellipse);
 /* dxf_hatch_boundary_path_edge_line functions. */
 DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line_new ();
 DxfHatchBoundaryPathEdgeLine *dxf_hatch_boundary_path_edge_line_init (DxfHatchBoundaryPathEdgeLine *line);
