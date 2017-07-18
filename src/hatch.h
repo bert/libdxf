@@ -902,6 +902,7 @@ int dxf_hatch_boundary_path_edge_spline_set_knot_value (DxfHatchBoundaryPathEdge
 int dxf_hatch_boundary_path_edge_spline_insert_knot_value (DxfHatchBoundaryPathEdgeSpline *spline, int position, double knot_value);
 int dxf_hatch_boundary_path_edge_spline_remove_knot_value (DxfHatchBoundaryPathEdgeSpline *spline, int position);
 int dxf_hatch_boundary_path_edge_spline_copy_knot_values (DxfHatchBoundaryPathEdgeSpline *spline, double *knot_values[DXF_MAX_HATCH_BOUNDARY_PATH_EDGE_SPLINE_KNOTS]);
+DxfHatchBoundaryPathEdgeSpline *dxf_hatch_boundary_path_edge_spline_get_next (DxfHatchBoundaryPathEdgeSpline *spline);
 /* dxf_hatch_boundary_path_edge_spline_control_point functions. */
 DxfHatchBoundaryPathEdgeSplineCp *dxf_hatch_boundary_path_edge_spline_control_point_new ();
 DxfHatchBoundaryPathEdgeSplineCp *dxf_hatch_boundary_path_edge_spline_control_point_init (DxfHatchBoundaryPathEdgeSplineCp *control_point);

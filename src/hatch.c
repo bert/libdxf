@@ -12055,49 +12055,6 @@ dxf_hatch_boundary_path_edge_spline_set_control_points
 
 
 /*!
- * \brief Get the pointer to the next \c DXF \c HATCH boundary path
- * spline.
- *
- * \return pointer to the next \c DXF \c HATCH boundary path spline.
- *
- * \warning No checks are performed on the returned pointer.
- */
-DxfHatchBoundaryPathEdgeSpline *
-dxf_hatch_boundary_path_edge_spline_get_next
-(
-        DxfHatchBoundaryPathEdgeSpline *spline
-                /*!< a pointer to a DXF \c HATCH boundary path spline. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        DxfHatchBoundaryPathEdgeSpline *result;
-
-        /* Do some basic checks. */
-        if (spline == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        if (spline->next == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
-                  __FUNCTION__);
-                return (NULL);
-        }
-        result = (DxfHatchBoundaryPathEdgeSpline *) spline->next;
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (result);
-}
-
-
-/*!
  * \brief Set the pointer to the next \c HATCH boundary path spline for
  * a DXF \c HATCH boundary path spline.
  */
@@ -13470,6 +13427,46 @@ dxf_hatch_boundary_path_edge_spline_copy_knot_values
         DXF_DEBUG_END
 #endif
         return (EXIT_SUCCESS);
+}
+
+
+/*!
+ * \brief Get the pointer to the next \c HATCH boundary path edge spline
+ * entity from a DXF \c HATCH boundary path edge spline entity.
+ *
+ * \return pointer to the next \c HATCH boundary path edge spline entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchBoundaryPathEdgeSpline *
+dxf_hatch_boundary_path_edge_spline_get_next
+(
+        DxfHatchBoundaryPathEdgeSpline *spline
+                /*!< a pointer to a DXF \c HATCH boundary path edge spline entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (spline->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfHatchBoundaryPathEdgeSpline *) spline->next);
 }
 
 
