@@ -14152,4 +14152,52 @@ dxf_hatch_boundary_path_edge_spline_cp_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c HATCH boundary path edge spline
+ * control point from a linked list of DXF \c HATCH boundary path edge
+ * spline control points.
+ *
+ * \return pointer to the last \c HATCH boundary path edge spline
+ * control point.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfHatchBoundaryPathEdgeSplineCp *
+dxf_hatch_boundary_path_edge_spline_cp_get_last
+(
+        DxfHatchBoundaryPathEdgeSplineCp *control_point
+                /*!< a pointer to a DXF \c HATCH boundary path edge
+                 * spline control point. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (control_point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (control_point->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfHatchBoundaryPathEdgeSplineCp *) control_point);
+        }
+        DxfHatchBoundaryPathEdgeSplineCp *iter = (DxfHatchBoundaryPathEdgeSplineCp *) control_point->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfHatchBoundaryPathEdgeSplineCp *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfHatchBoundaryPathEdgeSplineCp *) iter);
+}
+
+
 /* EOF */
