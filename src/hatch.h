@@ -63,7 +63,7 @@ extern "C" {
  * \brief DXF definition of an AutoCAD hatch boundary path edge arc.
  */
 typedef struct
-dxf_hatch_boundary_path_edge_arc
+dxf_hatch_boundary_path_edge_arc_struct
 {
         int id_code;
                 /*!< Identification number for the entity.\n
@@ -95,7 +95,7 @@ dxf_hatch_boundary_path_edge_arc
  * \brief DXF definition of an AutoCAD hatch boundary path edge ellipse.
  */
 typedef struct
-dxf_hatch_boundary_path_edge_ellipse
+dxf_hatch_boundary_path_edge_ellipse_struct
 {
         int id_code;
                 /*!< Identification number for the entity.\n
@@ -136,7 +136,7 @@ dxf_hatch_boundary_path_edge_ellipse
  * \brief DXF definition of an AutoCAD hatch boundary path edge line.
  */
 typedef struct
-dxf_hatch_boundary_path_edge_line
+dxf_hatch_boundary_path_edge_line_struct
 {
         int id_code;
                 /*!< Identification number for the entity.\n
@@ -166,7 +166,7 @@ dxf_hatch_boundary_path_edge_line
  * control point.
  */
 typedef struct
-dxf_hatch_boundary_path_edge_spline_cp
+dxf_hatch_boundary_path_edge_spline_cp_struct
 {
         int id_code;
                 /*!< Identification number for the entity.\n
@@ -192,7 +192,7 @@ dxf_hatch_boundary_path_edge_spline_cp
  * \brief DXF definition of an AutoCAD hatch boundary path edge spline.
  */
 typedef struct
-dxf_hatch_boundary_path_edge_spline
+dxf_hatch_boundary_path_edge_spline_struct
 {
         int id_code;
                 /*!< group code = 5. */
@@ -227,7 +227,7 @@ dxf_hatch_boundary_path_edge_spline
  * (composite of arcs, ellipses, lines or splines).
  */
 typedef struct
-dxf_hatch_boundary_path_edge
+dxf_hatch_boundary_path_edge_struct
 {
         int id_code;
                 /*!< Treat the boundary path edge as if it were a single
@@ -260,7 +260,7 @@ dxf_hatch_boundary_path_edge
  * vertex.
  */
 typedef struct
-dxf_hatch_boundary_path_polyline_vertex
+dxf_hatch_boundary_path_polyline_vertex_struct
 {
         int id_code;
                 /*!< Group code = 5.*/
@@ -287,7 +287,7 @@ dxf_hatch_boundary_path_polyline_vertex
  * \brief DXF definition of an AutoCAD hatch boundary path polyline.
  */
 typedef struct
-dxf_hatch_boundary_path_polyline
+dxf_hatch_boundary_path_polyline_struct
 {
         int id_code;
                 /*!< Group code = 5. */
@@ -314,7 +314,7 @@ dxf_hatch_boundary_path_polyline
  * (composite of a closed series of edges, and/or a polyline).
  */
 typedef struct
-dxf_hatch_boundary_path
+dxf_hatch_boundary_path_struct
 {
         int id_code;
                 /*!< Treat the boundary path as if it were a single
@@ -339,7 +339,7 @@ dxf_hatch_boundary_path
  * dash.
  */
 typedef struct
-dxf_hatch_pattern_def_line_dash
+dxf_hatch_pattern_def_line_dash_struct
 {
         double length;
                 /*!< Dash length for a hatch pattern definition line.\n
@@ -354,7 +354,7 @@ dxf_hatch_pattern_def_line_dash
  * \brief DXF definition of an AutoCAD hatch pattern definition line.
  */
 typedef struct
-dxf_hatch_pattern_def_line
+dxf_hatch_pattern_def_line_struct
 {
         int id_code;
                 /*!< group code = 5. */
@@ -389,7 +389,7 @@ dxf_hatch_pattern_def_line
  * \brief DXF definition of an AutoCAD hatch seed point.
  */
 typedef struct
-dxf_hatch_pattern_seedpoint
+dxf_hatch_pattern_seedpoint_struct
 {
         int id_code;
                 /*!< group code = 5. */
@@ -409,7 +409,7 @@ dxf_hatch_pattern_seedpoint
  * \brief DXF definition of an AutoCAD hatch pattern.
  */
 typedef struct
-dxf_hatch_pattern
+dxf_hatch_pattern_struct
 {
         int id_code;
                 /*!< group code = 5. */
@@ -433,7 +433,7 @@ dxf_hatch_pattern
  * \brief DXF definition of an AutoCAD hatch entity.
  */
 typedef struct
-dxf_hatch
+dxf_hatch_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
