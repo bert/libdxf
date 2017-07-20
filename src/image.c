@@ -6,7 +6,7 @@
  *
  * \brief Functions for a DXF image entity (\c IMAGE).
  *
- * \since The \c IMAGE object was introduced in DXF R14.
+ * \since The \c IMAGE entity was introduced in DXF R14.
  *
  * \warning The image entity requires AutoCAD version R14 or higher.\n
  *
