@@ -138,211 +138,44 @@ dxf_imagedef_struct
 } DxfImagedef;
 
 
-DxfImagedef *
-dxf_imagedef_new ();
-DxfImagedef *
-dxf_imagedef_init
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_read
-(
-        DxfFile *fp,
-        DxfImagedef *imagedef
-);
-int
-dxf_imagedef_write
-(
-        DxfFile *fp,
-        DxfImagedef *imagedef
-);
-int
-dxf_imagedef_free
-(
-        DxfImagedef *imagedef
-);
-void
-dxf_imagedef_free_chain
-(
-        DxfImagedef *imagedefs
-);
-int
-dxf_imagedef_get_id_code
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_id_code
-(
-        DxfImagedef *imagedef,
-        int id_code
-);
-char *
-dxf_imagedef_get_dictionary_owner_soft
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_dictionary_owner_soft
-(
-        DxfImagedef *imagedef,
-        char *dictionary_owner_soft
-);
-char *
-dxf_imagedef_get_dictionary_owner_hard
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_dictionary_owner_hard
-(
-        DxfImagedef *imagedef,
-        char *dictionary_owner_hard
-);
-char *
-dxf_imagedef_get_file_name
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_file_name
-(
-        DxfImagedef *imagedef,
-        char *file_name
-);
-DxfPoint *
-dxf_imagedef_get_p0
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_p0
-(
-        DxfImagedef *imagedef,
-        DxfPoint *p0
-);
-double
-dxf_imagedef_get_x0
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_x0
-(
-        DxfImagedef *imagedef,
-        double x0
-);
-double
-dxf_imagedef_get_y0
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_y0
-(
-        DxfImagedef *imagedef,
-        double y0
-);
-DxfPoint *
-dxf_imagedef_get_p1
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_p1
-(
-        DxfImagedef *imagedef,
-        DxfPoint *p1
-);
-double
-dxf_imagedef_get_x1
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_x1
-(
-        DxfImagedef *imagedef,
-        double x1
-);
-double
-dxf_imagedef_get_y1
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_y1
-(
-        DxfImagedef *imagedef,
-        double y1
-);
-int32_t
-dxf_imagedef_get_class_version
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_class_version
-(
-        DxfImagedef *imagedef,
-        int32_t class_version
-);
-int
-dxf_imagedef_get_image_is_loaded_flag
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_image_is_loaded_flag
-(
-        DxfImagedef *imagedef,
-        int image_is_loaded_flag
-);
-int
-dxf_imagedef_get_resolution_units
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_resolution_units
-(
-        DxfImagedef *imagedef,
-        int resolution_units
-);
-char *
-dxf_imagedef_get_acad_image_dict_soft
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_acad_image_dict_soft
-(
-        DxfImagedef *imagedef,
-        char *acad_image_dict_soft
-);
-DxfImagedefReactor *
-dxf_imagedef_get_imagedef_reactor
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_imagedef_reactor
-(
-        DxfImagedef *imagedef,
-        DxfImagedefReactor *imagedef_reactor
-);
-DxfImagedef *
-dxf_imagedef_get_next
-(
-        DxfImagedef *imagedef
-);
-DxfImagedef *
-dxf_imagedef_set_next
-(
-        DxfImagedef *imagedef,
-        DxfImagedef *next
-);
+DxfImagedef *dxf_imagedef_new ();
+DxfImagedef *dxf_imagedef_init (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_read (DxfFile *fp, DxfImagedef *imagedef);
+int dxf_imagedef_write (DxfFile *fp, DxfImagedef *imagedef);
+int dxf_imagedef_free (DxfImagedef *imagedef);
+void dxf_imagedef_free_chain (DxfImagedef *imagedefs);
+int dxf_imagedef_get_id_code (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_id_code (DxfImagedef *imagedef, int id_code);
+char *dxf_imagedef_get_dictionary_owner_soft (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_dictionary_owner_soft (DxfImagedef *imagedef, char *dictionary_owner_soft);
+char *dxf_imagedef_get_dictionary_owner_hard (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_dictionary_owner_hard (DxfImagedef *imagedef, char *dictionary_owner_hard);
+char *dxf_imagedef_get_file_name (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_file_name (DxfImagedef *imagedef, char *file_name);
+DxfPoint *dxf_imagedef_get_p0 (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_p0 (DxfImagedef *imagedef, DxfPoint *p0);
+double dxf_imagedef_get_x0 (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_x0 (DxfImagedef *imagedef, double x0);
+double dxf_imagedef_get_y0 (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_y0 (DxfImagedef *imagedef, double y0);
+DxfPoint *dxf_imagedef_get_p1 (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_p1 (DxfImagedef *imagedef, DxfPoint *p1);
+double dxf_imagedef_get_x1 (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_x1 (DxfImagedef *imagedef, double x1);
+double dxf_imagedef_get_y1 (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_y1 (DxfImagedef *imagedef, double y1);
+int32_t dxf_imagedef_get_class_version (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_class_version (DxfImagedef *imagedef, int32_t class_version);
+int dxf_imagedef_get_image_is_loaded_flag (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_image_is_loaded_flag (DxfImagedef *imagedef, int image_is_loaded_flag);
+int dxf_imagedef_get_resolution_units (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_resolution_units (DxfImagedef *imagedef, int resolution_units);
+char *dxf_imagedef_get_acad_image_dict_soft (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_acad_image_dict_soft (DxfImagedef *imagedef, char *acad_image_dict_soft);
+DxfImagedefReactor *dxf_imagedef_get_imagedef_reactor (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_imagedef_reactor (DxfImagedef *imagedef, DxfImagedefReactor *imagedef_reactor);
+DxfImagedef *dxf_imagedef_get_next (DxfImagedef *imagedef);
+DxfImagedef *dxf_imagedef_set_next (DxfImagedef *imagedef, DxfImagedef *next);
 
 
 #ifdef __cplusplus
