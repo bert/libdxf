@@ -259,574 +259,110 @@ dxf_image_struct
 } DxfImage;
 
 
-DxfImage *
-dxf_image_new ();
-DxfImage *
-dxf_image_init
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_read
-(
-        DxfFile *fp,
-        DxfImage *image
-);
-int
-dxf_image_write
-(
-        DxfFile *fp,
-        DxfImage *image
-);
-int
-dxf_image_free
-(
-        DxfImage *image
-);
-void
-dxf_image_free_chain
-(
-        DxfImage *images
-);
-int
-dxf_image_get_id_code
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_id_code
-(
-        DxfImage *image,
-        int id_code
-);
-char *
-dxf_image_get_linetype
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_linetype
-(
-        DxfImage *image,
-        char *linetype
-);
-char *
-dxf_image_get_layer
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_layer
-(
-        DxfImage *image,
-        char *layer
-);
-double
-dxf_image_get_elevation
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_elevation
-(
-        DxfImage *image,
-        double elevation
-);
-double
-dxf_image_get_thickness
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_thickness
-(
-        DxfImage *image,
-        double thickness
-);
-double
-dxf_image_get_linetype_scale
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_linetype_scale
-(
-        DxfImage *image,
-        double linetype_scale
-);
-int16_t
-dxf_image_get_visibility
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_visibility
-(
-        DxfImage *image,
-        int16_t visibility
-);
-int
-dxf_image_get_color
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_color
-(
-        DxfImage *image,
-        int color
-);
-int
-dxf_image_get_paperspace
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_paperspace
-(
-        DxfImage *image,
-        int paperspace
-);
-int
-dxf_image_get_graphics_data_size
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_graphics_data_size
-(
-        DxfImage *spline,
-        int graphics_data_size
-);
-int16_t
-dxf_image_get_shadow_mode
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_shadow_mode
-(
-        DxfImage *image,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_image_get_binary_graphics_data
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_binary_graphics_data
-(
-        DxfImage *image,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_image_get_dictionary_owner_soft
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_dictionary_owner_soft
-(
-        DxfImage *image,
-        char *dictionary_owner_soft
-);
-char *
-dxf_image_get_material
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_material
-(
-        DxfImage *image,
-        char *material
-);
-char *
-dxf_image_get_dictionary_owner_hard
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_dictionary_owner_hard
-(
-        DxfImage *image,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_image_get_lineweight
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_lineweight
-(
-        DxfImage *image,
-        int16_t lineweight
-);
-char *
-dxf_image_get_plot_style_name
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_plot_style_name
-(
-        DxfImage *image,
-        char *plot_style_name
-);
-long
-dxf_image_get_color_value
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_color_value
-(
-        DxfImage *image,
-        long color_value
-);
-char *
-dxf_image_get_color_name
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_color_name
-(
-        DxfImage *image,
-        char *color_name
-);
-long
-dxf_image_get_transparency
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_transparency
-(
-        DxfImage *image,
-        long transparency
-);
-DxfPoint *
-dxf_image_get_p0
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_p0
-(
-        DxfImage *image,
-        DxfPoint *p0
-);
-double
-dxf_image_get_x0
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_x0
-(
-        DxfImage *image,
-        double x0
-);
-double
-dxf_image_get_y0
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_y0
-(
-        DxfImage *image,
-        double y0
-);
-double
-dxf_image_get_z0
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_z0
-(
-        DxfImage *image,
-        double z0
-);
-DxfPoint *
-dxf_image_get_p1
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_p1
-(
-        DxfImage *image,
-        DxfPoint *p1
-);
-double
-dxf_image_get_x1
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_x1
-(
-        DxfImage *image,
-        double x1
-);
-double
-dxf_image_get_y1
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_y1
-(
-        DxfImage *image,
-        double y1
-);
-double
-dxf_image_get_z1
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_z1
-(
-        DxfImage *image,
-        double z1
-);
-DxfPoint *
-dxf_image_get_p2
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_p2
-(
-        DxfImage *image,
-        DxfPoint *p2
-);
-double
-dxf_image_get_x2
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_x2
-(
-        DxfImage *image,
-        double x2
-);
-double
-dxf_image_get_y2
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_y2
-(
-        DxfImage *image,
-        double y2
-);
-double
-dxf_image_get_z2
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_z2
-(
-        DxfImage *image,
-        double z2
-);
-DxfPoint *
-dxf_image_get_p3
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_p3
-(
-        DxfImage *image,
-        DxfPoint *p3
-);
-double
-dxf_image_get_x3
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_x3
-(
-        DxfImage *image,
-        double x3
-);
-double
-dxf_image_get_y3
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_y3
-(
-        DxfImage *image,
-        double y3
-);
-DxfPoint *
-dxf_image_get_p4
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_p4
-(
-        DxfImage *image,
-        DxfPoint *p4
-);
-double
-dxf_image_get_x4
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_x4
-(
-        DxfImage *image,
-        double x4
-);
-double
-dxf_image_get_y4
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_y4
-(
-        DxfImage *image,
-        double y4
-);
-int
-dxf_image_get_image_display_properties
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_image_display_properties
-(
-        DxfImage *image,
-        int image_display_properties
-);
-int
-dxf_image_get_clipping_boundary_type
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_clipping_boundary_type
-(
-        DxfImage *image,
-        int clipping_boundary_type
-);
-long
-dxf_image_get_class_version
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_class_version
-(
-        DxfImage *image,
-        long class_version
-);
-long
-dxf_image_get_number_of_clip_boundary_vertices
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_number_of_clip_boundary_vertices
-(
-        DxfImage *image,
-        long number_of_clip_boundary_vertices
-);
-int
-dxf_image_get_clipping_state
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_clipping_state
-(
-        DxfImage *image,
-        int clipping_state
-);
-int
-dxf_image_get_brightness
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_brightness
-(
-        DxfImage *image,
-        int brightness
-);
-int
-dxf_image_get_contrast
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_contrast
-(
-        DxfImage *image,
-        int contrast
-);
-int
-dxf_image_get_fade
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_fade
-(
-        DxfImage *image,
-        int fade
-);
-char *
-dxf_image_get_imagedef_object
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_imagedef_object
-(
-        DxfImage *image,
-        char *imagedef_object
-);
-char *
-dxf_image_get_imagedef_reactor_object
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_imagedef_reactor_object
-(
-        DxfImage *image,
-        char *imagedef_reactor_object
-);
-DxfImage *
-dxf_image_get_next
-(
-        DxfImage *image
-);
-DxfImage *
-dxf_image_set_next
-(
-        DxfImage *image,
-        DxfImage *next
-);
+DxfImage *dxf_image_new ();
+DxfImage *dxf_image_init (DxfImage *image);
+DxfImage *dxf_image_read (DxfFile *fp, DxfImage *image);
+int dxf_image_write (DxfFile *fp, DxfImage *image);
+int dxf_image_free (DxfImage *image);
+void dxf_image_free_chain (DxfImage *images);
+int dxf_image_get_id_code (DxfImage *image);
+DxfImage *dxf_image_set_id_code (DxfImage *image, int id_code);
+char *dxf_image_get_linetype (DxfImage *image);
+DxfImage *dxf_image_set_linetype (DxfImage *image, char *linetype);
+char *dxf_image_get_layer (DxfImage *image);
+DxfImage *dxf_image_set_layer (DxfImage *image, char *layer);
+double dxf_image_get_elevation (DxfImage *image);
+DxfImage *dxf_image_set_elevation (DxfImage *image, double elevation);
+double dxf_image_get_thickness (DxfImage *image);
+DxfImage *dxf_image_set_thickness (DxfImage *image, double thickness);
+double dxf_image_get_linetype_scale (DxfImage *image);
+DxfImage *dxf_image_set_linetype_scale (DxfImage *image, double linetype_scale);
+int16_t dxf_image_get_visibility (DxfImage *image);
+DxfImage *dxf_image_set_visibility (DxfImage *image, int16_t visibility);
+int dxf_image_get_color (DxfImage *image);
+DxfImage *dxf_image_set_color (DxfImage *image, int color);
+int dxf_image_get_paperspace (DxfImage *image);
+DxfImage *dxf_image_set_paperspace (DxfImage *image, int paperspace);
+int dxf_image_get_graphics_data_size (DxfImage *image);
+DxfImage *dxf_image_set_graphics_data_size (DxfImage *spline, int graphics_data_size);
+int16_t dxf_image_get_shadow_mode (DxfImage *image);
+DxfImage *dxf_image_set_shadow_mode (DxfImage *image, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_image_get_binary_graphics_data (DxfImage *image);
+DxfImage *dxf_image_set_binary_graphics_data (DxfImage *image, DxfBinaryGraphicsData *data);
+char *dxf_image_get_dictionary_owner_soft (DxfImage *image);
+DxfImage *dxf_image_set_dictionary_owner_soft (DxfImage *image, char *dictionary_owner_soft);
+char *dxf_image_get_material (DxfImage *image);
+DxfImage *dxf_image_set_material (DxfImage *image, char *material);
+char *dxf_image_get_dictionary_owner_hard (DxfImage *image);
+DxfImage *dxf_image_set_dictionary_owner_hard (DxfImage *image, char *dictionary_owner_hard);
+int16_t dxf_image_get_lineweight (DxfImage *image);
+DxfImage *dxf_image_set_lineweight (DxfImage *image, int16_t lineweight);
+char *dxf_image_get_plot_style_name (DxfImage *image);
+DxfImage *dxf_image_set_plot_style_name (DxfImage *image, char *plot_style_name);
+long dxf_image_get_color_value (DxfImage *image);
+DxfImage *dxf_image_set_color_value (DxfImage *image, long color_value);
+char *dxf_image_get_color_name (DxfImage *image);
+DxfImage *dxf_image_set_color_name (DxfImage *image, char *color_name);
+long dxf_image_get_transparency (DxfImage *image);
+DxfImage *dxf_image_set_transparency (DxfImage *image, long transparency);
+DxfPoint *dxf_image_get_p0 (DxfImage *image);
+DxfImage *dxf_image_set_p0 (DxfImage *image, DxfPoint *p0);
+double dxf_image_get_x0 (DxfImage *image);
+DxfImage *dxf_image_set_x0 (DxfImage *image, double x0);
+double dxf_image_get_y0 (DxfImage *image);
+DxfImage *dxf_image_set_y0 (DxfImage *image, double y0);
+double dxf_image_get_z0 (DxfImage *image);
+DxfImage *dxf_image_set_z0 (DxfImage *image, double z0);
+DxfPoint *dxf_image_get_p1 (DxfImage *image);
+DxfImage *dxf_image_set_p1 (DxfImage *image, DxfPoint *p1);
+double dxf_image_get_x1 (DxfImage *image);
+DxfImage *dxf_image_set_x1 (DxfImage *image, double x1);
+double dxf_image_get_y1 (DxfImage *image);
+DxfImage *dxf_image_set_y1 (DxfImage *image, double y1);
+double dxf_image_get_z1 (DxfImage *image);
+DxfImage *dxf_image_set_z1 (DxfImage *image, double z1);
+DxfPoint *dxf_image_get_p2 (DxfImage *image);
+DxfImage *dxf_image_set_p2 (DxfImage *image, DxfPoint *p2);
+double dxf_image_get_x2 (DxfImage *image);
+DxfImage *dxf_image_set_x2 (DxfImage *image, double x2);
+double dxf_image_get_y2 (DxfImage *image);
+DxfImage *dxf_image_set_y2 (DxfImage *image, double y2);
+double dxf_image_get_z2 (DxfImage *image);
+DxfImage *dxf_image_set_z2 (DxfImage *image, double z2);
+DxfPoint *dxf_image_get_p3 (DxfImage *image);
+DxfImage *dxf_image_set_p3 (DxfImage *image, DxfPoint *p3);
+double dxf_image_get_x3 (DxfImage *image);
+DxfImage *dxf_image_set_x3 (DxfImage *image, double x3);
+double dxf_image_get_y3 (DxfImage *image);
+DxfImage *dxf_image_set_y3 (DxfImage *image, double y3);
+DxfPoint *dxf_image_get_p4 (DxfImage *image);
+DxfImage *dxf_image_set_p4 (DxfImage *image, DxfPoint *p4);
+double dxf_image_get_x4 (DxfImage *image);
+DxfImage *dxf_image_set_x4 (DxfImage *image, double x4);
+double dxf_image_get_y4 (DxfImage *image);
+DxfImage *dxf_image_set_y4 (DxfImage *image, double y4);
+int dxf_image_get_image_display_properties (DxfImage *image);
+DxfImage *dxf_image_set_image_display_properties (DxfImage *image, int image_display_properties);
+int dxf_image_get_clipping_boundary_type (DxfImage *image);
+DxfImage *dxf_image_set_clipping_boundary_type (DxfImage *image, int clipping_boundary_type);
+long dxf_image_get_class_version (DxfImage *image);
+DxfImage *dxf_image_set_class_version (DxfImage *image, long class_version);
+long dxf_image_get_number_of_clip_boundary_vertices (DxfImage *image);
+DxfImage *dxf_image_set_number_of_clip_boundary_vertices (DxfImage *image, long number_of_clip_boundary_vertices);
+int dxf_image_get_clipping_state (DxfImage *image);
+DxfImage *dxf_image_set_clipping_state (DxfImage *image, int clipping_state);
+int dxf_image_get_brightness (DxfImage *image);
+DxfImage *dxf_image_set_brightness (DxfImage *image, int brightness);
+int dxf_image_get_contrast (DxfImage *image);
+DxfImage *dxf_image_set_contrast (DxfImage *image, int contrast);
+int dxf_image_get_fade (DxfImage *image);
+DxfImage *dxf_image_set_fade (DxfImage *image, int fade);
+char *dxf_image_get_imagedef_object (DxfImage *image);
+DxfImage *dxf_image_set_imagedef_object (DxfImage *image, char *imagedef_object);
+char *dxf_image_get_imagedef_reactor_object (DxfImage *image);
+DxfImage *dxf_image_set_imagedef_reactor_object (DxfImage *image, char *imagedef_reactor_object);
+DxfImage *dxf_image_get_next (DxfImage *image);
+DxfImage *dxf_image_set_next (DxfImage *image, DxfImage *next);
 
 
 #ifdef __cplusplus
