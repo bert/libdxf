@@ -363,6 +363,7 @@ char *dxf_image_get_imagedef_reactor_object (DxfImage *image);
 DxfImage *dxf_image_set_imagedef_reactor_object (DxfImage *image, char *imagedef_reactor_object);
 DxfImage *dxf_image_get_next (DxfImage *image);
 DxfImage *dxf_image_set_next (DxfImage *image, DxfImage *next);
+DxfImage *dxf_image_get_last (DxfImage *image);
 
 
 #ifdef __cplusplus
