@@ -90,112 +90,26 @@ dxf_imagedef_reactor_struct
 } DxfImagedefReactor;
 
 
-DxfImagedefReactor *
-dxf_imagedef_reactor_new ();
-DxfImagedefReactor *
-dxf_imagedef_reactor_init
-(
-        DxfImagedefReactor *imagedef_reactor
-);
-DxfImagedefReactor *
-dxf_imagedef_reactor_read
-(
-        DxfFile *fp,
-        DxfImagedefReactor *imagedef_reactor
-);
-int
-dxf_imagedef_reactor_write
-(
-        DxfFile *fp,
-        DxfImagedefReactor *imagedef_reactor
-);
-int
-dxf_imagedef_reactor_free
-(
-        DxfImagedefReactor *imagedef_reactor
-);
-void
-dxf_imagedef_reactor_free_chain
-(
-        DxfImagedefReactor *imagedef_reactors
-);
-int
-dxf_imagedef_reactor_get_id_code
-(
-        DxfImagedefReactor *imagedef_reactor
-);
-DxfImagedefReactor *
-dxf_imagedef_reactor_set_id_code
-(
-        DxfImagedefReactor *imagedef_reactor,
-        int id_code
-);
-char *
-dxf_imagedef_reactor_get_dictionary_owner_soft
-(
-        DxfImagedefReactor *imagedef_reactor
-);
-DxfImagedefReactor *
-dxf_imagedef_reactor_set_dictionary_owner_soft
-(
-        DxfImagedefReactor *imagedef_reactor,
-        char *dictionary_owner_soft
-);
-char *
-dxf_imagedef_reactor_get_dictionary_owner_hard
-(
-        DxfImagedefReactor *imagedef_reactor
-);
-DxfImagedefReactor *
-dxf_imagedef_reactor_set_dictionary_owner_hard
-(
-        DxfImagedefReactor *imagedef_reactor,
-        char *dictionary_owner_hard
-);
-int32_t
-dxf_imagedef_reactor_get_class_version
-(
-        DxfImagedefReactor *imagedef_reactor
-);
-DxfImagedefReactor *
-dxf_imagedef_reactor_set_class_version
-(
-        DxfImagedefReactor *imagedef_reactor,
-        int32_t class_version
-);
-char *
-dxf_imagedef_reactor_get_associated_image_object
-(
-        DxfImagedefReactor *imagedef_reactor
-);
-DxfImagedefReactor *
-dxf_imagedef_reactor_set_associated_image_object
-(
-        DxfImagedefReactor *imagedef_reactor,
-        char *associated_image_object
-);
-int
-dxf_imagedef_reactor_get_associated_image_object_length
-(
-        DxfImagedefReactor *imagedef_reactor
-);
-DxfImagedefReactor *
-dxf_imagedef_reactor_set_associated_image_object_length
-(
-        DxfImagedefReactor *imagedef_reactor,
-        int associated_image_object_length
-);
-DxfImagedefReactor *
-dxf_imagedef_reactor_get_next
-(
-        DxfImagedefReactor *imagedef_reactor
-);
-DxfImagedefReactor *
-dxf_imagedef_reactor_set_next
-(
-        DxfImagedefReactor *imagedef_reactor,
-        DxfImagedefReactor *next
-);
+DxfImagedefReactor *dxf_imagedef_reactor_new ();
+DxfImagedefReactor *dxf_imagedef_reactor_init (DxfImagedefReactor *imagedef_reactor);
+DxfImagedefReactor *dxf_imagedef_reactor_read (DxfFile *fp, DxfImagedefReactor *imagedef_reactor);
+int dxf_imagedef_reactor_write (DxfFile *fp, DxfImagedefReactor *imagedef_reactor);
+int dxf_imagedef_reactor_free (DxfImagedefReactor *imagedef_reactor);
+void dxf_imagedef_reactor_free_chain (DxfImagedefReactor *imagedef_reactors);
+int dxf_imagedef_reactor_get_id_code (DxfImagedefReactor *imagedef_reactor);
+DxfImagedefReactor *dxf_imagedef_reactor_set_id_code (DxfImagedefReactor *imagedef_reactor, int id_code);
+char *dxf_imagedef_reactor_get_dictionary_owner_soft (DxfImagedefReactor *imagedef_reactor);
+DxfImagedefReactor *dxf_imagedef_reactor_set_dictionary_owner_soft (DxfImagedefReactor *imagedef_reactor, char *dictionary_owner_soft);
+char *dxf_imagedef_reactor_get_dictionary_owner_hard (DxfImagedefReactor *imagedef_reactor);
+DxfImagedefReactor *dxf_imagedef_reactor_set_dictionary_owner_hard (DxfImagedefReactor *imagedef_reactor, char *dictionary_owner_hard);
+int32_t dxf_imagedef_reactor_get_class_version (DxfImagedefReactor *imagedef_reactor);
+DxfImagedefReactor *dxf_imagedef_reactor_set_class_version (DxfImagedefReactor *imagedef_reactor, int32_t class_version);
+char *dxf_imagedef_reactor_get_associated_image_object (DxfImagedefReactor *imagedef_reactor);
+DxfImagedefReactor *dxf_imagedef_reactor_set_associated_image_object (DxfImagedefReactor *imagedef_reactor, char *associated_image_object);
+int dxf_imagedef_reactor_get_associated_image_object_length (DxfImagedefReactor *imagedef_reactor);
+DxfImagedefReactor *dxf_imagedef_reactor_set_associated_image_object_length (DxfImagedefReactor *imagedef_reactor, int associated_image_object_length);
+DxfImagedefReactor *dxf_imagedef_reactor_get_next (DxfImagedefReactor *imagedef_reactor);
+DxfImagedefReactor *dxf_imagedef_reactor_set_next (DxfImagedefReactor *imagedef_reactor, DxfImagedefReactor *next);
 
 
 #ifdef __cplusplus
