@@ -1853,4 +1853,49 @@ dxf_imagedef_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c IMAGEDEF object from a linked
+ * list of DXF \c IMAGEDEF objects.
+ *
+ * \return pointer to the last \c IMAGEDEF object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfImagedef *
+dxf_imagedef_get_last
+(
+        DxfImagedef *imagedef
+                /*!< a pointer to a DXF \c IMAGEDEF object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (imagedef->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfImagedef *) imagedef);
+        }
+        DxfImagedef *iter = (DxfImagedef *) imagedef->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfImagedef *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfImagedef *) iter);
+}
+
+
 /* EOF*/
