@@ -1022,4 +1022,49 @@ dxf_imagedef_reactor_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c IMAGEDEF_REACTOR object from a
+ * linked list of DXF \c IMAGEDEF_REACTOR objects.
+ *
+ * \return pointer to the last \c IMAGEDEF_REACTOR object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfImagedefReactor *
+dxf_imagedef_reactor_get_last
+(
+        DxfImagedefReactor *imagedef_reactor
+                /*!< a pointer to a DXF \c IMAGEDEF_REACTOR object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (imagedef_reactor == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (imagedef_reactor->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found in the next member.\n")),
+                  __FUNCTION__);
+                return ((DxfImagedefReactor *) imagedef_reactor);
+        }
+        DxfImagedefReactor *iter = (DxfImagedefReactor *) imagedef_reactor->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfImagedefReactor *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfImagedefReactor *) iter);
+}
+
+
 /* EOF*/
