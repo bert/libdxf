@@ -253,472 +253,91 @@ dxf_insert_struct
 } DxfInsert;
 
 
-DxfInsert *
-dxf_insert_new ();
-DxfInsert *
-dxf_insert_init
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_read
-(
-        DxfFile *fp,
-        DxfInsert *insert
-);
-int
-dxf_insert_write
-(
-        DxfFile *fp,
-        DxfInsert *insert
-);
-int
-dxf_insert_free
-(
-        DxfInsert *insert
-);
-void
-dxf_insert_free_chain
-(
-        DxfInsert *inserts
-);
-int
-dxf_insert_get_id_code
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_id_code
-(
-        DxfInsert *insert,
-        int id_code
-);
-char *
-dxf_insert_get_linetype
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_linetype
-(
-        DxfInsert *insert,
-        char *linetype
-);
-char *
-dxf_insert_get_layer
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_layer
-(
-        DxfInsert *insert,
-        char *layer
-);
-double
-dxf_insert_get_elevation
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_elevation
-(
-        DxfInsert *insert,
-        double elevation
-);
-double
-dxf_insert_get_thickness
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_thickness
-(
-        DxfInsert *insert,
-        double thickness
-);
-double
-dxf_insert_get_linetype_scale
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_linetype_scale
-(
-        DxfInsert *insert,
-        double linetype_scale
-);
-int16_t
-dxf_insert_get_visibility
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_visibility
-(
-        DxfInsert *insert,
-        int16_t visibility
-);
-int
-dxf_insert_get_color
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_color
-(
-        DxfInsert *insert,
-        int color
-);
-int
-dxf_insert_get_paperspace
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_paperspace
-(
-        DxfInsert *insert,
-        int paperspace
-);
-int
-dxf_insert_get_graphics_data_size
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_graphics_data_size
-(
-        DxfInsert *insert,
-        int graphics_data_size
-);
-int16_t
-dxf_insert_get_shadow_mode
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_shadow_mode
-(
-        DxfInsert *insert,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_insert_get_binary_graphics_data
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_binary_graphics_data
-(
-        DxfInsert *insert,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_insert_get_dictionary_owner_soft
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_dictionary_owner_soft
-(
-        DxfInsert *insert,
-        char *dictionary_owner_soft
-);
-char *
-dxf_insert_get_material
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_material
-(
-        DxfInsert *insert,
-        char *material
-);
-char *
-dxf_insert_get_dictionary_owner_hard
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_dictionary_owner_hard
-(
-        DxfInsert *insert,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_insert_get_lineweight
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_lineweight
-(
-        DxfInsert *insert,
-        int16_t lineweight
-);
-char *
-dxf_insert_get_plot_style_name
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_plot_style_name
-(
-        DxfInsert *insert,
-        char *plot_style_name
-);
-long
-dxf_insert_get_color_value
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_color_value
-(
-        DxfInsert *insert,
-        long color_value
-);
-char *
-dxf_insert_get_color_name
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_color_name
-(
-        DxfInsert *insert,
-        char *color_name
-);
-long
-dxf_insert_get_transparency
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_transparency
-(
-        DxfInsert *insert,
-        long transparency
-);
-char *
-dxf_insert_get_block_name
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_block_name
-(
-        DxfInsert *insert,
-        char *block_name
-);
-DxfPoint *
-dxf_insert_get_p0
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_p0
-(
-        DxfInsert *insert,
-        DxfPoint *p0
-);
-double
-dxf_insert_get_x0
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_x0
-(
-        DxfInsert *insert,
-        double x0
-);
-double
-dxf_insert_get_y0
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_y0
-(
-        DxfInsert *insert,
-        double y0
-);
-double
-dxf_insert_get_z0
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_z0
-(
-        DxfInsert *insert,
-        double z0
-);
-double
-dxf_insert_get_rel_x_scale
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_rel_x_scale
-(
-        DxfInsert *insert,
-        double rel_x_scale
-);
-double
-dxf_insert_get_rel_y_scale
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_rel_y_scale
-(
-        DxfInsert *insert,
-        double rel_y_scale
-);
-double
-dxf_insert_get_rel_z_scale
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_rel_z_scale
-(
-        DxfInsert *insert,
-        double rel_z_scale
-);
-double
-dxf_insert_get_column_spacing
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_column_spacing
-(
-        DxfInsert *insert,
-        double column_spacing
-);
-double
-dxf_insert_get_row_spacing
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_row_spacing
-(
-        DxfInsert *insert,
-        double row_spacing
-);
-double
-dxf_insert_get_rot_angle
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_rot_angle
-(
-        DxfInsert *insert,
-        double rot_angle
-);
-int
-dxf_insert_get_attributes_follow
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_attributes_follow
-(
-        DxfInsert *insert,
-        int attributes_follow
-);
-int
-dxf_insert_get_columns
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_columns
-(
-        DxfInsert *insert,
-        int columns
-);
-int
-dxf_insert_get_rows
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_rows
-(
-        DxfInsert *insert,
-        int rows
-);
-double
-dxf_insert_get_extr_x0
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_extr_x0
-(
-        DxfInsert *insert,
-        double extr_x0
-);
-double
-dxf_insert_get_extr_y0
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_extr_y0
-(
-        DxfInsert *insert,
-        double extr_y0
-);
-double
-dxf_insert_get_extr_z0
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_extr_z0
-(
-        DxfInsert *insert,
-        double extr_z0
-);
-DxfInsert *
-dxf_insert_set_extrusion_vector_from_point
-(
-        DxfInsert *insert,
-        DxfPoint *point
-);
-DxfInsert *
-dxf_insert_set_extrusion_vector
-(
-        DxfInsert *insert,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0
-);
-DxfInsert *
-dxf_insert_get_next
-(
-        DxfInsert *insert
-);
-DxfInsert *
-dxf_insert_set_next
-(
-        DxfInsert *insert,
-        DxfInsert *next
-);
-DxfInsert *
-dxf_insert_get_last
-(
-        DxfInsert *insert
-);
+DxfInsert *dxf_insert_new ();
+DxfInsert *dxf_insert_init (DxfInsert *insert);
+DxfInsert *dxf_insert_read (DxfFile *fp, DxfInsert *insert);
+int dxf_insert_write (DxfFile *fp, DxfInsert *insert);
+int dxf_insert_free (DxfInsert *insert);
+void dxf_insert_free_chain (DxfInsert *inserts);
+int dxf_insert_get_id_code (DxfInsert *insert);
+DxfInsert *dxf_insert_set_id_code (DxfInsert *insert, int id_code);
+char *dxf_insert_get_linetype (DxfInsert *insert);
+DxfInsert *dxf_insert_set_linetype (DxfInsert *insert, char *linetype);
+char *dxf_insert_get_layer (DxfInsert *insert);
+DxfInsert *dxf_insert_set_layer (DxfInsert *insert, char *layer);
+double dxf_insert_get_elevation (DxfInsert *insert);
+DxfInsert *dxf_insert_set_elevation (DxfInsert *insert, double elevation);
+double dxf_insert_get_thickness (DxfInsert *insert);
+DxfInsert *dxf_insert_set_thickness (DxfInsert *insert, double thickness);
+double dxf_insert_get_linetype_scale (DxfInsert *insert);
+DxfInsert *dxf_insert_set_linetype_scale (DxfInsert *insert, double linetype_scale);
+int16_t dxf_insert_get_visibility (DxfInsert *insert);
+DxfInsert *dxf_insert_set_visibility (DxfInsert *insert, int16_t visibility);
+int dxf_insert_get_color (DxfInsert *insert);
+DxfInsert *dxf_insert_set_color (DxfInsert *insert, int color);
+int dxf_insert_get_paperspace (DxfInsert *insert);
+DxfInsert *dxf_insert_set_paperspace (DxfInsert *insert, int paperspace);
+int dxf_insert_get_graphics_data_size (DxfInsert *insert);
+DxfInsert *dxf_insert_set_graphics_data_size (DxfInsert *insert, int graphics_data_size);
+int16_t dxf_insert_get_shadow_mode (DxfInsert *insert);
+DxfInsert *dxf_insert_set_shadow_mode (DxfInsert *insert, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_insert_get_binary_graphics_data (DxfInsert *insert);
+DxfInsert *dxf_insert_set_binary_graphics_data (DxfInsert *insert, DxfBinaryGraphicsData *data);
+char *dxf_insert_get_dictionary_owner_soft (DxfInsert *insert);
+DxfInsert *dxf_insert_set_dictionary_owner_soft (DxfInsert *insert, char *dictionary_owner_soft);
+char *dxf_insert_get_material (DxfInsert *insert);
+DxfInsert *dxf_insert_set_material (DxfInsert *insert, char *material);
+char *dxf_insert_get_dictionary_owner_hard (DxfInsert *insert);
+DxfInsert *dxf_insert_set_dictionary_owner_hard (DxfInsert *insert, char *dictionary_owner_hard);
+int16_t dxf_insert_get_lineweight (DxfInsert *insert);
+DxfInsert *dxf_insert_set_lineweight (DxfInsert *insert, int16_t lineweight);
+char *dxf_insert_get_plot_style_name (DxfInsert *insert);
+DxfInsert *dxf_insert_set_plot_style_name (DxfInsert *insert, char *plot_style_name);
+long dxf_insert_get_color_value (DxfInsert *insert);
+DxfInsert *dxf_insert_set_color_value (DxfInsert *insert, long color_value);
+char *dxf_insert_get_color_name (DxfInsert *insert);
+DxfInsert *dxf_insert_set_color_name (DxfInsert *insert, char *color_name);
+long dxf_insert_get_transparency (DxfInsert *insert);
+DxfInsert *dxf_insert_set_transparency (DxfInsert *insert, long transparency);
+char *dxf_insert_get_block_name (DxfInsert *insert);
+DxfInsert *dxf_insert_set_block_name (DxfInsert *insert, char *block_name);
+DxfPoint *dxf_insert_get_p0 (DxfInsert *insert);
+DxfInsert *dxf_insert_set_p0 (DxfInsert *insert, DxfPoint *p0);
+double dxf_insert_get_x0 (DxfInsert *insert);
+DxfInsert *dxf_insert_set_x0 (DxfInsert *insert, double x0);
+double dxf_insert_get_y0 (DxfInsert *insert);
+DxfInsert *dxf_insert_set_y0 (DxfInsert *insert, double y0);
+double dxf_insert_get_z0 (DxfInsert *insert);
+DxfInsert *dxf_insert_set_z0 (DxfInsert *insert, double z0);
+double dxf_insert_get_rel_x_scale (DxfInsert *insert);
+DxfInsert *dxf_insert_set_rel_x_scale (DxfInsert *insert, double rel_x_scale);
+double dxf_insert_get_rel_y_scale (DxfInsert *insert);
+DxfInsert *dxf_insert_set_rel_y_scale (DxfInsert *insert, double rel_y_scale);
+double dxf_insert_get_rel_z_scale (DxfInsert *insert);
+DxfInsert *dxf_insert_set_rel_z_scale (DxfInsert *insert, double rel_z_scale);
+double dxf_insert_get_column_spacing (DxfInsert *insert);
+DxfInsert *dxf_insert_set_column_spacing (DxfInsert *insert, double column_spacing);
+double dxf_insert_get_row_spacing (DxfInsert *insert);
+DxfInsert *dxf_insert_set_row_spacing (DxfInsert *insert, double row_spacing);
+double dxf_insert_get_rot_angle (DxfInsert *insert);
+DxfInsert *dxf_insert_set_rot_angle (DxfInsert *insert, double rot_angle);
+int dxf_insert_get_attributes_follow (DxfInsert *insert);
+DxfInsert *dxf_insert_set_attributes_follow (DxfInsert *insert, int attributes_follow);
+int dxf_insert_get_columns (DxfInsert *insert);
+DxfInsert *dxf_insert_set_columns (DxfInsert *insert, int columns);
+int dxf_insert_get_rows (DxfInsert *insert);
+DxfInsert *dxf_insert_set_rows (DxfInsert *insert, int rows);
+double dxf_insert_get_extr_x0 (DxfInsert *insert);
+DxfInsert *dxf_insert_set_extr_x0 (DxfInsert *insert, double extr_x0);
+double dxf_insert_get_extr_y0 (DxfInsert *insert);
+DxfInsert *dxf_insert_set_extr_y0 (DxfInsert *insert, double extr_y0);
+double dxf_insert_get_extr_z0 (DxfInsert *insert);
+DxfInsert *dxf_insert_set_extr_z0 (DxfInsert *insert, double extr_z0);
+DxfInsert *dxf_insert_set_extrusion_vector_from_point (DxfInsert *insert, DxfPoint *point);
+DxfInsert *dxf_insert_set_extrusion_vector (DxfInsert *insert, double extr_x0, double extr_y0, double extr_z0);
+DxfInsert *dxf_insert_get_next (DxfInsert *insert);
+DxfInsert *dxf_insert_set_next (DxfInsert *insert, DxfInsert *next);
+DxfInsert *dxf_insert_get_last (DxfInsert *insert);
 
 
 #ifdef __cplusplus
