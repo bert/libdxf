@@ -1634,7 +1634,7 @@ dxf_layer_set_next
  * \warning No checks are performed on the returned pointer.
  */
 DxfLayer *
-dxf_layer_free_get_last
+dxf_layer_get_last
 (
         DxfLayer *layer
                 /*!< a pointer to a DXF \c LAYER entity. */

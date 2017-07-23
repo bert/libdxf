@@ -301,7 +301,7 @@ dxf_layer_set_next
         DxfLayer *next
 );
 DxfLayer *
-dxf_layer_free_get_last
+dxf_layer_get_last
 (
         DxfLayer *layer
 );
