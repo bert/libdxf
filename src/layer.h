@@ -109,202 +109,43 @@ dxf_layer_struct
 } DxfLayer;
 
 
-DxfLayer *
-dxf_layer_new ();
-DxfLayer *
-dxf_layer_init
-(
-        DxfLayer *layer
-);
-DxfLayer *
-dxf_layer_read
-(
-        DxfFile *fp,
-        DxfLayer *layer
-);
-int
-dxf_layer_write
-(
-        DxfFile *fp,
-        DxfLayer *layer
-);
-int
-dxf_layer_free
-(
-        DxfLayer *layer
-);
-void
-dxf_layer_free_chain
-(
-        DxfLayer *layers
-);
-int
-dxf_layer_get_id_code
-(
-        DxfLayer *layer
-);
-DxfLayer *
-dxf_layer_set_id_code
-(
-        DxfLayer *layer,
-        int id_code
-);
-char *
-dxf_layer_get_layer_name
-(
-        DxfLayer *layer
-);
-DxfLayer *
-dxf_layer_set_layer_name
-(
-        DxfLayer *layer,
-        char *layer_name
-);
-char *
-dxf_layer_get_linetype
-(
-        DxfLayer *layer
-);
-DxfLayer *
-dxf_layer_set_linetype
-(
-        DxfLayer *layer,
-        char *linetype
-);
-int
-dxf_layer_get_color
-(
-        DxfLayer *layer
-);
-DxfLayer *
-dxf_layer_set_color
-(
-        DxfLayer *layer,
-        int color
-);
-int
-dxf_layer_is_off
-(
-        DxfLayer *layer
-);
-int
-dxf_layer_get_flag
-(
-        DxfLayer *layer
-);
-DxfLayer *
-dxf_layer_set_flag
-(
-        DxfLayer *layer,
-        int flag
-);
-int
-dxf_layer_is_frozen
-(
-        DxfLayer *layer
-);
-int
-dxf_layer_is_locked
-(
-        DxfLayer *layer
-);
-int
-dxf_layer_is_xreferenced
-(
-        DxfLayer *layer
-);
-int
-dxf_layer_is_xresolved
-(
-        DxfLayer *layer
-);
-int
-dxf_layer_is_referenced
-(
-        DxfLayer *layer
-);
-int
-dxf_layer_get_plotting_flag
-(
-        DxfLayer *layer
-);
-DxfLayer *
-dxf_layer_set_plotting_flag
-(
-        DxfLayer *layer,
-        int plotting_flag
-);
-char *
-dxf_layer_get_dictionary_owner_soft
-(
-        DxfLayer *layer
-);
-DxfLayer *
-dxf_layer_set_dictionary_owner_soft
-(
-        DxfLayer *layer,
-        char *dictionary_owner_soft
-);
-char *
-dxf_layer_get_material
-(
-        DxfLayer *layer
-);
-DxfLayer *
-dxf_layer_set_material
-(
-        DxfLayer *layer,
-        char *material
-);
-char *
-dxf_layer_get_dictionary_owner_hard
-(
-        DxfLayer *layer
-);
-DxfLayer *
-dxf_layer_set_dictionary_owner_hard
-(
-        DxfLayer *layer,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_layer_get_lineweight
-(
-        DxfLayer *layer
-);
-DxfLayer *
-dxf_layer_set_lineweight
-(
-        DxfLayer *layer,
-        int16_t lineweight
-);
-char *
-dxf_layer_get_plot_style_name
-(
-        DxfLayer *layer
-);
-DxfLayer *
-dxf_layer_set_plot_style_name
-(
-        DxfLayer *layer,
-        char *plot_style_name
-);
-DxfLayer *
-dxf_layer_get_next
-(
-        DxfLayer *layer
-);
-DxfLayer *
-dxf_layer_set_next
-(
-        DxfLayer *layer,
-        DxfLayer *next
-);
-DxfLayer *
-dxf_layer_get_last
-(
-        DxfLayer *layer
-);
+DxfLayer *dxf_layer_new ();
+DxfLayer *dxf_layer_init (DxfLayer *layer);
+DxfLayer *dxf_layer_read (DxfFile *fp, DxfLayer *layer);
+int dxf_layer_write (DxfFile *fp, DxfLayer *layer);
+int dxf_layer_free (DxfLayer *layer);
+void dxf_layer_free_chain (DxfLayer *layers);
+int dxf_layer_get_id_code (DxfLayer *layer);
+DxfLayer *dxf_layer_set_id_code (DxfLayer *layer, int id_code);
+char *dxf_layer_get_layer_name (DxfLayer *layer);
+DxfLayer *dxf_layer_set_layer_name (DxfLayer *layer, char *layer_name);
+char *dxf_layer_get_linetype (DxfLayer *layer);
+DxfLayer *dxf_layer_set_linetype (DxfLayer *layer, char *linetype);
+int dxf_layer_get_color (DxfLayer *layer);
+DxfLayer *dxf_layer_set_color (DxfLayer *layer, int color);
+int dxf_layer_is_off (DxfLayer *layer);
+int dxf_layer_get_flag (DxfLayer *layer);
+DxfLayer *dxf_layer_set_flag (DxfLayer *layer, int flag);
+int dxf_layer_is_frozen (DxfLayer *layer);
+int dxf_layer_is_locked (DxfLayer *layer);
+int dxf_layer_is_xreferenced (DxfLayer *layer);
+int dxf_layer_is_xresolved (DxfLayer *layer);
+int dxf_layer_is_referenced (DxfLayer *layer);
+int dxf_layer_get_plotting_flag (DxfLayer *layer);
+DxfLayer *dxf_layer_set_plotting_flag (DxfLayer *layer, int plotting_flag);
+char *dxf_layer_get_dictionary_owner_soft (DxfLayer *layer);
+DxfLayer *dxf_layer_set_dictionary_owner_soft (DxfLayer *layer, char *dictionary_owner_soft);
+char *dxf_layer_get_material (DxfLayer *layer);
+DxfLayer *dxf_layer_set_material (DxfLayer *layer, char *material);
+char *dxf_layer_get_dictionary_owner_hard (DxfLayer *layer);
+DxfLayer *dxf_layer_set_dictionary_owner_hard (DxfLayer *layer, char *dictionary_owner_hard);
+int16_t dxf_layer_get_lineweight (DxfLayer *layer);
+DxfLayer *dxf_layer_set_lineweight (DxfLayer *layer, int16_t lineweight);
+char *dxf_layer_get_plot_style_name (DxfLayer *layer);
+DxfLayer *dxf_layer_set_plot_style_name (DxfLayer *layer, char *plot_style_name);
+DxfLayer *dxf_layer_get_next (DxfLayer *layer);
+DxfLayer *dxf_layer_set_next (DxfLayer *layer, DxfLayer *next);
+DxfLayer *dxf_layer_get_last (DxfLayer *layer);
 
 
 #ifdef __cplusplus
