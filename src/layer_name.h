@@ -62,61 +62,17 @@ dxf_layer_name_struct
 } DxfLayerName;
 
 
-DxfLayerName *
-dxf_layer_name_new ();
-DxfLayerName *
-dxf_layer_name_init
-(
-        DxfLayerName *layer_name
-);
-int
-dxf_layer_name_free
-(
-        DxfLayerName *layer_name
-);
-void
-dxf_layer_name_free_chain
-(
-        DxfLayerName *layer_names
-);
-char *
-dxf_layer_name_get_name
-(
-        DxfLayerName *layer_name
-);
-DxfLayerName *
-dxf_layer_name_set_name
-(
-        DxfLayerName *layer_name,
-        char *name
-);
-int
-dxf_layer_name_get_length
-(
-        DxfLayerName *layer_name
-);
-DxfLayerName *
-dxf_layer_name_set_length
-(
-        DxfLayerName *layer_name,
-        int length
-);
-DxfLayerName *
-dxf_layer_name_get_next
-(
-        DxfLayerName *layer_name
-);
-DxfLayerName *
-dxf_layer_name_set_next
-(
-        DxfLayerName *layer_name,
-        DxfLayerName *next
-);
-DxfLayerName *
-dxf_layer_name_get_last
-(
-        DxfLayerName *layer_name
-);
+DxfLayerName *dxf_layer_name_new ();
+DxfLayerName *dxf_layer_name_init (DxfLayerName *layer_name);
+int dxf_layer_name_free (DxfLayerName *layer_name);
+void dxf_layer_name_free_chain (DxfLayerName *layer_names);
+char *dxf_layer_name_get_name (DxfLayerName *layer_name);
+DxfLayerName *dxf_layer_name_set_name (DxfLayerName *layer_name, char *name);
+int dxf_layer_name_get_length (DxfLayerName *layer_name);
+DxfLayerName *dxf_layer_name_set_length (DxfLayerName *layer_name, int length);
+DxfLayerName *dxf_layer_name_get_next (DxfLayerName *layer_name);
+DxfLayerName *dxf_layer_name_set_next (DxfLayerName *layer_name, DxfLayerName *next);
+DxfLayerName *dxf_layer_name_get_last (DxfLayerName *layer_name);
 
 
 #ifdef __cplusplus
