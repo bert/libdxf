@@ -209,502 +209,97 @@ dxf_leader_struct
 } DxfLeader;
 
 
-DxfLeader *
-dxf_leader_new ();
-DxfLeader *
-dxf_leader_init
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_read
-(
-        DxfFile *fp,
-        DxfLeader *leader
-);
-int
-dxf_leader_write
-(
-        DxfFile *fp,
-        DxfLeader *leader
-);
-int
-dxf_leader_free
-(
-        DxfLeader *leader
-);
-void
-dxf_leader_free_chain
-(
-        DxfLeader *leaders
-);
-int
-dxf_leader_get_id_code
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_id_code
-(
-        DxfLeader *leader,
-        int id_code
-);
-char *
-dxf_leader_get_linetype
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_linetype
-(
-        DxfLeader *leader,
-        char *linetype
-);
-char *
-dxf_leader_get_layer
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_layer
-(
-        DxfLeader *leader,
-        char *layer
-);
-double
-dxf_leader_get_elevation
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_elevation
-(
-        DxfLeader *leader,
-        double elevation
-);
-double
-dxf_leader_get_thickness
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_thickness
-(
-        DxfLeader *leader,
-        double thickness
-);
-double
-dxf_leader_get_linetype_scale
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_linetype_scale
-(
-        DxfLeader *leader,
-        double linetype_scale
-);
-int16_t
-dxf_leader_get_visibility
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_visibility
-(
-        DxfLeader *leader,
-        int16_t visibility
-);
-int
-dxf_leader_get_color
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_color
-(
-        DxfLeader *leader,
-        int color
-);
-int
-dxf_leader_get_paperspace
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_paperspace
-(
-        DxfLeader *leader,
-        int paperspace
-);
-char *
-dxf_leader_get_dictionary_owner_soft
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_dictionary_owner_soft
-(
-        DxfLeader *leader,
-        char *dictionary_owner_soft
-);
-char *
-dxf_leader_get_dictionary_owner_hard
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_dictionary_owner_hard
-(
-        DxfLeader *leader,
-        char *dictionary_owner_hard
-);
-char *
-dxf_leader_get_dimension_style_name
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_dimension_style_name
-(
-        DxfLeader *leader,
-        char *dimension_style_name
-);
-DxfPoint *
-dxf_leader_get_p0
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_p0
-(
-        DxfLeader *leader,
-        DxfPoint *p0
-);
-double
-dxf_leader_get_x0
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_x0
-(
-        DxfLeader *leader,
-        double x0
-);
-double
-dxf_leader_get_y0
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_y0
-(
-        DxfLeader *leader,
-        double y0
-);
-double
-dxf_leader_get_z0
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_z0
-(
-        DxfLeader *leader,
-        double z0
-);
-double
-dxf_leader_get_text_annotation_height
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_text_annotation_height
-(
-        DxfLeader *leader,
-        double text_annotation_height
-);
-double
-dxf_leader_get_text_annotation_width
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_text_annotation_width
-(
-        DxfLeader *leader,
-        double text_annotation_width
-);
-int
-dxf_leader_get_arrow_head_flag
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_arrow_head_flag
-(
-        DxfLeader *leader,
-        int arrow_head_flag
-);
-int
-dxf_leader_get_path_type
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_path_type
-(
-        DxfLeader *leader,
-        int path_type
-);
-int
-dxf_leader_get_creation_flag
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_creation_flag
-(
-        DxfLeader *leader,
-        int creation_flag
-);
-int
-dxf_leader_get_hookline_direction_flag
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_hookline_direction_flag
-(
-        DxfLeader *leader,
-        int hookline_direction_flag
-);
-int
-dxf_leader_get_hookline_flag
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_hookline_flag
-(
-        DxfLeader *leader,
-        int hookline_flag
-);
-int
-dxf_leader_get_number_vertices
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_number_vertices
-(
-        DxfLeader *leader,
-        int number_vertices
-);
-int
-dxf_leader_get_leader_color
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_leader_color
-(
-        DxfLeader *leader,
-        int leader_color
-);
-double
-dxf_leader_get_extr_x0
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_extr_x0
-(
-        DxfLeader *leader,
-        double extr_x0
-);
-double
-dxf_leader_get_extr_y0
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_extr_y0
-(
-        DxfLeader *leader,
-        double extr_y0
-);
-double
-dxf_leader_get_extr_z0
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_extr_z0
-(
-        DxfLeader *leader,
-        double extr_z0
-);
-DxfPoint *
-dxf_leader_get_p1
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_p1
-(
-        DxfLeader *leader,
-        DxfPoint *p1
-);
-double
-dxf_leader_get_x1
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_x1
-(
-        DxfLeader *leader,
-        double x1
-);
-double
-dxf_leader_get_y1
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_y1
-(
-        DxfLeader *leader,
-        double y1
-);
-double
-dxf_leader_get_z1
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_z1
-(
-        DxfLeader *leader,
-        double z1
-);
-DxfPoint *
-dxf_leader_get_p2
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_p2
-(
-        DxfLeader *leader,
-        DxfPoint *p2
-);
-double
-dxf_leader_get_x2
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_x2
-(
-        DxfLeader *leader,
-        double x2
-);
-double
-dxf_leader_get_y2
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_y2
-(
-        DxfLeader *leader,
-        double y2
-);
-double
-dxf_leader_get_z2
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_z2
-(
-        DxfLeader *leader,
-        double z2
-);
-DxfPoint *
-dxf_leader_get_p3
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_p3
-(
-        DxfLeader *leader,
-        DxfPoint *p3
-);
-double
-dxf_leader_get_x3
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_x3
-(
-        DxfLeader *leader,
-        double x3
-);
-double
-dxf_leader_get_y3
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_y3
-(
-        DxfLeader *leader,
-        double y3
-);
-double
-dxf_leader_get_z3
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_z3
-(
-        DxfLeader *leader,
-        double z3
-);
-char *
-dxf_leader_get_annotation_reference_hard
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_annotation_reference_hard
-(
-        DxfLeader *leader,
-        char *annotation_reference_hard
-);
-DxfLeader *
-dxf_leader_get_next
-(
-        DxfLeader *leader
-);
-DxfLeader *
-dxf_leader_set_next
-(
-        DxfLeader *leader,
-        DxfLeader *next
-);
-DxfLeader *
-dxf_leader_get_last
-(
-        DxfLeader *leader
-);
+DxfLeader *dxf_leader_new ();
+DxfLeader *dxf_leader_init (DxfLeader *leader);
+DxfLeader *dxf_leader_read (DxfFile *fp, DxfLeader *leader);
+int dxf_leader_write (DxfFile *fp, DxfLeader *leader);
+int dxf_leader_free (DxfLeader *leader);
+void dxf_leader_free_chain (DxfLeader *leaders);
+int dxf_leader_get_id_code (DxfLeader *leader);
+DxfLeader *dxf_leader_set_id_code (DxfLeader *leader, int id_code);
+char *dxf_leader_get_linetype (DxfLeader *leader);
+DxfLeader *dxf_leader_set_linetype (DxfLeader *leader, char *linetype);
+char *dxf_leader_get_layer (DxfLeader *leader);
+DxfLeader *dxf_leader_set_layer (DxfLeader *leader, char *layer);
+double dxf_leader_get_elevation (DxfLeader *leader);
+DxfLeader *dxf_leader_set_elevation (DxfLeader *leader, double elevation);
+double dxf_leader_get_thickness (DxfLeader *leader);
+DxfLeader *dxf_leader_set_thickness (DxfLeader *leader, double thickness);
+double dxf_leader_get_linetype_scale (DxfLeader *leader);
+DxfLeader *dxf_leader_set_linetype_scale (DxfLeader *leader, double linetype_scale);
+int16_t dxf_leader_get_visibility (DxfLeader *leader);
+DxfLeader *dxf_leader_set_visibility (DxfLeader *leader, int16_t visibility);
+int dxf_leader_get_color (DxfLeader *leader);
+DxfLeader *dxf_leader_set_color (DxfLeader *leader, int color);
+int dxf_leader_get_paperspace (DxfLeader *leader);
+DxfLeader *dxf_leader_set_paperspace (DxfLeader *leader, int paperspace);
+char *dxf_leader_get_dictionary_owner_soft (DxfLeader *leader);
+DxfLeader *dxf_leader_set_dictionary_owner_soft (DxfLeader *leader, char *dictionary_owner_soft);
+char *dxf_leader_get_dictionary_owner_hard (DxfLeader *leader);
+DxfLeader *dxf_leader_set_dictionary_owner_hard (DxfLeader *leader, char *dictionary_owner_hard);
+char *dxf_leader_get_dimension_style_name (DxfLeader *leader);
+DxfLeader *dxf_leader_set_dimension_style_name (DxfLeader *leader, char *dimension_style_name);
+DxfPoint *dxf_leader_get_p0 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_p0 (DxfLeader *leader, DxfPoint *p0);
+double dxf_leader_get_x0 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_x0 (DxfLeader *leader, double x0);
+double dxf_leader_get_y0 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_y0 (DxfLeader *leader, double y0);
+double dxf_leader_get_z0 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_z0 (DxfLeader *leader, double z0);
+double dxf_leader_get_text_annotation_height (DxfLeader *leader);
+DxfLeader *dxf_leader_set_text_annotation_height (DxfLeader *leader, double text_annotation_height);
+double dxf_leader_get_text_annotation_width (DxfLeader *leader);
+DxfLeader *dxf_leader_set_text_annotation_width (DxfLeader *leader, double text_annotation_width);
+int dxf_leader_get_arrow_head_flag (DxfLeader *leader);
+DxfLeader *dxf_leader_set_arrow_head_flag (DxfLeader *leader, int arrow_head_flag);
+int dxf_leader_get_path_type (DxfLeader *leader);
+DxfLeader *dxf_leader_set_path_type (DxfLeader *leader, int path_type);
+int dxf_leader_get_creation_flag (DxfLeader *leader);
+DxfLeader *dxf_leader_set_creation_flag (DxfLeader *leader, int creation_flag);
+int dxf_leader_get_hookline_direction_flag (DxfLeader *leader);
+DxfLeader *dxf_leader_set_hookline_direction_flag (DxfLeader *leader, int hookline_direction_flag);
+int dxf_leader_get_hookline_flag (DxfLeader *leader);
+DxfLeader *dxf_leader_set_hookline_flag (DxfLeader *leader, int hookline_flag);
+int dxf_leader_get_number_vertices (DxfLeader *leader);
+DxfLeader *dxf_leader_set_number_vertices (DxfLeader *leader, int number_vertices);
+int dxf_leader_get_leader_color (DxfLeader *leader);
+DxfLeader *dxf_leader_set_leader_color (DxfLeader *leader, int leader_color);
+double dxf_leader_get_extr_x0 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_extr_x0 (DxfLeader *leader, double extr_x0);
+double dxf_leader_get_extr_y0 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_extr_y0 (DxfLeader *leader, double extr_y0);
+double dxf_leader_get_extr_z0 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_extr_z0 (DxfLeader *leader, double extr_z0);
+DxfPoint *dxf_leader_get_p1 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_p1 (DxfLeader *leader, DxfPoint *p1);
+double dxf_leader_get_x1 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_x1 (DxfLeader *leader, double x1);
+double dxf_leader_get_y1 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_y1 (DxfLeader *leader, double y1);
+double dxf_leader_get_z1 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_z1 (DxfLeader *leader, double z1);
+DxfPoint *dxf_leader_get_p2 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_p2 (DxfLeader *leader, DxfPoint *p2);
+double dxf_leader_get_x2 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_x2 (DxfLeader *leader, double x2);
+double dxf_leader_get_y2 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_y2 (DxfLeader *leader, double y2);
+double dxf_leader_get_z2 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_z2 (DxfLeader *leader, double z2);
+DxfPoint *dxf_leader_get_p3 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_p3 (DxfLeader *leader, DxfPoint *p3);
+double dxf_leader_get_x3 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_x3 (DxfLeader *leader, double x3);
+double dxf_leader_get_y3 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_y3 (DxfLeader *leader, double y3);
+double dxf_leader_get_z3 (DxfLeader *leader);
+DxfLeader *dxf_leader_set_z3 (DxfLeader *leader, double z3);
+char *dxf_leader_get_annotation_reference_hard (DxfLeader *leader);
+DxfLeader *dxf_leader_set_annotation_reference_hard (DxfLeader *leader, char *annotation_reference_hard);
+DxfLeader *dxf_leader_get_next (DxfLeader *leader);
+DxfLeader *dxf_leader_set_next (DxfLeader *leader, DxfLeader *next);
+DxfLeader *dxf_leader_get_last (DxfLeader *leader);
 
 
 #ifdef __cplusplus
