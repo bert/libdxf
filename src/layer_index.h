@@ -111,95 +111,23 @@ dxf_layer_index_struct
 } DxfLayerIndex;
 
 
-DxfLayerIndex *
-dxf_layer_index_new ();
-DxfLayerIndex *
-dxf_layer_index_init
-(
-        DxfLayerIndex *layer_index
-);
-DxfLayerIndex *
-dxf_layer_index_read
-(
-        DxfFile *fp,
-        DxfLayerIndex *layer_index
-);
-int
-dxf_layer_index_write
-(
-        DxfFile *fp,
-        DxfLayerIndex *layer_index
-);
-int
-dxf_layer_index_free
-(
-        DxfLayerIndex *layer_index
-);
-void
-dxf_layer_index_free_chain
-(
-        DxfLayerIndex *layer_indices
-);
-int
-dxf_layer_index_get_id_code
-(
-        DxfLayerIndex *layer_index
-);
-DxfLayerIndex *
-dxf_layer_index_set_id_code
-(
-        DxfLayerIndex *layer_index,
-        int id_code
-);
-char *
-dxf_layer_index_get_dictionary_owner_soft
-(
-        DxfLayerIndex *layer_index
-);
-DxfLayerIndex *
-dxf_layer_index_set_dictionary_owner_soft
-(
-        DxfLayerIndex *layer_index,
-        char *dictionary_owner_soft
-);
-char *
-dxf_layer_index_get_dictionary_owner_hard
-(
-        DxfLayerIndex *layer_index
-);
-DxfLayerIndex *
-dxf_layer_index_set_dictionary_owner_hard
-(
-        DxfLayerIndex *layer_index,
-        char *dictionary_owner_hard
-);
-double
-dxf_layer_index_get_time_stamp
-(
-        DxfLayerIndex *layer_index
-);
-DxfLayerIndex *
-dxf_layer_index_set_time_stamp
-(
-        DxfLayerIndex *layer_index,
-        double time_stamp
-);
-DxfLayerIndex *
-dxf_layer_index_get_next
-(
-        DxfLayerIndex *layer_index
-);
-DxfLayerIndex *
-dxf_layer_index_set_next
-(
-        DxfLayerIndex *layer_index,
-        DxfLayerIndex *next
-);
-DxfLayerIndex *
-dxf_layer_index_get_last
-(
-        DxfLayerIndex *layer_index
-);
+DxfLayerIndex *dxf_layer_index_new ();
+DxfLayerIndex *dxf_layer_index_init (DxfLayerIndex *layer_index);
+DxfLayerIndex *dxf_layer_index_read (DxfFile *fp, DxfLayerIndex *layer_index);
+int dxf_layer_index_write (DxfFile *fp, DxfLayerIndex *layer_index);
+int dxf_layer_index_free (DxfLayerIndex *layer_index);
+void dxf_layer_index_free_chain (DxfLayerIndex *layer_indices);
+int dxf_layer_index_get_id_code (DxfLayerIndex *layer_index);
+DxfLayerIndex *dxf_layer_index_set_id_code (DxfLayerIndex *layer_index, int id_code);
+char *dxf_layer_index_get_dictionary_owner_soft (DxfLayerIndex *layer_index);
+DxfLayerIndex *dxf_layer_index_set_dictionary_owner_soft (DxfLayerIndex *layer_index, char *dictionary_owner_soft);
+char *dxf_layer_index_get_dictionary_owner_hard (DxfLayerIndex *layer_index);
+DxfLayerIndex *dxf_layer_index_set_dictionary_owner_hard (DxfLayerIndex *layer_index, char *dictionary_owner_hard);
+double dxf_layer_index_get_time_stamp (DxfLayerIndex *layer_index);
+DxfLayerIndex *dxf_layer_index_set_time_stamp (DxfLayerIndex *layer_index, double time_stamp);
+DxfLayerIndex *dxf_layer_index_get_next (DxfLayerIndex *layer_index);
+DxfLayerIndex *dxf_layer_index_set_next (DxfLayerIndex *layer_index, DxfLayerIndex *next);
+DxfLayerIndex *dxf_layer_index_get_last (DxfLayerIndex *layer_index);
 
 
 #ifdef __cplusplus
