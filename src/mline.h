@@ -280,614 +280,117 @@ dxf_mline_struct
 } DxfMline;
 
 
-DxfMline *
-dxf_mline_new ();
-DxfMline *
-dxf_mline_init
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_read
-(
-        DxfFile *fp,
-        DxfMline *mline
-);
-int
-dxf_mline_write
-(
-        DxfFile *fp,
-        DxfMline *mline
-);
-int
-dxf_mline_free
-(
-        DxfMline *mline
-);
-void
-dxf_mline_free_chain
-(
-        DxfMline *mlines
-);
-int
-dxf_mline_get_id_code
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_id_code
-(
-        DxfMline *mline,
-        int id_code
-);
-char *
-dxf_mline_get_linetype
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_linetype
-(
-        DxfMline *mline,
-        char *linetype
-);
-char *
-dxf_mline_get_layer
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_layer
-(
-        DxfMline *mline,
-        char *layer
-);
-double
-dxf_mline_get_elevation
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_elevation
-(
-        DxfMline *mline,
-        double elevation
-);
-double
-dxf_mline_get_thickness
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_thickness
-(
-        DxfMline *mline,
-        double thickness
-);
-double
-dxf_mline_get_linetype_scale
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_linetype_scale
-(
-        DxfMline *mline,
-        double linetype_scale
-);
-int16_t
-dxf_mline_get_visibility
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_visibility
-(
-        DxfMline *mline,
-        int16_t visibility
-);
-int
-dxf_mline_get_color
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_color
-(
-        DxfMline *mline,
-        int color
-);
-int
-dxf_mline_get_paperspace
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_paperspace
-(
-        DxfMline *mline,
-        int paperspace
-);
-int
-dxf_mline_get_graphics_data_size
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_graphics_data_size
-(
-        DxfMline *mline,
-        int graphics_data_size
-);
-int16_t
-dxf_mline_get_shadow_mode
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_shadow_mode
-(
-        DxfMline *mline,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_mline_get_binary_graphics_data
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_binary_graphics_data
-(
-        DxfMline *mline,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_mline_get_dictionary_owner_soft
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_dictionary_owner_soft
-(
-        DxfMline *mline,
-        char *dictionary_owner_soft
-);
-char *
-dxf_mline_get_material
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_material
-(
-        DxfMline *mline,
-        char *material
-);
-char *
-dxf_mline_get_dictionary_owner_hard
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_dictionary_owner_hard
-(
-        DxfMline *mline,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_mline_get_lineweight
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_lineweight
-(
-        DxfMline *mline,
-        int16_t lineweight
-);
-char *
-dxf_mline_get_plot_style_name
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_plot_style_name
-(
-        DxfMline *mline,
-        char *plot_style_name
-);
-long
-dxf_mline_get_color_value
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_color_value
-(
-        DxfMline *mline,
-        long color_value
-);
-char *
-dxf_mline_get_color_name
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_color_name
-(
-        DxfMline *mline,
-        char *color_name
-);
-long
-dxf_mline_get_transparency
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_transparency
-(
-        DxfMline *mline,
-        long transparency
-);
-char *
-dxf_mline_get_style_name
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_style_name
-(
-        DxfMline *mline,
-        char *style_name
-);
-DxfPoint *
-dxf_mline_get_p0
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_p0
-(
-        DxfMline *mline,
-        DxfPoint *p0
-);
-double
-dxf_mline_get_x0
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_x0
-(
-        DxfMline *mline,
-        double x0
-);
-double
-dxf_mline_get_y0
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_y0
-(
-        DxfMline *mline,
-        double y0
-);
-double
-dxf_mline_get_z0
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_z0
-(
-        DxfMline *mline,
-        double z0
-);
-DxfPoint *
-dxf_mline_get_p1
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_p1
-(
-        DxfMline *mline,
-        DxfPoint *p1
-);
-double
-dxf_mline_get_x1
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_x1
-(
-        DxfMline *mline,
-        double x1
-);
-double
-dxf_mline_get_y1
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_y1
-(
-        DxfMline *mline,
-        double y1
-);
-double
-dxf_mline_get_z1
-(
-        DxfMline *mline
-);
-DxfPoint *
-dxf_mline_get_p2
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_p2
-(
-        DxfMline *mline,
-        DxfPoint *p2
-);
-double
-dxf_mline_get_x2
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_x2
-(
-        DxfMline *mline,
-        double x2
-);
-double
-dxf_mline_get_y2
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_y2
-(
-        DxfMline *mline,
-        double y2
-);
-double
-dxf_mline_get_z2
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_z2
-(
-        DxfMline *mline,
-        double z2
-);
-DxfPoint *
-dxf_mline_get_p3
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_p3
-(
-        DxfMline *mline,
-        DxfPoint *p3
-);
-double
-dxf_mline_get_x3
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_x3
-(
-        DxfMline *mline,
-        double x3
-);
-double
-dxf_mline_get_y3
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_y3
-(
-        DxfMline *mline,
-        double y3
-);
-double
-dxf_mline_get_z3
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_z3
-(
-        DxfMline *mline,
-        double z3
-);
-double
-dxf_mline_get_scale_factor
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_scale_factor
-(
-        DxfMline *mline,
-        double scale_factor
-);
-double
-dxf_mline_get_element_parameters
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_element_parameters
-(
-        DxfMline *mline,
-        double *element_parameters
-);
-double
-dxf_mline_get_area_fill_parameters
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_area_fill_parameters
-(
-        DxfMline *mline,
-        double *area_fill_parameters
-);
-int
-dxf_mline_get_justification
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_justification
-(
-        DxfMline *mline,
-        int justification
-);
-int
-dxf_mline_get_flags
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_flags
-(
-        DxfMline *mline,
-        int flags
-);
-int
-dxf_mline_get_number_of_vertices
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_number_of_vertices
-(
-        DxfMline *mline,
-        int number_of_vertices
-);
-int
-dxf_mline_get_number_of_elements
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_number_of_elements
-(
-        DxfMline *mline,
-        int number_of_elements
-);
-int
-dxf_mline_get_number_of_parameters
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_number_of_parameters
-(
-        DxfMline *mline,
-        int number_of_parameters
-);
-int
-dxf_mline_get_number_of_area_fill_parameters
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_number_of_area_fill_parameters
-(
-        DxfMline *mline,
-        int number_of_area_fill_parameters
-);
-DxfPoint *
-dxf_mline_get_extrusion_vector_as_point
-(
-        DxfMline *mline
-);
-double
-dxf_mline_get_extr_x0
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_extr_x0
-(
-        DxfMline *mline,
-        double extr_x0
-);
-double
-dxf_mline_get_extr_y0
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_extr_y0
-(
-        DxfMline *mline,
-        double extr_y0
-);
-double
-dxf_mline_get_extr_z0
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_extr_z0
-(
-        DxfMline *mline,
-        double extr_z0
-);
-DxfMline *
-dxf_mline_set_extrusion_vector_from_point
-(
-        DxfMline *mline,
-        DxfPoint *point
-);
-DxfMline *
-dxf_mline_set_extrusion_vector
-(
-        DxfMline *mline,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0
-);
-char *
-dxf_mline_get_mlinestyle_dictionary
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_mlinestyle_dictionary
-(
-        DxfMline *mline,
-        char *mlinestyle_dictionary
-);
-DxfMline *
-dxf_mline_get_next
-(
-        DxfMline *mline
-);
-DxfMline *
-dxf_mline_set_next
-(
-        DxfMline *mline,
-        DxfMline *next
-);
-DxfMline *
-dxf_mline_get_last
-(
-        DxfMline *mline
-);
+DxfMline *dxf_mline_new ();
+DxfMline *dxf_mline_init (DxfMline *mline);
+DxfMline *dxf_mline_read (DxfFile *fp, DxfMline *mline);
+int dxf_mline_write (DxfFile *fp, DxfMline *mline);
+int dxf_mline_free (DxfMline *mline);
+void dxf_mline_free_chain (DxfMline *mlines);
+int dxf_mline_get_id_code (DxfMline *mline);
+DxfMline *dxf_mline_set_id_code (DxfMline *mline, int id_code);
+char *dxf_mline_get_linetype (DxfMline *mline);
+DxfMline *dxf_mline_set_linetype (DxfMline *mline, char *linetype);
+char *dxf_mline_get_layer (DxfMline *mline);
+DxfMline *dxf_mline_set_layer (DxfMline *mline, char *layer);
+double dxf_mline_get_elevation (DxfMline *mline);
+DxfMline *dxf_mline_set_elevation (DxfMline *mline, double elevation);
+double dxf_mline_get_thickness (DxfMline *mline);
+DxfMline *dxf_mline_set_thickness (DxfMline *mline, double thickness);
+double dxf_mline_get_linetype_scale (DxfMline *mline);
+DxfMline *dxf_mline_set_linetype_scale (DxfMline *mline, double linetype_scale);
+int16_t dxf_mline_get_visibility (DxfMline *mline);
+DxfMline *dxf_mline_set_visibility (DxfMline *mline, int16_t visibility);
+int dxf_mline_get_color (DxfMline *mline);
+DxfMline *dxf_mline_set_color (DxfMline *mline, int color);
+int dxf_mline_get_paperspace (DxfMline *mline);
+DxfMline *dxf_mline_set_paperspace (DxfMline *mline, int paperspace);
+int dxf_mline_get_graphics_data_size (DxfMline *mline);
+DxfMline *dxf_mline_set_graphics_data_size (DxfMline *mline, int graphics_data_size);
+int16_t dxf_mline_get_shadow_mode (DxfMline *mline);
+DxfMline *dxf_mline_set_shadow_mode (DxfMline *mline, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_mline_get_binary_graphics_data (DxfMline *mline);
+DxfMline *dxf_mline_set_binary_graphics_data (DxfMline *mline, DxfBinaryGraphicsData *data);
+char *dxf_mline_get_dictionary_owner_soft (DxfMline *mline);
+DxfMline *dxf_mline_set_dictionary_owner_soft (DxfMline *mline, char *dictionary_owner_soft);
+char *dxf_mline_get_material (DxfMline *mline);
+DxfMline *dxf_mline_set_material (DxfMline *mline, char *material);
+char *dxf_mline_get_dictionary_owner_hard (DxfMline *mline);
+DxfMline *dxf_mline_set_dictionary_owner_hard (DxfMline *mline, char *dictionary_owner_hard);
+int16_t dxf_mline_get_lineweight (DxfMline *mline);
+DxfMline *dxf_mline_set_lineweight (DxfMline *mline, int16_t lineweight);
+char *dxf_mline_get_plot_style_name (DxfMline *mline);
+DxfMline *dxf_mline_set_plot_style_name (DxfMline *mline, char *plot_style_name);
+long dxf_mline_get_color_value (DxfMline *mline);
+DxfMline *dxf_mline_set_color_value (DxfMline *mline, long color_value);
+char *dxf_mline_get_color_name (DxfMline *mline);
+DxfMline *dxf_mline_set_color_name (DxfMline *mline, char *color_name);
+long dxf_mline_get_transparency (DxfMline *mline);
+DxfMline *dxf_mline_set_transparency (DxfMline *mline, long transparency);
+char *dxf_mline_get_style_name (DxfMline *mline);
+DxfMline *dxf_mline_set_style_name (DxfMline *mline, char *style_name);
+DxfPoint *dxf_mline_get_p0 (DxfMline *mline);
+DxfMline *dxf_mline_set_p0 (DxfMline *mline, DxfPoint *p0);
+double dxf_mline_get_x0 (DxfMline *mline);
+DxfMline *dxf_mline_set_x0 (DxfMline *mline, double x0);
+double dxf_mline_get_y0 (DxfMline *mline);
+DxfMline *dxf_mline_set_y0 (DxfMline *mline, double y0);
+double dxf_mline_get_z0 (DxfMline *mline);
+DxfMline *dxf_mline_set_z0 (DxfMline *mline, double z0);
+DxfPoint *dxf_mline_get_p1 (DxfMline *mline);
+DxfMline *dxf_mline_set_p1 (DxfMline *mline, DxfPoint *p1);
+double dxf_mline_get_x1 (DxfMline *mline);
+DxfMline *dxf_mline_set_x1 (DxfMline *mline, double x1);
+double dxf_mline_get_y1 (DxfMline *mline);
+DxfMline *dxf_mline_set_y1 (DxfMline *mline, double y1);
+double dxf_mline_get_z1 (DxfMline *mline);
+DxfPoint *dxf_mline_get_p2 (DxfMline *mline);
+DxfMline *dxf_mline_set_p2 (DxfMline *mline, DxfPoint *p2);
+double dxf_mline_get_x2 (DxfMline *mline);
+DxfMline *dxf_mline_set_x2 (DxfMline *mline, double x2);
+double dxf_mline_get_y2 (DxfMline *mline);
+DxfMline *dxf_mline_set_y2 (DxfMline *mline, double y2);
+double dxf_mline_get_z2 (DxfMline *mline);
+DxfMline *dxf_mline_set_z2 (DxfMline *mline, double z2);
+DxfPoint *dxf_mline_get_p3 (DxfMline *mline);
+DxfMline *dxf_mline_set_p3 (DxfMline *mline, DxfPoint *p3);
+double dxf_mline_get_x3 (DxfMline *mline);
+DxfMline *dxf_mline_set_x3 (DxfMline *mline, double x3);
+double dxf_mline_get_y3 (DxfMline *mline);
+DxfMline *dxf_mline_set_y3 (DxfMline *mline, double y3);
+double dxf_mline_get_z3 (DxfMline *mline);
+DxfMline *dxf_mline_set_z3 (DxfMline *mline, double z3);
+double dxf_mline_get_scale_factor (DxfMline *mline);
+DxfMline *dxf_mline_set_scale_factor (DxfMline *mline, double scale_factor);
+double dxf_mline_get_element_parameters (DxfMline *mline);
+DxfMline *dxf_mline_set_element_parameters (DxfMline *mline, double *element_parameters);
+double dxf_mline_get_area_fill_parameters (DxfMline *mline);
+DxfMline *dxf_mline_set_area_fill_parameters (DxfMline *mline, double *area_fill_parameters);
+int dxf_mline_get_justification (DxfMline *mline);
+DxfMline *dxf_mline_set_justification (DxfMline *mline, int justification);
+int dxf_mline_get_flags (DxfMline *mline);
+DxfMline *dxf_mline_set_flags (DxfMline *mline, int flags);
+int dxf_mline_get_number_of_vertices (DxfMline *mline);
+DxfMline *dxf_mline_set_number_of_vertices (DxfMline *mline, int number_of_vertices);
+int dxf_mline_get_number_of_elements (DxfMline *mline);
+DxfMline *dxf_mline_set_number_of_elements (DxfMline *mline, int number_of_elements);
+int dxf_mline_get_number_of_parameters (DxfMline *mline);
+DxfMline *dxf_mline_set_number_of_parameters (DxfMline *mline, int number_of_parameters);
+int dxf_mline_get_number_of_area_fill_parameters (DxfMline *mline);
+DxfMline *dxf_mline_set_number_of_area_fill_parameters (DxfMline *mline, int number_of_area_fill_parameters);
+DxfPoint *dxf_mline_get_extrusion_vector_as_point (DxfMline *mline);
+double dxf_mline_get_extr_x0 (DxfMline *mline);
+DxfMline *dxf_mline_set_extr_x0 (DxfMline *mline, double extr_x0);
+double dxf_mline_get_extr_y0 (DxfMline *mline);
+DxfMline *dxf_mline_set_extr_y0 (DxfMline *mline, double extr_y0);
+double dxf_mline_get_extr_z0 (DxfMline *mline);
+DxfMline *dxf_mline_set_extr_z0 (DxfMline *mline, double extr_z0);
+DxfMline *dxf_mline_set_extrusion_vector_from_point (DxfMline *mline, DxfPoint *point);
+DxfMline *dxf_mline_set_extrusion_vector (DxfMline *mline, double extr_x0, double extr_y0, double extr_z0);
+char *dxf_mline_get_mlinestyle_dictionary (DxfMline *mline);
+DxfMline *dxf_mline_set_mlinestyle_dictionary (DxfMline *mline, char *mlinestyle_dictionary);
+DxfMline *dxf_mline_get_next (DxfMline *mline);
+DxfMline *dxf_mline_set_next (DxfMline *mline, DxfMline *next);
+DxfMline *dxf_mline_get_last (DxfMline *mline);
 
 
 #ifdef __cplusplus
