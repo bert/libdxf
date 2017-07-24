@@ -134,251 +134,51 @@ dxf_mlinestyle_struct
 } DxfMlinestyle;
 
 
-DxfMlinestyle *
-dxf_mlinestyle_new ();
-DxfMlinestyle *
-dxf_mlinestyle_init
-(
-        DxfMlinestyle *mlinestyle
-);
-DxfMlinestyle *
-dxf_mlinestyle_read
-(
-        DxfFile *fp,
-        DxfMlinestyle *mlinestyle
-);
-int
-dxf_mlinestyle_write
-(
-        DxfFile *fp,
-        DxfMlinestyle *mlinestyle
-);
-int
-dxf_mlinestyle_free
-(
-        DxfMlinestyle *mlinestyle
-);
-void
-dxf_mlinestyle_free_chain
-(
-        DxfMlinestyle *mlinestyles
-);
-int
-dxf_mlinestyle_get_id_code
-(
-        DxfMlinestyle *mlinestyle
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_id_code
-(
-        DxfMlinestyle *mlinestyle,
-        int id_code
-);
-char *
-dxf_mlinestyle_get_dictionary_owner_soft
-(
-        DxfMlinestyle *mlinestyle
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_dictionary_owner_soft
-(
-        DxfMlinestyle *mlinestyle,
-        char *dictionary_owner_soft
-);
-char *
-dxf_mlinestyle_get_dictionary_owner_hard
-(
-        DxfMlinestyle *mlinestyle
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_dictionary_owner_hard
-(
-        DxfMlinestyle *mlinestyle,
-        char *dictionary_owner_hard
-);
-char *
-dxf_mlinestyle_get_name
-(
-        DxfMlinestyle *mlinestyle
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_name
-(
-        DxfMlinestyle *mlinestyle,
-        char *name
-);
-char *
-dxf_mlinestyle_get_description
-(
-        DxfMlinestyle *mlinestyle
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_description
-(
-        DxfMlinestyle *mlinestyle,
-        char *description
-);
-char *
-dxf_mlinestyle_get_ith_element_linetype
-(
-        DxfMlinestyle *mlinestyle,
-        int i
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_ith_element_linetype
-(
-        DxfMlinestyle *mlinestyle,
-        char *element_linetype,
-        int i
-);
-double
-dxf_mlinestyle_get_element_offset
-(
-        DxfMlinestyle *mlinestyle
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_element_offset
-(
-        DxfMlinestyle *mlinestyle,
-        double *element_offset
-);
-double
-dxf_mlinestyle_get_ith_element_offset
-(
-        DxfMlinestyle *mlinestyle,
-        int i
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_ith_element_offset
-(
-        DxfMlinestyle *mlinestyle,
-        double element_offset,
-        int i
-);
-double
-dxf_mlinestyle_get_start_angle
-(
-        DxfMlinestyle *mlinestyle
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_start_angle
-(
-        DxfMlinestyle *mlinestyle,
-        double start_angle
-);
-double
-dxf_mlinestyle_get_end_angle
-(
-        DxfMlinestyle *mlinestyle
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_end_angle
-(
-        DxfMlinestyle *mlinestyle,
-        double end_angle
-);
-int
-dxf_mlinestyle_get_color
-(
-        DxfMlinestyle *mlinestyle
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_color
-(
-        DxfMlinestyle *mlinestyle,
-        int color
-);
-int
-dxf_mlinestyle_get_ith_element_color
-(
-        DxfMlinestyle *mlinestyle,
-        int i
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_ith_element_color
-(
-        DxfMlinestyle *mlinestyle,
-        int element_color,
-        int i
-);
-int
-dxf_mlinestyle_get_flags
-(
-        DxfMlinestyle *mlinestyle
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_flags
-(
-        DxfMlinestyle *mlinestyle,
-        int flags
-);
-int
-dxf_mlinestyle_flag_is_fill_on
-(
-        DxfMlinestyle *mlinestyle
-);
-int
-dxf_mlinestyle_flag_is_display_miters
-(
-        DxfMlinestyle *mlinestyle
-);
-int
-dxf_mlinestyle_flag_is_start_square_end_cap
-(
-        DxfMlinestyle *mlinestyle
-);
-int
-dxf_mlinestyle_flag_is_start_inner_arcs_cap
-(
-        DxfMlinestyle *mlinestyle
-);
-int
-dxf_mlinestyle_flag_is_start_round_outer_arcs_cap
-(
-        DxfMlinestyle *mlinestyle
-);
-int
-dxf_mlinestyle_flag_is_end_square_end_cap
-(
-        DxfMlinestyle *mlinestyle
-);
-int
-dxf_mlinestyle_flag_is_end_inner_arcs_cap
-(
-        DxfMlinestyle *mlinestyle
-);
-int
-dxf_mlinestyle_flag_is_end_round_outer_arcs_cap
-(
-        DxfMlinestyle *mlinestyle
-);
-int
-dxf_mlinestyle_get_number_of_elements
-(
-        DxfMlinestyle *mlinestyle
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_number_of_elements
-(
-        DxfMlinestyle *mlinestyle,
-        int number_of_elements
-);
-DxfMlinestyle *
-dxf_mlinestyle_get_next
-(
-        DxfMlinestyle *mlinestyle
-);
-DxfMlinestyle *
-dxf_mlinestyle_set_next
-(
-        DxfMlinestyle *mlinestyle,
-        DxfMlinestyle *next
-);
-DxfMlinestyle *
-dxf_mlinestyle_get_last
-(
-        DxfMlinestyle *mlinestyle
-);
+DxfMlinestyle *dxf_mlinestyle_new ();
+DxfMlinestyle *dxf_mlinestyle_init (DxfMlinestyle *mlinestyle);
+DxfMlinestyle *dxf_mlinestyle_read (DxfFile *fp, DxfMlinestyle *mlinestyle);
+int dxf_mlinestyle_write (DxfFile *fp, DxfMlinestyle *mlinestyle);
+int dxf_mlinestyle_free (DxfMlinestyle *mlinestyle);
+void dxf_mlinestyle_free_chain (DxfMlinestyle *mlinestyles);
+int dxf_mlinestyle_get_id_code (DxfMlinestyle *mlinestyle);
+DxfMlinestyle *dxf_mlinestyle_set_id_code (DxfMlinestyle *mlinestyle, int id_code);
+char *dxf_mlinestyle_get_dictionary_owner_soft (DxfMlinestyle *mlinestyle);
+DxfMlinestyle *dxf_mlinestyle_set_dictionary_owner_soft (DxfMlinestyle *mlinestyle, char *dictionary_owner_soft);
+char *dxf_mlinestyle_get_dictionary_owner_hard (DxfMlinestyle *mlinestyle);
+DxfMlinestyle *dxf_mlinestyle_set_dictionary_owner_hard (DxfMlinestyle *mlinestyle, char *dictionary_owner_hard);
+char *dxf_mlinestyle_get_name (DxfMlinestyle *mlinestyle);
+DxfMlinestyle *dxf_mlinestyle_set_name (DxfMlinestyle *mlinestyle, char *name);
+char *dxf_mlinestyle_get_description (DxfMlinestyle *mlinestyle);
+DxfMlinestyle *dxf_mlinestyle_set_description (DxfMlinestyle *mlinestyle, char *description);
+char *dxf_mlinestyle_get_ith_element_linetype (DxfMlinestyle *mlinestyle, int i);
+DxfMlinestyle *dxf_mlinestyle_set_ith_element_linetype (DxfMlinestyle *mlinestyle, char *element_linetype, int i);
+double dxf_mlinestyle_get_element_offset (DxfMlinestyle *mlinestyle);
+DxfMlinestyle *dxf_mlinestyle_set_element_offset (DxfMlinestyle *mlinestyle, double *element_offset);
+double dxf_mlinestyle_get_ith_element_offset (DxfMlinestyle *mlinestyle, int i);
+DxfMlinestyle *dxf_mlinestyle_set_ith_element_offset (DxfMlinestyle *mlinestyle, double element_offset, int i);
+double dxf_mlinestyle_get_start_angle (DxfMlinestyle *mlinestyle);
+DxfMlinestyle *dxf_mlinestyle_set_start_angle (DxfMlinestyle *mlinestyle, double start_angle);
+double dxf_mlinestyle_get_end_angle (DxfMlinestyle *mlinestyle);
+DxfMlinestyle *dxf_mlinestyle_set_end_angle (DxfMlinestyle *mlinestyle, double end_angle);
+int dxf_mlinestyle_get_color (DxfMlinestyle *mlinestyle);
+DxfMlinestyle *dxf_mlinestyle_set_color (DxfMlinestyle *mlinestyle, int color);
+int dxf_mlinestyle_get_ith_element_color (DxfMlinestyle *mlinestyle, int i);
+DxfMlinestyle *dxf_mlinestyle_set_ith_element_color (DxfMlinestyle *mlinestyle, int element_color, int i);
+int dxf_mlinestyle_get_flags (DxfMlinestyle *mlinestyle);
+DxfMlinestyle *dxf_mlinestyle_set_flags (DxfMlinestyle *mlinestyle, int flags);
+int dxf_mlinestyle_flag_is_fill_on (DxfMlinestyle *mlinestyle);
+int dxf_mlinestyle_flag_is_display_miters (DxfMlinestyle *mlinestyle);
+int dxf_mlinestyle_flag_is_start_square_end_cap (DxfMlinestyle *mlinestyle);
+int dxf_mlinestyle_flag_is_start_inner_arcs_cap (DxfMlinestyle *mlinestyle);
+int dxf_mlinestyle_flag_is_start_round_outer_arcs_cap (DxfMlinestyle *mlinestyle);
+int dxf_mlinestyle_flag_is_end_square_end_cap (DxfMlinestyle *mlinestyle);
+int dxf_mlinestyle_flag_is_end_inner_arcs_cap (DxfMlinestyle *mlinestyle);
+int dxf_mlinestyle_flag_is_end_round_outer_arcs_cap (DxfMlinestyle *mlinestyle);
+int dxf_mlinestyle_get_number_of_elements (DxfMlinestyle *mlinestyle);
+DxfMlinestyle *dxf_mlinestyle_set_number_of_elements (DxfMlinestyle *mlinestyle, int number_of_elements);
+DxfMlinestyle *dxf_mlinestyle_get_next (DxfMlinestyle *mlinestyle);
+DxfMlinestyle *dxf_mlinestyle_set_next (DxfMlinestyle *mlinestyle, DxfMlinestyle *next);
+DxfMlinestyle *dxf_mlinestyle_get_last (DxfMlinestyle *mlinestyle);
 
 
 #ifdef __cplusplus
