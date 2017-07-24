@@ -208,425 +208,82 @@ dxf_line_struct
 } DxfLine;
 
 
-DxfLine *
-dxf_line_new ();
-DxfLine *
-dxf_line_init
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_read
-(
-        DxfFile *fp,
-        DxfLine *line
-);
-int
-dxf_line_write
-(
-        DxfFile *fp,
-        DxfLine *line
-);
-int
-dxf_line_free
-(
-        DxfLine *line
-);
-void
-dxf_line_free_chain
-(
-        DxfLine *lines
-);
-int
-dxf_line_get_id_code
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_id_code
-(
-        DxfLine *line,
-        int id_code
-);
-char *
-dxf_line_get_linetype
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_linetype
-(
-        DxfLine *line,
-        char *linetype
-);
-char *
-dxf_line_get_layer
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_layer
-(
-        DxfLine *line,
-        char *layer
-);
-double
-dxf_line_get_elevation
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_elevation
-(
-        DxfLine *line,
-        double elevation
-);
-double
-dxf_line_get_thickness
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_thickness
-(
-        DxfLine *line,
-        double thickness
-);
-double
-dxf_line_get_linetype_scale
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_linetype_scale
-(
-        DxfLine *line,
-        double linetype_scale
-);
-int16_t
-dxf_line_get_visibility
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_visibility
-(
-        DxfLine *line,
-        int16_t visibility
-);
-int
-dxf_line_get_color
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_color
-(
-        DxfLine *line,
-        int color
-);
-int
-dxf_line_get_paperspace
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_paperspace
-(
-        DxfLine *line,
-        int paperspace
-);
-int
-dxf_line_get_graphics_data_size
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_graphics_data_size
-(
-        DxfLine *line,
-        int graphics_data_size
-);
-int16_t
-dxf_line_get_shadow_mode
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_shadow_mode
-(
-        DxfLine *line,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_line_get_binary_graphics_data
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_binary_graphics_data
-(
-        DxfLine *line,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_line_get_dictionary_owner_soft
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_dictionary_owner_soft
-(
-        DxfLine *line,
-        char *dictionary_owner_soft
-);
-char *
-dxf_line_get_material
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_material
-(
-        DxfLine *line,
-        char *material
-);
-char *
-dxf_line_get_dictionary_owner_hard
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_dictionary_owner_hard
-(
-        DxfLine *line,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_line_get_lineweight
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_lineweight
-(
-        DxfLine *line,
-        int16_t lineweight
-);
-char *
-dxf_line_get_plot_style_name
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_plot_style_name
-(
-        DxfLine *line,
-        char *plot_style_name
-);
-long
-dxf_line_get_color_value
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_color_value
-(
-        DxfLine *line,
-        long color_value
-);
-char *
-dxf_line_get_color_name
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_color_name
-(
-        DxfLine *line,
-        char *color_name
-);
-long
-dxf_line_get_transparency
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_transparency
-(
-        DxfLine *line,
-        long transparency
-);
-DxfPoint *
-dxf_line_get_p0
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_p0
-(
-        DxfLine *line,
-        DxfPoint *p0
-);
-double
-dxf_line_get_x0
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_x0
-(
-        DxfLine *line,
-        double x0
-);
-double
-dxf_line_get_y0
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_y0
-(
-        DxfLine *line,
-        double y0
-);
-double
-dxf_line_get_z0
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_z0
-(
-        DxfLine *line,
-        double z0
-);
-DxfPoint *
-dxf_line_get_p1
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_p1
-(
-        DxfLine *line,
-        DxfPoint *p1
-);
-double
-dxf_line_get_x1
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_x1
-(
-        DxfLine *line,
-        double x1
-);
-double
-dxf_line_get_y1
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_y1
-(
-        DxfLine *line,
-        double y1
-);
-double
-dxf_line_get_z1
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_z1
-(
-        DxfLine *line,
-        double z1
-);
-double
-dxf_line_get_extr_x0
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_extr_x0
-(
-        DxfLine *line,
-        double extr_x0
-);
-double
-dxf_line_get_extr_y0
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_extr_y0
-(
-        DxfLine *line,
-        double extr_y0
-);
-double
-dxf_line_get_extr_z0
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_extr_z0
-(
-        DxfLine *line,
-        double extr_z0
-);
-DxfPoint *
-dxf_line_get_extrusion_vector_as_point
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_extrusion_vector
-(
-        DxfLine *line,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0
-);
-DxfLine *
-dxf_line_get_next
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_set_next
-(
-        DxfLine *line,
-        DxfLine *next
-);
-DxfLine *
-dxf_line_get_last
-(
-        DxfLine *line
-);
-DxfPoint *
-dxf_line_calculate_mid_point
-(
-        DxfLine *line,
-        int id_code,
-        int inheritance
-);
-double
-dxf_line_calculate_length
-(
-        DxfLine *line
-);
-DxfLine *
-dxf_line_create_from_points
-(
-        DxfPoint *p1,
-        DxfPoint *p2,
-        int id_code,
-        int inheritance
-);
+DxfLine *dxf_line_new ();
+DxfLine *dxf_line_init (DxfLine *line);
+DxfLine *dxf_line_read (DxfFile *fp, DxfLine *line);
+int dxf_line_write (DxfFile *fp, DxfLine *line);
+int dxf_line_free (DxfLine *line);
+void dxf_line_free_chain (DxfLine *lines);
+int dxf_line_get_id_code (DxfLine *line);
+DxfLine *dxf_line_set_id_code (DxfLine *line, int id_code);
+char *dxf_line_get_linetype (DxfLine *line);
+DxfLine *dxf_line_set_linetype (DxfLine *line, char *linetype);
+char *dxf_line_get_layer (DxfLine *line);
+DxfLine *dxf_line_set_layer (DxfLine *line, char *layer);
+double dxf_line_get_elevation (DxfLine *line);
+DxfLine *dxf_line_set_elevation (DxfLine *line, double elevation);
+double dxf_line_get_thickness (DxfLine *line);
+DxfLine *dxf_line_set_thickness (DxfLine *line, double thickness);
+double dxf_line_get_linetype_scale (DxfLine *line);
+DxfLine *dxf_line_set_linetype_scale (DxfLine *line, double linetype_scale);
+int16_t dxf_line_get_visibility (DxfLine *line);
+DxfLine *dxf_line_set_visibility (DxfLine *line, int16_t visibility);
+int dxf_line_get_color (DxfLine *line);
+DxfLine *dxf_line_set_color (DxfLine *line, int color);
+int dxf_line_get_paperspace (DxfLine *line);
+DxfLine *dxf_line_set_paperspace (DxfLine *line, int paperspace);
+int dxf_line_get_graphics_data_size (DxfLine *line);
+DxfLine *dxf_line_set_graphics_data_size (DxfLine *line, int graphics_data_size);
+int16_t dxf_line_get_shadow_mode (DxfLine *line);
+DxfLine *dxf_line_set_shadow_mode (DxfLine *line, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_line_get_binary_graphics_data (DxfLine *line);
+DxfLine *dxf_line_set_binary_graphics_data (DxfLine *line, DxfBinaryGraphicsData *data);
+char *dxf_line_get_dictionary_owner_soft (DxfLine *line);
+DxfLine *dxf_line_set_dictionary_owner_soft (DxfLine *line, char *dictionary_owner_soft);
+char *dxf_line_get_material (DxfLine *line);
+DxfLine *dxf_line_set_material (DxfLine *line, char *material);
+char *dxf_line_get_dictionary_owner_hard (DxfLine *line);
+DxfLine *dxf_line_set_dictionary_owner_hard (DxfLine *line, char *dictionary_owner_hard);
+int16_t dxf_line_get_lineweight (DxfLine *line);
+DxfLine *dxf_line_set_lineweight (DxfLine *line, int16_t lineweight);
+char *dxf_line_get_plot_style_name (DxfLine *line);
+DxfLine *dxf_line_set_plot_style_name (DxfLine *line, char *plot_style_name);
+long dxf_line_get_color_value (DxfLine *line);
+DxfLine *dxf_line_set_color_value (DxfLine *line, long color_value);
+char *dxf_line_get_color_name (DxfLine *line);
+DxfLine *dxf_line_set_color_name (DxfLine *line, char *color_name);
+long dxf_line_get_transparency (DxfLine *line);
+DxfLine *dxf_line_set_transparency (DxfLine *line, long transparency);
+DxfPoint *dxf_line_get_p0 (DxfLine *line);
+DxfLine *dxf_line_set_p0 (DxfLine *line, DxfPoint *p0);
+double dxf_line_get_x0 (DxfLine *line);
+DxfLine *dxf_line_set_x0 (DxfLine *line, double x0);
+double dxf_line_get_y0 (DxfLine *line);
+DxfLine *dxf_line_set_y0 (DxfLine *line, double y0);
+double dxf_line_get_z0 (DxfLine *line);
+DxfLine *dxf_line_set_z0 (DxfLine *line, double z0);
+DxfPoint *dxf_line_get_p1 (DxfLine *line);
+DxfLine *dxf_line_set_p1 (DxfLine *line, DxfPoint *p1);
+double dxf_line_get_x1 (DxfLine *line);
+DxfLine *dxf_line_set_x1 (DxfLine *line, double x1);
+double dxf_line_get_y1 (DxfLine *line);
+DxfLine *dxf_line_set_y1 (DxfLine *line, double y1);
+double dxf_line_get_z1 (DxfLine *line);
+DxfLine *dxf_line_set_z1 (DxfLine *line, double z1);
+double dxf_line_get_extr_x0 (DxfLine *line);
+DxfLine *dxf_line_set_extr_x0 (DxfLine *line, double extr_x0);
+double dxf_line_get_extr_y0 (DxfLine *line);
+DxfLine *dxf_line_set_extr_y0 (DxfLine *line, double extr_y0);
+double dxf_line_get_extr_z0 (DxfLine *line);
+DxfLine *dxf_line_set_extr_z0 (DxfLine *line, double extr_z0);
+DxfPoint *dxf_line_get_extrusion_vector_as_point (DxfLine *line);
+DxfLine *dxf_line_set_extrusion_vector (DxfLine *line, double extr_x0, double extr_y0, double extr_z0);
+DxfLine *dxf_line_get_next (DxfLine *line);
+DxfLine *dxf_line_set_next (DxfLine *line, DxfLine *next);
+DxfLine *dxf_line_get_last (DxfLine *line);
+DxfPoint *dxf_line_calculate_mid_point (DxfLine *line, int id_code, int inheritance);
+double dxf_line_calculate_length (DxfLine *line);
+DxfLine *dxf_line_create_from_points (DxfPoint *p1, DxfPoint *p2, int id_code, int inheritance);
 
 
 #ifdef __cplusplus
