@@ -1674,8 +1674,6 @@ dxf_ltype_is_referenced
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int result = FALSE;
-
         /* Do some basic checks. */
         if (ltype == NULL)
         {
@@ -1684,11 +1682,10 @@ dxf_ltype_is_referenced
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
-        result = DXF_CHECK_BIT (ltype->flag, 6);
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return (result);
+        return (DXF_CHECK_BIT (ltype->flag, 6));
 }
 
 
