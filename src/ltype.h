@@ -153,282 +153,54 @@ dxf_ltype_struct
 } DxfLType;
 
 
-DxfLType *
-dxf_ltype_new ();
-DxfLType *
-dxf_ltype_init
-(
-        DxfLType *ltype
-);
-DxfLType *
-dxf_ltype_read
-(
-        DxfFile *fp,
-        DxfLType *ltype
-);
-int
-dxf_ltype_write
-(
-        DxfFile *fp,
-        DxfLType *ltype
-);
-int
-dxf_ltype_free
-(
-        DxfLType *ltype
-);
-void
-dxf_ltype_free_chain
-(
-        DxfLType *ltypes
-);
-int
-dxf_ltype_get_id_code
-(
-        DxfLType *ltype
-);
-DxfLType *
-dxf_ltype_set_id_code
-(
-        DxfLType *ltype,
-        int id_code
-);
-char *
-dxf_ltype_get_linetype_name
-(
-        DxfLType *ltype
-);
-DxfLType *
-dxf_ltype_set_linetype_name
-(
-        DxfLType *ltype,
-        char *linetype_name
-);
-char *
-dxf_ltype_get_description
-(
-        DxfLType *ltype
-);
-DxfLType *
-dxf_ltype_set_description
-(
-        DxfLType *ltype,
-        char *description
-);
-char *
-dxf_ltype_get_complex_text_string
-(
-        DxfLType *ltype,
-        int i
-);
-DxfLType *
-dxf_ltype_set_complex_text_string
-(
-        DxfLType *ltype,
-        int i,
-        char *complex_text_string
-);
-double
-dxf_ltype_get_total_pattern_length
-(
-        DxfLType *ltype
-);
-DxfLType *
-dxf_ltype_set_total_pattern_length
-(
-        DxfLType *ltype,
-        double total_pattern_length
-);
-double
-dxf_ltype_get_complex_x_offset
-(
-        DxfLType *ltype,
-        int i
-);
-DxfLType *
-dxf_ltype_set_complex_x_offset
-(
-        DxfLType *ltype,
-        int i,
-        double complex_x_offset
-);
-double
-dxf_ltype_get_complex_y_offset
-(
-        DxfLType *ltype,
-        int i
-);
-DxfLType *
-dxf_ltype_set_complex_y_offset
-(
-        DxfLType *ltype,
-        int i,
-        double complex_y_offset
-);
-double
-dxf_ltype_get_complex_scale
-(
-        DxfLType *ltype,
-        int i
-);
-DxfLType *
-dxf_ltype_set_complex_scale
-(
-        DxfLType *ltype,
-        int i,
-        double complex_scale
-);
-double
-dxf_ltype_get_dash_length
-(
-        DxfLType *ltype,
-        int i
-);
-DxfLType *
-dxf_ltype_set_dash_length
-(
-        DxfLType *ltype,
-        int i,
-        double dash_length
-);
-double
-dxf_ltype_get_complex_rotation
-(
-        DxfLType *ltype,
-        int i
-);
-DxfLType *
-dxf_ltype_set_complex_rotation
-(
-        DxfLType *ltype,
-        int i,
-        double complex_rotation
-);
-int
-dxf_ltype_get_flag
-(
-        DxfLType *ltype
-);
-DxfLType *
-dxf_ltype_set_flag
-(
-        DxfLType *ltype,
-        int flag
-);
-int
-dxf_ltype_is_xreferenced
-(
-        DxfLType *ltype
-);
-int
-dxf_ltype_is_xresolved
-(
-        DxfLType *ltype
-);
-int
-dxf_ltype_is_referenced
-(
-        DxfLType *ltype
-);
-int
-dxf_ltype_get_alignment
-(
-        DxfLType *ltype
-);
-DxfLType *
-dxf_ltype_set_alignment
-(
-        DxfLType *ltype,
-        int alignment
-);
-int
-dxf_ltype_get_number_of_linetype_elements
-(
-        DxfLType *ltype
-);
-DxfLType *
-dxf_ltype_set_number_of_linetype_elements
-(
-        DxfLType *ltype,
-        int number_of_linetype_elements
-);
-int
-dxf_ltype_get_complex_element
-(
-        DxfLType *ltype,
-        int i
-);
-DxfLType *
-dxf_ltype_set_complex_element
-(
-        DxfLType *ltype,
-        int i,
-        int complex_element
-);
-int
-dxf_ltype_get_complex_shape_number
-(
-        DxfLType *ltype,
-        int i
-);
-DxfLType *
-dxf_ltype_set_complex_shape_number
-(
-        DxfLType *ltype,
-        int i,
-        int complex_shape_number
-);
-char *
-dxf_ltype_get_dictionary_owner_soft
-(
-        DxfLType *ltype
-);
-DxfLType *
-dxf_ltype_set_dictionary_owner_soft
-(
-        DxfLType *ltype,
-        char *dictionary_owner_soft
-);
-char *
-dxf_ltype_get_complex_style_pointer
-(
-        DxfLType *ltype,
-        int i
-);
-DxfLType *
-dxf_ltype_set_complex_style_pointer
-(
-        DxfLType *ltype,
-        int i,
-        char *complex_style_pointer
-);
-char *
-dxf_ltype_get_dictionary_owner_hard
-(
-        DxfLType *ltype
-);
-DxfLType *
-dxf_ltype_set_dictionary_owner_hard
-(
-        DxfLType *ltype,
-        char *dictionary_owner_hard
-);
-DxfLType *
-dxf_ltype_get_next
-(
-        DxfLType *ltype
-);
-DxfLType *
-dxf_ltype_set_next
-(
-        DxfLType *ltype,
-        DxfLType *next
-);
-DxfLType *
-dxf_ltype_get_last
-(
-        DxfLType *ltype
-);
+DxfLType *dxf_ltype_new ();
+DxfLType *dxf_ltype_init (DxfLType *ltype);
+DxfLType *dxf_ltype_read (DxfFile *fp, DxfLType *ltype);
+int dxf_ltype_write (DxfFile *fp, DxfLType *ltype);
+int dxf_ltype_free (DxfLType *ltype);
+void dxf_ltype_free_chain (DxfLType *ltypes);
+int dxf_ltype_get_id_code (DxfLType *ltype);
+DxfLType *dxf_ltype_set_id_code (DxfLType *ltype, int id_code);
+char *dxf_ltype_get_linetype_name (DxfLType *ltype);
+DxfLType *dxf_ltype_set_linetype_name (DxfLType *ltype, char *linetype_name);
+char *dxf_ltype_get_description (DxfLType *ltype);
+DxfLType *dxf_ltype_set_description (DxfLType *ltype, char *description);
+char *dxf_ltype_get_complex_text_string (DxfLType *ltype, int i);
+DxfLType *dxf_ltype_set_complex_text_string (DxfLType *ltype, int i, char *complex_text_string);
+double dxf_ltype_get_total_pattern_length (DxfLType *ltype);
+DxfLType *dxf_ltype_set_total_pattern_length (DxfLType *ltype, double total_pattern_length);
+double dxf_ltype_get_complex_x_offset (DxfLType *ltype, int i);
+DxfLType *dxf_ltype_set_complex_x_offset (DxfLType *ltype, int i, double complex_x_offset);
+double dxf_ltype_get_complex_y_offset (DxfLType *ltype, int i);
+DxfLType *dxf_ltype_set_complex_y_offset (DxfLType *ltype, int i, double complex_y_offset);
+double dxf_ltype_get_complex_scale (DxfLType *ltype, int i);
+DxfLType *dxf_ltype_set_complex_scale (DxfLType *ltype, int i, double complex_scale);
+double dxf_ltype_get_dash_length (DxfLType *ltype, int i);
+DxfLType *dxf_ltype_set_dash_length (DxfLType *ltype, int i, double dash_length);
+double dxf_ltype_get_complex_rotation (DxfLType *ltype, int i);
+DxfLType *dxf_ltype_set_complex_rotation (DxfLType *ltype, int i, double complex_rotation);
+int dxf_ltype_get_flag (DxfLType *ltype);
+DxfLType *dxf_ltype_set_flag (DxfLType *ltype, int flag);
+int dxf_ltype_is_xreferenced (DxfLType *ltype);
+int dxf_ltype_is_xresolved (DxfLType *ltype);
+int dxf_ltype_is_referenced (DxfLType *ltype);
+int dxf_ltype_get_alignment (DxfLType *ltype);
+DxfLType *dxf_ltype_set_alignment (DxfLType *ltype, int alignment);
+int dxf_ltype_get_number_of_linetype_elements (DxfLType *ltype);
+DxfLType *dxf_ltype_set_number_of_linetype_elements (DxfLType *ltype, int number_of_linetype_elements);
+int dxf_ltype_get_complex_element (DxfLType *ltype, int i);
+DxfLType *dxf_ltype_set_complex_element (DxfLType *ltype, int i, int complex_element);
+int dxf_ltype_get_complex_shape_number (DxfLType *ltype, int i);
+DxfLType *dxf_ltype_set_complex_shape_number (DxfLType *ltype, int i, int complex_shape_number);
+char *dxf_ltype_get_dictionary_owner_soft (DxfLType *ltype);
+DxfLType *dxf_ltype_set_dictionary_owner_soft (DxfLType *ltype, char *dictionary_owner_soft);
+char *dxf_ltype_get_complex_style_pointer (DxfLType *ltype, int i);
+DxfLType *dxf_ltype_set_complex_style_pointer (DxfLType *ltype, int i, char *complex_style_pointer);
+char *dxf_ltype_get_dictionary_owner_hard (DxfLType *ltype);
+DxfLType *dxf_ltype_set_dictionary_owner_hard (DxfLType *ltype, char *dictionary_owner_hard);
+DxfLType *dxf_ltype_get_next (DxfLType *ltype);
+DxfLType *dxf_ltype_set_next (DxfLType *ltype, DxfLType *next);
+DxfLType *dxf_ltype_get_last (DxfLType *ltype);
 
 
 #ifdef __cplusplus
