@@ -4,6 +4,8 @@
  * \author Copyright (C) 2012, 2013, 2014, 2015, 2017
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
+ * \author Copyright (C) 2012, 2013 by Paolo Caroni <kenren89@gmail.com>.
+ *
  * \brief Functions for a DXF mtext entity (\c MTEXT).
  *
  * \version According to DXF R10 (backward compatibility).
