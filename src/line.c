@@ -1,7 +1,7 @@
 /*!
  * \file line.c
  *
- * \author Copyright (C) 2008, 2010, 2102, 2013, 2014, 2015, 2016, 2017
+ * \author Copyright (C) 2008, 2010, 2012, 2013, 2014, 2015, 2016, 2017
  * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF line entity (\c LINE).
