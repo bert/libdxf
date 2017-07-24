@@ -1,7 +1,7 @@
 /*!
  * \file object_id.h
  *
- * \author Copyright (C) 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF object id functions.
  *
@@ -63,72 +63,19 @@ dxf_object_id_struct
 } DxfObjectId;
 
 
-DxfObjectId *
-dxf_object_id_new ();
-DxfObjectId *
-dxf_object_id_init
-(
-        DxfObjectId *object_id
-);
-int
-dxf_object_id_free
-(
-        DxfObjectId *object_id
-);
-void
-dxf_object_id_free_chain
-(
-        DxfObjectId *object_ids
-);
-int
-dxf_object_id_get_group_code
-(
-        DxfObjectId *object_id
-);
-DxfObjectId *
-dxf_object_id_set_group_code
-(
-        DxfObjectId *object_id,
-        int group_code
-);
-char *
-dxf_object_id_get_data
-(
-        DxfObjectId *object_id
-);
-DxfObjectId *
-dxf_object_id_set_data
-(
-        DxfObjectId *object_id,
-        char *data
-);
-int
-dxf_object_id_get_length
-(
-        DxfObjectId *object_id
-);
-DxfObjectId *
-dxf_object_id_set_length
-(
-        DxfObjectId *object_id,
-        int length
-);
-DxfObjectId *
-dxf_object_id_get_next
-(
-        DxfObjectId *object_id
-);
-DxfObjectId *
-dxf_object_id_set_next
-(
-        DxfObjectId *object_id,
-        DxfObjectId *next
-);
-DxfObjectId *
-dxf_object_id_get_last
-(
-        DxfObjectId *object_id
-);
+DxfObjectId *dxf_object_id_new ();
+DxfObjectId *dxf_object_id_init (DxfObjectId *object_id);
+int dxf_object_id_free (DxfObjectId *object_id);
+void dxf_object_id_free_chain (DxfObjectId *object_ids);
+int dxf_object_id_get_group_code (DxfObjectId *object_id);
+DxfObjectId *dxf_object_id_set_group_code (DxfObjectId *object_id, int group_code);
+char *dxf_object_id_get_data (DxfObjectId *object_id);
+DxfObjectId *dxf_object_id_set_data (DxfObjectId *object_id, char *data);
+int dxf_object_id_get_length (DxfObjectId *object_id);
+DxfObjectId *dxf_object_id_set_length (DxfObjectId *object_id, int length);
+DxfObjectId *dxf_object_id_get_next (DxfObjectId *object_id);
+DxfObjectId *dxf_object_id_set_next (DxfObjectId *object_id, DxfObjectId *next);
+DxfObjectId *dxf_object_id_get_last (DxfObjectId *object_id);
 
 
 #ifdef __cplusplus
