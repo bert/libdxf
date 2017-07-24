@@ -65,54 +65,15 @@ dxf_object_struct
 
 
 DxfObject *dxf_object_new ();
-int
-dxf_object_write_objects
-(
-        DxfFile *fp,
-        DxfObject *dxf_objects_list
-);
-int
-dxf_object_free
-(
-        DxfObject *object
-);
-DxfObject *
-dxf_object_init
-(
-        DxfObject *object
-);
-void
-dxf_object_free_chain
-(
-        DxfObject *objects
-);
-DxfEntityType *
-dxf_object_get_entity_type
-(
-        DxfObject *object
-);
-DxfObject *
-dxf_object_set_entity_type
-(
-        DxfObject *object,
-        DxfEntityType entity_type
-);
-DxfObject *
-dxf_object_get_next
-(
-        DxfObject *object
-);
-DxfObject *
-dxf_object_set_next
-(
-        DxfObject *object,
-        DxfObject *next
-);
-DxfObject *
-dxf_object_get_last
-(
-        DxfObject *object
-);
+DxfObject *dxf_object_init (DxfObject *object);
+int dxf_object_write_objects (DxfFile *fp, DxfObject *dxf_objects_list);
+int dxf_object_free (DxfObject *object);
+void dxf_object_free_chain (DxfObject *objects);
+DxfEntityType *dxf_object_get_entity_type (DxfObject *object);
+DxfObject *dxf_object_set_entity_type (DxfObject *object, DxfEntityType entity_type);
+DxfObject *dxf_object_get_next (DxfObject *object);
+DxfObject *dxf_object_set_next (DxfObject *object, DxfObject *next);
+DxfObject *dxf_object_get_last (DxfObject *object);
 
 
 #ifdef __cplusplus
