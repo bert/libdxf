@@ -54,7 +54,7 @@ extern "C" {
  * \brief DXF definition of an AutoCAD ole2frame entity (\c OLE2FRAME).
  */
 typedef struct
-dxf_ole2frame
+dxf_ole2frame_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
