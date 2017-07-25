@@ -159,35 +159,12 @@ dxf_ole2frame_struct
 } DxfOle2Frame;
 
 
-DxfOle2Frame *
-dxf_ole2frame_new ();
-DxfOle2Frame *
-dxf_ole2frame_init
-(
-        DxfOle2Frame *ole2frame
-);
-DxfOle2Frame *
-dxf_ole2frame_read
-(
-        DxfFile *fp,
-        DxfOle2Frame *ole2frame
-);
-int
-dxf_ole2frame_write
-(
-        DxfFile *fp,
-        DxfOle2Frame *ole2frame
-);
-int
-dxf_ole2frame_free
-(
-        DxfOle2Frame *ole2frame
-);
-void
-dxf_ole2frame_free_chain
-(
-        DxfOle2Frame *ole2frames
-);
+DxfOle2Frame *dxf_ole2frame_new ();
+DxfOle2Frame *dxf_ole2frame_init (DxfOle2Frame *ole2frame);
+DxfOle2Frame *dxf_ole2frame_read (DxfFile *fp, DxfOle2Frame *ole2frame);
+int dxf_ole2frame_write (DxfFile *fp, DxfOle2Frame *ole2frame);
+int dxf_ole2frame_free (DxfOle2Frame *ole2frame);
+void dxf_ole2frame_free_chain (DxfOle2Frame *ole2frames);
 
 
 #ifdef __cplusplus
