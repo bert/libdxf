@@ -817,4 +817,41 @@ dxf_ole2frame_set_linetype
 }
 
 
+/*!
+ * \brief Get the layer from a DXF \c OLE2FRAME entity.
+ *
+ * \return layer when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_ole2frame_get_layer
+(
+        DxfOle2Frame *ole2frame
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ole2frame->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (ole2frame->layer));
+}
+
+
 /* EOF */

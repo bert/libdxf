@@ -169,6 +169,7 @@ int dxf_ole2frame_get_id_code (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_id_code (DxfOle2Frame *ole2frame, int id_code);
 char *dxf_ole2frame_get_linetype (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_linetype (DxfOle2Frame *ole2frame, char *linetype);
+char *dxf_ole2frame_get_layer (DxfOle2Frame *ole2frame);
 
 
 #ifdef __cplusplus
