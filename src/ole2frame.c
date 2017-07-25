@@ -854,4 +854,42 @@ dxf_ole2frame_get_layer
 }
 
 
+/*!
+ * \brief Set the layer for a DXF \c OLE2FRAME entity.
+ */
+DxfOle2Frame *
+dxf_ole2frame_set_layer
+(
+        DxfOle2Frame *ole2frame,
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+        char *layer
+                /*!< a string containing the layer for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ole2frame->layer = strdup (layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ole2frame);
+}
+
+
 /* EOF */
