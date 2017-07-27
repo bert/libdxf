@@ -178,6 +178,7 @@ DxfOle2Frame *dxf_ole2frame_set_thickness (DxfOle2Frame *ole2frame, double thick
 double dxf_ole2frame_get_linetype_scale (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_linetype_scale (DxfOle2Frame *ole2frame, double linetype_scale);
 int16_t dxf_ole2frame_get_visibility (DxfOle2Frame *ole2frame);
+DxfOle2Frame *dxf_ole2frame_set_visibility (DxfOle2Frame *ole2frame, int16_t visibility);
 
 
 #ifdef __cplusplus
