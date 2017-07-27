@@ -176,6 +176,7 @@ DxfOle2Frame *dxf_ole2frame_set_elevation (DxfOle2Frame *ole2frame, double eleva
 double dxf_ole2frame_get_thickness (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_thickness (DxfOle2Frame *ole2frame, double thickness);
 double dxf_ole2frame_get_linetype_scale (DxfOle2Frame *ole2frame);
+DxfOle2Frame *dxf_ole2frame_set_linetype_scale (DxfOle2Frame *ole2frame, double linetype_scale);
 
 
 #ifdef __cplusplus
