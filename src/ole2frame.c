@@ -1185,4 +1185,40 @@ dxf_ole2frame_set_visibility
 }
 
 
+/*!
+ * \brief Get the \c color from a DXF \c OLE2FRAME entity.
+ *
+ * \return \c color.
+ */
+int
+dxf_ole2frame_get_color
+(
+        DxfOle2Frame *ole2frame
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (ole2frame->color < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ole2frame->color);
+}
+
+
 /* EOF */
