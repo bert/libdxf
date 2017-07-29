@@ -181,6 +181,7 @@ int16_t dxf_ole2frame_get_visibility (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_visibility (DxfOle2Frame *ole2frame, int16_t visibility);
 int dxf_ole2frame_get_color (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_color (DxfOle2Frame *ole2frame, int color);
+int dxf_ole2frame_get_paperspace (DxfOle2Frame *ole2frame);
 
 
 #ifdef __cplusplus
