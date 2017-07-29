@@ -180,6 +180,7 @@ DxfOle2Frame *dxf_ole2frame_set_linetype_scale (DxfOle2Frame *ole2frame, double 
 int16_t dxf_ole2frame_get_visibility (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_visibility (DxfOle2Frame *ole2frame, int16_t visibility);
 int dxf_ole2frame_get_color (DxfOle2Frame *ole2frame);
+DxfOle2Frame *dxf_ole2frame_set_color (DxfOle2Frame *ole2frame, int color);
 
 
 #ifdef __cplusplus
