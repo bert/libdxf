@@ -1343,4 +1343,48 @@ dxf_ole2frame_set_paperspace
 }
 
 
+/*!
+ * \brief Get the \c graphics_data_size value from a DXF \c OLE2FRAME
+ * entity.
+ *
+ * \return \c graphics_data_size value when successful, or
+ * \c EXIT_FAILURE when an error occurred.
+ */
+int
+dxf_ole2frame_get_graphics_data_size
+(
+        DxfOle2Frame *ole2frame
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (ole2frame->graphics_data_size < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (ole2frame->graphics_data_size == 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a zero value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ole2frame->graphics_data_size);
+}
+
+
 /* EOF */
