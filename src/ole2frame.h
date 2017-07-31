@@ -254,6 +254,7 @@ DxfOle2Frame *dxf_ole2frame_set_paperspace (DxfOle2Frame *ole2frame, int papersp
 int dxf_ole2frame_get_graphics_data_size (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_graphics_data_size (DxfOle2Frame *ole2frame, int graphics_data_size);
 int16_t dxf_ole2frame_get_shadow_mode (DxfOle2Frame *ole2frame);
+DxfOle2Frame *dxf_ole2frame_set_shadow_mode (DxfOle2Frame *ole2frame, int16_t shadow_mode);
 
 
 #ifdef __cplusplus
