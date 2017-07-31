@@ -1605,4 +1605,44 @@ dxf_ole2frame_set_binary_graphics_data
 }
 
 
+/*!
+ * \brief Get the soft pointer to the dictionary owner from a DXF 
+ * \c OLE2FRAME entity.
+ *
+ * \return soft pointer to the dictionary owner.
+ *
+ * \warning No checks are performed on the returned pointer (string).
+ */
+char *
+dxf_ole2frame_get_dictionary_owner_soft
+(
+        DxfOle2Frame *ole2frame
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ole2frame->dictionary_owner_soft ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (ole2frame->dictionary_owner_soft));
+}
+
+
 /* EOF */
