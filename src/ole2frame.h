@@ -266,6 +266,7 @@ DxfOle2Frame *dxf_ole2frame_set_dictionary_owner_hard (DxfOle2Frame *ole2frame, 
 int16_t dxf_ole2frame_get_lineweight (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_lineweight (DxfOle2Frame *ole2frame, int16_t lineweight);
 char *dxf_ole2frame_get_plot_style_name (DxfOle2Frame *ole2frame);
+DxfOle2Frame *dxf_ole2frame_set_plot_style_name (DxfOle2Frame *ole2frame, char *plot_style_name);
 
 
 #ifdef __cplusplus
