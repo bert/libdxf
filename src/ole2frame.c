@@ -1525,4 +1525,44 @@ dxf_ole2frame_set_shadow_mode
 }
 
 
+/*!
+ * \brief Get the pointer to the \c binary_graphics_data from a DXF
+ * \c OLE2FRAME entity.
+ *
+ * \return pointer to the \c binary_graphics_data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryGraphicsData *
+dxf_ole2frame_get_binary_graphics_data
+(
+        DxfOle2Frame *ole2frame
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ole2frame->binary_graphics_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBinaryGraphicsData *) ole2frame->binary_graphics_data);
+}
+
+
 /* EOF */
