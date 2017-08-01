@@ -2059,4 +2059,42 @@ dxf_ole2frame_set_color_value
 }
 
 
+/*!
+ * \brief Get the \c color_name from a DXF \c OLE2FRAME entity.
+ *
+ * \return \c color_name when sucessful, or \c NULL when an error
+ * occurred.
+ */
+char *
+dxf_ole2frame_get_color_name
+(
+        DxfOle2Frame *ole2frame
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ole2frame->color_name ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (ole2frame->color_name));
+}
+
+
 /* EOF */
