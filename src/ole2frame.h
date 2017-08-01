@@ -268,6 +268,7 @@ DxfOle2Frame *dxf_ole2frame_set_lineweight (DxfOle2Frame *ole2frame, int16_t lin
 char *dxf_ole2frame_get_plot_style_name (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_plot_style_name (DxfOle2Frame *ole2frame, char *plot_style_name);
 long dxf_ole2frame_get_color_value (DxfOle2Frame *ole2frame);
+DxfOle2Frame *dxf_ole2frame_set_color_value (DxfOle2Frame *ole2frame, long color_value);
 
 
 #ifdef __cplusplus
