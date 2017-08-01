@@ -272,6 +272,7 @@ DxfOle2Frame *dxf_ole2frame_set_color_value (DxfOle2Frame *ole2frame, long color
 char *dxf_ole2frame_get_color_name (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_color_name (DxfOle2Frame *ole2frame, char *color_name);
 long dxf_ole2frame_get_transparency (DxfOle2Frame *ole2frame);
+DxfOle2Frame *dxf_ole2frame_set_transparency (DxfOle2Frame *ole2frame, long transparency);
 
 
 #ifdef __cplusplus
