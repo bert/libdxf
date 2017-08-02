@@ -121,7 +121,7 @@ dxf_ole2frame_init
         ole2frame->paperspace = DXF_MODELSPACE;
         ole2frame->dictionary_owner_soft = strdup ("");
         ole2frame->dictionary_owner_hard = strdup ("");
-        ole2frame->end_of_data = strdup ("");
+        ole2frame->end_of_data = strdup ("OLE");
         ole2frame->length_of_binary_data = strdup ("");
         ole2frame->x0 = 0.0;
         ole2frame->y0 = 0.0;
