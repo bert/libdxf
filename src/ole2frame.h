@@ -43,6 +43,7 @@
 
 
 #include "global.h"
+#include "point.h"
 #include "binary_graphics_data.h"
 
 
@@ -182,6 +183,9 @@ dxf_ole2frame_struct
         char *length_of_binary_data;
                 /*!< Length of binary data.\n
                  * Group code = 3.  */
+        DxfPoint *p0;
+                /*!< Insertion point.\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< X-value of the insertion point coordinate.\n
                  * Group code = 10. */
