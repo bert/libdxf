@@ -276,6 +276,7 @@ DxfOle2Frame *dxf_ole2frame_set_transparency (DxfOle2Frame *ole2frame, long tran
 char *dxf_ole2frame_get_end_of_data (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_end_of_data (DxfOle2Frame *ole2frame, char *end_of_data);
 char *dxf_ole2frame_get_length_of_binary_data (DxfOle2Frame *ole2frame);
+DxfOle2Frame *dxf_ole2frame_set_length_of_binary_data (DxfOle2Frame *ole2frame, char *length_of_binary_data);
 
 
 #ifdef __cplusplus
