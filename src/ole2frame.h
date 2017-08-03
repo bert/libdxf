@@ -282,6 +282,7 @@ DxfOle2Frame *dxf_ole2frame_set_end_of_data (DxfOle2Frame *ole2frame, char *end_
 char *dxf_ole2frame_get_length_of_binary_data (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_length_of_binary_data (DxfOle2Frame *ole2frame, char *length_of_binary_data);
 DxfPoint *dxf_ole2frame_get_p0 (DxfOle2Frame *ole2frame);
+DxfOle2Frame *dxf_ole2frame_set_p0 (DxfOle2Frame *ole2frame, DxfPoint *p0);
 
 
 #ifdef __cplusplus
