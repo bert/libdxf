@@ -2644,4 +2644,47 @@ dxf_ole2frame_get_z0
 }
 
 
+/*!
+ * \brief Set the Z-value of the insertion point \c z0 of a DXF
+ * \c OLE2FRAME entity.
+ *
+ * \return a pointer to \c ole2frame when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfOle2Frame *
+dxf_ole2frame_set_z0
+(
+        DxfOle2Frame *ole2frame,
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+        double z0
+                /*!< the Z-value of the insertion point \c z0 of a DXF
+                 * \c OLE2FRAME entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ole2frame->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ole2frame->p0->z0 = z0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ole2frame);
+}
+
+
 /* EOF */
