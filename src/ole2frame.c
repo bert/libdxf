@@ -2562,4 +2562,47 @@ dxf_ole2frame_get_y0
 }
 
 
+/*!
+ * \brief Set the Y-value of the insertion point \c y0 of a DXF
+ * \c OLE2FRAME entity.
+ *
+ * \return a pointer to \c ole2frame when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfOle2Frame *
+dxf_ole2frame_set_y0
+(
+        DxfOle2Frame *ole2frame,
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+        double y0
+                /*!< the Y-value of the insertion point \c y0 of a DXF
+                 * \c OLE2FRAME entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ole2frame->p0 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ole2frame->p0->y0 = y0;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ole2frame);
+}
+
+
 /* EOF */
