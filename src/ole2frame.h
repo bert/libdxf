@@ -285,6 +285,7 @@ DxfPoint *dxf_ole2frame_get_p0 (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_p0 (DxfOle2Frame *ole2frame, DxfPoint *p0);
 double dxf_ole2frame_get_x0 (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_x0 (DxfOle2Frame *ole2frame, double x0);
+double dxf_ole2frame_get_y0 (DxfOle2Frame *ole2frame);
 
 
 #ifdef __cplusplus
