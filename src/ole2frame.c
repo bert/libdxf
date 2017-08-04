@@ -2724,4 +2724,44 @@ dxf_ole2frame_get_p1
 }
 
 
+/*!
+ * \brief Set the direction vector \c p1 of a DXF \c OLE2FRAME entity.
+ *
+ * \return a pointer to a DXF \c OLE2FRAME entity.
+ */
+DxfOle2Frame *
+dxf_ole2frame_set_p1
+(
+        DxfOle2Frame *ole2frame,
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+        DxfPoint *p1
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (p1 == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ole2frame->p1 = p1;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ole2frame);
+}
+
+
 /* EOF */
