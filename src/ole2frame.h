@@ -195,6 +195,9 @@ dxf_ole2frame_struct
         double z0;
                 /*!< Z-value of the insertion point coordinate.\n
                  * Group code = 30. */
+        DxfPoint *p1;
+                /*!< Direction vector.\n
+                 * Group codes = 11, 21 and 31.*/
         double x1;
                 /*!< X-value of the direction vector.\n
                  * Group code = 11. */
