@@ -253,42 +253,42 @@ dxf_ole2frame_read
                         /* Now follows a string containing the
                          * X-coordinate of the insertion point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ole2frame->x0);
+                        fscanf (fp->fp, "%lf\n", &ole2frame->p0->x0);
                 }
                 else if (strcmp (temp_string, "20") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the insertion point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ole2frame->y0);
+                        fscanf (fp->fp, "%lf\n", &ole2frame->p0->y0);
                 }
                 else if (strcmp (temp_string, "30") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the insertion point. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ole2frame->z0);
+                        fscanf (fp->fp, "%lf\n", &ole2frame->p0->z0);
                 }
                 else if (strcmp (temp_string, "11") == 0)
                 {
                         /* Now follows a string containing the
                          * X-coordinate of the direction vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ole2frame->x1);
+                        fscanf (fp->fp, "%lf\n", &ole2frame->p1->x0);
                 }
                 else if (strcmp (temp_string, "21") == 0)
                 {
                         /* Now follows a string containing the
                          * Y-coordinate of the direction vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ole2frame->y1);
+                        fscanf (fp->fp, "%lf\n", &ole2frame->p1->y0);
                 }
                 else if (strcmp (temp_string, "31") == 0)
                 {
                         /* Now follows a string containing the
                          * Z-coordinate of the direction vector. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%lf\n", &ole2frame->z1);
+                        fscanf (fp->fp, "%lf\n", &ole2frame->p1->z0);
                 }
                 else if ((fp->acad_version_number <= AutoCAD_11)
                         && (strcmp (temp_string, "38") == 0))
