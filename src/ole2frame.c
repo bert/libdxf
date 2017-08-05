@@ -566,12 +566,12 @@ dxf_ole2frame_write
         }
         fprintf (fp->fp, " 70\n%d\n", ole2frame->ole_version_number);
         fprintf (fp->fp, "  3\n%s\n", ole2frame->length_of_binary_data);
-        fprintf (fp->fp, " 10\n%f\n", ole2frame->x0);
-        fprintf (fp->fp, " 20\n%f\n", ole2frame->y0);
-        fprintf (fp->fp, " 30\n%f\n", ole2frame->z0);
-        fprintf (fp->fp, " 11\n%f\n", ole2frame->x1);
-        fprintf (fp->fp, " 21\n%f\n", ole2frame->y1);
-        fprintf (fp->fp, " 31\n%f\n", ole2frame->z1);
+        fprintf (fp->fp, " 10\n%f\n", ole2frame->p0->x0);
+        fprintf (fp->fp, " 20\n%f\n", ole2frame->p0->y0);
+        fprintf (fp->fp, " 30\n%f\n", ole2frame->p0->z0);
+        fprintf (fp->fp, " 11\n%f\n", ole2frame->p1->x0);
+        fprintf (fp->fp, " 21\n%f\n", ole2frame->p1->y0);
+        fprintf (fp->fp, " 31\n%f\n", ole2frame->p1->z0);
         fprintf (fp->fp, " 71\n%d\n", ole2frame->ole_object_type);
         fprintf (fp->fp, " 72\n%d\n", ole2frame->tilemode_descriptor);
         fprintf (fp->fp, " 90\n%ld\n", ole2frame->length);
