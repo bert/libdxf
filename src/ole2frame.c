@@ -3087,4 +3087,46 @@ dxf_ole2frame_set_ole_version_number
 }
 
 
+/*!
+ * \brief Get the \c ole_object_type from a DXF \c OLE2FRAME entity.
+ *
+ * \return \c ole_object_type.
+ */
+int
+dxf_ole2frame_get_ole_object_type
+(
+        DxfOle2Frame *ole2frame
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (ole2frame->ole_object_type < 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a too small value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (ole2frame->ole_object_type > 3)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a too large value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ole2frame->ole_object_type);
+}
+
+
 /* EOF */
