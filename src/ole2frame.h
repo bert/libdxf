@@ -304,6 +304,7 @@ int dxf_ole2frame_get_ole_version_number (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_ole_version_number (DxfOle2Frame *ole2frame, int ole_version_number);
 int dxf_ole2frame_get_ole_object_type (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_ole_object_type (DxfOle2Frame *ole2frame, int ole_object_type);
+int dxf_ole2frame_get_tilemode_descriptor (DxfOle2Frame *ole2frame);
 
 
 #ifdef __cplusplus
