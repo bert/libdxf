@@ -3362,4 +3362,43 @@ dxf_ole2frame_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c OLE2FRAME for a DXF \c ARC
+ * entity.
+ */
+DxfOle2Frame *
+dxf_ole2frame_set_next
+(
+        DxfOle2Frame *ole2frame,
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+        DxfOle2Frame *next
+                /*!< a pointer to the next \c OLE2FRAME for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ole2frame->next = (struct DxfOle2Frame *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ole2frame);
+}
+
+
 /* EOF */
