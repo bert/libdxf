@@ -93,8 +93,6 @@ dxf_ole2frame_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (ole2frame == NULL)
         {
@@ -137,10 +135,8 @@ dxf_ole2frame_init
         ole2frame->ole_object_type = 0;
         ole2frame->tilemode_descriptor = 0;
         ole2frame->length = 0;
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                ole2frame->binary_data[i] = strdup ("");
-        }
+        ole2frame->binary_data = dxf_char_new ();
+        ole2frame->binary_data = dxf_char_init (ole2frame->binary_data);
         ole2frame->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -380,8 +376,8 @@ dxf_ole2frame_read
                 {
                         /* Now follows a string containing binary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", ole2frame->binary_data[i]);
-                        i++;
+                        fscanf (fp->fp, "%s\n", ole2frame->binary_data->value);
+                        /*! \todo Needs a proper implementation. */
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -576,10 +572,11 @@ dxf_ole2frame_write
         fprintf (fp->fp, " 72\n%d\n", ole2frame->tilemode_descriptor);
         fprintf (fp->fp, " 90\n%ld\n", ole2frame->length);
         i = 0;
-        while (strlen (ole2frame->binary_data[i]) > 0)
+        while (strlen (ole2frame->binary_data->value) > 0)
+        /*! \todo Needs a proper implementation. */
         {
-                fprintf (fp->fp, "310\n%s\n", ole2frame->binary_data[i]);
-                i++;
+                fprintf (fp->fp, "310\n%s\n", ole2frame->binary_data->value);
+                /*! \todo Needs a proper implementation. */
         }
         fprintf (fp->fp, "  1\nOLE\n");
         /* Clean up. */
@@ -609,8 +606,6 @@ dxf_ole2frame_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         if (ole2frame->next != NULL)
         {
               fprintf (stderr,
@@ -624,10 +619,10 @@ dxf_ole2frame_free
         free (ole2frame->layer);
         free (ole2frame->dictionary_owner_soft);
         free (ole2frame->dictionary_owner_hard);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (ole2frame->binary_data[i]);
-        }
+        free (ole2frame->binary_data->value);
+        /*! \todo Needs a proper implementation. */
+        free (ole2frame->binary_data);
+        /*! \todo Needs a proper implementation. */
         free (ole2frame);
         ole2frame = NULL;
 #if DEBUG
