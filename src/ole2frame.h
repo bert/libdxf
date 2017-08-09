@@ -5,6 +5,8 @@
  *
  * \brief Header file for a DXF ole2frame entity (\c OLE2FRAME).
  *
+ * \since The \c OLE2FRAME entity was introduced in DXF R14.
+ *
  * \version According to DXF R10 (backward compatibility).
  * \version According to DXF R11 (backward compatibility).
  * \version According to DXF R12 (backward compatibility).
