@@ -3288,4 +3288,38 @@ dxf_ole2frame_get_length
 }
 
 
+/*!
+ * \brief Set the \c length for a DXF \c OLE2FRAME entity.
+ *
+ * \return a pointer to \c ole2frame when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfOle2Frame *
+dxf_ole2frame_set_length
+(
+        DxfOle2Frame *ole2frame,
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+        long length
+                /*!< the \c length to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ole2frame->length = length;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ole2frame);
+}
+
+
 /* EOF */
