@@ -3360,6 +3360,50 @@ dxf_ole2frame_get_binary_data
 
 
 /*!
+ * \brief Set the \c binary_data for a DXF \c OLE2FRAME entity.
+ *
+ * \return a pointer to \c ole2frame when successful, or \c NULL when an
+ * error occurred.
+ *
+ * \warning No deep copy is made from the \c binary_data.
+ */
+DxfOle2Frame *
+dxf_ole2frame_set_binary_data
+(
+        DxfOle2Frame *ole2frame,
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+        DxfChar *binary_data
+                /*!< a string containing the \c color_name for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (binary_data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ole2frame->binary_data = binary_data;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ole2frame);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c OLE2FRAME entity from a DXF
  * \c OLE2FRAME entity.
  *
