@@ -189,27 +189,9 @@ dxf_ole2frame_struct
         DxfPoint *p0;
                 /*!< Insertion point.\n
                  * Group codes = 10, 20 and 30.*/
-        double x0;
-                /*!< X-value of the insertion point coordinate.\n
-                 * Group code = 10. */
-        double y0;
-                /*!< Y-value of the insertion point coordinate.\n
-                 * Group code = 20. */
-        double z0;
-                /*!< Z-value of the insertion point coordinate.\n
-                 * Group code = 30. */
         DxfPoint *p1;
                 /*!< Direction vector.\n
                  * Group codes = 11, 21 and 31.*/
-        double x1;
-                /*!< X-value of the direction vector.\n
-                 * Group code = 11. */
-        double y1;
-                /*!< Y-value of the direction vector.\n
-                 * Group code = 21. */
-        double z1;
-                /*!< Z-value of the direction vector.\n
-                 * Group code = 31. */
         int ole_version_number ;
                 /*!<  OLE version number.\n
                  * Group code = 70. */
