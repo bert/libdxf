@@ -3320,6 +3320,46 @@ dxf_ole2frame_set_length
 
 
 /*!
+ * \brief Get the \c binary_data from a DXF \c OLE2FRAME entity.
+ *
+ * \return \c binary_data when sucessful, or \c NULL when an error
+ * occurred.
+ *
+ * \warning No deep copy is made of the \c binary_data.
+ */
+DxfChar *
+dxf_ole2frame_get_binary_data
+(
+        DxfOle2Frame *ole2frame
+                /*!< a pointer to a DXF \c OLE2FRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ole2frame == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ole2frame->binary_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ole2frame->binary_data);
+}
+
+
+/*!
  * \brief Get the pointer to the next \c OLE2FRAME entity from a DXF
  * \c OLE2FRAME entity.
  *

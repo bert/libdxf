@@ -311,6 +311,7 @@ int dxf_ole2frame_get_tilemode_descriptor (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_tilemode_descriptor (DxfOle2Frame *ole2frame, int tilemode_descriptor);
 long dxf_ole2frame_get_length (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_length (DxfOle2Frame *ole2frame, long length);
+DxfChar *dxf_ole2frame_get_binary_data (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_get_next (DxfOle2Frame *ole2frame);
 DxfOle2Frame *dxf_ole2frame_set_next (DxfOle2Frame *ole2frame, DxfOle2Frame *next);
 DxfOle2Frame *dxf_ole2frame_get_last (DxfOle2Frame *ole2frame);
