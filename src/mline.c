@@ -901,6 +901,13 @@ dxf_mline_free
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
+        if (mline == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
         if (mline->next != NULL)
         {
               fprintf (stderr,
