@@ -329,6 +329,14 @@ dxf_endblk_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (endblk == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         free (dxf_endblk_get_layer (endblk));
         free (dxf_endblk_get_dictionary_owner_soft (endblk));
         free (endblk);
