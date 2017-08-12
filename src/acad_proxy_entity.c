@@ -738,6 +738,13 @@ dxf_acad_proxy_entity_free
 #endif
         int i;
 
+        if (acad_proxy_entity == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (acad_proxy_entity->next != NULL)
         {
               fprintf (stderr,
