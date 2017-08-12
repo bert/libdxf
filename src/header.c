@@ -1967,12 +1967,13 @@ dxf_header_free
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
         if (header == NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to DxfHeader was NULL.\n")),
-                __FUNCTION__);
-              return (header);
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (header);
         }
         free (header->AcadVer);
         free (header->DWGCodePage);
