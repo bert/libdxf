@@ -701,6 +701,13 @@ dxf_3dline_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        if (line == NULL)
+        {
+              fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                __FUNCTION__);
+              return (EXIT_FAILURE);
+        }
         if (line->next != NULL)
         {
               fprintf (stderr,
