@@ -1251,7 +1251,7 @@ dxf_idbuffer_entity_pointer_get_last
 #if DEBUG
         DXF_DEBUG_END
 #endif
-        return ((DxfIdbuffer *) iter);
+        return ((DxfIdbufferEntityPointer *) iter);
 }
 
 
