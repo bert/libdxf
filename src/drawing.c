@@ -137,6 +137,14 @@ dxf_drawing_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (drawing == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         dxf_header_free ((DxfHeader *) drawing->header);
         dxf_class_free_chain ((DxfClass *) drawing->class_list);
         dxf_block_free_chain ((DxfBlock *) drawing->block_list);
