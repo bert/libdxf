@@ -379,6 +379,13 @@ dxf_dictionaryvar_free
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
+        if (dictionaryvar == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (dxf_dictionaryvar_get_next (dictionaryvar) != NULL)
         {
               fprintf (stderr,
