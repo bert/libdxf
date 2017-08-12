@@ -463,10 +463,17 @@ dxf_imagedef_free
         int i;
 
         /* Do some basic checks. */
+        if (imagedef == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (imagedef->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next DxfImagedef was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
