@@ -187,6 +187,13 @@ dxf_comment_free
 #ifdef DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        if (comment == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (comment->next != NULL)
         {
               fprintf (stderr,
