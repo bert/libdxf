@@ -350,6 +350,13 @@ dxf_object_ptr_free
         struct DxfChar *iter = NULL;
 
         /* Do some basic checks. */
+        if (object_ptr == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (object_ptr->next != NULL)
         {
               fprintf (stderr,
