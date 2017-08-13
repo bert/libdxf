@@ -383,6 +383,13 @@ dxf_imagedef_reactor_free
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
+        if (imagedef_reactor == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (imagedef_reactor->next != NULL)
         {
               fprintf (stderr,
