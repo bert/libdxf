@@ -1,7 +1,7 @@
 /*!
  * \file region.c
  *
- * \author Copyright (C) 2013 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF region entity (\c REGION).
  *
@@ -549,6 +549,14 @@ dxf_region_free
 #endif
         int i;
 
+        /* Do some basic checks. */
+        if (region == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (region->next != NULL)
         {
               fprintf (stderr,
