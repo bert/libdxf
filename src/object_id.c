@@ -1,7 +1,7 @@
 /*!
  * \file object_id.c
  *
- * \author Copyright (C) 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for DXF object ids.
  *
@@ -129,6 +129,14 @@ dxf_object_id_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (object_id == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (object_id->next != NULL)
         {
                 fprintf (stderr,
