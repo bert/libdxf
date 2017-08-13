@@ -1,7 +1,7 @@
 /*!
  * \file rastervariables.c
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF rastervariables object (\c RASTERVARIABLES).
  *
@@ -412,6 +412,13 @@ dxf_rastervariables_free
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
+        if (rastervariables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (rastervariables->next != NULL)
         {
               fprintf (stderr,
