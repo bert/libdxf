@@ -450,6 +450,13 @@ dxf_layer_index_free
         int i;
 
         /* Do some basic checks. */
+        if (layer_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (layer_index->next != NULL)
         {
               fprintf (stderr,
