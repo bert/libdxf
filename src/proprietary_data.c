@@ -1,7 +1,7 @@
 /*!
  * \file proprietary_data.c
  *
- * \author Copyright (C) 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF proprietary data entity.
  *
@@ -130,6 +130,13 @@ dxf_proprietary_data_free
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (data->next != NULL)
         {
               fprintf (stderr,
