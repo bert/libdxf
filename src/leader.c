@@ -779,6 +779,13 @@ dxf_leader_free
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
+        if (leader == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (leader->next != NULL)
         {
               fprintf (stderr,
