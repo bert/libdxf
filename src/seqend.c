@@ -1,7 +1,7 @@
 /*!
  * \file seqend.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF end of sequence marker (\c SEQEND).
  *
@@ -491,6 +491,14 @@ dxf_seqend_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (seqend == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         free (seqend->linetype);
         free (seqend->layer);
         free (seqend->dictionary_owner_soft);
