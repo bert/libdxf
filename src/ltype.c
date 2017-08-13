@@ -575,6 +575,14 @@ dxf_ltype_free
 #endif
         int i;
 
+        /* Do some basic checks. */
+        if (ltype == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (ltype->next != NULL)
         {
               fprintf (stderr,
