@@ -474,6 +474,13 @@ dxf_mlinestyle_free
         int i;
 
         /* Do some basic checks. */
+        if (mlinestyle == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (mlinestyle->next != NULL)
         {
               fprintf (stderr,
