@@ -1,7 +1,7 @@
 /*!
  * \file spline.c
  * 
- * \author Copyright (C) 2013 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  * 
  * \brief Functions for a DXF spline entity (\c SPLINE).
  *
@@ -992,6 +992,14 @@ dxf_spline_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (spline == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (spline->next != NULL)
         {
               fprintf (stderr,
