@@ -1,7 +1,7 @@
 /*!
  * \file trace.c
  *
- * \author Copyright (C) 2008 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2008 ... 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief DXF trace entity (\c TRACE).
  *
@@ -630,6 +630,14 @@ dxf_trace_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
+        /* Do some basic checks. */
+        if (trace == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (trace->next != NULL)
         {
                 fprintf (stderr,
