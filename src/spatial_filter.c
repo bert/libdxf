@@ -1,7 +1,7 @@
 /*!
  * \file spatial_filter.c
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF spatial_filter object (\c SPATIAL_FILTER).
  *
@@ -588,6 +588,13 @@ dxf_spatial_filter_free
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
+        if (spatial_filter == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (spatial_filter->next != NULL)
         {
               fprintf (stderr,
