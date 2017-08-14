@@ -630,7 +630,7 @@ dxf_vertex_free
         if (vertex->next != NULL)
         {
                 fprintf (stderr,
-                  (_("ERROR in %s () pointer to next DxfVertex was not NULL.\n")),
+                  (_("ERROR in %s () pointer to next was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
