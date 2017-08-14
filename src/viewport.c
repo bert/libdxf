@@ -1246,7 +1246,7 @@ dxf_viewport_free
         if (viewport->next != NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfViewport was not NULL.\n")),
+                  (_("Error in %s () pointer to next was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
