@@ -1,7 +1,7 @@
 /*!
  * \file spatial_index.c
  *
- * \author Copyright (C) 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF spatial_index object (\c SPATIAL_INDEX).
  *
@@ -407,6 +407,13 @@ dxf_spatial_index_free
         DXF_DEBUG_BEGIN
 #endif
         /* Do some basic checks. */
+        if (spatial_index == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
         if (spatial_index->next != NULL)
         {
               fprintf (stderr,
