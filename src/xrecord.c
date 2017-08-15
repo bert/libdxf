@@ -275,7 +275,7 @@ dxf_xrecord_read
                         xrecord->group_code = scanf (temp_string, "%d");
                         /* Now follows a 16-bit integer value.. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%" PRIi16 "\n", &xrecord->I16);
+                        fscanf (fp->fp, "%hi\n", &xrecord->I16);
                 }
                 else if
                   (
@@ -305,7 +305,7 @@ dxf_xrecord_read
                         xrecord->group_code = scanf (temp_string, "%d");
                         /* Now follows a 8-bit integer value.. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%" PRIi8 "\n", &xrecord->I8);
+                        fscanf (fp->fp, "%hhi\n", &xrecord->I8);
                 }
                 else
                 {
