@@ -1,7 +1,7 @@
 /*!
  * \file table.c
  *
- * \author Copyright (C) 2009 ... 2015 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2009 ... 2015, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF table entry (\c TABLE).
  *
@@ -829,7 +829,7 @@ dxf_table_cell_free
         if (cell->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next DxfTableCell was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
@@ -889,7 +889,7 @@ dxf_table_free
         if (table->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next DxfTable was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
