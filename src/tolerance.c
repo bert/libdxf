@@ -611,7 +611,7 @@ dxf_tolerance_free
         if (tolerance->next != NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfTolerance was not NULL.\n")),
+                  (_("Error in %s () pointer to next was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
