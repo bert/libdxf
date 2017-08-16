@@ -416,10 +416,10 @@ dxf_spatial_index_free
         }
         if (spatial_index->next != NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next was not NULL.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (spatial_index->dictionary_owner_soft);
         free (spatial_index->dictionary_owner_hard);
