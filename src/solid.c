@@ -642,7 +642,7 @@ dxf_solid_free
         if (solid->next != NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfSolid was not NULL.\n")),
+                  (_("Error in %s () pointer to next was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
