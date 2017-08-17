@@ -421,10 +421,10 @@ dxf_rastervariables_free
         }
         if (rastervariables->next != NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next was not NULL.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (rastervariables->dictionary_owner_soft);
         free (rastervariables->dictionary_owner_hard);
