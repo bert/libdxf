@@ -669,7 +669,7 @@ dxf_polyline_free
         if (polyline->next != NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfPolyline was not NULL.\n")),
+                  (_("Error in %s () pointer to next was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
