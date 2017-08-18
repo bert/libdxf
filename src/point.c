@@ -560,7 +560,7 @@ dxf_point_free
         if (point->next != NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfPoint was not NULL.\n")),
+                  (_("Error in %s () pointer to next was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
