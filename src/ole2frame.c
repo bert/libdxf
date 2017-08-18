@@ -610,10 +610,10 @@ dxf_ole2frame_free
 #endif
         if (ole2frame->next != NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next was not NULL.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (ole2frame->end_of_data);
         free (ole2frame->length_of_binary_data);
