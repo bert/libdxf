@@ -359,10 +359,10 @@ dxf_object_ptr_free
         }
         if (object_ptr->next != NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next was not NULL.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (object_ptr->dictionary_owner_soft);
         free (object_ptr->dictionary_owner_hard);
