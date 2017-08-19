@@ -718,10 +718,10 @@ dxf_image_free
         }
         if (image->next != NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next was not NULL.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (dxf_image_get_linetype (image));
         free (dxf_image_get_layer (image));
