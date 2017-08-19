@@ -993,10 +993,10 @@ dxf_idbuffer_entity_pointer_free
         }
         if (entity_pointer->next != NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next was not NULL.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (entity_pointer->soft_pointer);
         free (entity_pointer);
