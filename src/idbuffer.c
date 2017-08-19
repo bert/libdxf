@@ -994,7 +994,7 @@ dxf_idbuffer_entity_pointer_free
         if (entity_pointer->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next DxfIdbufferEntityPointer was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
