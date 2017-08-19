@@ -747,10 +747,10 @@ dxf_acad_proxy_entity_free
         }
         if (acad_proxy_entity->next != NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next was not NULL.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (dxf_acad_proxy_entity_get_linetype (acad_proxy_entity));
         free (dxf_acad_proxy_entity_get_layer (acad_proxy_entity));
