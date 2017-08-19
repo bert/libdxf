@@ -392,10 +392,10 @@ dxf_imagedef_reactor_free
         }
         if (imagedef_reactor->next != NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next was not NULL.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (imagedef_reactor->dictionary_owner_soft);
         free (imagedef_reactor->dictionary_owner_hard);
