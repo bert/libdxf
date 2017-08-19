@@ -903,17 +903,17 @@ dxf_mline_free
         /* Do some basic checks. */
         if (mline == NULL)
         {
-              fprintf (stderr,
+                fprintf (stderr,
                   (_("Error in %s () a NULL pointer was passed.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         if (mline->next != NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next was not NULL.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (mline->linetype);
         free (mline->layer);
