@@ -748,7 +748,7 @@ dxf_acad_proxy_entity_free
         if (acad_proxy_entity->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next DxfAcadProxyEntity was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
