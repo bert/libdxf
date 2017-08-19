@@ -460,7 +460,7 @@ dxf_layer_index_free
         if (layer_index->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next DxfLayerIndex was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
