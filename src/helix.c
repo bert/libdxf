@@ -736,7 +736,7 @@ dxf_helix_free
         if (helix->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next DxfHelix was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
