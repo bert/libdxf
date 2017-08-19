@@ -447,10 +447,10 @@ dxf_layer_free
         }
         if (layer->next != NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next was not NULL.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (dxf_layer_get_layer_name (layer));
         free (dxf_layer_get_linetype (layer));
