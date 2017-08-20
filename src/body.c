@@ -552,10 +552,10 @@ dxf_body_free
         }
         if (body->next != NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next was not NULL.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (body->linetype);
         free (body->layer);
