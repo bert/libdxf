@@ -1,7 +1,7 @@
 /*!
  * \file binary_graphics_data.c
  *
- * \author Copyright (C) 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Functions for a DXF binary graphics data object.
  *
@@ -176,7 +176,7 @@ dxf_binary_graphics_data_free
         if (data->next != NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfBinaryGraphicsData was not NULL.\n")),
+                  (_("Error in %s () pointer to next was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
