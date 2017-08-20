@@ -575,7 +575,7 @@ dxf_block_free
         if (block->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next DxfBlock was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
