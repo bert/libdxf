@@ -911,7 +911,7 @@ dxf_dimstyle_free
         if (dimstyle->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next DxfDimStyle was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
