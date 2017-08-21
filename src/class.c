@@ -445,7 +445,7 @@ dxf_class_free
         if (class->next != NULL)
         {
               fprintf (stderr,
-                (_("Error in %s () pointer to next DxfClass was not NULL.\n")),
+                (_("Error in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
