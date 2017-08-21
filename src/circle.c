@@ -561,7 +561,7 @@ dxf_circle_free
         if (circle->next != NULL)
         {
               fprintf (stderr,
-                (_("ERROR in %s () pointer to next DxfCircle was not NULL.\n")),
+                (_("ERROR in %s () pointer to next was not NULL.\n")),
                 __FUNCTION__);
               return (EXIT_FAILURE);
         }
