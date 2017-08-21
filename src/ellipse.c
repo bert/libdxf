@@ -627,10 +627,10 @@ dxf_ellipse_free
         }
         if (ellipse->next != NULL)
         {
-              fprintf (stderr,
-                (_("Error in %s () pointer to next was not NULL.\n")),
-                __FUNCTION__);
-              return (EXIT_FAILURE);
+                fprintf (stderr,
+                  (_("Error in %s () pointer to next was not NULL.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
         }
         free (ellipse->linetype);
         free (ellipse->layer);
