@@ -13626,7 +13626,7 @@ dxf_hatch_boundary_path_edge_spline_control_point_free
         if (control_point->next != NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfHatchBoundaryPathEdgeSplineCp was not NULL.\n")),
+                  (_("Error in %s () pointer to next was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
