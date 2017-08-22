@@ -7017,7 +7017,7 @@ dxf_hatch_boundary_path_polyline_vertex_free
         if (vertex->next != NULL)
         {
                 fprintf (stderr,
-                  (_("Error in %s () pointer to next DxfHatchBoundaryPathPolylineVertex was not NULL.\n")),
+                  (_("Error in %s () pointer to next was not NULL.\n")),
                   __FUNCTION__);
                 return (EXIT_FAILURE);
         }
