@@ -203,6 +203,7 @@ int dxf_oleframe_write (DxfFile *fp, DxfOleFrame *oleframe);
 int dxf_oleframe_free (DxfOleFrame *oleframe);
 void dxf_oleframe_free_chain (DxfOleFrame *oleframes);
 int dxf_oleframe_get_id_code (DxfOleFrame *oleframe);
+DxfOleFrame *dxf_oleframe_set_id_code (DxfOleFrame *oleframe, int id_code);
 
 
 #ifdef __cplusplus
