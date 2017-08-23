@@ -116,40 +116,13 @@ dxf_oleframe
 } DxfOleFrame;
 
 
-DxfOleFrame *
-dxf_oleframe_new ();
-DxfOleFrame *
-dxf_oleframe_init
-(
-        DxfOleFrame *oleframe
-);
-DxfOleFrame *
-dxf_oleframe_read
-(
-        DxfFile *fp,
-        DxfOleFrame *oleframe
-);
-int
-dxf_oleframe_write
-(
-        DxfFile *fp,
-        DxfOleFrame *oleframe
-);
-int
-dxf_oleframe_free
-(
-        DxfOleFrame *oleframe
-);
-void
-dxf_oleframe_free_chain
-(
-        DxfOleFrame *oleframes
-);
-int
-dxf_oleframe_get_id_code
-(
-        DxfOleFrame *oleframe
-);
+DxfOleFrame *dxf_oleframe_new ();
+DxfOleFrame *dxf_oleframe_init (DxfOleFrame *oleframe);
+DxfOleFrame *dxf_oleframe_read (DxfFile *fp, DxfOleFrame *oleframe);
+int dxf_oleframe_write (DxfFile *fp, DxfOleFrame *oleframe);
+int dxf_oleframe_free (DxfOleFrame *oleframe);
+void dxf_oleframe_free_chain (DxfOleFrame *oleframes);
+int dxf_oleframe_get_id_code (DxfOleFrame *oleframe);
 
 
 #ifdef __cplusplus
