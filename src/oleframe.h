@@ -1,7 +1,7 @@
 /*!
  * \file oleframe.h
  *
- * \author Copyright (C) 2013 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013 ... 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF oleframe entity (\c OLEFRAME).
  *
@@ -144,6 +144,11 @@ void
 dxf_oleframe_free_chain
 (
         DxfOleFrame *oleframes
+);
+int
+dxf_oleframe_get_id_code
+(
+        DxfOleFrame *oleframe
 );
 
 
