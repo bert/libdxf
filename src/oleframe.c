@@ -756,4 +756,41 @@ dxf_oleframe_set_linetype
 }
 
 
+/*!
+ * \brief Get the \c layer from a DXF \c OLEFRAME entity.
+ *
+ * \return \c layer when sucessful, \c NULL when an error occurred.
+ */
+char *
+dxf_oleframe_get_layer
+(
+        DxfOleFrame *oleframe
+                /*!< a pointer to a DXF \c OLEFRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (oleframe->layer ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (strdup (oleframe->layer));
+}
+
+
 /* EOF */

@@ -206,6 +206,7 @@ int dxf_oleframe_get_id_code (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_id_code (DxfOleFrame *oleframe, int id_code);
 char *dxf_oleframe_get_linetype (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_linetype (DxfOleFrame *oleframe, char *linetype);
+char *dxf_oleframe_get_layer (DxfOleFrame *oleframe);
 
 
 #ifdef __cplusplus
