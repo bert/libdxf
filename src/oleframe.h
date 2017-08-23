@@ -53,7 +53,7 @@ extern "C" {
  * \version According to DXF R14.
  */
 typedef struct
-dxf_oleframe
+dxf_oleframe_struct
 {
         /* Members common for all DXF drawable entities. */
         int id_code;
