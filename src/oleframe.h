@@ -213,6 +213,7 @@ DxfOleFrame *dxf_oleframe_set_elevation (DxfOleFrame *oleframe, double elevation
 double dxf_oleframe_get_thickness (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_thickness (DxfOleFrame *oleframe, double thickness);
 double dxf_oleframe_get_linetype_scale (DxfOleFrame *oleframe);
+DxfOleFrame *dxf_oleframe_set_linetype_scale (DxfOleFrame *oleframe, double linetype_scale);
 
 
 #ifdef __cplusplus
