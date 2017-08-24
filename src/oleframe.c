@@ -861,4 +861,35 @@ dxf_oleframe_get_elevation
 }
 
 
+/*!
+ * \brief Set the \c elevation for a DXF \c OLEFRAME entity.
+ */
+DxfOleFrame *
+dxf_oleframe_set_elevation
+(
+        DxfOleFrame *oleframe,
+                /*!< a pointer to a DXF \c OLEFRAME entity. */
+        double elevation
+                /*!< the \c elevation to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        oleframe->elevation = elevation;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (oleframe);
+}
+
+
 /* EOF */

@@ -209,6 +209,7 @@ DxfOleFrame *dxf_oleframe_set_linetype (DxfOleFrame *oleframe, char *linetype);
 char *dxf_oleframe_get_layer (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_layer (DxfOleFrame *oleframe, char *layer);
 double dxf_oleframe_get_elevation (DxfOleFrame *oleframe);
+DxfOleFrame *dxf_oleframe_set_elevation (DxfOleFrame *oleframe, double elevation);
 
 
 #ifdef __cplusplus
