@@ -216,6 +216,7 @@ double dxf_oleframe_get_linetype_scale (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_linetype_scale (DxfOleFrame *oleframe, double linetype_scale);
 int16_t dxf_oleframe_get_visibility (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_visibility (DxfOleFrame *oleframe, int16_t visibility);
+int dxf_oleframe_get_color (DxfOleFrame *oleframe);
 
 
 #ifdef __cplusplus
