@@ -1196,4 +1196,46 @@ dxf_oleframe_set_color
 }
 
 
+/*!
+ * \brief Get the \c paperspace flag value from a DXF \c OLEFRAME entity.
+ *
+ * \return \c paperspace flag value.
+ */
+int
+dxf_oleframe_get_paperspace
+(
+        DxfOleFrame *oleframe
+                /*!< a pointer to a DXF \c OLEFRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (oleframe->paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (oleframe->paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (oleframe->paperspace);
+}
+
+
 /* EOF */
