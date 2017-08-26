@@ -221,6 +221,7 @@ DxfOleFrame *dxf_oleframe_set_color (DxfOleFrame *oleframe, int color);
 int dxf_oleframe_get_paperspace (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_paperspace (DxfOleFrame *oleframe, int paperspace);
 int dxf_oleframe_get_graphics_data_size (DxfOleFrame *oleframe);
+DxfOleFrame *dxf_oleframe_set_graphics_data_size (DxfOleFrame *oleframe, int graphics_data_size);
 
 
 #ifdef __cplusplus
