@@ -1238,4 +1238,48 @@ dxf_oleframe_get_paperspace
 }
 
 
+/*!
+ * \brief Set the \c paperspace flag for a DXF \c OLEFRAME entity.
+ */
+DxfOleFrame *
+dxf_oleframe_set_paperspace
+(
+        DxfOleFrame *oleframe,
+                /*!< a pointer to a DXF \c OLEFRAME entity. */
+        int paperspace
+                /*!< the \c paperspace flag value to be set for the
+                 * entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (paperspace < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (paperspace > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        oleframe->paperspace = paperspace;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (oleframe);
+}
+
+
 /* EOF */
