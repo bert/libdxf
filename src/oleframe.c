@@ -1463,4 +1463,44 @@ dxf_oleframe_set_shadow_mode
 }
 
 
+/*!
+ * \brief Get the pointer to the \c binary_graphics_data from a DXF
+ * \c OLEFRAME entity.
+ *
+ * \return pointer to the \c binary_graphics_data.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfBinaryGraphicsData *
+dxf_oleframe_get_binary_graphics_data
+(
+        DxfOleFrame *oleframe
+                /*!< a pointer to a DXF \c OLEFRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (oleframe->binary_graphics_data ==  NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfBinaryGraphicsData *) oleframe->binary_graphics_data);
+}
+
+
 /* EOF */
