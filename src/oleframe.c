@@ -1583,4 +1583,44 @@ dxf_oleframe_get_dictionary_owner_soft
 }
 
 
+/*!
+ * \brief Set the pointer to the dictionary_owner_soft for a DXF
+ * \c OLEFRAME entity.
+ */
+DxfOleFrame *
+dxf_oleframe_set_dictionary_owner_soft
+(
+        DxfOleFrame *oleframe,
+                /*!< a pointer to a DXF \c OLEFRAME entity. */
+        char *dictionary_owner_soft
+                /*!< a string containing the pointer to the
+                 * dictionary_owner_soft for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (dictionary_owner_soft == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        oleframe->dictionary_owner_soft = strdup (dictionary_owner_soft);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (oleframe);
+}
+
+
 /* EOF */
