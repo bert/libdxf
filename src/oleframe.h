@@ -226,6 +226,7 @@ int16_t dxf_oleframe_get_shadow_mode (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_shadow_mode (DxfOleFrame *oleframe, int16_t shadow_mode);
 DxfBinaryGraphicsData *dxf_oleframe_get_binary_graphics_data (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_binary_graphics_data (DxfOleFrame *oleframe, DxfBinaryGraphicsData *data);
+char *dxf_oleframe_get_dictionary_owner_soft (DxfOleFrame *oleframe);
 
 
 #ifdef __cplusplus
