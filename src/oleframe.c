@@ -1663,4 +1663,47 @@ dxf_oleframe_get_material
 }
 
 
+/*!
+ * \brief Set the pointer to the \c material for a DXF \c OLEFRAME
+ * entity.
+ *
+ * \return a pointer to \c oleframe when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfOleFrame *
+dxf_oleframe_set_material
+(
+        DxfOleFrame *oleframe,
+                /*!< a pointer to a DXF \c OLEFRAME entity. */
+        char *material
+                /*!< a string containing the pointer to the \c
+                 * material for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (material == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        oleframe->material = strdup (material);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (oleframe);
+}
+
+
 /* EOF */
