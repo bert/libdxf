@@ -231,6 +231,7 @@ DxfOleFrame *dxf_oleframe_set_dictionary_owner_soft (DxfOleFrame *oleframe, char
 char *dxf_oleframe_get_material (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_material (DxfOleFrame *oleframe, char *material);
 char *dxf_oleframe_get_dictionary_owner_hard (DxfOleFrame *oleframe);
+DxfOleFrame *dxf_oleframe_set_dictionary_owner_hard (DxfOleFrame *oleframe, char *dictionary_owner_hard);
 
 
 #ifdef __cplusplus
