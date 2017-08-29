@@ -233,6 +233,7 @@ DxfOleFrame *dxf_oleframe_set_material (DxfOleFrame *oleframe, char *material);
 char *dxf_oleframe_get_dictionary_owner_hard (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_dictionary_owner_hard (DxfOleFrame *oleframe, char *dictionary_owner_hard);
 int16_t dxf_oleframe_get_lineweight (DxfOleFrame *oleframe);
+DxfOleFrame *dxf_oleframe_set_lineweight (DxfOleFrame *oleframe, int16_t lineweight);
 
 
 #ifdef __cplusplus

@@ -1817,4 +1817,38 @@ dxf_oleframe_get_lineweight
 }
 
 
+/*!
+ * \brief Set the \c lineweight for a DXF \c OLEFRAME entity.
+ *
+ * \return a pointer to \c oleframe when successful, or \c NULL when an
+ * error occurred.
+ */
+DxfOleFrame *
+dxf_oleframe_set_lineweight
+(
+        DxfOleFrame *oleframe,
+                /*!< a pointer to a DXF \c OLEFRAME entity. */
+        int16_t lineweight
+                /*!< the \c lineweight to be set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        oleframe->lineweight = lineweight;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (oleframe);
+}
+
+
 /* EOF */
