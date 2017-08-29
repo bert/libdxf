@@ -234,6 +234,7 @@ char *dxf_oleframe_get_dictionary_owner_hard (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_dictionary_owner_hard (DxfOleFrame *oleframe, char *dictionary_owner_hard);
 int16_t dxf_oleframe_get_lineweight (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_lineweight (DxfOleFrame *oleframe, int16_t lineweight);
+char *dxf_oleframe_get_plot_style_name (DxfOleFrame *oleframe);
 
 
 #ifdef __cplusplus
