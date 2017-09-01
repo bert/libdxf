@@ -2214,4 +2214,35 @@ dxf_oleframe_set_ole_version_number
 }
 
 
+/*!
+ * \brief Get the \c length from a DXF \c OLEFRAME entity.
+ *
+ * \return \c length when successful, or \c EXIT_FAILURE when an error
+ * occurred.
+ */
+long
+dxf_oleframe_get_length
+(
+        DxfOleFrame *oleframe
+                /*!< a pointer to a DXF \c OLEFRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (oleframe->length);
+}
+
+
 /* EOF */

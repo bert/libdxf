@@ -244,6 +244,7 @@ long dxf_oleframe_get_transparency (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_transparency (DxfOleFrame *oleframe, long transparency);
 int dxf_oleframe_get_ole_version_number (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_ole_version_number (DxfOleFrame *oleframe, int ole_version_number);
+long dxf_oleframe_get_length (DxfOleFrame *oleframe);
 
 
 #ifdef __cplusplus
