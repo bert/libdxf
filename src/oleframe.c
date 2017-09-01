@@ -2177,4 +2177,41 @@ dxf_oleframe_get_ole_version_number
 }
 
 
+/*!
+ * \brief Set the \c ole_version_number for a DXF \c OLEFRAME entity.
+ */
+DxfOleFrame *
+dxf_oleframe_set_ole_version_number
+(
+        DxfOleFrame *oleframe,
+                /*!< a pointer to a DXF \c OLEFRAME entity. */
+        int ole_version_number
+                /*!< the \c ole_version_number for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (ole_version_number < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        oleframe->ole_version_number = ole_version_number;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (oleframe);
+}
+
+
 /* EOF */
