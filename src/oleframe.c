@@ -2319,4 +2319,43 @@ dxf_oleframe_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c OLEFRAME for a DXF \c OLEFRAME
+ * entity.
+ */
+DxfOleFrame *
+dxf_oleframe_set_next
+(
+        DxfOleFrame *oleframe,
+                /*!< a pointer to a DXF \c OLEFRAME entity. */
+        DxfOleFrame *next
+                /*!< a pointer to the next \c OLEFRAME for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        oleframe->next = (struct DxfOleFrame *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (oleframe);
+}
+
+
 /* EOF */
