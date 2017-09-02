@@ -159,6 +159,40 @@ dxf_char_free
 }
 
 
+/*!
+ * \brief Free the allocated memory for a chain of DxfChar objects and
+ * all their data fields.
+ */
+int
+dxf_char_free_chain
+(
+        DxfChar *chars
+                /*!< a pointer to the chain of DxfChar objects. */
+)
+{
+#ifdef DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        if (chars == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        while (chars != NULL)
+        {
+                struct DxfChar *iter = chars->next;
+                dxf_char_free (chars);
+                chars = (DxfChar *) iter;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
 int
 dxf_read_is_double (int type)
 {
