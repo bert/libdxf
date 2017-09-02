@@ -2279,4 +2279,44 @@ dxf_oleframe_set_length
 }
 
 
+/*!
+ * \brief Get the pointer to the next \c OLEFRAME entity from a DXF
+ * \c OLEFRAME entity.
+ *
+ * \return pointer to the next \c OLEFRAME entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfOleFrame *
+dxf_oleframe_get_next
+(
+        DxfOleFrame *oleframe
+                /*!< a pointer to a DXF \c OLEFRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (oleframe->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfOleFrame *) oleframe->next);
+}
+
+
 /* EOF */
