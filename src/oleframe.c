@@ -94,8 +94,6 @@ dxf_oleframe_init
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (oleframe == NULL)
         {
@@ -124,10 +122,10 @@ dxf_oleframe_init
         oleframe->dictionary_owner_hard = strdup ("");
         oleframe->ole_version_number = 1;
         oleframe->length = 0;
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                oleframe->binary_data[i] = strdup ("");
-        }
+        dxf_char_init (oleframe->binary_data);
+        oleframe->binary_data->value = strdup ("");
+        oleframe->binary_data->length = 0;
+        oleframe->binary_data->next = NULL;
         oleframe->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
@@ -163,7 +161,6 @@ dxf_oleframe_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -183,7 +180,6 @@ dxf_oleframe_read
                 oleframe = dxf_oleframe_new ();
                 oleframe = dxf_oleframe_init (oleframe);
         }
-        i = 0;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -308,8 +304,9 @@ dxf_oleframe_read
                 {
                         /* Now follows a string containing binary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", oleframe->binary_data[i]);
-                        i++;
+                        fscanf (fp->fp, "%s\n", oleframe->binary_data->value);
+                        /*! \todo proper implementation of the
+                         * binary_data member. */
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
@@ -379,7 +376,6 @@ dxf_oleframe_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("OLEFRAME");
-        int i;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -497,11 +493,11 @@ dxf_oleframe_write
         }
         fprintf (fp->fp, " 70\n%d\n", oleframe->ole_version_number);
         fprintf (fp->fp, " 90\n%ld\n", oleframe->length);
-        i = 0;
-        while (strlen (oleframe->binary_data[i]) > 0)
+        while (strlen (oleframe->binary_data->value) > 0)
         {
-                fprintf (fp->fp, "310\n%s\n", oleframe->binary_data[i]);
-                i++;
+                fprintf (fp->fp, "310\n%s\n", oleframe->binary_data->value);
+                /*! \todo proper implementation of the binary_data
+                 * member. */
         }
         fprintf (fp->fp, "  1\nOLE\n");
         /* Clean up. */
@@ -534,8 +530,6 @@ dxf_oleframe_free
 #if DEBUG
         DXF_DEBUG_BEGIN
 #endif
-        int i;
-
         /* Do some basic checks. */
         if (oleframe == NULL)
         {
@@ -555,10 +549,8 @@ dxf_oleframe_free
         free (oleframe->layer);
         free (oleframe->dictionary_owner_soft);
         free (oleframe->dictionary_owner_hard);
-        for (i = 0; i < DXF_MAX_PARAM; i++)
-        {
-                free (oleframe->binary_data[i]);
-        }
+        free (oleframe->binary_data->value);
+        /*! \todo proper implementation of the binary_data member. */
         free (oleframe);
         oleframe = NULL;
 #if DEBUG

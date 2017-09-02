@@ -38,6 +38,7 @@
 
 
 #include "global.h"
+#include "util.h"
 #include "point.h"
 #include "binary_graphics_data.h"
 
@@ -187,7 +188,7 @@ dxf_oleframe_struct
         long length;
                 /*!< Length of binary data.\n
                  * Group code = 90. */
-        char *binary_data[DXF_MAX_PARAM];
+        DxfChar *binary_data;
                 /*!< Binary data (multiple lines).\n
                  * Group code = 310. */
         struct DxfOleFrame *next;
