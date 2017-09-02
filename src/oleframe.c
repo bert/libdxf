@@ -2358,4 +2358,49 @@ dxf_oleframe_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c OLEFRAME entity from a linked
+ * list of DXF \c OLEFRAME entities.
+ *
+ * \return pointer to the last \c OLEFRAME entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfOleFrame *
+dxf_oleframe_get_last
+(
+        DxfOleFrame *oleframe
+                /*!< a pointer to a DXF \c OLEFRAME entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (oleframe == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (oleframe->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfOleFrame *) oleframe);
+        }
+        DxfOleFrame *iter = (DxfOleFrame *) oleframe->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfOleFrame *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfOleFrame *) iter);
+}
+
+
 /* EOF */

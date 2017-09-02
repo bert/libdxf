@@ -248,6 +248,7 @@ long dxf_oleframe_get_length (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_length (DxfOleFrame *oleframe, long length);
 DxfOleFrame *dxf_oleframe_get_next (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_next (DxfOleFrame *oleframe, DxfOleFrame *next);
+DxfOleFrame *dxf_oleframe_get_last (DxfOleFrame *oleframe);
 
 
 #ifdef __cplusplus
