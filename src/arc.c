@@ -696,9 +696,9 @@ dxf_arc_free_chain
 
 
 /*!
- * \brief Get the ID code from a DXF \c ARC entity.
+ * \brief Get the \c id_code from a DXF \c ARC entity.
  *
- * \return ID code.
+ * \return \c id_code.
  */
 int
 dxf_arc_get_id_code
@@ -733,7 +733,7 @@ dxf_arc_get_id_code
 
 
 /*!
- * \brief Set the ID code for a DXF \c ARC entity.
+ * \brief Set the \c id_code for a DXF \c ARC entity.
  */
 DxfArc *
 dxf_arc_set_id_code
@@ -741,9 +741,9 @@ dxf_arc_set_id_code
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         int id_code
-                /*!< Identification number for the entity.\n
-                 * This is to be an unique (sequential) number in the DXF
-                 * file. */
+                /*!< the \c id_code to be set for the entity.\n
+                 * This is to be an unique (sequential) number in the
+                 * DXF file. */
 )
 {
 #if DEBUG
@@ -773,9 +773,9 @@ dxf_arc_set_id_code
 
 
 /*!
- * \brief Get the linetype from a DXF \c ARC entity.
+ * \brief Get the \c linetype from a DXF \c ARC entity.
  *
- * \return linetype when sucessful, \c NULL when an error occurred.
+ * \return \c linetype when sucessful, \c NULL when an error occurred.
  */
 char *
 dxf_arc_get_linetype
@@ -810,7 +810,7 @@ dxf_arc_get_linetype
 
 
 /*!
- * \brief Set the linetype for a DXF \c ARC entity.
+ * \brief Set the \c linetype for a DXF \c ARC entity.
  */
 DxfArc *
 dxf_arc_set_linetype
@@ -818,7 +818,8 @@ dxf_arc_set_linetype
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         char *linetype
-                /*!< a string containing the linetype for the entity. */
+                /*!< a pointer to a string containing the \c linetype
+                 * to be set for the entity. */
 )
 {
 #if DEBUG
@@ -848,9 +849,9 @@ dxf_arc_set_linetype
 
 
 /*!
- * \brief Get the layer from a DXF \c ARC entity.
+ * \brief Get the \c layer from a DXF \c ARC entity.
  *
- * \return layer when sucessful, \c NULL when an error occurred.
+ * \return \c layer when sucessful, \c NULL when an error occurred.
  */
 char *
 dxf_arc_get_layer
@@ -885,7 +886,7 @@ dxf_arc_get_layer
 
 
 /*!
- * \brief Set the layer for a DXF \c ARC entity.
+ * \brief Set the \c layer for a DXF \c ARC entity.
  */
 DxfArc *
 dxf_arc_set_layer
@@ -893,7 +894,8 @@ dxf_arc_set_layer
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         char *layer
-                /*!< a string containing the layer for the entity. */
+                /*!< a pointer to a string containing the \c layer to be
+                 * set for the entity. */
 )
 {
 #if DEBUG
@@ -923,9 +925,9 @@ dxf_arc_set_layer
 
 
 /*!
- * \brief Get the elevation from a DXF \c ARC entity.
+ * \brief Get the \c elevation from a DXF \c ARC entity.
  *
- * \return elevation.
+ * \return \c elevation.
  */
 double
 dxf_arc_get_elevation
@@ -953,7 +955,7 @@ dxf_arc_get_elevation
 
 
 /*!
- * \brief Set the elevation for a DXF \c ARC entity.
+ * \brief Set the \c elevation for a DXF \c ARC entity.
  */
 DxfArc *
 dxf_arc_set_elevation
@@ -961,7 +963,7 @@ dxf_arc_set_elevation
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         double elevation
-                /*!< the elevation to be set for the entity. */
+                /*!< the \c elevation to be set for the entity. */
 )
 {
 #if DEBUG
@@ -984,9 +986,9 @@ dxf_arc_set_elevation
 
 
 /*!
- * \brief Get the thickness from a DXF \c ARC entity.
+ * \brief Get the \c thickness from a DXF \c ARC entity.
  *
- * \return thickness.
+ * \return \c thickness.
  */
 double
 dxf_arc_get_thickness
@@ -1021,7 +1023,7 @@ dxf_arc_get_thickness
 
 
 /*!
- * \brief Set the thickness for a DXF \c ARC entity.
+ * \brief Set the \c thickness for a DXF \c ARC entity.
  */
 DxfArc *
 dxf_arc_set_thickness
@@ -1029,7 +1031,7 @@ dxf_arc_set_thickness
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         double thickness
-                /*!< the thickness to be set for the entity. */
+                /*!< the \c thickness to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1059,9 +1061,9 @@ dxf_arc_set_thickness
 
 
 /*!
- * \brief Get the linetype scale from a DXF \c ARC entity.
+ * \brief Get the \c linetype_scale from a DXF \c ARC entity.
  *
- * \return linetype scale.
+ * \return \c linetype_scale.
  */
 double
 dxf_arc_get_linetype_scale
@@ -1096,7 +1098,7 @@ dxf_arc_get_linetype_scale
 
 
 /*!
- * \brief Set the linetype scale for a DXF \c ARC entity.
+ * \brief Set the \c linetype_scale for a DXF \c ARC entity.
  */
 DxfArc *
 dxf_arc_set_linetype_scale
@@ -1104,7 +1106,7 @@ dxf_arc_set_linetype_scale
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         double linetype_scale
-                /*!< the linetype scale to be set for the entity. */
+                /*!< the \c linetype_scale to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1134,9 +1136,9 @@ dxf_arc_set_linetype_scale
 
 
 /*!
- * \brief Get the visibility from a DXF \c ARC entity.
+ * \brief Get the \c visibility from a DXF \c ARC entity.
  *
- * \return visibility.
+ * \return \c visibility.
  */
 int16_t
 dxf_arc_get_visibility
@@ -1178,7 +1180,7 @@ dxf_arc_get_visibility
 
 
 /*!
- * \brief Set the visibility for a DXF \c ARC entity.
+ * \brief Set the \c visibility for a DXF \c ARC entity.
  */
 DxfArc *
 dxf_arc_set_visibility
@@ -1186,7 +1188,7 @@ dxf_arc_set_visibility
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         int16_t visibility
-                /*!< the visibility to be set for the entity. */
+                /*!< the \c visibility to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1223,7 +1225,7 @@ dxf_arc_set_visibility
 
 
 /*!
- * \brief Get the color from a DXF \c ARC entity.
+ * \brief Get the \c color from a DXF \c ARC entity.
  *
  * \return color.
  */
@@ -1259,7 +1261,7 @@ dxf_arc_get_color
 
 
 /*!
- * \brief Set the color for a DXF \c ARC entity.
+ * \brief Set the \c color for a DXF \c ARC entity.
  */
 DxfArc *
 dxf_arc_set_color
@@ -1267,7 +1269,7 @@ dxf_arc_set_color
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         int color
-                /*!< the color to be set for the entity. */
+                /*!< the \c color to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1296,9 +1298,9 @@ dxf_arc_set_color
 
 
 /*!
- * \brief Get the paperspace flag value from a DXF \c ARC entity.
+ * \brief Get the \c paperspace flag value from a DXF \c ARC entity.
  *
- * \return paperspace flag value.
+ * \return \c paperspace flag value.
  */
 int
 dxf_arc_get_paperspace
@@ -1338,7 +1340,7 @@ dxf_arc_get_paperspace
 
 
 /*!
- * \brief Set the paperspace flag for a DXF \c ARC entity.
+ * \brief Set the \c paperspace flag for a DXF \c ARC entity.
  */
 DxfArc *
 dxf_arc_set_paperspace
@@ -1346,7 +1348,8 @@ dxf_arc_set_paperspace
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         int paperspace
-                /*!< the paperspace flag value to be set for the entity. */
+                /*!< the \c paperspace flag value to be set for the
+                 * entity. */
 )
 {
 #if DEBUG
@@ -1530,7 +1533,7 @@ dxf_arc_set_shadow_mode
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         int16_t shadow_mode
-                /*!< the shadow mode to be set for the entity. */
+                /*!< the \c shadow_mode to be set for the entity. */
 )
 {
 #if DEBUG
@@ -1647,10 +1650,10 @@ dxf_arc_set_binary_graphics_data
 
 
 /*!
- * \brief Get the soft pointer to the dictionary owner from a DXF 
+ * \brief Get the pointer to the \c dictionary_owner_soft from a DXF 
  * \c ARC entity.
  *
- * \return soft pointer to the dictionary owner.
+ * \return pointer to the \c dictionary_owner_soft.
  *
  * \warning No checks are performed on the returned pointer (string).
  */
@@ -1687,7 +1690,7 @@ dxf_arc_get_dictionary_owner_soft
 
 
 /*!
- * \brief Set the pointer to the dictionary_owner_soft for a DXF
+ * \brief Set the pointer to the \c dictionary_owner_soft for a DXF
  * \c ARC entity.
  */
 DxfArc *
@@ -1696,7 +1699,7 @@ dxf_arc_set_dictionary_owner_soft
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         char *dictionary_owner_soft
-                /*!< a string containing the pointer to the
+                /*!< a string containing the pointer to the \c
                  * dictionary_owner_soft for the entity. */
 )
 {
@@ -1809,10 +1812,10 @@ dxf_arc_set_material
 
 
 /*!
- * \brief Get the hard pointer to the dictionary owner from a DXF 
+ * \brief Get the pointer to the \c dictionary_owner_hard from a DXF 
  * \c ARC entity.
  *
- * \return hard pointer to the dictionary owner.
+ * \return pointer to the \c dictionary_owner_hard.
  *
  * \warning No checks are performed on the returned pointer (string).
  */
@@ -1849,7 +1852,7 @@ dxf_arc_get_dictionary_owner_hard
 
 
 /*!
- * \brief Set the pointer to the dictionary_owner_hard for a DXF
+ * \brief Set the pointer to the \c dictionary_owner_hard for a DXF
  * \c ARC entity.
  */
 DxfArc *
@@ -1858,7 +1861,7 @@ dxf_arc_set_dictionary_owner_hard
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         char *dictionary_owner_hard
-                /*!< a string containing the pointer to the
+                /*!< a string containing the pointer to the \c
                  * dictionary_owner_hard for the entity. */
 )
 {
@@ -2567,9 +2570,9 @@ dxf_arc_set_z0
 
 
 /*!
- * \brief Get the radius from a DXF \c ARC entity.
+ * \brief Get the \c radius from a DXF \c ARC entity.
  *
- * \return radius.
+ * \return \c radius.
  */
 double
 dxf_arc_get_radius
@@ -2611,7 +2614,7 @@ dxf_arc_get_radius
 
 
 /*!
- * \brief Set the radius for a DXF \c ARC entity.
+ * \brief Set the \c radius for a DXF \c ARC entity.
  */
 DxfArc *
 dxf_arc_set_radius
@@ -2619,7 +2622,7 @@ dxf_arc_set_radius
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         double radius
-                /*!< the radius to be set for the entity. */
+                /*!< the \c radius to be set for the entity. */
 )
 {
 #if DEBUG
@@ -2656,9 +2659,9 @@ dxf_arc_set_radius
 
 
 /*!
- * \brief Get the start angle from a DXF \c ARC entity.
+ * \brief Get the \c start_angle from a DXF \c ARC entity.
  *
- * \return start angle.
+ * \return \c start_angle.
  */
 double
 dxf_arc_get_start_angle
@@ -2686,7 +2689,7 @@ dxf_arc_get_start_angle
 
 
 /*!
- * \brief Set the start angle for a DXF \c ARC entity.
+ * \brief Set the \c start_angle for a DXF \c ARC entity.
  */
 DxfArc *
 dxf_arc_set_start_angle
@@ -2694,7 +2697,7 @@ dxf_arc_set_start_angle
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         double start_angle
-                /*!< the start angle to be set for the entity. */
+                /*!< the \c start_angle to be set for the entity. */
 )
 {
 #if DEBUG
@@ -2717,9 +2720,9 @@ dxf_arc_set_start_angle
 
 
 /*!
- * \brief Get the end angle from a DXF \c ARC entity.
+ * \brief Get the \c end_angle from a DXF \c ARC entity.
  *
- * \return end angle.
+ * \return \c end_angle.
  */
 double
 dxf_arc_get_end_angle
@@ -2747,7 +2750,7 @@ dxf_arc_get_end_angle
 
 
 /*!
- * \brief Set the end angle for a DXF \c ARC entity.
+ * \brief Set the \c end_angle for a DXF \c ARC entity.
  */
 DxfArc *
 dxf_arc_set_end_angle
@@ -2755,7 +2758,7 @@ dxf_arc_set_end_angle
         DxfArc *arc,
                 /*!< a pointer to a DXF \c ARC entity. */
         double end_angle
-                /*!< the end angle to be set for the entity. */
+                /*!< the \c end_angle to be set for the entity. */
 )
 {
 #if DEBUG
@@ -2778,9 +2781,9 @@ dxf_arc_set_end_angle
 
 
 /*!
- * \brief Calculate the length of a DXF \c ARC entity.
+ * \brief Calculate the \c length of a DXF \c ARC entity.
  *
- * \return the length.
+ * \return the \c length.
  */
 double
 dxf_arc_get_length
