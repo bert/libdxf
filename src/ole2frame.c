@@ -139,6 +139,9 @@ dxf_ole2frame_init
         ole2frame->length = 0;
         ole2frame->binary_data = dxf_char_new ();
         ole2frame->binary_data = dxf_char_init (ole2frame->binary_data);
+        ole2frame->binary_data->value = strdup ("");
+        ole2frame->binary_data->length = 0;
+        ole2frame->binary_data->next = NULL;
         ole2frame->next = NULL;
 #if DEBUG
         DXF_DEBUG_END
