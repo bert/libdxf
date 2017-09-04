@@ -122,7 +122,8 @@ dxf_oleframe_init
         oleframe->dictionary_owner_hard = strdup ("");
         oleframe->ole_version_number = 1;
         oleframe->length = 0;
-        dxf_char_init (oleframe->binary_data);
+        oleframe->binary_data = dxf_char_new ();
+        oleframe->binary_data = dxf_char_init (oleframe->binary_data);
         oleframe->binary_data->value = strdup ("");
         oleframe->binary_data->length = 0;
         oleframe->binary_data->next = NULL;
