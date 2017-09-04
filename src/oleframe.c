@@ -377,6 +377,7 @@ dxf_oleframe_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("OLEFRAME");
+        DxfChar *iter = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -494,11 +495,18 @@ dxf_oleframe_write
         }
         fprintf (fp->fp, " 70\n%d\n", oleframe->ole_version_number);
         fprintf (fp->fp, " 90\n%ld\n", oleframe->length);
-        while (strlen (oleframe->binary_data->value) > 0)
+        if (oleframe->binary_data != NULL)
         {
-                fprintf (fp->fp, "310\n%s\n", oleframe->binary_data->value);
-                /*! \todo proper implementation of the binary_data
-                 * member. */
+                iter = (DxfChar*) oleframe->binary_data;
+                while ((iter != NULL) && (iter->value != NULL))
+                {
+                        fprintf (fp->fp, "310\n%s\n", oleframe->binary_data->value);
+                        iter = (DxfChar*) iter->next;
+                }
+        }
+        else
+        {
+                fprintf (fp->fp, "310\n\n");
         }
         fprintf (fp->fp, "  1\nOLE\n");
         /* Clean up. */
