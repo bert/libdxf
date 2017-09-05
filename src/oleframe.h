@@ -247,6 +247,7 @@ int dxf_oleframe_get_ole_version_number (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_ole_version_number (DxfOleFrame *oleframe, int ole_version_number);
 long dxf_oleframe_get_length (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_length (DxfOleFrame *oleframe, long length);
+DxfChar *dxf_oleframe_get_binary_data (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_get_next (DxfOleFrame *oleframe);
 DxfOleFrame *dxf_oleframe_set_next (DxfOleFrame *oleframe, DxfOleFrame *next);
 DxfOleFrame *dxf_oleframe_get_last (DxfOleFrame *oleframe);
