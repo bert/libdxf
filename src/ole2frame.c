@@ -174,7 +174,7 @@ dxf_ole2frame_read
         DXF_DEBUG_BEGIN
 #endif
         char *temp_string = NULL;
-        int i;
+        DxfChar *iter = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -194,7 +194,7 @@ dxf_ole2frame_read
                 ole2frame = dxf_ole2frame_new ();
                 ole2frame = dxf_ole2frame_init (ole2frame);
         }
-        i = 0;
+        iter = (DxfChar *) ole2frame->binary_data;
         (fp->line_number)++;
         fscanf (fp->fp, "%[^\n]", temp_string);
         while (strcmp (temp_string, "0") != 0)
@@ -381,8 +381,9 @@ dxf_ole2frame_read
                 {
                         /* Now follows a string containing binary data. */
                         (fp->line_number)++;
-                        fscanf (fp->fp, "%s\n", ole2frame->binary_data->value);
-                        /*! \todo Needs a proper implementation. */
+                        fscanf (fp->fp, "%s\n", iter->value);
+                        iter->next = (struct DxfChar *) dxf_char_init ((DxfChar *) iter->next);
+                        iter = (DxfChar *) iter->next;
                 }
                 else if (strcmp (temp_string, "330") == 0)
                 {
