@@ -3384,7 +3384,7 @@ dxf_ole2frame_set_binary_data
         DxfOle2Frame *ole2frame,
                 /*!< a pointer to a DXF \c OLE2FRAME entity. */
         DxfChar *binary_data
-                /*!< a string containing the \c color_name for the
+                /*!< a string containing the \c binary_data for the
                  * entity. */
 )
 {
