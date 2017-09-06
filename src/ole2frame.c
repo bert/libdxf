@@ -450,7 +450,7 @@ dxf_ole2frame_write
         DXF_DEBUG_BEGIN
 #endif
         char *dxf_entity_name = strdup ("OLE2FRAME");
-        int i;
+        DxfChar *iter = NULL;
 
         /* Do some basic checks. */
         if (fp == NULL)
@@ -577,12 +577,18 @@ dxf_ole2frame_write
         fprintf (fp->fp, " 71\n%d\n", ole2frame->ole_object_type);
         fprintf (fp->fp, " 72\n%d\n", ole2frame->tilemode_descriptor);
         fprintf (fp->fp, " 90\n%ld\n", ole2frame->length);
-        i = 0;
-        while (strlen (ole2frame->binary_data->value) > 0)
-        /*! \todo Needs a proper implementation. */
+        if (ole2frame->binary_data != NULL)
         {
-                fprintf (fp->fp, "310\n%s\n", ole2frame->binary_data->value);
-                /*! \todo Needs a proper implementation. */
+                iter = (DxfChar*) ole2frame->binary_data;
+                while ((iter != NULL) && (iter->value != NULL))
+                {
+                        fprintf (fp->fp, "310\n%s\n", ole2frame->binary_data->value);
+                        iter = (DxfChar*) iter->next;
+                }
+        }
+        else
+        {
+                fprintf (fp->fp, "310\n\n");
         }
         fprintf (fp->fp, "  1\nOLE\n");
         /* Clean up. */
