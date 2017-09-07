@@ -203,323 +203,64 @@ dxf_point_struct
 } DxfPoint;
 
 
-DxfPoint *
-dxf_point_new ();
-DxfPoint *
-dxf_point_init
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_read
-(
-        DxfFile *fp,
-        DxfPoint *point
-);
-int
-dxf_point_write
-(
-        DxfFile *fp,
-        DxfPoint *point
-);
-int
-dxf_point_free
-(
-        DxfPoint *point
-);
-void
-dxf_point_free_chain
-(
-        DxfPoint *points
-);
-int
-dxf_point_get_id_code
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_id_code
-(
-        DxfPoint *point,
-        int id_code
-);
-char *
-dxf_point_get_linetype
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_linetype
-(
-        DxfPoint *point,
-        char *linetype
-);
-char *
-dxf_point_get_layer
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_layer
-(
-        DxfPoint *point,
-        char *layer
-);
-double
-dxf_point_get_elevation
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_elevation
-(
-        DxfPoint *point,
-        double elevation
-);
-double
-dxf_point_get_thickness
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_thickness
-(
-        DxfPoint *point,
-        double thickness
-);
-double
-dxf_point_get_linetype_scale
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_linetype_scale
-(
-        DxfPoint *point,
-        double linetype_scale
-);
-int16_t
-dxf_point_get_visibility
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_visibility
-(
-        DxfPoint *point,
-        int16_t visibility
-);
-int
-dxf_point_get_color
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_color
-(
-        DxfPoint *point,
-        int color
-);
-int
-dxf_point_get_paperspace
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_paperspace
-(
-        DxfPoint *point,
-        int paperspace
-);
-int
-dxf_point_get_graphics_data_size
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_graphics_data_size
-(
-        DxfPoint *point,
-        int graphics_data_size
-);
-int16_t
-dxf_point_get_shadow_mode
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_shadow_mode
-(
-        DxfPoint *point,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_point_get_binary_graphics_data
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_binary_graphics_data
-(
-        DxfPoint *point,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_point_get_dictionary_owner_soft
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_dictionary_owner_soft
-(
-        DxfPoint *point,
-        char *dictionary_owner_soft
-);
-char *
-dxf_point_get_material
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_material
-(
-        DxfPoint *point,
-        char *material
-);
-char *
-dxf_point_get_dictionary_owner_hard
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_dictionary_owner_hard
-(
-        DxfPoint *point,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_point_get_lineweight
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_lineweight
-(
-        DxfPoint *point,
-        int16_t lineweight
-);
-char *
-dxf_point_get_plot_style_name
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_plot_style_name
-(
-        DxfPoint *point,
-        char *plot_style_name
-);
-long
-dxf_point_get_color_value
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_color_value
-(
-        DxfPoint *point,
-        long color_value
-);
-char *
-dxf_point_get_color_name
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_color_name
-(
-        DxfPoint *point,
-        char *color_name
-);
-long
-dxf_point_get_transparency
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_transparency
-(
-        DxfPoint *point,
-        long transparency
-);
-double
-dxf_point_get_x0
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_x0
-(
-        DxfPoint *point,
-        double x0
-);
-double
-dxf_point_get_y0
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_y0
-(
-        DxfPoint *point,
-        double y0
-);
-double
-dxf_point_get_z0
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_z0
-(
-        DxfPoint *point,
-        double z0
-);
-double
-dxf_point_get_angle_to_X
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_angle_to_X
-(
-        DxfPoint *point,
-        double angle_to_X
-);
-DxfPoint *
-dxf_point_get_extrusion_vector_as_point
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_extrusion_vector
-(
-        DxfPoint *point,
-        double extr_x0,
-        double extr_y0,
-        double extr_z0
-);
-DxfPoint *
-dxf_point_get_next
-(
-        DxfPoint *point
-);
-DxfPoint *
-dxf_point_set_next
-(
-        DxfPoint *point,
-        DxfPoint *next
-);
+DxfPoint *dxf_point_new ();
+DxfPoint *dxf_point_init (DxfPoint *point);
+DxfPoint *dxf_point_read (DxfFile *fp, DxfPoint *point);
+int dxf_point_write (DxfFile *fp, DxfPoint *point);
+int dxf_point_free (DxfPoint *point);
+void dxf_point_free_chain (DxfPoint *points);
+int dxf_point_get_id_code (DxfPoint *point);
+DxfPoint *dxf_point_set_id_code (DxfPoint *point, int id_code);
+char *dxf_point_get_linetype (DxfPoint *point);
+DxfPoint *dxf_point_set_linetype (DxfPoint *point, char *linetype);
+char *dxf_point_get_layer (DxfPoint *point);
+DxfPoint *dxf_point_set_layer (DxfPoint *point, char *layer);
+double dxf_point_get_elevation (DxfPoint *point);
+DxfPoint *dxf_point_set_elevation (DxfPoint *point, double elevation);
+double dxf_point_get_thickness (DxfPoint *point);
+DxfPoint *dxf_point_set_thickness (DxfPoint *point, double thickness);
+double dxf_point_get_linetype_scale (DxfPoint *point);
+DxfPoint *dxf_point_set_linetype_scale (DxfPoint *point, double linetype_scale);
+int16_t dxf_point_get_visibility (DxfPoint *point);
+DxfPoint *dxf_point_set_visibility (DxfPoint *point, int16_t visibility);
+int dxf_point_get_color (DxfPoint *point);
+DxfPoint *dxf_point_set_color (DxfPoint *point, int color);
+int dxf_point_get_paperspace (DxfPoint *point);
+DxfPoint *dxf_point_set_paperspace (DxfPoint *point, int paperspace);
+int dxf_point_get_graphics_data_size (DxfPoint *point);
+DxfPoint *dxf_point_set_graphics_data_size (DxfPoint *point, int graphics_data_size);
+int16_t dxf_point_get_shadow_mode (DxfPoint *point);
+DxfPoint *dxf_point_set_shadow_mode (DxfPoint *point, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_point_get_binary_graphics_data (DxfPoint *point);
+DxfPoint *dxf_point_set_binary_graphics_data (DxfPoint *point, DxfBinaryGraphicsData *data);
+char *dxf_point_get_dictionary_owner_soft (DxfPoint *point);
+DxfPoint *dxf_point_set_dictionary_owner_soft (DxfPoint *point, char *dictionary_owner_soft);
+char *dxf_point_get_material (DxfPoint *point);
+DxfPoint *dxf_point_set_material (DxfPoint *point, char *material);
+char *dxf_point_get_dictionary_owner_hard (DxfPoint *point);
+DxfPoint *dxf_point_set_dictionary_owner_hard (DxfPoint *point, char *dictionary_owner_hard);
+int16_t dxf_point_get_lineweight (DxfPoint *point);
+DxfPoint *dxf_point_set_lineweight (DxfPoint *point, int16_t lineweight);
+char *dxf_point_get_plot_style_name (DxfPoint *point);
+DxfPoint *dxf_point_set_plot_style_name (DxfPoint *point, char *plot_style_name);
+long dxf_point_get_color_value (DxfPoint *point);
+DxfPoint *dxf_point_set_color_value (DxfPoint *point, long color_value);
+char *dxf_point_get_color_name (DxfPoint *point);
+DxfPoint *dxf_point_set_color_name (DxfPoint *point, char *color_name);
+long dxf_point_get_transparency (DxfPoint *point);
+DxfPoint *dxf_point_set_transparency (DxfPoint *point, long transparency);
+double dxf_point_get_x0 (DxfPoint *point);
+DxfPoint *dxf_point_set_x0 (DxfPoint *point, double x0);
+double dxf_point_get_y0 (DxfPoint *point);
+DxfPoint *dxf_point_set_y0 (DxfPoint *point, double y0);
+double dxf_point_get_z0 (DxfPoint *point);
+DxfPoint *dxf_point_set_z0 (DxfPoint *point, double z0);
+double dxf_point_get_angle_to_X (DxfPoint *point);
+DxfPoint *dxf_point_set_angle_to_X (DxfPoint *point, double angle_to_X);
+DxfPoint *dxf_point_get_extrusion_vector_as_point (DxfPoint *point);
+DxfPoint *dxf_point_set_extrusion_vector (DxfPoint *point, double extr_x0, double extr_y0, double extr_z0);
+DxfPoint *dxf_point_get_next (DxfPoint *point);
+DxfPoint *dxf_point_set_next (DxfPoint *point, DxfPoint *next);
 
 
 #ifdef __cplusplus
