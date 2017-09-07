@@ -261,6 +261,7 @@ DxfPoint *dxf_point_get_extrusion_vector_as_point (DxfPoint *point);
 DxfPoint *dxf_point_set_extrusion_vector (DxfPoint *point, double extr_x0, double extr_y0, double extr_z0);
 DxfPoint *dxf_point_get_next (DxfPoint *point);
 DxfPoint *dxf_point_set_next (DxfPoint *point, DxfPoint *next);
+DxfPoint *dxf_point_get_last (DxfPoint *point);
 
 
 #ifdef __cplusplus

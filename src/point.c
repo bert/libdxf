@@ -2702,4 +2702,49 @@ dxf_point_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c POINT entity from a linked list
+ * of DXF \c POINT entities.
+ *
+ * \return pointer to the last \c POINT entity.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfPoint *
+dxf_point_get_last
+(
+        DxfPoint *point
+                /*!< a pointer to a DXF \c POINT entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (point == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (point->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfPoint *) point);
+        }
+        DxfPoint *iter = (DxfPoint *) point->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfPoint *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfPoint *) iter);
+}
+
+
 /* EOF */
