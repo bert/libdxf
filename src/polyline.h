@@ -307,458 +307,89 @@ dxf_polyline_struct
 } DxfPolyline;
 
 
-DxfPolyline *
-dxf_polyline_new ();
-DxfPolyline *
-dxf_polyline_init
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_read
-(
-        DxfFile *fp,
-        DxfPolyline *polyline
-);
-int
-dxf_polyline_write
-(
-        DxfFile *fp,
-        DxfPolyline *polyline
-);
-int
-dxf_polyline_free
-(
-        DxfPolyline *polyline
-);
-void
-dxf_polyline_free_chain
-(
-        DxfPolyline *polylines
-);
-int
-dxf_polyline_get_id_code
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_id_code
-(
-        DxfPolyline *polyline,
-        int id_code
-);
-char *
-dxf_polyline_get_linetype
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_linetype
-(
-        DxfPolyline *polyline,
-        char *linetype
-);
-char *
-dxf_polyline_get_layer
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_layer
-(
-        DxfPolyline *polyline,
-        char *layer
-);
-double
-dxf_polyline_get_elevation
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_elevation
-(
-        DxfPolyline *polyline,
-        double elevation
-);
-double
-dxf_polyline_get_thickness
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_thickness
-(
-        DxfPolyline *polyline,
-        double thickness
-);
-double
-dxf_polyline_get_linetype_scale
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_linetype_scale
-(
-        DxfPolyline *polyline,
-        double linetype_scale
-);
-int16_t
-dxf_polyline_get_visibility
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_visibility
-(
-        DxfPolyline *polyline,
-        int16_t visibility
-);
-int
-dxf_polyline_get_color
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_color
-(
-        DxfPolyline *polyline,
-        int color
-);
-int
-dxf_polyline_get_paperspace
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_paperspace
-(
-        DxfPolyline *polyline,
-        int paperspace
-);
-int
-dxf_polyline_get_graphics_data_size
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_graphics_data_size
-(
-        DxfPolyline *polyline,
-        int graphics_data_size
-);
-int16_t
-dxf_polyline_get_shadow_mode
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_shadow_mode
-(
-        DxfPolyline *polyline,
-        int16_t shadow_mode
-);
-DxfBinaryGraphicsData *
-dxf_polyline_get_binary_graphics_data
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_binary_graphics_data
-(
-        DxfPolyline *polyline,
-        DxfBinaryGraphicsData *data
-);
-char *
-dxf_polyline_get_dictionary_owner_soft
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_dictionary_owner_soft
-(
-        DxfPolyline *polyline,
-        char *dictionary_owner_soft
-);
-char *
-dxf_polyline_get_material
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_material
-(
-        DxfPolyline *polyline,
-        char *material
-);
-char *
-dxf_polyline_get_dictionary_owner_hard
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_dictionary_owner_hard
-(
-        DxfPolyline *polyline,
-        char *dictionary_owner_hard
-);
-int16_t
-dxf_polyline_get_lineweight
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_lineweight
-(
-        DxfPolyline *polyline,
-        int16_t lineweight
-);
-char *
-dxf_polyline_get_plot_style_name
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_plot_style_name
-(
-        DxfPolyline *polyline,
-        char *plot_style_name
-);
-long
-dxf_polyline_get_color_value
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_color_value
-(
-        DxfPolyline *polyline,
-        long color_value
-);
-char *
-dxf_polyline_get_color_name
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_color_name
-(
-        DxfPolyline *polyline,
-        char *color_name
-);
-long
-dxf_polyline_get_transparency
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_transparency
-(
-        DxfPolyline *polyline,
-        long transparency
-);
-DxfPoint *
-dxf_polyline_get_p0
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_p0
-(
-        DxfPolyline *polyline,
-        DxfPoint *p0
-);
-double
-dxf_polyline_get_x0
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_x0
-(
-        DxfPolyline *polyline,
-        double x0
-);
-double
-dxf_polyline_get_y0
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_y0
-(
-        DxfPolyline *polyline,
-        double y0
-);
-double
-dxf_polyline_get_z0
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_z0
-(
-        DxfPolyline *polyline,
-        double z0
-);
-double
-dxf_polyline_get_start_width
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_start_width
-(
-        DxfPolyline *polyline,
-        double start_width
-);
-double
-dxf_polyline_get_end_width
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_end_width
-(
-        DxfPolyline *polyline,
-        double end_width
-);
-int
-dxf_polyline_get_vertices_follow
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_vertices_follow
-(
-        DxfPolyline *polyline,
-        int vertices_follow
-);
-int
-dxf_polyline_get_flag
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_flag
-(
-        DxfPolyline *polyline,
-        int flag
-);
-int
-dxf_polyline_get_polygon_mesh_M_vertex_count
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_polygon_mesh_M_vertex_count
-(
-        DxfPolyline *polyline,
-        int polygon_mesh_M_vertex_count
-);
-int
-dxf_polyline_get_polygon_mesh_N_vertex_count
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_polygon_mesh_N_vertex_count
-(
-        DxfPolyline *polyline,
-        int polygon_mesh_N_vertex_count
-);
-int
-dxf_polyline_get_smooth_M_surface_density
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_smooth_M_surface_density
-(
-        DxfPolyline *polyline,
-        int smooth_M_surface_density
-);
-int
-dxf_polyline_get_smooth_N_surface_density
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_smooth_N_surface_density
-(
-        DxfPolyline *polyline,
-        int smooth_N_surface_density
-);
-int
-dxf_polyline_get_surface_type
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_surface_type
-(
-        DxfPolyline *polyline,
-        int surface_type
-);
-double
-dxf_polyline_get_extr_x0
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_extr_x0
-(
-        DxfPolyline *polyline,
-        double extr_x0
-);
-double
-dxf_polyline_get_extr_y0
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_extr_y0
-(
-        DxfPolyline *polyline,
-        double extr_y0
-);
-double
-dxf_polyline_get_extr_z0
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_extr_z0
-(
-        DxfPolyline *polyline,
-        double extr_z0
-);
-DxfVertex *
-dxf_polyline_get_vertices
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_vertices
-(
-        DxfPolyline *polyline,
-        DxfVertex *vertices
-);
-DxfPolyline *
-dxf_polyline_get_next
-(
-        DxfPolyline *polyline
-);
-DxfPolyline *
-dxf_polyline_set_next
-(
-        DxfPolyline *polyline,
-        DxfPolyline *next
-);
-DxfPolyline *
-dxf_polyline_get_last
-(
-        DxfPolyline *polyline
-);
+DxfPolyline *dxf_polyline_new ();
+DxfPolyline *dxf_polyline_init (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_read (DxfFile *fp, DxfPolyline *polyline);
+int dxf_polyline_write (DxfFile *fp, DxfPolyline *polyline);
+int dxf_polyline_free (DxfPolyline *polyline);
+void dxf_polyline_free_chain (DxfPolyline *polylines);
+int dxf_polyline_get_id_code (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_id_code (DxfPolyline *polyline, int id_code);
+char *dxf_polyline_get_linetype (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_linetype (DxfPolyline *polyline, char *linetype);
+char *dxf_polyline_get_layer (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_layer (DxfPolyline *polyline, char *layer);
+double dxf_polyline_get_elevation (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_elevation (DxfPolyline *polyline, double elevation);
+double dxf_polyline_get_thickness (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_thickness (DxfPolyline *polyline, double thickness);
+double dxf_polyline_get_linetype_scale (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_linetype_scale (DxfPolyline *polyline, double linetype_scale);
+int16_t dxf_polyline_get_visibility (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_visibility (DxfPolyline *polyline, int16_t visibility);
+int dxf_polyline_get_color (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_color (DxfPolyline *polyline, int color);
+int dxf_polyline_get_paperspace (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_paperspace (DxfPolyline *polyline, int paperspace);
+int dxf_polyline_get_graphics_data_size (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_graphics_data_size (DxfPolyline *polyline, int graphics_data_size);
+int16_t dxf_polyline_get_shadow_mode (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_shadow_mode (DxfPolyline *polyline, int16_t shadow_mode);
+DxfBinaryGraphicsData *dxf_polyline_get_binary_graphics_data (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_binary_graphics_data (DxfPolyline *polyline, DxfBinaryGraphicsData *data);
+char *dxf_polyline_get_dictionary_owner_soft (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_dictionary_owner_soft (DxfPolyline *polyline, char *dictionary_owner_soft);
+char *dxf_polyline_get_material (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_material (DxfPolyline *polyline, char *material);
+char *dxf_polyline_get_dictionary_owner_hard (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_dictionary_owner_hard (DxfPolyline *polyline, char *dictionary_owner_hard);
+int16_t dxf_polyline_get_lineweight (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_lineweight (DxfPolyline *polyline, int16_t lineweight);
+char *dxf_polyline_get_plot_style_name (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_plot_style_name (DxfPolyline *polyline, char *plot_style_name);
+long dxf_polyline_get_color_value (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_color_value (DxfPolyline *polyline, long color_value);
+char *dxf_polyline_get_color_name (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_color_name (DxfPolyline *polyline, char *color_name);
+long dxf_polyline_get_transparency (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_transparency (DxfPolyline *polyline, long transparency);
+DxfPoint *dxf_polyline_get_p0 (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_p0 (DxfPolyline *polyline, DxfPoint *p0);
+double dxf_polyline_get_x0 (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_x0 (DxfPolyline *polyline, double x0);
+double dxf_polyline_get_y0 (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_y0 (DxfPolyline *polyline, double y0);
+double dxf_polyline_get_z0 (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_z0 (DxfPolyline *polyline, double z0);
+double dxf_polyline_get_start_width (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_start_width (DxfPolyline *polyline, double start_width);
+double dxf_polyline_get_end_width (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_end_width (DxfPolyline *polyline, double end_width);
+int dxf_polyline_get_vertices_follow (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_vertices_follow (DxfPolyline *polyline, int vertices_follow);
+int dxf_polyline_get_flag (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_flag (DxfPolyline *polyline, int flag);
+int dxf_polyline_get_polygon_mesh_M_vertex_count (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_polygon_mesh_M_vertex_count (DxfPolyline *polyline, int polygon_mesh_M_vertex_count);
+int dxf_polyline_get_polygon_mesh_N_vertex_count (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_polygon_mesh_N_vertex_count (DxfPolyline *polyline, int polygon_mesh_N_vertex_count);
+int dxf_polyline_get_smooth_M_surface_density (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_smooth_M_surface_density (DxfPolyline *polyline, int smooth_M_surface_density);
+int dxf_polyline_get_smooth_N_surface_density (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_smooth_N_surface_density (DxfPolyline *polyline, int smooth_N_surface_density);
+int dxf_polyline_get_surface_type (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_surface_type (DxfPolyline *polyline, int surface_type);
+double dxf_polyline_get_extr_x0 (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_extr_x0 (DxfPolyline *polyline, double extr_x0);
+double dxf_polyline_get_extr_y0 (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_extr_y0 (DxfPolyline *polyline, double extr_y0);
+double dxf_polyline_get_extr_z0 (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_extr_z0 (DxfPolyline *polyline, double extr_z0);
+DxfVertex *dxf_polyline_get_vertices (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_vertices (DxfPolyline *polyline, DxfVertex *vertices);
+DxfPolyline *dxf_polyline_get_next (DxfPolyline *polyline);
+DxfPolyline *dxf_polyline_set_next (DxfPolyline *polyline, DxfPolyline *next);
+DxfPolyline *dxf_polyline_get_last (DxfPolyline *polyline);
 
 
 #ifdef __cplusplus
