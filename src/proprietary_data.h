@@ -1,7 +1,7 @@
 /*!
  * \file proprietary_data.h
  *
- * \author Copyright (C) 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF proprietary data entity.
  *
@@ -66,72 +66,19 @@ dxf_proprietary_data_struct
 } DxfProprietaryData;
 
 
-DxfProprietaryData *
-dxf_proprietary_data_new ();
-DxfProprietaryData *
-dxf_proprietary_data_init
-(
-        DxfProprietaryData *data
-);
-int
-dxf_proprietary_data_free
-(
-        DxfProprietaryData *data
-);
-void
-dxf_proprietary_data_free_chain
-(
-        DxfProprietaryData *datas
-);
-int
-dxf_proprietary_data_get_order
-(
-        DxfProprietaryData *data
-);
-DxfProprietaryData *
-dxf_proprietary_data_set_order
-(
-        DxfProprietaryData *data,
-        int order
-);
-char *
-dxf_proprietary_data_get_line
-(
-        DxfProprietaryData *data
-);
-DxfProprietaryData *
-dxf_proprietary_data_set_line
-(
-        DxfProprietaryData *data,
-        char *line
-);
-int
-dxf_proprietary_data_get_length
-(
-        DxfProprietaryData *data
-);
-DxfProprietaryData *
-dxf_proprietary_data_set_length
-(
-        DxfProprietaryData *data,
-        int length
-);
-DxfProprietaryData *
-dxf_proprietary_data_get_next
-(
-        DxfProprietaryData *data
-);
-DxfProprietaryData *
-dxf_proprietary_data_set_next
-(
-        DxfProprietaryData *data,
-        DxfProprietaryData *next
-);
-int
-dxf_proprietary_data_test_length
-(
-        DxfProprietaryData *data
-);
+DxfProprietaryData *dxf_proprietary_data_new ();
+DxfProprietaryData *dxf_proprietary_data_init (DxfProprietaryData *data);
+int dxf_proprietary_data_free (DxfProprietaryData *data);
+void dxf_proprietary_data_free_chain (DxfProprietaryData *datas);
+int dxf_proprietary_data_get_order (DxfProprietaryData *data);
+DxfProprietaryData *dxf_proprietary_data_set_order (DxfProprietaryData *data, int order);
+char *dxf_proprietary_data_get_line (DxfProprietaryData *data);
+DxfProprietaryData *dxf_proprietary_data_set_line (DxfProprietaryData *data, char *line);
+int dxf_proprietary_data_get_length (DxfProprietaryData *data);
+DxfProprietaryData *dxf_proprietary_data_set_length (DxfProprietaryData *data, int length);
+DxfProprietaryData *dxf_proprietary_data_get_next (DxfProprietaryData *data);
+DxfProprietaryData *dxf_proprietary_data_set_next (DxfProprietaryData *data, DxfProprietaryData *next);
+int dxf_proprietary_data_test_length (DxfProprietaryData *data);
 
 
 #ifdef __cplusplus
