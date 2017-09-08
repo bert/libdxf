@@ -75,10 +75,10 @@ DxfProprietaryData *dxf_proprietary_data_set_order (DxfProprietaryData *data, in
 char *dxf_proprietary_data_get_line (DxfProprietaryData *data);
 DxfProprietaryData *dxf_proprietary_data_set_line (DxfProprietaryData *data, char *line);
 int dxf_proprietary_data_get_length (DxfProprietaryData *data);
+int dxf_proprietary_data_test_length (DxfProprietaryData *data);
 DxfProprietaryData *dxf_proprietary_data_set_length (DxfProprietaryData *data, int length);
 DxfProprietaryData *dxf_proprietary_data_get_next (DxfProprietaryData *data);
 DxfProprietaryData *dxf_proprietary_data_set_next (DxfProprietaryData *data, DxfProprietaryData *next);
-int dxf_proprietary_data_test_length (DxfProprietaryData *data);
 
 
 #ifdef __cplusplus

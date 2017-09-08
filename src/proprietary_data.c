@@ -387,6 +387,79 @@ dxf_proprietary_data_get_length
 
 
 /*!
+ * \brief Test the length of the string in the \c line member from a
+ * DXF \c DxfProprietaryData object.
+ *
+ * \return \c EXIT_SUCCESS when the found length in the \c line member
+ * matched the value in the \c length member, and \c EXIT_FAILURE when
+ * an error occurred.
+ *
+ * \note This function does not alter the contents of the DXF
+ * \c DxfProprietaryData object.
+ */
+int
+dxf_proprietary_data_test_length
+(
+        DxfProprietaryData *data
+                /*!< a pointer to a DXF \c DxfProprietaryData object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        int i;
+
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (data->line == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was found in the line member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (data->length == 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a value of 0 was found in the length member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (data->length < 0)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a negative value was found in the length member.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        for (i = 0; i <= DXF_MAX_STRING_LENGTH; i++)
+        {
+                if ((data->line[i] == '\0') && (data->length == i))
+                {
+                        break; /* Break out from the for-loop. */
+                }
+                else
+                {
+                        fprintf (stderr,
+                          (_("Error in %s () the value found in the length member did not match the actual string length.\n")),
+                          __FUNCTION__);
+                        return (EXIT_FAILURE);
+                }
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (EXIT_SUCCESS);
+}
+
+
+/*!
  * \brief Set the \c length of the line for a DXF \c DxfProprietaryData
  * object.
  */
@@ -505,79 +578,6 @@ dxf_proprietary_data_set_next
         DXF_DEBUG_END
 #endif
         return (data);
-}
-
-
-/*!
- * \brief Test the length of the string in the \c line member from a
- * DXF \c DxfProprietaryData object.
- *
- * \return \c EXIT_SUCCESS when the found length in the \c line member
- * matched the value in the \c length member, and \c EXIT_FAILURE when
- * an error occurred.
- *
- * \note This function does not alter the contents of the DXF
- * \c DxfProprietaryData object.
- */
-int
-dxf_proprietary_data_test_length
-(
-        DxfProprietaryData *data
-                /*!< a pointer to a DXF \c DxfProprietaryData object. */
-)
-{
-#if DEBUG
-        DXF_DEBUG_BEGIN
-#endif
-        int i;
-
-        /* Do some basic checks. */
-        if (data == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was passed.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (data->line == NULL)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a NULL pointer was found in the line member.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (data->length == 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a value of 0 was found in the length member.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        if (data->length < 0)
-        {
-                fprintf (stderr,
-                  (_("Error in %s () a negative value was found in the length member.\n")),
-                  __FUNCTION__);
-                return (EXIT_FAILURE);
-        }
-        for (i = 0; i <= DXF_MAX_STRING_LENGTH; i++)
-        {
-                if ((data->line[i] == '\0') && (data->length == i))
-                {
-                        break; /* Break out from the for-loop. */
-                }
-                else
-                {
-                        fprintf (stderr,
-                          (_("Error in %s () the value found in the length member did not match the actual string length.\n")),
-                          __FUNCTION__);
-                        return (EXIT_FAILURE);
-                }
-        }
-#if DEBUG
-        DXF_DEBUG_END
-#endif
-        return (EXIT_SUCCESS);
 }
 
 
