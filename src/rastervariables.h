@@ -1,7 +1,7 @@
 /*!
  * \file rastervariables.h
  *
- * \author Copyright (C) 2015, 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2015, 2016, 2017 by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF rastervariables object (\c RASTERVARIABLES).
  *
@@ -112,35 +112,12 @@ dxf_rastervariables
 } DxfRasterVariables;
 
 
-DxfRasterVariables *
-dxf_rastervariables_new ();
-DxfRasterVariables *
-dxf_rastervariables_init
-(
-        DxfRasterVariables *rastervariables
-);
-DxfRasterVariables *
-dxf_rastervariables_read
-(
-        DxfFile *fp,
-        DxfRasterVariables *rastervariables
-);
-int
-dxf_rastervariables_write
-(
-        DxfFile *fp,
-        DxfRasterVariables *rastervariables
-);
-int
-dxf_rastervariables_free
-(
-        DxfRasterVariables *rastervariables
-);
-void
-dxf_rastervariables_free_chain
-(
-        DxfRasterVariables *rastervariables
-);
+DxfRasterVariables *dxf_rastervariables_new ();
+DxfRasterVariables *dxf_rastervariables_init (DxfRasterVariables *rastervariables);
+DxfRasterVariables *dxf_rastervariables_read (DxfFile *fp, DxfRasterVariables *rastervariables);
+int dxf_rastervariables_write (DxfFile *fp, DxfRasterVariables *rastervariables);
+int dxf_rastervariables_free (DxfRasterVariables *rastervariables);
+void dxf_rastervariables_free_chain (DxfRasterVariables *rastervariables);
 
 
 #ifdef __cplusplus
