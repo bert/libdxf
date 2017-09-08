@@ -581,4 +581,49 @@ dxf_proprietary_data_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c DxfProprietaryData object from
+ * a linked list of DXF \c DxfProprietaryData objects.
+ *
+ * \return pointer to the last \c DxfProprietaryData object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfProprietaryData *
+dxf_proprietary_data_get_last
+(
+        DxfProprietaryData *data
+                /*!< a pointer to a DXF \c DxfProprietaryData object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (data == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (data->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfProprietaryData *) data);
+        }
+        DxfProprietaryData *iter = (DxfProprietaryData *) data->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfProprietaryData *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfProprietaryData *) iter);
+}
+
+
 /* EOF */
