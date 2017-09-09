@@ -119,6 +119,7 @@ int dxf_rastervariables_write (DxfFile *fp, DxfRasterVariables *rastervariables)
 int dxf_rastervariables_free (DxfRasterVariables *rastervariables);
 void dxf_rastervariables_free_chain (DxfRasterVariables *rastervariables);
 int dxf_rastervariables_get_id_code (DxfRasterVariables *rastervariables);
+DxfRasterVariables *dxf_rastervariables_set_id_code (DxfRasterVariables *rastervariables, int id_code);
 
 
 #ifdef __cplusplus
