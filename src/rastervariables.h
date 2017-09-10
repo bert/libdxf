@@ -122,6 +122,7 @@ void dxf_rastervariables_free_chain (DxfRasterVariables *rastervariables);
 int dxf_rastervariables_get_id_code (DxfRasterVariables *rastervariables);
 DxfRasterVariables *dxf_rastervariables_set_id_code (DxfRasterVariables *rastervariables, int id_code);
 char *dxf_rastervariables_get_dictionary_owner_soft (DxfRasterVariables *rastervariables);
+DxfRasterVariables *dxf_rastervariables_set_dictionary_owner_soft (DxfRasterVariables *rastervariables, char *dictionary_owner_soft);
 
 
 #ifdef __cplusplus
