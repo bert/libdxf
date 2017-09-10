@@ -57,7 +57,7 @@ extern "C" {
  * (\c RASTERVARIABLES).
  */
 typedef struct
-dxf_rastervariables
+dxf_rastervariables_struct
 {
         /* Members common for all DXF objects. */
         int id_code;
