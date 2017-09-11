@@ -126,6 +126,7 @@ DxfRasterVariables *dxf_rastervariables_set_dictionary_owner_soft (DxfRasterVari
 char *dxf_rastervariables_get_dictionary_owner_hard (DxfRasterVariables *rastervariables);
 DxfRasterVariables *dxf_rastervariables_set_dictionary_owner_hard (DxfRasterVariables *rastervariables, char *dictionary_owner_hard);
 int dxf_rastervariables_get_display_image_frame (DxfRasterVariables *rastervariables);
+DxfRasterVariables *dxf_rastervariables_set_display_image_frame (DxfRasterVariables *rastervariables, int display_image_frame);
 
 
 #ifdef __cplusplus

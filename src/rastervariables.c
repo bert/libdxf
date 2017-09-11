@@ -723,4 +723,48 @@ dxf_rastervariables_get_display_image_frame
 }
 
 
+/*!
+ * \brief Set the \c display_image_frame for a DXF \c RASTERVARIABLES object.
+ */
+DxfRasterVariables *
+dxf_rastervariables_set_display_image_frame
+(
+        DxfRasterVariables *rastervariables,
+                /*!< a pointer to a DXF \c RASTERVARIABLES object. */
+        int display_image_frame
+                /*!< the \c display_image_frame to be set for the
+                 * object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rastervariables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (display_image_frame < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (display_image_frame > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        rastervariables->display_image_frame = display_image_frame;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rastervariables);
+}
+
+
 /* EOF*/
