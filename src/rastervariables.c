@@ -652,7 +652,7 @@ dxf_rastervariables_set_dictionary_owner_hard
                 /*!< a pointer to a DXF \c RASTERVARIABLES object. */
         char *dictionary_owner_hard
                 /*!< a string containing the pointer to the \c
-                 * dictionary_owner_hard for the entity. */
+                 * dictionary_owner_hard for the object. */
 )
 {
 #if DEBUG
