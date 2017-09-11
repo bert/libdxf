@@ -724,7 +724,8 @@ dxf_rastervariables_get_display_image_frame
 
 
 /*!
- * \brief Set the \c display_image_frame for a DXF \c RASTERVARIABLES object.
+ * \brief Set the \c display_image_frame for a DXF \c RASTERVARIABLES
+ * object.
  */
 DxfRasterVariables *
 dxf_rastervariables_set_display_image_frame
