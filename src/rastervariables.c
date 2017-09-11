@@ -767,4 +767,46 @@ dxf_rastervariables_set_display_image_frame
 }
 
 
+/*!
+ * \brief Get the \c display_quality from a DXF \c RASTERVARIABLES object.
+ *
+ * \return \c display_quality.
+ */
+int
+dxf_rastervariables_get_display_quality
+(
+        DxfRasterVariables *rastervariables
+                /*!< a pointer to a DXF \c RASTERVARIABLES object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rastervariables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (rastervariables->display_quality < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+        if (rastervariables->display_quality > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rastervariables->display_quality);
+}
+
+
 /* EOF*/
