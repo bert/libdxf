@@ -809,4 +809,48 @@ dxf_rastervariables_get_display_quality
 }
 
 
+/*!
+ * \brief Set the \c display_quality for a DXF \c RASTERVARIABLES
+ * object.
+ */
+DxfRasterVariables *
+dxf_rastervariables_set_display_quality
+(
+        DxfRasterVariables *rastervariables,
+                /*!< a pointer to a DXF \c RASTERVARIABLES object. */
+        int display_quality
+                /*!< the \c display_quality to be set for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rastervariables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (display_quality < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (display_quality > 1)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        rastervariables->display_quality = display_quality;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rastervariables);
+}
+
+
 /* EOF*/
