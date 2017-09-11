@@ -896,4 +896,47 @@ dxf_rastervariables_get_units
 }
 
 
+/*!
+ * \brief Set the \c units for a DXF \c RASTERVARIABLES object.
+ */
+DxfRasterVariables *
+dxf_rastervariables_set_units
+(
+        DxfRasterVariables *rastervariables,
+                /*!< a pointer to a DXF \c RASTERVARIABLES object. */
+        int units
+                /*!< the \c units to be set for the object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rastervariables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (units < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was passed.\n")),
+                  __FUNCTION__);
+        }
+        if (units > 8)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () an out of range value was passed.\n")),
+                  __FUNCTION__);
+        }
+        rastervariables->units = units;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rastervariables);
+}
+
+
 /* EOF*/

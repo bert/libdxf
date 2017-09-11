@@ -130,6 +130,7 @@ DxfRasterVariables *dxf_rastervariables_set_display_image_frame (DxfRasterVariab
 int dxf_rastervariables_get_display_quality (DxfRasterVariables *rastervariables);
 DxfRasterVariables *dxf_rastervariables_set_display_quality (DxfRasterVariables *rastervariables, int display_quality);
 int dxf_rastervariables_get_units (DxfRasterVariables *rastervariables);
+DxfRasterVariables *dxf_rastervariables_set_units (DxfRasterVariables *rastervariables, int units);
 
 
 #ifdef __cplusplus
