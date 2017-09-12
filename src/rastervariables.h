@@ -134,6 +134,7 @@ DxfRasterVariables *dxf_rastervariables_set_units (DxfRasterVariables *rastervar
 int32_t dxf_rastervariables_get_class_version (DxfRasterVariables *rastervariables);
 DxfRasterVariables *dxf_rastervariables_set_class_version (DxfRasterVariables *rastervariables, int32_t class_version);
 DxfRasterVariables *dxf_rastervariables_get_next (DxfRasterVariables *rastervariables);
+DxfRasterVariables *dxf_rastervariables_set_next (DxfRasterVariables *rastervariables, DxfRasterVariables *next);
 
 
 #ifdef __cplusplus

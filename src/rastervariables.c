@@ -1064,4 +1064,44 @@ dxf_rastervariables_get_next
 }
 
 
+/*!
+ * \brief Set the pointer to the next \c RASTERVARIABLES object for a
+ * DXF \c RASTERVARIABLES object.
+ */
+DxfRasterVariables *
+dxf_rastervariables_set_next
+(
+        DxfRasterVariables *rastervariables,
+                /*!< a pointer to a DXF \c RASTERVARIABLES object. */
+        DxfRasterVariables *next
+                /*!< a pointer to the next \c RASTERVARIABLES object for
+                 * the list of objects. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rastervariables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        rastervariables->next = (struct DxfRasterVariables *) next;
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (rastervariables);
+}
+
+
 /* EOF*/
