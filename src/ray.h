@@ -1,7 +1,8 @@
 /*!
  * \file ray.h
  *
- * \author Copyright (C) 2008 ... 2016 by Bert Timmerman <bert.timmerman@xs4all.nl>.
+ * \author Copyright (C) 2013, 2014, 2015, 2016, 2017
+ * by Bert Timmerman <bert.timmerman@xs4all.nl>.
  *
  * \brief Header file for a DXF ray entity (\c RAY).
  *
