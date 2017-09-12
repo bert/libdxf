@@ -1104,4 +1104,49 @@ dxf_rastervariables_set_next
 }
 
 
+/*!
+ * \brief Get the pointer to the last \c RASTERVARIABLES object from a
+ * linked list of DXF \c RASTERVARIABLES objects.
+ *
+ * \return pointer to the last \c RASTERVARIABLES object.
+ *
+ * \warning No checks are performed on the returned pointer.
+ */
+DxfRasterVariables *
+dxf_rastervariables_get_last
+(
+        DxfRasterVariables *rastervariables
+                /*!< a pointer to a DXF \c RASTERVARIABLES object. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (rastervariables == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (rastervariables->next == NULL)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a NULL pointer was found.\n")),
+                  __FUNCTION__);
+                return ((DxfRasterVariables *) rastervariables);
+        }
+        DxfRasterVariables *iter = (DxfRasterVariables *) rastervariables->next;
+        while (iter->next != NULL)
+        {
+                iter = (DxfRasterVariables *) iter->next;
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return ((DxfRasterVariables *) iter);
+}
+
+
 /* EOF*/
