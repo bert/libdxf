@@ -210,35 +210,12 @@ dxf_ray_struct
 } DxfRay;
 
 
-DxfRay *
-dxf_ray_new ();
-DxfRay *
-dxf_ray_init
-(
-        DxfRay *ray
-);
-DxfRay *
-dxf_ray_read
-(
-        DxfFile *fp,
-        DxfRay *ray
-);
-int
-dxf_ray_write
-(
-        DxfFile *fp,
-        DxfRay *ray
-);
-int
-dxf_ray_free
-(
-        DxfRay *ray
-);
-void
-dxf_ray_free_chain
-(
-        DxfRay *rays
-);
+DxfRay *dxf_ray_new ();
+DxfRay *dxf_ray_init (DxfRay *ray);
+DxfRay *dxf_ray_read (DxfFile *fp, DxfRay *ray);
+int dxf_ray_write (DxfFile *fp, DxfRay *ray);
+int dxf_ray_free (DxfRay *ray);
+void dxf_ray_free_chain (DxfRay *rays);
 
 
 #ifdef __cplusplus
