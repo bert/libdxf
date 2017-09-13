@@ -631,4 +631,40 @@ dxf_ray_free_chain
 }
 
 
+/*!
+ * \brief Get the \c id_code from a DXF \c RAY entity.
+ *
+ * \return \c id_code.
+ */
+int
+dxf_ray_get_id_code
+(
+        DxfRay *ray
+                /*!< a pointer to a DXF \c RAY entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (EXIT_FAILURE);
+        }
+        if (ray->id_code < 0)
+        {
+                fprintf (stderr,
+                  (_("Warning in %s () a negative value was found.\n")),
+                  __FUNCTION__);
+        }
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray->id_code);
+}
+
+
 /* EOF */
