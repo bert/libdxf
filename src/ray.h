@@ -223,6 +223,7 @@ int dxf_ray_write (DxfFile *fp, DxfRay *ray);
 int dxf_ray_free (DxfRay *ray);
 void dxf_ray_free_chain (DxfRay *rays);
 int dxf_ray_get_id_code (DxfRay *ray);
+DxfRay *dxf_ray_set_id_code (DxfRay *ray, int id_code);
 
 
 #ifdef __cplusplus
