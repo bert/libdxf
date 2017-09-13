@@ -186,6 +186,9 @@ dxf_ray_struct
                  * Group code = 440.\n
                  * \since Introduced in version R2004. */
         /* Specific members for a DXF ray. */
+        DxfPoint *p0;
+                /*!< Start point.\n
+                 * Group codes = 10, 20 and 30.*/
         double x0;
                 /*!< group code = 10\n
                  * start point. */
@@ -195,6 +198,9 @@ dxf_ray_struct
         double z0;
                 /*!< group code = 30\n
                  * start point. */
+        DxfPoint *p1;
+                /*!< End point.\n
+                 * Group codes = 11, 21 and 31.*/
         double x1;
                 /*!< group code = 11\n
                  * end point. */
