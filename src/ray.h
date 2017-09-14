@@ -225,6 +225,7 @@ void dxf_ray_free_chain (DxfRay *rays);
 int dxf_ray_get_id_code (DxfRay *ray);
 DxfRay *dxf_ray_set_id_code (DxfRay *ray, int id_code);
 char *dxf_ray_get_linetype (DxfRay *ray);
+DxfRay *dxf_ray_set_linetype (DxfRay *ray, char *linetype);
 
 
 #ifdef __cplusplus
