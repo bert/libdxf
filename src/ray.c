@@ -819,4 +819,43 @@ dxf_ray_get_layer
 }
 
 
+/*!
+ * \brief Set the \c layer for a DXF \c RAY entity.
+ */
+DxfRay *
+dxf_ray_set_layer
+(
+        DxfRay *ray,
+                /*!< a pointer to a DXF \c RAY entity. */
+        char *layer
+                /*!< a pointer to a string containing the \c layer to be
+                 * set for the entity. */
+)
+{
+#if DEBUG
+        DXF_DEBUG_BEGIN
+#endif
+        /* Do some basic checks. */
+        if (ray == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        if (layer == NULL)
+        {
+                fprintf (stderr,
+                  (_("Error in %s () a NULL pointer was passed.\n")),
+                  __FUNCTION__);
+                return (NULL);
+        }
+        ray->layer = strdup (layer);
+#if DEBUG
+        DXF_DEBUG_END
+#endif
+        return (ray);
+}
+
+
 /* EOF */

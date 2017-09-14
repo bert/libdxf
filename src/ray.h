@@ -227,6 +227,7 @@ DxfRay *dxf_ray_set_id_code (DxfRay *ray, int id_code);
 char *dxf_ray_get_linetype (DxfRay *ray);
 DxfRay *dxf_ray_set_linetype (DxfRay *ray, char *linetype);
 char *dxf_ray_get_layer (DxfRay *ray);
+DxfRay *dxf_ray_set_layer (DxfRay *ray, char *layer);
 
 
 #ifdef __cplusplus
